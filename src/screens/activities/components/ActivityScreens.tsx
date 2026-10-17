@@ -73,6 +73,7 @@ export function ActivityScreens({
   const ListeningScreen = getPracticeScreen('listening');
   const QuizScreen = getPracticeScreen('quiz');
   const WritingScreen = getPracticeScreen('writing');
+  const ToneScreen = getPracticeScreen('tones');
   // The activity the session opened with skips its entrance; once the user switches away it is
   // forgotten, so coming back slides in like any other switch.
   const currentKey = activityScreenKey(activeActivity);
@@ -142,6 +143,20 @@ export function ActivityScreens({
             isReviewDeck={isReviewMode}
             isLibraryDeck={isLibraryMode}
             onClose={onWritingClose}
+            onContinue={onContinue}
+            continueLabel={continueLabel}
+          />
+        </AnimatedActivityScreen>
+      )}
+
+      {activeActivity === 'tones' && ToneScreen && (
+        <AnimatedActivityScreen skipEnter={firstKey} activityKey="tones" direction={direction} className={edgeInsetClassName}>
+          <ToneScreen
+            activeBookId={activeBookId}
+            selectedLessons={selectedLessons}
+            isReviewDeck={isReviewMode}
+            isLibraryDeck={isLibraryMode}
+            onClose={onClose}
             onContinue={onContinue}
             continueLabel={continueLabel}
           />

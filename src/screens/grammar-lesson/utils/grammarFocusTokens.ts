@@ -2,6 +2,7 @@ import type { GrammarWordToken } from '../../../types/models';
 
 /** Negators that belong to the grammar unit they sit in front of (不是, 沒有, 別去). */
 const NEGATORS = new Set(['不', '沒', '没', '別', '别']);
+const NUMERAL = /^[零〇一二兩两三四五六七八九十百千萬万幾几0-9]+$/;
 const CJK_REGEX = /[㐀-鿿豈-﫿]/;
 
 const tokenText = (word: GrammarWordToken, characterPreference: 'traditional' | 'simplified') =>
@@ -47,6 +48,12 @@ export function getFocusTokenIds(
   words.forEach((word, index) => {
     const length = texts[index].length;
     if (length > 0 && covered.slice(starts[index], starts[index] + length).some(Boolean)) focused.add(word.id);
+  });
+
+  // A number touching a highlighted unit joins it, so 十點, 十二月七號 and 星期一 light up whole.
+  words.forEach((word, index) => {
+    if (focused.has(word.id) || !NUMERAL.test(texts[index])) return;
+    if (focused.has(words[index + 1]?.id ?? '') || focused.has(words[index - 1]?.id ?? '')) focused.add(word.id);
   });
 
   words.forEach((word, index) => {

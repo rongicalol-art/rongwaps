@@ -601,7 +601,7 @@ body {
    Apply the honey palette once; the review objects own the visible motion. */
 .review-tone-transition::view-transition-old(root),
 .review-tone-transition::view-transition-new(root) {
-  animation-duration: 260ms;
+  animation-duration: 380ms;
   animation-timing-function: ease-in-out;
 }
 .review-tone-transition::view-transition {
@@ -630,3 +630,7 @@ body {
   --color-brand-primary-wash: #f6ecd2 !important;
   --color-brand-on-primary: #4f3d18 !important;
 }
+
+/* Audio preparation blocks: one quick swell rolls across the row while recordings load. */
+@keyframes rw-swell { 0%, 100% { transform: scaleY(.8); } 50% { transform: scaleY(1.1); } }
+.rw-swell { animation: rw-swell 1.5s ease-in-out infinite; animation-delay: calc(var(--i) * -120ms); }

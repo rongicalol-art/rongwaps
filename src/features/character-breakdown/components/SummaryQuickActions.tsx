@@ -19,6 +19,7 @@ export function SummaryQuickActions({
   pinyin: shownPinyin,
   meaning: shownMeaning,
   className = 'absolute right-3 top-3 z-10 flex items-center gap-2 sm:right-5 sm:top-5',
+  showAudio = true,
 }: {
   char: string;
   audioSrc?: string | null;
@@ -27,6 +28,8 @@ export function SummaryQuickActions({
   meaning?: string;
   /** Placement; defaults to pinned top-right of a card. */
   className?: string;
+  /** Hide the speaker (and skip its audio lookup), leaving only Save. */
+  showAudio?: boolean;
 }) {
   const entries = useCharDictionaryEntry(char);
 
@@ -39,6 +42,7 @@ export function SummaryQuickActions({
   const recordingKey = `${headword}|${reading}`;
   const requestId = useRef(0);
   useEffect(() => {
+    if (!showAudio) return;
     const counter = requestId;
     const request = ++counter.current;
     setMessage('');
@@ -54,7 +58,7 @@ export function SummaryQuickActions({
       if (counter.current === request) setRecording({ key: recordingKey, ...result });
     });
     return () => { counter.current++; };
-  }, [headword, reading, recordingKey]);
+  }, [headword, reading, recordingKey, showAudio]);
 
   const play = () => {
     if (recording?.key !== recordingKey || !recording.audio) return;
@@ -75,7 +79,7 @@ export function SummaryQuickActions({
 
   return (
     <div className={className}>
-      {recording?.key === recordingKey && recording.audio ? <button
+      {showAudio && (recording?.key === recordingKey && recording.audio ? <button
         type="button"
         aria-label={recording.contextWord ? `Hear ${headword} in ${recording.contextWord}` : `Hear pronunciation of ${headword}`}
         onClick={play}
@@ -83,7 +87,7 @@ export function SummaryQuickActions({
       >
         <AppIcon name="pronounce" size={22} />
         {recording.contextWord && <span className="text-sm">Hear {recording.contextWord}</span>}
-      </button> : <span role="status" className="text-xs text-ui-muted-strong">{recording?.key === recordingKey ? 'No audio' : 'Checking audio…'}</span>}
+      </button> : <span role="status" className="text-xs text-ui-muted-strong">{recording?.key === recordingKey ? 'No audio' : 'Checking audio…'}</span>)}
       {message && <span role="status" className="text-xs text-ui-muted-strong">{message}</span>}
       <FavoriteButton
         word={headword}
@@ -93,6 +97,7 @@ export function SummaryQuickActions({
         definitions={shownMeaning || primary?.definitions}
         variant="ghost"
         size="lg"
+        idleFilled
         className="h-10 w-10 text-ui-muted-strong"
       />
     </div>

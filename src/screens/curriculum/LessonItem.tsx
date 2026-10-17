@@ -1,6 +1,5 @@
-import { memo, useRef } from 'react';
+import { memo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { AppIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import type { CourseLessonProgress } from '../../types/models';
 import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
@@ -47,6 +46,7 @@ function LessonItemBase({
   const isLocked = lesson.state === 'locked';
   const englishTitle = getEnglishLessonTitle(lesson.title);
 
+  const [shake, setShake] = useState(0);
   const pressTimer = useRef<number | null>(null);
   const pressOrigin = useRef<{ x: number; y: number } | null>(null);
   const longPressed = useRef(false);
@@ -75,6 +75,11 @@ function LessonItemBase({
   };
   const handleClick = () => {
     // The release that ends a long press must not also open the lesson.
+    if (isLocked) {
+      navigator.vibrate?.(8);
+      setShake((n) => n + 1);
+      return;
+    }
     if (longPressed.current) {
       longPressed.current = false;
       return;
@@ -87,7 +92,9 @@ function LessonItemBase({
   return (
     <motion.div
       layout={Boolean(onLongPress)}
+      key={shake}
       whileTap={isLocked ? undefined : { scale: 0.98 }}
+      animate={shake ? { x: [0, -5, 5, -3, 0] } : undefined}
       transition={{
         layout: { type: 'spring', stiffness: 430, damping: 34 },
         scale: { type: 'spring', stiffness: 500, damping: 28 },
@@ -95,6 +102,7 @@ function LessonItemBase({
       className={cn(
         'relative min-w-0 overflow-hidden border-2 bg-ui-surface transition-colors duration-200',
         containerShape(isSelected, isPrevSelected, isNextSelected),
+        isLocked && 'border-b-2',
         isSelected ? 'border-brand-primary' : 'border-ui-border',
         isSelected && 'bg-brand-primary-soft',
       )}
@@ -104,7 +112,7 @@ function LessonItemBase({
       )}
       <button
         type="button"
-        disabled={isLocked}
+        aria-disabled={isLocked || undefined}
         onClick={handleClick}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -115,7 +123,7 @@ function LessonItemBase({
         aria-pressed={isSelecting ? isSelected : undefined}
         aria-label={`${lesson.label}: ${englishTitle}${isLocked ? ' (locked)' : ''}`}
         style={{ WebkitTouchCallout: 'none' }}
-        className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring disabled:cursor-not-allowed"
+        className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent"
       >
         <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-compact bg-ui-surface">
           <img
@@ -132,11 +140,6 @@ function LessonItemBase({
             onError={() => { openWhenLoaded.current = false; }}
             className={cn('h-full w-full object-contain p-1', isLocked && 'opacity-35 grayscale')}
           />
-          {isLocked && (
-            <span className="absolute grid h-6 w-6 place-items-center rounded-full bg-ui-surface text-ui-muted">
-              <AppIcon name="lock" size={14} />
-            </span>
-          )}
         </span>
 
         <span className="min-w-0 flex-1">
@@ -145,7 +148,7 @@ function LessonItemBase({
           </span>
           <span className={cn(
             'block line-clamp-2 text-lg font-black leading-tight',
-            isSelected ? 'text-ui-ink-strong' : 'text-ui-muted-strong',
+            isSelected ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',
           )}>
             {englishTitle}
           </span>

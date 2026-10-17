@@ -7,12 +7,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: AZURE_SPEECH_KEY
-        sync: false
-      - key: AZURE_SPEECH_REGION
-        value: southeastasia
-      - key: TYPESAFE_API_KEY
-        sync: false
       - key: R2_ACCOUNT_ID
         sync: false
       - key: R2_ACCESS_KEY_ID
@@ -20,7 +14,9 @@ services:
       - key: R2_SECRET_ACCESS_KEY
         sync: false
       - key: R2_BUCKET_NAME
-        sync: false
+        value: ronmandarin-book
+      - key: VITE_AUDIO_BASE_URL
+        value: https://audio.ronsmandarin.com
       - key: VITE_SUPABASE_URL
         sync: false
       - key: VITE_SUPABASE_ANON_KEY

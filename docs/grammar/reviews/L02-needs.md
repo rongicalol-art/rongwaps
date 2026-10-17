@@ -1,0 +1,5 @@
+# L02 needs-engine — 2026-10-16
+
+- NEEDS-ENGINE: p.56 item 2 (`l2g03-p2`, `g3-question-2`) — omitted from both exercise sets. Show the printed cellphone with its 手機 shǒujī caption beside 你有手機嗎？; let the learner tap 有 or 沒有 in 我＿＿手機。 and show the completed model with pinyin/English. Existing route/change/countdown scenes cannot represent this picture gloss.
+- NEEDS-ENGINE: p.62 item 1 (`l2g06-p1`, `g6-question-1`) — omitted from both exercise sets. Show the printed sun/sweating-person picture and 熱 rè caption with 台灣＿＿？ / 台灣很熱。; let the learner tap 熱不熱 against a genuinely malformed pair, then show the completed question. A glossary alone loses the printed visual cue.
+- NEEDS-ENGINE: p.60 item 3 (`l2g04-p3`, `g4-question-3`) — omitted from both exercise sets. Show both printed blanks in ＿＿的＿＿明天去美國。; offer one tap on a linked owner/person combination, fill both blanks together, and show each completed model with pinyin/English. Current independent slots/reels require two decisions; a whole phrase tile exceeds four characters or hides the printed 的.

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { SAMPLE_LESSONS } from '../../../data/books';
+import { SAMPLE_BOOKS, SAMPLE_LESSONS } from '../../../data/books';
 import type { Flashcard } from '../../../data/flashcards';
 import { getInteractiveGrammarManifestForLesson } from '../../../data/interactiveGrammarManifest';
 import { fetchVocabulary } from '../../../services/vocabularyService';
@@ -41,6 +41,11 @@ export function useCourseDashboard({
     setCards([]);
     setIsLoading(true);
     setError(null);
+
+    if (SAMPLE_BOOKS.find((book) => book.id === activeBookId)?.status === 'locked') {
+      setIsLoading(false);
+      return;
+    }
 
     fetchVocabulary(activeBookId)
       .then((courseCards) => {
@@ -108,9 +113,11 @@ export function useCourseDashboard({
       })
       .filter(({ lessonCards }) => lessonCards.length > 0);
 
-    const selectedLessonId = selectedLessons.find((id) => cardsByLesson.has(id));
+    const isOpen = ({ lesson }: { lesson: { status: string } }) => lesson.status !== 'locked';
+    const openIds = new Set(baseLessons.filter(isOpen).map(({ lesson }) => lesson.id));
+    const selectedLessonId = selectedLessons.find((id) => openIds.has(id));
     const nextIncompleteLesson = baseLessons.find(
-      ({ isCompleted }) => !isCompleted,
+      (row) => isOpen(row) && !row.isCompleted,
     );
     const currentLessonId = selectedLessonId
       ?? nextIncompleteLesson?.lesson.id
@@ -165,24 +172,27 @@ export function useCourseDashboard({
       };
     });
 
-    const learnedWords = lessons.reduce((total, lesson) => total + lesson.learnedCount, 0);
-    const completedLessons = lessons.filter((lesson) => lesson.isFullyCompleted).length;
-    const totalRequiredPaths = lessons.reduce(
+    // Locked lessons stay listed but never count toward totals.
+    const openLessons = lessons.filter((lesson) => lesson.state !== 'locked');
+    const openWords = openLessons.reduce((total, lesson) => total + lesson.wordCount, 0);
+    const learnedWords = openLessons.reduce((total, lesson) => total + lesson.learnedCount, 0);
+    const completedLessons = openLessons.filter((lesson) => lesson.isFullyCompleted).length;
+    const totalRequiredPaths = openLessons.reduce(
       (total, lesson) => total + lesson.requiredPathCount,
       0,
     );
-    const totalCompletedPaths = lessons.reduce(
+    const totalCompletedPaths = openLessons.reduce(
       (total, lesson) => total + lesson.completedPathCount,
       0,
     );
-    const totalLearningUnits = cards.length + totalRequiredPaths;
+    const totalLearningUnits = openWords + totalRequiredPaths;
     const completedLearningUnits = learnedWords + totalCompletedPaths;
 
     return {
-      totalWords: cards.length,
+      totalWords: openWords,
       learnedWords,
       completedLessons,
-      totalLessons: lessons.length,
+      totalLessons: openLessons.length,
       progressPercent: totalLearningUnits > 0
         ? Math.round((completedLearningUnits / totalLearningUnits) * 100)
         : 0,

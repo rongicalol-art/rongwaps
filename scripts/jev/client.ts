@@ -3,7 +3,7 @@
  *
  * Jev judges only: callers send state plus typed questions and receive
  * structured answers. The key is read from TYPESAFE_API_KEY
- * (`.env.memory-hooks.local`, scripts only — never ship it to the client).
+ * (`.env`, scripts only — never ship it to the client).
  * The SDK handles 429/529 retries with backoff and honors Retry-After.
  *
  * Model selection: JEV_MODEL overrides MEMORY_HOOK_JEV_MODEL overrides the
@@ -26,11 +26,6 @@ import {
 } from '@typesafe-ai/sdk';
 
 dotenv.config({ path: resolve(import.meta.dirname, '../../.env'), quiet: true });
-dotenv.config({
-  path: resolve(import.meta.dirname, '../../.env.memory-hooks.local'),
-  quiet: true,
-  override: true,
-});
 
 export const JEV_PINNED_MODEL = 'jev-1.13.0';
 export const JEV_DEFAULT_MODEL = process.env.JEV_MODEL ?? process.env.MEMORY_HOOK_JEV_MODEL ?? JEV_PINNED_MODEL;
@@ -40,7 +35,7 @@ let sharedClient: TypeSafeClient | null = null;
 export function getJevClient(): TypeSafeClient {
   if (!process.env.TYPESAFE_API_KEY) {
     throw new Error(
-      'TYPESAFE_API_KEY is not set. Add it to .env.memory-hooks.local (never commit it) before running Jev tools.',
+      'TYPESAFE_API_KEY is not set. Add it to .env (never commit it) before running Jev tools.',
     );
   }
   sharedClient ??= new TypeSafeClient();

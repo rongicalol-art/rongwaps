@@ -32,7 +32,7 @@ import {
 // Load env files
 function loadEnv(): Record<string, string> {
   const env: Record<string, string> = { ...process.env as Record<string, string> };
-  for (const file of ['.env.local', '.env']) {
+  for (const file of ['.env']) {
     if (existsSync(file)) {
       try {
         const parsed = parse(readFileSync(file, 'utf8'));
@@ -76,7 +76,7 @@ function checkConfig() {
     console.error('   R2_ACCESS_KEY_ID');
     console.error('   R2_SECRET_ACCESS_KEY');
     console.error('   R2_BUCKET_NAME (optional, defaults to "rongwaps-audio")\n');
-    console.error('You can add these into your .env or .env.local file.');
+    console.error('You can add these into your .env file.');
     process.exit(1);
   }
 }

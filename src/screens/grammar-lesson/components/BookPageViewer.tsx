@@ -9,7 +9,8 @@ import {
   ScreenHeader,
 } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
-import { contentUrl } from '../../../services/staticContentService';
+import { fetchContentBlobUrl } from '../../../services/staticContentService';
+import { bookPagePath } from '../../../utils/grammar/bookPagePath';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import { useBookViewerHistory } from '../hooks/useBookViewerHistory';
 import { useBookViewerPinchPan } from '../hooks/useBookViewerPinchPan';
@@ -27,10 +28,6 @@ interface BookPageViewerProps {
   grammarTitle: string;
   pages: number[];
   onClose: () => void;
-}
-
-function bookPageImageUrl(bookId: number, page: number) {
-  return contentUrl(`/data/book-pages/modern-chinese-${bookId}/page-${String(page).padStart(3, '0')}.webp`);
 }
 
 /**
@@ -101,11 +98,20 @@ export function BookPageViewer({
   const nextPage = pages[pageIndex + 1];
   useEffect(() => {
     for (const neighbor of [previousPage, nextPage]) {
-      if (neighbor === undefined) continue;
-      const image = new window.Image();
-      image.src = bookPageImageUrl(bookId, neighbor);
+      if (neighbor !== undefined) void fetchContentBlobUrl(bookPagePath(bookId, neighbor)).catch(() => undefined);
     }
   }, [bookId, nextPage, previousPage]);
+
+  const [pageSrc, setPageSrc] = useState<string | null>(null);
+  useEffect(() => {
+    let live = true;
+    setPageSrc(null);
+    fetchContentBlobUrl(bookPagePath(bookId, page)).then(
+      (url) => { if (live) setPageSrc(url); },
+      () => { if (live) setImageFailed(true); },
+    );
+    return () => { live = false; };
+  }, [bookId, page]);
 
   const pageNav = (
     <>
@@ -201,9 +207,9 @@ export function BookPageViewer({
               />
             )}
 
-            <img
+            {pageSrc && <img
               key={page}
-              src={bookPageImageUrl(bookId, page)}
+              src={pageSrc}
               alt={`Scanned source book page ${page} for ${grammarTitle}`}
               loading="eager"
               decoding="async"
@@ -225,7 +231,7 @@ export function BookPageViewer({
                 transform: `translate3d(${pageLayout.x}px, ${pageLayout.y}px, 0) scale(${pageLayout.scale})`,
                 transformOrigin: '0 0',
               }}
-            />
+            />}
 
             {!isLoaded && (
               <div

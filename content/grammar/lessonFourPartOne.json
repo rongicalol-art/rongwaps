@@ -589,6 +589,32 @@
         "simplified": "怎么样",
         "pinyin": "zěnmeyàng",
         "meaning": "how is it; what do you think"
+      },
+      {
+        "id": "b1l04g01p95-glx-89",
+        "traditional": "那種鉛筆",
+        "pinyin": "nà zhǒng qiānbǐ",
+        "meaning": "that kind of pencil",
+        "simplified": "那种铅笔"
+      },
+      {
+        "id": "g01-p95-gfx-這兩種",
+        "traditional": "這兩種",
+        "pinyin": "zhè liǎng zhǒng",
+        "meaning": "these two kinds",
+        "simplified": "这两种"
+      },
+      {
+        "id": "g01-gfx-生日",
+        "traditional": "生日",
+        "pinyin": "shēngrì",
+        "meaning": "birthday"
+      },
+      {
+        "id": "g01-gfx-花",
+        "traditional": "花",
+        "pinyin": "huā",
+        "meaning": "flower"
       }
     ],
     "pattern": "Topic, Subject + (Neg) + Verb; plural topic, Subject + 都 + (Neg) + Verb",
@@ -612,7 +638,7 @@
           "traditional": "蛋糕，我喜歡。",
           "simplified": "蛋糕，我喜欢。",
           "pinyin": "Dàngāo, wǒ xǐhuān.",
-          "english": "Cake, I like.",
+          "english": "I like cakes.",
           "note": "蛋糕 is in the spotlight. 我喜歡 says what you think about it."
         },
         {
@@ -621,7 +647,7 @@
           "traditional": "書、筆，我都有。",
           "simplified": "书、笔，我都有。",
           "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
-          "english": "Books and pens, I have both.",
+          "english": "The book and the pen, I have them both.",
           "note": "Two things come first, so 都 means \"both\"."
         },
         {
@@ -632,16 +658,6 @@
           "pinyin": "Chá, wǒ xǐhuān; kāfēi, wǒ bù xǐhuān.",
           "english": "Tea, I like; coffee, I do not.",
           "note": "Putting each drink at the start makes the contrast easy to hear."
-        },
-        {
-          "id": "g1-repair",
-          "label": "Repair the pause",
-          "traditional": "我蛋糕喜歡 → 蛋糕，我喜歡",
-          "simplified": "我蛋糕喜欢 → 蛋糕，我喜欢",
-          "pinyin": "Wǒ dàngāo xǐhuān → dàngāo, wǒ xǐhuān",
-          "english": "Cake, I like.",
-          "note": "If you move a thing to the start, put it before the person and hear a small pause.",
-          "isCorrection": true
         }
       ],
       "takeaway": "Put the thing first, pause, then say what you think or do."
@@ -651,114 +667,100 @@
       "title": "Don't mix these up",
       "items": [
         {
-          "id": "g1-confusion-topic-pause",
-          "question": "When the thing goes first, do I need a pause?",
-          "answer": "Yes — say the thing, pause, then the person and their feeling. In writing, that pause is a comma.",
-          "wrongTraditional": "這枝鉛筆我要。",
-          "wrongSimplified": "这枝铅笔我要。",
-          "right": {
-            "traditional": "這枝鉛筆，我要。",
-            "simplified": "这枝铅笔，我要。",
-            "pinyin": "Zhè zhī qiānbǐ, wǒ yào.",
-            "english": "This pencil, I want it.",
-            "words": [
-              {
-                "id": "b1l04-g1-c1-word-1",
-                "traditional": "這枝鉛筆",
-                "simplified": "这枝铅笔",
-                "pinyin": "zhè zhī qiānbǐ",
-                "meaning": "this pencil"
-              },
-              {
-                "id": "b1l04-g1-c1-word-2",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me",
-                "prefix": "，"
-              },
-              {
-                "id": "b1l04-g1-c1-word-3",
-                "traditional": "要",
-                "pinyin": "yào",
-                "meaning": "want",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
           "id": "g1-confusion-dou-one",
-          "question": "One thing up front — can I use 都?",
-          "answer": "No. 都 means \"all\", so it needs two or more things. With one thing, just say 我喜歡.",
-          "wrongTraditional": "蛋糕，我都喜歡。",
-          "wrongSimplified": "蛋糕，我都喜欢。",
+          "question": "Can 都 replace the verb?",
+          "answer": "Keep the verb after 都: 書、筆，我都有。",
+          "wrongTraditional": "書、筆，我都。",
+          "wrongSimplified": "书、笔，我都。",
           "right": {
-            "traditional": "蛋糕，我喜歡。",
-            "simplified": "蛋糕，我喜欢。",
-            "pinyin": "Dàngāo, wǒ xǐhuān.",
-            "english": "Cake, I like.",
+            "traditional": "書、筆，我都有。",
+            "simplified": "书、笔，我都有。",
+            "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
+            "english": "The book and the pen, I have them both.",
             "words": [
               {
-                "id": "b1l04-g1-c2-word-1",
-                "traditional": "蛋糕",
-                "pinyin": "dàngāo",
-                "meaning": "cake"
+                "id": "b1l04-g1-c4-word-1",
+                "traditional": "書",
+                "pinyin": "shū",
+                "meaning": "book",
+                "simplified": "书",
+                "suffix": "、"
               },
               {
-                "id": "b1l04-g1-c2-word-2",
+                "id": "b1l04-g1-c4-word-2",
+                "traditional": "筆",
+                "pinyin": "bǐ",
+                "meaning": "pen",
+                "simplified": "笔",
+                "suffix": "，"
+              },
+              {
+                "id": "b1l04-g1-c4-word-3",
                 "traditional": "我",
                 "pinyin": "wǒ",
-                "meaning": "I; me",
-                "prefix": "，"
+                "meaning": "I; me"
               },
               {
-                "id": "b1l04-g1-c2-word-3",
-                "traditional": "喜歡",
-                "simplified": "喜欢",
-                "pinyin": "xǐhuān",
-                "meaning": "like",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g1-confusion-dou-not",
-          "question": "I do not like coffee or tea. Where does 不 go?",
-          "answer": "After 都: 都不喜歡. 都 + 不 means you feel this way about none of them.",
-          "wrongTraditional": "茶、咖啡不都喜歡。",
-          "wrongSimplified": "茶、咖啡不都喜欢。",
-          "right": {
-            "traditional": "茶、咖啡都不喜歡。",
-            "simplified": "茶、咖啡都不喜欢。",
-            "pinyin": "Chá, kāfēi, dōu bù xǐhuān.",
-            "english": "Tea and coffee, I do not like either.",
-            "words": [
-              {
-                "id": "b1l04-g1-c3-word-1",
-                "traditional": "茶",
-                "pinyin": "chá",
-                "meaning": "tea"
-              },
-              {
-                "id": "b1l04-g1-c3-word-2",
-                "traditional": "咖啡",
-                "pinyin": "kāfēi",
-                "meaning": "coffee",
-                "prefix": "、"
-              },
-              {
-                "id": "b1l04-g1-c3-word-3",
+                "id": "b1l04-g1-c4-word-4",
                 "traditional": "都",
                 "pinyin": "dōu",
                 "meaning": "both; all"
               },
               {
-                "id": "b1l04-g1-c3-word-4",
-                "traditional": "不喜歡",
-                "simplified": "不喜欢",
-                "pinyin": "bù xǐhuān",
-                "meaning": "do not like",
+                "id": "b1l04-g1-c4-word-5",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "have",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g1-confusion-dou-place",
+          "question": "Two things up front — where does 都 go?",
+          "answer": "Put 都 after the subject: 書、筆，我都有。",
+          "wrongTraditional": "書、筆，都我有。",
+          "wrongSimplified": "书、笔，都我有。",
+          "right": {
+            "traditional": "書、筆，我都有。",
+            "simplified": "书、笔，我都有。",
+            "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
+            "english": "The book and the pen, I have them both.",
+            "words": [
+              {
+                "id": "b1l04-g1-c4-word-1-alt2",
+                "traditional": "書",
+                "pinyin": "shū",
+                "meaning": "book",
+                "simplified": "书",
+                "suffix": "、"
+              },
+              {
+                "id": "b1l04-g1-c4-word-2-alt2",
+                "traditional": "筆",
+                "pinyin": "bǐ",
+                "meaning": "pen",
+                "simplified": "笔",
+                "suffix": "，"
+              },
+              {
+                "id": "b1l04-g1-c4-word-3-alt2",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l04-g1-c4-word-4-alt2",
+                "traditional": "都",
+                "pinyin": "dōu",
+                "meaning": "both; all"
+              },
+              {
+                "id": "b1l04-g1-c4-word-5-alt2",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "have",
                 "suffix": "。"
               }
             ]
@@ -1035,10 +1037,9 @@
         "teachingNote": null
       }
     ],
-    "exerciseTitle": "Put the thing in the spotlight",
+    "exerciseTitle": "Write the objects as the topics in the answers.",
     "exercisePreview": "Rewrite each answer with the thing first.",
     "exerciseInstruction": "Choose the thing that goes first, then finish with the person and their opinion.",
-    "exerciseNote": "The printed exercise has no answer key. These model answers keep the thing first, as the exercise asks.",
     "exerciseResponseMode": "text",
     "exerciseCues": [
       {
@@ -1377,7 +1378,7 @@
         "explanation": "When the topic has two or more things, add 都 after the subject: 我都有 means “I have them all.”",
         "patternColumns": [
           "Topic",
-          "Subject + 都"
+          "Subject + Verb"
         ],
         "patternColumnDetails": [
           "plural topic",
@@ -1460,6 +1461,8 @@
     "focusTerms": [
       "太",
       "了",
+      "好",
+      "大",
       "熱",
       "热",
       "累",
@@ -2035,6 +2038,24 @@
         "simplified": "怎么样",
         "pinyin": "zěnmeyàng",
         "meaning": "how is it; what do you think"
+      },
+      {
+        "id": "b1l04g03p98-glx-89",
+        "traditional": "小",
+        "pinyin": "xiǎo",
+        "meaning": "small"
+      },
+      {
+        "id": "g03-p98-gfx-和",
+        "traditional": "和",
+        "pinyin": "hé",
+        "meaning": "and"
+      },
+      {
+        "id": "g03-p98-gfx-朋友",
+        "traditional": "朋友",
+        "pinyin": "péngyou",
+        "meaning": "friend"
       }
     ],
     "pattern": "太 + Adjective + 了",
@@ -2059,7 +2080,7 @@
           "label": "Delighted",
           "traditional": "太好了！",
           "pinyin": "Tài hǎo le!",
-          "english": "Wonderful!",
+          "english": "Awesome!",
           "note": "With 好, the strong reaction is enthusiastic and positive."
         },
         {
@@ -2067,26 +2088,17 @@
           "label": "Too much",
           "traditional": "太大了！",
           "pinyin": "Tài dà le!",
-          "english": "It is too big!",
+          "english": "It is so big!",
           "note": "With 大, it can mean \"too big\" — more than what fits."
         },
         {
           "id": "g3-taste",
           "label": "Very impressed",
-          "traditional": "太好吃了！",
-          "pinyin": "Tài hǎochī le!",
-          "english": "It is so delicious!",
-          "note": "With 好吃, the speaker reacts with delight."
-        },
-        {
-          "id": "g3-repair",
-          "label": "Close the frame",
-          "traditional": "太熱 → 太熱了",
-          "simplified": "太热 → 太热了",
-          "pinyin": "tài rè → tài rè le",
-          "english": "It is too hot!",
-          "note": "In this pattern, 了 closes the strong reaction.",
-          "isCorrection": true
+          "traditional": "太好吃了，我常常去吃。",
+          "pinyin": "Tài hǎochī le, wǒ chángcháng qù chī.",
+          "english": "It is so delicious; I often go eat them.",
+          "note": "The reaction frame stays complete: 太 opens it, 了 closes it.",
+          "simplified": "太好吃了，我常常去吃。"
         }
       ],
       "takeaway": "Open with 太, name the feeling, close with 了."
@@ -2119,7 +2131,7 @@
             "suffix": "！"
           }
         ],
-        "english": "Wonderful!"
+        "english": "Awesome!"
       },
       {
         "id": "g3-pattern-2",
@@ -2199,81 +2211,75 @@
           "id": "g3-confusion-tai-place",
           "question": "Where does 太 go?",
           "answer": "Right before the describing word: 太累. The order is 太 + describing word + 了.",
-          "wrongTraditional": "他累太了。",
+          "wrongTraditional": "我今天累太了，現在很想睡覺。",
           "right": {
-            "traditional": "他太累了。",
-            "simplified": "他太累了。",
-            "pinyin": "Tā tài lèi le.",
-            "english": "He is too tired.",
+            "traditional": "我今天太累了，現在很想睡覺。",
+            "simplified": "我今天太累了，现在很想睡觉。",
+            "pinyin": "Wǒ jīntiān tài lèi le, xiànzài hěn xiǎng shuìjiào.",
+            "english": "I am too tired today; I really want to sleep now.",
             "words": [
               {
                 "id": "b1l04-g3-c2-word-1",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me",
+                "prefix": "B："
               },
               {
                 "id": "b1l04-g3-c2-word-2",
+                "traditional": "今天",
+                "pinyin": "jīntiān",
+                "meaning": "today"
+              },
+              {
+                "id": "b1l04-g3-c2-word-3",
                 "traditional": "太",
                 "pinyin": "tài",
                 "meaning": "too; extremely"
               },
               {
-                "id": "b1l04-g3-c2-word-3",
+                "id": "b1l04-g3-c2-word-4",
                 "traditional": "累",
                 "pinyin": "lèi",
                 "meaning": "tired"
               },
               {
-                "id": "b1l04-g3-c2-word-4",
+                "id": "b1l04-g3-c2-word-5",
                 "traditional": "了",
                 "pinyin": "le",
                 "meaning": "marks a new or strong situation",
+                "suffix": "，"
+              },
+              {
+                "id": "b1l04-g3-c2-word-6",
+                "traditional": "現在",
+                "simplified": "现在",
+                "pinyin": "xiànzài",
+                "meaning": "now"
+              },
+              {
+                "id": "b1l04-g3-c2-word-7",
+                "traditional": "很",
+                "pinyin": "hěn",
+                "meaning": "marks a positive description"
+              },
+              {
+                "id": "b1l04-g3-c2-word-8",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "b1l04-g3-c2-word-9",
+                "traditional": "睡覺",
+                "simplified": "睡觉",
+                "pinyin": "shuìjiào",
+                "meaning": "sleep",
                 "suffix": "。"
               }
             ]
-          }
-        },
-        {
-          "id": "g3-confusion-big",
-          "question": "The shirt is much too big. Is 太好了 okay?",
-          "answer": "No — 太好 sounds happy. Pick the describing word that fits: 太大了.",
-          "wrongTraditional": "這件衣服太好了。",
-          "wrongSimplified": "这件衣服太好了。",
-          "right": {
-            "traditional": "這件衣服太大了。",
-            "simplified": "这件衣服太大了。",
-            "pinyin": "Zhè jiàn yīfu tài dà le.",
-            "english": "This item of clothing is too big.",
-            "words": [
-              {
-                "id": "b1l04-g3-c3-word-1",
-                "traditional": "這件衣服",
-                "simplified": "这件衣服",
-                "pinyin": "zhè jiàn yīfu",
-                "meaning": "this item of clothing"
-              },
-              {
-                "id": "b1l04-g3-c3-word-2",
-                "traditional": "太",
-                "pinyin": "tài",
-                "meaning": "too; extremely"
-              },
-              {
-                "id": "b1l04-g3-c3-word-3",
-                "traditional": "大",
-                "pinyin": "dà",
-                "meaning": "big"
-              },
-              {
-                "id": "b1l04-g3-c3-word-4",
-                "traditional": "了",
-                "pinyin": "le",
-                "meaning": "marks a new or strong situation",
-                "suffix": "。"
-              }
-            ]
-          }
+          },
+          "wrongSimplified": "我今天累太了，现在很想睡觉。"
         }
       ]
     },
@@ -2515,24 +2521,9 @@
         }
       }
     ],
-    "exerciseTitle": "Complete the reaction frame",
+    "exerciseTitle": "Complete the following questions with 太……了.",
     "exercisePreview": "Choose the fitting 太…了 reaction for each source cue.",
     "exerciseInstruction": "Read the situation, then keep 太 before the description and 了 after it.",
-    "exerciseNote": "Questions 1–2 use the printed pictures. Question 3 uses the positive follow-up printed in the source.",
-    "exerciseCues": [
-      {
-        "id": "g3-cue-shirt",
-        "label": "Picture 1",
-        "pinyin": "tài dà le",
-        "detail": "A child appears uncomfortable in an oversized shirt."
-      },
-      {
-        "id": "g3-cue-tired",
-        "label": "Picture 2",
-        "pinyin": "tài lèi le",
-        "detail": "A tired student works beside a clock."
-      }
-    ],
     "questions": [
       {
         "id": "g3-question-1",
@@ -2684,7 +2675,7 @@
       98
     ],
     "audioReference": "04-1-3",
-    "explanation": "State the first situation first. In the next clause, put 也 before the repeated action or description to show that another person or thing matches it.",
+    "explanation": "Put 也 before the verb or adjective. You can add another action or quality for the same subject, or describe a different subject.",
     "focusTerms": [
       "也"
     ],
@@ -3257,6 +3248,27 @@
         "simplified": "怎么样",
         "pinyin": "zěnmeyàng",
         "meaning": "how is it; what do you think"
+      },
+      {
+        "id": "g02-p97-gfx-這枝筆",
+        "traditional": "這枝筆",
+        "pinyin": "zhè zhī bǐ",
+        "meaning": "this pen",
+        "simplified": "这枝笔"
+      },
+      {
+        "id": "g02-p97-gfx-那枝筆",
+        "traditional": "那枝筆",
+        "pinyin": "nà zhī bǐ",
+        "meaning": "that pen",
+        "simplified": "那枝笔"
+      },
+      {
+        "id": "g02-p97-gfx-便宜的",
+        "traditional": "便宜的",
+        "pinyin": "piányi de",
+        "meaning": "inexpensive",
+        "simplified": "便宜的"
       }
     ],
     "pattern": "Subject + Verb, 也 + Verb (same or new subject)",
@@ -3284,7 +3296,7 @@
           "traditional": "她很漂亮，也很可愛。",
           "simplified": "她很漂亮，也很可爱。",
           "pinyin": "Tā hěn piàoliang, yě hěn kě’ài.",
-          "english": "She is beautiful and also cute.",
+          "english": "She is very beautiful, and is also very cute.",
           "note": "The same person stays; 也 adds another matching description."
         },
         {
@@ -3293,7 +3305,7 @@
           "traditional": "我買書，也買筆。",
           "simplified": "我买书，也买笔。",
           "pinyin": "Wǒ mǎi shū, yě mǎi bǐ.",
-          "english": "I buy books and also pens.",
+          "english": "I bought a book, and(I bought) a pen too.",
           "note": "買 is repeated after 也 because the second thing shares the same action."
         },
         {
@@ -3302,18 +3314,8 @@
           "traditional": "我買書，他也買書。",
           "simplified": "我买书，他也买书。",
           "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-          "english": "I buy books; he buys books too.",
+          "english": "I bought a book, and he also bought one.",
           "note": "The new person 他 comes before 也."
-        },
-        {
-          "id": "g2-repair",
-          "label": "Repair placement",
-          "traditional": "也他買書 → 他也買書",
-          "simplified": "也他买书 → 他也买书",
-          "pinyin": "Yě tā mǎi shū → tā yě mǎi shū",
-          "english": "He buys books too.",
-          "note": "Name the matching person or thing before 也.",
-          "isCorrection": true
         }
       ],
       "takeaway": "New person or thing first, 也 second, shared result after it."
@@ -3326,55 +3328,13 @@
           "id": "g2-confusion-ye-person",
           "question": "Does 也 go before the person?",
           "answer": "No. Name the matching person first, then 也, then the repeated action: 他也買書.",
-          "wrongTraditional": "也他買書。",
-          "wrongSimplified": "也他买书。",
-          "right": {
-            "traditional": "他也買書。",
-            "simplified": "他也买书。",
-            "pinyin": "Tā yě mǎi shū.",
-            "english": "He buys books too.",
-            "words": [
-              {
-                "id": "b1l04-g2-c1-word-1",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              },
-              {
-                "id": "b1l04-g2-c1-word-2",
-                "traditional": "也",
-                "pinyin": "yě",
-                "meaning": "also; too"
-              },
-              {
-                "id": "b1l04-g2-c1-word-3",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy"
-              },
-              {
-                "id": "b1l04-g2-c1-word-4",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g2-confusion-ye-repeat",
-          "question": "Another person does the same thing — do I say the action again?",
-          "answer": "Yes. Repeat the action word after 也. You cannot skip it.",
-          "wrongTraditional": "我買書，他也書。",
-          "wrongSimplified": "我买书，他也书。",
+          "wrongTraditional": "我買書，也他買書。",
+          "wrongSimplified": "我买书，也他买书。",
           "right": {
             "traditional": "我買書，他也買書。",
             "simplified": "我买书，他也买书。",
             "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-            "english": "I buy books; he buys books too.",
+            "english": "I bought a book, and he also bought one.",
             "words": [
               {
                 "id": "b1l04-g2-c2-word-1",
@@ -3428,41 +3388,63 @@
           }
         },
         {
-          "id": "g2-confusion-ye-bu",
-          "question": "How do I say \"I do not like it either\"?",
-          "answer": "也 comes before 不: 我也不喜歡. The order is 也 + 不 + action word.",
-          "wrongTraditional": "我不也喜歡咖啡。",
-          "wrongSimplified": "我不也喜欢咖啡。",
+          "id": "g2-confusion-ye-repeat",
+          "question": "Another person does the same thing — do I say the action again?",
+          "answer": "Yes. Repeat the action word after 也. You cannot skip it.",
+          "wrongTraditional": "我買書，他也書。",
+          "wrongSimplified": "我买书，他也书。",
           "right": {
-            "traditional": "我也不喜歡咖啡。",
-            "simplified": "我也不喜欢咖啡。",
-            "pinyin": "Wǒ yě bù xǐhuān kāfēi.",
-            "english": "I do not like coffee either.",
+            "traditional": "我買書，他也買書。",
+            "simplified": "我买书，他也买书。",
+            "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
+            "english": "I bought a book, and he also bought one.",
             "words": [
               {
-                "id": "b1l04-g2-c3-word-1",
+                "id": "b1l04-g2-c2-word-1-alt2",
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
               },
               {
-                "id": "b1l04-g2-c3-word-2",
+                "id": "b1l04-g2-c2-word-2-alt2",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "b1l04-g2-c2-word-3-alt2",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book"
+              },
+              {
+                "id": "b1l04-g2-c2-word-4-alt2",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he; him",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l04-g2-c2-word-5-alt2",
                 "traditional": "也",
                 "pinyin": "yě",
                 "meaning": "also; too"
               },
               {
-                "id": "b1l04-g2-c3-word-3",
-                "traditional": "不喜歡",
-                "simplified": "不喜欢",
-                "pinyin": "bù xǐhuān",
-                "meaning": "do not like"
+                "id": "b1l04-g2-c2-word-6-alt2",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
               },
               {
-                "id": "b1l04-g2-c3-word-4",
-                "traditional": "咖啡",
-                "pinyin": "kāfēi",
-                "meaning": "coffee",
+                "id": "b1l04-g2-c2-word-7-alt2",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book",
                 "suffix": "。"
               }
             ]
@@ -3734,10 +3716,9 @@
         }
       }
     ],
-    "exerciseTitle": "Build the echo",
+    "exerciseTitle": "Complete the following sentences with 也.",
     "exercisePreview": "Complete each second situation with 也.",
     "exerciseInstruction": "Say the new person or thing when needed, then put 也 before the repeated result.",
-    "exerciseNote": "The source prompts are open. These app models keep the required 也 structure and beginner vocabulary.",
     "exerciseResponseMode": "text",
     "questions": [
       {
@@ -3885,15 +3866,15 @@
         "explanation": "Both parts are about the same subject. Repeat the verb or description after 也.",
         "patternColumns": [
           "Subject",
-          "Verb",
+          "Adjective",
           "也",
-          "Verb"
+          "Adjective"
         ],
         "patternColumnDetails": [
           "S",
-          "(A)Vs / V(O)",
+          "(A)Vs",
           "also",
-          "(A)Vs / V(O)"
+          "(A)Vs"
         ],
         "patternRows": [
           {
@@ -3939,7 +3920,30 @@
               ]
             ],
             "english": "She is very beautiful, and is also very cute."
-          },
+          }
+        ],
+        "exampleIds": [
+          "g2-example-1"
+        ]
+      },
+      {
+        "id": "b1l04-g02-sec-1-verbs",
+        "sectionNumber": 1,
+        "title": "When the subjects are the same",
+        "explanation": "Both parts are about the same subject. Repeat the verb or description after 也.",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "也",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "V(O)",
+          "also",
+          "V(O)"
+        ],
+        "patternRows": [
           {
             "id": "g2-sec1-row-2",
             "subject": [],
@@ -3983,12 +3987,10 @@
                 }
               ]
             ],
-            "english": "I bought a book, and (I bought) a pen too."
+            "english": "I bought a book, and(I bought) a pen too."
           }
         ],
-        "exampleIds": [
-          "g2-example-1"
-        ]
+        "exampleIds": []
       },
       {
         "id": "b1l04-g02-sec-2",
@@ -3997,17 +3999,17 @@
         "explanation": "Name the new subject first, then 也, then the repeated verb or description.",
         "patternColumns": [
           "Subject",
-          "Verb",
+          "Adjective",
           "Subject",
           "也",
-          "Verb"
+          "Adjective"
         ],
         "patternColumnDetails": [
           "S₁",
-          "(A)Vs / V(O)",
+          "(A)Vs",
           "S₂",
           "also",
-          "(A)Vs / V(O)"
+          "(A)Vs"
         ],
         "patternRows": [
           {
@@ -4062,7 +4064,33 @@
               ]
             ],
             "english": "This pen is very cheap, and that pen is very cheap as well."
-          },
+          }
+        ],
+        "exampleIds": [
+          "g2-example-2",
+          "g2-example-3"
+        ]
+      },
+      {
+        "id": "b1l04-g02-sec-2-verbs",
+        "sectionNumber": 2,
+        "title": "When the subjects are different",
+        "explanation": "Name the new subject first, then 也, then the repeated verb or description.",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "Subject",
+          "也",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S₁",
+          "V(O)",
+          "S₂",
+          "also",
+          "V(O)"
+        ],
+        "patternRows": [
           {
             "id": "g2-sec2-row-2",
             "subject": [],
@@ -4117,10 +4145,7 @@
             "english": "I bought a book, and he also bought one."
           }
         ],
-        "exampleIds": [
-          "g2-example-2",
-          "g2-example-3"
-        ]
+        "exampleIds": []
       }
     ]
   },
@@ -4721,6 +4746,32 @@
             "simplified": "怎么样",
             "pinyin": "zěnmeyàng",
             "meaning": "how is it; what do you think"
+          },
+          {
+            "id": "b1l04g01p95-glx-89",
+            "traditional": "那種鉛筆",
+            "pinyin": "nà zhǒng qiānbǐ",
+            "meaning": "that kind of pencil",
+            "simplified": "那种铅笔"
+          },
+          {
+            "id": "g01-p95-gfx-這兩種",
+            "traditional": "這兩種",
+            "pinyin": "zhè liǎng zhǒng",
+            "meaning": "these two kinds",
+            "simplified": "这两种"
+          },
+          {
+            "id": "g01-gfx-生日",
+            "traditional": "生日",
+            "pinyin": "shēngrì",
+            "meaning": "birthday"
+          },
+          {
+            "id": "g01-gfx-花",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower"
           }
         ],
         "pattern": "Topic, Subject + (Neg) + Verb; plural topic, Subject + 都 + (Neg) + Verb",
@@ -4744,7 +4795,7 @@
               "traditional": "蛋糕，我喜歡。",
               "simplified": "蛋糕，我喜欢。",
               "pinyin": "Dàngāo, wǒ xǐhuān.",
-              "english": "Cake, I like.",
+              "english": "I like cakes.",
               "note": "蛋糕 is in the spotlight. 我喜歡 says what you think about it."
             },
             {
@@ -4753,7 +4804,7 @@
               "traditional": "書、筆，我都有。",
               "simplified": "书、笔，我都有。",
               "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
-              "english": "Books and pens, I have both.",
+              "english": "The book and the pen, I have them both.",
               "note": "Two things come first, so 都 means \"both\"."
             },
             {
@@ -4764,16 +4815,6 @@
               "pinyin": "Chá, wǒ xǐhuān; kāfēi, wǒ bù xǐhuān.",
               "english": "Tea, I like; coffee, I do not.",
               "note": "Putting each drink at the start makes the contrast easy to hear."
-            },
-            {
-              "id": "g1-repair",
-              "label": "Repair the pause",
-              "traditional": "我蛋糕喜歡 → 蛋糕，我喜歡",
-              "simplified": "我蛋糕喜欢 → 蛋糕，我喜欢",
-              "pinyin": "Wǒ dàngāo xǐhuān → dàngāo, wǒ xǐhuān",
-              "english": "Cake, I like.",
-              "note": "If you move a thing to the start, put it before the person and hear a small pause.",
-              "isCorrection": true
             }
           ],
           "takeaway": "Put the thing first, pause, then say what you think or do."
@@ -4783,114 +4824,100 @@
           "title": "Don't mix these up",
           "items": [
             {
-              "id": "g1-confusion-topic-pause",
-              "question": "When the thing goes first, do I need a pause?",
-              "answer": "Yes — say the thing, pause, then the person and their feeling. In writing, that pause is a comma.",
-              "wrongTraditional": "這枝鉛筆我要。",
-              "wrongSimplified": "这枝铅笔我要。",
-              "right": {
-                "traditional": "這枝鉛筆，我要。",
-                "simplified": "这枝铅笔，我要。",
-                "pinyin": "Zhè zhī qiānbǐ, wǒ yào.",
-                "english": "This pencil, I want it.",
-                "words": [
-                  {
-                    "id": "b1l04-g1-c1-word-1",
-                    "traditional": "這枝鉛筆",
-                    "simplified": "这枝铅笔",
-                    "pinyin": "zhè zhī qiānbǐ",
-                    "meaning": "this pencil"
-                  },
-                  {
-                    "id": "b1l04-g1-c1-word-2",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me",
-                    "prefix": "，"
-                  },
-                  {
-                    "id": "b1l04-g1-c1-word-3",
-                    "traditional": "要",
-                    "pinyin": "yào",
-                    "meaning": "want",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
               "id": "g1-confusion-dou-one",
-              "question": "One thing up front — can I use 都?",
-              "answer": "No. 都 means \"all\", so it needs two or more things. With one thing, just say 我喜歡.",
-              "wrongTraditional": "蛋糕，我都喜歡。",
-              "wrongSimplified": "蛋糕，我都喜欢。",
+              "question": "Can 都 replace the verb?",
+              "answer": "Keep the verb after 都: 書、筆，我都有。",
+              "wrongTraditional": "書、筆，我都。",
+              "wrongSimplified": "书、笔，我都。",
               "right": {
-                "traditional": "蛋糕，我喜歡。",
-                "simplified": "蛋糕，我喜欢。",
-                "pinyin": "Dàngāo, wǒ xǐhuān.",
-                "english": "Cake, I like.",
+                "traditional": "書、筆，我都有。",
+                "simplified": "书、笔，我都有。",
+                "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
+                "english": "The book and the pen, I have them both.",
                 "words": [
                   {
-                    "id": "b1l04-g1-c2-word-1",
-                    "traditional": "蛋糕",
-                    "pinyin": "dàngāo",
-                    "meaning": "cake"
+                    "id": "b1l04-g1-c4-word-1",
+                    "traditional": "書",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "simplified": "书",
+                    "suffix": "、"
                   },
                   {
-                    "id": "b1l04-g1-c2-word-2",
+                    "id": "b1l04-g1-c4-word-2",
+                    "traditional": "筆",
+                    "pinyin": "bǐ",
+                    "meaning": "pen",
+                    "simplified": "笔",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b1l04-g1-c4-word-3",
                     "traditional": "我",
                     "pinyin": "wǒ",
-                    "meaning": "I; me",
-                    "prefix": "，"
+                    "meaning": "I; me"
                   },
                   {
-                    "id": "b1l04-g1-c2-word-3",
-                    "traditional": "喜歡",
-                    "simplified": "喜欢",
-                    "pinyin": "xǐhuān",
-                    "meaning": "like",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g1-confusion-dou-not",
-              "question": "I do not like coffee or tea. Where does 不 go?",
-              "answer": "After 都: 都不喜歡. 都 + 不 means you feel this way about none of them.",
-              "wrongTraditional": "茶、咖啡不都喜歡。",
-              "wrongSimplified": "茶、咖啡不都喜欢。",
-              "right": {
-                "traditional": "茶、咖啡都不喜歡。",
-                "simplified": "茶、咖啡都不喜欢。",
-                "pinyin": "Chá, kāfēi, dōu bù xǐhuān.",
-                "english": "Tea and coffee, I do not like either.",
-                "words": [
-                  {
-                    "id": "b1l04-g1-c3-word-1",
-                    "traditional": "茶",
-                    "pinyin": "chá",
-                    "meaning": "tea"
-                  },
-                  {
-                    "id": "b1l04-g1-c3-word-2",
-                    "traditional": "咖啡",
-                    "pinyin": "kāfēi",
-                    "meaning": "coffee",
-                    "prefix": "、"
-                  },
-                  {
-                    "id": "b1l04-g1-c3-word-3",
+                    "id": "b1l04-g1-c4-word-4",
                     "traditional": "都",
                     "pinyin": "dōu",
                     "meaning": "both; all"
                   },
                   {
-                    "id": "b1l04-g1-c3-word-4",
-                    "traditional": "不喜歡",
-                    "simplified": "不喜欢",
-                    "pinyin": "bù xǐhuān",
-                    "meaning": "do not like",
+                    "id": "b1l04-g1-c4-word-5",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g1-confusion-dou-place",
+              "question": "Two things up front — where does 都 go?",
+              "answer": "Put 都 after the subject: 書、筆，我都有。",
+              "wrongTraditional": "書、筆，都我有。",
+              "wrongSimplified": "书、笔，都我有。",
+              "right": {
+                "traditional": "書、筆，我都有。",
+                "simplified": "书、笔，我都有。",
+                "pinyin": "Shū, bǐ, wǒ dōu yǒu.",
+                "english": "The book and the pen, I have them both.",
+                "words": [
+                  {
+                    "id": "b1l04-g1-c4-word-1-alt2",
+                    "traditional": "書",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "simplified": "书",
+                    "suffix": "、"
+                  },
+                  {
+                    "id": "b1l04-g1-c4-word-2-alt2",
+                    "traditional": "筆",
+                    "pinyin": "bǐ",
+                    "meaning": "pen",
+                    "simplified": "笔",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b1l04-g1-c4-word-3-alt2",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "b1l04-g1-c4-word-4-alt2",
+                    "traditional": "都",
+                    "pinyin": "dōu",
+                    "meaning": "both; all"
+                  },
+                  {
+                    "id": "b1l04-g1-c4-word-5-alt2",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have",
                     "suffix": "。"
                   }
                 ]
@@ -5167,10 +5194,9 @@
             "teachingNote": null
           }
         ],
-        "exerciseTitle": "Put the thing in the spotlight",
+        "exerciseTitle": "Write the objects as the topics in the answers.",
         "exercisePreview": "Rewrite each answer with the thing first.",
         "exerciseInstruction": "Choose the thing that goes first, then finish with the person and their opinion.",
-        "exerciseNote": "The printed exercise has no answer key. These model answers keep the thing first, as the exercise asks.",
         "exerciseResponseMode": "text",
         "exerciseCues": [
           {
@@ -5509,7 +5535,7 @@
             "explanation": "When the topic has two or more things, add 都 after the subject: 我都有 means “I have them all.”",
             "patternColumns": [
               "Topic",
-              "Subject + 都"
+              "Subject + Verb"
             ],
             "patternColumnDetails": [
               "plural topic",
@@ -5588,7 +5614,7 @@
           98
         ],
         "audioReference": "04-1-3",
-        "explanation": "State the first situation first. In the next clause, put 也 before the repeated action or description to show that another person or thing matches it.",
+        "explanation": "Put 也 before the verb or adjective. You can add another action or quality for the same subject, or describe a different subject.",
         "focusTerms": [
           "也"
         ],
@@ -6161,6 +6187,27 @@
             "simplified": "怎么样",
             "pinyin": "zěnmeyàng",
             "meaning": "how is it; what do you think"
+          },
+          {
+            "id": "g02-p97-gfx-這枝筆",
+            "traditional": "這枝筆",
+            "pinyin": "zhè zhī bǐ",
+            "meaning": "this pen",
+            "simplified": "这枝笔"
+          },
+          {
+            "id": "g02-p97-gfx-那枝筆",
+            "traditional": "那枝筆",
+            "pinyin": "nà zhī bǐ",
+            "meaning": "that pen",
+            "simplified": "那枝笔"
+          },
+          {
+            "id": "g02-p97-gfx-便宜的",
+            "traditional": "便宜的",
+            "pinyin": "piányi de",
+            "meaning": "inexpensive",
+            "simplified": "便宜的"
           }
         ],
         "pattern": "Subject + Verb, 也 + Verb (same or new subject)",
@@ -6188,7 +6235,7 @@
               "traditional": "她很漂亮，也很可愛。",
               "simplified": "她很漂亮，也很可爱。",
               "pinyin": "Tā hěn piàoliang, yě hěn kě’ài.",
-              "english": "She is beautiful and also cute.",
+              "english": "She is very beautiful, and is also very cute.",
               "note": "The same person stays; 也 adds another matching description."
             },
             {
@@ -6197,7 +6244,7 @@
               "traditional": "我買書，也買筆。",
               "simplified": "我买书，也买笔。",
               "pinyin": "Wǒ mǎi shū, yě mǎi bǐ.",
-              "english": "I buy books and also pens.",
+              "english": "I bought a book, and(I bought) a pen too.",
               "note": "買 is repeated after 也 because the second thing shares the same action."
             },
             {
@@ -6206,18 +6253,8 @@
               "traditional": "我買書，他也買書。",
               "simplified": "我买书，他也买书。",
               "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-              "english": "I buy books; he buys books too.",
+              "english": "I bought a book, and he also bought one.",
               "note": "The new person 他 comes before 也."
-            },
-            {
-              "id": "g2-repair",
-              "label": "Repair placement",
-              "traditional": "也他買書 → 他也買書",
-              "simplified": "也他买书 → 他也买书",
-              "pinyin": "Yě tā mǎi shū → tā yě mǎi shū",
-              "english": "He buys books too.",
-              "note": "Name the matching person or thing before 也.",
-              "isCorrection": true
             }
           ],
           "takeaway": "New person or thing first, 也 second, shared result after it."
@@ -6230,55 +6267,13 @@
               "id": "g2-confusion-ye-person",
               "question": "Does 也 go before the person?",
               "answer": "No. Name the matching person first, then 也, then the repeated action: 他也買書.",
-              "wrongTraditional": "也他買書。",
-              "wrongSimplified": "也他买书。",
-              "right": {
-                "traditional": "他也買書。",
-                "simplified": "他也买书。",
-                "pinyin": "Tā yě mǎi shū.",
-                "english": "He buys books too.",
-                "words": [
-                  {
-                    "id": "b1l04-g2-c1-word-1",
-                    "traditional": "他",
-                    "pinyin": "tā",
-                    "meaning": "he; him"
-                  },
-                  {
-                    "id": "b1l04-g2-c1-word-2",
-                    "traditional": "也",
-                    "pinyin": "yě",
-                    "meaning": "also; too"
-                  },
-                  {
-                    "id": "b1l04-g2-c1-word-3",
-                    "traditional": "買",
-                    "simplified": "买",
-                    "pinyin": "mǎi",
-                    "meaning": "buy"
-                  },
-                  {
-                    "id": "b1l04-g2-c1-word-4",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū",
-                    "meaning": "book",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g2-confusion-ye-repeat",
-              "question": "Another person does the same thing — do I say the action again?",
-              "answer": "Yes. Repeat the action word after 也. You cannot skip it.",
-              "wrongTraditional": "我買書，他也書。",
-              "wrongSimplified": "我买书，他也书。",
+              "wrongTraditional": "我買書，也他買書。",
+              "wrongSimplified": "我买书，也他买书。",
               "right": {
                 "traditional": "我買書，他也買書。",
                 "simplified": "我买书，他也买书。",
                 "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
-                "english": "I buy books; he buys books too.",
+                "english": "I bought a book, and he also bought one.",
                 "words": [
                   {
                     "id": "b1l04-g2-c2-word-1",
@@ -6332,41 +6327,63 @@
               }
             },
             {
-              "id": "g2-confusion-ye-bu",
-              "question": "How do I say \"I do not like it either\"?",
-              "answer": "也 comes before 不: 我也不喜歡. The order is 也 + 不 + action word.",
-              "wrongTraditional": "我不也喜歡咖啡。",
-              "wrongSimplified": "我不也喜欢咖啡。",
+              "id": "g2-confusion-ye-repeat",
+              "question": "Another person does the same thing — do I say the action again?",
+              "answer": "Yes. Repeat the action word after 也. You cannot skip it.",
+              "wrongTraditional": "我買書，他也書。",
+              "wrongSimplified": "我买书，他也书。",
               "right": {
-                "traditional": "我也不喜歡咖啡。",
-                "simplified": "我也不喜欢咖啡。",
-                "pinyin": "Wǒ yě bù xǐhuān kāfēi.",
-                "english": "I do not like coffee either.",
+                "traditional": "我買書，他也買書。",
+                "simplified": "我买书，他也买书。",
+                "pinyin": "Wǒ mǎi shū, tā yě mǎi shū.",
+                "english": "I bought a book, and he also bought one.",
                 "words": [
                   {
-                    "id": "b1l04-g2-c3-word-1",
+                    "id": "b1l04-g2-c2-word-1-alt2",
                     "traditional": "我",
                     "pinyin": "wǒ",
                     "meaning": "I; me"
                   },
                   {
-                    "id": "b1l04-g2-c3-word-2",
+                    "id": "b1l04-g2-c2-word-2-alt2",
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi",
+                    "meaning": "buy"
+                  },
+                  {
+                    "id": "b1l04-g2-c2-word-3-alt2",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book"
+                  },
+                  {
+                    "id": "b1l04-g2-c2-word-4-alt2",
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he; him",
+                    "prefix": "，"
+                  },
+                  {
+                    "id": "b1l04-g2-c2-word-5-alt2",
                     "traditional": "也",
                     "pinyin": "yě",
                     "meaning": "also; too"
                   },
                   {
-                    "id": "b1l04-g2-c3-word-3",
-                    "traditional": "不喜歡",
-                    "simplified": "不喜欢",
-                    "pinyin": "bù xǐhuān",
-                    "meaning": "do not like"
+                    "id": "b1l04-g2-c2-word-6-alt2",
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi",
+                    "meaning": "buy"
                   },
                   {
-                    "id": "b1l04-g2-c3-word-4",
-                    "traditional": "咖啡",
-                    "pinyin": "kāfēi",
-                    "meaning": "coffee",
+                    "id": "b1l04-g2-c2-word-7-alt2",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book",
                     "suffix": "。"
                   }
                 ]
@@ -6638,10 +6655,9 @@
             }
           }
         ],
-        "exerciseTitle": "Build the echo",
+        "exerciseTitle": "Complete the following sentences with 也.",
         "exercisePreview": "Complete each second situation with 也.",
         "exerciseInstruction": "Say the new person or thing when needed, then put 也 before the repeated result.",
-        "exerciseNote": "The source prompts are open. These app models keep the required 也 structure and beginner vocabulary.",
         "exerciseResponseMode": "text",
         "questions": [
           {
@@ -6789,15 +6805,15 @@
             "explanation": "Both parts are about the same subject. Repeat the verb or description after 也.",
             "patternColumns": [
               "Subject",
-              "Verb",
+              "Adjective",
               "也",
-              "Verb"
+              "Adjective"
             ],
             "patternColumnDetails": [
               "S",
-              "(A)Vs / V(O)",
+              "(A)Vs",
               "also",
-              "(A)Vs / V(O)"
+              "(A)Vs"
             ],
             "patternRows": [
               {
@@ -6843,7 +6859,30 @@
                   ]
                 ],
                 "english": "She is very beautiful, and is also very cute."
-              },
+              }
+            ],
+            "exampleIds": [
+              "g2-example-1"
+            ]
+          },
+          {
+            "id": "b1l04-g02-sec-1-verbs",
+            "sectionNumber": 1,
+            "title": "When the subjects are the same",
+            "explanation": "Both parts are about the same subject. Repeat the verb or description after 也.",
+            "patternColumns": [
+              "Subject",
+              "Verb",
+              "也",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "V(O)",
+              "also",
+              "V(O)"
+            ],
+            "patternRows": [
               {
                 "id": "g2-sec1-row-2",
                 "subject": [],
@@ -6887,12 +6926,10 @@
                     }
                   ]
                 ],
-                "english": "I bought a book, and (I bought) a pen too."
+                "english": "I bought a book, and(I bought) a pen too."
               }
             ],
-            "exampleIds": [
-              "g2-example-1"
-            ]
+            "exampleIds": []
           },
           {
             "id": "b1l04-g02-sec-2",
@@ -6901,17 +6938,17 @@
             "explanation": "Name the new subject first, then 也, then the repeated verb or description.",
             "patternColumns": [
               "Subject",
-              "Verb",
+              "Adjective",
               "Subject",
               "也",
-              "Verb"
+              "Adjective"
             ],
             "patternColumnDetails": [
               "S₁",
-              "(A)Vs / V(O)",
+              "(A)Vs",
               "S₂",
               "also",
-              "(A)Vs / V(O)"
+              "(A)Vs"
             ],
             "patternRows": [
               {
@@ -6966,7 +7003,33 @@
                   ]
                 ],
                 "english": "This pen is very cheap, and that pen is very cheap as well."
-              },
+              }
+            ],
+            "exampleIds": [
+              "g2-example-2",
+              "g2-example-3"
+            ]
+          },
+          {
+            "id": "b1l04-g02-sec-2-verbs",
+            "sectionNumber": 2,
+            "title": "When the subjects are different",
+            "explanation": "Name the new subject first, then 也, then the repeated verb or description.",
+            "patternColumns": [
+              "Subject",
+              "Verb",
+              "Subject",
+              "也",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S₁",
+              "V(O)",
+              "S₂",
+              "also",
+              "V(O)"
+            ],
+            "patternRows": [
               {
                 "id": "g2-sec2-row-2",
                 "subject": [],
@@ -7021,10 +7084,7 @@
                 "english": "I bought a book, and he also bought one."
               }
             ],
-            "exampleIds": [
-              "g2-example-2",
-              "g2-example-3"
-            ]
+            "exampleIds": []
           }
         ]
       },
@@ -7048,6 +7108,8 @@
         "focusTerms": [
           "太",
           "了",
+          "好",
+          "大",
           "熱",
           "热",
           "累",
@@ -7623,6 +7685,24 @@
             "simplified": "怎么样",
             "pinyin": "zěnmeyàng",
             "meaning": "how is it; what do you think"
+          },
+          {
+            "id": "b1l04g03p98-glx-89",
+            "traditional": "小",
+            "pinyin": "xiǎo",
+            "meaning": "small"
+          },
+          {
+            "id": "g03-p98-gfx-和",
+            "traditional": "和",
+            "pinyin": "hé",
+            "meaning": "and"
+          },
+          {
+            "id": "g03-p98-gfx-朋友",
+            "traditional": "朋友",
+            "pinyin": "péngyou",
+            "meaning": "friend"
           }
         ],
         "pattern": "太 + Adjective + 了",
@@ -7647,7 +7727,7 @@
               "label": "Delighted",
               "traditional": "太好了！",
               "pinyin": "Tài hǎo le!",
-              "english": "Wonderful!",
+              "english": "Awesome!",
               "note": "With 好, the strong reaction is enthusiastic and positive."
             },
             {
@@ -7655,26 +7735,17 @@
               "label": "Too much",
               "traditional": "太大了！",
               "pinyin": "Tài dà le!",
-              "english": "It is too big!",
+              "english": "It is so big!",
               "note": "With 大, it can mean \"too big\" — more than what fits."
             },
             {
               "id": "g3-taste",
               "label": "Very impressed",
-              "traditional": "太好吃了！",
-              "pinyin": "Tài hǎochī le!",
-              "english": "It is so delicious!",
-              "note": "With 好吃, the speaker reacts with delight."
-            },
-            {
-              "id": "g3-repair",
-              "label": "Close the frame",
-              "traditional": "太熱 → 太熱了",
-              "simplified": "太热 → 太热了",
-              "pinyin": "tài rè → tài rè le",
-              "english": "It is too hot!",
-              "note": "In this pattern, 了 closes the strong reaction.",
-              "isCorrection": true
+              "traditional": "太好吃了，我常常去吃。",
+              "pinyin": "Tài hǎochī le, wǒ chángcháng qù chī.",
+              "english": "It is so delicious; I often go eat them.",
+              "note": "The reaction frame stays complete: 太 opens it, 了 closes it.",
+              "simplified": "太好吃了，我常常去吃。"
             }
           ],
           "takeaway": "Open with 太, name the feeling, close with 了."
@@ -7707,7 +7778,7 @@
                 "suffix": "！"
               }
             ],
-            "english": "Wonderful!"
+            "english": "Awesome!"
           },
           {
             "id": "g3-pattern-2",
@@ -7787,81 +7858,75 @@
               "id": "g3-confusion-tai-place",
               "question": "Where does 太 go?",
               "answer": "Right before the describing word: 太累. The order is 太 + describing word + 了.",
-              "wrongTraditional": "他累太了。",
+              "wrongTraditional": "我今天累太了，現在很想睡覺。",
               "right": {
-                "traditional": "他太累了。",
-                "simplified": "他太累了。",
-                "pinyin": "Tā tài lèi le.",
-                "english": "He is too tired.",
+                "traditional": "我今天太累了，現在很想睡覺。",
+                "simplified": "我今天太累了，现在很想睡觉。",
+                "pinyin": "Wǒ jīntiān tài lèi le, xiànzài hěn xiǎng shuìjiào.",
+                "english": "I am too tired today; I really want to sleep now.",
                 "words": [
                   {
                     "id": "b1l04-g3-c2-word-1",
-                    "traditional": "他",
-                    "pinyin": "tā",
-                    "meaning": "he; him"
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me",
+                    "prefix": "B："
                   },
                   {
                     "id": "b1l04-g3-c2-word-2",
+                    "traditional": "今天",
+                    "pinyin": "jīntiān",
+                    "meaning": "today"
+                  },
+                  {
+                    "id": "b1l04-g3-c2-word-3",
                     "traditional": "太",
                     "pinyin": "tài",
                     "meaning": "too; extremely"
                   },
                   {
-                    "id": "b1l04-g3-c2-word-3",
+                    "id": "b1l04-g3-c2-word-4",
                     "traditional": "累",
                     "pinyin": "lèi",
                     "meaning": "tired"
                   },
                   {
-                    "id": "b1l04-g3-c2-word-4",
+                    "id": "b1l04-g3-c2-word-5",
                     "traditional": "了",
                     "pinyin": "le",
                     "meaning": "marks a new or strong situation",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b1l04-g3-c2-word-6",
+                    "traditional": "現在",
+                    "simplified": "现在",
+                    "pinyin": "xiànzài",
+                    "meaning": "now"
+                  },
+                  {
+                    "id": "b1l04-g3-c2-word-7",
+                    "traditional": "很",
+                    "pinyin": "hěn",
+                    "meaning": "marks a positive description"
+                  },
+                  {
+                    "id": "b1l04-g3-c2-word-8",
+                    "traditional": "想",
+                    "pinyin": "xiǎng",
+                    "meaning": "would like to; want to"
+                  },
+                  {
+                    "id": "b1l04-g3-c2-word-9",
+                    "traditional": "睡覺",
+                    "simplified": "睡觉",
+                    "pinyin": "shuìjiào",
+                    "meaning": "sleep",
                     "suffix": "。"
                   }
                 ]
-              }
-            },
-            {
-              "id": "g3-confusion-big",
-              "question": "The shirt is much too big. Is 太好了 okay?",
-              "answer": "No — 太好 sounds happy. Pick the describing word that fits: 太大了.",
-              "wrongTraditional": "這件衣服太好了。",
-              "wrongSimplified": "这件衣服太好了。",
-              "right": {
-                "traditional": "這件衣服太大了。",
-                "simplified": "这件衣服太大了。",
-                "pinyin": "Zhè jiàn yīfu tài dà le.",
-                "english": "This item of clothing is too big.",
-                "words": [
-                  {
-                    "id": "b1l04-g3-c3-word-1",
-                    "traditional": "這件衣服",
-                    "simplified": "这件衣服",
-                    "pinyin": "zhè jiàn yīfu",
-                    "meaning": "this item of clothing"
-                  },
-                  {
-                    "id": "b1l04-g3-c3-word-2",
-                    "traditional": "太",
-                    "pinyin": "tài",
-                    "meaning": "too; extremely"
-                  },
-                  {
-                    "id": "b1l04-g3-c3-word-3",
-                    "traditional": "大",
-                    "pinyin": "dà",
-                    "meaning": "big"
-                  },
-                  {
-                    "id": "b1l04-g3-c3-word-4",
-                    "traditional": "了",
-                    "pinyin": "le",
-                    "meaning": "marks a new or strong situation",
-                    "suffix": "。"
-                  }
-                ]
-              }
+              },
+              "wrongSimplified": "我今天累太了，现在很想睡觉。"
             }
           ]
         },
@@ -8103,24 +8168,9 @@
             }
           }
         ],
-        "exerciseTitle": "Complete the reaction frame",
+        "exerciseTitle": "Complete the following questions with 太……了.",
         "exercisePreview": "Choose the fitting 太…了 reaction for each source cue.",
         "exerciseInstruction": "Read the situation, then keep 太 before the description and 了 after it.",
-        "exerciseNote": "Questions 1–2 use the printed pictures. Question 3 uses the positive follow-up printed in the source.",
-        "exerciseCues": [
-          {
-            "id": "g3-cue-shirt",
-            "label": "Picture 1",
-            "pinyin": "tài dà le",
-            "detail": "A child appears uncomfortable in an oversized shirt."
-          },
-          {
-            "id": "g3-cue-tired",
-            "label": "Picture 2",
-            "pinyin": "tài lèi le",
-            "detail": "A tired student works beside a clock."
-          }
-        ],
         "questions": [
           {
             "id": "g3-question-1",

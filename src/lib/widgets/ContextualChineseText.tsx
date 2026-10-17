@@ -16,6 +16,8 @@ interface DisplayToken {
   interactive: boolean;
   focused: boolean;
   role?: GrammarSemanticRole;
+  /** Closing punctuation glued to this word so it never wraps alone. */
+  suffix?: string;
 }
 
 export interface ContextualChineseTextProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
@@ -27,6 +29,7 @@ export interface ContextualChineseTextProps extends Omit<HTMLAttributes<HTMLSpan
 }
 
 const CHINESE_CHARACTER = /[\u3400-\u9FFF]/;
+const LEADING_CLOSING = /^[。？！，」]+/;
 
 function displayedWord(
   token: GrammarWordToken,
@@ -107,7 +110,15 @@ function tokenizeTeachingText(
       && !contextualWords.some((token) => text.startsWith(token.display, end))
       && !orderedFocusTerms.some((term) => text.startsWith(term, end))
     ) end += 1;
-    const copyText = text.slice(index, end);
+    let copyText = text.slice(index, end);
+    const closing = copyText.match(LEADING_CLOSING)?.[0];
+    const previous = displayTokens[displayTokens.length - 1];
+    if (closing && previous) {
+      previous.suffix = closing;
+      copyText = copyText.slice(closing.length);
+      index += closing.length;
+      if (!copyText) continue;
+    }
     const isFocused = focusTerms.some((term) => copyText.includes(term));
     displayTokens.push({
       key: `${index}-copy`,
@@ -140,7 +151,7 @@ export function ContextualChineseText({
         const colorClass = token.focused ? getSemanticRoleClasses(role) : undefined;
         const softBgClass = token.focused ? getSemanticRoleSoftBgClasses(role) : 'hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft';
 
-        return token.interactive ? (
+        const word = token.interactive ? (
           <span key={token.key} className="group relative inline-block">
             <button
               type="button"
@@ -179,6 +190,7 @@ export function ContextualChineseText({
             {token.text}
           </span>
         );
+        return token.suffix ? <span key={token.key} className="whitespace-nowrap [&>*]:whitespace-normal">{word}{token.suffix}</span> : word;
       })}
     </span>
   );

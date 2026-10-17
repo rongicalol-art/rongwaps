@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile, readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import type { InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
+import type { GrammarPractice, InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
 
 const ROOT = process.cwd();
 const READINGS_DIR = resolve(ROOT, 'public/data/readings');
@@ -109,7 +109,22 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
     }
   }
   parts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
+  await attachGrammarPractice(parts);
   return parts;
+}
+
+/** Book exercises live in content/grammar-practice/*.json keyed by grammar page id; they ride on their page in the grammar pack. */
+async function attachGrammarPractice(parts: InteractiveGrammarPart[]) {
+  const practiceDir = resolve(ROOT, 'content/grammar-practice');
+  const pages = new Map(parts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
+  for (const file of (await readdir(practiceDir)).filter((name) => name.endsWith('.json'))) {
+    const content = JSON.parse(await readFile(resolve(practiceDir, file), 'utf8')) as Record<string, GrammarPractice>;
+    for (const [pageId, practice] of Object.entries(content)) {
+      const page = pages.get(pageId);
+      if (!page) throw new Error(`${file}: no grammar page "${pageId}" in this book.`);
+      page.practice = practice;
+    }
+  }
 }
 
 async function loadSourceReadings(bookId: number): Promise<ReadingRecord[]> {

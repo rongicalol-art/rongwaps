@@ -2,7 +2,7 @@
 
 One entry point: `npm run hooks -- <subcommand> [args]` (dispatcher: `cli.ts`; `npm run hooks -- help` lists all).
 Shortcuts: `hooks:prepare` · `hooks:run` · `hooks:gates` · `hooks:check` · `hooks:review` · `hooks:export`.
-Provider config: `.env.memory-hooks.local`. Artifacts go to `output/memory-hooks/` (gitignored); only packs under `public/data/` are committed.
+Provider config: `.env`. Artifacts go to `output/memory-hooks/` (gitignored); only packs under `public/data/` are committed.
 
 ## Doing a new book (N = 2, 3, 4)
 

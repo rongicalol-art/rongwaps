@@ -4,7 +4,7 @@ Interactive grammar lessons use a linear part flow that hands off to the part's 
 
 `Grammar 1 -> Grammar 2 -> … -> Reading -> next Part's Grammar 1 -> …`
 
-Source Reading content remains stored on the part for a later feature, but it is not rendered or required for completion unless that part already has a dedicated Reading experience. Each grammar step ends with one primary `Continue` action; a quiet `Back` appears after the first grammar. Continue marks the current grammar complete and advances to the next point; the final Continue marks the Part complete and opens that part's reading. There is no separate completion screen. Exercise data remains authored for a later beta phase but is not mounted in the learner-facing flow. Reopening a part resumes at the first incomplete grammar.
+Source Reading content remains stored on the part for a later feature, but it is not rendered or required for completion unless that part already has a dedicated Reading experience. Each grammar step ends with one primary `Continue` action; a quiet `Back` appears after the first grammar. Continue marks the current grammar complete and advances to the next point; the final Continue marks the Part complete and opens that part's reading. There is no separate completion screen. A page with a book exercise (`practice`, see [Book exercises](#book-exercises-practice)) shows `Practice` instead: the exercise opens in the same window and the page completes when it is done. The older per-page `questions` data stays authored but is not mounted. Reopening a part resumes at the first incomplete grammar.
 
 Keyboard: `←`/`→` move between the part's grammar points (the last page's `→` opens the part's reading), `Shift + ←/→` (or `[`/`]`) open the previous/next grammar part in book order without leaving the window, and `Esc` closes. In the reader, the gestures are path steps: the next stroke (`→` or swipe) opens the next part's grammar while a next part exists, and the previous stroke returns into this reading's part grammar at its last page; readings that belong to no part (essays) have no step either way. The screen and interaction logic live under `src/screens/grammar-lesson/`. Book-specific content lives in `src/data/grammar/` and is registered in `src/data/interactiveGrammarPages.ts`. A part conforms to `InteractiveGrammarPart`; each grammar point inside it conforms to `InteractiveGrammarPage`.
 
@@ -35,6 +35,35 @@ Each grammar page inside a part provides:
 Every Chinese teaching term, example segment, prompt, blank answer, and answer tile must expose a dictionary action. Lesson-authored contextual pinyin and meaning take priority over a generic dictionary gloss.
 
 Grammar progress is stored per grammar page. Part progress is stored separately and currently becomes complete after every grammar page has been continued through.
+
+## Book exercises (Practice)
+
+The book's own exercise for a grammar page, answered by tapping (never typing or self-checking). Authored per lesson in `content/grammar-practice/lessonX.json`, keyed by grammar page id; `npm run content:export` merges each one onto its page in the grammar pack. Engine: `src/features/grammar-practice/`; answer checks: `src/utils/grammar/grammarPracticeCheck.ts`; types: `src/types/grammarPractice.ts`.
+
+Flow: page → `Practice` → items one at a time → the next page (or the part's reading). The screen is one centred column (the flashcard quiz width): the book's instruction as title, the picture if there is one, then the sentence or chat. The word bank lives in the bottom dock: tap a word and it moves onto its blank, which is an underline in the sentence; a placed word reads as normal sentence text (tap it to send it back). Dock tiles show characters only (pinyin is in the result). With no words left to place, the dock is just its one full-width button. That button is Skip until the answer is complete, then Check; after Check the same dock turns green or red with the sentence, pinyin and English, or the fix, and Continue / Try again (wrong words go back, right ones stay). Nothing is recorded until the exercise is done. `←` returns to the page; `→` never skips an exercise. Motion is limited to words moving between the dock and their blank, and the route line drawing in on a right answer.
+
+Kinds (each lesson mixes them to fit its book page):
+
+| Kind | Use for | Book example |
+| --- | --- | --- |
+| `slot-build` | Fill blanks from the dock. Optional `scene` (`route` map with flags or place icons, `change` before → now, or `countdown`: a calendar day or clock time now → next, with the gap shown). When several fills are right, each one needs its sentence in `result` or `alternatives`, so the feedback shows what the learner built. Lines with a `speaker` render as a chat; the learner's line has `me: true` (blue bubble); `glossary` shows under the last line before the reply, where the book prints it. `gaps: true` = place the word: one tile, every slot is a gap between words, only one slot lists it, and each other gap needs a `slot` repair | L1 p.40 #1 (嗎); L7 p.163 describe the pictures; p.166 weather, prices, teacher dialogue |
+| `slot-reels` | Retired: the validator rejects it (it allows several answers); author `slot-build` instead | — |
+| `chat-build` | "Rearrange the sentences" as a chat turn: the friend writes, your reply shows one underline per word and fills in tap order; exactly one accepted order | L7 p.164 |
+
+Every item has exactly ONE right answer (the validator counts `slot-build` solutions and `chat-build` accepted orders) and a `source`: the book item (`"p.81 #3"`) or `"own"`.
+
+More `scene` types: `moment` (`{ moment }`: one calendar day or clock time with its caption), `month` (`{ year, month, highlight: [days] }`: the book's month calendar, weekday of day 1 computed), `picture` (`{ page, box: [left, top, width, height], alt }`: a crop of the printed Book 1 page, box as 0–1 fractions of the page).
+
+Pattern rows: `exampleId` on a `patternRows` entry shows that page example directly under the row (same item and audio button as the examples list), and the list then skips it.
+
+Content rules:
+
+- Follow the printed exercise: its instruction (`title`), its pictures (`scene`), its sentences and chunks. Split a long line into two messages at its comma rather than let it break mid-word.
+- Use only words taught up to the lesson: Book 1 vocabulary through that lesson plus words in earlier grammar pages. A word the book prints beside the exercise (e.g. 懂 on p.166) goes in `allowWords`. `tests/content/grammarPracticeVocabulary.test.ts` fails on anything else.
+- No ambiguous keys: a "wrong" tile must really be wrong in context (add context such as "You're at home", or drop the option).
+- Every repair note is one plain-English sentence that names the fix.
+
+Workflow: edit the lesson's practice JSON → `npm run content:export` → `npm run content:validate` → `npm test` (answer keys, repairs, vocabulary) → try it in DEV: Ctrl+Shift+0 → UI Previews → Grammar practice (no progress is recorded). A new kind = its item type, its check, a component in `exercises/`, a line in `exercises/index.ts`.
 
 ## Supported exercise templates
 

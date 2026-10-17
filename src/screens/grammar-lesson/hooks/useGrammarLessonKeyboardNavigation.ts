@@ -4,7 +4,8 @@ import type { InteractiveGrammarPart } from '../../../types/models';
 interface GrammarLessonKeyboardNavigationOptions {
   isBookOpen: boolean;
   isConfusionOpen: boolean;
-  previousPage: InteractiveGrammarPart['grammarPages'][number] | null;
+  /** A previous page, or an open exercise to step back out of. */
+  canGoBack: boolean;
   continueAfterStudy: () => void;
   goBackToPreviousGrammar: () => void;
   navigateToPart: (direction: 'next' | 'previous') => void;
@@ -17,7 +18,7 @@ interface GrammarLessonKeyboardNavigationOptions {
 export function useGrammarLessonKeyboardNavigation({
   isBookOpen,
   isConfusionOpen,
-  previousPage,
+  canGoBack,
   continueAfterStudy,
   goBackToPreviousGrammar,
   navigateToPart,
@@ -55,7 +56,7 @@ export function useGrammarLessonKeyboardNavigation({
         event.preventDefault();
         if (event.repeat && currentGrammarIndex >= part.grammarPages.length - 1) return;
         continueAfterStudy();
-      } else if (event.key === 'ArrowLeft' && previousPage) {
+      } else if (event.key === 'ArrowLeft' && canGoBack) {
         event.preventDefault();
         goBackToPreviousGrammar();
       }
@@ -64,5 +65,5 @@ export function useGrammarLessonKeyboardNavigation({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isBookOpen, isConfusionOpen, previousPage, continueAfterStudy, goBackToPreviousGrammar, navigateToPart, currentGrammarIndex, part]);
+  }, [isBookOpen, isConfusionOpen, canGoBack, continueAfterStudy, goBackToPreviousGrammar, navigateToPart, currentGrammarIndex, part]);
 }

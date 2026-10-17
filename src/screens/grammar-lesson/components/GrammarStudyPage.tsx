@@ -25,6 +25,10 @@ export function GrammarStudyPage({
 }: GrammarStudyPageProps) {
   const teachingTokens = getGrammarTeachingTokens(page);
   const hasSubsections = Boolean(page.subsections && page.subsections.length > 0);
+  // Examples the book prints under a table row show there, not again in the list.
+  const rowExampleIds = new Set([...page.patternRows, ...(page.subsections ?? []).flatMap((s) => s.patternRows ?? [])]
+    .flatMap((row) => row.exampleId ?? []));
+  const listed = (examples: InteractiveGrammarPage['examples']) => examples.filter((e) => !rowExampleIds.has(e.id));
 
   return (
     <article className="w-full max-w-3xl sm:max-w-4xl mx-auto">
@@ -56,11 +60,11 @@ export function GrammarStudyPage({
       {hasSubsections && page.subsections ? (
         <div className="mt-8 space-y-10 sm:mt-10 sm:space-y-12">
           {page.subsections.map((section, idx) => {
-            const sectionExamples = section.examples ?? (
+            const sectionExamples = listed(section.examples ?? (
               section.exampleIds
                 ? page.examples.filter((e) => section.exampleIds?.includes(e.id))
                 : []
-            );
+            ));
 
             const sectionPatternRows = section.patternRows ?? (page.patternRows.length > 0 ? page.patternRows : []);
 
@@ -106,6 +110,7 @@ export function GrammarStudyPage({
                     patternColumnDetails={section.patternColumnDetails}
                     patternRows={sectionPatternRows}
                     patternAccentColumn={section.patternAccentColumn}
+                    contextTokens={teachingTokens}
                     characterPreference={characterPreference}
                     showPinyin={showPinyin}
                     showTranslation={showTranslation}
@@ -134,6 +139,7 @@ export function GrammarStudyPage({
           <GrammarPatternSection
             page={page}
             patternAccentColumn={page.patternAccentColumn}
+            contextTokens={teachingTokens}
             characterPreference={characterPreference}
             showPinyin={showPinyin}
             showTranslation={showTranslation}
@@ -141,6 +147,7 @@ export function GrammarStudyPage({
           />
           <GrammarExamplesSection
             page={page}
+            examples={listed(page.examples)}
             characterPreference={characterPreference}
             showPinyin={showPinyin}
             showTranslation={showTranslation}

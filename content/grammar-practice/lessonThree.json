@@ -1,0 +1,1667 @@
+{
+  "B1L03-G01-P73": {
+    "bookPage": 74,
+    "title": "Complete the following dialogues.",
+    "items": [
+      {
+        "id": "l3-g1-book-1",
+        "source": "p.74 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她有幾朵花？",
+                "simplified": "她有几朵花？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她有",
+                "simplified": "她有"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "兩"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "朵花。",
+                "simplified": "朵花。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "三",
+            "simplified": "三",
+            "pinyin": "sān"
+          },
+          {
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng"
+          },
+          {
+            "traditional": "一",
+            "simplified": "一",
+            "pinyin": "yī"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "三"
+            ],
+            "note": "There is one flower in each hand, so the total is two, not three."
+          },
+          {
+            "placed": [
+              "一"
+            ],
+            "note": "Count both hands: she has two flowers, not one."
+          }
+        ],
+        "fallbackRepair": "There is one flower in each hand, so the total is two, not three.",
+        "result": {
+          "traditional": "她有兩朵花。",
+          "simplified": "她有两朵花。",
+          "pinyin": "Tā yǒu liǎng duǒ huā.",
+          "english": "She has two flowers."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 74,
+          "box": [
+            0.645,
+            0.41,
+            0.135,
+            0.113
+          ],
+          "alt": "A woman holds one flower in each hand."
+        }
+      },
+      {
+        "id": "l3-g1-book-2",
+        "source": "p.74 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要買幾本書？",
+                "simplified": "你要买几本书？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我要買",
+                "simplified": "我要买"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "兩"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "本書。",
+                "simplified": "本书。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "五",
+            "simplified": "五",
+            "pinyin": "wǔ"
+          },
+          {
+            "traditional": "三",
+            "simplified": "三",
+            "pinyin": "sān"
+          },
+          {
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "五"
+            ],
+            "note": "The picture shows two books to buy, not five."
+          },
+          {
+            "placed": [
+              "三"
+            ],
+            "note": "Count the two separate books in the picture, not three."
+          }
+        ],
+        "fallbackRepair": "The picture shows two books to buy, not five.",
+        "result": {
+          "traditional": "我要買兩本書。",
+          "simplified": "我要买两本书。",
+          "pinyin": "Wǒ yào mǎi liǎng běn shū.",
+          "english": "I want to buy two books."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 73,
+          "box": [
+            0.647,
+            0.627,
+            0.167,
+            0.054
+          ],
+          "alt": "Two books side by side."
+        },
+        "prompt": "You want to buy the books in the picture."
+      },
+      {
+        "id": "l3-g1-book-3",
+        "source": "p.74 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你有",
+                "simplified": "你有"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "幾本"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "英文書？",
+                "simplified": "英文书？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我有四本英文書。",
+                "simplified": "我有四本英文书。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "四本",
+            "simplified": "四本",
+            "pinyin": "sì běn"
+          },
+          {
+            "traditional": "幾本",
+            "simplified": "几本",
+            "pinyin": "jǐ běn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "四本"
+            ],
+            "note": "四本 guesses four books; use 幾本 to ask for the number without guessing."
+          }
+        ],
+        "fallbackRepair": "四本 guesses four books; use 幾本 to ask for the number without guessing.",
+        "result": {
+          "traditional": "你有幾本英文書？",
+          "simplified": "你有几本英文书？",
+          "pinyin": "Nǐ yǒu jǐ běn Yīngwén shū?",
+          "english": "How many books in English do you have?"
+        },
+        "prompt": "Ask how many books your friend has, without guessing a number."
+      },
+      {
+        "id": "l3-g1-own-1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我有五",
+                "simplified": "我有五"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "本"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "中文書。",
+                "simplified": "中文书。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "朵",
+            "simplified": "朵",
+            "pinyin": "duǒ"
+          },
+          {
+            "traditional": "本",
+            "simplified": "本",
+            "pinyin": "běn"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "朵"
+            ],
+            "note": "朵 counts flowers; use 本 for these books."
+          },
+          {
+            "placed": [
+              "個"
+            ],
+            "note": "Use the book measure word 本 rather than the general measure word 個."
+          }
+        ],
+        "fallbackRepair": "朵 counts flowers; use 本 for these books.",
+        "result": {
+          "traditional": "我有五本中文書。",
+          "simplified": "我有五本中文书。",
+          "pinyin": "Wǒ yǒu wǔ běn Zhōngwén shū.",
+          "english": "I have five books in Chinese."
+        }
+      }
+    ],
+    "allowWords": [
+      "英文",
+      "四"
+    ]
+  },
+  "B1L03-G02-P74": {
+    "bookPage": 75,
+    "title": "Rearrange the following sentences.",
+    "items": [
+      {
+        "id": "l3-g2-book-1",
+        "source": "p.75 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "giver",
+                "answers": [
+                  "他"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "送",
+                "simplified": "送"
+              },
+              {
+                "type": "slot",
+                "id": "receiver",
+                "answers": [
+                  "爸爸"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一本書。",
+                "simplified": "一本书。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "爸爸",
+            "simplified": "爸爸",
+            "pinyin": "bàba"
+          },
+          {
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma"
+          },
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "媽媽"
+            ],
+            "note": "The adult receiving the book is the father, so choose 爸爸 rather than 媽媽."
+          },
+          {
+            "slot": {
+              "id": "giver",
+              "tile": "爸爸"
+            },
+            "note": "The child gives the book, so put 他 before 送 and 爸爸 after it."
+          },
+          {
+            "slot": {
+              "id": "receiver",
+              "tile": "他"
+            },
+            "note": "The father receives the book, so put 爸爸 after 送."
+          }
+        ],
+        "fallbackRepair": "Keep the people and things in the order that matches the picture.",
+        "result": {
+          "traditional": "他送爸爸一本書。",
+          "simplified": "他送爸爸一本书。",
+          "pinyin": "Tā sòng bàba yì běn shū.",
+          "english": "He gives his father a book."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 75,
+          "box": [
+            0.172,
+            0.515,
+            0.168,
+            0.133
+          ],
+          "alt": "A boy hands a book to his father."
+        },
+        "prompt": "Describe the boy giving his father a book."
+      },
+      {
+        "id": "l3-g2-book-2",
+        "source": "p.75 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我想",
+                "simplified": "我想"
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "送"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "receiver",
+                "answers": [
+                  "她"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "amount",
+                "answers": [
+                  "一個"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "大蛋糕。",
+                "simplified": "大蛋糕。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一個",
+            "simplified": "一个",
+            "pinyin": "yí ge"
+          },
+          {
+            "traditional": "她",
+            "simplified": "她",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "一本",
+            "simplified": "一本",
+            "pinyin": "yì běn"
+          },
+          {
+            "traditional": "送",
+            "simplified": "送",
+            "pinyin": "sòng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一本"
+            ],
+            "note": "本 counts books; the cake takes 個."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "她"
+            },
+            "note": "Put 送 after 想, then name the girl who receives the cake."
+          },
+          {
+            "slot": {
+              "id": "receiver",
+              "tile": "一個"
+            },
+            "note": "Name the receiver 她 immediately after 送, before the gift."
+          },
+          {
+            "slot": {
+              "id": "amount",
+              "tile": "她"
+            },
+            "note": "The girl receives the gift; put 她 after 送 and 一個 before 大蛋糕."
+          },
+          {
+            "before": [
+              "她",
+              "送"
+            ],
+            "note": "Use 想送她 to put wanting before giving and the receiver after 送."
+          }
+        ],
+        "fallbackRepair": "Keep the people and things in the order that matches the picture.",
+        "result": {
+          "traditional": "我想送她一個大蛋糕。",
+          "simplified": "我想送她一个大蛋糕。",
+          "pinyin": "Wǒ xiǎng sòng tā yí ge dà dàngāo.",
+          "english": "I want to give her a big cake."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 75,
+          "box": [
+            0.426,
+            0.508,
+            0.168,
+            0.137
+          ],
+          "alt": "A boy imagines giving a girl a large cake."
+        },
+        "prompt": "Speak as the boy thinking about the gift."
+      },
+      {
+        "id": "l3-g2-book-3",
+        "source": "p.75 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我",
+                "simplified": "我"
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "送"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "receiver",
+                "answers": [
+                  "英國同學"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "amount",
+                "answers": [
+                  "一本"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "中文書。",
+                "simplified": "中文书。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一本",
+            "simplified": "一本",
+            "pinyin": "yì běn"
+          },
+          {
+            "traditional": "英國同學",
+            "simplified": "英国同学",
+            "pinyin": "Yīngguó tóngxué"
+          },
+          {
+            "traditional": "送",
+            "simplified": "送",
+            "pinyin": "sòng"
+          },
+          {
+            "traditional": "一個",
+            "simplified": "一个",
+            "pinyin": "yí ge"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一個"
+            ],
+            "note": "The gift is a book, so count it with 一本 rather than 一個."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "英國同學"
+            },
+            "note": "The woman is speaking as 我, so put 送 next and her classmate after it."
+          },
+          {
+            "slot": {
+              "id": "receiver",
+              "tile": "一本"
+            },
+            "note": "The receiver 英國同學 comes before the gift 一本中文書."
+          },
+          {
+            "slot": {
+              "id": "amount",
+              "tile": "英國同學"
+            },
+            "note": "Place 英國同學 immediately after 送, before 一本中文書."
+          },
+          {
+            "before": [
+              "英國同學",
+              "送"
+            ],
+            "note": "The classmate receives the book, so his name belongs after 送."
+          }
+        ],
+        "fallbackRepair": "Keep the people and things in the order that matches the picture.",
+        "result": {
+          "traditional": "我送英國同學一本中文書。",
+          "simplified": "我送英国同学一本中文书。",
+          "pinyin": "Wǒ sòng Yīngguó tóngxué yì běn Zhōngwén shū.",
+          "english": "I give my British classmate a book in Chinese."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 75,
+          "box": [
+            0.691,
+            0.513,
+            0.176,
+            0.137
+          ],
+          "alt": "A woman hands a book-shaped gift to a man."
+        },
+        "prompt": "You are the woman; the man receiving your book is your British classmate."
+      }
+    ],
+    "allowWords": [
+      "爸爸",
+      "英國",
+      "同學"
+    ]
+  },
+  "B1L03-G03-P81": {
+    "bookPage": 82,
+    "title": "Answer the following questions.",
+    "items": [
+      {
+        "id": "l3-g3-book-1",
+        "source": "p.82 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這三件衣服漂亮嗎？",
+                "simplified": "这三件衣服漂亮吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "",
+                "simplified": ""
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "那"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "三件衣服很漂亮。",
+                "simplified": "三件衣服很漂亮。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "這",
+            "simplified": "这",
+            "pinyin": "zhè"
+          },
+          {
+            "traditional": "那",
+            "simplified": "那",
+            "pinyin": "nà"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "這"
+            ],
+            "note": "The shirts are beside your friend and far from you, so reply with 那."
+          }
+        ],
+        "fallbackRepair": "The shirts are beside your friend and far from you, so reply with 那.",
+        "result": {
+          "traditional": "那三件衣服很漂亮。",
+          "simplified": "那三件衣服很漂亮。",
+          "pinyin": "Nà sān jiàn yīfu hěn piàoliang.",
+          "english": "Those three pieces of clothing are beautiful."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 82,
+          "box": [
+            0.202,
+            0.246,
+            0.162,
+            0.064
+          ],
+          "alt": "Three shirts hang beside one another."
+        },
+        "prompt": "Your friend is beside the shirts; you are far away."
+      },
+      {
+        "id": "l3-g3-book-2",
+        "source": "p.82 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那四朵花怎麼樣？",
+                "simplified": "那四朵花怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "",
+                "simplified": ""
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "這"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "四朵花很好看。",
+                "simplified": "四朵花很好看。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "那",
+            "simplified": "那",
+            "pinyin": "nà"
+          },
+          {
+            "traditional": "這",
+            "simplified": "这",
+            "pinyin": "zhè"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "那"
+            ],
+            "note": "The flowers are beside you, so reply with 這 even though your distant friend says 那."
+          }
+        ],
+        "fallbackRepair": "The flowers are beside you, so reply with 這 even though your distant friend says 那.",
+        "result": {
+          "traditional": "這四朵花很好看。",
+          "simplified": "这四朵花很好看。",
+          "pinyin": "Zhè sì duǒ huā hěn hǎokàn.",
+          "english": "These four flowers look good."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 82,
+          "box": [
+            0.397,
+            0.248,
+            0.21,
+            0.057
+          ],
+          "alt": "Four flowers in a row."
+        },
+        "prompt": "You are beside the flowers; your friend is far away."
+      },
+      {
+        "id": "l3-g3-book-3",
+        "source": "p.82 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你想買哪種東西？",
+                "simplified": "你想买哪种东西？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我想買",
+                "simplified": "我想买"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "這種"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "筆。",
+                "simplified": "笔。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "那種",
+            "simplified": "那种",
+            "pinyin": "nà zhǒng"
+          },
+          {
+            "traditional": "這種",
+            "simplified": "这种",
+            "pinyin": "zhè zhǒng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "那種"
+            ],
+            "note": "You are pointing to the pen beside you, so use 這種 for this kind."
+          }
+        ],
+        "fallbackRepair": "You are pointing to the pen beside you, so use 這種 for this kind.",
+        "result": {
+          "traditional": "我想買這種筆。",
+          "simplified": "我想买这种笔。",
+          "pinyin": "Wǒ xiǎng mǎi zhè zhǒng bǐ.",
+          "english": "I want to buy this kind of pen."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 82,
+          "box": [
+            0.659,
+            0.22,
+            0.202,
+            0.095
+          ],
+          "alt": "A shirt, a pen, a book, eggs, flowers, and a cake."
+        },
+        "prompt": "You point to the pen beside you and choose this kind."
+      },
+      {
+        "id": "l3-g3-own-1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡喝",
+                "simplified": "你喜欢喝"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "哪"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "種茶？",
+                "simplified": "种茶？"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "那",
+            "simplified": "那",
+            "pinyin": "nà"
+          },
+          {
+            "traditional": "哪",
+            "simplified": "哪",
+            "pinyin": "nǎ"
+          },
+          {
+            "traditional": "這",
+            "simplified": "这",
+            "pinyin": "zhè"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "那"
+            ],
+            "note": "那 names a distant kind; use 哪 to ask your friend to choose a kind."
+          },
+          {
+            "placed": [
+              "這"
+            ],
+            "note": "這 names a nearby kind; use 哪 when the kind is still unknown."
+          }
+        ],
+        "fallbackRepair": "那 names a distant kind; use 哪 to ask your friend to choose a kind.",
+        "result": {
+          "traditional": "你喜歡喝哪種茶？",
+          "simplified": "你喜欢喝哪种茶？",
+          "pinyin": "Nǐ xǐhuān hē nǎ zhǒng chá?",
+          "english": "Which kind of tea do you like drinking?"
+        },
+        "prompt": "Ask your friend to choose a kind of tea, without suggesting one."
+      }
+    ],
+    "allowWords": [
+      "件",
+      "衣服",
+      "四"
+    ]
+  },
+  "B1L03-G04-P82": {
+    "bookPage": 84,
+    "title": "Answer the following questions.",
+    "items": [
+      {
+        "id": "l3-g4-book-1",
+        "source": "p.84 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡哪個禮物？",
+                "simplified": "你喜欢哪个礼物？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我喜歡",
+                "simplified": "我喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "大的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "小的",
+            "simplified": "小的",
+            "pinyin": "xiǎo de"
+          },
+          {
+            "traditional": "大的",
+            "simplified": "大的",
+            "pinyin": "dà de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "小的"
+            ],
+            "note": "The gift on the left is the big one, so choose 大的."
+          }
+        ],
+        "fallbackRepair": "The gift on the left is the big one, so choose 大的.",
+        "result": {
+          "traditional": "我喜歡大的。",
+          "simplified": "我喜欢大的。",
+          "pinyin": "Wǒ xǐhuān dà de.",
+          "english": "I like the big one."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 84,
+          "box": [
+            0.173,
+            0.259,
+            0.166,
+            0.065
+          ],
+          "alt": "A large wrapped gift on the left and a smaller one on the right."
+        },
+        "prompt": "Choose the gift on the left."
+      },
+      {
+        "id": "l3-g4-book-2",
+        "source": "p.84 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要買哪本書？",
+                "simplified": "你要买哪本书？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我要買",
+                "simplified": "我要买"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "舊的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "舊的",
+            "simplified": "旧的",
+            "pinyin": "jiù de"
+          },
+          {
+            "traditional": "新的",
+            "simplified": "新的",
+            "pinyin": "xīn de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "新的"
+            ],
+            "note": "The book on the right is the old one; 新的 describes the sparkling book on the left."
+          }
+        ],
+        "fallbackRepair": "The book on the right is the old one; 新的 describes the sparkling book on the left.",
+        "result": {
+          "traditional": "我要買舊的。",
+          "simplified": "我要买旧的。",
+          "pinyin": "Wǒ yào mǎi jiù de.",
+          "english": "I want to buy the old one."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 84,
+          "box": [
+            0.411,
+            0.262,
+            0.171,
+            0.061
+          ],
+          "alt": "A sparkling new book on the left and an old book on the right."
+        },
+        "prompt": "Choose the book on the right.",
+        "glossary": [
+          {
+            "traditional": "舊",
+            "simplified": "旧",
+            "pinyin": "jiù",
+            "english": "old"
+          }
+        ]
+      },
+      {
+        "id": "l3-g4-book-3",
+        "source": "p.84 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡哪個蛋糕？（好看）",
+                "simplified": "你喜欢哪个蛋糕？（好看）"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我喜歡",
+                "simplified": "我喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "好看的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很好看",
+            "simplified": "很好看",
+            "pinyin": "hěn hǎokàn"
+          },
+          {
+            "traditional": "好看的",
+            "simplified": "好看的",
+            "pinyin": "hǎokàn de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很好看"
+            ],
+            "note": "After 喜歡, use 好看的 to name the cake; 很好看 describes a subject instead."
+          }
+        ],
+        "fallbackRepair": "After 喜歡, use 好看的 to name the cake; 很好看 describes a subject instead.",
+        "result": {
+          "traditional": "我喜歡好看的。",
+          "simplified": "我喜欢好看的。",
+          "pinyin": "Wǒ xǐhuān hǎokàn de.",
+          "english": "I like the good-looking one."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 84,
+          "box": [
+            0.635,
+            0.264,
+            0.194,
+            0.049
+          ],
+          "alt": "A plain cake on the left and a decorated cake on the right."
+        },
+        "prompt": "Choose the decorated cake on the right; use 好看."
+      },
+      {
+        "id": "l3-g4-own-1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我喜歡",
+                "simplified": "我喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "pick",
+                "answers": [
+                  "漂亮的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "花。",
+                "simplified": "花。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很漂亮",
+            "simplified": "很漂亮",
+            "pinyin": "hěn piàoliang"
+          },
+          {
+            "traditional": "漂亮的",
+            "simplified": "漂亮的",
+            "pinyin": "piàoliang de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很漂亮"
+            ],
+            "note": "The description modifies 花 here, so use 漂亮的 rather than the predicate 很漂亮."
+          }
+        ],
+        "fallbackRepair": "The description modifies 花 here, so use 漂亮的 rather than the predicate 很漂亮.",
+        "result": {
+          "traditional": "我喜歡漂亮的花。",
+          "simplified": "我喜欢漂亮的花。",
+          "pinyin": "Wǒ xǐhuān piàoliang de huā.",
+          "english": "I like beautiful flowers."
+        }
+      }
+    ],
+    "allowWords": [
+      "舊"
+    ]
+  },
+  "B1L03-G05-P84": {
+    "bookPage": 85,
+    "title": "Rearrange the following sentences.",
+    "items": [
+      {
+        "id": "l3-g5-book-1",
+        "source": "p.85 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "這五枝筆",
+                "simplified": "这五枝笔"
+              },
+              {
+                "type": "slot",
+                "id": "all",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很",
+                "simplified": "很"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "貴",
+                "simplified": "贵"
+              },
+              {
+                "type": "slot",
+                "id": "gap-3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "都"
+            },
+            "note": "Put 都 after the whole group 這五枝筆, before its description."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "都"
+            },
+            "note": "Put 都 before 很貴, without splitting the description."
+          },
+          {
+            "slot": {
+              "id": "gap-3",
+              "tile": "都"
+            },
+            "note": "都 comes before the description 很貴, not at the end of the sentence."
+          }
+        ],
+        "fallbackRepair": "Put 都 after the whole group and before its description or verb.",
+        "result": {
+          "traditional": "這五枝筆都很貴。",
+          "simplified": "这五枝笔都很贵。",
+          "pinyin": "Zhè wǔ zhī bǐ dōu hěn guì.",
+          "english": "These five pens are all expensive."
+        },
+        "prompt": "Each of the five pens costs a lot; tap where 都 goes.",
+        "gaps": true
+      },
+      {
+        "id": "l3-g5-book-2",
+        "source": "p.85 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "這四個人",
+                "simplified": "这四个人"
+              },
+              {
+                "type": "slot",
+                "id": "all",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "是",
+                "simplified": "是"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "我的同學",
+                "simplified": "我的同学"
+              },
+              {
+                "type": "slot",
+                "id": "gap-3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "都"
+            },
+            "note": "Put 都 after the whole group 這四個人, before 是."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "都"
+            },
+            "note": "Put 都 before 是, not between 是 and 我的同學."
+          },
+          {
+            "slot": {
+              "id": "gap-3",
+              "tile": "都"
+            },
+            "note": "都 comes before 是我的同學, not at the end of the sentence."
+          }
+        ],
+        "fallbackRepair": "Put 都 after the whole group and before its description or verb.",
+        "result": {
+          "traditional": "這四個人都是我的同學。",
+          "simplified": "这四个人都是我的同学。",
+          "pinyin": "Zhè sì ge rén dōu shì wǒ de tóngxué.",
+          "english": "These four people are all my classmates."
+        },
+        "prompt": "Every person is your classmate; tap where 都 goes.",
+        "gaps": true
+      },
+      {
+        "id": "l3-g5-book-3",
+        "source": "p.85 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "他們",
+                "simplified": "他们"
+              },
+              {
+                "type": "slot",
+                "id": "all",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不",
+                "simplified": "不"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡喝",
+                "simplified": "喜欢喝"
+              },
+              {
+                "type": "slot",
+                "id": "gap-3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "這種茶",
+                "simplified": "这种茶"
+              },
+              {
+                "type": "slot",
+                "id": "gap-4",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "都"
+            },
+            "note": "Put 都 after 他們 and before 不 to say neither person likes the tea."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "都"
+            },
+            "note": "Use 都不 to say neither likes it; 不都 only says that not everyone likes it."
+          },
+          {
+            "slot": {
+              "id": "gap-3",
+              "tile": "都"
+            },
+            "note": "Keep 不喜歡喝這種茶 together and put 都 before 不."
+          },
+          {
+            "slot": {
+              "id": "gap-4",
+              "tile": "都"
+            },
+            "note": "都 comes before 不喜歡喝這種茶, not at the end of the sentence."
+          }
+        ],
+        "fallbackRepair": "Put 都 before 不 to make clear that neither person likes the tea.",
+        "result": {
+          "traditional": "他們都不喜歡喝這種茶。",
+          "simplified": "他们都不喜欢喝这种茶。",
+          "pinyin": "Tāmen dōu bù xǐhuān hē zhè zhǒng chá.",
+          "english": "Neither of them likes drinking this kind of tea."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 85,
+          "box": [
+            0.594,
+            0.392,
+            0.29,
+            0.103
+          ],
+          "alt": "Both people grimace at the tea in front of them."
+        },
+        "prompt": "Make clear that neither person likes the tea; tap where 都 goes.",
+        "gaps": true
+      }
+    ],
+    "allowWords": [
+      "四"
+    ]
+  }
+}

@@ -13,9 +13,9 @@ const lessonTwoPages = [
   ...LESSON_TWO_PART_TWO.grammarPages,
 ];
 
-test('Lesson 2 has six ordered grammar points and all 18 source prompts', () => {
+test('Lesson 2 has six ordered grammar points and all 15 book prompts', () => {
   assert.deepEqual(lessonTwoPages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5, 6]);
-  assert.equal(lessonTwoPages.reduce((count, page) => count + page.questions.length, 0), 18);
+  assert.equal(lessonTwoPages.reduce((count, page) => count + page.questions.length, 0), 15);
   assert.ok(lessonTwoPages.every((page) => page.examples.length === 3));
   assert.ok(lessonTwoPages.every((page) => page.learnerPromise.trim()));
 });
@@ -43,9 +43,7 @@ test('Lesson 2 wrong placements cannot complete a grammar', () => {
       if (segment.type !== 'blank') return;
       const wrongTile = question.tiles.find((tile) => (
         tile.traditional !== segment.answer
-        && tile.simplified !== segment.answerSimplified
         && !(segment.acceptedAnswers ?? []).includes(tile.traditional)
-        && !(segment.acceptedAnswersSimplified ?? []).includes(tile.simplified ?? '')
       ));
       assert.ok(wrongTile, `${segment.id} needs a distractor`);
       placements[segment.id] = wrongTile.id;

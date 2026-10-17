@@ -23,6 +23,7 @@ export function WordDecompositionStrip({
       key={word}
       character={word}
       mode="summary"
+      showHeading={false}
       onGlyphClick={onOpenCharacter}
       accentHex={accentHex}
       edgeHex={edgeHex}

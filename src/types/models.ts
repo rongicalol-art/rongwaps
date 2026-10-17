@@ -102,13 +102,14 @@ export interface DictionarySavedPreview {
   meaning: string;
 }
 
-export type PracticeActivityType = 'flashcards' | 'listening' | 'quiz' | 'writing';
+export type PracticeActivityType = 'flashcards' | 'listening' | 'quiz' | 'writing' | 'tones';
 export type QuizMode = 'choices' | 'typing';
 export type ActivityType = PracticeActivityType | 'flashcards-review' | 'flashcards-library' | 'create-card' | null;
 
 
 export * from './grammar';
 export * from './grammarLabs';
+export * from './grammarPractice';
 
 export interface AlignedWord {
   w: string;

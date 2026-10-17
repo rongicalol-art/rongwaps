@@ -21,6 +21,8 @@ export interface FavoriteButtonProps {
   variant?: 'ghost' | 'circle' | 'surface';
   /** Additional custom classes */
   className?: string;
+  /** Show the solid bookmark even when unsaved (muted); saved turns amber. */
+  idleFilled?: boolean;
   /** Prevent event bubbling (default true) */
   stopPropagation?: boolean;
 }
@@ -45,6 +47,7 @@ export const FavoriteButton = React.memo(function FavoriteButton({
   size = 'md',
   variant = 'ghost',
   className,
+  idleFilled = false,
   stopPropagation = true,
 }: FavoriteButtonProps) {
   const setSaveWordTarget = useAppStore((state) => state.setSaveWordTarget);
@@ -83,7 +86,7 @@ export const FavoriteButton = React.memo(function FavoriteButton({
         : cn(
             'rounded-control outline-none transition-colors focus-ring',
             isSaved
-              ? 'text-feedback-warning hover:text-feedback-warning-edge'
+              ? 'text-feedback-warning-edge hover:opacity-80'
               : 'text-ui-muted hover:text-feedback-warning',
           );
 
@@ -105,9 +108,9 @@ export const FavoriteButton = React.memo(function FavoriteButton({
       )}
     >
       <AppIcon
-        name={isSaved ? 'bookmarkFilled' : 'bookmark'}
+        name={isSaved || idleFilled ? 'bookmarkFilled' : 'bookmark'}
         size={iconSize}
-        className={isSaved ? 'text-feedback-warning' : undefined}
+        className={isSaved ? 'text-feedback-warning-edge' : undefined}
       />
     </button>
   );

@@ -34,7 +34,7 @@ export interface LearningState {
   resetSessionProgress: () => void;
 
   // Last Activity
-  lastActivity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'personal-vocab' | null;
+  lastActivity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'tones' | 'personal-vocab' | null;
   setLastActivity: (activity: LearningState['lastActivity']) => void;
 
   // Session Progress Index

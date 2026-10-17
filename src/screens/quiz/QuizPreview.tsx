@@ -14,7 +14,8 @@ import { WordBuild } from './formats/WordBuild';
 import { CardsDone, ReviewDealIntro, CARD_SURFACE_CLASS } from '../flashcard';
 import { QuizShell } from './QuizShell';
 import { useReviewTone } from '../../hooks/useReviewTone';
-import { ResumeDialog, ScreenHeader } from '../../lib/widgets';
+import { ActionButton, ResumeDialog, ScreenHeader, WorkspaceWindow } from '../../lib/widgets';
+import { QuizAudioPreparation } from './components/QuizAudioPreparation';
 import { RESUME_ICON, resumeCopy, resumeDetail, resumeProgress, type ResumeState } from '../../utils/srs/resumeState';
 
 /**
@@ -36,8 +37,10 @@ const WORDS = [
 const [TEACHER, STUDENT, PRETTY, FRIEND, BOOK, CHINA, TAIWAN, EVERYONE] = WORDS;
 const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '臺灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
 
-type PreviewKey = 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'resume-cards' | 'resume-review' | 'resume-quiz';
+type PreviewKey = 'audio-loading' | 'audio-error' | 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'resume-cards' | 'resume-review' | 'resume-quiz';
 const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
+  { key: 'audio-loading', label: 'Audio: downloading' },
+  { key: 'audio-error', label: 'Audio: failed → retry' },
   { key: 'quiz-review', label: 'Quiz → review quiz' },
   { key: 'review-deal', label: 'Review → card' },
   { key: 'cards-done', label: 'Cards done → pick a quiz' },
@@ -70,6 +73,8 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
   const answer = (correct: boolean) => setStatus(correct ? 'correct' : 'wrong');
   const noop = () => {};
   const isChecked = status !== 'idle';
+
+  if (previewKey === 'audio-loading' || previewKey === 'audio-error') return <AudioPreparationPreview failed={previewKey === 'audio-error'} />;
 
   if (previewKey === 'quiz-review') return <QuizReviewPreview />;
 
@@ -165,6 +170,39 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
     </div>
   );
 };
+
+/** Simulated slow downloads and recovery. No quiz session, SRS or network writes. */
+function AudioPreparationPreview({ failed }: { failed: boolean }) {
+  const [ready, setReady] = useState(3);
+  const [error, setError] = useState(failed);
+  const [open, setOpen] = useState(true);
+  const [running, setRunning] = useState(false);
+  useEffect(() => {
+    if (!running || error || ready >= 8) return;
+    const timer = window.setTimeout(() => setReady((value) => value + 1), 700);
+    return () => window.clearTimeout(timer);
+  }, [running, error, ready]);
+  const close = () => setOpen(false);
+  if (!open) return null;
+  return createPortal(
+    <WorkspaceWindow tone="practice" className="workspace-window" style={{ zIndex: 'var(--z-index-devtools)', paddingLeft: 0 }} animateIn={false} role="dialog" aria-modal="true" aria-label="Audio preparation preview">
+      <div className="absolute inset-x-0 top-0 z-40"><ScreenHeader variant="window" tone="practice" onClose={close} /></div>
+      <div className="flex flex-1 flex-col pt-18">
+        {ready < 8 ? <QuizAudioPreparation progress={{ ready, failed: error ? 1 : 0, total: 8 }} error={error}
+          onRetry={() => { setError(false); setReady(3); setRunning(true); }} onBack={close} /> : (
+          <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6">
+            <h2 className="text-2xl font-black text-ui-ink-strong">Audio ready</h2>
+            <ActionButton onClick={close}>Back to previews</ActionButton>
+          </div>
+        )}
+        {!error && ready < 8 && <div className="flex justify-center gap-3 pb-sheet-safe">
+          <ActionButton size="sm" variant="secondary" onClick={() => setRunning(true)}>Finish download</ActionButton>
+          <ActionButton size="sm" variant="secondary" onClick={() => setError(true)}>Fail download</ActionButton>
+        </div>}
+      </div>
+    </WorkspaceWindow>, document.body,
+  );
+}
 
 /** A fake card landing: exercises the real review choreography without SRS or sync. */
 /** Runs the real shell's missed-pass lifecycle without grading, audio or SRS writes. */

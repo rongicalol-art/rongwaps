@@ -1,0 +1,9 @@
+# L07 interaction needs
+
+- NEEDS-ENGINE: p.171 #1 — preserve “____很快，也很舒服，我不想走路去。” Show an approved travel context, let the learner choose an activity, and explain each rejected choice. Several transport activities fit the printed sentence; a single arbitrary key is unfair. `slot-reels` permits open completions but cannot supply the required wrong-option feedback. Context/interaction approval is needed.
+- NEEDS-ENGINE: p.171 #2 — preserve “我家附近有一家超級市場，____很方便。” Let the learner complete an activity topic and receive contextual feedback; 買東西 and 買蛋 both fit. Do not force one as the official answer or replace this with an unrelated example check. Same open-completion limitation as #1.
+- NEEDS-ENGINE: p.171 #3 — show the book's basketball/tennis illustration (p171.png, lower exercise picture), then let the learner assign 打籃球 and 打網球 to the two printed blanks. Return the completed sentence, pinyin and English. Existing route/change/countdown scenes cannot show this picture; use sequential focus to keep one decision visible.
+- NEEDS-ENGINE: p.172 #1 — retain the summer dialogue and 熱／不舒服 cues. Show the whole model sentence; one selection of 又……又…… should place the same connector in both positions, then explain the pairing. Current slots consume a unique tile once; pre-filling one 又 gives away the other, and a whole answer exceeds four characters.
+- NEEDS-ENGINE: p.172 #2 — same paired-connector interaction, preserving the beef-noodle dialogue and 好吃／便宜 cues; return 又好吃又便宜 with pinyin and English.
+- NEEDS-ENGINE: p.172 #3 — same paired-connector interaction, preserving the seaside dialogue and 游泳／曬太陽 cues; return a natural complete model, clearly labeled as app-authored.
+- NEEDS-ENGINE: G04/G05 page validation still requires legacy `questions`, although the current flow does not mount them. Permit documented deferred exercises before exporting these pages; do not restore forced questions just to pass the gate.

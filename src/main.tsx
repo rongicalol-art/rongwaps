@@ -4,14 +4,20 @@ import {BrowserRouter} from 'react-router';
 import {MotionConfig} from 'motion/react';
 import App from './App.tsx';
 import {ErrorBoundary} from './lib/widgets';
+import { initializeErrorReporting, reportReactError } from './services/errorReporting';
 import './index.css';
 import { warmChineseFont } from './utils/browser/fontWarmup';
 import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
 
 if (import.meta.env.DEV) startLayoutShiftMonitor();
 warmChineseFont();
+initializeErrorReporting();
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root')!, {
+  onCaughtError: reportReactError,
+  onUncaughtError: reportReactError,
+  onRecoverableError: reportReactError,
+}).render(
   <StrictMode>
     {/* App-level safety net: without a boundary here an uncaught render error
         anywhere in the shell, a study window, or an overlay unmounts the whole

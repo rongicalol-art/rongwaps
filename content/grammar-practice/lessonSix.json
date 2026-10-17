@@ -1,0 +1,1721 @@
+{
+  "B1L06-G01-P135": {
+    "bookPage": 136,
+    "title": "Complete the following dialogues.",
+    "items": [
+      {
+        "id": "b1l06-g01-p135-practice-1",
+        "source": "p.136 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你會不會踢足球？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "會"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "踢足球。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不會",
+            "pinyin": "bú huì"
+          },
+          {
+            "traditional": "會",
+            "pinyin": "huì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不會"
+            ],
+            "note": "You can join the team because you know how to play, so use 會."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我會踢足球。",
+          "pinyin": "Wǒ huì tī zúqiú.",
+          "english": "I know how to play soccer."
+        },
+        "sub": "You learned to play from your brother and can join his team."
+      },
+      {
+        "id": "b1l06-g01-p135-practice-2",
+        "source": "p.136 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你弟弟會說中文嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "不會"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "說中文。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "會",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "不會",
+            "pinyin": "bú huì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "會"
+            ],
+            "note": "He cannot speak Chinese, so answer with 不會."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "他不會說中文。",
+          "pinyin": "Tā bú huì shuō Zhōngwén.",
+          "english": "He does not know how to speak Chinese."
+        },
+        "sub": "Your brother has never learned Chinese and cannot speak it."
+      },
+      {
+        "id": "b1l06-g01-p135-practice-3",
+        "source": "p.136 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "會不會"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "做牛肉麵？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不會做牛肉麵。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "想不想",
+            "pinyin": "xiǎng bu xiǎng"
+          },
+          {
+            "traditional": "會不會",
+            "pinyin": "huì bú huì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "想不想"
+            ],
+            "note": "The reply describes a missing skill, so ask 會不會 rather than whether the person wants to cook."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "你會不會做牛肉麵？",
+          "pinyin": "Nǐ huì bú huì zuò niúròumiàn?",
+          "english": "Do you know how to make beef noodles?"
+        },
+        "sub": "Ask whether your friend knows how to make the noodles."
+      },
+      {
+        "id": "b1l06-g01-p135-practice-4",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天下午我們去游泳，好不好？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "不想"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "游泳，我們去打球吧。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不想",
+            "pinyin": "bù xiǎng"
+          },
+          {
+            "traditional": "不會",
+            "pinyin": "bú huì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不會"
+            ],
+            "note": "You have the skill but prefer another activity, so use 不想 for your wish."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我不想游泳，我們去打球吧。",
+          "pinyin": "Wǒ bù xiǎng yóuyǒng, wǒmen qù dǎqiú ba.",
+          "english": "I do not want to swim; let’s play ball."
+        },
+        "sub": "You know how to swim, but you prefer to play ball this afternoon."
+      }
+    ]
+  },
+  "B1L06-G02-P136": {
+    "bookPage": 137,
+    "title": "Answer the following questions.",
+    "items": [
+      {
+        "id": "b1l06-g02-p136-practice-1",
+        "source": "p.137 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他喝得多不多？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他喝得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不多",
+            "pinyin": "bù duō"
+          },
+          {
+            "traditional": "很多",
+            "pinyin": "hěn duō"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不多"
+            ],
+            "note": "The many cans in the picture support 很多 rather than 不多."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "他喝得很多。",
+          "pinyin": "Tā hē de hěn duō.",
+          "english": "He drinks a lot."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 137,
+          "box": [
+            0.622,
+            0.213,
+            0.215,
+            0.091
+          ],
+          "alt": "A person drinking from a can beside many cans on the table."
+        }
+      },
+      {
+        "id": "b1l06-g02-p136-practice-2",
+        "source": "p.137 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他吃得怎麼樣？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他吃得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很多",
+            "pinyin": "hěn duō"
+          },
+          {
+            "traditional": "不多",
+            "pinyin": "bù duō"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不多"
+            ],
+            "note": "The tall stacks of bowls show a large amount, so choose 很多."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "他吃得很多。",
+          "pinyin": "Tā chī de hěn duō.",
+          "english": "He eats a lot."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 137,
+          "box": [
+            0.628,
+            0.326,
+            0.217,
+            0.089
+          ],
+          "alt": "A person eating between tall stacks of bowls."
+        }
+      },
+      {
+        "id": "b1l06-g02-p136-practice-3",
+        "source": "p.137 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你昨天晚上睡得怎麼樣？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我昨天晚上睡得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不太好"
+            ],
+            "note": "A comfortable night and a rested morning support 很好 rather than 不太好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我昨天晚上睡得很好。",
+          "pinyin": "Wǒ zuótiān wǎnshang shuì de hěn hǎo.",
+          "english": "I slept very well last night."
+        },
+        "sub": "You were comfortable all night and feel rested this morning."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-4",
+        "source": "p.138 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你朋友打網球打得怎麼樣？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我朋友打網球打得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不太好"
+            ],
+            "note": "Your friend’s skill and wins support 很好 rather than 不太好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我朋友打網球打得很好。",
+          "pinyin": "Wǒ péngyǒu dǎ wǎngqiú dǎ de hěn hǎo.",
+          "english": "My friend plays tennis very well."
+        },
+        "sub": "Your friend plays tennis skillfully and wins the school games."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-5",
+        "source": "p.138 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "昨天他睡覺睡得好嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他睡覺睡得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "不太好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很好"
+            ],
+            "note": "The person is awake and uncomfortable at night, so choose 不太好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "他睡覺睡得不太好。",
+          "pinyin": "Tā shuìjiào shuì de bú tài hǎo.",
+          "english": "He does not sleep very well."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 138,
+          "box": [
+            0.647,
+            0.281,
+            0.205,
+            0.145
+          ],
+          "alt": "A person awake and sweating in bed beside a window with a crescent moon."
+        }
+      },
+      {
+        "id": "b1l06-g02-p136-practice-6",
+        "source": "p.138 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你踢足球踢得好不好？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我踢足球踢得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "不太好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很好"
+            ],
+            "note": "Often missing the ball describes poor performance, so choose 不太好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我踢足球踢得不太好。",
+          "pinyin": "Wǒ tī zúqiú tī de bú tài hǎo.",
+          "english": "I do not play soccer very well."
+        },
+        "sub": "You know the rules, but your kicks often miss the ball."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-7",
+        "source": "p.139 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你媽媽牛肉麵做得好不好？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我媽媽牛肉麵做得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不太好"
+            ],
+            "note": "Everyone enjoys her cooking, so 很好 fits the situation."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我媽媽牛肉麵做得很好。",
+          "pinyin": "Wǒ māma niúròumiàn zuò de hěn hǎo.",
+          "english": "My mother makes beef noodles very well."
+        },
+        "sub": "Everyone enjoys your mother’s beef noodles and asks her to cook them again.",
+        "prompt": "Complete the following dialogues."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-8",
+        "source": "p.139 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你籃球打得怎麼樣？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我籃球打得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "不太好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很好"
+            ],
+            "note": "Losing the ball and missing the basket support 不太好 rather than 很好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我籃球打得不太好。",
+          "pinyin": "Wǒ lánqiú dǎ de bú tài hǎo.",
+          "english": "I do not play basketball very well."
+        },
+        "sub": "You often lose the ball and miss the basket.",
+        "prompt": "Complete the following dialogues."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-9",
+        "source": "p.139 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你哥哥棒球打得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "怎麼樣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我哥哥棒球打得很好。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "多不多",
+            "pinyin": "duō bu duō"
+          },
+          {
+            "traditional": "怎麼樣",
+            "pinyin": "zěnmeyàng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "多不多"
+            ],
+            "note": "The reply evaluates his playing rather than its amount, so ask 怎麼樣."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "你哥哥棒球打得怎麼樣？",
+          "pinyin": "Nǐ gēge bàngqiú dǎ de zěnmeyàng?",
+          "english": "How well does your older brother play baseball?"
+        },
+        "prompt": "Complete the following dialogues."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-10",
+        "source": "p.140 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你的飯做得怎麼樣？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我的飯做得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不太好"
+            ],
+            "note": "People enjoying the food and asking for more support 很好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我的飯做得很好。",
+          "pinyin": "Wǒ de fàn zuò de hěn hǎo.",
+          "english": "I cook very well."
+        },
+        "sub": "Everyone enjoys your cooking and asks for more.",
+        "prompt": "Complete the following dialogues."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-11",
+        "source": "p.140 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你哥哥的籃球打得好不好？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我哥哥的籃球打得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "很好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不太好"
+            ],
+            "note": "His skillful play and wins support 很好 rather than 不太好."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我哥哥的籃球打得很好。",
+          "pinyin": "Wǒ gēge de lánqiú dǎ de hěn hǎo.",
+          "english": "My older brother plays basketball very well."
+        },
+        "sub": "Your older brother plays skillfully and wins the school basketball games.",
+        "prompt": "Complete the following dialogues."
+      },
+      {
+        "id": "b1l06-g02-p136-practice-12",
+        "source": "p.140 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她的英文說得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "怎麼樣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她的英文說得很好。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "怎麼樣",
+            "pinyin": "zěnmeyàng"
+          },
+          {
+            "traditional": "多不多",
+            "pinyin": "duō bu duō"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "多不多"
+            ],
+            "note": "The reply evaluates her English rather than how much she speaks, so ask 怎麼樣."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "她的英文說得怎麼樣？",
+          "pinyin": "Tā de Yīngwén shuō de zěnmeyàng?",
+          "english": "How well does she speak English?"
+        },
+        "prompt": "Complete the following dialogues."
+      }
+    ]
+  },
+  "B1L06-G03-P146": {
+    "bookPage": 146,
+    "title": "Complete the sentences with 有（一）點（兒）.",
+    "items": [
+      {
+        "id": "b1l06-g03-p146-practice-1",
+        "source": "p.146 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我有點兒"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "累"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我想休息。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "累",
+            "pinyin": "lèi"
+          },
+          {
+            "traditional": "渴",
+            "pinyin": "kě"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "渴"
+            ],
+            "note": "Struggling to keep your eyes open calls for rest, so choose 累 rather than thirst."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我有點兒累，我想休息。",
+          "pinyin": "Wǒ yǒu diǎnr lèi, wǒ xiǎng xiūxí.",
+          "english": "I am a little tired; I want to rest."
+        },
+        "sub": "After a full day of work, you can barely keep your eyes open."
+      },
+      {
+        "id": "b1l06-g03-p146-practice-2",
+        "source": "p.146 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我有點兒"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "渴"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我想喝點兒飲料。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "渴",
+            "pinyin": "kě"
+          },
+          {
+            "traditional": "餓",
+            "pinyin": "è"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "餓"
+            ],
+            "note": "A dry mouth and wanting a drink point to 渴 rather than hunger."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我有點兒渴，我想喝點兒飲料。",
+          "pinyin": "Wǒ yǒu diǎnr kě, wǒ xiǎng hē diǎnr yǐnliào.",
+          "english": "I am a little thirsty; I want something to drink."
+        },
+        "sub": "Your mouth feels dry."
+      },
+      {
+        "id": "b1l06-g03-p146-practice-3",
+        "source": "p.146 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我的東西太多，我覺得這間房間有點兒"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "小"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "大",
+            "pinyin": "dà"
+          },
+          {
+            "traditional": "小",
+            "pinyin": "xiǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "大"
+            ],
+            "note": "The room cannot hold your things, so describe it as 小 rather than 大."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我的東西太多，我覺得這間房間有點兒小。",
+          "pinyin": "Wǒ de dōngxi tài duō, wǒ juéde zhè jiān fángjiān yǒu diǎnr xiǎo.",
+          "english": "I have too many things; I think this room is a little small."
+        },
+        "sub": "Your things fill every shelf, and there is nowhere to put the rest."
+      },
+      {
+        "id": "b1l06-g03-p146-practice-4",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "一杯咖啡一百八十塊錢，我覺得"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "有點兒"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "貴。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一點兒",
+            "pinyin": "yìdiǎnr"
+          },
+          {
+            "traditional": "有點兒",
+            "pinyin": "yǒu diǎnr"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一點兒"
+            ],
+            "note": "貴 describes a quality, so put 有點兒 before it rather than the amount phrase 一點兒."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "一杯咖啡一百八十塊錢，我覺得有點兒貴。",
+          "pinyin": "Yì bēi kāfēi yìbǎi bāshí kuài qián, wǒ juéde yǒu diǎnr guì.",
+          "english": "A cup of coffee is 180 dollars; I think it is a little expensive."
+        },
+        "sub": "The drink costs more than you want to pay."
+      }
+    ]
+  },
+  "B1L06-G04-P147": {
+    "bookPage": 147,
+    "title": "Complete the dialogues with 可以.",
+    "items": [
+      {
+        "id": "b1l06-g04-p147-practice-1",
+        "source": "p.147 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在我不餓，不想吃飯。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你可以"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "點"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一個三明治。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "點",
+            "pinyin": "diǎn"
+          },
+          {
+            "traditional": "做",
+            "pinyin": "zuò"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "做"
+            ],
+            "note": "The menu offers food to order, so suggest 點 rather than making it yourself."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "你可以點一個三明治。",
+          "pinyin": "Nǐ kěyǐ diǎn yì ge sānmíngzhì.",
+          "english": "You could order a sandwich."
+        },
+        "sub": "You are a customer choosing food from the menu.",
+        "scene": {
+          "type": "picture",
+          "page": 147,
+          "box": [
+            0.191,
+            0.474,
+            0.158,
+            0.132
+          ],
+          "alt": "A customer looking at a menu booklet."
+        },
+        "glossary": [
+          {
+            "traditional": "三明治",
+            "pinyin": "sānmíngzhì",
+            "english": "sandwich"
+          }
+        ]
+      },
+      {
+        "id": "b1l06-g04-p147-practice-2",
+        "source": "p.147 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "天氣好熱，我不要去外面。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們可以在家"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "看電視"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "聽音樂",
+            "pinyin": "tīng yīnyuè"
+          },
+          {
+            "traditional": "看電視",
+            "pinyin": "kàn diànshì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "聽音樂"
+            ],
+            "note": "The picture shows someone watching a television, so choose 看電視 rather than listening to music."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我們可以在家看電視。",
+          "pinyin": "Wǒmen kěyǐ zài jiā kàn diànshì.",
+          "english": "We could watch television at home."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 147,
+          "box": [
+            0.439,
+            0.475,
+            0.147,
+            0.136
+          ],
+          "alt": "A person on a sofa facing a television in a living room."
+        }
+      },
+      {
+        "id": "b1l06-g04-p147-practice-3",
+        "source": "p.147 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說那部電影很不錯。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們可以"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "去那裡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "看電影。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "在家",
+            "pinyin": "zài jiā"
+          },
+          {
+            "traditional": "去那裡",
+            "pinyin": "qù nàlǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "在家"
+            ],
+            "note": "The picture places the friends outside a cinema, so suggest going there rather than staying home."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我們可以去那裡看電影。",
+          "pinyin": "Wǒmen kěyǐ qù nàlǐ kàn diànyǐng.",
+          "english": "We could go there to see a movie."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 147,
+          "box": [
+            0.662,
+            0.47,
+            0.209,
+            0.152
+          ],
+          "alt": "Two people outside a cinema entrance and ticket window."
+        }
+      },
+      {
+        "id": "b1l06-g04-p147-practice-4",
+        "source": "p.148 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我媽媽說，我"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "不可以"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "吃冰淇淋。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
+          },
+          {
+            "traditional": "不可以",
+            "pinyin": "bù kěyǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "可以"
+            ],
+            "note": "Your mother refuses permission because of the cold, so choose 不可以."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我媽媽說，我不可以吃冰淇淋。",
+          "pinyin": "Wǒ māma shuō, wǒ bù kěyǐ chī bīngqílín.",
+          "english": "My mother says I may not eat ice cream."
+        },
+        "sub": "Your mother refuses your request for ice cream because the weather is too cold.",
+        "prompt": "Complete the sentences with 可以."
+      },
+      {
+        "id": "b1l06-g04-p147-practice-5",
+        "source": "p.148 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "老師說，我"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "去洗手間。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
+          },
+          {
+            "traditional": "不可以",
+            "pinyin": "bù kěyǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不可以"
+            ],
+            "note": "The teacher gives permission to leave, so choose 可以."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "老師說，我可以去洗手間。",
+          "pinyin": "Lǎoshī shuō, wǒ kěyǐ qù xǐshǒujiān.",
+          "english": "The teacher says I may go to the restroom."
+        },
+        "sub": "You ask to use the restroom; your teacher gives you permission to leave.",
+        "prompt": "Complete the sentences with 可以."
+      },
+      {
+        "id": "b1l06-g04-p147-practice-6",
+        "source": "p.148 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "可以"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "在這裡看書嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "好。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "會",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "會"
+            ],
+            "note": "You are asking to use this reading space, so ask permission with 可以 rather than describing a learned skill with 會."
+          }
+        ],
+        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "result": {
+          "traditional": "我可以在這裡看書嗎？",
+          "pinyin": "Wǒ kěyǐ zài zhèlǐ kàn shū ma?",
+          "english": "May I read here?"
+        },
+        "sub": "Ask the librarian for permission to use this reading space.",
+        "scene": {
+          "type": "picture",
+          "page": 148,
+          "box": [
+            0.691,
+            0.58,
+            0.193,
+            0.1
+          ],
+          "alt": "Two people at a library desk beside bookshelves and a library sign."
+        },
+        "prompt": "Complete the sentences with 可以."
+      }
+    ],
+    "allowWords": [
+      "三明治"
+    ]
+  }
+}

@@ -9,6 +9,8 @@ import { CurriculumSkeleton } from '../curriculum';
 import { LibrarySkeleton } from '../library';
 import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
+import { TonePreview } from '../tones';
+import { GrammarPracticePreview } from '../../features/grammar-practice';
 
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 
@@ -310,8 +312,10 @@ export const DebugWindow = () => {
 
         {activeTab === 'performance' && <PerformancePanel />}
         {activeTab === 'previews' && (
-          <div className="h-full overflow-y-auto pb-6">
+          <div className="flex h-full flex-col gap-8 overflow-y-auto pb-6">
             <QuizPreview />
+            <GrammarPracticePreview />
+            <TonePreview />
           </div>
         )}
 

@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { cn } from '../../utils/cn';
-import { MemoryHookPopover } from './MemoryHookPopover';
+import { CharacterHoverCard } from './CharacterHoverCard';
+import { useCharacterParts } from './useCharacterParts';
 import { useMemoryHook } from './useMemoryHook';
 
 /**
  * A single Chinese character that plays a subtle magnetic hover game and
- * reveals its memory hook in an iOS-style popover on hover/focus.
+ * reveals how it is built (parts equation, or its memory hook when it has no
+ * parts) in a popover on hover/focus.
  *
  * - Magnet: a gentle field (~90px) around the character, tracked on the
  *   window so the pull works beside the glyph too. The pull caps at ~4px so
@@ -67,6 +69,7 @@ export function MemoryHookCharacter({
   const [tooltipAbove, setTooltipAbove] = useState(true);
   const [tooltipAnchor, setTooltipAnchor] = useState<{ x: number; top: number; bottom: number } | null>(null);
   const { hook, loaded: hookLoaded } = useMemoryHook(char, armed && !tooltipDisabled);
+  const partsData = useCharacterParts(char, armed && !tooltipDisabled);
 
   const magnetX = useMotionValue(0);
   const magnetY = useMotionValue(0);
@@ -218,13 +221,13 @@ export function MemoryHookCharacter({
         {char}
       </motion.span>
 
-      <MemoryHookPopover
+      <CharacterHoverCard
         open={showTooltip && !tooltipDisabled}
+        char={char}
         anchor={tooltipAnchor}
         above={tooltipAbove}
-        hook={hook}
-        loaded={hookLoaded}
-        emptyText={<>No memory hook yet — this character&rsquo;s story will live here.</>}
+        data={partsData}
+        hook={hookLoaded ? hook : undefined}
         magneticX={springX}
         magneticY={springY}
       />

@@ -4,11 +4,6 @@ import { resolve } from 'node:path';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: resolve(import.meta.dirname, '../../../.env'), quiet: true });
-dotenv.config({
-  path: resolve(import.meta.dirname, '../../../.env.memory-hooks.local'),
-  quiet: true,
-  override: true,
-});
 
 type MetadataStatus = 'already-approved' | 'candidate-review' | 'review-required' | 'withhold';
 type ProposalDecision = 'select' | 'withhold';

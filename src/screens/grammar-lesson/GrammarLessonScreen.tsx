@@ -6,6 +6,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { findNeighbourGrammarPartId } from '../../data/interactiveGrammarManifest';
 import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
+import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { StudySidePanel, WorkspaceWindow } from '../../lib/widgets';
@@ -23,6 +24,9 @@ import { useGrammarLessonKeyboardNavigation } from './hooks/useGrammarLessonKeyb
 // Never static-import it here or it joins the main bundle.
 const GrammarStudyPage = lazy(() =>
   import('./components/GrammarStudyPage').then((m) => ({ default: m.GrammarStudyPage })),
+);
+const GrammarPracticeView = lazy(() =>
+  import('../../features/grammar-practice').then((m) => ({ default: m.GrammarPracticeView })),
 );
 
 interface GrammarLessonScreenProps {
@@ -90,6 +94,9 @@ export function GrammarLessonScreen({
     isLastPage,
     continueAfterStudy,
     goBackToPreviousGrammar,
+    isPracticing,
+    finishPractice,
+    canGoBack,
     currentGrammarIndex,
     currentStepIndex,
     totalSteps,
@@ -111,11 +118,12 @@ export function GrammarLessonScreen({
     : null;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
-  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
-  const [showPinyin, setShowPinyin] = useState(false);
-  const [showTranslation, setShowTranslation] = useState(true);
   const characterFont = useAppStore((state) => state.characterFont);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  const dictionaryWord = useAppStore((state) => state.dictionaryWord);
+  const [showPinyin, setShowPinyin] = useState(false);
+  const [showTranslation, setShowTranslation] = useState(true);
   const markPartStarted = useAppStore((state) => state.markPartStarted);
 
   const closeLesson = useCallback(() => {
@@ -135,12 +143,15 @@ export function GrammarLessonScreen({
   const { isFooterVisible, resetFooter } =
     useGrammarFooterVisibility(mainRef, currentGrammarIndex);
 
+  // The window column the practice feedback bar docks to (outside the scroller).
+  const [barHost, setBarHost] = useState<HTMLDivElement | null>(null);
+
   useEffect(() => {
     resetFooter();
     setIsConfusionOpen(false);
     mainRef.current?.scrollTo({ top: 0 });
     if (document.activeElement?.tagName === 'BODY') mainRef.current?.focus();
-  }, [currentGrammarIndex, resetFooter]);
+  }, [currentGrammarIndex, isPracticing, resetFooter]);
 
   // Isolate the workspace behind the window and restore it (and audio) on close.
   useWorkspaceIsolation(dialogRef, {
@@ -160,7 +171,7 @@ export function GrammarLessonScreen({
   useGrammarLessonKeyboardNavigation({
     isBookOpen,
     isConfusionOpen,
-    previousPage,
+    canGoBack,
     continueAfterStudy,
     goBackToPreviousGrammar,
     navigateToPart,
@@ -188,7 +199,7 @@ export function GrammarLessonScreen({
       aria-label={`Lesson ${part.lessonId}, Part ${part.partId}: ${part.title}`}
     >
       <div className="flex flex-1 min-h-0 min-w-0">
-        <div className="relative flex-1 min-w-0 flex flex-col min-h-0">
+        <div ref={setBarHost} className="relative flex-1 min-w-0 flex flex-col min-h-0">
           <main
             ref={mainRef}
             tabIndex={-1}
@@ -201,13 +212,13 @@ export function GrammarLessonScreen({
               title={`P${part.partId} · Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
               characterPreference={characterPreference}
               characterFont={characterFont}
+              onCharacterPreferenceChange={setCharacterPreference}
+              onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
               showPinyin={showPinyin}
               showTranslation={showTranslation}
               onClose={closeLesson}
               onTogglePinyin={() => setShowPinyin((prev) => !prev)}
               onToggleTranslation={() => setShowTranslation((prev) => !prev)}
-              onCharacterPreferenceChange={setCharacterPreference}
-              onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
               currentStepIndex={currentStepIndex}
               totalSteps={totalSteps}
               progress={((currentStepIndex + 1) / totalSteps) * 100}
@@ -225,19 +236,36 @@ export function GrammarLessonScreen({
                 <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 pb-32 pt-6 sm:px-6 sm:pb-32 sm:pt-8">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
-                      key={`study-${page.id}`}
+                      key={`${isPracticing ? 'practice' : 'study'}-${page.id}`}
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.16, ease: 'easeOut' }}
                     >
-                      <GrammarStudyPage
-                        page={page}
-                        characterPreference={characterPreference}
-                        showPinyin={showPinyin}
-                        showTranslation={showTranslation}
-                        onOpenWord={setDictionaryWord}
-                      />
+                      {isPracticing && page.practice ? (
+                        // Its own boundary: loading the exercise never blanks the page behind it.
+                        <Suspense fallback={null}>
+                        <GrammarPracticeView
+                          practice={page.practice}
+                          script={characterPreference}
+                          showPinyin={showPinyin}
+                          showTranslation={showTranslation}
+                          contextTokens={getGrammarTeachingTokens(page)}
+                          onOpenWord={setDictionaryWord}
+                          onComplete={finishPractice}
+                          barHost={barHost}
+                          shortcutsDisabled={isBookOpen || isConfusionOpen || Boolean(dictionaryWord)}
+                        />
+                        </Suspense>
+                      ) : (
+                        <GrammarStudyPage
+                          page={page}
+                          characterPreference={characterPreference}
+                          showPinyin={showPinyin}
+                          showTranslation={showTranslation}
+                          onOpenWord={setDictionaryWord}
+                        />
+                      )}
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -247,10 +275,11 @@ export function GrammarLessonScreen({
 
 
           <GrammarContinueFooter
-            isVisible={isFooterVisible}
+            isVisible={isFooterVisible && !isPracticing}
             contentReady={contentReady}
             previousPage={previousPage}
             isLastPage={isLastPage}
+            continueLabel={page.practice ? 'Practice' : undefined}
             onBack={goBackToPreviousGrammar}
             onContinue={continueAfterStudy}
           />

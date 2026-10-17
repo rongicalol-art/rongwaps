@@ -1,3 +1,5 @@
+import { isLessonLocked } from './books';
+
 export interface GrammarManifestPage {
   id: string;
 }
@@ -555,7 +557,8 @@ export function findNeighbourGrammarPartId(
   const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === partId);
   if (index === -1) return null;
   const nextIndex = direction === 'next' ? index + 1 : index - 1;
-  return INTERACTIVE_GRAMMAR_MANIFEST[nextIndex]?.id ?? null;
+  const neighbour = INTERACTIVE_GRAMMAR_MANIFEST[nextIndex];
+  return neighbour && !isLessonLocked(neighbour.bookId, neighbour.lessonId) ? neighbour.id : null;
 }
 
 export function findGrammarManifestPartForReading(reading: { bookId: number; lessonId: number; dialogueNumber?: number }): GrammarManifestPart | null {
@@ -569,5 +572,6 @@ export function findNextGrammarManifestPartForReading(reading: { bookId: number;
   if (!part) return null;
   const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === part.id);
   if (index === -1) return null;
-  return INTERACTIVE_GRAMMAR_MANIFEST[index + 1] ?? null;
+  const next = INTERACTIVE_GRAMMAR_MANIFEST[index + 1];
+  return next && !isLessonLocked(next.bookId, next.lessonId) ? next : null;
 }

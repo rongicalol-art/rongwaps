@@ -1,9 +1,11 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
-import type { GrammarPatternRow, InteractiveGrammarPage } from '../../../types/models';
+import type { GrammarPatternRow, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammar/grammarPatternLayout';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { cn } from '../../../utils/cn';
 import { SAMPLE_BOOKS } from '../../../data/books';
+import { GrammarExampleItem } from './GrammarExamplesSection';
+import { PlaceValueTable } from './PlaceValueTable';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
 
 interface GrammarPatternSectionProps {
@@ -16,6 +18,7 @@ interface GrammarPatternSectionProps {
   patternColumnDetails?: string[];
   patternRows?: GrammarPatternRow[];
   patternAccentColumn?: number;
+  contextTokens: GrammarWordToken[];
 }
 
 // Eased stops (not a straight ramp) so the shadow dissolves smoothly instead of ending in a hard edge.
@@ -64,6 +67,7 @@ export function GrammarPatternSection({
   patternColumns,
   patternColumnDetails,
   patternRows,
+  contextTokens,
 }: GrammarPatternSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const headRef = useRef<HTMLTableSectionElement>(null);
@@ -105,6 +109,20 @@ export function GrammarPatternSection({
   if (activeRows.length === 0) return null;
 
   const columnCount = layout.sourceColumns.length;
+  // Up to 3 columns fit a phone, so cells may wrap; wider tables keep scrolling sideways.
+  const wide = columnCount > 3;
+  // Place-value grids (7+ narrow digit columns) get their own two-block table that never scrolls sideways.
+  if (columnCount >= 7) {
+    return (
+      <PlaceValueTable
+        page={page}
+        characterPreference={characterPreference}
+        showPinyin={showPinyin}
+        columns={layout.sourceColumns.map((index) => activeColumns[index] ?? '')}
+        rows={activeRows}
+      />
+    );
+  }
   const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
   // The frame colour also fills the container behind the white body, so antialiased
   // corners blend into the border instead of showing a white fringe.
@@ -159,10 +177,10 @@ export function GrammarPatternSection({
                     <th
                       key={`th-${sourceIndex}`}
                       scope="col"
-                      className="px-5 py-3 text-left font-black sm:px-6"
+                      className="px-3 py-3 text-left font-black sm:px-6"
                     >
                       <span
-                        className="ui-eyebrow block whitespace-nowrap text-white [&_.font-chinese]:text-base"
+                        className={cn('ui-eyebrow block text-white [&_.font-chinese]:text-base', wide && 'whitespace-nowrap')}
                         title={detail ? `${columnTitle} · ${detail}` : columnTitle}
                       >
                         <HeaderTitle text={columnTitle} />
@@ -188,7 +206,7 @@ export function GrammarPatternSection({
                             key={`${row.id}-group-${sourceIndex}`}
                             aria-label={isEmpty ? 'Empty sentence slot' : undefined}
                             className={cn(
-                              'px-5 pt-3 align-middle sm:px-6',
+                              'px-3 pt-3 align-middle sm:px-6',
                               showTranslation && row.english ? 'pb-1' : 'pb-3',
                             )}
                           >
@@ -203,7 +221,7 @@ export function GrammarPatternSection({
                                 tone="default"
                                 size="lg"
                                 focusTerms={page.focusTerms}
-                                className="flex-nowrap whitespace-nowrap gap-x-0.5 gap-y-2"
+                                className={cn('gap-x-0.5 gap-y-2', wide && 'flex-nowrap whitespace-nowrap')}
                                 onOpenWord={onOpenWord}
                               />
                             )}
@@ -217,13 +235,35 @@ export function GrammarPatternSection({
                       <tr className="bg-transparent">
                         <td
                           colSpan={columnCount}
-                          className="px-5 pb-3 pt-0 sm:px-6"
+                          className="px-3 pb-3 pt-0 sm:px-6"
                         >
                           <p className="sr-only">Meaning</p>
                           <p className="ui-translation max-w-md text-[15px] sm:text-base">{row.english}</p>
                         </td>
                       </tr>
                     )}
+
+                    {/* The sentence the book prints under this pair, same item as the examples list. */}
+                    {(() => {
+                      const exampleIndex = row.exampleId ? page.examples.findIndex((e) => e.id === row.exampleId) : -1;
+                      if (exampleIndex < 0) return null;
+                      return (
+                        <tr>
+                          <td colSpan={columnCount} className="p-0">
+                            <GrammarExampleItem
+                              page={page}
+                              example={page.examples[exampleIndex]}
+                              index={exampleIndex}
+                              characterPreference={characterPreference}
+                              showPinyin={showPinyin}
+                              showTranslation={showTranslation}
+                              onOpenWord={onOpenWord}
+                              contextTokens={contextTokens}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })()}
                   </Fragment>
                 );
               })}

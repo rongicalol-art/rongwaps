@@ -102,7 +102,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
       : 'min-w-[140px] max-w-[240px] flex-1 basis-0 sm:min-w-[168px]';
   const summaryCardClass = depth > 0
     ? 'flex min-h-[64px] items-center rounded-compact px-3 py-2 shadow-[0_var(--depth-sm)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-sm)] active:shadow-none'
-    : 'flex items-center px-4 py-2.5 shadow-[0_var(--depth-lg)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-lg)] active:shadow-none';
+    : 'flex items-center px-3 py-2.5 shadow-[0_var(--depth-lg)_0_var(--color-ui-border)] sm:px-4 active:translate-y-[length:var(--depth-lg)] active:shadow-none';
 
   return (
     <div className={`relative ${mode === 'summary' ? 'min-w-0' : treeWidthClass}`}>
@@ -136,14 +136,16 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                       </span>
                     </>
                   ) : (
-                    <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                      <CharacterGlyph character={presentation.title} className="block text-[36px] leading-[1.05] text-ui-ink-strong" />
-                      <span className={`break-words text-sm font-extrabold leading-snug text-ui-ink-strong ${canExpand ? 'pr-6' : ''}`}>
-                        {primaryLine && <span className="text-brand-primary">{primaryLine}</span>}
-                        {primaryLine && presentation.meaning && ' · '}
-                        {presentation.meaning ? formatCompactMeaning(presentation.meaning) : !primaryLine && 'No meaning recorded'}
+                    <span className="flex min-w-0 flex-1 flex-row items-center gap-2.5 sm:flex-col sm:items-stretch sm:gap-0.5">
+                      <CharacterGlyph character={presentation.title} className="flex w-10 shrink-0 items-center justify-center text-[32px] leading-none text-ui-ink-strong sm:block sm:w-auto sm:text-[36px] sm:leading-[1.05]" />
+                      <span className={`min-w-0 flex-1 break-words text-sm font-extrabold leading-snug text-ui-ink-strong ${canExpand ? 'pr-5 sm:pr-6' : ''}`}>
+                        {primaryLine && <span className="block font-black text-brand-primary sm:inline sm:font-extrabold">{primaryLine}</span>}
+                        {primaryLine && presentation.meaning && <span className="hidden sm:inline"> · </span>}
+                        <span className="line-clamp-2 sm:contents">
+                          {presentation.meaning ? formatCompactMeaning(presentation.meaning) : !primaryLine && 'No meaning recorded'}
+                        </span>
+                        {isSound && <span className="mt-0.5 block text-[11px] font-black uppercase tracking-widest text-ui-muted">Sound</span>}
                       </span>
-                      {isSound && <span className="text-[11px] font-black uppercase tracking-widest text-ui-muted">Sound</span>}
                     </span>
                   )
                 )}

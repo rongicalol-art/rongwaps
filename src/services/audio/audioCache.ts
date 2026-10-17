@@ -315,19 +315,19 @@ export async function preloadAudioFiles(
   onProgress?.({ ...progress });
 
   const processNext = async (): Promise<void> => {
-    if (queue.length === 0 || signal?.aborted) return;
-    const fileName = queue.shift()!;
-    try {
-      if (!getCachedObjectUrl(objectUrls, fileName)) await getAudioObjectUrl(fileName);
-      if (!signal?.aborted) progress.ready++;
-    } catch (error) {
-      if (!signal?.aborted) { progress.failed++; debugLogger.warn('Audio', 'Failed to preload audio', { fileName: fileName.split('?')[0], error }); }
-      // fetch TypeError means transport/CORS failure, not a missing recording.
-      if (!signal?.aborted && (error instanceof TypeError || (error instanceof Error && error.name === 'AbortError'))) { progress.blocked = true; queue.length = 0; }
+    while (queue.length > 0 && !signal?.aborted) {
+      const fileName = queue.shift()!;
+      try {
+        if (!getCachedObjectUrl(objectUrls, fileName)) await getAudioObjectUrl(fileName);
+        if (!signal?.aborted) progress.ready++;
+      } catch (error) {
+        if (!signal?.aborted) { progress.failed++; debugLogger.warn('Audio', 'Failed to preload audio', { fileName: fileName.split('?')[0], error }); }
+        // fetch TypeError means transport/CORS failure, not a missing recording.
+        if (!signal?.aborted && (error instanceof TypeError || (error instanceof Error && error.name === 'AbortError'))) { progress.blocked = true; queue.length = 0; }
+      }
+      if (!signal?.aborted) onProgress?.({ ...progress });
     }
-    if (!signal?.aborted) onProgress?.({ ...progress });
-    await processNext();
   };
 
-  await processNext();
+  await Promise.all(Array.from({ length: Math.min(3, queue.length) }, processNext));
 }

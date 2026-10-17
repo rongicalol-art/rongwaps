@@ -11,6 +11,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Shared UI / reusable widgets | `WIDGETS.md`, `DESIGN_TOKENS.md`, `src/lib/widgets/` |
 | UI styling & tokens | `DESIGN_TOKENS.md`, `src/index.css` |
 | Grammar lessons | `GRAMMAR_LESSON_TEMPLATE.md`, `DECISIONS.md`, `src/screens/grammar-lesson/` |
+| Grammar book exercises (Practice) | `GRAMMAR_LESSON_TEMPLATE.md` → Book exercises, `content/grammar-practice/`, `src/features/grammar-practice/` |
 | Data model or Supabase RPC | `DATABASE_SCHEMA.md`, `src/services/`, `src/types/database.ts` |
 | Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |

@@ -10,6 +10,19 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-10-15 — Grammar Practice: the word bank is the dock
+
+- Chosen: the practice screen is one centred column with the word bank in its own bottom dock (`PracticeDock`): Skip and Check share one button, and the result turns the same dock green or red. Blanks are inline underlines; a placed word is plain sentence text that flies there from its dock tile (position-only layout animation). Dialogues are chat bubbles at one text size with no avatars; the learner's reply is the blue bubble. Picture panels are neutral; countries are bare 3:2 flags with a thin border, no pin (`src/assets/flags/{us,tw}-wide.svg`). Dock tiles carry no pinyin and no key hints; an empty bank leaves one full-width button; `slot-reels` choices are picked per blank from the dock. Removed: the pattern strip and its header morph, the source note, the walking traveller, the 了 bell and the typing dots, and the `insert-particle` kind (p.166's prices item is a slot sentence like the book).
+- Reason: owner review: tiles inside sentences, the pattern pill and the large Check/Skip bar felt heavy and non-native; motion should only explain the action.
+- Affects: `src/features/grammar-practice/**`, `src/types/grammarPractice.ts`, `src/utils/grammar/{grammarPracticeCheck,validateGrammarPractice}.ts`, `content/grammar-practice/lessonSeven.json`, `src/screens/grammar-lesson/GrammarLessonScreen.tsx`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
+### 2026-10-15 — Grammar Practice: the book's exercise after each grammar page
+
+- Chosen: each grammar page can carry `practice` (authored in `content/grammar-practice/*.json`, merged into the grammar pack). Continue on that page opens it (`Practice`) and the page completes when it is done. Tap-only kinds (`slot-build`, `slot-reels`, `chat-build`) live in `src/features/grammar-practice/`, checked by pure helpers in `src/utils/grammar/grammarPracticeCheck.ts`, reusing `PracticeChoiceButton` for the dock tiles. Lesson 7 Part 1 is the first: book pages 163, 164, 166.
+- Content must follow the printed exercise and use only taught words (test-enforced; book-printed glosses via `allowWords`). The older per-page `questions` stay unmounted.
+- Reason: the owner wants the book's exercises answered without typing or self-checking, faithful to the book, before a grammar quiz.
+- Affects: `content/grammar-practice/`, `scripts/content/exportAuthoredContent.ts`, `public/data/grammar/`, `src/types/{grammar,grammarPractice,models}.ts`, `src/features/grammar-practice/**`, `src/screens/grammar-lesson/{GrammarLessonScreen.tsx,hooks/useGrammarLessonPage.ts,hooks/useGrammarLessonKeyboardNavigation.ts,components/GrammarContinueFooter.tsx}`, `src/utils/grammar/{grammarPracticeCheck,validateGrammarPractice,validateInteractiveLessons}.ts`, `src/lib/widgets/AppIcon.tsx` (`cycle`), `src/screens/debug/DebugWindow.tsx`, `tests/{unit/grammarPracticeCheck,content/grammarPracticeVocabulary,content/authoredContentRoundTrip}.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
 ### 2026-10-05 — One pronunciation index: every reading, Taiwan-first
 
 - Chosen: `npm run pronunciation:build` builds `public/data/pronunciation/pronunciation.json` from CC-CEDICT (gitignored `output/pronunciation/cedict.txt`): every reading of ~9.9k characters, ordered course reading first, then a standalone "Taiwan pr." over the mainland reading (期 qí, also qī), then by how many (course, then TBCL/HSK-weighted) words use each reading. `~` marks same-meaning variants ("also pr.": 誰 shéi, also shuí); other readings carry a common example word (行 háng 銀行). Surname readings and pure "variant of" pointers (妳 nǎi) are dropped.

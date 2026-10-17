@@ -13,11 +13,6 @@ import { evaluateHookStylePreflight } from '../stylePreflight';
 import { renderDeterministicCandidate } from '../deterministicRenderer';
 
 dotenv.config({ path: resolve(import.meta.dirname, '../../../.env'), quiet: true });
-dotenv.config({
-  path: resolve(import.meta.dirname, '../../../.env.memory-hooks.local'),
-  quiet: true,
-  override: true,
-});
 
 interface QualityPlanArtifact {
   schemaVersion: 2;

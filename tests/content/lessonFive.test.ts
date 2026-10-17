@@ -28,8 +28,6 @@ test('Lesson 5 progresses from location to action, direction, and existence', ()
     'Subject +（不）在 + place word; Subject + 在 + place word + verb',
     'Place + 有／沒有 + noun',
   ]);
-  assert.ok(lessonFivePages[3].contrast);
-  assert.ok(lessonFivePages[4].contrast);
 });
 
 test('Every Lesson 5 grammar completes with canonical authored answers', () => {

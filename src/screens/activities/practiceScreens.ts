@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import type { FlashcardScreen } from '../flashcard';
 import type { ListeningScreen } from '../listening';
 import type { QuizScreen } from '../quiz';
+import type { ToneScreen } from '../tones';
 import type { WritingScreen } from '../writing';
 import type { ActivityType } from '../../types/models';
 
@@ -16,6 +17,7 @@ interface PracticeScreens {
   listening: typeof ListeningScreen;
   quiz: typeof QuizScreen;
   writing: typeof WritingScreen;
+  tones: typeof ToneScreen;
 }
 export type PracticeScreenKey = keyof PracticeScreens;
 
@@ -24,6 +26,7 @@ const loaders: { [K in PracticeScreenKey]: () => Promise<PracticeScreens[K]> } =
   listening: () => import('../listening').then((m) => m.ListeningScreen),
   quiz: () => import('../quiz').then((m) => m.QuizScreen),
   writing: () => import('../writing').then((m) => m.WritingScreen),
+  tones: () => import('../tones').then((m) => m.ToneScreen),
 };
 
 const loaded: Partial<{ [K in PracticeScreenKey]: PracticeScreens[K] }> = {};
@@ -31,7 +34,7 @@ const pending: Partial<Record<PracticeScreenKey, Promise<void>>> = {};
 
 export function practiceScreenKey(activity: ActivityType): PracticeScreenKey | null {
   if (activity === 'flashcards' || activity === 'flashcards-library' || activity === 'flashcards-review') return 'flashcards';
-  if (activity === 'listening' || activity === 'quiz' || activity === 'writing') return activity;
+  if (activity === 'listening' || activity === 'quiz' || activity === 'writing' || activity === 'tones') return activity;
   return null;
 }
 

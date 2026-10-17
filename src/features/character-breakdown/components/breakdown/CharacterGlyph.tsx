@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AppIcon } from '../../../../lib/widgets';
 
 /**
  * Glyph-support probes rasterize pixels, which is far too expensive to repeat
@@ -87,19 +88,19 @@ export function CharacterGlyph({ character, className = '' }: { character: strin
     return <span className={`font-chinese ${className}`}>{character}</span>;
   }
 
-  // The Rare fallback keeps the caller's layout classes (slot width, centering)
-  // but not its typography, so the label sits centered in the glyph slot.
+  // Unsupported glyphs show the puzzle (parts) icon in the caller's slot; text
+  // and font classes are dropped so only the layout (width, centering) carries over.
   const layoutClasses = className
     .split(' ')
-    .filter((c) => c && !c.startsWith('text-') && !c.startsWith('font-'))
+    .filter((c) => c && !/(^|:)(text|font|leading)-/.test(c))
     .join(' ');
   return (
     <span
-      className={`inline-flex min-w-10 items-center justify-center font-sans text-[10px] font-black uppercase tracking-wide text-ui-muted ${layoutClasses}`}
+      className={`inline-flex min-w-10 items-center justify-center text-ui-muted ${layoutClasses}`}
       aria-label="Rare character; glyph unavailable on this device"
       title="Rare character — glyph unavailable on this device"
     >
-      Rare
+      <AppIcon name="breakdown" size={26} />
     </span>
   );
 }

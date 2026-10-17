@@ -1,5 +1,4 @@
 import { SAMPLE_BOOKS } from '../../data/books';
-import { AppIcon } from '../../lib/widgets';
 import { CourseIcon } from './components/CourseIcons';
 import { useBookCarouselNavigation } from './hooks/useBookCarouselNavigation';
 
@@ -50,7 +49,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
                   if (!navigation.shouldIgnoreClick()) navigation.selectIndex(index);
                 }}
                 className={`absolute left-1/2 top-0 flex w-[280px] items-center justify-center p-2 focus-ring transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:w-[320px] md:w-[360px] ${
-                  book.status === 'locked' ? 'saturate-[0.6]' : ''
+                  book.status === 'locked' ? 'grayscale' : ''
                 }`}
                 style={{
                   zIndex: isActive ? 20 : Math.max(1, 10 - Math.abs(offset)),
@@ -64,13 +63,6 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
                     active={isActive}
                     className="pointer-events-none absolute -left-[30%] -top-[30%] h-[160%] w-[160%]"
                   />
-                  {book.status === 'locked' && (
-                    <span className="absolute inset-0 z-30 flex items-center justify-center">
-                      <span className="flex h-16 w-16 items-center justify-center rounded-feature border-b-4 border-ui-border bg-ui-surface/70 text-ui-muted">
-                        <AppIcon name="lock" size={32} />
-                      </span>
-                    </span>
-                  )}
                 </span>
               </button>
             );

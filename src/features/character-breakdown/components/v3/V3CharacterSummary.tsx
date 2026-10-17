@@ -16,6 +16,7 @@ import { useAppStore } from '../../../../store/useAppStore';
 import { LevelTag } from '../../../../lib/widgets';
 import { usePrimaryReading, useReadings } from '../../../../hooks/usePronunciation';
 import { useLevel } from '../../../../hooks/useLevels';
+import { useMediaQuery } from '../../../../hooks/useMediaQuery';
 
 export function V3CharacterSummary({
   character,
@@ -58,14 +59,15 @@ export function V3CharacterSummary({
   const [moreOpen, setMoreOpen] = useState(false);
   const reduceMotion = useReducedMotion();
   useEffect(() => setMoreOpen(false), [character]);
+  const wide = useMediaQuery('(min-width: 640px)');
 
   return (
     <header className="min-w-0">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 sm:gap-6">
         <CharacterHeroPanel character={character} accentHex={accentHex} />
-        <div className="flex min-w-0 flex-col gap-1.5 text-left">
+        <div className="flex min-w-0 max-w-full flex-col items-start gap-1.5 text-left">
           <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-            {pinyin && <span className="truncate text-[26px] font-black leading-tight text-brand-primary">{numberToToneMarks(pinyin)}</span>}
+            {pinyin && <span className="truncate text-2xl font-black sm:text-[26px] leading-tight text-brand-primary">{numberToToneMarks(pinyin)}</span>}
             {otherReadings.length > 0 && (
               <span className="text-xs font-bold text-ui-muted sm:text-sm">
                 also{' '}
@@ -77,11 +79,19 @@ export function V3CharacterSummary({
                 ))}
               </span>
             )}
+            {!wide && (
+              <SummaryQuickActions
+                className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8"
+                char={character}
+                pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
+                meaning={meaning}
+              />
+            )}
           </div>
           {meaning && (
-            <div className="flex min-w-0 items-start gap-1">
-              <p className="line-clamp-2 min-w-0 max-w-2xl text-[22px] font-black leading-tight text-ui-ink-strong">{meaning}</p>
-              {more?.hasExtra && <MoreDefinitionsToggle open={moreOpen} onToggle={() => setMoreOpen((value) => !value)} count={more.hasExtraDefinitions ? more.definitions.length - 1 : undefined} />}
+            <div className="flex min-w-0 items-start gap-0.5 sm:gap-1">
+              <p className="line-clamp-3 min-w-0 max-w-2xl text-pretty text-[18px] font-black leading-snug text-ui-ink-strong sm:line-clamp-2 sm:text-[22px] sm:leading-tight">{meaning}</p>
+              {more?.hasExtra && <MoreDefinitionsToggle open={moreOpen} onToggle={() => setMoreOpen((value) => !value)} count={wide && more.hasExtraDefinitions ? more.definitions.length - 1 : undefined} />}
             </div>
           )}
             <AnimatePresence initial={false}>
@@ -99,19 +109,30 @@ export function V3CharacterSummary({
                 </motion.div>
               )}
             </AnimatePresence>
-          {(courseCard || level) && (
-            <div className="flex flex-wrap items-center gap-2">
-              {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-              <LevelTag variant="chip" level={level} />
-            </div>
+          {wide ? (
+            <>
+              {(courseCard || level) && (
+                <div className="flex flex-wrap items-center gap-2">
+                  {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
+                  <LevelTag variant="chip" level={level} />
+                </div>
+              )}
+              <SummaryQuickActions
+                className="-ml-2 mt-0.5 flex items-center gap-1"
+                char={character}
+                audioSrc={data?.audio ?? undefined}
+                pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
+                meaning={meaning}
+              />
+            </>
+          ) : (
+            (courseCard || level) && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                {courseCard && <LevelTag bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
+                <LevelTag variant="chip" level={level} />
+              </div>
+            )
           )}
-          <SummaryQuickActions
-            className="-ml-2 mt-0.5 flex items-center gap-1"
-            char={character}
-            audioSrc={data?.audio ?? undefined}
-            pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
-            meaning={meaning}
-          />
         </div>
       </div>
     </header>

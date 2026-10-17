@@ -255,7 +255,7 @@
         "id": "b1l04-g05-glossary-36",
         "traditional": "學生",
         "simplified": "学生",
-        "pinyin": "xuéshēng",
+        "pinyin": "xuésheng",
         "meaning": "student"
       },
       {
@@ -670,7 +670,7 @@
         "id": "b1l04-g05-glossary-100",
         "traditional": "六萬多個學生",
         "simplified": "六万多个学生",
-        "pinyin": "liù wàn duō ge xuéshēng",
+        "pinyin": "liù wàn duō ge xuésheng",
         "meaning": "60,001–69,999 students"
       },
       {
@@ -700,6 +700,55 @@
         "simplified": "两个多星期",
         "pinyin": "liǎng ge duō xīngqí",
         "meaning": "more than two weeks"
+      },
+      {
+        "id": "b1l04g05p105-glx-105",
+        "traditional": "二十",
+        "pinyin": "èrshí",
+        "meaning": "twenty"
+      },
+      {
+        "id": "b1l04g05p105-glx-106",
+        "traditional": "三千",
+        "pinyin": "sān qiān",
+        "meaning": "three thousand"
+      },
+      {
+        "id": "b1l04g05p105-glx-107",
+        "traditional": "一百",
+        "pinyin": "yì bǎi",
+        "meaning": "one hundred"
+      },
+      {
+        "id": "b1l04g05p105-glx-108",
+        "traditional": "六萬",
+        "pinyin": "liù wàn",
+        "meaning": "sixty thousand",
+        "simplified": "六万"
+      },
+      {
+        "id": "b1l04g05p105-glx-109",
+        "traditional": "十一",
+        "pinyin": "shíyī",
+        "meaning": "eleven"
+      },
+      {
+        "id": "b1l04g05p105-glx-110",
+        "traditional": "十二",
+        "pinyin": "shí’èr",
+        "meaning": "twelve"
+      },
+      {
+        "id": "g05-p105-gfx-有",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have"
+      },
+      {
+        "id": "g05-p105-gfx-多少",
+        "traditional": "多少",
+        "pinyin": "duōshǎo",
+        "meaning": "how many; how much"
       }
     ],
     "pattern": "Number + 多 + measure word; Number + measure word + 多",
@@ -789,22 +838,34 @@
         },
         {
           "id": "g5-confusion-duo-time",
-          "question": "The clock shows a little after twelve. 多 before or after 點?",
-          "answer": "After 點: 十二點多. For a clock hour, 多 follows the time unit.",
-          "wrongTraditional": "十二多點。",
-          "wrongSimplified": "十二多点。",
+          "question": "A little after eleven — where does 多 go?",
+          "answer": "After the time word: 十一點多. For a clock hour, 多 follows 點.",
+          "wrongTraditional": "十一多點。",
+          "wrongSimplified": "十一多点。",
           "right": {
-            "traditional": "十二點多。",
-            "simplified": "十二点多。",
-            "pinyin": "Shí’èr diǎn duō.",
-            "english": "A little after twelve.",
+            "traditional": "十一點多。",
+            "simplified": "十一点多。",
+            "pinyin": "Shíyī diǎn duō.",
+            "english": "A little after eleven (11:00–12:00).",
             "words": [
               {
                 "id": "b1l04-g5-c2-word-1",
-                "traditional": "十二點多",
-                "simplified": "十二点多",
-                "pinyin": "shí’èr diǎn duō",
-                "meaning": "a little after twelve",
+                "traditional": "十一",
+                "pinyin": "shíyī",
+                "meaning": "eleven"
+              },
+              {
+                "id": "b1l04-g5-c2-word-2",
+                "traditional": "點",
+                "pinyin": "diǎn",
+                "meaning": "o’clock",
+                "simplified": "点"
+              },
+              {
+                "id": "b1l04-g5-c2-word-3",
+                "traditional": "多",
+                "pinyin": "duō",
+                "meaning": "a little over",
                 "suffix": "。"
               }
             ]
@@ -847,54 +908,34 @@
           "words": [
             {
               "id": "b1l04-g5-e1-word-1",
-              "traditional": "二十多朵花",
-              "pinyin": "èrshí duō duǒ huā",
-              "meaning": "21–29 flowers"
-            }
-          ]
-        }
-      },
-      {
-        "id": "g5-example-2",
-        "number": 2,
-        "text": {
-          "traditional": "三千多本書",
-          "simplified": "三千多本书",
-          "pinyin": "Sān qiān duō běn shū.",
-          "english": "3,001–3,999 books",
-          "words": [
+              "traditional": "二十",
+              "pinyin": "èrshí",
+              "meaning": "twenty"
+            },
             {
-              "id": "b1l04-g5-e2-word-1",
-              "traditional": "三千多本書",
-              "simplified": "三千多本书",
-              "pinyin": "sān qiān duō běn shū",
-              "meaning": "3,001–3,999 books"
-            }
-          ]
-        }
-      },
-      {
-        "id": "g5-example-3",
-        "number": 3,
-        "text": {
-          "traditional": "兩個多星期",
-          "simplified": "两个多星期",
-          "pinyin": "Liǎng ge duō xīngqí.",
-          "english": "More than two weeks but less than three.",
-          "words": [
+              "id": "b1l04-g5-e1-word-2",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more than; over"
+            },
             {
-              "id": "b1l04-g5-e3-word-1",
-              "traditional": "兩個多星期",
-              "simplified": "两个多星期",
-              "pinyin": "liǎng ge duō xīngqí",
-              "meaning": "more than two weeks"
+              "id": "b1l04-g5-e1-word-3",
+              "traditional": "朵",
+              "pinyin": "duǒ",
+              "meaning": "measure word for flowers"
+            },
+            {
+              "id": "b1l04-g5-e1-word-4",
+              "traditional": "花",
+              "pinyin": "huā",
+              "meaning": "flower"
             }
           ]
         }
       },
       {
         "id": "g5-example-4",
-        "number": 4,
+        "number": 2,
         "text": {
           "traditional": "一百多枝鉛筆",
           "simplified": "一百多枝铅笔",
@@ -903,97 +944,105 @@
           "words": [
             {
               "id": "b1l04-g5-e4-word-1",
-              "traditional": "一百多枝鉛筆",
-              "simplified": "一百多枝铅笔",
-              "pinyin": "yì bǎi duō zhī qiānbǐ",
-              "meaning": "101–199 pencils"
+              "traditional": "一百",
+              "pinyin": "yì bǎi",
+              "meaning": "one hundred"
+            },
+            {
+              "id": "b1l04-g5-e4-word-2",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more than; over"
+            },
+            {
+              "id": "b1l04-g5-e4-word-3",
+              "traditional": "枝",
+              "pinyin": "zhī",
+              "meaning": "measure word for pens"
+            },
+            {
+              "id": "b1l04-g5-e4-word-4",
+              "traditional": "鉛筆",
+              "pinyin": "qiānbǐ",
+              "meaning": "pencil",
+              "simplified": "铅笔"
             }
           ]
         },
         "teachingNote": null
       },
       {
+        "id": "g5-example-2",
+        "number": 3,
+        "text": {
+          "traditional": "三千多本書",
+          "simplified": "三千多本书",
+          "pinyin": "Sān qiān duō běn shū.",
+          "english": "3,001–3,999 books",
+          "words": [
+            {
+              "id": "b1l04-g5-e2-word-1",
+              "traditional": "三千",
+              "pinyin": "sān qiān",
+              "meaning": "three thousand"
+            },
+            {
+              "id": "b1l04-g5-e2-word-2",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more than; over"
+            },
+            {
+              "id": "b1l04-g5-e2-word-3",
+              "traditional": "本",
+              "pinyin": "běn",
+              "meaning": "measure word for books"
+            },
+            {
+              "id": "b1l04-g5-e2-word-4",
+              "traditional": "書",
+              "pinyin": "shū",
+              "meaning": "book",
+              "simplified": "书"
+            }
+          ]
+        }
+      },
+      {
         "id": "g5-example-5",
-        "number": 5,
+        "number": 4,
         "text": {
           "traditional": "六萬多個學生",
           "simplified": "六万多个学生",
-          "pinyin": "Liù wàn duō ge xuéshēng.",
+          "pinyin": "Liù wàn duō ge xuésheng.",
           "english": "60,001–69,999 students",
           "words": [
             {
               "id": "b1l04-g5-e5-word-1",
-              "traditional": "六萬多個學生",
-              "simplified": "六万多个学生",
-              "pinyin": "liù wàn duō ge xuéshēng",
-              "meaning": "60,001–69,999 students"
-            }
-          ]
-        },
-        "teachingNote": null
-      },
-      {
-        "id": "g5-example-6",
-        "number": 6,
-        "text": {
-          "traditional": "七個多月",
-          "simplified": "七个多月",
-          "pinyin": "Qī ge duō yuè.",
-          "english": "7–8 months",
-          "words": [
-            {
-              "id": "b1l04-g5-e6-word-1",
-              "traditional": "七個多月",
-              "simplified": "七个多月",
-              "pinyin": "qī ge duō yuè",
-              "meaning": "more than seven months"
-            }
-          ]
-        },
-        "teachingNote": null
-      },
-      {
-        "id": "g5-example-7",
-        "number": 7,
-        "text": {
-          "traditional": "四歲多",
-          "simplified": "四岁多",
-          "pinyin": "Sì suì duō.",
-          "english": "4–5 years old",
-          "words": [
-            {
-              "id": "b1l04-g5-e7-word-1",
-              "traditional": "四歲多",
-              "simplified": "四岁多",
-              "pinyin": "sì suì duō",
-              "meaning": "older than four, not yet five"
-            }
-          ]
-        },
-        "teachingNote": null
-      },
-      {
-        "id": "g5-example-8",
-        "number": 8,
-        "text": {
-          "traditional": "十二塊多（錢）",
-          "simplified": "十二块多（钱）",
-          "pinyin": "Shí’èr kuài duō (qián).",
-          "english": "$12–13",
-          "words": [
-            {
-              "id": "b1l04-g5-e8-word-1",
-              "traditional": "十二塊多",
-              "simplified": "十二块多",
-              "pinyin": "shí’èr kuài duō",
-              "meaning": "more than twelve dollars"
+              "traditional": "六萬",
+              "pinyin": "liù wàn",
+              "meaning": "sixty thousand",
+              "simplified": "六万"
             },
             {
-              "id": "b1l04-g5-e8-word-2",
-              "traditional": "（錢）",
-              "simplified": "（钱）",
-              "pinyin": "(qián)",
-              "meaning": "money"
+              "id": "b1l04-g5-e5-word-2",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more than; over"
+            },
+            {
+              "id": "b1l04-g5-e5-word-3",
+              "traditional": "個",
+              "pinyin": "ge",
+              "meaning": "general measure word",
+              "simplified": "个"
+            },
+            {
+              "id": "b1l04-g5-e5-word-4",
+              "traditional": "學生",
+              "pinyin": "xuésheng",
+              "meaning": "student",
+              "simplified": "学生"
             }
           ]
         },
@@ -1001,12 +1050,12 @@
       },
       {
         "id": "g5-example-9",
-        "number": 9,
+        "number": 5,
         "text": {
           "traditional": "A：現在你有多少錢？ B：五百多塊錢。",
           "simplified": "A：现在你有多少钱？ B：五百多块钱。",
           "pinyin": "A: Xiànzài nǐ yǒu duōshǎo qián? B: Wǔ bǎi duō kuài qián.",
-          "english": "A: How much money do you have right now? B: More than five hundred dollars.",
+          "english": "A: How much money do you have right now? B: More than five hundred dollars (501–599).",
           "words": [
             {
               "id": "b1l04-g5-e9-word-1",
@@ -1051,12 +1100,12 @@
       },
       {
         "id": "g5-example-10",
-        "number": 10,
+        "number": 6,
         "text": {
           "traditional": "A：你們學校有多少學生？ B：兩千多個。",
           "simplified": "A：你们学校有多少学生？ B：两千多个。",
-          "pinyin": "A: Nǐmen xuéxiào yǒu duōshǎo xuéshēng? B: Liǎng qiān duō ge.",
-          "english": "A: How many students does your school have? B: More than two thousand.",
+          "pinyin": "A: Nǐmen xuéxiào yǒu duōshǎo xuésheng? B: Liǎng qiān duō ge.",
+          "english": "A: How many students does your school have? B: More than two thousand (2,001–2,999).",
           "words": [
             {
               "id": "b1l04-g5-e10-word-1",
@@ -1089,7 +1138,7 @@
               "id": "b1l04-g5-e10-word-5",
               "traditional": "學生",
               "simplified": "学生",
-              "pinyin": "xuéshēng",
+              "pinyin": "xuésheng",
               "meaning": "student",
               "suffix": "？"
             },
@@ -1108,7 +1157,7 @@
       },
       {
         "id": "g5-example-11",
-        "number": 11,
+        "number": 7,
         "text": {
           "traditional": "A：這支手機多少錢？ B：一萬多塊錢。",
           "simplified": "A：这支手机多少钱？ B：一万多块钱。",
@@ -1143,50 +1192,160 @@
           ]
         },
         "teachingNote": null
+      },
+      {
+        "id": "g5-example-3",
+        "number": 8,
+        "text": {
+          "traditional": "兩個多星期",
+          "simplified": "两个多星期",
+          "pinyin": "Liǎng ge duō xīngqí.",
+          "english": "More than two weeks but less than three.",
+          "words": [
+            {
+              "id": "b1l04-g5-e3-word-1",
+              "traditional": "兩",
+              "pinyin": "liǎng",
+              "meaning": "two before a measure word",
+              "simplified": "两"
+            },
+            {
+              "id": "b1l04-g5-e3-word-2",
+              "traditional": "個",
+              "pinyin": "ge",
+              "meaning": "general measure word",
+              "simplified": "个"
+            },
+            {
+              "id": "b1l04-g5-e3-word-3",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "a little over"
+            },
+            {
+              "id": "b1l04-g5-e3-word-4",
+              "traditional": "星期",
+              "pinyin": "xīngqí",
+              "meaning": "week"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-example-6",
+        "number": 9,
+        "text": {
+          "traditional": "七個多月",
+          "simplified": "七个多月",
+          "pinyin": "Qī ge duō yuè.",
+          "english": "7–8 months",
+          "words": [
+            {
+              "id": "b1l04-g5-e6-word-1",
+              "traditional": "七",
+              "pinyin": "qī",
+              "meaning": "seven"
+            },
+            {
+              "id": "b1l04-g5-e6-word-2",
+              "traditional": "個",
+              "pinyin": "ge",
+              "meaning": "general measure word",
+              "simplified": "个"
+            },
+            {
+              "id": "b1l04-g5-e6-word-3",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "a little over"
+            },
+            {
+              "id": "b1l04-g5-e6-word-4",
+              "traditional": "月",
+              "pinyin": "yuè",
+              "meaning": "month"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "g5-example-7",
+        "number": 10,
+        "text": {
+          "traditional": "四歲多",
+          "simplified": "四岁多",
+          "pinyin": "Sì suì duō.",
+          "english": "4–5 years old",
+          "words": [
+            {
+              "id": "b1l04-g5-e7-word-1",
+              "traditional": "四",
+              "pinyin": "sì",
+              "meaning": "four"
+            },
+            {
+              "id": "b1l04-g5-e7-word-2",
+              "traditional": "歲",
+              "pinyin": "suì",
+              "meaning": "years old",
+              "simplified": "岁"
+            },
+            {
+              "id": "b1l04-g5-e7-word-3",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "a little over"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "g5-example-8",
+        "number": 11,
+        "text": {
+          "traditional": "十二塊多（錢）",
+          "simplified": "十二块多（钱）",
+          "pinyin": "Shí’èr kuài duō (qián).",
+          "english": "$12–13",
+          "words": [
+            {
+              "id": "b1l04-g5-e8-word-1",
+              "traditional": "十二",
+              "pinyin": "shí'èr",
+              "meaning": "twelve"
+            },
+            {
+              "id": "b1l04-g5-e8-word-2",
+              "traditional": "塊",
+              "pinyin": "kuài",
+              "meaning": "dollar unit",
+              "simplified": "块"
+            },
+            {
+              "id": "b1l04-g5-e8-word-3",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "a little over"
+            },
+            {
+              "id": "b1l04-g5-e8-word-4",
+              "traditional": "錢",
+              "pinyin": "qián",
+              "meaning": "money",
+              "simplified": "钱",
+              "prefix": "（",
+              "suffix": "）"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
-    "exerciseTitle": "Place 多, estimate the range",
-    "exercisePreview": "Answer all six printed picture prompts with 多.",
+    "exerciseTitle": "Answer the following questions with 多.",
+    "exercisePreview": "Use 多 to describe the pictured quantities.",
     "exerciseInstruction": "Use the visible quantity as the starting amount. Choose whether 多 follows a round number or a unit.",
-    "exerciseNote": "The source age prompt depends on the moving date 今天. Question 5 uses the textbook’s stable 四歲多 model so the answer stays correct over time.",
-    "exerciseCues": [
-      {
-        "id": "g5-cue-people",
-        "label": "Picture 1",
-        "pinyin": "shí duō ge rén",
-        "detail": "Fifteen people are pictured."
-      },
-      {
-        "id": "g5-cue-tea",
-        "label": "Picture 2",
-        "pinyin": "yì bǎi duō kuài qián",
-        "detail": "Two cups of black tea cost $180."
-      },
-      {
-        "id": "g5-cue-shirt",
-        "label": "Picture 3",
-        "pinyin": "liǎng qiān duō kuài qián",
-        "detail": "The shirt costs $2,200."
-      },
-      {
-        "id": "g5-cue-clock",
-        "label": "Picture 4",
-        "pinyin": "shí’èr diǎn duō",
-        "detail": "The clock shows a time slightly after twelve."
-      },
-      {
-        "id": "g5-cue-age",
-        "label": "Stable age model",
-        "pinyin": "sì suì duō",
-        "detail": "The printed birth-date prompt changes with 今天; the app uses the source model range 4–5."
-      },
-      {
-        "id": "g5-cue-total",
-        "label": "Picture 6",
-        "pinyin": "bā kuài duō",
-        "detail": "Three pens and one flower cost US$8.45 in total."
-      }
-    ],
     "questions": [
       {
         "id": "g5-question-1",
@@ -1530,8 +1689,8 @@
         ],
         "exampleIds": [
           "g5-example-1",
-          "g5-example-2",
           "g5-example-4",
+          "g5-example-2",
           "g5-example-5",
           "g5-example-9",
           "g5-example-10",
@@ -1684,7 +1843,7 @@
               ],
               []
             ],
-            "english": "a little after 11:00 (11:00–12:00)"
+            "english": "After 11:00 (11:00–12:00)"
           }
         ],
         "exampleIds": [
@@ -1712,7 +1871,7 @@
       105
     ],
     "audioReference": "04-2-3",
-    "explanation": "Build large numbers by place: 十 (10), 百 (100), 千 (1,000), 萬 (10,000). Read from largest to smallest. If a place has zero, say 零 once.",
+    "explanation": "Build numbers with 十 (10), 百 (100), 千 (1,000) and 萬 (10,000). Read the biggest part first, then the rest. When a middle place is empty, say 零 once; zeroes at the end are not read.",
     "focusTerms": [
       "萬",
       "万",
@@ -2247,13 +2406,13 @@
       {
         "id": "b1l04-g04-glossary-82",
         "traditional": "一百一十五",
-        "pinyin": "yì bǎi yīshíwǔ",
+        "pinyin": "yì bǎi yī shí wǔ",
         "meaning": "115"
       },
       {
         "id": "b1l04-g04-glossary-83",
-        "traditional": "八百五十",
-        "pinyin": "bā bǎi wǔshí",
+        "traditional": "八百五（十）",
+        "pinyin": "bā bǎi wǔ (shí)",
         "meaning": "850"
       },
       {
@@ -2399,6 +2558,118 @@
         "simplified": "两个多星期",
         "pinyin": "liǎng ge duō xīngqí",
         "meaning": "more than two weeks"
+      },
+      {
+        "id": "b1l04g04p104-glx-105",
+        "traditional": "一百",
+        "pinyin": "yì bǎi",
+        "meaning": "one hundred"
+      },
+      {
+        "id": "b1l04g04p104-glx-106",
+        "traditional": "五百",
+        "pinyin": "wǔ bǎi",
+        "meaning": "five hundred"
+      },
+      {
+        "id": "b1l04g04p104-glx-107",
+        "traditional": "九萬",
+        "pinyin": "jiǔ wàn",
+        "meaning": "ninety thousand",
+        "simplified": "九万"
+      },
+      {
+        "id": "b1l04g04p104-glx-108",
+        "traditional": "兩千",
+        "pinyin": "liǎng qiān",
+        "meaning": "two thousand",
+        "simplified": "两千"
+      },
+      {
+        "id": "b1l04g04p104-glx-109",
+        "traditional": "兩百",
+        "pinyin": "liǎng bǎi",
+        "meaning": "two hundred",
+        "simplified": "两百"
+      },
+      {
+        "id": "b1l04g04p104-glx-110",
+        "traditional": "八百五（十）",
+        "pinyin": "bā bǎi wǔ (shí)",
+        "meaning": "850 (short reading)"
+      },
+      {
+        "id": "b1l04g04p104-glx-111",
+        "traditional": "六千五（百）",
+        "pinyin": "liù qiān wǔ (bǎi)",
+        "meaning": "6,500 (short reading)"
+      },
+      {
+        "id": "b1l04g04p104-glx-112",
+        "traditional": "七萬八（千）",
+        "pinyin": "qī wàn bā (qiān)",
+        "meaning": "78,000 (short reading)",
+        "simplified": "七万八（千）"
+      },
+      {
+        "id": "b1l04g04p104-glx-113",
+        "traditional": "五十萬",
+        "pinyin": "wǔ shí wàn",
+        "meaning": "500,000",
+        "simplified": "五十万"
+      },
+      {
+        "id": "b1l04g04p104-glx-114",
+        "traditional": "九千萬",
+        "pinyin": "jiǔ qiān wàn",
+        "meaning": "ninety million",
+        "simplified": "九千万"
+      },
+      {
+        "id": "b1l04g04p104-glx-115",
+        "traditional": "九千零九萬",
+        "pinyin": "jiǔ qiān líng jiǔ wàn",
+        "meaning": "90,090,000",
+        "simplified": "九千零九万"
+      },
+      {
+        "id": "b1l04g04p104-glx-116",
+        "traditional": "五千八十",
+        "pinyin": "wǔ qiān bāshí",
+        "meaning": "5,080 said without the zero bridge"
+      },
+      {
+        "id": "b1l04g04p104-glx-117",
+        "traditional": "九三六六八四九三",
+        "pinyin": "jiǔ sān liù liù bā sì jiǔ sān",
+        "meaning": "0936-068-493 with the zeros dropped"
+      },
+      {
+        "id": "b1l04g04p104-glx-118",
+        "traditional": "兩千兩百老師",
+        "pinyin": "liǎng qiān liǎng bǎi lǎoshī",
+        "meaning": "2,200 teachers without 位",
+        "simplified": "两千两百老师"
+      },
+      {
+        "id": "b1l04g04p104-glx-119",
+        "traditional": "二千兩百位老師",
+        "pinyin": "èr qiān liǎng bǎi wèi lǎoshī",
+        "meaning": "2,200 teachers said with 二",
+        "simplified": "二千两百位老师"
+      },
+      {
+        "id": "b1l04g04p104-glx-120",
+        "traditional": "一百五",
+        "pinyin": "yì bǎi wǔ",
+        "meaning": "short for 150; wrong for 105"
+      },
+      {
+        "id": "b1l04g04p104-glx-121",
+        "traditional": "不說",
+        "pinyin": "bù shuō",
+        "meaning": "not said",
+        "simplified": "不说"
       }
     ],
     "pattern": "Read the biggest part, then read the rest",
@@ -2500,8 +2771,8 @@
             {
               "label": "十／個",
               "digit": "00",
-              "traditional": "不說",
-              "simplified": "不说"
+              "traditional": "—",
+              "simplified": "—"
             }
           ],
           "note": "零 bridges the missing 千 place. Zeroes at the end are not spoken."
@@ -2524,35 +2795,35 @@
             {
               "label": "ones block",
               "digit": "0000",
-              "traditional": "不說",
-              "simplified": "不说"
+              "traditional": "—",
+              "simplified": "—"
             }
           ],
           "note": "Chinese groups large numbers around 萬: 305 groups of ten thousand."
         },
         {
-          "id": "number-90000000",
-          "label": "90,000,000",
-          "digits": "90,000,000",
-          "traditional": "九千萬",
-          "simplified": "九千万",
-          "pinyin": "jiǔ qiān wàn",
-          "english": "ninety million",
+          "id": "number-90090000",
+          "label": "90,090,000",
+          "digits": "90,090,000",
+          "traditional": "九千零九萬",
+          "simplified": "九千零九万",
+          "pinyin": "jiǔ qiān líng jiǔ wàn",
+          "english": "90,090,000",
           "groups": [
             {
               "label": "萬 block",
-              "digit": "9000",
-              "traditional": "九千萬",
-              "simplified": "九千万"
+              "digit": "9009",
+              "traditional": "九千零九萬",
+              "simplified": "九千零九万"
             },
             {
               "label": "ones block",
               "digit": "0000",
-              "traditional": "不說",
-              "simplified": "不说"
+              "traditional": "—",
+              "simplified": "—"
             }
           ],
-          "note": "九千 groups of ten thousand."
+          "note": "Say how many 萬 there are: 九千零九 groups of ten thousand. The final zeroes are not spoken."
         }
       ],
       "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
@@ -2563,20 +2834,20 @@
       "items": [
         {
           "id": "g4-confusion-zero",
-          "question": "5,080 — do I say 零?",
-          "answer": "Yes, once. One 零 bridges the empty 百 place: 五千零八十.",
-          "wrongTraditional": "五千八十。",
+          "question": "105 — do I say zero out loud?",
+          "answer": "Use 一百零五 for 105; 一百五 is the short reading of 150.",
+          "wrongTraditional": "一百五。",
           "right": {
-            "traditional": "五千零八十。",
-            "simplified": "五千零八十。",
-            "pinyin": "Wǔ qiān líng bāshí.",
-            "english": "Five thousand and eighty (5,080).",
+            "traditional": "一百零五。",
+            "simplified": "一百零五。",
+            "pinyin": "Yì bǎi líng wǔ.",
+            "english": "One hundred and five (105).",
             "words": [
               {
                 "id": "b1l04-g4-c1-word-1",
-                "traditional": "五千零八十",
-                "pinyin": "wǔ qiān líng bāshí",
-                "meaning": "5,080",
+                "traditional": "一百零五",
+                "pinyin": "yì bǎi líng wǔ",
+                "meaning": "one hundred and five",
                 "suffix": "。"
               }
             ]
@@ -2584,62 +2855,238 @@
         },
         {
           "id": "g4-confusion-liang",
-          "question": "2,200 — is it 二 or 兩?",
-          "answer": "兩. Use 兩 before 千, 百, and 萬: 兩千兩百. 二 stays in tens and single digits.",
-          "wrongTraditional": "二千兩百位老師。",
-          "wrongSimplified": "二千两百位老师。",
+          "question": "Do I read the zeroes at the end?",
+          "answer": "No. Say 九萬零五百 for 90,500; leave the final zeroes silent.",
+          "wrongTraditional": "九萬零五百零零。",
+          "wrongSimplified": "九万零五百零零。",
           "right": {
-            "traditional": "兩千兩百位老師。",
-            "simplified": "两千两百位老师。",
-            "pinyin": "Liǎng qiān liǎng bǎi wèi lǎoshī.",
-            "english": "2,200 teachers.",
+            "traditional": "九萬零五百",
+            "simplified": "九万零五百",
+            "pinyin": "Jiǔ wàn líng wǔ bǎi.",
+            "english": "Ninety thousand five hundred.",
             "words": [
               {
-                "id": "b1l04-g4-c2-word-1",
-                "traditional": "兩千兩百位老師",
-                "simplified": "两千两百位老师",
-                "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
-                "meaning": "2,200 teachers",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g4-confusion-wan",
-          "question": "How do I say 30,000?",
-          "answer": "三萬. After 千 comes 萬, the ten-thousand group: 三萬, not 三十千.",
-          "wrongTraditional": "三十千。",
-          "right": {
-            "traditional": "三萬。",
-            "simplified": "三万。",
-            "pinyin": "Sān wàn.",
-            "english": "Thirty thousand (30,000).",
-            "words": [
-              {
-                "id": "b1l04-g4-c3-word-1",
-                "traditional": "三",
-                "pinyin": "sān",
-                "meaning": "three"
-              },
-              {
-                "id": "b1l04-g4-c3-word-2",
-                "traditional": "萬",
-                "simplified": "万",
-                "pinyin": "wàn",
-                "meaning": "ten thousand",
-                "suffix": "。"
+                "id": "g4-row-90500-token",
+                "traditional": "九萬零五百",
+                "pinyin": "jiǔ wàn líng wǔ bǎi",
+                "meaning": "90,500",
+                "simplified": "九万零五百"
               }
             ]
           }
         }
       ]
     },
-    "examples": [],
-    "exerciseTitle": "Decode the place values",
-    "exercisePreview": "Read one number from each printed source set.",
-    "exerciseInstruction": "Choose the spoken form that preserves every important place and uses 零 correctly.",
-    "exerciseNote": "The source exercise is oral and contains several items per set. These scored representatives cover ordinary numbers, phone digits, and number + measure word.",
+    "examples": [
+      {
+        "id": "g4-ex-1",
+        "number": 1,
+        "text": {
+          "traditional": "一百零五",
+          "simplified": "一百零五",
+          "pinyin": "yì bǎi líng wǔ",
+          "english": "105",
+          "words": [
+            {
+              "id": "g4-ex-1-w1",
+              "traditional": "一百零五",
+              "pinyin": "yì bǎi líng wǔ",
+              "meaning": "105"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-2",
+        "number": 2,
+        "text": {
+          "traditional": "一百一十五",
+          "simplified": "一百一十五",
+          "pinyin": "yì bǎi yī shí wǔ",
+          "english": "115",
+          "words": [
+            {
+              "id": "g4-ex-2-w1",
+              "traditional": "一百一十五",
+              "pinyin": "yì bǎi yī shí wǔ",
+              "meaning": "115"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-3",
+        "number": 3,
+        "text": {
+          "traditional": "八百五（十）",
+          "simplified": "八百五（十）",
+          "pinyin": "bā bǎi wǔ (shí)",
+          "english": "850",
+          "words": [
+            {
+              "id": "g4-ex-3-w1",
+              "traditional": "八百五（十）",
+              "pinyin": "bā bǎi wǔ (shí)",
+              "meaning": "850"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-4",
+        "number": 4,
+        "text": {
+          "traditional": "兩千零五",
+          "simplified": "两千零五",
+          "pinyin": "liǎng qiān líng wǔ",
+          "english": "2,005",
+          "words": [
+            {
+              "id": "g4-ex-4-w1",
+              "traditional": "兩千零五",
+              "pinyin": "liǎng qiān líng wǔ",
+              "meaning": "2,005",
+              "simplified": "两千零五"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-5",
+        "number": 5,
+        "text": {
+          "traditional": "六千五（百）",
+          "simplified": "六千五（百）",
+          "pinyin": "liù qiān wǔ (bǎi)",
+          "english": "6,500",
+          "words": [
+            {
+              "id": "g4-ex-5-w1",
+              "traditional": "六千五（百）",
+              "pinyin": "liù qiān wǔ (bǎi)",
+              "meaning": "6,500"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-6",
+        "number": 6,
+        "text": {
+          "traditional": "七萬八（千）",
+          "simplified": "七万八（千）",
+          "pinyin": "qī wàn bā (qiān)",
+          "english": "78,000",
+          "words": [
+            {
+              "id": "g4-ex-6-w1",
+              "traditional": "七萬八（千）",
+              "pinyin": "qī wàn bā (qiān)",
+              "meaning": "78,000",
+              "simplified": "七万八（千）"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-7",
+        "number": 7,
+        "text": {
+          "traditional": "九萬零五百",
+          "simplified": "九万零五百",
+          "pinyin": "jiǔ wàn líng wǔ bǎi",
+          "english": "90,500",
+          "words": [
+            {
+              "id": "g4-ex-7-w1",
+              "traditional": "九萬零五百",
+              "pinyin": "jiǔ wàn líng wǔ bǎi",
+              "meaning": "90,500",
+              "simplified": "九万零五百"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-8",
+        "number": 8,
+        "text": {
+          "traditional": "五十萬",
+          "simplified": "五十万",
+          "pinyin": "wǔ shí wàn",
+          "english": "500,000",
+          "words": [
+            {
+              "id": "g4-ex-8-w1",
+              "traditional": "五十萬",
+              "pinyin": "wǔ shí wàn",
+              "meaning": "500,000",
+              "simplified": "五十万"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-9",
+        "number": 9,
+        "text": {
+          "traditional": "三百零五萬",
+          "simplified": "三百零五万",
+          "pinyin": "sān bǎi líng wǔ wàn",
+          "english": "3,050,000",
+          "words": [
+            {
+              "id": "g4-ex-9-w1",
+              "traditional": "三百零五萬",
+              "pinyin": "sān bǎi líng wǔ wàn",
+              "meaning": "3,050,000",
+              "simplified": "三百零五万"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-10",
+        "number": 10,
+        "text": {
+          "traditional": "九千萬",
+          "simplified": "九千万",
+          "pinyin": "jiǔ qiān wàn",
+          "english": "ninety million",
+          "words": [
+            {
+              "id": "g4-ex-10-w1",
+              "traditional": "九千萬",
+              "pinyin": "jiǔ qiān wàn",
+              "meaning": "ninety million",
+              "simplified": "九千万"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-ex-11",
+        "number": 11,
+        "text": {
+          "traditional": "九千零九萬",
+          "simplified": "九千零九万",
+          "pinyin": "jiǔ qiān líng jiǔ wàn",
+          "english": "90,090,000",
+          "words": [
+            {
+              "id": "g4-ex-11-w1",
+              "traditional": "九千零九萬",
+              "pinyin": "jiǔ qiān líng jiǔ wàn",
+              "meaning": "90,090,000",
+              "simplified": "九千零九万"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Please read the following numbers.",
+    "exercisePreview": "Read numbers, cell phone numbers, and quantities with measure words.",
+    "exerciseInstruction": "Read the following numbers.",
     "questions": [
       {
         "id": "g4-question-1",
@@ -2766,651 +3213,655 @@
     ],
     "subsections": [
       {
-        "id": "b1l04-g04-sec-1",
+        "id": "b1l04-g04-sec-table",
         "sectionNumber": 1,
-        "title": "The four building blocks",
-        "explanation": "These four words are the blocks. Put a number in front of a block to count it: 三 + 百 = 三百.",
+        "title": "Numerical System in Chinese",
+        "explanation": "The blocks run 十 (10), 百 (100), 千 (1,000) and 萬 (10,000). Read the biggest part first, then what is left. When a middle place is empty, say 零 once; zeroes at the end are not read. In prices and amounts the last block word is often dropped (八百五 for 八百五十).",
         "patternColumns": [
-          "Block",
-          "Means",
-          "Example"
-        ],
-        "patternColumnDetails": [
-          "block",
-          "value",
-          "number + block"
-        ],
-        "patternRows": [
-          {
-            "id": "g4-block-row-1",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-block-ten",
-                  "traditional": "十",
-                  "pinyin": "shí",
-                  "meaning": "ten"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-ten-value",
-                  "traditional": "10",
-                  "pinyin": "shí",
-                  "meaning": "ten"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-ten-example",
-                  "traditional": "二十",
-                  "pinyin": "èrshí",
-                  "meaning": "twenty"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-block-row-2",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-block-hundred",
-                  "traditional": "百",
-                  "pinyin": "bǎi",
-                  "meaning": "hundred"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-hundred-value",
-                  "traditional": "100",
-                  "pinyin": "bǎi",
-                  "meaning": "one hundred"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-hundred-example",
-                  "traditional": "三百",
-                  "pinyin": "sān bǎi",
-                  "meaning": "three hundred"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-block-row-3",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-block-thousand",
-                  "traditional": "千",
-                  "pinyin": "qiān",
-                  "meaning": "thousand"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-thousand-value",
-                  "traditional": "1,000",
-                  "pinyin": "qiān",
-                  "meaning": "one thousand"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-thousand-example",
-                  "traditional": "五千",
-                  "pinyin": "wǔ qiān",
-                  "meaning": "five thousand"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-block-row-4",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-block-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-wan-value",
-                  "traditional": "10,000",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand"
-                }
-              ],
-              [
-                {
-                  "id": "g4-block-wan-example",
-                  "traditional": "八萬",
-                  "pinyin": "bā wàn",
-                  "meaning": "eighty thousand",
-                  "simplified": "八万"
-                }
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "id": "b1l04-g04-sec-2",
-        "sectionNumber": 2,
-        "title": "Read the first part, then the rest",
-        "explanation": "Read the biggest part, then read what is left: 一百 + 一十五. When a place is skipped, the second part starts with 零: 一百 + 零五.",
-        "patternColumns": [
-          "Number",
-          "First part",
-          "The rest"
-        ],
-        "patternColumnDetails": [
-          "digits",
-          "biggest part",
-          "what is left"
-        ],
-        "patternRows": [
-          {
-            "id": "g4-split-row-1",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-split-115-digits",
-                  "traditional": "115",
-                  "pinyin": "yì bǎi yī shí wǔ",
-                  "meaning": "115"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-115-first",
-                  "traditional": "一百",
-                  "pinyin": "yì bǎi",
-                  "meaning": "one hundred"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-115-rest",
-                  "traditional": "一十五",
-                  "pinyin": "yī shí wǔ",
-                  "meaning": "fifteen"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-split-row-2",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-split-105-digits",
-                  "traditional": "105",
-                  "pinyin": "yì bǎi líng wǔ",
-                  "meaning": "105"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-105-first",
-                  "traditional": "一百",
-                  "pinyin": "yì bǎi",
-                  "meaning": "one hundred"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-105-rest",
-                  "traditional": "零五",
-                  "pinyin": "líng wǔ",
-                  "meaning": "zero five"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-split-row-3",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-split-850-digits",
-                  "traditional": "850",
-                  "pinyin": "bā bǎi wǔ shí",
-                  "meaning": "850"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-850-first",
-                  "traditional": "八百",
-                  "pinyin": "bā bǎi",
-                  "meaning": "eight hundred"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-850-rest",
-                  "traditional": "五十",
-                  "pinyin": "wǔ shí",
-                  "meaning": "fifty"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-split-row-4",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-split-2005-digits",
-                  "traditional": "2,005",
-                  "pinyin": "liǎng qiān líng wǔ",
-                  "meaning": "2,005"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-2005-first",
-                  "traditional": "兩千",
-                  "pinyin": "liǎng qiān",
-                  "meaning": "two thousand",
-                  "simplified": "两千"
-                }
-              ],
-              [
-                {
-                  "id": "g4-split-2005-rest",
-                  "traditional": "零五",
-                  "pinyin": "líng wǔ",
-                  "meaning": "zero five"
-                }
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "id": "b1l04-g04-sec-3",
-        "sectionNumber": 3,
-        "title": "The last word can be dropped",
-        "explanation": "In prices and amounts, the last place word is often left out. Both ways mean the same number: 八百五十 = 八百五.",
-        "patternColumns": [
-          "Number",
-          "Full reading",
-          "Short way"
-        ],
-        "patternColumnDetails": [
-          "digits",
-          "with the last word",
-          "with it dropped"
-        ],
-        "patternRows": [
-          {
-            "id": "g4-drop-row-1",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-drop-850-digits",
-                  "traditional": "850",
-                  "pinyin": "bā bǎi wǔ shí",
-                  "meaning": "850"
-                }
-              ],
-              [
-                {
-                  "id": "g4-drop-850-full",
-                  "traditional": "八百五十",
-                  "pinyin": "bā bǎi wǔ shí",
-                  "meaning": "eight hundred fifty"
-                }
-              ],
-              [
-                {
-                  "id": "g4-drop-850-short",
-                  "traditional": "八百五",
-                  "pinyin": "bā bǎi wǔ",
-                  "meaning": "eight hundred fifty (short way)"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-drop-row-2",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-drop-6500-digits",
-                  "traditional": "6,500",
-                  "pinyin": "liù qiān wǔ bǎi",
-                  "meaning": "6,500"
-                }
-              ],
-              [
-                {
-                  "id": "g4-drop-6500-full",
-                  "traditional": "六千五百",
-                  "pinyin": "liù qiān wǔ bǎi",
-                  "meaning": "six thousand five hundred"
-                }
-              ],
-              [
-                {
-                  "id": "g4-drop-6500-short",
-                  "traditional": "六千五",
-                  "pinyin": "liù qiān wǔ",
-                  "meaning": "six thousand five hundred (short way)"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "g4-drop-row-3",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-drop-78000-digits",
-                  "traditional": "78,000",
-                  "pinyin": "qī wàn bā qiān",
-                  "meaning": "78,000"
-                }
-              ],
-              [
-                {
-                  "id": "g4-drop-78000-full",
-                  "traditional": "七萬八千",
-                  "pinyin": "qī wàn bā qiān",
-                  "meaning": "seventy-eight thousand",
-                  "simplified": "七万八千"
-                }
-              ],
-              [
-                {
-                  "id": "g4-drop-78000-short",
-                  "traditional": "七萬八",
-                  "pinyin": "qī wàn bā",
-                  "meaning": "seventy-eight thousand (short way)",
-                  "simplified": "七万八"
-                }
-              ]
-            ]
-          }
-        ]
-      },
-      {
-        "id": "b1l04-g04-sec-4",
-        "sectionNumber": 4,
-        "title": "Big numbers: how many 萬",
-        "explanation": "萬 counts ten-thousands. Say how many 萬, then add what is left: 七 萬 八千 is 7 × 10,000 + 8,000.",
-        "patternColumns": [
-          "Number",
-          "How many",
+          "千萬",
+          "百萬",
+          "十萬",
           "萬",
-          "The rest"
+          "千",
+          "百",
+          "十",
+          "個"
         ],
         "patternColumnDetails": [
-          "digits",
-          "count of 萬",
-          "ten thousand",
-          "what is left"
+          "10⁷",
+          "10⁶",
+          "10⁵",
+          "10⁴",
+          "10³",
+          "10²",
+          "10¹",
+          "(個)"
         ],
         "patternRows": [
           {
-            "id": "g4-wan-row-1",
+            "id": "g4-row-105",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
+              [],
+              [],
+              [],
+              [],
+              [],
               [
                 {
-                  "id": "g4-wan-78000-digits",
-                  "traditional": "78,000",
-                  "pinyin": "qī wàn bā qiān",
-                  "meaning": "78,000"
+                  "id": "g4-row-105-digit-5",
+                  "traditional": "1",
+                  "pinyin": "yī",
+                  "meaning": "1"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-78000-count",
-                  "traditional": "七",
+                  "id": "g4-row-105-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "say"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-105-digit-7",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-1"
+          },
+          {
+            "id": "g4-row-115",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              [
+                {
+                  "id": "g4-row-115-digit-5",
+                  "traditional": "1",
+                  "pinyin": "yī",
+                  "meaning": "1"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-115-digit-6",
+                  "traditional": "1",
+                  "pinyin": "yī",
+                  "meaning": "1"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-115-digit-7",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-2"
+          },
+          {
+            "id": "g4-row-850",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              [
+                {
+                  "id": "g4-row-850-digit-5",
+                  "traditional": "8",
+                  "pinyin": "bā",
+                  "meaning": "8"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-850-digit-6",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-850-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-3"
+          },
+          {
+            "id": "g4-row-2005",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [],
+              [],
+              [],
+              [
+                {
+                  "id": "g4-row-2005-digit-4",
+                  "traditional": "2",
+                  "pinyin": "èr",
+                  "meaning": "2",
+                  "suffix": ","
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-2005-digit-5",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "say"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-2005-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-2005-digit-7",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-4"
+          },
+          {
+            "id": "g4-row-6500",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [],
+              [],
+              [],
+              [
+                {
+                  "id": "g4-row-6500-digit-4",
+                  "traditional": "6",
+                  "pinyin": "liù",
+                  "meaning": "6",
+                  "suffix": ","
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-6500-digit-5",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-6500-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-6500-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-5"
+          },
+          {
+            "id": "g4-row-78000",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [],
+              [],
+              [
+                {
+                  "id": "g4-row-78000-digit-3",
+                  "traditional": "7",
                   "pinyin": "qī",
-                  "meaning": "seven"
+                  "meaning": "7"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-78000-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
+                  "id": "g4-row-78000-digit-4",
+                  "traditional": "8",
+                  "pinyin": "bā",
+                  "meaning": "8",
+                  "suffix": ","
                 }
               ],
               [
                 {
-                  "id": "g4-wan-78000-rest",
-                  "traditional": "八千",
-                  "pinyin": "bā qiān",
-                  "meaning": "eight thousand"
+                  "id": "g4-row-78000-digit-5",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-78000-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-78000-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
                 }
               ]
-            ]
+            ],
+            "exampleId": "g4-ex-6"
           },
           {
-            "id": "g4-wan-row-2",
+            "id": "g4-row-90500",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
+              [],
+              [],
+              [],
               [
                 {
-                  "id": "g4-wan-90500-digits",
-                  "traditional": "90,500",
-                  "pinyin": "jiǔ wàn líng wǔ bǎi",
-                  "meaning": "90,500"
-                }
-              ],
-              [
-                {
-                  "id": "g4-wan-90500-count",
-                  "traditional": "九",
+                  "id": "g4-row-90500-digit-3",
+                  "traditional": "9",
                   "pinyin": "jiǔ",
-                  "meaning": "nine"
+                  "meaning": "9"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-90500-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
+                  "id": "g4-row-90500-digit-4",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "say"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-90500-rest",
-                  "traditional": "零五百",
-                  "pinyin": "líng wǔ bǎi",
-                  "meaning": "zero, five hundred"
+                  "id": "g4-row-90500-digit-5",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-90500-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-90500-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
                 }
               ]
-            ]
+            ],
+            "exampleId": "g4-ex-7"
           },
           {
-            "id": "g4-wan-row-3",
+            "id": "g4-row-500000",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [],
+              [
+                {
+                  "id": "g4-row-500000-digit-2",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-500000-digit-3",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-500000-digit-4",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-500000-digit-5",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-500000-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-500000-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-8"
+          },
+          {
+            "id": "g4-row-305w",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [],
+              [
+                {
+                  "id": "g4-row-305w-digit-1",
+                  "traditional": "3",
+                  "pinyin": "sān",
+                  "meaning": "3",
+                  "suffix": ","
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-305w-digit-2",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "say"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-305w-digit-3",
+                  "traditional": "5",
+                  "pinyin": "wǔ",
+                  "meaning": "5"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-305w-digit-4",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-305w-digit-5",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-305w-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-305w-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-9"
+          },
+          {
+            "id": "g4-row-900w",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g4-wan-500000-digits",
-                  "traditional": "500,000",
-                  "pinyin": "wǔ shí wàn",
-                  "meaning": "500,000"
+                  "id": "g4-row-900w-digit-0",
+                  "traditional": "9",
+                  "pinyin": "jiǔ",
+                  "meaning": "9"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-500000-count",
-                  "traditional": "五十",
-                  "pinyin": "wǔ shí",
-                  "meaning": "fifty"
+                  "id": "g4-row-900w-digit-1",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "skip"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-500000-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
+                  "id": "g4-row-900w-digit-2",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
                 }
               ],
-              []
-            ]
+              [
+                {
+                  "id": "g4-row-900w-digit-3",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-900w-digit-4",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-900w-digit-5",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-900w-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ],
+              [
+                {
+                  "id": "g4-row-900w-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-10"
           },
           {
-            "id": "g4-wan-row-4",
+            "id": "g4-row-9009w",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g4-wan-3050000-digits",
-                  "traditional": "3,050,000",
-                  "pinyin": "sān bǎi líng wǔ wàn",
-                  "meaning": "3,050,000"
+                  "id": "g4-row-9009w-digit-0",
+                  "traditional": "9",
+                  "pinyin": "jiǔ",
+                  "meaning": "9"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-3050000-count",
-                  "traditional": "三百零五",
-                  "pinyin": "sān bǎi líng wǔ",
-                  "meaning": "three hundred five"
+                  "id": "g4-row-9009w-digit-1",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "say"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-3050000-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
-                }
-              ],
-              []
-            ]
-          },
-          {
-            "id": "g4-wan-row-4b",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-wan-90000000-digits",
-                  "traditional": "90,000,000",
-                  "pinyin": "jiǔ qiān wàn",
-                  "meaning": "90,000,000"
+                  "id": "g4-row-9009w-digit-2",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-90000000-count",
-                  "traditional": "九千",
-                  "pinyin": "jiǔ qiān",
-                  "meaning": "nine thousand"
+                  "id": "g4-row-9009w-digit-3",
+                  "traditional": "9",
+                  "pinyin": "jiǔ",
+                  "meaning": "9"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-90000000-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
-                }
-              ],
-              []
-            ]
-          },
-          {
-            "id": "g4-wan-row-5",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g4-wan-90090000-digits",
-                  "traditional": "90,090,000",
-                  "pinyin": "jiǔ qiān líng jiǔ wàn",
-                  "meaning": "90,090,000"
+                  "id": "g4-row-9009w-digit-4",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "suffix": ",",
+                  "mark": "skip"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-90090000-count",
-                  "traditional": "九千零九",
-                  "pinyin": "jiǔ qiān líng jiǔ",
-                  "meaning": "nine thousand nine"
+                  "id": "g4-row-9009w-digit-5",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
                 }
               ],
               [
                 {
-                  "id": "g4-wan-90090000-wan",
-                  "traditional": "萬",
-                  "pinyin": "wàn",
-                  "meaning": "ten thousand",
-                  "simplified": "万"
+                  "id": "g4-row-9009w-digit-6",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
                 }
               ],
-              []
-            ]
+              [
+                {
+                  "id": "g4-row-9009w-digit-7",
+                  "traditional": "0",
+                  "pinyin": "líng",
+                  "meaning": "0",
+                  "mark": "skip"
+                }
+              ]
+            ],
+            "exampleId": "g4-ex-11"
           }
         ]
       }
@@ -3439,7 +3890,7 @@
           105
         ],
         "audioReference": "04-2-3",
-        "explanation": "Build large numbers by place: 十 (10), 百 (100), 千 (1,000), 萬 (10,000). Read from largest to smallest. If a place has zero, say 零 once.",
+        "explanation": "Build numbers with 十 (10), 百 (100), 千 (1,000) and 萬 (10,000). Read the biggest part first, then the rest. When a middle place is empty, say 零 once; zeroes at the end are not read.",
         "focusTerms": [
           "萬",
           "万",
@@ -3974,13 +4425,13 @@
           {
             "id": "b1l04-g04-glossary-82",
             "traditional": "一百一十五",
-            "pinyin": "yì bǎi yīshíwǔ",
+            "pinyin": "yì bǎi yī shí wǔ",
             "meaning": "115"
           },
           {
             "id": "b1l04-g04-glossary-83",
-            "traditional": "八百五十",
-            "pinyin": "bā bǎi wǔshí",
+            "traditional": "八百五（十）",
+            "pinyin": "bā bǎi wǔ (shí)",
             "meaning": "850"
           },
           {
@@ -4126,6 +4577,118 @@
             "simplified": "两个多星期",
             "pinyin": "liǎng ge duō xīngqí",
             "meaning": "more than two weeks"
+          },
+          {
+            "id": "b1l04g04p104-glx-105",
+            "traditional": "一百",
+            "pinyin": "yì bǎi",
+            "meaning": "one hundred"
+          },
+          {
+            "id": "b1l04g04p104-glx-106",
+            "traditional": "五百",
+            "pinyin": "wǔ bǎi",
+            "meaning": "five hundred"
+          },
+          {
+            "id": "b1l04g04p104-glx-107",
+            "traditional": "九萬",
+            "pinyin": "jiǔ wàn",
+            "meaning": "ninety thousand",
+            "simplified": "九万"
+          },
+          {
+            "id": "b1l04g04p104-glx-108",
+            "traditional": "兩千",
+            "pinyin": "liǎng qiān",
+            "meaning": "two thousand",
+            "simplified": "两千"
+          },
+          {
+            "id": "b1l04g04p104-glx-109",
+            "traditional": "兩百",
+            "pinyin": "liǎng bǎi",
+            "meaning": "two hundred",
+            "simplified": "两百"
+          },
+          {
+            "id": "b1l04g04p104-glx-110",
+            "traditional": "八百五（十）",
+            "pinyin": "bā bǎi wǔ (shí)",
+            "meaning": "850 (short reading)"
+          },
+          {
+            "id": "b1l04g04p104-glx-111",
+            "traditional": "六千五（百）",
+            "pinyin": "liù qiān wǔ (bǎi)",
+            "meaning": "6,500 (short reading)"
+          },
+          {
+            "id": "b1l04g04p104-glx-112",
+            "traditional": "七萬八（千）",
+            "pinyin": "qī wàn bā (qiān)",
+            "meaning": "78,000 (short reading)",
+            "simplified": "七万八（千）"
+          },
+          {
+            "id": "b1l04g04p104-glx-113",
+            "traditional": "五十萬",
+            "pinyin": "wǔ shí wàn",
+            "meaning": "500,000",
+            "simplified": "五十万"
+          },
+          {
+            "id": "b1l04g04p104-glx-114",
+            "traditional": "九千萬",
+            "pinyin": "jiǔ qiān wàn",
+            "meaning": "ninety million",
+            "simplified": "九千万"
+          },
+          {
+            "id": "b1l04g04p104-glx-115",
+            "traditional": "九千零九萬",
+            "pinyin": "jiǔ qiān líng jiǔ wàn",
+            "meaning": "90,090,000",
+            "simplified": "九千零九万"
+          },
+          {
+            "id": "b1l04g04p104-glx-116",
+            "traditional": "五千八十",
+            "pinyin": "wǔ qiān bāshí",
+            "meaning": "5,080 said without the zero bridge"
+          },
+          {
+            "id": "b1l04g04p104-glx-117",
+            "traditional": "九三六六八四九三",
+            "pinyin": "jiǔ sān liù liù bā sì jiǔ sān",
+            "meaning": "0936-068-493 with the zeros dropped"
+          },
+          {
+            "id": "b1l04g04p104-glx-118",
+            "traditional": "兩千兩百老師",
+            "pinyin": "liǎng qiān liǎng bǎi lǎoshī",
+            "meaning": "2,200 teachers without 位",
+            "simplified": "两千两百老师"
+          },
+          {
+            "id": "b1l04g04p104-glx-119",
+            "traditional": "二千兩百位老師",
+            "pinyin": "èr qiān liǎng bǎi wèi lǎoshī",
+            "meaning": "2,200 teachers said with 二",
+            "simplified": "二千两百位老师"
+          },
+          {
+            "id": "b1l04g04p104-glx-120",
+            "traditional": "一百五",
+            "pinyin": "yì bǎi wǔ",
+            "meaning": "short for 150; wrong for 105"
+          },
+          {
+            "id": "b1l04g04p104-glx-121",
+            "traditional": "不說",
+            "pinyin": "bù shuō",
+            "meaning": "not said",
+            "simplified": "不说"
           }
         ],
         "pattern": "Read the biggest part, then read the rest",
@@ -4227,8 +4790,8 @@
                 {
                   "label": "十／個",
                   "digit": "00",
-                  "traditional": "不說",
-                  "simplified": "不说"
+                  "traditional": "—",
+                  "simplified": "—"
                 }
               ],
               "note": "零 bridges the missing 千 place. Zeroes at the end are not spoken."
@@ -4251,35 +4814,35 @@
                 {
                   "label": "ones block",
                   "digit": "0000",
-                  "traditional": "不說",
-                  "simplified": "不说"
+                  "traditional": "—",
+                  "simplified": "—"
                 }
               ],
               "note": "Chinese groups large numbers around 萬: 305 groups of ten thousand."
             },
             {
-              "id": "number-90000000",
-              "label": "90,000,000",
-              "digits": "90,000,000",
-              "traditional": "九千萬",
-              "simplified": "九千万",
-              "pinyin": "jiǔ qiān wàn",
-              "english": "ninety million",
+              "id": "number-90090000",
+              "label": "90,090,000",
+              "digits": "90,090,000",
+              "traditional": "九千零九萬",
+              "simplified": "九千零九万",
+              "pinyin": "jiǔ qiān líng jiǔ wàn",
+              "english": "90,090,000",
               "groups": [
                 {
                   "label": "萬 block",
-                  "digit": "9000",
-                  "traditional": "九千萬",
-                  "simplified": "九千万"
+                  "digit": "9009",
+                  "traditional": "九千零九萬",
+                  "simplified": "九千零九万"
                 },
                 {
                   "label": "ones block",
                   "digit": "0000",
-                  "traditional": "不說",
-                  "simplified": "不说"
+                  "traditional": "—",
+                  "simplified": "—"
                 }
               ],
-              "note": "九千 groups of ten thousand."
+              "note": "Say how many 萬 there are: 九千零九 groups of ten thousand. The final zeroes are not spoken."
             }
           ],
           "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
@@ -4290,20 +4853,20 @@
           "items": [
             {
               "id": "g4-confusion-zero",
-              "question": "5,080 — do I say 零?",
-              "answer": "Yes, once. One 零 bridges the empty 百 place: 五千零八十.",
-              "wrongTraditional": "五千八十。",
+              "question": "105 — do I say zero out loud?",
+              "answer": "Use 一百零五 for 105; 一百五 is the short reading of 150.",
+              "wrongTraditional": "一百五。",
               "right": {
-                "traditional": "五千零八十。",
-                "simplified": "五千零八十。",
-                "pinyin": "Wǔ qiān líng bāshí.",
-                "english": "Five thousand and eighty (5,080).",
+                "traditional": "一百零五。",
+                "simplified": "一百零五。",
+                "pinyin": "Yì bǎi líng wǔ.",
+                "english": "One hundred and five (105).",
                 "words": [
                   {
                     "id": "b1l04-g4-c1-word-1",
-                    "traditional": "五千零八十",
-                    "pinyin": "wǔ qiān líng bāshí",
-                    "meaning": "5,080",
+                    "traditional": "一百零五",
+                    "pinyin": "yì bǎi líng wǔ",
+                    "meaning": "one hundred and five",
                     "suffix": "。"
                   }
                 ]
@@ -4311,62 +4874,238 @@
             },
             {
               "id": "g4-confusion-liang",
-              "question": "2,200 — is it 二 or 兩?",
-              "answer": "兩. Use 兩 before 千, 百, and 萬: 兩千兩百. 二 stays in tens and single digits.",
-              "wrongTraditional": "二千兩百位老師。",
-              "wrongSimplified": "二千两百位老师。",
+              "question": "Do I read the zeroes at the end?",
+              "answer": "No. Say 九萬零五百 for 90,500; leave the final zeroes silent.",
+              "wrongTraditional": "九萬零五百零零。",
+              "wrongSimplified": "九万零五百零零。",
               "right": {
-                "traditional": "兩千兩百位老師。",
-                "simplified": "两千两百位老师。",
-                "pinyin": "Liǎng qiān liǎng bǎi wèi lǎoshī.",
-                "english": "2,200 teachers.",
+                "traditional": "九萬零五百",
+                "simplified": "九万零五百",
+                "pinyin": "Jiǔ wàn líng wǔ bǎi.",
+                "english": "Ninety thousand five hundred.",
                 "words": [
                   {
-                    "id": "b1l04-g4-c2-word-1",
-                    "traditional": "兩千兩百位老師",
-                    "simplified": "两千两百位老师",
-                    "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
-                    "meaning": "2,200 teachers",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g4-confusion-wan",
-              "question": "How do I say 30,000?",
-              "answer": "三萬. After 千 comes 萬, the ten-thousand group: 三萬, not 三十千.",
-              "wrongTraditional": "三十千。",
-              "right": {
-                "traditional": "三萬。",
-                "simplified": "三万。",
-                "pinyin": "Sān wàn.",
-                "english": "Thirty thousand (30,000).",
-                "words": [
-                  {
-                    "id": "b1l04-g4-c3-word-1",
-                    "traditional": "三",
-                    "pinyin": "sān",
-                    "meaning": "three"
-                  },
-                  {
-                    "id": "b1l04-g4-c3-word-2",
-                    "traditional": "萬",
-                    "simplified": "万",
-                    "pinyin": "wàn",
-                    "meaning": "ten thousand",
-                    "suffix": "。"
+                    "id": "g4-row-90500-token",
+                    "traditional": "九萬零五百",
+                    "pinyin": "jiǔ wàn líng wǔ bǎi",
+                    "meaning": "90,500",
+                    "simplified": "九万零五百"
                   }
                 ]
               }
             }
           ]
         },
-        "examples": [],
-        "exerciseTitle": "Decode the place values",
-        "exercisePreview": "Read one number from each printed source set.",
-        "exerciseInstruction": "Choose the spoken form that preserves every important place and uses 零 correctly.",
-        "exerciseNote": "The source exercise is oral and contains several items per set. These scored representatives cover ordinary numbers, phone digits, and number + measure word.",
+        "examples": [
+          {
+            "id": "g4-ex-1",
+            "number": 1,
+            "text": {
+              "traditional": "一百零五",
+              "simplified": "一百零五",
+              "pinyin": "yì bǎi líng wǔ",
+              "english": "105",
+              "words": [
+                {
+                  "id": "g4-ex-1-w1",
+                  "traditional": "一百零五",
+                  "pinyin": "yì bǎi líng wǔ",
+                  "meaning": "105"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-2",
+            "number": 2,
+            "text": {
+              "traditional": "一百一十五",
+              "simplified": "一百一十五",
+              "pinyin": "yì bǎi yī shí wǔ",
+              "english": "115",
+              "words": [
+                {
+                  "id": "g4-ex-2-w1",
+                  "traditional": "一百一十五",
+                  "pinyin": "yì bǎi yī shí wǔ",
+                  "meaning": "115"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-3",
+            "number": 3,
+            "text": {
+              "traditional": "八百五（十）",
+              "simplified": "八百五（十）",
+              "pinyin": "bā bǎi wǔ (shí)",
+              "english": "850",
+              "words": [
+                {
+                  "id": "g4-ex-3-w1",
+                  "traditional": "八百五（十）",
+                  "pinyin": "bā bǎi wǔ (shí)",
+                  "meaning": "850"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-4",
+            "number": 4,
+            "text": {
+              "traditional": "兩千零五",
+              "simplified": "两千零五",
+              "pinyin": "liǎng qiān líng wǔ",
+              "english": "2,005",
+              "words": [
+                {
+                  "id": "g4-ex-4-w1",
+                  "traditional": "兩千零五",
+                  "pinyin": "liǎng qiān líng wǔ",
+                  "meaning": "2,005",
+                  "simplified": "两千零五"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-5",
+            "number": 5,
+            "text": {
+              "traditional": "六千五（百）",
+              "simplified": "六千五（百）",
+              "pinyin": "liù qiān wǔ (bǎi)",
+              "english": "6,500",
+              "words": [
+                {
+                  "id": "g4-ex-5-w1",
+                  "traditional": "六千五（百）",
+                  "pinyin": "liù qiān wǔ (bǎi)",
+                  "meaning": "6,500"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-6",
+            "number": 6,
+            "text": {
+              "traditional": "七萬八（千）",
+              "simplified": "七万八（千）",
+              "pinyin": "qī wàn bā (qiān)",
+              "english": "78,000",
+              "words": [
+                {
+                  "id": "g4-ex-6-w1",
+                  "traditional": "七萬八（千）",
+                  "pinyin": "qī wàn bā (qiān)",
+                  "meaning": "78,000",
+                  "simplified": "七万八（千）"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-7",
+            "number": 7,
+            "text": {
+              "traditional": "九萬零五百",
+              "simplified": "九万零五百",
+              "pinyin": "jiǔ wàn líng wǔ bǎi",
+              "english": "90,500",
+              "words": [
+                {
+                  "id": "g4-ex-7-w1",
+                  "traditional": "九萬零五百",
+                  "pinyin": "jiǔ wàn líng wǔ bǎi",
+                  "meaning": "90,500",
+                  "simplified": "九万零五百"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-8",
+            "number": 8,
+            "text": {
+              "traditional": "五十萬",
+              "simplified": "五十万",
+              "pinyin": "wǔ shí wàn",
+              "english": "500,000",
+              "words": [
+                {
+                  "id": "g4-ex-8-w1",
+                  "traditional": "五十萬",
+                  "pinyin": "wǔ shí wàn",
+                  "meaning": "500,000",
+                  "simplified": "五十万"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-9",
+            "number": 9,
+            "text": {
+              "traditional": "三百零五萬",
+              "simplified": "三百零五万",
+              "pinyin": "sān bǎi líng wǔ wàn",
+              "english": "3,050,000",
+              "words": [
+                {
+                  "id": "g4-ex-9-w1",
+                  "traditional": "三百零五萬",
+                  "pinyin": "sān bǎi líng wǔ wàn",
+                  "meaning": "3,050,000",
+                  "simplified": "三百零五万"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-10",
+            "number": 10,
+            "text": {
+              "traditional": "九千萬",
+              "simplified": "九千万",
+              "pinyin": "jiǔ qiān wàn",
+              "english": "ninety million",
+              "words": [
+                {
+                  "id": "g4-ex-10-w1",
+                  "traditional": "九千萬",
+                  "pinyin": "jiǔ qiān wàn",
+                  "meaning": "ninety million",
+                  "simplified": "九千万"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-ex-11",
+            "number": 11,
+            "text": {
+              "traditional": "九千零九萬",
+              "simplified": "九千零九万",
+              "pinyin": "jiǔ qiān líng jiǔ wàn",
+              "english": "90,090,000",
+              "words": [
+                {
+                  "id": "g4-ex-11-w1",
+                  "traditional": "九千零九萬",
+                  "pinyin": "jiǔ qiān líng jiǔ wàn",
+                  "meaning": "90,090,000",
+                  "simplified": "九千零九万"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Please read the following numbers.",
+        "exercisePreview": "Read numbers, cell phone numbers, and quantities with measure words.",
+        "exerciseInstruction": "Read the following numbers.",
         "questions": [
           {
             "id": "g4-question-1",
@@ -4493,651 +5232,655 @@
         ],
         "subsections": [
           {
-            "id": "b1l04-g04-sec-1",
+            "id": "b1l04-g04-sec-table",
             "sectionNumber": 1,
-            "title": "The four building blocks",
-            "explanation": "These four words are the blocks. Put a number in front of a block to count it: 三 + 百 = 三百.",
+            "title": "Numerical System in Chinese",
+            "explanation": "The blocks run 十 (10), 百 (100), 千 (1,000) and 萬 (10,000). Read the biggest part first, then what is left. When a middle place is empty, say 零 once; zeroes at the end are not read. In prices and amounts the last block word is often dropped (八百五 for 八百五十).",
             "patternColumns": [
-              "Block",
-              "Means",
-              "Example"
-            ],
-            "patternColumnDetails": [
-              "block",
-              "value",
-              "number + block"
-            ],
-            "patternRows": [
-              {
-                "id": "g4-block-row-1",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-block-ten",
-                      "traditional": "十",
-                      "pinyin": "shí",
-                      "meaning": "ten"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-ten-value",
-                      "traditional": "10",
-                      "pinyin": "shí",
-                      "meaning": "ten"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-ten-example",
-                      "traditional": "二十",
-                      "pinyin": "èrshí",
-                      "meaning": "twenty"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-block-row-2",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-block-hundred",
-                      "traditional": "百",
-                      "pinyin": "bǎi",
-                      "meaning": "hundred"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-hundred-value",
-                      "traditional": "100",
-                      "pinyin": "bǎi",
-                      "meaning": "one hundred"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-hundred-example",
-                      "traditional": "三百",
-                      "pinyin": "sān bǎi",
-                      "meaning": "three hundred"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-block-row-3",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-block-thousand",
-                      "traditional": "千",
-                      "pinyin": "qiān",
-                      "meaning": "thousand"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-thousand-value",
-                      "traditional": "1,000",
-                      "pinyin": "qiān",
-                      "meaning": "one thousand"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-thousand-example",
-                      "traditional": "五千",
-                      "pinyin": "wǔ qiān",
-                      "meaning": "five thousand"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-block-row-4",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-block-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-wan-value",
-                      "traditional": "10,000",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-block-wan-example",
-                      "traditional": "八萬",
-                      "pinyin": "bā wàn",
-                      "meaning": "eighty thousand",
-                      "simplified": "八万"
-                    }
-                  ]
-                ]
-              }
-            ]
-          },
-          {
-            "id": "b1l04-g04-sec-2",
-            "sectionNumber": 2,
-            "title": "Read the first part, then the rest",
-            "explanation": "Read the biggest part, then read what is left: 一百 + 一十五. When a place is skipped, the second part starts with 零: 一百 + 零五.",
-            "patternColumns": [
-              "Number",
-              "First part",
-              "The rest"
-            ],
-            "patternColumnDetails": [
-              "digits",
-              "biggest part",
-              "what is left"
-            ],
-            "patternRows": [
-              {
-                "id": "g4-split-row-1",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-split-115-digits",
-                      "traditional": "115",
-                      "pinyin": "yì bǎi yī shí wǔ",
-                      "meaning": "115"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-115-first",
-                      "traditional": "一百",
-                      "pinyin": "yì bǎi",
-                      "meaning": "one hundred"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-115-rest",
-                      "traditional": "一十五",
-                      "pinyin": "yī shí wǔ",
-                      "meaning": "fifteen"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-split-row-2",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-split-105-digits",
-                      "traditional": "105",
-                      "pinyin": "yì bǎi líng wǔ",
-                      "meaning": "105"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-105-first",
-                      "traditional": "一百",
-                      "pinyin": "yì bǎi",
-                      "meaning": "one hundred"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-105-rest",
-                      "traditional": "零五",
-                      "pinyin": "líng wǔ",
-                      "meaning": "zero five"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-split-row-3",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-split-850-digits",
-                      "traditional": "850",
-                      "pinyin": "bā bǎi wǔ shí",
-                      "meaning": "850"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-850-first",
-                      "traditional": "八百",
-                      "pinyin": "bā bǎi",
-                      "meaning": "eight hundred"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-850-rest",
-                      "traditional": "五十",
-                      "pinyin": "wǔ shí",
-                      "meaning": "fifty"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-split-row-4",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-split-2005-digits",
-                      "traditional": "2,005",
-                      "pinyin": "liǎng qiān líng wǔ",
-                      "meaning": "2,005"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-2005-first",
-                      "traditional": "兩千",
-                      "pinyin": "liǎng qiān",
-                      "meaning": "two thousand",
-                      "simplified": "两千"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-split-2005-rest",
-                      "traditional": "零五",
-                      "pinyin": "líng wǔ",
-                      "meaning": "zero five"
-                    }
-                  ]
-                ]
-              }
-            ]
-          },
-          {
-            "id": "b1l04-g04-sec-3",
-            "sectionNumber": 3,
-            "title": "The last word can be dropped",
-            "explanation": "In prices and amounts, the last place word is often left out. Both ways mean the same number: 八百五十 = 八百五.",
-            "patternColumns": [
-              "Number",
-              "Full reading",
-              "Short way"
-            ],
-            "patternColumnDetails": [
-              "digits",
-              "with the last word",
-              "with it dropped"
-            ],
-            "patternRows": [
-              {
-                "id": "g4-drop-row-1",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-drop-850-digits",
-                      "traditional": "850",
-                      "pinyin": "bā bǎi wǔ shí",
-                      "meaning": "850"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-drop-850-full",
-                      "traditional": "八百五十",
-                      "pinyin": "bā bǎi wǔ shí",
-                      "meaning": "eight hundred fifty"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-drop-850-short",
-                      "traditional": "八百五",
-                      "pinyin": "bā bǎi wǔ",
-                      "meaning": "eight hundred fifty (short way)"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-drop-row-2",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-drop-6500-digits",
-                      "traditional": "6,500",
-                      "pinyin": "liù qiān wǔ bǎi",
-                      "meaning": "6,500"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-drop-6500-full",
-                      "traditional": "六千五百",
-                      "pinyin": "liù qiān wǔ bǎi",
-                      "meaning": "six thousand five hundred"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-drop-6500-short",
-                      "traditional": "六千五",
-                      "pinyin": "liù qiān wǔ",
-                      "meaning": "six thousand five hundred (short way)"
-                    }
-                  ]
-                ]
-              },
-              {
-                "id": "g4-drop-row-3",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-drop-78000-digits",
-                      "traditional": "78,000",
-                      "pinyin": "qī wàn bā qiān",
-                      "meaning": "78,000"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-drop-78000-full",
-                      "traditional": "七萬八千",
-                      "pinyin": "qī wàn bā qiān",
-                      "meaning": "seventy-eight thousand",
-                      "simplified": "七万八千"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-drop-78000-short",
-                      "traditional": "七萬八",
-                      "pinyin": "qī wàn bā",
-                      "meaning": "seventy-eight thousand (short way)",
-                      "simplified": "七万八"
-                    }
-                  ]
-                ]
-              }
-            ]
-          },
-          {
-            "id": "b1l04-g04-sec-4",
-            "sectionNumber": 4,
-            "title": "Big numbers: how many 萬",
-            "explanation": "萬 counts ten-thousands. Say how many 萬, then add what is left: 七 萬 八千 is 7 × 10,000 + 8,000.",
-            "patternColumns": [
-              "Number",
-              "How many",
+              "千萬",
+              "百萬",
+              "十萬",
               "萬",
-              "The rest"
+              "千",
+              "百",
+              "十",
+              "個"
             ],
             "patternColumnDetails": [
-              "digits",
-              "count of 萬",
-              "ten thousand",
-              "what is left"
+              "10⁷",
+              "10⁶",
+              "10⁵",
+              "10⁴",
+              "10³",
+              "10²",
+              "10¹",
+              "(個)"
             ],
             "patternRows": [
               {
-                "id": "g4-wan-row-1",
+                "id": "g4-row-105",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
+                  [],
+                  [],
+                  [],
+                  [],
+                  [],
                   [
                     {
-                      "id": "g4-wan-78000-digits",
-                      "traditional": "78,000",
-                      "pinyin": "qī wàn bā qiān",
-                      "meaning": "78,000"
+                      "id": "g4-row-105-digit-5",
+                      "traditional": "1",
+                      "pinyin": "yī",
+                      "meaning": "1"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-78000-count",
-                      "traditional": "七",
+                      "id": "g4-row-105-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "say"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-105-digit-7",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-1"
+              },
+              {
+                "id": "g4-row-115",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [],
+                  [],
+                  [],
+                  [],
+                  [
+                    {
+                      "id": "g4-row-115-digit-5",
+                      "traditional": "1",
+                      "pinyin": "yī",
+                      "meaning": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-115-digit-6",
+                      "traditional": "1",
+                      "pinyin": "yī",
+                      "meaning": "1"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-115-digit-7",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-2"
+              },
+              {
+                "id": "g4-row-850",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [],
+                  [],
+                  [],
+                  [],
+                  [
+                    {
+                      "id": "g4-row-850-digit-5",
+                      "traditional": "8",
+                      "pinyin": "bā",
+                      "meaning": "8"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-850-digit-6",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-850-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-3"
+              },
+              {
+                "id": "g4-row-2005",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [],
+                  [],
+                  [],
+                  [
+                    {
+                      "id": "g4-row-2005-digit-4",
+                      "traditional": "2",
+                      "pinyin": "èr",
+                      "meaning": "2",
+                      "suffix": ","
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-2005-digit-5",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "say"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-2005-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-2005-digit-7",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-4"
+              },
+              {
+                "id": "g4-row-6500",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [],
+                  [],
+                  [],
+                  [
+                    {
+                      "id": "g4-row-6500-digit-4",
+                      "traditional": "6",
+                      "pinyin": "liù",
+                      "meaning": "6",
+                      "suffix": ","
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-6500-digit-5",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-6500-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-6500-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-5"
+              },
+              {
+                "id": "g4-row-78000",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [],
+                  [],
+                  [
+                    {
+                      "id": "g4-row-78000-digit-3",
+                      "traditional": "7",
                       "pinyin": "qī",
-                      "meaning": "seven"
+                      "meaning": "7"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-78000-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
+                      "id": "g4-row-78000-digit-4",
+                      "traditional": "8",
+                      "pinyin": "bā",
+                      "meaning": "8",
+                      "suffix": ","
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-78000-rest",
-                      "traditional": "八千",
-                      "pinyin": "bā qiān",
-                      "meaning": "eight thousand"
+                      "id": "g4-row-78000-digit-5",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-78000-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-78000-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
                     }
                   ]
-                ]
+                ],
+                "exampleId": "g4-ex-6"
               },
               {
-                "id": "g4-wan-row-2",
+                "id": "g4-row-90500",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
+                  [],
+                  [],
+                  [],
                   [
                     {
-                      "id": "g4-wan-90500-digits",
-                      "traditional": "90,500",
-                      "pinyin": "jiǔ wàn líng wǔ bǎi",
-                      "meaning": "90,500"
-                    }
-                  ],
-                  [
-                    {
-                      "id": "g4-wan-90500-count",
-                      "traditional": "九",
+                      "id": "g4-row-90500-digit-3",
+                      "traditional": "9",
                       "pinyin": "jiǔ",
-                      "meaning": "nine"
+                      "meaning": "9"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-90500-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
+                      "id": "g4-row-90500-digit-4",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "say"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-90500-rest",
-                      "traditional": "零五百",
-                      "pinyin": "líng wǔ bǎi",
-                      "meaning": "zero, five hundred"
+                      "id": "g4-row-90500-digit-5",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-90500-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-90500-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
                     }
                   ]
-                ]
+                ],
+                "exampleId": "g4-ex-7"
               },
               {
-                "id": "g4-wan-row-3",
+                "id": "g4-row-500000",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [],
+                  [
+                    {
+                      "id": "g4-row-500000-digit-2",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-500000-digit-3",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-500000-digit-4",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-500000-digit-5",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-500000-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-500000-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-8"
+              },
+              {
+                "id": "g4-row-305w",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-1",
+                      "traditional": "3",
+                      "pinyin": "sān",
+                      "meaning": "3",
+                      "suffix": ","
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-2",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "say"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-3",
+                      "traditional": "5",
+                      "pinyin": "wǔ",
+                      "meaning": "5"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-4",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-5",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-305w-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-9"
+              },
+              {
+                "id": "g4-row-900w",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g4-wan-500000-digits",
-                      "traditional": "500,000",
-                      "pinyin": "wǔ shí wàn",
-                      "meaning": "500,000"
+                      "id": "g4-row-900w-digit-0",
+                      "traditional": "9",
+                      "pinyin": "jiǔ",
+                      "meaning": "9"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-500000-count",
-                      "traditional": "五十",
-                      "pinyin": "wǔ shí",
-                      "meaning": "fifty"
+                      "id": "g4-row-900w-digit-1",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "skip"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-500000-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
+                      "id": "g4-row-900w-digit-2",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
                     }
                   ],
-                  []
-                ]
+                  [
+                    {
+                      "id": "g4-row-900w-digit-3",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-900w-digit-4",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-900w-digit-5",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-900w-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-row-900w-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-10"
               },
               {
-                "id": "g4-wan-row-4",
+                "id": "g4-row-9009w",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g4-wan-3050000-digits",
-                      "traditional": "3,050,000",
-                      "pinyin": "sān bǎi líng wǔ wàn",
-                      "meaning": "3,050,000"
+                      "id": "g4-row-9009w-digit-0",
+                      "traditional": "9",
+                      "pinyin": "jiǔ",
+                      "meaning": "9"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-3050000-count",
-                      "traditional": "三百零五",
-                      "pinyin": "sān bǎi líng wǔ",
-                      "meaning": "three hundred five"
+                      "id": "g4-row-9009w-digit-1",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "say"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-3050000-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "id": "g4-wan-row-4b",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-wan-90000000-digits",
-                      "traditional": "90,000,000",
-                      "pinyin": "jiǔ qiān wàn",
-                      "meaning": "90,000,000"
+                      "id": "g4-row-9009w-digit-2",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-90000000-count",
-                      "traditional": "九千",
-                      "pinyin": "jiǔ qiān",
-                      "meaning": "nine thousand"
+                      "id": "g4-row-9009w-digit-3",
+                      "traditional": "9",
+                      "pinyin": "jiǔ",
+                      "meaning": "9"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-90000000-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "id": "g4-wan-row-5",
-                "subject": [],
-                "grammar": [],
-                "complement": [],
-                "columns": [
-                  [
-                    {
-                      "id": "g4-wan-90090000-digits",
-                      "traditional": "90,090,000",
-                      "pinyin": "jiǔ qiān líng jiǔ wàn",
-                      "meaning": "90,090,000"
+                      "id": "g4-row-9009w-digit-4",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "suffix": ",",
+                      "mark": "skip"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-90090000-count",
-                      "traditional": "九千零九",
-                      "pinyin": "jiǔ qiān líng jiǔ",
-                      "meaning": "nine thousand nine"
+                      "id": "g4-row-9009w-digit-5",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
                     }
                   ],
                   [
                     {
-                      "id": "g4-wan-90090000-wan",
-                      "traditional": "萬",
-                      "pinyin": "wàn",
-                      "meaning": "ten thousand",
-                      "simplified": "万"
+                      "id": "g4-row-9009w-digit-6",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
                     }
                   ],
-                  []
-                ]
+                  [
+                    {
+                      "id": "g4-row-9009w-digit-7",
+                      "traditional": "0",
+                      "pinyin": "líng",
+                      "meaning": "0",
+                      "mark": "skip"
+                    }
+                  ]
+                ],
+                "exampleId": "g4-ex-11"
               }
             ]
           }
@@ -5399,7 +6142,7 @@
             "id": "b1l04-g05-glossary-36",
             "traditional": "學生",
             "simplified": "学生",
-            "pinyin": "xuéshēng",
+            "pinyin": "xuésheng",
             "meaning": "student"
           },
           {
@@ -5814,7 +6557,7 @@
             "id": "b1l04-g05-glossary-100",
             "traditional": "六萬多個學生",
             "simplified": "六万多个学生",
-            "pinyin": "liù wàn duō ge xuéshēng",
+            "pinyin": "liù wàn duō ge xuésheng",
             "meaning": "60,001–69,999 students"
           },
           {
@@ -5844,6 +6587,55 @@
             "simplified": "两个多星期",
             "pinyin": "liǎng ge duō xīngqí",
             "meaning": "more than two weeks"
+          },
+          {
+            "id": "b1l04g05p105-glx-105",
+            "traditional": "二十",
+            "pinyin": "èrshí",
+            "meaning": "twenty"
+          },
+          {
+            "id": "b1l04g05p105-glx-106",
+            "traditional": "三千",
+            "pinyin": "sān qiān",
+            "meaning": "three thousand"
+          },
+          {
+            "id": "b1l04g05p105-glx-107",
+            "traditional": "一百",
+            "pinyin": "yì bǎi",
+            "meaning": "one hundred"
+          },
+          {
+            "id": "b1l04g05p105-glx-108",
+            "traditional": "六萬",
+            "pinyin": "liù wàn",
+            "meaning": "sixty thousand",
+            "simplified": "六万"
+          },
+          {
+            "id": "b1l04g05p105-glx-109",
+            "traditional": "十一",
+            "pinyin": "shíyī",
+            "meaning": "eleven"
+          },
+          {
+            "id": "b1l04g05p105-glx-110",
+            "traditional": "十二",
+            "pinyin": "shí’èr",
+            "meaning": "twelve"
+          },
+          {
+            "id": "g05-p105-gfx-有",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have"
+          },
+          {
+            "id": "g05-p105-gfx-多少",
+            "traditional": "多少",
+            "pinyin": "duōshǎo",
+            "meaning": "how many; how much"
           }
         ],
         "pattern": "Number + 多 + measure word; Number + measure word + 多",
@@ -5933,22 +6725,34 @@
             },
             {
               "id": "g5-confusion-duo-time",
-              "question": "The clock shows a little after twelve. 多 before or after 點?",
-              "answer": "After 點: 十二點多. For a clock hour, 多 follows the time unit.",
-              "wrongTraditional": "十二多點。",
-              "wrongSimplified": "十二多点。",
+              "question": "A little after eleven — where does 多 go?",
+              "answer": "After the time word: 十一點多. For a clock hour, 多 follows 點.",
+              "wrongTraditional": "十一多點。",
+              "wrongSimplified": "十一多点。",
               "right": {
-                "traditional": "十二點多。",
-                "simplified": "十二点多。",
-                "pinyin": "Shí’èr diǎn duō.",
-                "english": "A little after twelve.",
+                "traditional": "十一點多。",
+                "simplified": "十一点多。",
+                "pinyin": "Shíyī diǎn duō.",
+                "english": "A little after eleven (11:00–12:00).",
                 "words": [
                   {
                     "id": "b1l04-g5-c2-word-1",
-                    "traditional": "十二點多",
-                    "simplified": "十二点多",
-                    "pinyin": "shí’èr diǎn duō",
-                    "meaning": "a little after twelve",
+                    "traditional": "十一",
+                    "pinyin": "shíyī",
+                    "meaning": "eleven"
+                  },
+                  {
+                    "id": "b1l04-g5-c2-word-2",
+                    "traditional": "點",
+                    "pinyin": "diǎn",
+                    "meaning": "o’clock",
+                    "simplified": "点"
+                  },
+                  {
+                    "id": "b1l04-g5-c2-word-3",
+                    "traditional": "多",
+                    "pinyin": "duō",
+                    "meaning": "a little over",
                     "suffix": "。"
                   }
                 ]
@@ -5991,54 +6795,34 @@
               "words": [
                 {
                   "id": "b1l04-g5-e1-word-1",
-                  "traditional": "二十多朵花",
-                  "pinyin": "èrshí duō duǒ huā",
-                  "meaning": "21–29 flowers"
-                }
-              ]
-            }
-          },
-          {
-            "id": "g5-example-2",
-            "number": 2,
-            "text": {
-              "traditional": "三千多本書",
-              "simplified": "三千多本书",
-              "pinyin": "Sān qiān duō běn shū.",
-              "english": "3,001–3,999 books",
-              "words": [
+                  "traditional": "二十",
+                  "pinyin": "èrshí",
+                  "meaning": "twenty"
+                },
                 {
-                  "id": "b1l04-g5-e2-word-1",
-                  "traditional": "三千多本書",
-                  "simplified": "三千多本书",
-                  "pinyin": "sān qiān duō běn shū",
-                  "meaning": "3,001–3,999 books"
-                }
-              ]
-            }
-          },
-          {
-            "id": "g5-example-3",
-            "number": 3,
-            "text": {
-              "traditional": "兩個多星期",
-              "simplified": "两个多星期",
-              "pinyin": "Liǎng ge duō xīngqí.",
-              "english": "More than two weeks but less than three.",
-              "words": [
+                  "id": "b1l04-g5-e1-word-2",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                },
                 {
-                  "id": "b1l04-g5-e3-word-1",
-                  "traditional": "兩個多星期",
-                  "simplified": "两个多星期",
-                  "pinyin": "liǎng ge duō xīngqí",
-                  "meaning": "more than two weeks"
+                  "id": "b1l04-g5-e1-word-3",
+                  "traditional": "朵",
+                  "pinyin": "duǒ",
+                  "meaning": "measure word for flowers"
+                },
+                {
+                  "id": "b1l04-g5-e1-word-4",
+                  "traditional": "花",
+                  "pinyin": "huā",
+                  "meaning": "flower"
                 }
               ]
             }
           },
           {
             "id": "g5-example-4",
-            "number": 4,
+            "number": 2,
             "text": {
               "traditional": "一百多枝鉛筆",
               "simplified": "一百多枝铅笔",
@@ -6047,97 +6831,105 @@
               "words": [
                 {
                   "id": "b1l04-g5-e4-word-1",
-                  "traditional": "一百多枝鉛筆",
-                  "simplified": "一百多枝铅笔",
-                  "pinyin": "yì bǎi duō zhī qiānbǐ",
-                  "meaning": "101–199 pencils"
+                  "traditional": "一百",
+                  "pinyin": "yì bǎi",
+                  "meaning": "one hundred"
+                },
+                {
+                  "id": "b1l04-g5-e4-word-2",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                },
+                {
+                  "id": "b1l04-g5-e4-word-3",
+                  "traditional": "枝",
+                  "pinyin": "zhī",
+                  "meaning": "measure word for pens"
+                },
+                {
+                  "id": "b1l04-g5-e4-word-4",
+                  "traditional": "鉛筆",
+                  "pinyin": "qiānbǐ",
+                  "meaning": "pencil",
+                  "simplified": "铅笔"
                 }
               ]
             },
             "teachingNote": null
           },
           {
+            "id": "g5-example-2",
+            "number": 3,
+            "text": {
+              "traditional": "三千多本書",
+              "simplified": "三千多本书",
+              "pinyin": "Sān qiān duō běn shū.",
+              "english": "3,001–3,999 books",
+              "words": [
+                {
+                  "id": "b1l04-g5-e2-word-1",
+                  "traditional": "三千",
+                  "pinyin": "sān qiān",
+                  "meaning": "three thousand"
+                },
+                {
+                  "id": "b1l04-g5-e2-word-2",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                },
+                {
+                  "id": "b1l04-g5-e2-word-3",
+                  "traditional": "本",
+                  "pinyin": "běn",
+                  "meaning": "measure word for books"
+                },
+                {
+                  "id": "b1l04-g5-e2-word-4",
+                  "traditional": "書",
+                  "pinyin": "shū",
+                  "meaning": "book",
+                  "simplified": "书"
+                }
+              ]
+            }
+          },
+          {
             "id": "g5-example-5",
-            "number": 5,
+            "number": 4,
             "text": {
               "traditional": "六萬多個學生",
               "simplified": "六万多个学生",
-              "pinyin": "Liù wàn duō ge xuéshēng.",
+              "pinyin": "Liù wàn duō ge xuésheng.",
               "english": "60,001–69,999 students",
               "words": [
                 {
                   "id": "b1l04-g5-e5-word-1",
-                  "traditional": "六萬多個學生",
-                  "simplified": "六万多个学生",
-                  "pinyin": "liù wàn duō ge xuéshēng",
-                  "meaning": "60,001–69,999 students"
-                }
-              ]
-            },
-            "teachingNote": null
-          },
-          {
-            "id": "g5-example-6",
-            "number": 6,
-            "text": {
-              "traditional": "七個多月",
-              "simplified": "七个多月",
-              "pinyin": "Qī ge duō yuè.",
-              "english": "7–8 months",
-              "words": [
-                {
-                  "id": "b1l04-g5-e6-word-1",
-                  "traditional": "七個多月",
-                  "simplified": "七个多月",
-                  "pinyin": "qī ge duō yuè",
-                  "meaning": "more than seven months"
-                }
-              ]
-            },
-            "teachingNote": null
-          },
-          {
-            "id": "g5-example-7",
-            "number": 7,
-            "text": {
-              "traditional": "四歲多",
-              "simplified": "四岁多",
-              "pinyin": "Sì suì duō.",
-              "english": "4–5 years old",
-              "words": [
-                {
-                  "id": "b1l04-g5-e7-word-1",
-                  "traditional": "四歲多",
-                  "simplified": "四岁多",
-                  "pinyin": "sì suì duō",
-                  "meaning": "older than four, not yet five"
-                }
-              ]
-            },
-            "teachingNote": null
-          },
-          {
-            "id": "g5-example-8",
-            "number": 8,
-            "text": {
-              "traditional": "十二塊多（錢）",
-              "simplified": "十二块多（钱）",
-              "pinyin": "Shí’èr kuài duō (qián).",
-              "english": "$12–13",
-              "words": [
-                {
-                  "id": "b1l04-g5-e8-word-1",
-                  "traditional": "十二塊多",
-                  "simplified": "十二块多",
-                  "pinyin": "shí’èr kuài duō",
-                  "meaning": "more than twelve dollars"
+                  "traditional": "六萬",
+                  "pinyin": "liù wàn",
+                  "meaning": "sixty thousand",
+                  "simplified": "六万"
                 },
                 {
-                  "id": "b1l04-g5-e8-word-2",
-                  "traditional": "（錢）",
-                  "simplified": "（钱）",
-                  "pinyin": "(qián)",
-                  "meaning": "money"
+                  "id": "b1l04-g5-e5-word-2",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                },
+                {
+                  "id": "b1l04-g5-e5-word-3",
+                  "traditional": "個",
+                  "pinyin": "ge",
+                  "meaning": "general measure word",
+                  "simplified": "个"
+                },
+                {
+                  "id": "b1l04-g5-e5-word-4",
+                  "traditional": "學生",
+                  "pinyin": "xuésheng",
+                  "meaning": "student",
+                  "simplified": "学生"
                 }
               ]
             },
@@ -6145,12 +6937,12 @@
           },
           {
             "id": "g5-example-9",
-            "number": 9,
+            "number": 5,
             "text": {
               "traditional": "A：現在你有多少錢？ B：五百多塊錢。",
               "simplified": "A：现在你有多少钱？ B：五百多块钱。",
               "pinyin": "A: Xiànzài nǐ yǒu duōshǎo qián? B: Wǔ bǎi duō kuài qián.",
-              "english": "A: How much money do you have right now? B: More than five hundred dollars.",
+              "english": "A: How much money do you have right now? B: More than five hundred dollars (501–599).",
               "words": [
                 {
                   "id": "b1l04-g5-e9-word-1",
@@ -6195,12 +6987,12 @@
           },
           {
             "id": "g5-example-10",
-            "number": 10,
+            "number": 6,
             "text": {
               "traditional": "A：你們學校有多少學生？ B：兩千多個。",
               "simplified": "A：你们学校有多少学生？ B：两千多个。",
-              "pinyin": "A: Nǐmen xuéxiào yǒu duōshǎo xuéshēng? B: Liǎng qiān duō ge.",
-              "english": "A: How many students does your school have? B: More than two thousand.",
+              "pinyin": "A: Nǐmen xuéxiào yǒu duōshǎo xuésheng? B: Liǎng qiān duō ge.",
+              "english": "A: How many students does your school have? B: More than two thousand (2,001–2,999).",
               "words": [
                 {
                   "id": "b1l04-g5-e10-word-1",
@@ -6233,7 +7025,7 @@
                   "id": "b1l04-g5-e10-word-5",
                   "traditional": "學生",
                   "simplified": "学生",
-                  "pinyin": "xuéshēng",
+                  "pinyin": "xuésheng",
                   "meaning": "student",
                   "suffix": "？"
                 },
@@ -6252,7 +7044,7 @@
           },
           {
             "id": "g5-example-11",
-            "number": 11,
+            "number": 7,
             "text": {
               "traditional": "A：這支手機多少錢？ B：一萬多塊錢。",
               "simplified": "A：这支手机多少钱？ B：一万多块钱。",
@@ -6287,50 +7079,160 @@
               ]
             },
             "teachingNote": null
+          },
+          {
+            "id": "g5-example-3",
+            "number": 8,
+            "text": {
+              "traditional": "兩個多星期",
+              "simplified": "两个多星期",
+              "pinyin": "Liǎng ge duō xīngqí.",
+              "english": "More than two weeks but less than three.",
+              "words": [
+                {
+                  "id": "b1l04-g5-e3-word-1",
+                  "traditional": "兩",
+                  "pinyin": "liǎng",
+                  "meaning": "two before a measure word",
+                  "simplified": "两"
+                },
+                {
+                  "id": "b1l04-g5-e3-word-2",
+                  "traditional": "個",
+                  "pinyin": "ge",
+                  "meaning": "general measure word",
+                  "simplified": "个"
+                },
+                {
+                  "id": "b1l04-g5-e3-word-3",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "a little over"
+                },
+                {
+                  "id": "b1l04-g5-e3-word-4",
+                  "traditional": "星期",
+                  "pinyin": "xīngqí",
+                  "meaning": "week"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-example-6",
+            "number": 9,
+            "text": {
+              "traditional": "七個多月",
+              "simplified": "七个多月",
+              "pinyin": "Qī ge duō yuè.",
+              "english": "7–8 months",
+              "words": [
+                {
+                  "id": "b1l04-g5-e6-word-1",
+                  "traditional": "七",
+                  "pinyin": "qī",
+                  "meaning": "seven"
+                },
+                {
+                  "id": "b1l04-g5-e6-word-2",
+                  "traditional": "個",
+                  "pinyin": "ge",
+                  "meaning": "general measure word",
+                  "simplified": "个"
+                },
+                {
+                  "id": "b1l04-g5-e6-word-3",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "a little over"
+                },
+                {
+                  "id": "b1l04-g5-e6-word-4",
+                  "traditional": "月",
+                  "pinyin": "yuè",
+                  "meaning": "month"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "g5-example-7",
+            "number": 10,
+            "text": {
+              "traditional": "四歲多",
+              "simplified": "四岁多",
+              "pinyin": "Sì suì duō.",
+              "english": "4–5 years old",
+              "words": [
+                {
+                  "id": "b1l04-g5-e7-word-1",
+                  "traditional": "四",
+                  "pinyin": "sì",
+                  "meaning": "four"
+                },
+                {
+                  "id": "b1l04-g5-e7-word-2",
+                  "traditional": "歲",
+                  "pinyin": "suì",
+                  "meaning": "years old",
+                  "simplified": "岁"
+                },
+                {
+                  "id": "b1l04-g5-e7-word-3",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "a little over"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "g5-example-8",
+            "number": 11,
+            "text": {
+              "traditional": "十二塊多（錢）",
+              "simplified": "十二块多（钱）",
+              "pinyin": "Shí’èr kuài duō (qián).",
+              "english": "$12–13",
+              "words": [
+                {
+                  "id": "b1l04-g5-e8-word-1",
+                  "traditional": "十二",
+                  "pinyin": "shí'èr",
+                  "meaning": "twelve"
+                },
+                {
+                  "id": "b1l04-g5-e8-word-2",
+                  "traditional": "塊",
+                  "pinyin": "kuài",
+                  "meaning": "dollar unit",
+                  "simplified": "块"
+                },
+                {
+                  "id": "b1l04-g5-e8-word-3",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "a little over"
+                },
+                {
+                  "id": "b1l04-g5-e8-word-4",
+                  "traditional": "錢",
+                  "pinyin": "qián",
+                  "meaning": "money",
+                  "simplified": "钱",
+                  "prefix": "（",
+                  "suffix": "）"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
-        "exerciseTitle": "Place 多, estimate the range",
-        "exercisePreview": "Answer all six printed picture prompts with 多.",
+        "exerciseTitle": "Answer the following questions with 多.",
+        "exercisePreview": "Use 多 to describe the pictured quantities.",
         "exerciseInstruction": "Use the visible quantity as the starting amount. Choose whether 多 follows a round number or a unit.",
-        "exerciseNote": "The source age prompt depends on the moving date 今天. Question 5 uses the textbook’s stable 四歲多 model so the answer stays correct over time.",
-        "exerciseCues": [
-          {
-            "id": "g5-cue-people",
-            "label": "Picture 1",
-            "pinyin": "shí duō ge rén",
-            "detail": "Fifteen people are pictured."
-          },
-          {
-            "id": "g5-cue-tea",
-            "label": "Picture 2",
-            "pinyin": "yì bǎi duō kuài qián",
-            "detail": "Two cups of black tea cost $180."
-          },
-          {
-            "id": "g5-cue-shirt",
-            "label": "Picture 3",
-            "pinyin": "liǎng qiān duō kuài qián",
-            "detail": "The shirt costs $2,200."
-          },
-          {
-            "id": "g5-cue-clock",
-            "label": "Picture 4",
-            "pinyin": "shí’èr diǎn duō",
-            "detail": "The clock shows a time slightly after twelve."
-          },
-          {
-            "id": "g5-cue-age",
-            "label": "Stable age model",
-            "pinyin": "sì suì duō",
-            "detail": "The printed birth-date prompt changes with 今天; the app uses the source model range 4–5."
-          },
-          {
-            "id": "g5-cue-total",
-            "label": "Picture 6",
-            "pinyin": "bā kuài duō",
-            "detail": "Three pens and one flower cost US$8.45 in total."
-          }
-        ],
         "questions": [
           {
             "id": "g5-question-1",
@@ -6674,8 +7576,8 @@
             ],
             "exampleIds": [
               "g5-example-1",
-              "g5-example-2",
               "g5-example-4",
+              "g5-example-2",
               "g5-example-5",
               "g5-example-9",
               "g5-example-10",
@@ -6828,7 +7730,7 @@
                   ],
                   []
                 ],
-                "english": "a little after 11:00 (11:00–12:00)"
+                "english": "After 11:00 (11:00–12:00)"
               }
             ],
             "exampleIds": [

@@ -1,5 +1,5 @@
-import { rectMorphFrames } from '../../../utils/browser/rectMorph';
 import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
+import { flushSync } from 'react-dom';
 import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import type { Flashcard } from '../../../data/flashcards';
@@ -15,9 +15,11 @@ const TROPHY_LAST_FRAME = 70;
 
 /** One easing for the whole glide of the last card into its place in the sheet. */
 const SMOOTH = 'cubic-bezier(.22,1,.36,1)';
-const GLIDE_MS = 640;
+const GLIDE_MS = 560;
+/** The big card shrinks evenly: an expo-out would drop it to tile size in the first frames. */
+const SHRINK_EASE = 'cubic-bezier(.32,.72,0,1)';
 /** The real card clears its answer (pinyin, meaning, examples) before the shrink. */
-const CLEAR_MS = 180;
+const CLEAR_MS = 120;
 const RISE = [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }];
 const LEAVE_EASE = 'cubic-bezier(.4,0,1,1)';
 
@@ -210,14 +212,15 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
       }
       // The other tiles settle with the leading card, rather than waiting in a queue.
       const others = tileEls.filter((_, i) => !(real && i === lastIdx));
-      others.forEach((el) => A(el, RISE, { delay: start, duration: GLIDE_MS, easing: EASE_OUT }));
+      if (!real) others.forEach((el) => A(el, RISE, { delay: start, duration: GLIDE_MS, easing: EASE_OUT }));
       // The trophy marks the checkpoint: it rises as the last card settles and plays once.
-      A(trophyWrap, RISE, { delay: start + 300, duration: 560, easing: EASE_OUT });
-      at(start + 300, () => { trophyDue.current = true; trophyRef.current?.goToAndPlay(0, true); });
-      A(title, RISE, { delay: start + 380, duration: 560, easing: EASE_OUT });
-      A(subtitle, RISE, { delay: start + 460, duration: 560, easing: EASE_OUT });
-      A(btnWrap, RISE, { delay: start + 640, duration: 560, easing: EASE_OUT });
-      at(start + 640 + 560, () => { ready = true; });
+      A(trophyWrap, RISE, { delay: start + 260, duration: 440, easing: EASE_OUT });
+      at(start + 260, () => { trophyDue.current = true; trophyRef.current?.goToAndPlay(0, true); });
+      A(title, RISE, { delay: start + 310, duration: 440, easing: EASE_OUT });
+      A(subtitle, RISE, { delay: start + 350, duration: 440, easing: EASE_OUT });
+      A(btnWrap, RISE, { delay: start + 420, duration: 440, easing: EASE_OUT });
+      // The honey drains last: the screen has settled, so the tone change is only a colour cross-fade (no ghost of the big card).
+      at(start + 420 + 440, () => { ready = true; onToneRef.current(); });
 
       if (real) {
         const r = real;
@@ -230,8 +233,14 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
           hideRealCard();
           if (r.displaced) A(morphEl, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
           const to = { left: parseFloat(finalBox.left), top: parseFloat(finalBox.top), width: parseFloat(finalBox.width), height: parseFloat(finalBox.height) };
-          morphEl.style.transformOrigin = 'top left';
-          A(morphEl, rectMorphFrames(r, to), { duration: GLIDE_MS, easing: SMOOTH });
+          // Real size, border and corner radius animate (not a scale), so the paper keeps true corners and edges.
+          const box = (v: { left: number; top: number; width: number; height: number }) => ({
+            left: `${v.left}px`, top: `${v.top}px`, width: `${v.width}px`, height: `${v.height}px`,
+          });
+          A(morphEl, [
+            { ...box(r), borderWidth: r.border, borderRadius: r.radius },
+            { ...box(to), borderWidth: TILE_BORDER, borderRadius: TILE_RADIUS },
+          ], { duration: GLIDE_MS, easing: SHRINK_EASE });
           if (morphWord) {
             const word = morphWord.cloneNode(true) as HTMLElement;
             const x = to.left + to.width / 2;
@@ -247,7 +256,7 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
             A(word, [
               { transform: `translate(-50%,-50%) translate(${r.left + r.wordCx - x}px,${r.top + r.wordCy - y}px) scale(${r.font / tileFont(lastIdx)})` },
               { transform: 'translate(-50%,-50%)' },
-            ], { duration: GLIDE_MS, easing: SMOOTH });
+            ], { duration: GLIDE_MS, easing: SHRINK_EASE });
             at(GLIDE_MS, restoreWord);
           }
           // A small settle as it lands, like a card set down on the table.
@@ -256,7 +265,17 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
           });
           const py = morphEl.querySelector('[data-tile-pinyin]');
           if (py) A(py, [{ opacity: 0 }, { opacity: 1 }], { delay: GLIDE_MS - 160, duration: 260, easing: 'ease-out' });
-          at(30, () => onToneRef.current());
+          // The other words come out from under the shrinking card, nearest first, rather than appearing from nothing.
+          const ox = r.left + r.width / 2;
+          const oy = r.top + r.height / 2;
+          others.forEach((el, i) => {
+            el.style.opacity = '1';
+            const dx = ox - (parseFloat(el.style.left) + tw / 2);
+            const dy = oy - (parseFloat(el.style.top) + th / 2);
+            A(el, [{ transform: `translate(${dx}px,${dy}px) scale(.9)` }, { transform: 'none' }], {
+              delay: 70 + (others.length - 1 - i) * 28, duration: 560, easing: SMOOTH,
+            });
+          });
         });
       } else {
         // Whatever card is on the stage (not the one that was answered) must not sit behind the sheet.
@@ -278,13 +297,30 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
           [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-12px)' }],
           { delay: i * 30, duration: 220, easing: LEAVE_EASE },
         ));
-        A(layer, [{ opacity: 1 }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
         const button = btnWrap.querySelector('button');
         const r = (button ?? btnWrap).getBoundingClientRect();
         // The picker's ghost takes over the button from this frame.
         btnWrap.style.opacity = '0';
         startRef.current = () => pickerStartRef.current();
-        setPicker({ kind: 'morph', look: 'button', from: { left: r.left, top: r.top, width: r.width, height: r.height } });
+        flushSync(() => setPicker({ kind: 'morph', look: 'button', from: { left: r.left, top: r.top, width: r.width, height: r.height } }));
+        // The tiles gather under the Mixed card (the picker's types slide back out from there) instead of fading.
+        const hero = root.querySelector<HTMLElement>('[data-picker-hero]')?.getBoundingClientRect();
+        if (hero) {
+          const cx = hero.left + hero.width / 2;
+          const cy = hero.top + hero.height / 2;
+          tileEls.forEach((el, i) => {
+            const tr = el.getBoundingClientRect();
+            const dx = cx - (tr.left + tr.width / 2);
+            const dy = cy - (tr.top + tr.height / 2);
+            A(el, [
+              { transform: 'none', opacity: 1 },
+              { transform: `translate(${dx}px,${dy}px) scale(.82)`, opacity: 1, offset: 0.85 },
+              { transform: `translate(${dx}px,${dy}px) scale(.82)`, opacity: 0 },
+            ], { delay: (count - 1 - i) * 18, duration: 440, easing: SMOOTH });
+          });
+        } else {
+          A(layer, [{ opacity: 1 }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
+        }
       };
     }
 

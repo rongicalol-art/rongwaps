@@ -15,13 +15,14 @@
       136
     ],
     "audioReference": "06-1-3",
-    "explanation": "Use 會 before an action to say you know how to do it. Put 不 before 會 to say you do not know how. Here, 會 means having the ability, not the future.",
+    "explanation": "會 marks a skill you get through learning. Put it before the action: 我會游泳. Negate with 不會: 我不會打棒球.",
     "focusTerms": [
       "會",
       "会",
       "不會",
       "不会",
-      "不"
+      "會不會",
+      "会不会"
     ],
     "teachingGlossary": [
       {
@@ -42,87 +43,6 @@
         "traditional": "你",
         "pinyin": "nǐ",
         "meaning": "you"
-      },
-      {
-        "id": "b1l06-g01-glossary-4",
-        "traditional": "妳",
-        "pinyin": "nǐ",
-        "meaning": "you"
-      },
-      {
-        "id": "b1l06-g01-glossary-5",
-        "traditional": "妳們",
-        "simplified": "你们",
-        "pinyin": "nǐmen",
-        "meaning": "you all"
-      },
-      {
-        "id": "b1l06-g01-glossary-6",
-        "traditional": "他",
-        "pinyin": "tā",
-        "meaning": "he; him"
-      },
-      {
-        "id": "b1l06-g01-glossary-7",
-        "traditional": "她",
-        "pinyin": "tā",
-        "meaning": "she; her"
-      },
-      {
-        "id": "b1l06-g01-glossary-8",
-        "traditional": "國安",
-        "simplified": "国安",
-        "pinyin": "Guó'ān",
-        "meaning": "Guoan"
-      },
-      {
-        "id": "b1l06-g01-glossary-9",
-        "traditional": "友美",
-        "pinyin": "Yǒuměi",
-        "meaning": "Youmei"
-      },
-      {
-        "id": "b1l06-g01-glossary-10",
-        "traditional": "宜文",
-        "pinyin": "Yíwén",
-        "meaning": "Yiwen"
-      },
-      {
-        "id": "b1l06-g01-glossary-11",
-        "traditional": "中明",
-        "pinyin": "Zhōngmíng",
-        "meaning": "Zhongming"
-      },
-      {
-        "id": "b1l06-g01-glossary-12",
-        "traditional": "媽媽",
-        "simplified": "妈妈",
-        "pinyin": "māma",
-        "meaning": "mom"
-      },
-      {
-        "id": "b1l06-g01-glossary-13",
-        "traditional": "哥哥",
-        "pinyin": "gēge",
-        "meaning": "older brother"
-      },
-      {
-        "id": "b1l06-g01-glossary-14",
-        "traditional": "弟弟",
-        "pinyin": "dìdi",
-        "meaning": "younger brother"
-      },
-      {
-        "id": "b1l06-g01-glossary-15",
-        "traditional": "妹妹",
-        "pinyin": "mèimei",
-        "meaning": "younger sister"
-      },
-      {
-        "id": "b1l06-g01-glossary-16",
-        "traditional": "朋友",
-        "pinyin": "péngyǒu",
-        "meaning": "friend"
       },
       {
         "id": "b1l06-g01-glossary-17",
@@ -146,12 +66,6 @@
         "meaning": "know how to or not"
       },
       {
-        "id": "b1l06-g01-glossary-20",
-        "traditional": "得",
-        "pinyin": "de",
-        "meaning": "shows how an action is done"
-      },
-      {
         "id": "b1l06-g01-glossary-21",
         "traditional": "游泳",
         "pinyin": "yóuyǒng",
@@ -162,24 +76,6 @@
         "traditional": "游",
         "pinyin": "yóu",
         "meaning": "swim"
-      },
-      {
-        "id": "b1l06-g01-glossary-23",
-        "traditional": "跑步",
-        "pinyin": "pǎobù",
-        "meaning": "run"
-      },
-      {
-        "id": "b1l06-g01-glossary-24",
-        "traditional": "跑",
-        "pinyin": "pǎo",
-        "meaning": "run"
-      },
-      {
-        "id": "b1l06-g01-glossary-25",
-        "traditional": "走",
-        "pinyin": "zǒu",
-        "meaning": "walk"
       },
       {
         "id": "b1l06-g01-glossary-26",
@@ -201,13 +97,6 @@
         "meaning": "play baseball"
       },
       {
-        "id": "b1l06-g01-glossary-29",
-        "traditional": "打籃球",
-        "simplified": "打篮球",
-        "pinyin": "dǎ lánqiú",
-        "meaning": "play basketball"
-      },
-      {
         "id": "b1l06-g01-glossary-30",
         "traditional": "打",
         "pinyin": "dǎ",
@@ -227,52 +116,6 @@
         "meaning": "baseball"
       },
       {
-        "id": "b1l06-g01-glossary-33",
-        "traditional": "籃球",
-        "simplified": "篮球",
-        "pinyin": "lánqiú",
-        "meaning": "basketball"
-      },
-      {
-        "id": "b1l06-g01-glossary-34",
-        "traditional": "踢足球",
-        "pinyin": "tī zúqiú",
-        "meaning": "play soccer"
-      },
-      {
-        "id": "b1l06-g01-glossary-35",
-        "traditional": "踢",
-        "pinyin": "tī",
-        "meaning": "kick; play"
-      },
-      {
-        "id": "b1l06-g01-glossary-36",
-        "traditional": "足球",
-        "pinyin": "zúqiú",
-        "meaning": "soccer"
-      },
-      {
-        "id": "b1l06-g01-glossary-37",
-        "traditional": "騎腳踏車",
-        "simplified": "骑脚踏车",
-        "pinyin": "qí jiǎotàchē",
-        "meaning": "ride a bicycle"
-      },
-      {
-        "id": "b1l06-g01-glossary-38",
-        "traditional": "騎",
-        "simplified": "骑",
-        "pinyin": "qí",
-        "meaning": "ride"
-      },
-      {
-        "id": "b1l06-g01-glossary-39",
-        "traditional": "腳踏車",
-        "simplified": "脚踏车",
-        "pinyin": "jiǎotàchē",
-        "meaning": "bicycle"
-      },
-      {
         "id": "b1l06-g01-glossary-40",
         "traditional": "做飯",
         "simplified": "做饭",
@@ -284,13 +127,6 @@
         "traditional": "做",
         "pinyin": "zuò",
         "meaning": "do; make"
-      },
-      {
-        "id": "b1l06-g01-glossary-42",
-        "traditional": "牛肉麵",
-        "simplified": "牛肉面",
-        "pinyin": "niúròu miàn",
-        "meaning": "beef noodles"
       },
       {
         "id": "b1l06-g01-glossary-43",
@@ -307,19 +143,6 @@
         "meaning": "many kinds of desserts"
       },
       {
-        "id": "b1l06-g01-glossary-45",
-        "traditional": "吃飯",
-        "simplified": "吃饭",
-        "pinyin": "chīfàn",
-        "meaning": "eat a meal"
-      },
-      {
-        "id": "b1l06-g01-glossary-46",
-        "traditional": "吃",
-        "pinyin": "chī",
-        "meaning": "eat"
-      },
-      {
         "id": "b1l06-g01-glossary-47",
         "traditional": "飯",
         "simplified": "饭",
@@ -327,133 +150,10 @@
         "meaning": "meal; food"
       },
       {
-        "id": "b1l06-g01-glossary-48",
-        "traditional": "喝",
-        "pinyin": "hē",
-        "meaning": "drink"
-      },
-      {
-        "id": "b1l06-g01-glossary-49",
-        "traditional": "睡覺",
-        "simplified": "睡觉",
-        "pinyin": "shuìjiào",
-        "meaning": "sleep"
-      },
-      {
-        "id": "b1l06-g01-glossary-50",
-        "traditional": "睡",
-        "pinyin": "shuì",
-        "meaning": "sleep"
-      },
-      {
-        "id": "b1l06-g01-glossary-51",
-        "traditional": "說中文",
-        "simplified": "说中文",
-        "pinyin": "shuō Zhōngwén",
-        "meaning": "speak Chinese"
-      },
-      {
-        "id": "b1l06-g01-glossary-52",
-        "traditional": "說英文",
-        "simplified": "说英文",
-        "pinyin": "shuō Yīngwén",
-        "meaning": "speak English"
-      },
-      {
-        "id": "b1l06-g01-glossary-53",
-        "traditional": "說話",
-        "simplified": "说话",
-        "pinyin": "shuōhuà",
-        "meaning": "speak; talk"
-      },
-      {
-        "id": "b1l06-g01-glossary-54",
-        "traditional": "說",
-        "simplified": "说",
-        "pinyin": "shuō",
-        "meaning": "speak; say"
-      },
-      {
-        "id": "b1l06-g01-glossary-55",
-        "traditional": "中文",
-        "pinyin": "Zhōngwén",
-        "meaning": "Chinese language"
-      },
-      {
-        "id": "b1l06-g01-glossary-56",
-        "traditional": "英文",
-        "pinyin": "Yīngwén",
-        "meaning": "English language"
-      },
-      {
-        "id": "b1l06-g01-glossary-57",
-        "traditional": "看書",
-        "simplified": "看书",
-        "pinyin": "kànshū",
-        "meaning": "read"
-      },
-      {
-        "id": "b1l06-g01-glossary-58",
-        "traditional": "看",
-        "pinyin": "kàn",
-        "meaning": "read; look"
-      },
-      {
-        "id": "b1l06-g01-glossary-59",
-        "traditional": "書",
-        "simplified": "书",
-        "pinyin": "shū",
-        "meaning": "book"
-      },
-      {
-        "id": "b1l06-g01-glossary-60",
-        "traditional": "快",
-        "pinyin": "kuài",
-        "meaning": "fast; quickly"
-      },
-      {
-        "id": "b1l06-g01-glossary-61",
-        "traditional": "慢",
-        "pinyin": "màn",
-        "meaning": "slow; slowly"
-      },
-      {
         "id": "b1l06-g01-glossary-62",
         "traditional": "好",
         "pinyin": "hǎo",
         "meaning": "well; good"
-      },
-      {
-        "id": "b1l06-g01-glossary-63",
-        "traditional": "很好",
-        "pinyin": "hěn hǎo",
-        "meaning": "very well"
-      },
-      {
-        "id": "b1l06-g01-glossary-64",
-        "traditional": "很好吃",
-        "pinyin": "hěn hǎochī",
-        "meaning": "very delicious"
-      },
-      {
-        "id": "b1l06-g01-glossary-65",
-        "traditional": "不太好",
-        "pinyin": "bú tài hǎo",
-        "meaning": "not very well"
-      },
-      {
-        "id": "b1l06-g01-glossary-66",
-        "traditional": "不錯",
-        "simplified": "不错",
-        "pinyin": "búcuò",
-        "meaning": "not bad"
-      },
-      {
-        "id": "b1l06-g01-glossary-67",
-        "traditional": "很不錯",
-        "simplified": "很不错",
-        "pinyin": "hěn búcuò",
-        "meaning": "very good"
       },
       {
         "id": "b1l06-g01-glossary-68",
@@ -468,41 +168,10 @@
         "meaning": "a lot"
       },
       {
-        "id": "b1l06-g01-glossary-70",
-        "traditional": "不多",
-        "pinyin": "bù duō",
-        "meaning": "not much"
-      },
-      {
-        "id": "b1l06-g01-glossary-71",
-        "traditional": "很少",
-        "pinyin": "hěn shǎo",
-        "meaning": "very little"
-      },
-      {
-        "id": "b1l06-g01-glossary-72",
-        "traditional": "怎麼樣",
-        "simplified": "怎么样",
-        "pinyin": "zěnmeyàng",
-        "meaning": "how; how well"
-      },
-      {
         "id": "b1l06-g01-glossary-73",
         "traditional": "好不好",
         "pinyin": "hǎo bù hǎo",
         "meaning": "well or not"
-      },
-      {
-        "id": "b1l06-g01-glossary-74",
-        "traditional": "快不快",
-        "pinyin": "kuài bú kuài",
-        "meaning": "fast or not"
-      },
-      {
-        "id": "b1l06-g01-glossary-75",
-        "traditional": "多不多",
-        "pinyin": "duō bù duō",
-        "meaning": "much or not"
       },
       {
         "id": "b1l06-g01-glossary-76",
@@ -518,23 +187,10 @@
         "meaning": "ending word for a suggestion (let’s …)"
       },
       {
-        "id": "b1l06-g01-glossary-78",
-        "traditional": "啊",
-        "pinyin": "a",
-        "meaning": "ending word for a friendly reply"
-      },
-      {
         "id": "b1l06-g01-glossary-79",
         "traditional": "今天",
         "pinyin": "jīntiān",
         "meaning": "today"
-      },
-      {
-        "id": "b1l06-g01-glossary-80",
-        "traditional": "今天天氣",
-        "simplified": "今天天气",
-        "pinyin": "jīntiān tiānqì",
-        "meaning": "today’s weather"
       },
       {
         "id": "b1l06-g01-glossary-81",
@@ -543,105 +199,10 @@
         "meaning": "afternoon"
       },
       {
-        "id": "b1l06-g01-glossary-82",
-        "traditional": "昨天",
-        "pinyin": "zuótiān",
-        "meaning": "yesterday"
-      },
-      {
-        "id": "b1l06-g01-glossary-83",
-        "traditional": "昨天晚上",
-        "pinyin": "zuótiān wǎnshang",
-        "meaning": "last night"
-      },
-      {
-        "id": "b1l06-g01-glossary-84",
-        "traditional": "每天",
-        "pinyin": "měi tiān",
-        "meaning": "every day"
-      },
-      {
-        "id": "b1l06-g01-glossary-85",
-        "traditional": "都",
-        "pinyin": "dōu",
-        "meaning": "all; every time"
-      },
-      {
-        "id": "b1l06-g01-glossary-86",
-        "traditional": "海邊",
-        "simplified": "海边",
-        "pinyin": "hǎibiān",
-        "meaning": "beach; seaside"
-      },
-      {
-        "id": "b1l06-g01-glossary-87",
-        "traditional": "風景",
-        "simplified": "风景",
-        "pinyin": "fēngjǐng",
-        "meaning": "scenery"
-      },
-      {
-        "id": "b1l06-g01-glossary-88",
-        "traditional": "天氣",
-        "simplified": "天气",
-        "pinyin": "tiānqì",
-        "meaning": "weather"
-      },
-      {
-        "id": "b1l06-g01-glossary-89",
-        "traditional": "漂亮",
-        "pinyin": "piàoliàng",
-        "meaning": "beautiful"
-      },
-      {
-        "id": "b1l06-g01-glossary-90",
-        "traditional": "想去",
-        "pinyin": "xiǎng qù",
-        "meaning": "want to go"
-      },
-      {
-        "id": "b1l06-g01-glossary-91",
-        "traditional": "想",
-        "pinyin": "xiǎng",
-        "meaning": "want; would like"
-      },
-      {
         "id": "b1l06-g01-glossary-92",
         "traditional": "去",
         "pinyin": "qù",
         "meaning": "go"
-      },
-      {
-        "id": "b1l06-g01-glossary-93",
-        "traditional": "一起去",
-        "pinyin": "yìqǐ qù",
-        "meaning": "go together"
-      },
-      {
-        "id": "b1l06-g01-glossary-94",
-        "traditional": "喜歡",
-        "simplified": "喜欢",
-        "pinyin": "xǐhuān",
-        "meaning": "like"
-      },
-      {
-        "id": "b1l06-g01-glossary-95",
-        "traditional": "不喜歡",
-        "simplified": "不喜欢",
-        "pinyin": "bù xǐhuān",
-        "meaning": "do not like"
-      },
-      {
-        "id": "b1l06-g01-glossary-96",
-        "traditional": "可是",
-        "pinyin": "kěshì",
-        "meaning": "but"
-      },
-      {
-        "id": "b1l06-g01-glossary-97",
-        "traditional": "也",
-        "pinyin": "yě",
-        "meaning": "also"
       },
       {
         "id": "b1l06-g01-glossary-98",
@@ -650,78 +211,10 @@
         "meaning": "very"
       },
       {
-        "id": "b1l06-g01-glossary-99",
-        "traditional": "太",
-        "pinyin": "tài",
-        "meaning": "too; very"
-      },
-      {
-        "id": "b1l06-g01-glossary-100",
-        "traditional": "中明說",
-        "simplified": "中明说",
-        "pinyin": "Zhōngmíng shuō",
-        "meaning": "Zhongming says"
-      },
-      {
         "id": "b1l06-g01-glossary-101",
         "traditional": "的",
         "pinyin": "de",
         "meaning": "shows belonging or links a describing word"
-      },
-      {
-        "id": "b1l06-g01-glossary-102",
-        "traditional": "你的",
-        "pinyin": "nǐ de",
-        "meaning": "your"
-      },
-      {
-        "id": "b1l06-g01-glossary-103",
-        "traditional": "我的",
-        "pinyin": "wǒ de",
-        "meaning": "my"
-      },
-      {
-        "id": "b1l06-g01-glossary-104",
-        "traditional": "他的",
-        "pinyin": "tā de",
-        "meaning": "his"
-      },
-      {
-        "id": "b1l06-g01-glossary-105",
-        "traditional": "她的",
-        "pinyin": "tā de",
-        "meaning": "her"
-      },
-      {
-        "id": "b1l06-g01-glossary-106",
-        "traditional": "你哥哥的",
-        "pinyin": "nǐ gēge de",
-        "meaning": "your older brother’s"
-      },
-      {
-        "id": "b1l06-g01-glossary-107",
-        "traditional": "我哥哥",
-        "pinyin": "wǒ gēge",
-        "meaning": "my older brother"
-      },
-      {
-        "id": "b1l06-g01-glossary-108",
-        "traditional": "你媽媽",
-        "simplified": "你妈妈",
-        "pinyin": "nǐ māma",
-        "meaning": "your mother"
-      },
-      {
-        "id": "b1l06-g01-glossary-109",
-        "traditional": "你弟弟",
-        "pinyin": "nǐ dìdi",
-        "meaning": "your younger brother"
-      },
-      {
-        "id": "b1l06-g01-glossary-110",
-        "traditional": "我妹妹",
-        "pinyin": "wǒ mèimei",
-        "meaning": "my younger sister"
       },
       {
         "id": "b1l06-g01-glossary-111",
@@ -760,30 +253,20 @@
         {
           "id": "g1-off",
           "label": "Skill off",
-          "traditional": "我不會游泳。",
-          "simplified": "我不会游泳。",
-          "pinyin": "Wǒ bú huì yóuyǒng.",
-          "english": "I do not know how to swim.",
+          "traditional": "我不會打棒球。",
+          "simplified": "我不会打棒球。",
+          "pinyin": "Wǒ bú huì dǎ bàngqiú.",
+          "english": "I do not know how to play baseball.",
           "note": "不 goes directly before 會."
         },
         {
           "id": "g1-check",
-          "label": "Check skill",
-          "traditional": "你會不會游泳？",
-          "simplified": "你会不会游泳？",
-          "pinyin": "Nǐ huì bú huì yóuyǒng?",
-          "english": "Do you know how to swim?",
+          "label": "Ask about a skill",
+          "traditional": "你會不會做飯？",
+          "simplified": "你会不会做饭？",
+          "pinyin": "Nǐ huì bú huì zuòfàn?",
+          "english": "Do you know how to cook?",
           "note": "會不會 asks whether the skill is available."
-        },
-        {
-          "id": "g1-repair",
-          "label": "Repair order",
-          "traditional": "我游泳會 → 我會游泳",
-          "simplified": "我游泳会 → 我会游泳",
-          "pinyin": "Wǒ yóuyǒng huì → Wǒ huì yóuyǒng",
-          "english": "I know how to swim.",
-          "note": "Place 會 before the learned action.",
-          "isCorrection": true
         }
       ],
       "takeaway": "Person + 會 + skill. Use 不會 for no skill and 會不會 to ask."
@@ -793,7 +276,7 @@
         "id": "g1-p1",
         "subject": [
           {
-            "id": "g1-p1-i",
+            "id": "g1-p1-s-w1",
             "traditional": "我",
             "pinyin": "wǒ",
             "meaning": "I; me"
@@ -801,29 +284,29 @@
         ],
         "grammar": [
           {
-            "id": "g1-p1-can",
+            "id": "g1-p1-g-w2",
             "traditional": "會",
-            "simplified": "会",
             "pinyin": "huì",
-            "meaning": "know how to"
+            "meaning": "know how to",
+            "simplified": "会"
           }
         ],
         "complement": [
           {
-            "id": "g1-p1-swim",
+            "id": "g1-p1-c-w3",
             "traditional": "游泳",
             "pinyin": "yóuyǒng",
             "meaning": "swim",
             "suffix": "。"
           }
         ],
-        "english": "I know how to swim."
+        "english": "I can swim."
       },
       {
         "id": "g1-p2",
         "subject": [
           {
-            "id": "g1-p2-i",
+            "id": "g1-p2-s-w4",
             "traditional": "我",
             "pinyin": "wǒ",
             "meaning": "I; me"
@@ -831,93 +314,28 @@
         ],
         "grammar": [
           {
-            "id": "g1-p2-cant",
+            "id": "g1-p2-g-w5",
             "traditional": "不會",
-            "simplified": "不会",
             "pinyin": "bú huì",
-            "meaning": "do not know how to"
+            "meaning": "do not know how to",
+            "simplified": "不会"
           }
         ],
         "complement": [
           {
-            "id": "g1-p2-baseball",
+            "id": "g1-p2-c-w6",
             "traditional": "打棒球",
             "pinyin": "dǎ bàngqiú",
             "meaning": "play baseball",
             "suffix": "。"
           }
         ],
-        "english": "I do not know how to play baseball."
-      },
-      {
-        "id": "g1-p3",
-        "subject": [
-          {
-            "id": "g1-p3-you",
-            "traditional": "你",
-            "pinyin": "nǐ",
-            "meaning": "you"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p3-can-or",
-            "traditional": "會不會",
-            "simplified": "会不会",
-            "pinyin": "huì bú huì",
-            "meaning": "know how to or not"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g1-p3-cook",
-            "traditional": "做飯",
-            "simplified": "做饭",
-            "pinyin": "zuòfàn",
-            "meaning": "cook",
-            "suffix": "？"
-          }
-        ],
-        "english": "Do you know how to cook?"
+        "english": "I cannot play baseball."
       }
     ],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
-        {
-          "id": "g1-confusion-can-skill",
-          "question": "I learned to swim. Do I say 我可以游泳 or 我會游泳?",
-          "answer": "Use 會 — it reports a learned skill. 可以 talks about being allowed or a good option.",
-          "wrongTraditional": "我可以游泳。",
-          "right": {
-            "traditional": "我會游泳。",
-            "simplified": "我会游泳。",
-            "pinyin": "Wǒ huì yóuyǒng.",
-            "english": "I know how to swim.",
-            "words": [
-              {
-                "id": "g1-confusion-can-skill-word-1",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              },
-              {
-                "id": "g1-confusion-can-skill-word-2",
-                "traditional": "會",
-                "simplified": "会",
-                "pinyin": "huì",
-                "meaning": "know how to"
-              },
-              {
-                "id": "g1-confusion-can-skill-word-3",
-                "traditional": "游泳",
-                "pinyin": "yóuyǒng",
-                "meaning": "swim",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
         {
           "id": "g1-confusion-can-position",
           "question": "I know how to cook. Is it 我做飯會?",
@@ -956,35 +374,34 @@
         },
         {
           "id": "g1-confusion-cant-order",
-          "question": "To say I cannot speak Chinese, is it 我會不說中文?",
-          "answer": "No — 不 goes directly before 會: 不會說中文.",
-          "wrongTraditional": "我會不說中文。",
-          "wrongSimplified": "我会不说中文。",
+          "question": "To say I cannot swim, is it 我會不游泳?",
+          "answer": "Put 不 directly before 會: 不會游泳.",
+          "wrongTraditional": "我會不游泳。",
+          "wrongSimplified": "我会不游泳。",
           "right": {
-            "traditional": "我不會說中文。",
-            "simplified": "我不会说中文。",
-            "pinyin": "Wǒ bú huì shuō Zhōngwén.",
-            "english": "I do not know how to speak Chinese.",
+            "traditional": "我不會游泳。",
+            "simplified": "我不会游泳。",
+            "pinyin": "Wǒ bú huì yóuyǒng.",
+            "english": "I cannot swim.",
             "words": [
               {
-                "id": "g1-confusion-cant-order-word-1",
+                "id": "b1l06-g1-review-skill-word-1",
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
               },
               {
-                "id": "g1-confusion-cant-order-word-2",
+                "id": "b1l06-g1-review-skill-word-2",
                 "traditional": "不會",
                 "simplified": "不会",
                 "pinyin": "bú huì",
                 "meaning": "do not know how to"
               },
               {
-                "id": "g1-confusion-cant-order-word-3",
-                "traditional": "說中文",
-                "simplified": "说中文",
-                "pinyin": "shuō Zhōngwén",
-                "meaning": "speak Chinese",
+                "id": "b1l06-g1-review-skill-word-3",
+                "traditional": "游泳",
+                "pinyin": "yóuyǒng",
+                "meaning": "swim",
                 "suffix": "。"
               }
             ]
@@ -1227,134 +644,12 @@
             }
           ]
         }
-      },
-      {
-        "id": "g1-e4",
-        "number": 4,
-        "teachingNote": "Ability and performance answer different questions.",
-        "text": {
-          "traditional": "她會說中文，可是說得不太快。",
-          "simplified": "她会说中文，可是说得不太快。",
-          "pinyin": "Tā huì shuō Zhōngwén, kěshì shuō de bú tài kuài.",
-          "english": "She can speak Chinese, but she does not speak very quickly.",
-          "words": [
-            {
-              "id": "b1l06-g1-e4-word-1",
-              "traditional": "她",
-              "pinyin": "tā",
-              "meaning": "she; her"
-            },
-            {
-              "id": "b1l06-g1-e4-word-2",
-              "traditional": "會",
-              "simplified": "会",
-              "pinyin": "huì",
-              "meaning": "know how to"
-            },
-            {
-              "id": "b1l06-g1-e4-word-3",
-              "traditional": "說中文",
-              "simplified": "说中文",
-              "pinyin": "shuō Zhōngwén",
-              "meaning": "speak Chinese"
-            },
-            {
-              "id": "b1l06-g1-e4-word-4",
-              "traditional": "可是",
-              "pinyin": "kěshì",
-              "meaning": "but",
-              "prefix": "，"
-            },
-            {
-              "id": "b1l06-g1-e4-word-5",
-              "traditional": "說",
-              "simplified": "说",
-              "pinyin": "shuō",
-              "meaning": "speak; say"
-            },
-            {
-              "id": "b1l06-g1-e4-word-6",
-              "traditional": "得",
-              "pinyin": "de",
-              "meaning": "shows how an action is done"
-            },
-            {
-              "id": "b1l06-g1-e4-word-7",
-              "traditional": "太",
-              "pinyin": "tài",
-              "meaning": "too; very",
-              "prefix": "不"
-            },
-            {
-              "id": "b1l06-g1-e4-word-8",
-              "traditional": "快",
-              "pinyin": "kuài",
-              "meaning": "fast; quickly",
-              "suffix": "。"
-            }
-          ]
-        }
-      },
-      {
-        "id": "g1-e5",
-        "number": 5,
-        "teachingNote": "會不會 asks about a learned skill.",
-        "text": {
-          "traditional": "A：你妹妹會不會騎腳踏車？ B：她會。",
-          "simplified": "A：你妹妹会不会骑脚踏车？ B：她会。",
-          "pinyin": "A: Nǐ mèimei huì bú huì qí jiǎotàchē? B: Tā huì.",
-          "english": "A: Can your younger sister ride a bicycle? B: Yes.",
-          "words": [
-            {
-              "id": "b1l06-g1-e5-word-1",
-              "traditional": "你",
-              "pinyin": "nǐ",
-              "meaning": "you",
-              "prefix": "A："
-            },
-            {
-              "id": "b1l06-g1-e5-word-2",
-              "traditional": "妹妹",
-              "pinyin": "mèimei",
-              "meaning": "younger sister"
-            },
-            {
-              "id": "b1l06-g1-e5-word-3",
-              "traditional": "會不會",
-              "simplified": "会不会",
-              "pinyin": "huì bú huì",
-              "meaning": "know how to or not"
-            },
-            {
-              "id": "b1l06-g1-e5-word-4",
-              "traditional": "騎腳踏車",
-              "simplified": "骑脚踏车",
-              "pinyin": "qí jiǎotàchē",
-              "meaning": "ride a bicycle"
-            },
-            {
-              "id": "b1l06-g1-e5-word-5",
-              "traditional": "她",
-              "pinyin": "tā",
-              "meaning": "she; her",
-              "prefix": "？ B："
-            },
-            {
-              "id": "b1l06-g1-e5-word-6",
-              "traditional": "會",
-              "simplified": "会",
-              "pinyin": "huì",
-              "meaning": "know how to",
-              "suffix": "。"
-            }
-          ]
-        }
       }
     ],
-    "exerciseTitle": "Check the skill switch",
+    "exerciseTitle": "Complete the following dialogues.",
     "exercisePreview": "Answer whether each learned skill is available.",
-    "exerciseInstruction": "Complete all three book dialogues with 會, 不會, or 會不會 before the action.",
-    "exerciseNote": "Open answers use simple learner models; the source prints no answer key.",
+    "exerciseInstruction": "Complete the following dialogues.",
+    "exerciseNote": "The book gives open responses, with no printed answer key.",
     "exerciseResponseMode": "text",
     "questions": [
       {
@@ -1524,30 +819,10 @@
         "meaning": "I; me"
       },
       {
-        "id": "b1l06-g02-glossary-2",
-        "traditional": "我們",
-        "simplified": "我们",
-        "pinyin": "wǒmen",
-        "meaning": "we; us"
-      },
-      {
         "id": "b1l06-g02-glossary-3",
         "traditional": "你",
         "pinyin": "nǐ",
         "meaning": "you"
-      },
-      {
-        "id": "b1l06-g02-glossary-4",
-        "traditional": "妳",
-        "pinyin": "nǐ",
-        "meaning": "you"
-      },
-      {
-        "id": "b1l06-g02-glossary-5",
-        "traditional": "妳們",
-        "simplified": "你们",
-        "pinyin": "nǐmen",
-        "meaning": "you all"
       },
       {
         "id": "b1l06-g02-glossary-6",
@@ -1560,38 +835,6 @@
         "traditional": "她",
         "pinyin": "tā",
         "meaning": "she; her"
-      },
-      {
-        "id": "b1l06-g02-glossary-8",
-        "traditional": "國安",
-        "simplified": "国安",
-        "pinyin": "Guó'ān",
-        "meaning": "Guoan"
-      },
-      {
-        "id": "b1l06-g02-glossary-9",
-        "traditional": "友美",
-        "pinyin": "Yǒuměi",
-        "meaning": "Youmei"
-      },
-      {
-        "id": "b1l06-g02-glossary-10",
-        "traditional": "宜文",
-        "pinyin": "Yíwén",
-        "meaning": "Yiwen"
-      },
-      {
-        "id": "b1l06-g02-glossary-11",
-        "traditional": "中明",
-        "pinyin": "Zhōngmíng",
-        "meaning": "Zhongming"
-      },
-      {
-        "id": "b1l06-g02-glossary-12",
-        "traditional": "媽媽",
-        "simplified": "妈妈",
-        "pinyin": "māma",
-        "meaning": "mom"
       },
       {
         "id": "b1l06-g02-glossary-13",
@@ -1610,33 +853,6 @@
         "traditional": "妹妹",
         "pinyin": "mèimei",
         "meaning": "younger sister"
-      },
-      {
-        "id": "b1l06-g02-glossary-16",
-        "traditional": "朋友",
-        "pinyin": "péngyǒu",
-        "meaning": "friend"
-      },
-      {
-        "id": "b1l06-g02-glossary-17",
-        "traditional": "會",
-        "simplified": "会",
-        "pinyin": "huì",
-        "meaning": "know how to"
-      },
-      {
-        "id": "b1l06-g02-glossary-18",
-        "traditional": "不會",
-        "simplified": "不会",
-        "pinyin": "bú huì",
-        "meaning": "do not know how to"
-      },
-      {
-        "id": "b1l06-g02-glossary-19",
-        "traditional": "會不會",
-        "simplified": "会不会",
-        "pinyin": "huì bú huì",
-        "meaning": "know how to or not"
       },
       {
         "id": "b1l06-g02-glossary-20",
@@ -1675,30 +891,11 @@
         "meaning": "walk"
       },
       {
-        "id": "b1l06-g02-glossary-26",
-        "traditional": "打球",
-        "pinyin": "dǎ qiú",
-        "meaning": "play ball"
-      },
-      {
         "id": "b1l06-g02-glossary-27",
         "traditional": "打網球",
         "simplified": "打网球",
         "pinyin": "dǎ wǎngqiú",
         "meaning": "play tennis"
-      },
-      {
-        "id": "b1l06-g02-glossary-28",
-        "traditional": "打棒球",
-        "pinyin": "dǎ bàngqiú",
-        "meaning": "play baseball"
-      },
-      {
-        "id": "b1l06-g02-glossary-29",
-        "traditional": "打籃球",
-        "simplified": "打篮球",
-        "pinyin": "dǎ lánqiú",
-        "meaning": "play basketball"
       },
       {
         "id": "b1l06-g02-glossary-30",
@@ -1712,25 +909,6 @@
         "simplified": "网球",
         "pinyin": "wǎngqiú",
         "meaning": "tennis"
-      },
-      {
-        "id": "b1l06-g02-glossary-32",
-        "traditional": "棒球",
-        "pinyin": "bàngqiú",
-        "meaning": "baseball"
-      },
-      {
-        "id": "b1l06-g02-glossary-33",
-        "traditional": "籃球",
-        "simplified": "篮球",
-        "pinyin": "lánqiú",
-        "meaning": "basketball"
-      },
-      {
-        "id": "b1l06-g02-glossary-34",
-        "traditional": "踢足球",
-        "pinyin": "tī zúqiú",
-        "meaning": "play soccer"
       },
       {
         "id": "b1l06-g02-glossary-35",
@@ -1766,13 +944,6 @@
         "meaning": "bicycle"
       },
       {
-        "id": "b1l06-g02-glossary-40",
-        "traditional": "做飯",
-        "simplified": "做饭",
-        "pinyin": "zuòfàn",
-        "meaning": "cook"
-      },
-      {
         "id": "b1l06-g02-glossary-41",
         "traditional": "做",
         "pinyin": "zuò",
@@ -1782,22 +953,8 @@
         "id": "b1l06-g02-glossary-42",
         "traditional": "牛肉麵",
         "simplified": "牛肉面",
-        "pinyin": "niúròu miàn",
+        "pinyin": "niúròumiàn",
         "meaning": "beef noodles"
-      },
-      {
-        "id": "b1l06-g02-glossary-43",
-        "traditional": "甜點",
-        "simplified": "甜点",
-        "pinyin": "tiándiǎn",
-        "meaning": "dessert"
-      },
-      {
-        "id": "b1l06-g02-glossary-44",
-        "traditional": "很多種甜點",
-        "simplified": "很多种甜点",
-        "pinyin": "hěn duō zhǒng tiándiǎn",
-        "meaning": "many kinds of desserts"
       },
       {
         "id": "b1l06-g02-glossary-45",
@@ -1820,37 +977,10 @@
         "meaning": "meal; food"
       },
       {
-        "id": "b1l06-g02-glossary-48",
-        "traditional": "喝",
-        "pinyin": "hē",
-        "meaning": "drink"
-      },
-      {
-        "id": "b1l06-g02-glossary-49",
-        "traditional": "睡覺",
-        "simplified": "睡觉",
-        "pinyin": "shuìjiào",
-        "meaning": "sleep"
-      },
-      {
         "id": "b1l06-g02-glossary-50",
         "traditional": "睡",
         "pinyin": "shuì",
         "meaning": "sleep"
-      },
-      {
-        "id": "b1l06-g02-glossary-51",
-        "traditional": "說中文",
-        "simplified": "说中文",
-        "pinyin": "shuō Zhōngwén",
-        "meaning": "speak Chinese"
-      },
-      {
-        "id": "b1l06-g02-glossary-52",
-        "traditional": "說英文",
-        "simplified": "说英文",
-        "pinyin": "shuō Yīngwén",
-        "meaning": "speak English"
       },
       {
         "id": "b1l06-g02-glossary-53",
@@ -1871,19 +1001,6 @@
         "traditional": "中文",
         "pinyin": "Zhōngwén",
         "meaning": "Chinese language"
-      },
-      {
-        "id": "b1l06-g02-glossary-56",
-        "traditional": "英文",
-        "pinyin": "Yīngwén",
-        "meaning": "English language"
-      },
-      {
-        "id": "b1l06-g02-glossary-57",
-        "traditional": "看書",
-        "simplified": "看书",
-        "pinyin": "kànshū",
-        "meaning": "read"
       },
       {
         "id": "b1l06-g02-glossary-58",
@@ -1921,12 +1038,6 @@
         "traditional": "很好",
         "pinyin": "hěn hǎo",
         "meaning": "very well"
-      },
-      {
-        "id": "b1l06-g02-glossary-64",
-        "traditional": "很好吃",
-        "pinyin": "hěn hǎochī",
-        "meaning": "very delicious"
       },
       {
         "id": "b1l06-g02-glossary-65",
@@ -1967,12 +1078,6 @@
         "meaning": "not much"
       },
       {
-        "id": "b1l06-g02-glossary-71",
-        "traditional": "很少",
-        "pinyin": "hěn shǎo",
-        "meaning": "very little"
-      },
-      {
         "id": "b1l06-g02-glossary-72",
         "traditional": "怎麼樣",
         "simplified": "怎么样",
@@ -2011,43 +1116,6 @@
         "meaning": "ending word for a suggestion (let’s …)"
       },
       {
-        "id": "b1l06-g02-glossary-78",
-        "traditional": "啊",
-        "pinyin": "a",
-        "meaning": "ending word for a friendly reply"
-      },
-      {
-        "id": "b1l06-g02-glossary-79",
-        "traditional": "今天",
-        "pinyin": "jīntiān",
-        "meaning": "today"
-      },
-      {
-        "id": "b1l06-g02-glossary-80",
-        "traditional": "今天天氣",
-        "simplified": "今天天气",
-        "pinyin": "jīntiān tiānqì",
-        "meaning": "today’s weather"
-      },
-      {
-        "id": "b1l06-g02-glossary-81",
-        "traditional": "下午",
-        "pinyin": "xiàwǔ",
-        "meaning": "afternoon"
-      },
-      {
-        "id": "b1l06-g02-glossary-82",
-        "traditional": "昨天",
-        "pinyin": "zuótiān",
-        "meaning": "yesterday"
-      },
-      {
-        "id": "b1l06-g02-glossary-83",
-        "traditional": "昨天晚上",
-        "pinyin": "zuótiān wǎnshang",
-        "meaning": "last night"
-      },
-      {
         "id": "b1l06-g02-glossary-84",
         "traditional": "每天",
         "pinyin": "měi tiān",
@@ -2060,81 +1128,10 @@
         "meaning": "all; every time"
       },
       {
-        "id": "b1l06-g02-glossary-86",
-        "traditional": "海邊",
-        "simplified": "海边",
-        "pinyin": "hǎibiān",
-        "meaning": "beach; seaside"
-      },
-      {
-        "id": "b1l06-g02-glossary-87",
-        "traditional": "風景",
-        "simplified": "风景",
-        "pinyin": "fēngjǐng",
-        "meaning": "scenery"
-      },
-      {
-        "id": "b1l06-g02-glossary-88",
-        "traditional": "天氣",
-        "simplified": "天气",
-        "pinyin": "tiānqì",
-        "meaning": "weather"
-      },
-      {
-        "id": "b1l06-g02-glossary-89",
-        "traditional": "漂亮",
-        "pinyin": "piàoliàng",
-        "meaning": "beautiful"
-      },
-      {
-        "id": "b1l06-g02-glossary-90",
-        "traditional": "想去",
-        "pinyin": "xiǎng qù",
-        "meaning": "want to go"
-      },
-      {
-        "id": "b1l06-g02-glossary-91",
-        "traditional": "想",
-        "pinyin": "xiǎng",
-        "meaning": "want; would like"
-      },
-      {
         "id": "b1l06-g02-glossary-92",
         "traditional": "去",
         "pinyin": "qù",
         "meaning": "go"
-      },
-      {
-        "id": "b1l06-g02-glossary-93",
-        "traditional": "一起去",
-        "pinyin": "yìqǐ qù",
-        "meaning": "go together"
-      },
-      {
-        "id": "b1l06-g02-glossary-94",
-        "traditional": "喜歡",
-        "simplified": "喜欢",
-        "pinyin": "xǐhuān",
-        "meaning": "like"
-      },
-      {
-        "id": "b1l06-g02-glossary-95",
-        "traditional": "不喜歡",
-        "simplified": "不喜欢",
-        "pinyin": "bù xǐhuān",
-        "meaning": "do not like"
-      },
-      {
-        "id": "b1l06-g02-glossary-96",
-        "traditional": "可是",
-        "pinyin": "kěshì",
-        "meaning": "but"
-      },
-      {
-        "id": "b1l06-g02-glossary-97",
-        "traditional": "也",
-        "pinyin": "yě",
-        "meaning": "also"
       },
       {
         "id": "b1l06-g02-glossary-98",
@@ -2147,13 +1144,6 @@
         "traditional": "太",
         "pinyin": "tài",
         "meaning": "too; very"
-      },
-      {
-        "id": "b1l06-g02-glossary-100",
-        "traditional": "中明說",
-        "simplified": "中明说",
-        "pinyin": "Zhōngmíng shuō",
-        "meaning": "Zhongming says"
       },
       {
         "id": "b1l06-g02-glossary-101",
@@ -2186,23 +1176,10 @@
         "meaning": "her"
       },
       {
-        "id": "b1l06-g02-glossary-106",
-        "traditional": "你哥哥的",
-        "pinyin": "nǐ gēge de",
-        "meaning": "your older brother’s"
-      },
-      {
         "id": "b1l06-g02-glossary-107",
         "traditional": "我哥哥",
         "pinyin": "wǒ gēge",
         "meaning": "my older brother"
-      },
-      {
-        "id": "b1l06-g02-glossary-108",
-        "traditional": "你媽媽",
-        "simplified": "你妈妈",
-        "pinyin": "nǐ māma",
-        "meaning": "your mother"
       },
       {
         "id": "b1l06-g02-glossary-109",
@@ -2217,11 +1194,96 @@
         "meaning": "my younger sister"
       },
       {
-        "id": "b1l06-g02-glossary-111",
-        "traditional": "很多種",
-        "simplified": "很多种",
-        "pinyin": "hěn duō zhǒng",
-        "meaning": "many kinds of"
+        "id": "b1l06-g02-glossary-112",
+        "traditional": "很快",
+        "pinyin": "hěn kuài",
+        "meaning": "very fast"
+      },
+      {
+        "id": "b1l06-g02-glossary-113",
+        "traditional": "很慢",
+        "pinyin": "hěn màn",
+        "meaning": "very slowly"
+      },
+      {
+        "id": "b1l06-g02-glossary-114",
+        "traditional": "好快",
+        "pinyin": "hǎo kuài",
+        "meaning": "so fast"
+      },
+      {
+        "id": "b1l06-g02-glossary-115",
+        "traditional": "好慢",
+        "pinyin": "hǎo màn",
+        "meaning": "so slowly"
+      },
+      {
+        "id": "b1l06-g02-glossary-116",
+        "traditional": "你的網球",
+        "simplified": "你的网球",
+        "pinyin": "nǐ de wǎngqiú",
+        "meaning": "your tennis game"
+      },
+      {
+        "id": "b1l06-g02-glossary-117",
+        "traditional": "他的牛肉麵",
+        "simplified": "他的牛肉面",
+        "pinyin": "tā de niúròumiàn",
+        "meaning": "his beef noodles"
+      },
+      {
+        "id": "b1l06-g02-glossary-118",
+        "traditional": "你哥哥",
+        "pinyin": "nǐ gēge",
+        "meaning": "your older brother"
+      },
+      {
+        "id": "b1l06-g02-glossary-119",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l06-g02-glossary-120",
+        "traditional": "你的飯",
+        "simplified": "你的饭",
+        "pinyin": "nǐ de fàn",
+        "meaning": "your cooking"
+      },
+      {
+        "id": "b1l06-g02-glossary-121",
+        "traditional": "我的飯",
+        "simplified": "我的饭",
+        "pinyin": "wǒ de fàn",
+        "meaning": "my cooking"
+      },
+      {
+        "id": "b1l06-g02-glossary-122",
+        "traditional": "你弟弟的足球",
+        "simplified": "你弟弟的足球",
+        "pinyin": "nǐ dìdi de zúqiú",
+        "meaning": "your younger brother's soccer game"
+      },
+      {
+        "id": "b1l06-g02-glossary-123",
+        "traditional": "我弟弟的足球",
+        "simplified": "我弟弟的足球",
+        "pinyin": "wǒ dìdi de zúqiú",
+        "meaning": "my younger brother's soccer game"
+      },
+      {
+        "id": "b1l06-g02-glossary-124",
+        "traditional": "她的腳踏車",
+        "simplified": "她的脚踏车",
+        "pinyin": "tā de jiǎotàchē",
+        "meaning": "her bicycle"
+      },
+      {
+        "id": "b1l06-g02-glossary-125",
+        "traditional": "不快",
+        "pinyin": "bú kuài",
+        "meaning": "not fast"
       }
     ],
     "pattern": "Subject + Verb + 得 + Adjective",
@@ -2255,39 +1317,29 @@
         {
           "id": "g2-repeat",
           "label": "Repeat the verb",
-          "traditional": "他跑步跑得很快。",
-          "simplified": "他跑步跑得很快。",
-          "pinyin": "Tā pǎobù pǎo de hěn kuài.",
-          "english": "He runs very fast.",
+          "traditional": "我跑步跑得很快。",
+          "simplified": "我跑步跑得很快。",
+          "pinyin": "Wǒ pǎobù pǎo de hěn kuài.",
+          "english": "I run very fast.",
           "note": "Say the full activity 跑步, then repeat the action word 跑 before 得."
         },
         {
           "id": "g2-object",
           "label": "Move object forward",
-          "traditional": "他網球打得很好。",
-          "simplified": "他网球打得很好。",
-          "pinyin": "Tā wǎngqiú dǎ de hěn hǎo.",
-          "english": "He plays tennis very well.",
+          "traditional": "他網球打得不錯。",
+          "simplified": "他网球打得不错。",
+          "pinyin": "Tā wǎngqiú dǎ de búcuò.",
+          "english": "He plays tennis quite well.",
           "note": "網球 becomes the topic, leaving 打 next to 得."
         },
         {
           "id": "g2-owned",
           "label": "Owned activity",
-          "traditional": "他的網球打得很好。",
-          "simplified": "他的网球打得很好。",
-          "pinyin": "Tā de wǎngqiú dǎ de hěn hǎo.",
-          "english": "His tennis playing is very good.",
-          "note": "他的網球 is the topic; 打 still stands directly before 得."
-        },
-        {
-          "id": "g2-repair",
-          "label": "Repair the meter",
-          "traditional": "他打得網球很好 → 他網球打得很好",
-          "simplified": "他打得网球很好 → 他网球打得很好",
-          "pinyin": "Tā dǎ de wǎngqiú hěn hǎo → Tā wǎngqiú dǎ de hěn hǎo",
-          "english": "He plays tennis very well.",
-          "note": "Do not put 網球 after 得.",
-          "isCorrection": true
+          "traditional": "他的牛肉麵做得很不錯。",
+          "simplified": "他的牛肉面做得很不错。",
+          "pinyin": "Tā de niúròumiàn zuò de hěn búcuò.",
+          "english": "He cooks good beef noodles.",
+          "note": "他的牛肉麵 is the topic; 做 still stands directly before 得."
         }
       ],
       "takeaway": "Protect the core: action word + 得 + performance. Move or repeat the thing when needed."
@@ -2297,10 +1349,10 @@
       "description": "Three blocks. The middle block is the rule that never changes.",
       "subject": {
         "role": "topic",
-        "label": "1 · Pick activity",
-        "traditional": "跑步",
-        "pinyin": "pǎobù",
-        "english": "running"
+        "label": "1 · Subject + activity",
+        "traditional": "我跑步",
+        "pinyin": "wǒ pǎobù",
+        "english": "I run"
       },
       "verb": {
         "role": "meter",
@@ -2316,7 +1368,7 @@
         "pinyin": "hěn kuài",
         "english": "very fast"
       },
-      "positiveEnglish": "As for running, it is done very fast.",
+      "positiveEnglish": "I run very fast.",
       "notes": [
         "Right: 跑步 + 跑得 + 很快. Repeat 跑 so the action word touches 得.",
         "Wrong: 跑步 + 得 + 很快. The word 步 cannot attach directly to 得."
@@ -2374,14 +1426,14 @@
         {
           "id": "g2-confusion-object-touch",
           "question": "He plays tennis very well. Can I say 他打網球得很好?",
-          "answer": "No — move 網球 in front, or repeat 打, so the action word touches 得: 網球打得很好。",
+          "answer": "Put 網球 before 打, or repeat 打, so the verb comes directly before 得.",
           "wrongTraditional": "他打網球得很好。",
           "wrongSimplified": "他打网球得很好。",
           "right": {
-            "traditional": "他網球打得很好。",
-            "simplified": "他网球打得很好。",
-            "pinyin": "Tā wǎngqiú dǎ de hěn hǎo.",
-            "english": "He plays tennis very well.",
+            "traditional": "他網球打得不錯。",
+            "simplified": "他网球打得不错。",
+            "pinyin": "Tā wǎngqiú dǎ de búcuò.",
+            "english": "He plays tennis quite well.",
             "words": [
               {
                 "id": "g2-confusion-object-touch-word-1",
@@ -2410,52 +1462,54 @@
               },
               {
                 "id": "g2-confusion-object-touch-word-5",
-                "traditional": "很好",
-                "pinyin": "hěn hǎo",
-                "meaning": "very well",
-                "suffix": "。"
+                "traditional": "不錯",
+                "pinyin": "búcuò",
+                "meaning": "not bad; quite good",
+                "suffix": "。",
+                "simplified": "不错"
               }
             ]
           }
         },
         {
           "id": "g2-confusion-de-after-report",
-          "question": "He drinks a lot. Is it 他喝很多得?",
-          "answer": "No — 得 goes right after the action word, before the amount: 喝得很多。",
-          "wrongTraditional": "他喝很多得。",
+          "question": "I run very slowly. Is it 我跑很慢得?",
+          "answer": "Put 得 directly after 跑 and before 很慢.",
+          "wrongTraditional": "我跑很慢得。",
           "right": {
-            "traditional": "他喝得很多。",
-            "simplified": "他喝得很多。",
-            "pinyin": "Tā hē de hěn duō.",
-            "english": "He drinks a lot.",
+            "traditional": "我跑得很慢。",
+            "simplified": "我跑得很慢。",
+            "pinyin": "Wǒ pǎo de hěn màn.",
+            "english": "I run very slowly.",
             "words": [
               {
-                "id": "g2-confusion-de-after-report-word-1",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
+                "id": "b1l06-g2-review-slow-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
               },
               {
-                "id": "g2-confusion-de-after-report-word-2",
-                "traditional": "喝",
-                "pinyin": "hē",
-                "meaning": "drink"
+                "id": "b1l06-g2-review-slow-word-2",
+                "traditional": "跑",
+                "pinyin": "pǎo",
+                "meaning": "run"
               },
               {
-                "id": "g2-confusion-de-after-report-word-3",
+                "id": "b1l06-g2-review-slow-word-3",
                 "traditional": "得",
                 "pinyin": "de",
                 "meaning": "shows how an action is done"
               },
               {
-                "id": "g2-confusion-de-after-report-word-4",
-                "traditional": "很多",
-                "pinyin": "hěn duō",
-                "meaning": "a lot",
+                "id": "b1l06-g2-review-slow-word-4",
+                "traditional": "很慢",
+                "pinyin": "hěn màn",
+                "meaning": "very slowly",
                 "suffix": "。"
               }
             ]
-          }
+          },
+          "wrongSimplified": "我跑很慢得。"
         }
       ]
     },
@@ -2535,7 +1589,7 @@
         "text": {
           "traditional": "我每天都睡得很好。",
           "simplified": "我每天都睡得很好。",
-          "pinyin": "Wǒ měitiān dōu shuì de hěn hǎo.",
+          "pinyin": "Wǒ měi tiān dōu shuì de hěn hǎo.",
           "english": "I sleep very well every day.",
           "words": [
             {
@@ -2547,7 +1601,7 @@
             {
               "id": "b1l06-g2-e6-word-2",
               "traditional": "每天",
-              "pinyin": "měitiān",
+              "pinyin": "měi tiān",
               "meaning": "every day"
             },
             {
@@ -3356,129 +2410,12 @@
           ]
         },
         "teachingNote": null
-      },
-      {
-        "id": "g2-e4",
-        "number": 13,
-        "teachingNote": "Say the whole activity 吃飯, then repeat 吃 before 得.",
-        "text": {
-          "traditional": "我妹妹吃飯吃得很慢。",
-          "simplified": "我妹妹吃饭吃得很慢。",
-          "pinyin": "Wǒ mèimei chīfàn chī de hěn màn.",
-          "english": "My younger sister eats very slowly.",
-          "words": [
-            {
-              "id": "b1l06-g2-e4-word-1",
-              "traditional": "我妹妹",
-              "pinyin": "wǒ mèimei",
-              "meaning": "my younger sister"
-            },
-            {
-              "id": "b1l06-g2-e4-word-2",
-              "traditional": "吃飯",
-              "simplified": "吃饭",
-              "pinyin": "chīfàn",
-              "meaning": "eat a meal"
-            },
-            {
-              "id": "b1l06-g2-e4-word-3",
-              "traditional": "吃",
-              "pinyin": "chī",
-              "meaning": "eat"
-            },
-            {
-              "id": "b1l06-g2-e4-word-4",
-              "traditional": "得",
-              "pinyin": "de",
-              "meaning": "shows how an action is done"
-            },
-            {
-              "id": "b1l06-g2-e4-word-5",
-              "traditional": "很",
-              "pinyin": "hěn",
-              "meaning": "very"
-            },
-            {
-              "id": "b1l06-g2-e4-word-6",
-              "traditional": "慢",
-              "pinyin": "màn",
-              "meaning": "slow; slowly",
-              "suffix": "。"
-            }
-          ]
-        }
-      },
-      {
-        "id": "g2-e5",
-        "number": 14,
-        "teachingNote": "Move the thing 牛肉麵 forward; 做 stays right before 得.",
-        "text": {
-          "traditional": "他的牛肉麵做得很不錯。",
-          "simplified": "他的牛肉面做得很不错。",
-          "pinyin": "Tā de niúròu miàn zuò de hěn búcuò.",
-          "english": "He cooks good beef noodles.",
-          "words": [
-            {
-              "id": "b1l06-g2-e5-word-1",
-              "traditional": "他的",
-              "pinyin": "tā de",
-              "meaning": "his"
-            },
-            {
-              "id": "b1l06-g2-e5-word-2",
-              "traditional": "牛肉麵",
-              "simplified": "牛肉面",
-              "pinyin": "niúròu miàn",
-              "meaning": "beef noodles"
-            },
-            {
-              "id": "b1l06-g2-e5-word-3",
-              "traditional": "做",
-              "pinyin": "zuò",
-              "meaning": "do; make"
-            },
-            {
-              "id": "b1l06-g2-e5-word-4",
-              "traditional": "得",
-              "pinyin": "de",
-              "meaning": "shows how an action is done"
-            },
-            {
-              "id": "b1l06-g2-e5-word-5",
-              "traditional": "很不錯",
-              "simplified": "很不错",
-              "pinyin": "hěn búcuò",
-              "meaning": "very good",
-              "suffix": "。"
-            }
-          ]
-        }
       }
     ],
-    "exerciseTitle": "Read the performance meter",
+    "exerciseTitle": "Answer the following questions.",
     "exercisePreview": "Keep the action beside 得, then report the performance.",
-    "exerciseInstruction": "Complete all four printed sentence shapes. Follow each section label before choosing.",
-    "exerciseNote": "Sections 1 and 2 use printed picture evidence. Other answers are clear learner models.",
-    "exerciseCues": [
-      {
-        "id": "g2-c1",
-        "label": "Many drinks",
-        "pinyin": "hē de hěn duō",
-        "detail": "The man has many drink containers."
-      },
-      {
-        "id": "g2-c2",
-        "label": "Many bowls",
-        "pinyin": "chī de hěn duō",
-        "detail": "The person sits beside tall stacks of bowls."
-      },
-      {
-        "id": "g2-c3",
-        "label": "Sound sleep",
-        "pinyin": "shuì de hěn hǎo",
-        "detail": "The night picture shows peaceful sleep."
-      }
-    ],
+    "exerciseInstruction": "Answer the following questions or complete the following dialogues.",
+    "exerciseNote": "The book gives open responses, with no printed answer key.",
     "questions": [
       {
         "id": "g2-q1",
@@ -4006,7 +2943,7 @@
         "id": "b1l06-g02-sec-1",
         "sectionNumber": 1,
         "title": "Simple verb + 得",
-        "explanation": "Put the verb right before 得, then say how the action is done.",
+        "explanation": "Put 得 after the verb, then describe how the action is done.",
         "patternColumns": [
           "Subject",
           "Verb",
@@ -4021,14 +2958,14 @@
         ],
         "patternRows": [
           {
-            "id": "g2-sec1-row-1",
+            "id": "g2-s1-r1",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s1-he",
+                  "id": "g2-s1-r1-s-w7",
                   "traditional": "他",
                   "pinyin": "tā",
                   "meaning": "he; him"
@@ -4036,7 +2973,7 @@
               ],
               [
                 {
-                  "id": "g2-s1-run",
+                  "id": "g2-s1-r1-v-w8",
                   "traditional": "跑",
                   "pinyin": "pǎo",
                   "meaning": "run"
@@ -4044,15 +2981,15 @@
               ],
               [
                 {
-                  "id": "g2-s1-de",
+                  "id": "g2-s1-r1-de-w9",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s1-fast",
+                  "id": "g2-s1-r1-a-w10",
                   "traditional": "很快",
                   "pinyin": "hěn kuài",
                   "meaning": "very fast",
@@ -4063,14 +3000,14 @@
             "english": "He runs very fast."
           },
           {
-            "id": "g2-sec1-row-2",
+            "id": "g2-s1-r2",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s1-you",
+                  "id": "g2-s1-r2-s-w11",
                   "traditional": "你",
                   "pinyin": "nǐ",
                   "meaning": "you"
@@ -4078,23 +3015,23 @@
               ],
               [
                 {
-                  "id": "g2-s1-do",
+                  "id": "g2-s1-r2-v-w12",
                   "traditional": "做",
                   "pinyin": "zuò",
-                  "meaning": "do"
+                  "meaning": "do; make"
                 }
               ],
               [
                 {
-                  "id": "g2-s1-de-2",
+                  "id": "g2-s1-r2-de-w13",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s1-good",
+                  "id": "g2-s1-r2-a-w14",
                   "traditional": "很好",
                   "pinyin": "hěn hǎo",
                   "meaning": "very well",
@@ -4109,13 +3046,14 @@
           "g2-e1",
           "b1l06-g2-e6",
           "b1l06-g2-e7"
-        ]
+        ],
+        "pattern": "Subject + V + 得 + (A)Vs"
       },
       {
         "id": "b1l06-g02-sec-2",
         "sectionNumber": 2,
         "title": "Repeat verb after V+O",
-        "explanation": "When the verb has an object, repeat the verb before 得.",
+        "explanation": "The activity has an object, so repeat the action word before 得.",
         "patternColumns": [
           "Subject",
           "Verb + Object",
@@ -4132,14 +3070,14 @@
         ],
         "patternRows": [
           {
-            "id": "g2-sec2-row-1",
+            "id": "g2-s2-r1",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s2-sister",
+                  "id": "g2-s2-r1-s-w15",
                   "traditional": "我妹妹",
                   "pinyin": "wǒ mèimei",
                   "meaning": "my younger sister"
@@ -4147,7 +3085,7 @@
               ],
               [
                 {
-                  "id": "g2-s2-eat-meal",
+                  "id": "g2-s2-r1-vo-w16",
                   "traditional": "吃飯",
                   "pinyin": "chīfàn",
                   "meaning": "eat a meal",
@@ -4156,7 +3094,7 @@
               ],
               [
                 {
-                  "id": "g2-s2-eat",
+                  "id": "g2-s2-r1-v-w17",
                   "traditional": "吃",
                   "pinyin": "chī",
                   "meaning": "eat"
@@ -4164,15 +3102,15 @@
               ],
               [
                 {
-                  "id": "g2-s2-de",
+                  "id": "g2-s2-r1-de-w18",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s2-slow",
+                  "id": "g2-s2-r1-a-w19",
                   "traditional": "很慢",
                   "pinyin": "hěn màn",
                   "meaning": "very slowly",
@@ -4183,22 +3121,22 @@
             "english": "My younger sister eats very slowly."
           },
           {
-            "id": "g2-sec2-row-2",
+            "id": "g2-s2-r2",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s2-brother",
+                  "id": "g2-s2-r2-s-w20",
                   "traditional": "我哥哥",
                   "pinyin": "wǒ gēge",
-                  "meaning": "my elder brother"
+                  "meaning": "my older brother"
                 }
               ],
               [
                 {
-                  "id": "g2-s2-talk",
+                  "id": "g2-s2-r2-vo-w21",
                   "traditional": "說話",
                   "pinyin": "shuōhuà",
                   "meaning": "speak; talk",
@@ -4207,7 +3145,7 @@
               ],
               [
                 {
-                  "id": "g2-s2-speak",
+                  "id": "g2-s2-r2-v-w22",
                   "traditional": "說",
                   "pinyin": "shuō",
                   "meaning": "speak; say",
@@ -4216,15 +3154,15 @@
               ],
               [
                 {
-                  "id": "g2-s2-de-2",
+                  "id": "g2-s2-r2-de-w23",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s2-fast",
+                  "id": "g2-s2-r2-a-w24",
                   "traditional": "很快",
                   "pinyin": "hěn kuài",
                   "meaning": "very fast",
@@ -4238,15 +3176,15 @@
         "exampleIds": [
           "b1l06-g2-e8",
           "g2-e2",
-          "b1l06-g2-e9",
-          "g2-e4"
-        ]
+          "b1l06-g2-e9"
+        ],
+        "pattern": "Subject + V+O + V + 得 + (A)Vs"
       },
       {
         "id": "b1l06-g02-sec-3",
         "sectionNumber": 3,
-        "title": "Object as topic",
-        "explanation": "Move the object to the front, so the verb can sit right before 得.",
+        "title": "Subject as the Topic",
+        "explanation": "Put the object after the subject and before the verb, leaving the verb next to 得.",
         "patternColumns": [
           "Subject",
           "Object",
@@ -4263,14 +3201,14 @@
         ],
         "patternRows": [
           {
-            "id": "g2-sec3-row-1",
+            "id": "g2-s3-r1",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s3-he",
+                  "id": "g2-s3-r1-s-w25",
                   "traditional": "他",
                   "pinyin": "tā",
                   "meaning": "he; him"
@@ -4278,32 +3216,32 @@
               ],
               [
                 {
-                  "id": "g2-s3-rice",
+                  "id": "g2-s3-r1-o-w26",
                   "traditional": "飯",
                   "pinyin": "fàn",
-                  "meaning": "rice; meal",
+                  "meaning": "meal; food",
                   "simplified": "饭"
                 }
               ],
               [
                 {
-                  "id": "g2-s3-cook",
+                  "id": "g2-s3-r1-v-w27",
                   "traditional": "做",
                   "pinyin": "zuò",
-                  "meaning": "cook; make"
+                  "meaning": "do; make"
                 }
               ],
               [
                 {
-                  "id": "g2-s3-de",
+                  "id": "g2-s3-r1-de-w28",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s3-good",
+                  "id": "g2-s3-r1-a-w29",
                   "traditional": "很好",
                   "pinyin": "hěn hǎo",
                   "meaning": "very well",
@@ -4314,14 +3252,14 @@
             "english": "He cooks very well."
           },
           {
-            "id": "g2-sec3-row-2",
+            "id": "g2-s3-r2",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s3-sister",
+                  "id": "g2-s3-r2-s-w30",
                   "traditional": "我妹妹",
                   "pinyin": "wǒ mèimei",
                   "meaning": "my younger sister"
@@ -4329,15 +3267,15 @@
               ],
               [
                 {
-                  "id": "g2-s3-chinese",
+                  "id": "g2-s3-r2-o-w31",
                   "traditional": "中文",
                   "pinyin": "Zhōngwén",
-                  "meaning": "Chinese"
+                  "meaning": "Chinese language"
                 }
               ],
               [
                 {
-                  "id": "g2-s3-speak",
+                  "id": "g2-s3-r2-v-w32",
                   "traditional": "說",
                   "pinyin": "shuō",
                   "meaning": "speak; say",
@@ -4346,20 +3284,20 @@
               ],
               [
                 {
-                  "id": "g2-s3-de-2",
+                  "id": "g2-s3-r2-de-w33",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s3-good-2",
+                  "id": "g2-s3-r2-a-w34",
                   "traditional": "很不錯",
                   "pinyin": "hěn búcuò",
                   "meaning": "very good",
-                  "suffix": "。",
-                  "simplified": "很不错"
+                  "simplified": "很不错",
+                  "suffix": "。"
                 }
               ]
             ],
@@ -4370,13 +3308,14 @@
           "b1l06-g2-e10",
           "g2-e3",
           "b1l06-g2-e11"
-        ]
+        ],
+        "pattern": "Subject + O + V + 得 + (A)Vs"
       },
       {
         "id": "b1l06-g02-sec-4",
         "sectionNumber": 4,
         "title": "Possessor + 的 + object",
-        "explanation": "When the object belongs to the subject, move both in front. The verb still sits right before 得.",
+        "explanation": "The owned thing becomes the topic, so the action word again stands next to 得.",
         "patternColumns": [
           "Subject 的 Noun",
           "Verb",
@@ -4391,22 +3330,23 @@
         ],
         "patternRows": [
           {
-            "id": "g2-sec4-row-1",
+            "id": "g2-s4-r1",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s4-your-tennis",
+                  "id": "g2-s4-r1-s-w35",
                   "traditional": "你的網球",
                   "pinyin": "nǐ de wǎngqiú",
-                  "meaning": "your tennis"
+                  "meaning": "your tennis",
+                  "simplified": "你的网球"
                 }
               ],
               [
                 {
-                  "id": "g2-s4-play",
+                  "id": "g2-s4-r1-v-w36",
                   "traditional": "打",
                   "pinyin": "dǎ",
                   "meaning": "play; hit"
@@ -4414,15 +3354,15 @@
               ],
               [
                 {
-                  "id": "g2-s4-de",
+                  "id": "g2-s4-r1-de-w37",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s4-good",
+                  "id": "g2-s4-r1-a-w38",
                   "traditional": "很好",
                   "pinyin": "hěn hǎo",
                   "meaning": "very well",
@@ -4433,43 +3373,44 @@
             "english": "You play tennis very well."
           },
           {
-            "id": "g2-sec4-row-2",
+            "id": "g2-s4-r2",
             "subject": [],
             "grammar": [],
             "complement": [],
             "columns": [
               [
                 {
-                  "id": "g2-s4-his-beef",
+                  "id": "g2-s4-r2-s-w39",
                   "traditional": "他的牛肉麵",
-                  "pinyin": "tā de niúròu miàn",
-                  "meaning": "his beef noodles"
+                  "pinyin": "tā de niúròumiàn",
+                  "meaning": "his beef noodles",
+                  "simplified": "他的牛肉面"
                 }
               ],
               [
                 {
-                  "id": "g2-s4-cook",
+                  "id": "g2-s4-r2-v-w40",
                   "traditional": "做",
                   "pinyin": "zuò",
-                  "meaning": "cook; make"
+                  "meaning": "do; make"
                 }
               ],
               [
                 {
-                  "id": "g2-s4-de-2",
+                  "id": "g2-s4-r2-de-w41",
                   "traditional": "得",
                   "pinyin": "de",
-                  "meaning": "links a verb to how it is done"
+                  "meaning": "shows how an action is done"
                 }
               ],
               [
                 {
-                  "id": "g2-s4-good-2",
+                  "id": "g2-s4-r2-a-w42",
                   "traditional": "很不錯",
                   "pinyin": "hěn búcuò",
                   "meaning": "very good",
-                  "suffix": "。",
-                  "simplified": "很不错"
+                  "simplified": "很不错",
+                  "suffix": "。"
                 }
               ]
             ],
@@ -4479,9 +3420,9 @@
         "exampleIds": [
           "b1l06-g2-e12",
           "b1l06-g2-e13",
-          "b1l06-g2-e14",
-          "g2-e5"
-        ]
+          "b1l06-g2-e14"
+        ],
+        "pattern": "S 的 O + V + 得 + (A)Vs"
       }
     ]
   },
@@ -4508,13 +3449,14 @@
           136
         ],
         "audioReference": "06-1-3",
-        "explanation": "Use 會 before an action to say you know how to do it. Put 不 before 會 to say you do not know how. Here, 會 means having the ability, not the future.",
+        "explanation": "會 marks a skill you get through learning. Put it before the action: 我會游泳. Negate with 不會: 我不會打棒球.",
         "focusTerms": [
           "會",
           "会",
           "不會",
           "不会",
-          "不"
+          "會不會",
+          "会不会"
         ],
         "teachingGlossary": [
           {
@@ -4535,87 +3477,6 @@
             "traditional": "你",
             "pinyin": "nǐ",
             "meaning": "you"
-          },
-          {
-            "id": "b1l06-g01-glossary-4",
-            "traditional": "妳",
-            "pinyin": "nǐ",
-            "meaning": "you"
-          },
-          {
-            "id": "b1l06-g01-glossary-5",
-            "traditional": "妳們",
-            "simplified": "你们",
-            "pinyin": "nǐmen",
-            "meaning": "you all"
-          },
-          {
-            "id": "b1l06-g01-glossary-6",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
-          },
-          {
-            "id": "b1l06-g01-glossary-7",
-            "traditional": "她",
-            "pinyin": "tā",
-            "meaning": "she; her"
-          },
-          {
-            "id": "b1l06-g01-glossary-8",
-            "traditional": "國安",
-            "simplified": "国安",
-            "pinyin": "Guó'ān",
-            "meaning": "Guoan"
-          },
-          {
-            "id": "b1l06-g01-glossary-9",
-            "traditional": "友美",
-            "pinyin": "Yǒuměi",
-            "meaning": "Youmei"
-          },
-          {
-            "id": "b1l06-g01-glossary-10",
-            "traditional": "宜文",
-            "pinyin": "Yíwén",
-            "meaning": "Yiwen"
-          },
-          {
-            "id": "b1l06-g01-glossary-11",
-            "traditional": "中明",
-            "pinyin": "Zhōngmíng",
-            "meaning": "Zhongming"
-          },
-          {
-            "id": "b1l06-g01-glossary-12",
-            "traditional": "媽媽",
-            "simplified": "妈妈",
-            "pinyin": "māma",
-            "meaning": "mom"
-          },
-          {
-            "id": "b1l06-g01-glossary-13",
-            "traditional": "哥哥",
-            "pinyin": "gēge",
-            "meaning": "older brother"
-          },
-          {
-            "id": "b1l06-g01-glossary-14",
-            "traditional": "弟弟",
-            "pinyin": "dìdi",
-            "meaning": "younger brother"
-          },
-          {
-            "id": "b1l06-g01-glossary-15",
-            "traditional": "妹妹",
-            "pinyin": "mèimei",
-            "meaning": "younger sister"
-          },
-          {
-            "id": "b1l06-g01-glossary-16",
-            "traditional": "朋友",
-            "pinyin": "péngyǒu",
-            "meaning": "friend"
           },
           {
             "id": "b1l06-g01-glossary-17",
@@ -4639,12 +3500,6 @@
             "meaning": "know how to or not"
           },
           {
-            "id": "b1l06-g01-glossary-20",
-            "traditional": "得",
-            "pinyin": "de",
-            "meaning": "shows how an action is done"
-          },
-          {
             "id": "b1l06-g01-glossary-21",
             "traditional": "游泳",
             "pinyin": "yóuyǒng",
@@ -4655,24 +3510,6 @@
             "traditional": "游",
             "pinyin": "yóu",
             "meaning": "swim"
-          },
-          {
-            "id": "b1l06-g01-glossary-23",
-            "traditional": "跑步",
-            "pinyin": "pǎobù",
-            "meaning": "run"
-          },
-          {
-            "id": "b1l06-g01-glossary-24",
-            "traditional": "跑",
-            "pinyin": "pǎo",
-            "meaning": "run"
-          },
-          {
-            "id": "b1l06-g01-glossary-25",
-            "traditional": "走",
-            "pinyin": "zǒu",
-            "meaning": "walk"
           },
           {
             "id": "b1l06-g01-glossary-26",
@@ -4694,13 +3531,6 @@
             "meaning": "play baseball"
           },
           {
-            "id": "b1l06-g01-glossary-29",
-            "traditional": "打籃球",
-            "simplified": "打篮球",
-            "pinyin": "dǎ lánqiú",
-            "meaning": "play basketball"
-          },
-          {
             "id": "b1l06-g01-glossary-30",
             "traditional": "打",
             "pinyin": "dǎ",
@@ -4720,52 +3550,6 @@
             "meaning": "baseball"
           },
           {
-            "id": "b1l06-g01-glossary-33",
-            "traditional": "籃球",
-            "simplified": "篮球",
-            "pinyin": "lánqiú",
-            "meaning": "basketball"
-          },
-          {
-            "id": "b1l06-g01-glossary-34",
-            "traditional": "踢足球",
-            "pinyin": "tī zúqiú",
-            "meaning": "play soccer"
-          },
-          {
-            "id": "b1l06-g01-glossary-35",
-            "traditional": "踢",
-            "pinyin": "tī",
-            "meaning": "kick; play"
-          },
-          {
-            "id": "b1l06-g01-glossary-36",
-            "traditional": "足球",
-            "pinyin": "zúqiú",
-            "meaning": "soccer"
-          },
-          {
-            "id": "b1l06-g01-glossary-37",
-            "traditional": "騎腳踏車",
-            "simplified": "骑脚踏车",
-            "pinyin": "qí jiǎotàchē",
-            "meaning": "ride a bicycle"
-          },
-          {
-            "id": "b1l06-g01-glossary-38",
-            "traditional": "騎",
-            "simplified": "骑",
-            "pinyin": "qí",
-            "meaning": "ride"
-          },
-          {
-            "id": "b1l06-g01-glossary-39",
-            "traditional": "腳踏車",
-            "simplified": "脚踏车",
-            "pinyin": "jiǎotàchē",
-            "meaning": "bicycle"
-          },
-          {
             "id": "b1l06-g01-glossary-40",
             "traditional": "做飯",
             "simplified": "做饭",
@@ -4777,13 +3561,6 @@
             "traditional": "做",
             "pinyin": "zuò",
             "meaning": "do; make"
-          },
-          {
-            "id": "b1l06-g01-glossary-42",
-            "traditional": "牛肉麵",
-            "simplified": "牛肉面",
-            "pinyin": "niúròu miàn",
-            "meaning": "beef noodles"
           },
           {
             "id": "b1l06-g01-glossary-43",
@@ -4800,19 +3577,6 @@
             "meaning": "many kinds of desserts"
           },
           {
-            "id": "b1l06-g01-glossary-45",
-            "traditional": "吃飯",
-            "simplified": "吃饭",
-            "pinyin": "chīfàn",
-            "meaning": "eat a meal"
-          },
-          {
-            "id": "b1l06-g01-glossary-46",
-            "traditional": "吃",
-            "pinyin": "chī",
-            "meaning": "eat"
-          },
-          {
             "id": "b1l06-g01-glossary-47",
             "traditional": "飯",
             "simplified": "饭",
@@ -4820,133 +3584,10 @@
             "meaning": "meal; food"
           },
           {
-            "id": "b1l06-g01-glossary-48",
-            "traditional": "喝",
-            "pinyin": "hē",
-            "meaning": "drink"
-          },
-          {
-            "id": "b1l06-g01-glossary-49",
-            "traditional": "睡覺",
-            "simplified": "睡觉",
-            "pinyin": "shuìjiào",
-            "meaning": "sleep"
-          },
-          {
-            "id": "b1l06-g01-glossary-50",
-            "traditional": "睡",
-            "pinyin": "shuì",
-            "meaning": "sleep"
-          },
-          {
-            "id": "b1l06-g01-glossary-51",
-            "traditional": "說中文",
-            "simplified": "说中文",
-            "pinyin": "shuō Zhōngwén",
-            "meaning": "speak Chinese"
-          },
-          {
-            "id": "b1l06-g01-glossary-52",
-            "traditional": "說英文",
-            "simplified": "说英文",
-            "pinyin": "shuō Yīngwén",
-            "meaning": "speak English"
-          },
-          {
-            "id": "b1l06-g01-glossary-53",
-            "traditional": "說話",
-            "simplified": "说话",
-            "pinyin": "shuōhuà",
-            "meaning": "speak; talk"
-          },
-          {
-            "id": "b1l06-g01-glossary-54",
-            "traditional": "說",
-            "simplified": "说",
-            "pinyin": "shuō",
-            "meaning": "speak; say"
-          },
-          {
-            "id": "b1l06-g01-glossary-55",
-            "traditional": "中文",
-            "pinyin": "Zhōngwén",
-            "meaning": "Chinese language"
-          },
-          {
-            "id": "b1l06-g01-glossary-56",
-            "traditional": "英文",
-            "pinyin": "Yīngwén",
-            "meaning": "English language"
-          },
-          {
-            "id": "b1l06-g01-glossary-57",
-            "traditional": "看書",
-            "simplified": "看书",
-            "pinyin": "kànshū",
-            "meaning": "read"
-          },
-          {
-            "id": "b1l06-g01-glossary-58",
-            "traditional": "看",
-            "pinyin": "kàn",
-            "meaning": "read; look"
-          },
-          {
-            "id": "b1l06-g01-glossary-59",
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū",
-            "meaning": "book"
-          },
-          {
-            "id": "b1l06-g01-glossary-60",
-            "traditional": "快",
-            "pinyin": "kuài",
-            "meaning": "fast; quickly"
-          },
-          {
-            "id": "b1l06-g01-glossary-61",
-            "traditional": "慢",
-            "pinyin": "màn",
-            "meaning": "slow; slowly"
-          },
-          {
             "id": "b1l06-g01-glossary-62",
             "traditional": "好",
             "pinyin": "hǎo",
             "meaning": "well; good"
-          },
-          {
-            "id": "b1l06-g01-glossary-63",
-            "traditional": "很好",
-            "pinyin": "hěn hǎo",
-            "meaning": "very well"
-          },
-          {
-            "id": "b1l06-g01-glossary-64",
-            "traditional": "很好吃",
-            "pinyin": "hěn hǎochī",
-            "meaning": "very delicious"
-          },
-          {
-            "id": "b1l06-g01-glossary-65",
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo",
-            "meaning": "not very well"
-          },
-          {
-            "id": "b1l06-g01-glossary-66",
-            "traditional": "不錯",
-            "simplified": "不错",
-            "pinyin": "búcuò",
-            "meaning": "not bad"
-          },
-          {
-            "id": "b1l06-g01-glossary-67",
-            "traditional": "很不錯",
-            "simplified": "很不错",
-            "pinyin": "hěn búcuò",
-            "meaning": "very good"
           },
           {
             "id": "b1l06-g01-glossary-68",
@@ -4961,41 +3602,10 @@
             "meaning": "a lot"
           },
           {
-            "id": "b1l06-g01-glossary-70",
-            "traditional": "不多",
-            "pinyin": "bù duō",
-            "meaning": "not much"
-          },
-          {
-            "id": "b1l06-g01-glossary-71",
-            "traditional": "很少",
-            "pinyin": "hěn shǎo",
-            "meaning": "very little"
-          },
-          {
-            "id": "b1l06-g01-glossary-72",
-            "traditional": "怎麼樣",
-            "simplified": "怎么样",
-            "pinyin": "zěnmeyàng",
-            "meaning": "how; how well"
-          },
-          {
             "id": "b1l06-g01-glossary-73",
             "traditional": "好不好",
             "pinyin": "hǎo bù hǎo",
             "meaning": "well or not"
-          },
-          {
-            "id": "b1l06-g01-glossary-74",
-            "traditional": "快不快",
-            "pinyin": "kuài bú kuài",
-            "meaning": "fast or not"
-          },
-          {
-            "id": "b1l06-g01-glossary-75",
-            "traditional": "多不多",
-            "pinyin": "duō bù duō",
-            "meaning": "much or not"
           },
           {
             "id": "b1l06-g01-glossary-76",
@@ -5011,23 +3621,10 @@
             "meaning": "ending word for a suggestion (let’s …)"
           },
           {
-            "id": "b1l06-g01-glossary-78",
-            "traditional": "啊",
-            "pinyin": "a",
-            "meaning": "ending word for a friendly reply"
-          },
-          {
             "id": "b1l06-g01-glossary-79",
             "traditional": "今天",
             "pinyin": "jīntiān",
             "meaning": "today"
-          },
-          {
-            "id": "b1l06-g01-glossary-80",
-            "traditional": "今天天氣",
-            "simplified": "今天天气",
-            "pinyin": "jīntiān tiānqì",
-            "meaning": "today’s weather"
           },
           {
             "id": "b1l06-g01-glossary-81",
@@ -5036,105 +3633,10 @@
             "meaning": "afternoon"
           },
           {
-            "id": "b1l06-g01-glossary-82",
-            "traditional": "昨天",
-            "pinyin": "zuótiān",
-            "meaning": "yesterday"
-          },
-          {
-            "id": "b1l06-g01-glossary-83",
-            "traditional": "昨天晚上",
-            "pinyin": "zuótiān wǎnshang",
-            "meaning": "last night"
-          },
-          {
-            "id": "b1l06-g01-glossary-84",
-            "traditional": "每天",
-            "pinyin": "měi tiān",
-            "meaning": "every day"
-          },
-          {
-            "id": "b1l06-g01-glossary-85",
-            "traditional": "都",
-            "pinyin": "dōu",
-            "meaning": "all; every time"
-          },
-          {
-            "id": "b1l06-g01-glossary-86",
-            "traditional": "海邊",
-            "simplified": "海边",
-            "pinyin": "hǎibiān",
-            "meaning": "beach; seaside"
-          },
-          {
-            "id": "b1l06-g01-glossary-87",
-            "traditional": "風景",
-            "simplified": "风景",
-            "pinyin": "fēngjǐng",
-            "meaning": "scenery"
-          },
-          {
-            "id": "b1l06-g01-glossary-88",
-            "traditional": "天氣",
-            "simplified": "天气",
-            "pinyin": "tiānqì",
-            "meaning": "weather"
-          },
-          {
-            "id": "b1l06-g01-glossary-89",
-            "traditional": "漂亮",
-            "pinyin": "piàoliàng",
-            "meaning": "beautiful"
-          },
-          {
-            "id": "b1l06-g01-glossary-90",
-            "traditional": "想去",
-            "pinyin": "xiǎng qù",
-            "meaning": "want to go"
-          },
-          {
-            "id": "b1l06-g01-glossary-91",
-            "traditional": "想",
-            "pinyin": "xiǎng",
-            "meaning": "want; would like"
-          },
-          {
             "id": "b1l06-g01-glossary-92",
             "traditional": "去",
             "pinyin": "qù",
             "meaning": "go"
-          },
-          {
-            "id": "b1l06-g01-glossary-93",
-            "traditional": "一起去",
-            "pinyin": "yìqǐ qù",
-            "meaning": "go together"
-          },
-          {
-            "id": "b1l06-g01-glossary-94",
-            "traditional": "喜歡",
-            "simplified": "喜欢",
-            "pinyin": "xǐhuān",
-            "meaning": "like"
-          },
-          {
-            "id": "b1l06-g01-glossary-95",
-            "traditional": "不喜歡",
-            "simplified": "不喜欢",
-            "pinyin": "bù xǐhuān",
-            "meaning": "do not like"
-          },
-          {
-            "id": "b1l06-g01-glossary-96",
-            "traditional": "可是",
-            "pinyin": "kěshì",
-            "meaning": "but"
-          },
-          {
-            "id": "b1l06-g01-glossary-97",
-            "traditional": "也",
-            "pinyin": "yě",
-            "meaning": "also"
           },
           {
             "id": "b1l06-g01-glossary-98",
@@ -5143,78 +3645,10 @@
             "meaning": "very"
           },
           {
-            "id": "b1l06-g01-glossary-99",
-            "traditional": "太",
-            "pinyin": "tài",
-            "meaning": "too; very"
-          },
-          {
-            "id": "b1l06-g01-glossary-100",
-            "traditional": "中明說",
-            "simplified": "中明说",
-            "pinyin": "Zhōngmíng shuō",
-            "meaning": "Zhongming says"
-          },
-          {
             "id": "b1l06-g01-glossary-101",
             "traditional": "的",
             "pinyin": "de",
             "meaning": "shows belonging or links a describing word"
-          },
-          {
-            "id": "b1l06-g01-glossary-102",
-            "traditional": "你的",
-            "pinyin": "nǐ de",
-            "meaning": "your"
-          },
-          {
-            "id": "b1l06-g01-glossary-103",
-            "traditional": "我的",
-            "pinyin": "wǒ de",
-            "meaning": "my"
-          },
-          {
-            "id": "b1l06-g01-glossary-104",
-            "traditional": "他的",
-            "pinyin": "tā de",
-            "meaning": "his"
-          },
-          {
-            "id": "b1l06-g01-glossary-105",
-            "traditional": "她的",
-            "pinyin": "tā de",
-            "meaning": "her"
-          },
-          {
-            "id": "b1l06-g01-glossary-106",
-            "traditional": "你哥哥的",
-            "pinyin": "nǐ gēge de",
-            "meaning": "your older brother’s"
-          },
-          {
-            "id": "b1l06-g01-glossary-107",
-            "traditional": "我哥哥",
-            "pinyin": "wǒ gēge",
-            "meaning": "my older brother"
-          },
-          {
-            "id": "b1l06-g01-glossary-108",
-            "traditional": "你媽媽",
-            "simplified": "你妈妈",
-            "pinyin": "nǐ māma",
-            "meaning": "your mother"
-          },
-          {
-            "id": "b1l06-g01-glossary-109",
-            "traditional": "你弟弟",
-            "pinyin": "nǐ dìdi",
-            "meaning": "your younger brother"
-          },
-          {
-            "id": "b1l06-g01-glossary-110",
-            "traditional": "我妹妹",
-            "pinyin": "wǒ mèimei",
-            "meaning": "my younger sister"
           },
           {
             "id": "b1l06-g01-glossary-111",
@@ -5253,30 +3687,20 @@
             {
               "id": "g1-off",
               "label": "Skill off",
-              "traditional": "我不會游泳。",
-              "simplified": "我不会游泳。",
-              "pinyin": "Wǒ bú huì yóuyǒng.",
-              "english": "I do not know how to swim.",
+              "traditional": "我不會打棒球。",
+              "simplified": "我不会打棒球。",
+              "pinyin": "Wǒ bú huì dǎ bàngqiú.",
+              "english": "I do not know how to play baseball.",
               "note": "不 goes directly before 會."
             },
             {
               "id": "g1-check",
-              "label": "Check skill",
-              "traditional": "你會不會游泳？",
-              "simplified": "你会不会游泳？",
-              "pinyin": "Nǐ huì bú huì yóuyǒng?",
-              "english": "Do you know how to swim?",
+              "label": "Ask about a skill",
+              "traditional": "你會不會做飯？",
+              "simplified": "你会不会做饭？",
+              "pinyin": "Nǐ huì bú huì zuòfàn?",
+              "english": "Do you know how to cook?",
               "note": "會不會 asks whether the skill is available."
-            },
-            {
-              "id": "g1-repair",
-              "label": "Repair order",
-              "traditional": "我游泳會 → 我會游泳",
-              "simplified": "我游泳会 → 我会游泳",
-              "pinyin": "Wǒ yóuyǒng huì → Wǒ huì yóuyǒng",
-              "english": "I know how to swim.",
-              "note": "Place 會 before the learned action.",
-              "isCorrection": true
             }
           ],
           "takeaway": "Person + 會 + skill. Use 不會 for no skill and 會不會 to ask."
@@ -5286,7 +3710,7 @@
             "id": "g1-p1",
             "subject": [
               {
-                "id": "g1-p1-i",
+                "id": "g1-p1-s-w1",
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
@@ -5294,29 +3718,29 @@
             ],
             "grammar": [
               {
-                "id": "g1-p1-can",
+                "id": "g1-p1-g-w2",
                 "traditional": "會",
-                "simplified": "会",
                 "pinyin": "huì",
-                "meaning": "know how to"
+                "meaning": "know how to",
+                "simplified": "会"
               }
             ],
             "complement": [
               {
-                "id": "g1-p1-swim",
+                "id": "g1-p1-c-w3",
                 "traditional": "游泳",
                 "pinyin": "yóuyǒng",
                 "meaning": "swim",
                 "suffix": "。"
               }
             ],
-            "english": "I know how to swim."
+            "english": "I can swim."
           },
           {
             "id": "g1-p2",
             "subject": [
               {
-                "id": "g1-p2-i",
+                "id": "g1-p2-s-w4",
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
@@ -5324,93 +3748,28 @@
             ],
             "grammar": [
               {
-                "id": "g1-p2-cant",
+                "id": "g1-p2-g-w5",
                 "traditional": "不會",
-                "simplified": "不会",
                 "pinyin": "bú huì",
-                "meaning": "do not know how to"
+                "meaning": "do not know how to",
+                "simplified": "不会"
               }
             ],
             "complement": [
               {
-                "id": "g1-p2-baseball",
+                "id": "g1-p2-c-w6",
                 "traditional": "打棒球",
                 "pinyin": "dǎ bàngqiú",
                 "meaning": "play baseball",
                 "suffix": "。"
               }
             ],
-            "english": "I do not know how to play baseball."
-          },
-          {
-            "id": "g1-p3",
-            "subject": [
-              {
-                "id": "g1-p3-you",
-                "traditional": "你",
-                "pinyin": "nǐ",
-                "meaning": "you"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p3-can-or",
-                "traditional": "會不會",
-                "simplified": "会不会",
-                "pinyin": "huì bú huì",
-                "meaning": "know how to or not"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g1-p3-cook",
-                "traditional": "做飯",
-                "simplified": "做饭",
-                "pinyin": "zuòfàn",
-                "meaning": "cook",
-                "suffix": "？"
-              }
-            ],
-            "english": "Do you know how to cook?"
+            "english": "I cannot play baseball."
           }
         ],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
-            {
-              "id": "g1-confusion-can-skill",
-              "question": "I learned to swim. Do I say 我可以游泳 or 我會游泳?",
-              "answer": "Use 會 — it reports a learned skill. 可以 talks about being allowed or a good option.",
-              "wrongTraditional": "我可以游泳。",
-              "right": {
-                "traditional": "我會游泳。",
-                "simplified": "我会游泳。",
-                "pinyin": "Wǒ huì yóuyǒng.",
-                "english": "I know how to swim.",
-                "words": [
-                  {
-                    "id": "g1-confusion-can-skill-word-1",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me"
-                  },
-                  {
-                    "id": "g1-confusion-can-skill-word-2",
-                    "traditional": "會",
-                    "simplified": "会",
-                    "pinyin": "huì",
-                    "meaning": "know how to"
-                  },
-                  {
-                    "id": "g1-confusion-can-skill-word-3",
-                    "traditional": "游泳",
-                    "pinyin": "yóuyǒng",
-                    "meaning": "swim",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
             {
               "id": "g1-confusion-can-position",
               "question": "I know how to cook. Is it 我做飯會?",
@@ -5449,35 +3808,34 @@
             },
             {
               "id": "g1-confusion-cant-order",
-              "question": "To say I cannot speak Chinese, is it 我會不說中文?",
-              "answer": "No — 不 goes directly before 會: 不會說中文.",
-              "wrongTraditional": "我會不說中文。",
-              "wrongSimplified": "我会不说中文。",
+              "question": "To say I cannot swim, is it 我會不游泳?",
+              "answer": "Put 不 directly before 會: 不會游泳.",
+              "wrongTraditional": "我會不游泳。",
+              "wrongSimplified": "我会不游泳。",
               "right": {
-                "traditional": "我不會說中文。",
-                "simplified": "我不会说中文。",
-                "pinyin": "Wǒ bú huì shuō Zhōngwén.",
-                "english": "I do not know how to speak Chinese.",
+                "traditional": "我不會游泳。",
+                "simplified": "我不会游泳。",
+                "pinyin": "Wǒ bú huì yóuyǒng.",
+                "english": "I cannot swim.",
                 "words": [
                   {
-                    "id": "g1-confusion-cant-order-word-1",
+                    "id": "b1l06-g1-review-skill-word-1",
                     "traditional": "我",
                     "pinyin": "wǒ",
                     "meaning": "I; me"
                   },
                   {
-                    "id": "g1-confusion-cant-order-word-2",
+                    "id": "b1l06-g1-review-skill-word-2",
                     "traditional": "不會",
                     "simplified": "不会",
                     "pinyin": "bú huì",
                     "meaning": "do not know how to"
                   },
                   {
-                    "id": "g1-confusion-cant-order-word-3",
-                    "traditional": "說中文",
-                    "simplified": "说中文",
-                    "pinyin": "shuō Zhōngwén",
-                    "meaning": "speak Chinese",
+                    "id": "b1l06-g1-review-skill-word-3",
+                    "traditional": "游泳",
+                    "pinyin": "yóuyǒng",
+                    "meaning": "swim",
                     "suffix": "。"
                   }
                 ]
@@ -5720,134 +4078,12 @@
                 }
               ]
             }
-          },
-          {
-            "id": "g1-e4",
-            "number": 4,
-            "teachingNote": "Ability and performance answer different questions.",
-            "text": {
-              "traditional": "她會說中文，可是說得不太快。",
-              "simplified": "她会说中文，可是说得不太快。",
-              "pinyin": "Tā huì shuō Zhōngwén, kěshì shuō de bú tài kuài.",
-              "english": "She can speak Chinese, but she does not speak very quickly.",
-              "words": [
-                {
-                  "id": "b1l06-g1-e4-word-1",
-                  "traditional": "她",
-                  "pinyin": "tā",
-                  "meaning": "she; her"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-2",
-                  "traditional": "會",
-                  "simplified": "会",
-                  "pinyin": "huì",
-                  "meaning": "know how to"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-3",
-                  "traditional": "說中文",
-                  "simplified": "说中文",
-                  "pinyin": "shuō Zhōngwén",
-                  "meaning": "speak Chinese"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-4",
-                  "traditional": "可是",
-                  "pinyin": "kěshì",
-                  "meaning": "but",
-                  "prefix": "，"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-5",
-                  "traditional": "說",
-                  "simplified": "说",
-                  "pinyin": "shuō",
-                  "meaning": "speak; say"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-6",
-                  "traditional": "得",
-                  "pinyin": "de",
-                  "meaning": "shows how an action is done"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-7",
-                  "traditional": "太",
-                  "pinyin": "tài",
-                  "meaning": "too; very",
-                  "prefix": "不"
-                },
-                {
-                  "id": "b1l06-g1-e4-word-8",
-                  "traditional": "快",
-                  "pinyin": "kuài",
-                  "meaning": "fast; quickly",
-                  "suffix": "。"
-                }
-              ]
-            }
-          },
-          {
-            "id": "g1-e5",
-            "number": 5,
-            "teachingNote": "會不會 asks about a learned skill.",
-            "text": {
-              "traditional": "A：你妹妹會不會騎腳踏車？ B：她會。",
-              "simplified": "A：你妹妹会不会骑脚踏车？ B：她会。",
-              "pinyin": "A: Nǐ mèimei huì bú huì qí jiǎotàchē? B: Tā huì.",
-              "english": "A: Can your younger sister ride a bicycle? B: Yes.",
-              "words": [
-                {
-                  "id": "b1l06-g1-e5-word-1",
-                  "traditional": "你",
-                  "pinyin": "nǐ",
-                  "meaning": "you",
-                  "prefix": "A："
-                },
-                {
-                  "id": "b1l06-g1-e5-word-2",
-                  "traditional": "妹妹",
-                  "pinyin": "mèimei",
-                  "meaning": "younger sister"
-                },
-                {
-                  "id": "b1l06-g1-e5-word-3",
-                  "traditional": "會不會",
-                  "simplified": "会不会",
-                  "pinyin": "huì bú huì",
-                  "meaning": "know how to or not"
-                },
-                {
-                  "id": "b1l06-g1-e5-word-4",
-                  "traditional": "騎腳踏車",
-                  "simplified": "骑脚踏车",
-                  "pinyin": "qí jiǎotàchē",
-                  "meaning": "ride a bicycle"
-                },
-                {
-                  "id": "b1l06-g1-e5-word-5",
-                  "traditional": "她",
-                  "pinyin": "tā",
-                  "meaning": "she; her",
-                  "prefix": "？ B："
-                },
-                {
-                  "id": "b1l06-g1-e5-word-6",
-                  "traditional": "會",
-                  "simplified": "会",
-                  "pinyin": "huì",
-                  "meaning": "know how to",
-                  "suffix": "。"
-                }
-              ]
-            }
           }
         ],
-        "exerciseTitle": "Check the skill switch",
+        "exerciseTitle": "Complete the following dialogues.",
         "exercisePreview": "Answer whether each learned skill is available.",
-        "exerciseInstruction": "Complete all three book dialogues with 會, 不會, or 會不會 before the action.",
-        "exerciseNote": "Open answers use simple learner models; the source prints no answer key.",
+        "exerciseInstruction": "Complete the following dialogues.",
+        "exerciseNote": "The book gives open responses, with no printed answer key.",
         "exerciseResponseMode": "text",
         "questions": [
           {
@@ -6017,30 +4253,10 @@
             "meaning": "I; me"
           },
           {
-            "id": "b1l06-g02-glossary-2",
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen",
-            "meaning": "we; us"
-          },
-          {
             "id": "b1l06-g02-glossary-3",
             "traditional": "你",
             "pinyin": "nǐ",
             "meaning": "you"
-          },
-          {
-            "id": "b1l06-g02-glossary-4",
-            "traditional": "妳",
-            "pinyin": "nǐ",
-            "meaning": "you"
-          },
-          {
-            "id": "b1l06-g02-glossary-5",
-            "traditional": "妳們",
-            "simplified": "你们",
-            "pinyin": "nǐmen",
-            "meaning": "you all"
           },
           {
             "id": "b1l06-g02-glossary-6",
@@ -6053,38 +4269,6 @@
             "traditional": "她",
             "pinyin": "tā",
             "meaning": "she; her"
-          },
-          {
-            "id": "b1l06-g02-glossary-8",
-            "traditional": "國安",
-            "simplified": "国安",
-            "pinyin": "Guó'ān",
-            "meaning": "Guoan"
-          },
-          {
-            "id": "b1l06-g02-glossary-9",
-            "traditional": "友美",
-            "pinyin": "Yǒuměi",
-            "meaning": "Youmei"
-          },
-          {
-            "id": "b1l06-g02-glossary-10",
-            "traditional": "宜文",
-            "pinyin": "Yíwén",
-            "meaning": "Yiwen"
-          },
-          {
-            "id": "b1l06-g02-glossary-11",
-            "traditional": "中明",
-            "pinyin": "Zhōngmíng",
-            "meaning": "Zhongming"
-          },
-          {
-            "id": "b1l06-g02-glossary-12",
-            "traditional": "媽媽",
-            "simplified": "妈妈",
-            "pinyin": "māma",
-            "meaning": "mom"
           },
           {
             "id": "b1l06-g02-glossary-13",
@@ -6103,33 +4287,6 @@
             "traditional": "妹妹",
             "pinyin": "mèimei",
             "meaning": "younger sister"
-          },
-          {
-            "id": "b1l06-g02-glossary-16",
-            "traditional": "朋友",
-            "pinyin": "péngyǒu",
-            "meaning": "friend"
-          },
-          {
-            "id": "b1l06-g02-glossary-17",
-            "traditional": "會",
-            "simplified": "会",
-            "pinyin": "huì",
-            "meaning": "know how to"
-          },
-          {
-            "id": "b1l06-g02-glossary-18",
-            "traditional": "不會",
-            "simplified": "不会",
-            "pinyin": "bú huì",
-            "meaning": "do not know how to"
-          },
-          {
-            "id": "b1l06-g02-glossary-19",
-            "traditional": "會不會",
-            "simplified": "会不会",
-            "pinyin": "huì bú huì",
-            "meaning": "know how to or not"
           },
           {
             "id": "b1l06-g02-glossary-20",
@@ -6168,30 +4325,11 @@
             "meaning": "walk"
           },
           {
-            "id": "b1l06-g02-glossary-26",
-            "traditional": "打球",
-            "pinyin": "dǎ qiú",
-            "meaning": "play ball"
-          },
-          {
             "id": "b1l06-g02-glossary-27",
             "traditional": "打網球",
             "simplified": "打网球",
             "pinyin": "dǎ wǎngqiú",
             "meaning": "play tennis"
-          },
-          {
-            "id": "b1l06-g02-glossary-28",
-            "traditional": "打棒球",
-            "pinyin": "dǎ bàngqiú",
-            "meaning": "play baseball"
-          },
-          {
-            "id": "b1l06-g02-glossary-29",
-            "traditional": "打籃球",
-            "simplified": "打篮球",
-            "pinyin": "dǎ lánqiú",
-            "meaning": "play basketball"
           },
           {
             "id": "b1l06-g02-glossary-30",
@@ -6205,25 +4343,6 @@
             "simplified": "网球",
             "pinyin": "wǎngqiú",
             "meaning": "tennis"
-          },
-          {
-            "id": "b1l06-g02-glossary-32",
-            "traditional": "棒球",
-            "pinyin": "bàngqiú",
-            "meaning": "baseball"
-          },
-          {
-            "id": "b1l06-g02-glossary-33",
-            "traditional": "籃球",
-            "simplified": "篮球",
-            "pinyin": "lánqiú",
-            "meaning": "basketball"
-          },
-          {
-            "id": "b1l06-g02-glossary-34",
-            "traditional": "踢足球",
-            "pinyin": "tī zúqiú",
-            "meaning": "play soccer"
           },
           {
             "id": "b1l06-g02-glossary-35",
@@ -6259,13 +4378,6 @@
             "meaning": "bicycle"
           },
           {
-            "id": "b1l06-g02-glossary-40",
-            "traditional": "做飯",
-            "simplified": "做饭",
-            "pinyin": "zuòfàn",
-            "meaning": "cook"
-          },
-          {
             "id": "b1l06-g02-glossary-41",
             "traditional": "做",
             "pinyin": "zuò",
@@ -6275,22 +4387,8 @@
             "id": "b1l06-g02-glossary-42",
             "traditional": "牛肉麵",
             "simplified": "牛肉面",
-            "pinyin": "niúròu miàn",
+            "pinyin": "niúròumiàn",
             "meaning": "beef noodles"
-          },
-          {
-            "id": "b1l06-g02-glossary-43",
-            "traditional": "甜點",
-            "simplified": "甜点",
-            "pinyin": "tiándiǎn",
-            "meaning": "dessert"
-          },
-          {
-            "id": "b1l06-g02-glossary-44",
-            "traditional": "很多種甜點",
-            "simplified": "很多种甜点",
-            "pinyin": "hěn duō zhǒng tiándiǎn",
-            "meaning": "many kinds of desserts"
           },
           {
             "id": "b1l06-g02-glossary-45",
@@ -6313,37 +4411,10 @@
             "meaning": "meal; food"
           },
           {
-            "id": "b1l06-g02-glossary-48",
-            "traditional": "喝",
-            "pinyin": "hē",
-            "meaning": "drink"
-          },
-          {
-            "id": "b1l06-g02-glossary-49",
-            "traditional": "睡覺",
-            "simplified": "睡觉",
-            "pinyin": "shuìjiào",
-            "meaning": "sleep"
-          },
-          {
             "id": "b1l06-g02-glossary-50",
             "traditional": "睡",
             "pinyin": "shuì",
             "meaning": "sleep"
-          },
-          {
-            "id": "b1l06-g02-glossary-51",
-            "traditional": "說中文",
-            "simplified": "说中文",
-            "pinyin": "shuō Zhōngwén",
-            "meaning": "speak Chinese"
-          },
-          {
-            "id": "b1l06-g02-glossary-52",
-            "traditional": "說英文",
-            "simplified": "说英文",
-            "pinyin": "shuō Yīngwén",
-            "meaning": "speak English"
           },
           {
             "id": "b1l06-g02-glossary-53",
@@ -6364,19 +4435,6 @@
             "traditional": "中文",
             "pinyin": "Zhōngwén",
             "meaning": "Chinese language"
-          },
-          {
-            "id": "b1l06-g02-glossary-56",
-            "traditional": "英文",
-            "pinyin": "Yīngwén",
-            "meaning": "English language"
-          },
-          {
-            "id": "b1l06-g02-glossary-57",
-            "traditional": "看書",
-            "simplified": "看书",
-            "pinyin": "kànshū",
-            "meaning": "read"
           },
           {
             "id": "b1l06-g02-glossary-58",
@@ -6414,12 +4472,6 @@
             "traditional": "很好",
             "pinyin": "hěn hǎo",
             "meaning": "very well"
-          },
-          {
-            "id": "b1l06-g02-glossary-64",
-            "traditional": "很好吃",
-            "pinyin": "hěn hǎochī",
-            "meaning": "very delicious"
           },
           {
             "id": "b1l06-g02-glossary-65",
@@ -6460,12 +4512,6 @@
             "meaning": "not much"
           },
           {
-            "id": "b1l06-g02-glossary-71",
-            "traditional": "很少",
-            "pinyin": "hěn shǎo",
-            "meaning": "very little"
-          },
-          {
             "id": "b1l06-g02-glossary-72",
             "traditional": "怎麼樣",
             "simplified": "怎么样",
@@ -6504,43 +4550,6 @@
             "meaning": "ending word for a suggestion (let’s …)"
           },
           {
-            "id": "b1l06-g02-glossary-78",
-            "traditional": "啊",
-            "pinyin": "a",
-            "meaning": "ending word for a friendly reply"
-          },
-          {
-            "id": "b1l06-g02-glossary-79",
-            "traditional": "今天",
-            "pinyin": "jīntiān",
-            "meaning": "today"
-          },
-          {
-            "id": "b1l06-g02-glossary-80",
-            "traditional": "今天天氣",
-            "simplified": "今天天气",
-            "pinyin": "jīntiān tiānqì",
-            "meaning": "today’s weather"
-          },
-          {
-            "id": "b1l06-g02-glossary-81",
-            "traditional": "下午",
-            "pinyin": "xiàwǔ",
-            "meaning": "afternoon"
-          },
-          {
-            "id": "b1l06-g02-glossary-82",
-            "traditional": "昨天",
-            "pinyin": "zuótiān",
-            "meaning": "yesterday"
-          },
-          {
-            "id": "b1l06-g02-glossary-83",
-            "traditional": "昨天晚上",
-            "pinyin": "zuótiān wǎnshang",
-            "meaning": "last night"
-          },
-          {
             "id": "b1l06-g02-glossary-84",
             "traditional": "每天",
             "pinyin": "měi tiān",
@@ -6553,81 +4562,10 @@
             "meaning": "all; every time"
           },
           {
-            "id": "b1l06-g02-glossary-86",
-            "traditional": "海邊",
-            "simplified": "海边",
-            "pinyin": "hǎibiān",
-            "meaning": "beach; seaside"
-          },
-          {
-            "id": "b1l06-g02-glossary-87",
-            "traditional": "風景",
-            "simplified": "风景",
-            "pinyin": "fēngjǐng",
-            "meaning": "scenery"
-          },
-          {
-            "id": "b1l06-g02-glossary-88",
-            "traditional": "天氣",
-            "simplified": "天气",
-            "pinyin": "tiānqì",
-            "meaning": "weather"
-          },
-          {
-            "id": "b1l06-g02-glossary-89",
-            "traditional": "漂亮",
-            "pinyin": "piàoliàng",
-            "meaning": "beautiful"
-          },
-          {
-            "id": "b1l06-g02-glossary-90",
-            "traditional": "想去",
-            "pinyin": "xiǎng qù",
-            "meaning": "want to go"
-          },
-          {
-            "id": "b1l06-g02-glossary-91",
-            "traditional": "想",
-            "pinyin": "xiǎng",
-            "meaning": "want; would like"
-          },
-          {
             "id": "b1l06-g02-glossary-92",
             "traditional": "去",
             "pinyin": "qù",
             "meaning": "go"
-          },
-          {
-            "id": "b1l06-g02-glossary-93",
-            "traditional": "一起去",
-            "pinyin": "yìqǐ qù",
-            "meaning": "go together"
-          },
-          {
-            "id": "b1l06-g02-glossary-94",
-            "traditional": "喜歡",
-            "simplified": "喜欢",
-            "pinyin": "xǐhuān",
-            "meaning": "like"
-          },
-          {
-            "id": "b1l06-g02-glossary-95",
-            "traditional": "不喜歡",
-            "simplified": "不喜欢",
-            "pinyin": "bù xǐhuān",
-            "meaning": "do not like"
-          },
-          {
-            "id": "b1l06-g02-glossary-96",
-            "traditional": "可是",
-            "pinyin": "kěshì",
-            "meaning": "but"
-          },
-          {
-            "id": "b1l06-g02-glossary-97",
-            "traditional": "也",
-            "pinyin": "yě",
-            "meaning": "also"
           },
           {
             "id": "b1l06-g02-glossary-98",
@@ -6640,13 +4578,6 @@
             "traditional": "太",
             "pinyin": "tài",
             "meaning": "too; very"
-          },
-          {
-            "id": "b1l06-g02-glossary-100",
-            "traditional": "中明說",
-            "simplified": "中明说",
-            "pinyin": "Zhōngmíng shuō",
-            "meaning": "Zhongming says"
           },
           {
             "id": "b1l06-g02-glossary-101",
@@ -6679,23 +4610,10 @@
             "meaning": "her"
           },
           {
-            "id": "b1l06-g02-glossary-106",
-            "traditional": "你哥哥的",
-            "pinyin": "nǐ gēge de",
-            "meaning": "your older brother’s"
-          },
-          {
             "id": "b1l06-g02-glossary-107",
             "traditional": "我哥哥",
             "pinyin": "wǒ gēge",
             "meaning": "my older brother"
-          },
-          {
-            "id": "b1l06-g02-glossary-108",
-            "traditional": "你媽媽",
-            "simplified": "你妈妈",
-            "pinyin": "nǐ māma",
-            "meaning": "your mother"
           },
           {
             "id": "b1l06-g02-glossary-109",
@@ -6710,11 +4628,96 @@
             "meaning": "my younger sister"
           },
           {
-            "id": "b1l06-g02-glossary-111",
-            "traditional": "很多種",
-            "simplified": "很多种",
-            "pinyin": "hěn duō zhǒng",
-            "meaning": "many kinds of"
+            "id": "b1l06-g02-glossary-112",
+            "traditional": "很快",
+            "pinyin": "hěn kuài",
+            "meaning": "very fast"
+          },
+          {
+            "id": "b1l06-g02-glossary-113",
+            "traditional": "很慢",
+            "pinyin": "hěn màn",
+            "meaning": "very slowly"
+          },
+          {
+            "id": "b1l06-g02-glossary-114",
+            "traditional": "好快",
+            "pinyin": "hǎo kuài",
+            "meaning": "so fast"
+          },
+          {
+            "id": "b1l06-g02-glossary-115",
+            "traditional": "好慢",
+            "pinyin": "hǎo màn",
+            "meaning": "so slowly"
+          },
+          {
+            "id": "b1l06-g02-glossary-116",
+            "traditional": "你的網球",
+            "simplified": "你的网球",
+            "pinyin": "nǐ de wǎngqiú",
+            "meaning": "your tennis game"
+          },
+          {
+            "id": "b1l06-g02-glossary-117",
+            "traditional": "他的牛肉麵",
+            "simplified": "他的牛肉面",
+            "pinyin": "tā de niúròumiàn",
+            "meaning": "his beef noodles"
+          },
+          {
+            "id": "b1l06-g02-glossary-118",
+            "traditional": "你哥哥",
+            "pinyin": "nǐ gēge",
+            "meaning": "your older brother"
+          },
+          {
+            "id": "b1l06-g02-glossary-119",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l06-g02-glossary-120",
+            "traditional": "你的飯",
+            "simplified": "你的饭",
+            "pinyin": "nǐ de fàn",
+            "meaning": "your cooking"
+          },
+          {
+            "id": "b1l06-g02-glossary-121",
+            "traditional": "我的飯",
+            "simplified": "我的饭",
+            "pinyin": "wǒ de fàn",
+            "meaning": "my cooking"
+          },
+          {
+            "id": "b1l06-g02-glossary-122",
+            "traditional": "你弟弟的足球",
+            "simplified": "你弟弟的足球",
+            "pinyin": "nǐ dìdi de zúqiú",
+            "meaning": "your younger brother's soccer game"
+          },
+          {
+            "id": "b1l06-g02-glossary-123",
+            "traditional": "我弟弟的足球",
+            "simplified": "我弟弟的足球",
+            "pinyin": "wǒ dìdi de zúqiú",
+            "meaning": "my younger brother's soccer game"
+          },
+          {
+            "id": "b1l06-g02-glossary-124",
+            "traditional": "她的腳踏車",
+            "simplified": "她的脚踏车",
+            "pinyin": "tā de jiǎotàchē",
+            "meaning": "her bicycle"
+          },
+          {
+            "id": "b1l06-g02-glossary-125",
+            "traditional": "不快",
+            "pinyin": "bú kuài",
+            "meaning": "not fast"
           }
         ],
         "pattern": "Subject + Verb + 得 + Adjective",
@@ -6748,39 +4751,29 @@
             {
               "id": "g2-repeat",
               "label": "Repeat the verb",
-              "traditional": "他跑步跑得很快。",
-              "simplified": "他跑步跑得很快。",
-              "pinyin": "Tā pǎobù pǎo de hěn kuài.",
-              "english": "He runs very fast.",
+              "traditional": "我跑步跑得很快。",
+              "simplified": "我跑步跑得很快。",
+              "pinyin": "Wǒ pǎobù pǎo de hěn kuài.",
+              "english": "I run very fast.",
               "note": "Say the full activity 跑步, then repeat the action word 跑 before 得."
             },
             {
               "id": "g2-object",
               "label": "Move object forward",
-              "traditional": "他網球打得很好。",
-              "simplified": "他网球打得很好。",
-              "pinyin": "Tā wǎngqiú dǎ de hěn hǎo.",
-              "english": "He plays tennis very well.",
+              "traditional": "他網球打得不錯。",
+              "simplified": "他网球打得不错。",
+              "pinyin": "Tā wǎngqiú dǎ de búcuò.",
+              "english": "He plays tennis quite well.",
               "note": "網球 becomes the topic, leaving 打 next to 得."
             },
             {
               "id": "g2-owned",
               "label": "Owned activity",
-              "traditional": "他的網球打得很好。",
-              "simplified": "他的网球打得很好。",
-              "pinyin": "Tā de wǎngqiú dǎ de hěn hǎo.",
-              "english": "His tennis playing is very good.",
-              "note": "他的網球 is the topic; 打 still stands directly before 得."
-            },
-            {
-              "id": "g2-repair",
-              "label": "Repair the meter",
-              "traditional": "他打得網球很好 → 他網球打得很好",
-              "simplified": "他打得网球很好 → 他网球打得很好",
-              "pinyin": "Tā dǎ de wǎngqiú hěn hǎo → Tā wǎngqiú dǎ de hěn hǎo",
-              "english": "He plays tennis very well.",
-              "note": "Do not put 網球 after 得.",
-              "isCorrection": true
+              "traditional": "他的牛肉麵做得很不錯。",
+              "simplified": "他的牛肉面做得很不错。",
+              "pinyin": "Tā de niúròumiàn zuò de hěn búcuò.",
+              "english": "He cooks good beef noodles.",
+              "note": "他的牛肉麵 is the topic; 做 still stands directly before 得."
             }
           ],
           "takeaway": "Protect the core: action word + 得 + performance. Move or repeat the thing when needed."
@@ -6790,10 +4783,10 @@
           "description": "Three blocks. The middle block is the rule that never changes.",
           "subject": {
             "role": "topic",
-            "label": "1 · Pick activity",
-            "traditional": "跑步",
-            "pinyin": "pǎobù",
-            "english": "running"
+            "label": "1 · Subject + activity",
+            "traditional": "我跑步",
+            "pinyin": "wǒ pǎobù",
+            "english": "I run"
           },
           "verb": {
             "role": "meter",
@@ -6809,7 +4802,7 @@
             "pinyin": "hěn kuài",
             "english": "very fast"
           },
-          "positiveEnglish": "As for running, it is done very fast.",
+          "positiveEnglish": "I run very fast.",
           "notes": [
             "Right: 跑步 + 跑得 + 很快. Repeat 跑 so the action word touches 得.",
             "Wrong: 跑步 + 得 + 很快. The word 步 cannot attach directly to 得."
@@ -6867,14 +4860,14 @@
             {
               "id": "g2-confusion-object-touch",
               "question": "He plays tennis very well. Can I say 他打網球得很好?",
-              "answer": "No — move 網球 in front, or repeat 打, so the action word touches 得: 網球打得很好。",
+              "answer": "Put 網球 before 打, or repeat 打, so the verb comes directly before 得.",
               "wrongTraditional": "他打網球得很好。",
               "wrongSimplified": "他打网球得很好。",
               "right": {
-                "traditional": "他網球打得很好。",
-                "simplified": "他网球打得很好。",
-                "pinyin": "Tā wǎngqiú dǎ de hěn hǎo.",
-                "english": "He plays tennis very well.",
+                "traditional": "他網球打得不錯。",
+                "simplified": "他网球打得不错。",
+                "pinyin": "Tā wǎngqiú dǎ de búcuò.",
+                "english": "He plays tennis quite well.",
                 "words": [
                   {
                     "id": "g2-confusion-object-touch-word-1",
@@ -6903,52 +4896,54 @@
                   },
                   {
                     "id": "g2-confusion-object-touch-word-5",
-                    "traditional": "很好",
-                    "pinyin": "hěn hǎo",
-                    "meaning": "very well",
-                    "suffix": "。"
+                    "traditional": "不錯",
+                    "pinyin": "búcuò",
+                    "meaning": "not bad; quite good",
+                    "suffix": "。",
+                    "simplified": "不错"
                   }
                 ]
               }
             },
             {
               "id": "g2-confusion-de-after-report",
-              "question": "He drinks a lot. Is it 他喝很多得?",
-              "answer": "No — 得 goes right after the action word, before the amount: 喝得很多。",
-              "wrongTraditional": "他喝很多得。",
+              "question": "I run very slowly. Is it 我跑很慢得?",
+              "answer": "Put 得 directly after 跑 and before 很慢.",
+              "wrongTraditional": "我跑很慢得。",
               "right": {
-                "traditional": "他喝得很多。",
-                "simplified": "他喝得很多。",
-                "pinyin": "Tā hē de hěn duō.",
-                "english": "He drinks a lot.",
+                "traditional": "我跑得很慢。",
+                "simplified": "我跑得很慢。",
+                "pinyin": "Wǒ pǎo de hěn màn.",
+                "english": "I run very slowly.",
                 "words": [
                   {
-                    "id": "g2-confusion-de-after-report-word-1",
-                    "traditional": "他",
-                    "pinyin": "tā",
-                    "meaning": "he; him"
+                    "id": "b1l06-g2-review-slow-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
                   },
                   {
-                    "id": "g2-confusion-de-after-report-word-2",
-                    "traditional": "喝",
-                    "pinyin": "hē",
-                    "meaning": "drink"
+                    "id": "b1l06-g2-review-slow-word-2",
+                    "traditional": "跑",
+                    "pinyin": "pǎo",
+                    "meaning": "run"
                   },
                   {
-                    "id": "g2-confusion-de-after-report-word-3",
+                    "id": "b1l06-g2-review-slow-word-3",
                     "traditional": "得",
                     "pinyin": "de",
                     "meaning": "shows how an action is done"
                   },
                   {
-                    "id": "g2-confusion-de-after-report-word-4",
-                    "traditional": "很多",
-                    "pinyin": "hěn duō",
-                    "meaning": "a lot",
+                    "id": "b1l06-g2-review-slow-word-4",
+                    "traditional": "很慢",
+                    "pinyin": "hěn màn",
+                    "meaning": "very slowly",
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "wrongSimplified": "我跑很慢得。"
             }
           ]
         },
@@ -7028,7 +5023,7 @@
             "text": {
               "traditional": "我每天都睡得很好。",
               "simplified": "我每天都睡得很好。",
-              "pinyin": "Wǒ měitiān dōu shuì de hěn hǎo.",
+              "pinyin": "Wǒ měi tiān dōu shuì de hěn hǎo.",
               "english": "I sleep very well every day.",
               "words": [
                 {
@@ -7040,7 +5035,7 @@
                 {
                   "id": "b1l06-g2-e6-word-2",
                   "traditional": "每天",
-                  "pinyin": "měitiān",
+                  "pinyin": "měi tiān",
                   "meaning": "every day"
                 },
                 {
@@ -7849,129 +5844,12 @@
               ]
             },
             "teachingNote": null
-          },
-          {
-            "id": "g2-e4",
-            "number": 13,
-            "teachingNote": "Say the whole activity 吃飯, then repeat 吃 before 得.",
-            "text": {
-              "traditional": "我妹妹吃飯吃得很慢。",
-              "simplified": "我妹妹吃饭吃得很慢。",
-              "pinyin": "Wǒ mèimei chīfàn chī de hěn màn.",
-              "english": "My younger sister eats very slowly.",
-              "words": [
-                {
-                  "id": "b1l06-g2-e4-word-1",
-                  "traditional": "我妹妹",
-                  "pinyin": "wǒ mèimei",
-                  "meaning": "my younger sister"
-                },
-                {
-                  "id": "b1l06-g2-e4-word-2",
-                  "traditional": "吃飯",
-                  "simplified": "吃饭",
-                  "pinyin": "chīfàn",
-                  "meaning": "eat a meal"
-                },
-                {
-                  "id": "b1l06-g2-e4-word-3",
-                  "traditional": "吃",
-                  "pinyin": "chī",
-                  "meaning": "eat"
-                },
-                {
-                  "id": "b1l06-g2-e4-word-4",
-                  "traditional": "得",
-                  "pinyin": "de",
-                  "meaning": "shows how an action is done"
-                },
-                {
-                  "id": "b1l06-g2-e4-word-5",
-                  "traditional": "很",
-                  "pinyin": "hěn",
-                  "meaning": "very"
-                },
-                {
-                  "id": "b1l06-g2-e4-word-6",
-                  "traditional": "慢",
-                  "pinyin": "màn",
-                  "meaning": "slow; slowly",
-                  "suffix": "。"
-                }
-              ]
-            }
-          },
-          {
-            "id": "g2-e5",
-            "number": 14,
-            "teachingNote": "Move the thing 牛肉麵 forward; 做 stays right before 得.",
-            "text": {
-              "traditional": "他的牛肉麵做得很不錯。",
-              "simplified": "他的牛肉面做得很不错。",
-              "pinyin": "Tā de niúròu miàn zuò de hěn búcuò.",
-              "english": "He cooks good beef noodles.",
-              "words": [
-                {
-                  "id": "b1l06-g2-e5-word-1",
-                  "traditional": "他的",
-                  "pinyin": "tā de",
-                  "meaning": "his"
-                },
-                {
-                  "id": "b1l06-g2-e5-word-2",
-                  "traditional": "牛肉麵",
-                  "simplified": "牛肉面",
-                  "pinyin": "niúròu miàn",
-                  "meaning": "beef noodles"
-                },
-                {
-                  "id": "b1l06-g2-e5-word-3",
-                  "traditional": "做",
-                  "pinyin": "zuò",
-                  "meaning": "do; make"
-                },
-                {
-                  "id": "b1l06-g2-e5-word-4",
-                  "traditional": "得",
-                  "pinyin": "de",
-                  "meaning": "shows how an action is done"
-                },
-                {
-                  "id": "b1l06-g2-e5-word-5",
-                  "traditional": "很不錯",
-                  "simplified": "很不错",
-                  "pinyin": "hěn búcuò",
-                  "meaning": "very good",
-                  "suffix": "。"
-                }
-              ]
-            }
           }
         ],
-        "exerciseTitle": "Read the performance meter",
+        "exerciseTitle": "Answer the following questions.",
         "exercisePreview": "Keep the action beside 得, then report the performance.",
-        "exerciseInstruction": "Complete all four printed sentence shapes. Follow each section label before choosing.",
-        "exerciseNote": "Sections 1 and 2 use printed picture evidence. Other answers are clear learner models.",
-        "exerciseCues": [
-          {
-            "id": "g2-c1",
-            "label": "Many drinks",
-            "pinyin": "hē de hěn duō",
-            "detail": "The man has many drink containers."
-          },
-          {
-            "id": "g2-c2",
-            "label": "Many bowls",
-            "pinyin": "chī de hěn duō",
-            "detail": "The person sits beside tall stacks of bowls."
-          },
-          {
-            "id": "g2-c3",
-            "label": "Sound sleep",
-            "pinyin": "shuì de hěn hǎo",
-            "detail": "The night picture shows peaceful sleep."
-          }
-        ],
+        "exerciseInstruction": "Answer the following questions or complete the following dialogues.",
+        "exerciseNote": "The book gives open responses, with no printed answer key.",
         "questions": [
           {
             "id": "g2-q1",
@@ -8499,7 +6377,7 @@
             "id": "b1l06-g02-sec-1",
             "sectionNumber": 1,
             "title": "Simple verb + 得",
-            "explanation": "Put the verb right before 得, then say how the action is done.",
+            "explanation": "Put 得 after the verb, then describe how the action is done.",
             "patternColumns": [
               "Subject",
               "Verb",
@@ -8514,14 +6392,14 @@
             ],
             "patternRows": [
               {
-                "id": "g2-sec1-row-1",
+                "id": "g2-s1-r1",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s1-he",
+                      "id": "g2-s1-r1-s-w7",
                       "traditional": "他",
                       "pinyin": "tā",
                       "meaning": "he; him"
@@ -8529,7 +6407,7 @@
                   ],
                   [
                     {
-                      "id": "g2-s1-run",
+                      "id": "g2-s1-r1-v-w8",
                       "traditional": "跑",
                       "pinyin": "pǎo",
                       "meaning": "run"
@@ -8537,15 +6415,15 @@
                   ],
                   [
                     {
-                      "id": "g2-s1-de",
+                      "id": "g2-s1-r1-de-w9",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s1-fast",
+                      "id": "g2-s1-r1-a-w10",
                       "traditional": "很快",
                       "pinyin": "hěn kuài",
                       "meaning": "very fast",
@@ -8556,14 +6434,14 @@
                 "english": "He runs very fast."
               },
               {
-                "id": "g2-sec1-row-2",
+                "id": "g2-s1-r2",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s1-you",
+                      "id": "g2-s1-r2-s-w11",
                       "traditional": "你",
                       "pinyin": "nǐ",
                       "meaning": "you"
@@ -8571,23 +6449,23 @@
                   ],
                   [
                     {
-                      "id": "g2-s1-do",
+                      "id": "g2-s1-r2-v-w12",
                       "traditional": "做",
                       "pinyin": "zuò",
-                      "meaning": "do"
+                      "meaning": "do; make"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s1-de-2",
+                      "id": "g2-s1-r2-de-w13",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s1-good",
+                      "id": "g2-s1-r2-a-w14",
                       "traditional": "很好",
                       "pinyin": "hěn hǎo",
                       "meaning": "very well",
@@ -8602,13 +6480,14 @@
               "g2-e1",
               "b1l06-g2-e6",
               "b1l06-g2-e7"
-            ]
+            ],
+            "pattern": "Subject + V + 得 + (A)Vs"
           },
           {
             "id": "b1l06-g02-sec-2",
             "sectionNumber": 2,
             "title": "Repeat verb after V+O",
-            "explanation": "When the verb has an object, repeat the verb before 得.",
+            "explanation": "The activity has an object, so repeat the action word before 得.",
             "patternColumns": [
               "Subject",
               "Verb + Object",
@@ -8625,14 +6504,14 @@
             ],
             "patternRows": [
               {
-                "id": "g2-sec2-row-1",
+                "id": "g2-s2-r1",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s2-sister",
+                      "id": "g2-s2-r1-s-w15",
                       "traditional": "我妹妹",
                       "pinyin": "wǒ mèimei",
                       "meaning": "my younger sister"
@@ -8640,7 +6519,7 @@
                   ],
                   [
                     {
-                      "id": "g2-s2-eat-meal",
+                      "id": "g2-s2-r1-vo-w16",
                       "traditional": "吃飯",
                       "pinyin": "chīfàn",
                       "meaning": "eat a meal",
@@ -8649,7 +6528,7 @@
                   ],
                   [
                     {
-                      "id": "g2-s2-eat",
+                      "id": "g2-s2-r1-v-w17",
                       "traditional": "吃",
                       "pinyin": "chī",
                       "meaning": "eat"
@@ -8657,15 +6536,15 @@
                   ],
                   [
                     {
-                      "id": "g2-s2-de",
+                      "id": "g2-s2-r1-de-w18",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s2-slow",
+                      "id": "g2-s2-r1-a-w19",
                       "traditional": "很慢",
                       "pinyin": "hěn màn",
                       "meaning": "very slowly",
@@ -8676,22 +6555,22 @@
                 "english": "My younger sister eats very slowly."
               },
               {
-                "id": "g2-sec2-row-2",
+                "id": "g2-s2-r2",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s2-brother",
+                      "id": "g2-s2-r2-s-w20",
                       "traditional": "我哥哥",
                       "pinyin": "wǒ gēge",
-                      "meaning": "my elder brother"
+                      "meaning": "my older brother"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s2-talk",
+                      "id": "g2-s2-r2-vo-w21",
                       "traditional": "說話",
                       "pinyin": "shuōhuà",
                       "meaning": "speak; talk",
@@ -8700,7 +6579,7 @@
                   ],
                   [
                     {
-                      "id": "g2-s2-speak",
+                      "id": "g2-s2-r2-v-w22",
                       "traditional": "說",
                       "pinyin": "shuō",
                       "meaning": "speak; say",
@@ -8709,15 +6588,15 @@
                   ],
                   [
                     {
-                      "id": "g2-s2-de-2",
+                      "id": "g2-s2-r2-de-w23",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s2-fast",
+                      "id": "g2-s2-r2-a-w24",
                       "traditional": "很快",
                       "pinyin": "hěn kuài",
                       "meaning": "very fast",
@@ -8731,15 +6610,15 @@
             "exampleIds": [
               "b1l06-g2-e8",
               "g2-e2",
-              "b1l06-g2-e9",
-              "g2-e4"
-            ]
+              "b1l06-g2-e9"
+            ],
+            "pattern": "Subject + V+O + V + 得 + (A)Vs"
           },
           {
             "id": "b1l06-g02-sec-3",
             "sectionNumber": 3,
-            "title": "Object as topic",
-            "explanation": "Move the object to the front, so the verb can sit right before 得.",
+            "title": "Subject as the Topic",
+            "explanation": "Put the object after the subject and before the verb, leaving the verb next to 得.",
             "patternColumns": [
               "Subject",
               "Object",
@@ -8756,14 +6635,14 @@
             ],
             "patternRows": [
               {
-                "id": "g2-sec3-row-1",
+                "id": "g2-s3-r1",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s3-he",
+                      "id": "g2-s3-r1-s-w25",
                       "traditional": "他",
                       "pinyin": "tā",
                       "meaning": "he; him"
@@ -8771,32 +6650,32 @@
                   ],
                   [
                     {
-                      "id": "g2-s3-rice",
+                      "id": "g2-s3-r1-o-w26",
                       "traditional": "飯",
                       "pinyin": "fàn",
-                      "meaning": "rice; meal",
+                      "meaning": "meal; food",
                       "simplified": "饭"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s3-cook",
+                      "id": "g2-s3-r1-v-w27",
                       "traditional": "做",
                       "pinyin": "zuò",
-                      "meaning": "cook; make"
+                      "meaning": "do; make"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s3-de",
+                      "id": "g2-s3-r1-de-w28",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s3-good",
+                      "id": "g2-s3-r1-a-w29",
                       "traditional": "很好",
                       "pinyin": "hěn hǎo",
                       "meaning": "very well",
@@ -8807,14 +6686,14 @@
                 "english": "He cooks very well."
               },
               {
-                "id": "g2-sec3-row-2",
+                "id": "g2-s3-r2",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s3-sister",
+                      "id": "g2-s3-r2-s-w30",
                       "traditional": "我妹妹",
                       "pinyin": "wǒ mèimei",
                       "meaning": "my younger sister"
@@ -8822,15 +6701,15 @@
                   ],
                   [
                     {
-                      "id": "g2-s3-chinese",
+                      "id": "g2-s3-r2-o-w31",
                       "traditional": "中文",
                       "pinyin": "Zhōngwén",
-                      "meaning": "Chinese"
+                      "meaning": "Chinese language"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s3-speak",
+                      "id": "g2-s3-r2-v-w32",
                       "traditional": "說",
                       "pinyin": "shuō",
                       "meaning": "speak; say",
@@ -8839,20 +6718,20 @@
                   ],
                   [
                     {
-                      "id": "g2-s3-de-2",
+                      "id": "g2-s3-r2-de-w33",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s3-good-2",
+                      "id": "g2-s3-r2-a-w34",
                       "traditional": "很不錯",
                       "pinyin": "hěn búcuò",
                       "meaning": "very good",
-                      "suffix": "。",
-                      "simplified": "很不错"
+                      "simplified": "很不错",
+                      "suffix": "。"
                     }
                   ]
                 ],
@@ -8863,13 +6742,14 @@
               "b1l06-g2-e10",
               "g2-e3",
               "b1l06-g2-e11"
-            ]
+            ],
+            "pattern": "Subject + O + V + 得 + (A)Vs"
           },
           {
             "id": "b1l06-g02-sec-4",
             "sectionNumber": 4,
             "title": "Possessor + 的 + object",
-            "explanation": "When the object belongs to the subject, move both in front. The verb still sits right before 得.",
+            "explanation": "The owned thing becomes the topic, so the action word again stands next to 得.",
             "patternColumns": [
               "Subject 的 Noun",
               "Verb",
@@ -8884,22 +6764,23 @@
             ],
             "patternRows": [
               {
-                "id": "g2-sec4-row-1",
+                "id": "g2-s4-r1",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s4-your-tennis",
+                      "id": "g2-s4-r1-s-w35",
                       "traditional": "你的網球",
                       "pinyin": "nǐ de wǎngqiú",
-                      "meaning": "your tennis"
+                      "meaning": "your tennis",
+                      "simplified": "你的网球"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s4-play",
+                      "id": "g2-s4-r1-v-w36",
                       "traditional": "打",
                       "pinyin": "dǎ",
                       "meaning": "play; hit"
@@ -8907,15 +6788,15 @@
                   ],
                   [
                     {
-                      "id": "g2-s4-de",
+                      "id": "g2-s4-r1-de-w37",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s4-good",
+                      "id": "g2-s4-r1-a-w38",
                       "traditional": "很好",
                       "pinyin": "hěn hǎo",
                       "meaning": "very well",
@@ -8926,43 +6807,44 @@
                 "english": "You play tennis very well."
               },
               {
-                "id": "g2-sec4-row-2",
+                "id": "g2-s4-r2",
                 "subject": [],
                 "grammar": [],
                 "complement": [],
                 "columns": [
                   [
                     {
-                      "id": "g2-s4-his-beef",
+                      "id": "g2-s4-r2-s-w39",
                       "traditional": "他的牛肉麵",
-                      "pinyin": "tā de niúròu miàn",
-                      "meaning": "his beef noodles"
+                      "pinyin": "tā de niúròumiàn",
+                      "meaning": "his beef noodles",
+                      "simplified": "他的牛肉面"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s4-cook",
+                      "id": "g2-s4-r2-v-w40",
                       "traditional": "做",
                       "pinyin": "zuò",
-                      "meaning": "cook; make"
+                      "meaning": "do; make"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s4-de-2",
+                      "id": "g2-s4-r2-de-w41",
                       "traditional": "得",
                       "pinyin": "de",
-                      "meaning": "links a verb to how it is done"
+                      "meaning": "shows how an action is done"
                     }
                   ],
                   [
                     {
-                      "id": "g2-s4-good-2",
+                      "id": "g2-s4-r2-a-w42",
                       "traditional": "很不錯",
                       "pinyin": "hěn búcuò",
                       "meaning": "very good",
-                      "suffix": "。",
-                      "simplified": "很不错"
+                      "simplified": "很不错",
+                      "suffix": "。"
                     }
                   ]
                 ],
@@ -8972,9 +6854,9 @@
             "exampleIds": [
               "b1l06-g2-e12",
               "b1l06-g2-e13",
-              "b1l06-g2-e14",
-              "g2-e5"
-            ]
+              "b1l06-g2-e14"
+            ],
+            "pattern": "S 的 O + V + 得 + (A)Vs"
           }
         ]
       }
@@ -9000,7 +6882,7 @@
           "text": {
             "traditional": "今天天氣不錯，海邊的風景也很漂亮，我想去游泳，妳們想去嗎？",
             "simplified": "今天天气不错，海边的风景也很漂亮，我想去游泳，你们想去吗？",
-            "pinyin": "Jīntiān tiānqì búcuò, hǎibiān de fēngjǐng yě hěn piàoliàng, wǒ xiǎng qù yóuyǒng, nǐmen xiǎng qù ma?",
+            "pinyin": "Jīntiān tiānqì búcuò, hǎibiān de fēngjǐng yě hěn piàoliang, wǒ xiǎng qù yóuyǒng, nǐmen xiǎng qù ma?",
             "english": "The weather is pretty good today, so is the view at the beach. I want to go swimming. Do you want to go?",
             "words": [
               {
@@ -9053,7 +6935,7 @@
               {
                 "id": "b1l06-d1-l1-word-8",
                 "traditional": "漂亮",
-                "pinyin": "piàoliàng",
+                "pinyin": "piàoliang",
                 "meaning": "beautiful"
               },
               {
@@ -9270,7 +7152,7 @@
           "text": {
             "traditional": "我不喜歡跑步，我跑步跑得很慢。",
             "simplified": "我不喜欢跑步，我跑步跑得很慢。",
-            "pinyin": "Wǒ bù xǐhuān pǎobù, wǒ pǎobù pǎo de hěn màn.",
+            "pinyin": "Wǒ bù xǐhuan pǎobù, wǒ pǎobù pǎo de hěn màn.",
             "english": "I do not like to run; I run slowly.",
             "words": [
               {
@@ -9283,7 +7165,7 @@
                 "id": "b1l06-d1-l5-word-2",
                 "traditional": "不喜歡",
                 "simplified": "不喜欢",
-                "pinyin": "bù xǐhuān",
+                "pinyin": "bù xǐhuan",
                 "meaning": "do not like"
               },
               {
@@ -9459,14 +7341,14 @@
         }
       ],
       "comprehension": {
-        "prompt": "友美為什麼不想去跑步？",
+        "prompt": "友美跑步跑得怎麼樣？",
         "options": [
           "她跑得很慢",
           "她不會打網球",
           "她游得很好"
         ],
         "answer": "她跑得很慢",
-        "hint": "Look at what Youmei says after 跑得."
+        "hint": "Look at how Youmei describes her running."
       }
     },
     "completionTitle": "Part 1 complete — skill and performance are now separate.",

@@ -15,8 +15,12 @@ export function beginQuizLaunch(picker: HTMLElement, selected: HTMLElement) {
     background: 'var(--color-ui-canvas)', pointerEvents: 'none', zIndex: '100',
   });
   document.body.appendChild(snapshot);
-  // A failed load exposes the normal retry/skip screen rather than covering it indefinitely.
-  window.setTimeout(() => snapshot.remove(), 8000);
+  // Fast opens land on the first prompt and own the fade; slower opens dissolve into the preparation screen.
+  window.setTimeout(() => {
+    if (!snapshot.isConnected || snapshot.getAnimations().length) return;
+    const fade = snapshot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, easing: 'ease-out', fill: 'forwards' });
+    fade.finished.then(() => snapshot.remove(), () => snapshot.remove());
+  }, 450);
 }
 
 export function cancelQuizLaunch() {

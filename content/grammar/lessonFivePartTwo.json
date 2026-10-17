@@ -18,8 +18,7 @@
     "focusTerms": [
       "有",
       "沒有",
-      "没有",
-      "不有"
+      "没有"
     ],
     "teachingGlossary": [
       {
@@ -672,72 +671,39 @@
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
-      "title": "Change what the place contains",
-      "description": "Start with the place, then report whether something is there.",
-      "prompt": "What is in the place?",
+      "title": "Explore this pattern",
+      "description": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
+      "prompt": "Compare the book sentences.",
       "choices": [
         {
-          "id": "g5-found",
-          "label": "Found",
-          "traditional": "桌子上面有一本書。",
-          "simplified": "桌子上面有一本书。",
-          "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
-          "english": "There is a book on the table.",
-          "note": "Place first. 有 says the thing is there."
+          "id": "g5-book-1",
+          "label": "Book sentence 1",
+          "traditional": "台灣有很多好吃的東西。",
+          "simplified": "台湾有很多好吃的东西。",
+          "pinyin": "Táiwān yǒu hěn duō hǎochī de dōngxi.",
+          "english": "There is a lot of delicious food in Taiwan.",
+          "note": "The place comes before 有 or 沒有."
         },
         {
-          "id": "g5-empty",
-          "label": "Not found",
-          "traditional": "桌子上面沒有書。",
-          "simplified": "桌子上面没有书。",
-          "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
-          "english": "There is no book on the table.",
-          "note": "沒有 is how you say “there is not”."
+          "id": "g5-book-2",
+          "label": "Book sentence 2",
+          "traditional": "圖書館旁邊沒有咖啡廳。",
+          "simplified": "图书馆旁边没有咖啡厅。",
+          "pinyin": "Túshūguǎn pángbiān méiyǒu kāfēitīng.",
+          "english": "There is no café next to the library.",
+          "note": "The place comes before 有 or 沒有."
         },
         {
-          "id": "g5-repair",
-          "label": "Repair negative",
-          "traditional": "桌子上面不有書 → 桌子上面沒有書",
-          "simplified": "桌子上面不有书 → 桌子上面没有书",
-          "pinyin": "Zhuōzi shàngmiàn bù yǒu shū → Zhuōzi shàngmiàn méiyǒu shū",
-          "english": "There is no book on the table.",
-          "note": "Use 沒 with 有. Never use 不.",
-          "isCorrection": true
+          "id": "g5-book-3",
+          "label": "Book sentence 3",
+          "traditional": "桌子上面有很多東西。",
+          "simplified": "桌子上面有很多东西。",
+          "pinyin": "Zhuōzi shàngmiàn yǒu hěn duō dōngxi.",
+          "english": "There are a lot of things on the table.",
+          "note": "The place comes before 有 or 沒有."
         }
       ],
-      "takeaway": "Place first. Use 有 when something is there; use 沒有 when it is not."
-    },
-    "contrast": {
-      "title": "在 says where. 有 says what is there.",
-      "description": "Pick the form by what the listener already knows.",
-      "items": [
-        {
-          "id": "g5-c1",
-          "label": "Find a known thing",
-          "traditional": "書在桌子上面。",
-          "simplified": "书在桌子上面。",
-          "pinyin": "Shū zài zhuōzi shàngmiàn.",
-          "english": "The book is on the table.",
-          "note": "Start with the known book and say where it is.",
-          "particle": {
-            "id": "g5-c1-p",
-            "traditional": "在"
-          }
-        },
-        {
-          "id": "g5-c2",
-          "label": "List what is in a place",
-          "traditional": "桌子上面有一本書。",
-          "simplified": "桌子上面有一本书。",
-          "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
-          "english": "There is a book on the table.",
-          "note": "Start with the place and say what is there.",
-          "particle": {
-            "id": "g5-c2-p",
-            "traditional": "有"
-          }
-        }
-      ]
+      "takeaway": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there."
     },
     "patternRows": [
       {
@@ -769,7 +735,7 @@
             "suffix": "。"
           }
         ],
-        "english": "There is lots of delicious food in Taiwan."
+        "english": "There is a lot of delicious food in Taiwan."
       },
       {
         "id": "g5-p2",
@@ -808,7 +774,7 @@
             "suffix": "。"
           }
         ],
-        "english": "There is no café beside the library."
+        "english": "There is no café next to the library."
       },
       {
         "id": "g5-p3",
@@ -850,48 +816,54 @@
             "suffix": "。"
           }
         ],
-        "english": "There are many things on the table."
+        "english": "There are a lot of things on the table."
       }
     ],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
         {
-          "id": "g5-confusion-shi-vs-you",
-          "question": "There is a book on the table. 是 or 有?",
-          "answer": "有. It introduces what is in a place. 是 says what something is.",
-          "wrongTraditional": "桌子上是一本書。",
-          "wrongSimplified": "桌子上是一本书。",
+          "id": "g5-confusion-place-first",
+          "question": "What comes first when I say what is on the table?",
+          "answer": "Start with the place, then 有, then the things.",
+          "wrongTraditional": "很多東西有桌子上面。",
+          "wrongSimplified": "很多东西有桌子上面。",
           "right": {
-            "traditional": "桌子上面有一本書。",
-            "simplified": "桌子上面有一本书。",
-            "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
-            "english": "There is a book on the table.",
+            "traditional": "桌子上面有很多東西。",
+            "simplified": "桌子上面有很多东西。",
+            "pinyin": "zhuōzi shàngmiàn yǒu hěn duō dōngxi.",
+            "english": "There are a lot of things on the table.",
             "words": [
               {
-                "id": "b1l05-g5-confusion-1-word-1",
+                "id": "g5-confusion-place-first-word-1",
                 "traditional": "桌子",
                 "pinyin": "zhuōzi",
                 "meaning": "table"
               },
               {
-                "id": "b1l05-g5-confusion-1-word-2",
+                "id": "g5-confusion-place-first-word-2",
                 "traditional": "上面",
                 "pinyin": "shàngmiàn",
                 "meaning": "on; above"
               },
               {
-                "id": "b1l05-g5-confusion-1-word-3",
+                "id": "g5-confusion-place-first-word-3",
                 "traditional": "有",
                 "pinyin": "yǒu",
                 "meaning": "there is; there are"
               },
               {
-                "id": "b1l05-g5-confusion-1-word-4",
-                "traditional": "一本書",
-                "simplified": "一本书",
-                "pinyin": "yì běn shū",
-                "meaning": "one book",
+                "id": "g5-confusion-place-first-word-4",
+                "traditional": "很多",
+                "pinyin": "hěn duō",
+                "meaning": "many; a lot"
+              },
+              {
+                "id": "g5-confusion-place-first-word-5",
+                "traditional": "東西",
+                "simplified": "东西",
+                "pinyin": "dōngxi",
+                "meaning": "thing; things",
                 "suffix": "。"
               }
             ]
@@ -899,82 +871,43 @@
         },
         {
           "id": "g5-confusion-bu-you",
-          "question": "How do I say “there is no book”? Is it 不有?",
-          "answer": "No. 有 takes 沒, never 不: 沒有.",
-          "wrongTraditional": "桌子上面不有書。",
-          "wrongSimplified": "桌子上面不有书。",
+          "question": "Do I negate 有 with 不 or 沒?",
+          "answer": "Use 沒 before 有: 沒有.",
+          "wrongTraditional": "圖書館旁邊不有咖啡廳。",
+          "wrongSimplified": "图书馆旁边不有咖啡厅。",
           "right": {
-            "traditional": "桌子上面沒有書。",
-            "simplified": "桌子上面没有书。",
-            "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
-            "english": "There is no book on the table.",
+            "traditional": "圖書館旁邊沒有咖啡廳。",
+            "simplified": "图书馆旁边没有咖啡厅。",
+            "pinyin": "túshūguǎn pángbiān méiyǒu kāfēitīng.",
+            "english": "There is no café next to the library.",
             "words": [
               {
-                "id": "b1l05-g5-confusion-2-word-1",
-                "traditional": "桌子",
-                "pinyin": "zhuōzi",
-                "meaning": "table"
+                "id": "g5-confusion-bu-you-word-1",
+                "traditional": "圖書館",
+                "simplified": "图书馆",
+                "pinyin": "túshūguǎn",
+                "meaning": "library"
               },
               {
-                "id": "b1l05-g5-confusion-2-word-2",
-                "traditional": "上面",
-                "pinyin": "shàngmiàn",
-                "meaning": "on; above"
+                "id": "g5-confusion-bu-you-word-2",
+                "traditional": "旁邊",
+                "simplified": "旁边",
+                "pinyin": "pángbiān",
+                "meaning": "beside; next to"
               },
               {
-                "id": "b1l05-g5-confusion-2-word-3",
+                "id": "g5-confusion-bu-you-word-3",
                 "traditional": "沒有",
                 "simplified": "没有",
                 "pinyin": "méiyǒu",
                 "meaning": "there is not; there are not"
               },
               {
-                "id": "b1l05-g5-confusion-2-word-4",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g5-confusion-zai-vs-you",
-          "question": "The book is already known. Do I say 桌子上面有書 or 書在桌子上面?",
-          "answer": "書在桌子上面 — start with the known thing and use 在. 有 introduces something new.",
-          "wrongTraditional": "桌子上面有書。",
-          "wrongSimplified": "桌子上面有书。",
-          "right": {
-            "traditional": "書在桌子上面。",
-            "simplified": "书在桌子上面。",
-            "pinyin": "Shū zài zhuōzi shàngmiàn.",
-            "english": "The book is on the table.",
-            "words": [
-              {
-                "id": "b1l05-g5-confusion-3-word-1",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book"
-              },
-              {
-                "id": "b1l05-g5-confusion-3-word-2",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "be located; at"
-              },
-              {
-                "id": "b1l05-g5-confusion-3-word-3",
-                "traditional": "桌子",
-                "pinyin": "zhuōzi",
-                "meaning": "table"
-              },
-              {
-                "id": "b1l05-g5-confusion-3-word-4",
-                "traditional": "上面",
-                "pinyin": "shàngmiàn",
-                "meaning": "on; above",
+                "id": "g5-confusion-bu-you-word-4",
+                "traditional": "咖啡廳",
+                "simplified": "咖啡厅",
+                "pinyin": "kāfēitīng",
+                "meaning": "café",
                 "suffix": "。"
               }
             ]
@@ -1270,11 +1203,10 @@
         }
       }
     ],
-    "exerciseTitle": "Describe each place",
-    "exercisePreview": "Name the place first, then say what is there.",
-    "exerciseInstruction": "Answer each open book prompt with place + 有／沒有 + item.",
-    "exerciseNote": "The book prints no answers. These sample answers use Lesson 5 words.",
-    "exerciseResponseMode": "text",
+    "exerciseTitle": "Answer the following questions.",
+    "exercisePreview": "Choose the missing word in each sample answer.",
+    "exerciseInstruction": "Answer the following questions.",
+    "exerciseNote": "The book leaves the answers open; these are sample completions.",
     "questions": [
       {
         "id": "g5-q1",
@@ -1282,41 +1214,36 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：我們學校有多少學生？ B："
+            "traditional": "A：我們學校有多少學生？ B：我們學校"
           },
           {
             "type": "blank",
             "id": "g5-q1-blank",
-            "answer": "我們學校有一千個學生",
-            "hint": "Give a simple number after 有."
+            "answer": "有",
+            "hint": "Use 有 between the school and the number of students."
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "一千個學生。"
           }
         ],
         "tiles": [
           {
             "id": "g5-q1-correct",
-            "traditional": "我們學校有一千個學生",
-            "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuéshēng",
-            "meaning": "our school has one thousand students"
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "has; there are"
           },
           {
             "id": "g5-q1-d1",
-            "traditional": "一千個學生有我們學校",
-            "pinyin": "yìqiān ge xuéshēng yǒu wǒmen xuéxiào",
-            "meaning": "reversed order"
-          },
-          {
-            "id": "g5-q1-d2",
-            "traditional": "我們學校在一千個學生",
-            "pinyin": "wǒmen xuéxiào zài yìqiān ge xuéshēng",
-            "meaning": "uses 在 instead of 有"
+            "traditional": "在",
+            "pinyin": "zài",
+            "meaning": "at; in"
           }
         ],
-        "correctFeedback": "The school comes first. 有 introduces the number.",
-        "repairFeedback": "Use place + 有 + quantity + noun."
+        "correctFeedback": "Use 有 between the school and the number of students.",
+        "repairFeedback": "Use 有 between the school and the number of students.",
+        "source": "p.126 #1"
       },
       {
         "id": "g5-q2",
@@ -1324,41 +1251,36 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你家旁邊有飲料店嗎？ B："
+            "traditional": "A：你家旁邊有飲料店嗎？ B：我家旁邊"
           },
           {
             "type": "blank",
             "id": "g5-q2-blank",
-            "answer": "我家旁邊沒有飲料店",
-            "hint": "Practice the correct “no” form of 有."
+            "answer": "沒",
+            "hint": "For this negative sample answer, use 沒 before 有."
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "有飲料店。"
           }
         ],
         "tiles": [
           {
             "id": "g5-q2-correct",
-            "traditional": "我家旁邊沒有飲料店",
-            "pinyin": "wǒ jiā pángbiān méiyǒu yǐnliào diàn",
-            "meaning": "there is no drink shop beside my home"
+            "traditional": "沒",
+            "pinyin": "méi",
+            "meaning": "negative before 有"
           },
           {
             "id": "g5-q2-d1",
-            "traditional": "我家旁邊不有飲料店",
-            "pinyin": "wǒ jiā pángbiān bù yǒu yǐnliào diàn",
-            "meaning": "incorrect negative"
-          },
-          {
-            "id": "g5-q2-d2",
-            "traditional": "飲料店不在我家旁邊",
-            "pinyin": "yǐnliào diàn bú zài wǒ jiā pángbiān",
-            "meaning": "the drink shop is not beside my home"
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
           }
         ],
-        "correctFeedback": "沒有 says there is none.",
-        "repairFeedback": "Make 有 negative with 沒: 沒有. Never say 不有."
+        "correctFeedback": "For this negative sample answer, use 沒 before 有.",
+        "repairFeedback": "For this negative sample answer, use 沒 before 有.",
+        "source": "p.126 #2"
       },
       {
         "id": "g5-q3",
@@ -1366,41 +1288,36 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你的桌子上有什麼東西？ B："
+            "traditional": "A：你的桌子上有什麼東西？ B：我的桌子上"
           },
           {
             "type": "blank",
             "id": "g5-q3-blank",
-            "answer": "我的桌子上有一本書",
-            "hint": "Start with the place. Then name one thing."
+            "answer": "有",
+            "hint": "Use 有 after the place to say what is there."
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "一本書。"
           }
         ],
         "tiles": [
           {
             "id": "g5-q3-correct",
-            "traditional": "我的桌子上有一本書",
-            "pinyin": "wǒ de zhuōzi shàng yǒu yì běn shū",
-            "meaning": "there is one book on my table"
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "there is"
           },
           {
             "id": "g5-q3-d1",
-            "traditional": "一本書在我的桌子上",
-            "pinyin": "yì běn shū zài wǒ de zhuōzi shàng",
-            "meaning": "the book is on my table"
-          },
-          {
-            "id": "g5-q3-d2",
-            "traditional": "我的桌子上在一本書",
-            "pinyin": "wǒ de zhuōzi shàng zài yì běn shū",
-            "meaning": "uses 在 instead of 有"
+            "traditional": "在",
+            "pinyin": "zài",
+            "meaning": "at; in"
           }
         ],
-        "correctFeedback": "The question asks what is on the table. The place comes first, and 有 introduces the book.",
-        "repairFeedback": "Use 我的桌子上 + 有 + 一本書."
+        "correctFeedback": "Use 有 after the place to say what is there.",
+        "repairFeedback": "Use 有 after the place to say what is there.",
+        "source": "p.126 #3"
       }
     ]
   },
@@ -1420,7 +1337,7 @@
       125
     ],
     "audioReference": "05-2-3",
-    "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
+    "explanation": "“Noun + Directional Word” is used to denote the direction and the location of a place, as in 桌子上面 or 學校旁邊.",
     "focusTerms": [
       "上面",
       "下面",
@@ -2083,160 +2000,74 @@
     ],
     "patternAccentColumn": 2,
     "discoveryLab": {
-      "title": "Change the direction word",
-      "description": "Keep the same anchor word. Change the direction word to move the thing.",
-      "prompt": "Where is the book?",
+      "title": "Explore this pattern",
+      "description": "Put a direction word after a noun to describe a location, as in 桌子上面 or 學校旁邊.",
+      "prompt": "Compare the book sentences.",
       "choices": [
         {
-          "id": "g4-top",
-          "label": "On",
-          "traditional": "書在桌子上面。",
-          "simplified": "书在桌子上面。",
-          "pinyin": "Shū zài zhuōzi shàngmiàn.",
-          "english": "The book is on the table.",
-          "note": "桌子 is the anchor word; 上面 is the direction word."
+          "id": "g4-book-1",
+          "label": "Book sentence 1",
+          "traditional": "你的書在桌子上面。",
+          "simplified": "你的书在桌子上面。",
+          "pinyin": "Nǐ de shū zài zhuōzi shàngmiàn.",
+          "english": "Your book is on the table.",
+          "note": "Compare the word order with the pattern table."
         },
         {
-          "id": "g4-under",
-          "label": "Under",
-          "traditional": "書在桌子下面。",
-          "simplified": "书在桌子下面。",
-          "pinyin": "Shū zài zhuōzi xiàmiàn.",
-          "english": "The book is under the table.",
-          "note": "Change the direction word, and the book moves under the table."
-        },
-        {
-          "id": "g4-beside",
-          "label": "Beside",
-          "traditional": "書在桌子旁邊。",
-          "simplified": "书在桌子旁边。",
-          "pinyin": "Shū zài zhuōzi pángbiān.",
-          "english": "The book is beside the table.",
-          "note": "旁邊 means next to the anchor word."
-        },
-        {
-          "id": "g4-repair",
-          "label": "Repair order",
-          "traditional": "書在上面桌子 → 書在桌子上面",
-          "simplified": "书在上面桌子 → 书在桌子上面",
-          "pinyin": "Shū zài shàngmiàn zhuōzi → Shū zài zhuōzi shàngmiàn",
-          "english": "The book is on the table.",
-          "note": "The anchor word must come before its direction word.",
-          "isCorrection": true
+          "id": "g4-book-2",
+          "label": "Book sentence 2",
+          "traditional": "那家餐廳不在學校旁邊。",
+          "simplified": "那家餐厅不在学校旁边。",
+          "pinyin": "Nà jiā cāntīng bú zài xuéxiào pángbiān.",
+          "english": "That restaurant is not next to the school.",
+          "note": "Compare the word order with the pattern table."
         }
       ],
-      "takeaway": "Thing + 在 + anchor + direction. Keep the anchor and its direction word together."
-    },
-    "contrast": {
-      "title": "A place alone, or a place plus an action?",
-      "description": "The same anchor + direction words can end a sentence or come before an action.",
-      "items": [
-        {
-          "id": "g4-c1",
-          "label": "Location",
-          "traditional": "筆在椅子下面。",
-          "simplified": "笔在椅子下面。",
-          "pinyin": "Bǐ zài yǐzi xiàmiàn.",
-          "english": "The pen is under the chair.",
-          "note": "The sentence ends after the place.",
-          "particle": {
-            "id": "g4-c1-p",
-            "traditional": "在"
-          }
-        },
-        {
-          "id": "g4-c2",
-          "label": "Action stage",
-          "traditional": "他在房間裡面睡覺。",
-          "simplified": "他在房间里面睡觉。",
-          "pinyin": "Tā zài fángjiān lǐmiàn shuìjiào.",
-          "english": "He sleeps in the room.",
-          "note": "The place comes before the action 睡覺.",
-          "particle": {
-            "id": "g4-c2-p",
-            "traditional": "在"
-          }
-        }
-      ]
+      "takeaway": "Put a direction word after a noun to describe a location, as in 桌子上面 or 學校旁邊."
     },
     "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
         {
-          "id": "g4-confusion-anchor-word",
-          "question": "Can I just say 書在上面 to mean “on the table”?",
-          "answer": "No. 上面 needs an anchor word. Name the thing first: 桌子上面.",
-          "wrongTraditional": "書在上面。",
-          "wrongSimplified": "书在上面。",
-          "right": {
-            "traditional": "書在桌子上面。",
-            "simplified": "书在桌子上面。",
-            "pinyin": "Shū zài zhuōzi shàngmiàn.",
-            "english": "The book is on the table.",
-            "words": [
-              {
-                "id": "b1l05-g4-confusion-1-word-1",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book"
-              },
-              {
-                "id": "b1l05-g4-confusion-1-word-2",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "be located; at"
-              },
-              {
-                "id": "b1l05-g4-confusion-1-word-3",
-                "traditional": "桌子",
-                "pinyin": "zhuōzi",
-                "meaning": "table"
-              },
-              {
-                "id": "b1l05-g4-confusion-1-word-4",
-                "traditional": "上面",
-                "pinyin": "shàngmiàn",
-                "meaning": "on; above",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
           "id": "g4-confusion-direction-order",
           "question": "Do I say 在下面椅子 or 在椅子下面?",
           "answer": "Anchor word first, direction second: 椅子下面.",
-          "wrongTraditional": "筆在下面椅子。",
-          "wrongSimplified": "笔在下面椅子。",
+          "wrongTraditional": "你的筆在下面椅子。",
+          "wrongSimplified": "你的笔在下面椅子。",
           "right": {
-            "traditional": "筆在椅子下面。",
-            "simplified": "笔在椅子下面。",
-            "pinyin": "Bǐ zài yǐzi xiàmiàn.",
-            "english": "The pen is under the chair.",
+            "traditional": "你的筆在椅子下面。",
+            "simplified": "你的笔在椅子下面。",
+            "pinyin": "Nǐ de bǐ zài yǐzi xiàmiàn.",
+            "english": "Your pen is under the chair.",
             "words": [
               {
-                "id": "b1l05-g4-confusion-2-word-1",
+                "id": "g4-confusion-direction-order-word-1",
+                "traditional": "你的",
+                "pinyin": "nǐ de",
+                "meaning": "your"
+              },
+              {
+                "id": "g4-confusion-direction-order-word-2",
                 "traditional": "筆",
                 "simplified": "笔",
                 "pinyin": "bǐ",
                 "meaning": "pen"
               },
               {
-                "id": "b1l05-g4-confusion-2-word-2",
+                "id": "g4-confusion-direction-order-word-3",
                 "traditional": "在",
                 "pinyin": "zài",
                 "meaning": "be located; at"
               },
               {
-                "id": "b1l05-g4-confusion-2-word-3",
+                "id": "g4-confusion-direction-order-word-4",
                 "traditional": "椅子",
                 "pinyin": "yǐzi",
                 "meaning": "chair"
               },
               {
-                "id": "b1l05-g4-confusion-2-word-4",
+                "id": "g4-confusion-direction-order-word-5",
                 "traditional": "下面",
                 "pinyin": "xiàmiàn",
                 "meaning": "under; below",
@@ -2258,26 +2089,26 @@
             "english": "My older brother is inside the room.",
             "words": [
               {
-                "id": "b1l05-g4-confusion-3-word-1",
+                "id": "g4-confusion-shang-vs-li-word-1",
                 "traditional": "哥哥",
                 "pinyin": "gēge",
                 "meaning": "older brother"
               },
               {
-                "id": "b1l05-g4-confusion-3-word-2",
+                "id": "g4-confusion-shang-vs-li-word-2",
                 "traditional": "在",
                 "pinyin": "zài",
                 "meaning": "be located; at"
               },
               {
-                "id": "b1l05-g4-confusion-3-word-3",
+                "id": "g4-confusion-shang-vs-li-word-3",
                 "traditional": "房間",
                 "simplified": "房间",
                 "pinyin": "fángjiān",
                 "meaning": "room"
               },
               {
-                "id": "b1l05-g4-confusion-3-word-4",
+                "id": "g4-confusion-shang-vs-li-word-4",
                 "traditional": "裡面",
                 "simplified": "里面",
                 "pinyin": "lǐmiàn",
@@ -2622,13 +2453,20 @@
             },
             {
               "id": "b1l05-g4-e4-word-3",
-              "traditional": "房間裡",
-              "simplified": "房间里",
-              "pinyin": "fángjiān lǐ",
-              "meaning": "inside the room"
+              "traditional": "房間",
+              "simplified": "房间",
+              "pinyin": "fángjiān",
+              "meaning": "room"
             },
             {
               "id": "b1l05-g4-e4-word-4",
+              "traditional": "裡",
+              "simplified": "里",
+              "pinyin": "lǐ",
+              "meaning": "inside"
+            },
+            {
+              "id": "b1l05-g4-e4-word-5",
               "traditional": "睡覺",
               "simplified": "睡觉",
               "pinyin": "shuìjiào",
@@ -2722,10 +2560,10 @@
         "teachingNote": null
       }
     ],
-    "exerciseTitle": "Build the location",
-    "exercisePreview": "Find the anchor word, then choose its direction.",
-    "exerciseInstruction": "Answer all four pictures. Use the anchor word plus its direction word.",
-    "exerciseNote": "The pictures on printed page 125 give these answers.",
+    "exerciseTitle": "Answer the questions with directional words.",
+    "exercisePreview": "Choose the missing word in each dialogue or sentence.",
+    "exerciseInstruction": "Answer the questions with directional words.",
+    "exerciseNote": "The book leaves the answers open; these are sample completions.",
     "exerciseCues": [
       {
         "id": "g4-cue1",
@@ -2759,13 +2597,13 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：我的書在哪裡？ B："
+            "traditional": "A：我的書在哪裡？ B：你的書在桌子"
           },
           {
             "type": "blank",
             "id": "g4-q1-blank",
-            "answer": "你的書在桌子上面",
-            "hint": "The table is the anchor word. The book is on top of it."
+            "answer": "上面",
+            "hint": "Use 上面 because the book is on the table."
           },
           {
             "type": "text",
@@ -2775,25 +2613,26 @@
         "tiles": [
           {
             "id": "g4-q1-correct",
-            "traditional": "你的書在桌子上面",
-            "pinyin": "nǐ de shū zài zhuōzi shàngmiàn",
-            "meaning": "your book is on the table"
+            "traditional": "上面",
+            "pinyin": "shàngmiàn",
+            "meaning": "on top"
           },
           {
             "id": "g4-q1-d1",
-            "traditional": "你的書在桌子下面",
-            "pinyin": "nǐ de shū zài zhuōzi xiàmiàn",
-            "meaning": "your book is under the table"
+            "traditional": "下面",
+            "pinyin": "xiàmiàn",
+            "meaning": "under"
           },
           {
             "id": "g4-q1-d2",
-            "traditional": "你的書在上面桌子",
-            "pinyin": "nǐ de shū zài shàngmiàn zhuōzi",
-            "meaning": "direction before anchor"
+            "traditional": "旁邊",
+            "pinyin": "pángbiān",
+            "meaning": "beside"
           }
         ],
-        "correctFeedback": "桌子 + 上面 matches the picture.",
-        "repairFeedback": "Name the anchor before the direction: 桌子上面."
+        "correctFeedback": "Use 上面 because the book is on the table.",
+        "repairFeedback": "Use 上面 because the book is on the table.",
+        "source": "p.125 #1"
       },
       {
         "id": "g4-q2",
@@ -2801,13 +2640,13 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：弟弟在哪裡？ B："
+            "traditional": "A：弟弟在哪裡？ B：弟弟在哥哥"
           },
           {
             "type": "blank",
             "id": "g4-q2-blank",
-            "answer": "弟弟在哥哥旁邊",
-            "hint": "Use the older brother as the anchor."
+            "answer": "旁邊",
+            "hint": "Use 旁邊 because the brothers stand side by side."
           },
           {
             "type": "text",
@@ -2817,25 +2656,26 @@
         "tiles": [
           {
             "id": "g4-q2-correct",
-            "traditional": "弟弟在哥哥旁邊",
-            "pinyin": "dìdi zài gēge pángbiān",
-            "meaning": "the younger brother is beside the older brother"
+            "traditional": "旁邊",
+            "pinyin": "pángbiān",
+            "meaning": "beside"
           },
           {
             "id": "g4-q2-d1",
-            "traditional": "弟弟在哥哥後面",
-            "pinyin": "dìdi zài gēge hòumiàn",
-            "meaning": "the younger brother is behind the older brother"
+            "traditional": "後面",
+            "pinyin": "hòumiàn",
+            "meaning": "behind"
           },
           {
             "id": "g4-q2-d2",
-            "traditional": "弟弟在旁邊哥哥",
-            "pinyin": "dìdi zài pángbiān gēge",
-            "meaning": "direction before anchor"
+            "traditional": "前面",
+            "pinyin": "qiánmiàn",
+            "meaning": "in front"
           }
         ],
-        "correctFeedback": "哥哥旁邊 describes the side-by-side picture.",
-        "repairFeedback": "Keep 哥哥 before 旁邊."
+        "correctFeedback": "Use 旁邊 because the brothers stand side by side.",
+        "repairFeedback": "Use 旁邊 because the brothers stand side by side.",
+        "source": "p.125 #2"
       },
       {
         "id": "g4-q3",
@@ -2843,41 +2683,36 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：她在哪裡看書？ B："
+            "traditional": "A：她在哪裡看書？ B：她在房間"
           },
           {
             "type": "blank",
             "id": "g4-q3-blank",
-            "answer": "她在房間裡面看書",
-            "hint": "Put the room place before 看書."
+            "answer": "裡面",
+            "hint": "Use 裡面 because she reads inside the room."
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "看書。"
           }
         ],
         "tiles": [
           {
             "id": "g4-q3-correct",
-            "traditional": "她在房間裡面看書",
-            "pinyin": "tā zài fángjiān lǐmiàn kànshū",
-            "meaning": "she reads inside the room"
+            "traditional": "裡面",
+            "pinyin": "lǐmiàn",
+            "meaning": "inside"
           },
           {
             "id": "g4-q3-d1",
-            "traditional": "她看書在房間裡面",
-            "pinyin": "tā kànshū zài fángjiān lǐmiàn",
-            "meaning": "English-like order"
-          },
-          {
-            "id": "g4-q3-d2",
-            "traditional": "她在房間外面看書",
-            "pinyin": "tā zài fángjiān wàimiàn kànshū",
-            "meaning": "she reads outside the room"
+            "traditional": "外面",
+            "pinyin": "wàimiàn",
+            "meaning": "outside"
           }
         ],
-        "correctFeedback": "房間裡面 is one place. It comes before 看書.",
-        "repairFeedback": "Build 在 + 房間裡面 first, then add the action."
+        "correctFeedback": "Use 裡面 because she reads inside the room.",
+        "repairFeedback": "Use 裡面 because she reads inside the room.",
+        "source": "p.125 #3"
       },
       {
         "id": "g4-q4",
@@ -2885,13 +2720,13 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：小明在圖書館裡面做什麼？ B："
+            "traditional": "A：小明在圖書館裡面做什麼？ B：他在圖書館裡面"
           },
           {
             "type": "blank",
             "id": "g4-q4-blank",
-            "answer": "他在圖書館裡面睡覺",
-            "hint": "The picture shows Xiaoming asleep in the library."
+            "answer": "睡覺",
+            "hint": "Choose 睡覺 because Xiaoming is asleep in the picture."
           },
           {
             "type": "text",
@@ -2901,25 +2736,20 @@
         "tiles": [
           {
             "id": "g4-q4-correct",
-            "traditional": "他在圖書館裡面睡覺",
-            "pinyin": "tā zài túshūguǎn lǐmiàn shuìjiào",
-            "meaning": "he sleeps inside the library"
+            "traditional": "睡覺",
+            "pinyin": "shuìjiào",
+            "meaning": "sleep"
           },
           {
             "id": "g4-q4-d1",
-            "traditional": "他在圖書館裡面看書",
-            "pinyin": "tā zài túshūguǎn lǐmiàn kànshū",
-            "meaning": "he reads inside the library"
-          },
-          {
-            "id": "g4-q4-d2",
-            "traditional": "他睡覺在圖書館裡面",
-            "pinyin": "tā shuìjiào zài túshūguǎn lǐmiàn",
-            "meaning": "English-like order"
+            "traditional": "看書",
+            "pinyin": "kànshū",
+            "meaning": "read"
           }
         ],
-        "correctFeedback": "The picture shows 睡覺. The question gives the place.",
-        "repairFeedback": "Keep 在圖書館裡面 before 睡覺."
+        "correctFeedback": "Choose 睡覺 because Xiaoming is asleep in the picture.",
+        "repairFeedback": "Choose 睡覺 because Xiaoming is asleep in the picture.",
+        "source": "p.125 #4"
       }
     ],
     "subsections": [
@@ -3188,7 +3018,7 @@
           125
         ],
         "audioReference": "05-2-3",
-        "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
+        "explanation": "“Noun + Directional Word” is used to denote the direction and the location of a place, as in 桌子上面 or 學校旁邊.",
         "focusTerms": [
           "上面",
           "下面",
@@ -3851,160 +3681,74 @@
         ],
         "patternAccentColumn": 2,
         "discoveryLab": {
-          "title": "Change the direction word",
-          "description": "Keep the same anchor word. Change the direction word to move the thing.",
-          "prompt": "Where is the book?",
+          "title": "Explore this pattern",
+          "description": "Put a direction word after a noun to describe a location, as in 桌子上面 or 學校旁邊.",
+          "prompt": "Compare the book sentences.",
           "choices": [
             {
-              "id": "g4-top",
-              "label": "On",
-              "traditional": "書在桌子上面。",
-              "simplified": "书在桌子上面。",
-              "pinyin": "Shū zài zhuōzi shàngmiàn.",
-              "english": "The book is on the table.",
-              "note": "桌子 is the anchor word; 上面 is the direction word."
+              "id": "g4-book-1",
+              "label": "Book sentence 1",
+              "traditional": "你的書在桌子上面。",
+              "simplified": "你的书在桌子上面。",
+              "pinyin": "Nǐ de shū zài zhuōzi shàngmiàn.",
+              "english": "Your book is on the table.",
+              "note": "Compare the word order with the pattern table."
             },
             {
-              "id": "g4-under",
-              "label": "Under",
-              "traditional": "書在桌子下面。",
-              "simplified": "书在桌子下面。",
-              "pinyin": "Shū zài zhuōzi xiàmiàn.",
-              "english": "The book is under the table.",
-              "note": "Change the direction word, and the book moves under the table."
-            },
-            {
-              "id": "g4-beside",
-              "label": "Beside",
-              "traditional": "書在桌子旁邊。",
-              "simplified": "书在桌子旁边。",
-              "pinyin": "Shū zài zhuōzi pángbiān.",
-              "english": "The book is beside the table.",
-              "note": "旁邊 means next to the anchor word."
-            },
-            {
-              "id": "g4-repair",
-              "label": "Repair order",
-              "traditional": "書在上面桌子 → 書在桌子上面",
-              "simplified": "书在上面桌子 → 书在桌子上面",
-              "pinyin": "Shū zài shàngmiàn zhuōzi → Shū zài zhuōzi shàngmiàn",
-              "english": "The book is on the table.",
-              "note": "The anchor word must come before its direction word.",
-              "isCorrection": true
+              "id": "g4-book-2",
+              "label": "Book sentence 2",
+              "traditional": "那家餐廳不在學校旁邊。",
+              "simplified": "那家餐厅不在学校旁边。",
+              "pinyin": "Nà jiā cāntīng bú zài xuéxiào pángbiān.",
+              "english": "That restaurant is not next to the school.",
+              "note": "Compare the word order with the pattern table."
             }
           ],
-          "takeaway": "Thing + 在 + anchor + direction. Keep the anchor and its direction word together."
-        },
-        "contrast": {
-          "title": "A place alone, or a place plus an action?",
-          "description": "The same anchor + direction words can end a sentence or come before an action.",
-          "items": [
-            {
-              "id": "g4-c1",
-              "label": "Location",
-              "traditional": "筆在椅子下面。",
-              "simplified": "笔在椅子下面。",
-              "pinyin": "Bǐ zài yǐzi xiàmiàn.",
-              "english": "The pen is under the chair.",
-              "note": "The sentence ends after the place.",
-              "particle": {
-                "id": "g4-c1-p",
-                "traditional": "在"
-              }
-            },
-            {
-              "id": "g4-c2",
-              "label": "Action stage",
-              "traditional": "他在房間裡面睡覺。",
-              "simplified": "他在房间里面睡觉。",
-              "pinyin": "Tā zài fángjiān lǐmiàn shuìjiào.",
-              "english": "He sleeps in the room.",
-              "note": "The place comes before the action 睡覺.",
-              "particle": {
-                "id": "g4-c2-p",
-                "traditional": "在"
-              }
-            }
-          ]
+          "takeaway": "Put a direction word after a noun to describe a location, as in 桌子上面 or 學校旁邊."
         },
         "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
             {
-              "id": "g4-confusion-anchor-word",
-              "question": "Can I just say 書在上面 to mean “on the table”?",
-              "answer": "No. 上面 needs an anchor word. Name the thing first: 桌子上面.",
-              "wrongTraditional": "書在上面。",
-              "wrongSimplified": "书在上面。",
-              "right": {
-                "traditional": "書在桌子上面。",
-                "simplified": "书在桌子上面。",
-                "pinyin": "Shū zài zhuōzi shàngmiàn.",
-                "english": "The book is on the table.",
-                "words": [
-                  {
-                    "id": "b1l05-g4-confusion-1-word-1",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū",
-                    "meaning": "book"
-                  },
-                  {
-                    "id": "b1l05-g4-confusion-1-word-2",
-                    "traditional": "在",
-                    "pinyin": "zài",
-                    "meaning": "be located; at"
-                  },
-                  {
-                    "id": "b1l05-g4-confusion-1-word-3",
-                    "traditional": "桌子",
-                    "pinyin": "zhuōzi",
-                    "meaning": "table"
-                  },
-                  {
-                    "id": "b1l05-g4-confusion-1-word-4",
-                    "traditional": "上面",
-                    "pinyin": "shàngmiàn",
-                    "meaning": "on; above",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
               "id": "g4-confusion-direction-order",
               "question": "Do I say 在下面椅子 or 在椅子下面?",
               "answer": "Anchor word first, direction second: 椅子下面.",
-              "wrongTraditional": "筆在下面椅子。",
-              "wrongSimplified": "笔在下面椅子。",
+              "wrongTraditional": "你的筆在下面椅子。",
+              "wrongSimplified": "你的笔在下面椅子。",
               "right": {
-                "traditional": "筆在椅子下面。",
-                "simplified": "笔在椅子下面。",
-                "pinyin": "Bǐ zài yǐzi xiàmiàn.",
-                "english": "The pen is under the chair.",
+                "traditional": "你的筆在椅子下面。",
+                "simplified": "你的笔在椅子下面。",
+                "pinyin": "Nǐ de bǐ zài yǐzi xiàmiàn.",
+                "english": "Your pen is under the chair.",
                 "words": [
                   {
-                    "id": "b1l05-g4-confusion-2-word-1",
+                    "id": "g4-confusion-direction-order-word-1",
+                    "traditional": "你的",
+                    "pinyin": "nǐ de",
+                    "meaning": "your"
+                  },
+                  {
+                    "id": "g4-confusion-direction-order-word-2",
                     "traditional": "筆",
                     "simplified": "笔",
                     "pinyin": "bǐ",
                     "meaning": "pen"
                   },
                   {
-                    "id": "b1l05-g4-confusion-2-word-2",
+                    "id": "g4-confusion-direction-order-word-3",
                     "traditional": "在",
                     "pinyin": "zài",
                     "meaning": "be located; at"
                   },
                   {
-                    "id": "b1l05-g4-confusion-2-word-3",
+                    "id": "g4-confusion-direction-order-word-4",
                     "traditional": "椅子",
                     "pinyin": "yǐzi",
                     "meaning": "chair"
                   },
                   {
-                    "id": "b1l05-g4-confusion-2-word-4",
+                    "id": "g4-confusion-direction-order-word-5",
                     "traditional": "下面",
                     "pinyin": "xiàmiàn",
                     "meaning": "under; below",
@@ -4026,26 +3770,26 @@
                 "english": "My older brother is inside the room.",
                 "words": [
                   {
-                    "id": "b1l05-g4-confusion-3-word-1",
+                    "id": "g4-confusion-shang-vs-li-word-1",
                     "traditional": "哥哥",
                     "pinyin": "gēge",
                     "meaning": "older brother"
                   },
                   {
-                    "id": "b1l05-g4-confusion-3-word-2",
+                    "id": "g4-confusion-shang-vs-li-word-2",
                     "traditional": "在",
                     "pinyin": "zài",
                     "meaning": "be located; at"
                   },
                   {
-                    "id": "b1l05-g4-confusion-3-word-3",
+                    "id": "g4-confusion-shang-vs-li-word-3",
                     "traditional": "房間",
                     "simplified": "房间",
                     "pinyin": "fángjiān",
                     "meaning": "room"
                   },
                   {
-                    "id": "b1l05-g4-confusion-3-word-4",
+                    "id": "g4-confusion-shang-vs-li-word-4",
                     "traditional": "裡面",
                     "simplified": "里面",
                     "pinyin": "lǐmiàn",
@@ -4390,13 +4134,20 @@
                 },
                 {
                   "id": "b1l05-g4-e4-word-3",
-                  "traditional": "房間裡",
-                  "simplified": "房间里",
-                  "pinyin": "fángjiān lǐ",
-                  "meaning": "inside the room"
+                  "traditional": "房間",
+                  "simplified": "房间",
+                  "pinyin": "fángjiān",
+                  "meaning": "room"
                 },
                 {
                   "id": "b1l05-g4-e4-word-4",
+                  "traditional": "裡",
+                  "simplified": "里",
+                  "pinyin": "lǐ",
+                  "meaning": "inside"
+                },
+                {
+                  "id": "b1l05-g4-e4-word-5",
                   "traditional": "睡覺",
                   "simplified": "睡觉",
                   "pinyin": "shuìjiào",
@@ -4490,10 +4241,10 @@
             "teachingNote": null
           }
         ],
-        "exerciseTitle": "Build the location",
-        "exercisePreview": "Find the anchor word, then choose its direction.",
-        "exerciseInstruction": "Answer all four pictures. Use the anchor word plus its direction word.",
-        "exerciseNote": "The pictures on printed page 125 give these answers.",
+        "exerciseTitle": "Answer the questions with directional words.",
+        "exercisePreview": "Choose the missing word in each dialogue or sentence.",
+        "exerciseInstruction": "Answer the questions with directional words.",
+        "exerciseNote": "The book leaves the answers open; these are sample completions.",
         "exerciseCues": [
           {
             "id": "g4-cue1",
@@ -4527,13 +4278,13 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：我的書在哪裡？ B："
+                "traditional": "A：我的書在哪裡？ B：你的書在桌子"
               },
               {
                 "type": "blank",
                 "id": "g4-q1-blank",
-                "answer": "你的書在桌子上面",
-                "hint": "The table is the anchor word. The book is on top of it."
+                "answer": "上面",
+                "hint": "Use 上面 because the book is on the table."
               },
               {
                 "type": "text",
@@ -4543,25 +4294,26 @@
             "tiles": [
               {
                 "id": "g4-q1-correct",
-                "traditional": "你的書在桌子上面",
-                "pinyin": "nǐ de shū zài zhuōzi shàngmiàn",
-                "meaning": "your book is on the table"
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on top"
               },
               {
                 "id": "g4-q1-d1",
-                "traditional": "你的書在桌子下面",
-                "pinyin": "nǐ de shū zài zhuōzi xiàmiàn",
-                "meaning": "your book is under the table"
+                "traditional": "下面",
+                "pinyin": "xiàmiàn",
+                "meaning": "under"
               },
               {
                 "id": "g4-q1-d2",
-                "traditional": "你的書在上面桌子",
-                "pinyin": "nǐ de shū zài shàngmiàn zhuōzi",
-                "meaning": "direction before anchor"
+                "traditional": "旁邊",
+                "pinyin": "pángbiān",
+                "meaning": "beside"
               }
             ],
-            "correctFeedback": "桌子 + 上面 matches the picture.",
-            "repairFeedback": "Name the anchor before the direction: 桌子上面."
+            "correctFeedback": "Use 上面 because the book is on the table.",
+            "repairFeedback": "Use 上面 because the book is on the table.",
+            "source": "p.125 #1"
           },
           {
             "id": "g4-q2",
@@ -4569,13 +4321,13 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：弟弟在哪裡？ B："
+                "traditional": "A：弟弟在哪裡？ B：弟弟在哥哥"
               },
               {
                 "type": "blank",
                 "id": "g4-q2-blank",
-                "answer": "弟弟在哥哥旁邊",
-                "hint": "Use the older brother as the anchor."
+                "answer": "旁邊",
+                "hint": "Use 旁邊 because the brothers stand side by side."
               },
               {
                 "type": "text",
@@ -4585,25 +4337,26 @@
             "tiles": [
               {
                 "id": "g4-q2-correct",
-                "traditional": "弟弟在哥哥旁邊",
-                "pinyin": "dìdi zài gēge pángbiān",
-                "meaning": "the younger brother is beside the older brother"
+                "traditional": "旁邊",
+                "pinyin": "pángbiān",
+                "meaning": "beside"
               },
               {
                 "id": "g4-q2-d1",
-                "traditional": "弟弟在哥哥後面",
-                "pinyin": "dìdi zài gēge hòumiàn",
-                "meaning": "the younger brother is behind the older brother"
+                "traditional": "後面",
+                "pinyin": "hòumiàn",
+                "meaning": "behind"
               },
               {
                 "id": "g4-q2-d2",
-                "traditional": "弟弟在旁邊哥哥",
-                "pinyin": "dìdi zài pángbiān gēge",
-                "meaning": "direction before anchor"
+                "traditional": "前面",
+                "pinyin": "qiánmiàn",
+                "meaning": "in front"
               }
             ],
-            "correctFeedback": "哥哥旁邊 describes the side-by-side picture.",
-            "repairFeedback": "Keep 哥哥 before 旁邊."
+            "correctFeedback": "Use 旁邊 because the brothers stand side by side.",
+            "repairFeedback": "Use 旁邊 because the brothers stand side by side.",
+            "source": "p.125 #2"
           },
           {
             "id": "g4-q3",
@@ -4611,41 +4364,36 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：她在哪裡看書？ B："
+                "traditional": "A：她在哪裡看書？ B：她在房間"
               },
               {
                 "type": "blank",
                 "id": "g4-q3-blank",
-                "answer": "她在房間裡面看書",
-                "hint": "Put the room place before 看書."
+                "answer": "裡面",
+                "hint": "Use 裡面 because she reads inside the room."
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "看書。"
               }
             ],
             "tiles": [
               {
                 "id": "g4-q3-correct",
-                "traditional": "她在房間裡面看書",
-                "pinyin": "tā zài fángjiān lǐmiàn kànshū",
-                "meaning": "she reads inside the room"
+                "traditional": "裡面",
+                "pinyin": "lǐmiàn",
+                "meaning": "inside"
               },
               {
                 "id": "g4-q3-d1",
-                "traditional": "她看書在房間裡面",
-                "pinyin": "tā kànshū zài fángjiān lǐmiàn",
-                "meaning": "English-like order"
-              },
-              {
-                "id": "g4-q3-d2",
-                "traditional": "她在房間外面看書",
-                "pinyin": "tā zài fángjiān wàimiàn kànshū",
-                "meaning": "she reads outside the room"
+                "traditional": "外面",
+                "pinyin": "wàimiàn",
+                "meaning": "outside"
               }
             ],
-            "correctFeedback": "房間裡面 is one place. It comes before 看書.",
-            "repairFeedback": "Build 在 + 房間裡面 first, then add the action."
+            "correctFeedback": "Use 裡面 because she reads inside the room.",
+            "repairFeedback": "Use 裡面 because she reads inside the room.",
+            "source": "p.125 #3"
           },
           {
             "id": "g4-q4",
@@ -4653,13 +4401,13 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：小明在圖書館裡面做什麼？ B："
+                "traditional": "A：小明在圖書館裡面做什麼？ B：他在圖書館裡面"
               },
               {
                 "type": "blank",
                 "id": "g4-q4-blank",
-                "answer": "他在圖書館裡面睡覺",
-                "hint": "The picture shows Xiaoming asleep in the library."
+                "answer": "睡覺",
+                "hint": "Choose 睡覺 because Xiaoming is asleep in the picture."
               },
               {
                 "type": "text",
@@ -4669,25 +4417,20 @@
             "tiles": [
               {
                 "id": "g4-q4-correct",
-                "traditional": "他在圖書館裡面睡覺",
-                "pinyin": "tā zài túshūguǎn lǐmiàn shuìjiào",
-                "meaning": "he sleeps inside the library"
+                "traditional": "睡覺",
+                "pinyin": "shuìjiào",
+                "meaning": "sleep"
               },
               {
                 "id": "g4-q4-d1",
-                "traditional": "他在圖書館裡面看書",
-                "pinyin": "tā zài túshūguǎn lǐmiàn kànshū",
-                "meaning": "he reads inside the library"
-              },
-              {
-                "id": "g4-q4-d2",
-                "traditional": "他睡覺在圖書館裡面",
-                "pinyin": "tā shuìjiào zài túshūguǎn lǐmiàn",
-                "meaning": "English-like order"
+                "traditional": "看書",
+                "pinyin": "kànshū",
+                "meaning": "read"
               }
             ],
-            "correctFeedback": "The picture shows 睡覺. The question gives the place.",
-            "repairFeedback": "Keep 在圖書館裡面 before 睡覺."
+            "correctFeedback": "Choose 睡覺 because Xiaoming is asleep in the picture.",
+            "repairFeedback": "Choose 睡覺 because Xiaoming is asleep in the picture.",
+            "source": "p.125 #4"
           }
         ],
         "subsections": [
@@ -4952,8 +4695,7 @@
         "focusTerms": [
           "有",
           "沒有",
-          "没有",
-          "不有"
+          "没有"
         ],
         "teachingGlossary": [
           {
@@ -5606,72 +5348,39 @@
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
-          "title": "Change what the place contains",
-          "description": "Start with the place, then report whether something is there.",
-          "prompt": "What is in the place?",
+          "title": "Explore this pattern",
+          "description": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
+          "prompt": "Compare the book sentences.",
           "choices": [
             {
-              "id": "g5-found",
-              "label": "Found",
-              "traditional": "桌子上面有一本書。",
-              "simplified": "桌子上面有一本书。",
-              "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
-              "english": "There is a book on the table.",
-              "note": "Place first. 有 says the thing is there."
+              "id": "g5-book-1",
+              "label": "Book sentence 1",
+              "traditional": "台灣有很多好吃的東西。",
+              "simplified": "台湾有很多好吃的东西。",
+              "pinyin": "Táiwān yǒu hěn duō hǎochī de dōngxi.",
+              "english": "There is a lot of delicious food in Taiwan.",
+              "note": "The place comes before 有 or 沒有."
             },
             {
-              "id": "g5-empty",
-              "label": "Not found",
-              "traditional": "桌子上面沒有書。",
-              "simplified": "桌子上面没有书。",
-              "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
-              "english": "There is no book on the table.",
-              "note": "沒有 is how you say “there is not”."
+              "id": "g5-book-2",
+              "label": "Book sentence 2",
+              "traditional": "圖書館旁邊沒有咖啡廳。",
+              "simplified": "图书馆旁边没有咖啡厅。",
+              "pinyin": "Túshūguǎn pángbiān méiyǒu kāfēitīng.",
+              "english": "There is no café next to the library.",
+              "note": "The place comes before 有 or 沒有."
             },
             {
-              "id": "g5-repair",
-              "label": "Repair negative",
-              "traditional": "桌子上面不有書 → 桌子上面沒有書",
-              "simplified": "桌子上面不有书 → 桌子上面没有书",
-              "pinyin": "Zhuōzi shàngmiàn bù yǒu shū → Zhuōzi shàngmiàn méiyǒu shū",
-              "english": "There is no book on the table.",
-              "note": "Use 沒 with 有. Never use 不.",
-              "isCorrection": true
+              "id": "g5-book-3",
+              "label": "Book sentence 3",
+              "traditional": "桌子上面有很多東西。",
+              "simplified": "桌子上面有很多东西。",
+              "pinyin": "Zhuōzi shàngmiàn yǒu hěn duō dōngxi.",
+              "english": "There are a lot of things on the table.",
+              "note": "The place comes before 有 or 沒有."
             }
           ],
-          "takeaway": "Place first. Use 有 when something is there; use 沒有 when it is not."
-        },
-        "contrast": {
-          "title": "在 says where. 有 says what is there.",
-          "description": "Pick the form by what the listener already knows.",
-          "items": [
-            {
-              "id": "g5-c1",
-              "label": "Find a known thing",
-              "traditional": "書在桌子上面。",
-              "simplified": "书在桌子上面。",
-              "pinyin": "Shū zài zhuōzi shàngmiàn.",
-              "english": "The book is on the table.",
-              "note": "Start with the known book and say where it is.",
-              "particle": {
-                "id": "g5-c1-p",
-                "traditional": "在"
-              }
-            },
-            {
-              "id": "g5-c2",
-              "label": "List what is in a place",
-              "traditional": "桌子上面有一本書。",
-              "simplified": "桌子上面有一本书。",
-              "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
-              "english": "There is a book on the table.",
-              "note": "Start with the place and say what is there.",
-              "particle": {
-                "id": "g5-c2-p",
-                "traditional": "有"
-              }
-            }
-          ]
+          "takeaway": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there."
         },
         "patternRows": [
           {
@@ -5703,7 +5412,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "There is lots of delicious food in Taiwan."
+            "english": "There is a lot of delicious food in Taiwan."
           },
           {
             "id": "g5-p2",
@@ -5742,7 +5451,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "There is no café beside the library."
+            "english": "There is no café next to the library."
           },
           {
             "id": "g5-p3",
@@ -5784,48 +5493,54 @@
                 "suffix": "。"
               }
             ],
-            "english": "There are many things on the table."
+            "english": "There are a lot of things on the table."
           }
         ],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
             {
-              "id": "g5-confusion-shi-vs-you",
-              "question": "There is a book on the table. 是 or 有?",
-              "answer": "有. It introduces what is in a place. 是 says what something is.",
-              "wrongTraditional": "桌子上是一本書。",
-              "wrongSimplified": "桌子上是一本书。",
+              "id": "g5-confusion-place-first",
+              "question": "What comes first when I say what is on the table?",
+              "answer": "Start with the place, then 有, then the things.",
+              "wrongTraditional": "很多東西有桌子上面。",
+              "wrongSimplified": "很多东西有桌子上面。",
               "right": {
-                "traditional": "桌子上面有一本書。",
-                "simplified": "桌子上面有一本书。",
-                "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
-                "english": "There is a book on the table.",
+                "traditional": "桌子上面有很多東西。",
+                "simplified": "桌子上面有很多东西。",
+                "pinyin": "zhuōzi shàngmiàn yǒu hěn duō dōngxi.",
+                "english": "There are a lot of things on the table.",
                 "words": [
                   {
-                    "id": "b1l05-g5-confusion-1-word-1",
+                    "id": "g5-confusion-place-first-word-1",
                     "traditional": "桌子",
                     "pinyin": "zhuōzi",
                     "meaning": "table"
                   },
                   {
-                    "id": "b1l05-g5-confusion-1-word-2",
+                    "id": "g5-confusion-place-first-word-2",
                     "traditional": "上面",
                     "pinyin": "shàngmiàn",
                     "meaning": "on; above"
                   },
                   {
-                    "id": "b1l05-g5-confusion-1-word-3",
+                    "id": "g5-confusion-place-first-word-3",
                     "traditional": "有",
                     "pinyin": "yǒu",
                     "meaning": "there is; there are"
                   },
                   {
-                    "id": "b1l05-g5-confusion-1-word-4",
-                    "traditional": "一本書",
-                    "simplified": "一本书",
-                    "pinyin": "yì běn shū",
-                    "meaning": "one book",
+                    "id": "g5-confusion-place-first-word-4",
+                    "traditional": "很多",
+                    "pinyin": "hěn duō",
+                    "meaning": "many; a lot"
+                  },
+                  {
+                    "id": "g5-confusion-place-first-word-5",
+                    "traditional": "東西",
+                    "simplified": "东西",
+                    "pinyin": "dōngxi",
+                    "meaning": "thing; things",
                     "suffix": "。"
                   }
                 ]
@@ -5833,82 +5548,43 @@
             },
             {
               "id": "g5-confusion-bu-you",
-              "question": "How do I say “there is no book”? Is it 不有?",
-              "answer": "No. 有 takes 沒, never 不: 沒有.",
-              "wrongTraditional": "桌子上面不有書。",
-              "wrongSimplified": "桌子上面不有书。",
+              "question": "Do I negate 有 with 不 or 沒?",
+              "answer": "Use 沒 before 有: 沒有.",
+              "wrongTraditional": "圖書館旁邊不有咖啡廳。",
+              "wrongSimplified": "图书馆旁边不有咖啡厅。",
               "right": {
-                "traditional": "桌子上面沒有書。",
-                "simplified": "桌子上面没有书。",
-                "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
-                "english": "There is no book on the table.",
+                "traditional": "圖書館旁邊沒有咖啡廳。",
+                "simplified": "图书馆旁边没有咖啡厅。",
+                "pinyin": "túshūguǎn pángbiān méiyǒu kāfēitīng.",
+                "english": "There is no café next to the library.",
                 "words": [
                   {
-                    "id": "b1l05-g5-confusion-2-word-1",
-                    "traditional": "桌子",
-                    "pinyin": "zhuōzi",
-                    "meaning": "table"
+                    "id": "g5-confusion-bu-you-word-1",
+                    "traditional": "圖書館",
+                    "simplified": "图书馆",
+                    "pinyin": "túshūguǎn",
+                    "meaning": "library"
                   },
                   {
-                    "id": "b1l05-g5-confusion-2-word-2",
-                    "traditional": "上面",
-                    "pinyin": "shàngmiàn",
-                    "meaning": "on; above"
+                    "id": "g5-confusion-bu-you-word-2",
+                    "traditional": "旁邊",
+                    "simplified": "旁边",
+                    "pinyin": "pángbiān",
+                    "meaning": "beside; next to"
                   },
                   {
-                    "id": "b1l05-g5-confusion-2-word-3",
+                    "id": "g5-confusion-bu-you-word-3",
                     "traditional": "沒有",
                     "simplified": "没有",
                     "pinyin": "méiyǒu",
                     "meaning": "there is not; there are not"
                   },
                   {
-                    "id": "b1l05-g5-confusion-2-word-4",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū",
-                    "meaning": "book",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g5-confusion-zai-vs-you",
-              "question": "The book is already known. Do I say 桌子上面有書 or 書在桌子上面?",
-              "answer": "書在桌子上面 — start with the known thing and use 在. 有 introduces something new.",
-              "wrongTraditional": "桌子上面有書。",
-              "wrongSimplified": "桌子上面有书。",
-              "right": {
-                "traditional": "書在桌子上面。",
-                "simplified": "书在桌子上面。",
-                "pinyin": "Shū zài zhuōzi shàngmiàn.",
-                "english": "The book is on the table.",
-                "words": [
-                  {
-                    "id": "b1l05-g5-confusion-3-word-1",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū",
-                    "meaning": "book"
-                  },
-                  {
-                    "id": "b1l05-g5-confusion-3-word-2",
-                    "traditional": "在",
-                    "pinyin": "zài",
-                    "meaning": "be located; at"
-                  },
-                  {
-                    "id": "b1l05-g5-confusion-3-word-3",
-                    "traditional": "桌子",
-                    "pinyin": "zhuōzi",
-                    "meaning": "table"
-                  },
-                  {
-                    "id": "b1l05-g5-confusion-3-word-4",
-                    "traditional": "上面",
-                    "pinyin": "shàngmiàn",
-                    "meaning": "on; above",
+                    "id": "g5-confusion-bu-you-word-4",
+                    "traditional": "咖啡廳",
+                    "simplified": "咖啡厅",
+                    "pinyin": "kāfēitīng",
+                    "meaning": "café",
                     "suffix": "。"
                   }
                 ]
@@ -6204,11 +5880,10 @@
             }
           }
         ],
-        "exerciseTitle": "Describe each place",
-        "exercisePreview": "Name the place first, then say what is there.",
-        "exerciseInstruction": "Answer each open book prompt with place + 有／沒有 + item.",
-        "exerciseNote": "The book prints no answers. These sample answers use Lesson 5 words.",
-        "exerciseResponseMode": "text",
+        "exerciseTitle": "Answer the following questions.",
+        "exercisePreview": "Choose the missing word in each sample answer.",
+        "exerciseInstruction": "Answer the following questions.",
+        "exerciseNote": "The book leaves the answers open; these are sample completions.",
         "questions": [
           {
             "id": "g5-q1",
@@ -6216,41 +5891,36 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：我們學校有多少學生？ B："
+                "traditional": "A：我們學校有多少學生？ B：我們學校"
               },
               {
                 "type": "blank",
                 "id": "g5-q1-blank",
-                "answer": "我們學校有一千個學生",
-                "hint": "Give a simple number after 有."
+                "answer": "有",
+                "hint": "Use 有 between the school and the number of students."
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "一千個學生。"
               }
             ],
             "tiles": [
               {
                 "id": "g5-q1-correct",
-                "traditional": "我們學校有一千個學生",
-                "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuéshēng",
-                "meaning": "our school has one thousand students"
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "has; there are"
               },
               {
                 "id": "g5-q1-d1",
-                "traditional": "一千個學生有我們學校",
-                "pinyin": "yìqiān ge xuéshēng yǒu wǒmen xuéxiào",
-                "meaning": "reversed order"
-              },
-              {
-                "id": "g5-q1-d2",
-                "traditional": "我們學校在一千個學生",
-                "pinyin": "wǒmen xuéxiào zài yìqiān ge xuéshēng",
-                "meaning": "uses 在 instead of 有"
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "at; in"
               }
             ],
-            "correctFeedback": "The school comes first. 有 introduces the number.",
-            "repairFeedback": "Use place + 有 + quantity + noun."
+            "correctFeedback": "Use 有 between the school and the number of students.",
+            "repairFeedback": "Use 有 between the school and the number of students.",
+            "source": "p.126 #1"
           },
           {
             "id": "g5-q2",
@@ -6258,41 +5928,36 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你家旁邊有飲料店嗎？ B："
+                "traditional": "A：你家旁邊有飲料店嗎？ B：我家旁邊"
               },
               {
                 "type": "blank",
                 "id": "g5-q2-blank",
-                "answer": "我家旁邊沒有飲料店",
-                "hint": "Practice the correct “no” form of 有."
+                "answer": "沒",
+                "hint": "For this negative sample answer, use 沒 before 有."
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "有飲料店。"
               }
             ],
             "tiles": [
               {
                 "id": "g5-q2-correct",
-                "traditional": "我家旁邊沒有飲料店",
-                "pinyin": "wǒ jiā pángbiān méiyǒu yǐnliào diàn",
-                "meaning": "there is no drink shop beside my home"
+                "traditional": "沒",
+                "pinyin": "méi",
+                "meaning": "negative before 有"
               },
               {
                 "id": "g5-q2-d1",
-                "traditional": "我家旁邊不有飲料店",
-                "pinyin": "wǒ jiā pángbiān bù yǒu yǐnliào diàn",
-                "meaning": "incorrect negative"
-              },
-              {
-                "id": "g5-q2-d2",
-                "traditional": "飲料店不在我家旁邊",
-                "pinyin": "yǐnliào diàn bú zài wǒ jiā pángbiān",
-                "meaning": "the drink shop is not beside my home"
+                "traditional": "不",
+                "pinyin": "bù",
+                "meaning": "not"
               }
             ],
-            "correctFeedback": "沒有 says there is none.",
-            "repairFeedback": "Make 有 negative with 沒: 沒有. Never say 不有."
+            "correctFeedback": "For this negative sample answer, use 沒 before 有.",
+            "repairFeedback": "For this negative sample answer, use 沒 before 有.",
+            "source": "p.126 #2"
           },
           {
             "id": "g5-q3",
@@ -6300,41 +5965,36 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你的桌子上有什麼東西？ B："
+                "traditional": "A：你的桌子上有什麼東西？ B：我的桌子上"
               },
               {
                 "type": "blank",
                 "id": "g5-q3-blank",
-                "answer": "我的桌子上有一本書",
-                "hint": "Start with the place. Then name one thing."
+                "answer": "有",
+                "hint": "Use 有 after the place to say what is there."
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "一本書。"
               }
             ],
             "tiles": [
               {
                 "id": "g5-q3-correct",
-                "traditional": "我的桌子上有一本書",
-                "pinyin": "wǒ de zhuōzi shàng yǒu yì běn shū",
-                "meaning": "there is one book on my table"
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "there is"
               },
               {
                 "id": "g5-q3-d1",
-                "traditional": "一本書在我的桌子上",
-                "pinyin": "yì běn shū zài wǒ de zhuōzi shàng",
-                "meaning": "the book is on my table"
-              },
-              {
-                "id": "g5-q3-d2",
-                "traditional": "我的桌子上在一本書",
-                "pinyin": "wǒ de zhuōzi shàng zài yì běn shū",
-                "meaning": "uses 在 instead of 有"
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "at; in"
               }
             ],
-            "correctFeedback": "The question asks what is on the table. The place comes first, and 有 introduces the book.",
-            "repairFeedback": "Use 我的桌子上 + 有 + 一本書."
+            "correctFeedback": "Use 有 after the place to say what is there.",
+            "repairFeedback": "Use 有 after the place to say what is there.",
+            "source": "p.126 #3"
           }
         ]
       }

@@ -15,29 +15,61 @@ interface GrammarExamplesSectionProps {
   examples?: GrammarLessonExample[];
 }
 
-export function GrammarExamplesSection({
+type GrammarExampleItemProps = Omit<GrammarExamplesSectionProps, 'examples'> & {
+  example: GrammarLessonExample;
+  index: number;
+};
+
+/** One example: a quiet play icon in the gutter and the sentence. Also used under a pattern-table row. */
+export function GrammarExampleItem({
   page,
+  example,
+  index,
   characterPreference,
   showPinyin,
   showTranslation,
   onOpenWord,
   contextTokens,
+}: GrammarExampleItemProps) {
+  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
+  return (
+    <div className={'flex items-start gap-2 py-4 pl-3 pr-5 sm:pl-4 sm:pr-6'}>
+      <IconActionButton
+        onClick={() => audioService.speakText(
+          getGrammarText(example.text, characterPreference),
+          characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN',
+          0.9,
+        )}
+        size="sm"
+        variant="quiet"
+        icon={<AppIcon name="audio" size={22} />}
+        label={`Play example ${example.number ?? index + 1}`}
+        style={{ color: book.theme.primary }}
+        className="-mt-0.5 hover:brightness-90"
+      />
+      <div className="min-w-0 flex-1">
+        <GrammarExampleText
+          text={example.text}
+          characterPreference={characterPreference}
+          showPinyin={showPinyin}
+          showTranslation={showTranslation}
+          focusTerms={page.focusTerms}
+          contextTokens={contextTokens}
+          onOpenWord={onOpenWord}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function GrammarExamplesSection({
   examples,
+  ...itemProps
 }: GrammarExamplesSectionProps) {
+  const { page } = itemProps;
   const activeExamples = examples ?? page.examples;
 
-  const speakExample = (exampleIndex: number) => {
-    const example = activeExamples[exampleIndex];
-    return audioService.speakText(
-      getGrammarText(example.text, characterPreference),
-      characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN',
-      0.9,
-    );
-  };
-
   if (activeExamples.length === 0) return null;
-
-  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
 
   // A neutral sibling of the pattern table: same frame, depth and header band, in grey.
   return (
@@ -55,27 +87,8 @@ export function GrammarExamplesSection({
       {/* Same rhythm as the pattern table: full-width dividers, a quiet play icon in the gutter. */}
       <ul className="divide-y-2 divide-ui-divider">
         {activeExamples.map((example, index) => (
-          <li key={example.id} className="flex items-start gap-2 py-4 pl-3 pr-5 sm:pl-4 sm:pr-6">
-            <IconActionButton
-              onClick={() => speakExample(index)}
-              size="sm"
-              variant="quiet"
-              icon={<AppIcon name="audio" size={22} />}
-              label={`Play example ${example.number ?? index + 1}`}
-              style={{ color: book.theme.primary }}
-              className="-mt-0.5 hover:brightness-90"
-            />
-            <div className="min-w-0 flex-1">
-              <GrammarExampleText
-                text={example.text}
-                characterPreference={characterPreference}
-                showPinyin={showPinyin}
-                showTranslation={showTranslation}
-                focusTerms={page.focusTerms}
-                contextTokens={contextTokens}
-                onOpenWord={onOpenWord}
-              />
-            </div>
+          <li key={example.id}>
+            <GrammarExampleItem {...itemProps} example={example} index={index} />
           </li>
         ))}
       </ul>

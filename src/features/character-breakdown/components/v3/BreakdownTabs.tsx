@@ -28,7 +28,7 @@ export function BreakdownTabs<T extends string>({ tabs, active, onChange }: Brea
             aria-controls={`breakdown-panel-${tab.id}`}
             onClick={() => onChange(tab.id)}
             className={cn(
-              '-mb-0.5 flex min-w-0 flex-1 items-center justify-center gap-1.5 whitespace-nowrap border-b-[3px] px-1.5 pb-3 pt-3 text-[15px] font-black sm:text-base outline-none transition-colors focus-ring-inline',
+              '-mb-0.5 flex min-w-0 flex-auto items-center justify-center gap-1.5 whitespace-nowrap border-b-[3px] px-1 pb-3 pt-3 text-sm font-black sm:text-base outline-none transition-colors focus-ring-inline',
               isActive ? 'border-brand-primary text-ui-ink-strong' : 'border-transparent text-ui-muted hover:text-ui-muted-strong',
             )}
           >

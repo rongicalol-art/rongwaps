@@ -87,6 +87,8 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards'> {
   title: string;
   /** Wider column and larger title (choice list). */
   wide?: boolean;
+  /** Hold the current question while its recordings prepare; keep review chrome mounted. */
+  preparation?: React.ReactNode;
   status: 'idle' | 'correct' | 'wrong';
   correctAnswer: string;
   pinyin?: string;
@@ -117,7 +119,7 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards'> {
 
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
-  session, mode, title, wide, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
+  session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
   activeBookId, sessionKey, onEnd, onContinue, sessionStats,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
@@ -130,26 +132,27 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const quizFormat = useAppStore((state) => state.quizFormat);
   const [advanceAfterAudio, setAdvanceAfterAudio] = useState(false);
   const advance = useCallback(() => {
+    if (preparation) return;
     if (answerAudioPlaying) {
       setAdvanceAfterAudio(true);
       return;
     }
     setAdvanceAfterAudio(false);
     handleCheck();
-  }, [answerAudioPlaying, handleCheck]);
+  }, [answerAudioPlaying, handleCheck, preparation]);
   useEffect(() => {
     if (!advanceAfterAudio || answerAudioPlaying) return;
     setAdvanceAfterAudio(false);
     handleCheck();
   }, [advanceAfterAudio, answerAudioPlaying, handleCheck]);
 
-  const autoAdvance = status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !answerAudioPlaying && !advanceAfterAudio;
+  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !answerAudioPlaying && !advanceAfterAudio;
 
   usePracticeAnswerAutomation({
     status,
     onAdvance: advance,
     advanceWrong: false,
-    blocked: Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || answerAudioPlaying || advanceAfterAudio,
+    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || answerAudioPlaying || advanceAfterAudio,
   });
   const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
   const partSegments = useMemo(
@@ -235,7 +238,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     : activeCards, [activeCards, currentCard, introActive]);
   const riseKey = entrance ?? (rise ? 'first' : null);
   useLayoutEffect(() => {
-    if (!riseKey || risenFor.current === riseKey || !titleRef.current) return;
+    if (preparation || !riseKey || risenFor.current === riseKey || !titleRef.current) return;
     risenFor.current = riseKey;
     if (entrance && !landsReviewGhost && questionRef.current) {
       riseIn(questionRef.current, 220, 8, 260);
@@ -243,13 +246,19 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     }
     if (riseKey === 'first' && questionRef.current && landQuizLaunch(questionRef.current)) return;
     riseIn(titleRef.current, entrance ? 240 : 120, entrance ? 8 : 12, entrance ? 220 : 480);
-  }, [riseKey, hasCard, showContent, entrance, landsReviewGhost]);
+  }, [riseKey, hasCard, showContent, entrance, landsReviewGhost, preparation]);
 
   // The intro's ghost card is landed on the review's first question; modes without a landing fade it.
-  const reviewHandoff = landsReviewGhost && currentIndex === 0 ? entrance?.ghost ?? null : null;
+  const reviewHandoff = !preparation && landsReviewGhost && currentIndex === 0 ? entrance?.ghost ?? null : null;
   useEffect(() => {
     if (entrance?.ghost && !landsReviewGhost) fadeOutGhost(entrance.ghost.ghost);
   }, [entrance, landsReviewGhost]);
+  useEffect(() => {
+    if (preparation && entrance?.ghost) {
+      entrance.ghost.ghost.remove();
+      setEntrance({ ghost: null });
+    }
+  }, [preparation, entrance]);
   const entranceRef = useRef(entrance);
   entranceRef.current = entrance;
   useEffect(() => () => { entranceRef.current?.ghost?.ghost.remove(); }, []);
@@ -284,7 +293,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
 
   return (
     <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">
-      <div className={`flex-1 flex flex-col ${wide ? 'max-w-xl md:max-w-[640px]' : 'max-w-lg'} mx-auto w-full px-4 sm:px-6 pb-[260px] md:pb-[250px] lg:pb-[150px] overscroll-none overflow-y-auto`}>
+      {preparation && showContent ? preparation : <div className={`flex-1 flex flex-col ${wide ? 'max-w-xl md:max-w-[640px]' : 'max-w-lg'} mx-auto w-full px-4 sm:px-6 pb-[260px] md:pb-[250px] lg:pb-[150px] overscroll-none overflow-y-auto`}>
         {/* One exercise group: instruction aligned with the card, then the answers. */}
         {showContent && currentCard && (
           <div ref={questionRef} className="my-auto flex w-full flex-col items-center gap-5 pt-4">
@@ -300,7 +309,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
             </Fragment>
           </div>
         )}
-      </div>
+      </div>}
 
       {introActive && (
         <div className="absolute inset-x-0 bottom-0 top-[72px] z-30">
@@ -318,7 +327,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         </div>
       )}
 
-      <FeedbackBottomBar
+      {!preparation && <FeedbackBottomBar
         status={status}
         correctAnswer={correctAnswer}
         pinyin={pinyin}
@@ -333,7 +342,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         keyboardShortcutDisabled={Boolean(activeBreakdown)}
         onBreakdown={hideBreakdown ? undefined : () => openBreakdown(0)}
         activeBook={activeBook}
-      />
+      />}
 
       <CharacterBreakdownOverlay
         activeBreakdown={activeBreakdown}

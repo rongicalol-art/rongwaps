@@ -18,6 +18,7 @@ class FlashcardService {
 
   private cachedFlashcards: UserFlashcard[] | null = null;
   private currentUserId: string | null = null;
+  private accountGeneration = 0;
 
   constructor() {
     if (typeof document === "undefined") return;
@@ -36,17 +37,20 @@ class FlashcardService {
     }
   }
 
-  getCachedFlashcards(): UserFlashcard[] | null {
-    return this.cachedFlashcards;
+  getCachedFlashcards(userId: string): UserFlashcard[] | null {
+    return this.currentUserId === userId ? this.cachedFlashcards : null;
   }
 
   async refetchFlashcards(userId: string) {
+    if (this.currentUserId !== userId) return;
+    const generation = this.accountGeneration;
     const { data, error } = await supabase
       .from("user_flashcards")
       .select("*")
       .eq("user_id", userId)
       .order("created_at", { ascending: false });
 
+    if (generation !== this.accountGeneration) return;
     if (error) {
       // Graceful degradation: keep the previous list; the library surfaces
       // emptiness, so a failed refetch must leave a visible trace.
@@ -71,9 +75,10 @@ class FlashcardService {
   }
 
   async createFlashcard(card: UserFlashcard) {
+    const generation = this.accountGeneration;
     try {
       // Optimistic update
-      if (this.cachedFlashcards) {
+      if (this.currentUserId === card.userId && this.cachedFlashcards) {
         this.cachedFlashcards = [card, ...this.cachedFlashcards];
         this.notifyFlashcards();
       }
@@ -95,7 +100,7 @@ class FlashcardService {
 
       if (error) {
         // Rollback optimistic update
-        if (this.cachedFlashcards) {
+        if (generation === this.accountGeneration && this.currentUserId === card.userId && this.cachedFlashcards) {
           this.cachedFlashcards = this.cachedFlashcards.filter(
             (c) => c.id !== card.id,
           );
@@ -111,7 +116,7 @@ class FlashcardService {
 
   async updateFlashcardTranslation(userId: string, cardId: string, translation: string) {
     try {
-      if (this.cachedFlashcards) {
+      if (this.currentUserId === userId && this.cachedFlashcards) {
         this.cachedFlashcards = this.cachedFlashcards.map((c) =>
           c.id === cardId ? { ...c, translation } : c,
         );
@@ -132,7 +137,7 @@ class FlashcardService {
   async deleteFlashcard(userId: string, cardId: string) {
     try {
       // Optimistic update
-      if (this.cachedFlashcards) {
+      if (this.currentUserId === userId && this.cachedFlashcards) {
         this.cachedFlashcards = this.cachedFlashcards.filter(
           (c) => c.id !== cardId,
         );
@@ -159,7 +164,7 @@ class FlashcardService {
     if (cardIds.length === 0) return;
     const ids = new Set(cardIds);
     try {
-      if (this.cachedFlashcards) {
+      if (this.currentUserId === userId && this.cachedFlashcards) {
         this.cachedFlashcards = this.cachedFlashcards.map((c) => (ids.has(c.id) ? { ...c, folderId } : c));
         this.notifyFlashcards();
       }
@@ -181,21 +186,29 @@ class FlashcardService {
   }
 
   subscribeToUserFlashcards(userId: string, onUpdate: FlashcardListener) {
-    this.flashcardListeners.add(onUpdate);
-
     if (this.currentUserId !== userId) {
+      this.accountGeneration++;
       this.currentUserId = userId;
       this.cachedFlashcards = null;
+      this.flashcardListeners.forEach((listener) => listener([]));
+      this.flashcardListeners.clear();
     }
+    this.flashcardListeners.add(onUpdate);
 
     if (this.cachedFlashcards) {
       onUpdate(this.cachedFlashcards);
     } else {
+      onUpdate([]);
       void this.refetchFlashcards(userId);
     }
 
     return () => {
       this.flashcardListeners.delete(onUpdate);
+      if (this.flashcardListeners.size === 0) {
+        this.accountGeneration++;
+        this.currentUserId = null;
+        this.cachedFlashcards = null;
+      }
     };
   }
 
@@ -238,7 +251,7 @@ class FlashcardService {
 
   async deleteFolder(userId: string, folderId: string) {
     // Cards in the folder fall back to "Custom Cards" (the FK sets folder_id null).
-    if (this.cachedFlashcards) {
+    if (this.currentUserId === userId && this.cachedFlashcards) {
       this.cachedFlashcards = this.cachedFlashcards.map((c) =>
         c.folderId === folderId ? { ...c, folderId: "custom" } : c,
       );

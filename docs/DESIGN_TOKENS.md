@@ -77,7 +77,7 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 | Utility | Value | Layer / owners |
 |---|---|---|
 | `z-tooltip` | 90 | Pointer-anchored tooltips (`ReaderWordTooltip`) |
-| `z-content` | 100 | Content layer of an overlay surface, below its chrome: activity screen roots (`QuizScreen`, `ListeningScreen`, `WritingScreen`), `LessonComplete`, in-window loading (`LoadingScreen`) |
+| `z-content` | 100 | Content layer of an overlay surface, below its chrome: activity screen roots (`QuizScreen`, `ListeningScreen`, `WritingScreen`, `ToneScreen`), `LessonComplete`, in-window loading (`LoadingScreen`) |
 | `z-activity-header` | 150 | Sticky header strip of the activity surface (`ActivityModals`) |
 | `z-activity` | 200 | The activity modal shell (`ActivityModalWrapper`) |
 | `z-dock` | 250 | Floating docks and their scrims (`PracticeModeDock`, `SearchModeDock`, `WritingDock`, the mobile nav scrim) |

@@ -11,7 +11,7 @@
     "fonts:split": "python3 scripts/fonts/split-chinese-fonts.py",
     "server": "tsx server/index.ts",
     "build:server": "esbuild server/index.ts --platform=node --bundle --outfile=dist-server/server.js --format=esm --packages=external --external:express --external:@supabase/supabase-js --external:dotenv --define:process.env.NODE_ENV='\"production\"'",
-    "build": "vite build && npm run build:server",
+    "build": "vite build && npm run build:server && tsx scripts/build/trimBetaContent.ts",
     "start": "node dist-server/server.js",
     "clean": "rm -rf dist dist-server",
     "clean:local": "rm -rf output dist dist-server .audit .vite",
@@ -64,6 +64,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",
+    "@sentry/node": "^11.8.0",
+    "@sentry/react": "^11.8.0",
     "@supabase/supabase-js": "^2.105.3",
     "clsx": "^2.1.1",
     "compression": "^1.8.2",

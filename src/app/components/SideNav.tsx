@@ -44,6 +44,7 @@ const PRACTICE_ACTIVITIES = new Set([
   'listening',
   'quiz',
   'writing',
+  'tones',
   'flashcards-review',
   'flashcards-library',
 ]);

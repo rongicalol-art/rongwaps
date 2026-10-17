@@ -1,6 +1,8 @@
 # 🔌 Express API Specification
 
-The backend (`server/index.ts`) runs under Node.js + Express and provides neural TTS synthesis + caching endpoints, as well as AI grading services. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
+The backend (`server/index.ts`) runs under Node.js + Express and provides neural TTS synthesis + caching endpoints. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
+
+There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 404 without authenticating or calling a provider. Jev content-review scripts remain development tooling.
 
 ## 🚦 Rate limits
 
@@ -13,7 +15,6 @@ plus the standard `RateLimit-*` headers.
 | `POST /api/tts` | `apiLimiter` + authenticated user limiter | 1 min | 60/IP, 30/user; 600/user/day by default |
 | `GET /api/tts-cache/:text` | `apiLimiter` | 1 min | 60 |
 | `GET /api/tts/:voice/*` | `apiLimiter` | 1 min | 60 |
-| `POST /api/jev/grade-answer` | `apiLimiter` + authenticated user limiter | 1 min | 60/IP, 10/user; 200/user/day by default |
 
 ---
 
@@ -81,6 +82,7 @@ Direct read of a cached TTS file by its storage path, mirroring the object URL l
 | --- | --- |
 | `PORT` | Listen port (default `3000`). |
 | `NODE_ENV` | `production` serves `dist/`; anything else mounts the Vite dev middleware. |
+| `SENTRY_DSN` | Optional server-side error reporting; disabled when unset. |
 | `R2_ACCOUNT_ID` (or `R2_ENDPOINT`), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME` | Cloudflare R2 TTS cache. Unset = Supabase Storage fallback. |
 
 Supabase credentials are read by the server-owned client in `server/supabase.ts`; the server never

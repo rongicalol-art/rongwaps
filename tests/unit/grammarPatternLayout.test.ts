@@ -371,7 +371,7 @@ test('Lesson 3 Grammar 4 defines 3 sequential subsections for continuous scrolli
   assert.equal(part3.sectionNumber, 3);
   assert.ok(part3.title);
   assert.ok(part3.explanation);
-  assert.deepEqual(part3.patternColumns, ['Adjective', '的', 'No noun']);
+  assert.deepEqual(part3.patternColumns, ['Adjective', '的', 'Noun']);
   assert.equal(part3.patternRows?.[0].english, 'big cakes');
   assert.ok(part3.exampleIds && part3.exampleIds.length > 0);
 });

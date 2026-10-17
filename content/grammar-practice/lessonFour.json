@@ -1,0 +1,1945 @@
+{
+  "B1L04-G01-P95": {
+    "bookPage": 96,
+    "title": "Write the objects as the topics in the answers.",
+    "items": [
+      {
+        "id": "l04-g1-book1",
+        "source": "p.96 #1",
+        "kind": "slot-build",
+        "prompt": "You like them.",
+        "tiles": [
+          {
+            "traditional": "我喜歡",
+            "simplified": "我喜欢",
+            "pinyin": "wǒ xǐhuān"
+          },
+          {
+            "traditional": "紅色的",
+            "simplified": "红色的",
+            "pinyin": "hóngsè de"
+          },
+          {
+            "traditional": "我不喜歡",
+            "simplified": "我不喜欢",
+            "pinyin": "wǒ bù xǐhuān"
+          },
+          {
+            "traditional": "衣服",
+            "simplified": "衣服",
+            "pinyin": "yīfu"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "我不喜歡"
+            ],
+            "note": "The context gives a positive answer, so use 我喜歡 rather than 我不喜歡."
+          },
+          {
+            "slot": {
+              "id": "topic-description",
+              "tile": "我喜歡"
+            },
+            "note": "The instruction asks for the object as the topic, so put 紅色的衣服 before the comment."
+          },
+          {
+            "slot": {
+              "id": "topic-description",
+              "tile": "衣服"
+            },
+            "note": "Put 紅色的 before 衣服 to keep the noun phrase together."
+          },
+          {
+            "slot": {
+              "id": "topic-noun",
+              "tile": "我喜歡"
+            },
+            "note": "Keep the whole object together before the comment 我喜歡."
+          }
+        ],
+        "fallbackRepair": "Put the object first, followed by the comment.",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡紅色的衣服嗎？",
+                "simplified": "你喜欢红色的衣服吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true,
+            "segments": [
+              {
+                "type": "slot",
+                "id": "topic-description",
+                "answers": [
+                  "紅色的"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "topic-noun",
+                "answers": [
+                  "衣服"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，"
+              },
+              {
+                "type": "slot",
+                "id": "comment",
+                "answers": [
+                  "我喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "紅色的衣服，我喜歡。",
+          "pinyin": "Hóngsè de yīfu, wǒ xǐhuān.",
+          "english": "Red clothes, I like them.",
+          "simplified": "红色的衣服，我喜欢。"
+        }
+      },
+      {
+        "id": "l04-g1-book2",
+        "source": "p.96 #2",
+        "kind": "slot-build",
+        "prompt": "You want to buy them.",
+        "tiles": [
+          {
+            "traditional": "我要買",
+            "simplified": "我要买",
+            "pinyin": "wǒ yào mǎi"
+          },
+          {
+            "traditional": "這種",
+            "simplified": "这种",
+            "pinyin": "zhè zhǒng"
+          },
+          {
+            "traditional": "我不要買",
+            "simplified": "我不要买",
+            "pinyin": "wǒ bú yào mǎi"
+          },
+          {
+            "traditional": "鉛筆",
+            "simplified": "铅笔",
+            "pinyin": "qiānbǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "我不要買"
+            ],
+            "note": "The context gives a positive answer, so use 我要買 rather than 我不要買."
+          },
+          {
+            "slot": {
+              "id": "topic-description",
+              "tile": "我要買"
+            },
+            "note": "The instruction asks for the object as the topic, so put 這種鉛筆 before the comment."
+          },
+          {
+            "slot": {
+              "id": "topic-description",
+              "tile": "鉛筆"
+            },
+            "note": "Put 這種 before 鉛筆 to keep the noun phrase together."
+          },
+          {
+            "slot": {
+              "id": "topic-noun",
+              "tile": "我要買"
+            },
+            "note": "Keep the whole object together before the comment 我要買."
+          }
+        ],
+        "fallbackRepair": "Put the object first, followed by the comment.",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要買這種鉛筆嗎？",
+                "simplified": "你要买这种铅笔吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true,
+            "segments": [
+              {
+                "type": "slot",
+                "id": "topic-description",
+                "answers": [
+                  "這種"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "topic-noun",
+                "answers": [
+                  "鉛筆"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，"
+              },
+              {
+                "type": "slot",
+                "id": "comment",
+                "answers": [
+                  "我要買"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "這種鉛筆，我要買。",
+          "pinyin": "Zhè zhǒng qiānbǐ, wǒ yào mǎi.",
+          "english": "This kind of pencil, I want to buy it.",
+          "simplified": "这种铅笔，我要买。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 96,
+          "box": [
+            0.62,
+            0.78,
+            0.085,
+            0.05
+          ],
+          "alt": "A pencil."
+        }
+      },
+      {
+        "id": "l04-g1-book3",
+        "source": "p.96 #3",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "You like both foods; place 都.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡吃什麼東西？",
+                "simplified": "你喜欢吃什么东西？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "蛋糕、牛肉麵，",
+                "simplified": "蛋糕、牛肉面，"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡吃",
+                "simplified": "喜欢吃"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "都"
+            },
+            "note": "都 belongs with the comment about both foods, after 我."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "都"
+            },
+            "note": "Put 都 before 喜歡吃 to say that the liking covers both foods."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "蛋糕、牛肉麵，我都喜歡吃。",
+          "pinyin": "Dàngāo, niúròu miàn, wǒ dōu xǐhuān chī.",
+          "english": "Cake and beef noodles, I like eating both.",
+          "simplified": "蛋糕、牛肉面，我都喜欢吃。"
+        }
+      },
+      {
+        "id": "l04-g1-book4",
+        "source": "p.97 #4",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "You like all three gifts; place 都.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡什麼生日禮物？",
+                "simplified": "你喜欢什么生日礼物？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "花、書、蛋糕，",
+                "simplified": "花、书、蛋糕，"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡",
+                "simplified": "喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "都"
+            },
+            "note": "都 follows the person 我 rather than standing directly after the list."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "都"
+            },
+            "note": "Put 都 before 喜歡 to include all three gifts."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "花、書、蛋糕，我都喜歡。",
+          "pinyin": "Huā, shū, dàngāo, wǒ dōu xǐhuān.",
+          "english": "Flowers, books and cakes, I like them all.",
+          "simplified": "花、书、蛋糕，我都喜欢。"
+        }
+      }
+    ]
+  },
+  "B1L04-G02-P97": {
+    "bookPage": 98,
+    "title": "Complete the following sentences with 也.",
+    "items": [
+      {
+        "id": "l04-g2-book1",
+        "source": "p.98 #1",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "Place 也 to add your second choice.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要吃什麼？",
+                "simplified": "你要吃什么？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "我要吃蛋糕，"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": [
+                  "也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "想吃牛肉麵。",
+                "simplified": "想吃牛肉面。"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "也"
+            },
+            "note": "也 adds the second wish, so put it in the second part of the answer."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "也"
+            },
+            "note": "Put 也 before 想吃 rather than after the food."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "我要吃蛋糕，也想吃牛肉麵。",
+          "pinyin": "Wǒ yào chī dàngāo, yě xiǎng chī niúròu miàn.",
+          "english": "I want to eat cake and would also like beef noodles.",
+          "simplified": "我要吃蛋糕，也想吃牛肉面。"
+        }
+      },
+      {
+        "id": "l04-g2-book2",
+        "source": "p.98 #2",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "Both foods taste good; place 也 in the second part.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那家餐廳什麼好吃？",
+                "simplified": "那家餐厅什么好吃？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "牛肉麵很好吃，",
+                "simplified": "牛肉面很好吃，"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "蛋糕"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": [
+                  "也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很好吃"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "也"
+            },
+            "note": "Name the second food 蛋糕 before adding 也."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "也"
+            },
+            "note": "Put 也 before 很好吃, not after the description."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "牛肉麵很好吃，蛋糕也很好吃。",
+          "pinyin": "Niúròu miàn hěn hǎochī, dàngāo yě hěn hǎochī.",
+          "english": "The beef noodles are delicious, and the cake is delicious too.",
+          "simplified": "牛肉面很好吃，蛋糕也很好吃。"
+        }
+      },
+      {
+        "id": "l04-g2-book3",
+        "source": "p.98 #3",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "Youmei shares Zhongming’s preference; place 也.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "誰喜歡買便宜的東西？",
+                "simplified": "谁喜欢买便宜的东西？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "中明喜歡買便宜的東西，",
+                "simplified": "中明喜欢买便宜的东西，"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "友美"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": [
+                  "也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡買便宜的東西",
+                "simplified": "喜欢买便宜的东西"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "也"
+            },
+            "note": "Name 友美 before 也 to say who shares the preference."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "也"
+            },
+            "note": "Put 也 before 喜歡買 to add Youmei as another person with this preference."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "中明喜歡買便宜的東西，友美也喜歡買便宜的東西。",
+          "pinyin": "Zhōngmíng xǐhuān mǎi piányi de dōngxi, Yǒuměi yě xǐhuān mǎi piányi de dōngxi.",
+          "english": "Zhongming likes buying inexpensive things, and Youmei does too.",
+          "simplified": "中明喜欢买便宜的东西，友美也喜欢买便宜的东西。"
+        }
+      },
+      {
+        "id": "l04-g2-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "Neither person likes coffee; place 也 in Youmei’s answer.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "中明不喜歡咖啡，友美",
+                "simplified": "中明不喜欢咖啡，友美"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": [
+                  "也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡咖啡",
+                "simplified": "喜欢咖啡"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-1",
+              "tile": "也"
+            },
+            "note": "Both people dislike coffee, so put 也 before 不 to echo the negative preference."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "也"
+            },
+            "note": "也 comes before the negative verb phrase, not after 咖啡."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "中明不喜歡咖啡，友美也不喜歡咖啡。",
+          "pinyin": "Zhōngmíng bù xǐhuān kāfēi, Yǒuměi yě bù xǐhuān kāfēi.",
+          "english": "Zhongming does not like coffee, and Youmei does not either.",
+          "simplified": "中明不喜欢咖啡，友美也不喜欢咖啡。"
+        }
+      }
+    ]
+  },
+  "B1L04-G03-P98": {
+    "bookPage": 99,
+    "title": "Complete the following questions with 太……了.",
+    "items": [
+      {
+        "id": "l04-g3-book1",
+        "source": "p.99 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這件衣服怎麼樣？",
+                "simplified": "这件衣服怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "太"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "小"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "大",
+            "pinyin": "dà"
+          },
+          {
+            "traditional": "小",
+            "pinyin": "xiǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "大"
+            ],
+            "note": "The shirt exposes his middle and fits tightly, so describe it as 小."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "太小了。",
+          "pinyin": "Tài xiǎo le.",
+          "english": "It is too small."
+        },
+        "scene": {
+          "type": "picture",
+          "page": 99,
+          "box": [
+            0.207,
+            0.34,
+            0.08,
+            0.11
+          ],
+          "alt": "A boy pulling at a tight shirt that leaves his middle uncovered."
+        }
+      },
+      {
+        "id": "l04-g3-book2",
+        "source": "p.99 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他現在怎麼樣？",
+                "simplified": "他现在怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他太"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "累"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "餓",
+            "pinyin": "è",
+            "simplified": "饿"
+          },
+          {
+            "traditional": "累",
+            "pinyin": "lèi"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "餓"
+            ],
+            "note": "He has eaten and needs sleep, so choose 累 for his tiredness."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "他太累了。",
+          "pinyin": "Tā tài lèi le.",
+          "english": "He is so tired."
+        },
+        "prompt": "He has eaten; after all this work, he wants to sleep.",
+        "scene": {
+          "type": "picture",
+          "page": 99,
+          "box": [
+            0.406,
+            0.35,
+            0.164,
+            0.1
+          ],
+          "alt": "A person at a computer with piles of work and loose papers."
+        }
+      },
+      {
+        "id": "l04-g3-book3",
+        "source": "p.99 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "珍珠奶茶怎麼樣？",
+                "simplified": "珍珠奶茶怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "太"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "好喝"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了，我和我的朋友都常常喝。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好喝",
+            "pinyin": "hǎohē"
+          },
+          {
+            "traditional": "好吃",
+            "pinyin": "hǎochī"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "好吃"
+            ],
+            "note": "The sentence says 喝, so use 好喝 to praise the drink’s taste."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "太好喝了，我和我的朋友都常常喝。",
+          "pinyin": "Tài hǎohē le, wǒ hé wǒ de péngyou dōu chángcháng hē.",
+          "english": "It tastes so good; my friends and I all drink it often."
+        },
+        "prompt": "You are praising its taste."
+      },
+      {
+        "id": "l04-g3-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "React to 40°C; place 了.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天天氣怎麼樣？",
+                "simplified": "今天天气怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "太"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "熱",
+                "simplified": "热"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-0",
+              "tile": "了"
+            },
+            "note": "了 ends the reaction after 熱 rather than following 今天."
+          },
+          {
+            "slot": {
+              "id": "gap-1",
+              "tile": "了"
+            },
+            "note": "了 finishes the reaction after 熱, not before it."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "今天太熱了。",
+          "pinyin": "Jīntiān tài rè le.",
+          "english": "It is so hot today.",
+          "simplified": "今天太热了。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 98,
+          "box": [
+            0.704,
+            0.779,
+            0.087,
+            0.103
+          ],
+          "alt": "A thermometer marked 40°C."
+        }
+      }
+    ]
+  },
+  "B1L04-G04-P104": {
+    "bookPage": 104,
+    "title": "Please read the following numbers.",
+    "items": [
+      {
+        "id": "l04-g4-book1",
+        "source": "p.104 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "150　5,080　630,000　9,400,000\n309　7,200　800,500　13,000,000"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "150：一百五十；630,000：六十三萬；9,400,000：九百四十萬。\n309：三百零九；7,200：七千兩百；800,500：八十萬零五百；13,000,000：一千三百萬。",
+                "simplified": "150：一百五十；630,000：六十三万；9,400,000：九百四十万。\n309：三百零九；7,200：七千两百；800,500：八十万零五百；13,000,000：一千三百万。"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "5,080"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "五"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "千"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "零八十。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "千",
+            "pinyin": "qiān"
+          },
+          {
+            "traditional": "萬",
+            "pinyin": "wàn",
+            "simplified": "万"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "萬"
+            ],
+            "note": "五萬 starts at 50,000, while 5,080 has five thousands."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "五千零八十。",
+          "pinyin": "Wǔ qiān líng bāshí.",
+          "english": "Five thousand and eighty."
+        },
+        "prompt": "Please read the following numbers."
+      },
+      {
+        "id": "l04-g4-book2",
+        "source": "p.104 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "0930-252-242　0988-321-259　0936-068-493　0955-734-068"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "0930-252-242：零九三零二五二二四二。\n0988-321-259：零九八八三二一二五九。\n0955-734-068：零九五五七三四零六八。"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "0936-068-493"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "零九三六零六八"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "四九三"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "四三九",
+            "pinyin": "sì sān jiǔ"
+          },
+          {
+            "traditional": "四九三",
+            "pinyin": "sì jiǔ sān"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "四三九"
+            ],
+            "note": "The last group is 493, so keep the digits in the order 四、九、三."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "零九三六零六八四九三。",
+          "pinyin": "Líng jiǔ sān liù, líng liù bā, sì jiǔ sān.",
+          "english": "0936-068-493."
+        },
+        "prompt": "Read the following cell phone numbers."
+      },
+      {
+        "id": "l04-g4-book3",
+        "source": "p.105 #3",
+        "kind": "slot-build",
+        "gaps": true,
+        "prompt": "Read the following nouns (with measure words).",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "201（杯子）　2,200（老師）　5,005（人）　512,300（錢）",
+                "simplified": "201（杯子）　2,200（老师）　5,005（人）　512,300（钱）"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "201：兩百零一個杯子；2,200：兩千兩百位老師；512,300：五十一萬兩千三百塊錢。",
+                "simplified": "201：两百零一个杯子；2,200：两千两百位老师；512,300：五十一万两千三百块钱。"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "5,005"
+              }
+            ]
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "五千"
+              },
+              {
+                "type": "slot",
+                "id": "gap-0",
+                "answers": [
+                  "零"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "五"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "個人",
+                "simplified": "个人"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "零",
+            "pinyin": "líng"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "gap-1",
+              "tile": "零"
+            },
+            "note": "The final five is the ones digit, so put 零 before it to bridge the missing hundreds and tens."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "零"
+            },
+            "note": "零 fills the missing number places before 五, not a position after 人."
+          }
+        ],
+        "fallbackRepair": "Keep the sentence together and try another position.",
+        "result": {
+          "traditional": "五千零五個人。",
+          "pinyin": "Wǔ qiān líng wǔ ge rén.",
+          "english": "Five thousand and five people.",
+          "simplified": "五千零五个人。"
+        }
+      },
+      {
+        "id": "l04-g4-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "七萬八千"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "七千八百",
+            "pinyin": "qī qiān bā bǎi"
+          },
+          {
+            "traditional": "七萬八千",
+            "simplified": "七万八千",
+            "pinyin": "qī wàn bā qiān"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "七千八百"
+            ],
+            "note": "78,000 has seven ten-thousands and eight thousands, while 七千八百 is 7,800."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "七萬八千。",
+          "simplified": "七万八千。",
+          "pinyin": "Qī wàn bā qiān.",
+          "english": "Seventy-eight thousand."
+        },
+        "prompt": "Read 78,000."
+      }
+    ],
+    "allowWords": [
+      "二",
+      "六",
+      "八",
+      "九"
+    ]
+  },
+  "B1L04-G05-P105": {
+    "bookPage": 106,
+    "title": "Answer the following questions with 多.",
+    "items": [
+      {
+        "id": "l04-g5-book1",
+        "source": "p.106 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "一共多少人？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": ""
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "十多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "個人。",
+                "simplified": "个人。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "十多",
+            "pinyin": "shí duō"
+          },
+          {
+            "traditional": "二十多",
+            "pinyin": "èrshí duō"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "二十多"
+            ],
+            "note": "The three rows contain fifteen people, so the total is over ten and below twenty."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "十多個人。",
+          "pinyin": "Shí duō ge rén.",
+          "english": "More than ten people.",
+          "simplified": "十多个人。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 106,
+          "box": [
+            0.164,
+            0.251,
+            0.223,
+            0.094
+          ],
+          "alt": "Three rows of five faces."
+        }
+      },
+      {
+        "id": "l04-g5-book2",
+        "source": "p.106 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "兩杯紅茶多少錢？",
+                "simplified": "两杯红茶多少钱？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": ""
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "一百多塊"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "錢。",
+                "simplified": "钱。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一百多塊",
+            "pinyin": "yì bǎi duō kuài",
+            "simplified": "一百多块"
+          },
+          {
+            "traditional": "一百塊多",
+            "pinyin": "yì bǎi kuài duō",
+            "simplified": "一百块多"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一百塊多"
+            ],
+            "note": "$180 is tens of dollars above $100, so put 多 before 塊 for the 101–199 range."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "一百多塊錢。",
+          "pinyin": "Yì bǎi duō kuài qián.",
+          "english": "Over one hundred dollars.",
+          "simplified": "一百多块钱。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 106,
+          "box": [
+            0.457,
+            0.255,
+            0.204,
+            0.074
+          ],
+          "alt": "Two cups of tea with a total price of $180."
+        }
+      },
+      {
+        "id": "l04-g5-book3",
+        "source": "p.106 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這件衣服多少錢？",
+                "simplified": "这件衣服多少钱？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": ""
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "兩千多塊"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "錢。",
+                "simplified": "钱。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "兩千塊多",
+            "pinyin": "liǎng qiān kuài duō",
+            "simplified": "两千块多"
+          },
+          {
+            "traditional": "兩千多塊",
+            "pinyin": "liǎng qiān duō kuài",
+            "simplified": "两千多块"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩千塊多"
+            ],
+            "note": "$2,200 is hundreds above $2,000, so put 多 before 塊 for the 2,001–2,999 range."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "兩千多塊錢。",
+          "pinyin": "Liǎng qiān duō kuài qián.",
+          "english": "Over two thousand dollars.",
+          "simplified": "两千多块钱。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 106,
+          "box": [
+            0.703,
+            0.252,
+            0.16,
+            0.101
+          ],
+          "alt": "A jacket priced at $2,200."
+        }
+      },
+      {
+        "id": "l04-g5-book4",
+        "source": "p.107 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在幾點？",
+                "simplified": "现在几点？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": ""
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "十一點多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "十二點多",
+            "pinyin": "shí’èr diǎn duō",
+            "simplified": "十二点多"
+          },
+          {
+            "traditional": "十一點多",
+            "pinyin": "shíyī diǎn duō",
+            "simplified": "十一点多"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十二點多"
+            ],
+            "note": "The short hour hand points past XI, so the clock shows eleven-something rather than twelve-something."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "十一點多。",
+          "pinyin": "Shíyī diǎn duō.",
+          "english": "A little after eleven.",
+          "simplified": "十一点多。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 107,
+          "box": [
+            0.251,
+            0.297,
+            0.14,
+            0.107
+          ],
+          "alt": "A clock face with Roman numerals and ornate hands."
+        }
+      },
+      {
+        "id": "l04-g5-book5",
+        "source": "p.107 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "李先生的孩子幾歲？",
+                "simplified": "李先生的孩子几岁？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他的孩子"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "十歲多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "十歲多",
+            "pinyin": "shí suì duō",
+            "simplified": "十岁多"
+          },
+          {
+            "traditional": "九歲多",
+            "pinyin": "jiǔ suì duō",
+            "simplified": "九岁多"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "九歲多"
+            ],
+            "note": "From 2016-01-01 to 2026-10-16, ten birthdays have passed, so the child is over ten."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "他的孩子十歲多。",
+          "pinyin": "Tā de háizi shí suì duō.",
+          "english": "His child is a little over ten years old.",
+          "simplified": "他的孩子十岁多。"
+        },
+        "prompt": "For this picture, today is 2026-10-16.",
+        "scene": {
+          "type": "picture",
+          "page": 107,
+          "box": [
+            0.456,
+            0.318,
+            0.155,
+            0.078
+          ],
+          "alt": "A baby labeled 2016.1.1 points to a question mark labeled 今天."
+        }
+      },
+      {
+        "id": "l04-g5-book6",
+        "source": "p.107 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這些東西一共多少錢？",
+                "simplified": "这些东西一共多少钱？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": false
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "一共"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "八塊多"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "錢。",
+                "simplified": "钱。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "九塊多",
+            "simplified": "九块多",
+            "pinyin": "jiǔ kuài duō"
+          },
+          {
+            "traditional": "八塊多",
+            "simplified": "八块多",
+            "pinyin": "bā kuài duō"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "九塊多"
+            ],
+            "note": "US$8.45 is still below nine dollars, so describe it as 八塊多 rather than rounding it up."
+          }
+        ],
+        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "result": {
+          "traditional": "一共八塊多錢。",
+          "pinyin": "Yígòng bā kuài duō qián.",
+          "english": "Just over eight dollars altogether.",
+          "simplified": "一共八块多钱。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 107,
+          "box": [
+            0.678,
+            0.293,
+            0.148,
+            0.104
+          ],
+          "alt": "Three pens and a flower priced together at US$8.45."
+        }
+      }
+    ],
+    "allowWords": [
+      "李",
+      "這些",
+      "八",
+      "九"
+    ]
+  }
+}

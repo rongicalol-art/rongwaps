@@ -18,8 +18,8 @@ const HANZI_RE = /[㐀-鿿]/u;
 /** Canvas size per character, shrinking with word length so the whole word stays on one row. */
 function canvasSize(count: number, wide: boolean) {
   if (count <= 1) return wide ? 208 : 164;
-  if (count === 2) return wide ? 144 : 112;
-  if (count <= 4) return wide ? 100 : 76;
+  if (count === 2) return wide ? 144 : 64;
+  if (count <= 4) return wide ? 100 : 68;
   return wide ? 72 : 56;
 }
 
@@ -74,16 +74,26 @@ export function WordHero({
           ))}
         </div>
 
-        <div className="flex min-w-0 flex-1 flex-col gap-1.5 text-left">
-          {pinyin && <span className="truncate text-[26px] font-black leading-tight text-brand-primary">{pinyin}</span>}
+        <div className="flex min-w-0 max-w-full flex-1 flex-col items-start gap-1.5 text-left">
+          <div className="flex min-w-0 items-center gap-1.5">
+            {pinyin && <span className="truncate text-2xl font-black leading-tight text-brand-primary sm:text-[26px]">{pinyin}</span>}
+            {!wide && (
+              <SummaryQuickActions
+                className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8"
+                char={primaryChar}
+                pinyin={pinyin || undefined}
+                meaning={meaning}
+              />
+            )}
+          </div>
           {meaning && (
-            <div className="flex min-w-0 items-start gap-1">
-              <p className="line-clamp-2 min-w-0 max-w-2xl text-[22px] font-black leading-tight text-ui-ink-strong">{meaning}</p>
+            <div className="flex min-w-0 items-start gap-0.5 sm:gap-1">
+              <p className="line-clamp-3 min-w-0 max-w-2xl text-pretty text-[18px] font-black leading-snug text-ui-ink-strong sm:line-clamp-2 sm:text-[22px] sm:leading-tight">{meaning}</p>
               {more?.hasExtra && (
                 <MoreDefinitionsToggle
                   open={moreOpen}
                   onToggle={() => setMoreOpen((value) => !value)}
-                  count={more.hasExtraDefinitions ? more.definitions.length - 1 : undefined}
+                  count={wide && more.hasExtraDefinitions ? more.definitions.length - 1 : undefined}
                 />
               )}
             </div>
@@ -103,19 +113,30 @@ export function WordHero({
               </motion.div>
             )}
           </AnimatePresence>
-          {(courseCard || level) && (
-            <div className="flex flex-wrap items-center gap-2">
-              {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
-              <LevelTag variant="chip" level={level} />
-            </div>
+          {wide ? (
+            <>
+              {(courseCard || level) && (
+                <div className="flex flex-wrap items-center gap-2">
+                  {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
+                  <LevelTag variant="chip" level={level} />
+                </div>
+              )}
+              <SummaryQuickActions
+                className="-ml-2 mt-0.5 flex items-center gap-1"
+                char={primaryChar}
+                audioSrc={courseCard?.audio}
+                pinyin={pinyin || undefined}
+                meaning={meaning}
+              />
+            </>
+          ) : (
+            (courseCard || level) && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                {courseCard && <LevelTag bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
+                <LevelTag variant="chip" level={level} />
+              </div>
+            )
           )}
-          <SummaryQuickActions
-            className="-ml-2 mt-0.5 flex items-center gap-1"
-            char={primaryChar}
-            audioSrc={courseCard?.audio}
-            pinyin={pinyin || undefined}
-            meaning={meaning}
-          />
         </div>
       </div>
     </header>

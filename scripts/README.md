@@ -19,7 +19,7 @@ Secrets: `scripts/.config.json` and `.env*` are never read by agents or committe
 
 ## memory-hooks pipeline (Book 1)
 
-Provider config lives in `.env.memory-hooks.local` (`MEMORY_HOOK_PROVIDER=opencode-go`,
+Provider config lives in `.env` (`MEMORY_HOOK_PROVIDER=opencode-go`,
 model, concurrency). The key is read from `~/.local/share/opencode/auth.json`.
 
 Run order (all via `npx tsx <script>` or the matching `npm run hooks -- <sub>` (see `memory-hooks/README.md`)):

@@ -298,133 +298,200 @@
         {
           "id": "g1-question",
           "label": "Ask with 幾",
-          "traditional": "現在幾點？",
-          "simplified": "现在几点？",
-          "pinyin": "Xiànzài jǐ diǎn?",
+          "traditional": "現在幾點（幾分）？",
+          "simplified": "现在几点（几分）？",
+          "pinyin": "Xiànzài jǐ diǎn (jǐ fēn)?",
           "english": "What time is it now?",
           "note": "Replace the unknown number with 幾. Keep its time marker after it."
         }
       ],
       "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
     },
-    "patternRows": [
+    "patternRows": [],
+    "subsections": [
       {
-        "id": "g1-pattern-date",
-        "subject": [],
-        "grammar": [],
-        "complement": [],
-        "columns": [
-          [
-            {
-              "id": "g1-p1-five",
-              "traditional": "五",
-              "pinyin": "wǔ",
-              "meaning": "five"
-            }
-          ],
-          [
-            {
-              "id": "g1-p1-month",
-              "traditional": "月",
-              "pinyin": "yuè",
-              "meaning": "month"
-            }
-          ],
-          [
-            {
-              "id": "g1-p1-sixteen",
-              "traditional": "十六",
-              "pinyin": "shíliù",
-              "meaning": "sixteen"
-            }
-          ],
-          [
-            {
-              "id": "g1-p1-date",
-              "traditional": "號",
-              "simplified": "号",
-              "pinyin": "hào",
-              "meaning": "day number in a date (spoken form)"
-            },
-            {
-              "id": "g1-p1-date-written",
-              "traditional": "日",
-              "pinyin": "rì",
-              "meaning": "day number in a date (written form)",
-              "prefix": "/"
-            }
-          ]
+        "id": "b1l02-g01-sec-1",
+        "sectionNumber": 1,
+        "title": "Date · 月 / 號",
+        "explanation": "The month comes before the day: 五月十六號. A spoken date ends with 號, or 日 in writing.",
+        "patternColumns": [
+          "Number",
+          "月",
+          "Number",
+          "號 / 日"
         ],
-        "english": "May 16"
+        "patternColumnDetails": [
+          "Nu",
+          "月",
+          "Nu",
+          "號 / 日"
+        ],
+        "patternAccentColumn": 1,
+        "patternRows": [
+          {
+            "id": "g1-pattern-date",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p1-five",
+                  "traditional": "五",
+                  "pinyin": "wǔ",
+                  "meaning": "five"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-month",
+                  "traditional": "月",
+                  "pinyin": "yuè",
+                  "meaning": "month"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-sixteen",
+                  "traditional": "十六",
+                  "pinyin": "shíliù",
+                  "meaning": "sixteen"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-date",
+                  "traditional": "號",
+                  "simplified": "号",
+                  "pinyin": "hào",
+                  "meaning": "day number in a date (spoken form)"
+                },
+                {
+                  "id": "g1-p1-date-written",
+                  "traditional": "日",
+                  "pinyin": "rì",
+                  "meaning": "day number in a date (written form)",
+                  "prefix": "/"
+                }
+              ]
+            ],
+            "english": "16th, May"
+          }
+        ],
+        "exampleIds": [
+          "g1-example-3"
+        ]
       },
       {
-        "id": "g1-pattern-weekday",
-        "subject": [],
-        "grammar": [],
-        "complement": [],
-        "columns": [
-          [],
-          [
-            {
-              "id": "g1-p2-week",
-              "traditional": "星期",
-              "pinyin": "xīngqí",
-              "meaning": "week; weekday"
-            }
-          ],
-          [
-            {
-              "id": "g1-p2-four",
-              "traditional": "四",
-              "pinyin": "sì",
-              "meaning": "four"
-            }
-          ],
-          []
+        "id": "b1l02-g01-sec-2",
+        "sectionNumber": 2,
+        "title": "Weekday · 星期",
+        "explanation": "星期 comes first, then the number: 星期四.",
+        "patternColumns": [
+          "星期",
+          "Number"
         ],
-        "english": "Thursday"
+        "patternColumnDetails": [
+          "星期",
+          "Nu"
+        ],
+        "patternAccentColumn": 0,
+        "patternRows": [
+          {
+            "id": "g1-pattern-weekday",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p2-week",
+                  "traditional": "星期",
+                  "pinyin": "xīngqí",
+                  "meaning": "week; weekday"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p2-four",
+                  "traditional": "四",
+                  "pinyin": "sì",
+                  "meaning": "four"
+                }
+              ]
+            ],
+            "english": "Thursday"
+          }
+        ],
+        "exampleIds": [
+          "g1-example-2"
+        ]
       },
       {
-        "id": "g1-pattern-clock",
-        "subject": [],
-        "grammar": [],
-        "complement": [],
-        "columns": [
-          [
-            {
-              "id": "g1-p3-nine",
-              "traditional": "九",
-              "pinyin": "jiǔ",
-              "meaning": "nine"
-            }
-          ],
-          [
-            {
-              "id": "g1-p3-hour",
-              "traditional": "點",
-              "simplified": "点",
-              "pinyin": "diǎn",
-              "meaning": "o’clock; hour word"
-            }
-          ],
-          [
-            {
-              "id": "g1-p3-twenty",
-              "traditional": "二十",
-              "pinyin": "èrshí",
-              "meaning": "twenty"
-            }
-          ],
-          [
-            {
-              "id": "g1-p3-minute",
-              "traditional": "分",
-              "pinyin": "fēn",
-              "meaning": "minute"
-            }
-          ]
+        "id": "b1l02-g01-sec-3",
+        "sectionNumber": 3,
+        "title": "Clock time · 點 / 分",
+        "explanation": "Say the hour with 點, then the minute number with 分: 九點二十分.",
+        "patternColumns": [
+          "Number",
+          "點",
+          "Number",
+          "分"
         ],
-        "english": "9:20"
+        "patternColumnDetails": [
+          "Nu",
+          "點",
+          "Nu",
+          "分"
+        ],
+        "patternAccentColumn": 1,
+        "patternRows": [
+          {
+            "id": "g1-pattern-clock",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p3-nine",
+                  "traditional": "九",
+                  "pinyin": "jiǔ",
+                  "meaning": "nine"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p3-hour",
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "meaning": "o’clock; hour word"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p3-twenty",
+                  "traditional": "二十",
+                  "pinyin": "èrshí",
+                  "meaning": "twenty"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p3-minute",
+                  "traditional": "分",
+                  "pinyin": "fēn",
+                  "meaning": "minute"
+                }
+              ]
+            ],
+            "english": "9:20"
+          }
+        ],
+        "exampleIds": [
+          "g1-example-1"
+        ]
       }
     ],
     "confusion": {
@@ -432,14 +499,14 @@
       "items": [
         {
           "id": "g1-confusion-sunday-not-week-qi",
-          "question": "How do I say Sunday?",
-          "answer": "星期天 or 星期日. Numbers one to six after 星期 give Monday to Saturday, so Sunday is not 星期七.",
-          "wrongTraditional": "今天是星期七。",
+          "question": "Where does the weekday number go?",
+          "answer": "Put the number after 星期: 星期一.",
+          "wrongTraditional": "今天是一星期。",
           "right": {
-            "traditional": "今天是星期日。",
-            "simplified": "今天是星期日。",
-            "pinyin": "Jīntiān shì xīngqí rì.",
-            "english": "Today is Sunday.",
+            "traditional": "今天是星期一。",
+            "simplified": "今天是星期一。",
+            "pinyin": "Jīntiān shì xīngqí yī.",
+            "english": "Today is Monday.",
             "words": [
               {
                 "id": "g1-confusion-1-word-1",
@@ -461,9 +528,9 @@
               },
               {
                 "id": "g1-confusion-1-word-4",
-                "traditional": "日",
-                "pinyin": "rì",
-                "meaning": "day number in a date (written form)",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one; Monday after 星期",
                 "suffix": "。"
               }
             ]
@@ -828,10 +895,10 @@
         }
       }
     ],
-    "exerciseTitle": "Choose a correct time answer",
+    "exerciseTitle": "Answer the following questions.",
     "exercisePreview": "Answer the questions with one correct time phrase.",
     "exerciseInstruction": "These questions usually ask about your real time and date. Pick any answer that matches the kind of time asked for.",
-    "exerciseNote": "From the open-response exercise on printed page 55. These are example answers, not a textbook answer key.",
+    "exerciseNote": "These are app-authored model answers; the book prints no answer key.",
     "exerciseResponseMode": "text",
     "questions": [
       {
@@ -840,51 +907,67 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：現在幾點（幾分）？ B：",
-            "simplified": "A：现在几点（几分）？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g1-q1-answer",
-            "answer": "現在十點十五分",
-            "answerSimplified": "现在十点十五分",
-            "acceptedAnswers": [
-              "現在九點"
-            ],
-            "acceptedAnswersSimplified": [
-              "现在九点"
-            ],
-            "hint": "Answer with a clock time, not a weekday or date."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "現在幾點（幾分）？",
+            "simplified": "现在几点（几分）？"
+          },
+          {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "text",
+            "traditional": "現在",
+            "simplified": "现在"
+          },
+          {
+            "type": "blank",
+            "id": "g1-q1-hour",
+            "answer": "十",
+            "hint": "Choose the hour before 點; the model keeps 十五分.",
+            "acceptedAnswers": [
+              "七"
+            ]
+          },
+          {
+            "type": "text",
+            "traditional": "點",
+            "simplified": "点"
+          },
+          {
+            "type": "text",
+            "traditional": "十五"
+          },
+          {
+            "type": "text",
+            "traditional": "分。"
           }
         ],
         "tiles": [
           {
-            "id": "g1-q1-ten",
-            "traditional": "現在十點十五分",
-            "simplified": "现在十点十五分",
-            "pinyin": "xiànzài shí diǎn shíwǔ fēn",
-            "meaning": "It is 10:15 now."
+            "traditional": "十",
+            "pinyin": "shí",
+            "id": "g1-q1-tile-1",
+            "meaning": "ten"
           },
           {
-            "id": "g1-q1-nine",
-            "traditional": "現在九點",
-            "simplified": "现在九点",
-            "pinyin": "xiànzài jiǔ diǎn",
-            "meaning": "It is 9:00 now."
+            "traditional": "七",
+            "pinyin": "qī",
+            "id": "g1-q1-tile-2",
+            "meaning": "seven"
           },
           {
-            "id": "g1-q1-weekday",
-            "traditional": "今天星期一",
-            "pinyin": "jīntiān xīngqí yī",
-            "meaning": "Today is Monday."
+            "traditional": "月",
+            "pinyin": "yuè",
+            "id": "g1-q1-tile-3",
+            "meaning": "month"
           }
         ],
-        "correctFeedback": "A clock answer uses 點 after the hour and 分 after the minutes.",
-        "repairFeedback": "The question asks 幾點, so choose a clock-time answer."
+        "correctFeedback": "Model answer: A clock answer puts the hour before 點 and the minutes before 分.",
+        "repairFeedback": "Choose the hour before 點; the model keeps 十五分."
       },
       {
         "id": "g1-question-2",
@@ -892,17 +975,17 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：今天星期幾？ B：",
-            "simplified": "A：今天星期几？ B："
+            "traditional": "A：今天星期幾？ B：今天星期",
+            "simplified": "A：今天星期几？ B：今天星期"
           },
           {
             "type": "blank",
-            "id": "g1-q2-answer",
-            "answer": "今天星期一",
+            "id": "g1-q2-day",
+            "answer": "一",
             "acceptedAnswers": [
-              "今天星期五"
+              "四"
             ],
-            "hint": "Answer with 星期 plus a weekday."
+            "hint": "Put the weekday number after 星期."
           },
           {
             "type": "text",
@@ -911,27 +994,26 @@
         ],
         "tiles": [
           {
-            "id": "g1-q2-mon",
-            "traditional": "今天星期一",
-            "pinyin": "jīntiān xīngqí yī",
-            "meaning": "Today is Monday."
+            "id": "g1-q2-tile-1",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one; Monday after 星期"
           },
           {
-            "id": "g1-q2-fri",
-            "traditional": "今天星期五",
-            "pinyin": "jīntiān xīngqí wǔ",
-            "meaning": "Today is Friday."
+            "id": "g1-q2-tile-2",
+            "traditional": "四",
+            "pinyin": "sì",
+            "meaning": "four; Thursday after 星期"
           },
           {
-            "id": "g1-q2-time",
-            "traditional": "現在九點",
-            "simplified": "现在九点",
-            "pinyin": "xiànzài jiǔ diǎn",
-            "meaning": "It is 9:00 now."
+            "id": "g1-q2-tile-3",
+            "traditional": "七",
+            "pinyin": "qī",
+            "meaning": "seven"
           }
         ],
-        "correctFeedback": "星期 marks the weekday. The number after it names the day.",
-        "repairFeedback": "The question asks 星期幾, not the clock time."
+        "correctFeedback": "Model answer: The day number or day word follows 星期.",
+        "repairFeedback": "Use 一 to 六 after 星期 for Monday to Saturday."
       },
       {
         "id": "g1-question-3",
@@ -939,52 +1021,67 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：今天幾月幾號？ B：",
-            "simplified": "A：今天几月几号？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g1-q3-answer",
-            "answer": "今天十二月七號",
-            "answerSimplified": "今天十二月七号",
-            "acceptedAnswers": [
-              "今天五月十六號"
-            ],
-            "acceptedAnswersSimplified": [
-              "今天五月十六号"
-            ],
-            "hint": "Put the month before the date."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "今天幾月幾號？",
+            "simplified": "今天几月几号？"
+          },
+          {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "text",
+            "traditional": "今天"
+          },
+          {
+            "type": "blank",
+            "id": "g1-q3-month",
+            "answer": "十二",
+            "hint": "Put the month before 月 and the day after it, ending with 號.",
+            "acceptedAnswers": [
+              "十"
+            ]
+          },
+          {
+            "type": "text",
+            "traditional": "月"
+          },
+          {
+            "type": "text",
+            "traditional": "七"
+          },
+          {
+            "type": "text",
+            "traditional": "號。",
+            "simplified": "号。"
           }
         ],
         "tiles": [
           {
-            "id": "g1-q3-dec",
-            "traditional": "今天十二月七號",
-            "simplified": "今天十二月七号",
-            "pinyin": "jīntiān shí'èr yuè qī hào",
-            "meaning": "Today is December 7."
+            "traditional": "十二",
+            "pinyin": "shí'èr",
+            "id": "g1-q3-tile-1",
+            "meaning": "twelve"
           },
           {
-            "id": "g1-q3-may",
-            "traditional": "今天五月十六號",
-            "simplified": "今天五月十六号",
-            "pinyin": "jīntiān wǔ yuè shíliù hào",
-            "meaning": "Today is May 16."
+            "traditional": "十",
+            "pinyin": "shí",
+            "id": "g1-q3-tile-2",
+            "meaning": "ten"
           },
           {
-            "id": "g1-q3-reversed",
-            "traditional": "今天七號十二月",
-            "simplified": "今天七号十二月",
-            "pinyin": "jīntiān qī hào shí'èr yuè",
-            "meaning": "Incorrect order: date before month."
+            "traditional": "點",
+            "pinyin": "diǎn",
+            "simplified": "点",
+            "id": "g1-q3-tile-3",
+            "meaning": "hour word"
           }
         ],
-        "correctFeedback": "Chinese dates move from the larger unit to the smaller one: month before date.",
-        "repairFeedback": "Place 月 before the date number and end the spoken date with 號."
+        "correctFeedback": "Model answer: The month comes first, then the day.",
+        "repairFeedback": "Put the month before 月 and the day after it, ending with 號."
       }
     ]
   },
@@ -1003,7 +1100,7 @@
       56
     ],
     "audioReference": "02-1-3",
-    "explanation": "Use 有 before the person or thing someone has. To say “do not have,” replace 有 with 沒有. Never use 不有.",
+    "explanation": "有 says what someone has. To say “do not have,” replace 有 with 沒有. Never negate 有 with 不.",
     "focusTerms": [
       "有",
       "沒有",
@@ -1045,21 +1142,21 @@
       {
         "id": "b1l02-g03-glossary-6",
         "traditional": "王先生",
-        "pinyin": "Wáng xiānsheng",
+        "pinyin": "Wáng xiānshēng",
         "meaning": "Mr. Wang"
       },
       {
         "id": "b1l02-g03-glossary-7",
         "traditional": "有",
         "pinyin": "yǒu",
-        "meaning": "have; there is"
+        "meaning": "have"
       },
       {
         "id": "b1l02-g03-glossary-8",
         "traditional": "沒有",
         "simplified": "没有",
         "pinyin": "méi yǒu",
-        "meaning": "do not have; there is not"
+        "meaning": "do not have"
       },
       {
         "id": "b1l02-g03-glossary-9",
@@ -1178,7 +1275,7 @@
     "patternAccentColumn": 1,
     "discoveryLab": {
       "title": "有 has its own negative partner",
-      "description": "Change only the middle block to switch between having and not having.",
+      "description": "Switch between having and not having by changing only the middle block.",
       "prompt": "Does she have a Taiwanese friend?",
       "choices": [
         {
@@ -1187,26 +1284,26 @@
           "traditional": "她有台灣朋友。",
           "pinyin": "Tā yǒu Táiwān péngyǒu.",
           "english": "She has a Taiwanese friend.",
-          "note": "有 links her to the friend she has."
+          "note": "有 sits between the person and the thing they have.",
+          "simplified": "她有台湾朋友。"
+        },
+        {
+          "id": "g3-new",
+          "label": "New classmate",
+          "traditional": "我們有新同學。",
+          "pinyin": "Wǒmen yǒu xīn tóngxué.",
+          "english": "We have a new classmate.",
+          "note": "Same shape: person, then 有, then the thing.",
+          "simplified": "我们有新同学。"
         },
         {
           "id": "g3-negative",
           "label": "Does not have · 沒有",
-          "traditional": "她沒有台灣朋友。",
-          "simplified": "她没有台湾朋友。",
-          "pinyin": "Tā méi yǒu Táiwān péngyǒu.",
-          "english": "She does not have a Taiwanese friend.",
-          "note": "沒有 replaces 有 as one negative unit."
-        },
-        {
-          "id": "g3-repair",
-          "label": "Repair · not 不有",
-          "traditional": "她不有朋友。 → 她沒有朋友。",
-          "simplified": "她不有朋友。 → 她没有朋友。",
-          "pinyin": "Tā bù yǒu péngyǒu. → Tā méi yǒu péngyǒu.",
-          "english": "Repair it: She does not have a friend.",
-          "note": "Chinese negates 有 with 沒有, not 不.",
-          "isCorrection": true
+          "traditional": "王先生沒有孩子。",
+          "pinyin": "Wáng xiānshēng méi yǒu háizi.",
+          "english": "Mr. Wang does not have children.",
+          "note": "Negate 有 with 沒有, never with 不.",
+          "simplified": "王先生没有孩子。"
         }
       ],
       "takeaway": "有 becomes 沒有 in a negative sentence."
@@ -1227,7 +1324,7 @@
             "id": "g3-p1-have",
             "traditional": "有",
             "pinyin": "yǒu",
-            "meaning": "have; there is"
+            "meaning": "have"
           }
         ],
         "complement": [
@@ -1247,73 +1344,6 @@
           }
         ],
         "english": "She has a Taiwanese friend."
-      },
-      {
-        "id": "g3-pattern-2",
-        "subject": [
-          {
-            "id": "g3-p2-we",
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen",
-            "meaning": "we; us"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g3-p2-have",
-            "traditional": "有",
-            "pinyin": "yǒu",
-            "meaning": "have; there is"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g3-p2-new",
-            "traditional": "新",
-            "pinyin": "xīn",
-            "meaning": "new"
-          },
-          {
-            "id": "g3-p2-classmate",
-            "traditional": "同學",
-            "simplified": "同学",
-            "pinyin": "tóngxué",
-            "meaning": "classmate",
-            "suffix": "。"
-          }
-        ],
-        "english": "We have a new classmate."
-      },
-      {
-        "id": "g3-pattern-3",
-        "subject": [
-          {
-            "id": "g3-p3-mr-wang",
-            "traditional": "王先生",
-            "pinyin": "Wáng xiānsheng",
-            "meaning": "Mr. Wang"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g3-p3-no-have",
-            "traditional": "沒有",
-            "simplified": "没有",
-            "pinyin": "méi yǒu",
-            "meaning": "do not have; there is not"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g3-p3-child",
-            "traditional": "孩子",
-            "pinyin": "háizi",
-            "meaning": "child; children",
-            "suffix": "。"
-          }
-        ],
-        "english": "Mr. Wang does not have children."
       }
     ],
     "confusion": {
@@ -1323,120 +1353,76 @@
           "id": "g3-confusion-bu-you",
           "question": "Why can’t I say 不有?",
           "answer": "有 takes its own negative partner, 沒有. Never put 不 in front of 有.",
-          "wrongTraditional": "她不有朋友。",
+          "wrongTraditional": "王先生不有孩子。",
           "right": {
-            "traditional": "她沒有朋友。",
-            "simplified": "她没有朋友。",
-            "pinyin": "Tā méi yǒu péngyǒu.",
-            "english": "She does not have a friend.",
+            "traditional": "王先生沒有孩子。",
+            "pinyin": "Wáng xiānshēng méi yǒu háizi.",
+            "english": "Mr. Wang does not have children.",
             "words": [
               {
-                "id": "g3-confusion-1-word-1",
+                "id": "g3-conf1-w1",
+                "traditional": "王先生",
+                "pinyin": "Wáng xiānshēng",
+                "meaning": "Mr. Wang"
+              },
+              {
+                "id": "g3-conf1-w2",
+                "traditional": "沒有",
+                "pinyin": "méi yǒu",
+                "meaning": "do not have",
+                "simplified": "没有"
+              },
+              {
+                "id": "g3-conf1-w3",
+                "traditional": "孩子",
+                "pinyin": "háizi",
+                "meaning": "child; children",
+                "suffix": "。"
+              }
+            ],
+            "simplified": "王先生没有孩子。"
+          }
+        },
+        {
+          "id": "g3-confusion-shi-vs-you",
+          "question": "Can 是 and 有 both connect these words?",
+          "answer": "Use 有 alone to say what she has: 她有台灣朋友.",
+          "wrongTraditional": "她有是台灣朋友。",
+          "right": {
+            "traditional": "她有台灣朋友。",
+            "pinyin": "Tā yǒu Táiwān péngyǒu.",
+            "english": "She has a Taiwanese friend.",
+            "words": [
+              {
+                "id": "g3-conf2-w1",
                 "traditional": "她",
                 "pinyin": "tā",
                 "meaning": "she; her"
               },
               {
-                "id": "g3-confusion-1-word-2",
-                "traditional": "沒有",
-                "simplified": "没有",
-                "pinyin": "méi yǒu",
-                "meaning": "do not have; there is not"
+                "id": "g3-conf2-w2",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "have"
               },
               {
-                "id": "g3-confusion-1-word-3",
+                "id": "g3-conf2-w3",
+                "traditional": "台灣",
+                "pinyin": "Táiwān",
+                "meaning": "Taiwan",
+                "simplified": "台湾"
+              },
+              {
+                "id": "g3-conf2-w4",
                 "traditional": "朋友",
                 "pinyin": "péngyǒu",
                 "meaning": "friend",
                 "suffix": "。"
               }
-            ]
-          }
-        },
-        {
-          "id": "g3-confusion-shi-vs-you",
-          "question": "Can I say 我是手機 to mean “I have a phone”?",
-          "answer": "No — 是 links an identity, 有 says what you have. Say 我有手機.",
-          "wrongTraditional": "我是手機。",
-          "wrongSimplified": "我是手机。",
-          "right": {
-            "traditional": "我有手機。",
-            "simplified": "我有手机。",
-            "pinyin": "Wǒ yǒu shǒujī.",
-            "english": "I have a cell phone.",
-            "words": [
-              {
-                "id": "g3-confusion-2-word-1",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              },
-              {
-                "id": "g3-confusion-2-word-2",
-                "traditional": "有",
-                "pinyin": "yǒu",
-                "meaning": "have; there is"
-              },
-              {
-                "id": "g3-confusion-2-word-3",
-                "traditional": "手機",
-                "simplified": "手机",
-                "pinyin": "shǒujī",
-                "meaning": "cell phone",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g3-confusion-shi-yes-answer",
-          "question": "Can I answer a 有…嗎 question with just 是?",
-          "answer": "No — answer with 有 or 沒有. 是 says identity, not “yes, I have”.",
-          "wrongTraditional": "是，我有課。",
-          "wrongSimplified": "是，我有课。",
-          "right": {
-            "traditional": "A：你有課嗎？ B：有。",
-            "simplified": "A：你有课吗？ B：有。",
-            "pinyin": "A: Nǐ yǒu kè ma? B: Yǒu.",
-            "english": "A: Do you have class? B: Yes, I do.",
-            "words": [
-              {
-                "id": "g3-confusion-3-word-1",
-                "traditional": "你",
-                "pinyin": "nǐ",
-                "meaning": "you",
-                "prefix": "A："
-              },
-              {
-                "id": "g3-confusion-3-word-2",
-                "traditional": "有",
-                "pinyin": "yǒu",
-                "meaning": "have; there is"
-              },
-              {
-                "id": "g3-confusion-3-word-3",
-                "traditional": "課",
-                "pinyin": "kè",
-                "meaning": "class",
-                "simplified": "课"
-              },
-              {
-                "id": "g3-confusion-3-word-4",
-                "traditional": "嗎",
-                "simplified": "吗",
-                "pinyin": "ma",
-                "meaning": "ending word for a yes/no question"
-              },
-              {
-                "id": "g3-confusion-3-word-5",
-                "traditional": "有",
-                "pinyin": "yǒu",
-                "meaning": "have; there is",
-                "prefix": "？ B：",
-                "suffix": "。"
-              }
-            ]
-          }
+            ],
+            "simplified": "她有台湾朋友。"
+          },
+          "wrongSimplified": "她有是台湾朋友。"
         }
       ]
     },
@@ -1461,7 +1447,7 @@
               "id": "g3-e1-word-2",
               "traditional": "有",
               "pinyin": "yǒu",
-              "meaning": "have; there is"
+              "meaning": "have"
             },
             {
               "id": "g3-e1-word-3",
@@ -1487,13 +1473,13 @@
         "text": {
           "traditional": "A：王先生有孩子嗎？ B：王先生沒有孩子。",
           "simplified": "A：王先生有孩子吗？ B：王先生没有孩子。",
-          "pinyin": "A: Wáng xiānsheng yǒu háizi ma? B: Wáng xiānsheng méi yǒu háizi.",
+          "pinyin": "A: Wáng xiānshēng yǒu háizi ma? B: Wáng xiānshēng méi yǒu háizi.",
           "english": "A: Does Mr. Wang have children? B: Mr. Wang does not have children.",
           "words": [
             {
               "id": "g3-e2-word-1",
               "traditional": "王先生",
-              "pinyin": "Wáng xiānsheng",
+              "pinyin": "Wáng xiānshēng",
               "meaning": "Mr. Wang",
               "prefix": "A："
             },
@@ -1501,7 +1487,7 @@
               "id": "g3-e2-word-2",
               "traditional": "有",
               "pinyin": "yǒu",
-              "meaning": "have; there is"
+              "meaning": "have"
             },
             {
               "id": "g3-e2-word-3",
@@ -1519,7 +1505,7 @@
             {
               "id": "g3-e2-word-5",
               "traditional": "王先生",
-              "pinyin": "Wáng xiānsheng",
+              "pinyin": "Wáng xiānshēng",
               "meaning": "Mr. Wang",
               "prefix": "？ B："
             },
@@ -1528,7 +1514,7 @@
               "traditional": "沒有",
               "simplified": "没有",
               "pinyin": "méi yǒu",
-              "meaning": "do not have; there is not"
+              "meaning": "do not have"
             },
             {
               "id": "g3-e2-word-7",
@@ -1566,7 +1552,7 @@
               "id": "g3-e3-word-3",
               "traditional": "有",
               "pinyin": "yǒu",
-              "meaning": "have; there is"
+              "meaning": "have"
             },
             {
               "id": "g3-e3-word-4",
@@ -1605,7 +1591,7 @@
               "id": "g3-e3-word-9",
               "traditional": "有",
               "pinyin": "yǒu",
-              "meaning": "have; there is"
+              "meaning": "have"
             },
             {
               "id": "g3-e3-word-10",
@@ -1619,19 +1605,11 @@
         }
       }
     ],
-    "exerciseTitle": "Answer with 有 or 沒有",
+    "exerciseTitle": "Answer the 有/沒有 questions.",
     "exercisePreview": "Answer each question with a full sentence.",
-    "exerciseInstruction": "These questions are about you, so a yes answer and a no answer can both be true. Use 有 for yes and 沒有 for no.",
-    "exerciseNote": "Question 2 uses the phone picture on page 56. These are example answers, not a textbook key.",
+    "exerciseInstruction": "Use 有 or 沒有 to say what you have; name the person when the question asks 誰.",
+    "exerciseNote": "These are app-authored model answers; the book prints no answer key.",
     "exerciseResponseMode": "text",
-    "exerciseCues": [
-      {
-        "id": "g3-phone-cue",
-        "label": "手機 · shǒujī",
-        "pinyin": "shǒujī",
-        "detail": "The book shows a phone picture with the word 手機 (cell phone). Answer about yourself."
-      }
-    ],
     "questions": [
       {
         "id": "g3-question-1",
@@ -1639,105 +1617,62 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你有美國朋友嗎？ B：",
-            "simplified": "A：你有美国朋友吗？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g3-q1-answer",
-            "answer": "我有美國朋友",
-            "answerSimplified": "我有美国朋友",
-            "acceptedAnswers": [
-              "我沒有美國朋友"
-            ],
-            "acceptedAnswersSimplified": [
-              "我没有美国朋友"
-            ],
-            "hint": "Answer positively with 有 or negatively with 沒有."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
-          }
-        ],
-        "tiles": [
+            "traditional": "你有美國朋友嗎？",
+            "simplified": "你有美国朋友吗？"
+          },
           {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "text",
+            "traditional": "我"
+          },
+          {
+            "type": "blank",
             "id": "g3-q1-have",
-            "traditional": "我有美國朋友",
-            "simplified": "我有美国朋友",
-            "pinyin": "wǒ yǒu Měiguó péngyǒu",
-            "meaning": "I have an American friend."
-          },
-          {
-            "id": "g3-q1-not",
-            "traditional": "我沒有美國朋友",
-            "simplified": "我没有美国朋友",
-            "pinyin": "wǒ méi yǒu Měiguó péngyǒu",
-            "meaning": "I do not have an American friend."
-          },
-          {
-            "id": "g3-q1-wrong",
-            "traditional": "我不有美國朋友",
-            "simplified": "我不有美国朋友",
-            "pinyin": "wǒ bù yǒu Měiguó péngyǒu",
-            "meaning": "Incorrect negation with 不有."
-          }
-        ],
-        "correctFeedback": "Both personal answers are valid. Positive uses 有; negative uses 沒有.",
-        "repairFeedback": "Never form the negative with 不有. Use 沒有."
-      },
-      {
-        "id": "g3-question-2",
-        "number": 2,
-        "segments": [
-          {
-            "type": "text",
-            "traditional": "A：你有手機嗎？ B：",
-            "simplified": "A：你有手机吗？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g3-q2-answer",
-            "answer": "我有手機",
-            "answerSimplified": "我有手机",
+            "answer": "有",
+            "hint": "Choose 有 or 沒有 for your answer.",
             "acceptedAnswers": [
-              "我沒有手機"
+              "沒有"
             ],
             "acceptedAnswersSimplified": [
-              "我没有手机"
-            ],
-            "hint": "Choose a complete personal answer."
+              "没有"
+            ]
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "美國朋友。",
+            "simplified": "美国朋友。"
           }
         ],
         "tiles": [
           {
-            "id": "g3-q2-have",
-            "traditional": "我有手機",
-            "simplified": "我有手机",
-            "pinyin": "wǒ yǒu shǒujī",
-            "meaning": "I have a cell phone."
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "id": "g3-q1-tile-1",
+            "meaning": "have"
           },
           {
-            "id": "g3-q2-not",
-            "traditional": "我沒有手機",
-            "simplified": "我没有手机",
-            "pinyin": "wǒ méi yǒu shǒujī",
-            "meaning": "I do not have a cell phone."
+            "traditional": "沒有",
+            "pinyin": "méi yǒu",
+            "simplified": "没有",
+            "id": "g3-q1-tile-2",
+            "meaning": "do not have"
           },
           {
-            "id": "g3-q2-wrong",
-            "traditional": "我手機有",
-            "simplified": "我手机有",
-            "pinyin": "wǒ shǒujī yǒu",
-            "meaning": "Incorrect order: the thing comes before 有."
+            "traditional": "不有",
+            "pinyin": "bù yǒu",
+            "id": "g3-q1-tile-3",
+            "meaning": "incorrect negative of 有"
           }
         ],
-        "correctFeedback": "Put 有 or 沒有 before the thing: 手機.",
-        "repairFeedback": "Use 我 + 有／沒有 + 手機."
+        "correctFeedback": "Model answer: 有 links the person to the thing they have.",
+        "repairFeedback": "Choose 有 or 沒有 for your answer."
       },
       {
         "id": "g3-question-3",
@@ -1745,52 +1680,53 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：誰有水？ B：",
-            "simplified": "A：谁有水？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g3-q3-answer",
-            "answer": "我有水",
-            "acceptedAnswers": [
-              "中明有水",
-              "友美有水"
-            ],
-            "hint": "Name a person before 有水."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "誰有水？",
+            "simplified": "谁有水？"
+          },
+          {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "blank",
+            "id": "g3-q3-person",
+            "answer": "我",
+            "hint": "Name a person, then 有水.",
+            "acceptedAnswers": [
+              "他"
+            ]
+          },
+          {
+            "type": "text",
+            "traditional": "有水。"
           }
         ],
         "tiles": [
           {
-            "id": "g3-q3-me",
-            "traditional": "我有水",
-            "pinyin": "wǒ yǒu shuǐ",
-            "meaning": "I have water."
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "id": "g3-q3-tile-1",
+            "meaning": "I"
           },
           {
-            "id": "g3-q3-zhongming",
-            "traditional": "中明有水",
-            "pinyin": "Zhōngmíng yǒu shuǐ",
-            "meaning": "Zhongming has water."
+            "traditional": "他",
+            "pinyin": "tā",
+            "id": "g3-q3-tile-2",
+            "meaning": "he"
           },
           {
-            "id": "g3-q3-youmei",
-            "traditional": "友美有水",
-            "pinyin": "Yǒuměi yǒu shuǐ",
-            "meaning": "Youmei has water."
-          },
-          {
-            "id": "g3-q3-wrong",
-            "traditional": "水有我",
-            "pinyin": "shuǐ yǒu wǒ",
-            "meaning": "Incorrect order: water has me."
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "id": "g3-q3-tile-3",
+            "meaning": "have"
           }
         ],
-        "correctFeedback": "誰 asks who. Any person answer is fine here.",
-        "repairFeedback": "Name the person first, then say 有水."
+        "correctFeedback": "Model answer: The person who has the water comes first.",
+        "repairFeedback": "Name a person, then 有水."
       }
     ]
   },
@@ -1809,7 +1745,7 @@
       55
     ],
     "audioReference": "02-1-3",
-    "explanation": "Put the time after the person or topic but before the action. Think: who, when, then what happens.",
+    "explanation": "Put the time before the verb, as in 他八點回家。",
     "focusTerms": [
       "今天",
       "幾點",
@@ -1887,7 +1823,7 @@
         "traditional": "沒有",
         "simplified": "没有",
         "pinyin": "méi yǒu",
-        "meaning": "do not have; there is not"
+        "meaning": "do not have"
       },
       {
         "id": "b1l02-g02-glossary-12",
@@ -1946,12 +1882,36 @@
         "simplified": "图书馆",
         "pinyin": "túshūguǎn",
         "meaning": "library"
+      },
+      {
+        "id": "b1l02-g02-glossary-21",
+        "traditional": "四",
+        "pinyin": "sì",
+        "meaning": "four"
+      },
+      {
+        "id": "b1l02-g02-glossary-22",
+        "traditional": "五",
+        "pinyin": "wǔ",
+        "meaning": "five"
+      },
+      {
+        "id": "b1l02-g02-glossary-23",
+        "traditional": "六",
+        "pinyin": "liù",
+        "meaning": "six"
+      },
+      {
+        "id": "b1l02-g02-glossary-24",
+        "traditional": "星期天",
+        "pinyin": "Xīngqítiān",
+        "meaning": "Sunday"
       }
     ],
     "pattern": "Subject + time word + verb",
     "patternColumns": [
       "Subject",
-      "Time",
+      "Time word",
       "Verb"
     ],
     "patternColumnDetails": [
@@ -1962,36 +1922,35 @@
     "patternAccentColumn": 1,
     "discoveryLab": {
       "title": "Give the listener the time before the event",
-      "description": "The time word comes before the action that follows.",
+      "description": "The book’s table: the time word sits between the subject and the action.",
       "prompt": "Where does the time block belong?",
       "choices": [
         {
           "id": "g2-correct",
-          "label": "Who · when · action",
+          "label": "Time before the action",
           "traditional": "我九點三十分上課。",
-          "simplified": "我九点三十分上课。",
           "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
           "english": "I start class at 9:30.",
-          "note": "九點三十分 sits after 我 and immediately before 上課."
+          "note": "The time 九點三十分 sits right before the action 上課.",
+          "simplified": "我九点三十分上课。"
+        },
+        {
+          "id": "g2-negative",
+          "label": "Time with 沒有",
+          "traditional": "他今天沒有課。",
+          "pinyin": "Tā jīntiān méi yǒu kè.",
+          "english": "He does not have class today.",
+          "note": "After 他 comes the time 今天, then 沒有課.",
+          "simplified": "他今天没有课。"
         },
         {
           "id": "g2-question",
           "label": "Ask when",
           "traditional": "你幾點去圖書館？",
-          "simplified": "你几点去图书馆？",
           "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
           "english": "What time do you go to the library?",
-          "note": "幾點 occupies the same time position as a clock answer."
-        },
-        {
-          "id": "g2-repair",
-          "label": "Repair the order",
-          "traditional": "我上課九點。 → 我九點上課。",
-          "simplified": "我上课九点。 → 我九点上课。",
-          "pinyin": "Wǒ shàngkè jiǔ diǎn. → Wǒ jiǔ diǎn shàngkè.",
-          "english": "Repair it: I start class at 9:00.",
-          "note": "Move 九點 in front of the action 上課.",
-          "isCorrection": true
+          "note": "幾點 fills the same time position as a clock answer.",
+          "simplified": "你几点去图书馆？"
         }
       ],
       "takeaway": "Say who, then when, then the action."
@@ -2025,81 +1984,7 @@
             "suffix": "。"
           }
         ],
-        "english": "He goes home at 8:00."
-      },
-      {
-        "id": "g2-pattern-2",
-        "subject": [
-          {
-            "id": "g2-p2-he",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p2-today",
-            "traditional": "今天",
-            "pinyin": "jīntiān",
-            "meaning": "today"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p2-no",
-            "traditional": "沒有",
-            "simplified": "没有",
-            "pinyin": "méi yǒu",
-            "meaning": "do not have; there is not"
-          },
-          {
-            "id": "g2-p2-class",
-            "traditional": "課",
-            "pinyin": "kè",
-            "meaning": "class",
-            "suffix": "。",
-            "simplified": "课"
-          }
-        ],
-        "english": "He does not have class today."
-      },
-      {
-        "id": "g2-pattern-3",
-        "subject": [
-          {
-            "id": "g2-p3-you",
-            "traditional": "你",
-            "pinyin": "nǐ",
-            "meaning": "you"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p3-when",
-            "traditional": "幾點",
-            "simplified": "几点",
-            "pinyin": "jǐ diǎn",
-            "meaning": "what time"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p3-go",
-            "traditional": "去",
-            "pinyin": "qù",
-            "meaning": "go"
-          },
-          {
-            "id": "g2-p3-library",
-            "traditional": "圖書館",
-            "simplified": "图书馆",
-            "pinyin": "túshūguǎn",
-            "meaning": "library",
-            "suffix": "？"
-          }
-        ],
-        "english": "What time do you go to the library?"
+        "english": "He goes home at 8 o’clock."
       }
     ],
     "confusion": {
@@ -2108,133 +1993,76 @@
         {
           "id": "g2-confusion-time-after-action",
           "question": "Why can’t the time go at the end, like in English?",
-          "answer": "Chinese puts the time right before the action word. Say 我九點去學校, not 我去學校九點.",
-          "wrongTraditional": "我去學校九點。",
-          "wrongSimplified": "我去学校九点。",
+          "answer": "The time word always comes before the verb: 他八點回家, never 他回家八點.",
+          "wrongTraditional": "他回家八點。",
           "right": {
-            "traditional": "我九點去學校。",
-            "simplified": "我九点去学校。",
-            "pinyin": "Wǒ jiǔ diǎn qù xuéxiào.",
-            "english": "I go to school at 9:00.",
+            "traditional": "他八點回家。",
+            "pinyin": "Tā bā diǎn huí jiā.",
+            "english": "He goes home at 8 o’clock.",
             "words": [
               {
-                "id": "g2-confusion-1-word-1",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
+                "id": "g2-conf1-w1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he; him"
               },
               {
-                "id": "g2-confusion-1-word-2",
-                "traditional": "九點",
-                "simplified": "九点",
-                "pinyin": "jiǔ diǎn",
-                "meaning": "9:00"
+                "id": "g2-conf1-w2",
+                "traditional": "八點",
+                "pinyin": "bā diǎn",
+                "meaning": "8:00",
+                "simplified": "八点"
               },
               {
-                "id": "g2-confusion-1-word-3",
-                "traditional": "去",
-                "pinyin": "qù",
-                "meaning": "go"
-              },
-              {
-                "id": "g2-confusion-1-word-4",
-                "traditional": "學校",
-                "simplified": "学校",
-                "pinyin": "xuéxiào",
-                "meaning": "school",
+                "id": "g2-conf1-w3",
+                "traditional": "回家",
+                "pinyin": "huí jiā",
+                "meaning": "go home",
                 "suffix": "。"
               }
-            ]
+            ],
+            "simplified": "他八点回家。"
           }
         },
         {
           "id": "g2-confusion-today-placement",
-          "question": "Where does 今天 go when there is no action word?",
-          "answer": "It still goes right after the person: 他今天沒有課. The time never trails the rest.",
+          "question": "Where does 今天 go when the verb is negated?",
+          "answer": "Put 今天 before 沒有課: 他今天沒有課.",
           "wrongTraditional": "他沒有課今天。",
-          "wrongSimplified": "他没有课今天。",
           "right": {
             "traditional": "他今天沒有課。",
-            "simplified": "他今天没有课。",
             "pinyin": "Tā jīntiān méi yǒu kè.",
             "english": "He does not have class today.",
             "words": [
               {
-                "id": "g2-confusion-2-word-1",
+                "id": "g2-conf2-w1",
                 "traditional": "他",
                 "pinyin": "tā",
                 "meaning": "he; him"
               },
               {
-                "id": "g2-confusion-2-word-2",
+                "id": "g2-conf2-w2",
                 "traditional": "今天",
                 "pinyin": "jīntiān",
                 "meaning": "today"
               },
               {
-                "id": "g2-confusion-2-word-3",
+                "id": "g2-conf2-w3",
                 "traditional": "沒有",
-                "simplified": "没有",
                 "pinyin": "méi yǒu",
-                "meaning": "do not have; there is not"
+                "meaning": "do not have",
+                "simplified": "没有"
               },
               {
-                "id": "g2-confusion-2-word-4",
+                "id": "g2-conf2-w4",
                 "traditional": "課",
                 "pinyin": "kè",
                 "meaning": "class",
-                "suffix": "。",
-                "simplified": "课"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g2-confusion-two-times-order",
-          "question": "I have a day and a clock time — which goes first?",
-          "answer": "The bigger unit first: 今天 (the day) before 九點 (the clock time).",
-          "wrongTraditional": "他九點今天上課。",
-          "wrongSimplified": "他九点今天上课。",
-          "right": {
-            "traditional": "他今天九點去學校。",
-            "simplified": "他今天九点去学校。",
-            "pinyin": "Tā jīntiān jiǔ diǎn qù xuéxiào.",
-            "english": "He goes to school at 9:00 today.",
-            "words": [
-              {
-                "id": "g2-confusion-3-word-1",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              },
-              {
-                "id": "g2-confusion-3-word-2",
-                "traditional": "今天",
-                "pinyin": "jīntiān",
-                "meaning": "today"
-              },
-              {
-                "id": "g2-confusion-3-word-3",
-                "traditional": "九點",
-                "simplified": "九点",
-                "pinyin": "jiǔ diǎn",
-                "meaning": "9:00"
-              },
-              {
-                "id": "g2-confusion-3-word-4",
-                "traditional": "去",
-                "pinyin": "qù",
-                "meaning": "go"
-              },
-              {
-                "id": "g2-confusion-3-word-5",
-                "traditional": "學校",
-                "simplified": "学校",
-                "pinyin": "xuéxiào",
-                "meaning": "school",
+                "simplified": "课",
                 "suffix": "。"
               }
-            ]
+            ],
+            "simplified": "他今天没有课。"
           }
         }
       ]
@@ -2299,7 +2127,7 @@
               "traditional": "沒有",
               "simplified": "没有",
               "pinyin": "méi yǒu",
-              "meaning": "do not have; there is not"
+              "meaning": "do not have"
             },
             {
               "id": "g2-e2-word-4",
@@ -2352,63 +2180,10 @@
         }
       }
     ],
-    "exerciseTitle": "Build the question",
-    "exercisePreview": "Put five blocks into natural Chinese order.",
-    "exerciseInstruction": "Arrange the blocks so the time question comes before the action.",
-    "exerciseNote": "Word-order builder based on the source grammar pattern from printed page 55.",
-    "exerciseType": "unscramble",
-    "unscrambleExercise": {
-      "id": "g2-unscramble-school-time",
-      "prompt": "Build: What time do you go to school?",
-      "tiles": [
-        {
-          "id": "g2-u-school",
-          "traditional": "學校",
-          "simplified": "学校",
-          "pinyin": "xuéxiào",
-          "meaning": "school",
-          "role": "Where"
-        },
-        {
-          "id": "g2-u-you",
-          "traditional": "你",
-          "pinyin": "nǐ",
-          "meaning": "you",
-          "role": "Who"
-        },
-        {
-          "id": "g2-u-question",
-          "traditional": "？",
-          "pinyin": "",
-          "meaning": "question mark",
-          "role": "Question"
-        },
-        {
-          "id": "g2-u-go",
-          "traditional": "去",
-          "pinyin": "qù",
-          "meaning": "go",
-          "role": "Action"
-        },
-        {
-          "id": "g2-u-when",
-          "traditional": "幾點",
-          "simplified": "几点",
-          "pinyin": "jǐ diǎn",
-          "meaning": "what time",
-          "role": "When"
-        }
-      ],
-      "correctOrder": [
-        "g2-u-you",
-        "g2-u-when",
-        "g2-u-go",
-        "g2-u-school",
-        "g2-u-question"
-      ],
-      "correctFeedback": "Put 你 + 幾點 before the action 去學校.",
-      "repairFeedback": "Keep this order: who, when, action, where, question."
-    },
+    "exerciseTitle": "Answer the following questions.",
+    "exercisePreview": "Answer each question with a full sentence.",
+    "exerciseInstruction": "These questions are about you. Put the time before the action in your answer.",
+    "exerciseNote": "These are app-authored model answers; the book prints no answer key.",
     "exerciseResponseMode": "text",
     "questions": [
       {
@@ -2417,52 +2192,71 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你今天幾點下課？ B：",
-            "simplified": "A：你今天几点下课？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g2-q1-answer",
-            "answer": "我今天四點下課",
-            "answerSimplified": "我今天四点下课",
-            "acceptedAnswers": [
-              "我今天五點下課"
-            ],
-            "acceptedAnswersSimplified": [
-              "我今天五点下课"
-            ],
-            "hint": "Put 今天 and the clock time before 下課."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "你今天幾點下課？",
+            "simplified": "你今天几点下课？"
+          },
+          {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "text",
+            "traditional": "我"
+          },
+          {
+            "type": "text",
+            "traditional": "今天"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q1-hour",
+            "answer": "十",
+            "hint": "Choose the hour before 點; the model keeps 十五分.",
+            "acceptedAnswers": [
+              "七"
+            ]
+          },
+          {
+            "type": "text",
+            "traditional": "點",
+            "simplified": "点"
+          },
+          {
+            "type": "text",
+            "traditional": "十五"
+          },
+          {
+            "type": "text",
+            "traditional": "分下課。",
+            "simplified": "分下课。"
           }
         ],
         "tiles": [
           {
-            "id": "g2-q1-four",
-            "traditional": "我今天四點下課",
-            "simplified": "我今天四点下课",
-            "pinyin": "wǒ jīntiān sì diǎn xiàkè",
-            "meaning": "I finish class at 4:00 today."
+            "traditional": "十",
+            "pinyin": "shí",
+            "id": "g2-q1-tile-1",
+            "meaning": "ten"
           },
           {
-            "id": "g2-q1-five",
-            "traditional": "我今天五點下課",
-            "simplified": "我今天五点下课",
-            "pinyin": "wǒ jīntiān wǔ diǎn xiàkè",
-            "meaning": "I finish class at 5:00 today."
+            "traditional": "七",
+            "pinyin": "qī",
+            "id": "g2-q1-tile-2",
+            "meaning": "seven"
           },
           {
-            "id": "g2-q1-wrong",
-            "traditional": "我下課今天四點",
-            "simplified": "我下课今天四点",
-            "pinyin": "wǒ xiàkè jīntiān sì diǎn",
-            "meaning": "Incorrect: time follows the action."
+            "traditional": "月",
+            "pinyin": "yuè",
+            "id": "g2-q1-tile-3",
+            "meaning": "month"
           }
         ],
-        "correctFeedback": "The time block sits before 下課: 我 + 今天四點 + 下課.",
-        "repairFeedback": "Move the time phrase before the action 下課."
+        "correctFeedback": "Model answer: The time sits before the action 下課.",
+        "repairFeedback": "Choose the hour before 點; the model keeps 十五分."
       },
       {
         "id": "g2-question-2",
@@ -2470,52 +2264,58 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你星期幾不去學校？ B：",
-            "simplified": "A：你星期几不去学校？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g2-q2-answer",
-            "answer": "我星期六不去學校",
-            "answerSimplified": "我星期六不去学校",
-            "acceptedAnswers": [
-              "我星期天不去學校"
-            ],
-            "acceptedAnswersSimplified": [
-              "我星期天不去学校"
-            ],
-            "hint": "Place the weekday before 不去."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "你星期幾不去學校？",
+            "simplified": "你星期几不去学校？"
+          },
+          {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "text",
+            "traditional": "我"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q2-day",
+            "answer": "星期日",
+            "hint": "Say 我, then the weekday, then 不去學校.",
+            "acceptedAnswers": [
+              "星期天"
+            ]
+          },
+          {
+            "type": "text",
+            "traditional": "不去學校。",
+            "simplified": "不去学校。"
           }
         ],
         "tiles": [
           {
-            "id": "g2-q2-sat",
-            "traditional": "我星期六不去學校",
-            "simplified": "我星期六不去学校",
-            "pinyin": "wǒ xīngqí liù bú qù xuéxiào",
-            "meaning": "I do not go to school on Saturday."
+            "traditional": "星期日",
+            "pinyin": "xīngqí rì",
+            "id": "g2-q2-tile-1",
+            "meaning": "Sunday"
           },
           {
-            "id": "g2-q2-sun",
-            "traditional": "我星期天不去學校",
-            "simplified": "我星期天不去学校",
-            "pinyin": "wǒ xīngqí tiān bú qù xuéxiào",
-            "meaning": "I do not go to school on Sunday."
+            "traditional": "星期天",
+            "pinyin": "Xīngqítiān",
+            "id": "g2-q2-tile-2",
+            "meaning": "Sunday"
           },
           {
-            "id": "g2-q2-wrong",
-            "traditional": "我不去學校星期六",
-            "simplified": "我不去学校星期六",
-            "pinyin": "wǒ bú qù xuéxiào xīngqí liù",
-            "meaning": "Incorrect: weekday follows the action."
+            "traditional": "十",
+            "pinyin": "shí",
+            "id": "g2-q2-tile-3",
+            "meaning": "ten"
           }
         ],
-        "correctFeedback": "The weekday gives the time before the negative action 不去.",
-        "repairFeedback": "Use who + weekday + action."
+        "correctFeedback": "Model answer: The weekday comes before the action 不去學校.",
+        "repairFeedback": "Say 我, then the weekday, then 不去學校."
       },
       {
         "id": "g2-question-3",
@@ -2523,52 +2323,67 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你幾月幾號去日本？ B：",
-            "simplified": "A：你几月几号去日本？ B："
-          },
-          {
-            "type": "blank",
-            "id": "g2-q3-answer",
-            "answer": "我五月十六號去日本",
-            "answerSimplified": "我五月十六号去日本",
-            "acceptedAnswers": [
-              "我十二月七號去日本"
-            ],
-            "acceptedAnswersSimplified": [
-              "我十二月七号去日本"
-            ],
-            "hint": "Put the full date before 去日本."
+            "traditional": "A："
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "你幾月幾號去日本？",
+            "simplified": "你几月几号去日本？"
+          },
+          {
+            "type": "text",
+            "traditional": " B："
+          },
+          {
+            "type": "text",
+            "traditional": "我"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q3-month",
+            "answer": "十二",
+            "hint": "Say the month and day before the action 去日本.",
+            "acceptedAnswers": [
+              "十"
+            ]
+          },
+          {
+            "type": "text",
+            "traditional": "月"
+          },
+          {
+            "type": "text",
+            "traditional": "七"
+          },
+          {
+            "type": "text",
+            "traditional": "號去日本。",
+            "simplified": "号去日本。"
           }
         ],
         "tiles": [
           {
-            "id": "g2-q3-may",
-            "traditional": "我五月十六號去日本",
-            "simplified": "我五月十六号去日本",
-            "pinyin": "wǒ wǔ yuè shíliù hào qù Rìběn",
-            "meaning": "I go to Japan on May 16."
+            "traditional": "十二",
+            "pinyin": "shí'èr",
+            "id": "g2-q3-tile-1",
+            "meaning": "twelve"
           },
           {
-            "id": "g2-q3-dec",
-            "traditional": "我十二月七號去日本",
-            "simplified": "我十二月七号去日本",
-            "pinyin": "wǒ shí'èr yuè qī hào qù Rìběn",
-            "meaning": "I go to Japan on December 7."
+            "traditional": "十",
+            "pinyin": "shí",
+            "id": "g2-q3-tile-2",
+            "meaning": "ten"
           },
           {
-            "id": "g2-q3-wrong",
-            "traditional": "我去日本五月十六號",
-            "simplified": "我去日本五月十六号",
-            "pinyin": "wǒ qù Rìběn wǔ yuè shíliù hào",
-            "meaning": "Incorrect: date follows the action."
+            "traditional": "幾",
+            "pinyin": "jǐ",
+            "simplified": "几",
+            "id": "g2-q3-tile-3",
+            "meaning": "asks for a number"
           }
         ],
-        "correctFeedback": "The complete date comes before 去日本.",
-        "repairFeedback": "Say the date first, then the action."
+        "correctFeedback": "Model answer: The full date sits before the action 去日本.",
+        "repairFeedback": "Say the month and day before the action 去日本."
       }
     ]
   },
@@ -2786,133 +2601,200 @@
             {
               "id": "g1-question",
               "label": "Ask with 幾",
-              "traditional": "現在幾點？",
-              "simplified": "现在几点？",
-              "pinyin": "Xiànzài jǐ diǎn?",
+              "traditional": "現在幾點（幾分）？",
+              "simplified": "现在几点（几分）？",
+              "pinyin": "Xiànzài jǐ diǎn (jǐ fēn)?",
               "english": "What time is it now?",
               "note": "Replace the unknown number with 幾. Keep its time marker after it."
             }
           ],
           "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
         },
-        "patternRows": [
+        "patternRows": [],
+        "subsections": [
           {
-            "id": "g1-pattern-date",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g1-p1-five",
-                  "traditional": "五",
-                  "pinyin": "wǔ",
-                  "meaning": "five"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p1-month",
-                  "traditional": "月",
-                  "pinyin": "yuè",
-                  "meaning": "month"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p1-sixteen",
-                  "traditional": "十六",
-                  "pinyin": "shíliù",
-                  "meaning": "sixteen"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p1-date",
-                  "traditional": "號",
-                  "simplified": "号",
-                  "pinyin": "hào",
-                  "meaning": "day number in a date (spoken form)"
-                },
-                {
-                  "id": "g1-p1-date-written",
-                  "traditional": "日",
-                  "pinyin": "rì",
-                  "meaning": "day number in a date (written form)",
-                  "prefix": "/"
-                }
-              ]
+            "id": "b1l02-g01-sec-1",
+            "sectionNumber": 1,
+            "title": "Date · 月 / 號",
+            "explanation": "The month comes before the day: 五月十六號. A spoken date ends with 號, or 日 in writing.",
+            "patternColumns": [
+              "Number",
+              "月",
+              "Number",
+              "號 / 日"
             ],
-            "english": "May 16"
+            "patternColumnDetails": [
+              "Nu",
+              "月",
+              "Nu",
+              "號 / 日"
+            ],
+            "patternAccentColumn": 1,
+            "patternRows": [
+              {
+                "id": "g1-pattern-date",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g1-p1-five",
+                      "traditional": "五",
+                      "pinyin": "wǔ",
+                      "meaning": "five"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p1-month",
+                      "traditional": "月",
+                      "pinyin": "yuè",
+                      "meaning": "month"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p1-sixteen",
+                      "traditional": "十六",
+                      "pinyin": "shíliù",
+                      "meaning": "sixteen"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p1-date",
+                      "traditional": "號",
+                      "simplified": "号",
+                      "pinyin": "hào",
+                      "meaning": "day number in a date (spoken form)"
+                    },
+                    {
+                      "id": "g1-p1-date-written",
+                      "traditional": "日",
+                      "pinyin": "rì",
+                      "meaning": "day number in a date (written form)",
+                      "prefix": "/"
+                    }
+                  ]
+                ],
+                "english": "16th, May"
+              }
+            ],
+            "exampleIds": [
+              "g1-example-3"
+            ]
           },
           {
-            "id": "g1-pattern-weekday",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [],
-              [
-                {
-                  "id": "g1-p2-week",
-                  "traditional": "星期",
-                  "pinyin": "xīngqí",
-                  "meaning": "week; weekday"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p2-four",
-                  "traditional": "四",
-                  "pinyin": "sì",
-                  "meaning": "four"
-                }
-              ],
-              []
+            "id": "b1l02-g01-sec-2",
+            "sectionNumber": 2,
+            "title": "Weekday · 星期",
+            "explanation": "星期 comes first, then the number: 星期四.",
+            "patternColumns": [
+              "星期",
+              "Number"
             ],
-            "english": "Thursday"
+            "patternColumnDetails": [
+              "星期",
+              "Nu"
+            ],
+            "patternAccentColumn": 0,
+            "patternRows": [
+              {
+                "id": "g1-pattern-weekday",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g1-p2-week",
+                      "traditional": "星期",
+                      "pinyin": "xīngqí",
+                      "meaning": "week; weekday"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p2-four",
+                      "traditional": "四",
+                      "pinyin": "sì",
+                      "meaning": "four"
+                    }
+                  ]
+                ],
+                "english": "Thursday"
+              }
+            ],
+            "exampleIds": [
+              "g1-example-2"
+            ]
           },
           {
-            "id": "g1-pattern-clock",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "g1-p3-nine",
-                  "traditional": "九",
-                  "pinyin": "jiǔ",
-                  "meaning": "nine"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p3-hour",
-                  "traditional": "點",
-                  "simplified": "点",
-                  "pinyin": "diǎn",
-                  "meaning": "o’clock; hour word"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p3-twenty",
-                  "traditional": "二十",
-                  "pinyin": "èrshí",
-                  "meaning": "twenty"
-                }
-              ],
-              [
-                {
-                  "id": "g1-p3-minute",
-                  "traditional": "分",
-                  "pinyin": "fēn",
-                  "meaning": "minute"
-                }
-              ]
+            "id": "b1l02-g01-sec-3",
+            "sectionNumber": 3,
+            "title": "Clock time · 點 / 分",
+            "explanation": "Say the hour with 點, then the minute number with 分: 九點二十分.",
+            "patternColumns": [
+              "Number",
+              "點",
+              "Number",
+              "分"
             ],
-            "english": "9:20"
+            "patternColumnDetails": [
+              "Nu",
+              "點",
+              "Nu",
+              "分"
+            ],
+            "patternAccentColumn": 1,
+            "patternRows": [
+              {
+                "id": "g1-pattern-clock",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g1-p3-nine",
+                      "traditional": "九",
+                      "pinyin": "jiǔ",
+                      "meaning": "nine"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p3-hour",
+                      "traditional": "點",
+                      "simplified": "点",
+                      "pinyin": "diǎn",
+                      "meaning": "o’clock; hour word"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p3-twenty",
+                      "traditional": "二十",
+                      "pinyin": "èrshí",
+                      "meaning": "twenty"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p3-minute",
+                      "traditional": "分",
+                      "pinyin": "fēn",
+                      "meaning": "minute"
+                    }
+                  ]
+                ],
+                "english": "9:20"
+              }
+            ],
+            "exampleIds": [
+              "g1-example-1"
+            ]
           }
         ],
         "confusion": {
@@ -2920,14 +2802,14 @@
           "items": [
             {
               "id": "g1-confusion-sunday-not-week-qi",
-              "question": "How do I say Sunday?",
-              "answer": "星期天 or 星期日. Numbers one to six after 星期 give Monday to Saturday, so Sunday is not 星期七.",
-              "wrongTraditional": "今天是星期七。",
+              "question": "Where does the weekday number go?",
+              "answer": "Put the number after 星期: 星期一.",
+              "wrongTraditional": "今天是一星期。",
               "right": {
-                "traditional": "今天是星期日。",
-                "simplified": "今天是星期日。",
-                "pinyin": "Jīntiān shì xīngqí rì.",
-                "english": "Today is Sunday.",
+                "traditional": "今天是星期一。",
+                "simplified": "今天是星期一。",
+                "pinyin": "Jīntiān shì xīngqí yī.",
+                "english": "Today is Monday.",
                 "words": [
                   {
                     "id": "g1-confusion-1-word-1",
@@ -2949,9 +2831,9 @@
                   },
                   {
                     "id": "g1-confusion-1-word-4",
-                    "traditional": "日",
-                    "pinyin": "rì",
-                    "meaning": "day number in a date (written form)",
+                    "traditional": "一",
+                    "pinyin": "yī",
+                    "meaning": "one; Monday after 星期",
                     "suffix": "。"
                   }
                 ]
@@ -3316,10 +3198,10 @@
             }
           }
         ],
-        "exerciseTitle": "Choose a correct time answer",
+        "exerciseTitle": "Answer the following questions.",
         "exercisePreview": "Answer the questions with one correct time phrase.",
         "exerciseInstruction": "These questions usually ask about your real time and date. Pick any answer that matches the kind of time asked for.",
-        "exerciseNote": "From the open-response exercise on printed page 55. These are example answers, not a textbook answer key.",
+        "exerciseNote": "These are app-authored model answers; the book prints no answer key.",
         "exerciseResponseMode": "text",
         "questions": [
           {
@@ -3328,51 +3210,67 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：現在幾點（幾分）？ B：",
-                "simplified": "A：现在几点（几分）？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g1-q1-answer",
-                "answer": "現在十點十五分",
-                "answerSimplified": "现在十点十五分",
-                "acceptedAnswers": [
-                  "現在九點"
-                ],
-                "acceptedAnswersSimplified": [
-                  "现在九点"
-                ],
-                "hint": "Answer with a clock time, not a weekday or date."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "現在幾點（幾分）？",
+                "simplified": "现在几点（几分）？"
+              },
+              {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "text",
+                "traditional": "現在",
+                "simplified": "现在"
+              },
+              {
+                "type": "blank",
+                "id": "g1-q1-hour",
+                "answer": "十",
+                "hint": "Choose the hour before 點; the model keeps 十五分.",
+                "acceptedAnswers": [
+                  "七"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "點",
+                "simplified": "点"
+              },
+              {
+                "type": "text",
+                "traditional": "十五"
+              },
+              {
+                "type": "text",
+                "traditional": "分。"
               }
             ],
             "tiles": [
               {
-                "id": "g1-q1-ten",
-                "traditional": "現在十點十五分",
-                "simplified": "现在十点十五分",
-                "pinyin": "xiànzài shí diǎn shíwǔ fēn",
-                "meaning": "It is 10:15 now."
+                "traditional": "十",
+                "pinyin": "shí",
+                "id": "g1-q1-tile-1",
+                "meaning": "ten"
               },
               {
-                "id": "g1-q1-nine",
-                "traditional": "現在九點",
-                "simplified": "现在九点",
-                "pinyin": "xiànzài jiǔ diǎn",
-                "meaning": "It is 9:00 now."
+                "traditional": "七",
+                "pinyin": "qī",
+                "id": "g1-q1-tile-2",
+                "meaning": "seven"
               },
               {
-                "id": "g1-q1-weekday",
-                "traditional": "今天星期一",
-                "pinyin": "jīntiān xīngqí yī",
-                "meaning": "Today is Monday."
+                "traditional": "月",
+                "pinyin": "yuè",
+                "id": "g1-q1-tile-3",
+                "meaning": "month"
               }
             ],
-            "correctFeedback": "A clock answer uses 點 after the hour and 分 after the minutes.",
-            "repairFeedback": "The question asks 幾點, so choose a clock-time answer."
+            "correctFeedback": "Model answer: A clock answer puts the hour before 點 and the minutes before 分.",
+            "repairFeedback": "Choose the hour before 點; the model keeps 十五分."
           },
           {
             "id": "g1-question-2",
@@ -3380,17 +3278,17 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：今天星期幾？ B：",
-                "simplified": "A：今天星期几？ B："
+                "traditional": "A：今天星期幾？ B：今天星期",
+                "simplified": "A：今天星期几？ B：今天星期"
               },
               {
                 "type": "blank",
-                "id": "g1-q2-answer",
-                "answer": "今天星期一",
+                "id": "g1-q2-day",
+                "answer": "一",
                 "acceptedAnswers": [
-                  "今天星期五"
+                  "四"
                 ],
-                "hint": "Answer with 星期 plus a weekday."
+                "hint": "Put the weekday number after 星期."
               },
               {
                 "type": "text",
@@ -3399,27 +3297,26 @@
             ],
             "tiles": [
               {
-                "id": "g1-q2-mon",
-                "traditional": "今天星期一",
-                "pinyin": "jīntiān xīngqí yī",
-                "meaning": "Today is Monday."
+                "id": "g1-q2-tile-1",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one; Monday after 星期"
               },
               {
-                "id": "g1-q2-fri",
-                "traditional": "今天星期五",
-                "pinyin": "jīntiān xīngqí wǔ",
-                "meaning": "Today is Friday."
+                "id": "g1-q2-tile-2",
+                "traditional": "四",
+                "pinyin": "sì",
+                "meaning": "four; Thursday after 星期"
               },
               {
-                "id": "g1-q2-time",
-                "traditional": "現在九點",
-                "simplified": "现在九点",
-                "pinyin": "xiànzài jiǔ diǎn",
-                "meaning": "It is 9:00 now."
+                "id": "g1-q2-tile-3",
+                "traditional": "七",
+                "pinyin": "qī",
+                "meaning": "seven"
               }
             ],
-            "correctFeedback": "星期 marks the weekday. The number after it names the day.",
-            "repairFeedback": "The question asks 星期幾, not the clock time."
+            "correctFeedback": "Model answer: The day number or day word follows 星期.",
+            "repairFeedback": "Use 一 to 六 after 星期 for Monday to Saturday."
           },
           {
             "id": "g1-question-3",
@@ -3427,52 +3324,67 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：今天幾月幾號？ B：",
-                "simplified": "A：今天几月几号？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g1-q3-answer",
-                "answer": "今天十二月七號",
-                "answerSimplified": "今天十二月七号",
-                "acceptedAnswers": [
-                  "今天五月十六號"
-                ],
-                "acceptedAnswersSimplified": [
-                  "今天五月十六号"
-                ],
-                "hint": "Put the month before the date."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "今天幾月幾號？",
+                "simplified": "今天几月几号？"
+              },
+              {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "blank",
+                "id": "g1-q3-month",
+                "answer": "十二",
+                "hint": "Put the month before 月 and the day after it, ending with 號.",
+                "acceptedAnswers": [
+                  "十"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "月"
+              },
+              {
+                "type": "text",
+                "traditional": "七"
+              },
+              {
+                "type": "text",
+                "traditional": "號。",
+                "simplified": "号。"
               }
             ],
             "tiles": [
               {
-                "id": "g1-q3-dec",
-                "traditional": "今天十二月七號",
-                "simplified": "今天十二月七号",
-                "pinyin": "jīntiān shí'èr yuè qī hào",
-                "meaning": "Today is December 7."
+                "traditional": "十二",
+                "pinyin": "shí'èr",
+                "id": "g1-q3-tile-1",
+                "meaning": "twelve"
               },
               {
-                "id": "g1-q3-may",
-                "traditional": "今天五月十六號",
-                "simplified": "今天五月十六号",
-                "pinyin": "jīntiān wǔ yuè shíliù hào",
-                "meaning": "Today is May 16."
+                "traditional": "十",
+                "pinyin": "shí",
+                "id": "g1-q3-tile-2",
+                "meaning": "ten"
               },
               {
-                "id": "g1-q3-reversed",
-                "traditional": "今天七號十二月",
-                "simplified": "今天七号十二月",
-                "pinyin": "jīntiān qī hào shí'èr yuè",
-                "meaning": "Incorrect order: date before month."
+                "traditional": "點",
+                "pinyin": "diǎn",
+                "simplified": "点",
+                "id": "g1-q3-tile-3",
+                "meaning": "hour word"
               }
             ],
-            "correctFeedback": "Chinese dates move from the larger unit to the smaller one: month before date.",
-            "repairFeedback": "Place 月 before the date number and end the spoken date with 號."
+            "correctFeedback": "Model answer: The month comes first, then the day.",
+            "repairFeedback": "Put the month before 月 and the day after it, ending with 號."
           }
         ]
       },
@@ -3491,7 +3403,7 @@
           55
         ],
         "audioReference": "02-1-3",
-        "explanation": "Put the time after the person or topic but before the action. Think: who, when, then what happens.",
+        "explanation": "Put the time before the verb, as in 他八點回家。",
         "focusTerms": [
           "今天",
           "幾點",
@@ -3569,7 +3481,7 @@
             "traditional": "沒有",
             "simplified": "没有",
             "pinyin": "méi yǒu",
-            "meaning": "do not have; there is not"
+            "meaning": "do not have"
           },
           {
             "id": "b1l02-g02-glossary-12",
@@ -3628,12 +3540,36 @@
             "simplified": "图书馆",
             "pinyin": "túshūguǎn",
             "meaning": "library"
+          },
+          {
+            "id": "b1l02-g02-glossary-21",
+            "traditional": "四",
+            "pinyin": "sì",
+            "meaning": "four"
+          },
+          {
+            "id": "b1l02-g02-glossary-22",
+            "traditional": "五",
+            "pinyin": "wǔ",
+            "meaning": "five"
+          },
+          {
+            "id": "b1l02-g02-glossary-23",
+            "traditional": "六",
+            "pinyin": "liù",
+            "meaning": "six"
+          },
+          {
+            "id": "b1l02-g02-glossary-24",
+            "traditional": "星期天",
+            "pinyin": "Xīngqítiān",
+            "meaning": "Sunday"
           }
         ],
         "pattern": "Subject + time word + verb",
         "patternColumns": [
           "Subject",
-          "Time",
+          "Time word",
           "Verb"
         ],
         "patternColumnDetails": [
@@ -3644,36 +3580,35 @@
         "patternAccentColumn": 1,
         "discoveryLab": {
           "title": "Give the listener the time before the event",
-          "description": "The time word comes before the action that follows.",
+          "description": "The book’s table: the time word sits between the subject and the action.",
           "prompt": "Where does the time block belong?",
           "choices": [
             {
               "id": "g2-correct",
-              "label": "Who · when · action",
+              "label": "Time before the action",
               "traditional": "我九點三十分上課。",
-              "simplified": "我九点三十分上课。",
               "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
               "english": "I start class at 9:30.",
-              "note": "九點三十分 sits after 我 and immediately before 上課."
+              "note": "The time 九點三十分 sits right before the action 上課.",
+              "simplified": "我九点三十分上课。"
+            },
+            {
+              "id": "g2-negative",
+              "label": "Time with 沒有",
+              "traditional": "他今天沒有課。",
+              "pinyin": "Tā jīntiān méi yǒu kè.",
+              "english": "He does not have class today.",
+              "note": "After 他 comes the time 今天, then 沒有課.",
+              "simplified": "他今天没有课。"
             },
             {
               "id": "g2-question",
               "label": "Ask when",
               "traditional": "你幾點去圖書館？",
-              "simplified": "你几点去图书馆？",
               "pinyin": "Nǐ jǐ diǎn qù túshūguǎn?",
               "english": "What time do you go to the library?",
-              "note": "幾點 occupies the same time position as a clock answer."
-            },
-            {
-              "id": "g2-repair",
-              "label": "Repair the order",
-              "traditional": "我上課九點。 → 我九點上課。",
-              "simplified": "我上课九点。 → 我九点上课。",
-              "pinyin": "Wǒ shàngkè jiǔ diǎn. → Wǒ jiǔ diǎn shàngkè.",
-              "english": "Repair it: I start class at 9:00.",
-              "note": "Move 九點 in front of the action 上課.",
-              "isCorrection": true
+              "note": "幾點 fills the same time position as a clock answer.",
+              "simplified": "你几点去图书馆？"
             }
           ],
           "takeaway": "Say who, then when, then the action."
@@ -3707,81 +3642,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "He goes home at 8:00."
-          },
-          {
-            "id": "g2-pattern-2",
-            "subject": [
-              {
-                "id": "g2-p2-he",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p2-today",
-                "traditional": "今天",
-                "pinyin": "jīntiān",
-                "meaning": "today"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p2-no",
-                "traditional": "沒有",
-                "simplified": "没有",
-                "pinyin": "méi yǒu",
-                "meaning": "do not have; there is not"
-              },
-              {
-                "id": "g2-p2-class",
-                "traditional": "課",
-                "pinyin": "kè",
-                "meaning": "class",
-                "suffix": "。",
-                "simplified": "课"
-              }
-            ],
-            "english": "He does not have class today."
-          },
-          {
-            "id": "g2-pattern-3",
-            "subject": [
-              {
-                "id": "g2-p3-you",
-                "traditional": "你",
-                "pinyin": "nǐ",
-                "meaning": "you"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p3-when",
-                "traditional": "幾點",
-                "simplified": "几点",
-                "pinyin": "jǐ diǎn",
-                "meaning": "what time"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p3-go",
-                "traditional": "去",
-                "pinyin": "qù",
-                "meaning": "go"
-              },
-              {
-                "id": "g2-p3-library",
-                "traditional": "圖書館",
-                "simplified": "图书馆",
-                "pinyin": "túshūguǎn",
-                "meaning": "library",
-                "suffix": "？"
-              }
-            ],
-            "english": "What time do you go to the library?"
+            "english": "He goes home at 8 o’clock."
           }
         ],
         "confusion": {
@@ -3790,133 +3651,76 @@
             {
               "id": "g2-confusion-time-after-action",
               "question": "Why can’t the time go at the end, like in English?",
-              "answer": "Chinese puts the time right before the action word. Say 我九點去學校, not 我去學校九點.",
-              "wrongTraditional": "我去學校九點。",
-              "wrongSimplified": "我去学校九点。",
+              "answer": "The time word always comes before the verb: 他八點回家, never 他回家八點.",
+              "wrongTraditional": "他回家八點。",
               "right": {
-                "traditional": "我九點去學校。",
-                "simplified": "我九点去学校。",
-                "pinyin": "Wǒ jiǔ diǎn qù xuéxiào.",
-                "english": "I go to school at 9:00.",
+                "traditional": "他八點回家。",
+                "pinyin": "Tā bā diǎn huí jiā.",
+                "english": "He goes home at 8 o’clock.",
                 "words": [
                   {
-                    "id": "g2-confusion-1-word-1",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me"
+                    "id": "g2-conf1-w1",
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he; him"
                   },
                   {
-                    "id": "g2-confusion-1-word-2",
-                    "traditional": "九點",
-                    "simplified": "九点",
-                    "pinyin": "jiǔ diǎn",
-                    "meaning": "9:00"
+                    "id": "g2-conf1-w2",
+                    "traditional": "八點",
+                    "pinyin": "bā diǎn",
+                    "meaning": "8:00",
+                    "simplified": "八点"
                   },
                   {
-                    "id": "g2-confusion-1-word-3",
-                    "traditional": "去",
-                    "pinyin": "qù",
-                    "meaning": "go"
-                  },
-                  {
-                    "id": "g2-confusion-1-word-4",
-                    "traditional": "學校",
-                    "simplified": "学校",
-                    "pinyin": "xuéxiào",
-                    "meaning": "school",
+                    "id": "g2-conf1-w3",
+                    "traditional": "回家",
+                    "pinyin": "huí jiā",
+                    "meaning": "go home",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "simplified": "他八点回家。"
               }
             },
             {
               "id": "g2-confusion-today-placement",
-              "question": "Where does 今天 go when there is no action word?",
-              "answer": "It still goes right after the person: 他今天沒有課. The time never trails the rest.",
+              "question": "Where does 今天 go when the verb is negated?",
+              "answer": "Put 今天 before 沒有課: 他今天沒有課.",
               "wrongTraditional": "他沒有課今天。",
-              "wrongSimplified": "他没有课今天。",
               "right": {
                 "traditional": "他今天沒有課。",
-                "simplified": "他今天没有课。",
                 "pinyin": "Tā jīntiān méi yǒu kè.",
                 "english": "He does not have class today.",
                 "words": [
                   {
-                    "id": "g2-confusion-2-word-1",
+                    "id": "g2-conf2-w1",
                     "traditional": "他",
                     "pinyin": "tā",
                     "meaning": "he; him"
                   },
                   {
-                    "id": "g2-confusion-2-word-2",
+                    "id": "g2-conf2-w2",
                     "traditional": "今天",
                     "pinyin": "jīntiān",
                     "meaning": "today"
                   },
                   {
-                    "id": "g2-confusion-2-word-3",
+                    "id": "g2-conf2-w3",
                     "traditional": "沒有",
-                    "simplified": "没有",
                     "pinyin": "méi yǒu",
-                    "meaning": "do not have; there is not"
+                    "meaning": "do not have",
+                    "simplified": "没有"
                   },
                   {
-                    "id": "g2-confusion-2-word-4",
+                    "id": "g2-conf2-w4",
                     "traditional": "課",
                     "pinyin": "kè",
                     "meaning": "class",
-                    "suffix": "。",
-                    "simplified": "课"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g2-confusion-two-times-order",
-              "question": "I have a day and a clock time — which goes first?",
-              "answer": "The bigger unit first: 今天 (the day) before 九點 (the clock time).",
-              "wrongTraditional": "他九點今天上課。",
-              "wrongSimplified": "他九点今天上课。",
-              "right": {
-                "traditional": "他今天九點去學校。",
-                "simplified": "他今天九点去学校。",
-                "pinyin": "Tā jīntiān jiǔ diǎn qù xuéxiào.",
-                "english": "He goes to school at 9:00 today.",
-                "words": [
-                  {
-                    "id": "g2-confusion-3-word-1",
-                    "traditional": "他",
-                    "pinyin": "tā",
-                    "meaning": "he; him"
-                  },
-                  {
-                    "id": "g2-confusion-3-word-2",
-                    "traditional": "今天",
-                    "pinyin": "jīntiān",
-                    "meaning": "today"
-                  },
-                  {
-                    "id": "g2-confusion-3-word-3",
-                    "traditional": "九點",
-                    "simplified": "九点",
-                    "pinyin": "jiǔ diǎn",
-                    "meaning": "9:00"
-                  },
-                  {
-                    "id": "g2-confusion-3-word-4",
-                    "traditional": "去",
-                    "pinyin": "qù",
-                    "meaning": "go"
-                  },
-                  {
-                    "id": "g2-confusion-3-word-5",
-                    "traditional": "學校",
-                    "simplified": "学校",
-                    "pinyin": "xuéxiào",
-                    "meaning": "school",
+                    "simplified": "课",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "simplified": "他今天没有课。"
               }
             }
           ]
@@ -3981,7 +3785,7 @@
                   "traditional": "沒有",
                   "simplified": "没有",
                   "pinyin": "méi yǒu",
-                  "meaning": "do not have; there is not"
+                  "meaning": "do not have"
                 },
                 {
                   "id": "g2-e2-word-4",
@@ -4034,63 +3838,10 @@
             }
           }
         ],
-        "exerciseTitle": "Build the question",
-        "exercisePreview": "Put five blocks into natural Chinese order.",
-        "exerciseInstruction": "Arrange the blocks so the time question comes before the action.",
-        "exerciseNote": "Word-order builder based on the source grammar pattern from printed page 55.",
-        "exerciseType": "unscramble",
-        "unscrambleExercise": {
-          "id": "g2-unscramble-school-time",
-          "prompt": "Build: What time do you go to school?",
-          "tiles": [
-            {
-              "id": "g2-u-school",
-              "traditional": "學校",
-              "simplified": "学校",
-              "pinyin": "xuéxiào",
-              "meaning": "school",
-              "role": "Where"
-            },
-            {
-              "id": "g2-u-you",
-              "traditional": "你",
-              "pinyin": "nǐ",
-              "meaning": "you",
-              "role": "Who"
-            },
-            {
-              "id": "g2-u-question",
-              "traditional": "？",
-              "pinyin": "",
-              "meaning": "question mark",
-              "role": "Question"
-            },
-            {
-              "id": "g2-u-go",
-              "traditional": "去",
-              "pinyin": "qù",
-              "meaning": "go",
-              "role": "Action"
-            },
-            {
-              "id": "g2-u-when",
-              "traditional": "幾點",
-              "simplified": "几点",
-              "pinyin": "jǐ diǎn",
-              "meaning": "what time",
-              "role": "When"
-            }
-          ],
-          "correctOrder": [
-            "g2-u-you",
-            "g2-u-when",
-            "g2-u-go",
-            "g2-u-school",
-            "g2-u-question"
-          ],
-          "correctFeedback": "Put 你 + 幾點 before the action 去學校.",
-          "repairFeedback": "Keep this order: who, when, action, where, question."
-        },
+        "exerciseTitle": "Answer the following questions.",
+        "exercisePreview": "Answer each question with a full sentence.",
+        "exerciseInstruction": "These questions are about you. Put the time before the action in your answer.",
+        "exerciseNote": "These are app-authored model answers; the book prints no answer key.",
         "exerciseResponseMode": "text",
         "questions": [
           {
@@ -4099,52 +3850,71 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你今天幾點下課？ B：",
-                "simplified": "A：你今天几点下课？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g2-q1-answer",
-                "answer": "我今天四點下課",
-                "answerSimplified": "我今天四点下课",
-                "acceptedAnswers": [
-                  "我今天五點下課"
-                ],
-                "acceptedAnswersSimplified": [
-                  "我今天五点下课"
-                ],
-                "hint": "Put 今天 and the clock time before 下課."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "你今天幾點下課？",
+                "simplified": "你今天几点下课？"
+              },
+              {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q1-hour",
+                "answer": "十",
+                "hint": "Choose the hour before 點; the model keeps 十五分.",
+                "acceptedAnswers": [
+                  "七"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "點",
+                "simplified": "点"
+              },
+              {
+                "type": "text",
+                "traditional": "十五"
+              },
+              {
+                "type": "text",
+                "traditional": "分下課。",
+                "simplified": "分下课。"
               }
             ],
             "tiles": [
               {
-                "id": "g2-q1-four",
-                "traditional": "我今天四點下課",
-                "simplified": "我今天四点下课",
-                "pinyin": "wǒ jīntiān sì diǎn xiàkè",
-                "meaning": "I finish class at 4:00 today."
+                "traditional": "十",
+                "pinyin": "shí",
+                "id": "g2-q1-tile-1",
+                "meaning": "ten"
               },
               {
-                "id": "g2-q1-five",
-                "traditional": "我今天五點下課",
-                "simplified": "我今天五点下课",
-                "pinyin": "wǒ jīntiān wǔ diǎn xiàkè",
-                "meaning": "I finish class at 5:00 today."
+                "traditional": "七",
+                "pinyin": "qī",
+                "id": "g2-q1-tile-2",
+                "meaning": "seven"
               },
               {
-                "id": "g2-q1-wrong",
-                "traditional": "我下課今天四點",
-                "simplified": "我下课今天四点",
-                "pinyin": "wǒ xiàkè jīntiān sì diǎn",
-                "meaning": "Incorrect: time follows the action."
+                "traditional": "月",
+                "pinyin": "yuè",
+                "id": "g2-q1-tile-3",
+                "meaning": "month"
               }
             ],
-            "correctFeedback": "The time block sits before 下課: 我 + 今天四點 + 下課.",
-            "repairFeedback": "Move the time phrase before the action 下課."
+            "correctFeedback": "Model answer: The time sits before the action 下課.",
+            "repairFeedback": "Choose the hour before 點; the model keeps 十五分."
           },
           {
             "id": "g2-question-2",
@@ -4152,52 +3922,58 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你星期幾不去學校？ B：",
-                "simplified": "A：你星期几不去学校？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g2-q2-answer",
-                "answer": "我星期六不去學校",
-                "answerSimplified": "我星期六不去学校",
-                "acceptedAnswers": [
-                  "我星期天不去學校"
-                ],
-                "acceptedAnswersSimplified": [
-                  "我星期天不去学校"
-                ],
-                "hint": "Place the weekday before 不去."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "你星期幾不去學校？",
+                "simplified": "你星期几不去学校？"
+              },
+              {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q2-day",
+                "answer": "星期日",
+                "hint": "Say 我, then the weekday, then 不去學校.",
+                "acceptedAnswers": [
+                  "星期天"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不去學校。",
+                "simplified": "不去学校。"
               }
             ],
             "tiles": [
               {
-                "id": "g2-q2-sat",
-                "traditional": "我星期六不去學校",
-                "simplified": "我星期六不去学校",
-                "pinyin": "wǒ xīngqí liù bú qù xuéxiào",
-                "meaning": "I do not go to school on Saturday."
+                "traditional": "星期日",
+                "pinyin": "xīngqí rì",
+                "id": "g2-q2-tile-1",
+                "meaning": "Sunday"
               },
               {
-                "id": "g2-q2-sun",
-                "traditional": "我星期天不去學校",
-                "simplified": "我星期天不去学校",
-                "pinyin": "wǒ xīngqí tiān bú qù xuéxiào",
-                "meaning": "I do not go to school on Sunday."
+                "traditional": "星期天",
+                "pinyin": "Xīngqítiān",
+                "id": "g2-q2-tile-2",
+                "meaning": "Sunday"
               },
               {
-                "id": "g2-q2-wrong",
-                "traditional": "我不去學校星期六",
-                "simplified": "我不去学校星期六",
-                "pinyin": "wǒ bú qù xuéxiào xīngqí liù",
-                "meaning": "Incorrect: weekday follows the action."
+                "traditional": "十",
+                "pinyin": "shí",
+                "id": "g2-q2-tile-3",
+                "meaning": "ten"
               }
             ],
-            "correctFeedback": "The weekday gives the time before the negative action 不去.",
-            "repairFeedback": "Use who + weekday + action."
+            "correctFeedback": "Model answer: The weekday comes before the action 不去學校.",
+            "repairFeedback": "Say 我, then the weekday, then 不去學校."
           },
           {
             "id": "g2-question-3",
@@ -4205,52 +3981,67 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你幾月幾號去日本？ B：",
-                "simplified": "A：你几月几号去日本？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g2-q3-answer",
-                "answer": "我五月十六號去日本",
-                "answerSimplified": "我五月十六号去日本",
-                "acceptedAnswers": [
-                  "我十二月七號去日本"
-                ],
-                "acceptedAnswersSimplified": [
-                  "我十二月七号去日本"
-                ],
-                "hint": "Put the full date before 去日本."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "你幾月幾號去日本？",
+                "simplified": "你几月几号去日本？"
+              },
+              {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q3-month",
+                "answer": "十二",
+                "hint": "Say the month and day before the action 去日本.",
+                "acceptedAnswers": [
+                  "十"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "月"
+              },
+              {
+                "type": "text",
+                "traditional": "七"
+              },
+              {
+                "type": "text",
+                "traditional": "號去日本。",
+                "simplified": "号去日本。"
               }
             ],
             "tiles": [
               {
-                "id": "g2-q3-may",
-                "traditional": "我五月十六號去日本",
-                "simplified": "我五月十六号去日本",
-                "pinyin": "wǒ wǔ yuè shíliù hào qù Rìběn",
-                "meaning": "I go to Japan on May 16."
+                "traditional": "十二",
+                "pinyin": "shí'èr",
+                "id": "g2-q3-tile-1",
+                "meaning": "twelve"
               },
               {
-                "id": "g2-q3-dec",
-                "traditional": "我十二月七號去日本",
-                "simplified": "我十二月七号去日本",
-                "pinyin": "wǒ shí'èr yuè qī hào qù Rìběn",
-                "meaning": "I go to Japan on December 7."
+                "traditional": "十",
+                "pinyin": "shí",
+                "id": "g2-q3-tile-2",
+                "meaning": "ten"
               },
               {
-                "id": "g2-q3-wrong",
-                "traditional": "我去日本五月十六號",
-                "simplified": "我去日本五月十六号",
-                "pinyin": "wǒ qù Rìběn wǔ yuè shíliù hào",
-                "meaning": "Incorrect: date follows the action."
+                "traditional": "幾",
+                "pinyin": "jǐ",
+                "simplified": "几",
+                "id": "g2-q3-tile-3",
+                "meaning": "asks for a number"
               }
             ],
-            "correctFeedback": "The complete date comes before 去日本.",
-            "repairFeedback": "Say the date first, then the action."
+            "correctFeedback": "Model answer: The full date sits before the action 去日本.",
+            "repairFeedback": "Say the month and day before the action 去日本."
           }
         ]
       },
@@ -4269,7 +4060,7 @@
           56
         ],
         "audioReference": "02-1-3",
-        "explanation": "Use 有 before the person or thing someone has. To say “do not have,” replace 有 with 沒有. Never use 不有.",
+        "explanation": "有 says what someone has. To say “do not have,” replace 有 with 沒有. Never negate 有 with 不.",
         "focusTerms": [
           "有",
           "沒有",
@@ -4311,21 +4102,21 @@
           {
             "id": "b1l02-g03-glossary-6",
             "traditional": "王先生",
-            "pinyin": "Wáng xiānsheng",
+            "pinyin": "Wáng xiānshēng",
             "meaning": "Mr. Wang"
           },
           {
             "id": "b1l02-g03-glossary-7",
             "traditional": "有",
             "pinyin": "yǒu",
-            "meaning": "have; there is"
+            "meaning": "have"
           },
           {
             "id": "b1l02-g03-glossary-8",
             "traditional": "沒有",
             "simplified": "没有",
             "pinyin": "méi yǒu",
-            "meaning": "do not have; there is not"
+            "meaning": "do not have"
           },
           {
             "id": "b1l02-g03-glossary-9",
@@ -4444,7 +4235,7 @@
         "patternAccentColumn": 1,
         "discoveryLab": {
           "title": "有 has its own negative partner",
-          "description": "Change only the middle block to switch between having and not having.",
+          "description": "Switch between having and not having by changing only the middle block.",
           "prompt": "Does she have a Taiwanese friend?",
           "choices": [
             {
@@ -4453,26 +4244,26 @@
               "traditional": "她有台灣朋友。",
               "pinyin": "Tā yǒu Táiwān péngyǒu.",
               "english": "She has a Taiwanese friend.",
-              "note": "有 links her to the friend she has."
+              "note": "有 sits between the person and the thing they have.",
+              "simplified": "她有台湾朋友。"
+            },
+            {
+              "id": "g3-new",
+              "label": "New classmate",
+              "traditional": "我們有新同學。",
+              "pinyin": "Wǒmen yǒu xīn tóngxué.",
+              "english": "We have a new classmate.",
+              "note": "Same shape: person, then 有, then the thing.",
+              "simplified": "我们有新同学。"
             },
             {
               "id": "g3-negative",
               "label": "Does not have · 沒有",
-              "traditional": "她沒有台灣朋友。",
-              "simplified": "她没有台湾朋友。",
-              "pinyin": "Tā méi yǒu Táiwān péngyǒu.",
-              "english": "She does not have a Taiwanese friend.",
-              "note": "沒有 replaces 有 as one negative unit."
-            },
-            {
-              "id": "g3-repair",
-              "label": "Repair · not 不有",
-              "traditional": "她不有朋友。 → 她沒有朋友。",
-              "simplified": "她不有朋友。 → 她没有朋友。",
-              "pinyin": "Tā bù yǒu péngyǒu. → Tā méi yǒu péngyǒu.",
-              "english": "Repair it: She does not have a friend.",
-              "note": "Chinese negates 有 with 沒有, not 不.",
-              "isCorrection": true
+              "traditional": "王先生沒有孩子。",
+              "pinyin": "Wáng xiānshēng méi yǒu háizi.",
+              "english": "Mr. Wang does not have children.",
+              "note": "Negate 有 with 沒有, never with 不.",
+              "simplified": "王先生没有孩子。"
             }
           ],
           "takeaway": "有 becomes 沒有 in a negative sentence."
@@ -4493,7 +4284,7 @@
                 "id": "g3-p1-have",
                 "traditional": "有",
                 "pinyin": "yǒu",
-                "meaning": "have; there is"
+                "meaning": "have"
               }
             ],
             "complement": [
@@ -4513,73 +4304,6 @@
               }
             ],
             "english": "She has a Taiwanese friend."
-          },
-          {
-            "id": "g3-pattern-2",
-            "subject": [
-              {
-                "id": "g3-p2-we",
-                "traditional": "我們",
-                "simplified": "我们",
-                "pinyin": "wǒmen",
-                "meaning": "we; us"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g3-p2-have",
-                "traditional": "有",
-                "pinyin": "yǒu",
-                "meaning": "have; there is"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g3-p2-new",
-                "traditional": "新",
-                "pinyin": "xīn",
-                "meaning": "new"
-              },
-              {
-                "id": "g3-p2-classmate",
-                "traditional": "同學",
-                "simplified": "同学",
-                "pinyin": "tóngxué",
-                "meaning": "classmate",
-                "suffix": "。"
-              }
-            ],
-            "english": "We have a new classmate."
-          },
-          {
-            "id": "g3-pattern-3",
-            "subject": [
-              {
-                "id": "g3-p3-mr-wang",
-                "traditional": "王先生",
-                "pinyin": "Wáng xiānsheng",
-                "meaning": "Mr. Wang"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g3-p3-no-have",
-                "traditional": "沒有",
-                "simplified": "没有",
-                "pinyin": "méi yǒu",
-                "meaning": "do not have; there is not"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g3-p3-child",
-                "traditional": "孩子",
-                "pinyin": "háizi",
-                "meaning": "child; children",
-                "suffix": "。"
-              }
-            ],
-            "english": "Mr. Wang does not have children."
           }
         ],
         "confusion": {
@@ -4589,120 +4313,76 @@
               "id": "g3-confusion-bu-you",
               "question": "Why can’t I say 不有?",
               "answer": "有 takes its own negative partner, 沒有. Never put 不 in front of 有.",
-              "wrongTraditional": "她不有朋友。",
+              "wrongTraditional": "王先生不有孩子。",
               "right": {
-                "traditional": "她沒有朋友。",
-                "simplified": "她没有朋友。",
-                "pinyin": "Tā méi yǒu péngyǒu.",
-                "english": "She does not have a friend.",
+                "traditional": "王先生沒有孩子。",
+                "pinyin": "Wáng xiānshēng méi yǒu háizi.",
+                "english": "Mr. Wang does not have children.",
                 "words": [
                   {
-                    "id": "g3-confusion-1-word-1",
+                    "id": "g3-conf1-w1",
+                    "traditional": "王先生",
+                    "pinyin": "Wáng xiānshēng",
+                    "meaning": "Mr. Wang"
+                  },
+                  {
+                    "id": "g3-conf1-w2",
+                    "traditional": "沒有",
+                    "pinyin": "méi yǒu",
+                    "meaning": "do not have",
+                    "simplified": "没有"
+                  },
+                  {
+                    "id": "g3-conf1-w3",
+                    "traditional": "孩子",
+                    "pinyin": "háizi",
+                    "meaning": "child; children",
+                    "suffix": "。"
+                  }
+                ],
+                "simplified": "王先生没有孩子。"
+              }
+            },
+            {
+              "id": "g3-confusion-shi-vs-you",
+              "question": "Can 是 and 有 both connect these words?",
+              "answer": "Use 有 alone to say what she has: 她有台灣朋友.",
+              "wrongTraditional": "她有是台灣朋友。",
+              "right": {
+                "traditional": "她有台灣朋友。",
+                "pinyin": "Tā yǒu Táiwān péngyǒu.",
+                "english": "She has a Taiwanese friend.",
+                "words": [
+                  {
+                    "id": "g3-conf2-w1",
                     "traditional": "她",
                     "pinyin": "tā",
                     "meaning": "she; her"
                   },
                   {
-                    "id": "g3-confusion-1-word-2",
-                    "traditional": "沒有",
-                    "simplified": "没有",
-                    "pinyin": "méi yǒu",
-                    "meaning": "do not have; there is not"
+                    "id": "g3-conf2-w2",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have"
                   },
                   {
-                    "id": "g3-confusion-1-word-3",
+                    "id": "g3-conf2-w3",
+                    "traditional": "台灣",
+                    "pinyin": "Táiwān",
+                    "meaning": "Taiwan",
+                    "simplified": "台湾"
+                  },
+                  {
+                    "id": "g3-conf2-w4",
                     "traditional": "朋友",
                     "pinyin": "péngyǒu",
                     "meaning": "friend",
                     "suffix": "。"
                   }
-                ]
-              }
-            },
-            {
-              "id": "g3-confusion-shi-vs-you",
-              "question": "Can I say 我是手機 to mean “I have a phone”?",
-              "answer": "No — 是 links an identity, 有 says what you have. Say 我有手機.",
-              "wrongTraditional": "我是手機。",
-              "wrongSimplified": "我是手机。",
-              "right": {
-                "traditional": "我有手機。",
-                "simplified": "我有手机。",
-                "pinyin": "Wǒ yǒu shǒujī.",
-                "english": "I have a cell phone.",
-                "words": [
-                  {
-                    "id": "g3-confusion-2-word-1",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me"
-                  },
-                  {
-                    "id": "g3-confusion-2-word-2",
-                    "traditional": "有",
-                    "pinyin": "yǒu",
-                    "meaning": "have; there is"
-                  },
-                  {
-                    "id": "g3-confusion-2-word-3",
-                    "traditional": "手機",
-                    "simplified": "手机",
-                    "pinyin": "shǒujī",
-                    "meaning": "cell phone",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g3-confusion-shi-yes-answer",
-              "question": "Can I answer a 有…嗎 question with just 是?",
-              "answer": "No — answer with 有 or 沒有. 是 says identity, not “yes, I have”.",
-              "wrongTraditional": "是，我有課。",
-              "wrongSimplified": "是，我有课。",
-              "right": {
-                "traditional": "A：你有課嗎？ B：有。",
-                "simplified": "A：你有课吗？ B：有。",
-                "pinyin": "A: Nǐ yǒu kè ma? B: Yǒu.",
-                "english": "A: Do you have class? B: Yes, I do.",
-                "words": [
-                  {
-                    "id": "g3-confusion-3-word-1",
-                    "traditional": "你",
-                    "pinyin": "nǐ",
-                    "meaning": "you",
-                    "prefix": "A："
-                  },
-                  {
-                    "id": "g3-confusion-3-word-2",
-                    "traditional": "有",
-                    "pinyin": "yǒu",
-                    "meaning": "have; there is"
-                  },
-                  {
-                    "id": "g3-confusion-3-word-3",
-                    "traditional": "課",
-                    "pinyin": "kè",
-                    "meaning": "class",
-                    "simplified": "课"
-                  },
-                  {
-                    "id": "g3-confusion-3-word-4",
-                    "traditional": "嗎",
-                    "simplified": "吗",
-                    "pinyin": "ma",
-                    "meaning": "ending word for a yes/no question"
-                  },
-                  {
-                    "id": "g3-confusion-3-word-5",
-                    "traditional": "有",
-                    "pinyin": "yǒu",
-                    "meaning": "have; there is",
-                    "prefix": "？ B：",
-                    "suffix": "。"
-                  }
-                ]
-              }
+                ],
+                "simplified": "她有台湾朋友。"
+              },
+              "wrongSimplified": "她有是台湾朋友。"
             }
           ]
         },
@@ -4727,7 +4407,7 @@
                   "id": "g3-e1-word-2",
                   "traditional": "有",
                   "pinyin": "yǒu",
-                  "meaning": "have; there is"
+                  "meaning": "have"
                 },
                 {
                   "id": "g3-e1-word-3",
@@ -4753,13 +4433,13 @@
             "text": {
               "traditional": "A：王先生有孩子嗎？ B：王先生沒有孩子。",
               "simplified": "A：王先生有孩子吗？ B：王先生没有孩子。",
-              "pinyin": "A: Wáng xiānsheng yǒu háizi ma? B: Wáng xiānsheng méi yǒu háizi.",
+              "pinyin": "A: Wáng xiānshēng yǒu háizi ma? B: Wáng xiānshēng méi yǒu háizi.",
               "english": "A: Does Mr. Wang have children? B: Mr. Wang does not have children.",
               "words": [
                 {
                   "id": "g3-e2-word-1",
                   "traditional": "王先生",
-                  "pinyin": "Wáng xiānsheng",
+                  "pinyin": "Wáng xiānshēng",
                   "meaning": "Mr. Wang",
                   "prefix": "A："
                 },
@@ -4767,7 +4447,7 @@
                   "id": "g3-e2-word-2",
                   "traditional": "有",
                   "pinyin": "yǒu",
-                  "meaning": "have; there is"
+                  "meaning": "have"
                 },
                 {
                   "id": "g3-e2-word-3",
@@ -4785,7 +4465,7 @@
                 {
                   "id": "g3-e2-word-5",
                   "traditional": "王先生",
-                  "pinyin": "Wáng xiānsheng",
+                  "pinyin": "Wáng xiānshēng",
                   "meaning": "Mr. Wang",
                   "prefix": "？ B："
                 },
@@ -4794,7 +4474,7 @@
                   "traditional": "沒有",
                   "simplified": "没有",
                   "pinyin": "méi yǒu",
-                  "meaning": "do not have; there is not"
+                  "meaning": "do not have"
                 },
                 {
                   "id": "g3-e2-word-7",
@@ -4832,7 +4512,7 @@
                   "id": "g3-e3-word-3",
                   "traditional": "有",
                   "pinyin": "yǒu",
-                  "meaning": "have; there is"
+                  "meaning": "have"
                 },
                 {
                   "id": "g3-e3-word-4",
@@ -4871,7 +4551,7 @@
                   "id": "g3-e3-word-9",
                   "traditional": "有",
                   "pinyin": "yǒu",
-                  "meaning": "have; there is"
+                  "meaning": "have"
                 },
                 {
                   "id": "g3-e3-word-10",
@@ -4885,19 +4565,11 @@
             }
           }
         ],
-        "exerciseTitle": "Answer with 有 or 沒有",
+        "exerciseTitle": "Answer the 有/沒有 questions.",
         "exercisePreview": "Answer each question with a full sentence.",
-        "exerciseInstruction": "These questions are about you, so a yes answer and a no answer can both be true. Use 有 for yes and 沒有 for no.",
-        "exerciseNote": "Question 2 uses the phone picture on page 56. These are example answers, not a textbook key.",
+        "exerciseInstruction": "Use 有 or 沒有 to say what you have; name the person when the question asks 誰.",
+        "exerciseNote": "These are app-authored model answers; the book prints no answer key.",
         "exerciseResponseMode": "text",
-        "exerciseCues": [
-          {
-            "id": "g3-phone-cue",
-            "label": "手機 · shǒujī",
-            "pinyin": "shǒujī",
-            "detail": "The book shows a phone picture with the word 手機 (cell phone). Answer about yourself."
-          }
-        ],
         "questions": [
           {
             "id": "g3-question-1",
@@ -4905,105 +4577,62 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你有美國朋友嗎？ B：",
-                "simplified": "A：你有美国朋友吗？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g3-q1-answer",
-                "answer": "我有美國朋友",
-                "answerSimplified": "我有美国朋友",
-                "acceptedAnswers": [
-                  "我沒有美國朋友"
-                ],
-                "acceptedAnswersSimplified": [
-                  "我没有美国朋友"
-                ],
-                "hint": "Answer positively with 有 or negatively with 沒有."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "tiles": [
+                "traditional": "你有美國朋友嗎？",
+                "simplified": "你有美国朋友吗？"
+              },
               {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "blank",
                 "id": "g3-q1-have",
-                "traditional": "我有美國朋友",
-                "simplified": "我有美国朋友",
-                "pinyin": "wǒ yǒu Měiguó péngyǒu",
-                "meaning": "I have an American friend."
-              },
-              {
-                "id": "g3-q1-not",
-                "traditional": "我沒有美國朋友",
-                "simplified": "我没有美国朋友",
-                "pinyin": "wǒ méi yǒu Měiguó péngyǒu",
-                "meaning": "I do not have an American friend."
-              },
-              {
-                "id": "g3-q1-wrong",
-                "traditional": "我不有美國朋友",
-                "simplified": "我不有美国朋友",
-                "pinyin": "wǒ bù yǒu Měiguó péngyǒu",
-                "meaning": "Incorrect negation with 不有."
-              }
-            ],
-            "correctFeedback": "Both personal answers are valid. Positive uses 有; negative uses 沒有.",
-            "repairFeedback": "Never form the negative with 不有. Use 沒有."
-          },
-          {
-            "id": "g3-question-2",
-            "number": 2,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "A：你有手機嗎？ B：",
-                "simplified": "A：你有手机吗？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g3-q2-answer",
-                "answer": "我有手機",
-                "answerSimplified": "我有手机",
+                "answer": "有",
+                "hint": "Choose 有 or 沒有 for your answer.",
                 "acceptedAnswers": [
-                  "我沒有手機"
+                  "沒有"
                 ],
                 "acceptedAnswersSimplified": [
-                  "我没有手机"
-                ],
-                "hint": "Choose a complete personal answer."
+                  "没有"
+                ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "美國朋友。",
+                "simplified": "美国朋友。"
               }
             ],
             "tiles": [
               {
-                "id": "g3-q2-have",
-                "traditional": "我有手機",
-                "simplified": "我有手机",
-                "pinyin": "wǒ yǒu shǒujī",
-                "meaning": "I have a cell phone."
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "id": "g3-q1-tile-1",
+                "meaning": "have"
               },
               {
-                "id": "g3-q2-not",
-                "traditional": "我沒有手機",
-                "simplified": "我没有手机",
-                "pinyin": "wǒ méi yǒu shǒujī",
-                "meaning": "I do not have a cell phone."
+                "traditional": "沒有",
+                "pinyin": "méi yǒu",
+                "simplified": "没有",
+                "id": "g3-q1-tile-2",
+                "meaning": "do not have"
               },
               {
-                "id": "g3-q2-wrong",
-                "traditional": "我手機有",
-                "simplified": "我手机有",
-                "pinyin": "wǒ shǒujī yǒu",
-                "meaning": "Incorrect order: the thing comes before 有."
+                "traditional": "不有",
+                "pinyin": "bù yǒu",
+                "id": "g3-q1-tile-3",
+                "meaning": "incorrect negative of 有"
               }
             ],
-            "correctFeedback": "Put 有 or 沒有 before the thing: 手機.",
-            "repairFeedback": "Use 我 + 有／沒有 + 手機."
+            "correctFeedback": "Model answer: 有 links the person to the thing they have.",
+            "repairFeedback": "Choose 有 or 沒有 for your answer."
           },
           {
             "id": "g3-question-3",
@@ -5011,52 +4640,53 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：誰有水？ B：",
-                "simplified": "A：谁有水？ B："
-              },
-              {
-                "type": "blank",
-                "id": "g3-q3-answer",
-                "answer": "我有水",
-                "acceptedAnswers": [
-                  "中明有水",
-                  "友美有水"
-                ],
-                "hint": "Name a person before 有水."
+                "traditional": "A："
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "誰有水？",
+                "simplified": "谁有水？"
+              },
+              {
+                "type": "text",
+                "traditional": " B："
+              },
+              {
+                "type": "blank",
+                "id": "g3-q3-person",
+                "answer": "我",
+                "hint": "Name a person, then 有水.",
+                "acceptedAnswers": [
+                  "他"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "有水。"
               }
             ],
             "tiles": [
               {
-                "id": "g3-q3-me",
-                "traditional": "我有水",
-                "pinyin": "wǒ yǒu shuǐ",
-                "meaning": "I have water."
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "id": "g3-q3-tile-1",
+                "meaning": "I"
               },
               {
-                "id": "g3-q3-zhongming",
-                "traditional": "中明有水",
-                "pinyin": "Zhōngmíng yǒu shuǐ",
-                "meaning": "Zhongming has water."
+                "traditional": "他",
+                "pinyin": "tā",
+                "id": "g3-q3-tile-2",
+                "meaning": "he"
               },
               {
-                "id": "g3-q3-youmei",
-                "traditional": "友美有水",
-                "pinyin": "Yǒuměi yǒu shuǐ",
-                "meaning": "Youmei has water."
-              },
-              {
-                "id": "g3-q3-wrong",
-                "traditional": "水有我",
-                "pinyin": "shuǐ yǒu wǒ",
-                "meaning": "Incorrect order: water has me."
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "id": "g3-q3-tile-3",
+                "meaning": "have"
               }
             ],
-            "correctFeedback": "誰 asks who. Any person answer is fine here.",
-            "repairFeedback": "Name the person first, then say 有水."
+            "correctFeedback": "Model answer: The person who has the water comes first.",
+            "repairFeedback": "Name a person, then 有水."
           }
         ]
       }

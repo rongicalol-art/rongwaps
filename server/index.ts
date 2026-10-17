@@ -4,9 +4,9 @@ import rateLimit from "express-rate-limit";
 import path from "path";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
+import * as Sentry from "@sentry/node";
 import { supabase } from "./supabase.js";
 import { getTtsObject, putTtsObject } from "./ttsStore.js";
-import { gradeGrammarAnswer } from "./jevClient.js";
 
 // Load local server configuration.
 dotenv.config();
@@ -15,12 +15,36 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 // The production bundle is built with NODE_ENV defined to "production".
 const isProd = process.env.NODE_ENV === "production";
+const errorMonitoringEnabled = isProd && Boolean(process.env.SENTRY_DSN);
+
+if (errorMonitoringEnabled) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: "production",
+    tracesSampleRate: 0,
+    beforeBreadcrumb: () => null,
+    beforeSend(event) {
+      event.request = undefined;
+      event.user = undefined;
+      event.extra = undefined;
+      event.breadcrumbs = undefined;
+      return event;
+    },
+  });
+}
+
+function captureServerException(error: unknown, operation: string) {
+  if (errorMonitoringEnabled) {
+    Sentry.captureException(error, { tags: { operation } });
+  }
+}
 
 // Behind Render's/Cloudflare's proxy so req.ip (rate limits) is the client.
 if (isProd) app.set("trust proxy", Number(process.env.TRUST_PROXY ?? 1));
 
 process.on("unhandledRejection", (reason) => {
   console.error("Unhandled rejection:", reason);
+  captureServerException(reason, "unhandled-rejection");
 });
 
 app.use((_req, res, next) => {
@@ -80,9 +104,7 @@ function dailyCap(limit: number): express.RequestHandler {
 }
 
 const ttsUserLimiter = userLimiter(30);
-const jevUserLimiter = userLimiter(10);
 const ttsDailyCap = dailyCap(Number(process.env.TTS_DAILY_LIMIT) || 600);
-const jevDailyCap = dailyCap(Number(process.env.JEV_DAILY_LIMIT) || 200);
 
 // In-memory TTS audio cache, bounded by 1,000 files and 32 MiB.
 interface CachedAudio {
@@ -280,6 +302,7 @@ async function requireAuth(req: express.Request, res: express.Response, next: ex
     res.locals.userId = user.id;
   } catch (err: unknown) {
     console.error("Auth check failed:", err);
+    captureServerException(err, "auth-check");
     res.status(503).json({ error: "Authentication unavailable right now." });
     return;
   }
@@ -303,22 +326,8 @@ app.post("/api/tts", apiLimiter, requireAuth, ttsUserLimiter, ttsDailyCap, async
     sendAudioBuffer(req, res, cachedAudio.buffer, cachedAudio.contentType, cachedAudio.etag, "private, max-age=86400");
   } catch (err: unknown) {
     console.error("Neural TTS error:", err);
+    captureServerException(err, "tts-synthesis");
     res.status(502).json({ error: "Neural TTS unavailable right now." });
-  }
-});
-
-// POST /api/jev/grade-answer — semantic grading for free-text answers.
-// 503 when TYPESAFE_API_KEY is unset, so clients fall back to exact matching.
-app.post("/api/jev/grade-answer", apiLimiter, requireAuth, jevUserLimiter, jevDailyCap, async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  try {
-    const outcome = await gradeGrammarAnswer(req.body);
-    if (outcome.status === 200) {
-      res.json(outcome.result);
-      return;
-    }
-    res.status(outcome.status).json({ error: outcome.error });
-  } catch (err: unknown) {
-    next(err);
   }
 });
 
@@ -347,6 +356,7 @@ app.get("/api/tts-cache/:text", apiLimiter, async (req: express.Request, res: ex
     sendAudioBuffer(req, res, cached.buffer, cached.contentType, cached.etag, "public, max-age=86400");
   } catch (err: unknown) {
     console.error("TTS cache read error:", err);
+    captureServerException(err, "tts-cache-read");
     res.status(500).json({ error: "Failed to fetch TTS audio" });
   }
 });
@@ -376,6 +386,7 @@ app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: expre
     sendAudioBuffer(req, res, cached.buffer, cached.contentType, cached.etag, "public, max-age=86400");
   } catch (err: unknown) {
     console.error("TTS cache read error:", err);
+    captureServerException(err, "tts-cache-read");
     res.status(500).json({ error: "Failed to fetch TTS audio" });
   }
 });
@@ -409,12 +420,38 @@ async function bootstrap() {
       "index.html", "sw.js", "registerSW.js", "manifest.json", "manifest.webmanifest",
     ]);
     const assetsMarker = `${path.sep}assets${path.sep}`;
+    // Lesson content is served to signed-in users only (keep in sync with GATED_CONTENT in
+    // src/services/staticContentService.ts). Dictionary, breakdown and other reference packs stay public.
+    const gatedDirs = [
+      "vocabulary", "readings", "grammar", "course-examples", "dialogue-alignment", "flashcard-extras", "book-pages",
+    ].map((dir) => path.join(distDataDir, dir) + path.sep);
+    const lessonContentLimiter = userLimiter(600);
+    app.use("/data", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+      let requested: string;
+      try {
+        requested = path.join(distDataDir, decodeURIComponent(req.path)); // decode so %-encoded paths cannot dodge the gate
+      } catch {
+        res.status(400).json({ error: "Bad request" });
+        return;
+      }
+      if (!gatedDirs.some((dir) => requested.startsWith(dir))) return next();
+      apiLimiter(req, res, (limitErr?: unknown) => {
+        if (limitErr) return next(limitErr);
+        requireAuth(req, res, (authErr?: unknown) => {
+          if (authErr) return next(authErr);
+          lessonContentLimiter(req, res, next);
+        });
+      });
+    });
     app.use(express.static(distPath, {
       setHeaders(res: express.Response, filePath: string) {
         if (revalidatedFiles.has(path.basename(filePath))) {
           res.setHeader("Cache-Control", "no-cache");
         } else if (filePath.includes(assetsMarker)) {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else if (gatedDirs.some((dir) => filePath.startsWith(dir))) {
+          // Never let a shared cache (Cloudflare edge) hand lesson content to someone signed out.
+          res.setHeader("Cache-Control", "private, max-age=3600");
         } else if (
           filePath.startsWith(distDataDir)
           || path.basename(filePath) === "dictionary_trie.json"
@@ -433,6 +470,8 @@ async function bootstrap() {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
+
+  if (errorMonitoringEnabled) Sentry.setupExpressErrorHandler(app);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Express needs the 4-arg signature.
   app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
@@ -457,6 +496,7 @@ async function bootstrap() {
 if (process.env.NODE_ENV !== 'test') {
   void bootstrap().catch((err) => {
     console.error("Failed to start full-stack server:", err);
+    captureServerException(err, "server-bootstrap");
     process.exit(1);
   });
 }

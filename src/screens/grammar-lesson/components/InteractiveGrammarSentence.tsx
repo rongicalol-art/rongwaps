@@ -25,6 +25,7 @@ interface InteractiveGrammarSentenceProps {
 }
 
 const NO_FOCUS_TERMS: string[] = [];
+const CLOSING_PUNCTUATION = /^[。？！，」]+$/;
 
 const TEACHING_TEXT_SIZE_CLASSES = {
   lg: 'text-2xl',
@@ -76,6 +77,15 @@ export function InteractiveGrammarSentence({
     [characterPreference, displayWords, focusTerms],
   );
 
+  // A closing mark that is its own token rides as the previous word's suffix, so it never wraps alone.
+  const shownWords = useMemo(() => displayWords.reduce<GrammarWordToken[]>((shown, word) => {
+    const previous = shown[shown.length - 1];
+    if (previous && CLOSING_PUNCTUATION.test(word.traditional)) {
+      shown[shown.length - 1] = { ...previous, suffix: `${previous.suffix ?? ''}${word.traditional}` };
+    } else shown.push(word);
+    return shown;
+  }, []), [displayWords]);
+
   return (
     <div
       className={cn(
@@ -84,13 +94,14 @@ export function InteractiveGrammarSentence({
         className,
       )}
     >
-      {displayWords.map((word) => {
+      {shownWords.map((word) => {
         const text = characterPreference === 'simplified' && word.simplified
           ? word.simplified
           : word.traditional;
         const isOpen = previewWordId === word.id;
-        const isFocus = focusTokenIds.has(word.id);
-        const role = isFocus ? getGrammarSemanticRole(text) : undefined;
+        const isFocus = focusTokenIds.has(word.id) || word.mark === 'say';
+        const skipped = word.mark === 'skip';
+        const role = isFocus ? (word.mark ? 'number' : getGrammarSemanticRole(text)) : undefined;
         const roleColorClass = role ? getSemanticRoleClasses(role) : undefined;
         const roleSoftBgClass = role ? getSemanticRoleSoftBgClasses(role) : 'hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft';
         const isAligned = Boolean(word.alignmentId && word.alignmentId === activeAlignmentId);
@@ -136,6 +147,7 @@ export function InteractiveGrammarSentence({
                   roleSoftBgClass,
                   isFocus
                     ? cn(roleColorClass, 'font-black')
+                    : skipped ? 'text-ui-muted/50'
                     : tone === 'accent' ? 'text-brand-primary' : 'text-ui-ink-strong',
                   isOpen && 'bg-brand-primary-soft',
                   isAligned && 'bg-brand-primary text-ui-surface hover:bg-brand-primary focus-visible:bg-brand-primary',
@@ -150,7 +162,7 @@ export function InteractiveGrammarSentence({
               )}
             </span>
 
-            {showPinyin && (
+            {showPinyin && !skipped && (
               <span className={cn('mx-0.5 mt-1 whitespace-nowrap text-[11px] font-extrabold leading-none sm:text-xs', isFocus && roleColorClass ? roleColorClass : 'text-brand-primary')}>
                 {word.pinyin}
               </span>

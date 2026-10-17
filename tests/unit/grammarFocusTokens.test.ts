@@ -27,3 +27,9 @@ test('simplified preference matches simplified terms', () => {
   assert.equal(getFocusTokenIds(words, ['没有'], 'simplified').size, 1);
   assert.equal(getFocusTokenIds(words, ['没有'], 'traditional').size, 0);
 });
+
+test('a number touching a highlighted unit joins it', () => {
+  const words = ['現在', '十', '點', '十五', '分'].map((traditional, index) => ({ id: `w${index}`, traditional, pinyin: '', meaning: '' }));
+  const ids = getFocusTokenIds(words, ['點', '分'], 'traditional');
+  assert.deepEqual([...ids].sort(), ['w1', 'w2', 'w3', 'w4']);
+});

@@ -33,19 +33,22 @@ export function PrivacyPolicyContent() {
             </>,
             <>
               <strong>Technical data:</strong> like any website, our servers and hosting providers see your IP
-              address and basic device and browser details when you use the app.
+              address and basic device and browser details when you use the app. If production error monitoring
+              is enabled, Sentry also receives technical error messages and stack traces with browser context.
+              Our reports omit request URLs, headers, request bodies and account identity; they do not intentionally
+              include lesson content or learning progress. The report request may reveal your IP address to Sentry.
             </>,
           ]}
         />
         <LegalParagraph>
           Some progress, such as grammar lesson completion, stays only on your device. We do not collect your
-          location, contacts, or payment details, and the app has no analytics or advertising trackers.
+          location, contacts, or payment details, and the app has no product analytics or advertising trackers.
         </LegalParagraph>
       </LegalSection>
 
       <LegalSection title="How we use it">
         <LegalParagraph>
-          To run your account, sync your progress between devices, play audio, grade your answers, prevent
+          To run your account, sync your progress between devices, play audio, prevent
           abuse (we apply usage limits per account), and answer your questions. We do not sell your data, show
           ads, or build advertising profiles.
         </LegalParagraph>
@@ -67,10 +70,6 @@ export function PrivacyPolicyContent() {
               name and email are not sent. The resulting audio is cached and reused for everyone.
             </>,
             <>
-              <strong>TypeSafe</strong> (AI grading): when a free-text answer is graded, your typed answer
-              and the expected answer are sent to TypeSafe&apos;s API. Your name and email are not sent.
-            </>,
-            <>
               <strong>Cloudflare R2</strong> may store audio files and lesson content. They contain no
               personal data.
             </>,
@@ -81,6 +80,10 @@ export function PrivacyPolicyContent() {
             </>,
             <>
               <strong>Our web host</strong> serves the app and may keep standard server logs.
+            </>,
+            <>
+              <strong>Sentry</strong> processes technical error reports when its production DSN is configured.
+              Error reporting does not include session replay or performance tracing.
             </>,
           ]}
         />

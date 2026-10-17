@@ -1,7 +1,8 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
+import { getOAuthCallbackErrorMessage, getOAuthLoginErrorMessage } from '../../services/authService';
 import { LEGAL_ROUTES } from '../../app/routes';
 import {
   ActionButton,
@@ -20,6 +21,26 @@ export function SignInWindow() {
   const [authError, setAuthError] = useState<string | null>(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
 
+  useEffect(() => {
+    const callbackError = getOAuthCallbackErrorMessage(window.location.search, window.location.hash);
+    if (!callbackError) return;
+
+    setAuthError(callbackError);
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const hasSearchError = ['error', 'error_code', 'error_description'].some((key) => searchParams.has(key));
+    const hasHashError = ['error', 'error_code', 'error_description'].some((key) => hashParams.has(key));
+    for (const key of ['error', 'error_code', 'error_description']) {
+      searchParams.delete(key);
+      hashParams.delete(key);
+    }
+    const search = searchParams.size ? `?${searchParams.toString()}` : '';
+    const hash = hasHashError ? (hashParams.size ? `#${hashParams.toString()}` : '') : window.location.hash;
+    const remainingSearch = hasSearchError || searchParams.size ? search : window.location.search;
+    window.history.replaceState(window.history.state, '', `${window.location.pathname}${remainingSearch}${hash}`);
+  }, []);
+
   const handleGoogleLogin = async () => {
     setAuthError(null);
     setIsSigningIn(true);
@@ -28,11 +49,7 @@ export function SignInWindow() {
       // The auth listener in useAuth updates the store.
     } catch (error: unknown) {
       debugLogger.error('Auth', 'Login failed', error);
-      setAuthError(
-        error instanceof Error
-          ? error.message
-          : 'Sign-in is unavailable right now. Please try again.',
-      );
+      setAuthError(getOAuthLoginErrorMessage(error));
       setIsSigningIn(false);
     }
   };

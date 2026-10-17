@@ -64,6 +64,7 @@ class FakeAudio {
   }
 
   play(): Promise<void> {
+    this.paused = false;
     return new Promise(() => {});
   }
 
@@ -415,7 +416,7 @@ test('fetchAudioBlob aborts a stalled response body after its timeout', async ()
   }
 });
 
-test('audio preload deduplicates names and keeps only one fetch active', async () => {
+test('audio preload deduplicates names and caps parallel downloads at three', async () => {
   const { preloadAudioFiles } = await import('../../src/services/audio/audioCache');
   const objectUrls = new Map<string, string>();
   const calls: string[] = [];
@@ -423,7 +424,7 @@ test('audio preload deduplicates names and keeps only one fetch active', async (
   let maxActive = 0;
 
   await preloadAudioFiles(
-    ['one.mp3', 'one.mp3', 'two.mp3'],
+    ['one.mp3', 'one.mp3', 'two.mp3', 'three.mp3', 'four.mp3'],
     objectUrls,
     async (fileName) => {
       calls.push(fileName);
@@ -436,8 +437,8 @@ test('audio preload deduplicates names and keeps only one fetch active', async (
     },
   );
 
-  assert.deepEqual(calls, ['one.mp3', 'two.mp3']);
-  assert.equal(maxActive, 1);
+  assert.deepEqual(calls, ['one.mp3', 'two.mp3', 'three.mp3', 'four.mp3']);
+  assert.equal(maxActive, 3);
 });
 
 // A persistent cache shared by fresh AudioService instances; no network or real progress.
@@ -688,23 +689,23 @@ test('leaving a question aborts its active preload download as well as queued cl
   const controller = new AbortController();
   const savedFetch = globalThis.fetch;
   let requests = 0;
-  let aborted = false;
+  let aborted = 0;
   globalThis.fetch = async (_url, options) => {
     requests++;
     return new Promise((_resolve, reject) => {
       options?.signal?.addEventListener('abort', () => {
-        aborted = true;
+        aborted++;
         reject(new DOMException('Aborted', 'AbortError'));
       }, { once: true });
     });
   };
   try {
-    const pending = service.preload(['https://audio.example.test/preload-abort.mp3', 'https://audio.example.test/queued.mp3'], controller.signal);
+    const pending = service.preload(['https://audio.example.test/preload-abort.mp3', 'https://audio.example.test/parallel.mp3', 'https://audio.example.test/third.mp3', 'https://audio.example.test/queued.mp3'], controller.signal);
     await tick();
     controller.abort();
     await pending;
-    assert.equal(aborted, true);
-    assert.equal(requests, 1);
+    assert.equal(aborted, 3);
+    assert.equal(requests, 3);
   } finally { globalThis.fetch = savedFetch; }
 });
 
@@ -747,8 +748,8 @@ test('a shared transport failure stops quiz downloads without declaring remainin
     attempted.push(name);
     throw new TypeError('Failed to fetch');
   }, undefined, (state) => { progress = state; });
-  assert.equal(attempted.length, 1);
-  assert.deepEqual(progress, { ready: 0, failed: 1, total: 19, blocked: true });
+  assert.equal(attempted.length, 3);
+  assert.deepEqual(progress, { ready: 0, failed: 3, total: 19, blocked: true });
 });
 
 test('canceling one preload subscriber preserves the other subscriber and only fetches once', async () => {

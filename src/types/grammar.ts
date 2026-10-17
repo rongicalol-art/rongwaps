@@ -10,6 +10,7 @@ import type {
   GrammarTimeRangeLab,
   GrammarTimelineLab,
 } from './grammarLabs';
+import type { GrammarPractice } from './grammarPractice';
 
 export interface GrammarLessonText {
   traditional: string;
@@ -29,6 +30,8 @@ export interface GrammarWordToken {
   prefix?: string;
   suffix?: string;
   alignmentId?: string;
+  /** Place-value digit: `say` = a zero that is read as 零, `skip` = a zero that is not read. */
+  mark?: 'say' | 'skip';
 }
 
 export interface GrammarTranslationSegment {
@@ -46,6 +49,8 @@ export interface GrammarPatternRow {
   columns?: GrammarWordToken[][];
   /** Omitted when the row carries no translation (e.g. number tables). */
   english?: string;
+  /** The page example the book prints under this row; the examples list then skips it. */
+  exampleId?: string;
 }
 
 export interface GrammarLessonExample {
@@ -327,6 +332,8 @@ export interface InteractiveGrammarPage {
   unscrambleExercise?: GrammarUnscrambleExercise;
   completionRecap?: GrammarCompletionRecap;
   questions: GrammarExerciseQuestion[];
+  /** Book exercise shown after the page (merged from content/grammar-practice). */
+  practice?: GrammarPractice;
 }
 
 export interface InteractiveGrammarPart {

@@ -15,7 +15,7 @@ export function useUserFlashcards(): UserFlashcard[] {
   const { currentUser } = useAuth();
   const localFlashcards = useAppStore((state) => Array.isArray(state.localFlashcards) ? state.localFlashcards : NO_CARDS);
   const [cards, setCards] = useState<UserFlashcard[]>(() => {
-    const cached = currentUser ? flashcardService.getCachedFlashcards() : localFlashcards;
+    const cached = currentUser ? flashcardService.getCachedFlashcards(currentUser.id) : localFlashcards;
     return Array.isArray(cached) ? cached : NO_CARDS;
   });
 
@@ -36,7 +36,8 @@ export function useUserFlashcards(): UserFlashcard[] {
 
   // Cards saved before the encoder fix may hold a JSON-array string as their translation.
   return useMemo(
-    () => cards.map((card) => (card.translation?.startsWith('["') ? { ...card, translation: meaningText(card.translation) } : card)),
-    [cards],
+    () => (currentUser ? cards.filter((card) => card.userId === currentUser.id) : localFlashcards)
+      .map((card) => (card.translation?.startsWith('["') ? { ...card, translation: meaningText(card.translation) } : card)),
+    [cards, currentUser, localFlashcards],
   );
 }

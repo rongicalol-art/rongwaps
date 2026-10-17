@@ -3,6 +3,60 @@ import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { User } from '@supabase/supabase-js';
 
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
+const productionAuthRedirectUrl = 'https://ronsmandarin.com/';
+
+export function getOAuthRedirectUrl(origin: string, isProduction: boolean): string {
+  return isProduction ? productionAuthRedirectUrl : new URL('/', origin).toString();
+}
+
+export function getOAuthCallbackErrorMessage(search: string, hash: string): string | null {
+  const queryParams = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
+  const hashParams = new URLSearchParams(hash.startsWith('#') ? hash.slice(1) : hash);
+  const errorCode = queryParams.get('error_code')
+    ?? hashParams.get('error_code')
+    ?? queryParams.get('error')
+    ?? hashParams.get('error');
+
+  if (!errorCode) return null;
+
+  const details = [
+    errorCode,
+    queryParams.get('error_description'),
+    hashParams.get('error_description'),
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  if (errorCode === 'access_denied') {
+    return 'Google sign-in was cancelled. Try again when you’re ready.';
+  }
+  if (/redirect|allow.?list|not allowed/.test(details)) {
+    return 'Supabase blocked this return address. Add https://ronsmandarin.com/ to Authentication → URL Configuration → Redirect URLs.';
+  }
+  if (/provider|google/.test(details)) {
+    return 'Google sign-in is not enabled for this Supabase project. Check Authentication → Sign In / Providers.';
+  }
+  if (/cancel|denied/.test(details)) {
+    return 'Google sign-in was cancelled. Try again when you’re ready.';
+  }
+  return 'Google sign-in could not finish. Please try again.';
+}
+
+export function getOAuthLoginErrorMessage(error: unknown): string {
+  const message = error instanceof Error ? error.message.toLowerCase() : '';
+
+  if (message.includes('supabase is not configured')) {
+    return 'Sign-in is not configured. Check that VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set for this build.';
+  }
+  if (/redirect|allow.?list|not allowed/.test(message)) {
+    return 'Supabase blocked this return address. Add https://ronsmandarin.com/ to Authentication → URL Configuration → Redirect URLs.';
+  }
+  if (/provider|google/.test(message)) {
+    return 'Google sign-in is not enabled for this Supabase project. Check Authentication → Sign In / Providers.';
+  }
+  if (/network|fetch|offline|load failed/.test(message)) {
+    return 'Could not reach the sign-in service. Check your connection and try again.';
+  }
+  return 'Google sign-in could not start. Please try again.';
+}
 
 export const authService = {
   /** Access token for authenticated API calls, or null when signed out. */
@@ -20,7 +74,7 @@ export const authService = {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin + '/',
+          redirectTo: getOAuthRedirectUrl(window.location.origin, Boolean(import.meta.env?.PROD)),
         }
       });
       if (error) throw error;

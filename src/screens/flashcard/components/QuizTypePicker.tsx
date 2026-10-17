@@ -256,7 +256,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
       <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center px-4">
         <h2 ref={titleRef} className="text-2xl font-black text-ui-ink-strong lg:text-[28px]">Choose your quiz</h2>
         {/* The tiles sit under the Mixed card while they slide out. */}
-        <div ref={heroRef} className="relative z-[1] mt-6 w-[212px] lg:mt-8 lg:w-[260px]">
+        <div ref={heroRef} data-picker-hero className="relative z-[1] mt-6 w-[212px] lg:mt-8 lg:w-[260px]">
           <PracticeChoiceButton
             compact
             state={mixed ? 'selected' : 'idle'}

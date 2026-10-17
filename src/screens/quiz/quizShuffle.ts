@@ -11,7 +11,7 @@ export interface QuizHandoff {
   front: string;
 }
 
-const GLIDE_MS = 640;
+const GLIDE_MS = 480;
 const GLIDE_EASE = 'cubic-bezier(.22,1,.36,1)';
 const REVIEW_GLIDE_MS = 420;
 const REVIEW_ANSWERS_DELAY_MS = 220;
@@ -227,16 +227,25 @@ export function landQuizLaunch(question: HTMLElement): boolean {
   oldArt.inert = true;
   oldArt.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: `translate(${-dx}px,${-dy}px)` }], { duration: 180, fill: 'forwards' });
   document.body.append(surface, contentLayer, oldArt);
-  const animation = surface.animate(rectMorphFrames(from, to), { duration: GLIDE_MS, easing: GLIDE_EASE, fill: 'forwards' });
+  // Real size, border and radius (not a scale), so the paper keeps true corners while its shape changes.
+  const edge = (el: HTMLElement) => {
+    const cs = getComputedStyle(el);
+    return { borderWidth: `${cs.borderTopWidth} ${cs.borderRightWidth} ${cs.borderBottomWidth} ${cs.borderLeftWidth}`, borderRadius: cs.borderTopLeftRadius };
+  };
+  const box = (r: DOMRect) => ({ left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` });
+  const animation = surface.animate(
+    [{ ...box(from), ...edge(selected) }, { ...box(to), ...edge(prompt) }],
+    { duration: GLIDE_MS, easing: GLIDE_EASE, fill: 'forwards' },
+  );
   const outgoing = snapshot.animate([
-    { opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-16px)' },
-  ], { duration: 240, easing: GLIDE_EASE, fill: 'forwards' });
+    { opacity: 1 }, { opacity: 0 },
+  ], { duration: 160, easing: 'ease-out', fill: 'forwards' });
   outgoing.finished.then(() => snapshot.remove(), () => snapshot.remove());
-  [surface, contentLayer].forEach((layer) => layer.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 420, duration: 220, fill: 'forwards' }));
-  question.animate([{ opacity: 0 }, { opacity: 1 }], { delay: 360, duration: 280, fill: 'backwards', easing: 'ease-out' });
+  [surface, contentLayer].forEach((layer) => layer.animate([{ opacity: 1 }, { opacity: 0 }], { delay: GLIDE_MS - 40, duration: 80, fill: 'forwards' }));
+  question.animate([{ opacity: 0 }, { opacity: 1 }], { delay: 120, duration: 160, fill: 'backwards', easing: 'linear' });
   const answers = Array.from(question.querySelectorAll<HTMLElement>('button')).filter((element) => element !== prompt && !prompt.contains(element));
   answers.forEach((choice, index) => {
-    riseIn(choice as HTMLElement, 440 + index * 45, 18, 320);
+    riseIn(choice as HTMLElement, 300 + index * 35, 14, 280);
   });
   const blockedKeys = (event: KeyboardEvent) => {
     if (event.key === ' ' || event.key === 'Enter' || /^[1-9]$/.test(event.key)) {
@@ -257,7 +266,7 @@ export function landQuizLaunch(question: HTMLElement): boolean {
     surface.remove();
     contentLayer.remove();
     oldArt.remove();
-    window.setTimeout(finish, Math.max(0, 440 + Math.max(0, answers.length - 1) * 45 + 320 - GLIDE_MS));
+    window.setTimeout(finish, Math.max(0, 300 + Math.max(0, answers.length - 1) * 35 + 280 - GLIDE_MS));
   }, finish);
   return true;
 }

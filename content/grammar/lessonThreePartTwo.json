@@ -634,7 +634,7 @@
           "traditional": "我們都買筆。",
           "simplified": "我们都买笔。",
           "pinyin": "Wǒmen dōu mǎi bǐ.",
-          "english": "All of us buy pens.",
+          "english": "Both (All) of us bought pens.",
           "note": "我們 is the group. 都 comes before the action 買."
         },
         {
@@ -643,25 +643,25 @@
           "traditional": "這兩個顏色都很好看。",
           "simplified": "这两个颜色都很好看。",
           "pinyin": "Zhè liǎng ge yánsè dōu hěn hǎokàn.",
-          "english": "These two colors both look good.",
+          "english": "These two colors are both very beautiful.",
           "note": "The two colors share the same description."
         },
         {
           "id": "g5-negative",
-          "label": "All share “not”",
-          "traditional": "他們都不喜歡喝茶。",
-          "simplified": "他们都不喜欢喝茶。",
-          "pinyin": "Tāmen dōu bù xǐhuān hē chá.",
-          "english": "None of them likes drinking tea.",
-          "note": "都 comes before 不 because the whole group shares the same \"not\"."
+          "label": "Whole group shares the “not”",
+          "traditional": "我們都不要去他家。",
+          "simplified": "我们都不要去他家。",
+          "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
+          "english": "None of us wants to go to his home.",
+          "note": "都 comes before 不要 because the whole group shares the same “not.”"
         },
         {
           "id": "g5-repair",
           "label": "Repair placement",
-          "traditional": "都他們喜歡 → 他們都喜歡",
-          "simplified": "都他们喜欢 → 他们都喜欢",
-          "pinyin": "dōu tāmen xǐhuān → tāmen dōu xǐhuān",
-          "english": "They all like it.",
+          "traditional": "都他們喜歡喝珍珠奶茶嗎？ → 他們都喜歡喝珍珠奶茶嗎？",
+          "simplified": "都他们喜欢喝珍珠奶茶吗？ → 他们都喜欢喝珍珠奶茶吗？",
+          "pinyin": "dōu tāmen xǐhuān hē zhēnzhū nǎichá ma? → tāmen dōu xǐhuān hē zhēnzhū nǎichá ma?",
+          "english": "Do they all like drinking bubble milk tea?",
           "note": "Name the group before 都.",
           "isCorrection": true
         }
@@ -705,7 +705,7 @@
             "suffix": "。"
           }
         ],
-        "english": "All of us buy pens."
+        "english": "Both (All) of us bought pens."
       },
       {
         "id": "g5-pattern-2",
@@ -748,56 +748,7 @@
             "suffix": "。"
           }
         ],
-        "english": "These two colors both look good."
-      },
-      {
-        "id": "g5-pattern-3",
-        "subject": [
-          {
-            "id": "g5-p3-they",
-            "traditional": "他們",
-            "simplified": "他们",
-            "pinyin": "tāmen",
-            "meaning": "they; them"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g5-p3-all",
-            "traditional": "都",
-            "pinyin": "dōu",
-            "meaning": "both; all"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g5-p3-not",
-            "traditional": "不",
-            "pinyin": "bù",
-            "meaning": "not"
-          },
-          {
-            "id": "g5-p3-like",
-            "traditional": "喜歡",
-            "simplified": "喜欢",
-            "pinyin": "xǐhuān",
-            "meaning": "like"
-          },
-          {
-            "id": "g5-p3-drink",
-            "traditional": "喝",
-            "pinyin": "hē",
-            "meaning": "drink"
-          },
-          {
-            "id": "g5-p3-tea",
-            "traditional": "茶",
-            "pinyin": "chá",
-            "meaning": "tea",
-            "suffix": "。"
-          }
-        ],
-        "english": "None of them likes drinking tea."
+        "english": "These two colors are both very beautiful."
       }
     ],
     "confusion": {
@@ -806,14 +757,14 @@
         {
           "id": "g5-confusion-position",
           "question": "Where does 都 go in the sentence?",
-          "answer": "Right after the whole group, before the action or describing word. Never at the start.",
-          "wrongTraditional": "都我們喜歡喝茶。",
-          "wrongSimplified": "都我们喜欢喝茶。",
+          "answer": "Right after the whole group, before the shared action or description.",
+          "wrongTraditional": "都我們買筆。",
+          "wrongSimplified": "都我们买笔。",
           "right": {
-            "traditional": "我們都喜歡喝茶。",
-            "simplified": "我们都喜欢喝茶。",
-            "pinyin": "Wǒmen dōu xǐhuān hē chá.",
-            "english": "All of us like drinking tea.",
+            "traditional": "我們都買筆。",
+            "simplified": "我们都买笔。",
+            "pinyin": "Wǒmen dōu mǎi bǐ.",
+            "english": "Both (All) of us bought pens.",
             "words": [
               {
                 "id": "b1l03-g5-conf-1-word-1",
@@ -830,22 +781,17 @@
               },
               {
                 "id": "b1l03-g5-conf-1-word-3",
-                "traditional": "喜歡",
-                "simplified": "喜欢",
-                "pinyin": "xǐhuān",
-                "meaning": "like"
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
               },
               {
                 "id": "b1l03-g5-conf-1-word-4",
-                "traditional": "喝",
-                "pinyin": "hē",
-                "meaning": "drink"
-              },
-              {
-                "id": "b1l03-g5-conf-1-word-5",
-                "traditional": "茶",
-                "pinyin": "chá",
-                "meaning": "tea",
+                "traditional": "筆",
+                "simplified": "笔",
+                "pinyin": "bǐ",
+                "meaning": "pen",
                 "suffix": "。"
               }
             ]
@@ -853,22 +799,22 @@
         },
         {
           "id": "g5-confusion-dou-bu",
-          "question": "How do I say \"none of them likes tea\" — 都不 or 不都?",
-          "answer": "Put 都 before 不: 都不 means \"every one does not\". 不都 means \"not all\" — a different meaning.",
-          "wrongTraditional": "他們不都喜歡茶。",
-          "wrongSimplified": "他们不都喜欢茶。",
+          "question": "How do I say none of us wants to go?",
+          "answer": "Use 都不要 for “none of us wants to”; 不要都 does not express that meaning.",
+          "wrongTraditional": "我們不要都去他家。",
+          "wrongSimplified": "我们不要都去他家。",
           "right": {
-            "traditional": "他們都不喜歡茶。",
-            "simplified": "他们都不喜欢茶。",
-            "pinyin": "Tāmen dōu bù xǐhuān chá.",
-            "english": "None of them likes tea.",
+            "traditional": "我們都不要去他家。",
+            "simplified": "我们都不要去他家。",
+            "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
+            "english": "None of us wants to go to his home.",
             "words": [
               {
                 "id": "b1l03-g5-conf-2-word-1",
-                "traditional": "他們",
-                "simplified": "他们",
-                "pinyin": "tāmen",
-                "meaning": "they; them"
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we; us"
               },
               {
                 "id": "b1l03-g5-conf-2-word-2",
@@ -878,71 +824,27 @@
               },
               {
                 "id": "b1l03-g5-conf-2-word-3",
-                "traditional": "不",
-                "pinyin": "bù",
-                "meaning": "not"
+                "traditional": "不要",
+                "pinyin": "bú yào",
+                "meaning": "do not want"
               },
               {
                 "id": "b1l03-g5-conf-2-word-4",
-                "traditional": "喜歡",
-                "simplified": "喜欢",
-                "pinyin": "xǐhuān",
-                "meaning": "like"
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
               },
               {
                 "id": "b1l03-g5-conf-2-word-5",
-                "traditional": "茶",
-                "pinyin": "chá",
-                "meaning": "tea",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g5-confusion-singular",
-          "question": "Can I use 都 with just one person, like \"I all like this book\"?",
-          "answer": "No. 都 needs two or more people or things. With one, drop 都.",
-          "wrongTraditional": "我都喜歡這本書。",
-          "wrongSimplified": "我都喜欢这本书。",
-          "right": {
-            "traditional": "我喜歡這本書。",
-            "simplified": "我喜欢这本书。",
-            "pinyin": "Wǒ xǐhuān zhè běn shū.",
-            "english": "I like this book.",
-            "words": [
-              {
-                "id": "b1l03-g5-conf-3-word-1",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he; him"
               },
               {
-                "id": "b1l03-g5-conf-3-word-2",
-                "traditional": "喜歡",
-                "simplified": "喜欢",
-                "pinyin": "xǐhuān",
-                "meaning": "like"
-              },
-              {
-                "id": "b1l03-g5-conf-3-word-3",
-                "traditional": "這",
-                "simplified": "这",
-                "pinyin": "zhè",
-                "meaning": "this"
-              },
-              {
-                "id": "b1l03-g5-conf-3-word-4",
-                "traditional": "本",
-                "pinyin": "běn",
-                "meaning": "measure word for books"
-              },
-              {
-                "id": "b1l03-g5-conf-3-word-5",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book",
+                "id": "b1l03-g5-conf-2-word-6",
+                "traditional": "家",
+                "pinyin": "jiā",
+                "meaning": "home",
                 "suffix": "。"
               }
             ]
@@ -1111,7 +1013,7 @@
         }
       }
     ],
-    "exerciseTitle": "Put the group before 都",
+    "exerciseTitle": "Rearrange the following sentences.",
     "exercisePreview": "Put the three sentences back in order.",
     "exerciseInstruction": "Start with the complete group. Place 都 immediately before the shared action or description.",
     "exerciseNote": "The book asks you to put words in order and prints no answer key. These answers follow the rule and the picture.",
@@ -1896,6 +1798,38 @@
         "simplified": "红色、白色",
         "pinyin": "hóngsè, báisè",
         "meaning": "red and white"
+      },
+      {
+        "id": "b1l03-g04-glossary-93",
+        "traditional": "幾個",
+        "simplified": "几个",
+        "pinyin": "jǐ ge",
+        "meaning": "how many"
+      },
+      {
+        "id": "b1l03-g04-glossary-94",
+        "traditional": "三個",
+        "simplified": "三个",
+        "pinyin": "sān ge",
+        "meaning": "three"
+      },
+      {
+        "id": "b1l03-g04-glossary-95",
+        "traditional": "那朵",
+        "pinyin": "nà duǒ",
+        "meaning": "that (flower)"
+      },
+      {
+        "id": "b1l03-g04-glossary-96",
+        "traditional": "（的）",
+        "pinyin": "(de)",
+        "meaning": "的 when it is dropped with one-syllable words"
+      },
+      {
+        "id": "b1l03-g04-glossary-97",
+        "traditional": "（蛋糕）",
+        "pinyin": "(dàngāo)",
+        "meaning": "cake, already mentioned so it is omitted"
       }
     ],
     "pattern": "Description + 的 + noun, or description + 的",
@@ -1916,7 +1850,7 @@
           "traditional": "便宜的東西",
           "simplified": "便宜的东西",
           "pinyin": "piányí de dōngxi",
-          "english": "inexpensive things",
+          "english": "cheap things",
           "note": "A longer description uses 的 before the noun."
         },
         {
@@ -1931,133 +1865,46 @@
         {
           "id": "g4-replace",
           "label": "Noun already known",
-          "traditional": "他要買大的。",
-          "simplified": "他要买大的。",
-          "pinyin": "Tā yào mǎi dà de.",
-          "english": "He wants to buy the big one.",
+          "traditional": "他要買大的，我要買小的。",
+          "simplified": "他要买大的，我要买小的。",
+          "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
+          "english": "He wants to buy the big one; I want to buy the small one.",
           "note": "大的 keeps 的 because it stands for the thing already named."
         },
         {
           "id": "g4-repair",
           "label": "Do not drop both",
-          "traditional": "我要買大 → 我要買大的",
-          "simplified": "我要买大 → 我要买大的",
-          "pinyin": "Wǒ yào mǎi dà → wǒ yào mǎi dà de",
-          "english": "I want to buy the big one.",
+          "traditional": "他要買大，我要買小 → 他要買大的，我要買小的。",
+          "simplified": "他要买大，我要买小 → 他要买大的，我要买小的。",
+          "pinyin": "Tā yào mǎi dà, wǒ yào mǎi xiǎo → tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
+          "english": "He wants to buy the big one; I want to buy the small one.",
           "note": "When the thing is dropped, 的 stays.",
           "isCorrection": true
         }
       ],
-      "takeaway": "If the thing is not named, 的 stays: 大的, 新的, 便宜的."
+      "takeaway": "When the noun is omitted, keep 的: 他要買大的，我要買小的。"
     },
-    "patternRows": [
-      {
-        "id": "g4-pattern-1",
-        "subject": [
-          {
-            "id": "g4-p1-cheap",
-            "traditional": "便宜",
-            "pinyin": "piányí",
-            "meaning": "inexpensive"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p1-de",
-            "traditional": "的",
-            "pinyin": "de",
-            "meaning": "connects description to noun"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p1-things",
-            "traditional": "東西",
-            "simplified": "东西",
-            "pinyin": "dōngxi",
-            "meaning": "thing; stuff"
-          }
-        ],
-        "english": "Part 1 · inexpensive things (multi-syllable description uses 的)"
-      },
-      {
-        "id": "g4-pattern-2",
-        "subject": [
-          {
-            "id": "g4-p2-new",
-            "traditional": "新",
-            "pinyin": "xīn",
-            "meaning": "new"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p2-de",
-            "traditional": "（的）",
-            "pinyin": "(de)",
-            "meaning": "often omitted with 1-syllable Vs"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p2-book",
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū",
-            "meaning": "book"
-          }
-        ],
-        "english": "Part 2 · new books (single-syllable description omits 的)"
-      },
-      {
-        "id": "g4-pattern-3",
-        "subject": [
-          {
-            "id": "g4-p3-big",
-            "traditional": "大",
-            "pinyin": "dà",
-            "meaning": "big"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p3-de",
-            "traditional": "的",
-            "pinyin": "de",
-            "meaning": "stands for the known noun"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p3-omitted",
-            "traditional": "（蛋糕）",
-            "pinyin": "(dàngāo)",
-            "meaning": "omitted noun"
-          }
-        ],
-        "english": "Part 3 · the big one (known noun omitted, 的 stays)"
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
         {
           "id": "g4-confusion-de-stays",
-          "question": "The thing is already clear. Can I drop 的 too?",
-          "answer": "No. When the noun goes, 的 must stay: 大的, 新的.",
-          "wrongTraditional": "我要買大。",
-          "wrongSimplified": "我要买大。",
+          "question": "The cake is already clear. Can I drop 的 too?",
+          "answer": "No. When the noun goes away, 的 must stay.",
+          "wrongTraditional": "他要買大，我要買小。",
+          "wrongSimplified": "他要买大，我要买小。",
           "right": {
-            "traditional": "我要買大的。",
-            "simplified": "我要买大的。",
-            "pinyin": "Wǒ yào mǎi dà de.",
-            "english": "I want to buy the big one.",
+            "traditional": "他要買大的，我要買小的。",
+            "simplified": "他要买大的，我要买小的。",
+            "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
+            "english": "He wants to buy the big one; I want to buy the small one.",
             "words": [
               {
                 "id": "b1l03-g4-conf-1-word-1",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
               },
               {
                 "id": "b1l03-g4-conf-1-word-2",
@@ -2082,7 +1929,39 @@
                 "id": "b1l03-g4-conf-1-word-5",
                 "traditional": "的",
                 "pinyin": "de",
-                "meaning": "connects a describing word to a thing; can stand for a known thing",
+                "meaning": "modifier marker"
+              },
+              {
+                "id": "b1l03-g4-conf-1-word-6",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l03-g4-conf-1-word-7",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want"
+              },
+              {
+                "id": "b1l03-g4-conf-1-word-8",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "b1l03-g4-conf-1-word-9",
+                "traditional": "小",
+                "pinyin": "xiǎo",
+                "meaning": "small"
+              },
+              {
+                "id": "b1l03-g4-conf-1-word-10",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "modifier marker",
                 "suffix": "。"
               }
             ]
@@ -2090,15 +1969,15 @@
         },
         {
           "id": "g4-confusion-de-before-noun",
-          "question": "Do I need 的 between 好看 and 蛋糕?",
-          "answer": "Yes. Longer describing words like 好看 or 可愛 take 的 before the noun.",
-          "wrongTraditional": "我喜歡好看蛋糕。",
-          "wrongSimplified": "我喜欢好看蛋糕。",
+          "question": "Does a describing word always take 的 before the noun?",
+          "answer": "Longer words like 漂亮 take 的; short words like 小 usually do not.",
+          "wrongTraditional": "我喜歡漂亮花。",
+          "wrongSimplified": "我喜欢漂亮花。",
           "right": {
-            "traditional": "我喜歡好看的蛋糕。",
-            "simplified": "我喜欢好看的蛋糕。",
-            "pinyin": "Wǒ xǐhuān hǎokàn de dàngāo.",
-            "english": "I like the good-looking cake.",
+            "traditional": "我喜歡漂亮的花。",
+            "simplified": "我喜欢漂亮的花。",
+            "pinyin": "Wǒ xǐhuān piàoliang de huā.",
+            "english": "I like pretty flowers.",
             "words": [
               {
                 "id": "b1l03-g4-conf-2-word-1",
@@ -2115,9 +1994,9 @@
               },
               {
                 "id": "b1l03-g4-conf-2-word-3",
-                "traditional": "好看",
-                "pinyin": "hǎokàn",
-                "meaning": "good-looking"
+                "traditional": "漂亮",
+                "pinyin": "piàoliang",
+                "meaning": "beautiful"
               },
               {
                 "id": "b1l03-g4-conf-2-word-4",
@@ -2127,56 +2006,9 @@
               },
               {
                 "id": "b1l03-g4-conf-2-word-5",
-                "traditional": "蛋糕",
-                "pinyin": "dàngāo",
-                "meaning": "cake",
-                "suffix": "。"
-              }
-            ]
-          }
-        },
-        {
-          "id": "g4-confusion-de-dropped",
-          "question": "Short words like 小 — do they also need 的?",
-          "answer": "No. One-syllable words like 小 or 新 drop 的: 小蛋糕, 新書.",
-          "wrongTraditional": "我要買小的蛋糕。",
-          "wrongSimplified": "我要买小的蛋糕。",
-          "right": {
-            "traditional": "我要買小蛋糕。",
-            "simplified": "我要买小蛋糕。",
-            "pinyin": "Wǒ yào mǎi xiǎo dàngāo.",
-            "english": "I want to buy a small cake.",
-            "words": [
-              {
-                "id": "b1l03-g4-conf-3-word-1",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              },
-              {
-                "id": "b1l03-g4-conf-3-word-2",
-                "traditional": "要",
-                "pinyin": "yào",
-                "meaning": "want"
-              },
-              {
-                "id": "b1l03-g4-conf-3-word-3",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy"
-              },
-              {
-                "id": "b1l03-g4-conf-3-word-4",
-                "traditional": "小",
-                "pinyin": "xiǎo",
-                "meaning": "small"
-              },
-              {
-                "id": "b1l03-g4-conf-3-word-5",
-                "traditional": "蛋糕",
-                "pinyin": "dàngāo",
-                "meaning": "cake",
+                "traditional": "花",
+                "pinyin": "huā",
+                "meaning": "flower; flowers",
                 "suffix": "。"
               }
             ]
@@ -2336,7 +2168,7 @@
       },
       {
         "id": "g4-example-4",
-        "number": 4,
+        "number": 1,
         "teachingNote": "Single-syllable description 好 omits 的: 好朋友.",
         "text": {
           "traditional": "你有幾個好朋友？",
@@ -2381,7 +2213,7 @@
       },
       {
         "id": "g4-example-5",
-        "number": 5,
+        "number": 2,
         "teachingNote": "Single-syllable description 小 omits 的: 小蛋糕.",
         "text": {
           "traditional": "我要買一個小蛋糕。",
@@ -2433,7 +2265,7 @@
       },
       {
         "id": "g4-example-6",
-        "number": 6,
+        "number": 3,
         "teachingNote": "Single-syllable description 新 omits 的: 新同學.",
         "text": {
           "traditional": "他是我們的新同學。",
@@ -2479,7 +2311,7 @@
       },
       {
         "id": "g4-example-7",
-        "number": 7,
+        "number": 1,
         "teachingNote": "蛋糕 is already mentioned, so it is omitted; 的 stays: 大的, 小的.",
         "text": {
           "traditional": "A：你們要買哪個蛋糕？ B：他要買大的，我要買小的。",
@@ -2591,7 +2423,7 @@
       },
       {
         "id": "g4-example-8",
-        "number": 8,
+        "number": 2,
         "teachingNote": "衣服 is omitted; 便宜的 and 貴的 retain 的.",
         "text": {
           "traditional": "A：你要買哪件衣服？ B：我要買便宜的，不要買貴的。",
@@ -2696,7 +2528,7 @@
       },
       {
         "id": "g4-example-9",
-        "number": 9,
+        "number": 3,
         "teachingNote": "花 is omitted; 那朵漂亮的 retains 的.",
         "text": {
           "traditional": "A：妳想買哪朵花？ B：我想買那朵漂亮的。",
@@ -2780,10 +2612,10 @@
         }
       }
     ],
-    "exerciseTitle": "Three Uses of 的",
-    "exercisePreview": "Practice: 1) multi-syllable Vs + 的 + noun, 2) single-syllable Vs + noun, 3) omitting noun with 的.",
-    "exerciseInstruction": "Complete each sentence according to the three textbook rules for 的.",
-    "exerciseNote": "The pictures in the book show each choice. The book prints no answer key, so these practice answers are made for the app.",
+    "exerciseTitle": "Answer the following questions.",
+    "exercisePreview": "Keep 的 when the noun is omitted.",
+    "exerciseInstruction": "Complete each model answer with 的.",
+    "exerciseNote": "The book prints no answer key; these are model answers.",
     "exerciseResponseMode": "text",
     "exerciseCues": [
       {
@@ -3243,7 +3075,7 @@
       {
         "id": "b1l03-g04-sec-1",
         "sectionNumber": 1,
-        "title": "Connecting Descriptions (Description + 的 + Noun)",
+        "title": "的 before a noun",
         "explanation": "Place 的 between a describing word and a noun, like “a pretty flower” or “a happy child.”",
         "patternColumns": [
           "Adjective",
@@ -3280,64 +3112,6 @@
               }
             ],
             "english": "cheap things"
-          },
-          {
-            "id": "l3g4-s1-r2",
-            "subject": [
-              {
-                "id": "l3g4-s1-r2-s",
-                "traditional": "快樂",
-                "simplified": "快乐",
-                "pinyin": "kuàilè",
-                "meaning": "happy"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l3g4-s1-r2-g",
-                "traditional": "的",
-                "pinyin": "de",
-                "meaning": "modifier marker"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l3g4-s1-r2-c",
-                "traditional": "孩子",
-                "pinyin": "háizi",
-                "meaning": "child"
-              }
-            ],
-            "english": "happy child"
-          },
-          {
-            "id": "l3g4-s1-r3",
-            "subject": [
-              {
-                "id": "l3g4-s1-r3-s",
-                "traditional": "漂亮",
-                "simplified": "漂亮",
-                "pinyin": "piàoliang",
-                "meaning": "pretty"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l3g4-s1-r3-g",
-                "traditional": "的",
-                "pinyin": "de",
-                "meaning": "modifier marker"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l3g4-s1-r3-c",
-                "traditional": "花",
-                "pinyin": "huā",
-                "meaning": "flower"
-              }
-            ],
-            "english": "pretty flower"
           }
         ],
         "exampleIds": [
@@ -3349,11 +3123,11 @@
       {
         "id": "b1l03-g04-sec-2",
         "sectionNumber": 2,
-        "title": "Short One-Syllable Words (Skip 的)",
-        "explanation": "With common one-syllable words like 好 (good), 新 (new), or 大 (big), you can skip 的 directly, like 好朋友 (good friend) or 新書 (new book).",
+        "title": "的 can be omitted",
+        "explanation": "With one-syllable adjectives, you can often omit 的 before the noun, as in 新（的）書.",
         "patternColumns": [
           "Adjective",
-          "Skip 的",
+          "的",
           "Noun"
         ],
         "patternRows": [
@@ -3372,7 +3146,7 @@
                 "id": "l3g4-s2-r1-g",
                 "traditional": "(的)",
                 "pinyin": "(de)",
-                "meaning": "(omitted)"
+                "meaning": "optional 的"
               }
             ],
             "complement": [
@@ -3385,62 +3159,6 @@
               }
             ],
             "english": "new books"
-          },
-          {
-            "id": "l3g4-s2-r2",
-            "subject": [
-              {
-                "id": "l3g4-s2-r2-s",
-                "traditional": "好",
-                "pinyin": "hǎo",
-                "meaning": "good"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l3g4-s2-r2-g",
-                "traditional": "(的)",
-                "pinyin": "(de)",
-                "meaning": "(omitted)"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l3g4-s2-r2-c",
-                "traditional": "朋友",
-                "pinyin": "péngyǒu",
-                "meaning": "friends"
-              }
-            ],
-            "english": "good friends"
-          },
-          {
-            "id": "l3g4-s2-r3",
-            "subject": [
-              {
-                "id": "l3g4-s2-r3-s",
-                "traditional": "小",
-                "pinyin": "xiǎo",
-                "meaning": "small"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l3g4-s2-r3-g",
-                "traditional": "(的)",
-                "pinyin": "(de)",
-                "meaning": "(omitted)"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l3g4-s2-r3-c",
-                "traditional": "蛋糕",
-                "pinyin": "dàngāo",
-                "meaning": "cake"
-              }
-            ],
-            "english": "small cake"
           }
         ],
         "exampleIds": [
@@ -3452,12 +3170,12 @@
       {
         "id": "b1l03-g04-sec-3",
         "sectionNumber": 3,
-        "title": "Dropping the Noun When It Is Already Known",
-        "explanation": "If you and the listener already know what item you are talking about, you can leave out the noun and end with 的, like saying “I want the red one” (紅色的).",
+        "title": "Nouns can be omitted",
+        "explanation": "When the noun is already known, you can omit it, but keep 的: 他要買大的，我要買小的。",
         "patternColumns": [
           "Adjective",
           "的",
-          "No noun"
+          "Noun"
         ],
         "patternRows": [
           {
@@ -3516,7 +3234,7 @@
       82
     ],
     "audioReference": "03-2-3",
-    "explanation": "Start with 這, 那, or 哪, then add the number, measure word, and noun. With one item, 一 is often omitted; with two, use 兩.",
+        "explanation": "Start with 這, 那, or 哪, then add the number, measure word, and noun. With one item, 一 is often omitted; with two, use 兩. 這, 那, and 哪 mean “this,” “that,” and “which.” Use 這 when the noun is close and 那 when it is far.",
     "focusTerms": [
       "這",
       "这",
@@ -4116,6 +3834,19 @@
         "simplified": "红色、白色",
         "pinyin": "hóngsè, báisè",
         "meaning": "red and white"
+      },
+      {
+        "id": "b1l03-g03-glossary-93",
+        "traditional": "二",
+        "simplified": "二",
+        "pinyin": "èr",
+        "meaning": "two; plain-count form (two becomes 兩 before a measure word)"
+      },
+      {
+        "id": "b1l03-g03-glossary-94",
+        "traditional": "一",
+        "pinyin": "yī",
+        "meaning": "one; usually omitted between 這/那/哪 and the measure word"
       }
     ],
     "pattern": "這 / 那 / 哪 + number + measure word + noun",
@@ -4162,7 +3893,7 @@
           "simplified": "哪十个人？",
           "pinyin": "nǎ shí ge rén?",
           "english": "which ten people?",
-          "note": "哪 asks the listener to choose one."
+          "note": "哪 asks which people or things you mean."
         }
       ],
       "takeaway": "Choose 這, 那, or 哪 first, then the full number + measure word + noun."
@@ -4187,7 +3918,7 @@
             {
               "id": "g3-p1-one",
               "traditional": "一",
-              "pinyin": "yī",
+              "pinyin": "yì",
               "meaning": "one; usually left out here",
               "prefix": "（",
               "suffix": "）"
@@ -4306,44 +4037,38 @@
       "items": [
         {
           "id": "g3-confusion-zhe-vs-na",
-          "question": "This book is in my hand. Do I point with 這 or 那?",
-          "answer": "這 — it is near you. 那 is for things farther away.",
-          "wrongTraditional": "那本書很好看。",
-          "wrongSimplified": "那本书很好看。",
+          "question": "The pens are right in front of you. 這 or 那?",
+          "answer": "Something near you takes 這; something farther away takes 那.",
+          "wrongTraditional": "那四枝筆很好看。",
+          "wrongSimplified": "那四枝笔很好看。",
           "right": {
-            "traditional": "這本書很好看。",
-            "simplified": "这本书很好看。",
-            "pinyin": "Zhè běn shū hěn hǎokàn.",
-            "english": "This book looks good.",
+            "traditional": "這四枝筆很好看。",
+            "simplified": "这四枝笔很好看。",
+            "pinyin": "Zhè sì zhī bǐ hěn hǎokàn.",
+            "english": "These four pens look good.",
             "words": [
               {
                 "id": "b1l03-g3-conf-1-word-1",
-                "traditional": "這",
-                "simplified": "这",
-                "pinyin": "zhè",
-                "meaning": "this"
+                "traditional": "這四枝",
+                "simplified": "这四枝",
+                "pinyin": "zhè sì zhī",
+                "meaning": "these four"
               },
               {
                 "id": "b1l03-g3-conf-1-word-2",
-                "traditional": "本",
-                "pinyin": "běn",
-                "meaning": "measure word for books"
+                "traditional": "筆",
+                "simplified": "笔",
+                "pinyin": "bǐ",
+                "meaning": "pen"
               },
               {
                 "id": "b1l03-g3-conf-1-word-3",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book"
-              },
-              {
-                "id": "b1l03-g3-conf-1-word-4",
                 "traditional": "很",
                 "pinyin": "hěn",
                 "meaning": "very"
               },
               {
-                "id": "b1l03-g3-conf-1-word-5",
+                "id": "b1l03-g3-conf-1-word-4",
                 "traditional": "好看",
                 "pinyin": "hǎokàn",
                 "meaning": "good-looking",
@@ -4354,15 +4079,15 @@
         },
         {
           "id": "g3-confusion-na-in-answer",
-          "question": "I am choosing one thing to buy. Should my answer use 哪?",
-          "answer": "No. 哪 asks \"which?\" in the question. Your answer chooses with 這 or 那.",
-          "wrongTraditional": "我想買哪種筆。",
-          "wrongSimplified": "我想买哪种笔。",
+          "question": "In my answer to a 哪 question, can I use 哪?",
+          "answer": "No. 哪 asks the question; the answer chooses with 這 or 那.",
+          "wrongTraditional": "我喜歡喝哪種茶。",
+          "wrongSimplified": "我喜欢喝哪种茶。",
           "right": {
-            "traditional": "我想買這種筆。",
-            "simplified": "我想买这种笔。",
-            "pinyin": "Wǒ xiǎng mǎi zhè zhǒng bǐ.",
-            "english": "I would like to buy this kind of pen.",
+            "traditional": "我喜歡喝這種茶。",
+            "simplified": "我喜欢喝这种茶。",
+            "pinyin": "Wǒ xǐhuān hē zhè zhǒng chá.",
+            "english": "I like to drink this kind of tea.",
             "words": [
               {
                 "id": "b1l03-g3-conf-2-word-1",
@@ -4372,16 +4097,16 @@
               },
               {
                 "id": "b1l03-g3-conf-2-word-2",
-                "traditional": "想",
-                "pinyin": "xiǎng",
-                "meaning": "think; would like"
+                "traditional": "喜歡",
+                "simplified": "喜欢",
+                "pinyin": "xǐhuān",
+                "meaning": "like"
               },
               {
                 "id": "b1l03-g3-conf-2-word-3",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy"
+                "traditional": "喝",
+                "pinyin": "hē",
+                "meaning": "drink"
               },
               {
                 "id": "b1l03-g3-conf-2-word-4",
@@ -4392,52 +4117,72 @@
               },
               {
                 "id": "b1l03-g3-conf-2-word-5",
-                "traditional": "筆",
-                "simplified": "笔",
-                "pinyin": "bǐ",
-                "meaning": "pen",
+                "traditional": "茶",
+                "pinyin": "chá",
+                "meaning": "tea",
                 "suffix": "。"
               }
             ]
           }
         },
         {
-          "id": "g3-confusion-point-first",
-          "question": "Which comes first — the pointing word or the number?",
-          "answer": "The pointing word first: 這 / 那 / 哪, then the number, measure word, and noun.",
-          "wrongTraditional": "三件這衣服。",
-          "wrongSimplified": "三件这衣服。",
+          "id": "g3-confusion-er-vs-liang",
+          "question": "When I point at two books, which word do I use for “two”?",
+          "answer": "Use 兩 before 本 when you count two books.",
+          "wrongTraditional": "這二本中文書很新嗎？",
+          "wrongSimplified": "这二本中文书很新吗？",
           "right": {
-            "traditional": "這三件衣服很漂亮。",
-            "simplified": "这三件衣服很漂亮。",
-            "pinyin": "Zhè sān jiàn yīfu hěn piàoliang.",
-            "english": "These three clothes are beautiful.",
+            "traditional": "這兩本中文書很新嗎？",
+            "simplified": "这两本中文书很新吗？",
+            "pinyin": "Zhè liǎng běn Zhōngwén shū hěn xīn ma?",
+            "english": "Are these two Chinese books new?",
             "words": [
               {
                 "id": "b1l03-g3-conf-3-word-1",
-                "traditional": "這三件",
-                "simplified": "这三件",
-                "pinyin": "zhè sān jiàn",
-                "meaning": "these three"
+                "traditional": "這",
+                "simplified": "这",
+                "pinyin": "zhè",
+                "meaning": "this"
               },
               {
                 "id": "b1l03-g3-conf-3-word-2",
-                "traditional": "衣服",
-                "pinyin": "yīfu",
-                "meaning": "clothes"
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two before a measure word"
               },
               {
                 "id": "b1l03-g3-conf-3-word-3",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
+              },
+              {
+                "id": "b1l03-g3-conf-3-word-4",
+                "traditional": "中文書",
+                "simplified": "中文书",
+                "pinyin": "Zhōngwén shū",
+                "meaning": "book in Chinese"
+              },
+              {
+                "id": "b1l03-g3-conf-3-word-5",
                 "traditional": "很",
                 "pinyin": "hěn",
                 "meaning": "very"
               },
               {
-                "id": "b1l03-g3-conf-3-word-4",
-                "traditional": "漂亮",
-                "pinyin": "piàoliang",
-                "meaning": "beautiful",
-                "suffix": "。"
+                "id": "b1l03-g3-conf-3-word-6",
+                "traditional": "新",
+                "pinyin": "xīn",
+                "meaning": "new"
+              },
+              {
+                "id": "b1l03-g3-conf-3-word-7",
+                "traditional": "嗎",
+                "simplified": "吗",
+                "pinyin": "ma",
+                "meaning": "ending word for a yes-or-no question",
+                "suffix": "？"
               }
             ]
           }
@@ -4685,10 +4430,10 @@
         }
       }
     ],
-    "exerciseTitle": "Point, count, describe",
+    "exerciseTitle": "Answer the following questions.",
     "exercisePreview": "Answer each picture question with a full phrase.",
     "exerciseInstruction": "Keep 這, 那, or 哪 before the quantity and noun.",
-    "exerciseNote": "The book prints picture questions with no answer key. These practice answers describe what the pictures show.",
+    "exerciseNote": "The book prints no answer key; these are model answers.",
     "exerciseResponseMode": "text",
     "exerciseCues": [
       {
@@ -4717,44 +4462,47 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：這三件衣服漂亮嗎？ B：",
-            "simplified": "A：这三件衣服漂亮吗？ B："
+            "traditional": "A：這三件衣服漂亮嗎？ B：這三",
+            "simplified": "A：这三件衣服漂亮吗？ B：这三"
           },
           {
             "type": "blank",
             "id": "g3-q1-answer",
-            "answer": "這三件衣服很漂亮",
-            "answerSimplified": "这三件衣服很漂亮",
-            "hint": "Answer about all three shirts."
+            "answer": "件",
+            "answerSimplified": "件",
+            "hint": "Use 件 to count clothing."
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "衣服很漂亮。",
+            "simplified": "衣服很漂亮。"
           }
         ],
         "tiles": [
           {
-            "id": "g3-q1-correct",
-            "traditional": "這三件衣服很漂亮",
-            "simplified": "这三件衣服很漂亮",
-            "pinyin": "zhè sān jiàn yīfu hěn piàoliang",
-            "meaning": "these three clothes are beautiful"
+            "id": "g3-question-1-tile-1",
+            "traditional": "件",
+            "simplified": "件",
+            "pinyin": "jiàn",
+            "meaning": "measure word for clothing"
           },
           {
-            "id": "g3-q1-that",
-            "traditional": "那三件衣服很漂亮",
-            "pinyin": "nà sān jiàn yīfu hěn piàoliang",
-            "meaning": "those three clothes are beautiful"
+            "id": "g3-question-1-tile-2",
+            "traditional": "本",
+            "simplified": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
           },
           {
-            "id": "g3-q1-which",
-            "traditional": "哪三件衣服很漂亮",
-            "pinyin": "nǎ sān jiàn yīfu hěn piàoliang",
-            "meaning": "which three clothes are beautiful"
+            "id": "g3-question-1-tile-3",
+            "traditional": "朵",
+            "simplified": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
           }
         ],
-        "correctFeedback": "The question points with 這, so the answer keeps 這三件衣服.",
-        "repairFeedback": "Match the question: it asks about 這三件衣服, not 那 or 哪."
+        "correctFeedback": "Use 件 to count clothing.",
+        "repairFeedback": "Use 件 before 衣服."
       },
       {
         "id": "g3-question-2",
@@ -4762,42 +4510,47 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：那四朵花怎麼樣？ B：",
-            "simplified": "A：那四朵花怎么样？ B："
+            "traditional": "A：那四朵花怎麼樣？ B：那四",
+            "simplified": "A：那四朵花怎么样？ B：那四"
           },
           {
             "type": "blank",
             "id": "g3-q2-answer",
-            "answer": "那四朵花很好看",
-            "hint": "Keep 那四朵花 together."
+            "answer": "朵",
+            "hint": "Use 朵 to count flowers.",
+            "answerSimplified": "朵"
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "花很好看。",
+            "simplified": "花很好看。"
           }
         ],
         "tiles": [
           {
-            "id": "g3-q2-correct",
-            "traditional": "那四朵花很好看",
-            "pinyin": "nà sì duǒ huā hěn hǎokàn",
-            "meaning": "those four flowers look good"
+            "id": "g3-question-2-tile-1",
+            "traditional": "朵",
+            "simplified": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
           },
           {
-            "id": "g3-q2-order",
-            "traditional": "四朵那花很好看",
-            "pinyin": "sì duǒ nà huā hěn hǎokàn",
-            "meaning": "incorrect pointing-word order"
+            "id": "g3-question-2-tile-2",
+            "traditional": "本",
+            "simplified": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
           },
           {
-            "id": "g3-q2-measure",
-            "traditional": "那四本花很好看",
-            "pinyin": "nà sì běn huā hěn hǎokàn",
-            "meaning": "wrong measure word for flowers"
+            "id": "g3-question-2-tile-3",
+            "traditional": "件",
+            "simplified": "件",
+            "pinyin": "jiàn",
+            "meaning": "measure word for clothing"
           }
         ],
-        "correctFeedback": "那 comes first, and 朵 correctly counts the four flowers.",
-        "repairFeedback": "Use 那 + 四 + 朵 + 花. Keep the pointing word first."
+        "correctFeedback": "Use 朵 to count flowers.",
+        "repairFeedback": "Use 朵 before 花."
       },
       {
         "id": "g3-question-3",
@@ -4805,46 +4558,47 @@
         "segments": [
           {
             "type": "text",
-            "traditional": "A：你想買哪種東西？ B：",
-            "simplified": "A：你想买哪种东西？ B："
+            "traditional": "A：你想買哪種東西？ B：我想買這",
+            "simplified": "A：你想买哪种东西？ B：我想买这"
           },
           {
             "type": "blank",
             "id": "g3-q3-answer",
-            "answer": "我想買這種筆",
-            "answerSimplified": "我想买这种笔",
-            "hint": "Pick one item from the picture."
+            "answer": "種",
+            "answerSimplified": "种",
+            "hint": "Use 種 to name a kind of pen."
           },
           {
             "type": "text",
-            "traditional": "。"
+            "traditional": "筆。",
+            "simplified": "笔。"
           }
         ],
         "tiles": [
           {
-            "id": "g3-q3-correct",
-            "traditional": "我想買這種筆",
-            "simplified": "我想买这种笔",
-            "pinyin": "wǒ xiǎng mǎi zhè zhǒng bǐ",
-            "meaning": "I would like to buy this kind of pen"
+            "id": "g3-question-3-tile-1",
+            "traditional": "種",
+            "simplified": "种",
+            "pinyin": "zhǒng",
+            "meaning": "kind"
           },
           {
-            "id": "g3-q3-question",
-            "traditional": "我想買哪種筆",
-            "simplified": "我想买哪种笔",
-            "pinyin": "wǒ xiǎng mǎi nǎ zhǒng bǐ",
-            "meaning": "I would like to buy which kind of pen"
+            "id": "g3-question-3-tile-2",
+            "traditional": "本",
+            "simplified": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
           },
           {
-            "id": "g3-q3-no-measure",
-            "traditional": "我想買這筆",
-            "simplified": "我想买这笔",
-            "pinyin": "wǒ xiǎng mǎi zhè bǐ",
-            "meaning": "missing the measure word"
+            "id": "g3-question-3-tile-3",
+            "traditional": "件",
+            "simplified": "件",
+            "pinyin": "jiàn",
+            "meaning": "measure word for clothing"
           }
         ],
-        "correctFeedback": "The answer chooses an item with 這種筆.",
-        "repairFeedback": "A response chooses with 這 or 那. Keep 種 between the pointing word and 筆."
+        "correctFeedback": "Use 種 to name a kind of pen.",
+        "repairFeedback": "Put 種 between 這 and 筆."
       }
     ]
   },
@@ -4871,7 +4625,7 @@
           82
         ],
         "audioReference": "03-2-3",
-        "explanation": "Start with 這, 那, or 哪, then add the number, measure word, and noun. With one item, 一 is often omitted; with two, use 兩.",
+    "explanation": "Start with 這, 那, or 哪, then add the number, measure word, and noun. With one item, 一 is often omitted; with two, use 兩. 這, 那, and 哪 mean “this,” “that,” and “which.” Use 這 when the noun is close and 那 when it is far.",
         "focusTerms": [
           "這",
           "这",
@@ -5471,6 +5225,19 @@
             "simplified": "红色、白色",
             "pinyin": "hóngsè, báisè",
             "meaning": "red and white"
+          },
+          {
+            "id": "b1l03-g03-glossary-93",
+            "traditional": "二",
+            "simplified": "二",
+            "pinyin": "èr",
+            "meaning": "two; plain-count form (two becomes 兩 before a measure word)"
+          },
+          {
+            "id": "b1l03-g03-glossary-94",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one; usually omitted between 這/那/哪 and the measure word"
           }
         ],
         "pattern": "這 / 那 / 哪 + number + measure word + noun",
@@ -5517,7 +5284,7 @@
               "simplified": "哪十个人？",
               "pinyin": "nǎ shí ge rén?",
               "english": "which ten people?",
-              "note": "哪 asks the listener to choose one."
+              "note": "哪 asks which people or things you mean."
             }
           ],
           "takeaway": "Choose 這, 那, or 哪 first, then the full number + measure word + noun."
@@ -5542,7 +5309,7 @@
                 {
                   "id": "g3-p1-one",
                   "traditional": "一",
-                  "pinyin": "yī",
+                  "pinyin": "yì",
                   "meaning": "one; usually left out here",
                   "prefix": "（",
                   "suffix": "）"
@@ -5661,44 +5428,38 @@
           "items": [
             {
               "id": "g3-confusion-zhe-vs-na",
-              "question": "This book is in my hand. Do I point with 這 or 那?",
-              "answer": "這 — it is near you. 那 is for things farther away.",
-              "wrongTraditional": "那本書很好看。",
-              "wrongSimplified": "那本书很好看。",
+              "question": "The pens are right in front of you. 這 or 那?",
+              "answer": "Something near you takes 這; something farther away takes 那.",
+              "wrongTraditional": "那四枝筆很好看。",
+              "wrongSimplified": "那四枝笔很好看。",
               "right": {
-                "traditional": "這本書很好看。",
-                "simplified": "这本书很好看。",
-                "pinyin": "Zhè běn shū hěn hǎokàn.",
-                "english": "This book looks good.",
+                "traditional": "這四枝筆很好看。",
+                "simplified": "这四枝笔很好看。",
+                "pinyin": "Zhè sì zhī bǐ hěn hǎokàn.",
+                "english": "These four pens look good.",
                 "words": [
                   {
                     "id": "b1l03-g3-conf-1-word-1",
-                    "traditional": "這",
-                    "simplified": "这",
-                    "pinyin": "zhè",
-                    "meaning": "this"
+                    "traditional": "這四枝",
+                    "simplified": "这四枝",
+                    "pinyin": "zhè sì zhī",
+                    "meaning": "these four"
                   },
                   {
                     "id": "b1l03-g3-conf-1-word-2",
-                    "traditional": "本",
-                    "pinyin": "běn",
-                    "meaning": "measure word for books"
+                    "traditional": "筆",
+                    "simplified": "笔",
+                    "pinyin": "bǐ",
+                    "meaning": "pen"
                   },
                   {
                     "id": "b1l03-g3-conf-1-word-3",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū",
-                    "meaning": "book"
-                  },
-                  {
-                    "id": "b1l03-g3-conf-1-word-4",
                     "traditional": "很",
                     "pinyin": "hěn",
                     "meaning": "very"
                   },
                   {
-                    "id": "b1l03-g3-conf-1-word-5",
+                    "id": "b1l03-g3-conf-1-word-4",
                     "traditional": "好看",
                     "pinyin": "hǎokàn",
                     "meaning": "good-looking",
@@ -5709,15 +5470,15 @@
             },
             {
               "id": "g3-confusion-na-in-answer",
-              "question": "I am choosing one thing to buy. Should my answer use 哪?",
-              "answer": "No. 哪 asks \"which?\" in the question. Your answer chooses with 這 or 那.",
-              "wrongTraditional": "我想買哪種筆。",
-              "wrongSimplified": "我想买哪种笔。",
+              "question": "In my answer to a 哪 question, can I use 哪?",
+              "answer": "No. 哪 asks the question; the answer chooses with 這 or 那.",
+              "wrongTraditional": "我喜歡喝哪種茶。",
+              "wrongSimplified": "我喜欢喝哪种茶。",
               "right": {
-                "traditional": "我想買這種筆。",
-                "simplified": "我想买这种笔。",
-                "pinyin": "Wǒ xiǎng mǎi zhè zhǒng bǐ.",
-                "english": "I would like to buy this kind of pen.",
+                "traditional": "我喜歡喝這種茶。",
+                "simplified": "我喜欢喝这种茶。",
+                "pinyin": "Wǒ xǐhuān hē zhè zhǒng chá.",
+                "english": "I like to drink this kind of tea.",
                 "words": [
                   {
                     "id": "b1l03-g3-conf-2-word-1",
@@ -5727,16 +5488,16 @@
                   },
                   {
                     "id": "b1l03-g3-conf-2-word-2",
-                    "traditional": "想",
-                    "pinyin": "xiǎng",
-                    "meaning": "think; would like"
+                    "traditional": "喜歡",
+                    "simplified": "喜欢",
+                    "pinyin": "xǐhuān",
+                    "meaning": "like"
                   },
                   {
                     "id": "b1l03-g3-conf-2-word-3",
-                    "traditional": "買",
-                    "simplified": "买",
-                    "pinyin": "mǎi",
-                    "meaning": "buy"
+                    "traditional": "喝",
+                    "pinyin": "hē",
+                    "meaning": "drink"
                   },
                   {
                     "id": "b1l03-g3-conf-2-word-4",
@@ -5747,52 +5508,72 @@
                   },
                   {
                     "id": "b1l03-g3-conf-2-word-5",
-                    "traditional": "筆",
-                    "simplified": "笔",
-                    "pinyin": "bǐ",
-                    "meaning": "pen",
+                    "traditional": "茶",
+                    "pinyin": "chá",
+                    "meaning": "tea",
                     "suffix": "。"
                   }
                 ]
               }
             },
             {
-              "id": "g3-confusion-point-first",
-              "question": "Which comes first — the pointing word or the number?",
-              "answer": "The pointing word first: 這 / 那 / 哪, then the number, measure word, and noun.",
-              "wrongTraditional": "三件這衣服。",
-              "wrongSimplified": "三件这衣服。",
+              "id": "g3-confusion-er-vs-liang",
+              "question": "When I point at two books, which word do I use for “two”?",
+              "answer": "Use 兩 before 本 when you count two books.",
+              "wrongTraditional": "這二本中文書很新嗎？",
+              "wrongSimplified": "这二本中文书很新吗？",
               "right": {
-                "traditional": "這三件衣服很漂亮。",
-                "simplified": "这三件衣服很漂亮。",
-                "pinyin": "Zhè sān jiàn yīfu hěn piàoliang.",
-                "english": "These three clothes are beautiful.",
+                "traditional": "這兩本中文書很新嗎？",
+                "simplified": "这两本中文书很新吗？",
+                "pinyin": "Zhè liǎng běn Zhōngwén shū hěn xīn ma?",
+                "english": "Are these two Chinese books new?",
                 "words": [
                   {
                     "id": "b1l03-g3-conf-3-word-1",
-                    "traditional": "這三件",
-                    "simplified": "这三件",
-                    "pinyin": "zhè sān jiàn",
-                    "meaning": "these three"
+                    "traditional": "這",
+                    "simplified": "这",
+                    "pinyin": "zhè",
+                    "meaning": "this"
                   },
                   {
                     "id": "b1l03-g3-conf-3-word-2",
-                    "traditional": "衣服",
-                    "pinyin": "yīfu",
-                    "meaning": "clothes"
+                    "traditional": "兩",
+                    "simplified": "两",
+                    "pinyin": "liǎng",
+                    "meaning": "two before a measure word"
                   },
                   {
                     "id": "b1l03-g3-conf-3-word-3",
+                    "traditional": "本",
+                    "pinyin": "běn",
+                    "meaning": "measure word for books"
+                  },
+                  {
+                    "id": "b1l03-g3-conf-3-word-4",
+                    "traditional": "中文書",
+                    "simplified": "中文书",
+                    "pinyin": "Zhōngwén shū",
+                    "meaning": "book in Chinese"
+                  },
+                  {
+                    "id": "b1l03-g3-conf-3-word-5",
                     "traditional": "很",
                     "pinyin": "hěn",
                     "meaning": "very"
                   },
                   {
-                    "id": "b1l03-g3-conf-3-word-4",
-                    "traditional": "漂亮",
-                    "pinyin": "piàoliang",
-                    "meaning": "beautiful",
-                    "suffix": "。"
+                    "id": "b1l03-g3-conf-3-word-6",
+                    "traditional": "新",
+                    "pinyin": "xīn",
+                    "meaning": "new"
+                  },
+                  {
+                    "id": "b1l03-g3-conf-3-word-7",
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma",
+                    "meaning": "ending word for a yes-or-no question",
+                    "suffix": "？"
                   }
                 ]
               }
@@ -6040,10 +5821,10 @@
             }
           }
         ],
-        "exerciseTitle": "Point, count, describe",
+        "exerciseTitle": "Answer the following questions.",
         "exercisePreview": "Answer each picture question with a full phrase.",
         "exerciseInstruction": "Keep 這, 那, or 哪 before the quantity and noun.",
-        "exerciseNote": "The book prints picture questions with no answer key. These practice answers describe what the pictures show.",
+        "exerciseNote": "The book prints no answer key; these are model answers.",
         "exerciseResponseMode": "text",
         "exerciseCues": [
           {
@@ -6072,44 +5853,47 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：這三件衣服漂亮嗎？ B：",
-                "simplified": "A：这三件衣服漂亮吗？ B："
+                "traditional": "A：這三件衣服漂亮嗎？ B：這三",
+                "simplified": "A：这三件衣服漂亮吗？ B：这三"
               },
               {
                 "type": "blank",
                 "id": "g3-q1-answer",
-                "answer": "這三件衣服很漂亮",
-                "answerSimplified": "这三件衣服很漂亮",
-                "hint": "Answer about all three shirts."
+                "answer": "件",
+                "answerSimplified": "件",
+                "hint": "Use 件 to count clothing."
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "衣服很漂亮。",
+                "simplified": "衣服很漂亮。"
               }
             ],
             "tiles": [
               {
-                "id": "g3-q1-correct",
-                "traditional": "這三件衣服很漂亮",
-                "simplified": "这三件衣服很漂亮",
-                "pinyin": "zhè sān jiàn yīfu hěn piàoliang",
-                "meaning": "these three clothes are beautiful"
+                "id": "g3-question-1-tile-1",
+                "traditional": "件",
+                "simplified": "件",
+                "pinyin": "jiàn",
+                "meaning": "measure word for clothing"
               },
               {
-                "id": "g3-q1-that",
-                "traditional": "那三件衣服很漂亮",
-                "pinyin": "nà sān jiàn yīfu hěn piàoliang",
-                "meaning": "those three clothes are beautiful"
+                "id": "g3-question-1-tile-2",
+                "traditional": "本",
+                "simplified": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
               },
               {
-                "id": "g3-q1-which",
-                "traditional": "哪三件衣服很漂亮",
-                "pinyin": "nǎ sān jiàn yīfu hěn piàoliang",
-                "meaning": "which three clothes are beautiful"
+                "id": "g3-question-1-tile-3",
+                "traditional": "朵",
+                "simplified": "朵",
+                "pinyin": "duǒ",
+                "meaning": "measure word for flowers"
               }
             ],
-            "correctFeedback": "The question points with 這, so the answer keeps 這三件衣服.",
-            "repairFeedback": "Match the question: it asks about 這三件衣服, not 那 or 哪."
+            "correctFeedback": "Use 件 to count clothing.",
+            "repairFeedback": "Use 件 before 衣服."
           },
           {
             "id": "g3-question-2",
@@ -6117,42 +5901,47 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：那四朵花怎麼樣？ B：",
-                "simplified": "A：那四朵花怎么样？ B："
+                "traditional": "A：那四朵花怎麼樣？ B：那四",
+                "simplified": "A：那四朵花怎么样？ B：那四"
               },
               {
                 "type": "blank",
                 "id": "g3-q2-answer",
-                "answer": "那四朵花很好看",
-                "hint": "Keep 那四朵花 together."
+                "answer": "朵",
+                "hint": "Use 朵 to count flowers.",
+                "answerSimplified": "朵"
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "花很好看。",
+                "simplified": "花很好看。"
               }
             ],
             "tiles": [
               {
-                "id": "g3-q2-correct",
-                "traditional": "那四朵花很好看",
-                "pinyin": "nà sì duǒ huā hěn hǎokàn",
-                "meaning": "those four flowers look good"
+                "id": "g3-question-2-tile-1",
+                "traditional": "朵",
+                "simplified": "朵",
+                "pinyin": "duǒ",
+                "meaning": "measure word for flowers"
               },
               {
-                "id": "g3-q2-order",
-                "traditional": "四朵那花很好看",
-                "pinyin": "sì duǒ nà huā hěn hǎokàn",
-                "meaning": "incorrect pointing-word order"
+                "id": "g3-question-2-tile-2",
+                "traditional": "本",
+                "simplified": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
               },
               {
-                "id": "g3-q2-measure",
-                "traditional": "那四本花很好看",
-                "pinyin": "nà sì běn huā hěn hǎokàn",
-                "meaning": "wrong measure word for flowers"
+                "id": "g3-question-2-tile-3",
+                "traditional": "件",
+                "simplified": "件",
+                "pinyin": "jiàn",
+                "meaning": "measure word for clothing"
               }
             ],
-            "correctFeedback": "那 comes first, and 朵 correctly counts the four flowers.",
-            "repairFeedback": "Use 那 + 四 + 朵 + 花. Keep the pointing word first."
+            "correctFeedback": "Use 朵 to count flowers.",
+            "repairFeedback": "Use 朵 before 花."
           },
           {
             "id": "g3-question-3",
@@ -6160,46 +5949,47 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "A：你想買哪種東西？ B：",
-                "simplified": "A：你想买哪种东西？ B："
+                "traditional": "A：你想買哪種東西？ B：我想買這",
+                "simplified": "A：你想买哪种东西？ B：我想买这"
               },
               {
                 "type": "blank",
                 "id": "g3-q3-answer",
-                "answer": "我想買這種筆",
-                "answerSimplified": "我想买这种笔",
-                "hint": "Pick one item from the picture."
+                "answer": "種",
+                "answerSimplified": "种",
+                "hint": "Use 種 to name a kind of pen."
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "筆。",
+                "simplified": "笔。"
               }
             ],
             "tiles": [
               {
-                "id": "g3-q3-correct",
-                "traditional": "我想買這種筆",
-                "simplified": "我想买这种笔",
-                "pinyin": "wǒ xiǎng mǎi zhè zhǒng bǐ",
-                "meaning": "I would like to buy this kind of pen"
+                "id": "g3-question-3-tile-1",
+                "traditional": "種",
+                "simplified": "种",
+                "pinyin": "zhǒng",
+                "meaning": "kind"
               },
               {
-                "id": "g3-q3-question",
-                "traditional": "我想買哪種筆",
-                "simplified": "我想买哪种笔",
-                "pinyin": "wǒ xiǎng mǎi nǎ zhǒng bǐ",
-                "meaning": "I would like to buy which kind of pen"
+                "id": "g3-question-3-tile-2",
+                "traditional": "本",
+                "simplified": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
               },
               {
-                "id": "g3-q3-no-measure",
-                "traditional": "我想買這筆",
-                "simplified": "我想买这笔",
-                "pinyin": "wǒ xiǎng mǎi zhè bǐ",
-                "meaning": "missing the measure word"
+                "id": "g3-question-3-tile-3",
+                "traditional": "件",
+                "simplified": "件",
+                "pinyin": "jiàn",
+                "meaning": "measure word for clothing"
               }
             ],
-            "correctFeedback": "The answer chooses an item with 這種筆.",
-            "repairFeedback": "A response chooses with 這 or 那. Keep 種 between the pointing word and 筆."
+            "correctFeedback": "Use 種 to name a kind of pen.",
+            "repairFeedback": "Put 種 between 這 and 筆."
           }
         ]
       },
@@ -6819,6 +6609,38 @@
             "simplified": "红色、白色",
             "pinyin": "hóngsè, báisè",
             "meaning": "red and white"
+          },
+          {
+            "id": "b1l03-g04-glossary-93",
+            "traditional": "幾個",
+            "simplified": "几个",
+            "pinyin": "jǐ ge",
+            "meaning": "how many"
+          },
+          {
+            "id": "b1l03-g04-glossary-94",
+            "traditional": "三個",
+            "simplified": "三个",
+            "pinyin": "sān ge",
+            "meaning": "three"
+          },
+          {
+            "id": "b1l03-g04-glossary-95",
+            "traditional": "那朵",
+            "pinyin": "nà duǒ",
+            "meaning": "that (flower)"
+          },
+          {
+            "id": "b1l03-g04-glossary-96",
+            "traditional": "（的）",
+            "pinyin": "(de)",
+            "meaning": "的 when it is dropped with one-syllable words"
+          },
+          {
+            "id": "b1l03-g04-glossary-97",
+            "traditional": "（蛋糕）",
+            "pinyin": "(dàngāo)",
+            "meaning": "cake, already mentioned so it is omitted"
           }
         ],
         "pattern": "Description + 的 + noun, or description + 的",
@@ -6839,7 +6661,7 @@
               "traditional": "便宜的東西",
               "simplified": "便宜的东西",
               "pinyin": "piányí de dōngxi",
-              "english": "inexpensive things",
+              "english": "cheap things",
               "note": "A longer description uses 的 before the noun."
             },
             {
@@ -6854,133 +6676,46 @@
             {
               "id": "g4-replace",
               "label": "Noun already known",
-              "traditional": "他要買大的。",
-              "simplified": "他要买大的。",
-              "pinyin": "Tā yào mǎi dà de.",
-              "english": "He wants to buy the big one.",
+              "traditional": "他要買大的，我要買小的。",
+              "simplified": "他要买大的，我要买小的。",
+              "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
+              "english": "He wants to buy the big one; I want to buy the small one.",
               "note": "大的 keeps 的 because it stands for the thing already named."
             },
             {
               "id": "g4-repair",
               "label": "Do not drop both",
-              "traditional": "我要買大 → 我要買大的",
-              "simplified": "我要买大 → 我要买大的",
-              "pinyin": "Wǒ yào mǎi dà → wǒ yào mǎi dà de",
-              "english": "I want to buy the big one.",
+              "traditional": "他要買大，我要買小 → 他要買大的，我要買小的。",
+              "simplified": "他要买大，我要买小 → 他要买大的，我要买小的。",
+              "pinyin": "Tā yào mǎi dà, wǒ yào mǎi xiǎo → tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
+              "english": "He wants to buy the big one; I want to buy the small one.",
               "note": "When the thing is dropped, 的 stays.",
               "isCorrection": true
             }
           ],
-          "takeaway": "If the thing is not named, 的 stays: 大的, 新的, 便宜的."
+          "takeaway": "When the noun is omitted, keep 的: 他要買大的，我要買小的。"
         },
-        "patternRows": [
-          {
-            "id": "g4-pattern-1",
-            "subject": [
-              {
-                "id": "g4-p1-cheap",
-                "traditional": "便宜",
-                "pinyin": "piányí",
-                "meaning": "inexpensive"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p1-de",
-                "traditional": "的",
-                "pinyin": "de",
-                "meaning": "connects description to noun"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p1-things",
-                "traditional": "東西",
-                "simplified": "东西",
-                "pinyin": "dōngxi",
-                "meaning": "thing; stuff"
-              }
-            ],
-            "english": "Part 1 · inexpensive things (multi-syllable description uses 的)"
-          },
-          {
-            "id": "g4-pattern-2",
-            "subject": [
-              {
-                "id": "g4-p2-new",
-                "traditional": "新",
-                "pinyin": "xīn",
-                "meaning": "new"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p2-de",
-                "traditional": "（的）",
-                "pinyin": "(de)",
-                "meaning": "often omitted with 1-syllable Vs"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p2-book",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book"
-              }
-            ],
-            "english": "Part 2 · new books (single-syllable description omits 的)"
-          },
-          {
-            "id": "g4-pattern-3",
-            "subject": [
-              {
-                "id": "g4-p3-big",
-                "traditional": "大",
-                "pinyin": "dà",
-                "meaning": "big"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p3-de",
-                "traditional": "的",
-                "pinyin": "de",
-                "meaning": "stands for the known noun"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p3-omitted",
-                "traditional": "（蛋糕）",
-                "pinyin": "(dàngāo)",
-                "meaning": "omitted noun"
-              }
-            ],
-            "english": "Part 3 · the big one (known noun omitted, 的 stays)"
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
             {
               "id": "g4-confusion-de-stays",
-              "question": "The thing is already clear. Can I drop 的 too?",
-              "answer": "No. When the noun goes, 的 must stay: 大的, 新的.",
-              "wrongTraditional": "我要買大。",
-              "wrongSimplified": "我要买大。",
+              "question": "The cake is already clear. Can I drop 的 too?",
+              "answer": "No. When the noun goes away, 的 must stay.",
+              "wrongTraditional": "他要買大，我要買小。",
+              "wrongSimplified": "他要买大，我要买小。",
               "right": {
-                "traditional": "我要買大的。",
-                "simplified": "我要买大的。",
-                "pinyin": "Wǒ yào mǎi dà de.",
-                "english": "I want to buy the big one.",
+                "traditional": "他要買大的，我要買小的。",
+                "simplified": "他要买大的，我要买小的。",
+                "pinyin": "Tā yào mǎi dà de, wǒ yào mǎi xiǎo de.",
+                "english": "He wants to buy the big one; I want to buy the small one.",
                 "words": [
                   {
                     "id": "b1l03-g4-conf-1-word-1",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me"
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he"
                   },
                   {
                     "id": "b1l03-g4-conf-1-word-2",
@@ -7005,7 +6740,39 @@
                     "id": "b1l03-g4-conf-1-word-5",
                     "traditional": "的",
                     "pinyin": "de",
-                    "meaning": "connects a describing word to a thing; can stand for a known thing",
+                    "meaning": "modifier marker"
+                  },
+                  {
+                    "id": "b1l03-g4-conf-1-word-6",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I",
+                    "prefix": "，"
+                  },
+                  {
+                    "id": "b1l03-g4-conf-1-word-7",
+                    "traditional": "要",
+                    "pinyin": "yào",
+                    "meaning": "want"
+                  },
+                  {
+                    "id": "b1l03-g4-conf-1-word-8",
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi",
+                    "meaning": "buy"
+                  },
+                  {
+                    "id": "b1l03-g4-conf-1-word-9",
+                    "traditional": "小",
+                    "pinyin": "xiǎo",
+                    "meaning": "small"
+                  },
+                  {
+                    "id": "b1l03-g4-conf-1-word-10",
+                    "traditional": "的",
+                    "pinyin": "de",
+                    "meaning": "modifier marker",
                     "suffix": "。"
                   }
                 ]
@@ -7013,15 +6780,15 @@
             },
             {
               "id": "g4-confusion-de-before-noun",
-              "question": "Do I need 的 between 好看 and 蛋糕?",
-              "answer": "Yes. Longer describing words like 好看 or 可愛 take 的 before the noun.",
-              "wrongTraditional": "我喜歡好看蛋糕。",
-              "wrongSimplified": "我喜欢好看蛋糕。",
+              "question": "Does a describing word always take 的 before the noun?",
+              "answer": "Longer words like 漂亮 take 的; short words like 小 usually do not.",
+              "wrongTraditional": "我喜歡漂亮花。",
+              "wrongSimplified": "我喜欢漂亮花。",
               "right": {
-                "traditional": "我喜歡好看的蛋糕。",
-                "simplified": "我喜欢好看的蛋糕。",
-                "pinyin": "Wǒ xǐhuān hǎokàn de dàngāo.",
-                "english": "I like the good-looking cake.",
+                "traditional": "我喜歡漂亮的花。",
+                "simplified": "我喜欢漂亮的花。",
+                "pinyin": "Wǒ xǐhuān piàoliang de huā.",
+                "english": "I like pretty flowers.",
                 "words": [
                   {
                     "id": "b1l03-g4-conf-2-word-1",
@@ -7038,9 +6805,9 @@
                   },
                   {
                     "id": "b1l03-g4-conf-2-word-3",
-                    "traditional": "好看",
-                    "pinyin": "hǎokàn",
-                    "meaning": "good-looking"
+                    "traditional": "漂亮",
+                    "pinyin": "piàoliang",
+                    "meaning": "beautiful"
                   },
                   {
                     "id": "b1l03-g4-conf-2-word-4",
@@ -7050,56 +6817,9 @@
                   },
                   {
                     "id": "b1l03-g4-conf-2-word-5",
-                    "traditional": "蛋糕",
-                    "pinyin": "dàngāo",
-                    "meaning": "cake",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g4-confusion-de-dropped",
-              "question": "Short words like 小 — do they also need 的?",
-              "answer": "No. One-syllable words like 小 or 新 drop 的: 小蛋糕, 新書.",
-              "wrongTraditional": "我要買小的蛋糕。",
-              "wrongSimplified": "我要买小的蛋糕。",
-              "right": {
-                "traditional": "我要買小蛋糕。",
-                "simplified": "我要买小蛋糕。",
-                "pinyin": "Wǒ yào mǎi xiǎo dàngāo.",
-                "english": "I want to buy a small cake.",
-                "words": [
-                  {
-                    "id": "b1l03-g4-conf-3-word-1",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me"
-                  },
-                  {
-                    "id": "b1l03-g4-conf-3-word-2",
-                    "traditional": "要",
-                    "pinyin": "yào",
-                    "meaning": "want"
-                  },
-                  {
-                    "id": "b1l03-g4-conf-3-word-3",
-                    "traditional": "買",
-                    "simplified": "买",
-                    "pinyin": "mǎi",
-                    "meaning": "buy"
-                  },
-                  {
-                    "id": "b1l03-g4-conf-3-word-4",
-                    "traditional": "小",
-                    "pinyin": "xiǎo",
-                    "meaning": "small"
-                  },
-                  {
-                    "id": "b1l03-g4-conf-3-word-5",
-                    "traditional": "蛋糕",
-                    "pinyin": "dàngāo",
-                    "meaning": "cake",
+                    "traditional": "花",
+                    "pinyin": "huā",
+                    "meaning": "flower; flowers",
                     "suffix": "。"
                   }
                 ]
@@ -7259,7 +6979,7 @@
           },
           {
             "id": "g4-example-4",
-            "number": 4,
+            "number": 1,
             "teachingNote": "Single-syllable description 好 omits 的: 好朋友.",
             "text": {
               "traditional": "你有幾個好朋友？",
@@ -7304,7 +7024,7 @@
           },
           {
             "id": "g4-example-5",
-            "number": 5,
+            "number": 2,
             "teachingNote": "Single-syllable description 小 omits 的: 小蛋糕.",
             "text": {
               "traditional": "我要買一個小蛋糕。",
@@ -7356,7 +7076,7 @@
           },
           {
             "id": "g4-example-6",
-            "number": 6,
+            "number": 3,
             "teachingNote": "Single-syllable description 新 omits 的: 新同學.",
             "text": {
               "traditional": "他是我們的新同學。",
@@ -7402,7 +7122,7 @@
           },
           {
             "id": "g4-example-7",
-            "number": 7,
+            "number": 1,
             "teachingNote": "蛋糕 is already mentioned, so it is omitted; 的 stays: 大的, 小的.",
             "text": {
               "traditional": "A：你們要買哪個蛋糕？ B：他要買大的，我要買小的。",
@@ -7514,7 +7234,7 @@
           },
           {
             "id": "g4-example-8",
-            "number": 8,
+            "number": 2,
             "teachingNote": "衣服 is omitted; 便宜的 and 貴的 retain 的.",
             "text": {
               "traditional": "A：你要買哪件衣服？ B：我要買便宜的，不要買貴的。",
@@ -7619,7 +7339,7 @@
           },
           {
             "id": "g4-example-9",
-            "number": 9,
+            "number": 3,
             "teachingNote": "花 is omitted; 那朵漂亮的 retains 的.",
             "text": {
               "traditional": "A：妳想買哪朵花？ B：我想買那朵漂亮的。",
@@ -7703,10 +7423,10 @@
             }
           }
         ],
-        "exerciseTitle": "Three Uses of 的",
-        "exercisePreview": "Practice: 1) multi-syllable Vs + 的 + noun, 2) single-syllable Vs + noun, 3) omitting noun with 的.",
-        "exerciseInstruction": "Complete each sentence according to the three textbook rules for 的.",
-        "exerciseNote": "The pictures in the book show each choice. The book prints no answer key, so these practice answers are made for the app.",
+        "exerciseTitle": "Answer the following questions.",
+        "exercisePreview": "Keep 的 when the noun is omitted.",
+        "exerciseInstruction": "Complete each model answer with 的.",
+        "exerciseNote": "The book prints no answer key; these are model answers.",
         "exerciseResponseMode": "text",
         "exerciseCues": [
           {
@@ -8166,7 +7886,7 @@
           {
             "id": "b1l03-g04-sec-1",
             "sectionNumber": 1,
-            "title": "Connecting Descriptions (Description + 的 + Noun)",
+            "title": "的 before a noun",
             "explanation": "Place 的 between a describing word and a noun, like “a pretty flower” or “a happy child.”",
             "patternColumns": [
               "Adjective",
@@ -8203,64 +7923,6 @@
                   }
                 ],
                 "english": "cheap things"
-              },
-              {
-                "id": "l3g4-s1-r2",
-                "subject": [
-                  {
-                    "id": "l3g4-s1-r2-s",
-                    "traditional": "快樂",
-                    "simplified": "快乐",
-                    "pinyin": "kuàilè",
-                    "meaning": "happy"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l3g4-s1-r2-g",
-                    "traditional": "的",
-                    "pinyin": "de",
-                    "meaning": "modifier marker"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l3g4-s1-r2-c",
-                    "traditional": "孩子",
-                    "pinyin": "háizi",
-                    "meaning": "child"
-                  }
-                ],
-                "english": "happy child"
-              },
-              {
-                "id": "l3g4-s1-r3",
-                "subject": [
-                  {
-                    "id": "l3g4-s1-r3-s",
-                    "traditional": "漂亮",
-                    "simplified": "漂亮",
-                    "pinyin": "piàoliang",
-                    "meaning": "pretty"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l3g4-s1-r3-g",
-                    "traditional": "的",
-                    "pinyin": "de",
-                    "meaning": "modifier marker"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l3g4-s1-r3-c",
-                    "traditional": "花",
-                    "pinyin": "huā",
-                    "meaning": "flower"
-                  }
-                ],
-                "english": "pretty flower"
               }
             ],
             "exampleIds": [
@@ -8272,11 +7934,11 @@
           {
             "id": "b1l03-g04-sec-2",
             "sectionNumber": 2,
-            "title": "Short One-Syllable Words (Skip 的)",
-            "explanation": "With common one-syllable words like 好 (good), 新 (new), or 大 (big), you can skip 的 directly, like 好朋友 (good friend) or 新書 (new book).",
+            "title": "的 can be omitted",
+            "explanation": "With one-syllable adjectives, you can often omit 的 before the noun, as in 新（的）書.",
             "patternColumns": [
               "Adjective",
-              "Skip 的",
+              "的",
               "Noun"
             ],
             "patternRows": [
@@ -8295,7 +7957,7 @@
                     "id": "l3g4-s2-r1-g",
                     "traditional": "(的)",
                     "pinyin": "(de)",
-                    "meaning": "(omitted)"
+                    "meaning": "optional 的"
                   }
                 ],
                 "complement": [
@@ -8308,62 +7970,6 @@
                   }
                 ],
                 "english": "new books"
-              },
-              {
-                "id": "l3g4-s2-r2",
-                "subject": [
-                  {
-                    "id": "l3g4-s2-r2-s",
-                    "traditional": "好",
-                    "pinyin": "hǎo",
-                    "meaning": "good"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l3g4-s2-r2-g",
-                    "traditional": "(的)",
-                    "pinyin": "(de)",
-                    "meaning": "(omitted)"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l3g4-s2-r2-c",
-                    "traditional": "朋友",
-                    "pinyin": "péngyǒu",
-                    "meaning": "friends"
-                  }
-                ],
-                "english": "good friends"
-              },
-              {
-                "id": "l3g4-s2-r3",
-                "subject": [
-                  {
-                    "id": "l3g4-s2-r3-s",
-                    "traditional": "小",
-                    "pinyin": "xiǎo",
-                    "meaning": "small"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l3g4-s2-r3-g",
-                    "traditional": "(的)",
-                    "pinyin": "(de)",
-                    "meaning": "(omitted)"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l3g4-s2-r3-c",
-                    "traditional": "蛋糕",
-                    "pinyin": "dàngāo",
-                    "meaning": "cake"
-                  }
-                ],
-                "english": "small cake"
               }
             ],
             "exampleIds": [
@@ -8375,12 +7981,12 @@
           {
             "id": "b1l03-g04-sec-3",
             "sectionNumber": 3,
-            "title": "Dropping the Noun When It Is Already Known",
-            "explanation": "If you and the listener already know what item you are talking about, you can leave out the noun and end with 的, like saying “I want the red one” (紅色的).",
+            "title": "Nouns can be omitted",
+            "explanation": "When the noun is already known, you can omit it, but keep 的: 他要買大的，我要買小的。",
             "patternColumns": [
               "Adjective",
               "的",
-              "No noun"
+              "Noun"
             ],
             "patternRows": [
               {
@@ -9058,7 +8664,7 @@
               "traditional": "我們都買筆。",
               "simplified": "我们都买笔。",
               "pinyin": "Wǒmen dōu mǎi bǐ.",
-              "english": "All of us buy pens.",
+              "english": "Both (All) of us bought pens.",
               "note": "我們 is the group. 都 comes before the action 買."
             },
             {
@@ -9067,25 +8673,25 @@
               "traditional": "這兩個顏色都很好看。",
               "simplified": "这两个颜色都很好看。",
               "pinyin": "Zhè liǎng ge yánsè dōu hěn hǎokàn.",
-              "english": "These two colors both look good.",
+              "english": "These two colors are both very beautiful.",
               "note": "The two colors share the same description."
             },
             {
               "id": "g5-negative",
-              "label": "All share “not”",
-              "traditional": "他們都不喜歡喝茶。",
-              "simplified": "他们都不喜欢喝茶。",
-              "pinyin": "Tāmen dōu bù xǐhuān hē chá.",
-              "english": "None of them likes drinking tea.",
-              "note": "都 comes before 不 because the whole group shares the same \"not\"."
+              "label": "Whole group shares the “not”",
+              "traditional": "我們都不要去他家。",
+              "simplified": "我们都不要去他家。",
+              "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
+              "english": "None of us wants to go to his home.",
+              "note": "都 comes before 不要 because the whole group shares the same “not.”"
             },
             {
               "id": "g5-repair",
               "label": "Repair placement",
-              "traditional": "都他們喜歡 → 他們都喜歡",
-              "simplified": "都他们喜欢 → 他们都喜欢",
-              "pinyin": "dōu tāmen xǐhuān → tāmen dōu xǐhuān",
-              "english": "They all like it.",
+              "traditional": "都他們喜歡喝珍珠奶茶嗎？ → 他們都喜歡喝珍珠奶茶嗎？",
+              "simplified": "都他们喜欢喝珍珠奶茶吗？ → 他们都喜欢喝珍珠奶茶吗？",
+              "pinyin": "dōu tāmen xǐhuān hē zhēnzhū nǎichá ma? → tāmen dōu xǐhuān hē zhēnzhū nǎichá ma?",
+              "english": "Do they all like drinking bubble milk tea?",
               "note": "Name the group before 都.",
               "isCorrection": true
             }
@@ -9129,7 +8735,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "All of us buy pens."
+            "english": "Both (All) of us bought pens."
           },
           {
             "id": "g5-pattern-2",
@@ -9172,56 +8778,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "These two colors both look good."
-          },
-          {
-            "id": "g5-pattern-3",
-            "subject": [
-              {
-                "id": "g5-p3-they",
-                "traditional": "他們",
-                "simplified": "他们",
-                "pinyin": "tāmen",
-                "meaning": "they; them"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g5-p3-all",
-                "traditional": "都",
-                "pinyin": "dōu",
-                "meaning": "both; all"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g5-p3-not",
-                "traditional": "不",
-                "pinyin": "bù",
-                "meaning": "not"
-              },
-              {
-                "id": "g5-p3-like",
-                "traditional": "喜歡",
-                "simplified": "喜欢",
-                "pinyin": "xǐhuān",
-                "meaning": "like"
-              },
-              {
-                "id": "g5-p3-drink",
-                "traditional": "喝",
-                "pinyin": "hē",
-                "meaning": "drink"
-              },
-              {
-                "id": "g5-p3-tea",
-                "traditional": "茶",
-                "pinyin": "chá",
-                "meaning": "tea",
-                "suffix": "。"
-              }
-            ],
-            "english": "None of them likes drinking tea."
+            "english": "These two colors are both very beautiful."
           }
         ],
         "confusion": {
@@ -9230,14 +8787,14 @@
             {
               "id": "g5-confusion-position",
               "question": "Where does 都 go in the sentence?",
-              "answer": "Right after the whole group, before the action or describing word. Never at the start.",
-              "wrongTraditional": "都我們喜歡喝茶。",
-              "wrongSimplified": "都我们喜欢喝茶。",
+              "answer": "Right after the whole group, before the shared action or description.",
+              "wrongTraditional": "都我們買筆。",
+              "wrongSimplified": "都我们买笔。",
               "right": {
-                "traditional": "我們都喜歡喝茶。",
-                "simplified": "我们都喜欢喝茶。",
-                "pinyin": "Wǒmen dōu xǐhuān hē chá.",
-                "english": "All of us like drinking tea.",
+                "traditional": "我們都買筆。",
+                "simplified": "我们都买笔。",
+                "pinyin": "Wǒmen dōu mǎi bǐ.",
+                "english": "Both (All) of us bought pens.",
                 "words": [
                   {
                     "id": "b1l03-g5-conf-1-word-1",
@@ -9254,22 +8811,17 @@
                   },
                   {
                     "id": "b1l03-g5-conf-1-word-3",
-                    "traditional": "喜歡",
-                    "simplified": "喜欢",
-                    "pinyin": "xǐhuān",
-                    "meaning": "like"
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi",
+                    "meaning": "buy"
                   },
                   {
                     "id": "b1l03-g5-conf-1-word-4",
-                    "traditional": "喝",
-                    "pinyin": "hē",
-                    "meaning": "drink"
-                  },
-                  {
-                    "id": "b1l03-g5-conf-1-word-5",
-                    "traditional": "茶",
-                    "pinyin": "chá",
-                    "meaning": "tea",
+                    "traditional": "筆",
+                    "simplified": "笔",
+                    "pinyin": "bǐ",
+                    "meaning": "pen",
                     "suffix": "。"
                   }
                 ]
@@ -9277,22 +8829,22 @@
             },
             {
               "id": "g5-confusion-dou-bu",
-              "question": "How do I say \"none of them likes tea\" — 都不 or 不都?",
-              "answer": "Put 都 before 不: 都不 means \"every one does not\". 不都 means \"not all\" — a different meaning.",
-              "wrongTraditional": "他們不都喜歡茶。",
-              "wrongSimplified": "他们不都喜欢茶。",
+              "question": "How do I say none of us wants to go?",
+              "answer": "Use 都不要 for “none of us wants to”; 不要都 does not express that meaning.",
+              "wrongTraditional": "我們不要都去他家。",
+              "wrongSimplified": "我们不要都去他家。",
               "right": {
-                "traditional": "他們都不喜歡茶。",
-                "simplified": "他们都不喜欢茶。",
-                "pinyin": "Tāmen dōu bù xǐhuān chá.",
-                "english": "None of them likes tea.",
+                "traditional": "我們都不要去他家。",
+                "simplified": "我们都不要去他家。",
+                "pinyin": "Wǒmen dōu bú yào qù tā jiā.",
+                "english": "None of us wants to go to his home.",
                 "words": [
                   {
                     "id": "b1l03-g5-conf-2-word-1",
-                    "traditional": "他們",
-                    "simplified": "他们",
-                    "pinyin": "tāmen",
-                    "meaning": "they; them"
+                    "traditional": "我們",
+                    "simplified": "我们",
+                    "pinyin": "wǒmen",
+                    "meaning": "we; us"
                   },
                   {
                     "id": "b1l03-g5-conf-2-word-2",
@@ -9302,71 +8854,27 @@
                   },
                   {
                     "id": "b1l03-g5-conf-2-word-3",
-                    "traditional": "不",
-                    "pinyin": "bù",
-                    "meaning": "not"
+                    "traditional": "不要",
+                    "pinyin": "bú yào",
+                    "meaning": "do not want"
                   },
                   {
                     "id": "b1l03-g5-conf-2-word-4",
-                    "traditional": "喜歡",
-                    "simplified": "喜欢",
-                    "pinyin": "xǐhuān",
-                    "meaning": "like"
+                    "traditional": "去",
+                    "pinyin": "qù",
+                    "meaning": "go"
                   },
                   {
                     "id": "b1l03-g5-conf-2-word-5",
-                    "traditional": "茶",
-                    "pinyin": "chá",
-                    "meaning": "tea",
-                    "suffix": "。"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "g5-confusion-singular",
-              "question": "Can I use 都 with just one person, like \"I all like this book\"?",
-              "answer": "No. 都 needs two or more people or things. With one, drop 都.",
-              "wrongTraditional": "我都喜歡這本書。",
-              "wrongSimplified": "我都喜欢这本书。",
-              "right": {
-                "traditional": "我喜歡這本書。",
-                "simplified": "我喜欢这本书。",
-                "pinyin": "Wǒ xǐhuān zhè běn shū.",
-                "english": "I like this book.",
-                "words": [
-                  {
-                    "id": "b1l03-g5-conf-3-word-1",
-                    "traditional": "我",
-                    "pinyin": "wǒ",
-                    "meaning": "I; me"
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he; him"
                   },
                   {
-                    "id": "b1l03-g5-conf-3-word-2",
-                    "traditional": "喜歡",
-                    "simplified": "喜欢",
-                    "pinyin": "xǐhuān",
-                    "meaning": "like"
-                  },
-                  {
-                    "id": "b1l03-g5-conf-3-word-3",
-                    "traditional": "這",
-                    "simplified": "这",
-                    "pinyin": "zhè",
-                    "meaning": "this"
-                  },
-                  {
-                    "id": "b1l03-g5-conf-3-word-4",
-                    "traditional": "本",
-                    "pinyin": "běn",
-                    "meaning": "measure word for books"
-                  },
-                  {
-                    "id": "b1l03-g5-conf-3-word-5",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "shū",
-                    "meaning": "book",
+                    "id": "b1l03-g5-conf-2-word-6",
+                    "traditional": "家",
+                    "pinyin": "jiā",
+                    "meaning": "home",
                     "suffix": "。"
                   }
                 ]
@@ -9535,7 +9043,7 @@
             }
           }
         ],
-        "exerciseTitle": "Put the group before 都",
+        "exerciseTitle": "Rearrange the following sentences.",
         "exercisePreview": "Put the three sentences back in order.",
         "exerciseInstruction": "Start with the complete group. Place 都 immediately before the shared action or description.",
         "exerciseNote": "The book asks you to put words in order and prints no answer key. These answers follow the rule and the picture.",

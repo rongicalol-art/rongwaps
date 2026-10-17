@@ -1,0 +1,1433 @@
+{
+  "B1L08-G01-P185": {
+    "bookPage": 186,
+    "title": "Use 好 or 難 with perception verbs or action verbs to complete the following sentences.",
+    "items": [
+      {
+        "id": "l8g1-p1",
+        "source": "p.186 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這部電影很",
+                "simplified": "这部电影很"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "好看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我很喜歡。",
+                "simplified": "，我很喜欢。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "難看",
+            "pinyin": "nánkàn",
+            "simplified": "难看"
+          },
+          {
+            "traditional": "好看",
+            "pinyin": "hǎokàn",
+            "simplified": "好看"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "難看"
+            ],
+            "note": "Use 好看 for the positive opinion expressed by liking this movie."
+          }
+        ],
+        "fallbackRepair": "Use 好看 for the positive opinion expressed by liking this movie.",
+        "result": {
+          "traditional": "這部電影很好看，我很喜歡。",
+          "pinyin": "Zhè bù diànyǐng hěn hǎokàn, wǒ hěn xǐhuān.",
+          "english": "This movie is very good; I like it a lot.",
+          "simplified": "这部电影很好看，我很喜欢。"
+        }
+      },
+      {
+        "id": "l8g1-p2",
+        "source": "p.186 #2",
+        "kind": "slot-build",
+        "sub": "The new bike fits you; you can ride it for a long time without getting tired.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "新的腳踏車很",
+                "simplified": "新的脚踏车很"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "好騎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好騎",
+            "pinyin": "hǎoqí",
+            "simplified": "好骑"
+          },
+          {
+            "traditional": "難騎",
+            "pinyin": "nánqí",
+            "simplified": "难骑"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "難騎"
+            ],
+            "note": "Use 好騎 because the bike fits and a long ride does not tire you."
+          }
+        ],
+        "fallbackRepair": "Use 好騎 because the bike fits and a long ride does not tire you.",
+        "result": {
+          "traditional": "新的腳踏車很好騎。",
+          "pinyin": "Xīn de jiǎotàchē hěn hǎoqí.",
+          "english": "The new bike is easy to ride.",
+          "simplified": "新的脚踏车很好骑。"
+        }
+      },
+      {
+        "id": "l8g1-p3",
+        "source": "p.186 #3",
+        "kind": "slot-build",
+        "sub": "Your friends say they could swim after just one lesson.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說游泳很",
+                "simplified": "听说游泳很"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "好學"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我也想學。",
+                "simplified": "，我也想学。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "難學",
+            "pinyin": "nánxué",
+            "simplified": "难学"
+          },
+          {
+            "traditional": "好學",
+            "pinyin": "hǎoxué",
+            "simplified": "好学"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "難學"
+            ],
+            "note": "Use 好學 because your friends learned to swim in just one lesson."
+          }
+        ],
+        "fallbackRepair": "Use 好學 because your friends learned to swim in just one lesson.",
+        "result": {
+          "traditional": "聽說游泳很好學，我也想學。",
+          "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué, wǒ yě xiǎng xué.",
+          "english": "I hear swimming is easy to learn; I want to learn too.",
+          "simplified": "听说游泳很好学，我也想学。"
+        }
+      },
+      {
+        "id": "l8g1-p4",
+        "source": "p.186 #4",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我覺得這張畫他畫得不好，有點兒",
+                "simplified": "我觉得这张画他画得不好，有点儿"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "難看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好看",
+            "pinyin": "hǎokàn",
+            "simplified": "好看"
+          },
+          {
+            "traditional": "難看",
+            "pinyin": "nánkàn",
+            "simplified": "难看"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "好看"
+            ],
+            "note": "Use 難看 because the speaker says the picture is badly drawn."
+          }
+        ],
+        "fallbackRepair": "Use 難看 because the speaker says the picture is badly drawn.",
+        "result": {
+          "traditional": "我覺得這張畫他畫得不好，有點兒難看。",
+          "pinyin": "Wǒ juéde zhè zhāng huà tā huà de bù hǎo, yǒu diǎnr nánkàn.",
+          "english": "I think he did not draw this picture well; it looks a little bad.",
+          "simplified": "我觉得这张画他画得不好，有点儿难看。"
+        }
+      },
+      {
+        "id": "l8g1-p5",
+        "source": "p.186 #5",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "珍珠奶茶很",
+                "simplified": "珍珠奶茶很"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "好喝"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，大家都想買一杯。",
+                "simplified": "，大家都想买一杯。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好喝",
+            "pinyin": "hǎohē",
+            "simplified": "好喝"
+          },
+          {
+            "traditional": "難喝",
+            "pinyin": "nánhē",
+            "simplified": "难喝"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "難喝"
+            ],
+            "note": "Use 好喝 for the good taste that makes everyone want a cup."
+          }
+        ],
+        "fallbackRepair": "Use 好喝 for the good taste that makes everyone want a cup.",
+        "result": {
+          "traditional": "珍珠奶茶很好喝，大家都想買一杯。",
+          "pinyin": "Zhēnzhū nǎichá hěn hǎohē, dàjiā dōu xiǎng mǎi yì bēi.",
+          "english": "Bubble milk tea tastes good; everyone wants to buy a cup.",
+          "simplified": "珍珠奶茶很好喝，大家都想买一杯。"
+        }
+      },
+      {
+        "id": "l8g1-p6",
+        "source": "p.186 #6",
+        "kind": "slot-build",
+        "sub": "You have checked three maps and still do not know where the place is.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個地方又遠又",
+                "simplified": "那个地方又远又"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "難找"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我不想跟你去。",
+                "simplified": "，我不想跟你去。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好找",
+            "pinyin": "hǎozhǎo",
+            "simplified": "好找"
+          },
+          {
+            "traditional": "難找",
+            "pinyin": "nánzhǎo",
+            "simplified": "难找"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "好找"
+            ],
+            "note": "Use 難找 because checking three maps has not helped you locate the place."
+          }
+        ],
+        "fallbackRepair": "Use 難找 because checking three maps has not helped you locate the place.",
+        "result": {
+          "traditional": "那個地方又遠又難找，我不想跟你去。",
+          "pinyin": "Nà ge dìfāng yòu yuǎn yòu nánzhǎo, wǒ bù xiǎng gēn nǐ qù.",
+          "english": "That place is far away and hard to find; I do not want to go with you.",
+          "simplified": "那个地方又远又难找，我不想跟你去。"
+        }
+      }
+    ],
+    "allowWords": [
+      "畫",
+      "珍珠奶茶"
+    ]
+  },
+  "B1L08-G02-P186": {
+    "bookPage": 187,
+    "title": "Complete the following dialogues.",
+    "items": [
+      {
+        "id": "l8g2-p1",
+        "source": "p.187 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他為什麼常常穿綠色的衣服？",
+                "simplified": "他为什么常常穿绿色的衣服？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "因為"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他喜歡綠色。",
+                "simplified": "他喜欢绿色。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "所以",
+            "pinyin": "suǒyǐ",
+            "simplified": "所以"
+          },
+          {
+            "traditional": "因為",
+            "pinyin": "yīnwèi",
+            "simplified": "因为"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "所以"
+            ],
+            "note": "Use 因為 because liking green explains his clothing choice."
+          }
+        ],
+        "fallbackRepair": "Use 因為 because liking green explains his clothing choice.",
+        "result": {
+          "traditional": "因為他喜歡綠色。",
+          "simplified": "因为他喜欢绿色。",
+          "pinyin": "Yīnwèi tā xǐhuān lǜsè.",
+          "english": "Because he likes green."
+        }
+      },
+      {
+        "id": "l8g2-p2",
+        "source": "p.187 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你",
+                "simplified": "你"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "為什麼"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "想去海邊玩？",
+                "simplified": "想去海边玩？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "因為我想游泳，也想曬太陽，所以想去海邊玩。",
+                "simplified": "因为我想游泳，也想晒太阳，所以想去海边玩。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "幾點",
+            "simplified": "几点",
+            "pinyin": "jǐ diǎn"
+          },
+          {
+            "traditional": "為什麼",
+            "pinyin": "wèishénme",
+            "simplified": "为什么"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "幾點"
+            ],
+            "note": "Use 為什麼 because the reply explains the reason for going, rather than giving a clock time."
+          }
+        ],
+        "fallbackRepair": "Use 為什麼 because the reply explains the reason for going, rather than giving a clock time.",
+        "result": {
+          "traditional": "你為什麼想去海邊玩？",
+          "pinyin": "Nǐ wèishénme xiǎng qù hǎibiān wán?",
+          "english": "Why do you want to go to the seaside?",
+          "simplified": "你为什么想去海边玩？"
+        }
+      },
+      {
+        "id": "l8g2-p3",
+        "source": "p.187 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你為什麼想學中文？",
+                "simplified": "你为什么想学中文？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "因為"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我想去臺灣玩。",
+                "simplified": "我想去台湾玩。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "所以",
+            "pinyin": "suǒyǐ",
+            "simplified": "所以"
+          },
+          {
+            "traditional": "因為",
+            "pinyin": "yīnwèi",
+            "simplified": "因为"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "所以"
+            ],
+            "note": "Use 因為 because wanting to visit Taiwan is the reason for learning Chinese."
+          }
+        ],
+        "fallbackRepair": "Use 因為 because wanting to visit Taiwan is the reason for learning Chinese.",
+        "result": {
+          "traditional": "因為我想去臺灣玩。",
+          "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán.",
+          "english": "Because I want to visit Taiwan.",
+          "simplified": "因为我想去台湾玩。"
+        }
+      }
+    ]
+  },
+  "B1L08-G03-P193": {
+    "bookPage": 193,
+    "title": "Complete the following dialogues.",
+    "items": [
+      {
+        "id": "l8g3-p1",
+        "source": "p.193 #1",
+        "kind": "slot-build",
+        "sub": "You notice a Korean passport in his hand.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "before",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "他是",
+                "simplified": "他是"
+              },
+              {
+                "type": "slot",
+                "id": "middle",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "韓國人",
+                "simplified": "韩国人"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？",
+                "simplified": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，他是韓國人。",
+                "simplified": "是啊，他是韩国人。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吧",
+            "simplified": "吧",
+            "pinyin": "ba"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "before",
+              "tile": "吧"
+            },
+            "note": "Put 吧 after the whole statement, before the question mark."
+          },
+          {
+            "slot": {
+              "id": "middle",
+              "tile": "吧"
+            },
+            "note": "Keep 他是韓國人 together and put 吧 at the end."
+          }
+        ],
+        "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
+        "result": {
+          "traditional": "他是韓國人吧？",
+          "pinyin": "Tā shì Hánguó rén ba?",
+          "english": "He is Korean, right?",
+          "simplified": "他是韩国人吧？"
+        },
+        "gaps": true
+      },
+      {
+        "id": "l8g3-p2",
+        "source": "p.193 #2",
+        "kind": "slot-build",
+        "sub": "Every morning you see your friend carrying a cup of coffee.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "before",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "你喜歡",
+                "simplified": "你喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "middle",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "喝咖啡",
+                "simplified": "喝咖啡"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？",
+                "simplified": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "喜歡，我每天早上都一定要喝。",
+                "simplified": "喜欢，我每天早上都一定要喝。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吧",
+            "simplified": "吧",
+            "pinyin": "ba"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "before",
+              "tile": "吧"
+            },
+            "note": "Put 吧 after the whole statement, before the question mark."
+          },
+          {
+            "slot": {
+              "id": "middle",
+              "tile": "吧"
+            },
+            "note": "Keep 你喜歡喝咖啡 together and put 吧 at the end."
+          }
+        ],
+        "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
+        "result": {
+          "traditional": "你喜歡喝咖啡吧？",
+          "pinyin": "Nǐ xǐhuān hē kāfēi ba?",
+          "english": "You like drinking coffee, right?",
+          "simplified": "你喜欢喝咖啡吧？"
+        },
+        "gaps": true
+      },
+      {
+        "id": "l8g3-p3",
+        "source": "p.193 #3",
+        "kind": "slot-build",
+        "sub": "Your friend arrives carrying a basketball and wearing basketball shoes.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "before",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "你會",
+                "simplified": "你会"
+              },
+              {
+                "type": "slot",
+                "id": "middle",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "打籃球",
+                "simplified": "打篮球"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？",
+                "simplified": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不會，可是我會打網球。",
+                "simplified": "不会，可是我会打网球。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吧",
+            "simplified": "吧",
+            "pinyin": "ba"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "before",
+              "tile": "吧"
+            },
+            "note": "Put 吧 after the whole statement, before the question mark."
+          },
+          {
+            "slot": {
+              "id": "middle",
+              "tile": "吧"
+            },
+            "note": "Keep 你會打籃球 together and put 吧 at the end."
+          }
+        ],
+        "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
+        "result": {
+          "traditional": "你會打籃球吧？",
+          "pinyin": "Nǐ huì dǎ lánqiú ba?",
+          "english": "You can play basketball, right?",
+          "simplified": "你会打篮球吧？"
+        },
+        "gaps": true
+      },
+      {
+        "id": "l8g3-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "sub": "You have just met this person at a music class.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "before",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "你會",
+                "simplified": "你会"
+              },
+              {
+                "type": "slot",
+                "id": "middle",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "唱中文歌",
+                "simplified": "唱中文歌"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "嗎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？",
+                "simplified": "？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "before",
+              "tile": "嗎"
+            },
+            "note": "Put 嗎 after the whole statement, before the question mark."
+          },
+          {
+            "slot": {
+              "id": "middle",
+              "tile": "嗎"
+            },
+            "note": "Keep 你會唱中文歌 together and put 嗎 at the end."
+          }
+        ],
+        "fallbackRepair": "Put 嗎 after the whole statement, before the question mark.",
+        "result": {
+          "traditional": "你會唱中文歌嗎？",
+          "pinyin": "Nǐ huì chàng Zhōngwén gē ma?",
+          "english": "Can you sing songs in Chinese?",
+          "simplified": "你会唱中文歌吗？"
+        },
+        "gaps": true
+      }
+    ]
+  },
+  "B1L08-G04-P194": {
+    "bookPage": 194,
+    "title": "Complete the following dialogues.",
+    "items": [
+      {
+        "id": "l8g4-p1",
+        "source": "p.194 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不想等他了，我們先去餐廳吧。",
+                "simplified": "我不想等他了，我们先去餐厅吧。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們再",
+                "simplified": "我们再"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "等等"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "看吧。",
+                "simplified": "看吧。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "等",
+            "simplified": "等",
+            "pinyin": "děng"
+          },
+          {
+            "traditional": "等等",
+            "simplified": "等等",
+            "pinyin": "děng deng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "等"
+            ],
+            "note": "Repeat 等 before 看 to try waiting a little longer, rather than using the single verb."
+          }
+        ],
+        "fallbackRepair": "Repeat 等 before 看 to try waiting a little longer, rather than using the single verb.",
+        "result": {
+          "traditional": "我們再等等看吧。",
+          "pinyin": "Wǒmen zài děng deng kàn ba.",
+          "english": "Let’s wait a little longer and see.",
+          "simplified": "我们再等等看吧。"
+        },
+        "sub": "（等）"
+      },
+      {
+        "id": "l8g4-p2",
+        "source": "p.194 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "從台北火車站到桃園機場，坐捷運又快又方便。",
+                "simplified": "从台北火车站到桃园机场，坐捷运又快又方便。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我媽媽也覺得很方便，我很想",
+                "simplified": "我妈妈也觉得很方便，我很想"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "坐坐"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "看。",
+                "simplified": "看。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "坐坐",
+            "simplified": "坐坐",
+            "pinyin": "zuò zuo"
+          },
+          {
+            "traditional": "坐",
+            "simplified": "坐",
+            "pinyin": "zuò"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "坐"
+            ],
+            "note": "Repeat 坐 before 看 to try taking the metro, rather than using the single verb."
+          }
+        ],
+        "fallbackRepair": "Repeat 坐 before 看 to try taking the metro, rather than using the single verb.",
+        "result": {
+          "traditional": "我媽媽也覺得很方便，我很想坐坐看。",
+          "pinyin": "Wǒ māma yě juéde hěn fāngbiàn, wǒ hěn xiǎng zuò zuo kàn.",
+          "english": "My mother also thinks it is convenient; I really want to try taking it.",
+          "simplified": "我妈妈也觉得很方便，我很想坐坐看。"
+        },
+        "glossary": [
+          {
+            "traditional": "台北",
+            "pinyin": "Táiběi",
+            "english": "Taipei",
+            "simplified": "台北"
+          },
+          {
+            "traditional": "桃園",
+            "pinyin": "Táoyuán",
+            "english": "Taoyuan",
+            "simplified": "桃园"
+          }
+        ]
+      },
+      {
+        "id": "l8g4-p3",
+        "source": "p.194 #3",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他們都不太喜歡這首歌，你呢？",
+                "simplified": "他们都不太喜欢这首歌，你呢？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我",
+                "simplified": "我"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "聽聽"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "看。",
+                "simplified": "看。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "聽聽",
+            "simplified": "听听",
+            "pinyin": "tīng ting"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "聽"
+            ],
+            "note": "Repeat 聽 before 看 to try listening to the song, rather than using the single verb."
+          }
+        ],
+        "fallbackRepair": "Repeat 聽 before 看 to try listening to the song, rather than using the single verb.",
+        "result": {
+          "traditional": "我聽聽看。",
+          "pinyin": "Wǒ tīng ting kàn.",
+          "english": "I’ll try listening to it.",
+          "simplified": "我听听看。"
+        },
+        "sub": "（聽）"
+      },
+      {
+        "id": "l8g4-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "sub": "The skirt is on the shop counter; you have not put it on yet.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我",
+                "simplified": "我"
+              },
+              {
+                "type": "slot",
+                "id": "before",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "穿穿",
+                "simplified": "穿穿"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "before",
+              "tile": "看"
+            },
+            "note": "Put 看 after 穿穿: the repeated action comes before 看."
+          }
+        ],
+        "fallbackRepair": "Put 看 after 穿穿: the repeated action comes before 看.",
+        "result": {
+          "traditional": "我穿穿看。",
+          "simplified": "我穿穿看。",
+          "pinyin": "Wǒ chuān chuan kàn.",
+          "english": "I will try it on and see."
+        },
+        "gaps": true
+      }
+    ],
+    "allowWords": [
+      "台北",
+      "桃園"
+    ]
+  },
+  "B1L08-G05-P195": {
+    "bookPage": 195,
+    "title": "Complete the sentences with 快（要）/要……了.",
+    "items": [
+      {
+        "id": "l8g5-p1",
+        "source": "p.195 #1",
+        "kind": "slot-build",
+        "sub": "Your Japanese friend is coming to visit on April 5.",
+        "scene": {
+          "type": "picture",
+          "page": 195,
+          "box": [
+            0.193,
+            0.676,
+            0.293,
+            0.136
+          ],
+          "alt": "Two calendars: today is April 3; the other date is April 5."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我的日本朋友",
+                "simplified": "我的日本朋友"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "快要"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "來了。",
+                "simplified": "来了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "simplified": "明天"
+          },
+          {
+            "traditional": "快要",
+            "pinyin": "kuàiyào",
+            "simplified": "快要"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "明天"
+            ],
+            "note": "Use 快要 because the visit is April 5, two days after today, rather than tomorrow on April 4."
+          }
+        ],
+        "fallbackRepair": "Use 快要 because the visit is April 5, two days after today, rather than tomorrow on April 4.",
+        "result": {
+          "traditional": "我的日本朋友快要來了。",
+          "pinyin": "Wǒ de Rìběn péngyǒu kuàiyào lái le.",
+          "english": "My Japanese friend is coming soon.",
+          "simplified": "我的日本朋友快要来了。"
+        }
+      },
+      {
+        "id": "l8g5-p2",
+        "source": "p.196 #2",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 196,
+          "box": [
+            0.202,
+            0.148,
+            0.287,
+            0.121
+          ],
+          "alt": "Two clocks: now is 11:50; the noon break starts at 12:00."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們",
+                "simplified": "我们"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "快要"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "休息了。",
+                "simplified": "休息了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "快要",
+            "pinyin": "kuàiyào",
+            "simplified": "快要"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "現在"
+            ],
+            "note": "Use 快要 because it is 11:50 and the break starts at noon, ten minutes later."
+          }
+        ],
+        "fallbackRepair": "Use 快要 because it is 11:50 and the break starts at noon, ten minutes later.",
+        "result": {
+          "traditional": "我們快要休息了。",
+          "pinyin": "Wǒmen kuàiyào xiūxí le.",
+          "english": "We are about to take a break.",
+          "simplified": "我们快要休息了。"
+        }
+      },
+      {
+        "id": "l8g5-p3",
+        "source": "p.196 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 196,
+          "box": [
+            0.2,
+            0.344,
+            0.275,
+            0.123
+          ],
+          "alt": "Two calendars: today is October 1; younger brother’s tenth birthday is October 10."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "弟弟",
+                "simplified": "弟弟"
+              },
+              {
+                "type": "slot",
+                "id": "answer",
+                "answers": [
+                  "快要"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "十歲了。",
+                "simplified": "十岁了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "今天",
+            "pinyin": "jīntiān",
+            "simplified": "今天"
+          },
+          {
+            "traditional": "快要",
+            "pinyin": "kuàiyào",
+            "simplified": "快要"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "今天"
+            ],
+            "note": "Use 快要 because today is October 1 and his tenth birthday is still nine days away."
+          }
+        ],
+        "fallbackRepair": "Use 快要 because today is October 1 and his tenth birthday is still nine days away.",
+        "result": {
+          "traditional": "弟弟快要十歲了。",
+          "pinyin": "Dìdi kuàiyào shí suì le.",
+          "english": "My younger brother is about to turn ten.",
+          "simplified": "弟弟快要十岁了。"
+        }
+      }
+    ]
+  }
+}

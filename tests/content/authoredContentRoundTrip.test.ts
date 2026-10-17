@@ -3,7 +3,7 @@ import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { PROJECT_ROOT, readJson } from '../acceptance_helpers';
-import type { InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
+import type { GrammarPractice, InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
 
 test('Authored Content Round-Trip: readings pack deeply equals content/readings/book-1.json', () => {
   const pack = readJson<{ schemaVersion: number; bookId: number; count: number; items: ReadingRecord[] }>('public/data/readings/book-1.json');
@@ -35,6 +35,15 @@ test('Authored Content Round-Trip: grammar pack deeply equals content/grammar/*.
     }
   }
   sourceParts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
+  // Book exercises (content/grammar-practice) ride on their grammar page.
+  const pages = new Map(sourceParts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
+  for (const file of readdirSync(resolve(PROJECT_ROOT, 'content/grammar-practice')).filter((name) => name.endsWith('.json'))) {
+    for (const [pageId, practice] of Object.entries(readJson<Record<string, GrammarPractice>>(`content/grammar-practice/${file}`))) {
+      const page = pages.get(pageId);
+      assert.ok(page, `${file}: unknown grammar page ${pageId}`);
+      page.practice = practice;
+    }
+  }
 
   assert.equal(pack.schemaVersion, 1);
   assert.equal(pack.bookId, 1);

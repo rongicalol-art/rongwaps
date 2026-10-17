@@ -1,34 +1,36 @@
-import { SegmentedControl, SwitchRow } from '../../../lib/widgets';
+import { AppIcon, SegmentedControl, SwitchRow } from '../../../lib/widgets';
 import type { CharacterFont } from '../../../store/useAppStore';
 
 interface GrammarReadingAidsProps {
   characterPreference: 'traditional' | 'simplified';
   characterFont: CharacterFont;
-  showPinyin: boolean;
-  showTranslation: boolean;
   onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
   onCharacterFontChange: (font: CharacterFont) => void;
+  showPinyin: boolean;
+  showTranslation: boolean;
   onTogglePinyin: () => void;
   onToggleTranslation: () => void;
+  bookPageLabel?: string | null;
+  onOpenBookPage?: () => void;
 }
 
 export function GrammarReadingAids({
   characterPreference,
   characterFont,
-  showPinyin,
-  showTranslation,
   onCharacterPreferenceChange,
   onCharacterFontChange,
+  showPinyin,
+  showTranslation,
   onTogglePinyin,
   onToggleTranslation,
+  bookPageLabel,
+  onOpenBookPage,
 }: GrammarReadingAidsProps) {
   return (
-    <div className="flex flex-col gap-3 text-left">
-      {/* Script Selection */}
-      <div className="space-y-1.5">
-        <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-          Character Script
-        </span>
+    <div role="menu" aria-label="Lesson options" className="flex flex-col gap-1.5 text-left">
+      <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} tinted />
+      <SwitchRow label="Translation" checked={showTranslation} onToggle={onToggleTranslation} tinted />
+      <div className="my-1 flex flex-col gap-2">
         <SegmentedControl<'traditional' | 'simplified'>
           value={characterPreference}
           onChange={onCharacterPreferenceChange}
@@ -38,15 +40,6 @@ export function GrammarReadingAids({
             { value: 'simplified', label: <span>Simplified</span> },
           ]}
         />
-      </div>
-
-      <div className="h-px bg-ui-divider" />
-
-      {/* Character Font Selection */}
-      <div className="space-y-1.5">
-        <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-          Character Font
-        </span>
         <SegmentedControl<CharacterFont>
           value={characterFont}
           onChange={onCharacterFontChange}
@@ -57,22 +50,16 @@ export function GrammarReadingAids({
           ]}
         />
       </div>
-
-      <div className="h-px bg-ui-divider" />
-
-      {/* Reading Aids Toggles */}
-      <div className="space-y-1.5">
-        <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-          Reading Aids
-        </span>
-        <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
-          {/* Pinyin Toggle */}
-          <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} tinted />
-
-          {/* Translation Toggle */}
-          <SwitchRow label="Translation" checked={showTranslation} onToggle={onToggleTranslation} tinted />
-        </div>
-      </div>
+      {bookPageLabel && onOpenBookPage && (
+        <button
+          type="button"
+          onClick={onOpenBookPage}
+          className="flex min-h-11 w-full items-center justify-between gap-3 rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong outline-none transition-colors hover:bg-ui-hover focus-ring"
+        >
+          <span>{bookPageLabel}</span>
+          <AppIcon name="next" size={16} />
+        </button>
+      )}
     </div>
   );
 }

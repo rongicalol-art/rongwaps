@@ -41,8 +41,8 @@ export function V3CharacterBreakdown({
 
   const tabs: BreakdownTab<DetailTab>[] = [];
   if (relatedWords.length > 0) tabs.push({ id: 'words', label: 'Words', count: relatedWords.length });
-  if (soundFamily) tabs.push({ id: 'sound', label: 'Sound family', count: (soundFamily.from ? 1 + soundFamily.from.siblings.length : 0) + soundFamily.lends.length });
-  if (builtWithMembers.length > 0) tabs.push({ id: 'appears', label: 'Appears in', count: builtWithMembers.length });
+  if (soundFamily) tabs.push({ id: 'sound', label: 'Sound', count: (soundFamily.from ? 1 + soundFamily.from.siblings.length : 0) + soundFamily.lends.length });
+  if (builtWithMembers.length > 0) tabs.push({ id: 'appears', label: 'Used in', count: builtWithMembers.length });
   if (sentencesLoading || sentences.length > 0) tabs.push({ id: 'sentences', label: 'Sentences', count: sentencesLoading ? undefined : sentences.length });
 
   const [tab, setTab] = useState<DetailTab | null>(null);
@@ -52,7 +52,7 @@ export function V3CharacterBreakdown({
   return (
     <div className="mx-auto flex w-full min-w-0 max-w-[800px] flex-col gap-6">
       <V3CharacterSummary character={activeChar} data={charData} courseCards={charCardsInfo} accentHex={activeBook.accentHex} />
-      <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+      <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" showHeading={false} onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
       <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
       {active && (
         <div className="flex min-w-0 flex-col gap-3">

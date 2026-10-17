@@ -1,0 +1,1388 @@
+{
+  "B1L01-G01-P38": {
+    "bookPage": 38,
+    "title": "Complete the sentences.",
+    "allowWords": [
+      "學生",
+      "英國",
+      "美國",
+      "高",
+      "家樂",
+      "王",
+      "宜文",
+      "印尼",
+      "中明",
+      "李",
+      "小姐"
+    ],
+    "items": [
+      {
+        "id": "l1g1-p1",
+        "source": "p.38 #1",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 38,
+          "box": [
+            0.18,
+            0.694,
+            0.116,
+            0.109
+          ],
+          "alt": "A girl at a desk beside a map of Japan and a Japanese flag."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "誰是新學生？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "student",
+                "answers": [
+                  "小林友美"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "是新學生，她是日本人。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "王宜文",
+            "pinyin": "Wáng Yíwén"
+          },
+          {
+            "traditional": "小林友美",
+            "pinyin": "Xiǎolín Yǒuměi"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "王宜文"
+            ],
+            "note": "The Japanese classmate is 小林友美; 王宜文 is the American classmate."
+          }
+        ],
+        "fallbackRepair": "The Japanese classmate is 小林友美; 王宜文 is the American classmate.",
+        "result": {
+          "traditional": "小林友美是新學生，她是日本人。",
+          "pinyin": "Xiǎolín Yǒuměi shì xīn xuésheng, tā shì Rìběn rén.",
+          "english": "Xiaolin Youmei is the new student; she is Japanese."
+        }
+      },
+      {
+        "id": "l1g1-p2",
+        "source": "p.38 #2",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 38,
+          "box": [
+            0.368,
+            0.692,
+            0.106,
+            0.112
+          ],
+          "alt": "A man holding a book beside a map of Britain and a British flag."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "家樂是"
+              },
+              {
+                "type": "slot",
+                "id": "country",
+                "answers": [
+                  "英國"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "人，他姓高。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "英國",
+            "pinyin": "Yīngguó"
+          },
+          {
+            "traditional": "美國",
+            "pinyin": "Měiguó"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "美國"
+            ],
+            "note": "The flag and map show Britain, so put 英國 before 人."
+          }
+        ],
+        "fallbackRepair": "The flag and map show Britain, so put 英國 before 人.",
+        "result": {
+          "traditional": "家樂是英國人，他姓高。",
+          "pinyin": "Jiālè shì Yīngguó rén, tā xìng Gāo.",
+          "english": "Jiale is British; his surname is Gao."
+        }
+      },
+      {
+        "id": "l1g1-p3",
+        "source": "p.39 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 38,
+          "box": [
+            0.543,
+            0.694,
+            0.111,
+            0.109
+          ],
+          "alt": "A woman beside a map of the United States and an American flag."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "王小姐是"
+              },
+              {
+                "type": "slot",
+                "id": "country",
+                "answers": [
+                  "美國"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "人，她叫宜文。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "日本",
+            "pinyin": "Rìběn"
+          },
+          {
+            "traditional": "美國",
+            "pinyin": "Měiguó"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "日本"
+            ],
+            "note": "The flag and map show the United States, so put 美國 before 人."
+          }
+        ],
+        "fallbackRepair": "The flag and map show the United States, so put 美國 before 人.",
+        "result": {
+          "traditional": "王小姐是美國人，她叫宜文。",
+          "pinyin": "Wáng xiǎojiě shì Měiguó rén, tā jiào Yíwén.",
+          "english": "Miss Wang is American; her given name is Yiwen."
+        }
+      },
+      {
+        "id": "l1g1-p4",
+        "source": "p.39 #4",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 38,
+          "box": [
+            0.727,
+            0.692,
+            0.109,
+            0.111
+          ],
+          "alt": "A waving man beside a map of Indonesia and an Indonesian flag."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "印尼學生姓李，"
+              },
+              {
+                "type": "slot",
+                "id": "name-verb",
+                "answers": [
+                  "叫"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "中明。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "叫",
+            "pinyin": "jiào"
+          },
+          {
+            "traditional": "姓",
+            "pinyin": "xìng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "姓"
+            ],
+            "note": "中明 is his given name, so use 叫; his surname is 李."
+          }
+        ],
+        "fallbackRepair": "中明 is his given name, so use 叫; his surname is 李.",
+        "result": {
+          "traditional": "印尼學生姓李，叫中明。",
+          "pinyin": "Yìnní xuésheng xìng Lǐ, jiào Zhōngmíng.",
+          "english": "The Indonesian student is surnamed Li and called Zhongming."
+        }
+      },
+      {
+        "id": "l1g1-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 38,
+          "box": [
+            0.18,
+            0.694,
+            0.116,
+            0.109
+          ],
+          "alt": "A girl at a desk beside a map of Japan and a Japanese flag."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她"
+              },
+              {
+                "type": "slot",
+                "id": "full-name",
+                "answers": [
+                  "叫"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "小林友美。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "姓",
+            "pinyin": "xìng"
+          },
+          {
+            "traditional": "叫",
+            "pinyin": "jiào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "姓"
+            ],
+            "note": "小林友美 is a full name, so use 叫; 姓 takes only 小林."
+          }
+        ],
+        "fallbackRepair": "小林友美 is a full name, so use 叫; 姓 takes only 小林.",
+        "result": {
+          "traditional": "她叫小林友美。",
+          "pinyin": "Tā jiào Xiǎolín Yǒuměi.",
+          "english": "Her full name is Xiaolin Youmei."
+        }
+      }
+    ]
+  },
+  "B1L01-G02-P39": {
+    "bookPage": 39,
+    "title": "Complete the sentences with 很 or 不.",
+    "allowWords": [
+      "小林",
+      "友美",
+      "中明",
+      "忙",
+      "累"
+    ],
+    "items": [
+      {
+        "id": "l1g2-p1",
+        "source": "p.39 #1",
+        "kind": "slot-build",
+        "prompt": "You think Youmei looks pretty.",
+        "scene": {
+          "type": "picture",
+          "page": 39,
+          "box": [
+            0.211,
+            0.685,
+            0.106,
+            0.1
+          ],
+          "alt": "Youmei seated at a desk with her hands under her chin."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "友美"
+              },
+              {
+                "type": "slot",
+                "id": "description",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "漂亮。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "note": "You are describing Youmei as pretty, so use 很 rather than denying it with 不."
+          }
+        ],
+        "fallbackRepair": "You are describing Youmei as pretty, so use 很 rather than denying it with 不.",
+        "result": {
+          "traditional": "友美很漂亮。",
+          "pinyin": "Yǒuměi hěn piàoliang.",
+          "english": "Youmei is pretty."
+        }
+      },
+      {
+        "id": "l1g2-p2",
+        "source": "p.39 #2",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 39,
+          "box": [
+            0.41,
+            0.686,
+            0.184,
+            0.111
+          ],
+          "alt": "A man working at a computer amid piles of paper and flying sheets."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "description",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "忙。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "note": "The piles of work show that he is busy, so use 很忙 rather than 不忙."
+          }
+        ],
+        "fallbackRepair": "The piles of work show that he is busy, so use 很忙 rather than 不忙.",
+        "result": {
+          "traditional": "他很忙。",
+          "pinyin": "Tā hěn máng.",
+          "english": "He is busy."
+        }
+      },
+      {
+        "id": "l1g2-p3",
+        "source": "p.39 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 39,
+          "box": [
+            0.663,
+            0.686,
+            0.195,
+            0.111
+          ],
+          "alt": "A woman slumped in a chair beside Zhongming, who stands upright and waves."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她很累，中明"
+              },
+              {
+                "type": "slot",
+                "id": "description",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "累。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bú"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "Zhongming feels rested, so use 不累 even though the woman beside him is tired."
+          }
+        ],
+        "fallbackRepair": "Zhongming feels rested, so use 不累 even though the woman beside him is tired.",
+        "result": {
+          "traditional": "她很累，中明不累。",
+          "pinyin": "Tā hěn lèi, Zhōngmíng bú lèi.",
+          "english": "She is tired; Zhongming is not tired."
+        },
+        "prompt": "Zhongming feels rested."
+      },
+      {
+        "id": "l1g2-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 39,
+          "box": [
+            0.211,
+            0.685,
+            0.106,
+            0.1
+          ],
+          "alt": "Youmei seated at a desk with her hands under her chin."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她"
+              },
+              {
+                "type": "slot",
+                "id": "description",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "漂亮。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "是"
+            ],
+            "note": "漂亮 describes her appearance directly, so use 很 without adding 是."
+          }
+        ],
+        "fallbackRepair": "Use 很 before the description 漂亮 without adding 是.",
+        "result": {
+          "traditional": "她很漂亮。",
+          "pinyin": "Tā hěn piàoliang.",
+          "english": "She is pretty."
+        }
+      }
+    ]
+  },
+  "B1L01-G03-P40": {
+    "bookPage": 40,
+    "title": "Complete the sentences with 嗎.",
+    "allowWords": [
+      "中明",
+      "王",
+      "李",
+      "小姐"
+    ],
+    "items": [
+      {
+        "id": "l1g3-p1",
+        "source": "p.40 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "start",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "中明"
+              },
+              {
+                "type": "slot",
+                "id": "after-name",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "姓"
+              },
+              {
+                "type": "slot",
+                "id": "after-verb",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "王"
+              },
+              {
+                "type": "slot",
+                "id": "end",
+                "answers": [
+                  "嗎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他不姓王，他姓李。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "start",
+              "tile": "嗎"
+            },
+            "note": "嗎 never starts a question. Say the whole statement first, then add 嗎."
+          },
+          {
+            "slot": {
+              "id": "after-name",
+              "tile": "嗎"
+            },
+            "note": "嗎 waits for the whole statement: 中明姓王 first, then 嗎."
+          },
+          {
+            "slot": {
+              "id": "after-verb",
+              "tile": "嗎"
+            },
+            "note": "姓 needs its surname right after it, so 嗎 can't split 姓王. Put it after 王."
+          }
+        ],
+        "fallbackRepair": "Keep 中明姓王 as a statement and add 嗎 at the very end.",
+        "result": {
+          "traditional": "中明姓王嗎？",
+          "pinyin": "Zhōngmíng xìng Wáng ma?",
+          "english": "Is Zhongming surnamed Wang?"
+        },
+        "prompt": "Tap where 嗎 goes.",
+        "gaps": true
+      },
+      {
+        "id": "l1g3-p2",
+        "source": "p.40 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "李小姐是"
+              },
+              {
+                "type": "slot",
+                "id": "nationality",
+                "answers": [
+                  "日本人"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不是，她是臺灣人。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "臺灣人",
+            "pinyin": "Táiwān rén"
+          },
+          {
+            "traditional": "日本人",
+            "pinyin": "Rìběn rén"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "臺灣人"
+            ],
+            "note": "B rejects the nationality in the question and corrects it to 臺灣人, so the question asks about 日本人."
+          }
+        ],
+        "fallbackRepair": "B rejects the nationality in the question and corrects it to 臺灣人, so the question asks about 日本人.",
+        "result": {
+          "traditional": "李小姐是日本人嗎？",
+          "pinyin": "Lǐ xiǎojiě shì Rìběn rén ma?",
+          "english": "Is Miss Li Japanese?"
+        }
+      },
+      {
+        "id": "l1g3-p3",
+        "source": "p.40 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 40,
+          "box": [
+            0.74,
+            0.762,
+            0.098,
+            0.101
+          ],
+          "alt": "A smiling girl in a dress with hearts around her head."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她可愛嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她"
+              },
+              {
+                "type": "slot",
+                "id": "reply",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "可愛。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "note": "The smiling girl and hearts give a positive answer, so use 很可愛 rather than 不可愛."
+          }
+        ],
+        "fallbackRepair": "The smiling girl and hearts give a positive answer, so use 很可愛 rather than 不可愛.",
+        "result": {
+          "traditional": "她很可愛。",
+          "pinyin": "Tā hěn kěài.",
+          "english": "She is cute."
+        }
+      }
+    ]
+  },
+  "B1L01-G04-P44": {
+    "bookPage": 44,
+    "title": "Complete or answer the 呢 questions.",
+    "allowWords": [
+      "美國",
+      "印尼",
+      "李",
+      "忙"
+    ],
+    "items": [
+      {
+        "id": "l1g4-p1",
+        "source": "p.44 #1",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我是美國人，你"
+              },
+              {
+                "type": "slot",
+                "id": "ending",
+                "answers": [
+                  "呢"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我是印尼人。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward."
+          }
+        ],
+        "fallbackRepair": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward.",
+        "result": {
+          "traditional": "我是美國人，你呢？",
+          "pinyin": "Wǒ shì Měiguó rén, nǐ ne?",
+          "english": "I am American. How about you?"
+        }
+      },
+      {
+        "id": "l1g4-p2",
+        "source": "p.44 #2",
+        "kind": "slot-build",
+        "prompt": "Reply as Gao Jiale.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我姓李，你呢？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我姓"
+              },
+              {
+                "type": "slot",
+                "id": "reply",
+                "answers": [
+                  "高"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "李",
+            "pinyin": "Lǐ"
+          },
+          {
+            "traditional": "高",
+            "pinyin": "Gāo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "李"
+            ],
+            "note": "You are replying as Gao Jiale, so give your surname 高 rather than the other speaker’s 李."
+          }
+        ],
+        "fallbackRepair": "You are replying as Gao Jiale, so give your surname 高 rather than the other speaker’s 李.",
+        "result": {
+          "traditional": "我姓高。",
+          "pinyin": "Wǒ xìng Gāo.",
+          "english": "My surname is Gao."
+        }
+      },
+      {
+        "id": "l1g4-p3",
+        "source": "p.45 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 45,
+          "box": [
+            0.661,
+            0.148,
+            0.184,
+            0.109
+          ],
+          "alt": "A man working at a computer amid piles of paper and flying sheets."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他很忙，你"
+              },
+              {
+                "type": "slot",
+                "id": "ending",
+                "answers": [
+                  "呢"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不忙。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward."
+          }
+        ],
+        "fallbackRepair": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward.",
+        "result": {
+          "traditional": "他很忙，你呢？",
+          "pinyin": "Tā hěn máng, nǐ ne?",
+          "english": "He is busy. How about you?"
+        }
+      },
+      {
+        "id": "l1g4-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Ask whether Mr. Wang is tired.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "王先生累"
+              },
+              {
+                "type": "slot",
+                "id": "ending",
+                "answers": [
+                  "嗎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "呢"
+            ],
+            "note": "王先生累 is a full statement being checked, so end this yes/no question with 嗎."
+          }
+        ],
+        "fallbackRepair": "王先生累 is a full statement being checked, so end this yes/no question with 嗎.",
+        "result": {
+          "traditional": "王先生累嗎？",
+          "pinyin": "Wáng xiānsheng lèi ma?",
+          "english": "Is Mr. Wang tired?"
+        }
+      }
+    ]
+  },
+  "B1L01-G05-P45": {
+    "bookPage": 45,
+    "title": "Answer the following questions.",
+    "allowWords": [
+      "愛"
+    ],
+    "items": [
+      {
+        "id": "l1g5-p1",
+        "source": "p.45 #1",
+        "kind": "slot-build",
+        "prompt": "You enjoy Taiwan.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡台灣嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "reply",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "台灣。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不喜歡",
+            "pinyin": "bù xǐhuān"
+          },
+          {
+            "traditional": "喜歡",
+            "pinyin": "xǐhuān"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不喜歡"
+            ],
+            "note": "You enjoy Taiwan, so answer with 喜歡 rather than 不喜歡."
+          }
+        ],
+        "fallbackRepair": "You enjoy Taiwan, so answer with 喜歡 rather than 不喜歡.",
+        "result": {
+          "traditional": "我喜歡台灣。",
+          "pinyin": "Wǒ xǐhuān Táiwān.",
+          "english": "I like Taiwan."
+        }
+      },
+      {
+        "id": "l1g5-p2",
+        "source": "p.45 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡誰？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我喜歡"
+              },
+              {
+                "type": "slot",
+                "id": "reply",
+                "answers": [
+                  "李小姐"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "李小姐",
+            "pinyin": "Lǐ xiǎojiě"
+          },
+          {
+            "traditional": "王小姐",
+            "pinyin": "Wáng xiǎojiě"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "王小姐"
+            ],
+            "note": "You like Miss Li and not Miss Wang, so answer the question with 李小姐."
+          }
+        ],
+        "fallbackRepair": "You like Miss Li and not Miss Wang, so answer the question with 李小姐.",
+        "result": {
+          "traditional": "我喜歡李小姐。",
+          "pinyin": "Wǒ xǐhuān Lǐ xiǎojiě.",
+          "english": "I like Miss Li."
+        },
+        "prompt": "You like Miss Li, but not Miss Wang."
+      },
+      {
+        "id": "l1g5-p3",
+        "source": "p.45 #3",
+        "kind": "slot-build",
+        "scene": {
+          "type": "picture",
+          "page": 45,
+          "box": [
+            0.68,
+            0.762,
+            0.167,
+            0.136
+          ],
+          "alt": "Mr. Wang thinking of himself and Mrs. Wang together, with hearts above them."
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "王先生愛王太太嗎？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "reply",
+                "answers": [
+                  "愛"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "王太太。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "愛",
+            "pinyin": "ài"
+          },
+          {
+            "traditional": "不愛",
+            "pinyin": "bú ài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不愛"
+            ],
+            "note": "The hearts in his thought bubble show love, so answer with 愛 rather than 不愛."
+          }
+        ],
+        "fallbackRepair": "The hearts in his thought bubble show love, so answer with 愛 rather than 不愛.",
+        "result": {
+          "traditional": "他愛王太太。",
+          "pinyin": "Tā ài Wáng tàitai.",
+          "english": "He loves Mrs. Wang."
+        }
+      },
+      {
+        "id": "l1g5-own1",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Say you do not like Miss Wang.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "不喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "王小姐。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "喜歡",
+            "pinyin": "xǐhuān"
+          },
+          {
+            "traditional": "不喜歡",
+            "pinyin": "bù xǐhuān"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "喜歡"
+            ],
+            "note": "The speaker does not like Miss Wang, so put 不 before 喜歡."
+          }
+        ],
+        "fallbackRepair": "The speaker does not like Miss Wang, so put 不 before 喜歡.",
+        "result": {
+          "traditional": "我不喜歡王小姐。",
+          "pinyin": "Wǒ bù xǐhuān Wáng xiǎojiě.",
+          "english": "I do not like Miss Wang."
+        }
+      }
+    ]
+  }
+}

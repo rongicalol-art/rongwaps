@@ -30,7 +30,7 @@ test('Lesson 4 number grammar uses the place-value staircase', () => {
     '2,005',
     '90,500',
     '3,050,000',
-    '90,000,000',
+    '90,090,000',
   ]);
   assert.ok(numberPage.numberLab.choices.some((choice) => choice.traditional.includes('零')));
 });

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { AppIcon, IconActionButton, ScreenHeader, PlayfulNavIcon } from '../../../lib/widgets';
+import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
 import type { CharacterFont } from '../../../store/useAppStore';
 
@@ -8,6 +8,8 @@ interface GrammarLessonHeaderProps {
   title?: string;
   characterPreference: 'traditional' | 'simplified';
   characterFont: CharacterFont;
+  onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
+  onCharacterFontChange: (font: CharacterFont) => void;
   showPinyin: boolean;
   showTranslation: boolean;
   currentStepIndex: number;
@@ -20,8 +22,6 @@ interface GrammarLessonHeaderProps {
   onClose: () => void;
   onTogglePinyin: () => void;
   onToggleTranslation: () => void;
-  onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
-  onCharacterFontChange: (font: CharacterFont) => void;
   /** Label for the printed-book page(s) this grammar point covers; null hides the button. */
   bookPageLabel?: string | null;
   onOpenBookPage?: () => void;
@@ -32,6 +32,8 @@ export function GrammarLessonHeader({
   title,
   characterPreference,
   characterFont,
+  onCharacterPreferenceChange,
+  onCharacterFontChange,
   showPinyin,
   showTranslation,
   progress,
@@ -42,8 +44,6 @@ export function GrammarLessonHeader({
   onClose,
   onTogglePinyin,
   onToggleTranslation,
-  onCharacterPreferenceChange,
-  onCharacterFontChange,
   bookPageLabel = null,
   onOpenBookPage,
   bookPageButtonRef,
@@ -78,16 +78,6 @@ export function GrammarLessonHeader({
       controlSize="lg"
       rightAction={
         <div className="flex items-center gap-2">
-          {bookPageLabel && onOpenBookPage && (
-            <IconActionButton
-              ref={bookPageButtonRef}
-              size="lg"
-              onClick={onOpenBookPage}
-              icon={<PlayfulNavIcon name="reference" className="h-7 w-7" />}
-              label={bookPageLabel}
-              title={bookPageLabel}
-            />
-          )}
           {hasConfusion && onOpenConfusion && (
             <IconActionButton
               size="lg"
@@ -103,6 +93,7 @@ export function GrammarLessonHeader({
           {showReadingAids ? (
             <div ref={aidsRef} className="relative">
               <IconActionButton
+                ref={bookPageButtonRef}
                 size="lg"
                 onClick={() => setIsAidsOpen((open) => !open)}
                 className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
@@ -124,10 +115,12 @@ export function GrammarLessonHeader({
                     <GrammarReadingAids
                       characterPreference={characterPreference}
                       characterFont={characterFont}
-                      showPinyin={showPinyin}
-                      showTranslation={showTranslation}
                       onCharacterPreferenceChange={onCharacterPreferenceChange}
                       onCharacterFontChange={onCharacterFontChange}
+                      bookPageLabel={bookPageLabel}
+                      onOpenBookPage={onOpenBookPage ? () => { setIsAidsOpen(false); onOpenBookPage(); } : undefined}
+                      showPinyin={showPinyin}
+                      showTranslation={showTranslation}
                       onTogglePinyin={onTogglePinyin}
                       onToggleTranslation={onToggleTranslation}
                     />

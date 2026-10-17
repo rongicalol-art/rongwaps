@@ -1,4 +1,5 @@
 import { GRAMMAR_USAGE_RULES } from '../../data/grammarUsageRules';
+import { validateGrammarPractice } from './validateGrammarPractice';
 import { getPatternRowGroups, grammarHeaderWeight, grammarHeaderWordCount } from './grammarPatternLayout';
 import type { ReadingRecord, InteractiveGrammarPart } from '../../types/models';
 
@@ -24,6 +25,24 @@ function registerId(
   seen.set(id, location);
 }
 
+const CJK = /[\u3400-\u9fff]/;
+
+/** Simplified text must line up with its traditional text character for character (catches 去 → 走 style corruption). */
+function checkSimplified(node: unknown, location: string, issues: LessonValidationIssue[]) {
+  if (Array.isArray(node)) return node.forEach((child) => checkSimplified(child, location, issues));
+  if (!node || typeof node !== 'object') return;
+  const record = node as Record<string, unknown>;
+  const { traditional: t, simplified: z } = record;
+  if (typeof t === 'string' && typeof z === 'string' && z !== '') {
+    const tc = [...t];
+    const zc = [...z];
+    const broken = tc.length !== zc.length
+      || tc.some((a, i) => a !== zc[i] && (!CJK.test(a) || (tc.includes(zc[i]) && a !== '妳')));
+    if (broken) issues.push({ location: `${location}${record.id ? ` ${record.id}` : ''}`, message: `Simplified "${z}" does not match traditional "${t}".` });
+  }
+  Object.values(record).forEach((child) => checkSimplified(child, location, issues));
+}
+
 export function validateInteractiveLessons(
   parts: InteractiveGrammarPart[],
   readings: ReadingRecord[],
@@ -45,6 +64,8 @@ export function validateInteractiveLessons(
       registerId(page.id, pageLocation, topLevelIds, issues);
       const pageIds = new Map<string, string>();
 
+      checkSimplified(page, pageLocation, issues);
+      if (page.practice) issues.push(...validateGrammarPractice(page.practice, `${pageLocation} practice`));
       if (page.bookId !== part.bookId || page.lessonId !== part.lessonId || page.partId !== part.partId) {
         issues.push({ location: pageLocation, message: 'Page identity does not match its parent part.' });
       }

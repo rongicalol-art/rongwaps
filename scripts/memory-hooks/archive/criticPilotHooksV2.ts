@@ -11,11 +11,6 @@ import type { DeterministicHookQualityResult } from '../../../src/types/memoryHo
 import { evaluateHookStylePreflight } from '../stylePreflight';
 
 dotenv.config({ path: resolve(import.meta.dirname, '../../../.env'), quiet: true });
-dotenv.config({
-  path: resolve(import.meta.dirname, '../../../.env.memory-hooks.local'),
-  quiet: true,
-  override: true,
-});
 
 interface ProviderConfig {
   provider: 'deepseek' | 'openrouter';
