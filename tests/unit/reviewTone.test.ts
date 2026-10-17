@@ -9,13 +9,19 @@ test('review tone claims survive overlapping owners and delayed, skipped transit
   const classes = new Set<string>();
   const queued: Array<{ apply: () => void; finish: () => void; skipped: boolean }> = [];
   let reduced = false;
+  const styleProps = new Map<string, string>();
+  const style = {
+    getPropertyValue: (name: string) => styleProps.get(name) ?? '',
+    setProperty: (name: string, value: string) => { styleProps.set(name, value); },
+    removeProperty: (name: string) => { styleProps.delete(name); },
+  };
   const doc = {
     hidden: false,
-    documentElement: { dataset, classList: { add: (name: string) => classes.add(name), remove: (name: string) => classes.delete(name) } },
+    documentElement: { dataset, style, classList: { add: (name: string) => classes.add(name), remove: (name: string) => classes.delete(name) } },
     startViewTransition: undefined as undefined | ((apply: () => void) => object),
   };
   Object.defineProperty(globalThis, 'document', { configurable: true, value: doc });
-  Object.defineProperty(globalThis, 'window', { configurable: true, value: { matchMedia: () => ({ matches: reduced }) } });
+  Object.defineProperty(globalThis, 'window', { configurable: true, value: { innerWidth: 1000, innerHeight: 800, matchMedia: () => ({ matches: reduced }) } });
   const releases: Array<() => void> = [];
   const claim = () => { const release = claimReviewTone(); releases.push(release); return release; };
   try {
