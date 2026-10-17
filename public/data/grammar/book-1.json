@@ -929,6 +929,14 @@
                   {
                     "traditional": "小林友美",
                     "pinyin": "Xiǎolín Yǒuměi"
+                  },
+                  {
+                    "traditional": "高家樂",
+                    "pinyin": "Gāo Jiālè"
+                  },
+                  {
+                    "traditional": "李中明",
+                    "pinyin": "Lǐ Zhōngmíng"
                   }
                 ],
                 "repairs": [
@@ -936,10 +944,22 @@
                     "placed": [
                       "王宜文"
                     ],
-                    "note": "The Japanese classmate is 小林友美; 王宜文 is the American classmate."
+                    "note": "王宜文 is 美國人, not the Japanese classmate. Look for 日本人."
+                  },
+                  {
+                    "placed": [
+                      "高家樂"
+                    ],
+                    "note": "高家樂 is 英國人, not the Japanese classmate. Look for 日本人."
+                  },
+                  {
+                    "placed": [
+                      "李中明"
+                    ],
+                    "note": "李中明 is 印尼人, not the Japanese classmate. Look for 日本人."
                   }
                 ],
-                "fallbackRepair": "The Japanese classmate is 小林友美; 王宜文 is the American classmate.",
+                "fallbackRepair": "Find the classmate marked 日本人: 小林友美.",
                 "result": {
                   "traditional": "小林友美是新學生，她是日本人。",
                   "pinyin": "Xiǎolín Yǒuměi shì xīn xuésheng, tā shì Rìběn rén.",
@@ -1024,23 +1044,43 @@
                 ],
                 "tiles": [
                   {
+                    "traditional": "日本",
+                    "pinyin": "Rìběn"
+                  },
+                  {
                     "traditional": "英國",
                     "pinyin": "Yīngguó"
                   },
                   {
                     "traditional": "美國",
                     "pinyin": "Měiguó"
+                  },
+                  {
+                    "traditional": "印尼",
+                    "pinyin": "Yìnní"
                   }
                 ],
                 "repairs": [
                   {
                     "placed": [
+                      "日本"
+                    ],
+                    "note": "The picture marks 家樂 as 英國人, not 日本人."
+                  },
+                  {
+                    "placed": [
                       "美國"
                     ],
-                    "note": "The flag and map show Britain, so put 英國 before 人."
+                    "note": "The picture marks 家樂 as 英國人, not 美國人."
+                  },
+                  {
+                    "placed": [
+                      "印尼"
+                    ],
+                    "note": "The picture marks 家樂 as 英國人, not 印尼人."
                   }
                 ],
-                "fallbackRepair": "The flag and map show Britain, so put 英國 before 人.",
+                "fallbackRepair": "Find 家樂 in the pictures and read the nationality printed under the name.",
                 "result": {
                   "traditional": "家樂是英國人，他姓高。",
                   "pinyin": "Jiālè shì Yīngguó rén, tā xìng Gāo.",
@@ -1129,8 +1169,16 @@
                     "pinyin": "Rìběn"
                   },
                   {
+                    "traditional": "英國",
+                    "pinyin": "Yīngguó"
+                  },
+                  {
                     "traditional": "美國",
                     "pinyin": "Měiguó"
+                  },
+                  {
+                    "traditional": "印尼",
+                    "pinyin": "Yìnní"
                   }
                 ],
                 "repairs": [
@@ -1138,10 +1186,22 @@
                     "placed": [
                       "日本"
                     ],
-                    "note": "The flag and map show the United States, so put 美國 before 人."
+                    "note": "The picture marks 宜文 as 美國人, not 日本人."
+                  },
+                  {
+                    "placed": [
+                      "英國"
+                    ],
+                    "note": "The picture marks 宜文 as 美國人, not 英國人."
+                  },
+                  {
+                    "placed": [
+                      "印尼"
+                    ],
+                    "note": "The picture marks 宜文 as 美國人, not 印尼人."
                   }
                 ],
-                "fallbackRepair": "The flag and map show the United States, so put 美國 before 人.",
+                "fallbackRepair": "Find 宜文 in the pictures and read the nationality printed under the name.",
                 "result": {
                   "traditional": "王小姐是美國人，她叫宜文。",
                   "pinyin": "Wáng xiǎojiě shì Měiguó rén, tā jiào Yíwén.",
