@@ -97,7 +97,7 @@ export function ActivityScreens({
             onClose={onClose}
             onContinue={onContinue}
             continueLabel={continueLabel}
-            onStartQuiz={isReviewMode || activeActivity === 'flashcards-review' ? undefined : onStartQuiz}
+            onStartQuiz={onStartQuiz}
             quizFirstId={quizFirstId}
             sessionDeck={sessionDeck}
           />
@@ -127,6 +127,7 @@ export function ActivityScreens({
             isLibraryDeck={isLibraryMode}
             mode={activeQuizMode ?? 'choices'}
             quizTypes={quizTypes}
+            sessionDeck={sessionDeck}
             sessionStats={sessionStats}
             onClose={onClose}
             onContinue={onClose}

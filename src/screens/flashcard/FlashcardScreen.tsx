@@ -127,7 +127,7 @@ export function FlashcardScreen({
   }, [currentCard]);
 
   useEffect(() => {
-    if (isReviewDeck || practiceOnly || !completed || missedCount === 0) return;
+    if (practiceOnly || !completed || missedCount === 0) return;
     firstPassRef.current ??= { total: cards.length, correct: learnedCount, cards, missedCards, trickyCards };
     reviewUnlearned();
     setReviewPass((pass) => pass + 1);
@@ -137,7 +137,12 @@ export function FlashcardScreen({
     setDealStarted(false);
     setIntroLanded(false);
     setIntroActive(true);
-  }, [cards, completed, isReviewDeck, learnedCount, missedCards, missedCount, reviewUnlearned, trickyCards, practiceOnly]);
+  }, [cards, completed, learnedCount, missedCards, missedCount, reviewUnlearned, trickyCards, practiceOnly]);
+
+  useEffect(() => {
+    if (!isReviewDeck || !completed || missedCount > 0 || !dailyPlan || dailyPlan.completed) return;
+    useAppStore.getState().setDailyReviewPlan({ ...dailyPlan, completed: true });
+  }, [completed, dailyPlan, isReviewDeck, missedCount]);
 
   const resetAll = useCallback(() => {
     firstPassRef.current = null;
@@ -157,9 +162,9 @@ export function FlashcardScreen({
     restartDeckSession();
   }, [restartDeckSession]);
 
-  const isDeckDone = completed && (isReviewDeck || practiceOnly || missedCount === 0);
+  const isDeckDone = completed && (practiceOnly || missedCount === 0);
   /** A quiz follows: the last card shrinks into the Cards done sheet instead of the screen swapping. */
-  const cardsDone = isDeckDone && Boolean(onStartQuiz) && !isReviewDeck && !practiceOnly;
+  const cardsDone = isDeckDone && Boolean(onStartQuiz) && !practiceOnly;
   if (!isDeckDone) lastFlippedRef.current = isFlipped;
 
   // The whole app turns warm for review passes (the intro included); after the last card it drains with Cards done.
@@ -298,7 +303,7 @@ export function FlashcardScreen({
   };
 
   const tricky = firstPassRef.current?.trickyCards ?? trickyCards;
-  if (isDeckDone && (!onStartQuiz || isReviewDeck || practiceOnly)) {
+  if (isDeckDone && (!onStartQuiz || practiceOnly)) {
     const stats = sessionStats();
     return (
       <SessionComplete
@@ -311,7 +316,7 @@ export function FlashcardScreen({
         onContinue={onContinue ?? onClose ?? (() => {})}
         onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
         missedCount={tricky.length}
-        onStudyAllAgain={isReviewDeck ? undefined : studyAllAgain}
+        onStudyAllAgain={studyAllAgain}
       />
     );
   }

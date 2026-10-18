@@ -12,6 +12,7 @@ import type { QuizMode } from '../../types/models';
 import type { SessionStats } from '../../features/practice';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from '../flashcard';
+import type { Flashcard } from '../../data/flashcards';
 
 interface QuizScreenProps {
   activeBookId: number;
@@ -26,6 +27,8 @@ interface QuizScreenProps {
   quizTypes?: readonly QuizTypeId[] | null;
   /** The flashcard round this quiz follows; Session complete merges it with the quiz result. */
   sessionStats?: SessionStats | null;
+  /** The review deck snapshot stays available after the daily review is marked complete. */
+  sessionDeck?: Flashcard[];
 }
 
 export function QuizScreen({
@@ -39,8 +42,10 @@ export function QuizScreen({
   mode = 'choices',
   quizTypes = null,
   sessionStats = null,
+  sessionDeck,
 }: QuizScreenProps) {
-  const { cards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+  const { cards: loadedCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+  const cards = isReviewDeck && sessionDeck?.length ? sessionDeck : loadedCards;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const launchCleanup = useRef<number | undefined>(undefined);
   useEffect(() => {

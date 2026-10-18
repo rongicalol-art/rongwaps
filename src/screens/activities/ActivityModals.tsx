@@ -16,6 +16,7 @@ import { PracticeDockSlotProvider, type SessionStats } from '../../features/prac
 import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
+import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
   activeActivity: ActivityType;
@@ -65,6 +66,8 @@ export function ActivityModals({
     isReviewSession,
     effectiveLibraryMode,
   );
+  const sessionDeckRef = useRef<Flashcard[]>([]);
+  if (deckCards.length > 0) sessionDeckRef.current = deckCards;
 
   // ONE readiness owner for opening a practice session: screen chunk + deck (+ future gates such
   // as fonts). Warm or fast opens go straight to content; slow ones show one loader only while waiting.
@@ -238,7 +241,7 @@ export function ActivityModals({
                   onContinue={onPartContinue}
                   continueLabel={partContinueLabel}
                   quizFirstId={deckCards[0]?.id}
-                  sessionDeck={deckCards}
+                  sessionDeck={sessionDeckRef.current}
                   quizTypes={quizTypes}
                   sessionStats={sessionStats}
                   onStartQuiz={(types, stats) => {

@@ -1,5 +1,4 @@
 import { useStudyClock } from './useStudyClock';
-import { DAILY_REVIEW_MS } from '../utils/srs/reviewSession';
 import type { ReviewSource } from '../utils/srs/reviewEvents';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
@@ -289,11 +288,8 @@ export function useCardSession(
   const advanceOrComplete = useCallback((): 'advanced' | 'completed' => {
     const current = currentIndexRef.current;
     const cardsList = activeCardsRef.current;
-    const plan = daily && !practiceOnlyRef.current ? useAppStore.getState().dailyReviewPlan : null;
-    const timeUp = Boolean(plan && plan.activeMs >= DAILY_REVIEW_MS);
-    const nextDailyIndex = plan ? cardsList.findIndex((card, index) => index > current && !(card.id in plan.answers)) : current + 1;
-    if (!timeUp && nextDailyIndex >= 0 && nextDailyIndex < cardsList.length) {
-      const nextIndex = nextDailyIndex;
+    if (current + 1 < cardsList.length) {
+      const nextIndex = current + 1;
       currentIndexRef.current = nextIndex;
       currentCardIdRef.current = cardsList[nextIndex]?.id ?? null;
       setCurrentIndex(nextIndex);
@@ -304,16 +300,12 @@ export function useCardSession(
     // The pinned due-set snapshot is a per-session pin: once the review
     // session completes, drop it so the next review entry recomputes from
     // the live SRS due set instead of replaying already-reviewed cards.
-    if (daily && !practiceOnlyRef.current) {
-      const plan = useAppStore.getState().dailyReviewPlan;
-      if (plan) useAppStore.getState().setDailyReviewPlan({ ...plan, completed: true });
-    }
     if (sessionKey === SHARED_REVIEW_SESSION_KEY) {
       useAppStore.getState().setActiveReviewSessionCards(null);
     }
     setCompleted(true);
     return 'completed';
-  }, [clearSessionProgressIndex, daily, persistProgress, sessionKey]);
+  }, [clearSessionProgressIndex, persistProgress, sessionKey]);
 
   /** Moves to an exact card, bounded (swipe/keyboard navigation). */
   const moveTo = useCallback((index: number) => {

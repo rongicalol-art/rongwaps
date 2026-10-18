@@ -27,7 +27,7 @@ export function useReviewOverview(): ReviewOverview {
     const today = reviewDay();
     const goal = dailyReviewGoal(events ?? []);
     stableOverviewRef.current = { ...base,
-      dailyCompleted: plan?.day === today && plan.completed || goal.completed,
+      dailyCompleted: plan?.day === today ? plan.completed : goal.completed,
       dailyCount: plan?.day === today ? plan.cardIds.filter(id => !(id in plan.answers)).length
         : Math.min(base.dueCount, Math.max(0, goal.capacity - Object.keys(goal.answers).length)),
     };

@@ -1,5 +1,5 @@
 import { mergeReviewEvents, type ReviewContext, type ReviewEvent } from '../../utils/srs/reviewEvents';
-import { DAILY_REVIEW_MS, type DailyReviewPlan } from '../../utils/srs/reviewSession';
+import { type DailyReviewPlan } from '../../utils/srs/reviewSession';
 import type { SRSData, Quality } from '../../utils/srs/srsEngine';
 import { reviewSessionKey } from '../../utils/srs/sessionProgress';
 import {
@@ -133,8 +133,7 @@ export function createLearningSlice(set: SetState): LearningState {
       const isNewEvent = event && !state.reviewEvents.some(e => e.id === event.id);
       const plan = state.dailyReviewPlan;
       const dailyReviewPlan = context?.source === 'daily' && plan && !(cardId in plan.answers)
-        ? { ...plan, answers: { ...plan.answers, [cardId]: quality },
-            completed: plan.activeMs >= DAILY_REVIEW_MS || plan.cardIds.every(id => id === cardId || id in plan.answers) }
+        ? { ...plan, answers: { ...plan.answers, [cardId]: quality } }
         : plan;
       return { ...result, dailyReviewPlan,
         pendingReviewEvents: isNewEvent ? [...state.pendingReviewEvents, event] : state.pendingReviewEvents };
