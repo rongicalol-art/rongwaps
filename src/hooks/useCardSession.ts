@@ -52,6 +52,9 @@ export function useCardSession(
 
   const [activeCards, setActiveCards] = useState<Flashcard[]>(cards);
   const [isShuffled, setIsShuffled] = useState(false);
+  /** Bumped by shuffle/reset/review: activities key their question UI on it so local answer state remounts even when the same card deals first. */
+  const [resetNonce, setResetNonce] = useState(0);
+  const bumpResetNonce = useCallback(() => setResetNonce((nonce) => nonce + 1), []);
   const [currentIndex, setCurrentIndex] = useState(() => (
     useAppStore.getState().sessionProgressIndex[sessionKey] || 0
   ));
@@ -339,8 +342,9 @@ export function useCardSession(
     setSessionResults({});
     gradingCardKeyRef.current = null;
     useAppStore.getState().showFeedbackToast(nextShuffled ? 'Shuffled' : 'Unshuffled');
+    bumpResetNonce();
     onAnswerStateResetRef.current();
-  }, [isShuffled]);
+  }, [bumpResetNonce, isShuffled]);
 
   const resetAll = useCallback(() => {
     practiceOnlyRef.current = false;
@@ -354,8 +358,9 @@ export function useCardSession(
     setCompleted(false);
     setSessionResults({});
     gradingCardKeyRef.current = null;
+    bumpResetNonce();
     onAnswerStateResetRef.current();
-  }, [cards]);
+  }, [bumpResetNonce, cards]);
 
   /** Starts a focused practice run without clearing progress or recording another SRS grade. */
   const practiceCards = useCallback((subset: Flashcard[]) => {
@@ -373,11 +378,17 @@ export function useCardSession(
     setSessionResults({});
     gradingCardKeyRef.current = null;
     clearSessionProgressIndex(sessionKey);
+    bumpResetNonce();
     onAnswerStateResetRef.current();
-  }, [clearSessionProgressIndex, sessionKey]);
+  }, [bumpResetNonce, clearSessionProgressIndex, sessionKey]);
 
   const reviewUnlearned = useCallback(() => {
-    practiceOnlyRef.current = true;
+    // The automatic review pass is a genuine relearning round: it must not be
+    // marked practice-only, or the session ends after one pass with "Practice
+    // complete" instead of looping until every card is learned and handing
+    // over to Cards done / the quiz. Only practiceCards() is a finite
+    // practice run.
+    practiceOnlyRef.current = false;
     firstAttemptMissedRef.current.clear();
     const unlearnedIds = Object.entries(sessionResults)
       .filter(([, quality]) => quality === 1 || quality === 2)
@@ -397,8 +408,9 @@ export function useCardSession(
     setCompleted(false);
     setSessionResults({});
     gradingCardKeyRef.current = null;
+    bumpResetNonce();
     onAnswerStateResetRef.current();
-  }, [cards, resetAll, sessionResults]);
+  }, [bumpResetNonce, cards, resetAll, sessionResults]);
 
   const unlearnedCount = Object.values(sessionResults).filter((quality) => quality === 1 || quality === 2).length;
   const learnedCount = Object.values(sessionResults).filter((quality) => quality > 2).length;
@@ -422,6 +434,7 @@ export function useCardSession(
     completed,
     practiceOnly: practiceOnlyRef.current,
     resumedReview,
+    resetNonce,
     beginGrading,
     clearGrading,
     recordAnswer,
