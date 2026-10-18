@@ -60,4 +60,5 @@ export * from './ProgressMetricCard';
 export * from './ReferenceRow';
 export * from './LevelTag';
 export * from './CharacterTile';
+export * from './CharacterGlyph';
 export * from './SmartSentence';

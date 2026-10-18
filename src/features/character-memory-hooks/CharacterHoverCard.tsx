@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion, type MotionValue } from 'motion/react';
-import { AppIcon } from '../../lib/widgets';
+import { AppIcon, CharacterGlyph } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import { renderHookText } from './hookText';
 import type { CharacterPartsState } from './useCharacterParts';
@@ -25,8 +25,8 @@ export interface CharacterHoverCardProps {
 
 function Tile({ glyph }: { glyph: string }) {
   return (
-    <span className="flex h-14 w-14 items-center justify-center rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface font-chinese text-[32px] leading-none text-ui-ink-strong">
-      {glyph}
+    <span className="flex h-14 w-14 items-center justify-center rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface">
+      <CharacterGlyph character={glyph} className="text-[32px] leading-none text-ui-ink-strong" />
     </span>
   );
 }
@@ -72,7 +72,7 @@ export function CharacterHoverCard({ open, char, anchor, above, data, hook, magn
     >
       <span className="block rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface px-3.5 py-3 text-left shadow-ambient-sm">
         <span className={cn('flex min-w-0 items-baseline gap-2', hasBody && 'mb-3 border-b-2 border-ui-divider pb-2.5')}>
-          <span className="font-chinese text-2xl leading-none text-ui-ink-strong">{char}</span>
+          <CharacterGlyph character={char} className="text-2xl leading-none text-ui-ink-strong" />
           {data.pinyin && <span className="text-base font-black text-brand-primary">{data.pinyin}</span>}
           {data.meaning && <span className="min-w-0 truncate text-sm font-extrabold text-ui-ink">{data.meaning}</span>}
         </span>
@@ -93,14 +93,14 @@ export function CharacterHoverCard({ open, char, anchor, above, data, hook, magn
             ))}
             <span className="flex h-14 w-3.5 items-center justify-center text-lg font-black text-ui-muted">→</span>
             <span className="flex w-[68px] flex-col items-center">
-              <span className="flex h-14 w-14 items-center justify-center rounded-compact border-2 border-brand-primary bg-brand-primary/10 font-chinese text-[32px] leading-none text-brand-primary">{char}</span>
+              <span className="flex h-14 w-14 items-center justify-center rounded-compact border-2 border-brand-primary bg-brand-primary/10"><CharacterGlyph character={char} className="text-[32px] leading-none text-brand-primary" /></span>
             </span>
           </span>
         ) : parts.length > 0 ? (
           <span className="grid grid-cols-2 gap-2">
             {gridParts.map((part, index) => (
-              <span key={`${part.glyph}-${index}`} className="grid min-w-0 grid-cols-[34px_minmax(0,1fr)] items-center gap-x-2 rounded-control border-2 border-ui-border border-b-[length:var(--depth-sm)] bg-ui-surface px-2 py-1.5">
-                <span className="text-center font-chinese text-2xl leading-none text-ui-ink-strong">{part.glyph}</span>
+              <span key={`${part.glyph}-${index}`} className="grid min-w-0 grid-cols-[40px_minmax(0,1fr)] items-center gap-x-2 rounded-control border-2 border-ui-border border-b-[length:var(--depth-sm)] bg-ui-surface px-2 py-1.5">
+                <CharacterGlyph character={part.glyph} className="flex w-full items-center justify-center text-2xl leading-none text-ui-ink-strong" />
                 <span className="min-w-0">
                   {part.pinyin && <span className="block truncate text-xs font-black leading-tight text-brand-primary">{part.pinyin}</span>}
                   {part.meaning && <span className="block truncate text-xs font-extrabold leading-tight text-ui-ink">{part.meaning}</span>}

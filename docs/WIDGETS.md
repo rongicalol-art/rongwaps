@@ -92,6 +92,7 @@
 | ProgressMetricCard | `ProgressMetricCard.tsx` | Derived metric (`label`, `value`, `detail`, `icon`); real metrics only. |
 | ReferenceRow | `ReferenceRow.tsx` | Row for reference sheets: glyph, pinyin over meaning, meta, `loading`; `accentClassName` tints glyph. |
 | CharacterTile | `CharacterTile.tsx` | Tappable character tile; `known`, `upcoming`, `active`. |
+| CharacterGlyph | `CharacterGlyph.tsx` | Character glyph with a puzzle-piece fallback when the active Chinese font cannot render it. |
 | LevelTag | `LevelTag.tsx` | Course `B1 · L3` or TOCFL fallback from `ResolvedLevel` (`resolveLevel`/`useLevel`, `src/utils/lesson/levels.ts`); `row` or `chip`; estimates render `~B1`. Lesson wins over TOCFL. |
 | SmartSentence | `SmartSentence.tsx` | Clickable sentence for lookup; `highlightTerms`. |
 
