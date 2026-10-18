@@ -274,7 +274,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
       <SessionComplete
         words={words}
         headline={session.practiceOnly ? 'Practice complete' : undefined}
-        reviewLabel="Practice tricky words"
+        reviewLabel="Review missed"
         pct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
         pctLabel="Quiz"
         seconds={Math.max(1, Math.round((finishedAtRef.current - (sessionStats?.startedAt ?? startedAtRef.current)) / 1000))}

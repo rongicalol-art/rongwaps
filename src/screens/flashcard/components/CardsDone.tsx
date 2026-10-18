@@ -386,7 +386,7 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
             </ActionButton>
             <div className="mt-2 w-full">
               <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="!bg-ui-surface !text-ui-muted-strong hover:!bg-ui-hover uppercase tracking-normal" onClick={() => { if (!startedRef.current) onReviewAgain(); }}>
-                {missedCount > 0 ? `Practice tricky words (${missedCount})` : 'Study all again'}
+                {missedCount > 0 ? `Review missed (${missedCount})` : 'Study all again'}
               </ActionButton>
             </div>
           </div>

@@ -23,7 +23,7 @@ export function DailyReviewPreview() {
       <SessionComplete headline={practice ? 'Practice complete' : 'Today’s review complete'} words={WORDS.map(w => w.hanzi)} pct={Math.round(answers.filter(q => q >= 3).length / 3 * 100)} pctLabel="First try" seconds={80}
         onContinue={() => { setIndex(0); setAnswers([]); setPractice(false); }}
         onReviewMissed={!practice && tricky.length ? () => { setIndex(0); setPractice(true); } : undefined}
-        reviewLabel="Practice tricky words" missedCount={tricky.length} />
+        reviewLabel="Review missed" missedCount={tricky.length} />
     </div>
   );
   return (

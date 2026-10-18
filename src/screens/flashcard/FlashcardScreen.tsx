@@ -310,7 +310,7 @@ export function FlashcardScreen({
       <SessionComplete
         words={stats.words}
         headline={practiceOnly ? 'Practice complete' : isReviewDeck ? 'Today’s review complete' : undefined}
-        reviewLabel="Practice tricky words"
+        reviewLabel="Review missed"
         pct={stats.firstTryPct}
         pctLabel="First try"
         seconds={Math.max(1, Math.round((Date.now() - stats.startedAt) / 1000))}
