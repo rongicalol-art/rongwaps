@@ -12,7 +12,7 @@ One Node service (`npm run build`, then `npm start`) serves the SPA and the API.
 
 - `npm run build` ends with `scripts/build/trimBetaContent.ts`: it rewrites the built `dist/data` (never `public/data`) to Book 1, Introduction + Lessons 1..`BETA_LAST_LESSON` (`src/data/books.ts`) for vocabulary, readings, grammar, course examples, dialogue alignment, flashcard extras and the textbook page scans, and recomputes manifests. Dictionary, breakdowns, search and memory hooks stay whole. Launch day: remove that step from `build`.
 - The server (`server/index.ts`) serves those lesson packs and scans only with a valid Supabase bearer token (`Cache-Control: private`, 600/min per user); `staticContentService.fetchContent` sends the token and the book-page viewer loads scans as blobs. Keep the gated folder list in sync between the two files.
-- Probe after deploy: `curl -i https://<host>/data/vocabulary/book-1.json` must return 401; `/data/dictionary/manifest.json` must return 200.
+- Probe after deploy: `curl -i https://<host>/data/vocabulary/book-1.json` must return 401; `/data/dictionary/manifest.json` must also return 401 without a token. Every `/data` pack is gated, dictionary included.
 - Use `curl --path-as-is` to check encoded mount names (`/%64ata/grammar/book-1.json`) and duplicate slashes (`//data/grammar/book-1.json`) also return 401 without a token. The gate normalizes the full request path before static-file serving.
 
 ## Environment variables
@@ -21,7 +21,7 @@ Client (build-time, public): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`; opti
 
 Server (secret): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`.
 
-Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see real IPs), `TTS_DAILY_LIMIT`.
+Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see real IPs).
 
 `TYPESAFE_API_KEY` is used only by local/CI Jev content-review tools, not the deployed app server. Azure Speech credentials are not used. Remove obsolete `TYPESAFE_API_KEY`, `JEV_DAILY_LIMIT`, `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` settings from existing web-service environments; removing them from the Blueprint does not confirm deletion from an existing service.
 
@@ -44,7 +44,7 @@ Local security tests: use a disposable Supabase Postgres container, clone its in
 
 After `npm run build`, run `python3 tests/production/schoolBetaSmoke.py` to exercise the real Express gate with canonical, encoded, duplicate-slash and traversal paths using both GET and HEAD. It starts a temporary server and does not sign in or write progress.
 
-Remaining content exposure: dictionary/decomposition/memory-hook and other reference packs remain public; lesson/grammar/readings/scans already use the authenticated `/data` gate. Recorded audio remains on the public R2 CDN. School-only authentication does not make those reference packs or R2 URLs private, nor revoke files previously downloaded. Their protection is a separate content-delivery task.
+Remaining content exposure: every `/data` pack (lesson, grammar, readings, scans, dictionary, decomposition, memory hooks and other reference packs) requires a school session. Recorded audio remains on the public R2 CDN. School-only authentication does not make those R2 URLs private, nor revoke files previously downloaded. Their protection is a separate content-delivery task.
 
 1. Authentication, URL Configuration: Site URL = production origin; add it (and any preview origin) to Redirect URLs.
 2. Providers: enable Google, add the production origin and Supabase callback to the Google OAuth client.
@@ -56,7 +56,7 @@ Remaining content exposure: dictionary/decomposition/memory-hook and other refer
 - `/` loads, title and sign-in window read "Ron's Mandarin"
 - Sign in with Google, sign out, then sign in again; a first-time Google sign-in creates the account
 - Add a custom flashcard, reload, it persists and syncs on a second device
-- A lesson plays audio (TTS and R2 audio)
+- A lesson plays recorded audio; text without a recording uses browser speech
 - `POST /api/jev/grade-answer` returns 404, including when sent a bearer token
 - `/privacy` and `/terms` render
 - Install as PWA; icon and name look right; works offline after first load

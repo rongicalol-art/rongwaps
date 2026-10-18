@@ -13,10 +13,7 @@ import {
 } from './audio/audioCache';
 import {
   ensureSpeechVoices,
-  playNeuralAudio,
-  preloadNeuralTexts,
   speakUtterance,
-  releaseBlobAudio,
   releaseSpeechUtterance,
   wait,
 } from './audio/speechEngine';
@@ -39,14 +36,13 @@ export class AudioService {
   private currentUtterance: SpeechSynthesisUtterance | null = null;
   private activePlaybackFinish: (() => void) | null = null;
   private activePlaybackCleanup: (() => void) | null = null;
-  private activeBlobAudio: HTMLAudioElement | null = null;
   constructor() {
     if (typeof window !== 'undefined') {
       if (typeof Audio !== 'undefined') {
         try {
           this.globalAudio = new Audio();
         } catch (error) {
-          debugLogger.warn('Audio', 'HTML audio initialization failed; using TTS fallback', error);
+          debugLogger.warn('Audio', 'HTML audio initialization failed; using browser speech fallback', error);
         }
       }
     }
@@ -125,26 +121,6 @@ export class AudioService {
       void this.startSpeech(text, 'zh-CN', rate, finish, true);
     });
   }
-  public speakNeural(text: string, voice?: string): Promise<void> {
-    this.stop();
-    return new Promise((resolve) => {
-      const finish = this.trackPlayback(resolve);
-      const language = voice?.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
-      playNeuralAudio(
-        text,
-        voice,
-        1,
-        () => this.activePlaybackFinish === finish,
-        finish,
-        () => void this.startSpeech(text, language, 0.86, finish, true),
-        (audio) => { if (this.activePlaybackFinish === finish) this.activeBlobAudio = audio; },
-        this.globalAudio ?? undefined,
-      );
-    });
-  }
-  public async preloadNeural(texts: string[], voice?: string, options?: { limit?: number }): Promise<void> {
-    return preloadNeuralTexts(texts, voice, options);
-  }
   public speakText(text: string, language = 'zh-CN', rate = 1.0): Promise<void> {
     this.stop();
     return new Promise((resolve) => {
@@ -155,7 +131,7 @@ export class AudioService {
   // With `overlap`, a playing clip rings out on its element while the new one uses the spare.
   private beginPlayback(overlap: boolean): void {
     const { globalAudio: tail, spareAudio: spare } = this;
-    if (!overlap || !tail || !spare || this.rangeRafHandle !== null || this.currentUtterance || this.activeBlobAudio) {
+    if (!overlap || !tail || !spare || this.rangeRafHandle !== null || this.currentUtterance) {
       this.pause();
       return;
     }
@@ -165,7 +141,6 @@ export class AudioService {
     }
     this.activePlaybackCleanup?.();
     this.activePlaybackCleanup = null;
-    this.activeBlobAudio = null;
     this.activePlaybackFinish?.();
     this.activePlaybackFinish = null;
   }
@@ -187,17 +162,6 @@ export class AudioService {
         } catch (e) { debugLogger.warn('Audio', 'Global audio pause failed', e); }
       }
     }
-    const blobAudio = this.activeBlobAudio;
-    this.activeBlobAudio = null;
-    if (blobAudio) {
-      releaseBlobAudio(blobAudio);
-      blobAudio.onended = null;
-      blobAudio.onerror = null;
-      if (!blobAudio.paused) {
-        try { blobAudio.pause(); } catch (e) { debugLogger.warn('Audio', 'Blob audio pause failed', e); }
-      }
-    }
-
     if (this.currentUtterance) {
       releaseSpeechUtterance(this.currentUtterance);
       this.currentUtterance.onend = null;
@@ -237,7 +201,7 @@ export class AudioService {
     audioFileName?: string,
     playbackRate = 1.0,
     textFallback?: string,
-    preferredVoice?: string,
+    fallbackLanguage = 'zh-CN',
     startTime = 0,
     options?: PlayOptions,
   ): Promise<void> {
@@ -254,14 +218,7 @@ export class AudioService {
           finish();
           return;
         }
-        const fallbackVoice = preferredVoice || 'zh-CN-XiaoxiaoNeural';
-        const fallbackLocale = fallbackVoice.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
-        playNeuralAudio(
-          textToSpeak, fallbackVoice, playbackRate, () => this.activePlaybackFinish === finish, finish,
-          () => void this.startSpeech(textToSpeak, fallbackLocale, 0.86 * playbackRate, finish, true),
-          (audio) => { if (this.activePlaybackFinish === finish) this.activeBlobAudio = audio; },
-          this.globalAudio ?? undefined,
-        );
+        void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * playbackRate, finish, true);
       };
 
       if (!audioFileName || !this.isAudioFileName(audioFileName) || !this.globalAudio) {
@@ -281,8 +238,7 @@ export class AudioService {
         }
         try { audio.pause(); audio.src = ''; audio.load?.(); } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
         if (options?.fallback !== 'none' && error instanceof Error && error.name === 'TimeoutError' && textToSpeak) {
-          const locale = (preferredVoice || '').startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
-          void this.startSpeech(textToSpeak, locale, 0.86 * playbackRate, finish, true);
+          void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * playbackRate, finish, true);
         } else startSpeechFallback();
       };
 
@@ -371,15 +327,14 @@ export class AudioService {
 
   public setPlaybackRate(rate: number): void {
     const validRate = Number.isFinite(rate) && rate > 0 ? rate : 1;
-    for (const audio of [this.globalAudio, this.activeBlobAudio]) {
-      if (!audio) continue;
-      const pitchAudio = audio as unknown as Record<string, boolean>;
-      audio.preservesPitch = true;
-      pitchAudio.mozPreservesPitch = true;
-      pitchAudio.webkitPreservesPitch = true;
-      audio.defaultPlaybackRate = validRate;
-      audio.playbackRate = validRate;
-    }
+    const audio = this.globalAudio;
+    if (!audio) return;
+    const pitchAudio = audio as unknown as Record<string, boolean>;
+    audio.preservesPitch = true;
+    pitchAudio.mozPreservesPitch = true;
+    pitchAudio.webkitPreservesPitch = true;
+    audio.defaultPlaybackRate = validRate;
+    audio.playbackRate = validRate;
   }
 }
 

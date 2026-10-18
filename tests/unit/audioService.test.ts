@@ -207,6 +207,19 @@ test('picks the exact-language voice over a higher-quality other variant', async
   await playback;
 });
 
+test('unrecorded text uses locale-aware browser speech at the fallback rate', async () => {
+  const service = new AudioService();
+  const playback = service.play(undefined, 0.75, '繁體文本', 'zh-TW');
+
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const utterance = speechState.spoken.filter((item) => item.text === '繁體文本').at(-1);
+  assert.ok(utterance);
+  assert.equal(utterance.lang, 'zh-TW');
+  assert.equal(utterance.rate, 0.86 * 0.75);
+  utterance.onend?.();
+  await playback;
+});
+
 test('English definitions never fall back to a Chinese voice', async () => {
   const service = new AudioService();
   const playback = service.speakText('hello there', 'en-US');
@@ -576,40 +589,6 @@ test('rapid navigation ignores a delayed cached blob from the previous card', as
   } finally { memoryCache.match = oldMatch; }
 });
 
-test('interrupted neural blobs revoke once and ignore a late play rejection', async () => {
-  const { playBlobAudio, releaseBlobAudio } = await import('../../src/services/audio/speechEngine');
-  const savedPlay = FakeAudio.prototype.play;
-  const savedRevoke = URL.revokeObjectURL;
-  let rejectPlay!: (error: Error) => void;
-  let revoked = 0;
-  let fallback = 0;
-  FakeAudio.prototype.play = () => new Promise((_resolve, reject) => { rejectPlay = reject; });
-  URL.revokeObjectURL = () => { revoked++; };
-  try {
-    const audio = playBlobAudio(new Blob(['audio']), 1, () => {}, () => fallback++);
-    releaseBlobAudio(audio);
-    releaseBlobAudio(audio);
-    rejectPlay(new Error('late rejection'));
-    await tick();
-    assert.equal(revoked, 1);
-    assert.equal(fallback, 0);
-  } finally { FakeAudio.prototype.play = savedPlay; URL.revokeObjectURL = savedRevoke; }
-});
-
-test('neural cache is bounded by both entries and bytes', async () => {
-  const { pruneNeuralCache } = await import('../../src/services/audio/speechEngine');
-  cacheEntries.clear();
-  for (let i = 0; i < 105; i++) cacheEntries.set(`https://app.test/tts/${i}`, new Response('mp3', { headers: { 'Content-Length': '3' } }));
-  await pruneNeuralCache(memoryCache);
-  assert.equal(cacheEntries.size, 100);
-  assert.equal(cacheEntries.has('https://app.test/tts/0'), false);
-  cacheEntries.clear();
-  for (let i = 0; i < 4; i++) cacheEntries.set(`https://app.test/large/${i}`, new Response('mp3', { headers: { 'Content-Length': String(10 * 1024 * 1024) } }));
-  await pruneNeuralCache(memoryCache);
-  assert.equal(cacheEntries.size, 2);
-  cacheEntries.clear();
-});
-
 test('buffered recordings replay and seek ranges without waiting for disk or changing source', async () => {
   const service = new AudioService();
   const url = 'https://audio.example.test/buffered-replay.mp3';
@@ -636,76 +615,6 @@ test('buffered recordings replay and seek ranges without waiting for disk or cha
     await range;
     assert.equal(lookups, 0);
   } finally { service.stop(); memoryCache.match = oldMatch; }
-});
-
-test('neural replay reuses memory and its URL after completion and interruption', async () => {
-  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
-  const oldMatch = memoryCache.match;
-  let lookups = 0;
-  memoryCache.match = async () => { lookups++; return new Response(new Blob(['speech'], { type: 'audio/mpeg' })); };
-  const service = new AudioService();
-  try {
-    const text = 'stable-neural-replay';
-    const blob = await fetchNeuralBlob(text, undefined);
-    assert.ok(blob);
-    const first = service.speakNeural(text);
-    await tick();
-    const audio = service.getGlobalAudio() as unknown as FakeAudio;
-    const src = audio.src;
-    audio.onended?.();
-    await first;
-    const second = service.speakNeural(text);
-    await tick();
-    assert.equal(audio.src, src);
-    service.stop();
-    await second;
-    assert.equal(await fetchNeuralBlob(text, undefined), blob);
-    assert.equal(lookups, 1, 'replay and preload hits must not consult persistent storage');
-  } finally { service.stop(); memoryCache.match = oldMatch; }
-});
-
-test('neural memory evicts least-used clips by count and bytes and revokes their URLs', async () => {
-  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
-  const oldMatch = memoryCache.match;
-  const oldRevoke = URL.revokeObjectURL;
-  let lookups = 0;
-  let revoked = 0;
-  let size = 3;
-  memoryCache.match = async () => { lookups++; return new Response(new Blob([new Uint8Array(size)], { type: 'audio/mpeg' })); };
-  URL.revokeObjectURL = () => { revoked++; };
-  try {
-    const hot = await fetchNeuralBlob('neural-memory-0', undefined);
-    for (let i = 1; i < 100; i++) await fetchNeuralBlob(`neural-memory-${i}`, undefined);
-    assert.equal(await fetchNeuralBlob('neural-memory-0', undefined), hot);
-    await fetchNeuralBlob('neural-memory-100', undefined);
-    const before = lookups;
-    assert.equal(await fetchNeuralBlob('neural-memory-0', undefined), hot);
-    await fetchNeuralBlob('neural-memory-1', undefined);
-    assert.equal(lookups, before + 1, 'the cold entry is evicted, the hot entry survives');
-    const beforeBytes = revoked;
-    size = 14 * 1024 * 1024;
-    const large = await fetchNeuralBlob('neural-memory-large-1', undefined);
-    await fetchNeuralBlob('neural-memory-large-2', undefined);
-    assert.notEqual(await fetchNeuralBlob('neural-memory-large-1', undefined), large);
-    assert.ok(revoked > beforeBytes, 'byte eviction releases retained object URLs');
-  } finally { memoryCache.match = oldMatch; URL.revokeObjectURL = oldRevoke; }
-});
-
-test('a stalled neural disk cache yields to the server after 100ms', async (context) => {
-  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
-  const oldMatch = memoryCache.match;
-  const oldFetch = globalThis.fetch;
-  let requested = 0;
-  memoryCache.match = async () => new Promise<Response>(() => {});
-  globalThis.fetch = async () => { requested++; return new Response(new Blob(['speech'], { type: 'audio/mpeg' })); };
-  context.mock.timers.enable({ apis: ['setTimeout'] });
-  try {
-    const pending = fetchNeuralBlob('neural-disk-stall-regression', undefined);
-    await Promise.resolve();
-    context.mock.timers.tick(100);
-    assert.equal((await pending)?.size, 6);
-    assert.equal(requested, 1);
-  } finally { context.mock.timers.reset(); memoryCache.match = oldMatch; globalThis.fetch = oldFetch; }
 });
 
 test('aborted lookahead skips queued recordings and never treats text as a filename', async () => {
@@ -735,23 +644,6 @@ test('recording object URLs evict by bytes and by recent use', async () => {
     assert.equal(urls.has('one'), true);
     assert.deepEqual(revoked, ['blob:two']);
   } finally { URL.revokeObjectURL = savedRevoke; }
-});
-
-test('neural cached-body completion cannot start after cancellation', async () => {
-  const { playNeuralAudio } = await import('../../src/services/audio/speechEngine');
-  const oldMatch = memoryCache.match;
-  let release!: (blob: Blob) => void;
-  memoryCache.match = async () => ({ blob: () => new Promise<Blob>((resolve) => { release = resolve; }) }) as Response;
-  let active = true;
-  const before = FakeAudio.instances.length;
-  try {
-    playNeuralAudio('行', undefined, 1, () => active, () => {}, () => {});
-    await tick();
-    active = false;
-    release(new Blob(['old speech']));
-    await tick();
-    assert.equal(FakeAudio.instances.length, before);
-  } finally { memoryCache.match = oldMatch; }
 });
 
 test('a cancelled character lookup cannot start audio after rapid navigation', async () => {
@@ -947,30 +839,11 @@ test('active AbortError and synchronous range failures settle playback instead o
       if (!synchronous) {
         const spokenBefore = speechState.spoken.length;
         await service.playCard({ front: '同學', audio: 'https://audio.example.test/failure-card.mp3' }, 1);
-        assert.equal(speechState.spoken.length, spokenBefore, 'AbortError on recorded card must settle immediately without TTS fallback');
+        assert.equal(speechState.spoken.length, spokenBefore, 'AbortError on recorded card must settle immediately without browser speech fallback');
       }
       assert.equal((service.getGlobalAudio() as unknown as FakeAudio).listenerCount('loadedmetadata'), 0);
     }
   } finally { FakeAudio.prototype.play = savedPlay; }
-});
-
-test('neural blobs reuse an unlocked element, preserve pitch, and settle a stalled start', async () => {
-  const { playBlobAudio } = await import('../../src/services/audio/speechEngine');
-  const originalSetTimeout = globalThis.setTimeout;
-  let timeout!: () => void;
-  const audio = new FakeAudio();
-  const count = FakeAudio.instances.length;
-  let fallback = 0;
-  globalThis.setTimeout = ((callback: TimerHandler) => { timeout = callback as () => void; return 1; }) as unknown as typeof setTimeout;
-  try {
-    playBlobAudio(new Blob(['audio']), 0.75, () => {}, () => fallback++, undefined, audio as unknown as HTMLAudioElement);
-    assert.equal(FakeAudio.instances.length, count);
-    assert.equal(audio.playbackRate, 0.75);
-    assert.equal(audio.preservesPitch, true);
-    timeout();
-    assert.equal(fallback, 1);
-    assert.equal(audio.paused, true);
-  } finally { globalThis.setTimeout = originalSetTimeout; }
 });
 
 test('late range startup does not overwrite a newly selected playback speed', async () => {
@@ -1003,42 +876,6 @@ test('range completion is distinct from interruption so failed readers cannot lo
   FakeAudio.instances.at(-1)!.onended?.();
   await second;
   assert.equal(completed, 1);
-});
-
-test('a stalled TTS body is aborted and its deduplication slot can be used again', async () => {
-  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
-  const { authService } = await import('../../src/services/authService');
-  const oldToken = authService.getAccessToken;
-  const oldFetch = globalThis.fetch;
-  const oldTimer = globalThis.setTimeout;
-  const timers: Array<() => void> = [];
-  let signal: AbortSignal | null | undefined;
-  authService.getAccessToken = async () => 'test-token';
-  globalThis.setTimeout = ((callback: TimerHandler) => { timers.push(callback as () => void); return timers.length; }) as unknown as typeof setTimeout;
-  globalThis.fetch = async (_url, options) => {
-    if (options?.method !== 'POST') return new Response(null, { status: 404 });
-    signal = options.signal;
-    return {
-      ok: true, status: 200,
-      blob: () => new Promise<Blob>((_resolve, reject) => {
-        signal?.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')), { once: true });
-      }),
-    } as Response;
-  };
-  try {
-    const pending = fetchNeuralBlob('timeout-regression', undefined);
-    await new Promise((resolve) => oldTimer(resolve, 0));
-    assert.ok(signal);
-    timers[0]();
-    assert.equal(await pending, null);
-    assert.equal(signal.aborted, true);
-    globalThis.fetch = async () => new Response(new Blob(['speech'], { type: 'audio/mpeg' }));
-    assert.equal((await fetchNeuralBlob('timeout-regression', undefined))?.size, 6);
-  } finally {
-    authService.getAccessToken = oldToken;
-    globalThis.fetch = oldFetch;
-    globalThis.setTimeout = oldTimer;
-  }
 });
 
 test('mutable memory recordings expire online but remain playable offline; hashed clips remain immutable', async () => {
@@ -1091,17 +928,6 @@ test('a browser voice that never starts releases the playback promise', async (c
     await pending;
     assert.equal(speechState.cancelCount, before + 1);
   } finally { service.stop(); context.mock.timers.reset(); }
-});
-
-test('long readings decline neural synthesis instead of truncating the text', async () => {
-  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
-  const savedFetch = globalThis.fetch;
-  let requests = 0;
-  globalThis.fetch = async () => { requests++; throw new Error('must use full browser speech'); };
-  try {
-    assert.equal(await fetchNeuralBlob('字'.repeat(501), undefined), null);
-    assert.equal(requests, 0);
-  } finally { globalThis.fetch = savedFetch; }
 });
 
 test('stale cached recordings still play when an unreachable network incorrectly reports online', async () => {

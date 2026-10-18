@@ -4,7 +4,6 @@ import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 import { useCardSession } from '../../../hooks/useCardSession';
-import { useNeuralPrewarm } from '../../../hooks/useSessionAudio';
 
 /**
  * Manages the character-writing quiz session.
@@ -103,8 +102,6 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
       audioService.playCard(currentCard, pronunciationRate, { overlap: true });
     }
   }, [autoPlayAudio, currentIndex, currentCard, pronunciationRate]);
-
-  useNeuralPrewarm(playlist, currentIndex);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {

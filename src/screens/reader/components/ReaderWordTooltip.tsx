@@ -13,7 +13,7 @@ import { FavoriteButton } from '../../../features/library';
 export interface ReaderWordTooltipProps {
   preview: ReaderWordPreview;
   anchor: { x: number; top: number; bottom: number };
-  /** Speak the word aloud (neural voice with speech-synthesis fallback). */
+  /** Speak the word aloud using browser speech when no recording exists. */
   onSpeak?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;

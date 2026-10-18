@@ -65,9 +65,8 @@ export function PrivacyPolicyContent() {
               <strong>Google</strong> handles the sign-in step.
             </>,
             <>
-              <strong>Microsoft</strong> text-to-speech: when you play neural audio, the word or sentence
-              (up to 500 characters) is sent from our server to Microsoft to be turned into speech. Your
-              name and email are not sent. The resulting audio is cached and reused for everyone.
+              <strong>Browser speech synthesis</strong> reads text that has no recording using the voices
+              available on your device. Voice availability and processing depend on your browser and operating system.
             </>,
             <>
               <strong>Cloudflare R2</strong> may store audio files and lesson content. They contain no

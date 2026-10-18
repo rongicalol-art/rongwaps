@@ -53,7 +53,6 @@ function isolateDeckState(t: TestContext) {
   clearActivityDeckCache();
   useAppStore.setState({ currentUser: null, selectedLessonParts: {}, deckExclusions: {}, activeReviewSessionCards: null, srsData: {} });
   t.mock.method(audioService, 'preload', async () => {});
-  t.mock.method(audioService, 'preloadNeural', async () => {});
   t.after(() => { clearActivityDeckCache(); useAppStore.setState(original); });
 }
 

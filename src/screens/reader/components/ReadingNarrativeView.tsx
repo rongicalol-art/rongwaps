@@ -371,11 +371,9 @@ export function ReadingNarrativeView({
           preview={getPreview(hoveredWord.text, hoveredWord.pinyin)}
           anchor={hoveredWord.anchor}
           onSpeak={() => {
-            const voice = characterPreference === 'traditional'
-              ? 'zh-TW-HsiaoChenNeural'
-              : 'zh-CN-XiaoxiaoNeural';
+            const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
             void findMatchingCourseVocab(hoveredWord.text).then((match) => {
-              void audioService.play(match?.audio, 1.0, hoveredWord.text, voice);
+              void audioService.play(match?.audio, 1.0, hoveredWord.text, language);
             });
           }}
           onMouseEnter={handleTooltipMouseEnter}

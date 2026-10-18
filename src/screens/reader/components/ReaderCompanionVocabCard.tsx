@@ -44,9 +44,8 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
   const inTextCount = displayedWords.filter((word) => word.inText).length;
 
   const handleSpeak = (text: string, audioFile?: string) => {
-    const voice =
-      characterPreference === 'traditional' ? 'zh-TW-HsiaoChenNeural' : 'zh-CN-XiaoxiaoNeural';
-    void audioService.play(audioFile, 1.0, text, voice);
+    const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
+    void audioService.play(audioFile, 1.0, text, language);
   };
 
   return (

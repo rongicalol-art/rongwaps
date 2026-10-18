@@ -15,7 +15,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Data model or Supabase RPC | `DATABASE_SCHEMA.md`, `src/services/`, `src/types/database.ts` |
 | Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |
-| Server, TTS, grading | `API_SPEC.md`, `server/` |
+| Server and grading | `API_SPEC.md`, `server/` |
 | Audio & karaoke alignment | `reference/OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
 | Architectural boundary changes | `ARCHITECTURE.md`, `../AGENTS.md`, `DECISIONS.md` |
@@ -30,7 +30,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 - `ARCHITECTURE.md` — source layout, module boundaries, ESLint import restrictions, component ownership.
 - `DATABASE_SCHEMA.md` — Supabase schema, tables, RPCs, RLS, pack-first fetch paths.
 - `DESIGN_TOKENS.md` — semantic design tokens (radius, tactile depth, shadows, focus rings, colors).
-- `API_SPEC.md` — Express API: CDN media streaming, TTS synthesis/cache endpoints, semantic grading.
+- `API_SPEC.md` — Express API: protected lesson content, CDN media, retired grading endpoint.
 - `GRAMMAR_LESSON_TEMPLATE.md` — interactive grammar lesson spec and data contracts.
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.
 - `../content/audio/` — official audio index and manifest (book 1), read by `scripts/audio/` and `tests/content/officialAudio.test.ts`.

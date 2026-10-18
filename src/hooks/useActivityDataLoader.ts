@@ -50,14 +50,6 @@ export function clearActivityDeckCache() {
 function preloadDeckAudio(cards: Flashcard[]): void {
   if (cards.length === 0) return;
   audioService.preload(cards.slice(0, 1).map((c) => c.audio));
-  const initialWarm = cards
-    .slice(0, 1)
-    .filter((card) => card.source !== 'dictionary' && !audioService.isAudioFileName(card.audio))
-    .map((c) => c.front.trim())
-    .filter(Boolean);
-  if (initialWarm.length > 0) {
-    void audioService.preloadNeural(initialWarm);
-  }
 }
 
 export function useActivityDataLoader(

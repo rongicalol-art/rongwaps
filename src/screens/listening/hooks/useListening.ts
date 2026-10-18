@@ -6,7 +6,6 @@ import { shuffleItems } from '../../../utils/srs/sessionOrder';
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
-import { useNeuralPrewarm } from '../../../hooks/useSessionAudio';
 
 export function useListening(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
@@ -111,8 +110,6 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     const t = window.setTimeout(() => void playAudio(pronunciationRate), 400);
     return () => clearTimeout(t);
   }, [autoPlayAudio, currentIndex, playAudio, playlist.length, pronunciationRate, screenState]);
-
-  useNeuralPrewarm(playlist, currentIndex);
 
   const correctTarget = currentCard ? getCardChoiceTarget(currentCard, listeningChoiceType) : null;
   const isCorrect = selectedOption === correctTarget;

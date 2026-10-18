@@ -19,7 +19,7 @@ export function WordExamplesSection({
 }) {
   const characterPreference = useAppStore((state) => state.characterPreference);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
-  const voice = characterPreference === 'traditional' ? 'zh-TW-HsiaoChenNeural' : 'zh-CN-XiaoxiaoNeural';
+  const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
 
   if (isLoading) {
     return (
@@ -47,7 +47,7 @@ export function WordExamplesSection({
             <button
               type="button"
               aria-label={`Play the example sentence ${ex.chinese}`}
-              onClick={() => audioService.speakNeural(ex.chinese, voice).catch(() => {})}
+              onClick={() => audioService.speakText(ex.chinese, language, 0.86).catch(() => {})}
               className={PLAY_BUTTON}
             >
               <AppIcon name="audio" size={18} />

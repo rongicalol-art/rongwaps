@@ -69,14 +69,6 @@ export function TermsContent() {
         </LegalParagraph>
       </LegalSection>
 
-      <LegalSection title="Fair-use limits">
-        <LegalParagraph>
-          Neural audio uses server resources, so it has per-minute and daily limits for each account.
-          When you reach a limit, the app falls back to your browser&apos;s voice when available until the
-          limit resets. Limits may change during the beta.
-        </LegalParagraph>
-      </LegalSection>
-
       <LegalSection title="Ending your access">
         <LegalParagraph>
           We may suspend or end accounts that break these terms or put the service at risk, and we may end the

@@ -15,10 +15,10 @@ test('PackMissError exposes packName and formatted message', () => {
 });
 
 test('NetworkError exposes status and message', () => {
-  const err = new NetworkError('/api/tts returned 503', 503);
+  const err = new NetworkError('/api/content returned 503', 503);
   assert.equal(err.name, 'NetworkError');
   assert.equal(err.status, 503);
-  assert.equal(err.message, '/api/tts returned 503');
+  assert.equal(err.message, '/api/content returned 503');
 });
 
 test('AuthRequiredError formats action or default message', () => {
