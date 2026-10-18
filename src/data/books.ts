@@ -169,6 +169,63 @@ export const SAMPLE_LESSONS = BOOK_LESSONS.map((lesson) => ({
   status: lesson.id > BETA_LAST_LESSON ? 'locked' : 'available',
 }));
 
+export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
+  2: [
+    'Meeting New Friends',
+    'I Have to Do Housework',
+    'I Want to Rent a House',
+    'It’s Fun to Go to the Night Market',
+    'Welcome to My House',
+    'Let’s Go to KTV to Sing!',
+    'Traveling to Hualien by Train',
+    'Give Me the Stickers, Please. I Want to Exchange Them for Snoopy!',
+    'Are You Afraid of Taking Exams?',
+    'Let’s Go Work Out after Class!',
+    'Which Club Would You Like to Join?',
+    'A Small Clerk? A Big Boss?',
+    'I Want to Buy a Laptop',
+    'Fish on the Dish, Abundance Year after Year',
+    'The Thing That Confucius Did Not Know',
+    'Friends from All Over the World',
+  ],
+  3: [
+    'My Dream',
+    'Convenience Stores Are So Convenient!',
+    'It Won’t Hurt to Shop Around',
+    'One Month Old',
+    'Earthquakes and Typhoons',
+    'Balanced Work and Leisure',
+    'Backpacker’s Travel',
+    'Clothes and Taste',
+    'Who Can Say that There Is No Future unless You are a College Graduate?',
+    'Health Examinations Are Easy',
+    'Be Careful when Making Online Friends',
+    'Do You Have Interview Experience?',
+    'Cloud Technology Is Really Convenient',
+    'The Story of the Double Seventh Festival',
+    'Visit the Historic Sites in Tamsui',
+    'Cherishing Food Starts with You and Me',
+  ],
+  4: [
+    'Haven’t Seen You in Ages!',
+    'Running Errands: To the Bank',
+    'Online Shopping',
+    'Sip a Cup of Tea',
+    'Reduce, Reuse, Recycle',
+    'Good Time at the Concert',
+    'Family Trip Abroad',
+    'Work and Slow Life',
+    'Do Less Parenting',
+    'Fortune in Misfortune',
+    'Wedding Banquet',
+    'All Walks of Life',
+    'To the Robot Expo',
+    'Celebrating Mid-Autumn Festival',
+    'At the Taipei National Palace Museum',
+    'Watching the Olympics',
+  ],
+};
+
 
 /** True for any lesson in a locked book or a locked lesson of Book 1 (Introduction, id 0, is open). */
 export function isLessonLocked(bookId: number, lessonId: number): boolean {

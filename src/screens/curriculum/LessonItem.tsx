@@ -149,7 +149,8 @@ function LessonItemBase({
             </span>
           )}
           <span className={cn(
-            'block line-clamp-2 text-lg font-black leading-tight',
+            'block text-lg font-black leading-tight',
+            isLocked ? 'line-clamp-3' : 'line-clamp-2',
             isSelected ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',
           )}>
             {englishTitle}

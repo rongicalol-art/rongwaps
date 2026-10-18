@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { SAMPLE_BOOKS, SAMPLE_LESSONS } from '../../../data/books';
+import { LOCKED_BOOK_LESSON_TITLES, SAMPLE_BOOKS, SAMPLE_LESSONS } from '../../../data/books';
 import type { Flashcard } from '../../../data/flashcards';
 import { getInteractiveGrammarManifestForLesson } from '../../../data/interactiveGrammarManifest';
 import { fetchVocabulary } from '../../../services/vocabularyService';
@@ -72,10 +72,12 @@ export function useCourseDashboard({
 
     const configuredLessons = activeBookId === 1
       ? [{ id: 0, label: 'Introduction', title: 'Getting Started', status: 'available' }, ...SAMPLE_LESSONS]
-      : SAMPLE_LESSONS.map((lesson) => ({
+      : SAMPLE_LESSONS.map((lesson, index) => ({
         id: lesson.id,
         label: lesson.label,
-        title: lesson.label,
+        title: bookIsLocked
+          ? LOCKED_BOOK_LESSON_TITLES[activeBookId]?.[index] ?? lesson.label
+          : lesson.label,
         status: bookIsLocked ? 'locked' : lesson.status,
       }));
     const configuredLessonsById = new Map(configuredLessons.map((lesson) => [lesson.id, lesson]));
