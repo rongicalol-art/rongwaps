@@ -67,7 +67,7 @@ export function FolderModal({
         onKeyDown={(e) => {
           if (e.key === 'Enter' && !isCreatingFolder && newFolderName.trim()) handleCreateFolder();
         }}
-        className="mb-4 w-full rounded-control border-b-[length:var(--depth-sm)] border-ui-border bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-ring transition-colors"
+        className="mb-4 w-full rounded-control border-2 border-b-[length:var(--depth-sm)] border-ui-border bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-visible:ring-inset focus-ring transition-colors"
       />
 
       {/* Color Palette Selector */}
