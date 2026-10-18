@@ -10,6 +10,26 @@ import { AppIcon } from '../../../../lib/widgets';
 const glyphSupportCache = new Map<string, boolean>();
 
 let sharedProbeContext: CanvasRenderingContext2D | null | undefined;
+let fontProbeElement: HTMLSpanElement | null = null;
+let fontProbePreference = '';
+let chineseFontStack = '';
+
+function getChineseFontStack(): string {
+  if (typeof document === 'undefined') return '';
+  const root = document.documentElement;
+  if (!document.body) return '';
+  const preference = `${root.dataset.characterFont ?? ''}:${root.dataset.characterPreference ?? ''}`;
+  if (preference !== fontProbePreference || !fontProbeElement) {
+    fontProbeElement ??= document.createElement('span');
+    fontProbeElement.className = 'font-chinese';
+    fontProbeElement.setAttribute('aria-hidden', 'true');
+    Object.assign(fontProbeElement.style, { position: 'fixed', left: '-10000px', top: '-10000px', visibility: 'hidden' });
+    if (!fontProbeElement.isConnected) document.body.appendChild(fontProbeElement);
+    chineseFontStack = getComputedStyle(fontProbeElement).fontFamily;
+    fontProbePreference = preference;
+  }
+  return chineseFontStack;
+}
 
 function getSharedProbeContext(): CanvasRenderingContext2D | null {
   if (sharedProbeContext === undefined) {
@@ -42,13 +62,13 @@ function supportCacheKey(chineseFonts: string, character: string): string {
 /** Cache-only lookup; undefined means "not probed yet this page load". */
 function peekGlyphSupport(character: string): boolean | undefined {
   if (typeof document === 'undefined') return undefined;
-  const chineseFonts = getComputedStyle(document.documentElement).getPropertyValue('--font-chinese').trim();
+  const chineseFonts = getChineseFontStack();
   return glyphSupportCache.get(supportCacheKey(chineseFonts, character));
 }
 
 function resolveGlyphSupport(character: string): boolean {
   if (typeof document === 'undefined') return true;
-  const chineseFonts = getComputedStyle(document.documentElement).getPropertyValue('--font-chinese').trim();
+  const chineseFonts = getChineseFontStack();
   const cacheKey = supportCacheKey(chineseFonts, character);
   const cached = glyphSupportCache.get(cacheKey);
   if (cached !== undefined) return cached;
