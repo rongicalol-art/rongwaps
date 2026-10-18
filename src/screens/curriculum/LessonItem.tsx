@@ -121,7 +121,7 @@ function LessonItemBase({
         onPointerLeave={cancelPress}
         onContextMenu={(event) => onLongPress && event.preventDefault()}
         aria-pressed={isSelecting ? isSelected : undefined}
-        aria-label={`${lesson.label}: ${englishTitle}${isLocked ? ' (locked)' : ''}`}
+        aria-label={`${englishTitle === lesson.label ? englishTitle : `${lesson.label}: ${englishTitle}`}${isLocked ? ' (locked)' : ''}`}
         style={{ WebkitTouchCallout: 'none' }}
         className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent"
       >
@@ -143,9 +143,11 @@ function LessonItemBase({
         </span>
 
         <span className="min-w-0 flex-1">
-          <span className="block whitespace-nowrap text-xs font-extrabold uppercase tracking-widest text-ui-muted">
-            {lesson.label}
-          </span>
+          {!(isLocked && englishTitle === lesson.label) && (
+            <span className="block whitespace-nowrap text-xs font-extrabold uppercase tracking-widest text-ui-muted">
+              {lesson.label}
+            </span>
+          )}
           <span className={cn(
             'block line-clamp-2 text-lg font-black leading-tight',
             isSelected ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',

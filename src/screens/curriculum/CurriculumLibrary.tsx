@@ -197,10 +197,6 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                   />
                 )}
 
-                {activeBook.status === 'locked' && (
-                  <p className="py-10 text-lg font-black text-ui-muted">Coming soon</p>
-                )}
-
                 <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-6">
                   <div className="flex min-w-0 flex-col lg:flex-[1.05]">
                     {renderLessonList(lessonColumns[0])}

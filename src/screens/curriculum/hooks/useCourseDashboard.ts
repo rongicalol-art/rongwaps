@@ -67,20 +67,28 @@ export function useCourseDashboard({
 
 
   const progress = useMemo<CourseDashboardProgress>(() => {
-    if (!cards.length) return EMPTY_PROGRESS;
+    const bookIsLocked = SAMPLE_BOOKS.find((book) => book.id === activeBookId)?.status === 'locked';
+    if (!cards.length && !bookIsLocked) return EMPTY_PROGRESS;
 
     const configuredLessons = activeBookId === 1
       ? [{ id: 0, label: 'Introduction', title: 'Getting Started', status: 'available' }, ...SAMPLE_LESSONS]
-      : SAMPLE_LESSONS;
+      : SAMPLE_LESSONS.map((lesson) => ({
+        id: lesson.id,
+        label: lesson.label,
+        title: lesson.label,
+        status: bookIsLocked ? 'locked' : lesson.status,
+      }));
     const configuredLessonsById = new Map(configuredLessons.map((lesson) => [lesson.id, lesson]));
-    const lessonDefinitions = Array.from(new Set(cards.map((card) => card.lessonId)))
-      .sort((a, b) => a - b)
-      .map((lessonId) => configuredLessonsById.get(lessonId) ?? {
-        id: lessonId,
-        label: `Lesson ${lessonId}`,
-        title: `Lesson ${lessonId}`,
-        status: 'available',
-      });
+    const lessonDefinitions = bookIsLocked
+      ? configuredLessons
+      : Array.from(new Set(cards.map((card) => card.lessonId)))
+        .sort((a, b) => a - b)
+        .map((lessonId) => configuredLessonsById.get(lessonId) ?? {
+          id: lessonId,
+          label: `Lesson ${lessonId}`,
+          title: `Lesson ${lessonId}`,
+          status: 'available',
+        });
     const cardsByLesson = new Map<number, Flashcard[]>();
 
     cards.forEach((card) => {
@@ -111,7 +119,7 @@ export function useCourseDashboard({
           isCompleted,
         };
       })
-      .filter(({ lessonCards }) => lessonCards.length > 0);
+      .filter(({ lesson, lessonCards }) => lesson.status === 'locked' || lessonCards.length > 0);
 
     const isOpen = ({ lesson }: { lesson: { status: string } }) => lesson.status !== 'locked';
     const openIds = new Set(baseLessons.filter(isOpen).map(({ lesson }) => lesson.id));
