@@ -119,7 +119,6 @@ export function GrammarLessonScreen({
       : `Book pages ${printedPages[0]}–${printedPages.at(-1)}`
     : null;
   const characterPreference = useAppStore((state) => state.characterPreference);
-  const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const characterFont = useAppStore((state) => state.characterFont);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
@@ -217,9 +216,7 @@ export function GrammarLessonScreen({
           >
             <GrammarLessonHeader
               title={`P${part.partId} · Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
-              characterPreference={characterPreference}
               characterFont={characterFont}
-              onCharacterPreferenceChange={setCharacterPreference}
               onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
               showPinyin={showPinyin}
               showTranslation={showTranslation}

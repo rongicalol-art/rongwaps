@@ -2,9 +2,7 @@ import { AppIcon, SegmentedControl, SwitchRow } from '../../../lib/widgets';
 import type { CharacterFont } from '../../../store/useAppStore';
 
 interface GrammarReadingAidsProps {
-  characterPreference: 'traditional' | 'simplified';
   characterFont: CharacterFont;
-  onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
   onCharacterFontChange: (font: CharacterFont) => void;
   showPinyin: boolean;
   showTranslation: boolean;
@@ -15,9 +13,7 @@ interface GrammarReadingAidsProps {
 }
 
 export function GrammarReadingAids({
-  characterPreference,
   characterFont,
-  onCharacterPreferenceChange,
   onCharacterFontChange,
   showPinyin,
   showTranslation,
@@ -31,15 +27,6 @@ export function GrammarReadingAids({
       <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} tinted />
       <SwitchRow label="Translation" checked={showTranslation} onToggle={onToggleTranslation} tinted />
       <div className="my-1 flex flex-col gap-2">
-        <SegmentedControl<'traditional' | 'simplified'>
-          value={characterPreference}
-          onChange={onCharacterPreferenceChange}
-          ariaLabel="Character script preference"
-          options={[
-            { value: 'traditional', label: <span>Traditional</span> },
-            { value: 'simplified', label: <span>Simplified</span> },
-          ]}
-        />
         <SegmentedControl<CharacterFont>
           value={characterFont}
           onChange={onCharacterFontChange}

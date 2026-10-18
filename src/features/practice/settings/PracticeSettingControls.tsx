@@ -110,3 +110,22 @@ export function SettingsRadioRow({ checked, label, detail, className, ...props }
     </button>
   );
 }
+
+/** Settings page group: heading, hairline, then its rows. */
+export function SettingsPageSection({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={cn('flex flex-col', className)}>
+      <h2 className="text-lg font-black tracking-tight text-ui-ink-strong sm:text-xl">{title}</h2>
+      <div className="mb-3 mt-2 h-px w-full bg-ui-divider" />
+      <div className="flex flex-col gap-1">{children}</div>
+    </section>
+  );
+}

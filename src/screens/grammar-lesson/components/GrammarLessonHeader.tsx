@@ -6,9 +6,7 @@ import type { CharacterFont } from '../../../store/useAppStore';
 
 interface GrammarLessonHeaderProps {
   title?: string;
-  characterPreference: 'traditional' | 'simplified';
   characterFont: CharacterFont;
-  onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
   onCharacterFontChange: (font: CharacterFont) => void;
   showPinyin: boolean;
   showTranslation: boolean;
@@ -30,9 +28,7 @@ interface GrammarLessonHeaderProps {
 
 export function GrammarLessonHeader({
   title,
-  characterPreference,
   characterFont,
-  onCharacterPreferenceChange,
   onCharacterFontChange,
   showPinyin,
   showTranslation,
@@ -113,9 +109,7 @@ export function GrammarLessonHeader({
                     className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 popover-surface p-2.5 text-left"
                   >
                     <GrammarReadingAids
-                      characterPreference={characterPreference}
                       characterFont={characterFont}
-                      onCharacterPreferenceChange={onCharacterPreferenceChange}
                       onCharacterFontChange={onCharacterFontChange}
                       bookPageLabel={bookPageLabel}
                       onOpenBookPage={onOpenBookPage ? () => { setIsAidsOpen(false); onOpenBookPage(); } : undefined}

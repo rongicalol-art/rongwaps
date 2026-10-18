@@ -250,6 +250,7 @@ export interface DrawerProps {
   tone?: DrawerTone;
   size?: DrawerSize;
   heightClassName?: string;
+  mdPlacement?: DrawerContentProps['mdPlacement'];
   closeLabel?: string;
   showCloseButton?: boolean;
   dragToDismiss?: boolean;
@@ -277,6 +278,7 @@ export function Drawer({
   tone = 'surface',
   size = 'md',
   heightClassName = 'max-h-[85vh]',
+  mdPlacement,
   closeLabel = 'Close drawer',
   showCloseButton = true,
   dragToDismiss = true,
@@ -298,6 +300,7 @@ export function Drawer({
       <DrawerContent
         size={size}
         heightClassName={heightClassName}
+        mdPlacement={mdPlacement}
         dragToDismiss={dragToDismiss}
         ariaLabel={title ? undefined : (ariaLabel ?? 'Drawer')}
         className={className}

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { ActionButton, AlertBanner, AppIcon, ConfirmationDialog } from '../../lib/widgets';
+import { SettingsPageSection } from '../../features/practice';
 import { useAccountActions } from '../hooks/useAccountActions';
 import { LEGAL_ROUTES } from '../routes';
 
@@ -12,7 +13,7 @@ const DELETE_PHRASE = 'DELETE';
  * Settings → Account: data export, account deletion (signed-in only) and the
  * legal links (always).
  */
-export function SettingsAccountSection({ onNavigate }: { onNavigate: () => void }) {
+export function SettingsAccountSection({ onNavigate, onResetProgress }: { onNavigate: () => void; onResetProgress: () => void }) {
   const { currentUser } = useAuth();
   const { exportData, deleteAccount } = useAccountActions();
   const [isExporting, setIsExporting] = useState(false);
@@ -58,31 +59,27 @@ export function SettingsAccountSection({ onNavigate }: { onNavigate: () => void 
   const linkClass = 'rounded-xs text-sm font-extrabold text-brand-primary hover:underline focus-ring-inline';
 
   return (
-    <div className="flex flex-col gap-3">
-      <p className="text-xs font-extrabold uppercase tracking-wider text-ui-muted">Account</p>
-
-      {currentUser && (
-        <>
+    <SettingsPageSection title="Account">
+      <div className="flex flex-col gap-3 px-2">
+        {currentUser && (
           <ActionButton variant="secondary" fullWidth onClick={handleExport} loading={isExporting} loadingLabel="Preparing download">
             <AppIcon name="download" size={18} />
             Download my data
           </ActionButton>
-          {exportError && <AlertBanner variant="danger" message={exportError} onDismiss={() => setExportError(null)} />}
-          <ActionButton
-            variant="secondary"
-            fullWidth
-            onClick={() => setIsDeleteOpen(true)}
-            className="border-feedback-danger/25 py-4 text-feedback-danger hover:bg-feedback-danger/10"
-          >
-            <AppIcon name="trash" size={18} />
+        )}
+        {exportError && <AlertBanner variant="danger" message={exportError} onDismiss={() => setExportError(null)} />}
+        <ActionButton variant="quiet" fullWidth onClick={onResetProgress} className="text-feedback-danger">
+          Reset learning progress
+        </ActionButton>
+        {currentUser && (
+          <ActionButton variant="quiet" fullWidth onClick={() => setIsDeleteOpen(true)} className="text-feedback-danger">
             Delete account
           </ActionButton>
-        </>
-      )}
-
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-        <Link to={LEGAL_ROUTES.privacy} onClick={onNavigate} className={linkClass}>Privacy Policy</Link>
-        <Link to={LEGAL_ROUTES.terms} onClick={onNavigate} className={linkClass}>Terms of Service</Link>
+        )}
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <Link to={LEGAL_ROUTES.privacy} onClick={onNavigate} className={linkClass}>Privacy Policy</Link>
+          <Link to={LEGAL_ROUTES.terms} onClick={onNavigate} className={linkClass}>Terms of Service</Link>
+        </div>
       </div>
 
       {isDeleteOpen && (
@@ -97,7 +94,7 @@ export function SettingsAccountSection({ onNavigate }: { onNavigate: () => void 
           isConfirming={isDeleting}
           errorMessage={deleteError}
         >
-          <label className="mt-4 block text-left text-xs font-black uppercase tracking-wider text-ui-muted-strong">
+          <label className="mt-4 block text-left text-xs font-black text-ui-muted-strong">
             Type {DELETE_PHRASE} to confirm
             <input
               type="text"
@@ -112,6 +109,6 @@ export function SettingsAccountSection({ onNavigate }: { onNavigate: () => void 
           </label>
         </ConfirmationDialog>
       )}
-    </div>
+    </SettingsPageSection>
   );
 }

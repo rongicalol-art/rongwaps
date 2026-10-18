@@ -180,8 +180,6 @@ export function useAppShell() {
       isOpen: shellState.isSettingsOpen,
       onOpen: actions.handleSettingsClick,
       onClose: () => shellState.setIsSettingsOpen(false),
-      characterPreference: shellState.characterPreference,
-      setCharacterPreference: shellState.setCharacterPreference,
       onResetProgress: handleResetProgress,
     },
     sync: cloudSync,

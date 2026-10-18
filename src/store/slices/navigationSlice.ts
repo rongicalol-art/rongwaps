@@ -13,6 +13,9 @@ export interface NavigationState {
   setSelectedLessonParts: (
     parts: LessonPartSelectionMap | ((prev: LessonPartSelectionMap) => LessonPartSelectionMap)
   ) => void;
+  /** Last lesson the learner opened, per book id (drives the Books highlight). */
+  lastOpenedLessons: Record<number, number>;
+  setLastOpenedLesson: (bookId: number, lessonId: number) => void;
 }
 
 type SetState = (partial: Partial<NavigationState> | ((state: NavigationState) => Partial<NavigationState>)) => void;
@@ -35,6 +38,10 @@ export function createNavigationSlice(set: SetState): NavigationState {
         ? parts(state.selectedLessonParts)
         : parts,
     })),
+    lastOpenedLessons: {},
+    setLastOpenedLesson: (bookId, lessonId) => set((state) => ({
+      lastOpenedLessons: { ...state.lastOpenedLessons, [bookId]: lessonId },
+    })),
   };
 }
 
@@ -45,6 +52,7 @@ export const NAVIGATION_PERSISTED_KEYS = [
   'activeQuizMode',
   'selectedBooks',
   'selectedLessonParts',
+  'lastOpenedLessons',
 ] as const;
 
 /** Keys this domain clears when the signed-in account changes. */
@@ -52,4 +60,5 @@ export const NAVIGATION_ACCOUNT_SWITCH_DEFAULTS = {
   activeActivity: null,
   selectedBooks: [],
   selectedLessonParts: {},
+  lastOpenedLessons: {},
 };

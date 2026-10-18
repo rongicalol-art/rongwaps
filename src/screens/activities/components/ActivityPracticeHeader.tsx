@@ -35,8 +35,6 @@ export function ActivityPracticeHeader({
 }: ActivityPracticeHeaderProps) {
   const practiceHeader = useAppStore((state) => state.practiceHeader);
   const practiceHeaderActions = useAppStore((state) => state.practiceHeaderActions);
-  const characterPreference = useAppStore((state) => state.characterPreference);
-  const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const practicePreferences = useAppStore(useShallow(selectPracticePreferences));
   const updatePracticePreferences = useAppStore((state) => state.updatePreferences);
 
@@ -77,8 +75,6 @@ export function ActivityPracticeHeader({
         settings={{
           preferences: practicePreferences,
           onPreferencesChange: updatePracticePreferences,
-          characterPreference,
-          onCharacterPreferenceChange: setCharacterPreference,
         }}
       />
     </div>

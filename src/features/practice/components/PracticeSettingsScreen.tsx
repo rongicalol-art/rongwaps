@@ -1,8 +1,7 @@
 import React from 'react';
 import type { PracticePreferences } from '../../../store/useAppStore';
-import { cn } from '../../../utils/cn';
 import { DetailShell, ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
-import { SettingsToggleRow } from '../settings/PracticeSettingControls';
+import { SettingsPageSection, SettingsToggleRow } from '../settings/PracticeSettingControls';
 import { PRACTICE_DOCK_STYLE_OPTIONS } from '../../../store/slices/practicePreferencesSlice';
 import { CharacterAppearanceSection } from '../settings/CharacterAppearanceSection';
 
@@ -11,8 +10,6 @@ export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDi
   onClose: () => void;
   preferences: PracticePreferences;
   onPreferencesChange: (preferences: Partial<PracticePreferences>) => void;
-  characterPreference: 'traditional' | 'simplified';
-  onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
 }
 
 const SPEED_PRESETS = [0.75, 1.0, 1.5, 2.0] as const;
@@ -37,7 +34,7 @@ type BooleanPreferenceKey =
   | 'autoAdvanceWrong'
   | 'dockAutoHide';
 
-const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
+export const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
   { value: 0.75, label: 'Slow (0.75x)' },
   { value: 1.0, label: 'Normal (1.0x)' },
   { value: 1.5, label: 'Fast (1.5x)' },
@@ -58,31 +55,11 @@ const NEXT_CARD_DELAY_OPTIONS = [
   { value: '300', label: 'Fastest' },
 ];
 
-function SettingsPageSection({
-  title,
-  children,
-  className,
-}: {
-  title: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <section className={cn('flex flex-col', className)}>
-      <h2 className="text-lg font-black tracking-tight text-ui-ink-strong sm:text-xl">{title}</h2>
-      <div className="mb-3 mt-2 h-px w-full bg-ui-divider" />
-      <div className="flex flex-col gap-1">{children}</div>
-    </section>
-  );
-}
-
 export function PracticeSettingsScreen({
   isOpen,
   onClose,
   preferences,
   onPreferencesChange,
-  characterPreference,
-  onCharacterPreferenceChange,
   ...props
 }: PracticeSettingsScreenProps) {
   if (!isOpen) return null;
@@ -113,8 +90,6 @@ export function PracticeSettingsScreen({
           <div className="flex flex-col gap-8 sm:gap-9">
             <SettingsPageSection title="Characters">
               <CharacterAppearanceSection
-                characterPreference={characterPreference}
-                onCharacterPreferenceChange={onCharacterPreferenceChange}
                 characterFont={preferences.characterFont}
                 onCharacterFontChange={(font) => onPreferencesChange({ characterFont: font })}
               />

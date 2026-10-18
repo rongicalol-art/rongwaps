@@ -269,6 +269,7 @@ const PERSISTED_ARRAY_KEYS = [
 /** Persisted slice fields whose runtime shape is a plain record. */
 const PERSISTED_RECORD_KEYS = [
   'selectedLessonParts',
+  'lastOpenedLessons',
   'srsData',
   'learningBatches',
   'sessionProgressIndex',
@@ -329,7 +330,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
     }),
     {
       name: 'rongwaps-storage',
-      version: 2,
+      version: 3,
       migrate: (persistedState, version) => {
         const state = (persistedState ?? {}) as Record<string, unknown>;
         if (version < 1) {
@@ -338,6 +339,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
         if (version < 2) {
           migrateLegacyStores(state);
         }
+        if (version < 3) state.characterPreference = 'traditional';
         return state as unknown as AppState;
       },
       merge: (persistedState, currentState) => ({

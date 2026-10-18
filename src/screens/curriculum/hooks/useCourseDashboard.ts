@@ -37,6 +37,7 @@ export function useCourseDashboard({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const completedGrammarPartIds = useAppStore((state) => state.completedPartIds);
+  const lastOpenedLessons = useAppStore((state) => state.lastOpenedLessons);
 
   useEffect(() => {
     let isMounted = true;
@@ -135,7 +136,9 @@ export function useCourseDashboard({
     const nextIncompleteLesson = baseLessons.find(
       (row) => isOpen(row) && !row.isCompleted,
     );
-    const currentLessonId = selectedLessonId
+    const lastOpenedLessonId = lastOpenedLessons[activeBookId];
+    const currentLessonId = (lastOpenedLessonId !== undefined && openIds.has(lastOpenedLessonId) ? lastOpenedLessonId : undefined)
+      ?? selectedLessonId
       ?? nextIncompleteLesson?.lesson.id
       ?? baseLessons[0]?.lesson.id
       ?? null;
@@ -220,6 +223,7 @@ export function useCourseDashboard({
     cards,
     hasFullCourseAccess,
     completedGrammarPartIds,
+    lastOpenedLessons,
     learnedCards,
     selectedLessonParts,
     selectedLessons,

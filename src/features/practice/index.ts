@@ -1,5 +1,7 @@
 export { PracticeHeader } from './components/PracticeHeader';
-export { PracticeSettingsScreen } from './components/PracticeSettingsScreen';
+export { PracticeSettingsScreen, SPEED_OPTIONS, normalizePronunciationRate } from './components/PracticeSettingsScreen';
+export { SettingsPageSection, SettingsToggleRow } from './settings/PracticeSettingControls';
+export { CharacterAppearanceSection } from './settings/CharacterAppearanceSection';
 export { EmptyReviewState } from './components/EmptyReviewState';
 export { DOCK_SWAP, PracticeDockSlotOutlet, PracticeDockSlotProvider, usePracticeDockSlot } from './components/PracticeDockSlot';
 export { FeedbackBottomBar } from './components/FeedbackBottomBar';

@@ -36,6 +36,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'isReviewMode',
   'selectedBooks',
   'selectedLessonParts',
+  'lastOpenedLessons',
   'customFolders',
   'foldersSyncedUserId',
   'libraryActiveFolder',
@@ -101,6 +102,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'deckExclusions',
   'wordConfusions',
   'selectedLessonParts',
+  'lastOpenedLessons',
   'selectedBooks',
   'activeActivity',
   'lastActivity',
@@ -202,4 +204,15 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.equal(state.lastActiveUserId, 'user-a');
   assert.equal(state.preset, 'comfortable');
   assert.equal(state.pace, 28);
+});
+
+test('persist version 3 migrates all older script choices to traditional without losing preferences', async () => {
+  const options = useAppStore.persist.getOptions();
+  assert.equal(options.version, 3);
+  for (const version of [0, 1, 2]) {
+    const migrated = await options.migrate?.({ characterPreference: 'simplified', characterFont: 'kai', showPinyin: false }, version);
+    assert.equal(migrated?.characterPreference, 'traditional');
+    assert.equal(migrated?.characterFont, 'kai');
+    assert.equal(migrated?.showPinyin, false);
+  }
 });

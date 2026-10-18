@@ -98,8 +98,6 @@ function AppShell() {
         onOpenGrammarPart={grammar.onOpenPart}
         isSettingsOpen={settings.isOpen}
         onCloseSettings={settings.onClose}
-        characterPreference={settings.characterPreference}
-        onCharacterPreferenceChange={settings.setCharacterPreference}
         onResetProgress={settings.onResetProgress}
       />
 

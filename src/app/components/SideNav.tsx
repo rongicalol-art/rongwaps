@@ -186,7 +186,7 @@ export const SideNav = memo(function SideNav({
         >
           <PlayfulNavIcon name="settings" className="h-7 w-7" />
           {!isCollapsed && (
-            <span className="text-sm font-black text-ui-ink-strong">Settings</span>
+            <span className="text-sm font-black uppercase tracking-wide text-ui-ink-strong">Settings</span>
           )}
           {isCollapsed && (
             <span

@@ -31,7 +31,6 @@ test('present cloud metadata patches local state on a normal pull', () => {
   assert.deepEqual(patch, {
     favorites: ['a'],
     activeBookId: 3,
-    characterPreference: 'simplified',
     selectedBooks: [3],
   });
 });
@@ -125,4 +124,10 @@ test('profile settings validate old rows, sync changes and clear on account swit
   const invalid = resolveCloudMetadataPatch({ avatarColor: 'invalid', displayName: 'x'.repeat(50) }, LOCAL, { isAccountSwitch: false });
   assert.equal(invalid.avatarColor, 'blue');
   assert.equal(invalid.displayName?.length, 30);
+});
+
+test('legacy cloud script preferences never restore simplified characters', () => {
+  assert.deepEqual(resolveCloudMetadataPatch({ characterPreference: 'simplified' }, LOCAL, { isAccountSwitch: false }), {});
+  const patch = resolveCloudMetadataPatch({ characterPreference: 'simplified' }, LOCAL, { isAccountSwitch: true });
+  assert.equal(patch.characterPreference, 'traditional');
 });

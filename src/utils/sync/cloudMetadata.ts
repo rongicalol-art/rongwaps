@@ -43,10 +43,6 @@ export function numberArray(value: unknown): number[] | null {
     : null;
 }
 
-function isCharacterPreference(value: unknown): value is CharacterPreference {
-  return value === 'traditional' || value === 'simplified';
-}
-
 /**
  * The next book id: cloud wins when present, account switches reset to book
  * 1, otherwise local state stands.
@@ -82,9 +78,7 @@ export function resolveCloudMetadataPatch(
     patch.activeBookId = activeBookId;
   }
 
-  if (isCharacterPreference(metadata.characterPreference)) {
-    patch.characterPreference = metadata.characterPreference;
-  } else if (isAccountSwitch) {
+  if (isAccountSwitch) {
     patch.characterPreference = 'traditional';
   }
 

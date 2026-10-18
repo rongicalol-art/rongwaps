@@ -20,7 +20,6 @@ export interface UiState {
   activeBookId: number;
   setActiveBookId: (id: number) => void;
   characterPreference: 'traditional' | 'simplified';
-  setCharacterPreference: (pref: 'traditional' | 'simplified') => void;
   isSettingsOpen: boolean;
   setIsSettingsOpen: (open: boolean) => void;
 
@@ -69,7 +68,6 @@ export function createUiSlice(set: SetState): UiState {
     activeBookId: 1,
     setActiveBookId: (id) => set({ activeBookId: id }),
     characterPreference: 'traditional',
-    setCharacterPreference: (pref) => set({ characterPreference: pref }),
     isSettingsOpen: false,
     setIsSettingsOpen: (open) => set({ isSettingsOpen: open }),
 

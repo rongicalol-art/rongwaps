@@ -28,8 +28,6 @@ interface AppOverlaysProps {
 
   isSettingsOpen: AppSettingsDrawerProps['isOpen'];
   onCloseSettings: AppSettingsDrawerProps['onClose'];
-  characterPreference: AppSettingsDrawerProps['characterPreference'];
-  onCharacterPreferenceChange: AppSettingsDrawerProps['onCharacterPreferenceChange'];
   onResetProgress: AppSettingsDrawerProps['onResetProgress'];
 }
 
@@ -54,8 +52,6 @@ export function AppOverlays({
   onOpenGrammarPart,
   isSettingsOpen,
   onCloseSettings,
-  characterPreference,
-  onCharacterPreferenceChange,
   onResetProgress,
 }: AppOverlaysProps) {
   return (
@@ -86,8 +82,6 @@ export function AppOverlays({
       <AppSettingsDrawer
         isOpen={isSettingsOpen}
         onClose={onCloseSettings}
-        characterPreference={characterPreference}
-        onCharacterPreferenceChange={onCharacterPreferenceChange}
         onResetProgress={onResetProgress}
       />
 
