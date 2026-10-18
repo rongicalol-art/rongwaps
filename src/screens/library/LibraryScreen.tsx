@@ -13,6 +13,8 @@ import {
 import { useLibrary } from './hooks/useLibrary';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { useReviewOverview } from './hooks/useReviewOverview';
+import { useTocflReadiness } from '../../hooks/useTocflReadiness';
+import { LibraryTocflProgressCard } from './components/LibraryTocflProgressCard';
 import { FolderModal } from './FolderModal';
 import { DeleteCardModal } from './DeleteCardModal';
 import { DeleteFolderModal } from './DeleteFolderModal';
@@ -79,6 +81,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
   } = useLibrary();
 
   const overview = useReviewOverview();
+  const tocflReadiness = useTocflReadiness();
 
   const isStarred = libraryActiveFolder === 'starred';
   const totalCount = activeCollection?.count ?? 0;
@@ -150,6 +153,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         >
           <LibraryHomeView
             reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onStartMoreReview={onStartMoreReview} onNavigateToPath={onNavigateToPath} />}
+            progressCard={<LibraryTocflProgressCard readiness={tocflReadiness} />}
             footer={<AppFooter className="pt-4" />}
             collections={allCollections}
             recentItems={recentItems}

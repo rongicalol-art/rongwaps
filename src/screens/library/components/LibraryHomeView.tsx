@@ -15,6 +15,7 @@ interface LibraryCollectionSummary {
 
 interface LibraryHomeViewProps {
   reviewCard?: ReactNode;
+  progressCard?: ReactNode;
   footer?: ReactNode;
   collections: LibraryCollectionSummary[];
   recentItems?: RecentItem[];
@@ -29,6 +30,7 @@ interface LibraryHomeViewProps {
 /** Library home: your folders straight on the page, one line of totals, recently added words. */
 export function LibraryHomeView({
   reviewCard,
+  progressCard,
   footer,
   collections,
   recentItems = [],
@@ -88,6 +90,11 @@ export function LibraryHomeView({
         <aside className="order-first min-w-0 lg:order-none lg:col-start-2 lg:row-start-1 lg:sticky-rail">
           {reviewCard}
         </aside>
+      )}
+      {progressCard && (
+        <div className="order-first min-w-0 lg:order-none lg:col-start-2 lg:row-start-2">
+          {progressCard}
+        </div>
       )}
       <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-start-1 lg:row-start-2">
         <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
