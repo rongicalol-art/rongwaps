@@ -149,3 +149,26 @@ Ron's Mandarin supports both web and iOS standalone PWA (`viewport-fit=cover`). 
 - **Never use arbitrary dock dimensions** (e.g. `bottom-[max(...)]`, `pb-[calc(...)]`, `h-[60px]`). Use the semantic utility classes.
 
 
+
+
+## Profile appearance
+
+Fixed, book-independent cover tokens (background / faint glyph):
+
+| Preset | `--color-cover-<preset>-bg` | `--color-cover-<preset>-glyph` |
+| --- | --- | --- |
+| ink | `#e4edf3` | `#d3e1ea` |
+| honey | `#f6ecd2` | `#ecdcb2` |
+| jade | `#e3f0e4` | `#cfe4d1` |
+| plum | `#efe7f6` | `#e0d3ee` |
+| clay | `#f7e4dc` | `#efcfc2` |
+| plain | `#e9e7e3` | transparent |
+
+Initial avatars reuse honey/jade/plum cover washes with
+`--color-avatar-honey-ink` (`#8a6a2a`), `--color-avatar-jade-ink` (`#3f7a47`),
+`--color-avatar-plum-ink` (`#6d57a3`). Blue uses fixed
+`--color-avatar-blue-bg` (`#e4edf3`) / `--color-avatar-blue-ink` (`#2c6385`),
+equivalent to the default book's primary wash/edge. Ink uses UI strong ink/surface.
+`--color-streak` (`#ef8f3c`) / `--color-streak-edge` (`#d2732a`) own the flame,
+week marks and streak number. Topic progress and editor selection use the active
+book's brand tokens.

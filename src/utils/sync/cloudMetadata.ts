@@ -1,3 +1,4 @@
+import { normalizeProfileSettings, PROFILE_PERSISTED_KEYS, type ProfileSettings } from '../../store/slices/profileSlice';
 import type { LessonPartSelectionMap } from '../../types/models';
 import { lessonsToPartSelection } from '../lesson/lessonPartSelection';
 
@@ -22,7 +23,7 @@ export interface CloudMetadataLocalState {
   selectedLessonParts: LessonPartSelectionMap;
 }
 
-export interface CloudMetadataPatch {
+export interface CloudMetadataPatch extends Partial<ProfileSettings> {
   favorites?: string[];
   activeBookId?: number;
   characterPreference?: CharacterPreference;
@@ -66,6 +67,10 @@ export function resolveCloudMetadataPatch(
 ): CloudMetadataPatch {
   const { isAccountSwitch } = options;
   const patch: CloudMetadataPatch = {};
+  const profile = normalizeProfileSettings(metadata);
+  for (const key of PROFILE_PERSISTED_KEYS) {
+    if (isAccountSwitch || key in metadata) Object.assign(patch, { [key]: profile[key] });
+  }
 
   const favorites = stringArray(metadata.favorites);
   if (favorites || isAccountSwitch) {

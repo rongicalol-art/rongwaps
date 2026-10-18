@@ -359,3 +359,12 @@ test('checkpointForUser returns only a well-formed checkpoint owned by that user
     null,
   );
 });
+
+test('a profile-only edit changes the cloud save fingerprint', async () => {
+  const { createCloudSyncFingerprint } = await import('../../src/utils/sync/cloudSyncQueue');
+  const state = { srsData: {}, learnedCards: [], favorites: [], activeBookId: 1, characterPreference: 'traditional', selectedLessons: [], selectedBooks: [] };
+  const before = createCloudSyncFingerprint('uid', state);
+  assert.notEqual(createCloudSyncFingerprint('uid', { ...state, displayName: 'Ron' }), before);
+  assert.notEqual(createCloudSyncFingerprint('uid', { ...state, avatarPath: 'uid/avatar.webp' }), before);
+  assert.notEqual(createCloudSyncFingerprint('uid', { ...state, coverPreset: 'honey' }), before);
+});

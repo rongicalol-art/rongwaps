@@ -32,13 +32,13 @@ User tables reference `auth.users.id` with cascade deletion.
 One row per user; profile info + synced preferences.
 - **Columns**:
   - `id` (uuid, Primary Key) -> References `auth.users.id` on delete cascade
-  - `settings` (jsonb, default `{}`) — synced preferences: `favorites`, `activeBookId`, `characterPreference`, `selectedLessons`, `selectedBooks` (device-local `activeTab` / `sessionProgressIndex` are no longer synced; old rows may still carry them and they are ignored). Lives here rather than in auth `user_metadata` so it is not embedded in every access token. Shape owned by `CloudMetadataPayload` (`src/utils/sync/cloudSyncTransforms.ts`).
+  - `settings` (jsonb, default `{}`) — synced preferences: `favorites`, `activeBookId`, `characterPreference`, `selectedLessons`, `selectedBooks`, `displayName`, `avatarColor`, `coverPreset`, `avatarPath`, `coverPath` (device-local `activeTab` / `sessionProgressIndex` are no longer synced; old rows may still carry them and they are ignored). Lives here rather than in auth `user_metadata` so it is not embedded in every access token. Shape owned by `CloudMetadataPayload` (`src/utils/sync/cloudSyncTransforms.ts`).
   - `updated_at` (timestamptz) — stamped by the server (BEFORE INSERT/UPDATE trigger `touch_user_profile_updated_at`, never the client clock) when settings are written or progress is reset; the pull uses it to decide whether cloud settings are newer than local.
   - `progress_reset_at` (timestamptz, nullable) — reset epoch set by `reset_user_learning_progress`; devices that have not applied it wipe their local progress before merging (see Sync paths).
 - **RLS**:
   - Select: `auth.uid() = id` (owner only).
   - Insert/Update: `auth.uid() = id`.
-- **Notes**: Row is created by the `handle_new_user` trigger on `auth.users` signup (the trigger itself is created in `20261004`; the baseline does not dump `auth` objects). No email/name/avatar is stored here (dropped in `20261007140000`; the client reads them from the auth session). `userService.syncSettings` upserts `settings` here and creates the row if it is missing.
+- **Notes**: Row is created by the `handle_new_user` trigger on `auth.users` signup (the trigger itself is created in `20261004`; the baseline does not dump `auth` objects). No dedicated email/name/avatar columns are stored here (dropped in `20261007140000`; the client uses the auth session as the fallback; custom display name and media paths now live in settings). `userService.syncSettings` upserts `settings` here and creates the row if it is missing.
 
 ### 2. `user_folders`
 Custom folders created by users to group flashcards.
@@ -143,3 +143,16 @@ Verified locally with `supabase db reset` (all migrations replay on a fresh Post
 `user_review_events` stores immutable observations: `(user_id, event_id)` primary key, `card_id`, client `reviewed_at`, server `created_at`, and a bounded JSON payload containing source/session, recall quality, active answer time, whether scheduling advanced, and before/after state. An owner/server-time index supports incremental pulls. Owner SELECT/INSERT policies and the restrictive school-beta policy apply; there is no client UPDATE/DELETE grant. Account deletion cascades, progress reset clears history, and account export includes it.
 
 The device persists the upload outbox separately from history; retries acknowledge exact event IDs. Daily plans and lesson batches are account-scoped local state. A daily plan survives closing/reloading and is reconstructed from synced daily attempts on another device; its active timer excludes background time. Scheduled recall uses FSRS at 90% target retention. Immediate quizzes and optional tricky-word replays remain observations without an extra interval advance. Small lesson batches share their pinned words with the following quiz.
+
+
+## Profile media storage (migration pending owner application)
+
+`20261018120000_profile_media.sql` adds the private `profile-media` bucket (WebP only,
+10 MiB maximum per object). It is not applied by this change. SELECT / INSERT /
+UPDATE / DELETE policies on `storage.objects` require the first folder to equal
+`auth.uid()`; UPDATE checks both the existing and replacement row. Objects use
+`<uid>/avatar.webp` and `<uid>/cover.webp`. The browser resizes avatars to a 256px
+centre-crop and covers to at most 1600px wide before uploading. Display uses
+one-hour signed URLs, held in memory and refreshed after 50 minutes. No public
+URLs or signed URLs are persisted in profile settings. Older rows default to an
+empty display name (auth-name fallback), blue initials, ink cover, and no uploads.

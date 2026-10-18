@@ -149,8 +149,11 @@ export function createLearningSlice(set: SetState): LearningState {
     recordConfusion: (cardId, confusedWithId) => set((s) => {
       if (cardId === confusedWithId) return {};
       const add = (id: string, other: string) => [other, ...(s.wordConfusions[id] ?? []).filter((x) => x !== other)].slice(0, 3);
+      // Reinsert touched words last so profile pairs retain recent-first order.
+      const earlier = Object.fromEntries(Object.entries(s.wordConfusions)
+        .filter(([id]) => id !== cardId && id !== confusedWithId));
       return {
-        wordConfusions: { ...s.wordConfusions, [cardId]: add(cardId, confusedWithId), [confusedWithId]: add(confusedWithId, cardId) },
+        wordConfusions: { ...earlier, [confusedWithId]: add(confusedWithId, cardId), [cardId]: add(cardId, confusedWithId) },
       };
     }),
 

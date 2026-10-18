@@ -74,3 +74,16 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
   assert.equal(hasMetadataChanged({ ...syncedSettings, favorites: undefined }, payload), true);
   assert.equal(hasMetadataChanged(null, payload), true);
 });
+
+test('profile-only changes are included in synced metadata', () => {
+  const source = { favorites: [], activeBookId: 1, characterPreference: 'traditional' as const, selectedLessonParts: {}, selectedBooks: [] };
+  const defaults = buildMetadataPayload(source);
+  const changed = buildMetadataPayload({ ...source, displayName: 'Ron', avatarColor: 'plum', coverPreset: 'jade', avatarPath: 'uid/avatar.webp', coverPath: 'uid/cover.webp' });
+  assert.equal(changed.displayName, 'Ron');
+  assert.equal(changed.coverPreset, 'jade');
+  assert.equal(changed.avatarColor, 'plum');
+  assert.equal(changed.avatarPath, 'uid/avatar.webp');
+  assert.equal(changed.coverPath, 'uid/cover.webp');
+  assert.equal(hasMetadataChanged(defaults, changed), true);
+  assert.equal(hasMetadataChanged(changed, changed), false);
+});

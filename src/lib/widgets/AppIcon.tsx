@@ -1,6 +1,8 @@
 import type { IconBaseProps, IconType } from 'react-icons';
 import {
   PiArrowBendDownRightBold,
+  PiCameraBold,
+  PiUploadSimpleBold,
   PiArrowLeftBold,
   PiArrowRightBold,
   PiDownloadSimpleBold,
@@ -173,6 +175,8 @@ export type AppIconName =
   | 'plant'
   | 'flower'
   | 'drop'
+  | 'camera'
+  | 'upload'
   | 'pencil'
   | 'grid'
   | 'quiz'
@@ -505,6 +509,8 @@ const ICONS: Record<AppIconName, IconType> = {
   plant: PiPlantFill,
   flower: PiFlowerFill,
   drop: PiDropFill,
+  camera: PiCameraBold,
+  upload: PiUploadSimpleBold,
   pencil: PiPencilFill,
   grid: PiSquaresFourFill,
   book: PiBookOpenFill,

@@ -14,6 +14,7 @@ import { createEmptySessionProgress } from '../../src/utils/srs/reviewProgress';
  */
 const EXPECTED_PERSISTED_KEYS = [
   'lastActiveUserId',
+  'displayName', 'avatarColor', 'coverPreset', 'avatarPath', 'coverPath',
   'activeBookId',
   'characterPreference',
   'favorites',
@@ -84,6 +85,7 @@ test('persisted key set matches the declared slices contract exactly', () => {
  * (or vice versa) leaks one account's cached state into another's.
  */
 const ACCOUNT_SWITCH_RESET_KEYS = [
+  'displayName', 'avatarColor', 'coverPreset', 'avatarPath', 'coverPath',
   'srsData',
   'learningBatches',
   'reviewEvents',

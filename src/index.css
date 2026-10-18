@@ -45,7 +45,32 @@
   font-display: swap;
 }
 
+/* Approved profile cover palette: fixed across book themes. Plain :root (not @theme) because the
+   preset is picked at runtime via inline var(), which Tailwind's unused-theme-var pruning can't see. */
+:root {
+  --color-cover-ink-bg: #e4edf3;
+  --color-cover-ink-glyph: #d3e1ea;
+  --color-cover-honey-bg: #f6ecd2;
+  --color-cover-honey-glyph: #ecdcb2;
+  --color-cover-jade-bg: #e3f0e4;
+  --color-cover-jade-glyph: #cfe4d1;
+  --color-cover-plum-bg: #efe7f6;
+  --color-cover-plum-glyph: #e0d3ee;
+  --color-cover-clay-bg: #f7e4dc;
+  --color-cover-clay-glyph: #efcfc2;
+  --color-cover-plain-bg: #e9e7e3;
+  --color-cover-plain-glyph: transparent;
+  --color-avatar-blue-bg: #e4edf3;
+  --color-avatar-blue-ink: #2c6385;
+  --color-avatar-honey-ink: #8a6a2a;
+  --color-avatar-jade-ink: #3f7a47;
+  --color-avatar-plum-ink: #6d57a3;
+}
+
 @theme {
+  --color-streak: #ef8f3c;
+  --color-streak-edge: #d2732a;
+
   --font-sans: "Nunito", "RW-Extras", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-chinese-sans: "Nunito", "PingFang TC", "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
   --font-kaiti-tc: "Nunito", "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW-WenKai", ui-sans-serif, system-ui, sans-serif;

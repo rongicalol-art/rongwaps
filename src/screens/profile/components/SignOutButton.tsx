@@ -14,11 +14,12 @@ export function SignOutButton({ onSignOut, isSigningOut }: { onSignOut: () => vo
   }, [confirming]);
 
   return (
-    <div className="flex justify-center pt-1">
+    <div className="flex justify-start pt-1">
       <button
         type="button"
-        disabled={isSigningOut}
+        aria-busy={isSigningOut || undefined}
         onClick={() => {
+          if (isSigningOut) return;
           if (!confirming) {
             setConfirming(true);
             return;

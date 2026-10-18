@@ -17,6 +17,7 @@
  * slice module) and classify it there.
  */
 
+import { createProfileSlice, PROFILE_PERSISTED_KEYS, PROFILE_ACCOUNT_SWITCH_DEFAULTS, type ProfileState } from './slices/profileSlice';
 import { create } from 'zustand';
 import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
@@ -117,6 +118,7 @@ export {
 
 /** Data-only store shape (state, no actions) — lets consumers key off real keys. */
 export type AppStoreData =
+  & ProfileState
   & AuthState
   & LearningState
   & NavigationState
@@ -226,6 +228,7 @@ const idbStorage: PersistStorage<Partial<AppState>> = {
  */
 export const PERSISTED_KEYS = [
   ...AUTH_PERSISTED_KEYS,
+  ...PROFILE_PERSISTED_KEYS,
   ...LEARNING_PERSISTED_KEYS,
   ...NAVIGATION_PERSISTED_KEYS,
   ...LIBRARY_PERSISTED_KEYS,
@@ -295,6 +298,7 @@ function sanitizePersistedState(state: Record<string, unknown>): Record<string, 
 
 export const ACCOUNT_SWITCH_DEFAULTS = {
   ...AUTH_ACCOUNT_SWITCH_DEFAULTS,
+  ...PROFILE_ACCOUNT_SWITCH_DEFAULTS,
   ...LEARNING_ACCOUNT_SWITCH_DEFAULTS,
   ...NAVIGATION_ACCOUNT_SWITCH_DEFAULTS,
   ...LIBRARY_ACCOUNT_SWITCH_DEFAULTS,
@@ -313,6 +317,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
   persist(
     (set) => ({
       ...createAuthSlice(set),
+      ...createProfileSlice(set),
       ...createLearningSlice(set),
       ...createNavigationSlice(set),
       ...createLibrarySlice(set),

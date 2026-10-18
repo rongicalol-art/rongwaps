@@ -1,8 +1,9 @@
+import type { ProfileSettings } from '../../store/slices/profileSlice';
 import type { SRSData } from '../srs/srsEngine';
 import { isSameSrsData } from '../srs/srsRowMapping';
 import type { SyncCheckpoint } from '../../store/slices/syncSlice';
 
-export interface CloudSyncFingerprintState {
+export interface CloudSyncFingerprintState extends Partial<ProfileSettings> {
   srsData: unknown;
   pendingReviewEvents?: unknown;
   learnedCards: string[];
@@ -36,6 +37,7 @@ export function createCloudSyncFingerprint(
     state.characterPreference,
     state.selectedLessons,
     state.selectedBooks,
+    state.displayName, state.avatarColor, state.coverPreset, state.avatarPath, state.coverPath,
   ]);
 }
 

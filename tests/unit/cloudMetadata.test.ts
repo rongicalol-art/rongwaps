@@ -64,6 +64,7 @@ test('account switch resets missing fields to fresh-account defaults', () => {
   const patch = resolveCloudMetadataPatch({}, LOCAL, { isAccountSwitch: true });
 
   assert.deepEqual(patch, {
+    displayName: '', avatarColor: 'blue', coverPreset: 'ink', avatarPath: null, coverPath: null,
     favorites: [],
     activeBookId: 1,
     characterPreference: 'traditional',
@@ -112,4 +113,16 @@ test('guest folders migrate only on a first account switch', () => {
     }),
     [],
   );
+});
+
+
+test('profile settings validate old rows, sync changes and clear on account switch', () => {
+  const patch = resolveCloudMetadataPatch({ displayName: 'Ron', avatarColor: 'jade', coverPreset: 'honey', avatarPath: 'uid/avatar.webp' }, LOCAL, { isAccountSwitch: false });
+  assert.equal(patch.displayName, 'Ron');
+  assert.equal(patch.avatarColor, 'jade');
+  assert.equal(patch.coverPreset, 'honey');
+  assert.equal(patch.avatarPath, 'uid/avatar.webp');
+  const invalid = resolveCloudMetadataPatch({ avatarColor: 'invalid', displayName: 'x'.repeat(50) }, LOCAL, { isAccountSwitch: false });
+  assert.equal(invalid.avatarColor, 'blue');
+  assert.equal(invalid.displayName?.length, 30);
 });

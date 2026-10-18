@@ -1,3 +1,4 @@
+import { normalizeProfileSettings, PROFILE_PERSISTED_KEYS, type ProfileSettings } from '../../store/slices/profileSlice';
 /**
  * Pure transformations and payload builders for cloud synchronization.
  *
@@ -42,7 +43,7 @@ export function computeSrsDelta(
  * not synced: it changed on every tap/swipe, forcing a settings write per
  * session step. Old rows may still carry those keys; they are ignored on read.
  */
-export type CloudMetadataPayload = {
+export type CloudMetadataPayload = ProfileSettings & {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
@@ -51,6 +52,7 @@ export type CloudMetadataPayload = {
 };
 
 const METADATA_KEYS = [
+  ...PROFILE_PERSISTED_KEYS,
   'favorites',
   'activeBookId',
   'characterPreference',
@@ -58,7 +60,7 @@ const METADATA_KEYS = [
   'selectedBooks',
 ] as const satisfies readonly (keyof CloudMetadataPayload)[];
 
-export function buildMetadataPayload(store: {
+export function buildMetadataPayload(store: Partial<ProfileSettings> & {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
@@ -66,6 +68,7 @@ export function buildMetadataPayload(store: {
   selectedBooks: number[];
 }): CloudMetadataPayload {
   return {
+    ...normalizeProfileSettings(store),
     favorites: store.favorites,
     activeBookId: store.activeBookId,
     characterPreference: store.characterPreference,
@@ -93,10 +96,12 @@ export function hasMetadataChanged(
   payload: CloudMetadataPayload,
 ): boolean {
   if (!synced) return true;
-  return METADATA_KEYS.some((key) => stableJson(synced[key]) !== stableJson(payload[key]));
+  const normalized: Record<string, unknown> = { ...synced, ...normalizeProfileSettings(synced) };
+  return METADATA_KEYS.some((key) => stableJson(normalized[key]) !== stableJson(payload[key]));
 }
 
 export const AUTO_SAVE_TRIGGER_SLICES = [
+  ...PROFILE_PERSISTED_KEYS,
   'activeBookId',
   'characterPreference',
   'favorites',
