@@ -5,11 +5,13 @@ import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardS
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 
 /**
- * Again / Hard / Got it: difficult-but-correct recall is a success.
+ * Again / Hard / Got it → SRS quality. Again and Hard both keep the card in the
+ * review round (only Got it clears it), so both map below the success line;
+ * the SRS "difficult" quality 3 stays unused by the UI, as before.
  */
 export function levelToQuality(level: number): CardSessionQuality {
   if (level === 1) return 1;
-  if (level === 2) return 3;
+  if (level === 2) return 2;
   if (level === 3) return 4;
   return 5;
 }
