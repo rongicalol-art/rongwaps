@@ -166,6 +166,37 @@ test('starting a new file resolves and stops the previous playback', async () =>
   await secondPlayback;
 });
 
+test('queued source-change events cannot finish a newly selected or unlocked clip', async () => {
+  for (const unlock of [false, true]) {
+    const service = new AudioService();
+    let unavailable = 0;
+    let settled = false;
+    if (unlock) service.initialize();
+    else {
+      const previous = service.play('https://audio.example.test/previous-resource.mp3');
+      service.pause();
+      await previous;
+    }
+    const audio = service.getGlobalAudio() as unknown as FakeAudio;
+    const pending = service.play('https://audio.example.test/new-resource.mp3', 1,
+      undefined, undefined, 0, { fallback: 'none', onUnavailable: () => unavailable++ })
+      .then(() => { settled = true; });
+    try {
+      await tick();
+      // Browsers deliver these asynchronously after replacing an existing src.
+      audio.dispatch('abort');
+      audio.dispatch('emptied');
+      await Promise.resolve();
+      assert.equal(unavailable, 0, 'the old resource abort is not a new playback failure');
+      assert.equal(settled, false, 'callers must wait for the new clip to finish');
+      assert.ok(audio.onended, 'the new clip keeps its completion handler');
+      audio.onended();
+      await pending;
+      assert.equal(settled, true);
+    } finally { service.stop(); await pending; }
+  }
+});
+
 test('overlap play lets the playing clip ring out on the spare element', async () => {
   const service = new AudioService();
   const first = FakeAudio.instances.at(-1)!;

@@ -105,18 +105,11 @@ export function playHtmlAudio(
   let settled = false;
   let progressWatch: AudioProgressWatch | null = null;
   let metadataSeek: (() => void) | null = null;
-  const onAbort = () => {
-    const error = new Error('Audio playback aborted');
-    error.name = 'AbortError';
-    fail(error);
-  };
   const cleanup = () => {
     if (settled) return;
     settled = true;
     progressWatch?.stop();
     if (metadataSeek) audio.removeEventListener?.('loadedmetadata', metadataSeek);
-    audio.removeEventListener?.('abort', onAbort);
-    audio.removeEventListener?.('emptied', onAbort);
     metadataSeek = null;
     audio.onended = null;
     audio.onerror = null;
@@ -168,8 +161,8 @@ export function playHtmlAudio(
       onEnd();
     };
     audio.onerror = () => fail(new Error('Audio could not be loaded'));
-    audio.addEventListener?.('abort', onAbort, { once: true });
-    audio.addEventListener?.('emptied', onAbort, { once: true });
+    // Replacing src queues abort/emptied for the previous resource. Those
+    // events are not failures of this play; actual cancellation rejects play().
 
     progressWatch = watchAudioProgress(audio, () => fail(playbackTimeoutError()));
 
