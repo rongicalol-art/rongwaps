@@ -617,6 +617,59 @@ test('buffered recordings replay and seek ranges without waiting for disk or cha
   } finally { service.stop(); memoryCache.match = oldMatch; }
 });
 
+test('overlap replay keeps the decoded player for both streamed and preloaded clips', async () => {
+  for (const preloaded of [false, true]) {
+    const service = new AudioService();
+    service.initialize();
+    const url = `https://audio.example.test/overlap-replay-${preloaded}.mp3`;
+    if (preloaded) await service.preload([url]);
+    const first = service.play(url);
+    await tick();
+    const audio = service.getGlobalAudio() as unknown as FakeAudio;
+    const src = audio.src;
+    audio.readyState = 4;
+    audio.currentTime = 0.4;
+    const replay = service.play(url, 1, undefined, undefined, 0, { overlap: true });
+    try {
+      assert.equal(service.getGlobalAudio(), audio, 'replay reuses the already decoded player');
+      assert.equal(audio.src, src);
+      assert.equal(audio.currentTime, 0, 'replay starts synchronously without a cache lookup');
+    } finally {
+      service.stop();
+      await Promise.all([first, replay]);
+    }
+  }
+});
+
+test('completed streams remain in memory when returning after another clip or range', async () => {
+  enableCache();
+  for (const range of [false, true]) {
+    const service = new AudioService();
+    const url = `https://audio.example.test/retain-completed-${range}.mp3`;
+    const first = range ? service.playRange(url, 1, 3) : service.play(url);
+    await tick();
+    service.getGlobalAudio()!.onended?.(new Event('ended'));
+    await first;
+    // Let the background cache write finish; do not explicitly preload the clip.
+    await tick();
+    await tick();
+    const other = service.play('https://audio.example.test/intervening.mp3');
+    await tick();
+    service.stop();
+    await other;
+    const oldMatch = memoryCache.match;
+    let lookups = 0;
+    memoryCache.match = async () => { lookups++; throw new Error('disk unavailable'); };
+    try {
+      const replay = range ? service.playRange(url, 1, 3) : service.play(url);
+      assert.ok(service.getGlobalAudio()!.src.startsWith('blob:'), 'replay starts from memory synchronously');
+      assert.equal(lookups, 0);
+      service.stop();
+      await replay;
+    } finally { service.stop(); memoryCache.match = oldMatch; }
+  }
+});
+
 test('aborted lookahead skips queued recordings and never treats text as a filename', async () => {
   const { preloadAudioFiles } = await import('../../src/services/audio/audioCache');
   const controller = new AbortController();

@@ -129,9 +129,13 @@ export class AudioService {
     });
   }
   // With `overlap`, a playing clip rings out on its element while the new one uses the spare.
-  private beginPlayback(overlap: boolean): void {
+  private beginPlayback(overlap: boolean, fileName?: string): void {
     const { globalAudio: tail, spareAudio: spare } = this;
-    if (!overlap || !tail || !spare || this.rangeRafHandle !== null || this.currentUtterance) {
+    // Replaying the same clip should seek the decoded resource, not reload it
+    // on the spare element just because the previous play is still ringing.
+    const replay = fileName && tail?.readyState && tail.readyState >= 2
+      && (tail.src === publicAudioUrl(fileName) || tail.src === this.objectUrls.get(fileName));
+    if (!overlap || replay || !tail || !spare || this.rangeRafHandle !== null || this.currentUtterance) {
       this.pause();
       return;
     }
@@ -205,7 +209,7 @@ export class AudioService {
     startTime = 0,
     options?: PlayOptions,
   ): Promise<void> {
-    this.beginPlayback(options?.overlap === true);
+    this.beginPlayback(options?.overlap === true, audioFileName);
     const textToSpeak = textFallback
       || (audioFileName && !this.isAudioFileName(audioFileName) ? audioFileName : undefined);
 
@@ -246,7 +250,7 @@ export class AudioService {
         if (this.activePlaybackFinish !== finish) return;
         this.activePlaybackCleanup = playHtmlAudio(audio, url, playbackRate, () => {
           // Cache explicitly completed recordings without delaying first sound.
-          if (typeof caches !== 'undefined') void fetchAudioBlob(audioFileName).catch(() => {});
+          if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).catch(() => {});
           finish();
         }, handleAudioFailure, startTime);
       };
@@ -293,7 +297,7 @@ export class AudioService {
         this.activePlaybackCleanup = playRangeOnAudioElement(audio, src, startSec, endSec, options, (ended) => {
           if (ended) {
             options?.onComplete?.();
-            if (typeof caches !== 'undefined') void fetchAudioBlob(audioFileName).catch(() => {});
+            if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).catch(() => {});
           }
           finish();
         }, (handle) => { this.rangeRafHandle = handle; });
