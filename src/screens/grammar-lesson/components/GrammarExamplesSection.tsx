@@ -1,5 +1,5 @@
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
-import { audioService } from '../../../services/audioService';
+import { playSentence } from '../../../services/audio/sentenceAudio';
 import type { GrammarLessonExample, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarText } from './GrammarText';
 import { GrammarExampleText } from './GrammarExampleText';
@@ -35,15 +35,16 @@ export function GrammarExampleItem({
   return (
     <div className={'flex items-start gap-2 py-4 pl-3 pr-5 sm:pl-4 sm:pr-6'}>
       <IconActionButton
-        onClick={() => audioService.speakText(
+        onClick={() => playSentence(
           getGrammarText(example.text, characterPreference),
-          characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN',
-          0.9,
+          example.text.audio,
+          characterPreference,
+          example.text.audio?.voice === 'book' ? 1 : 0.9,
         )}
         size="sm"
         variant="quiet"
         icon={<AppIcon name="audio" size={22} />}
-        label={`Play example ${example.number ?? index + 1}`}
+        label={`Play example ${example.number ?? index + 1}${example.text.audio?.voice === 'book' ? ' (book recording)' : ''}`}
         style={{ color: book.theme.primary }}
         className="-mt-0.5 hover:brightness-90"
       />

@@ -10,6 +10,7 @@ import type {
   GrammarTimeRangeLab,
   GrammarTimelineLab,
 } from './grammarLabs';
+import type { SentenceAudio } from './grammarPractice';
 import type { GrammarPractice } from './grammarPractice';
 
 export interface GrammarLessonText {
@@ -19,6 +20,7 @@ export interface GrammarLessonText {
   english?: string;
   words?: GrammarWordToken[];
   translationSegments?: GrammarTranslationSegment[];
+  audio?: SentenceAudio;
 }
 
 export interface GrammarWordToken {
@@ -51,6 +53,8 @@ export interface GrammarPatternRow {
   english?: string;
   /** The page example the book prints under this row; the examples list then skips it. */
   exampleId?: string;
+  /** The row read aloud, attached by `npm run content:export` from the book's grammar track; never authored. */
+  audio?: SentenceAudio;
 }
 
 export interface GrammarLessonExample {

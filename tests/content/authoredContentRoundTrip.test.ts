@@ -48,7 +48,9 @@ test('Authored Content Round-Trip: grammar pack deeply equals content/grammar/*.
   assert.equal(pack.schemaVersion, 1);
   assert.equal(pack.bookId, 1);
   assert.equal(pack.count, 33);
-  assert.deepEqual(pack.items, sourceParts);
+  // Sentence recordings (`audio`) are attached by the export from content/audio, not authored here.
+  const authored = JSON.parse(JSON.stringify(pack.items, (key, value: unknown) => (key === 'audio' ? undefined : value))) as InteractiveGrammarPart[];
+  assert.deepEqual(authored, sourceParts);
 });
 
 test('Authored Content Round-Trip: dialogue alignment pack deeply equals content/dialogueAlignment.json', () => {

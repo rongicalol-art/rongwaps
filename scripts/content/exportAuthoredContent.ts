@@ -1,7 +1,8 @@
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile, readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import type { GrammarPractice, InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
+import { getPatternRowGroups } from '../../src/utils/grammar/grammarPatternLayout';
+import type { GrammarPatternRow, GrammarPractice, InteractiveGrammarPart, ReadingRecord, SentenceAudio } from '../../src/types/models';
 
 const ROOT = process.cwd();
 const READINGS_DIR = resolve(ROOT, 'public/data/readings');
@@ -110,7 +111,45 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
   }
   parts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
   await attachGrammarPractice(parts);
+  await attachSentenceAudio(parts);
   return parts;
+}
+
+/**
+ * Every grammar sentence (page text or exercise sentence: anything with `traditional` and `english`)
+ * and every pattern-table row without an example under it uses the book's grammar track first (an
+ * owner-approved near miss counts), then a dialogue clip, then an approved studio recording. Keys
+ * are the sentence's Chinese characters.
+ */
+async function attachSentenceAudio(parts: InteractiveGrammarPart[]) {
+  const read = async (file: string) => JSON.parse(await readFile(resolve(ROOT, file), 'utf8').catch(() => '{}')) as Record<string, Omit<SentenceAudio, 'voice'>>;
+  const grammarTrack = await read('content/audio/grammar_track_clips.json');
+  const approved = await read('content/audio/grammar_track_approved.json');
+  const dialogue = await read('content/audio/grammar_book_clips.json');
+  const studio = await read('content/audio/grammar_studio_audio.json');
+  const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
+  const audioFor = (text: string): SentenceAudio | undefined => {
+    const key = han(text);
+    const clip = approved[key] ?? grammarTrack[key] ?? dialogue[key];
+    if (clip) return { voice: 'book', file: clip.file, start: clip.start, end: clip.end };
+    return studio[key] ? { voice: 'studio', file: studio[key].file } : undefined;
+  };
+  const walk = (node: unknown): void => {
+    if (Array.isArray(node)) { node.forEach(walk); return; }
+    if (!node || typeof node !== 'object') return;
+    const record = node as Record<string, unknown>;
+    if (typeof record.traditional === 'string' && 'english' in record) {
+      const audio = audioFor(record.traditional);
+      if (audio) record.audio = audio;
+    }
+    if (Array.isArray(record.subject) && Array.isArray(record.grammar) && Array.isArray(record.complement) && !record.exampleId) {
+      const row = record as unknown as GrammarPatternRow;
+      const audio = audioFor(getPatternRowGroups(row).flat().map((token) => token.traditional).join(''));
+      if (audio) record.audio = audio;
+    }
+    Object.values(record).forEach(walk);
+  };
+  walk(parts);
 }
 
 /** Book exercises live in content/grammar-practice/*.json keyed by grammar page id; they ride on their page in the grammar pack. */

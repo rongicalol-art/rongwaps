@@ -4,12 +4,25 @@
  * grammar pack by `npm run content:export`. Every kind is answered by tapping, never typing.
  */
 
+/**
+ * A recording of a sentence, attached by `npm run content:export` (never authored by hand): a clip
+ * of the book's own track (`content/audio/grammar_book_clips.json`, with `start`/`end`) or a whole
+ * studio-voice file the owner approved by ear (`content/audio/grammar_studio_audio.json`).
+ */
+export interface SentenceAudio {
+  voice: 'book' | 'studio';
+  file: string;
+  start?: number;
+  end?: number;
+}
+
 /** A full sentence shown in feedback or spoken in a chat. */
 export interface PracticeSentence {
   traditional: string;
   simplified?: string;
   pinyin: string;
   english: string;
+  audio?: SentenceAudio;
 }
 
 /** A word or chunk on a tappable tile. Answers match on `traditional`. */

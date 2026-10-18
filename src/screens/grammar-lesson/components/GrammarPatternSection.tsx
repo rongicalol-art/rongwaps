@@ -3,6 +3,8 @@ import type { GrammarPatternRow, GrammarWordToken, InteractiveGrammarPage } from
 import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammar/grammarPatternLayout';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { cn } from '../../../utils/cn';
+import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { playSentence } from '../../../services/audio/sentenceAudio';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { GrammarExampleItem } from './GrammarExamplesSection';
 import { PlaceValueTable } from './PlaceValueTable';
@@ -48,6 +50,11 @@ function HeaderTitle({ text }: { text: string }) {
     </>
   );
 }
+
+/** A short phrase (臺灣人。) stays on one line, so a phone never strands its last word; longer cells may wrap. */
+const SHORT_CELL_HANZI = 3;
+const isShortCell = (group: GrammarWordToken[]) =>
+  [...group.map((token) => token.traditional).join('')].filter(isHanziChar).length <= SHORT_CELL_HANZI;
 
 /**
  * Semantic, responsive grammar pattern table.
@@ -109,6 +116,9 @@ export function GrammarPatternSection({
   if (activeRows.length === 0) return null;
 
   const columnCount = layout.sourceColumns.length;
+  // Rows the book reads aloud get a quiet play button in a narrow last column.
+  const playable = activeRows.some((row) => row.audio);
+  const spanCount = columnCount + (playable ? 1 : 0);
   // Up to 3 columns fit a phone, so cells may wrap; wider tables keep scrolling sideways.
   const wide = columnCount > 3;
   // Place-value grids (7+ narrow digit columns) get their own two-block table that never scrolls sideways.
@@ -197,11 +207,28 @@ export function GrammarPatternSection({
                     </th>
                   );
                 })}
+                {playable && <th aria-hidden="true" className="hidden sm:table-cell" />}
               </tr>
             </thead>
             <tbody className="bg-ui-surface">
               {activeRows.map((row, rowIndex) => {
                 const groups = getPatternRowGroups(row);
+                const meaning = showTranslation && row.english;
+                const playButton = row.audio && (
+                  <IconActionButton
+                    onClick={() => playSentence(
+                      groups.flat().map((token) => (characterPreference === 'simplified' && token.simplified) || token.traditional).join(''),
+                      row.audio,
+                      characterPreference,
+                    )}
+                    size="sm"
+                    variant="quiet"
+                    icon={<AppIcon name="audio" size={22} />}
+                    label={`Play row ${rowIndex + 1}${row.audio?.voice === 'book' ? ' (book recording)' : ''}`}
+                    style={{ color: book.theme.primary }}
+                    className="shrink-0 hover:brightness-90"
+                  />
+                );
                 return (
                   <Fragment key={row.id}>
                     <tr
@@ -230,24 +257,33 @@ export function GrammarPatternSection({
                                 tone="default"
                                 size="lg"
                                 focusTerms={page.focusTerms}
-                                className={cn('gap-x-0.5 gap-y-2', wide && 'flex-nowrap whitespace-nowrap')}
+                                className={cn('gap-x-0.5 gap-y-2', (wide || isShortCell(group)) && 'flex-nowrap whitespace-nowrap')}
                                 onOpenWord={onOpenWord}
                               />
                             )}
                           </td>
                         );
                       })}
+                      {/* From tablet width the button has its own column; on a phone it sits on the meaning line so the words keep their width. */}
+                      {playable && <td className="hidden pr-3 pt-3 align-middle sm:table-cell">{playButton}</td>}
                     </tr>
 
                     {/* Full-width meaning row rendered as a natural subtitle under the sentence */}
-                    {showTranslation && row.english && (
-                      <tr className="bg-transparent">
+                    {(meaning || playButton) && (
+                      <tr className={cn('bg-transparent', !meaning && 'sm:hidden')}>
                         <td
-                          colSpan={columnCount}
-                          className="px-3 pb-3 pt-0 sm:px-6"
+                          colSpan={spanCount}
+                          className={cn('px-3 pb-3 sm:px-6', meaning ? 'pt-0' : '-mt-2 pt-0')}
                         >
-                          <p className="sr-only">Meaning</p>
-                          <p className="ui-translation max-w-md text-[15px] sm:text-base">{row.english}</p>
+                          <div className="flex items-center justify-between gap-2">
+                            {meaning && (
+                              <div>
+                                <p className="sr-only">Meaning</p>
+                                <p className="ui-translation max-w-md text-[15px] sm:text-base">{row.english}</p>
+                              </div>
+                            )}
+                            {playButton && <span className="ml-auto sm:hidden">{playButton}</span>}
+                          </div>
                         </td>
                       </tr>
                     )}
@@ -258,7 +294,7 @@ export function GrammarPatternSection({
                       if (exampleIndex < 0) return null;
                       return (
                         <tr>
-                          <td colSpan={columnCount} className="p-0">
+                          <td colSpan={spanCount} className="p-0">
                             <GrammarExampleItem
                               page={page}
                               example={page.examples[exampleIndex]}
