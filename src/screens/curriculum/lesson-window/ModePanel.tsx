@@ -60,12 +60,12 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
             aria-pressed={isSelected}
             onClick={() => { onSelect(key); replay(key); }}
             onPointerEnter={() => replay(key)}
-            edgeColor={DIVIDER_EDGE}
+            edgeColor={isSelected ? 'var(--color-brand-primary)' : DIVIDER_EDGE}
             className={cn(
               'justify-start gap-3 px-3 py-2.5 text-left normal-case tracking-normal',
               large && 'gap-3.5 px-4 py-3.5',
               isSelected
-                ? '!border-ui-divider !bg-brand-primary-soft hover:!bg-brand-primary-soft'
+                ? '!border-brand-primary !bg-brand-primary-soft hover:!bg-brand-primary-soft'
                 : '!border-ui-divider',
             )}
           >
