@@ -89,7 +89,7 @@ export function LibraryHomeView({
           {reviewCard}
         </aside>
       )}
-      <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-span-2 lg:row-start-2">
+      <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-start-1 lg:row-start-2">
         <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
       </div>
       {footer && <div className="lg:col-span-2 lg:row-start-3">{footer}</div>}
