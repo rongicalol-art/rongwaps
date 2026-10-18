@@ -33,6 +33,8 @@ export interface RuntimePackManifest {
   policyVersion: string;
   distribution: string;
   publishable: boolean;
+  /** SPDX identifier of the published pack's combined data license. */
+  license?: string;
   licenseGate: {
     status: string;
     publishable: boolean;

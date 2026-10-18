@@ -1,0 +1,38 @@
+RongWaps decomposition runtime pack
+
+This machine-generated pack contains normalized character decomposition trees
+(structure, component indexes, and reverse indexes) derived from the sources
+listed below. Transformations from the upstream data are limited to parsing,
+normalization, selection for the learner course, and compact encoding. The
+derivation tooling is available on request at rongicalol@gmail.com.
+
+The pack as a whole is distributed under the GNU General Public License,
+version 3 or any later version (GPL-3.0-or-later). Full license texts are
+included in this directory:
+
+  licenses/GPL-3.0-or-later.txt
+  licenses/LGPL-3.0-or-later.txt
+
+Sources
+-------
+* cjkvi-ids (version sha256:bfc70a8c09f9f5616ebf0543bd6681e67314e9f7ae2307e5ae8c6f15bdc5c6a6, sha256 bfc70a8c09f9f5616ebf0543bd6681e67314e9f7ae2307e5ae8c6f15bdc5c6a6)
+  License: GPL-2.0-or-later
+  Attribution: CJKVI/CHISE contributors and upstream glyph-description sources
+  The IDS structure data is derived from the CHISE project (ids.txt), which distributes the CHISE-IDS package under the GNU General Public License, version 2 or any later version.
+  Some IDS-UCS data are derived and expanded from the CDP database developed by C.C. Hsieh and his team at Academia Sinica, Taipei, Taiwan.
+  Sources: https://github.com/cjkvi/cjkvi-ids and https://gitlab.chise.org/CHISE/ids
+
+* cns11643-open-data (version 2026-08-05, sha256 980fb370d7056158624b1d9684c4fbb280b1b715d21147465f07d106eed7ecfb)
+  License: Taiwan Open Government Data License 1.0
+  Attribution: Ministry of Digital Affairs, CNS11643 website
+  Stroke and metadata come from the CNS11643 open data released by the Ministry of Digital Affairs, Taiwan, under the Open Government Data License, version 1.0 (https://data.gov.tw/license).
+
+* makemeahanzi-dictionary (version bc8b4ff19cece3ec, sha256 b08d29a53fc5ea57cd73e34eca7051c22823f8d1fbed65a6509906562a22f7ac)
+  License: LGPL-3.0-or-later
+  Attribution: Make Me a Hanzi contributors
+  The dictionary decomposition data is derived from Make Me a Hanzi dictionary.txt, which is derived from Unihan and CJKlib and distributed under the GNU Lesser General Public License, version 3 or any later version.
+  Unihan data copyright (c) Unicode, Inc.; used under the Unicode Terms of Use (https://www.unicode.org/copyright.html).
+  Source: https://github.com/skishore/makemeahanzi
+
+The derived pack does not include source-record identifiers, source text, or
+the upstream files themselves; those remain available from the sources above.

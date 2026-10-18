@@ -14,6 +14,7 @@ import {
   type RuntimeComponentKey,
   type RuntimeTreeNode,
 } from '../../src/features/character-decomposition/runtimePack';
+import { buildLicensingFiles, packSourceLicense } from './packLicensing';
 
 const PROJECT_ROOT = resolve(import.meta.dirname, '..', '..');
 const DEFAULT_OUTPUT = resolve(PROJECT_ROOT, 'output/decomposition-runtime/phase4-candidate');
@@ -51,6 +52,13 @@ interface DbReleaseSource {
   source_id: string;
   source_version: string;
   purpose: string;
+}
+
+interface DbLicenseReview {
+  source_id: string;
+  source_version: string;
+  redistribution_status: 'cleared' | 'review' | 'blocked';
+  reviewed_at: string;
 }
 
 interface DbBlocker {
@@ -101,6 +109,7 @@ interface PackInput {
   release: DbRelease;
   sources: DbSource[];
   releaseSources: DbReleaseSource[];
+  licenseReviews: DbLicenseReview[];
   blockers: DbBlocker[];
   decompositions: DbCharacterDecomposition[];
   stagingProjectionCount: number;
@@ -327,10 +336,22 @@ function buildPack(input: PackInput): BuildResult {
     )))
     .filter((source): source is DbSource => Boolean(source))
     .sort((left, right) => compareStrings(left.id, right.id) || compareStrings(left.version, right.version));
+  // License reviews supersede the immutable source defaults, the same way the
+  // release-status guard in Postgres resolves the effective status.
+  const latestReviews = new Map<string, DbLicenseReview>();
+  for (const review of input.licenseReviews) {
+    const key = sourceKey(review.source_id, review.source_version);
+    const existing = latestReviews.get(key);
+    if (!existing || existing.reviewed_at < review.reviewed_at) latestReviews.set(key, review);
+  }
+  const effectiveRedistributionStatus = (source: DbSource): string => (
+    latestReviews.get(sourceKey(source.id, source.version))?.redistribution_status
+    ?? source.redistribution_status
+  );
   const openBlockers = input.blockers.filter((blocker) => blocker.status === 'open');
   const publishable = input.release.status === 'approved'
     && openBlockers.length === 0
-    && releaseSources.every((source) => source.redistribution_status === 'cleared');
+    && releaseSources.every((source) => effectiveRedistributionStatus(source) === 'cleared');
   const courseCoverage = {
     traditional: coverageForCourse(input.courses, 'traditional', sortedRows),
     simplified: coverageForCourse(input.courses, 'simplified', sortedRows),
@@ -340,8 +361,8 @@ function buildPack(input: PackInput): BuildResult {
     id: source.id,
     version: source.version,
     checksum: source.checksum,
-    redistributionStatus: source.redistribution_status,
-    license: source.license,
+    redistributionStatus: effectiveRedistributionStatus(source),
+    license: publishable ? packSourceLicense(source.id, source.license) : source.license,
     attribution: source.attribution,
   }));
   const manifest = {
@@ -352,13 +373,16 @@ function buildPack(input: PackInput): BuildResult {
     releaseKey: input.release.release_key,
     locale: input.release.locale,
     policyVersion: input.release.policy_version,
-    distribution: 'development-only-candidate',
+    distribution: publishable ? 'production' : 'development-only-candidate',
     publishable,
+    license: publishable ? 'GPL-3.0-or-later' : undefined,
     licenseGate: {
       status: input.release.status,
       publishable,
       openBlockers: openBlockers.map((blocker) => blocker.code).sort(compareStrings),
-      note: 'CJKVI licensing remains blocked; this candidate must not be deployed or redistributed.',
+      note: publishable
+        ? 'Sources cleared for redistribution; NOTICE.txt and full license texts ship with this pack.'
+        : 'Sources are not cleared for redistribution; this candidate must not be deployed or redistributed.',
     },
     sourceProjectionCount: input.stagingProjectionCount,
     selection: {
@@ -385,7 +409,9 @@ function buildPack(input: PackInput): BuildResult {
     },
   };
   const manifestFile = encodeFile('manifest.json', manifest);
-  const files = [...dataFiles, manifestFile].sort((left, right) => compareStrings(left.path, right.path));
+  const licensingFiles = publishable ? buildLicensingFiles(releaseSources) : [];
+  const files = [...dataFiles, manifestFile, ...licensingFiles]
+    .sort((left, right) => compareStrings(left.path, right.path));
   const largestRecord = largestRecords.sort((left, right) => right.bytes - left.bytes || compareStrings(left.character, right.character))[0];
   const totalBytes = sumBytes(files);
   const totalGzipBytes = files.reduce((sum, file) => sum + gzipSync(file.bytes, { level: 9 }).byteLength, 0);
@@ -562,9 +588,10 @@ async function readInput(client: SupabaseClient): Promise<PackInput> {
   const release = (releases?.[0] ?? null) as DbRelease | null;
   if (!release) throw new Error('No Phase 3 decomposition release exists in the local staging database.');
 
-  const [sources, releaseSources, blockers, decompositions, courses] = await Promise.all([
+  const [sources, releaseSources, licenseReviews, blockers, decompositions, courses] = await Promise.all([
     readAll<DbSource>(client, 'decomposition_sources', 'id,version,name,checksum,license,attribution,redistribution_status', 'id'),
     readAll<DbReleaseSource>(client, 'decomposition_release_sources', 'source_id,source_version,purpose', 'source_id'),
+    readAll<DbLicenseReview>(client, 'decomposition_source_license_reviews', 'source_id,source_version,redistribution_status,reviewed_at', 'source_id'),
     readAll<DbBlocker>(client, 'decomposition_release_blockers', 'code,message,source_id,status', 'code'),
     readAll<DbCharacterDecomposition>(client, 'character_decompositions', 'character,locale,release_id,selected_source_record_id,normalized_tree,selection_reason,quality_score,quality_status', 'character'),
     readAll<DbCourseCharacter>(client, 'decomposition_course_characters', 'course_variant,character', 'character'),
@@ -582,6 +609,7 @@ async function readInput(client: SupabaseClient): Promise<PackInput> {
     release,
     sources,
     releaseSources,
+    licenseReviews,
     blockers,
     decompositions: fullCoverage ? selectRuntimeRows(selected) : selectRuntimeClosure(selected, courses),
     stagingProjectionCount: selected.length,

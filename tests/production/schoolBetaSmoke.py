@@ -54,10 +54,11 @@ try:
             assert status == 401, (method, path, status)
             assert 'no-store' in headers.get('Cache-Control', ''), (path, headers)
             assert 'Authorization' in headers.get('Vary', ''), (path, headers)
-    assert request('/data/dictionary/manifest.json')[0] == 200
+    assert request('/data/dictionary/manifest.json')[0] == 401
+    assert request('/data/decomposition-runtime/manifest.json')[0] == 401
     assert request('/')[0] == 200
     assert request('/%xx')[0] == 400
-    print('Production smoke passed: 16 protected path/method cases; public shell/reference and malformed-path checks.')
+    print('Production smoke passed: 18 protected path/method cases; public shell and malformed-path checks.')
 finally:
     process.terminate()
     process.wait(timeout=10)

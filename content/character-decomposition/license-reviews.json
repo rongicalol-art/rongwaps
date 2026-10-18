@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "releaseKey": "taiwan-course-hybrid-517257c436c6",
+  "packLicense": "GPL-3.0-or-later",
+  "reviews": [
+    {
+      "sourceId": "cjkvi-ids",
+      "sourceVersion": "sha256:bfc70a8c09f9f5616ebf0543bd6681e67314e9f7ae2307e5ae8c6f15bdc5c6a6",
+      "redistributionStatus": "cleared",
+      "license": "GPL-2.0-or-later",
+      "licenseUrl": "https://gitlab.chise.org/CHISE/ids",
+      "conclusion": "Cleared for distribution inside a GPL-3.0-or-later data pack. The CHISE-IDS package is distributed under the GNU GPL version 2 or later, which permits redistribution of derived data under GPL-3.0-or-later; full license texts, NOTICE, and CHISE/CDP attributions ship with the pack.",
+      "evidence": {
+        "basis": "GPL-2.0-or-later: derived data redistributed under GPL-3.0-or-later with license texts and a written offer for the derivation tooling.",
+        "attribution": "CJKVI/CHISE contributors and upstream glyph-description sources; portions of IDS-UCS data derive from the CDP database by C.C. Hsieh and team, Academia Sinica, Taipei.",
+        "notices": [
+          "https://github.com/cjkvi/cjkvi-ids",
+          "https://gitlab.chise.org/CHISE/ids",
+          "https://www.gnu.org/licenses/gpl-3.0.txt"
+        ],
+        "writtenOffer": "Derivation tooling available on request at rongicalol@gmail.com."
+      },
+      "reviewedBy": "Ron (owner)",
+      "reviewedAt": "2026-10-18"
+    },
+    {
+      "sourceId": "makemeahanzi-dictionary",
+      "sourceVersion": "bc8b4ff19cece3ec",
+      "redistributionStatus": "cleared",
+      "license": "LGPL-3.0-or-later",
+      "licenseUrl": "https://github.com/skishore/makemeahanzi/blob/master/COPYING",
+      "conclusion": "Cleared for distribution inside a GPL-3.0-or-later data pack. The Make Me a Hanzi dictionary data is LGPL-3.0-or-later (derived from Unihan and CJKlib); LGPL-3.0 permits conveying the combined derivative under GPL-3.0-or-later, and the LGPL plus Unihan notices and license texts ship with the pack.",
+      "evidence": {
+        "basis": "LGPL-3.0-or-later to GPL-3.0-or-later conversion permitted by LGPL v3 section 2; license texts and notices included.",
+        "attribution": "Make Me a Hanzi contributors; Unihan data copyright Unicode, Inc., used under the Unicode Terms of Use.",
+        "notices": [
+          "https://github.com/skishore/makemeahanzi",
+          "https://www.unicode.org/copyright.html",
+          "https://www.gnu.org/licenses/lgpl-3.0.txt"
+        ],
+        "writtenOffer": "Derivation tooling available on request at rongicalol@gmail.com."
+      },
+      "reviewedBy": "Ron (owner)",
+      "reviewedAt": "2026-10-18"
+    }
+  ]
+}

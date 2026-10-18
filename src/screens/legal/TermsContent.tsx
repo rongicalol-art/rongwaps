@@ -69,6 +69,21 @@ export function TermsContent() {
         </LegalParagraph>
       </LegalSection>
 
+      <LegalSection title="Character data credits">
+        <LegalParagraph>
+          Character decomposition data (component trees and indexes) is derived from the{' '}
+          <a href="https://github.com/cjkvi/cjkvi-ids" className={legalLinkClass}>CJKVI IDS</a>{' '}
+          and <a href="https://gitlab.chise.org/CHISE/ids" className={legalLinkClass}>CHISE</a>{' '}
+          projects (GPL-2.0-or-later; portions of the IDS data derive from the CDP database by
+          C.C. Hsieh and team at Academia Sinica) and{' '}
+          <a href="https://github.com/skishore/makemeahanzi" className={legalLinkClass}>Make Me a Hanzi</a>{' '}
+          (LGPL-3.0-or-later, derived from Unihan and CJKlib; Unihan is © Unicode, Inc.).
+          The generated data pack is distributed under{' '}
+          <a href="https://www.gnu.org/licenses/gpl-3.0.html" className={legalLinkClass}>GPL-3.0-or-later</a>;
+          its full license texts and notices ship with the pack, and the derivation tooling is available on request.
+        </LegalParagraph>
+      </LegalSection>
+
       <LegalSection title="Ending your access">
         <LegalParagraph>
           We may suspend or end accounts that break these terms or put the service at risk, and we may end the

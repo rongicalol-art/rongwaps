@@ -31,6 +31,8 @@
     "course-examples:coverage": "tsx scripts/content/reportCourseExampleCoverage.ts",
     "decomposition:pack": "tsx scripts/character-decomposition/buildDecompositionRuntimePacks.ts",
     "decomposition:pack:full": "DECOMPOSITION_RUNTIME_PACK_FULL_COVERAGE=true tsx scripts/character-decomposition/buildDecompositionRuntimePacks.ts",
+    "decomposition:pack:promote": "tsx scripts/character-decomposition/promoteDecompositionRuntimePack.ts",
+    "decomposition:pack:publish": "tsx scripts/character-decomposition/promoteDecompositionRuntimePack.ts --publish",
     "decomposition:runtime:measure": "tsx scripts/character-decomposition/measureDecompositionRuntime.ts",
     "book-pages:export": "tsx scripts/content/exportBookPages.ts",
     "breakdowns:patch": "tsx scripts/content/patchBreakdowns.ts",

@@ -21,4 +21,6 @@ services:
         sync: false
       - key: VITE_SUPABASE_ANON_KEY
         sync: false
+      - key: VITE_DECOMPOSITION_RUNTIME
+        value: v3
     healthCheckPath: /healthz

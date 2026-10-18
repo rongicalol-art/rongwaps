@@ -15,9 +15,17 @@ One Node service (`npm run build`, then `npm start`) serves the SPA and the API.
 - Probe after deploy: `curl -i https://<host>/data/vocabulary/book-1.json` must return 401; `/data/dictionary/manifest.json` must also return 401 without a token. Every `/data` pack is gated, dictionary included.
 - Use `curl --path-as-is` to check encoded mount names (`/%64ata/grammar/book-1.json`) and duplicate slashes (`//data/grammar/book-1.json`) also return 401 without a token. The gate normalizes the full request path before static-file serving.
 
+## Decomposition runtime pack (V3 character breakdowns)
+
+- `public/data/decomposition-runtime/` ships with the app and is served only through the same authenticated `/data` gate (`server/index.ts` gates the whole directory). `VITE_DECOMPOSITION_RUNTIME=v3` in `render.yaml` selects it; without the flag the client falls back to the legacy breakdown service.
+- Produce the pack in two scripted steps; never hand-edit it: `npm run decomposition:pack:promote` verifies every shard against the candidate manifest checksums and requires cleared license reviews in `content/character-decomposition/license-reviews.json`; `npm run decomposition:pack:publish` copies the promoted pack into `public/data`.
+- The published manifest must read `"publishable": true`, `"distribution": "production"`, and a `licenseGate` with `"status": "approved"` and no open blockers. `RuntimePackLoader` refuses anything else in production, so a bad pack degrades to legacy instead of serving a candidate.
+- License: the pack derives from CHISE/CJKVI IDS (GPL-2.0-or-later), Make Me a Hanzi dictionary data (LGPL-3.0-or-later) and CNS11643 open data (OGDL 1.0), and is distributed under GPL-3.0-or-later. `NOTICE.txt` and `licenses/` ship inside the pack; the Terms page carries the user-facing credits. Keep both in sync when sources change.
+- Probe after deploy: signed out, `/data/decomposition-runtime/manifest.json` returns 401; signed in, it returns the manifest with `publishable: true`.
+
 ## Environment variables
 
-Client (build-time, public): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`; optional `VITE_CONTENT_BASE_URL`, `VITE_AUDIO_BASE_URL`, `VITE_SENTRY_DSN`.
+Client (build-time, public): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`; optional `VITE_CONTENT_BASE_URL`, `VITE_AUDIO_BASE_URL`, `VITE_SENTRY_DSN`, `VITE_DECOMPOSITION_RUNTIME` (`v3` selects the runtime pack), `VITE_DECOMPOSITION_RUNTIME_PACK_BASE_PATH` (defaults to `/data/decomposition-runtime` in production builds).
 
 Server (secret): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`.
 

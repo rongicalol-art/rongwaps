@@ -10,6 +10,16 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-10-18 — Decomposition runtime ships to production as a GPL-3.0-or-later data pack
+
+- Chosen:
+  - The V3 decomposition runtime pack is no longer a development candidate. `output/decomposition-runtime/phase4-full-coverage-candidate` is promoted byte-for-byte (shard checksums verified) to `output/decomposition-runtime/production` by `npm run decomposition:pack:promote` and copied to `public/data/decomposition-runtime` by `npm run decomposition:pack:publish`.
+  - `VITE_DECOMPOSITION_RUNTIME=v3` is set in `render.yaml`; production safety no longer lives in `runtimeMode.ts` — it lives in the pack manifest's license gate. `RuntimePackLoader` still refuses non-publishable packs in production, and development still requires `VITE_DECOMPOSITION_RUNTIME_ALLOW_CANDIDATE=true`.
+  - Licensing: sources are CHISE/CJKVI IDS (GPL-2.0-or-later), Make Me a Hanzi dictionary (LGPL-3.0-or-later), and CNS11643 open data (Taiwan OGDL 1.0). The combined pack is distributed under GPL-3.0-or-later with `NOTICE.txt`, full GPL/LGPL texts, and a written offer for the derivation tooling. Clearances are recorded in `content/character-decomposition/license-reviews.json`; the promotion script refuses to run without them.
+  - The staging database that generated the candidate was later wiped by a local `supabase db reset`, so the generator (`buildDecompositionRuntimePacks.ts`) now resolves license reviews as the effective status if a staging DB is ever restored, but promotion of the surviving artifact is the operative path.
+- Reason: the owner wants the breakdowns live; the data must not change, only its distribution metadata and licensing paperwork.
+- Affects: `scripts/character-decomposition/{packLicensing,promoteDecompositionRuntimePack,buildDecompositionRuntimePacks}.ts`, `content/character-decomposition/license-reviews.json`, `public/data/decomposition-runtime/`, `src/features/character-decomposition/{runtimeMode,decompositionService,runtimeDerivations}.ts`, `tests/unit/decompositionRuntimeLoader.test.ts`, `src/screens/legal/TermsContent.tsx`, `render.yaml`, `vite.config.ts`, `docs/DEPLOY.md`.
+
 ### 2026-10-18 — Edge Neural TTS removed
 
 - Chosen: Edge neural TTS is removed; browser speech is the only text-to-speech fallback.

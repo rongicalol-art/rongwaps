@@ -13,10 +13,14 @@ const __dirname = path.dirname(__filename);
 function decompositionRuntimeDevPackPlugin(): Plugin {
   const configuredPackRoot = process.env.DECOMPOSITION_RUNTIME_PACK_DIR
     || process.env.VITE_DECOMPOSITION_RUNTIME_PACK_DIR;
-  const fullCoveragePack = 'output/decomposition-runtime/phase4-full-coverage-candidate';
-  const defaultPackRoot = existsSync(path.resolve(__dirname, fullCoveragePack, 'manifest.json'))
-    ? fullCoveragePack
-    : 'output/decomposition-runtime/phase4-candidate';
+  const packCandidates = [
+    'output/decomposition-runtime/production',
+    'output/decomposition-runtime/phase4-full-coverage-candidate',
+    'output/decomposition-runtime/phase4-candidate',
+  ];
+  const defaultPackRoot = packCandidates.find((dir) => (
+    existsSync(path.resolve(__dirname, dir, 'manifest.json'))
+  )) ?? packCandidates[0];
   const packRoot = path.resolve(
     __dirname,
     configuredPackRoot ?? defaultPackRoot,

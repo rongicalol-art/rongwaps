@@ -122,17 +122,40 @@ test('production rejects development-only/non-publishable packs', async () => {
   await assert.rejects(loader.getManifest(), RuntimePackSafetyError);
 });
 
-test('feature flag defaults to legacy and requires explicit development candidate opt-in', () => {
+test('production loads a publishable pack with a cleared license gate', async () => {
+  const fixture = makeFixture();
+  fixture.manifest.distribution = 'production';
+  fixture.manifest.publishable = true;
+  fixture.manifest.license = 'GPL-3.0-or-later';
+  fixture.manifest.licenseGate = { status: 'approved', publishable: true, openBlockers: [], note: 'cleared' };
+  const loader = new RuntimePackLoader({ basePath: '/pack', environment: 'production', transport: fixture.transport });
+  const manifest = await loader.getManifest();
+  assert.equal(manifest.publishable, true);
+  assert.equal(manifest.distribution, 'production');
+});
+
+test('feature flag defaults to legacy; production safety comes from the pack license gate', () => {
   assert.equal(getDecompositionRuntimeMode({ DEV: true }), 'legacy');
   assert.equal(getDecompositionRuntimeMode({ DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), 'v3');
-  assert.equal(getDecompositionRuntimeMode({ PROD: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), 'legacy');
+  assert.equal(getDecompositionRuntimeMode({ PROD: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), 'v3');
   assert.equal(allowsDevelopmentCandidatePack({ DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), false);
   assert.equal(allowsDevelopmentCandidatePack({ DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3', VITE_DECOMPOSITION_RUNTIME_ALLOW_CANDIDATE: 'true' }), true);
-  const service = createDecompositionRuntimeService({
+  assert.equal(allowsDevelopmentCandidatePack({ PROD: true, VITE_DECOMPOSITION_RUNTIME: 'v3', VITE_DECOMPOSITION_RUNTIME_ALLOW_CANDIDATE: 'true' }), false);
+  const developmentService = createDecompositionRuntimeService({
     environment: { DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3' },
     legacyLookup: async () => null,
   });
-  assert.equal(service.runtime, 'legacy');
+  assert.equal(developmentService.runtime, 'legacy');
+  const productionService = createDecompositionRuntimeService({
+    environment: { PROD: true, VITE_DECOMPOSITION_RUNTIME: 'v3' },
+    legacyLookup: async () => null,
+  });
+  assert.equal(productionService.runtime, 'v3');
+  const unsetService = createDecompositionRuntimeService({
+    environment: { PROD: true },
+    legacyLookup: async () => null,
+  });
+  assert.equal(unsetService.runtime, 'legacy');
 });
 
 test('lazy lookup loads only needed shards, marks 學 → 𦥯 expandable, and caches warm reads', async () => {

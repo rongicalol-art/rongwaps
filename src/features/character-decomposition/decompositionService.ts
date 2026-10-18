@@ -11,6 +11,7 @@ import {
 import {
   allowsDevelopmentCandidatePack,
   getDecompositionRuntimeMode,
+  getEnvironment,
   getRuntimePackBasePath,
   type DecompositionRuntimeEnvironment,
   type DecompositionRuntimeMode,
@@ -203,21 +204,23 @@ class LegacyDecompositionService implements DecompositionService {
 }
 
 export function createDecompositionRuntimeService(options: DecompositionServiceOptions = {}): DecompositionService {
-  const mode = options.mode ?? getDecompositionRuntimeMode(options.environment);
-  // A blocked candidate cannot become the active application service merely
-  // because VITE_DECOMPOSITION_RUNTIME=v3 was set; it needs the second,
-  // explicit development-candidate opt-in. Tests may inject a loader.
+  const environment = options.environment ?? getEnvironment();
+  const mode = options.mode ?? getDecompositionRuntimeMode(environment);
+  const isProduction = environment.PROD === true || environment.MODE === 'production';
+  // Development and test still need the explicit candidate opt-in so an
+  // unvetted local pack never activates by accident. Production has no such
+  // switch: the runtime pack's own manifest license gate decides, and
+  // RuntimePackLoader refuses development-only candidates outside dev/test.
   if (
     mode !== 'v3'
-    || options.environment?.PROD === true
-    || (!options.v3Loader && !allowsDevelopmentCandidatePack(options.environment))
+    || (!options.v3Loader && !isProduction && !allowsDevelopmentCandidatePack(environment))
   ) {
     return new LegacyDecompositionService(options);
   }
   const loader = options.v3Loader ?? createRuntimePackLoader({
-    basePath: getRuntimePackBasePath(options.environment),
-    allowDevelopmentCandidate: allowsDevelopmentCandidatePack(options.environment),
-    environment: options.environment?.PROD ? 'production' : 'development',
+    basePath: getRuntimePackBasePath(environment),
+    allowDevelopmentCandidate: allowsDevelopmentCandidatePack(environment),
+    environment: isProduction ? 'production' : 'development',
   });
   return new V3DecompositionService(loader);
 }
