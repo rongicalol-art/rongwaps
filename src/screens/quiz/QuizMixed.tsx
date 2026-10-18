@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { useAppStore } from '../../store/useAppStore';
-import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
+import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizBeat, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { useQuizMixed } from './hooks/useQuizMixed';
 import { QuizShell, type QuizModeProps } from './QuizShell';
 import { MeasureWordFollowUp } from './formats/MeasureWordFollowUp';
@@ -37,16 +37,37 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const onBuildReady = useCallback((ready: boolean) => setBuildReady(ready), []);
   const session = useQuizMixed(cards, sessionKey, types ?? undefined);
   const { beat, currentCard, status, followUp, isReviewPass } = session;
+  const audioAbortRef = useRef<AbortController | null>(null);
+  const warmedBeatsRef = useRef<Set<QuizBeat>>(new Set());
   useEffect(() => {
-    if (session.completed) return;
-    const controller = new AbortController();
-    // Warm current and next independently: optional tile audio or a failed download
-    // must never prevent rendering a question or warming the following one.
-    for (const question of session.audioBeats) {
-      void prepareQuizAudio([question], controller.signal, () => {}, () => {}).catch(() => {});
+    const warmed = warmedBeatsRef.current;
+    if (session.completed) {
+      audioAbortRef.current?.abort();
+      audioAbortRef.current = null;
+      warmed.clear();
+      return;
     }
-    return () => controller.abort();
+    if (!audioAbortRef.current || audioAbortRef.current.signal.aborted) {
+      audioAbortRef.current = new AbortController();
+    }
+    const { signal } = audioAbortRef.current;
+    // Warm current and next without aborting lookahead when advancing into the next beat.
+    for (const question of session.audioBeats) {
+      if (warmed.has(question)) continue;
+      warmed.add(question);
+      void prepareQuizAudio([question], signal, () => {}, () => {}).catch(() => {
+        warmed.delete(question);
+      });
+    }
   }, [session.audioBeats, session.completed]);
+  useEffect(() => {
+    const warmed = warmedBeatsRef.current;
+    return () => {
+      audioAbortRef.current?.abort();
+      audioAbortRef.current = null;
+      warmed.clear();
+    };
+  }, []);
   useEffect(() => {
     setBuildReady(false);
   }, [session.beatKey, sessionKey]);

@@ -36,7 +36,6 @@ export const WordBuild: React.FC<WordBuildProps> = ({
   const nextEmpty = slots.indexOf(null);
   const { playTile, cancelTileAudio, audioError, clearAudioError } = useWordBuildAudio(card, tiles, !isChecked && !breakdownOpen);
 
-  useEffect(() => onReadyChange(ready), [ready, onReadyChange]);
   useEffect(() => {
     checkRef.current = ready && !isChecked
       ? () => {
@@ -53,12 +52,16 @@ export const WordBuild: React.FC<WordBuildProps> = ({
     if (empty < 0) return;
     clearAudioError();
     playTile(tiles[tile]);
-    setSlots((previous) => previous.map((slot, i) => (i === empty ? tile : slot)));
+    const nextSlots = slots.map((slot, i) => (i === empty ? tile : slot));
+    setSlots(nextSlots);
+    onReadyChange(nextSlots.every((slot) => slot !== null));
   };
   const clear = (slot: number) => {
     if (isChecked) return;
     cancelTileAudio();
-    setSlots((previous) => previous.map((tile, i) => (i === slot ? null : tile)));
+    const nextSlots = slots.map((tile, i) => (i === slot ? null : tile));
+    setSlots(nextSlots);
+    onReadyChange(false);
   };
   const debugAnswer = () => {
     if (isChecked || breakdownOpen) return;
@@ -82,13 +85,13 @@ export const WordBuild: React.FC<WordBuildProps> = ({
     onDebugAnswer: debugAnswer,
   });
   const tileId = (tile: number) => `word-build-${card.id}-${tile}`;
-  const move = reduceMotion ? { duration: 0 } : { type: 'spring' as const, stiffness: 520, damping: 38 };
+  const move = reduceMotion ? { duration: 0 } : { type: 'spring' as const, stiffness: 620, damping: 36, mass: 0.7 };
 
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.14, ease: 'easeOut' }}
+      initial={reduceMotion ? false : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.12, ease: 'easeOut' }}
       className="flex w-full flex-col items-center gap-4"
     >
       <div className={cn(CARD_SURFACE_CLASS, 'flex min-h-28 w-full items-center justify-center rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border py-6 sm:min-h-32')}>
