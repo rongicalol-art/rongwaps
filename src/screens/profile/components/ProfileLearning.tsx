@@ -63,7 +63,7 @@ export function ProfileRecentWords({ data }: { data: Data }) {
 
   return (
     <section className="profile-card profile-recent">
-      <h2>Recently practiced</h2>
+      <h2><AppIcon name="clock" size={20} className="shrink-0 text-ui-muted" />Recently practiced</h2>
       {content}
     </section>
   );
