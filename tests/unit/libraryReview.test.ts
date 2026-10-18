@@ -10,6 +10,6 @@ test('daily review offers due failed words even before the first word is learned
     onStartReview() {},
     onNavigateToPath() {},
   }));
-  assert.match(html, /Start review/);
+  assert.match(html, /Review words/);
   assert.doesNotMatch(html, /Explore lessons/);
 });

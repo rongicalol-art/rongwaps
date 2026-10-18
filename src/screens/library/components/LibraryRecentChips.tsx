@@ -1,5 +1,3 @@
-import { SectionEyebrow } from '../../../lib/widgets';
-
 export interface RecentItem {
   id: string;
   hanzi: string;
@@ -18,14 +16,14 @@ export function LibraryRecentChips({ items, onSelectWord }: LibraryRecentChipsPr
   if (items.length === 0) {
     return (
       <section aria-label="Recently added" className="min-w-0">
-        <SectionEyebrow title="Recently added" />
+        <h2 className="mb-3 text-base font-black text-ui-ink-strong">Recently added</h2>
         <p className="text-[13px] font-extrabold text-ui-muted">Words you save will show up here.</p>
       </section>
     );
   }
   return (
     <section aria-label="Recently added" className="min-w-0">
-      <SectionEyebrow title="Recently added" />
+      <h2 className="mb-3 text-base font-black text-ui-ink-strong">Recently added</h2>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <button

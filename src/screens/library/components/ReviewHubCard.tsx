@@ -9,6 +9,8 @@ interface ReviewHubCardProps {
   onNavigateToPath: () => void;
 }
 
+const calendarIcon = new URL('../../../assets/icons/cube/schedule.svg', import.meta.url).href;
+
 /** Daily review uses the existing SRS queue, independently of the selected folder. */
 export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartReview, onNavigateToPath }: ReviewHubCardProps) {
   const { knownTotal, dueCount, stages, dailyCompleted = false } = overview;
@@ -16,36 +18,27 @@ export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartRevi
   const sessionBatchSize = overview.dailyCount ?? Math.min(dueCount, REVIEW_SESSION_CAP);
 
   return (
-    <section aria-label="Daily review" data-tone="review" className="rounded-feature bg-brand-primary-soft p-5 sm:p-7">
-      <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-        <div className="min-w-0">
-          <h2 className="text-[22px] font-black text-ui-ink-strong sm:text-2xl">Daily review</h2>
-          <p className="mt-2 text-lg font-extrabold text-ui-ink-strong">
-            {dailyCompleted ? 'Today’s review complete' : dueCount > 0 ? 'About 5 minutes' : hasWords ? 'You’re caught up!' : 'No words to review yet'}
-          </p>
-          <p className="mt-1 text-sm font-bold text-ui-ink">
-            {dailyCompleted ? 'A little practice, every day.' : dueCount > 0
-              ? `${sessionBatchSize} ${sessionBatchSize === 1 ? 'word' : 'words'} picked for you`
-              : hasWords ? 'More words will appear when they’re due.' : 'Study a few words to start your daily review.'}
-          </p>
-          {dueCount > 0 && (
-            <details className="mt-3 text-sm font-bold text-ui-ink">
-              <summary className="cursor-pointer focus-ring-inline">Review details</summary>
-              <p className="mt-1">{dueCount} words are due in your collection. Today’s session is kept small.</p>
-            </details>
-          )}
-        </div>
+    <section aria-label="Daily review" className="group/review min-w-0 rounded-feature border border-ui-divider bg-ui-surface p-5">
+      <div className="flex items-center gap-3">
+        <img src={calendarIcon} alt="" aria-hidden="true" className="h-9 w-9 shrink-0 object-contain motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover/review:-translate-y-0.5" />
+        <h2 className="text-base font-black text-ui-ink-strong">Daily review</h2>
+      </div>
+      <p className="mt-3 text-[13px] font-bold text-ui-muted-strong">
+        {dailyCompleted ? 'Today’s review complete' : dueCount > 0
+          ? `${sessionBatchSize} ${sessionBatchSize === 1 ? 'word' : 'words'} · about 5 min`
+          : hasWords ? 'You’re caught up!' : 'No words to review yet'}
+      </p>
+      <div data-tone="review">
         {dueCount > 0 && !dailyCompleted ? (
-          <div className="shrink-0 sm:w-60">
-            <ActionButton size="lg" fullWidth onClick={onStartReview}>
-              <AppIcon name="play" size={20} />
-              Start review
+          <div className="mt-4">
+            <ActionButton fullWidth onClick={onStartReview} className="normal-case tracking-normal">
+              Review words
+              <AppIcon name="forward" size={18} />
             </ActionButton>
           </div>
         ) : !hasWords && !dailyCompleted ? (
-          <div className="shrink-0 sm:w-60">
-            <ActionButton size="lg" fullWidth onClick={onNavigateToPath}>
-              <AppIcon name="books" size={20} />
+          <div className="mt-4">
+            <ActionButton fullWidth onClick={onNavigateToPath} className="normal-case tracking-normal">
               Explore lessons
             </ActionButton>
           </div>

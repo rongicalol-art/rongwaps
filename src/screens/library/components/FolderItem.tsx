@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { cn } from '../../../utils/cn';
-import { FolderSvg } from '../../../lib/widgets';
+import { AppIcon, FolderSvg } from '../../../lib/widgets';
 
 interface FolderItemProps {
   id: string;
@@ -80,12 +80,8 @@ export function FolderItem({
     }
   };
 
-  const frontColor = isNewButton
-    ? '#E8EDF2'
-    : (colorFront || accentBg?.match(/\[(.*?)\]/)?.[1] || '#1CB0F6');
-  const backColor = isNewButton
-    ? '#D0D8E0'
-    : (colorBack || accentBorder?.match(/\[(.*?)\]/)?.[1] || '#1899D6');
+  const frontColor = colorFront || accentBg?.match(/\[(.*?)\]/)?.[1] || 'var(--color-brand-primary)';
+  const backColor = colorBack || accentBorder?.match(/\[(.*?)\]/)?.[1] || 'var(--color-brand-primary-edge)';
 
   return (
     <button
@@ -100,20 +96,21 @@ export function FolderItem({
         className,
       )}
     >
-      <div className="relative aspect-[25/21] w-full max-w-[150px] transition-transform duration-200 group-hover:-translate-y-1 group-active:translate-y-0 group-active:scale-95 lg:max-w-[168px]">
-        <FolderSvg
-          colorFront={frontColor}
-          colorBack={backColor}
-          hasPlus={isNewButton}
-          isStarred={id === 'starred'}
-        />
+      <div className="relative aspect-[25/21] w-full max-w-40 motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover:-translate-y-1 motion-safe:group-active:translate-y-0 motion-safe:group-active:scale-95 lg:max-w-44">
+        {isNewButton ? (
+          <span className="absolute inset-0 flex items-center justify-center rounded-control border-2 border-dashed border-ui-border text-ui-muted transition-colors group-hover:bg-ui-hover">
+            <AppIcon name="add" size={32} />
+          </span>
+        ) : (
+          <FolderSvg colorFront={frontColor} colorBack={backColor} />
+        )}
       </div>
       <div className="flex flex-col items-center gap-0.5">
-        <span className="block w-full max-w-[170px] line-clamp-2 px-1 text-center text-base font-black leading-tight text-ui-ink-strong">
+        <span className="block w-full max-w-44 line-clamp-2 px-1 text-center text-xs font-black leading-tight text-ui-ink-strong sm:text-base">
           {title}
         </span>
         {!isNewButton && count !== undefined && (
-          <span className="text-[13px] font-extrabold text-ui-muted">
+          <span className="text-xs font-extrabold text-ui-muted">
             {count} {count === 1 ? 'card' : 'cards'}
           </span>
         )}
@@ -121,4 +118,3 @@ export function FolderItem({
     </button>
   );
 }
-

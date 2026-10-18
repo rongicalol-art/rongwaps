@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ActionButton, SectionEyebrow } from '../../../lib/widgets';
+import { ActionButton } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
 import { LibraryRecentChips, type RecentItem } from './LibraryRecentChips';
 
@@ -14,6 +14,7 @@ interface LibraryCollectionSummary {
 }
 
 interface LibraryHomeViewProps {
+  reviewCard?: ReactNode;
   collections: LibraryCollectionSummary[];
   recentItems?: RecentItem[];
   searchQuery: string;
@@ -26,6 +27,7 @@ interface LibraryHomeViewProps {
 
 /** Library home: your folders straight on the page, one line of totals, recently added words. */
 export function LibraryHomeView({
+  reviewCard,
   collections,
   recentItems = [],
   searchQuery,
@@ -45,19 +47,17 @@ export function LibraryHomeView({
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(260px,1fr)] lg:gap-8">
       <section
         aria-label="Folders"
-        className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
+        className="min-w-0"
       >
-        <SectionEyebrow
-          title="Folders"
-          action={(
-            <span className="text-[13px] font-extrabold text-ui-muted">
-              {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
-            </span>
-          )}
-        />
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-base font-black text-ui-ink-strong">Your folders</h2>
+          <span className="text-[13px] font-extrabold text-ui-muted">
+            {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
+          </span>
+        </div>
 
         {visibleCollections.length > 0 ? (
-          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6">
+          <div className="mt-3 grid grid-cols-3 gap-x-3 gap-y-5 sm:gap-x-4 sm:gap-y-6">
             {visibleCollections.map((collection) => (
               <FolderItem
                 key={collection.id}
@@ -80,7 +80,8 @@ export function LibraryHomeView({
         )}
       </section>
 
-      <aside className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:sticky-rail">
+      <aside className="grid min-w-0 gap-7 sm:grid-cols-2 lg:grid-cols-1">
+        {reviewCard}
         <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
       </aside>
     </div>

@@ -130,12 +130,6 @@ export function LibraryScreen({ onStartReview, onNavigateToPath, onAddCard, onPl
         backLabel="Back to Library"
       />
 
-      {activeView === 'home' && (
-        <div className="mx-auto w-full max-w-5xl px-4 pb-6 md:px-8">
-          <ReviewHubCard overview={overview} onStartReview={onStartReview} onNavigateToPath={onNavigateToPath} />
-        </div>
-      )}
-
       <div className="mx-auto w-full max-w-5xl px-4 pb-5 md:px-8">
         <LibrarySearchField
           value={searchQuery}
@@ -154,6 +148,7 @@ export function LibraryScreen({ onStartReview, onNavigateToPath, onAddCard, onPl
           transition={{ duration: 0.15 }}
         >
           <LibraryHomeView
+            reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onNavigateToPath={onNavigateToPath} />}
             collections={allCollections}
             recentItems={recentItems}
             searchQuery={searchQuery}
