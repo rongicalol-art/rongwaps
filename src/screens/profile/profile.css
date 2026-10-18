@@ -1,5 +1,5 @@
 .profile-screen { container: profile / inline-size; }
-.profile-layout { width:100%; max-width:1180px; margin:4px auto 0; padding:4px 16px 56px; display:grid; grid-template-columns:minmax(0,1fr); gap:40px; align-items:start; }
+.profile-layout { width:100%; max-width:72rem; margin:4px auto 0; padding:4px 16px 56px; display:grid; grid-template-columns:minmax(0,1fr); gap:40px; align-items:start; }
 .profile-main { display:grid; gap:28px; min-width:0; }
 .profile-side { display:none; }
 .profile-section-title { margin:0 0 14px; font-size:var(--text-xl); font-weight:900; }
@@ -71,6 +71,7 @@
 .profile-name-input:focus-visible { outline:2px solid var(--color-brand-primary); outline-offset:2px; }
 .profile-panel-footer { padding:14px 16px 20px; flex:none; }
 @media(min-width:768px) {
+  .profile-layout { padding-inline:32px; }
   .profile-panel-body { padding-inline:24px; }
   .profile-panel-footer { padding-inline:24px; }
 }

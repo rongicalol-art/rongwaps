@@ -41,7 +41,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
   };
   return <div className="profile-screen relative flex w-full flex-1 flex-col text-ui-ink-strong">
     <StickyWorkspaceHeader title="Profile" menuToggle={menuToggle} />
-    {isLoading ? <div className="mx-auto w-full max-w-3xl px-4"><ProfileSkeleton /></div> :
+    {isLoading ? <div className="mx-auto w-full max-w-6xl px-4 md:px-8"><ProfileSkeleton /></div> :
       <div className="profile-layout">
         <div className="profile-main">
           <ProfileHeroCard profile={shownProfile} name={name} handle={emailPrefix ? `@${emailPrefix}` : undefined} firstReview={data.firstReview} bookTitle={book?.title || `Modern Chinese ${bookId}`} avatar={avatar} cover={cover} onEdit={() => editor.open({ ...profile, displayName: profile.displayName || fallbackName }, media.avatar || googleAvatar, media.cover)} />
@@ -54,7 +54,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
         </div>
         <aside className="profile-side"><ProfileStreak data={data} /><ProfileRecentWords data={data} /><AppFooter className="pt-1" /></aside>
       </div>}
-    <AppFooter className="profile-footer-mobile mt-auto px-4 pb-10 pt-14" />
+    <AppFooter className="profile-footer-mobile mt-auto px-4 pb-10 pt-14 md:px-8" />
     <EditProfilePanel editor={editor} name={fallbackName} canUpload={Boolean(currentUser)} googleAvatar={googleAvatar} />
   </div>;
 }

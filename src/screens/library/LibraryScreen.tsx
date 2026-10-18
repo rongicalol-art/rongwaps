@@ -133,7 +133,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         backLabel="Back to Library"
       />
 
-      <div className="mx-auto w-full max-w-5xl px-4 pb-5 md:px-8">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-5 md:px-8">
         <LibrarySearchField
           value={searchQuery}
           onChange={setSearchQuery}
@@ -145,7 +145,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
       {activeView === 'home' && (
         <motion.div
           key="home-view"
-          className="mx-auto flex min-h-full w-full max-w-5xl flex-col px-4 pb-32 pt-0 md:px-8 sm:pb-24"
+          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-32 pt-0 md:px-8 sm:pb-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}
@@ -175,7 +175,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
       {activeView === 'folder' && (
         <motion.div
           key="folder-view"
-          className="mx-auto flex w-full min-h-full max-w-5xl flex-col px-4 pb-36 pt-0 md:px-8"
+          className="mx-auto flex w-full min-h-full max-w-6xl flex-col px-4 pb-36 pt-0 md:px-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}
