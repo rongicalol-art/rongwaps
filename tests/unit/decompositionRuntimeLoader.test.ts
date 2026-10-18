@@ -134,10 +134,12 @@ test('production loads a publishable pack with a cleared license gate', async ()
   assert.equal(manifest.distribution, 'production');
 });
 
-test('feature flag defaults to legacy; production safety comes from the pack license gate', () => {
-  assert.equal(getDecompositionRuntimeMode({ DEV: true }), 'legacy');
+test('runtime pack is the default; legacy is the explicit rollback', () => {
+  assert.equal(getDecompositionRuntimeMode({ DEV: true }), 'v3');
   assert.equal(getDecompositionRuntimeMode({ DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), 'v3');
   assert.equal(getDecompositionRuntimeMode({ PROD: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), 'v3');
+  assert.equal(getDecompositionRuntimeMode({ PROD: true }), 'v3');
+  assert.equal(getDecompositionRuntimeMode({ PROD: true, VITE_DECOMPOSITION_RUNTIME: 'legacy' }), 'legacy');
   assert.equal(allowsDevelopmentCandidatePack({ DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3' }), false);
   assert.equal(allowsDevelopmentCandidatePack({ DEV: true, VITE_DECOMPOSITION_RUNTIME: 'v3', VITE_DECOMPOSITION_RUNTIME_ALLOW_CANDIDATE: 'true' }), true);
   assert.equal(allowsDevelopmentCandidatePack({ PROD: true, VITE_DECOMPOSITION_RUNTIME: 'v3', VITE_DECOMPOSITION_RUNTIME_ALLOW_CANDIDATE: 'true' }), false);
@@ -155,7 +157,12 @@ test('feature flag defaults to legacy; production safety comes from the pack lic
     environment: { PROD: true },
     legacyLookup: async () => null,
   });
-  assert.equal(unsetService.runtime, 'legacy');
+  assert.equal(unsetService.runtime, 'v3');
+  const rollbackService = createDecompositionRuntimeService({
+    environment: { PROD: true, VITE_DECOMPOSITION_RUNTIME: 'legacy' },
+    legacyLookup: async () => null,
+  });
+  assert.equal(rollbackService.runtime, 'legacy');
 });
 
 test('lazy lookup loads only needed shards, marks 學 → 𦥯 expandable, and caches warm reads', async () => {

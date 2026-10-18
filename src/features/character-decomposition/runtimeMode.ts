@@ -26,16 +26,17 @@ function isProductionEnvironment(environment: DecompositionRuntimeEnvironment): 
 }
 
 /**
- * `VITE_DECOMPOSITION_RUNTIME=v3` selects the runtime pack in every environment.
- * Production safety does not live here: the pack manifest's license gate does.
- * `RuntimePackLoader` refuses non-publishable packs in production, so a
- * development candidate can never serve production traffic. Development and
- * test builds additionally require the explicit candidate opt-in below.
+ * The published runtime pack is the default; `VITE_DECOMPOSITION_RUNTIME=legacy`
+ * is the rollback switch. Production safety does not live here: the pack
+ * manifest's license gate does. `RuntimePackLoader` refuses non-publishable
+ * packs in production, so a development candidate can never serve production
+ * traffic. Development and test builds additionally require the explicit
+ * candidate opt-in below before any pack is used at all.
  */
 export function getDecompositionRuntimeMode(
   environment: DecompositionRuntimeEnvironment = getEnvironment(),
 ): DecompositionRuntimeMode {
-  return environment.VITE_DECOMPOSITION_RUNTIME === 'v3' ? 'v3' : 'legacy';
+  return environment.VITE_DECOMPOSITION_RUNTIME === 'legacy' ? 'legacy' : 'v3';
 }
 
 export function allowsDevelopmentCandidatePack(
