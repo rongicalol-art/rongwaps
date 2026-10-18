@@ -22,7 +22,6 @@ import { LibrarySkeleton } from './components/LibrarySkeleton';
 import { LibraryCardGrid } from './components/LibraryCardGrid';
 import { LibraryHomeView } from './components/LibraryHomeView';
 import { LibrarySearchField } from './components/LibrarySearchField';
-import { AppFooter } from '../../app/components/AppFooter';
 import { MoveCardsDialog } from './MoveCardsDialog';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
@@ -154,7 +153,6 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
           <LibraryHomeView
             reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onStartMoreReview={onStartMoreReview} onNavigateToPath={onNavigateToPath} />}
             progressCard={<LibraryTocflProgressCard readiness={tocflReadiness} />}
-            footer={<AppFooter className="pt-4" />}
             collections={allCollections}
             recentItems={recentItems}
             searchQuery={searchQuery}

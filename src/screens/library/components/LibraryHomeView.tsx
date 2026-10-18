@@ -16,7 +16,6 @@ interface LibraryCollectionSummary {
 interface LibraryHomeViewProps {
   reviewCard?: ReactNode;
   progressCard?: ReactNode;
-  footer?: ReactNode;
   collections: LibraryCollectionSummary[];
   recentItems?: RecentItem[];
   searchQuery: string;
@@ -31,7 +30,6 @@ interface LibraryHomeViewProps {
 export function LibraryHomeView({
   reviewCard,
   progressCard,
-  footer,
   collections,
   recentItems = [],
   searchQuery,
@@ -90,7 +88,6 @@ export function LibraryHomeView({
         <section className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
         </section>
-        {footer && footer}
       </div>
 
       {(reviewCard || progressCard) && (
