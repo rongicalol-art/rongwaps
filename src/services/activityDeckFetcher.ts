@@ -20,10 +20,11 @@ export async function loadReviewDeck(
   pinnedIds: string[] | null,
 ): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> {
   const store = useAppStore.getState();
+  const activePinned = pinnedIds?.length ? pinnedIds : null;
   let existingPlan = store.dailyReviewPlan?.day === reviewDay() && (store.dailyReviewPlan.cardIds.length || store.dailyReviewPlan.completed) ? store.dailyReviewPlan : null;
   const existingIds = existingPlan?.cardIds;
-  if (pinnedIds && existingIds && (pinnedIds.length !== existingIds.length || pinnedIds.some((id, index) => id !== existingIds[index]))) existingPlan = null;
-  const ids = existingPlan?.completed ? [] : pinnedIds ?? existingPlan?.cardIds ?? deriveLocalDueCardIds(srsData);
+  if (activePinned && existingIds && (activePinned.length !== existingIds.length || activePinned.some((id, index) => id !== existingIds[index]))) existingPlan = null;
+  const ids = existingPlan?.completed ? [] : activePinned ?? existingPlan?.cardIds ?? deriveLocalDueCardIds(srsData);
   const idSet = new Set(ids);
   const courseRows = await fetchAllVocabularyPacks();
   const course = courseRows ? prepareVocabulary(courseRows.filter(row => idSet.has(String(row.id)))) : [];

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ActivityModalWrapper, AppIcon, type AppIconName, LoadingScreen } from '../../lib/widgets';
-import { peekQuizTypes, stashQuizTypes, quizSessionKey } from '../../utils/srs/resumeState';
+import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
@@ -10,7 +10,6 @@ import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
 import type { ActivityType } from '../../types/models';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
 import { PracticeDockSlotProvider, type SessionStats } from '../../features/practice';
@@ -56,13 +55,15 @@ export function ActivityModals({
 
   const resolvedActivity = activeActivity === 'flashcards-library' ? 'flashcards' : activeActivity === 'flashcards-review' ? 'flashcards' : activeActivity;
   const isReviewMode = useAppStore(state => state.isReviewMode);
+  const isReviewSession = isReviewMode || activeActivity === 'flashcards-review';
+  const effectiveLibraryMode = (isLibraryMode || activeActivity === 'flashcards-library') && !isReviewSession;
 
   const isPracticeSession = Boolean(activeActivity && activeActivity !== 'create-card');
   const { cards: deckCards, isLoading: isLoadingDeck } = useActivityDataLoader(
     activeBookId,
     selectedLessons,
-    isReviewMode || activeActivity === 'flashcards-review',
-    isLibraryMode || activeActivity === 'flashcards-library',
+    isReviewSession,
+    effectiveLibraryMode,
   );
 
   // ONE readiness owner for opening a practice session: screen chunk + deck (+ future gates such
@@ -87,7 +88,7 @@ export function ActivityModals({
 
   // Flashcards and quiz are focused sessions on one lesson part: no mode dock. Independent
   // study (several lessons picked on Books) keeps the dock so every mode is one tap away.
-  const isIndependentStudy = selectedLessons.length > 1 && !isReviewMode && !isLibraryMode;
+  const isIndependentStudy = selectedLessons.length > 1 && !isReviewSession && !effectiveLibraryMode;
   const hasDock = isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
   useEffect(() => {
     if (isPracticeSession && !isLoadingDeck) {
@@ -152,8 +153,8 @@ export function ActivityModals({
   } = useActivityStudyParts({
     activeBookId,
     selectedLessons,
-    isLibraryMode,
-    isReviewMode,
+    isLibraryMode: effectiveLibraryMode,
+    isReviewMode: isReviewSession,
     activeActivity,
     onOpenGrammarPart,
   });
@@ -168,34 +169,18 @@ export function ActivityModals({
     if (isReviewMode) {
       useAppStore.getState().setIsReviewMode(false);
     }
-    if (activeActivity === 'create-card') {
-      useAppStore.getState().setActiveReviewSessionCards(null);
-      return;
-    }
-    const sharedKey = getDeckIdentityKey({
-      activeBookId,
-      selectedLessons,
-      selectedLessonParts: useAppStore.getState().selectedLessonParts,
-      libraryActiveFolder: useAppStore.getState().libraryActiveFolder,
-      isReviewDeck: isReviewMode || activeActivity === 'flashcards-review',
-      isLibraryDeck: isLibraryMode || activeActivity === 'flashcards-library',
-    });
-    const store = useAppStore.getState();
-    const batch = store.learningBatches[sharedKey];
-    const unfinishedQuiz = Object.keys(store.sessionProgressIndex).some(key => key === quizSessionKey(sharedKey) || key.startsWith(`${sharedKey}|types:`) || key === `${sharedKey}:typing`);
-    if (!unfinishedQuiz && batch?.every(id => store.learnedCards.includes(id))) store.setLearningBatch(sharedKey, null);
     useAppStore.getState().setActiveReviewSessionCards(null);
   };
 
   const handleWritingClose = useCallback(() => {
-    const defaultStudyCards: ActivityType = isLibraryMode
+    const defaultStudyCards: ActivityType = effectiveLibraryMode
       ? 'flashcards-library'
-      : isReviewMode
+      : isReviewSession
       ? 'flashcards-review'
       : 'flashcards';
     const targetActivity = previousActivityRef.current || defaultStudyCards;
     setActiveActivity(targetActivity);
-  }, [isLibraryMode, isReviewMode, setActiveActivity]);
+  }, [effectiveLibraryMode, isReviewSession, setActiveActivity]);
 
   return (
     <>
@@ -213,7 +198,7 @@ export function ActivityModals({
                   className="absolute inset-0 z-activity bg-ui-practice-canvas"
                 >
                   <LoadingScreen
-                    message={getPracticeLoadingMessage(activeActivity, isReviewMode, isLibraryMode)}
+                    message={getPracticeLoadingMessage(activeActivity, isReviewSession, effectiveLibraryMode)}
                     tone="practice"
                   />
                 </motion.div>
@@ -243,8 +228,8 @@ export function ActivityModals({
                   activeActivity={activeActivity}
                   activeBookId={activeBookId}
                   selectedLessons={selectedLessons}
-                  isReviewMode={isReviewMode}
-                  isLibraryMode={isLibraryMode}
+                  isReviewMode={isReviewSession}
+                  isLibraryMode={effectiveLibraryMode}
                   activeQuizMode={activeQuizMode}
                   direction={direction}
                   onClose={handleClose}
@@ -281,10 +266,10 @@ export function ActivityModals({
                         setActiveActivity('quiz');
                       }}
                       onChange={(nextActivity) => {
-                        if (isLibraryMode && nextActivity === 'flashcards') {
-                          setActiveActivity('flashcards-library');
-                        } else if (isReviewMode && nextActivity === 'flashcards') {
+                        if (isReviewSession && nextActivity === 'flashcards') {
                           setActiveActivity('flashcards-review');
+                        } else if (effectiveLibraryMode && nextActivity === 'flashcards') {
+                          setActiveActivity('flashcards-library');
                         } else {
                           setActiveActivity(nextActivity);
                         }

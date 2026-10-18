@@ -1,4 +1,3 @@
-import { selectLearningBatch } from '../utils/srs/learningBatch';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
@@ -67,13 +66,14 @@ export function useActivityDataLoader(
   isReviewDeck: boolean = false,
   isLibraryDeck: boolean = false,
 ) {
+  const effectiveLibraryDeck = isLibraryDeck && !isReviewDeck;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const deckExclusions = useAppStore((state) => state.deckExclusions);
   const setDeckExclusions = useAppStore((state) => state.setDeckExclusions);
   const { currentUser } = useAuth();
   const currentUserId = currentUser?.id ?? null;
-  const starredFavorites = useAppStore((state) => isLibraryDeck && libraryActiveFolder === 'starred' ? state.favorites : null);
+  const starredFavorites = useAppStore((state) => effectiveLibraryDeck && libraryActiveFolder === 'starred' ? state.favorites : null);
 
   const stableSelectedLessonsKey = useMemo(() => (selectedLessons || []).join(','), [selectedLessons]);
 
@@ -83,8 +83,8 @@ export function useActivityDataLoader(
     selectedLessonParts,
     libraryActiveFolder,
     isReviewDeck,
-    isLibraryDeck,
-  }), [activeBookId, isLibraryDeck, isReviewDeck, libraryActiveFolder, selectedLessonParts, selectedLessons]);
+    isLibraryDeck: effectiveLibraryDeck,
+  }), [activeBookId, effectiveLibraryDeck, isReviewDeck, libraryActiveFolder, selectedLessonParts, selectedLessons]);
 
   const cachedEntry = getCachedActivityDeck(deckExclusionKey);
   const [cards, setCards] = useState<Flashcard[]>(() => cachedEntry?.cards ?? []);
@@ -130,7 +130,7 @@ export function useActivityDataLoader(
       // Stale-while-revalidate: a cached deck (e.g. loaded by the practice modal) stays visible, no loading flip.
       if (!getCachedActivityDeck(deckExclusionKey)) setIsLoading(true);
       setError(null);
-      if (isLibraryDeck && libraryActiveFolder !== 'starred') {
+      if (effectiveLibraryDeck && libraryActiveFolder !== 'starred') {
         if (currentUserId) {
           const subHolder: { current?: () => void } = {};
           subHolder.current = flashcardService.subscribeToUserFlashcards(currentUserId, (customCards) => {
@@ -168,7 +168,7 @@ export function useActivityDataLoader(
           activeBookId,
           selectedLessons: stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [],
           isReviewDeck,
-          isLibraryDeck,
+          isLibraryDeck: effectiveLibraryDeck,
         });
         if (isMounted) {
           knownIdsRef.current = { key: deckExclusionKey, ids: result.knownIds };
@@ -178,7 +178,7 @@ export function useActivityDataLoader(
         debugLogger.error('App', 'useActivityDataLoader failed:', err);
         if (isMounted) {
           setError(err instanceof Error ? err.message : 'Failed to load cards');
-          if (isLibraryDeck) setCards([]);
+          if (effectiveLibraryDeck) setCards([]);
         }
       } finally {
         if (isMounted) {
@@ -193,7 +193,7 @@ export function useActivityDataLoader(
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites]);
+  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites]);
 
   return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
 }
@@ -210,6 +210,7 @@ export async function loadActivityDeck({
   isReviewDeck?: boolean;
   isLibraryDeck?: boolean;
 }): Promise<{ cards: Flashcard[]; deckCards: Flashcard[]; knownIds: Set<string> | null; excludedIds: Set<string> }> {
+  const effectiveLibraryDeck = isLibraryDeck && !isReviewDeck;
   const store = useAppStore.getState();
   const userId = store.currentUser?.id ?? null;
   // Pinned review ids define a fixed session; a fresh review depends on today's SRS.
@@ -219,9 +220,10 @@ export async function loadActivityDeck({
     selectedLessonParts: store.selectedLessonParts,
     libraryActiveFolder: store.libraryActiveFolder,
     isReviewDeck,
-    isLibraryDeck,
+    isLibraryDeck: effectiveLibraryDeck,
   });
-  const source = isLibraryDeck ? store.favorites : isReviewDeck ? store.activeReviewSessionCards ?? store.srsData : store.learningBatches[deckExclusionKey];
+  const pinnedReviewCards = store.activeReviewSessionCards?.length ? store.activeReviewSessionCards : null;
+  const source = effectiveLibraryDeck ? store.favorites : isReviewDeck ? pinnedReviewCards ?? store.srsData : undefined;
   const cached = getCachedActivityDeck(deckExclusionKey);
   const pending = pendingDecks.get(deckExclusionKey);
   let result: { cards: Flashcard[]; knownIds: Set<string> | null };
@@ -232,29 +234,25 @@ export async function loadActivityDeck({
     result = await pending.promise;
   } else {
     const request: Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> = Promise.resolve().then(async () => {
-      const loaded = await (isLibraryDeck
+      const loaded = await (effectiveLibraryDeck
         ? store.libraryActiveFolder === 'starred' ? fetchStarredDeckData(store.favorites) : Promise.resolve({ cards: [], knownIds: null })
-        : isReviewDeck ? loadReviewDeck(store.srsData, store.activeReviewSessionCards)
+        : isReviewDeck ? loadReviewDeck(store.srsData, pinnedReviewCards)
         : fetchCurriculumDeckData(activeBookId, selectedLessons, store.selectedLessonParts));
       if ((useAppStore.getState().currentUser?.id ?? null) !== userId) return { cards: [], knownIds: null };
-      if (!isReviewDeck && !isLibraryDeck && selectedLessons.length === 1) {
-        loaded.cards = selectLearningBatch(loaded.cards, store.srsData, store.learnedCards, store.learningBatches[deckExclusionKey]);
-        if (!store.learningBatches[deckExclusionKey]?.length && loaded.cards.length) {
-          useAppStore.getState().setLearningBatch(deckExclusionKey, loaded.cards.map(card => card.id));
-        }
-      }
       const latest = useAppStore.getState();
-      const latestSource = isLibraryDeck ? latest.favorites : isReviewDeck ? latest.activeReviewSessionCards ?? latest.srsData : undefined;
+      const latestPinned = latest.activeReviewSessionCards?.length ? latest.activeReviewSessionCards : null;
+      const latestSource = effectiveLibraryDeck ? latest.favorites : isReviewDeck ? latestPinned ?? latest.srsData : undefined;
       // A cleared cache, switched account or changed source must not receive an old result.
       if (pendingDecks.get(deckExclusionKey)?.promise === request
-        && (latest.currentUser?.id ?? null) === userId && (latestSource === source || !isReviewDeck && !isLibraryDeck)) {
-        if (isReviewDeck && !isLibraryDeck && !store.activeReviewSessionCards) {
+        && (latest.currentUser?.id ?? null) === userId && (latestSource === source || !isReviewDeck && !effectiveLibraryDeck)) {
+        if (isReviewDeck && !effectiveLibraryDeck && !pinnedReviewCards && loaded.cards.length > 0) {
           latest.setActiveReviewSessionCards(loaded.cards.map((card) => card.id));
         }
         setCachedActivityDeck(deckExclusionKey, {
           ...loaded,
-          source: isReviewDeck && !isLibraryDeck ? useAppStore.getState().activeReviewSessionCards ?? undefined
-            : !isReviewDeck && !isLibraryDeck ? useAppStore.getState().learningBatches[deckExclusionKey] : source,
+          source: isReviewDeck && !effectiveLibraryDeck
+            ? (useAppStore.getState().activeReviewSessionCards?.length ? useAppStore.getState().activeReviewSessionCards : latest.srsData) ?? undefined
+            : source,
         });
         preloadDeckAudio(loaded.cards);
       }

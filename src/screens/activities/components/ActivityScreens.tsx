@@ -93,7 +93,7 @@ export function ActivityScreens({
             activeBookId={activeBookId}
             selectedLessons={selectedLessons}
             isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
-            isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
+            isLibraryDeck={(activeActivity === 'flashcards-library' || isLibraryMode) && !(isReviewMode || activeActivity === 'flashcards-review')}
             onClose={onClose}
             onContinue={onContinue}
             continueLabel={continueLabel}
