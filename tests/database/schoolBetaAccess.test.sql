@@ -1,5 +1,6 @@
 -- Run only in a disposable Postgres database, never against owner progress.
--- psql -v migration=/absolute/path/to/20261016015445_school_beta_access.sql -f this-file
+-- psql -v migration=/absolute/path/to/20261016015445_school_beta_access.sql \
+--   -v course_migration=/absolute/path/to/20261018154836_full_course_access_grants.sql -f this-file
 \set ON_ERROR_STOP on
 do $$ begin
   if current_database() <> 'school_beta_test' then
@@ -23,6 +24,7 @@ create policy owner_only on public.user_profiles for all to authenticated
   using (id = auth.uid()) with check (id = auth.uid());
 grant select, insert on public.user_profiles to authenticated;
 \i :migration
+\i :course_migration
 
 begin;
 create function pg_temp.check_beta(ok boolean, label text) returns void
@@ -45,6 +47,9 @@ select pg_temp.check_beta(private.school_beta_user_allowed('00000000-0000-0000-0
 select pg_temp.check_beta(not private.school_beta_user_allowed('00000000-0000-0000-0000-000000000002'), 'editable metadata cannot grant access');
 select pg_temp.check_beta(not private.school_beta_user_allowed('00000000-0000-0000-0000-000000000003'), 'school email without Workspace claim denied');
 select pg_temp.check_beta(not private.school_beta_user_allowed('00000000-0000-0000-0000-000000000004'), 'owner requires explicit approval');
+select pg_temp.check_beta(private.full_course_user_allowed('00000000-0000-0000-0000-000000000001'), 'granted student gets full-course access');
+select pg_temp.check_beta(not private.full_course_user_allowed('00000000-0000-0000-0000-000000000003'), 'ungranted student has no full-course access');
+select pg_temp.check_beta(not private.full_course_user_allowed('00000000-0000-0000-0000-000000000002'), 'editable metadata cannot grant full-course access');
 select pg_temp.check_beta(not private.school_beta_identity_allowed('google', '{"email":"staff@stu.edu.tw","email_verified":true,"custom_claims":{"hd":"stu.edu.tw"}}'), 'staff denied');
 select pg_temp.check_beta(not private.school_beta_identity_allowed('email', '{"email":"s25113312@stu.edu.tw","email_verified":true,"custom_claims":{"hd":"stu.edu.tw"}}'), 'forged email-provider metadata denied');
 select pg_temp.check_beta(not private.school_beta_identity_allowed('google', '{"email":"s25113312@stu.edu.tw.attacker.test","email_verified":true,"custom_claims":{"hd":"stu.edu.tw"}}'), 'suffix spoof denied');
@@ -67,16 +72,20 @@ set request.jwt.claim.sub = '00000000-0000-0000-0000-000000000001';
 set request.jwt.claim.role = 'authenticated';
 set role authenticated;
 select pg_temp.check_beta(public.has_beta_access(), 'student RPC allowed');
+select pg_temp.check_beta(public.has_full_course_access(), 'explicitly granted student gets full-course access');
 select public.require_school_beta_access();
 select pg_temp.check_beta((select count(*) from public.user_profiles) = 1, 'student still sees only own progress');
 do $$ begin
   begin perform private.school_beta_user_allowed('00000000-0000-0000-0000-000000000002'); raise exception 'arbitrary user lookup exposed'; exception when insufficient_privilege then null; end;
+  begin perform private.full_course_user_allowed('00000000-0000-0000-0000-000000000002'); raise exception 'full-course user lookup exposed'; exception when insufficient_privilege then null; end;
   begin perform * from private.beta_owner_emails; raise exception 'owner list exposed'; exception when insufficient_privilege then null; end;
+  begin perform * from private.full_course_access_emails; raise exception 'full-course grant list exposed'; exception when insufficient_privilege then null; end;
   begin perform private.before_school_beta_signup('{}'); raise exception 'auth hook exposed'; exception when insufficient_privilege then null; end;
 end $$;
 
 set request.jwt.claim.sub = '00000000-0000-0000-0000-000000000002';
 select pg_temp.check_beta(not public.has_beta_access(), 'old personal token denied');
+select pg_temp.check_beta(not public.has_full_course_access(), 'personal account has no full-course access');
 select pg_temp.check_beta((select count(*) from public.user_profiles) = 0, 'old personal token sees no data');
 do $$ begin
   begin perform public.require_school_beta_access(); raise exception 'direct RPC bypass'; exception when sqlstate 'PT403' then null; end;
@@ -96,6 +105,7 @@ set role anon;
 do $$ begin
   begin perform public.require_school_beta_access(); raise exception 'anonymous API access'; exception when sqlstate 'PT401' then null; end;
   begin perform public.has_beta_access(); raise exception 'anonymous access RPC exposed'; exception when insufficient_privilege then null; end;
+  begin perform public.has_full_course_access(); raise exception 'anonymous full-course RPC exposed'; exception when insufficient_privilege then null; end;
 end $$;
 reset role;
 rollback;

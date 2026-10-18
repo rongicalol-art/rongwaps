@@ -27,7 +27,7 @@ export function useAppShell() {
   useCharacterFont();
 
   const shellState = useAppShellState();
-  const { currentUser, isLoading } = useAuth();
+  const { currentUser, hasFullCourseAccess, isLoading } = useAuth();
   const navigation = useAppNavigation();
   const responsiveNav = useResponsiveNav();
 
@@ -68,6 +68,7 @@ export function useAppShell() {
     readings: reader.readings,
     closeReader: actions.handleCloseReader,
     openGrammarPart: actions.handleOpenGrammarPart,
+    hasFullCourseAccess,
   });
 
   const isReaderOpen = reader.isOpeningReader || reader.activeReadingIndex !== null;

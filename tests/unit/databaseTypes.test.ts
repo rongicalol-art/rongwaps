@@ -37,6 +37,7 @@ const EXPECTED_FUNCTIONS = [
   'get_sync_state',
   'handle_new_user',
   'has_beta_access',
+  'has_full_course_access',
   'require_school_beta_access',
   'reset_user_learning_progress',
   'touch_user_profile_updated_at',

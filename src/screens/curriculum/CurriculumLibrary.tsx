@@ -8,6 +8,7 @@ import {
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
+import { useAuth } from '../../hooks/useAuth';
 import { getLessonSelectionKey, getSelectedLessonIds, reconcilePartSelectionsForBook } from '../../utils/lesson/lessonPartSelection';
 import type { ActivityType } from '../../types/models';
 import { AppFooter } from '../../app/components/AppFooter';
@@ -48,6 +49,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   onProfileClick,
 }: CurriculumLibraryProps) {
   const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
+  const { hasFullCourseAccess } = useAuth();
   const activeLearnedCards = useAppStore((state) => (
     state.activeActivity ? null : state.learnedCards
   ));
@@ -74,6 +76,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   );
   const { progress, isLoading, error } = useCourseDashboard({
     activeBookId,
+    hasFullCourseAccess,
     learnedCards: stableLearnedCardsRef.current,
     selectedLessons,
     selectedLessonParts,
@@ -156,6 +159,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
 
         <BookCarousel
           activeBookId={activeBookId}
+          hasFullCourseAccess={hasFullCourseAccess}
           onActiveBookChange={onActiveBookChange}
         />
 

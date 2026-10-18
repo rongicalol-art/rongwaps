@@ -57,3 +57,13 @@ test('isLessonLocked: Intro and 1-8 open, 9+ and books 2-4 locked', async () => 
   assert.equal(isLessonLocked(1, 9), true);
   assert.equal(isLessonLocked(2, 1), true);
 });
+
+test('full-course access unlocks every lesson without changing the beta defaults', async () => {
+  const { SAMPLE_BOOKS, SAMPLE_LESSONS, isLessonLocked } = await import('../../src/data/books');
+  assert.equal(isLessonLocked(1, 9), true);
+  assert.equal(isLessonLocked(1, 9, true), false);
+  assert.equal(isLessonLocked(2, 1, true), false);
+  assert.equal(isLessonLocked(4, 16, true), false);
+  assert.equal(SAMPLE_LESSONS.find((lesson) => lesson.id === 9)?.status, 'locked');
+  assert.equal(SAMPLE_BOOKS.find((book) => book.id === 2)?.status, 'locked');
+});

@@ -229,6 +229,10 @@ export interface Database {
         Args: Record<PropertyKey, never>;
         Returns: boolean;
       };
+      has_full_course_access: {
+        Args: Record<PropertyKey, never>;
+        Returns: boolean;
+      };
       require_school_beta_access: {
         Args: Record<PropertyKey, never>;
         Returns: undefined;

@@ -10,6 +10,7 @@ import { aggregateLessonPartProgress } from '../../../utils/lesson/lessonPartPro
 
 interface UseCourseDashboardOptions {
   activeBookId: number;
+  hasFullCourseAccess: boolean;
   learnedCards: string[];
   selectedLessons: number[];
   selectedLessonParts: LessonPartSelectionMap;
@@ -27,6 +28,7 @@ const EMPTY_PROGRESS: CourseDashboardProgress = {
 
 export function useCourseDashboard({
   activeBookId,
+  hasFullCourseAccess,
   learnedCards,
   selectedLessons,
   selectedLessonParts,
@@ -42,7 +44,7 @@ export function useCourseDashboard({
     setIsLoading(true);
     setError(null);
 
-    if (SAMPLE_BOOKS.find((book) => book.id === activeBookId)?.status === 'locked') {
+    if (!hasFullCourseAccess && SAMPLE_BOOKS.find((book) => book.id === activeBookId)?.status === 'locked') {
       setIsLoading(false);
       return;
     }
@@ -63,25 +65,29 @@ export function useCourseDashboard({
     return () => {
       isMounted = false;
     };
-  }, [activeBookId]);
+  }, [activeBookId, hasFullCourseAccess]);
 
 
   const progress = useMemo<CourseDashboardProgress>(() => {
-    const bookIsLocked = SAMPLE_BOOKS.find((book) => book.id === activeBookId)?.status === 'locked';
-    if (!cards.length && !bookIsLocked) return EMPTY_PROGRESS;
+    const bookIsLocked = !hasFullCourseAccess
+      && SAMPLE_BOOKS.find((book) => book.id === activeBookId)?.status === 'locked';
+    if (!cards.length && !bookIsLocked && !hasFullCourseAccess) return EMPTY_PROGRESS;
 
     const configuredLessons = activeBookId === 1
-      ? [{ id: 0, label: 'Introduction', title: 'Getting Started', status: 'available' }, ...SAMPLE_LESSONS]
+      ? [
+        { id: 0, label: 'Introduction', title: 'Getting Started', status: 'available' },
+        ...SAMPLE_LESSONS.map((lesson) => ({ ...lesson, status: hasFullCourseAccess ? 'available' : lesson.status })),
+      ]
       : SAMPLE_LESSONS.map((lesson, index) => ({
         id: lesson.id,
         label: lesson.label,
         title: bookIsLocked
           ? LOCKED_BOOK_LESSON_TITLES[activeBookId]?.[index] ?? lesson.label
           : lesson.label,
-        status: bookIsLocked ? 'locked' : lesson.status,
+        status: bookIsLocked ? 'locked' : hasFullCourseAccess ? 'available' : lesson.status,
       }));
     const configuredLessonsById = new Map(configuredLessons.map((lesson) => [lesson.id, lesson]));
-    const lessonDefinitions = bookIsLocked
+    const lessonDefinitions = bookIsLocked || hasFullCourseAccess
       ? configuredLessons
       : Array.from(new Set(cards.map((card) => card.lessonId)))
         .sort((a, b) => a - b)
@@ -212,6 +218,7 @@ export function useCourseDashboard({
   }, [
     activeBookId,
     cards,
+    hasFullCourseAccess,
     completedGrammarPartIds,
     learnedCards,
     selectedLessonParts,

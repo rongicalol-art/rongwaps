@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
 import { getSelectedLessonIds } from '../../utils/lesson/lessonPartSelection';
@@ -6,14 +7,14 @@ import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/
 import { isLessonLocked } from '../../data/books';
 import { fetchReadingsPack, fetchDialogueAlignmentPack } from '../../services/contentPacks';
 
-export async function loadReadings(bookId: number): Promise<ReadingRecord[]> {
+export async function loadReadings(bookId: number, hasFullCourseAccess = false): Promise<ReadingRecord[]> {
   const [readings] = await Promise.all([
     fetchReadingsPack(bookId),
     import('../../screens/reader/components/ReadingCanvas'),
     import('../../screens/reader/components/ReadingNarrativeView'),
   ]);
   void fetchDialogueAlignmentPack(bookId);
-  return (readings ?? []).filter((reading) => !isLessonLocked(reading.bookId, reading.lessonId));
+  return (readings ?? []).filter((reading) => !isLessonLocked(reading.bookId, reading.lessonId, hasFullCourseAccess));
 }
 
 export function useReaderLauncher({
@@ -27,6 +28,7 @@ export function useReaderLauncher({
   activeGrammarPartId: string | null;
   onOpen?: () => void;
 }) {
+  const { hasFullCourseAccess } = useAuth();
   const [readings, setReadings] = useState<ReadingRecord[]>([]);
   const [activeReadingIndex, setActiveReadingIndex] = useState<number | null>(null);
   const [isOpening, setIsOpening] = useState(false);
@@ -35,7 +37,7 @@ export function useReaderLauncher({
     onOpen?.();
     setIsOpening(true);
     try {
-      const loaded = await loadReadings(bookId);
+      const loaded = await loadReadings(bookId, hasFullCourseAccess);
       if (!loaded.length) {
         setReadings([]);
         setActiveReadingIndex(null);
@@ -58,13 +60,13 @@ export function useReaderLauncher({
     } finally {
       setIsOpening(false);
     }
-  }, [onOpen, selectedLessons]);
+  }, [hasFullCourseAccess, onOpen, selectedLessons]);
 
   const openReaderForPart = useCallback(async (bookId: number, lessonId: number, partId: number) => {
     onOpen?.();
     setIsOpening(true);
     try {
-      const loaded = await loadReadings(bookId);
+      const loaded = await loadReadings(bookId, hasFullCourseAccess);
       if (!loaded.length) {
         setReadings([]);
         setActiveReadingIndex(null);
@@ -76,7 +78,7 @@ export function useReaderLauncher({
     } finally {
       setIsOpening(false);
     }
-  }, [onOpen]);
+  }, [hasFullCourseAccess, onOpen]);
 
   const closeReader = useCallback(() => {
     setIsOpening(false);
@@ -118,4 +120,3 @@ export function useReaderLauncher({
     navigateReader,
   };
 }
-

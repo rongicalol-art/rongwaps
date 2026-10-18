@@ -553,12 +553,13 @@ export function getInteractiveGrammarManifestForLesson(
 export function findNeighbourGrammarPartId(
   partId: string,
   direction: 'next' | 'previous',
+  hasFullCourseAccess = false,
 ): string | null {
   const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === partId);
   if (index === -1) return null;
   const nextIndex = direction === 'next' ? index + 1 : index - 1;
   const neighbour = INTERACTIVE_GRAMMAR_MANIFEST[nextIndex];
-  return neighbour && !isLessonLocked(neighbour.bookId, neighbour.lessonId) ? neighbour.id : null;
+  return neighbour && !isLessonLocked(neighbour.bookId, neighbour.lessonId, hasFullCourseAccess) ? neighbour.id : null;
 }
 
 export function findGrammarManifestPartForReading(reading: { bookId: number; lessonId: number; dialogueNumber?: number }): GrammarManifestPart | null {
@@ -567,11 +568,14 @@ export function findGrammarManifestPartForReading(reading: { bookId: number; les
   ) ?? null;
 }
 
-export function findNextGrammarManifestPartForReading(reading: { bookId: number; lessonId: number; dialogueNumber?: number }): GrammarManifestPart | null {
+export function findNextGrammarManifestPartForReading(
+  reading: { bookId: number; lessonId: number; dialogueNumber?: number },
+  hasFullCourseAccess = false,
+): GrammarManifestPart | null {
   const part = findGrammarManifestPartForReading(reading);
   if (!part) return null;
   const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === part.id);
   if (index === -1) return null;
   const next = INTERACTIVE_GRAMMAR_MANIFEST[index + 1];
-  return next && !isLessonLocked(next.bookId, next.lessonId) ? next : null;
+  return next && !isLessonLocked(next.bookId, next.lessonId, hasFullCourseAccess) ? next : null;
 }

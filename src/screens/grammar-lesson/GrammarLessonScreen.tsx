@@ -8,6 +8,7 @@ import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useAuth } from '../../hooks/useAuth';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { StudySidePanel, WorkspaceWindow } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
@@ -73,6 +74,7 @@ export function GrammarLessonScreen({
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [isConfusionOpen, setIsConfusionOpen] = useState(false);
   const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const { hasFullCourseAccess } = useAuth();
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
   const handleToggleConfusion = useCallback(() => {
@@ -167,10 +169,10 @@ export function GrammarLessonScreen({
   const navigateToPart = useCallback(
     (direction: 'next' | 'previous') => {
       if (!onNavigatePart) return;
-      const neighbourId = findNeighbourGrammarPartId(part.id, direction);
+      const neighbourId = findNeighbourGrammarPartId(part.id, direction, hasFullCourseAccess);
       if (neighbourId) onNavigatePart(neighbourId);
     },
-    [onNavigatePart, part.id],
+    [onNavigatePart, part.id, hasFullCourseAccess],
   );
 
   useGrammarLessonKeyboardNavigation({

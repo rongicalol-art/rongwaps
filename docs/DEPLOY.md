@@ -39,6 +39,8 @@ Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see 
 
 Apply `supabase/migrations/20261016015445_school_beta_access.sql` before deploying the matching app/server. The database owns the authorization rule: a verified Google identity with a student email (`s` + digits + `@stu.edu.tw`) and Google Workspace `custom_claims.hd = stu.edu.tw`, or a verified Google email explicitly approved in `private.beta_owner_emails`. This confirms school-account membership, not current enrollment. No owner exception is seeded automatically.
 
+`20261018154836_full_course_access_grants.sql` adds a private per-account lesson grant and seeds `s25113312@stu.edu.tw`. Apply it before deploying the matching client. It unlocks all lesson books in the app only after the caller passes the normal school-beta identity check; delete the matching row from `private.full_course_access_emails` to revoke it.
+
 Enable these Authentication hooks after applying the migration:
 
 - Before User Created: `pg-functions://postgres/private/before_school_beta_signup`
@@ -48,7 +50,7 @@ The first filters registrations; the second checks provider-owned identities on 
 
 Grant an owner exception only after the owner explicitly supplies the exact Google email; insert its lowercase value into `private.beta_owner_emails` through an administrative database connection. Removing that row immediately denies subsequent protected requests. Neither client-editable `user_metadata` nor Google's account-picker hints authorize access.
 
-Local security tests: use a disposable Supabase Postgres container, clone its initialized `postgres` database into `school_beta_test`, copy the migration into the container, then run `tests/database/schoolBetaAccess.test.sql` with psql's `migration` variable pointing to the copied file. The fixture refuses other database names and never uses real user progress.
+Local security tests: use a disposable Supabase Postgres container, clone its initialized `postgres` database into `school_beta_test`, copy both migrations into the container, then run `tests/database/schoolBetaAccess.test.sql` with psql's `migration` and `course_migration` variables pointing to them. The fixture refuses other database names and never uses real user progress.
 
 After `npm run build`, run `python3 tests/production/schoolBetaSmoke.py` to exercise the real Express gate with canonical, encoded, duplicate-slash and traversal paths using both GET and HEAD. It starts a temporary server and does not sign in or write progress.
 

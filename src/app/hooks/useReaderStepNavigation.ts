@@ -10,6 +10,7 @@ interface UseReaderStepNavigationOptions {
   readings: ReadingRecord[];
   closeReader: () => void;
   openGrammarPart: (partId: string, pageId?: string | null) => void;
+  hasFullCourseAccess: boolean;
 }
 
 /**
@@ -24,15 +25,16 @@ export function useReaderStepNavigation({
   readings,
   closeReader,
   openGrammarPart,
+  hasFullCourseAccess,
 }: UseReaderStepNavigationOptions) {
   const handleReaderNext = useCallback(() => {
     if (activeReadingIndex === null) return;
     const reading = readings[activeReadingIndex];
-    const nextPart = reading ? findNextGrammarManifestPartForReading(reading) : null;
+    const nextPart = reading ? findNextGrammarManifestPartForReading(reading, hasFullCourseAccess) : null;
     if (!nextPart) return;
     closeReader();
     openGrammarPart(nextPart.id);
-  }, [activeReadingIndex, readings, closeReader, openGrammarPart]);
+  }, [activeReadingIndex, readings, closeReader, openGrammarPart, hasFullCourseAccess]);
 
   const handleReaderPrevious = useCallback(() => {
     if (activeReadingIndex === null) return;

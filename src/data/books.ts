@@ -227,8 +227,9 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 };
 
 
-/** True for any lesson in a locked book or a locked lesson of Book 1 (Introduction, id 0, is open). */
-export function isLessonLocked(bookId: number, lessonId: number): boolean {
+/** True for any beta-locked lesson unless the verified account has a full-course grant. */
+export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {
+  if (hasFullCourseAccess) return false;
   if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
   return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
 }

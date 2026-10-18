@@ -5,9 +5,10 @@ import { useBookCarouselNavigation } from './hooks/useBookCarouselNavigation';
 interface BookCarouselProps {
   activeBookId: number;
   onActiveBookChange: (id: number) => void;
+  hasFullCourseAccess: boolean;
 }
 
-export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselProps) {
+export function BookCarousel({ activeBookId, onActiveBookChange, hasFullCourseAccess }: BookCarouselProps) {
   const activeIndex = Math.max(0, SAMPLE_BOOKS.findIndex((book) => book.id === activeBookId));
   const navigation = useBookCarouselNavigation({
     activeIndex,
@@ -49,7 +50,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
                   if (!navigation.shouldIgnoreClick()) navigation.selectIndex(index);
                 }}
                 className={`absolute left-1/2 top-0 flex w-[280px] items-center justify-center p-2 focus-ring transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none sm:w-[320px] md:w-[360px] ${
-                  book.status === 'locked' ? 'grayscale' : ''
+                  book.status === 'locked' && !hasFullCourseAccess ? 'grayscale' : ''
                 }`}
                 style={{
                   zIndex: isActive ? 20 : Math.max(1, 10 - Math.abs(offset)),

@@ -4,6 +4,7 @@ import { authService } from '../services/authService';
 import { useAppStore, UserSnapshot } from '../store/useAppStore';
 
 let globalUser: User | null = null;
+let globalHasFullCourseAccess = false;
 let globalIsLoading = true;
 const listeners = new Set<() => void>();
 
@@ -31,9 +32,10 @@ function subscribe(callback: () => void) {
   listeners.add(callback);
 
   if (listeners.size === 1 && !unsubscribeAuth) {
-    unsubscribeAuth = authService.onAuthStateChanged((user) => {
+    unsubscribeAuth = authService.onAuthStateChanged((user, hasFullCourseAccess) => {
       clearTimeout(loadingTimeout);
       globalUser = user;
+      globalHasFullCourseAccess = Boolean(user && hasFullCourseAccess);
       globalIsLoading = false;
       const snapshot = userToSnapshot(user);
       useAppStore.getState().setCurrentUser(snapshot);
@@ -52,6 +54,7 @@ function subscribe(callback: () => void) {
 
 export function useAuth() {
   const currentUser = useSyncExternalStore(subscribe, () => globalUser);
+  const hasFullCourseAccess = useSyncExternalStore(subscribe, () => globalHasFullCourseAccess);
   const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading);
   const [isAuthActionLoading, setIsAuthActionLoading] = useState(false);
 
@@ -77,6 +80,7 @@ export function useAuth() {
 
   return {
     currentUser,
+    hasFullCourseAccess,
     isLoading: initialLoading,
     isAuthActionLoading,
     loginWithGoogle,

@@ -36,40 +36,47 @@ test('auth listener authorizes sessions and ignores a stale approval after sign-
   process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
   const auth = supabase.auth;
   let authEvent: ((event: AuthChangeEvent, session: Session | null) => void) | undefined;
-  let resolveAccess: ((value: { data: boolean; error: null; status: number }) => void) | undefined;
-  let nextAccess = Promise.resolve({ data: true, error: null, status: 200 });
+  let resolveBetaAccess: ((value: { data: boolean; error: null; status: number }) => void) | undefined;
+  let nextBetaAccess = Promise.resolve({ data: true, error: null, status: 200 });
+  const nextFullCourseAccess = Promise.resolve({ data: true, error: null, status: 200 });
   const session = { user: { id: 'school-fixture' } } as Session;
-  const observed: Array<User | null> = [];
+  const observed: Array<{ user: User | null; hasFullCourseAccess: boolean }> = [];
   context.mock.method(auth, 'getSession', async () => ({ data: { session: null }, error: null }));
   context.mock.method(auth, 'onAuthStateChange', (callback: (event: AuthChangeEvent, session: Session | null) => void) => {
     authEvent = callback;
     return { data: { subscription: { unsubscribe() {} } } };
   });
-  const rpc = context.mock.method(SupabaseClient.prototype, 'rpc', () => nextAccess);
+  const rpc = context.mock.method(SupabaseClient.prototype, 'rpc', (name: string) => (
+    name === 'has_beta_access' ? nextBetaAccess : nextFullCourseAccess
+  ));
   const signOut = context.mock.method(auth, 'signOut', async () => ({ error: null }));
-  const stop = authService.onAuthStateChanged(user => observed.push(user));
+  const stop = authService.onAuthStateChanged((user, hasFullCourseAccess) => observed.push({ user, hasFullCourseAccess }));
   const settle = () => new Promise(resolve => setTimeout(resolve, 15));
   try {
     await settle();
     authEvent?.('SIGNED_IN', session);
     await settle();
-    assert.equal(observed.at(-1)?.id, 'school-fixture');
+    assert.equal(observed.at(-1)?.user?.id, 'school-fixture');
+    assert.equal(observed.at(-1)?.hasFullCourseAccess, true);
     assert.equal(rpc.mock.calls[0].arguments[0], 'has_beta_access');
+    assert.equal(rpc.mock.calls[1].arguments[0], 'has_full_course_access');
 
-    nextAccess = Promise.resolve({ data: false, error: null, status: 200 });
+    nextBetaAccess = Promise.resolve({ data: false, error: null, status: 200 });
     authEvent?.('SIGNED_IN', session);
     await settle();
-    assert.equal(observed.at(-1), null);
+    assert.equal(observed.at(-1)?.user, null);
+    assert.equal(observed.at(-1)?.hasFullCourseAccess, false);
     assert.equal(signOut.mock.callCount(), 1);
 
-    nextAccess = new Promise(resolve => { resolveAccess = resolve; }) as typeof nextAccess;
+    nextBetaAccess = new Promise(resolve => { resolveBetaAccess = resolve; }) as typeof nextBetaAccess;
     authEvent?.('TOKEN_REFRESHED', session);
     await settle();
     authEvent?.('SIGNED_OUT', null);
     await settle();
-    resolveAccess?.({ data: true, error: null, status: 200 });
+    resolveBetaAccess?.({ data: true, error: null, status: 200 });
     await settle();
-    assert.equal(observed.at(-1), null, 'late RPC must not restore a signed-out account');
+    assert.equal(observed.at(-1)?.user, null, 'late RPC must not restore a signed-out account');
+    assert.equal(observed.at(-1)?.hasFullCourseAccess, false);
   } finally {
     stop();
     delete process.env.VITE_SUPABASE_URL;

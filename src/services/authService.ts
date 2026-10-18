@@ -103,10 +103,10 @@ export const authService = {
     }
   },
 
-  onAuthStateChanged: (callback: (user: User | null) => void) => {
+  onAuthStateChanged: (callback: (user: User | null, hasFullCourseAccess: boolean) => void) => {
     if (!isSupabaseConfigured()) {
       debugLogger.warn('Auth', missingSupabaseMessage);
-      callback(null);
+      callback(null, false);
       return () => {};
     }
     let revision = 0;
@@ -114,24 +114,40 @@ export const authService = {
     let pendingCheck: ReturnType<typeof setTimeout> | undefined;
     const notify = async (session: Session | null, expectedRevision: number) => {
       if (disposed || expectedRevision !== revision) return;
-      if (!session) { callback(null); return; }
+      if (!session) { callback(null, false); return; }
       try {
         const { data, error, status } = await supabase.rpc('has_beta_access');
         if (disposed || expectedRevision !== revision) return;
-        callback(!error && data === true ? session.user : null);
         if ((!error && data !== true) || status === 403 || status === 401) {
+          callback(null, false);
           await supabase.auth.signOut({ scope: 'local' });
+          return;
         }
-        if (error) debugLogger.error('Auth', 'Beta access verification failed', error.code);
+        if (error) {
+          callback(null, false);
+          debugLogger.error('Auth', 'Beta access verification failed', error.code);
+          return;
+        }
+
+        let hasFullCourseAccess = false;
+        try {
+          const { data: fullCourseAccess, error: fullCourseError } = await supabase.rpc('has_full_course_access');
+          if (disposed || expectedRevision !== revision) return;
+          hasFullCourseAccess = !fullCourseError && fullCourseAccess === true;
+          if (fullCourseError) debugLogger.error('Auth', 'Full-course access verification failed', fullCourseError.code);
+        } catch (accessError) {
+          debugLogger.error('Auth', 'Full-course access verification unavailable', accessError);
+        }
+        if (!disposed && expectedRevision === revision) callback(session.user, hasFullCourseAccess);
       } catch (error) {
-        if (!disposed && expectedRevision === revision) callback(null);
+        if (!disposed && expectedRevision === revision) callback(null, false);
         debugLogger.error('Auth', 'Beta access verification unavailable', error);
       }
     };
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (revision === 0) void notify(session, ++revision);
     }).catch((error) => {
-      if (!disposed && revision === 0) callback(null);
+      if (!disposed && revision === 0) callback(null, false);
       debugLogger.error('Auth', 'Session check failed', error);
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
