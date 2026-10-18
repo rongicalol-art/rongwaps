@@ -34,6 +34,7 @@
 .profile-card { background:var(--color-ui-surface); border:2px solid var(--color-ui-divider); border-radius:var(--radius-feature); padding:20px; }
 .profile-card h2 { margin:0 0 14px; font-size:var(--text-lg); font-weight:900; }
 .profile-recent h2 { display:flex; align-items:center; gap:8px; }
+.profile-recent h2 img { width:30px; height:30px; flex:none; }
 .profile-streak-top { display:flex; align-items:center; gap:14px; }
 .profile-streak-top > img { width:52px; height:52px; flex:none; }
 .profile-streak-top > b { font-size:40px; font-weight:900; line-height:1; color:var(--color-streak-edge); font-variant-numeric:tabular-nums; }

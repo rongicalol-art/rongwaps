@@ -7,6 +7,7 @@ const wordsArt = new URL('../../../assets/icons/flat/profile-words.svg', import.
 const charactersArt = new URL('../../../assets/icons/flat/profile-characters.svg', import.meta.url).href;
 const reviewsArt = new URL('../../../assets/icons/flat/profile-reviews.svg', import.meta.url).href;
 const grammarArt = new URL('../../../assets/icons/flat/profile-grammar.svg', import.meta.url).href;
+const practiceArt = new URL('../../../assets/icons/flat/profile-practice.svg', import.meta.url).href;
 type Data = ReturnType<typeof useProfileData>;
 
 export function ProfileStatistics({ data }: { data: Data }) {
@@ -63,7 +64,7 @@ export function ProfileRecentWords({ data }: { data: Data }) {
 
   return (
     <section className="profile-card profile-recent">
-      <h2><AppIcon name="clock" size={20} className="shrink-0 text-ui-muted" />Recently practiced</h2>
+      <h2><img src={practiceArt} alt="" />Recently practiced</h2>
       {content}
     </section>
   );
