@@ -10,7 +10,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
         className="min-w-0 animate-pulse rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-4 sm:px-6"
       >
         <SectionEyebrow title="TOCFL progress" />
-        <div aria-hidden="true" className="mt-4 space-y-4">
+        <div aria-hidden="true" className="mt-2 space-y-4">
           {['A', 'B', 'C'].map((band) => (
             <div key={band} className="space-y-2">
               <div className="h-3 w-3/4 rounded bg-ui-hover" />
@@ -25,7 +25,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
   return (
     <section aria-label="TOCFL character progress" className="min-w-0 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-4 sm:px-6">
       <SectionEyebrow title="TOCFL progress" />
-      <ol className="mt-4 space-y-3">
+      <ol className="mt-2 space-y-3">
         {readiness.bands.map(({ band, known, total }) => {
           const percent = total > 0 ? Math.round((known / total) * 100) : 0;
           const isFocus = band === readiness.focusBand;
