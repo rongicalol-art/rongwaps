@@ -27,6 +27,13 @@ export function usePracticeAnswerAutomation({
   const betweenCardsMs = useAppStore((state) => state.betweenCardsMs);
   const onAdvanceRef = useRef(onAdvance);
   const onCheckRef = useRef(onCheck);
+  const statusStartedAtRef = useRef(Date.now());
+  const prevStatusRef = useRef<AnswerStatus>(status);
+
+  if (prevStatusRef.current !== status) {
+    prevStatusRef.current = status;
+    statusStartedAtRef.current = Date.now();
+  }
 
   useEffect(() => {
     onAdvanceRef.current = onAdvance;
@@ -35,17 +42,21 @@ export function usePracticeAnswerAutomation({
 
   useEffect(() => {
     if (status !== 'correct' || blocked || !autoAdvanceCorrect) return;
+    const elapsed = Date.now() - statusStartedAtRef.current;
+    const delay = Math.max(0, correctDelayMs + betweenCardsMs - elapsed);
     const timer = setTimeout(() => {
       onAdvanceRef.current();
-    }, correctDelayMs + betweenCardsMs);
+    }, delay);
     return () => clearTimeout(timer);
   }, [status, blocked, autoAdvanceCorrect, correctDelayMs, betweenCardsMs]);
 
   useEffect(() => {
     if (status !== 'wrong' || blocked || !autoAdvanceWrong || !advanceWrong) return;
+    const elapsed = Date.now() - statusStartedAtRef.current;
+    const delay = Math.max(0, wrongDelayMs + betweenCardsMs - elapsed);
     const timer = setTimeout(() => {
       onAdvanceRef.current();
-    }, wrongDelayMs + betweenCardsMs);
+    }, delay);
     return () => clearTimeout(timer);
   }, [status, blocked, autoAdvanceWrong, advanceWrong, wrongDelayMs, betweenCardsMs]);
 

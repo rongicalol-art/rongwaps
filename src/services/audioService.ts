@@ -249,49 +249,37 @@ export class AudioService {
       const finish = this.trackPlayback(resolve);
       const startSpeechFallback = () => {
         if (this.activePlaybackFinish !== finish) return;
-        if (options?.fallback === 'none') {
-          options.onUnavailable?.();
+        if (options?.fallback === 'none' || !textToSpeak) {
+          options?.onUnavailable?.();
           finish();
           return;
         }
-        if (textToSpeak) {
-          const fallbackVoice = preferredVoice || 'zh-CN-XiaoxiaoNeural';
-          const fallbackLocale = fallbackVoice.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
-          playNeuralAudio(
-            textToSpeak,
-            fallbackVoice,
-            playbackRate,
-            () => this.activePlaybackFinish === finish,
-            finish,
-            () => void this.startSpeech(textToSpeak, fallbackLocale, 0.86 * playbackRate, finish, true),
-            (audio) => { if (this.activePlaybackFinish === finish) this.activeBlobAudio = audio; },
-            this.globalAudio ?? undefined,
-          );
-        } else {
-          finish();
-        }
+        const fallbackVoice = preferredVoice || 'zh-CN-XiaoxiaoNeural';
+        const fallbackLocale = fallbackVoice.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
+        playNeuralAudio(
+          textToSpeak, fallbackVoice, playbackRate, () => this.activePlaybackFinish === finish, finish,
+          () => void this.startSpeech(textToSpeak, fallbackLocale, 0.86 * playbackRate, finish, true),
+          (audio) => { if (this.activePlaybackFinish === finish) this.activeBlobAudio = audio; },
+          this.globalAudio ?? undefined,
+        );
       };
 
-      if (!audioFileName || !this.isAudioFileName(audioFileName)) {
+      if (!audioFileName || !this.isAudioFileName(audioFileName) || !this.globalAudio) {
         startSpeechFallback();
         return;
       }
 
       const audio = this.globalAudio;
-      if (!audio) {
-        startSpeechFallback();
-        return;
-      }
-
       let fallbackStarted = false;
       const handleAudioFailure = (error?: unknown) => {
         if (fallbackStarted || this.activePlaybackFinish !== finish) return;
         fallbackStarted = true;
-        try {
-          audio.pause();
-          audio.src = '';
-          audio.load?.();
-        } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
+        if (error instanceof Error && (error.name === 'AbortError' || error.name === 'NotAllowedError')) {
+          options?.onUnavailable?.();
+          finish();
+          return;
+        }
+        try { audio.pause(); audio.src = ''; audio.load?.(); } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
         if (options?.fallback !== 'none' && error instanceof Error && error.name === 'TimeoutError' && textToSpeak) {
           const locale = (preferredVoice || '').startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
           void this.startSpeech(textToSpeak, locale, 0.86 * playbackRate, finish, true);

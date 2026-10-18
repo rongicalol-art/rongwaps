@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type MutableRefObject } from 'react';
+import React, { useEffect, useRef, useState, type MutableRefObject } from 'react';
 import { LayoutGroup, motion, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
@@ -32,34 +32,41 @@ export const WordBuild: React.FC<WordBuildProps> = ({
   const answer = Array.from(card.front);
   /** Tile index in each slot (null = empty). */
   const [slots, setSlots] = useState<Array<number | null>>(() => answer.map(() => null));
+  const slotsRef = useRef<Array<number | null>>(slots);
+  slotsRef.current = slots;
   const ready = slots.every((slot) => slot !== null);
   const nextEmpty = slots.indexOf(null);
   const { playTile, cancelTileAudio, audioError, clearAudioError } = useWordBuildAudio(card, tiles, !isChecked && !breakdownOpen);
 
-  useEffect(() => {
-    checkRef.current = ready && !isChecked
-      ? () => {
-        cancelTileAudio(); // Let the parent's full-word completion playback take over.
-        onAnswer(slots.map((tile) => tiles[tile as number]).join('') === card.front);
-      }
-      : null;
-    return () => { checkRef.current = null; };
-  }, [cancelTileAudio, card.front, checkRef, isChecked, onAnswer, ready, slots, tiles]);
+  checkRef.current = ready && !isChecked
+    ? () => {
+      const currentSlots = slotsRef.current;
+      if (currentSlots.some((slot) => slot === null)) return;
+      // Let full-word completion playback take over cleanly without a redundant seek on the old tile.
+      cancelTileAudio(!useAppStore.getState().replayAudioAfterAnswer);
+      onAnswer(currentSlots.map((tile) => tiles[tile as number]).join('') === card.front);
+    }
+    : null;
+
+  useEffect(() => () => { checkRef.current = null; }, [checkRef]);
 
   const place = (tile: number) => {
-    if (isChecked || breakdownOpen || slots.includes(tile)) return;
-    const empty = slots.indexOf(null);
+    const currentSlots = slotsRef.current;
+    if (isChecked || breakdownOpen || currentSlots.includes(tile)) return;
+    const empty = currentSlots.indexOf(null);
     if (empty < 0) return;
     clearAudioError();
     playTile(tiles[tile]);
-    const nextSlots = slots.map((slot, i) => (i === empty ? tile : slot));
+    const nextSlots = currentSlots.map((slot, i) => (i === empty ? tile : slot));
+    slotsRef.current = nextSlots;
     setSlots(nextSlots);
     onReadyChange(nextSlots.every((slot) => slot !== null));
   };
   const clear = (slot: number) => {
     if (isChecked) return;
     cancelTileAudio();
-    const nextSlots = slots.map((tile, i) => (i === slot ? null : tile));
+    const nextSlots = slotsRef.current.map((tile, i) => (i === slot ? null : tile));
+    slotsRef.current = nextSlots;
     setSlots(nextSlots);
     onReadyChange(false);
   };
@@ -72,8 +79,9 @@ export const WordBuild: React.FC<WordBuildProps> = ({
       return index;
     });
     if (solution.some((index) => index < 0)) return;
-    cancelTileAudio();
+    cancelTileAudio(!useAppStore.getState().replayAudioAfterAnswer);
     clearAudioError();
+    slotsRef.current = solution;
     setSlots(solution);
     onReadyChange(true);
     onAnswer(true);

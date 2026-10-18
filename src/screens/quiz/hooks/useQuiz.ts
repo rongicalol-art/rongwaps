@@ -21,17 +21,19 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
-  const { answerAudioPlaying, playWord } = useQuizAnswerAudio();
+  const { answerAudioPlaying, playWord, stopAnswerAudio } = useQuizAnswerAudio();
   const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; options: Flashcard[] } | null>(null);
 
   const session = useCardSession(cards, sessionKey, {
     requeueMissed: false,
     onSessionReset: () => {
+      stopAnswerAudio();
       currentCardChoicesRef.current = null;
       setSelectedOption(null);
       setIsChecked(false);
     },
     onAnswerStateReset: () => {
+      stopAnswerAudio();
       setSelectedOption(null);
       setIsChecked(false);
     },
@@ -59,9 +61,10 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   }, [cards, currentCard, quizChoiceType]);
 
   useEffect(() => {
+    stopAnswerAudio();
     setSelectedOption(null);
     setIsChecked(false);
-  }, [currentCard?.id, quizChoiceType]);
+  }, [currentCard?.id, quizChoiceType, stopAnswerAudio]);
 
   const correctTarget = currentCard ? getCardChoiceTarget(currentCard, quizChoiceType) : null;
   const isCorrect = selectedOption === correctTarget;
@@ -81,6 +84,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     if (!selectedOption) return;
 
     if (isChecked) {
+      stopAnswerAudio();
       setIsChecked(false); // Reset before moving to next card
       setSelectedOption(null);
       session.advanceOrComplete();
@@ -146,15 +150,17 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
 
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
-  const { answerAudioPlaying, playWord } = useQuizAnswerAudio();
+  const { answerAudioPlaying, playWord, stopAnswerAudio } = useQuizAnswerAudio();
 
   const session = useCardSession(cards, sessionKey, {
     requeueMissed: false,
     onSessionReset: () => {
+      stopAnswerAudio();
       setInput('');
       setStatus('idle');
     },
     onAnswerStateReset: () => {
+      stopAnswerAudio();
       setInput('');
       setStatus('idle');
     },
@@ -167,6 +173,7 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     if (!answerValue.trim()) return;
 
     if (status !== 'idle') {
+      stopAnswerAudio();
       const outcome = session.advanceOrComplete();
       if (outcome === 'advanced') {
         session.clearGrading();

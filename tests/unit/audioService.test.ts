@@ -944,6 +944,11 @@ test('active AbortError and synchronous range failures settle playback instead o
       assert.equal(unavailable, 1);
       await service.play('https://audio.example.test/failure-word.mp3', 1, undefined, undefined, 0, { fallback: 'none', onUnavailable: () => unavailable++ });
       assert.equal(unavailable, 2);
+      if (!synchronous) {
+        const spokenBefore = speechState.spoken.length;
+        await service.playCard({ front: '同學', audio: 'https://audio.example.test/failure-card.mp3' }, 1);
+        assert.equal(speechState.spoken.length, spokenBefore, 'AbortError on recorded card must settle immediately without TTS fallback');
+      }
       assert.equal((service.getGlobalAudio() as unknown as FakeAudio).listenerCount('loadedmetadata'), 0);
     }
   } finally { FakeAudio.prototype.play = savedPlay; }

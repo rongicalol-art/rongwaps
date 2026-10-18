@@ -23,6 +23,7 @@ function watchAudioProgress(
   stallTimeoutMs = AUDIO_STALL_TIMEOUT_MS,
 ): AudioProgressWatch {
   let started = false;
+  let waiting = false;
   let stopped = false;
   let timer: ReturnType<typeof setTimeout> | null = null;
 
@@ -30,18 +31,29 @@ function watchAudioProgress(
     if (timer !== null) clearTimeout(timer);
     timer = null;
   };
+  function markPlaying() {
+    if (stopped) return;
+    waiting = false;
+    started = true;
+    clearTimer();
+  }
   function markStarted() {
     if (stopped) return;
     started = true;
     clearTimer();
+    if (waiting) {
+      timer = setTimeout(timeout, stallTimeoutMs);
+    }
   }
   function markWaiting() {
-    if (stopped || !started || timer !== null) return;
+    if (stopped) return;
+    waiting = true;
+    if (!started || timer !== null) return;
     timer = setTimeout(timeout, stallTimeoutMs);
   }
   function detach() {
     if (typeof audio.removeEventListener !== 'function') return;
-    audio.removeEventListener('playing', markStarted);
+    audio.removeEventListener('playing', markPlaying);
     audio.removeEventListener('waiting', markWaiting);
     audio.removeEventListener('stalled', markWaiting);
   }
@@ -57,7 +69,7 @@ function watchAudioProgress(
   }
 
   if (typeof audio.addEventListener === 'function') {
-    audio.addEventListener('playing', markStarted);
+    audio.addEventListener('playing', markPlaying);
     audio.addEventListener('waiting', markWaiting);
     audio.addEventListener('stalled', markWaiting);
   }
@@ -93,11 +105,18 @@ export function playHtmlAudio(
   let settled = false;
   let progressWatch: AudioProgressWatch | null = null;
   let metadataSeek: (() => void) | null = null;
+  const onAbort = () => {
+    const error = new Error('Audio playback aborted');
+    error.name = 'AbortError';
+    fail(error);
+  };
   const cleanup = () => {
     if (settled) return;
     settled = true;
     progressWatch?.stop();
     if (metadataSeek) audio.removeEventListener?.('loadedmetadata', metadataSeek);
+    audio.removeEventListener?.('abort', onAbort);
+    audio.removeEventListener?.('emptied', onAbort);
     metadataSeek = null;
     audio.onended = null;
     audio.onerror = null;
@@ -149,6 +168,8 @@ export function playHtmlAudio(
       onEnd();
     };
     audio.onerror = () => fail(new Error('Audio could not be loaded'));
+    audio.addEventListener?.('abort', onAbort, { once: true });
+    audio.addEventListener?.('emptied', onAbort, { once: true });
 
     progressWatch = watchAudioProgress(audio, () => fail(playbackTimeoutError()));
 

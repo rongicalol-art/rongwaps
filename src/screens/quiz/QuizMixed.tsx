@@ -32,11 +32,15 @@ const PICK_SHAPE: Partial<Record<QuizFormat, { prompt: PickPrompt; choice: PickC
  * varies them and covers each word once.
  */
 export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[] | null }> = ({ cards, sessionKey, types = null, ...shell }) => {
-  const [buildReady, setBuildReady] = useState(false);
   const buildCheck = useRef<(() => void) | null>(null);
-  const onBuildReady = useCallback((ready: boolean) => setBuildReady(ready), []);
   const session = useQuizMixed(cards, sessionKey, types ?? undefined);
   const { beat, currentCard, status, followUp, isReviewPass } = session;
+  const activeBeatId = `${sessionKey}|${session.beatKey}|${currentCard?.id ?? ''}`;
+  const [readyBeatId, setReadyBeatId] = useState<string | null>(null);
+  const buildReady = readyBeatId === activeBeatId;
+  const onBuildReady = useCallback((ready: boolean) => {
+    setReadyBeatId(ready ? activeBeatId : null);
+  }, [activeBeatId]);
   const audioAbortRef = useRef<AbortController | null>(null);
   const warmedBeatsRef = useRef<Set<QuizBeat>>(new Set());
   useEffect(() => {
@@ -68,9 +72,6 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       warmed.clear();
     };
   }, []);
-  useEffect(() => {
-    setBuildReady(false);
-  }, [session.beatKey, sessionKey]);
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === shell.activeBookId) || SAMPLE_BOOKS[0];
 
 

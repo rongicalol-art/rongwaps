@@ -38,7 +38,7 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   const matchPairType = useAppStore((state) => state.matchPairType);
 
   const [status, setStatus] = useState<BeatStatus>('idle');
-  const { answerAudioPlaying, playWord } = useQuizAnswerAudio();
+  const { answerAudioPlaying, playWord, stopAnswerAudio } = useQuizAnswerAudio();
   const [missedLabel, setMissedLabel] = useState('');
   const [followUp, setFollowUp] = useState<FollowUpState>('closed');
   const [inBeatDone, setInBeatDone] = useState(0);
@@ -48,12 +48,13 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   const snapshotRef = useRef<{ key: string; value: RoundSnapshot } | null>(null);
 
   const resetBeat = useCallback(() => {
+    stopAnswerAudio();
     setStatus('idle');
     setMissedLabel('');
     setFollowUp('closed');
     setInBeatDone(0);
     matchRef.current = { done: new Set(), missed: [] };
-  }, []);
+  }, [stopAnswerAudio]);
 
   const typesKey = types?.join(',') ?? '';
   // Picked types keep only the words that fit them (a one-character word has no Build the word).

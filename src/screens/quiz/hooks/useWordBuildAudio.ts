@@ -19,9 +19,12 @@ export function useWordBuildAudio(card: Flashcard, tiles: string[], enabled: boo
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const audioKey = `${card.id}|${card.front}|${card.pinyin}`;
   const tilesKey = [...new Set(tiles)].join('');
-  const cancelTileAudio = useCallback(() => {
+  const cancelTileAudio = useCallback((stopEngine = true) => {
     audioRequest.current++;
-    if (tilePlaying.current) { tilePlaying.current = false; audioService.stop(); }
+    if (tilePlaying.current) {
+      tilePlaying.current = false;
+      if (stopEngine) audioService.pause();
+    }
   }, []);
   const clearAudioError = useCallback(() => {
     setAudioError((prev) => (prev ? '' : prev));
@@ -32,56 +35,55 @@ export function useWordBuildAudio(card: Flashcard, tiles: string[], enabled: boo
     const playing = tilePlaying;
     return () => {
       playbackCounter.current++;
-      if (playing.current) { playing.current = false; audioService.stop(); }
+      if (playing.current) { playing.current = false; audioService.pause(); }
     };
-  }, [audioKey, enabled]);
+  }, [audioKey]);
 
   useEffect(() => {
     const requestCounter = lookupRequest;
     const request = ++requestCounter.current;
     const controller = new AbortController();
     setAudioError((prev) => (prev ? '' : prev));
-    if (enabled) {
-      const characters = Array.from(tilesKey);
-      const promise = getCourseVocabLookupMap().catch(() => new Map<string, Flashcard>()).then(async (recordings) => {
-        const needsSounds = characters.some((char) => wordBuildTileReading(card, char, readings)
-          && !resolveWordBuildTileAudio(card, char, recordings, undefined, readings));
-        const sounds = needsSounds
-          ? await getPronunciationAudioIndex().catch(() => new Map<string, string>()) : undefined;
-        const clips = new Map<string, string>();
-        for (const char of characters) {
-          const audio = resolveWordBuildTileAudio(card, char, recordings, sounds, readings);
-          if (audio) clips.set(char, audio);
-        }
-        if (requestCounter.current === request) {
-          tileAudioRef.current = { key: audioKey, clips };
-          void audioService.preload([...new Set(clips.values())], controller.signal);
-        }
-        return clips;
-      });
-      pendingClipsRef.current = { key: audioKey, promise };
-    }
+    const characters = Array.from(tilesKey);
+    const promise = getCourseVocabLookupMap().catch(() => new Map<string, Flashcard>()).then(async (recordings) => {
+      const needsSounds = characters.some((char) => wordBuildTileReading(card, char, readings)
+        && !resolveWordBuildTileAudio(card, char, recordings, undefined, readings));
+      const sounds = needsSounds
+        ? await getPronunciationAudioIndex().catch(() => new Map<string, string>()) : undefined;
+      const clips = new Map<string, string>();
+      for (const char of characters) {
+        const audio = resolveWordBuildTileAudio(card, char, recordings, sounds, readings);
+        if (audio) clips.set(char, audio);
+      }
+      if (requestCounter.current === request) {
+        tileAudioRef.current = { key: audioKey, clips };
+        void audioService.preload([...new Set(clips.values())], controller.signal);
+      }
+      return clips;
+    });
+    pendingClipsRef.current = { key: audioKey, promise };
     return () => {
       controller.abort();
       requestCounter.current++;
     };
-  }, [audioKey, card, tilesKey, readings, enabled]);
+  }, [audioKey, card, tilesKey, readings]);
 
   const playClip = (audio: string, request: number) => {
     if (audioRequest.current !== request) return;
     tilePlaying.current = true;
     const unavailable = () => { if (audioRequest.current === request) setAudioError('Recording unavailable.'); };
     void audioService.play(audio, pronunciationRate, undefined, undefined, 0, {
-      overlap: true, fallback: 'none', onUnavailable: unavailable,
+      fallback: 'none', onUnavailable: unavailable,
     }).catch(unavailable).then(() => { if (audioRequest.current === request) tilePlaying.current = false; });
   };
 
   const playTile = (char: string) => {
+    if (!enabled) return;
     const request = ++audioRequest.current;
     if (tileAudioRef.current?.key === audioKey) {
       const audio = tileAudioRef.current.clips.get(char);
       if (!audio) {
-        if (tilePlaying.current) { tilePlaying.current = false; audioService.stop(); }
+        if (tilePlaying.current) { tilePlaying.current = false; audioService.pause(); }
         return;
       }
       playClip(audio, request);
@@ -95,7 +97,7 @@ export function useWordBuildAudio(card: Flashcard, tiles: string[], enabled: boo
       });
       return;
     }
-    if (tilePlaying.current) { tilePlaying.current = false; audioService.stop(); }
+    if (tilePlaying.current) { tilePlaying.current = false; audioService.pause(); }
     if (wordBuildTileReading(card, char, readings)) setAudioError('Audio is loading…');
   };
 

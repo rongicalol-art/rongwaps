@@ -131,6 +131,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false,
   } = session;
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
+  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizFormat = useAppStore((state) => state.quizFormat);
   const advance = useCallback(() => {
     if (preparation) return;
@@ -139,7 +140,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     handleCheck();
   }, [handleCheck, preparation]);
 
-  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !answerAudioPlaying;
+  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !replayAudioAfterAnswer && !onCheck;
 
   usePracticeAnswerAutomation({
     status,
