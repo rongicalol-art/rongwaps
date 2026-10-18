@@ -25,11 +25,12 @@ export function ProfileTopics({ data }: { data: Data }) {
     {data.loading ? <p className="text-ui-muted" role="status">Loading topics…</p> : data.failed ? <div role="alert">Couldn’t load vocabulary. <button type="button" className="focus-ring underline" onClick={data.retry}>Retry</button></div> :
       <div className="profile-topics">{Object.entries(data.progress).map(([id, progress]) => {
         const lesson = SAMPLE_LESSONS.find((item) => item.id === Number(id));
-        return <div className="profile-topic" key={id}>
+        const isComplete = progress.known === progress.total;
+        return <div className={isComplete ? 'profile-topic' : 'profile-topic profile-topic-incomplete'} key={id}>
           <img src={LESSON_LANDSCAPE_ART[Number(id)]} alt="" />
           <b>{lesson?.title.split(' · ')[0] ?? `Lesson ${id}`}</b>
           <span>{progress.known} of {progress.total} words</span>
-          {progress.known === progress.total ? <span className="profile-all-known"><AppIcon name="check" size={14} />All known</span> :
+          {isComplete ? <span className="profile-all-known"><AppIcon name="check" size={14} />All known</span> :
             <span className="profile-progress" role="progressbar" aria-label={`${lesson?.label ?? id} words known`} aria-valuenow={progress.known} aria-valuemin={0} aria-valuemax={progress.total}><i style={{ width: `${progress.known / progress.total * 100}%` }} /></span>}
         </div>;
       })}</div>}

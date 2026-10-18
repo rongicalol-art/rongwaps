@@ -21,6 +21,10 @@
 .profile-stat span { display:block; font-size:var(--text-sm); font-weight:800; color:var(--color-ui-muted); margin-top:2px; }
 .profile-topics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
 .profile-topic { display:flex; flex-direction:column; align-items:flex-start; gap:4px; background:var(--color-ui-surface); border:2px solid var(--color-ui-divider); border-bottom-width:5px; border-radius:var(--radius-control); padding:14px 14px 15px; min-width:0; }
+.profile-topic-incomplete { background:var(--color-ui-canvas); }
+.profile-topic-incomplete img { filter:grayscale(1); opacity:.45; }
+.profile-topic-incomplete b { color:var(--color-ui-muted-strong); }
+.profile-topic-incomplete .profile-progress i { background:var(--color-ui-muted); }
 .profile-topic img { height:40px; max-width:100%; width:auto; object-fit:contain; margin-bottom:6px; }
 .profile-topic b { font-size:var(--text-base); font-weight:900; line-height:1.15; overflow-wrap:anywhere; }
 .profile-topic > span { font-size:13px; font-weight:800; color:var(--color-ui-muted); font-variant-numeric:tabular-nums; }
