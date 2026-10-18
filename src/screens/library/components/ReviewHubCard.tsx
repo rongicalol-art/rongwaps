@@ -18,17 +18,19 @@ export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartRevi
   const sessionBatchSize = overview.dailyCount ?? Math.min(dueCount, REVIEW_SESSION_CAP);
 
   return (
-    <section aria-label="Daily review" className="group/review min-w-0 rounded-feature border border-ui-divider bg-ui-surface p-5">
+    <section aria-label="Daily review" data-tone="review" className="min-w-0 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-brand-primary-soft p-4 sm:p-6">
       <div className="flex items-center gap-3">
-        <img src={calendarIcon} alt="" aria-hidden="true" className="h-9 w-9 shrink-0 object-contain motion-safe:transition-transform motion-safe:duration-200 motion-safe:group-hover/review:-translate-y-0.5" />
-        <h2 className="text-base font-black text-ui-ink-strong">Daily review</h2>
+        <img src={calendarIcon} alt="" aria-hidden="true" className="h-10 w-10 shrink-0 object-contain" />
+        <div className="min-w-0">
+          <h2 className="text-lg font-black leading-tight text-ui-ink-strong">Daily review</h2>
+          <p className="text-[13px] font-extrabold text-ui-muted-strong">
+            {dailyCompleted ? 'Today’s review complete' : dueCount > 0
+              ? `${sessionBatchSize} ${sessionBatchSize === 1 ? 'word' : 'words'} · about 5 min`
+              : hasWords ? 'You’re caught up!' : 'No words to review yet'}
+          </p>
+        </div>
       </div>
-      <p className="mt-3 text-[13px] font-bold text-ui-muted-strong">
-        {dailyCompleted ? 'Today’s review complete' : dueCount > 0
-          ? `${sessionBatchSize} ${sessionBatchSize === 1 ? 'word' : 'words'} · about 5 min`
-          : hasWords ? 'You’re caught up!' : 'No words to review yet'}
-      </p>
-      <div data-tone="review">
+      <div>
         {dueCount > 0 && !dailyCompleted ? (
           <div className="mt-4">
             <ActionButton fullWidth onClick={onStartReview} className="normal-case tracking-normal">

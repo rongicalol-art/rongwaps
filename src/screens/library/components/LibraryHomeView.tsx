@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ActionButton } from '../../../lib/widgets';
+import { ActionButton, SectionEyebrow } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
 import { LibraryRecentChips, type RecentItem } from './LibraryRecentChips';
 
@@ -47,17 +47,19 @@ export function LibraryHomeView({
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(260px,1fr)] lg:gap-8">
       <section
         aria-label="Folders"
-        className="min-w-0"
+        className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
       >
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-base font-black text-ui-ink-strong">Your folders</h2>
-          <span className="text-[13px] font-extrabold text-ui-muted">
-            {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
-          </span>
-        </div>
+        <SectionEyebrow
+          title="Folders"
+          action={(
+            <span className="text-[13px] font-extrabold text-ui-muted">
+              {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
+            </span>
+          )}
+        />
 
         {visibleCollections.length > 0 ? (
-          <div className="mt-3 grid grid-cols-3 gap-x-3 gap-y-5 sm:gap-x-4 sm:gap-y-6">
+          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6">
             {visibleCollections.map((collection) => (
               <FolderItem
                 key={collection.id}
@@ -80,9 +82,11 @@ export function LibraryHomeView({
         )}
       </section>
 
-      <aside className="grid min-w-0 gap-7 sm:grid-cols-2 lg:grid-cols-1">
-        {reviewCard}
-        <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
+      <aside className="grid min-w-0 gap-6 max-lg:contents lg:sticky-rail">
+        {reviewCard && <div className="min-w-0 max-lg:order-first">{reviewCard}</div>}
+        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
+          <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
+        </div>
       </aside>
     </div>
   );
