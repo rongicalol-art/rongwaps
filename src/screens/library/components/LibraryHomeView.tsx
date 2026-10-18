@@ -15,6 +15,7 @@ interface LibraryCollectionSummary {
 
 interface LibraryHomeViewProps {
   reviewCard?: ReactNode;
+  footer?: ReactNode;
   collections: LibraryCollectionSummary[];
   recentItems?: RecentItem[];
   searchQuery: string;
@@ -28,6 +29,7 @@ interface LibraryHomeViewProps {
 /** Library home: your folders straight on the page, one line of totals, recently added words. */
 export function LibraryHomeView({
   reviewCard,
+  footer,
   collections,
   recentItems = [],
   searchQuery,
@@ -87,6 +89,7 @@ export function LibraryHomeView({
         <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
         </div>
+        {footer}
       </aside>
     </div>
   );

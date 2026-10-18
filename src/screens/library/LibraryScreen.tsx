@@ -150,6 +150,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         >
           <LibraryHomeView
             reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onStartMoreReview={onStartMoreReview} onNavigateToPath={onNavigateToPath} />}
+            footer={<AppFooter className="pt-4" />}
             collections={allCollections}
             recentItems={recentItems}
             searchQuery={searchQuery}
@@ -166,7 +167,6 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
             }}
             onSelectWord={setDictionaryWord}
           />
-          <AppFooter className="mt-auto pt-12" />
         </motion.div>
       )}
 
