@@ -64,7 +64,7 @@ function measureWord(root: HTMLElement | null, surface: HTMLElement) {
   return font ? { cx: ((left + right) / 2 - base.left) / k, cy: ((top + bottom) / 2 - base.top) / k, font } : null;
 }
 
-/** The card's own border (same widths and radius) tints green or red as it is dragged toward Got it (ok) or Hard (no). */
+/** The card's own border (same widths and radius) tints green or red as it is dragged toward Got it (ok) or Again (no). */
 function SwipeVerdict({ side }: { side: 'ok' | 'no' }) {
   const ok = side === 'ok';
   const v = ok ? '--rw-swipe-ok' : '--rw-swipe-no';

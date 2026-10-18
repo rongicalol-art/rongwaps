@@ -29,7 +29,7 @@ export interface SessionStats {
   /** Every distinct word of the round (the chips that pour into the Words tile). */
   words: string[];
   firstTryPct: number;
-  /** Forgot and With effort words remain available after the following quiz. */
+  /** Again and Hard words remain available after the following quiz. */
   trickyCardIds?: string[];
   /** Epoch ms of the first flashcard. */
   startedAt: number;

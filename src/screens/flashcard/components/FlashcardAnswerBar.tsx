@@ -52,10 +52,10 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
             fullWidth
             onClick={onHard}
             edgeColor="color-mix(in srgb, var(--color-feedback-danger-edge) 50%, var(--color-ui-border))"
-            className="!text-feedback-danger-edge/80"
+            className="!text-feedback-danger-edge/80 max-sm:!text-sm max-sm:!px-3"
           >
             <span className={hintedLabelClass}>
-              Forgot
+              Again
               <KeyChip visible={hintsVisible} className="border-ui-border text-ui-muted">1</KeyChip>
             </span>
           </ActionButton>
@@ -65,10 +65,10 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
             fullWidth
             onClick={onUnsure}
             edgeColor="color-mix(in srgb, var(--color-feedback-warning-edge) 50%, var(--color-ui-border))"
-            className="!text-feedback-warning-ink/80"
+            className="!text-feedback-warning-ink/80 max-sm:!text-sm max-sm:!px-3"
           >
             <span className={hintedLabelClass}>
-              With effort
+              Hard
               <KeyChip visible={hintsVisible} className="border-ui-border text-ui-muted">2</KeyChip>
             </span>
           </ActionButton>
@@ -78,7 +78,7 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
             fullWidth
             onClick={onGotIt}
             edgeColor="color-mix(in srgb, var(--color-feedback-success-edge) 50%, var(--color-ui-border))"
-            className="!text-feedback-success-edge/80"
+            className="!text-feedback-success-edge/80 max-sm:!text-sm max-sm:!px-3"
           >
             <span className={hintedLabelClass}>
               Got it

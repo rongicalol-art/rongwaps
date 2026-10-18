@@ -5,7 +5,7 @@ import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardS
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 
 /**
- * Forgot / With effort / Got it: difficult-but-correct recall is a success.
+ * Again / Hard / Got it: difficult-but-correct recall is a success.
  */
 export function levelToQuality(level: number): CardSessionQuality {
   if (level === 1) return 1;

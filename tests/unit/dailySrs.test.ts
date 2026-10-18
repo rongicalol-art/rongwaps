@@ -13,7 +13,7 @@ const context = (source: ReviewContext['source'] = 'daily'): ReviewContext => ({
 });
 const empty = (): ReviewProgressState => ({ srsData: {}, learnedCards: [], sessionProgress: createEmptySessionProgress(), reviewEvents: [] });
 
-test('With effort is correct recall with a different FSRS outcome than Forgot', () => {
+test('Hard is correct recall with a different FSRS outcome than Again', () => {
   const now = Date.now();
   const forgot = calculateNextReview(undefined, 'word', 1, now);
   const effort = calculateNextReview(undefined, 'word', 3, now);
