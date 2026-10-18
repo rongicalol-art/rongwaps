@@ -8,7 +8,7 @@ export function EditProfilePanel({ editor, name, canUpload, googleAvatar }: {
   editor: Editor; name: string; canUpload: boolean; googleAvatar?: string;
 }) {
   const draft = editor.draft;
-  return <Drawer.Root open={Boolean(draft)} onClose={editor.close} tone="surface" workspaceBound instant>
+  return <Drawer.Root open={Boolean(draft)} onClose={editor.close} tone="surface" workspaceBound>
     <Drawer.Backdrop className="bg-ui-ink-strong/20" />
     <Drawer.Content size="full" mdPlacement="side" heightClassName="max-h-[88dvh] md:max-h-full" className="profile-edit-panel" dragToDismiss={false}>
       <div className="profile-panel-header"><IconActionButton variant="surface" label="Close edit profile" icon={<AppIcon name="close" size={18} />} onClick={editor.close} /><Drawer.Title>Edit profile</Drawer.Title></div>
