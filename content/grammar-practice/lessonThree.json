@@ -588,172 +588,7 @@
       {
         "id": "l3-g2-book-1",
         "source": "p.75 #1",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "giver",
-                "answers": [
-                  "他"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "verb",
-                "answers": [
-                  "送"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "person",
-                "answers": [
-                  "爸爸"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "gift",
-                "answers": [
-                  "一本書"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "一本書",
-            "simplified": "一本书",
-            "pinyin": "yì běn shū"
-          },
-          {
-            "traditional": "爸爸",
-            "pinyin": "bàba"
-          },
-          {
-            "traditional": "送",
-            "pinyin": "sòng"
-          },
-          {
-            "traditional": "媽媽",
-            "simplified": "妈妈",
-            "pinyin": "māma"
-          },
-          {
-            "traditional": "他",
-            "pinyin": "tā"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "媽媽"
-            ],
-            "mark": [
-              "媽媽"
-            ],
-            "note": "The boy in the picture gives the book to his father, 爸爸."
-          },
-          {
-            "slot": {
-              "id": "giver",
-              "tile": "送"
-            },
-            "note": "送 follows the giver."
-          },
-          {
-            "slot": {
-              "id": "giver",
-              "tile": "爸爸"
-            },
-            "note": "After 送, the person comes first: 送爸爸."
-          },
-          {
-            "slot": {
-              "id": "giver",
-              "tile": "一本書"
-            },
-            "note": "The gift comes last, after the person: 送爸爸一本書."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "他"
-            },
-            "note": "The giver comes first: 他送…."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "爸爸"
-            },
-            "note": "After 送, the person comes first: 送爸爸."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "一本書"
-            },
-            "note": "The gift comes last, after the person: 送爸爸一本書."
-          },
-          {
-            "slot": {
-              "id": "person",
-              "tile": "他"
-            },
-            "note": "The giver comes first: 他送…."
-          },
-          {
-            "slot": {
-              "id": "person",
-              "tile": "送"
-            },
-            "note": "送 follows the giver."
-          },
-          {
-            "slot": {
-              "id": "person",
-              "tile": "一本書"
-            },
-            "note": "The gift comes last, after the person: 送爸爸一本書."
-          },
-          {
-            "slot": {
-              "id": "gift",
-              "tile": "他"
-            },
-            "note": "The giver comes first: 他送…."
-          },
-          {
-            "slot": {
-              "id": "gift",
-              "tile": "送"
-            },
-            "note": "送 follows the giver."
-          },
-          {
-            "slot": {
-              "id": "gift",
-              "tile": "爸爸"
-            },
-            "note": "After 送, the person comes first: 送爸爸."
-          }
-        ],
-        "fallbackRepair": "Giver, 送, person, then gift: 他送爸爸一本書。",
-        "result": {
-          "traditional": "他送爸爸一本書。",
-          "simplified": "他送爸爸一本书。",
-          "pinyin": "Tā sòng bàba yì běn shū.",
-          "english": "He gives his father a book."
-        },
+        "prompt": "What does the boy give his father?",
         "scene": {
           "type": "picture",
           "page": 75,
@@ -765,132 +600,63 @@
           ],
           "alt": "A boy hands a book to his father."
         },
-        "prompt": "What does the boy give his father?"
-      },
-      {
-        "id": "l3-g2-book-2",
-        "source": "p.75 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我想",
-                "simplified": "我想"
-              },
-              {
-                "type": "slot",
-                "id": "verb",
-                "answers": [
-                  "送"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "receiver",
-                "answers": [
-                  "她"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "amount",
-                "answers": [
-                  "一個"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "大蛋糕。",
-                "simplified": "大蛋糕。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
         "tiles": [
           {
-            "traditional": "一個",
-            "simplified": "一个",
-            "pinyin": "yí ge"
+            "traditional": "送",
+            "pinyin": "sòng"
           },
           {
-            "traditional": "她",
-            "simplified": "她",
+            "traditional": "一本書",
+            "simplified": "一本书",
+            "pinyin": "yì běn shū"
+          },
+          {
+            "traditional": "他",
             "pinyin": "tā"
           },
           {
-            "traditional": "一本",
-            "simplified": "一本",
-            "pinyin": "yì běn"
+            "traditional": "爸爸",
+            "pinyin": "bàba"
           },
           {
-            "traditional": "送",
-            "simplified": "送",
-            "pinyin": "sòng"
+            "traditional": "的",
+            "pinyin": "de"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "送",
+              "爸爸",
+              "一本書"
+            ],
+            "sentence": {
+              "traditional": "他送爸爸一本書。",
+              "simplified": "他送爸爸一本书。",
+              "pinyin": "Tā sòng bàba yì běn shū.",
+              "english": "He gives his father a book."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一本"
+              "的"
             ],
             "mark": [
-              "一本"
+              "的"
             ],
-            "note": "本 counts books; a cake takes 個: 一個大蛋糕."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "她"
-            },
-            "note": "After 送, the person comes first: 送她."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "一個"
-            },
-            "note": "The gift comes after the person: 送她一個大蛋糕."
-          },
-          {
-            "slot": {
-              "id": "receiver",
-              "tile": "送"
-            },
-            "note": "送 comes right after 想."
-          },
-          {
-            "slot": {
-              "id": "receiver",
-              "tile": "一個"
-            },
-            "note": "The gift comes after the person: 送她一個大蛋糕."
-          },
-          {
-            "slot": {
-              "id": "amount",
-              "tile": "送"
-            },
-            "note": "送 comes right after 想."
-          },
-          {
-            "slot": {
-              "id": "amount",
-              "tile": "她"
-            },
-            "note": "After 送, the person comes first: 送她."
+            "note": "爸爸 receives the book; do not join him to the gift with 的."
           }
         ],
-        "fallbackRepair": "After 送: person first, then the gift: 我想送她一個大蛋糕。",
-        "result": {
-          "traditional": "我想送她一個大蛋糕。",
-          "simplified": "我想送她一个大蛋糕。",
-          "pinyin": "Wǒ xiǎng sòng tā yí ge dà dàngāo.",
-          "english": "I want to give her a big cake."
-        },
+        "fallbackRepair": "Put the giver first, then 送, the receiver and the gift."
+      },
+      {
+        "id": "l3-g2-book-2",
+        "source": "p.75 #2",
+        "prompt": "You are the boy. Say what you want to give her.",
         "scene": {
           "type": "picture",
           "page": 75,
@@ -902,132 +668,69 @@
           ],
           "alt": "A boy imagines giving a girl a large cake."
         },
-        "prompt": "You are the boy. Say what you want to give her."
-      },
-      {
-        "id": "l3-g2-book-3",
-        "source": "p.75 #3",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我",
-                "simplified": "我"
-              },
-              {
-                "type": "slot",
-                "id": "verb",
-                "answers": [
-                  "送"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "receiver",
-                "answers": [
-                  "英國同學"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "amount",
-                "answers": [
-                  "一本"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "中文書。",
-                "simplified": "中文书。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
         "tiles": [
           {
-            "traditional": "一本",
-            "simplified": "一本",
-            "pinyin": "yì běn"
-          },
-          {
-            "traditional": "英國同學",
-            "simplified": "英国同学",
-            "pinyin": "Yīngguó tóngxué"
-          },
-          {
             "traditional": "送",
-            "simplified": "送",
             "pinyin": "sòng"
           },
           {
             "traditional": "一個",
             "simplified": "一个",
             "pinyin": "yí ge"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "我想",
+            "pinyin": "wǒ xiǎng"
+          },
+          {
+            "traditional": "她",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "大蛋糕",
+            "simplified": "大蛋糕",
+            "pinyin": "dà dàngāo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我想",
+              "送",
+              "她",
+              "一個",
+              "大蛋糕"
+            ],
+            "sentence": {
+              "traditional": "我想送她一個大蛋糕。",
+              "simplified": "我想送她一个大蛋糕。",
+              "pinyin": "Wǒ xiǎng sòng tā yí ge dà dàngāo.",
+              "english": "I want to give her a big cake."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一個"
+              "的"
             ],
             "mark": [
-              "一個"
+              "的"
             ],
-            "note": "個 is the general word, but books take 本: 一本中文書."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "英國同學"
-            },
-            "note": "After 送, the person comes first: 送英國同學."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "一本"
-            },
-            "note": "The gift comes after the person: 一本中文書."
-          },
-          {
-            "slot": {
-              "id": "receiver",
-              "tile": "送"
-            },
-            "note": "送 comes right after 我."
-          },
-          {
-            "slot": {
-              "id": "receiver",
-              "tile": "一本"
-            },
-            "note": "The gift comes after the person: 一本中文書."
-          },
-          {
-            "slot": {
-              "id": "amount",
-              "tile": "送"
-            },
-            "note": "送 comes right after 我."
-          },
-          {
-            "slot": {
-              "id": "amount",
-              "tile": "英國同學"
-            },
-            "note": "After 送, the person comes first: 送英國同學."
+            "note": "她 is the receiver, not the owner of the cake; put her directly after 送."
           }
         ],
-        "fallbackRepair": "After 送: person first, then the gift: 我送英國同學一本中文書。",
-        "result": {
-          "traditional": "我送英國同學一本中文書。",
-          "simplified": "我送英国同学一本中文书。",
-          "pinyin": "Wǒ sòng Yīngguó tóngxué yì běn Zhōngwén shū.",
-          "english": "I give my British classmate a book in Chinese."
-        },
+        "fallbackRepair": "Put 送 before 她 and the gift after her."
+      },
+      {
+        "id": "l3-g2-book-3",
+        "source": "p.75 #3",
+        "prompt": "You are the woman. Say what you give your British classmate.",
         "scene": {
           "type": "picture",
           "page": 75,
@@ -1039,7 +742,64 @@
           ],
           "alt": "A woman hands a book-shaped gift to a man."
         },
-        "prompt": "You are the woman. Say what you give your British classmate."
+        "kind": "order-build",
+        "tiles": [
+          {
+            "traditional": "送",
+            "pinyin": "sòng"
+          },
+          {
+            "traditional": "一本",
+            "pinyin": "yì běn"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "英國同學",
+            "simplified": "英国同学",
+            "pinyin": "Yīngguó tóngxué"
+          },
+          {
+            "traditional": "中文書",
+            "simplified": "中文书",
+            "pinyin": "Zhōngwén shū"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "送",
+              "英國同學",
+              "一本",
+              "中文書"
+            ],
+            "sentence": {
+              "traditional": "我送英國同學一本中文書。",
+              "simplified": "我送英国同学一本中文书。",
+              "pinyin": "Wǒ sòng Yīngguó tóngxué yì běn Zhōngwén shū.",
+              "english": "I give my British classmate a book in Chinese."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "英國同學 is the receiver; no 的 belongs between the receiver and the gift."
+          }
+        ],
+        "fallbackRepair": "Put the receiver after 送 and before 一本中文書."
       },
       {
         "id": "l3-g2-own-listen",
@@ -1519,83 +1279,7 @@
       {
         "id": "l3-g4-book-1",
         "source": "p.84 #1",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你喜歡哪個禮物？",
-                "simplified": "你喜欢哪个礼物？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            }
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我喜歡",
-                "simplified": "我喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "pick",
-                "answers": [
-                  "大的"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "大的",
-            "pinyin": "dà de"
-          },
-          {
-            "traditional": "小的",
-            "pinyin": "xiǎo de"
-          },
-          {
-            "traditional": "很大",
-            "pinyin": "hěn dà"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "小的"
-            ],
-            "note": "The gift on the left is the big one: 大的."
-          },
-          {
-            "placed": [
-              "很大"
-            ],
-            "note": "很大 describes something (\"it is …\"). To name \"the … one\", use 大的."
-          }
-        ],
-        "fallbackRepair": "Adjective + 的 names \"the … one\": 大的.",
-        "result": {
-          "traditional": "我喜歡大的。",
-          "simplified": "我喜欢大的。",
-          "pinyin": "Wǒ xǐhuān dà de.",
-          "english": "I like the big one."
-        },
+        "prompt": "You want the gift on the left. Answer.",
         "scene": {
           "type": "picture",
           "page": 84,
@@ -1607,90 +1291,64 @@
           ],
           "alt": "A large wrapped gift on the left and a smaller one on the right."
         },
-        "prompt": "You want the gift on the left. Answer."
-      },
-      {
-        "id": "l3-g4-book-2",
-        "source": "p.84 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你要買哪本書？",
-                "simplified": "你要买哪本书？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            }
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我要買",
-                "simplified": "我要买"
-              },
-              {
-                "type": "slot",
-                "id": "pick",
-                "answers": [
-                  "舊的"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "sub": "你喜歡哪個禮物？",
         "tiles": [
           {
-            "traditional": "舊的",
-            "simplified": "旧的",
-            "pinyin": "jiù de"
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
           },
           {
-            "traditional": "新的",
-            "pinyin": "xīn de"
+            "traditional": "的",
+            "pinyin": "de"
           },
           {
-            "traditional": "很舊",
-            "simplified": "很旧",
-            "pinyin": "hěn jiù"
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "大",
+            "pinyin": "dà"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "喜歡",
+              "大",
+              "的"
+            ],
+            "sentence": {
+              "traditional": "我喜歡大的。",
+              "simplified": "我喜欢大的。",
+              "pinyin": "Wǒ xǐhuān dà de.",
+              "english": "I like the big one."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "新的"
+              "很"
             ],
-            "note": "The book on the right is the old one: 舊的."
-          },
-          {
-            "placed": [
-              "很舊"
+            "mark": [
+              "很"
             ],
-            "note": "很舊 describes something (\"it is …\"). To name \"the … one\", use 舊的."
+            "note": "Here 大的 means the big one; 很 cannot replace 的."
           }
         ],
-        "fallbackRepair": "Adjective + 的 names \"the … one\": 舊的.",
-        "result": {
-          "traditional": "我要買舊的。",
-          "simplified": "我要买旧的。",
-          "pinyin": "Wǒ yào mǎi jiù de.",
-          "english": "I want to buy the old one."
-        },
+        "fallbackRepair": "Keep 的 after 大 when the noun 禮物 is left out."
+      },
+      {
+        "id": "l3-g4-book-2",
+        "source": "p.84 #2",
+        "prompt": "You want the book on the right. Answer.",
         "scene": {
           "type": "picture",
           "page": 84,
@@ -1702,7 +1360,6 @@
           ],
           "alt": "A sparkling new book on the left and an old book on the right."
         },
-        "prompt": "You want the book on the right. Answer.",
         "glossary": [
           {
             "traditional": "舊",
@@ -1710,98 +1367,66 @@
             "pinyin": "jiù",
             "english": "old"
           }
-        ]
-      },
-      {
-        "id": "l3-g4-book-3",
-        "source": "p.84 #3",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你喜歡哪個蛋糕？（好看）",
-                "simplified": "你喜欢哪个蛋糕？（好看）"
-              }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            }
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我喜歡",
-                "simplified": "我喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "pick",
-                "answers": [
-                  "好看的"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": true
-          }
         ],
+        "kind": "order-build",
+        "sub": "你要買哪本書？ 舊 jiù · old",
         "tiles": [
           {
-            "traditional": "好看的",
-            "pinyin": "hǎokàn de"
+            "traditional": "要買",
+            "pinyin": "yào mǎi",
+            "simplified": "要买"
           },
           {
-            "traditional": "不好看的",
-            "pinyin": "bù hǎokàn de"
+            "traditional": "的",
+            "pinyin": "de"
           },
           {
-            "traditional": "很好看",
-            "pinyin": "hěn hǎokàn"
+            "traditional": "我",
+            "pinyin": "wǒ"
           },
           {
-            "traditional": "好看",
-            "pinyin": "hǎokàn"
+            "traditional": "舊",
+            "simplified": "旧",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "要買",
+              "舊",
+              "的"
+            ],
+            "sentence": {
+              "traditional": "我要買舊的。",
+              "simplified": "我要买旧的。",
+              "pinyin": "Wǒ yào mǎi jiù de.",
+              "english": "I want to buy the old one."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不好看的"
+              "很"
             ],
-            "note": "You like the decorated cake, so it is the good-looking one: 好看的."
-          },
-          {
-            "placed": [
-              "很好看"
+            "mark": [
+              "很"
             ],
-            "note": "很好看 describes something (\"it is …\"). To name \"the … one\", use 好看的."
-          },
-          {
-            "placed": [
-              "好看"
-            ],
-            "note": "好看 alone can’t name a thing; add 的: 好看的."
+            "note": "Here 舊的 means the old one; 很 cannot stand in for the omitted noun."
           }
         ],
-        "fallbackRepair": "Adjective + 的 names \"the … one\": 好看的.",
-        "result": {
-          "traditional": "我喜歡好看的。",
-          "simplified": "我喜欢好看的。",
-          "pinyin": "Wǒ xǐhuān hǎokàn de.",
-          "english": "I like the good-looking one."
-        },
+        "fallbackRepair": "Keep 的 after 舊 when the noun 書 is left out."
+      },
+      {
+        "id": "l3-g4-book-3",
+        "source": "p.84 #3",
+        "prompt": "You like the decorated cake on the right. Answer.",
         "scene": {
           "type": "picture",
           "page": 84,
@@ -1813,72 +1438,121 @@
           ],
           "alt": "A plain cake on the left and a decorated cake on the right."
         },
-        "prompt": "You like the decorated cake on the right. Answer."
-      },
-      {
-        "id": "l3-g4-own-1",
-        "source": "own",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我喜歡",
-                "simplified": "我喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "pick",
-                "answers": [
-                  "漂亮的"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "花。",
-                "simplified": "花。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "sub": "你喜歡哪個蛋糕？（好看）",
         "tiles": [
           {
-            "traditional": "漂亮的",
-            "pinyin": "piàoliang de"
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
           },
           {
-            "traditional": "很漂亮",
-            "pinyin": "hěn piàoliang"
+            "traditional": "的",
+            "pinyin": "de"
           },
           {
-            "traditional": "漂亮",
-            "pinyin": "piàoliang"
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "好看",
+            "pinyin": "hǎokàn"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "喜歡",
+              "好看",
+              "的"
+            ],
+            "sentence": {
+              "traditional": "我喜歡好看的。",
+              "simplified": "我喜欢好看的。",
+              "pinyin": "Wǒ xǐhuān hǎokàn de.",
+              "english": "I like the good-looking one."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "很漂亮"
+              "很"
             ],
-            "note": "很漂亮 says something is pretty. Before a noun like 花, use 漂亮的."
-          },
-          {
-            "placed": [
-              "漂亮"
+            "mark": [
+              "很"
             ],
-            "note": "A two-syllable describing word needs 的 before the noun: 漂亮的花."
+            "note": "Here 好看的 means the good-looking one, so finish the description with 的."
           }
         ],
-        "fallbackRepair": "Before a noun, use 漂亮的: 我喜歡漂亮的花。",
-        "result": {
-          "traditional": "我喜歡漂亮的花。",
-          "simplified": "我喜欢漂亮的花。",
-          "pinyin": "Wǒ xǐhuān piàoliang de huā.",
-          "english": "I like beautiful flowers."
-        },
-        "prompt": "Say you like pretty flowers."
+        "fallbackRepair": "Put 的 after 好看 when the noun 蛋糕 is left out."
+      },
+      {
+        "id": "l3-g4-own-1",
+        "source": "own",
+        "prompt": "Say you like pretty flowers.",
+        "kind": "order-build",
+        "tiles": [
+          {
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "漂亮",
+            "pinyin": "piàoliang"
+          },
+          {
+            "traditional": "花",
+            "pinyin": "huā"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "喜歡",
+              "漂亮",
+              "的",
+              "花"
+            ],
+            "sentence": {
+              "traditional": "我喜歡漂亮的花。",
+              "simplified": "我喜欢漂亮的花。",
+              "pinyin": "Wǒ xǐhuān piàoliang de huā.",
+              "english": "I like beautiful flowers."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "漂亮 describes the noun 花, so connect them with 的."
+          }
+        ],
+        "fallbackRepair": "Put 的 between 漂亮 and 花."
       }
     ],
     "allowWords": [

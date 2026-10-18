@@ -6,112 +6,7 @@
       {
         "id": "l05-g01-book-1",
         "source": "p.116 #1",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他們在哪裡？"
-              }
-            ],
-            "me": false
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他們",
-                "simplified": "他们"
-              },
-              {
-                "type": "slot",
-                "id": "verb",
-                "answers": [
-                  "在"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "place",
-                "answers": [
-                  "圖書館"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "圖書館",
-            "simplified": "图书馆",
-            "pinyin": "túshūguǎn"
-          },
-          {
-            "traditional": "是",
-            "pinyin": "shì"
-          },
-          {
-            "traditional": "在",
-            "pinyin": "zài"
-          },
-          {
-            "traditional": "咖啡廳",
-            "simplified": "咖啡厅",
-            "pinyin": "kāfēitīng"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "是"
-            ],
-            "mark": [
-              "是"
-            ],
-            "note": "他們是圖書館 would mean \"they are a library\". To say where someone is, use 在."
-          },
-          {
-            "placed": [
-              "咖啡廳"
-            ],
-            "mark": [
-              "咖啡廳"
-            ],
-            "note": "Shelves and study tables: it is a library, 圖書館."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "圖書館"
-            },
-            "note": "The place follows 在."
-          },
-          {
-            "slot": {
-              "id": "place",
-              "tile": "在"
-            },
-            "note": "在 comes before the place: 在圖書館."
-          }
-        ],
-        "fallbackRepair": "Where someone is: 在 + place: 他們在圖書館。",
-        "result": {
-          "traditional": "他們在圖書館。",
-          "pinyin": "Tāmen zài túshūguǎn.",
-          "english": "They are at the library."
-        },
+        "prompt": "Where are they?",
         "scene": {
           "type": "picture",
           "page": 116,
@@ -123,57 +18,8 @@
           ],
           "alt": "Bookshelves and study tables, with people reading and one person asleep."
         },
-        "prompt": "Where are they?"
-      },
-      {
-        "id": "l05-g01-book-2",
-        "source": "p.116 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "小美在圖書館嗎？"
-              }
-            ],
-            "me": false
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "她"
-              },
-              {
-                "type": "slot",
-                "id": "neg",
-                "answers": [
-                  "不"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "verb",
-                "answers": [
-                  "在"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "圖書館。",
-                "simplified": "图书馆。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "sub": "他們在哪裡？",
         "tiles": [
           {
             "traditional": "在",
@@ -184,8 +30,28 @@
             "pinyin": "shì"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "traditional": "他們",
+            "simplified": "他们",
+            "pinyin": "tāmen"
+          },
+          {
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他們",
+              "在",
+              "圖書館"
+            ],
+            "sentence": {
+              "traditional": "他們在圖書館。",
+              "pinyin": "Tāmen zài túshūguǎn.",
+              "english": "They are at the library."
+            }
           }
         ],
         "repairs": [
@@ -196,29 +62,15 @@
             "mark": [
               "是"
             ],
-            "note": "For where someone is, use 在, not 是: 不在圖書館."
-          },
-          {
-            "slot": {
-              "id": "neg",
-              "tile": "在"
-            },
-            "note": "在 follows 不 and comes before the place."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "不"
-            },
-            "note": "不 goes right before 在: 不在."
+            "note": "在 tells where they are; 是 identifies who or what they are."
           }
         ],
-        "fallbackRepair": "She is at home, so: 她不在圖書館。",
-        "result": {
-          "traditional": "她不在圖書館。",
-          "pinyin": "Tā bú zài túshūguǎn.",
-          "english": "She is not at the library."
-        },
+        "fallbackRepair": "Put 在 between 他們 and 圖書館."
+      },
+      {
+        "id": "l05-g01-book-2",
+        "source": "p.116 #2",
+        "prompt": "Is Xiaomei at the library? Answer from the picture.",
         "scene": {
           "type": "picture",
           "page": 116,
@@ -230,7 +82,59 @@
           ],
           "alt": "A girl reading at her desk beside a bed and a window."
         },
-        "prompt": "Is Xiaomei at the library? Answer from the picture."
+        "kind": "order-build",
+        "sub": "小美在圖書館嗎？",
+        "tiles": [
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
+          },
+          {
+            "traditional": "她",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "她",
+              "不",
+              "在",
+              "圖書館"
+            ],
+            "sentence": {
+              "traditional": "她不在圖書館。",
+              "pinyin": "Tā bú zài túshūguǎn.",
+              "english": "She is not at the library."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒有"
+            ],
+            "mark": [
+              "沒有"
+            ],
+            "note": "Not being at a place is 不在; 沒有 says something does not exist."
+          }
+        ],
+        "fallbackRepair": "Put 不 directly before 在."
       },
       {
         "id": "l05-g01-book-3",
@@ -1058,79 +962,7 @@
       {
         "id": "l05-g04-book-1",
         "source": "p.125 #1",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我的書在哪裡？"
-              }
-            ],
-            "me": false
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你的書在桌子"
-              },
-              {
-                "type": "slot",
-                "id": "direction",
-                "answers": [
-                  "上面"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "上面",
-            "pinyin": "shàngmiàn"
-          },
-          {
-            "traditional": "下面",
-            "pinyin": "xiàmiàn"
-          },
-          {
-            "traditional": "裡面",
-            "simplified": "里面",
-            "pinyin": "lǐmiàn"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "下面"
-            ],
-            "note": "The book lies on top of the table, not under it: 上面."
-          },
-          {
-            "placed": [
-              "裡面"
-            ],
-            "note": "A table has no inside; the book is on top: 上面."
-          }
-        ],
-        "fallbackRepair": "The book lies on top of the table, not under it: 上面.",
-        "result": {
-          "traditional": "你的書在桌子上面。",
-          "pinyin": "Nǐ de shū zài zhuōzi shàngmiàn.",
-          "english": "Your book is on the table."
-        },
+        "prompt": "Where is my book?",
         "scene": {
           "type": "picture",
           "page": 125,
@@ -1142,85 +974,63 @@
           ],
           "alt": "A book resting on the tabletop."
         },
-        "prompt": "Where is my book?"
-      },
-      {
-        "id": "l05-g04-book-2",
-        "source": "p.125 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "弟弟在哪裡？"
-              }
-            ],
-            "me": false
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "弟弟在哥哥"
-              },
-              {
-                "type": "slot",
-                "id": "direction",
-                "answers": [
-                  "旁邊"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "sub": "我的書在哪裡？",
         "tiles": [
           {
-            "traditional": "旁邊",
-            "simplified": "旁边",
-            "pinyin": "pángbiān"
+            "traditional": "在",
+            "pinyin": "zài"
           },
           {
-            "traditional": "後面",
-            "simplified": "后面",
-            "pinyin": "hòumiàn"
+            "traditional": "上面",
+            "pinyin": "shàngmiàn"
           },
           {
-            "traditional": "前面",
-            "pinyin": "qiánmiàn"
+            "traditional": "你的書",
+            "pinyin": "nǐ de shū",
+            "simplified": "你的书"
+          },
+          {
+            "traditional": "桌子",
+            "pinyin": "zhuōzi"
+          },
+          {
+            "traditional": "下面",
+            "pinyin": "xiàmiàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你的書",
+              "在",
+              "桌子",
+              "上面"
+            ],
+            "sentence": {
+              "traditional": "你的書在桌子上面。",
+              "pinyin": "Nǐ de shū zài zhuōzi shàngmiàn.",
+              "english": "Your book is on the table."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "後面"
+              "下面"
             ],
-            "note": "The brothers stand side by side, so 弟弟 is beside him: 旁邊."
-          },
-          {
-            "placed": [
-              "前面"
+            "mark": [
+              "下面"
             ],
-            "note": "Neither stands in front; they are side by side: 旁邊."
+            "note": "The picture puts the book on top of the desk, so use 上面."
           }
         ],
-        "fallbackRepair": "The brothers stand side by side, so 弟弟 is beside him: 旁邊.",
-        "result": {
-          "traditional": "弟弟在哥哥旁邊。",
-          "pinyin": "Dìdi zài gēge pángbiān.",
-          "english": "The younger brother is beside the older brother."
-        },
+        "fallbackRepair": "Put 桌子上面 after 在 to say where the book is."
+      },
+      {
+        "id": "l05-g04-book-2",
+        "source": "p.125 #2",
+        "prompt": "Where is the younger brother?",
         "scene": {
           "type": "picture",
           "page": 125,
@@ -1232,84 +1042,64 @@
           ],
           "alt": "An older brother and a younger brother standing side by side, with their labels below."
         },
-        "prompt": "Where is the younger brother?"
-      },
-      {
-        "id": "l05-g04-book-3",
-        "source": "p.125 #3",
-        "kind": "slot-build",
-        "lines": [
+        "kind": "order-build",
+        "sub": "弟弟在哪裡？",
+        "tiles": [
           {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "她在哪裡看書？"
-              }
-            ],
-            "me": false
+            "traditional": "在",
+            "pinyin": "zài"
           },
           {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "她在房間"
-              },
-              {
-                "type": "slot",
-                "id": "direction",
-                "answers": [
-                  "裡面"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "看書。"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān"
+          },
+          {
+            "traditional": "弟弟",
+            "pinyin": "dìdi"
+          },
+          {
+            "traditional": "哥哥",
+            "pinyin": "gēge"
+          },
           {
             "traditional": "裡面",
             "simplified": "里面",
             "pinyin": "lǐmiàn"
-          },
+          }
+        ],
+        "accepted": [
           {
-            "traditional": "外面",
-            "pinyin": "wàimiàn"
-          },
-          {
-            "traditional": "上面",
-            "pinyin": "shàngmiàn"
+            "order": [
+              "弟弟",
+              "在",
+              "哥哥",
+              "旁邊"
+            ],
+            "sentence": {
+              "traditional": "弟弟在哥哥旁邊。",
+              "pinyin": "Dìdi zài gēge pángbiān.",
+              "english": "The younger brother is beside the older brother."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "外面"
+              "裡面"
             ],
-            "note": "She is by her bed, inside the room: 裡面."
-          },
-          {
-            "placed": [
-              "上面"
+            "mark": [
+              "裡面"
             ],
-            "note": "上面 would put her on top of the room; she is inside it: 裡面."
+            "note": "The younger brother is beside his older brother, so use 旁邊."
           }
         ],
-        "fallbackRepair": "She is by her bed, inside the room: 裡面.",
-        "result": {
-          "traditional": "她在房間裡面看書。",
-          "pinyin": "Tā zài fángjiān lǐmiàn kànshū.",
-          "english": "She reads inside the room."
-        },
+        "fallbackRepair": "Put 哥哥旁邊 after 在."
+      },
+      {
+        "id": "l05-g04-book-3",
+        "source": "p.125 #3",
+        "prompt": "Where does she read?",
         "scene": {
           "type": "picture",
           "page": 125,
@@ -1321,86 +1111,70 @@
           ],
           "alt": "A girl reading at her desk beside a bed and a window."
         },
-        "prompt": "Where does she read?"
-      },
-      {
-        "id": "l05-g04-book-4",
-        "source": "p.125 #4",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "小明在圖書館裡面做什麼？"
-              }
-            ],
-            "me": false
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "小明在圖書館裡面"
-              },
-              {
-                "type": "slot",
-                "id": "action",
-                "answers": [
-                  "睡覺"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "sub": "她在哪裡看書？",
         "tiles": [
           {
-            "traditional": "睡覺",
-            "simplified": "睡觉",
-            "pinyin": "shuìjiào"
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "裡面",
+            "simplified": "里面",
+            "pinyin": "lǐmiàn"
+          },
+          {
+            "traditional": "外面",
+            "pinyin": "wàimiàn"
+          },
+          {
+            "traditional": "她",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "房間",
+            "simplified": "房间",
+            "pinyin": "fángjiān"
           },
           {
             "traditional": "看書",
             "simplified": "看书",
-            "pinyin": "kàn shū"
-          },
+            "pinyin": "kànshū"
+          }
+        ],
+        "accepted": [
           {
-            "traditional": "吃飯",
-            "simplified": "吃饭",
-            "pinyin": "chī fàn"
+            "order": [
+              "她",
+              "在",
+              "房間",
+              "裡面",
+              "看書"
+            ],
+            "sentence": {
+              "traditional": "她在房間裡面看書。",
+              "pinyin": "Tā zài fángjiān lǐmiàn kànshū.",
+              "english": "She reads inside the room."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "看書"
+              "外面"
             ],
-            "note": "Xiaoming has his head down with a \"zzz\": he is sleeping, 睡覺."
-          },
-          {
-            "placed": [
-              "吃飯"
+            "mark": [
+              "外面"
             ],
-            "note": "There is no food; Xiaoming is asleep: 睡覺."
+            "note": "The picture shows her reading inside the room, so use 裡面."
           }
         ],
-        "fallbackRepair": "Xiaoming has his head down with a \"zzz\": he is sleeping, 睡覺.",
-        "result": {
-          "traditional": "小明在圖書館裡面睡覺。",
-          "pinyin": "Xiǎo Míng zài túshūguǎn lǐmiàn shuìjiào.",
-          "english": "Xiaoming sleeps inside the library."
-        },
+        "fallbackRepair": "Put 在房間裡面 before the action 看書."
+      },
+      {
+        "id": "l05-g04-book-4",
+        "source": "p.125 #4",
+        "prompt": "What is Xiaoming doing in the library?",
         "scene": {
           "type": "picture",
           "page": 125,
@@ -1412,7 +1186,66 @@
           ],
           "alt": "A library scene; Xiaoming is the boy sleeping at the front table, with his name below."
         },
-        "prompt": "What is Xiaoming doing in the library?"
+        "kind": "order-build",
+        "sub": "小明在圖書館裡面做什麼？",
+        "tiles": [
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "裡面",
+            "simplified": "里面",
+            "pinyin": "lǐmiàn"
+          },
+          {
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kànshū"
+          },
+          {
+            "traditional": "小明",
+            "pinyin": "Xiǎomíng"
+          },
+          {
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
+          },
+          {
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "小明",
+              "在",
+              "圖書館",
+              "裡面",
+              "睡覺"
+            ],
+            "sentence": {
+              "traditional": "小明在圖書館裡面睡覺。",
+              "pinyin": "Xiǎo Míng zài túshūguǎn lǐmiàn shuìjiào.",
+              "english": "Xiaoming sleeps inside the library."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看書"
+            ],
+            "mark": [
+              "看書"
+            ],
+            "note": "The picture shows Xiaoming sleeping, not reading."
+          }
+        ],
+        "fallbackRepair": "Put 在圖書館裡面 before the action 睡覺."
       },
       {
         "id": "l05-g04-own-listen",
@@ -1596,52 +1429,23 @@
       {
         "id": "l05-g05-book-2",
         "source": "p.126 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你家旁邊有飲料店嗎？"
-              }
-            ],
-            "me": false
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我家旁邊"
-              },
-              {
-                "type": "slot",
-                "id": "existence",
-                "answers": [
-                  "沒有"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "飲料店。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "prompt": "Only two schools are next to your home. Answer.",
+        "kind": "order-build",
+        "sub": "你家旁邊有飲料店嗎？",
         "tiles": [
           {
-            "traditional": "有",
-            "pinyin": "yǒu"
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān"
           },
           {
-            "traditional": "不有",
-            "pinyin": "bù yǒu"
+            "traditional": "飲料店",
+            "simplified": "饮料店",
+            "pinyin": "yǐnliào diàn"
+          },
+          {
+            "traditional": "我家",
+            "pinyin": "wǒ jiā"
           },
           {
             "traditional": "沒有",
@@ -1649,46 +1453,37 @@
             "pinyin": "méiyǒu"
           },
           {
-            "traditional": "不是",
-            "pinyin": "búshì"
+            "traditional": "不",
+            "pinyin": "bù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我家",
+              "旁邊",
+              "沒有",
+              "飲料店"
+            ],
+            "sentence": {
+              "traditional": "我家旁邊沒有飲料店。",
+              "pinyin": "Wǒ jiā pángbiān méiyǒu yǐnliào diàn.",
+              "english": "There is no drink shop next to my home."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "有"
+              "不"
             ],
             "mark": [
-              "有"
+              "不"
             ],
-            "note": "Only two schools are next to your home, so there is no drink shop: 沒有."
-          },
-          {
-            "placed": [
-              "不有"
-            ],
-            "mark": [
-              "不有"
-            ],
-            "note": "有 is never negated with 不: 沒有."
-          },
-          {
-            "placed": [
-              "不是"
-            ],
-            "mark": [
-              "不是"
-            ],
-            "note": "不是 says something is not something else. For \"there isn’t\", use 沒有."
+            "note": "There is no drink shop, so use 沒有 rather than 不有."
           }
         ],
-        "fallbackRepair": "\"There isn’t\" is 沒有: 我家旁邊沒有飲料店。",
-        "result": {
-          "traditional": "我家旁邊沒有飲料店。",
-          "pinyin": "Wǒ jiā pángbiān méiyǒu yǐnliào diàn.",
-          "english": "There is no drink shop next to my home."
-        },
-        "prompt": "Only two schools are next to your home. Answer."
+        "fallbackRepair": "Name the place first, then 沒有 and the thing absent."
       },
       {
         "id": "l05-g05-book-3",
