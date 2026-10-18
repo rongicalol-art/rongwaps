@@ -7,7 +7,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
       <section
         aria-label="TOCFL progress"
         aria-busy="true"
-        className="min-w-0 animate-pulse rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
+        className="min-w-0 animate-pulse rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-4 sm:px-6"
       >
         <SectionEyebrow title="TOCFL progress" />
         <div aria-hidden="true" className="mt-4 space-y-4">
@@ -23,7 +23,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
   }
 
   return (
-    <section aria-label="TOCFL character progress" className="min-w-0 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
+    <section aria-label="TOCFL character progress" className="min-w-0 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-4 sm:px-6">
       <SectionEyebrow title="TOCFL progress" />
       <ol className="mt-4 space-y-3">
         {readiness.bands.map(({ band, known, total }) => {
