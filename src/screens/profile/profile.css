@@ -95,10 +95,4 @@
   .profile-mobile-streak, .profile-mobile-recent { display:none; }
   .profile-footer-mobile { display:none; }
 }
-.profile-header { height:64px; padding-top:0; padding-bottom:0; justify-content:center; }
-.profile-header h1 { font-size:22px; font-weight:900; color:var(--color-ui-ink-strong); }
 .profile-avatar-swatches button:focus-visible, .profile-cover-swatches button:focus-visible { outline:3px solid var(--color-brand-primary); outline-offset:3px; }
-@media(min-width:1024px) {
-  .profile-header { height:84px; }
-  .profile-header h1 { font-size:32px; }
-}

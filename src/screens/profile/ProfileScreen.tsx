@@ -40,7 +40,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
     catch { setAccountError("Couldn't sign you out. Check your connection and try again."); }
   };
   return <div className="profile-screen relative flex w-full flex-1 flex-col text-ui-ink-strong">
-    <StickyWorkspaceHeader className="profile-header" title="Profile" menuToggle={menuToggle} />
+    <StickyWorkspaceHeader title="Profile" menuToggle={menuToggle} />
     {isLoading ? <div className="mx-auto w-full max-w-3xl px-4"><ProfileSkeleton /></div> :
       <div className="profile-layout">
         <div className="profile-main">
