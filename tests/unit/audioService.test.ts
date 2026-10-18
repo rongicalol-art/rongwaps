@@ -648,6 +648,46 @@ test('buffered recordings replay and seek ranges without waiting for disk or cha
   } finally { service.stop(); memoryCache.match = oldMatch; }
 });
 
+test('loaded stale offline blobs replay and seek without expiring the buffered resource', async () => {
+  enableCache();
+  const { audioFileCacheRequest } = await import('../../src/services/audio/audioCache');
+  const oldNavigator = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { onLine: true } });
+  const service = new AudioService();
+  const url = 'https://audio.example.test/stale-buffered-replay.mp3';
+  cacheEntries.set(audioFileCacheRequest(url).url, new Response(new Blob(['old recording']), {
+    headers: { 'X-Audio-Cached-At': '1' },
+  }));
+  const oldMatch = memoryCache.match;
+  try {
+    const first = service.play(url);
+    await tick();
+    const audio = service.getGlobalAudio() as unknown as FakeAudio;
+    const src = audio.src;
+    assert.ok(src.startsWith('blob:'));
+    audio.readyState = 4;
+    audio.currentTime = 0.7;
+    let lookups = 0;
+    memoryCache.match = async () => { lookups++; throw new Error('disk must not block replay'); };
+    const replay = service.play(url);
+    assert.equal(audio.src, src, 'reuse decoded audio even though its cached timestamp is old');
+    assert.equal(audio.currentTime, 0);
+    service.pause();
+    await Promise.all([first, replay]);
+    const range = service.playRange(url, 0.2, 0.5);
+    assert.equal(audio.src, src);
+    assert.equal(audio.currentTime, 0.2);
+    assert.equal(lookups, 0);
+    service.stop();
+    await range;
+  } finally {
+    service.stop();
+    memoryCache.match = oldMatch;
+    if (oldNavigator) Object.defineProperty(globalThis, 'navigator', oldNavigator);
+    else Reflect.deleteProperty(globalThis, 'navigator');
+  }
+});
+
 test('overlap replay keeps the decoded player for both streamed and preloaded clips', async () => {
   for (const preloaded of [false, true]) {
     const service = new AudioService();

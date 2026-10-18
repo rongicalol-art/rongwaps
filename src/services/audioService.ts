@@ -310,9 +310,10 @@ export class AudioService {
   /** One source policy for whole words and reader ranges; cold files keep streaming. */
   private playRecordedSource(fileName: string, run: (src: string) => void, finish: () => void, fail: (error?: unknown) => void): void {
     const stream = publicAudioUrl(fileName);
-    // Replay the loaded resource before consulting disk. Switching a buffered
-    // stream to an offline blob discards the browser's ready-to-play media.
-    if (stream && this.globalAudio?.src === stream && this.globalAudio.readyState >= 2) { run(stream); return; }
+    // Reuse loaded streams AND offline blobs before checking cache expiry.
+    // Replacing a buffered stale blob forces decoding again on every replay.
+    const loaded = this.globalAudio;
+    if (loaded && loaded.readyState >= 2 && (loaded.src === stream || loaded.src === this.objectUrls.get(fileName))) { run(loaded.src); return; }
     const existing = getCachedObjectUrl(this.objectUrls, fileName);
     if (existing) { cacheObjectUrl(this.objectUrls, fileName, existing); run(existing); return; }
     if (typeof caches !== 'undefined') {
