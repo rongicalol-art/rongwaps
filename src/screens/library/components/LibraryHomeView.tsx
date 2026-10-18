@@ -49,7 +49,7 @@ export function LibraryHomeView({
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(260px,1fr)] lg:gap-8">
       <section
         aria-label="Folders"
-        className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
+        className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-start-1 lg:row-start-1"
       >
         <SectionEyebrow
           title="Folders"
@@ -84,13 +84,15 @@ export function LibraryHomeView({
         )}
       </section>
 
-      <aside className="grid min-w-0 gap-6 max-lg:contents lg:sticky-rail">
-        {reviewCard && <div className="min-w-0 max-lg:order-first">{reviewCard}</div>}
-        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
-          <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
-        </div>
-        {footer}
-      </aside>
+      {reviewCard && (
+        <aside className="order-first min-w-0 lg:order-none lg:col-start-2 lg:row-start-1 lg:sticky-rail">
+          {reviewCard}
+        </aside>
+      )}
+      <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-span-2 lg:row-start-2">
+        <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
+      </div>
+      {footer && <div className="lg:col-span-2 lg:row-start-3">{footer}</div>}
     </div>
   );
 }
