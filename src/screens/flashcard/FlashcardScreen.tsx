@@ -62,6 +62,7 @@ export function FlashcardScreen({
 
   const {
     cards,
+    isExtraReview,
     missedCards,
     trickyCards,
     currentCard,
@@ -289,13 +290,13 @@ export function FlashcardScreen({
   const deckCards = isDeckDone
     ? Array.from(new Map((firstPassRef.current?.cards ?? (sessionDeck?.length ? sessionDeck : cards)).map((card) => [card.id, card])).values())
     : [];
-  const reportedCards = isReviewDeck ? deckCards.filter(card => card.id in (dailyPlan?.answers ?? {})) : deckCards;
+  const reportedCards = isReviewDeck && !isExtraReview ? deckCards.filter(card => card.id in (dailyPlan?.answers ?? {})) : deckCards;
   const first = firstPassRef.current ?? { total: cards.length, correct: learnedCount, missedCards: [] as Flashcard[] };
   const sessionStats = (): SessionStats => {
     return {
       trickyCardIds: (firstPassRef.current?.trickyCards ?? trickyCards).map(card => card.id),
       words: reportedCards.map((card) => card.front),
-      firstTryPct: isReviewDeck
+      firstTryPct: isReviewDeck && !isExtraReview
         ? Math.round(reportedCards.filter(card => (dailyPlan?.answers[card.id] ?? 0) >= 3).length / Math.max(1, reportedCards.length) * 100)
         : Math.round((first.correct / Math.max(1, first.total)) * 100),
       startedAt: startedAtRef.current ?? Date.now(),

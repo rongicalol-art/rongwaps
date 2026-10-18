@@ -6,14 +6,16 @@ import type { ReviewOverview } from '../../../utils/srs/reviewOverview';
 interface ReviewHubCardProps {
   overview: ReviewOverview;
   onStartReview: () => void;
+  onStartMoreReview: () => void;
   onNavigateToPath: () => void;
 }
 
 const calendarIcon = new URL('../../../assets/icons/cube/schedule.svg', import.meta.url).href;
 
 /** Daily review uses the existing SRS queue, independently of the selected folder. */
-export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartReview, onNavigateToPath }: ReviewHubCardProps) {
+export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartReview, onStartMoreReview, onNavigateToPath }: ReviewHubCardProps) {
   const { knownTotal, dueCount, stages, dailyCompleted = false } = overview;
+  const extraDueCount = overview.extraDueCount ?? dueCount;
   const hasWords = knownTotal > 0 || stages.started > 0;
   const sessionBatchSize = overview.dailyCount ?? Math.min(dueCount, REVIEW_SESSION_CAP);
 
@@ -36,6 +38,12 @@ export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartRevi
             <ActionButton fullWidth onClick={onStartReview} className="normal-case tracking-normal">
               Review words
               <AppIcon name="forward" size={18} />
+            </ActionButton>
+          </div>
+        ) : dailyCompleted && extraDueCount > 0 ? (
+          <div className="mt-4">
+            <ActionButton variant="secondary" fullWidth onClick={onStartMoreReview} className="normal-case tracking-normal">
+              Review more
             </ActionButton>
           </div>
         ) : !hasWords && !dailyCompleted ? (

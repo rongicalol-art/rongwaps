@@ -319,10 +319,11 @@ export const DebugWindow = () => {
               <h2 className="text-xl font-black text-ui-ink-strong">Daily review · safe previews</h2>
               {[
                 { dueCount: 12, knownTotal: 20, stages: { learning: 12, solid: 8, started: 0 } },
+                { dueCount: 8, dailyCompleted: true, knownTotal: 20, stages: { learning: 12, solid: 8, started: 0 } },
                 { dueCount: 0, knownTotal: 20, stages: { learning: 12, solid: 8, started: 0 } },
                 { dueCount: 0, knownTotal: 0, stages: { learning: 0, solid: 0, started: 0 } },
               ].map((overview, index) => (
-                <ReviewHubCard key={index} overview={overview} onStartReview={() => setErrorMessage('Review preview only — no progress recorded.')} onNavigateToPath={() => setErrorMessage('Lesson shortcut preview only.')} />
+                <ReviewHubCard key={index} overview={overview} onStartReview={() => setErrorMessage('Review preview only — no progress recorded.')} onStartMoreReview={() => setErrorMessage('Extra review preview only — no progress recorded.')} onNavigateToPath={() => setErrorMessage('Lesson shortcut preview only.')} />
               ))}
               {errorMessage && <p role="status" className="text-sm font-bold text-ui-ink">{errorMessage}</p>}
             </section>

@@ -5,7 +5,7 @@ import { fetchAllVocabularyPacks } from './contentPacks';
 import { getDictionaryEntriesBatch } from './dictionaryService';
 import { useAppStore } from '../store/useAppStore';
 import { flashcardService } from './flashcardService';
-import { createDailyReviewPlan, reviewDay } from '../utils/srs/reviewSession';
+import { buildReviewSession, createDailyReviewPlan, dailyReviewGoal, REVIEW_SESSION_CAP, reviewDay } from '../utils/srs/reviewSession';
 import type { SRSData } from '../utils/srs/srsEngine';
 import type { LessonPartSelectionMap } from '../types/models';
 import {
@@ -21,10 +21,13 @@ export async function loadReviewDeck(
 ): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> {
   const store = useAppStore.getState();
   const activePinned = pinnedIds?.length ? pinnedIds : null;
+  const goal = dailyReviewGoal(store.reviewEvents);
   let existingPlan = store.dailyReviewPlan?.day === reviewDay() && (store.dailyReviewPlan.cardIds.length || store.dailyReviewPlan.completed) ? store.dailyReviewPlan : null;
   const existingIds = existingPlan?.cardIds;
-  if (activePinned && existingIds && (activePinned.length !== existingIds.length || activePinned.some((id, index) => id !== existingIds[index]))) existingPlan = null;
-  const ids = existingPlan?.completed ? [] : activePinned ?? existingPlan?.cardIds ?? deriveLocalDueCardIds(srsData);
+  const matchesPlan = Boolean(activePinned && existingIds && activePinned.length === existingIds.length && activePinned.every((id, index) => id === existingIds[index]));
+  if (!existingPlan?.completed && activePinned && existingIds && !matchesPlan) existingPlan = null;
+  const extraReview = Boolean(activePinned?.length && (existingPlan?.completed || (!existingPlan && goal.completed)) && !matchesPlan);
+  const ids = activePinned ?? (existingPlan?.completed ? [] : existingPlan?.cardIds ?? deriveLocalDueCardIds(srsData));
   const idSet = new Set(ids);
   const courseRows = await fetchAllVocabularyPacks();
   const course = courseRows ? prepareVocabulary(courseRows.filter(row => idSet.has(String(row.id)))) : [];
@@ -38,15 +41,21 @@ export async function loadReviewDeck(
   const custom = customRows.flatMap(card => mapCustomCardsToFlashcards([card], vocabMap, card.folderId || 'custom').cards);
   const pool = [...course, ...saved, ...custom];
   if ((useAppStore.getState().currentUser?.id ?? null) !== (store.currentUser?.id ?? null)) return { cards: [], knownIds: null };
-  let plan = existingPlan ?? createDailyReviewPlan(pool, srsData, store.reviewEvents, null);
+  const plan = existingPlan ?? createDailyReviewPlan(pool, srsData, store.reviewEvents, null);
+  const extraCards = extraReview
+    ? buildReviewSession(pool, srsData, REVIEW_SESSION_CAP)
+    : null;
   // Removed or inaccessible cards must not create a phantom empty session.
   const resolved = new Set(pool.map(card => card.id));
-  plan = { ...plan, cardIds: plan.cardIds.filter(id => resolved.has(id)) };
-  if (plan.cardIds.length === 0 && Object.keys(plan.answers).length > 0) plan.completed = true;
-  useAppStore.getState().setDailyReviewPlan(plan);
-  const order = new Map(plan.cardIds.map((id, index) => [id, index]));
+  const cardIds = (extraCards?.map(card => card.id) ?? plan.cardIds).filter(id => resolved.has(id));
+  if (!extraReview) {
+    const updatedPlan = { ...plan, cardIds };
+    if (updatedPlan.cardIds.length === 0 && Object.keys(updatedPlan.answers).length > 0) updatedPlan.completed = true;
+    useAppStore.getState().setDailyReviewPlan(updatedPlan);
+  }
+  const order = new Map(cardIds.map((id, index) => [id, index]));
   return {
-    cards: plan.completed ? [] : pool.filter(card => order.has(card.id)).sort((a,b) => order.get(a.id)! - order.get(b.id)!),
+    cards: plan.completed && !extraReview ? [] : pool.filter(card => order.has(card.id)).sort((a,b) => order.get(a.id)! - order.get(b.id)!),
     knownIds: courseRows ? new Set([...courseRows.map(row => String(row.id)), ...saved.map(c => c.id), ...custom.map(c => c.id)]) : null,
   };
 }

@@ -6,6 +6,7 @@ import { useAppStore } from '../../store/useAppStore';
 import type { ActivityType } from '../../types/models';
 import type { TabRoute } from '../routes';
 import type { GrammarReadingTarget } from '../hooks/useAppShellActions';
+import { deriveLocalDueCardIds } from '../../utils/vocabulary/activityDataDerivations';
 
 const TAB_LOADING_MESSAGE: Record<string, string> = {
   path: 'Loading lessons…',
@@ -58,6 +59,15 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     setActiveActivity('flashcards-review');
   }, [setActiveActivity]);
 
+  const handleStartMoreReview = useCallback(() => {
+    const store = useAppStore.getState();
+    const answeredIds = new Set(Object.keys(store.dailyReviewPlan?.answers ?? {}));
+    const remainingDueIds = deriveLocalDueCardIds(store.srsData).filter(id => !answeredIds.has(id));
+    store.setActiveReviewSessionCards(remainingDueIds);
+    store.setIsReviewMode(true);
+    setActiveActivity('flashcards-review');
+  }, [setActiveActivity]);
+
   const handleAddCard = useCallback(() => {
     setActiveActivity('create-card');
   }, [setActiveActivity]);
@@ -96,6 +106,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
         {activeTab === 'library' && LibraryScreen && (
           <LibraryScreen
             onStartReview={handleStartReview}
+            onStartMoreReview={handleStartMoreReview}
             onNavigateToPath={handleNavigateToPath}
             onAddCard={handleAddCard}
             onPlayFlashcards={handlePlayFlashcards}

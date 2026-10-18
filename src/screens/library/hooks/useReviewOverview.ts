@@ -1,7 +1,7 @@
 import { reviewDay, dailyReviewGoal } from '../../../utils/srs/reviewSession';
 import { useRef } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
-import { computeReviewOverview, type ReviewOverview } from '../../../utils/srs/reviewOverview';
+import { computeReviewOverview, isSrsDue, type ReviewOverview } from '../../../utils/srs/reviewOverview';
 
 /**
  * Live Library overview derived purely from local SRS state. Pure and fast
@@ -26,10 +26,17 @@ export function useReviewOverview(): ReviewOverview {
     const base = computeReviewOverview(activeSrsData, activeLearnedCards);
     const today = reviewDay();
     const goal = dailyReviewGoal(events ?? []);
+    const dailyAnswers = plan?.day === today ? plan.answers : goal.answers;
+    const reviewedToday = new Set(Object.keys(dailyAnswers));
+    const now = Date.now();
+    const extraDueCount = Object.entries(activeSrsData).filter(([id, srs]) => (
+      isSrsDue(srs, now) && !reviewedToday.has(id)
+    )).length;
     stableOverviewRef.current = { ...base,
       dailyCompleted: plan?.day === today ? plan.completed : goal.completed,
       dailyCount: plan?.day === today ? plan.cardIds.filter(id => !(id in plan.answers)).length
         : Math.min(base.dueCount, Math.max(0, goal.capacity - Object.keys(goal.answers).length)),
+      extraDueCount,
     };
   } else if (!stableOverviewRef.current) {
     const store = useAppStore.getState();

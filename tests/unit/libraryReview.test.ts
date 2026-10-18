@@ -8,6 +8,7 @@ test('daily review offers due failed words even before the first word is learned
   const html = renderToStaticMarkup(createElement(ReviewHubCard, {
     overview: { dueCount: 1, knownTotal: 0, stages: { learning: 0, solid: 0, started: 1 } },
     onStartReview() {},
+    onStartMoreReview() {},
     onNavigateToPath() {},
   }));
   assert.match(html, /Review words/);

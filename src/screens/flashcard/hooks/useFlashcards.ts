@@ -24,6 +24,13 @@ export function levelToQuality(level: number): CardSessionQuality {
  */
 export function useFlashcards(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const dailyPlan = useAppStore((state) => state.dailyReviewPlan);
+  const activeReviewSessionCards = useAppStore((state) => state.activeReviewSessionCards);
+  const isExtraReview = Boolean(
+    isReviewDeck && dailyPlan?.completed && activeReviewSessionCards?.length
+      && (activeReviewSessionCards.length !== dailyPlan.cardIds.length
+        || activeReviewSessionCards.some((id, index) => id !== dailyPlan.cardIds[index])),
+  );
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const sessionKey = getDeckIdentityKey({
     activeBookId,
@@ -46,8 +53,8 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const overlayOpen = useAppStore(state => state.dictionaryWord !== null || state.saveWordTarget !== null);
 
   const session = useCardSession(loadedCards, sessionKey, {
-    daily: isReviewDeck,
-    source: isReviewDeck ? 'daily' : 'flashcards',
+    daily: isReviewDeck && !isExtraReview,
+    source: isReviewDeck && !isExtraReview ? 'daily' : 'flashcards',
     paused: Boolean(activeBreakdown || overlayOpen),
     onSessionReset: () => {
       setIsFlipped(false);
@@ -109,6 +116,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
 
   return {
     cards: activeCards,
+    isExtraReview,
     missedCards,
     trickyCards: activeCards.filter(card => { const q = session.sessionResults[card.id]; return q !== undefined && q <= 3; }),
     currentCard,

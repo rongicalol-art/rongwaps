@@ -27,6 +27,7 @@ import type { UserFlashcard } from '../../types/models';
 
 interface LibraryScreenProps {
   onStartReview: () => void;
+  onStartMoreReview: () => void;
   onNavigateToPath: () => void;
   onAddCard?: () => void;
   onPlayFlashcards?: () => void;
@@ -35,7 +36,7 @@ interface LibraryScreenProps {
   onProfileClick?: () => void;
 }
 
-export function LibraryScreen({ onStartReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle, onProfileClick }: LibraryScreenProps) {
+export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle, onProfileClick }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -148,7 +149,7 @@ export function LibraryScreen({ onStartReview, onNavigateToPath, onAddCard, onPl
           transition={{ duration: 0.15 }}
         >
           <LibraryHomeView
-            reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onNavigateToPath={onNavigateToPath} />}
+            reviewCard={<ReviewHubCard overview={overview} onStartReview={onStartReview} onStartMoreReview={onStartMoreReview} onNavigateToPath={onNavigateToPath} />}
             collections={allCollections}
             recentItems={recentItems}
             searchQuery={searchQuery}
