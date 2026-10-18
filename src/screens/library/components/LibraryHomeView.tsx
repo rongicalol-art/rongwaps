@@ -49,57 +49,56 @@ export function LibraryHomeView({
 
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(260px,1fr)] lg:gap-8">
-      <section
-        aria-label="Folders"
-        className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-start-1 lg:row-start-1"
-      >
-        <SectionEyebrow
-          title="Folders"
-          action={(
-            <span className="text-[13px] font-extrabold text-ui-muted">
-              {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
-            </span>
-          )}
-        />
-
-        {visibleCollections.length > 0 ? (
-          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6">
-            {visibleCollections.map((collection) => (
-              <FolderItem
-                key={collection.id}
-                {...collection}
-                onSelect={() => onSelectCollection(collection.id)}
-                onDeleteRequest={() => onDeleteFolder(collection.id, collection.title)}
-              />
-            ))}
-            {!normalizedSearch && (
-              <FolderItem id="new-folder" title="New folder" isNewButton onSelect={onCreateFolder} />
+      <div className="flex min-w-0 flex-col gap-4 lg:col-start-1 lg:row-start-1">
+        <section
+          aria-label="Folders"
+          className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
+        >
+          <SectionEyebrow
+            title="Folders"
+            action={(
+              <span className="text-[13px] font-extrabold text-ui-muted">
+                {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
+              </span>
             )}
-          </div>
-        ) : (
-          <div className="flex min-h-[200px] flex-col items-center justify-center px-6 text-center">
-            <p className="text-[17px] font-black text-ui-ink-strong">No matching folder</p>
-            <ActionButton variant="secondary" size="sm" onClick={() => onSearchChange('')} className="mt-4">
-              Clear search
-            </ActionButton>
-          </div>
-        )}
-      </section>
+          />
 
-      {reviewCard && (
-        <aside className="order-first min-w-0 lg:order-none lg:col-start-2 lg:row-start-1 lg:sticky-rail">
+          {visibleCollections.length > 0 ? (
+            <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6">
+              {visibleCollections.map((collection) => (
+                <FolderItem
+                  key={collection.id}
+                  {...collection}
+                  onSelect={() => onSelectCollection(collection.id)}
+                  onDeleteRequest={() => onDeleteFolder(collection.id, collection.title)}
+                />
+              ))}
+              {!normalizedSearch && (
+                <FolderItem id="new-folder" title="New folder" isNewButton onSelect={onCreateFolder} />
+              )}
+            </div>
+          ) : (
+            <div className="flex min-h-[200px] flex-col items-center justify-center px-6 text-center">
+              <p className="text-[17px] font-black text-ui-ink-strong">No matching folder</p>
+              <ActionButton variant="secondary" size="sm" onClick={() => onSearchChange('')} className="mt-4">
+                Clear search
+              </ActionButton>
+            </div>
+          )}
+        </section>
+
+        <section className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
+          <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
+        </section>
+        {footer && footer}
+      </div>
+
+      {(reviewCard || progressCard) && (
+        <aside className="order-first flex min-w-0 flex-col gap-4 lg:order-none lg:col-start-2 lg:row-start-1 lg:sticky-rail">
           {reviewCard}
+          {progressCard}
         </aside>
       )}
-      {progressCard && (
-        <div className="order-first min-w-0 lg:order-none lg:col-start-2 lg:row-start-2">
-          {progressCard}
-        </div>
-      )}
-      <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:col-start-1 lg:row-start-2">
-        <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
-      </div>
-      {footer && <div className="lg:col-span-2 lg:row-start-3">{footer}</div>}
     </div>
   );
 }
