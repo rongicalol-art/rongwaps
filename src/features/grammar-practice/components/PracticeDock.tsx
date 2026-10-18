@@ -77,7 +77,7 @@ export function PracticeDock({
       animate={{ opacity: 1, y: 0, transition: DOCK_IN }}
       className="pointer-events-none absolute inset-x-0 bottom-0 z-40 md:px-6 md:pb-6"
     >
-      <p role="status" aria-live="polite" className="sr-only">{checked ? (correct ? 'Correct' : 'Not quite') : ''}</p>
+      <p role="status" aria-live="polite" className="sr-only">{checked ? (result?.title ?? (correct ? 'Correct' : 'Not quite')) : ''}</p>
       <div
         className={cn(
           'pointer-events-auto mx-auto w-full max-w-2xl border-t-2 px-3 pt-3 pb-sheet-safe transition-colors',

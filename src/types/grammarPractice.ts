@@ -195,6 +195,8 @@ export interface OrderBuildItem extends PracticeItemBase {
   accepted: ChatAnswer[];
   repairs?: PracticeRepair[];
   fallbackRepair: string;
+  /** A short explanation of the target grammar after a correct build. */
+  successNote?: string;
 }
 
 /** A stretch of a book dialogue track: the real recording, never text-to-speech. */

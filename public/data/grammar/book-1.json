@@ -2388,6 +2388,19 @@
                       "pinyin": "Tā hěn lèi, Zhōngmíng bú lèi.",
                       "english": "She is tired; Zhongming is not tired."
                     }
+                  },
+                  {
+                    "order": [
+                      "中明",
+                      "不",
+                      "累"
+                    ],
+                    "sentence": {
+                      "traditional": "中明不累。",
+                      "pinyin": "Zhōngmíng bú lèi.",
+                      "english": "Zhongming is not tired.",
+                      "simplified": "中明不累。"
+                    }
                   }
                 ],
                 "repairs": [
@@ -4433,6 +4446,18 @@
                       "pinyin": "Wǒ shì Měiguó rén, nǐ ne?",
                       "english": "I am American. How about you?"
                     }
+                  },
+                  {
+                    "order": [
+                      "你",
+                      "呢"
+                    ],
+                    "sentence": {
+                      "traditional": "你呢？",
+                      "pinyin": "Nǐ ne?",
+                      "english": "And you?",
+                      "simplified": "你呢？"
+                    }
                   }
                 ],
                 "repairs": [
@@ -4446,7 +4471,7 @@
                     "note": "You are asking the same question back, so finish with 你呢 rather than 你嗎."
                   }
                 ],
-                "fallbackRepair": "State your nationality first, then ask 你呢。"
+                "fallbackRepair": "Use 你呢 to ask the same question back."
               },
               {
                 "id": "l1g4-p2",
@@ -4562,6 +4587,18 @@
                       "pinyin": "Tā hěn máng, nǐ ne?",
                       "english": "He is busy. How about you?"
                     }
+                  },
+                  {
+                    "order": [
+                      "你",
+                      "呢"
+                    ],
+                    "sentence": {
+                      "traditional": "你呢？",
+                      "pinyin": "Nǐ ne?",
+                      "english": "And you?",
+                      "simplified": "你呢？"
+                    }
                   }
                 ],
                 "repairs": [
@@ -4575,7 +4612,7 @@
                     "note": "After the statement about him, ask the same question back with 你呢."
                   }
                 ],
-                "fallbackRepair": "Say 他很忙 first, then ask 你呢。"
+                "fallbackRepair": "Ask your friend back with 你呢。"
               },
               {
                 "id": "l1g4-own2",
@@ -47214,6 +47251,20 @@
                       "pinyin": "Zuótiān wǎnshang wǒ shuì de hěn hǎo.",
                       "english": "I slept very well last night."
                     }
+                  },
+                  {
+                    "order": [
+                      "我",
+                      "睡",
+                      "得",
+                      "很好"
+                    ],
+                    "sentence": {
+                      "traditional": "我睡得很好。",
+                      "pinyin": "Wǒ shuì de hěn hǎo.",
+                      "english": "I slept very well.",
+                      "simplified": "我睡得很好。"
+                    }
                   }
                 ],
                 "repairs": [
@@ -51647,6 +51698,20 @@
                       "pinyin": "Wǒ māma shuō, wǒ bù kěyǐ chī bīngqílín.",
                       "english": "My mother says I may not eat ice cream."
                     }
+                  },
+                  {
+                    "order": [
+                      "我",
+                      "不",
+                      "可以",
+                      "吃冰淇淋"
+                    ],
+                    "sentence": {
+                      "traditional": "我不可以吃冰淇淋。",
+                      "pinyin": "Wǒ bù kěyǐ chī bīngqílín.",
+                      "english": "I can't eat ice cream.",
+                      "simplified": "我不可以吃冰淇淋。"
+                    }
                   }
                 ],
                 "repairs": [
@@ -51710,6 +51775,20 @@
                       "traditional": "老師說，我可以去洗手間。",
                       "pinyin": "Lǎoshī shuō, wǒ kěyǐ qù xǐshǒujiān.",
                       "english": "The teacher says I may go to the restroom."
+                    }
+                  },
+                  {
+                    "order": [
+                      "我",
+                      "可以",
+                      "去",
+                      "洗手間"
+                    ],
+                    "sentence": {
+                      "traditional": "我可以去洗手間。",
+                      "pinyin": "Wǒ kěyǐ qù xǐshǒujiān.",
+                      "english": "I may go to the restroom.",
+                      "simplified": "我可以去洗手间。"
                     }
                   }
                 ],
@@ -58663,6 +58742,18 @@
                       "pinyin": "Wǒ jiā fùjìn yǒu yì jiā chāojíshìchǎng, mǎi dōngxi hěn fāngbiàn.",
                       "english": "There is a supermarket near my home, so shopping is convenient."
                     }
+                  },
+                  {
+                    "order": [
+                      "買東西",
+                      "很方便"
+                    ],
+                    "sentence": {
+                      "traditional": "買東西很方便。",
+                      "pinyin": "Mǎi dōngxi hěn fāngbiàn.",
+                      "english": "Shopping is convenient.",
+                      "simplified": "买东西很方便。"
+                    }
                   }
                 ],
                 "repairs": [
@@ -62773,6 +62864,33 @@
                       "english": "This movie is very good; I like it a lot.",
                       "simplified": "这部电影很好看，我很喜欢。"
                     }
+                  },
+                  {
+                    "order": [
+                      "這部電影",
+                      "好",
+                      "看"
+                    ],
+                    "sentence": {
+                      "traditional": "這部電影好看。",
+                      "pinyin": "Zhè bù diànyǐng hǎokàn.",
+                      "english": "This movie is good to watch.",
+                      "simplified": "这部电影好看。"
+                    }
+                  },
+                  {
+                    "order": [
+                      "這部電影",
+                      "很",
+                      "好",
+                      "看"
+                    ],
+                    "sentence": {
+                      "traditional": "這部電影很好看。",
+                      "pinyin": "Zhè bù diànyǐng hěn hǎokàn.",
+                      "english": "This movie is very good to watch.",
+                      "simplified": "这部电影很好看。"
+                    }
                   }
                 ],
                 "repairs": [
@@ -62786,7 +62904,8 @@
                     "note": "You like watching the movie, so describe it with 好看 rather than 難看."
                   }
                 ],
-                "fallbackRepair": "Put 好 before 看 to describe a movie that is good to watch."
+                "fallbackRepair": "Put 好 before 看 to describe a movie that is good to watch.",
+                "successNote": "好看 means good to watch."
               },
               {
                 "id": "l8g1-p2",
@@ -62836,6 +62955,20 @@
                       "pinyin": "Xīn de jiǎotàchē hěn hǎoqí.",
                       "english": "The new bike is easy to ride.",
                       "simplified": "新的脚踏车很好骑。"
+                    }
+                  },
+                  {
+                    "order": [
+                      "新的",
+                      "腳踏車",
+                      "好",
+                      "騎"
+                    ],
+                    "sentence": {
+                      "traditional": "新的腳踏車好騎。",
+                      "pinyin": "Xīn de jiǎotàchē hǎoqí.",
+                      "english": "The new bike is easy to ride.",
+                      "simplified": "新的脚踏车好骑。"
                     }
                   }
                 ],
@@ -62901,6 +63034,33 @@
                       "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué, wǒ yě xiǎng xué.",
                       "english": "I hear swimming is easy to learn; I want to learn too.",
                       "simplified": "听说游泳很好学，我也想学。"
+                    }
+                  },
+                  {
+                    "order": [
+                      "聽說游泳",
+                      "很",
+                      "好",
+                      "學"
+                    ],
+                    "sentence": {
+                      "traditional": "聽說游泳很好學。",
+                      "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué.",
+                      "english": "I hear swimming is easy to learn.",
+                      "simplified": "听说游泳很好学。"
+                    }
+                  },
+                  {
+                    "order": [
+                      "聽說游泳",
+                      "好",
+                      "學"
+                    ],
+                    "sentence": {
+                      "traditional": "聽說游泳好學。",
+                      "pinyin": "Tīngshuō yóuyǒng hǎoxué.",
+                      "english": "I hear swimming is easy to learn.",
+                      "simplified": "听说游泳好学。"
                     }
                   }
                 ],

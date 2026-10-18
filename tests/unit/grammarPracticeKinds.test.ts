@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
+import { readJson } from '../acceptance_helpers';
+import type { GrammarPractice, ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
 import { checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
 import { checkOrderBuild, checkStoryOrder, misplacedPositions } from '../../src/utils/grammar/grammarPracticeSequence';
 import { validateGrammarPractice } from '../../src/utils/grammar/validateGrammarPractice';
@@ -25,8 +26,8 @@ test('order-build: the accepted order is right, and a wrong one is repaired by t
   assert.equal(checkOrderBuild(order, ['家樂', '不', '是', '美國人']).correct, true);
   assert.equal(checkOrderBuild(order, ['家樂', '是', '不', '美國人']).note, '不 goes first.');
   assert.equal(checkOrderBuild(order, ['家樂', '叫', '美國人']).note, '叫 gives a name.');
-  assert.equal(checkOrderBuild(order, ['美國人', '家樂']).note, 'Start with who.');
-  assert.equal(checkOrderBuild(order, ['家樂', '美國人', '不', '是']).note, 'Fallback.');
+  assert.equal(checkOrderBuild(order, ['美國人', '家樂']).note, 'Add 不 after 家樂.');
+  assert.equal(checkOrderBuild(order, ['家樂', '美國人', '不', '是']).note, 'Move 美國人 after 是.');
   assert.deepEqual(validate(order), []);
 });
 
@@ -39,8 +40,57 @@ test('order-build: more than one accepted order is allowed, and misplaced words 
     ],
   };
   assert.equal(checkOrderBuild(two, ['美國人', '家樂', '不', '是']).correct, true);
-  assert.deepEqual(misplacedPositions(['家樂', '是', '不', '美國人'], two.accepted), [1, 2]);
-  assert.deepEqual(misplacedPositions(['美國人', '家樂', '是', '不'], two.accepted), [2, 3]);
+  assert.deepEqual(misplacedPositions(['家樂', '是', '不', '美國人'], two.accepted), [1]);
+  assert.deepEqual(misplacedPositions(['美國人', '家樂', '是', '不'], two.accepted), [2]);
+});
+
+test('order-build: omissions preserve correctly ordered words and explain the missing word', () => {
+  const result = checkOrderBuild(order, ['家樂', '是', '美國人']);
+  assert.equal(result.correct, false);
+  assert.equal(result.title, 'Keep going');
+  assert.equal(result.note, 'Add 不 before 是.');
+  assert.deepEqual(result.positions, []);
+  assert.deepEqual(result.mark, []);
+  assert.deepEqual(misplacedPositions(['家樂', '是', '美國人'], order.accepted), []);
+});
+
+test('order-build: a surplus repeated word marks only that occurrence', () => {
+  const result = checkOrderBuild(order, ['家樂', '不', '不', '是', '美國人']);
+  assert.equal(result.note, 'Remove the extra 不.');
+  assert.deepEqual(result.positions, [2]);
+  assert.deepEqual(result.mark, ['不']);
+});
+
+test('order-build: feedback and marks describe the same authored error', () => {
+  const result = checkOrderBuild(order, ['家樂', '叫', '是', '不', '美國人']);
+  assert.equal(result.note, '叫 gives a name.');
+  assert.deepEqual(result.positions, [1]);
+  const swapped = checkOrderBuild(order, ['家樂', '是', '不', '美國人']);
+  assert.equal(swapped.note, '不 goes first.');
+  assert.deepEqual(swapped.positions, [1, 2]);
+});
+
+test('order-build: moving one word does not blame every word it passed', () => {
+  const result = checkOrderBuild(order, ['家樂', '美國人', '不', '是']);
+  assert.equal(result.note, 'Move 美國人 after 是.');
+  assert.deepEqual(result.positions, [1]);
+});
+
+test('order-build: move advice changes an unsatisfied relationship, including repeated words', () => {
+  const phrase: OrderBuildItem = {
+    ...order, repairs: [],
+    accepted: [{ order: ['我', '今天', '去', '學校'], sentence: sentence('我今天去學校。') }],
+  };
+  const shifted = checkOrderBuild(phrase, ['今天', '我', '去', '學校']);
+  assert.equal(shifted.note, 'Move 今天 after 我.');
+  assert.deepEqual(shifted.positions, [0]);
+  const repeated: OrderBuildItem = {
+    ...phrase,
+    accepted: [{ order: ['飯店', '又', '大', '又', '舒服'], sentence: sentence('飯店又大又舒服。') }],
+  };
+  const result = checkOrderBuild(repeated, ['又', '飯店', '大', '又', '舒服']);
+  assert.equal(result.note, 'Move 又 after 飯店.');
+  assert.deepEqual(result.positions, [0]);
 });
 
 test('order-build: needs at least one wrong tile, and a repeated tile is fine when the answer repeats it', () => {
@@ -52,6 +102,41 @@ test('order-build: needs at least one wrong tile, and a repeated tile is fine wh
   };
   assert.equal(validate(doubled).some((message) => /repeats/.test(message)), false);
   assert.ok(validate({ ...order, tiles: [...order.tiles, tile('不')] }).some((message) => /repeats/.test(message)), 'a word the answer uses once may not be doubled');
+});
+
+test('order-build: the movie screenshot answers its prompt without copying the whole book sentence', () => {
+  const pages = readJson<Record<string, GrammarPractice>>('content/grammar-practice/lessonEight.json');
+  const movie = pages['B1L08-G01-P185'].items.find((item) => item.id === 'l8g1-p1');
+  assert.ok(movie?.kind === 'order-build');
+  for (const words of [['這部電影', '好', '看'], ['這部電影', '很', '好', '看'], movie.accepted[0].order]) {
+    const result = checkOrderBuild(movie, words);
+    assert.equal(result.correct, true);
+    assert.equal(result.note, '好看 means good to watch.');
+    assert.deepEqual(result.positions, []);
+    assert.ok(result.answer);
+  }
+  const missing = checkOrderBuild(movie, ['這部電影', '看']);
+  assert.equal(missing.correct, false);
+  assert.equal(missing.note, 'Add 好 before 看.');
+  assert.deepEqual(missing.positions, []);
+  const reversed = checkOrderBuild(movie, ['這部電影', '看', '好']);
+  assert.equal(reversed.correct, false);
+  assert.match(reversed.note ?? '', /Move 看 after 好|Move 好 before 看/);
+  assert.equal(reversed.positions.length, 1);
+  const wrongMeaning = checkOrderBuild(movie, ['這部電影', '難', '看']);
+  assert.equal(wrongMeaning.correct, false);
+  assert.match(wrongMeaning.note ?? '', /好看 rather than 難看/);
+  assert.deepEqual(wrongMeaning.positions, [1]);
+});
+
+test('order-build: a missing repeated word keeps the first occurrence correct', () => {
+  const repeated: OrderBuildItem = {
+    ...order,
+    accepted: [{ order: ['我', '聽', '聽', '看'], sentence: sentence('我聽聽看。') }],
+  };
+  const result = checkOrderBuild(repeated, ['我', '聽', '看']);
+  assert.equal(result.note, 'Add 聽 before 看.');
+  assert.deepEqual(result.positions, []);
 });
 
 const listen: ListenBuildItem = {

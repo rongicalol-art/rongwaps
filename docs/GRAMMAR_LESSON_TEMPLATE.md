@@ -58,6 +58,8 @@ Kinds (each lesson mixes them to fit its book page):
 
 Every item has exactly ONE right answer (the validator counts `slot-build` solutions and `chat-build` accepted orders; `order-build` lists more than one only where the grammar really allows it, e.g. 又大又舒服 / 又舒服又大; `listen-build` always lists one: what was said) and a `source`: the book item (`"p.81 #3"`) or `"own"`.
 
+Sentence-build feedback follows the submitted words: a missing word gets a precise “Add …” instruction without turning later correct words red; an extra occurrence is marked on its own; an order repair marks only the words involved. The checker returns both the note and occurrence positions, and the renderer uses that diagnosis. `successNote` optionally explains a correct build. The prompt defines completion: retain the full book sentence as the canonical model, and author concise equivalents in `accepted` when they satisfy the prompt without omitting the target grammar. Listening still requires exactly what the recording says.
+
 ### Where each kind goes
 
 Pick the kind from what the learner must notice, never to vary for its own sake. The book's items come first: preserve their sentences, source references, context, pictures and order. Their interaction may change to make the learner produce the grammar. Use `order-build` for short sentence structures and `gaps: true` for longer frames or particle placement; keep targeted choices when choosing a form is the learning objective. Never prefill 可以, 有點兒 or another target and ask only for unrelated vocabulary. Extra items (1–3 per point, after the book's) each test something the group's other items do not.

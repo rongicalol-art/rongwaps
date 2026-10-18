@@ -24,3 +24,23 @@ Verdict: PASS
 
 ## Unsure
 - None.
+
+## Prompt/key follow-up — 2026-10-18
+
+### Checked
+- Reviewed all 98 `order-build` prompt/key pairs; cross-checked flagged cases against authored exercise lines in `materials/book1/L01-L08/transcript.md`.
+- Kept each textbook answer as the first model. Added 12 accepted concise answers across 10 items; each retains its target grammar and has its own sentence, pinyin, and English.
+- Preserved the existing L01 listen-pick items without edits. Export and content validation passed; typecheck and lint passed; all 1,047 tests passed. Jev lint reported zero violations (no applicable rules).
+
+### Issues
+- `lessonOne.json`: p.39 #3 accepts `中明不累` because the prompt already says she is tired; p.44 #1 and p.45 #3 accept `你呢` because the prior statement is supplied by the source context and prompt.
+- `lessonSix.json`: p.137 #3 accepts `我睡得很好` because the question supplies the time and the answer keeps 得. p.148 #1–2 accept the direct utterance after the textbook's `我媽媽說` / `老師說` frame, preserving 不可以 / 可以.
+- `lessonSeven.json`: p.171 #2 accepts `買東西很方便` because the prompt already supplies the supermarket context.
+- `lessonEight.json`: p.186 #1 accepts `這部電影好看` and `這部電影很好看`; #2 accepts `新的腳踏車好騎`; #3 accepts the swimming clause without the unrequested `我也想學` ending, with and without 很. Added a success note for 好看.
+- Retained the full multi-part forms where the prompt asks for them, including L06 p.138–140 verb-object + 得 patterns, L07 p.171 #1 and #3, and 又……又. No alternative drops a target classifier, 得, modal, negation, or required repetition.
+
+### Feedback integration
+- Shared checker aligns word occurrences and diagnoses omissions, extra occurrences and order errors. The renderer uses that same diagnosis for red marks. Missing words no longer shift correct words red; a move names a relationship that actually needs changing.
+- Exact listening keys and authored listening repairs remain intact. Correct builds may carry an authored `successNote`; the feedback status is also announced to screen readers.
+- Regression coverage includes the original screenshot, short/full accepted replies, required missing words, duplicate occurrences, distractors and movement advice that must change a relationship.
+- DEV UI Previews checked at 390×844 and 1440×1000: `這部電影好看` is correct with the 好看 explanation; missing 好 leaves both submitted words neutral; reversed 看好 marks only 看; 難看 marks only 難 with its meaning repair. No real progress recorded. Safari was not checked separately.

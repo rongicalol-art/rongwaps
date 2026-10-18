@@ -943,6 +943,19 @@
               "pinyin": "Tā hěn lèi, Zhōngmíng bú lèi.",
               "english": "She is tired; Zhongming is not tired."
             }
+          },
+          {
+            "order": [
+              "中明",
+              "不",
+              "累"
+            ],
+            "sentence": {
+              "traditional": "中明不累。",
+              "pinyin": "Zhōngmíng bú lèi.",
+              "english": "Zhongming is not tired.",
+              "simplified": "中明不累。"
+            }
           }
         ],
         "repairs": [
@@ -1328,6 +1341,18 @@
               "pinyin": "Wǒ shì Měiguó rén, nǐ ne?",
               "english": "I am American. How about you?"
             }
+          },
+          {
+            "order": [
+              "你",
+              "呢"
+            ],
+            "sentence": {
+              "traditional": "你呢？",
+              "pinyin": "Nǐ ne?",
+              "english": "And you?",
+              "simplified": "你呢？"
+            }
           }
         ],
         "repairs": [
@@ -1341,7 +1366,7 @@
             "note": "You are asking the same question back, so finish with 你呢 rather than 你嗎."
           }
         ],
-        "fallbackRepair": "State your nationality first, then ask 你呢。"
+        "fallbackRepair": "Use 你呢 to ask the same question back."
       },
       {
         "id": "l1g4-p2",
@@ -1457,6 +1482,18 @@
               "pinyin": "Tā hěn máng, nǐ ne?",
               "english": "He is busy. How about you?"
             }
+          },
+          {
+            "order": [
+              "你",
+              "呢"
+            ],
+            "sentence": {
+              "traditional": "你呢？",
+              "pinyin": "Nǐ ne?",
+              "english": "And you?",
+              "simplified": "你呢？"
+            }
           }
         ],
         "repairs": [
@@ -1470,7 +1507,7 @@
             "note": "After the statement about him, ask the same question back with 你呢."
           }
         ],
-        "fallbackRepair": "Say 他很忙 first, then ask 你呢。"
+        "fallbackRepair": "Ask your friend back with 你呢。"
       },
       {
         "id": "l1g4-own2",

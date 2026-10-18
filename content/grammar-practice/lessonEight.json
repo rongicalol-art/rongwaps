@@ -52,6 +52,33 @@
               "english": "This movie is very good; I like it a lot.",
               "simplified": "这部电影很好看，我很喜欢。"
             }
+          },
+          {
+            "order": [
+              "這部電影",
+              "好",
+              "看"
+            ],
+            "sentence": {
+              "traditional": "這部電影好看。",
+              "pinyin": "Zhè bù diànyǐng hǎokàn.",
+              "english": "This movie is good to watch.",
+              "simplified": "这部电影好看。"
+            }
+          },
+          {
+            "order": [
+              "這部電影",
+              "很",
+              "好",
+              "看"
+            ],
+            "sentence": {
+              "traditional": "這部電影很好看。",
+              "pinyin": "Zhè bù diànyǐng hěn hǎokàn.",
+              "english": "This movie is very good to watch.",
+              "simplified": "这部电影很好看。"
+            }
           }
         ],
         "repairs": [
@@ -65,7 +92,8 @@
             "note": "You like watching the movie, so describe it with 好看 rather than 難看."
           }
         ],
-        "fallbackRepair": "Put 好 before 看 to describe a movie that is good to watch."
+        "fallbackRepair": "Put 好 before 看 to describe a movie that is good to watch.",
+        "successNote": "好看 means good to watch."
       },
       {
         "id": "l8g1-p2",
@@ -115,6 +143,20 @@
               "pinyin": "Xīn de jiǎotàchē hěn hǎoqí.",
               "english": "The new bike is easy to ride.",
               "simplified": "新的脚踏车很好骑。"
+            }
+          },
+          {
+            "order": [
+              "新的",
+              "腳踏車",
+              "好",
+              "騎"
+            ],
+            "sentence": {
+              "traditional": "新的腳踏車好騎。",
+              "pinyin": "Xīn de jiǎotàchē hǎoqí.",
+              "english": "The new bike is easy to ride.",
+              "simplified": "新的脚踏车好骑。"
             }
           }
         ],
@@ -180,6 +222,33 @@
               "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué, wǒ yě xiǎng xué.",
               "english": "I hear swimming is easy to learn; I want to learn too.",
               "simplified": "听说游泳很好学，我也想学。"
+            }
+          },
+          {
+            "order": [
+              "聽說游泳",
+              "很",
+              "好",
+              "學"
+            ],
+            "sentence": {
+              "traditional": "聽說游泳很好學。",
+              "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué.",
+              "english": "I hear swimming is easy to learn.",
+              "simplified": "听说游泳很好学。"
+            }
+          },
+          {
+            "order": [
+              "聽說游泳",
+              "好",
+              "學"
+            ],
+            "sentence": {
+              "traditional": "聽說游泳好學。",
+              "pinyin": "Tīngshuō yóuyǒng hǎoxué.",
+              "english": "I hear swimming is easy to learn.",
+              "simplified": "听说游泳好学。"
             }
           }
         ],

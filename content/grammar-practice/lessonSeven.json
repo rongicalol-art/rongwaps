@@ -1365,6 +1365,18 @@
               "pinyin": "Wǒ jiā fùjìn yǒu yì jiā chāojíshìchǎng, mǎi dōngxi hěn fāngbiàn.",
               "english": "There is a supermarket near my home, so shopping is convenient."
             }
+          },
+          {
+            "order": [
+              "買東西",
+              "很方便"
+            ],
+            "sentence": {
+              "traditional": "買東西很方便。",
+              "pinyin": "Mǎi dōngxi hěn fāngbiàn.",
+              "english": "Shopping is convenient.",
+              "simplified": "买东西很方便。"
+            }
           }
         ],
         "repairs": [

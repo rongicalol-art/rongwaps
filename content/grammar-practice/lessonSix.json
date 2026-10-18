@@ -478,6 +478,20 @@
               "pinyin": "Zuótiān wǎnshang wǒ shuì de hěn hǎo.",
               "english": "I slept very well last night."
             }
+          },
+          {
+            "order": [
+              "我",
+              "睡",
+              "得",
+              "很好"
+            ],
+            "sentence": {
+              "traditional": "我睡得很好。",
+              "pinyin": "Wǒ shuì de hěn hǎo.",
+              "english": "I slept very well.",
+              "simplified": "我睡得很好。"
+            }
           }
         ],
         "repairs": [
@@ -1723,6 +1737,20 @@
               "pinyin": "Wǒ māma shuō, wǒ bù kěyǐ chī bīngqílín.",
               "english": "My mother says I may not eat ice cream."
             }
+          },
+          {
+            "order": [
+              "我",
+              "不",
+              "可以",
+              "吃冰淇淋"
+            ],
+            "sentence": {
+              "traditional": "我不可以吃冰淇淋。",
+              "pinyin": "Wǒ bù kěyǐ chī bīngqílín.",
+              "english": "I can't eat ice cream.",
+              "simplified": "我不可以吃冰淇淋。"
+            }
           }
         ],
         "repairs": [
@@ -1786,6 +1814,20 @@
               "traditional": "老師說，我可以去洗手間。",
               "pinyin": "Lǎoshī shuō, wǒ kěyǐ qù xǐshǒujiān.",
               "english": "The teacher says I may go to the restroom."
+            }
+          },
+          {
+            "order": [
+              "我",
+              "可以",
+              "去",
+              "洗手間"
+            ],
+            "sentence": {
+              "traditional": "我可以去洗手間。",
+              "pinyin": "Wǒ kěyǐ qù xǐshǒujiān.",
+              "english": "I may go to the restroom.",
+              "simplified": "我可以去洗手间。"
             }
           }
         ],

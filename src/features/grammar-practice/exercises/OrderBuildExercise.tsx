@@ -5,7 +5,7 @@ import { ContextualChineseText } from '../../../lib/widgets';
 import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { ListenBuildItem, OrderBuildItem } from '../../../types/models';
 import { cn } from '../../../utils/cn';
-import { checkOrderBuild, misplacedPositions } from '../../../utils/grammar/grammarPracticeSequence';
+import { checkOrderBuild } from '../../../utils/grammar/grammarPracticeSequence';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
@@ -28,16 +28,15 @@ export function OrderBuildExercise({
   const bank = item.tiles.map((_, index) => index).filter((index) => !line.includes(index));
   const layoutId = (tile: number) => `${item.id}-tile-${tile}`;
   const order = line.map((tile) => item.tiles[tile].traditional);
-  // After a wrong check, words that are not where an accepted answer has them turn red.
-  const misplaced = status === 'wrong' ? new Set(misplacedPositions(order, item.accepted)) : null;
+  const verdict = checkOrderBuild(item, order);
+  const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
 
   useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
   useEffect(() => {
     checkRef.current = ready
       ? () => {
-        const verdict = checkOrderBuild(item, order);
         onResult(verdict.correct && verdict.answer
-          ? { correct: true, sentence: verdict.answer.sentence }
+          ? { correct: true, sentence: verdict.answer.sentence, note: verdict.note }
           : { correct: false, title: verdict.title, note: verdict.note });
       }
       : null;
