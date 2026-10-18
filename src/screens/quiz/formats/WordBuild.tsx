@@ -87,7 +87,8 @@ export const WordBuild: React.FC<WordBuildProps> = ({
     onAnswer(true);
   };
   useNumberKeySelection({
-    items: tiles.map((_, i) => i),
+    // Number keys follow the visible tray: placed tiles leave it, so key N picks the Nth tile still shown.
+    items: tiles.map((_, i) => i).filter((tile) => !slots.includes(tile)),
     onSelect: place,
     disabled: isChecked || breakdownOpen,
     onDebugAnswer: debugAnswer,

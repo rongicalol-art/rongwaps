@@ -6,6 +6,7 @@ import { cn } from '../../../utils/cn';
 import type { PracticeResult, PracticeScript, PracticeStatus } from '../practiceTypes';
 import { textIn } from '../practiceTypes';
 import { DOCK_IN, DOCK_SWAP } from '../practiceMotion';
+import { SentencePlayButton } from './SentencePlayButton';
 
 /** Skip and Back are quiet: neutral ink, not the book's blue. */
 const NEUTRAL = '!text-ui-muted-strong';
@@ -130,7 +131,10 @@ export function PracticeDock({
               </div>
               {result?.sentence && (
                 <>
-                  <p className="mt-1 font-chinese text-xl font-bold text-ui-ink-strong">{textIn(result.sentence, script)}</p>
+                  <div className="mt-1 flex items-center gap-1">
+                    <p className="font-chinese text-xl font-bold text-ui-ink-strong">{textIn(result.sentence, script)}</p>
+                    {correct && <SentencePlayButton sentence={result.sentence} script={script} />}
+                  </div>
                   <p className="text-sm font-bold text-ui-muted-strong">{result.sentence.pinyin} · {result.sentence.english}</p>
                 </>
               )}

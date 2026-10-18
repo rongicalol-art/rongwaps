@@ -60,6 +60,15 @@ test('distractors may play a single verified indexed reading, never a guessed po
   assert.equal(wordBuildTileReading(card('大家', 'dàjiā'), 'X', index), undefined);
 });
 
+test('a distractor plays the single course-taught reading; a course alternation stays silent', () => {
+  // 可 is polyphonic in the dictionary (kě|kè) but the course only teaches kě.
+  assert.equal(resolveWordBuildTileAudio(card('知道', 'zhīdào'), '可', recordings), '可.mp3');
+  const alternate = new Map(recordings);
+  alternate.set(recordingLookupKey('還', 'hái')!, card('還', 'hái', '還-hai.mp3'));
+  alternate.set(recordingLookupKey('還', 'huán')!, card('還', 'huán', '還-huan.mp3'));
+  assert.equal(resolveWordBuildTileAudio(card('知道', 'zhīdào'), '還', alternate), undefined);
+});
+
 test('licensed clips fill exact gaps and preserve textbook priority and ü', () => {
   const sounds = new Map([['piao4', 'piao4.mp3'], ['liang4', 'other-liang4.mp3'], ['lü3', 'lv3.mp3']]);
   assert.equal(resolveWordBuildTileAudio(card('漂亮', 'piàoliàng'), '漂', recordings, sounds), 'piao4.mp3');

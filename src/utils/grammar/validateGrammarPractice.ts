@@ -1,4 +1,4 @@
-import type { GrammarPractice, ListenBuildItem, MatchPairsItem, PracticeItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../types/models';
+import type { GrammarPractice, ListenBuildItem, ListenClip, ListenPickItem, MatchPairsItem, PracticeItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../types/models';
 import { practiceSlots, slotBuildSolutions } from './grammarPracticeCheck';
 import type { LessonValidationIssue } from './validateInteractiveLessons';
 
@@ -91,6 +91,9 @@ function itemIssues(item: PracticeItem): string[] {
     case 'spot-fix':
       problems.push(...spotIssues(item));
       break;
+    case 'listen-pick':
+      problems.push(...pickIssues(item));
+      break;
     default:
       problems.push(...choiceIssues(item));
   }
@@ -103,17 +106,35 @@ function itemIssues(item: PracticeItem): string[] {
  * That the clip really says it is checked against the alignment by `tests/content/grammarPracticeKinds.test.ts`.
  */
 function listenIssues(item: ListenBuildItem): string[] {
-  const problems: string[] = [];
-  const { clip } = item;
-  if (!/^B1L\d{2}-R\d{2}$/.test(clip.reading) || !Number.isInteger(clip.line) || clip.line < 0) problems.push(`clip must name its dialogue (B1L02-R01) and a line index, not ${clip.reading} line ${clip.line}.`);
-  if (!/^B1-\d{2}-\d-\d\.mp3$/.test(clip.file)) problems.push(`clip file ${clip.file} is not a book track (B1-02-1-1.mp3).`);
-  if (!(clip.start >= 0 && clip.end > clip.start && clip.end - clip.start <= MAX_CLIP_SECONDS)) problems.push(`clip ${clip.start}–${clip.end}s must be a stretch of at most ${MAX_CLIP_SECONDS}s.`);
+  const problems: string[] = clipIssues(item.clip, item);
   if (item.accepted.length !== 1) problems.push(`has ${item.accepted.length} right answers; exactly one must be right: what was said.`);
-  if (!item.prompt?.trim()) problems.push('prompt is required: the task, e.g. "Build what you hear."');
-  if (HAN.test(item.prompt ?? '') || HAN.test(item.sub ?? '')) problems.push('the title and sub must not show Chinese: it would give the answer away.');
   item.accepted.forEach((answer, index) => {
     if (plain(answer.sentence.traditional) !== answer.order.join('')) problems.push(`answer ${index + 1}: ${answer.sentence.traditional} is not its tiles in order (${answer.order.join('')}).`);
   });
+  return problems;
+}
+
+/** Listen-pick: 3 or 4 different written sentences, one of them said; every other one says why it was not. */
+function pickIssues(item: ListenPickItem): string[] {
+  const problems = clipIssues(item.clip, item);
+  if (item.options.length < 3 || item.options.length > 4) problems.push('offer 3 or 4 sentences.');
+  if (!item.options[item.answer]) problems.push(`answer ${item.answer} is not an option.`);
+  if (new Set(item.options.map((option) => plain(option.traditional))).size !== item.options.length) problems.push('two options are the same sentence.');
+  item.options.forEach((option, index) => {
+    problems.push(...sentenceIssues(option, `option ${index + 1}`));
+    if (index !== item.answer && !option.note?.trim()) problems.push(`option ${index + 1} needs a note on why it is not what was said.`);
+  });
+  return problems;
+}
+
+/** The recording is the prompt: a book track, short, and a title that shows no Chinese. */
+function clipIssues(clip: ListenClip, item: ListenBuildItem | ListenPickItem): string[] {
+  const problems: string[] = [];
+  if (!/^B1L\d{2}-R\d{2}$/.test(clip.reading) || !Number.isInteger(clip.line) || clip.line < 0) problems.push(`clip must name its dialogue (B1L02-R01) and a line index, not ${clip.reading} line ${clip.line}.`);
+  if (!/^B1-\d{2}-\d-\d\.mp3$/.test(clip.file)) problems.push(`clip file ${clip.file} is not a book track (B1-02-1-1.mp3).`);
+  if (!(clip.start >= 0 && clip.end > clip.start && clip.end - clip.start <= MAX_CLIP_SECONDS)) problems.push(`clip ${clip.start}–${clip.end}s must be a stretch of at most ${MAX_CLIP_SECONDS}s.`);
+  if (!item.prompt?.trim()) problems.push('prompt is required: the task, e.g. "Build what you hear."');
+  if (HAN.test(item.prompt ?? '') || HAN.test(item.sub ?? '')) problems.push('the title and sub must not show Chinese: it would give the answer away.');
   return problems;
 }
 

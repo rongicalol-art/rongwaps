@@ -3,6 +3,7 @@ import type { PracticeItem, PracticeKind } from '../../../types/models';
 import type { PracticeExerciseProps } from '../practiceTypes';
 import { ChatBuildExercise } from './ChatBuildExercise';
 import { ListenBuildExercise } from './ListenBuildExercise';
+import { ListenPickExercise } from './ListenPickExercise';
 import { MatchPairsExercise } from './MatchPairsExercise';
 import { OrderBuildExercise } from './OrderBuildExercise';
 import { SlotBuildExercise } from './SlotBuildExercise';
@@ -22,6 +23,7 @@ export const PRACTICE_EXERCISES: { [K in PracticeKind]: ComponentType<PracticeEx
   'chat-build': ChatBuildExercise,
   'order-build': OrderBuildExercise,
   'listen-build': ListenBuildExercise,
+  'listen-pick': ListenPickExercise,
   'spot-fix': SpotFixExercise,
   'match-pairs': MatchPairsExercise,
   'sort-groups': SortGroupsExercise,

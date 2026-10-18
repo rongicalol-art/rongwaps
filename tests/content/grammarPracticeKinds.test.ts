@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import type { GrammarPractice, ListenBuildItem, PracticeItem } from '../../src/types/models';
-import { checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
+import type { GrammarPractice, ListenClip, PracticeItem } from '../../src/types/models';
+import { checkListenPick, checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
 import { checkOrderBuild, checkStoryOrder } from '../../src/utils/grammar/grammarPracticeSequence';
 import { readJson } from '../acceptance_helpers';
 
@@ -13,7 +13,7 @@ const pages = fs.readdirSync(dir).filter((file) => file.endsWith('.json')).flatM
   const lesson = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')) as Record<string, GrammarPractice>;
   return Object.entries(lesson).map(([key, page]) => ({ key, items: page.items }));
 });
-const isNewKind = (item: PracticeItem) => ['order-build', 'listen-build', 'spot-fix', 'match-pairs', 'sort-groups', 'story-order'].includes(item.kind);
+const isNewKind = (item: PracticeItem) => ['order-build', 'listen-build', 'listen-pick', 'spot-fix', 'match-pairs', 'sort-groups', 'story-order'].includes(item.kind);
 const newItems = pages.flatMap(({ key, items }) => items.filter(isNewKind).map((item) => ({ key, item })));
 
 test('every new-kind item is titled by its own task', () => {
@@ -72,7 +72,11 @@ test('a sentence to fix says what it means, so exactly one fix is right', () => 
 interface AlignedChar { charStart: number; charEnd: number; start: number; score?: number }
 interface AlignedLine { index: number; text: string; unmatched?: boolean; chars?: AlignedChar[] }
 const alignment = readJson<Record<string, { audioFile: string; lines: AlignedLine[] }>>('content/dialogueAlignment.json');
-const listenItems = newItems.flatMap(({ key, item }) => (item.kind === 'listen-build' ? [{ key, item }] : []));
+const listenItems = newItems.flatMap(({ key, item }) => {
+  if (item.kind === 'listen-build') return [{ key, id: item.id, clip: item.clip, said: item.accepted[0].sentence.traditional }];
+  if (item.kind === 'listen-pick') return [{ key, id: item.id, clip: item.clip, said: item.options[item.answer].traditional }];
+  return [];
+});
 /** "High-quality recordings only": every spoken character of a clip matched the audio at least this well (0–1). */
 const MIN_CHAR_SCORE = 0.85;
 /** A character's start is an estimate: leave room before the first one, and let the last one finish. */
@@ -83,8 +87,7 @@ const MIN_NEXT_WORD_SECONDS = 0.3;
 const MIN_PREVIOUS_WORD_SECONDS = 0.6;
 const hanOnly = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
 
-function clipProblems(item: ListenBuildItem): string[] {
-  const { clip } = item;
+function clipProblems(clip: ListenClip, sentence: string): string[] {
   const reading = alignment[clip.reading];
   if (!reading) return [`no dialogue ${clip.reading}`];
   const problems: string[] = [];
@@ -96,7 +99,7 @@ function clipProblems(item: ListenBuildItem): string[] {
     .filter((char) => char.start >= clip.start && char.start < clip.end)
     .map((char) => ({ line: aligned.index, text: aligned.text.slice(char.charStart, char.charEnd), start: char.start, score: char.score ?? 0 })));
   const said = spoken.map((char) => char.text).join('');
-  const answer = hanOnly(item.accepted[0].sentence.traditional);
+  const answer = hanOnly(sentence);
   if (said !== answer) problems.push(`the clip says "${said}", the answer is "${answer}"`);
   if (spoken.some((char) => char.line !== clip.line)) problems.push(`the clip runs into another line (${[...new Set(spoken.map((char) => char.line))].join(', ')}), not just line ${clip.line}`);
   const weakest = Math.min(...spoken.map((char) => char.score));
@@ -115,5 +118,21 @@ function clipProblems(item: ListenBuildItem): string[] {
 
 test('a listening clip says exactly its answer, from a clean recording of one dialogue line', () => {
   assert.ok(listenItems.length >= 4, 'listen then build has its own items in L1–L8');
-  assert.deepEqual(listenItems.flatMap(({ key, item }) => clipProblems(item).map((problem) => `${key} ${item.id}: ${problem}`)), []);
+  assert.deepEqual(listenItems.flatMap(({ key, id, clip, said }) => clipProblems(clip, said).map((problem) => `${key} ${id}: ${problem}`)), []);
+});
+
+test('every grammar sentence played from the book is a clean clip of exactly that sentence', () => {
+  const clips = readJson<Record<string, ListenClip>>('content/audio/grammar_book_clips.json');
+  assert.ok(Object.keys(clips).length > 0);
+  assert.deepEqual(Object.entries(clips).flatMap(([sentence, clip]) => clipProblems(clip, sentence).map((problem) => `${sentence}: ${problem}`)), []);
+});
+
+test('a listen-pick answer is right only for the sentence that was said, and every other says why', () => {
+  const picks = newItems.flatMap(({ item }) => (item.kind === 'listen-pick' ? [item] : []));
+  assert.ok(picks.length >= 2);
+  picks.forEach((item) => item.options.forEach((option, index) => {
+    const verdict = checkListenPick(item, index);
+    assert.equal(verdict.correct, index === item.answer, item.id);
+    if (!verdict.correct) assert.ok(verdict.note?.trim(), `${item.id} option ${index + 1}`);
+  }));
 });

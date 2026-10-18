@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { findMatchingCourseRecording, findCharacterCourseContext } from '../../../services/courseVocabLookup';
 import { usePrimaryReading } from '../../../hooks/usePronunciation';
 import { getCharacterAudio } from '../../../services/pronunciationAudio';
+import { useAppStore } from '../../../store/useAppStore';
 
 const ICON_ACTION =
   'flex h-10 w-10 shrink-0 items-center justify-center rounded-compact transition-colors focus-ring';
@@ -20,6 +21,7 @@ export function SummaryQuickActions({
   meaning: shownMeaning,
   className = 'absolute right-3 top-3 z-10 flex items-center gap-2 sm:right-5 sm:top-5',
   showAudio = true,
+  ttsText,
 }: {
   char: string;
   audioSrc?: string | null;
@@ -30,6 +32,8 @@ export function SummaryQuickActions({
   className?: string;
   /** Hide the speaker (and skip its audio lookup), leaving only Save. */
   showAudio?: boolean;
+  /** What the browser voice reads when no recording exists; defaults to the character. */
+  ttsText?: string;
 }) {
   const entries = useCharDictionaryEntry(char);
 
@@ -37,7 +41,7 @@ export function SummaryQuickActions({
   const headword = primary?.traditional || char;
   const indexedReading = usePrimaryReading(char, primary?.pinyin?.[0]);
   const reading = shownPinyin || indexedReading;
-  const [message, setMessage] = useState('');
+  const characterPreference = useAppStore((state) => state.characterPreference);
   const [recording, setRecording] = useState<{ key: string; audio?: string; contextWord?: string } | null>(null);
   const recordingKey = `${headword}|${reading}`;
   const requestId = useRef(0);
@@ -45,7 +49,6 @@ export function SummaryQuickActions({
     if (!showAudio) return;
     const counter = requestId;
     const request = ++counter.current;
-    setMessage('');
     void findMatchingCourseRecording(headword, reading).catch(() => undefined).then(async (course) => {
       if (course?.audio && audioService.isAudioFileName(course.audio)) return { audio: course.audio };
       if (counter.current !== request) return undefined;
@@ -60,13 +63,20 @@ export function SummaryQuickActions({
     return () => { counter.current++; };
   }, [headword, reading, recordingKey, showAudio]);
 
+  /** No recording: the browser voice reads the word, in the learner's preferred script. */
+  const speak = () => {
+    const text = ttsText || (characterPreference === 'traditional' ? headword : primary?.simplified || headword);
+    const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
+    void audioService.speakText(text, language, 0.86).catch(() => {});
+  };
+
   const play = () => {
-    if (recording?.key !== recordingKey || !recording.audio) return;
+    if (recording?.key !== recordingKey) return;
     const request = ++requestId.current;
     audioService.stop();
-    setMessage('');
+    if (!recording.audio) { speak(); return; }
     const unavailable = () => {
-      if (requestId.current === request) setMessage('Recording unavailable for this reading.');
+      if (requestId.current === request) speak();
     };
     void audioService.play(recording.audio, 1, undefined, undefined, 0, { fallback: 'none', onUnavailable: unavailable }).catch(unavailable);
   };
@@ -79,7 +89,7 @@ export function SummaryQuickActions({
 
   return (
     <div className={className}>
-      {showAudio && (recording?.key === recordingKey && recording.audio ? <button
+      {showAudio && (recording?.key === recordingKey ? <button
         type="button"
         aria-label={recording.contextWord ? `Hear ${headword} in ${recording.contextWord}` : `Hear pronunciation of ${headword}`}
         onClick={play}
@@ -87,8 +97,7 @@ export function SummaryQuickActions({
       >
         <AppIcon name="pronounce" size={22} />
         {recording.contextWord && <span className="text-sm">Hear {recording.contextWord}</span>}
-      </button> : <span role="status" className="text-xs text-ui-muted-strong">{recording?.key === recordingKey ? 'No audio' : 'Checking audio…'}</span>)}
-      {message && <span role="status" className="text-xs text-ui-muted-strong">{message}</span>}
+      </button> : <span role="status" className="text-xs text-ui-muted-strong">Checking audio…</span>)}
       <FavoriteButton
         word={headword}
         traditional={primary?.traditional}

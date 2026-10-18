@@ -45,6 +45,8 @@ interface QuizSession {
   learnedCount: number;
   isShuffled: boolean;
   toggleShuffle: () => void;
+  /** Bumped on shuffle/reset/review: remounts the question UI so its local answer state clears. */
+  resetNonce?: number;
 }
 
 const getFrontFontSize = (len: number) => {
@@ -128,7 +130,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const [breakdownIndex, setBreakdownIndex] = useState(0);
   const {
     activeCards, currentIndex, currentCard, completed, handleCheck, resumedReview, resetAll, reviewUnlearned, practiceCards, missedCards,
-    unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false,
+    unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false, resetNonce = 0,
   } = session;
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
@@ -302,7 +304,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
               <h2 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl">{title}</h2>
             </div>
 
-            <Fragment key={`${currentIndex}:${currentCard.id}`}>
+            <Fragment key={`${currentIndex}:${currentCard.id}:${resetNonce}`}>
               {children({ openBreakdown, breakdownOpen: Boolean(activeBreakdown), reviewHandoff, isReviewPass })}
             </Fragment>
           </div>

@@ -1,7 +1,7 @@
 import { useQuizAnswerAudio } from './useQuizAnswerAudio';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
-import { useAppStore } from '../../../store/useAppStore';
+import { useAppStore, type MatchPairType } from '../../../store/useAppStore';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
 import { quizSnapshotKey } from '../../../utils/srs/resumeState';
@@ -46,6 +46,8 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   const measureUsed = useRef(false);
   const matchRef = useRef<{ done: Set<string>; missed: Flashcard[] }>({ done: new Set(), missed: [] });
   const snapshotRef = useRef<{ key: string; value: RoundSnapshot } | null>(null);
+  /** The Match Pairs setting is read when a round's plan is built, so toggling it mid-round never re-plans the beats under the learner. */
+  const planConfigRef = useRef<{ key: string; matchPairType: MatchPairType } | null>(null);
 
   const resetBeat = useCallback(() => {
     stopAnswerAudio();
@@ -80,17 +82,19 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
     if (activeCards.length === 0) return [];
     if (snapshotRef.current?.key !== sessionKey) snapshotRef.current = { key: sessionKey, value: readSnapshot(sessionKey) };
     const { nonce } = snapshotRef.current.value;
+    const planKey = `${sessionKey}|${idsKey}|${pass}`;
+    if (planConfigRef.current?.key !== planKey) planConfigRef.current = { key: planKey, matchPairType };
     return planQuizRound(activeCards, {
       seed: `${sessionKey}|${nonce}|${pass}`,
       reviewPass: isReviewPass,
       extraCards: cards,
       confusions: useAppStore.getState().wordConfusions,
       types,
-      matchPairType,
+      matchPairType: planConfigRef.current.matchPairType,
     });
-    // activeCards is keyed by its ids.
+    // activeCards is keyed by its ids. matchPairType is frozen per round on purpose.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idsKey, sessionKey, pass, isReviewPass, typesKey, matchPairType]);
+  }, [idsKey, sessionKey, pass, isReviewPass, typesKey]);
 
   const starts = useMemo(() => {
     let at = 0;
@@ -199,5 +203,6 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
     toggleShuffle,
+    resetNonce: session.resetNonce,
   };
 }

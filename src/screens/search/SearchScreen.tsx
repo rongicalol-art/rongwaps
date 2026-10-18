@@ -2,7 +2,6 @@ import { debugLogger } from '../../utils/debug/debugLogger';
 import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
 import { useDictionarySearch } from '../../hooks/useDictionarySearch';
-import { useTocflReadiness } from '../../hooks/useTocflReadiness';
 import { AppFooter } from '../../app/components/AppFooter';
 import { ProfileAvatarButton, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { searchVocabulary } from '../../services/vocabularyService';
@@ -33,7 +32,7 @@ function DictionaryStickyHeader({ menuToggle, onProfileClick }: SearchScreenProp
 }
 
 /** With an empty search box the list shows this search, so the page is never blank. */
-const DEFAULT_QUERY = 'hi';
+const DEFAULT_QUERY = 'hello';
 const LEVEL_ORDER = ['Novice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'Rare'];
 
 /** Curriculum search covers every book. */
@@ -50,8 +49,6 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
   const [courseResults, setCourseResults] = useState<DictionaryListEntry[]>([]);
   const [isSearchingCourses, setIsSearchingCourses] = useState(false);
   const [courseSearchError, setCourseSearchError] = useState<string | null>(null);
-
-  const readiness = useTocflReadiness();
 
   const query = searchQuery.trim();
   const searchTerm = query || DEFAULT_QUERY;
@@ -174,7 +171,8 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
       <DictionaryStickyHeader menuToggle={menuToggle} onProfileClick={onProfileClick} />
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-10 gap-y-7 px-4 pb-32 md:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:pb-20">
-        <div className="order-1 min-w-0 lg:col-start-1 lg:row-start-1">
+        {/* Search and results stay in one cell: a taller side rail never stretches the two apart. */}
+        <div className="order-1 flex min-w-0 flex-col gap-7 lg:col-start-1 lg:row-start-1">
           <DictionarySearchBar
             value={searchQuery}
             onChange={handleResultsSearch}
@@ -185,9 +183,7 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
               <SearchFilterMenu levelOptions={levelOptions} bookOptions={mode === 'curriculum' ? bookOptions : []} lessonOptions={lessonOptions} value={filters} onChange={setFilters} />
             )}
           />
-        </div>
 
-        <div className="order-2 min-w-0 lg:col-start-1 lg:row-start-2">
           <DictionaryResults
             mode={mode}
             query={searchTerm}
@@ -201,7 +197,7 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
 
         <aside
           aria-label="Today and progress"
-          className={`order-3 min-w-0 lg:self-start lg:sticky-rail lg:col-start-2 lg:row-span-2 lg:row-start-1 ${query ? 'hidden lg:block' : ''}`}
+          className={`order-2 min-w-0 lg:col-start-2 lg:row-start-1 lg:self-start lg:sticky-rail ${query ? 'hidden lg:block' : ''}`}
         >
           <DictionaryAside
             savedWords={savedWords}
@@ -209,7 +205,6 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
             characterOfTheDay={characterOfTheDay}
             onOpenWord={setDictionaryWord}
             onViewSavedWords={handleViewSavedWords}
-            readiness={readiness}
           />
         </aside>
 

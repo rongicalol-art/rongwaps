@@ -1,4 +1,4 @@
-import type { MatchPairsItem, SortGroupsItem, SpotFixItem } from '../../types/models';
+import type { ListenPickItem, MatchPairsItem, SortGroupsItem, SpotFixItem } from '../../types/models';
 import { matchRepair, type PracticeVerdict } from './grammarPracticeCheck';
 
 /**
@@ -25,4 +25,9 @@ export function checkMatchPair(item: MatchPairsItem, line: number, reply: number
 export function checkSortCard(item: SortGroupsItem, card: number, group: 0 | 1): PracticeVerdict {
   const target = item.cards[card];
   return target.group === group ? { correct: true, mark: [] } : { correct: false, note: target.note, mark: [] };
+}
+
+/** The written sentence picked for a clip: right, or what that sentence would have sounded like. */
+export function checkListenPick(item: ListenPickItem, choice: number): PracticeVerdict {
+  return choice === item.answer ? { correct: true, mark: [] } : { correct: false, note: item.options[choice].note, mark: [] };
 }

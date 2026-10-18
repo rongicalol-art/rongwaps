@@ -83,6 +83,7 @@ export function WordHero({
                 char={primaryChar}
                 pinyin={pinyin || undefined}
                 meaning={meaning}
+                ttsText={word}
               />
             )}
           </div>
@@ -127,6 +128,7 @@ export function WordHero({
                 audioSrc={courseCard?.audio}
                 pinyin={pinyin || undefined}
                 meaning={meaning}
+                ttsText={word}
               />
             </>
           ) : (

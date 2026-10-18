@@ -18,11 +18,12 @@ import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
  */
 export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   const quizChoiceType = useAppStore((state) => state.quizChoiceType);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
   const { answerAudioPlaying, playWord, stopAnswerAudio } = useQuizAnswerAudio();
-  const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; options: Flashcard[] } | null>(null);
+  const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; simpleDefinitions: boolean; options: Flashcard[] } | null>(null);
 
   const session = useCardSession(cards, sessionKey, {
     requeueMissed: false,
@@ -51,14 +52,15 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     if (
       currentCardChoicesRef.current &&
       currentCardChoicesRef.current.cardId === currentCard.id &&
-      currentCardChoicesRef.current.choiceType === quizChoiceType
+      currentCardChoicesRef.current.choiceType === quizChoiceType &&
+      currentCardChoicesRef.current.simpleDefinitions === simpleDefinitions
     ) {
       return currentCardChoicesRef.current.options;
     }
-    const choices = shuffleItems(buildAttributeChoices(currentCard, shuffleItems(cards), quizChoiceType));
-    currentCardChoicesRef.current = { cardId: currentCard.id, choiceType: quizChoiceType, options: choices };
+    const choices = shuffleItems(buildAttributeChoices(currentCard, shuffleItems(cards), quizChoiceType, 3, simpleDefinitions));
+    currentCardChoicesRef.current = { cardId: currentCard.id, choiceType: quizChoiceType, simpleDefinitions, options: choices };
     return choices;
-  }, [cards, currentCard, quizChoiceType]);
+  }, [cards, currentCard, quizChoiceType, simpleDefinitions]);
 
   useEffect(() => {
     stopAnswerAudio();
@@ -66,7 +68,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     setIsChecked(false);
   }, [currentCard?.id, quizChoiceType, stopAnswerAudio]);
 
-  const correctTarget = currentCard ? getCardChoiceTarget(currentCard, quizChoiceType) : null;
+  const correctTarget = currentCard ? getCardChoiceTarget(currentCard, quizChoiceType, simpleDefinitions) : null;
   const isCorrect = selectedOption === correctTarget;
 
   const recordChoiceAnswer = useCallback((option: string) => {
@@ -75,10 +77,10 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 
     setSelectedOption(option);
     setIsChecked(true);
-    const correct = option === getCardChoiceTarget(currentCard, quizChoiceType);
+    const correct = option === getCardChoiceTarget(currentCard, quizChoiceType, simpleDefinitions);
     if (correct) playWord(currentCard);
     session.recordAnswer(currentCard, correct ? 4 : 2);
-  }, [currentCard, playWord, quizChoiceType, session]);
+  }, [currentCard, playWord, quizChoiceType, simpleDefinitions, session]);
 
   const handleCheck = () => {
     if (!selectedOption) return;

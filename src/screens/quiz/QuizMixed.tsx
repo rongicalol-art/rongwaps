@@ -35,7 +35,7 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const buildCheck = useRef<(() => void) | null>(null);
   const session = useQuizMixed(cards, sessionKey, types ?? undefined);
   const { beat, currentCard, status, followUp, isReviewPass } = session;
-  const activeBeatId = `${sessionKey}|${session.beatKey}|${currentCard?.id ?? ''}`;
+  const activeBeatId = `${sessionKey}|${session.beatKey}|${currentCard?.id ?? ''}|${session.resetNonce ?? 0}`;
   const [readyBeatId, setReadyBeatId] = useState<string | null>(null);
   const buildReady = readyBeatId === activeBeatId;
   const onBuildReady = useCallback((ready: boolean) => {

@@ -220,6 +220,24 @@ export interface ListenBuildItem extends PracticeItemBase, Pick<OrderBuildItem, 
   clip: ListenClip;
 }
 
+/** A written sentence offered in `listen-pick`; a wrong one says what it would have sounded like. */
+export interface ListenOption extends PracticeSentence {
+  note?: string;
+}
+
+/**
+ * Hear and pick: the learner hears a stretch of a book dialogue and taps which written sentence
+ * was said. The options differ only in the sound the point is about (很 / 不 / 是, 嗎 / 呢), so
+ * the ear decides, not the eye. The title is the task and shows no Chinese.
+ */
+export interface ListenPickItem extends PracticeItemBase {
+  kind: 'listen-pick';
+  clip: ListenClip;
+  options: ListenOption[];
+  /** Index of the option that was said. */
+  answer: number;
+}
+
 /** One tappable word of a sentence a friend wrote; `tail` is punctuation that stays after it. */
 export interface SpotChunk extends PracticeText {
   tail?: string;
@@ -312,7 +330,7 @@ export interface StoryOrderItem extends PracticeItemBase {
 
 export type PracticeItem =
   | SlotBuildItem | SlotReelsItem | ChatBuildItem
-  | OrderBuildItem | ListenBuildItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
+  | OrderBuildItem | ListenBuildItem | ListenPickItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
 export type PracticeKind = PracticeItem['kind'];
 
 export interface GrammarPractice {

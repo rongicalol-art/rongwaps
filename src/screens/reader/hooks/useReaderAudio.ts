@@ -90,6 +90,7 @@ export function useReaderAudio({
     void audioService.playRange(bookAudioFileName, startSec, endSec, {
       rate: playbackSpeedRef.current,
       onComplete: () => { finished = true; },
+      onUnavailable: () => { useAppStore.getState().showFeedbackToast('Recording unavailable.'); },
       onTime: (time) => {
         if (playbackTokenRef.current === token) {
           setPlaying(true);

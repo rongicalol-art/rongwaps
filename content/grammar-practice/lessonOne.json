@@ -739,6 +739,42 @@
           "english": "His surname is Li."
         },
         "successNote": "姓 already means “the surname is”, so it needs no 是."
+      },
+      {
+        "id": "l1g1-own-pick",
+        "kind": "listen-pick",
+        "source": "own",
+        "prompt": "Which did you hear?",
+        "clip": {
+          "reading": "B1L01-R01",
+          "line": 3,
+          "file": "B1-01-1-1.mp3",
+          "start": 17.23,
+          "end": 21.9
+        },
+        "options": [
+          {
+            "traditional": "我知道，她不是日本人。",
+            "simplified": "我知道，她不是日本人。",
+            "pinyin": "Wǒ zhīdào, tā bú shì Rìběnrén.",
+            "english": "I know, she is not Japanese.",
+            "note": "不是 would put bú before shì: you heard tā shì."
+          },
+          {
+            "traditional": "我知道，她是日本人。",
+            "simplified": "我知道，她是日本人。",
+            "pinyin": "Wǒ zhīdào, tā shì Rìběnrén.",
+            "english": "I know, she is Japanese."
+          },
+          {
+            "traditional": "我知道，她是美國人。",
+            "simplified": "我知道，她是美国人。",
+            "pinyin": "Wǒ zhīdào, tā shì Měiguórén.",
+            "english": "I know, she is American.",
+            "note": "美國人 is Měiguórén: you heard Rìběnrén."
+          }
+        ],
+        "answer": 1
       }
     ]
   },
@@ -1047,6 +1083,42 @@
           }
         ],
         "fallbackRepair": "Listen again: who, how much, then the describing word."
+      },
+      {
+        "id": "l1g2-own-pick",
+        "kind": "listen-pick",
+        "source": "own",
+        "prompt": "Which did you hear?",
+        "clip": {
+          "reading": "B1L01-R01",
+          "line": 1,
+          "file": "B1-01-1-1.mp3",
+          "start": 9.59,
+          "end": 11.41
+        },
+        "options": [
+          {
+            "traditional": "她不可愛。",
+            "simplified": "她不可爱。",
+            "pinyin": "Tā bù kě'ài.",
+            "english": "She is not cute.",
+            "note": "不可愛 would be bù kě'ài: you heard hěn."
+          },
+          {
+            "traditional": "她很漂亮。",
+            "simplified": "她很漂亮。",
+            "pinyin": "Tā hěn piàoliang.",
+            "english": "She is pretty.",
+            "note": "漂亮 is piàoliang: listen to the word after hěn."
+          },
+          {
+            "traditional": "她很可愛。",
+            "simplified": "她很可爱。",
+            "pinyin": "Tā hěn kě'ài.",
+            "english": "She is cute."
+          }
+        ],
+        "answer": 2
       }
     ]
   },

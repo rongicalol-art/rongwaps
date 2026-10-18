@@ -189,10 +189,6 @@ export function ReaderScreen({
     playLine(lineIndex);
   }, [playLine]);
 
-  const handlePlayRange = useCallback((startSec: number) => {
-    playFromTime(startSec);
-  }, [playFromTime]);
-
   const handlePlayFromTime = useCallback((startSec: number, endSec?: number) => {
     playFromTime(startSec, endSec);
   }, [playFromTime]);
@@ -225,7 +221,7 @@ export function ReaderScreen({
     locatedWord,
     locatedGrammarRanges: locatedGrammarPoint?.matches ?? EMPTY_GRAMMAR_MATCHES,
     onPlayLine: handlePlayLine,
-    onPlayRange: handlePlayRange,
+    onPlayRange: handlePlayFromTime,
     onPlayFromTime: handlePlayFromTime,
   };
 

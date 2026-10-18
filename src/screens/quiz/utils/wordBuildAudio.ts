@@ -26,6 +26,24 @@ export function wordBuildTileReading(card: Flashcard, char: string, index: Readi
   return unique.size === 1 && reading && /^[a-zü]+[1-5]$/.test(reading) ? reading : undefined;
 }
 
+/**
+ * A distractor has no word context, but the course itself may pin its reading
+ * (單字 vocabulary like 可 kě). Only a single taught reading is safe; a course
+ * alternation (還 hái / huán) stays silent like any other polyphonic tile.
+ */
+function courseCharacterReading(recordings: Map<string, Flashcard>, char: string): string | undefined {
+  const prefix = `${char}\u0000`;
+  let reading: string | undefined;
+  for (const key of recordings.keys()) {
+    if (!key.startsWith(prefix)) continue;
+    const value = key.slice(prefix.length);
+    if (!/^[a-zü]+[1-5]$/.test(value)) continue;
+    if (reading && reading !== value) return undefined;
+    reading = value;
+  }
+  return reading;
+}
+
 /** No whole-word fallback on a tile tap: it could reveal the answer. */
 export function resolveWordBuildTileAudio(
   card: Flashcard,
@@ -34,7 +52,8 @@ export function resolveWordBuildTileAudio(
   sounds?: Map<string, string>,
   index: ReadingsIndex | null = null,
 ): string | undefined {
-  const reading = wordBuildTileReading(card, char, index);
+  const reading = wordBuildTileReading(card, char, index)
+    ?? (!Array.from(card.front).includes(char) ? courseCharacterReading(recordings, char) : undefined);
   if (!reading) return undefined;
   const recording = findReadingMatch(recordings, [char], reading);
   return recording?.audio && audioService.isAudioFileName(recording.audio) ? recording.audio : sounds?.get(reading);

@@ -11,7 +11,7 @@ interface SavedWordsPreviewProps {
   onViewAll: () => void;
 }
 
-/** Saved words wrap into the available width so the last item is never clipped off-screen. */
+/** Saved words sit in a tidy two-column grid so the rail never reads as a ragged pile. */
 export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, onViewAll }: SavedWordsPreviewProps) {
   const visibleItems = items.slice(0, MAX_PREVIEW_ITEMS);
   const displayCount = totalCount ?? (items.length > 0 ? items.length : undefined);
@@ -32,21 +32,21 @@ export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, on
         )}
       />
       {isLoading ? (
-        <div className="flex min-h-12 flex-wrap gap-2">
-          {Array.from({ length: 3 }).map((_, index) => <Skeleton key={index} className="h-12 w-24 rounded-control" />)}
+        <div className="grid min-h-12 grid-cols-2 gap-2.5">
+          {Array.from({ length: 3 }).map((_, index) => <Skeleton key={index} className="h-12 w-full rounded-control" />)}
         </div>
       ) : visibleItems.length > 0 ? (
-        <div className="flex min-h-12 flex-wrap gap-2">
+        <div className="grid min-h-12 grid-cols-2 gap-2.5">
           {visibleItems.map((item) => (
             <button
               key={item.word}
               type="button"
               onClick={() => onOpenWord(item.word)}
               aria-label={`Open ${item.traditional || item.word}`}
-              className="flex h-12 shrink-0 items-baseline gap-2 rounded-control border-2 border-b-4 border-ui-divider bg-ui-surface px-3 py-1.5 transition-transform active:translate-y-0.5 active:border-b-2 focus-ring"
+              className="flex h-12 min-w-0 items-center gap-2 rounded-control border-2 border-b-4 border-ui-divider bg-ui-surface px-3 py-1.5 transition-transform active:translate-y-0.5 active:border-b-2 focus-ring"
             >
               <span className="font-chinese text-2xl leading-none text-ui-ink-strong">{item.traditional || item.word}</span>
-              <span className="max-w-[9rem] truncate text-[13px] font-extrabold text-ui-muted">{(item.meaning || '').split(';')[0]}</span>
+              <span className="min-w-0 flex-1 truncate text-left text-[13px] font-extrabold text-ui-muted">{(item.meaning || '').split(';')[0]}</span>
             </button>
           ))}
         </div>
