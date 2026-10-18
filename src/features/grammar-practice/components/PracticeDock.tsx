@@ -80,7 +80,7 @@ export function PracticeDock({
       <p role="status" aria-live="polite" className="sr-only">{checked ? (result?.title ?? (correct ? 'Correct' : 'Not quite')) : ''}</p>
       <div
         className={cn(
-          'pointer-events-auto mx-auto w-full max-w-2xl border-t-2 px-3 pt-3 pb-sheet-safe transition-colors',
+          'pointer-events-auto mx-auto w-full max-w-2xl lg:max-w-4xl border-t-2 px-3 pt-3 pb-sheet-safe transition-colors',
           'md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:p-3',
           !checked && 'border-ui-border bg-ui-surface',
           correct && 'border-feedback-success bg-feedback-success-surface',
