@@ -1,15 +1,7 @@
 import { SectionEyebrow } from '../../../lib/widgets';
 import type { TocflReadiness } from '../../../utils/lesson/tocflReadiness';
 
-const tocflProgressIcon = new URL('../../../assets/icons/flat/map.svg', import.meta.url).href;
-
 export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadiness | null }) {
-  const headingIcon = (
-    <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-control bg-brand-primary-soft">
-      <img src={tocflProgressIcon} alt="" className="size-6 object-contain" />
-    </span>
-  );
-
   if (!readiness) {
     return (
       <section
@@ -17,7 +9,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
         aria-busy="true"
         className="min-w-0 animate-pulse rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
       >
-        <SectionEyebrow title="TOCFL progress" icon={headingIcon} />
+        <SectionEyebrow title="TOCFL progress" />
         <div aria-hidden="true" className="mt-4 space-y-4">
           {['A', 'B', 'C'].map((band) => (
             <div key={band} className="space-y-2">
@@ -32,7 +24,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
 
   return (
     <section aria-label="TOCFL character progress" className="min-w-0 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
-      <SectionEyebrow title="TOCFL progress" icon={headingIcon} />
+      <SectionEyebrow title="TOCFL progress" />
       <ol className="mt-4 space-y-3">
         {readiness.bands.map(({ band, known, total }) => {
           const percent = total > 0 ? Math.round((known / total) * 100) : 0;
