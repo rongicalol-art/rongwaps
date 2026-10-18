@@ -170,7 +170,134 @@ export interface ChatBuildItem extends PracticeItemBase {
   after?: PracticeSentence[];
 }
 
-export type PracticeItem = SlotBuildItem | SlotReelsItem | ChatBuildItem;
+/**
+ * Build the sentence: loose words go onto one free line (no blanks, so the learner can't count
+ * the answer). The prompt says what to say. Every accepted order is listed (exactly one unless
+ * the grammar really allows two); a `placed` repair says why each wrong tile is wrong.
+ */
+export interface OrderBuildItem extends PracticeItemBase {
+  kind: 'order-build';
+  scene?: PracticeScene;
+  tiles: PracticeTile[];
+  accepted: ChatAnswer[];
+  repairs?: PracticeRepair[];
+  fallbackRepair: string;
+}
+
+/** A stretch of a book dialogue track: the real recording, never text-to-speech. */
+export interface ListenClip {
+  /** The dialogue (a reading id) and the index of the line the clip is cut from, as in `content/dialogueAlignment.json`. */
+  reading: string;
+  line: number;
+  /** The dialogue's track (`audioFile`) and the seconds to play: the spoken words plus a little silence either side. */
+  file: string;
+  start: number;
+  end: number;
+}
+
+/**
+ * Listen, then build: the learner hears a stretch of a book dialogue and builds what was said on
+ * the free line, exactly as in `order-build`. The title is the task ("Build what you hear") and no
+ * Chinese shows before the answer. Exactly one order is right: the one that was said.
+ */
+export interface ListenBuildItem extends PracticeItemBase, Pick<OrderBuildItem, 'tiles' | 'accepted' | 'repairs' | 'fallbackRepair'> {
+  kind: 'listen-build';
+  clip: ListenClip;
+}
+
+/** One tappable word of a sentence a friend wrote; `tail` is punctuation that stays after it. */
+export interface SpotChunk extends PracticeText {
+  tail?: string;
+}
+
+/**
+ * Spot the mistake: tap the wrong word in a written sentence, then choose its fix from the
+ * dock (a replacement tile, or "Take it out", which is always offered so it never hints).
+ * Wrong replacements explain themselves through `placed` repairs.
+ */
+export interface SpotFixItem extends PracticeItemBase {
+  kind: 'spot-fix';
+  chunks: SpotChunk[];
+  /** Index of the wrong chunk. */
+  wrong: number;
+  /** The replacement that fixes it (a tile's `traditional`). Leave out when the fix is taking the word out. */
+  fix?: string;
+  /** Replacements offered, the right one included when `fix` is set. */
+  tiles: PracticeTile[];
+  repairs?: PracticeRepair[];
+  /** Said when the learner takes out a word that needed swapping (required when `fix` is set). */
+  takeOutNote?: string;
+  /** Said when the learner taps a word that is fine: the rule, without naming the wrong word. */
+  hint: string;
+  /** The corrected sentence, shown on a right answer. */
+  result: PracticeSentence;
+  successNote?: string;
+}
+
+/** A line to answer, with what its reply needs (said when a wrong reply is picked). */
+export interface MatchLine {
+  sentence: PracticeSentence;
+  note: string;
+}
+
+/** One reply. `answers` is the index of the line it answers; a reply with none is a trap that fits no line. */
+export interface MatchReply {
+  sentence: PracticeSentence;
+  answers?: number;
+  /** Why a trap fits no line. */
+  note?: string;
+}
+
+/** Match the pair: each line is answered by exactly one reply, shown in the order given. */
+export interface MatchPairsItem extends PracticeItemBase {
+  kind: 'match-pairs';
+  lines: MatchLine[];
+  replies: MatchReply[];
+  /** The one-line takeaway shown when every pair is matched. */
+  successNote?: string;
+}
+
+export interface SortGroup {
+  /** Plain English name of the group. */
+  label: string;
+  /** The pattern in Chinese, shown under the label. */
+  pattern?: PracticeText;
+}
+
+export interface SortCard {
+  sentence: PracticeSentence;
+  /** Index of the group it belongs to. */
+  group: 0 | 1;
+  /** Why it belongs there; said when the other group is chosen. */
+  note: string;
+}
+
+/** Sort by use: one sentence at a time goes into one of two groups. Cards come in the order given. */
+export interface SortGroupsItem extends PracticeItemBase {
+  kind: 'sort-groups';
+  groups: [SortGroup, SortGroup];
+  cards: SortCard[];
+  /** The one-line takeaway shown when every sentence is sorted. */
+  successNote?: string;
+}
+
+export interface StoryStep extends PracticeSentence {
+  /** Why this step sits where it does; said when the wrong step is put there. */
+  note: string;
+}
+
+/** Story order: tap short sentences in the order they happen. `steps` are shown as given; `answer` lists their indexes in the right order. */
+export interface StoryOrderItem extends PracticeItemBase {
+  kind: 'story-order';
+  steps: StoryStep[];
+  answer: number[];
+  /** The one-line takeaway shown on a right answer. */
+  successNote?: string;
+}
+
+export type PracticeItem =
+  | SlotBuildItem | SlotReelsItem | ChatBuildItem
+  | OrderBuildItem | ListenBuildItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
 export type PracticeKind = PracticeItem['kind'];
 
 export interface GrammarPractice {

@@ -793,7 +793,7 @@
     "grammarNumber": 2,
     "titleTraditional": "動作 + 得 + 表現",
     "titleEnglish": "Describe How Well You Do an Action with 得",
-    "learnerPromise": "Describe how well, fast, slowly, much, or happily an action is done.",
+    "learnerPromise": "Describe how well, fast, slowly, or how much an action is done.",
     "printedPages": [
       136,
       137,
@@ -1425,10 +1425,10 @@
         },
         {
           "id": "g2-confusion-object-touch",
-          "question": "He plays tennis very well. Can I say 他打網球得很好?",
+          "question": "He plays tennis well. Can I say 他打網球得不錯?",
           "answer": "Put 網球 before 打, or repeat 打, so the verb comes directly before 得.",
-          "wrongTraditional": "他打網球得很好。",
-          "wrongSimplified": "他打网球得很好。",
+          "wrongTraditional": "他打網球得不錯。",
+          "wrongSimplified": "他打网球得不错。",
           "right": {
             "traditional": "他網球打得不錯。",
             "simplified": "他网球打得不错。",
@@ -4227,7 +4227,7 @@
         "grammarNumber": 2,
         "titleTraditional": "動作 + 得 + 表現",
         "titleEnglish": "Describe How Well You Do an Action with 得",
-        "learnerPromise": "Describe how well, fast, slowly, much, or happily an action is done.",
+        "learnerPromise": "Describe how well, fast, slowly, or how much an action is done.",
         "printedPages": [
           136,
           137,
@@ -4859,10 +4859,10 @@
             },
             {
               "id": "g2-confusion-object-touch",
-              "question": "He plays tennis very well. Can I say 他打網球得很好?",
+              "question": "He plays tennis well. Can I say 他打網球得不錯?",
               "answer": "Put 網球 before 打, or repeat 打, so the verb comes directly before 得.",
-              "wrongTraditional": "他打網球得很好。",
-              "wrongSimplified": "他打网球得很好。",
+              "wrongTraditional": "他打網球得不錯。",
+              "wrongSimplified": "他打网球得不错。",
               "right": {
                 "traditional": "他網球打得不錯。",
                 "simplified": "他网球打得不错。",

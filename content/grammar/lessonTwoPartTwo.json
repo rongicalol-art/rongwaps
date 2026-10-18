@@ -1516,6 +1516,8 @@
       "有没有",
       "喜不喜歡",
       "喜不喜欢",
+      "喜歡不喜歡",
+      "喜欢不喜欢",
       "嗎",
       "吗",
       "不",
@@ -2015,10 +2017,16 @@
             },
             {
               "id": "g6-e2-word-3",
-              "traditional": "沒有",
-              "simplified": "没有",
-              "pinyin": "méi yǒu",
-              "meaning": "do not have"
+              "traditional": "沒",
+              "simplified": "没",
+              "pinyin": "méi",
+              "meaning": "negative before 有"
+            },
+            {
+              "id": "g6-e2-word-3b",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
             },
             {
               "id": "g6-e2-word-4",
@@ -3660,6 +3668,8 @@
           "有没有",
           "喜不喜歡",
           "喜不喜欢",
+          "喜歡不喜歡",
+          "喜欢不喜欢",
           "嗎",
           "吗",
           "不",
@@ -4159,10 +4169,16 @@
                 },
                 {
                   "id": "g6-e2-word-3",
-                  "traditional": "沒有",
-                  "simplified": "没有",
-                  "pinyin": "méi yǒu",
-                  "meaning": "do not have"
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "meaning": "negative before 有"
+                },
+                {
+                  "id": "g6-e2-word-3b",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
                 },
                 {
                   "id": "g6-e2-word-4",

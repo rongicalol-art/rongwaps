@@ -33,7 +33,7 @@ Files: brief `docs/grammar/briefs/LXX.md` · scans + transcript `materials/book1
 
 ## Remaining work, in order
 1. Overnight run finishes the pages for L4–L8.
-2. App: Order kind, calendar/clock Read scenes, book-picture scene (crops), book-row layout, table overflow and lone-。 fixes, one-answer check, coverage check.
+2. App: ~~Order kind~~ (done 2026-10-18: `order-build`, `spot-fix`, `match-pairs`, `sort-groups`, `story-order`; 13 own items in L1–L8, plan for L9–L16 in `GRAMMAR_LESSON_TEMPLATE.md`; later that day `listen-build`, hear a clause of a book dialogue then build it, 6 own items in L1–L8), calendar/clock Read scenes, book-picture scene (crops), book-row layout, table overflow and lone-。 fixes, one-answer check, coverage check.
 3. Page fixes: L2 G1 tables, L1 exercise titles (superseded by the pass), focus highlighting.
 4. Exercise pass: L1 pilot → owner OK → L2–L8 (Sol designs; checks enforce).
 5. Final checks and the owner summary with screenshots.

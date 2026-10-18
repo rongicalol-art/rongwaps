@@ -1437,6 +1437,126 @@
                   "english": "The Indonesian student is surnamed Li and called Zhongming."
                 },
                 "prompt": "Introduce the Indonesian student."
+              },
+              {
+                "id": "l1g1-own-order",
+                "source": "own",
+                "kind": "order-build",
+                "prompt": "Jiale is British. Say that he is not American.",
+                "tiles": [
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  },
+                  {
+                    "traditional": "家樂",
+                    "simplified": "家乐",
+                    "pinyin": "Jiālè"
+                  },
+                  {
+                    "traditional": "叫",
+                    "pinyin": "jiào"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "美國人",
+                    "simplified": "美国人",
+                    "pinyin": "Měiguó rén"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "家樂",
+                      "不",
+                      "是",
+                      "美國人"
+                    ],
+                    "sentence": {
+                      "traditional": "家樂不是美國人。",
+                      "simplified": "家乐不是美国人。",
+                      "pinyin": "Jiālè bú shì Měiguó rén.",
+                      "english": "Jiale is not American."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "叫"
+                    ],
+                    "note": "叫 gives a name. To say what someone is or isn’t, use 是: 不是 for “is not”."
+                  },
+                  {
+                    "before": [
+                      "是",
+                      "不"
+                    ],
+                    "note": "不 goes first, right before the verb: 不是."
+                  },
+                  {
+                    "notFirst": "家樂",
+                    "note": "Start with who you are talking about: 家樂."
+                  }
+                ],
+                "fallbackRepair": "Say who, then 不是, then what he is not: 家樂不是美國人."
+              },
+              {
+                "id": "l1g1-own-spot",
+                "source": "own",
+                "kind": "spot-fix",
+                "prompt": "Your friend wrote this. Tap the word that’s wrong.",
+                "sub": "They mean: His surname is Li.",
+                "chunks": [
+                  {
+                    "traditional": "他"
+                  },
+                  {
+                    "traditional": "是"
+                  },
+                  {
+                    "traditional": "姓"
+                  },
+                  {
+                    "traditional": "李",
+                    "tail": "。"
+                  }
+                ],
+                "wrong": 1,
+                "tiles": [
+                  {
+                    "traditional": "叫",
+                    "pinyin": "jiào"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "叫"
+                    ],
+                    "note": "叫 is a verb, just like 姓. Two verbs can’t stand side by side: 姓 already says “the surname is”."
+                  },
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "note": "不 would say his surname is not Li. Your friend means it is."
+                  }
+                ],
+                "hint": "姓 already means “the surname is”. Look for a word that says the same thing again.",
+                "result": {
+                  "traditional": "他姓李。",
+                  "pinyin": "Tā xìng Lǐ.",
+                  "english": "His surname is Li."
+                },
+                "successNote": "姓 already means “the surname is”, so it needs no 是."
               }
             ]
           }
@@ -2201,6 +2321,82 @@
                     "english": "tired"
                   }
                 ]
+              },
+              {
+                "id": "l1g2-own-listen",
+                "source": "own",
+                "kind": "listen-build",
+                "prompt": "Build what you hear.",
+                "clip": {
+                  "reading": "B1L01-R01",
+                  "line": 4,
+                  "file": "B1-01-1-1.mp3",
+                  "start": 22.69,
+                  "end": 24.52
+                },
+                "tiles": [
+                  {
+                    "traditional": "漂亮",
+                    "pinyin": "piàoliàng"
+                  },
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  },
+                  {
+                    "traditional": "她",
+                    "pinyin": "tā"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "她",
+                      "很",
+                      "漂亮"
+                    ],
+                    "sentence": {
+                      "traditional": "她很漂亮。",
+                      "pinyin": "Tā hěn piàoliàng.",
+                      "english": "She is very pretty."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "是"
+                    ],
+                    "note": "A describing word takes 很, not 是: 很漂亮 is “very pretty”."
+                  },
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "title": "That is not what you heard",
+                    "note": "The speaker said 很 (very), not 不 (not)."
+                  },
+                  {
+                    "before": [
+                      "漂亮",
+                      "很"
+                    ],
+                    "note": "很 comes before the describing word."
+                  },
+                  {
+                    "notFirst": "她",
+                    "note": "The speaker starts with who is being described."
+                  }
+                ],
+                "fallbackRepair": "Listen again: who, how much, then the describing word."
               }
             ]
           }
@@ -4496,6 +4692,39 @@
                     "english": "busy"
                   }
                 ]
+              },
+              {
+                "id": "l1g4-own-story",
+                "source": "own",
+                "kind": "story-order",
+                "prompt": "Put the chat in order.",
+                "steps": [
+                  {
+                    "traditional": "我姓高，你呢？",
+                    "pinyin": "Wǒ xìng Gāo, nǐ ne?",
+                    "english": "My surname is Gao. How about you?",
+                    "note": "It answers the first question, then 你呢 asks it back."
+                  },
+                  {
+                    "traditional": "我姓李。",
+                    "pinyin": "Wǒ xìng Lǐ.",
+                    "english": "My surname is Li.",
+                    "note": "It answers the 你呢 question, so it comes last."
+                  },
+                  {
+                    "traditional": "請問，你姓什麼？",
+                    "simplified": "请问，你姓什么？",
+                    "pinyin": "Qǐngwèn, nǐ xìng shénme?",
+                    "english": "Excuse me, what is your surname?",
+                    "note": "A chat opens with a question, and 請問 politely starts it."
+                  }
+                ],
+                "answer": [
+                  2,
+                  0,
+                  1
+                ],
+                "successNote": "你呢 hands the same question back, so the next line answers it."
               }
             ]
           }
@@ -5332,6 +5561,71 @@
                     "english": "to love"
                   }
                 ]
+              },
+              {
+                "id": "l1g5-own-spot",
+                "source": "own",
+                "kind": "spot-fix",
+                "prompt": "Your friend wrote this question. Tap the word that’s wrong.",
+                "sub": "They mean: Do you like Miss Li?",
+                "chunks": [
+                  {
+                    "traditional": "你"
+                  },
+                  {
+                    "traditional": "喜歡",
+                    "simplified": "喜欢"
+                  },
+                  {
+                    "traditional": "誰",
+                    "simplified": "谁"
+                  },
+                  {
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "tail": "？"
+                  }
+                ],
+                "wrong": 2,
+                "fix": "李小姐",
+                "tiles": [
+                  {
+                    "traditional": "李小姐",
+                    "pinyin": "Lǐ xiǎojiě"
+                  },
+                  {
+                    "traditional": "王小姐",
+                    "pinyin": "Wáng xiǎojiě"
+                  },
+                  {
+                    "traditional": "什麼",
+                    "simplified": "什么",
+                    "pinyin": "shénme"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "王小姐"
+                    ],
+                    "note": "That asks about Miss Wang. Your friend means Miss Li."
+                  },
+                  {
+                    "placed": [
+                      "什麼"
+                    ],
+                    "note": "什麼 is another question word, so it still clashes with 嗎."
+                  }
+                ],
+                "takeOutNote": "Without 誰 the sentence asks “Do you like it?”. Your friend means Miss Li, so name her.",
+                "hint": "Your friend wants a yes/no question about one person. One word is asking something else.",
+                "result": {
+                  "traditional": "你喜歡李小姐嗎？",
+                  "simplified": "你喜欢李小姐吗？",
+                  "pinyin": "Nǐ xǐhuan Lǐ xiǎojiě ma?",
+                  "english": "Do you like Miss Li?"
+                },
+                "successNote": "誰 asks “who?”, so it can’t sit in a yes/no question. Name the person and keep 嗎."
               }
             ]
           }
@@ -8114,6 +8408,49 @@
                   "english": "I do not go home at noon."
                 },
                 "prompt": "You stay at school at noon. Answer."
+              },
+              {
+                "id": "l2g02-own-story",
+                "source": "own",
+                "kind": "story-order",
+                "prompt": "Put your Monday in order.",
+                "steps": [
+                  {
+                    "traditional": "我中午十二點下課。",
+                    "simplified": "我中午十二点下课。",
+                    "pinyin": "Wǒ zhōngwǔ shí’èr diǎn xiàkè.",
+                    "english": "I finish class at noon.",
+                    "note": "中午 is noon: class ends after the morning, before the afternoon."
+                  },
+                  {
+                    "traditional": "我早上七點去學校。",
+                    "simplified": "我早上七点去学校。",
+                    "pinyin": "Wǒ zǎoshang qī diǎn qù xuéxiào.",
+                    "english": "I go to school at 7 in the morning.",
+                    "note": "早上七點 is the earliest time, so the day starts here."
+                  },
+                  {
+                    "traditional": "我下午一點回家。",
+                    "simplified": "我下午一点回家。",
+                    "pinyin": "Wǒ xiàwǔ yī diǎn huí jiā.",
+                    "english": "I go home at 1 in the afternoon.",
+                    "note": "下午 is the latest part of the day, so going home comes last."
+                  },
+                  {
+                    "traditional": "我九點三十分上課。",
+                    "simplified": "我九点三十分上课。",
+                    "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
+                    "english": "I start class at 9:30.",
+                    "note": "九點三十分 is half past nine, after you have arrived at school."
+                  }
+                ],
+                "answer": [
+                  1,
+                  3,
+                  0,
+                  2
+                ],
+                "successNote": "The time words give the order: 早上 → 中午 → 下午."
               }
             ],
             "allowWords": [
@@ -9067,6 +9404,91 @@
                   "english": "You have water."
                 },
                 "prompt": "The person asking you is the one with water. Answer."
+              },
+              {
+                "id": "l2g03-own-listen",
+                "source": "own",
+                "kind": "listen-build",
+                "prompt": "Build what you hear.",
+                "clip": {
+                  "reading": "B1L02-R01",
+                  "line": 1,
+                  "file": "B1-02-1-1.mp3",
+                  "start": 6.04,
+                  "end": 8.25
+                },
+                "tiles": [
+                  {
+                    "traditional": "課",
+                    "simplified": "课",
+                    "pinyin": "kè"
+                  },
+                  {
+                    "traditional": "有",
+                    "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "早上",
+                    "pinyin": "zǎoshàng"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "wǒ"
+                  },
+                  {
+                    "traditional": "下午",
+                    "pinyin": "xiàwǔ"
+                  },
+                  {
+                    "traditional": "沒有",
+                    "simplified": "没有",
+                    "pinyin": "méiyǒu"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我",
+                      "早上",
+                      "沒有",
+                      "課"
+                    ],
+                    "sentence": {
+                      "traditional": "我早上沒有課。",
+                      "simplified": "我早上没有课。",
+                      "pinyin": "Wǒ zǎoshàng méiyǒu kè.",
+                      "english": "I don’t have class in the morning."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "下午"
+                    ],
+                    "title": "That is not what you heard",
+                    "note": "The speaker said 早上 (morning), not 下午 (afternoon)."
+                  },
+                  {
+                    "placed": [
+                      "有"
+                    ],
+                    "title": "That is not what you heard",
+                    "note": "Listen for 沒: 沒有 means “don’t have”, and 有 alone means “have”."
+                  },
+                  {
+                    "before": [
+                      "課",
+                      "沒有"
+                    ],
+                    "note": "課 is the thing they don’t have, so it comes after 沒有."
+                  },
+                  {
+                    "notFirst": "我",
+                    "note": "The speaker starts with who has no class."
+                  }
+                ],
+                "fallbackRepair": "Listen again: who, when, then what they don’t have."
               }
             ],
             "allowWords": [
@@ -11464,6 +11886,8 @@
             "有没有",
             "喜不喜歡",
             "喜不喜欢",
+            "喜歡不喜歡",
+            "喜欢不喜欢",
             "嗎",
             "吗",
             "不",
@@ -11963,10 +12387,16 @@
                   },
                   {
                     "id": "g6-e2-word-3",
-                    "traditional": "沒有",
-                    "simplified": "没有",
-                    "pinyin": "méi yǒu",
-                    "meaning": "do not have"
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi",
+                    "meaning": "negative before 有"
+                  },
+                  {
+                    "id": "g6-e2-word-3b",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have"
                   },
                   {
                     "id": "g6-e2-word-4",
@@ -16041,6 +16471,85 @@
                   "alt": "A woman hands a book-shaped gift to a man."
                 },
                 "prompt": "You are the woman. Say what you give your British classmate."
+              },
+              {
+                "id": "l3-g2-own-listen",
+                "source": "own",
+                "kind": "listen-build",
+                "prompt": "Build what you hear.",
+                "clip": {
+                  "reading": "B1L03-R01",
+                  "line": 1,
+                  "file": "B1-03-1-1.mp3",
+                  "start": 6.96,
+                  "end": 9.01
+                },
+                "tiles": [
+                  {
+                    "traditional": "什麼",
+                    "simplified": "什么",
+                    "pinyin": "shénme"
+                  },
+                  {
+                    "traditional": "想",
+                    "pinyin": "xiǎng"
+                  },
+                  {
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma"
+                  },
+                  {
+                    "traditional": "妳",
+                    "simplified": "你",
+                    "pinyin": "nǐ"
+                  },
+                  {
+                    "traditional": "她",
+                    "pinyin": "tā"
+                  },
+                  {
+                    "traditional": "送",
+                    "pinyin": "sòng"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "妳",
+                      "想",
+                      "送",
+                      "她",
+                      "什麼"
+                    ],
+                    "sentence": {
+                      "traditional": "妳想送她什麼？",
+                      "simplified": "你想送她什么？",
+                      "pinyin": "Nǐ xiǎng sòng tā shénme?",
+                      "english": "What do you want to give her?"
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "note": "什麼 already asks the question, so there is no 嗎."
+                  },
+                  {
+                    "before": [
+                      "什麼",
+                      "她"
+                    ],
+                    "note": "The person who gets the gift comes right after 送, then what it is."
+                  },
+                  {
+                    "notFirst": "妳",
+                    "note": "The speaker starts with who is being asked."
+                  }
+                ],
+                "fallbackRepair": "Listen again: who is asked, what they want to do, who gets it, then what."
               }
             ],
             "allowWords": [
@@ -26247,6 +26756,70 @@
                   "english": "Zhongming likes buying inexpensive things, and Youmei does too.",
                   "simplified": "中明喜欢买便宜的东西，友美也喜欢买便宜的东西。"
                 }
+              },
+              {
+                "id": "l04-g2-own-spot",
+                "source": "own",
+                "kind": "spot-fix",
+                "prompt": "Your friend wrote this about shopping. Tap the word that’s wrong.",
+                "sub": "They mean: I buy a book, and I buy a pen too.",
+                "chunks": [
+                  {
+                    "traditional": "我"
+                  },
+                  {
+                    "traditional": "買書",
+                    "simplified": "买书"
+                  },
+                  {
+                    "traditional": "和"
+                  },
+                  {
+                    "traditional": "買筆",
+                    "simplified": "买笔",
+                    "tail": "。"
+                  }
+                ],
+                "wrong": 2,
+                "fix": "也",
+                "tiles": [
+                  {
+                    "traditional": "也",
+                    "pinyin": "yě"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "還是",
+                    "simplified": "还是",
+                    "pinyin": "háishi"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "都"
+                    ],
+                    "note": "都 means “all” and needs a group before it. One person doing two things uses 也."
+                  },
+                  {
+                    "placed": [
+                      "還是"
+                    ],
+                    "note": "還是 means “or”: it asks about a choice. Your friend is saying both."
+                  }
+                ],
+                "takeOutNote": "Without a linking word the two actions don’t connect. 也 says “also”.",
+                "hint": "One word here joins things, but your friend is joining two actions.",
+                "result": {
+                  "traditional": "我買書也買筆。",
+                  "simplified": "我买书也买笔。",
+                  "pinyin": "Wǒ mǎi shū yě mǎi bǐ.",
+                  "english": "I buy a book, and I buy a pen too."
+                },
+                "successNote": "也 goes before the second verb to say “also”. 和 only joins nouns."
               }
             ]
           }
@@ -37397,6 +37970,80 @@
                 },
                 "prompt": "You’re not eating at home tonight. Where does 在 go?",
                 "gaps": true
+              },
+              {
+                "id": "l05-g02-own-order",
+                "source": "own",
+                "kind": "order-build",
+                "prompt": "Ask your friend where they read.",
+                "tiles": [
+                  {
+                    "traditional": "你",
+                    "pinyin": "nǐ"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "哪裡",
+                    "simplified": "哪里",
+                    "pinyin": "nǎlǐ"
+                  },
+                  {
+                    "traditional": "看書",
+                    "simplified": "看书",
+                    "pinyin": "kàn shū"
+                  },
+                  {
+                    "traditional": "圖書館",
+                    "simplified": "图书馆",
+                    "pinyin": "túshūguǎn"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "你",
+                      "在",
+                      "哪裡",
+                      "看書"
+                    ],
+                    "sentence": {
+                      "traditional": "你在哪裡看書？",
+                      "simplified": "你在哪里看书？",
+                      "pinyin": "Nǐ zài nǎlǐ kàn shū?",
+                      "english": "Where do you read?"
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "圖書館"
+                    ],
+                    "note": "圖書館 is an answer. To ask where, put 哪裡 in the place spot: 在哪裡."
+                  },
+                  {
+                    "before": [
+                      "看書",
+                      "在"
+                    ],
+                    "note": "The place comes before the action: 在哪裡看書."
+                  },
+                  {
+                    "before": [
+                      "看書",
+                      "哪裡"
+                    ],
+                    "note": "哪裡 takes the place spot, before the action: 在哪裡看書."
+                  },
+                  {
+                    "notFirst": "你",
+                    "note": "Start with who you are asking: 你."
+                  }
+                ],
+                "fallbackRepair": "Person, then 在 + place, then the action. To ask where, the place is 哪裡: 你在哪裡看書？"
               }
             ]
           }
@@ -38060,7 +38707,7 @@
                 "label": "Book sentence 1",
                 "traditional": "這個蛋糕太大，你買小的吧。",
                 "simplified": "这个蛋糕太大，你买小的吧。",
-                "pinyin": "Zhè ge dàngāo tài dà nǐ mǎi xiǎo de ba.",
+                "pinyin": "Zhè ge dàngāo tài dà, nǐ mǎi xiǎo de ba.",
                 "english": "This cake is too large, you had better buy the small one.",
                 "note": "Compare the word order with the pattern table."
               },
@@ -39455,7 +40102,7 @@
             125
           ],
           "audioReference": "05-2-3",
-          "explanation": "“Noun + Directional Word” is used to denote the direction and the location of a place, as in 桌子上面 or 學校旁邊.",
+          "explanation": "Put a direction word after a noun to give the direction and location of a place, as in 桌子上面 or 學校旁邊.",
           "focusTerms": [
             "上面",
             "下面",
@@ -41474,6 +42121,90 @@
                   "alt": "A library scene; Xiaoming is the boy sleeping at the front table, with his name below."
                 },
                 "prompt": "What is Xiaoming doing in the library?"
+              },
+              {
+                "id": "l05-g04-own-listen",
+                "source": "own",
+                "kind": "listen-build",
+                "prompt": "Build what you hear.",
+                "clip": {
+                  "reading": "B1L05-R02",
+                  "line": 6,
+                  "file": "B1-05-2-1.mp3",
+                  "start": 47.38,
+                  "end": 50.28
+                },
+                "tiles": [
+                  {
+                    "traditional": "下面",
+                    "pinyin": "xiàmiàn"
+                  },
+                  {
+                    "traditional": "錢包",
+                    "simplified": "钱包",
+                    "pinyin": "qiánbāo"
+                  },
+                  {
+                    "traditional": "有",
+                    "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "我的書",
+                    "simplified": "我的书",
+                    "pinyin": "wǒ de shū"
+                  },
+                  {
+                    "traditional": "上面",
+                    "pinyin": "shàngmiàn"
+                  },
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "錢包",
+                      "在",
+                      "我的書",
+                      "下面"
+                    ],
+                    "sentence": {
+                      "traditional": "錢包在我的書下面。",
+                      "simplified": "钱包在我的书下面。",
+                      "pinyin": "Qiánbāo zài wǒ de shū xiàmiàn.",
+                      "english": "The wallet is under my book."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "有"
+                    ],
+                    "note": "有 says what a place has. To say where something is, use 在."
+                  },
+                  {
+                    "placed": [
+                      "上面"
+                    ],
+                    "title": "That is not what you heard",
+                    "note": "The speaker said 下面 (under), not 上面 (on top)."
+                  },
+                  {
+                    "before": [
+                      "下面",
+                      "我的書"
+                    ],
+                    "note": "The place word comes after the thing it is under."
+                  },
+                  {
+                    "notFirst": "錢包",
+                    "note": "The speaker starts with the thing that is being located."
+                  }
+                ],
+                "fallbackRepair": "Listen again: the thing, where it is, then the place word."
               }
             ],
             "allowWords": [
@@ -44837,7 +45568,7 @@
           "grammarNumber": 2,
           "titleTraditional": "動作 + 得 + 表現",
           "titleEnglish": "Describe How Well You Do an Action with 得",
-          "learnerPromise": "Describe how well, fast, slowly, much, or happily an action is done.",
+          "learnerPromise": "Describe how well, fast, slowly, or how much an action is done.",
           "printedPages": [
             136,
             137,
@@ -45469,10 +46200,10 @@
               },
               {
                 "id": "g2-confusion-object-touch",
-                "question": "He plays tennis very well. Can I say 他打網球得很好?",
+                "question": "He plays tennis well. Can I say 他打網球得不錯?",
                 "answer": "Put 網球 before 打, or repeat 打, so the verb comes directly before 得.",
-                "wrongTraditional": "他打網球得很好。",
-                "wrongSimplified": "他打网球得很好。",
+                "wrongTraditional": "他打網球得不錯。",
+                "wrongSimplified": "他打网球得不错。",
                 "right": {
                   "traditional": "他網球打得不錯。",
                   "simplified": "他网球打得不错。",
@@ -50887,6 +51618,73 @@
                 },
                 "sub": "The drink costs more than you want to pay.",
                 "prompt": "Is NT$180 for a coffee expensive?"
+              },
+              {
+                "id": "b1l06-g03-own-spot",
+                "source": "own",
+                "kind": "spot-fix",
+                "prompt": "Your friend wrote this about a movie. Tap the word that’s wrong.",
+                "sub": "They mean: I think this movie is very interesting.",
+                "chunks": [
+                  {
+                    "traditional": "我"
+                  },
+                  {
+                    "traditional": "覺得",
+                    "simplified": "觉得"
+                  },
+                  {
+                    "traditional": "這部電影",
+                    "simplified": "这部电影"
+                  },
+                  {
+                    "traditional": "有點兒",
+                    "simplified": "有点儿"
+                  },
+                  {
+                    "traditional": "有趣",
+                    "tail": "。"
+                  }
+                ],
+                "wrong": 3,
+                "fix": "很",
+                "tiles": [
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "太",
+                    "pinyin": "tài"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "不"
+                    ],
+                    "note": "不有趣 says the movie is not interesting. Your friend means it is."
+                  },
+                  {
+                    "placed": [
+                      "太"
+                    ],
+                    "note": "太 needs 了 (太有趣了), and this sentence has no 了."
+                  }
+                ],
+                "takeOutNote": "Without a degree word, 有趣 stands alone like a comparison. Use 很 to say “very”.",
+                "hint": "One word here is for a small problem, but your friend is praising the movie.",
+                "result": {
+                  "traditional": "我覺得這部電影很有趣。",
+                  "simplified": "我觉得这部电影很有趣。",
+                  "pinyin": "Wǒ juéde zhè bù diànyǐng hěn yǒuqù.",
+                  "english": "I think this movie is very interesting."
+                },
+                "successNote": "有點兒 is for a small problem. To praise something, use 很."
               }
             ]
           }
@@ -52520,8 +53318,9 @@
                     "pinyin": "kàn diànshì"
                   },
                   {
-                    "traditional": "去外面",
-                    "pinyin": "qù wàimiàn"
+                    "traditional": "睡覺",
+                    "simplified": "睡觉",
+                    "pinyin": "shuìjiào"
                   },
                   {
                     "traditional": "聽音樂",
@@ -52541,12 +53340,12 @@
                   },
                   {
                     "placed": [
-                      "去外面"
+                      "睡覺"
                     ],
                     "mark": [
-                      "去外面"
+                      "睡覺"
                     ],
-                    "note": "Your friend doesn’t want to go out because it’s hot; stay in: 看電視."
+                    "note": "The picture shows a TV, not a bed: 看電視。"
                   }
                 ],
                 "fallbackRepair": "Stay in and watch TV: 看電視.",
@@ -52897,6 +53696,83 @@
                   "alt": "Two people at a library desk beside bookshelves and a library sign."
                 },
                 "prompt": "Ask the librarian if you may read here."
+              },
+              {
+                "id": "b1l06-g04-own-sort",
+                "source": "own",
+                "kind": "sort-groups",
+                "prompt": "Is 可以 giving permission or offering an idea?",
+                "groups": [
+                  {
+                    "label": "Permission"
+                  },
+                  {
+                    "label": "Suggestion"
+                  }
+                ],
+                "cards": [
+                  {
+                    "sentence": {
+                      "traditional": "天氣很熱，我們可以去游泳。",
+                      "simplified": "天气很热，我们可以去游泳。",
+                      "pinyin": "Tiānqì hěn rè, wǒmen kěyǐ qù yóuyǒng.",
+                      "english": "It is hot; we could go swimming."
+                    },
+                    "group": 1,
+                    "note": "It offers an idea for what to do together; nobody is allowing anything."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "老師，我可以去洗手間嗎？",
+                      "simplified": "老师，我可以去洗手间吗？",
+                      "pinyin": "Lǎoshī, wǒ kěyǐ qù xǐshǒujiān ma?",
+                      "english": "Teacher, may I go to the restroom?"
+                    },
+                    "group": 0,
+                    "note": "It asks whether the teacher allows it, so 可以 is about permission."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "你不想喝咖啡，可以點一杯茶。",
+                      "simplified": "你不想喝咖啡，可以点一杯茶。",
+                      "pinyin": "Nǐ bù xiǎng hē kāfēi, kěyǐ diǎn yì bēi chá.",
+                      "english": "You don’t want coffee; you could order a cup of tea."
+                    },
+                    "group": 1,
+                    "note": "It offers an idea for what to order, not a permission."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "媽媽說，我可以看電視。",
+                      "simplified": "妈妈说，我可以看电视。",
+                      "pinyin": "Māma shuō, wǒ kěyǐ kàn diànshì.",
+                      "english": "Mom says I may watch TV."
+                    },
+                    "group": 0,
+                    "note": "Mom says it is allowed, so this is permission."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "這部電影很有趣，我們可以一起去看。",
+                      "simplified": "这部电影很有趣，我们可以一起去看。",
+                      "pinyin": "Zhè bù diànyǐng hěn yǒuqù, wǒmen kěyǐ yìqǐ qù kàn.",
+                      "english": "This movie is interesting; we could go see it together."
+                    },
+                    "group": 1,
+                    "note": "It suggests going together, which is an idea, not a permission."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "這裡不可以吃東西。",
+                      "simplified": "这里不可以吃东西。",
+                      "pinyin": "Zhèlǐ bù kěyǐ chī dōngxi.",
+                      "english": "You may not eat here."
+                    },
+                    "group": 0,
+                    "note": "It says what is not allowed: 不可以 is about permission."
+                  }
+                ],
+                "successNote": "One word, two jobs: 可以 allows or refuses something, or offers an idea."
               }
             ],
             "allowWords": [
@@ -53431,7 +54307,7 @@
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
-              "simplified": "走"
+              "simplified": "去"
             },
             {
               "id": "b1l07-g01-glossary-12",
@@ -53650,7 +54526,7 @@
                       "traditional": "去",
                       "pinyin": "qù",
                       "meaning": "go",
-                      "simplified": "走"
+                      "simplified": "去"
                     },
                     {
                       "id": "l7g1-confusion-cong-start-source-l7g1-s2-r1-class",
@@ -53661,7 +54537,7 @@
                       "suffix": "。"
                     }
                   ],
-                  "simplified": "我从我家到学校走上课。"
+                  "simplified": "我从我家到学校去上课。"
                 }
               },
               {
@@ -53765,10 +54641,10 @@
                       "pinyin": "qù",
                       "meaning": "go",
                       "suffix": "。",
-                      "simplified": "走"
+                      "simplified": "去"
                     }
                   ],
-                  "simplified": "我到他家走。"
+                  "simplified": "我到他家去。"
                 }
               }
             ]
@@ -53981,7 +54857,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "？",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g1-e2-word-5",
@@ -54011,7 +54887,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "。",
-                    "simplified": "走"
+                    "simplified": "去"
                   }
                 ]
               }
@@ -54052,7 +54928,7 @@
                     "traditional": "去",
                     "pinyin": "qù",
                     "meaning": "go",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g1-e3-word-5",
@@ -54090,7 +54966,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "，",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g1-e3-word-10",
@@ -54119,7 +54995,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "。",
-                    "simplified": "走"
+                    "simplified": "去"
                   }
                 ]
               }
@@ -54235,7 +55111,7 @@
                     "traditional": "去",
                     "pinyin": "qù",
                     "meaning": "go",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g1-e5-word-7",
@@ -54575,7 +55451,7 @@
                         "pinyin": "qù",
                         "meaning": "go",
                         "suffix": "。",
-                        "simplified": "走"
+                        "simplified": "去"
                       }
                     ]
                   ],
@@ -54670,7 +55546,7 @@
                         "traditional": "去",
                         "pinyin": "qù",
                         "meaning": "go",
-                        "simplified": "走"
+                        "simplified": "去"
                       }
                     ],
                     [
@@ -55320,7 +56196,7 @@
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
-              "simplified": "走"
+              "simplified": "去"
             },
             {
               "id": "b1l07-g02-glossary-12",
@@ -55512,7 +56388,7 @@
                   "pinyin": "qù",
                   "meaning": "go",
                   "suffix": "？",
-                  "simplified": "走"
+                  "simplified": "去"
                 }
               ],
               "english": "How do you get there?"
@@ -55544,7 +56420,7 @@
                   "pinyin": "qù",
                   "meaning": "go",
                   "suffix": "。",
-                  "simplified": "走"
+                  "simplified": "去"
                 }
               ],
               "english": "I get there by bus."
@@ -55591,7 +56467,7 @@
                       "traditional": "去",
                       "pinyin": "qù",
                       "meaning": "go",
-                      "simplified": "走"
+                      "simplified": "去"
                     },
                     {
                       "id": "l7g2-confusion-zuo-walk-l7g2-e2-word-5",
@@ -55629,7 +56505,7 @@
                       "pinyin": "qù",
                       "meaning": "go",
                       "suffix": "，",
-                      "simplified": "走"
+                      "simplified": "去"
                     },
                     {
                       "id": "l7g2-confusion-zuo-walk-l7g2-e2-word-10",
@@ -55658,7 +56534,7 @@
                       "pinyin": "qù",
                       "meaning": "go",
                       "suffix": "。",
-                      "simplified": "走"
+                      "simplified": "去"
                     }
                   ]
                 }
@@ -55693,10 +56569,10 @@
                       "pinyin": "qù",
                       "meaning": "go",
                       "suffix": "。",
-                      "simplified": "走"
+                      "simplified": "去"
                     }
                   ],
-                  "simplified": "我坐公车走。"
+                  "simplified": "我坐公车去。"
                 }
               },
               {
@@ -55729,10 +56605,10 @@
                       "pinyin": "qù",
                       "meaning": "go",
                       "suffix": "？",
-                      "simplified": "走"
+                      "simplified": "去"
                     }
                   ],
-                  "simplified": "你怎么走？"
+                  "simplified": "你怎么去？"
                 }
               }
             ]
@@ -55833,7 +56709,7 @@
                     "traditional": "去",
                     "pinyin": "qù",
                     "meaning": "go",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g2-e2-word-5",
@@ -55871,7 +56747,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "，",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g2-e2-word-10",
@@ -55900,7 +56776,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "。",
-                    "simplified": "走"
+                    "simplified": "去"
                   }
                 ]
               },
@@ -55949,7 +56825,7 @@
                     "traditional": "去",
                     "pinyin": "qù",
                     "meaning": "go",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g2-e3-word-6",
@@ -56002,7 +56878,7 @@
                     "pinyin": "qù",
                     "meaning": "go",
                     "suffix": "。",
-                    "simplified": "走"
+                    "simplified": "去"
                   }
                 ]
               },
@@ -56546,6 +57422,86 @@
                   "english": "We come by bicycle."
                 },
                 "prompt": "You came on your own bikes. Say how you came."
+              },
+              {
+                "id": "l7g2-own-listen",
+                "source": "own",
+                "kind": "listen-build",
+                "prompt": "Build what you hear.",
+                "clip": {
+                  "reading": "B1L07-R03",
+                  "line": 3,
+                  "file": "B1-07-3-1.mp3",
+                  "start": 43.87,
+                  "end": 46.35
+                },
+                "tiles": [
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "走路",
+                    "pinyin": "zǒulù"
+                  },
+                  {
+                    "traditional": "去",
+                    "pinyin": "qù"
+                  },
+                  {
+                    "traditional": "可以",
+                    "pinyin": "kěyǐ"
+                  },
+                  {
+                    "traditional": "坐捷運",
+                    "simplified": "坐捷运",
+                    "pinyin": "zuò jiéyùn"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "坐捷運",
+                      "去",
+                      "都",
+                      "可以"
+                    ],
+                    "sentence": {
+                      "traditional": "坐捷運去都可以。",
+                      "simplified": "坐捷运去都可以。",
+                      "pinyin": "Zuò jiéyùn qù dōu kěyǐ.",
+                      "english": "Going by MRT is fine."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "走路"
+                    ],
+                    "title": "That is not what you heard",
+                    "note": "The speaker said 坐捷運 (by MRT), not 走路 (on foot)."
+                  },
+                  {
+                    "before": [
+                      "去",
+                      "坐捷運"
+                    ],
+                    "note": "How you go comes before 去."
+                  },
+                  {
+                    "before": [
+                      "可以",
+                      "都"
+                    ],
+                    "note": "都 comes before 可以."
+                  },
+                  {
+                    "notFirst": "坐捷運",
+                    "note": "The speaker starts with how to go."
+                  }
+                ],
+                "fallbackRepair": "Listen again: how to go, the word for go, then the ending."
               }
             ]
           }
@@ -56613,7 +57569,7 @@
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
-              "simplified": "走"
+              "simplified": "去"
             },
             {
               "id": "b1l07-g03-glossary-12",
@@ -58811,7 +59767,7 @@
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
-              "simplified": "走"
+              "simplified": "去"
             },
             {
               "id": "b1l07-g04-glossary-12",
@@ -59191,7 +60147,7 @@
                     "traditional": "去",
                     "pinyin": "qù",
                     "meaning": "go",
-                    "simplified": "走"
+                    "simplified": "去"
                   },
                   {
                     "id": "l7g4-e1-word-3",
@@ -59586,6 +60542,7 @@
                   "english": "I know how to play basketball, but I do not know how to play tennis."
                 },
                 "prompt": "Which sport can you play, and which can’t you?",
+                "sub": "You learned basketball; you never learned tennis.",
                 "scene": {
                   "type": "picture",
                   "page": 171,
@@ -59723,7 +60680,7 @@
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
-              "simplified": "走"
+              "simplified": "去"
             },
             {
               "id": "b1l07-g05-glossary-12",
@@ -60410,7 +61367,7 @@
                     "traditional": "想去",
                     "pinyin": "xiǎng qù",
                     "meaning": "want to go to",
-                    "simplified": "想走"
+                    "simplified": "想去"
                   },
                   {
                     "id": "l7g5-e3-word-4",
@@ -60432,7 +61389,7 @@
                     "traditional": "想去",
                     "pinyin": "xiǎng qù",
                     "meaning": "want to go to",
-                    "simplified": "想走"
+                    "simplified": "想去"
                   },
                   {
                     "id": "l7g5-e3-word-7",
@@ -60461,7 +61418,7 @@
                     "traditional": "先去",
                     "pinyin": "xiān qù",
                     "meaning": "go first",
-                    "simplified": "先走"
+                    "simplified": "先去"
                   },
                   {
                     "id": "l7g5-e3-word-11",
@@ -61006,6 +61963,84 @@
                   "english": "Japan and Korea are both places I want to visit."
                 },
                 "prompt": "Name both countries you want to visit."
+              },
+              {
+                "id": "l7g5-own-order",
+                "source": "own",
+                "kind": "order-build",
+                "prompt": "Say the hotel is both big and comfortable.",
+                "tiles": [
+                  {
+                    "traditional": "飯店",
+                    "simplified": "饭店",
+                    "pinyin": "fàndiàn"
+                  },
+                  {
+                    "traditional": "又",
+                    "pinyin": "yòu"
+                  },
+                  {
+                    "traditional": "又",
+                    "pinyin": "yòu"
+                  },
+                  {
+                    "traditional": "大",
+                    "pinyin": "dà"
+                  },
+                  {
+                    "traditional": "舒服",
+                    "pinyin": "shūfu"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "飯店",
+                      "又",
+                      "大",
+                      "又",
+                      "舒服"
+                    ],
+                    "sentence": {
+                      "traditional": "飯店又大又舒服。",
+                      "simplified": "饭店又大又舒服。",
+                      "pinyin": "Fàndiàn yòu dà yòu shūfu.",
+                      "english": "The hotel is both big and comfortable."
+                    }
+                  },
+                  {
+                    "order": [
+                      "飯店",
+                      "又",
+                      "舒服",
+                      "又",
+                      "大"
+                    ],
+                    "sentence": {
+                      "traditional": "飯店又舒服又大。",
+                      "simplified": "饭店又舒服又大。",
+                      "pinyin": "Fàndiàn yòu shūfu yòu dà.",
+                      "english": "The hotel is both comfortable and big."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "note": "No 很 here: each 又 already adds its quality. Say 又大又舒服."
+                  },
+                  {
+                    "notFirst": "飯店",
+                    "note": "Start with what you are describing: 飯店."
+                  }
+                ],
+                "fallbackRepair": "Name the thing, then put 又 before each quality: 飯店又大又舒服."
               }
             ],
             "allowWords": [
@@ -65420,7 +66455,7 @@
                   "pinyin": "Yīnwèi tā xǐhuān lǜsè, suǒyǐ tā chángcháng chuān lǜsè de yīfu.",
                   "english": "Because he likes green, he often wears green clothes."
                 },
-                "prompt": "Why does he often wear green? (He likes green.) Build your answer: reason, then result."
+                "prompt": "Why does he often wear green? (He likes green.)"
               },
               {
                 "id": "l8g2-p2",
@@ -65614,7 +66649,158 @@
                   "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán, suǒyǐ wǒ xiǎng xué Zhōngwén.",
                   "english": "Because I want to visit Taiwan, I want to learn Chinese."
                 },
-                "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.) Build your answer: reason, then result."
+                "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.)"
+              },
+              {
+                "id": "l8g2-own-match",
+                "source": "own",
+                "kind": "match-pairs",
+                "prompt": "Match each reason with its result.",
+                "lines": [
+                  {
+                    "sentence": {
+                      "traditional": "因為他很累，",
+                      "simplified": "因为他很累，",
+                      "pinyin": "Yīnwèi tā hěn lèi,",
+                      "english": "Because he is tired,"
+                    },
+                    "note": "Being tired leads to resting, so the result is about resting."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "因為學校很遠，",
+                      "simplified": "因为学校很远，",
+                      "pinyin": "Yīnwèi xuéxiào hěn yuǎn,",
+                      "english": "Because the school is far,"
+                    },
+                    "note": "A far school makes walking there a problem, so the result is about not walking."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "因為明天是我弟弟的生日，",
+                      "simplified": "因为明天是我弟弟的生日，",
+                      "pinyin": "Yīnwèi míngtiān shì wǒ dìdi de shēngrì,",
+                      "english": "Because tomorrow is my younger brother’s birthday,"
+                    },
+                    "note": "A birthday leads to a gift, so the result is about buying one."
+                  }
+                ],
+                "replies": [
+                  {
+                    "sentence": {
+                      "traditional": "所以我不想走路去。",
+                      "pinyin": "Suǒyǐ wǒ bù xiǎng zǒulù qù.",
+                      "english": "so I don’t want to walk there."
+                    },
+                    "answers": 1
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "所以我想吃牛肉麵。",
+                      "simplified": "所以我想吃牛肉面。",
+                      "pinyin": "Suǒyǐ wǒ xiǎng chī niúròumiàn.",
+                      "english": "so I want to eat beef noodles."
+                    },
+                    "note": "Nothing here is about food or being hungry."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "所以他在家休息。",
+                      "pinyin": "Suǒyǐ tā zài jiā xiūxi.",
+                      "english": "so he is resting at home."
+                    },
+                    "answers": 0
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "所以我要買禮物。",
+                      "simplified": "所以我要买礼物。",
+                      "pinyin": "Suǒyǐ wǒ yào mǎi lǐwù.",
+                      "english": "so I am going to buy a gift."
+                    },
+                    "answers": 2
+                  }
+                ],
+                "successNote": "因為 gives the reason and 所以 gives the result, and the reason comes first."
+              },
+              {
+                "id": "l8g2-own-listen",
+                "source": "own",
+                "kind": "listen-build",
+                "prompt": "Build what you hear.",
+                "clip": {
+                  "reading": "B1L08-R03",
+                  "line": 5,
+                  "file": "B1-08-3-1.mp3",
+                  "start": 63.24,
+                  "end": 65.78
+                },
+                "tiles": [
+                  {
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi"
+                  },
+                  {
+                    "traditional": "因為",
+                    "simplified": "因为",
+                    "pinyin": "yīnwèi"
+                  },
+                  {
+                    "traditional": "常",
+                    "pinyin": "cháng"
+                  },
+                  {
+                    "traditional": "所以",
+                    "pinyin": "suǒyǐ"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "wǒ"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "所以",
+                      "我",
+                      "不",
+                      "常",
+                      "買"
+                    ],
+                    "sentence": {
+                      "traditional": "所以我不常買。",
+                      "simplified": "所以我不常买。",
+                      "pinyin": "Suǒyǐ wǒ bù cháng mǎi.",
+                      "english": "So I don’t buy them often."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "因為"
+                    ],
+                    "title": "That is not what you heard",
+                    "note": "The speaker said 所以, which brings the result. 因為 brings the reason."
+                  },
+                  {
+                    "before": [
+                      "常",
+                      "不"
+                    ],
+                    "note": "不 comes before 常: 不常 is “not often”."
+                  },
+                  {
+                    "notFirst": "所以",
+                    "note": "This part is the result, so it starts with the result word."
+                  }
+                ],
+                "fallbackRepair": "Listen again: the result word, who, then how often they buy."
               }
             ]
           }
@@ -68086,6 +69272,82 @@
                 },
                 "gaps": true,
                 "prompt": "You just met at a music class, so you have no guess. Where does 嗎 go?"
+              },
+              {
+                "id": "l8g3-own-sort",
+                "source": "own",
+                "kind": "sort-groups",
+                "prompt": "Is 吧 making a suggestion or checking a guess?",
+                "groups": [
+                  {
+                    "label": "Suggestion"
+                  },
+                  {
+                    "label": "A guess"
+                  }
+                ],
+                "cards": [
+                  {
+                    "sentence": {
+                      "traditional": "你今天很忙吧？",
+                      "pinyin": "Nǐ jīntiān hěn máng ba?",
+                      "english": "You are busy today, right?"
+                    },
+                    "group": 1,
+                    "note": "It states something you believe and asks them to confirm: a guess."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "我們一起去看電影吧。",
+                      "simplified": "我们一起去看电影吧。",
+                      "pinyin": "Wǒmen yìqǐ qù kàn diànyǐng ba.",
+                      "english": "Let’s go see a movie together."
+                    },
+                    "group": 0,
+                    "note": "“Let’s go together” proposes an action: a suggestion."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "他是韓國人吧。",
+                      "simplified": "他是韩国人吧。",
+                      "pinyin": "Tā shì Hánguó rén ba.",
+                      "english": "He is Korean, I think."
+                    },
+                    "group": 1,
+                    "note": "It is something you think is true and want confirmed: a guess."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "這件太小，你買那件吧。",
+                      "simplified": "这件太小，你买那件吧。",
+                      "pinyin": "Zhè jiàn tài xiǎo, nǐ mǎi nà jiàn ba.",
+                      "english": "This one is too small; buy that one."
+                    },
+                    "group": 0,
+                    "note": "It tells them which one to buy: a suggestion."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "你會游泳吧？",
+                      "simplified": "你会游泳吧？",
+                      "pinyin": "Nǐ huì yóuyǒng ba?",
+                      "english": "You can swim, right?"
+                    },
+                    "group": 1,
+                    "note": "You think they can swim and want to check: a guess."
+                  },
+                  {
+                    "sentence": {
+                      "traditional": "我們走吧！",
+                      "simplified": "我们走吧！",
+                      "pinyin": "Wǒmen zǒu ba!",
+                      "english": "Let’s go!"
+                    },
+                    "group": 0,
+                    "note": "“Let’s go” proposes an action: a suggestion."
+                  }
+                ],
+                "successNote": "A suggestion proposes an action. A guess checks something you think is true."
               }
             ]
           }
@@ -127017,8 +128279,7 @@
           },
           "focusTerms": [
             "分鐘",
-            "小時",
-            "的"
+            "小時"
           ],
           "teachingGlossary": [
             {

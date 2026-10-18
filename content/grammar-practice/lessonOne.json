@@ -619,6 +619,126 @@
           "english": "The Indonesian student is surnamed Li and called Zhongming."
         },
         "prompt": "Introduce the Indonesian student."
+      },
+      {
+        "id": "l1g1-own-order",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Jiale is British. Say that he is not American.",
+        "tiles": [
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "家樂",
+            "simplified": "家乐",
+            "pinyin": "Jiālè"
+          },
+          {
+            "traditional": "叫",
+            "pinyin": "jiào"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "美國人",
+            "simplified": "美国人",
+            "pinyin": "Měiguó rén"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "家樂",
+              "不",
+              "是",
+              "美國人"
+            ],
+            "sentence": {
+              "traditional": "家樂不是美國人。",
+              "simplified": "家乐不是美国人。",
+              "pinyin": "Jiālè bú shì Měiguó rén.",
+              "english": "Jiale is not American."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "叫"
+            ],
+            "note": "叫 gives a name. To say what someone is or isn’t, use 是: 不是 for “is not”."
+          },
+          {
+            "before": [
+              "是",
+              "不"
+            ],
+            "note": "不 goes first, right before the verb: 不是."
+          },
+          {
+            "notFirst": "家樂",
+            "note": "Start with who you are talking about: 家樂."
+          }
+        ],
+        "fallbackRepair": "Say who, then 不是, then what he is not: 家樂不是美國人."
+      },
+      {
+        "id": "l1g1-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your friend wrote this. Tap the word that’s wrong.",
+        "sub": "They mean: His surname is Li.",
+        "chunks": [
+          {
+            "traditional": "他"
+          },
+          {
+            "traditional": "是"
+          },
+          {
+            "traditional": "姓"
+          },
+          {
+            "traditional": "李",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "叫",
+            "pinyin": "jiào"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "叫"
+            ],
+            "note": "叫 is a verb, just like 姓. Two verbs can’t stand side by side: 姓 already says “the surname is”."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "note": "不 would say his surname is not Li. Your friend means it is."
+          }
+        ],
+        "hint": "姓 already means “the surname is”. Look for a word that says the same thing again.",
+        "result": {
+          "traditional": "他姓李。",
+          "pinyin": "Tā xìng Lǐ.",
+          "english": "His surname is Li."
+        },
+        "successNote": "姓 already means “the surname is”, so it needs no 是."
       }
     ]
   },
@@ -864,6 +984,82 @@
             "english": "tired"
           }
         ]
+      },
+      {
+        "id": "l1g2-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "reading": "B1L01-R01",
+          "line": 4,
+          "file": "B1-01-1-1.mp3",
+          "start": 22.69,
+          "end": 24.52
+        },
+        "tiles": [
+          {
+            "traditional": "漂亮",
+            "pinyin": "piàoliàng"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "她",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "她",
+              "很",
+              "漂亮"
+            ],
+            "sentence": {
+              "traditional": "她很漂亮。",
+              "pinyin": "Tā hěn piàoliàng.",
+              "english": "She is very pretty."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "是"
+            ],
+            "note": "A describing word takes 很, not 是: 很漂亮 is “very pretty”."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "title": "That is not what you heard",
+            "note": "The speaker said 很 (very), not 不 (not)."
+          },
+          {
+            "before": [
+              "漂亮",
+              "很"
+            ],
+            "note": "很 comes before the describing word."
+          },
+          {
+            "notFirst": "她",
+            "note": "The speaker starts with who is being described."
+          }
+        ],
+        "fallbackRepair": "Listen again: who, how much, then the describing word."
       }
     ]
   },
@@ -1613,6 +1809,39 @@
             "english": "busy"
           }
         ]
+      },
+      {
+        "id": "l1g4-own-story",
+        "source": "own",
+        "kind": "story-order",
+        "prompt": "Put the chat in order.",
+        "steps": [
+          {
+            "traditional": "我姓高，你呢？",
+            "pinyin": "Wǒ xìng Gāo, nǐ ne?",
+            "english": "My surname is Gao. How about you?",
+            "note": "It answers the first question, then 你呢 asks it back."
+          },
+          {
+            "traditional": "我姓李。",
+            "pinyin": "Wǒ xìng Lǐ.",
+            "english": "My surname is Li.",
+            "note": "It answers the 你呢 question, so it comes last."
+          },
+          {
+            "traditional": "請問，你姓什麼？",
+            "simplified": "请问，你姓什么？",
+            "pinyin": "Qǐngwèn, nǐ xìng shénme?",
+            "english": "Excuse me, what is your surname?",
+            "note": "A chat opens with a question, and 請問 politely starts it."
+          }
+        ],
+        "answer": [
+          2,
+          0,
+          1
+        ],
+        "successNote": "你呢 hands the same question back, so the next line answers it."
       }
     ]
   },
@@ -1895,6 +2124,71 @@
             "english": "to love"
           }
         ]
+      },
+      {
+        "id": "l1g5-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your friend wrote this question. Tap the word that’s wrong.",
+        "sub": "They mean: Do you like Miss Li?",
+        "chunks": [
+          {
+            "traditional": "你"
+          },
+          {
+            "traditional": "喜歡",
+            "simplified": "喜欢"
+          },
+          {
+            "traditional": "誰",
+            "simplified": "谁"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "tail": "？"
+          }
+        ],
+        "wrong": 2,
+        "fix": "李小姐",
+        "tiles": [
+          {
+            "traditional": "李小姐",
+            "pinyin": "Lǐ xiǎojiě"
+          },
+          {
+            "traditional": "王小姐",
+            "pinyin": "Wáng xiǎojiě"
+          },
+          {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "王小姐"
+            ],
+            "note": "That asks about Miss Wang. Your friend means Miss Li."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "note": "什麼 is another question word, so it still clashes with 嗎."
+          }
+        ],
+        "takeOutNote": "Without 誰 the sentence asks “Do you like it?”. Your friend means Miss Li, so name her.",
+        "hint": "Your friend wants a yes/no question about one person. One word is asking something else.",
+        "result": {
+          "traditional": "你喜歡李小姐嗎？",
+          "simplified": "你喜欢李小姐吗？",
+          "pinyin": "Nǐ xǐhuan Lǐ xiǎojiě ma?",
+          "english": "Do you like Miss Li?"
+        },
+        "successNote": "誰 asks “who?”, so it can’t sit in a yes/no question. Name the person and keep 嗎."
       }
     ]
   }

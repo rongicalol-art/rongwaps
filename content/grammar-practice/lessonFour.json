@@ -759,6 +759,70 @@
           "english": "Zhongming likes buying inexpensive things, and Youmei does too.",
           "simplified": "中明喜欢买便宜的东西，友美也喜欢买便宜的东西。"
         }
+      },
+      {
+        "id": "l04-g2-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your friend wrote this about shopping. Tap the word that’s wrong.",
+        "sub": "They mean: I buy a book, and I buy a pen too.",
+        "chunks": [
+          {
+            "traditional": "我"
+          },
+          {
+            "traditional": "買書",
+            "simplified": "买书"
+          },
+          {
+            "traditional": "和"
+          },
+          {
+            "traditional": "買筆",
+            "simplified": "买笔",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "也",
+        "tiles": [
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "還是",
+            "simplified": "还是",
+            "pinyin": "háishi"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "都"
+            ],
+            "note": "都 means “all” and needs a group before it. One person doing two things uses 也."
+          },
+          {
+            "placed": [
+              "還是"
+            ],
+            "note": "還是 means “or”: it asks about a choice. Your friend is saying both."
+          }
+        ],
+        "takeOutNote": "Without a linking word the two actions don’t connect. 也 says “also”.",
+        "hint": "One word here joins things, but your friend is joining two actions.",
+        "result": {
+          "traditional": "我買書也買筆。",
+          "simplified": "我买书也买笔。",
+          "pinyin": "Wǒ mǎi shū yě mǎi bǐ.",
+          "english": "I buy a book, and I buy a pen too."
+        },
+        "successNote": "也 goes before the second verb to say “also”. 和 only joins nouns."
       }
     ]
   },

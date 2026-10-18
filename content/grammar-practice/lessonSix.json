@@ -2187,6 +2187,73 @@
         },
         "sub": "The drink costs more than you want to pay.",
         "prompt": "Is NT$180 for a coffee expensive?"
+      },
+      {
+        "id": "b1l06-g03-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your friend wrote this about a movie. Tap the word that’s wrong.",
+        "sub": "They mean: I think this movie is very interesting.",
+        "chunks": [
+          {
+            "traditional": "我"
+          },
+          {
+            "traditional": "覺得",
+            "simplified": "觉得"
+          },
+          {
+            "traditional": "這部電影",
+            "simplified": "这部电影"
+          },
+          {
+            "traditional": "有點兒",
+            "simplified": "有点儿"
+          },
+          {
+            "traditional": "有趣",
+            "tail": "。"
+          }
+        ],
+        "wrong": 3,
+        "fix": "很",
+        "tiles": [
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "太",
+            "pinyin": "tài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "note": "不有趣 says the movie is not interesting. Your friend means it is."
+          },
+          {
+            "placed": [
+              "太"
+            ],
+            "note": "太 needs 了 (太有趣了), and this sentence has no 了."
+          }
+        ],
+        "takeOutNote": "Without a degree word, 有趣 stands alone like a comparison. Use 很 to say “very”.",
+        "hint": "One word here is for a small problem, but your friend is praising the movie.",
+        "result": {
+          "traditional": "我覺得這部電影很有趣。",
+          "simplified": "我觉得这部电影很有趣。",
+          "pinyin": "Wǒ juéde zhè bù diànyǐng hěn yǒuqù.",
+          "english": "I think this movie is very interesting."
+        },
+        "successNote": "有點兒 is for a small problem. To praise something, use 很."
       }
     ]
   },
@@ -2345,8 +2412,9 @@
             "pinyin": "kàn diànshì"
           },
           {
-            "traditional": "去外面",
-            "pinyin": "qù wàimiàn"
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào"
           },
           {
             "traditional": "聽音樂",
@@ -2366,12 +2434,12 @@
           },
           {
             "placed": [
-              "去外面"
+              "睡覺"
             ],
             "mark": [
-              "去外面"
+              "睡覺"
             ],
-            "note": "Your friend doesn’t want to go out because it’s hot; stay in: 看電視."
+            "note": "The picture shows a TV, not a bed: 看電視。"
           }
         ],
         "fallbackRepair": "Stay in and watch TV: 看電視.",
@@ -2722,6 +2790,83 @@
           "alt": "Two people at a library desk beside bookshelves and a library sign."
         },
         "prompt": "Ask the librarian if you may read here."
+      },
+      {
+        "id": "b1l06-g04-own-sort",
+        "source": "own",
+        "kind": "sort-groups",
+        "prompt": "Is 可以 giving permission or offering an idea?",
+        "groups": [
+          {
+            "label": "Permission"
+          },
+          {
+            "label": "Suggestion"
+          }
+        ],
+        "cards": [
+          {
+            "sentence": {
+              "traditional": "天氣很熱，我們可以去游泳。",
+              "simplified": "天气很热，我们可以去游泳。",
+              "pinyin": "Tiānqì hěn rè, wǒmen kěyǐ qù yóuyǒng.",
+              "english": "It is hot; we could go swimming."
+            },
+            "group": 1,
+            "note": "It offers an idea for what to do together; nobody is allowing anything."
+          },
+          {
+            "sentence": {
+              "traditional": "老師，我可以去洗手間嗎？",
+              "simplified": "老师，我可以去洗手间吗？",
+              "pinyin": "Lǎoshī, wǒ kěyǐ qù xǐshǒujiān ma?",
+              "english": "Teacher, may I go to the restroom?"
+            },
+            "group": 0,
+            "note": "It asks whether the teacher allows it, so 可以 is about permission."
+          },
+          {
+            "sentence": {
+              "traditional": "你不想喝咖啡，可以點一杯茶。",
+              "simplified": "你不想喝咖啡，可以点一杯茶。",
+              "pinyin": "Nǐ bù xiǎng hē kāfēi, kěyǐ diǎn yì bēi chá.",
+              "english": "You don’t want coffee; you could order a cup of tea."
+            },
+            "group": 1,
+            "note": "It offers an idea for what to order, not a permission."
+          },
+          {
+            "sentence": {
+              "traditional": "媽媽說，我可以看電視。",
+              "simplified": "妈妈说，我可以看电视。",
+              "pinyin": "Māma shuō, wǒ kěyǐ kàn diànshì.",
+              "english": "Mom says I may watch TV."
+            },
+            "group": 0,
+            "note": "Mom says it is allowed, so this is permission."
+          },
+          {
+            "sentence": {
+              "traditional": "這部電影很有趣，我們可以一起去看。",
+              "simplified": "这部电影很有趣，我们可以一起去看。",
+              "pinyin": "Zhè bù diànyǐng hěn yǒuqù, wǒmen kěyǐ yìqǐ qù kàn.",
+              "english": "This movie is interesting; we could go see it together."
+            },
+            "group": 1,
+            "note": "It suggests going together, which is an idea, not a permission."
+          },
+          {
+            "sentence": {
+              "traditional": "這裡不可以吃東西。",
+              "simplified": "这里不可以吃东西。",
+              "pinyin": "Zhèlǐ bù kěyǐ chī dōngxi.",
+              "english": "You may not eat here."
+            },
+            "group": 0,
+            "note": "It says what is not allowed: 不可以 is about permission."
+          }
+        ],
+        "successNote": "One word, two jobs: 可以 allows or refuses something, or offers an idea."
       }
     ],
     "allowWords": [

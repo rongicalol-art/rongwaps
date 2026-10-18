@@ -935,6 +935,86 @@
           "english": "We come by bicycle."
         },
         "prompt": "You came on your own bikes. Say how you came."
+      },
+      {
+        "id": "l7g2-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "reading": "B1L07-R03",
+          "line": 3,
+          "file": "B1-07-3-1.mp3",
+          "start": 43.87,
+          "end": 46.35
+        },
+        "tiles": [
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "走路",
+            "pinyin": "zǒulù"
+          },
+          {
+            "traditional": "去",
+            "pinyin": "qù"
+          },
+          {
+            "traditional": "可以",
+            "pinyin": "kěyǐ"
+          },
+          {
+            "traditional": "坐捷運",
+            "simplified": "坐捷运",
+            "pinyin": "zuò jiéyùn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "坐捷運",
+              "去",
+              "都",
+              "可以"
+            ],
+            "sentence": {
+              "traditional": "坐捷運去都可以。",
+              "simplified": "坐捷运去都可以。",
+              "pinyin": "Zuò jiéyùn qù dōu kěyǐ.",
+              "english": "Going by MRT is fine."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "走路"
+            ],
+            "title": "That is not what you heard",
+            "note": "The speaker said 坐捷運 (by MRT), not 走路 (on foot)."
+          },
+          {
+            "before": [
+              "去",
+              "坐捷運"
+            ],
+            "note": "How you go comes before 去."
+          },
+          {
+            "before": [
+              "可以",
+              "都"
+            ],
+            "note": "都 comes before 可以."
+          },
+          {
+            "notFirst": "坐捷運",
+            "note": "The speaker starts with how to go."
+          }
+        ],
+        "fallbackRepair": "Listen again: how to go, the word for go, then the ending."
       }
     ]
   },
@@ -1571,6 +1651,7 @@
           "english": "I know how to play basketball, but I do not know how to play tennis."
         },
         "prompt": "Which sport can you play, and which can’t you?",
+        "sub": "You learned basketball; you never learned tennis.",
         "scene": {
           "type": "picture",
           "page": 171,
@@ -2128,6 +2209,84 @@
           "english": "Japan and Korea are both places I want to visit."
         },
         "prompt": "Name both countries you want to visit."
+      },
+      {
+        "id": "l7g5-own-order",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say the hotel is both big and comfortable.",
+        "tiles": [
+          {
+            "traditional": "飯店",
+            "simplified": "饭店",
+            "pinyin": "fàndiàn"
+          },
+          {
+            "traditional": "又",
+            "pinyin": "yòu"
+          },
+          {
+            "traditional": "又",
+            "pinyin": "yòu"
+          },
+          {
+            "traditional": "大",
+            "pinyin": "dà"
+          },
+          {
+            "traditional": "舒服",
+            "pinyin": "shūfu"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "飯店",
+              "又",
+              "大",
+              "又",
+              "舒服"
+            ],
+            "sentence": {
+              "traditional": "飯店又大又舒服。",
+              "simplified": "饭店又大又舒服。",
+              "pinyin": "Fàndiàn yòu dà yòu shūfu.",
+              "english": "The hotel is both big and comfortable."
+            }
+          },
+          {
+            "order": [
+              "飯店",
+              "又",
+              "舒服",
+              "又",
+              "大"
+            ],
+            "sentence": {
+              "traditional": "飯店又舒服又大。",
+              "simplified": "饭店又舒服又大。",
+              "pinyin": "Fàndiàn yòu shūfu yòu dà.",
+              "english": "The hotel is both comfortable and big."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "No 很 here: each 又 already adds its quality. Say 又大又舒服."
+          },
+          {
+            "notFirst": "飯店",
+            "note": "Start with what you are describing: 飯店."
+          }
+        ],
+        "fallbackRepair": "Name the thing, then put 又 before each quality: 飯店又大又舒服."
       }
     ],
     "allowWords": [

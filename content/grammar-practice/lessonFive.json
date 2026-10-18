@@ -644,6 +644,80 @@
         },
         "prompt": "You’re not eating at home tonight. Where does 在 go?",
         "gaps": true
+      },
+      {
+        "id": "l05-g02-own-order",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Ask your friend where they read.",
+        "tiles": [
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ"
+          },
+          {
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kàn shū"
+          },
+          {
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "在",
+              "哪裡",
+              "看書"
+            ],
+            "sentence": {
+              "traditional": "你在哪裡看書？",
+              "simplified": "你在哪里看书？",
+              "pinyin": "Nǐ zài nǎlǐ kàn shū?",
+              "english": "Where do you read?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "圖書館"
+            ],
+            "note": "圖書館 is an answer. To ask where, put 哪裡 in the place spot: 在哪裡."
+          },
+          {
+            "before": [
+              "看書",
+              "在"
+            ],
+            "note": "The place comes before the action: 在哪裡看書."
+          },
+          {
+            "before": [
+              "看書",
+              "哪裡"
+            ],
+            "note": "哪裡 takes the place spot, before the action: 在哪裡看書."
+          },
+          {
+            "notFirst": "你",
+            "note": "Start with who you are asking: 你."
+          }
+        ],
+        "fallbackRepair": "Person, then 在 + place, then the action. To ask where, the place is 哪裡: 你在哪裡看書？"
       }
     ]
   },
@@ -1339,6 +1413,90 @@
           "alt": "A library scene; Xiaoming is the boy sleeping at the front table, with his name below."
         },
         "prompt": "What is Xiaoming doing in the library?"
+      },
+      {
+        "id": "l05-g04-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "reading": "B1L05-R02",
+          "line": 6,
+          "file": "B1-05-2-1.mp3",
+          "start": 47.38,
+          "end": 50.28
+        },
+        "tiles": [
+          {
+            "traditional": "下面",
+            "pinyin": "xiàmiàn"
+          },
+          {
+            "traditional": "錢包",
+            "simplified": "钱包",
+            "pinyin": "qiánbāo"
+          },
+          {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "我的書",
+            "simplified": "我的书",
+            "pinyin": "wǒ de shū"
+          },
+          {
+            "traditional": "上面",
+            "pinyin": "shàngmiàn"
+          },
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "錢包",
+              "在",
+              "我的書",
+              "下面"
+            ],
+            "sentence": {
+              "traditional": "錢包在我的書下面。",
+              "simplified": "钱包在我的书下面。",
+              "pinyin": "Qiánbāo zài wǒ de shū xiàmiàn.",
+              "english": "The wallet is under my book."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "有"
+            ],
+            "note": "有 says what a place has. To say where something is, use 在."
+          },
+          {
+            "placed": [
+              "上面"
+            ],
+            "title": "That is not what you heard",
+            "note": "The speaker said 下面 (under), not 上面 (on top)."
+          },
+          {
+            "before": [
+              "下面",
+              "我的書"
+            ],
+            "note": "The place word comes after the thing it is under."
+          },
+          {
+            "notFirst": "錢包",
+            "note": "The speaker starts with the thing that is being located."
+          }
+        ],
+        "fallbackRepair": "Listen again: the thing, where it is, then the place word."
       }
     ],
     "allowWords": [

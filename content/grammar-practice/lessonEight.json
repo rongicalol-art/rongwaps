@@ -696,7 +696,7 @@
           "pinyin": "Yīnwèi tā xǐhuān lǜsè, suǒyǐ tā chángcháng chuān lǜsè de yīfu.",
           "english": "Because he likes green, he often wears green clothes."
         },
-        "prompt": "Why does he often wear green? (He likes green.) Build your answer: reason, then result."
+        "prompt": "Why does he often wear green? (He likes green.)"
       },
       {
         "id": "l8g2-p2",
@@ -890,7 +890,158 @@
           "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán, suǒyǐ wǒ xiǎng xué Zhōngwén.",
           "english": "Because I want to visit Taiwan, I want to learn Chinese."
         },
-        "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.) Build your answer: reason, then result."
+        "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.)"
+      },
+      {
+        "id": "l8g2-own-match",
+        "source": "own",
+        "kind": "match-pairs",
+        "prompt": "Match each reason with its result.",
+        "lines": [
+          {
+            "sentence": {
+              "traditional": "因為他很累，",
+              "simplified": "因为他很累，",
+              "pinyin": "Yīnwèi tā hěn lèi,",
+              "english": "Because he is tired,"
+            },
+            "note": "Being tired leads to resting, so the result is about resting."
+          },
+          {
+            "sentence": {
+              "traditional": "因為學校很遠，",
+              "simplified": "因为学校很远，",
+              "pinyin": "Yīnwèi xuéxiào hěn yuǎn,",
+              "english": "Because the school is far,"
+            },
+            "note": "A far school makes walking there a problem, so the result is about not walking."
+          },
+          {
+            "sentence": {
+              "traditional": "因為明天是我弟弟的生日，",
+              "simplified": "因为明天是我弟弟的生日，",
+              "pinyin": "Yīnwèi míngtiān shì wǒ dìdi de shēngrì,",
+              "english": "Because tomorrow is my younger brother’s birthday,"
+            },
+            "note": "A birthday leads to a gift, so the result is about buying one."
+          }
+        ],
+        "replies": [
+          {
+            "sentence": {
+              "traditional": "所以我不想走路去。",
+              "pinyin": "Suǒyǐ wǒ bù xiǎng zǒulù qù.",
+              "english": "so I don’t want to walk there."
+            },
+            "answers": 1
+          },
+          {
+            "sentence": {
+              "traditional": "所以我想吃牛肉麵。",
+              "simplified": "所以我想吃牛肉面。",
+              "pinyin": "Suǒyǐ wǒ xiǎng chī niúròumiàn.",
+              "english": "so I want to eat beef noodles."
+            },
+            "note": "Nothing here is about food or being hungry."
+          },
+          {
+            "sentence": {
+              "traditional": "所以他在家休息。",
+              "pinyin": "Suǒyǐ tā zài jiā xiūxi.",
+              "english": "so he is resting at home."
+            },
+            "answers": 0
+          },
+          {
+            "sentence": {
+              "traditional": "所以我要買禮物。",
+              "simplified": "所以我要买礼物。",
+              "pinyin": "Suǒyǐ wǒ yào mǎi lǐwù.",
+              "english": "so I am going to buy a gift."
+            },
+            "answers": 2
+          }
+        ],
+        "successNote": "因為 gives the reason and 所以 gives the result, and the reason comes first."
+      },
+      {
+        "id": "l8g2-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "reading": "B1L08-R03",
+          "line": 5,
+          "file": "B1-08-3-1.mp3",
+          "start": 63.24,
+          "end": 65.78
+        },
+        "tiles": [
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          },
+          {
+            "traditional": "常",
+            "pinyin": "cháng"
+          },
+          {
+            "traditional": "所以",
+            "pinyin": "suǒyǐ"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "所以",
+              "我",
+              "不",
+              "常",
+              "買"
+            ],
+            "sentence": {
+              "traditional": "所以我不常買。",
+              "simplified": "所以我不常买。",
+              "pinyin": "Suǒyǐ wǒ bù cháng mǎi.",
+              "english": "So I don’t buy them often."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "因為"
+            ],
+            "title": "That is not what you heard",
+            "note": "The speaker said 所以, which brings the result. 因為 brings the reason."
+          },
+          {
+            "before": [
+              "常",
+              "不"
+            ],
+            "note": "不 comes before 常: 不常 is “not often”."
+          },
+          {
+            "notFirst": "所以",
+            "note": "This part is the result, so it starts with the result word."
+          }
+        ],
+        "fallbackRepair": "Listen again: the result word, who, then how often they buy."
       }
     ]
   },
@@ -1255,6 +1406,82 @@
         },
         "gaps": true,
         "prompt": "You just met at a music class, so you have no guess. Where does 嗎 go?"
+      },
+      {
+        "id": "l8g3-own-sort",
+        "source": "own",
+        "kind": "sort-groups",
+        "prompt": "Is 吧 making a suggestion or checking a guess?",
+        "groups": [
+          {
+            "label": "Suggestion"
+          },
+          {
+            "label": "A guess"
+          }
+        ],
+        "cards": [
+          {
+            "sentence": {
+              "traditional": "你今天很忙吧？",
+              "pinyin": "Nǐ jīntiān hěn máng ba?",
+              "english": "You are busy today, right?"
+            },
+            "group": 1,
+            "note": "It states something you believe and asks them to confirm: a guess."
+          },
+          {
+            "sentence": {
+              "traditional": "我們一起去看電影吧。",
+              "simplified": "我们一起去看电影吧。",
+              "pinyin": "Wǒmen yìqǐ qù kàn diànyǐng ba.",
+              "english": "Let’s go see a movie together."
+            },
+            "group": 0,
+            "note": "“Let’s go together” proposes an action: a suggestion."
+          },
+          {
+            "sentence": {
+              "traditional": "他是韓國人吧。",
+              "simplified": "他是韩国人吧。",
+              "pinyin": "Tā shì Hánguó rén ba.",
+              "english": "He is Korean, I think."
+            },
+            "group": 1,
+            "note": "It is something you think is true and want confirmed: a guess."
+          },
+          {
+            "sentence": {
+              "traditional": "這件太小，你買那件吧。",
+              "simplified": "这件太小，你买那件吧。",
+              "pinyin": "Zhè jiàn tài xiǎo, nǐ mǎi nà jiàn ba.",
+              "english": "This one is too small; buy that one."
+            },
+            "group": 0,
+            "note": "It tells them which one to buy: a suggestion."
+          },
+          {
+            "sentence": {
+              "traditional": "你會游泳吧？",
+              "simplified": "你会游泳吧？",
+              "pinyin": "Nǐ huì yóuyǒng ba?",
+              "english": "You can swim, right?"
+            },
+            "group": 1,
+            "note": "You think they can swim and want to check: a guess."
+          },
+          {
+            "sentence": {
+              "traditional": "我們走吧！",
+              "simplified": "我们走吧！",
+              "pinyin": "Wǒmen zǒu ba!",
+              "english": "Let’s go!"
+            },
+            "group": 0,
+            "note": "“Let’s go” proposes an action: a suggestion."
+          }
+        ],
+        "successNote": "A suggestion proposes an action. A guess checks something you think is true."
       }
     ]
   },

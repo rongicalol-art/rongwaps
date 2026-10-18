@@ -1040,6 +1040,85 @@
           "alt": "A woman hands a book-shaped gift to a man."
         },
         "prompt": "You are the woman. Say what you give your British classmate."
+      },
+      {
+        "id": "l3-g2-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "reading": "B1L03-R01",
+          "line": 1,
+          "file": "B1-03-1-1.mp3",
+          "start": 6.96,
+          "end": 9.01
+        },
+        "tiles": [
+          {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
+            "traditional": "想",
+            "pinyin": "xiǎng"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "妳",
+            "simplified": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "她",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "送",
+            "pinyin": "sòng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "妳",
+              "想",
+              "送",
+              "她",
+              "什麼"
+            ],
+            "sentence": {
+              "traditional": "妳想送她什麼？",
+              "simplified": "你想送她什么？",
+              "pinyin": "Nǐ xiǎng sòng tā shénme?",
+              "english": "What do you want to give her?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "什麼 already asks the question, so there is no 嗎."
+          },
+          {
+            "before": [
+              "什麼",
+              "她"
+            ],
+            "note": "The person who gets the gift comes right after 送, then what it is."
+          },
+          {
+            "notFirst": "妳",
+            "note": "The speaker starts with who is being asked."
+          }
+        ],
+        "fallbackRepair": "Listen again: who is asked, what they want to do, who gets it, then what."
       }
     ],
     "allowWords": [

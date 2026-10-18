@@ -112,7 +112,16 @@ export function GrammarPatternSection({
   // Up to 3 columns fit a phone, so cells may wrap; wider tables keep scrolling sideways.
   const wide = columnCount > 3;
   // Place-value grids (7+ narrow digit columns) get their own two-block table that never scrolls sideways.
-  if (columnCount >= 7) {
+  // Only genuine digit grids qualify: a wide word table (e.g. Lesson 7's 從 … 到 … row) is not place-value.
+  const digitGrid = activeRows.every((row) => {
+    const cells = row.columns;
+    return (
+      cells !== undefined &&
+      cells.length > 0 &&
+      cells.every((cell) => cell.length === 0 || (cell.length === 1 && /^\d+$/.test(cell[0].traditional)))
+    );
+  });
+  if (columnCount >= 7 && digitGrid) {
     return (
       <PlaceValueTable
         page={page}

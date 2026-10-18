@@ -1027,6 +1027,49 @@
           "english": "I do not go home at noon."
         },
         "prompt": "You stay at school at noon. Answer."
+      },
+      {
+        "id": "l2g02-own-story",
+        "source": "own",
+        "kind": "story-order",
+        "prompt": "Put your Monday in order.",
+        "steps": [
+          {
+            "traditional": "我中午十二點下課。",
+            "simplified": "我中午十二点下课。",
+            "pinyin": "Wǒ zhōngwǔ shí’èr diǎn xiàkè.",
+            "english": "I finish class at noon.",
+            "note": "中午 is noon: class ends after the morning, before the afternoon."
+          },
+          {
+            "traditional": "我早上七點去學校。",
+            "simplified": "我早上七点去学校。",
+            "pinyin": "Wǒ zǎoshang qī diǎn qù xuéxiào.",
+            "english": "I go to school at 7 in the morning.",
+            "note": "早上七點 is the earliest time, so the day starts here."
+          },
+          {
+            "traditional": "我下午一點回家。",
+            "simplified": "我下午一点回家。",
+            "pinyin": "Wǒ xiàwǔ yī diǎn huí jiā.",
+            "english": "I go home at 1 in the afternoon.",
+            "note": "下午 is the latest part of the day, so going home comes last."
+          },
+          {
+            "traditional": "我九點三十分上課。",
+            "simplified": "我九点三十分上课。",
+            "pinyin": "Wǒ jiǔ diǎn sānshí fēn shàngkè.",
+            "english": "I start class at 9:30.",
+            "note": "九點三十分 is half past nine, after you have arrived at school."
+          }
+        ],
+        "answer": [
+          1,
+          3,
+          0,
+          2
+        ],
+        "successNote": "The time words give the order: 早上 → 中午 → 下午."
       }
     ],
     "allowWords": [
@@ -1335,6 +1378,91 @@
           "english": "You have water."
         },
         "prompt": "The person asking you is the one with water. Answer."
+      },
+      {
+        "id": "l2g03-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "reading": "B1L02-R01",
+          "line": 1,
+          "file": "B1-02-1-1.mp3",
+          "start": 6.04,
+          "end": 8.25
+        },
+        "tiles": [
+          {
+            "traditional": "課",
+            "simplified": "课",
+            "pinyin": "kè"
+          },
+          {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "早上",
+            "pinyin": "zǎoshàng"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "下午",
+            "pinyin": "xiàwǔ"
+          },
+          {
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "早上",
+              "沒有",
+              "課"
+            ],
+            "sentence": {
+              "traditional": "我早上沒有課。",
+              "simplified": "我早上没有课。",
+              "pinyin": "Wǒ zǎoshàng méiyǒu kè.",
+              "english": "I don’t have class in the morning."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "下午"
+            ],
+            "title": "That is not what you heard",
+            "note": "The speaker said 早上 (morning), not 下午 (afternoon)."
+          },
+          {
+            "placed": [
+              "有"
+            ],
+            "title": "That is not what you heard",
+            "note": "Listen for 沒: 沒有 means “don’t have”, and 有 alone means “have”."
+          },
+          {
+            "before": [
+              "課",
+              "沒有"
+            ],
+            "note": "課 is the thing they don’t have, so it comes after 沒有."
+          },
+          {
+            "notFirst": "我",
+            "note": "The speaker starts with who has no class."
+          }
+        ],
+        "fallbackRepair": "Listen again: who, when, then what they don’t have."
       }
     ],
     "allowWords": [
