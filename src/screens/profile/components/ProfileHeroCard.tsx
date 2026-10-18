@@ -9,7 +9,13 @@ export function ProfileHeroCard({ profile, name, handle, firstReview, bookTitle,
   return <section className="profile-hero">
     <div className="profile-cover" style={coverStyle(profile.coverPreset, cover)}>
       {!cover && profile.coverPreset !== 'plain' && <CoverGlyphs />}
-      <IconActionButton variant="surface" icon={<AppIcon name="pencil" size={18} />} label="Edit profile" onClick={onEdit} className="absolute right-3.5 top-3.5" />
+      <IconActionButton
+        variant="surface"
+        icon={<AppIcon name="pencil" size={18} />}
+        label="Edit profile"
+        onClick={onEdit}
+        className="absolute right-3.5 top-3.5 text-ui-muted-strong hover:text-ui-ink-strong"
+      />
     </div>
     <div className="profile-identity">
       <button type="button" className="relative shrink-0 rounded-full focus-ring" onClick={onEdit} aria-label="Edit photo">

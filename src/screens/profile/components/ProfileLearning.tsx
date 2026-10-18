@@ -45,12 +45,26 @@ export function ProfileStreak({ data }: { data: Data }) {
   </section>;
 }
 export function ProfileMixups({ data }: { data: Data }) {
-  if (!data.pairs.length) return null;
-  return <section className="profile-card profile-mixups"><h2>Words you mix up</h2>
-    {data.pairs.map(([a, b]) => <div className="profile-pair" key={`${a}:${b}`}>
+  const content = data.loading ? (
+    <p role="status" className="text-sm font-extrabold text-ui-muted-strong">Loading mix-ups…</p>
+  ) : data.failed ? (
+    <p role="alert" className="text-sm font-extrabold text-ui-muted-strong">
+      Couldn’t load mix-ups. <button type="button" className="focus-ring underline" onClick={data.retry}>Retry</button>
+    </p>
+  ) : data.pairs.length === 0 ? (
+    <p className="text-sm font-extrabold text-ui-muted-strong">No mix-ups yet</p>
+  ) : data.pairs.map(([a, b]) => (
+    <div className="profile-pair" key={`${a}:${b}`}>
       <div><span className="profile-hanzi">{data.forms.get(a)}</span><span className="profile-meaning">{data.vocabById.get(a)?.meaning}</span></div>
       <span className="profile-vs">vs</span>
       <div><span className="profile-hanzi">{data.forms.get(b)}</span><span className="profile-meaning">{data.vocabById.get(b)?.meaning}</span></div>
-    </div>)}
-  </section>;
+    </div>
+  ));
+
+  return (
+    <section className="profile-card profile-mixups">
+      <h2>Words you mix up</h2>
+      {content}
+    </section>
+  );
 }
