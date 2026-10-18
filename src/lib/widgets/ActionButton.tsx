@@ -13,6 +13,11 @@ export interface ActionButtonProps extends ComponentProps<'button'> {
   loading?: boolean;
   loadingLabel?: string;
   edgeColor?: string;
+  /**
+   * Extra classes for the moving front surface, merged after the variant's own surface
+   * classes so a caller's accent fill (folder/book colour) always wins over the default.
+   */
+  frontClassName?: string;
 }
 
 const edgeVariantClasses: Record<ActionButtonVariant, string> = {
@@ -76,6 +81,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
   loadingLabel = 'Loading',
   edgeColor,
   className,
+  frontClassName,
   style,
   children,
   disabled,
@@ -117,6 +123,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
           outerRadiusClass,
           fullWidth && 'w-full',
           className,
+          frontClassName,
         )}
         {...props}
       >
@@ -168,6 +175,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
             : cn(
                 sizeSpec.translateClass,
                 surfaceVariantClasses[variant],
+                frontClassName,
               ),
         )}
       >

@@ -29,6 +29,7 @@ const COLLECTIONS = [
     colorFront: STARRED_FOLDER_COLOR.front,
     colorBack: STARRED_FOLDER_COLOR.back,
     lightBg: STARRED_FOLDER_COLOR.lightBg,
+    onAccent: STARRED_FOLDER_COLOR.onAccent,
     count: 0,
   },
   {
@@ -42,6 +43,7 @@ const COLLECTIONS = [
     colorFront: CUSTOM_CARDS_FOLDER_COLOR.front,
     colorBack: CUSTOM_CARDS_FOLDER_COLOR.back,
     lightBg: CUSTOM_CARDS_FOLDER_COLOR.lightBg,
+    onAccent: CUSTOM_CARDS_FOLDER_COLOR.onAccent,
     count: 0,
   }
 ];
@@ -129,6 +131,7 @@ export function useLibrary() {
         colorFront: folderColor.front,
         colorBack: folderColor.back,
         lightBg: folderColor.lightBg,
+        onAccent: folderColor.onAccent,
         icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: folderColor.accent }),
         count
       };

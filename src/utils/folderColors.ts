@@ -9,6 +9,8 @@ export interface FolderColorOption {
   accentBg: string;
   accentBorder: string;
   lightBg: string;
+  /** Text colour for content sitting on the accent fill (e.g. the Study button). */
+  onAccent: string;
 }
 
 export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
@@ -21,6 +23,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-brand-primary',
     accentBorder: 'border-brand-primary-edge',
     lightBg: 'bg-brand-primary-soft',
+    onAccent: 'text-white',
   },
   {
     id: 'purple',
@@ -31,6 +34,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-palette-purple',
     accentBorder: 'border-palette-purple-edge',
     lightBg: 'bg-palette-purple-soft',
+    onAccent: 'text-ui-ink-strong',
   },
   {
     id: 'green',
@@ -41,6 +45,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-feedback-success',
     accentBorder: 'border-feedback-success-edge',
     lightBg: 'bg-feedback-success-surface',
+    onAccent: 'text-white',
   },
   {
     id: 'orange',
@@ -51,6 +56,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-brand-secondary',
     accentBorder: 'border-brand-secondary-edge',
     lightBg: 'bg-brand-secondary-soft',
+    onAccent: 'text-white',
   },
   {
     id: 'coral',
@@ -61,6 +67,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-feedback-danger',
     accentBorder: 'border-feedback-danger-edge',
     lightBg: 'bg-feedback-danger-surface',
+    onAccent: 'text-white',
   },
   {
     id: 'teal',
@@ -71,6 +78,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-palette-teal',
     accentBorder: 'border-palette-teal-edge',
     lightBg: 'bg-palette-teal-soft',
+    onAccent: 'text-ui-ink-strong',
   },
   {
     id: 'yellow',
@@ -81,6 +89,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-feedback-warning',
     accentBorder: 'border-feedback-warning-edge',
     lightBg: 'bg-feedback-warning-surface',
+    onAccent: 'text-ui-ink-strong',
   },
   {
     id: 'pink',
@@ -91,6 +100,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accentBg: 'bg-palette-pink',
     accentBorder: 'border-palette-pink-edge',
     lightBg: 'bg-palette-pink-soft',
+    onAccent: 'text-ui-ink-strong',
   },
 ];
 
@@ -144,6 +154,7 @@ export function resolveFolderColor(colorStr: string | undefined, index = 0): Fol
           accentBg: parsed.accentBg || 'bg-brand-primary',
           accentBorder: parsed.accentBorder || 'border-brand-primary-edge',
           lightBg: parsed.lightBg || 'bg-ui-canvas',
+          onAccent: parsed.onAccent || 'text-white',
         };
       }
       if (parsed.accentBg) {

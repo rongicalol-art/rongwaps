@@ -325,10 +325,8 @@ export function LibraryScreen({ onStartReview, onNavigateToPath, onAddCard, onPl
               }}
               edgeColor={activeCollection.colorBack}
               aria-label="Start flashcards"
-              className={cn(
-                'pointer-events-auto min-h-14 btn-touch-primary text-white',
-                activeCollection.accentBg
-              )}
+              className="pointer-events-auto min-h-14 btn-touch-primary"
+              frontClassName={cn(activeCollection.accentBg, activeCollection.onAccent)}
             >
               <AppIcon name="play" size={20} />
               <span>Study {activeCollection.count} {activeCollection.count === 1 ? 'card' : 'cards'}</span>
