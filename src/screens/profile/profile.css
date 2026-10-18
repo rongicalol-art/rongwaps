@@ -1,4 +1,5 @@
-.profile-layout { width:100%; max-width:1032px; margin:4px auto 0; padding:4px 16px 56px; display:grid; grid-template-columns:minmax(0,1fr); gap:40px; align-items:start; }
+.profile-screen { container: profile / inline-size; }
+.profile-layout { width:100%; max-width:1180px; margin:4px auto 0; padding:4px 16px 56px; display:grid; grid-template-columns:minmax(0,1fr); gap:40px; align-items:start; }
 .profile-main { display:grid; gap:28px; min-width:0; }
 .profile-side { display:none; }
 .profile-section-title { margin:0 0 14px; font-size:var(--text-xl); font-weight:900; }
@@ -39,13 +40,13 @@
 .profile-day.studied i { background:var(--color-streak); }
 .profile-day.today { color:var(--color-streak-edge); }
 .profile-day.today i { outline:2px solid var(--color-streak); outline-offset:3px; }
-.profile-pair { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px 0; border-top:2px solid var(--color-ui-divider); }
-.profile-pair:first-of-type { border-top:0; padding-top:0; }
-.profile-pair > div { display:flex; align-items:center; gap:8px; min-width:0; flex:1; }
-.profile-pair > div:last-child { flex-direction:row-reverse; text-align:right; }
-.profile-hanzi { font-family:var(--font-chinese); font-size:26px; line-height:1.2; overflow-wrap:anywhere; }
-.profile-meaning { font-size:13px; font-weight:800; color:var(--color-ui-muted-strong); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.profile-vs { flex:none; width:26px; height:26px; border-radius:var(--radius-xs); border:2px solid var(--color-ui-divider); display:grid; place-items:center; font-size:11px; font-weight:900; color:var(--color-ui-muted); }
+.profile-recent-words { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.profile-recent-word { min-width:0; min-height:91px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; padding:8px 4px; border-radius:var(--radius-control); text-align:center; overflow:hidden; }
+.profile-recent-word:nth-child(1) { background:var(--color-cover-clay-bg); }
+.profile-recent-word:nth-child(2) { background:var(--color-cover-jade-bg); }
+.profile-recent-word:nth-child(3) { background:var(--color-cover-honey-bg); }
+.profile-recent-glyph { max-width:100%; color:var(--color-ui-ink-strong); font-family:var(--font-chinese); font-size:24px; font-weight:900; line-height:1.1; overflow-wrap:anywhere; }
+.profile-recent-meaning { max-width:100%; overflow:hidden; color:var(--color-ui-muted-strong); font-size:11px; font-weight:900; text-overflow:ellipsis; white-space:nowrap; }
 .profile-edit-panel { box-shadow:none; }
 .profile-edit-panel > .profile-panel-header { display:flex; align-items:center; justify-content:center; position:relative; height:72px; flex:none; }
 .profile-panel-header > button { position:absolute; left:16px; top:16px; }
@@ -71,10 +72,7 @@
   div:has(> .profile-edit-panel) { padding:0; }
 }
 @media(min-width:1024px) {
-  .profile-layout { grid-template-columns:minmax(0,1fr) 330px; }
   .profile-main { gap:30px; }
-  .profile-side { display:grid; gap:20px; position:sticky; top:96px; }
-  .profile-mobile-streak, .profile-mobile-mixups { display:none; }
   .profile-section-title { font-size:22px; }
   .profile-cover { height:160px; }
   .profile-identity { flex-direction:row; align-items:flex-end; gap:18px; margin-top:-62px; padding-left:24px; }
@@ -84,6 +82,12 @@
   .profile-stat { padding:14px 16px; }
   .profile-stat b { font-size:22px; }
   .profile-topics { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@container profile (min-width:1100px) {
+  .profile-layout { grid-template-columns:minmax(0,1fr) 330px; }
+  .profile-side { display:grid; gap:20px; position:sticky; top:96px; min-width:0; }
+  .profile-mobile-streak, .profile-mobile-recent { display:none; }
+  .profile-footer-mobile { display:none; }
 }
 .profile-header { height:64px; padding-top:0; padding-bottom:0; justify-content:center; }
 .profile-header h1 { font-size:22px; font-weight:900; color:var(--color-ui-ink-strong); }

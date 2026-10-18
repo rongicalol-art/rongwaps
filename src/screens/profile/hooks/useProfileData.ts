@@ -3,13 +3,13 @@ import { useShallow } from 'zustand/react/shallow';
 import { useAppStore } from '../../../store/useAppStore';
 import { fetchAllVocabularyPacks } from '../../../services/contentPacks';
 import type { DBVocabularyRow } from '../../../types/database';
-import { computeStreak, countKnownCharacters, lessonProgress, topConfusionPairs } from '../../../utils/srs/profileStats';
+import { computeStreak, countKnownCharacters, lessonProgress } from '../../../utils/srs/profileStats';
 import { computeReviewOverview } from '../../../utils/srs/reviewOverview';
 
 export function useProfileData() {
   const state = useAppStore(useShallow((s) => ({
     activeBookId: s.activeBookId, characterPreference: s.characterPreference, learnedCards: s.learnedCards,
-    srsData: s.srsData, reviewEvents: s.reviewEvents, wordConfusions: s.wordConfusions, grammarPages: s.completedPageIds.length,
+    srsData: s.srsData, reviewEvents: s.reviewEvents, grammarPages: s.completedPageIds.length,
   })));
   const [vocabulary, setVocabulary] = useState<DBVocabularyRow[] | null>(null);
   const [failed, setFailed] = useState(false);
@@ -33,13 +33,19 @@ export function useProfileData() {
     const activeRows = rows.filter((row) => row.id.startsWith(`B${state.activeBookId}L`));
     const progress = lessonProgress(activeRows, state.learnedCards);
     const firstReview = state.reviewEvents.reduce((first, event) => event.reviewedAt <= now && event.reviewedAt > 0 ? Math.min(first, event.reviewedAt) : first, Infinity);
+    const recentWordIds: string[] = [];
+    for (const event of [...state.reviewEvents].sort((a, b) => b.reviewedAt - a.reviewedAt)) {
+      if (event.reviewedAt > now || event.reviewedAt <= 0 || recentWordIds.includes(event.cardId) || !vocabById.has(event.cardId)) continue;
+      recentWordIds.push(event.cardId);
+      if (recentWordIds.length === 3) break;
+    }
     return {
       ...computeStreak(state.reviewEvents, now), progress, vocabById, forms,
       known: computeReviewOverview(state.srsData, state.learnedCards, now).knownTotal,
       characters: countKnownCharacters(state.learnedCards, forms),
       reviews: state.reviewEvents.length, grammarPages: state.grammarPages,
       firstReview: Number.isFinite(firstReview) ? new Date(firstReview).toLocaleDateString('en', { month: 'short', year: 'numeric' }) : null,
-      pairs: topConfusionPairs(Object.fromEntries(Object.entries(state.wordConfusions).filter(([id]) => vocabById.has(id)).map(([id, others]) => [id, others.filter((other) => vocabById.has(other))]))),
+      recentWordIds,
       loading: vocabulary === null && !failed, failed,
       retry: () => { setFailed(false); setAttempt((value) => value + 1); },
     };

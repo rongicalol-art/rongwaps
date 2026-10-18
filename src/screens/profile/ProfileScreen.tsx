@@ -3,12 +3,13 @@ import { useShallow } from 'zustand/react/shallow';
 import { useAuth } from '../../hooks/useAuth';
 import { useAppStore } from '../../store/useAppStore';
 import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
+import { AppFooter } from '../../app/components/AppFooter';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { ProfileHeroCard } from './components/ProfileHeroCard';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
 import { SignOutButton } from './components/SignOutButton';
 import { EditProfilePanel } from './components/EditProfilePanel';
-import { ProfileMixups, ProfileStatistics, ProfileStreak, ProfileTopics } from './components/ProfileLearning';
+import { ProfileRecentWords, ProfileStatistics, ProfileStreak, ProfileTopics } from './components/ProfileLearning';
 import { useProfileData } from './hooks/useProfileData';
 import { useProfileMedia } from './hooks/useProfileMedia';
 import { useProfileEditor } from './hooks/useProfileEditor';
@@ -48,11 +49,12 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
           <div className="profile-mobile-streak"><ProfileStreak data={data} /></div>
           <ProfileStatistics data={data} />
           <ProfileTopics data={data} />
-          <div className="profile-mobile-mixups"><ProfileMixups data={data} /></div>
+          <div className="profile-mobile-recent"><ProfileRecentWords data={data} /></div>
           {currentUser && <SignOutButton onSignOut={handleSignOut} isSigningOut={isAuthActionLoading} />}
         </div>
-        <aside className="profile-side"><ProfileStreak data={data} /><ProfileMixups data={data} /></aside>
+        <aside className="profile-side"><ProfileStreak data={data} /><ProfileRecentWords data={data} /><AppFooter className="pt-1" /></aside>
       </div>}
+    <AppFooter className="profile-footer-mobile mt-auto px-4 pb-10 pt-14" />
     <EditProfilePanel editor={editor} name={fallbackName} canUpload={Boolean(currentUser)} googleAvatar={googleAvatar} />
   </div>;
 }
