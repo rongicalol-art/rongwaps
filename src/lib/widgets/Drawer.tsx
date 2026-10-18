@@ -35,6 +35,7 @@ export interface DrawerRootProps {
   onClose: () => void;
   tone?: DrawerTone;
   workspaceBound?: boolean;
+  instant?: boolean;
   zIndexClassName?: string;
   portalTarget?: HTMLElement | null;
   children: ReactNode;
@@ -58,6 +59,7 @@ interface DrawerContextValue {
   titleId: string;
   tone: DrawerTone;
   workspaceBound: boolean;
+  instant: boolean;
 }
 
 const DrawerContext = createContext<DrawerContextValue | null>(null);
@@ -73,6 +75,7 @@ export function DrawerRoot({
   onClose,
   tone = 'surface',
   workspaceBound = true,
+  instant = false,
   zIndexClassName = 'z-drawer',
   portalTarget,
   children,
@@ -84,7 +87,7 @@ export function DrawerRoot({
   );
 
   const output = (
-    <DrawerContext.Provider value={{ open, onClose, dragControls, titleId, tone, workspaceBound }}>
+    <DrawerContext.Provider value={{ open, onClose, dragControls, titleId, tone, workspaceBound, instant }}>
       <AnimatePresence>
         {open && (
           <div className={cn('fixed inset-0 pointer-events-none', zIndexClassName)}>
@@ -98,15 +101,15 @@ export function DrawerRoot({
 }
 
 export function DrawerBackdrop({ className }: { className?: string }) {
-  const { onClose } = useDrawerContext();
+  const { onClose, instant } = useDrawerContext();
   const reduceMotion = useReducedMotion();
   return (
     <motion.div
       aria-hidden="true"
-      initial={{ opacity: 0 }}
+      initial={instant ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.18 }}
+      transition={{ duration: instant || reduceMotion ? 0 : 0.18 }}
       onClick={onClose}
       className={cn(
         'absolute inset-0 bg-ui-ink-strong/35 pointer-events-auto cursor-pointer',
@@ -125,7 +128,7 @@ export function DrawerContent({
   className,
   children,
 }: DrawerContentProps) {
-  const { open, onClose, dragControls, titleId, tone, workspaceBound } = useDrawerContext();
+  const { open, onClose, dragControls, titleId, tone, workspaceBound, instant } = useDrawerContext();
   const isCard = useMediaQuery('(min-width: 768px)');
   const isSide = mdPlacement === 'side';
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -148,10 +151,10 @@ export function DrawerContent({
         aria-labelledby={titleId}
         tabIndex={-1}
         onKeyDown={modalFocus.onKeyDown}
-        initial={reduceMotion ? { opacity: 0 } : isCard ? (isSide ? { opacity: 0, x: 48 } : { opacity: 0, scale: 0.96, y: 12 }) : { y: '100%' }}
+        initial={instant ? false : reduceMotion ? { opacity: 0 } : isCard ? (isSide ? { opacity: 0, x: 48 } : { opacity: 0, scale: 0.96, y: 12 }) : { y: '100%' }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-        exit={reduceMotion ? { opacity: 0 } : isCard ? (isSide ? { opacity: 0, x: 32 } : { opacity: 0, scale: 0.97, y: 8 }) : { y: '100%' }}
-        transition={reduceMotion ? { duration: 0 } : { type: 'spring', damping: 28, stiffness: 320, mass: 0.8 }}
+        exit={instant || reduceMotion ? { opacity: 0 } : isCard ? (isSide ? { opacity: 0, x: 32 } : { opacity: 0, scale: 0.97, y: 8 }) : { y: '100%' }}
+        transition={instant || reduceMotion ? { duration: 0 } : { type: 'spring', damping: 28, stiffness: 320, mass: 0.8 }}
         drag={dragToDismiss && !isCard ? 'y' : false}
         dragListener={false}
         dragControls={dragControls}

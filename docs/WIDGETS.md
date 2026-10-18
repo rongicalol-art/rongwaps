@@ -46,7 +46,7 @@
 | --- | --- | --- |
 | ActivityModalWrapper | `ActivityModalWrapper.tsx` | Workspace-bounded activity dialog; requires `id`, `ariaLabel`, `onClose`. |
 | Dialog | `Dialog.tsx` | Modal primitive; `Dialog.Root/Backdrop/Content/Header/Title/Description/Close/Body/Footer`; `size` and `depth` tiers, focus trap, portal. |
-| Drawer | `Drawer.tsx` | Bottom sheet below `md` (drag-dismiss), floating card at `md+`, or right dock via `mdPlacement="side"`; `tone` `surface`/`practice`/`canvas`; `Drawer.Root/Backdrop/Content/Handle/StickyHeader/Title/Close/Body`. |
+| Drawer | `Drawer.tsx` | Bottom sheet below `md` (drag-dismiss), floating card at `md+`, or right dock via `mdPlacement="side"`; `tone` `surface`/`practice`/`canvas`; `instant` disables enter/exit motion; `Drawer.Root/Backdrop/Content/Handle/StickyHeader/Title/Close/Body`. |
 | WorkspaceWindow | `WorkspaceWindow.tsx` | Frame for any surface taking over the workspace (Reader, Grammar, details, settings). `tone`; `layer` `overlay`/`window`/`window-detail`. Open/close motion comes from `windowMotion.ts` (`sheet`/`focus`/`pop`/`rise` all use a 120ms fade; reduced motion is instant). The frame owns the open motion: content inside mounts without its own entrance, defaulted by layer; never pass raw motion props. |
 | DetailShell | `DetailShell.tsx` | Workspace-bounded detail view; `.Root/.Scroller/.Content/.Floating`. `windowed` opens it as its own `WorkspaceWindow`. |
 | ConfirmationDialog | `ConfirmationDialog.tsx` | Destructive confirm on `Dialog`; focus starts on Cancel; `children` + `confirmDisabled` for type-to-confirm. |

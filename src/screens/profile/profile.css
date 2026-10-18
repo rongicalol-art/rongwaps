@@ -53,7 +53,6 @@
 .profile-recent-word:nth-child(3) { background:var(--color-cover-honey-bg); }
 .profile-recent-glyph { max-width:100%; color:var(--color-ui-ink-strong); font-family:var(--font-chinese); font-size:24px; font-weight:900; line-height:1.1; overflow-wrap:anywhere; }
 .profile-recent-meaning { max-width:100%; overflow:hidden; color:var(--color-ui-muted-strong); font-size:11px; font-weight:900; text-overflow:ellipsis; white-space:nowrap; }
-.profile-edit-panel { box-shadow:none; }
 .profile-edit-panel > .profile-panel-header { display:flex; align-items:center; justify-content:center; position:relative; height:72px; flex:none; }
 .profile-panel-header > button { position:absolute; left:16px; top:16px; }
 .profile-panel-body { padding:4px 16px 20px; display:grid; align-content:start; gap:26px; }
@@ -72,10 +71,8 @@
 .profile-name-input:focus-visible { outline:2px solid var(--color-brand-primary); outline-offset:2px; }
 .profile-panel-footer { padding:14px 16px 20px; flex:none; }
 @media(min-width:768px) {
-  .profile-edit-panel { width:420px; border-radius:0; border:0; border-left:2px solid var(--color-ui-divider); }
   .profile-panel-body { padding-inline:24px; }
   .profile-panel-footer { padding-inline:24px; }
-  div:has(> .profile-edit-panel) { padding:0; }
 }
 @media(min-width:1024px) {
   .profile-main { gap:30px; }
