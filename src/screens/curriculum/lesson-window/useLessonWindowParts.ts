@@ -98,27 +98,35 @@ function settingEnglish(setting: string) {
 /** Per-part progress, captions and hero image for one lesson. */
 export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgress) {
   const completedPageIds = useAppStore((state) => state.completedPageIds);
-  const [readings, setReadings] = useState<ReadingRecord[]>([]);
+  const [readingPack, setReadingPack] = useState<{ bookId: number; readings: ReadingRecord[] } | null>(null);
 
   useEffect(() => {
     let isMounted = true;
     void fetchReadingsPack(bookId).then((pack) => {
-      if (isMounted) setReadings((pack ?? []).filter((reading) => reading.lessonId === lesson.id));
+      if (isMounted) setReadingPack({ bookId, readings: pack ?? [] });
     });
     return () => {
       isMounted = false;
     };
-  }, [bookId, lesson.id]);
+  }, [bookId]);
+
+  // A lesson can render before its reading pack is available. Keep the art
+  // frame empty until we know the final image instead of flashing the fallback icon.
+  const readings = readingPack?.bookId === bookId ? readingPack.readings : null;
+  const lessonReadings = useMemo(
+    () => readings?.filter((reading) => reading.lessonId === lesson.id) ?? [],
+    [lesson.id, readings],
+  );
 
   const parts = useMemo<LessonWindowPart[]>(() => {
     const partIds = Array.from(new Set([
       ...lesson.parts.map((part) => part.id),
-      ...readings.map((reading) => reading.dialogueNumber),
+      ...lessonReadings.map((reading) => reading.dialogueNumber),
     ])).sort((a, b) => a - b);
 
     return partIds.map((id) => {
       const vocabRow = lesson.parts.find((part) => part.id === id);
-      const reading = readings.find((item) => item.dialogueNumber === id);
+      const reading = lessonReadings.find((item) => item.dialogueNumber === id);
       const manifest = findGrammarManifestPartForReading({ bookId, lessonId: lesson.id, dialogueNumber: id });
       const vocab = { done: vocabRow?.learnedCount ?? 0, total: vocabRow?.wordCount ?? 0 };
       const grammar = manifest
@@ -141,11 +149,13 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
         isDone: vocab.done >= vocab.total && (!grammar || grammar.done >= grammar.total),
       };
     });
-  }, [bookId, completedPageIds, lesson.id, lesson.parts, readings]);
+  }, [bookId, completedPageIds, lesson.id, lesson.parts, lessonReadings]);
 
-  const lastReading = readings[readings.length - 1];
+  const lastReading = lessonReadings[lessonReadings.length - 1];
   const illustration = lastReading ? getReadingIllustration(lastReading.id)?.url : undefined;
-  const imageSrc = illustration ?? (lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id]);
+  const imageSrc = readings === null
+    ? null
+    : illustration ?? (lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id]);
 
   /** False when falling back to small icon-style lesson art. */
   return { parts, imageSrc, isIllustration: Boolean(illustration) };

@@ -5,7 +5,8 @@ import { cn } from '../../../utils/cn';
 const SWIPE_PX = 40;
 
 interface LessonPictureProps {
-  src: string;
+  /** Null while the reading pack is resolving the final lesson artwork. */
+  src: string | null;
   /** Icon-style fallback art is shown whole and centred instead of filling the frame. */
   isIcon?: boolean;
   /** Swipe left (+1) or right (-1) changes the part. */
@@ -50,12 +51,16 @@ export function LessonPicture({ src, isIcon = false, onSwipe, className }: Lesso
       onPointerCancel={() => { startX.current = null; }}
       className={cn('relative aspect-video w-full shrink-0 touch-pan-y select-none overflow-hidden bg-ui-hover', className)}
     >
-      <img
-        src={src}
-        alt=""
-        draggable={false}
-        className={isIcon ? 'h-full w-full object-contain p-10' : cn('h-full w-full object-cover object-center', lean && 'transition-transform duration-[1100ms] ease-out [transform:scale(1.05)_translate(var(--lean-x,0px),var(--lean-y,0px))]')}
-      />
+      {src && (
+        <img
+          src={src}
+          alt=""
+          draggable={false}
+          loading="eager"
+          fetchPriority="high"
+          className={isIcon ? 'h-full w-full object-contain p-10' : cn('h-full w-full object-cover object-center', lean && 'transition-transform duration-[1100ms] ease-out [transform:scale(1.05)_translate(var(--lean-x,0px),var(--lean-y,0px))]')}
+        />
+      )}
     </div>
   );
 }
