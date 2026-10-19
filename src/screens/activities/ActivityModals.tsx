@@ -50,6 +50,7 @@ export function ActivityModals({
   const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);
   const isOverlayOpen = isShellOverlayOpen || isActivityOverlayOpen;
   const isInteractionActive = useAppStore(state => state.isInteractionActive);
+  const isLessonWindowOpen = useAppStore(state => state.isLessonWindowOpen);
   const feedbackToast = useAppStore(state => state.feedbackToast);
   const swipeFeedback = useAppStore(state => state.swipeFeedback);
   const activeToast = feedbackToast || swipeFeedback;
@@ -181,9 +182,9 @@ export function ActivityModals({
       : isReviewSession
       ? 'flashcards-review'
       : 'flashcards';
-    const targetActivity = previousActivityRef.current || defaultStudyCards;
+    const targetActivity = previousActivityRef.current || (isLessonWindowOpen ? null : defaultStudyCards);
     setActiveActivity(targetActivity);
-  }, [effectiveLibraryMode, isReviewSession, setActiveActivity]);
+  }, [effectiveLibraryMode, isLessonWindowOpen, isReviewSession, setActiveActivity]);
 
   return (
     <>

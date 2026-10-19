@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence } from 'motion/react';
-import { AppIcon, WorkspaceWindow } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow } from '../../../lib/widgets';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import type { ActivityType, CourseLessonProgress } from '../../../types/models';
@@ -63,6 +63,73 @@ function LessonTitle({ lesson, isDesktop }: { lesson: CourseLessonProgress; isDe
   );
 }
 
+function PracticeHubEntry({
+  isOpen,
+  onOpen,
+  onClose,
+  onSelect,
+}: {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  onSelect: (activity: 'writing' | 'tones') => void;
+}) {
+  return (
+    <>
+      <div className="mt-4 border-t border-ui-divider pt-3.5">
+        <ActionButton
+          variant="secondary"
+          size="md"
+          fullWidth
+          edgeColor="var(--color-ui-border)"
+          aria-haspopup="dialog"
+          aria-expanded={isOpen}
+          onClick={onOpen}
+          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-muted-strong"
+        >
+          <AppIcon name="practice" size={18} />
+          <span>Practice hub</span>
+          <AppIcon name="next" size={18} className="ml-auto" />
+        </ActionButton>
+      </div>
+      <Drawer
+        isOpen={isOpen}
+        onClose={onClose}
+        title="Practice hub"
+        tone="practice"
+        size="md"
+        mdPlacement="side"
+        heightClassName="max-h-[60vh] md:max-h-full"
+      >
+        <div className="flex flex-col gap-3">
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            fullWidth
+            edgeColor="var(--color-ui-border)"
+            onClick={() => onSelect('writing')}
+            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+          >
+            <PlayfulNavIcon name="writing" className="h-8 w-8" />
+            <span>Writing</span>
+          </ActionButton>
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            fullWidth
+            edgeColor="var(--color-ui-border)"
+            onClick={() => onSelect('tones')}
+            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+          >
+            <PlayfulNavIcon name="tones" className="h-8 w-8" />
+            <span>Tones</span>
+          </ActionButton>
+        </div>
+      </Drawer>
+    </>
+  );
+}
+
 function LessonBody({
   bookId,
   lesson,
@@ -78,6 +145,7 @@ function LessonBody({
 }: BodyProps) {
   const { parts, imageSrc, isIllustration } = useLessonWindowParts(bookId, lesson);
   const rootRef = useRef<HTMLDivElement>(null);
+  const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
 
   // Prefetch on intent: the lesson window is open, so Start / Quiz is next. Chunks land in the registry the practice modal reads.
   useEffect(() => {
@@ -156,6 +224,18 @@ function LessonBody({
   const modeButtons = (
     <ModeButtons part={activePart} selected={mode} large={isDesktop} onSelect={(next) => onModeChange(activePart.id, next)} />
   );
+  const practiceHub = (
+    <PracticeHubEntry
+      isOpen={isPracticeHubOpen}
+      onOpen={() => setIsPracticeHubOpen(true)}
+      onClose={() => setIsPracticeHubOpen(false)}
+      onSelect={(activity) => {
+        setIsPracticeHubOpen(false);
+        const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
+        onStartPractice(lesson.id, practiceTarget, activity);
+      }}
+    />
+  );
   const actions = (
     <LessonActions
       canQuiz={activePart.vocab.total > 0}
@@ -201,6 +281,7 @@ function LessonBody({
           <div className="mt-12 flex flex-col">
             <LessonTitle lesson={lesson} isDesktop />
             <div className="mt-6">{modeButtons}</div>
+            {practiceHub}
             <div className="mt-auto pt-5">{actions}</div>
           </div>
         </div>
@@ -224,7 +305,10 @@ function LessonBody({
             className="mx-4 mt-2"
           />
           <div className="px-4 pt-4"><LessonTitle lesson={lesson} isDesktop={false} /></div>
-          <div className="px-4 pb-3 pt-3">{modeButtons}</div>
+          <div className="px-4 pb-3 pt-3">
+            {modeButtons}
+            {practiceHub}
+          </div>
         </div>
       </div>
       <div className="relative shrink-0">
