@@ -87,7 +87,7 @@ function PracticeHubEntry({
           onClick={onOpen}
           className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-muted-strong"
         >
-          <AppIcon name="practice" size={18} />
+          <AppIcon name="target" size={18} />
           <span>Practice hub</span>
           <AppIcon name="next" size={18} className="ml-auto" />
         </ActionButton>
