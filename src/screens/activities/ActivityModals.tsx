@@ -66,6 +66,7 @@ export function ActivityModals({
     selectedLessons,
     isReviewSession,
     effectiveLibraryMode,
+    isPracticeSession,
   );
   const sessionDeckRef = useRef<Flashcard[]>([]);
   if (deckCards.length > 0) sessionDeckRef.current = deckCards;
@@ -74,7 +75,7 @@ export function ActivityModals({
   // as fonts). Warm or fast opens go straight to content; slow ones show one loader only while waiting.
   const isChunkReady = usePracticeScreenReady(resolvedActivity);
   // The first cards' characters: their font slices must be loaded so no glyph swaps after reveal.
-  const firstCardsText = isLoadingDeck ? '' : deckCards.slice(0, 6).map((card) => card.front).join('');
+  const firstCardsText = !isPracticeSession || isLoadingDeck ? '' : deckCards.slice(0, 6).map((card) => card.front).join('');
   const fontGate = useFontGate(firstCardsText);
   const phase = useOpenPhase(
     activeActivity === 'create-card' || (isChunkReady && !isLoadingDeck),

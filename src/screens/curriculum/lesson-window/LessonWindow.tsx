@@ -147,11 +147,6 @@ function LessonBody({
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
 
-  // Prefetch on intent: the lesson window is open, so Start / Quiz is next. Chunks land in the registry the practice modal reads.
-  useEffect(() => {
-    void preloadPracticeChunks('flashcards');
-    void preloadPracticeChunks('quiz');
-  }, []);
   const resolvedPartId = partId !== null && parts.some((part) => part.id === partId)
     ? partId
     : getFirstOpenPartId(parts);
@@ -240,10 +235,14 @@ function LessonBody({
     <LessonActions
       canQuiz={activePart.vocab.total > 0}
       onStart={handleStart}
+      onStartIntent={() => {
+        if (mode === 'vocab') void preloadPracticeChunks('flashcards').catch(() => {});
+      }}
       onQuiz={() => {
         const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
         onStartPractice(lesson.id, practiceTarget, 'quiz');
       }}
+      onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}
     />
   );
 

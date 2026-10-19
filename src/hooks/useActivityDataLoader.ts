@@ -57,6 +57,7 @@ export function useActivityDataLoader(
   selectedLessons: number[],
   isReviewDeck: boolean = false,
   isLibraryDeck: boolean = false,
+  enabled: boolean = true,
 ) {
   const effectiveLibraryDeck = isLibraryDeck && !isReviewDeck;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
@@ -115,6 +116,8 @@ export function useActivityDataLoader(
   }, [cards, deckExclusionKey, deckExclusions, setDeckExclusions]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     let unsubscribe: (() => void) | null = null;
     let isMounted = true;
 
@@ -185,7 +188,7 @@ export function useActivityDataLoader(
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites]);
+  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites, enabled]);
 
   return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
 }

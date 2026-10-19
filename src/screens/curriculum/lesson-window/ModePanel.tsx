@@ -91,11 +91,13 @@ interface LessonActionsProps {
   canQuiz: boolean;
   onStart: () => void;
   onQuiz: () => void;
+  onStartIntent: () => void;
+  onQuizIntent: () => void;
   className?: string;
 }
 
 /** Start the selected mode, or quiz the part. */
-export function LessonActions({ canQuiz, onStart, onQuiz, className }: LessonActionsProps) {
+export function LessonActions({ canQuiz, onStart, onQuiz, onStartIntent, onQuizIntent, className }: LessonActionsProps) {
   return (
     <div className={cn('flex gap-3', className)}>
       {canQuiz && (
@@ -105,13 +107,24 @@ export function LessonActions({ canQuiz, onStart, onQuiz, className }: LessonAct
           edgeColor={DIVIDER_EDGE}
           className="!border-ui-divider !text-ui-muted-strong"
           onClick={onQuiz}
+          onPointerEnter={onQuizIntent}
+          onPointerDown={onQuizIntent}
+          onFocus={onQuizIntent}
         >
           <AppIcon name="quizMark" size={22} className="text-ui-muted" />
           <span>Quiz</span>
         </ActionButton>
       )}
       <div className="min-w-0 flex-1">
-        <ActionButton size="lg" fullWidth className="whitespace-nowrap" onClick={onStart}>
+        <ActionButton
+          size="lg"
+          fullWidth
+          className="whitespace-nowrap"
+          onClick={onStart}
+          onPointerEnter={onStartIntent}
+          onPointerDown={onStartIntent}
+          onFocus={onStartIntent}
+        >
           <AppIcon name="play" size={20} />
           <span>Start</span>
         </ActionButton>
