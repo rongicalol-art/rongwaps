@@ -36,6 +36,7 @@ interface CurriculumLibraryProps {
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
   /** Opens the Profile tab (rendered as the avatar in the header's right side). */
   onProfileClick?: () => void;
+  profileAvatarUrl?: string;
 }
 
 export const CurriculumLibrary = memo(function CurriculumLibrary({
@@ -47,6 +48,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   onOpenReadingPart,
   menuToggle,
   onProfileClick,
+  profileAvatarUrl,
 }: CurriculumLibraryProps) {
   const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
   const { hasFullCourseAccess } = useAuth();
@@ -168,7 +170,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         <StickyWorkspaceHeader
           title={activeBook.title}
           menuToggle={menuToggle}
-          rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} /> : undefined}
+          rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} /> : undefined}
         />
 
         <BookCarousel

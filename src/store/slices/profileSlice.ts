@@ -12,10 +12,18 @@ export const PROFILE_DEFAULTS: ProfileSettings = {
   displayName: '', avatarColor: 'blue', coverPreset: 'clay', avatarPath: null, coverPath: null,
 };
 export interface ProfileState extends ProfileSettings {
+  avatarMediaRevision: number;
+  bumpAvatarMediaRevision: () => void;
   setProfile: (profile: ProfileSettings) => void;
 }
-export function createProfileSlice(set: (patch: Partial<ProfileState>) => void): ProfileState {
-  return { ...PROFILE_DEFAULTS, setProfile: (profile) => set(profile) };
+type SetState = (patch: Partial<ProfileState> | ((state: ProfileState) => Partial<ProfileState>)) => void;
+export function createProfileSlice(set: SetState): ProfileState {
+  return {
+    ...PROFILE_DEFAULTS,
+    avatarMediaRevision: 0,
+    bumpAvatarMediaRevision: () => set((state) => ({ avatarMediaRevision: state.avatarMediaRevision + 1 })),
+    setProfile: (profile) => set(profile),
+  };
 }
 export const PROFILE_PERSISTED_KEYS = ['displayName', 'avatarColor', 'coverPreset', 'avatarPath', 'coverPath'] as const;
 export const PROFILE_ACCOUNT_SWITCH_DEFAULTS = PROFILE_DEFAULTS;

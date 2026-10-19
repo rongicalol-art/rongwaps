@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ProfileSettings } from '../../../store/slices/profileSlice';
 import { useAppStore } from '../../../store/useAppStore';
-import { prepareProfileImage, removeProfileMedia, uploadProfileMedia } from '../../../services/profileMedia';
+import { prepareProfileImage, removeProfileMedia, uploadProfileMedia, type ProfileImageCrop } from '../../../services/profileMedia';
 
 type MediaKind = 'avatar' | 'cover';
 export interface ProfileDraft {
@@ -41,18 +41,20 @@ export function useProfileEditor(userId: string | undefined, onSaved: () => void
     delete blobs.current.avatar;
     setDraft((value) => value && ({ ...value, avatar: fallback, settings: { ...value.settings, avatarPath: null } }));
   };
-  const upload = async (kind: MediaKind, file?: File) => {
-    if (!file || !userId || saving.current) return;
+  const upload = async (kind: MediaKind, file?: File, crop?: ProfileImageCrop): Promise<boolean> => {
+    if (!file || !userId || saving.current) return false;
     const token = session.current;
     pending.current++; setBusy(true); setError(null);
     try {
-      const blob = await prepareProfileImage(file, kind);
-      if (token !== session.current) return;
+      const blob = await prepareProfileImage(file, kind, crop);
+      if (token !== session.current) return false;
       const url = URL.createObjectURL(blob);
       urls.current.push(url); blobs.current[kind] = blob;
       setDraft((value) => value && ({ ...value, [kind]: url }));
+      return true;
     } catch (cause) {
       if (token === session.current) setError(cause instanceof Error ? cause.message : 'Couldn’t prepare the image.');
+      return false;
     } finally { pending.current--; setBusy(pending.current > 0); }
   };
   const save = async () => {
@@ -74,11 +76,16 @@ export function useProfileEditor(userId: string | undefined, onSaved: () => void
         }
       }
       if (token !== session.current || useAppStore.getState().currentUser?.id !== userId) return;
-      useAppStore.getState().setProfile(settings);
+      const store = useAppStore.getState();
+      store.setProfile(settings);
+      if (blobs.current.avatar) store.bumpAvatarMediaRevision();
       release(); setDraft(null); onSaved();
     } catch {
       setError('Couldn’t save your profile. Check your connection and try again.');
     } finally { saving.current = false; setBusy(false); }
   };
-  return { draft, error, busy, open, close, change, chooseCover, removeAvatar, upload, save, hasAvatarUpload: Boolean(blobs.current.avatar) };
+  return {
+    draft, error, busy, open, close, change, chooseCover, removeAvatar, upload, save,
+    hasAvatarUpload: Boolean(blobs.current.avatar), hasCoverUpload: Boolean(blobs.current.cover),
+  };
 }

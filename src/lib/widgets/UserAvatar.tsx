@@ -40,10 +40,10 @@ export function UserAvatar({
   fallbackIcon = 'profile',
   className,
 }: UserAvatarProps) {
-  const [hasError, setHasError] = useState(false);
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
   const config = SIZE_CONFIG[size];
 
-  const showImage = Boolean(src && !hasError);
+  const showImage = Boolean(src && src !== failedSrc);
 
   return (
     <div
@@ -59,7 +59,7 @@ export function UserAvatar({
           src={src!}
           alt={alt}
           referrerPolicy="no-referrer"
-          onError={() => setHasError(true)}
+          onError={() => setFailedSrc(src ?? null)}
           className="h-full w-full object-cover"
         />
       ) : (

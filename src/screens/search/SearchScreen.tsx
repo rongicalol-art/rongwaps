@@ -19,14 +19,15 @@ interface SearchScreenProps {
   /** Mobile hamburger shown overlaid left in the sticky header (Dictionary). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
   onProfileClick?: () => void;
+  profileAvatarUrl?: string;
 }
 
-function DictionaryStickyHeader({ menuToggle, onProfileClick }: SearchScreenProps) {
+function DictionaryStickyHeader({ menuToggle, onProfileClick, profileAvatarUrl }: SearchScreenProps) {
   return (
     <StickyWorkspaceHeader
       title="Dictionary"
       menuToggle={menuToggle}
-      rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} /> : undefined}
+      rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} /> : undefined}
     />
   );
 }
@@ -38,7 +39,7 @@ const LEVEL_ORDER = ['Novice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'Rare'];
 /** Curriculum search covers every book. */
 const selectedBookIds = [1, 2, 3, 4];
 
-export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) {
+export function SearchScreen({ menuToggle, onProfileClick, profileAvatarUrl }: SearchScreenProps) {
   const favorites = useAppStore((state) => state.favorites);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const searchQuery = useAppStore((state) => state.searchQuery);
@@ -168,7 +169,7 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
 
   return (
     <div className="relative flex w-full flex-1 flex-col text-ui-ink">
-      <DictionaryStickyHeader menuToggle={menuToggle} onProfileClick={onProfileClick} />
+      <DictionaryStickyHeader menuToggle={menuToggle} onProfileClick={onProfileClick} profileAvatarUrl={profileAvatarUrl} />
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-10 gap-y-7 px-4 pb-32 md:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:pb-20">
         {/* Search and results stay in one cell: a taller side rail never stretches the two apart. */}

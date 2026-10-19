@@ -35,9 +35,10 @@ interface LibraryScreenProps {
   /** Mobile hamburger shown overlaid left in the sticky header (Library home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
   onProfileClick?: () => void;
+  profileAvatarUrl?: string;
 }
 
-export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle, onProfileClick }: LibraryScreenProps) {
+export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle, onProfileClick, profileAvatarUrl }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -119,7 +120,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
               {totalCount} {totalCount === 1 ? 'card' : 'cards'}
             </span>
           ) : onProfileClick ? (
-            <ProfileAvatarButton onClick={onProfileClick} />
+            <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} />
           ) : undefined
         }
         onBack={
