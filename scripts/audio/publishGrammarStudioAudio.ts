@@ -2,7 +2,7 @@
  * Publish the owner-approved voice B (studio) grammar clips to R2 and write their receipt.
  *
  * Reads output/grammar-audio/studio-manifest.json (written by generateGrammarStudioAudio.py and
- * approved by ear), checks every local file against its sha256, uploads each to its immutable key
+ * authorized for publication), checks every local file against its sha256, uploads each to its immutable key
  * (`grammar-studio/v1/<hash>.mp3`, never overwriting), verifies the stored object, and only then
  * writes content/audio/grammar_studio_audio.json, which `npm run content:export` attaches as
  * `audio = { voice: 'studio', file }` to sentences the book doesn't say.
@@ -30,17 +30,27 @@ interface StudioEntry {
   voice: string;
   instruct: string;
   seed: number;
+  mastering?: string;
+  previousSha256?: string;
+  previousFile?: string;
+  regenerated?: boolean;
+  quality?: { integratedLufs: number; truePeakDbfs: number; transcript?: string; contentChecked?: boolean };
 }
 
 const ROOT = process.cwd();
 const MANIFEST = path.join(ROOT, 'output/grammar-audio/studio-manifest.json');
 const RECEIPT = path.join(ROOT, 'content/audio/grammar_studio_audio.json');
-const APPROVED = 'owner 2026-10-18';
+const APPROVED = 'owner 2026-10-19 (delegated regeneration, quality checks and publication)';
 const hash = (body: Buffer, algorithm = 'sha256') => createHash(algorithm).update(body).digest('hex');
 
 async function main() {
   const upload = process.argv.includes('--upload');
   const entries = JSON.parse(await readFile(MANIFEST, 'utf8')) as StudioEntry[];
+  const previous = JSON.parse(await readFile(RECEIPT, 'utf8')) as Record<string, unknown>;
+  const keys = new Set(entries.map((entry) => entry.key));
+  if (!entries.length || keys.size !== entries.length || Object.keys(previous).some((key) => !keys.has(key))) {
+    throw new Error('Studio manifest is incomplete or contains duplicate sentences.');
+  }
   const endpoint = process.env.R2_ENDPOINT || (process.env.R2_ACCOUNT_ID ? `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com` : '');
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
@@ -56,6 +66,9 @@ async function main() {
       if (!/^grammar-studio\/v1\/[0-9a-f]{12}\.mp3$/.test(entry.file)) throw new Error(`Unexpected key: ${entry.file}`);
       const body = await readFile(path.join(ROOT, entry.local));
       if (hash(body) !== entry.sha256) throw new Error(`Local clip changed since review: ${entry.key}`);
+      if (!entry.quality || !Number.isFinite(entry.quality.integratedLufs) || !Number.isFinite(entry.quality.truePeakDbfs)
+        || entry.quality.integratedLufs < -17 || entry.quality.integratedLufs > -9 || entry.quality.truePeakDbfs > -1
+        || !entry.quality.contentChecked) throw new Error(`Audio quality check incomplete: ${entry.key}`);
       if (client) {
         const options = { abortSignal: AbortSignal.timeout(30_000) };
         const head = () => client.send(new HeadObjectCommand({ Bucket: bucket, Key: entry.file }), options);
@@ -85,6 +98,8 @@ async function main() {
   const receipt = Object.fromEntries([...entries].sort((a, b) => a.key.localeCompare(b.key)).map((entry) => [entry.key, {
     file: entry.file, sha256: entry.sha256, duration: entry.duration, spoken: entry.spoken,
     model: entry.model, voice: entry.voice, instruct: entry.instruct, seed: entry.seed, approved: APPROVED,
+    mastering: entry.mastering, previousSha256: entry.previousSha256, previousFile: entry.previousFile, regenerated: entry.regenerated,
+    quality: entry.quality,
   }]));
   await writeFile(RECEIPT, `${JSON.stringify(receipt, null, 2)}\n`);
   console.log(`Published ${entries.length} studio clips; wrote ${path.relative(ROOT, RECEIPT)}.`);

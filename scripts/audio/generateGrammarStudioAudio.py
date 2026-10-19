@@ -5,6 +5,11 @@ Run with the local MLX environment and model cache:
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --limit 2
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --takes 6
+  HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --refresh-audio
+
+`--refresh-audio` masters published local takes and regenerates flagged takes or delivery above four Chinese
+characters per second with a naturally slower instruction. It never time-stretches speech.
+Publication additionally requires content QA and measured encoded peak/loudness results.
 
 Qwen's pace wanders between takes (it often slows down on numbers and times), so `--takes N`
 also renders seeds 42..42+N-1 of every sentence; `scoreGrammarStudioTakes.py --pick` then
@@ -43,13 +48,15 @@ TRIM_PADDING = 0.1  # Silence retained at the outside edges.
 SILENCE_THRESHOLD = 0.003  # Absolute amplitude threshold for trimming and silence checks.
 MIN_SECONDS_PER_HAN = 0.15  # Shortest accepted clip per Han character.
 MAX_SECONDS_PER_HAN = 1.2  # Longest accepted clip per Han character.
-MP3_BITRATE = "64k"  # Review audio bitrate.
+MP3_BITRATE = "96k"  # Preserve detail when mastering existing approved MP3s.
+MASTERING = "acompressor=mode=upward:threshold=0.4:ratio=4:attack=5:release=100,volume=1.78,alimiter=limit=0.66:level=0:latency=1"
+SLOW_INSTRUCT = INSTRUCT + " 面向初學者，語速稍慢，像老師耐心示範完整的句子。在詞組和標點之間自然停頓，保持連貫、溫暖的語氣。不要趕著說，不要逐字念，也不要拖長字音。只朗讀提供的文字，不增添、不省略任何字詞。"
 HAN_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\U00020000-\U0002fa1f]")  # Han characters used for keys.
 SPEAKER_RE = re.compile(r"(?<![A-Za-z])([AB])[:：]\s*")  # Textbook A/B speaker labels.
 PAREN_RE = re.compile(r"[()（）]")  # Optional-parenthesis delimiters.
-CLOCK_RE = re.compile(r"[一二兩三四五六七八九十]+(?=[點分月號日])")  # A number in a time or date (十點十五分, 十二月七號).
-DIGITS = {"一": 1, "二": 2, "兩": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}  # Numerals to digits.
-SPELLED_CLOCK = {"十一點多"}  # Digits made Qwen drag here (11點多: 3.4 s vs 1.1 s spelled); keep the numerals.
+CLOCK_RE = re.compile(r"[一二兩两三四五六七八九十]+(?=[點点分月號号日])")  # A number in a time or date.
+DIGITS = {"一": 1, "二": 2, "兩": 2, "两": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}  # Numerals to digits.
+SPELLED_CLOCK = {"十一點多", "十一点多"}  # Keep the owner-selected spoken form of this phrase.
 ALTERNATIVE_RE = re.compile(r"[/／][\u3400-\u9fff]+")  # "號/日": the book's alternative word; read only the first.
 
 
@@ -64,14 +71,14 @@ def load_clip_keys(path):
     return {han(key) for key in data if han(key)}
 
 
-def row_text(row):
-    """Join the traditional tokens in the pattern row's visual column order."""
+def row_text(row, script="traditional"):
+    """Join authored tokens in the pattern row's visual column order."""
     groups = row.get("columns")
     if groups is None:
         groups = [row.get(name) or [] for name in ("subject", "grammar", "complement")]
     # Punctuation rides on the tokens (`suffix` 。？): keep it, so a question is read as one.
     return "".join(
-        f"{token.get('prefix', '')}{token.get('traditional', '')}{token.get('suffix', '')}"
+        f"{token.get('prefix', '')}{token.get(script) or token.get('traditional', '')}{token.get('suffix', '')}"
         for group in groups
         for token in (group or [])
         if isinstance(token, dict)
@@ -84,7 +91,7 @@ def clock_digits(text):
     一點 stays: in 一點兒 / 一點東西 it means "a little", not one o'clock."""
     def to_digits(match):
         numeral = match.group(0)
-        if numeral == "一" and text[match.end()] == "點":
+        if numeral == "一" and text[match.end()] in "點点":
             return numeral
         tens, _, ones = numeral.rpartition("十")
         if "十" not in numeral:
@@ -115,7 +122,7 @@ def user_record(page, item, kind):
     return {"page": page, "id": str(item.get("id") or "unknown"), "kind": kind}
 
 
-def add_target(targets, counts, totals, key, text, user, sort_order, clipped):
+def add_target(targets, counts, totals, key, text, user, sort_order, clipped, synthesis_text=None):
     """Count a source user and add it only when neither book source has a clip."""
     totals[user["kind"]] += 1
     if key in clipped:
@@ -124,7 +131,8 @@ def add_target(targets, counts, totals, key, text, user, sort_order, clipped):
     target = targets.setdefault(key, {
         "key": key,
         "text": text,
-        "turns": speaker_turns(text),
+        # Use the authored simplified form: Qwen can misread traditional 餓 as a different word.
+        "turns": speaker_turns(synthesis_text or text),
         "users": [],
         "order": sort_order,
     })
@@ -165,7 +173,7 @@ def collect_targets():
                     targets, missing, totals, key, text,
                     user_record(page_id, example, "example"),
                     (lesson, part_number, page_index, 0, item_index, file_name, part_name),
-                    clipped,
+                    clipped, (example.get("text") or {}).get("simplified"),
                 )
 
             rows = list(page.get("patternRows") or [])
@@ -182,7 +190,7 @@ def collect_targets():
                     targets, missing, totals, key, text,
                     user_record(page_id, row, "row"),
                     (lesson, part_number, page_index, 1, row_index, file_name, part_name),
-                    clipped,
+                    clipped, row_text(row, "simplified"),
                 )
     ordered = sorted(targets.values(), key=lambda item: item["order"])
     return ordered, missing, totals
@@ -194,12 +202,15 @@ def recipe_text(key, turns, seed):
         "model": MODEL,
         "voice": VOICE,
         "lang_code": LANG_CODE,
-        "instruct": INSTRUCT,
+        "instruct": SLOW_INSTRUCT,
         "seed": seed,
         "max_tokens": MAX_TOKENS,
         "mp3_codec": "libmp3lame",
         "mp3_bitrate": MP3_BITRATE,
         "mp3_channels": 1,
+        "mp3_sample_rate": 24000,
+        "wav_subtype": "FLOAT",
+        "mastering": MASTERING,
         "turn_silence": TURN_SILENCE,
         "trim_padding": TRIM_PADDING,
         "silence_threshold": SILENCE_THRESHOLD,
@@ -243,7 +254,12 @@ def probe_audio(path):
 
 
 def cached_entry(target, seed, old_entries):
-    """Reuse an output only when both its MP3 and exact recipe hash remain present."""
+    """Prefer refreshed manifest takes; otherwise require an exact recipe hash."""
+    previous = old_entries.get(target["key"])
+    if previous and previous.get("mastering") == MASTERING and previous.get("text") == target["text"]:
+        published = ROOT / previous["local"]
+        if published.is_file() and file_sha256(published) == previous.get("sha256"):
+            return {**previous, "users": target["users"]}
     digest, path, sidecar = output_for(target["key"], target["turns"], seed)
     if not path.is_file() or not sidecar.is_file():
         return None
@@ -275,8 +291,10 @@ def build_manifest_entry(target, seed, path, duration):
         "sha256": file_sha256(path),
         "model": MODEL,
         "voice": VOICE,
-        "instruct": INSTRUCT,
+        "instruct": SLOW_INSTRUCT,
         "seed": seed,
+        "mastering": MASTERING,
+        "quality": measure_quality(path),
     }
 
 
@@ -295,14 +313,14 @@ def turn_voice(index):
     return VOICE if index % 2 == 0 else B_VOICE
 
 
-def synthesize(model, turns, seed, mx, np):
+def synthesize(model, turns, seed, mx, np, instruct=SLOW_INSTRUCT):
     """Generate each dialogue turn separately (B in its own voice) and join turns with 0.6 s silence."""
     turn_audio = []
     sample_rate = None
     for index, turn in enumerate(turns):
         mx.random.seed(seed)
         results = list(model.generate(
-            turn, voice=turn_voice(index), lang_code=LANG_CODE, instruct=INSTRUCT,
+            turn, voice=turn_voice(index), lang_code=LANG_CODE, instruct=instruct,
             max_tokens=MAX_TOKENS,
         ))
         if not results:
@@ -348,21 +366,46 @@ def validate_duration(audio, sample_rate, key):
     return duration
 
 
+def measure_quality(path):
+    """Measure the delivered MP3, including codec peak overshoot."""
+    result = subprocess.run([
+        "ffmpeg", "-hide_banner", "-nostats", "-i", str(path),
+        "-af", "ebur128=peak=true:framelog=quiet", "-f", "null", "-",
+    ], capture_output=True, text=True, check=True)
+    loudness = re.search(r"Integrated loudness:\s*I:\s*(-?[\d.]+) LUFS", result.stderr)
+    peak = re.search(r"True peak:\s*Peak:\s*(-?[\d.]+) dBFS", result.stderr)
+    if not loudness or not peak:
+        raise ValueError(f"Cannot measure {path.name}")
+    return {"integratedLufs": float(loudness.group(1)), "truePeakDbfs": float(peak.group(1))}
+
+
+def master_recording(source, destination):
+    """Level speech without changing its pitch, tempo, or phrasing; check encoded peaks."""
+    gain = 0.0
+    for _ in range(3):
+        subprocess.run([
+            "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(source),
+            "-af", f"{MASTERING},volume={gain}dB", "-map_metadata", "-1",
+            "-vn", "-ac", "1", "-ar", "24000", "-codec:a", "libmp3lame",
+            "-b:a", MP3_BITRATE, str(destination),
+        ], capture_output=True, text=True, check=True)
+        quality = measure_quality(destination)
+        if quality["truePeakDbfs"] <= -1.0:
+            if not -17 <= quality["integratedLufs"] <= -9:
+                raise ValueError(f"Unexpected mastered loudness: {quality}")
+            return quality
+        gain -= quality["truePeakDbfs"] + 1.3
+    raise ValueError(f"Encoded peaks remain unsafe: {destination.name}")
+
+
 def encode_mp3(audio, sample_rate, destination, sf):
-    """Write a mono 64 kbps MP3 using the system ffmpeg executable."""
+    """Master the original generated waveform and encode a mono MP3."""
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
     wav_path = destination.with_name(destination.stem + ".tmp.wav")
     mp3_path = destination.with_name(destination.stem + ".tmp.mp3")
     try:
-        sf.write(wav_path, audio, sample_rate, subtype="PCM_16")
-        subprocess.run(
-            [
-                "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
-                "-i", str(wav_path), "-vn", "-ac", "1", "-codec:a",
-                "libmp3lame", "-b:a", MP3_BITRATE, str(mp3_path),
-            ],
-            capture_output=True, text=True, check=True,
-        )
+        sf.write(wav_path, audio, sample_rate, subtype="FLOAT")
+        master_recording(wav_path, mp3_path)
         mp3_path.replace(destination)
     finally:
         wav_path.unlink(missing_ok=True)
@@ -432,12 +475,100 @@ def render_takes(targets, count, model):
                 print(f"take {target['key']} seed {seed} skipped: {type(error).__name__}: {error}", flush=True)
 
 
+def refresh_audio():
+    """Keep approved slow takes; regenerate rushed or transcription-flagged takes."""
+    import mlx.core as mx
+    import numpy as np
+    import soundfile as sf
+    from mlx_audio.tts.utils import load_model
+    from align_mms import pinyinize
+
+    checkpoint = OUT_DIR / "studio-refresh-manifest.json"
+    originals = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    completed = json.loads(checkpoint.read_text(encoding="utf-8")) if checkpoint.exists() else []
+    by_key = {entry["key"]: entry for entry in completed}
+    targets = {target["key"]: target for target in collect_targets()[0]}
+    transcript_path = OUT_DIR / "studio-asr-report.json"
+    transcripts = json.loads(transcript_path.read_text()) if transcript_path.exists() else {}
+    model = None
+    for original in originals:
+        key = original["key"]
+        target = targets[key]
+        transcript = transcripts.get(key)
+        failed_speech = bool(transcript and transcript["sha256"] == original["sha256"]
+                             and pinyinize(transcript["transcript"]) != pinyinize(" ".join(target["turns"])))
+        cached = original if original.get("mastering") == MASTERING else by_key.get(key)
+        if (not failed_speech and cached and cached.get("mastering") == MASTERING
+                and (cached["sha256"] == original["sha256"] or cached.get("previousSha256") == original["sha256"])
+                and (ROOT / cached["local"]).is_file() and file_sha256(ROOT / cached["local"]) == cached["sha256"]):
+            by_key[key] = cached
+            continue
+        source = ROOT / original["local"]
+        if file_sha256(source) != original["sha256"]:
+            raise ValueError(f"Approved source changed: {key}")
+        pace = len(han(original["spoken"])) / original["duration"]
+        if pace > 4 or failed_speech:
+            if model is None:
+                model = load_model(MODEL)
+            first_seed = original["seed"] + 1 if failed_speech else SEED
+            for seed in range(first_seed, first_seed + 8):
+                delivery = SLOW_INSTRUCT
+                if seed >= first_seed + 4:
+                    delivery += " 語速明顯放慢，大約是正常語速的百分之七十，每個短句之後自然停頓。保持句子連貫，不要機械地逐字讀。"
+                try:
+                    audio, sample_rate = synthesize(model, target["turns"], seed, mx, np, delivery)
+                    duration = validate_duration(audio, sample_rate, key)
+                except ValueError as error:
+                    print(f"retry invalid take {key}: {error} (seed {seed})", flush=True)
+                    continue
+                new_pace = len(han(original["spoken"])) / duration
+                if not 0 < new_pace <= 3.9:
+                    print(f"retry pace {key}: {new_pace:.2f} chars/s (seed {seed})", flush=True)
+                    continue
+                recipe = recipe_text(key, target["turns"], seed) + delivery
+                digest = hashlib.sha256(recipe.encode("utf-8")).hexdigest()
+                destination = AUDIO_DIR / f"{digest[:12]}.mp3"
+                encode_mp3(audio, sample_rate, destination, sf)
+                duration, channels = probe_audio(destination)
+                if channels != 1:
+                    raise ValueError(f"Non-mono output: {key}")
+                entry = build_manifest_entry(target, seed, destination, duration)
+                entry["instruct"] = delivery
+                entry["regenerated"] = True
+                break
+            else:
+                raise ValueError(f"No natural take at a suitable pace: {key}")
+        else:
+            digest = hashlib.sha256((original["sha256"] + MASTERING + MP3_BITRATE).encode()).hexdigest()
+            destination = AUDIO_DIR / f"{digest[:12]}.mp3"
+            quality = master_recording(source, destination)
+            duration, channels = probe_audio(destination)
+            if channels != 1 or abs(duration - original["duration"]) > 0.15:
+                raise ValueError(f"Mastering changed the timing: {key}")
+            entry = {**original, "file": f"grammar-studio/v1/{destination.name}",
+                     "local": destination.relative_to(ROOT).as_posix(), "duration": round(duration, 3),
+                     "sha256": file_sha256(destination), "mastering": MASTERING, "quality": quality}
+        entry["previousSha256"] = original.get("previousSha256", original["sha256"])
+        entry["previousFile"] = original.get("previousFile", original["file"])
+        by_key[key] = entry
+        write_json(checkpoint, list(by_key.values()))
+        print(f"{'regenerated' if entry.get('regenerated') else 'mastered'} {key}: {entry['duration']:.2f}s, {entry['quality']['integratedLufs']:.1f} LUFS", flush=True)
+    entries = [by_key[entry["key"]] for entry in originals]
+    write_json(MANIFEST_PATH, entries)
+    write_review(entries)
+    print(f"Refreshed {len(entries)} clips; regenerated {sum(bool(e.get('regenerated')) for e in entries)} naturally. No tempo stretching.", flush=True)
+
+
 def main():
     """Collect targets, resume cached clips, generate, and write review artifacts."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, help="Generate only the first N uncovered keys.")
     parser.add_argument("--takes", type=int, default=0, help="Also render seeds 42..42+N-1 of every key.")
+    parser.add_argument("--refresh-audio", action="store_true", help="Regenerate rushed or transcription-flagged clips and master all studio clips.")
     args = parser.parse_args()
+    if args.refresh_audio:
+        refresh_audio()
+        return
     if args.limit is not None and args.limit < 0:
         parser.error("--limit must be zero or greater")
 
@@ -508,6 +639,8 @@ def main():
             try:
                 audio, sample_rate = synthesize(model, target["turns"], seed, mx, np)
                 duration = validate_duration(audio, sample_rate, key)
+                if len(han("".join(target["turns"]))) / duration > 4:
+                    raise ValueError("Generated delivery exceeds four Chinese characters per second")
                 encode_mp3(audio, sample_rate, path, sf)
                 encoded_duration, channels = probe_audio(path)
                 if channels != 1:

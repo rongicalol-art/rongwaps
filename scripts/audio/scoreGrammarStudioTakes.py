@@ -11,6 +11,11 @@ against the take's own median ("drag", 1.0 = perfectly even). A take must say ev
 drag wins, then the clearest match.
 
   output/align-venv/bin/python scripts/audio/scoreGrammarStudioTakes.py
+  HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/scoreGrammarStudioTakes.py --verify-manifest
+
+`--verify-manifest` checks delivered files, compares retained takes with their approved source,
+and requires independent, unprompted ASR to match every recording. MMS scores are retained as
+diagnostics, not treated as proof of correct pronunciation. This is automated QA, not a listening review.
 
 Writes output/grammar-audio/studio-picks.json ({key: seed}) and studio-scores.json (every
 take's numbers). Re-run the generator afterwards to point the manifest at the picked takes.
@@ -25,7 +30,7 @@ from torchaudio.pipelines import MMS_FA as bundle
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import generateGrammarStudioAudio as studio  # noqa: E402
-from align_mms import decode_audio, normalize_to_syllables  # noqa: E402
+from align_mms import decode_audio, normalize_to_syllables, pinyinize  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]  # Repository root.
 OUT_DIR = ROOT / "output/grammar-audio"  # Local studio artifacts.
@@ -125,5 +130,87 @@ def main():
     print(f"Picked {len(picks)} takes -> {PICKS.relative_to(ROOT)}")
 
 
+def verify_manifest():
+    """Verify this exact set of MP3s before the publisher can change references."""
+    from mlx_audio.stt.utils import load_model
+
+    manifest = OUT_DIR / "studio-manifest.json"
+    entries = json.loads(manifest.read_text())
+    targets = {target["key"]: target for target in studio.collect_targets()[0]}
+    transcript_path = OUT_DIR / "studio-asr-report.json"
+    transcripts = json.loads(transcript_path.read_text()) if transcript_path.exists() else {}
+    asr_name = "mlx-community/Qwen3-ASR-0.6B-8bit"
+    asr = None
+    torch.set_num_threads(4)
+    model, dictionary, aligner = bundle.get_model().eval(), bundle.get_dict(), bundle.get_aligner()
+    failures = []
+    for entry in entries:
+        key, path = entry["key"], ROOT / entry["local"]
+        if studio.file_sha256(path) != entry["sha256"]:
+            raise ValueError(f"Changed MP3: {key}")
+        duration, channels = studio.probe_audio(path)
+        quality = studio.measure_quality(path)
+        if channels != 1 or not -17 <= quality["integratedLufs"] <= -9 or quality["truePeakDbfs"] > -1:
+            raise ValueError(f"Invalid delivered audio: {key}: {quality}")
+        previous_path = studio.AUDIO_DIR / Path(entry["previousFile"]).name
+        if studio.file_sha256(previous_path) != entry["previousSha256"]:
+            raise ValueError(f"Changed approved source: {key}")
+        expected = " ".join(targets[key]["turns"])
+        transcript = transcripts.get(key)
+        if not transcript or transcript["sha256"] != entry["sha256"]:
+            if asr is None:
+                asr = load_model(asr_name)
+            result = asr.generate(str(path), language="Chinese", max_tokens=512, temperature=0, verbose=False)
+            transcript = {"sha256": entry["sha256"], "expected": expected, "transcript": result.text}
+            transcripts[key] = transcript
+            transcript_path.write_text(json.dumps(transcripts, ensure_ascii=False, indent=2) + "\n")
+        quality.update(transcript=transcript["transcript"], expectedSpoken=expected, asrModel=asr_name)
+        if pinyinize(transcript["transcript"]) != pinyinize(expected):
+            failures.append(key)
+            print(f"CHECK {key}: {transcript['transcript']}", flush=True)
+            continue
+        if entry.get("regenerated"):
+            alignment = score_take(model, dictionary, aligner, path, expected.replace("兒", "").replace("儿", ""))
+            quality.update(transcript=transcript["transcript"], asrModel=asr_name,
+                           alignmentMean=alignment["mean"], alignmentMin=alignment["min"],
+                           contentCheck="Independent ASR matched spoken syllables; MMS alignment measured")
+            pace = len(studio.han(entry["spoken"])) / duration
+            if pace > 4:
+                failures.append(key)
+                print(f"CHECK {key}: {transcript['transcript']} ({pace:.2f} chars/s)", flush=True)
+                continue
+        else:
+            original, _ = decode_audio(previous_path)
+            current, _ = decode_audio(path)
+            if abs(original.shape[1] - current.shape[1]) > bundle.sample_rate * 0.01:
+                raise ValueError(f"Timing changed in retained take: {key}")
+            count = min(original.shape[1], current.shape[1])
+            size = int(bundle.sample_rate * 0.02)
+            count = count // size * size
+            original, current = original[0, :count].reshape(-1, size), current[0, :count].reshape(-1, size)
+            active = original.square().mean(1).sqrt() > 0.01
+            original, current = original[active], current[active]
+            original = original - original.mean(1, keepdim=True)
+            current = current - current.mean(1, keepdim=True)
+            correlation = torch.nn.functional.cosine_similarity(original, current, dim=1)
+            median, tenth = float(correlation.median()), float(torch.quantile(correlation, 0.1))
+            if median < 0.98 or tenth < 0.95:
+                raise ValueError(f"Speech waveform changed unexpectedly: {key}")
+            quality.update(medianSpeechFrameCorrelation=round(median, 4),
+                           speechFrameCorrelationP10=round(tenth, 4),
+                           contentCheck="Independent ASR matched spoken syllables; approved speech waveform and duration preserved")
+        quality["contentChecked"] = True
+        entry["quality"] = quality
+        print(f"PASS {key}: {quality['integratedLufs']:.1f} LUFS, {quality['truePeakDbfs']:.1f} dBFS true peak", flush=True)
+    if failures:
+        raise ValueError("Speech checks need another take: " + ", ".join(failures))
+    studio.write_json(manifest, entries)
+    studio.write_json(OUT_DIR / "studio-refresh-manifest.json", entries)
+    print(f"Verified {len(entries)} delivered MP3s and independent speech matches.", flush=True)
+
+
 if __name__ == "__main__":
-    main()
+    if "--verify-manifest" in sys.argv:
+        verify_manifest()
+    else:
+        main()

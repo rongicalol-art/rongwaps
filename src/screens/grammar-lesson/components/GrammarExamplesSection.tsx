@@ -39,7 +39,6 @@ export function GrammarExampleItem({
           getGrammarText(example.text, characterPreference),
           example.text.audio,
           characterPreference,
-          example.text.audio?.voice === 'book' ? 1 : 0.9,
         )}
         size="sm"
         variant="quiet"
