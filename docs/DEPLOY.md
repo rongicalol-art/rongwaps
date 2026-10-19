@@ -37,9 +37,9 @@ Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see 
 
 ### School-only beta access
 
-Apply `supabase/migrations/20261016015445_school_beta_access.sql` before deploying the matching app/server. The database owns the authorization rule: a verified Google identity with a student email (`s` + digits + `@stu.edu.tw`) and Google Workspace `custom_claims.hd = stu.edu.tw`, or a verified Google email explicitly approved in `private.beta_owner_emails`. This confirms school-account membership, not current enrollment. No owner exception is seeded automatically.
+Apply `supabase/migrations/20261016015445_school_beta_access.sql` before deploying the matching app/server. The database owns the authorization rule: a verified Google identity with a student email (`s` + digits + `@stu.edu.tw`) and Google Workspace `custom_claims.hd = stu.edu.tw`, or a verified Google email explicitly approved in `private.beta_owner_emails`. This confirms school-account membership, not current enrollment. The school-beta migration itself seeds no owner exception; the full-course migration below adds the explicitly approved owner account.
 
-`20261018154836_full_course_access_grants.sql` adds a private per-account lesson grant and seeds `s25113312@stu.edu.tw`. Apply it before deploying the matching client. It unlocks all lesson books in the app only after the caller passes the normal school-beta identity check; delete the matching row from `private.full_course_access_emails` to revoke it.
+`20261018154836_full_course_access_grants.sql` adds a private per-account lesson grant and seeds `gwaporon311@gmail.com` in both the full-course table and the beta-owner allowlist. Apply it before deploying the matching client. It unlocks all lesson books for that verified Google account; delete its full-course row to revoke the lesson grant, and its beta-owner row to revoke beta access too.
 
 Enable these Authentication hooks after applying the migration:
 
