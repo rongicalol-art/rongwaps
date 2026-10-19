@@ -210,7 +210,6 @@
         "source": "own",
         "prompt": "Ask which day of the week it is.",
         "kind": "order-build",
-        "sub": "星期一。",
         "tiles": [
           {
             "traditional": "星期",
@@ -1552,7 +1551,7 @@
       {
         "id": "l2g06-1",
         "source": "p.62 #1",
-        "prompt": "Ask whether Taiwan is hot.",
+        "prompt": "Ask whether Taiwan is hot. The reply comes afterward.",
         "scene": {
           "type": "picture",
           "page": 62,
@@ -1573,7 +1572,7 @@
           }
         ],
         "kind": "order-build",
-        "sub": "台灣很熱。",
+        "sub": "B replies afterward: 台灣很熱。",
         "tiles": [
           {
             "traditional": "熱",
@@ -1635,9 +1634,9 @@
       {
         "id": "l2g06-2",
         "source": "p.62 #2",
-        "prompt": "Ask whether your friend likes eating fruit, using the repeated-verb question pattern.",
+        "prompt": "Ask whether your friend likes eating fruit. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "我很喜歡吃。",
+        "sub": "B replies afterward: 我很喜歡吃。",
         "tiles": [
           {
             "traditional": "喜歡",
@@ -1700,9 +1699,9 @@
       {
         "id": "l2g06-3",
         "source": "p.62 #3",
-        "prompt": "Ask whether your friend wants to go to his home, using the repeated-verb question pattern.",
+        "prompt": "Ask whether your friend wants to go to his home. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "我不要去他家。",
+        "sub": "B replies afterward: 我不要去他家。",
         "tiles": [
           {
             "traditional": "要",

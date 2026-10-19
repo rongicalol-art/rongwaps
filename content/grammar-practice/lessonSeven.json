@@ -1172,77 +1172,6 @@
             "english": "to understand"
           }
         ]
-      },
-      {
-        "id": "l7g3-o1",
-        "source": "own",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "上課了，老師來了，我們",
-                "simplified": "上课了，老师来了，我们"
-              },
-              {
-                "type": "slot",
-                "id": "permission",
-                "answers": [
-                  "不可以"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "玩手機了。",
-                "simplified": "玩手机了。"
-              }
-            ]
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "可以",
-            "pinyin": "kěyǐ"
-          },
-          {
-            "traditional": "不會",
-            "simplified": "不会",
-            "pinyin": "bú huì"
-          },
-          {
-            "traditional": "不可以",
-            "pinyin": "bù kěyǐ"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "可以"
-            ],
-            "mark": [
-              "可以"
-            ],
-            "note": "The teacher forbids phones in class: 不可以."
-          },
-          {
-            "placed": [
-              "不會"
-            ],
-            "mark": [
-              "不會"
-            ],
-            "note": "不會 is about skill. The teacher is forbidding it: 不可以."
-          }
-        ],
-        "fallbackRepair": "Forbidden is 不可以.",
-        "result": {
-          "traditional": "上課了，老師來了，我們不可以玩手機了。",
-          "simplified": "上课了，老师来了，我们不可以玩手机了。",
-          "pinyin": "Shàngkè le, lǎoshī lái le, wǒmen bù kěyǐ wán shǒujī le.",
-          "english": "Class has started, the teacher is here, and we can no longer play on our phones."
-        },
-        "prompt": "Class has started. Say you can’t play on your phones anymore."
       }
     ],
     "allowWords": [
@@ -1936,7 +1865,7 @@
       {
         "id": "l7g5-o1",
         "source": "own",
-        "prompt": "Name both countries you want to visit.",
+        "prompt": "You want to visit Japan and Korea. Make both countries the topic.",
         "kind": "order-build",
         "tiles": [
           {

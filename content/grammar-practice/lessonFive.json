@@ -1423,13 +1423,13 @@
           "pinyin": "Wǒmen xuéxiào yǒu yì qiān ge xuésheng.",
           "english": "There are one thousand students at our school."
         },
-        "prompt": "How many students does our school have? Where does 有 go?",
+        "prompt": "Our example school has 1,000 students. Answer the question; place 有.",
         "gaps": true
       },
       {
         "id": "l05-g05-book-2",
         "source": "p.126 #2",
-        "prompt": "Only two schools are next to your home. Answer.",
+        "prompt": "There is no drink shop near your home. Answer the question.",
         "kind": "order-build",
         "sub": "你家旁邊有飲料店嗎？",
         "tiles": [
@@ -1568,7 +1568,7 @@
           "pinyin": "Wǒ de zhuōzi shàng yǒu shū.",
           "english": "There is a book on my table."
         },
-        "prompt": "What’s on your desk? Where does 有 go?",
+        "prompt": "There is a book on your desk. Answer the question; place 有.",
         "gaps": true
       }
     ]

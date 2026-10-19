@@ -832,9 +832,9 @@
       {
         "id": "l8g2-p2",
         "source": "p.187 #2",
-        "prompt": "Ask your friend why they want to go to the beach.",
+        "prompt": "Ask your friend why they want to go to the beach. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "因為我想游泳，也想曬太陽，所以想去海邊玩。",
+        "sub": "B replies afterward: 因為我想游泳，也想曬太陽，所以想去海邊玩。",
         "tiles": [
           {
             "traditional": "為什麼",

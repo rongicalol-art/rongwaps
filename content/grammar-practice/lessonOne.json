@@ -1236,9 +1236,9 @@
       {
         "id": "l1g3-p2",
         "source": "p.40 #2",
-        "prompt": "Ask whether Miss Li is Japanese.",
+        "prompt": "Ask whether Miss Li is Japanese. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "不是，她是臺灣人。",
+        "sub": "B replies afterward: 不是，她是臺灣人。",
         "tiles": [
           {
             "traditional": "是",
@@ -1368,9 +1368,9 @@
       {
         "id": "l1g4-p1",
         "source": "p.44 #1",
-        "prompt": "You are American. Ask your friend back: and you? Build it.",
+        "prompt": "You are American. Tell your friend that first, then ask the same question about them.",
         "kind": "order-build",
-        "sub": "我是印尼人。",
+        "sub": "Your friend replies next: 我是印尼人。",
         "tiles": [
           {
             "traditional": "是",
@@ -1438,7 +1438,7 @@
             "note": "You are asking the same question back, so finish with 你呢 rather than 你嗎."
           }
         ],
-        "fallbackRepair": "Use 你呢 to ask the same question back."
+        "fallbackRepair": "After saying 我是美國人, ask about your friend with 你呢."
       },
       {
         "id": "l1g4-p2",
@@ -1496,7 +1496,7 @@
       {
         "id": "l1g4-p3",
         "source": "p.45 #3",
-        "prompt": "He is busy. Ask your friend: and you? Build it.",
+        "prompt": "Say he is busy, then ask how your friend is.",
         "scene": {
           "type": "picture",
           "page": 45,
@@ -1517,7 +1517,7 @@
           }
         ],
         "kind": "order-build",
-        "sub": "我不忙。",
+        "sub": "Your friend replies next: 我不忙。",
         "tiles": [
           {
             "traditional": "很忙",
@@ -1579,7 +1579,7 @@
             "note": "After the statement about him, ask the same question back with 你呢."
           }
         ],
-        "fallbackRepair": "Ask your friend back with 你呢。"
+        "fallbackRepair": "After 他很忙, ask about your friend with 你呢."
       },
       {
         "id": "l1g4-own2",

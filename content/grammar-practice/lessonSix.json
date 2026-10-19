@@ -126,9 +126,9 @@
       {
         "id": "b1l06-g01-p135-practice-3",
         "source": "p.136 #3",
-        "prompt": "Ask whether your friend knows how to make beef noodles, using the repeated-verb question pattern.",
+        "prompt": "Ask whether your friend can make beef noodles. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "我不會做牛肉麵。",
+        "sub": "B replies afterward: 我不會做牛肉麵。",
         "tiles": [
           {
             "traditional": "會",
@@ -831,9 +831,9 @@
       {
         "id": "b1l06-g02-p136-practice-9",
         "source": "p.139 #3",
-        "prompt": "Ask how well your older brother plays baseball.",
+        "prompt": "Ask your friend how well their older brother plays baseball. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "我哥哥棒球打得很好。",
+        "sub": "B replies afterward: 我哥哥棒球打得很好。",
         "tiles": [
           {
             "traditional": "棒球",
@@ -1012,9 +1012,9 @@
       {
         "id": "b1l06-g02-p136-practice-12",
         "source": "p.140 #3",
-        "prompt": "Ask how well she speaks English.",
+        "prompt": "Ask how well she speaks English. The reply comes afterward.",
         "kind": "order-build",
-        "sub": "她的英文說得很好。",
+        "sub": "B replies afterward: 她的英文說得很好。",
         "tiles": [
           {
             "traditional": "說",
@@ -1847,7 +1847,7 @@
       {
         "id": "b1l06-g04-p147-practice-6",
         "source": "p.148 #3",
-        "prompt": "Ask the librarian if you may read here.",
+        "prompt": "Ask the librarian if you may read here before they reply.",
         "scene": {
           "type": "picture",
           "page": 148,
@@ -1860,7 +1860,7 @@
           "alt": "Two people at a library desk beside bookshelves and a library sign."
         },
         "kind": "order-build",
-        "sub": "好。",
+        "sub": "The librarian replies afterward: 好。",
         "tiles": [
           {
             "traditional": "可以",

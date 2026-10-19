@@ -3372,9 +3372,9 @@
               {
                 "id": "l1g3-p2",
                 "source": "p.40 #2",
-                "prompt": "Ask whether Miss Li is Japanese.",
+                "prompt": "Ask whether Miss Li is Japanese. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "不是，她是臺灣人。",
+                "sub": "B replies afterward: 不是，她是臺灣人。",
                 "tiles": [
                   {
                     "traditional": "是",
@@ -4491,9 +4491,9 @@
               {
                 "id": "l1g4-p1",
                 "source": "p.44 #1",
-                "prompt": "You are American. Ask your friend back: and you? Build it.",
+                "prompt": "You are American. Tell your friend that first, then ask the same question about them.",
                 "kind": "order-build",
-                "sub": "我是印尼人。",
+                "sub": "Your friend replies next: 我是印尼人。",
                 "tiles": [
                   {
                     "traditional": "是",
@@ -4561,7 +4561,7 @@
                     "note": "You are asking the same question back, so finish with 你呢 rather than 你嗎."
                   }
                 ],
-                "fallbackRepair": "Use 你呢 to ask the same question back."
+                "fallbackRepair": "After saying 我是美國人, ask about your friend with 你呢."
               },
               {
                 "id": "l1g4-p2",
@@ -4619,7 +4619,7 @@
               {
                 "id": "l1g4-p3",
                 "source": "p.45 #3",
-                "prompt": "He is busy. Ask your friend: and you? Build it.",
+                "prompt": "Say he is busy, then ask how your friend is.",
                 "scene": {
                   "type": "picture",
                   "page": 45,
@@ -4640,7 +4640,7 @@
                   }
                 ],
                 "kind": "order-build",
-                "sub": "我不忙。",
+                "sub": "Your friend replies next: 我不忙。",
                 "tiles": [
                   {
                     "traditional": "很忙",
@@ -4702,7 +4702,7 @@
                     "note": "After the statement about him, ask the same question back with 你呢."
                   }
                 ],
-                "fallbackRepair": "Ask your friend back with 你呢。"
+                "fallbackRepair": "After 他很忙, ask about your friend with 你呢."
               },
               {
                 "id": "l1g4-own2",
@@ -7010,7 +7010,6 @@
                 "source": "own",
                 "prompt": "Ask which day of the week it is.",
                 "kind": "order-build",
-                "sub": "星期一。",
                 "tiles": [
                   {
                     "traditional": "星期",
@@ -12203,7 +12202,7 @@
               {
                 "id": "l2g06-1",
                 "source": "p.62 #1",
-                "prompt": "Ask whether Taiwan is hot.",
+                "prompt": "Ask whether Taiwan is hot. The reply comes afterward.",
                 "scene": {
                   "type": "picture",
                   "page": 62,
@@ -12224,7 +12223,7 @@
                   }
                 ],
                 "kind": "order-build",
-                "sub": "台灣很熱。",
+                "sub": "B replies afterward: 台灣很熱。",
                 "tiles": [
                   {
                     "traditional": "熱",
@@ -12286,9 +12285,9 @@
               {
                 "id": "l2g06-2",
                 "source": "p.62 #2",
-                "prompt": "Ask whether your friend likes eating fruit, using the repeated-verb question pattern.",
+                "prompt": "Ask whether your friend likes eating fruit. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "我很喜歡吃。",
+                "sub": "B replies afterward: 我很喜歡吃。",
                 "tiles": [
                   {
                     "traditional": "喜歡",
@@ -12351,9 +12350,9 @@
               {
                 "id": "l2g06-3",
                 "source": "p.62 #3",
-                "prompt": "Ask whether your friend wants to go to his home, using the repeated-verb question pattern.",
+                "prompt": "Ask whether your friend wants to go to his home. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "我不要去他家。",
+                "sub": "B replies afterward: 我不要去他家。",
                 "tiles": [
                   {
                     "traditional": "要",
@@ -42543,13 +42542,13 @@
                   "pinyin": "Wǒmen xuéxiào yǒu yì qiān ge xuésheng.",
                   "english": "There are one thousand students at our school."
                 },
-                "prompt": "How many students does our school have? Where does 有 go?",
+                "prompt": "Our example school has 1,000 students. Answer the question; place 有.",
                 "gaps": true
               },
               {
                 "id": "l05-g05-book-2",
                 "source": "p.126 #2",
-                "prompt": "Only two schools are next to your home. Answer.",
+                "prompt": "There is no drink shop near your home. Answer the question.",
                 "kind": "order-build",
                 "sub": "你家旁邊有飲料店嗎？",
                 "tiles": [
@@ -42688,7 +42687,7 @@
                   "pinyin": "Wǒ de zhuōzi shàng yǒu shū.",
                   "english": "There is a book on my table."
                 },
-                "prompt": "What’s on your desk? Where does 有 go?",
+                "prompt": "There is a book on your desk. Answer the question; place 有.",
                 "gaps": true
               }
             ]
@@ -44228,9 +44227,9 @@
               {
                 "id": "b1l06-g01-p135-practice-3",
                 "source": "p.136 #3",
-                "prompt": "Ask whether your friend knows how to make beef noodles, using the repeated-verb question pattern.",
+                "prompt": "Ask whether your friend can make beef noodles. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "我不會做牛肉麵。",
+                "sub": "B replies afterward: 我不會做牛肉麵。",
                 "tiles": [
                   {
                     "traditional": "會",
@@ -47694,9 +47693,9 @@
               {
                 "id": "b1l06-g02-p136-practice-9",
                 "source": "p.139 #3",
-                "prompt": "Ask how well your older brother plays baseball.",
+                "prompt": "Ask your friend how well their older brother plays baseball. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "我哥哥棒球打得很好。",
+                "sub": "B replies afterward: 我哥哥棒球打得很好。",
                 "tiles": [
                   {
                     "traditional": "棒球",
@@ -47875,9 +47874,9 @@
               {
                 "id": "b1l06-g02-p136-practice-12",
                 "source": "p.140 #3",
-                "prompt": "Ask how well she speaks English.",
+                "prompt": "Ask how well she speaks English. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "她的英文說得很好。",
+                "sub": "B replies afterward: 她的英文說得很好。",
                 "tiles": [
                   {
                     "traditional": "說",
@@ -51898,7 +51897,7 @@
               {
                 "id": "b1l06-g04-p147-practice-6",
                 "source": "p.148 #3",
-                "prompt": "Ask the librarian if you may read here.",
+                "prompt": "Ask the librarian if you may read here before they reply.",
                 "scene": {
                   "type": "picture",
                   "page": 148,
@@ -51911,7 +51910,7 @@
                   "alt": "Two people at a library desk beside bookshelves and a library sign."
                 },
                 "kind": "order-build",
-                "sub": "好。",
+                "sub": "The librarian replies afterward: 好。",
                 "tiles": [
                   {
                     "traditional": "可以",
@@ -57389,83 +57388,6 @@
                     "english": "to understand"
                   }
                 ]
-              },
-              {
-                "id": "l7g3-o1",
-                "source": "own",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "上課了，老師來了，我們",
-                        "simplified": "上课了，老师来了，我们"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "permission",
-                        "answers": [
-                          "不可以"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "玩手機了。",
-                        "simplified": "玩手机了。"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "可以",
-                    "pinyin": "kěyǐ"
-                  },
-                  {
-                    "traditional": "不會",
-                    "simplified": "不会",
-                    "pinyin": "bú huì"
-                  },
-                  {
-                    "traditional": "不可以",
-                    "pinyin": "bù kěyǐ"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "placed": [
-                      "可以"
-                    ],
-                    "mark": [
-                      "可以"
-                    ],
-                    "note": "The teacher forbids phones in class: 不可以."
-                  },
-                  {
-                    "placed": [
-                      "不會"
-                    ],
-                    "mark": [
-                      "不會"
-                    ],
-                    "note": "不會 is about skill. The teacher is forbidding it: 不可以."
-                  }
-                ],
-                "fallbackRepair": "Forbidden is 不可以.",
-                "result": {
-                  "traditional": "上課了，老師來了，我們不可以玩手機了。",
-                  "simplified": "上课了，老师来了，我们不可以玩手机了。",
-                  "pinyin": "Shàngkè le, lǎoshī lái le, wǒmen bù kěyǐ wán shǒujī le.",
-                  "english": "Class has started, the teacher is here, and we can no longer play on our phones.",
-                  "audio": {
-                    "voice": "book",
-                    "file": "B1-07-1-3.mp3",
-                    "start": 173.5,
-                    "end": 179.75
-                  }
-                },
-                "prompt": "Class has started. Say you can’t play on your phones anymore."
               }
             ],
             "allowWords": [
@@ -60316,7 +60238,7 @@
               {
                 "id": "l7g5-o1",
                 "source": "own",
-                "prompt": "Name both countries you want to visit.",
+                "prompt": "You want to visit Japan and Korea. Make both countries the topic.",
                 "kind": "order-build",
                 "tiles": [
                   {
@@ -65123,9 +65045,9 @@
               {
                 "id": "l8g2-p2",
                 "source": "p.187 #2",
-                "prompt": "Ask your friend why they want to go to the beach.",
+                "prompt": "Ask your friend why they want to go to the beach. The reply comes afterward.",
                 "kind": "order-build",
-                "sub": "因為我想游泳，也想曬太陽，所以想去海邊玩。",
+                "sub": "B replies afterward: 因為我想游泳，也想曬太陽，所以想去海邊玩。",
                 "tiles": [
                   {
                     "traditional": "為什麼",
