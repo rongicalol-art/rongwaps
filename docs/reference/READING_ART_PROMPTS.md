@@ -57,7 +57,7 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 - Cast: `yiwen`, `youmei`, `zhongming`.
 - Existing approved file: `output/imagegen/b1l01-dialogue-1-new-classmate.png`.
 - Scene anchor: Youmei waves in the classroom doorway; Yiwen introduces her with an open palm; Zhongming turns in his chair. Sunlit windows, diagonal desks, coral against teal. Keep this image as the series benchmark; do not regenerate it by default.
-- Facial acting: Warm curiosity as new classmates meet.
+- Facial acting: Yiwen is warmly confident, Youmei shyly curious, and Zhongming quietly intrigued.
 
 ### B1L01-R02 — First hello
 

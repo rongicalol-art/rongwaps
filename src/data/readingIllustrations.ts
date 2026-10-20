@@ -11,7 +11,7 @@ import type { ReadingIllustration } from '../types/models';
  */
 const READING_ILLUSTRATIONS: Record<string, ReadingIllustration> = {
   'B1L01-R01': {
-    url: new URL('../assets/images/readings/b1l01-r01-new-classmate-v7.webp', import.meta.url).href,
+    url: new URL('../assets/images/readings/b1l01-r01-new-classmate-v8.webp', import.meta.url).href,
     alt: 'Youmei meets new classmates as Yiwen introduces her and Zhongming turns from his desk.',
   },
   'B1L01-R02': {
