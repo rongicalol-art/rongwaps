@@ -2,9 +2,9 @@ import type { ImgHTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
 
 export type PlayfulNavIconName =
-  | 'books' | 'dictionary' | 'library' | 'profile' | 'favorite'
+  | 'books' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
   | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
-  | 'meaning' | 'characters' | 'trueFalse' | 'build';
+  | 'meaning' | 'characters' | 'trueFalse' | 'build' | 'tonesPractice';
 
 interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
   name: PlayfulNavIconName;
@@ -17,11 +17,14 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   library: new URL('../../assets/icons/flat/folder-orange.svg?no-inline', import.meta.url).href,
   profile: new URL('../../assets/icons/flat/profile-pink.svg?no-inline', import.meta.url).href,
   favorite: new URL('../../assets/icons/flat/heart.svg?no-inline', import.meta.url).href,
+  practiceHub: new URL('../../assets/icons/flat/practice-hub.svg?no-inline', import.meta.url).href,
+  pinyinPractice: new URL('../../assets/icons/flat/pinyin-practice.svg?no-inline', import.meta.url).href,
   flashcards: new URL('../../assets/icons/flat/layers.svg?no-inline', import.meta.url).href,
   quiz: new URL('../../assets/icons/flat/puzzle.svg?no-inline', import.meta.url).href,
   listening: new URL('../../assets/icons/flat/headphone.svg?no-inline', import.meta.url).href,
   writing: new URL('../../assets/icons/flat/pencil.svg?no-inline', import.meta.url).href,
   tones: new URL('../../assets/icons/flat/mixer.svg?no-inline', import.meta.url).href,
+  tonesPractice: new URL('../../assets/icons/flat/tones-practice.svg?no-inline', import.meta.url).href,
   global: new URL('../../assets/icons/flat/globe.svg?no-inline', import.meta.url).href,
   curriculum: new URL('../../assets/icons/flat/book.svg?no-inline', import.meta.url).href,
   grammar: new URL('../../assets/icons/flat/light-bulb.svg?no-inline', import.meta.url).href,

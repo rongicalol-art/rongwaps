@@ -15,6 +15,7 @@ export const PRACTICE_ACTIVITIES = [
   { id: 'quiz', label: 'Quiz', icon: 'quiz' },
   { id: 'listening', label: 'Listening', icon: 'listening' },
   { id: 'writing', label: 'Writing', icon: 'writing' },
+  { id: 'pinyin', label: 'Pinyin', icon: 'pinyinPractice' },
   { id: 'tones', label: 'Tones', icon: 'tones' },
 ] as const;
 

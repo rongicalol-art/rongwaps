@@ -64,15 +64,21 @@ function LessonTitle({ lesson, isDesktop }: { lesson: CourseLessonProgress; isDe
 }
 
 function PracticeHubEntry({
+  canQuiz,
   isOpen,
   onOpen,
   onClose,
+  onQuizIntent,
+  onPinyinIntent,
   onSelect,
 }: {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
-  onSelect: (activity: 'writing' | 'tones') => void;
+  canQuiz: boolean;
+  onQuizIntent: () => void;
+  onPinyinIntent: () => void;
+  onSelect: (activity: 'quiz' | 'writing' | 'pinyin' | 'tones') => void;
 }) {
   return (
     <>
@@ -87,7 +93,7 @@ function PracticeHubEntry({
           onClick={onOpen}
           className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-muted-strong"
         >
-          <AppIcon name="target" size={18} />
+          <PlayfulNavIcon name="practiceHub" className="h-8 w-8" />
           <span>Practice hub</span>
           <AppIcon name="next" size={18} className="ml-auto" />
         </ActionButton>
@@ -102,6 +108,25 @@ function PracticeHubEntry({
         heightClassName="max-h-[60vh] md:max-h-full"
       >
         <div className="flex flex-col gap-3">
+          {canQuiz && (
+            <>
+              <ActionButton
+                variant="secondary"
+                size="lg"
+                fullWidth
+                edgeColor="var(--color-ui-border)"
+                onClick={() => onSelect('quiz')}
+                onPointerEnter={onQuizIntent}
+                onPointerDown={onQuizIntent}
+                onFocus={onQuizIntent}
+                className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+              >
+                <PlayfulNavIcon name="quiz" className="h-8 w-8" />
+                <span>Quiz</span>
+              </ActionButton>
+              <div aria-hidden="true" className="border-t border-ui-divider" />
+            </>
+          )}
           <ActionButton
             variant="secondary"
             size="lg"
@@ -118,10 +143,24 @@ function PracticeHubEntry({
             size="lg"
             fullWidth
             edgeColor="var(--color-ui-border)"
+            onPointerEnter={onPinyinIntent}
+            onPointerDown={onPinyinIntent}
+            onFocus={onPinyinIntent}
+            onClick={() => onSelect('pinyin')}
+            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+          >
+            <PlayfulNavIcon name="pinyinPractice" className="h-8 w-8" />
+            <span>Pinyin</span>
+          </ActionButton>
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            fullWidth
+            edgeColor="var(--color-ui-border)"
             onClick={() => onSelect('tones')}
             className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
           >
-            <PlayfulNavIcon name="tones" className="h-8 w-8" />
+            <PlayfulNavIcon name="tonesPractice" className="h-8 w-8" />
             <span>Tones</span>
           </ActionButton>
         </div>
@@ -221,9 +260,12 @@ function LessonBody({
   );
   const practiceHub = (
     <PracticeHubEntry
+      canQuiz={activePart.vocab.total > 0}
       isOpen={isPracticeHubOpen}
       onOpen={() => setIsPracticeHubOpen(true)}
       onClose={() => setIsPracticeHubOpen(false)}
+      onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}
+      onPinyinIntent={() => { void preloadPracticeChunks('pinyin').catch(() => {}); }}
       onSelect={(activity) => {
         setIsPracticeHubOpen(false);
         const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
@@ -233,16 +275,10 @@ function LessonBody({
   );
   const actions = (
     <LessonActions
-      canQuiz={activePart.vocab.total > 0}
       onStart={handleStart}
       onStartIntent={() => {
         if (mode === 'vocab') void preloadPracticeChunks('flashcards').catch(() => {});
       }}
-      onQuiz={() => {
-        const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
-        onStartPractice(lesson.id, practiceTarget, 'quiz');
-      }}
-      onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}
     />
   );
 

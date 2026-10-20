@@ -11,7 +11,7 @@ export async function preloadPracticeChunks(activity?: ActivityType | null): Pro
 export function preloadRemainingPracticeChunks(activity: ActivityType, hasDock: boolean): (() => void) | undefined {
   if (typeof window === 'undefined' || !activity) return;
   const current = practiceScreenKey(activity);
-  const modes: PracticeScreenKey[] = hasDock ? ['flashcards', 'quiz', 'listening', 'writing', 'tones']
+  const modes: PracticeScreenKey[] = hasDock ? ['flashcards', 'quiz', 'listening', 'writing', 'pinyin', 'tones']
     : current === 'flashcards' ? ['quiz'] : [];
   if (modes.length === 0) return;
   const run = () => {

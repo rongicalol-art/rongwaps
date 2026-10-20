@@ -10,6 +10,7 @@ import { LibrarySkeleton, ReviewHubCard, DailyReviewPreview } from '../library';
 import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
 import { TonePreview } from '../tones';
+import { PinyinPreview } from '../pinyin';
 import { GrammarPracticePreview } from '../../features/grammar-practice';
 
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
@@ -330,6 +331,7 @@ export const DebugWindow = () => {
             <QuizPreview />
             <GrammarPracticePreview />
             <TonePreview />
+            <PinyinPreview />
           </div>
         )}
 
