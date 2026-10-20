@@ -4,6 +4,7 @@
 !.env.example
 # Datasets & backups
 # IDE / Tooling config
+opencode.json
 # One-off debug keys (never commit)
 *.backup
 *.json.backup
