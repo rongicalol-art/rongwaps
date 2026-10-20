@@ -26,7 +26,7 @@ export function ReaderSpeakerAvatar({
     <div className={cn('shrink-0 select-none', className)}>
       {character ? (
         <div
-          className="h-11 w-11 sm:h-12 sm:w-12 overflow-hidden rounded-lg"
+          className="h-11 w-11 sm:h-12 sm:w-12 overflow-hidden rounded-b-md"
           title={speaker}
         >
           <RongWapsCharacterPortrait
