@@ -393,4 +393,48 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B1L16-G05': detected('V + 得 + complement', [
     regex(`(?:^|${SEP})得${SEP}(?:很|好|真|不|太|那麼|這麼)`),
   ]),
+
+  // Book 3 Lesson 1 — 我的夢想
+  'B3L01-G01-P29': detected('可以說是', [inOrder(['可以說是'])]),
+  'B3L01-G02-P30': detected('多麼 … 啊', [inOrder(['多麼'])]),
+  'B3L01-G03-P32': detected('再說', [inOrder(['再說'])]),
+  'B3L01-G04-P38': detected('而', [inOrder(['而'])]),
+  'B3L01-G05-P40': detected('V出', [inOrder(['出'])]),
+  'B3L01-G06-P42': detected('像…這樣子', [inOrder(['像', '這樣子'], 6)]),
+
+  // Book 3 Lesson 2 — 便利商店真方便
+  'B3L02-G01-P51': detected('不是…嗎', [inOrder(['不是', '嗎'], 8)]),
+  'B3L02-G02-P52': detected('順便', [inOrder(['順便'])]),
+  'B3L02-G03-P53': detected('一會兒…一會兒…', [inOrder(['一會兒', '一會兒'], 6)]),
+  'B3L02-G04-P54': detected('算了', [inOrder(['算了'])]),
+  'B3L02-G05-P62': detected('就是', [inOrder(['就是'])]),
+  'B3L02-G06-P64': detected('經過', [inOrder(['經過'])]),
+  'B3L02-G07-P65': detected('用…來…', [inOrder(['用', '來'], 6)]),
+
+  // Book 3 Lesson 3 — 貨比三家不吃虧
+  'B3L03-G01-P78': detected('試+V', [inOrder(['試'])]),
+  'B3L03-G02-P80': detected('不如', [inOrder(['不如'])]),
+  'B3L03-G03-P81': detected('就是 (except)', [inOrder(['就是'])]),
+  'B3L03-G04-P82': detected('別再…了', [inOrder(['別再', '了'], 6)]),
+  'B3L03-G05-P88': detected('不僅…也/還…', [inOrder(['不僅'])]),
+  'B3L03-G06-P90': detected('一次比一次', [inOrder(['一次比一次'])]),
+
+  // Book 3 Lesson 4 — 滿月
+  'B3L04-G01-P101': detected('好+Vs+的+N啊', [inOrder(['好', '的'], 4)]),
+  'B3L04-G02-P102': detected('親自', [inOrder(['親自'])]),
+  'B3L04-G03-P103': detected('V來V去', [inOrder(['來', '去'], 3)]),
+  'B3L04-G04-P105': detected('終於', [inOrder(['終於'])]),
+  'B3L04-G05-P113': detected('V個不停', [inOrder(['個不停'])]),
+  'B3L04-G06-P114': detected('不A不B', [inOrder(['不', '不'], 4)]),
+  'B3L04-G07-P115': detected('除了…就是…', [inOrder(['除了', '就是'], 6)]),
+  'B3L04-G08-P117': detected('不是…就是…', [inOrder(['不是', '就是'], 6)]),
+
+  // Book 3 Lesson 5 — 地震與颱風
+  'B3L05-G01-P128': detected('萬一', [inOrder(['萬一'])]),
+  'B3L05-G02-P130': detected('一連', [inOrder(['一連'])]),
+  'B3L05-G03-P132': detected('以為…沒想到…', [inOrder(['以為', '沒想到'], 8), inOrder(['以為'])]),
+  'B3L05-G04-P133': detected('也好', [inOrder(['也好'])]),
+  'B3L05-G05-P141': detected('結果', [inOrder(['結果'])]),
+  'B3L05-G06-P143': detected('甚至', [inOrder(['甚至'])]),
+  'B3L05-G07-P144': detected('以東/西/南/北', [inOrder(['以東']), inOrder(['以西']), inOrder(['以南']), inOrder(['以北'])]),
 };

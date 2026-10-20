@@ -1,0 +1,4954 @@
+{
+  "LESSON_THREE_DIALOGUE_ONE": {
+    "id": "B3L03-D01",
+    "title": "對話 · Dialogue",
+    "setting": "在百貨公司專櫃 · At the department store boutique",
+    "printedPages": [
+      69,
+      70,
+      71
+    ],
+    "audioReference": "03-1-1",
+    "grammarFocus": [
+      "試+V",
+      "不如",
+      "就是 (except)",
+      "別再…了"
+    ],
+    "lines": [
+      {
+        "id": "b3l3d1-1",
+        "speaker": "芳草",
+        "text": {
+          "traditional": "瑪莉，這家專櫃的洋裝看起來真漂亮，而且現在週年慶打八折呢！",
+          "simplified": "瑪莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
+          "pinyin": "",
+          "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!"
+        }
+      },
+      {
+        "id": "b3l3d1-2",
+        "speaker": "瑪莉",
+        "text": {
+          "traditional": "是挺好看的，但買衣服一定要先試穿，試穿看看合不合身再決定。",
+          "simplified": "是挺好看的，但买衣服一定要先试穿，试穿看看合不合身再决定。",
+          "pinyin": "",
+          "english": "It's quite nice, but when buying clothes one must always try them on first to see if they fit well before deciding."
+        }
+      },
+      {
+        "id": "b3l3d1-3",
+        "speaker": "芳草",
+        "text": {
+          "traditional": "妳說得對。那我先進去試穿這件淺藍色的。",
+          "simplified": "你说得对。那我先进去试穿这件浅蓝色的。",
+          "pinyin": "",
+          "english": "You're right. Then I'll go inside first to try on this light blue one."
+        }
+      },
+      {
+        "id": "b3l3d1-4",
+        "speaker": "芳草",
+        "text": {
+          "traditional": "瑪莉，妳看這件怎麼樣？我覺得腰部有點緊，而且價格還是太高了。",
+          "simplified": "瑪莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
+          "pinyin": "",
+          "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high."
+        }
+      },
+      {
+        "id": "b3l3d1-5",
+        "speaker": "瑪莉",
+        "text": {
+          "traditional": "與其買一件不舒服的名牌洋裝，不如到樓上的平價專櫃看看，那裡款式也很多。",
+          "simplified": "与其买一件不舒服的名牌洋装，不如到楼上的平价专柜看看，那里款式也很多。",
+          "pinyin": "",
+          "english": "Rather than buying an uncomfortable designer dress, it would be better to check the affordable section upstairs; there are many styles there too."
+        }
+      },
+      {
+        "id": "b3l3d1-6",
+        "speaker": "芳草",
+        "text": {
+          "traditional": "可是樓上的衣服材質怎麼樣？我什麼衣服都穿過，就是皮膚容易過敏，不能穿太粗糙的料子。",
+          "simplified": "可是楼上的衣服材质怎么样？我什么衣服都穿过，就是皮肤容易过敏，不能穿太粗糙的料子。",
+          "pinyin": "",
+          "english": "But how is the material of the clothes upstairs? I've worn all kinds of clothes, it's just that my skin is easily allergic, so I can't wear rough fabrics."
+        }
+      },
+      {
+        "id": "b3l3d1-7",
+        "speaker": "瑪莉",
+        "text": {
+          "traditional": "放心吧，樓上有幾個專櫃不僅質料柔軟，價格也很實在。",
+          "simplified": "放心吧，楼上有几个专柜不仅质料柔軟，价格也很实在。",
+          "pinyin": "",
+          "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair."
+        }
+      },
+      {
+        "id": "b3l3d1-8",
+        "speaker": "芳草",
+        "text": {
+          "traditional": "太好了！那我們別再這裡浪費時間了，趕快上樓去逛逛吧。",
+          "simplified": "太好了！那我们别再这里浪费时间了，赶快上楼去逛逛吧。",
+          "pinyin": "",
+          "english": "Awesome! Then let's not waste more time here, let's head upstairs quickly to look around."
+        }
+      }
+    ]
+  },
+  "LESSON_THREE_DIALOGUE_TWO": {
+    "id": "B3L03-D02",
+    "title": "短文 · 貨比三家不吃虧 · Shopping Around to Get the Best Deal",
+    "setting": "短文閱讀 · Reading narrative",
+    "printedPages": [
+      84,
+      85
+    ],
+    "audioReference": "03-2-1",
+    "grammarFocus": [
+      "不僅…也/還…",
+      "一次比一次"
+    ],
+    "lines": [
+      {
+        "id": "b3l3d2-1",
+        "speaker": "旁白",
+        "text": {
+          "traditional": "在現代消費社會中，每個人都希望能「買得開心、用得放心」。",
+          "simplified": "在现代消费社会中，每个人都希望能「买得开心、用得放心」。",
+          "pinyin": "",
+          "english": "In modern consumer society, everyone hopes to 'buy with joy and use with peace of mind.'"
+        }
+      },
+      {
+        "id": "b3l3d2-2",
+        "speaker": "旁白",
+        "text": {
+          "traditional": "俗話說「貨比三家不吃虧」，意思是在購買貴重物品前，多比較幾家商店的價格與品質，才不會吃虧上當。",
+          "simplified": "俗话说「货比三家不吃亏」，意思是在购买贵重物品前，多比较几家商店的价格与品质，才不会吃亏上当。",
+          "pinyin": "",
+          "english": "As the proverb says, 'Shop around and you won't suffer a loss,' meaning before purchasing expensive items, compare prices and quality across several stores so you won't get cheated."
+        }
+      },
+      {
+        "id": "b3l3d2-3",
+        "speaker": "旁白",
+        "text": {
+          "traditional": "以前人們為了比價，得跑好幾家實體店鋪，費時又費力。",
+          "simplified": "以前人们为了比价，得跑好几家实体店鋪，费时又费力。",
+          "pinyin": "",
+          "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious."
+        }
+      },
+      {
+        "id": "b3l3d2-4",
+        "speaker": "旁白",
+        "text": {
+          "traditional": "現在網路科技發達，大家不僅能透過比價網站輕鬆查詢價格，還能參考其他消費者的評價。",
+          "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查詢价格，还能参考其他消费者的评价。",
+          "pinyin": "",
+          "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers."
+        }
+      },
+      {
+        "id": "b3l3d2-5",
+        "speaker": "旁白",
+        "text": {
+          "traditional": "消費者變得一次比一次聰明，商家也一年比一年更注重產品質量與售後服務。",
+          "simplified": "消费者变得一次比一次聪明，商家也一年比一年更注重产品质量与售后服务。",
+          "pinyin": "",
+          "english": "Consumers become smarter each time, and businesses focus more on product quality and customer service year after year."
+        }
+      }
+    ]
+  },
+  "LESSON_THREE_PART_ONE": {
+    "id": "B3L03-P01-D01",
+    "bookId": 3,
+    "lessonId": 3,
+    "partId": 1,
+    "title": "Grammar 1–4 · It Doesn't Hurt to Shop Around",
+    "grammarPages": [
+      {
+        "id": "B3L03-G01-P78",
+        "bookId": 3,
+        "lessonId": 3,
+        "partId": 1,
+        "lessonTitle": "貨比三家不吃虧",
+        "lessonTitleEnglish": "It Doesn't Hurt to Shop Around",
+        "grammarNumber": 1,
+        "titleTraditional": "試+V",
+        "titleEnglish": "Try Doing...",
+        "learnerPromise": "Express testing something through an action using 試+V.",
+        "printedPages": [
+          78
+        ],
+        "bookPageAvailable": true,
+        "audioReference": "03-1-3",
+        "explanation": "試 placed before a verb indicates attempting or testing something out before making a commitment.",
+        "focusTerms": [
+          "試+V"
+        ],
+        "pattern": "Subject + 試 + Verb (+ Object)",
+        "patternColumns": [
+          "Subject",
+          "試",
+          "Verb",
+          "Object"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l3g1-r1",
+            "subject": [
+              {
+                "id": "b3l3g1-r1-s1",
+                "traditional": "買衣服前，",
+                "simplified": "买衣服前，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g1-r1-g1",
+                "traditional": "試",
+                "simplified": "试",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g1-r1-c1",
+                "traditional": "穿一下洋裝。",
+                "simplified": "穿一下洋装。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g1-r2",
+            "subject": [
+              {
+                "id": "b3l3g1-r2-s1",
+                "traditional": "買床時，",
+                "simplified": "买床时，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g1-r2-g1",
+                "traditional": "試",
+                "simplified": "试",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g1-r2-c1",
+                "traditional": "躺看看舒不舒服。",
+                "simplified": "躺看看舒不舒服。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g1-r3",
+            "subject": [
+              {
+                "id": "b3l3g1-r3-s1",
+                "traditional": "超商提供飲料，",
+                "simplified": "超商提供饮料，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g1-r3-g1",
+                "traditional": "試",
+                "simplified": "试",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g1-r3-c1",
+                "traditional": "喝新口味。",
+                "simplified": "喝新口味。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l3g1-cf1",
+              "question": "Can 試+V take any multi-syllable verb phrase?",
+              "answer": "試+V typically pairs with monosyllabic action verbs of testing (試穿, 試開, 試吃, 試做).",
+              "wrongTraditional": "我想試運動一下。",
+              "wrongSimplified": "我想试运动一下。",
+              "right": {
+                "traditional": "我想試穿這件衣服。",
+                "simplified": "我想试穿这件衣服。",
+                "pinyin": "Wǒ xiǎng shìchuān zhè jiàn yīfu.",
+                "english": "I would like to try on these clothes.",
+                "words": [
+                  {
+                    "id": "b3l3g1-cf1-w1",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w2",
+                    "traditional": "想",
+                    "simplified": "想",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w3",
+                    "traditional": "試",
+                    "simplified": "试",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w4",
+                    "traditional": "穿",
+                    "simplified": "穿",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w5",
+                    "traditional": "這",
+                    "simplified": "这",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w6",
+                    "traditional": "件",
+                    "simplified": "件",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w7",
+                    "traditional": "衣",
+                    "simplified": "衣",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf1-w8",
+                    "traditional": "服",
+                    "simplified": "服",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l3g1-cf2",
+              "question": "Does 試+V replace 試試看?",
+              "answer": "試+V forms a compound testing action (試喝, 試開); 試試看 is placed after a verb phrase.",
+              "wrongTraditional": "你試試看吃吧。",
+              "wrongSimplified": "你试试看吃吧。",
+              "right": {
+                "traditional": "你試吃看看吧。",
+                "simplified": "你试吃看看吧。",
+                "pinyin": "Nǐ shìchī kànkan ba.",
+                "english": "Try a taste and see.",
+                "words": [
+                  {
+                    "id": "b3l3g1-cf2-w1",
+                    "traditional": "你",
+                    "simplified": "你",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf2-w2",
+                    "traditional": "試",
+                    "simplified": "试",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf2-w3",
+                    "traditional": "吃",
+                    "simplified": "吃",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf2-w4",
+                    "traditional": "看",
+                    "simplified": "看",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf2-w5",
+                    "traditional": "看",
+                    "simplified": "看",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g1-cf2-w6",
+                    "traditional": "吧",
+                    "simplified": "吧",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "b3l3g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "買床的時候一定要試躺，覺得舒服再買。",
+              "simplified": "买床的时候一定要试躺，觉得舒服再买。",
+              "pinyin": "Mǎi chuáng de shíhòu yídìng yào shìtǎng, juéde shūfu zài mǎi.",
+              "english": "When buying a bed, you must definitely try lying on it, and only buy after feeling comfortable.",
+              "words": [
+                {
+                  "id": "b3l3g1-e1-w1",
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w2",
+                  "traditional": "床",
+                  "simplified": "床",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w3",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w4",
+                  "traditional": "時",
+                  "simplified": "时",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w5",
+                  "traditional": "候",
+                  "simplified": "候",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w6",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w7",
+                  "traditional": "定",
+                  "simplified": "定",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w8",
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w9",
+                  "traditional": "試",
+                  "simplified": "试",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w10",
+                  "traditional": "躺",
+                  "simplified": "躺",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w11",
+                  "traditional": "覺",
+                  "simplified": "觉",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w12",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "dé",
+                  "english": "to get"
+                },
+                {
+                  "id": "b3l3g1-e1-w13",
+                  "traditional": "舒",
+                  "simplified": "舒",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w14",
+                  "traditional": "服",
+                  "simplified": "服",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w15",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e1-w16",
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "那家超商提供新口味的飲料給客人免費試喝，喝過的人都說好喝。",
+              "simplified": "那家超商提供新口味的饮料给客人免费试喝，喝过的人都说好喝。",
+              "pinyin": "Nà jiā chāoshāng tígōng xīn kǒuwèi de yǐnliào gěi kèrén miǎnfèi shìhē, hē guò de rén dōu shuō hǎohē.",
+              "english": "That convenience store provides new flavor drinks for customers to taste test for free; everyone who tried praised it.",
+              "words": [
+                {
+                  "id": "b3l3g1-e2-w1",
+                  "traditional": "那",
+                  "simplified": "那",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w2",
+                  "traditional": "家",
+                  "simplified": "家",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w3",
+                  "traditional": "超商",
+                  "simplified": "超商",
+                  "pinyin": "chāoshāng",
+                  "english": "convenience store"
+                },
+                {
+                  "id": "b3l3g1-e2-w4",
+                  "traditional": "提供",
+                  "simplified": "提供",
+                  "pinyin": "tígōng",
+                  "english": "to provide"
+                },
+                {
+                  "id": "b3l3g1-e2-w5",
+                  "traditional": "新",
+                  "simplified": "新",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w6",
+                  "traditional": "口",
+                  "simplified": "口",
+                  "pinyin": "kǒu",
+                  "english": "mouth"
+                },
+                {
+                  "id": "b3l3g1-e2-w7",
+                  "traditional": "味",
+                  "simplified": "味",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w8",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w9",
+                  "traditional": "飲",
+                  "simplified": "饮",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w10",
+                  "traditional": "料",
+                  "simplified": "料",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w11",
+                  "traditional": "給",
+                  "simplified": "给",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w12",
+                  "traditional": "客",
+                  "simplified": "客",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w13",
+                  "traditional": "人",
+                  "simplified": "人",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w14",
+                  "traditional": "免",
+                  "simplified": "免",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w15",
+                  "traditional": "費",
+                  "simplified": "费",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w16",
+                  "traditional": "試",
+                  "simplified": "试",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w17",
+                  "traditional": "喝",
+                  "simplified": "喝",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w18",
+                  "traditional": "喝",
+                  "simplified": "喝",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w19",
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w20",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w21",
+                  "traditional": "人",
+                  "simplified": "人",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w22",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w23",
+                  "traditional": "說",
+                  "simplified": "说",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w24",
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e2-w25",
+                  "traditional": "喝",
+                  "simplified": "喝",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "這雙皮鞋很特別，你要不要先試穿看看？",
+              "simplified": "这双皮鞋很特别，你要不要先试穿看看？",
+              "pinyin": "Zhè shuāng píxié hěn tèbié, nǐ yào bú yào xiān shìchuān kànkan?",
+              "english": "This pair of leather shoes is very special; do you want to try wearing them first?",
+              "words": [
+                {
+                  "id": "b3l3g1-e3-w1",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w2",
+                  "traditional": "雙",
+                  "simplified": "双",
+                  "pinyin": "shuāng",
+                  "english": "paired"
+                },
+                {
+                  "id": "b3l3g1-e3-w3",
+                  "traditional": "皮鞋",
+                  "simplified": "皮鞋",
+                  "pinyin": "píxié",
+                  "english": "leather shoes (M: 雙 shuāng)"
+                },
+                {
+                  "id": "b3l3g1-e3-w4",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w5",
+                  "traditional": "特",
+                  "simplified": "特",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w6",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w7",
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w8",
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w9",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w10",
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w11",
+                  "traditional": "先",
+                  "simplified": "先",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w12",
+                  "traditional": "試",
+                  "simplified": "试",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w13",
+                  "traditional": "穿",
+                  "simplified": "穿",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w14",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g1-e3-w15",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the Sentences",
+        "exercisePreview": "Practice using 試+V in context.",
+        "exerciseInstruction": "Choose the best option to complete the statement.",
+        "questions": [
+          {
+            "id": "b3l3g1-q1",
+            "prompt": "這件毛衣款式真好看，我進去___一下適不適合我。",
+            "options": [
+              "試穿",
+              "不如",
+              "就是"
+            ],
+            "answer": [
+              "試穿"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B3L03-G02-P80",
+        "bookId": 3,
+        "lessonId": 3,
+        "partId": 1,
+        "lessonTitle": "貨比三家不吃虧",
+        "lessonTitleEnglish": "It Doesn't Hurt to Shop Around",
+        "grammarNumber": 2,
+        "titleTraditional": "不如",
+        "titleEnglish": "It Would Be Better To...",
+        "learnerPromise": "Compare two choices and recommend the superior alternative using 不如.",
+        "printedPages": [
+          80
+        ],
+        "bookPageAvailable": true,
+        "audioReference": "03-1-4",
+        "explanation": "不如 indicates that option B is preferable or superior to option A (often paired with 與其…不如…).",
+        "focusTerms": [
+          "不如"
+        ],
+        "pattern": "Option A + 不如 + Option B",
+        "patternColumns": [
+          "Option A",
+          "不如",
+          "Option B"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l3g2-r1",
+            "subject": [
+              {
+                "id": "b3l3g2-r1-s1",
+                "traditional": "那輛車老舊，",
+                "simplified": "那辆车老旧，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g2-r1-g1",
+                "traditional": "不如",
+                "simplified": "不如",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g2-r1-c1",
+                "traditional": "賣掉吧！",
+                "simplified": "卖掉吧！",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g2-r2",
+            "subject": [
+              {
+                "id": "b3l3g2-r2-s1",
+                "traditional": "買不舒服的名牌，",
+                "simplified": "买不舒服的名牌，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g2-r2-g1",
+                "traditional": "不如",
+                "simplified": "不如",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g2-r2-c1",
+                "traditional": "買平價的洋裝。",
+                "simplified": "买平价的洋装。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g2-r3",
+            "subject": [
+              {
+                "id": "b3l3g2-r3-s1",
+                "traditional": "在家無聊，",
+                "simplified": "在家无聊，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g2-r3-g1",
+                "traditional": "不如",
+                "simplified": "不如",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g2-r3-c1",
+                "traditional": "出門散步。",
+                "simplified": "出门散步。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l3g2-cf1",
+              "question": "In recommendations, which option does 不如 favor?",
+              "answer": "不如 precedes the better choice: 'A 不如 B' means B is better than A.",
+              "wrongTraditional": "今天下雨，去爬山不如在家看書。",
+              "wrongSimplified": "今天下雨，去爬山不如在家看书。",
+              "right": {
+                "traditional": "今天下雨，不如在家看書。",
+                "simplified": "今天下雨，不如在家看书。",
+                "pinyin": "Jīntiān xiàyǔ, bùrú zài jiā kànshū.",
+                "english": "It's raining today; it would be better to read at home.",
+                "words": [
+                  {
+                    "id": "b3l3g2-cf1-w1",
+                    "traditional": "今",
+                    "simplified": "今",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w2",
+                    "traditional": "天",
+                    "simplified": "天",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w3",
+                    "traditional": "下",
+                    "simplified": "下",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w4",
+                    "traditional": "雨",
+                    "simplified": "雨",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w5",
+                    "traditional": "不",
+                    "simplified": "不",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w6",
+                    "traditional": "如",
+                    "simplified": "如",
+                    "pinyin": "rú",
+                    "english": "if"
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w7",
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w8",
+                    "traditional": "家",
+                    "simplified": "家",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w9",
+                    "traditional": "看",
+                    "simplified": "看",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf1-w10",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l3g2-cf2",
+              "question": "Can 不如 be used without a preceding situation?",
+              "answer": "不如 usually introduces a sensible alternative given the current circumstance.",
+              "wrongTraditional": "不如你吃飯。",
+              "wrongSimplified": "不如你吃饭。",
+              "right": {
+                "traditional": "我們不如先吃飯吧。",
+                "simplified": "我们不如先吃饭吧。",
+                "pinyin": "Wǒmen bùrú xiān chīfàn ba.",
+                "english": "We might as well eat first.",
+                "words": [
+                  {
+                    "id": "b3l3g2-cf2-w1",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w2",
+                    "traditional": "們",
+                    "simplified": "们",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w3",
+                    "traditional": "不",
+                    "simplified": "不",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w4",
+                    "traditional": "如",
+                    "simplified": "如",
+                    "pinyin": "rú",
+                    "english": "if"
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w5",
+                    "traditional": "先",
+                    "simplified": "先",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w6",
+                    "traditional": "吃",
+                    "simplified": "吃",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w7",
+                    "traditional": "飯",
+                    "simplified": "饭",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g2-cf2-w8",
+                    "traditional": "吧",
+                    "simplified": "吧",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "b3l3g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "你那輛車不常開又舊得很，不如賣掉吧！",
+              "simplified": "你那辆车不常开又旧得很，不如卖掉吧！",
+              "pinyin": "Nǐ nà liàng chē bù cháng kāi yòu jiù de hěn, bùrú mài diào ba!",
+              "english": "You don't drive that car often and it's quite old; it would be better to sell it!",
+              "words": [
+                {
+                  "id": "b3l3g2-e1-w1",
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w2",
+                  "traditional": "那",
+                  "simplified": "那",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w3",
+                  "traditional": "輛",
+                  "simplified": "辆",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w4",
+                  "traditional": "車",
+                  "simplified": "车",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w5",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w6",
+                  "traditional": "常",
+                  "simplified": "常",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w7",
+                  "traditional": "開",
+                  "simplified": "开",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w8",
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w9",
+                  "traditional": "舊",
+                  "simplified": "旧",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w10",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "dé",
+                  "english": "to get"
+                },
+                {
+                  "id": "b3l3g2-e1-w11",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w12",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w13",
+                  "traditional": "如",
+                  "simplified": "如",
+                  "pinyin": "rú",
+                  "english": "if"
+                },
+                {
+                  "id": "b3l3g2-e1-w14",
+                  "traditional": "賣",
+                  "simplified": "卖",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w15",
+                  "traditional": "掉",
+                  "simplified": "掉",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e1-w16",
+                  "traditional": "吧",
+                  "simplified": "吧",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "外面雨下得這麼大，與其出去淋雨，不如在家看電影。",
+              "simplified": "外面雨下得这么大，与其出去淋雨，不如在家看电影。",
+              "pinyin": "Wàimiàn yǔ xià de zhème dà, yǔqí chūqù línyǔ, bùrú zài jiā kàn diànyǐng.",
+              "english": "It is raining so hard outside; rather than going out and getting soaked, it's better to watch a movie at home.",
+              "words": [
+                {
+                  "id": "b3l3g2-e2-w1",
+                  "traditional": "外",
+                  "simplified": "外",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w2",
+                  "traditional": "面",
+                  "simplified": "面",
+                  "pinyin": "miàn",
+                  "english": "side"
+                },
+                {
+                  "id": "b3l3g2-e2-w3",
+                  "traditional": "雨",
+                  "simplified": "雨",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w4",
+                  "traditional": "下",
+                  "simplified": "下",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w5",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "dé",
+                  "english": "to get"
+                },
+                {
+                  "id": "b3l3g2-e2-w6",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w7",
+                  "traditional": "麼",
+                  "simplified": "么",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w8",
+                  "traditional": "大",
+                  "simplified": "大",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w9",
+                  "traditional": "與",
+                  "simplified": "与",
+                  "pinyin": "yǔ",
+                  "english": "and; with"
+                },
+                {
+                  "id": "b3l3g2-e2-w10",
+                  "traditional": "其",
+                  "simplified": "其",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w11",
+                  "traditional": "出",
+                  "simplified": "出",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w12",
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w13",
+                  "traditional": "淋",
+                  "simplified": "淋",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w14",
+                  "traditional": "雨",
+                  "simplified": "雨",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w15",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w16",
+                  "traditional": "如",
+                  "simplified": "如",
+                  "pinyin": "rú",
+                  "english": "if"
+                },
+                {
+                  "id": "b3l3g2-e2-w17",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w18",
+                  "traditional": "家",
+                  "simplified": "家",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w19",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w20",
+                  "traditional": "電",
+                  "simplified": "电",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e2-w21",
+                  "traditional": "影",
+                  "simplified": "影",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "與其每天怨天尤人，不如腳踏實地好好努力。",
+              "simplified": "与其每天怨天尤人，不如脚踏实地好好努力。",
+              "pinyin": "Yǔqí měitiān yuàntiānyóurén, bùrú jiǎotàshídì hǎohǎo nǔlì.",
+              "english": "Rather than complaining every day, it is better to work hard down to earth.",
+              "words": [
+                {
+                  "id": "b3l3g2-e3-w1",
+                  "traditional": "與",
+                  "simplified": "与",
+                  "pinyin": "yǔ",
+                  "english": "and; with"
+                },
+                {
+                  "id": "b3l3g2-e3-w2",
+                  "traditional": "其",
+                  "simplified": "其",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w3",
+                  "traditional": "每",
+                  "simplified": "每",
+                  "pinyin": "měi",
+                  "english": "each time"
+                },
+                {
+                  "id": "b3l3g2-e3-w4",
+                  "traditional": "天",
+                  "simplified": "天",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w5",
+                  "traditional": "怨",
+                  "simplified": "怨",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w6",
+                  "traditional": "天",
+                  "simplified": "天",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w7",
+                  "traditional": "尤",
+                  "simplified": "尤",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w8",
+                  "traditional": "人",
+                  "simplified": "人",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w9",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w10",
+                  "traditional": "如",
+                  "simplified": "如",
+                  "pinyin": "rú",
+                  "english": "if"
+                },
+                {
+                  "id": "b3l3g2-e3-w11",
+                  "traditional": "腳",
+                  "simplified": "脚",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w12",
+                  "traditional": "踏",
+                  "simplified": "踏",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w13",
+                  "traditional": "實",
+                  "simplified": "实",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w14",
+                  "traditional": "地",
+                  "simplified": "地",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w15",
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w16",
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w17",
+                  "traditional": "努",
+                  "simplified": "努",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g2-e3-w18",
+                  "traditional": "力",
+                  "simplified": "力",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the Sentences",
+        "exercisePreview": "Practice using 不如 in context.",
+        "exerciseInstruction": "Choose the best option to complete the statement.",
+        "questions": [
+          {
+            "id": "b3l3g2-q1",
+            "prompt": "現在路上大塞車，搭計程車___搭捷運快。",
+            "options": [
+              "不如",
+              "試",
+              "別再"
+            ],
+            "answer": [
+              "不如"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B3L03-G03-P81",
+        "bookId": 3,
+        "lessonId": 3,
+        "partId": 1,
+        "lessonTitle": "貨比三家不吃虧",
+        "lessonTitleEnglish": "It Doesn't Hurt to Shop Around",
+        "grammarNumber": 3,
+        "titleTraditional": "就是 (except)",
+        "titleEnglish": "Except That / It's Just That",
+        "learnerPromise": "Introduce a sole reservation or exception using 就是.",
+        "printedPages": [
+          81
+        ],
+        "bookPageAvailable": true,
+        "audioReference": "03-1-5",
+        "explanation": "When stating that everything is satisfactory or acceptable with one exception, 就是 introduces that sole reservation.",
+        "focusTerms": [
+          "就是 (except)"
+        ],
+        "pattern": "General Statement + 就是 + Exception",
+        "patternColumns": [
+          "General Statement",
+          "就是",
+          "Exception"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l3g3-r1",
+            "subject": [
+              {
+                "id": "b3l3g3-r1-s1",
+                "traditional": "這件衣服很棒，",
+                "simplified": "这件衣服很棒，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g3-r1-g1",
+                "traditional": "就是",
+                "simplified": "就是",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g3-r1-c1",
+                "traditional": "價格有點貴。",
+                "simplified": "价格有点贵。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g3-r2",
+            "subject": [
+              {
+                "id": "b3l3g3-r2-s1",
+                "traditional": "什麼工作我都願意做，",
+                "simplified": "什么工作我都愿意做，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g3-r2-g1",
+                "traditional": "就是",
+                "simplified": "就是",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g3-r2-c1",
+                "traditional": "不能每天加班。",
+                "simplified": "不能每天加班。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g3-r3",
+            "subject": [
+              {
+                "id": "b3l3g3-r3-s1",
+                "traditional": "環境很安靜，",
+                "simplified": "环境很安静，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g3-r3-g1",
+                "traditional": "就是",
+                "simplified": "就是",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g3-r3-c1",
+                "traditional": "交通不太方便。",
+                "simplified": "交通不太方便。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l3g3-cf1",
+              "question": "Does 就是 (except) indicate insistence?",
+              "answer": "No. Here 就是 means 'the only drawback is... / it's just that', introducing a minor reservation.",
+              "wrongTraditional": "這件衣服很貴，就是很好。",
+              "wrongSimplified": "这件衣服很贵，就是很好。",
+              "right": {
+                "traditional": "這件衣服很好，就是貴了一點。",
+                "simplified": "这件衣服很好，就是贵了一点。",
+                "pinyin": "Zhè jiàn yīfu hěn hǎo, jiùshì guì le yìdiǎn.",
+                "english": "These clothes are great; it's just that they're a bit expensive.",
+                "words": [
+                  {
+                    "id": "b3l3g3-cf1-w1",
+                    "traditional": "這",
+                    "simplified": "这",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w2",
+                    "traditional": "件",
+                    "simplified": "件",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w3",
+                    "traditional": "衣",
+                    "simplified": "衣",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w4",
+                    "traditional": "服",
+                    "simplified": "服",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w5",
+                    "traditional": "很",
+                    "simplified": "很",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w6",
+                    "traditional": "好",
+                    "simplified": "好",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w7",
+                    "traditional": "就是",
+                    "simplified": "就是",
+                    "pinyin": "jiùshì",
+                    "english": "even if"
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w8",
+                    "traditional": "貴",
+                    "simplified": "贵",
+                    "pinyin": "guì",
+                    "english": "honorable"
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w9",
+                    "traditional": "了",
+                    "simplified": "了",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w10",
+                    "traditional": "一",
+                    "simplified": "一",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf1-w11",
+                    "traditional": "點",
+                    "simplified": "点",
+                    "pinyin": "diǎn",
+                    "english": "point"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l3g3-cf2",
+              "question": "Where does reservation 就是 sit in the discourse?",
+              "answer": "Reservation 就是 sits in the second clause, after the general positive evaluation.",
+              "wrongTraditional": "就是有點貴，這家店很好吃。",
+              "wrongSimplified": "就是有点贵，这家店很好吃。",
+              "right": {
+                "traditional": "這家店很好吃，就是有點貴。",
+                "simplified": "这家店很好吃，就是有点贵。",
+                "pinyin": "Zhè jiā diàn hěn hǎochī, jiùshì yǒudiǎn guì.",
+                "english": "This restaurant is delicious; it's just a bit expensive.",
+                "words": [
+                  {
+                    "id": "b3l3g3-cf2-w1",
+                    "traditional": "這",
+                    "simplified": "这",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w2",
+                    "traditional": "家",
+                    "simplified": "家",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w3",
+                    "traditional": "店",
+                    "simplified": "店",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w4",
+                    "traditional": "很",
+                    "simplified": "很",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w5",
+                    "traditional": "好",
+                    "simplified": "好",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w6",
+                    "traditional": "吃",
+                    "simplified": "吃",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w7",
+                    "traditional": "就是",
+                    "simplified": "就是",
+                    "pinyin": "jiùshì",
+                    "english": "even if"
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w8",
+                    "traditional": "有",
+                    "simplified": "有",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w9",
+                    "traditional": "點",
+                    "simplified": "点",
+                    "pinyin": "diǎn",
+                    "english": "point"
+                  },
+                  {
+                    "id": "b3l3g3-cf2-w10",
+                    "traditional": "貴",
+                    "simplified": "贵",
+                    "pinyin": "guì",
+                    "english": "honorable"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "b3l3g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "我剛大學畢業，什麼工作都願意做，就是不能接受老闆要我每天加班到深夜。",
+              "simplified": "我刚大学毕业，什么工作都愿意做，就是不能接受老闆要我每天加班到深夜。",
+              "pinyin": "Wǒ gāng dàxué bìyè, shénme gōngzuò wǒ dōu yuànyì zuò, jiùshì bù néng jiēshòu lǎobǎn yào wǒ měitiān jiābān dào shēnyè.",
+              "english": "I just graduated from university and am willing to do any job, it's just that I cannot accept the boss requiring me to work overtime until midnight every day.",
+              "words": [
+                {
+                  "id": "b3l3g3-e1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w2",
+                  "traditional": "剛",
+                  "simplified": "刚",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w3",
+                  "traditional": "大",
+                  "simplified": "大",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w4",
+                  "traditional": "學",
+                  "simplified": "学",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w5",
+                  "traditional": "畢",
+                  "simplified": "毕",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w6",
+                  "traditional": "業",
+                  "simplified": "业",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w7",
+                  "traditional": "什",
+                  "simplified": "什",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w8",
+                  "traditional": "麼",
+                  "simplified": "么",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w9",
+                  "traditional": "工",
+                  "simplified": "工",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w10",
+                  "traditional": "作",
+                  "simplified": "作",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w11",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w12",
+                  "traditional": "願",
+                  "simplified": "愿",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w13",
+                  "traditional": "意",
+                  "simplified": "意",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w14",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w15",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "english": "even if"
+                },
+                {
+                  "id": "b3l3g3-e1-w16",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w17",
+                  "traditional": "能",
+                  "simplified": "能",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w18",
+                  "traditional": "接",
+                  "simplified": "接",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w19",
+                  "traditional": "受",
+                  "simplified": "受",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w20",
+                  "traditional": "老",
+                  "simplified": "老",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w21",
+                  "traditional": "闆",
+                  "simplified": "闆",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w22",
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w23",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w24",
+                  "traditional": "每",
+                  "simplified": "每",
+                  "pinyin": "měi",
+                  "english": "each time"
+                },
+                {
+                  "id": "b3l3g3-e1-w25",
+                  "traditional": "天",
+                  "simplified": "天",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w26",
+                  "traditional": "加",
+                  "simplified": "加",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w27",
+                  "traditional": "班",
+                  "simplified": "班",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w28",
+                  "traditional": "到",
+                  "simplified": "到",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e1-w29",
+                  "traditional": "深",
+                  "simplified": "深",
+                  "pinyin": "shēn",
+                  "english": "dark (color)"
+                },
+                {
+                  "id": "b3l3g3-e1-w30",
+                  "traditional": "夜",
+                  "simplified": "夜",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這間公寓格局很好、採光充足，就是離捷運站稍微遠了點。",
+              "simplified": "这间公寓格局很好、采光充足，就是离捷运站稍微远了点。",
+              "pinyin": "Zhè jiān gōngyù géjú hěn hǎo, cǎiguāng chōngzú, jiùshì lí jiéyùnzhàn shāowēi yuǎn le diǎn.",
+              "english": "This apartment has a great layout and ample sunlight, it's just slightly far from the MRT station.",
+              "words": [
+                {
+                  "id": "b3l3g3-e2-w1",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w2",
+                  "traditional": "間",
+                  "simplified": "间",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w3",
+                  "traditional": "公",
+                  "simplified": "公",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w4",
+                  "traditional": "寓",
+                  "simplified": "寓",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w5",
+                  "traditional": "格",
+                  "simplified": "格",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w6",
+                  "traditional": "局",
+                  "simplified": "局",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w7",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w8",
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w9",
+                  "traditional": "採",
+                  "simplified": "采",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w10",
+                  "traditional": "光",
+                  "simplified": "光",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w11",
+                  "traditional": "充",
+                  "simplified": "充",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w12",
+                  "traditional": "足",
+                  "simplified": "足",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w13",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "english": "even if"
+                },
+                {
+                  "id": "b3l3g3-e2-w14",
+                  "traditional": "離",
+                  "simplified": "离",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w15",
+                  "traditional": "捷",
+                  "simplified": "捷",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w16",
+                  "traditional": "運",
+                  "simplified": "运",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w17",
+                  "traditional": "站",
+                  "simplified": "站",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w18",
+                  "traditional": "稍",
+                  "simplified": "稍",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w19",
+                  "traditional": "微",
+                  "simplified": "微",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w20",
+                  "traditional": "遠",
+                  "simplified": "远",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w21",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e2-w22",
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "english": "point"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "那位設計師什麼服裝都設計過，就是沒設計過帽子。",
+              "simplified": "那位设计师什么服装都设计过，就是没设计过帽子。",
+              "pinyin": "Nà wèi shèjìshī shénme fúzhuāng dōu shèjì guò, jiùshì méi shèjì guò màozi.",
+              "english": "That designer has designed all types of clothing, it's just that he has never designed hats.",
+              "words": [
+                {
+                  "id": "b3l3g3-e3-w1",
+                  "traditional": "那",
+                  "simplified": "那",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w2",
+                  "traditional": "位",
+                  "simplified": "位",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w3",
+                  "traditional": "設計",
+                  "simplified": "设计",
+                  "pinyin": "shèjì",
+                  "english": "to design"
+                },
+                {
+                  "id": "b3l3g3-e3-w4",
+                  "traditional": "師",
+                  "simplified": "师",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w5",
+                  "traditional": "什",
+                  "simplified": "什",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w6",
+                  "traditional": "麼",
+                  "simplified": "么",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w7",
+                  "traditional": "服",
+                  "simplified": "服",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w8",
+                  "traditional": "裝",
+                  "simplified": "装",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w9",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w10",
+                  "traditional": "設計",
+                  "simplified": "设计",
+                  "pinyin": "shèjì",
+                  "english": "to design"
+                },
+                {
+                  "id": "b3l3g3-e3-w11",
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w12",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "english": "even if"
+                },
+                {
+                  "id": "b3l3g3-e3-w13",
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "english": "to be gone"
+                },
+                {
+                  "id": "b3l3g3-e3-w14",
+                  "traditional": "設計",
+                  "simplified": "设计",
+                  "pinyin": "shèjì",
+                  "english": "to design"
+                },
+                {
+                  "id": "b3l3g3-e3-w15",
+                  "traditional": "過",
+                  "simplified": "过",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w16",
+                  "traditional": "帽",
+                  "simplified": "帽",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g3-e3-w17",
+                  "traditional": "子",
+                  "simplified": "子",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the Sentences",
+        "exercisePreview": "Practice using 就是 (except) in context.",
+        "exerciseInstruction": "Choose the best option to complete the statement.",
+        "questions": [
+          {
+            "id": "b3l3g3-q1",
+            "prompt": "這家餐廳的菜色非常美味，服務也很親切，___價位稍高了些。",
+            "options": [
+              "就是",
+              "不如",
+              "別再"
+            ],
+            "answer": [
+              "就是"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B3L03-G04-P82",
+        "bookId": 3,
+        "lessonId": 3,
+        "partId": 1,
+        "lessonTitle": "貨比三家不吃虧",
+        "lessonTitleEnglish": "It Doesn't Hurt to Shop Around",
+        "grammarNumber": 4,
+        "titleTraditional": "別再…了",
+        "titleEnglish": "Don't ... Any Longer",
+        "learnerPromise": "Persuade someone to cease an action using 別再…了.",
+        "printedPages": [
+          82
+        ],
+        "bookPageAvailable": true,
+        "audioReference": "03-1-6",
+        "explanation": "別再…了 expresses an urgent or earnest dissuasion, asking the listener to stop an ongoing or repeated action.",
+        "focusTerms": [
+          "別再…了"
+        ],
+        "pattern": "別再 + Action + 了",
+        "patternColumns": [
+          "別再",
+          "Action",
+          "了"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l3g4-r1",
+            "subject": [
+              {
+                "id": "b3l3g4-r1-s1",
+                "traditional": "別再",
+                "simplified": "别再",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g4-r1-g1",
+                "traditional": "幫我洗衣服",
+                "simplified": "帮我洗衣服",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r1-c1",
+                "traditional": "了！",
+                "simplified": "了！",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g4-r2",
+            "subject": [
+              {
+                "id": "b3l3g4-r2-s1",
+                "traditional": "別再",
+                "simplified": "别再",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g4-r2-g1",
+                "traditional": "熬夜玩遊戲",
+                "simplified": "熬夜玩游戏",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r2-c1",
+                "traditional": "了！",
+                "simplified": "了！",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g4-r3",
+            "subject": [
+              {
+                "id": "b3l3g4-r3-s1",
+                "traditional": "別再",
+                "simplified": "别再",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g4-r3-g1",
+                "traditional": "猶豫不決",
+                "simplified": "猶豫不决",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r3-c1",
+                "traditional": "了！",
+                "simplified": "了！",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l3g4-cf1",
+              "question": "Can 別再…了 be used if the action hasn't started?",
+              "answer": "No. 別再 implies the action was already happening and must now cease; use 別 for fresh warnings.",
+              "wrongTraditional": "明天考試，你別再來了。",
+              "wrongSimplified": "明天考试，你别再来了。",
+              "right": {
+                "traditional": "明天考試，你別遲到了。",
+                "simplified": "明天考试，你别迟到了。",
+                "pinyin": "Míngtiān kǎoshì, nǐ bié chídào le.",
+                "english": "Tomorrow is the exam, don't be late.",
+                "words": [
+                  {
+                    "id": "b3l3g4-cf1-w1",
+                    "traditional": "明",
+                    "simplified": "明",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w2",
+                    "traditional": "天",
+                    "simplified": "天",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w3",
+                    "traditional": "考",
+                    "simplified": "考",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w4",
+                    "traditional": "試",
+                    "simplified": "试",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w5",
+                    "traditional": "你",
+                    "simplified": "你",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w6",
+                    "traditional": "別",
+                    "simplified": "别",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w7",
+                    "traditional": "遲",
+                    "simplified": "迟",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w8",
+                    "traditional": "到",
+                    "simplified": "到",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf1-w9",
+                    "traditional": "了",
+                    "simplified": "了",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l3g4-cf2",
+              "question": "Can 了 be dropped in 別再…了?",
+              "answer": "了 signals the change of state (stopping now) and is standard in this pattern.",
+              "wrongTraditional": "你別再說。",
+              "wrongSimplified": "你别再说。",
+              "right": {
+                "traditional": "你別再說了。",
+                "simplified": "你别再说了。",
+                "pinyin": "Nǐ bié zài shuō le.",
+                "english": "Don't say any more.",
+                "words": [
+                  {
+                    "id": "b3l3g4-cf2-w1",
+                    "traditional": "你",
+                    "simplified": "你",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf2-w2",
+                    "traditional": "別",
+                    "simplified": "别",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g4-cf2-w3",
+                    "traditional": "再說",
+                    "simplified": "再说",
+                    "pinyin": "zàishuō",
+                    "english": "besides"
+                  },
+                  {
+                    "id": "b3l3g4-cf2-w4",
+                    "traditional": "了",
+                    "simplified": "了",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "b3l3g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "孩子對媽媽說：您別再幫我洗衣服了！我已經長大，自己會洗了。",
+              "simplified": "孩子对妈妈说：您别再帮我洗衣服了！我已经长大，自己会洗了。",
+              "pinyin": "Háizi duì māma shuō: Nín bié zài bāng wǒ xǐ yīfu le! Wǒ yǐjīng zhǎngdà, zìjǐ huì xǐ le.",
+              "english": "The child said to mother: Don't wash clothes for me any longer! I have grown up and can wash them myself.",
+              "words": [
+                {
+                  "id": "b3l3g4-e1-w1",
+                  "traditional": "孩",
+                  "simplified": "孩",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w2",
+                  "traditional": "子",
+                  "simplified": "子",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w3",
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "english": "to face"
+                },
+                {
+                  "id": "b3l3g4-e1-w4",
+                  "traditional": "媽",
+                  "simplified": "妈",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w5",
+                  "traditional": "媽",
+                  "simplified": "妈",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w6",
+                  "traditional": "說",
+                  "simplified": "说",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w7",
+                  "traditional": "您",
+                  "simplified": "您",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w8",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w9",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w10",
+                  "traditional": "幫",
+                  "simplified": "帮",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w11",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w12",
+                  "traditional": "洗",
+                  "simplified": "洗",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w13",
+                  "traditional": "衣",
+                  "simplified": "衣",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w14",
+                  "traditional": "服",
+                  "simplified": "服",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w15",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w16",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w17",
+                  "traditional": "已",
+                  "simplified": "已",
+                  "pinyin": "yǐ",
+                  "english": "already"
+                },
+                {
+                  "id": "b3l3g4-e1-w18",
+                  "traditional": "經",
+                  "simplified": "经",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w19",
+                  "traditional": "長",
+                  "simplified": "长",
+                  "pinyin": "zhǎng",
+                  "english": "to grow (taller)"
+                },
+                {
+                  "id": "b3l3g4-e1-w20",
+                  "traditional": "大",
+                  "simplified": "大",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w21",
+                  "traditional": "自",
+                  "simplified": "自",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w22",
+                  "traditional": "己",
+                  "simplified": "己",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w23",
+                  "traditional": "會",
+                  "simplified": "会",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w24",
+                  "traditional": "洗",
+                  "simplified": "洗",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e1-w25",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "醫生對病人說：您的胃已經發炎了，別再抽煙喝酒了。",
+              "simplified": "医生对病人说：您的胃已经发炎了，别再抽烟喝酒了。",
+              "pinyin": "Yīshēng duì bìngrén shuō: Nín de wèi yǐjīng fāyán le, bié zài chōuyān hējiǔ le.",
+              "english": "The doctor said to patient: Your stomach is inflamed; don't smoke and drink any longer.",
+              "words": [
+                {
+                  "id": "b3l3g4-e2-w1",
+                  "traditional": "醫",
+                  "simplified": "医",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w2",
+                  "traditional": "生",
+                  "simplified": "生",
+                  "pinyin": "shēng",
+                  "english": "to give birth"
+                },
+                {
+                  "id": "b3l3g4-e2-w3",
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "english": "to face"
+                },
+                {
+                  "id": "b3l3g4-e2-w4",
+                  "traditional": "病",
+                  "simplified": "病",
+                  "pinyin": "bìng",
+                  "english": "to fall ill"
+                },
+                {
+                  "id": "b3l3g4-e2-w5",
+                  "traditional": "人",
+                  "simplified": "人",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w6",
+                  "traditional": "說",
+                  "simplified": "说",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w7",
+                  "traditional": "您",
+                  "simplified": "您",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w8",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w9",
+                  "traditional": "胃",
+                  "simplified": "胃",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w10",
+                  "traditional": "已",
+                  "simplified": "已",
+                  "pinyin": "yǐ",
+                  "english": "already"
+                },
+                {
+                  "id": "b3l3g4-e2-w11",
+                  "traditional": "經",
+                  "simplified": "经",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w12",
+                  "traditional": "發",
+                  "simplified": "发",
+                  "pinyin": "fā",
+                  "english": "to hand out"
+                },
+                {
+                  "id": "b3l3g4-e2-w13",
+                  "traditional": "炎",
+                  "simplified": "炎",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w14",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w15",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w16",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w17",
+                  "traditional": "抽",
+                  "simplified": "抽",
+                  "pinyin": "chōu",
+                  "english": "to draw out"
+                },
+                {
+                  "id": "b3l3g4-e2-w18",
+                  "traditional": "煙",
+                  "simplified": "烟",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w19",
+                  "traditional": "喝",
+                  "simplified": "喝",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w20",
+                  "traditional": "酒",
+                  "simplified": "酒",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e2-w21",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "既然機會來了，就別再猶豫了，勇敢接受挑戰吧！",
+              "simplified": "既然机会来了，就别再猶豫了，勇敢接受挑战吧！",
+              "pinyin": "Jìrán jīhuì lái le, jiù bié zài yóuyù le, yǒnggǎn jiēshòu tiǎozhàn ba!",
+              "english": "Since the opportunity has arrived, don't hesitate any longer; bravely accept the challenge!",
+              "words": [
+                {
+                  "id": "b3l3g4-e3-w1",
+                  "traditional": "既然",
+                  "simplified": "既然",
+                  "pinyin": "jìrán",
+                  "english": "since"
+                },
+                {
+                  "id": "b3l3g4-e3-w2",
+                  "traditional": "機",
+                  "simplified": "机",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w3",
+                  "traditional": "會",
+                  "simplified": "会",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w4",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w5",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w6",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "english": "concerning"
+                },
+                {
+                  "id": "b3l3g4-e3-w7",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w8",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w9",
+                  "traditional": "猶",
+                  "simplified": "猶",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w10",
+                  "traditional": "豫",
+                  "simplified": "豫",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w11",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w12",
+                  "traditional": "勇",
+                  "simplified": "勇",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w13",
+                  "traditional": "敢",
+                  "simplified": "敢",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w14",
+                  "traditional": "接",
+                  "simplified": "接",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w15",
+                  "traditional": "受",
+                  "simplified": "受",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g4-e3-w16",
+                  "traditional": "挑戰",
+                  "simplified": "挑战",
+                  "pinyin": "tiǎozhàn",
+                  "english": "to challenge"
+                },
+                {
+                  "id": "b3l3g4-e3-w17",
+                  "traditional": "吧",
+                  "simplified": "吧",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the Sentences",
+        "exercisePreview": "Practice using 別再…了 in context.",
+        "exerciseInstruction": "Choose the best option to complete the statement.",
+        "questions": [
+          {
+            "id": "b3l3g4-q1",
+            "prompt": "時間不早了，我們___聊___，趕快回家吧。",
+            "options": [
+              "別再…了",
+              "不如",
+              "就是"
+            ],
+            "answer": [
+              "別再…了"
+            ]
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B3L03-D01",
+      "title": "對話 · Dialogue",
+      "setting": "在百貨公司專櫃 · At the department store boutique",
+      "printedPages": [
+        69,
+        70,
+        71
+      ],
+      "audioReference": "03-1-1",
+      "grammarFocus": [
+        "試+V",
+        "不如",
+        "就是 (except)",
+        "別再…了"
+      ],
+      "lines": [
+        {
+          "id": "b3l3d1-1",
+          "speaker": "芳草",
+          "text": {
+            "traditional": "瑪莉，這家專櫃的洋裝看起來真漂亮，而且現在週年慶打八折呢！",
+            "simplified": "瑪莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
+            "pinyin": "",
+            "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!"
+          }
+        },
+        {
+          "id": "b3l3d1-2",
+          "speaker": "瑪莉",
+          "text": {
+            "traditional": "是挺好看的，但買衣服一定要先試穿，試穿看看合不合身再決定。",
+            "simplified": "是挺好看的，但买衣服一定要先试穿，试穿看看合不合身再决定。",
+            "pinyin": "",
+            "english": "It's quite nice, but when buying clothes one must always try them on first to see if they fit well before deciding."
+          }
+        },
+        {
+          "id": "b3l3d1-3",
+          "speaker": "芳草",
+          "text": {
+            "traditional": "妳說得對。那我先進去試穿這件淺藍色的。",
+            "simplified": "你说得对。那我先进去试穿这件浅蓝色的。",
+            "pinyin": "",
+            "english": "You're right. Then I'll go inside first to try on this light blue one."
+          }
+        },
+        {
+          "id": "b3l3d1-4",
+          "speaker": "芳草",
+          "text": {
+            "traditional": "瑪莉，妳看這件怎麼樣？我覺得腰部有點緊，而且價格還是太高了。",
+            "simplified": "瑪莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
+            "pinyin": "",
+            "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high."
+          }
+        },
+        {
+          "id": "b3l3d1-5",
+          "speaker": "瑪莉",
+          "text": {
+            "traditional": "與其買一件不舒服的名牌洋裝，不如到樓上的平價專櫃看看，那裡款式也很多。",
+            "simplified": "与其买一件不舒服的名牌洋装，不如到楼上的平价专柜看看，那里款式也很多。",
+            "pinyin": "",
+            "english": "Rather than buying an uncomfortable designer dress, it would be better to check the affordable section upstairs; there are many styles there too."
+          }
+        },
+        {
+          "id": "b3l3d1-6",
+          "speaker": "芳草",
+          "text": {
+            "traditional": "可是樓上的衣服材質怎麼樣？我什麼衣服都穿過，就是皮膚容易過敏，不能穿太粗糙的料子。",
+            "simplified": "可是楼上的衣服材质怎么样？我什么衣服都穿过，就是皮肤容易过敏，不能穿太粗糙的料子。",
+            "pinyin": "",
+            "english": "But how is the material of the clothes upstairs? I've worn all kinds of clothes, it's just that my skin is easily allergic, so I can't wear rough fabrics."
+          }
+        },
+        {
+          "id": "b3l3d1-7",
+          "speaker": "瑪莉",
+          "text": {
+            "traditional": "放心吧，樓上有幾個專櫃不僅質料柔軟，價格也很實在。",
+            "simplified": "放心吧，楼上有几个专柜不仅质料柔軟，价格也很实在。",
+            "pinyin": "",
+            "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair."
+          }
+        },
+        {
+          "id": "b3l3d1-8",
+          "speaker": "芳草",
+          "text": {
+            "traditional": "太好了！那我們別再這裡浪費時間了，趕快上樓去逛逛吧。",
+            "simplified": "太好了！那我们别再这里浪费时间了，赶快上楼去逛逛吧。",
+            "pinyin": "",
+            "english": "Awesome! Then let's not waste more time here, let's head upstairs quickly to look around."
+          }
+        }
+      ]
+    },
+    "completionTitle": "Lesson 3 Part 1 Complete",
+    "completionDescription": "Great progress! You completed the first part of this lesson.",
+    "nextBookLabel": "Book 3 Lesson 3 Part 2"
+  },
+  "LESSON_THREE_PART_TWO": {
+    "id": "B3L03-P02-D02",
+    "bookId": 3,
+    "lessonId": 3,
+    "partId": 2,
+    "title": "Grammar 5–6 · It Doesn't Hurt to Shop Around",
+    "grammarPages": [
+      {
+        "id": "B3L03-G05-P88",
+        "bookId": 3,
+        "lessonId": 3,
+        "partId": 2,
+        "lessonTitle": "貨比三家不吃虧",
+        "lessonTitleEnglish": "It Doesn't Hurt to Shop Around",
+        "grammarNumber": 5,
+        "titleTraditional": "不僅…也/還…",
+        "titleEnglish": "Not Only... But Also...",
+        "learnerPromise": "Connect two coordinated positive or negative attributes using 不僅…也/還….",
+        "printedPages": [
+          88
+        ],
+        "bookPageAvailable": true,
+        "audioReference": "03-2-3",
+        "explanation": "不僅…也/還… coordinates two clauses or predicates, introducing supplementary qualities with progressive emphasis.",
+        "focusTerms": [
+          "不僅…也/還…"
+        ],
+        "pattern": "Subject + 不僅 + Predicate 1 + 也 / 還 + Predicate 2",
+        "patternColumns": [
+          "Subject",
+          "不僅",
+          "Predicate 1",
+          "也 · 還",
+          "Predicate 2"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l3g5-r1",
+            "subject": [
+              {
+                "id": "b3l3g5-r1-s1",
+                "traditional": "謝先生",
+                "simplified": "谢先生",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g5-r1-g1",
+                "traditional": "不僅性格開朗，",
+                "simplified": "不仅性格开朗，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g5-r1-c1",
+                "traditional": "工作也很認真負責。",
+                "simplified": "工作也很认真负责。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g5-r2",
+            "subject": [
+              {
+                "id": "b3l3g5-r2-s1",
+                "traditional": "這家餐廳",
+                "simplified": "这家餐厅",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g5-r2-g1",
+                "traditional": "不僅菜色美味，",
+                "simplified": "不仅菜色美味，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g5-r2-c1",
+                "traditional": "價格還很平實。",
+                "simplified": "价格还很平实。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g5-r3",
+            "subject": [
+              {
+                "id": "b3l3g5-r3-s1",
+                "traditional": "網路比價",
+                "simplified": "网路比价",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g5-r3-g1",
+                "traditional": "不僅節省時間，",
+                "simplified": "不仅节省时间，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g5-r3-c1",
+                "traditional": "還能看到用戶評價。",
+                "simplified": "还能看到用户评价。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l3g5-cf1",
+              "question": "Can 不僅 be paired with 但是?",
+              "answer": "No. 不僅 is an additive conjunction; it pairs with 也 or 還, never with contrastive 但是.",
+              "wrongTraditional": "他不僅聰明但是很懶。",
+              "wrongSimplified": "他不仅聪明但是很懒。",
+              "right": {
+                "traditional": "他不僅聰明也很勤勞。",
+                "simplified": "他不仅聪明也很勤劳。",
+                "pinyin": "Tā bùjǐn cōngmíng yě hěn qínláo.",
+                "english": "He is not only smart but also diligent.",
+                "words": [
+                  {
+                    "id": "b3l3g5-cf1-w1",
+                    "traditional": "他",
+                    "simplified": "他",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w2",
+                    "traditional": "不僅",
+                    "simplified": "不仅",
+                    "pinyin": "bù jǐn",
+                    "english": "not only"
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w3",
+                    "traditional": "聰",
+                    "simplified": "聪",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w4",
+                    "traditional": "明",
+                    "simplified": "明",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w5",
+                    "traditional": "也",
+                    "simplified": "也",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w6",
+                    "traditional": "很",
+                    "simplified": "很",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w7",
+                    "traditional": "勤",
+                    "simplified": "勤",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf1-w8",
+                    "traditional": "勞",
+                    "simplified": "劳",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l3g5-cf2",
+              "question": "How does 不僅 differ from 不但?",
+              "answer": "不僅 and 不但 share identical grammar; 不僅 has a more refined, formal tone.",
+              "wrongTraditional": "不僅我跟你去。",
+              "wrongSimplified": "不仅我跟你去。",
+              "right": {
+                "traditional": "我不僅去過那裡也喜歡那裡。",
+                "simplified": "我不仅去过那里也喜欢那里。",
+                "pinyin": "Wǒ bùjǐn qùguo nàlǐ yě xǐhuan nàlǐ.",
+                "english": "I have not only been there, but also like it there.",
+                "words": [
+                  {
+                    "id": "b3l3g5-cf2-w1",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w2",
+                    "traditional": "不僅",
+                    "simplified": "不仅",
+                    "pinyin": "bù jǐn",
+                    "english": "not only"
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w3",
+                    "traditional": "去",
+                    "simplified": "去",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w4",
+                    "traditional": "過",
+                    "simplified": "过",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w5",
+                    "traditional": "那",
+                    "simplified": "那",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w6",
+                    "traditional": "裡",
+                    "simplified": "里",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w7",
+                    "traditional": "也",
+                    "simplified": "也",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w8",
+                    "traditional": "喜",
+                    "simplified": "喜",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w9",
+                    "traditional": "歡",
+                    "simplified": "欢",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w10",
+                    "traditional": "那",
+                    "simplified": "那",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g5-cf2-w11",
+                    "traditional": "裡",
+                    "simplified": "里",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "b3l3g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "謝先生不僅性格開朗，工作也很認真負責，所以同事都很喜歡他。",
+              "simplified": "谢先生不仅性格开朗，工作也很认真负责，所以同事都很喜欢他。",
+              "pinyin": "Xiè xiānsheng bùjǐn xìnggé kāilǎng, gōngzuò yě hěn rènzhēn fùzé, suǒyǐ tóngshì dōu hěn xǐhuān tā.",
+              "english": "Mr. Xie not only has an upbeat personality, but is also very conscientious at work, so coworkers all like him.",
+              "words": [
+                {
+                  "id": "b3l3g5-e1-w1",
+                  "traditional": "謝",
+                  "simplified": "谢",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w2",
+                  "traditional": "先",
+                  "simplified": "先",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w3",
+                  "traditional": "生",
+                  "simplified": "生",
+                  "pinyin": "shēng",
+                  "english": "to give birth"
+                },
+                {
+                  "id": "b3l3g5-e1-w4",
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bù jǐn",
+                  "english": "not only"
+                },
+                {
+                  "id": "b3l3g5-e1-w5",
+                  "traditional": "性格",
+                  "simplified": "性格",
+                  "pinyin": "xìnggé",
+                  "english": "personality"
+                },
+                {
+                  "id": "b3l3g5-e1-w6",
+                  "traditional": "開朗",
+                  "simplified": "开朗",
+                  "pinyin": "kāilǎng",
+                  "english": "cheerful"
+                },
+                {
+                  "id": "b3l3g5-e1-w7",
+                  "traditional": "工",
+                  "simplified": "工",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w8",
+                  "traditional": "作",
+                  "simplified": "作",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w9",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w10",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w11",
+                  "traditional": "認",
+                  "simplified": "认",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w12",
+                  "traditional": "真",
+                  "simplified": "真",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w13",
+                  "traditional": "負",
+                  "simplified": "负",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w14",
+                  "traditional": "責",
+                  "simplified": "责",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w15",
+                  "traditional": "所",
+                  "simplified": "所",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w16",
+                  "traditional": "以",
+                  "simplified": "以",
+                  "pinyin": "yǐ",
+                  "english": "with"
+                },
+                {
+                  "id": "b3l3g5-e1-w17",
+                  "traditional": "同",
+                  "simplified": "同",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w18",
+                  "traditional": "事",
+                  "simplified": "事",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w19",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w20",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w21",
+                  "traditional": "喜",
+                  "simplified": "喜",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w22",
+                  "traditional": "歡",
+                  "simplified": "欢",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e1-w23",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這棟大樓不僅防震設計優良，通風與採光也十分理想。",
+              "simplified": "这栋大楼不仅防震设计优良，通风与采光也十分理想。",
+              "pinyin": "Zhè dòng dàlóu bùjǐn fángzhèn shèjì yōuliáng, tōngfēng yǔ cǎiguāng yě shífēn lǐxiǎng.",
+              "english": "This building not only has excellent earthquake-resistant design, but ventilation and lighting are also very ideal.",
+              "words": [
+                {
+                  "id": "b3l3g5-e2-w1",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w2",
+                  "traditional": "棟",
+                  "simplified": "栋",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w3",
+                  "traditional": "大",
+                  "simplified": "大",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w4",
+                  "traditional": "樓",
+                  "simplified": "楼",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w5",
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bù jǐn",
+                  "english": "not only"
+                },
+                {
+                  "id": "b3l3g5-e2-w6",
+                  "traditional": "防",
+                  "simplified": "防",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w7",
+                  "traditional": "震",
+                  "simplified": "震",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w8",
+                  "traditional": "設計",
+                  "simplified": "设计",
+                  "pinyin": "shèjì",
+                  "english": "to design"
+                },
+                {
+                  "id": "b3l3g5-e2-w9",
+                  "traditional": "優",
+                  "simplified": "优",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w10",
+                  "traditional": "良",
+                  "simplified": "良",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w11",
+                  "traditional": "通",
+                  "simplified": "通",
+                  "pinyin": "tōng",
+                  "english": "open"
+                },
+                {
+                  "id": "b3l3g5-e2-w12",
+                  "traditional": "風",
+                  "simplified": "风",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w13",
+                  "traditional": "與",
+                  "simplified": "与",
+                  "pinyin": "yǔ",
+                  "english": "and; with"
+                },
+                {
+                  "id": "b3l3g5-e2-w14",
+                  "traditional": "採",
+                  "simplified": "采",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w15",
+                  "traditional": "光",
+                  "simplified": "光",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w16",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w17",
+                  "traditional": "十分",
+                  "simplified": "十分",
+                  "pinyin": "shífēn",
+                  "english": "extremely"
+                },
+                {
+                  "id": "b3l3g5-e2-w18",
+                  "traditional": "理",
+                  "simplified": "理",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e2-w19",
+                  "traditional": "想",
+                  "simplified": "想",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "現代消費者不僅看重商品價格，還特別講究環保與健康。",
+              "simplified": "现代消费者不仅看重商品价格，还特别讲究环保与健康。",
+              "pinyin": "Xiàndài xiāofèizhě bùjǐn kànzhòng shāngpǐn jiàgé, hái tèbié jiǎngjiū huánbǎo yǔ jiànkāng.",
+              "english": "Modern consumers not only care about product price, but also emphasize environmental friendliness and health.",
+              "words": [
+                {
+                  "id": "b3l3g5-e3-w1",
+                  "traditional": "現代",
+                  "simplified": "现代",
+                  "pinyin": "xiàndài",
+                  "english": "modern times"
+                },
+                {
+                  "id": "b3l3g5-e3-w2",
+                  "traditional": "消",
+                  "simplified": "消",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w3",
+                  "traditional": "費",
+                  "simplified": "费",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w4",
+                  "traditional": "者",
+                  "simplified": "者",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w5",
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bù jǐn",
+                  "english": "not only"
+                },
+                {
+                  "id": "b3l3g5-e3-w6",
+                  "traditional": "看",
+                  "simplified": "看",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w7",
+                  "traditional": "重",
+                  "simplified": "重",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w8",
+                  "traditional": "商",
+                  "simplified": "商",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w9",
+                  "traditional": "品",
+                  "simplified": "品",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w10",
+                  "traditional": "價",
+                  "simplified": "价",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w11",
+                  "traditional": "格",
+                  "simplified": "格",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w12",
+                  "traditional": "還",
+                  "simplified": "还",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w13",
+                  "traditional": "特",
+                  "simplified": "特",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w14",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w15",
+                  "traditional": "講究",
+                  "simplified": "讲究",
+                  "pinyin": "jiǎngjiù",
+                  "english": "fussy about"
+                },
+                {
+                  "id": "b3l3g5-e3-w16",
+                  "traditional": "環保",
+                  "simplified": "环保",
+                  "pinyin": "huánbǎo",
+                  "english": "environmental protection"
+                },
+                {
+                  "id": "b3l3g5-e3-w17",
+                  "traditional": "與",
+                  "simplified": "与",
+                  "pinyin": "yǔ",
+                  "english": "and; with"
+                },
+                {
+                  "id": "b3l3g5-e3-w18",
+                  "traditional": "健",
+                  "simplified": "健",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g5-e3-w19",
+                  "traditional": "康",
+                  "simplified": "康",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the Sentences",
+        "exercisePreview": "Practice using 不僅…也/還… in context.",
+        "exerciseInstruction": "Choose the best option to complete the statement.",
+        "questions": [
+          {
+            "id": "b3l3g5-q1",
+            "prompt": "這家咖啡館___提供美味咖啡，___有安靜的閱讀空間。",
+            "options": [
+              "不僅…還…",
+              "不如",
+              "別再"
+            ],
+            "answer": [
+              "不僅…還…"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B3L03-G06-P90",
+        "bookId": 3,
+        "lessonId": 3,
+        "partId": 2,
+        "lessonTitle": "貨比三家不吃虧",
+        "lessonTitleEnglish": "It Doesn't Hurt to Shop Around",
+        "grammarNumber": 6,
+        "titleTraditional": "一次比一次",
+        "titleEnglish": "More and More Each Time",
+        "learnerPromise": "Express progressive increase with each iteration using 一+Classifier+比+一+Classifier.",
+        "printedPages": [
+          90
+        ],
+        "bookPageAvailable": true,
+        "audioReference": "03-2-4",
+        "explanation": "Repeating the classifier in the pattern '一 M 比 一 M + Adjective' denotes progressive increase over successive occurrences.",
+        "focusTerms": [
+          "一次比一次"
+        ],
+        "pattern": "Subject + 一 M 比 一 M + Adjective / Predicate",
+        "patternColumns": [
+          "Subject",
+          "Iteration",
+          "比",
+          "Iteration",
+          "Predicate"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l3g6-r1",
+            "subject": [
+              {
+                "id": "b3l3g6-r1-s1",
+                "traditional": "他的考試成績，",
+                "simplified": "他的考试成绩，",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g6-r1-g1",
+                "traditional": "一次",
+                "simplified": "一次",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g6-r1-c1",
+                "traditional": "比一次進步。",
+                "simplified": "比一次进步。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g6-r2",
+            "subject": [
+              {
+                "id": "b3l3g6-r2-s1",
+                "traditional": "工廠增加，空氣",
+                "simplified": "工厂增加，空气",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g6-r2-g1",
+                "traditional": "一年",
+                "simplified": "一年",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g6-r2-c1",
+                "traditional": "比一年差。",
+                "simplified": "比一年差。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          },
+          {
+            "id": "b3l3g6-r3",
+            "subject": [
+              {
+                "id": "b3l3g6-r3-s1",
+                "traditional": "消費者變得",
+                "simplified": "消费者变得",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g6-r3-g1",
+                "traditional": "一代",
+                "simplified": "一代",
+                "pinyin": "",
+                "english": ""
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g6-r3-c1",
+                "traditional": "比一代聰明。",
+                "simplified": "比一代聪明。",
+                "pinyin": "",
+                "english": ""
+              }
+            ]
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l3g6-cf1",
+              "question": "Can 一次比一次 be followed by an unchanged state?",
+              "answer": "No. It requires a scalar adjective showing progressive increase (好, 難, 貴).",
+              "wrongTraditional": "他的成績一次比一次一樣。",
+              "wrongSimplified": "他的成绩一次比一次一样。",
+              "right": {
+                "traditional": "他的成績一次比一次好。",
+                "simplified": "他的成绩一次比一次好。",
+                "pinyin": "Tā de chéngjī yí cì bǐ yí cì hǎo.",
+                "english": "His grades are better each time.",
+                "words": [
+                  {
+                    "id": "b3l3g6-cf1-w1",
+                    "traditional": "他",
+                    "simplified": "他",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w2",
+                    "traditional": "的",
+                    "simplified": "的",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w3",
+                    "traditional": "成",
+                    "simplified": "成",
+                    "pinyin": "chéng",
+                    "english": "to turn into"
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w4",
+                    "traditional": "績",
+                    "simplified": "绩",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w5",
+                    "traditional": "一",
+                    "simplified": "一",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w6",
+                    "traditional": "次",
+                    "simplified": "次",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w7",
+                    "traditional": "比",
+                    "simplified": "比",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w8",
+                    "traditional": "一",
+                    "simplified": "一",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w9",
+                    "traditional": "次",
+                    "simplified": "次",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf1-w10",
+                    "traditional": "好",
+                    "simplified": "好",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l3g6-cf2",
+              "question": "Can other measure words replace 次 in this pattern?",
+              "answer": "Yes! You can say 一年比一年 (year by year) or 一天比一天 (day by day).",
+              "wrongTraditional": "天氣一比一冷。",
+              "wrongSimplified": "天气一比一冷。",
+              "right": {
+                "traditional": "天氣一天比一天冷。",
+                "simplified": "天气一天比一天冷。",
+                "pinyin": "Tiānqì yì tiān bǐ yì tiān lěng.",
+                "english": "The weather gets colder day by day.",
+                "words": [
+                  {
+                    "id": "b3l3g6-cf2-w1",
+                    "traditional": "天",
+                    "simplified": "天",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w2",
+                    "traditional": "氣",
+                    "simplified": "气",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w3",
+                    "traditional": "一",
+                    "simplified": "一",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w4",
+                    "traditional": "天",
+                    "simplified": "天",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w5",
+                    "traditional": "比",
+                    "simplified": "比",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w6",
+                    "traditional": "一",
+                    "simplified": "一",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w7",
+                    "traditional": "天",
+                    "simplified": "天",
+                    "pinyin": "",
+                    "english": ""
+                  },
+                  {
+                    "id": "b3l3g6-cf2-w8",
+                    "traditional": "冷",
+                    "simplified": "冷",
+                    "pinyin": "",
+                    "english": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "b3l3g6-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "這個學期王小明很用功，考試的成績也一次比一次進步了。",
+              "simplified": "这个学期王小明很用功，考试的成绩也一次比一次进步了。",
+              "pinyin": "Zhège xuéqī Wáng Xiǎomíng hěn yònggōng, kǎoshì de chéngjī yě yí cì bǐ yí cì jìnbù le.",
+              "english": "Wang Xiaoming studied very hard this semester, and his test scores improved with each exam.",
+              "words": [
+                {
+                  "id": "b3l3g6-e1-w1",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w2",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w3",
+                  "traditional": "學",
+                  "simplified": "学",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w4",
+                  "traditional": "期",
+                  "simplified": "期",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w5",
+                  "traditional": "王",
+                  "simplified": "王",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w6",
+                  "traditional": "小",
+                  "simplified": "小",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w7",
+                  "traditional": "明",
+                  "simplified": "明",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w8",
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w9",
+                  "traditional": "用",
+                  "simplified": "用",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w10",
+                  "traditional": "功",
+                  "simplified": "功",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w11",
+                  "traditional": "考",
+                  "simplified": "考",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w12",
+                  "traditional": "試",
+                  "simplified": "试",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w13",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w14",
+                  "traditional": "成",
+                  "simplified": "成",
+                  "pinyin": "chéng",
+                  "english": "to turn into"
+                },
+                {
+                  "id": "b3l3g6-e1-w15",
+                  "traditional": "績",
+                  "simplified": "绩",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w16",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w17",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w18",
+                  "traditional": "次",
+                  "simplified": "次",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w19",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w20",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w21",
+                  "traditional": "次",
+                  "simplified": "次",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e1-w22",
+                  "traditional": "進步",
+                  "simplified": "进步",
+                  "pinyin": "jìnbù",
+                  "english": "progress"
+                },
+                {
+                  "id": "b3l3g6-e1-w23",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g6-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這個地區因為工廠越來越多的關係，空氣一年比一年差了。",
+              "simplified": "这个地区因为工厂越来越多的关系，空气一年比一年差了。",
+              "pinyin": "Zhège dìqū yīnwèi gōngchǎng yuè lái yuè duō de guānxi, kōngqì yì nián bǐ yì nián chà le.",
+              "english": "Because there are more and more factories in this region, the air quality has worsened year by year.",
+              "words": [
+                {
+                  "id": "b3l3g6-e2-w1",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w2",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w3",
+                  "traditional": "地",
+                  "simplified": "地",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w4",
+                  "traditional": "區",
+                  "simplified": "区",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w5",
+                  "traditional": "因",
+                  "simplified": "因",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w6",
+                  "traditional": "為",
+                  "simplified": "为",
+                  "pinyin": "wèi",
+                  "english": "for"
+                },
+                {
+                  "id": "b3l3g6-e2-w7",
+                  "traditional": "工",
+                  "simplified": "工",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w8",
+                  "traditional": "廠",
+                  "simplified": "厂",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w9",
+                  "traditional": "越",
+                  "simplified": "越",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w10",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w11",
+                  "traditional": "越",
+                  "simplified": "越",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w12",
+                  "traditional": "多",
+                  "simplified": "多",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w13",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w14",
+                  "traditional": "關",
+                  "simplified": "关",
+                  "pinyin": "guān",
+                  "english": "to lock up"
+                },
+                {
+                  "id": "b3l3g6-e2-w15",
+                  "traditional": "係",
+                  "simplified": "系",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w16",
+                  "traditional": "空",
+                  "simplified": "空",
+                  "pinyin": "kōng",
+                  "english": "empty"
+                },
+                {
+                  "id": "b3l3g6-e2-w17",
+                  "traditional": "氣",
+                  "simplified": "气",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w18",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w19",
+                  "traditional": "年",
+                  "simplified": "年",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w20",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w21",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w22",
+                  "traditional": "年",
+                  "simplified": "年",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w23",
+                  "traditional": "差",
+                  "simplified": "差",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e2-w24",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "",
+                  "english": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l3g6-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "他的廚藝在不斷練習之下，做出來的菜餚一次比一次可口。",
+              "simplified": "他的厨艺在不断练习之下，做出来的菜餚一次比一次可口。",
+              "pinyin": "Tā de chúyì zài búduàn liànxí zhī xià, zuò chūlái de càiyáo yí cì bǐ yí cì kěkǒu.",
+              "english": "Under continuous practice of culinary skills, the dishes he prepares become more delicious every time.",
+              "words": [
+                {
+                  "id": "b3l3g6-e3-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w2",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w3",
+                  "traditional": "廚",
+                  "simplified": "厨",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w4",
+                  "traditional": "藝",
+                  "simplified": "艺",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w5",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w6",
+                  "traditional": "不斷",
+                  "simplified": "不断",
+                  "pinyin": "búduàn",
+                  "english": "continuously"
+                },
+                {
+                  "id": "b3l3g6-e3-w7",
+                  "traditional": "練",
+                  "simplified": "练",
+                  "pinyin": "liàn",
+                  "english": "to practice"
+                },
+                {
+                  "id": "b3l3g6-e3-w8",
+                  "traditional": "習",
+                  "simplified": "习",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w9",
+                  "traditional": "之",
+                  "simplified": "之",
+                  "pinyin": "zhī",
+                  "english": "possessive particle"
+                },
+                {
+                  "id": "b3l3g6-e3-w10",
+                  "traditional": "下",
+                  "simplified": "下",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w11",
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w12",
+                  "traditional": "出",
+                  "simplified": "出",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w13",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w14",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w15",
+                  "traditional": "菜",
+                  "simplified": "菜",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w16",
+                  "traditional": "餚",
+                  "simplified": "餚",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w17",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w18",
+                  "traditional": "次",
+                  "simplified": "次",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w19",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w20",
+                  "traditional": "一",
+                  "simplified": "一",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w21",
+                  "traditional": "次",
+                  "simplified": "次",
+                  "pinyin": "",
+                  "english": ""
+                },
+                {
+                  "id": "b3l3g6-e3-w22",
+                  "traditional": "可",
+                  "simplified": "可",
+                  "pinyin": "kě",
+                  "english": "can"
+                },
+                {
+                  "id": "b3l3g6-e3-w23",
+                  "traditional": "口",
+                  "simplified": "口",
+                  "pinyin": "kǒu",
+                  "english": "mouth"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the Sentences",
+        "exercisePreview": "Practice using 一次比一次 in context.",
+        "exerciseInstruction": "Choose the best option to complete the statement.",
+        "questions": [
+          {
+            "id": "b3l3g6-q1",
+            "prompt": "運動員經過嚴格的培訓，在比賽中的表現___出色。",
+            "options": [
+              "一次比一次",
+              "不僅",
+              "不如"
+            ],
+            "answer": [
+              "一次比一次"
+            ]
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B3L03-D02",
+      "title": "短文 · 貨比三家不吃虧 · Shopping Around to Get the Best Deal",
+      "setting": "短文閱讀 · Reading narrative",
+      "printedPages": [
+        84,
+        85
+      ],
+      "audioReference": "03-2-1",
+      "grammarFocus": [
+        "不僅…也/還…",
+        "一次比一次"
+      ],
+      "lines": [
+        {
+          "id": "b3l3d2-1",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "在現代消費社會中，每個人都希望能「買得開心、用得放心」。",
+            "simplified": "在现代消费社会中，每个人都希望能「买得开心、用得放心」。",
+            "pinyin": "",
+            "english": "In modern consumer society, everyone hopes to 'buy with joy and use with peace of mind.'"
+          }
+        },
+        {
+          "id": "b3l3d2-2",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "俗話說「貨比三家不吃虧」，意思是在購買貴重物品前，多比較幾家商店的價格與品質，才不會吃虧上當。",
+            "simplified": "俗话说「货比三家不吃亏」，意思是在购买贵重物品前，多比较几家商店的价格与品质，才不会吃亏上当。",
+            "pinyin": "",
+            "english": "As the proverb says, 'Shop around and you won't suffer a loss,' meaning before purchasing expensive items, compare prices and quality across several stores so you won't get cheated."
+          }
+        },
+        {
+          "id": "b3l3d2-3",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "以前人們為了比價，得跑好幾家實體店鋪，費時又費力。",
+            "simplified": "以前人们为了比价，得跑好几家实体店鋪，费时又费力。",
+            "pinyin": "",
+            "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious."
+          }
+        },
+        {
+          "id": "b3l3d2-4",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "現在網路科技發達，大家不僅能透過比價網站輕鬆查詢價格，還能參考其他消費者的評價。",
+            "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查詢价格，还能参考其他消费者的评价。",
+            "pinyin": "",
+            "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers."
+          }
+        },
+        {
+          "id": "b3l3d2-5",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "消費者變得一次比一次聰明，商家也一年比一年更注重產品質量與售後服務。",
+            "simplified": "消费者变得一次比一次聪明，商家也一年比一年更注重产品质量与售后服务。",
+            "pinyin": "",
+            "english": "Consumers become smarter each time, and businesses focus more on product quality and customer service year after year."
+          }
+        }
+      ]
+    },
+    "completionTitle": "Lesson 3 Complete",
+    "completionDescription": "Congratulations! You have completed Lesson 3.",
+    "nextBookLabel": "Book 3 Lesson 4 Part 1"
+  }
+}

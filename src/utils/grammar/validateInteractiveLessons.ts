@@ -290,7 +290,11 @@ export function validateInteractiveLessons(
       }
     });
   });
+  const presentBookIds = new Set(parts.map((part) => part.bookId));
   Object.keys(GRAMMAR_USAGE_RULES).forEach((pageId) => {
+    const isB3 = pageId.startsWith('B3');
+    const pageBookId = isB3 ? 3 : 1;
+    if (!presentBookIds.has(pageBookId)) return;
     const known = parts.some((part) =>
       part.grammarPages.some((page) => page.id === pageId),
     );

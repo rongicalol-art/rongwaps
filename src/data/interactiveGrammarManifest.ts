@@ -538,6 +538,198 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B1L16-G05"
       }
     ]
+  },
+  {
+    "id": "B3L01-P01-D01",
+    "bookId": 3,
+    "lessonId": 1,
+    "partId": 1,
+    "title": "Grammar 1–3 · My Dream",
+    "grammarPages": [
+      {
+        "id": "B3L01-G01-P29"
+      },
+      {
+        "id": "B3L01-G02-P30"
+      },
+      {
+        "id": "B3L01-G03-P32"
+      }
+    ]
+  },
+  {
+    "id": "B3L01-P02-D02",
+    "bookId": 3,
+    "lessonId": 1,
+    "partId": 2,
+    "title": "Grammar 4–6 · My Dream",
+    "grammarPages": [
+      {
+        "id": "B3L01-G04-P38"
+      },
+      {
+        "id": "B3L01-G05-P40"
+      },
+      {
+        "id": "B3L01-G06-P42"
+      }
+    ]
+  },
+  {
+    "id": "B3L02-P01-D01",
+    "bookId": 3,
+    "lessonId": 2,
+    "partId": 1,
+    "title": "Grammar 1–4 · Convenience Stores Are So Convenient",
+    "grammarPages": [
+      {
+        "id": "B3L02-G01-P51"
+      },
+      {
+        "id": "B3L02-G02-P52"
+      },
+      {
+        "id": "B3L02-G03-P53"
+      },
+      {
+        "id": "B3L02-G04-P54"
+      }
+    ]
+  },
+  {
+    "id": "B3L02-P02-D02",
+    "bookId": 3,
+    "lessonId": 2,
+    "partId": 2,
+    "title": "Grammar 5–7 · Convenience Stores Are So Convenient",
+    "grammarPages": [
+      {
+        "id": "B3L02-G05-P62"
+      },
+      {
+        "id": "B3L02-G06-P64"
+      },
+      {
+        "id": "B3L02-G07-P65"
+      }
+    ]
+  },
+  {
+    "id": "B3L03-P01-D01",
+    "bookId": 3,
+    "lessonId": 3,
+    "partId": 1,
+    "title": "Grammar 1–4 · It Doesn't Hurt to Shop Around",
+    "grammarPages": [
+      {
+        "id": "B3L03-G01-P78"
+      },
+      {
+        "id": "B3L03-G02-P80"
+      },
+      {
+        "id": "B3L03-G03-P81"
+      },
+      {
+        "id": "B3L03-G04-P82"
+      }
+    ]
+  },
+  {
+    "id": "B3L03-P02-D02",
+    "bookId": 3,
+    "lessonId": 3,
+    "partId": 2,
+    "title": "Grammar 5–6 · It Doesn't Hurt to Shop Around",
+    "grammarPages": [
+      {
+        "id": "B3L03-G05-P88"
+      },
+      {
+        "id": "B3L03-G06-P90"
+      }
+    ]
+  },
+  {
+    "id": "B3L04-P01-D01",
+    "bookId": 3,
+    "lessonId": 4,
+    "partId": 1,
+    "title": "Grammar 1–4 · The Baby's Full Month",
+    "grammarPages": [
+      {
+        "id": "B3L04-G01-P101"
+      },
+      {
+        "id": "B3L04-G02-P102"
+      },
+      {
+        "id": "B3L04-G03-P103"
+      },
+      {
+        "id": "B3L04-G04-P105"
+      }
+    ]
+  },
+  {
+    "id": "B3L04-P02-D02",
+    "bookId": 3,
+    "lessonId": 4,
+    "partId": 2,
+    "title": "Grammar 5–8 · The Baby's Full Month",
+    "grammarPages": [
+      {
+        "id": "B3L04-G05-P113"
+      },
+      {
+        "id": "B3L04-G06-P114"
+      },
+      {
+        "id": "B3L04-G07-P115"
+      },
+      {
+        "id": "B3L04-G08-P117"
+      }
+    ]
+  },
+  {
+    "id": "B3L05-P01-D01",
+    "bookId": 3,
+    "lessonId": 5,
+    "partId": 1,
+    "title": "Grammar 1–4 · Earthquakes and Typhoons",
+    "grammarPages": [
+      {
+        "id": "B3L05-G01-P128"
+      },
+      {
+        "id": "B3L05-G02-P130"
+      },
+      {
+        "id": "B3L05-G03-P132"
+      },
+      {
+        "id": "B3L05-G04-P133"
+      }
+    ]
+  },
+  {
+    "id": "B3L05-P02-D02",
+    "bookId": 3,
+    "lessonId": 5,
+    "partId": 2,
+    "title": "Grammar 5–7 · Earthquakes and Typhoons",
+    "grammarPages": [
+      {
+        "id": "B3L05-G05-P141"
+      },
+      {
+        "id": "B3L05-G06-P143"
+      },
+      {
+        "id": "B3L05-G07-P144"
+      }
+    ]
   }
 ];
 

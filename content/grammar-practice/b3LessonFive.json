@@ -1,0 +1,611 @@
+{
+  "B3L05-G01-P128": {
+    "bookPage": 128,
+    "title": "Practice: 萬一",
+    "allowWords": [
+      "萬一"
+    ],
+    "items": [
+      {
+        "id": "b3l5g1-p1",
+        "source": "p.128 #1",
+        "kind": "slot-build",
+        "prompt": "Precaution against bad weather:",
+        "tiles": [
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          },
+          {
+            "traditional": "一連",
+            "simplified": "一连",
+            "pinyin": "yìlián"
+          },
+          {
+            "traditional": "以為",
+            "simplified": "以为",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "結果",
+            "simplified": "结果",
+            "pinyin": "jiéguǒ"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "背包裡最好放一件輕便雨衣，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "萬一"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "遇上午後雷陣雨才不會淋濕。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "背包裡最好放一件輕便雨衣，萬一遇上午後雷陣雨才不會淋濕。",
+          "simplified": "背包里最好放一件轻便雨衣，万一遇上午后雷阵雨才不会淋濕。",
+          "pinyin": "Bēibāo lǐ zuì hǎo fàng yí jiàn qīngbiàn yǔyī, wànyī yù shàng wǔhòu léizhènyǔ cái bú huì línshī.",
+          "english": "It's best to put a lightweight raincoat in your backpack, in case you encounter an afternoon thunderstorm so you won't get soaked."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "一連"
+            ],
+            "note": "一連 indicates continuous duration across units of time."
+          },
+          {
+            "placed": [
+              "以為"
+            ],
+            "note": "以為 expresses a mistaken belief or assumption."
+          },
+          {
+            "placed": [
+              "結果"
+            ],
+            "note": "結果 introduces an outcome or unintended consequence."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L05-G02-P130": {
+    "bookPage": 130,
+    "title": "Practice: 一連",
+    "allowWords": [
+      "一連"
+    ],
+    "items": [
+      {
+        "id": "b3l5g2-p1",
+        "source": "p.130 #1",
+        "kind": "slot-build",
+        "prompt": "Describing successive cloudy days:",
+        "tiles": [
+          {
+            "traditional": "一連",
+            "simplified": "一连",
+            "pinyin": "yìlián"
+          },
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          },
+          {
+            "traditional": "以為",
+            "simplified": "以为",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "也好",
+            "simplified": "也好",
+            "pinyin": "yěhǎo"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "臺北的冬天常常陰雨綿綿，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "一連"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "兩週都見不到陽光。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "臺北的冬天常常陰雨綿綿，一連兩週都見不到陽光。",
+          "simplified": "台北的冬天常常陰雨綿綿，一连两周都见不到阳光。",
+          "pinyin": "Táiběi de dōngtiān chángcháng yīnyǔ miánmián, yìlián liǎng zhōu dōu jiàn bú dào yángguāng.",
+          "english": "Taipei's winter is often overcast and drizzly, with no sunshine seen for two weeks in a row."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "萬一"
+            ],
+            "note": "萬一 introduces an unfavorable low-probability contingency."
+          },
+          {
+            "placed": [
+              "以為"
+            ],
+            "note": "以為 expresses a mistaken belief or assumption."
+          },
+          {
+            "placed": [
+              "也好"
+            ],
+            "note": "也好 expresses supportive agreement with a suggestion."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L05-G03-P132": {
+    "bookPage": 132,
+    "title": "Practice: 以為…沒想到…",
+    "allowWords": [
+      "以為"
+    ],
+    "items": [
+      {
+        "id": "b3l5g3-p1",
+        "source": "p.132 #1",
+        "kind": "slot-build",
+        "prompt": "Surprised by exam performance:",
+        "tiles": [
+          {
+            "traditional": "以為",
+            "simplified": "以为",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "一連",
+            "simplified": "一连",
+            "pinyin": "yìlián"
+          },
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          },
+          {
+            "traditional": "甚至",
+            "simplified": "甚至",
+            "pinyin": "shènzhì"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "以為"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "這次期末考考砸了，[沒想到"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "我以為這次期末考考砸了，沒想到竟然拿到了最高分！",
+          "simplified": "我以为这次期末考考砸了，没想到竟然拿到了最高分！",
+          "pinyin": "Wǒ yǐwéi zhè cì qīmòkǎo kǎo zá le, méi xiǎngdào jìngrán ná dào le zuì gāo fēn!",
+          "english": "I thought I messed up this final exam; unexpectedly I actually scored the highest mark!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "一連"
+            ],
+            "note": "一連 indicates continuous duration across units of time."
+          },
+          {
+            "placed": [
+              "萬一"
+            ],
+            "note": "萬一 introduces an unfavorable low-probability contingency."
+          },
+          {
+            "placed": [
+              "甚至"
+            ],
+            "note": "甚至 introduces an extreme case or escalation."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L05-G04-P133": {
+    "bookPage": 133,
+    "title": "Practice: 也好",
+    "allowWords": [
+      "也好"
+    ],
+    "items": [
+      {
+        "id": "b3l5g4-p1",
+        "source": "p.133 #1",
+        "kind": "slot-build",
+        "prompt": "Approving a friend's plan to postpone travel:",
+        "tiles": [
+          {
+            "traditional": "也好",
+            "simplified": "也好",
+            "pinyin": "yěhǎo"
+          },
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          },
+          {
+            "traditional": "一連",
+            "simplified": "一连",
+            "pinyin": "yìlián"
+          },
+          {
+            "traditional": "以為",
+            "simplified": "以为",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "既然景區目前在維修，我們改期再去"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "也好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，免得多跑一趟。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "既然景區目前在維修，我們改期再去也好，免得多跑一趟。",
+          "simplified": "既然景区目前在维修，我们改期再去也好，免得多跑一趟。",
+          "pinyin": "Jìrán jǐngqū mùqián zài wéixiū, wǒmen gǎiqī zài qù yě hǎo, miǎnde duō pǎo yí tàng.",
+          "english": "Since the scenic area is currently under maintenance, rescheduling our visit works well too, avoiding a wasted trip."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "萬一"
+            ],
+            "note": "萬一 introduces an unfavorable low-probability contingency."
+          },
+          {
+            "placed": [
+              "一連"
+            ],
+            "note": "一連 indicates continuous duration across units of time."
+          },
+          {
+            "placed": [
+              "以為"
+            ],
+            "note": "以為 expresses a mistaken belief or assumption."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L05-G05-P141": {
+    "bookPage": 141,
+    "title": "Practice: 結果",
+    "allowWords": [
+      "結果"
+    ],
+    "items": [
+      {
+        "id": "b3l5g5-p1",
+        "source": "p.141 #1",
+        "kind": "slot-build",
+        "prompt": "Describing an unexpected result of rushing:",
+        "tiles": [
+          {
+            "traditional": "結果",
+            "simplified": "结果",
+            "pinyin": "jiéguǒ"
+          },
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          },
+          {
+            "traditional": "一連",
+            "simplified": "一连",
+            "pinyin": "yìlián"
+          },
+          {
+            "traditional": "也好",
+            "simplified": "也好",
+            "pinyin": "yěhǎo"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他出門時走得太急，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "結果"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "把重要的合約落在客廳桌上了。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "他出門時走得太急，結果把重要的合約落在客廳桌上了。",
+          "simplified": "他出门时走得太急，结果把重要的合约落在客厅桌上了。",
+          "pinyin": "Tā chūmén shí zǒu de tài jí, jiéguǒ bǎ zhòngyào de héyuē là zài kètīng zhuō shàng le.",
+          "english": "He walked out in too much of a rush, and as a result left the important contract behind on the living room table."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "萬一"
+            ],
+            "note": "萬一 introduces an unfavorable low-probability contingency."
+          },
+          {
+            "placed": [
+              "一連"
+            ],
+            "note": "一連 indicates continuous duration across units of time."
+          },
+          {
+            "placed": [
+              "也好"
+            ],
+            "note": "也好 expresses supportive agreement with a suggestion."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L05-G06-P143": {
+    "bookPage": 143,
+    "title": "Practice: 甚至",
+    "allowWords": [
+      "甚至"
+    ],
+    "items": [
+      {
+        "id": "b3l5g6-p1",
+        "source": "p.143 #1",
+        "kind": "slot-build",
+        "prompt": "Describing someone's severe phone addiction:",
+        "tiles": [
+          {
+            "traditional": "甚至",
+            "simplified": "甚至",
+            "pinyin": "shènzhì"
+          },
+          {
+            "traditional": "結果",
+            "simplified": "结果",
+            "pinyin": "jiéguǒ"
+          },
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          },
+          {
+            "traditional": "也好",
+            "simplified": "也好",
+            "pinyin": "yěhǎo"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他走路時機不離手，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "甚至"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "過馬路時也盯著螢幕看，非常危險。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "他走路時機不離手，甚至過馬路時也盯著螢幕看，非常危險。",
+          "simplified": "他走路时机不离手，甚至过马路时也盯着螢幕看，非常危险。",
+          "pinyin": "Tā zǒulù shí jī bù lí shǒu, shènzhì guò mǎlù shí yě dīng zhe yíngmù kàn, fēicháng wēixiǎn.",
+          "english": "He never lets go of his phone when walking, even staring at the screen while crossing the street, which is very dangerous."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "結果"
+            ],
+            "note": "結果 introduces an outcome or unintended consequence."
+          },
+          {
+            "placed": [
+              "萬一"
+            ],
+            "note": "萬一 introduces an unfavorable low-probability contingency."
+          },
+          {
+            "placed": [
+              "也好"
+            ],
+            "note": "也好 expresses supportive agreement with a suggestion."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L05-G07-P144": {
+    "bookPage": 144,
+    "title": "Practice: 以東/西/南/北",
+    "allowWords": [
+      "以東"
+    ],
+    "items": [
+      {
+        "id": "b3l5g7-p1",
+        "source": "p.144 #1",
+        "kind": "slot-build",
+        "prompt": "Describing scenic region:",
+        "tiles": [
+          {
+            "traditional": "以東",
+            "simplified": "以东",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "甚至",
+            "simplified": "甚至",
+            "pinyin": "shènzhì"
+          },
+          {
+            "traditional": "結果",
+            "simplified": "结果",
+            "pinyin": "jiéguǒ"
+          },
+          {
+            "traditional": "萬一",
+            "simplified": "万一",
+            "pinyin": "wànyī"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "基隆港"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "以東"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的海岸線以奇石峭壁聞名，吸引了無數攝影愛好者。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "基隆港以東的海岸線以奇石峭壁聞名，吸引了無數攝影愛好者。",
+          "simplified": "基隆港以东的海岸线以奇石峭壁闻名，吸引了无数摄影爱好者。",
+          "pinyin": "Jīlóng Gǎng yǐ dōng de hǎi'ànxiàn yǐ qíshí qiàobì wénmíng, xīyǐn le wúshù shèyǐng àihàozhě.",
+          "english": "The coastline east of Keelung Port is famous for strange rocks and precipitous cliffs, attracting countless photography lovers."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "甚至"
+            ],
+            "note": "甚至 introduces an extreme case or escalation."
+          },
+          {
+            "placed": [
+              "結果"
+            ],
+            "note": "結果 introduces an outcome or unintended consequence."
+          },
+          {
+            "placed": [
+              "萬一"
+            ],
+            "note": "萬一 introduces an unfavorable low-probability contingency."
+          }
+        ]
+      }
+    ]
+  }
+}

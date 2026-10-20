@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "version": "53d90410f3741e7c",
-  "generatedAt": "2026-10-19T04:20:06.016Z",
-  "totalCount": 48,
+  "version": "fbe34101859e13e6",
+  "generatedAt": "2026-10-20T14:20:09.711Z",
+  "totalCount": 58,
   "books": [
     {
       "bookId": 1,
@@ -10,6 +10,13 @@
       "path": "/data/dialogue-alignment/book-1.json",
       "sha256": "53d90410f3741e7c0151e3d631393e0ad9532c06eaefe1bcc5cbc19e6400fd3d",
       "bytes": 1238481
+    },
+    {
+      "bookId": 3,
+      "count": 10,
+      "path": "/data/dialogue-alignment/book-3.json",
+      "sha256": "fbe34101859e13e6bd1b267ab4a332c80797e5c4bced5bf21dac1babb295eb73",
+      "bytes": 23014
     }
   ]
 }

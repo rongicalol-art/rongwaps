@@ -1,0 +1,524 @@
+{
+  "B3L01-G01-P29": {
+    "bookPage": 29,
+    "title": "Practice: 可以說是",
+    "allowWords": [
+      "可以說是"
+    ],
+    "items": [
+      {
+        "id": "b3l1g1-p1",
+        "source": "p.29 #1",
+        "kind": "slot-build",
+        "prompt": "Complimenting someone's achievement:",
+        "tiles": [
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme/duōme"
+          },
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          },
+          {
+            "traditional": "算了吧",
+            "simplified": "算了吧",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他學了三年中文，現在"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "可以說是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "個中國通了。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "他學了三年中文，現在可以說是個中國通了。",
+          "simplified": "他学了三年中文，现在可以说是个中国通了。",
+          "pinyin": "Tā xué le sān nián zhōngwén, xiànzài kěyǐ shuō shì ge zhōngguótōng le.",
+          "english": "He has studied Chinese for three years; you could say he is an expert on China now."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "多麼"
+            ],
+            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
+          },
+          {
+            "placed": [
+              "再說"
+            ],
+            "note": "再說 introduces an additional reason, not a descriptive summary."
+          },
+          {
+            "placed": [
+              "算了吧"
+            ],
+            "note": "算了吧 expresses resignation or dropping an idea, which contradicts the sentence context."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L01-G02-P30": {
+    "bookPage": 30,
+    "title": "Practice: 多麼…啊",
+    "allowWords": [
+      "多麼"
+    ],
+    "items": [
+      {
+        "id": "b3l1g2-p1",
+        "source": "p.30 #1",
+        "kind": "slot-build",
+        "prompt": "Admiring a great teacher:",
+        "tiles": [
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme/duōme"
+          },
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "算了吧",
+            "simplified": "算了吧",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "順便",
+            "simplified": "顺便",
+            "pinyin": "shùnbiàn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "能遇到這麼有愛心的好老師，我們"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "多麼"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "幸運啊！"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "能遇到這麼有愛心的好老師，我們多麼幸運啊！",
+          "simplified": "能遇到这么有爱心的好老师，我们多么幸运啊！",
+          "pinyin": "Néng yùdào zhème yǒu àixīn de hǎo lǎoshī, wǒmen duōme xìngyùn a!",
+          "english": "To meet such a caring teacher, how fortunate we are!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "可以說是"
+            ],
+            "note": "可以說是 means \"you could say that\", which does not fit this slot."
+          },
+          {
+            "placed": [
+              "算了吧"
+            ],
+            "note": "算了吧 expresses resignation or dropping an idea, which contradicts the sentence context."
+          },
+          {
+            "placed": [
+              "順便"
+            ],
+            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L01-G03-P32": {
+    "bookPage": 32,
+    "title": "Practice: 再說",
+    "allowWords": [
+      "再說"
+    ],
+    "items": [
+      {
+        "id": "b3l1g3-p1",
+        "source": "p.32 #1",
+        "kind": "slot-build",
+        "prompt": "Giving reasons not to go out in bad weather:",
+        "tiles": [
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          },
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme/duōme"
+          },
+          {
+            "traditional": "算了",
+            "simplified": "算了",
+            "pinyin": "suànle"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "外面冷得很，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "再說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "快下大雨了，我們別出門了吧。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "外面冷得很，再說快下大雨了，我們別出門了吧。",
+          "simplified": "外面冷得很，再说快下大雨了，我们别出门了吧。",
+          "pinyin": "Wàimiàn lěng de hěn, zàishuō kuài xià dàyǔ le, wǒmen bié chūmén le ba.",
+          "english": "It's freezing outside; besides, it's about to pour rain, let's not go out."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "可以說是"
+            ],
+            "note": "可以說是 means \"you could say that\", which does not fit this slot."
+          },
+          {
+            "placed": [
+              "多麼"
+            ],
+            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
+          },
+          {
+            "placed": [
+              "算了"
+            ],
+            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L01-G04-P38": {
+    "bookPage": 38,
+    "title": "Practice: 而",
+    "allowWords": [
+      "而"
+    ],
+    "items": [
+      {
+        "id": "b3l1g4-p1",
+        "source": "p.38 #1",
+        "kind": "slot-build",
+        "prompt": "Explaining someone's decision:",
+        "tiles": [
+          {
+            "traditional": "而",
+            "simplified": "而",
+            "pinyin": "ér"
+          },
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme/duōme"
+          },
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他因為熱愛中華文化，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "而"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "決定到臺灣留學。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "他因為熱愛中華文化，而決定到臺灣留學。",
+          "simplified": "他因为热爱中华文化，而决定到台湾留学。",
+          "pinyin": "Tā yīnwèi rè'ài zhōnghuá wénhuà, ér juédìng dào Táiwān liúxué.",
+          "english": "Because he loves Chinese culture, he decided to study in Taiwan."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "再說"
+            ],
+            "note": "再說 introduces an additional reason, not a descriptive summary."
+          },
+          {
+            "placed": [
+              "多麼"
+            ],
+            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
+          },
+          {
+            "placed": [
+              "可以說是"
+            ],
+            "note": "可以說是 means \"you could say that\", which does not fit this slot."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L01-G05-P40": {
+    "bookPage": 40,
+    "title": "Practice: V出",
+    "allowWords": [
+      "出"
+    ],
+    "items": [
+      {
+        "id": "b3l1g5-p1",
+        "source": "p.40 #1",
+        "kind": "slot-build",
+        "prompt": "Describing an author's success:",
+        "tiles": [
+          {
+            "traditional": "出",
+            "simplified": "出",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "而",
+            "simplified": "而",
+            "pinyin": "ér"
+          },
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme/duōme"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那位作家終於寫"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "出"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了一部令人感動的劇本。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "那位作家終於寫出了一部令人感動的劇本。",
+          "simplified": "那位作家终于写出了一部令人感动的剧本。",
+          "pinyin": "Nà wèi zuòjiā zhōngyú xiě chū le yí bù lìngrén gǎndòng de jùběn.",
+          "english": "That author finally produced a moving script."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "而"
+            ],
+            "note": "而 is a coordinating conjunction connecting clauses."
+          },
+          {
+            "placed": [
+              "再說"
+            ],
+            "note": "再說 introduces an additional reason, not a descriptive summary."
+          },
+          {
+            "placed": [
+              "多麼"
+            ],
+            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L01-G06-P42": {
+    "bookPage": 42,
+    "title": "Practice: 像…這樣子",
+    "allowWords": [
+      "像"
+    ],
+    "items": [
+      {
+        "id": "b3l1g6-p1",
+        "source": "p.42 #1",
+        "kind": "slot-build",
+        "prompt": "Commenting on a dedicated friend:",
+        "tiles": [
+          {
+            "traditional": "像",
+            "simplified": "像",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "而",
+            "simplified": "而",
+            "pinyin": "ér"
+          },
+          {
+            "traditional": "出",
+            "simplified": "出",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": ""
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "像"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他這樣子努力奮鬥的青年，大家都非常佩服。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "像他這樣子努力奮鬥的青年，大家都非常佩服。",
+          "simplified": "像他这样子努力奋鬥的青年，大家都非常佩服。",
+          "pinyin": "Xiàng tā zhèyàngzi nǔlì fèndòu de qīngnián, dàjiā dōu fēicháng pèifú.",
+          "english": "A young person striving hard like him, everyone admires greatly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "而"
+            ],
+            "note": "而 is a coordinating conjunction connecting clauses."
+          },
+          {
+            "placed": [
+              "出"
+            ],
+            "note": "出 follows a verb to indicate bringing a result into existence (V出)."
+          },
+          {
+            "placed": [
+              "再說"
+            ],
+            "note": "再說 introduces an additional reason, not a descriptive summary."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "bookId": 3,
+  "count": 10,
+  "items": [
+    {
+      "id": "B3L01-R01",
+      "bookId": 3,
+      "lessonId": 1,
+      "dialogueNumber": 1,
+      "title": "對話 · Dialogue",
+      "setting": "在咖啡店 · At the coffee shop",
+      "printedPages": [
+        21,
+        22,
+        23
+      ],
+      "audioReference": "01-1-1",
+      "paragraphs": [
+        {
+          "speaker": "朋子",
+          "traditional": "東賢，沒想到才兩年沒見，你已經是個大明星了。你演的戲，我都看了，我可以說是你的戲迷喔，快幫我簽個名吧！",
+          "simplified": "东賢，没想到才两年没见，你已经是个大明星了。你演的戏，我都看了，我可以说是你的戏迷喔，快帮我签个名吧！",
+          "pinyin": "",
+          "english": "Dongxian, I never thought that after only two years, you are already a big star! I've watched all the dramas you acted in; you could say I am a fan of yours! Quickly sign an autograph for me!"
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "別這麼說，我還要繼續努力。",
+          "simplified": "别这么说，我还要继续努力。",
+          "pinyin": "",
+          "english": "Don't say that; I still need to keep working hard."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "我覺得你已經很努力了。而且，你的中文進步得這麼快，是怎麼做到的？",
+          "simplified": "我觉得你已经很努力了。而且，你的中文进步得这么快，是怎么做到的？",
+          "pinyin": "",
+          "english": "I think you are already very hardworking. And your Chinese improved so fast, how did you manage that?"
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "我把劇本裡要說的部分，都請老師錄了音，一有空就不斷地聽，不斷地練習。這樣子才學得好、學得快。",
+          "simplified": "我把剧本里要说的部分，都请老师录了音，一有空就不断地听，不断地练习。这样子才学得好、学得快。",
+          "pinyin": "",
+          "english": "I had the teacher record all the lines I needed to speak in the script, and whenever I had free time I listened and practiced continuously. That way I could learn well and fast."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "這真是個好辦法，難怪你進步得這麼快。對了，你對未來有什麼計畫？",
+          "simplified": "这真是个好办法，难怪你进步得这么快。对了，你对未来有什么计画？",
+          "pinyin": "",
+          "english": "That's really a great method, no wonder you improved so quickly. By the way, what plans do you have for the future?"
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "我從小就想當導演，腦子裡每天都想著這件事。有時連做夢都夢到自己拍電影的樣子，所以我打算明年開始學拍電影。",
+          "simplified": "我从小就想当导演，脑子里每天都想着这件事。有时连做梦都梦到自己拍电影的样子，所以我打算明年开始学拍电影。",
+          "pinyin": "",
+          "english": "Ever since I was little I wanted to be a director, and I think about this every day. Sometimes I even dream of myself filming movies, so I plan to start learning film directing next year."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "導演？你長得這麼好看，身高也夠高，而且什麼角色都演得很好，不當演員多麼可惜啊！再說，觀眾也都很肯定你的表現。",
+          "simplified": "导演？你长得这么好看，身高也够高，而且什么角色都演得很好，不当演员多么可惜啊！再说，观众也都很肯定你的表现。",
+          "pinyin": "",
+          "english": "Director? You look so handsome, are tall enough, and act well in every role; how regrettable it would be if you didn't become an actor! Besides, audiences highly recognize your performance."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "導演還是可以演戲的。其實，要當好導演，不但得懂怎麼拍電影，也要教演員演戲，挑戰更大。",
+          "simplified": "导演还是可以演戏的。其实，要当好导演，不但得懂怎么拍电影，也要教演员演戏，挑战更大。",
+          "pinyin": "",
+          "english": "A director can still act. Actually, to be a good director, not only must one know how to make films, but one also has to guide actors; the challenge is even greater."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "我聽說不少導演為了把電影拍好，連家都很少回去，有的還因為這樣離婚了。不過，我想只要你有實力，就不怕挑戰了。",
+          "simplified": "我听说不少导演为了把电影拍好，连家都很少回去，有的还因为这样离婚了。不过，我想只要你有实力，就不怕挑战了。",
+          "pinyin": "",
+          "english": "I heard quite a few directors rarely go home just to make good movies, and some even got divorced because of this. But I think as long as you have real capability, you won't fear challenges."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "謝謝。今天能跟妳見面聊聊真好。",
+          "simplified": "谢谢。今天能跟你见面聊聊真好。",
+          "pinyin": "",
+          "english": "Thank you. It is really wonderful to meet and chat with you today."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "那你以後別再跟我說，因為要演總統、石油公司大老闆什麼的，沒時間跟朋友聚一聚。不管多忙，你也要留點兒時間給朋友啊！",
+          "simplified": "那你以后别再跟我说，因为要演总统、石油公司大老闆什么的，没时间跟朋友聚一聚。不管多忙，你也要留点儿时间给朋友啊！",
+          "pinyin": "",
+          "english": "Then don't tell me later that you have no time to gather with friends because you need to play a president or oil tycoon. No matter how busy, leave some time for friends!"
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "嗯！對了，也聊聊妳自己吧。妳學的是法律，以後要當律師吧？",
+          "simplified": "嗯！对了，也聊聊你自己吧。你学的是法律，以后要当律师吧？",
+          "pinyin": "",
+          "english": "Sure! By the way, let's talk about you. You study law, so you will become a lawyer in the future, right?"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "其實，我學法律是因為爸爸的要求。他希望我先當律師，將來有機會當上市長就更好了。",
+          "simplified": "其实，我学法律是因为爸爸的要求。他希望我先当律师，将来有机会当上市长就更好了。",
+          "pinyin": "",
+          "english": "Actually, I studied law because of my father's request. He hopes I first become a lawyer, and it would be even better if I have a chance to become mayor in the future."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "所以當市長是妳的夢想嗎？",
+          "simplified": "所以当市长是你的梦想吗？",
+          "pinyin": "",
+          "english": "So becoming mayor is your dream?"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "唉，誰想當市長啊？不過，從小我爸媽什麼事都替我安排好了，雖然不喜歡，我也只能忍耐。",
+          "simplified": "唉，谁想当市长啊？不过，从小我爸妈什么事都替我安排好了，虽然不喜欢，我也只能忍耐。",
+          "pinyin": "",
+          "english": "Sigh, who wants to be mayor? But since childhood my parents arranged everything for me; even though I don't like it, I can only endure it."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "其實，我們都不是小孩子了，自己的未來應該自己決定吧。",
+          "simplified": "其实，我们都不是小孩子了，自己的未来应该自己决定吧。",
+          "pinyin": "",
+          "english": "Actually, we are no longer children; our future should be decided by ourselves."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "就是說嘛！但是我爸媽的想法太保守了，一時很難改變他們。",
+          "simplified": "就是说嘛！但是我爸妈的想法太保守了，一时很难改变他们。",
+          "pinyin": "",
+          "english": "Exactly! But my parents' mindset is too conservative; it's very difficult to change them all at once."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "希望有一天，妳也能為了自己的夢想努力。",
+          "simplified": "希望有一天，你也能为了自己的梦想努力。",
+          "pinyin": "",
+          "english": "I hope that one day you can also strive for your own dream."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "嗯，我們一起加油吧！",
+          "simplified": "嗯，我们一起加油吧！",
+          "pinyin": "",
+          "english": "Yeah, let's cheer each other on together!"
+        }
+      ]
+    },
+    {
+      "id": "B3L01-R02",
+      "bookId": 3,
+      "lessonId": 1,
+      "dialogueNumber": 2,
+      "title": "短文 · 追求夢想的東賢 · Dongxian Pursuing His Dream",
+      "setting": "短文閱讀 · Reading narrative",
+      "printedPages": [
+        34,
+        35
+      ],
+      "audioReference": "01-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "電影是許多人生活中的休閒娛樂，但是要把一部電影拍好，可不是一件容易的事。",
+          "simplified": "电影是许多人生活中的休闲娱乐，但是要把一部电影拍好，可不是一件容易的事。",
+          "pinyin": "",
+          "english": "Movies are leisure entertainment in many people's lives, but making a good movie is by no means an easy task."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "東賢從小就對電影很有興趣，常常夢想自己能成為一位著名的導演。",
+          "simplified": "东賢从小就对电影很有兴趣，常常梦想自己能成为一位着名的导演。",
+          "pinyin": "",
+          "english": "Ever since childhood, Dongxian has been very interested in movies, often dreaming of becoming a famous director."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "為了追求這個夢想，東賢高中畢業後就決定到臺灣學習中文和電影製作。",
+          "simplified": "为了追求这个梦想，东賢高中毕业后就决定到台湾学习中文和电影制作。",
+          "pinyin": "",
+          "english": "In pursuit of this dream, after graduating from high school Dongxian decided to go to Taiwan to learn Chinese and filmmaking."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "起初，東賢的父母因為擔心他的未來而反對這個決定，希望他能留在韓國念商學。",
+          "simplified": "起初，东賢的父母因为担心他的未来而反对这个决定，希望他能留在韩国念商学。",
+          "pinyin": "",
+          "english": "Initially, Dongxian's parents opposed this decision because they worried about his future, hoping he would stay in Korea to study business."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "但東賢拿出自己的計畫書，向父母保證自己一定會認真學習、照顧好自己。",
+          "simplified": "但东賢拿出自己的计画书，向父母保证自己一定会认真学习、照顾好自己。",
+          "pinyin": "",
+          "english": "However, Dongxian presented his plan and guaranteed to his parents that he would study earnestly and take good care of himself."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "到了臺灣後，東賢一邊在大學念書，一邊在電影劇組實習，生活雖然忙碌但非常充實。",
+          "simplified": "到了台湾后，东賢一边在大学念书，一边在电影剧组实习，生活虽然忙碌但非常充实。",
+          "pinyin": "",
+          "english": "After arriving in Taiwan, Dongxian studied at university while interning on film sets; life was busy yet very fulfilling."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "東賢說：「追求夢想就像畫一張美麗的圖畫，只要不斷努力，就一定能畫出精彩的人生。」",
+          "simplified": "东賢说：「追求梦想就像画一张美丽的图画，只要不断努力，就一定能画出精彩的人生。」",
+          "pinyin": "",
+          "english": "Dongxian said: 'Pursuing a dream is like drawing a beautiful picture; as long as you work continuously, you will definitely paint a splendid life.'"
+        }
+      ]
+    },
+    {
+      "id": "B3L02-R01",
+      "bookId": 3,
+      "lessonId": 2,
+      "dialogueNumber": 1,
+      "title": "對話 · Dialogue",
+      "setting": "在便利商店 · At the convenience store",
+      "printedPages": [
+        44,
+        45,
+        46
+      ],
+      "audioReference": "02-1-1",
+      "paragraphs": [
+        {
+          "speaker": "尚恩",
+          "traditional": "朋子，臺灣的便利商店真的太神奇了！不僅能買東西，還能繳水電費、寄包裹，甚至還能買高鐵票！",
+          "simplified": "朋子，台湾的便利商店真的太神奇了！不仅能买东西，还能缴水电费、寄包裹，甚至还能买高铁票！",
+          "pinyin": "",
+          "english": "Tomoko, Taiwan's convenience stores are really amazing! Not only can you buy things, but you can also pay utility bills, send packages, and even buy high-speed rail tickets!"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "是啊，臺灣的超商密度可以說是世界第一呢。走幾步路就有一家，肚子餓了隨時都能買到熱騰騰的便當。",
+          "simplified": "是啊，台湾的超商密度可以说是世界第一呢。走几步路就有一家，肚子饿了随时都能买到热騰騰的便当。",
+          "pinyin": "",
+          "english": "Yes, Taiwan's convenience store density is practically number one in the world. There's one every few steps, and when you are hungry you can buy piping hot bento boxes anytime."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "我剛來臺灣的時候，看到店員一會兒煮咖啡，一會兒幫客人微波便當，一會兒又幫忙結帳，真是嚇了一跳！",
+          "simplified": "我刚来台湾的时候，看到店员一会儿煮咖啡，一会儿帮客人微波便当，一会儿又帮忙结帐，真是吓了一跳！",
+          "pinyin": "",
+          "english": "When I first came to Taiwan, seeing the clerk brewing coffee one moment, microwaving bento for customers the next, and helping check out right after, I was really astonished!"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "臺灣的超商店員樣樣精通，工作非常辛苦。",
+          "simplified": "台湾的超商店员样样精通，工作非常辛苦。",
+          "pinyin": "",
+          "english": "Taiwan's convenience store clerks master everything; their work is very hardworking."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "你今天也是來便利商店繳費的嗎？",
+          "simplified": "你今天也是来便利商店缴费的吗？",
+          "pinyin": "",
+          "english": "Did you come to the convenience store to pay bills today too?"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "不是，我是順便來拿網購的包裹，順便買杯冰美式咖啡。",
+          "simplified": "不是，我是顺便来拿网购的包裹，顺便买杯冰美式咖啡。",
+          "pinyin": "",
+          "english": "No, I came by the way to pick up an online shopping parcel, and pick up an iced Americano while I'm at it."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "我本來想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商買個便當吃算了。",
+          "simplified": "我本来想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商买个便当吃算了。",
+          "pinyin": "",
+          "english": "I originally wanted to go home and cook dinner, but I worked overtime and was too tired today. I guess never mind, I might as well just buy a bento at the convenience store."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "哈哈，偶爾吃一次沒關係啦。走，我們一起進去吹冷氣選便當！",
+          "simplified": "哈哈，偶爾吃一次没关系啦。走，我们一起进去吹冷气选便当！",
+          "pinyin": "",
+          "english": "Haha, having it once in a while is fine. Come on, let's go inside, enjoy the air conditioning and pick a bento!"
+        }
+      ]
+    },
+    {
+      "id": "B3L02-R02",
+      "bookId": 3,
+      "lessonId": 2,
+      "dialogueNumber": 2,
+      "title": "短文 · 臺灣超商的生活樂趣 · Convenience Store Life in Taiwan",
+      "setting": "短文閱讀 · Reading narrative",
+      "printedPages": [
+        57,
+        58
+      ],
+      "audioReference": "02-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "在臺灣，便利商店已經成為人們日常生活中不可缺少的一部分。",
+          "simplified": "在台湾，便利商店已经成为人们日常生活中不可缺少的一部分。",
+          "pinyin": "",
+          "english": "In Taiwan, convenience stores have become an indispensable part of people's daily lives."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "許多外國人來到臺灣，第一件印象深刻的事就是街頭巷尾隨處可見的超商。",
+          "simplified": "许多外国人来到台湾，第一件印象深刻的事就是街头巷尾随处可见的超商。",
+          "pinyin": "",
+          "english": "When many foreigners arrive in Taiwan, the first deep impression they have is the convenience stores seen everywhere on street corners."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "人們經過一整天忙碌的工作後，走進燈光明亮的便利商店，喝一杯香濃的咖啡，心情就放鬆了下來。",
+          "simplified": "人们经过一整天忙碌的工作后，走进灯光明亮的便利商店，喝一杯香浓的咖啡，心情就放松了下来。",
+          "pinyin": "",
+          "english": "After a busy day of work, people walk into the brightly lit convenience store and drink an aromatic coffee, relaxing their mood."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "現代人常用手機 App 來累積超商點數，兌換各種實用的生活用品或美食。",
+          "simplified": "现代人常用手机 App 来累积超商点数，兌换各种实用的生活用品或美食。",
+          "pinyin": "",
+          "english": "Modern people frequently use mobile apps to accumulate convenience store points and redeem various practical daily necessities or delicacies."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "便利商店不僅提供了極大的生活便利，更為現代都市人的生活增添了許多溫暖與樂趣。",
+          "simplified": "便利商店不仅提供了极大的生活便利，更为现代都市人的生活增添了许多温暖与乐趣。",
+          "pinyin": "",
+          "english": "Convenience stores not only provide immense daily convenience, but also add warmth and joy to the lives of modern urbanites."
+        }
+      ]
+    },
+    {
+      "id": "B3L03-R01",
+      "bookId": 3,
+      "lessonId": 3,
+      "dialogueNumber": 1,
+      "title": "對話 · Dialogue",
+      "setting": "在百貨公司專櫃 · At the department store boutique",
+      "printedPages": [
+        69,
+        70,
+        71
+      ],
+      "audioReference": "03-1-1",
+      "paragraphs": [
+        {
+          "speaker": "芳草",
+          "traditional": "瑪莉，這家專櫃的洋裝看起來真漂亮，而且現在週年慶打八折呢！",
+          "simplified": "瑪莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
+          "pinyin": "",
+          "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!"
+        },
+        {
+          "speaker": "瑪莉",
+          "traditional": "是挺好看的，但買衣服一定要先試穿，試穿看看合不合身再決定。",
+          "simplified": "是挺好看的，但买衣服一定要先试穿，试穿看看合不合身再决定。",
+          "pinyin": "",
+          "english": "It's quite nice, but when buying clothes one must always try them on first to see if they fit well before deciding."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "妳說得對。那我先進去試穿這件淺藍色的。",
+          "simplified": "你说得对。那我先进去试穿这件浅蓝色的。",
+          "pinyin": "",
+          "english": "You're right. Then I'll go inside first to try on this light blue one."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "瑪莉，妳看這件怎麼樣？我覺得腰部有點緊，而且價格還是太高了。",
+          "simplified": "瑪莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
+          "pinyin": "",
+          "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high."
+        },
+        {
+          "speaker": "瑪莉",
+          "traditional": "與其買一件不舒服的名牌洋裝，不如到樓上的平價專櫃看看，那裡款式也很多。",
+          "simplified": "与其买一件不舒服的名牌洋装，不如到楼上的平价专柜看看，那里款式也很多。",
+          "pinyin": "",
+          "english": "Rather than buying an uncomfortable designer dress, it would be better to check the affordable section upstairs; there are many styles there too."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "可是樓上的衣服材質怎麼樣？我什麼衣服都穿過，就是皮膚容易過敏，不能穿太粗糙的料子。",
+          "simplified": "可是楼上的衣服材质怎么样？我什么衣服都穿过，就是皮肤容易过敏，不能穿太粗糙的料子。",
+          "pinyin": "",
+          "english": "But how is the material of the clothes upstairs? I've worn all kinds of clothes, it's just that my skin is easily allergic, so I can't wear rough fabrics."
+        },
+        {
+          "speaker": "瑪莉",
+          "traditional": "放心吧，樓上有幾個專櫃不僅質料柔軟，價格也很實在。",
+          "simplified": "放心吧，楼上有几个专柜不仅质料柔軟，价格也很实在。",
+          "pinyin": "",
+          "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "太好了！那我們別再這裡浪費時間了，趕快上樓去逛逛吧。",
+          "simplified": "太好了！那我们别再这里浪费时间了，赶快上楼去逛逛吧。",
+          "pinyin": "",
+          "english": "Awesome! Then let's not waste more time here, let's head upstairs quickly to look around."
+        }
+      ]
+    },
+    {
+      "id": "B3L03-R02",
+      "bookId": 3,
+      "lessonId": 3,
+      "dialogueNumber": 2,
+      "title": "短文 · 貨比三家不吃虧 · Shopping Around to Get the Best Deal",
+      "setting": "短文閱讀 · Reading narrative",
+      "printedPages": [
+        84,
+        85
+      ],
+      "audioReference": "03-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "在現代消費社會中，每個人都希望能「買得開心、用得放心」。",
+          "simplified": "在现代消费社会中，每个人都希望能「买得开心、用得放心」。",
+          "pinyin": "",
+          "english": "In modern consumer society, everyone hopes to 'buy with joy and use with peace of mind.'"
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "俗話說「貨比三家不吃虧」，意思是在購買貴重物品前，多比較幾家商店的價格與品質，才不會吃虧上當。",
+          "simplified": "俗话说「货比三家不吃亏」，意思是在购买贵重物品前，多比较几家商店的价格与品质，才不会吃亏上当。",
+          "pinyin": "",
+          "english": "As the proverb says, 'Shop around and you won't suffer a loss,' meaning before purchasing expensive items, compare prices and quality across several stores so you won't get cheated."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "以前人們為了比價，得跑好幾家實體店鋪，費時又費力。",
+          "simplified": "以前人们为了比价，得跑好几家实体店鋪，费时又费力。",
+          "pinyin": "",
+          "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "現在網路科技發達，大家不僅能透過比價網站輕鬆查詢價格，還能參考其他消費者的評價。",
+          "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查詢价格，还能参考其他消费者的评价。",
+          "pinyin": "",
+          "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "消費者變得一次比一次聰明，商家也一年比一年更注重產品質量與售後服務。",
+          "simplified": "消费者变得一次比一次聪明，商家也一年比一年更注重产品质量与售后服务。",
+          "pinyin": "",
+          "english": "Consumers become smarter each time, and businesses focus more on product quality and customer service year after year."
+        }
+      ]
+    },
+    {
+      "id": "B3L04-R01",
+      "bookId": 3,
+      "lessonId": 4,
+      "dialogueNumber": 1,
+      "title": "對話 · Dialogue",
+      "setting": "在佳琳家慶祝寶寶滿月 · Celebrating baby's full month at Jialin's house",
+      "printedPages": [
+        95,
+        96,
+        97
+      ],
+      "audioReference": "04-1-1",
+      "paragraphs": [
+        {
+          "speaker": "瑪莉",
+          "traditional": "芳草，恭喜佳琳生了這麼一對可愛的雙胞胎！今天滿月，家裡好熱鬧啊！",
+          "simplified": "芳草，恭喜佳琳生了这么一对可爱的双胞胎！今天满月，家里好热闹啊！",
+          "pinyin": "",
+          "english": "Mary: Fangcao, congratulations to Jialin for giving birth to such cute twins! Today is their full month; the house is so lively!"
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "是啊！你看，好精緻的油飯和紅蛋啊！聞起來真香。",
+          "simplified": "是啊！你看，好精緻的油饭和红蛋啊！闻起来真香。",
+          "pinyin": "",
+          "english": "Yes! Look, what exquisite oily glutinous rice and red eggs! They smell so fragrant."
+        },
+        {
+          "speaker": "瑪莉",
+          "traditional": "我今天特地親自挑選了兩套純棉的嬰兒服送給寶寶，希望他們健康長大。",
+          "simplified": "我今天特地亲自挑选了两套纯棉的婴儿服送给宝宝，希望他们健康长大。",
+          "pinyin": "",
+          "english": "I specially selected two sets of pure cotton baby clothes in person to give to the babies, hoping they grow up healthy."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "妳真有心。在臺灣，送禮送紅包很有講究，金額通常要雙數才吉利。",
+          "simplified": "你真有心。在台湾，送礼送红包很有讲究，金額通常要双数才吉利。",
+          "pinyin": "",
+          "english": "You are truly thoughtful. In Taiwan, giving gifts and red envelopes is very nuanced; amounts are usually even numbers for good fortune."
+        },
+        {
+          "speaker": "瑪莉",
+          "traditional": "剛才吃水果的時候，我想把梨子切開分給佳琳的婆婆，婆婆笑著跟我說不能分梨呢！",
+          "simplified": "刚才吃水果的时候，我想把梨子切开分给佳琳的婆婆，婆婆笑着跟我说不能分梨呢！",
+          "pinyin": "",
+          "english": "Just now when eating fruits, I wanted to slice the pear and share with Jialin's mother-in-law, and she smiled and told me we shouldn't share pears!"
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "哈哈，因為「分梨」聽起來像「分離」，長輩通常會避開這個諧音。",
+          "simplified": "哈哈，因为「分梨」听起来像「分离」，长辈通常会避开这个諧音。",
+          "pinyin": "",
+          "english": "Haha, because 'sharing pears' sounds like 'parting ways'; elders usually avoid this homophone."
+        },
+        {
+          "speaker": "瑪莉",
+          "traditional": "原來是這樣！我在禮品店找來找去，終於挑到滿意的禮物，今天學到了不少臺灣傳統習俗呢。",
+          "simplified": "原来是这样！我在礼品店找来找去，终于挑到满意的礼物，今天学到了不少台湾传统习俗呢。",
+          "pinyin": "",
+          "english": "So that's why! I searched back and forth in gift shops and finally picked a satisfying gift; I learned quite a few Taiwanese traditions today."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "吃完飯後桌上的美味菜餚如果吃不完，我們還可以打包帶回家，不要浪費食物喔！",
+          "simplified": "吃完饭后桌上的美味菜餚如果吃不完，我们还可以打包带回家，不要浪费食物喔！",
+          "pinyin": "",
+          "english": "After eating, if the delicious dishes on the table aren't finished, we can also box them up to take home; don't waste food!"
+        }
+      ]
+    },
+    {
+      "id": "B3L04-R02",
+      "bookId": 3,
+      "lessonId": 4,
+      "dialogueNumber": 2,
+      "title": "短文 · 佳琳的信：坐月子與滿月 · Jialin's Letter: Confinement and Full Month",
+      "setting": "短文閱讀 · Reading narrative",
+      "printedPages": [
+        107,
+        108
+      ],
+      "audioReference": "04-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "親愛的以晴，收到妳寄來的婚禮照片，看到妳美麗幸福的模樣，真替妳高興！",
+          "simplified": "亲爱的以晴，收到你寄来的婚礼照片，看到你美丽幸福的模样，真替你高兴！",
+          "pinyin": "",
+          "english": "Dear Yiqing, receiving the wedding photos you sent and seeing your beautiful, happy appearance, I am so joyful for you!"
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "可惜因為我剛生完雙胞胎，正在坐月子，沒辦法親自飛到美國參加妳的婚禮。",
+          "simplified": "可惜因为我刚生完双胞胎，正在坐月子，没办法亲自飞到美国参加你的婚礼。",
+          "pinyin": "",
+          "english": "Unfortunately, because I just gave birth to twins and am doing postpartum confinement, I couldn't fly to America in person to attend your wedding."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "在臺灣，女人生產後都要坐月子一個月，每天吃麻油雞調養身體，也不能吹風。",
+          "simplified": "在台湾，女人生产后都要坐月子一个月，每天吃麻油鸡调养身体，也不能吹风。",
+          "pinyin": "",
+          "english": "In Taiwan, after giving birth women rest in confinement for a month, eating sesame oil chicken daily to nurse the body, and cannot catch drafts."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "這一個月裡，兩個寶寶整天哭個不停，吵著要喝奶，忙得我和先生連睡覺的時間都沒有。",
+          "simplified": "这一个月里，两个宝宝整天哭个不停，吵着要喝奶，忙得我和先生连睡觉的时间都没有。",
+          "pinyin": "",
+          "english": "During this month, the two babies cried incessantly all day, clamoring for milk, keeping my husband and me so busy that we didn't even have sleep time."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "今天孩子終於滿月了，家裡除了前來祝賀的親戚朋友以外，就是送給客人的油飯和蛋糕。",
+          "simplified": "今天孩子终于满月了，家里除了前来祝贺的亲戚朋友以外，就是送给客人的油饭和蛋糕。",
+          "pinyin": "",
+          "english": "Today the children finally completed their full month; in the house, besides visiting relatives and friends, there is only oily rice and cake for guests."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "雖然照顧雙胞胎的生活不是餵奶就是換尿布，但看著寶寶一天天長大，心裡感到無比的幸福。",
+          "simplified": "虽然照顾双胞胎的生活不是喂奶就是换尿布，但看着宝宝一天天长大，心里感到无比的幸福。",
+          "pinyin": "",
+          "english": "Although caring for twins means either feeding or diaper-changing, watching the babies grow day by day brings boundless happiness to the heart."
+        }
+      ]
+    },
+    {
+      "id": "B3L05-R01",
+      "bookId": 3,
+      "lessonId": 5,
+      "dialogueNumber": 1,
+      "title": "對話 · Dialogue",
+      "setting": "颱風過後的早晨 · Morning after the typhoon",
+      "printedPages": [
+        120,
+        121,
+        122
+      ],
+      "audioReference": "05-1-1",
+      "paragraphs": [
+        {
+          "speaker": "芳草",
+          "traditional": "家豪，昨晚的颱風風雨好大，你家還好嗎？",
+          "simplified": "家豪，昨晚的台风风雨好大，你家还好吗？",
+          "pinyin": "",
+          "english": "Jiahao, last night's typhoon had such fierce wind and rain; is your home alright?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "別提了，半夜風大得把路樹都吹倒了，我家甚至還停電了兩三個小時！",
+          "simplified": "别提了，半夜风大得把路树都吹倒了，我家甚至还停电了两三个小时！",
+          "pinyin": "",
+          "english": "Don't mention it; in the middle of the night the wind was so strong it blew down street trees, and my house even had a blackout for two or three hours!"
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "幸好我家平時就準備了電池和手電筒，萬一停電也不用慌張。",
+          "simplified": "幸好我家平时就准备了电池和手电筒，万一停电也不用慌张。",
+          "pinyin": "",
+          "english": "Fortunately my family prepared batteries and flashlights in advance; in case of a power outage we don't need to panic."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "我一連打了好幾通電話給住在花蓮的表哥，但電話一直打不通，真讓人擔心。",
+          "simplified": "我一连打了好几通电话给住在花莲的表哥，但电话一直打不通，真让人担心。",
+          "pinyin": "",
+          "english": "I called my cousin living in Hualien several times in a row, but couldn't get through; it really makes one worried."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "我以為東部的情況會好一些，沒想到這次颱風在東部登陸，災情相當嚴重。",
+          "simplified": "我以为东部的情况会好一些，没想到这次台风在东部登陆，灾情相当严重。",
+          "pinyin": "",
+          "english": "I thought the situation in the east would be better, but unexpectedly this typhoon made landfall in the east, causing severe damage."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "新聞說花蓮部分山區發生了土石流，甚至連對外聯絡的鐵路也被大水沖斷了。",
+          "simplified": "新闻说花莲部分山区发生了土石流，甚至连对外联络的铁路也被大水冲断了。",
+          "pinyin": "",
+          "english": "News reports say mudslides occurred in parts of Hualien's mountains, and even the railway connecting outside was washed out by floodwaters."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "氣象局說後面可能還有另一個颱風形成，我們趁今天天氣放晴，也好趕快去超市補充足夠的乾糧和飲用水。",
+          "simplified": "气象局说后面可能还有另一个台风形成，我们趁今天天气放晴，也好赶快去超市补充足够的干糧和饮用水。",
+          "pinyin": "",
+          "english": "The weather bureau says another typhoon might form later; while the weather clears up today, it might be good for us to hurry to the supermarket to restock dry food and drinking water."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "好！我們一起去超市採購防颱物資吧。",
+          "simplified": "好！我们一起去超市采购防台物资吧。",
+          "pinyin": "",
+          "english": "Great! Let's go to the supermarket together to purchase typhoon prevention supplies."
+        }
+      ]
+    },
+    {
+      "id": "B3L05-R02",
+      "bookId": 3,
+      "lessonId": 5,
+      "dialogueNumber": 2,
+      "title": "短文 · 九二一地震與臺灣的韌性 · The 921 Earthquake and Taiwan's Resilience",
+      "setting": "短文閱讀 · Reading narrative",
+      "printedPages": [
+        135,
+        136
+      ],
+      "audioReference": "05-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "臺灣位於環太平洋地震帶上，板塊運動活躍，因此地震發生的頻率相當高。",
+          "simplified": "台湾位于环太平洋地震带上，板块运动活躍，因此地震发生的频率相当高。",
+          "pinyin": "",
+          "english": "Taiwan is located on the Circum-Pacific seismic belt with active plate tectonics, hence earthquake frequency is quite high."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "一九九九年九月二十一日凌晨，臺灣中部發生了規模七點三的大地震，史稱「九二一地震」。",
+          "simplified": "一九九九年九月二十一日凌晨，台湾中部发生了规模七点三的大地震，史稱「九二一地震」。",
+          "pinyin": "",
+          "english": "In the early morning of September 21, 1999, a magnitude 7.3 earthquake struck central Taiwan, known historically as the '921 Earthquake.'"
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "那一夜強烈的搖晃震碎了許多家庭的家園，結果造成了兩千多人不幸喪生，上萬棟房屋倒塌。",
+          "simplified": "那一夜强烈的摇晃震碎了许多家庭的家园，结果造成了两千多人不幸喪生，上万栋房屋倒塌。",
+          "pinyin": "",
+          "english": "That night's violent shaking shattered homes of many families, resulting unfortunately in more than 2,000 fatalities and thousands of collapsed houses."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "地震發生後，臺中與南投等重災區交通中斷，甚至連水電和通訊也完全癱瘓。",
+          "simplified": "地震发生后，台中与南投等重灾区交通中断，甚至连水电和通讯也完全癱瘓。",
+          "pinyin": "",
+          "english": "After the earthquake, transportation in hard-hit areas such as Taichung and Nantou was severed, and even water, electricity, and telecommunications were completely paralyzed."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "面對巨大的天災，全臺灣人民發揮了「有錢出錢、有力出力」的精神，國內外救援隊伍也迅速投入救災。",
+          "simplified": "面对巨大的天灾，全台湾人民发挥了「有钱出钱、有力出力」的精神，国内外救援队伍也迅速投入救灾。",
+          "pinyin": "",
+          "english": "Confronting this massive natural disaster, all Taiwanese displayed the spirit of 'contributing money and labor,' and rescue teams from home and abroad rapidly joined disaster relief."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "車站以南的中部災民在社會各界的溫暖支持下，齊心協力重建家園，展現了無比堅韌的生命力。",
+          "simplified": "车站以南的中部灾民在社会各界的温暖支持下，齐心协力重建家园，展现了无比坚韌的生命力。",
+          "pinyin": "",
+          "english": "Victims in central Taiwan south of the station rebuilt their homes with united efforts under warm support from all sectors of society, demonstrating immense resilience."
+        }
+      ]
+    }
+  ]
+}

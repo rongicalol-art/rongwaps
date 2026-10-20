@@ -34,20 +34,39 @@ async function exportPack<T>(
 
   await writeFile(resolve(dir, filename), packJson, 'utf8');
 
-  const manifest = {
-    schemaVersion: 1,
-    version: packHash.slice(0, 16),
-    generatedAt: new Date().toISOString(),
-    totalCount: items.length,
-    books: [
-      {
+  let manifestBooks = [
+    {
+      bookId,
+      count: items.length,
+      path: `/data/${kind}/${filename}`,
+      sha256: packHash,
+      bytes: packBytes,
+    },
+  ];
+
+  try {
+    const existing = JSON.parse(await readFile(resolve(dir, 'manifest.json'), 'utf8')) as { books?: { bookId: number; count: number; path: string; sha256: string; bytes: number }[] };
+    if (existing?.books && Array.isArray(existing.books)) {
+      manifestBooks = existing.books.filter((b) => b.bookId !== bookId);
+      manifestBooks.push({
         bookId,
         count: items.length,
         path: `/data/${kind}/${filename}`,
         sha256: packHash,
         bytes: packBytes,
-      },
-    ],
+      });
+      manifestBooks.sort((a, b) => a.bookId - b.bookId);
+    }
+  } catch {
+    // Missing manifest is expected on clean build
+  }
+
+  const manifest = {
+    schemaVersion: 1,
+    version: packHash.slice(0, 16),
+    generatedAt: new Date().toISOString(),
+    totalCount: manifestBooks.reduce((sum, b) => sum + b.count, 0),
+    books: manifestBooks,
   };
 
   await writeFile(resolve(dir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
@@ -56,15 +75,25 @@ async function exportPack<T>(
 
 async function exportDialogueAlignment(bookId: number) {
   await mkdir(DIALOGUE_ALIGNMENT_DIR, { recursive: true });
-  const raw = await readFile(SOURCE_ALIGNMENT_PATH, 'utf8');
+  const sourcePath = bookId === 1
+    ? SOURCE_ALIGNMENT_PATH
+    : resolve(ROOT, `content/dialogueAlignment-book${bookId}.json`);
+  const raw = await readFile(sourcePath, 'utf8');
   const alignmentMap = JSON.parse(raw) as Record<string, unknown>;
-  const keys = Object.keys(alignmentMap);
+
+  const filteredMap: Record<string, unknown> = {};
+  for (const [key, val] of Object.entries(alignmentMap)) {
+    if (key.startsWith(`B${bookId}`) || (!key.startsWith('B') && bookId === 1)) {
+      filteredMap[key] = val;
+    }
+  }
+  const keys = Object.keys(filteredMap);
 
   const pack = {
     schemaVersion: 1,
     bookId,
     count: keys.length,
-    items: alignmentMap,
+    items: filteredMap,
   };
   const packJson = `${JSON.stringify(pack, null, 2)}\n`;
   const filename = `book-${bookId}.json`;
@@ -73,20 +102,39 @@ async function exportDialogueAlignment(bookId: number) {
 
   await writeFile(resolve(DIALOGUE_ALIGNMENT_DIR, filename), packJson, 'utf8');
 
-  const manifest = {
-    schemaVersion: 1,
-    version: packHash.slice(0, 16),
-    generatedAt: new Date().toISOString(),
-    totalCount: keys.length,
-    books: [
-      {
+  let manifestBooks = [
+    {
+      bookId,
+      count: keys.length,
+      path: `/data/dialogue-alignment/${filename}`,
+      sha256: packHash,
+      bytes: packBytes,
+    },
+  ];
+
+  try {
+    const existing = JSON.parse(await readFile(resolve(DIALOGUE_ALIGNMENT_DIR, 'manifest.json'), 'utf8')) as { books?: { bookId: number; count: number; path: string; sha256: string; bytes: number }[] };
+    if (existing?.books && Array.isArray(existing.books)) {
+      manifestBooks = existing.books.filter((b) => b.bookId !== bookId);
+      manifestBooks.push({
         bookId,
         count: keys.length,
         path: `/data/dialogue-alignment/${filename}`,
         sha256: packHash,
         bytes: packBytes,
-      },
-    ],
+      });
+      manifestBooks.sort((a, b) => a.bookId - b.bookId);
+    }
+  } catch {
+    // Missing manifest is expected on clean build
+  }
+
+  const manifest = {
+    schemaVersion: 1,
+    version: packHash.slice(0, 16),
+    generatedAt: new Date().toISOString(),
+    totalCount: manifestBooks.reduce((sum, b) => sum + b.count, 0),
+    books: manifestBooks,
   };
 
   await writeFile(resolve(DIALOGUE_ALIGNMENT_DIR, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
@@ -110,7 +158,7 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
     }
   }
   parts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
-  await attachGrammarPractice(parts);
+  await attachGrammarPractice(parts, bookId);
   await attachSentenceAudio(parts);
   return parts;
 }
@@ -153,14 +201,17 @@ async function attachSentenceAudio(parts: InteractiveGrammarPart[]) {
 }
 
 /** Book exercises live in content/grammar-practice/*.json keyed by grammar page id; they ride on their page in the grammar pack. */
-async function attachGrammarPractice(parts: InteractiveGrammarPart[]) {
+async function attachGrammarPractice(parts: InteractiveGrammarPart[], bookId: number) {
   const practiceDir = resolve(ROOT, 'content/grammar-practice');
   const pages = new Map(parts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
   for (const file of (await readdir(practiceDir)).filter((name) => name.endsWith('.json'))) {
+    const isB3File = file.startsWith('b3');
+    if (bookId === 1 && isB3File) continue;
+    if (bookId === 3 && !isB3File) continue;
     const content = JSON.parse(await readFile(resolve(practiceDir, file), 'utf8')) as Record<string, GrammarPractice>;
     for (const [pageId, practice] of Object.entries(content)) {
       const page = pages.get(pageId);
-      if (!page) throw new Error(`${file}: no grammar page "${pageId}" in this book.`);
+      if (!page) throw new Error(`${file}: no grammar page "${pageId}" in book ${bookId}.`);
       page.practice = practice;
     }
   }
@@ -173,12 +224,14 @@ async function loadSourceReadings(bookId: number): Promise<ReadingRecord[]> {
 
 async function main() {
   console.log('Exporting authored content to public/data packs...');
-  const readings = await loadSourceReadings(1);
-  const grammarParts = await loadSourceGrammarParts(1);
+  for (const bookId of [1, 3]) {
+    const readings = await loadSourceReadings(bookId);
+    const grammarParts = await loadSourceGrammarParts(bookId);
 
-  await exportPack(READINGS_DIR, 'readings', 1, readings);
-  await exportPack(GRAMMAR_DIR, 'grammar', 1, grammarParts);
-  await exportDialogueAlignment(1);
+    await exportPack(READINGS_DIR, 'readings', bookId, readings);
+    await exportPack(GRAMMAR_DIR, 'grammar', bookId, grammarParts);
+    await exportDialogueAlignment(bookId);
+  }
   console.log('All authored content packs exported successfully.');
 }
 

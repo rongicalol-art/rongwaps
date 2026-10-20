@@ -83,7 +83,7 @@ export function useCourseDashboard({
         id: lesson.id,
         label: lesson.label,
         title: LOCKED_BOOK_LESSON_TITLES[activeBookId]?.[index] ?? lesson.label,
-        status: bookIsLocked ? 'locked' : hasFullCourseAccess ? 'available' : lesson.status,
+        status: bookIsLocked ? 'locked' : hasFullCourseAccess ? 'available' : (activeBookId === 3 ? (lesson.id <= 5 ? 'available' : 'locked') : lesson.status),
       }));
     const configuredLessonsById = new Map(configuredLessons.map((lesson) => [lesson.id, lesson]));
     const lessonDefinitions = bookIsLocked || hasFullCourseAccess

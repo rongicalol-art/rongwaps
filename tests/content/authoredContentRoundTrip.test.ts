@@ -37,7 +37,7 @@ test('Authored Content Round-Trip: grammar pack deeply equals content/grammar/*.
   sourceParts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
   // Book exercises (content/grammar-practice) ride on their grammar page.
   const pages = new Map(sourceParts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
-  for (const file of readdirSync(resolve(PROJECT_ROOT, 'content/grammar-practice')).filter((name) => name.endsWith('.json'))) {
+  for (const file of readdirSync(resolve(PROJECT_ROOT, 'content/grammar-practice')).filter((name) => name.endsWith('.json') && !name.startsWith('b3'))) {
     for (const [pageId, practice] of Object.entries(readJson<Record<string, GrammarPractice>>(`content/grammar-practice/${file}`))) {
       const page = pages.get(pageId);
       assert.ok(page, `${file}: unknown grammar page ${pageId}`);

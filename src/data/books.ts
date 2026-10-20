@@ -106,7 +106,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     },
   ),
   buildBook(
-    { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
+    { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: 'unlocked' },
     {
       primary: '#A0522D',
       primaryEdge: '#8B4513',
@@ -231,5 +231,6 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {
   if (hasFullCourseAccess) return false;
   if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
+  if (bookId === 3) return lessonId > 5;
   return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
 }

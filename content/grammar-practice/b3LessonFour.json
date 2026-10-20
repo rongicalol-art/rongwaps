@@ -1,0 +1,698 @@
+{
+  "B3L04-G01-P101": {
+    "bookPage": 101,
+    "title": "Practice: 好+Vs+的+N啊",
+    "allowWords": [
+      "好"
+    ],
+    "items": [
+      {
+        "id": "b3l4g1-p1",
+        "source": "p.101 #1",
+        "kind": "slot-build",
+        "prompt": "Exclaiming at a delicious meal:",
+        "tiles": [
+          {
+            "traditional": "好",
+            "simplified": "好",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "親自",
+            "simplified": "亲自",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          },
+          {
+            "traditional": "除了",
+            "simplified": "除了",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "哇，"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "豐盛[的"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "哇，好豐盛的晚餐啊！謝謝媽媽為我們準備大餐。",
+          "simplified": "哇，好丰盛的晚餐啊！谢谢妈妈为我们准备大餐。",
+          "pinyin": "Wā, hǎo fēngshèng de wǎncān a! Xièxie māma wèi wǒmen zhǔnbèi dàcān.",
+          "english": "Wow, what a lavish dinner! Thank you mom for preparing a feast for us."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "親自"
+            ],
+            "note": "親自 indicates doing something in person."
+          },
+          {
+            "placed": [
+              "終於"
+            ],
+            "note": "終於 indicates at last / finally after a wait or difficulty."
+          },
+          {
+            "placed": [
+              "除了"
+            ],
+            "note": "除了…就是… expresses exclusive limitation to one thing."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G02-P102": {
+    "bookPage": 102,
+    "title": "Practice: 親自",
+    "allowWords": [
+      "親自"
+    ],
+    "items": [
+      {
+        "id": "b3l4g2-p1",
+        "source": "p.102 #1",
+        "kind": "slot-build",
+        "prompt": "Describing dedicated service:",
+        "tiles": [
+          {
+            "traditional": "親自",
+            "simplified": "亲自",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "好",
+            "simplified": "好",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          },
+          {
+            "traditional": "不停",
+            "simplified": "不停",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "主廚"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "親自"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "走到客人的桌前，詢問大家對菜餚的意見。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "主廚親自走到客人的桌前，詢問大家對菜餚的意見。",
+          "simplified": "主厨亲自走到客人的桌前，詢问大家对菜餚的意见。",
+          "pinyin": "Zhǔchú qīnzì zǒu dào kèrén de zhuō qián, xúnwèn dàjiā duì càiyáo de yìjiàn.",
+          "english": "The head chef walked to the customers' table in person to inquire about feedback on dishes."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "好"
+            ],
+            "note": "好+Vs+的+N啊 expresses exclamation about an attribute."
+          },
+          {
+            "placed": [
+              "終於"
+            ],
+            "note": "終於 indicates at last / finally after a wait or difficulty."
+          },
+          {
+            "placed": [
+              "不停"
+            ],
+            "note": "不停 indicates continuous action, which does not fit this slot."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G03-P103": {
+    "bookPage": 103,
+    "title": "Practice: V來V去",
+    "allowWords": [
+      "試來試去"
+    ],
+    "items": [
+      {
+        "id": "b3l4g3-p1",
+        "source": "p.103 #1",
+        "kind": "slot-build",
+        "prompt": "Describing indecisiveness when buying shoes:",
+        "tiles": [
+          {
+            "traditional": "試來試去",
+            "simplified": "试来试去",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "親自",
+            "simplified": "亲自",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          },
+          {
+            "traditional": "好酸",
+            "simplified": "好酸",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他在鞋店裡"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "試來試去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，最後還是買了第一雙。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "他在鞋店裡試來試去，最後還是買了第一雙。",
+          "simplified": "他在鞋店里试来试去，最后还是买了第一双。",
+          "pinyin": "Tā zài xiédiàn lǐ shì lái shì qù, zuìhòu háishì mǎi le dì yī shuāng.",
+          "english": "He tried shoes back and forth in the store, and finally still bought the first pair."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "親自"
+            ],
+            "note": "親自 indicates doing something in person."
+          },
+          {
+            "placed": [
+              "終於"
+            ],
+            "note": "終於 indicates at last / finally after a wait or difficulty."
+          },
+          {
+            "placed": [
+              "好酸"
+            ],
+            "note": "好酸 describes taste or soreness, which does not fit the sentence structure."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G04-P105": {
+    "bookPage": 105,
+    "title": "Practice: 終於",
+    "allowWords": [
+      "終於"
+    ],
+    "items": [
+      {
+        "id": "b3l4g4-p1",
+        "source": "p.105 #1",
+        "kind": "slot-build",
+        "prompt": "Expressing relief at arriving at destination:",
+        "tiles": [
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          },
+          {
+            "traditional": "親自",
+            "simplified": "亲自",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "好",
+            "simplified": "好",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "走來走去",
+            "simplified": "走来走去",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "開了五個多小時的山路，我們"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "終於"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "抵達了溫泉飯店。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "開了五個多小時的山路，我們終於抵達了溫泉飯店。",
+          "simplified": "开了五个多小时的山路，我们终于抵达了温泉饭店。",
+          "pinyin": "Kāi le wǔ ge duō xiǎoshí de shānlù, wǒmen zhōngyú dǐdá le wēnquán fàndiàn.",
+          "english": "Driving over five hours on mountain roads, we finally arrived at the hot spring hotel."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "親自"
+            ],
+            "note": "親自 indicates doing something in person."
+          },
+          {
+            "placed": [
+              "好"
+            ],
+            "note": "好+Vs+的+N啊 expresses exclamation about an attribute."
+          },
+          {
+            "placed": [
+              "走來走去"
+            ],
+            "note": "走來走去 describes walking back and forth, not reaching an outcome."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G05-P113": {
+    "bookPage": 113,
+    "title": "Practice: V個不停",
+    "allowWords": [
+      "個不停"
+    ],
+    "items": [
+      {
+        "id": "b3l4g5-p1",
+        "source": "p.113 #1",
+        "kind": "slot-build",
+        "prompt": "Complaining about noisy construction next door:",
+        "tiles": [
+          {
+            "traditional": "個不停",
+            "simplified": "个不停",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          },
+          {
+            "traditional": "親自",
+            "simplified": "亲自",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "好酸",
+            "simplified": "好酸",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "隔壁的裝潢工程整天敲"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "個不停"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，讓人無法專心讀書。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "隔壁的裝潢工程整天敲個不停，讓人無法專心讀書。",
+          "simplified": "隔壁的装潢工程整天敲个不停，让人无法专心读书。",
+          "pinyin": "Gébì de zhuānghuáng gōngchéng zhěngtiān qiāo ge bùtíng, ràng rén wúfǎ zhuānxīn dúshū.",
+          "english": "The renovation work next door hammered non-stop all day, making it impossible to focus on studying."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "終於"
+            ],
+            "note": "終於 indicates at last / finally after a wait or difficulty."
+          },
+          {
+            "placed": [
+              "親自"
+            ],
+            "note": "親自 indicates doing something in person."
+          },
+          {
+            "placed": [
+              "好酸"
+            ],
+            "note": "好酸 describes taste or soreness, which does not fit the sentence structure."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G06-P114": {
+    "bookPage": 114,
+    "title": "Practice: 不A不B",
+    "allowWords": [
+      "不冷不熱"
+    ],
+    "items": [
+      {
+        "id": "b3l4g6-p1",
+        "source": "p.114 #1",
+        "kind": "slot-build",
+        "prompt": "Describing ideal bath water temperature:",
+        "tiles": [
+          {
+            "traditional": "不冷不熱",
+            "simplified": "不冷不热",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "個不停",
+            "simplified": "个不停",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          },
+          {
+            "traditional": "親自",
+            "simplified": "亲自",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "洗澡水的溫度最好調得"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "不冷不熱"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，感覺最放鬆。"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "洗澡水的溫度最好調得不冷不熱，感覺最放鬆。",
+          "simplified": "洗澡水的温度最好调得不冷不热，感觉最放松。",
+          "pinyin": "Xǐzǎoshuǐ de wēndù zuì hǎo tiáo de bù lěng bú rè, gǎnjué zuì fàngsōng.",
+          "english": "The bath water temperature is best set neither cold nor hot, feeling most relaxing."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "個不停"
+            ],
+            "note": "V個不停 indicates relentless non-stop action."
+          },
+          {
+            "placed": [
+              "終於"
+            ],
+            "note": "終於 indicates at last / finally after a wait or difficulty."
+          },
+          {
+            "placed": [
+              "親自"
+            ],
+            "note": "親自 indicates doing something in person."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G07-P115": {
+    "bookPage": 115,
+    "title": "Practice: 除了…就是…",
+    "allowWords": [
+      "除了"
+    ],
+    "items": [
+      {
+        "id": "b3l4g7-p1",
+        "source": "p.115 #1",
+        "kind": "slot-build",
+        "prompt": "Describing an intense study schedule:",
+        "tiles": [
+          {
+            "traditional": "除了",
+            "simplified": "除了",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "不冷不熱",
+            "simplified": "不冷不热",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "個不停",
+            "simplified": "个不停",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "終於",
+            "simplified": "终于",
+            "pinyin": "zhōngyú"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "考試前一個月，他的生活"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "除了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "念書[就是"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "考試前一個月，他的生活除了念書就是刷題，非常拼命。",
+          "simplified": "考试前一个月，他的生活除了念书就是刷题，非常拼命。",
+          "pinyin": "Kǎoshì qián yí ge yuè, tā de shēnghuó chúle niànshū jiùshì shuātí, fēicháng pīnmìng.",
+          "english": "One month before exams, his life besides studying was just doing exercises, extraordinarily hardworking."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不冷不熱"
+            ],
+            "note": "不冷不熱 describes moderate temperature."
+          },
+          {
+            "placed": [
+              "個不停"
+            ],
+            "note": "V個不停 indicates relentless non-stop action."
+          },
+          {
+            "placed": [
+              "終於"
+            ],
+            "note": "終於 indicates at last / finally after a wait or difficulty."
+          }
+        ]
+      }
+    ]
+  },
+  "B3L04-G08-P117": {
+    "bookPage": 117,
+    "title": "Practice: 不是…就是…",
+    "allowWords": [
+      "不是"
+    ],
+    "items": [
+      {
+        "id": "b3l4g8-p1",
+        "source": "p.117 #1",
+        "kind": "slot-build",
+        "prompt": "Describing someone's reading habits:",
+        "tiles": [
+          {
+            "traditional": "不是",
+            "simplified": "不是",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "除了",
+            "simplified": "除了",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "不冷不熱",
+            "simplified": "不冷不热",
+            "pinyin": "pīnyīn"
+          },
+          {
+            "traditional": "個不停",
+            "simplified": "个不停",
+            "pinyin": "pīnyīn"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他的床頭擺滿了書，平時"
+              },
+              {
+                "type": "slot",
+                "id": "slot1",
+                "answers": [
+                  "不是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "讀歷史小說，[就是"
+              }
+            ]
+          }
+        ],
+        "result": {
+          "traditional": "他的床頭擺滿了書，平時不是讀歷史小說，就是讀哲學散文。",
+          "simplified": "他的床头摆满了书，平时不是读历史小说，就是读哲学散文。",
+          "pinyin": "Tā de chuángtóu bǎi mǎn le shū, píngshí bú shì dú lìshǐ xiǎoshuō, jiùshì dú zhéxué sǎnwén.",
+          "english": "His bedside is filled with books; usually if he's not reading historical novels, he's reading philosophical essays."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "除了"
+            ],
+            "note": "除了…就是… expresses exclusive limitation to one thing."
+          },
+          {
+            "placed": [
+              "不冷不熱"
+            ],
+            "note": "不冷不熱 describes moderate temperature."
+          },
+          {
+            "placed": [
+              "個不停"
+            ],
+            "note": "V個不停 indicates relentless non-stop action."
+          }
+        ]
+      }
+    ]
+  }
+}
