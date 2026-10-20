@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState, type MutableRefObject } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { PinyinTone } from '../../../utils/pinyin/pinyinTones';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { cn } from '../../../utils/cn';
+import { AppIcon } from '../../../lib/widgets';
 import {
   GUIDE_LEVELS, classifyStroke, contourPath, lerpContour, levelToY, resampleStroke, toneContour, yToLevel, type TonePoint,
 } from '../utils/toneShapes';
@@ -23,6 +25,48 @@ const LINE_COLOR = 'var(--color-ui-ink-strong)';
 const SHAPE_COLOR = 'var(--color-brand-primary)';
 const MISS_COLOR = 'var(--color-feedback-danger)';
 const TONE_NAMES: Record<PinyinTone, string> = { 1: 'flat', 2: 'rising', 3: 'dipping', 4: 'falling', 5: 'light' };
+
+const TONE_CHANGE_RULES = [
+  { label: '3 + 3', detail: 'The first is spoken as 2; both marks usually stay 3. 你好 nǐ hǎo → ní hǎo. Longer groups depend on how the phrase is grouped.' },
+  { label: '3 + another tone', detail: 'The 3rd is often a low half-third in speech; its mark stays 3.' },
+  { label: '不 bù', detail: 'Before a 4th tone, it rises to bú. Before other tones, it stays bù.' },
+  { label: '一 yī', detail: 'Before a 4th-tone word it becomes yí; before 1st–3rd tones it becomes yì. It stays yī when counted by itself.' },
+  { label: '4 + 4', detail: 'The first can sound shorter or less sharp; both marks stay 4.' },
+  { label: 'Light tone', detail: 'An unmarked syllable is short and light; its pitch follows the syllable before it.' },
+];
+
+function toneMarkedSyllable(target: ToneTarget, tone: PinyinTone) {
+  return target.base
+    .split('/')
+    .map((base) => numberToToneMarks(`${base}${tone}`))
+    .join('/');
+}
+
+function getWordToneNotes(targets: ToneTarget[]) {
+  return targets.flatMap((target, index) => {
+    const next = targets[index + 1];
+    if (!next) return [];
+
+    if (target.written === 3 && next.written === 3) {
+      return [`${target.char} is written with a 3rd tone, but it is spoken like a 2nd because it comes before another 3rd tone. ${next.char} stays 3rd, usually low here.`];
+    }
+    if (target.written === 3 && next.written !== 3) {
+      return [`${target.char} is a 3rd tone before a different tone, so it is usually low and does not rise fully in natural speech. Its Pinyin mark stays 3rd.`];
+    }
+    if (target.char === '不' && target.written !== 5 && next.written === 4) {
+      return ['不 rises before a 4th tone: bù → bú.'];
+    }
+    if (target.char === '一' && next.written >= 1 && next.written <= 4) {
+      return [next.written === 4
+        ? '一 changes from yī to yí before a 4th tone.'
+        : '一 changes from yī to yì before a 1st, 2nd, or 3rd tone.'];
+    }
+    if (target.written === 4 && next.written === 4) {
+      return ['These two 4th tones stay 4th; the first may sound a little shorter or softer.'];
+    }
+    return [];
+  });
+}
 
 const strokePx = (tone: PinyinTone) => (tone === 5 ? DOT_PX : LINE_PX);
 const glyphSize = (count: number) => (count <= 2 ? 'text-5xl md:text-6xl' : count === 3 ? 'text-4xl md:text-5xl' : 'text-3xl md:text-5xl');
@@ -233,6 +277,7 @@ interface ToneStripProps {
  */
 export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, onDone, keyboardEnabled = true }: ToneStripProps) {
   const reduceMotion = useReducedMotion();
+  const [showToneGuide, setShowToneGuide] = useState(false);
   const [attempts, setAttempts] = useState<ToneAttempt[]>([]);
   const attemptsRef = useRef<ToneAttempt[]>([]);
   const doneTimerRef = useRef<number | null>(null);
@@ -274,8 +319,7 @@ export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, 
     if (next.length === targets.length) doneTimerRef.current = window.setTimeout(() => onDone(next), 750);
   }, [onDone, onSyllable, targets]);
 
-  // Explanations live in the feedback bar; this line only says how to start.
-  const hint = attempts.length ? '' : 'Draw how your voice moves on each character, left to right';
+  const wordToneNotes = getWordToneNotes(targets);
 
   return (
     <div className="flex w-full flex-col items-center gap-4 md:gap-5" style={{ maxWidth: targets.length * COLUMN_MAX_PX }}>
@@ -327,7 +371,62 @@ export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, 
         ))}
       </div>
 
-      <p className="min-h-10 max-w-sm text-balance text-center text-sm font-bold text-ui-muted-strong">{hint}</p>
+      <div className="relative z-20 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setShowToneGuide((open) => !open)}
+          aria-expanded={showToneGuide}
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-control px-2.5 text-sm font-extrabold text-ui-muted-strong transition-colors hover:bg-ui-hover focus-ring"
+        >
+          <AppIcon name="lightbulb" size={17} />
+          Tone changes
+        </button>
+        {showToneGuide && (
+          <section
+            role="note"
+            aria-label="Pinyin tone changes"
+            data-no-screen-nav
+            className="absolute bottom-[calc(100%+8px)] left-1/2 w-[min(92vw,28rem)] -translate-x-1/2 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 text-left shadow-ambient-lg"
+          >
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <h3 className="text-base font-black text-ui-ink-strong">Why Pinyin and speech can differ</h3>
+              <button
+                type="button"
+                onClick={() => setShowToneGuide(false)}
+                aria-label="Close tone changes"
+                className="-mr-2 -mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-control text-ui-muted-strong hover:bg-ui-hover focus-ring"
+              >
+                <AppIcon name="close" size={18} />
+              </button>
+            </div>
+            <p className="mb-3 text-sm font-bold leading-snug text-ui-muted-strong">
+              Pinyin usually keeps a character’s base tone even when its spoken pitch shifts. The marks help show the word; your voice follows the rules below.
+            </p>
+            {wordToneNotes.length > 0 && (
+              <div className="mb-3 rounded-control bg-brand-primary-soft px-3 py-2.5 text-sm font-bold leading-snug text-ui-ink">
+                <p className="font-black text-ui-ink-strong">In this word</p>
+                <p className="mt-1 text-ui-muted-strong">
+                  Written: {targets.map((target) => target.syllable).join(' ')}
+                  {' · '}spoken: {targets.map((target) => toneMarkedSyllable(target, target.spoken)).join(' ')}
+                </p>
+                <ul className="mt-1.5 list-disc space-y-1 pl-4">
+                  {wordToneNotes.map((note, index) => <li key={index}>{note}</li>)}
+                </ul>
+              </div>
+            )}
+            <p className="mb-2 text-xs font-bold leading-snug text-ui-muted-strong">
+              Pinyin may also write 不 and 一 with their changed sounds: bú, yí, or yì.
+            </p>
+            <ul className="space-y-1.5 text-xs font-bold leading-snug text-ui-muted-strong">
+              {TONE_CHANGE_RULES.map((rule) => (
+                <li key={rule.label}>
+                  <span className="font-black text-ui-ink-strong">{rule.label}:</span> {rule.detail}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
     </div>
   );
 }

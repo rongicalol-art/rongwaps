@@ -31,7 +31,7 @@ export function usePinyin(activeBookId: number, selectedLessons: number[], isLib
     onAnswerStateReset: resetAnswer,
     requeueMissed: false,
   });
-  const { currentCard, currentIndex, completed } = session;
+  const { currentCard, currentIndex, completed, moveTo } = session;
 
   const check = useCallback(() => {
     if (status !== 'idle' || !currentCard || !input.trim()) return;
@@ -43,6 +43,12 @@ export function usePinyin(activeBookId: number, selectedLessons: number[], isLib
   const next = useCallback(() => {
     if (session.advanceOrComplete() === 'advanced') resetAnswer();
   }, [resetAnswer, session]);
+
+  const previous = useCallback(() => {
+    if (currentIndex <= 0) return;
+    moveTo(currentIndex - 1);
+    resetAnswer();
+  }, [currentIndex, moveTo, resetAnswer]);
 
   const restartRound = useCallback(() => {
     setResults({});
@@ -63,6 +69,7 @@ export function usePinyin(activeBookId: number, selectedLessons: number[], isLib
     status,
     check,
     next,
+    previous,
     completed,
     accuracy,
     restartRound,

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
@@ -41,7 +41,7 @@ export function PinyinScreen({
   const pinyin = usePinyin(activeBookId, selectedLessons, isLibraryDeck, isReviewDeck);
   const {
     isLoading, loadError, playlist, currentCard, currentIndex, input, setInput, status,
-    check, next, completed, accuracy, restartRound, isShuffled, toggleShuffle, progressInfo,
+    check, next, previous, completed, accuracy, restartRound, isShuffled, toggleShuffle, progressInfo,
   } = pinyin;
   const [breakdown, setBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
@@ -68,6 +68,15 @@ export function PinyinScreen({
   useEffect(() => {
     if (status === 'idle' && currentCard) inputRef.current?.focus();
   }, [currentCard, currentIndex, status]);
+
+  const handleScreenTap = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target;
+    if (target instanceof Element && target.closest('button, [role="button"], [role="switch"], [role="dialog"], [role="menu"], [role="note"], [data-no-screen-nav], input, textarea, select, form, [contenteditable="true"]')) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const position = (event.clientX - bounds.left) / bounds.width;
+    if (position <= 0.4 && currentIndex > 0) previous();
+    else if (position >= 0.6 && currentIndex < playlist.length - 1) next();
+  }, [currentIndex, next, playlist.length, previous]);
 
   if (isLoading) return null;
   const activeBook = SAMPLE_BOOKS.find((book) => book.id === activeBookId) ?? SAMPLE_BOOKS[0];
@@ -106,7 +115,7 @@ export function PinyinScreen({
 
   return (
     <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink">
-      <ScreenLayout maxWidth="xl" className="flex flex-1 flex-col items-center justify-center px-4 pb-[180px] md:pb-[160px]">
+      <ScreenLayout maxWidth="none" onClick={handleScreenTap} className="flex flex-1 flex-col items-center justify-center px-4 pb-[180px] md:pb-[160px]">
         <div className="flex w-full max-w-lg flex-col items-center gap-5">
           <h2 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl">Type the pinyin</h2>
           <div className="flex w-full flex-wrap items-center justify-center gap-x-1 px-4 pb-2 pt-3">

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState, type MouseEvent } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
@@ -30,7 +30,7 @@ export function ToneScreen({
   continueLabel,
 }: ToneScreenProps) {
   const tones = useTones(activeBookId, selectedLessons, isLibraryDeck, isReviewDeck);
-  const { isLoading, loadError, playlist, currentCard, currentIndex, targets, status, completed, progressInfo } = tones;
+  const { isLoading, loadError, playlist, currentCard, currentIndex, targets, status, completed, progressInfo, next, previous } = tones;
   const showPinyin = useAppStore((state) => state.showPinyin);
   const [breakdown, setBreakdown] = useState<string | null>(null);
 
@@ -49,6 +49,15 @@ export function ToneScreen({
     onRestartClick: tones.restartRound,
     isShuffled: tones.isShuffled,
   });
+
+  const handleScreenTap = useCallback((event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target;
+    if (target instanceof Element && target.closest('button, [role="button"], [role="switch"], [role="dialog"], [role="menu"], [role="note"], [role="img"], [data-no-screen-nav], input, textarea, select, [contenteditable="true"]')) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const position = (event.clientX - bounds.left) / bounds.width;
+    if (position <= 0.4 && currentIndex > 0) previous();
+    else if (position >= 0.6 && currentIndex < playlist.length - 1) next();
+  }, [currentIndex, next, playlist.length, previous]);
 
   if (isLoading) return null;
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) ?? SAMPLE_BOOKS[0];
@@ -87,7 +96,7 @@ export function ToneScreen({
 
   return (
     <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink">
-      <ScreenLayout maxWidth="xl" className="flex flex-1 flex-col items-center justify-center px-4 pb-[180px] md:pb-[160px]">
+      <ScreenLayout maxWidth="none" onClick={handleScreenTap} className="flex flex-1 flex-col items-center justify-center px-4 pb-[180px] md:pb-[160px]">
         <h2 className="mb-6 text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:mb-8 md:text-3xl">Draw the tones</h2>
         {currentCard && targets && (
           <ToneStrip
@@ -106,7 +115,7 @@ export function ToneScreen({
       <FeedbackBottomBar
         status={status}
         word={currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: currentCard.simple } : undefined}
-        onContinue={tones.next}
+        onContinue={next}
         showCheck={false}
         showContinueOnWrong
         keyboardShortcutDisabled={Boolean(breakdown)}

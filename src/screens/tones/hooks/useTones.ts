@@ -37,7 +37,7 @@ export function useTones(activeBookId: number, selectedLessons: number[], isLibr
     onAnswerStateReset: resetAnswer,
     requeueMissed: false,
   });
-  const { currentCard, currentIndex, completed } = session;
+  const { currentCard, currentIndex, completed, moveTo } = session;
   const targets = useMemo(() => (currentCard ? toneTargets(currentCard) : null), [currentCard]);
 
   const playWord = useCallback(() => {
@@ -75,6 +75,15 @@ export function useTones(activeBookId: number, selectedLessons: number[], isLibr
     wordTokenRef.current += 1;
     if (session.advanceOrComplete() === 'advanced') resetAnswer();
   }, [resetAnswer, session]);
+
+  const previous = useCallback(() => {
+    if (currentIndex <= 0) return;
+    if (advanceTimerRef.current !== null) window.clearTimeout(advanceTimerRef.current);
+    advanceTimerRef.current = null;
+    wordTokenRef.current += 1;
+    moveTo(currentIndex - 1);
+    resetAnswer();
+  }, [currentIndex, moveTo, resetAnswer]);
 
   const finishWord = useCallback((attempts: ToneAttempt[]) => {
     if (!currentCard) return;
@@ -118,6 +127,7 @@ export function useTones(activeBookId: number, selectedLessons: number[], isLibr
     playSyllable,
     finishWord,
     next,
+    previous,
     restartRound,
     isShuffled: session.isShuffled,
     toggleShuffle: session.toggleShuffle,
