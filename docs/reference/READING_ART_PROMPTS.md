@@ -1,6 +1,6 @@
 # Book 1 reading art: Luna execution brief
 
-Status: prompt plan only. Book 1 Lesson 1 Dialogue 1 is approved; the other 47 images await generation. This brief covers all 16 lessons, slots 1–3. Slot 3 is the short reading, not a third dialogue.
+Status: execution brief for Book 1 reading art, slots 1–3. Lesson 1 slot 1 is approved; this batch covers lessons 1–8, and later lessons remain planned. Slot 3 is the short reading, not a third dialogue.
 
 Source: `content/readings/book-1.json`. Character identities: `src/utils/lesson/speakerCharacters.ts` and the saved portraits. Scenes below select one illustrative moment from each reading; they are not literal transcriptions. Where a short reading leaves its narrator unnamed, named cast members are illustrative casting choices, not claims about narrator identity.
 
@@ -41,7 +41,7 @@ Asset: one polished 16:9 landscape illustration for a Mandarin-learning reading.
 
 Use the attached approved classroom illustration as the visual benchmark. Use the separately attached, named character portraits to lock identities: recognizable faces, hairstyle silhouettes, skin tones, outfit colors, friendly geometric proportions. Adult university students, not children. Keep the same illustration system across the whole series; do not blend or swap character features. Repose the characters naturally for this scene.
 
-Style: Kurzgesagt-inspired approachable flat vector illustration, rounded geometric forms, smooth curves, simplified expressive faces, crisp shape boundaries and confident single-hue color blocks. Extremely saturated colors with strong warm/cool contrast: deep teal, indigo and cobalt against coral, golden yellow and cyan; occasional magenta accents. Let each scene choose a dominant pair rather than using every hue equally. Favor solid flat color, with sparse hard-edged shadow shapes and only the subtle tonal variation visible in the approved example. No conspicuous gradients, grain, texture, painterly shading, heavy outlines, photorealism or 3D.
+Style: Kurzgesagt-inspired approachable flat vector illustration, rounded geometric forms, smooth curves, simplified expressive faces, crisp shape boundaries and confident single-hue color blocks. Keep eyes open with a clear natural gaze by default; use closed eyes only for an explicitly requested blink, sleep or wink. Expressions should feel natural, varied and suited to the scene; avoid repeated broad smiles and keep mouths closed by default. Open mouths only for explicit laughter or singing. Treat the approved illustration as a reference for color, shape language and rendering only; do not copy its facial expression. Extremely saturated colors with strong warm/cool contrast: deep teal, indigo and cobalt against coral, golden yellow and cyan; occasional magenta accents. Let each scene choose a dominant pair rather than using every hue equally. Favor solid flat color, with sparse hard-edged shadow shapes and only the subtle tonal variation visible in the approved example. No conspicuous gradients, grain, texture, painterly shading, heavy outlines, photorealism or 3D.
 
 Art direction: creative, dynamic and clearly composed. One primary action, strong silhouettes, purposeful diagonal or curved visual flow, expressive body language. Establish foreground, subject and background through overlap and scale. Vary camera height, distance, architecture and time of day across images. Give props physical places in the scene; do not scatter floating icons around people. Backgrounds support the action with a few deliberate shapes. Keep faces, hands and the key object comfortably within frame and readable at thumbnail size. Full image, no borders, no crop-dependent composition.
 
@@ -57,16 +57,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 - Cast: `yiwen`, `youmei`, `zhongming`.
 - Existing approved file: `output/imagegen/b1l01-dialogue-1-new-classmate.png`.
 - Scene anchor: Youmei waves in the classroom doorway; Yiwen introduces her with an open palm; Zhongming turns in his chair. Sunlit windows, diagonal desks, coral against teal. Keep this image as the series benchmark; do not regenerate it by default.
+- Facial acting: Warm curiosity as new classmates meet.
 
 ### B1L01-R02 — First hello
 
 - Cast references: `zhongming.webp`, `youmei.webp`.
 - Scene prompt: In the classroom just after arrival, Zhongming and Youmei introduce themselves beside a broad sunlit window. Zhongming gestures lightly to his chest, while Youmei holds a book and answers with a friendly smile. Use an intimate side-on medium view, with a curved chair back anchoring the foreground and the window framing both faces. A few geometric campus roofs outside establish Taiwan without symbols or labels. Emphasize the yellow/coral outfits against cobalt window framing. Keep this a two-person connection, distinct from the three-person arrival scene.
+- Facial acting: A warm, slightly shy first introduction.
 
 ### B1L01-R03 — A taste of Taiwan
 
 - Cast references: `youmei.webp`.
 - Scene prompt: Youmei enjoys a pearl milk tea and a colorful bowl of freshly cut fruit at an open-air Taiwanese café counter. Her lifted cup, visible dark tapioca pearls, and delighted expression are the focus; pineapple, watermelon and mango form a bold foreground still life. Frame her slightly off-center beneath a simple awning with bright foliage beyond. Use a low tabletop viewpoint and sweeping curved fruit shapes. Coral and mango yellow pop against deep teal. Convey her affection for Taiwan and its food through this one joyful moment, without a written self-introduction.
+- Facial acting: Youmei is delighted by her first sip of bubble tea.
 
 ## Lesson 2 — Days and routines
 
@@ -74,16 +77,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `zhongming.webp`, `parent.webp`.
 - Scene prompt: At home on a bright morning, Zhongming swings a backpack over one shoulder near the open front door while his mother turns toward him from a breakfast table. Books tucked into the bag suggest a library visit before afternoon class. Capture the movement of the bag strap and his half-turn as they discuss his day. View from inside the home, with a diagonal strip of sunlight leading out toward campus. A modest unnumbered clock can show shortly before nine. Warm yellow door and coral mother against teal interior; no timetable or calendar graphics.
+- Facial acting: A lively morning send-off at home.
 
 ### B1L02-R02 — Birthday plans after class
 
 - Cast references: `yiwen.webp`, `zhongming.webp`, `youmei.webp`.
 - Scene prompt: After Friday classes, Yiwen excitedly invites Zhongming and Youmei to her birthday gathering. They pause on broad school steps; Yiwen leans into the conversation with an animated hand gesture, Zhongming has a sudden delighted realization, and Youmei smiles warmly. No gifts yet: this is the invitation, not the party. Use a slightly low, wide view with the steps forming energetic diagonal bands and a school doorway behind. Coral afternoon light, teal shadows and golden book edges create a cheerful end-of-week mood. Keep the three faces unobstructed.
+- Facial acting: An excited invitation catches Zhongming by surprise.
 
 ### B1L02-R03 — A busy student's day
 
 - Cast references: `youmei.webp`.
 - Scene prompt: Youmei studies at a library desk in early afternoon, setting her backpack down as she opens a book. A small lunch container tucked in the open bag hints at the busy day connecting school and home. An unnumbered wall clock shows one o'clock. Let a sweeping shelf and broad window guide the eye toward her focused face and busy hands. Use a high three-quarter view, with a cyan tabletop and saturated coral stationery against indigo shelving. One coherent moment from her daily routine; no multiple versions of Youmei or illustrated schedule.
+- Facial acting: Youmei is quietly absorbed in her afternoon study.
 
 ## Lesson 3 — Gifts and birthdays
 
@@ -91,16 +97,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `yiwen.webp`, `zhongming.webp`.
 - Scene prompt: At a school courtyard table, Yiwen holds up two Chinese-study books as a proposed birthday gift for Youmei while Zhongming responds enthusiastically. Keep the pages and covers unlettered. His open hand suggests a lively new idea; do not show a purchased cake or flowers as if the shopping has already happened. Use an overhead three-quarter view with the two books as the compositional hinge and a circular tree shadow behind them. Bright coral book covers and golden sunlight against teal seating. The scene should feel conspiratorial and affectionate, planning a surprise for an absent friend.
+- Facial acting: They share an eager, conspiratorial birthday plan.
 
 ### B1L03-R02 — The little white pencils
 
 - Cast references: `yiwen.webp`, `zhongming.webp`.
 - Scene prompt: At a stationery shop counter, Yiwen lifts two small white pencils together while Zhongming compares them with a red pencil nearby and nods approvingly. Make the white pair unmistakable against a saturated cobalt counter. Take a close, low counter-level viewpoint: large pencil trays in the foreground lead to their faces, with a few bold geometric shelves behind. Teal and coral shelf blocks, yellow clothing accents. The tiny objects receive the visual spotlight through scale and placement, not glow. No readable prices, packaging text, or extra products cluttering the scene.
+- Facial acting: Focused concentration over a tiny but important choice.
 
 ### B1L03-R03 — Youmei's birthday table
 
 - Cast references: `youmei.webp`, `yiwen.webp`, `zhongming.webp`, `guoan.webp`.
 - Scene prompt: At Youmei's home, Youmei beams behind a large birthday cake while Yiwen places two wrapped books on the table, Zhongming presents flowers, and Guoan joins the celebration. Two tiny white pencils sit together beside the books; fruit and a small snack dish complete the table. Frame the four friends in a compact arc, with a bold cake in the near foreground and happy hands leading inward. Warm golden room lighting against indigo evening windows, with coral and teal clothing. No birthday writing, age numerals, floating confetti clutter or extra guests.
+- Facial acting: The friends share the joy of Youmei’s birthday.
 
 ## Lesson 4 — Food and drinks
 
@@ -108,16 +117,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `zhongming.webp`, `youmei.webp`.
 - Scene prompt: On a hot Taiwanese street, Youmei gestures toward a welcoming, quieter noodle shop while Zhongming, warm and hungry, turns eagerly toward its open doorway. Suggest the busier neighboring restaurant with a few simplified silhouettes far behind; do not divide the frame into comparison panels. A steaming beef-noodle bowl visible just inside makes the choice legible without signage. Use a wide street-corner perspective, an awning sweeping across the top, and diagonals leading inside. Brilliant sun-yellow pavement and coral awnings contrast with cool teal shade. No readable shop signs.
+- Facial acting: Youmei is thoughtful; Zhongming eagerly spots the noodle shop.
 
 ### B1L04-R02 — Two bowls, two teas
 
 - Cast references: `zhongming.webp`, `youmei.webp`, `cafeWorker.webp`.
 - Scene prompt: Zhongming and Youmei order at a restaurant counter while the cheerful worker places a tray with two bowls of beef noodles and two teas within reach. Distinguish reddish amber black tea from lighter green tea through liquid color. Zhongming reaches to pay, but show no readable banknote values. Use a strong counter diagonal and a slightly elevated view so the food and all three faces read clearly. Warm coral bowls and yellow apron against a deep teal counter and cobalt kitchen shapes. Generous appetizing food forms; no menu text, price labels or excessive kitchen detail.
+- Facial acting: Anticipation as two bowls arrive at the counter.
 
 ### B1L04-R03 — Summer drink stop
 
 - Cast references: `youmei.webp`, `yiwen.webp`, `cafeWorker.webp`.
 - Scene prompt: At a street drink stall in summer, Youmei and Yiwen receive cold drinks from the worker. Put a vivid fruit juice in one hand and iced milk tea in the other; a few orderly cups behind the counter suggest coffee, milk and tea. Exaggerated clear ice shapes and condensation limited to a few flat marks make the drinks feel refreshing. View from just inside the stall, looking toward the friends under the awning. Huge warm sunlit street shapes beyond, cool cyan counter shade and coral fruit accents. Keep the drinks central; no brand marks or menu lettering.
+- Facial acting: A refreshing surprise on a hot afternoon.
 
 ## Lesson 5 — Leisure and home
 
@@ -125,16 +137,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `zhongming.webp`, `youmei.webp`.
 - Scene prompt: On a campus bench, Zhongming invites Youmei for Saturday afternoon tea, showing her a phone with a single unlettered photograph of chocolate ice cream. Youmei pauses her reading, lowering one headphone cup with a delighted look. Keep both characters physically together; the café treat is an image on his phone, not an event already happening. A broad curved bench and the open book create a lively foreground rhythm. Teal foliage, golden sunlight and a coral bench accent. Use a medium three-quarter view; the phone is secondary to their expressions, with no app interface or readable text.
+- Facial acting: Zhongming’s invitation is playful; Youmei is pleasantly surprised.
 
 ### B1L05-R02 — Found under the book
 
 - Cast references: `zhongming.webp`, `parent.webp`.
 - Scene prompt: In his bedroom, Zhongming lifts a large book and discovers his wallet underneath, his face changing to relieved surprise. His mother appears only at the distant open doorway, carrying a cooking utensil as she returns to preparing food. The book, exposed wallet and reaching hand form a clear visual chain. Use a close desk-level composition with a strong diagonal from the wallet to his face, a few displaced books, and a simplified bed behind. Bright coral wallet against a cobalt desktop and golden overshirt. A funny discovery, not a room full of scattered search clues.
+- Facial acting: Relief and a little embarrassment at the wallet discovery.
 
 ### B1L05-R03 — The sunny reading corner
 
 - Cast references: `youmei.webp`.
 - Scene prompt: Use Youmei as the illustrative resident of a cozy bedroom. She curls comfortably on a sofa reading, while a cat stretches in a broad patch of sunlight beside a large window. A desk, neatly suggested bed, shelves of unlettered books and an unused television in front of the sofa establish the room without crowding it. A gently elevated wide view makes the furniture relationships clear. A large diagonal sun patch connects the cat and reader. Coral sofa, deep teal walls and vivid golden light. Make the cat's relaxed silhouette a secondary delight, not the dominant subject.
+- Facial acting: Quiet contentment in a sunny reading corner.
 
 ## Lesson 6 — Sports and interests
 
@@ -142,16 +157,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `guoan.webp`, `youmei.webp`, `yiwen.webp`.
 - Scene prompt: Beside a seaside sports court, Yiwen offers a tennis racket toward Youmei while Guoan smiles and turns toward the court. The ocean behind them hints at the swimming suggestion they have moved past. Youmei accepts the new plan enthusiastically; no one is swimming or running. Use a racket rim large in the foreground, framing the friends through its curve, with a court line sweeping into the middle distance. Saturated ocean cyan and cobalt court against coral fence details and golden skin tones. Keep three distinct silhouettes and a lively sense of agreement.
+- Facial acting: The friends are upbeat about choosing tennis.
 
 ### B1L06-R02 — Maybe this weekend
 
 - Cast references: `guoan.webp`, `zhongming.webp`.
 - Scene prompt: Outside a campus building after class, energetic Guoan holds a bicycle by the handlebars and suggests a ride; tired Zhongming slouches amiably on a low wall, headphones around his neck and backpack beside him. Guoan is persuasive, not scolding; Zhongming looks sleepy, not ill. Let the bicycle wheel dominate the near foreground and curve toward the two contrasting poses. A cool breeze bends one simple tree canopy. Cobalt shadows, coral wall, golden shirt and green hoodie. One shared setting, with no split-screen, date symbols, movie posters or multiple activity icons.
+- Facial acting: Guoan is enthusiastic; Zhongming is tired but amused.
 
 ### B1L06-R03 — Friends on the weekend
 
 - Cast references: `youmei.webp`, `yiwen.webp`, `guoan.webp`, `zhongming.webp`.
 - Scene prompt: Four friends spill into a sunny recreation park on the weekend: Youmei carries a tennis racket, Guoan tucks a basketball under his arm, Yiwen walks beside them with a swimming bag and goggles attached, and Zhongming sings playfully as he walks. Use their movement along a broad curved path as the unifying action. Do not portray several sports being played simultaneously. A pool building and simple courts sit quietly in the background. Low wide camera, lively staggered silhouettes, vivid teal landscape against coral paving and golden sunlight. No floating musical notation.
+- Facial acting: A relaxed weekend brings out each friend’s personality.
 
 ## Lesson 7 — Getting around
 
@@ -159,16 +177,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `youmei.webp`, `yuanzhen.webp`.
 - Scene prompt: In a school corridor, Youmei and Yuanzhen lean together over a phone showing a simple unlabeled street map, then turn toward an open classroom as they realize class is starting. Capture the pivot: one foot already stepping toward the doorway, a bag swinging slightly, one hand still near the map. Use the corridor's diagonal perspective to draw the eye toward the classroom. Coral doorway and scarf against cobalt corridor shadows and bright cyan window light. This is planning tomorrow's hotel visit, not arrival at the hotel. No labels, navigation UI or floating map pins.
+- Facial acting: A sudden realization sends them hurrying toward class.
 
 ### B1L07-R02 — The MRT makes sense
 
 - Cast references: `youmei.webp`, `yuanzhen.webp`.
 - Scene prompt: At a campus table, Youmei traces a route across a large unfolded street map while Yuanzhen nods, deciding that taking the MRT will be more comfortable than walking. Use an unlettered map with a simple rail line, station circles and tiny building blocks, not a detailed cartographic diagram. Through the broad window, an elevated train passes across the background, suggesting the chosen transport. High three-quarter camera with the map as an angular foreground plane. Cobalt rail and teal architecture against coral map accents. Keep Youmei's straight bangs and Yuanzhen's side-parted bob visibly distinct.
+- Facial acting: A calm moment of choosing the easier route.
 
 ### B1L07-R03 — A city connected by rail
 
 - Cast references: `youmei.webp`.
 - Scene prompt: Youmei stands comfortably by an MRT carriage window with a weekend bag, enjoying a city journey. Through the window, a coherent panoramic cityscape leads toward distant airport runways and a small airplane. Overhead inside the carriage, an abstract route strip has red, green and blue lines with no writing; make this a modest environmental detail. Use a sweeping window curve and repeating seat shapes, with the train interior framing her face. Saturated cobalt interior, warm coral seat, brilliant cyan sky. Convey convenient travel from home toward the airport without turning the scene into a transit infographic.
+- Facial acting: Youmei enjoys a peaceful ride through the city.
 
 ## Lesson 8 — Clothes and shopping
 
@@ -176,16 +197,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `yiwen.webp`, `yuanzhen.webp`.
 - Scene prompt: Yiwen admires Yuanzhen's skirt as the friends chat on a campus walkway, planning a shopping trip. Yuanzhen lightly holds one side of the skirt to show its shape, smiling; preserve her cobalt top and coral scarf, adding a simple skirt compatible with that outfit. Yiwen's delighted open-handed gesture leads toward the fabric. Medium full-figure composition with a curved planter and broad architectural blocks behind. Cobalt, coral and bright teal dominate. Keep the conversation kind and confident; no body-size jokes, measuring tapes, brand logos or shopping scene presented as already underway.
+- Facial acting: Yiwen admires Yuanzhen’s outfit, and Yuanzhen feels pleased.
 
 ### B1L08-R02 — Catching the elevator
 
 - Cast references: `yiwen.webp`, `yuanzhen.webp`.
 - Scene prompt: In a department store near closing, Yiwen and Yuanzhen hurry toward an open elevator, laughing at their rush to reach the shoe floor. A nearby fitting-room return rack holds the yellow and blue trousers Yiwen tried, making clear they were not purchased. A simple black shoe display hints at the next stop. Use an elongated aisle perspective and swinging ponytail/scarf to convey motion. An unnumbered clock shows nine. Violet-blue store architecture, golden elevator light and coral display blocks. No readable floor numerals, closing announcements, clothing labels or bags implying a completed purchase.
+- Facial acting: The friends hurry for the elevator with playful urgency.
 
 ### B1L08-R03 — Looking is part of the fun
 
 - Cast references: `yiwen.webp`, `jiale.webp`.
 - Scene prompt: In a department store with an adjacent bookstore, Yiwen pauses to admire a striking outfit on a mannequin while Jiale browses an open car magazine at a nearby book display. A sweeping architectural curve connects the two zones into one believable shared interior; no divided panels. The magazine shows one bold car illustration without lettering. Both enjoy browsing, with no shopping bags or payment transaction. Saturated cobalt mannequin display, coral seating and warm golden shelves. Slightly elevated wide view, balanced attention on curiosity and discovery rather than luxury products or consumption.
+- Facial acting: Quiet curiosity as they browse the store together.
 
 ## Lesson 9 — Studying together
 

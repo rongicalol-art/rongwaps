@@ -22,19 +22,29 @@ interface ParsedDialogue {
   gloss?: string;
 }
 
-function parseDialogue(sub?: string): ParsedDialogue | null {
+function parseDialogue(sub?: string, prompt?: string): ParsedDialogue | null {
   if (!sub) return null;
 
   // Check for afterward reply: "B replies afterward: ..." or "Your friend replies next: ..."
-  const afterMatch = /^(.*?(?:replies afterward|replies next|replies)):\s*(.+)$/i.exec(sub);
+  const afterMatch = /^(?:.*?(?:replies afterward|replies next|replies)):\s*(.+)$/i.exec(sub);
   if (afterMatch) {
-    return { type: 'afterward', preface: afterMatch[1].trim(), utterance: afterMatch[2].trim() };
+    return { type: 'afterward', utterance: afterMatch[1].trim() };
+  }
+
+  // Explicit "Start the chat" where sub is the friend answering afterward
+  if (/^Start the chat/i.test(prompt ?? '')) {
+    const zhMatch = /[\u4e00-\u9fa5][\u4e00-\u9fa5A-Za-z0-9\s,，、—…（）()]*[？?。！!]/.exec(sub);
+    if (zhMatch) {
+      return { type: 'afterward', utterance: zhMatch[0].trim() };
+    }
   }
 
   // Check for Chinese sentence with optional leading English context and trailing gloss
   // Chinese sentence contains Hanzi and ends with Chinese punctuation ？ or 。 or ！ or ?
   const match = /^(.*?)([\u4e00-\u9fa5][\u4e00-\u9fa5A-Za-z0-9\s,，、—…（）()]*[？?。！!])(?:\s*(.*))?$/.exec(sub);
   if (match) {
+    // If it's reading numbers e.g. "630,000：六十三萬 5,080", skip
+    if (/[0-9]+[，,：:][\u4e00-\u9fa5]+/.test(sub)) return null;
     return {
       type: 'incoming',
       preface: match[1].trim() || undefined,
@@ -64,8 +74,9 @@ export function OrderBuildExercise({
   const order = line.map((tile) => item.tiles[tile].traditional);
   const verdict = checkOrderBuild(item, order);
   const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
-  const dialogue = useMemo(() => parseDialogue(item.sub), [item.sub]);
+  const dialogue = useMemo(() => parseDialogue(item.sub, item.prompt), [item.sub, item.prompt]);
   const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';
+  const placeholder = dialogue?.type === 'incoming' ? 'Tap words to reply…' : 'Tap words to send…';
 
   useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
   useEffect(() => {
@@ -130,7 +141,7 @@ export function OrderBuildExercise({
               )}
             >
               <span className="inline-block h-4 w-0.5 animate-pulse bg-brand-primary" aria-hidden="true" />
-              <span className="text-sm font-bold text-ui-muted">Tap words to reply…</span>
+              <span className="text-sm font-bold text-ui-muted">{placeholder}</span>
             </div>
           ) : (
             <div
@@ -168,15 +179,21 @@ export function OrderBuildExercise({
             </div>
           )}
 
-          {dialogue.type === 'afterward' && (
-            <PracticeBubble side="them" notes={dialogue.preface ? [dialogue.preface] : []}>
-              <ContextualChineseText
-                text={dialogue.utterance}
-                tokens={contextTokens}
-                characterPreference={script}
-                onOpenWord={onOpenWord}
-              />
-            </PracticeBubble>
+          {status === 'correct' && dialogue.type === 'afterward' && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <PracticeBubble side="them">
+                <ContextualChineseText
+                  text={dialogue.utterance}
+                  tokens={contextTokens}
+                  characterPreference={script}
+                  onOpenWord={onOpenWord}
+                />
+              </PracticeBubble>
+            </motion.div>
           )}
         </div>
       ) : (
