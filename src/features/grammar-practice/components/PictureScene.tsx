@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { fetchContentBlobUrl } from '../../../services/staticContentService';
 import type { PracticeCastMember } from '../../../types/models';
+import wangThinking from '../../../assets/images/grammar-practice/wang-thinking.webp';
 import { bookPagePath } from '../../../utils/grammar/bookPagePath';
+import { CountdownScene } from './CountdownScene';
+import { RouteScene } from './RouteScene';
 
 interface PictureSceneProps {
   page: number;
@@ -51,8 +54,30 @@ export function PageCrop({ src, box, alt, onLoad }: {
   );
 }
 
+/** Reviewed replacement for p.45 #3; other scenes retain their printed-book source. */
+export function PictureScene(props: PictureSceneProps) {
+  if (props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {
+    return <img src={wangThinking} alt={props.alt} draggable={false} className="mx-auto block h-auto max-h-[230px] w-full max-w-[285px] select-none object-contain sm:max-h-[300px]" />;
+  }
+  // Source-checked diagram replacements; coordinates identify the printed exercise, not a guessed alt-text match.
+  const key = `${props.page}:${props.box.join(',')}`;
+  if (key === '163:0.173,0.332,0.296,0.1') {
+    return <RouteScene from={{ icon: 'usa', label: '美國' }} to={{ icon: 'taiwan', label: '台灣' }} arrived={false} showPurpose={false} />;
+  }
+  if (key === '163:0.18,0.502,0.28,0.095') {
+    return <RouteScene from={{ icon: 'home', label: '家' }} to={{ icon: 'school', label: '學校' }} arrived={false} showPurpose={false} />;
+  }
+  if (key === '163:0.176,0.677,0.23,0.084') {
+    return <RouteScene from={{ icon: 'restaurant', label: '餐廳' }} to={{ icon: 'library', label: '圖書館' }} arrived={false} showPurpose={false} />;
+  }
+  if (key === '196:0.202,0.148,0.287,0.121') {
+    return <CountdownScene now={{ time: '11:50', label: { traditional: '現在', pinyin: 'xiànzài', english: 'now' } }} next={{ time: '12:00', label: { traditional: '中午休息時間', pinyin: 'zhōngwǔ xiūxí shíjiān', english: 'noon break' } }} renderChinese={(text) => text.traditional} />;
+  }
+  return <BookPictureScene {...props} />;
+}
+
 /** A crop of the printed book 1 page, shown as the picture an exercise is about. */
-export function PictureScene({ page, box, alt }: PictureSceneProps) {
+function BookPictureScene({ page, box, alt }: PictureSceneProps) {
   const { src, failed } = usePageImage(page);
   /** Page width / height; a typical page until the scan loads. */
   const [pageRatio, setPageRatio] = useState(0.75);

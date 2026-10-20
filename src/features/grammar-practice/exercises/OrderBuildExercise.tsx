@@ -57,8 +57,18 @@ function parseDialogue(sub?: string, prompt?: string): ParsedDialogue | null {
   return null;
 }
 
+/** Keep instructions and role/selection context; omit a question already displayed in Chinese. */
+export function orderBuildHeading(item: OrderBuildItem): string | undefined {
+  const dialogue = parseDialogue(item.sub, item.prompt);
+  const translatedQuestion = /^(?:Does|Do|Is|Are|Where|What|How|Who|When|Which|Can)\b[^?]+\?(?:\s*Answer from the picture\.)?$/i.test(item.prompt ?? '');
+  if (item.scene && dialogue?.type === 'incoming' && /[？?]$/.test(dialogue.utterance) && translatedQuestion) {
+    return 'Answer from the picture';
+  }
+  return !item.scene && !item.sub && item.prompt ? 'Build a sentence' : item.prompt;
+}
+
 /**
- * Build the sentence: the title says what to say, the words wait in the dock, and tapping
+ * Build the sentence: the title says what to say, the words wait beneath the answer, and tapping
  * them lays them into the reply bubble (or on a free line when not a conversation). Tap a
  * placed word to take it back. `listen-build` is the same line with a recording above it
  * (`children`) in place of a picture.
@@ -77,7 +87,7 @@ export function OrderBuildExercise({
   const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
   const dialogue = useMemo(() => parseDialogue(item.sub, item.prompt), [item.sub, item.prompt]);
   const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';
-  const placeholder = dialogue?.type === 'incoming' ? 'Tap words to reply…' : 'Tap words to send…';
+  const placeholder = dialogue?.type === 'incoming' ? 'Tap words to reply…' : 'Tap words to build the sentence…';
 
   useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
   useEffect(() => {
@@ -91,7 +101,7 @@ export function OrderBuildExercise({
     return () => { checkRef.current = null; };
   });
 
-  // Try again: the line empties back into the dock (the order is the answer, so start it fresh).
+  // Try again: the line empties back into the word bank (the order is the answer, so start it fresh).
   useEffect(() => {
     if (retryKey > 0) setLine([]);
   }, [retryKey]);
@@ -136,36 +146,39 @@ export function OrderBuildExercise({
     </div>
   );
 
+  const scene = item.kind === 'order-build' && item.scene ? (
+    <PracticeScene
+      scene={item.scene}
+      arrived={status === 'correct'}
+      renderChinese={(text) => (
+        <ContextualChineseText text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+      )}
+    />
+  ) : null;
+  const incoming = dialogue?.type === 'incoming' ? (
+    <div className="flex min-w-0 flex-col gap-2 text-center sm:text-left">
+      <div className="font-chinese text-2xl leading-relaxed text-ui-ink-strong sm:text-3xl">
+        <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+      </div>
+      <PracticePrompt sub={dialogue.gloss} />
+    </div>
+  ) : null;
+
   return (
     <LayoutGroup id={`order-${item.id}`}>
       {dialogue ? (
         <div className="flex flex-col gap-4">
           {dialogue.preface && <PracticePrompt sub={dialogue.preface} />}
           {children}
-          {item.kind === 'order-build' && item.scene && (
-            <PracticeScene
-              scene={item.scene}
-              arrived={status === 'correct'}
-              renderChinese={(text) => (
-                <ContextualChineseText
-                  text={textIn(text, script)}
-                  tokens={contextTokens}
-                  characterPreference={script}
-                  onOpenWord={onOpenWord}
-                />
-              )}
-            />
-          )}
-
-          {dialogue.type === 'incoming' && (
+          {scene ? incoming ? (
+            <div className="grid items-center gap-5 sm:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] sm:gap-8">
+              {scene}
+              {incoming}
+            </div>
+          ) : scene : incoming && (
             <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
               <PracticeBubble className="relative max-w-full rounded-control rounded-bl-control before:absolute before:-left-2 before:top-7 before:size-4 before:rotate-45 before:border-b-2 before:border-l-2 before:border-ui-divider before:bg-ui-surface" side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
-                <ContextualChineseText
-                  text={dialogue.utterance}
-                  tokens={contextTokens}
-                  characterPreference={script}
-                  onOpenWord={onOpenWord}
-                />
+                <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
               </PracticeBubble>
             </PracticeCharacterPrompt>
           )}
@@ -199,20 +212,7 @@ export function OrderBuildExercise({
             </PracticeCharacterPrompt>
           ) : <PracticePrompt sub={item.sub} />}
           {children}
-          {item.kind === 'order-build' && item.scene && (
-            <PracticeScene
-              scene={item.scene}
-              arrived={status === 'correct'}
-              renderChinese={(text) => (
-                <ContextualChineseText
-                  text={textIn(text, script)}
-                  tokens={contextTokens}
-                  characterPreference={script}
-                  onOpenWord={onOpenWord}
-                />
-              )}
-            />
-          )}
+          {scene}
           {answerLine}
         </div>
       )}

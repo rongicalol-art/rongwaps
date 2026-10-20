@@ -51,9 +51,10 @@ function Pin({ place, x, y, radius = 40 }: { place: PracticePlace | null; x: num
 export function RouteScene({ from, to, purpose, showPurpose, arrived }: RouteSceneProps) {
   const reduceMotion = useReducedMotion();
   return (
-    <div className="rounded-feature border-2 border-ui-divider bg-ui-surface">
+    <div className="mx-auto w-full max-w-lg">
       <svg viewBox="0 0 540 214" role="img" aria-label={`From ${from?.label ?? '?'} to ${to?.label ?? '?'}`} className="block h-auto w-full">
-        <path d={ROUTE} className="fill-none stroke-ui-border [stroke-dasharray:1_12] [stroke-linecap:round] [stroke-width:4]" />
+        <path d="m365 106 13 8-13 8" className="fill-none stroke-brand-primary [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:5]" />
+        <path d={ROUTE} className="fill-none stroke-brand-primary [stroke-dasharray:1_12] [stroke-linecap:round] [stroke-width:4]" />
         <path
           d={ROUTE}
           style={{

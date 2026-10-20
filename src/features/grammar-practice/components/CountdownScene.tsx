@@ -83,7 +83,7 @@ export function CountdownScene({ now, next, renderChinese }: CountdownSceneProps
     <div
       role="img"
       aria-label={`${describe(now)}, then ${describe(next)}`}
-      className="flex items-start justify-center gap-2 rounded-feature border-2 border-ui-divider bg-ui-surface px-3 py-6 sm:gap-6 sm:px-4"
+      className="flex items-start justify-center gap-2 px-3 py-6 sm:gap-6 sm:px-4"
     >
       <Moment moment={now} next={false} renderChinese={renderChinese} />
       <div className="flex flex-col items-center gap-1 self-center pb-9 text-ui-muted">

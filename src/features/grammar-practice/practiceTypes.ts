@@ -24,7 +24,7 @@ export interface PracticeExerciseProps<T extends PracticeItem = PracticeItem> {
   onOpenWord: (word: string) => void;
   /** A panel (book page, dictionary, notes) is open on top: ignore key shortcuts. */
   shortcutsDisabled: boolean;
-  /** The dock's word-bank area: the exercise portals its tiles here. */
+  /** The active word-bank area: beneath sentence builds, in the dock for other choice exercises. */
   trayHost: HTMLElement | null;
   /** The answer is complete, so the dock offers Check. */
   onReadyChange: (ready: boolean) => void;

@@ -22,7 +22,7 @@ interface PracticeDockProps {
   script: PracticeScript;
   shortcutsDisabled: boolean;
   /** The bank area the exercise portals its word tiles into. */
-  onTrayRef: (element: HTMLDivElement | null) => void;
+  onTrayRef?: (element: HTMLDivElement | null) => void;
   onCheck: () => void;
   onSkip: () => void;
   /** Previous item; absent on the first one (the action is removed, not disabled). */
@@ -76,14 +76,14 @@ export function PracticeDock({
     <motion.div
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0, transition: DOCK_IN }}
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-40 md:px-6 md:pb-6"
+      className={cn('pointer-events-none absolute inset-x-0 bottom-0 z-40', onTrayRef && 'md:px-6 md:pb-6')}
     >
       <p role="status" aria-live="polite" className="sr-only">{checked ? (result?.title ?? (correct ? 'Correct' : 'Not quite')) : ''}</p>
       <div
         className={cn(
           'pointer-events-auto mx-auto w-full max-w-2xl lg:max-w-4xl border-t-2 px-3 pt-3 pb-sheet-safe transition-colors',
-          'md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:p-3',
-          !checked && 'border-ui-border bg-ui-surface',
+          onTrayRef ? 'md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:p-3' : 'md:px-6 md:py-5',
+          !checked && (onTrayRef ? 'border-ui-border bg-ui-surface' : 'border-ui-divider bg-ui-canvas'),
           correct && 'border-feedback-success bg-feedback-success-surface',
           status === 'wrong' && 'border-feedback-danger bg-feedback-danger-surface',
         )}
@@ -97,8 +97,8 @@ export function PracticeDock({
           animate={{ opacity: checked ? 0 : 1, transition: reduceMotion ? { duration: 0 } : DOCK_SWAP }}
           className={cn('flex flex-col gap-3 md:flex-row md:items-center md:gap-6 md:[&:has(>[data-bank]:empty)>[data-action]]:w-full', checked && 'hidden')}
         >
-          <div ref={onTrayRef} data-bank="" className="flex min-w-0 flex-wrap items-center gap-2 px-1 empty:hidden md:flex-1" />
-          <div data-action="" className="flex w-full gap-2 md:w-auto md:shrink-0">
+          {onTrayRef && <div ref={onTrayRef} data-bank="" className="flex min-w-0 flex-wrap items-center gap-2 px-1 empty:hidden md:flex-1" />}
+          <div data-action="" className="flex w-full gap-2 md:ml-auto md:w-auto md:shrink-0">
             {onBack && !checking && (
               <div className="w-12 shrink-0 md:w-14">
                 <ActionButton variant="secondary" size="md" fullWidth className={cn(NEUTRAL, '!px-0 md:!min-h-14')} onClick={onBack} aria-label="Back" title="Back">

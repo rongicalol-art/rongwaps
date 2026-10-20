@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { GrammarPractice, GrammarWordToken } from '../../types/models';
 import { PracticeDock } from './components/PracticeDock';
 import { PRACTICE_EXERCISES } from './exercises';
+import { orderBuildHeading } from './exercises/OrderBuildExercise';
 import { ITEM_FADE } from './practiceMotion';
 import type { PracticeExerciseProps, PracticeResult, PracticeScript, PracticeStatus } from './practiceTypes';
 
@@ -27,7 +28,7 @@ export interface GrammarPracticeViewProps {
 
 /**
  * The book exercise after a grammar page, one item at a time in a single
- * column, answered from the bottom dock. A wrong answer says why and offers
+ * column, with sentence choices beneath the answer and actions in the bottom bar. A wrong answer says why and offers
  * Try again; nothing is recorded until the exercise is done.
  */
 export function GrammarPracticeView({
@@ -44,7 +45,8 @@ export function GrammarPracticeView({
   const checkRef = useRef<(() => void) | null>(null);
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
-  const sentencePrompt = item.kind === 'order-build' && !item.scene && !item.sub && item.prompt;
+  const inlineBank = item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
+  const heading = item.kind === 'order-build' ? orderBuildHeading(item) : item.prompt;
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);
@@ -88,7 +90,7 @@ export function GrammarPracticeView({
       <header className="flex flex-col gap-1">
         <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
         {/* The item's own question is the title; the book's general instruction only when an item has none. */}
-        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{sentencePrompt ? 'Build a sentence' : item.prompt ?? practice.title}</h1>
+        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{heading ?? practice.title}</h1>
       </header>
 
       <AnimatePresence mode="wait" initial={false}>
@@ -113,6 +115,7 @@ export function GrammarPracticeView({
             checkRef={checkRef}
             onResult={(next) => handleResult(next, item.id)}
           />
+          {inlineBank && <div ref={setTrayHost} role="group" aria-label="Word choices" className="mt-6 flex min-h-20 flex-wrap content-start justify-center gap-2" />}
         </motion.div>
       </AnimatePresence>
 
@@ -124,7 +127,7 @@ export function GrammarPracticeView({
         result={result}
         script={script}
         shortcutsDisabled={shortcutsDisabled}
-        onTrayRef={setTrayHost}
+        onTrayRef={inlineBank ? undefined : setTrayHost}
         onCheck={() => {
           setChecking(true);
           checkRef.current?.();
