@@ -3,7 +3,7 @@
  *
  * Merges authored example sentences with tone-marked Pinyin and English from
  * `content/vocabulary/book-*-examples.json` into `public/data/vocabulary/book-*.json`,
- * updates `public/data/vocabulary/manifest.json`, and re-exports flashcard extras.
+ * updates `public/data/vocabulary/manifest.json`; run flashcard-extras:export after this.
  */
 
 import { createHash } from 'node:crypto';

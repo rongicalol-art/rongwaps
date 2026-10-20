@@ -23,6 +23,8 @@
     "vocab:simple": "tsx scripts/content/applySimpleDefinitions.ts",
     "vocab:simple:lint": "tsx scripts/content/lintSimpleDefinitions.ts",
     "vocab:examples": "tsx scripts/content/applyVocabExamples.ts",
+    "audio:book3:vocabulary:download": "node scripts/audio/downloadBook3VocabularyTracks.mjs",
+    "audio:vocabulary-examples:align": "output/align-venv/bin/python scripts/audio/alignVocabularyExampleAudio.py",
     "stroke-data:vendor": "tsx scripts/strokes/vendorHanziStrokeData.ts",
     "audio:sync:r2": "tsx scripts/audio/syncAudioToR2.ts",
     "font:huninn:vendor": "tsx scripts/assets/vendorHuninn.ts",

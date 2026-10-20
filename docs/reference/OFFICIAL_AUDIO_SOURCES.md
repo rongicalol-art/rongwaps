@@ -43,9 +43,19 @@ Folder URLs use the form
 - `https://drive.usercontent.google.com/download?id=<FILE_ID>&export=download`
   → `audio/mpeg`, supports Range requests, sets
   `Content-Disposition: attachment; filename="B1-…mp3"`.
-- Every file ID for every track is in `docs/audio_index_book1.json`.
+- Book 1 track IDs are in `content/audio/audio_index_book1.json`; Book 3
+  vocabulary track IDs are in `content/audio/audio_index_book3.json`.
 
-### 4. Other official/licensed channels
+### 4. Book 3 vocabulary audio
+
+- Official source page: <https://sites.google.com/clc.tku.edu.tw/modernchinese-official/音檔>.
+- The linked Book 3 Drive folder contains 32 vocabulary tracks named
+  `B3-LL-P-2.mp3` (Lessons 1–16, Parts 1–2). The index stores their Drive IDs.
+- The app streams timestamp ranges from the official `drive.usercontent.google.com`
+  URLs; the audio is not mirrored or uploaded to app storage. Local originals for
+  alignment live only in ignored `output/official-audio/book3/`.
+
+### 5. Other official/licensed channels
 
 - **Printed books (Books 1–4)**: QR code on the copyright page → full-book
   cloud MP3s. This is the official channel for Books 2–4 audio, which is not
@@ -117,7 +127,10 @@ dialogue 2 = `LL-2-1`, grammar pages = `LL-P-3`.
 ## Sentence-level audio: does not exist officially
 
 The official set is **track-level only** (one full take per dialogue /
-vocabulary / grammar block) — there are no per-sentence files. Options:
+vocabulary / grammar block) — there are no per-sentence files. The app can play
+timestamped ranges from Book 1 and Book 3 vocabulary tracks; these ranges are
+aligned to the textbook's example sentences and do not create or host new audio
+files. Grammar and dialogue tracks are separate. Options for other sentences:
 
 1. **Cut the official dialogue tracks** (`LL-1-1`, `LL-2-1`) per sentence using
    silence detection (takes are clean single-take recordings; dialogues run
@@ -125,6 +138,24 @@ vocabulary / grammar block) — there are no per-sentence files. Options:
 2. Keep the app's existing **TTS pipeline** for per-sentence audio and use
    official tracks only for whole-dialogue playback.
 3. Ask 淡江大學華語中心 for per-sentence audio if one exists internally.
+
+## Vocabulary-example range pipeline
+
+- `scripts/audio/downloadBook3VocabularyTracks.mjs` verifies and stores the 32
+  Book 3 vocabulary tracks under ignored `output/` for alignment only.
+- `scripts/audio/alignVocabularyExampleAudio.py` verifies local tracks against
+  their source manifests, matches Book 1 tracks using existing vocabulary-word
+  recordings, then uses MMS forced alignment and printed Pinyin to create ranges.
+  It writes a report and draft under ignored `output/audio/vocabulary-example-audio/`.
+- Review `alignment-report.json`; `--apply` writes the complete source manifest
+  at `content/audio/vocabulary_example_audio.json` only when every Book 1 and
+  Book 3 example passes the coverage and confidence checks.
+- Then run `npm run vocab:examples`, `npm run course-examples:export`, and
+  `npm run flashcard-extras:export` to regenerate the served packs and manifests.
+- Alignment requires the vocabulary-word originals in
+  `output/audio/vocabulary-trim-v1/originals/`, the Book 1 track files in
+  `output/official-audio/book1/`, Book 3 tracks from the download step, FFmpeg,
+  and the existing `output/align-venv` MMS environment.
 
 ## Licensing caveats
 

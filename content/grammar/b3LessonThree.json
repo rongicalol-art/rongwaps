@@ -697,135 +697,79 @@
               "traditional": "買床的時候一定要試躺，覺得舒服再買。",
               "simplified": "买床的时候一定要试躺，觉得舒服再买。",
               "pinyin": "Mǎi chuáng de shíhòu yídìng yào shìtǎng, juéde shūfu zài mǎi.",
-              "english": "When buying a bed, you must definitely try lying on it, and only buy after feeling comfortable.",
+              "english": "When buying a bed, be sure to try lying down on it; only buy it if you find it comfortable.",
               "words": [
                 {
-                  "id": "b3l3g1-e1-w1",
+                  "id": "b3l3g1-ex1-w1",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
-                  "english": "",
                   "meaning": "to buy"
                 },
                 {
-                  "id": "b3l3g1-e1-w2",
+                  "id": "b3l3g1-ex1-w2",
                   "traditional": "床",
                   "simplified": "床",
                   "pinyin": "chuáng",
-                  "english": "",
                   "meaning": "bed (M: 張 zhāng)"
                 },
                 {
-                  "id": "b3l3g1-e1-w3",
+                  "id": "b3l3g1-ex1-w3",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g1-e1-w4",
-                  "traditional": "時",
-                  "simplified": "时",
-                  "pinyin": "shí",
-                  "english": "",
-                  "meaning": "when (...時)"
+                  "id": "b3l3g1-ex1-w4",
+                  "traditional": "時候",
+                  "simplified": "时候",
+                  "pinyin": "shí hou",
+                  "meaning": "time"
                 },
                 {
-                  "id": "b3l3g1-e1-w5",
-                  "traditional": "候",
-                  "simplified": "候",
-                  "pinyin": "hòu",
-                  "english": "",
-                  "meaning": "to wait"
+                  "id": "b3l3g1-ex1-w5",
+                  "traditional": "一定要",
+                  "simplified": "一定要",
+                  "pinyin": "yī dìng yào",
+                  "meaning": "must"
                 },
                 {
-                  "id": "b3l3g1-e1-w6",
-                  "traditional": "一",
-                  "simplified": "一",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "one"
+                  "id": "b3l3g1-ex1-w6",
+                  "traditional": "試躺",
+                  "simplified": "试躺",
+                  "pinyin": "shìtǎng",
+                  "meaning": "try lying down",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g1-e1-w7",
-                  "traditional": "定",
-                  "simplified": "定",
-                  "pinyin": "dìng",
-                  "english": "",
-                  "meaning": "to fix"
+                  "id": "b3l3g1-ex1-w7",
+                  "traditional": "覺得",
+                  "simplified": "觉得",
+                  "pinyin": "juéde",
+                  "meaning": "to feel; to think"
                 },
                 {
-                  "id": "b3l3g1-e1-w8",
-                  "traditional": "要",
-                  "simplified": "要",
-                  "pinyin": "yào",
-                  "english": "",
-                  "meaning": "to take"
+                  "id": "b3l3g1-ex1-w8",
+                  "traditional": "舒服",
+                  "simplified": "舒服",
+                  "pinyin": "shūfu",
+                  "meaning": "comfortable"
                 },
                 {
-                  "id": "b3l3g1-e1-w9",
-                  "traditional": "試",
-                  "simplified": "试",
-                  "pinyin": "shì",
-                  "english": "",
-                  "meaning": "to try"
-                },
-                {
-                  "id": "b3l3g1-e1-w10",
-                  "traditional": "躺",
-                  "simplified": "躺",
-                  "pinyin": "tǎng",
-                  "english": "",
-                  "meaning": "to lie down"
-                },
-                {
-                  "id": "b3l3g1-e1-w11",
-                  "traditional": "覺",
-                  "simplified": "觉",
-                  "pinyin": "jiào",
-                  "english": "",
-                  "meaning": "a nap"
-                },
-                {
-                  "id": "b3l3g1-e1-w12",
-                  "traditional": "得",
-                  "simplified": "得",
-                  "pinyin": "dé",
-                  "english": "to get",
-                  "meaning": "to get"
-                },
-                {
-                  "id": "b3l3g1-e1-w13",
-                  "traditional": "舒",
-                  "simplified": "舒",
-                  "pinyin": "Shū",
-                  "english": "",
-                  "meaning": "surname Shu"
-                },
-                {
-                  "id": "b3l3g1-e1-w14",
-                  "traditional": "服",
-                  "simplified": "服",
-                  "pinyin": "fú",
-                  "english": "",
-                  "meaning": "clothes"
-                },
-                {
-                  "id": "b3l3g1-e1-w15",
+                  "id": "b3l3g1-ex1-w9",
                   "traditional": "再",
                   "simplified": "再",
                   "pinyin": "zài",
-                  "english": "",
                   "meaning": "then (next)"
                 },
                 {
-                  "id": "b3l3g1-e1-w16",
+                  "id": "b3l3g1-ex1-w10",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
-                  "english": "",
-                  "meaning": "to buy"
+                  "meaning": "to buy",
+                  "suffix": "。"
                 }
               ]
             }
@@ -837,207 +781,142 @@
               "traditional": "那家超商提供新口味的飲料給客人免費試喝，喝過的人都說好喝。",
               "simplified": "那家超商提供新口味的饮料给客人免费试喝，喝过的人都说好喝。",
               "pinyin": "Nà jiā chāoshāng tígōng xīn kǒuwèi de yǐnliào gěi kèrén miǎnfèi shìhē, hē guò de rén dōu shuō hǎohē.",
-              "english": "That convenience store provides new flavor drinks for customers to taste test for free; everyone who tried praised it.",
+              "english": "That convenience store offers drinks of a new flavor for customers to taste for free; everyone who tried it said it's delicious.",
               "words": [
                 {
-                  "id": "b3l3g1-e2-w1",
+                  "id": "b3l3g1-ex2-w1",
                   "traditional": "那",
                   "simplified": "那",
-                  "pinyin": "nà/nèi",
-                  "english": "",
+                  "pinyin": "nà",
                   "meaning": "that"
                 },
                 {
-                  "id": "b3l3g1-e2-w2",
+                  "id": "b3l3g1-ex2-w2",
                   "traditional": "家",
                   "simplified": "家",
                   "pinyin": "jiā",
-                  "english": "",
                   "meaning": "measure word (shops)"
                 },
                 {
-                  "id": "b3l3g1-e2-w3",
+                  "id": "b3l3g1-ex2-w3",
                   "traditional": "超商",
                   "simplified": "超商",
                   "pinyin": "chāoshāng",
-                  "english": "convenience store",
                   "meaning": "convenience store"
                 },
                 {
-                  "id": "b3l3g1-e2-w4",
+                  "id": "b3l3g1-ex2-w4",
                   "traditional": "提供",
                   "simplified": "提供",
                   "pinyin": "tígōng",
-                  "english": "to provide",
                   "meaning": "to provide"
                 },
                 {
-                  "id": "b3l3g1-e2-w5",
+                  "id": "b3l3g1-ex2-w5",
                   "traditional": "新",
                   "simplified": "新",
                   "pinyin": "xīn",
-                  "english": "",
                   "meaning": "new"
                 },
                 {
-                  "id": "b3l3g1-e2-w6",
-                  "traditional": "口",
-                  "simplified": "口",
-                  "pinyin": "kǒu",
-                  "english": "mouth",
-                  "meaning": "mouth"
+                  "id": "b3l3g1-ex2-w6",
+                  "traditional": "口味",
+                  "simplified": "口味",
+                  "pinyin": "kǒuwèi",
+                  "meaning": "taste (food)"
                 },
                 {
-                  "id": "b3l3g1-e2-w7",
-                  "traditional": "味",
-                  "simplified": "味",
-                  "pinyin": "wèi",
-                  "english": "",
-                  "meaning": "taste"
-                },
-                {
-                  "id": "b3l3g1-e2-w8",
+                  "id": "b3l3g1-ex2-w7",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g1-e2-w9",
-                  "traditional": "飲",
-                  "simplified": "饮",
-                  "pinyin": "yǐn",
-                  "english": "",
-                  "meaning": "to drink"
+                  "id": "b3l3g1-ex2-w8",
+                  "traditional": "飲料",
+                  "simplified": "饮料",
+                  "pinyin": "yǐnliào",
+                  "meaning": "beverage"
                 },
                 {
-                  "id": "b3l3g1-e2-w10",
-                  "traditional": "料",
-                  "simplified": "料",
-                  "pinyin": "liào",
-                  "english": "",
-                  "meaning": "material"
-                },
-                {
-                  "id": "b3l3g1-e2-w11",
+                  "id": "b3l3g1-ex2-w9",
                   "traditional": "給",
                   "simplified": "给",
                   "pinyin": "gěi",
-                  "english": "",
                   "meaning": "to; for"
                 },
                 {
-                  "id": "b3l3g1-e2-w12",
-                  "traditional": "客",
-                  "simplified": "客",
-                  "pinyin": "kè",
-                  "english": "",
-                  "meaning": "customer"
+                  "id": "b3l3g1-ex2-w10",
+                  "traditional": "客人",
+                  "simplified": "客人",
+                  "pinyin": "kèrén",
+                  "meaning": "guest"
                 },
                 {
-                  "id": "b3l3g1-e2-w13",
-                  "traditional": "人",
-                  "simplified": "人",
-                  "pinyin": "rén",
-                  "english": "",
-                  "meaning": "person"
+                  "id": "b3l3g1-ex2-w11",
+                  "traditional": "免費",
+                  "simplified": "免费",
+                  "pinyin": "miǎnfèi",
+                  "meaning": "free of charge"
                 },
                 {
-                  "id": "b3l3g1-e2-w14",
-                  "traditional": "免",
-                  "simplified": "免",
-                  "pinyin": "miǎn",
-                  "english": "",
-                  "meaning": "to excuse sb"
+                  "id": "b3l3g1-ex2-w12",
+                  "traditional": "試喝",
+                  "simplified": "试喝",
+                  "pinyin": "shìhē",
+                  "meaning": "try drinking; taste sample",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g1-e2-w15",
-                  "traditional": "費",
-                  "simplified": "费",
-                  "pinyin": "Fèi",
-                  "english": "",
-                  "meaning": "surname Fei"
-                },
-                {
-                  "id": "b3l3g1-e2-w16",
-                  "traditional": "試",
-                  "simplified": "试",
-                  "pinyin": "shì",
-                  "english": "",
-                  "meaning": "to try"
-                },
-                {
-                  "id": "b3l3g1-e2-w17",
+                  "id": "b3l3g1-ex2-w13",
                   "traditional": "喝",
                   "simplified": "喝",
                   "pinyin": "hē",
-                  "english": "",
                   "meaning": "to drink"
                 },
                 {
-                  "id": "b3l3g1-e2-w18",
-                  "traditional": "喝",
-                  "simplified": "喝",
-                  "pinyin": "hē",
-                  "english": "",
-                  "meaning": "to drink"
-                },
-                {
-                  "id": "b3l3g1-e2-w19",
+                  "id": "b3l3g1-ex2-w14",
                   "traditional": "過",
                   "simplified": "过",
                   "pinyin": "guò",
-                  "english": "",
-                  "meaning": "to spend; celebrate"
+                  "meaning": "aspect particle; to pass"
                 },
                 {
-                  "id": "b3l3g1-e2-w20",
+                  "id": "b3l3g1-ex2-w15",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g1-e2-w21",
+                  "id": "b3l3g1-ex2-w16",
                   "traditional": "人",
                   "simplified": "人",
                   "pinyin": "rén",
-                  "english": "",
                   "meaning": "person"
                 },
                 {
-                  "id": "b3l3g1-e2-w22",
+                  "id": "b3l3g1-ex2-w17",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
-                  "english": "",
                   "meaning": "all; both"
                 },
                 {
-                  "id": "b3l3g1-e2-w23",
-                  "traditional": "說",
-                  "simplified": "说",
-                  "pinyin": "shuō",
-                  "english": "",
-                  "meaning": "to say"
+                  "id": "b3l3g1-ex2-w18",
+                  "traditional": "說好",
+                  "simplified": "说好",
+                  "pinyin": "shuō hǎo",
+                  "meaning": "to come to an agreement"
                 },
                 {
-                  "id": "b3l3g1-e2-w24",
-                  "traditional": "好",
-                  "simplified": "好",
-                  "pinyin": "hǎo",
-                  "english": "",
-                  "meaning": "so; how (adverb of degree)"
-                },
-                {
-                  "id": "b3l3g1-e2-w25",
+                  "id": "b3l3g1-ex2-w19",
                   "traditional": "喝",
                   "simplified": "喝",
                   "pinyin": "hē",
-                  "english": "",
-                  "meaning": "to drink"
+                  "meaning": "to drink",
+                  "suffix": "。"
                 }
               ]
             }
@@ -1049,127 +928,86 @@
               "traditional": "這雙皮鞋很特別，你要不要先試穿看看？",
               "simplified": "这双皮鞋很特别，你要不要先试穿看看？",
               "pinyin": "Zhè shuāng píxié hěn tèbié, nǐ yào bú yào xiān shìchuān kànkan?",
-              "english": "This pair of leather shoes is very special; do you want to try wearing them first?",
+              "english": "This pair of leather shoes is very unique; do you want to try them on first?",
               "words": [
                 {
-                  "id": "b3l3g1-e3-w1",
+                  "id": "b3l3g1-ex3-w1",
                   "traditional": "這",
                   "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "english": "",
+                  "pinyin": "zhè",
                   "meaning": "this"
                 },
                 {
-                  "id": "b3l3g1-e3-w2",
+                  "id": "b3l3g1-ex3-w2",
                   "traditional": "雙",
                   "simplified": "双",
                   "pinyin": "shuāng",
-                  "english": "paired",
                   "meaning": "paired"
                 },
                 {
-                  "id": "b3l3g1-e3-w3",
+                  "id": "b3l3g1-ex3-w3",
                   "traditional": "皮鞋",
                   "simplified": "皮鞋",
                   "pinyin": "píxié",
-                  "english": "leather shoes (M: 雙 shuāng)",
                   "meaning": "leather shoes (M: 雙 shuāng)"
                 },
                 {
-                  "id": "b3l3g1-e3-w4",
+                  "id": "b3l3g1-ex3-w4",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
-                  "english": "",
                   "meaning": "very"
                 },
                 {
-                  "id": "b3l3g1-e3-w5",
-                  "traditional": "特",
-                  "simplified": "特",
-                  "pinyin": "tè",
-                  "english": "",
-                  "meaning": "special"
+                  "id": "b3l3g1-ex3-w5",
+                  "traditional": "特別",
+                  "simplified": "特别",
+                  "pinyin": "tèbié",
+                  "meaning": "special",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g1-e3-w6",
-                  "traditional": "別",
-                  "simplified": "别",
-                  "pinyin": "bié",
-                  "english": "",
-                  "meaning": "don't"
-                },
-                {
-                  "id": "b3l3g1-e3-w7",
+                  "id": "b3l3g1-ex3-w6",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
-                  "english": "",
                   "meaning": "you"
                 },
                 {
-                  "id": "b3l3g1-e3-w8",
+                  "id": "b3l3g1-ex3-w7",
+                  "traditional": "要不",
+                  "simplified": "要不",
+                  "pinyin": "yào bù",
+                  "meaning": "otherwise"
+                },
+                {
+                  "id": "b3l3g1-ex3-w8",
                   "traditional": "要",
                   "simplified": "要",
                   "pinyin": "yào",
-                  "english": "",
                   "meaning": "to take"
                 },
                 {
-                  "id": "b3l3g1-e3-w9",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "english": "",
-                  "meaning": "no"
-                },
-                {
-                  "id": "b3l3g1-e3-w10",
-                  "traditional": "要",
-                  "simplified": "要",
-                  "pinyin": "yào",
-                  "english": "",
-                  "meaning": "to take"
-                },
-                {
-                  "id": "b3l3g1-e3-w11",
+                  "id": "b3l3g1-ex3-w9",
                   "traditional": "先",
                   "simplified": "先",
                   "pinyin": "xiān",
-                  "english": "",
                   "meaning": "first"
                 },
                 {
-                  "id": "b3l3g1-e3-w12",
-                  "traditional": "試",
-                  "simplified": "试",
-                  "pinyin": "shì",
-                  "english": "",
-                  "meaning": "to try"
+                  "id": "b3l3g1-ex3-w10",
+                  "traditional": "試穿",
+                  "simplified": "试穿",
+                  "pinyin": "shìchuān",
+                  "meaning": "try on (clothes/shoes)"
                 },
                 {
-                  "id": "b3l3g1-e3-w13",
-                  "traditional": "穿",
-                  "simplified": "穿",
-                  "pinyin": "chuān",
-                  "english": "",
-                  "meaning": "to wear (clothes)"
-                },
-                {
-                  "id": "b3l3g1-e3-w14",
-                  "traditional": "看",
-                  "simplified": "看",
-                  "pinyin": "kàn",
-                  "english": "",
-                  "meaning": "to read"
-                },
-                {
-                  "id": "b3l3g1-e3-w15",
-                  "traditional": "看",
-                  "simplified": "看",
-                  "pinyin": "kàn",
-                  "english": "",
-                  "meaning": "to read"
+                  "id": "b3l3g1-ex3-w11",
+                  "traditional": "看看",
+                  "simplified": "看看",
+                  "pinyin": "kàn kan",
+                  "meaning": "to take a look at",
+                  "suffix": "？"
                 }
               ]
             }
@@ -1750,135 +1588,100 @@
               "traditional": "你那輛車不常開又舊得很，不如賣掉吧！",
               "simplified": "你那辆车不常开又旧得很，不如卖掉吧！",
               "pinyin": "Nǐ nà liàng chē bù cháng kāi yòu jiù de hěn, bùrú mài diào ba!",
-              "english": "You don't drive that car often and it's quite old; it would be better to sell it!",
+              "english": "You don't drive that car often and it's very old; you might as well sell it!",
               "words": [
                 {
-                  "id": "b3l3g2-e1-w1",
+                  "id": "b3l3g2-ex1-w1",
                   "traditional": "你",
                   "simplified": "你",
                   "pinyin": "nǐ",
-                  "english": "",
                   "meaning": "you"
                 },
                 {
-                  "id": "b3l3g2-e1-w2",
+                  "id": "b3l3g2-ex1-w2",
                   "traditional": "那",
                   "simplified": "那",
-                  "pinyin": "nà/nèi",
-                  "english": "",
+                  "pinyin": "nà",
                   "meaning": "that"
                 },
                 {
-                  "id": "b3l3g2-e1-w3",
+                  "id": "b3l3g2-ex1-w3",
                   "traditional": "輛",
                   "simplified": "辆",
                   "pinyin": "liàng",
-                  "english": "",
                   "meaning": "measure word (vehicles)"
                 },
                 {
-                  "id": "b3l3g2-e1-w4",
+                  "id": "b3l3g2-ex1-w4",
                   "traditional": "車",
                   "simplified": "车",
                   "pinyin": "Chē",
-                  "english": "",
                   "meaning": "surname Che"
                 },
                 {
-                  "id": "b3l3g2-e1-w5",
+                  "id": "b3l3g2-ex1-w5",
                   "traditional": "不",
                   "simplified": "不",
                   "pinyin": "bù",
-                  "english": "",
-                  "meaning": "no"
+                  "meaning": "not"
                 },
                 {
-                  "id": "b3l3g2-e1-w6",
+                  "id": "b3l3g2-ex1-w6",
                   "traditional": "常",
                   "simplified": "常",
                   "pinyin": "Cháng",
-                  "english": "",
                   "meaning": "surname Chang"
                 },
                 {
-                  "id": "b3l3g2-e1-w7",
+                  "id": "b3l3g2-ex1-w7",
                   "traditional": "開",
                   "simplified": "开",
                   "pinyin": "kāi",
-                  "english": "",
                   "meaning": "to open"
                 },
                 {
-                  "id": "b3l3g2-e1-w8",
+                  "id": "b3l3g2-ex1-w8",
                   "traditional": "又",
                   "simplified": "又",
                   "pinyin": "yòu",
-                  "english": "",
                   "meaning": "both...and..."
                 },
                 {
-                  "id": "b3l3g2-e1-w9",
+                  "id": "b3l3g2-ex1-w9",
                   "traditional": "舊",
                   "simplified": "旧",
                   "pinyin": "jiù",
-                  "english": "",
                   "meaning": "old (used/things)"
                 },
                 {
-                  "id": "b3l3g2-e1-w10",
-                  "traditional": "得",
-                  "simplified": "得",
-                  "pinyin": "dé",
-                  "english": "to get",
-                  "meaning": "to get"
+                  "id": "b3l3g2-ex1-w10",
+                  "traditional": "得很",
+                  "simplified": "得很",
+                  "pinyin": "dehěn",
+                  "meaning": "very",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g2-e1-w11",
-                  "traditional": "很",
-                  "simplified": "很",
-                  "pinyin": "hěn",
-                  "english": "",
-                  "meaning": "very"
+                  "id": "b3l3g2-ex1-w11",
+                  "traditional": "不如",
+                  "simplified": "不如",
+                  "pinyin": "bùrú",
+                  "meaning": "might as well; not as good as"
                 },
                 {
-                  "id": "b3l3g2-e1-w12",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "english": "",
-                  "meaning": "no"
+                  "id": "b3l3g2-ex1-w12",
+                  "traditional": "賣掉",
+                  "simplified": "卖掉",
+                  "pinyin": "mài diào",
+                  "meaning": "to sell off"
                 },
                 {
-                  "id": "b3l3g2-e1-w13",
-                  "traditional": "如",
-                  "simplified": "如",
-                  "pinyin": "rú",
-                  "english": "if",
-                  "meaning": "if"
-                },
-                {
-                  "id": "b3l3g2-e1-w14",
-                  "traditional": "賣",
-                  "simplified": "卖",
-                  "pinyin": "mài",
-                  "english": "",
-                  "meaning": "to sell"
-                },
-                {
-                  "id": "b3l3g2-e1-w15",
-                  "traditional": "掉",
-                  "simplified": "掉",
-                  "pinyin": "diào",
-                  "english": "",
-                  "meaning": "to drop"
-                },
-                {
-                  "id": "b3l3g2-e1-w16",
+                  "id": "b3l3g2-ex1-w13",
                   "traditional": "吧",
                   "simplified": "吧",
                   "pinyin": "ba",
-                  "english": "",
-                  "meaning": "tag question particle"
+                  "meaning": "suggestion particle",
+                  "suffix": "！"
                 }
               ]
             }
@@ -1890,175 +1693,101 @@
               "traditional": "外面雨下得這麼大，與其出去淋雨，不如在家看電影。",
               "simplified": "外面雨下得这么大，与其出去淋雨，不如在家看电影。",
               "pinyin": "Wàimiàn yǔ xià de zhème dà, yǔqí chūqù línyǔ, bùrú zài jiā kàn diànyǐng.",
-              "english": "It is raining so hard outside; rather than going out and getting soaked, it's better to watch a movie at home.",
+              "english": "It's raining so hard outside; rather than going out in the rain, we might as well watch a movie at home.",
               "words": [
                 {
-                  "id": "b3l3g2-e2-w1",
-                  "traditional": "外",
-                  "simplified": "外",
-                  "pinyin": "wài",
-                  "english": "",
+                  "id": "b3l3g2-ex2-w1",
+                  "traditional": "外面",
+                  "simplified": "外面",
+                  "pinyin": "wài miàn",
                   "meaning": "outside"
                 },
                 {
-                  "id": "b3l3g2-e2-w2",
-                  "traditional": "面",
-                  "simplified": "面",
-                  "pinyin": "miàn",
-                  "english": "side",
-                  "meaning": "side"
-                },
-                {
-                  "id": "b3l3g2-e2-w3",
+                  "id": "b3l3g2-ex2-w2",
                   "traditional": "雨",
                   "simplified": "雨",
                   "pinyin": "yǔ",
-                  "english": "",
                   "meaning": "rain"
                 },
                 {
-                  "id": "b3l3g2-e2-w4",
+                  "id": "b3l3g2-ex2-w3",
                   "traditional": "下",
                   "simplified": "下",
                   "pinyin": "xià",
-                  "english": "",
                   "meaning": "measure word (actions)"
                 },
                 {
-                  "id": "b3l3g2-e2-w5",
+                  "id": "b3l3g2-ex2-w4",
                   "traditional": "得",
                   "simplified": "得",
-                  "pinyin": "dé",
-                  "english": "to get",
-                  "meaning": "to get"
+                  "pinyin": "de",
+                  "meaning": "structural particle"
                 },
                 {
-                  "id": "b3l3g2-e2-w6",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "english": "",
-                  "meaning": "this"
+                  "id": "b3l3g2-ex2-w5",
+                  "traditional": "這麼",
+                  "simplified": "这么",
+                  "pinyin": "zhème",
+                  "meaning": "so; such"
                 },
                 {
-                  "id": "b3l3g2-e2-w7",
-                  "traditional": "麼",
-                  "simplified": "么",
-                  "pinyin": "má",
-                  "english": "",
-                  "meaning": "exclamatory final particle"
-                },
-                {
-                  "id": "b3l3g2-e2-w8",
+                  "id": "b3l3g2-ex2-w6",
                   "traditional": "大",
                   "simplified": "大",
                   "pinyin": "dà",
-                  "english": "",
-                  "meaning": "big"
+                  "meaning": "big",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g2-e2-w9",
-                  "traditional": "與",
-                  "simplified": "与",
-                  "pinyin": "yǔ",
-                  "english": "and; with",
-                  "meaning": "and; with"
+                  "id": "b3l3g2-ex2-w7",
+                  "traditional": "與其",
+                  "simplified": "与其",
+                  "pinyin": "yǔ qí",
+                  "meaning": "rather than..."
                 },
                 {
-                  "id": "b3l3g2-e2-w10",
-                  "traditional": "其",
-                  "simplified": "其",
-                  "pinyin": "qí",
-                  "english": "",
-                  "meaning": "his"
+                  "id": "b3l3g2-ex2-w8",
+                  "traditional": "出去",
+                  "simplified": "出去",
+                  "pinyin": "chūqù",
+                  "meaning": "to go outside"
                 },
                 {
-                  "id": "b3l3g2-e2-w11",
-                  "traditional": "出",
-                  "simplified": "出",
-                  "pinyin": "chū",
-                  "english": "",
-                  "meaning": "out; to come out"
+                  "id": "b3l3g2-ex2-w9",
+                  "traditional": "淋雨",
+                  "simplified": "淋雨",
+                  "pinyin": "lín yǔ",
+                  "meaning": "to get wet in the rain",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g2-e2-w12",
-                  "traditional": "去",
-                  "simplified": "去",
-                  "pinyin": "qù",
-                  "english": "",
-                  "meaning": "to go"
+                  "id": "b3l3g2-ex2-w10",
+                  "traditional": "不如",
+                  "simplified": "不如",
+                  "pinyin": "bùrú",
+                  "meaning": "might as well; not as good as"
                 },
                 {
-                  "id": "b3l3g2-e2-w13",
-                  "traditional": "淋",
-                  "simplified": "淋",
-                  "pinyin": "lín",
-                  "english": "",
-                  "meaning": "to sprinkle"
+                  "id": "b3l3g2-ex2-w11",
+                  "traditional": "在家",
+                  "simplified": "在家",
+                  "pinyin": "zài jiā",
+                  "meaning": "to be at home"
                 },
                 {
-                  "id": "b3l3g2-e2-w14",
-                  "traditional": "雨",
-                  "simplified": "雨",
-                  "pinyin": "yǔ",
-                  "english": "",
-                  "meaning": "rain"
-                },
-                {
-                  "id": "b3l3g2-e2-w15",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "english": "",
-                  "meaning": "no"
-                },
-                {
-                  "id": "b3l3g2-e2-w16",
-                  "traditional": "如",
-                  "simplified": "如",
-                  "pinyin": "rú",
-                  "english": "if",
-                  "meaning": "if"
-                },
-                {
-                  "id": "b3l3g2-e2-w17",
-                  "traditional": "在",
-                  "simplified": "在",
-                  "pinyin": "zài",
-                  "english": "",
-                  "meaning": "in the middle of"
-                },
-                {
-                  "id": "b3l3g2-e2-w18",
-                  "traditional": "家",
-                  "simplified": "家",
-                  "pinyin": "jiā",
-                  "english": "",
-                  "meaning": "measure word (shops)"
-                },
-                {
-                  "id": "b3l3g2-e2-w19",
+                  "id": "b3l3g2-ex2-w12",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
-                  "english": "",
                   "meaning": "to read"
                 },
                 {
-                  "id": "b3l3g2-e2-w20",
-                  "traditional": "電",
-                  "simplified": "电",
-                  "pinyin": "diàn",
-                  "english": "",
-                  "meaning": "electricity"
-                },
-                {
-                  "id": "b3l3g2-e2-w21",
-                  "traditional": "影",
-                  "simplified": "影",
-                  "pinyin": "yǐng",
-                  "english": "",
-                  "meaning": "picture"
+                  "id": "b3l3g2-ex2-w13",
+                  "traditional": "電影",
+                  "simplified": "电影",
+                  "pinyin": "diànyǐng",
+                  "meaning": "movie (M: 部 bù)",
+                  "suffix": "。"
                 }
               ]
             }
@@ -2070,151 +1799,58 @@
               "traditional": "與其每天怨天尤人，不如腳踏實地好好努力。",
               "simplified": "与其每天怨天尤人，不如脚踏实地好好努力。",
               "pinyin": "Yǔqí měitiān yuàntiānyóurén, bùrú jiǎotàshídì hǎohǎo nǔlì.",
-              "english": "Rather than complaining every day, it is better to work hard down to earth.",
+              "english": "Rather than complaining every day, it's better to keep your feet on the ground and work hard.",
               "words": [
                 {
-                  "id": "b3l3g2-e3-w1",
-                  "traditional": "與",
-                  "simplified": "与",
-                  "pinyin": "yǔ",
-                  "english": "and; with",
-                  "meaning": "and; with"
+                  "id": "b3l3g2-ex3-w1",
+                  "traditional": "與其",
+                  "simplified": "与其",
+                  "pinyin": "yǔ qí",
+                  "meaning": "rather than..."
                 },
                 {
-                  "id": "b3l3g2-e3-w2",
-                  "traditional": "其",
-                  "simplified": "其",
-                  "pinyin": "qí",
-                  "english": "",
-                  "meaning": "his"
+                  "id": "b3l3g2-ex3-w2",
+                  "traditional": "每天",
+                  "simplified": "每天",
+                  "pinyin": "měi tiān",
+                  "meaning": "every day"
                 },
                 {
-                  "id": "b3l3g2-e3-w3",
-                  "traditional": "每",
-                  "simplified": "每",
-                  "pinyin": "měi",
-                  "english": "each time",
-                  "meaning": "each time"
+                  "id": "b3l3g2-ex3-w3",
+                  "traditional": "怨天尤人",
+                  "simplified": "怨天尤人",
+                  "pinyin": "yuàntiān yóurén",
+                  "meaning": "blame heaven and other people",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g2-e3-w4",
-                  "traditional": "天",
-                  "simplified": "天",
-                  "pinyin": "tiān",
-                  "english": "",
-                  "meaning": "day"
+                  "id": "b3l3g2-ex3-w4",
+                  "traditional": "不如",
+                  "simplified": "不如",
+                  "pinyin": "bùrú",
+                  "meaning": "might as well; not as good as"
                 },
                 {
-                  "id": "b3l3g2-e3-w5",
-                  "traditional": "怨",
-                  "simplified": "怨",
-                  "pinyin": "yuàn",
-                  "english": "",
-                  "meaning": "to blame"
+                  "id": "b3l3g2-ex3-w5",
+                  "traditional": "腳踏實地",
+                  "simplified": "脚踏实地",
+                  "pinyin": "jiǎotà shídì",
+                  "meaning": "down-to-earth; earnest"
                 },
                 {
-                  "id": "b3l3g2-e3-w6",
-                  "traditional": "天",
-                  "simplified": "天",
-                  "pinyin": "tiān",
-                  "english": "",
-                  "meaning": "day"
+                  "id": "b3l3g2-ex3-w6",
+                  "traditional": "好好",
+                  "simplified": "好好",
+                  "pinyin": "hǎo hǎo",
+                  "meaning": "well"
                 },
                 {
-                  "id": "b3l3g2-e3-w7",
-                  "traditional": "尤",
-                  "simplified": "尤",
-                  "pinyin": "Yóu",
-                  "english": "",
-                  "meaning": "surname You"
-                },
-                {
-                  "id": "b3l3g2-e3-w8",
-                  "traditional": "人",
-                  "simplified": "人",
-                  "pinyin": "rén",
-                  "english": "",
-                  "meaning": "person"
-                },
-                {
-                  "id": "b3l3g2-e3-w9",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "english": "",
-                  "meaning": "no"
-                },
-                {
-                  "id": "b3l3g2-e3-w10",
-                  "traditional": "如",
-                  "simplified": "如",
-                  "pinyin": "rú",
-                  "english": "if",
-                  "meaning": "if"
-                },
-                {
-                  "id": "b3l3g2-e3-w11",
-                  "traditional": "腳",
-                  "simplified": "脚",
-                  "pinyin": "jiǎo",
-                  "english": "",
-                  "meaning": "foot"
-                },
-                {
-                  "id": "b3l3g2-e3-w12",
-                  "traditional": "踏",
-                  "simplified": "踏",
-                  "pinyin": "tà",
-                  "english": "",
-                  "meaning": "see 踏實|踏实[ta1 shi5]"
-                },
-                {
-                  "id": "b3l3g2-e3-w13",
-                  "traditional": "實",
-                  "simplified": "实",
-                  "pinyin": "shí",
-                  "english": "",
-                  "meaning": "real"
-                },
-                {
-                  "id": "b3l3g2-e3-w14",
-                  "traditional": "地",
-                  "simplified": "地",
-                  "pinyin": "de",
-                  "english": "",
-                  "meaning": "adverb marker (-ly)"
-                },
-                {
-                  "id": "b3l3g2-e3-w15",
-                  "traditional": "好",
-                  "simplified": "好",
-                  "pinyin": "hǎo",
-                  "english": "",
-                  "meaning": "so; how (adverb of degree)"
-                },
-                {
-                  "id": "b3l3g2-e3-w16",
-                  "traditional": "好",
-                  "simplified": "好",
-                  "pinyin": "hǎo",
-                  "english": "",
-                  "meaning": "so; how (adverb of degree)"
-                },
-                {
-                  "id": "b3l3g2-e3-w17",
-                  "traditional": "努",
-                  "simplified": "努",
-                  "pinyin": "nǔ",
-                  "english": "",
-                  "meaning": "to exert"
-                },
-                {
-                  "id": "b3l3g2-e3-w18",
-                  "traditional": "力",
-                  "simplified": "力",
-                  "pinyin": "lì",
-                  "english": "",
-                  "meaning": "strength"
+                  "id": "b3l3g2-ex3-w7",
+                  "traditional": "努力",
+                  "simplified": "努力",
+                  "pinyin": "nǔlì",
+                  "meaning": "to work hard",
+                  "suffix": "。"
                 }
               ]
             }
@@ -2900,247 +2536,143 @@
               "traditional": "我剛大學畢業，什麼工作都願意做，就是不能接受老闆要我每天加班到深夜。",
               "simplified": "我刚大学毕业，什么工作都愿意做，就是不能接受老闆要我每天加班到深夜。",
               "pinyin": "Wǒ gāng dàxué bìyè, shénme gōngzuò wǒ dōu yuànyì zuò, jiùshì bù néng jiēshòu lǎobǎn yào wǒ měitiān jiābān dào shēnyè.",
-              "english": "I just graduated from university and am willing to do any job, it's just that I cannot accept the boss requiring me to work overtime until midnight every day.",
+              "english": "I just graduated from university and am willing to do any job, except I cannot accept the boss asking me to work overtime until midnight every day.",
               "words": [
                 {
-                  "id": "b3l3g3-e1-w1",
+                  "id": "b3l3g3-ex1-w1",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "english": "",
                   "meaning": "I"
                 },
                 {
-                  "id": "b3l3g3-e1-w2",
+                  "id": "b3l3g3-ex1-w2",
                   "traditional": "剛",
                   "simplified": "刚",
                   "pinyin": "gāng",
-                  "english": "",
                   "meaning": "just now"
                 },
                 {
-                  "id": "b3l3g3-e1-w3",
-                  "traditional": "大",
-                  "simplified": "大",
-                  "pinyin": "dà",
-                  "english": "",
-                  "meaning": "big"
+                  "id": "b3l3g3-ex1-w3",
+                  "traditional": "大學",
+                  "simplified": "大学",
+                  "pinyin": "dàxué",
+                  "meaning": "university"
                 },
                 {
-                  "id": "b3l3g3-e1-w4",
-                  "traditional": "學",
-                  "simplified": "学",
-                  "pinyin": "xué",
-                  "english": "",
-                  "meaning": "to learn"
+                  "id": "b3l3g3-ex1-w4",
+                  "traditional": "畢業",
+                  "simplified": "毕业",
+                  "pinyin": "bìyè",
+                  "meaning": "to graduate",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g3-e1-w5",
-                  "traditional": "畢",
-                  "simplified": "毕",
-                  "pinyin": "Bì",
-                  "english": "",
-                  "meaning": "surname Bi"
-                },
-                {
-                  "id": "b3l3g3-e1-w6",
-                  "traditional": "業",
-                  "simplified": "业",
-                  "pinyin": "Yè",
-                  "english": "",
-                  "meaning": "surname Ye"
-                },
-                {
-                  "id": "b3l3g3-e1-w7",
-                  "traditional": "什",
-                  "simplified": "什",
-                  "pinyin": "shén",
-                  "english": "",
+                  "id": "b3l3g3-ex1-w5",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
                   "meaning": "what"
                 },
                 {
-                  "id": "b3l3g3-e1-w8",
-                  "traditional": "麼",
-                  "simplified": "么",
-                  "pinyin": "má",
-                  "english": "",
-                  "meaning": "exclamatory final particle"
+                  "id": "b3l3g3-ex1-w6",
+                  "traditional": "工作",
+                  "simplified": "工作",
+                  "pinyin": "gōngzuò",
+                  "meaning": "to work; job"
                 },
                 {
-                  "id": "b3l3g3-e1-w9",
-                  "traditional": "工",
-                  "simplified": "工",
-                  "pinyin": "gōng",
-                  "english": "",
-                  "meaning": "work"
-                },
-                {
-                  "id": "b3l3g3-e1-w10",
-                  "traditional": "作",
-                  "simplified": "作",
-                  "pinyin": "zuō",
-                  "english": "",
-                  "meaning": "worker"
-                },
-                {
-                  "id": "b3l3g3-e1-w11",
+                  "id": "b3l3g3-ex1-w7",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
-                  "english": "",
                   "meaning": "all; both"
                 },
                 {
-                  "id": "b3l3g3-e1-w12",
-                  "traditional": "願",
-                  "simplified": "愿",
-                  "pinyin": "yuàn",
-                  "english": "",
-                  "meaning": "wish"
+                  "id": "b3l3g3-ex1-w8",
+                  "traditional": "願意",
+                  "simplified": "愿意",
+                  "pinyin": "yuànyì",
+                  "meaning": "to be willing"
                 },
                 {
-                  "id": "b3l3g3-e1-w13",
-                  "traditional": "意",
-                  "simplified": "意",
-                  "pinyin": "yì",
-                  "english": "",
-                  "meaning": "idea"
-                },
-                {
-                  "id": "b3l3g3-e1-w14",
+                  "id": "b3l3g3-ex1-w9",
                   "traditional": "做",
                   "simplified": "做",
                   "pinyin": "zuò",
-                  "english": "",
-                  "meaning": "to do"
+                  "meaning": "to do",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g3-e1-w15",
+                  "id": "b3l3g3-ex1-w10",
                   "traditional": "就是",
                   "simplified": "就是",
-                  "pinyin": "jiùshì",
-                  "english": "even if",
-                  "meaning": "even if"
+                  "pinyin": "jiù shì",
+                  "meaning": "simply; exactly; except"
                 },
                 {
-                  "id": "b3l3g3-e1-w16",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "english": "",
-                  "meaning": "no"
+                  "id": "b3l3g3-ex1-w11",
+                  "traditional": "不能",
+                  "simplified": "不能",
+                  "pinyin": "bù néng",
+                  "meaning": "cannot"
                 },
                 {
-                  "id": "b3l3g3-e1-w17",
-                  "traditional": "能",
-                  "simplified": "能",
-                  "pinyin": "néng",
-                  "english": "",
-                  "meaning": "can (able to)"
+                  "id": "b3l3g3-ex1-w12",
+                  "traditional": "接受",
+                  "simplified": "接受",
+                  "pinyin": "jiēshòu",
+                  "meaning": "to accept"
                 },
                 {
-                  "id": "b3l3g3-e1-w18",
-                  "traditional": "接",
-                  "simplified": "接",
-                  "pinyin": "jiē",
-                  "english": "",
-                  "meaning": "to receive"
+                  "id": "b3l3g3-ex1-w13",
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "Lǎo bǎn",
+                  "meaning": "Robam"
                 },
                 {
-                  "id": "b3l3g3-e1-w19",
-                  "traditional": "受",
-                  "simplified": "受",
-                  "pinyin": "shòu",
-                  "english": "",
-                  "meaning": "to receive"
-                },
-                {
-                  "id": "b3l3g3-e1-w20",
-                  "traditional": "老",
-                  "simplified": "老",
-                  "pinyin": "lǎo",
-                  "english": "",
-                  "meaning": "old (age)"
-                },
-                {
-                  "id": "b3l3g3-e1-w21",
-                  "traditional": "闆",
-                  "simplified": "闆",
-                  "pinyin": "bǎn",
-                  "english": "",
-                  "meaning": "used in 老闆|老板[lao3 ban3]"
-                },
-                {
-                  "id": "b3l3g3-e1-w22",
+                  "id": "b3l3g3-ex1-w14",
                   "traditional": "要",
                   "simplified": "要",
                   "pinyin": "yào",
-                  "english": "",
                   "meaning": "to take"
                 },
                 {
-                  "id": "b3l3g3-e1-w23",
+                  "id": "b3l3g3-ex1-w15",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "english": "",
                   "meaning": "I"
                 },
                 {
-                  "id": "b3l3g3-e1-w24",
-                  "traditional": "每",
-                  "simplified": "每",
-                  "pinyin": "měi",
-                  "english": "each time",
-                  "meaning": "each time"
+                  "id": "b3l3g3-ex1-w16",
+                  "traditional": "每天",
+                  "simplified": "每天",
+                  "pinyin": "měi tiān",
+                  "meaning": "every day"
                 },
                 {
-                  "id": "b3l3g3-e1-w25",
-                  "traditional": "天",
-                  "simplified": "天",
-                  "pinyin": "tiān",
-                  "english": "",
-                  "meaning": "day"
+                  "id": "b3l3g3-ex1-w17",
+                  "traditional": "加班",
+                  "simplified": "加班",
+                  "pinyin": "jiābān",
+                  "meaning": "to work overtime"
                 },
                 {
-                  "id": "b3l3g3-e1-w26",
-                  "traditional": "加",
-                  "simplified": "加",
-                  "pinyin": "jiā",
-                  "english": "",
-                  "meaning": "to add"
-                },
-                {
-                  "id": "b3l3g3-e1-w27",
-                  "traditional": "班",
-                  "simplified": "班",
-                  "pinyin": "bān",
-                  "english": "",
-                  "meaning": "measure word (trips)"
-                },
-                {
-                  "id": "b3l3g3-e1-w28",
+                  "id": "b3l3g3-ex1-w18",
                   "traditional": "到",
                   "simplified": "到",
                   "pinyin": "dào",
-                  "english": "",
                   "meaning": "to (a destination)"
                 },
                 {
-                  "id": "b3l3g3-e1-w29",
-                  "traditional": "深",
-                  "simplified": "深",
-                  "pinyin": "shēn",
-                  "english": "dark (color)",
-                  "meaning": "dark (color)"
-                },
-                {
-                  "id": "b3l3g3-e1-w30",
-                  "traditional": "夜",
-                  "simplified": "夜",
-                  "pinyin": "yè",
-                  "english": "",
-                  "meaning": "night"
+                  "id": "b3l3g3-ex1-w19",
+                  "traditional": "深夜",
+                  "simplified": "深夜",
+                  "pinyin": "shēn yè",
+                  "meaning": "very late at night",
+                  "suffix": "。"
                 }
               ]
             }
@@ -3152,183 +2684,122 @@
               "traditional": "這間公寓格局很好、採光充足，就是離捷運站稍微遠了點。",
               "simplified": "这间公寓格局很好、采光充足，就是离捷运站稍微远了点。",
               "pinyin": "Zhè jiān gōngyù géjú hěn hǎo, cǎiguāng chōngzú, jiùshì lí jiéyùnzhàn shāowēi yuǎn le diǎn.",
-              "english": "This apartment has a great layout and ample sunlight, it's just slightly far from the MRT station.",
+              "english": "This apartment has a great layout and plenty of sunlight, except it's slightly far from the MRT station.",
               "words": [
                 {
-                  "id": "b3l3g3-e2-w1",
+                  "id": "b3l3g3-ex2-w1",
                   "traditional": "這",
                   "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "english": "",
+                  "pinyin": "zhè",
                   "meaning": "this"
                 },
                 {
-                  "id": "b3l3g3-e2-w2",
+                  "id": "b3l3g3-ex2-w2",
                   "traditional": "間",
                   "simplified": "间",
                   "pinyin": "jiān",
-                  "english": "",
                   "meaning": "measure word (rooms)"
                 },
                 {
-                  "id": "b3l3g3-e2-w3",
-                  "traditional": "公",
-                  "simplified": "公",
-                  "pinyin": "gōng",
-                  "english": "",
-                  "meaning": "public"
+                  "id": "b3l3g3-ex2-w3",
+                  "traditional": "公寓",
+                  "simplified": "公寓",
+                  "pinyin": "gōngyù",
+                  "meaning": "apartment (M: 棟 dòng)"
                 },
                 {
-                  "id": "b3l3g3-e2-w4",
-                  "traditional": "寓",
-                  "simplified": "寓",
-                  "pinyin": "yù",
-                  "english": "",
-                  "meaning": "to reside"
+                  "id": "b3l3g3-ex2-w4",
+                  "traditional": "格局",
+                  "simplified": "格局",
+                  "pinyin": "gé jú",
+                  "meaning": "structure"
                 },
                 {
-                  "id": "b3l3g3-e2-w5",
-                  "traditional": "格",
-                  "simplified": "格",
-                  "pinyin": "gé",
-                  "english": "",
-                  "meaning": "used in 格登[ge1 deng1]"
-                },
-                {
-                  "id": "b3l3g3-e2-w6",
-                  "traditional": "局",
-                  "simplified": "局",
-                  "pinyin": "jú",
-                  "english": "",
-                  "meaning": "narrow"
-                },
-                {
-                  "id": "b3l3g3-e2-w7",
+                  "id": "b3l3g3-ex2-w5",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
-                  "english": "",
                   "meaning": "very"
                 },
                 {
-                  "id": "b3l3g3-e2-w8",
+                  "id": "b3l3g3-ex2-w6",
                   "traditional": "好",
                   "simplified": "好",
                   "pinyin": "hǎo",
-                  "english": "",
-                  "meaning": "so; how (adverb of degree)"
+                  "meaning": "so (very)",
+                  "suffix": "、"
                 },
                 {
-                  "id": "b3l3g3-e2-w9",
-                  "traditional": "採",
-                  "simplified": "采",
-                  "pinyin": "cǎi",
-                  "english": "",
-                  "meaning": "to pick"
+                  "id": "b3l3g3-ex2-w7",
+                  "traditional": "採光",
+                  "simplified": "采光",
+                  "pinyin": "cǎi guāng",
+                  "meaning": "to get natural light"
                 },
                 {
-                  "id": "b3l3g3-e2-w10",
-                  "traditional": "光",
-                  "simplified": "光",
-                  "pinyin": "guāng",
-                  "english": "",
-                  "meaning": "to be all gone"
+                  "id": "b3l3g3-ex2-w8",
+                  "traditional": "充足",
+                  "simplified": "充足",
+                  "pinyin": "chōng zú",
+                  "meaning": "adequate",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g3-e2-w11",
-                  "traditional": "充",
-                  "simplified": "充",
-                  "pinyin": "chōng",
-                  "english": "",
-                  "meaning": "sufficient"
-                },
-                {
-                  "id": "b3l3g3-e2-w12",
-                  "traditional": "足",
-                  "simplified": "足",
-                  "pinyin": "jù",
-                  "english": "",
-                  "meaning": "excessive"
-                },
-                {
-                  "id": "b3l3g3-e2-w13",
+                  "id": "b3l3g3-ex2-w9",
                   "traditional": "就是",
                   "simplified": "就是",
-                  "pinyin": "jiùshì",
-                  "english": "even if",
-                  "meaning": "even if"
+                  "pinyin": "jiù shì",
+                  "meaning": "simply; exactly; except"
                 },
                 {
-                  "id": "b3l3g3-e2-w14",
+                  "id": "b3l3g3-ex2-w10",
                   "traditional": "離",
                   "simplified": "离",
                   "pinyin": "lí",
-                  "english": "",
                   "meaning": "away from"
                 },
                 {
-                  "id": "b3l3g3-e2-w15",
-                  "traditional": "捷",
-                  "simplified": "捷",
-                  "pinyin": "jié",
-                  "english": "",
-                  "meaning": "variant of 捷[jie2]"
+                  "id": "b3l3g3-ex2-w11",
+                  "traditional": "捷運",
+                  "simplified": "捷运",
+                  "pinyin": "jié yùn",
+                  "meaning": "mass rapid transit"
                 },
                 {
-                  "id": "b3l3g3-e2-w16",
-                  "traditional": "運",
-                  "simplified": "运",
-                  "pinyin": "yùn",
-                  "english": "",
-                  "meaning": "to move"
-                },
-                {
-                  "id": "b3l3g3-e2-w17",
+                  "id": "b3l3g3-ex2-w12",
                   "traditional": "站",
                   "simplified": "站",
                   "pinyin": "zhàn",
-                  "english": "",
                   "meaning": "to stand"
                 },
                 {
-                  "id": "b3l3g3-e2-w18",
-                  "traditional": "稍",
-                  "simplified": "稍",
-                  "pinyin": "shāo",
-                  "english": "",
-                  "meaning": "somewhat"
+                  "id": "b3l3g3-ex2-w13",
+                  "traditional": "稍微",
+                  "simplified": "稍微",
+                  "pinyin": "shāo wēi",
+                  "meaning": "a little bit"
                 },
                 {
-                  "id": "b3l3g3-e2-w19",
-                  "traditional": "微",
-                  "simplified": "微",
-                  "pinyin": "Wēi",
-                  "english": "",
-                  "meaning": "surname Wei"
-                },
-                {
-                  "id": "b3l3g3-e2-w20",
+                  "id": "b3l3g3-ex2-w14",
                   "traditional": "遠",
                   "simplified": "远",
                   "pinyin": "yuǎn",
-                  "english": "",
                   "meaning": "far"
                 },
                 {
-                  "id": "b3l3g3-e2-w21",
+                  "id": "b3l3g3-ex2-w15",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle"
                 },
                 {
-                  "id": "b3l3g3-e2-w22",
+                  "id": "b3l3g3-ex2-w16",
                   "traditional": "點",
                   "simplified": "点",
                   "pinyin": "diǎn",
-                  "english": "point",
-                  "meaning": "point"
+                  "meaning": "point",
+                  "suffix": "。"
                 }
               ]
             }
@@ -3340,143 +2811,100 @@
               "traditional": "那位設計師什麼服裝都設計過，就是沒設計過帽子。",
               "simplified": "那位设计师什么服装都设计过，就是没设计过帽子。",
               "pinyin": "Nà wèi shèjìshī shénme fúzhuāng dōu shèjì guò, jiùshì méi shèjì guò màozi.",
-              "english": "That designer has designed all types of clothing, it's just that he has never designed hats.",
+              "english": "That designer has designed all kinds of clothing, except he has never designed hats.",
               "words": [
                 {
-                  "id": "b3l3g3-e3-w1",
+                  "id": "b3l3g3-ex3-w1",
                   "traditional": "那",
                   "simplified": "那",
-                  "pinyin": "nà/nèi",
-                  "english": "",
+                  "pinyin": "nà",
                   "meaning": "that"
                 },
                 {
-                  "id": "b3l3g3-e3-w2",
+                  "id": "b3l3g3-ex3-w2",
                   "traditional": "位",
                   "simplified": "位",
                   "pinyin": "wèi",
-                  "english": "",
                   "meaning": "polite measure word (people)"
                 },
                 {
-                  "id": "b3l3g3-e3-w3",
-                  "traditional": "設計",
-                  "simplified": "设计",
-                  "pinyin": "shèjì",
-                  "english": "to design",
-                  "meaning": "to design"
+                  "id": "b3l3g3-ex3-w3",
+                  "traditional": "設計師",
+                  "simplified": "设计师",
+                  "pinyin": "shè jì shī",
+                  "meaning": "designer"
                 },
                 {
-                  "id": "b3l3g3-e3-w4",
-                  "traditional": "師",
-                  "simplified": "师",
-                  "pinyin": "Shī",
-                  "english": "",
-                  "meaning": "surname Shi"
-                },
-                {
-                  "id": "b3l3g3-e3-w5",
-                  "traditional": "什",
-                  "simplified": "什",
-                  "pinyin": "shén",
-                  "english": "",
+                  "id": "b3l3g3-ex3-w4",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
                   "meaning": "what"
                 },
                 {
-                  "id": "b3l3g3-e3-w6",
-                  "traditional": "麼",
-                  "simplified": "么",
-                  "pinyin": "má",
-                  "english": "",
-                  "meaning": "exclamatory final particle"
+                  "id": "b3l3g3-ex3-w5",
+                  "traditional": "服裝",
+                  "simplified": "服装",
+                  "pinyin": "fúzhuāng",
+                  "meaning": "clothing"
                 },
                 {
-                  "id": "b3l3g3-e3-w7",
-                  "traditional": "服",
-                  "simplified": "服",
-                  "pinyin": "fú",
-                  "english": "",
-                  "meaning": "clothes"
-                },
-                {
-                  "id": "b3l3g3-e3-w8",
-                  "traditional": "裝",
-                  "simplified": "装",
-                  "pinyin": "zhuāng",
-                  "english": "",
-                  "meaning": "to install"
-                },
-                {
-                  "id": "b3l3g3-e3-w9",
+                  "id": "b3l3g3-ex3-w6",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
-                  "english": "",
                   "meaning": "all; both"
                 },
                 {
-                  "id": "b3l3g3-e3-w10",
+                  "id": "b3l3g3-ex3-w7",
                   "traditional": "設計",
                   "simplified": "设计",
                   "pinyin": "shèjì",
-                  "english": "to design",
                   "meaning": "to design"
                 },
                 {
-                  "id": "b3l3g3-e3-w11",
+                  "id": "b3l3g3-ex3-w8",
                   "traditional": "過",
                   "simplified": "过",
                   "pinyin": "guò",
-                  "english": "",
-                  "meaning": "to spend; celebrate"
+                  "meaning": "aspect particle; to pass",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g3-e3-w12",
+                  "id": "b3l3g3-ex3-w9",
                   "traditional": "就是",
                   "simplified": "就是",
-                  "pinyin": "jiùshì",
-                  "english": "even if",
-                  "meaning": "even if"
+                  "pinyin": "jiù shì",
+                  "meaning": "simply; exactly; except"
                 },
                 {
-                  "id": "b3l3g3-e3-w13",
+                  "id": "b3l3g3-ex3-w10",
                   "traditional": "沒",
                   "simplified": "没",
                   "pinyin": "méi",
-                  "english": "to be gone",
                   "meaning": "to be gone"
                 },
                 {
-                  "id": "b3l3g3-e3-w14",
+                  "id": "b3l3g3-ex3-w11",
                   "traditional": "設計",
                   "simplified": "设计",
                   "pinyin": "shèjì",
-                  "english": "to design",
                   "meaning": "to design"
                 },
                 {
-                  "id": "b3l3g3-e3-w15",
+                  "id": "b3l3g3-ex3-w12",
                   "traditional": "過",
                   "simplified": "过",
                   "pinyin": "guò",
-                  "english": "",
-                  "meaning": "to spend; celebrate"
+                  "meaning": "aspect particle; to pass"
                 },
                 {
-                  "id": "b3l3g3-e3-w16",
-                  "traditional": "帽",
-                  "simplified": "帽",
-                  "pinyin": "mào",
-                  "english": "",
-                  "meaning": "old variant of 帽[mao4]"
-                },
-                {
-                  "id": "b3l3g3-e3-w17",
-                  "traditional": "子",
-                  "simplified": "子",
-                  "pinyin": "zǐ",
-                  "english": "",
-                  "meaning": "son"
+                  "id": "b3l3g3-ex3-w13",
+                  "traditional": "帽子",
+                  "simplified": "帽子",
+                  "pinyin": "màozi",
+                  "meaning": "hat (M: 頂 dǐng)",
+                  "suffix": "。"
                 }
               ]
             }
@@ -3918,207 +3346,137 @@
               "traditional": "孩子對媽媽說：您別再幫我洗衣服了！我已經長大，自己會洗了。",
               "simplified": "孩子对妈妈说：您别再帮我洗衣服了！我已经长大，自己会洗了。",
               "pinyin": "Háizi duì māma shuō: Nín bié zài bāng wǒ xǐ yīfu le! Wǒ yǐjīng zhǎngdà, zìjǐ huì xǐ le.",
-              "english": "The child said to mother: Don't wash clothes for me any longer! I have grown up and can wash them myself.",
+              "english": "The child said to his mother: Please don't wash clothes for me anymore! I've grown up and can wash them myself.",
               "words": [
                 {
-                  "id": "b3l3g4-e1-w1",
-                  "traditional": "孩",
-                  "simplified": "孩",
-                  "pinyin": "hái",
-                  "english": "",
+                  "id": "b3l3g4-ex1-w1",
+                  "traditional": "孩子",
+                  "simplified": "孩子",
+                  "pinyin": "háizi",
                   "meaning": "child"
                 },
                 {
-                  "id": "b3l3g4-e1-w2",
-                  "traditional": "子",
-                  "simplified": "子",
-                  "pinyin": "zǐ",
-                  "english": "",
-                  "meaning": "son"
-                },
-                {
-                  "id": "b3l3g4-e1-w3",
+                  "id": "b3l3g4-ex1-w2",
                   "traditional": "對",
                   "simplified": "对",
                   "pinyin": "duì",
-                  "english": "to face",
                   "meaning": "to face"
                 },
                 {
-                  "id": "b3l3g4-e1-w4",
-                  "traditional": "媽",
-                  "simplified": "妈",
-                  "pinyin": "mā",
-                  "english": "",
-                  "meaning": "ma"
+                  "id": "b3l3g4-ex1-w3",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
                 },
                 {
-                  "id": "b3l3g4-e1-w5",
-                  "traditional": "媽",
-                  "simplified": "妈",
-                  "pinyin": "mā",
-                  "english": "",
-                  "meaning": "ma"
-                },
-                {
-                  "id": "b3l3g4-e1-w6",
+                  "id": "b3l3g4-ex1-w4",
                   "traditional": "說",
                   "simplified": "说",
                   "pinyin": "shuō",
-                  "english": "",
-                  "meaning": "to say"
+                  "meaning": "to say",
+                  "suffix": "："
                 },
                 {
-                  "id": "b3l3g4-e1-w7",
+                  "id": "b3l3g4-ex1-w5",
                   "traditional": "您",
                   "simplified": "您",
                   "pinyin": "nín",
-                  "english": "",
                   "meaning": "you (polite)"
                 },
                 {
-                  "id": "b3l3g4-e1-w8",
-                  "traditional": "別",
-                  "simplified": "别",
-                  "pinyin": "bié",
-                  "english": "",
-                  "meaning": "don't"
+                  "id": "b3l3g4-ex1-w6",
+                  "traditional": "別再",
+                  "simplified": "别再",
+                  "pinyin": "bié zài",
+                  "meaning": "don't ... anymore"
                 },
                 {
-                  "id": "b3l3g4-e1-w9",
-                  "traditional": "再",
-                  "simplified": "再",
-                  "pinyin": "zài",
-                  "english": "",
-                  "meaning": "then (next)"
-                },
-                {
-                  "id": "b3l3g4-e1-w10",
+                  "id": "b3l3g4-ex1-w7",
                   "traditional": "幫",
                   "simplified": "帮",
                   "pinyin": "bāng",
-                  "english": "",
                   "meaning": "to help"
                 },
                 {
-                  "id": "b3l3g4-e1-w11",
+                  "id": "b3l3g4-ex1-w8",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "english": "",
                   "meaning": "I"
                 },
                 {
-                  "id": "b3l3g4-e1-w12",
-                  "traditional": "洗",
-                  "simplified": "洗",
-                  "pinyin": "xǐ",
-                  "english": "",
-                  "meaning": "to wash"
+                  "id": "b3l3g4-ex1-w9",
+                  "traditional": "洗衣",
+                  "simplified": "洗衣",
+                  "pinyin": "xǐ yī",
+                  "meaning": "laundry"
                 },
                 {
-                  "id": "b3l3g4-e1-w13",
-                  "traditional": "衣",
-                  "simplified": "衣",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "clothes"
-                },
-                {
-                  "id": "b3l3g4-e1-w14",
+                  "id": "b3l3g4-ex1-w10",
                   "traditional": "服",
                   "simplified": "服",
                   "pinyin": "fú",
-                  "english": "",
                   "meaning": "clothes"
                 },
                 {
-                  "id": "b3l3g4-e1-w15",
+                  "id": "b3l3g4-ex1-w11",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "！"
                 },
                 {
-                  "id": "b3l3g4-e1-w16",
+                  "id": "b3l3g4-ex1-w12",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
-                  "english": "",
                   "meaning": "I"
                 },
                 {
-                  "id": "b3l3g4-e1-w17",
-                  "traditional": "已",
-                  "simplified": "已",
-                  "pinyin": "yǐ",
-                  "english": "already",
+                  "id": "b3l3g4-ex1-w13",
+                  "traditional": "已經",
+                  "simplified": "已经",
+                  "pinyin": "yǐjīng",
                   "meaning": "already"
                 },
                 {
-                  "id": "b3l3g4-e1-w18",
-                  "traditional": "經",
-                  "simplified": "经",
-                  "pinyin": "Jīng",
-                  "english": "",
-                  "meaning": "surname Jing"
+                  "id": "b3l3g4-ex1-w14",
+                  "traditional": "長大",
+                  "simplified": "长大",
+                  "pinyin": "zhǎngdà",
+                  "meaning": "to grow up",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g4-e1-w19",
-                  "traditional": "長",
-                  "simplified": "长",
-                  "pinyin": "zhǎng",
-                  "english": "to grow (taller)",
-                  "meaning": "to grow (taller)"
-                },
-                {
-                  "id": "b3l3g4-e1-w20",
-                  "traditional": "大",
-                  "simplified": "大",
-                  "pinyin": "dà",
-                  "english": "",
-                  "meaning": "big"
-                },
-                {
-                  "id": "b3l3g4-e1-w21",
-                  "traditional": "自",
-                  "simplified": "自",
-                  "pinyin": "zì",
-                  "english": "",
+                  "id": "b3l3g4-ex1-w15",
+                  "traditional": "自己",
+                  "simplified": "自己",
+                  "pinyin": "zìjǐ",
                   "meaning": "self"
                 },
                 {
-                  "id": "b3l3g4-e1-w22",
-                  "traditional": "己",
-                  "simplified": "己",
-                  "pinyin": "jǐ",
-                  "english": "",
-                  "meaning": "self"
-                },
-                {
-                  "id": "b3l3g4-e1-w23",
+                  "id": "b3l3g4-ex1-w16",
                   "traditional": "會",
                   "simplified": "会",
                   "pinyin": "huì",
-                  "english": "",
                   "meaning": "meeting"
                 },
                 {
-                  "id": "b3l3g4-e1-w24",
+                  "id": "b3l3g4-ex1-w17",
                   "traditional": "洗",
                   "simplified": "洗",
                   "pinyin": "xǐ",
-                  "english": "",
                   "meaning": "to wash"
                 },
                 {
-                  "id": "b3l3g4-e1-w25",
+                  "id": "b3l3g4-ex1-w18",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "。"
                 }
               ]
             }
@@ -4130,175 +3488,108 @@
               "traditional": "醫生對病人說：您的胃已經發炎了，別再抽煙喝酒了。",
               "simplified": "医生对病人说：您的胃已经发炎了，别再抽烟喝酒了。",
               "pinyin": "Yīshēng duì bìngrén shuō: Nín de wèi yǐjīng fāyán le, bié zài chōuyān hējiǔ le.",
-              "english": "The doctor said to patient: Your stomach is inflamed; don't smoke and drink any longer.",
+              "english": "The doctor said to the patient: Your stomach is inflamed; don't smoke or drink anymore.",
               "words": [
                 {
-                  "id": "b3l3g4-e2-w1",
-                  "traditional": "醫",
-                  "simplified": "医",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "medical"
+                  "id": "b3l3g4-ex2-w1",
+                  "traditional": "醫生",
+                  "simplified": "医生",
+                  "pinyin": "yīshēng",
+                  "meaning": "doctor"
                 },
                 {
-                  "id": "b3l3g4-e2-w2",
-                  "traditional": "生",
-                  "simplified": "生",
-                  "pinyin": "shēng",
-                  "english": "to give birth",
-                  "meaning": "to give birth"
-                },
-                {
-                  "id": "b3l3g4-e2-w3",
+                  "id": "b3l3g4-ex2-w2",
                   "traditional": "對",
                   "simplified": "对",
                   "pinyin": "duì",
-                  "english": "to face",
                   "meaning": "to face"
                 },
                 {
-                  "id": "b3l3g4-e2-w4",
-                  "traditional": "病",
-                  "simplified": "病",
-                  "pinyin": "bìng",
-                  "english": "to fall ill",
-                  "meaning": "to fall ill"
+                  "id": "b3l3g4-ex2-w3",
+                  "traditional": "病人",
+                  "simplified": "病人",
+                  "pinyin": "bìngrén",
+                  "meaning": "patient"
                 },
                 {
-                  "id": "b3l3g4-e2-w5",
-                  "traditional": "人",
-                  "simplified": "人",
-                  "pinyin": "rén",
-                  "english": "",
-                  "meaning": "person"
-                },
-                {
-                  "id": "b3l3g4-e2-w6",
+                  "id": "b3l3g4-ex2-w4",
                   "traditional": "說",
                   "simplified": "说",
                   "pinyin": "shuō",
-                  "english": "",
-                  "meaning": "to say"
+                  "meaning": "to say",
+                  "suffix": "："
                 },
                 {
-                  "id": "b3l3g4-e2-w7",
+                  "id": "b3l3g4-ex2-w5",
                   "traditional": "您",
                   "simplified": "您",
                   "pinyin": "nín",
-                  "english": "",
                   "meaning": "you (polite)"
                 },
                 {
-                  "id": "b3l3g4-e2-w8",
+                  "id": "b3l3g4-ex2-w6",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g4-e2-w9",
+                  "id": "b3l3g4-ex2-w7",
                   "traditional": "胃",
                   "simplified": "胃",
                   "pinyin": "wèi",
-                  "english": "",
                   "meaning": "stomach"
                 },
                 {
-                  "id": "b3l3g4-e2-w10",
-                  "traditional": "已",
-                  "simplified": "已",
-                  "pinyin": "yǐ",
-                  "english": "already",
+                  "id": "b3l3g4-ex2-w8",
+                  "traditional": "已經",
+                  "simplified": "已经",
+                  "pinyin": "yǐjīng",
                   "meaning": "already"
                 },
                 {
-                  "id": "b3l3g4-e2-w11",
-                  "traditional": "經",
-                  "simplified": "经",
-                  "pinyin": "Jīng",
-                  "english": "",
-                  "meaning": "surname Jing"
+                  "id": "b3l3g4-ex2-w9",
+                  "traditional": "發炎",
+                  "simplified": "发炎",
+                  "pinyin": "fā yán",
+                  "meaning": "to become inflamed"
                 },
                 {
-                  "id": "b3l3g4-e2-w12",
-                  "traditional": "發",
-                  "simplified": "发",
-                  "pinyin": "fā",
-                  "english": "to hand out",
-                  "meaning": "to hand out"
-                },
-                {
-                  "id": "b3l3g4-e2-w13",
-                  "traditional": "炎",
-                  "simplified": "炎",
-                  "pinyin": "yán",
-                  "english": "",
-                  "meaning": "flame"
-                },
-                {
-                  "id": "b3l3g4-e2-w14",
+                  "id": "b3l3g4-ex2-w10",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g4-e2-w15",
-                  "traditional": "別",
-                  "simplified": "别",
-                  "pinyin": "bié",
-                  "english": "",
-                  "meaning": "don't"
+                  "id": "b3l3g4-ex2-w11",
+                  "traditional": "別再",
+                  "simplified": "别再",
+                  "pinyin": "bié zài",
+                  "meaning": "don't ... anymore"
                 },
                 {
-                  "id": "b3l3g4-e2-w16",
-                  "traditional": "再",
-                  "simplified": "再",
-                  "pinyin": "zài",
-                  "english": "",
-                  "meaning": "then (next)"
+                  "id": "b3l3g4-ex2-w12",
+                  "traditional": "抽煙",
+                  "simplified": "抽烟",
+                  "pinyin": "chōu yān",
+                  "meaning": "variant of 抽菸|抽烟[chou1 yan1]"
                 },
                 {
-                  "id": "b3l3g4-e2-w17",
-                  "traditional": "抽",
-                  "simplified": "抽",
-                  "pinyin": "chōu",
-                  "english": "to draw out",
-                  "meaning": "to draw out"
-                },
-                {
-                  "id": "b3l3g4-e2-w18",
-                  "traditional": "煙",
-                  "simplified": "烟",
-                  "pinyin": "yān",
-                  "english": "",
-                  "meaning": "cigarette or pipe tobacco"
-                },
-                {
-                  "id": "b3l3g4-e2-w19",
-                  "traditional": "喝",
-                  "simplified": "喝",
-                  "pinyin": "hē",
-                  "english": "",
+                  "id": "b3l3g4-ex2-w13",
+                  "traditional": "喝酒",
+                  "simplified": "喝酒",
+                  "pinyin": "hē jiǔ",
                   "meaning": "to drink"
                 },
                 {
-                  "id": "b3l3g4-e2-w20",
-                  "traditional": "酒",
-                  "simplified": "酒",
-                  "pinyin": "jiǔ",
-                  "english": "",
-                  "meaning": "alcohol"
-                },
-                {
-                  "id": "b3l3g4-e2-w21",
+                  "id": "b3l3g4-ex2-w14",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "。"
                 }
               ]
             }
@@ -4310,143 +3601,94 @@
               "traditional": "既然機會來了，就別再猶豫了，勇敢接受挑戰吧！",
               "simplified": "既然机会来了，就别再猶豫了，勇敢接受挑战吧！",
               "pinyin": "Jìrán jīhuì lái le, jiù bié zài yóuyù le, yǒnggǎn jiēshòu tiǎozhàn ba!",
-              "english": "Since the opportunity has arrived, don't hesitate any longer; bravely accept the challenge!",
+              "english": "Since the opportunity has come, stop hesitating and bravely take on the challenge!",
               "words": [
                 {
-                  "id": "b3l3g4-e3-w1",
+                  "id": "b3l3g4-ex3-w1",
                   "traditional": "既然",
                   "simplified": "既然",
                   "pinyin": "jìrán",
-                  "english": "since",
                   "meaning": "since"
                 },
                 {
-                  "id": "b3l3g4-e3-w2",
-                  "traditional": "機",
-                  "simplified": "机",
-                  "pinyin": "Jī",
-                  "english": "",
-                  "meaning": "surname Ji"
+                  "id": "b3l3g4-ex3-w2",
+                  "traditional": "機會",
+                  "simplified": "机会",
+                  "pinyin": "jīhuì",
+                  "meaning": "chance"
                 },
                 {
-                  "id": "b3l3g4-e3-w3",
-                  "traditional": "會",
-                  "simplified": "会",
-                  "pinyin": "huì",
-                  "english": "",
-                  "meaning": "meeting"
-                },
-                {
-                  "id": "b3l3g4-e3-w4",
+                  "id": "b3l3g4-ex3-w3",
                   "traditional": "來",
                   "simplified": "来",
                   "pinyin": "lái",
-                  "english": "",
-                  "meaning": "in order to; to"
+                  "meaning": "to come"
                 },
                 {
-                  "id": "b3l3g4-e3-w5",
+                  "id": "b3l3g4-ex3-w4",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g4-e3-w6",
+                  "id": "b3l3g4-ex3-w5",
                   "traditional": "就",
                   "simplified": "就",
                   "pinyin": "jiù",
-                  "english": "concerning",
                   "meaning": "concerning"
                 },
                 {
-                  "id": "b3l3g4-e3-w7",
-                  "traditional": "別",
-                  "simplified": "别",
-                  "pinyin": "bié",
-                  "english": "",
-                  "meaning": "don't"
+                  "id": "b3l3g4-ex3-w6",
+                  "traditional": "別再",
+                  "simplified": "别再",
+                  "pinyin": "bié zài",
+                  "meaning": "don't ... anymore"
                 },
                 {
-                  "id": "b3l3g4-e3-w8",
-                  "traditional": "再",
-                  "simplified": "再",
-                  "pinyin": "zài",
-                  "english": "",
-                  "meaning": "then (next)"
+                  "id": "b3l3g4-ex3-w7",
+                  "traditional": "猶豫",
+                  "simplified": "犹豫",
+                  "pinyin": "yóu yù",
+                  "meaning": "to hesitate"
                 },
                 {
-                  "id": "b3l3g4-e3-w9",
-                  "traditional": "猶",
-                  "simplified": "猶",
-                  "pinyin": "yóu",
-                  "english": "",
-                  "meaning": "as if"
-                },
-                {
-                  "id": "b3l3g4-e3-w10",
-                  "traditional": "豫",
-                  "simplified": "豫",
-                  "pinyin": "Yù",
-                  "english": "",
-                  "meaning": "short name for Henan 河南[He2 nan2]"
-                },
-                {
-                  "id": "b3l3g4-e3-w11",
+                  "id": "b3l3g4-ex3-w8",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g4-e3-w12",
-                  "traditional": "勇",
-                  "simplified": "勇",
-                  "pinyin": "yǒng",
-                  "english": "",
+                  "id": "b3l3g4-ex3-w9",
+                  "traditional": "勇敢",
+                  "simplified": "勇敢",
+                  "pinyin": "yǒnggǎn",
                   "meaning": "brave"
                 },
                 {
-                  "id": "b3l3g4-e3-w13",
-                  "traditional": "敢",
-                  "simplified": "敢",
-                  "pinyin": "gǎn",
-                  "english": "",
-                  "meaning": "to dare"
+                  "id": "b3l3g4-ex3-w10",
+                  "traditional": "接受",
+                  "simplified": "接受",
+                  "pinyin": "jiēshòu",
+                  "meaning": "to accept"
                 },
                 {
-                  "id": "b3l3g4-e3-w14",
-                  "traditional": "接",
-                  "simplified": "接",
-                  "pinyin": "jiē",
-                  "english": "",
-                  "meaning": "to receive"
-                },
-                {
-                  "id": "b3l3g4-e3-w15",
-                  "traditional": "受",
-                  "simplified": "受",
-                  "pinyin": "shòu",
-                  "english": "",
-                  "meaning": "to receive"
-                },
-                {
-                  "id": "b3l3g4-e3-w16",
+                  "id": "b3l3g4-ex3-w11",
                   "traditional": "挑戰",
                   "simplified": "挑战",
                   "pinyin": "tiǎozhàn",
-                  "english": "to challenge",
                   "meaning": "to challenge"
                 },
                 {
-                  "id": "b3l3g4-e3-w17",
+                  "id": "b3l3g4-ex3-w12",
                   "traditional": "吧",
                   "simplified": "吧",
                   "pinyin": "ba",
-                  "english": "",
-                  "meaning": "tag question particle"
+                  "meaning": "suggestion particle",
+                  "suffix": "！"
                 }
               ]
             }
@@ -5184,191 +4426,122 @@
               "traditional": "謝先生不僅性格開朗，工作也很認真負責，所以同事都很喜歡他。",
               "simplified": "谢先生不仅性格开朗，工作也很认真负责，所以同事都很喜欢他。",
               "pinyin": "Xiè xiānsheng bùjǐn xìnggé kāilǎng, gōngzuò yě hěn rènzhēn fùzé, suǒyǐ tóngshì dōu hěn xǐhuān tā.",
-              "english": "Mr. Xie not only has an upbeat personality, but is also very conscientious at work, so coworkers all like him.",
+              "english": "Mr. Xie is not only cheerful, but also very earnest and responsible at work, so his colleagues all like him.",
               "words": [
                 {
-                  "id": "b3l3g5-e1-w1",
+                  "id": "b3l3g5-ex1-w1",
                   "traditional": "謝",
                   "simplified": "谢",
                   "pinyin": "Xiè",
-                  "english": "",
                   "meaning": "surname Xie"
                 },
                 {
-                  "id": "b3l3g5-e1-w2",
-                  "traditional": "先",
-                  "simplified": "先",
-                  "pinyin": "xiān",
-                  "english": "",
-                  "meaning": "first"
+                  "id": "b3l3g5-ex1-w2",
+                  "traditional": "先生",
+                  "simplified": "先生",
+                  "pinyin": "xiānshēng",
+                  "meaning": "Mr."
                 },
                 {
-                  "id": "b3l3g5-e1-w3",
-                  "traditional": "生",
-                  "simplified": "生",
-                  "pinyin": "shēng",
-                  "english": "to give birth",
-                  "meaning": "to give birth"
-                },
-                {
-                  "id": "b3l3g5-e1-w4",
+                  "id": "b3l3g5-ex1-w3",
                   "traditional": "不僅",
                   "simplified": "不仅",
-                  "pinyin": "bù jǐn",
-                  "english": "not only",
+                  "pinyin": "bùjǐn",
                   "meaning": "not only"
                 },
                 {
-                  "id": "b3l3g5-e1-w5",
+                  "id": "b3l3g5-ex1-w4",
                   "traditional": "性格",
                   "simplified": "性格",
                   "pinyin": "xìnggé",
-                  "english": "personality",
                   "meaning": "personality"
                 },
                 {
-                  "id": "b3l3g5-e1-w6",
+                  "id": "b3l3g5-ex1-w5",
                   "traditional": "開朗",
                   "simplified": "开朗",
                   "pinyin": "kāilǎng",
-                  "english": "cheerful",
-                  "meaning": "cheerful"
+                  "meaning": "cheerful",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g5-e1-w7",
-                  "traditional": "工",
-                  "simplified": "工",
-                  "pinyin": "gōng",
-                  "english": "",
-                  "meaning": "work"
+                  "id": "b3l3g5-ex1-w6",
+                  "traditional": "工作",
+                  "simplified": "工作",
+                  "pinyin": "gōngzuò",
+                  "meaning": "to work; job"
                 },
                 {
-                  "id": "b3l3g5-e1-w8",
-                  "traditional": "作",
-                  "simplified": "作",
-                  "pinyin": "zuō",
-                  "english": "",
-                  "meaning": "worker"
-                },
-                {
-                  "id": "b3l3g5-e1-w9",
+                  "id": "b3l3g5-ex1-w7",
                   "traditional": "也",
                   "simplified": "也",
                   "pinyin": "yě",
-                  "english": "",
                   "meaning": "also"
                 },
                 {
-                  "id": "b3l3g5-e1-w10",
+                  "id": "b3l3g5-ex1-w8",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
-                  "english": "",
                   "meaning": "very"
                 },
                 {
-                  "id": "b3l3g5-e1-w11",
-                  "traditional": "認",
-                  "simplified": "认",
-                  "pinyin": "rèn",
-                  "english": "",
-                  "meaning": "to recognize"
+                  "id": "b3l3g5-ex1-w9",
+                  "traditional": "認真",
+                  "simplified": "认真",
+                  "pinyin": "rènzhēn",
+                  "meaning": "serious"
                 },
                 {
-                  "id": "b3l3g5-e1-w12",
-                  "traditional": "真",
-                  "simplified": "真",
-                  "pinyin": "zhēn",
-                  "english": "",
-                  "meaning": "real"
+                  "id": "b3l3g5-ex1-w10",
+                  "traditional": "負責",
+                  "simplified": "负责",
+                  "pinyin": "fùzé",
+                  "meaning": "responsible",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g5-e1-w13",
-                  "traditional": "負",
-                  "simplified": "负",
-                  "pinyin": "fù",
-                  "english": "",
-                  "meaning": "to bear"
+                  "id": "b3l3g5-ex1-w11",
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "meaning": "so; therefore"
                 },
                 {
-                  "id": "b3l3g5-e1-w14",
-                  "traditional": "責",
-                  "simplified": "责",
-                  "pinyin": "zé",
-                  "english": "",
-                  "meaning": "duty"
+                  "id": "b3l3g5-ex1-w12",
+                  "traditional": "同事",
+                  "simplified": "同事",
+                  "pinyin": "tóngshì",
+                  "meaning": "colleague"
                 },
                 {
-                  "id": "b3l3g5-e1-w15",
-                  "traditional": "所",
-                  "simplified": "所",
-                  "pinyin": "suǒ",
-                  "english": "",
-                  "meaning": "measure word (schools)"
-                },
-                {
-                  "id": "b3l3g5-e1-w16",
-                  "traditional": "以",
-                  "simplified": "以",
-                  "pinyin": "yǐ",
-                  "english": "with",
-                  "meaning": "with"
-                },
-                {
-                  "id": "b3l3g5-e1-w17",
-                  "traditional": "同",
-                  "simplified": "同",
-                  "pinyin": "tóng",
-                  "english": "",
-                  "meaning": "same"
-                },
-                {
-                  "id": "b3l3g5-e1-w18",
-                  "traditional": "事",
-                  "simplified": "事",
-                  "pinyin": "shì",
-                  "english": "",
-                  "meaning": "matter"
-                },
-                {
-                  "id": "b3l3g5-e1-w19",
+                  "id": "b3l3g5-ex1-w13",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
-                  "english": "",
                   "meaning": "all; both"
                 },
                 {
-                  "id": "b3l3g5-e1-w20",
+                  "id": "b3l3g5-ex1-w14",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
-                  "english": "",
                   "meaning": "very"
                 },
                 {
-                  "id": "b3l3g5-e1-w21",
-                  "traditional": "喜",
-                  "simplified": "喜",
-                  "pinyin": "xǐ",
-                  "english": "",
-                  "meaning": "to be fond of"
+                  "id": "b3l3g5-ex1-w15",
+                  "traditional": "喜歡",
+                  "simplified": "喜欢",
+                  "pinyin": "xǐhuān",
+                  "meaning": "to like"
                 },
                 {
-                  "id": "b3l3g5-e1-w22",
-                  "traditional": "歡",
-                  "simplified": "欢",
-                  "pinyin": "huān",
-                  "english": "",
-                  "meaning": "joyous"
-                },
-                {
-                  "id": "b3l3g5-e1-w23",
+                  "id": "b3l3g5-ex1-w16",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
-                  "english": "",
-                  "meaning": "he"
+                  "meaning": "he",
+                  "suffix": "。"
                 }
               ]
             }
@@ -5383,156 +4556,97 @@
               "english": "This building not only has excellent earthquake-resistant design, but ventilation and lighting are also very ideal.",
               "words": [
                 {
-                  "id": "b3l3g5-e2-w1",
+                  "id": "b3l3g5-ex2-w1",
                   "traditional": "這",
                   "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "english": "",
+                  "pinyin": "zhè",
                   "meaning": "this"
                 },
                 {
-                  "id": "b3l3g5-e2-w2",
+                  "id": "b3l3g5-ex2-w2",
                   "traditional": "棟",
                   "simplified": "栋",
                   "pinyin": "dòng",
-                  "english": "",
                   "meaning": "measure word (buildings)"
                 },
                 {
-                  "id": "b3l3g5-e2-w3",
-                  "traditional": "大",
-                  "simplified": "大",
-                  "pinyin": "dà",
-                  "english": "",
-                  "meaning": "big"
+                  "id": "b3l3g5-ex2-w3",
+                  "traditional": "大樓",
+                  "simplified": "大楼",
+                  "pinyin": "dàlóu",
+                  "meaning": "building"
                 },
                 {
-                  "id": "b3l3g5-e2-w4",
-                  "traditional": "樓",
-                  "simplified": "楼",
-                  "pinyin": "lóu",
-                  "english": "",
-                  "meaning": "floor (level)"
-                },
-                {
-                  "id": "b3l3g5-e2-w5",
+                  "id": "b3l3g5-ex2-w4",
                   "traditional": "不僅",
                   "simplified": "不仅",
-                  "pinyin": "bù jǐn",
-                  "english": "not only",
+                  "pinyin": "bùjǐn",
                   "meaning": "not only"
                 },
                 {
-                  "id": "b3l3g5-e2-w6",
-                  "traditional": "防",
-                  "simplified": "防",
-                  "pinyin": "fáng",
-                  "english": "",
-                  "meaning": "to protect"
+                  "id": "b3l3g5-ex2-w5",
+                  "traditional": "防震",
+                  "simplified": "防震",
+                  "pinyin": "fáng zhèn",
+                  "meaning": "shockproof"
                 },
                 {
-                  "id": "b3l3g5-e2-w7",
-                  "traditional": "震",
-                  "simplified": "震",
-                  "pinyin": "zhèn",
-                  "english": "",
-                  "meaning": "to shake"
-                },
-                {
-                  "id": "b3l3g5-e2-w8",
+                  "id": "b3l3g5-ex2-w6",
                   "traditional": "設計",
                   "simplified": "设计",
                   "pinyin": "shèjì",
-                  "english": "to design",
                   "meaning": "to design"
                 },
                 {
-                  "id": "b3l3g5-e2-w9",
-                  "traditional": "優",
-                  "simplified": "优",
-                  "pinyin": "yōu",
-                  "english": "",
-                  "meaning": "excellent"
+                  "id": "b3l3g5-ex2-w7",
+                  "traditional": "優良",
+                  "simplified": "优良",
+                  "pinyin": "yōu liáng",
+                  "meaning": "fine",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g5-e2-w10",
-                  "traditional": "良",
-                  "simplified": "良",
-                  "pinyin": "liáng",
-                  "english": "",
-                  "meaning": "good"
+                  "id": "b3l3g5-ex2-w8",
+                  "traditional": "通風",
+                  "simplified": "通风",
+                  "pinyin": "tōng fēng",
+                  "meaning": "airy"
                 },
                 {
-                  "id": "b3l3g5-e2-w11",
-                  "traditional": "通",
-                  "simplified": "通",
-                  "pinyin": "tōng",
-                  "english": "open",
-                  "meaning": "open"
-                },
-                {
-                  "id": "b3l3g5-e2-w12",
-                  "traditional": "風",
-                  "simplified": "风",
-                  "pinyin": "fēng",
-                  "english": "",
-                  "meaning": "wind"
-                },
-                {
-                  "id": "b3l3g5-e2-w13",
+                  "id": "b3l3g5-ex2-w9",
                   "traditional": "與",
                   "simplified": "与",
                   "pinyin": "yǔ",
-                  "english": "and; with",
                   "meaning": "and; with"
                 },
                 {
-                  "id": "b3l3g5-e2-w14",
-                  "traditional": "採",
-                  "simplified": "采",
-                  "pinyin": "cǎi",
-                  "english": "",
-                  "meaning": "to pick"
+                  "id": "b3l3g5-ex2-w10",
+                  "traditional": "採光",
+                  "simplified": "采光",
+                  "pinyin": "cǎi guāng",
+                  "meaning": "to get natural light"
                 },
                 {
-                  "id": "b3l3g5-e2-w15",
-                  "traditional": "光",
-                  "simplified": "光",
-                  "pinyin": "guāng",
-                  "english": "",
-                  "meaning": "to be all gone"
-                },
-                {
-                  "id": "b3l3g5-e2-w16",
+                  "id": "b3l3g5-ex2-w11",
                   "traditional": "也",
                   "simplified": "也",
                   "pinyin": "yě",
-                  "english": "",
                   "meaning": "also"
                 },
                 {
-                  "id": "b3l3g5-e2-w17",
+                  "id": "b3l3g5-ex2-w12",
                   "traditional": "十分",
                   "simplified": "十分",
                   "pinyin": "shífēn",
-                  "english": "extremely",
                   "meaning": "extremely"
                 },
                 {
-                  "id": "b3l3g5-e2-w18",
-                  "traditional": "理",
-                  "simplified": "理",
-                  "pinyin": "lǐ",
-                  "english": "",
-                  "meaning": "texture"
-                },
-                {
-                  "id": "b3l3g5-e2-w19",
-                  "traditional": "想",
-                  "simplified": "想",
-                  "pinyin": "xiǎng",
-                  "english": "",
-                  "meaning": "to think"
+                  "id": "b3l3g5-ex2-w13",
+                  "traditional": "理想",
+                  "simplified": "理想",
+                  "pinyin": "lǐxiǎng",
+                  "meaning": "ideal",
+                  "suffix": "。"
                 }
               ]
             }
@@ -5547,156 +4661,90 @@
               "english": "Modern consumers not only care about product price, but also emphasize environmental friendliness and health.",
               "words": [
                 {
-                  "id": "b3l3g5-e3-w1",
+                  "id": "b3l3g5-ex3-w1",
                   "traditional": "現代",
                   "simplified": "现代",
                   "pinyin": "xiàndài",
-                  "english": "modern times",
                   "meaning": "modern times"
                 },
                 {
-                  "id": "b3l3g5-e3-w2",
-                  "traditional": "消",
-                  "simplified": "消",
-                  "pinyin": "xiāo",
-                  "english": "",
-                  "meaning": "to diminish"
+                  "id": "b3l3g5-ex3-w2",
+                  "traditional": "消費者",
+                  "simplified": "消费者",
+                  "pinyin": "xiāo fèi zhě",
+                  "meaning": "consumer"
                 },
                 {
-                  "id": "b3l3g5-e3-w3",
-                  "traditional": "費",
-                  "simplified": "费",
-                  "pinyin": "Fèi",
-                  "english": "",
-                  "meaning": "surname Fei"
-                },
-                {
-                  "id": "b3l3g5-e3-w4",
-                  "traditional": "者",
-                  "simplified": "者",
-                  "pinyin": "zhě",
-                  "english": "",
-                  "meaning": "one who  ..."
-                },
-                {
-                  "id": "b3l3g5-e3-w5",
+                  "id": "b3l3g5-ex3-w3",
                   "traditional": "不僅",
                   "simplified": "不仅",
-                  "pinyin": "bù jǐn",
-                  "english": "not only",
+                  "pinyin": "bùjǐn",
                   "meaning": "not only"
                 },
                 {
-                  "id": "b3l3g5-e3-w6",
-                  "traditional": "看",
-                  "simplified": "看",
-                  "pinyin": "kàn",
-                  "english": "",
-                  "meaning": "to read"
+                  "id": "b3l3g5-ex3-w4",
+                  "traditional": "看重",
+                  "simplified": "看重",
+                  "pinyin": "kàn zhòng",
+                  "meaning": "to regard as important"
                 },
                 {
-                  "id": "b3l3g5-e3-w7",
-                  "traditional": "重",
-                  "simplified": "重",
-                  "pinyin": "zhòng",
-                  "english": "",
-                  "meaning": "heavy"
+                  "id": "b3l3g5-ex3-w5",
+                  "traditional": "商品",
+                  "simplified": "商品",
+                  "pinyin": "shāngpǐn",
+                  "meaning": "goods"
                 },
                 {
-                  "id": "b3l3g5-e3-w8",
-                  "traditional": "商",
-                  "simplified": "商",
-                  "pinyin": "Shāng",
-                  "english": "",
-                  "meaning": "Shang Dynasty"
+                  "id": "b3l3g5-ex3-w6",
+                  "traditional": "價格",
+                  "simplified": "价格",
+                  "pinyin": "jiàgé",
+                  "meaning": "price",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g5-e3-w9",
-                  "traditional": "品",
-                  "simplified": "品",
-                  "pinyin": "pǐn",
-                  "english": "",
-                  "meaning": "article"
-                },
-                {
-                  "id": "b3l3g5-e3-w10",
-                  "traditional": "價",
-                  "simplified": "价",
-                  "pinyin": "jià",
-                  "english": "",
-                  "meaning": "price"
-                },
-                {
-                  "id": "b3l3g5-e3-w11",
-                  "traditional": "格",
-                  "simplified": "格",
-                  "pinyin": "gé",
-                  "english": "",
-                  "meaning": "used in 格登[ge1 deng1]"
-                },
-                {
-                  "id": "b3l3g5-e3-w12",
+                  "id": "b3l3g5-ex3-w7",
                   "traditional": "還",
                   "simplified": "还",
                   "pinyin": "huán",
-                  "english": "",
                   "meaning": "to return (give back)"
                 },
                 {
-                  "id": "b3l3g5-e3-w13",
-                  "traditional": "特",
-                  "simplified": "特",
-                  "pinyin": "tè",
-                  "english": "",
+                  "id": "b3l3g5-ex3-w8",
+                  "traditional": "特別",
+                  "simplified": "特别",
+                  "pinyin": "tèbié",
                   "meaning": "special"
                 },
                 {
-                  "id": "b3l3g5-e3-w14",
-                  "traditional": "別",
-                  "simplified": "别",
-                  "pinyin": "bié",
-                  "english": "",
-                  "meaning": "don't"
-                },
-                {
-                  "id": "b3l3g5-e3-w15",
+                  "id": "b3l3g5-ex3-w9",
                   "traditional": "講究",
                   "simplified": "讲究",
                   "pinyin": "jiǎngjiù",
-                  "english": "fussy about",
                   "meaning": "fussy about"
                 },
                 {
-                  "id": "b3l3g5-e3-w16",
+                  "id": "b3l3g5-ex3-w10",
                   "traditional": "環保",
                   "simplified": "环保",
                   "pinyin": "huánbǎo",
-                  "english": "environmental protection",
                   "meaning": "environmental protection"
                 },
                 {
-                  "id": "b3l3g5-e3-w17",
+                  "id": "b3l3g5-ex3-w11",
                   "traditional": "與",
                   "simplified": "与",
                   "pinyin": "yǔ",
-                  "english": "and; with",
                   "meaning": "and; with"
                 },
                 {
-                  "id": "b3l3g5-e3-w18",
-                  "traditional": "健",
-                  "simplified": "健",
-                  "pinyin": "jiàn",
-                  "english": "",
-                  "meaning": "healthy"
-                },
-                {
-                  "id": "b3l3g5-e3-w19",
-                  "traditional": "康",
-                  "simplified": "康",
-                  "pinyin": "Kāng",
-                  "english": "",
-                  "meaning": "surname Kang"
+                  "id": "b3l3g5-ex3-w12",
+                  "traditional": "健康",
+                  "simplified": "健康",
+                  "pinyin": "jiànkāng",
+                  "meaning": "healthy",
+                  "suffix": "。"
                 }
               ]
             }
@@ -6265,191 +5313,121 @@
               "traditional": "這個學期王小明很用功，考試的成績也一次比一次進步了。",
               "simplified": "这个学期王小明很用功，考试的成绩也一次比一次进步了。",
               "pinyin": "Zhège xuéqī Wáng Xiǎomíng hěn yònggōng, kǎoshì de chéngjī yě yí cì bǐ yí cì jìnbù le.",
-              "english": "Wang Xiaoming studied very hard this semester, and his test scores improved with each exam.",
+              "english": "Wang Xiaoming studied hard this semester, and his test scores improved each time.",
               "words": [
                 {
-                  "id": "b3l3g6-e1-w1",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "english": "",
+                  "id": "b3l3g6-ex1-w1",
+                  "traditional": "這個",
+                  "simplified": "这个",
+                  "pinyin": "zhè ge",
                   "meaning": "this"
                 },
                 {
-                  "id": "b3l3g6-e1-w2",
-                  "traditional": "個",
-                  "simplified": "个",
-                  "pinyin": "ge",
-                  "english": "",
-                  "meaning": "verb particle (個)"
+                  "id": "b3l3g6-ex1-w2",
+                  "traditional": "學期",
+                  "simplified": "学期",
+                  "pinyin": "xuéqí",
+                  "meaning": "semester"
                 },
                 {
-                  "id": "b3l3g6-e1-w3",
-                  "traditional": "學",
-                  "simplified": "学",
-                  "pinyin": "xué",
-                  "english": "",
-                  "meaning": "to learn"
-                },
-                {
-                  "id": "b3l3g6-e1-w4",
-                  "traditional": "期",
-                  "simplified": "期",
-                  "pinyin": "qī",
-                  "english": "",
-                  "meaning": "variant of 期[qi1]"
-                },
-                {
-                  "id": "b3l3g6-e1-w5",
+                  "id": "b3l3g6-ex1-w3",
                   "traditional": "王",
                   "simplified": "王",
                   "pinyin": "Wáng",
-                  "english": "",
                   "meaning": "surname Wang"
                 },
                 {
-                  "id": "b3l3g6-e1-w6",
+                  "id": "b3l3g6-ex1-w4",
                   "traditional": "小",
                   "simplified": "小",
                   "pinyin": "xiǎo",
-                  "english": "",
                   "meaning": "small"
                 },
                 {
-                  "id": "b3l3g6-e1-w7",
+                  "id": "b3l3g6-ex1-w5",
                   "traditional": "明",
                   "simplified": "明",
                   "pinyin": "Míng",
-                  "english": "",
                   "meaning": "Ming Dynasty"
                 },
                 {
-                  "id": "b3l3g6-e1-w8",
+                  "id": "b3l3g6-ex1-w6",
                   "traditional": "很",
                   "simplified": "很",
                   "pinyin": "hěn",
-                  "english": "",
                   "meaning": "very"
                 },
                 {
-                  "id": "b3l3g6-e1-w9",
-                  "traditional": "用",
-                  "simplified": "用",
-                  "pinyin": "yòng",
-                  "english": "",
-                  "meaning": "to use"
+                  "id": "b3l3g6-ex1-w7",
+                  "traditional": "用功",
+                  "simplified": "用功",
+                  "pinyin": "yònggōng",
+                  "meaning": "to study hard",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g6-e1-w10",
-                  "traditional": "功",
-                  "simplified": "功",
-                  "pinyin": "gōng",
-                  "english": "",
-                  "meaning": "meritorious deed or service"
+                  "id": "b3l3g6-ex1-w8",
+                  "traditional": "考試",
+                  "simplified": "考试",
+                  "pinyin": "kǎoshì",
+                  "meaning": "to take an exam"
                 },
                 {
-                  "id": "b3l3g6-e1-w11",
-                  "traditional": "考",
-                  "simplified": "考",
-                  "pinyin": "kǎo",
-                  "english": "",
-                  "meaning": "to test"
-                },
-                {
-                  "id": "b3l3g6-e1-w12",
-                  "traditional": "試",
-                  "simplified": "试",
-                  "pinyin": "shì",
-                  "english": "",
-                  "meaning": "to try"
-                },
-                {
-                  "id": "b3l3g6-e1-w13",
+                  "id": "b3l3g6-ex1-w9",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g6-e1-w14",
-                  "traditional": "成",
-                  "simplified": "成",
-                  "pinyin": "chéng",
-                  "english": "to turn into",
-                  "meaning": "to turn into"
+                  "id": "b3l3g6-ex1-w10",
+                  "traditional": "成績",
+                  "simplified": "成绩",
+                  "pinyin": "chéngjī",
+                  "meaning": "grades"
                 },
                 {
-                  "id": "b3l3g6-e1-w15",
-                  "traditional": "績",
-                  "simplified": "绩",
-                  "pinyin": "jì",
-                  "english": "",
-                  "meaning": "to spin"
-                },
-                {
-                  "id": "b3l3g6-e1-w16",
+                  "id": "b3l3g6-ex1-w11",
                   "traditional": "也",
                   "simplified": "也",
                   "pinyin": "yě",
-                  "english": "",
                   "meaning": "also"
                 },
                 {
-                  "id": "b3l3g6-e1-w17",
-                  "traditional": "一",
-                  "simplified": "一",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "one"
+                  "id": "b3l3g6-ex1-w12",
+                  "traditional": "一次",
+                  "simplified": "一次",
+                  "pinyin": "yī cì",
+                  "meaning": "first"
                 },
                 {
-                  "id": "b3l3g6-e1-w18",
-                  "traditional": "次",
-                  "simplified": "次",
-                  "pinyin": "cì",
-                  "english": "",
-                  "meaning": "measure word (times)"
-                },
-                {
-                  "id": "b3l3g6-e1-w19",
+                  "id": "b3l3g6-ex1-w13",
                   "traditional": "比",
                   "simplified": "比",
                   "pinyin": "bǐ",
-                  "english": "",
-                  "meaning": "compared to; -er than"
+                  "meaning": "to compare"
                 },
                 {
-                  "id": "b3l3g6-e1-w20",
-                  "traditional": "一",
-                  "simplified": "一",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "one"
+                  "id": "b3l3g6-ex1-w14",
+                  "traditional": "一次",
+                  "simplified": "一次",
+                  "pinyin": "yī cì",
+                  "meaning": "first"
                 },
                 {
-                  "id": "b3l3g6-e1-w21",
-                  "traditional": "次",
-                  "simplified": "次",
-                  "pinyin": "cì",
-                  "english": "",
-                  "meaning": "measure word (times)"
-                },
-                {
-                  "id": "b3l3g6-e1-w22",
+                  "id": "b3l3g6-ex1-w15",
                   "traditional": "進步",
                   "simplified": "进步",
                   "pinyin": "jìnbù",
-                  "english": "progress",
                   "meaning": "progress"
                 },
                 {
-                  "id": "b3l3g6-e1-w23",
+                  "id": "b3l3g6-ex1-w16",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "。"
                 }
               ]
             }
@@ -6461,199 +5439,121 @@
               "traditional": "這個地區因為工廠越來越多的關係，空氣一年比一年差了。",
               "simplified": "这个地区因为工厂越来越多的关系，空气一年比一年差了。",
               "pinyin": "Zhège dìqū yīnwèi gōngchǎng yuè lái yuè duō de guānxi, kōngqì yì nián bǐ yì nián chà le.",
-              "english": "Because there are more and more factories in this region, the air quality has worsened year by year.",
+              "english": "Because there are more and more factories in this area, the air gets worse year by year.",
               "words": [
                 {
-                  "id": "b3l3g6-e2-w1",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "english": "",
+                  "id": "b3l3g6-ex2-w1",
+                  "traditional": "這個",
+                  "simplified": "这个",
+                  "pinyin": "zhè ge",
                   "meaning": "this"
                 },
                 {
-                  "id": "b3l3g6-e2-w2",
-                  "traditional": "個",
-                  "simplified": "个",
-                  "pinyin": "ge",
-                  "english": "",
-                  "meaning": "verb particle (個)"
+                  "id": "b3l3g6-ex2-w2",
+                  "traditional": "地區",
+                  "simplified": "地区",
+                  "pinyin": "dìqū",
+                  "meaning": "region"
                 },
                 {
-                  "id": "b3l3g6-e2-w3",
-                  "traditional": "地",
-                  "simplified": "地",
-                  "pinyin": "de",
-                  "english": "",
-                  "meaning": "adverb marker (-ly)"
+                  "id": "b3l3g6-ex2-w3",
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "meaning": "because"
                 },
                 {
-                  "id": "b3l3g6-e2-w4",
-                  "traditional": "區",
-                  "simplified": "区",
-                  "pinyin": "qū",
-                  "english": "",
-                  "meaning": "surname Ou"
-                },
-                {
-                  "id": "b3l3g6-e2-w5",
-                  "traditional": "因",
-                  "simplified": "因",
-                  "pinyin": "yīn",
-                  "english": "",
-                  "meaning": "old variant of 因[yin1]"
-                },
-                {
-                  "id": "b3l3g6-e2-w6",
-                  "traditional": "為",
-                  "simplified": "为",
-                  "pinyin": "wèi",
-                  "english": "for",
-                  "meaning": "for"
-                },
-                {
-                  "id": "b3l3g6-e2-w7",
-                  "traditional": "工",
-                  "simplified": "工",
-                  "pinyin": "gōng",
-                  "english": "",
-                  "meaning": "work"
-                },
-                {
-                  "id": "b3l3g6-e2-w8",
-                  "traditional": "廠",
-                  "simplified": "厂",
-                  "pinyin": "chǎng",
-                  "english": "",
+                  "id": "b3l3g6-ex2-w4",
+                  "traditional": "工廠",
+                  "simplified": "工厂",
+                  "pinyin": "gōngchǎng",
                   "meaning": "factory"
                 },
                 {
-                  "id": "b3l3g6-e2-w9",
-                  "traditional": "越",
-                  "simplified": "越",
-                  "pinyin": "yuè",
-                  "english": "",
+                  "id": "b3l3g6-ex2-w5",
+                  "traditional": "越來越",
+                  "simplified": "越来越",
+                  "pinyin": "yuè lái yuè",
                   "meaning": "more and more"
                 },
                 {
-                  "id": "b3l3g6-e2-w10",
-                  "traditional": "來",
-                  "simplified": "来",
-                  "pinyin": "lái",
-                  "english": "",
-                  "meaning": "in order to; to"
-                },
-                {
-                  "id": "b3l3g6-e2-w11",
-                  "traditional": "越",
-                  "simplified": "越",
-                  "pinyin": "yuè",
-                  "english": "",
-                  "meaning": "more and more"
-                },
-                {
-                  "id": "b3l3g6-e2-w12",
+                  "id": "b3l3g6-ex2-w6",
                   "traditional": "多",
                   "simplified": "多",
                   "pinyin": "duō",
-                  "english": "",
-                  "meaning": "how; so"
+                  "meaning": "more"
                 },
                 {
-                  "id": "b3l3g6-e2-w13",
+                  "id": "b3l3g6-ex2-w7",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g6-e2-w14",
-                  "traditional": "關",
-                  "simplified": "关",
-                  "pinyin": "guān",
-                  "english": "to lock up",
-                  "meaning": "to lock up"
+                  "id": "b3l3g6-ex2-w8",
+                  "traditional": "關係",
+                  "simplified": "关系",
+                  "pinyin": "guānxì",
+                  "meaning": "relationship",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g6-e2-w15",
-                  "traditional": "係",
-                  "simplified": "系",
-                  "pinyin": "xì",
-                  "english": "",
-                  "meaning": "to connect"
+                  "id": "b3l3g6-ex2-w9",
+                  "traditional": "空氣",
+                  "simplified": "空气",
+                  "pinyin": "kōngqì",
+                  "meaning": "air"
                 },
                 {
-                  "id": "b3l3g6-e2-w16",
-                  "traditional": "空",
-                  "simplified": "空",
-                  "pinyin": "kōng",
-                  "english": "empty",
-                  "meaning": "empty"
-                },
-                {
-                  "id": "b3l3g6-e2-w17",
-                  "traditional": "氣",
-                  "simplified": "气",
-                  "pinyin": "qì",
-                  "english": "",
-                  "meaning": "gas"
-                },
-                {
-                  "id": "b3l3g6-e2-w18",
+                  "id": "b3l3g6-ex2-w10",
                   "traditional": "一",
                   "simplified": "一",
                   "pinyin": "yī",
-                  "english": "",
                   "meaning": "one"
                 },
                 {
-                  "id": "b3l3g6-e2-w19",
+                  "id": "b3l3g6-ex2-w11",
                   "traditional": "年",
                   "simplified": "年",
                   "pinyin": "nián",
-                  "english": "",
                   "meaning": "year"
                 },
                 {
-                  "id": "b3l3g6-e2-w20",
+                  "id": "b3l3g6-ex2-w12",
                   "traditional": "比",
                   "simplified": "比",
                   "pinyin": "bǐ",
-                  "english": "",
-                  "meaning": "compared to; -er than"
+                  "meaning": "to compare"
                 },
                 {
-                  "id": "b3l3g6-e2-w21",
+                  "id": "b3l3g6-ex2-w13",
                   "traditional": "一",
                   "simplified": "一",
                   "pinyin": "yī",
-                  "english": "",
                   "meaning": "one"
                 },
                 {
-                  "id": "b3l3g6-e2-w22",
+                  "id": "b3l3g6-ex2-w14",
                   "traditional": "年",
                   "simplified": "年",
                   "pinyin": "nián",
-                  "english": "",
                   "meaning": "year"
                 },
                 {
-                  "id": "b3l3g6-e2-w23",
+                  "id": "b3l3g6-ex2-w15",
                   "traditional": "差",
                   "simplified": "差",
-                  "pinyin": "chà/chā",
-                  "english": "",
-                  "meaning": "to lack"
+                  "pinyin": "chà",
+                  "meaning": "inferior; bad"
                 },
                 {
-                  "id": "b3l3g6-e2-w24",
+                  "id": "b3l3g6-ex2-w16",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "english": "",
-                  "meaning": "completion particle"
+                  "meaning": "aspect particle",
+                  "suffix": "。"
                 }
               ]
             }
@@ -6665,191 +5565,114 @@
               "traditional": "他的廚藝在不斷練習之下，做出來的菜餚一次比一次可口。",
               "simplified": "他的厨艺在不断练习之下，做出来的菜餚一次比一次可口。",
               "pinyin": "Tā de chúyì zài búduàn liànxí zhī xià, zuò chūlái de càiyáo yí cì bǐ yí cì kěkǒu.",
-              "english": "Under continuous practice of culinary skills, the dishes he prepares become more delicious every time.",
+              "english": "With continuous practice in cooking, the dishes he makes become more delicious each time.",
               "words": [
                 {
-                  "id": "b3l3g6-e3-w1",
+                  "id": "b3l3g6-ex3-w1",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
-                  "english": "",
                   "meaning": "he"
                 },
                 {
-                  "id": "b3l3g6-e3-w2",
+                  "id": "b3l3g6-ex3-w2",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g6-e3-w3",
-                  "traditional": "廚",
-                  "simplified": "厨",
-                  "pinyin": "chú",
-                  "english": "",
-                  "meaning": "kitchen"
+                  "id": "b3l3g6-ex3-w3",
+                  "traditional": "廚藝",
+                  "simplified": "厨艺",
+                  "pinyin": "chú yì",
+                  "meaning": "cooking skills"
                 },
                 {
-                  "id": "b3l3g6-e3-w4",
-                  "traditional": "藝",
-                  "simplified": "艺",
-                  "pinyin": "yì",
-                  "english": "",
-                  "meaning": "skill"
-                },
-                {
-                  "id": "b3l3g6-e3-w5",
+                  "id": "b3l3g6-ex3-w4",
                   "traditional": "在",
                   "simplified": "在",
                   "pinyin": "zài",
-                  "english": "",
                   "meaning": "in the middle of"
                 },
                 {
-                  "id": "b3l3g6-e3-w6",
+                  "id": "b3l3g6-ex3-w5",
                   "traditional": "不斷",
                   "simplified": "不断",
                   "pinyin": "búduàn",
-                  "english": "continuously",
                   "meaning": "continuously"
                 },
                 {
-                  "id": "b3l3g6-e3-w7",
-                  "traditional": "練",
-                  "simplified": "练",
-                  "pinyin": "liàn",
-                  "english": "to practice",
+                  "id": "b3l3g6-ex3-w6",
+                  "traditional": "練習",
+                  "simplified": "练习",
+                  "pinyin": "liànxí",
                   "meaning": "to practice"
                 },
                 {
-                  "id": "b3l3g6-e3-w8",
-                  "traditional": "習",
-                  "simplified": "习",
-                  "pinyin": "Xí",
-                  "english": "",
-                  "meaning": "surname Xi"
+                  "id": "b3l3g6-ex3-w7",
+                  "traditional": "之下",
+                  "simplified": "之下",
+                  "pinyin": "zhī xià",
+                  "meaning": "under",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l3g6-e3-w9",
-                  "traditional": "之",
-                  "simplified": "之",
-                  "pinyin": "zhī",
-                  "english": "possessive particle",
-                  "meaning": "possessive particle"
+                  "id": "b3l3g6-ex3-w8",
+                  "traditional": "做出",
+                  "simplified": "做出",
+                  "pinyin": "zuò chū",
+                  "meaning": "to put out"
                 },
                 {
-                  "id": "b3l3g6-e3-w10",
-                  "traditional": "下",
-                  "simplified": "下",
-                  "pinyin": "xià",
-                  "english": "",
-                  "meaning": "measure word (actions)"
-                },
-                {
-                  "id": "b3l3g6-e3-w11",
-                  "traditional": "做",
-                  "simplified": "做",
-                  "pinyin": "zuò",
-                  "english": "",
-                  "meaning": "to do"
-                },
-                {
-                  "id": "b3l3g6-e3-w12",
-                  "traditional": "出",
-                  "simplified": "出",
-                  "pinyin": "chū",
-                  "english": "",
-                  "meaning": "out; to come out"
-                },
-                {
-                  "id": "b3l3g6-e3-w13",
+                  "id": "b3l3g6-ex3-w9",
                   "traditional": "來",
                   "simplified": "来",
                   "pinyin": "lái",
-                  "english": "",
-                  "meaning": "in order to; to"
+                  "meaning": "to come"
                 },
                 {
-                  "id": "b3l3g6-e3-w14",
+                  "id": "b3l3g6-ex3-w10",
                   "traditional": "的",
                   "simplified": "的",
                   "pinyin": "de",
-                  "english": "",
                   "meaning": "possessive particle"
                 },
                 {
-                  "id": "b3l3g6-e3-w15",
-                  "traditional": "菜",
-                  "simplified": "菜",
-                  "pinyin": "cài",
-                  "english": "",
-                  "meaning": "dish (M: 盤 pán, 道 dào)"
+                  "id": "b3l3g6-ex3-w11",
+                  "traditional": "菜餚",
+                  "simplified": "菜肴",
+                  "pinyin": "cài yáo",
+                  "meaning": "vegetable and meat dishes"
                 },
                 {
-                  "id": "b3l3g6-e3-w16",
-                  "traditional": "餚",
-                  "simplified": "餚",
-                  "pinyin": "yáo",
-                  "english": "",
-                  "meaning": "variant of 肴[yao2]"
+                  "id": "b3l3g6-ex3-w12",
+                  "traditional": "一次",
+                  "simplified": "一次",
+                  "pinyin": "yī cì",
+                  "meaning": "first"
                 },
                 {
-                  "id": "b3l3g6-e3-w17",
-                  "traditional": "一",
-                  "simplified": "一",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "one"
-                },
-                {
-                  "id": "b3l3g6-e3-w18",
-                  "traditional": "次",
-                  "simplified": "次",
-                  "pinyin": "cì",
-                  "english": "",
-                  "meaning": "measure word (times)"
-                },
-                {
-                  "id": "b3l3g6-e3-w19",
+                  "id": "b3l3g6-ex3-w13",
                   "traditional": "比",
                   "simplified": "比",
                   "pinyin": "bǐ",
-                  "english": "",
-                  "meaning": "compared to; -er than"
+                  "meaning": "to compare"
                 },
                 {
-                  "id": "b3l3g6-e3-w20",
-                  "traditional": "一",
-                  "simplified": "一",
-                  "pinyin": "yī",
-                  "english": "",
-                  "meaning": "one"
+                  "id": "b3l3g6-ex3-w14",
+                  "traditional": "一次",
+                  "simplified": "一次",
+                  "pinyin": "yī cì",
+                  "meaning": "first"
                 },
                 {
-                  "id": "b3l3g6-e3-w21",
-                  "traditional": "次",
-                  "simplified": "次",
-                  "pinyin": "cì",
-                  "english": "",
-                  "meaning": "measure word (times)"
-                },
-                {
-                  "id": "b3l3g6-e3-w22",
-                  "traditional": "可",
-                  "simplified": "可",
-                  "pinyin": "kě",
-                  "english": "can",
-                  "meaning": "can"
-                },
-                {
-                  "id": "b3l3g6-e3-w23",
-                  "traditional": "口",
-                  "simplified": "口",
-                  "pinyin": "kǒu",
-                  "english": "mouth",
-                  "meaning": "mouth"
+                  "id": "b3l3g6-ex3-w15",
+                  "traditional": "可口",
+                  "simplified": "可口",
+                  "pinyin": "kě kǒu",
+                  "meaning": "tasty",
+                  "suffix": "。"
                 }
               ]
             }

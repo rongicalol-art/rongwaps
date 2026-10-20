@@ -39,6 +39,7 @@ BOOK1_AUDIO_ROOT = ROOT / 'output/official-audio/book1'
 BOOK3_AUDIO_ROOT = ROOT / 'output/official-audio/book3'
 BOOK1_INDEX = ROOT / 'content/audio/audio_index_book1.json'
 BOOK3_INDEX = ROOT / 'content/audio/audio_index_book3.json'
+BOOK1_COURSE_EXAMPLES = ROOT / 'public/data/course-examples/book-1.json'
 BOOK1_MANIFEST = ROOT / 'content/audio/audio_manifest_book1.json'
 BOOK3_MANIFEST = BOOK3_AUDIO_ROOT / 'vocabulary-manifest.json'
 REPORT_PATH = ROOT / 'output/audio/vocabulary-example-audio/alignment-report.json'
@@ -49,7 +50,7 @@ FINGERPRINT_SAMPLE_RATE = 1000
 EMISSION_CHUNK_SECONDS = 30
 EMISSION_OVERLAP_SECONDS = 1
 MIN_WORD_MATCH_SCORE = 0.68
-MIN_SEGMENT_SCORE = 0.50
+MIN_SEGMENT_SCORE = 0.64
 PINYIN_VARIANTS = {
     'shei': 'shui', 'zhei': 'zhe', 'nei': 'na', 'dei': 'de',
     'liao': 'le', 'zhongming': 'zhouming',
@@ -303,6 +304,35 @@ def source_template(item, cache):
     return cache[path]
 
 
+def manifest_files(path):
+    if not path.exists():
+        return {}
+    manifest = json.loads(path.read_text())
+    return {
+        entry['file']: entry for entry in manifest.get('files', [])
+        if isinstance(entry, dict) and isinstance(entry.get('file'), str)
+    }
+
+
+def verify_track(candidate, audio_root, expected_files):
+    expected = expected_files.get(candidate['file'])
+    if not expected:
+        raise ValueError(f"{candidate['file']} is missing from its audio source manifest")
+    if candidate.get('id') and expected.get('id') and candidate['id'] != expected['id']:
+        raise ValueError(f"{candidate['file']} file ID does not match its audio source manifest")
+    track_path = audio_root / candidate['file']
+    if not track_path.exists():
+        raise ValueError(f'Missing local track {track_path}')
+    expected_hash = expected.get('sha256')
+    if not isinstance(expected_hash, str) or len(expected_hash) != 64:
+        raise ValueError(f"{candidate['file']} has no SHA-256 in its audio source manifest")
+    with track_path.open('rb') as source:
+        actual_hash = hashlib.file_digest(source, 'sha256').hexdigest()
+    if actual_hash != expected_hash:
+        raise ValueError(f"{candidate['file']} failed its audio source SHA-256 check")
+    return actual_hash
+
+
 def classify_track(items, candidates, audio_root, source_cache, signal_cache):
     sample_items = [item for item in items if source_template(item, source_cache) is not None][:8]
     if not sample_items:
@@ -372,22 +402,27 @@ def build_alignment_segments(items):
     segments = []
     for item in items:
         word_text = clean_vocab_term(item.get('traditional') or item.get('simplified') or '')
-        word_syllables = normalize_to_syllables(word_text, item.get('pinyin'))
+        word_pinyin = item.get('pinyin')
+        word_syllables = normalize_to_syllables(word_text, word_pinyin)
         if word_syllables:
             first = len(tokens)
             tokens.extend(word_syllables)
             segments.append({
                 'kind': 'word', 'sourceCardId': item['id'], 'text': word_text,
+                'pinyinSource': 'textbook' if printed_pinyin_syllables(word_text, word_pinyin) else 'inferred',
                 'tokenStart': first, 'tokenEnd': len(tokens),
             })
         for example_index, example in enumerate(item['_examples'], start=1):
             text = str(example.get('chinese', '')).strip()
-            syllables = normalize_to_syllables(text, example.get('pinyin'))
+            example_pinyin = example.get('pinyin')
+            syllables = normalize_to_syllables(text, example_pinyin)
+            pinyin_source = 'textbook' if printed_pinyin_syllables(text, example_pinyin) else 'inferred'
             if not syllables:
                 segments.append({
                     'kind': 'example', 'sourceCardId': item['id'],
                     'exampleId': f"{item['id']}-E{example_index:02d}",
-                    'text': text, 'tokenStart': len(tokens), 'tokenEnd': len(tokens),
+                    'text': text, 'pinyinSource': pinyin_source,
+                    'tokenStart': len(tokens), 'tokenEnd': len(tokens),
                     'missingReason': 'No Mandarin syllables found in sentence text.',
                 })
                 continue
@@ -396,9 +431,48 @@ def build_alignment_segments(items):
             segments.append({
                 'kind': 'example', 'sourceCardId': item['id'],
                 'exampleId': f"{item['id']}-E{example_index:02d}",
-                'text': text, 'tokenStart': first, 'tokenEnd': len(tokens),
+                'text': text, 'pinyinSource': pinyin_source,
+                'tokenStart': first, 'tokenEnd': len(tokens),
             })
     return tokens, segments
+
+
+def han_only(text):
+    return ''.join(char for char in text if '\u3400' <= char <= '\u9fff' or '\U00020000' <= char <= '\U0002ebef')
+
+
+def load_book1_course_extras(items):
+    """Return OCR vocabulary examples that differ from the primary vocab sentence."""
+    if not BOOK1_COURSE_EXAMPLES.exists():
+        return []
+    pack = json.loads(BOOK1_COURSE_EXAMPLES.read_text())
+    item_ids = {item['id'] for item in items}
+    primary = {
+        (item['id'], han_only(example['chinese']))
+        for item in items for example in item['_examples']
+    }
+    extras = []
+    for record in pack.get('records', []):
+        if not re.fullmatch(r'.+-E\d{2}', str(record.get('id', ''))):
+            continue
+        source_card_id = record.get('sourceCardId')
+        text = str(record.get('traditional', '')).strip()
+        if source_card_id not in item_ids or not text:
+            continue
+        if (source_card_id, han_only(text)) in primary:
+            continue
+        syllables = normalize_to_syllables(text, record.get('pinyin'))
+        if not syllables:
+            continue
+        extras.append({
+            'kind': 'example',
+            'sourceCardId': source_card_id,
+            'exampleId': f"{record['id']}-ocr-extra",
+            'text': text,
+            'pinyinSource': 'textbook' if printed_pinyin_syllables(text, record.get('pinyin')) else 'inferred',
+            'syllables': syllables,
+        })
+    return extras
 
 
 def decode_for_aligner(path):
@@ -446,15 +520,150 @@ def align_segments(model, dictionary, aligner, track_path, segments, tokens, dev
             aligned.append({**segment, 'start': None, 'end': None, 'score': 0.0})
             continue
         all_states = [state for span in valid for state in span]
+        token_bounds = [
+            (min(state.start for state in span), max(state.end for state in span))
+            for span in valid
+        ]
+        max_syllable_gap = max(
+            (max(0, following[0] - previous[1]) * ratio / ALIGN_SAMPLE_RATE
+             for previous, following in zip(token_bounds, token_bounds[1:])),
+            default=0.0,
+        )
         aligned.append({
             **segment,
             'start': max(0.0, min(state.start for state in all_states) * ratio / ALIGN_SAMPLE_RATE),
             'end': min(track_duration, max(state.end for state in all_states) * ratio / ALIGN_SAMPLE_RATE),
             'score': float(np.mean([state.score for state in all_states])),
+            'maxSyllableGap': max_syllable_gap,
             'alignedSyllables': len(valid),
             'syllableCount': last - first,
+            'alignmentMethod': 'sequence',
         })
-    return aligned, track_duration
+    retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, track_duration)
+    return aligned, track_duration, emission, ratio
+
+
+def max_allowed_syllable_gap(text):
+    if len(re.findall(r'[。？！?]', text)) > 1:
+        return 5.0
+    if re.search(r'[,，、;；:：]|[A-Z]\s*:', text):
+        return 3.5
+    return 1.5
+
+
+def segment_quality_issue(segment):
+    if segment.get('alignedSyllables') != segment.get('syllableCount'):
+        return True
+    han = han_count(segment['text'])
+    duration = segment.get('end', 0) - segment.get('start', 0)
+    min_duration = max(0.30, han * 0.055)
+    max_duration = max(5.0, han * 0.72 + 1.0)
+    maximum_gap = max_allowed_syllable_gap(segment['text'])
+    return (
+        segment.get('score', 0.0) < MIN_SEGMENT_SCORE
+        or segment.get('maxSyllableGap', 0.0) > maximum_gap
+        or not min_duration <= duration <= max_duration
+    )
+
+
+def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, track_duration):
+    """Retry weak whole-track alignments inside adjacent word-anchor bounds."""
+    seconds_per_frame = ratio / ALIGN_SAMPLE_RATE
+    previous_example_end = {}
+    for index, segment in enumerate(aligned):
+        if segment.get('kind') != 'example':
+            continue
+
+        own_word = next((candidate for candidate in reversed(aligned[:index])
+                         if candidate.get('kind') == 'word'
+                         and candidate.get('sourceCardId') == segment.get('sourceCardId')),
+                        None)
+        next_word = next((candidate for candidate in aligned[index + 1:]
+                          if candidate.get('kind') == 'word'), None)
+        lower = (float(own_word['end']) + 0.04
+                 if own_word and own_word.get('end') is not None else
+                 max(0.0, float(segment.get('start') or 0.0) - 2.0))
+        if segment['sourceCardId'] in previous_example_end:
+            lower = max(lower, previous_example_end[segment['sourceCardId']] + 0.10)
+        local_upper = segment.get('_localUpper')
+        upper = (float(local_upper) - 0.04 if local_upper is not None else
+                 float(next_word['start']) - 0.04
+                 if next_word and next_word.get('start') is not None else track_duration)
+
+        if not segment_quality_issue(segment):
+            previous_example_end[segment['sourceCardId']] = float(segment['end'])
+            continue
+        if upper - lower < 0.8:
+            continue
+
+        first, last = segment['tokenStart'], segment['tokenEnd']
+        target_tokens = segment.get('_targetTokens') or tokenized[first:last]
+        if not target_tokens:
+            continue
+        low_frame = max(0, math.floor(lower / seconds_per_frame))
+        high_frame = min(emission.size(0), math.ceil(upper / seconds_per_frame))
+        syllable_count = segment['syllableCount']
+        # Search overlapping phrase-sized windows. CTC confidence then picks
+        # the occurrence within the known word-to-word section.
+        expected = max(1.6, min(9.0, syllable_count * 0.38 + 0.5))
+        window_seconds = sorted({
+            max(1.4, min(12.0, expected * scale))
+            for scale in (0.8, 1.05, 1.35, 1.7)
+        })
+        step_frames = max(1, round(0.20 / seconds_per_frame))
+        best = None
+        for seconds in window_seconds:
+            window_frames = max(1, round(seconds / seconds_per_frame))
+            if window_frames > high_frame - low_frame:
+                continue
+            latest_start = high_frame - window_frames
+            starts = list(range(low_frame, latest_start + 1, step_frames))
+            if not starts or starts[-1] != latest_start:
+                starts.append(latest_start)
+            for window_start in starts:
+                window = emission[window_start:window_start + window_frames]
+                spans = aligner(window, target_tokens)
+                valid = [span for span in spans if span]
+                if len(valid) != len(target_tokens):
+                    continue
+                states = [state for span in valid for state in span]
+                token_bounds = [
+                    (min(state.start for state in span), max(state.end for state in span))
+                    for span in valid
+                ]
+                start_frame = window_start + min(state.start for state in states)
+                end_frame = window_start + max(state.end for state in states)
+                start = start_frame * seconds_per_frame
+                end = end_frame * seconds_per_frame
+                score = float(np.mean([state.score for state in states]))
+                max_gap = max(
+                    (max(0, following[0] - previous[1]) * seconds_per_frame
+                     for previous, following in zip(token_bounds, token_bounds[1:])),
+                    default=0.0,
+                )
+                han = han_count(segment['text'])
+                duration = end - start
+                if score < MIN_SEGMENT_SCORE or max_gap > max_allowed_syllable_gap(segment['text']):
+                    continue
+                if not max(0.30, han * 0.055) <= duration <= max(5.0, han * 0.72 + 1.0):
+                    continue
+                rank = score - max_gap * 0.04
+                if best is None or rank > best['rank']:
+                    best = {
+                        'start': start, 'end': end, 'score': score,
+                        'maxSyllableGap': max_gap, 'rank': rank,
+                    }
+        if best:
+            segment.update({
+                'start': best['start'], 'end': best['end'], 'score': best['score'],
+                'maxSyllableGap': best['maxSyllableGap'],
+                'alignedSyllables': segment['syllableCount'],
+                'alignmentMethod': 'local-window',
+            })
+            print(f"    recovered {segment['exampleId']} at {best['start']:.2f}-{best['end']:.2f}s "
+                  f"(score {best['score']:.3f})", flush=True)
+        if segment.get('end') is not None:
+            previous_example_end[segment['sourceCardId']] = float(segment['end'])
 
 
 def track_reference(book_id, track, book3_track_index):
@@ -469,15 +678,15 @@ def make_audio_entry(book_id, file, score, word_segment, example_segment, next_s
     if not math.isfinite(start) or not math.isfinite(end) or end <= start:
         return None, 'invalid alignment bounds'
     han = han_count(example_segment['text'])
-    duration = end - start
     min_duration = max(0.30, han * 0.055)
     max_duration = max(5.0, han * 0.72 + 1.0)
-    if not min_duration <= duration <= max_duration:
-        return None, f'implausible sentence duration {duration:.2f}s for {han} Han characters'
     if example_segment.get('alignedSyllables') != example_segment.get('syllableCount'):
         return None, 'one or more sentence syllables did not align'
     if score < MIN_SEGMENT_SCORE:
         return None, f'alignment confidence {score:.3f} is below {MIN_SEGMENT_SCORE:.2f}'
+    maximum_gap = max_allowed_syllable_gap(example_segment['text'])
+    if example_segment.get('maxSyllableGap', 0.0) > maximum_gap:
+        return None, f"sentence alignment contains a {example_segment['maxSyllableGap']:.2f}s gap"
 
     # Add a small natural lead/tail while staying clear of the vocabulary
     # headword and the next aligned text segment.
@@ -487,6 +696,9 @@ def make_audio_entry(book_id, file, score, word_segment, example_segment, next_s
     end = min(track_duration, end + 0.14)
     if next_segment and next_segment.get('start') is not None:
         end = min(end, float(next_segment['start']) - 0.03)
+    duration = end - start
+    if not min_duration <= duration <= max_duration:
+        return None, f'implausible sentence duration {duration:.2f}s for {han} Han characters'
     if end - start < min_duration:
         return None, 'padded clip became too short after guarding adjacent audio'
 
@@ -519,6 +731,8 @@ def main():
     book1_candidates = load_book1_candidates()
     book3_tracks = load_book3_tracks()
     book3_index = json.loads(BOOK3_INDEX.read_text())
+    book1_manifest_files = manifest_files(BOOK1_MANIFEST)
+    book3_manifest_files = manifest_files(BOOK3_MANIFEST)
     word_cache = {}
     signal_cache = {}
     track_hashes = {}
@@ -536,9 +750,11 @@ def main():
                 continue
             examples = [(item, example_index, example) for item in items
                         for example_index, example in enumerate(item['_examples'], start=1)]
+            course_extras = load_book1_course_extras(items) if book_id == 1 else []
             if not examples:
-                continue
-            total_assignments += len(examples)
+                if not course_extras:
+                    continue
+            total_assignments += len(examples) + len(course_extras)
             if book_id == 1:
                 candidates = book1_candidates.get((lesson_id, part_id), [])
                 audio_root = BOOK1_AUDIO_ROOT
@@ -549,35 +765,47 @@ def main():
             if not candidates:
                 candidate_report.append({
                     'bookId': book_id, 'lessonId': lesson_id, 'partId': part_id,
-                    'expectedExamples': len(examples), 'error': 'no indexed vocabulary track',
+                    'expectedExamples': len(examples) + len(course_extras), 'error': 'no indexed vocabulary track',
                 })
                 continue
             try:
-                best, ranked = classify_track(items, candidates, audio_root, word_cache, signal_cache)
+                source_manifest = book1_manifest_files if book_id == 1 else book3_manifest_files
+                valid_candidates = []
+                candidate_hashes = {}
+                candidate_warnings = []
+                for candidate in candidates:
+                    try:
+                        candidate_hashes[candidate['file']] = verify_track(candidate, audio_root, source_manifest)
+                        valid_candidates.append(candidate)
+                    except Exception as error:
+                        candidate_warnings.append(f"{candidate['file']}: {error}")
+                if not valid_candidates:
+                    raise ValueError('; '.join(candidate_warnings) or 'No tracks passed source-manifest validation.')
+                best, ranked = classify_track(items, valid_candidates, audio_root, word_cache, signal_cache)
                 signal_cache.clear()
                 selected = best['track']
                 track_path = audio_root / selected['file']
-                if not track_path.exists():
-                    raise ValueError(f'Missing local track {track_path}')
-                track_hashes[selected['file']] = hashlib.sha256(track_path.read_bytes()).hexdigest()
+                track_hashes[selected['file']] = candidate_hashes[selected['file']]
                 candidate_report.append({
                     'bookId': book_id, 'lessonId': lesson_id, 'partId': part_id,
                     'track': selected['file'], 'strongWordMatches': best['strong'],
                     'sampleWordCount': len(best['scores']), 'meanMatchScore': round(best['meanScore'], 3),
+                    'sourceManifestVerified': True, 'candidateWarnings': candidate_warnings,
                     'candidates': [
                         {'file': entry['track']['file'], 'strongWordMatches': entry['strong'],
                          'meanMatchScore': round(entry['meanScore'], 3)}
                         for entry in ranked
                     ],
-                    'expectedExamples': len(examples),
+                    'expectedExamples': len(examples) + len(course_extras),
                 })
-                selected_groups.append((book_id, lesson_id, part_id, items, selected, track_path, len(examples)))
+                selected_groups.append((book_id, lesson_id, part_id, items, selected, track_path,
+                                        len(examples) + len(course_extras), course_extras))
                 print(f"Book {book_id} L{lesson_id:02d} P{part_id}: {selected['file']} "
                       f"({best['strong']}/{len(best['scores'])} word anchors)", flush=True)
             except Exception as error:
                 candidate_report.append({
                     'bookId': book_id, 'lessonId': lesson_id, 'partId': part_id,
-                    'expectedExamples': len(examples), 'error': str(error),
+                    'expectedExamples': len(examples) + len(course_extras), 'error': str(error),
                 })
 
     if not selected_groups:
@@ -602,12 +830,40 @@ def main():
 
     entries = {}
     segment_report = []
-    for book_id, lesson_id, part_id, items, track, track_path, expected_count in selected_groups:
+    for book_id, lesson_id, part_id, items, track, track_path, expected_count, course_extras in selected_groups:
         tokens, segments = build_alignment_segments(items)
         try:
-            aligned, track_duration = align_segments(
+            aligned, track_duration, emission, ratio = align_segments(
                 model, dictionary, aligner, track_path, segments, tokens, device,
             )
+            if course_extras:
+                word_segments = [segment for segment in aligned if segment['kind'] == 'word']
+                for extra in course_extras:
+                    own_word = next((segment for segment in word_segments
+                                     if segment['sourceCardId'] == extra['sourceCardId']), None)
+                    next_word = next((segment for segment in word_segments
+                                      if own_word and segment['tokenStart'] > own_word['tokenStart']), None)
+                    extra_tokens = []
+                    for syllable in extra['syllables']:
+                        token = [dictionary[char] for char in syllable if char in dictionary]
+                        if not token:
+                            raise ValueError(f"Course example {extra['exampleId']} has an unsupported MMS syllable: {syllable}")
+                        extra_tokens.append(token)
+                    aligned.append({
+                        'kind': 'example', 'sourceCardId': extra['sourceCardId'],
+                        'exampleId': extra['exampleId'], 'text': extra['text'],
+                        'pinyinSource': extra['pinyinSource'], 'tokenStart': 0, 'tokenEnd': 0,
+                        'start': 0.0, 'end': 0.0, 'score': 0.0, 'maxSyllableGap': 0.0,
+                        'alignedSyllables': 0, 'syllableCount': len(extra_tokens),
+                        '_targetTokens': extra_tokens,
+                        '_localUpper': next_word.get('start') if next_word else track_duration,
+                        '_nextSegment': next_word,
+                    })
+                retry_unreliable_segments(
+                    emission, ratio, aligner, aligned,
+                    [[dictionary[char] for char in token if char in dictionary] for token in tokens],
+                    track_duration,
+                )
             for index, segment in enumerate(aligned):
                 if segment['kind'] != 'example':
                     continue
@@ -615,7 +871,7 @@ def main():
                 word_segment = next((candidate for candidate in aligned
                                      if candidate['kind'] == 'word'
                                      and candidate['sourceCardId'] == segment['sourceCardId']), None)
-                next_segment = next((candidate for candidate in aligned[index + 1:]
+                next_segment = segment.get('_nextSegment') or next((candidate for candidate in aligned[index + 1:]
                                      if candidate.get('start') is not None), None)
                 file, drive_id = track_reference(book_id, track, book3_index)
                 audio, issue = make_audio_entry(
@@ -631,6 +887,7 @@ def main():
                     'audio': audio,
                     'alignment': {
                         'score': round(segment['score'], 3),
+                        'pinyinSource': segment.get('pinyinSource', 'inferred'),
                         'alignedSyllables': segment.get('alignedSyllables', 0),
                         'syllableCount': segment.get('syllableCount', 0),
                         'track': track['file'],
@@ -645,7 +902,13 @@ def main():
                     'exampleId': segment['exampleId'],
                     'bookId': book_id,
                     'track': track['file'],
+                    'start': segment['start'],
+                    'end': segment['end'],
+                    'maxSyllableGap': round(segment.get('maxSyllableGap', 0.0), 3),
+                    'wordEnd': word_segment.get('end') if word_segment else None,
+                    'nextStart': next_segment.get('start') if next_segment else None,
                     'score': round(segment['score'], 3),
+                    'pinyinSource': segment.get('pinyinSource', 'inferred'),
                     'audio': audio,
                     'issue': issue,
                 })
@@ -669,6 +932,16 @@ def main():
         'alignedAssignments': len(entries),
         'validAssignments': valid_count,
         'coverage': round(valid_count / total_assignments, 4) if total_assignments else 0,
+        'printedPinyinAssignments': sum(
+            1 for entry in entries.values() if entry['alignment'].get('pinyinSource') == 'textbook'
+        ),
+        'inferredPinyinAssignments': sum(
+            1 for entry in entries.values() if entry['alignment'].get('pinyinSource') == 'inferred'
+        ),
+        'inferredPinyinExampleIds': [
+            example_id for example_id, entry in entries.items()
+            if entry['alignment'].get('pinyinSource') == 'inferred'
+        ],
         'trackSelection': candidate_report,
         'examples': segment_report,
     }

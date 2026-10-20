@@ -4,11 +4,7 @@
  * grammar pack by `npm run content:export`. Every kind is answered by tapping, never typing.
  */
 
-/**
- * A recording of a sentence, attached by `npm run content:export` (never authored by hand): a clip
- * of the book's own track (`content/audio/grammar_book_clips.json`, with `start`/`end`) or a whole
- * studio-voice file the owner approved by ear (`content/audio/grammar_studio_audio.json`).
- */
+/** A recorded sentence clip or whole file, optionally streamed from a larger track range. */
 export interface SentenceAudio {
   voice: 'book' | 'studio';
   file: string;

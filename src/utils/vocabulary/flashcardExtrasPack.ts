@@ -20,6 +20,17 @@ export function flashcardExtrasShard(key: string): number {
   return hash % FLASHCARD_EXTRAS_SHARDS;
 }
 
+function isValidSentenceAudio(value: unknown): boolean {
+  if (!value || typeof value !== 'object') return false;
+  const audio = value as Record<string, unknown>;
+  const hasRange = 'start' in audio || 'end' in audio;
+  return (audio.voice === 'book' || audio.voice === 'studio')
+    && typeof audio.file === 'string' && audio.file.trim().length > 0
+    && (!hasRange || (typeof audio.start === 'number' && Number.isFinite(audio.start) && audio.start >= 0
+      && typeof audio.end === 'number' && Number.isFinite(audio.end) && audio.end > audio.start))
+    && (audio.cache === undefined || typeof audio.cache === 'boolean');
+}
+
 /** IndexedDB and HTTP responses are untrusted even for generated content. */
 export function isValidFlashcardExtrasRow(value: unknown): value is FlashcardExtrasRow {
   if (!value || typeof value !== 'object') return false;
@@ -29,5 +40,6 @@ export function isValidFlashcardExtrasRow(value: unknown): value is FlashcardExt
       && typeof example.pinyin === 'string' && typeof example.english === 'string'
       && typeof example.sourceCardId === 'string' && typeof example.sourceFront === 'string'
       && Number.isInteger(example.sourceBookId) && Number.isInteger(example.sourceLessonId)
-      && Number.isInteger(example.sourcePartId) && Number.isInteger(example.rank) && example.rank >= 1 && example.rank <= 5);
+      && Number.isInteger(example.sourcePartId) && Number.isInteger(example.rank) && example.rank >= 1 && example.rank <= 5
+      && (example.audio === undefined || isValidSentenceAudio(example.audio)));
 }

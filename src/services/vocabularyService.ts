@@ -115,9 +115,7 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
 
     const isCharacterLookup = cleanWords.every((word) => Array.from(word).length === 1);
     if (richExampleCards.length > 0 && isCharacterLookup) {
-      const bookThreeMatches = (await fetchVocabulary(3))
-        .filter((card) => card.examples?.some((example) => sentenceMatchesForms(example.chinese, searchTerms, resolvedPos)));
-      return includeVocabularyAudioExamples(richExampleCards, bookThreeMatches);
+      return [...new Map(richExampleCards.map((card) => [card.id, card])).values()];
     }
 
     const vocabularyMatches = (await fetchVocabulary())

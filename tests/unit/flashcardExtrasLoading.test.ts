@@ -44,3 +44,16 @@ test('corrupt derivative rows are rejected before reaching sentence rendering', 
   assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{}], wordHook: null }));
   assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [], wordHook: {} }));
 });
+
+test('optional example audio must have a usable source and a valid range', () => {
+  const example = {
+    chinese: '他是新同學。', pinyin: 'Tā shì xīn tóngxué.', english: 'He is the new classmate.',
+    sourceCardId: 'B1L01-1-02', sourceFront: '同學', sourceBookId: 1, sourceLessonId: 1,
+    sourcePartId: 1, rank: 1,
+  };
+  const audio = { voice: 'book', file: 'https://drive.usercontent.google.com/audio.mp3', start: 1.2, end: 2.4, cache: false };
+  assert.ok(isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio }], wordHook: null }));
+  assert.ok(isValidFlashcardExtrasRow({ key: 'x', examples: [example], wordHook: null }));
+  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio: { ...audio, end: 1 } }], wordHook: null }));
+  assert.ok(!isValidFlashcardExtrasRow({ key: 'x', examples: [{ ...example, audio: { ...audio, file: '' } }], wordHook: null }));
+});

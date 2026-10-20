@@ -47,6 +47,24 @@ test('falls back to vocabulary examples when no course record matches (books 2-4
   assert.equal(results[0].chinese, '我在圖書館看書。');
 });
 
+test('keeps Book 3 vocabulary recordings visible when richer Book 1 matches exist', () => {
+  const audio = { voice: 'book', file: 'https://drive.usercontent.google.com/audio.mp3', start: 3.2, end: 4.8, cache: false } as const;
+  const courseRecord = {
+    id: 'B1L01-1-02-E01', sourceCardId: 'B1L01-1-02', sourceFront: '同學', sourceMeaning: 'classmate',
+    bookId: 1, lessonId: 1, partId: 1, traditional: '他是新同學。', pinyin: 'Tā shì xīn tóngxué.',
+    english: 'He is the new classmate.', sourceOcrId: 'ocr-1', provenance: 'textbook-ocr', confidence: 'high',
+  } as const;
+  const bookThreeCard = {
+    id: 'B3L01-1-01', front: '同學', back: 'classmate', bookId: 3, lessonId: 1, partId: 1,
+    examples: [{ chinese: '她是新同學。', pinyin: 'Tā shì xīn tóngxué.', english: 'She is the new classmate.', audio }],
+  } as Flashcard;
+  const index = buildExampleIndex([courseRecord], [bookThreeCard]);
+  const results = index.lookup({
+    id: 'B3L01-1-02', front: '同學', back: 'classmate', bookId: 3, lessonId: 1, partId: 1,
+  } as Flashcard);
+  assert.ok(results.some((example) => example.sourceBookId === 3 && example.audio?.file === audio.file));
+});
+
 test('borrows pos from vocabulary so separable verbs still match', () => {
   const vocab = [
     { id: 'B2L05-1-01', front: '放假', back: 'take a holiday', bookId: 2, lessonId: 5, partId: 1, pos: 'V-sep' },
