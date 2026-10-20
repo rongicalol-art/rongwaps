@@ -17,7 +17,7 @@ This reference guide contains the **exact, immutable Character DNA Blocks** for 
 
 ## 1. Youmei (小林友美) — Japanese Student (19yo)
 **Locked Visual DNA Block:**
-> **Youmei (小林友美)**: 19-year-old female Japanese student; fair warm skin tone; sleek solid jet-black chin-length bob hair helmet with blunt horizontal bangs; round dark eyes with clean arc eyelashes and a gentle upward arc smile; slender pill-shaped torso silhouette; wearing an open coral-pink knit cardigan with soft ribbed cuffs over a crisp buttoned ivory-white collared blouse, a charcoal-gray pleated A-line skirt, white ankle socks, and rounded black loafers.
+> **Youmei (小林友美)**: 19-year-old female Japanese student; fair warm skin tone; sleek solid jet-black chin-length bob hair helmet with blunt horizontal bangs; short closed crescent eyes with no visible pupils and a gentle small upward arc smile; slender pill-shaped torso silhouette; wearing an open coral-pink knit cardigan with soft ribbed cuffs over a crisp buttoned ivory-white collared blouse, a charcoal-gray pleated A-line skirt, white ankle socks, and rounded black loafers.
 
 ---
 
@@ -137,19 +137,18 @@ Lighting & Visual Balance:
 
 ### B. Profile Picture (Avatar Portrait)
 Scene Concept: Youmei — Profile Avatar Portrait
-Tight frontal bust portrait centered from the collarbone up, optimized for a circular application icon.
+Square 1:1 frontal bust portrait centered from the collarbone up, with the shoulders fully inside the frame.
 
 Foreground & Center:
-- [Focal Character/Object]: Youmei's head and shoulders—featuring her signature dark chin-length bob with crisp horizontal bangs, subtle upturned arc smile, round dark eyes, and the visible upper lapels of her coral-pink cardigan over the clean pointed collar of her white blouse.
+- [Focal Character/Object]: Youmei's head and shoulders—featuring her signature dark chin-length bob with crisp horizontal bangs, short closed crescent eyes without pupils, a subtle upturned arc smile, and the visible upper lapels of her coral-pink cardigan over the clean pointed collar of her white blouse.
 - [Secondary Character/Props]: A single small circular cherry-blossom enamel pin clipped to the cardigan lapel, and a thin diagonal strap of her tote bag crossing the shoulder.
 
 Background & Environment:
-- The Space: A seamless, flat vibrant mint-teal circular field serving as an uncluttered backdrop.
-- Framing & Backdrops: A thin concentric white ring outline framing the outer boundary of the circular avatar zone.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Soft frontal rim lighting emphasizing the clean curve of the dark bob haircut against the contrasting bright mint-teal background.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 2. Zhongming (李中明)
@@ -174,19 +173,18 @@ Lighting & Visual Balance:
 
 ### B. Profile Picture (Avatar Portrait)
 Scene Concept: Zhongming — Profile Avatar Portrait
-Direct eye-level head-and-shoulders bust portrait centered for a circular profile avatar.
+Direct eye-level head-and-shoulders bust portrait centered in a square 1:1 frame.
 
 Foreground & Center:
 - [Focal Character/Object]: Zhongming's upper bust—featuring his signature textured wavy dark hair helmet with soft rounded curls, a broad open arc grin, warm skin tone, and the upper fold of his mustard-yellow overshirt framing a bright cyan-blue crew neckline.
 - [Secondary Character/Props]: A sleek minimalist pill-shaped earbud resting in one ear, and a subtle backpack strap arc across the left shoulder.
 
 Background & Environment:
-- The Space: A solid, punchy cobalt-blue circular field providing crisp visual separation.
-- Framing & Backdrops: A clean concentric white circular outline framing the avatar edge.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- High-contrast warm yellow and cyan focal elements set against the deep cobalt circular background, drawing the eye straight to the character's expressive face.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 3. Yiwen (王宜文)
@@ -218,12 +216,11 @@ Foreground & Center:
 - [Secondary Character/Props]: A coral-pink elastic band securing the ponytail, and a subtle curved edge of an athletic shoulder strap.
 
 Background & Environment:
-- The Space: A vibrant, solid warm apricot-orange circular field.
-- Framing & Backdrops: A clean white circular inner ring border.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Warm rim lighting catching the upward sweep of the ponytail arc, setting off the deep teal jacket against the apricot background.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 4. Guoan (馬國安)
@@ -248,19 +245,18 @@ Lighting & Visual Balance:
 
 ### B. Profile Picture (Avatar Portrait)
 Scene Concept: Guoan — Profile Avatar Portrait
-Direct frontal bust portrait centered from the chest up, optimized for a circular avatar badge.
+Direct frontal bust portrait centered from the chest up, centered within a square 1:1 frame.
 
 Foreground & Center:
 - [Focal Character/Object]: Guoan's head and upper chest—featuring neat short dark hair with a clean geometric perimeter, an earnest relaxed half-smile, sturdy neck, and the prominent rounded hood collar of his kelly-green sweatshirt framing his neck inside the dark navy jacket collar.
 - [Secondary Character/Props]: Two neat rounded white hoodie drawstrings hanging vertically down the chest center.
 
 Background & Environment:
-- The Space: A solid, energetic warm ochre-yellow circular field.
-- Framing & Backdrops: A concentric clean white outline ring framing the badge perimeter.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Bold contrast between the bright green hood and the warm yellow background, immediately identifying his athletic presence.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 5. Yuanzhen (陳元真)
@@ -292,12 +288,11 @@ Foreground & Center:
 - [Secondary Character/Props]: Subtle tiny spherical pearl stud earrings on rounded ears.
 
 Background & Environment:
-- The Space: A vibrant, soft lavender-violet solid circular background.
-- Framing & Backdrops: A thin crisp white circular border ring defining the avatar frame.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Cool cobalt tones in harmony with the warm coral scarf, creating an immediate focal read at small avatar dimensions.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 6. Jiale (高家樂)
@@ -322,19 +317,18 @@ Lighting & Visual Balance:
 
 ### B. Profile Picture (Avatar Portrait)
 Scene Concept: Jiale — Profile Avatar Portrait
-Slightly tilted, engaging bust portrait centered from the chest up for a friendly circular profile icon.
+Slightly tilted, engaging bust portrait centered from the chest up for a square 1:1 profile image.
 
 Foreground & Center:
 - [Focal Character/Object]: Jiale's head and upper chest—featuring his distinctive scalloped curls of light-brown hair, perfectly circular dark spectacle frames framing inquisitive eyes, an open welcoming smile, and the crewneck rim of his burnt-orange sweater revealing the crisp white collar tips underneath.
 - [Secondary Character/Props]: A yellow hexagonal pencil nestled into the curls beside his ear.
 
 Background & Environment:
-- The Space: A rich, solid sage-teal circular field.
-- Framing & Backdrops: A clean white concentric outer border ring.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Bright reflections glinting on the circular spectacle rims, drawing instant focus to the eyes and smile against the muted teal backdrop.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 7. Teacher Lin (林老師)
@@ -366,12 +360,11 @@ Foreground & Center:
 - [Secondary Character/Props]: The subtle top edge of a textbook spine held at chest height.
 
 Background & Environment:
-- The Space: A solid, calming dusty-lavender circular field.
-- Framing & Backdrops: A thin white concentric avatar ring border.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Soft diffused frontal lighting accentuating the comforting smile and the deep royal-blue garment tones.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 # Supporting Cast
@@ -405,12 +398,11 @@ Foreground & Center:
 - [Secondary Character/Props]: A small circular coffee-cup logo icon printed on the upper left of the yellow apron bib.
 
 Background & Environment:
-- The Space: A solid, vibrant coral-peach circular field.
-- Framing & Backdrops: A crisp white circular border ring.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Luminous warm amber highlights catching the yellow apron and smiling face, framed with joyful peach warmth.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 9. Doctor (醫生)
@@ -442,12 +434,11 @@ Foreground & Center:
 - [Secondary Character/Props]: The circular metallic chest piece of the stethoscope resting against the white coat lapel.
 
 Background & Environment:
-- The Space: A solid, soothing soft cyan-turquoise circular field.
-- Framing & Backdrops: A clean white circular inner ring border.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Bright high-key lighting enhancing the clinical freshness of the white coat against the calming turquoise circular backdrop.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 10. Mother / Parent (媽媽)
@@ -479,12 +470,11 @@ Foreground & Center:
 - [Secondary Character/Props]: A tiny silver circular locket hanging on a thin chain over the sweater collar.
 
 Background & Environment:
-- The Space: A warm apricot solid circular field.
-- Framing & Backdrops: A clean white circular border ring.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Golden-hour ambient glow illuminating the warm coral and apricot tones, creating a deeply welcoming icon.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 11. Apartment Agent (房仲)
@@ -516,12 +506,11 @@ Foreground & Center:
 - [Secondary Character/Props]: The neat diagonal loop of a lanyard strap across the collar.
 
 Background & Environment:
-- The Space: A crisp, solid sky-blue circular field.
-- Framing & Backdrops: A clean white circular frame ring.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Crisp key lighting emphasizing the sculpted hair and bright smile against the electric blue field.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 ## 12. Neighbor (鄰居)
@@ -553,12 +542,11 @@ Foreground & Center:
 - [Secondary Character/Props]: The delicate dark wire arms of her spectacles wrapping over rounded ears.
 
 Background & Environment:
-- The Space: A solid, calming dusty-sage circular field.
-- Framing & Backdrops: A clean white concentric outer border ring.
+- The Space: Fully transparent, with no backdrop shape, halo, ring, border, or frame; preserve clear space around the complete head-and-shoulders silhouette.
+- Framing & Backdrops: Square 1:1 canvas, subject centered and sized consistently; keep the whole portrait uncropped.
 
 Lighting & Visual Balance:
-- Soft luminescent rim light illuminating the silver hair against the warm background field.
-
+- Soft, even face lighting preserves the approved portrait colors and simple facial features against transparent negative space.
 ---
 
 # Dialogue Scene Composition Prompts: Batch 1 (Lessons 1–4)
@@ -748,9 +736,22 @@ Lighting & Visual Balance:
 
 ---
 
+# Scene Art Director — Locked Reading Illustration Look
+
+Apply this image-generation direction to every reading scene. The approved Lesson 1 R01 classroom illustration is the style and color anchor; the matching character portraits are identity anchors. Use the approved scene as a guide to the app's illustration language, not as a layout or pose template.
+
+- **Match the app art:** rounded, simplified forms; compact faces; clean shape edges; clear silhouettes; and the approachable feel of the existing reading illustrations. Keep character scale and facial construction consistent across scenes.
+- **Lock character identity:** use each supplied portrait as the source of truth for face proportions, eye construction, hair silhouette, skin tone, and clothing colors. Preserve the same eye shape from scene to scene; vary expression or gaze only without changing its basic construction. Youmei keeps short closed crescent eyes and a small curved smile. Rebuild characters as part of the scene: match their perspective and lighting, connect them to the floor or furniture with contact shadows, and show natural overlaps and interactions. Never paste portrait busts into a scene.
+- **Color:** use vivid, high-saturation color blocks with a clear warm/cool split. Pick one dominant cool area and one warm focal area (or reverse) for each scene; use bold coral, golden yellow, teal, cyan, cream, and navy combinations. Keep major shapes mostly one flat hue with crisp boundaries. Avoid pale, washed-out palettes and avoid using every accent color at once.
+- **Rendering:** clean flat 2D shapes with smooth curves and minimal shading. No glossy highlights, painterly texture, photorealism, 3D volume, soft-focus gradients, dramatic rim lighting, or cinematic depth.
+- **Composition:** landscape 16:9; one clear story action; 1–2 readable foreground characters; 3–5 essential props; a simplified environment. If the story needs a crowd, keep it to a few abstract silhouettes in the distance. Vary camera angle, scale, and character placement between scenes. Favor an asymmetrical layout, a purposeful diagonal, or a clear foreground-to-background path; do not repeat the same centered group pose or classroom-window layout. Keep faces large enough to preserve their approved features.
+- **Exclude:** text, letters, numerals, signs, logos, watermarks, speech bubbles, portrait frames, halos, and decorative clutter.
+
+When preparing a composition prompt, retain the exact structured format below and describe only the scene, geometry, props, and placement. Add the locked look separately when sending it to the image generator.
+
 # Reading Narrative Scene Composition Prompts
 
-A complete set of minimalist, geometric flat vector scene composition prompts for the 16 reading narratives (短文 · Reading) in Book 1. Each prompt is stripped of dialogue and narrative prose, translating the scenario strictly into rounded geometry, clear spatial positioning, and 3–5 essential visual storytelling props. Where canonical book characters appear, their established visual identities (hair silhouettes, signature color palettes, and layered attire) are strictly woven into the geometric descriptions.
+The R03 section contains Book 1's 16 reading narratives (短文 · Reading); the final section adds the missing R01/R02 scenes for Lessons 1–8. Each composition prompt is stripped of dialogue and narrative prose, translating the scenario into rounded geometry, clear spatial positioning, and a few essential storytelling props. Canonical characters keep their established visual identities.
 
 ---
 
@@ -1039,3 +1040,280 @@ Background & Environment:
 
 Lighting & Visual Balance:
 - Warm, festive crimson and golden lantern glow illuminating the vendor cart and food steam in the foreground, balanced against the crisp, brilliant midday cyan and emerald hues of the island landscape.
+
+# Book 1, Lessons 1–8: Missing R01/R02 Scene Prompts
+
+These 16 scenes translate the first two readings per lesson into uncluttered visual compositions. Keep character designs consistent with the portrait prompts above. Do not add written text, labels, signs, or dialogue.
+
+- [Lesson 1: R01 — A New Classmate](#r01--a-new-classmate)
+- [Lesson 1: R02 — Names and Home Countries](#r02--names-and-home-countries)
+- [Lesson 2: R01 — Monday Plans](#r01--monday-plans)
+- [Lesson 2: R02 — Birthday Invitation](#r02--birthday-invitation)
+- [Lesson 3: R01 — Choosing Birthday Gifts](#r01--choosing-birthday-gifts)
+- [Lesson 3: R02 — Picking Two Pencils](#r02--picking-two-pencils)
+- [Lesson 4: R01 — Choosing a Quieter Restaurant](#r01--choosing-a-quieter-restaurant)
+- [Lesson 4: R02 — Ordering at the Counter](#r02--ordering-at-the-counter)
+- [Lesson 5: R01 — Planning Afternoon Tea](#r01--planning-afternoon-tea)
+- [Lesson 5: R02 — The Wallet Under the Book](#r02--the-wallet-under-the-book)
+- [Lesson 6: R01 — Finding a Sport for Everyone](#r01--finding-a-sport-for-everyone)
+- [Lesson 6: R02 — Picking a Day to Cycle](#r02--picking-a-day-to-cycle)
+- [Lesson 7: R01 — Planning the Route](#r01--planning-the-route)
+- [Lesson 7: R02 — Finding the Hotel on the Map](#r02--finding-the-hotel-on-the-map)
+- [Lesson 8: R01 — Talking About Clothes](#r01--talking-about-clothes)
+- [Lesson 8: R02 — Trying on Pants Before Closing](#r02--trying-on-pants-before-closing)
+
+## Lesson 1: 自我介紹 · Self-Introduction
+
+### R01 — A New Classmate
+Scene Concept: First Day, New Friend
+A wide eye-level classroom view of Yiwen and Youmei sharing a warm first introduction across a classroom desk.
+
+Foreground & Center:
+- [Focal Character/Object]: Yiwen sits at the left side of the shared desk in her deep-teal track jacket, turning toward Youmei with an open-hand welcome; her high black ponytail sweeps upward and her eyes keep their alert, clean arc shape.
+- [Secondary Character/Props]: Youmei sits at the right side in her coral cardigan and ivory blouse, hands resting beside one open blank notebook; her blunt-banged bob, short closed crescent eyes, and small curved smile match her portrait.
+
+Background & Environment:
+- The Space: Quiet classroom with one broad shared desk plane and simple chair backs, all in the same perspective as the two students.
+- Framing & Backdrops: A large classroom window fills the upper-right background with distant green hills; clean navy wall planes hold the left side, with no extra people.
+
+Lighting & Visual Balance:
+- A strong diagonal of golden window light crosses the cool navy classroom and lands on the open notebook between them, linking the two classmates without a halo or circular frame.
+
+### R02 — Names and Home Countries
+Scene Concept: A Globe Between Classmates
+A medium three-quarter view of Zhongming and Youmei meeting beside a classroom window, sharing a friendly greeting.
+
+Foreground & Center:
+- [Focal Character/Object]: Zhongming in a mustard overshirt and cyan shirt gives a small greeting wave; Youmei, in her signature coral cardigan, answers with a relaxed smile.
+- [Secondary Character/Props]: A small globe showing Japan, Indonesia, and Taiwan as simple colored regions; two school bags beside a bench.
+
+Background & Environment:
+- The Space: Calm classroom corner with a long window ledge and two rounded stools.
+- Framing & Backdrops: Open window framing a few soft mountain silhouettes, with no lettering or flags.
+
+Lighting & Visual Balance:
+- Gentle warm light between the pair; cool blue-green window tones hold the outer edges.
+
+## Lesson 2: 星期一的行程 · Monday Schedule
+
+### R01 — Monday Plans
+Scene Concept: Monday Morning Departure
+A side-on view of Zhongming preparing for the day as his mother checks in from the home doorway.
+
+Foreground & Center:
+- [Focal Character/Object]: Zhongming, in his mustard overshirt and cyan shirt, packs books into a soft rectangular bag beside a round wall clock.
+- [Secondary Character/Props]: His mother stands in the doorway with a supportive expression; a library book stack and a lunch container sit on the entry table.
+
+Background & Environment:
+- The Space: Simple home entry between a quiet living room and the open front door.
+- Framing & Backdrops: The doorway reveals a clean morning sky; the clock hands suggest an early start without numbers.
+
+Lighting & Visual Balance:
+- Morning gold enters from the door and crosses into cool indoor tones, linking home, library, and school items.
+
+### R02 — Birthday Invitation
+Scene Concept: A Birthday Invitation
+A low three-quarter view of Yiwen offering Youmei a birthday invitation and small gift across a courtyard bench.
+
+Foreground & Center:
+- [Focal Character/Object]: Yiwen leans in from one side of the bench, holding out a small wrapped gift and a blank invitation card; her ponytail and deep-teal track jacket keep her silhouette clear.
+- [Secondary Character/Props]: Youmei turns toward Yiwen to accept the invitation, her coral cardigan and dark bob distinct against the cool courtyard; one spare school bag rests beside the bench as a quiet hint of another invited classmate.
+
+Background & Environment:
+- The Space: School courtyard at the end of class, with the bench and a broad diagonal strip of open paving.
+- Framing & Backdrops: Simple shrubs and a low classroom wall recede into deep blue-green shade; no extra people, decorative arch, or text.
+
+Lighting & Visual Balance:
+- A vivid coral-orange light patch lands on the exchanged gift and card while cool blue paving and teal shadows hold the outer edges.
+
+## Lesson 3: 友美的生日 · Youmei’s Birthday
+
+### R01 — Choosing Birthday Gifts
+Scene Concept: Three Gift Ideas
+A slightly elevated view of Yiwen and Zhongming planning gifts for Youmei at a school table.
+
+Foreground & Center:
+- [Focal Character/Object]: Yiwen leans over two Chinese books while Zhongming points toward a large cake sketch represented only by a blank cake-shaped card.
+- [Secondary Character/Props]: Two neat books, a small bouquet, and a round cake with a single candle arranged as three gift ideas.
+
+Background & Environment:
+- The Space: Quiet study area with a broad shared table and two rounded chairs.
+- Framing & Backdrops: A simple classroom window and shelf recede softly behind them.
+
+Lighting & Visual Balance:
+- Warm highlight pools over the gifts, balanced by cool blue-green classroom planes.
+
+### R02 — Picking Two Pencils
+Scene Concept: The White Pencil
+A close three-quarter view of Yiwen and Zhongming choosing two cute pencils at a stationery counter.
+
+Foreground & Center:
+- [Focal Character/Object]: Yiwen compares a red pencil and a white pencil; Zhongming smiles and indicates the white one, thinking of Youmei.
+- [Secondary Character/Props]: Two oversized simple pencils, a small coin purse, and a shallow display tray.
+
+Background & Environment:
+- The Space: Minimal stationery shop counter with rounded display bins and a clean wall shelf.
+- Framing & Backdrops: Repeating pencil silhouettes form a sparse backdrop, without labels or price text.
+
+Lighting & Visual Balance:
+- The red pencil gives one warm accent; the selected white pencil catches soft light against cool shop colors.
+
+## Lesson 4: 選餐廳與點餐 · Choosing and Ordering
+
+### R01 — Choosing a Quieter Restaurant
+Scene Concept: Finding the Quiet Table
+A wide street-side view of Zhongming and Youmei deciding between a crowded café and a quieter noodle shop on a hot day.
+
+Foreground & Center:
+- [Focal Character/Object]: Youmei gestures toward the calm noodle shop; Zhongming nods, looking relieved and hungry.
+- [Secondary Character/Props]: A crowded doorway with a few overlapping silhouettes, a clear quiet doorway, and a small bowl of beef noodles on a stand.
+
+Background & Environment:
+- The Space: Simple sidewalk connecting two compact storefronts under a high summer sun.
+- Framing & Backdrops: Rounded awnings distinguish the busy and quiet restaurants; no readable signs.
+
+Lighting & Visual Balance:
+- Hot amber sun overhead contrasts with cool shade at the chosen restaurant, guiding the eye to the noodles.
+
+### R02 — Ordering at the Counter
+Scene Concept: Order at the Counter
+A three-quarter side view of Zhongming ordering from a friendly café worker across a broad counter.
+
+Foreground & Center:
+- [Focal Character/Object]: Zhongming reaches forward with payment as the cafe worker passes back a small change tray; their faces and hands meet across the counter.
+- [Secondary Character/Props]: Two steaming beef-noodle bowls, an amber tea, a green tea, and a simple numberless register form a compact row along the counter.
+
+Background & Environment:
+- The Space: Compact noodle shop with a counter cutting diagonally across the foreground and one open kitchen arch behind the worker.
+- Framing & Backdrops: A few clean teal kitchen planes and a short stack of bowls create depth without extra people or clutter.
+
+Lighting & Visual Balance:
+- Saturated amber and coral warmth gathers around the food and exchange, balanced by cool cyan-teal kitchen shadows.
+
+## Lesson 5: 週末安排與找錢包 · Weekend Plans and a Lost Wallet
+
+### R01 — Planning Afternoon Tea
+Scene Concept: Afternoon Tea Plans
+A relaxed two-shot of Zhongming and Youmei arranging a Saturday afternoon tea outing.
+
+Foreground & Center:
+- [Focal Character/Object]: Zhongming invites Youmei with an easy gesture; she smiles while holding a closed book and a small music player.
+- [Secondary Character/Props]: A miniature café table with three colorful ice-cream scoops, a round clock set to mid-afternoon, and two cups.
+
+Background & Environment:
+- The Space: Quiet campus walkway with a low planter and a café visible in the distance.
+- Framing & Backdrops: A wide arch of sunlit trees softly frames the café entrance.
+
+Lighting & Visual Balance:
+- Warm afternoon light leads from the book and music player to the shared ice cream; cool greens keep the scene restful.
+
+### R02 — The Wallet Under the Book
+Scene Concept: The Wallet Revealed
+A lively living-room view of Zhongming searching for his wallet while his mother points toward his room.
+
+Foreground & Center:
+- [Focal Character/Object]: Zhongming lifts a book and discovers his wallet beneath it, his worried face changing to relief; his mother stands nearby, ready to leave for the kitchen.
+- [Secondary Character/Props]: A sofa, a low table with a different wallet, and one thick book partly covering Zhongming’s wallet.
+
+Background & Environment:
+- The Space: Simple living room opening toward a bedroom door and kitchen arch.
+- Framing & Backdrops: Clear floor and furniture silhouettes keep the search readable.
+
+Lighting & Visual Balance:
+- A small warm highlight lands on the found wallet while cooler room colors frame the reveal.
+
+## Lesson 6: 選運動與約時間 · Choosing Sports and a Time
+
+### R01 — Finding a Sport for Everyone
+Scene Concept: A Shared Sport by the Sea
+A wide beach-side view of Guoan and Youmei settling on tennis as a shared activity.
+
+Foreground & Center:
+- [Focal Character/Object]: Guoan, in his green hoodie and navy jacket, gestures toward the water; Youmei, in her coral cardigan, stands beside him holding a tennis racket and ball.
+- [Secondary Character/Props]: A pair of running shoes and calm ocean waves contrast with the tennis gear, showing their final activity choice.
+
+Background & Environment:
+- The Space: Open beach promenade with a low rail and gentle wave arcs.
+- Framing & Backdrops: Rounded coastal hills and a clear sky; no extra beach crowds.
+
+Lighting & Visual Balance:
+- Cool sea blues balance warm sand; the yellow tennis ball becomes the focal point.
+
+### R02 — Picking a Day to Cycle
+Scene Concept: The Bike Ride Invitation
+A diagonal living-room view of Guoan inviting Zhongming to cycle while Zhongming relaxes on the sofa with music.
+
+Foreground & Center:
+- [Focal Character/Object]: Guoan stands beside a full bicycle angled across the foreground, extending one hand toward Zhongming; Zhongming reclines on the sofa with headphones and a sleepy expression.
+- [Secondary Character/Props]: A small music player, one rounded floor lamp, and a simple wall clock without numerals.
+
+Background & Environment:
+- The Space: Simple living room with an open floor strip between the entrance and one rounded sofa.
+- Framing & Backdrops: A broad window shows cool evening clouds; no extra people or clutter.
+
+Lighting & Visual Balance:
+- Cool indigo and cyan twilight fill the window side, balanced by a vivid warm coral-orange lamp pool around Zhongming; the bicycle bridges both color zones.
+
+## Lesson 7: 去天美飯店 · Going to Tianmei Hotel
+
+### R01 — Planning the Route
+Scene Concept: Picking a Route
+An eye-level view of Youmei and Yuanzhen planning their trip before class begins.
+
+Foreground & Center:
+- [Focal Character/Object]: Yuanzhen holds an unfolded map while Youmei compares a simple walking path, bus, and MRT route using three clear gesture points.
+- [Secondary Character/Props]: A small hotel-shaped landmark, a school bag, and a classroom bell mounted high on the wall.
+
+Background & Environment:
+- The Space: Classroom doorway opening onto a quiet corridor.
+- Framing & Backdrops: Minimal route lines on the map have no labels; the open doorway cues class time.
+
+Lighting & Visual Balance:
+- Cool map blues draw focus, with a warm light patch at the classroom entrance.
+
+### R02 — Finding the Hotel on the Map
+Scene Concept: Tracing the MRT Way
+A top-down three-quarter view of Yuanzhen and Youmei studying a map and choosing the MRT.
+
+Foreground & Center:
+- [Focal Character/Object]: Yuanzhen traces the route with one finger while Youmei points to the hotel beside two simple landmark icons.
+- [Secondary Character/Props]: Folded map, small post-office box shape, supermarket basket icon, and a model MRT train.
+
+Background & Environment:
+- The Space: Quiet table beside a large window, with the city suggested in a few block shapes.
+- Framing & Backdrops: Two route options curve across the map; the MRT route is visually clearest, with no words.
+
+Lighting & Visual Balance:
+- Warm light emphasizes the chosen MRT path; cool city shapes recede into the background.
+
+## Lesson 8: 逛百貨公司 · Shopping at a Department Store
+
+### R01 — Talking About Clothes
+Scene Concept: Complimenting a Skirt
+A friendly two-shot of Yiwen admiring Yuanzhen’s skirt and discussing a summer shopping trip.
+
+Foreground & Center:
+- [Focal Character/Object]: Yuanzhen stands in a neat skirt and cobalt top; Yiwen smiles and gestures toward the skirt, relaxed and reassured.
+- [Secondary Character/Props]: A hanging summer blouse, a folded pair of trousers, and a simple department-store shopping bag.
+
+Background & Environment:
+- The Space: Department-store entrance with clean display plinths and a broad glass doorway.
+- Framing & Backdrops: Sparse mannequins in the distance suggest a famous clothing store without logos or text.
+
+Lighting & Visual Balance:
+- Soft warm display light highlights the skirt and summer clothes against cool glass and stone tones.
+
+### R02 — Trying on Pants Before Closing
+Scene Concept: Downstairs Before Closing
+A wide department-store view of Yiwen and Yuanzhen beside two pants displays and an open elevator.
+
+Foreground & Center:
+- [Focal Character/Object]: Yiwen holds the yellow trousers against herself and glances at their short hem; Yuanzhen gestures toward the open elevator, ready to head downstairs.
+- [Secondary Character/Props]: A pair of black shoes on a low display, an analog clock nearing closing time, and open elevator doors.
+
+Background & Environment:
+- The Space: Clean clothing floor with one fitting-room arch and a broad elevator lobby.
+- Framing & Backdrops: A gentle down-leading floor line guides the eye toward the elevator; no signs or text.
+
+Lighting & Visual Balance:
+- Warm yellow and blue garments anchor the foreground; cool elevator light draws the eye toward the next floor.
