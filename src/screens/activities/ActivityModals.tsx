@@ -91,10 +91,10 @@ export function ActivityModals({
   const showContent = phase === 'ready' || hasRevealed.current;
   const isSessionLoading = isPracticeSession && !showContent;
 
-  // Flashcards and quiz are focused sessions on one lesson part: no mode dock. Independent
-  // study (several lessons picked on Books) keeps the dock so every mode is one tap away.
+  // Lesson-part practice stays focused like quiz, while multi-lesson study keeps the dock.
+  const isLessonPartFocused = isLessonWindowOpen && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
   const isIndependentStudy = selectedLessons.length > 1 && !isReviewSession && !effectiveLibraryMode;
-  const hasDock = isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
+  const hasDock = !isLessonPartFocused && (isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz'));
   useEffect(() => {
     if (isPracticeSession && !isLoadingDeck) {
       return preloadRemainingPracticeChunks(resolvedActivity, hasDock);
@@ -222,6 +222,7 @@ export function ActivityModals({
                   accentBgClassName={activeBook.accentBg}
                   activeBookId={activeBookId}
                   studyParts={visibleStudyParts}
+                  isLessonPartFocused={isLessonPartFocused}
                   onSelectStudyPart={selectStudyPart}
                   onToggleStudyPart={toggleStudyPart}
                   onClose={handleClose}

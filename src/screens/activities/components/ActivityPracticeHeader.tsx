@@ -11,6 +11,7 @@ interface ActivityPracticeHeaderProps {
   isOverlayOpen: boolean;
   accentBgClassName: string;
   studyParts: CourseLessonPartProgress[];
+  isLessonPartFocused?: boolean;
   onSelectStudyPart: (partId: number) => void;
   onToggleStudyPart: (partId: number) => void;
   onClose: () => void;
@@ -26,6 +27,7 @@ export function ActivityPracticeHeader({
   isOverlayOpen,
   accentBgClassName,
   studyParts,
+  isLessonPartFocused = false,
   onSelectStudyPart,
   onToggleStudyPart,
   onClose,
@@ -42,9 +44,9 @@ export function ActivityPracticeHeader({
 
   if (activeActivity === 'create-card') return null;
 
-  // Flashcards and quiz stay on one part: no part rail to switch mid-round. Flashcards get quiet muted controls.
+  // Lesson-part practice stays on one part; independent study can switch parts mid-round.
   const isFlashcards = resolvedActivity === 'flashcards';
-  const isPartFocused = isFlashcards || resolvedActivity === 'quiz';
+  const isPartFocused = isLessonPartFocused || isFlashcards || resolvedActivity === 'quiz';
 
   return (
     <div className={cn('absolute top-0 left-0 right-0 z-activity-header', isOverlayOpen && 'invisible', insetClassName)}>
