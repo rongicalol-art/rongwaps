@@ -151,12 +151,20 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
     });
   }, [bookId, completedPageIds, lesson.id, lesson.parts, lessonReadings]);
 
+  const dialogueIllustrations = lessonReadings
+    .filter((reading) => reading.dialogueNumber <= 2)
+    .sort((a, b) => a.dialogueNumber - b.dialogueNumber)
+    .map((reading) => getReadingIllustration(reading.id)?.url)
+    .filter((url): url is string => Boolean(url));
   const lastReading = lessonReadings[lessonReadings.length - 1];
   const illustration = lastReading ? getReadingIllustration(lastReading.id)?.url : undefined;
-  const imageSrc = readings === null
+  const fallback = lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id];
+  const imageSrcs = readings === null
     ? null
-    : illustration ?? (lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id]);
+    : dialogueIllustrations.length === 2
+      ? dialogueIllustrations
+      : [illustration ?? fallback];
 
   /** False when falling back to small icon-style lesson art. */
-  return { parts, imageSrc, isIllustration: Boolean(illustration) };
+  return { parts, imageSrcs, isIllustration: dialogueIllustrations.length === 2 || Boolean(illustration) };
 }

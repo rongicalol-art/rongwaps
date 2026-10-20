@@ -43,8 +43,8 @@ const READING_ILLUSTRATIONS: Record<string, ReadingIllustration> = {
     alt: 'A worker serves Zhongming and Youmei two bowls of beef noodles and tea.',
   },
   'B1L05-R01': {
-    url: new URL('../assets/images/readings/b1l05-r01-planning-afternoon-tea-v5.webp', import.meta.url).href,
-    alt: 'Zhongming shows Youmei an ice cream photo and invites her for afternoon tea.',
+    url: new URL('../assets/images/readings/b1l05-r01-planning-afternoon-tea-v6.webp', import.meta.url).href,
+    alt: 'Zhongming shows Youmei an ice cream photo as she considers his afternoon-tea invitation.',
   },
   'B1L05-R02': {
     url: new URL('../assets/images/readings/b1l05-r02-wallet-under-the-book-v5.webp', import.meta.url).href,

@@ -6,7 +6,7 @@ const SWIPE_PX = 40;
 
 interface LessonPictureProps {
   /** Null while the reading pack is resolving the final lesson artwork. */
-  src: string | null;
+  srcs: string[] | null;
   /** Icon-style fallback art is shown whole and centred instead of filling the frame. */
   isIcon?: boolean;
   /** Swipe left (+1) or right (-1) changes the part. */
@@ -14,8 +14,8 @@ interface LessonPictureProps {
   className?: string;
 }
 
-/** The lesson's reading illustration at 16:9; nothing overlays it. */
-export function LessonPicture({ src, isIcon = false, onSwipe, className }: LessonPictureProps) {
+/** A single lesson scene or a paired R01/R02 banner; nothing overlays the art. */
+export function LessonPicture({ srcs, isIcon = false, onSwipe, className }: LessonPictureProps) {
   const startX = useRef<number | null>(null);
   const frame = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -49,18 +49,24 @@ export function LessonPicture({ src, isIcon = false, onSwipe, className }: Lesso
       }}
       onPointerUp={handleUp}
       onPointerCancel={() => { startX.current = null; }}
-      className={cn('relative aspect-video w-full shrink-0 touch-pan-y select-none overflow-hidden bg-ui-hover', className)}
+      className={cn('relative w-full shrink-0 touch-pan-y select-none overflow-hidden bg-ui-hover', srcs?.length === 2 ? 'aspect-[32/9]' : 'aspect-video', className)}
     >
-      {src && (
+      {srcs?.length === 2 ? (
+        <div className="grid h-full grid-cols-2 gap-px bg-ui-canvas">
+          {srcs.map((src) => (
+            <img key={src} src={src} alt="" draggable={false} loading="eager" fetchPriority="high" className="h-full w-full object-cover object-center" />
+          ))}
+        </div>
+      ) : srcs?.[0] ? (
         <img
-          src={src}
+          src={srcs[0]}
           alt=""
           draggable={false}
           loading="eager"
           fetchPriority="high"
           className={isIcon ? 'h-full w-full object-contain p-10' : cn('h-full w-full object-cover object-center', lean && 'transition-transform duration-[1100ms] ease-out [transform:scale(1.05)_translate(var(--lean-x,0px),var(--lean-y,0px))]')}
         />
-      )}
+      ) : null}
     </div>
   );
 }

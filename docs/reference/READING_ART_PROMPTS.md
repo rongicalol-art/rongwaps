@@ -136,8 +136,8 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 ### B1L05-R01 — A delicious invitation
 
 - Cast references: `zhongming.webp`, `youmei.webp`.
-- Scene prompt: On a campus bench, Zhongming invites Youmei for Saturday afternoon tea, showing her a phone with a single unlettered photograph of chocolate ice cream. Youmei pauses her reading, lowering one headphone cup with a delighted look. Keep both characters physically together; the café treat is an image on his phone, not an event already happening. A broad curved bench and the open book create a lively foreground rhythm. Teal foliage, golden sunlight and a coral bench accent. Use a medium three-quarter view; the phone is secondary to their expressions, with no app interface or readable text.
-- Facial acting: Zhongming’s invitation is playful; Youmei is pleasantly surprised.
+- Scene prompt: On a campus bench, Zhongming invites Youmei for Saturday afternoon tea, showing her a phone with a single unlettered photograph of chocolate ice cream. Youmei pauses her reading and lowers one headphone cup, considering his invitation with quiet interest. Keep both characters physically together; the café treat is an image on his phone, not an event already happening. A broad curved bench and the open book create a lively foreground rhythm. Teal foliage, golden sunlight and a coral bench accent. Use a medium three-quarter view; the phone is secondary to their expressions, with no app interface or readable text.
+- Facial acting: Zhongming eagerly shares the idea while Youmei considers it with quiet interest.
 
 ### B1L05-R02 — Found under the book
 

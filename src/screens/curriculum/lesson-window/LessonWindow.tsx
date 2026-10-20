@@ -182,7 +182,7 @@ function LessonBody({
   onOpenGrammarPart,
   onOpenReadingPart,
 }: BodyProps) {
-  const { parts, imageSrc, isIllustration } = useLessonWindowParts(bookId, lesson);
+  const { parts, imageSrcs, isIllustration } = useLessonWindowParts(bookId, lesson);
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
 
@@ -304,7 +304,7 @@ function LessonBody({
         >
           <div className="flex flex-col">
             {backButton}
-            <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="rounded-modal" />
+            <LessonPicture srcs={imageSrcs} isIcon={!isIllustration} onSwipe={swipe} className="rounded-modal" />
             <PartTabs
               parts={parts}
               selectedPartIds={selectedPartIds}
@@ -330,7 +330,7 @@ function LessonBody({
         <div className="mx-auto w-full max-w-xl">
           <div className="px-4 pt-3">
             {backButton}
-            <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="max-h-[38vh] rounded-modal" />
+            <LessonPicture srcs={imageSrcs} isIcon={!isIllustration} onSwipe={swipe} className="max-h-[38vh] rounded-modal" />
           </div>
           <PartTabs
             parts={parts}
