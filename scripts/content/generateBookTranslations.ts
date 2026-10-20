@@ -1,8 +1,11 @@
 /**
- * generateBook2Translations.ts
+ * generateBookTranslations.ts
  *
  * Generates beginner-aligned, textbook-structured Pinyin and English translations
- * for all Book 2 vocabulary example sentences (600 items).
+ * for vocabulary example sentences in Book 1, 2, 3, or 4.
+ *
+ * Usage:
+ *   npx tsx scripts/content/generateBookTranslations.ts 3
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -10,9 +13,6 @@ import { resolve } from 'node:path';
 import { resolveProvider, generateJson } from '../memory-hooks/provider';
 
 const ROOT = resolve(import.meta.dirname, '../..');
-const BOOK_2_PATH = resolve(ROOT, 'public/data/vocabulary/book-2.json');
-const PROGRESS_PATH = resolve(ROOT, 'output/book-2-translations-progress.json');
-const FINAL_PATH = resolve(ROOT, 'content/vocabulary/book-2-examples.json');
 
 interface VocabItem {
   id: string;
@@ -28,20 +28,29 @@ interface ExampleTranslation {
   english: string;
 }
 
-const SYSTEM_PROMPT = `You are the lead pedagogical translator for "Modern Chinese" (時代華語 Book 2), a university Mandarin Chinese textbook series.
-Your task is to provide accurate Hanyu Pinyin (with tone marks) and beginner/intermediate (A2) English translations for textbook vocabulary example sentences.
+async function main() {
+  const bookArg = process.argv[2] ? parseInt(process.argv[2], 10) : 3;
+  if (![1, 2, 3, 4].includes(bookArg)) {
+    throw new Error(`Invalid book number: ${bookArg}. Expected 1, 2, 3, or 4.`);
+  }
+
+  const bookPath = resolve(ROOT, `public/data/vocabulary/book-${bookArg}.json`);
+  const progressPath = resolve(ROOT, `output/book-${bookArg}-translations-progress.json`);
+  const finalPath = resolve(ROOT, `content/vocabulary/book-${bookArg}-examples.json`);
+
+  const systemPrompt = `You are the lead pedagogical translator for "Modern Chinese" (時代華語 Book ${bookArg}), a university Mandarin Chinese textbook series.
+Your task is to provide accurate Hanyu Pinyin (with tone marks) and learner-aligned English translations for textbook vocabulary example sentences.
 
 RULES FOR TRANSLATION:
 1. TARGET WORD LOCK: The English translation MUST incorporate the exact target meaning/lemma defined for the vocabulary word. Never replace the target word with an unrelated synonym that hides its meaning from the learner.
 2. STRUCTURAL ISOMORPHISM: Mirror the Chinese clause order where natural in English (Time/Condition clause first -> Main clause; Topic -> Comment; Reason -> Result; Prepositional phrase -> action). Do not unnecessarily flip sentence order.
 3. PINYIN WITH TONES: Use standard tone-marked Hanyu Pinyin with standard spacing and capitalization (capitalize proper names like Táiwān, Měiguó, and first letter of sentence/speaker turns like A: ... B: ...).
-4. TRANSPARENT GRAMMAR: Reflect grammatical particles (e.g. 了, 著, 過, 吧, 嗎, 把, 被, 跟, 在, 到, 起來) clearly so learners see how the sentence works.
-5. NATURAL YET CLEAR: Use clear, natural, beginner-accessible English without awkward literalisms or overly loose colloquialisms.
+4. TRANSPARENT GRAMMAR: Reflect grammatical particles (e.g. 了, 著, 過, 吧, 嗎, 把, 被, 跟, 在, 到, 起來, 得) clearly so learners see how the sentence works.
+5. NATURAL YET CLEAR: Use clear, natural, learner-accessible English without awkward literalisms or overly loose colloquialisms.
 
 Format: Return a JSON object with a "translations" array containing objects with "id", "pinyin", and "english".`;
 
-async function main() {
-  const pack = JSON.parse(readFileSync(BOOK_2_PATH, 'utf8')) as { items: VocabItem[] };
+  const pack = JSON.parse(readFileSync(bookPath, 'utf8')) as { items: VocabItem[] };
   const rawItems = pack.items.filter((item) => {
     if (!item.examples) return false;
     if (typeof item.examples === 'string') return Boolean(item.examples.trim());
@@ -51,15 +60,33 @@ async function main() {
     word: item.traditional || '',
     meaning: item.meaning || '',
     pos: item.pos || '',
-    chinese: typeof item.examples === 'string' ? item.examples.trim() : (item.examples as Array<{ chinese: string }>)[0]?.chinese || '',
+    chinese: (() => {
+      if (typeof item.examples === 'string') {
+        const trimmed = item.examples.trim();
+        if (trimmed.startsWith('[')) {
+          try {
+            const arr = JSON.parse(trimmed) as Array<{ chinese?: string }>;
+            return arr.map((x) => {
+              let c = (x.chinese || '').trim();
+              if (c && !/[。！？…]$/.test(c)) c += '。';
+              return c;
+            }).join('');
+          } catch {
+            return trimmed;
+          }
+        }
+        return trimmed;
+      }
+      return (item.examples as Array<{ chinese: string }>)[0]?.chinese || '';
+    })(),
   }));
 
-  console.log(`Book 2 has ${rawItems.length} items with example sentences.`);
+  console.log(`Book ${bookArg} has ${rawItems.length} items with example sentences.`);
 
   let progress: Record<string, ExampleTranslation> = {};
-  if (existsSync(PROGRESS_PATH)) {
+  if (existsSync(progressPath)) {
     try {
-      progress = JSON.parse(readFileSync(PROGRESS_PATH, 'utf8'));
+      progress = JSON.parse(readFileSync(progressPath, 'utf8'));
     } catch {
       progress = {};
     }
@@ -69,8 +96,8 @@ async function main() {
   console.log(`Already completed: ${Object.keys(progress).length}. Remaining to translate: ${toTranslate.length}`);
 
   if (toTranslate.length === 0) {
-    writeFileSync(FINAL_PATH, JSON.stringify(progress, null, 2));
-    console.log(`All done! Saved ${Object.keys(progress).length} translations to ${FINAL_PATH}`);
+    writeFileSync(finalPath, JSON.stringify(progress, null, 2));
+    console.log(`All done! Saved ${Object.keys(progress).length} translations to ${finalPath}`);
     return;
   }
 
@@ -106,7 +133,7 @@ Return JSON:
     let retries = 3;
     while (retries > 0) {
       try {
-        const rawJson = await generateJson(provider, SYSTEM_PROMPT, prompt, 3800);
+        const rawJson = await generateJson(provider, systemPrompt, prompt, 3800);
         const result = JSON.parse(rawJson) as { translations: Array<{ id: string; pinyin: string; english: string }> };
         if (!Array.isArray(result.translations)) {
           throw new Error('Missing translations array in output');
@@ -123,7 +150,7 @@ Return JSON:
           }
         }
 
-        writeFileSync(PROGRESS_PATH, JSON.stringify(progress, null, 2));
+        writeFileSync(progressPath, JSON.stringify(progress, null, 2));
         break;
       } catch (err) {
         retries--;
@@ -140,9 +167,9 @@ Return JSON:
     console.warn(`Warning: ${missing.length} items still missing translations!`);
   }
 
-  writeFileSync(FINAL_PATH, JSON.stringify(progress, null, 2));
-  console.log(`Successfully generated all Book 2 translations! Total: ${Object.keys(progress).length}`);
-  console.log(`Saved to ${FINAL_PATH}`);
+  writeFileSync(finalPath, JSON.stringify(progress, null, 2));
+  console.log(`Successfully generated all Book ${bookArg} translations! Total: ${Object.keys(progress).length}`);
+  console.log(`Saved to ${finalPath}`);
 }
 
 main().catch((err) => {
