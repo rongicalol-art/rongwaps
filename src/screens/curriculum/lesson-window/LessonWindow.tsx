@@ -182,7 +182,7 @@ function LessonBody({
   onOpenGrammarPart,
   onOpenReadingPart,
 }: BodyProps) {
-  const { parts, imageSrcs, isIllustration } = useLessonWindowParts(bookId, lesson);
+  const { parts, illustrationsByPart, fallbackImageSrc, fallbackIsIllustration } = useLessonWindowParts(bookId, lesson);
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
 
@@ -222,6 +222,9 @@ function LessonBody({
   }, [activeIndex, onPartChange, parts]);
 
   if (!activePart) return null;
+
+  const imageSrc = illustrationsByPart[activePart.id] ?? fallbackImageSrc;
+  const isIllustration = Boolean(illustrationsByPart[activePart.id]) || fallbackIsIllustration;
 
   const stored = modes[activePart.id];
   const mode = stored && isModeAvailable(activePart, stored) ? stored : getDefaultMode(activePart);
@@ -304,7 +307,7 @@ function LessonBody({
         >
           <div className="flex flex-col">
             {backButton}
-            <LessonPicture srcs={imageSrcs} isIcon={!isIllustration} onSwipe={swipe} className="rounded-modal" />
+            <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="rounded-modal" />
             <PartTabs
               parts={parts}
               selectedPartIds={selectedPartIds}
@@ -330,7 +333,7 @@ function LessonBody({
         <div className="mx-auto w-full max-w-xl">
           <div className="px-4 pt-3">
             {backButton}
-            <LessonPicture srcs={imageSrcs} isIcon={!isIllustration} onSwipe={swipe} className="max-h-[38vh] rounded-modal" />
+            <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="max-h-[38vh] rounded-modal" />
           </div>
           <PartTabs
             parts={parts}

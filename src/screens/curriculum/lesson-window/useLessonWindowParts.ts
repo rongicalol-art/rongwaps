@@ -151,20 +151,17 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
     });
   }, [bookId, completedPageIds, lesson.id, lesson.parts, lessonReadings]);
 
-  const dialogueIllustrations = lessonReadings
-    .filter((reading) => reading.dialogueNumber <= 2)
-    .sort((a, b) => a.dialogueNumber - b.dialogueNumber)
-    .map((reading) => getReadingIllustration(reading.id)?.url)
-    .filter((url): url is string => Boolean(url));
+  const illustrationsByPart = Object.fromEntries(lessonReadings.flatMap((reading) => {
+    const url = getReadingIllustration(reading.id)?.url;
+    return url ? [[reading.dialogueNumber, url]] : [];
+  })) as Record<number, string>;
   const lastReading = lessonReadings[lessonReadings.length - 1];
   const illustration = lastReading ? getReadingIllustration(lastReading.id)?.url : undefined;
   const fallback = lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id];
-  const imageSrcs = readings === null
+  const fallbackImageSrc = readings === null
     ? null
-    : dialogueIllustrations.length === 2
-      ? dialogueIllustrations
-      : [illustration ?? fallback];
+    : illustration ?? fallback;
 
   /** False when falling back to small icon-style lesson art. */
-  return { parts, imageSrcs, isIllustration: dialogueIllustrations.length === 2 || Boolean(illustration) };
+  return { parts, illustrationsByPart, fallbackImageSrc, fallbackIsIllustration: Boolean(illustration) };
 }
