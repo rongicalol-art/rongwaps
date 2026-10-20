@@ -307,17 +307,24 @@ export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, 
         })}
       </button>
 
-      <div className="flex w-full overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
-        {targets.map((target, i) => (
-          <ToneColumn
-            key={i}
-            target={target}
-            attempt={attempts[i]}
-            active={i === active}
-            submitRef={i === active ? submitRef : undefined}
-            onDrawn={(attempt) => handleDrawn(i, attempt)}
-          />
-        ))}
+      <div className="relative isolate w-full">
+        <div className="flex w-full overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-md)] border-transparent bg-ui-surface">
+          {targets.map((target, i) => (
+            <ToneColumn
+              key={i}
+              target={target}
+              attempt={attempts[i]}
+              active={i === active}
+              submitRef={i === active ? submitRef : undefined}
+              onDrawn={(attempt) => handleDrawn(i, attempt)}
+            />
+          ))}
+        </div>
+        {/* Keep the frame outside SVG clipping and above the pads during audio animation. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-10 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border"
+        />
       </div>
 
       <p aria-live="polite" role="status" className="min-h-6 text-center text-base font-extrabold text-ui-ink-strong">
