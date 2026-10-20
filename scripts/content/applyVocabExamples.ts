@@ -9,6 +9,7 @@
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { loadVocabularyExampleAudio, vocabularyExampleKey } from '../audio/vocabularyExampleAudio';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const CONTENT_VOCAB_DIR = resolve(ROOT, 'content/vocabulary');
@@ -60,6 +61,18 @@ function sha256(content: string): string {
 
 function main() {
   const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf8')) as VocabManifest;
+  const audioBySentence = loadVocabularyExampleAudio();
+  const requiredAudioBooks = new Set([1, 3]);
+  for (const bookId of requiredAudioBooks) {
+    const examplesPath = resolve(CONTENT_VOCAB_DIR, `book-${bookId}-examples.json`);
+    const examplesMap = JSON.parse(readFileSync(examplesPath, 'utf8')) as Record<string, ExampleEntry>;
+    const missing = Object.entries(examplesMap)
+      .filter(([sourceCardId, entry]) => !audioBySentence.has(vocabularyExampleKey(sourceCardId, entry.chinese)))
+      .map(([sourceCardId]) => sourceCardId);
+    if (missing.length > 0) {
+      throw new Error(`Audio manifest is missing ${missing.length} Book ${bookId} examples: ${missing.slice(0, 8).join(', ')}`);
+    }
+  }
   let totalUpdatedAcrossBooks = 0;
 
   for (let b = 1; b <= 4; b++) {
@@ -72,14 +85,18 @@ function main() {
     const pack = JSON.parse(readFileSync(bookPath, 'utf8')) as VocabPack;
 
     let updatedCount = 0;
+    let audioCount = 0;
     for (const item of pack.items) {
       const entry = examplesMap[item.id];
       if (entry && entry.chinese) {
+        const audio = audioBySentence.get(vocabularyExampleKey(item.id, entry.chinese));
+        if (audio) audioCount++;
         item.examples = JSON.stringify([
           {
             chinese: entry.chinese,
             pinyin: entry.pinyin || '',
             english: entry.english || '',
+            ...(audio ? { audio } : {}),
           },
         ]);
         updatedCount++;
@@ -95,7 +112,7 @@ function main() {
       bookMeta.bytes = Buffer.byteLength(updatedJson);
     }
 
-    console.log(`Book ${b}: applied ${updatedCount} structured example sentences.`);
+    console.log(`Book ${b}: applied ${updatedCount} structured example sentences; ${audioCount} with recordings.`);
     totalUpdatedAcrossBooks += updatedCount;
   }
 

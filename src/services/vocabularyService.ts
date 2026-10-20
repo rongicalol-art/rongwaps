@@ -2,6 +2,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import { Flashcard } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants, sentenceMatchesForms } from '../utils/vocabulary/wordForms';
+import { includeVocabularyAudioExamples } from '../utils/vocabulary/courseExamples';
 import { stripPinyinTones } from '../utils/pinyin/pinyinNormalize';
 import {
   fetchVocabularyPack,
@@ -112,8 +113,18 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
     const searchTerms = variantList.length > 0 ? variantList : cleanWords;
     const richExampleCards = await fetchCourseExampleCards(searchTerms, resolvedPos);
 
-    const matches = richExampleCards.length > 0 ? richExampleCards : (await fetchVocabulary())
+    const isCharacterLookup = cleanWords.every((word) => Array.from(word).length === 1);
+    if (richExampleCards.length > 0 && isCharacterLookup) {
+      const bookThreeMatches = (await fetchVocabulary(3))
+        .filter((card) => card.examples?.some((example) => sentenceMatchesForms(example.chinese, searchTerms, resolvedPos)));
+      return includeVocabularyAudioExamples(richExampleCards, bookThreeMatches);
+    }
+
+    const vocabularyMatches = (await fetchVocabulary())
       .filter((card) => card.examples?.some((example) => sentenceMatchesForms(example.chinese, searchTerms, resolvedPos)));
+    const matches = richExampleCards.length > 0
+      ? includeVocabularyAudioExamples(richExampleCards, vocabularyMatches)
+      : vocabularyMatches;
     return [...new Map(matches.map((card) => [card.id, card])).values()];
   });
 }
@@ -123,8 +134,12 @@ export async function fetchExamples(word: string, limit = 3): Promise<WordExampl
   const seen = new Set<string>();
   const examples: WordExample[] = [];
 
-  for (const card of cards) {
-    for (const ex of card.examples ?? []) {
+  const cardExamples = cards.flatMap((card) => (card.examples ?? []).map((example) => ({ card, example })));
+  const orderedExamples = [
+    ...cardExamples.filter(({ example }) => example.audio),
+    ...cardExamples.filter(({ example }) => !example.audio),
+  ];
+  for (const { card, example: ex } of orderedExamples) {
       const chinese = ex.chinese?.trim();
       const pinyin = ex.pinyin?.trim();
       const english = ex.english?.trim();
@@ -136,13 +151,13 @@ export async function fetchExamples(word: string, limit = 3): Promise<WordExampl
         chinese,
         pinyin,
         english,
+        ...(ex.audio ? { audio: ex.audio } : {}),
         sourceCardId: card.id,
         sourceFront: card.front,
         sourceBookId: card.bookId,
         sourceLessonId: card.lessonId,
       });
-      if (examples.length >= limit) return examples;
-    }
+    if (examples.length >= limit) return examples;
   }
 
   return examples;

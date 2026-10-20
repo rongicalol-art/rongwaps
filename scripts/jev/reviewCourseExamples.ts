@@ -176,7 +176,7 @@ export async function runCourseReview(options: CourseReviewOptions, ask: AskJevF
   let inputTokens = 0;
   let outputTokens = 0;
   await runPool(limited, options.concurrency, async (record) => {
-    const result = await ask(state(record), buildCourseQuestions(record), JEV_DEFAULT_MODEL);
+    const result = await ask(state(record) as unknown as Parameters<typeof ask>[0], buildCourseQuestions(record), JEV_DEFAULT_MODEL);
     cached.set(record.id, { key: record.id, fingerprint: fingerprint(record), record, answers: result.answers as RawAnswers, resolvedModel: result.model });
     inputTokens += result.usage.input_tokens;
     outputTokens += result.usage.output_tokens;

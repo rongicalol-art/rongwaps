@@ -17,7 +17,7 @@ const DATA = path.resolve(process.argv[2] ?? 'dist/data');
 type Json = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 const read = (rel: string): Json => JSON.parse(readFileSync(path.join(DATA, rel), 'utf8'));
 const sha = (text: string) => createHash('sha256').update(text).digest('hex');
-const keep = (book: number, lesson: number) => book === 1 && lesson <= BETA_LAST_LESSON;
+const keep = (book: number, lesson: number) => (book === 1 && lesson <= BETA_LAST_LESSON) || (book === 3 && lesson <= 5);
 const lessonOfId = (id: string) => {
   const m = /^B(\d+)L(\d+)/.exec(id);
   return m ? keep(Number(m[1]), Number(m[2])) : false;
@@ -105,6 +105,6 @@ trimBookPack('dialogue-alignment', 'items', (item) => {
   for (const file of readdirSync(dir)) if (file.endsWith('.webp') && !kept.has(file)) rmSync(path.join(dir, file));
   writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify(manifest, null, 2));
 }
-for (const extra of ['book-2', 'book-3', 'book-4']) rmSync(path.join(DATA, `book-pages/modern-chinese-${extra.slice(-1)}`), { recursive: true, force: true });
+for (const extra of ['book-2', 'book-4']) rmSync(path.join(DATA, `book-pages/modern-chinese-${extra.slice(-1)}`), { recursive: true, force: true });
 
 console.log(`[beta-trim] kept Book 1 lessons 0-${BETA_LAST_LESSON}; ${pagesInUse.size} textbook pages referenced`);

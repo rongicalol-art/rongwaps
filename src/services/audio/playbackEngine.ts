@@ -5,6 +5,8 @@ export interface PlayRangeOptions {
   onTime?: (time: number) => void;
   onUnavailable?: () => void;
   onComplete?: () => void;
+  /** Set false when the range source is a large track that should stream only. */
+  cacheOnComplete?: boolean;
 }
 
 const AUDIO_START_TIMEOUT_MS = 2500;

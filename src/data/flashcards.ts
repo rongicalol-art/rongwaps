@@ -1,3 +1,5 @@
+import type { SentenceAudio } from '../types/models';
+
 export interface Flashcard {
   id: string;
   bookId: number;
@@ -21,6 +23,7 @@ export interface Flashcard {
     chinese: string;
     pinyin: string;
     english: string;
+    audio?: SentenceAudio;
     /** Line from a textbook dialogue/reading rather than a sentence written for this word. */
     fromText?: boolean;
   }[];

@@ -314,7 +314,13 @@ export function recordsToExampleCards(
     // Ids ending -E##/-R## are sentences written for the word; -D## are dialogue lines
     // the importer hung on the part's first card.
     const fromText = !/-[ER]\d+$/.test(r.id);
-    const example = { chinese: r.traditional, pinyin: r.pinyin, english: r.english, ...(fromText ? { fromText } : {}) };
+    const example = {
+      chinese: r.traditional,
+      pinyin: r.pinyin,
+      english: r.english,
+      ...(r.audio ? { audio: r.audio } : {}),
+      ...(fromText ? { fromText } : {}),
+    };
     if (existing) {
       if (!existing.examples?.some((item) => item.chinese === example.chinese)) {
         existing.examples?.push(example);

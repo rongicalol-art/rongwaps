@@ -1,4 +1,5 @@
 import type { Flashcard } from '../../data/flashcards';
+import type { SentenceAudio } from '../../types/models';
 import { extractSearchVariants, sentenceMatchesForms } from './wordForms';
 import {
   getCardPosition,
@@ -10,6 +11,7 @@ export interface RankedExample {
   chinese: string;
   pinyin: string;
   english: string;
+  audio?: SentenceAudio;
   sourceCardId: string;
   sourceFront: string;
   sourceBookId: number;
@@ -28,6 +30,30 @@ export interface RankedExampleGroup {
   id: RankedExampleGroupId;
   label: string;
   examples: RankedExample[];
+}
+
+/** Keep richer course sentences while adding official recordings from vocab packs. */
+export function includeVocabularyAudioExamples(primary: Flashcard[], vocabulary: Flashcard[]): Flashcard[] {
+  const merged = new Map(primary.map((card) => [card.id, card]));
+  for (const source of vocabulary) {
+    const audioExamples = source.examples?.filter((example) => example.audio) ?? [];
+    if (audioExamples.length === 0) continue;
+
+    const existing = merged.get(source.id);
+    if (!existing) {
+      merged.set(source.id, { ...source, examples: audioExamples });
+      continue;
+    }
+
+    const examples = [...(existing.examples ?? [])];
+    for (const audioExample of audioExamples) {
+      const index = examples.findIndex((example) => example.chinese === audioExample.chinese);
+      if (index === -1) examples.push(audioExample);
+      else if (!examples[index].audio) examples[index] = { ...examples[index], audio: audioExample.audio };
+    }
+    merged.set(source.id, { ...existing, examples });
+  }
+  return [...merged.values()];
 }
 
 const RANKED_EXAMPLE_GROUPS: Array<Pick<RankedExampleGroup, 'id' | 'label'>> = [
@@ -136,6 +162,7 @@ export function findSmartExamplesForWord(
         chinese: ex.chinese,
         pinyin: ex.pinyin,
         english: ex.english,
+        ...(ex.audio ? { audio: ex.audio } : {}),
         sourceCardId: sourceCard.id,
         sourceFront: sourceCard.front,
         sourceBookId: sourceContext.bookId,
@@ -204,6 +231,7 @@ export function findSmartExamplesForWord(
     chinese: result.chinese,
     pinyin: result.pinyin,
     english: result.english,
+    ...(result.audio ? { audio: result.audio } : {}),
     sourceCardId: result.sourceCardId,
     sourceFront: result.sourceFront,
     sourceBookId: result.sourceBookId,

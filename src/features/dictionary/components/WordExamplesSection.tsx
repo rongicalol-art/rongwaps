@@ -1,5 +1,5 @@
 import { AppIcon, SmartSentence, Skeleton, LevelTag } from '../../../lib/widgets';
-import { audioService } from '../../../services/audioService';
+import { playSentence } from '../../../services/audio/sentenceAudio';
 import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { WordExample } from '../../../types/models';
@@ -19,7 +19,6 @@ export function WordExamplesSection({
 }) {
   const characterPreference = useAppStore((state) => state.characterPreference);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
-  const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
 
   if (isLoading) {
     return (
@@ -47,7 +46,7 @@ export function WordExamplesSection({
             <button
               type="button"
               aria-label={`Play the example sentence ${ex.chinese}`}
-              onClick={() => audioService.speakText(ex.chinese, language, 0.86).catch(() => {})}
+              onClick={() => { void playSentence(ex.chinese, ex.audio, characterPreference, 0.86).catch(() => {}); }}
               className={PLAY_BUTTON}
             >
               <AppIcon name="audio" size={18} />

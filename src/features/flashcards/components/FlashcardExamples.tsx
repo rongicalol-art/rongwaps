@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Skeleton, SmartSentence, LevelTag } from '../../../lib/widgets';
+import { AppIcon, Skeleton, SmartSentence, LevelTag } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import {
   groupRankedExamples,
@@ -9,6 +9,7 @@ import {
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { cn } from '../../../utils/cn';
 import { useAppStore } from '../../../store/useAppStore';
+import { playSentence } from '../../../services/audio/sentenceAudio';
 
 interface FlashcardExamplesProps {
   /** Every search form (both scripts, fully expanded, longest-first). */
@@ -45,21 +46,36 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   divider = false,
   className = '',
 }: FlashcardExampleRowProps) {
+  const characterPreference = useAppStore((state) => state.characterPreference);
   return (
     <li
       className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 ${centered ? '' : '[content-visibility:auto] [contain-intrinsic-size:0_110px]'} ${
         divider ? 'border-b-2 border-ui-divider' : ''
       } ${className}`}
     >
-      <div className={centered ? 'w-full' : 'w-full flow-root'}>
-        {showMeta && (
-          <span
-            className={centered ? 'mb-2 flex justify-center select-none' : 'float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 select-none'}
-            title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}`}
+      <div className="w-full flow-root">
+        <span className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1">
+          {showMeta && (
+            <span
+              className="inline-flex items-center select-none"
+              title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}`}
+            >
+              <LevelTag bookId={example.sourceBookId} lessonId={example.sourceLessonId} />
+            </span>
+          )}
+          <button
+            type="button"
+            aria-label={`Play the example sentence ${example.chinese}`}
+            onPointerDown={(event) => event.stopPropagation()}
+            onClick={(event) => {
+              event.stopPropagation();
+              void playSentence(example.chinese, example.audio, characterPreference).catch(() => {});
+            }}
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring"
           >
-            <LevelTag bookId={example.sourceBookId} lessonId={example.sourceLessonId} />
-          </span>
-        )}
+            <AppIcon name="audio" size={16} />
+          </button>
+        </span>
         <SmartSentence
           text={example.chinese}
           highlightTerms={highlightTerms}

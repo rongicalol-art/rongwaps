@@ -1,6 +1,10 @@
 import type { Flashcard } from '../../../data/flashcards';
 import type { CourseExampleRecord } from '../../../types/models';
-import { findSmartExamplesForWord, type RankedExample } from '../../../utils/vocabulary/courseExamples';
+import {
+  findSmartExamplesForWord,
+  includeVocabularyAudioExamples,
+  type RankedExample,
+} from '../../../utils/vocabulary/courseExamples';
 import { recordsToExampleCards } from '../../../utils/packValidators';
 import { extractSearchVariants, sentenceMatchesForms } from '../../../utils/vocabulary/wordForms';
 
@@ -91,11 +95,14 @@ export function buildExampleIndex(records: CourseExampleRecord[], vocab: Flashca
         terms,
         card.pos,
       );
+      const vocabularyMatches = candidates(vocabPostings, terms)
+        .map((i) => vocabWithExamples[i])
+        .filter((c) => c.examples?.some((e) => (
+          (!rich.length || e.audio) && sentenceMatchesForms(e.chinese, terms, card.pos)
+        )));
       const matching = rich.length > 0
-        ? rich
-        : candidates(vocabPostings, terms)
-            .map((i) => vocabWithExamples[i])
-            .filter((c) => c.examples?.some((e) => sentenceMatchesForms(e.chinese, terms, card.pos)));
+        ? includeVocabularyAudioExamples(rich, vocabularyMatches)
+        : vocabularyMatches;
 
       return findSmartExamplesForWord(matching, searchWords, card.id, card.pos);
     },

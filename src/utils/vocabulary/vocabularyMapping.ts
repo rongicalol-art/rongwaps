@@ -55,6 +55,7 @@ export function parseExamples(value: unknown): Flashcard['examples'] {
       chinese,
       pinyin: typeof record.pinyin === 'string' ? record.pinyin : '',
       english: typeof record.english === 'string' ? record.english : '',
+      ...(record.audio && typeof record.audio === 'object' ? { audio: record.audio as NonNullable<Flashcard['examples']>[number]['audio'] } : {}),
     }];
   });
 }

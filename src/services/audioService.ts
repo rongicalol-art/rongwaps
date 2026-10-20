@@ -297,7 +297,9 @@ export class AudioService {
         this.activePlaybackCleanup = playRangeOnAudioElement(audio, src, startSec, endSec, options, (ended) => {
           if (ended) {
             options?.onComplete?.();
-            if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).catch(() => {});
+            if (options?.cacheOnComplete !== false && typeof caches !== 'undefined') {
+              void this.getAudioObjectUrl(audioFileName).catch(() => {});
+            }
           }
           finish();
         }, (handle) => { this.rangeRafHandle = handle; });

@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from 'motion/react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
+import { useReducedMotion } from 'motion/react';
 import { useSmartChineseSegments } from '../hooks/useSmartChineseSegments';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
@@ -9,6 +9,13 @@ import {
   getSemanticRoleClasses,
   getSemanticRoleSoftBgClasses,
 } from '../../../utils/grammar/grammarSemanticRoles';
+import {
+  SentenceWordTooltipPortal,
+  type HoveredWordState,
+  type SentenceWordLookupResult,
+} from '../../../lib/widgets';
+import type { AnchorPosition } from '../../../utils/browser/tooltipPosition';
+import { lookupSentenceWord, playSentenceWordAudio } from '../../../services/sentenceLookupService';
 
 interface InteractiveGrammarSentenceProps {
   words: GrammarWordToken[];
@@ -46,7 +53,13 @@ export function InteractiveGrammarSentence({
   onActiveAlignmentChange,
   onOpenWord,
 }: InteractiveGrammarSentenceProps) {
-  const [previewWordId, setPreviewWordId] = useState<string | null>(null);
+  const [hoveredWord, setHoveredWord] = useState<HoveredWordState | null>(null);
+  const [activeWordId, setActiveWordId] = useState<string | null>(null);
+  const hoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isTooltipOpenRef = useRef(false);
+  const reduceMotion = Boolean(useReducedMotion());
+
   const teachingTextSizeClass = TEACHING_TEXT_SIZE_CLASSES[size];
   const segmentationInput = useMemo(() => words.map((word) => (
     characterPreference === 'simplified' && word.simplified ? word.simplified : word.traditional
@@ -86,6 +99,155 @@ export function InteractiveGrammarSentence({
     return shown;
   }, []), [displayWords]);
 
+  const clearTimers = useCallback(() => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+  }, []);
+
+  const closeTooltip = useCallback(() => {
+    clearTimers();
+    setHoveredWord(null);
+    setActiveWordId(null);
+    isTooltipOpenRef.current = false;
+  }, [clearTimers]);
+
+  useEffect(() => {
+    const handleScroll = () => closeTooltip();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeTooltip();
+    };
+    window.addEventListener('scroll', handleScroll, true);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true);
+      window.removeEventListener('keydown', handleKeyDown);
+      clearTimers();
+    };
+  }, [closeTooltip, clearTimers]);
+
+  const openWordTooltip = useCallback(
+    (word: GrammarWordToken, element: HTMLElement) => {
+      const text = characterPreference === 'simplified' && word.simplified
+        ? word.simplified
+        : word.traditional;
+
+      const rect = element.getBoundingClientRect();
+      const anchor: AnchorPosition = {
+        x: rect.left + rect.width / 2,
+        top: rect.top,
+        bottom: rect.bottom,
+      };
+
+      const tokenMeaning = word.meaning || (word as unknown as { english?: string }).english || '';
+      const baseDefs = tokenMeaning ? [tokenMeaning] : [];
+      const initialInfo: SentenceWordLookupResult = {
+        word: text,
+        pinyin: word.pinyin || undefined,
+        definitions: baseDefs,
+        hasAudio: true,
+      };
+
+      setHoveredWord({
+        word: text,
+        anchor,
+        info: initialInfo,
+        loading: !tokenMeaning && !word.pinyin,
+      });
+      isTooltipOpenRef.current = true;
+
+      void lookupSentenceWord(text, characterPreference)
+        .then((result) => {
+          if (!result) return;
+          setHoveredWord((prev) => {
+            if (!prev || prev.word !== text) return prev;
+            const allDefs = [...baseDefs];
+            for (const d of result.definitions) {
+              if (!allDefs.some((existing) => existing.toLowerCase() === d.toLowerCase())) {
+                allDefs.push(d);
+              }
+            }
+            return {
+              ...prev,
+              info: {
+                word: text,
+                pinyin: word.pinyin || result.pinyin,
+                definitions: allDefs,
+                fallbackParts: result.fallbackParts,
+                hasAudio: true,
+              },
+              loading: false,
+            };
+          });
+        })
+        .catch(() => {
+          setHoveredWord((prev) => (prev && prev.word === text ? { ...prev, loading: false } : prev));
+        });
+    },
+    [characterPreference],
+  );
+
+  const handlePointerEnterWord = useCallback(
+    (e: React.PointerEvent<HTMLButtonElement>, word: GrammarWordToken) => {
+      if (e.pointerType === 'touch') return;
+
+      if (leaveTimerRef.current) {
+        clearTimeout(leaveTimerRef.current);
+        leaveTimerRef.current = null;
+      }
+      if (hoverTimerRef.current) {
+        clearTimeout(hoverTimerRef.current);
+        hoverTimerRef.current = null;
+      }
+
+      setActiveWordId(word.id);
+      onActiveAlignmentChange?.(word.alignmentId ?? null);
+      const element = e.currentTarget;
+
+      if (isTooltipOpenRef.current) {
+        openWordTooltip(word, element);
+        return;
+      }
+
+      hoverTimerRef.current = setTimeout(() => {
+        openWordTooltip(word, element);
+      }, 100);
+    },
+    [onActiveAlignmentChange, openWordTooltip],
+  );
+
+  const handlePointerLeaveWord = useCallback(() => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+    setActiveWordId(null);
+    onActiveAlignmentChange?.(null);
+    leaveTimerRef.current = setTimeout(() => {
+      setHoveredWord(null);
+      isTooltipOpenRef.current = false;
+    }, 120);
+  }, [onActiveAlignmentChange]);
+
+  const handleTooltipMouseEnter = useCallback(() => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+  }, []);
+
+  const handleTooltipMouseLeave = useCallback(() => {
+    leaveTimerRef.current = setTimeout(() => {
+      setHoveredWord(null);
+      isTooltipOpenRef.current = false;
+    }, 120);
+  }, []);
+
   return (
     <div
       className={cn(
@@ -98,14 +260,13 @@ export function InteractiveGrammarSentence({
         const text = characterPreference === 'simplified' && word.simplified
           ? word.simplified
           : word.traditional;
-        const isOpen = previewWordId === word.id;
+        const isHovered = activeWordId === word.id || hoveredWord?.word === text;
         const isFocus = focusTokenIds.has(word.id) || word.mark === 'say';
         const skipped = word.mark === 'skip';
         const role = isFocus ? (word.mark ? 'number' : getGrammarSemanticRole(text)) : undefined;
         const roleColorClass = role ? getSemanticRoleClasses(role) : undefined;
         const roleSoftBgClass = role ? getSemanticRoleSoftBgClasses(role) : 'hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft';
         const isAligned = Boolean(word.alignmentId && word.alignmentId === activeAlignmentId);
-        const tooltipId = `grammar-word-${word.id}`;
 
         return (
           <span key={word.id} className="relative inline-flex flex-col items-center">
@@ -117,39 +278,27 @@ export function InteractiveGrammarSentence({
               )}
               <button
                 type="button"
-                onMouseEnter={() => {
-                  setPreviewWordId(word.id);
-                  onActiveAlignmentChange?.(word.alignmentId ?? null);
-                }}
-                onMouseLeave={() => {
-                  setPreviewWordId(null);
-                  onActiveAlignmentChange?.(null);
-                }}
-                onFocus={() => {
-                  setPreviewWordId(word.id);
-                  onActiveAlignmentChange?.(word.alignmentId ?? null);
-                }}
-                onBlur={() => {
-                  setPreviewWordId(null);
-                  onActiveAlignmentChange?.(null);
-                }}
+                onPointerEnter={(e) => handlePointerEnterWord(e, word)}
+                onPointerLeave={handlePointerLeaveWord}
+                onFocus={(e) => handlePointerEnterWord(e as unknown as React.PointerEvent<HTMLButtonElement>, word)}
+                onBlur={handlePointerLeaveWord}
                 onClick={(event) => {
                   event.stopPropagation();
+                  closeTooltip();
                   onActiveAlignmentChange?.(word.alignmentId ?? null);
                   onOpenWord(text);
                 }}
                 data-grammar-word-id={word.id}
-                aria-describedby={isOpen ? tooltipId : undefined}
-                aria-label={`${text}: ${word.pinyin}, ${word.meaning}`}
+                aria-label={`${text}: ${word.pinyin || ''}${word.meaning || (word as unknown as { english?: string }).english ? `, ${word.meaning || (word as unknown as { english?: string }).english}` : ''}`}
                 className={cn(
-                  '-mx-0.5 rounded-xs px-0.5 font-chinese font-black leading-tight transition-colors focus-ring-inline',
+                  '-mx-0.5 cursor-pointer rounded-xs px-0.5 font-chinese font-black leading-tight transition-colors focus-ring-inline',
                   teachingTextSizeClass,
                   roleSoftBgClass,
                   isFocus
                     ? cn(roleColorClass, 'font-black')
                     : skipped ? 'text-ui-muted/50'
                     : tone === 'accent' ? 'text-brand-primary' : 'text-ui-ink-strong',
-                  isOpen && 'bg-brand-primary-soft',
+                  isHovered && 'bg-brand-primary/10 text-brand-primary',
                   isAligned && 'bg-brand-primary text-ui-surface hover:bg-brand-primary focus-visible:bg-brand-primary',
                 )}
               >
@@ -167,27 +316,21 @@ export function InteractiveGrammarSentence({
                 {word.pinyin}
               </span>
             )}
-
-            <AnimatePresence>
-              {isOpen && (
-                <motion.span
-                  id={tooltipId}
-                  role="tooltip"
-                  initial={{ opacity: 0, y: 4, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 4, scale: 0.97 }}
-                  transition={{ duration: 0.12 }}
-                  className="pointer-events-none absolute bottom-[calc(100%+9px)] left-1/2 z-40 w-max min-w-[112px] max-w-[180px] -translate-x-1/2 rounded-control border-b-[length:var(--depth-sm)] border-ui-border bg-ui-ink-strong px-3 py-2 text-center font-sans"
-                >
-                  <span className="block text-xs font-black text-brand-primary/70">{word.pinyin}</span>
-                  <span className="mt-0.5 block text-xs font-bold leading-snug text-white">{word.meaning}</span>
-                  <span className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[6px] border-t-[6px] border-x-transparent border-t-ui-ink-strong" />
-                </motion.span>
-              )}
-            </AnimatePresence>
           </span>
         );
       })}
+
+      {hoveredWord && (
+        <SentenceWordTooltipPortal
+          data={hoveredWord}
+          reduceMotion={reduceMotion}
+          onMouseEnter={handleTooltipMouseEnter}
+          onMouseLeave={handleTooltipMouseLeave}
+          onPlayAudio={() => {
+            void playSentenceWordAudio(hoveredWord.word, characterPreference);
+          }}
+        />
+      )}
     </div>
   );
 }

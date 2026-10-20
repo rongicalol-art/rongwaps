@@ -61,7 +61,7 @@ interface HighlightRange {
   end: number;
 }
 
-interface HoveredWordState {
+export interface HoveredWordState {
   word: string;
   anchor: AnchorPosition;
   info: SentenceWordLookupResult | null;
@@ -400,7 +400,7 @@ export function SmartSentence({
   );
 }
 
-function SentenceWordTooltipPortal({
+export function SentenceWordTooltipPortal({
   data,
   reduceMotion,
   onMouseEnter,

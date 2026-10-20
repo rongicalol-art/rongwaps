@@ -1,3 +1,5 @@
+import type { SentenceAudio } from './grammarPractice';
+
 export interface UserFlashcard {
   id: string; // generate this using crypto.randomUUID()
   folderId?: string; // which custom folder it belongs to
@@ -191,6 +193,7 @@ export interface CourseExampleRecord {
   simplified?: string;
   pinyin: string;
   english: string;
+  audio?: SentenceAudio;
   printedPage?: number;
   sourceOcrId: string;
   provenance: 'textbook-ocr' | 'authored';
@@ -240,6 +243,7 @@ export interface WordExample {
   chinese: string;
   pinyin: string;
   english: string;
+  audio?: SentenceAudio;
   sourceCardId: string;
   sourceFront: string;
   sourceBookId: number;

@@ -14,6 +14,8 @@ export interface SentenceAudio {
   file: string;
   start?: number;
   end?: number;
+  /** Skip whole-file caching when a short range comes from a large remote track. */
+  cache?: boolean;
 }
 
 /** A full sentence shown in feedback or spoken in a chat. */

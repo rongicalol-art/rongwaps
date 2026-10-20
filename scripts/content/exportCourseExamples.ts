@@ -7,6 +7,7 @@ import type {
   CourseExampleRecord,
 } from '../../src/types/models';
 import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
+import { loadVocabularyExampleAudio, vocabularyExampleKey } from '../audio/vocabularyExampleAudio';
 
 const SCHEMA_VERSION = 1;
 const BOOK_ID = 1;
@@ -436,6 +437,12 @@ async function main() {
   const readingExample = createReadingExample(lessons, vocabularyPack.items);
   if (readingExample) records.push(readingExample);
   records.push(...createVerifiedContextExamples(lessons, vocabularyPack.items));
+
+  const audioBySentence = loadVocabularyExampleAudio();
+  records.forEach((record) => {
+    const audio = audioBySentence.get(vocabularyExampleKey(record.sourceCardId, record.traditional));
+    if (audio) record.audio = audio;
+  });
 
   records.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
   const pack: CourseExamplePack = {
