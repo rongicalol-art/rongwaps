@@ -91,10 +91,12 @@ export function ActivityModals({
   const showContent = phase === 'ready' || hasRevealed.current;
   const isSessionLoading = isPracticeSession && !showContent;
 
-  // Lesson-part practice stays focused like quiz, while multi-lesson study keeps the dock.
+  // Lesson-part practice hides the mode dock; Writing keeps it for its controls.
   const isLessonPartFocused = isLessonWindowOpen && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
   const isIndependentStudy = selectedLessons.length > 1 && !isReviewSession && !effectiveLibraryMode;
-  const hasDock = !isLessonPartFocused && (isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz'));
+  const hasDock = isLessonPartFocused
+    ? resolvedActivity === 'writing'
+    : isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
   useEffect(() => {
     if (isPracticeSession && !isLoadingDeck) {
       return preloadRemainingPracticeChunks(resolvedActivity, hasDock);
