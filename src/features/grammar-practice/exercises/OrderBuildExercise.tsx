@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { LayoutGroup, motion } from 'motion/react';
 import { ContextualChineseText } from '../../../lib/widgets';
@@ -6,17 +6,51 @@ import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { ListenBuildItem, OrderBuildItem } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { checkOrderBuild } from '../../../utils/grammar/grammarPracticeSequence';
+import { PracticeBubble } from '../components/PracticeBubble';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
 import { WORD_FLIGHT } from '../practiceMotion';
 import { textIn, type PracticeExerciseProps } from '../practiceTypes';
 
+const END_PUNCTUATION = /[。？！]$/;
+
+interface ParsedDialogue {
+  type: 'incoming' | 'afterward';
+  preface?: string;
+  utterance: string;
+  gloss?: string;
+}
+
+function parseDialogue(sub?: string): ParsedDialogue | null {
+  if (!sub) return null;
+
+  // Check for afterward reply: "B replies afterward: ..." or "Your friend replies next: ..."
+  const afterMatch = /^(.*?(?:replies afterward|replies next|replies)):\s*(.+)$/i.exec(sub);
+  if (afterMatch) {
+    return { type: 'afterward', preface: afterMatch[1].trim(), utterance: afterMatch[2].trim() };
+  }
+
+  // Check for Chinese sentence with optional leading English context and trailing gloss
+  // Chinese sentence contains Hanzi and ends with Chinese punctuation ？ or 。 or ！ or ?
+  const match = /^(.*?)([\u4e00-\u9fa5][\u4e00-\u9fa5A-Za-z0-9\s,，、—…（）()]*[？?。！!])(?:\s*(.*))?$/.exec(sub);
+  if (match) {
+    return {
+      type: 'incoming',
+      preface: match[1].trim() || undefined,
+      utterance: match[2].trim(),
+      gloss: match[3]?.trim() || undefined,
+    };
+  }
+
+  return null;
+}
+
 /**
  * Build the sentence: the title says what to say, the words wait in the dock, and tapping
- * them lays them on one free line. There are no blanks, so the line never shows how many
- * words are right; tap a placed word to take it back. `listen-build` is the same line with
- * a recording above it (`children`) in place of a picture.
+ * them lays them into the reply bubble (or on a free line when not a conversation). Tap a
+ * placed word to take it back. `listen-build` is the same line with a recording above it
+ * (`children`) in place of a picture.
  */
 export function OrderBuildExercise({
   item, script, status, retryKey, showPinyin, contextTokens, onOpenWord, shortcutsDisabled, trayHost, onReadyChange, checkRef, onResult, children,
@@ -30,6 +64,8 @@ export function OrderBuildExercise({
   const order = line.map((tile) => item.tiles[tile].traditional);
   const verdict = checkOrderBuild(item, order);
   const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
+  const dialogue = useMemo(() => parseDialogue(item.sub), [item.sub]);
+  const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';
 
   useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
   useEffect(() => {
@@ -54,46 +90,144 @@ export function OrderBuildExercise({
 
   return (
     <LayoutGroup id={`order-${item.id}`}>
-      <div className="flex flex-col gap-7">
-        <PracticePrompt sub={item.sub} />
-        {children}
-        {item.kind === 'order-build' && item.scene && (
-          <PracticeScene
-            scene={item.scene}
-            arrived={status === 'correct'}
-            renderChinese={(text) => <ContextualChineseText text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
-          />
-        )}
-        <div
-          className={cn(
-            'flex min-h-24 flex-wrap items-end justify-center gap-x-1.5 border-b-[3px] pb-2 transition-colors',
-            status === 'idle' && 'border-ui-divider',
-            status === 'correct' && 'border-feedback-success',
-            status === 'wrong' && 'border-feedback-danger',
+      {dialogue ? (
+        <div className="flex flex-col gap-4">
+          {dialogue.preface && <PracticePrompt sub={dialogue.preface} />}
+          {children}
+          {item.kind === 'order-build' && item.scene && (
+            <PracticeScene
+              scene={item.scene}
+              arrived={status === 'correct'}
+              renderChinese={(text) => (
+                <ContextualChineseText
+                  text={textIn(text, script)}
+                  tokens={contextTokens}
+                  characterPreference={script}
+                  onOpenWord={onOpenWord}
+                />
+              )}
+            />
           )}
-        >
-          {line.map((tile, position) => (
-            <motion.button
-              key={tile}
-              type="button"
-              layout="position"
-              layoutId={layoutId(tile)}
-              transition={WORD_FLIGHT}
-              disabled={locked}
-              onClick={() => remove(tile)}
-              aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
+
+          {dialogue.type === 'incoming' && (
+            <PracticeBubble side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
+              <ContextualChineseText
+                text={dialogue.utterance}
+                tokens={contextTokens}
+                characterPreference={script}
+                onOpenWord={onOpenWord}
+              />
+            </PracticeBubble>
+          )}
+
+          <span className="h-1" aria-hidden="true" />
+
+          {/* Learner's reply bubble */}
+          {line.length === 0 ? (
+            <div
               className={cn(
-                'flex select-none flex-col items-center rounded-control px-1.5 py-0.5 focus-ring-inline enabled:hover:opacity-75',
-                status === 'correct' && 'text-feedback-success-edge',
-                misplaced?.has(position) && 'text-feedback-danger-edge',
+                'flex min-h-14 min-w-36 max-w-[88%] self-end items-center gap-2 rounded-feature rounded-br-xs px-5 py-3.5 border-2 border-dashed border-brand-primary-soft-edge bg-ui-surface text-ui-muted transition-colors',
               )}
             >
-              <span className="font-chinese text-3xl leading-[1.3] sm:text-4xl">{textIn(item.tiles[tile], script)}</span>
-              {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
-            </motion.button>
-          ))}
+              <span className="inline-block h-4 w-0.5 animate-pulse bg-brand-primary" aria-hidden="true" />
+              <span className="text-sm font-bold text-ui-muted">Tap words to reply…</span>
+            </div>
+          ) : (
+            <div
+              className={cn(
+                'flex min-h-14 max-w-[88%] self-end flex-wrap items-center gap-1.5 rounded-feature rounded-br-xs px-5 py-3.5 transition-colors shadow-xs',
+                status === 'idle' && 'bg-brand-primary text-brand-on-primary',
+                status === 'correct' && 'bg-feedback-success text-brand-on-primary',
+                status === 'wrong' && 'bg-feedback-danger text-brand-on-primary',
+              )}
+            >
+              {line.map((tile, position) => (
+                <motion.button
+                  key={tile}
+                  type="button"
+                  layout="position"
+                  layoutId={layoutId(tile)}
+                  transition={WORD_FLIGHT}
+                  disabled={locked}
+                  onClick={() => remove(tile)}
+                  aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
+                  className={cn(
+                    'flex select-none flex-col items-center rounded-control px-2 py-0.5 focus-ring-inline enabled:hover:opacity-85 bg-brand-on-primary/15 text-brand-on-primary',
+                    misplaced?.has(position) && 'bg-white/30 text-white ring-1 ring-white/60',
+                  )}
+                >
+                  <span className="font-chinese text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
+                  {showPinyin && <span className="text-xs font-bold text-brand-on-primary/80">{item.tiles[tile].pinyin}</span>}
+                </motion.button>
+              ))}
+              {status === 'correct' && end && (
+                <span className="font-chinese text-2xl leading-[1.3] text-brand-on-primary sm:text-3xl" aria-hidden="true">
+                  {end}
+                </span>
+              )}
+            </div>
+          )}
+
+          {dialogue.type === 'afterward' && (
+            <PracticeBubble side="them" notes={dialogue.preface ? [dialogue.preface] : []}>
+              <ContextualChineseText
+                text={dialogue.utterance}
+                tokens={contextTokens}
+                characterPreference={script}
+                onOpenWord={onOpenWord}
+              />
+            </PracticeBubble>
+          )}
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col gap-7">
+          <PracticePrompt sub={item.sub} />
+          {children}
+          {item.kind === 'order-build' && item.scene && (
+            <PracticeScene
+              scene={item.scene}
+              arrived={status === 'correct'}
+              renderChinese={(text) => (
+                <ContextualChineseText
+                  text={textIn(text, script)}
+                  tokens={contextTokens}
+                  characterPreference={script}
+                  onOpenWord={onOpenWord}
+                />
+              )}
+            />
+          )}
+          <div
+            className={cn(
+              'flex min-h-24 flex-wrap items-end justify-center gap-x-1.5 border-b-[3px] pb-2 transition-colors',
+              status === 'idle' && 'border-ui-divider',
+              status === 'correct' && 'border-feedback-success',
+              status === 'wrong' && 'border-feedback-danger',
+            )}
+          >
+            {line.map((tile, position) => (
+              <motion.button
+                key={tile}
+                type="button"
+                layout="position"
+                layoutId={layoutId(tile)}
+                transition={WORD_FLIGHT}
+                disabled={locked}
+                onClick={() => remove(tile)}
+                aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
+                className={cn(
+                  'flex select-none flex-col items-center rounded-control px-1.5 py-0.5 focus-ring-inline enabled:hover:opacity-75',
+                  status === 'correct' && 'text-feedback-success-edge',
+                  misplaced?.has(position) && 'text-feedback-danger-edge',
+                )}
+              >
+                <span className="font-chinese text-3xl leading-[1.3] sm:text-4xl">{textIn(item.tiles[tile], script)}</span>
+                {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      )}
       {trayHost && createPortal(
         bank.map((tile) => (
           <PracticeTileButton key={tile} tile={item.tiles[tile]} script={script} layoutId={layoutId(tile)} disabled={locked} onClick={() => add(tile)} />

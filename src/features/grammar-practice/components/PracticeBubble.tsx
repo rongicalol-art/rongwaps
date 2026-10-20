@@ -7,10 +7,11 @@ interface PracticeBubbleProps {
   children: ReactNode;
   /** Small line under the sentence: pinyin, English, or the book's gloss. */
   notes?: string[];
+  className?: string;
 }
 
 /** One chat message. Every bubble shares one text size; sentences break at punctuation, not mid-word. */
-export function PracticeBubble({ side, children, notes = [] }: PracticeBubbleProps) {
+export function PracticeBubble({ side, children, notes = [], className }: PracticeBubbleProps) {
   const mine = side === 'me';
   return (
     <div
@@ -19,9 +20,10 @@ export function PracticeBubble({ side, children, notes = [] }: PracticeBubblePro
         mine
           ? 'self-end rounded-br-xs bg-brand-primary text-brand-on-primary'
           : 'self-start rounded-bl-xs border-2 border-ui-divider bg-ui-surface text-ui-ink-strong',
+        className,
       )}
     >
-      <p className="font-chinese text-[22px] leading-normal sm:text-[26px]">{children}</p>
+      <div className="font-chinese text-[22px] leading-normal sm:text-[26px]">{children}</div>
       {notes.map((note) => (
         <p key={note} className={cn('mt-0.5 text-sm font-bold', mine ? 'text-brand-on-primary/85' : 'text-ui-muted-strong')}>{note}</p>
       ))}
