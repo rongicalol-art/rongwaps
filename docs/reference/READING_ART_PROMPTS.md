@@ -1,6 +1,6 @@
 # Book 1 reading art: Luna execution brief
 
-Status: execution brief for Book 1 reading art, slots 1–3. Lesson 1 slot 1 is approved; this batch covers lessons 1–8, and later lessons remain planned. Slot 3 is the short reading, not a third dialogue.
+Status: app illustrations are applied for Book 1 lessons 1–8, slots 1–3. Later lessons remain planned. Lesson 1 slot 1 is the approved style benchmark. Slot 3 is the short reading, not a third dialogue.
 
 Source: `content/readings/book-1.json`. Character identities: `src/utils/lesson/speakerCharacters.ts` and the saved portraits. Scenes below select one illustrative moment from each reading; they are not literal transcriptions. Where a short reading leaves its narrator unnamed, named cast members are illustrative casting choices, not claims about narrator identity.
 
