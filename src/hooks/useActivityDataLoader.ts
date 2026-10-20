@@ -1,6 +1,7 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
+import type { LessonPartSelectionMap } from '../types/models';
 import { getCourseVocabLookupMap } from '../services/courseVocabLookup';
 import { flashcardService } from '../services/flashcardService';
 import { useAppStore } from '../store/useAppStore';
@@ -197,22 +198,25 @@ export function useActivityDataLoader(
 export async function loadActivityDeck({
   activeBookId,
   selectedLessons,
+  selectedLessonParts: selectedLessonPartsOverride,
   isReviewDeck = false,
   isLibraryDeck = false,
 }: {
   activeBookId: number;
   selectedLessons: number[];
+  selectedLessonParts?: LessonPartSelectionMap;
   isReviewDeck?: boolean;
   isLibraryDeck?: boolean;
 }): Promise<{ cards: Flashcard[]; deckCards: Flashcard[]; knownIds: Set<string> | null; excludedIds: Set<string> }> {
   const effectiveLibraryDeck = isLibraryDeck && !isReviewDeck;
   const store = useAppStore.getState();
+  const selectedLessonParts = selectedLessonPartsOverride ?? store.selectedLessonParts;
   const userId = store.currentUser?.id ?? null;
   // Pinned review ids define a fixed session; a fresh review depends on today's SRS.
   const deckExclusionKey = getDeckIdentityKey({
     activeBookId,
     selectedLessons,
-    selectedLessonParts: store.selectedLessonParts,
+    selectedLessonParts,
     libraryActiveFolder: store.libraryActiveFolder,
     isReviewDeck,
     isLibraryDeck: effectiveLibraryDeck,
@@ -232,7 +236,7 @@ export async function loadActivityDeck({
       const loaded = await (effectiveLibraryDeck
         ? store.libraryActiveFolder === 'starred' ? fetchStarredDeckData(store.favorites) : Promise.resolve({ cards: [], knownIds: null })
         : isReviewDeck ? loadReviewDeck(store.srsData, pinnedReviewCards)
-        : fetchCurriculumDeckData(activeBookId, selectedLessons, store.selectedLessonParts));
+        : fetchCurriculumDeckData(activeBookId, selectedLessons, selectedLessonParts));
       if ((useAppStore.getState().currentUser?.id ?? null) !== userId) return { cards: [], knownIds: null };
       const latest = useAppStore.getState();
       const latestPinned = latest.activeReviewSessionCards?.length ? latest.activeReviewSessionCards : null;

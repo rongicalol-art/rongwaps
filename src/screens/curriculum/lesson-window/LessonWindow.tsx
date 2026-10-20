@@ -6,7 +6,8 @@ import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import type { ActivityType, CourseLessonProgress } from '../../../types/models';
 import { getEnglishLessonTitle } from '../../../utils/lesson/lessonTitle';
-import { preloadPracticeChunks } from '../../../utils/practiceLoader';
+import { preloadPracticeChunks, prefetchPractice } from '../../../utils/practiceLoader';
+import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection';
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
@@ -280,7 +281,12 @@ function LessonBody({
     <LessonActions
       onStart={handleStart}
       onStartIntent={() => {
-        if (mode === 'vocab') void preloadPracticeChunks('flashcards').catch(() => {});
+        if (mode === 'vocab') void prefetchPractice({
+          activeBookId: bookId,
+          selectedLessons: [lesson.id],
+          selectedLessonParts: { [getLessonSelectionKey(bookId, lesson.id)]: selectedPartIds },
+          activity: 'flashcards',
+        });
       }}
     />
   );

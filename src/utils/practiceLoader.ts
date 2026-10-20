@@ -1,6 +1,7 @@
-import type { ActivityType } from '../types/models';
+import type { ActivityType, LessonPartSelectionMap } from '../types/models';
 import { loadActivityDeck } from '../hooks/useActivityDataLoader';
 import { loadPracticeScreen, practiceScreenKey, type PracticeScreenKey } from '../screens/activities/practiceScreens';
+import { isHanziChar } from './characters/hanzi';
 
 /** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
 export async function preloadPracticeChunks(activity?: ActivityType | null): Promise<void> {
@@ -30,6 +31,7 @@ export function preloadRemainingPracticeChunks(activity: ActivityType, hasDock: 
 export interface PracticeIntent {
   activeBookId: number;
   selectedLessons: number[];
+  selectedLessonParts?: LessonPartSelectionMap;
   activity: ActivityType;
   isLibraryMode?: boolean;
   isReviewMode?: boolean;
@@ -40,12 +42,27 @@ export interface PracticeIntent {
  * deck land in the same caches the modal reads, so the real open is warm.
  */
 export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
+  const isCurriculumDeck = !intent.isReviewMode && !intent.isLibraryMode
+    && intent.activity !== 'flashcards-review' && intent.activity !== 'flashcards-library';
+  const deckPromise = isCurriculumDeck
+    ? loadActivityDeck({
+      activeBookId: intent.activeBookId,
+      selectedLessons: intent.selectedLessons,
+      selectedLessonParts: intent.selectedLessonParts,
+    }).then(({ cards }) => {
+      const firstCard = cards[0];
+      if (!firstCard || intent.activity !== 'flashcards') return;
+      const characters = Array.from(new Set(Array.from(firstCard.front).filter(isHanziChar)));
+      void Promise.all([
+        import('../features/flashcards').then(({ preloadFlashcardContent }) => preloadFlashcardContent([firstCard])),
+        import('../services/breakdownService').then(({ getMultipleBreakdowns }) => getMultipleBreakdowns(characters)),
+      ]).catch(() => {});
+    })
+    : undefined;
+
   return Promise.all([
     preloadPracticeChunks(intent.activity),
-    // Review and library decks depend on live state (SRS, folders); only curriculum decks are prefetched.
-    intent.isReviewMode || intent.isLibraryMode || intent.activity === 'flashcards-review' || intent.activity === 'flashcards-library'
-      ? undefined
-      : loadActivityDeck({ activeBookId: intent.activeBookId, selectedLessons: intent.selectedLessons }),
+    deckPromise,
   ]).catch(() => undefined);
 }
 

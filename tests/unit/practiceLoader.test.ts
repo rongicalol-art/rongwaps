@@ -46,7 +46,8 @@ import { audioService } from '../../src/services/audioService';
 import { fetchAllVocabularyPacks } from '../../src/services/contentPacks';
 import { prepareVocabulary } from '../../src/services/vocabularyService';
 import { loadReviewDeck } from '../../src/services/activityDeckFetcher';
-import { getDeckIdentityKey, SHARED_REVIEW_SESSION_KEY } from '../../src/utils/lesson/lessonPartSelection';
+import { getDeckIdentityKey, getLessonSelectionKey, SHARED_REVIEW_SESSION_KEY } from '../../src/utils/lesson/lessonPartSelection';
+import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 
 function isolateDeckState(t: TestContext) {
   const original = useAppStore.getState();
@@ -68,6 +69,22 @@ test('modal, screen and prefetch share one prepared curriculum deck and current 
   assert.strictEqual(prefetched.deckCards, modal.deckCards);
   assert.equal(prefetched.cards.length, modal.cards.length - 1);
   assert.ok(!prefetched.cards.some((card) => card.id === modal.cards[0].id));
+});
+
+test('intent prefetch loads the exact selected part without changing saved selections', async (t) => {
+  isolateDeckState(t);
+  const rows = await fetchAllVocabularyPacks();
+  assert.ok(rows);
+  const row = rows.find((item) => {
+    const position = parseVocabularyId(String(item.id));
+    return position?.bookId === 1 && position.lessonId === 1 && position.partId === 2;
+  });
+  assert.ok(row, 'Book 1 lesson 1 should include a second part');
+  const selectedLessonParts = { [getLessonSelectionKey(1, 1)]: [2] };
+  const result = await loadActivityDeck({ activeBookId: 1, selectedLessons: [1], selectedLessonParts });
+  assert.ok(result.cards.length > 0);
+  assert.ok(result.cards.every((card) => card.partId === 2));
+  assert.deepEqual(useAppStore.getState().selectedLessonParts, {});
 });
 
 test('review row filtering preserves the original prepared cards and complete known-id set', async () => {

@@ -13,12 +13,20 @@ test('protected content auth checks database beta access with a request-scoped t
   const networkFetch = globalThis.fetch;
   let allowed = true;
   let rpcStatus = 200;
+  let userCheckInFlight = false;
+  let authChecksOverlapped = false;
   const seenTokens: string[] = [];
   context.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = new URL(String(input));
     assert.equal(url.origin, 'https://beta-fixture.supabase.co');
-    if (url.pathname === '/auth/v1/user') return Response.json({ id: 'fixture', email: 's25113312@stu.edu.tw' });
+    if (url.pathname === '/auth/v1/user') {
+      userCheckInFlight = true;
+      await new Promise((resolve) => setImmediate(resolve));
+      userCheckInFlight = false;
+      return Response.json({ id: 'fixture', email: 's25113312@stu.edu.tw' });
+    }
     assert.equal(url.pathname, '/rest/v1/rpc/has_beta_access');
+    if (userCheckInFlight) authChecksOverlapped = true;
     seenTokens.push(new Headers(init?.headers).get('Authorization') ?? '');
     return rpcStatus === 200 ? Response.json(allowed) : Response.json({ message: 'fixture outage' }, { status: rpcStatus });
   });
@@ -41,6 +49,7 @@ test('protected content auth checks database beta access with a request-scoped t
   try {
     assert.equal((await authorize()).status, 401);
     assert.equal((await authorize('school-fixture')).continued, true);
+    assert.equal(authChecksOverlapped, true, 'user and beta-access checks should start concurrently');
     assert.equal((await authorize('school-fixture')).locals.userId, 'fixture');
     allowed = false;
     assert.equal((await authorize('personal-fixture')).status, 403);

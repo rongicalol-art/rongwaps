@@ -87,12 +87,16 @@ export async function requireAuth(req: express.Request, res: express.Response, n
     return;
   }
   try {
-    const { data: { user }, error } = await supabase.auth.getUser(token);
+    const [userResult, accessResult] = await Promise.all([
+      supabase.auth.getUser(token),
+      createUserSupabaseClient(token).rpc('has_beta_access'),
+    ]);
+    const { data: { user }, error } = userResult;
     if (error || !user) {
       res.status(401).json({ error: "Unauthorized" });
       return;
     }
-    const { data: allowed, error: accessError, status } = await createUserSupabaseClient(token).rpc('has_beta_access');
+    const { data: allowed, error: accessError, status } = accessResult;
     if (accessError) {
       res.status(status === 403 || status === 401 ? status : 503).json({
         error: status === 403 ? 'Use your Shu-Te student Google account.' : 'Access verification unavailable.',

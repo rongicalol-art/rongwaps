@@ -90,7 +90,7 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
 
   return cachedLookup(cacheKey, async () => {
     let resolvedPos = pos?.trim() || undefined;
-    if (!resolvedPos) {
+    if (!resolvedPos && cleanWords.some((word) => Array.from(word).length > 1)) {
       try {
         const allVocab = await fetchVocabulary();
         resolvedPos = allVocab.find((c) => (
@@ -101,7 +101,6 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
       } catch (error) {
         // Graceful degradation: vocabulary fetch for part-of-speech lookup failed, proceed without POS filter
         debugLogger.warn('Supabase', 'Failed to resolve part-of-speech for example lookup', error);
-        resolvedPos = undefined;
       }
     }
 
