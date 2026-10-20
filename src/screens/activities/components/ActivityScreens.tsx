@@ -138,7 +138,7 @@ export function ActivityScreens({
       )}
 
       {activeActivity === 'writing' && WritingScreen && (
-        <AnimatedActivityScreen skipEnter={firstKey} activityKey="writing" direction={direction}>
+        <AnimatedActivityScreen skipEnter={firstKey} activityKey="writing" direction={direction} className={edgeInsetClassName}>
           <WritingScreen
             activeBookId={activeBookId}
             selectedLessons={selectedLessons}

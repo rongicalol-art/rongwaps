@@ -88,7 +88,7 @@ export function ToneScreen({
   return (
     <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink">
       <ScreenLayout maxWidth="xl" className="flex flex-1 flex-col items-center justify-center px-4 pb-[180px] md:pb-[160px]">
-        <h2 className="mb-6 text-xl font-black text-ui-ink-strong md:mb-8 md:text-2xl">Draw the tones</h2>
+        <h2 className="mb-6 text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:mb-8 md:text-3xl">Draw the tones</h2>
         {currentCard && targets && (
           <ToneStrip
             key={`${currentIndex}:${currentCard.id}`}

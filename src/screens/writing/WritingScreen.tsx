@@ -175,10 +175,11 @@ export function WritingScreen({
       <ScreenLayout
         maxWidth="xl"
         className={cn(
-          'relative flex flex-1 w-full flex-col items-center justify-center overflow-hidden overscroll-none px-2 pointer-events-auto sm:px-4',
+          'relative flex flex-1 w-full flex-col items-center justify-center gap-4 overflow-hidden overscroll-none px-2 pointer-events-auto sm:px-4',
           isCardFinished ? 'pb-[140px] md:pb-[130px]' : 'pb-[90px] md:pb-[100px]'
         )}
       >
+        <h2 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl">Write the word</h2>
         <div className="flex flex-1 w-full flex-col items-center justify-center gap-2 pb-2 pt-2 sm:gap-4">
           <AnimatePresence mode="wait" initial={false}>
             {activeCharIndex < chars.length && currentCard ? (
