@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type MutableRefObject } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { PinyinTone } from '../../../utils/pinyin/pinyinTones';
-import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { cn } from '../../../utils/cn';
-import { AppIcon } from '../../../lib/widgets';
 import {
   GUIDE_LEVELS, classifyStroke, contourPath, lerpContour, levelToY, resampleStroke, toneContour, yToLevel, type TonePoint,
 } from '../utils/toneShapes';
@@ -26,47 +24,8 @@ const SHAPE_COLOR = 'var(--color-brand-primary)';
 const MISS_COLOR = 'var(--color-feedback-danger)';
 const TONE_NAMES: Record<PinyinTone, string> = { 1: 'flat', 2: 'rising', 3: 'dipping', 4: 'falling', 5: 'light' };
 
-const TONE_CHANGE_RULES = [
-  { label: '3 + 3', detail: 'The first is spoken as 2; both marks usually stay 3. 你好 nǐ hǎo → ní hǎo. Longer groups depend on how the phrase is grouped.' },
-  { label: '3 + another tone', detail: 'The 3rd is often a low half-third in speech; its mark stays 3.' },
-  { label: '不 bù', detail: 'Before a 4th tone, it rises to bú. Before other tones, it stays bù.' },
-  { label: '一 yī', detail: 'Before a 4th-tone word it becomes yí; before 1st–3rd tones it becomes yì. It stays yī when counted by itself.' },
-  { label: '4 + 4', detail: 'The first can sound shorter or less sharp; both marks stay 4.' },
-  { label: 'Light tone', detail: 'An unmarked syllable is short and light; its pitch follows the syllable before it.' },
-];
-
-function toneMarkedSyllable(target: ToneTarget, tone: PinyinTone) {
-  return target.base
-    .split('/')
-    .map((base) => numberToToneMarks(`${base}${tone}`))
-    .join('/');
-}
-
-function getWordToneNotes(targets: ToneTarget[]) {
-  return targets.flatMap((target, index) => {
-    const next = targets[index + 1];
-    if (!next) return [];
-
-    if (target.written === 3 && next.written === 3) {
-      return [`${target.char} is written with a 3rd tone, but it is spoken like a 2nd because it comes before another 3rd tone. ${next.char} stays 3rd, usually low here.`];
-    }
-    if (target.written === 3 && next.written !== 3) {
-      return [`${target.char} is a 3rd tone before a different tone, so it is usually low and does not rise fully in natural speech. Its Pinyin mark stays 3rd.`];
-    }
-    if (target.char === '不' && target.written !== 5 && next.written === 4) {
-      return ['不 rises before a 4th tone: bù → bú.'];
-    }
-    if (target.char === '一' && next.written >= 1 && next.written <= 4) {
-      return [next.written === 4
-        ? '一 changes from yī to yí before a 4th tone.'
-        : '一 changes from yī to yì before a 1st, 2nd, or 3rd tone.'];
-    }
-    if (target.written === 4 && next.written === 4) {
-      return ['These two 4th tones stay 4th; the first may sound a little shorter or softer.'];
-    }
-    return [];
-  });
-}
+const TONE_CUES: Record<PinyinTone, string> = { 1: 'stays high.', 2: 'rises.', 3: 'dips.', 4: 'falls.', 5: 'is light.' };
+const POSITION_NAMES = ['First', 'Second', 'Third', 'Fourth'];
 
 const strokePx = (tone: PinyinTone) => (tone === 5 ? DOT_PX : LINE_PX);
 const glyphSize = (count: number) => (count <= 2 ? 'text-5xl md:text-6xl' : count === 3 ? 'text-4xl md:text-5xl' : 'text-3xl md:text-5xl');
@@ -96,12 +55,13 @@ function ToneColumn({ target, attempt, active, submitRef, onDrawn }: ToneColumnP
   /** The live line's path data, appended to rather than rebuilt, and painted at most once a frame. */
   const liveDRef = useRef('');
   const paintRef = useRef<number | null>(null);
-  /** The line has finished settling: draw the final shapes from props. The next pad is live as soon as a line is read. */
+  /** Unlock a missed syllable only after its correction has settled. */
   const [settled, setSettled] = useState(Boolean(attempt));
 
   useEffect(() => () => {
     if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
     if (paintRef.current !== null) cancelAnimationFrame(paintRef.current);
+    stopHum();
   }, []);
 
   const finish = useCallback((raw: readonly TonePoint[], drew: PinyinTone) => {
@@ -109,54 +69,37 @@ function ToneColumn({ target, attempt, active, submitRef, onDrawn }: ToneColumnP
     const shape = shapeRef.current;
     if (!live || !shape || busyRef.current) return;
     busyRef.current = true;
+    setSettled(false);
     const line = resampleStroke(raw);
     const shapePoints = toneContour(target.spoken);
     const ok = drew === target.spoken;
     const settle = () => {
       live.getAnimations().forEach((a) => a.cancel());
       live.removeAttribute('d');
+      busyRef.current = false;
       setSettled(true);
     };
     onDrawn({ drew, ok, line });
     if (reduceMotion) { settle(); return; }
 
-    if (ok) {
-      // The line settles into the real shape (a neutral tone shrinks to its dot).
-      const from = strokePx(drew);
-      const to = strokePx(target.spoken);
-      const start = performance.now();
-      const step = (now: number) => {
-        const t = Math.min(1, (now - start) / MORPH_MS);
-        const e = 1 - (1 - t) ** 3;
-        live.setAttribute('d', contourPath(lerpContour(line, shapePoints, e)));
-        live.setAttribute('stroke', t > 0.4 ? SHAPE_COLOR : LINE_COLOR);
-        live.setAttribute('stroke-width', String(from + (to - from) * e));
-        frameRef.current = t < 1 ? requestAnimationFrame(step) : null;
-        if (t >= 1) settle();
-      };
-      frameRef.current = requestAnimationFrame(step);
-      return;
-    }
-
-    // A miss: your line fades back and the real shape appears over it.
-    live.setAttribute('d', contourPath(line));
-    live.setAttribute('stroke', MISS_COLOR);
-    live.setAttribute('stroke-width', String(strokePx(drew)));
-    live.animate([{ opacity: 1 }, { opacity: 0.35 }], { duration: 300, fill: 'forwards' });
-    shape.setAttribute('d', contourPath(shapePoints));
-    shape.setAttribute('stroke', SHAPE_COLOR);
-    shape.setAttribute('stroke-width', String(strokePx(target.spoken)));
-    const length = shape.getTotalLength();
-    const reveal = target.spoken === 5
-      ? shape.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: 200, fill: 'backwards' })
-      : shape.animate(
-        [{ strokeDasharray: `${length} ${length}`, strokeDashoffset: length }, { strokeDasharray: `${length} ${length}`, strokeDashoffset: 0 }],
-        { duration: 480, delay: 200, easing: 'cubic-bezier(.3,.7,.4,1)', fill: 'backwards' },
-      );
-    reveal.finished.then(settle, settle);
+    // Your whole stroke becomes the spoken shape; a miss leaves a faint guide to redraw.
+    const from = strokePx(drew);
+    const to = strokePx(target.spoken);
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - start) / MORPH_MS);
+      const e = 1 - (1 - t) ** 3;
+      live.setAttribute('d', contourPath(lerpContour(line, shapePoints, e)));
+      live.setAttribute('stroke', t > 0.4 ? SHAPE_COLOR : ok ? LINE_COLOR : MISS_COLOR);
+      live.setAttribute('stroke-width', String(from + (to - from) * e));
+      frameRef.current = t < 1 ? requestAnimationFrame(step) : null;
+      if (t >= 1) settle();
+    };
+    frameRef.current = requestAnimationFrame(step);
   }, [onDrawn, reduceMotion, target.spoken]);
 
-  const canSubmit = active && !attempt;
+  const retry = active && Boolean(attempt && !attempt.ok);
+  const canSubmit = active && (!attempt || (retry && settled));
   useEffect(() => {
     if (!submitRef || !canSubmit) return undefined;
     submitRef.current = (tone) => finish(toneContour(tone), tone);
@@ -180,7 +123,7 @@ function ToneColumn({ target, attempt, active, submitRef, onDrawn }: ToneColumnP
   };
 
   const onPointerDown = (event: React.PointerEvent) => {
-    if (!active || attempt || busyRef.current) return;
+    if (!canSubmit || busyRef.current) return;
     event.preventDefault();
     event.currentTarget.setPointerCapture(event.pointerId);
     pointerRef.current = event.pointerId;
@@ -188,6 +131,7 @@ function ToneColumn({ target, attempt, active, submitRef, onDrawn }: ToneColumnP
     const first = toLocal(event);
     pointsRef.current = [first];
     liveDRef.current = contourPath([first]);
+    setSettled(false);
     const live = liveRef.current!;
     live.setAttribute('d', liveDRef.current);
     live.setAttribute('stroke', LINE_COLOR);
@@ -215,14 +159,20 @@ function ToneColumn({ target, attempt, active, submitRef, onDrawn }: ToneColumnP
     finish(points, classifyStroke(points));
   };
 
-  const done = Boolean(attempt);
+  const done = Boolean(attempt?.ok);
   const final = settled && attempt;
   return (
     <div
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerEnd}
-      onPointerCancel={onPointerEnd}
+      onPointerCancel={() => {
+        pointsRef.current = null;
+        pointerRef.current = null;
+        liveRef.current?.removeAttribute('d');
+        setSettled(Boolean(attempt));
+        stopHum();
+      }}
       aria-label={done ? `${target.char}: ${TONE_NAMES[target.spoken]} tone` : `Draw the tone of ${target.char}`}
       role="img"
       className={cn(
@@ -240,17 +190,12 @@ function ToneColumn({ target, attempt, active, submitRef, onDrawn }: ToneColumnP
             className={active && !done ? 'stroke-brand-primary-soft-edge' : 'stroke-ui-divider'}
           />
         ))}
-        {final && !final.ok && (
-          <path
-            d={contourPath(final.line)} fill="none" stroke={MISS_COLOR} strokeOpacity={0.35}
-            strokeWidth={strokePx(final.drew)} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke"
-          />
-        )}
         <path
           ref={shapeRef}
-          d={final ? contourPath(toneContour(target.spoken)) : undefined}
-          stroke={final ? SHAPE_COLOR : undefined}
-          strokeWidth={final ? strokePx(target.spoken) : undefined}
+          d={final || retry ? contourPath(toneContour(target.spoken)) : undefined}
+          stroke={final || retry ? SHAPE_COLOR : undefined}
+          strokeOpacity={retry ? 0.22 : 1}
+          strokeWidth={final || retry ? strokePx(target.spoken) : undefined}
           fill="none" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke"
         />
         <path ref={liveRef} fill="none" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
@@ -277,13 +222,14 @@ interface ToneStripProps {
  */
 export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, onDone, keyboardEnabled = true }: ToneStripProps) {
   const reduceMotion = useReducedMotion();
-  const [showToneGuide, setShowToneGuide] = useState(false);
   const [attempts, setAttempts] = useState<ToneAttempt[]>([]);
   const attemptsRef = useRef<ToneAttempt[]>([]);
+  const firstAttemptsRef = useRef<ToneAttempt[]>([]);
   const doneTimerRef = useRef<number | null>(null);
   const submitRef = useRef<((tone: PinyinTone) => void) | null>(null);
   const glyphRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const active = attempts.length;
+  const missed = attempts.findIndex((attempt) => !attempt.ok);
+  const active = missed < 0 ? attempts.length : missed;
   const finished = active >= targets.length;
 
   useEffect(() => {
@@ -311,15 +257,18 @@ export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, 
 
   useEffect(() => () => { if (doneTimerRef.current !== null) window.clearTimeout(doneTimerRef.current); }, []);
 
-  const handleDrawn = useCallback((attempt: ToneAttempt) => {
-    const next = [...attemptsRef.current, attempt];
+  const handleDrawn = useCallback((index: number, attempt: ToneAttempt) => {
+    const next = [...attemptsRef.current];
+    next[index] = attempt;
+    firstAttemptsRef.current[index] ??= attempt;
     attemptsRef.current = next;
     setAttempts(next);
-    onSyllable(targets[next.length - 1], attempt);
-    if (next.length === targets.length) doneTimerRef.current = window.setTimeout(() => onDone(next), 750);
-  }, [onDone, onSyllable, targets]);
-
-  const wordToneNotes = getWordToneNotes(targets);
+    if (attempt.ok) onSyllable(targets[index], attempt);
+    else onReplay();
+    if (next.length === targets.length && next.every((answer) => answer.ok)) {
+      doneTimerRef.current = window.setTimeout(() => onDone(firstAttemptsRef.current), 750);
+    }
+  }, [onDone, onReplay, onSyllable, targets]);
 
   return (
     <div className="flex w-full flex-col items-center gap-4 md:gap-5" style={{ maxWidth: targets.length * COLUMN_MAX_PX }}>
@@ -366,67 +315,14 @@ export function ToneStrip({ targets, showPinyin, singKey, onReplay, onSyllable, 
             attempt={attempts[i]}
             active={i === active}
             submitRef={i === active ? submitRef : undefined}
-            onDrawn={handleDrawn}
+            onDrawn={(attempt) => handleDrawn(i, attempt)}
           />
         ))}
       </div>
 
-      <div className="relative z-20 flex justify-center">
-        <button
-          type="button"
-          onClick={() => setShowToneGuide((open) => !open)}
-          aria-expanded={showToneGuide}
-          className="inline-flex min-h-9 items-center gap-1.5 rounded-control px-2.5 text-sm font-extrabold text-ui-muted-strong transition-colors hover:bg-ui-hover focus-ring"
-        >
-          <AppIcon name="lightbulb" size={17} />
-          Tone changes
-        </button>
-        {showToneGuide && (
-          <section
-            role="note"
-            aria-label="Pinyin tone changes"
-            data-no-screen-nav
-            className="absolute bottom-[calc(100%+8px)] left-1/2 w-[min(92vw,28rem)] -translate-x-1/2 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 text-left shadow-ambient-lg"
-          >
-            <div className="mb-2 flex items-center justify-between gap-3">
-              <h3 className="text-base font-black text-ui-ink-strong">Why Pinyin and speech can differ</h3>
-              <button
-                type="button"
-                onClick={() => setShowToneGuide(false)}
-                aria-label="Close tone changes"
-                className="-mr-2 -mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-control text-ui-muted-strong hover:bg-ui-hover focus-ring"
-              >
-                <AppIcon name="close" size={18} />
-              </button>
-            </div>
-            <p className="mb-3 text-sm font-bold leading-snug text-ui-muted-strong">
-              Pinyin usually keeps a character’s base tone even when its spoken pitch shifts. The marks help show the word; your voice follows the rules below.
-            </p>
-            {wordToneNotes.length > 0 && (
-              <div className="mb-3 rounded-control bg-brand-primary-soft px-3 py-2.5 text-sm font-bold leading-snug text-ui-ink">
-                <p className="font-black text-ui-ink-strong">In this word</p>
-                <p className="mt-1 text-ui-muted-strong">
-                  Written: {targets.map((target) => target.syllable).join(' ')}
-                  {' · '}spoken: {targets.map((target) => toneMarkedSyllable(target, target.spoken)).join(' ')}
-                </p>
-                <ul className="mt-1.5 list-disc space-y-1 pl-4">
-                  {wordToneNotes.map((note, index) => <li key={index}>{note}</li>)}
-                </ul>
-              </div>
-            )}
-            <p className="mb-2 text-xs font-bold leading-snug text-ui-muted-strong">
-              Pinyin may also write 不 and 一 with their changed sounds: bú, yí, or yì.
-            </p>
-            <ul className="space-y-1.5 text-xs font-bold leading-snug text-ui-muted-strong">
-              {TONE_CHANGE_RULES.map((rule) => (
-                <li key={rule.label}>
-                  <span className="font-black text-ui-ink-strong">{rule.label}:</span> {rule.detail}
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </div>
+      <p aria-live="polite" role="status" className="min-h-6 text-center text-base font-extrabold text-ui-ink-strong">
+        {missed >= 0 ? `${POSITION_NAMES[missed]} tone ${TONE_CUES[targets[missed].spoken]}` : '\u00a0'}
+      </p>
     </div>
   );
 }
