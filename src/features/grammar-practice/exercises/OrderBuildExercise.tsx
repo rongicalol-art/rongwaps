@@ -6,6 +6,7 @@ import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { ListenBuildItem, OrderBuildItem } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { checkOrderBuild } from '../../../utils/grammar/grammarPracticeSequence';
+import { PracticeCharacterPrompt } from '../components/PracticeCharacterPrompt';
 import { PracticeBubble } from '../components/PracticeBubble';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
@@ -99,6 +100,42 @@ export function OrderBuildExercise({
   const remove = (tile: number) => { if (!locked) setLine((previous) => previous.filter((placed) => placed !== tile)); };
   useNumberKeySelection({ items: bank, onSelect: add, disabled: locked || shortcutsDisabled });
 
+  const answerLine = (
+    <div
+      className={cn(
+        'flex min-h-20 w-full flex-wrap items-center gap-x-1.5 border-b-2 py-3 transition-colors',
+        status === 'idle' && 'border-ui-divider',
+        status === 'correct' && 'border-feedback-success',
+        status === 'wrong' && 'border-feedback-danger',
+      )}
+    >
+      {line.length === 0 && <span className="text-sm font-bold text-ui-muted">{placeholder}</span>}
+      {line.map((tile, position) => (
+        <motion.button
+          key={tile}
+          type="button"
+          layout="position"
+          layoutId={layoutId(tile)}
+          transition={WORD_FLIGHT}
+          disabled={locked}
+          onClick={() => remove(tile)}
+          aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
+          className={cn(
+            'flex select-none flex-col items-center rounded-xs px-1.5 py-0.5 text-brand-primary-deep focus-ring-inline enabled:hover:opacity-75',
+            status === 'correct' && 'text-feedback-success-edge',
+            misplaced?.has(position) && 'text-feedback-danger-edge',
+          )}
+        >
+          <span className="font-chinese text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
+          {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
+        </motion.button>
+      ))}
+      {status === 'correct' && end && (
+        <span className="font-chinese text-2xl leading-[1.3] text-feedback-success-edge sm:text-3xl" aria-hidden="true">{end}</span>
+      )}
+    </div>
+  );
+
   return (
     <LayoutGroup id={`order-${item.id}`}>
       {dialogue ? (
@@ -121,63 +158,21 @@ export function OrderBuildExercise({
           )}
 
           {dialogue.type === 'incoming' && (
-            <PracticeBubble side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
-              <ContextualChineseText
-                text={dialogue.utterance}
-                tokens={contextTokens}
-                characterPreference={script}
-                onOpenWord={onOpenWord}
-              />
-            </PracticeBubble>
+            <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
+              <PracticeBubble className="relative max-w-full rounded-control rounded-bl-control before:absolute before:-left-2 before:top-7 before:size-4 before:rotate-45 before:border-b-2 before:border-l-2 before:border-ui-divider before:bg-ui-surface" side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
+                <ContextualChineseText
+                  text={dialogue.utterance}
+                  tokens={contextTokens}
+                  characterPreference={script}
+                  onOpenWord={onOpenWord}
+                />
+              </PracticeBubble>
+            </PracticeCharacterPrompt>
           )}
 
           <span className="h-1" aria-hidden="true" />
 
-          {/* Learner's reply bubble */}
-          {line.length === 0 ? (
-            <div
-              className={cn(
-                'flex min-h-14 min-w-36 max-w-[88%] self-end items-center gap-2 rounded-feature rounded-br-xs px-5 py-3.5 border-2 border-dashed border-brand-primary-soft-edge bg-ui-surface text-ui-muted transition-colors',
-              )}
-            >
-              <span className="inline-block h-4 w-0.5 animate-pulse bg-brand-primary" aria-hidden="true" />
-              <span className="text-sm font-bold text-ui-muted">{placeholder}</span>
-            </div>
-          ) : (
-            <div
-              className={cn(
-                'flex min-h-14 max-w-[88%] self-end flex-wrap items-center gap-1.5 rounded-feature rounded-br-xs px-5 py-3.5 transition-colors shadow-xs',
-                status === 'idle' && 'bg-brand-primary text-brand-on-primary',
-                status === 'correct' && 'bg-feedback-success text-brand-on-primary',
-                status === 'wrong' && 'bg-feedback-danger text-brand-on-primary',
-              )}
-            >
-              {line.map((tile, position) => (
-                <motion.button
-                  key={tile}
-                  type="button"
-                  layout="position"
-                  layoutId={layoutId(tile)}
-                  transition={WORD_FLIGHT}
-                  disabled={locked}
-                  onClick={() => remove(tile)}
-                  aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
-                  className={cn(
-                    'flex select-none flex-col items-center rounded-control px-2 py-0.5 focus-ring-inline enabled:hover:opacity-85 bg-brand-on-primary/15 text-brand-on-primary',
-                    misplaced?.has(position) && 'bg-white/30 text-white ring-1 ring-white/60',
-                  )}
-                >
-                  <span className="font-chinese text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
-                  {showPinyin && <span className="text-xs font-bold text-brand-on-primary/80">{item.tiles[tile].pinyin}</span>}
-                </motion.button>
-              ))}
-              {status === 'correct' && end && (
-                <span className="font-chinese text-2xl leading-[1.3] text-brand-on-primary sm:text-3xl" aria-hidden="true">
-                  {end}
-                </span>
-              )}
-            </div>
-          )}
+          {answerLine}
 
           {status === 'correct' && dialogue.type === 'afterward' && (
             <motion.div
@@ -198,7 +193,11 @@ export function OrderBuildExercise({
         </div>
       ) : (
         <div className="flex flex-col gap-7">
-          <PracticePrompt sub={item.sub} />
+          {!children && item.kind === 'order-build' && !item.scene ? (
+            <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
+              <PracticePrompt sub={item.sub ?? item.prompt} />
+            </PracticeCharacterPrompt>
+          ) : <PracticePrompt sub={item.sub} />}
           {children}
           {item.kind === 'order-build' && item.scene && (
             <PracticeScene
@@ -214,35 +213,7 @@ export function OrderBuildExercise({
               )}
             />
           )}
-          <div
-            className={cn(
-              'flex min-h-24 flex-wrap items-end justify-center gap-x-1.5 border-b-[3px] pb-2 transition-colors',
-              status === 'idle' && 'border-ui-divider',
-              status === 'correct' && 'border-feedback-success',
-              status === 'wrong' && 'border-feedback-danger',
-            )}
-          >
-            {line.map((tile, position) => (
-              <motion.button
-                key={tile}
-                type="button"
-                layout="position"
-                layoutId={layoutId(tile)}
-                transition={WORD_FLIGHT}
-                disabled={locked}
-                onClick={() => remove(tile)}
-                aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
-                className={cn(
-                  'flex select-none flex-col items-center rounded-control px-1.5 py-0.5 focus-ring-inline enabled:hover:opacity-75',
-                  status === 'correct' && 'text-feedback-success-edge',
-                  misplaced?.has(position) && 'text-feedback-danger-edge',
-                )}
-              >
-                <span className="font-chinese text-3xl leading-[1.3] sm:text-4xl">{textIn(item.tiles[tile], script)}</span>
-                {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
-              </motion.button>
-            ))}
-          </div>
+          {answerLine}
         </div>
       )}
       {trayHost && createPortal(

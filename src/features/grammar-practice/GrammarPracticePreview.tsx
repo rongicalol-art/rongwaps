@@ -68,7 +68,7 @@ export function GrammarPracticePreview() {
           </button>
         ))}
       </div>
-      <div ref={setBarHost} className="relative h-[760px] w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-canvas">
+      <div ref={setBarHost} role="region" aria-label="Grammar practice preview" className="relative h-[760px] w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-canvas">
         <div className="absolute inset-0 overflow-y-auto px-4 pb-40 pt-6 sm:px-8">
           <GrammarPracticeView
             key={`${selected.exercise}-${selected.item}-${run}`}

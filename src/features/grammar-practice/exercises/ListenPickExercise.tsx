@@ -27,7 +27,7 @@ export function ListenPickExercise({
     <>
       <div className="flex flex-col items-center gap-8">
         <PracticePrompt sub={item.sub} />
-        <ClipButton clip={item.clip} />
+        <ClipButton clip={item.clip} status={status} />
       </div>
       {trayHost && createPortal(
         item.options.map((option, index) => (

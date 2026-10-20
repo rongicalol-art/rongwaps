@@ -4,6 +4,8 @@ import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import type { ListenClip } from '../../../types/models';
 import { cn } from '../../../utils/cn';
+import type { PracticeStatus } from '../practiceTypes';
+import { PracticeCharacterPrompt } from './PracticeCharacterPrompt';
 
 type ClipState = 'idle' | 'playing' | 'failed';
 
@@ -13,7 +15,7 @@ type ClipState = 'idle' | 'playing' | 'failed';
  * the item opens when the learner's `autoPlayAudio` setting is on; a browser that blocks that
  * quietly leaves the button for a tap.
  */
-export function ClipButton({ clip: { file, start, end } }: { clip: ListenClip }) {
+export function ClipButton({ clip: { file, start, end }, status }: { clip: ListenClip; status: PracticeStatus }) {
   const rate = useAppStore((state) => state.pronunciationRate);
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const [state, setState] = useState<ClipState>('idle');
@@ -38,17 +40,21 @@ export function ClipButton({ clip: { file, start, end } }: { clip: ListenClip })
   }, [play]);
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <ActionButton
-        aria-label={state === 'playing' ? 'Playing the recording' : 'Play the recording'}
-        size="lg"
-        radius="feature"
-        onClick={() => play(true)}
-        className="h-24 w-24 !p-0 sm:h-28 sm:w-28"
-      >
-        <AppIcon name="audio" size={52} className={cn('text-brand-primary-soft', state === 'playing' && 'motion-safe:animate-pulse')} />
-      </ActionButton>
-      {state === 'failed' && <p role="status" className="text-sm font-bold text-ui-muted-strong">The recording would not play. Tap to try again, or skip.</p>}
-    </div>
+    <PracticeCharacterPrompt status={status} speaking={state === 'playing'} waiting>
+      <div className="flex w-full max-w-60 flex-col items-start gap-2">
+        <ActionButton
+          aria-label={state === 'playing' ? 'Playing the recording' : 'Play the recording'}
+          size="lg"
+          variant="secondary"
+          radius="feature"
+          fullWidth
+          onClick={() => play(true)}
+          className="h-24 !p-0 sm:h-28"
+        >
+          <AppIcon name="audio" size={44} className={cn('text-brand-primary', state === 'playing' && 'motion-safe:animate-pulse')} />
+        </ActionButton>
+        {state === 'failed' && <p role="status" className="text-sm font-bold text-ui-muted-strong">The recording would not play. Tap to try again, or skip.</p>}
+      </div>
+    </PracticeCharacterPrompt>
   );
 }

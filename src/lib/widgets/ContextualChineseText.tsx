@@ -163,13 +163,13 @@ export function ContextualChineseText({
                 ? `${token.text}: ${token.pinyin ? `${token.pinyin}, ` : ''}${token.meaning}`
                 : `Open ${token.text} in the dictionary`}
               className={cn(
-                '-mx-0.5 rounded-xs px-0.5 font-chinese text-inherit transition-colors focus-ring-inline',
+                '-mx-0.5 rounded-xs px-0.5 text-left font-chinese text-inherit transition-colors focus-ring-inline',
                 softBgClass,
                 token.focused && 'font-chinese font-black',
                 colorClass,
               )}
             >
-              {token.text}
+              {token.text}{token.suffix}
             </button>
             {token.meaning && (
               <span
@@ -187,10 +187,10 @@ export function ContextualChineseText({
             key={token.key}
             className={token.focused ? (CHINESE_CHARACTER.test(token.text) ? cn('font-chinese font-black', colorClass) : cn('font-sans font-black', colorClass)) : undefined}
           >
-            {token.text}
+            {token.text}{token.suffix}
           </span>
         );
-        return token.suffix ? <span key={token.key} className="whitespace-nowrap [&>*]:whitespace-normal">{word}{token.suffix}</span> : word;
+        return word;
       })}
     </span>
   );

@@ -44,6 +44,7 @@ export function GrammarPracticeView({
   const checkRef = useRef<(() => void) | null>(null);
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
+  const sentencePrompt = item.kind === 'order-build' && !item.scene && !item.sub && item.prompt;
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);
@@ -87,7 +88,7 @@ export function GrammarPracticeView({
       <header className="flex flex-col gap-1">
         <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
         {/* The item's own question is the title; the book's general instruction only when an item has none. */}
-        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{item.prompt ?? practice.title}</h1>
+        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{sentencePrompt ? 'Build a sentence' : item.prompt ?? practice.title}</h1>
       </header>
 
       <AnimatePresence mode="wait" initial={false}>

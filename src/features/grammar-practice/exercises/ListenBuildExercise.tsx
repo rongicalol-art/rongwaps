@@ -10,7 +10,7 @@ import { OrderBuildExercise } from './OrderBuildExercise';
 export function ListenBuildExercise(props: PracticeExerciseProps<ListenBuildItem>) {
   return (
     <OrderBuildExercise {...props}>
-      <ClipButton clip={props.item.clip} />
+      <ClipButton clip={props.item.clip} status={props.status} />
     </OrderBuildExercise>
   );
 }
