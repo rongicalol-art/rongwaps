@@ -6,14 +6,8 @@ create table private.full_course_access_emails (
 alter table private.full_course_access_emails enable row level security;
 revoke all on private.full_course_access_emails from public, anon, authenticated;
 
--- This explicit owner exception lets the verified Google account pass the
--- school-beta gate before its full-course grant is checked.
-insert into private.beta_owner_emails (email)
-values ('gwaporon311@gmail.com')
-on conflict (email) do nothing;
-
 insert into private.full_course_access_emails (email)
-values ('gwaporon311@gmail.com');
+values ('s25113312@stu.edu.tw');
 
 create function private.full_course_user_allowed(target_user uuid)
 returns boolean language sql stable security definer set search_path = '' as $$

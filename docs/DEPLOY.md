@@ -10,7 +10,7 @@ One Node service (`npm run build`, then `npm start`) serves the SPA and the API.
 
 ## Beta content trim and login gate
 
-- `npm run build` ends with `scripts/build/trimBetaContent.ts`: it rewrites the built `dist/data` (never `public/data`) to Book 1, Introduction + Lessons 1..`BETA_LAST_LESSON` (`src/data/books.ts`) for vocabulary, readings, grammar, course examples, dialogue alignment, flashcard extras and the textbook page scans, and recomputes manifests. Dictionary, breakdowns, search and memory hooks stay whole. Launch day: remove that step from `build`.
+- Full course packs and scans are bundled in `dist/data` so accounts with full-course grants can access all books and lessons, while the client and database gate non-granted accounts. `scripts/build/trimBetaContent.ts` can still be run manually if an asset-trimmed beta bundle is specifically desired.
 - The server (`server/index.ts`) serves those lesson packs and scans only with a valid Supabase bearer token (`Cache-Control: private`, 600/min per user); `staticContentService.fetchContent` sends the token and the book-page viewer loads scans as blobs. Keep the gated folder list in sync between the two files.
 - Probe after deploy: `curl -i https://<host>/data/vocabulary/book-1.json` must return 401; `/data/dictionary/manifest.json` must also return 401 without a token. Every `/data` pack is gated, dictionary included.
 - Use `curl --path-as-is` to check encoded mount names (`/%64ata/grammar/book-1.json`) and duplicate slashes (`//data/grammar/book-1.json`) also return 401 without a token. The gate normalizes the full request path before static-file serving.
@@ -39,7 +39,7 @@ Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see 
 
 Apply `supabase/migrations/20261016015445_school_beta_access.sql` before deploying the matching app/server. The database owns the authorization rule: a verified Google identity with a student email (`s` + digits + `@stu.edu.tw`) and Google Workspace `custom_claims.hd = stu.edu.tw`, or a verified Google email explicitly approved in `private.beta_owner_emails`. This confirms school-account membership, not current enrollment. The school-beta migration itself seeds no owner exception; the full-course migration below adds the explicitly approved owner account.
 
-`20261018154836_full_course_access_grants.sql` adds a private per-account lesson grant and seeds `gwaporon311@gmail.com` in both the full-course table and the beta-owner allowlist. Apply it before deploying the matching client. It unlocks all lesson books for that verified Google account; delete its full-course row to revoke the lesson grant, and its beta-owner row to revoke beta access too.
+`20261018154836_full_course_access_grants.sql` and `20261020102750_grant_owner_full_course.sql` add a private per-account lesson grant and seed `gwaporon311@gmail.com` in both the full-course table and the beta-owner allowlist. Apply them before deploying the matching client. It unlocks all lesson books for that verified Google account; delete its full-course row to revoke the lesson grant, and its beta-owner row to revoke beta access too.
 
 Enable these Authentication hooks after applying the migration:
 

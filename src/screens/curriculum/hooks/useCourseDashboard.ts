@@ -82,9 +82,7 @@ export function useCourseDashboard({
       : SAMPLE_LESSONS.map((lesson, index) => ({
         id: lesson.id,
         label: lesson.label,
-        title: bookIsLocked
-          ? LOCKED_BOOK_LESSON_TITLES[activeBookId]?.[index] ?? lesson.label
-          : lesson.label,
+        title: LOCKED_BOOK_LESSON_TITLES[activeBookId]?.[index] ?? lesson.label,
         status: bookIsLocked ? 'locked' : hasFullCourseAccess ? 'available' : lesson.status,
       }));
     const configuredLessonsById = new Map(configuredLessons.map((lesson) => [lesson.id, lesson]));
