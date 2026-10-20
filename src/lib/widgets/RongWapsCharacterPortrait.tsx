@@ -43,7 +43,7 @@ export function RongWapsCharacterPortrait({
         draggable={false}
         loading="lazy"
         decoding="async"
-        className="h-full w-full object-cover select-none pointer-events-none scale-[1.24] translate-y-[6%]"
+        className="h-full w-full object-contain select-none pointer-events-none"
       />
     </div>
   );
