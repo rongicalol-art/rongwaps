@@ -2,7 +2,7 @@ import { getIdPosition } from '../lesson/curriculumPosition';
 import type { Flashcard } from '../../data/flashcards';
 import type { RankedExample } from './courseExamples';
 
-export const FLASHCARD_EXTRAS_SHARDS = 256;
+export const FLASHCARD_EXTRAS_SHARDS = 512;
 export interface FlashcardExtras {
   examples: RankedExample[];
   wordHook: string | null;

@@ -441,18 +441,25 @@ def han_only(text):
     return ''.join(char for char in text if '\u3400' <= char <= '\u9fff' or '\U00020000' <= char <= '\U0002ebef')
 
 
-def load_book1_course_extras(items):
-    """Return OCR vocabulary examples that differ from the primary vocab sentence."""
+def load_book1_course_examples():
     if not BOOK1_COURSE_EXAMPLES.exists():
-        return []
+        raise FileNotFoundError(f'Missing generated Book 1 course examples: {BOOK1_COURSE_EXAMPLES}')
     pack = json.loads(BOOK1_COURSE_EXAMPLES.read_text())
+    records = pack.get('records')
+    if not isinstance(records, list):
+        raise ValueError(f'Invalid generated Book 1 course examples: {BOOK1_COURSE_EXAMPLES}')
+    return records
+
+
+def load_book1_course_extras(items, records):
+    """Return OCR vocabulary examples that differ from the primary vocab sentence."""
     item_ids = {item['id'] for item in items}
     primary = {
         (item['id'], han_only(example['chinese']))
         for item in items for example in item['_examples']
     }
     extras = []
-    for record in pack.get('records', []):
+    for record in records:
         if not re.fullmatch(r'.+-E\d{2}', str(record.get('id', ''))):
             continue
         source_card_id = record.get('sourceCardId')
@@ -502,7 +509,51 @@ def infer_emission(model, waveform, device):
     return torch.cat(chunks, dim=0)
 
 
-def align_segments(model, dictionary, aligner, track_path, segments, tokens, device):
+def refine_word_anchors(items, track_path, aligned, source_cache, signal_cache):
+    """Replace weak sequence word bounds with source-word audio fingerprints."""
+    if track_path not in signal_cache:
+        signal_cache[track_path] = decode(track_path, FINGERPRINT_SAMPLE_RATE)
+    signal = signal_cache[track_path]
+    word_segments = {
+        segment['sourceCardId']: segment
+        for segment in aligned if segment.get('kind') == 'word'
+    }
+    cursor = 0
+    previous_example_length = 0
+    matched = 0
+    for item in items:
+        segment = word_segments.get(item['id'])
+        template = source_template(item, source_cache)
+        earliest = cursor + round(
+            (previous_example_length * 0.20 + 0.35) * FINGERPRINT_SAMPLE_RATE
+        ) if cursor else 0
+        max_gap = max(18, min(60, 10 + previous_example_length * 0.55))
+        if template is not None:
+            score, position = normalized_match(
+                signal, template, earliest,
+                earliest + max_gap * FINGERPRINT_SAMPLE_RATE,
+            )
+            if segment and position is not None and score >= MIN_WORD_MATCH_SCORE:
+                segment.update({
+                    'start': position / FINGERPRINT_SAMPLE_RATE,
+                    'end': (position + len(template)) / FINGERPRINT_SAMPLE_RATE,
+                    'wordAnchorScore': score,
+                    'alignmentMethod': 'word-fingerprint',
+                })
+                cursor = position + len(template)
+                matched += 1
+            else:
+                cursor = earliest
+        else:
+            cursor = earliest
+        previous_example_length = (
+            han_count(item['_examples'][0]['chinese']) if item['_examples'] else 0
+        )
+    print(f"    refined {matched}/{len(items)} vocabulary word anchors from source clips", flush=True)
+
+
+def align_segments(model, dictionary, aligner, track_path, segments, tokens, device,
+                   items, source_cache, signal_cache):
     waveform = decode_for_aligner(track_path)
     track_duration = waveform.size(1) / ALIGN_SAMPLE_RATE
     emission = infer_emission(model, waveform, device)
@@ -539,6 +590,7 @@ def align_segments(model, dictionary, aligner, track_path, segments, tokens, dev
             'syllableCount': last - first,
             'alignmentMethod': 'sequence',
         })
+    refine_word_anchors(items, track_path, aligned, source_cache, signal_cache)
     retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, track_duration)
     return aligned, track_duration, emission, ratio
 
@@ -546,6 +598,8 @@ def align_segments(model, dictionary, aligner, track_path, segments, tokens, dev
 def max_allowed_syllable_gap(text):
     if len(re.findall(r'[。？！?]', text)) > 1:
         return 5.0
+    if '/' in text or '／' in text:
+        return 2.5
     if re.search(r'[,，、;；:：]|[A-Z]\s*:', text):
         return 3.5
     return 1.5
@@ -555,7 +609,8 @@ def segment_quality_issue(segment):
     if segment.get('alignedSyllables') != segment.get('syllableCount'):
         return True
     han = han_count(segment['text'])
-    duration = segment.get('end', 0) - segment.get('start', 0)
+    start, end = segment.get('start'), segment.get('end')
+    duration = float(end) - float(start) if start is not None and end is not None else 0.0
     min_duration = max(0.30, han * 0.055)
     max_duration = max(5.0, han * 0.72 + 1.0)
     maximum_gap = max_allowed_syllable_gap(segment['text'])
@@ -580,10 +635,12 @@ def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, trac
                         None)
         next_word = next((candidate for candidate in aligned[index + 1:]
                           if candidate.get('kind') == 'word'), None)
-        lower = (float(own_word['end']) + 0.04
+        local_lower = segment.get('_localLower')
+        lower = (float(local_lower) + 0.04 if local_lower is not None else
+                 float(own_word['end']) + 0.04
                  if own_word and own_word.get('end') is not None else
                  max(0.0, float(segment.get('start') or 0.0) - 2.0))
-        if segment['sourceCardId'] in previous_example_end:
+        if segment['sourceCardId'] in previous_example_end and not segment.get('_allowOverlap'):
             lower = max(lower, previous_example_end[segment['sourceCardId']] + 0.10)
         local_upper = segment.get('_localUpper')
         upper = (float(local_upper) - 0.04 if local_upper is not None else
@@ -607,8 +664,8 @@ def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, trac
         # the occurrence within the known word-to-word section.
         expected = max(1.6, min(9.0, syllable_count * 0.38 + 0.5))
         window_seconds = sorted({
-            max(1.4, min(12.0, expected * scale))
-            for scale in (0.8, 1.05, 1.35, 1.7)
+            max(0.8, min(12.0, expected * scale))
+            for scale in (0.4, 0.55, 0.7, 0.85, 1.05, 1.35, 1.7)
         })
         step_frames = max(1, round(0.20 / seconds_per_frame))
         best = None
@@ -672,9 +729,47 @@ def track_reference(book_id, track, book3_track_index):
     return book3_track_index['streamUrlPattern'].replace('{FILE_ID}', track['id']), track['id']
 
 
+def reuse_exact_sentence_ranges(entries):
+    """Share a verified recording when identical text occurs on multiple vocab cards."""
+    ranges_by_sentence = {}
+    for example_id, entry in entries.items():
+        if not entry.get('audio'):
+            continue
+        sentence_key = (
+            entry['bookId'], entry['lessonId'], entry['partId'],
+            han_only(entry['traditional']),
+        )
+        ranges_by_sentence.setdefault(sentence_key, []).append((example_id, entry))
+
+    reused = 0
+    for example_id, entry in entries.items():
+        if entry.get('audio'):
+            continue
+        sentence_key = (
+            entry['bookId'], entry['lessonId'], entry['partId'],
+            han_only(entry['traditional']),
+        )
+        peers = ranges_by_sentence.get(sentence_key, [])
+        if not peers:
+            continue
+        source_id, source = max(peers, key=lambda pair: pair[1]['alignment']['score'])
+        entry['audio'] = source['audio']
+        entry['alignment']['score'] = source['alignment']['score']
+        entry['alignment']['alignedSyllables'] = source['alignment']['alignedSyllables']
+        entry['alignment']['syllableCount'] = source['alignment']['syllableCount']
+        entry['alignment']['rangeSharedFrom'] = source_id
+        entry.pop('issue', None)
+        ranges_by_sentence.setdefault(sentence_key, []).append((example_id, entry))
+        reused += 1
+    return reused
+
+
 def make_audio_entry(book_id, file, score, word_segment, example_segment, next_segment, track_duration):
-    start = float(example_segment['start'])
-    end = float(example_segment['end'])
+    raw_start, raw_end = example_segment.get('start'), example_segment.get('end')
+    if raw_start is None or raw_end is None:
+        return None, 'invalid alignment bounds'
+    start = float(raw_start)
+    end = float(raw_end)
     if not math.isfinite(start) or not math.isfinite(end) or end <= start:
         return None, 'invalid alignment bounds'
     han = han_count(example_segment['text'])
@@ -728,6 +823,7 @@ def main():
         raise ValueError('--apply requires the complete Books 1 and 3 corpus; filters are preview-only.')
 
     groups = {1: get_book_items(1), 3: get_book_items(3)}
+    book1_course_records = load_book1_course_examples() if args.book != 3 else []
     book1_candidates = load_book1_candidates()
     book3_tracks = load_book3_tracks()
     book3_index = json.loads(BOOK3_INDEX.read_text())
@@ -736,6 +832,7 @@ def main():
     word_cache = {}
     signal_cache = {}
     track_hashes = {}
+    track_durations = {}
     candidate_report = []
     selected_groups = []
     total_assignments = 0
@@ -750,7 +847,7 @@ def main():
                 continue
             examples = [(item, example_index, example) for item in items
                         for example_index, example in enumerate(item['_examples'], start=1)]
-            course_extras = load_book1_course_extras(items) if book_id == 1 else []
+            course_extras = load_book1_course_extras(items, book1_course_records) if book_id == 1 else []
             if not examples:
                 if not course_extras:
                     continue
@@ -835,7 +932,10 @@ def main():
         try:
             aligned, track_duration, emission, ratio = align_segments(
                 model, dictionary, aligner, track_path, segments, tokens, device,
+                items, word_cache, signal_cache,
             )
+            signal_cache.pop(track_path, None)
+            track_durations[track['file']] = round(track_duration, 3)
             if course_extras:
                 word_segments = [segment for segment in aligned if segment['kind'] == 'word']
                 for extra in course_extras:
@@ -853,10 +953,12 @@ def main():
                         'kind': 'example', 'sourceCardId': extra['sourceCardId'],
                         'exampleId': extra['exampleId'], 'text': extra['text'],
                         'pinyinSource': extra['pinyinSource'], 'tokenStart': 0, 'tokenEnd': 0,
-                        'start': 0.0, 'end': 0.0, 'score': 0.0, 'maxSyllableGap': 0.0,
+                        'start': None, 'end': None, 'score': 0.0, 'maxSyllableGap': 0.0,
                         'alignedSyllables': 0, 'syllableCount': len(extra_tokens),
                         '_targetTokens': extra_tokens,
+                        '_localLower': own_word.get('end') if own_word else None,
                         '_localUpper': next_word.get('start') if next_word else track_duration,
+                        '_allowOverlap': True,
                         '_nextSegment': next_word,
                     })
                 retry_unreliable_segments(
@@ -871,8 +973,14 @@ def main():
                 word_segment = next((candidate for candidate in aligned
                                      if candidate['kind'] == 'word'
                                      and candidate['sourceCardId'] == segment['sourceCardId']), None)
-                next_segment = segment.get('_nextSegment') or next((candidate for candidate in aligned[index + 1:]
-                                     if candidate.get('start') is not None), None)
+                next_segment = segment.get('_nextSegment')
+                if next_segment is None and segment.get('end') is not None:
+                    next_segment = min((candidate for candidate in aligned
+                                        if candidate is not segment
+                                        and not candidate.get('_targetTokens')
+                                        and candidate.get('start') is not None
+                                        and candidate['start'] >= segment['end']),
+                                       key=lambda candidate: candidate['start'], default=None)
                 file, drive_id = track_reference(book_id, track, book3_index)
                 audio, issue = make_audio_entry(
                     book_id, file, segment['score'], word_segment,
@@ -920,6 +1028,16 @@ def main():
                 'track': track['file'], 'error': str(error),
             })
 
+    shared_range_count = reuse_exact_sentence_ranges(entries)
+    for row in segment_report:
+        entry = entries.get(row.get('exampleId'))
+        if entry:
+            row['audio'] = entry['audio']
+            row['score'] = entry['alignment']['score']
+            row['alignedSyllables'] = entry['alignment']['alignedSyllables']
+            row['syllableCount'] = entry['alignment']['syllableCount']
+            row['issue'] = entry.get('issue')
+            row['rangeSharedFrom'] = entry['alignment'].get('rangeSharedFrom')
     valid_count = sum(1 for entry in entries.values() if entry['audio'])
     report = {
         'schemaVersion': 1,
@@ -931,6 +1049,7 @@ def main():
         'expectedAssignments': total_assignments,
         'alignedAssignments': len(entries),
         'validAssignments': valid_count,
+        'sharedRangeAssignments': shared_range_count,
         'coverage': round(valid_count / total_assignments, 4) if total_assignments else 0,
         'printedPinyinAssignments': sum(
             1 for entry in entries.values() if entry['alignment'].get('pinyinSource') == 'textbook'
@@ -956,6 +1075,7 @@ def main():
             filename: {
                 'sha256': sha,
                 'source': 'book1-r2' if filename.startswith('B1-') else 'official-tku-drive',
+                'durationSec': track_durations[filename],
             }
             for filename, sha in sorted(track_hashes.items())
         },
@@ -970,10 +1090,12 @@ def main():
     if args.apply:
         if candidate_report and any(entry.get('error') for entry in candidate_report):
             raise ValueError('Cannot apply with unresolved vocabulary-track selection failures.')
-        if len(entries) != total_assignments or valid_count != total_assignments:
-            raise ValueError('Cannot apply: every Book 1 and Book 3 vocabulary example must pass alignment checks.')
+        if len(entries) != total_assignments:
+            raise ValueError('Cannot apply: every expected example needs an alignment result.')
+        if report['coverage'] < 0.90:
+            raise ValueError(f"Cannot apply: only {report['coverage']:.1%} of examples have verified recordings (90% required).")
         CONTENT_PATH.write_text(json.dumps(draft, ensure_ascii=False, indent=2) + '\n')
-        print(f'Applied complete manifest: {CONTENT_PATH}')
+        print(f'Applied complete manifest with {valid_count}/{total_assignments} verified recorded ranges: {CONTENT_PATH}')
     elif valid_count != total_assignments:
         print('Some clips need review; preview mode did not update content/audio/.')
 

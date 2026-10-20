@@ -147,9 +147,10 @@ files. Grammar and dialogue tracks are separate. Options for other sentences:
   their source manifests, matches Book 1 tracks using existing vocabulary-word
   recordings, then uses MMS forced alignment and printed Pinyin to create ranges.
   It writes a report and draft under ignored `output/audio/vocabulary-example-audio/`.
-- Review `alignment-report.json`; `--apply` writes the complete source manifest
-  at `content/audio/vocabulary_example_audio.json` only when every Book 1 and
-  Book 3 example passes the coverage and confidence checks.
+- Review `alignment-report.json`; `--apply` writes a complete result for every
+  source example when verified range coverage is at least 90%. Entries that do
+  not clear the alignment checks omit a recorded range and use the app's existing
+  speech fallback, rather than publishing a guessed timestamp.
 - Then run `npm run vocab:examples`, `npm run course-examples:export`, and
   `npm run flashcard-extras:export` to regenerate the served packs and manifests.
 - Alignment requires the vocabulary-word originals in

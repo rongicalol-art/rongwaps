@@ -8,7 +8,7 @@ interface VocabularyExampleAudioManifest {
     bookId: number;
     sourceCardId: string;
     traditional: string;
-    audio: SentenceAudio;
+    audio?: SentenceAudio | null;
     alignment?: { score?: number };
   }>;
 }
@@ -31,7 +31,24 @@ export function loadVocabularyExampleAudio(): Map<string, SentenceAudio> {
 
   const audio = new Map<string, SentenceAudio>();
   const scores = new Map<string, number>();
-  for (const entry of Object.values(manifest.examples)) {
+  for (const [exampleId, entry] of Object.entries(manifest.examples)) {
+    if (!entry || typeof entry.sourceCardId !== 'string' || typeof entry.traditional !== 'string') {
+      throw new Error(`Invalid vocabulary example audio assignment: ${exampleId}`);
+    }
+    if (entry.audio && (
+      !['book', 'studio'].includes(entry.audio.voice)
+      || typeof entry.audio.file !== 'string'
+      || !entry.audio.file
+      || typeof entry.audio.start !== 'number'
+      || typeof entry.audio.end !== 'number'
+      || !Number.isFinite(entry.audio.start)
+      || !Number.isFinite(entry.audio.end)
+      || entry.audio.start < 0
+      || entry.audio.end <= entry.audio.start
+      || (entry.audio.cache !== undefined && typeof entry.audio.cache !== 'boolean')
+    )) {
+      throw new Error(`Invalid recorded range in vocabulary example audio assignment: ${exampleId}`);
+    }
     const key = vocabularyExampleKey(entry.sourceCardId, entry.traditional);
     if (!key || !entry.audio?.file) continue;
     const score = entry.alignment?.score ?? 0;

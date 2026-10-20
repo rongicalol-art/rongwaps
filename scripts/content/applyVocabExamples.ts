@@ -62,17 +62,6 @@ function sha256(content: string): string {
 function main() {
   const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf8')) as VocabManifest;
   const audioBySentence = loadVocabularyExampleAudio();
-  const requiredAudioBooks = new Set([1, 3]);
-  for (const bookId of requiredAudioBooks) {
-    const examplesPath = resolve(CONTENT_VOCAB_DIR, `book-${bookId}-examples.json`);
-    const examplesMap = JSON.parse(readFileSync(examplesPath, 'utf8')) as Record<string, ExampleEntry>;
-    const missing = Object.entries(examplesMap)
-      .filter(([sourceCardId, entry]) => !audioBySentence.has(vocabularyExampleKey(sourceCardId, entry.chinese)))
-      .map(([sourceCardId]) => sourceCardId);
-    if (missing.length > 0) {
-      throw new Error(`Audio manifest is missing ${missing.length} Book ${bookId} examples: ${missing.slice(0, 8).join(', ')}`);
-    }
-  }
   let totalUpdatedAcrossBooks = 0;
 
   for (let b = 1; b <= 4; b++) {
@@ -112,7 +101,7 @@ function main() {
       bookMeta.bytes = Buffer.byteLength(updatedJson);
     }
 
-    console.log(`Book ${b}: applied ${updatedCount} structured example sentences; ${audioCount} with recordings.`);
+    console.log(`Book ${b}: applied ${updatedCount} example sentences; ${audioCount} with official recordings, ${updatedCount - audioCount} using speech fallback.`);
     totalUpdatedAcrossBooks += updatedCount;
   }
 

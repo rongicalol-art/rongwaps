@@ -444,9 +444,7 @@ async function main() {
     if (audio) record.audio = audio;
   });
   const missingVocabularyAudio = records.filter((record) => /-E\d{2}$/.test(record.id) && !record.audio);
-  if (missingVocabularyAudio.length > 0) {
-    throw new Error(`Audio manifest is missing ${missingVocabularyAudio.length} Book 1 vocabulary-page examples: ${missingVocabularyAudio.slice(0, 8).map((record) => record.id).join(', ')}`);
-  }
+  console.log(`${missingVocabularyAudio.length} vocabulary-page examples will use speech fallback.`);
 
   records.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
   const pack: CourseExamplePack = {
