@@ -29,7 +29,7 @@ interface CurriculumLibraryProps {
   /** Opens the last-used activity on the lessons selected in the store (independent study). */
   onStartPathPractice?: () => void;
   /** Opens the grammar window for a manifest part id. */
-  onOpenGrammarPart?: (partId: string) => void;
+  onOpenGrammarPart?: (partId: string, pageId?: string | null, onComplete?: () => void) => void;
   /** Opens the reader on a lesson part's dialogue. */
   onOpenReadingPart?: (target: { bookId: number; lessonId: number; partId: number }) => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Books home). */
@@ -255,7 +255,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
           setLessonWindow((current) => (current ? { ...current, lessonId, partId: firstPartId } : { lessonId, partId: firstPartId }));
           onStartPartPractice?.(lessonId, partId, activity);
         }}
-        onOpenGrammarPart={(partId) => onOpenGrammarPart?.(partId)}
+        onOpenGrammarPart={(partId, onComplete) => onOpenGrammarPart?.(partId, null, onComplete)}
         onOpenReadingPart={(target) => onOpenReadingPart?.(target)}
       />
     </div>

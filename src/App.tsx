@@ -77,7 +77,7 @@ function AppShell() {
           setActiveTab: nav.handleTabChange,
           setActiveActivity: activity.onSetActiveActivity,
           onOpenGrammarPart: grammar.onOpenPart,
-          onOpenReadingPart: grammar.onProceedToReading,
+          onOpenReadingPart: activity.onOpenReadingPart,
           onToggleNav: nav.handleNavToggle,
         }}
       />

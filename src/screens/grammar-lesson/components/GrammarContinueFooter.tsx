@@ -14,7 +14,7 @@ interface GrammarContinueFooterProps {
   onContinue: () => void;
 }
 
-/** Bottom navigation bar: Back + Continue (Practice when a book exercise follows, Read on the last page). */
+/** Bottom navigation bar: Back + Continue (Practice when a book exercise follows, Done on the last page). */
 export function GrammarContinueFooter({
   isVisible,
   contentReady,
@@ -58,10 +58,10 @@ export function GrammarContinueFooter({
                   size="lg"
                   fullWidth
                   onClick={onContinue}
-                  aria-label={continueLabel ?? (isLastPage ? 'Proceed to Reading' : 'Continue')}
+                  aria-label={continueLabel ?? (isLastPage ? 'Finish grammar' : 'Continue')}
                   className="btn-touch-primary"
                 >
-                  <span>{continueLabel ?? (isLastPage ? 'Read' : 'Next')}</span>
+                  <span>{continueLabel ?? (isLastPage ? 'Done' : 'Next')}</span>
                 </ActionButton>
               </div>
             </div>

@@ -73,7 +73,7 @@ export function useGrammarLessonPage({
   const previousPage = currentGrammarIndex > 0 ? part.grammarPages[currentGrammarIndex - 1] : null;
   const isLastPage = currentGrammarIndex === part.grammarPages.length - 1;
 
-  /** Marks this page done and moves on (next page, or the part's reading). */
+  /** Marks this page done, then advances or returns to the lesson on its final page. */
   const completePage = useCallback(() => {
     const next = continueGrammarLesson({
       grammarIndex: currentGrammarIndex,
@@ -85,8 +85,8 @@ export function useGrammarLessonPage({
     markPageComplete(page.id);
     if (isLastPage || next.isPartComplete) {
       markPartComplete(part.id);
-      onClose();
-      onProceedToReading?.(part);
+      if (onProceedToReading) onProceedToReading(part);
+      else onClose();
       return;
     }
     setIsPracticing(false);

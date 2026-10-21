@@ -164,7 +164,7 @@ export function useAppShell() {
       pageId: grammar.activeGrammarPageId,
       onOpenPart: actions.handleOpenGrammarPart,
       onClose: actions.handleCloseGrammar,
-      onProceedToReading: actions.handleProceedToReading,
+      onProceedToReading: actions.handleFinishGrammar,
     },
     activity: {
       activeActivity: navigation.activeActivity,
@@ -174,6 +174,7 @@ export function useAppShell() {
       onStartPartPractice: actions.handleStartPartPractice,
       onStartPathPractice: actions.handleStartPathPractice,
       onOpenReading: actions.handleOpenReading,
+      onOpenReadingPart: actions.handleProceedToReading,
       resumeLaunch: navigation.resumeLaunch,
     },
     settings: {

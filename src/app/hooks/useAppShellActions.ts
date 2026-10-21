@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import type { ActivityType } from '../../hooks/useAppNavigation.tsx';
 import { useAppStore } from '../../store/useAppStore';
 
@@ -44,6 +44,7 @@ export function useAppShellActions({
   setIsNavOpen,
   isDesktop,
 }: UseAppShellActionsOptions) {
+  const grammarCompletion = useRef<(() => void) | null>(null);
   const handleSetActiveActivity = useCallback((activity: ActivityType) => {
     if (activity) {
       collapseNav();
@@ -66,13 +67,15 @@ export function useAppShellActions({
     void openReader(activeBookId);
   }, [collapseNav, openReader, activeBookId]);
 
-  const handleOpenGrammarPart = useCallback((partId: string, pageId?: string | null) => {
+  const handleOpenGrammarPart = useCallback((partId: string, pageId?: string | null, onComplete?: () => void) => {
+    grammarCompletion.current = onComplete ?? null;
     collapseNav();
     setActiveGrammarPageId(pageId ?? null);
     setActiveGrammarPartId(partId);
   }, [collapseNav, setActiveGrammarPageId, setActiveGrammarPartId]);
 
   const handleCloseGrammar = useCallback(() => {
+    grammarCompletion.current = null;
     setActiveGrammarPartId(null);
     setActiveGrammarPageId(null);
   }, [setActiveGrammarPartId, setActiveGrammarPageId]);
@@ -92,6 +95,12 @@ export function useAppShellActions({
     void openReaderForPart(target.bookId, target.lessonId, target.partId);
   }, [collapseNav, openReaderForPart, setActiveGrammarPartId, setActiveGrammarPageId]);
 
+  const handleFinishGrammar = useCallback(() => {
+    const onComplete = grammarCompletion.current;
+    handleCloseGrammar();
+    onComplete?.();
+  }, [handleCloseGrammar]);
+
   const handleSettingsClick = useCallback(() => {
     setIsSettingsOpen(true);
     if (!isDesktop()) setIsNavOpen(false);
@@ -106,6 +115,7 @@ export function useAppShellActions({
     handleCloseGrammar,
     handleCloseReader,
     handleProceedToReading,
+    handleFinishGrammar,
     handleSettingsClick,
   };
 }
