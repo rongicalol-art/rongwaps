@@ -61,8 +61,8 @@ function parseDialogue(sub?: string, prompt?: string): ParsedDialogue | null {
 export function orderBuildHeading(item: OrderBuildItem): string | undefined {
   const dialogue = parseDialogue(item.sub, item.prompt);
   const translatedQuestion = /^(?:Does|Do|Is|Are|Where|What|How|Who|When|Which|Can)\b[^?]+\?(?:\s*Answer from the picture\.)?$/i.test(item.prompt ?? '');
-  if (item.scene && dialogue?.type === 'incoming' && /[？?]$/.test(dialogue.utterance) && translatedQuestion) {
-    return 'Answer from the picture';
+  if (dialogue?.type === 'incoming' && /[？?]$/.test(dialogue.utterance) && translatedQuestion) {
+    return item.scene ? 'Answer from the picture' : 'Answer the question';
   }
   return !item.scene && !item.sub && item.prompt ? 'Build a sentence' : item.prompt;
 }
@@ -86,6 +86,7 @@ export function OrderBuildExercise({
   const verdict = checkOrderBuild(item, order);
   const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
   const dialogue = useMemo(() => parseDialogue(item.sub, item.prompt), [item.sub, item.prompt]);
+  const translatedPrompt = item.kind === 'order-build' && orderBuildHeading(item) !== item.prompt && dialogue?.type === 'incoming' ? item.prompt : undefined;
   const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';
   const placeholder = dialogue?.type === 'incoming' ? 'Tap words to reply…' : 'Tap words to build the sentence…';
 
@@ -168,7 +169,7 @@ export function OrderBuildExercise({
     <LayoutGroup id={`order-${item.id}`}>
       {dialogue ? (
         <div className="flex flex-col gap-4">
-          {dialogue.preface && <PracticePrompt sub={dialogue.preface} />}
+          {dialogue.preface && !translatedPrompt && <PracticePrompt sub={dialogue.preface} />}
           {children}
           {scene ? incoming ? (
             <div className="grid items-center gap-5 sm:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] sm:gap-8">
@@ -183,7 +184,16 @@ export function OrderBuildExercise({
             </PracticeCharacterPrompt>
           )}
 
-          <span className="h-1" aria-hidden="true" />
+          {translatedPrompt && (
+            <details open={status !== 'idle'} className="text-sm font-bold text-ui-muted-strong">
+              <summary data-action="" className="w-fit cursor-pointer rounded-xs focus-ring-inline">Hint</summary>
+              <div className="mt-2 flex flex-col gap-2">
+                <p>{translatedPrompt.replace(/\s*Answer from the picture\.$/, '')}</p>
+                {dialogue.preface && <p>{dialogue.preface}</p>}
+              </div>
+            </details>
+          )}
+
 
           {answerLine}
 

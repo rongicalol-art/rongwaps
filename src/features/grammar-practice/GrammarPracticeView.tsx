@@ -46,7 +46,9 @@ export function GrammarPracticeView({
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
   const inlineBank = item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
-  const heading = item.kind === 'order-build' ? orderBuildHeading(item) : item.prompt;
+  // This source-checked clock pair supplies the time context visually. Keep its written explanation in the hint.
+  const clockReading = item.id === 'l8g5-p2' || ('scene' in item && item.scene?.type === 'countdown' && Boolean(item.scene.now.time && item.scene.next.time));
+  const heading = clockReading ? 'Complete the sentence' : item.kind === 'order-build' ? orderBuildHeading(item) : item.prompt;
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);
@@ -91,6 +93,12 @@ export function GrammarPracticeView({
         <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
         {/* The item's own question is the title; the book's general instruction only when an item has none. */}
         <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{heading ?? practice.title}</h1>
+        {clockReading && item.prompt && (
+          <details key={item.id} open={status !== 'idle'} className="mt-2 text-sm font-bold text-ui-muted-strong">
+            <summary data-action="" className="w-fit cursor-pointer rounded-xs focus-ring-inline">Hint</summary>
+            <p className="mt-2">{item.prompt}</p>
+          </details>
+        )}
       </header>
 
       <AnimatePresence mode="wait" initial={false}>

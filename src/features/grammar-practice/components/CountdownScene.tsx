@@ -13,19 +13,6 @@ const minutesOf = (time: string) => {
   return hours * 60 + minutes;
 };
 
-/** "2 days later" / "10 min later": the gap is what 快要……了 is about. */
-function gapLabel(now: PracticeMoment, next: PracticeMoment) {
-  if (now.date && next.date && now.date.month === next.date.month) {
-    const days = next.date.day - now.date.day;
-    return days > 0 ? `${days} day${days === 1 ? '' : 's'} later` : null;
-  }
-  if (now.time && next.time) {
-    const minutes = minutesOf(next.time) - minutesOf(now.time);
-    return minutes > 0 ? `${minutes} min later` : null;
-  }
-  return null;
-}
-
 export function CalendarFace({ month, day, next }: { month: number; day: number; next: boolean }) {
   return (
     <div className="flex w-24 flex-col overflow-hidden rounded-control bg-ui-hover sm:w-28">
@@ -62,7 +49,6 @@ export function Moment({ moment, next, renderChinese }: { moment: PracticeMoment
       {moment.label ? (
         <span className="flex flex-col items-center text-center leading-tight">
           <span className="font-chinese text-base text-ui-ink-strong">{renderChinese(moment.label)}</span>
-          <span className="text-xs text-ui-muted">{moment.label.english}</span>
         </span>
       ) : (
         <span className="h-9" aria-hidden="true" />
@@ -73,7 +59,6 @@ export function Moment({ moment, next, renderChinese }: { moment: PracticeMoment
 
 /** The book's now → soon picture (calendar days or clock times) for 快（要）/要……了. */
 export function CountdownScene({ now, next, renderChinese }: CountdownSceneProps) {
-  const gap = gapLabel(now, next);
   const describe = (moment: PracticeMoment) => [
     moment.label?.english,
     moment.date && `${moment.date.month}/${moment.date.day}`,
@@ -88,7 +73,6 @@ export function CountdownScene({ now, next, renderChinese }: CountdownSceneProps
       <Moment moment={now} next={false} renderChinese={renderChinese} />
       <div className="flex flex-col items-center gap-1 self-center pb-9 text-ui-muted">
         <AppIcon name="forward" size={24} className="shrink-0" />
-        {gap && <span className="whitespace-nowrap text-xs">{gap}</span>}
       </div>
       <Moment moment={next} next renderChinese={renderChinese} />
     </div>
