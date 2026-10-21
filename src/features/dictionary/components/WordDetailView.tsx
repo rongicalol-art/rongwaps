@@ -49,7 +49,7 @@ export function WordDetailView({
   const [fallbackWords, setFallbackWords] = useState<Array<{ word: string; entries: DBDictionaryEntry[] }>>([]);
   const [inCourseWords, setInCourseWords] = useState<Flashcard[]>([]);
   const [loading, setLoading] = useState(false);
-  const { examples, relatedWords, isLoading: isExtrasLoading } = useWordExtras(word);
+  const { examples, relatedWords, examplesLoading, relatedLoading } = useWordExtras(word);
 
   useEffect(() => {
     let isMounted = true;
@@ -126,8 +126,8 @@ export function WordDetailView({
   const reduceMotion = useReducedMotion();
   type WordTab = 'related' | 'examples';
   const tabs: BreakdownTab<WordTab>[] = [];
-  if (isExtrasLoading || relatedWords.length > 0) tabs.push({ id: 'related', label: 'Related words', count: isExtrasLoading ? undefined : relatedWords.length });
-  if (isExtrasLoading || examples.length > 0) tabs.push({ id: 'examples', label: 'Examples', count: isExtrasLoading ? undefined : examples.length });
+  if (relatedLoading || relatedWords.length > 0) tabs.push({ id: 'related', label: 'Related words', count: relatedLoading ? undefined : relatedWords.length });
+  if (examplesLoading || examples.length > 0) tabs.push({ id: 'examples', label: 'Examples', count: examplesLoading ? undefined : examples.length });
   const [tab, setTab] = useState<WordTab | null>(null);
   useEffect(() => setTab(null), [word]);
   const activeTab = tabs.find((item) => item.id === tab)?.id ?? tabs[0]?.id;
@@ -221,10 +221,10 @@ export function WordDetailView({
                       className="min-w-0"
                     >
                       {activeTab === 'related' && (
-                        <WordRelatedList word={word} relatedWords={relatedWords} isLoading={isExtrasLoading} onOpenWord={setDictionaryWord} />
+                        <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} />
                       )}
                       {activeTab === 'examples' && (
-                        <WordExamplesSection examples={examples} isLoading={isExtrasLoading} word={word} />
+                        <WordExamplesSection examples={examples} isLoading={examplesLoading} word={word} />
                       )}
                     </motion.div>
                   </div>

@@ -3,6 +3,7 @@ import type { Flashcard } from '../../data/flashcards';
 import type { RankedExample } from './courseExamples';
 
 export const FLASHCARD_EXTRAS_SHARDS = 512;
+export const FLASHCARD_EXTRAS_CACHE_LIMIT = 128;
 export interface FlashcardExtras {
   examples: RankedExample[];
   wordHook: string | null;

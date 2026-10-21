@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useSyncExternalStore } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import { fetchPackedFlashcardExtras } from '../../../services/contentPacks';
-import { flashcardExtrasKey, type FlashcardExtras } from '../../../utils/vocabulary/flashcardExtrasPack';
+import { FLASHCARD_EXTRAS_CACHE_LIMIT, flashcardExtrasKey, type FlashcardExtras } from '../../../utils/vocabulary/flashcardExtrasPack';
 import { getIdPosition } from '../../../utils/lesson/curriculumPosition';
 import { debugLogger } from '../../../utils/debug/debugLogger';
 
@@ -47,7 +47,7 @@ function loadCard(card: Flashcard): Promise<void> {
       failed.add(key);
       cache.set(key, IDLE);
     } finally {
-      while (cache.size > 128) {
+      while (cache.size > FLASHCARD_EXTRAS_CACHE_LIMIT) {
         const oldest = [...cache.keys()].find((candidate) => !active.has(candidate));
         if (!oldest) break;
         cache.delete(oldest);
@@ -62,8 +62,17 @@ function loadCard(card: Flashcard): Promise<void> {
 }
 
 /** Load only requested cards. Repeated calls share both shard and card requests. */
-export function preloadFlashcardContent(cards: readonly Flashcard[]): Promise<void> {
-  return Promise.all(cards.map(loadCard)).then(() => {});
+export async function preloadFlashcardContent(cards: readonly Flashcard[], signal?: AbortSignal): Promise<void> {
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(4, cards.length) }, async () => {
+    while (next < cards.length) {
+      signal?.throwIfAborted();
+      const card = cards[next++];
+      await loadCard(card);
+      signal?.throwIfAborted();
+      if (failed.has(flashcardExtrasKey(card))) throw new Error('Examples could not load');
+    }
+  }));
 }
 export function getFlashcardExtras(card: Flashcard): FlashcardExtras | null {
   return cache.get(flashcardExtrasKey(card))?.extras ?? null;

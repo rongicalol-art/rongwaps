@@ -5,6 +5,7 @@ import { sanitizeDictionaryDefinitions, extractCedictReference } from '../utils/
 import { fetchDictionaryRowsFromPacks } from './contentPacks';
 
 const remoteSearchPromises = new Map<string, Promise<unknown[]>>();
+const searchListeners = new Map<string, Set<(results: unknown[]) => void>>();
 
 export interface DictionaryContainingWord {
   word: string;
@@ -120,20 +121,24 @@ export async function dereferenceEntries(entries: DBDictionaryEntry[]): Promise<
  * @param queryNormalized - The normalized (lowercased, trimmed) query
  * @returns Array of dictionary entries from the RPC
  */
-export async function executeRemoteSearch(queryNormalized: string): Promise<unknown[]> {
+export async function executeRemoteSearch(queryNormalized: string, onResults?: (results: unknown[]) => void): Promise<unknown[]> {
   if (dictionarySearchCache.has(queryNormalized)) {
     return dictionarySearchCache.get<unknown[]>(queryNormalized) || [];
   }
 
-  if (remoteSearchPromises.has(queryNormalized)) {
-    return remoteSearchPromises.get(queryNormalized)!;
+  if (onResults) {
+    if (!searchListeners.has(queryNormalized)) searchListeners.set(queryNormalized, new Set());
+    searchListeners.get(queryNormalized)!.add(onResults);
   }
+  if (remoteSearchPromises.has(queryNormalized)) return remoteSearchPromises.get(queryNormalized)!;
 
   const request = (async () => {
     try {
       // 1. Instant offline static search (zero network, works offline)
       const { searchDictionaryOffline } = await import('./dictionarySearchService');
-      const offlineResults = await searchDictionaryOffline(queryNormalized, 30);
+      const offlineResults = await searchDictionaryOffline(queryNormalized, 30, (rows) => {
+        for (const listener of searchListeners.get(queryNormalized) ?? []) listener(rows);
+      });
       if (offlineResults && offlineResults.length > 0) {
         dictionarySearchCache.set(queryNormalized, offlineResults);
         return offlineResults;
@@ -145,6 +150,7 @@ export async function executeRemoteSearch(queryNormalized: string): Promise<unkn
       return [];
     } finally {
       remoteSearchPromises.delete(queryNormalized);
+      searchListeners.delete(queryNormalized);
     }
   })();
 
@@ -263,7 +269,8 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
   }
 }
 
-export async function getDictionaryEntriesBatch(words: string[]): Promise<Map<string, DBDictionaryEntry>> {
+export async function getDictionaryEntriesBatch(words: string[], signal?: AbortSignal): Promise<Map<string, DBDictionaryEntry>> {
+  signal?.throwIfAborted();
   const result = new Map<string, DBDictionaryEntry>();
   if (!words || words.length === 0) return result;
 
@@ -286,8 +293,9 @@ export async function getDictionaryEntriesBatch(words: string[]): Promise<Map<st
   if (toFetch.length === 0) return result;
 
   // 2. Fetch from static shard packs for the missing words
-  const packedRows = await fetchDictionaryRowsFromPacks(toFetch);
+  const packedRows = await fetchDictionaryRowsFromPacks(toFetch, signal);
   for (const word of toFetch) {
+    signal?.throwIfAborted();
     const rows = packedRows.get(word);
     if (rows && rows.length > 0) {
       const mapped = mapRowToEntry(rows[0]);

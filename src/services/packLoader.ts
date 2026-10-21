@@ -29,6 +29,8 @@ export interface PackLoader<TManifest, TLoaded> {
    */
   loadPart: (key: number) => Promise<TLoaded | null>;
   loadAllParts: () => Promise<TLoaded[]>;
+  /** Keep a working set resident while a study session uses it. */
+  retainParts: (keys: readonly number[]) => () => void;
 }
 
 export interface PackLoaderOptions<TManifest, TPack, TLoaded> {
@@ -74,6 +76,14 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
   let manifestPromise: Promise<TManifest> | null = null;
   const partCache = new Map<number, TLoaded>();
   const pendingParts = new Map<number, Promise<TLoaded | null>>();
+  const retained = new Map<number, number>();
+
+  function pruneParts() {
+    for (const key of partCache.keys()) {
+      if (partCache.size <= Math.max(1, options.maxCachedParts ?? Infinity)) break;
+      if (!retained.has(key)) partCache.delete(key);
+    }
+  }
 
   async function getManifest(): Promise<TManifest> {
     if (manifestPromise) return manifestPromise;
@@ -111,7 +121,7 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
 
     const loaded = transform(pack);
     partCache.set(key, loaded);
-    while (partCache.size > Math.max(1, options.maxCachedParts ?? Infinity)) partCache.delete(partCache.keys().next().value!);
+    pruneParts();
     return loaded;
   }
 
@@ -136,6 +146,20 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
   return {
     manifest: getManifest,
     loadPart,
+    retainParts: (keys) => {
+      const unique = [...new Set(keys)];
+      for (const key of unique) retained.set(key, (retained.get(key) ?? 0) + 1);
+      let released = false;
+      return () => {
+        if (released) return;
+        released = true;
+        for (const key of unique) {
+          const count = (retained.get(key) ?? 1) - 1;
+          if (count) retained.set(key, count); else retained.delete(key);
+        }
+        pruneParts();
+      };
+    },
     loadAllParts: async () => {
       const manifest = await getManifest();
       const parts = getParts(manifest).slice().sort((a, b) => a.key - b.key);

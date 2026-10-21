@@ -44,7 +44,7 @@ export function practiceScreenKey(activity: ActivityType): PracticeScreenKey | n
 export function loadPracticeScreen(key: PracticeScreenKey): Promise<void> {
   pending[key] ??= (loaders[key]() as Promise<PracticeScreens[PracticeScreenKey]>).then((component) => {
     (loaded as Record<PracticeScreenKey, unknown>)[key] = component;
-  });
+  }).catch((error) => { delete pending[key]; throw error; });
   return pending[key];
 }
 

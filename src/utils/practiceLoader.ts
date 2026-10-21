@@ -3,6 +3,7 @@ import { loadActivityDeck } from '../hooks/useActivityDataLoader';
 import { loadPracticeScreen, practiceScreenKey } from '../screens/activities/practiceScreens';
 import { isHanziChar } from './characters/hanzi';
 import { warmChineseFont } from './browser/fontWarmup';
+import { FLASHCARD_EXTRAS_CACHE_LIMIT } from './vocabulary/flashcardExtrasPack';
 
 /** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
 export async function preloadPracticeChunks(activity?: ActivityType | null): Promise<void> {
@@ -63,6 +64,29 @@ export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
     preloadPracticeChunks(intent.activity),
     deckPromise,
   ]).catch(() => undefined);
+}
+
+/** Normal lessons prepare completely; bulk review keeps a bounded initial working set. */
+export async function preparePracticeData(cards: readonly import('../data/flashcards').Flashcard[], signal: AbortSignal): Promise<void> {
+  signal.throwIfAborted();
+  const studyCards = cards.slice(0, FLASHCARD_EXTRAS_CACHE_LIMIT);
+  const [content, dictionary, vocabulary, search, audio] = await Promise.all([
+    import('../features/flashcards/content/flashcardContent'),
+    import('../services/dictionaryService'), import('../services/courseVocabLookup'),
+    import('../services/dictionarySearchWorker'), import('../services/audioService'),
+  ]);
+  signal.throwIfAborted();
+  const words = [...new Set(studyCards.flatMap((card) => [card.front, card.traditional, card.simplified]).filter((word): word is string => Boolean(word)))];
+  let audioFailed = false;
+  await Promise.all([
+    content.preloadFlashcardContent(studyCards, signal),
+    dictionary.getDictionaryEntriesBatch(words, signal),
+    vocabulary.getCourseVocabLookupMap(), search.warmDictionarySearch(),
+    audio.audioService.preload(studyCards.slice(0, 4).map((card) => card.audio), signal, (progress) => { audioFailed = progress.failed > 0; }),
+  ]);
+  signal.throwIfAborted();
+  if (audioFailed) throw new Error('Recording download failed');
+  await audio.audioService.prepareRecording(studyCards[0]?.audio, signal);
 }
 
 /** Loader message for the practice modal. */

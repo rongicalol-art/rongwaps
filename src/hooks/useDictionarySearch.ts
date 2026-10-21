@@ -48,14 +48,12 @@ export function useDictionarySearch(externalQuery: string) {
     setSearchError(null);
 
     try {
-      const [data, courseMap] = await Promise.all([
-        executeRemoteSearch(queryNormalized),
-        getCourseVocabLookupMap().catch(() => null),
-      ]);
-
-      if (currentId !== searchIdRef.current) return;
-
-      if (data && data.length > 0) {
+      let courseMap: Awaited<ReturnType<typeof getCourseVocabLookupMap>> | null = null;
+      let latestRows: unknown[] | null = null;
+      let complete = false;
+      const publish = (data: unknown[]) => {
+        if (currentId !== searchIdRef.current) return;
+        latestRows = data;
         const cleanedData = (data as SearchResult[]).map((res) => {
           const sanitized = sanitizeDictionaryDefinitions(res.definitions);
           const courseCard = courseMap
@@ -75,12 +73,21 @@ export function useDictionarySearch(externalQuery: string) {
             audio: courseCard?.audio ?? res.audio ?? undefined,
           };
         });
-        resultCache.set(queryNormalized, cleanedData);
-        if (resultCache.size > RESULT_CACHE_LIMIT) resultCache.delete(resultCache.keys().next().value as string);
+        // A partial response must not mask the completed search on reopen.
+        if (complete) {
+          resultCache.set(queryNormalized, cleanedData);
+          if (resultCache.size > RESULT_CACHE_LIMIT) resultCache.delete(resultCache.keys().next().value as string);
+        }
         setResults(cleanedData);
-      } else {
-        setResults([]);
-      }
+        setIsSearching(false);
+      };
+      void getCourseVocabLookupMap().then((map) => {
+        courseMap = map;
+        if (latestRows) publish(latestRows);
+      }).catch(() => {});
+      const data = await executeRemoteSearch(queryNormalized, publish);
+      complete = true;
+      publish(data);
     } catch (err) {
       if (currentId !== searchIdRef.current) return;
       debugLogger.error('Supabase', 'SuperSearch RPC Failed:', err);
@@ -110,9 +117,9 @@ export function useDictionarySearch(externalQuery: string) {
 
     const timer = setTimeout(() => {
       executeSearch(externalQuery);
-    }, 300);
+    }, 150);
 
-    return () => clearTimeout(timer);
+    return () => { clearTimeout(timer); searchIdRef.current += 1; };
   }, [externalQuery, executeSearch]);
 
   return {

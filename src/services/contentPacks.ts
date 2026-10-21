@@ -45,6 +45,14 @@ export async function getPackManifest(kind: ContentPackKind): Promise<GenericCon
   return getLoader(kind).manifest();
 }
 
+/** Only the active words' shards exceed the small idle cache; closing study releases them. */
+export function retainStudyPacks(cards: readonly Flashcard[]): () => void {
+  const words = cards.flatMap((card) => [card.front, card.traditional, card.simplified].filter((word): word is string => Boolean(word)));
+  const releaseDictionary = getLoader('dictionary').retainParts(words.map(getDictionaryShard));
+  const releaseExtras = getLoader('flashcard-extras').retainParts(cards.map((card) => flashcardExtrasShard(flashcardExtrasKey(card))));
+  return () => { releaseDictionary(); releaseExtras(); };
+}
+
 /** One small shard replaces whole-corpus indexing for unchanged course cards. */
 export async function fetchPackedFlashcardExtras(card: Flashcard): Promise<FlashcardExtras | null | undefined> {
   const key = flashcardExtrasKey(card);
@@ -130,9 +138,10 @@ export async function fetchBreakdownsFromPacks(characters: string[]): Promise<Re
   return results;
 }
 
-export async function fetchDictionaryRowsFromPacks(words: string[]): Promise<Map<string, DBDictionaryRow[]>> {
+export async function fetchDictionaryRowsFromPacks(words: string[], signal?: AbortSignal): Promise<Map<string, DBDictionaryRow[]>> {
   const results = new Map<string, DBDictionaryRow[]>();
   try {
+    signal?.throwIfAborted();
     const uniqueWords = [...new Set(words.map((word) => word.trim()).filter(Boolean))];
     const wordsByShard = new Map<number, Set<string>>();
 
@@ -143,15 +152,22 @@ export async function fetchDictionaryRowsFromPacks(words: string[]): Promise<Map
       wordsByShard.set(shard, shardWords);
     }
 
-    await Promise.all([...wordsByShard.entries()].map(async ([shard, shardWords]) => {
-      const rows = await loadPack<DBDictionaryRow[]>('dictionary', shard);
-      if (!rows) return;
-      for (const word of shardWords) {
-        const matches = rows.filter((row) => row.traditional === word || row.simplified === word);
-        if (matches.length > 0) results.set(word, matches);
+    const shards = [...wordsByShard.entries()];
+    let next = 0;
+    await Promise.all(Array.from({ length: Math.min(4, shards.length) }, async () => {
+      while (next < shards.length) {
+        signal?.throwIfAborted();
+        const [shard, shardWords] = shards[next++];
+        const rows = await loadPack<DBDictionaryRow[]>('dictionary', shard);
+        if (!rows) continue;
+        for (const word of shardWords) {
+          const matches = rows.filter((row) => row.traditional === word || row.simplified === word);
+          if (matches.length > 0) results.set(word, matches);
+        }
       }
     }));
   } catch (error) {
+    signal?.throwIfAborted();
     debugLogger.warn('Cache', 'Static dictionary packs unavailable; using Supabase.', error);
   }
   return results;

@@ -86,6 +86,7 @@ export function useActivityDataLoader(
   const [cards, setCards] = useState<Flashcard[]>(() => cachedEntry?.cards ?? []);
   const [isLoading, setIsLoading] = useState(() => !cachedEntry);
   const [error, setError] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState(0);
 
   const [currentKey, setCurrentKey] = useState(deckExclusionKey);
   if (currentKey !== deckExclusionKey) {
@@ -191,9 +192,10 @@ export function useActivityDataLoader(
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites, enabled]);
+  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites, enabled, attempt]);
 
-  return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
+  return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds,
+    retry: () => { setError(null); setAttempt((value) => value + 1); } };
 }
 
 /** Shared by mounted activities and intent prefetch; one request per unchanged source. */

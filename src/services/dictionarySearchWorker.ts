@@ -9,7 +9,30 @@ let fallback: Promise<{ items: CompactSearchEntry[] }> | null = null;
 let loadController: AbortController | null = null;
 let idleTimer: ReturnType<typeof setTimeout> | undefined;
 let sequence = 0;
+let retainers = 0;
+let initialized = false;
 const pending = new Map<number, { resolve: (results: SearchResult[]) => void; reject: (error: Error) => void; timer: ReturnType<typeof setTimeout> }>();
+
+function scheduleRelease() {
+  clearTimeout(idleTimer);
+  if (retainers || pending.size) return;
+  idleTimer = setTimeout(() => dispose(), typeof document !== 'undefined' && document.hidden ? 60_000 : 10 * 60_000);
+  if (typeof window === 'undefined') (idleTimer as unknown as { unref?: () => void }).unref?.();
+}
+
+/** A mounted study session owns its warm index, even during pauses between words. */
+export function retainDictionarySearch(): () => void {
+  retainers++;
+  clearTimeout(idleTimer);
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    retainers--;
+    if (!retainers && loading && !initialized) dispose();
+    else scheduleRelease();
+  };
+}
 
 function dispose(error = new Error('Dictionary search closed')) {
   clearTimeout(idleTimer);
@@ -19,6 +42,8 @@ function dispose(error = new Error('Dictionary search closed')) {
   worker = null;
   loading = null;
   fallback = null;
+  initialized = false;
+  if (typeof document !== 'undefined') document.removeEventListener('visibilitychange', scheduleRelease);
   for (const job of pending.values()) { clearTimeout(job.timer); job.reject(error); }
   pending.clear();
 }
@@ -38,8 +63,10 @@ async function initialize(): Promise<void> {
   if (loading) return loading;
   clearTimeout(idleTimer);
   worker = new Worker(new URL('./dictionarySearch.worker.ts', import.meta.url), { type: 'module' });
-  worker.onerror = () => dispose(new Error('Dictionary worker failed'));
-  worker.onmessageerror = () => dispose(new Error('Dictionary worker failed'));
+  const instance = worker;
+  worker.onerror = () => { if (worker === instance) dispose(new Error('Dictionary worker failed')); };
+  worker.onmessageerror = () => { if (worker === instance) dispose(new Error('Dictionary worker failed')); };
+  if (typeof document !== 'undefined') document.addEventListener('visibilitychange', scheduleRelease);
   worker.onmessage = ({ data }: MessageEvent<{ id: number; result: SearchResult[]; error?: string }>) => {
     const job = pending.get(data.id);
     if (!job) return;
@@ -47,9 +74,7 @@ async function initialize(): Promise<void> {
     pending.delete(data.id);
     if (data.error) job.reject(new Error(data.error));
     else job.resolve(data.result);
-    // Searching owns the index only while useful. Closing the dictionary no
-    // longer leaves its 11 MB JSON and decoded gloss cache resident forever.
-    if (!pending.size) idleTimer = setTimeout(() => dispose(), 60_000);
+    scheduleRelease();
   };
   loadController = new AbortController();
   const controller = loadController;
@@ -60,8 +85,13 @@ async function initialize(): Promise<void> {
     const buffer = await response.arrayBuffer();
     controller.signal.throwIfAborted();
     await callWorker({ buffer }, [buffer]);
-  })().catch((error) => { dispose(error); throw error; }).finally(() => clearTimeout(timeout));
+    initialized = true;
+  })().catch((error) => { if (worker === instance) dispose(error); throw error; }).finally(() => clearTimeout(timeout));
   return loading;
+}
+
+export async function warmDictionarySearch(): Promise<void> {
+  if (typeof Worker !== 'undefined') await initialize();
 }
 
 export async function searchDictionaryIndex(query: string, limit: number, parts: PartsIndex | null): Promise<SearchResult[]> {
@@ -72,9 +102,7 @@ export async function searchDictionaryIndex(query: string, limit: number, parts:
   // Older engines and Node tests keep the same ranking and segmentation.
   fallback ??= fetchStaticJson<{ items: CompactSearchEntry[] }>(INDEX_PATH, 'dictionary-search-index').catch((error) => { fallback = null; throw error; });
   const [{ items }, engine] = await Promise.all([fallback, import('../utils/vocabulary/dictionarySearch')]);
-  clearTimeout(idleTimer);
-  idleTimer = setTimeout(() => dispose(), 60_000);
-  if (typeof window === 'undefined') (idleTimer as unknown as { unref?: () => void }).unref?.();
+  scheduleRelease();
   const components = parts ? engine.searchByCharacterComponents(items, parts, query, limit) : [];
   if (components.length) return components;
   const matches = engine.searchInIndex(items, query, limit);

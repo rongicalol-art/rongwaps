@@ -30,25 +30,25 @@ async function fetchRelatedWords(word: string): Promise<WordRelatedWord[]> {
 export function useWordExtras(word: string) {
   const [examples, setExamples] = useState<WordExample[]>([]);
   const [relatedWords, setRelatedWords] = useState<WordRelatedWord[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [examplesLoading, setExamplesLoading] = useState(true);
+  const [relatedLoading, setRelatedLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
-    setIsLoading(true);
+    setExamplesLoading(true);
+    setRelatedLoading(true);
     setExamples([]);
     setRelatedWords([]);
 
-    void Promise.allSettled([fetchExamples(word), fetchRelatedWords(word)]).then(([ex, rw]) => {
-      if (!active) return;
-      setExamples(ex.status === 'fulfilled' ? ex.value : []);
-      setRelatedWords(rw.status === 'fulfilled' ? rw.value : []);
-      setIsLoading(false);
-    });
+    void fetchExamples(word).then((value) => { if (active) setExamples(value); })
+      .catch(() => {}).finally(() => { if (active) setExamplesLoading(false); });
+    void fetchRelatedWords(word).then((value) => { if (active) setRelatedWords(value); })
+      .catch(() => {}).finally(() => { if (active) setRelatedLoading(false); });
 
     return () => {
       active = false;
     };
   }, [word]);
 
-  return { examples, relatedWords, isLoading };
+  return { examples, relatedWords, examplesLoading, relatedLoading };
 }

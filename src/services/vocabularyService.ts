@@ -8,6 +8,7 @@ import {
   fetchVocabularyPack,
   fetchAllVocabularyPacks,
   fetchCourseExampleCards,
+  fetchPackedFlashcardExtras,
 } from './contentPacks';
 import type { WordExample } from '../types/models';
 import { getSmartScore } from '../utils/vocabulary/vocabularySearchScoring';
@@ -128,6 +129,15 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
 }
 
 export async function fetchExamples(word: string, limit = 3): Promise<WordExample[]> {
+  if (!word.trim() || limit <= 0) return [];
+  // The generated extras already contain the full-corpus matching for course
+  // words. A warm lesson must not scan every book again when its dictionary opens.
+  const courseCard = (await fetchVocabulary()).find((card) => [card.front, card.traditional, card.simplified].includes(word));
+  const packed = courseCard ? await fetchPackedFlashcardExtras(courseCard) : null;
+  if (packed) {
+    const matches = packed.examples.filter((example) => example.chinese.includes(word));
+    if (matches.length) return [...matches.filter((example) => example.audio), ...matches.filter((example) => !example.audio)].slice(0, limit);
+  }
   const cards = await fetchExamplesForWord(word);
   const seen = new Set<string>();
   const examples: WordExample[] = [];

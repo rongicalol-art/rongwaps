@@ -115,6 +115,28 @@ test('pack loader caches the manifest and dedupes concurrent part requests', asy
   });
 });
 
+test('active study parts survive the idle limit and overlapping owners release independently', async () => {
+  const { calls, fetch } = createFetchStub(new Map<string, () => unknown>([
+    ['/data/test/manifest.json', () => validManifest],
+    ['/data/test/part-1.json', packBody(1, 2)], ['/data/test/part-2.json', packBody(2, 1)],
+  ]));
+  await withFetch(fetch, async () => {
+    const loader = createTestLoader({ maxCachedParts: 1 });
+    const release = loader.retainParts([1, 2, 1]);
+    const secondOwner = loader.retainParts([1]);
+    await Promise.all([loader.loadPart(1), loader.loadPart(2)]);
+    await loader.loadPart(1);
+    await loader.loadPart(2);
+    assert.equal(calls.length, 3, 'neither active shard reloads despite exceeding the idle limit');
+    release(); release();
+    await loader.loadPart(1);
+    assert.equal(calls.length, 3, 'another mounted owner still pins part 1');
+    secondOwner();
+    await loader.loadPart(2);
+    assert.equal(calls.length, 4, 'unowned parts return to the one-part idle budget');
+  });
+});
+
 test('pack loader rejects an invalid pack and allows retry after the fetch recovers', async () => {
   const badPack = () => ({ schemaVersion: 1, key: 1, count: 1, items: ['a', 'b'] });
   const goodPack = packBody(1, 2);

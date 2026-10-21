@@ -1,6 +1,7 @@
 import { test, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../src/utils/practiceLoader';
+import { preparePracticeData } from '../../src/utils/practiceLoader';
 import {
   getCachedActivityDeck,
   setCachedActivityDeck,
@@ -152,4 +153,39 @@ test('focused quiz schedules no other modes and closing flashcards cancels its i
   assert.equal(queued.size, 1);
   cancel();
   assert.equal(queued.size, 0);
+});
+
+test('cancelled study preparation cannot begin fetching or preparing recordings', async (t) => {
+  const preload = t.mock.method(audioService, 'preload', async () => {});
+  const controller = new AbortController();
+  controller.abort();
+  await assert.rejects(preparePracticeData([{ id: 'fixture', bookId: 1, lessonId: 1, front: '老師', back: 'teacher' }], controller.signal), { name: 'AbortError' });
+  assert.equal(preload.mock.callCount(), 0);
+});
+
+test('lesson preparation fills the card cache before revealing study and prepares only a bounded recording window', async (t) => {
+  const files: (string | undefined)[][] = [];
+  t.mock.method(audioService, 'preload', async (names: (string | undefined)[]) => { files.push(names); });
+  const primed: (string | undefined)[] = [];
+  t.mock.method(audioService, 'prepareRecording', async (name?: string) => { primed.push(name); });
+  const { getFlashcardExtras } = await import('../../src/features/flashcards/content/flashcardContent');
+  const cards: Flashcard[] = Array.from({ length: 130 }, (_, i) => ({
+    id: `fixture-preparation-${i}`, front: `fixture-word-${i}`, back: 'fixture', bookId: 0, lessonId: 0, audio: `fixture-${i}.mp3`,
+  }));
+  await preparePracticeData(cards, new AbortController().signal);
+  assert.ok(getFlashcardExtras(cards[0]));
+  assert.ok(getFlashcardExtras(cards[127]));
+  assert.equal(getFlashcardExtras(cards[128]), null, 'bulk review cannot eagerly fill the whole corpus');
+  assert.deepEqual(files, [cards.slice(0, 4).map((card) => card.audio)]);
+  assert.deepEqual(primed, [cards[0].audio]);
+});
+
+test('failed recordings reject preparation and a later retry can complete', async (t) => {
+  const cards: Flashcard[] = [{ id: 'fixture-retry', front: 'fixture-retry', back: '', bookId: 0, lessonId: 0 }];
+  let fail = true;
+  t.mock.method(audioService, 'preload', async (...[, , progress]: Parameters<typeof audioService.preload>) => { progress?.({ ready: 0, total: 1, failed: fail ? 1 : 0 }); });
+  t.mock.method(audioService, 'prepareRecording', async () => {});
+  await assert.rejects(preparePracticeData(cards, new AbortController().signal), /Recording download failed/);
+  fail = false;
+  await preparePracticeData(cards, new AbortController().signal);
 });

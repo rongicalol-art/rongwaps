@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ActivityModalWrapper, AppIcon, type AppIconName, LoadingScreen } from '../../lib/widgets';
+import { ActionButton, ActivityModalWrapper, AppIcon, type AppIconName, EmptyState, LoadingScreen } from '../../lib/widgets';
 import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
@@ -16,6 +16,7 @@ import { PracticeDockSlotProvider, type SessionStats } from '../../features/prac
 import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
+import { usePracticeDataReady } from './hooks/usePracticeDataReady';
 import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
@@ -61,7 +62,7 @@ export function ActivityModals({
   const effectiveLibraryMode = (isLibraryMode || activeActivity === 'flashcards-library') && !isReviewSession;
 
   const isPracticeSession = Boolean(activeActivity && activeActivity !== 'create-card');
-  const { cards: deckCards, isLoading: isLoadingDeck } = useActivityDataLoader(
+  const { cards: deckCards, isLoading: isLoadingDeck, error: deckError, retry: retryDeck } = useActivityDataLoader(
     activeBookId,
     selectedLessons,
     isReviewSession,
@@ -73,12 +74,13 @@ export function ActivityModals({
 
   // ONE readiness owner for opening a practice session: screen chunk + deck (+ future gates such
   // as fonts). Warm or fast opens go straight to content; slow ones show one loader only while waiting.
-  const isChunkReady = usePracticeScreenReady(resolvedActivity);
+  const screen = usePracticeScreenReady(resolvedActivity);
+  const data = usePracticeDataReady(deckCards, isPracticeSession && !isLoadingDeck);
   // The first cards' characters: their font slices must be loaded so no glyph swaps after reveal.
   const firstCardsText = !isPracticeSession || isLoadingDeck ? '' : deckCards.slice(0, 6).map((card) => card.front).join('');
   const fontGate = useFontGate(firstCardsText);
   const phase = useOpenPhase(
-    activeActivity === 'create-card' || (isChunkReady && !isLoadingDeck),
+    activeActivity === 'create-card' || (screen.ready && !isLoadingDeck && data.ready && !deckError),
     fontGate,
     activeActivity ? 'open' : 'closed',
   );
@@ -90,6 +92,7 @@ export function ActivityModals({
   // Switching modes inside a session never falls back to a loader or a blank frame.
   const showContent = phase === 'ready' || hasRevealed.current;
   const isSessionLoading = isPracticeSession && !showContent;
+  const loadError = deckError || screen.error || data.error;
 
   // Lesson-part practice hides the mode dock; Writing keeps it for its controls.
   const isLessonPartFocused = isLessonWindowOpen && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
@@ -195,7 +198,7 @@ export function ActivityModals({
         {activeActivity && (
           <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose}>
             <AnimatePresence>
-              {phase === 'loading' && !showContent && (
+              {(phase === 'loading' || loadError) && !showContent && (
                 <motion.div
                   key="loader"
                   initial={{ opacity: 0 }}
@@ -204,10 +207,11 @@ export function ActivityModals({
                   transition={{ duration: 0.18, ease: 'easeOut' }}
                   className="absolute inset-0 z-activity bg-ui-practice-canvas"
                 >
-                  <LoadingScreen
-                    message={getPracticeLoadingMessage(activeActivity, isReviewSession, effectiveLibraryMode)}
-                    tone="practice"
-                  />
+                  {loadError ? <EmptyState title="Study couldn’t load" description={loadError} action={<div className="flex gap-3"><ActionButton onClick={() => { retryDeck(); screen.retry(); data.retry(); }}>Retry</ActionButton><ActionButton variant="secondary" onClick={handleClose}>Back</ActionButton></div>} />
+                    : <><LoadingScreen
+                      message={isLoadingDeck ? getPracticeLoadingMessage(activeActivity, isReviewSession, effectiveLibraryMode) : 'Preparing examples and dictionary…'}
+                      tone="practice"
+                    /><div className="absolute inset-x-0 bottom-8 z-content flex justify-center"><ActionButton variant="secondary" onClick={handleClose}>Cancel</ActionButton></div></>}
                 </motion.div>
               )}
             </AnimatePresence>
