@@ -226,7 +226,6 @@ export function OrderBuildExercise({
           )}
 
 
-          {sceneFirst && <PracticePrompt hint={item.prompt} />}
           {answerLine}
 
           {status === 'correct' && dialogue.type === 'afterward' && (
@@ -255,7 +254,6 @@ export function OrderBuildExercise({
           ) : <PracticePrompt sub={item.sub} />}
           {children}
           {scene}
-          {sceneFirst && <PracticePrompt hint={item.prompt} />}
           {answerLine}
         </div>
       )}

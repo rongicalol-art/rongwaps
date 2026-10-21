@@ -189,7 +189,6 @@ export function SlotBuildExercise({
         )}
         {sceneFirst ? item.lines.map((line, index) => (
           <Fragment key={index}>
-            {index === leading.length && <PracticePrompt hint={item.prompt} />}
             <div className="flex flex-col items-center gap-1">
               <p className="text-center font-chinese text-2xl leading-[1.7] text-ui-ink-strong sm:text-3xl">{renderLine(line, 'plain')}</p>
               {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-extrabold text-ui-muted-strong">{note}</p>)}
