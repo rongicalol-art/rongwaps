@@ -20,3 +20,8 @@ test('the current spot is kept while the word stays near it', () => {
   assert.equal(nearestDropTarget({ x: 38, y: 0 }, targets, 40, 'b'), 'b');
   assert.equal(nearestDropTarget({ x: 38, y: 0 }, targets, 40, null), 'a');
 });
+
+test('an adjacent gap wins once the pointer is clearly closer to it', () => {
+  assert.equal(nearestDropTarget({ x: 100, y: 0 }, targets, 72, 'b'), 'c');
+  assert.equal(nearestDropTarget({ x: 20, y: 0 }, targets, 72, 'b'), 'a');
+});

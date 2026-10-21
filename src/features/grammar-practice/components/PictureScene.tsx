@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { fetchContentBlobUrl } from '../../../services/staticContentService';
 import type { PracticeCastMember } from '../../../types/models';
 import wangThinking from '../../../assets/images/grammar-practice/wang-thinking.webp';
+import restlessSleep from '../../../assets/images/grammar-practice/restless-sleep.webp';
 import { bookPagePath } from '../../../utils/grammar/bookPagePath';
 import { CountdownScene } from './CountdownScene';
+import { ChangeScene } from './ChangeScene';
 import { RouteScene } from './RouteScene';
 
 interface PictureSceneProps {
@@ -17,6 +19,7 @@ interface PictureSceneProps {
 export function usePageImage(page: number) {
   const [src, setSrc] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let live = true;
     setSrc(null);
@@ -26,16 +29,17 @@ export function usePageImage(page: number) {
       () => { if (live) setFailed(true); },
     );
     return () => { live = false; };
-  }, [page]);
-  return { src, failed };
+  }, [page, attempt]);
+  return { src, failed, retry: () => setAttempt((value) => value + 1), onError: () => setFailed(true) };
 }
 
 /** The `box` part of a scan, filling its parent (which sets the crop's aspect ratio). */
-export function PageCrop({ src, box, alt, onLoad }: {
+export function PageCrop({ src, box, alt, onLoad, onError }: {
   src: string;
   box: [number, number, number, number];
   alt: string;
   onLoad?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
+  onError?: () => void;
 }) {
   const [left, top, width, height] = box;
   return (
@@ -44,6 +48,7 @@ export function PageCrop({ src, box, alt, onLoad }: {
       alt={alt}
       draggable={false}
       onLoad={onLoad}
+      onError={onError}
       className="absolute max-w-none select-none"
       style={{
         width: `${100 / width}%`,
@@ -54,8 +59,62 @@ export function PageCrop({ src, box, alt, onLoad }: {
   );
 }
 
-/** Reviewed replacement for p.45 #3; other scenes retain their printed-book source. */
+/** One owner for the source-checked pilots and their scene-first presentation. */
+export function sceneFirstPicture(props: PictureSceneProps) {
+  const key = `${props.page}:${props.box.join(',')}`;
+  if (key === '99:0.207,0.34,0.08,0.11') {
+    // The adult shirt draft is not source-faithful. Keep the book's boy until a redraw is approved.
+    return <BookPictureScene {...props} />;
+  }
+  if (key === '125:0.178,0.262,0.125,0.073') {
+    return (
+      <svg role="img" aria-label={props.alt} viewBox="0 0 340 250" className="mx-auto h-[196px] max-w-full sm:h-60">
+        <g className="stroke-ui-ink" strokeWidth="3" strokeLinejoin="round">
+          <path d="M76 104v119h16V111m153-7v119h16V111M116 62v104h13V69m91-7v104h13V69" className="fill-brand-secondary-soft" />
+          <path d="M75 97l42-48h111l37 48v18H75z" className="fill-brand-secondary-soft" />
+          <path d="M75 97h190" fill="none" />
+          <path d="M133 69l41-24 48 21-41 27z" className="fill-brand-primary-wash" />
+          <path d="M133 69v9l48 24 41-27v-9l-41 27z" className="fill-ui-surface" />
+          <path d="M141 68l40 20" className="stroke-brand-primary" />
+        </g>
+      </svg>
+    );
+  }
+  if (key === '138:0.647,0.281,0.205,0.145') return <IllustratedPicture {...props} src={restlessSleep} />;
+  if (key === '166:0.252,0.258,0.211,0.119') {
+    return <ChangeScene before={{ date: { month: 3, day: 28 }, label: '昨天 · 星期三', value: '25°C' }} now={{ date: { month: 3, day: 29 }, label: '今天 · 星期四', value: '30°C' }} />;
+  }
+  if (key === '166:0.615,0.243,0.219,0.145') {
+    return (
+      <ChangeScene alt={props.alt} before={{ label: '2016年', value: '$80' }} now={{ label: '現在', value: '$120' }}>
+        <svg viewBox="0 0 250 130" className="h-28 w-56" aria-hidden="true">
+          <g className="stroke-ui-ink" strokeWidth="3" strokeLinejoin="round">
+            <path d="M26 49Q39 111 125 110Q211 111 224 49" className="fill-brand-primary-wash" />
+            <path d="M99 107v12h52v-12" className="fill-brand-primary-wash" />
+            <ellipse cx="125" cy="49" rx="99" ry="28" className="fill-brand-secondary-soft" />
+            <path d="M65 48q20-20 48 1t43-2m-86 9q24-18 49 2t46-1m-76 9q20-13 40 2t40-2" fill="none" className="stroke-brand-secondary-edge" />
+            <path d="M49 35l26-6 25 11-24 9zM151 32l24-5 24 12-25 8z" className="fill-brand-secondary" />
+          </g>
+        </svg>
+      </ChangeScene>
+    );
+  }
+  if (key === '195:0.193,0.676,0.293,0.136') {
+    return <CountdownScene now={{ date: { month: 4, day: 3 }, label: { traditional: '今天', pinyin: 'jīntiān', english: 'today' } }} next={{ date: { month: 4, day: 5 } }} renderChinese={(text) => text.traditional} />;
+  }
+  if (key === '196:0.202,0.148,0.287,0.121') {
+    return <CountdownScene now={{ time: '11:50', label: { traditional: '現在', pinyin: 'xiànzài', english: 'now' } }} next={{ time: '12:00', label: { traditional: '中午休息時間', pinyin: 'zhōngwǔ xiūxí shíjiān', english: 'noon break' } }} renderChinese={(text) => text.traditional} />;
+  }
+  if (key === '196:0.2,0.344,0.275,0.123') {
+    return <CountdownScene now={{ date: { month: 10, day: 1 }, label: { traditional: '今天', pinyin: 'jīntiān', english: 'today' } }} next={{ date: { month: 10, day: 10 }, label: { traditional: '弟弟十歲生日', pinyin: 'dìdi shí suì shēngrì', english: 'younger brother’s tenth birthday' } }} renderChinese={(text) => text.traditional} />;
+  }
+  return null;
+}
+
+/** Reviewed replacements are keyed by the exact source crop; everything else keeps the scan. */
 export function PictureScene(props: PictureSceneProps) {
+  const reviewed = sceneFirstPicture(props);
+  if (reviewed) return reviewed;
   if (props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {
     return <img src={wangThinking} alt={props.alt} draggable={false} className="mx-auto block h-auto max-h-[230px] w-full max-w-[285px] select-none object-contain sm:max-h-[300px]" />;
   }
@@ -70,20 +129,28 @@ export function PictureScene(props: PictureSceneProps) {
   if (key === '163:0.176,0.677,0.23,0.084') {
     return <RouteScene from={{ icon: 'restaurant', label: '餐廳' }} to={{ icon: 'library', label: '圖書館' }} arrived={false} showPurpose={false} />;
   }
-  if (key === '196:0.202,0.148,0.287,0.121') {
-    return <CountdownScene now={{ time: '11:50', label: { traditional: '現在', pinyin: 'xiànzài', english: 'now' } }} next={{ time: '12:00', label: { traditional: '中午休息時間', pinyin: 'zhōngwǔ xiūxí shíjiān', english: 'noon break' } }} renderChinese={(text) => text.traditional} />;
-  }
   return <BookPictureScene {...props} />;
+}
+
+function IllustratedPicture({ src, ...props }: PictureSceneProps & { src: string }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <BookPictureScene {...props} />;
+  return <img src={src} alt={props.alt} onError={() => setFailed(true)} draggable={false} className="mx-auto block h-auto max-h-[196px] w-full max-w-sm select-none object-contain sm:max-h-60" />;
 }
 
 /** A crop of the printed book 1 page, shown as the picture an exercise is about. */
 function BookPictureScene({ page, box, alt }: PictureSceneProps) {
-  const { src, failed } = usePageImage(page);
+  const { src, failed, retry, onError } = usePageImage(page);
   /** Page width / height; a typical page until the scan loads. */
   const [pageRatio, setPageRatio] = useState(0.75);
   const [, , width, height] = box;
 
-  if (failed) return null;
+  if (failed) return (
+    <div role="status" className="mx-auto max-w-sm text-center text-sm text-ui-ink">
+      <p>{alt}</p>
+      <button type="button" onClick={retry} className="mt-3 rounded-xs font-extrabold text-brand-primary-deep underline focus-ring-inline">Retry picture</button>
+    </div>
+  );
   return (
     <div
       className="mx-auto w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface"
@@ -93,7 +160,7 @@ function BookPictureScene({ page, box, alt }: PictureSceneProps) {
       {/* The ratio lives inside the border, or the crop drifts off its box (tall crops most). */}
       <div className="relative w-full" style={{ aspectRatio: `${width * pageRatio} / ${height}` }}>
         {src ? (
-          <PageCrop src={src} box={box} alt={alt} onLoad={(event) => setPageRatio(event.currentTarget.naturalWidth / event.currentTarget.naturalHeight)} />
+          <PageCrop src={src} box={box} alt={alt} onError={onError} onLoad={(event) => setPageRatio(event.currentTarget.naturalWidth / event.currentTarget.naturalHeight)} />
         ) : (
           <div role="status" aria-label="Loading picture" className="absolute inset-0 animate-pulse bg-ui-hover" />
         )}

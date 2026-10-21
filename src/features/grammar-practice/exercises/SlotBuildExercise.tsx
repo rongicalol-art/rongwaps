@@ -9,6 +9,7 @@ import { InlineBlank, type BlankState } from '../components/InlineBlank';
 import { PracticeBubble } from '../components/PracticeBubble';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
+import { sceneFirstPicture } from '../components/PictureScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
 import { TileGhost } from '../components/TileGhost';
 import { useTileDrag, type DragSource } from '../useTileDrag';
@@ -165,6 +166,7 @@ export function SlotBuildExercise({
     return closing ? <span key={segment.id} className="whitespace-nowrap">{blank}{closing}</span> : blank;
   });
 
+  const sceneFirst = item.scene?.type === 'picture' && Boolean(sceneFirstPicture(item.scene));
   const dialogue = item.lines.some((line) => line.speaker);
   // The gloss rides under the line that holds the glossed word (else under the last line before the reply).
   const glossed = item.glossary?.[0]?.traditional;
@@ -176,7 +178,7 @@ export function SlotBuildExercise({
 
   return (
     <LayoutGroup id={`slot-build-${item.id}`}>
-      <div className="flex flex-col gap-7">
+      <div className={sceneFirst ? "flex flex-col gap-5" : "flex flex-col gap-7"}>
         <PracticePrompt sub={item.sub} />
         {item.scene && (
           <PracticeScene
@@ -185,7 +187,15 @@ export function SlotBuildExercise({
             renderChinese={(text) => <ContextualChineseText text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
           />
         )}
-        {dialogue ? (
+        {sceneFirst ? item.lines.map((line, index) => (
+          <Fragment key={index}>
+            {index === leading.length && <PracticePrompt hint={item.prompt} />}
+            <div className="flex flex-col items-center gap-1">
+              <p className="text-center font-chinese text-2xl leading-[1.7] text-ui-ink-strong sm:text-3xl">{renderLine(line, 'plain')}</p>
+              {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-extrabold text-ui-muted-strong">{note}</p>)}
+            </div>
+          </Fragment>
+        )) : dialogue ? (
           <div className="flex flex-col gap-3">
             {item.lines.map((line, index) => (
               <Fragment key={index}>
