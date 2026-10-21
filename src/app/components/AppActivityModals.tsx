@@ -1,15 +1,17 @@
 import React, { lazy, Suspense } from 'react';
+import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
-// The practice shell stays lazy but renders from app start (idle-fetched), so it is loaded long
-// before an activity opens. Readiness and the one loader are owned inside it (ActivityModals).
 const ActivityModals = lazy(() => import('../../screens/activities/ActivityModals').then((m) => ({ default: m.ActivityModals })));
 
 type ActivityModalsProps = React.ComponentProps<typeof ActivityModals>;
 
 /** Lazy practice-modal shell. */
 export function AppActivityModals(props: ActivityModalsProps) {
+  const [opened, setOpened] = React.useState(false);
+  if (props.activeActivity && !opened) setOpened(true);
+  if (!opened) return null;
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<WorkspaceWindow tone="practice"><LoadingScreen message="Loading lesson…" tone="practice" /></WorkspaceWindow>}>
       <ActivityModals {...props} />
     </Suspense>
   );

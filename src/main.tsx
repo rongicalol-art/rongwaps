@@ -3,23 +3,21 @@ import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from 'react-router';
 import {MotionConfig} from 'motion/react';
 import App from './App.tsx';
-import {ErrorBoundary} from './lib/widgets';
+import {ErrorBoundary} from './lib/widgets/ErrorBoundary';
 import { initializeErrorReporting, reportReactError } from './services/errorReporting';
 import './index.css';
-import { warmChineseFont } from './utils/browser/fontWarmup';
+import './styles/fonts.generated.css?family=Huninn';
 import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
 import { registerSentenceLookupHandlers } from './lib/widgets/SmartSentence';
-import { lookupSentenceWord, validateSentenceWords, playSentenceWordAudio } from './services/sentenceLookupService';
 import { useAppStore } from './store/useAppStore';
 
 if (import.meta.env.DEV) startLayoutShiftMonitor();
-warmChineseFont();
 initializeErrorReporting();
 
 registerSentenceLookupHandlers({
-  lookupWord: (word) => lookupSentenceWord(word, useAppStore.getState().characterPreference),
-  validateWords: (words) => validateSentenceWords(words),
-  playAudio: (word) => playSentenceWordAudio(word, useAppStore.getState().characterPreference),
+  lookupWord: async (word) => (await import('./services/sentenceLookupService')).lookupSentenceWord(word, useAppStore.getState().characterPreference),
+  validateWords: async (words) => (await import('./services/sentenceLookupService')).validateSentenceWords(words),
+  playAudio: async (word) => (await import('./services/sentenceLookupService')).playSentenceWordAudio(word, useAppStore.getState().characterPreference),
 });
 
 createRoot(document.getElementById('root')!, {

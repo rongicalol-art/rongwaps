@@ -10,6 +10,25 @@ import { VitePWA } from 'vite-plugin-pwa';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+/** Keep font definitions in their canonical generated source, parse only the chosen family at runtime. */
+function chineseFontStylesPlugin(): Plugin {
+  const families = new Set(['Huninn', 'Rounded-SC', 'TW-EduKai', 'LXGW-WenKai']);
+  return {
+    name: 'rongwaps-chinese-font-styles',
+    enforce: 'pre',
+    async load(id) {
+      const [file, query] = id.split('?');
+      const family = new URLSearchParams(query).get('family');
+      if (!family || file !== path.resolve(__dirname, 'src/styles/fonts.generated.css')) return;
+      if (!families.has(family)) throw new Error('Unknown Chinese font family');
+      this.addWatchFile(file);
+      const source = await readFile(file, 'utf8');
+      return [...source.matchAll(/@font-face\s*\{[^}]+\}/g)]
+        .map(([face]) => face).filter((face) => face.includes(`font-family: '${family}'`)).join('\n');
+    },
+  };
+}
+
 function decompositionRuntimeDevPackPlugin(): Plugin {
   const configuredPackRoot = process.env.DECOMPOSITION_RUNTIME_PACK_DIR
     || process.env.VITE_DECOMPOSITION_RUNTIME_PACK_DIR;
@@ -53,6 +72,27 @@ function decompositionRuntimeDevPackPlugin(): Plugin {
   };
 }
 
+// Precache the actual entry graph. Unopened screens and animations are cached
+// on first use instead of downloading the whole application after every update.
+const shellAssets = new Set<string>();
+const shellPrecachePlugin: Plugin = {
+  name: 'rongwaps-shell-precache',
+  generateBundle(_options, bundle) {
+    shellAssets.clear();
+    const visit = (name: string) => {
+      if (shellAssets.has(name)) return;
+      shellAssets.add(name);
+      const chunk = bundle[name];
+      if (chunk?.type === 'chunk') {
+        chunk.imports.forEach(visit);
+        const metadata = (chunk as typeof chunk & { viteMetadata?: { importedCss: Set<string> } }).viteMetadata;
+        metadata?.importedCss.forEach((style) => shellAssets.add(style));
+      }
+    };
+    for (const item of Object.values(bundle)) if (item.type === 'chunk' && item.isEntry) visit(item.fileName);
+  },
+};
+
 const pwaPlugin = VitePWA({
   // Reuse the existing hand-written public/manifest.json; do not generate a
   // second manifest from the plugin.
@@ -63,14 +103,17 @@ const pwaPlugin = VitePWA({
   // Registration goes through virtual:pwa-register/react (single path).
   injectRegister: false,
   strategies: 'generateSW',
-  includeAssets: ['icons/*'],
   devOptions: { enabled: false },
   workbox: {
     // Precache only the app shell. Large authored data packs (public/data,
     // public/videos) already load offline through IndexedDB
     // (staticContentService) and the audio Cache Storage, and must not be
     // precached here.
-    globPatterns: ['**/*.{js,css,html,svg,png,woff2,ico}'],
+    globPatterns: ['index.html', 'icons/*.{svg,png,ico}', 'assets/*.{js,css}'],
+    manifestTransforms: [async (entries) => ({
+      manifest: entries.filter((entry) => !/\.(js|css)$/.test(entry.url) || shellAssets.has(entry.url)),
+      warnings: [],
+    })],
     globIgnores: [
       'data/**',
       'videos/**',
@@ -85,6 +128,15 @@ const pwaPlugin = VitePWA({
     navigateFallback: '/index.html',
     navigateFallbackDenylist: [/^\/api\//],
     runtimeCaching: [
+      {
+        urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/assets/'),
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'rongwaps-assets',
+          expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 30 },
+          cacheableResponse: { statuses: [200] },
+        },
+      },
       {
         // Self-hosted fonts excluded from the precache above: cached on first
         // fetch, then served from cache for a year.
@@ -113,7 +165,7 @@ const pwaPlugin = VitePWA({
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), pwaPlugin],
+    plugins: [chineseFontStylesPlugin(), react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), shellPrecachePlugin, pwaPlugin],
     build: {
       outDir: 'dist',
       emptyOutDir: true,

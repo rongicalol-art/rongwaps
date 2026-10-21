@@ -108,12 +108,13 @@ export function BookPageViewer({
   const [pageSrc, setPageSrc] = useState<string | null>(null);
   useEffect(() => {
     let live = true;
+    const controller = new AbortController();
     setPageSrc(null);
-    fetchContentBlobUrl(bookPagePath(bookId, page)).then(
+    fetchContentBlobUrl(bookPagePath(bookId, page), controller.signal).then(
       (url) => { if (live) setPageSrc(url); },
       () => { if (live) setImageFailed(true); },
     );
-    return () => { live = false; };
+    return () => { live = false; controller.abort(); };
   }, [bookId, page]);
 
   const pageNav = (

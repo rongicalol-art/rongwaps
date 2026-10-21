@@ -3,7 +3,6 @@ import { DBDictionaryEntry, DBDictionaryEntryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
 import { sanitizeDictionaryDefinitions, extractCedictReference } from '../utils/vocabulary/dictionaryDefinitions';
 import { fetchDictionaryRowsFromPacks } from './contentPacks';
-import { searchDictionaryOffline } from './dictionarySearchService';
 
 const remoteSearchPromises = new Map<string, Promise<unknown[]>>();
 
@@ -133,6 +132,7 @@ export async function executeRemoteSearch(queryNormalized: string): Promise<unkn
   const request = (async () => {
     try {
       // 1. Instant offline static search (zero network, works offline)
+      const { searchDictionaryOffline } = await import('./dictionarySearchService');
       const offlineResults = await searchDictionaryOffline(queryNormalized, 30);
       if (offlineResults && offlineResults.length > 0) {
         dictionarySearchCache.set(queryNormalized, offlineResults);

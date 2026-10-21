@@ -32,7 +32,7 @@
 | AppIcon | `AppIcon.tsx` | Semantic icon gateway (Phosphor + in-house glyphs/status badges). Includes semantic `camera` and `upload` controls. Decorative by default; pass `title`/`aria-label` to make it `role="img"`. |
 | BrandWordmark | `BrandWordmark.tsx` | 文 tile + wordmark; `name`, `collapsed`. |
 | CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
-| VideoBackground | `VideoBackground.tsx` | Looping decorative video with poster; needs `posterSrc` + `webmSrc`/`mp4Src`; honors reduced motion. |
+| VideoBackground | `VideoBackground.tsx` | Static decorative artwork via `posterSrc`; no continuous video decoding. Optional scrim and children. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
 | PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`). |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
@@ -70,7 +70,7 @@
 | StudyPartProgressRail | `part-progress/StudyPartProgressRail.tsx` | Study variant of the rail. |
 | SelectablePartProgressRail | `part-progress/SelectablePartProgressRail.tsx` | Clickable-segment variant. |
 | StudyPartButton | `part-progress/StudyPartButton.tsx` | Segment button used by the study rails. |
-| LoadingScreen | `LoadingScreen.tsx` | THE loader (no other variant): `fullScreen`, `inline`, `tone` (`canvas`/`practice`) must match the surface being preloaded. Never mount it directly on open: gate with `useOpenPhase` (hold 150ms before showing a loader; content appears immediately when ready). `preloadLoadingScreen()` warms it at idle (App). |
+| LoadingScreen | `LoadingScreen.tsx` | Shared loader: `fullScreen`, `inline`, `tone` (`canvas`/`practice`) match the surface being prepared. Windows use `useOpenPhase` (150ms hold; ready content appears immediately). Shows a light CSS indicator first; the branded player loads only after 200ms on capable devices. Low-core, low-memory and reduced-motion devices keep the light indicator. |
 | LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`/`preloadAnimation`). Pauses outside the viewport or in a hidden tab, respects reduced motion, and renders authored frames without subframe interpolation. Course art plays once when selected; loading indicators may loop. |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |
 

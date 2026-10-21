@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import { useMemo, type HTMLAttributes } from 'react';
 import type { GrammarWordToken } from '../../types/models';
 import { cn } from '../../utils/cn';
 import {
@@ -30,6 +30,8 @@ export interface ContextualChineseTextProps extends Omit<HTMLAttributes<HTMLSpan
 
 const CHINESE_CHARACTER = /[\u3400-\u9FFF]/;
 const LEADING_CLOSING = /^[。？！，」]+/;
+const NO_TOKENS: GrammarWordToken[] = [];
+const NO_FOCUS: string[] = [];
 
 function displayedWord(
   token: GrammarWordToken,
@@ -135,14 +137,14 @@ function tokenizeTeachingText(
 
 export function ContextualChineseText({
   text,
-  tokens = [],
-  focusTerms = [],
+  tokens = NO_TOKENS,
+  focusTerms = NO_FOCUS,
   characterPreference = 'traditional',
   onOpenWord,
   className,
   ...props
 }: ContextualChineseTextProps) {
-  const displayTokens = tokenizeTeachingText(text, tokens, focusTerms, characterPreference);
+  const displayTokens = useMemo(() => tokenizeTeachingText(text, tokens, focusTerms, characterPreference), [text, tokens, focusTerms, characterPreference]);
 
   return (
     <span className={className} {...props}>

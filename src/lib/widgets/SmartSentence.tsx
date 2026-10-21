@@ -130,18 +130,19 @@ function segmentChineseText(text: string): SegmentData[] {
 
 // Memory cache for looked-up words across sentences to make hover instant
 const wordLookupCache = new Map<string, SentenceWordLookupResult>();
+const NO_HIGHLIGHTS: string[] = [];
 
 export function SmartSentence({
   text,
   className = '',
-  highlightTerms = [],
+  highlightTerms = NO_HIGHLIGHTS,
   onWordClick,
   validateWords,
   lookupWord,
   onPlayAudio,
   enableHoverTooltip = true,
 }: SmartSentenceProps) {
-  const [finalSegments, setFinalSegments] = useState<SegmentData[]>([]);
+  const [finalSegments, setFinalSegments] = useState<{ text: string; segments: SegmentData[] } | null>(null);
   const [hoveredWord, setHoveredWord] = useState<HoveredWordState | null>(null);
   const [activeWordKey, setActiveWordKey] = useState<string | null>(null);
 
@@ -163,7 +164,7 @@ export function SmartSentence({
 
     async function validateAndSetSegments(fn: (words: string[]) => Promise<Map<string, unknown> | Set<string>>) {
       try {
-        const initialSegments = segmentChineseText(text);
+        const initialSegments = fallbackSegments;
 
         const wordsRequiringNetworkValidation = initialSegments
           .filter((seg) => seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment) && Array.from(seg.segment).length > 1)
@@ -190,11 +191,11 @@ export function SmartSentence({
         });
 
         if (!isMounted) return;
-        setFinalSegments(processed);
+        setFinalSegments({ text, segments: processed });
       } catch (error) {
         if (!isMounted) return;
         debugLogger.warn('App', 'SmartSentence word validation failed, using fallback', error);
-        setFinalSegments([{ segment: text, isWordLike: true, index: 0, input: text }]);
+        setFinalSegments({ text, segments: fallbackSegments });
       }
     }
 
@@ -203,9 +204,9 @@ export function SmartSentence({
     return () => {
       isMounted = false;
     };
-  }, [text, activeValidator]);
+  }, [text, fallbackSegments, activeValidator]);
 
-  const displaySegments = activeValidator && finalSegments.length > 0 ? finalSegments : fallbackSegments;
+  const displaySegments = activeValidator && finalSegments?.text === text ? finalSegments.segments : fallbackSegments;
   const highlightRanges = useMemo(
     () => findHighlightRanges(text, highlightTerms),
     [highlightTerms, text],
@@ -229,7 +230,9 @@ export function SmartSentence({
     isTooltipOpenRef.current = false;
   }, [clearTimers]);
 
+  const tooltipActive = Boolean(hoveredWord || activeWordKey);
   useEffect(() => {
+    if (!tooltipActive) return;
     const handleScroll = () => closeTooltip();
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeTooltip();
@@ -241,7 +244,8 @@ export function SmartSentence({
       window.removeEventListener('keydown', handleKeyDown);
       clearTimers();
     };
-  }, [closeTooltip, clearTimers]);
+  }, [closeTooltip, clearTimers, tooltipActive]);
+  useEffect(() => clearTimers, [clearTimers]);
 
   const openWordTooltip = useCallback(
     (word: string, element: HTMLElement) => {
@@ -277,6 +281,7 @@ export function SmartSentence({
       void activeLookup(word).then((result) => {
         if (result) {
           wordLookupCache.set(word, result);
+          if (wordLookupCache.size > 256) wordLookupCache.delete(wordLookupCache.keys().next().value!);
         }
         setHoveredWord((prev) => (prev && prev.word === word ? { ...prev, info: result, loading: false } : prev));
       }).catch(() => {

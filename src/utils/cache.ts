@@ -45,4 +45,4 @@ export class AppCache {
 export const breakdownCache = new AppCache(2000);
 export const dictionaryCache = new AppCache(2000);
 export const vocabularyCache = new AppCache(500);
-export const dictionarySearchCache = new AppCache(1000);
+export const dictionarySearchCache = new AppCache(64);

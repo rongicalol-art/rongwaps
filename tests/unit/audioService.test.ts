@@ -500,6 +500,31 @@ after(() => {
 });
 const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
+test('native recording preparation decodes before readiness and cleans up cancellation/errors', async () => {
+  const { prepareAudioElement } = await import('../../src/services/audio/playbackEngine');
+  const audio = new FakeAudio();
+  const prepared = prepareAudioElement(audio as unknown as HTMLAudioElement, 'blob:prepared-recording');
+  assert.equal(audio.src, 'blob:prepared-recording');
+  assert.equal(audio.listenerCount('canplay'), 1);
+  audio.readyState = 2;
+  audio.dispatch('canplay');
+  await prepared;
+  assert.equal(audio.listenerCount('canplay'), 0);
+  await prepareAudioElement(audio as unknown as HTMLAudioElement, audio.src);
+  assert.equal(audio.listenerCount('canplay'), 0, 'decoded replay needs no extra preparation');
+
+  audio.readyState = 0;
+  const controller = new AbortController();
+  const cancelled = prepareAudioElement(audio as unknown as HTMLAudioElement, 'blob:cancelled-recording', controller.signal);
+  controller.abort();
+  await assert.rejects(cancelled, { name: 'AbortError' });
+  assert.equal(audio.listenerCount('canplay'), 0);
+  const invalid = prepareAudioElement(audio as unknown as HTMLAudioElement, 'blob:invalid-recording');
+  audio.dispatch('error');
+  await assert.rejects(invalid, /decoded/);
+  assert.equal(audio.listenerCount('error'), 0);
+});
+
 function enableCache() {
   Object.defineProperty(globalThis, 'caches', { configurable: true, value: { open: async () => memoryCache } });
 }
@@ -754,16 +779,16 @@ test('aborted lookahead skips queued recordings and never treats text as a filen
 });
 
 test('recording object URLs evict by bytes and by recent use', async () => {
-  const { cacheObjectUrl } = await import('../../src/services/audio/audioCache');
+  const { cacheObjectUrl, MAX_AUDIO_MEMORY_BYTES } = await import('../../src/services/audio/audioCache');
   const savedRevoke = URL.revokeObjectURL;
   const revoked: string[] = [];
   URL.revokeObjectURL = (url) => { revoked.push(url); };
   try {
     const urls = new Map<string, string>();
-    cacheObjectUrl(urls, 'one', 'blob:one', 10 * 1024 * 1024);
-    cacheObjectUrl(urls, 'two', 'blob:two', 10 * 1024 * 1024);
+    cacheObjectUrl(urls, 'one', 'blob:one', Math.floor(MAX_AUDIO_MEMORY_BYTES * 0.4));
+    cacheObjectUrl(urls, 'two', 'blob:two', Math.floor(MAX_AUDIO_MEMORY_BYTES * 0.4));
     cacheObjectUrl(urls, 'one', 'blob:one');
-    cacheObjectUrl(urls, 'three', 'blob:three', 10 * 1024 * 1024);
+    cacheObjectUrl(urls, 'three', 'blob:three', Math.floor(MAX_AUDIO_MEMORY_BYTES * 0.4));
     assert.equal(urls.has('two'), false);
     assert.equal(urls.has('one'), true);
     assert.deepEqual(revoked, ['blob:two']);

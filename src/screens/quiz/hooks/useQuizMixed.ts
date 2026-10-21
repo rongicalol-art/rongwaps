@@ -5,7 +5,8 @@ import { useAppStore, type MatchPairType } from '../../../store/useAppStore';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
 import { quizSnapshotKey } from '../../../utils/srs/resumeState';
-import { planQuizRound, parseMeasureWord, wordsForQuizTypes, type QuizBeat, type QuizTypeId } from '../../../utils/vocabulary/quizDirector';
+import { parseMeasureWord, wordsForQuizTypes, type QuizBeat, type QuizTypeId } from '../../../utils/vocabulary/quizDirector';
+import { useQuizPlan } from './useQuizPlan';
 
 type BeatStatus = 'idle' | 'correct' | 'wrong';
 export type FollowUpState = 'closed' | 'open' | 'done';
@@ -78,23 +79,15 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
 
   const isReviewPass = pass > 0 || session.resumedReview;
   const idsKey = activeCards.map((card) => card.id).join(',');
-  const beats = useMemo<QuizBeat[]>(() => {
-    if (activeCards.length === 0) return [];
-    if (snapshotRef.current?.key !== sessionKey) snapshotRef.current = { key: sessionKey, value: readSnapshot(sessionKey) };
-    const { nonce } = snapshotRef.current.value;
-    const planKey = `${sessionKey}|${idsKey}|${pass}`;
-    if (planConfigRef.current?.key !== planKey) planConfigRef.current = { key: planKey, matchPairType };
-    return planQuizRound(activeCards, {
-      seed: `${sessionKey}|${nonce}|${pass}`,
-      reviewPass: isReviewPass,
-      extraCards: cards,
-      confusions: useAppStore.getState().wordConfusions,
-      types,
-      matchPairType: planConfigRef.current.matchPairType,
-    });
-    // activeCards is keyed by its ids. matchPairType is frozen per round on purpose.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idsKey, sessionKey, pass, isReviewPass, typesKey]);
+  if (snapshotRef.current?.key !== sessionKey) snapshotRef.current = { key: sessionKey, value: readSnapshot(sessionKey) };
+  const planKey = `${sessionKey}|${idsKey}|${pass}|${isReviewPass}|${typesKey}|${session.resetNonce}`;
+  if (planConfigRef.current?.key !== planKey) planConfigRef.current = { key: planKey, matchPairType };
+  const planning = useQuizPlan(activeCards, {
+    seed: `${sessionKey}|${snapshotRef.current.value.nonce}|${pass}`,
+    reviewPass: isReviewPass, extraCards: cards, confusions: useAppStore.getState().wordConfusions,
+    types, matchPairType: planConfigRef.current.matchPairType,
+  }, planKey, !completed);
+  const { beats } = planning;
 
   const starts = useMemo(() => {
     let at = 0;
@@ -180,8 +173,9 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
     inBeatDone,
     currentCard,
     beat,
+    planning,
     audioBeats,
-    audioPreparationKey: `${sessionKey}|${pass}`,
+    audioPreparationKey: planKey,
     beatKey: beat ? `${beatIndex}:${pass}` : '',
     isReviewPass,
     status,

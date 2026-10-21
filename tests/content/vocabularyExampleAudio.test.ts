@@ -13,6 +13,7 @@ type SentenceAudio = {
 type SourceExample = { chinese: string };
 type AudioEntry = {
   bookId: number;
+  lessonId: number;
   sourceCardId: string;
   traditional: string;
   audio?: SentenceAudio | null;

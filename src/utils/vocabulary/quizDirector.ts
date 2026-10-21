@@ -32,19 +32,25 @@ export const QUIZ_TYPE_FORMATS: Readonly<Record<QuizTypeId, readonly QuizFormat[
 export function quizTypesFor(card: Flashcard, deck: readonly Flashcard[]): QuizTypeId[] {
   const types: QuizTypeId[] = ['meaning', 'hanzi', 'match', 'true-false'];
   if (card.audio) types.push('listen');
-  if (buildWordTiles(card, deck, createQuizRng(card.id))) types.push('build');
+  if (hasWordTiles(card, deckCharacters(deck))) types.push('build');
   return types;
 }
 
 /** Picked types keep only the words that fit one of them ([] = Mixed keeps every word). */
 export function wordsForQuizTypes(deck: readonly Flashcard[], types: readonly QuizTypeId[]): Flashcard[] {
-  if (types.length === 0) return [...deck];
-  return deck.filter((card) => quizTypesFor(card, deck).some((type) => types.includes(type)));
+  if (types.length === 0 || types.some((type) => type !== 'listen' && type !== 'build')) return [...deck];
+  const characters = types.includes('build') ? deckCharacters(deck) : [];
+  return deck.filter((card) => (types.includes('listen') && card.audio) || (types.includes('build') && hasWordTiles(card, characters)));
 }
 
 /** The picker offers only types at least one word can take. */
 export function availableQuizTypes(deck: readonly Flashcard[]): Set<QuizTypeId> {
-  return new Set(deck.flatMap((card) => quizTypesFor(card, deck)));
+  if (!deck.length) return new Set();
+  const types = new Set<QuizTypeId>(['meaning', 'hanzi', 'match', 'true-false']);
+  if (deck.some((card) => card.audio)) types.add('listen');
+  const characters = deckCharacters(deck);
+  if (deck.some((card) => hasWordTiles(card, characters))) types.add('build');
+  return types;
 }
 
 export interface QuizBeat {
@@ -103,10 +109,31 @@ function seededShuffle<T>(items: readonly T[], rng: QuizRng): T[] {
 
 const HANZI = /[\u3400-\u9fff]/;
 const hanziChars = (text: string) => Array.from(text).filter((ch) => HANZI.test(ch));
-const soundKey = (card: Flashcard) => normalizeChoiceValue(card.pinyin ?? '', 'pinyin');
-const meaningKey = (card: Flashcard) => normalizeChoiceValue(card.back, 'meaning');
-const tonelessKey = (card: Flashcard) =>
-  soundKey(card).normalize('NFD').replace(/[\u0300-\u036f0-9]/g, '');
+const wordKeys = new WeakMap<Flashcard, { back: string; pinyin?: string; meaning: string; sound: string; toneless: string }>();
+function keysFor(card: Flashcard) {
+  let keys = wordKeys.get(card);
+  if (!keys || keys.back !== card.back || keys.pinyin !== card.pinyin) {
+    const sound = normalizeChoiceValue(card.pinyin ?? '', 'pinyin');
+    keys = { back: card.back, pinyin: card.pinyin, meaning: normalizeChoiceValue(card.back, 'meaning'), sound,
+      toneless: sound.normalize('NFD').replace(/[\u0300-\u036f0-9]/g, '') };
+    wordKeys.set(card, keys);
+  }
+  return keys;
+}
+const soundKey = (card: Flashcard) => keysFor(card).sound;
+const meaningKey = (card: Flashcard) => keysFor(card).meaning;
+const tonelessKey = (card: Flashcard) => keysFor(card).toneless;
+
+function deckCharacters(deck: readonly Flashcard[]): string[] {
+  return [...new Set(deck.flatMap((card) => hanziChars(card.front)))];
+}
+
+function hasWordTiles(card: Flashcard, characters: readonly string[]): boolean {
+  if (!canBuildWord(card)) return false;
+  let distractors = 0;
+  for (const char of characters) if (!card.front.includes(char) && ++distractors === 2) return true;
+  return false;
+}
 
 function sharedChars(a: Flashcard, b: Flashcard): string[] {
   const inB = new Set(hanziChars(b.front));
@@ -122,10 +149,14 @@ export function canBuildWord(card: Flashcard): boolean {
 
 /** Two character distractors come only from this deck; a repeated answer character keeps its own tile. */
 export function buildWordTiles(card: Flashcard, deck: readonly Flashcard[], rng: QuizRng): string[] | null {
+  return wordTiles(card, deckCharacters(deck), rng);
+}
+
+function wordTiles(card: Flashcard, characters: readonly string[], rng: QuizRng): string[] | null {
   if (!canBuildWord(card)) return null;
   const answer = Array.from(card.front);
   const answerChars = new Set(answer);
-  const pool = Array.from(new Set(deck.flatMap((word) => hanziChars(word.front)))).filter((char) => !answerChars.has(char));
+  const pool = characters.filter((char) => !answerChars.has(char));
   if (pool.length < 2) return null;
   return seededShuffle([...answer, ...seededShuffle(pool, rng).slice(0, 2)], rng);
 }
@@ -226,11 +257,12 @@ export function planQuizRound(
   const others = extraCards.filter((c) => !mainIds.has(c.id));
 
   // Tile distractors may come from the whole loaded deck, so a short review pass can still build words.
-  const tilesFor = (card: Flashcard) => buildWordTiles(card, [...cards, ...others], createQuizRng(`${seed}|build|${card.id}`));
+  const characters = deckCharacters([...cards, ...others]);
+  const tilesFor = (card: Flashcard) => wordTiles(card, characters, createQuizRng(`${seed}|build|${card.id}`));
   /** Every format is open to every word; only the data decides (audio for listening, 2+ characters for building). */
   const canUse = (card: Flashcard, format: QuizFormat) => allowed.has(format) && (
     format === 'sound-match' || format === 'listen-pick' ? Boolean(card.audio)
-      : format === 'word-build' ? tilesFor(card) !== null : true);
+      : format === 'word-build' ? hasWordTiles(card, characters) : true);
   /** The preferred single format if this word can take it, else another picked one, else pick-meaning. */
   const singleFor = (card: Flashcard, preferred: QuizFormat) =>
     canUse(card, preferred) ? preferred : SINGLE_FORMATS.find((format) => canUse(card, format)) ?? 'pick-meaning';

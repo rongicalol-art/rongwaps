@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { useAppStore } from '../../store/useAppStore';
-import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizBeat, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
+import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { useQuizMixed } from './hooks/useQuizMixed';
 import { QuizShell, type QuizModeProps } from './QuizShell';
 import { MeasureWordFollowUp } from './formats/MeasureWordFollowUp';
@@ -9,7 +9,9 @@ import { PairMatch } from './formats/PairMatch';
 import { PickOne, type PickChoice, type PickPrompt } from './formats/PickOne';
 import { TrueFalseFlip } from './formats/TrueFalseFlip';
 import { WordBuild } from './formats/WordBuild';
-import { prepareQuizAudio } from './hooks/useQuizAudioPreparation';
+import { useQuizAudioPreparation } from './hooks/useQuizAudioPreparation';
+import { QuizAudioPreparation } from './components/QuizAudioPreparation';
+import { ActionButton, EmptyState, LoadingScreen } from '../../lib/widgets';
 
 const TITLES: Record<QuizFormat, string> = {
   'pair-match': 'Tap the pairs',
@@ -41,41 +43,11 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const onBuildReady = useCallback((ready: boolean) => {
     setReadyBeatId(ready ? activeBeatId : null);
   }, [activeBeatId]);
-  const audioAbortRef = useRef<AbortController | null>(null);
-  const warmedBeatsRef = useRef<Set<QuizBeat>>(new Set());
-  useEffect(() => {
-    const warmed = warmedBeatsRef.current;
-    if (session.completed) {
-      audioAbortRef.current?.abort();
-      audioAbortRef.current = null;
-      warmed.clear();
-      return;
-    }
-    if (!audioAbortRef.current || audioAbortRef.current.signal.aborted) {
-      audioAbortRef.current = new AbortController();
-    }
-    const { signal } = audioAbortRef.current;
-    // Warm current and next without aborting lookahead when advancing into the next beat.
-    for (const question of session.audioBeats) {
-      if (warmed.has(question)) continue;
-      warmed.add(question);
-      void prepareQuizAudio([question], signal, () => {}, () => {}).catch(() => {
-        warmed.delete(question);
-      });
-    }
-  }, [session.audioBeats, session.completed]);
-  useEffect(() => {
-    const warmed = warmedBeatsRef.current;
-    return () => {
-      audioAbortRef.current?.abort();
-      audioAbortRef.current = null;
-      warmed.clear();
-    };
-  }, []);
+  const audio = useQuizAudioPreparation(session.audioBeats, session.audioPreparationKey, session.completed);
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === shell.activeBookId) || SAMPLE_BOOKS[0];
 
 
-  const measureWord = beat?.format === 'pick-meaning' && currentCard ? parseMeasureWord(currentCard.back) : null;
+  const measureWord = useMemo(() => beat?.format === 'pick-meaning' && currentCard ? parseMeasureWord(currentCard.back) : null, [beat, currentCard]);
   const measureChoices = useMemo(
     () => (measureWord && currentCard
       ? buildMeasureWordChoices(measureWord, cards.map((c) => c.back), createQuizRng(`${sessionKey}|measure|${currentCard.id}`))
@@ -105,6 +77,10 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       session={session}
       mode="quiz-choices"
       title={beatTitle}
+      preparation={session.planning.pending ? <div className="flex flex-1 flex-col items-center justify-center"><LoadingScreen inline message="Preparing quiz…" tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Cancel</ActionButton></div>
+        : session.planning.error ? <EmptyState title="Quiz couldn’t load" action={<div className="flex gap-3"><ActionButton onClick={session.planning.retry}>Retry</ActionButton><ActionButton variant="secondary" onClick={shell.onEnd}>Back</ActionButton></div>} />
+        : !audio.ready ? <QuizAudioPreparation progress={audio.progress} error={audio.error} onRetry={audio.retry} onBack={shell.onEnd} />
+        : undefined}
       wide
       status={status}
       correctAnswer={missedFeedback ? session.missedLabel : currentCard ? `${currentCard.front}  ${currentCard.back}` : ''}

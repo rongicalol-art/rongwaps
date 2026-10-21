@@ -12,6 +12,37 @@ export interface PlayRangeOptions {
 const AUDIO_START_TIMEOUT_MS = 2500;
 const AUDIO_STALL_TIMEOUT_MS = 2500;
 
+/** Decode the current cached clip during visible preparation, before the learner taps Play. */
+export function prepareAudioElement(audio: HTMLAudioElement, src: string, signal?: AbortSignal): Promise<void> {
+  if (signal?.aborted) return Promise.reject(new DOMException('Aborted', 'AbortError'));
+  if (audio.src === src && audio.readyState >= 2) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const finish = (error?: Error) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(deadline);
+      audio.removeEventListener('canplay', ready);
+      audio.removeEventListener('error', fail);
+      signal?.removeEventListener('abort', abort);
+      if (error) reject(error); else resolve();
+    };
+    const ready = () => { if (audio.readyState >= 2) finish(); };
+    const fail = () => finish(new Error('Recording could not be decoded'));
+    const abort = () => finish(new DOMException('Aborted', 'AbortError'));
+    const deadline = setTimeout(() => finish(new Error('Recording preparation timed out')), 2000);
+    audio.addEventListener('canplay', ready);
+    audio.addEventListener('error', fail);
+    signal?.addEventListener('abort', abort, { once: true });
+    try {
+      audio.preload = 'auto';
+      if (audio.src !== src) { audio.src = src; audio.load?.(); }
+      ready();
+    } catch { fail(); }
+    if (signal?.aborted) abort();
+  });
+}
+
 interface AudioProgressWatch {
   markStarted: () => void;
   stop: () => void;

@@ -289,7 +289,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   }
 
   // `completed` with misses is one transient render: the review starts in the effect above.
-  if (completed || (!currentCard && !introActive)) return null;
+  if (completed || (!currentCard && !introActive && !preparation)) return null;
 
   return (
     <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">

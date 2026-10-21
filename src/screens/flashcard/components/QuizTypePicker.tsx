@@ -88,7 +88,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
   const gridRef = useRef<HTMLDivElement>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const leaving = useRef(false);
-  // Icons play once as the types settle (staggered), again on hover, and loop while a type is picked.
+  // Icons play on entrance, selection and hover, then settle without idle GPU work.
   const [plays, setPlays] = useState<Record<string, number>>({});
   const lastPlay = useRef<Record<string, number>>({});
   const [entered, setEntered] = useState(false);
@@ -305,7 +305,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
                 <span className="flex h-[92px] flex-col items-center gap-2 pt-[13px] lg:h-[100px]">
                   <QuizTypeIcon
                     type={type.id}
-                    motion={on ? 'loop' : entrance.kind === 'none' ? 'none' : plays[type.id] || !entered ? 'once' : 'none'}
+                    motion={entrance.kind === 'none' ? 'none' : on || plays[type.id] || !entered ? 'once' : 'none'}
                     playKey={plays[type.id] ?? 0}
                     delay={plays[type.id] ? 0 : (entrance.kind === 'morph' ? 0.6 : 0.35) + (index % 3) * 0.05 + Math.floor(index / 3) * 0.06}
                     className="h-10 w-10 lg:h-12 lg:w-12"

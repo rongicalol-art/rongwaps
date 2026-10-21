@@ -19,6 +19,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Audio & karaoke alignment | `reference/OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
 | Architectural boundary changes | `ARCHITECTURE.md`, `../AGENTS.md`, `DECISIONS.md` |
+| Loading, CPU, memory and audio performance | `TESTING.md` → Performance regression checks, `src/services/audio/`, `scripts/performance/checkBudget.ts` |
 | Past decisions older than 2026-09-22 | `archive/DECISIONS_ARCHIVE.md` |
 
 ## Active Docs

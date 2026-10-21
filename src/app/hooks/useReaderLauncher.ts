@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
@@ -6,14 +6,16 @@ import { getSelectedLessonIds } from '../../utils/lesson/lessonPartSelection';
 import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/lesson/readingContext';
 import { isLessonLocked } from '../../data/books';
 import { fetchReadingsPack, fetchDialogueAlignmentPack } from '../../services/contentPacks';
+import { warmChineseFont } from '../../utils/browser/fontWarmup';
 
 export async function loadReadings(bookId: number, hasFullCourseAccess = false): Promise<ReadingRecord[]> {
+  warmChineseFont();
   const [readings] = await Promise.all([
     fetchReadingsPack(bookId),
     import('../../screens/reader/components/ReadingCanvas'),
     import('../../screens/reader/components/ReadingNarrativeView'),
   ]);
-  void fetchDialogueAlignmentPack(bookId);
+  void fetchDialogueAlignmentPack(bookId).catch(() => {});
   return (readings ?? []).filter((reading) => !isLessonLocked(reading.bookId, reading.lessonId, hasFullCourseAccess));
 }
 
@@ -33,54 +35,55 @@ export function useReaderLauncher({
   const [activeReadingIndex, setActiveReadingIndex] = useState<number | null>(null);
   const [isOpening, setIsOpening] = useState(false);
 
-  const openReader = useCallback(async (bookId: number, explicitIndex?: number) => {
-    onOpen?.();
-    setIsOpening(true);
-    try {
-      const loaded = await loadReadings(bookId, hasFullCourseAccess);
-      if (!loaded.length) {
-        setReadings([]);
-        setActiveReadingIndex(null);
-        return;
-      }
-      const store = useAppStore.getState();
-      // Lessons derived from the canonical per-book parts map; the passed-in
-      // prop is the fallback for callers that already computed a view.
-      const storeLessons = getSelectedLessonIds(store.selectedLessonParts, bookId);
-      const targetIdx = explicitIndex !== undefined
-        ? Math.max(0, Math.min(explicitIndex, loaded.length - 1))
-        : resolveActiveReadingIndex({
-          bookId,
-          selectedLessons: storeLessons.length > 0 ? storeLessons : selectedLessons,
-          selectedLessonParts: store.selectedLessonParts,
-          readings: loaded,
-        });
-      setReadings(loaded);
-      setActiveReadingIndex(targetIdx);
-    } finally {
-      setIsOpening(false);
-    }
-  }, [hasFullCourseAccess, onOpen, selectedLessons]);
+  const [loadError, setLoadError] = useState(false);
+  const generation = useRef(0);
+  const retryRef = useRef<(() => Promise<void>) | null>(null);
+  useEffect(() => () => { generation.current++; }, []);
 
-  const openReaderForPart = useCallback(async (bookId: number, lessonId: number, partId: number) => {
+  const openReading = useCallback(async (bookId: number, selectIndex: (loaded: ReadingRecord[]) => number): Promise<void> => {
     onOpen?.();
+    const request = ++generation.current;
+    retryRef.current = () => openReading(bookId, selectIndex);
     setIsOpening(true);
+    setLoadError(false);
+    setActiveReadingIndex(null);
+    const fail = () => {
+      if (generation.current !== request) return;
+      setLoadError(true);
+      setIsOpening(false);
+    };
+    const timeout = window.setTimeout(() => { if (generation.current === request) { fail(); generation.current++; } }, 25_000);
     try {
       const loaded = await loadReadings(bookId, hasFullCourseAccess);
-      if (!loaded.length) {
-        setReadings([]);
-        setActiveReadingIndex(null);
-        return;
-      }
-      const targetIdx = findReadingIndexForPart(loaded, bookId, lessonId, partId);
+      if (generation.current !== request) return;
+      if (!loaded.length) { fail(); return; }
       setReadings(loaded);
-      setActiveReadingIndex(targetIdx);
-    } finally {
-      setIsOpening(false);
+      setActiveReadingIndex(selectIndex(loaded));
+    } catch { fail(); }
+    finally {
+      window.clearTimeout(timeout);
+      if (generation.current === request) setIsOpening(false);
     }
   }, [hasFullCourseAccess, onOpen]);
 
+  const openReader = useCallback((bookId: number, explicitIndex?: number) => openReading(bookId, (loaded) => {
+    if (explicitIndex !== undefined) return Math.max(0, Math.min(explicitIndex, loaded.length - 1));
+    const store = useAppStore.getState();
+    const storeLessons = getSelectedLessonIds(store.selectedLessonParts, bookId);
+    return resolveActiveReadingIndex({
+      bookId, selectedLessons: storeLessons.length ? storeLessons : selectedLessons,
+      selectedLessonParts: store.selectedLessonParts, readings: loaded,
+    });
+  }), [openReading, selectedLessons]);
+
+  const openReaderForPart = useCallback((bookId: number, lessonId: number, partId: number) => (
+    openReading(bookId, (loaded) => findReadingIndexForPart(loaded, bookId, lessonId, partId))
+  ), [openReading]);
+
   const closeReader = useCallback(() => {
+    generation.current++;
+    retryRef.current = null;
+    setLoadError(false);
     setIsOpening(false);
     setActiveReadingIndex(null);
     setReadings([]);
@@ -114,6 +117,8 @@ export function useReaderLauncher({
     readings,
     activeReadingIndex,
     isOpeningReader: isOpening,
+    loadError,
+    retry: () => { void retryRef.current?.(); },
     openReader,
     openReaderForPart,
     closeReader,

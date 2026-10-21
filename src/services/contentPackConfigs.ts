@@ -83,6 +83,7 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
     manifestLabel: 'dictionary manifest',
     partPathPrefix: '/data/dictionary/',
     partCacheKeyKind: 'shard',
+    maxCachedParts: 8,
     partLabel: (shard) => `dictionary shard ${shard}`,
     validateManifest: (m) => (m.schemaVersion === 1 || m.schemaVersion === 2) && typeof m.version === 'string' && m.shardStrategy === 'word-hash-modulo' && m.shardCount === DICTIONARY_SHARD_COUNT && (m.shards?.length ?? 0) === DICTIONARY_SHARD_COUNT,
     getParts: getShardParts,

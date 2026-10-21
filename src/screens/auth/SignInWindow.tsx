@@ -13,7 +13,7 @@ import {
 } from '../../lib/widgets';
 
 /**
- * Split-screen sign-in window with video background. Accounts are required,
+ * Split-screen sign-in window with the static welcome artwork. Accounts are required,
  * so it cannot be dismissed; it unmounts when a session appears.
  */
 export function SignInWindow() {
@@ -65,11 +65,9 @@ export function SignInWindow() {
         className="p-0 overflow-hidden rounded-feature md:min-h-[460px] max-h-none"
       >
       <div className="relative flex w-full flex-col overflow-hidden md:flex-row md:min-h-[460px]">
-        {/* Left column: Looping video + Welcome copy */}
+        {/* Left column: Welcome artwork and copy */}
         <div className="relative flex min-h-[220px] flex-col justify-between overflow-hidden p-6 sm:p-8 md:min-h-[460px] md:w-1/2">
           <VideoBackground
-            mp4Src="/videos/login-bg.mp4"
-            webmSrc="/videos/login-bg.webm"
             posterSrc="/videos/login-poster.webp"
             scrimClassName="bg-gradient-to-t from-ui-ink/85 via-ui-ink/40 to-ui-ink/60"
           />

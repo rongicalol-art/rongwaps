@@ -1,24 +1,23 @@
 import type { ActivityType, LessonPartSelectionMap } from '../types/models';
 import { loadActivityDeck } from '../hooks/useActivityDataLoader';
-import { loadPracticeScreen, practiceScreenKey, type PracticeScreenKey } from '../screens/activities/practiceScreens';
+import { loadPracticeScreen, practiceScreenKey } from '../screens/activities/practiceScreens';
 import { isHanziChar } from './characters/hanzi';
+import { warmChineseFont } from './browser/fontWarmup';
 
 /** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
 export async function preloadPracticeChunks(activity?: ActivityType | null): Promise<void> {
+  warmChineseFont();
   await loadPracticeScreen(practiceScreenKey(activity ?? 'flashcards') ?? 'flashcards');
 }
 
 /** Warm only reachable modes; cleanup cancels work if the session closes first. */
-export function preloadRemainingPracticeChunks(activity: ActivityType, hasDock: boolean): (() => void) | undefined {
+export function preloadRemainingPracticeChunks(activity: ActivityType): (() => void) | undefined {
   if (typeof window === 'undefined' || !activity) return;
   const current = practiceScreenKey(activity);
-  const modes: PracticeScreenKey[] = hasDock ? ['flashcards', 'quiz', 'listening', 'writing', 'pinyin', 'tones']
-    : current === 'flashcards' ? ['quiz'] : [];
-  if (modes.length === 0) return;
+  // A dock is navigation, not intent to download every other activity.
+  if (current !== 'flashcards') return;
   const run = () => {
-    if (!document.hidden) for (const mode of modes) {
-      if (mode !== current) void loadPracticeScreen(mode).catch(() => {});
-    }
+    if (!document.hidden) void loadPracticeScreen('quiz').catch(() => {});
   };
   if (window.requestIdleCallback && window.cancelIdleCallback) {
     const id = window.requestIdleCallback(run, { timeout: 2000 });

@@ -4,8 +4,8 @@ import { del, get, getMany, set } from 'idb-keyval';
 export const AUDIO_BUCKET = 'vocabulary-audio';
 
 /** Caps on retained recording object URLs per map. */
-export const MAX_AUDIO_CACHE = 100;
-export const MAX_AUDIO_MEMORY_BYTES = 25 * 1024 * 1024;
+export const MAX_AUDIO_CACHE = 48;
+export const MAX_AUDIO_MEMORY_BYTES = 8 * 1024 * 1024;
 
 /**
  * Cap on persistent Cache Storage bytes. Evicted least-recently-used first.
@@ -34,19 +34,18 @@ function viteEnv(key: string): string | undefined {
 }
 
 let audioFileCacheInstance: Cache | null = null;
+let audioFileCacheOpening: Promise<Cache | null> | null = null;
 
 export async function getAudioFileCache(): Promise<Cache | null> {
   if (audioFileCacheInstance) return audioFileCacheInstance;
-  try {
-    if (typeof caches !== 'undefined') {
-      audioFileCacheInstance = await caches.open('rongwaps-audio-v6');
-    }
-  } catch (error) {
-    // Graceful degradation: CacheStorage unavailable in private mode or non-secure contexts
-    debugLogger.warn('Audio', 'CacheStorage open failed, proceeding without persistent audio cache', error);
-    audioFileCacheInstance = null;
-  }
-  return audioFileCacheInstance;
+  if (typeof caches === 'undefined') return null;
+  if (audioFileCacheOpening) return audioFileCacheOpening;
+  audioFileCacheOpening = Promise.resolve().then(() => caches.open('rongwaps-audio-v6'))
+    .then((cache) => { audioFileCacheInstance = cache; return cache; }, (error) => {
+      debugLogger.warn('Audio', 'CacheStorage open failed, proceeding without persistent audio cache', error);
+      return null;
+    }).finally(() => { audioFileCacheOpening = null; });
+  return audioFileCacheOpening;
 }
 
 function metaKey(fileName: string): string {
@@ -57,8 +56,8 @@ export async function touchAudioMeta(fileName: string, size?: number): Promise<v
   if (typeof indexedDB === 'undefined') return;
   const key = metaKey(fileName);
   try {
-    const existing = await get<AudioMeta>(key);
-    await set(key, { size: size ?? existing?.size ?? 0, lastAccessed: Date.now() });
+    const bytes = size ?? (await get<AudioMeta>(key))?.size ?? 0;
+    await set(key, { size: bytes, lastAccessed: Date.now() });
   } catch (error) {
     // Graceful degradation: IndexedDB may be blocked; the byte cap simply becomes best-effort
     debugLogger.warn('Audio', 'Failed to update audio cache metadata', error);
@@ -91,8 +90,14 @@ export async function pruneAudioCacheToLimit(): Promise<void> {
       : await getMany<AudioMeta>(names.map(metaKey)).catch(() => []);
     const indexed: Array<{ request: Request; fileName: string; size: number; lastAccessed: number }> = [];
     for (const [i, request] of requests.entries()) {
-      const response = await cache.match(request);
-      const size = Number(response?.headers.get('Content-Length')) || (response ? (await response.blob()).size : 0);
+      // Known entries need no MP3 reads. Previously each batch reread up to
+      // 150 MB of recordings even when the cache was below its byte cap.
+      let size = metadata[i]?.size;
+      if (!Number.isFinite(size) || size <= 0) {
+        const response = await cache.match(request);
+        size = Number(response?.headers.get('Content-Length')) || (response ? (await response.blob()).size : 0);
+        if (typeof indexedDB !== 'undefined') await set(metaKey(names[i]), { size, lastAccessed: metadata[i]?.lastAccessed ?? 0 });
+      }
       indexed.push({ request, fileName: names[i], size, lastAccessed: metadata[i]?.lastAccessed ?? 0 });
     }
     let total = indexed.reduce((sum, entry) => sum + entry.size, 0);
@@ -172,6 +177,7 @@ export async function readCachedAudioBlob(fileName: string, allowStale = true): 
       const response = await cache?.match(audioFileCacheRequest(fileName));
       if (!response) return null;
       const savedAt = Number(response.headers?.get('X-Audio-Cached-At'));
+      if (Number(response.headers?.get('Content-Length')) > MAX_AUDIO_MEMORY_BYTES) return null;
       const immutable = IMMUTABLE_AUDIO_FILE.test(fileName);
       if (!allowStale && !immutable && typeof navigator !== 'undefined' && navigator.onLine === true
         && (!savedAt || Date.now() - savedAt > 86400_000)) return null;

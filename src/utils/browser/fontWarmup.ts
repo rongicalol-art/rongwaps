@@ -19,7 +19,7 @@ function loadFor(text: string): Promise<unknown> {
   return document.fonts.load(`1em ${resolvedChineseFamily()}`, text);
 }
 
-/** At idle after boot, pull the core slice of the selected Chinese font into cache. */
+/** After study intent, warm the selected font without competing with app startup. */
 export function warmChineseFont(): void {
   if (typeof window === 'undefined' || !document.fonts?.load) return;
   const run = () => {

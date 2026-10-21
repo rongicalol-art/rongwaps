@@ -145,9 +145,9 @@ test('focused quiz schedules no other modes and closing flashcards cancels its i
     if (original) Object.defineProperty(globalThis, 'window', original);
     else Reflect.deleteProperty(globalThis, 'window');
   });
-  assert.equal(preloadRemainingPracticeChunks('quiz', false), undefined);
+  assert.equal(preloadRemainingPracticeChunks('quiz'), undefined);
   assert.equal(queued.size, 0);
-  const cancel = preloadRemainingPracticeChunks('flashcards', false);
+  const cancel = preloadRemainingPracticeChunks('flashcards');
   assert.ok(cancel);
   assert.equal(queued.size, 1);
   cancel();

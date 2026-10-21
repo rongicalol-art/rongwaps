@@ -16,4 +16,12 @@ export function useCharacterFont() {
   useEffect(() => {
     document.documentElement.dataset.characterPreference = characterPreference;
   }, [characterPreference]);
+
+  useEffect(() => {
+    // Default Huninn ships with the shell; only the chosen alternative is parsed.
+    const loading = characterFont === 'kai'
+      ? characterPreference === 'simplified' ? import('../styles/fonts.generated.css?family=LXGW-WenKai') : import('../styles/fonts.generated.css?family=TW-EduKai')
+      : characterPreference === 'simplified' ? import('../styles/fonts.generated.css?family=Rounded-SC') : null;
+    void loading?.catch(() => {}); // Native Chinese fonts remain usable when offline.
+  }, [characterFont, characterPreference]);
 }

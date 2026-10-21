@@ -66,20 +66,49 @@ export async function fetchContent(path: string, init: RequestInit = {}): Promis
   return fetch(contentUrl(path), { ...init, headers });
 }
 
-const blobUrls = new Map<string, Promise<string>>();
+interface ContentImageEntry { promise: Promise<string>; url?: string; users: number; controller: AbortController }
+const blobUrls = new Map<string, ContentImageEntry>();
+const MAX_CONTENT_IMAGES = 12;
 
-/** An object URL for a gated image (an `<img>` cannot send the token itself). Cached for the session. */
-export function fetchContentBlobUrl(path: string): Promise<string> {
-  let url = blobUrls.get(path);
-  if (!url) {
-    url = fetchContent(path).then(async (response) => {
-      if (!response.ok) throw new NetworkError(`${path} returned ${response.status}`, response.status);
-      return URL.createObjectURL(await response.blob());
-    });
-    url.catch(() => blobUrls.delete(path));
-    blobUrls.set(path, url);
+function pruneContentImages(): void {
+  for (const [path, entry] of blobUrls) {
+    if (blobUrls.size <= MAX_CONTENT_IMAGES) break;
+    if (entry.users) continue;
+    if (entry.url) URL.revokeObjectURL(entry.url);
+    else entry.controller.abort();
+    blobUrls.delete(path);
   }
-  return url;
+}
+
+/** Gated image LRU. A mounted image's signal pins its URL until its effect cleans up. */
+export function fetchContentBlobUrl(path: string, signal?: AbortSignal): Promise<string> {
+  if (signal?.aborted) return Promise.reject(new DOMException('Aborted', 'AbortError'));
+  let entry = blobUrls.get(path);
+  if (entry?.controller.signal.aborted && !entry.url) { blobUrls.delete(path); entry = undefined; }
+  if (!entry) {
+    const created: ContentImageEntry = { promise: Promise.resolve(''), users: 0, controller: new AbortController() };
+    const deadline = setTimeout(() => created.controller.abort(), 20_000);
+    created.promise = fetchContent(path, { signal: created.controller.signal }).then(async (response) => {
+      if (!response.ok) throw new NetworkError(`${path} returned ${response.status}`, response.status);
+      created.url = URL.createObjectURL(await response.blob());
+      pruneContentImages();
+      return created.url;
+    }).finally(() => clearTimeout(deadline));
+    created.promise.catch(() => { if (blobUrls.get(path) === created) blobUrls.delete(path); });
+    entry = created;
+  }
+  blobUrls.delete(path);
+  blobUrls.set(path, entry);
+  if (signal) {
+    const held = entry;
+    held.users++;
+    signal.addEventListener('abort', () => {
+      held.users--;
+      if (!held.users && !held.url) held.controller.abort();
+      pruneContentImages();
+    }, { once: true });
+  }
+  return entry.promise;
 }
 
 function canUsePersistentCache(): boolean {
@@ -132,9 +161,12 @@ export async function fetchStaticJsonWithMetadata<T>(
     }
   }
 
+  const controller = new AbortController();
+  const deadline = setTimeout(() => controller.abort(), 20_000);
+  try {
   let response: Response;
   try {
-    response = await timeDataRequest(label, () => fetchContent(path, { cache: protectedContent ? 'no-store' : options.revalidate ? 'no-cache' : 'default' }));
+    response = await timeDataRequest(label, () => fetchContent(path, { cache: protectedContent ? 'no-store' : options.revalidate ? 'no-cache' : 'default', signal: controller.signal }));
   } catch (error) {
     if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     throw error;
@@ -168,6 +200,7 @@ export async function fetchStaticJsonWithMetadata<T>(
   }
 
   return { data, source: 'network' };
+  } finally { clearTimeout(deadline); }
 }
 
 export async function fetchStaticJson<T>(

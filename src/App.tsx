@@ -1,116 +1,24 @@
-import { useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { useLocation } from 'react-router';
-import { LoadingScreen, preloadLoadingScreen } from './lib/widgets';
-import { AppWorkspace } from './app/components/AppWorkspace';
-import { AppOverlays } from './app/components/AppOverlays';
-import { PwaUpdatePrompt } from './app/components/PwaUpdatePrompt';
-import { ResumeLaunch } from './features/practice';
-import { useAppShell } from './app/hooks/useAppShell';
+import { LoadingScreen } from './lib/widgets/LoadingScreen';
+import { useAuth } from './hooks/useAuth';
 import { legalPageFromPathname } from './app/routes';
 import { SignInWindow } from './screens/auth';
-import { LegalScreen } from './screens/legal';
 
-/**
- * Public legal pages render on their own, outside the shell: no sign-in, sync,
- * or side nav runs for them. Everything else is the workspace.
- */
+const AppShell = lazy(() => import('./app/AppShell'));
+const LegalScreen = lazy(() => import('./screens/legal').then((m) => ({ default: m.LegalScreen })));
+
+/** Auth and legal pages never load the study workspace or start cloud sync. */
 export default function App() {
   const legalPage = legalPageFromPathname(useLocation().pathname);
-  return legalPage ? <LegalScreen page={legalPage} /> : <AppShell />;
+  return <Suspense fallback={<LoadingScreen message="Loading Ron's Mandarin…" fullScreen />}>
+    {legalPage ? <LegalScreen page={legalPage} /> : <AuthenticatedWorkspace />}
+  </Suspense>;
 }
 
-function AppShell() {
-  // Loader animation + player at idle: the first loader the user ever sees has no spinner/animation swap.
-  useEffect(() => {
-    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
-    idle(() => {
-      preloadLoadingScreen();
-      void import('./services/performanceMetrics').then((m) => m.startVitalsMonitoring());
-    });
-  }, []);
-
-  const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
-
-  if (isLoading) {
-    return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen tone="canvas" />;
-  }
-
-  // Accounts are required: signed out, the only thing on screen is the
-  // (non-dismissable) sign-in window.
-  if (isSignedOut) {
-    return <SignInWindow />;
-  }
-
-  return (
-    <>
-      <AppWorkspace
-        shell={{
-          activeTab: nav.activeTab,
-          activeActivity: overlays.isOverlayActive ? null : activity.activeActivity,
-          activeBook: activity.activeBook,
-          isNavOpen: nav.isNavOpen,
-          isCollapsed: nav.isCollapsed,
-          isDesktopOrTablet: nav.isDesktopOrTablet,
-          onToggleCollapse: nav.toggleCollapse,
-          setIsNavOpen: nav.setResponsiveNavOpen,
-          isOverlayActive: overlays.isOverlayActive,
-          showSidebarCollapse: nav.showSidebarCollapse,
-          onSettingsClick: settings.onOpen,
-          onTabChange: nav.handleTabChange,
-        }}
-        activityModals={{
-          activeActivity: activity.activeActivity,
-          setActiveActivity: activity.onSetActiveActivity,
-          activeBookId: activity.activeBook.id,
-          selectedLessons: activity.selectedLessons,
-          isLibraryMode: nav.activeTab === 'library',
-          isShellOverlayOpen: overlays.isOverlayActive,
-          onOpenGrammarPart: grammar.onOpenPart,
-          onOpenReading: activity.onOpenReading,
-        }}
-        routes={{
-          activeTab: nav.activeTab,
-          activeBookId: nav.activeBookId,
-          setActiveBookId: nav.setActiveBookId,
-          startPartPractice: activity.onStartPartPractice,
-          startPathPractice: activity.onStartPathPractice,
-          setActiveTab: nav.handleTabChange,
-          setActiveActivity: activity.onSetActiveActivity,
-          onOpenGrammarPart: grammar.onOpenPart,
-          onOpenReadingPart: activity.onOpenReadingPart,
-          onToggleNav: nav.handleNavToggle,
-        }}
-      />
-
-      <AppOverlays
-        isGrammarOpen={grammar.isOpen}
-        grammarPart={grammar.part ?? null}
-        grammarPageId={grammar.pageId ?? undefined}
-        onCloseGrammar={grammar.onClose}
-        onProceedToReading={grammar.onProceedToReading}
-        onNavigateGrammarPart={grammar.onOpenPart}
-        isReaderOpen={reader.isOpen}
-        readings={reader.readings}
-        readingIndex={reader.index}
-        onReaderNext={reader.onNext}
-        onReaderPrevious={reader.onPrevious}
-        onCloseReader={reader.onClose}
-        onOpenGrammarPart={grammar.onOpenPart}
-        isSettingsOpen={settings.isOpen}
-        onCloseSettings={settings.onClose}
-        onResetProgress={settings.onResetProgress}
-      />
-
-      {activity.resumeLaunch.pending && (
-        <ResumeLaunch
-          pending={activity.resumeLaunch.pending}
-          onContinue={activity.resumeLaunch.onContinue}
-          onStartOver={activity.resumeLaunch.onStartOver}
-          onClose={activity.resumeLaunch.onClose}
-        />
-      )}
-
-      <PwaUpdatePrompt />
-    </>
-  );
+function AuthenticatedWorkspace() {
+  const { currentUser, isLoading } = useAuth();
+  if (isLoading) return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen />;
+  if (!currentUser && !import.meta.env.DEV) return <SignInWindow />;
+  return <AppShell />;
 }

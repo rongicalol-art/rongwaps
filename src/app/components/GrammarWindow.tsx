@@ -4,7 +4,7 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import type { GrammarLessonScreen as GrammarLessonScreenType } from '../../screens/grammar-lesson';
 import { useOpenPhase } from '../../hooks/useOpenPhase';
 import { useReplacesLoader } from '../hooks/useReplacesLoader';
-import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
+import { ActionButton, EmptyState, LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
 const GrammarLessonScreen = lazy(() => import('../../screens/grammar-lesson').then((m) => ({ default: m.GrammarLessonScreen })));
 
@@ -13,6 +13,8 @@ type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreenT
 interface GrammarWindowProps {
   isOpen?: boolean;
   part: GrammarLessonScreenProps['part'] | null;
+  loadError?: boolean;
+  onRetry?: () => void;
   initialPageId: GrammarLessonScreenProps['initialPageId'];
   onClose: () => void;
   onProceedToReading: NonNullable<GrammarLessonScreenProps['onProceedToReading']>;
@@ -24,6 +26,8 @@ interface GrammarWindowProps {
 export function GrammarWindow({
   isOpen = false,
   part,
+  loadError = false,
+  onRetry,
   initialPageId,
   onClose,
   onProceedToReading,
@@ -39,9 +43,10 @@ export function GrammarWindow({
 
   return (
     <AnimatePresence>
-      {shouldRender && phase === 'loading' && (
+      {shouldRender && (phase === 'loading' || loadError) && (
         <WorkspaceWindow key="grammar-loader" tone="canvas">
-          <LoadingScreen message="Loading grammar…" tone="canvas" />
+          {loadError ? <EmptyState title="Lesson couldn’t load" description="Check your connection, then try again." action={<div className="flex gap-3"><ActionButton onClick={onRetry}>Retry</ActionButton><ActionButton variant="secondary" onClick={onClose}>Back</ActionButton></div>} />
+            : <><LoadingScreen message="Loading grammar…" tone="canvas" /><div className="absolute inset-x-0 bottom-8 z-content flex justify-center"><ActionButton variant="secondary" onClick={onClose}>Cancel</ActionButton></div></>}
         </WorkspaceWindow>
       )}
       {shouldRender && phase === 'ready' && part && (

@@ -141,7 +141,7 @@ and [Noul guidance](https://docs.typesafe.ai/primitives/noul).
 
 # Performance regression checks
 
-`npm run build && npm run perf:check` enforces main entry ≤350 kB, initial entry plus module preloads ≤1000 kB, and critical CSS ≤500 kB. These are project regression limits, not universal website standards. Review the change rather than raising budgets to hide regressions.
+After a production build, `npm run perf:check` enforces 250 kB main JavaScript, 850 kB initial JavaScript, 260 kB critical CSS and 1.3 MB service-worker precache limits. Both quiz and dictionary worker bundles must exist; unopened workers and the animation engine must stay out of the precache. Duplicate precache URLs fail the gate. Review the change rather than raising budgets to hide regressions.
 
 The build and dev preflight generate `public/data/flashcard-extras` through `npm run flashcard-extras:export`. These derivative packs preserve the existing whole-course example ranking and normalized memory hooks. Source content stays authoritative. The parity test compares every course card in both scripts and every word hook with live lookup results, checks source versions, and rejects large shards. Do not hand-edit generated packs. Regenerate after vocabulary, course example or memory-hook exports.
 
@@ -154,3 +154,8 @@ Core Web Vitals are collected locally after boot using Google's `web-vitals` pac
 For a safe visual benchmark, open Ctrl+Shift+0 → Performance, select the actual display refresh rate and record 8 seconds. Switch to UI Previews, replay Cards done → quiz and Review → card, then return to Performance and refresh. These previews use fake cards and do not record learning progress. A recording stops when the tab becomes hidden. rAF cadence is a main-thread scheduling signal, not GPU presentation FPS. Long Animation Frames expose blocking and forced synchronous layout where supported; browsers without it use Long Tasks, without claiming forced-layout data.
 
 The proposed runtime gate is p95 rAF gap ≤1.5 display intervals with zero gaps over 50 ms. It is an explicit project target, not a claimed Duolingo standard. Aborted or empty recordings cannot pass. Run against a production build on the target Android device for release evidence; desktop/dev results are only smoke checks. Check startup, audio reading, transitions, idle behavior, and a sustained study session. Physical CPU/GPU load, power and thermal behavior need device traces; no browser JavaScript CPU-percentage estimate is presented.
+
+
+Unit regressions cover linear quiz eligibility, deterministic worker plans, cancellation, transferred dictionary index data, audio cache limits and pinned image lifetimes. Use DEV UI Previews at 390×844 and 1440×900; never grade a real deck for verification.
+
+The 2026-10-22 five-run local benchmark on 1,000 authored cards reduced median round planning from 901.43 ms to 173.72 ms, while preserving the same plans. Type availability fell from 121.79 ms to 0.22 ms. Those are local execution times, not device-wide CPU/power measurements. Browser responsiveness and prepared-audio timings are measured separately with isolated service fixtures.

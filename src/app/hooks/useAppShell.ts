@@ -71,7 +71,7 @@ export function useAppShell() {
     hasFullCourseAccess,
   });
 
-  const isReaderOpen = reader.isOpeningReader || reader.activeReadingIndex !== null;
+  const isReaderOpen = reader.isOpeningReader || reader.loadError || reader.activeReadingIndex !== null;
   const isGrammarOpen = Boolean(grammar.activeGrammarPartId);
   const isOverlayActive = isReaderOpen || isGrammarOpen || Boolean(shellState.dictionaryWord);
   const isFocusMode = Boolean(navigation.activeActivity || isOverlayActive);
@@ -152,6 +152,8 @@ export function useAppShell() {
     },
     reader: {
       isOpen: isReaderOpen,
+      loadError: reader.loadError,
+      onRetry: reader.retry,
       readings: reader.readings,
       index: reader.activeReadingIndex,
       onNext: readerSteps.handleReaderNext,
@@ -161,6 +163,8 @@ export function useAppShell() {
     grammar: {
       isOpen: isGrammarOpen,
       part: grammar.activeGrammarPart,
+      loadError: grammar.loadError,
+      onRetry: grammar.retry,
       pageId: grammar.activeGrammarPageId,
       onOpenPart: actions.handleOpenGrammarPart,
       onClose: actions.handleCloseGrammar,

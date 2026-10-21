@@ -10,14 +10,16 @@ const cards: Flashcard[] = [
   { id: 'audio-fixture-student', bookId: 1, lessonId: 1, front: '學生', back: 'student', pinyin: 'xue2 sheng1', audio: 'student.mp3' },
 ];
 
-test('word building and listening render before any audio preparation completes', () => {
-  // Server rendering runs no effects: no recording or pronunciation index has loaded.
+test('word building and listening show preparation and Cancel before worker/audio readiness', () => {
+  // Server rendering runs no effects: neither the worker nor audio has loaded.
   // Rendering does not grade cards or write learning progress.
   for (const type of ['build', 'listen'] as const) {
     const html = renderToStaticMarkup(createElement(QuizMixed, {
       cards, types: [type], sessionKey: `audio-fixture-${type}`, activeBookId: 1, onEnd: () => {},
     }));
-    assert.match(html, type === 'build' ? /Build the Chinese word/ : /What did you hear\?/);
-    assert.doesNotMatch(html, /Getting audio ready|Skip audio preparation/);
+    assert.match(html, /Preparing quiz/);
+    assert.match(html, /Cancel/);
+    assert.match(html, /aria-busy="true"/);
+    assert.doesNotMatch(html, /Build the Chinese word|What did you hear\?/);
   }
 });

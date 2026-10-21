@@ -22,13 +22,14 @@ export function usePageImage(page: number) {
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let live = true;
+    const controller = new AbortController();
     setSrc(null);
     setFailed(false);
-    fetchContentBlobUrl(bookPagePath(1, page)).then(
+    fetchContentBlobUrl(bookPagePath(1, page), controller.signal).then(
       (url) => { if (live) setSrc(url); },
       () => { if (live) setFailed(true); },
     );
-    return () => { live = false; };
+    return () => { live = false; controller.abort(); };
   }, [page, attempt]);
   return { src, failed, retry: () => setAttempt((value) => value + 1), onError: () => setFailed(true) };
 }

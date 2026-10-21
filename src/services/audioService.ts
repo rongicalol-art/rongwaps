@@ -12,13 +12,13 @@ import {
   type AudioPreloadProgress,
 } from './audio/audioCache';
 import {
-  ensureSpeechVoices,
   speakUtterance,
   releaseSpeechUtterance,
   wait,
 } from './audio/speechEngine';
 import {
   playHtmlAudio,
+  prepareAudioElement,
   playRangeOnAudioElement,
   silenceAudio,
   type PlayRangeOptions,
@@ -59,9 +59,6 @@ export class AudioService {
         audio.play()?.catch(() => {});
       } catch (e) { debugLogger.warn('Audio', 'Silent unlock play failed', e); }
     }
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      void ensureSpeechVoices();
-    }
     // Best-effort: request persistent storage so the browser is less likely to evict audio cache
     try {
       void navigator.storage?.persist?.();
@@ -83,6 +80,11 @@ export class AudioService {
   public async preload(audioFileNames: (string | undefined)[], signal?: AbortSignal, onProgress?: (progress: AudioPreloadProgress) => void): Promise<void> {
     return preloadAudioFiles(audioFileNames, this.objectUrls,
       (fileName) => this.getAudioObjectUrl(fileName, signal), signal, onProgress);
+  }
+  public prepareRecording(fileName: string | undefined, signal?: AbortSignal): Promise<void> {
+    const src = fileName && getCachedObjectUrl(this.objectUrls, fileName);
+    if (!src || !this.globalAudio || this.activePlaybackFinish) return Promise.resolve();
+    return prepareAudioElement(this.globalAudio, src, signal);
   }
   private trackPlayback(resolve: () => void): () => void {
     let settled = false;

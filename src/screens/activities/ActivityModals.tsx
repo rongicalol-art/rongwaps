@@ -99,7 +99,7 @@ export function ActivityModals({
     : isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
   useEffect(() => {
     if (isPracticeSession && !isLoadingDeck) {
-      return preloadRemainingPracticeChunks(resolvedActivity, hasDock);
+      return preloadRemainingPracticeChunks(resolvedActivity);
     }
   }, [isPracticeSession, isLoadingDeck, resolvedActivity, hasDock]);
   const showDock = Boolean(

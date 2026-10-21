@@ -40,6 +40,8 @@ export async function prepareQuizAudio(
     });
     if (signal.aborted) return;
     if (failed) throw new Error('Recording download failed');
+    if (question === questions[0]) await audioService.prepareRecording(files[0], signal);
+    if (signal.aborted) return;
     onReady(question);
   }
 }

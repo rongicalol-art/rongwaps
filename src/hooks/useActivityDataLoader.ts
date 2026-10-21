@@ -40,7 +40,9 @@ export function getCachedActivityDeck(key: string): CachedDeckEntry | undefined 
 }
 
 export function setCachedActivityDeck(key: string, entry: { cards: Flashcard[]; knownIds: Set<string> | null; source?: object }) {
+  activityDeckCache.delete(key);
   activityDeckCache.set(key, { ...entry, userId: useAppStore.getState().currentUser?.id ?? null, timestamp: Date.now() });
+  while (activityDeckCache.size > 8) activityDeckCache.delete(activityDeckCache.keys().next().value!);
 }
 
 export function clearActivityDeckCache() {
