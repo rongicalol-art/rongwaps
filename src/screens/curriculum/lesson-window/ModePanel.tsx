@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ActionButton } from '../../../lib/widgets';
+import { ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { ModeIcon } from './ModeIcon';
 import { isModeAvailable, type LessonWindowPart, type PartModeKey } from './useLessonWindowParts';
@@ -90,22 +90,47 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
 interface LessonActionsProps {
   onStart: () => void;
   onStartIntent: () => void;
+  onOpenPracticeHub?: () => void;
+  isPracticeHubOpen?: boolean;
   className?: string;
 }
 
 /** Start the selected lesson mode. Quiz lives in Practice hub. */
-export function LessonActions({ onStart, onStartIntent, className }: LessonActionsProps) {
+export function LessonActions({
+  onStart,
+  onStartIntent,
+  onOpenPracticeHub,
+  isPracticeHubOpen,
+  className,
+}: LessonActionsProps) {
   return (
-    <ActionButton
-      size="lg"
-      fullWidth
-      className={cn('whitespace-nowrap', className)}
-      onClick={onStart}
-      onPointerEnter={onStartIntent}
-      onPointerDown={onStartIntent}
-      onFocus={onStartIntent}
-    >
-      <span>Start</span>
-    </ActionButton>
+    <div className={cn('flex items-center gap-3', className)}>
+      {onOpenPracticeHub && (
+        <ActionButton
+          variant="secondary"
+          size="lg"
+          edgeColor="var(--color-ui-border)"
+          aria-label="Practice hub"
+          aria-haspopup="dialog"
+          aria-expanded={isPracticeHubOpen}
+          onClick={onOpenPracticeHub}
+          style={{ flexShrink: 0 }}
+          className="w-13 min-w-13 aspect-square shrink-0 !px-0 justify-center !border-ui-border !text-ui-muted-strong"
+        >
+          <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
+        </ActionButton>
+      )}
+      <ActionButton
+        size="lg"
+        fullWidth
+        className="whitespace-nowrap"
+        onClick={onStart}
+        onPointerEnter={onStartIntent}
+        onPointerDown={onStartIntent}
+        onFocus={onStartIntent}
+      >
+        <span>Start</span>
+      </ActionButton>
+    </div>
   );
 }

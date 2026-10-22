@@ -68,17 +68,15 @@ function LessonTitle({ lesson, part, isDesktop }: { lesson: CourseLessonProgress
   );
 }
 
-function PracticeHubEntry({
+function PracticeHubDrawer({
   canQuiz,
   isOpen,
-  onOpen,
   onClose,
   onQuizIntent,
   onPinyinIntent,
   onSelect,
 }: {
   isOpen: boolean;
-  onOpen: () => void;
   onClose: () => void;
   canQuiz: boolean;
   onQuizIntent: () => void;
@@ -86,91 +84,73 @@ function PracticeHubEntry({
   onSelect: (activity: 'quiz' | 'writing' | 'pinyin' | 'tones') => void;
 }) {
   return (
-    <>
-      <div className="mt-4 border-t border-ui-divider pt-3.5">
+    <Drawer
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Practice hub"
+      tone="practice"
+      size="md"
+      mdPlacement="side"
+      heightClassName="max-h-[60vh] md:max-h-full"
+    >
+      <div className="flex flex-col gap-3">
+        {canQuiz && (
+          <>
+            <ActionButton
+              variant="secondary"
+              size="lg"
+              fullWidth
+              edgeColor="var(--color-ui-border)"
+              onClick={() => onSelect('quiz')}
+              onPointerEnter={onQuizIntent}
+              onPointerDown={onQuizIntent}
+              onFocus={onQuizIntent}
+              className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+            >
+              <PlayfulNavIcon name="quiz" className="h-8 w-8" />
+              <span>Quiz</span>
+            </ActionButton>
+            <div aria-hidden="true" className="border-t border-ui-divider" />
+          </>
+        )}
         <ActionButton
           variant="secondary"
-          size="md"
+          size="lg"
           fullWidth
           edgeColor="var(--color-ui-border)"
-          aria-haspopup="dialog"
-          aria-expanded={isOpen}
-          onClick={onOpen}
-          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-muted-strong"
+          onClick={() => onSelect('writing')}
+          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
         >
-          <PlayfulNavIcon name="practiceHub" className="h-8 w-8" />
-          <span>Practice hub</span>
-          <AppIcon name="next" size={18} className="ml-auto" />
+          <PlayfulNavIcon name="writing" className="h-8 w-8" />
+          <span>Writing</span>
+        </ActionButton>
+        <ActionButton
+          variant="secondary"
+          size="lg"
+          fullWidth
+          edgeColor="var(--color-ui-border)"
+          onPointerEnter={onPinyinIntent}
+          onPointerDown={onPinyinIntent}
+          onFocus={onPinyinIntent}
+          onClick={() => onSelect('pinyin')}
+          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+        >
+          <PlayfulNavIcon name="pinyinPractice" className="h-8 w-8" />
+          <span>Pinyin</span>
+        </ActionButton>
+        <ActionButton
+          variant="secondary"
+          size="lg"
+          fullWidth
+          edgeColor="var(--color-ui-border)"
+          onClick={() => onSelect('tones')}
+          className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+        >
+          <PlayfulNavIcon name="tonesPractice" className="h-8 w-8" />
+          <span>Tones</span>
         </ActionButton>
       </div>
-      <Drawer
-        isOpen={isOpen}
-        onClose={onClose}
-        title="Practice hub"
-        tone="practice"
-        size="md"
-        mdPlacement="side"
-        heightClassName="max-h-[60vh] md:max-h-full"
-      >
-        <div className="flex flex-col gap-3">
-          {canQuiz && (
-            <>
-              <ActionButton
-                variant="secondary"
-                size="lg"
-                fullWidth
-                edgeColor="var(--color-ui-border)"
-                onClick={() => onSelect('quiz')}
-                onPointerEnter={onQuizIntent}
-                onPointerDown={onQuizIntent}
-                onFocus={onQuizIntent}
-                className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-              >
-                <PlayfulNavIcon name="quiz" className="h-8 w-8" />
-                <span>Quiz</span>
-              </ActionButton>
-              <div aria-hidden="true" className="border-t border-ui-divider" />
-            </>
-          )}
-          <ActionButton
-            variant="secondary"
-            size="lg"
-            fullWidth
-            edgeColor="var(--color-ui-border)"
-            onClick={() => onSelect('writing')}
-            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-          >
-            <PlayfulNavIcon name="writing" className="h-8 w-8" />
-            <span>Writing</span>
-          </ActionButton>
-          <ActionButton
-            variant="secondary"
-            size="lg"
-            fullWidth
-            edgeColor="var(--color-ui-border)"
-            onPointerEnter={onPinyinIntent}
-            onPointerDown={onPinyinIntent}
-            onFocus={onPinyinIntent}
-            onClick={() => onSelect('pinyin')}
-            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-          >
-            <PlayfulNavIcon name="pinyinPractice" className="h-8 w-8" />
-            <span>Pinyin</span>
-          </ActionButton>
-          <ActionButton
-            variant="secondary"
-            size="lg"
-            fullWidth
-            edgeColor="var(--color-ui-border)"
-            onClick={() => onSelect('tones')}
-            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
-          >
-            <PlayfulNavIcon name="tonesPractice" className="h-8 w-8" />
-            <span>Tones</span>
-          </ActionButton>
-        </div>
-      </Drawer>
-    </>
+    </Drawer>
   );
 }
 
@@ -270,21 +250,6 @@ function LessonBody({
   const modeButtons = (
     <ModeButtons part={activePart} selected={mode} large={isDesktop} onSelect={(next) => onModeChange(activePart.id, next)} />
   );
-  const practiceHub = (
-    <PracticeHubEntry
-      canQuiz={activePart.vocab.total > 0}
-      isOpen={isPracticeHubOpen}
-      onOpen={() => setIsPracticeHubOpen(true)}
-      onClose={() => setIsPracticeHubOpen(false)}
-      onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}
-      onPinyinIntent={() => { void preloadPracticeChunks('pinyin').catch(() => {}); }}
-      onSelect={(activity) => {
-        setIsPracticeHubOpen(false);
-        const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
-        onStartPractice(lesson.id, practiceTarget, activity);
-      }}
-    />
-  );
   const actions = (
     <LessonActions
       onStart={handleStart}
@@ -295,6 +260,22 @@ function LessonBody({
           selectedLessonParts: { [getLessonSelectionKey(bookId, lesson.id)]: selectedPartIds },
           activity: 'flashcards',
         });
+      }}
+      onOpenPracticeHub={() => setIsPracticeHubOpen(true)}
+      isPracticeHubOpen={isPracticeHubOpen}
+    />
+  );
+  const practiceHubDrawer = (
+    <PracticeHubDrawer
+      canQuiz={activePart.vocab.total > 0}
+      isOpen={isPracticeHubOpen}
+      onClose={() => setIsPracticeHubOpen(false)}
+      onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}
+      onPinyinIntent={() => { void preloadPracticeChunks('pinyin').catch(() => {}); }}
+      onSelect={(activity) => {
+        setIsPracticeHubOpen(false);
+        const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
+        onStartPractice(lesson.id, practiceTarget, activity);
       }}
     />
   );
@@ -333,10 +314,10 @@ function LessonBody({
           <div className="mt-12 flex flex-col">
             <LessonTitle lesson={lesson} part={activePart} isDesktop />
             <div className="mt-6">{modeButtons}</div>
-            {practiceHub}
             <div className="mt-auto pt-5">{actions}</div>
           </div>
         </div>
+        {practiceHubDrawer}
       </div>
     );
   }
@@ -359,7 +340,6 @@ function LessonBody({
           <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} isDesktop={false} /></div>
           <div className="px-4 pb-3 pt-3">
             {modeButtons}
-            {practiceHub}
           </div>
         </div>
       </div>
@@ -367,6 +347,7 @@ function LessonBody({
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-full h-8 bg-gradient-to-t from-ui-canvas to-transparent" />
         <div className="mx-auto w-full max-w-xl px-4 pb-sheet-safe pt-2">{actions}</div>
       </div>
+      {practiceHubDrawer}
     </div>
   );
 }
