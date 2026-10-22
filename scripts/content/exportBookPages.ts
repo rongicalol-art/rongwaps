@@ -8,6 +8,7 @@ import {
 import { tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
 import { readFileSync } from 'node:fs';
+import { BOOK_PAGE_QUALITY, BOOK_PAGE_WIDTH } from './bookPageSettings';
 import type { InteractiveGrammarPart } from '../../src/types/models';
 
 const PROJECT_ROOT = resolve(import.meta.dirname, '..', '..');
@@ -88,8 +89,10 @@ try {
       execFileSync('cwebp', [
         '-quiet',
         '-preset', 'text',
-        '-q', '86',
+        '-q', String(BOOK_PAGE_QUALITY),
         '-m', '6',
+        '-sharp_yuv',
+        '-resize', String(BOOK_PAGE_WIDTH), '0',
         temporaryPng,
         '-o', outputPath,
       ]);

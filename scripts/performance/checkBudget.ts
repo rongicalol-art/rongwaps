@@ -25,7 +25,14 @@ assert.ok(!assets.some(file => file.startsWith('dictionarySearch.worker-')), 'Di
 const studyManifest = JSON.parse(await readFile(resolve(root, 'dist/data/study/manifest.json'), 'utf8'));
 for (const part of studyManifest.parts) {
   const bytes = (await stat(resolve(root, `dist${part.path}.br`))).size;
-  assert.ok(bytes <= 250_000, `Study part exceeds 250 kB Brotli: ${part.path} (${bytes})`);
+  assert.ok(bytes <= 30_000, `Study part exceeds 30 kB Brotli: ${part.path} (${bytes})`);
+}
+for (const book of await readdir(resolve(root, 'dist/data/book-pages'), { withFileTypes: true })) {
+  if (!book.isDirectory()) continue;
+  for (const page of (await readdir(resolve(root, 'dist/data/book-pages', book.name))).filter((file) => file.endsWith('.webp'))) {
+    const bytes = (await stat(resolve(root, 'dist/data/book-pages', book.name, page))).size;
+    assert.ok(bytes <= 250_000, `Book page exceeds 250 kB: ${book.name}/${page} (${bytes})`);
+  }
 }
 const sw = await readFile(resolve(root, 'dist/sw.js'), 'utf8');
 const precached = [...sw.matchAll(/\{url:"([^"]+)",revision:/g)].map((match) => match[1]);

@@ -113,3 +113,10 @@ Six additional whole-word MP3s (95,876 bytes) were generated offline with Qwen3-
 Before publication, run `HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/scoreGrammarStudioTakes.py --verify-manifest`. The local Qwen3-ASR 0.6B 8-bit model must already be cached. This checks file hashes, loudness, peaks and retained speech waveforms, and requires an independent transcription to match every recording's spoken syllables. MMS alignment scores are diagnostic; these automated checks do not claim human listening or independent tone verification. Synthesis uses the authored simplified text to avoid Qwen misreading traditional forms such as 餓, while retaining the selected Taiwan voice and traditional display text.
 
 `node --import dotenv/config --import tsx scripts/audio/publishGrammarStudioAudio.ts --upload` refuses incomplete inventories or missing quality checks, uploads new immutable objects, verifies their stored hashes and writes `content/audio/grammar_studio_audio.json` with provenance and QA results. Then run `npm run content:export` to regenerate grammar packs and manifests before deploying the app. Existing object names remain available for rollback.
+
+## Performance notes
+
+- Lesson packs (`/data/...`) are `private` browser-cached: hashed names for a year, others revalidate. Never `public` (Cloudflare must not store gated content).
+- Study packs ship same-lesson examples only; other-lesson examples load via "Show more" from `flashcard-extras`. `npm run perf:check` enforces size budgets (study part ≤ 30 kB Brotli, book page ≤ 250 kB).
+- Book pages: `npm run book-pages:recompress` (1100px, q72; needs `cwebp`/`dwebp`, skips already-small pages).
+- Audio CDN (optional): put the `vocabulary-audio` bucket behind a CDN/Cloudflare R2 custom domain and set `VITE_AUDIO_BASE_URL` to its origin at build time. Files already have content-hashed names, so use long immutable caching.
