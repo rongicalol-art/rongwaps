@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { ActionButton, Dialog } from '../../lib/widgets';
+import { useState } from 'react';
+import { ActionButton, Drawer } from '../../lib/widgets';
 import type { UserFlashcard } from '../../types/models';
 import type { FlashcardTextPatch } from '../../services/flashcardService';
 
@@ -9,46 +9,38 @@ interface EditCardDialogProps {
   onClose: () => void;
 }
 
-const INPUT_CLASS =
-  'w-full rounded-control border-2 border-b-[length:var(--depth-sm)] border-ui-border bg-ui-hover px-4 py-2.5 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-visible:ring-inset focus-ring transition-colors';
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="flex flex-col gap-1.5">
-      <span className="text-[13px] font-extrabold text-ui-muted-strong">{label}</span>
-      {children}
-    </label>
-  );
-}
-
-/** Edit a custom card's text. Mount with a card to open; unmount state resets per card. */
+/** Same side drawer as saving a word. The card itself is the form: type straight onto it. */
 export function EditCardDialog({ card, onSave, onClose }: EditCardDialogProps) {
   return (
-    <Dialog.Root open={card !== null} onClose={onClose}>
-      <Dialog.Backdrop />
-      {card && <EditCardContent key={card.id} card={card} onSave={onSave} />}
-    </Dialog.Root>
+    <Drawer.Root open={card !== null} onClose={onClose} tone="surface">
+      <Drawer.Backdrop />
+      <Drawer.Content size="md" mdPlacement="side" ariaLabel="Edit card" heightClassName="max-h-[85vh]">
+        <Drawer.StickyHeader>
+          <Drawer.Handle className="pb-2" />
+        </Drawer.StickyHeader>
+        {card && <EditCardBody key={card.id} card={card} onSave={onSave} />}
+      </Drawer.Content>
+    </Drawer.Root>
   );
 }
 
-function EditCardContent({ card, onSave }: { card: UserFlashcard; onSave: EditCardDialogProps['onSave'] }) {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [simplified, setSimplified] = useState(card.simplified);
-  const [traditional, setTraditional] = useState(card.traditional ?? '');
+function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardDialogProps['onSave'] }) {
+  const originalWord = card.traditional || card.simplified;
+  const [word, setWord] = useState(originalWord);
   const [pinyin, setPinyin] = useState(card.pinyin ?? '');
   const [translation, setTranslation] = useState(card.translation);
   const [notes, setNotes] = useState(card.notes ?? '');
   const [saving, setSaving] = useState(false);
 
-  const canSave = simplified.trim() !== '' && translation.trim() !== '';
-  const hanzi = traditional.trim() || simplified.trim();
+  const canSave = word.trim() !== '' && translation.trim() !== '';
 
   const submit = async () => {
     if (!canSave || saving) return;
     setSaving(true);
+    const nextWord = word.trim();
     await onSave({
-      simplified: simplified.trim(),
-      traditional: traditional.trim(),
+      // The card has one displayed word, so an edit updates both spellings together.
+      ...(nextWord !== originalWord && { simplified: nextWord, traditional: nextWord }),
       pinyin: pinyin.trim(),
       translation: translation.trim(),
       notes: notes.trim(),
@@ -57,44 +49,51 @@ function EditCardContent({ card, onSave }: { card: UserFlashcard; onSave: EditCa
   };
 
   const onEnter = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter') void submit();
+    if (event.key === 'Enter' && !(event.target instanceof HTMLTextAreaElement)) void submit();
   };
 
   return (
-    <Dialog.Content size="sm" depth="md" initialFocusRef={inputRef} className="rounded-feature p-6">
-      <Dialog.Header>
-        <Dialog.Title>Edit card</Dialog.Title>
-        <Dialog.Close label="Close edit card" />
-      </Dialog.Header>
-      <Dialog.Body>
-        <div className="mb-5 flex flex-col items-center text-center">
-          <span className="font-chinese text-[44px] font-bold leading-none text-ui-ink-strong">{hanzi || '—'}</span>
-          <span className="mt-2 min-h-4 text-xs font-extrabold text-ui-muted">{pinyin.trim()}</span>
-          <span className="min-h-5 text-sm font-bold text-ui-muted-strong">{translation.trim()}</span>
+    <>
+      <Drawer.Body className="flex flex-col px-4 sm:px-6" >
+        <div onKeyDown={onEnter} className="flex flex-col items-center gap-1 rounded-control bg-ui-canvas px-4 py-6">
+          <input
+            autoFocus
+            aria-label="Word"
+            value={word}
+            onChange={(e) => setWord(e.target.value)}
+            onFocus={(e) => e.currentTarget.select()}
+            className="w-full bg-transparent text-center font-chinese text-5xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted"
+            placeholder="字"
+          />
+          <input
+            aria-label="Pinyin"
+            value={pinyin}
+            onChange={(e) => setPinyin(e.target.value)}
+            placeholder="pinyin"
+            className="w-full bg-transparent text-center text-base font-black text-brand-primary outline-none placeholder:text-ui-muted"
+          />
+          <input
+            aria-label="Meaning"
+            value={translation}
+            onChange={(e) => setTranslation(e.target.value)}
+            placeholder="meaning"
+            className="w-full bg-transparent text-center text-base font-bold text-ui-ink outline-none placeholder:text-ui-muted"
+          />
         </div>
-
-        <div className="mb-6 flex flex-col gap-3" onKeyDown={onEnter}>
-          <Field label="Simplified">
-            <input ref={inputRef} aria-label="Simplified" value={simplified} onChange={(e) => setSimplified(e.target.value)} className={`${INPUT_CLASS} font-chinese`} />
-          </Field>
-          <Field label="Traditional">
-            <input aria-label="Traditional" value={traditional} onChange={(e) => setTraditional(e.target.value)} className={`${INPUT_CLASS} font-chinese`} />
-          </Field>
-          <Field label="Pinyin">
-            <input aria-label="Pinyin" value={pinyin} onChange={(e) => setPinyin(e.target.value)} className={INPUT_CLASS} />
-          </Field>
-          <Field label="Meaning">
-            <input aria-label="Meaning" value={translation} onChange={(e) => setTranslation(e.target.value)} className={INPUT_CLASS} />
-          </Field>
-          <Field label="Notes">
-            <textarea aria-label="Notes" rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} className={`${INPUT_CLASS} resize-none`} />
-          </Field>
-        </div>
-
-        <ActionButton variant="primary" size="md" fullWidth onClick={() => void submit()} disabled={!canSave} loading={saving} loadingLabel="Saving card">
+        <textarea
+          aria-label="Notes"
+          rows={2}
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Add a note or memory hook"
+          className="mt-3 w-full resize-none rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2.5 text-sm font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring"
+        />
+      </Drawer.Body>
+      <div className="shrink-0 px-4 pb-4 pt-3 sm:px-6">
+        <ActionButton variant="primary" size="lg" fullWidth onClick={() => void submit()} disabled={!canSave} loading={saving} loadingLabel="Saving card">
           Save
         </ActionButton>
-      </Dialog.Body>
-    </Dialog.Content>
+      </div>
+    </>
   );
 }

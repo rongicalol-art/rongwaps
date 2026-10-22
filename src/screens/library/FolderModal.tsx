@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { ActionButton, AppIcon, Dialog, FolderSvg } from '../../lib/widgets';
+import { ActionButton, AppIcon, Drawer, FolderSvg } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import {
   FOLDER_COLOR_PALETTE,
@@ -31,23 +30,16 @@ export function FolderModal({
   mode = 'create',
 }: FolderModalProps) {
   const isEdit = mode === 'edit';
-  const inputRef = useRef<HTMLInputElement>(null);
   const currentColor = resolveFolderColor(selectedColorId);
 
   return (
-    <Dialog.Root open={showFolderModal} onClose={() => setShowFolderModal(false)}>
-      <Dialog.Backdrop />
-      <Dialog.Content
-        size="sm"
-        depth="md"
-        initialFocusRef={inputRef}
-        className="rounded-feature p-6"
-      >
-        <Dialog.Header>
-          <Dialog.Title>{isEdit ? 'Edit folder' : 'New Folder'}</Dialog.Title>
-          <Dialog.Close label={isEdit ? 'Close edit folder' : 'Close new folder'} />
-        </Dialog.Header>
-        <Dialog.Body>
+    <Drawer.Root open={showFolderModal} onClose={() => setShowFolderModal(false)} tone="surface">
+      <Drawer.Backdrop />
+      <Drawer.Content size="md" mdPlacement="side" ariaLabel={isEdit ? 'Edit folder' : 'New folder'} heightClassName="max-h-[85vh]">
+        <Drawer.StickyHeader>
+          <Drawer.Handle className="pb-2" />
+        </Drawer.StickyHeader>
+        <Drawer.Body className="flex flex-col px-4 pb-5 sm:px-6">
       {/* Live Folder Preview */}
       <div className="mb-4 flex flex-col items-center justify-center">
         <div className="relative aspect-[25/21] w-24 drop-shadow-sm transition-transform duration-200 hover:scale-105">
@@ -62,7 +54,8 @@ export function FolderModal({
       </div>
 
       <input
-        ref={inputRef}
+        autoFocus
+        onFocus={(e) => e.currentTarget.select()}
         type="text"
         aria-label="Folder name"
         placeholder="Folder name (e.g. Action Verbs)"
@@ -82,7 +75,7 @@ export function FolderModal({
         <div
           role="radiogroup"
           aria-label="Select folder color"
-          className="grid grid-cols-4 gap-2 sm:grid-cols-8"
+          className="grid grid-cols-4 gap-2"
         >
           {FOLDER_COLOR_PALETTE.map((color) => {
             const isSelected = color.id === currentColor.id;
@@ -125,8 +118,8 @@ export function FolderModal({
       >
         {isEdit ? 'Save' : 'Create folder'}
       </ActionButton>
-        </Dialog.Body>
-      </Dialog.Content>
-    </Dialog.Root>
+        </Drawer.Body>
+      </Drawer.Content>
+    </Drawer.Root>
   );
 }

@@ -26,7 +26,8 @@ export function useMenuTrigger(onOpen: (point: MenuPoint) => void, disabled = fa
   }, []);
   useEffect(() => clear, [clear]);
 
-  if (disabled) return {};
+  // Tiles without a menu still swallow the browser's own right-click menu.
+  if (disabled) return { onContextMenu: (event: React.MouseEvent) => event.preventDefault() };
   return {
     onContextMenu: (event: React.MouseEvent) => {
       event.preventDefault();

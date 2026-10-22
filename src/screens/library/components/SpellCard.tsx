@@ -30,24 +30,11 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
   // `traditional.length` below must never throw inside the library grid.
   const traditional = item.traditional || simplified || '';
 
-  // Both are always rendered as strings: an entry may carry no definitions at
-  // all, so the declared `string` type starts from an explicit empty default.
-  let pinyinStr: string;
-  let definition = '';
-
-  if (isStarred) {
-    const dbItem = item as DBDictionaryEntry;
-    pinyinStr = Array.isArray(dbItem.pinyin) ? dbItem.pinyin.join(' ') : '';
-    if (dbItem.definitions) {
-      if (typeof dbItem.definitions === 'string') definition = dbItem.definitions;
-      else if (Array.isArray(dbItem.definitions)) definition = (dbItem.definitions as string[]).slice(0, 2).join(' · ');
-      else if (typeof dbItem.definitions === 'object') definition = Object.values(dbItem.definitions as Record<string, string>).slice(0, 2).join(' · ');
-    }
-  } else {
-    const fbItem = item as UserFlashcard;
-    pinyinStr = fbItem.pinyin || '';
-    definition = fbItem.translation || '';
-  }
+  // Library tiles show the word and its pinyin only; the meaning lives in the card detail.
+  const starredPinyin = (item as DBDictionaryEntry).pinyin;
+  const pinyinStr = isStarred
+    ? (Array.isArray(starredPinyin) ? starredPinyin.join(' ') : '')
+    : (item as UserFlashcard).pinyin || '';
 
   const menuTrigger = useMenuTrigger((point) => onMenu?.(item, point), isStarred || selecting || !onMenu);
 
@@ -109,16 +96,11 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
           </span>
 
           {pinyinStr && (
-            <span className="mb-1 text-center text-xs font-extrabold text-ui-muted">
+            <span className="text-center text-sm font-extrabold text-ui-muted">
               {pinyinStr}
             </span>
           )}
 
-          {definition && (
-            <span className="text-sm font-bold text-ui-muted-strong leading-snug text-center">
-              {definition}
-            </span>
-          )}
         </div>
       </article>
     </motion.div>
