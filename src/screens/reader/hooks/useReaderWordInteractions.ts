@@ -193,7 +193,7 @@ export function useReaderWordInteractions({
     setHoveredChunkKey(null);
     leaveTimerRef.current = setTimeout(() => {
       setHoveredWord(null);
-    }, 100);
+    }, 250);
   }, []);
 
   const handleTooltipMouseEnter = useCallback(() => {
@@ -207,7 +207,7 @@ export function useReaderWordInteractions({
     leaveTimerRef.current = setTimeout(() => {
       setHoveredWord(null);
       setHoveredChunkKey(null);
-    }, 100);
+    }, 250);
   }, []);
 
   const handlePointerDown = useCallback<ReaderPointerHandler>(

@@ -208,6 +208,14 @@ export function SentenceWordTooltipPortal({
       onMouseLeave={onMouseLeave}
       onPointerDown={(e) => e.stopPropagation()}
     >
+      {/* Invisible bridge over the anchor gap to prevent mouse leaving during transit */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          'absolute left-0 w-full pointer-events-auto',
+          placement.above ? '-bottom-3 h-3' : '-top-3 h-3',
+        )}
+      />
       <motion.div
         ref={tooltipRef}
         role="tooltip"

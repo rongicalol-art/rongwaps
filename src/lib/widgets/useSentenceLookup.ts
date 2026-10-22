@@ -95,10 +95,13 @@ export function useSentenceWordHover(lookup = sentenceLookupHandlers.lookupWord)
   const leave = useCallback(() => {
     clearTimers();
     setActiveWordKey(null);
-    leaveTimer.current = setTimeout(closeTooltip, 120);
+    leaveTimer.current = setTimeout(closeTooltip, 250);
   }, [clearTimers, closeTooltip]);
   const keepOpen = useCallback(() => {
-    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    if (leaveTimer.current) {
+      clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
   }, []);
   return { hoveredWord, activeWordKey, enter, leave, keepOpen, closeTooltip };
 }
