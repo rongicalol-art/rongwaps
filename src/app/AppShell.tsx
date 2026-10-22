@@ -22,6 +22,18 @@ export default function AppShell() {
 
   const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
+  const ready = !isLoading && !isSignedOut;
+  useEffect(() => {
+    if (!ready) return;
+    const run = () => { void import('./warmBreakdownData').then((m) => m.warmBreakdownData()); };
+    if (window.requestIdleCallback) {
+      const id = window.requestIdleCallback(run, { timeout: 4000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = window.setTimeout(run, 1500);
+    return () => window.clearTimeout(id);
+  }, [ready]);
+
   if (isLoading) {
     return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen tone="canvas" />;
   }

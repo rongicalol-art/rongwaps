@@ -6,7 +6,7 @@ import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
 import { createPackLoader, type PackLoader } from './packLoader';
-import { fetchContent } from './staticContentService';
+import { fetchContent, fetchStaticJson } from './staticContentService';
 import {
   type ContentPackKind,
   type GenericContentManifest,
@@ -96,6 +96,15 @@ export async function prefetchNextStudyPart(cards: readonly Flashcard[]): Promis
     const response = await fetchContent(next.path, { priority: 'low' } as RequestInit);
     await response.arrayBuffer();
   } catch { warmedStudyPaths.delete(next.path); }
+}
+
+let courseCharRanks: Promise<Map<string, { bookId: number; lessonId: number }>> | null = null;
+/** Earliest course lesson per character, from one small derived file. */
+export function fetchCourseCharRanks() {
+  courseCharRanks ??= fetchStaticJson<Record<string, [number, number]>>('/data/search/course-chars.json', 'Course character ranks')
+    .then(ranks => new Map(Object.entries(ranks).map(([character, [bookId, lessonId]]) => [character, { bookId, lessonId }])))
+    .catch(error => { courseCharRanks = null; throw error; });
+  return courseCharRanks;
 }
 
 /** One small shard replaces whole-corpus indexing for unchanged course cards. */

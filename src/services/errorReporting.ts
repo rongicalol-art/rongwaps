@@ -29,3 +29,9 @@ export function reportReactError(error: unknown, errorInfo: ErrorInfo) {
   if (!sentryClient) return;
   void sentryClient.then((Sentry) => Sentry?.reactErrorHandler()(error, errorInfo));
 }
+
+/** One anonymous note per session when real-device performance was poor (no user, request or URL data). */
+export function reportPoorPerformance(summary: string, tags: Record<string, string>) {
+  if (!sentryClient) return;
+  void sentryClient.then((Sentry) => Sentry?.captureMessage(`Poor performance: ${summary}`, { level: 'info', tags }));
+}

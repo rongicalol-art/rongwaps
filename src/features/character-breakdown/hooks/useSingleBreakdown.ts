@@ -2,10 +2,10 @@ import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useState, useEffect, useMemo } from 'react';
 import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 import { getMultipleBreakdowns } from '../../../services/breakdownService';
-import { searchVocabulary, fetchVocabulary } from '../../../services/vocabularyService';
+import { searchVocabulary } from '../../../services/vocabularyService';
+import { fetchCourseCharRanks } from '../../../services/contentPacks';
 import type { Flashcard } from '../../../data/flashcards';
 import { getDecompositionRuntimeService } from '../../character-decomposition';
-import { buildCharacterCourseIndex } from '../utils/rankParentCharacters';
 import type { BuiltWithMember, RankedSoundFamily } from '../utils/rankBuiltWith';
 import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '../../../services/dictionaryService';
 import { mergeBreakdownWords } from '../utils/mergeBreakdownWords';
@@ -38,25 +38,17 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
   const [dictionaryWords, setDictionaryWords] = useState<DictionaryContainingWord[]>([]);
   const [isRelatedLoading, setIsRelatedLoading] = useState(false);
 
-  // Real course catalog (all books, cached) for ranking parent characters.
-  // Dictionary-sourced entries are excluded so they never outrank course books.
-  const [courseVocab, setCourseVocab] = useState<Flashcard[]>([]);
+  // Earliest course lesson per character (one small file) for ranking and lesson tags.
+  const [courseRank, setCourseRank] = useState<Map<string, { bookId: number; lessonId: number }>>(() => new Map());
   useEffect(() => {
     let active = true;
-    fetchVocabulary()
-      .then((cards) => {
-        if (active) setCourseVocab(cards.filter((card) => card.source !== 'dictionary'));
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
+    fetchCourseCharRanks().then((ranks) => { if (active) setCourseRank(ranks); }).catch(() => {});
+    return () => { active = false; };
   }, []);
 
   // "Built with": every pool character made from the active one, sound-alikes
   // first (parts index), each tagged with its earliest course lesson.
   const parts = useParts();
-  const courseRank = useMemo(() => buildCharacterCourseIndex(courseVocab), [courseVocab]);
   const builtWithMembers = useMemo<BuiltWithMember[]>(() => {
     if (!parts || !activeChar) return [];
     return builtWith(activeChar, parts).map((member) => ({ ...member, ...courseRank.get(member.character) }));

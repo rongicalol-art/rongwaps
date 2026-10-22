@@ -8,10 +8,21 @@ export function startVitalsMonitoring(): void {
   if (started) return;
   started = true;
   const record = (metric: Metric) => { vitals[metric.name as VitalName] = { value: metric.value, rating: metric.rating }; };
-  // Local aggregate values only: no identifiers, entries, or network reporting.
+  // Aggregate values only: no identifiers or entries. A single anonymous "poor" note goes out below.
   onLCP(record, { reportAllChanges: true });
   onINP(record, { reportAllChanges: true });
   onCLS(record, { reportAllChanges: true });
+  // When the page is left, report once if any vital was "poor": the signal for real slow phones.
+  let reported = false;
+  document.addEventListener('visibilitychange', () => {
+    if (reported || document.visibilityState !== 'hidden') return;
+    const poor = (Object.entries(vitals) as Array<[VitalName, { value: number; rating: string }]>).filter(([, vital]) => vital.rating === 'poor');
+    if (!poor.length) return;
+    reported = true;
+    const connection = (navigator as Navigator & { connection?: { effectiveType?: string } }).connection?.effectiveType ?? 'unknown';
+    const summary = poor.map(([name, vital]) => `${name} ${Math.round(vital.value)}`).join(', ');
+    void import('./errorReporting').then((m) => m.reportPoorPerformance(summary, { connection, ...Object.fromEntries(poor.map(([name]) => [`poor_${name}`, 'true'])) }));
+  });
 }
 
 export interface FrameCapture extends FrameBudgetReport {

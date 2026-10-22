@@ -11,6 +11,7 @@ import { studyPartKey, type StudyPack, type StudyPart } from '../../src/utils/vo
 import { extractCedictReference, sanitizeDictionaryDefinitions } from '../../shared/dictionaryDefinitions';
 import type { GenericContentManifest } from '../../src/utils/packValidators';
 import type { DBDictionaryRow } from '../../src/types/database';
+import { buildCharacterCourseIndex } from '../../src/features/character-breakdown/utils/rankParentCharacters';
 import { runtimeNodeChildren, type RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
 import type { RuntimePackManifest, RuntimePackRecord } from '../../src/features/character-decomposition/runtimeDerivations';
 
@@ -34,6 +35,7 @@ async function buildHotDecomposition(root: string, courseText: string): Promise<
 }
 
 const HOT_DECOMPOSITION = '/data/decomposition-runtime/hot.json';
+const COURSE_CHARS = '/data/search/course-chars.json';
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 /** Build artifacts only: source packs remain canonical and are never modified here. */
 export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>> {
@@ -65,6 +67,8 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
   assets.set('/data/decomposition-runtime/hot.json', await buildHotDecomposition(root, cards.map(card => `${card.front}${card.traditional ?? ''}${card.simplified ?? ''}`).join('')));
   const parts: StudyPart[] = [];
   const cardIds = new Map(cards.map((card, id) => [card, id]));
+  // Earliest course lesson per character (~30 kB): breakdowns rank "built with" by it, without downloading every vocabulary book.
+  assets.set(COURSE_CHARS, Buffer.from(JSON.stringify(Object.fromEntries([...buildCharacterCourseIndex(cards)].map(([character, { bookId, lessonId }]) => [character, [bookId, lessonId]])))));
   assets.set('/data/search/course-lookup.json', Buffer.from(JSON.stringify({ cards, entries: [...buildCourseVocabLookupMap(cards)].map(([key, card]) => [key, cardIds.get(card)]) })));
 
   for (const [key, group] of groups) {
@@ -130,7 +134,7 @@ export function studyPacksPlugin(): Plugin {
       server.watcher.on('change', file => { if (file.includes('/public/data/') && file.endsWith('/manifest.json')) { pending = undefined; void prepareDevAssets().catch(error => server.config.logger.error(String(error))); } });
       server.middlewares.use(async (request, response, next) => {
         const path = request.url?.split('?')[0];
-        if (!path?.startsWith('/data/study/') && path !== '/data/search/course-lookup.json' && path !== HOT_DECOMPOSITION) return next();
+        if (!path?.startsWith('/data/study/') && path !== '/data/search/course-lookup.json' && path !== HOT_DECOMPOSITION && path !== COURSE_CHARS) return next();
         try {
           const bytes = (await getAssets()).get(path);
           if (!bytes) { response.statusCode = 404; response.end(); return; }

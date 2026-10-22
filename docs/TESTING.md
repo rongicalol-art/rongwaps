@@ -149,7 +149,7 @@ Course cards and saved-word hooks load a single signature shard. Altered course 
 
 The derived lookup dataset duplicates resolved examples across card signatures: about 12.9 MB across all 256 shards, versus 1.58 MB of old source packs. It is excluded from whole-app precaching and only requested shards are downloaded. This trades total offline storage over a long study history for smaller immediate loads and removal of runtime whole-corpus indexing; the in-memory limits do not cap current-version IndexedDB storage.
 
-Core Web Vitals are collected locally after boot using Google's `web-vitals` package. Only values and ratings remain in memory. No metric identifiers, entries, account information, persistence or network reporting are collected.
+Core Web Vitals are collected locally after boot using Google's `web-vitals` package. Only values and ratings remain in memory. No metric identifiers, entries, account information or persistence are collected. If any vital is rated "poor" when the page is left, one anonymous Sentry note (metric values + connection type, no user/URL) is sent per session (`reportPoorPerformance`); Sentry search for "Poor performance" shows real slow phones.
 
 For a safe visual benchmark, open Ctrl+Shift+0 → Performance, select the actual display refresh rate and record 8 seconds. Switch to UI Previews, replay Cards done → quiz and Review → card, then return to Performance and refresh. These previews use fake cards and do not record learning progress. A recording stops when the tab becomes hidden. rAF cadence is a main-thread scheduling signal, not GPU presentation FPS. Long Animation Frames expose blocking and forced synchronous layout where supported; browsers without it use Long Tasks, without claiming forced-layout data.
 
