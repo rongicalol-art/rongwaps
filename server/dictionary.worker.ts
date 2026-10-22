@@ -51,7 +51,8 @@ async function start() {
         if (studyCache.size > 4) studyCache.delete(studyCache.keys().next().value!);
         const extras = pack.extras.find(row => JSON.parse(row.key)[0] === card.id);
         const sentences = extras?.examples.map(([id]) => pack!.sentences[id]).filter(example => example.chinese.includes(word)) ?? [];
-        if (sentences.length) return [...sentences.filter(sentence => sentence.audio), ...sentences.filter(sentence => !sentence.audio)].slice(0, limit);
+        // Study packs hold same-lesson examples only; a short list tops up from the full corpus below.
+        if (sentences.length >= limit) return [...sentences.filter(sentence => sentence.audio), ...sentences.filter(sentence => !sentence.audio)].slice(0, limit);
       }
     }
     if (!corpus) {
