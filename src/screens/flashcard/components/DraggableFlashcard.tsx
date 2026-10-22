@@ -8,6 +8,7 @@ import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
 import { FavoriteButton } from '../../../features/library';
+import { FlashcardWritingPractice } from './FlashcardWritingPractice';
 import { useCardSwipe } from '../hooks/useCardSwipe';
 import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
 
@@ -94,6 +95,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   onToggleHook,
 }: DraggableFlashcardProps) {
   const isPresent = useIsPresent();
+  const [showWriting, setShowWriting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [isSwiped, setIsSwiped] = useState(false);
   const wasSwipedRef = useRef(false);
@@ -137,7 +139,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     const hasHook = showWordHookChip && Boolean(wordHook);
     return (
       <div
-        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-0.5"
+        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-2"
         onPointerDown={(event) => event.stopPropagation()}
       >
         {hasHook && (
@@ -159,6 +161,17 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             <AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={22} />
           </button>
         )}
+        {Array.from(card.front).some(isHanziChar) && <button
+          type="button"
+          aria-label={`Write ${card.front}`}
+          onClick={(event) => {
+            event.stopPropagation();
+            if (!isDragging) setShowWriting(true);
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-compact text-ui-muted focus-ring hover:bg-ui-hover active:scale-95"
+        >
+          <AppIcon name="pencilOutline" size={22} />
+        </button>}
         <FavoriteButton
           word={card.front}
           traditional={card.traditional}
@@ -287,6 +300,8 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   }, [isFlipped]);
 
   return (
+    <>
+    {showWriting && <FlashcardWritingPractice word={card.front} onClose={() => setShowWriting(false)} />}
     <motion.div
       data-fc-card={card.id}
       custom={direction}
@@ -351,5 +366,24 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         <SwipeVerdict side="no" />
       </div>
     </motion.div>
+    </>
   );
 });
+
+
+/** Safe DEV sample: flips and writing stay local; no review callbacks record progress. */
+export function FlashcardActionsPreview() {
+  return <section className="space-y-3">
+    <h2 className="text-xl font-black text-ui-ink-strong">Flashcard actions · safe preview</h2>
+    <div className="relative h-128 w-full [container-type:size]">
+      <DraggableFlashcard
+        card={{ id: 'preview-buy', bookId: 1, lessonId: 3, front: '買', traditional: '買', simplified: '买', pinyin: 'mǎi', back: 'to buy', pos: 'V' }}
+        direction={1}
+        isFlipped
+        setActiveBreakdown={() => {}}
+        triggerSwipeRate={() => false}
+        onCardTap={() => {}}
+      />
+    </div>
+  </section>;
+}

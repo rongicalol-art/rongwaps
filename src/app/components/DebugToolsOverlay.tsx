@@ -46,6 +46,7 @@ export function DebugToolsOverlay() {
               {DebugWindow && <DebugWindow />}
             </Suspense>
           </div>
+          <div data-ui-preview-host />
         </motion.div>
       )}
     </AnimatePresence>

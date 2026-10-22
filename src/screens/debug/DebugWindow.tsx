@@ -1,3 +1,4 @@
+import { FlashcardActionsPreview } from '../flashcard';
 import { SentenceLookupPreview } from './SentenceLookupPreview';
 import { PerformancePanel } from './PerformancePanel';
 import React, { useEffect, useState } from 'react';
@@ -330,6 +331,7 @@ export const DebugWindow = () => {
               ))}
               {errorMessage && <p role="status" className="text-sm font-bold text-ui-ink">{errorMessage}</p>}
             </section>
+            <FlashcardActionsPreview />
             <SentenceLookupPreview />
             <QuizPreview />
             <GrammarPracticePreview />
