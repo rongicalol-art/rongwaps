@@ -204,7 +204,7 @@ export function DrawerTitle({
 }) {
   const { titleId } = useDrawerContext();
   return (
-    <h2 id={titleId} className={cn('text-xl font-extrabold text-ui-ink tracking-normal', className)}>
+    <h2 id={titleId} className={cn('text-xl font-black text-ui-ink-strong tracking-normal', className)}>
       {children}
     </h2>
   );
@@ -314,7 +314,7 @@ export function Drawer({
         <>
           <DrawerHandle className="pt-4 pb-2" />
           {hasHeader && (
-            <div className="flex items-center justify-between px-6 pb-4">
+            <div className="flex items-center justify-between px-6 pb-4 pt-2 md:pt-6">
               {title &&
                 (typeof title === 'string' ? (
                   <DrawerTitle>{title}</DrawerTitle>

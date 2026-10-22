@@ -123,7 +123,7 @@ export function LessonActions({
       <ActionButton
         size="lg"
         fullWidth
-        className="whitespace-nowrap"
+        className="whitespace-nowrap text-lg tracking-normal"
         onClick={onStart}
         onPointerEnter={onStartIntent}
         onPointerDown={onStartIntent}

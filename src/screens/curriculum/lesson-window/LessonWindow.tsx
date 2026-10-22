@@ -87,7 +87,12 @@ function PracticeHubDrawer({
     <Drawer
       isOpen={isOpen}
       onClose={onClose}
-      title="Practice hub"
+      title={
+        <div className="flex items-center gap-2.5">
+          <PlayfulNavIcon name="practiceHub" className="h-6 w-6" />
+          <Drawer.Title>Practice hub</Drawer.Title>
+        </div>
+      }
       tone="practice"
       size="md"
       mdPlacement="side"
@@ -109,6 +114,7 @@ function PracticeHubDrawer({
             >
               <PlayfulNavIcon name="quiz" className="h-8 w-8" />
               <span>Quiz</span>
+              <AppIcon name="next" size={18} className="ml-auto text-ui-muted-strong" />
             </ActionButton>
             <div aria-hidden="true" className="border-t border-ui-divider" />
           </>
