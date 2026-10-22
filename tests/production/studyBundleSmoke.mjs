@@ -44,14 +44,23 @@ try {
   for (const encoding of ['br', 'gzip', 'identity']) {
     const response = await request(path, encoding);
     assert.equal(response.status, 200);
-    assert.match(response.headers['cache-control'], /private, no-store/);
-    assert.match(response.headers.vary, /Authorization/);
+    assert.equal(response.headers['cache-control'], 'private, max-age=31536000, immutable');
     assert.match(response.headers.vary, /Accept-Encoding/);
     const decoded = encoding === 'br' ? brotliDecompressSync(response.body) : encoding === 'gzip' ? gunzipSync(response.body) : response.body;
     assert.deepEqual(decoded, original);
     if (encoding !== 'identity') assert.equal(response.headers['content-encoding'], encoding);
   }
-  for (const suffix of ['', '.br', '.gz']) assert.equal((await request(path + suffix, 'br', false)).status, 401);
+  for (const suffix of ['', '.br', '.gz']) {
+    const refused = await request(path + suffix, 'br', false);
+    assert.equal(refused.status, 401);
+    assert.equal(refused.headers['cache-control'], 'private, no-store', 'refusals must never be cached');
+  }
+  const manifestResponse = await request('/data/study/manifest.json');
+  assert.equal(manifestResponse.headers['cache-control'], 'private, no-cache');
+  const revalidated = await new Promise((resolve, reject) => http.get({ hostname: '127.0.0.1', port, path: '/data/study/manifest.json', headers: {
+    Authorization: 'Bearer fixture', 'If-None-Match': manifestResponse.headers.etag,
+  } }, response => { response.resume(); resolve(response.statusCode); }).on('error', reject));
+  assert.equal(revalidated, 304, 'unchanged unhashed packs revalidate cheaply');
   const response = await request('/api/dictionary/search?q=teacher');
   assert.equal(response.status, 200);
   assert.ok(JSON.parse(response.body).some(row => row.simplified === '老师'));

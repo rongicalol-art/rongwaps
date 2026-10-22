@@ -4,14 +4,14 @@ import test from 'node:test';
 import { brotliCompressSync, constants } from 'node:zlib';
 import { buildStudyPacks } from '../../scripts/performance/studyPacks';
 import { validStudyPack, decodeStudyPack, type StudyPack, type StudyPart } from '../../src/utils/vocabulary/studyPack';
-import { flashcardExtrasKey, flashcardExtrasShard, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
+import { lessonExtras, flashcardExtrasKey, flashcardExtrasShard, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
 import { fetchCurriculumDeckData } from '../../src/services/activityDeckFetcher';
 import { fetchPackedFlashcardExtras, fetchDictionaryRowsFromPacks } from '../../src/services/contentPacks';
 import { fetchExamples } from '../../src/services/vocabularyService';
 import { searchDictionary } from '../../src/services/dictionarySearchService';
 
 // Exercises the generated assets through the actual pack loader, with no SRS writes.
-test('lesson bundles preserve every example and definition while eliminating broad client downloads', async t => {
+test('lesson bundles keep lesson examples (capped tail) and every definition while eliminating broad client downloads', async t => {
   const assets = await buildStudyPacks(process.cwd());
   const manifest = JSON.parse(assets.get('/data/study/manifest.json')!.toString()) as { totalCount: number; parts: StudyPart[] };
   assert.equal(manifest.totalCount, manifest.parts.reduce((sum, part) => sum + part.count, 0));
@@ -40,7 +40,7 @@ test('lesson bundles preserve every example and definition while eliminating bro
   const key = flashcardExtrasKey(card);
   const shard = JSON.parse(await readFile(`public/data/flashcard-extras/shard-${String(flashcardExtrasShard(key)).padStart(3, '0')}.json`, 'utf8')) as { items: FlashcardExtrasRow[] };
   const row = shard.items.find(row => row.key === key)!;
-  const expected = { examples: row.examples, wordHook: row.wordHook };
+  const expected = lessonExtras(row);
   assert.deepEqual(await fetchPackedFlashcardExtras(card), expected);
   assert.deepEqual(decoded.extras.get(key), expected);
   await fetchDictionaryRowsFromPacks(cards.flatMap(card => [card.front, card.traditional ?? '', card.simplified ?? '']));

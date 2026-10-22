@@ -11,7 +11,7 @@ export interface StudyPart {
 export interface StudyPack {
   schemaVersion: 1; key: number; count: number; cards: Flashcard[];
   sentences: Omit<RankedExample, 'rank'>[];
-  extras: Array<{ key: string; examples: [number, number][]; wordHook: string | null }>;
+  extras: Array<{ key: string; examples: [number, number][]; wordHook: string | null; more?: number }>;
   dictionary: DBDictionaryRow[];
 }
 export interface LoadedStudyPack {
@@ -20,7 +20,7 @@ export interface LoadedStudyPack {
 export function decodeStudyPack(pack: StudyPack): LoadedStudyPack {
   const examples = new Map<number, RankedExample>();
   const extras = new Map(pack.extras.map(row => [row.key, {
-    wordHook: row.wordHook, examples: row.examples.map(([id, rank]) => {
+    wordHook: row.wordHook, ...(row.more ? { more: row.more } : {}), examples: row.examples.map(([id, rank]) => {
       const key = id * 8 + rank;
       let example = examples.get(key);
       if (!example) { example = { ...pack.sentences[id], rank }; examples.set(key, example); }

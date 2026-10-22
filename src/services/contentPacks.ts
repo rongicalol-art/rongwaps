@@ -1,12 +1,13 @@
 import { studyPartKey, type LoadedStudyPack } from '../utils/vocabulary/studyPack';
 import { lookupDictionaryApi } from './dictionaryApi';
-import { flashcardExtrasKey, flashcardExtrasShard, type FlashcardExtras } from '../utils/vocabulary/flashcardExtrasPack';
+import { flashcardExtrasKey, flashcardExtrasShard, lessonExtras, type FlashcardExtras } from '../utils/vocabulary/flashcardExtrasPack';
 import { debugLogger } from '../utils/debug/debugLogger';
 import type { CharacterJson } from 'hanzi-writer';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
 import { createPackLoader, type PackLoader } from './packLoader';
+import { fetchContent } from './staticContentService';
 import {
   type ContentPackKind,
   type GenericContentManifest,
@@ -78,18 +79,45 @@ export async function prepareStudyPacks(cards: readonly Flashcard[], signal?: Ab
   await loadStudyCards([...new Set(course.map(card => studyPartKey(card.bookId, card.lessonId, card.partId ?? 1)))], signal);
 }
 
+const warmedStudyPaths = new Set<string>();
+/**
+ * After a session is ready, download the next lesson part into the browser's HTTP
+ * cache only (no parse, no memory), so moving on opens instantly. Skipped on Data Saver.
+ */
+export async function prefetchNextStudyPart(cards: readonly Flashcard[]): Promise<void> {
+  if ((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData) return;
+  const keys = cards.map(card => studyPartKey(card.bookId, card.lessonId, card.partId ?? 1));
+  if (!keys.length) return;
+  const last = Math.max(...keys);
+  const next = (await getPackManifest('study')).parts
+    ?.filter(part => part.key > last).sort((a, b) => a.key - b.key)[0];
+  if (!next?.path || warmedStudyPaths.has(next.path)) return;
+  warmedStudyPaths.add(next.path);
+  try {
+    const response = await fetchContent(next.path, { priority: 'low' } as RequestInit);
+    await response.arrayBuffer();
+  } catch { warmedStudyPaths.delete(next.path); }
+}
+
 /** One small shard replaces whole-corpus indexing for unchanged course cards. */
 export async function fetchPackedFlashcardExtras(card: Flashcard): Promise<FlashcardExtras | null | undefined> {
   const warm = getLoadedStudyExtras(card);
   if (warm) return warm;
   const key = flashcardExtrasKey(card);
   try {
-    const pack = await loadPack<Map<string, FlashcardExtras>>('flashcard-extras', flashcardExtrasShard(key));
-    return pack?.get(key) ?? null;
+    const row = (await loadPack<Map<string, FlashcardExtras>>('flashcard-extras', flashcardExtrasShard(key)))?.get(key);
+    return row ? lessonExtras(row) : null;
   } catch (error) {
     debugLogger.warn('Cache', 'Flashcard extras unavailable; using live lookup.', error);
     return undefined;
   }
+}
+
+/** Every example for a word, including other lessons ("Show more"). */
+export async function fetchAllFlashcardExamples(card: Flashcard): Promise<FlashcardExtras['examples']> {
+  const key = flashcardExtrasKey(card);
+  const pack = await loadPack<Map<string, FlashcardExtras>>('flashcard-extras', flashcardExtrasShard(key));
+  return pack?.get(key)?.examples ?? [];
 }
 
 export async function fetchVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {

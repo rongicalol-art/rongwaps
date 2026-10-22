@@ -10,14 +10,14 @@ import {
 } from "../../../utils/vocabulary/courseExamples";
 import { extractWordVariants } from "../../../utils/vocabulary/wordForms";
 import { isHanziChar } from "../../../utils/characters/hanzi";
-import { AppIcon, PosBadge } from "../../../lib/widgets";
+import { ActionButton, AppIcon, PosBadge } from "../../../lib/widgets";
 import { formatPosLabel } from "../../../utils/vocabulary/posLabels";
 import { FlashcardExamples } from "./FlashcardExamples";
 import { alignWordSyllables } from "../../../utils/pinyin/pinyinTones";
 import { splitCourseMeasureWords } from "../../../utils/vocabulary/measureWords";
 import { TonePinyin, TONE_TEXT_CLASS } from "./TonePinyin";
 import { cn } from "../../../utils/cn";
-import { useFlashcardExtras } from "../content/flashcardContent";
+import { useFlashcardExtras, useMoreExamples } from "../content/flashcardContent";
 import { useAppStore } from "../../../store/useAppStore";
 
 const PRIMARY_SENSE_COUNT = 2;
@@ -76,7 +76,9 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
   const isSimpleActive = (simpleDefinitions ?? storeSimpleDefinitions) && Boolean(card.simple);
 
   const fetched = useFlashcardExtras(card);
-  const resolvedExamples = examples ?? fetched.extras.examples;
+  const { moreExamples, loadingMore, moreFailed, loadMore } = useMoreExamples(card);
+  const resolvedExamples = examples ?? moreExamples ?? fetched.extras.examples;
+  const canShowMore = examples === undefined && !moreExamples && Boolean(fetched.extras.more);
   const resolvedLoading = isExamplesLoading ?? fetched.isLoading;
 
   const { primaryExamples, restExamples } = useMemo(() => {
@@ -382,6 +384,14 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
         </div>
       </div>
 
+      {canShowMore && (
+        <div className="flex w-full shrink-0 flex-col items-center gap-2 px-6 pb-6 pt-2">
+          <ActionButton variant="secondary" size="sm" loading={loadingMore} loadingLabel="Loading…" onClick={loadMore}>
+            Show more examples
+          </ActionButton>
+          {moreFailed && <p className="text-xs font-bold text-ui-muted-strong">Couldn’t load. Try again.</p>}
+        </div>
+      )}
       {restExamples.length > 0 && (
         <div className="w-full shrink-0">
           <FlashcardExamples

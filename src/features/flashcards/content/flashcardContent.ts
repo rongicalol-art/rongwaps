@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
-import { fetchPackedFlashcardExtras } from '../../../services/contentPacks';
+import { fetchAllFlashcardExamples, fetchPackedFlashcardExtras } from '../../../services/contentPacks';
 import { FLASHCARD_EXTRAS_CACHE_LIMIT, flashcardExtrasKey, type FlashcardExtras } from '../../../utils/vocabulary/flashcardExtrasPack';
 import { getIdPosition } from '../../../utils/lesson/curriculumPosition';
 import { debugLogger } from '../../../utils/debug/debugLogger';
@@ -97,4 +97,21 @@ export function useFlashcardExtras(card: Flashcard | null | undefined) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
   return state;
+}
+
+/** "Show more": fetches the held-back other-lesson examples once, on request. */
+export function useMoreExamples(card: Flashcard) {
+  const key = flashcardExtrasKey(card);
+  const [state, setState] = useState<{ key: string; examples: FlashcardExtras['examples'] | null; loading: boolean; failed: boolean }>(
+    { key, examples: null, loading: false, failed: false });
+  const current = state.key === key ? state : { key, examples: null, loading: false, failed: false };
+  const load = useCallback(() => {
+    setState({ key, examples: null, loading: true, failed: false });
+    fetchAllFlashcardExamples(card)
+      .then((examples) => setState({ key, examples, loading: false, failed: false }))
+      .catch(() => setState({ key, examples: null, loading: false, failed: true }));
+    // The key already captures every card field the shard lookup reads.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+  return { moreExamples: current.examples, loadingMore: current.loading, moreFailed: current.failed, loadMore: load };
 }

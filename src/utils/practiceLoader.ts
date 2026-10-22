@@ -87,6 +87,11 @@ export async function preparePracticeData(cards: readonly import('../data/flashc
   signal.throwIfAborted();
   if (audioFailed) throw new Error('Recording download failed');
   await audio.audioService.prepareRecording(studyCards[0]?.audio, signal);
+  // Background: the next lesson part (upcoming audio is warmed by useCardSession).
+  const warmAhead = () => { if (!signal.aborted) void packs.prefetchNextStudyPart(cards).catch(() => {}); };
+  if (typeof window === 'undefined') return;
+  if (window.requestIdleCallback) window.requestIdleCallback(warmAhead, { timeout: 3000 });
+  else window.setTimeout(warmAhead, 500);
 }
 
 /** Loader message for the practice modal. */

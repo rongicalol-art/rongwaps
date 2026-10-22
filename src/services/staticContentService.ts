@@ -61,7 +61,14 @@ export async function fetchContent(path: string, init: RequestInit = {}): Promis
       const { data } = await supabase.auth.getSession();
       if (data.session) headers.set('Authorization', `Bearer ${data.session.access_token}`);
     }
-    return fetch(contentUrl(path), { ...init, cache: 'no-store', headers });
+    // Packs use the browser's private HTTP cache (server sets the policy); API answers never do.
+    const request = () => fetch(contentUrl(path), { ...init, cache: path.startsWith('/api/') ? 'no-store' : init.cache, headers });
+    const response = await request();
+    if (response.status !== 429 || init.signal?.aborted) return response;
+    // One quiet retry after the server's suggested wait (capped) before surfacing an error.
+    const waitMs = Math.min(Number(response.headers.get('Retry-After')) * 1000 || 1500, 5000);
+    await new Promise((resolve) => setTimeout(resolve, waitMs));
+    return init.signal?.aborted ? response : request();
   }
   return fetch(contentUrl(path), { ...init, headers });
 }
@@ -166,7 +173,7 @@ export async function fetchStaticJsonWithMetadata<T>(
   try {
   let response: Response;
   try {
-    response = await timeDataRequest(label, () => fetchContent(path, { cache: protectedContent ? 'no-store' : options.revalidate ? 'no-cache' : 'default', signal: controller.signal }));
+    response = await timeDataRequest(label, () => fetchContent(path, { cache: options.revalidate ? 'no-cache' : 'default', signal: controller.signal }));
   } catch (error) {
     if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     throw error;

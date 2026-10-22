@@ -61,10 +61,60 @@ app.get("/healthz", (_req, res) => {
   res.json({ ok: true });
 });
 
-// ─── Rate limiting (abuse protection for APIs and protected content) ──
+// ─── Auth + rate limiting (abuse protection for APIs and protected content) ──
+// A lesson opens dozens of /data files in parallel with the same token. Verify
+// each token once (shared in-flight promise), then trust it briefly, so content
+// requests skip two Supabase round trips and never trip the per-IP limit.
+const AUTH_TTL_MS = 5 * 60 * 1000;
+const MAX_VERIFIED_TOKENS = 2000;
+type AuthResult = { userId: string } | { status: number; error: string };
+const verifiedTokens = new Map<string, { result: Promise<AuthResult>; until: number }>();
+
+function bearerToken(req: express.Request): string | null {
+  const header = req.headers.authorization;
+  return header?.startsWith("Bearer ") ? header.slice(7) : null;
+}
+
+function tokenExpiryMs(token: string): number {
+  try {
+    const exp = Number(JSON.parse(Buffer.from(token.split(".")[1] ?? "", "base64url").toString()).exp);
+    return Number.isFinite(exp) ? exp * 1000 : Infinity;
+  } catch { return Infinity; }
+}
+
+async function verifyToken(token: string): Promise<AuthResult> {
+  try {
+    const [userResult, accessResult] = await Promise.all([
+      supabase.auth.getUser(token),
+      createUserSupabaseClient(token).rpc('has_beta_access'),
+    ]);
+    const { data: { user }, error } = userResult;
+    if (error || !user) return { status: 401, error: "Unauthorized" };
+    const { data: allowed, error: accessError, status } = accessResult;
+    if (accessError) {
+      return status === 403 || status === 401
+        ? { status, error: status === 403 ? 'Use your Shu-Te student Google account.' : 'Access verification unavailable.' }
+        : { status: 503, error: 'Access verification unavailable.' };
+    }
+    if (allowed !== true) return { status: 403, error: 'Use your Shu-Te student Google account.' };
+    return { userId: user.id };
+  } catch (err: unknown) {
+    console.error("Auth check failed:", err);
+    captureServerException(err, "auth-check");
+    return { status: 503, error: "Authentication unavailable right now." };
+  }
+}
+
+function isVerified(token: string | null): boolean {
+  const entry = token ? verifiedTokens.get(token) : undefined;
+  return Boolean(entry && entry.until > Date.now());
+}
+
+// Only unverified requests count per IP (carrier NAT puts many phones on one IP).
 const apiLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
-  limit: 60,
+  limit: 120,
+  skip: (req) => isVerified(bearerToken(req)),
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Too many requests. Try again later." },
@@ -82,40 +132,33 @@ const userLimiter = (limit: number) => rateLimit({
 
 // Require a valid Supabase session and beta access for protected lesson content.
 export async function requireAuth(req: express.Request, res: express.Response, next: express.NextFunction) {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  const token = bearerToken(req);
   if (!token) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
-  try {
-    const [userResult, accessResult] = await Promise.all([
-      supabase.auth.getUser(token),
-      createUserSupabaseClient(token).rpc('has_beta_access'),
-    ]);
-    const { data: { user }, error } = userResult;
-    if (error || !user) {
-      res.status(401).json({ error: "Unauthorized" });
-      return;
+  const now = Date.now();
+  let entry = verifiedTokens.get(token);
+  if (!entry || entry.until <= now) {
+    const until = Math.min(now + AUTH_TTL_MS, tokenExpiryMs(token));
+    const created = { result: verifyToken(token), until };
+    entry = created;
+    verifiedTokens.set(token, created);
+    // Keep successes only; failures must re-check on the next request.
+    void created.result.then((result) => {
+      if ('status' in result && verifiedTokens.get(token) === created) verifiedTokens.delete(token);
+    });
+    for (const [key, value] of verifiedTokens) {
+      if (verifiedTokens.size <= MAX_VERIFIED_TOKENS) break;
+      if (value.until <= now || key !== token) verifiedTokens.delete(key);
     }
-    const { data: allowed, error: accessError, status } = accessResult;
-    if (accessError) {
-      res.status(status === 403 || status === 401 ? status : 503).json({
-        error: status === 403 ? 'Use your Shu-Te student Google account.' : 'Access verification unavailable.',
-      });
-      return;
-    }
-    if (allowed !== true) {
-      res.status(403).json({ error: 'Use your Shu-Te student Google account.' });
-      return;
-    }
-    res.locals.userId = user.id;
-  } catch (err: unknown) {
-    console.error("Auth check failed:", err);
-    captureServerException(err, "auth-check");
-    res.status(503).json({ error: "Authentication unavailable right now." });
+  }
+  const result = await entry.result;
+  if ('status' in result) {
+    res.status(result.status).json({ error: result.error });
     return;
   }
+  res.locals.userId = result.userId;
   next();
 }
 
@@ -184,7 +227,9 @@ async function bootstrap() {
     // Authenticated content is same-origin so every pack request can be checked.
     // Keep in sync with PROTECTED_CONTENT in src/services/staticContentService.ts.
     const gatedDirs = [distDataDir + path.sep];
-    const contentRequestLimiter = userLimiter(600);
+    const contentRequestLimiter = userLimiter(1200);
+    // Content-hashed build outputs, e.g. study/1001001-8989b311b07f.json, pronunciation-audio/1d770a43c180f6f8.json.
+    const HASHED_FILE = /[-/][a-f0-9]{12,16}\.json$/;
     // Inspect the decoded full path before express.static, rather than mounting
     // on /data: encoded mount names and duplicate slashes must hit the same gate.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -196,13 +241,19 @@ async function bootstrap() {
         return;
       }
       if (!gatedDirs.some((dir) => requested.startsWith(dir))) return next();
+      // Errors (401/403/429) are never cached; only a passed check sets the cache policy.
       res.setHeader('Cache-Control', 'private, no-store');
-      res.vary('Authorization');
       apiLimiter(req, res, (limitErr?: unknown) => {
         if (limitErr) return next(limitErr);
         requireAuth(req, res, (authErr?: unknown) => {
           if (authErr) return next(authErr);
-          contentRequestLimiter(req, res, next);
+          contentRequestLimiter(req, res, (limitError?: unknown) => {
+            // Browser-only cache (`private`: never Cloudflare). Hashed names never change;
+            // the rest revalidate (cheap 304). No Vary: Authorization, or every hourly
+            // token refresh would empty the browser cache.
+            if (!limitError) res.setHeader('Cache-Control', HASHED_FILE.test(requested) ? 'private, max-age=31536000, immutable' : 'private, no-cache');
+            next(limitError);
+          });
         });
       });
     });
@@ -221,13 +272,12 @@ async function bootstrap() {
     });
     app.use(express.static(distPath, {
       setHeaders(res: express.Response, filePath: string) {
-        if (revalidatedFiles.has(path.basename(filePath))) {
+        if (gatedDirs.some((dir) => filePath.startsWith(dir))) {
+          // Cache-Control already set by the auth gate above (also for data manifest.json files).
+        } else if (revalidatedFiles.has(path.basename(filePath))) {
           res.setHeader("Cache-Control", "no-cache");
         } else if (filePath.includes(assetsMarker)) {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-        } else if (gatedDirs.some((dir) => filePath.startsWith(dir))) {
-          // Never let a shared cache (Cloudflare edge) hand lesson content to someone signed out.
-          res.setHeader("Cache-Control", "private, no-store");
         } else if (
           filePath.startsWith(distDataDir)
           || path.basename(filePath) === "dictionary_trie.json"

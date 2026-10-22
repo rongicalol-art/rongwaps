@@ -7,6 +7,8 @@ export const FLASHCARD_EXTRAS_CACHE_LIMIT = 128;
 export interface FlashcardExtras {
   examples: RankedExample[];
   wordHook: string | null;
+  /** Other-lesson examples not included here; load them on request. */
+  more?: number;
 }
 export interface FlashcardExtrasRow extends FlashcardExtras { key: string }
 
@@ -14,6 +16,19 @@ export interface FlashcardExtrasRow extends FlashcardExtras { key: string }
 export function flashcardExtrasKey(card: Flashcard): string {
   if (!getIdPosition(card.id)) return JSON.stringify(['word', card.front]);
   return JSON.stringify([card.id, card.front, card.traditional ?? '', card.simplified ?? '', card.pos ?? '']);
+}
+/**
+ * The card shows only same-lesson examples (ranks 1–3); the rest sit behind "Show more".
+ * Common words like 是 have hundreds of other-lesson sentences, about half of all study bytes.
+ */
+export const LESSON_EXAMPLE_MAX_RANK = 3;
+export const lessonExamples = <T extends { rank: number }>(examples: readonly T[]): T[] =>
+  examples.filter(({ rank }) => rank <= LESSON_EXAMPLE_MAX_RANK);
+/** Lesson-only extras; `more` counts the examples held back (omitted when none). */
+export function lessonExtras(row: FlashcardExtras): FlashcardExtras {
+  const examples = lessonExamples(row.examples);
+  const more = row.examples.length - examples.length;
+  return { wordHook: row.wordHook, examples, ...(more ? { more } : {}) };
 }
 export function flashcardExtrasShard(key: string): number {
   let hash = 0;

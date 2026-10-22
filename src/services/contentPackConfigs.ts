@@ -51,7 +51,7 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
         && new Set(p.items.map((row) => row?.key)).size === part.count
         && p.items.every((row) => isValidFlashcardExtrasRow(row) && flashcardExtrasShard(row.key) === part.key);
     },
-    transform: (pack) => new Map((pack as { items: FlashcardExtrasRow[] }).items.map(({ key, ...extras }) => [key, extras])),
+    transform: (pack) => new Map((pack as { items: FlashcardExtrasRow[] }).items.map(({ key, examples, wordHook }) => [key, { wordHook, examples }])),
   },
   vocabulary: {
     namespace: 'vocabulary',

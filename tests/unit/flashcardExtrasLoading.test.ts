@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import { fetchPackedFlashcardExtras } from '../../src/services/contentPacks';
-import { flashcardExtrasKey, flashcardExtrasShard, isValidFlashcardExtrasRow, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
+import { lessonExtras, flashcardExtrasKey, flashcardExtrasShard, isValidFlashcardExtrasRow, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
 import type { Flashcard } from '../../src/data/flashcards';
 
 test('course and saved-word lookups fetch only their derivative shards, not source corpora', async () => {
@@ -23,7 +23,7 @@ test('course and saved-word lookups fetch only their derivative shards, not sour
   }) as typeof fetch;
   try {
     const packed = await fetchPackedFlashcardExtras(card);
-    assert.deepEqual(packed, { examples: course.examples, wordHook: course.wordHook });
+    assert.deepEqual(packed, lessonExtras(course));
     const hook = await fetchPackedFlashcardExtras(saved);
     assert.ok(hook?.wordHook);
     assert.deepEqual(hook.examples, []);

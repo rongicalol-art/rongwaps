@@ -50,14 +50,19 @@ test('protected content auth checks database beta access with a request-scoped t
     assert.equal((await authorize()).status, 401);
     assert.equal((await authorize('school-fixture')).continued, true);
     assert.equal(authChecksOverlapped, true, 'user and beta-access checks should start concurrently');
-    assert.equal((await authorize('school-fixture')).locals.userId, 'fixture');
+    // Parallel and repeat requests with a verified token reuse one check.
+    const burst = await Promise.all([authorize('school-fixture'), authorize('school-fixture')]);
+    assert.ok(burst.every((state) => state.locals.userId === 'fixture'));
     allowed = false;
     assert.equal((await authorize('personal-fixture')).status, 403);
+    allowed = true;
     rpcStatus = 503;
-    assert.equal((await authorize('school-fixture')).status, 503);
+    assert.equal((await authorize('outage-fixture')).status, 503);
+    rpcStatus = 200;
+    assert.equal((await authorize('outage-fixture')).continued, true, 'failed checks are not cached');
     assert.deepEqual(seenTokens, [
-      'Bearer school-fixture', 'Bearer school-fixture',
-      'Bearer personal-fixture', 'Bearer school-fixture',
+      'Bearer school-fixture', 'Bearer personal-fixture',
+      'Bearer outage-fixture', 'Bearer outage-fixture',
     ]);
   } finally {
     globalThis.fetch = networkFetch;

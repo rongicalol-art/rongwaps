@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 import { brotliCompressSync, gzipSync, constants } from 'node:zlib';
 import type { Plugin } from 'vite';
 import { prepareVocabulary } from '../../src/utils/vocabulary/vocabularyMapping';
-import { flashcardExtrasKey, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
+import { lessonExamples, flashcardExtrasKey, type FlashcardExtrasRow } from '../../src/utils/vocabulary/flashcardExtrasPack';
 import { studyPartKey, type StudyPack, type StudyPart } from '../../src/utils/vocabulary/studyPack';
 import { extractCedictReference, sanitizeDictionaryDefinitions } from '../../shared/dictionaryDefinitions';
 import type { GenericContentManifest } from '../../src/utils/packValidators';
@@ -51,7 +51,7 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
       const signature = flashcardExtrasKey({ ...card, front });
       const row = extras.get(signature);
       if (!row) throw new Error(`Regenerate flashcard extras before building: ${card.id}`);
-      pack.extras.push({ key: signature, wordHook: row.wordHook, examples: row.examples.map(({ rank, ...sentence }) => {
+      pack.extras.push({ key: signature, wordHook: row.wordHook, more: row.examples.length - lessonExamples(row.examples).length || undefined, examples: lessonExamples(row.examples).map(({ rank, ...sentence }) => {
         const text = JSON.stringify(sentence);
         let id = sentenceIds.get(text);
         if (id === undefined) { id = pack.sentences.length; sentenceIds.set(text, id); pack.sentences.push(sentence); }
