@@ -54,15 +54,15 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
 
   return (
     <>
-      <Drawer.Body className="flex flex-col px-4 sm:px-6" >
-        <div onKeyDown={onEnter} className="flex flex-col items-center gap-1 rounded-control bg-ui-canvas px-4 py-6">
+      <Drawer.Body className="flex min-h-0 flex-1 flex-col px-4 sm:px-6">
+        <div onKeyDown={onEnter} className="flex min-h-[320px] flex-1 flex-col items-center justify-center gap-2 rounded-control bg-ui-canvas px-4 py-8">
           <input
             autoFocus
             aria-label="Word"
             value={word}
             onChange={(e) => setWord(e.target.value)}
             onFocus={(e) => e.currentTarget.select()}
-            className="w-full bg-transparent text-center font-chinese text-5xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
+            className="w-full bg-transparent text-center font-chinese text-6xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
             placeholder="字"
           />
           <input
@@ -70,14 +70,14 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
             value={pinyin}
             onChange={(e) => setPinyin(e.target.value)}
             placeholder="pinyin"
-            className="w-full bg-transparent text-center text-base font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
+            className="w-full bg-transparent text-center text-lg font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
           />
           <input
             aria-label="Meaning"
             value={translation}
             onChange={(e) => setTranslation(e.target.value)}
             placeholder="meaning"
-            className="w-full bg-transparent text-center text-base font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
+            className="w-full bg-transparent text-center text-lg font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
           />
         </div>
         <textarea
