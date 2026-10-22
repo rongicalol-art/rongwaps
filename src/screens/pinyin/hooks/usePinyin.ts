@@ -2,6 +2,8 @@ import { useCallback, useMemo, useState } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useCardSession } from '../../../hooks/useCardSession';
+import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
+import { audioService } from '../../../services/audioService';
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 import { getPinyinAnswerVariants, isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
 
@@ -9,6 +11,7 @@ import { getPinyinAnswerVariants, isPinyinAnswerAccepted } from '../../../utils/
 export function usePinyin(activeBookId: number, selectedLessons: number[], isLibraryDeck = false, isReviewDeck = false) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const sessionKey = `${getDeckIdentityKey({
     activeBookId, selectedLessons, selectedLessonParts, libraryActiveFolder, isReviewDeck, isLibraryDeck,
   })}:pinyin`;
@@ -27,18 +30,26 @@ export function usePinyin(activeBookId: number, selectedLessons: number[], isLib
   }, []);
 
   const session = useCardSession(cards, sessionKey, {
-    onSessionReset: resetAnswer,
+    onSessionReset: () => {
+      audioService.stop();
+      resetAnswer();
+    },
     onAnswerStateReset: resetAnswer,
     requeueMissed: false,
   });
   const { currentCard, currentIndex, completed, moveTo } = session;
 
+  useAudioSessionLifecycle(completed);
+
   const check = useCallback(() => {
     if (status !== 'idle' || !currentCard || !input.trim()) return;
     const correct = isPinyinAnswerAccepted(input, currentCard.pinyin);
+    if (correct) {
+      void audioService.playCard(currentCard, pronunciationRate, { overlap: true });
+    }
     setStatus(correct ? 'correct' : 'wrong');
     setResults((current) => currentCard.id in current ? current : { ...current, [currentCard.id]: correct });
-  }, [currentCard, input, status]);
+  }, [currentCard, input, pronunciationRate, status]);
 
   const next = useCallback(() => {
     if (session.advanceOrComplete() === 'advanced') resetAnswer();

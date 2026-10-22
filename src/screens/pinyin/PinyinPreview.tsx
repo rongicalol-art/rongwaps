@@ -5,6 +5,9 @@ import { FeedbackBottomBar } from '../../features/practice';
 import { ScreenLayout } from '../../lib/widgets';
 import { isPinyinAnswerAccepted } from '../../utils/pinyin/pinyinAnswer';
 import { numberToToneMarks } from '../../utils/pinyin/pinyin';
+import { audioService } from '../../services/audioService';
+import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
+import { useAppStore } from '../../store/useAppStore';
 
 const WORDS: Flashcard[] = [
   { id: 'pinyin-preview-1', bookId: 1, lessonId: 1, front: '你好', pinyin: 'ni3 hao3', back: 'hello' },
@@ -19,15 +22,30 @@ export function PinyinPreview() {
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const card = WORDS[index];
   const activeBook = SAMPLE_BOOKS[0];
-  const check = () => {
-    if (status !== 'idle' || !input.trim()) return;
-    setStatus(isPinyinAnswerAccepted(input, card.pinyin) ? 'correct' : 'wrong');
-  };
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
+  const autoAdvance = status === 'correct' && autoAdvanceCorrect;
+
   const next = () => {
     setIndex((current) => (current + 1) % WORDS.length);
     setInput('');
     setStatus('idle');
   };
+
+  const check = () => {
+    if (status !== 'idle' || !input.trim()) return;
+    const isCorrect = isPinyinAnswerAccepted(input, card.pinyin);
+    if (isCorrect) {
+      void audioService.playCard(card, pronunciationRate, { overlap: true });
+    }
+    setStatus(isCorrect ? 'correct' : 'wrong');
+  };
+
+  usePracticeAnswerAutomation({
+    status,
+    onAdvance: next,
+    advanceWrong: false,
+  });
 
   return (
     <section className="flex flex-col gap-4">
@@ -67,6 +85,7 @@ export function PinyinPreview() {
           onContinue={next}
           onCheck={check}
           isCheckDisabled={!input.trim()}
+          hideWhenAutoAdvance={autoAdvance}
           activeBook={activeBook}
         />
       </div>

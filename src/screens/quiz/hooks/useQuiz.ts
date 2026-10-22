@@ -7,6 +7,7 @@ import { isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
+import { audioService } from '../../../services/audioService';
 
 /**
  * Manages a multiple-choice quiz session.
@@ -152,17 +153,17 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
 
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
-  const { answerAudioPlaying, playWord, stopAnswerAudio } = useQuizAnswerAudio();
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
 
   const session = useCardSession(cards, sessionKey, {
     requeueMissed: false,
     onSessionReset: () => {
-      stopAnswerAudio();
+      audioService.stop();
       setInput('');
       setStatus('idle');
     },
     onAnswerStateReset: () => {
-      stopAnswerAudio();
+      audioService.stop();
       setInput('');
       setStatus('idle');
     },
@@ -175,7 +176,6 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     if (!answerValue.trim()) return;
 
     if (status !== 'idle') {
-      stopAnswerAudio();
       const outcome = session.advanceOrComplete();
       if (outcome === 'advanced') {
         session.clearGrading();
@@ -189,7 +189,9 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     if (!session.beginGrading()) return;
 
     const isCorrect = isPinyinAnswerAccepted(answerValue, currentCard.pinyin);
-    if (isCorrect) playWord(currentCard);
+    if (isCorrect) {
+      void audioService.playCard(currentCard, pronunciationRate, { overlap: true });
+    }
 
     setStatus(isCorrect ? 'correct' : 'wrong');
     session.recordAnswer(currentCard, isCorrect ? 4 : 2);
@@ -202,7 +204,7 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     input,
     handleInputChange: setInput,
     status,
-    answerAudioPlaying,
+    answerAudioPlaying: false,
     handleCheck,
     completed,
     resumedReview: session.resumedReview,

@@ -135,20 +135,22 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizFormat = useAppStore((state) => state.quizFormat);
-  const advance = useCallback(() => {
+  const advance = useCallback((explicit = false) => {
     if (preparation) return;
     // An explicit Continue interrupts audio, including a recording still loading.
-    audioService.stop();
+    if (explicit) {
+      audioService.stop();
+    }
     handleCheck();
   }, [handleCheck, preparation]);
 
-  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !replayAudioAfterAnswer && !onCheck;
+  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && (!replayAudioAfterAnswer || mode === 'quiz-typing') && !onCheck;
 
   usePracticeAnswerAutomation({
     status,
-    onAdvance: advance,
+    onAdvance: () => advance(false),
     advanceWrong: false,
-    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || answerAudioPlaying,
+    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || (mode !== 'quiz-typing' && answerAudioPlaying),
   });
   const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
   const partSegments = useMemo(
@@ -332,7 +334,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         correctAnswer={correctAnswer}
         pinyin={pinyin}
         word={word}
-        onContinue={advance}
+        onContinue={() => advance(true)}
         onCheck={onCheck}
         showCheck={Boolean(onCheck)}
         isCheckDisabled={isCheckDisabled}

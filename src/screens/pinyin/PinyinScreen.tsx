@@ -5,6 +5,8 @@ import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { ActionButton, AppIcon, EmptyState, PlayfulNavIcon, ScreenLayout } from '../../lib/widgets';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
+import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
+import { useAppStore } from '../../store/useAppStore';
 import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { numberToToneMarks } from '../../utils/pinyin/pinyin';
@@ -63,6 +65,16 @@ export function PinyinScreen({
     onShuffleClick: toggleShuffle,
     onRestartClick: restartRound,
     isShuffled,
+  });
+
+  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
+  const autoAdvance = status === 'correct' && autoAdvanceCorrect;
+
+  usePracticeAnswerAutomation({
+    status,
+    onAdvance: next,
+    advanceWrong: false,
+    blocked: Boolean(breakdown),
   });
 
   useEffect(() => {
@@ -182,6 +194,7 @@ export function PinyinScreen({
         onContinue={next}
         onCheck={check}
         isCheckDisabled={!input.trim()}
+        hideWhenAutoAdvance={autoAdvance}
         keyboardShortcutDisabled={Boolean(breakdown)}
         onBreakdown={() => setBreakdown(currentCard.front)}
         activeBook={activeBook}
