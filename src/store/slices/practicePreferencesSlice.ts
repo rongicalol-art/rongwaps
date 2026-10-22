@@ -96,7 +96,7 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   repeatMistakes: 'off',
   pronunciationRate: 1,
   autoPlayAudio: true,
-  replayAudioAfterAnswer: true,
+  replayAudioAfterAnswer: false,
   speakDefinition: true,
   showPinyin: true,
   toneColors: true,

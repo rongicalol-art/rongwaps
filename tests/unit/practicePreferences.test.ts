@@ -10,6 +10,14 @@ test('example-sentence pinyin is hidden by default', () => {
   assert.equal(DEFAULT_PREFERENCES.hideExamplePinyin, true);
 });
 
+test('replay audio after answering is disabled by default', () => {
+  assert.equal(DEFAULT_PREFERENCES.replayAudioAfterAnswer, false);
+  assert.equal(
+    selectPracticePreferences(useAppStore.getState()).replayAudioAfterAnswer,
+    false,
+  );
+});
+
 test('hideExamplePinyin is part of the persisted practice preferences', () => {
   const selected = selectPracticePreferences(useAppStore.getState());
   assert.equal(selected.hideExamplePinyin, true);
