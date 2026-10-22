@@ -50,13 +50,15 @@ export function checkSlotBuild(item: SlotBuildItem, placed: Record<string, strin
   const wrong = item.gaps
     ? slots.filter((slot) => placed[slot.id] && !slot.answers.includes(placed[slot.id] ?? ''))
     : slots.filter((slot) => !slot.answers.includes(placed[slot.id] ?? ''));
-  if (wrong.length === 0) return { correct: true, note: item.successNote, mark: [] };
+  const complete = slotBuildSolutions(item).some((solution) =>
+    Object.entries(solution).every(([id, word]) => placed[id] === word));
+  if (wrong.length === 0 && complete) return { correct: true, note: item.successNote, mark: [] };
   const order = slots.map((slot) => placed[slot.id] ?? '');
   const repair = matchRepair(item.repairs, { order, slots: placed });
   return {
     correct: false,
     note: repair?.note ?? item.fallbackRepair,
-    title: repair?.title,
+    title: repair?.title ?? (wrong.length === 0 ? 'Keep going' : undefined),
     mark: repair?.mark ?? wrong.map((slot) => placed[slot.id] ?? ''),
   };
 }

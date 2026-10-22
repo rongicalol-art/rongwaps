@@ -723,7 +723,7 @@
             "placed": [
               "叫"
             ],
-            "note": "叫 is a verb, just like 姓. Two verbs can’t stand side by side: 姓 already says “the surname is”."
+            "note": "姓 already gives his surname; replacing 是 with 叫 still does not express “His surname is Li”."
           },
           {
             "placed": [
@@ -1230,7 +1230,7 @@
           "pinyin": "Zhōngmíng xìng Wáng ma?",
           "english": "Is Zhongming surnamed Wang?"
         },
-        "prompt": "Where does 嗎 go?",
+        "prompt": "Ask whether Zhongming’s surname is Wang.",
         "gaps": true
       },
       {

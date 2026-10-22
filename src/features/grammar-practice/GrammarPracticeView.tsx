@@ -2,9 +2,7 @@ import { useCallback, useRef, useState, type ComponentType } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { GrammarPractice, GrammarWordToken } from '../../types/models';
 import { PracticeDock } from './components/PracticeDock';
-import { sceneFirstPicture } from './components/PictureScene';
 import { PRACTICE_EXERCISES } from './exercises';
-import { orderBuildHeading } from './exercises/OrderBuildExercise';
 import { ITEM_FADE } from './practiceMotion';
 import type { PracticeExerciseProps, PracticeResult, PracticeScript, PracticeStatus } from './practiceTypes';
 
@@ -49,12 +47,6 @@ export function GrammarPracticeView({
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
   const inlineBank = item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
-  // This source-checked clock pair supplies the time context visually. Keep its written explanation in the hint.
-  const clockReading = item.id === 'l8g5-p2' || ('scene' in item && item.scene?.type === 'countdown' && Boolean(item.scene.now.time && item.scene.next.time));
-  const dialogueReply = item.kind === 'chat-build' || (item.kind === 'slot-build' && item.lines.some((line) => line.me));
-  const sceneFirst = 'scene' in item && item.scene?.type === 'picture' && Boolean(sceneFirstPicture(item.scene));
-  const heading = sceneFirst ? (item.kind === 'order-build' ? (item.sub ? 'Your reply' : 'Build the sentence') : 'Drag and place') : clockReading ? 'Complete the sentence' : item.kind === 'order-build' ? orderBuildHeading(item) : item.kind === 'spot-fix' ? 'Which is right?' : dialogueReply ? (item.kind === 'slot-build' && item.gaps ? 'Drag and place' : 'Your reply') : item.prompt;
-  const context = clockReading && !sceneFirst ? item.prompt : undefined;
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);
@@ -98,8 +90,7 @@ export function GrammarPracticeView({
       <header className="flex flex-col gap-1">
         <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
         {/* The item's own question is the title; the book's general instruction only when an item has none. */}
-        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{heading ?? practice.title}</h1>
-        {context && <p className="mt-2 text-base font-extrabold text-ui-muted-strong">{context}</p>}
+        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{item.prompt ?? practice.title}</h1>
       </header>
 
       <AnimatePresence mode="wait" initial={false}>

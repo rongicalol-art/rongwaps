@@ -1365,284 +1365,171 @@
       {
         "id": "l8g3-p1",
         "source": "p.193 #1",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "before",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "他是",
-                "simplified": "他是"
-              },
-              {
-                "type": "slot",
-                "id": "middle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "韓國人",
-                "simplified": "韩国人"
-              },
-              {
-                "type": "slot",
-                "id": "answer",
-                "answers": [
-                  "吧"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "？",
-                "simplified": "？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            },
-            "me": true
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "是啊，他是韓國人。",
-                "simplified": "是啊，他是韩国人。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": false
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "You see a Korean passport. Ask him to confirm your guess that he is Korean, using 吧.",
         "tiles": [
           {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "韓國人",
+            "pinyin": "Hánguó rén",
+            "simplified": "韩国人"
+          },
+          {
+            "traditional": "他",
+            "pinyin": "Tā"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
             "traditional": "吧",
-            "simplified": "吧",
             "pinyin": "ba"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "是",
+              "韓國人",
+              "吧"
+            ],
+            "sentence": {
+              "traditional": "他是韓國人吧？",
+              "pinyin": "Tā shì Hánguó rén ba?",
+              "english": "He is Korean, right?",
+              "simplified": "他是韩国人吧？"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "before",
-              "tile": "吧"
-            },
-            "note": "Put 吧 after the whole statement, before the question mark."
-          },
-          {
-            "slot": {
-              "id": "middle",
-              "tile": "吧"
-            },
-            "note": "Keep 他是韓國人 together and put 吧 at the end."
+            "placed": [
+              "嗎"
+            ],
+            "title": "Try the requested meaning",
+            "note": "他是韓國人嗎 is a neutral question; 吧 asks for confirmation of the guess you already have."
           }
         ],
-        "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
-        "result": {
-          "traditional": "他是韓國人吧？",
-          "pinyin": "Tā shì Hánguó rén ba?",
-          "english": "He is Korean, right?",
-          "simplified": "他是韩国人吧？"
-        },
-        "gaps": true,
-        "prompt": "You see a Korean passport in his hand. Where does 吧 go?"
+        "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+        "sub": "B replies afterward: 是啊，他是韓國人。"
       },
       {
         "id": "l8g3-p2",
         "source": "p.193 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "before",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "你喜歡",
-                "simplified": "你喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "middle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "喝咖啡",
-                "simplified": "喝咖啡"
-              },
-              {
-                "type": "slot",
-                "id": "answer",
-                "answers": [
-                  "吧"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "？",
-                "simplified": "？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            },
-            "me": true
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "喜歡，我每天早上都一定要喝。",
-                "simplified": "喜欢，我每天早上都一定要喝。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": false
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "Your friend always carries coffee. Check your guess that they like drinking it, using 吧.",
         "tiles": [
           {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "喝咖啡",
+            "pinyin": "hē kāfēi"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "Nǐ"
+          },
+          {
+            "traditional": "喜歡",
+            "pinyin": "xǐhuān",
+            "simplified": "喜欢"
+          },
+          {
             "traditional": "吧",
-            "simplified": "吧",
             "pinyin": "ba"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "喜歡",
+              "喝咖啡",
+              "吧"
+            ],
+            "sentence": {
+              "traditional": "你喜歡喝咖啡吧？",
+              "pinyin": "Nǐ xǐhuān hē kāfēi ba?",
+              "english": "You like drinking coffee, right?",
+              "simplified": "你喜欢喝咖啡吧？"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "before",
-              "tile": "吧"
-            },
-            "note": "Put 吧 after the whole statement, before the question mark."
-          },
-          {
-            "slot": {
-              "id": "middle",
-              "tile": "吧"
-            },
-            "note": "Keep 你喜歡喝咖啡 together and put 吧 at the end."
+            "placed": [
+              "嗎"
+            ],
+            "title": "Try the requested meaning",
+            "note": "嗎 asks a neutral question; 吧 checks the guess suggested by your friend’s coffee habit."
           }
         ],
-        "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
-        "result": {
-          "traditional": "你喜歡喝咖啡吧？",
-          "pinyin": "Nǐ xǐhuān hē kāfēi ba?",
-          "english": "You like drinking coffee, right?",
-          "simplified": "你喜欢喝咖啡吧？"
-        },
-        "gaps": true,
-        "prompt": "Your friend always carries coffee. Where does 吧 go?"
+        "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+        "sub": "B replies afterward: 喜歡，我每天早上都一定要喝。"
       },
       {
         "id": "l8g3-p3",
         "source": "p.193 #3",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "before",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "你會",
-                "simplified": "你会"
-              },
-              {
-                "type": "slot",
-                "id": "middle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "打籃球",
-                "simplified": "打篮球"
-              },
-              {
-                "type": "slot",
-                "id": "answer",
-                "answers": [
-                  "吧"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "？",
-                "simplified": "？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            },
-            "me": true
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "不會，可是我會打網球。",
-                "simplified": "不会，可是我会打网球。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": false
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "Your friend carries basketball shoes and a ball. Check your guess that they can play, using 吧.",
         "tiles": [
           {
+            "traditional": "嗎",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "打籃球",
+            "pinyin": "dǎ lánqiú",
+            "simplified": "打篮球"
+          },
+          {
+            "traditional": "你",
+            "pinyin": "Nǐ"
+          },
+          {
+            "traditional": "會",
+            "pinyin": "huì",
+            "simplified": "会"
+          },
+          {
             "traditional": "吧",
-            "simplified": "吧",
             "pinyin": "ba"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "會",
+              "打籃球",
+              "吧"
+            ],
+            "sentence": {
+              "traditional": "你會打籃球吧？",
+              "pinyin": "Nǐ huì dǎ lánqiú ba?",
+              "english": "You can play basketball, right?",
+              "simplified": "你会打篮球吧？"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "before",
-              "tile": "吧"
-            },
-            "note": "Put 吧 after the whole statement, before the question mark."
-          },
-          {
-            "slot": {
-              "id": "middle",
-              "tile": "吧"
-            },
-            "note": "Keep 你會打籃球 together and put 吧 at the end."
+            "placed": [
+              "嗎"
+            ],
+            "title": "Try the requested meaning",
+            "note": "嗎 asks whether they can play; 吧 asks them to confirm your guess from the basketball gear."
           }
         ],
-        "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
-        "result": {
-          "traditional": "你會打籃球吧？",
-          "pinyin": "Nǐ huì dǎ lánqiú ba?",
-          "english": "You can play basketball, right?",
-          "simplified": "你会打篮球吧？"
-        },
-        "gaps": true,
-        "prompt": "Your friend has a basketball and basketball shoes. Where does 吧 go?"
+        "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+        "sub": "B replies afterward: 不會，可是我會打網球。"
       },
       {
         "id": "l8g3-own-sort",
@@ -1994,66 +1881,60 @@
       {
         "id": "l8g4-own1",
         "source": "own",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我",
-                "simplified": "我"
-              },
-              {
-                "type": "slot",
-                "id": "before",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "穿穿",
-                "simplified": "穿穿"
-              },
-              {
-                "type": "slot",
-                "id": "answer",
-                "answers": [
-                  "看"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "The skirt is on the counter. Say you will try it on and see.",
         "tiles": [
           {
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
+          {
+            "traditional": "穿",
+            "pinyin": "chuan"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "Wǒ"
+          },
+          {
+            "traditional": "穿",
+            "pinyin": "chuān"
+          },
+          {
             "traditional": "看",
-            "simplified": "看",
             "pinyin": "kàn"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "穿",
+              "穿",
+              "看"
+            ],
+            "sentence": {
+              "traditional": "我穿穿看。",
+              "simplified": "我穿穿看。",
+              "pinyin": "Wǒ chuān chuan kàn.",
+              "english": "I will try it on and see."
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "before",
-              "tile": "看"
-            },
-            "note": "Put 看 after 穿穿: the repeated action comes before 看."
+            "placed": [
+              "喝"
+            ],
+            "title": "Try the requested meaning",
+            "note": "喝喝看 means trying a drink; 穿穿看 means trying on the skirt."
           }
         ],
-        "fallbackRepair": "Put 看 after 穿穿: the repeated action comes before 看.",
-        "result": {
-          "traditional": "我穿穿看。",
-          "simplified": "我穿穿看。",
-          "pinyin": "Wǒ chuān chuan kàn.",
-          "english": "I will try it on and see."
-        },
-        "gaps": true,
-        "prompt": "The skirt is on the counter. Say you’ll try it on: where does 看 go?"
+        "fallbackRepair": "Repeat 穿, then add 看: 穿穿看 means try it on and see."
       }
     ],
     "allowWords": [

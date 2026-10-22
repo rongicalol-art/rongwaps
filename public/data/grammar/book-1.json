@@ -1603,7 +1603,7 @@
                     "placed": [
                       "叫"
                     ],
-                    "note": "叫 is a verb, just like 姓. Two verbs can’t stand side by side: 姓 already says “the surname is”."
+                    "note": "姓 already gives his surname; replacing 是 with 叫 still does not express “His surname is Li”."
                   },
                   {
                     "placed": [
@@ -3366,7 +3366,7 @@
                   "pinyin": "Zhōngmíng xìng Wáng ma?",
                   "english": "Is Zhongming surnamed Wang?"
                 },
-                "prompt": "Where does 嗎 go?",
+                "prompt": "Ask whether Zhongming’s surname is Wang.",
                 "gaps": true
               },
               {
@@ -10067,7 +10067,7 @@
                   "english": "Mom’s birthday is February 24."
                 },
                 "gaps": true,
-                "prompt": "Where does 的 go?"
+                "prompt": "Say that Mom’s birthday is February 24."
               },
               {
                 "id": "l2g04-2",
@@ -10161,7 +10161,7 @@
                   "english": "Do you like Taiwanese fruit?"
                 },
                 "gaps": true,
-                "prompt": "Where does 的 go?"
+                "prompt": "Ask whether your friend likes Taiwanese fruit. Link Taiwan to the fruit with 的."
               },
               {
                 "id": "l2g04-3",
@@ -10248,7 +10248,7 @@
                   "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
                   "english": "My child is going to the United States tomorrow."
                 },
-                "prompt": "Where does 的 go?",
+                "prompt": "Say that your child is going to the United States tomorrow. Include 的 after “my”.",
                 "gaps": true
               }
             ],
@@ -12285,7 +12285,7 @@
               {
                 "id": "l2g06-2",
                 "source": "p.62 #2",
-                "prompt": "Ask whether your friend likes eating fruit. The reply comes afterward.",
+                "prompt": "Ask whether your friend likes eating fruit. Use a verb–not–verb question.",
                 "kind": "order-build",
                 "sub": "B replies afterward: 我很喜歡吃。",
                 "tiles": [
@@ -12350,7 +12350,7 @@
               {
                 "id": "l2g06-3",
                 "source": "p.62 #3",
-                "prompt": "Ask whether your friend wants to go to his home. The reply comes afterward.",
+                "prompt": "Ask whether your friend wants to go to his home. Use a verb–not–verb question.",
                 "kind": "order-build",
                 "sub": "B replies afterward: 我不要去他家。",
                 "tiles": [
@@ -21621,296 +21621,119 @@
               {
                 "id": "l3-g5-book-1",
                 "source": "p.85 #1",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "這五枝筆",
-                        "simplified": "这五枝笔"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "all",
-                        "answers": [
-                          "都"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "很",
-                        "simplified": "很"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "貴",
-                        "simplified": "贵"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。",
-                        "simplified": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say that all five pens are expensive.",
                 "tiles": [
                   {
+                    "traditional": "沒有",
+                    "pinyin": "méiyǒu",
+                    "simplified": "没有"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
+                    "traditional": "這五枝筆",
+                    "pinyin": "Zhè wǔ zhī bǐ",
+                    "simplified": "这五枝笔"
+                  },
+                  {
                     "traditional": "都",
-                    "simplified": "都",
                     "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "貴",
+                    "pinyin": "guì",
+                    "simplified": "贵"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "這五枝筆",
+                      "都",
+                      "很",
+                      "貴"
+                    ],
+                    "sentence": {
+                      "traditional": "這五枝筆都很貴。",
+                      "simplified": "这五枝笔都很贵。",
+                      "pinyin": "Zhè wǔ zhī bǐ dōu hěn guì.",
+                      "english": "These five pens are all expensive."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 after the whole group 這五枝筆, before its description."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 before 很貴, without splitting the description."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-3",
-                      "tile": "都"
-                    },
-                    "note": "都 comes before the description 很貴, not at the end of the sentence."
+                    "placed": [
+                      "沒有"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "沒有很貴 says the pens are not very expensive; the task says every pen is expensive, with 都很貴."
                   }
                 ],
-                "fallbackRepair": "Put 都 after the whole group and before its description or verb.",
-                "result": {
-                  "traditional": "這五枝筆都很貴。",
-                  "simplified": "这五枝笔都很贵。",
-                  "pinyin": "Zhè wǔ zhī bǐ dōu hěn guì.",
-                  "english": "These five pens are all expensive."
-                },
-                "prompt": "Each of the five pens costs a lot; tap where 都 goes.",
-                "gaps": true
+                "fallbackRepair": "Put 都 after the subject and before the verb to include every item."
               },
               {
                 "id": "l3-g5-book-2",
                 "source": "p.85 #2",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "這四個人",
-                        "simplified": "这四个人"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "all",
-                        "answers": [
-                          "都"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "是",
-                        "simplified": "是"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我的同學",
-                        "simplified": "我的同学"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。",
-                        "simplified": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say that all four people are your classmates.",
                 "tiles": [
                   {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  },
+                  {
+                    "traditional": "這四個人",
+                    "pinyin": "Zhè sì ge rén",
+                    "simplified": "这四个人"
+                  },
+                  {
                     "traditional": "都",
-                    "simplified": "都",
                     "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "我的同學",
+                    "pinyin": "wǒ de tóngxué",
+                    "simplified": "我的同学"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "這四個人",
+                      "都",
+                      "是",
+                      "我的同學"
+                    ],
+                    "sentence": {
+                      "traditional": "這四個人都是我的同學。",
+                      "simplified": "这四个人都是我的同学。",
+                      "pinyin": "Zhè sì ge rén dōu shì wǒ de tóngxué.",
+                      "english": "These four people are all my classmates."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 after the whole group 這四個人, before 是."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 before 是, not between 是 and 我的同學."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-3",
-                      "tile": "都"
-                    },
-                    "note": "都 comes before 是我的同學, not at the end of the sentence."
+                    "placed": [
+                      "不"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "不是 would say they are not your classmates; 都是 says every one of the four is your classmate."
                   }
                 ],
-                "fallbackRepair": "Put 都 after the whole group and before its description or verb.",
-                "result": {
-                  "traditional": "這四個人都是我的同學。",
-                  "simplified": "这四个人都是我的同学。",
-                  "pinyin": "Zhè sì ge rén dōu shì wǒ de tóngxué.",
-                  "english": "These four people are all my classmates."
-                },
-                "prompt": "Every person is your classmate; tap where 都 goes.",
-                "gaps": true
+                "fallbackRepair": "Put 都 after the subject and before the verb to include every item."
               },
               {
                 "id": "l3-g5-book-3",
                 "source": "p.85 #3",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "他們",
-                        "simplified": "他们"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "all",
-                        "answers": [
-                          "都"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "不",
-                        "simplified": "不"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喜歡喝",
-                        "simplified": "喜欢喝"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "這種茶",
-                        "simplified": "这种茶"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-4",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。",
-                        "simplified": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "都",
-                    "simplified": "都",
-                    "pinyin": "dōu"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 after 他們 and before 不 to say neither person likes the tea."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "都"
-                    },
-                    "note": "Use 都不 to say neither likes it; 不都 only says that not everyone likes it."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-3",
-                      "tile": "都"
-                    },
-                    "note": "Keep 不喜歡喝這種茶 together and put 都 before 不."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-4",
-                      "tile": "都"
-                    },
-                    "note": "都 comes before 不喜歡喝這種茶, not at the end of the sentence."
-                  }
-                ],
-                "fallbackRepair": "Put 都 before 不 to make clear that neither person likes the tea.",
-                "result": {
-                  "traditional": "他們都不喜歡喝這種茶。",
-                  "simplified": "他们都不喜欢喝这种茶。",
-                  "pinyin": "Tāmen dōu bù xǐhuān hē zhè zhǒng chá.",
-                  "english": "Neither of them likes drinking this kind of tea."
-                },
                 "scene": {
                   "type": "picture",
                   "page": 85,
@@ -21922,8 +21745,71 @@
                   ],
                   "alt": "Both people grimace at the tea in front of them."
                 },
-                "prompt": "Make clear that neither person likes the tea; tap where 都 goes.",
-                "gaps": true
+                "kind": "order-build",
+                "prompt": "Say that neither of them likes drinking this kind of tea.",
+                "tiles": [
+                  {
+                    "traditional": "這種茶",
+                    "pinyin": "zhè zhǒng chá",
+                    "simplified": "这种茶"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "他們",
+                    "pinyin": "Tāmen",
+                    "simplified": "他们"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "喜歡喝",
+                    "pinyin": "xǐhuān hē",
+                    "simplified": "喜欢喝"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "他們",
+                      "都",
+                      "不",
+                      "喜歡喝",
+                      "這種茶"
+                    ],
+                    "sentence": {
+                      "traditional": "他們都不喜歡喝這種茶。",
+                      "simplified": "他们都不喜欢喝这种茶。",
+                      "pinyin": "Tāmen dōu bù xǐhuān hē zhè zhǒng chá.",
+                      "english": "Neither of them likes drinking this kind of tea."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "很不喜歡 means really dislike; 都不 explicitly includes both people, as requested by “neither”."
+                  },
+                  {
+                    "before": [
+                      "不",
+                      "都"
+                    ],
+                    "note": "不都 means “not both”; put 都 before 不 to say that neither person likes the tea."
+                  }
+                ],
+                "fallbackRepair": "Put 都 after the whole subject and before the verb; 都不 means neither person does it."
               }
             ],
             "allowWords": [
@@ -24004,190 +23890,121 @@
               {
                 "id": "l04-g1-book3",
                 "source": "p.96 #3",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "You like both foods. Where does 都 go?",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "Say that you like eating both cake and beef noodles. Put the foods first.",
+                "tiles": [
                   {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你喜歡吃什麼東西？",
-                        "simplified": "你喜欢吃什么东西？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "me": false
+                    "traditional": "喜歡吃",
+                    "pinyin": "xǐhuān chī",
+                    "simplified": "喜欢吃"
                   },
                   {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "蛋糕、牛肉麵，",
-                        "simplified": "蛋糕、牛肉面，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "都"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喜歡吃",
-                        "simplified": "喜欢吃"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "我",
+                    "pinyin": "wǒ"
+                  },
+                  {
+                    "traditional": "蛋糕",
+                    "pinyin": "Dàngāo"
+                  },
+                  {
+                    "traditional": "牛肉麵",
+                    "pinyin": "niúròu miàn",
+                    "simplified": "牛肉面"
+                  },
                   {
                     "traditional": "都",
                     "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "也",
+                    "pinyin": "yě"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "蛋糕",
+                      "牛肉麵",
+                      "我",
+                      "都",
+                      "喜歡吃"
+                    ],
+                    "sentence": {
+                      "traditional": "蛋糕、牛肉麵，我都喜歡吃。",
+                      "pinyin": "Dàngāo, niúròu miàn, wǒ dōu xǐhuān chī.",
+                      "english": "Cake and beef noodles, I like eating both.",
+                      "simplified": "蛋糕、牛肉面，我都喜欢吃。"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "都"
-                    },
-                    "note": "都 belongs with the comment about both foods, after 我."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 before 喜歡吃 to say that the liking covers both foods."
+                    "placed": [
+                      "也"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "也 means “also”; 都 makes clear that you like both foods."
                   }
                 ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "蛋糕、牛肉麵，我都喜歡吃。",
-                  "pinyin": "Dàngāo, niúròu miàn, wǒ dōu xǐhuān chī.",
-                  "english": "Cake and beef noodles, I like eating both.",
-                  "simplified": "蛋糕、牛肉面，我都喜欢吃。"
-                }
+                "fallbackRepair": "Put 都 after the subject and before the verb to include every item.",
+                "sub": "你喜歡吃什麼東西？"
               },
               {
                 "id": "l04-g1-book4",
                 "source": "p.97 #4",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "You like all three gifts. Where does 都 go?",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你喜歡什麼生日禮物？",
-                        "simplified": "你喜欢什么生日礼物？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "me": false
-                  },
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "花、書、蛋糕，",
-                        "simplified": "花、书、蛋糕，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "都"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喜歡",
-                        "simplified": "喜欢"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say that you like all three gifts. Put the gifts first.",
                 "tiles": [
+                  {
+                    "traditional": "也",
+                    "pinyin": "yě"
+                  },
                   {
                     "traditional": "都",
                     "pinyin": "dōu"
+                  },
+                  {
+                    "traditional": "花、書、蛋糕",
+                    "pinyin": "Huā, shū, dàngāo",
+                    "simplified": "花、书、蛋糕"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "wǒ"
+                  },
+                  {
+                    "traditional": "喜歡",
+                    "pinyin": "xǐhuān",
+                    "simplified": "喜欢"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "花、書、蛋糕",
+                      "我",
+                      "都",
+                      "喜歡"
+                    ],
+                    "sentence": {
+                      "traditional": "花、書、蛋糕，我都喜歡。",
+                      "pinyin": "Huā, shū, dàngāo, wǒ dōu xǐhuān.",
+                      "english": "Flowers, books and cakes, I like them all.",
+                      "simplified": "花、书、蛋糕，我都喜欢。"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "都"
-                    },
-                    "note": "都 follows the person 我 rather than standing directly after the list."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "都"
-                    },
-                    "note": "Put 都 before 喜歡 to include all three gifts."
+                    "placed": [
+                      "也"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "也 adds another preference; 都 says that every gift in the list is included."
                   }
                 ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "花、書、蛋糕，我都喜歡。",
-                  "pinyin": "Huā, shū, dàngāo, wǒ dōu xǐhuān.",
-                  "english": "Flowers, books and cakes, I like them all.",
-                  "simplified": "花、书、蛋糕，我都喜欢。"
-                }
+                "fallbackRepair": "Put 都 after the subject and before the verb to include every item.",
+                "sub": "你喜歡什麼生日禮物？"
               }
             ]
           }
@@ -25758,274 +25575,180 @@
               {
                 "id": "l04-g2-book1",
                 "source": "p.98 #1",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "You’d like beef noodles too. Where does 也 go?",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你要吃什麼？",
-                        "simplified": "你要吃什么？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "me": false
-                  },
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我要吃蛋糕，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "也"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "想吃牛肉麵。",
-                        "simplified": "想吃牛肉面。"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say you want cake and would also like beef noodles.",
                 "tiles": [
+                  {
+                    "traditional": "牛肉麵",
+                    "pinyin": "niúròu miàn",
+                    "simplified": "牛肉面"
+                  },
                   {
                     "traditional": "也",
                     "pinyin": "yě"
+                  },
+                  {
+                    "traditional": "我要",
+                    "pinyin": "Wǒ yào"
+                  },
+                  {
+                    "traditional": "吃蛋糕",
+                    "pinyin": "chī dàngāo"
+                  },
+                  {
+                    "traditional": "想吃",
+                    "pinyin": "xiǎng chī"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我要",
+                      "吃蛋糕",
+                      "也",
+                      "想吃",
+                      "牛肉麵"
+                    ],
+                    "sentence": {
+                      "traditional": "我要吃蛋糕，也想吃牛肉麵。",
+                      "pinyin": "Wǒ yào chī dàngāo, yě xiǎng chī niúròu miàn.",
+                      "english": "I want to eat cake and would also like beef noodles.",
+                      "simplified": "我要吃蛋糕，也想吃牛肉面。"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "也"
-                    },
-                    "note": "也 adds the second wish, so put it in the second part of the answer."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "也"
-                    },
-                    "note": "Put 也 before 想吃 rather than after the food."
+                    "placed": [
+                      "都"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "都 means “all”; here 也 adds your second wish, for beef noodles."
                   }
                 ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "我要吃蛋糕，也想吃牛肉麵。",
-                  "pinyin": "Wǒ yào chī dàngāo, yě xiǎng chī niúròu miàn.",
-                  "english": "I want to eat cake and would also like beef noodles.",
-                  "simplified": "我要吃蛋糕，也想吃牛肉面。"
-                }
+                "fallbackRepair": "Put 也 after the subject and before the verb to add the second wish or description.",
+                "sub": "你要吃什麼？"
               },
               {
                 "id": "l04-g2-book2",
                 "source": "p.98 #2",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "The cake is good too. Where does 也 go?",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "The beef noodles are delicious. Say the cake is delicious too.",
+                "tiles": [
                   {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "那家餐廳什麼好吃？",
-                        "simplified": "那家餐厅什么好吃？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "me": false
+                    "traditional": "都",
+                    "pinyin": "dōu"
                   },
                   {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "牛肉麵很好吃，",
-                        "simplified": "牛肉面很好吃，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "蛋糕"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "也"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "很好吃"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
+                    "traditional": "蛋糕",
+                    "pinyin": "dàngāo"
+                  },
                   {
                     "traditional": "也",
                     "pinyin": "yě"
+                  },
+                  {
+                    "traditional": "好吃",
+                    "pinyin": "hǎochī"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "蛋糕",
+                      "也",
+                      "很",
+                      "好吃"
+                    ],
+                    "sentence": {
+                      "traditional": "蛋糕也很好吃。",
+                      "pinyin": "dàngāo yě hěn hǎochī.",
+                      "english": "The cake is delicious too.",
+                      "simplified": "蛋糕也很好吃。"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "也"
-                    },
-                    "note": "Name the second food 蛋糕 before adding 也."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "也"
-                    },
-                    "note": "Put 也 before 很好吃, not after the description."
+                    "placed": [
+                      "都"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "蛋糕 names one food here; 也 adds it to the earlier comment about the noodles."
                   }
                 ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "牛肉麵很好吃，蛋糕也很好吃。",
-                  "pinyin": "Niúròu miàn hěn hǎochī, dàngāo yě hěn hǎochī.",
-                  "english": "The beef noodles are delicious, and the cake is delicious too.",
-                  "simplified": "牛肉面很好吃，蛋糕也很好吃。"
-                }
+                "fallbackRepair": "Put 也 after the subject and before the verb to add the second wish or description.",
+                "sub": "那家餐廳什麼好吃？ 牛肉麵很好吃，"
               },
               {
                 "id": "l04-g2-book3",
                 "source": "p.98 #3",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "Youmei likes cheap things too. Where does 也 go?",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "Zhongming likes buying inexpensive things. Say Youmei does too.",
+                "tiles": [
                   {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "誰喜歡買便宜的東西？",
-                        "simplified": "谁喜欢买便宜的东西？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "me": false
+                    "traditional": "東西",
+                    "pinyin": "dōngxi",
+                    "simplified": "东西"
                   },
                   {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "中明喜歡買便宜的東西，",
-                        "simplified": "中明喜欢买便宜的东西，"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "友美"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "也"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喜歡買便宜的東西",
-                        "simplified": "喜欢买便宜的东西"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "喜歡買",
+                    "pinyin": "xǐhuān mǎi",
+                    "simplified": "喜欢买"
+                  },
+                  {
+                    "traditional": "友美",
+                    "pinyin": "Yǒuměi"
+                  },
                   {
                     "traditional": "也",
                     "pinyin": "yě"
+                  },
+                  {
+                    "traditional": "便宜的",
+                    "pinyin": "piányi de"
+                  },
+                  {
+                    "traditional": "都",
+                    "pinyin": "dōu"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "友美",
+                      "也",
+                      "喜歡買",
+                      "便宜的",
+                      "東西"
+                    ],
+                    "sentence": {
+                      "traditional": "友美也喜歡買便宜的東西。",
+                      "pinyin": "Yǒuměi yě xǐhuān mǎi piányi de dōngxi.",
+                      "english": "Youmei also likes buying inexpensive things.",
+                      "simplified": "友美也喜欢买便宜的东西。"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "也"
-                    },
-                    "note": "Name 友美 before 也 to say who shares the preference."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "也"
-                    },
-                    "note": "Put 也 before 喜歡買 to add Youmei as another person with this preference."
+                    "placed": [
+                      "都"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "With 友美 as the subject, 也 adds her to Zhongming; 都 would need a subject that includes both people."
                   }
                 ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "中明喜歡買便宜的東西，友美也喜歡買便宜的東西。",
-                  "pinyin": "Zhōngmíng xǐhuān mǎi piányi de dōngxi, Yǒuměi yě xǐhuān mǎi piányi de dōngxi.",
-                  "english": "Zhongming likes buying inexpensive things, and Youmei does too.",
-                  "simplified": "中明喜欢买便宜的东西，友美也喜欢买便宜的东西。"
-                }
+                "fallbackRepair": "Put 也 after the subject and before the verb to add the second wish or description.",
+                "sub": "誰喜歡買便宜的東西？ 中明喜歡買便宜的東西，"
               },
               {
                 "id": "l04-g2-own-spot",
@@ -27434,7 +27157,8 @@
                     "mark": [
                       "很"
                     ],
-                    "note": "The task asks for an excessive degree with 太…了, not the neutral description with 很."
+                    "note": "很小 is valid Chinese: “very small”; this task asks for too small, expressed with 太…了.",
+                    "title": "Try the requested meaning"
                   },
                   {
                     "slot": {
@@ -27551,7 +27275,8 @@
                     "mark": [
                       "很"
                     ],
-                    "note": "The task asks for an excessive degree with 太…了, not the neutral description with 很."
+                    "note": "他很累 is valid Chinese: “he is very tired”; this task asks for too tired, expressed with 太…了.",
+                    "title": "Try the requested meaning"
                   },
                   {
                     "slot": {
@@ -27673,7 +27398,8 @@
                     "mark": [
                       "很"
                     ],
-                    "note": "The task asks for an excessive degree with 太…了, not the neutral description with 很."
+                    "note": "很好喝 is valid Chinese: “tastes very good”; this task asks for a strong reaction to how good it tastes, expressed with 太…了.",
+                    "title": "Try the requested meaning"
                   },
                   {
                     "slot": {
@@ -27696,101 +27422,12 @@
                   "pinyin": "Tài hǎohē le, wǒ hé wǒ de péngyou dōu chángcháng hē.",
                   "english": "It tastes so good; my friends and I all drink it often."
                 },
-                "prompt": "Say the milk tea tastes so good that you and your friends drink it often.",
+                "prompt": "Exclaim that the milk tea tastes so good, using 太…了. Then say you and your friends drink it often.",
                 "gaps": true
               },
               {
                 "id": "l04-g3-own1",
                 "source": "own",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "It’s 40°C today. Where does 了 go?",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "今天天氣怎麼樣？",
-                        "simplified": "今天天气怎么样？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "me": false
-                  },
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "今天"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "太"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "熱",
-                        "simplified": "热"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": [
-                          "了"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "me": true
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "了",
-                    "pinyin": "le"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "了"
-                    },
-                    "note": "了 ends the reaction after 熱 rather than following 今天."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-1",
-                      "tile": "了"
-                    },
-                    "note": "了 finishes the reaction after 熱, not before it."
-                  }
-                ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "今天太熱了。",
-                  "pinyin": "Jīntiān tài rè le.",
-                  "english": "It is so hot today.",
-                  "simplified": "今天太热了。"
-                },
                 "scene": {
                   "type": "picture",
                   "page": 98,
@@ -27801,7 +27438,59 @@
                     0.103
                   ],
                   "alt": "A thermometer marked 40°C."
-                }
+                },
+                "kind": "order-build",
+                "prompt": "It is 40°C today. Exclaim how hot it is with 太…了.",
+                "tiles": [
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
+                  },
+                  {
+                    "traditional": "熱",
+                    "pinyin": "rè",
+                    "simplified": "热"
+                  },
+                  {
+                    "traditional": "今天",
+                    "pinyin": "Jīntiān"
+                  },
+                  {
+                    "traditional": "太",
+                    "pinyin": "tài"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "今天",
+                      "太",
+                      "熱",
+                      "了"
+                    ],
+                    "sentence": {
+                      "traditional": "今天太熱了。",
+                      "pinyin": "Jīntiān tài rè le.",
+                      "english": "It is so hot today.",
+                      "simplified": "今天太热了。"
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "很"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "今天很熱 is valid: “It is very hot today”; this task asks for the stronger reaction 太熱了."
+                  }
+                ],
+                "fallbackRepair": "Put 太 before 熱 and 了 after it to make the strong reaction 太熱了.",
+                "sub": "今天天氣怎麼樣？"
               }
             ]
           }
@@ -36601,308 +36290,230 @@
               {
                 "id": "l05-g02-book-1",
                 "source": "p.117 #1",
-                "kind": "slot-build",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "Say that you buy coffee at the café.",
+                "tiles": [
                   {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你在哪裡買咖啡？"
-                      }
-                    ],
-                    "me": false
+                    "traditional": "是",
+                    "pinyin": "shì"
                   },
                   {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "在"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "咖啡廳"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "買咖啡"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "咖啡廳",
+                    "pinyin": "kāfēitīng"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "Wǒ"
+                  },
                   {
                     "traditional": "在",
                     "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "買咖啡",
+                    "pinyin": "mǎi kāfēi"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我",
+                      "在",
+                      "咖啡廳",
+                      "買咖啡"
+                    ],
+                    "sentence": {
+                      "traditional": "我在咖啡廳買咖啡。",
+                      "pinyin": "Wǒ zài kāfēitīng mǎi kāfēi.",
+                      "english": "I buy coffee at the café."
+                    }
+                  },
+                  {
+                    "order": [
+                      "在",
+                      "咖啡廳",
+                      "我",
+                      "買咖啡"
+                    ],
+                    "sentence": {
+                      "traditional": "在咖啡廳我買咖啡。",
+                      "pinyin": "Zài kāfēitīng wǒ mǎi kāfēi.",
+                      "english": "I buy coffee at the café."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "在"
-                    },
-                    "note": "Put 我 first, then 在 before the café location."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "在"
-                    },
-                    "note": "Put 在 before 咖啡廳, not between the place and 買咖啡."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-3",
-                      "tile": "在"
-                    },
-                    "note": "Put 在 before 咖啡廳 so the place comes before the action."
+                    "placed": [
+                      "是"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "我是咖啡廳 would identify you as a café; 在咖啡廳 says where you buy coffee."
                   }
                 ],
-                "fallbackRepair": "Drag 在 to where it goes in the reply.",
-                "result": {
-                  "traditional": "我在咖啡廳買咖啡。",
-                  "pinyin": "Wǒ zài kāfēitīng mǎi kāfēi.",
-                  "english": "I buy coffee at the café."
-                },
-                "prompt": "Where do you buy coffee? Where does 在 go?",
-                "gaps": true
+                "fallbackRepair": "Put 在 before the place and the action after the place.",
+                "sub": "你在哪裡買咖啡？"
               },
               {
                 "id": "l05-g02-book-2",
                 "source": "p.117 #2",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你喜歡在家做什麼？"
-                      }
-                    ],
-                    "me": false
-                  },
-                  {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我喜歡"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "在"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "家"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "看書"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say that you like reading at home.",
                 "tiles": [
+                  {
+                    "traditional": "看書",
+                    "pinyin": "kànshū"
+                  },
                   {
                     "traditional": "在",
                     "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "Wǒ"
+                  },
+                  {
+                    "traditional": "喜歡",
+                    "pinyin": "xǐhuan"
+                  },
+                  {
+                    "traditional": "家",
+                    "pinyin": "jiā"
+                  },
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我",
+                      "喜歡",
+                      "在",
+                      "家",
+                      "看書"
+                    ],
+                    "sentence": {
+                      "traditional": "我喜歡在家看書。",
+                      "pinyin": "Wǒ xǐhuan zài jiā kànshū.",
+                      "english": "I like reading at home."
+                    }
+                  },
+                  {
+                    "order": [
+                      "我",
+                      "在",
+                      "家",
+                      "喜歡",
+                      "看書"
+                    ],
+                    "sentence": {
+                      "traditional": "我在家喜歡看書。",
+                      "pinyin": "Wǒ zài jiā xǐhuan kànshū.",
+                      "english": "I like reading at home."
+                    }
+                  },
+                  {
+                    "order": [
+                      "在",
+                      "家",
+                      "我",
+                      "喜歡",
+                      "看書"
+                    ],
+                    "sentence": {
+                      "traditional": "在家我喜歡看書。",
+                      "pinyin": "Zài jiā wǒ xǐhuan kànshū.",
+                      "english": "I like reading at home."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "在"
-                    },
-                    "note": "Keep 我喜歡 first, then put 在 before 家."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "在"
-                    },
-                    "note": "Put 在 before 家, not before 看書."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-3",
-                      "tile": "在"
-                    },
-                    "note": "Put 在家 before 看書 to give the location of reading."
+                    "placed": [
+                      "是"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "在家 gives the location of reading; 是 identifies something and cannot replace 在 here."
                   }
                 ],
-                "fallbackRepair": "Drag 在 to where it goes in the reply.",
-                "result": {
-                  "traditional": "我喜歡在家看書。",
-                  "pinyin": "Wǒ xǐhuan zài jiā kànshū.",
-                  "english": "I like reading at home."
-                },
-                "prompt": "What do you like doing at home? Where does 在 go?",
-                "gaps": true
+                "fallbackRepair": "Put 在 before the place and the action after the place.",
+                "sub": "你喜歡在家做什麼？"
               },
               {
                 "id": "l05-g02-book-3",
                 "source": "p.117 #3",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你今天要在家吃晚飯嗎？"
-                      }
-                    ],
-                    "me": false
-                  },
-                  {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我今天不"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "在"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "家"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "吃晚飯"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say that you are not eating dinner at home today.",
                 "tiles": [
+                  {
+                    "traditional": "吃晚飯",
+                    "pinyin": "chī wǎnfàn"
+                  },
                   {
                     "traditional": "在",
                     "pinyin": "zài"
+                  },
+                  {
+                    "traditional": "我今天",
+                    "pinyin": "Wǒ jīntiān"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bú"
+                  },
+                  {
+                    "traditional": "家",
+                    "pinyin": "jiā"
+                  },
+                  {
+                    "traditional": "沒有",
+                    "pinyin": "méiyǒu",
+                    "simplified": "没有"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我今天",
+                      "不",
+                      "在",
+                      "家",
+                      "吃晚飯"
+                    ],
+                    "sentence": {
+                      "traditional": "我今天不在家吃晚飯。",
+                      "pinyin": "Wǒ jīntiān bú zài jiā chī wǎnfàn.",
+                      "english": "I am not eating dinner at home today."
+                    }
+                  },
+                  {
+                    "order": [
+                      "我今天",
+                      "在",
+                      "家",
+                      "不",
+                      "吃晚飯"
+                    ],
+                    "sentence": {
+                      "traditional": "我今天在家不吃晚飯。",
+                      "pinyin": "Wǒ jīntiān zài jiā bù chī wǎnfàn.",
+                      "english": "At home today, I am not eating dinner."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "在"
-                    },
-                    "note": "Keep 我今天不 first, then put 在 before 家."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "在"
-                    },
-                    "note": "在 goes right before the place: 不在家, not 不家在."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-3",
-                      "tile": "在"
-                    },
-                    "note": "在 goes right before the place, so 不在家 comes before the action 吃晚飯."
+                    "placed": [
+                      "沒有"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "沒有 would describe an event that did not happen; 不在家吃晚飯 states today’s plan."
                   }
                 ],
-                "fallbackRepair": "Drag 在 to where it goes in the reply.",
-                "result": {
-                  "traditional": "我今天不在家吃晚飯。",
-                  "pinyin": "Wǒ jīntiān bú zài jiā chī wǎnfàn.",
-                  "english": "I am not eating dinner at home today."
-                },
-                "prompt": "You’re not eating at home tonight. Where does 在 go?",
-                "gaps": true
+                "fallbackRepair": "Put 在 before the place and the action after the place.",
+                "sub": "你今天要在家吃晚飯嗎？"
               },
               {
                 "id": "l05-g02-own-order",
@@ -38252,78 +37863,6 @@
               {
                 "id": "l05-g03-book-1",
                 "source": "p.118 #1",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "這枝筆太貴，你"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "買"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "便宜的"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": [
-                          "吧"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "吧",
-                    "pinyin": "ba"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the whole recommendation, not before 買."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-1",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 買便宜的 together and put 吧 at the end."
-                  }
-                ],
-                "fallbackRepair": "Drag 吧 to where it goes in the reply.",
-                "result": {
-                  "traditional": "這枝筆太貴，你買便宜的吧。",
-                  "pinyin": "Zhè zhī bǐ tài guì, nǐ mǎi piányí de ba.",
-                  "english": "This pen is too expensive; buy the cheaper one."
-                },
                 "scene": {
                   "type": "picture",
                   "page": 118,
@@ -38335,108 +37874,60 @@
                   ],
                   "alt": "Two pens, one priced $100 and the other $50."
                 },
-                "prompt": "Suggest the cheaper pen. Where does 吧 go?",
-                "gaps": true
-              },
-              {
-                "id": "l05-g03-book-2",
-                "source": "p.118 #2",
-                "kind": "slot-build",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "This pen is too expensive. Suggest buying the cheaper one, using 吧.",
+                "tiles": [
                   {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "今天好冷。"
-                      }
-                    ],
-                    "me": false
+                    "traditional": "嗎",
+                    "pinyin": "ma"
                   },
                   {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "你"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喝"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "熱咖啡"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": [
-                          "吧"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "便宜的",
+                    "pinyin": "piányí de"
+                  },
+                  {
+                    "traditional": "你",
+                    "pinyin": "nǐ"
+                  },
+                  {
+                    "traditional": "買",
+                    "pinyin": "mǎi"
+                  },
                   {
                     "traditional": "吧",
                     "pinyin": "ba"
                   }
                 ],
-                "repairs": [
+                "accepted": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the whole suggestion, not before 你."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-1",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the drink suggestion, not between 你 and 喝."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 喝熱咖啡 together and put 吧 at the end."
+                    "order": [
+                      "你",
+                      "買",
+                      "便宜的",
+                      "吧"
+                    ],
+                    "sentence": {
+                      "traditional": "你買便宜的吧。",
+                      "pinyin": "nǐ mǎi piányí de ba.",
+                      "english": "Buy the cheaper one."
+                    }
                   }
                 ],
-                "fallbackRepair": "Drag 吧 to where it goes in the reply.",
-                "result": {
-                  "traditional": "你喝熱咖啡吧。",
-                  "pinyin": "Nǐ hē rè kāfēi ba.",
-                  "english": "Have some hot coffee."
-                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "買便宜的嗎 asks a question; 買便宜的吧 makes the suggestion requested here."
+                  }
+                ],
+                "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+                "sub": "這枝筆太貴，"
+              },
+              {
+                "id": "l05-g03-book-2",
+                "source": "p.118 #2",
                 "scene": {
                   "type": "picture",
                   "page": 118,
@@ -38448,112 +37939,60 @@
                   ],
                   "alt": "A steaming cup on a saucer."
                 },
-                "prompt": "It’s cold. Suggest hot coffee. Where does 吧 go?",
-                "gaps": true
-              },
-              {
-                "id": "l05-g03-book-3",
-                "source": "p.118 #3",
-                "kind": "slot-build",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "It is cold. Suggest having hot coffee, using 吧.",
+                "tiles": [
                   {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "我很餓，也很渴。"
-                      }
-                    ],
-                    "me": false
+                    "traditional": "嗎",
+                    "pinyin": "ma"
                   },
                   {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "我也想吃一點兒東西，我們"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "一起"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "去"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "吃東西"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-3",
-                        "answers": [
-                          "吧"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "熱咖啡",
+                    "pinyin": "rè kāfēi"
+                  },
+                  {
+                    "traditional": "你",
+                    "pinyin": "Nǐ"
+                  },
+                  {
+                    "traditional": "喝",
+                    "pinyin": "hē"
+                  },
                   {
                     "traditional": "吧",
                     "pinyin": "ba"
                   }
                 ],
-                "repairs": [
+                "accepted": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the whole invitation, not before 一起."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-1",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 一起去吃東西 together and put 吧 at the end."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 去吃東西 together and put 吧 after the action."
+                    "order": [
+                      "你",
+                      "喝",
+                      "熱咖啡",
+                      "吧"
+                    ],
+                    "sentence": {
+                      "traditional": "你喝熱咖啡吧。",
+                      "pinyin": "Nǐ hē rè kāfēi ba.",
+                      "english": "Have some hot coffee."
+                    }
                   }
                 ],
-                "fallbackRepair": "Drag 吧 to where it goes in the reply.",
-                "result": {
-                  "traditional": "我也想吃一點兒東西，我們一起去吃東西吧。",
-                  "pinyin": "Wǒ yě xiǎng chī yìdiǎnr dōngxi, wǒmen yìqǐ qù chī dōngxi ba.",
-                  "english": "I would like something to eat too; let’s go eat together."
-                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "你喝熱咖啡嗎 asks whether they drink it; 吧 makes a suggestion."
+                  }
+                ],
+                "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+                "sub": "今天好冷。"
+              },
+              {
+                "id": "l05-g03-book-3",
+                "source": "p.118 #3",
                 "scene": {
                   "type": "picture",
                   "page": 118,
@@ -38565,8 +38004,61 @@
                   ],
                   "alt": "Two people at a counter selling noodles and drinks."
                 },
-                "prompt": "Suggest going to eat together. Where does 吧 go?",
-                "gaps": true
+                "kind": "order-build",
+                "prompt": "You both want food. Suggest going to eat together, using 吧.",
+                "tiles": [
+                  {
+                    "traditional": "吧",
+                    "pinyin": "ba"
+                  },
+                  {
+                    "traditional": "去",
+                    "pinyin": "qù"
+                  },
+                  {
+                    "traditional": "我們",
+                    "pinyin": "wǒmen"
+                  },
+                  {
+                    "traditional": "一起",
+                    "pinyin": "yìqǐ"
+                  },
+                  {
+                    "traditional": "吃東西",
+                    "pinyin": "chī dōngxi"
+                  },
+                  {
+                    "traditional": "嗎",
+                    "pinyin": "ma"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我們",
+                      "一起",
+                      "去",
+                      "吃東西",
+                      "吧"
+                    ],
+                    "sentence": {
+                      "traditional": "我們一起去吃東西吧。",
+                      "pinyin": "wǒmen yìqǐ qù chī dōngxi ba.",
+                      "english": "Let’s go eat together."
+                    }
+                  }
+                ],
+                "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "嗎 makes this a question; 吧 makes the suggestion to go together."
+                  }
+                ],
+                "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+                "sub": "我很餓，也很渴。 我也想吃一點兒東西，"
               }
             ],
             "allowWords": [
@@ -42556,88 +42048,56 @@
               {
                 "id": "l05-g05-book-1",
                 "source": "p.126 #1",
-                "kind": "slot-build",
-                "lines": [
+                "kind": "order-build",
+                "prompt": "Say there are 1,000 students at your school.",
+                "tiles": [
                   {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "我們學校有多少學生？"
-                      }
-                    ],
-                    "me": false
+                    "traditional": "在",
+                    "pinyin": "zài"
                   },
                   {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我們學校"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "有"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "一千個學生"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
-                "tiles": [
+                    "traditional": "一千個",
+                    "pinyin": "yì qiān ge"
+                  },
+                  {
+                    "traditional": "我們學校",
+                    "pinyin": "Wǒmen xuéxiào"
+                  },
                   {
                     "traditional": "有",
                     "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "學生",
+                    "pinyin": "xuésheng"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我們學校",
+                      "有",
+                      "一千個",
+                      "學生"
+                    ],
+                    "sentence": {
+                      "traditional": "我們學校有一千個學生。",
+                      "pinyin": "Wǒmen xuéxiào yǒu yì qiān ge xuésheng.",
+                      "english": "There are one thousand students at our school."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "有"
-                    },
-                    "note": "Put the school location first, then 有 and the student count."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "有"
-                    },
-                    "note": "Put 有 before 一千個學生 to say how many students are at the school."
+                    "placed": [
+                      "在"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "在 locates something; 有 says how many students the school has."
                   }
                 ],
-                "fallbackRepair": "Drag 有 to where it goes in the reply.",
-                "result": {
-                  "traditional": "我們學校有一千個學生。",
-                  "pinyin": "Wǒmen xuéxiào yǒu yì qiān ge xuésheng.",
-                  "english": "There are one thousand students at our school."
-                },
-                "prompt": "Our example school has 1,000 students. Answer the question; place 有.",
-                "gaps": true
+                "fallbackRepair": "Start with 我們學校, then use 有 before the number of students.",
+                "sub": "我們學校有多少學生？"
               },
               {
                 "id": "l05-g05-book-2",
@@ -42701,88 +42161,56 @@
               {
                 "id": "l05-g05-book-3",
                 "source": "p.126 #3",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "speaker": {
-                      "traditional": "A"
-                    },
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "你的桌子上有什麼東西？"
-                      }
-                    ],
-                    "me": false
-                  },
-                  {
-                    "speaker": {
-                      "traditional": "B"
-                    },
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "我的桌子上"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": [
-                          "有"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "書"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Say there is a book on your table. Start with the place.",
                 "tiles": [
+                  {
+                    "traditional": "在",
+                    "pinyin": "zài"
+                  },
                   {
                     "traditional": "有",
                     "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "我的桌子",
+                    "pinyin": "Wǒ de zhuōzi"
+                  },
+                  {
+                    "traditional": "上",
+                    "pinyin": "shàng"
+                  },
+                  {
+                    "traditional": "書",
+                    "pinyin": "shū"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我的桌子",
+                      "上",
+                      "有",
+                      "書"
+                    ],
+                    "sentence": {
+                      "traditional": "我的桌子上有書。",
+                      "pinyin": "Wǒ de zhuōzi shàng yǒu shū.",
+                      "english": "There is a book on my table."
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "gap-0",
-                      "tile": "有"
-                    },
-                    "note": "Put 我的桌子上 first, then 有 to say what is there."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "有"
-                    },
-                    "note": "Put 有 before 書, after the table location."
+                    "placed": [
+                      "在"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "書在我的桌子上 is valid with the book first; this task asks for the place-first pattern 我的桌子上有書."
                   }
                 ],
-                "fallbackRepair": "Drag 有 to where it goes in the reply.",
-                "result": {
-                  "traditional": "我的桌子上有書。",
-                  "pinyin": "Wǒ de zhuōzi shàng yǒu shū.",
-                  "english": "There is a book on my table."
-                },
-                "prompt": "There is a book on your desk. Answer the question; place 有.",
-                "gaps": true
+                "fallbackRepair": "Start with the place 我的桌子上, then use 有書 to say what is there.",
+                "sub": "你的桌子上有什麼東西？"
               }
             ]
           }
@@ -44321,7 +43749,7 @@
               {
                 "id": "b1l06-g01-p135-practice-3",
                 "source": "p.136 #3",
-                "prompt": "Ask whether your friend can make beef noodles. The reply comes afterward.",
+                "prompt": "Ask whether your friend can make beef noodles. Use a verb–not–verb question.",
                 "kind": "order-build",
                 "sub": "B replies afterward: 我不會做牛肉麵。",
                 "tiles": [
@@ -49982,7 +49410,7 @@
                   "english": "I have too many things; I think this room is a little small."
                 },
                 "sub": "Your things fill every shelf, and there is nowhere to put the rest.",
-                "prompt": "Your things do not fit. Say the room is a little too small.",
+                "prompt": "Your things do not fit. Say you think the room is a little small.",
                 "gaps": true
               },
               {
@@ -50039,18 +49467,19 @@
                     "placed": [
                       "太"
                     ],
-                    "note": "太 needs 了 (太有趣了), and this sentence has no 了."
+                    "note": "太有趣 is a stronger reaction (“so interesting”); the requested description is “very interesting”, with 很有趣.",
+                    "title": "Try the requested meaning"
                   }
                 ],
-                "takeOutNote": "Without a degree word, 有趣 stands alone like a comparison. Use 很 to say “very”.",
-                "hint": "One word here is for a small problem, but your friend is praising the movie.",
+                "takeOutNote": "Without 有點兒, the sentence loses the requested “very”; replace it with 很.",
+                "hint": "Your friend means “very interesting”; one word only says “a little”.",
                 "result": {
                   "traditional": "我覺得這部電影很有趣。",
                   "simplified": "我觉得这部电影很有趣。",
                   "pinyin": "Wǒ juéde zhè bù diànyǐng hěn yǒuqù.",
                   "english": "I think this movie is very interesting."
                 },
-                "successNote": "有點兒 is for a small problem. To praise something, use 很."
+                "successNote": "有點兒 means “a little”; 很有趣 matches the requested “very interesting”."
               }
             ]
           }
@@ -67834,284 +67263,171 @@
               {
                 "id": "l8g3-p1",
                 "source": "p.193 #1",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "before",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "他是",
-                        "simplified": "他是"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "middle",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "韓國人",
-                        "simplified": "韩国人"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "answer",
-                        "answers": [
-                          "吧"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "？",
-                        "simplified": "？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A",
-                      "simplified": "A"
-                    },
-                    "me": true
-                  },
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "是啊，他是韓國人。",
-                        "simplified": "是啊，他是韩国人。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B",
-                      "simplified": "B"
-                    },
-                    "me": false
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "You see a Korean passport. Ask him to confirm your guess that he is Korean, using 吧.",
                 "tiles": [
                   {
+                    "traditional": "嗎",
+                    "pinyin": "ma"
+                  },
+                  {
+                    "traditional": "韓國人",
+                    "pinyin": "Hánguó rén",
+                    "simplified": "韩国人"
+                  },
+                  {
+                    "traditional": "他",
+                    "pinyin": "Tā"
+                  },
+                  {
+                    "traditional": "是",
+                    "pinyin": "shì"
+                  },
+                  {
                     "traditional": "吧",
-                    "simplified": "吧",
                     "pinyin": "ba"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "他",
+                      "是",
+                      "韓國人",
+                      "吧"
+                    ],
+                    "sentence": {
+                      "traditional": "他是韓國人吧？",
+                      "pinyin": "Tā shì Hánguó rén ba?",
+                      "english": "He is Korean, right?",
+                      "simplified": "他是韩国人吧？"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "before",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the whole statement, before the question mark."
-                  },
-                  {
-                    "slot": {
-                      "id": "middle",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 他是韓國人 together and put 吧 at the end."
+                    "placed": [
+                      "嗎"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "他是韓國人嗎 is a neutral question; 吧 asks for confirmation of the guess you already have."
                   }
                 ],
-                "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
-                "result": {
-                  "traditional": "他是韓國人吧？",
-                  "pinyin": "Tā shì Hánguó rén ba?",
-                  "english": "He is Korean, right?",
-                  "simplified": "他是韩国人吧？"
-                },
-                "gaps": true,
-                "prompt": "You see a Korean passport in his hand. Where does 吧 go?"
+                "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+                "sub": "B replies afterward: 是啊，他是韓國人。"
               },
               {
                 "id": "l8g3-p2",
                 "source": "p.193 #2",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "before",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "你喜歡",
-                        "simplified": "你喜欢"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "middle",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喝咖啡",
-                        "simplified": "喝咖啡"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "answer",
-                        "answers": [
-                          "吧"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "？",
-                        "simplified": "？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A",
-                      "simplified": "A"
-                    },
-                    "me": true
-                  },
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "喜歡，我每天早上都一定要喝。",
-                        "simplified": "喜欢，我每天早上都一定要喝。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B",
-                      "simplified": "B"
-                    },
-                    "me": false
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Your friend always carries coffee. Check your guess that they like drinking it, using 吧.",
                 "tiles": [
                   {
+                    "traditional": "嗎",
+                    "pinyin": "ma"
+                  },
+                  {
+                    "traditional": "喝咖啡",
+                    "pinyin": "hē kāfēi"
+                  },
+                  {
+                    "traditional": "你",
+                    "pinyin": "Nǐ"
+                  },
+                  {
+                    "traditional": "喜歡",
+                    "pinyin": "xǐhuān",
+                    "simplified": "喜欢"
+                  },
+                  {
                     "traditional": "吧",
-                    "simplified": "吧",
                     "pinyin": "ba"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "你",
+                      "喜歡",
+                      "喝咖啡",
+                      "吧"
+                    ],
+                    "sentence": {
+                      "traditional": "你喜歡喝咖啡吧？",
+                      "pinyin": "Nǐ xǐhuān hē kāfēi ba?",
+                      "english": "You like drinking coffee, right?",
+                      "simplified": "你喜欢喝咖啡吧？"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "before",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the whole statement, before the question mark."
-                  },
-                  {
-                    "slot": {
-                      "id": "middle",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 你喜歡喝咖啡 together and put 吧 at the end."
+                    "placed": [
+                      "嗎"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "嗎 asks a neutral question; 吧 checks the guess suggested by your friend’s coffee habit."
                   }
                 ],
-                "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
-                "result": {
-                  "traditional": "你喜歡喝咖啡吧？",
-                  "pinyin": "Nǐ xǐhuān hē kāfēi ba?",
-                  "english": "You like drinking coffee, right?",
-                  "simplified": "你喜欢喝咖啡吧？"
-                },
-                "gaps": true,
-                "prompt": "Your friend always carries coffee. Where does 吧 go?"
+                "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+                "sub": "B replies afterward: 喜歡，我每天早上都一定要喝。"
               },
               {
                 "id": "l8g3-p3",
                 "source": "p.193 #3",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "slot",
-                        "id": "before",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "你會",
-                        "simplified": "你会"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "middle",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "打籃球",
-                        "simplified": "打篮球"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "answer",
-                        "answers": [
-                          "吧"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "？",
-                        "simplified": "？"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "A",
-                      "simplified": "A"
-                    },
-                    "me": true
-                  },
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "不會，可是我會打網球。",
-                        "simplified": "不会，可是我会打网球。"
-                      }
-                    ],
-                    "speaker": {
-                      "traditional": "B",
-                      "simplified": "B"
-                    },
-                    "me": false
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "Your friend carries basketball shoes and a ball. Check your guess that they can play, using 吧.",
                 "tiles": [
                   {
+                    "traditional": "嗎",
+                    "pinyin": "ma"
+                  },
+                  {
+                    "traditional": "打籃球",
+                    "pinyin": "dǎ lánqiú",
+                    "simplified": "打篮球"
+                  },
+                  {
+                    "traditional": "你",
+                    "pinyin": "Nǐ"
+                  },
+                  {
+                    "traditional": "會",
+                    "pinyin": "huì",
+                    "simplified": "会"
+                  },
+                  {
                     "traditional": "吧",
-                    "simplified": "吧",
                     "pinyin": "ba"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "你",
+                      "會",
+                      "打籃球",
+                      "吧"
+                    ],
+                    "sentence": {
+                      "traditional": "你會打籃球吧？",
+                      "pinyin": "Nǐ huì dǎ lánqiú ba?",
+                      "english": "You can play basketball, right?",
+                      "simplified": "你会打篮球吧？"
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "before",
-                      "tile": "吧"
-                    },
-                    "note": "Put 吧 after the whole statement, before the question mark."
-                  },
-                  {
-                    "slot": {
-                      "id": "middle",
-                      "tile": "吧"
-                    },
-                    "note": "Keep 你會打籃球 together and put 吧 at the end."
+                    "placed": [
+                      "嗎"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "嗎 asks whether they can play; 吧 asks them to confirm your guess from the basketball gear."
                   }
                 ],
-                "fallbackRepair": "Put 吧 after the whole statement, before the question mark.",
-                "result": {
-                  "traditional": "你會打籃球吧？",
-                  "pinyin": "Nǐ huì dǎ lánqiú ba?",
-                  "english": "You can play basketball, right?",
-                  "simplified": "你会打篮球吧？"
-                },
-                "gaps": true,
-                "prompt": "Your friend has a basketball and basketball shoes. Where does 吧 go?"
+                "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
+                "sub": "B replies afterward: 不會，可是我會打網球。"
               },
               {
                 "id": "l8g3-own-sort",
@@ -69641,72 +68957,66 @@
               {
                 "id": "l8g4-own1",
                 "source": "own",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "我",
-                        "simplified": "我"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "before",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "穿穿",
-                        "simplified": "穿穿"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "answer",
-                        "answers": [
-                          "看"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。",
-                        "simplified": "。"
-                      }
-                    ],
-                    "me": true
-                  }
-                ],
+                "kind": "order-build",
+                "prompt": "The skirt is on the counter. Say you will try it on and see.",
                 "tiles": [
                   {
+                    "traditional": "喝",
+                    "pinyin": "hē"
+                  },
+                  {
+                    "traditional": "穿",
+                    "pinyin": "chuan"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "Wǒ"
+                  },
+                  {
+                    "traditional": "穿",
+                    "pinyin": "chuān"
+                  },
+                  {
                     "traditional": "看",
-                    "simplified": "看",
                     "pinyin": "kàn"
+                  },
+                  {
+                    "traditional": "喝",
+                    "pinyin": "hē"
+                  }
+                ],
+                "accepted": [
+                  {
+                    "order": [
+                      "我",
+                      "穿",
+                      "穿",
+                      "看"
+                    ],
+                    "sentence": {
+                      "traditional": "我穿穿看。",
+                      "simplified": "我穿穿看。",
+                      "pinyin": "Wǒ chuān chuan kàn.",
+                      "english": "I will try it on and see.",
+                      "audio": {
+                        "voice": "book",
+                        "file": "B1-08-2-3.mp3",
+                        "start": 52.02,
+                        "end": 53.68
+                      }
+                    }
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "before",
-                      "tile": "看"
-                    },
-                    "note": "Put 看 after 穿穿: the repeated action comes before 看."
+                    "placed": [
+                      "喝"
+                    ],
+                    "title": "Try the requested meaning",
+                    "note": "喝喝看 means trying a drink; 穿穿看 means trying on the skirt."
                   }
                 ],
-                "fallbackRepair": "Put 看 after 穿穿: the repeated action comes before 看.",
-                "result": {
-                  "traditional": "我穿穿看。",
-                  "simplified": "我穿穿看。",
-                  "pinyin": "Wǒ chuān chuan kàn.",
-                  "english": "I will try it on and see.",
-                  "audio": {
-                    "voice": "book",
-                    "file": "B1-08-2-3.mp3",
-                    "start": 52.02,
-                    "end": 53.68
-                  }
-                },
-                "gaps": true,
-                "prompt": "The skirt is on the counter. Say you’ll try it on: where does 看 go?"
+                "fallbackRepair": "Repeat 穿, then add 看: 穿穿看 means try it on and see."
               }
             ],
             "allowWords": [

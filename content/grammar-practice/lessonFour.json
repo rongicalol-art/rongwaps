@@ -144,190 +144,121 @@
       {
         "id": "l04-g1-book3",
         "source": "p.96 #3",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "You like both foods. Where does 都 go?",
-        "lines": [
+        "kind": "order-build",
+        "prompt": "Say that you like eating both cake and beef noodles. Put the foods first.",
+        "tiles": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你喜歡吃什麼東西？",
-                "simplified": "你喜欢吃什么东西？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A"
-            },
-            "me": false
+            "traditional": "喜歡吃",
+            "pinyin": "xǐhuān chī",
+            "simplified": "喜欢吃"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "蛋糕、牛肉麵，",
-                "simplified": "蛋糕、牛肉面，"
-              },
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "我"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": [
-                  "都"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡吃",
-                "simplified": "喜欢吃"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
-          }
-        ],
-        "tiles": [
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "蛋糕",
+            "pinyin": "Dàngāo"
+          },
+          {
+            "traditional": "牛肉麵",
+            "pinyin": "niúròu miàn",
+            "simplified": "牛肉面"
+          },
           {
             "traditional": "都",
             "pinyin": "dōu"
+          },
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "蛋糕",
+              "牛肉麵",
+              "我",
+              "都",
+              "喜歡吃"
+            ],
+            "sentence": {
+              "traditional": "蛋糕、牛肉麵，我都喜歡吃。",
+              "pinyin": "Dàngāo, niúròu miàn, wǒ dōu xǐhuān chī.",
+              "english": "Cake and beef noodles, I like eating both.",
+              "simplified": "蛋糕、牛肉面，我都喜欢吃。"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "都"
-            },
-            "note": "都 belongs with the comment about both foods, after 我."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "都"
-            },
-            "note": "Put 都 before 喜歡吃 to say that the liking covers both foods."
+            "placed": [
+              "也"
+            ],
+            "title": "Try the requested meaning",
+            "note": "也 means “also”; 都 makes clear that you like both foods."
           }
         ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
-        "result": {
-          "traditional": "蛋糕、牛肉麵，我都喜歡吃。",
-          "pinyin": "Dàngāo, niúròu miàn, wǒ dōu xǐhuān chī.",
-          "english": "Cake and beef noodles, I like eating both.",
-          "simplified": "蛋糕、牛肉面，我都喜欢吃。"
-        }
+        "fallbackRepair": "Put 都 after the subject and before the verb to include every item.",
+        "sub": "你喜歡吃什麼東西？"
       },
       {
         "id": "l04-g1-book4",
         "source": "p.97 #4",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "You like all three gifts. Where does 都 go?",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你喜歡什麼生日禮物？",
-                "simplified": "你喜欢什么生日礼物？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A"
-            },
-            "me": false
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "花、書、蛋糕，",
-                "simplified": "花、书、蛋糕，"
-              },
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "我"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": [
-                  "都"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡",
-                "simplified": "喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "Say that you like all three gifts. Put the gifts first.",
         "tiles": [
+          {
+            "traditional": "也",
+            "pinyin": "yě"
+          },
           {
             "traditional": "都",
             "pinyin": "dōu"
+          },
+          {
+            "traditional": "花、書、蛋糕",
+            "pinyin": "Huā, shū, dàngāo",
+            "simplified": "花、书、蛋糕"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "喜歡",
+            "pinyin": "xǐhuān",
+            "simplified": "喜欢"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "花、書、蛋糕",
+              "我",
+              "都",
+              "喜歡"
+            ],
+            "sentence": {
+              "traditional": "花、書、蛋糕，我都喜歡。",
+              "pinyin": "Huā, shū, dàngāo, wǒ dōu xǐhuān.",
+              "english": "Flowers, books and cakes, I like them all.",
+              "simplified": "花、书、蛋糕，我都喜欢。"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "都"
-            },
-            "note": "都 follows the person 我 rather than standing directly after the list."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "都"
-            },
-            "note": "Put 都 before 喜歡 to include all three gifts."
+            "placed": [
+              "也"
+            ],
+            "title": "Try the requested meaning",
+            "note": "也 adds another preference; 都 says that every gift in the list is included."
           }
         ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
-        "result": {
-          "traditional": "花、書、蛋糕，我都喜歡。",
-          "pinyin": "Huā, shū, dàngāo, wǒ dōu xǐhuān.",
-          "english": "Flowers, books and cakes, I like them all.",
-          "simplified": "花、书、蛋糕，我都喜欢。"
-        }
+        "fallbackRepair": "Put 都 after the subject and before the verb to include every item.",
+        "sub": "你喜歡什麼生日禮物？"
       }
     ]
   },
@@ -338,274 +269,180 @@
       {
         "id": "l04-g2-book1",
         "source": "p.98 #1",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "You’d like beef noodles too. Where does 也 go?",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你要吃什麼？",
-                "simplified": "你要吃什么？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A"
-            },
-            "me": false
-          },
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "我要吃蛋糕，"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": [
-                  "也"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "想吃牛肉麵。",
-                "simplified": "想吃牛肉面。"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "Say you want cake and would also like beef noodles.",
         "tiles": [
+          {
+            "traditional": "牛肉麵",
+            "pinyin": "niúròu miàn",
+            "simplified": "牛肉面"
+          },
           {
             "traditional": "也",
             "pinyin": "yě"
+          },
+          {
+            "traditional": "我要",
+            "pinyin": "Wǒ yào"
+          },
+          {
+            "traditional": "吃蛋糕",
+            "pinyin": "chī dàngāo"
+          },
+          {
+            "traditional": "想吃",
+            "pinyin": "xiǎng chī"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我要",
+              "吃蛋糕",
+              "也",
+              "想吃",
+              "牛肉麵"
+            ],
+            "sentence": {
+              "traditional": "我要吃蛋糕，也想吃牛肉麵。",
+              "pinyin": "Wǒ yào chī dàngāo, yě xiǎng chī niúròu miàn.",
+              "english": "I want to eat cake and would also like beef noodles.",
+              "simplified": "我要吃蛋糕，也想吃牛肉面。"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "也"
-            },
-            "note": "也 adds the second wish, so put it in the second part of the answer."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "也"
-            },
-            "note": "Put 也 before 想吃 rather than after the food."
+            "placed": [
+              "都"
+            ],
+            "title": "Try the requested meaning",
+            "note": "都 means “all”; here 也 adds your second wish, for beef noodles."
           }
         ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
-        "result": {
-          "traditional": "我要吃蛋糕，也想吃牛肉麵。",
-          "pinyin": "Wǒ yào chī dàngāo, yě xiǎng chī niúròu miàn.",
-          "english": "I want to eat cake and would also like beef noodles.",
-          "simplified": "我要吃蛋糕，也想吃牛肉面。"
-        }
+        "fallbackRepair": "Put 也 after the subject and before the verb to add the second wish or description.",
+        "sub": "你要吃什麼？"
       },
       {
         "id": "l04-g2-book2",
         "source": "p.98 #2",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "The cake is good too. Where does 也 go?",
-        "lines": [
+        "kind": "order-build",
+        "prompt": "The beef noodles are delicious. Say the cake is delicious too.",
+        "tiles": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "那家餐廳什麼好吃？",
-                "simplified": "那家餐厅什么好吃？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A"
-            },
-            "me": false
+            "traditional": "都",
+            "pinyin": "dōu"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "牛肉麵很好吃，",
-                "simplified": "牛肉面很好吃，"
-              },
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "蛋糕"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": [
-                  "也"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "很好吃"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
-          }
-        ],
-        "tiles": [
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo"
+          },
           {
             "traditional": "也",
             "pinyin": "yě"
+          },
+          {
+            "traditional": "好吃",
+            "pinyin": "hǎochī"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "蛋糕",
+              "也",
+              "很",
+              "好吃"
+            ],
+            "sentence": {
+              "traditional": "蛋糕也很好吃。",
+              "pinyin": "dàngāo yě hěn hǎochī.",
+              "english": "The cake is delicious too.",
+              "simplified": "蛋糕也很好吃。"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "也"
-            },
-            "note": "Name the second food 蛋糕 before adding 也."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "也"
-            },
-            "note": "Put 也 before 很好吃, not after the description."
+            "placed": [
+              "都"
+            ],
+            "title": "Try the requested meaning",
+            "note": "蛋糕 names one food here; 也 adds it to the earlier comment about the noodles."
           }
         ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
-        "result": {
-          "traditional": "牛肉麵很好吃，蛋糕也很好吃。",
-          "pinyin": "Niúròu miàn hěn hǎochī, dàngāo yě hěn hǎochī.",
-          "english": "The beef noodles are delicious, and the cake is delicious too.",
-          "simplified": "牛肉面很好吃，蛋糕也很好吃。"
-        }
+        "fallbackRepair": "Put 也 after the subject and before the verb to add the second wish or description.",
+        "sub": "那家餐廳什麼好吃？ 牛肉麵很好吃，"
       },
       {
         "id": "l04-g2-book3",
         "source": "p.98 #3",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "Youmei likes cheap things too. Where does 也 go?",
-        "lines": [
+        "kind": "order-build",
+        "prompt": "Zhongming likes buying inexpensive things. Say Youmei does too.",
+        "tiles": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "誰喜歡買便宜的東西？",
-                "simplified": "谁喜欢买便宜的东西？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A"
-            },
-            "me": false
+            "traditional": "東西",
+            "pinyin": "dōngxi",
+            "simplified": "东西"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "中明喜歡買便宜的東西，",
-                "simplified": "中明喜欢买便宜的东西，"
-              },
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "友美"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": [
-                  "也"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡買便宜的東西",
-                "simplified": "喜欢买便宜的东西"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
-          }
-        ],
-        "tiles": [
+            "traditional": "喜歡買",
+            "pinyin": "xǐhuān mǎi",
+            "simplified": "喜欢买"
+          },
+          {
+            "traditional": "友美",
+            "pinyin": "Yǒuměi"
+          },
           {
             "traditional": "也",
             "pinyin": "yě"
+          },
+          {
+            "traditional": "便宜的",
+            "pinyin": "piányi de"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "友美",
+              "也",
+              "喜歡買",
+              "便宜的",
+              "東西"
+            ],
+            "sentence": {
+              "traditional": "友美也喜歡買便宜的東西。",
+              "pinyin": "Yǒuměi yě xǐhuān mǎi piányi de dōngxi.",
+              "english": "Youmei also likes buying inexpensive things.",
+              "simplified": "友美也喜欢买便宜的东西。"
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "也"
-            },
-            "note": "Name 友美 before 也 to say who shares the preference."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "也"
-            },
-            "note": "Put 也 before 喜歡買 to add Youmei as another person with this preference."
+            "placed": [
+              "都"
+            ],
+            "title": "Try the requested meaning",
+            "note": "With 友美 as the subject, 也 adds her to Zhongming; 都 would need a subject that includes both people."
           }
         ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
-        "result": {
-          "traditional": "中明喜歡買便宜的東西，友美也喜歡買便宜的東西。",
-          "pinyin": "Zhōngmíng xǐhuān mǎi piányi de dōngxi, Yǒuměi yě xǐhuān mǎi piányi de dōngxi.",
-          "english": "Zhongming likes buying inexpensive things, and Youmei does too.",
-          "simplified": "中明喜欢买便宜的东西，友美也喜欢买便宜的东西。"
-        }
+        "fallbackRepair": "Put 也 after the subject and before the verb to add the second wish or description.",
+        "sub": "誰喜歡買便宜的東西？ 中明喜歡買便宜的東西，"
       },
       {
         "id": "l04-g2-own-spot",
@@ -748,7 +585,8 @@
             "mark": [
               "很"
             ],
-            "note": "The task asks for an excessive degree with 太…了, not the neutral description with 很."
+            "note": "很小 is valid Chinese: “very small”; this task asks for too small, expressed with 太…了.",
+            "title": "Try the requested meaning"
           },
           {
             "slot": {
@@ -865,7 +703,8 @@
             "mark": [
               "很"
             ],
-            "note": "The task asks for an excessive degree with 太…了, not the neutral description with 很."
+            "note": "他很累 is valid Chinese: “he is very tired”; this task asks for too tired, expressed with 太…了.",
+            "title": "Try the requested meaning"
           },
           {
             "slot": {
@@ -987,7 +826,8 @@
             "mark": [
               "很"
             ],
-            "note": "The task asks for an excessive degree with 太…了, not the neutral description with 很."
+            "note": "很好喝 is valid Chinese: “tastes very good”; this task asks for a strong reaction to how good it tastes, expressed with 太…了.",
+            "title": "Try the requested meaning"
           },
           {
             "slot": {
@@ -1010,101 +850,12 @@
           "pinyin": "Tài hǎohē le, wǒ hé wǒ de péngyou dōu chángcháng hē.",
           "english": "It tastes so good; my friends and I all drink it often."
         },
-        "prompt": "Say the milk tea tastes so good that you and your friends drink it often.",
+        "prompt": "Exclaim that the milk tea tastes so good, using 太…了. Then say you and your friends drink it often.",
         "gaps": true
       },
       {
         "id": "l04-g3-own1",
         "source": "own",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "It’s 40°C today. Where does 了 go?",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "今天天氣怎麼樣？",
-                "simplified": "今天天气怎么样？"
-              }
-            ],
-            "speaker": {
-              "traditional": "A"
-            },
-            "me": false
-          },
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "今天"
-              },
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "太"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "熱",
-                "simplified": "热"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": [
-                  "了"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "了",
-            "pinyin": "le"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "gap-0",
-              "tile": "了"
-            },
-            "note": "了 ends the reaction after 熱 rather than following 今天."
-          },
-          {
-            "slot": {
-              "id": "gap-1",
-              "tile": "了"
-            },
-            "note": "了 finishes the reaction after 熱, not before it."
-          }
-        ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
-        "result": {
-          "traditional": "今天太熱了。",
-          "pinyin": "Jīntiān tài rè le.",
-          "english": "It is so hot today.",
-          "simplified": "今天太热了。"
-        },
         "scene": {
           "type": "picture",
           "page": 98,
@@ -1115,7 +866,59 @@
             0.103
           ],
           "alt": "A thermometer marked 40°C."
-        }
+        },
+        "kind": "order-build",
+        "prompt": "It is 40°C today. Exclaim how hot it is with 太…了.",
+        "tiles": [
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "熱",
+            "pinyin": "rè",
+            "simplified": "热"
+          },
+          {
+            "traditional": "今天",
+            "pinyin": "Jīntiān"
+          },
+          {
+            "traditional": "太",
+            "pinyin": "tài"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "今天",
+              "太",
+              "熱",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "今天太熱了。",
+              "pinyin": "Jīntiān tài rè le.",
+              "english": "It is so hot today.",
+              "simplified": "今天太热了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "title": "Try the requested meaning",
+            "note": "今天很熱 is valid: “It is very hot today”; this task asks for the stronger reaction 太熱了."
+          }
+        ],
+        "fallbackRepair": "Put 太 before 熱 and 了 after it to make the strong reaction 太熱了.",
+        "sub": "今天天氣怎麼樣？"
       }
     ]
   },

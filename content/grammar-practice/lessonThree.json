@@ -1566,296 +1566,119 @@
       {
         "id": "l3-g5-book-1",
         "source": "p.85 #1",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "這五枝筆",
-                "simplified": "这五枝笔"
-              },
-              {
-                "type": "slot",
-                "id": "all",
-                "answers": [
-                  "都"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "很",
-                "simplified": "很"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "貴",
-                "simplified": "贵"
-              },
-              {
-                "type": "slot",
-                "id": "gap-3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "Say that all five pens are expensive.",
         "tiles": [
           {
+            "traditional": "沒有",
+            "pinyin": "méiyǒu",
+            "simplified": "没有"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "這五枝筆",
+            "pinyin": "Zhè wǔ zhī bǐ",
+            "simplified": "这五枝笔"
+          },
+          {
             "traditional": "都",
-            "simplified": "都",
             "pinyin": "dōu"
+          },
+          {
+            "traditional": "貴",
+            "pinyin": "guì",
+            "simplified": "贵"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這五枝筆",
+              "都",
+              "很",
+              "貴"
+            ],
+            "sentence": {
+              "traditional": "這五枝筆都很貴。",
+              "simplified": "这五枝笔都很贵。",
+              "pinyin": "Zhè wǔ zhī bǐ dōu hěn guì.",
+              "english": "These five pens are all expensive."
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "都"
-            },
-            "note": "Put 都 after the whole group 這五枝筆, before its description."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "都"
-            },
-            "note": "Put 都 before 很貴, without splitting the description."
-          },
-          {
-            "slot": {
-              "id": "gap-3",
-              "tile": "都"
-            },
-            "note": "都 comes before the description 很貴, not at the end of the sentence."
+            "placed": [
+              "沒有"
+            ],
+            "title": "Try the requested meaning",
+            "note": "沒有很貴 says the pens are not very expensive; the task says every pen is expensive, with 都很貴."
           }
         ],
-        "fallbackRepair": "Put 都 after the whole group and before its description or verb.",
-        "result": {
-          "traditional": "這五枝筆都很貴。",
-          "simplified": "这五枝笔都很贵。",
-          "pinyin": "Zhè wǔ zhī bǐ dōu hěn guì.",
-          "english": "These five pens are all expensive."
-        },
-        "prompt": "Each of the five pens costs a lot; tap where 都 goes.",
-        "gaps": true
+        "fallbackRepair": "Put 都 after the subject and before the verb to include every item."
       },
       {
         "id": "l3-g5-book-2",
         "source": "p.85 #2",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "這四個人",
-                "simplified": "这四个人"
-              },
-              {
-                "type": "slot",
-                "id": "all",
-                "answers": [
-                  "都"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "是",
-                "simplified": "是"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "我的同學",
-                "simplified": "我的同学"
-              },
-              {
-                "type": "slot",
-                "id": "gap-3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "Say that all four people are your classmates.",
         "tiles": [
           {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "這四個人",
+            "pinyin": "Zhè sì ge rén",
+            "simplified": "这四个人"
+          },
+          {
             "traditional": "都",
-            "simplified": "都",
             "pinyin": "dōu"
+          },
+          {
+            "traditional": "我的同學",
+            "pinyin": "wǒ de tóngxué",
+            "simplified": "我的同学"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這四個人",
+              "都",
+              "是",
+              "我的同學"
+            ],
+            "sentence": {
+              "traditional": "這四個人都是我的同學。",
+              "simplified": "这四个人都是我的同学。",
+              "pinyin": "Zhè sì ge rén dōu shì wǒ de tóngxué.",
+              "english": "These four people are all my classmates."
+            }
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "gap-0",
-              "tile": "都"
-            },
-            "note": "Put 都 after the whole group 這四個人, before 是."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "都"
-            },
-            "note": "Put 都 before 是, not between 是 and 我的同學."
-          },
-          {
-            "slot": {
-              "id": "gap-3",
-              "tile": "都"
-            },
-            "note": "都 comes before 是我的同學, not at the end of the sentence."
+            "placed": [
+              "不"
+            ],
+            "title": "Try the requested meaning",
+            "note": "不是 would say they are not your classmates; 都是 says every one of the four is your classmate."
           }
         ],
-        "fallbackRepair": "Put 都 after the whole group and before its description or verb.",
-        "result": {
-          "traditional": "這四個人都是我的同學。",
-          "simplified": "这四个人都是我的同学。",
-          "pinyin": "Zhè sì ge rén dōu shì wǒ de tóngxué.",
-          "english": "These four people are all my classmates."
-        },
-        "prompt": "Every person is your classmate; tap where 都 goes.",
-        "gaps": true
+        "fallbackRepair": "Put 都 after the subject and before the verb to include every item."
       },
       {
         "id": "l3-g5-book-3",
         "source": "p.85 #3",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "他們",
-                "simplified": "他们"
-              },
-              {
-                "type": "slot",
-                "id": "all",
-                "answers": [
-                  "都"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "不",
-                "simplified": "不"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡喝",
-                "simplified": "喜欢喝"
-              },
-              {
-                "type": "slot",
-                "id": "gap-3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "這種茶",
-                "simplified": "这种茶"
-              },
-              {
-                "type": "slot",
-                "id": "gap-4",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "都",
-            "simplified": "都",
-            "pinyin": "dōu"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "gap-0",
-              "tile": "都"
-            },
-            "note": "Put 都 after 他們 and before 不 to say neither person likes the tea."
-          },
-          {
-            "slot": {
-              "id": "gap-2",
-              "tile": "都"
-            },
-            "note": "Use 都不 to say neither likes it; 不都 only says that not everyone likes it."
-          },
-          {
-            "slot": {
-              "id": "gap-3",
-              "tile": "都"
-            },
-            "note": "Keep 不喜歡喝這種茶 together and put 都 before 不."
-          },
-          {
-            "slot": {
-              "id": "gap-4",
-              "tile": "都"
-            },
-            "note": "都 comes before 不喜歡喝這種茶, not at the end of the sentence."
-          }
-        ],
-        "fallbackRepair": "Put 都 before 不 to make clear that neither person likes the tea.",
-        "result": {
-          "traditional": "他們都不喜歡喝這種茶。",
-          "simplified": "他们都不喜欢喝这种茶。",
-          "pinyin": "Tāmen dōu bù xǐhuān hē zhè zhǒng chá.",
-          "english": "Neither of them likes drinking this kind of tea."
-        },
         "scene": {
           "type": "picture",
           "page": 85,
@@ -1867,8 +1690,71 @@
           ],
           "alt": "Both people grimace at the tea in front of them."
         },
-        "prompt": "Make clear that neither person likes the tea; tap where 都 goes.",
-        "gaps": true
+        "kind": "order-build",
+        "prompt": "Say that neither of them likes drinking this kind of tea.",
+        "tiles": [
+          {
+            "traditional": "這種茶",
+            "pinyin": "zhè zhǒng chá",
+            "simplified": "这种茶"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "他們",
+            "pinyin": "Tāmen",
+            "simplified": "他们"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "喜歡喝",
+            "pinyin": "xǐhuān hē",
+            "simplified": "喜欢喝"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他們",
+              "都",
+              "不",
+              "喜歡喝",
+              "這種茶"
+            ],
+            "sentence": {
+              "traditional": "他們都不喜歡喝這種茶。",
+              "simplified": "他们都不喜欢喝这种茶。",
+              "pinyin": "Tāmen dōu bù xǐhuān hē zhè zhǒng chá.",
+              "english": "Neither of them likes drinking this kind of tea."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "title": "Try the requested meaning",
+            "note": "很不喜歡 means really dislike; 都不 explicitly includes both people, as requested by “neither”."
+          },
+          {
+            "before": [
+              "不",
+              "都"
+            ],
+            "note": "不都 means “not both”; put 都 before 不 to say that neither person likes the tea."
+          }
+        ],
+        "fallbackRepair": "Put 都 after the whole subject and before the verb; 都不 means neither person does it."
       }
     ],
     "allowWords": [

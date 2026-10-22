@@ -73,17 +73,6 @@ function parseDialogue(sub?: string, prompt?: string): ParsedDialogue | null {
   return null;
 }
 
-/** Keep instructions and role/selection context; omit a question already displayed in Chinese. */
-export function orderBuildHeading(item: OrderBuildItem): string | undefined {
-  const dialogue = parseDialogue(item.sub, item.prompt);
-  if (dialogue?.type === 'afterward') return 'What did they ask?';
-  const translatedQuestion = /^(?:Does|Do|Is|Are|Where|What|How|Who|When|Which|Can)\b[^?]+\?(?:\s*Answer from the picture\.)?$/i.test(item.prompt ?? '');
-  if (dialogue?.type === 'incoming' && /[？?]$/.test(dialogue.utterance) && translatedQuestion) {
-    return item.scene ? 'Answer from the picture' : 'Answer the question';
-  }
-  return !item.scene && !item.sub && item.prompt ? 'Build a sentence' : item.prompt;
-}
-
 /**
  * Build the sentence: the title says what to say, the words wait beneath the answer, and tapping
  * them lays them into the reply bubble (or on a free line when not a conversation). Tap a

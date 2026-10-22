@@ -1001,7 +1001,7 @@
           "english": "Mom’s birthday is February 24."
         },
         "gaps": true,
-        "prompt": "Where does 的 go?"
+        "prompt": "Say that Mom’s birthday is February 24."
       },
       {
         "id": "l2g04-2",
@@ -1095,7 +1095,7 @@
           "english": "Do you like Taiwanese fruit?"
         },
         "gaps": true,
-        "prompt": "Where does 的 go?"
+        "prompt": "Ask whether your friend likes Taiwanese fruit. Link Taiwan to the fruit with 的."
       },
       {
         "id": "l2g04-3",
@@ -1182,7 +1182,7 @@
           "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
           "english": "My child is going to the United States tomorrow."
         },
-        "prompt": "Where does 的 go?",
+        "prompt": "Say that your child is going to the United States tomorrow. Include 的 after “my”.",
         "gaps": true
       }
     ],
@@ -1634,7 +1634,7 @@
       {
         "id": "l2g06-2",
         "source": "p.62 #2",
-        "prompt": "Ask whether your friend likes eating fruit. The reply comes afterward.",
+        "prompt": "Ask whether your friend likes eating fruit. Use a verb–not–verb question.",
         "kind": "order-build",
         "sub": "B replies afterward: 我很喜歡吃。",
         "tiles": [
@@ -1699,7 +1699,7 @@
       {
         "id": "l2g06-3",
         "source": "p.62 #3",
-        "prompt": "Ask whether your friend wants to go to his home. The reply comes afterward.",
+        "prompt": "Ask whether your friend wants to go to his home. Use a verb–not–verb question.",
         "kind": "order-build",
         "sub": "B replies afterward: 我不要去他家。",
         "tiles": [

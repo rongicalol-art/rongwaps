@@ -126,7 +126,7 @@
       {
         "id": "b1l06-g01-p135-practice-3",
         "source": "p.136 #3",
-        "prompt": "Ask whether your friend can make beef noodles. The reply comes afterward.",
+        "prompt": "Ask whether your friend can make beef noodles. Use a verb–not–verb question.",
         "kind": "order-build",
         "sub": "B replies afterward: 我不會做牛肉麵。",
         "tiles": [
@@ -1351,7 +1351,7 @@
           "english": "I have too many things; I think this room is a little small."
         },
         "sub": "Your things fill every shelf, and there is nowhere to put the rest.",
-        "prompt": "Your things do not fit. Say the room is a little too small.",
+        "prompt": "Your things do not fit. Say you think the room is a little small.",
         "gaps": true
       },
       {
@@ -1408,18 +1408,19 @@
             "placed": [
               "太"
             ],
-            "note": "太 needs 了 (太有趣了), and this sentence has no 了."
+            "note": "太有趣 is a stronger reaction (“so interesting”); the requested description is “very interesting”, with 很有趣.",
+            "title": "Try the requested meaning"
           }
         ],
-        "takeOutNote": "Without a degree word, 有趣 stands alone like a comparison. Use 很 to say “very”.",
-        "hint": "One word here is for a small problem, but your friend is praising the movie.",
+        "takeOutNote": "Without 有點兒, the sentence loses the requested “very”; replace it with 很.",
+        "hint": "Your friend means “very interesting”; one word only says “a little”.",
         "result": {
           "traditional": "我覺得這部電影很有趣。",
           "simplified": "我觉得这部电影很有趣。",
           "pinyin": "Wǒ juéde zhè bù diànyǐng hěn yǒuqù.",
           "english": "I think this movie is very interesting."
         },
-        "successNote": "有點兒 is for a small problem. To praise something, use 很."
+        "successNote": "有點兒 means “a little”; 很有趣 matches the requested “very interesting”."
       }
     ]
   },

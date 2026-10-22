@@ -10,6 +10,7 @@ import { validateGrammarPractice } from '../../src/utils/grammar/validateGrammar
 
 const lessonSeven = readJson<Record<string, GrammarPractice>>('content/grammar-practice/lessonSeven.json');
 const lessonOne = readJson<Record<string, GrammarPractice>>('content/grammar-practice/lessonOne.json');
+const lessonFour = readJson<Record<string, GrammarPractice>>('content/grammar-practice/lessonFour.json');
 const items = [lessonSeven, lessonOne].flatMap((lesson) => Object.values(lesson).flatMap((practice) => practice.items));
 const byId = <T>(id: string) => items.find((item) => item.id === id) as T;
 
@@ -49,4 +50,24 @@ test('place the word: only the right gap is correct, and each wrong gap explains
   assert.match(checkSlotBuild(item, { 'after-verb': '嗎' }).note ?? '', /姓王/);
   assert.deepEqual(validateGrammarPractice({ bookPage: 1, title: 'T', items: [item] }, 'p'), []);
   assert.match(validateGrammarPractice({ bookPage: 1, title: 'T', items: [{ ...item, repairs: [] }] }, 'p')[0].message, /needs a repair/);
+});
+
+test('an empty placement answer never passes, even when no wrong word was placed', () => {
+  const item = byId<SlotBuildItem>('l1g3-p1');
+  assert.equal(checkSlotBuild(item, {}).correct, false);
+});
+
+test('a valid degree description gets the meaning repair before a missing-frame reminder', () => {
+  const item = Object.values(lessonFour).flatMap((page) => page.items)
+    .find((candidate) => candidate.id === 'l04-g3-book2') as SlotBuildItem;
+  const differentMeaning = checkSlotBuild(item, { g1: '很' });
+  assert.equal(differentMeaning.correct, false);
+  assert.equal(differentMeaning.title, 'Try the requested meaning');
+  assert.match(differentMeaning.note ?? '', /他很累 is valid Chinese/);
+  assert.match(differentMeaning.note ?? '', /太…了/);
+  const incomplete = checkSlotBuild(item, { g1: '太' });
+  assert.equal(incomplete.correct, false);
+  assert.equal(incomplete.title, 'Keep going');
+  assert.match(incomplete.note ?? '', /太累了/);
+  assert.equal(checkSlotBuild(item, { g1: '太', g2: '了' }).correct, true);
 });
