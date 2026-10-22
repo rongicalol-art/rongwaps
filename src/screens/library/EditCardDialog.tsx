@@ -55,7 +55,7 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
   return (
     <>
       <Drawer.Body className="flex min-h-0 flex-1 flex-col px-4 sm:px-6">
-        <div onKeyDown={onEnter} className="flex min-h-[320px] flex-1 flex-col items-center justify-center gap-2 rounded-control bg-ui-canvas px-4 py-8">
+        <div onKeyDown={onEnter} className="flex min-h-80 flex-1 flex-col items-center justify-center gap-2 rounded-control bg-ui-canvas px-4 py-8">
           <input
             autoFocus
             aria-label="Word"
