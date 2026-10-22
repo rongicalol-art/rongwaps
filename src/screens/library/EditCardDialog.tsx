@@ -62,7 +62,7 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
             value={word}
             onChange={(e) => setWord(e.target.value)}
             onFocus={(e) => e.currentTarget.select()}
-            className="w-full bg-transparent text-center font-chinese text-5xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted"
+            className="w-full bg-transparent text-center font-chinese text-5xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
             placeholder="字"
           />
           <input
@@ -70,14 +70,14 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
             value={pinyin}
             onChange={(e) => setPinyin(e.target.value)}
             placeholder="pinyin"
-            className="w-full bg-transparent text-center text-base font-black text-brand-primary outline-none placeholder:text-ui-muted"
+            className="w-full bg-transparent text-center text-base font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
           />
           <input
             aria-label="Meaning"
             value={translation}
             onChange={(e) => setTranslation(e.target.value)}
             placeholder="meaning"
-            className="w-full bg-transparent text-center text-base font-bold text-ui-ink outline-none placeholder:text-ui-muted"
+            className="w-full bg-transparent text-center text-base font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
           />
         </div>
         <textarea
