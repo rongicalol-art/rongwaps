@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { LevelTag, Skeleton } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
@@ -67,13 +67,12 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
         )}
       </div>
 
-      <AnimatePresence mode="wait">
+      <>
         {isRelatedLoading ? (
           <motion.div
             key="skeleton-related"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
             className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface"
           >
@@ -95,7 +94,6 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
             key="loaded-related"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
             className="flex flex-col gap-5"
           >
@@ -132,7 +130,7 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
             })}
           </motion.div>
         )}
-      </AnimatePresence>
+      </>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import type { DictionaryListEntry } from '../../../types/models';
 import { DictionaryCard } from './DictionaryCard';
 import type { SearchMode } from './DictionarySearchBar';
@@ -52,13 +52,12 @@ export function DictionaryResults({
       {(isLoading || results.length > 0) && (
         <section aria-label="Search results">
           <div className="flex flex-col">
-            <AnimatePresence mode="wait">
+            <>
               {isLoading && results.length === 0 ? (
                 <motion.div
                   key="dictionary-skeleton-list"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.16, ease: 'easeOut' }}
                   className="flex min-h-[70dvh] flex-col"
                 >
@@ -85,7 +84,6 @@ export function DictionaryResults({
                   key="dictionary-results-list"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                   className="flex flex-col"
                 >
@@ -98,7 +96,7 @@ export function DictionaryResults({
                   ))}
                 </motion.div>
               )}
-            </AnimatePresence>
+            </>
           </div>
         </section>
       )}

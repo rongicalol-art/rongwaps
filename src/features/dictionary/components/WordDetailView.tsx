@@ -1,6 +1,6 @@
 import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { DetailShell, ScreenHeader } from '../../../lib/widgets';
 import { useLevel } from '../../../hooks/useLevels';
 import { useAppStore } from '../../../store/useAppStore';
@@ -48,7 +48,7 @@ export function WordDetailView({
   const [entries, setEntries] = useState<DBDictionaryEntry[]>([]);
   const [fallbackWords, setFallbackWords] = useState<Array<{ word: string; entries: DBDictionaryEntry[] }>>([]);
   const [inCourseWords, setInCourseWords] = useState<Flashcard[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { examples, relatedWords, examplesLoading, relatedLoading } = useWordExtras(word);
 
   useEffect(() => {
@@ -151,13 +151,12 @@ export function WordDetailView({
           }
         />
         <div className="relative mx-auto flex min-h-full w-full max-w-[800px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6">
-          <AnimatePresence mode="wait">
+          <>
             {loading ? (
               <motion.div
                 key="word-skeleton"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 transition={{ duration: 0.16, ease: 'easeOut' }}
                 className="w-full"
               >
@@ -168,7 +167,6 @@ export function WordDetailView({
                 key="word-fallback"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 transition={{ duration: 0.16 }}
                 className="w-full"
               >
@@ -183,7 +181,6 @@ export function WordDetailView({
                 key={`word-loaded-${word}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="flex w-full flex-col gap-7"
               >
@@ -231,7 +228,7 @@ export function WordDetailView({
                 )}
               </motion.div>
             )}
-          </AnimatePresence>
+          </>
         </div>
       </DetailShell.Scroller>
     </DetailShell.Root>

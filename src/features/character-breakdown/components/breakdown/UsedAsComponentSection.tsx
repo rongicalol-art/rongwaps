@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { Skeleton } from '../../../../lib/widgets';
 import { UsedAsCompactItem } from './UsedAsCompactItem';
@@ -45,13 +45,12 @@ export const UsedAsComponentSection: React.FC<UsedAsComponentSectionProps> = ({
         )}
       </div>
 
-      <AnimatePresence mode="wait">
+      <>
         {isUsedAsLoading ? (
           <motion.div
             key="skeleton-used"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
             className="flex flex-col gap-3"
           >
@@ -75,7 +74,6 @@ export const UsedAsComponentSection: React.FC<UsedAsComponentSectionProps> = ({
             key="loaded-used"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
             className="flex flex-col gap-3"
           >
@@ -132,7 +130,7 @@ export const UsedAsComponentSection: React.FC<UsedAsComponentSectionProps> = ({
             )}
           </motion.div>
         )}
-      </AnimatePresence>
+      </>
     </div>
   );
 };

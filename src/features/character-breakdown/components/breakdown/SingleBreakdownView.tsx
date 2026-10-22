@@ -82,13 +82,12 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
           rightAction={<BreakdownSettingsPopover />}
         />
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-3 pb-12 sm:px-5 sm:py-4 lg:px-6 lg:py-5">
-          <AnimatePresence mode="wait">
+          <>
             {!charData && !isV3Runtime ? (
               <motion.div
                 key="skeleton"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
                 className="w-full"
               >
@@ -99,7 +98,6 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
                 key="content"
                 initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 12 }}
                 transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
                 className="w-full"
               >
@@ -138,7 +136,7 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
                 )}
               </motion.div>
             )}
-          </AnimatePresence>
+          </>
         </div>
       </DetailShell.Scroller>
 
