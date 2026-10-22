@@ -175,7 +175,7 @@ export function OrderBuildExercise({
         )}
         </Fragment>
       ))}
-      {end && (
+      {line.length > 0 && end && (
         <span className={cn('-ml-1.5 py-0.5 font-chinese text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
       )}
       {line.length > 0 && <span data-drop-slot="end" aria-hidden="true" className="min-h-10 w-10 shrink-0" />}
