@@ -46,6 +46,9 @@ try:
         '/data%2fgrammar%2fbook-1.json',
         '/data/vocabulary/../grammar/book-1.json',
         '/data/vocabulary/book-1.json',
+        '/data/study/manifest.json',
+        '/%64ata/study/manifest.json.br',
+        '/data/study/manifest.json.gz',
         '/data/book-pages/modern-chinese-1/manifest.json',
     ]
     for method in ['GET', 'HEAD']:
@@ -55,10 +58,11 @@ try:
             assert 'no-store' in headers.get('Cache-Control', ''), (path, headers)
             assert 'Authorization' in headers.get('Vary', ''), (path, headers)
     assert request('/data/dictionary/manifest.json')[0] == 401
+    assert request('/api/dictionary/search?q=teacher')[0] == 401
     assert request('/data/decomposition-runtime/manifest.json')[0] == 401
     assert request('/')[0] == 200
     assert request('/%xx')[0] == 400
-    print('Production smoke passed: 18 protected path/method cases; public shell and malformed-path checks.')
+    print('Production smoke passed: 24 protected path/method cases; public shell and malformed-path checks.')
 finally:
     process.terminate()
     process.wait(timeout=10)

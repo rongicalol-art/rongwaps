@@ -1,3 +1,5 @@
+import { lookupDictionary, searchDictionary, lookupCourseCards, lookupExamples } from './dictionary.js';
+import { existsSync } from 'node:fs';
 import express from "express";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
@@ -117,6 +119,41 @@ export async function requireAuth(req: express.Request, res: express.Response, n
   next();
 }
 
+const dictionaryLimiter = userLimiter(180);
+app.use('/api/dictionary', (_req, res, next) => {
+  res.setHeader('Cache-Control', 'private, no-store');
+  res.vary('Authorization');
+  next();
+}, apiLimiter, requireAuth, dictionaryLimiter);
+app.get('/api/dictionary/search', async (req, res) => {
+  const query = typeof req.query.q === 'string' ? req.query.q.trim() : '';
+  const limit = req.query.limit === undefined ? 30 : Number(req.query.limit);
+  if (!query || query.length > 128 || (query.match(/[*?＊？]/g)?.length ?? 0) > 4
+    || !Number.isInteger(limit) || limit < 1 || limit > 50) {
+    res.status(400).json({ error: 'Invalid search' }); return;
+  }
+  try { res.json(await searchDictionary(query, limit)); }
+  catch { res.status(503).json({ error: 'Dictionary unavailable. Please try again.' }); }
+});
+app.post(['/api/dictionary/lookup', '/api/dictionary/course'], async (req, res) => {
+  const words: unknown = req.body?.words;
+  if (!Array.isArray(words) || words.length > 64 || !words.every(word => typeof word === 'string' && word.trim().length > 0 && word.length <= 128)) {
+    res.status(400).json({ error: 'Invalid words' }); return;
+  }
+  try { res.json(await (req.path.endsWith('/course') ? lookupCourseCards : lookupDictionary)([...new Set((words as string[]).map(word => word.trim()))])); }
+  catch { res.status(503).json({ error: 'Dictionary unavailable. Please try again.' }); }
+});
+
+app.get('/api/dictionary/examples', async (req, res) => {
+  const word = typeof req.query.word === 'string' ? req.query.word.trim() : '';
+  const limit = req.query.limit === undefined ? 3 : Number(req.query.limit);
+  if (!word || word.length > 128 || !Number.isInteger(limit) || limit < 1 || limit > 30) {
+    res.status(400).json({ error: 'Invalid word' }); return;
+  }
+  try { res.json(await lookupExamples(word, limit)); }
+  catch { res.status(503).json({ error: 'Examples unavailable. Please try again.' }); }
+});
+
 app.use("/api", (_req: express.Request, res: express.Response) => {
   res.status(404).json({ error: "Not found" });
 });
@@ -134,11 +171,9 @@ async function bootstrap() {
   } else {
     console.log("Bootstrap: Serving static build files from dist/ directory...");
     const distPath = path.join(process.cwd(), "dist");
-    // Cache policy (Cloudflare already applies brotli compression):
+    // Public assets are immutable; authenticated content is memory-only on the client.
     //  - /assets/* are content-hashed by Vite -> cache forever.
-    //  - Versioned content packs (/data) and the dictionary trie are large
-    //    and change only on deploys -> cache an hour at browsers/edge;
-    //    IndexedDB keys carry the real versioning.
+    //  - /data/* is checked on every request and never stored in shared caches.
     //  - Everything else stays revalidate-every-time; the shell files
     //    (index.html, service worker, manifest) are forced to no-cache.
     const distDataDir = path.join(distPath, "data");
@@ -170,6 +205,19 @@ async function bootstrap() {
           contentRequestLimiter(req, res, next);
         });
       });
+    });
+    app.use((req, res, next) => {
+      if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+      let target: string;
+      try { target = path.resolve(distPath, `.${decodeURIComponent(req.path)}`); } catch { return next(); }
+      if (!target.startsWith(path.join(distDataDir, 'study') + path.sep) || !target.endsWith('.json')) return next();
+      res.vary('Accept-Encoding');
+      const encoding = req.acceptsEncodings('br', 'gzip', 'identity');
+      const suffix = encoding === 'br' ? '.br' : encoding === 'gzip' ? '.gz' : '';
+      if (!suffix || !existsSync(target + suffix)) return next();
+      res.setHeader('Content-Encoding', encoding as string);
+      res.type('application/json');
+      res.sendFile(target + suffix, { cacheControl: false }, error => { if (error) next(error); });
     });
     app.use(express.static(distPath, {
       setHeaders(res: express.Response, filePath: string) {

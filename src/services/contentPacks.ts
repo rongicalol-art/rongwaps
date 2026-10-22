@@ -1,10 +1,11 @@
+import { studyPartKey, type LoadedStudyPack } from '../utils/vocabulary/studyPack';
+import { lookupDictionaryApi } from './dictionaryApi';
 import { flashcardExtrasKey, flashcardExtrasShard, type FlashcardExtras } from '../utils/vocabulary/flashcardExtrasPack';
 import { debugLogger } from '../utils/debug/debugLogger';
 import type { CharacterJson } from 'hanzi-writer';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
-import { getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
 import { createPackLoader, type PackLoader } from './packLoader';
 import {
   type ContentPackKind,
@@ -45,16 +46,42 @@ export async function getPackManifest(kind: ContentPackKind): Promise<GenericCon
   return getLoader(kind).manifest();
 }
 
-/** Only the active words' shards exceed the small idle cache; closing study releases them. */
+/** Decoded bundles are bounded when idle and pinned only by mounted study sessions. */
 export function retainStudyPacks(cards: readonly Flashcard[]): () => void {
-  const words = cards.flatMap((card) => [card.front, card.traditional, card.simplified].filter((word): word is string => Boolean(word)));
-  const releaseDictionary = getLoader('dictionary').retainParts(words.map(getDictionaryShard));
-  const releaseExtras = getLoader('flashcard-extras').retainParts(cards.map((card) => flashcardExtrasShard(flashcardExtrasKey(card))));
-  return () => { releaseDictionary(); releaseExtras(); };
+  return getLoader('study').retainParts(cards.map(card => studyPartKey(card.bookId, card.lessonId, card.partId ?? 1)));
+}
+export function getLoadedStudyCards(): Flashcard[] {
+  return [...getLoader<LoadedStudyPack>('study').loadedParts()].flatMap(pack => pack.cards);
+}
+export function getLoadedStudyExtras(card: Flashcard): FlashcardExtras | undefined {
+  for (const pack of getLoader<LoadedStudyPack>('study').loadedParts()) {
+    const extras = pack.extras.get(flashcardExtrasKey(card));
+    if (extras) return extras;
+  }
+}
+export async function loadStudyCards(keys: number[], signal?: AbortSignal): Promise<Flashcard[]> {
+  const packs: LoadedStudyPack[] = [];
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(3, keys.length) }, async () => {
+    while (next < keys.length) {
+      signal?.throwIfAborted();
+      const pack = await loadPack<LoadedStudyPack>('study', keys[next++]);
+      signal?.throwIfAborted();
+      if (!pack) throw new Error('Study part missing. Refresh and try again.');
+      packs.push(pack);
+    }
+  }));
+  return packs.flatMap(pack => pack.cards).sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
+}
+export async function prepareStudyPacks(cards: readonly Flashcard[], signal?: AbortSignal): Promise<void> {
+  const course = cards.filter(card => /^b\d+[-_]?l\d+/i.test(card.id));
+  await loadStudyCards([...new Set(course.map(card => studyPartKey(card.bookId, card.lessonId, card.partId ?? 1)))], signal);
 }
 
 /** One small shard replaces whole-corpus indexing for unchanged course cards. */
 export async function fetchPackedFlashcardExtras(card: Flashcard): Promise<FlashcardExtras | null | undefined> {
+  const warm = getLoadedStudyExtras(card);
+  if (warm) return warm;
   const key = flashcardExtrasKey(card);
   try {
     const pack = await loadPack<Map<string, FlashcardExtras>>('flashcard-extras', flashcardExtrasShard(key));
@@ -138,38 +165,21 @@ export async function fetchBreakdownsFromPacks(characters: string[]): Promise<Re
   return results;
 }
 
+/** Exact lesson definitions resolve locally; other words return only matching rows from the API. */
 export async function fetchDictionaryRowsFromPacks(words: string[], signal?: AbortSignal): Promise<Map<string, DBDictionaryRow[]>> {
+  signal?.throwIfAborted();
   const results = new Map<string, DBDictionaryRow[]>();
-  try {
-    signal?.throwIfAborted();
-    const uniqueWords = [...new Set(words.map((word) => word.trim()).filter(Boolean))];
-    const wordsByShard = new Map<number, Set<string>>();
-
-    for (const word of uniqueWords) {
-      const shard = getDictionaryShard(word);
-      const shardWords = wordsByShard.get(shard) || new Set<string>();
-      shardWords.add(word);
-      wordsByShard.set(shard, shardWords);
+  const missing: string[] = [];
+  for (const word of new Set(words.map(word => word.trim()).filter(Boolean))) {
+    let found = false;
+    for (const pack of getLoader<LoadedStudyPack>('study').loadedParts()) {
+      const rows = pack.dictionary.get(word);
+      if (rows) { results.set(word, rows); found = true; break; }
+      if (pack.cards.some(card => [card.front, card.traditional, card.simplified].includes(word))) found = true;
     }
-
-    const shards = [...wordsByShard.entries()];
-    let next = 0;
-    await Promise.all(Array.from({ length: Math.min(4, shards.length) }, async () => {
-      while (next < shards.length) {
-        signal?.throwIfAborted();
-        const [shard, shardWords] = shards[next++];
-        const rows = await loadPack<DBDictionaryRow[]>('dictionary', shard);
-        if (!rows) continue;
-        for (const word of shardWords) {
-          const matches = rows.filter((row) => row.traditional === word || row.simplified === word);
-          if (matches.length > 0) results.set(word, matches);
-        }
-      }
-    }));
-  } catch (error) {
-    signal?.throwIfAborted();
-    debugLogger.warn('Cache', 'Static dictionary packs unavailable; using Supabase.', error);
+    if (!found) missing.push(word);
   }
+  if (missing.length) for (const [word, rows] of await lookupDictionaryApi(missing, signal)) results.set(word, rows);
   return results;
 }
 

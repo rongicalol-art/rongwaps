@@ -70,18 +70,18 @@ export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
 export async function preparePracticeData(cards: readonly import('../data/flashcards').Flashcard[], signal: AbortSignal): Promise<void> {
   signal.throwIfAborted();
   const studyCards = cards.slice(0, FLASHCARD_EXTRAS_CACHE_LIMIT);
-  const [content, dictionary, vocabulary, search, audio] = await Promise.all([
+  const [content, dictionary, packs, audio] = await Promise.all([
     import('../features/flashcards/content/flashcardContent'),
-    import('../services/dictionaryService'), import('../services/courseVocabLookup'),
-    import('../services/dictionarySearchWorker'), import('../services/audioService'),
+    import('../services/dictionaryService'), import('../services/contentPacks'), import('../services/audioService'),
   ]);
+  signal.throwIfAborted();
+  await packs.prepareStudyPacks(studyCards, signal);
   signal.throwIfAborted();
   const words = [...new Set(studyCards.flatMap((card) => [card.front, card.traditional, card.simplified]).filter((word): word is string => Boolean(word)))];
   let audioFailed = false;
   await Promise.all([
     content.preloadFlashcardContent(studyCards, signal),
     dictionary.getDictionaryEntriesBatch(words, signal),
-    vocabulary.getCourseVocabLookupMap(), search.warmDictionarySearch(),
     audio.audioService.preload(studyCards.slice(0, 4).map((card) => card.audio), signal, (progress) => { audioFailed = progress.failed > 0; }),
   ]);
   signal.throwIfAborted();

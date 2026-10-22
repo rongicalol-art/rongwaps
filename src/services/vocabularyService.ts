@@ -1,3 +1,5 @@
+import { getLoadedStudyCards, getLoadedStudyExtras } from './contentPacks';
+import { lookupExamplesApi } from './dictionaryApi';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { Flashcard } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
@@ -8,7 +10,6 @@ import {
   fetchVocabularyPack,
   fetchAllVocabularyPacks,
   fetchCourseExampleCards,
-  fetchPackedFlashcardExtras,
 } from './contentPacks';
 import type { WordExample } from '../types/models';
 import { getSmartScore } from '../utils/vocabulary/vocabularySearchScoring';
@@ -130,44 +131,15 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
 
 export async function fetchExamples(word: string, limit = 3): Promise<WordExample[]> {
   if (!word.trim() || limit <= 0) return [];
-  // The generated extras already contain the full-corpus matching for course
-  // words. A warm lesson must not scan every book again when its dictionary opens.
-  const courseCard = (await fetchVocabulary()).find((card) => [card.front, card.traditional, card.simplified].includes(word));
-  const packed = courseCard ? await fetchPackedFlashcardExtras(courseCard) : null;
-  if (packed) {
-    const matches = packed.examples.filter((example) => example.chinese.includes(word));
-    if (matches.length) return [...matches.filter((example) => example.audio), ...matches.filter((example) => !example.audio)].slice(0, limit);
-  }
-  const cards = await fetchExamplesForWord(word);
-  const seen = new Set<string>();
-  const examples: WordExample[] = [];
-
-  const cardExamples = cards.flatMap((card) => (card.examples ?? []).map((example) => ({ card, example })));
-  const orderedExamples = [
-    ...cardExamples.filter(({ example }) => example.audio),
-    ...cardExamples.filter(({ example }) => !example.audio),
-  ];
-  for (const { card, example: ex } of orderedExamples) {
-      const chinese = ex.chinese?.trim();
-      const pinyin = ex.pinyin?.trim();
-      const english = ex.english?.trim();
-      if (!chinese || !chinese.includes(word)) continue;
-      if (!pinyin || !english) continue;
-      if (seen.has(chinese)) continue;
-      seen.add(chinese);
-      examples.push({
-        chinese,
-        pinyin,
-        english,
-        ...(ex.audio ? { audio: ex.audio } : {}),
-        sourceCardId: card.id,
-        sourceFront: card.front,
-        sourceBookId: card.bookId,
-        sourceLessonId: card.lessonId,
-      });
-    if (examples.length >= limit) return examples;
-  }
-
+  const key = `word-examples:${word}:${limit}`;
+  const cached = vocabularyCache.get<WordExample[]>(key);
+  if (cached) return cached;
+  const card = getLoadedStudyCards().find(card => [card.front, card.traditional, card.simplified].includes(word));
+  const extras = card ? getLoadedStudyExtras(card) : undefined;
+  const matches = extras?.examples.filter(example => example.chinese.includes(word)) ?? [];
+  const examples = matches.length
+    ? [...matches.filter(example => example.audio), ...matches.filter(example => !example.audio)].slice(0, limit)
+    : await lookupExamplesApi(word, Math.min(limit, 30));
+  vocabularyCache.set(key, examples);
   return examples;
 }
-

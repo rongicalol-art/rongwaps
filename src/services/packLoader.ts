@@ -21,6 +21,7 @@ export interface PackPart {
 
 export interface PackLoader<TManifest, TLoaded> {
   manifest: () => Promise<TManifest>;
+  loadedParts: () => Iterable<TLoaded>;
   /**
    * Loads one part. Resolves null only when the manifest does not define the
    * key or its path is outside `partPathPrefix`; every other failure throws.
@@ -145,6 +146,7 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
 
   return {
     manifest: getManifest,
+    loadedParts: () => partCache.values(),
     loadPart,
     retainParts: (keys) => {
       const unique = [...new Set(keys)];

@@ -11,6 +11,7 @@ export interface GenericContentManifest {
   totalCount?: number;
   shardCount?: number;
   shardStrategy?: string;
+  parts?: import('./vocabulary/studyPack').StudyPart[];
   books?: Array<{ bookId: number; count: number; path: string; sha256?: string; bytes?: number }>;
   shards?: Array<{ shard: number; count: number; path: string; sha256?: string; bytes?: number }>;
 }
@@ -30,6 +31,7 @@ export interface MemoryHookPack {
 }
 
 export type ContentPackKind =
+  | 'study'
   | 'flashcard-extras'
   | 'vocabulary'
   | 'breakdowns'

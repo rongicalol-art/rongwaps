@@ -1,7 +1,8 @@
+import { isCardInPartSelection } from '../utils/lesson/lessonPartSelection';
 import type { Flashcard } from '../data/flashcards';
 import { fetchVocabulary, prepareVocabulary } from './vocabularyService';
 import { getCourseVocabLookupMap } from './courseVocabLookup';
-import { fetchAllVocabularyPacks } from './contentPacks';
+import { fetchAllVocabularyPacks, getPackManifest, loadStudyCards } from './contentPacks';
 import { getDictionaryEntriesBatch } from './dictionaryService';
 import { useAppStore } from '../store/useAppStore';
 import { flashcardService } from './flashcardService';
@@ -78,6 +79,11 @@ export async function fetchCurriculumDeckData(
   selectedLessons: number[],
   selectedLessonParts: LessonPartSelectionMap,
 ): Promise<{ cards: Flashcard[]; knownIds: Set<string> }> {
-  const data = await fetchVocabulary(activeBookId);
+  const manifest = await getPackManifest('study');
+  const parts = (manifest.parts ?? []).filter(part => part.bookId === activeBookId
+    && (!selectedLessons.length || selectedLessons.includes(part.lessonId) && isCardInPartSelection({ bookId: part.bookId, lessonId: part.lessonId, partId: part.partId } as Flashcard, selectedLessonParts)));
+  const data = parts.reduce((sum, part) => sum + part.count, 0) > 128
+    ? await fetchVocabulary(activeBookId)
+    : await loadStudyCards(parts.map(part => part.key));
   return filterCurriculumCards(data, selectedLessons, selectedLessonParts);
 }

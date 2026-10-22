@@ -1,3 +1,4 @@
+import { studyPacksPlugin } from './scripts/performance/studyPacks';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { existsSync } from 'fs';
@@ -165,7 +166,7 @@ const pwaPlugin = VitePWA({
 
 export default defineConfig(() => {
   return {
-    plugins: [chineseFontStylesPlugin(), react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), shellPrecachePlugin, pwaPlugin],
+    plugins: [studyPacksPlugin(), chineseFontStylesPlugin(), react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), shellPrecachePlugin, pwaPlugin],
     build: {
       outDir: 'dist',
       emptyOutDir: true,

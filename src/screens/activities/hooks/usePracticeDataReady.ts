@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import { retainStudyPacks } from '../../../services/contentPacks';
-import { retainDictionarySearch } from '../../../services/dictionarySearchWorker';
 import { preparePracticeData } from '../../../utils/practiceLoader';
 import { FLASHCARD_EXTRAS_CACHE_LIMIT } from '../../../utils/vocabulary/flashcardExtrasPack';
 
@@ -15,7 +14,6 @@ export function usePracticeDataReady(cards: Flashcard[], enabled: boolean) {
     const controller = new AbortController();
     const workingSet = cards.slice(0, FLASHCARD_EXTRAS_CACHE_LIMIT);
     const releaseWords = retainStudyPacks(workingSet);
-    const releaseSearch = retainDictionarySearch();
     setFailure(null);
     const deadline = window.setTimeout(() => {
       controller.abort();
@@ -30,7 +28,6 @@ export function usePracticeDataReady(cards: Flashcard[], enabled: boolean) {
       window.clearTimeout(deadline);
       controller.abort();
       releaseWords();
-      releaseSearch();
     };
   }, [cards, enabled, attempt]);
   return {

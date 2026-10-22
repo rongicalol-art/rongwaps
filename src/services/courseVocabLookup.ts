@@ -1,9 +1,12 @@
+import { cleanVocabText } from '../utils/vocabulary/vocabCleaner';
+import { buildCourseVocabLookupMap } from '../utils/vocabulary/courseLookup';
+import { getLoadedStudyCards } from './contentPacks';
+import { lookupCourseCardsApi } from './dictionaryApi';
 /**
  * Fast in-memory dictionary lookup map for course vocabulary words.
  */
 
 import type { Flashcard } from '../data/flashcards';
-import { cleanVocabText } from '../utils/vocabulary/vocabCleaner';
 import { fetchVocabulary } from './vocabularyService';
 import { characterReadings } from '../utils/pinyin/characterReadings';
 import { getReviewedWordAudio } from './pronunciationAudio';
@@ -20,24 +23,7 @@ export async function getCourseVocabLookupMap(): Promise<Map<string, Flashcard>>
   courseVocabMapPromise = (async () => {
     try {
       const allCards = await fetchVocabulary();
-      const map = new Map<string, Flashcard>();
-
-      const register = (key: string | undefined, card: Flashcard) => {
-        if (!key) return;
-        const trimmed = key.trim();
-        if (!trimmed) return;
-        if (!map.has(trimmed)) map.set(trimmed, card);
-        const readingKey = recordingLookupKey(trimmed, card.pinyin);
-        if (readingKey && (!map.has(readingKey) || (!map.get(readingKey)?.audio && card.audio))) map.set(readingKey, card);
-        const cleaned = cleanVocabText(trimmed);
-        if (cleaned && !map.has(cleaned)) map.set(cleaned, card);
-      };
-
-      for (const card of allCards) {
-        register(card.front, card);
-        register(card.traditional, card);
-        register(card.simplified, card);
-      }
+      const map = buildCourseVocabLookupMap(allCards);
 
       courseVocabByWordMap = map;
       return map;
@@ -49,9 +35,23 @@ export async function getCourseVocabLookupMap(): Promise<Map<string, Flashcard>>
   return courseVocabMapPromise;
 }
 
+
+const remoteCourse = new Map<string, Flashcard[]>();
+export async function getCourseVocabForWords(words: string[]): Promise<Map<string, Flashcard>> {
+  if (courseVocabByWordMap) return courseVocabByWordMap;
+  const warm = buildCourseVocabLookupMap(getLoadedStudyCards());
+  const missing = [...new Set(words.map(word => word.trim()).filter(word => word && !warm.has(word) && !remoteCourse.has(word)))];
+  if (missing.length) {
+    const cards = await lookupCourseCardsApi(missing);
+    for (const word of missing) remoteCourse.set(word, cards.filter(card => [card.front, card.traditional, card.simplified].includes(word)));
+    while (remoteCourse.size > 256) remoteCourse.delete(remoteCourse.keys().next().value!);
+  }
+  return buildCourseVocabLookupMap([...remoteCourse.values()].flat().concat(getLoadedStudyCards()));
+}
+
 /** Audio reuse requires the intended reading, not just a spelling match. */
 export async function findMatchingCourseRecording(word: string, pinyin?: string): Promise<Flashcard | undefined> {
-  const map = await getCourseVocabLookupMap();
+  const map = await getCourseVocabForWords([word]);
   const original = findReadingMatch(map, [word], pinyin);
   if (original?.audio) return original;
   const base = map.get(word);
@@ -61,9 +61,10 @@ export async function findMatchingCourseRecording(word: string, pinyin?: string)
 
 export async function findMatchingCourseVocab(word: string): Promise<Flashcard | undefined> {
   if (!word || !word.trim()) return undefined;
-  const map = await getCourseVocabLookupMap();
   const trimmed = word.trim();
-  return map.get(trimmed) || map.get(cleanVocabText(trimmed));
+  const cleaned = cleanVocabText(trimmed);
+  const map = await getCourseVocabForWords([trimmed, cleaned]);
+  return map.get(trimmed) ?? map.get(cleaned);
 }
 
 /** A complete book recording demonstrating this exact reading; never an extracted character clip. */

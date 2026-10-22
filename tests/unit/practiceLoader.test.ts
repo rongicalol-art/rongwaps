@@ -1,3 +1,5 @@
+import { mock } from 'node:test';
+import { buildStudyPacks } from '../../scripts/performance/studyPacks';
 import { test, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../src/utils/practiceLoader';
@@ -8,6 +10,16 @@ import {
   clearActivityDeckCache,
 } from '../../src/hooks/useActivityDataLoader';
 import type { Flashcard } from '../../src/data/flashcards';
+
+test.after(() => mock.restoreAll());
+test.before(async () => {
+  const assets = await buildStudyPacks(process.cwd());
+  const network = globalThis.fetch;
+  mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
+    const bytes = assets.get(String(input));
+    return bytes ? new Response(new Uint8Array(bytes), { headers: { 'Content-Type': 'application/json' } }) : network(input, init);
+  });
+});
 
 test('getPracticeLoadingMessage returns correct messages for each mode', () => {
   assert.equal(getPracticeLoadingMessage('flashcards', false, false), 'Loading lesson…');
@@ -164,6 +176,7 @@ test('cancelled study preparation cannot begin fetching or preparing recordings'
 });
 
 test('lesson preparation fills the card cache before revealing study and prepares only a bounded recording window', async (t) => {
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => { assert.ok(String(input).endsWith('/api/dictionary/lookup')); return Response.json({}); });
   const files: (string | undefined)[][] = [];
   t.mock.method(audioService, 'preload', async (names: (string | undefined)[]) => { files.push(names); });
   const primed: (string | undefined)[] = [];
@@ -181,6 +194,7 @@ test('lesson preparation fills the card cache before revealing study and prepare
 });
 
 test('failed recordings reject preparation and a later retry can complete', async (t) => {
+  t.mock.method(globalThis, 'fetch', async () => Response.json({}));
   const cards: Flashcard[] = [{ id: 'fixture-retry', front: 'fixture-retry', back: '', bookId: 0, lessonId: 0 }];
   let fail = true;
   t.mock.method(audioService, 'preload', async (...[, , progress]: Parameters<typeof audioService.preload>) => { progress?.({ ready: 0, total: 1, failed: fail ? 1 : 0 }); });

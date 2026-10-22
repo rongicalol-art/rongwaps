@@ -1,9 +1,30 @@
+import { mock } from 'node:test';
+import { readFile } from 'node:fs/promises';
+import { getCourseVocabLookupMap } from '../../src/services/courseVocabLookup';
+import { getDictionaryShard } from '../../shared/dictionaryShard';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   lookupSentenceWord,
   validateSentenceWords,
 } from '../../src/services/sentenceLookupService';
+
+test.after(() => mock.restoreAll());
+test.before(async () => {
+  await getCourseVocabLookupMap();
+  mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
+    assert.equal(String(input), '/api/dictionary/lookup');
+    const { words } = JSON.parse(String(init?.body)) as { words: string[] };
+    const result: Record<string, unknown[]> = {};
+    for (const word of words) {
+      const pack = JSON.parse(await readFile(`public/data/dictionary/shard-${String(getDictionaryShard(word)).padStart(2, '0')}.json`, 'utf8')) as { items: [number, string, string, string, unknown][] };
+      result[word] = pack.items.filter(([, s, t]) => s === word || t === word).map(([id, simplified, traditional, pinyin_accented, definitions]) => ({
+        id, simplified, traditional: traditional || simplified, pinyin_accented, definitions,
+      }));
+    }
+    return Response.json(result);
+  });
+});
 
 test('sentenceLookup: validates known words in batch', async () => {
   const words = ['你好', '謝謝', 'nonexistentwordxyz123'];

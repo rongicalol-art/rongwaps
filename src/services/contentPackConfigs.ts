@@ -1,3 +1,4 @@
+import { validStudyPack, decodeStudyPack, type StudyPack } from '../utils/vocabulary/studyPack';
 import { FLASHCARD_EXTRAS_SHARDS, flashcardExtrasShard, isValidFlashcardExtrasRow, type FlashcardExtrasRow } from '../utils/vocabulary/flashcardExtrasPack';
 import type { DBCharacterBreakdown } from '../types/database';
 import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
@@ -27,6 +28,17 @@ import {
 } from '../utils/packValidators';
 
 export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>> = {
+  study: {
+    namespace: 'study', manifestPath: '/data/study/manifest.json', manifestLabel: 'Study manifest',
+    partPathPrefix: '/data/study/', partCacheKeyKind: 'part', maxCachedParts: 8,
+    partLabel: key => `Study part ${key}`,
+    validateManifest: m => m.schemaVersion === 1 && typeof m.version === 'string' && Array.isArray(m.parts)
+      && m.parts.every(part => Number.isInteger(part.key) && Array.isArray(part.ids) && part.ids.length === part.count)
+      && m.parts.reduce((sum, part) => sum + part.count, 0) === m.totalCount,
+    getParts: m => m.parts ?? [],
+    validatePack: (pack, part) => validStudyPack(pack, part.key, part.count),
+    transform: pack => decodeStudyPack(pack as StudyPack),
+  },
   'flashcard-extras': {
     namespace: 'flashcard-extras', manifestPath: '/data/flashcard-extras/manifest.json', manifestLabel: 'Flashcard extras manifest',
     partPathPrefix: '/data/flashcard-extras/', partCacheKeyKind: 'shard', persistManifest: true, maxCachedParts: 16,

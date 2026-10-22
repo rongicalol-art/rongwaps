@@ -115,11 +115,11 @@ export async function dereferenceEntries(entries: DBDictionaryEntry[]): Promise<
 }
 
 /**
- * Execute a remote dictionary search via the `search_dictionary` RPC.
+ * Execute a remote dictionary search through the authenticated dictionary API.
  * Results are cached in the dictionary search cache.
  *
  * @param queryNormalized - The normalized (lowercased, trimmed) query
- * @returns Array of dictionary entries from the RPC
+ * @returns Array of dictionary entries from the API
  */
 export async function executeRemoteSearch(queryNormalized: string, onResults?: (results: unknown[]) => void): Promise<unknown[]> {
   if (dictionarySearchCache.has(queryNormalized)) {
@@ -134,9 +134,9 @@ export async function executeRemoteSearch(queryNormalized: string, onResults?: (
 
   const request = (async () => {
     try {
-      // 1. Instant offline static search (zero network, works offline)
-      const { searchDictionaryOffline } = await import('./dictionarySearchService');
-      const offlineResults = await searchDictionaryOffline(queryNormalized, 30, (rows) => {
+      // Warm lesson entries publish while the authenticated search completes.
+      const { searchDictionary } = await import('./dictionarySearchService');
+      const offlineResults = await searchDictionary(queryNormalized, 30, (rows) => {
         for (const listener of searchListeners.get(queryNormalized) ?? []) listener(rows);
       });
       if (offlineResults && offlineResults.length > 0) {
@@ -147,7 +147,7 @@ export async function executeRemoteSearch(queryNormalized: string, onResults?: (
       return [];
     } catch (err) {
       debugLogger.warn('Cache', 'Dictionary search failed:', err);
-      return [];
+      throw err;
     } finally {
       remoteSearchPromises.delete(queryNormalized);
       searchListeners.delete(queryNormalized);

@@ -22,8 +22,18 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "types": ["vite/client", "vite-plugin-pwa/react"],
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/react"
+    ],
     "strict": true
   },
-  "include": ["src", "server", "scripts", "tests", "vite.config.ts"]
+  "include": [
+    "src",
+    "server",
+    "scripts",
+    "tests",
+    "vite.config.ts",
+    "shared"
+  ]
 }

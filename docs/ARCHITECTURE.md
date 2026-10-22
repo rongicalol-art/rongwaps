@@ -124,3 +124,7 @@ Ron's Mandarin is mobile-first and uses one workspace scroll container owned by 
 Character decomposition evaluation uses a private, provenance-first staging subsystem under `src/features/character-decomposition/staging/`. Source adapters feed immutable normalized records; selection, conflict resolution, diagnostics, metadata, and releases remain independent layers. The service-role writer is command-line tooling only and is not imported by screens, hooks, or learner runtime services.
 
 `character_decompositions` is a guarded release projection and is not the existing runtime `character_breakdowns_v2` table. A future static-pack publisher may read only an approved, license-cleared release. Until that separate phase is approved, the app continues using its current breakdown packs unchanged.
+
+### Shared dictionary engine
+
+`shared/` owns browser-independent dictionary ranking, normalization, definition parsing and word matching. Browser utility paths re-export this single implementation; the Node dictionary worker imports it directly. Server imports from `src/` are type-only. `scripts/performance/studyPacks.ts` derives deployment bundles through a Vite plugin; it never changes canonical `public/data/` packs. The study pack kind uses `createPackLoader`, with the same authenticated transport and bounded retention as other content.

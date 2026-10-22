@@ -1,9 +1,9 @@
+import { segmentChineseQuery } from '../../shared/dictionarySearch';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson } from '../acceptance_helpers';
 import {
   searchInIndex,
-  searchDictionaryOffline,
   searchByCharacterComponents,
   segmentPinyinQuery,
   type CompactSearchEntry,
@@ -116,11 +116,11 @@ test('searchInIndex matches prefix for Chinese characters', () => {
   );
 });
 
-test('searchDictionaryOffline gracefully handles empty queries and segments multi-word Chinese clauses', async () => {
-  const empty = await searchDictionaryOffline('');
+test('Chinese segmentation handles empty queries and multi-word clauses', () => {
+  const empty = segmentChineseQuery(index, '', 30);
   assert.deepEqual(empty, []);
 
-  const segmented = await searchDictionaryOffline('我有拖延症', 10);
+  const segmented = segmentChineseQuery(index, '我有拖延症', 10);
   const words = segmented.map((r) => r.simplified);
   assert.ok(
     words.includes('拖延症') || words.includes('拖延'),

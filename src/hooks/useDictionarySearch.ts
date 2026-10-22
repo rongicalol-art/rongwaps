@@ -1,7 +1,6 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { executeRemoteSearch } from '../services/dictionaryService';
-import { getCourseVocabLookupMap } from '../services/courseVocabLookup';
 import { sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
 
 export interface SearchResult {
@@ -11,6 +10,7 @@ export interface SearchResult {
   pinyin_accented: string;
   definitions: string | string[] | Record<string, unknown>;
   measure_words?: string[];
+  courseDefinition?: string;
   match_type: 'exact' | 'prefix' | 'partial';
   total_score: number;
   bookId?: number;
@@ -48,18 +48,12 @@ export function useDictionarySearch(externalQuery: string) {
     setSearchError(null);
 
     try {
-      let courseMap: Awaited<ReturnType<typeof getCourseVocabLookupMap>> | null = null;
-      let latestRows: unknown[] | null = null;
       let complete = false;
       const publish = (data: unknown[]) => {
         if (currentId !== searchIdRef.current) return;
-        latestRows = data;
         const cleanedData = (data as SearchResult[]).map((res) => {
           const sanitized = sanitizeDictionaryDefinitions(res.definitions);
-          const courseCard = courseMap
-            ? courseMap.get(res.traditional) ?? courseMap.get(res.simplified)
-            : undefined;
-          const courseDef = courseCard?.back?.trim();
+          const courseDef = res.courseDefinition?.trim();
           const mergedDefs = courseDef
             ? [courseDef, ...sanitized.definitions.filter((d) => d.toLowerCase() !== courseDef.toLowerCase())]
             : sanitized.definitions;
@@ -67,10 +61,10 @@ export function useDictionarySearch(externalQuery: string) {
             ...res,
             definitions: mergedDefs,
             measure_words: sanitized.measure_words,
-            bookId: courseCard?.bookId ?? res.bookId,
-            lessonId: courseCard?.lessonId ?? res.lessonId,
-            pos: courseCard?.pos ?? res.pos,
-            audio: courseCard?.audio ?? res.audio ?? undefined,
+            bookId: res.bookId,
+            lessonId: res.lessonId,
+            pos: res.pos,
+            audio: res.audio,
           };
         });
         // A partial response must not mask the completed search on reopen.
@@ -81,10 +75,6 @@ export function useDictionarySearch(externalQuery: string) {
         setResults(cleanedData);
         setIsSearching(false);
       };
-      void getCourseVocabLookupMap().then((map) => {
-        courseMap = map;
-        if (latestRows) publish(latestRows);
-      }).catch(() => {});
       const data = await executeRemoteSearch(queryNormalized, publish);
       complete = true;
       publish(data);

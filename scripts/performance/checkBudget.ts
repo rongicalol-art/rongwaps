@@ -18,8 +18,14 @@ assert.ok(style);
 const css = (await stat(resolve(root, `dist${style}`))).size;
 assert.ok(css <= 260_000, `Critical CSS exceeds 260 kB: ${css}`);
 const assets = await readdir(resolve(root, 'dist/assets'));
-for (const worker of ['quizPlanner.worker-', 'dictionarySearch.worker-']) {
+for (const worker of ['quizPlanner.worker-']) {
   assert.ok(assets.some((file) => file.startsWith(worker)), `Missing production worker: ${worker}`);
+}
+assert.ok(!assets.some(file => file.startsWith('dictionarySearch.worker-')), 'Dictionary indexing must stay on the server');
+const studyManifest = JSON.parse(await readFile(resolve(root, 'dist/data/study/manifest.json'), 'utf8'));
+for (const part of studyManifest.parts) {
+  const bytes = (await stat(resolve(root, `dist${part.path}.br`))).size;
+  assert.ok(bytes <= 250_000, `Study part exceeds 250 kB Brotli: ${part.path} (${bytes})`);
 }
 const sw = await readFile(resolve(root, 'dist/sw.js'), 'utf8');
 const precached = [...sw.matchAll(/\{url:"([^"]+)",revision:/g)].map((match) => match[1]);

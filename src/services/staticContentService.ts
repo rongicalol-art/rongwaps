@@ -52,7 +52,7 @@ export function contentUrl(path: string): string {
 /** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
 export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
   const headers = new Headers(init.headers);
-  if (PROTECTED_CONTENT.test(path)) {
+  if (PROTECTED_CONTENT.test(path) || path.startsWith('/api/dictionary/')) {
     // A public content CDN would bypass Express's school-account check.
     if (!CONTENT_BASE_URL.startsWith('/') || CONTENT_BASE_URL.startsWith('//')) {
       throw new Error('Protected content must use the authenticated app origin');
