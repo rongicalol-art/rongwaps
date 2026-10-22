@@ -1,3 +1,4 @@
+import { versionedPath } from '../../services/packLoader';
 import type { RuntimeComponentKey, RuntimeTreeNode } from './runtimePack';
 import { getRuntimeDirectComponentKeys, runtimeNodeChildren } from './runtimePack';
 import {
@@ -273,7 +274,7 @@ export class RuntimePackLoader {
     if (pending) return pending;
     const descriptor = descriptors.find((item) => item.shard === shard);
     if (!descriptor) throw new Error(`Missing ${prefix} shard descriptor ${shard}.`);
-    const request = this.loadJson<{ schemaVersion: number; shard: number; count: number } & Record<string, TRecord>>(descriptor.path, key).then((payload) => {
+    const request = this.loadJson<{ schemaVersion: number; shard: number; count: number } & Record<string, TRecord>>(descriptor.path, key, descriptor.sha256).then((payload) => {
       assertShard(payload, descriptor, this.expectedSchemaVersion);
       const data = payload[field];
       if (!data || typeof data !== 'object') throw new Error(`Malformed ${prefix} shard.`);
@@ -283,10 +284,10 @@ export class RuntimePackLoader {
     return request;
   }
 
-  private async loadJson<T>(relativePath: string, key: string): Promise<T> {
+  private async loadJson<T>(relativePath: string, key: string, sha256?: string): Promise<T> {
     const manifest = await this.getManifest();
     const result = await this.transport.fetchJson<T>(
-      joinPath(this.basePath, relativePath),
+      versionedPath(joinPath(this.basePath, relativePath), sha256),
       `decomposition runtime ${key}`,
       `decomposition-runtime:${manifest.schemaVersion}:${manifest.version}:${key}`,
     );

@@ -275,12 +275,14 @@ export const getBookParts = (m: GenericContentManifest): PackPart[] => (m.books 
   key: b.bookId,
   path: b.path,
   count: b.count,
+  sha256: b.sha256,
 }));
 
 export const getShardParts = (m: GenericContentManifest): PackPart[] => (m.shards || []).map((s) => ({
   key: s.shard,
   path: s.path,
   count: s.count,
+  sha256: s.sha256,
 }));
 
 export interface PackConfig<TPack, TLoaded> {

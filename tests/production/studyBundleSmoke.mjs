@@ -55,6 +55,15 @@ try {
     assert.equal(refused.status, 401);
     assert.equal(refused.headers['cache-control'], 'private, no-store', 'refusals must never be cached');
   }
+  // Any data pack: precompressed sidecar served, and ?v=<hash> makes it immutable.
+  const breakdowns = JSON.parse(await readFile('dist/data/breakdowns/manifest.json', 'utf8'));
+  const shard = breakdowns.shards[0];
+  const plain = await request(shard.path, 'identity');
+  const versioned = await request(`${shard.path}?v=${shard.sha256.slice(0, 16)}`, 'br');
+  assert.equal(plain.headers['cache-control'], 'private, no-cache');
+  assert.equal(versioned.headers['cache-control'], 'private, max-age=31536000, immutable');
+  assert.equal(versioned.headers['content-encoding'], 'br');
+  assert.deepEqual(brotliDecompressSync(versioned.body), plain.body);
   const manifestResponse = await request('/data/study/manifest.json');
   assert.equal(manifestResponse.headers['cache-control'], 'private, no-cache');
   const revalidated = await new Promise((resolve, reject) => http.get({ hostname: '127.0.0.1', port, path: '/data/study/manifest.json', headers: {

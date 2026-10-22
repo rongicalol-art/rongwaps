@@ -1,5 +1,5 @@
 import { lookupDictionary, searchDictionary, lookupCourseCards, lookupExamples } from './dictionary.js';
-import { existsSync } from 'node:fs';
+import { statSync } from 'node:fs';
 import express from "express";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
@@ -230,6 +230,9 @@ async function bootstrap() {
     const contentRequestLimiter = userLimiter(1200);
     // Content-hashed build outputs, e.g. study/1001001-8989b311b07f.json, pronunciation-audio/1d770a43c180f6f8.json.
     const HASHED_FILE = /[-/][a-f0-9]{12,16}\.json$/;
+    // Packs fetched as `shard.json?v=<sha256>` are content-addressed too (the manifest owns the hash).
+    const isImmutable = (req: express.Request, requested: string) =>
+      HASHED_FILE.test(requested) || (typeof req.query.v === 'string' && /^[a-f0-9]{12,64}$/.test(req.query.v));
     // Inspect the decoded full path before express.static, rather than mounting
     // on /data: encoded mount names and duplicate slashes must hit the same gate.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -251,7 +254,7 @@ async function bootstrap() {
             // Browser-only cache (`private`: never Cloudflare). Hashed names never change;
             // the rest revalidate (cheap 304). No Vary: Authorization, or every hourly
             // token refresh would empty the browser cache.
-            if (!limitError) res.setHeader('Cache-Control', HASHED_FILE.test(requested) ? 'private, max-age=31536000, immutable' : 'private, no-cache');
+            if (!limitError) res.setHeader('Cache-Control', isImmutable(req, requested) ? 'private, max-age=31536000, immutable' : 'private, no-cache');
             next(limitError);
           });
         });
@@ -261,11 +264,15 @@ async function bootstrap() {
       if (req.method !== 'GET' && req.method !== 'HEAD') return next();
       let target: string;
       try { target = path.resolve(distPath, `.${decodeURIComponent(req.path)}`); } catch { return next(); }
-      if (!(target.startsWith(path.join(distDataDir, 'study') + path.sep) || target === path.join(distDataDir, 'decomposition-runtime', 'hot.json')) || !target.endsWith('.json')) return next();
+      if (!target.startsWith(distDataDir + path.sep) || !target.endsWith('.json')) return next();
       res.vary('Accept-Encoding');
       const encoding = req.acceptsEncodings('br', 'gzip', 'identity');
       const suffix = encoding === 'br' ? '.br' : encoding === 'gzip' ? '.gz' : '';
-      if (!suffix || !existsSync(target + suffix)) return next();
+      if (!suffix) return next();
+      // A sidecar older than its JSON (e.g. after a manual trim) is never served.
+      let usable = false;
+      try { usable = statSync(target + suffix).mtimeMs >= statSync(target).mtimeMs; } catch { /* no sidecar */ }
+      if (!usable) return next();
       res.setHeader('Content-Encoding', encoding as string);
       res.type('application/json');
       res.sendFile(target + suffix, { cacheControl: false }, error => { if (error) next(error); });

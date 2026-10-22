@@ -12,11 +12,17 @@ import { fetchStaticJson, pruneStaticJsonCache, removeStaticJsonCache } from './
  * that degrade to database fallbacks wrap calls in their own catch).
  */
 
+/** `shard.json?v=<hash>`: content-addressed, so the server can send it as immutable. */
+export const versionedPath = (path: string, sha256?: string) =>
+  !sha256 || path.includes(sha256.slice(0, 12)) ? path : `${path}?v=${sha256.slice(0, 16)}`;
+
 export interface PackPart {
   /** Stable key used for caching and lookups (shard number or book id). */
   key: number;
   path: string;
   count: number;
+  /** Content hash from the manifest; versions the URL so browsers can cache it forever. */
+  sha256?: string;
 }
 
 export interface PackLoader<TManifest, TLoaded> {
@@ -114,7 +120,7 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     if (!part || !part.path.startsWith(partPathPrefix)) return null;
 
     const persistentKey = `${namespace}:${(manifest as { version: string }).version}:${partCacheKeyKind}:${key}`;
-    const pack = await fetchStaticJson<TPack>(part.path, partLabel(key), { persistentKey });
+    const pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { persistentKey });
     if (!validatePack(pack, part, manifest)) {
       await removeStaticJsonCache(persistentKey);
       throw new Error(`${partLabel(key)} failed validation`);

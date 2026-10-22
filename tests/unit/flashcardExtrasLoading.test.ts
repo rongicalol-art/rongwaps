@@ -16,7 +16,7 @@ test('course and saved-word lookups fetch only their derivative shards, not sour
   const originalWindow = Object.getOwnPropertyDescriptor(globalThis, 'window');
   Object.defineProperty(globalThis, 'window', { configurable: true, value: {} });
   globalThis.fetch = (async (input: RequestInfo | URL) => {
-    const path = String(input);
+    const path = String(input).replace(/\?v=[a-f0-9]+$/, '');
     requests.push(path);
     assert.ok(path.startsWith('/data/flashcard-extras/'), `Whole-corpus request: ${path}`);
     return new Response(fs.readFileSync(`public${path}`, 'utf8'), { headers: { 'content-type': 'application/json' } });

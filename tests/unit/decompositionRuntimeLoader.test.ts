@@ -105,7 +105,8 @@ function makeFixture() {
   const calls: string[] = [];
   const prunes: string[] = [];
   const transport: RuntimePackTransport = {
-    async fetchJson<T>(path: string) {
+    async fetchJson<T>(requested: string) {
+      const path = requested.replace(/\?v=[a-f0-9]+$/, '');
       calls.push(path);
       const data = files.get(path);
       if (data === undefined) throw new Error(`fixture missing ${path}`);

@@ -120,3 +120,5 @@ Before publication, run `HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scri
 - Study packs ship same-lesson examples only; other-lesson examples load via "Show more" from `flashcard-extras`. `npm run perf:check` enforces size budgets (study part ≤ 30 kB Brotli, book page ≤ 250 kB).
 - Book pages: `npm run book-pages:recompress` (1100px, q72; needs `cwebp`/`dwebp`, skips already-small pages).
 - Audio CDN (optional): put the `vocabulary-audio` bucket behind a CDN/Cloudflare R2 custom domain and set `VITE_AUDIO_BASE_URL` to its origin at build time. Files already have content-hashed names, so use long immutable caching.
+- Every `dist/data` JSON gets Brotli/gzip sidecars from `npm run build:precompress` (last build step; re-run it after a manual `trimBetaContent`). The server ignores a sidecar older than its JSON.
+- Manifest-listed packs are fetched as `file.json?v=<sha256>`; the server sends those as immutable (1 year), so repeat visits make no request at all. Breakdown opens use one `decomposition-runtime/hot.json` (all course characters + parts) instead of ~8 shard requests.

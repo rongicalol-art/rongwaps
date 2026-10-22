@@ -156,7 +156,7 @@ export async function fetchStaticJsonWithMetadata<T>(
       const pathMod = 'node:path';
       const fs = await import(/* @vite-ignore */ fsMod);
       const nodePath = await import(/* @vite-ignore */ pathMod);
-      const diskPath = nodePath.resolve(process.cwd(), 'public', path.replace(/^\//, ''));
+      const diskPath = nodePath.resolve(process.cwd(), 'public', path.replace(/^\//, '').replace(/\?.*$/, ''));
       if (fs.existsSync(diskPath)) {
         const text = fs.readFileSync(diskPath, 'utf8');
         const data = JSON.parse(text) as T;

@@ -9,7 +9,7 @@ test('single-character example lookup loads sentence packs without the full voca
   const requests: string[] = [];
   Object.defineProperty(globalThis, 'window', { configurable: true, value: {} });
   globalThis.fetch = (async (input: RequestInfo | URL) => {
-    const path = String(input);
+    const path = String(input).replace(/\?v=[a-f0-9]+$/, '');
     requests.push(path);
     const filePath = `public${path}`;
     return new Response(fs.readFileSync(filePath), { headers: { 'content-type': 'application/json' } });
