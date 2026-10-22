@@ -94,7 +94,6 @@ export function OrderBuildExercise({
   const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
   const dialogue = useMemo(() => parseDialogue(item.sub, item.prompt), [item.sub, item.prompt]);
   const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';
-  const placeholder = dialogue?.type === 'incoming' ? 'Drag words to reply…' : dialogue?.type === 'afterward' ? 'Drag words to ask…' : 'Drag words to build the sentence…';
   const commas = useMemo(() => commaAfter(item.accepted[0].sentence.traditional, item.accepted[0].order), [item.accepted]);
 
   useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
@@ -148,7 +147,6 @@ export function OrderBuildExercise({
         drag?.over === 'end' && 'border-brand-primary bg-brand-primary-soft',
       )}
     >
-      {line.length === 0 && <span className="text-base font-extrabold text-ui-muted-strong/60">{placeholder}</span>}
       {line.map((tile, position) => (
         <Fragment key={tile}>
         <motion.button
