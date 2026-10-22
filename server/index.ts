@@ -261,7 +261,7 @@ async function bootstrap() {
       if (req.method !== 'GET' && req.method !== 'HEAD') return next();
       let target: string;
       try { target = path.resolve(distPath, `.${decodeURIComponent(req.path)}`); } catch { return next(); }
-      if (!target.startsWith(path.join(distDataDir, 'study') + path.sep) || !target.endsWith('.json')) return next();
+      if (!(target.startsWith(path.join(distDataDir, 'study') + path.sep) || target === path.join(distDataDir, 'decomposition-runtime', 'hot.json')) || !target.endsWith('.json')) return next();
       res.vary('Accept-Encoding');
       const encoding = req.acceptsEncodings('br', 'gzip', 'identity');
       const suffix = encoding === 'br' ? '.br' : encoding === 'gzip' ? '.gz' : '';

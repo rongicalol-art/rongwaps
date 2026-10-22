@@ -11,7 +11,29 @@ import { studyPartKey, type StudyPack, type StudyPart } from '../../src/utils/vo
 import { extractCedictReference, sanitizeDictionaryDefinitions } from '../../shared/dictionaryDefinitions';
 import type { GenericContentManifest } from '../../src/utils/packValidators';
 import type { DBDictionaryRow } from '../../src/types/database';
+import { runtimeNodeChildren, type RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
+import type { RuntimePackManifest, RuntimePackRecord } from '../../src/features/character-decomposition/runtimeDerivations';
 
+/** Every record a course word's breakdown can need, so it opens with one request instead of ~8 shards. */
+async function buildHotDecomposition(root: string, courseText: string): Promise<Buffer> {
+  const manifest = JSON.parse(await readFile(resolve(root, 'public/data/decomposition-runtime/manifest.json'), 'utf8')) as RuntimePackManifest;
+  const records = new Map<string, RuntimePackRecord>();
+  for (const shard of await Promise.all(manifest.recordShards.map(async ({ path }) => JSON.parse(await readFile(resolve(root, 'public/data/decomposition-runtime', path), 'utf8')) as { records: Record<string, RuntimePackRecord> }))) {
+    for (const [character, record] of Object.entries(shard.records)) records.set(character, record);
+  }
+  const glyphs = (node: RuntimeTreeNode): string[] => [...(node[0] === 'g' ? [node[1]] : []), ...runtimeNodeChildren(node).flatMap(glyphs)];
+  const hot: Record<string, RuntimePackRecord> = {};
+  const queue = [...new Set(Array.from(courseText))];
+  for (let character = queue.pop(); character !== undefined; character = queue.pop()) {
+    const record = records.get(character);
+    if (!record || hot[character]) continue;
+    hot[character] = record;
+    queue.push(...glyphs(record.t));
+  }
+  return Buffer.from(JSON.stringify({ schemaVersion: 1, version: manifest.version, records: hot }));
+}
+
+const HOT_DECOMPOSITION = '/data/decomposition-runtime/hot.json';
 const hash = (text: string) => createHash('sha256').update(text).digest('hex');
 /** Build artifacts only: source packs remain canonical and are never modified here. */
 export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>> {
@@ -40,6 +62,7 @@ export async function buildStudyPacks(root: string): Promise<Map<string, Buffer>
     const group = groups.get(key) ?? []; group.push(card); groups.set(key, group);
   }
   const assets = new Map<string, Buffer>();
+  assets.set('/data/decomposition-runtime/hot.json', await buildHotDecomposition(root, cards.map(card => `${card.front}${card.traditional ?? ''}${card.simplified ?? ''}`).join('')));
   const parts: StudyPart[] = [];
   const cardIds = new Map(cards.map((card, id) => [card, id]));
   assets.set('/data/search/course-lookup.json', Buffer.from(JSON.stringify({ cards, entries: [...buildCourseVocabLookupMap(cards)].map(([key, card]) => [key, cardIds.get(card)]) })));
@@ -107,7 +130,7 @@ export function studyPacksPlugin(): Plugin {
       server.watcher.on('change', file => { if (file.includes('/public/data/') && file.endsWith('/manifest.json')) { pending = undefined; void prepareDevAssets().catch(error => server.config.logger.error(String(error))); } });
       server.middlewares.use(async (request, response, next) => {
         const path = request.url?.split('?')[0];
-        if (!path?.startsWith('/data/study/') && path !== '/data/search/course-lookup.json') return next();
+        if (!path?.startsWith('/data/study/') && path !== '/data/search/course-lookup.json' && path !== HOT_DECOMPOSITION) return next();
         try {
           const bytes = (await getAssets()).get(path);
           if (!bytes) { response.statusCode = 404; response.end(); return; }

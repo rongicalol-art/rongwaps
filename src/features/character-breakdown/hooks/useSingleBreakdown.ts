@@ -78,17 +78,17 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
       setIsRelatedLoading(true);
       setAllWords([]);
       setDictionaryWords([]);
-      Promise.allSettled([
-        searchVocabulary(activeChar),
-        decompositionRuntime.runtime === 'v3'
-          ? searchDictionaryWordsContaining(activeChar)
-          : Promise.resolve([]),
-      ]).then(([courseResult, dictionaryResult]) => {
-        if (!active) return;
-        setAllWords(courseResult.status === 'fulfilled' ? courseResult.value : []);
-        setDictionaryWords(dictionaryResult.status === 'fulfilled' ? dictionaryResult.value : []);
-        setIsRelatedLoading(false);
-      });
+      // Course words (local) show as soon as they resolve; the slower server
+      // dictionary search fills in afterwards instead of holding the list back.
+      searchVocabulary(activeChar)
+        .then((words) => { if (active) setAllWords(words); })
+        .catch(() => {})
+        .finally(() => { if (active) setIsRelatedLoading(false); });
+      if (decompositionRuntime.runtime === 'v3') {
+        searchDictionaryWordsContaining(activeChar)
+          .then((words) => { if (active) setDictionaryWords(words); })
+          .catch(() => {});
+      }
     } else {
       setAllWords([]);
       setDictionaryWords([]);

@@ -43,6 +43,7 @@ export class RuntimePackLoader {
   private readonly directShards = new Map<number, Record<string, RuntimeComponentKey[]>>();
   private readonly reverseShards = new Map<number, Record<RuntimeComponentKey, string[]>>();
   private readonly pendingShards = new Map<string, Promise<void>>();
+  private hotRecords: Promise<Record<string, RuntimePackRecord> | null> | null = null;
   private readonly metrics: RuntimeLoaderMetrics = {
     manifestLoads: 0,
     shardLoads: 0,
@@ -95,10 +96,27 @@ export class RuntimePackLoader {
     return this.manifestPromise;
   }
 
+  /** Build-time bundle of every course-word record: one request replaces ~8 sequential shard loads. */
+  private loadHotRecords(): Promise<Record<string, RuntimePackRecord> | null> {
+    this.hotRecords ??= (async () => {
+      try {
+        const manifest = await this.getManifest();
+        const { data } = await this.transport.fetchJson<{ version: string; records: Record<string, RuntimePackRecord> }>(
+          joinPath(this.basePath, 'hot.json'), 'decomposition hot records', '');
+        this.metrics.files.push('hot.json');
+        this.metrics.networkFiles += 1;
+        return data.version === manifest.version ? data.records : null;
+      } catch { return null; }
+    })();
+    return this.hotRecords;
+  }
+
   async getRecord(character: string): Promise<RuntimeRecordLookup> {
     if (!character) return { status: 'missing', character };
     try {
       const manifest = await this.getManifest();
+      const hot = (await this.loadHotRecords())?.[character];
+      if (hot) return { status: isAtomicRecord(character, hot) ? 'leaf' : 'found', character, record: hot };
       const shard = getShard(character, manifest.recordShards.length);
       await this.loadShard(this.recordShards, 'record', shard, manifest.recordShards, 'records');
       const record = this.recordShards.get(shard)?.[character];
@@ -205,6 +223,7 @@ export class RuntimePackLoader {
     this.directShards.clear();
     this.reverseShards.clear();
     this.pendingShards.clear();
+    this.hotRecords = null;
     this.manifestPromise = null;
   }
 

@@ -384,14 +384,6 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
         </div>
       </div>
 
-      {canShowMore && (
-        <div className="flex w-full shrink-0 flex-col items-center gap-2 px-6 pb-6 pt-2">
-          <ActionButton variant="secondary" size="sm" loading={loadingMore} loadingLabel="Loading…" onClick={loadMore}>
-            Show more examples
-          </ActionButton>
-          {moreFailed && <p className="text-xs font-bold text-ui-muted-strong">Couldn’t load. Try again.</p>}
-        </div>
-      )}
       {restExamples.length > 0 && (
         <div className="w-full shrink-0">
           <FlashcardExamples
@@ -401,6 +393,14 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
             showPinyin={showPinyin}
             showTranslation={showTranslation}
           />
+        </div>
+      )}
+      {canShowMore && (
+        <div className="flex w-full shrink-0 flex-col items-center gap-1 px-6 pb-8 pt-1">
+          <ActionButton variant="quiet" size="sm" loading={loadingMore} loadingLabel="Loading…" onClick={loadMore}>
+            Show more examples
+          </ActionButton>
+          {moreFailed && <p className="text-xs font-bold text-ui-muted-strong">Couldn’t load. Try again.</p>}
         </div>
       )}
     </div>

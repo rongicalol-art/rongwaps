@@ -262,7 +262,25 @@ test('persistent shard reads stay in the shared versioned cache namespace', asyn
   await loader.getRecord('學');
   assert.equal(loader.getMetrics().persistentCacheFiles, 1);
   assert.equal(keys[0], '');
-  assert.match(keys[1], /^decomposition-runtime:1:fixture-v1:record:/u);
+  assert.ok(keys.some((key) => /^decomposition-runtime:1:fixture-v1:record:/u.test(key)));
+});
+
+test('hot course records answer without loading any shard, and a stale bundle is ignored', async () => {
+  const fixture = makeFixture();
+  const record = { r: 'U+5B78:alt-0:neutral', s: 0, t: ['g', '學', [['g', '子']]] } as never;
+  const transportFor = (version: string): RuntimePackTransport => ({
+    async fetchJson<T>(path: string, label: string, persistentKey: string) {
+      if (path.endsWith('hot.json')) return { data: { version, records: { 學: record } } as T, source: 'network' as const };
+      return fixture.transport.fetchJson<T>(path, label, persistentKey);
+    },
+    prune: fixture.transport.prune,
+  });
+  const fresh = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport: transportFor('fixture-v1') });
+  assert.equal((await fresh.getRecord('學')).status, 'found');
+  assert.equal(fresh.getMetrics().shardLoads, 0);
+  const stale = new RuntimePackLoader({ basePath: '/pack', environment: 'test', allowDevelopmentCandidate: true, transport: transportFor('older') });
+  await stale.getRecord('學');
+  assert.equal(stale.getMetrics().shardLoads, 1, 'a bundle from another pack version falls back to shards');
 });
 
 test('dual-read comparison reports source differences without rewriting either result', async () => {
