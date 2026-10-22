@@ -24,6 +24,12 @@ export const DRAWER_TONE_CONTAINER_CLASSES: Record<DrawerTone, string> = {
   canvas: 'bg-ui-canvas rounded-t-3xl',
 };
 
+export const DRAWER_TONE_BG_CLASSES: Record<DrawerTone, string> = {
+  surface: 'bg-ui-surface',
+  practice: 'bg-ui-practice-canvas',
+  canvas: 'bg-ui-canvas',
+};
+
 export const DRAWER_TONE_STICKY_GRADIENTS: Record<DrawerTone, string> = {
   surface: 'from-ui-surface via-ui-surface/95 to-transparent',
   practice: 'from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent',
@@ -140,7 +146,7 @@ export function DrawerContent({
         aria-labelledby={titleId}
         tabIndex={-1}
         onKeyDown={modalFocus.onKeyDown}
-        drag={dragToDismiss && !isCard ? 'y' : false}
+        drag={dragToDismiss && !isCard && !isSide ? 'y' : false}
         dragListener={false}
         dragControls={dragControls}
         dragConstraints={{ top: 0 }}
@@ -150,14 +156,11 @@ export function DrawerContent({
         }}
         className={cn(
           'absolute bottom-0 left-0 right-0 shadow-ambient-lg flex flex-col pointer-events-auto overflow-hidden',
-          DRAWER_TONE_CONTAINER_CLASSES[tone],
-          DRAWER_SIZE_CLASSES[size],
-          heightClassName,
-          // md+: floating card centered in the workspace instead of a bottom sheet.
-          'md:relative md:inset-auto md:rounded-modal md:border-0 md:border-b-[length:var(--depth-xl)] md:border-ui-border',
+          DRAWER_TONE_BG_CLASSES[tone],
           isSide
-            ? 'md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0'
-            : 'md:h-auto md:max-h-[80vh] md:w-full',
+            ? 'top-0 h-full max-h-full rounded-none md:top-auto md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0 md:rounded-modal'
+            : cn(DRAWER_TONE_CONTAINER_CLASSES[tone], DRAWER_SIZE_CLASSES[size], heightClassName, 'md:relative md:inset-auto md:h-auto md:max-h-[80vh] md:w-full md:rounded-modal'),
+          'md:relative md:inset-auto md:border-0 md:border-b-[length:var(--depth-xl)] md:border-ui-border',
           className
         )}
       >
@@ -312,9 +315,9 @@ export function Drawer({
         )}
 
         <>
-          <DrawerHandle className="pt-4 pb-2" />
+          {mdPlacement !== 'side' && <DrawerHandle className="pt-4 pb-2" />}
           {hasHeader && (
-            <div className="flex items-center justify-between px-6 pb-4 pt-2 md:pt-6">
+            <div className="flex items-center justify-between px-6 pb-4 pt-4 md:pt-6">
               {title &&
                 (typeof title === 'string' ? (
                   <DrawerTitle>{title}</DrawerTitle>

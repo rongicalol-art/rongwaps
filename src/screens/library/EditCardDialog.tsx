@@ -9,15 +9,16 @@ interface EditCardDialogProps {
   onClose: () => void;
 }
 
-/** Same side drawer as saving a word. The card itself is the form: type straight onto it. */
+/** Field-based card editor in a side drawer (full screen on mobile). */
 export function EditCardDialog({ card, onSave, onClose }: EditCardDialogProps) {
   return (
     <Drawer.Root open={card !== null} onClose={onClose} tone="surface">
       <Drawer.Backdrop />
-      <Drawer.Content size="md" mdPlacement="side" ariaLabel="Edit card" heightClassName="max-h-[85vh]">
-        <Drawer.StickyHeader>
-          <Drawer.Handle className="pb-2" />
-        </Drawer.StickyHeader>
+      <Drawer.Content size="md" mdPlacement="side" ariaLabel="Edit card">
+        <div className="flex items-center justify-between px-6 pb-2 pt-4">
+          <Drawer.Title>Edit card</Drawer.Title>
+          <Drawer.Close label="Close edit card" />
+        </div>
         {card && <EditCardBody key={card.id} card={card} onSave={onSave} />}
       </Drawer.Content>
     </Drawer.Root>
@@ -39,7 +40,6 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
     setSaving(true);
     const nextWord = word.trim();
     await onSave({
-      // The card has one displayed word, so an edit updates both spellings together.
       ...(nextWord !== originalWord && { simplified: nextWord, traditional: nextWord }),
       pinyin: pinyin.trim(),
       translation: translation.trim(),
@@ -54,43 +54,67 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
 
   return (
     <>
-      <Drawer.Body className="flex min-h-0 flex-1 flex-col px-4 sm:px-6">
-        <div onKeyDown={onEnter} className="flex min-h-80 flex-1 flex-col items-center justify-center gap-2 rounded-control bg-ui-canvas px-4 py-8">
+      <Drawer.Body className="flex min-h-0 flex-1 flex-col gap-3.5 px-4 pt-2 sm:px-6">
+        <div className="flex flex-col rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-2.5 transition-colors focus-within:border-brand-primary focus-within:bg-brand-primary-soft">
+          <span className="text-xs font-black uppercase tracking-wider text-ui-muted-strong">Word</span>
           <input
             autoFocus
             aria-label="Word"
             value={word}
             onChange={(e) => setWord(e.target.value)}
             onFocus={(e) => e.currentTarget.select()}
-            className="w-full bg-transparent text-center font-chinese text-6xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
+            className="w-full bg-transparent font-chinese text-3xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
             placeholder="字"
           />
+        </div>
+
+        <div className="flex flex-col rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-2.5 transition-colors focus-within:border-brand-primary focus-within:bg-brand-primary-soft">
+          <span className="text-xs font-black uppercase tracking-wider text-ui-muted-strong">Pinyin</span>
           <input
             aria-label="Pinyin"
             value={pinyin}
             onChange={(e) => setPinyin(e.target.value)}
+            onKeyDown={onEnter}
+            className="w-full bg-transparent text-base font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
             placeholder="pinyin"
-            className="w-full bg-transparent text-center text-lg font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
           />
+        </div>
+
+        <div className="flex flex-col rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-2.5 transition-colors focus-within:border-brand-primary focus-within:bg-brand-primary-soft">
+          <span className="text-xs font-black uppercase tracking-wider text-ui-muted-strong">Meaning</span>
           <input
             aria-label="Meaning"
             value={translation}
             onChange={(e) => setTranslation(e.target.value)}
+            onKeyDown={onEnter}
+            className="w-full bg-transparent text-base font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
             placeholder="meaning"
-            className="w-full bg-transparent text-center text-lg font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
           />
         </div>
-        <textarea
-          aria-label="Notes"
-          rows={2}
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          placeholder="Add a note or memory hook"
-          className="mt-3 w-full resize-none rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2.5 text-sm font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring"
-        />
+
+        <div className="flex flex-col rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-2.5 transition-colors focus-within:border-brand-primary focus-within:bg-brand-primary-soft">
+          <span className="text-xs font-black uppercase tracking-wider text-ui-muted-strong">Memory hook</span>
+          <textarea
+            aria-label="Memory hook"
+            rows={3}
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="A story, a picture, a sound-alike"
+            className="w-full resize-none bg-transparent text-sm font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
+          />
+        </div>
       </Drawer.Body>
-      <div className="shrink-0 px-4 pb-4 pt-3 sm:px-6">
-        <ActionButton variant="primary" size="lg" fullWidth onClick={() => void submit()} disabled={!canSave} loading={saving} loadingLabel="Saving card">
+
+      <div className="shrink-0 px-4 pb-6 pt-3 sm:px-6">
+        <ActionButton
+          variant="primary"
+          size="lg"
+          fullWidth
+          onClick={() => void submit()}
+          disabled={!canSave}
+          loading={saving}
+          loadingLabel="Saving card"
+        >
           Save
         </ActionButton>
       </div>

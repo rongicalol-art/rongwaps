@@ -73,10 +73,11 @@ export function SaveWordModal() {
   return (
     <Drawer.Root open={isOpen} onClose={handleClose} tone="surface">
       <Drawer.Backdrop />
-      <Drawer.Content size="md" mdPlacement="side" ariaLabel="Save word" heightClassName="max-h-[85vh]">
-        <Drawer.StickyHeader>
-          <Drawer.Handle className="pb-2" />
-        </Drawer.StickyHeader>
+      <Drawer.Content size="md" mdPlacement="side" ariaLabel="Save word">
+        <div className="flex items-center justify-between px-4 pb-2 pt-4 sm:px-6">
+          <Drawer.Title>Save word</Drawer.Title>
+          <Drawer.Close label="Close save word" />
+        </div>
         <Drawer.Body className="px-4 sm:px-6 flex flex-col">
           {(() => {
             const content = (
