@@ -180,7 +180,7 @@ export function useReaderWordInteractions({
       }
       hoverTimerRef.current = setTimeout(() => {
         openDefinitionWindow(chunk, chunkKey, element);
-      }, 100);
+      }, 300);
     },
     [openDefinitionWindow, showHoverDefinitions],
   );
@@ -193,7 +193,7 @@ export function useReaderWordInteractions({
     setHoveredChunkKey(null);
     leaveTimerRef.current = setTimeout(() => {
       setHoveredWord(null);
-    }, 250);
+    }, 80);
   }, []);
 
   const handleTooltipMouseEnter = useCallback(() => {
@@ -207,7 +207,7 @@ export function useReaderWordInteractions({
     leaveTimerRef.current = setTimeout(() => {
       setHoveredWord(null);
       setHoveredChunkKey(null);
-    }, 250);
+    }, 80);
   }, []);
 
   const handlePointerDown = useCallback<ReaderPointerHandler>(

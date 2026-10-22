@@ -63,11 +63,19 @@ export function useSentenceWordHover(lookup = sentenceLookupHandlers.lookupWord)
   }, [clearTimers]);
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => { if (event.key === 'Escape') closeTooltip(); };
+    const pointerDown = (event: PointerEvent) => {
+      const target = event.target as Element | null;
+      if (target && !target.closest('[data-sentence-word-tooltip="true"]')) {
+        closeTooltip();
+      }
+    };
     window.addEventListener('scroll', closeTooltip, true);
     window.addEventListener('keydown', keydown);
+    window.addEventListener('pointerdown', pointerDown, true);
     return () => {
       window.removeEventListener('scroll', closeTooltip, true);
       window.removeEventListener('keydown', keydown);
+      window.removeEventListener('pointerdown', pointerDown, true);
       clearTimers();
       invalidate();
     };
@@ -90,12 +98,12 @@ export function useSentenceWordHover(lookup = sentenceLookupHandlers.lookupWord)
       });
     };
     if (open.current) show();
-    else hoverTimer.current = setTimeout(show, 100);
+    else hoverTimer.current = setTimeout(show, 300);
   }, [clearTimers, lookup]);
   const leave = useCallback(() => {
     clearTimers();
     setActiveWordKey(null);
-    leaveTimer.current = setTimeout(closeTooltip, 250);
+    leaveTimer.current = setTimeout(closeTooltip, 80);
   }, [clearTimers, closeTooltip]);
   const keepOpen = useCallback(() => {
     if (leaveTimer.current) {
