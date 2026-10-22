@@ -1454,7 +1454,7 @@
           "simplified": "他是韩国人吧？"
         },
         "gaps": true,
-        "prompt": "You see a Korean passport in his hand. Check your guess: where does 吧 go?"
+        "prompt": "You see a Korean passport in his hand. Where does 吧 go?"
       },
       {
         "id": "l8g3-p2",
@@ -1548,7 +1548,7 @@
           "simplified": "你喜欢喝咖啡吧？"
         },
         "gaps": true,
-        "prompt": "Your friend always carries coffee. Check your guess: where does 吧 go?"
+        "prompt": "Your friend always carries coffee. Where does 吧 go?"
       },
       {
         "id": "l8g3-p3",
@@ -1642,83 +1642,7 @@
           "simplified": "你会打篮球吧？"
         },
         "gaps": true,
-        "prompt": "Your friend has a basketball and basketball shoes. Check your guess: where does 吧 go?"
-      },
-      {
-        "id": "l8g3-own1",
-        "source": "own",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "before",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "你會",
-                "simplified": "你会"
-              },
-              {
-                "type": "slot",
-                "id": "middle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "唱中文歌",
-                "simplified": "唱中文歌"
-              },
-              {
-                "type": "slot",
-                "id": "answer",
-                "answers": [
-                  "嗎"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "？",
-                "simplified": "？"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "before",
-              "tile": "嗎"
-            },
-            "note": "Put 嗎 after the whole statement, before the question mark."
-          },
-          {
-            "slot": {
-              "id": "middle",
-              "tile": "嗎"
-            },
-            "note": "Keep 你會唱中文歌 together and put 嗎 at the end."
-          }
-        ],
-        "fallbackRepair": "Put 嗎 after the whole statement, before the question mark.",
-        "result": {
-          "traditional": "你會唱中文歌嗎？",
-          "pinyin": "Nǐ huì chàng Zhōngwén gē ma?",
-          "english": "Can you sing songs in Chinese?",
-          "simplified": "你会唱中文歌吗？"
-        },
-        "gaps": true,
-        "prompt": "You just met at a music class, so you have no guess. Where does 嗎 go?"
+        "prompt": "Your friend has a basketball and basketball shoes. Where does 吧 go?"
       },
       {
         "id": "l8g3-own-sort",
@@ -2292,7 +2216,7 @@
           "english": "My Japanese friend is coming soon.",
           "simplified": "我的日本朋友快要来了。"
         },
-        "prompt": "Today is April 3. Your Japanese friend comes on April 5. Where do 快要 and 了 go?",
+        "prompt": "Today is April 3; your friend comes April 5. Where do 快要 and 了 go?",
         "gaps": true
       },
       {
@@ -2528,7 +2452,7 @@
           "english": "My younger brother is about to turn ten.",
           "simplified": "弟弟快要十岁了。"
         },
-        "prompt": "Today is October 1. Your brother turns ten on October 10. Where do 快要 and 了 go?",
+        "prompt": "Today is October 1; your brother turns ten October 10. Where do 快要 and 了 go?",
         "gaps": true
       }
     ]

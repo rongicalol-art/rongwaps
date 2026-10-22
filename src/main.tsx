@@ -9,10 +9,18 @@ import './index.css';
 import './styles/fonts.generated.css?family=Huninn';
 import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
 import { registerSentenceLookupHandlers } from './lib/widgets/SmartSentence';
+import { audioService } from './services/audioService';
 import { useAppStore } from './store/useAppStore';
 
 if (import.meta.env.DEV) startLayoutShiftMonitor();
 initializeErrorReporting();
+
+audioService.setDefaultRate(useAppStore.getState().pronunciationRate);
+useAppStore.subscribe((state, prevState) => {
+  if (state.pronunciationRate !== prevState.pronunciationRate) {
+    audioService.setDefaultRate(state.pronunciationRate);
+  }
+});
 
 registerSentenceLookupHandlers({
   lookupWord: async (word) => (await import('./services/sentenceLookupService')).lookupSentenceWord(word, useAppStore.getState().characterPreference),

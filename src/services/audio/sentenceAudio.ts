@@ -4,14 +4,20 @@ import { audioService } from '../audioService';
 /**
  * Play a recorded sentence clip or range, falling back to browser speech if it cannot load.
  */
-export function playSentence(text: string, audio: SentenceAudio | undefined, characters: 'traditional' | 'simplified', rate = 1): Promise<void> {
+export function playSentence(
+  text: string,
+  audio: SentenceAudio | undefined,
+  characters: 'traditional' | 'simplified',
+  rate?: number,
+): Promise<void> {
   const language = characters === 'traditional' ? 'zh-TW' : 'zh-CN';
-  if (audio?.start === undefined || audio.end === undefined) return audioService.play(audio?.file, rate, text, language);
+  const effectiveRate = rate ?? audioService.getDefaultRate();
+  if (audio?.start === undefined || audio.end === undefined) return audioService.play(audio?.file, effectiveRate, text, language);
   let failed = false;
   return audioService.playRange(audio.file, audio.start, audio.end, {
-    rate,
+    rate: effectiveRate,
     cacheOnComplete: audio.cache !== false,
     onUnavailable: () => { failed = true; },
   })
-    .then(() => (failed ? audioService.play(undefined, rate, text, language) : undefined));
+    .then(() => (failed ? audioService.play(undefined, effectiveRate, text, language) : undefined));
 }

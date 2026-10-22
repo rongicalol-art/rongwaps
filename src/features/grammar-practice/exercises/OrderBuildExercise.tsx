@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { LayoutGroup, motion } from 'motion/react';
 import { ContextualChineseText } from '../../../lib/widgets';
@@ -7,10 +7,9 @@ import type { ListenBuildItem, OrderBuildItem } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { checkOrderBuild } from '../../../utils/grammar/grammarPracticeSequence';
 import { PracticeCharacterPrompt } from '../components/PracticeCharacterPrompt';
-import { PracticeBubble } from '../components/PracticeBubble';
+import { BUBBLE_TAIL, PracticeBubble } from '../components/PracticeBubble';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
-import { sceneFirstPicture } from '../components/PictureScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
 import { TileGhost } from '../components/TileGhost';
 import { useTileDrag, type DragSource } from '../useTileDrag';
@@ -18,6 +17,20 @@ import { WORD_FLIGHT } from '../practiceMotion';
 import { textIn, type PracticeExerciseProps } from '../practiceTypes';
 
 const END_PUNCTUATION = /[。？！]$/;
+const INNER_PUNCTUATION = /^[，、；：]/;
+
+/** Positions (in word order) that the book's sentence follows with a comma, so the line can show it. */
+export function commaAfter(sentence: string, order: string[]): Set<number> {
+  const found = new Set<number>();
+  let at = 0;
+  order.forEach((word, position) => {
+    const start = sentence.indexOf(word, at);
+    if (start < 0) return;
+    at = start + word.length;
+    if (INNER_PUNCTUATION.test(sentence.slice(at))) found.add(position);
+  });
+  return found;
+}
 
 interface ParsedDialogue {
   type: 'incoming' | 'afterward';
@@ -63,6 +76,7 @@ function parseDialogue(sub?: string, prompt?: string): ParsedDialogue | null {
 /** Keep instructions and role/selection context; omit a question already displayed in Chinese. */
 export function orderBuildHeading(item: OrderBuildItem): string | undefined {
   const dialogue = parseDialogue(item.sub, item.prompt);
+  if (dialogue?.type === 'afterward') return 'What did they ask?';
   const translatedQuestion = /^(?:Does|Do|Is|Are|Where|What|How|Who|When|Which|Can)\b[^?]+\?(?:\s*Answer from the picture\.)?$/i.test(item.prompt ?? '');
   if (dialogue?.type === 'incoming' && /[？?]$/.test(dialogue.utterance) && translatedQuestion) {
     return item.scene ? 'Answer from the picture' : 'Answer the question';
@@ -90,10 +104,9 @@ export function OrderBuildExercise({
   const verdict = checkOrderBuild(item, order);
   const misplaced = status === 'wrong' ? new Set(verdict.positions) : null;
   const dialogue = useMemo(() => parseDialogue(item.sub, item.prompt), [item.sub, item.prompt]);
-  const sceneFirst = item.kind === 'order-build' && item.scene?.type === 'picture' && Boolean(sceneFirstPicture(item.scene));
-  const translatedPrompt = item.kind === 'order-build' && orderBuildHeading(item) !== item.prompt && dialogue?.type === 'incoming' ? item.prompt : undefined;
   const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';
-  const placeholder = dialogue?.type === 'incoming' ? 'Drag words to reply…' : 'Drag words to build the sentence…';
+  const placeholder = dialogue?.type === 'incoming' ? 'Drag words to reply…' : dialogue?.type === 'afterward' ? 'Drag words to ask…' : 'Drag words to build the sentence…';
+  const commas = useMemo(() => commaAfter(item.accepted[0].sentence.traditional, item.accepted[0].order), [item.accepted]);
 
   useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
   useEffect(() => {
@@ -146,10 +159,10 @@ export function OrderBuildExercise({
         drag?.over === 'end' && 'border-brand-primary bg-brand-primary-soft',
       )}
     >
-      {line.length === 0 && <span className="text-sm font-bold text-ui-muted">{placeholder}</span>}
+      {line.length === 0 && <span className="text-base font-extrabold text-ui-muted-strong/60">{placeholder}</span>}
       {line.map((tile, position) => (
+        <Fragment key={tile}>
         <motion.button
-          key={tile}
           type="button"
           layout="position"
           layoutId={layoutId(tile)}
@@ -168,11 +181,15 @@ export function OrderBuildExercise({
           )}
         >
           <span className="font-chinese text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
-          {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
+          {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
         </motion.button>
+        {commas.has(position) && (
+          <span className={cn('-ml-1.5 py-0.5 font-chinese text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
+        )}
+        </Fragment>
       ))}
-      {status === 'correct' && end && (
-        <span className="font-chinese text-2xl leading-[1.3] text-feedback-success-edge sm:text-3xl" aria-hidden="true">{end}</span>
+      {end && (
+        <span className={cn('-ml-1.5 py-0.5 font-chinese text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
       )}
       {line.length > 0 && <span data-drop-slot="end" aria-hidden="true" className="min-h-10 w-10 shrink-0" />}
     </div>
@@ -188,7 +205,7 @@ export function OrderBuildExercise({
     />
   ) : null;
   const incoming = dialogue?.type === 'incoming' ? (
-    <div className={cn("flex min-w-0 flex-col gap-2 text-center", !sceneFirst && "sm:text-left")}>
+    <div className="flex min-w-0 flex-col gap-2 text-center">
       <div className="font-chinese text-2xl leading-relaxed text-ui-ink-strong sm:text-3xl">
         <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
       </div>
@@ -196,60 +213,41 @@ export function OrderBuildExercise({
     </div>
   ) : null;
 
+  // The reply that came back is the prompt: read it, then ask what would get that answer.
+  const reply = dialogue?.type === 'afterward' ? (
+    <PracticeBubble className={BUBBLE_TAIL} side="them">
+      <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+    </PracticeBubble>
+  ) : null;
+
   return (
     <LayoutGroup id={`order-${item.id}`}>
       {dialogue ? (
         <div className="flex flex-col gap-4">
-          {dialogue.preface && !translatedPrompt && <PracticePrompt sub={dialogue.preface} />}
+          {dialogue.preface && <PracticePrompt sub={dialogue.preface} />}
           {children}
           {scene ? incoming ? (
-            <div className={sceneFirst ? "flex flex-col items-center gap-4" : "grid items-center gap-5 sm:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] sm:gap-8"}>
+            <div className="flex flex-col items-center gap-3">
               {scene}
               {incoming}
             </div>
           ) : scene : incoming && (
             <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
-              <PracticeBubble className="relative max-w-full rounded-control rounded-bl-control before:absolute before:-left-2 before:top-7 before:size-4 before:rotate-45 before:border-b-2 before:border-l-2 before:border-ui-divider before:bg-ui-surface" side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
+              <PracticeBubble className={BUBBLE_TAIL} side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
                 <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
               </PracticeBubble>
             </PracticeCharacterPrompt>
           )}
 
-          {translatedPrompt && !sceneFirst && (
-            <details open={status !== 'idle'} className="text-sm font-bold text-ui-muted-strong">
-              <summary data-action="" className="w-fit cursor-pointer rounded-xs focus-ring-inline">Hint</summary>
-              <div className="mt-2 flex flex-col gap-2">
-                <p>{translatedPrompt.replace(/\s*Answer from the picture\.$/, '')}</p>
-                {dialogue.preface && <p>{dialogue.preface}</p>}
-              </div>
-            </details>
-          )}
-
+          {reply && (scene ? reply : <PracticeCharacterPrompt status={status} waiting={line.length > 0}>{reply}</PracticeCharacterPrompt>)}
 
           {answerLine}
-
-          {status === 'correct' && dialogue.type === 'afterward' && (
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <PracticeBubble side="them">
-                <ContextualChineseText
-                  text={dialogue.utterance}
-                  tokens={contextTokens}
-                  characterPreference={script}
-                  onOpenWord={onOpenWord}
-                />
-              </PracticeBubble>
-            </motion.div>
-          )}
         </div>
       ) : (
         <div className="flex flex-col gap-7">
           {!children && item.kind === 'order-build' && !item.scene ? (
             <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
-              <PracticePrompt sub={item.sub ?? item.prompt} />
+              <p className={cn(BUBBLE_TAIL, 'border-2 border-ui-divider bg-ui-surface px-5 py-3.5 text-lg font-extrabold text-ui-ink sm:text-xl')}>{item.sub ?? item.prompt}</p>
             </PracticeCharacterPrompt>
           ) : <PracticePrompt sub={item.sub} />}
           {children}

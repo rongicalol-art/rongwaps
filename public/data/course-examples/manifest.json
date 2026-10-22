@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "version": "b37f0b0655cac827",
-  "generatedAt": "2026-10-20T16:15:50.451Z",
+  "version": "d7acd0725e08d3e6",
+  "generatedAt": "2026-10-22T01:12:06.297Z",
   "totalCount": 378,
   "books": [
     {
       "bookId": 1,
       "count": 378,
       "path": "/data/course-examples/book-1.json",
-      "sha256": "009901412f9d7f938166121e818871aa1a39ff07d2c38a5493503d8561cb5c45",
-      "bytes": 246776
+      "sha256": "40af98d30cd867272c57b1494a09febb42a5772e4959b42e6cad4650ea9f7e88",
+      "bytes": 268852
     }
   ]
 }

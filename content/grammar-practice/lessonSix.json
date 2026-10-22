@@ -1288,25 +1288,12 @@
         ],
         "tiles": [
           {
-            "traditional": "很",
-            "pinyin": "hěn"
-          },
-          {
             "traditional": "有點兒",
             "simplified": "有点儿",
             "pinyin": "yǒudiǎnr"
           }
         ],
         "repairs": [
-          {
-            "placed": [
-              "很"
-            ],
-            "mark": [
-              "很"
-            ],
-            "note": "The task asks for a little, so use 有點兒 rather than the stronger 很."
-          },
           {
             "slot": {
               "id": "g0",

@@ -101,11 +101,26 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     setLastOpenedLesson(activeBookId, lessonId);
   }, [activeBookId, setLastOpenedLesson]);
   const handleCloseLesson = useCallback(() => setLessonWindow(null), []);
-  const selection = useLessonSelection(activeBookId);
+  const currentLesson = useMemo(
+    () => progress.lessons.find((lesson) => lesson.state === 'current'),
+    [progress.lessons],
+  );
+  const defaultLessonId = currentLesson?.id ?? null;
+  const selection = useLessonSelection(activeBookId, defaultLessonId);
+
+  const handleLessonClick = useCallback((lessonId: number) => {
+    if (selection.isMultiSelecting) {
+      selection.toggle(lessonId);
+    } else if (selection.selectedIds.includes(lessonId)) {
+      handleOpenLesson(lessonId);
+    } else {
+      selection.enter(lessonId);
+    }
+  }, [handleOpenLesson, selection]);
+
   const handleStartSelection = useCallback(() => {
     const ids = selection.selectedIds;
     if (ids.length === 1) {
-      selection.exit();
       handleOpenLesson(ids[0]);
       return;
     }
@@ -150,10 +165,10 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     <div key={lesson.id} ref={refIfCurrent(lesson)}>
       <LessonItem
         lesson={lesson}
-        onOpen={selection.enter}
-        onLongPress={selection.enter}
+        onOpen={handleLessonClick}
+        onLongPress={selection.toggle}
         onToggle={selection.toggle}
-        isSelecting={selection.isSelecting}
+        isSelecting={selection.isMultiSelecting}
         isSelected={isPicked(lesson)}
         isPrevSelected={isPicked(lessons[index - 1])}
         isNextSelected={isPicked(lessons[index + 1])}
@@ -210,10 +225,10 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                     <StarterLesson
                       starterLesson={starterLesson}
                       activeBook={activeBook}
-                      onOpen={selection.enter}
-                      onLongPress={selection.enter}
+                      onOpen={handleLessonClick}
+                      onLongPress={selection.toggle}
                       onToggle={selection.toggle}
-                      isSelecting={selection.isSelecting}
+                      isSelecting={selection.isMultiSelecting}
                       isSelected={isPicked(starterLesson)}
                     />
                   </div>

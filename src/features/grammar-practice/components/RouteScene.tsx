@@ -35,9 +35,9 @@ function Pin({ place, x, y, radius = 40 }: { place: PracticePlace | null; x: num
   }
   return (
     <g transform={`translate(${x} ${y})`}>
-      <circle r={radius} cy={5} className="fill-ui-border" />
-      <circle r={radius} className={place ? 'fill-ui-surface stroke-ui-border [stroke-width:3]' : 'fill-ui-surface stroke-ui-border [stroke-dasharray:6_7] [stroke-width:3]'} />
-      {place && <g transform={`scale(${radius / 34})`}>{ROUTE_ICONS[place.icon]}</g>}
+      {place && <circle r={radius} cy={6} className="fill-ui-border" />}
+      <circle r={radius} className={place ? 'fill-ui-surface' : 'fill-ui-surface stroke-ui-border [stroke-dasharray:6_7] [stroke-width:3]'} />
+      {place && <g transform={`scale(${radius / 27})`}>{ROUTE_ICONS[place.icon]}</g>}
       {place?.label && radius > 30 && (
         <text y={radius + 28} textAnchor="middle" className="fill-ui-muted-strong font-sans text-[22px] font-extrabold sm:text-[17px]">
           {place.label}

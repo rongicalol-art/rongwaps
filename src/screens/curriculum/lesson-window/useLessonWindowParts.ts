@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { INTRODUCTION_ART, LESSON_LANDSCAPE_ART } from '../../../data/lessonLandscapeArt';
 import { findGrammarManifestPartForReading } from '../../../data/interactiveGrammarManifest';
+import { LESSON_PART_TITLES } from '../../../data/lessonPartTitles';
 import { GRAMMAR_USAGE_RULES } from '../../../data/grammarUsageRules';
 import { getReadingIllustration } from '../../../data/readingIllustrations';
 import { fetchReadingsPack } from '../../../services/contentPacks';
@@ -16,6 +17,8 @@ export interface LessonWindowPart {
   id: number;
   /** "Dialogue 1 · At school" (part 3: "Reading · …"). */
   readingLabel: string;
+  /** What the part is about, "Chinese · English" (empty when merged from several parts). */
+  title: string;
   vocab: PartProgress;
   /** Null when the part has no grammar lesson. */
   grammar: (PartProgress & { manifestId: string; label: string }) | null;
@@ -72,6 +75,7 @@ export function getAggregatedPart(selectedParts: LessonWindowPart[]): LessonWind
   return {
     id: selectedParts[0]?.id ?? 1,
     readingLabel,
+    title: '',
     vocab: { done: vocabDone, total: vocabTotal },
     grammar,
     hasReading: selectedParts.some((p) => p.hasReading),
@@ -89,6 +93,12 @@ function grammarLabel(pageIds: string[]): string {
   return citations.length
     ? `${citations[0]}${pageIds.length > 1 ? ` · ${pageIds.length} patterns` : ''}`
     : `${pageIds.length} ${pageIds.length === 1 ? 'pattern' : 'patterns'}`;
+}
+
+/** Dialogues use authored titles; readings use the book's reading title. */
+function partTitle(bookId: number, lessonId: number, part: number, reading: ReadingRecord | undefined): string {
+  if (!reading) return '';
+  return LESSON_PART_TITLES[`${bookId}-${lessonId}-${part}`] ?? (reading.title.startsWith('短文') ? reading.title.replace(/^短文 · /, '') : reading.setting ?? '');
 }
 
 function settingEnglish(setting: string) {
@@ -140,6 +150,7 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
       const setting = reading?.setting ? settingEnglish(reading.setting) : '';
       return {
         id,
+        title: partTitle(bookId, lesson.id, id, reading),
         readingLabel: [id === 3 ? 'Reading' : `Dialogue ${id}`, setting]
           .filter((piece, index, all) => piece && all.indexOf(piece) === index)
           .join(' · '),

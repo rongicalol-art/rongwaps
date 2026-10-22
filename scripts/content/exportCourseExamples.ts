@@ -5,6 +5,9 @@ import type {
   CourseExampleManifestBook,
   CourseExamplePack,
   CourseExampleRecord,
+  AlignedChar,
+  DialogueAlignment,
+  SentenceAudio,
 } from '../../src/types/models';
 import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 import { loadVocabularyExampleAudio, vocabularyExampleKey } from '../audio/vocabularyExampleAudio';
@@ -14,6 +17,13 @@ const BOOK_ID = 1;
 const MAX_SOURCE_LESSON_ID = 15;
 const OCR_ROOT = resolve(process.cwd(), 'output/ocr/modern_chinese_1');
 const VOCABULARY_PACK_PATH = resolve(process.cwd(), 'public/data/vocabulary/book-1.json');
+const DIALOGUE_ALIGNMENT_PATH = resolve(process.cwd(), 'public/data/dialogue-alignment/book-1.json');
+const MIN_DIALOGUE_LINE_SCORE = 0.64;
+const MIN_SPAN_SCORE = 0.75;
+const MAX_FINAL_SYLLABLE_SEC = 0.8;
+const MAX_INNER_SYLLABLE_SEC = 2;
+/** The recording says something else than the printed line (checked by transcription): leave on speech. */
+const RECORDING_DIFFERS = new Set(['B1L09-1-01-D01L03']);
 const OUTPUT_DIRECTORY = resolve(process.cwd(), 'public/data/course-examples');
 const REPORT_DIRECTORY = resolve(process.cwd(), 'output/course-examples');
 
@@ -372,6 +382,57 @@ function createReadingExample(
   };
 }
 
+/** Han characters only, with 妳 read as 你 (same sound, different printing). */
+const hanOnly = (text: string) => [...text.replaceAll('妳', '你')].filter((char) => /\p{Script=Han}/u.test(char)).join('');
+
+interface DialogueLineClip {
+  lessonId: number;
+  file: string;
+  text: string;
+  chars: AlignedChar[];
+  start: number;
+  end: number;
+}
+
+const roundSec = (value: number) => Math.round(value * 100) / 100;
+
+/** The reader's aligned dialogue and reading lines, by OCR id (`B1L02-D02-L01`) for whole lines. */
+async function loadDialogueLines(): Promise<{ byOcrId: Map<string, DialogueLineClip>; byLesson: Map<number, DialogueLineClip[]> }> {
+  const pack = JSON.parse(await readFile(DIALOGUE_ALIGNMENT_PATH, 'utf8')) as { items: Record<string, DialogueAlignment> };
+  const byOcrId = new Map<string, DialogueLineClip>();
+  const byLesson = new Map<number, DialogueLineClip[]>();
+  for (const dialogue of Object.values(pack.items)) {
+    for (const line of dialogue.lines) {
+      const chars = line.chars ?? [];
+      if (line.unmatched || line.end <= line.start || (line.score ?? 0) < MIN_DIALOGUE_LINE_SCORE || chars.length === 0) continue;
+      const clip = { lessonId: dialogue.lessonId, file: dialogue.audioFile, text: line.text, chars, start: line.start, end: line.end };
+      byOcrId.set(`B${BOOK_ID}L${String(dialogue.lessonId).padStart(2, '0')}-D${String(dialogue.dialogueNumber).padStart(2, '0')}-L${String(line.index + 1).padStart(2, '0')}`, clip);
+      byLesson.set(dialogue.lessonId, [...(byLesson.get(dialogue.lessonId) ?? []), clip]);
+    }
+  }
+  return { byOcrId, byLesson };
+}
+
+/**
+ * Audio for `sentence` inside an aligned line: the whole line, or just the sentence's own characters when
+ * the line holds more than one. The last syllable runs to the next onset, so its trailing silence is cut.
+ */
+function clipForSentence(line: DialogueLineClip, sentence: string): SentenceAudio | null {
+  const lineHan = hanOnly(line.text);
+  const target = hanOnly(sentence);
+  const from = lineHan.indexOf(target);
+  // A syllable stretched over seconds means the aligner skipped speech before it.
+  if (!target || from < 0 || line.chars.slice(0, -1).some((char) => char.end - char.start > MAX_INNER_SYLLABLE_SEC)) return null;
+  const wholeLine = target.length === lineHan.length;
+  // Cutting out part of a line needs one aligned character per Han character.
+  if (!wholeLine && line.chars.length !== lineHan.length) return null;
+  const span = wholeLine ? line.chars : line.chars.slice(from, from + target.length);
+  if (!wholeLine && span.reduce((sum, char) => sum + (char.score ?? 0), 0) / span.length < MIN_SPAN_SCORE) return null;
+  const start = wholeLine ? line.start : span[0].start;
+  const end = Math.min(wholeLine ? line.end : span[span.length - 1].end, span[span.length - 1].start + MAX_FINAL_SYLLABLE_SEC);
+  return { voice: 'book', file: line.file, start: roundSec(start), end: roundSec(end) };
+}
+
 async function main() {
   const [lessons, vocabularyPackContent] = await Promise.all([
     loadOcrLessons(),
@@ -443,6 +504,17 @@ async function main() {
     const audio = audioBySentence.get(vocabularyExampleKey(record.sourceCardId, record.traditional));
     if (audio) record.audio = audio;
   });
+  const dialogueLines = await loadDialogueLines();
+  records.forEach((record) => {
+    if (record.audio || RECORDING_DIFFERS.has(record.id)) return;
+    const wholeLine = dialogueLines.byOcrId.get(record.sourceOcrId);
+    const lines = [...(wholeLine ? [wholeLine] : []), ...(dialogueLines.byLesson.get(record.lessonId) ?? [])];
+    for (const line of lines) {
+      const audio = clipForSentence(line, record.traditional);
+      if (audio) { record.audio = audio; return; }
+    }
+  });
+  console.log(`${records.filter((record) => /-D\d{2}L\d{2}$/.test(record.id) && !record.audio).length} dialogue examples will use speech fallback.`);
   const missingVocabularyAudio = records.filter((record) => /-E\d{2}$/.test(record.id) && !record.audio);
   console.log(`${missingVocabularyAudio.length} vocabulary-page examples will use speech fallback.`);
 

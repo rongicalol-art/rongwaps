@@ -15,6 +15,7 @@ import {
   type SentenceWordLookupResult,
 } from '../../../lib/widgets';
 import type { AnchorPosition } from '../../../utils/browser/tooltipPosition';
+import { beginnerDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
 import { lookupSentenceWord, playSentenceWordAudio } from '../../../services/sentenceLookupService';
 
 interface InteractiveGrammarSentenceProps {
@@ -145,7 +146,7 @@ export function InteractiveGrammarSentence({
       };
 
       const tokenMeaning = word.meaning || (word as unknown as { english?: string }).english || '';
-      const baseDefs = tokenMeaning ? [tokenMeaning] : [];
+      const baseDefs = beginnerDefinitions(tokenMeaning ? [tokenMeaning] : []);
       const initialInfo: SentenceWordLookupResult = {
         word: text,
         pinyin: word.pinyin || undefined,
@@ -177,7 +178,7 @@ export function InteractiveGrammarSentence({
               info: {
                 word: text,
                 pinyin: word.pinyin || result.pinyin,
-                definitions: allDefs,
+                definitions: beginnerDefinitions(allDefs),
                 fallbackParts: result.fallbackParts,
                 hasAudio: true,
               },

@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
 import { cn } from '../../../utils/cn';
 
+/** A speech bubble whose tail points at the character beside it. */
+export const BUBBLE_TAIL = 'relative max-w-full rounded-control rounded-bl-control before:absolute before:-left-2 before:top-7 before:size-4 before:rotate-45 before:border-b-2 before:border-l-2 before:border-ui-divider before:bg-ui-surface';
+
 interface PracticeBubbleProps {
   /** `me` is the learner's reply (right, book blue). */
   side: 'them' | 'me';
@@ -25,7 +28,7 @@ export function PracticeBubble({ side, children, notes = [], className }: Practi
     >
       <div className="font-chinese text-[22px] leading-normal sm:text-[26px]">{children}</div>
       {notes.map((note) => (
-        <p key={note} className={cn('mt-0.5 text-sm font-bold', mine ? 'text-brand-on-primary/85' : 'text-ui-muted-strong')}>{note}</p>
+        <p key={note} className={cn('mt-0.5 text-sm font-extrabold', mine ? 'text-brand-on-primary/85' : 'text-ui-muted-strong')}>{note}</p>
       ))}
     </div>
   );

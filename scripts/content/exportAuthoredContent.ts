@@ -222,10 +222,23 @@ async function loadSourceReadings(bookId: number): Promise<ReadingRecord[]> {
   return JSON.parse(await readFile(readingsPath, 'utf8')) as ReadingRecord[];
 }
 
+/** Reading lines get their studio recording; Book 1 readings play the official track instead. */
+async function attachReadingAudio(readings: ReadingRecord[]) {
+  const studio = JSON.parse(await readFile(resolve(ROOT, 'content/audio/grammar_studio_audio.json'), 'utf8').catch(() => '{}')) as Record<string, { file: string }>;
+  const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
+  for (const reading of readings) {
+    for (const line of reading.paragraphs) {
+      const clip = studio[han(line.traditional)];
+      if (clip) line.audio = { voice: 'studio', file: clip.file };
+    }
+  }
+}
+
 async function main() {
   console.log('Exporting authored content to public/data packs...');
   for (const bookId of [1, 3]) {
     const readings = await loadSourceReadings(bookId);
+    if (bookId !== 1) await attachReadingAudio(readings);
     const grammarParts = await loadSourceGrammarParts(bookId);
 
     await exportPack(READINGS_DIR, 'readings', bookId, readings);

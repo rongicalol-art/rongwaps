@@ -104,7 +104,12 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
       assert.ok(packed, `${sourceCardId} appears in Book ${bookId} vocabulary pack`);
       const packedExamples = typeof packed.examples === 'string' ? JSON.parse(packed.examples) as Array<{ audio?: SentenceAudio }> : [];
       assert.equal(packedExamples.length, 1, `${sourceCardId} has one packed vocabulary example`);
-      assert.deepEqual(packedExamples[0].audio, entry.audio || undefined, `${sourceCardId} packed audio matches source manifest`);
+      if (bookId === 3 && entry.lessonId <= 5) {
+        // Book 3 L1–5 plays our studio recording instead of the book track.
+        assert.equal(packedExamples[0].audio?.voice, 'studio', `${sourceCardId} packed studio audio`);
+      } else {
+        assert.deepEqual(packedExamples[0].audio, entry.audio || undefined, `${sourceCardId} packed audio matches source manifest`);
+      }
     }
   }
 

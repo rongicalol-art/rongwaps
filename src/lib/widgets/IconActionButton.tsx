@@ -106,7 +106,7 @@ export const IconActionButton = forwardRef<HTMLButtonElement, IconActionButtonPr
       {/* Moving Front Surface (Pushes down towards baseline on active; inert when disabled) */}
       <span
         className={cn(
-          'relative flex w-full h-full items-center justify-center rounded-[inherit] mb-[length:var(--depth-sm)]',
+          'relative flex w-full items-center justify-center rounded-[inherit] mb-[length:var(--depth-sm)]',
           'transition-[transform,background-color,border-color,color,filter] duration-150 ease-out',
           disabled
             ? '!bg-brand-disabled !border-none !text-white !shadow-none cursor-not-allowed pointer-events-none'

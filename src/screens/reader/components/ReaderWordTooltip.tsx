@@ -65,7 +65,7 @@ export const ReaderWordTooltip: React.FC<ReaderWordTooltipProps> = ({
   return createPortal(
     <div
       data-reader-word-tooltip="true"
-      className="pointer-events-auto fixed z-tooltip"
+      className="pointer-events-auto fixed z-popover"
       style={{
         left: `${placement.left}px`,
         top: `${placement.top}px`,
@@ -130,7 +130,7 @@ export const ReaderWordTooltip: React.FC<ReaderWordTooltipProps> = ({
             {preview.definitions.map((definition, idx) => (
               <p
                 key={idx}
-                className="font-sans text-[13px] leading-relaxed break-words text-white/85"
+                className="font-sans text-[13px] font-bold leading-relaxed break-words text-white/85"
               >
                 {definition}
               </p>

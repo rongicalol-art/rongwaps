@@ -1723,7 +1723,7 @@
           "pinyin": "Nǐ juéde zhè jiā cāntīng de niúròumiàn zěnmeyàng? Yòu hǎochī yòu piányi.",
           "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
         },
-        "prompt": "The noodles here taste great and cost $50 (others cost $150). What do you think? Where do the two 又 go?",
+        "prompt": "Great noodles at $50, others $150. Where do the two 又 go?",
         "gaps": true
       },
       {

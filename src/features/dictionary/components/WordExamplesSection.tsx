@@ -46,7 +46,7 @@ export function WordExamplesSection({
             <button
               type="button"
               aria-label={`Play the example sentence ${ex.chinese}`}
-              onClick={() => { void playSentence(ex.chinese, ex.audio, characterPreference, 0.86).catch(() => {}); }}
+              onClick={() => { void playSentence(ex.chinese, ex.audio, characterPreference).catch(() => {}); }}
               className={PLAY_BUTTON}
             >
               <AppIcon name="audio" size={18} />

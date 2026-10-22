@@ -96,7 +96,7 @@ export function SlotReelsExercise({
               );
             })}
           </p>
-          <p className="text-center text-base font-bold text-ui-muted-strong">{english}</p>
+          <p className="text-center text-base font-extrabold text-ui-muted-strong">{english}</p>
         </div>
       </div>
       {trayHost && activeReel && createPortal(

@@ -1,17 +1,17 @@
-import { useCallback, useMemo, useRef, useEffect } from 'react';
+import { useCallback, useMemo, useRef, useEffect, type ReactNode, type RefObject } from 'react';
 import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { audioService } from '../../../services/audioService';
 import { findMatchingCourseVocab } from '../../../services/courseVocabLookup';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
-import { useReaderLocate } from '../hooks/useReaderLocate';
+import { useReaderNewWordChunks } from '../hooks/useReaderNewWordChunks';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
-import type { ReaderLocatedRange } from '../utils/readerLocate';
 import { buildReadingLines, pickRightSpeaker } from '../utils/readingCanvasLines';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { ReaderNarratorLine } from './ReaderNarratorLine';
 import { ReaderDialogueLine } from './ReaderDialogueLine';
+import { ReaderSceneIntro } from './ReaderSceneIntro';
 
 interface ReadingCanvasProps {
   reading: ReadingRecord;
@@ -23,10 +23,12 @@ interface ReadingCanvasProps {
   textSize: ReaderTextSize;
   activeLineIndex: number | null;
   currentTime: number;
-  /** Vocabulary word the Study Guide is locating in this text, if any. */
-  locatedWord: ReaderStudyTargetWord | null;
-  /** Sentences of the located grammar point, painted with a soft background. */
-  locatedGrammarRanges: readonly ReaderLocatedRange[];
+  /** This part's words that appear in the text; underlined as new. */
+  newWords: readonly ReaderStudyTargetWord[];
+  /** False once the learner scrolls by hand; the spoken line is then left where it is. */
+  followAudioRef: RefObject<boolean>;
+  /** Rendered after the reading: what this part teaches. */
+  footer?: ReactNode;
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
 }
@@ -41,8 +43,9 @@ export function ReadingCanvas({
   textSize,
   activeLineIndex,
   currentTime,
-  locatedWord,
-  locatedGrammarRanges,
+  newWords,
+  followAudioRef,
+  footer,
   onPlayLine,
   onPlayRange,
 }: ReadingCanvasProps) {
@@ -89,18 +92,11 @@ export function ReadingCanvas({
     [onPlayRange, onPlayLine],
   );
 
-  // Auto-scroll active line into view when activeLineIndex changes
+  // Keep the spoken line centred while the learner is following the audio.
   useEffect(() => {
-    if (activeLineIndex === null) return;
-    const el = lineRefs.current.get(activeLineIndex);
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'nearest',
-      });
-    }
-  }, [activeLineIndex]);
+    if (activeLineIndex === null || !followAudioRef.current) return;
+    lineRefs.current.get(activeLineIndex)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [activeLineIndex, followAudioRef]);
 
   const linesData = useMemo(() => buildReadingLines({
     reading,
@@ -114,57 +110,36 @@ export function ReadingCanvas({
     [linesData],
   );
 
-  const { locatedChunks, firstParagraphIndex } = useReaderLocate({
+  const newWordChunks = useReaderNewWordChunks({
     reading,
     script: characterPreference,
-    locatedWord,
+    newWords,
     paragraphChunks,
   });
-
-  // Bring the first occurrence into view; `nearest` leaves the scroll position
-  // alone when the occurrence is already visible.
-  useEffect(() => {
-    if (!locatedWord || firstParagraphIndex === null) return;
-    lineRefs.current.get(firstParagraphIndex)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
-  }, [locatedWord, firstParagraphIndex]);
-
-  // Same for a located grammar point's first matched sentence.
-  useEffect(() => {
-    const first = locatedGrammarRanges[0];
-    if (!first) return;
-    lineRefs.current.get(first.paragraphIndex)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
-  }, [locatedGrammarRanges]);
 
   return (
     <article
       className={cn(
-        'mx-auto w-full px-3 pb-52 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-6 sm:pt-[6.5rem] transition-all',
-        textSize === 'extra-large' ? 'max-w-4xl' : 'max-w-3xl xl:max-w-4xl',
+        'mx-auto w-full px-4 pb-16 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-6 sm:pt-[6.5rem] transition-all',
+        textSize === 'extra-large' ? 'max-w-4xl' : 'max-w-3xl',
       )}
     >
-      {/* Dialogue Chat Messages Flow */}
-      <div className="flex flex-col space-y-4 sm:space-y-5">
+      <ReaderSceneIntro reading={reading} showTitle />
+
+      {/* Dialogue lines: lines not reached yet stay dim while the audio plays */}
+      <div className="flex flex-col gap-6 sm:gap-7">
         {linesData.map((line) => {
-          const isActive = line.index === activeLineIndex;
+          const isUpcoming = activeLineIndex !== null && line.index > activeLineIndex;
 
           if (line.isNarrator) {
             return (
               <ReaderNarratorLine
                 key={line.index}
                 line={line}
-                isActive={isActive}
                 textSize={textSize}
                 showPinyin={showPinyin}
                 showMeaning={showMeaning}
-                locatedGrammarRanges={locatedGrammarRanges}
+                isUpcoming={isUpcoming}
                 onPlayLine={onPlayLine}
                 onLineRef={registerLineRef}
               />
@@ -175,13 +150,13 @@ export function ReadingCanvas({
             <ReaderDialogueLine
               key={line.index}
               line={line}
-              isActive={isActive}
               textSize={textSize}
               showPinyin={showPinyin}
               showMeaning={showMeaning}
               currentTime={currentTime}
-              locatedChunks={locatedChunks}
-              locatedGrammarRanges={locatedGrammarRanges}
+              isUpcoming={isUpcoming}
+              isActive={activeLineIndex === line.index}
+              newWordChunks={newWordChunks}
               onPlayLine={onPlayLine}
               onPlayRange={onPlayRange}
               playFragment={playFragment}
@@ -192,6 +167,8 @@ export function ReadingCanvas({
         })}
       </div>
 
+      {footer}
+
       {/* Word definition card (hover / desktop) */}
       {hoveredWord && (
         <ReaderWordTooltip
@@ -200,7 +177,7 @@ export function ReadingCanvas({
           onSpeak={() => {
             const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
             void findMatchingCourseVocab(hoveredWord.text).then((match) => {
-              void audioService.play(match?.audio, 1.0, hoveredWord.text, language);
+              void audioService.play(match?.audio, undefined, hoveredWord.text, language);
             });
           }}
           onMouseEnter={handleTooltipMouseEnter}

@@ -1261,10 +1261,10 @@
             "subject": [
               {
                 "id": "b3l5g2-r1-c1-w1",
-                "traditional": "他",
-                "simplified": "他",
-                "pinyin": "tā",
-                "meaning": "he"
+                "traditional": "我",
+                "simplified": "我",
+                "pinyin": "wǒ",
+                "meaning": "I"
               }
             ],
             "grammar": [
@@ -1279,24 +1279,17 @@
             "complement": [
               {
                 "id": "b3l5g2-r1-c3-w1",
-                "traditional": "好幾",
-                "simplified": "好几",
-                "pinyin": "hǎojǐ",
-                "meaning": "several"
+                "traditional": "三",
+                "simplified": "三",
+                "pinyin": "sān",
+                "meaning": "three"
               },
               {
                 "id": "b3l5g2-r1-c3-w2",
-                "traditional": "個",
-                "simplified": "个",
-                "pinyin": "ge",
-                "meaning": "verb particle (個)"
-              },
-              {
-                "id": "b3l5g2-r1-c3-w3",
-                "traditional": "句子",
-                "simplified": "句子",
-                "pinyin": "jùzi",
-                "meaning": "sentence",
+                "traditional": "天",
+                "simplified": "天",
+                "pinyin": "tiān",
+                "meaning": "day",
                 "suffix": "，"
               }
             ],
@@ -1304,10 +1297,10 @@
               [
                 {
                   "id": "b3l5g2-r1-c1-w1",
-                  "traditional": "他",
-                  "simplified": "他",
-                  "pinyin": "tā",
-                  "meaning": "he"
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
                 }
               ],
               [
@@ -1322,24 +1315,17 @@
               [
                 {
                   "id": "b3l5g2-r1-c3-w1",
-                  "traditional": "好幾",
-                  "simplified": "好几",
-                  "pinyin": "hǎojǐ",
-                  "meaning": "several"
+                  "traditional": "三",
+                  "simplified": "三",
+                  "pinyin": "sān",
+                  "meaning": "three"
                 },
                 {
                   "id": "b3l5g2-r1-c3-w2",
-                  "traditional": "個",
-                  "simplified": "个",
-                  "pinyin": "ge",
-                  "meaning": "verb particle (個)"
-                },
-                {
-                  "id": "b3l5g2-r1-c3-w3",
-                  "traditional": "句子",
-                  "simplified": "句子",
-                  "pinyin": "jùzi",
-                  "meaning": "sentence",
+                  "traditional": "天",
+                  "simplified": "天",
+                  "pinyin": "tiān",
+                  "meaning": "day",
                   "suffix": "，"
                 }
               ],
@@ -1353,36 +1339,29 @@
                 },
                 {
                   "id": "b3l5g2-r1-c4-w2",
-                  "traditional": "說",
-                  "simplified": "说",
-                  "pinyin": "shuō",
-                  "meaning": "to say"
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": "at"
                 },
                 {
                   "id": "b3l5g2-r1-c4-w3",
-                  "traditional": "了",
-                  "simplified": "了",
-                  "pinyin": "le",
-                  "meaning": "completion particle"
+                  "traditional": "家",
+                  "simplified": "家",
+                  "pinyin": "jiā",
+                  "meaning": "home"
                 },
                 {
                   "id": "b3l5g2-r1-c4-w4",
-                  "traditional": "難懂",
-                  "simplified": "难懂",
-                  "pinyin": "nán dǒng",
-                  "meaning": "difficult to understand"
-                },
-                {
-                  "id": "b3l5g2-r1-c4-w5",
-                  "traditional": "的",
-                  "simplified": "的",
-                  "pinyin": "de",
-                  "meaning": "possessive particle",
+                  "traditional": "休息",
+                  "simplified": "休息",
+                  "pinyin": "xiūxí",
+                  "meaning": "to rest",
                   "suffix": "。"
                 }
               ]
             ],
-            "english": "He uttered several difficult sentences in a row."
+            "english": "I stayed at home resting for three days in a row."
           },
           {
             "id": "b3l5g2-r2",
@@ -6405,7 +6384,7 @@
               "traditional": "張小姐什麼動物都不怕，就是怕蛇，甚至連電視上的蛇圖片也害怕。",
               "simplified": "张小姐什么动物都不怕，就是怕蛇，甚至连电视上的蛇图片也害怕。",
               "pinyin": "Zhāng xiǎojiě shénme dòngwù dōu bú pà, jiùshì pà shé, shènzhì lián diànshì shàng de shé túpiàn yě hàipà.",
-              "english": "Ms. Zhang isn't afraid of any animals except snakes; she doesn't even dare to look at pictures of snakes on TV.",
+              "english": "Ms. Zhang isn't afraid of any animal except snakes; she is even afraid of snake pictures on TV.",
               "words": [
                 {
                   "id": "b3l5g6-ex2-w1",
@@ -6539,7 +6518,7 @@
               "traditional": "馬老闆一忙起來，不但沒空吃飯，甚至連上廁所的時間都沒有。",
               "simplified": "马老闆一忙起来，不但没空吃饭，甚至连上厕所的时间都没有。",
               "pinyin": "Mǎ lǎobǎn yì máng qǐlái, búdàn méi kòng chīfàn, shènzhì lián shàng cèsuǒ de shíjiān dōu méiyǒu.",
-              "english": "Boss Chen has been so busy handling the company's sudden crisis these days that he doesn't even have time to go home.",
+              "english": "Once Boss Ma gets busy, not only does he have no time to eat, he doesn't even have time to go to the restroom.",
               "words": [
                 {
                   "id": "b3l5g6-ex3-w1",
@@ -7222,7 +7201,7 @@
               "traditional": "車站以北的地區比其他地區熱鬧，如果你想逛街購物，那裡真是個好去處。",
               "simplified": "车站以北的地区比其他地区热闹，如果你想逛街购物，那里真是个好去处。",
               "pinyin": "Chēzhàn yǐ běi de dìqū bǐ qítā dìqū rènào, rúguǒ nǐ xiǎng guàngjiē gòuwù, nàlǐ zhēn shì ge hǎo qùchù.",
-              "english": "South of this old train station is a modern commercial center that has developed rapidly in recent years.",
+              "english": "The area north of the station is more bustling than other areas; if you want to go shopping, that's really a great place to go.",
               "words": [
                 {
                   "id": "b3l5g7-ex1-w1",
@@ -7363,7 +7342,7 @@
               "traditional": "我覺得花蓮市以南到臺東這一段路的風景最美，值得推薦給喜歡旅遊的朋友。",
               "simplified": "我觉得花莲市以南到台东这一段路的风景最美，值得推荐给喜欢旅游的朋友。",
               "pinyin": "Wǒ juéde Huālián Shì yǐ nán dào Táidōng zhè yí duàn lù de fēngjǐng zuì měi, zhíde tuījiàn gěi xǐhuān lǚyóu de péngyǒu.",
-              "english": "North of the city park preserves many historic buildings from the Japanese colonial period.",
+              "english": "I think the scenery along this stretch of road from south of Hualien City to Taitung is the most beautiful, well worth recommending to friends who love to travel.",
               "words": [
                 {
                   "id": "b3l5g7-ex2-w1",
@@ -7531,7 +7510,7 @@
               "traditional": "這個國家以西鄰接著廣闊的沙漠，氣候十分乾燥。",
               "simplified": "这个国家以西邻接着广闊的沙漠，气候十分干燥。",
               "pinyin": "Zhège guójiā yǐ xī línjiē zhe guǎngkuò de shāmò, qìhòu shífēn gānzào.",
-              "english": "East of the towering Central Mountain Range is the magnificent Pacific coast stretching as far as the eye can see.",
+              "english": "West of this country borders a vast desert, and the climate is very dry.",
               "words": [
                 {
                   "id": "b3l5g7-ex3-w1",

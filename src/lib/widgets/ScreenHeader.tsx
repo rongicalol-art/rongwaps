@@ -37,12 +37,21 @@ const FROST_TONE_CLASSES: Record<ScreenHeaderTone, string> = {
   practice: 'bg-ui-practice-canvas',
 };
 
+/** 0–1 position of the pointer along the element it is attached to. */
+function fractionFromPointer(e: React.PointerEvent<HTMLElement>): number {
+  const rect = e.currentTarget.getBoundingClientRect();
+  return rect.width > 0 ? Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) : 0;
+}
+
 export interface ScreenHeaderProps {
   title?: string;
   eyebrow?: string;
   leftContent?: React.ReactNode;
   centerContent?: React.ReactNode;
   progress?: number;
+  /** Makes the progress rail a scrubber: called with 0–1 while dragging, then once on release or key press. */
+  onProgressScrub?: (fraction: number) => void;
+  onProgressSeek?: (fraction: number) => void;
   showPercentage?: boolean;
   currentIndex?: number;
   totalCount?: number;
@@ -79,6 +88,8 @@ export function ScreenHeader({
   leftContent,
   centerContent,
   progress, 
+  onProgressScrub,
+  onProgressSeek,
   showPercentage = false,
   currentIndex, 
   totalCount, 
@@ -207,7 +218,35 @@ export function ScreenHeader({
                   className="w-full"
                 />
               ) : (
-                <div ref={progressRailRef} role="progressbar" aria-label="Study progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(Math.max(0, Math.min(100, progress)))} className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track">
+                <div
+                  className={cn('relative w-full', onProgressSeek && 'cursor-pointer touch-none py-1.5')}
+                  {...(onProgressSeek && {
+                    role: 'slider',
+                    tabIndex: 0,
+                    'aria-label': 'Playback position',
+                    'aria-valuemin': 0,
+                    'aria-valuemax': 100,
+                    'aria-valuenow': Math.round(Math.max(0, Math.min(100, progress))),
+                    onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => {
+                      e.currentTarget.setPointerCapture(e.pointerId);
+                      onProgressScrub?.(fractionFromPointer(e));
+                    },
+                    onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => {
+                      if (e.currentTarget.hasPointerCapture(e.pointerId)) onProgressScrub?.(fractionFromPointer(e));
+                    },
+                    onPointerUp: (e: React.PointerEvent<HTMLDivElement>) => {
+                      if (e.currentTarget.hasPointerCapture(e.pointerId)) onProgressSeek(fractionFromPointer(e));
+                    },
+                    onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
+                      const step = e.key === 'ArrowRight' ? 0.05 : e.key === 'ArrowLeft' ? -0.05 : 0;
+                      if (!step) return;
+                      e.preventDefault();
+                      e.stopPropagation();
+                      onProgressSeek(Math.max(0, Math.min(1, progress / 100 + step)));
+                    },
+                  })}
+                >
+                <div ref={progressRailRef} role={onProgressSeek ? undefined : 'progressbar'} aria-label={onProgressSeek ? undefined : 'Study progress'} aria-valuemin={onProgressSeek ? undefined : 0} aria-valuemax={onProgressSeek ? undefined : 100} aria-valuenow={onProgressSeek ? undefined : Math.round(Math.max(0, Math.min(100, progress)))} className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track">
                   <motion.div
                     data-practice-progress-fill
                     className={`absolute inset-0 rounded-full ${accentBgClassName}`}
@@ -216,6 +255,7 @@ export function ScreenHeader({
                   <div aria-hidden className="absolute inset-x-2 top-1 h-1.5 overflow-hidden rounded-full">
                     <motion.div data-practice-progress-highlight className="absolute inset-0 rounded-full bg-white/30" style={{ x: progressOffset }} />
                   </div>
+                </div>
                 </div>
               )}
               {showPercentage && (

@@ -67,7 +67,7 @@ export function SummaryQuickActions({
   const speak = () => {
     const text = ttsText || (characterPreference === 'traditional' ? headword : primary?.simplified || headword);
     const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
-    void audioService.speakText(text, language, 0.86).catch(() => {});
+    void audioService.speakText(text, language).catch(() => {});
   };
 
   const play = () => {
@@ -78,7 +78,7 @@ export function SummaryQuickActions({
     const unavailable = () => {
       if (requestId.current === request) speak();
     };
-    void audioService.play(recording.audio, 1, undefined, undefined, 0, { fallback: 'none', onUnavailable: unavailable }).catch(unavailable);
+    void audioService.play(recording.audio, undefined, undefined, undefined, 0, { fallback: 'none', onUnavailable: unavailable }).catch(unavailable);
   };
 
   const pinyinStr = primary?.pinyin

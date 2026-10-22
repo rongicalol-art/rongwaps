@@ -1126,9 +1126,8 @@
       {
         "id": "l04-g4-book1",
         "source": "p.104 #1",
-        "prompt": "Read 5,080 aloud.",
+        "prompt": "How do you say 5,080?",
         "kind": "order-build",
-        "sub": "630,000：六十三萬 5,080",
         "tiles": [
           {
             "traditional": "千",
@@ -1174,58 +1173,32 @@
             "mark": [
               "百"
             ],
-            "note": "5,080 has no hundreds; use 零 between 五千 and 八十."
+            "note": "5,080 has no hundreds, so 百 is not said. 零 marks the gap."
           }
         ],
-        "fallbackRepair": "Read 五千, then 零 for the missing hundreds, then 八十."
+        "fallbackRepair": "五千, then 零 for the empty hundreds, then 八十."
       },
       {
         "id": "l04-g4-book2",
         "source": "p.104 #2",
-        "kind": "slot-build",
-        "lines": [
+        "kind": "spot-fix",
+        "prompt": "0936-068-493",
+        "sub": "They mean the phone number 0936-068-493.",
+        "chunks": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "0930-252-242：零九三零二五二二四二",
-                "simplified": "0930-252-242：零九三零二五二二四二"
-              }
-            ]
+            "traditional": "零九三六"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "0936-068-493"
-              }
-            ]
+            "traditional": "零六八"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "零九三六零六八"
-              },
-              {
-                "type": "slot",
-                "id": "answer",
-                "answers": [
-                  "四九三"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ]
+            "traditional": "四百九十三",
+            "tail": "。"
           }
         ],
+        "wrong": 2,
+        "fix": "四九三",
         "tiles": [
-          {
-            "traditional": "四三九",
-            "pinyin": "sì sān jiǔ"
-          },
           {
             "traditional": "四九三",
             "pinyin": "sì jiǔ sān"
@@ -1235,153 +1208,101 @@
             "pinyin": "sān jiǔ sì"
           }
         ],
+        "takeOutNote": "The last three digits are part of the number.",
+        "hint": "Phone numbers are read one digit at a time, never as an amount.",
+        "result": {
+          "traditional": "零九三六零六八四九三。",
+          "pinyin": "Líng jiǔ sān liù líng liù bā sì jiǔ sān.",
+          "english": "0936-068-493."
+        },
+        "successNote": "Read phone numbers digit by digit: 四九三, not 四百九十三.",
         "repairs": [
           {
             "placed": [
-              "四三九"
-            ],
-            "mark": [
-              "四三九"
-            ],
-            "note": "Phone numbers are read digit by digit, in order: 4-9-3."
-          },
-          {
-            "placed": [
               "三九四"
             ],
-            "mark": [
-              "三九四"
-            ],
-            "note": "Keep the digits in their printed order: 4-9-3."
+            "note": "That is the last digits backwards; read them in order."
           }
-        ],
-        "fallbackRepair": "Read each digit in order: 四九三.",
-        "result": {
-          "traditional": "零九三六零六八四九三。",
-          "pinyin": "Líng jiǔ sān liù, líng liù bā, sì jiǔ sān.",
-          "english": "0936-068-493."
-        },
-        "prompt": "Read the phone number 0936-068-493."
+        ]
       },
       {
         "id": "l04-g4-book3",
-        "source": "p.105 #3",
-        "kind": "slot-build",
-        "gaps": true,
-        "prompt": "Read 5,005 people. Where does 零 go?",
-        "lines": [
+        "source": "p.104 #3",
+        "kind": "spot-fix",
+        "prompt": "5,005 people",
+        "sub": "They mean: 5,005 people.",
+        "chunks": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "201：兩百零一個杯子",
-                "simplified": "201：两百零一个杯子"
-              }
-            ]
+            "traditional": "五千"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "5,005"
-              }
-            ]
+            "traditional": "零零"
           },
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "五千"
-              },
-              {
-                "type": "slot",
-                "id": "gap-0",
-                "answers": [
-                  "零"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "五"
-              },
-              {
-                "type": "slot",
-                "id": "gap-1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "個人",
-                "simplified": "个人"
-              },
-              {
-                "type": "slot",
-                "id": "gap-2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ]
+            "traditional": "五"
+          },
+          {
+            "traditional": "個人",
+            "simplified": "个人",
+            "tail": "。"
           }
         ],
+        "wrong": 1,
+        "fix": "零",
         "tiles": [
           {
             "traditional": "零",
             "pinyin": "líng"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "gap-1",
-              "tile": "零"
-            },
-            "note": "The final five is the ones digit, so put 零 before it to bridge the missing hundreds and tens."
           },
           {
-            "slot": {
-              "id": "gap-2",
-              "tile": "零"
-            },
-            "note": "零 fills the missing number places before 五, not a position after 人."
+            "traditional": "百",
+            "pinyin": "bǎi"
           }
         ],
-        "fallbackRepair": "Keep the sentence together and try another position.",
+        "takeOutNote": "Without 零, 五千五 sounds like 5,500.",
+        "hint": "However many zeros are in a row, 零 is said only once.",
         "result": {
           "traditional": "五千零五個人。",
+          "simplified": "五千零五个人。",
           "pinyin": "Wǔ qiān líng wǔ ge rén.",
-          "english": "Five thousand and five people.",
-          "simplified": "五千零五个人。"
-        }
+          "english": "Five thousand and five people."
+        },
+        "successNote": "One 零 covers the whole gap: 5,005 is 五千零五.",
+        "repairs": [
+          {
+            "placed": [
+              "百"
+            ],
+            "note": "5,005 has no hundreds; one 零 fills the gap."
+          }
+        ]
       },
       {
         "id": "l04-g4-own1",
         "source": "own",
-        "prompt": "Read 78,000 aloud.",
+        "prompt": "How do you say 78,000?",
         "kind": "order-build",
         "tiles": [
+          {
+            "traditional": "七",
+            "pinyin": "qī"
+          },
           {
             "traditional": "萬",
             "simplified": "万",
             "pinyin": "wàn"
           },
           {
-            "traditional": "千",
-            "pinyin": "qiān"
-          },
-          {
-            "traditional": "七",
-            "pinyin": "qī"
-          },
-          {
             "traditional": "八",
             "pinyin": "bā"
           },
           {
-            "traditional": "百",
-            "pinyin": "bǎi"
+            "traditional": "千",
+            "pinyin": "qiān"
+          },
+          {
+            "traditional": "十",
+            "pinyin": "shí"
           }
         ],
         "accepted": [
@@ -1403,15 +1324,75 @@
         "repairs": [
           {
             "placed": [
-              "百"
+              "十"
             ],
             "mark": [
-              "百"
+              "十"
             ],
-            "note": "78,000 ends in eight thousand, so use 千 after 八."
+            "note": "Chinese counts in 萬 (ten thousands): 78,000 is 七萬八千, never 七十八千."
           }
         ],
-        "fallbackRepair": "Read the ten-thousands first, then the thousands: 七萬八千。"
+        "fallbackRepair": "七萬 (70,000), then 八千 (8,000)."
+      },
+      {
+        "id": "l04-g4-own2",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "How do you say 630,000?",
+        "tiles": [
+          {
+            "traditional": "六十三",
+            "pinyin": "liùshísān"
+          },
+          {
+            "traditional": "萬",
+            "simplified": "万",
+            "pinyin": "wàn"
+          },
+          {
+            "traditional": "千",
+            "pinyin": "qiān"
+          },
+          {
+            "traditional": "十",
+            "pinyin": "shí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "六十三",
+              "萬"
+            ],
+            "sentence": {
+              "traditional": "六十三萬。",
+              "simplified": "六十三万。",
+              "pinyin": "Liùshísān wàn.",
+              "english": "Six hundred thirty thousand."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "千"
+            ],
+            "mark": [
+              "千"
+            ],
+            "note": "630,000 is 63 萬: there is no 千 left over."
+          },
+          {
+            "placed": [
+              "十"
+            ],
+            "mark": [
+              "十"
+            ],
+            "note": "六十三 already says 63; count it in 萬."
+          }
+        ],
+        "fallbackRepair": "Group the digits by four: 63 | 0000 is 六十三萬."
       }
     ],
     "allowWords": [
@@ -1703,34 +1684,209 @@
         "fallbackRepair": "For a little after eleven, put 多 after 點."
       },
       {
-        "id": "l04-g5-book5",
-        "source": "p.107 #2",
-        "prompt": "How old is Mr. Li’s child? (Today is 2026-10-16.)",
-        "scene": {
-          "type": "picture",
-          "page": 107,
-          "box": [
-            0.456,
-            0.318,
-            0.155,
-            0.078
-          ],
-          "alt": "A baby labeled 2016.1.1 points to a question mark labeled 今天."
-        },
-        "kind": "order-build",
-        "sub": "李先生的孩子幾歲？",
+        "id": "l04-g5-book6",
+        "source": "p.107 #3",
+        "kind": "spot-fix",
+        "prompt": "US$8.45 altogether",
+        "sub": "They mean: a little over eight dollars altogether.",
+        "chunks": [
+          {
+            "traditional": "一共"
+          },
+          {
+            "traditional": "八多塊",
+            "simplified": "八多块"
+          },
+          {
+            "traditional": "錢",
+            "simplified": "钱",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "fix": "八塊多",
         "tiles": [
           {
-            "traditional": "十",
-            "pinyin": "shí"
+            "traditional": "八塊多",
+            "simplified": "八块多",
+            "pinyin": "bā kuài duō"
+          },
+          {
+            "traditional": "八十多塊",
+            "simplified": "八十多块",
+            "pinyin": "bāshí duō kuài"
+          }
+        ],
+        "takeOutNote": "The price is missing.",
+        "hint": "8 is not a round ten, so 多 comes after the measure word.",
+        "result": {
+          "traditional": "一共八塊多錢。",
+          "simplified": "一共八块多钱。",
+          "pinyin": "Yígòng bā kuài duō qián.",
+          "english": "A little over eight dollars altogether."
+        },
+        "successNote": "Round 10, 100, 1,000: 多 before the measure word. Any other number: 多 after it.",
+        "repairs": [
+          {
+            "placed": [
+              "八十多塊"
+            ],
+            "note": "八十多塊 is over eighty dollars, not over eight."
+          }
+        ]
+      },
+      {
+        "id": "l04-g5-book5",
+        "source": "p.107 #2",
+        "kind": "spot-fix",
+        "prompt": "Mr. Li’s child",
+        "sub": "They mean: his child turned ten a few months ago.",
+        "chunks": [
+          {
+            "traditional": "他的"
+          },
+          {
+            "traditional": "孩子"
+          },
+          {
+            "traditional": "十多歲",
+            "simplified": "十多岁",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "十歲多",
+        "tiles": [
+          {
+            "traditional": "十歲多",
+            "simplified": "十岁多",
+            "pinyin": "shí suì duō"
+          },
+          {
+            "traditional": "十一歲",
+            "simplified": "十一岁",
+            "pinyin": "shíyī suì"
+          }
+        ],
+        "takeOutNote": "Say how old the child is.",
+        "hint": "Put 多 right after a round ten and it means 11 to 19, not just past ten.",
+        "result": {
+          "traditional": "他的孩子十歲多。",
+          "simplified": "他的孩子十岁多。",
+          "pinyin": "Tā de háizi shí suì duō.",
+          "english": "His child is a little over ten."
+        },
+        "successNote": "十歲多 is ten and a bit; 十多歲 is eleven to nineteen.",
+        "repairs": [
+          {
+            "placed": [
+              "十一歲"
+            ],
+            "note": "十一歲 is exactly eleven; the child is ten and a bit."
+          }
+        ]
+      },
+      {
+        "id": "l04-g5-own-sort",
+        "source": "own",
+        "kind": "sort-groups",
+        "prompt": "What does each 多 mean?",
+        "groups": [
+          {
+            "label": "Round number +"
+          },
+          {
+            "label": "Number and a bit"
+          }
+        ],
+        "cards": [
+          {
+            "sentence": {
+              "traditional": "十多個人",
+              "simplified": "十多个人",
+              "pinyin": "shí duō ge rén",
+              "english": "eleven to nineteen people"
+            },
+            "group": 0,
+            "note": "十 is a round ten, so 十多 means 11 to 19."
+          },
+          {
+            "sentence": {
+              "traditional": "八塊多錢",
+              "simplified": "八块多钱",
+              "pinyin": "bā kuài duō qián",
+              "english": "eight dollars and some cents"
+            },
+            "group": 1,
+            "note": "多 after 塊: eight dollars and a bit more."
+          },
+          {
+            "sentence": {
+              "traditional": "一百多塊錢",
+              "simplified": "一百多块钱",
+              "pinyin": "yìbǎi duō kuài qián",
+              "english": "between 101 and 199 dollars"
+            },
+            "group": 0,
+            "note": "一百 is round, so 一百多 means 101 to 199."
+          },
+          {
+            "sentence": {
+              "traditional": "十一點多",
+              "simplified": "十一点多",
+              "pinyin": "shíyī diǎn duō",
+              "english": "a little after eleven o’clock"
+            },
+            "group": 1,
+            "note": "多 after 點: eleven o’clock and a bit."
+          },
+          {
+            "sentence": {
+              "traditional": "兩千多塊錢",
+              "simplified": "两千多块钱",
+              "pinyin": "liǎngqiān duō kuài qián",
+              "english": "between 2,001 and 2,999 dollars"
+            },
+            "group": 0,
+            "note": "兩千 is round, so 兩千多 means over 2,000."
+          },
+          {
+            "sentence": {
+              "traditional": "三歲多",
+              "simplified": "三岁多",
+              "pinyin": "sān suì duō",
+              "english": "three and a bit years old"
+            },
+            "group": 1,
+            "note": "多 after 歲: three years and some months."
+          }
+        ],
+        "successNote": "多 right after a round number means “and more”; 多 after the measure word means “and a bit”."
+      },
+      {
+        "id": "l04-g5-own-listen",
+        "source": "own",
+        "kind": "listen-build",
+        "prompt": "Build what you hear.",
+        "clip": {
+          "page": "B1L04-G05-P105",
+          "file": "B1-04-2-3.mp3",
+          "start": 56.93,
+          "end": 59.13
+        },
+        "tiles": [
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
+          },
+          {
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo"
           },
           {
             "traditional": "多",
             "pinyin": "duō"
-          },
-          {
-            "traditional": "他的孩子",
-            "pinyin": "tā de háizi"
           },
           {
             "traditional": "歲",
@@ -1738,115 +1894,43 @@
             "pinyin": "suì"
           },
           {
-            "traditional": "個",
-            "simplified": "个",
-            "pinyin": "ge"
+            "traditional": "十",
+            "pinyin": "shí"
           }
         ],
         "accepted": [
           {
             "order": [
-              "他的孩子",
               "十",
-              "歲",
+              "多",
+              "個",
+              "蛋糕"
+            ],
+            "sentence": {
+              "traditional": "十多個蛋糕。",
+              "simplified": "十多个蛋糕。",
+              "pinyin": "Shí duō ge dàngāo.",
+              "english": "More than ten cakes."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "歲"
+            ],
+            "title": "That is not what you heard",
+            "note": "The speaker counted cakes with 個; 歲 is only for age."
+          },
+          {
+            "before": [
+              "個",
               "多"
             ],
-            "sentence": {
-              "traditional": "他的孩子十歲多。",
-              "pinyin": "Tā de háizi shí suì duō.",
-              "english": "His child is a little over ten years old.",
-              "simplified": "他的孩子十岁多。"
-            }
+            "note": "十 is a round ten, so 多 comes right after it: 十多個."
           }
         ],
-        "repairs": [
-          {
-            "placed": [
-              "個"
-            ],
-            "mark": [
-              "個"
-            ],
-            "note": "Age is measured in 歲, not 個."
-          }
-        ],
-        "fallbackRepair": "For a little over ten years old, put 多 after 歲."
-      },
-      {
-        "id": "l04-g5-book6",
-        "source": "p.107 #3",
-        "prompt": "How much is all this together?",
-        "scene": {
-          "type": "picture",
-          "page": 107,
-          "box": [
-            0.678,
-            0.293,
-            0.148,
-            0.104
-          ],
-          "alt": "Three pens and a flower priced together at US$8.45."
-        },
-        "kind": "order-build",
-        "sub": "這些東西一共多少錢？",
-        "tiles": [
-          {
-            "traditional": "八",
-            "pinyin": "bā"
-          },
-          {
-            "traditional": "多",
-            "pinyin": "duō"
-          },
-          {
-            "traditional": "個",
-            "simplified": "个",
-            "pinyin": "ge"
-          },
-          {
-            "traditional": "一共",
-            "pinyin": "yígòng"
-          },
-          {
-            "traditional": "塊",
-            "simplified": "块",
-            "pinyin": "kuài"
-          },
-          {
-            "traditional": "錢",
-            "simplified": "钱",
-            "pinyin": "qián"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "一共",
-              "八",
-              "塊",
-              "多",
-              "錢"
-            ],
-            "sentence": {
-              "traditional": "一共八塊多錢。",
-              "pinyin": "Yígòng bā kuài duō qián.",
-              "english": "Just over eight dollars altogether.",
-              "simplified": "一共八块多钱。"
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "個"
-            ],
-            "mark": [
-              "個"
-            ],
-            "note": "Money is measured in 塊, not 個."
-          }
-        ],
-        "fallbackRepair": "With a single-digit amount, put 多 after 塊 and before 錢."
+        "fallbackRepair": "Listen again: a round ten, 多, the measure word, then what is counted."
       }
     ],
     "allowWords": [

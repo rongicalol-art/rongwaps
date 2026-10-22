@@ -437,7 +437,7 @@ export function SentenceWordTooltipPortal({
   return createPortal(
     <div
       data-sentence-word-tooltip="true"
-      className="pointer-events-auto fixed z-tooltip"
+      className="pointer-events-auto fixed z-popover"
       style={{
         left: placement.left,
         top: placement.top,

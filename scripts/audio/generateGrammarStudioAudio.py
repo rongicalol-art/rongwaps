@@ -142,14 +142,18 @@ def add_target(targets, counts, totals, key, text, user, sort_order, clipped, sy
         target["users"].append(user)
 
 
-def collect_targets():
-    """Collect uncovered L1-L8 examples and eligible pattern rows in book order."""
+def collect_targets(only=None):
+    """Collect uncovered L1-L8 examples and eligible pattern rows in book order.
+
+    `only` limits the run to grammar files whose names start with one of the given prefixes."""
     clipped = load_clip_keys(TRACK_CLIPS) | load_clip_keys(BOOK_CLIPS)
     targets = {}
     missing = Counter()
     totals = Counter()
     parts = []
     for path in sorted(GRAMMAR_DIR.glob("*.json")):
+        if only and not path.name.startswith(tuple(only)):
+            continue
         data = json.loads(path.read_text(encoding="utf-8"))
         for part_name, part in data.items():
             if not isinstance(part, dict):
@@ -564,6 +568,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, help="Generate only the first N uncovered keys.")
     parser.add_argument("--takes", type=int, default=0, help="Also render seeds 42..42+N-1 of every key.")
+    parser.add_argument("--only", nargs="+", help="Only grammar files starting with these prefixes (e.g. b3LessonOne b3LessonTwo).")
     parser.add_argument("--refresh-audio", action="store_true", help="Regenerate rushed or transcription-flagged clips and master all studio clips.")
     args = parser.parse_args()
     if args.refresh_audio:
@@ -572,7 +577,7 @@ def main():
     if args.limit is not None and args.limit < 0:
         parser.error("--limit must be zero or greater")
 
-    targets, missing, totals = collect_targets()
+    targets, missing, totals = collect_targets(args.only)
     print(
         f"Uncovered users: {missing['example']} examples, {missing['row']} rows; "
         f"{len(targets)} unique keys ({totals['example']} total examples, {totals['row']} eligible rows).",

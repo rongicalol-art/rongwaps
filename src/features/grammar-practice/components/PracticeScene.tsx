@@ -21,7 +21,7 @@ export function PracticeScene({ scene, arrived, renderChinese, reelPlace }: Prac
   if (scene.type === 'countdown') return <CountdownScene now={scene.now} next={scene.next} renderChinese={renderChinese} />;
   if (scene.type === 'moment') {
     return (
-      <div className="flex justify-center rounded-feature border-2 border-ui-divider bg-ui-surface px-3 py-6">
+      <div className="flex justify-center">
         <Moment moment={scene.moment} next renderChinese={renderChinese} />
       </div>
     );

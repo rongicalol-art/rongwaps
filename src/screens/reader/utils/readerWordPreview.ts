@@ -1,5 +1,5 @@
 import type { DBDictionaryEntry } from '../../../types/database';
-import { sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
+import { beginnerDefinitions, sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
 
 export interface ReaderWordPreview {
   word: string;
@@ -84,9 +84,11 @@ export function formatWordPreview(
     };
   }
 
-  const { definitions: cleanDefs } = sanitizeDictionaryDefinitions(entry.definitions, {
+  const sanitized = sanitizeDictionaryDefinitions(entry.definitions, {
     preferredScript: options?.preferredScript,
-  });
+  }).definitions;
+  const beginnerDefs = beginnerDefinitions(sanitized);
+  const cleanDefs = beginnerDefs.length > 0 ? beginnerDefs : sanitized;
 
   const primaryDefinitions = cleanDefs.slice(0, 2);
 

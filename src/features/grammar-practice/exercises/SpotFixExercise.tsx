@@ -1,104 +1,53 @@
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useMemo, useState } from 'react';
 import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { SpotFixItem } from '../../../types/models';
-import { cn } from '../../../utils/cn';
-import { checkSpotFix } from '../../../utils/grammar/grammarPracticePicks';
-import { PracticeChoiceButton } from '../../practice';
+import { PracticeChoiceButton, type PracticeChoiceState } from '../../practice';
 import { PracticePrompt } from '../components/PracticePrompt';
-import { PracticeTileButton } from '../components/PracticeTileButton';
 import { textIn, type PracticeExerciseProps } from '../practiceTypes';
 
-/** The choice that takes the tapped word out of the sentence (every other choice is a tile index). */
-const TAKE_OUT = -1;
-
 /**
- * Spot the mistake: a friend's sentence, one word wrong. Tap that word and it lifts; the
- * dock offers replacements plus "Take it out" (always, so it never hints at an extra word).
- * Check says whether the right word was found and whether the fix is right.
+ * Spot the mistake as one tap: the friend's sentence beside the corrected one, in a fixed but
+ * mixed order. A right tap is the answer; the wrong one says what is off with it.
  */
 export function SpotFixExercise({
-  item, script, status, retryKey, shortcutsDisabled, trayHost, onReadyChange, checkRef, onResult,
+  item, script, status, retryKey, shortcutsDisabled, onResult,
 }: PracticeExerciseProps<SpotFixItem>) {
-  const [pick, setPick] = useState<number | null>(null);
-  /** A tile index, TAKE_OUT, or null while nothing is chosen. */
-  const [choice, setChoice] = useState<number | null>(null);
+  const [picked, setPicked] = useState<number | null>(null);
   const locked = status !== 'idle';
-  const ready = !locked && pick !== null && choice !== null;
-  const choices = [...item.tiles.keys(), TAKE_OUT];
+  const written = item.chunks.map((chunk) => textIn(chunk, script) + (chunk.tail ?? '')).join('');
+  // Which side the right sentence sits on follows the item, so a retry shows the same layout.
+  const options = useMemo(() => {
+    const right = { text: textIn(item.result, script), correct: true };
+    const wrong = { text: written, correct: false };
+    return [...item.id].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 2 === 0 ? [right, wrong] : [wrong, right];
+  }, [item.id, item.result, script, written]);
 
-  useEffect(() => onReadyChange(ready), [onReadyChange, ready]);
-  useEffect(() => {
-    checkRef.current = ready
-      ? () => {
-        const verdict = checkSpotFix(item, pick, choice === TAKE_OUT ? null : item.tiles[choice].traditional);
-        onResult(verdict.correct
-          ? { correct: true, sentence: item.result, note: verdict.note }
-          : { correct: false, title: verdict.title, note: verdict.note });
-      }
-      : null;
-    return () => { checkRef.current = null; };
-  });
+  useEffect(() => { if (retryKey > 0) setPicked(null); }, [retryKey]);
 
-  // Try again: the fix goes back to the dock; the word stays lifted only if it was the right one.
-  useEffect(() => {
-    if (retryKey === 0) return;
-    setChoice(null);
-    setPick((previous) => (previous === item.wrong ? previous : null));
-  }, [item.wrong, retryKey]);
-
-  const tap = (index: number) => {
+  const choose = (index: number) => {
     if (locked) return;
-    setPick((previous) => (previous === index ? null : index));
-    setChoice(null);
+    setPicked(index);
+    onResult(options[index].correct
+      ? { correct: true, sentence: item.result, note: item.successNote }
+      : { correct: false, title: 'Not quite', note: item.hint });
   };
-  useNumberKeySelection({ items: choices, onSelect: setChoice, disabled: locked || shortcutsDisabled || pick === null });
+  useNumberKeySelection({ items: [0, 1], onSelect: choose, disabled: locked || shortcutsDisabled });
+
+  const stateOf = (index: number): PracticeChoiceState => {
+    if (picked !== index) return 'idle';
+    return options[index].correct ? 'correct' : 'wrong';
+  };
 
   return (
-    <>
-      <div className="flex flex-col gap-7">
-        <PracticePrompt sub={item.sub} />
-        <p className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 font-chinese text-3xl leading-normal text-ui-ink-strong sm:text-4xl">
-          {item.chunks.map((chunk, index) => {
-            const lifted = pick === index;
-            const replaced = lifted && choice !== null ? choice : null;
-            return (
-              <span key={index} className="whitespace-nowrap">
-                <button
-                  type="button"
-                  disabled={locked}
-                  onClick={() => tap(index)}
-                  aria-pressed={lifted}
-                  className={cn(
-                    'rounded-control border-2 px-2 py-0.5 transition-colors focus-ring-inline',
-                    !lifted && 'border-transparent enabled:hover:bg-ui-hover',
-                    lifted && status === 'idle' && 'border-brand-primary bg-brand-primary-soft',
-                    lifted && status === 'correct' && 'border-feedback-success bg-feedback-success-surface',
-                    lifted && status === 'wrong' && 'border-feedback-danger bg-feedback-danger-surface',
-                    replaced === TAKE_OUT && 'text-ui-muted line-through decoration-[3px]',
-                  )}
-                >
-                  {replaced !== null && replaced !== TAKE_OUT ? textIn(item.tiles[replaced], script) : textIn(chunk, script)}
-                </button>
-                {chunk.tail && <span className="-ml-2">{chunk.tail}</span>}
-              </span>
-            );
-          })}
-        </p>
+    <div className="flex flex-col gap-6">
+      <PracticePrompt sub={item.sub} />
+      <div className="flex flex-col gap-3">
+        {options.map((option, index) => (
+          <PracticeChoiceButton key={index} index={index} state={stateOf(index)} disabled={locked} onClick={() => choose(index)}>
+            <span className="flex min-h-14 w-full items-center px-3 py-2 font-chinese text-2xl leading-snug sm:text-3xl">{option.text}</span>
+          </PracticeChoiceButton>
+        ))}
       </div>
-      {trayHost && pick !== null && createPortal(
-        <>
-          {item.tiles.map((tile, index) => (
-            <PracticeTileButton key={tile.traditional} tile={tile} script={script} disabled={locked} selected={choice === index} onClick={() => setChoice(index)} />
-          ))}
-          <div className="shrink-0 select-none">
-            <PracticeChoiceButton compact disabled={locked} state={choice === TAKE_OUT ? 'selected' : 'idle'} onClick={() => setChoice(TAKE_OUT)} className="w-auto">
-              <span className="text-base font-extrabold leading-none">Take it out</span>
-            </PracticeChoiceButton>
-          </div>
-        </>,
-        trayHost,
-      )}
-    </>
+    </div>
   );
 }

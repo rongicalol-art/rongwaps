@@ -20,7 +20,7 @@ export function MonthScene({ year, month, highlight, renderChinese }: MonthScene
       aria-label={`${year}/${month}, highlighted days ${highlight.join(', ')}`}
       className="mx-auto w-full max-w-sm rounded-feature border-2 border-ui-divider bg-ui-surface px-3 py-4 sm:px-5"
     >
-      <p className="mb-2 text-center text-sm font-bold text-ui-muted-strong">
+      <p className="mb-2 text-center text-sm font-extrabold text-ui-muted-strong">
         {renderChinese({ traditional: `${year}年${month}月` })}
       </p>
       <div className="grid grid-cols-7 gap-y-1 text-center tabular-nums">
@@ -34,7 +34,7 @@ export function MonthScene({ year, month, highlight, renderChinese }: MonthScene
             <span
               key={day}
               className={highlight.includes(day)
-                ? 'mx-auto grid size-8 place-items-center rounded-control bg-brand-primary text-sm font-black text-brand-on-primary'
+                ? 'mx-auto grid size-8 place-items-center rounded-control bg-brand-primary text-sm font-black text-brand-on-primary shadow-[0_3px_0_var(--color-brand-primary-edge)]'
                 : 'mx-auto grid size-8 place-items-center text-sm text-ui-muted-strong'}
             >
               {day}

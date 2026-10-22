@@ -35,7 +35,7 @@ export function ListenPickExercise({
             <PracticeChoiceButton compact disabled={locked} onClick={() => choose(index)} className="w-full md:w-auto">
               <span className="flex flex-col items-start">
                 <span className="font-chinese text-xl leading-snug">{textIn(option, script)}</span>
-                {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{option.pinyin}</span>}
+                {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{option.pinyin}</span>}
               </span>
             </PracticeChoiceButton>
           </div>

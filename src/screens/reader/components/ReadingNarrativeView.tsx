@@ -1,20 +1,19 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef, useEffect, type ReactNode, type RefObject } from 'react';
 import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { getWordChunks } from '../../../utils/pinyin/rubyPinyin';
 import { splitChunksIntoSentences } from '../../../utils/lesson/dialogueSync';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
-import { useReaderLocate } from '../hooks/useReaderLocate';
+import { useReaderNewWordChunks } from '../hooks/useReaderNewWordChunks';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
-import { overlapsAnyLocatedRange, type ReaderLocatedRange } from '../utils/readerLocate';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { ReaderChunk, NARRATIVE_CHUNK_APPEARANCE } from './ReaderChunk';
 import { audioService } from '../../../services/audioService';
 import { findMatchingCourseVocab } from '../../../services/courseVocabLookup';
 import { groupSentencesIntoParagraphs } from '../utils/narrativeParagraphs';
 import { SAMPLE_LESSONS } from '../../../data/books';
-import { getReadingIllustration } from '../../../data/readingIllustrations';
+import { ReaderSceneIntro } from './ReaderSceneIntro';
 import { getReaderHeaderTitles } from './ReaderHeader';
 
 interface ReadingNarrativeViewProps {
@@ -27,10 +26,12 @@ interface ReadingNarrativeViewProps {
   textSize: ReaderTextSize;
   activeLineIndex: number | null;
   currentTime: number;
-  /** Vocabulary word the Study Guide is locating in this text, if any. */
-  locatedWord: ReaderStudyTargetWord | null;
-  /** Sentences of the located grammar point, painted with a soft background. */
-  locatedGrammarRanges: readonly ReaderLocatedRange[];
+  /** This part's words that appear in the text; underlined as new. */
+  newWords: readonly ReaderStudyTargetWord[];
+  /** False once the learner scrolls by hand; the spoken sentence is then left where it is. */
+  followAudioRef: RefObject<boolean>;
+  /** Rendered after the reading: what this part teaches. */
+  footer?: ReactNode;
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
 }
@@ -45,8 +46,9 @@ export function ReadingNarrativeView({
   textSize,
   activeLineIndex,
   currentTime,
-  locatedWord,
-  locatedGrammarRanges,
+  newWords,
+  followAudioRef,
+  footer,
   onPlayLine,
   onPlayRange,
 }: ReadingNarrativeViewProps) {
@@ -75,18 +77,11 @@ export function ReadingNarrativeView({
     showHoverDefinitions,
   });
 
-  // Auto-scroll active sentence into view as narration plays
+  // Keep the spoken sentence centred while the learner is following the audio.
   useEffect(() => {
-    if (activeLineIndex === null) return;
-    const el = sentenceRefs.current.get(activeLineIndex);
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'nearest',
-      });
-    }
-  }, [activeLineIndex]);
+    if (activeLineIndex === null || !followAudioRef.current) return;
+    sentenceRefs.current.get(activeLineIndex)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [activeLineIndex, followAudioRef]);
 
   // Pre-compute word chunks and bite-sized clauses for every sentence
   const sentencesData = useMemo(() => {
@@ -103,20 +98,11 @@ export function ReadingNarrativeView({
         lineAlignment?.start,
         lineAlignment?.end,
       );
-      // Chunks partition the paragraph, so accumulating clause text lengths
-      // gives each clause's character range for the grammar locate highlight.
-      let clauseOffset = 0;
-      const clauseRanges = clauses.map((clause) => {
-        const range = { charStart: clauseOffset, charEnd: clauseOffset + clause.text.length };
-        clauseOffset = range.charEnd;
-        return range;
-      });
       return {
         index,
         text,
         chunks,
         clauses,
-        clauseRanges,
         lineAlignment,
         english: paragraph.english,
         speaker: paragraph.speaker,
@@ -134,34 +120,12 @@ export function ReadingNarrativeView({
     [sentencesData],
   );
 
-  const { locatedChunks, firstParagraphIndex } = useReaderLocate({
+  const newWordChunks = useReaderNewWordChunks({
     reading,
     script: characterPreference,
-    locatedWord,
+    newWords,
     paragraphChunks,
   });
-
-  // Bring the first occurrence into view; `nearest` leaves the scroll position
-  // alone when the occurrence is already visible.
-  useEffect(() => {
-    if (!locatedWord || firstParagraphIndex === null) return;
-    sentenceRefs.current.get(firstParagraphIndex)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
-  }, [locatedWord, firstParagraphIndex]);
-
-  // Same for a located grammar point's first matched sentence.
-  useEffect(() => {
-    const first = locatedGrammarRanges[0];
-    if (!first) return;
-    sentenceRefs.current.get(first.paragraphIndex)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
-    });
-  }, [locatedGrammarRanges]);
 
   const lesson = useMemo(
     () => SAMPLE_LESSONS.find((l) => l.id === reading.lessonId),
@@ -172,33 +136,14 @@ export function ReadingNarrativeView({
     [reading, lesson?.title],
   );
 
-  const illustration = useMemo(
-    () => getReadingIllustration(reading.id),
-    [reading.id],
-  );
-
   return (
     <article
       className={cn(
-        'mx-auto w-full px-4 pb-44 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-8 sm:pt-[6.5rem] transition-all',
+        'mx-auto w-full px-4 pb-16 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-8 sm:pt-[6.5rem] transition-all',
         textSize === 'extra-large' ? 'max-w-4xl' : 'max-w-3xl xl:max-w-4xl',
       )}
     >
-      {/* Reading Scene Illustration (above title) */}
-      {illustration && (
-        <figure className="mx-auto mb-8 w-full sm:mb-10">
-          <div className="overflow-hidden rounded-2xl bg-ui-surface aspect-[2048/1143]">
-            <img
-              src={illustration.url}
-              alt={illustration.alt}
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-              className="block h-full w-full select-none object-cover"
-            />
-          </div>
-        </figure>
-      )}
+      <ReaderSceneIntro reading={reading} />
 
       {/* Narrative Document Title */}
       <header className="mb-8 text-center sm:mb-12">
@@ -244,7 +189,7 @@ export function ReadingNarrativeView({
                     }
                   }}
                 >
-                  {sentence.clauses.map((clause, clauseIdx) => {
+                  {sentence.clauses.map((clause) => {
                     return (
                       <span
                         key={clause.id}
@@ -280,12 +225,6 @@ export function ReadingNarrativeView({
                         }}
                         className={cn(
                           'group/clause relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong',
-                          sentence.clauseRanges[clauseIdx] &&
-                            overlapsAnyLocatedRange(
-                              { paragraphIndex: sentence.index, ...sentence.clauseRanges[clauseIdx] },
-                              locatedGrammarRanges,
-                            ) &&
-                            'bg-feedback-warning/40',
                         )}
                       >{clause.chunks.map((chunk, chunkIdx) => {
                           if (chunk.isPunctuation) {
@@ -312,7 +251,7 @@ export function ReadingNarrativeView({
                               fallbackEnd={clause.end}
                               isActive={holdingChunkKey === chunkKey || isWordActive}
                               isHovered={hoveredChunkKey === chunkKey}
-                              isLocated={locatedChunks.has(chunk)}
+                              isNewWord={newWordChunks.has(chunk)}
                               showPinyin={showPinyin}
                               textSize={textSize}
                               appearance={NARRATIVE_CHUNK_APPEARANCE}
@@ -365,6 +304,8 @@ export function ReadingNarrativeView({
         ))}
       </div>
 
+      {footer}
+
       {/* Word definition card (hover / desktop) */}
       {hoveredWord && (
         <ReaderWordTooltip
@@ -373,7 +314,7 @@ export function ReadingNarrativeView({
           onSpeak={() => {
             const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
             void findMatchingCourseVocab(hoveredWord.text).then((match) => {
-              void audioService.play(match?.audio, 1.0, hoveredWord.text, language);
+              void audioService.play(match?.audio, undefined, hoveredWord.text, language);
             });
           }}
           onMouseEnter={handleTooltipMouseEnter}

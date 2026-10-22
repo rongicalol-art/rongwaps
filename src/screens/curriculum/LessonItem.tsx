@@ -1,6 +1,5 @@
 import { memo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { AppIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import type { CourseLessonProgress } from '../../types/models';
 import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
@@ -45,7 +44,6 @@ function LessonItemBase({
   onToggle,
 }: LessonItemProps) {
   const isLocked = lesson.state === 'locked';
-  const isCurrent = lesson.state === 'current' && !isSelecting;
   const englishTitle = getEnglishLessonTitle(lesson.title);
 
   const [shake, setShake] = useState(0);
@@ -105,9 +103,7 @@ function LessonItemBase({
         'relative min-w-0 overflow-hidden border-2 bg-ui-surface transition-colors duration-200',
         containerShape(isSelected, isPrevSelected, isNextSelected),
         isLocked && 'border-b-2',
-        isSelected || isCurrent ? 'border-brand-primary' : 'border-ui-border',
-        isCurrent && 'border-b-brand-primary-edge',
-        isSelected && 'bg-brand-primary-soft',
+        isSelected ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-border',
       )}
     >
       {isSelected && isNextSelected && (
@@ -154,17 +150,11 @@ function LessonItemBase({
           <span className={cn(
             'block text-lg font-black leading-tight',
             isLocked ? 'line-clamp-3' : 'line-clamp-2',
-            isSelected || isCurrent ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',
+            isSelected ? 'text-ui-ink-strong' : isLocked ? 'text-ui-muted' : 'text-ui-muted-strong',
           )}>
             {englishTitle}
           </span>
         </span>
-        {isCurrent && (
-          <span className="flex shrink-0 items-center gap-1 text-sm font-black text-brand-primary">
-            Continue
-            <AppIcon name="next" />
-          </span>
-        )}
       </button>
     </motion.div>
   );

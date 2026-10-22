@@ -161,7 +161,6 @@
   /* Overlay layer order. One named rung per surface kind; values ascend with
      depth. Claim the rung for the surface you own — never invent a new value.
      Full table + ownership rule: docs/DESIGN_TOKENS.md § 7. */
-  --z-index-tooltip: 90;
   --z-index-content: 100;
   --z-index-activity-header: 150;
   --z-index-activity: 200;

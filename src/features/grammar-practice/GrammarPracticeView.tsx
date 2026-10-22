@@ -33,7 +33,7 @@ export interface GrammarPracticeViewProps {
  * Try again; nothing is recorded until the exercise is done.
  */
 export function GrammarPracticeView({
-  practice, script, showPinyin, showTranslation, contextTokens, onOpenWord, onComplete, onExit, barHost, initialIndex = 0, shortcutsDisabled = false,
+  practice, script, showPinyin, contextTokens, onOpenWord, onComplete, onExit, barHost, initialIndex = 0, shortcutsDisabled = false,
 }: GrammarPracticeViewProps) {
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(initialIndex);
@@ -43,14 +43,18 @@ export function GrammarPracticeView({
   const [checking, setChecking] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
   const [trayHost, setTrayHost] = useState<HTMLDivElement | null>(null);
+  // The leaving item's inline bank unmounts after the next item's dock tray mounts: a null from it must not clear the new host.
+  const claimTray = useCallback((element: HTMLDivElement | null) => { if (element) setTrayHost(element); }, []);
   const checkRef = useRef<(() => void) | null>(null);
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
   const inlineBank = item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
   // This source-checked clock pair supplies the time context visually. Keep its written explanation in the hint.
   const clockReading = item.id === 'l8g5-p2' || ('scene' in item && item.scene?.type === 'countdown' && Boolean(item.scene.now.time && item.scene.next.time));
+  const dialogueReply = item.kind === 'chat-build' || (item.kind === 'slot-build' && item.lines.some((line) => line.me));
   const sceneFirst = 'scene' in item && item.scene?.type === 'picture' && Boolean(sceneFirstPicture(item.scene));
-  const heading = sceneFirst ? (item.kind === 'order-build' ? (item.sub ? 'Your reply' : 'Build the sentence') : 'Drag and place') : clockReading ? 'Complete the sentence' : item.kind === 'order-build' ? orderBuildHeading(item) : item.prompt;
+  const heading = sceneFirst ? (item.kind === 'order-build' ? (item.sub ? 'Your reply' : 'Build the sentence') : 'Drag and place') : clockReading ? 'Complete the sentence' : item.kind === 'order-build' ? orderBuildHeading(item) : item.kind === 'spot-fix' ? 'Which is right?' : dialogueReply ? (item.kind === 'slot-build' && item.gaps ? 'Drag and place' : 'Your reply') : item.prompt;
+  const context = clockReading && !sceneFirst ? item.prompt : undefined;
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);
@@ -90,17 +94,12 @@ export function GrammarPracticeView({
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 pb-24">
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 pb-24">
       <header className="flex flex-col gap-1">
         <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
         {/* The item's own question is the title; the book's general instruction only when an item has none. */}
         <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{heading ?? practice.title}</h1>
-        {clockReading && !sceneFirst && item.prompt && (
-          <details key={item.id} open={status !== 'idle'} className="mt-2 text-sm font-bold text-ui-muted-strong">
-            <summary data-action="" className="w-fit cursor-pointer rounded-xs focus-ring-inline">Hint</summary>
-            <p className="mt-2">{item.prompt}</p>
-          </details>
-        )}
+        {context && <p className="mt-2 text-base font-extrabold text-ui-muted-strong">{context}</p>}
       </header>
 
       <AnimatePresence mode="wait" initial={false}>
@@ -116,7 +115,7 @@ export function GrammarPracticeView({
             status={status}
             retryKey={retryKey}
             showPinyin={showPinyin}
-            showTranslation={showTranslation}
+            showTranslation={false}
             contextTokens={contextTokens}
             onOpenWord={onOpenWord}
             shortcutsDisabled={shortcutsDisabled}
@@ -125,7 +124,7 @@ export function GrammarPracticeView({
             checkRef={checkRef}
             onResult={(next) => handleResult(next, item.id)}
           />
-          {inlineBank && <div ref={setTrayHost} role="group" aria-label="Word choices" className="mt-6 flex min-h-20 flex-wrap content-start justify-center gap-2" />}
+          {inlineBank && <div ref={claimTray} role="group" aria-label="Word choices" className="mt-6 flex min-h-24 flex-wrap content-start justify-center gap-2 rounded-feature bg-ui-divider/50 p-3.5 shadow-[inset_0_2px_0_color-mix(in_srgb,var(--color-ui-ink-strong)_5%,transparent)]" />}
         </motion.div>
       </AnimatePresence>
 
@@ -133,11 +132,12 @@ export function GrammarPracticeView({
         host={barHost}
         status={status}
         ready={ready}
+        hasCheck={item.kind !== 'match-pairs' && item.kind !== 'listen-pick' && item.kind !== 'sort-groups' && item.kind !== 'spot-fix'}
         checking={checking}
         result={result}
         script={script}
         shortcutsDisabled={shortcutsDisabled}
-        onTrayRef={inlineBank ? undefined : setTrayHost}
+        onTrayRef={inlineBank ? undefined : claimTray}
         onCheck={() => {
           setChecking(true);
           checkRef.current?.();

@@ -17,6 +17,7 @@ import {
   getFirstOpenPartId,
   isModeAvailable,
   useLessonWindowParts,
+  type LessonWindowPart,
   type PartModeKey,
 } from './useLessonWindowParts';
 
@@ -47,17 +48,20 @@ type BodyProps = Omit<LessonWindowProps, 'lesson' | 'isHidden'> & {
   onModeChange: (partId: number, mode: PartModeKey) => void;
 };
 
-function LessonTitle({ lesson, isDesktop }: { lesson: CourseLessonProgress; isDesktop: boolean }) {
-  const [, chineseTitle] = lesson.title.split('·').map((piece) => piece.trim());
+function LessonTitle({ lesson, part, isDesktop }: { lesson: CourseLessonProgress; part: LessonWindowPart; isDesktop: boolean }) {
+  const [, lessonChinese] = lesson.title.split('·').map((piece) => piece.trim());
+  const [partChinese, ...partEnglish] = part.title.split(' · ');
+  const english = partEnglish.length > 0 ? partEnglish.join(' · ') : getEnglishLessonTitle(lesson.title);
+  const chinese = partEnglish.length > 0 ? partChinese : lessonChinese;
   return (
     <div>
       <p className="text-xs font-black uppercase tracking-widest text-ui-muted">{lesson.label}</p>
       <h2 className={isDesktop ? 'mt-1 text-4xl font-black leading-tight text-ui-ink-strong' : 'text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl'}>
-        {getEnglishLessonTitle(lesson.title)}
+        {english}
       </h2>
-      {chineseTitle && (
+      {chinese && (
         <p className={`mt-1 font-chinese-sans font-semibold tracking-wide text-ui-muted-strong ${isDesktop ? 'text-2xl' : 'text-xl'}`}>
-          {chineseTitle}
+          {chinese}
         </p>
       )}
     </div>
@@ -327,7 +331,7 @@ function LessonBody({
             />
           </div>
           <div className="mt-12 flex flex-col">
-            <LessonTitle lesson={lesson} isDesktop />
+            <LessonTitle lesson={lesson} part={activePart} isDesktop />
             <div className="mt-6">{modeButtons}</div>
             {practiceHub}
             <div className="mt-auto pt-5">{actions}</div>
@@ -352,7 +356,7 @@ function LessonBody({
             onTogglePart={handleTogglePart}
             className="mx-4 mt-2"
           />
-          <div className="px-4 pt-4"><LessonTitle lesson={lesson} isDesktop={false} /></div>
+          <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} isDesktop={false} /></div>
           <div className="px-4 pb-3 pt-3">
             {modeButtons}
             {practiceHub}

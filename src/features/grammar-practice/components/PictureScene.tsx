@@ -6,6 +6,7 @@ import restlessSleep from '../../../assets/images/grammar-practice/restless-slee
 import { bookPagePath } from '../../../utils/grammar/bookPagePath';
 import { CountdownScene } from './CountdownScene';
 import { ChangeScene } from './ChangeScene';
+import { objectScene } from './ObjectScenes';
 import { RouteScene } from './RouteScene';
 
 interface PictureSceneProps {
@@ -70,14 +71,17 @@ export function sceneFirstPicture(props: PictureSceneProps) {
   if (key === '125:0.178,0.262,0.125,0.073') {
     return (
       <svg role="img" aria-label={props.alt} viewBox="0 0 340 250" className="mx-auto h-[196px] max-w-full sm:h-60">
-        <g className="stroke-ui-ink" strokeWidth="3" strokeLinejoin="round">
-          <path d="M76 104v119h16V111m153-7v119h16V111M116 62v104h13V69m91-7v104h13V69" className="fill-brand-secondary-soft" />
-          <path d="M75 97l42-48h111l37 48v18H75z" className="fill-brand-secondary-soft" />
-          <path d="M75 97h190" fill="none" />
-          <path d="M133 69l41-24 48 21-41 27z" className="fill-brand-primary-wash" />
-          <path d="M133 69v9l48 24 41-27v-9l-41 27z" className="fill-ui-surface" />
-          <path d="M141 68l40 20" className="stroke-brand-primary" />
-        </g>
+        <ellipse cx="170" cy="234" rx="128" ry="8" className="fill-ui-divider" />
+        <rect x="80" y="130" width="17" height="102" rx="6" className="fill-brand-secondary-edge" />
+        <rect x="243" y="130" width="17" height="102" rx="6" className="fill-brand-secondary-edge" />
+        <rect x="56" y="122" width="228" height="20" rx="8" className="fill-brand-secondary-edge" />
+        <rect x="56" y="112" width="228" height="20" rx="8" className="fill-brand-secondary" />
+        <path d="M70 118h70" className="fill-none stroke-brand-on-primary opacity-30 [stroke-linecap:round] [stroke-width:4]" />
+        <rect x="110" y="96" width="122" height="16" rx="5" className="fill-brand-primary-edge" />
+        <rect x="118" y="84" width="112" height="16" rx="3" className="fill-ui-surface" />
+        <path d="M126 89h96M126 95h96" className="fill-none stroke-ui-divider [stroke-width:2]" />
+        <rect x="110" y="72" width="122" height="15" rx="5" className="fill-brand-primary" />
+        <path d="M206 72v26l7 -5 7 5V72z" className="fill-brand-secondary" />
       </svg>
     );
   }
@@ -88,14 +92,17 @@ export function sceneFirstPicture(props: PictureSceneProps) {
   if (key === '166:0.615,0.243,0.219,0.145') {
     return (
       <ChangeScene alt={props.alt} before={{ label: '2016年', value: '$80' }} now={{ label: '現在', value: '$120' }}>
-        <svg viewBox="0 0 250 130" className="h-28 w-56" aria-hidden="true">
-          <g className="stroke-ui-ink" strokeWidth="3" strokeLinejoin="round">
-            <path d="M26 49Q39 111 125 110Q211 111 224 49" className="fill-brand-primary-wash" />
-            <path d="M99 107v12h52v-12" className="fill-brand-primary-wash" />
-            <ellipse cx="125" cy="49" rx="99" ry="28" className="fill-brand-secondary-soft" />
-            <path d="M65 48q20-20 48 1t43-2m-86 9q24-18 49 2t46-1m-76 9q20-13 40 2t40-2" fill="none" className="stroke-brand-secondary-edge" />
-            <path d="M49 35l26-6 25 11-24 9zM151 32l24-5 24 12-25 8z" className="fill-brand-secondary" />
-          </g>
+        <svg viewBox="0 0 250 140" className="h-28 w-56" aria-hidden="true">
+          <path d="M70 46L160 6M84 48L178 14" className="fill-none stroke-brand-primary-deep [stroke-linecap:round] [stroke-width:7]" />
+          <rect x="92" y="112" width="66" height="18" rx="7" className="fill-brand-secondary-edge" />
+          <path d="M24 58Q36 124 125 124Q214 124 226 58Z" className="fill-brand-secondary-edge" />
+          <path d="M24 52Q36 118 125 118Q214 118 226 52Z" className="fill-brand-secondary" />
+          <path d="M44 74Q58 104 98 110" className="fill-none stroke-brand-on-primary opacity-30 [stroke-linecap:round] [stroke-width:7]" />
+          <ellipse cx="125" cy="52" rx="103" ry="20" className="fill-brand-secondary-edge" />
+          <ellipse cx="125" cy="50" rx="92" ry="14" className="fill-brand-secondary-soft" />
+          <path d="M62 50q14 -10 28 0t28 0 28 0 28 0M70 56q14 -8 28 0t28 0 28 0" className="fill-none stroke-brand-secondary [stroke-linecap:round] [stroke-width:3.5]" />
+          <rect x="132" y="38" width="30" height="13" rx="6" transform="rotate(-8 147 44)" className="fill-brand-secondary-edge" />
+          <rect x="94" y="40" width="26" height="12" rx="6" transform="rotate(10 107 46)" className="fill-brand-secondary-edge" />
         </svg>
       </ChangeScene>
     );
@@ -114,6 +121,9 @@ export function sceneFirstPicture(props: PictureSceneProps) {
 
 /** Reviewed replacements are keyed by the exact source crop; everything else keeps the scan. */
 export function PictureScene(props: PictureSceneProps) {
+  // Redrawn object pictures replace the scan but keep the item's own layout and instruction.
+  const drawn = objectScene(`${props.page}:${props.box.join(',')}`, props.alt);
+  if (drawn) return drawn;
   const reviewed = sceneFirstPicture(props);
   if (reviewed) return reviewed;
   if (props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {

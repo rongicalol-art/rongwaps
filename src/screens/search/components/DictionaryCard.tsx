@@ -47,7 +47,7 @@ export const DictionaryCard = memo(function DictionaryCard({
               onClick={() => {
                 if (!entry.audio) return;
                 audioService.stop();
-                void audioService.play(entry.audio, 1, undefined, undefined, 0, { fallback: 'none' }).catch(() => undefined);
+                void audioService.play(entry.audio, undefined, undefined, undefined, 0, { fallback: 'none' }).catch(() => undefined);
               }}
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95 focus-ring"
             >

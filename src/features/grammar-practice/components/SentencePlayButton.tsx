@@ -7,16 +7,19 @@ import type { PracticeSentence } from '../../../types/models';
 import { textIn, type PracticeScript } from '../practiceTypes';
 
 /**
- * Hear the finished sentence in the result. A sentence with a recording (book clip or approved
- * studio voice) plays once by itself when the learner's `autoPlayAudio` setting is on; without
- * one, the tap falls back to text-to-speech and nothing plays unasked.
+ * Hear the finished sentence in the result. Plays automatically when the learner's
+ * `autoPlayAudio` or `replayAudioAfterAnswer` setting is on, using the configured speech speed.
  */
 export function SentencePlayButton({ sentence, script }: { sentence: PracticeSentence; script: PracticeScript }) {
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
-  const play = () => void playSentence(textIn(sentence, script), sentence.audio, script);
+  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
+  const rate = useAppStore((state) => state.pronunciationRate);
+  const play = () => void playSentence(textIn(sentence, script), sentence.audio, script, rate);
 
   useEffect(() => {
-    if (autoPlayAudio && sentence.audio) void playSentence(textIn(sentence, script), sentence.audio, script);
+    if (autoPlayAudio || replayAudioAfterAnswer) {
+      void playSentence(textIn(sentence, script), sentence.audio, script, rate);
+    }
     return () => audioService.pause();
     // Plays once per result; a settings change mid-result must not replay it.
     // eslint-disable-next-line react-hooks/exhaustive-deps

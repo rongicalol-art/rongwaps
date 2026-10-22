@@ -8,6 +8,7 @@ import {
   lineIndexForTime,
 } from '../../../utils/lesson/dialogueSync';
 import { officialAudioFileName } from '../../../utils/lesson/officialAudio';
+import { playSentence } from '../../../services/audio/sentenceAudio';
 
 export interface UseReaderAudioOptions {
   reading: ReadingRecord;
@@ -22,10 +23,13 @@ export function useReaderAudio({
   characterPreference,
   audioMode,
 }: UseReaderAudioOptions) {
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(() => pronunciationRate ?? 1);
   const [isLooping, setIsLooping] = useState(false);
+  /** The recording has played through to its end at least once for this reading. */
+  const [hasFinished, setHasFinished] = useState(false);
 
   const playbackTokenRef = useRef(0);
   const currentTimeRef = useRef(currentTime);
@@ -47,6 +51,10 @@ export function useReaderAudio({
     [alignment],
   );
 
+  // No hosted track but recorded lines: play the lines one after another.
+  const hasClips = audioMode === 'book' && !bookAudioFileName && reading.paragraphs.some((p) => p.audio);
+  const [clipLine, setClipLine] = useState<number | null>(null);
+
   const canKaraoke = audioMode === 'book' && Boolean(alignment && bookAudioFileName);
 
   const fullText = useMemo(
@@ -61,9 +69,14 @@ export function useReaderAudio({
     playbackTokenRef.current += 1;
     audioService.stop();
     setPlaying(false);
+    setClipLine(null);
     setCurrentTime(0);
     currentTimeRef.current = 0;
   }, [reading.id, audioMode, characterPreference]);
+
+  useEffect(() => {
+    setHasFinished(false);
+  }, [reading.id]);
 
   // Clean up on unmount
   useEffect(() => {
@@ -74,9 +87,10 @@ export function useReaderAudio({
   }, []);
 
   const activeLineIndex = useMemo(() => {
+    if (hasClips) return clipLine;
     if (!canKaraoke || !alignment || (!playing && currentTime === 0)) return null;
     return lineIndexForTime(alignment, currentTime);
-  }, [alignment, canKaraoke, playing, currentTime]);
+  }, [alignment, canKaraoke, clipLine, hasClips, playing, currentTime]);
 
   const playRange = useCallback((startSec: number, endSec: number) => {
     if (!bookAudioFileName) return;
@@ -106,6 +120,7 @@ export function useReaderAudio({
           setPlaying(false);
           if (!finished) return;
           if (totalDuration > 0 && endSec >= totalDuration - 0.25) {
+            setHasFinished(true);
             setCurrentTime(0);
             currentTimeRef.current = 0;
           } else {
@@ -117,6 +132,29 @@ export function useReaderAudio({
     });
   }, [bookAudioFileName, totalDuration]);
 
+  /** Plays recorded lines from `start` to the end of the reading, or just that line. */
+  const playClips = useCallback(async (start: number, onlyThisLine = false) => {
+    const token = ++playbackTokenRef.current;
+    setPlaying(true);
+    for (let index = start; index < reading.paragraphs.length; index += 1) {
+      const paragraph = reading.paragraphs[index];
+      setClipLine(index);
+      await playSentence(
+        characterPreference === 'simplified' ? paragraph.simplified : paragraph.traditional,
+        paragraph.audio,
+        characterPreference,
+        playbackSpeedRef.current,
+      );
+      if (playbackTokenRef.current !== token) return;
+      if (onlyThisLine) break;
+    }
+    setPlaying(false);
+    if (!onlyThisLine) {
+      setHasFinished(true);
+      setClipLine(null);
+    }
+  }, [characterPreference, reading.paragraphs]);
+
   const pause = useCallback(() => {
     playbackTokenRef.current += 1;
     audioService.pause();
@@ -127,6 +165,7 @@ export function useReaderAudio({
     playbackTokenRef.current += 1;
     audioService.stop();
     setPlaying(false);
+    setClipLine(null);
     setCurrentTime(0);
     currentTimeRef.current = 0;
   }, []);
@@ -141,6 +180,11 @@ export function useReaderAudio({
   const togglePlay = useCallback(() => {
     if (playing) {
       pause();
+      return;
+    }
+
+    if (hasClips) {
+      void playClips(clipLine ?? 0);
       return;
     }
 
@@ -171,9 +215,14 @@ export function useReaderAudio({
         if (playbackTokenRef.current === token) setPlaying(false);
       });
     }
-  }, [playing, pause, audioMode, bookAudioFileName, characterPreference, fullText, alignment, totalDuration, playRange]);
+  }, [playing, pause, hasClips, playClips, clipLine, audioMode, bookAudioFileName, characterPreference, fullText, alignment, totalDuration, playRange]);
 
-  const playLine = useCallback((lineIndex: number) => {
+  /** Plays a line and on through the reading, or just that line when `onlyThisLine`. */
+  const playLine = useCallback((lineIndex: number, onlyThisLine = false) => {
+    if (hasClips) {
+      void playClips(lineIndex, onlyThisLine);
+      return;
+    }
     const line = alignment?.lines[lineIndex];
     const lineHasAlignment = Boolean(
       audioMode === 'book' && line && !line.unmatched && line.end > line.start && bookAudioFileName,
@@ -197,10 +246,9 @@ export function useReaderAudio({
       return;
     }
 
-    // Play from this line through the rest of the reading — audio must keep
-    // flowing past the line boundary instead of stopping at it.
-    playRange(line!.start, totalDuration);
-  }, [alignment, audioMode, bookAudioFileName, characterPreference, playRange, totalDuration, reading.paragraphs]);
+    // Audio keeps flowing past the line boundary unless only this line was asked for.
+    playRange(line!.start, onlyThisLine ? line!.end : totalDuration);
+  }, [alignment, audioMode, bookAudioFileName, characterPreference, hasClips, playClips, playRange, totalDuration, reading.paragraphs]);
 
   const seekTo = useCallback((timeSec: number) => {
     const clamped = Math.max(0, Math.min(timeSec, totalDuration));
@@ -249,13 +297,10 @@ export function useReaderAudio({
     playLine(nextIdx);
   }, [activeLineIndex, alignment, playLine, seekTo, totalDuration]);
 
-  const cycleSpeed = useCallback(() => {
-    const speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-    const currentIdx = speeds.indexOf(playbackSpeedRef.current);
-    const nextSpeed = speeds[(currentIdx + 1) % speeds.length] ?? 1;
-    playbackSpeedRef.current = nextSpeed;
-    setPlaybackSpeed(nextSpeed);
-    audioService.setPlaybackRate(nextSpeed);
+  const setSpeed = useCallback((speed: number) => {
+    playbackSpeedRef.current = speed;
+    setPlaybackSpeed(speed);
+    audioService.setPlaybackRate(speed);
   }, []);
 
   const toggleLoop = useCallback(() => {
@@ -274,6 +319,7 @@ export function useReaderAudio({
     totalDuration,
     playbackSpeed,
     isLooping,
+    hasFinished,
     canKaraoke,
     activeLineIndex,
     togglePlay,
@@ -286,7 +332,7 @@ export function useReaderAudio({
     scrubTo,
     prevSentence,
     nextSentence,
-    cycleSpeed,
+    setSpeed,
     toggleLoop,
   };
 }

@@ -1,10 +1,9 @@
-import { IconActionButton, ScreenHeader, PlayfulNavIcon } from '../../../lib/widgets';
+import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
 import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
 import type { CharacterFont } from '../../../store/useAppStore';
 import { ReaderSettingsPopover } from './ReaderSettingsPopover';
 
 interface ReaderHeaderProps {
-  reading: ReadingRecord;
   textSize: ReaderTextSize;
   onTextSizeChange: (size: ReaderTextSize) => void;
   characterFont?: CharacterFont;
@@ -15,8 +14,15 @@ interface ReaderHeaderProps {
   onToggleMeaning: () => void;
   showHoverDefinitions?: boolean;
   onToggleHoverDefinitions?: () => void;
-  onOpenStudyGuide?: () => void;
-  isStudyGuideOpen?: boolean;
+  isSlowAudio: boolean;
+  onToggleSlowAudio: () => void;
+  playing: boolean;
+  onTogglePlay: () => void;
+  /** Share of the recording played, 0–1. */
+  progress: number;
+  /** Dragging the progress bar: 0–1 while held, then once on release. */
+  onScrub: (fraction: number) => void;
+  onSeek: (fraction: number) => void;
   onClose: () => void;
 }
 
@@ -83,7 +89,6 @@ export function getReaderHeaderTitles(
 }
 
 export function ReaderHeader({
-  reading,
   textSize,
   onTextSizeChange,
   characterFont,
@@ -94,15 +99,17 @@ export function ReaderHeader({
   onToggleMeaning,
   showHoverDefinitions = true,
   onToggleHoverDefinitions,
-  onOpenStudyGuide,
-  isStudyGuideOpen,
+  isSlowAudio,
+  onToggleSlowAudio,
+  playing,
+  onTogglePlay,
+  progress,
+  onScrub,
+  onSeek,
   onClose,
 }: ReaderHeaderProps) {
-  const isNarrative = reading.dialogueNumber === 3 || reading.title.includes('短文');
-
-  // Reading Mode's header: a frosted canvas bar with back navigation,
-  // left-anchored prominent lesson and part context, and right-anchored
-  // universal-sized utility actions (Study Guide toggle + Reader settings).
+  // Reading Mode's header, Duolingo-style: back, the playback progress bar as
+  // the only chrome, reader settings on the right.
   return (
     <ScreenHeader
       variant="frosted"
@@ -110,44 +117,39 @@ export function ReaderHeader({
       onBack={onClose}
       maxWidth="none"
       controlSize="lg"
+      progress={progress * 100}
+      onProgressScrub={onScrub}
+      onProgressSeek={onSeek}
       leftContent={
-        <div className="flex items-center min-w-0">
-          <h1 className="truncate text-base sm:text-lg font-black uppercase tracking-normal text-ui-ink-strong">
-            <span className="text-brand-primary">Lesson {reading.lessonId}</span>
-            <span className="mx-1.5 text-ui-muted-strong">·</span>
-            <span>{isNarrative ? 'Reading' : `Part ${reading.dialogueNumber}`}</span>
-          </h1>
-        </div>
+        <>
+          <IconActionButton
+            size="lg"
+            variant="primary"
+            label={playing ? 'Pause dialogue' : 'Play dialogue'}
+            title={playing ? 'Pause (Space)' : 'Play (Space)'}
+            icon={<AppIcon name={playing ? 'pause' : 'play'} size={22} />}
+            onClick={onTogglePlay}
+            className="ml-1 [--depth-sm:4px]"
+          />
+        </>
       }
       rightAction={
-        <div className="flex items-center gap-2">
-          {onOpenStudyGuide && (
-            <IconActionButton
-              size="lg"
-              onClick={onOpenStudyGuide}
-              icon={<PlayfulNavIcon name="hint" className="h-7 w-7" />}
-              label={isStudyGuideOpen ? 'Hide study guide' : 'Study guide'}
-              title={isStudyGuideOpen ? 'Hide study guide' : 'Study guide'}
-              aria-haspopup="dialog"
-              aria-expanded={isStudyGuideOpen}
-            />
-          )}
-
-          <ReaderSettingsPopover
-            size="lg"
-            iconSize={25}
-            textSize={textSize}
-            onTextSizeChange={onTextSizeChange}
-            characterFont={characterFont}
-            onCharacterFontChange={onCharacterFontChange}
-            showPinyin={showPinyin}
-            onTogglePinyin={onTogglePinyin}
-            showMeaning={showMeaning}
-            onToggleMeaning={onToggleMeaning}
-            showHoverDefinitions={showHoverDefinitions}
-            onToggleHoverDefinitions={onToggleHoverDefinitions}
-          />
-        </div>
+        <ReaderSettingsPopover
+          size="lg"
+          iconSize={25}
+          textSize={textSize}
+          onTextSizeChange={onTextSizeChange}
+          characterFont={characterFont}
+          onCharacterFontChange={onCharacterFontChange}
+          showPinyin={showPinyin}
+          onTogglePinyin={onTogglePinyin}
+          showMeaning={showMeaning}
+          onToggleMeaning={onToggleMeaning}
+          showHoverDefinitions={showHoverDefinitions}
+          onToggleHoverDefinitions={onToggleHoverDefinitions}
+          isSlowAudio={isSlowAudio}
+          onToggleSlowAudio={onToggleSlowAudio}
+        />
       }
     />
   );

@@ -65,8 +65,8 @@ export function StoryOrderExercise({
                 </span>
                 <span className="flex flex-col">
                   <span className="font-chinese text-xl leading-snug text-balance">{textIn(step, script)}</span>
-                  {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{step.pinyin}</span>}
-                  {showTranslation && <span className="text-xs font-bold text-ui-muted-strong">{step.english}</span>}
+                  {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{step.pinyin}</span>}
+                  {showTranslation && <span className="text-xs font-extrabold text-ui-muted-strong">{step.english}</span>}
                 </span>
               </span>
             </PracticeChoiceButton>

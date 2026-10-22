@@ -22,6 +22,8 @@ interface ReaderSettingsPopoverProps {
   onToggleMeaning: () => void;
   showHoverDefinitions?: boolean;
   onToggleHoverDefinitions?: () => void;
+  isSlowAudio: boolean;
+  onToggleSlowAudio: () => void;
   size?: 'sm' | 'md' | 'lg';
   iconSize?: number;
 }
@@ -37,6 +39,8 @@ export function ReaderSettingsPopover({
   onToggleMeaning,
   showHoverDefinitions = true,
   onToggleHoverDefinitions,
+  isSlowAudio,
+  onToggleSlowAudio,
   size = 'lg',
   iconSize = 25,
 }: ReaderSettingsPopoverProps) {
@@ -54,7 +58,7 @@ export function ReaderSettingsPopover({
       <IconActionButton
         size={size}
         onClick={() => setIsOpen((open) => !open)}
-        icon={<AppIcon name="settings" size={iconSize} />}
+        icon={<AppIcon name="menu" size={iconSize} />}
         label="Reading settings"
         title="Reading settings"
         aria-haspopup="dialog"
@@ -112,6 +116,8 @@ export function ReaderSettingsPopover({
               <SwitchRow label="Translation" checked={showMeaning} onToggle={onToggleMeaning} />
 
               <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} />
+
+              <SwitchRow label="Slow audio" checked={isSlowAudio} onToggle={onToggleSlowAudio} />
 
               {onToggleHoverDefinitions && (
                 <SwitchRow label="Hover Definitions" checked={showHoverDefinitions} onToggle={onToggleHoverDefinitions} />

@@ -151,11 +151,13 @@ function flushPendingPersist(): void {
   });
 }
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
   window.addEventListener('pagehide', flushPendingPersist);
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') flushPendingPersist();
-  });
+  if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') flushPendingPersist();
+    });
+  }
 }
 
 const idbStorage: PersistStorage<Partial<AppState>> = {

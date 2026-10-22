@@ -1368,7 +1368,7 @@
       {
         "id": "l1g4-p1",
         "source": "p.44 #1",
-        "prompt": "You are American. Tell your friend that first, then ask the same question about them.",
+        "prompt": "You are American. Say so, then ask the same about your friend.",
         "kind": "order-build",
         "sub": "Your friend replies next: 我是印尼人。",
         "tiles": [

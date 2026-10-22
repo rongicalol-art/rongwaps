@@ -198,7 +198,7 @@ export interface OrderBuildItem extends PracticeItemBase {
 }
 
 /** A stretch of a book dialogue track: the real recording, never text-to-speech. */
-export interface ListenClip {
+export interface DialogueClip {
   /** The dialogue (a reading id) and the index of the line the clip is cut from, as in `content/dialogueAlignment.json`. */
   reading: string;
   line: number;
@@ -207,6 +207,18 @@ export interface ListenClip {
   start: number;
   end: number;
 }
+
+/** The book's own recording of an example on a grammar page, as approved in `content/audio/grammar_track_clips.json`. */
+export interface GrammarTrackClip {
+  /** The grammar page the example belongs to (`B1L04-G05-P105`). */
+  page: string;
+  file: string;
+  start: number;
+  end: number;
+}
+
+/** A listening recording: a dialogue line, or one of the grammar page's own recorded examples. */
+export type ListenClip = DialogueClip | GrammarTrackClip;
 
 /**
  * Listen, then build: the learner hears a stretch of a book dialogue and builds what was said on

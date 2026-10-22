@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import type { GrammarPatternRow, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
+import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { getSemanticRoleClasses } from '../../../utils/grammar/grammarSemanticRoles';
@@ -160,7 +161,7 @@ export function PlaceValueTable({ page, characterPreference, showPinyin, columns
                             onClick={() => audioService.speakText(
                               text.replace(/[（）]/g, ''),
                               characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN',
-                              0.9,
+                              0.9 * useAppStore.getState().pronunciationRate,
                             )}
                             size="sm"
                             variant="quiet"

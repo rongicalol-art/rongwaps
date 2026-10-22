@@ -6,6 +6,7 @@ interface VocabularyExampleAudioManifest {
   schemaVersion: number;
   examples: Record<string, {
     bookId: number;
+    lessonId: number;
     sourceCardId: string;
     traditional: string;
     audio?: SentenceAudio | null;
@@ -29,6 +30,11 @@ export function loadVocabularyExampleAudio(): Map<string, SentenceAudio> {
     throw new Error('Invalid content/audio/vocabulary_example_audio.json manifest.');
   }
 
+  // Book 3 examples play our studio recordings; the book-track ranges are not used for them.
+  const studioFile = resolve(process.cwd(), 'content/audio/grammar_studio_audio.json');
+  const studio = existsSync(studioFile) ? JSON.parse(readFileSync(studioFile, 'utf8')) as Record<string, { file: string }> : {};
+  const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
+
   const audio = new Map<string, SentenceAudio>();
   const scores = new Map<string, number>();
   for (const [exampleId, entry] of Object.entries(manifest.examples)) {
@@ -50,6 +56,14 @@ export function loadVocabularyExampleAudio(): Map<string, SentenceAudio> {
       throw new Error(`Invalid recorded range in vocabulary example audio assignment: ${exampleId}`);
     }
     const key = vocabularyExampleKey(entry.sourceCardId, entry.traditional);
+    const ours = entry.bookId === 3 && entry.lessonId <= 5;
+    const clip = ours ? studio[han(entry.traditional)] : undefined;
+    if (key && clip) {
+      audio.set(key, { voice: 'studio', file: clip.file });
+      scores.set(key, 1);
+      continue;
+    }
+    if (ours) continue; // No recording means browser speech, not the book track.
     if (!key || !entry.audio?.file) continue;
     const score = entry.alignment?.score ?? 0;
     if (!audio.has(key) || score > (scores.get(key) ?? -1)) {

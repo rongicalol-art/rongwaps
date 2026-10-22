@@ -6,7 +6,8 @@ import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { PracticeLine, SlotBuildItem } from '../../../types/models';
 import { checkSlotBuild, practiceSlots, slotBuildResult } from '../../../utils/grammar/grammarPracticeCheck';
 import { InlineBlank, type BlankState } from '../components/InlineBlank';
-import { PracticeBubble } from '../components/PracticeBubble';
+import { BUBBLE_TAIL, PracticeBubble } from '../components/PracticeBubble';
+import { PracticeCharacterPrompt } from '../components/PracticeCharacterPrompt';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
 import { sceneFirstPicture } from '../components/PictureScene';
@@ -168,6 +169,8 @@ export function SlotBuildExercise({
 
   const sceneFirst = item.scene?.type === 'picture' && Boolean(sceneFirstPicture(item.scene));
   const dialogue = item.lines.some((line) => line.speaker);
+  /** The friend's messages before your first reply: the character says them. */
+  const leading = item.lines.slice(0, Math.max(0, item.lines.findIndex((line) => line.me)));
   // The gloss rides under the line that holds the glossed word (else under the last line before the reply).
   const glossed = item.glossary?.[0]?.traditional;
   const glossIndex = glossed === undefined
@@ -176,17 +179,21 @@ export function SlotBuildExercise({
   const glossLine = glossIndex >= 0 ? glossIndex : item.lines.findLastIndex((line) => !line.me);
   const gloss = item.glossary?.map((entry) => `${textIn(entry, script)} ${entry.pinyin} · ${entry.english}`) ?? [];
 
+  const sceneNode = item.scene ? (
+    <PracticeScene
+      scene={item.scene}
+      arrived={status === 'correct'}
+      renderChinese={(text) => <ContextualChineseText text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
+    />
+  ) : null;
+  // In a dialogue the character holds the picture up beside her message, instead of it taking its own row above.
+  const sceneBeside = Boolean(sceneNode) && !sceneFirst && dialogue && leading.length > 0;
+
   return (
     <LayoutGroup id={`slot-build-${item.id}`}>
       <div className={sceneFirst ? "flex flex-col gap-5" : "flex flex-col gap-7"}>
-        <PracticePrompt sub={item.sub} />
-        {item.scene && (
-          <PracticeScene
-            scene={item.scene}
-            arrived={status === 'correct'}
-            renderChinese={(text) => <ContextualChineseText text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
-          />
-        )}
+        {!dialogue && <PracticePrompt sub={item.sub} />}
+        {!sceneBeside && sceneNode}
         {sceneFirst ? item.lines.map((line, index) => (
           <Fragment key={index}>
             <div className="flex flex-col items-center gap-1">
@@ -196,20 +203,35 @@ export function SlotBuildExercise({
           </Fragment>
         )) : dialogue ? (
           <div className="flex flex-col gap-3">
-            {item.lines.map((line, index) => (
-              <Fragment key={index}>
-                {line.me && index > 0 && <span className="h-2" aria-hidden="true" />}
-                <PracticeBubble side={line.me ? 'me' : 'them'} notes={index === glossLine ? gloss : []}>
-                  {renderLine(line, line.me ? 'onPrimary' : 'plain')}
-                </PracticeBubble>
-              </Fragment>
-            ))}
+            {leading.length > 0 && (
+              <PracticeCharacterPrompt status={status} waiting={ready}>
+                <div className="flex flex-col items-start gap-2">
+                  {sceneBeside && <div className="mb-1 self-stretch">{sceneNode}</div>}
+                  {leading.map((line, index) => (
+                    <PracticeBubble key={index} side="them" className={index === 0 ? BUBBLE_TAIL : undefined} notes={index === glossLine ? gloss : []}>
+                      {renderLine(line, 'plain')}
+                    </PracticeBubble>
+                  ))}
+                </div>
+              </PracticeCharacterPrompt>
+            )}
+            {item.lines.slice(leading.length).map((line, offset) => {
+              const index = leading.length + offset;
+              return (
+                <Fragment key={index}>
+                  {line.me && index > 0 && <span className="h-2" aria-hidden="true" />}
+                  <PracticeBubble side={line.me ? 'me' : 'them'} notes={index === glossLine ? gloss : []}>
+                    {renderLine(line, line.me ? 'onPrimary' : 'plain')}
+                  </PracticeBubble>
+                </Fragment>
+              );
+            })}
           </div>
         ) : (
           item.lines.map((line, index) => (
             <div key={index} className="flex flex-col items-center gap-1">
               <p className="text-center font-chinese text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">{renderLine(line, 'plain')}</p>
-              {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-bold text-ui-muted-strong">{note}</p>)}
+              {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-extrabold text-ui-muted-strong">{note}</p>)}
             </div>
           ))
         )}

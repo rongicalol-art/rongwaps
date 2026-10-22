@@ -74,8 +74,8 @@ export interface ReaderChunkProps {
   /** Karaoke highlight: the chunk is held right now or currently spoken. */
   isActive: boolean;
   isHovered: boolean;
-  /** The Study Guide is locating this chunk's vocabulary word in the text. */
-  isLocated?: boolean;
+  /** One of this part's new words: underlined in the book accent. */
+  isNewWord?: boolean;
   showPinyin: boolean;
   textSize: ReaderTextSize;
   appearance: ReaderChunkAppearance;
@@ -109,7 +109,7 @@ export const ReaderChunk = memo(function ReaderChunk({
   fallbackEnd,
   isActive,
   isHovered,
-  isLocated = false,
+  isNewWord = false,
   showPinyin,
   textSize,
   appearance,
@@ -166,13 +166,12 @@ export const ReaderChunk = memo(function ReaderChunk({
       }}
       className={cn(
         'outline-none -mx-0.5 px-0.5 rounded box-decoration-clone transition-colors duration-100',
+        isNewWord && 'underline decoration-brand-primary decoration-[3px] underline-offset-[6px] [text-decoration-skip-ink:none]',
         isActive
-          ? 'bg-brand-primary-soft text-brand-primary font-black'
+          ? 'bg-brand-primary-soft-edge text-ui-ink-strong'
           : isHovered
             ? 'bg-brand-primary/10 text-brand-primary'
-            : isLocated
-              ? 'bg-brand-primary-soft/45 text-brand-primary'
-              : '',
+            : '',
       )}
     >
       {showPinyin ? (
@@ -194,7 +193,7 @@ export const ReaderChunk = memo(function ReaderChunk({
               {item.char}
               <rt
                 className={cn(
-                  'font-sans font-semibold text-brand-primary select-none leading-none pb-0.5 [ruby-position:over]',
+                  'font-sans font-bold text-ui-muted-strong select-none leading-none pb-0.5 [ruby-position:over]',
                   isLongSyllable ? long[textSize] : standard[textSize],
                 )}
               >

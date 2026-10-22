@@ -3,9 +3,8 @@ import { cn } from '../../../utils/cn';
 import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import type { ReaderTextSize } from '../../../types/models';
 import type { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
-import type { ReaderLocatedRange } from '../utils/readerLocate';
 import { getDialogueTextClasses } from '../utils/readerTextStyles';
-import { isSentenceLocated, type ReadingCanvasLine } from '../utils/readingCanvasLines';
+import type { ReadingCanvasLine } from '../utils/readingCanvasLines';
 import { ReaderChunk, DIALOGUE_CHUNK_APPEARANCE } from './ReaderChunk';
 import { ReaderSpeakerAvatar } from './ReaderSpeakerAvatar';
 
@@ -23,13 +22,15 @@ type WordInteractions = Pick<
 
 export interface ReaderDialogueLineProps {
   line: ReadingCanvasLine;
+  /** Playback has not reached this line yet: it waits dimmed. */
+  isUpcoming: boolean;
+  /** The recording is on this line right now. */
   isActive: boolean;
   textSize: ReaderTextSize;
   showPinyin: boolean;
   showMeaning: boolean;
   currentTime: number;
-  locatedChunks: ReadonlySet<PhraseChunk>;
-  locatedGrammarRanges: readonly ReaderLocatedRange[];
+  newWordChunks: ReadonlySet<PhraseChunk>;
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
   playFragment: (start: number | undefined, end: number | undefined, lineIndex: number) => void;
@@ -38,19 +39,19 @@ export interface ReaderDialogueLineProps {
 }
 
 /**
- * One chat message: avatar, speaker name, bubble with native ruby pinyin text,
- * and per-word tap/hold interactions. The opener speaks from the left, the
- * responder from the right (their own side), like a real chat thread.
+ * One spoken line: avatar, speaker name, and the text in a flat bubble with
+ * native ruby pinyin and per-word tap/hold interactions. The opener speaks
+ * from the left, the responder from the right.
  */
 export function ReaderDialogueLine({
   line,
+  isUpcoming,
   isActive,
   textSize,
   showPinyin,
   showMeaning,
   currentTime,
-  locatedChunks,
-  locatedGrammarRanges,
+  newWordChunks,
   onPlayLine,
   onPlayRange,
   playFragment,
@@ -58,7 +59,7 @@ export function ReaderDialogueLine({
   onLineRef,
 }: ReaderDialogueLineProps) {
   const reduceMotion = useReducedMotion();
-  const { index, paragraph, speakerDotColor, speakerChar, avatarInitial, sentences, sentenceRanges, isRightAligned } = line;
+  const { index, paragraph, speakerDotColor, speakerChar, avatarInitial, sentences, isRightAligned } = line;
   const {
     holdingChunkKey,
     hoveredChunkKey,
@@ -87,31 +88,32 @@ export function ReaderDialogueLine({
         character={speakerChar}
         initial={avatarInitial}
         dotColor={speakerDotColor}
-        className="shrink-0"
+        className={cn('shrink-0 transition-opacity duration-300', isUpcoming && 'opacity-45')}
       />
 
       {/* Message Column */}
       <div
         className={cn(
-          'flex min-w-0 max-w-[88%] sm:max-w-[85%] flex-col',
+          'flex min-w-0 max-w-[88%] sm:max-w-[85%] flex-col transition-opacity duration-300',
           isRightAligned ? 'items-end' : 'items-start',
+          isUpcoming && 'opacity-45',
         )}
       >
         {/* Speaker Header */}
         {paragraph.speaker && (
           <div
             className={cn(
-              'mb-1 flex items-center px-1 text-xs font-black tracking-wide',
+              'mb-1 flex items-center px-1 text-sm font-bold',
               isRightAligned ? 'justify-end' : 'justify-start',
             )}
           >
-            <span className="font-chinese font-black text-ui-ink-strong">
+            <span className="font-chinese-sans font-bold text-ui-ink-strong">
               {paragraph.speaker}
             </span>
           </div>
         )}
 
-        {/* Chat bubble: tail corner pinched toward the avatar; tap to play */}
+        {/* The line itself; tap to play */}
         <div
           onClick={() => {
             onPlayLine(index);
@@ -125,12 +127,10 @@ export function ReaderDialogueLine({
             }
           }}
           className={cn(
-            'group relative w-fit max-w-full cursor-pointer rounded-2xl border-2 bg-ui-surface outline-none transition-colors select-text focus-ring text-left',
-            isRightAligned ? 'rounded-tr-sm' : 'rounded-tl-sm',
-            textSize === 'extra-large' ? 'px-4 py-3 sm:px-5 sm:py-3.5' : 'px-3.5 py-2.5 sm:px-4 sm:py-3',
+            'group relative w-fit max-w-full cursor-pointer rounded-2xl border-2 border-b-4 px-4 py-2.5 outline-none select-text focus-ring text-left transition-colors duration-200',
             isActive
-              ? 'border-brand-primary'
-              : 'border-ui-border hover:border-ui-border-strong',
+              ? 'border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft'
+              : 'border-ui-divider border-b-ui-border bg-ui-surface',
           )}
         >
           {/* Message Content (Chinese characters + ruby pinyin + translation) */}
@@ -142,7 +142,7 @@ export function ReaderDialogueLine({
                 getDialogueTextClasses(textSize, showPinyin),
               )}
             >
-              {sentences.map((sentence, sentenceIdx) => {
+              {sentences.map((sentence) => {
                 return (
                   <span
                     key={sentence.id}
@@ -160,11 +160,7 @@ export function ReaderDialogueLine({
                         playFragment(sentence.start, sentence.end, index);
                       }
                     }}
-                    className={cn(
-                      'group/sentence relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong',
-                      isSentenceLocated(index, sentenceRanges[sentenceIdx], locatedGrammarRanges) &&
-                        'bg-feedback-warning/40',
-                    )}
+                    className="group/sentence relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong"
                   >
                     {sentence.chunks.map((chunk, chunkIdx) => {
                       if (chunk.isPunctuation) {
@@ -195,7 +191,7 @@ export function ReaderDialogueLine({
                           fallbackEnd={sentence.end}
                           isActive={holdingChunkKey === chunkKey || isWordActive}
                           isHovered={hoveredChunkKey === chunkKey}
-                          isLocated={locatedChunks.has(chunk)}
+                          isNewWord={newWordChunks.has(chunk)}
                           showPinyin={showPinyin}
                           textSize={textSize}
                           appearance={DIALOGUE_CHUNK_APPEARANCE}
@@ -217,7 +213,7 @@ export function ReaderDialogueLine({
 
             {/* Optional English Translation */}
             {showMeaning && paragraph.english && (
-              <div className="mt-2 border-t border-ui-divider/50 pt-1.5">
+              <div className="mt-1">
                 <p
                   className={cn(
                     'ui-translation',

@@ -28,6 +28,7 @@ import { getCharacterAudio } from './pronunciationAudio';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
 export class AudioService {
+  private defaultRate = 1.0;
   private objectUrls: Map<string, string> = new Map();
   private globalAudio: HTMLAudioElement | null = null;
   private spareAudio: HTMLAudioElement | null = null; // pre-unlocked; hosts the next overlapped clip
@@ -116,18 +117,20 @@ export class AudioService {
       preferAnyChineseVoice,
     );
   }
-  public speakTTS(text: string, rate = 1.0): Promise<void> {
+  public speakTTS(text: string, rate?: number): Promise<void> {
+    const effectiveRate = rate ?? this.defaultRate;
     this.stop();
     return new Promise((resolve) => {
       const finish = this.trackPlayback(resolve);
-      void this.startSpeech(text, 'zh-CN', rate, finish, true);
+      void this.startSpeech(text, 'zh-CN', effectiveRate, finish, true);
     });
   }
-  public speakText(text: string, language = 'zh-CN', rate = 1.0): Promise<void> {
+  public speakText(text: string, language = 'zh-CN', rate?: number): Promise<void> {
+    const effectiveRate = rate ?? this.defaultRate;
     this.stop();
     return new Promise((resolve) => {
       const finish = this.trackPlayback(resolve);
-      void this.startSpeech(text, language, rate, finish);
+      void this.startSpeech(text, language, effectiveRate, finish);
     });
   }
   // With `overlap`, a playing clip rings out on its element while the new one uses the spare.
@@ -205,12 +208,13 @@ export class AudioService {
 
   public play(
     audioFileName?: string,
-    playbackRate = 1.0,
+    playbackRate?: number,
     textFallback?: string,
     fallbackLanguage = 'zh-CN',
     startTime = 0,
     options?: PlayOptions,
   ): Promise<void> {
+    const effectiveRate = playbackRate ?? this.defaultRate;
     this.beginPlayback(options?.overlap === true, audioFileName);
     const textToSpeak = textFallback
       || (audioFileName && !this.isAudioFileName(audioFileName) ? audioFileName : undefined);
@@ -224,7 +228,7 @@ export class AudioService {
           finish();
           return;
         }
-        void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * playbackRate, finish, true);
+        void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * effectiveRate, finish, true);
       };
 
       if (!audioFileName || !this.isAudioFileName(audioFileName) || !this.globalAudio) {
@@ -244,13 +248,13 @@ export class AudioService {
         }
         try { audio.pause(); audio.src = ''; audio.load?.(); } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
         if (options?.fallback !== 'none' && error instanceof Error && error.name === 'TimeoutError' && textToSpeak) {
-          void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * playbackRate, finish, true);
+          void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * effectiveRate, finish, true);
         } else startSpeechFallback();
       };
 
       const playUrl = (url: string) => {
         if (this.activePlaybackFinish !== finish) return;
-        this.activePlaybackCleanup = playHtmlAudio(audio, url, playbackRate, () => {
+        this.activePlaybackCleanup = playHtmlAudio(audio, url, effectiveRate, () => {
           // Cache explicitly completed recordings without delaying first sound.
           if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).catch(() => {});
           finish();
@@ -261,7 +265,8 @@ export class AudioService {
   }
 
   /** Reading-checked dictionary/custom cards must never guess their reading with TTS. */
-  public playCard(card: Pick<Flashcard, 'audio' | 'front' | 'source'> & { pinyin?: string }, rate = 1, options?: PlayOptions): Promise<void> {
+  public playCard(card: Pick<Flashcard, 'audio' | 'front' | 'source'> & { pinyin?: string }, rate?: number, options?: PlayOptions): Promise<void> {
+    const effectiveRate = rate ?? this.defaultRate;
     if (card.source === 'dictionary' && !this.isAudioFileName(card.audio) && /^[\u3400-\u9fff]$/u.test(card.front) && card.pinyin) {
       this.beginPlayback(options?.overlap === true);
       return new Promise((resolve) => {
@@ -269,11 +274,11 @@ export class AudioService {
         void Promise.race([getCharacterAudio(card.front, card.pinyin), wait(2500).then(() => undefined)]).then((audio) => {
           if (this.activePlaybackFinish !== finish) return;
           this.activePlaybackFinish = null; // Transfer cancellation ownership to recorded playback.
-          void this.play(audio, rate, undefined, undefined, 0, { ...options, fallback: 'none' }).then(finish, finish);
+          void this.play(audio, effectiveRate, undefined, undefined, 0, { ...options, fallback: 'none' }).then(finish, finish);
         }, () => { if (this.activePlaybackFinish === finish) { options?.onUnavailable?.(); finish(); } });
       });
     }
-    return this.play(card.audio, rate, card.front, undefined, 0, {
+    return this.play(card.audio, effectiveRate, card.front, undefined, 0, {
       ...options, ...(card.source === 'dictionary' ? { fallback: 'none' as const } : {}),
     });
   }
@@ -284,22 +289,26 @@ export class AudioService {
     endSec: number,
     options?: PlayRangeOptions,
   ): Promise<void> {
+    const rangeOptions = {
+      ...options,
+      rate: options?.rate ?? this.defaultRate,
+    };
     this.pause();
     return new Promise((resolve) => {
       const finish = this.trackPlayback(resolve);
       const audio = this.globalAudio;
       if (!audio) {
-        options?.onUnavailable?.();
+        rangeOptions?.onUnavailable?.();
         finish();
         return;
       }
 
       const runRange = (src: string) => {
         if (this.activePlaybackFinish !== finish) return;
-        this.activePlaybackCleanup = playRangeOnAudioElement(audio, src, startSec, endSec, options, (ended) => {
+        this.activePlaybackCleanup = playRangeOnAudioElement(audio, src, startSec, endSec, rangeOptions, (ended) => {
           if (ended) {
-            options?.onComplete?.();
-            if (options?.cacheOnComplete !== false && typeof caches !== 'undefined') {
+            rangeOptions?.onComplete?.();
+            if (rangeOptions?.cacheOnComplete !== false && typeof caches !== 'undefined') {
               void this.getAudioObjectUrl(audioFileName).catch(() => {});
             }
           }
@@ -307,7 +316,7 @@ export class AudioService {
         }, (handle) => { this.rangeRafHandle = handle; });
       };
 
-      this.playRecordedSource(audioFileName, runRange, finish, () => { options?.onUnavailable?.(); finish(); });
+      this.playRecordedSource(audioFileName, runRange, finish, () => { rangeOptions?.onUnavailable?.(); finish(); });
     });
   }
 
@@ -332,6 +341,14 @@ export class AudioService {
       }).catch(fail);
     } else if (stream) run(stream);
     else void this.getAudioObjectUrl(fileName).then(run).catch(fail);
+  }
+
+  public setDefaultRate(rate: number): void {
+    if (Number.isFinite(rate) && rate > 0) this.defaultRate = rate;
+  }
+
+  public getDefaultRate(): number {
+    return this.defaultRate;
   }
 
   public setPlaybackRate(rate: number): void {

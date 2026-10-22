@@ -139,7 +139,11 @@
                   }
                 ]
               ],
-              "english": "You could say that I am a fan of yours."
+              "english": "You could say that I am a fan of yours.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/9852efd3a566.mp3"
+              }
             },
             {
               "id": "b3l1g1-r2",
@@ -229,7 +233,11 @@
                   }
                 ]
               ],
-              "english": "You could say that he is already an adult."
+              "english": "You could say that he is already an adult.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0dc859c22264.mp3"
+              }
             },
             {
               "id": "b3l1g1-r3",
@@ -333,7 +341,11 @@
                   }
                 ]
               ],
-              "english": "You could say this is my second home."
+              "english": "You could say this is my second home.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/12f12b382c91.mp3"
+              }
             }
           ],
           "confusion": {
@@ -623,7 +635,11 @@
                     "meaning": "suggestion particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/adfd11948cf1.mp3"
+                }
               }
             },
             {
@@ -714,7 +730,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/8a1b0d21c463.mp3"
+                }
               }
             },
             {
@@ -826,7 +846,11 @@
                     "meaning": "measure word (shops)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/3e87907fe3e0.mp3"
+                }
               }
             }
           ],
@@ -1045,7 +1069,11 @@
                   }
                 ]
               ],
-              "english": "How regrettable it is not to be an actor!"
+              "english": "How regrettable it is not to be an actor!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/8375348cea2e.mp3"
+              }
             },
             {
               "id": "b3l1g2-r2",
@@ -1143,7 +1171,11 @@
                   }
                 ]
               ],
-              "english": "How cute that dog is!"
+              "english": "How cute that dog is!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/80cda6ad0b78.mp3"
+              }
             },
             {
               "id": "b3l1g2-r3",
@@ -1241,7 +1273,11 @@
                   }
                 ]
               ],
-              "english": "How comfortable it is to eat shaved ice at home!"
+              "english": "How comfortable it is to eat shaved ice at home!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c14eaabb7732.mp3"
+              }
             }
           ],
           "confusion": {
@@ -1378,7 +1414,7 @@
                 "traditional": "你長得這麼好看，不當演員多麼可惜啊！",
                 "simplified": "你长得这么好看，不当演员多么可惜啊！",
                 "pinyin": "Nǐ zhǎng de zhème hǎokàn, bù dāng yǎnyuán duōme kěxī a!",
-                "english": "You are so good-looking; what a pity not to be an actor!",
+                "english": "You grew up looking so good; what a pity not to be an actor!",
                 "words": [
                   {
                     "id": "b3l1g2-ex1-w1",
@@ -1452,7 +1488,11 @@
                     "meaning": "exclamation particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/5d7b11bc91b6.mp3"
+                }
               }
             },
             {
@@ -1565,7 +1605,11 @@
                     "meaning": "exclamation particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/e22eaa5c65b8.mp3"
+                }
               }
             },
             {
@@ -1671,7 +1715,11 @@
                     "meaning": "exclamation particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/3dc6d3b72112.mp3"
+                }
               }
             }
           ],
@@ -1969,7 +2017,11 @@
                   }
                 ]
               ],
-              "english": "It's a pity not to be an actor; besides, the audience really appreciates you."
+              "english": "It's a pity not to be an actor; besides, the audience really appreciates you.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/2145c43ae35b.mp3"
+              }
             },
             {
               "id": "b3l1g3-r2",
@@ -2105,7 +2157,11 @@
                   }
                 ]
               ],
-              "english": "I have to hand in a report recently; besides, final exams are coming up soon."
+              "english": "I have to hand in a report recently; besides, final exams are coming up soon.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/94632f66d90e.mp3"
+              }
             },
             {
               "id": "b3l1g3-r3",
@@ -2241,7 +2297,11 @@
                   }
                 ]
               ],
-              "english": "Clubs let you make friends; besides, you can also learn more about yourself."
+              "english": "Clubs let you make friends; besides, you can also learn more about yourself.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/ff3de856ebd9.mp3"
+              }
             }
           ],
           "confusion": {
@@ -2523,7 +2583,11 @@
                     "meaning": "performance",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/a576c688feec.mp3"
+                }
               }
             },
             {
@@ -2658,7 +2722,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/c7120efd8fa4.mp3"
+                }
               }
             },
             {
@@ -2785,7 +2853,11 @@
                     "meaning": "self",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/a163d2337e7e.mp3"
+                }
               }
             }
           ],
@@ -2918,7 +2990,11 @@
               "traditional": "東賢，沒想到才兩年沒見，你已經是個大明星了。你演的戲，我都看了，我可以說是你的戲迷喔，快幫我簽個名吧！",
               "simplified": "东賢，没想到才两年没见，你已经是个大明星了。你演的戏，我都看了，我可以说是你的戏迷喔，快帮我签个名吧！",
               "pinyin": "",
-              "english": "Dongxian, I never thought that after only two years, you are already a big star! I've watched all the dramas you acted in; you could say I am a fan of yours! Quickly sign an autograph for me!"
+              "english": "Dongxian, I never thought that after only two years, you are already a big star! I've watched all the dramas you acted in; you could say I am a fan of yours! Quickly sign an autograph for me!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/767ca40953f9.mp3"
+              }
             }
           },
           {
@@ -2928,7 +3004,11 @@
               "traditional": "別這麼說，我還要繼續努力。",
               "simplified": "别这么说，我还要继续努力。",
               "pinyin": "",
-              "english": "Don't say that; I still need to keep working hard."
+              "english": "Don't say that; I still need to keep working hard.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/754bc4c7b3ca.mp3"
+              }
             }
           },
           {
@@ -2938,7 +3018,11 @@
               "traditional": "我覺得你已經很努力了。而且，你的中文進步得這麼快，是怎麼做到的？",
               "simplified": "我觉得你已经很努力了。而且，你的中文进步得这么快，是怎么做到的？",
               "pinyin": "",
-              "english": "I think you are already very hardworking. And your Chinese improved so fast, how did you manage that?"
+              "english": "I think you are already very hardworking. And your Chinese improved so fast, how did you manage that?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/79a161003258.mp3"
+              }
             }
           },
           {
@@ -2948,7 +3032,11 @@
               "traditional": "我把劇本裡要說的部分，都請老師錄了音，一有空就不斷地聽，不斷地練習。這樣子才學得好、學得快。",
               "simplified": "我把剧本里要说的部分，都请老师录了音，一有空就不断地听，不断地练习。这样子才学得好、学得快。",
               "pinyin": "",
-              "english": "I had the teacher record all the lines I needed to speak in the script, and whenever I had free time I listened and practiced continuously. That way I could learn well and fast."
+              "english": "I had the teacher record all the lines I needed to speak in the script, and whenever I had free time I listened and practiced continuously. That way I could learn well and fast.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f3ac15c2a532.mp3"
+              }
             }
           },
           {
@@ -2958,7 +3046,11 @@
               "traditional": "這真是個好辦法，難怪你進步得這麼快。對了，你對未來有什麼計畫？",
               "simplified": "这真是个好办法，难怪你进步得这么快。对了，你对未来有什么计画？",
               "pinyin": "",
-              "english": "That's really a great method, no wonder you improved so quickly. By the way, what plans do you have for the future?"
+              "english": "That's really a great method, no wonder you improved so quickly. By the way, what plans do you have for the future?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/d3e33f8b7919.mp3"
+              }
             }
           },
           {
@@ -2968,7 +3060,11 @@
               "traditional": "我從小就想當導演，腦子裡每天都想著這件事。有時連做夢都夢到自己拍電影的樣子，所以我打算明年開始學拍電影。",
               "simplified": "我从小就想当导演，脑子里每天都想着这件事。有时连做梦都梦到自己拍电影的样子，所以我打算明年开始学拍电影。",
               "pinyin": "",
-              "english": "Ever since I was little I wanted to be a director, and I think about this every day. Sometimes I even dream of myself filming movies, so I plan to start learning film directing next year."
+              "english": "Ever since I was little I wanted to be a director, and I think about this every day. Sometimes I even dream of myself filming movies, so I plan to start learning film directing next year.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6629b67bb733.mp3"
+              }
             }
           },
           {
@@ -2978,7 +3074,11 @@
               "traditional": "導演？你長得這麼好看，身高也夠高，而且什麼角色都演得很好，不當演員多麼可惜啊！再說，觀眾也都很肯定你的表現。",
               "simplified": "导演？你长得这么好看，身高也够高，而且什么角色都演得很好，不当演员多么可惜啊！再说，观众也都很肯定你的表现。",
               "pinyin": "",
-              "english": "Director? You look so handsome, are tall enough, and act well in every role; how regrettable it would be if you didn't become an actor! Besides, audiences highly recognize your performance."
+              "english": "Director? You grew up looking so handsome, you are tall enough, and you act well in every role; what a pity not to be an actor! Besides, audiences really appreciate your performance.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/74860bb82d4b.mp3"
+              }
             }
           },
           {
@@ -2988,7 +3088,11 @@
               "traditional": "導演還是可以演戲的。其實，要當好導演，不但得懂怎麼拍電影，也要教演員演戲，挑戰更大。",
               "simplified": "导演还是可以演戏的。其实，要当好导演，不但得懂怎么拍电影，也要教演员演戏，挑战更大。",
               "pinyin": "",
-              "english": "A director can still act. Actually, to be a good director, not only must one know how to make films, but one also has to guide actors; the challenge is even greater."
+              "english": "A director can still act. Actually, to be a good director, not only must one know how to make films, but one also has to guide actors; the challenge is even greater.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/453e61848a80.mp3"
+              }
             }
           },
           {
@@ -2998,7 +3102,11 @@
               "traditional": "我聽說不少導演為了把電影拍好，連家都很少回去，有的還因為這樣離婚了。不過，我想只要你有實力，就不怕挑戰了。",
               "simplified": "我听说不少导演为了把电影拍好，连家都很少回去，有的还因为这样离婚了。不过，我想只要你有实力，就不怕挑战了。",
               "pinyin": "",
-              "english": "I heard quite a few directors rarely go home just to make good movies, and some even got divorced because of this. But I think as long as you have real capability, you won't fear challenges."
+              "english": "I heard quite a few directors rarely go home just to make good movies, and some even got divorced because of this. But I think as long as you have real capability, you won't fear challenges.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/7ab397c10126.mp3"
+              }
             }
           },
           {
@@ -3008,7 +3116,11 @@
               "traditional": "謝謝。今天能跟妳見面聊聊真好。",
               "simplified": "谢谢。今天能跟你见面聊聊真好。",
               "pinyin": "",
-              "english": "Thank you. It is really wonderful to meet and chat with you today."
+              "english": "Thank you. It is really wonderful to meet and chat with you today.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/811d25a74161.mp3"
+              }
             }
           },
           {
@@ -3018,7 +3130,11 @@
               "traditional": "那你以後別再跟我說，因為要演總統、石油公司大老闆什麼的，沒時間跟朋友聚一聚。不管多忙，你也要留點兒時間給朋友啊！",
               "simplified": "那你以后别再跟我说，因为要演总统、石油公司大老闆什么的，没时间跟朋友聚一聚。不管多忙，你也要留点儿时间给朋友啊！",
               "pinyin": "",
-              "english": "Then don't tell me later that you have no time to gather with friends because you need to play a president or oil tycoon. No matter how busy, leave some time for friends!"
+              "english": "Then don't tell me later that you have no time to gather with friends because you need to play a president or oil tycoon. No matter how busy, leave some time for friends!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6cbe7ea5ca49.mp3"
+              }
             }
           },
           {
@@ -3028,7 +3144,11 @@
               "traditional": "嗯！對了，也聊聊妳自己吧。妳學的是法律，以後要當律師吧？",
               "simplified": "嗯！对了，也聊聊你自己吧。你学的是法律，以后要当律师吧？",
               "pinyin": "",
-              "english": "Sure! By the way, let's talk about you. You study law, so you will become a lawyer in the future, right?"
+              "english": "Sure! By the way, let's talk about you. You study law, so you will become a lawyer in the future, right?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/89dfb6bb5a6b.mp3"
+              }
             }
           },
           {
@@ -3038,7 +3158,11 @@
               "traditional": "其實，我學法律是因為爸爸的要求。他希望我先當律師，將來有機會當上市長就更好了。",
               "simplified": "其实，我学法律是因为爸爸的要求。他希望我先当律师，将来有机会当上市长就更好了。",
               "pinyin": "",
-              "english": "Actually, I studied law because of my father's request. He hopes I first become a lawyer, and it would be even better if I have a chance to become mayor in the future."
+              "english": "Actually, I studied law because of my father's request. He hopes I first become a lawyer, and it would be even better if I have a chance to become mayor in the future.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/fb3038549432.mp3"
+              }
             }
           },
           {
@@ -3048,7 +3172,11 @@
               "traditional": "所以當市長是妳的夢想嗎？",
               "simplified": "所以当市长是你的梦想吗？",
               "pinyin": "",
-              "english": "So becoming mayor is your dream?"
+              "english": "So becoming mayor is your dream?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/ef1d577660e2.mp3"
+              }
             }
           },
           {
@@ -3058,7 +3186,11 @@
               "traditional": "唉，誰想當市長啊？不過，從小我爸媽什麼事都替我安排好了，雖然不喜歡，我也只能忍耐。",
               "simplified": "唉，谁想当市长啊？不过，从小我爸妈什么事都替我安排好了，虽然不喜欢，我也只能忍耐。",
               "pinyin": "",
-              "english": "Sigh, who wants to be mayor? But since childhood my parents arranged everything for me; even though I don't like it, I can only endure it."
+              "english": "Sigh, who wants to be mayor? But since childhood my parents arranged everything for me; even though I don't like it, I can only endure it.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/d28d2c5edce2.mp3"
+              }
             }
           },
           {
@@ -3068,7 +3200,11 @@
               "traditional": "其實，我們都不是小孩子了，自己的未來應該自己決定吧。",
               "simplified": "其实，我们都不是小孩子了，自己的未来应该自己决定吧。",
               "pinyin": "",
-              "english": "Actually, we are no longer children; our future should be decided by ourselves."
+              "english": "Actually, we are no longer children; our future should be decided by ourselves.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/07af4b71a20f.mp3"
+              }
             }
           },
           {
@@ -3078,7 +3214,11 @@
               "traditional": "就是說嘛！但是我爸媽的想法太保守了，一時很難改變他們。",
               "simplified": "就是说嘛！但是我爸妈的想法太保守了，一时很难改变他们。",
               "pinyin": "",
-              "english": "Exactly! But my parents' mindset is too conservative; it's very difficult to change them all at once."
+              "english": "Exactly! But my parents' mindset is too conservative; it's very difficult to change them all at once.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/62197b8f8900.mp3"
+              }
             }
           },
           {
@@ -3088,7 +3228,11 @@
               "traditional": "希望有一天，妳也能為了自己的夢想努力。",
               "simplified": "希望有一天，你也能为了自己的梦想努力。",
               "pinyin": "",
-              "english": "I hope that one day you can also strive for your own dream."
+              "english": "I hope that one day you can also strive for your own dream.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/e5588e4401d7.mp3"
+              }
             }
           },
           {
@@ -3098,7 +3242,11 @@
               "traditional": "嗯，我們一起加油吧！",
               "simplified": "嗯，我们一起加油吧！",
               "pinyin": "",
-              "english": "Yeah, let's cheer each other on together!"
+              "english": "Yeah, let's cheer each other on together!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/5e46b11cf574.mp3"
+              }
             }
           }
         ]
@@ -3259,7 +3407,11 @@
                   }
                 ]
               ],
-              "english": "The parents worried, and therefore opposed this decision."
+              "english": "The parents worried, and therefore opposed this decision.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c4743bf932f9.mp3"
+              }
             },
             {
               "id": "b3l1g4-r2",
@@ -3407,7 +3559,11 @@
                   }
                 ]
               ],
-              "english": "Because he couldn't adapt to the city, he moved to the countryside."
+              "english": "Because he couldn't adapt to the city, he moved to the countryside.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/81c5ea9c607b.mp3"
+              }
             },
             {
               "id": "b3l1g4-r3",
@@ -3541,7 +3697,11 @@
                   }
                 ]
               ],
-              "english": "Although pursuing dreams is hard, he never gives up."
+              "english": "Although pursuing dreams is hard, he never gives up.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/e595ab711936.mp3"
+              }
             }
           ],
           "confusion": {
@@ -3786,7 +3946,11 @@
                     "meaning": "to decide",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/8df5b8caa831.mp3"
+                }
               }
             },
             {
@@ -3920,7 +4084,11 @@
                     "meaning": "days",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/59250ce5d1ea.mp3"
+                }
               }
             },
             {
@@ -4018,7 +4186,11 @@
                     "meaning": "happy",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/59e9ff66badb.mp3"
+                }
               }
             }
           ],
@@ -4253,7 +4425,11 @@
                   }
                 ]
               ],
-              "english": "As long as you work hard, you can paint a wonderful life."
+              "english": "As long as you work hard, you can paint out a wonderful life.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/aec25975ad2a.mp3"
+              }
             },
             {
               "id": "b3l1g5-r2",
@@ -4402,7 +4578,11 @@
                   }
                 ]
               ],
-              "english": "He spent three years writing a bestselling novel."
+              "english": "He spent three years writing out a bestselling novel.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b24bfab6e0c8.mp3"
+              }
             },
             {
               "id": "b3l1g5-r3",
@@ -4544,7 +4724,11 @@
                   }
                 ]
               ],
-              "english": "I have studied for a long time, but I cannot bake a satisfying cake."
+              "english": "I studied for a long time, but still cannot turn out a satisfying cake.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/bfd09b47cd94.mp3"
+              }
             }
           ],
           "confusion": {
@@ -4695,7 +4879,7 @@
                 "traditional": "只要不斷努力，就一定能畫出精彩的人生。",
                 "simplified": "只要不断努力，就一定能画出精彩的人生。",
                 "pinyin": "Zhǐyào búduàn nǔlì, jiù yídìng néng huà chū jīngcǎi de rénshēng.",
-                "english": "As long as you work hard continuously, you can definitely paint a wonderful life.",
+                "english": "As long as you keep working hard, you can definitely paint out a wonderful life.",
                 "words": [
                   {
                     "id": "b3l1g5-ex1-w1",
@@ -4769,7 +4953,11 @@
                     "meaning": "life",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/4598744c49d9.mp3"
+                }
               }
             },
             {
@@ -4779,7 +4967,7 @@
                 "traditional": "他花了三年的時間，最後寫出了一本大家都非常喜愛的小說。",
                 "simplified": "他花了三年的时间，最后写出了一本大家都非常喜爱的小说。",
                 "pinyin": "Tā huā le sān nián de shíjiān, zuìhòu xiě chū le yì běn dàjiā dōu fēicháng xǐ'ài de xiǎoshuō.",
-                "english": "He spent three years and finally wrote a novel that everyone loves.",
+                "english": "He spent three years and finally wrote out a novel that everyone loves.",
                 "words": [
                   {
                     "id": "b3l1g5-ex2-w1",
@@ -4909,7 +5097,11 @@
                     "meaning": "novel",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/34bdf1c9089a.mp3"
+                }
               }
             },
             {
@@ -4919,7 +5111,7 @@
                 "traditional": "我學做蛋糕學了很久，還是做不出讓自己滿意的蛋糕。",
                 "simplified": "我学做蛋糕学了很久，还是做不出让自己满意的蛋糕。",
                 "pinyin": "Wǒ xué zuò dàngāo xué le hěn jiǔ, háishì zuò bù chū ràng zìjǐ mǎnyì de dàngāo.",
-                "english": "I learned cake baking for a long time, but still cannot make a cake that satisfies myself.",
+                "english": "I learned cake baking for a long time, but still cannot turn out a cake that satisfies myself.",
                 "words": [
                   {
                     "id": "b3l1g5-ex3-w1",
@@ -5028,7 +5220,11 @@
                     "meaning": "cake",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/62d3b14563f3.mp3"
+                }
               }
             }
           ],
@@ -5247,7 +5443,11 @@
                   }
                 ]
               ],
-              "english": "A person like him has a strong sense of responsibility."
+              "english": "A person like him has a strong sense of responsibility.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/561d9ef478b7.mp3"
+              }
             },
             {
               "id": "b3l1g6-r2",
@@ -5345,7 +5545,11 @@
                   }
                 ]
               ],
-              "english": "Living a life like working overtime every day is too tiring."
+              "english": "Living a life like working overtime every day is too tiring.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/a4281f104aa3.mp3"
+              }
             },
             {
               "id": "b3l1g6-r3",
@@ -5422,7 +5626,11 @@
                   }
                 ]
               ],
-              "english": "A city like Taipei is very bustling."
+              "english": "A city like Taipei is very bustling.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/2415c2d24e3a.mp3"
+              }
             }
           ],
           "confusion": {
@@ -5690,7 +5898,11 @@
                     "meaning": "exclamation particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/7965ca19c469.mp3"
+                }
               }
             },
             {
@@ -5781,7 +5993,11 @@
                     "meaning": "possessive particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/c69750d27c3d.mp3"
+                }
               }
             },
             {
@@ -5893,7 +6109,11 @@
                     "meaning": "possessive particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d54321a19618.mp3"
+                }
               }
             }
           ],
@@ -6025,7 +6245,11 @@
               "traditional": "電影是許多人生活中的休閒娛樂，但是要把一部電影拍好，可不是一件容易的事。",
               "simplified": "电影是许多人生活中的休闲娱乐，但是要把一部电影拍好，可不是一件容易的事。",
               "pinyin": "",
-              "english": "Movies are leisure entertainment in many people's lives, but making a good movie is by no means an easy task."
+              "english": "Movies are leisure entertainment in many people's lives, but making a good movie is by no means an easy task.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/52b45dff3fd5.mp3"
+              }
             }
           },
           {
@@ -6035,7 +6259,11 @@
               "traditional": "東賢從小就對電影很有興趣，常常夢想自己能成為一位著名的導演。",
               "simplified": "东賢从小就对电影很有兴趣，常常梦想自己能成为一位着名的导演。",
               "pinyin": "",
-              "english": "Ever since childhood, Dongxian has been very interested in movies, often dreaming of becoming a famous director."
+              "english": "Ever since childhood, Dongxian has been very interested in movies, often dreaming of becoming a famous director.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f173d6dad47f.mp3"
+              }
             }
           },
           {
@@ -6045,7 +6273,11 @@
               "traditional": "為了追求這個夢想，東賢高中畢業後就決定到臺灣學習中文和電影製作。",
               "simplified": "为了追求这个梦想，东賢高中毕业后就决定到台湾学习中文和电影制作。",
               "pinyin": "",
-              "english": "In pursuit of this dream, after graduating from high school Dongxian decided to go to Taiwan to learn Chinese and filmmaking."
+              "english": "In pursuit of this dream, after graduating from high school Dongxian decided to go to Taiwan to learn Chinese and filmmaking.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/16c738b17f83.mp3"
+              }
             }
           },
           {
@@ -6055,7 +6287,11 @@
               "traditional": "起初，東賢的父母因為擔心他的未來而反對這個決定，希望他能留在韓國念商學。",
               "simplified": "起初，东賢的父母因为担心他的未来而反对这个决定，希望他能留在韩国念商学。",
               "pinyin": "",
-              "english": "Initially, Dongxian's parents opposed this decision because they worried about his future, hoping he would stay in Korea to study business."
+              "english": "Initially, Dongxian's parents opposed this decision because they worried about his future, hoping he would stay in Korea to study business.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/28f427628937.mp3"
+              }
             }
           },
           {
@@ -6065,7 +6301,11 @@
               "traditional": "但東賢拿出自己的計畫書，向父母保證自己一定會認真學習、照顧好自己。",
               "simplified": "但东賢拿出自己的计画书，向父母保证自己一定会认真学习、照顾好自己。",
               "pinyin": "",
-              "english": "However, Dongxian presented his plan and guaranteed to his parents that he would study earnestly and take good care of himself."
+              "english": "However, Dongxian presented his plan and guaranteed to his parents that he would study earnestly and take good care of himself.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c10295615ec1.mp3"
+              }
             }
           },
           {
@@ -6075,7 +6315,11 @@
               "traditional": "到了臺灣後，東賢一邊在大學念書，一邊在電影劇組實習，生活雖然忙碌但非常充實。",
               "simplified": "到了台湾后，东賢一边在大学念书，一边在电影剧组实习，生活虽然忙碌但非常充实。",
               "pinyin": "",
-              "english": "After arriving in Taiwan, Dongxian studied at university while interning on film sets; life was busy yet very fulfilling."
+              "english": "After arriving in Taiwan, Dongxian studied at university while interning on film sets; life was busy yet very fulfilling.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/330850e73679.mp3"
+              }
             }
           },
           {
@@ -6085,7 +6329,11 @@
               "traditional": "東賢說：「追求夢想就像畫一張美麗的圖畫，只要不斷努力，就一定能畫出精彩的人生。」",
               "simplified": "东賢说：「追求梦想就像画一张美丽的图画，只要不断努力，就一定能画出精彩的人生。」",
               "pinyin": "",
-              "english": "Dongxian said: 'Pursuing a dream is like drawing a beautiful picture; as long as you work continuously, you will definitely paint a splendid life.'"
+              "english": "Dongxian said: 'Pursuing a dream is like drawing a beautiful picture; as long as you work continuously, you will definitely paint a splendid life.'",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c5937381fa03.mp3"
+              }
             }
           }
         ]
@@ -6253,7 +6501,11 @@
                   }
                 ]
               ],
-              "english": "Didn't you plan to go abroad a long time ago?"
+              "english": "Didn't you plan to go abroad a long time ago?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/fee66eace528.mp3"
+              }
             },
             {
               "id": "b3l2g1-r2",
@@ -6351,7 +6603,11 @@
                   }
                 ]
               ],
-              "english": "Aren't convenience stores everywhere?"
+              "english": "Aren't convenience stores everywhere?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/1112d8ea8037.mp3"
+              }
             },
             {
               "id": "b3l2g1-r3",
@@ -6421,7 +6677,11 @@
                   }
                 ]
               ],
-              "english": "Isn't today a holiday?"
+              "english": "Isn't today a holiday?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c62c4c11c588.mp3"
+              }
             }
           ],
           "confusion": {
@@ -6667,7 +6927,11 @@
                     "meaning": "modal particle",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/3de01cb045b7.mp3"
+                }
               }
             },
             {
@@ -6750,7 +7014,11 @@
                     "meaning": "question particle",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/02af0989a9f2.mp3"
+                }
               }
             },
             {
@@ -6819,7 +7087,11 @@
                     "meaning": "question particle",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d1701716545d.mp3"
+                }
               }
             }
           ],
@@ -7068,7 +7340,11 @@
                   }
                 ]
               ],
-              "english": "Mr. Ji got off work and conveniently took his laptop over to his friend."
+              "english": "Mr. Ji got off work and conveniently took his laptop over to his friend.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/bf9994e50f38.mp3"
+              }
             },
             {
               "id": "b3l2g2-r2",
@@ -7182,7 +7458,11 @@
                   }
                 ]
               ],
-              "english": "I went to the supermarket and picked up milk and eggs on the way."
+              "english": "I went to the supermarket and picked up milk and eggs on the way.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/65256c65cfd6.mp3"
+              }
             },
             {
               "id": "b3l2g2-r3",
@@ -7330,7 +7610,11 @@
                   }
                 ]
               ],
-              "english": "When introducing the product, mention your own experience while you're at it."
+              "english": "When introducing the product, mention your own experience while you're at it.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/2fccdf7ab18a.mp3"
+              }
             }
           ],
           "confusion": {
@@ -7597,7 +7881,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/4d6f5a7e174f.mp3"
+                }
               }
             },
             {
@@ -7716,7 +8004,11 @@
                     "meaning": "latte",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/990f053328bf.mp3"
+                }
               }
             },
             {
@@ -7842,7 +8134,11 @@
                     "meaning": "to experience",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/69f006b2c552.mp3"
+                }
               }
             }
           ],
@@ -8080,7 +8376,11 @@
                   }
                 ]
               ],
-              "english": "The clerk brews coffee one moment, and helps check out customers the next."
+              "english": "The clerk brews coffee one moment, and helps check out customers the next.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/9e01ffc52f35.mp3"
+              }
             },
             {
               "id": "b3l2g3-r2",
@@ -8161,7 +8461,11 @@
                   }
                 ]
               ],
-              "english": "The wind is strong one minute, and light the next."
+              "english": "The wind is strong one minute, and light the next.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/3067d7d8dfba.mp3"
+              }
             },
             {
               "id": "b3l2g3-r3",
@@ -8251,26 +8555,23 @@
                     "traditional": "看",
                     "simplified": "看",
                     "pinyin": "kàn",
-                    "meaning": "to read"
+                    "meaning": "to read; to look at"
                   },
                   {
                     "id": "b3l2g3-r3-c5-w2",
-                    "traditional": "手",
-                    "simplified": "手",
-                    "pinyin": "shǒu",
-                    "meaning": "hand"
-                  },
-                  {
-                    "id": "b3l2g3-r3-c5-w3",
-                    "traditional": "鏢",
-                    "simplified": "镖",
-                    "pinyin": "biāo",
-                    "meaning": "dart-like throwing weapon",
+                    "traditional": "手錶",
+                    "simplified": "手表",
+                    "pinyin": "shǒubiǎo",
+                    "meaning": "wrist watch",
                     "suffix": "。"
                   }
                 ]
               ],
-              "english": "He glances at his phone one second, and checks his watch the next."
+              "english": "He glances at his phone one moment, and checks his watch the next.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b86090ce8688.mp3"
+              }
             }
           ],
           "confusion": {
@@ -8567,7 +8868,11 @@
                     "meaning": "trouble",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/c3364a7d6b70.mp3"
+                }
               }
             },
             {
@@ -8687,7 +8992,11 @@
                     "meaning": "to come",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/5b08715dffd4.mp3"
+                }
               }
             },
             {
@@ -8800,7 +9109,11 @@
                     "meaning": "cell phone (M: 支 zhī)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/eb0213386b7c.mp3"
+                }
               }
             }
           ],
@@ -9096,7 +9409,11 @@
                   }
                 ]
               ],
-              "english": "Work is exhausting; let's just grab a boxed meal from the convenience store."
+              "english": "Work is exhausting; let's just grab a boxed meal from the convenience store.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/4fc9c0b1a913.mp3"
+              }
             },
             {
               "id": "b3l2g4-r2",
@@ -9216,7 +9533,11 @@
                   }
                 ]
               ],
-              "english": "Since it's raining heavily, let's just stay home today."
+              "english": "Since it's raining heavily, let's just stay home today.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/ce5a7d24cea9.mp3"
+              }
             },
             {
               "id": "b3l2g4-r3",
@@ -9378,7 +9699,11 @@
                   }
                 ]
               ],
-              "english": "The phone is damaged too badly; might as well just buy a new one."
+              "english": "The phone is damaged too badly; might as well just buy a new one.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/4c83b86beb07.mp3"
+              }
             }
           ],
           "confusion": {
@@ -9632,7 +9957,11 @@
                     "meaning": "forget it; let it be",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/e4f87ee1f194.mp3"
+                }
               }
             },
             {
@@ -9751,7 +10080,11 @@
                     "meaning": "suggestion particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/081cf9c04af7.mp3"
+                }
               }
             },
             {
@@ -9891,7 +10224,11 @@
                     "meaning": "forget it; let it be",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/ead7aa8b1488.mp3"
+                }
               }
             }
           ],
@@ -10025,7 +10362,11 @@
               "traditional": "朋子，臺灣的便利商店真的太神奇了！不僅能買東西，還能繳水電費、寄包裹，甚至還能買高鐵票！",
               "simplified": "朋子，台湾的便利商店真的太神奇了！不仅能买东西，还能缴水电费、寄包裹，甚至还能买高铁票！",
               "pinyin": "",
-              "english": "Tomoko, Taiwan's convenience stores are really amazing! Not only can you buy things, but you can also pay utility bills, send packages, and even buy high-speed rail tickets!"
+              "english": "Tomoko, Taiwan's convenience stores are really amazing! Not only can you buy things, but you can also pay utility bills, send packages, and even buy high-speed rail tickets!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/5e71b30ce76c.mp3"
+              }
             }
           },
           {
@@ -10035,7 +10376,11 @@
               "traditional": "是啊，臺灣的超商密度可以說是世界第一呢。走幾步路就有一家，肚子餓了隨時都能買到熱騰騰的便當。",
               "simplified": "是啊，台湾的超商密度可以说是世界第一呢。走几步路就有一家，肚子饿了随时都能买到热騰騰的便当。",
               "pinyin": "",
-              "english": "Yes, Taiwan's convenience store density is practically number one in the world. There's one every few steps, and when you are hungry you can buy piping hot bento boxes anytime."
+              "english": "Yes, Taiwan's convenience store density is practically number one in the world. There's one every few steps, and when you are hungry you can buy piping hot bento boxes anytime.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/1a7242d6ceed.mp3"
+              }
             }
           },
           {
@@ -10045,7 +10390,11 @@
               "traditional": "我剛來臺灣的時候，看到店員一會兒煮咖啡，一會兒幫客人微波便當，一會兒又幫忙結帳，真是嚇了一跳！",
               "simplified": "我刚来台湾的时候，看到店员一会儿煮咖啡，一会儿帮客人微波便当，一会儿又帮忙结帐，真是吓了一跳！",
               "pinyin": "",
-              "english": "When I first came to Taiwan, seeing the clerk brewing coffee one moment, microwaving bento for customers the next, and helping check out right after, I was really astonished!"
+              "english": "When I first came to Taiwan, seeing the clerk brewing coffee one moment, microwaving bento for customers the next, and helping check out right after, I was really astonished!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/fcd5e1333a12.mp3"
+              }
             }
           },
           {
@@ -10055,7 +10404,11 @@
               "traditional": "臺灣的超商店員樣樣精通，工作非常辛苦。",
               "simplified": "台湾的超商店员样样精通，工作非常辛苦。",
               "pinyin": "",
-              "english": "Taiwan's convenience store clerks master everything; their work is very hardworking."
+              "english": "Taiwan's convenience store clerks master everything; their work is very hardworking.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f30816784b95.mp3"
+              }
             }
           },
           {
@@ -10065,7 +10418,11 @@
               "traditional": "你今天也是來便利商店繳費的嗎？",
               "simplified": "你今天也是来便利商店缴费的吗？",
               "pinyin": "",
-              "english": "Did you come to the convenience store to pay bills today too?"
+              "english": "Did you come to the convenience store to pay bills today too?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/79d5b287a1c0.mp3"
+              }
             }
           },
           {
@@ -10075,7 +10432,11 @@
               "traditional": "不是，我是順便來拿網購的包裹，順便買杯冰美式咖啡。",
               "simplified": "不是，我是顺便来拿网购的包裹，顺便买杯冰美式咖啡。",
               "pinyin": "",
-              "english": "No, I came by the way to pick up an online shopping parcel, and pick up an iced Americano while I'm at it."
+              "english": "No, I came by the way to pick up an online shopping parcel, and pick up an iced Americano while I'm at it.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/215f3168af6f.mp3"
+              }
             }
           },
           {
@@ -10085,7 +10446,11 @@
               "traditional": "我本來想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商買個便當吃算了。",
               "simplified": "我本来想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商买个便当吃算了。",
               "pinyin": "",
-              "english": "I originally wanted to go home and cook dinner, but I worked overtime and was too tired today. I guess never mind, I might as well just buy a bento at the convenience store."
+              "english": "I originally wanted to go home and cook dinner, but I worked overtime and was too tired today. I guess never mind, I might as well just buy a bento at the convenience store.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/3f093458b399.mp3"
+              }
             }
           },
           {
@@ -10095,7 +10460,11 @@
               "traditional": "哈哈，偶爾吃一次沒關係啦。走，我們一起進去吹冷氣選便當！",
               "simplified": "哈哈，偶爾吃一次没关系啦。走，我们一起进去吹冷气选便当！",
               "pinyin": "",
-              "english": "Haha, having it once in a while is fine. Come on, let's go inside, enjoy the air conditioning and pick a bento!"
+              "english": "Haha, having it once in a while is fine. Come on, let's go inside, enjoy the air conditioning and pick a bento!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/8837d4d6cddb.mp3"
+              }
             }
           }
         ]
@@ -10298,7 +10667,11 @@
                   }
                 ]
               ],
-              "english": "I've been trying to open this door forever, but it simply won't open."
+              "english": "I've been trying to open this door forever, but it simply won't open.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/50e1d52c5146.mp3"
+              }
             },
             {
               "id": "b3l2g5-r2",
@@ -10460,7 +10833,11 @@
                   }
                 ]
               ],
-              "english": "I advised him many times, but he simply refused to listen."
+              "english": "I advised him many times, but he simply refused to listen.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/a93e51269278.mp3"
+              }
             },
             {
               "id": "b3l2g5-r3",
@@ -10566,7 +10943,11 @@
                   }
                 ]
               ],
-              "english": "This machine simply won't start."
+              "english": "This machine simply won't start.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/eadf820ddc88.mp3"
+              }
             }
           ],
           "confusion": {
@@ -10763,7 +11144,11 @@
                     "meaning": "to take a look at",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/3952943d7702.mp3"
+                }
               }
             },
             {
@@ -10889,7 +11274,11 @@
                     "meaning": "to be used to",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/7168a3f43b7f.mp3"
+                }
               }
             },
             {
@@ -10980,7 +11369,11 @@
                     "meaning": "to perform",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/3c9011aaff7b.mp3"
+                }
               }
             }
           ],
@@ -11276,7 +11669,11 @@
                   }
                 ]
               ],
-              "english": "Through three months of hard work, their Chinese has improved a lot."
+              "english": "Through three months of hard work, their Chinese has improved a lot.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/206dc9a19d5b.mp3"
+              }
             },
             {
               "id": "b3l2g6-r2",
@@ -11396,7 +11793,11 @@
                   }
                 ]
               ],
-              "english": "After meeting and discussing, everyone decided to add more equipment."
+              "english": "After meeting and discussing, everyone decided to add more equipment.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/42381cd6a853.mp3"
+              }
             },
             {
               "id": "b3l2g6-r3",
@@ -11530,7 +11931,11 @@
                   }
                 ]
               ],
-              "english": "Through the doctor's attentive care, the patient finally recovered."
+              "english": "Through the doctor's attentive care, the patient finally recovered.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/e1b3171dc01c.mp3"
+              }
             }
           ],
           "confusion": {
@@ -11834,7 +12239,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/4fe265657aeb.mp3"
+                }
               }
             },
             {
@@ -11961,7 +12370,11 @@
                     "meaning": "bicycle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/1aa1a472ab74.mp3"
+                }
               }
             },
             {
@@ -12094,7 +12507,11 @@
                     "meaning": "director (film)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/5612a1b17402.mp3"
+                }
               }
             }
           ],
@@ -12344,7 +12761,11 @@
                   }
                 ]
               ],
-              "english": "Many people use smartphones to handle daily affairs."
+              "english": "Many people use smartphones to handle daily affairs.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/50530e2ff6aa.mp3"
+              }
             },
             {
               "id": "b3l2g7-r2",
@@ -12479,7 +12900,11 @@
                   }
                 ]
               ],
-              "english": "Confucius used storytelling to teach his students life principles."
+              "english": "Confucius used storytelling to teach his students life principles.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/66c827bcbb09.mp3"
+              }
             },
             {
               "id": "b3l2g7-r3",
@@ -12607,7 +13032,11 @@
                   }
                 ]
               ],
-              "english": "People collect reward points to redeem delicious meals."
+              "english": "People collect reward points to redeem delicious meals.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b36db82f4830.mp3"
+              }
             }
           ],
           "confusion": {
@@ -12867,7 +13296,11 @@
                     "meaning": "affair",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/2450b261bf0a.mp3"
+                }
               }
             },
             {
@@ -12964,7 +13397,11 @@
                     "meaning": "principle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/2fbc3a08d324.mp3"
+                }
               }
             },
             {
@@ -13054,7 +13491,11 @@
                     "meaning": "connection",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/e12e3bedec55.mp3"
+                }
               }
             }
           ],
@@ -13186,7 +13627,11 @@
               "traditional": "在臺灣，便利商店已經成為人們日常生活中不可缺少的一部分。",
               "simplified": "在台湾，便利商店已经成为人们日常生活中不可缺少的一部分。",
               "pinyin": "",
-              "english": "In Taiwan, convenience stores have become an indispensable part of people's daily lives."
+              "english": "In Taiwan, convenience stores have become an indispensable part of people's daily lives.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/62c382607ff1.mp3"
+              }
             }
           },
           {
@@ -13196,7 +13641,11 @@
               "traditional": "許多外國人來到臺灣，第一件印象深刻的事就是街頭巷尾隨處可見的超商。",
               "simplified": "许多外国人来到台湾，第一件印象深刻的事就是街头巷尾随处可见的超商。",
               "pinyin": "",
-              "english": "When many foreigners arrive in Taiwan, the first deep impression they have is the convenience stores seen everywhere on street corners."
+              "english": "When many foreigners arrive in Taiwan, the first deep impression they have is the convenience stores seen everywhere on street corners.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/88ea46b5d5e3.mp3"
+              }
             }
           },
           {
@@ -13206,7 +13655,11 @@
               "traditional": "人們經過一整天忙碌的工作後，走進燈光明亮的便利商店，喝一杯香濃的咖啡，心情就放鬆了下來。",
               "simplified": "人们经过一整天忙碌的工作后，走进灯光明亮的便利商店，喝一杯香浓的咖啡，心情就放松了下来。",
               "pinyin": "",
-              "english": "After a busy day of work, people walk into the brightly lit convenience store and drink an aromatic coffee, relaxing their mood."
+              "english": "After a busy day of work, people walk into the brightly lit convenience store and drink an aromatic coffee, relaxing their mood.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/cf3aea2109e3.mp3"
+              }
             }
           },
           {
@@ -13216,7 +13669,11 @@
               "traditional": "現代人常用手機 App 來累積超商點數，兌換各種實用的生活用品或美食。",
               "simplified": "现代人常用手机 App 来累积超商点数，兌换各种实用的生活用品或美食。",
               "pinyin": "",
-              "english": "Modern people frequently use mobile apps to accumulate convenience store points and redeem various practical daily necessities or delicacies."
+              "english": "Modern people frequently use mobile apps to accumulate convenience store points and redeem various practical daily necessities or delicacies.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/41a87ddfdf2f.mp3"
+              }
             }
           },
           {
@@ -13226,7 +13683,11 @@
               "traditional": "便利商店不僅提供了極大的生活便利，更為現代都市人的生活增添了許多溫暖與樂趣。",
               "simplified": "便利商店不仅提供了极大的生活便利，更为现代都市人的生活增添了许多温暖与乐趣。",
               "pinyin": "",
-              "english": "Convenience stores not only provide immense daily convenience, but also add warmth and joy to the lives of modern urbanites."
+              "english": "Convenience stores not only provide immense daily convenience, but also add warmth and joy to the lives of modern urbanites.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6324410c3184.mp3"
+              }
             }
           }
         ]
@@ -13382,7 +13843,11 @@
                   }
                 ]
               ],
-              "english": "Before buying clothes, try on the dress first."
+              "english": "Before buying clothes, try on the dress first.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6b0a242a6e25.mp3"
+              }
             },
             {
               "id": "b3l3g1-r2",
@@ -13503,7 +13968,11 @@
                   }
                 ]
               ],
-              "english": "When buying a bed, try lying down on it to see if it's comfortable."
+              "english": "When buying a bed, try lying down on it to see if it's comfortable.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/a7b4e9d7dae2.mp3"
+              }
             },
             {
               "id": "b3l3g1-r3",
@@ -13624,7 +14093,11 @@
                   }
                 ]
               ],
-              "english": "The convenience store offers drinks to try the new flavor."
+              "english": "The convenience store offers drinks to try the new flavor.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/ec65bb2dca08.mp3"
+              }
             }
           ],
           "confusion": {
@@ -13842,7 +14315,11 @@
                     "meaning": "to buy",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/f1b296a6e6b5.mp3"
+                }
               }
             },
             {
@@ -13852,7 +14329,7 @@
                 "traditional": "那家超商提供新口味的飲料給客人免費試喝，喝過的人都說好喝。",
                 "simplified": "那家超商提供新口味的饮料给客人免费试喝，喝过的人都说好喝。",
                 "pinyin": "Nà jiā chāoshāng tígōng xīn kǒuwèi de yǐnliào gěi kèrén miǎnfèi shìhē, hē guò de rén dōu shuō hǎohē.",
-                "english": "That convenience store offers drinks of a new flavor for customers to taste for free; everyone who tried it said it's delicious.",
+                "english": "That convenience store offers drinks of a new flavor for customers to try for free; everyone who tried it said it's delicious.",
                 "words": [
                   {
                     "id": "b3l3g1-ex2-w1",
@@ -13989,7 +14466,11 @@
                     "meaning": "to drink",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/e2f8e6342a64.mp3"
+                }
               }
             },
             {
@@ -14080,7 +14561,11 @@
                     "meaning": "to take a look at",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/64f7eac9b86b.mp3"
+                }
               }
             }
           ],
@@ -14334,7 +14819,11 @@
                   }
                 ]
               ],
-              "english": "That car is old; we might as well sell it!"
+              "english": "That car is old; we might as well sell it!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/14348f581418.mp3"
+              }
             },
             {
               "id": "b3l3g2-r2",
@@ -14482,7 +14971,11 @@
                   }
                 ]
               ],
-              "english": "Rather than buying uncomfortable designer clothes, it's better to buy an affordable dress."
+              "english": "Rather than buying uncomfortable designer clothes, it's better to buy an affordable dress.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/fdfb99c870bd.mp3"
+              }
             },
             {
               "id": "b3l3g2-r3",
@@ -14574,7 +15067,11 @@
                   }
                 ]
               ],
-              "english": "Instead of being bored at home, we might as well go for a walk."
+              "english": "Instead of being bored at home, we might as well go for a walk.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/bd59dc1c7989.mp3"
+              }
             }
           ],
           "confusion": {
@@ -14841,7 +15338,11 @@
                     "meaning": "suggestion particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/30a60ec68330.mp3"
+                }
               }
             },
             {
@@ -14947,7 +15448,11 @@
                     "meaning": "movie (M: 部 bù)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/7ee686118395.mp3"
+                }
               }
             },
             {
@@ -15010,7 +15515,11 @@
                     "meaning": "to work hard",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/a77190809304.mp3"
+                }
               }
             }
           ],
@@ -15292,7 +15801,11 @@
                   }
                 ]
               ],
-              "english": "This piece of clothing is great, except the price is a bit high."
+              "english": "This piece of clothing is great, except the price is a bit high.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/2b8747bafcf3.mp3"
+              }
             },
             {
               "id": "b3l3g3-r2",
@@ -15454,7 +15967,11 @@
                   }
                 ]
               ],
-              "english": "I am willing to do any job, except I can't work overtime every single day."
+              "english": "I am willing to do any job, except I can't work overtime every single day.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/1ac28d49ad55.mp3"
+              }
             },
             {
               "id": "b3l3g3-r3",
@@ -15588,7 +16105,11 @@
                   }
                 ]
               ],
-              "english": "The environment is very quiet, except transportation is not very convenient."
+              "english": "The environment is very quiet, except transportation is not very convenient.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/764090499e8f.mp3"
+              }
             }
           ],
           "confusion": {
@@ -15919,7 +16440,11 @@
                     "meaning": "very late at night",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/70e1bad1bc07.mp3"
+                }
               }
             },
             {
@@ -16046,7 +16571,11 @@
                     "meaning": "point",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/bf443222f178.mp3"
+                }
               }
             },
             {
@@ -16151,7 +16680,11 @@
                     "meaning": "hat (M: 頂 dǐng)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/6907ae84e5e7.mp3"
+                }
               }
             }
           ],
@@ -16389,7 +16922,11 @@
                   }
                 ]
               ],
-              "english": "Don't wash my clothes for me anymore!"
+              "english": "Don't wash my clothes for me anymore!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/83c89c1225db.mp3"
+              }
             },
             {
               "id": "b3l3g4-r2",
@@ -16479,7 +17016,11 @@
                   }
                 ]
               ],
-              "english": "Stop staying up late playing video games!"
+              "english": "Stop staying up late playing video games!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b7b0e760a77b.mp3"
+              }
             },
             {
               "id": "b3l3g4-r3",
@@ -16541,7 +17082,11 @@
                   }
                 ]
               ],
-              "english": "Stop hesitating back and forth!"
+              "english": "Stop hesitating back and forth!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/1807398b8b1a.mp3"
+              }
             }
           ],
           "confusion": {
@@ -16810,7 +17355,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/2586a3796be5.mp3"
+                }
               }
             },
             {
@@ -16923,7 +17472,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/fbb8c068778a.mp3"
+                }
               }
             },
             {
@@ -17022,7 +17575,11 @@
                     "meaning": "suggestion particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/6f6fb3a5119c.mp3"
+                }
               }
             }
           ],
@@ -17156,7 +17713,11 @@
               "traditional": "瑪莉，這家專櫃的洋裝看起來真漂亮，而且現在週年慶打八折呢！",
               "simplified": "瑪莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
               "pinyin": "",
-              "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!"
+              "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0ee23c264452.mp3"
+              }
             }
           },
           {
@@ -17166,7 +17727,11 @@
               "traditional": "是挺好看的，但買衣服一定要先試穿，試穿看看合不合身再決定。",
               "simplified": "是挺好看的，但买衣服一定要先试穿，试穿看看合不合身再决定。",
               "pinyin": "",
-              "english": "It's quite nice, but when buying clothes one must always try them on first to see if they fit well before deciding."
+              "english": "It's quite nice, but when buying clothes one must always try them on first to see if they fit well before deciding.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c8862f172887.mp3"
+              }
             }
           },
           {
@@ -17176,7 +17741,11 @@
               "traditional": "妳說得對。那我先進去試穿這件淺藍色的。",
               "simplified": "你说得对。那我先进去试穿这件浅蓝色的。",
               "pinyin": "",
-              "english": "You're right. Then I'll go inside first to try on this light blue one."
+              "english": "You're right. Then I'll go inside first to try on this light blue one.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f8ca00ed1fbd.mp3"
+              }
             }
           },
           {
@@ -17186,7 +17755,11 @@
               "traditional": "瑪莉，妳看這件怎麼樣？我覺得腰部有點緊，而且價格還是太高了。",
               "simplified": "瑪莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
               "pinyin": "",
-              "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high."
+              "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/55d3b15f2d94.mp3"
+              }
             }
           },
           {
@@ -17196,7 +17769,11 @@
               "traditional": "與其買一件不舒服的名牌洋裝，不如到樓上的平價專櫃看看，那裡款式也很多。",
               "simplified": "与其买一件不舒服的名牌洋装，不如到楼上的平价专柜看看，那里款式也很多。",
               "pinyin": "",
-              "english": "Rather than buying an uncomfortable designer dress, it would be better to check the affordable section upstairs; there are many styles there too."
+              "english": "Rather than buying an uncomfortable designer dress, it would be better to check the affordable section upstairs; there are many styles there too.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/ff65e06b7ae7.mp3"
+              }
             }
           },
           {
@@ -17206,7 +17783,11 @@
               "traditional": "可是樓上的衣服材質怎麼樣？我什麼衣服都穿過，就是皮膚容易過敏，不能穿太粗糙的料子。",
               "simplified": "可是楼上的衣服材质怎么样？我什么衣服都穿过，就是皮肤容易过敏，不能穿太粗糙的料子。",
               "pinyin": "",
-              "english": "But how is the material of the clothes upstairs? I've worn all kinds of clothes, it's just that my skin is easily allergic, so I can't wear rough fabrics."
+              "english": "But how is the material of the clothes upstairs? I've worn all kinds of clothes, it's just that my skin is easily allergic, so I can't wear rough fabrics.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/df112bf6a5cb.mp3"
+              }
             }
           },
           {
@@ -17216,7 +17797,11 @@
               "traditional": "放心吧，樓上有幾個專櫃不僅質料柔軟，價格也很實在。",
               "simplified": "放心吧，楼上有几个专柜不仅质料柔軟，价格也很实在。",
               "pinyin": "",
-              "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair."
+              "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6bdd1260ea61.mp3"
+              }
             }
           },
           {
@@ -17226,7 +17811,11 @@
               "traditional": "太好了！那我們別再這裡浪費時間了，趕快上樓去逛逛吧。",
               "simplified": "太好了！那我们别再这里浪费时间了，赶快上楼去逛逛吧。",
               "pinyin": "",
-              "english": "Awesome! Then let's not waste more time here, let's head upstairs quickly to look around."
+              "english": "Awesome! Then let's not waste more time here, let's head upstairs quickly to look around.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f435b5e943e5.mp3"
+              }
             }
           }
         ]
@@ -17399,7 +17988,11 @@
                   }
                 ]
               ],
-              "english": "Mr. Xie is not only cheerful, but also very earnest and responsible at work."
+              "english": "Mr. Xie is not only cheerful, but also very earnest and responsible at work.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/53f6192d1cf4.mp3"
+              }
             },
             {
               "id": "b3l3g5-r2",
@@ -17536,7 +18129,11 @@
                   }
                 ]
               ],
-              "english": "This restaurant not only serves delicious dishes, but also has very reasonable prices."
+              "english": "This restaurant not only serves delicious dishes, but also has very reasonable prices.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f94d12657df1.mp3"
+              }
             },
             {
               "id": "b3l3g5-r3",
@@ -17666,7 +18263,11 @@
                   }
                 ]
               ],
-              "english": "Comparing prices online not only saves time, but also lets you see user reviews."
+              "english": "Comparing prices online not only saves time, but also lets you see user reviews.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/d884883d9ea2.mp3"
+              }
             }
           ],
           "confusion": {
@@ -17962,7 +18563,11 @@
                     "meaning": "he",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/e372e9f0933c.mp3"
+                }
               }
             },
             {
@@ -18067,7 +18672,11 @@
                     "meaning": "ideal",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/5d0addffe67d.mp3"
+                }
               }
             },
             {
@@ -18165,7 +18774,11 @@
                     "meaning": "healthy",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/ca0b878c95a5.mp3"
+                }
               }
             }
           ],
@@ -18424,7 +19037,11 @@
                   }
                 ]
               ],
-              "english": "His test scores improve each time."
+              "english": "His test scores improve each time.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f1c09443b6f5.mp3"
+              }
             },
             {
               "id": "b3l3g6-r2",
@@ -18554,7 +19171,11 @@
                   }
                 ]
               ],
-              "english": "With factories increasing, the air gets worse year after year."
+              "english": "With factories increasing, the air gets worse year after year.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0f9dec2816ef.mp3"
+              }
             },
             {
               "id": "b3l3g6-r3",
@@ -18647,7 +19268,11 @@
                   }
                 ]
               ],
-              "english": "Consumers become smarter with each generation."
+              "english": "Consumers become smarter with each generation.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/a60991d7a4c4.mp3"
+              }
             }
           ],
           "confusion": {
@@ -18935,7 +19560,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/0e6b47f62a0f.mp3"
+                }
               }
             },
             {
@@ -19061,7 +19690,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/c2a8ed5cf878.mp3"
+                }
               }
             },
             {
@@ -19180,7 +19813,11 @@
                     "meaning": "tasty",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d0db2062d9a6.mp3"
+                }
               }
             }
           ],
@@ -19311,7 +19948,11 @@
               "traditional": "在現代消費社會中，每個人都希望能「買得開心、用得放心」。",
               "simplified": "在现代消费社会中，每个人都希望能「买得开心、用得放心」。",
               "pinyin": "",
-              "english": "In modern consumer society, everyone hopes to 'buy with joy and use with peace of mind.'"
+              "english": "In modern consumer society, everyone hopes to 'buy with joy and use with peace of mind.'",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/3b8b4d2d40b1.mp3"
+              }
             }
           },
           {
@@ -19321,7 +19962,11 @@
               "traditional": "俗話說「貨比三家不吃虧」，意思是在購買貴重物品前，多比較幾家商店的價格與品質，才不會吃虧上當。",
               "simplified": "俗话说「货比三家不吃亏」，意思是在购买贵重物品前，多比较几家商店的价格与品质，才不会吃亏上当。",
               "pinyin": "",
-              "english": "As the proverb says, 'Shop around and you won't suffer a loss,' meaning before purchasing expensive items, compare prices and quality across several stores so you won't get cheated."
+              "english": "As the proverb says, 'Shop around and you won't suffer a loss,' meaning before purchasing expensive items, compare prices and quality across several stores so you won't get cheated.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/123de4321be7.mp3"
+              }
             }
           },
           {
@@ -19331,7 +19976,11 @@
               "traditional": "以前人們為了比價，得跑好幾家實體店鋪，費時又費力。",
               "simplified": "以前人们为了比价，得跑好几家实体店鋪，费时又费力。",
               "pinyin": "",
-              "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious."
+              "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6d2711807a52.mp3"
+              }
             }
           },
           {
@@ -19341,7 +19990,11 @@
               "traditional": "現在網路科技發達，大家不僅能透過比價網站輕鬆查詢價格，還能參考其他消費者的評價。",
               "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查詢价格，还能参考其他消费者的评价。",
               "pinyin": "",
-              "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers."
+              "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/8d5c17890ac8.mp3"
+              }
             }
           },
           {
@@ -19351,7 +20004,11 @@
               "traditional": "消費者變得一次比一次聰明，商家也一年比一年更注重產品質量與售後服務。",
               "simplified": "消费者变得一次比一次聪明，商家也一年比一年更注重产品质量与售后服务。",
               "pinyin": "",
-              "english": "Consumers become smarter each time, and businesses focus more on product quality and customer service year after year."
+              "english": "Consumers become smarter each time, and businesses focus more on product quality and customer service year after year.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c5e65f4cf0f3.mp3"
+              }
             }
           }
         ]
@@ -19473,7 +20130,11 @@
                   }
                 ]
               ],
-              "english": "What exquisite glutinous oil rice!"
+              "english": "What exquisite glutinous oil rice!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c23d1aa34256.mp3"
+              }
             },
             {
               "id": "b3l4g1-r2",
@@ -19552,7 +20213,11 @@
                   }
                 ]
               ],
-              "english": "What sour lemon juice!"
+              "english": "What sour lemon juice!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/606751b09391.mp3"
+              }
             },
             {
               "id": "b3l4g1-r3",
@@ -19631,7 +20296,11 @@
                   }
                 ]
               ],
-              "english": "What a cute baby!"
+              "english": "What a cute baby!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/3f5d27c6510c.mp3"
+              }
             }
           ],
           "confusion": {
@@ -19761,7 +20430,7 @@
                 "traditional": "你看，好精緻的油飯和紅蛋啊！",
                 "simplified": "你看，好精緻的油饭和红蛋啊！",
                 "pinyin": "Nǐ kàn, hǎo jīngzhì de yóufàn hé hóngdàn a!",
-                "english": "This traditional sticky rice smells wonderful; what exquisite oil rice!",
+                "english": "Look, what exquisite glutinous oil rice and red eggs!",
                 "words": [
                   {
                     "id": "b3l4g1-ex1-w1",
@@ -19828,7 +20497,11 @@
                     "meaning": "exclamation particle",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/960e64c740e6.mp3"
+                }
               }
             },
             {
@@ -19838,7 +20511,7 @@
                 "traditional": "好酸的檸檬汁啊！你忘了加糖嗎？",
                 "simplified": "好酸的柠檬汁啊！你忘了加糖吗？",
                 "pinyin": "Hǎo suān de níngméngzhī a! Nǐ wàng le jiā táng ma?",
-                "english": "This freshly squeezed lemon juice, what sour lemon juice!",
+                "english": "What sour lemon juice! Did you forget to add sugar?",
                 "words": [
                   {
                     "id": "b3l4g1-ex2-w1",
@@ -19912,7 +20585,11 @@
                     "meaning": "question particle",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/879496ff6785.mp3"
+                }
               }
             },
             {
@@ -19922,7 +20599,7 @@
                 "traditional": "今天晚上好美麗的夜景啊！從這裡看臺北真漂亮。",
                 "simplified": "今天晚上好美丽的夜景啊！从这里看台北真漂亮。",
                 "pinyin": "Jīntiān wǎnshàng hǎo měilì de yèjǐng a! Cóng zhèlǐ kàn Táiběi zhēn piàoliang.",
-                "english": "Look at Xiaohua's newborn baby; what a cute baby!",
+                "english": "What a beautiful night view tonight! Looking at Taipei from here is truly pretty.",
                 "words": [
                   {
                     "id": "b3l4g1-ex3-w1",
@@ -20010,7 +20687,11 @@
                     "meaning": "pretty",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/06c30ac6dd32.mp3"
+                }
               }
             }
           ],
@@ -20236,7 +20917,11 @@
                   }
                 ]
               ],
-              "english": "Mary personally selects baby clothes."
+              "english": "Mary personally selects baby clothes.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c3965e16853a.mp3"
+              }
             },
             {
               "id": "b3l4g2-r2",
@@ -20327,7 +21012,11 @@
                   }
                 ]
               ],
-              "english": "My son personally brought it to my company for me."
+              "english": "My son personally brought it to my company for me.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6c2ac0401fac.mp3"
+              }
             },
             {
               "id": "b3l4g2-r3",
@@ -20404,7 +21093,11 @@
                   }
                 ]
               ],
-              "english": "The chairman personally attended the awards ceremony."
+              "english": "The chairman personally attended the awards ceremony.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/4b426f8f64d2.mp3"
+              }
             }
           ],
           "confusion": {
@@ -20548,7 +21241,7 @@
                 "traditional": "我早上出門時忘了帶手機，沒想到兒子親自拿到公司給我。",
                 "simplified": "我早上出门时忘了带手机，没想到儿子亲自拿到公司给我。",
                 "pinyin": "Wǒ zǎoshàng chūmén shí wàng le dài shǒujī, méi xiǎngdào érzi qīnzì ná dào gōngsī gěi wǒ.",
-                "english": "This hand-carved wooden artwork was carved and completed personally by that master craftsman.",
+                "english": "When I left home this morning I forgot to bring my cell phone; I didn't expect my son to personally bring it to the company for me.",
                 "words": [
                   {
                     "id": "b3l4g2-ex1-w1",
@@ -20650,7 +21343,11 @@
                     "meaning": "I",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/59d5a4cc500a.mp3"
+                }
               }
             },
             {
@@ -20660,7 +21357,7 @@
                 "traditional": "為了表示誠意，經理決定親自拜訪重要的合作廠商。",
                 "simplified": "为了表示诚意，经理决定亲自拜访重要的合作厂商。",
                 "pinyin": "Wèile biǎoshì chéngyì, jīnglǐ juédìng qīnzì bàifǎng zhòngyào de hézuò chǎngshāng.",
-                "english": "To show how important this partnership is, the general manager personally went to the airport to greet the honored guests.",
+                "english": "To show sincerity, the manager decided to personally visit the important partner manufacturers.",
                 "words": [
                   {
                     "id": "b3l4g2-ex2-w1",
@@ -20741,7 +21438,11 @@
                     "meaning": "manufacturer",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/aeb163aba75e.mp3"
+                }
               }
             },
             {
@@ -20751,7 +21452,7 @@
                 "traditional": "這件木雕藝術品是那位老師傅親手親自雕刻完成的。",
                 "simplified": "这件木雕艺术品是那位老师傅亲手亲自雕刻完成的。",
                 "pinyin": "Zhè jiàn mùdiāo yìshùpǐn shì nà wèi lǎoshīfù qīnshǒu qīnzì diāokè wánchéng de.",
-                "english": "This document is very important; please hand it to Lawyer Wang in person, and do not ask anyone else to deliver it.",
+                "english": "This wood carving artwork was personally carved and completed by that master craftsman by hand.",
                 "words": [
                   {
                     "id": "b3l4g2-ex3-w1",
@@ -20859,7 +21560,11 @@
                     "meaning": "possessive particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/8cbe208ac420.mp3"
+                }
               }
             }
           ],
@@ -21155,7 +21860,11 @@
                   }
                 ]
               ],
-              "english": "I picked and chose in the shop over and over, but still couldn't find a suitable one."
+              "english": "I picked and chose in the shop over and over, but still couldn't find a suitable one.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/e75099f4399e.mp3"
+              }
             },
             {
               "id": "b3l4g3-r2",
@@ -21275,7 +21984,11 @@
                   }
                 ]
               ],
-              "english": "Looking for jobs over and over, I still couldn't find an ideal one."
+              "english": "Looking for jobs over and over, I still couldn't find an ideal one.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/323fe9be0f7f.mp3"
+              }
             },
             {
               "id": "b3l4g3-r3",
@@ -21395,7 +22108,11 @@
                   }
                 ]
               ],
-              "english": "Looking at houses all around, I feel this neighborhood is the best."
+              "english": "Looking at houses all around, I feel this neighborhood is the best.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6368689406f2.mp3"
+              }
             }
           ],
           "confusion": {
@@ -21627,7 +22344,11 @@
                     "meaning": "gift",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/8a317d788a2a.mp3"
+                }
               }
             },
             {
@@ -21740,7 +22461,11 @@
                     "meaning": "salary",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/324a9ff06733.mp3"
+                }
               }
             },
             {
@@ -21831,7 +22556,11 @@
                     "meaning": "convenient",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/36a9436b65cc.mp3"
+                }
               }
             }
           ],
@@ -22041,7 +22770,11 @@
                   }
                 ]
               ],
-              "english": "The baby has finally reached one month of age."
+              "english": "The baby has finally reached one month of age.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0a0eb87ba747.mp3"
+              }
             },
             {
               "id": "b3l4g4-r2",
@@ -22189,7 +22922,11 @@
                   }
                 ]
               ],
-              "english": "Mom searched for a long time and finally found her passport in her pocket."
+              "english": "Mom searched for a long time and finally found her passport in her pocket.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/787eb9e23f4e.mp3"
+              }
             },
             {
               "id": "b3l4g4-r3",
@@ -22323,7 +23060,11 @@
                   }
                 ]
               ],
-              "english": "Through hard work, we finally finished this movie."
+              "english": "Through hard work, we finally finished this movie.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0ad5283352ba.mp3"
+              }
             }
           ],
           "confusion": {
@@ -22583,7 +23324,11 @@
                     "meaning": "to wish (someone) well",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/c893fd0d8d2b.mp3"
+                }
               }
             },
             {
@@ -22710,7 +23455,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/cd7a03ad348c.mp3"
+                }
               }
             },
             {
@@ -22829,7 +23578,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/4ec7fdee1f41.mp3"
+                }
               }
             }
           ],
@@ -22963,7 +23716,11 @@
               "traditional": "芳草，恭喜佳琳生了這麼一對可愛的雙胞胎！今天滿月，家裡好熱鬧啊！",
               "simplified": "芳草，恭喜佳琳生了这么一对可爱的双胞胎！今天满月，家里好热闹啊！",
               "pinyin": "",
-              "english": "Mary: Fangcao, congratulations to Jialin for giving birth to such cute twins! Today is their full month; the house is so lively!"
+              "english": "Mary: Fangcao, congratulations to Jialin for giving birth to such cute twins! Today is their full month; the house is so lively!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/a30e0430673b.mp3"
+              }
             }
           },
           {
@@ -22973,7 +23730,11 @@
               "traditional": "是啊！你看，好精緻的油飯和紅蛋啊！聞起來真香。",
               "simplified": "是啊！你看，好精緻的油饭和红蛋啊！闻起来真香。",
               "pinyin": "",
-              "english": "Yes! Look, what exquisite oily glutinous rice and red eggs! They smell so fragrant."
+              "english": "Yes! Look, what exquisite oily glutinous rice and red eggs! They smell so fragrant.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f6255a9dfdf9.mp3"
+              }
             }
           },
           {
@@ -22983,7 +23744,11 @@
               "traditional": "我今天特地親自挑選了兩套純棉的嬰兒服送給寶寶，希望他們健康長大。",
               "simplified": "我今天特地亲自挑选了两套纯棉的婴儿服送给宝宝，希望他们健康长大。",
               "pinyin": "",
-              "english": "I specially selected two sets of pure cotton baby clothes in person to give to the babies, hoping they grow up healthy."
+              "english": "I specially selected two sets of pure cotton baby clothes in person to give to the babies, hoping they grow up healthy.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/9240bf6c3556.mp3"
+              }
             }
           },
           {
@@ -22993,7 +23758,11 @@
               "traditional": "妳真有心。在臺灣，送禮送紅包很有講究，金額通常要雙數才吉利。",
               "simplified": "你真有心。在台湾，送礼送红包很有讲究，金額通常要双数才吉利。",
               "pinyin": "",
-              "english": "You are truly thoughtful. In Taiwan, giving gifts and red envelopes is very nuanced; amounts are usually even numbers for good fortune."
+              "english": "You are truly thoughtful. In Taiwan, giving gifts and red envelopes is very nuanced; amounts are usually even numbers for good fortune.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/672a3f418e08.mp3"
+              }
             }
           },
           {
@@ -23003,7 +23772,11 @@
               "traditional": "剛才吃水果的時候，我想把梨子切開分給佳琳的婆婆，婆婆笑著跟我說不能分梨呢！",
               "simplified": "刚才吃水果的时候，我想把梨子切开分给佳琳的婆婆，婆婆笑着跟我说不能分梨呢！",
               "pinyin": "",
-              "english": "Just now when eating fruits, I wanted to slice the pear and share with Jialin's mother-in-law, and she smiled and told me we shouldn't share pears!"
+              "english": "Just now when eating fruits, I wanted to slice the pear and share with Jialin's mother-in-law, and she smiled and told me we shouldn't share pears!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/339d3109eb40.mp3"
+              }
             }
           },
           {
@@ -23013,7 +23786,11 @@
               "traditional": "哈哈，因為「分梨」聽起來像「分離」，長輩通常會避開這個諧音。",
               "simplified": "哈哈，因为「分梨」听起来像「分离」，长辈通常会避开这个諧音。",
               "pinyin": "",
-              "english": "Haha, because 'sharing pears' sounds like 'parting ways'; elders usually avoid this homophone."
+              "english": "Haha, because 'sharing pears' sounds like 'parting ways'; elders usually avoid this homophone.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/22a141d941b2.mp3"
+              }
             }
           },
           {
@@ -23023,7 +23800,11 @@
               "traditional": "原來是這樣！我在禮品店找來找去，終於挑到滿意的禮物，今天學到了不少臺灣傳統習俗呢。",
               "simplified": "原来是这样！我在礼品店找来找去，终于挑到满意的礼物，今天学到了不少台湾传统习俗呢。",
               "pinyin": "",
-              "english": "So that's why! I searched back and forth in gift shops and finally picked a satisfying gift; I learned quite a few Taiwanese traditions today."
+              "english": "So that's why! I searched back and forth in gift shops and finally picked a satisfying gift; I learned quite a few Taiwanese traditions today.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/d4906bdb4a1b.mp3"
+              }
             }
           },
           {
@@ -23033,7 +23814,11 @@
               "traditional": "吃完飯後桌上的美味菜餚如果吃不完，我們還可以打包帶回家，不要浪費食物喔！",
               "simplified": "吃完饭后桌上的美味菜餚如果吃不完，我们还可以打包带回家，不要浪费食物喔！",
               "pinyin": "",
-              "english": "After eating, if the delicious dishes on the table aren't finished, we can also box them up to take home; don't waste food!"
+              "english": "After eating, if the delicious dishes on the table aren't finished, we can also box them up to take home; don't waste food!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/79ea65d7260b.mp3"
+              }
             }
           }
         ]
@@ -23189,7 +23974,11 @@
                   }
                 ]
               ],
-              "english": "The baby cries non-stop all day, demanding to drink milk."
+              "english": "The baby cries non-stop all day, demanding to drink milk.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/6da12bd9b550.mp3"
+              }
             },
             {
               "id": "b3l4g5-r2",
@@ -23275,7 +24064,11 @@
                   }
                 ]
               ],
-              "english": "Meetings go on non-stop without end; it's exhausting."
+              "english": "Meetings go on non-stop without end; it's exhausting.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/5c3ca3799e70.mp3"
+              }
             },
             {
               "id": "b3l4g5-r3",
@@ -23375,7 +24168,11 @@
                   }
                 ]
               ],
-              "english": "The phone rings endlessly; I can't even answer them all."
+              "english": "The phone rings endlessly; I can't even answer them all.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/48749d5b0418.mp3"
+              }
             }
           ],
           "confusion": {
@@ -23609,7 +24406,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d5740bf7adb7.mp3"
+                }
               }
             },
             {
@@ -23707,7 +24508,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/929455f6225d.mp3"
+                }
               }
             },
             {
@@ -23812,7 +24617,11 @@
                     "meaning": "extremely (...極了)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d503db65319b.mp3"
+                }
               }
             }
           ],
@@ -24094,7 +24903,11 @@
                   }
                 ]
               ],
-              "english": "Autumn weather is neither cold nor hot, very comfortable."
+              "english": "Autumn weather is neither cold nor hot, very comfortable.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/8d4f29d059a0.mp3"
+              }
             },
             {
               "id": "b3l4g6-r2",
@@ -24242,7 +25055,11 @@
                   }
                 ]
               ],
-              "english": "The teacher speaks neither too fast nor too slow, explaining very clearly."
+              "english": "The teacher speaks neither too fast nor too slow, explaining very clearly.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/080474202648.mp3"
+              }
             },
             {
               "id": "b3l4g6-r3",
@@ -24390,7 +25207,11 @@
                   }
                 ]
               ],
-              "english": "This shirt size is neither too large nor too small, fitting just right."
+              "english": "This shirt size is neither too large nor too small, fitting just right.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/7d49fe6fc846.mp3"
+              }
             }
           ],
           "confusion": {
@@ -24680,7 +25501,11 @@
                     "meaning": "to climb a mountain",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/aec842ace3aa.mp3"
+                }
               }
             },
             {
@@ -24821,7 +25646,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/ae0d864afd70.mp3"
+                }
               }
             },
             {
@@ -24906,7 +25735,11 @@
                     "meaning": "shoes (M: 雙 shuāng)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/e6c3cbca1bb3.mp3"
+                }
               }
             }
           ],
@@ -25141,7 +25974,11 @@
                   }
                 ]
               ],
-              "english": "At home, aside from guests, there is only sticky rice and cake everywhere."
+              "english": "At home, aside from guests, there is only sticky rice and cake everywhere.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/2e0e2df93a24.mp3"
+              }
             },
             {
               "id": "b3l4g7-r2",
@@ -25262,7 +26099,11 @@
                   }
                 ]
               ],
-              "english": "At work, besides brewing coffee, all I do is wipe tables and take out the trash."
+              "english": "At work, besides brewing coffee, all I do is wipe tables and take out the trash.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/861ca54d280c.mp3"
+              }
             },
             {
               "id": "b3l4g7-r3",
@@ -25376,7 +26217,11 @@
                   }
                 ]
               ],
-              "english": "In the fridge, besides beer, there's nothing but popsicles and eggs."
+              "english": "In the fridge, besides beer, there's nothing but popsicles and eggs.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/9d271ec9ffef.mp3"
+              }
             }
           ],
           "confusion": {
@@ -25681,7 +26526,11 @@
                     "meaning": "tedious",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/5fef91e9b095.mp3"
+                }
               }
             },
             {
@@ -25801,7 +26650,11 @@
                     "meaning": "egg",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/31051319b09d.mp3"
+                }
               }
             },
             {
@@ -25893,7 +26746,11 @@
                     "meaning": "to sleep",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/9f99f34a734f.mp3"
+                }
               }
             }
           ],
@@ -26161,7 +27018,11 @@
                   }
                 ]
               ],
-              "english": "Caring for a baby is either feeding milk or changing diapers."
+              "english": "Caring for a baby is either feeding milk or changing diapers.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/824289a46e24.mp3"
+              }
             },
             {
               "id": "b3l4g8-r2",
@@ -26293,7 +27154,11 @@
                   }
                 ]
               ],
-              "english": "On vacation, Xiaohua is either working out or taking part in events."
+              "english": "On vacation, Xiaohua is either working out or taking part in events.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/704ea60250e6.mp3"
+              }
             },
             {
               "id": "b3l4g8-r3",
@@ -26390,7 +27255,11 @@
                   }
                 ]
               ],
-              "english": "Center activities are either singing or dancing."
+              "english": "Center activities are either singing or dancing.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/46104aea0e75.mp3"
+              }
             }
           ],
           "confusion": {
@@ -26665,7 +27534,11 @@
                     "meaning": "to move about",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/93027227dc76.mp3"
+                }
               }
             },
             {
@@ -26772,7 +27645,11 @@
                     "meaning": "lively",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/74afe74bcb18.mp3"
+                }
               }
             },
             {
@@ -26864,7 +27741,11 @@
                     "meaning": "to read",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/40f7d83b6090.mp3"
+                }
               }
             }
           ],
@@ -26997,7 +27878,11 @@
               "traditional": "親愛的以晴，收到妳寄來的婚禮照片，看到妳美麗幸福的模樣，真替妳高興！",
               "simplified": "亲爱的以晴，收到你寄来的婚礼照片，看到你美丽幸福的模样，真替你高兴！",
               "pinyin": "",
-              "english": "Dear Yiqing, receiving the wedding photos you sent and seeing your beautiful, happy appearance, I am so joyful for you!"
+              "english": "Dear Yiqing, receiving the wedding photos you sent and seeing your beautiful, happy appearance, I am so joyful for you!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/bbdd39d545e1.mp3"
+              }
             }
           },
           {
@@ -27007,7 +27892,11 @@
               "traditional": "可惜因為我剛生完雙胞胎，正在坐月子，沒辦法親自飛到美國參加妳的婚禮。",
               "simplified": "可惜因为我刚生完双胞胎，正在坐月子，没办法亲自飞到美国参加你的婚礼。",
               "pinyin": "",
-              "english": "Unfortunately, because I just gave birth to twins and am doing postpartum confinement, I couldn't fly to America in person to attend your wedding."
+              "english": "Unfortunately, because I just gave birth to twins and am doing postpartum confinement, I couldn't fly to America in person to attend your wedding.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/89a5e7895e79.mp3"
+              }
             }
           },
           {
@@ -27017,7 +27906,11 @@
               "traditional": "在臺灣，女人生產後都要坐月子一個月，每天吃麻油雞調養身體，也不能吹風。",
               "simplified": "在台湾，女人生产后都要坐月子一个月，每天吃麻油鸡调养身体，也不能吹风。",
               "pinyin": "",
-              "english": "In Taiwan, after giving birth women rest in confinement for a month, eating sesame oil chicken daily to nurse the body, and cannot catch drafts."
+              "english": "In Taiwan, after giving birth women rest in confinement for a month, eating sesame oil chicken daily to nurse the body, and cannot catch drafts.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f4ee9ceb5046.mp3"
+              }
             }
           },
           {
@@ -27027,7 +27920,11 @@
               "traditional": "這一個月裡，兩個寶寶整天哭個不停，吵著要喝奶，忙得我和先生連睡覺的時間都沒有。",
               "simplified": "这一个月里，两个宝宝整天哭个不停，吵着要喝奶，忙得我和先生连睡觉的时间都没有。",
               "pinyin": "",
-              "english": "During this month, the two babies cried incessantly all day, clamoring for milk, keeping my husband and me so busy that we didn't even have sleep time."
+              "english": "During this month, the two babies cried incessantly all day, clamoring for milk, keeping my husband and me so busy that we didn't even have sleep time.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/5421beb014d1.mp3"
+              }
             }
           },
           {
@@ -27037,7 +27934,11 @@
               "traditional": "今天孩子終於滿月了，家裡除了前來祝賀的親戚朋友以外，就是送給客人的油飯和蛋糕。",
               "simplified": "今天孩子终于满月了，家里除了前来祝贺的亲戚朋友以外，就是送给客人的油饭和蛋糕。",
               "pinyin": "",
-              "english": "Today the children finally completed their full month; in the house, besides visiting relatives and friends, there is only oily rice and cake for guests."
+              "english": "Today the children finally completed their full month; in the house, besides visiting relatives and friends, there is only oily rice and cake for guests.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/8c9a259c33de.mp3"
+              }
             }
           },
           {
@@ -27047,7 +27948,11 @@
               "traditional": "雖然照顧雙胞胎的生活不是餵奶就是換尿布，但看著寶寶一天天長大，心裡感到無比的幸福。",
               "simplified": "虽然照顾双胞胎的生活不是喂奶就是换尿布，但看着宝宝一天天长大，心里感到无比的幸福。",
               "pinyin": "",
-              "english": "Although caring for twins means either feeding or diaper-changing, watching the babies grow day by day brings boundless happiness to the heart."
+              "english": "Although caring for twins means either feeding or diaper-changing, watching the babies grow day by day brings boundless happiness to the heart.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/e060949ad796.mp3"
+              }
             }
           }
         ]
@@ -27222,7 +28127,11 @@
                   }
                 ]
               ],
-              "english": "In case an accident occurs, buying insurance means you don't have to worry."
+              "english": "In case an accident occurs, buying insurance means you don't have to worry.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/dfb1d405ea14.mp3"
+              }
             },
             {
               "id": "b3l5g1-r2",
@@ -27372,7 +28281,11 @@
                   }
                 ]
               ],
-              "english": "Keep candles ready at home so in case the power goes out, you won't panic."
+              "english": "Keep candles ready at home so in case the power goes out, you won't panic.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/9430eda02707.mp3"
+              }
             },
             {
               "id": "b3l5g1-r3",
@@ -27508,7 +28421,11 @@
                   }
                 ]
               ],
-              "english": "Carry an umbrella when going out, so in case it rains, you won't get drenched."
+              "english": "Carry an umbrella when going out, so in case it rains, you won't get drenched.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/89aa01eb9f69.mp3"
+              }
             }
           ],
           "confusion": {
@@ -27825,7 +28742,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/c721a5f7fb87.mp3"
+                }
               }
             },
             {
@@ -27953,7 +28874,11 @@
                     "meaning": "to act with confusion or in a disorderly manner",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/2db0c703ac28.mp3"
+                }
               }
             },
             {
@@ -28087,7 +29012,11 @@
                     "meaning": "living room (M: 間 jiān)",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/8cc0a2f91f08.mp3"
+                }
               }
             }
           ],
@@ -28229,10 +29158,10 @@
               "subject": [
                 {
                   "id": "b3l5g2-r1-c1-w1",
-                  "traditional": "他",
-                  "simplified": "他",
-                  "pinyin": "tā",
-                  "meaning": "he"
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
                 }
               ],
               "grammar": [
@@ -28247,24 +29176,17 @@
               "complement": [
                 {
                   "id": "b3l5g2-r1-c3-w1",
-                  "traditional": "好幾",
-                  "simplified": "好几",
-                  "pinyin": "hǎojǐ",
-                  "meaning": "several"
+                  "traditional": "三",
+                  "simplified": "三",
+                  "pinyin": "sān",
+                  "meaning": "three"
                 },
                 {
                   "id": "b3l5g2-r1-c3-w2",
-                  "traditional": "個",
-                  "simplified": "个",
-                  "pinyin": "ge",
-                  "meaning": "verb particle (個)"
-                },
-                {
-                  "id": "b3l5g2-r1-c3-w3",
-                  "traditional": "句子",
-                  "simplified": "句子",
-                  "pinyin": "jùzi",
-                  "meaning": "sentence",
+                  "traditional": "天",
+                  "simplified": "天",
+                  "pinyin": "tiān",
+                  "meaning": "day",
                   "suffix": "，"
                 }
               ],
@@ -28272,10 +29194,10 @@
                 [
                   {
                     "id": "b3l5g2-r1-c1-w1",
-                    "traditional": "他",
-                    "simplified": "他",
-                    "pinyin": "tā",
-                    "meaning": "he"
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
                   }
                 ],
                 [
@@ -28290,24 +29212,17 @@
                 [
                   {
                     "id": "b3l5g2-r1-c3-w1",
-                    "traditional": "好幾",
-                    "simplified": "好几",
-                    "pinyin": "hǎojǐ",
-                    "meaning": "several"
+                    "traditional": "三",
+                    "simplified": "三",
+                    "pinyin": "sān",
+                    "meaning": "three"
                   },
                   {
                     "id": "b3l5g2-r1-c3-w2",
-                    "traditional": "個",
-                    "simplified": "个",
-                    "pinyin": "ge",
-                    "meaning": "verb particle (個)"
-                  },
-                  {
-                    "id": "b3l5g2-r1-c3-w3",
-                    "traditional": "句子",
-                    "simplified": "句子",
-                    "pinyin": "jùzi",
-                    "meaning": "sentence",
+                    "traditional": "天",
+                    "simplified": "天",
+                    "pinyin": "tiān",
+                    "meaning": "day",
                     "suffix": "，"
                   }
                 ],
@@ -28321,36 +29236,33 @@
                   },
                   {
                     "id": "b3l5g2-r1-c4-w2",
-                    "traditional": "說",
-                    "simplified": "说",
-                    "pinyin": "shuō",
-                    "meaning": "to say"
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pinyin": "zài",
+                    "meaning": "at"
                   },
                   {
                     "id": "b3l5g2-r1-c4-w3",
-                    "traditional": "了",
-                    "simplified": "了",
-                    "pinyin": "le",
-                    "meaning": "completion particle"
+                    "traditional": "家",
+                    "simplified": "家",
+                    "pinyin": "jiā",
+                    "meaning": "home"
                   },
                   {
                     "id": "b3l5g2-r1-c4-w4",
-                    "traditional": "難懂",
-                    "simplified": "难懂",
-                    "pinyin": "nán dǒng",
-                    "meaning": "difficult to understand"
-                  },
-                  {
-                    "id": "b3l5g2-r1-c4-w5",
-                    "traditional": "的",
-                    "simplified": "的",
-                    "pinyin": "de",
-                    "meaning": "possessive particle",
+                    "traditional": "休息",
+                    "simplified": "休息",
+                    "pinyin": "xiūxí",
+                    "meaning": "to rest",
                     "suffix": "。"
                   }
                 ]
               ],
-              "english": "He uttered several difficult sentences in a row."
+              "english": "I stayed at home resting for three days in a row.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b0594446007e.mp3"
+              }
             },
             {
               "id": "b3l5g2-r2",
@@ -28494,7 +29406,11 @@
                   }
                 ]
               ],
-              "english": "I've been broke recently, eating instant noodles for two weeks in a row."
+              "english": "I've been broke recently, eating instant noodles for two weeks in a row.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/05e0179e1028.mp3"
+              }
             },
             {
               "id": "b3l5g2-r3",
@@ -28638,7 +29554,11 @@
                   }
                 ]
               ],
-              "english": "He is busy with work, not getting good sleep for three days straight."
+              "english": "He is busy with work, not getting good sleep for three days straight.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/d6373cc9186b.mp3"
+              }
             }
           ],
           "confusion": {
@@ -28926,7 +29846,11 @@
                     "meaning": "modal particle",
                     "suffix": "？"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/a47d58254a7e.mp3"
+                }
               }
             },
             {
@@ -29038,7 +29962,11 @@
                     "meaning": "aspect particle",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/358770003f0f.mp3"
+                }
               }
             },
             {
@@ -29171,7 +30099,11 @@
                     "meaning": "meter",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/ed95d6e1298e.mp3"
+                }
               }
             }
           ],
@@ -29416,7 +30348,11 @@
                   }
                 ]
               ],
-              "english": "I thought the typhoon was minor, but unexpectedly the disaster damage was quite severe."
+              "english": "I thought the typhoon was minor, but unexpectedly the disaster damage was quite severe.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/c3796d4f07b0.mp3"
+              }
             },
             {
               "id": "b3l5g3-r2",
@@ -29560,7 +30496,11 @@
                   }
                 ]
               ],
-              "english": "Mom thought the children liked eating it, but unexpectedly they wouldn't even take a taste."
+              "english": "Mom thought the children liked eating it, but unexpectedly they wouldn't even take a taste.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/7d5b798cc9a1.mp3"
+              }
             },
             {
               "id": "b3l5g3-r3",
@@ -29690,7 +30630,11 @@
                   }
                 ]
               ],
-              "english": "I thought I wouldn't like the dress, but unexpectedly I ended up buying it."
+              "english": "I thought I wouldn't like the dress, but unexpectedly I ended up buying it.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0a274e8a9cdd.mp3"
+              }
             }
           ],
           "confusion": {
@@ -30049,7 +30993,11 @@
                     "meaning": "serious",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d4c2c5dd8eef.mp3"
+                }
               }
             },
             {
@@ -30203,7 +31151,11 @@
                     "meaning": "to taste",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d71ab7f52d3c.mp3"
+                }
               }
             },
             {
@@ -30344,7 +31296,11 @@
                     "meaning": "to feel",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/948429258f97.mp3"
+                }
               }
             }
           ],
@@ -30612,7 +31568,11 @@
                   }
                 ]
               ],
-              "english": "While the weather clears up, going to the supermarket to stock up is also a fine idea."
+              "english": "While the weather clears up, going to the supermarket to stock up is also a fine idea.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/321cb910e6ee.mp3"
+              }
             },
             {
               "id": "b3l5g4-r2",
@@ -30732,7 +31692,11 @@
                   }
                 ]
               ],
-              "english": "Since it's raining heavily, resting well at home is also a good choice."
+              "english": "Since it's raining heavily, resting well at home is also a good choice.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/8e76fac97958.mp3"
+              }
             },
             {
               "id": "b3l5g4-r3",
@@ -30866,7 +31830,11 @@
                   }
                 ]
               ],
-              "english": "Mid-Autumn Festival is coming, inviting friends over to barbecue is also great."
+              "english": "Mid-Autumn Festival is coming, inviting friends over to barbecue is also great.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0aad5167b42e.mp3"
+              }
             }
           ],
           "confusion": {
@@ -31140,7 +32108,11 @@
                     "meaning": "might as well; also fine",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/cf184c6876bc.mp3"
+                }
               }
             },
             {
@@ -31267,7 +32239,11 @@
                     "meaning": "might as well; also fine",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/68c05c638005.mp3"
+                }
               }
             },
             {
@@ -31417,7 +32393,11 @@
                     "meaning": "a bit",
                     "suffix": "！"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/880bc5cb5528.mp3"
+                }
               }
             }
           ],
@@ -31551,7 +32531,11 @@
               "traditional": "家豪，昨晚的颱風風雨好大，你家還好嗎？",
               "simplified": "家豪，昨晚的台风风雨好大，你家还好吗？",
               "pinyin": "",
-              "english": "Jiahao, last night's typhoon had such fierce wind and rain; is your home alright?"
+              "english": "Jiahao, last night's typhoon had such fierce wind and rain; is your home alright?",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/adabb05e3c9f.mp3"
+              }
             }
           },
           {
@@ -31561,7 +32545,11 @@
               "traditional": "別提了，半夜風大得把路樹都吹倒了，我家甚至還停電了兩三個小時！",
               "simplified": "别提了，半夜风大得把路树都吹倒了，我家甚至还停电了两三个小时！",
               "pinyin": "",
-              "english": "Don't mention it; in the middle of the night the wind was so strong it blew down street trees, and my house even had a blackout for two or three hours!"
+              "english": "Don't mention it; in the middle of the night the wind was so strong it blew down street trees, and my house even had a blackout for two or three hours!",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0c5e0c17d787.mp3"
+              }
             }
           },
           {
@@ -31571,7 +32559,11 @@
               "traditional": "幸好我家平時就準備了電池和手電筒，萬一停電也不用慌張。",
               "simplified": "幸好我家平时就准备了电池和手电筒，万一停电也不用慌张。",
               "pinyin": "",
-              "english": "Fortunately my family prepared batteries and flashlights in advance; in case of a power outage we don't need to panic."
+              "english": "Fortunately my family prepared batteries and flashlights in advance; in case of a power outage we don't need to panic.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/0a515da3b5b3.mp3"
+              }
             }
           },
           {
@@ -31581,7 +32573,11 @@
               "traditional": "我一連打了好幾通電話給住在花蓮的表哥，但電話一直打不通，真讓人擔心。",
               "simplified": "我一连打了好几通电话给住在花莲的表哥，但电话一直打不通，真让人担心。",
               "pinyin": "",
-              "english": "I called my cousin living in Hualien several times in a row, but couldn't get through; it really makes one worried."
+              "english": "I called my cousin living in Hualien several times in a row, but couldn't get through; it really makes one worried.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/06f88fdef04e.mp3"
+              }
             }
           },
           {
@@ -31591,7 +32587,11 @@
               "traditional": "我以為東部的情況會好一些，沒想到這次颱風在東部登陸，災情相當嚴重。",
               "simplified": "我以为东部的情况会好一些，没想到这次台风在东部登陆，灾情相当严重。",
               "pinyin": "",
-              "english": "I thought the situation in the east would be better, but unexpectedly this typhoon made landfall in the east, causing severe damage."
+              "english": "I thought the situation in the east would be better, but unexpectedly this typhoon made landfall in the east, causing severe damage.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/d4c2c5dd8eef.mp3"
+              }
             }
           },
           {
@@ -31601,7 +32601,11 @@
               "traditional": "新聞說花蓮部分山區發生了土石流，甚至連對外聯絡的鐵路也被大水沖斷了。",
               "simplified": "新闻说花莲部分山区发生了土石流，甚至连对外联络的铁路也被大水冲断了。",
               "pinyin": "",
-              "english": "News reports say mudslides occurred in parts of Hualien's mountains, and even the railway connecting outside was washed out by floodwaters."
+              "english": "News reports say mudslides occurred in parts of Hualien's mountains, and even the railway connecting outside was washed out by floodwaters.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/5e4834b2a622.mp3"
+              }
             }
           },
           {
@@ -31611,7 +32615,11 @@
               "traditional": "氣象局說後面可能還有另一個颱風形成，我們趁今天天氣放晴，也好趕快去超市補充足夠的乾糧和飲用水。",
               "simplified": "气象局说后面可能还有另一个台风形成，我们趁今天天气放晴，也好赶快去超市补充足够的干糧和饮用水。",
               "pinyin": "",
-              "english": "The weather bureau says another typhoon might form later; while the weather clears up today, it might be good for us to hurry to the supermarket to restock dry food and drinking water."
+              "english": "The weather bureau says another typhoon might form later; while the weather clears up today, it might be good for us to hurry to the supermarket to restock dry food and drinking water.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/e49db211f4b6.mp3"
+              }
             }
           },
           {
@@ -31621,7 +32629,11 @@
               "traditional": "好！我們一起去超市採購防颱物資吧。",
               "simplified": "好！我们一起去超市采购防台物资吧。",
               "pinyin": "",
-              "english": "Great! Let's go to the supermarket together to purchase typhoon prevention supplies."
+              "english": "Great! Let's go to the supermarket together to purchase typhoon prevention supplies.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/7dac1024b7ed.mp3"
+              }
             }
           }
         ]
@@ -31782,7 +32794,11 @@
                   }
                 ]
               ],
-              "english": "Violent earthquake shaking resulted in houses collapsing."
+              "english": "Violent earthquake shaking resulted in houses collapsing.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/98580408840a.mp3"
+              }
             },
             {
               "id": "b3l5g5-r2",
@@ -31986,7 +33002,11 @@
                   }
                 ]
               ],
-              "english": "Buying a night market shirt without trying it on resulted in finding it too small at home."
+              "english": "Buying a night market shirt without trying it on resulted in finding it too small at home.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/097b87a7c715.mp3"
+              }
             },
             {
               "id": "b3l5g5-r3",
@@ -32134,7 +33154,11 @@
                   }
                 ]
               ],
-              "english": "Forgetting to wear a mask when going out resulted in accidentally catching a cold."
+              "english": "Forgetting to wear a mask when going out resulted in accidentally catching a cold.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/19abd074532e.mp3"
+              }
             }
           ],
           "confusion": {
@@ -32478,7 +33502,11 @@
                     "meaning": "to die",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/7f655bbeb8b6.mp3"
+                }
               }
             },
             {
@@ -32640,7 +33668,11 @@
                     "meaning": "small",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/a3e38b46cadc.mp3"
+                }
               }
             },
             {
@@ -32830,7 +33862,11 @@
                     "meaning": "to get sick",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/7eb9638254c3.mp3"
+                }
               }
             }
           ],
@@ -33098,7 +34134,11 @@
                   }
                 ]
               ],
-              "english": "Traffic was cut off, and even water, electricity, and telecommunications were paralyzed."
+              "english": "Traffic was cut off, and even water, electricity, and telecommunications were paralyzed.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b38c31dbc3d1.mp3"
+              }
             },
             {
               "id": "b3l5g6-r2",
@@ -33260,7 +34300,11 @@
                   }
                 ]
               ],
-              "english": "Ms. Zhang is afraid of snakes, and is even terrified of pictures of snakes."
+              "english": "Ms. Zhang is afraid of snakes, and is even terrified of pictures of snakes.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/2e7f9f709325.mp3"
+              }
             },
             {
               "id": "b3l5g6-r3",
@@ -33408,7 +34452,11 @@
                   }
                 ]
               ],
-              "english": "When the boss gets busy, he doesn't even have time to go to the bathroom."
+              "english": "When the boss gets busy, he doesn't even have time to go to the bathroom.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/03dd9b894e1c.mp3"
+              }
             }
           ],
           "confusion": {
@@ -33711,7 +34759,11 @@
                     "meaning": "to suffer paralysis",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/4f4e1c6bb0da.mp3"
+                }
               }
             },
             {
@@ -33721,7 +34773,7 @@
                 "traditional": "張小姐什麼動物都不怕，就是怕蛇，甚至連電視上的蛇圖片也害怕。",
                 "simplified": "张小姐什么动物都不怕，就是怕蛇，甚至连电视上的蛇图片也害怕。",
                 "pinyin": "Zhāng xiǎojiě shénme dòngwù dōu bú pà, jiùshì pà shé, shènzhì lián diànshì shàng de shé túpiàn yě hàipà.",
-                "english": "Ms. Zhang isn't afraid of any animals except snakes; she doesn't even dare to look at pictures of snakes on TV.",
+                "english": "Ms. Zhang isn't afraid of any animal except snakes; she is even afraid of snake pictures on TV.",
                 "words": [
                   {
                     "id": "b3l5g6-ex2-w1",
@@ -33845,7 +34897,11 @@
                     "meaning": "afraid",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/57fd52a25f2b.mp3"
+                }
               }
             },
             {
@@ -33855,7 +34911,7 @@
                 "traditional": "馬老闆一忙起來，不但沒空吃飯，甚至連上廁所的時間都沒有。",
                 "simplified": "马老闆一忙起来，不但没空吃饭，甚至连上厕所的时间都没有。",
                 "pinyin": "Mǎ lǎobǎn yì máng qǐlái, búdàn méi kòng chīfàn, shènzhì lián shàng cèsuǒ de shíjiān dōu méiyǒu.",
-                "english": "Boss Chen has been so busy handling the company's sudden crisis these days that he doesn't even have time to go home.",
+                "english": "Once Boss Ma gets busy, not only does he have no time to eat, he doesn't even have time to go to the restroom.",
                 "words": [
                   {
                     "id": "b3l5g6-ex3-w1",
@@ -33965,7 +35021,11 @@
                     "meaning": "haven't",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/d723bd4df7b0.mp3"
+                }
               }
             }
           ],
@@ -34217,7 +35277,11 @@
                   }
                 ]
               ],
-              "english": "South of the station is a bustling commercial district."
+              "english": "South of the station is a bustling commercial district.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/555dccd927c6.mp3"
+              }
             },
             {
               "id": "b3l5g7-r2",
@@ -34335,7 +35399,11 @@
                   }
                 ]
               ],
-              "english": "North of the station are many historic landmarks with long histories."
+              "english": "North of the station are many historic landmarks with long histories.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/50b803da3d08.mp3"
+              }
             },
             {
               "id": "b3l5g7-r3",
@@ -34467,7 +35535,11 @@
                   }
                 ]
               ],
-              "english": "East of the Central Mountain Range is the beautiful Pacific coast."
+              "english": "East of the Central Mountain Range is the beautiful Pacific coast.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/f934c97072f0.mp3"
+              }
             }
           ],
           "confusion": {
@@ -34625,7 +35697,7 @@
                 "traditional": "車站以北的地區比其他地區熱鬧，如果你想逛街購物，那裡真是個好去處。",
                 "simplified": "车站以北的地区比其他地区热闹，如果你想逛街购物，那里真是个好去处。",
                 "pinyin": "Chēzhàn yǐ běi de dìqū bǐ qítā dìqū rènào, rúguǒ nǐ xiǎng guàngjiē gòuwù, nàlǐ zhēn shì ge hǎo qùchù.",
-                "english": "South of this old train station is a modern commercial center that has developed rapidly in recent years.",
+                "english": "The area north of the station is more bustling than other areas; if you want to go shopping, that's really a great place to go.",
                 "words": [
                   {
                     "id": "b3l5g7-ex1-w1",
@@ -34756,7 +35828,11 @@
                     "meaning": "to reside",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/1479eb4934f5.mp3"
+                }
               }
             },
             {
@@ -34766,7 +35842,7 @@
                 "traditional": "我覺得花蓮市以南到臺東這一段路的風景最美，值得推薦給喜歡旅遊的朋友。",
                 "simplified": "我觉得花莲市以南到台东这一段路的风景最美，值得推荐给喜欢旅游的朋友。",
                 "pinyin": "Wǒ juéde Huālián Shì yǐ nán dào Táidōng zhè yí duàn lù de fēngjǐng zuì měi, zhíde tuījiàn gěi xǐhuān lǚyóu de péngyǒu.",
-                "english": "North of the city park preserves many historic buildings from the Japanese colonial period.",
+                "english": "I think the scenery along this stretch of road from south of Hualien City to Taitung is the most beautiful, well worth recommending to friends who love to travel.",
                 "words": [
                   {
                     "id": "b3l5g7-ex2-w1",
@@ -34924,7 +36000,11 @@
                     "meaning": "friend",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/8d32133991d4.mp3"
+                }
               }
             },
             {
@@ -34934,7 +36014,7 @@
                 "traditional": "這個國家以西鄰接著廣闊的沙漠，氣候十分乾燥。",
                 "simplified": "这个国家以西邻接着广闊的沙漠，气候十分干燥。",
                 "pinyin": "Zhège guójiā yǐ xī línjiē zhe guǎngkuò de shāmò, qìhòu shífēn gānzào.",
-                "english": "East of the towering Central Mountain Range is the magnificent Pacific coast stretching as far as the eye can see.",
+                "english": "West of this country borders a vast desert, and the climate is very dry.",
                 "words": [
                   {
                     "id": "b3l5g7-ex3-w1",
@@ -35015,7 +36095,11 @@
                     "meaning": "dry",
                     "suffix": "。"
                   }
-                ]
+                ],
+                "audio": {
+                  "voice": "studio",
+                  "file": "grammar-studio/v1/0fa3aa52772e.mp3"
+                }
               }
             }
           ],
@@ -35147,7 +36231,11 @@
               "traditional": "臺灣位於環太平洋地震帶上，板塊運動活躍，因此地震發生的頻率相當高。",
               "simplified": "台湾位于环太平洋地震带上，板块运动活躍，因此地震发生的频率相当高。",
               "pinyin": "",
-              "english": "Taiwan is located on the Circum-Pacific seismic belt with active plate tectonics, hence earthquake frequency is quite high."
+              "english": "Taiwan is located on the Circum-Pacific seismic belt with active plate tectonics, hence earthquake frequency is quite high.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/b0f60d22be3b.mp3"
+              }
             }
           },
           {
@@ -35157,7 +36245,11 @@
               "traditional": "一九九九年九月二十一日凌晨，臺灣中部發生了規模七點三的大地震，史稱「九二一地震」。",
               "simplified": "一九九九年九月二十一日凌晨，台湾中部发生了规模七点三的大地震，史稱「九二一地震」。",
               "pinyin": "",
-              "english": "In the early morning of September 21, 1999, a magnitude 7.3 earthquake struck central Taiwan, known historically as the '921 Earthquake.'"
+              "english": "In the early morning of September 21, 1999, a magnitude 7.3 earthquake struck central Taiwan, known historically as the '921 Earthquake.'",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/3a619b7d28e1.mp3"
+              }
             }
           },
           {
@@ -35167,7 +36259,11 @@
               "traditional": "那一夜強烈的搖晃震碎了許多家庭的家園，結果造成了兩千多人不幸喪生，上萬棟房屋倒塌。",
               "simplified": "那一夜强烈的摇晃震碎了许多家庭的家园，结果造成了两千多人不幸喪生，上万栋房屋倒塌。",
               "pinyin": "",
-              "english": "That night's violent shaking shattered homes of many families, resulting unfortunately in more than 2,000 fatalities and thousands of collapsed houses."
+              "english": "That night's violent shaking shattered homes of many families, resulting unfortunately in more than 2,000 fatalities and thousands of collapsed houses.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/a90508195eb0.mp3"
+              }
             }
           },
           {
@@ -35177,7 +36273,11 @@
               "traditional": "地震發生後，臺中與南投等重災區交通中斷，甚至連水電和通訊也完全癱瘓。",
               "simplified": "地震发生后，台中与南投等重灾区交通中断，甚至连水电和通讯也完全癱瘓。",
               "pinyin": "",
-              "english": "After the earthquake, transportation in hard-hit areas such as Taichung and Nantou was severed, and even water, electricity, and telecommunications were completely paralyzed."
+              "english": "After the earthquake, transportation in hard-hit areas such as Taichung and Nantou was severed, and even water, electricity, and telecommunications were completely paralyzed.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/3c3118c20064.mp3"
+              }
             }
           },
           {
@@ -35187,7 +36287,11 @@
               "traditional": "面對巨大的天災，全臺灣人民發揮了「有錢出錢、有力出力」的精神，國內外救援隊伍也迅速投入救災。",
               "simplified": "面对巨大的天灾，全台湾人民发挥了「有钱出钱、有力出力」的精神，国内外救援队伍也迅速投入救灾。",
               "pinyin": "",
-              "english": "Confronting this massive natural disaster, all Taiwanese displayed the spirit of 'contributing money and labor,' and rescue teams from home and abroad rapidly joined disaster relief."
+              "english": "Confronting this massive natural disaster, all Taiwanese displayed the spirit of 'contributing money and labor,' and rescue teams from home and abroad rapidly joined disaster relief.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/60dd82bffe37.mp3"
+              }
             }
           },
           {
@@ -35197,7 +36301,11 @@
               "traditional": "車站以南的中部災民在社會各界的溫暖支持下，齊心協力重建家園，展現了無比堅韌的生命力。",
               "simplified": "车站以南的中部灾民在社会各界的温暖支持下，齐心协力重建家园，展现了无比坚韌的生命力。",
               "pinyin": "",
-              "english": "Victims in central Taiwan south of the station rebuilt their homes with united efforts under warm support from all sectors of society, demonstrating immense resilience."
+              "english": "Victims in central Taiwan south of the station rebuilt their homes with united efforts under warm support from all sectors of society, demonstrating immense resilience.",
+              "audio": {
+                "voice": "studio",
+                "file": "grammar-studio/v1/93daec330d92.mp3"
+              }
             }
           }
         ]

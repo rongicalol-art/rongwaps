@@ -3,7 +3,6 @@ import { getWordChunks, type PhraseChunk } from '../../../utils/pinyin/rubyPinyi
 import { getDialogueSpeakerColorMap, getSpeakerDotColor } from '../../../utils/lesson/speakerColors';
 import { getCharacterForSpeaker } from '../../../utils/lesson/speakerCharacters';
 import { splitChunksIntoSentences, type DialogueSentenceItem } from '../../../utils/lesson/dialogueSync';
-import { overlapsAnyLocatedRange, type ReaderLocatedRange } from './readerLocate';
 
 /** Speakers that always sit on the left in two-person dialogues. */
 const LEFT_ANCHOR_SPEAKERS = new Set(['老師', '媽媽', '醫生', '女店員', '店員']);
@@ -28,11 +27,6 @@ export function pickRightSpeaker(speakers: string[]): string | null {
   return speakers[1] || null;
 }
 
-export interface SentenceRange {
-  charStart: number;
-  charEnd: number;
-}
-
 /** One dialogue line pre-computed for rendering: chunks, sentences, speaker chrome. */
 export interface ReadingCanvasLine {
   index: number;
@@ -44,7 +38,6 @@ export interface ReadingCanvasLine {
   avatarInitial: string;
   chunks: PhraseChunk[];
   sentences: DialogueSentenceItem[];
-  sentenceRanges: SentenceRange[];
 }
 
 export interface BuildReadingLinesInput {
@@ -75,14 +68,6 @@ export function buildReadingLines({
     const isNarrator = !paragraph.speaker || paragraph.speaker.toLowerCase() === 'narrator';
     const isRightAligned = !isNarrator && Boolean(rightSpeaker && paragraph.speaker === rightSpeaker);
     const sentences = splitChunksIntoSentences(chunks, index, lineAlignment?.start, lineAlignment?.end);
-    // Chunks partition the line, so accumulating sentence text lengths gives
-    // each sentence's character range for the grammar locate highlight.
-    let sentenceOffset = 0;
-    const sentenceRanges = sentences.map((sentence) => {
-      const range = { charStart: sentenceOffset, charEnd: sentenceOffset + sentence.text.length };
-      sentenceOffset = range.charEnd;
-      return range;
-    });
 
     return {
       index,
@@ -94,17 +79,6 @@ export function buildReadingLines({
       avatarInitial: paragraph.speaker ? paragraph.speaker[0] : '？',
       chunks,
       sentences,
-      sentenceRanges,
     };
   });
-}
-
-/** True when a sentence's character range overlaps any located grammar range. */
-export function isSentenceLocated(
-  paragraphIndex: number,
-  range: SentenceRange | undefined,
-  locatedGrammarRanges: readonly ReaderLocatedRange[],
-): boolean {
-  if (!range) return false;
-  return overlapsAnyLocatedRange({ paragraphIndex, ...range }, locatedGrammarRanges);
 }

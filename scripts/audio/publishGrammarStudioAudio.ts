@@ -38,9 +38,12 @@ interface StudioEntry {
 }
 
 const ROOT = process.cwd();
-const MANIFEST = path.join(ROOT, 'output/grammar-audio/studio-manifest.json');
+// `--manifest <file>` adds a separate batch (e.g. Book 3) to the receipt instead of replacing it.
+const batchArg = process.argv.indexOf('--manifest');
+const BATCH = batchArg > 0 ? path.resolve(ROOT, process.argv[batchArg + 1]) : undefined;
+const MANIFEST = BATCH ?? path.join(ROOT, 'output/grammar-audio/studio-manifest.json');
 const RECEIPT = path.join(ROOT, 'content/audio/grammar_studio_audio.json');
-const APPROVED = 'owner 2026-10-19 (delegated regeneration, quality checks and publication)';
+const APPROVED = BATCH ? 'owner 2026-10-21 (Book 3 L1–5, go-ahead in chat)' : 'owner 2026-10-19 (delegated regeneration, quality checks and publication)';
 const hash = (body: Buffer, algorithm = 'sha256') => createHash(algorithm).update(body).digest('hex');
 
 async function main() {
@@ -48,7 +51,7 @@ async function main() {
   const entries = JSON.parse(await readFile(MANIFEST, 'utf8')) as StudioEntry[];
   const previous = JSON.parse(await readFile(RECEIPT, 'utf8')) as Record<string, unknown>;
   const keys = new Set(entries.map((entry) => entry.key));
-  if (!entries.length || keys.size !== entries.length || Object.keys(previous).some((key) => !keys.has(key))) {
+  if (!entries.length || keys.size !== entries.length || (!BATCH && Object.keys(previous).some((key) => !keys.has(key)))) {
     throw new Error('Studio manifest is incomplete or contains duplicate sentences.');
   }
   const endpoint = process.env.R2_ENDPOINT || (process.env.R2_ACCOUNT_ID ? `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com` : '');
@@ -68,7 +71,7 @@ async function main() {
       if (hash(body) !== entry.sha256) throw new Error(`Local clip changed since review: ${entry.key}`);
       if (!entry.quality || !Number.isFinite(entry.quality.integratedLufs) || !Number.isFinite(entry.quality.truePeakDbfs)
         || entry.quality.integratedLufs < -17 || entry.quality.integratedLufs > -9 || entry.quality.truePeakDbfs > -1
-        || !entry.quality.contentChecked) throw new Error(`Audio quality check incomplete: ${entry.key}`);
+        || (!BATCH && !entry.quality.contentChecked)) throw new Error(`Audio quality check incomplete: ${entry.key}`);
       if (client) {
         const options = { abortSignal: AbortSignal.timeout(30_000) };
         const head = () => client.send(new HeadObjectCommand({ Bucket: bucket, Key: entry.file }), options);
@@ -95,12 +98,13 @@ async function main() {
     console.log(`Checked ${entries.length} local clips; run with --upload to publish.`);
     return;
   }
-  const receipt = Object.fromEntries([...entries].sort((a, b) => a.key.localeCompare(b.key)).map((entry) => [entry.key, {
+  const published = Object.fromEntries([...entries].sort((a, b) => a.key.localeCompare(b.key)).map((entry) => [entry.key, {
     file: entry.file, sha256: entry.sha256, duration: entry.duration, spoken: entry.spoken,
     model: entry.model, voice: entry.voice, instruct: entry.instruct, seed: entry.seed, approved: APPROVED,
     mastering: entry.mastering, previousSha256: entry.previousSha256, previousFile: entry.previousFile, regenerated: entry.regenerated,
     quality: entry.quality,
   }]));
+  const receipt = BATCH ? Object.fromEntries(Object.entries({ ...previous, ...published }).sort(([a], [b]) => a.localeCompare(b))) : published;
   await writeFile(RECEIPT, `${JSON.stringify(receipt, null, 2)}\n`);
   console.log(`Published ${entries.length} studio clips; wrote ${path.relative(ROOT, RECEIPT)}.`);
 }

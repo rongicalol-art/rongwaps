@@ -10,7 +10,7 @@ import {
   type GrammarUsageStatus,
 } from '../../../utils/grammar/grammarUsage';
 import { findGrammarPartForReading } from '../../../utils/lesson/readingContext';
-import type { ReaderLocatedRange } from './readerLocate';
+import type { ReaderGrammarRange } from './readerGrammarRanges';
 import {
   findVocabularyOccurrences,
   tokenizeReading,
@@ -78,7 +78,7 @@ export interface ReaderGrammarPoint {
   /** The authored rule citation when `usage` is `detected`. */
   usageEvidence?: string;
   /** Clause ranges that show the pattern; the Study Guide highlights them on hover. */
-  matches: ReaderLocatedRange[];
+  matches: ReaderGrammarRange[];
   /**
    * How the card groups this page: the reading's own part, another part's page
    * the text uses, or a lesson page listed for an essay with no part.

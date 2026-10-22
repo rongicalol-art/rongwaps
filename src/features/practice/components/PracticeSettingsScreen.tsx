@@ -12,7 +12,7 @@ export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDi
   onPreferencesChange: (preferences: Partial<PracticePreferences>) => void;
 }
 
-const SPEED_PRESETS = [0.75, 1.0, 1.5, 2.0] as const;
+const SPEED_PRESETS = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0] as const;
 
 /** Snaps any stored rate to the nearest preset (ties go to the slower one). */
 export function normalizePronunciationRate(rate: number): number {
@@ -35,9 +35,12 @@ type BooleanPreferenceKey =
   | 'dockAutoHide';
 
 export const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
+  { value: 0.5, label: 'Slowest (0.5x)' },
   { value: 0.75, label: 'Slow (0.75x)' },
   { value: 1.0, label: 'Normal (1.0x)' },
+  { value: 1.25, label: '1.25x' },
   { value: 1.5, label: 'Fast (1.5x)' },
+  { value: 1.75, label: '1.75x' },
   { value: 2.0, label: 'Fastest (2.0x)' },
 ];
 

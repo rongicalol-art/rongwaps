@@ -6,8 +6,8 @@ import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
 import type { ChatBuildItem, PracticeSentence } from '../../../types/models';
 import { chatAnswerLength, checkChatBuild } from '../../../utils/grammar/grammarPracticeCheck';
 import { InlineBlank } from '../components/InlineBlank';
-import { PracticeBubble } from '../components/PracticeBubble';
-import { PracticePrompt } from '../components/PracticePrompt';
+import { BUBBLE_TAIL, PracticeBubble } from '../components/PracticeBubble';
+import { PracticeCharacterPrompt } from '../components/PracticeCharacterPrompt';
 import { PracticeTileButton } from '../components/PracticeTileButton';
 import { textIn, type PracticeExerciseProps } from '../practiceTypes';
 
@@ -62,10 +62,15 @@ export function ChatBuildExercise({
   return (
     <LayoutGroup id={`chat-${item.id}`}>
       <div className="flex flex-col gap-3">
-        <PracticePrompt sub={item.sub} />
-        {item.before?.map((sentence) => (
-          <PracticeBubble key={sentence.traditional} side="them" notes={notes(sentence)}>{say(sentence)}</PracticeBubble>
-        ))}
+        {item.before && item.before.length > 0 && (
+          <PracticeCharacterPrompt status={status} waiting={draft.length > 0}>
+            <div className="flex flex-col items-start gap-2">
+              {item.before.map((sentence, index) => (
+                <PracticeBubble key={sentence.traditional} side="them" className={index === 0 ? BUBBLE_TAIL : undefined} notes={notes(sentence)}>{say(sentence)}</PracticeBubble>
+              ))}
+            </div>
+          </PracticeCharacterPrompt>
+        )}
         <span className="h-2" aria-hidden="true" />
         <PracticeBubble side="me">
           {sent ? say(sent) : (

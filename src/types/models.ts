@@ -157,6 +157,8 @@ export interface ReadingParagraph {
   simplified: string;
   pinyin: string;
   english: string;
+  /** Recording of this line, used when the book has no hosted track. */
+  audio?: SentenceAudio;
 }
 
 /** Font size preference for reader mode */

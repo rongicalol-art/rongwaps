@@ -76,7 +76,6 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 
 | Utility | Value | Layer / owners |
 |---|---|---|
-| `z-tooltip` | 90 | Pointer-anchored tooltips (`ReaderWordTooltip`) |
 | `z-content` | 100 | Content layer of an overlay surface, below its chrome: activity screen roots (`QuizScreen`, `ListeningScreen`, `WritingScreen`, `ToneScreen`), `LessonComplete`, in-window loading (`LoadingScreen`) |
 | `z-activity-header` | 150 | Sticky header strip of the activity surface (`ActivityModals`) |
 | `z-activity` | 200 | The activity modal shell (`ActivityModalWrapper`) |
@@ -89,7 +88,7 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 | `z-shell` | 600 | App chrome that outranks every window (sidebar and mobile nav panel in `LayoutShell`) and full-screen viewers that cover it (`BookPageViewer`, grammar book fallback) |
 | `z-drawer` | 650 | Reader study drawer (`ReaderStudyDrawer`) |
 | `z-dialog` | 700 | Dialogs and settings windows (`ConfirmationDialog`, `FolderModal`) |
-| `z-popover` | 800 | Hover/anchored popovers (`PosBadge`, `MemoryHookPopover`) |
+| `z-popover` | 800 | Hover/anchored popovers and tooltips (`PosBadge`, `MemoryHookPopover`, `ReaderWordTooltip`, `SmartSentence`) |
 | `z-auth` | 900 | Sign-in window (`SignInWindow`) |
 | `z-devtools` | 1000 | Developer tools (`DebugToolsOverlay`) |
 

@@ -77,8 +77,8 @@ export function MatchPairsExercise({
             )}
             <span className="font-chinese text-base leading-snug text-balance sm:text-xl">{textIn(sentence, script)}</span>
           </span>
-          {showPinyin && <span className="text-xs font-bold text-ui-muted-strong">{sentence.pinyin}</span>}
-          {showTranslation && <span className="text-xs font-bold text-ui-muted-strong">{sentence.english}</span>}
+          {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{sentence.pinyin}</span>}
+          {showTranslation && <span className="text-xs font-extrabold text-ui-muted-strong">{sentence.english}</span>}
         </span>
       </PracticeChoiceButton>
     );

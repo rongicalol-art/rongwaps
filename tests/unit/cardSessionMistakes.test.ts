@@ -15,16 +15,17 @@ function createMockCard(id: string, front: string = '你好'): Flashcard {
   };
 }
 
-test('normalizePronunciationRate snaps speed values to the nearest of 4 presets', () => {
-  assert.equal(normalizePronunciationRate(0.6), 0.75);
+test('normalizePronunciationRate snaps speed values to the nearest presets', () => {
+  assert.equal(normalizePronunciationRate(0.4), 0.5);
+  assert.equal(normalizePronunciationRate(0.5), 0.5);
   assert.equal(normalizePronunciationRate(0.75), 0.75);
-  assert.equal(normalizePronunciationRate(0.85), 0.75);
   assert.equal(normalizePronunciationRate(0.9), 1.0);
   assert.equal(normalizePronunciationRate(1.0), 1.0);
-  assert.equal(normalizePronunciationRate(1.25), 1.0);
-  assert.equal(normalizePronunciationRate(1.3), 1.5);
+  assert.equal(normalizePronunciationRate(1.2), 1.25);
+  assert.equal(normalizePronunciationRate(1.25), 1.25);
   assert.equal(normalizePronunciationRate(1.5), 1.5);
-  assert.equal(normalizePronunciationRate(1.8), 2.0);
+  assert.equal(normalizePronunciationRate(1.75), 1.75);
+  assert.equal(normalizePronunciationRate(1.9), 2.0);
   assert.equal(normalizePronunciationRate(3.0), 2.0);
 });
 
