@@ -167,7 +167,9 @@ app.use('/api/dictionary', (_req, res, next) => {
   res.setHeader('Cache-Control', 'private, no-store');
   res.vary('Authorization');
   next();
-}, apiLimiter, requireAuth, dictionaryLimiter);
+// `npm run dev` serves /data without a session (signed-out dev mode); the dictionary API matches.
+// Fail closed: only an explicit NODE_ENV=development skips the check.
+}, ...(process.env.NODE_ENV === 'development' ? [] : [apiLimiter, requireAuth, dictionaryLimiter]));
 app.get('/api/dictionary/search', async (req, res) => {
   const query = typeof req.query.q === 'string' ? req.query.q.trim() : '';
   const limit = req.query.limit === undefined ? 30 : Number(req.query.limit);

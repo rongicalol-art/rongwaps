@@ -151,84 +151,82 @@ export function WordDetailView({
           }
         />
         <div className="relative mx-auto flex min-h-full w-full max-w-[800px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6">
-          <>
-            {loading ? (
-              <motion.div
-                key="word-skeleton"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.16, ease: 'easeOut' }}
-                className="w-full"
-              >
-                <WordDetailSkeleton />
-              </motion.div>
-            ) : entries.length === 0 ? (
-              <motion.div
-                key="word-fallback"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.16 }}
-                className="w-full"
-              >
-                {fallbackWords.length > 0 ? (
-                  <FallbackWords word={word} fallbackWords={fallbackWords} onOpenWord={setDictionaryWord} />
-                ) : (
-                  <NotFound word={word} />
-                )}
-              </motion.div>
-            ) : (
-              <motion.div
-                key={`word-loaded-${word}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="flex w-full flex-col gap-7"
-              >
-                <WordHero
-                  word={word}
-                  accentHex={activeBook.accentHex}
-                  pinyin={pinyin}
-                  meaning={heroDefinition}
-                  entries={entries}
-                  courseCard={primaryCourseCard}
-                  level={level}
-                  primaryChar={primaryChar}
-                />
+          {loading ? (
+            <motion.div
+              key="word-skeleton"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.16, ease: 'easeOut' }}
+              className="w-full"
+            >
+              <WordDetailSkeleton />
+            </motion.div>
+          ) : entries.length === 0 ? (
+            <motion.div
+              key="word-fallback"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.16 }}
+              className="w-full"
+            >
+              {fallbackWords.length > 0 ? (
+                <FallbackWords word={word} fallbackWords={fallbackWords} onOpenWord={setDictionaryWord} />
+              ) : (
+                <NotFound word={word} />
+              )}
+            </motion.div>
+          ) : (
+            <motion.div
+              key={`word-loaded-${word}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex w-full flex-col gap-7"
+            >
+              <WordHero
+                word={word}
+                accentHex={activeBook.accentHex}
+                pinyin={pinyin}
+                meaning={heroDefinition}
+                entries={entries}
+                courseCard={primaryCourseCard}
+                level={level}
+                primaryChar={primaryChar}
+              />
 
-                <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+              <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
 
-                <MemoryHookBlock
-                  cacheKey={`word_${word}`}
-                  word={word}
-                  pinyin={pinyin || undefined}
-                  emptyText={<>No memory hook for this word yet.</>}
-                />
+              <MemoryHookBlock
+                cacheKey={`word_${word}`}
+                word={word}
+                pinyin={pinyin || undefined}
+                emptyText={<>No memory hook for this word yet.</>}
+              />
 
-                {activeTab && (
-                  <div className="flex min-w-0 flex-col gap-3">
-                    <BreakdownTabs tabs={tabs} active={activeTab} onChange={setTab} />
-                    <motion.div
-                      key={`${word}-${activeTab}`}
-                      role="tabpanel"
-                      id={`breakdown-panel-${activeTab}`}
-                      aria-labelledby={`breakdown-tab-${activeTab}`}
-                      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1] }}
-                      className="min-w-0"
-                    >
-                      {activeTab === 'related' && (
-                        <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} />
-                      )}
-                      {activeTab === 'examples' && (
-                        <WordExamplesSection examples={examples} isLoading={examplesLoading} word={word} />
-                      )}
-                    </motion.div>
-                  </div>
-                )}
-              </motion.div>
-            )}
-          </>
+              {activeTab && (
+                <div className="flex min-w-0 flex-col gap-3">
+                  <BreakdownTabs tabs={tabs} active={activeTab} onChange={setTab} />
+                  <motion.div
+                    key={`${word}-${activeTab}`}
+                    role="tabpanel"
+                    id={`breakdown-panel-${activeTab}`}
+                    aria-labelledby={`breakdown-tab-${activeTab}`}
+                    initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1] }}
+                    className="min-w-0"
+                  >
+                    {activeTab === 'related' && (
+                      <WordRelatedList word={word} relatedWords={relatedWords} isLoading={relatedLoading} onOpenWord={setDictionaryWord} />
+                    )}
+                    {activeTab === 'examples' && (
+                      <WordExamplesSection examples={examples} isLoading={examplesLoading} word={word} />
+                    )}
+                  </motion.div>
+                </div>
+              )}
+            </motion.div>
+          )}
         </div>
       </DetailShell.Scroller>
     </DetailShell.Root>

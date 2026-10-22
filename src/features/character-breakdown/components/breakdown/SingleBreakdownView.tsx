@@ -82,61 +82,59 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
           rightAction={<BreakdownSettingsPopover />}
         />
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-3 pb-12 sm:px-5 sm:py-4 lg:px-6 lg:py-5">
-          <>
-            {!charData && !isV3Runtime ? (
-              <motion.div
-                key="skeleton"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                className="w-full"
-              >
-                <BreakdownSkeleton />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="content"
-                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
-                className="w-full"
-              >
-                {isV3Runtime ? (
-                  <V3CharacterBreakdown
-                    activeChar={activeChar}
-                    charData={charData}
-                    charCardsInfo={charCardsInfo}
-                    activeBook={activeBook}
-                    builtWithMembers={builtWithMembers}
-                    soundFamily={soundFamily}
-                    relatedWords={relatedWords}
-                    soundClue={soundClue}
-                    setDictionaryWord={pushBreakdown}
-                    openTree={() => setShowV3Tree(true)}
-                    openRelatedBreakdown={() => setShowRelatedBreakdown(true)}
-                  />
-                ) : (
-                  <BreakdownWordInfo
-                    activeChar={activeChar}
-                    charData={charData}
-                    charCardsInfo={charCardsInfo}
-                    activeBook={activeBook}
-                    components={components}
-                    usedAsComponents={usedAsComponents}
-                    relatedWords={relatedWords}
-                    setDictionaryWord={pushBreakdown}
-                    chars={chars}
-                    setBreakdownCharIndex={setBreakdownCharIndex}
-                    openDeepBreakdown={() => setShowDeepBreakdown(true)}
-                    openUsedAsBreakdown={() => setShowUsedAsBreakdown(true)}
-                    openRelatedBreakdown={() => setShowRelatedBreakdown(true)}
-                    isUsedAsLoading={isUsedAsLoading}
-                    isRelatedLoading={isRelatedLoading}
-                  />
-                )}
-              </motion.div>
-            )}
-          </>
+          {!charData && !isV3Runtime ? (
+            <motion.div
+              key="skeleton"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
+              className="w-full"
+            >
+              <BreakdownSkeleton />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="content"
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
+              className="w-full"
+            >
+              {isV3Runtime ? (
+                <V3CharacterBreakdown
+                  activeChar={activeChar}
+                  charData={charData}
+                  charCardsInfo={charCardsInfo}
+                  activeBook={activeBook}
+                  builtWithMembers={builtWithMembers}
+                  soundFamily={soundFamily}
+                  relatedWords={relatedWords}
+                  soundClue={soundClue}
+                  setDictionaryWord={pushBreakdown}
+                  openTree={() => setShowV3Tree(true)}
+                  openRelatedBreakdown={() => setShowRelatedBreakdown(true)}
+                />
+              ) : (
+                <BreakdownWordInfo
+                  activeChar={activeChar}
+                  charData={charData}
+                  charCardsInfo={charCardsInfo}
+                  activeBook={activeBook}
+                  components={components}
+                  usedAsComponents={usedAsComponents}
+                  relatedWords={relatedWords}
+                  setDictionaryWord={pushBreakdown}
+                  chars={chars}
+                  setBreakdownCharIndex={setBreakdownCharIndex}
+                  openDeepBreakdown={() => setShowDeepBreakdown(true)}
+                  openUsedAsBreakdown={() => setShowUsedAsBreakdown(true)}
+                  openRelatedBreakdown={() => setShowRelatedBreakdown(true)}
+                  isUsedAsLoading={isUsedAsLoading}
+                  isRelatedLoading={isRelatedLoading}
+                />
+              )}
+            </motion.div>
+          )}
         </div>
       </DetailShell.Scroller>
 

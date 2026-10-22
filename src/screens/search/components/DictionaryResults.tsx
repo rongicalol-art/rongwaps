@@ -52,51 +52,49 @@ export function DictionaryResults({
       {(isLoading || results.length > 0) && (
         <section aria-label="Search results">
           <div className="flex flex-col">
-            <>
-              {isLoading && results.length === 0 ? (
-                <motion.div
-                  key="dictionary-skeleton-list"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.16, ease: 'easeOut' }}
-                  className="flex min-h-[70dvh] flex-col"
-                >
-                  {Array.from({ length: 6 }, (_, index) => (
-                    <div key={index} className="flex w-full items-center gap-4 border-b-2 border-ui-divider px-1 py-3.5 last:border-b-0">
-                      {/* Character Box */}
-                      <Skeleton className="h-8 w-12 sm:w-14 shrink-0 rounded-xs" />
-                      {/* Middle lines */}
-                      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                        <div className="flex items-center gap-2">
-                          <Skeleton className="h-3.5 w-16" />
-                          <Skeleton className="h-4 w-10 rounded-xs" />
-                          <Skeleton className="h-4 w-16 rounded-xs" />
-                        </div>
-                        <Skeleton className="h-4 w-3/4 max-w-sm" />
+            {isLoading && results.length === 0 ? (
+              <motion.div
+                key="dictionary-skeleton-list"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                className="flex min-h-[70dvh] flex-col"
+              >
+                {Array.from({ length: 6 }, (_, index) => (
+                  <div key={index} className="flex w-full items-center gap-4 border-b-2 border-ui-divider px-1 py-3.5 last:border-b-0">
+                    {/* Character Box */}
+                    <Skeleton className="h-8 w-12 sm:w-14 shrink-0 rounded-xs" />
+                    {/* Middle lines */}
+                    <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                      <div className="flex items-center gap-2">
+                        <Skeleton className="h-3.5 w-16" />
+                        <Skeleton className="h-4 w-10 rounded-xs" />
+                        <Skeleton className="h-4 w-16 rounded-xs" />
                       </div>
-                      {/* Bookmark Icon Button Placeholder */}
-                      <Skeleton className="h-8 w-8 shrink-0 rounded-control" />
+                      <Skeleton className="h-4 w-3/4 max-w-sm" />
                     </div>
-                  ))}
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="dictionary-results-list"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col"
-                >
-                  {results.slice(0, 50).map((entry) => (
-                    <DictionaryCard
-                      key={`${mode}-${entry.id}-${entry.traditional}`}
-                      entry={entry}
-                      onOpen={onOpenWord}
-                    />
-                  ))}
-                </motion.div>
-              )}
-            </>
+                    {/* Bookmark Icon Button Placeholder */}
+                    <Skeleton className="h-8 w-8 shrink-0 rounded-control" />
+                  </div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="dictionary-results-list"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col"
+              >
+                {results.slice(0, 50).map((entry) => (
+                  <DictionaryCard
+                    key={`${mode}-${entry.id}-${entry.traditional}`}
+                    entry={entry}
+                    onOpen={onOpenWord}
+                  />
+                ))}
+              </motion.div>
+            )}
           </div>
         </section>
       )}

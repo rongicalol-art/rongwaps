@@ -67,70 +67,68 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
         )}
       </div>
 
-      <>
-        {isRelatedLoading ? (
-          <motion.div
-            key="skeleton-related"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface"
-          >
-            {[1, 2].map((i) => (
-              <div key={i} className="flex w-full flex-row items-center gap-4 border-b-2 border-ui-divider bg-ui-surface px-4 py-[13.5px] last:border-0">
-                <Skeleton className="w-[32px] h-[32px] rounded-compact shrink-0" />
-                <div className="flex flex-col flex-1 gap-1.5 justify-center min-w-0">
-                  <div className="flex flex-row items-center justify-between gap-2 w-full">
-                    <Skeleton className="w-24 h-3.5 rounded-compact" />
-                    <Skeleton className="w-20 h-3 rounded-xs" />
-                  </div>
-                  <Skeleton className="w-40 h-3.5 rounded-compact" />
+      {isRelatedLoading ? (
+        <motion.div
+          key="skeleton-related"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface"
+        >
+          {[1, 2].map((i) => (
+            <div key={i} className="flex w-full flex-row items-center gap-4 border-b-2 border-ui-divider bg-ui-surface px-4 py-[13.5px] last:border-0">
+              <Skeleton className="w-[32px] h-[32px] rounded-compact shrink-0" />
+              <div className="flex flex-col flex-1 gap-1.5 justify-center min-w-0">
+                <div className="flex flex-row items-center justify-between gap-2 w-full">
+                  <Skeleton className="w-24 h-3.5 rounded-compact" />
+                  <Skeleton className="w-20 h-3 rounded-xs" />
                 </div>
+                <Skeleton className="w-40 h-3.5 rounded-compact" />
               </div>
-            ))}
-          </motion.div>
-        ) : (
-          <motion.div
-            key="loaded-related"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            className="flex flex-col gap-5"
-          >
-            {relatedGroups.map(group => {
-              return (
-                <div key={group.bookId} className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
-                  {group.cards.map((card, idx) => {
-                    const isLast = idx === group.cards.length - 1;
-                    return (
-                      <button
-                        key={idx}
-                        onClick={() => useAppStore.getState().setDictionaryWord(card.front)}
-                        className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b-2 border-ui-divider' : ''}`}
-                      >
-                        <span className={`text-2xl sm:text-3xl leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
-                          {card.front}
-                        </span>
-                        <div className="flex flex-col items-start justify-center flex-1 min-w-0 text-left overflow-hidden">
-                          <div className="flex flex-row items-center justify-between gap-2 mb-0.5 w-full pr-1">
-                            <span className="h-5 flex-1 truncate text-left text-xs font-bold tracking-widest text-ui-muted sm:text-sm">
-                              {numberToToneMarks(card.pinyin)}
-                            </span>
-                            {card.bookId <= 0 ? <LevelTag level={resolveLevel(card.front, levels)} /> : <LevelTag bookId={card.bookId} lessonId={card.lessonId} />}
-                          </div>
-                          <span className="mt-0.5 h-[20px] w-full truncate text-[13px] font-bold text-ui-ink sm:text-[14px]">
-                            {card.back}
+            </div>
+          ))}
+        </motion.div>
+      ) : (
+        <motion.div
+          key="loaded-related"
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="flex flex-col gap-5"
+        >
+          {relatedGroups.map(group => {
+            return (
+              <div key={group.bookId} className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
+                {group.cards.map((card, idx) => {
+                  const isLast = idx === group.cards.length - 1;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => useAppStore.getState().setDictionaryWord(card.front)}
+                      className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b-2 border-ui-divider' : ''}`}
+                    >
+                      <span className={`text-2xl sm:text-3xl leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
+                        {card.front}
+                      </span>
+                      <div className="flex flex-col items-start justify-center flex-1 min-w-0 text-left overflow-hidden">
+                        <div className="flex flex-row items-center justify-between gap-2 mb-0.5 w-full pr-1">
+                          <span className="h-5 flex-1 truncate text-left text-xs font-bold tracking-widest text-ui-muted sm:text-sm">
+                            {numberToToneMarks(card.pinyin)}
                           </span>
+                          {card.bookId <= 0 ? <LevelTag level={resolveLevel(card.front, levels)} /> : <LevelTag bookId={card.bookId} lessonId={card.lessonId} />}
                         </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </motion.div>
-        )}
-      </>
+                        <span className="mt-0.5 h-[20px] w-full truncate text-[13px] font-bold text-ui-ink sm:text-[14px]">
+                          {card.back}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </motion.div>
+      )}
     </div>
   );
 };
