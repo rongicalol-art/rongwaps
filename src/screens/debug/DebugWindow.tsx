@@ -1,3 +1,4 @@
+import { SentenceLookupPreview } from './SentenceLookupPreview';
 import { PerformancePanel } from './PerformancePanel';
 import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
@@ -89,6 +90,7 @@ export const DebugWindow = () => {
 
   return (
     <div className="p-6 md:p-8 h-full flex flex-col font-sans bg-ui-canvas">
+      <div data-sentence-tooltip-host />
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-black text-ui-ink">Debug Control Panel</h1>
@@ -328,6 +330,7 @@ export const DebugWindow = () => {
               ))}
               {errorMessage && <p role="status" className="text-sm font-bold text-ui-ink">{errorMessage}</p>}
             </section>
+            <SentenceLookupPreview />
             <QuizPreview />
             <GrammarPracticePreview />
             <TonePreview />

@@ -9,6 +9,7 @@ import './index.css';
 import './styles/fonts.generated.css?family=Huninn';
 import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
 import { registerSentenceLookupHandlers } from './lib/widgets/SmartSentence';
+import { FavoriteButton } from './features/library';
 import { audioService } from './services/audioService';
 import { useAppStore } from './store/useAppStore';
 
@@ -23,9 +24,24 @@ useAppStore.subscribe((state, prevState) => {
 });
 
 registerSentenceLookupHandlers({
-  lookupWord: async (word) => (await import('./services/sentenceLookupService')).lookupSentenceWord(word, useAppStore.getState().characterPreference),
+  lookupWord: async (word, context) => (await import('./services/sentenceLookupService')).lookupSentenceWord(word, useAppStore.getState().characterPreference, context),
   validateWords: async (words) => (await import('./services/sentenceLookupService')).validateSentenceWords(words),
-  playAudio: async (word) => (await import('./services/sentenceLookupService')).playSentenceWordAudio(word, useAppStore.getState().characterPreference),
+  segmentText: async (text, words) => (await import('./services/sentenceLookupService')).segmentSentenceText(text, words),
+  playAudio: async (word, pinyin) => (await import('./services/sentenceLookupService')).playSentenceWordAudio(word, useAppStore.getState().characterPreference, undefined, pinyin),
+  renderActions: (state) => {
+    const word = state.info?.headword || state.word;
+    return (
+      <FavoriteButton
+        word={word}
+        traditional={word}
+        pinyin={state.info?.pinyin}
+        definitions={state.info?.definitions || []}
+        size="sm"
+        variant="ghost"
+        className="h-7 w-7 rounded-full text-white/75 hover:bg-white/10 hover:text-white"
+      />
+    );
+  },
 });
 
 createRoot(document.getElementById('root')!, {

@@ -5,12 +5,9 @@ import { getWordChunks } from '../../../utils/pinyin/rubyPinyin';
 import { splitChunksIntoSentences } from '../../../utils/lesson/dialogueSync';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderNewWordChunks } from '../hooks/useReaderNewWordChunks';
-import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { ReaderChunk, NARRATIVE_CHUNK_APPEARANCE } from './ReaderChunk';
-import { audioService } from '../../../services/audioService';
-import { findMatchingCourseVocab } from '../../../services/courseVocabLookup';
 import { groupSentencesIntoParagraphs } from '../utils/narrativeParagraphs';
 import { SAMPLE_LESSONS } from '../../../data/books';
 import { ReaderSceneIntro } from './ReaderSceneIntro';
@@ -53,11 +50,6 @@ export function ReadingNarrativeView({
   onPlayRange,
 }: ReadingNarrativeViewProps) {
   const sentenceRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
-
-  const { getPreview } = useReaderDictionaryBatch({
-    reading,
-    characterPreference,
-  });
 
   const {
     holdingChunkKey,
@@ -309,14 +301,10 @@ export function ReadingNarrativeView({
       {/* Word definition card (hover / desktop) */}
       {hoveredWord && (
         <ReaderWordTooltip
-          preview={getPreview(hoveredWord.text, hoveredWord.pinyin)}
+          word={hoveredWord.text}
+          pinyin={hoveredWord.pinyin}
+          characterPreference={characterPreference}
           anchor={hoveredWord.anchor}
-          onSpeak={() => {
-            const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
-            void findMatchingCourseVocab(hoveredWord.text).then((match) => {
-              void audioService.play(match?.audio, undefined, hoveredWord.text, language);
-            });
-          }}
           onMouseEnter={handleTooltipMouseEnter}
           onMouseLeave={handleTooltipMouseLeave}
         />

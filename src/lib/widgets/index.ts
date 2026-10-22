@@ -62,3 +62,5 @@ export * from './LevelTag';
 export * from './CharacterTile';
 export * from './CharacterGlyph';
 export * from './SmartSentence';
+
+export { useSentenceWordHover, useSentenceSegments } from './useSentenceLookup';

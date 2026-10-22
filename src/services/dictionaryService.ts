@@ -298,10 +298,9 @@ export async function getDictionaryEntriesBatch(words: string[], signal?: AbortS
     signal?.throwIfAborted();
     const rows = packedRows.get(word);
     if (rows && rows.length > 0) {
-      const mapped = mapRowToEntry(rows[0]);
-      const dereferenced = await dereferenceEntries([mapped]);
+      const dereferenced = await dereferenceEntries(rows.map(mapRowToEntry));
       const entry = dereferenced[0];
-      dictionaryCache.set(word, [entry]);
+      dictionaryCache.set(word, dereferenced);
       result.set(word, entry);
     }
   }

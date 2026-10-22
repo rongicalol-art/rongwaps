@@ -87,15 +87,17 @@
 
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
-| ContextualChineseText | `ContextualChineseText.tsx` | Dictionary-aware Chinese text; requires `onOpenWord`; authored tokens win. |
+| ContextualChineseText | `ContextualChineseText.tsx` | Grammar/exercise text using SmartSentence; requires `onOpenWord`; authored tokens win. |
 | ExpandableSearch | `ExpandableSearch.tsx` | Compact trigger expanding to search input; `label` = accessible name. |
 | ProgressMetricCard | `ProgressMetricCard.tsx` | Derived metric (`label`, `value`, `detail`, `icon`); real metrics only. |
 | ReferenceRow | `ReferenceRow.tsx` | Row for reference sheets: glyph, pinyin over meaning, meta, `loading`; `accentClassName` tints glyph. |
 | CharacterTile | `CharacterTile.tsx` | Tappable character tile; `known`, `upcoming`, `active`. |
 | CharacterGlyph | `CharacterGlyph.tsx` | Character glyph with a puzzle-piece fallback when the active Chinese font cannot render it. |
 | LevelTag | `LevelTag.tsx` | Course `B1 · L3` or TOCFL fallback from `ResolvedLevel` (`resolveLevel`/`useLevel`, `src/utils/lesson/levels.ts`); `row` or `chip`; estimates render `~B1`. Lesson wins over TOCFL. |
-| SmartSentence | `SmartSentence.tsx` | Clickable sentence for lookup; `highlightTerms`. |
+| SmartSentence | `SmartSentence.tsx` | Shared Chinese lookup and tooltip; authored `tokens`, `highlightTerms`, validated word boundaries; hover/focus and dictionary click. |
 
 Performance behavior: `ScreenHeader` translates a full-width rounded fill behind the track mask rather than animating width, preserving the rounded end without scaling distortion. Its inset highlight shares the same spring and review story timer; reduced motion jumps directly to the final progress. Shared headers use an opaque canvas or fade without backdrop blur. Rectangular handoffs keep paper and text on independent transform layers; review headings lift away and remaining tiles gather toward the leading card together before the overlay is removed. Review tiles keep one bottom border, with no extra shadow lip; completion tiles begin settling alongside the main card morph. Mixed quiz review leads with the actual first question, including reordered rounds; review handoffs settle in 420 ms with a separate uniformly scaled word. Meaning/audio content crossfades on that same paper without a second visible border; answers enter as one group after the review sheet clears, and unlock at 480 ms. Match/build questions enter as a group. All handoff layers are inert and removed on completion or cancellation. The DEV Quiz → review quiz fixture runs the real shell lifecycle with fake misses. Completion counters publish at most 20 updates per second. All Motion components inherit the system motion preference from `MotionConfig`. Review tone changes use a 260 ms native root snapshot crossfade, with one palette update; hidden tabs, reduced motion and unsupported browsers apply immediately. Overlapping review owners and skipped callbacks keep the latest tone.
 
 Practice completion lives in `features/practice/SessionComplete`: optional `headline` and `reviewLabel` customize the daily/practice finish while keeping the shared celebration. `SessionStats.trickyCardIds` carries Again/Hard words through the lesson quiz. The end action practices that subset without changing its SRS schedule; it is a finite optional pass. Safe UI checks: DEV → Daily review.
+
+Sentence lookup uses `sentenceLookupService.ts` for authored meanings, course vocabulary, dictionary senses, word boundaries and recording selection. `useSentenceWordHover` shares hover/focus timing and cancels stale requests; grammar keeps its authored alignment and reader keeps sentence playback gestures. UI Previews includes a safe shared lookup sample with exercise text and grammar-table cells.

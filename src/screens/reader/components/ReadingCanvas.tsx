@@ -1,11 +1,8 @@
 import { useCallback, useMemo, useRef, useEffect, type ReactNode, type RefObject } from 'react';
 import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
-import { audioService } from '../../../services/audioService';
-import { findMatchingCourseVocab } from '../../../services/courseVocabLookup';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderNewWordChunks } from '../hooks/useReaderNewWordChunks';
-import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { buildReadingLines, pickRightSpeaker } from '../utils/readingCanvasLines';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
@@ -49,11 +46,6 @@ export function ReadingCanvas({
   onPlayLine,
   onPlayRange,
 }: ReadingCanvasProps) {
-  const { getPreview } = useReaderDictionaryBatch({
-    reading,
-    characterPreference,
-  });
-
   const uniqueSpeakers = useMemo(() => {
     return Array.from(
       new Set(reading.paragraphs.map((p) => p.speaker).filter(Boolean)),
@@ -172,14 +164,10 @@ export function ReadingCanvas({
       {/* Word definition card (hover / desktop) */}
       {hoveredWord && (
         <ReaderWordTooltip
-          preview={getPreview(hoveredWord.text, hoveredWord.pinyin)}
+          word={hoveredWord.text}
+          pinyin={hoveredWord.pinyin}
+          characterPreference={characterPreference}
           anchor={hoveredWord.anchor}
-          onSpeak={() => {
-            const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
-            void findMatchingCourseVocab(hoveredWord.text).then((match) => {
-              void audioService.play(match?.audio, undefined, hoveredWord.text, language);
-            });
-          }}
           onMouseEnter={handleTooltipMouseEnter}
           onMouseLeave={handleTooltipMouseLeave}
         />

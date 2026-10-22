@@ -43,18 +43,15 @@ test('sentenceLookup: looks up dictionary word with pinyin and sanitized definit
   assert.ok(result.pinyin && result.pinyin.length > 0);
 });
 
-test('sentenceLookup: decomposes phrase/unlisted compound into character fallback parts', async () => {
+test('sentenceLookup: decomposes an unlisted question into meaningful parts', async () => {
   // A phrase or compound with no single dictionary entry (e.g. A-not-A question form)
   const result = await lookupSentenceWord('忙不忙');
 
   assert.ok(result !== null);
   assert.equal(result.word, '忙不忙');
-  // Should decompose into constituent character definitions
-  assert.ok(result.fallbackParts && result.fallbackParts.length === 3);
-  assert.equal(result.fallbackParts[0].word, '忙');
-  assert.equal(result.fallbackParts[1].word, '不');
-  assert.equal(result.fallbackParts[2].word, '忙');
-  assert.ok(result.fallbackParts[0].definition || result.fallbackParts[0].pinyin);
+  assert.ok(result.fallbackParts && result.fallbackParts.length >= 2);
+  assert.equal(result.fallbackParts.map(part => part.word).join(''), '忙不忙');
+  assert.ok(result.fallbackParts.every(part => part.definition || part.pinyin));
 });
 
 test('sentenceLookup: handles empty or unknown input gracefully', async () => {
@@ -65,4 +62,27 @@ test('sentenceLookup: handles empty or unknown input gracefully', async () => {
   assert.ok(unknown !== null);
   assert.equal(unknown.word, '𠀀');
   assert.equal(unknown.definitions.length, 0);
+});
+
+test('sentenceLookup: authored meaning wins without contaminating later lookups', async () => {
+  const contextual = await lookupSentenceWord('也', 'traditional', { pinyin: 'ye3', meaning: 'also (in this sentence)' });
+  assert.equal(contextual?.pinyin, 'yě');
+  assert.deepEqual(contextual?.definitions, ['also (in this sentence)']);
+  const generic = await lookupSentenceWord('也');
+  assert.ok(generic?.definitions.length);
+  assert.ok(!generic.definitions.includes('also (in this sentence)'));
+});
+
+test('sentenceLookup: unknown phrase preserves known compounds in fallback', async () => {
+  const result = await lookupSentenceWord('也把電腦');
+  assert.ok(result?.fallbackParts?.some(part => part.word === '電腦' && part.definition));
+  assert.ok(!result?.definitions.length);
+});
+
+
+test('sentenceLookup: batch validation preserves alternate dictionary readings', async () => {
+  await validateSentenceWords(['行']);
+  const result = await lookupSentenceWord('行', 'traditional', { pinyin: 'hang2' });
+  assert.equal(result?.pinyin, 'háng');
+  assert.ok(result?.definitions.some(definition => /row|profession|line|trade/i.test(definition)));
 });

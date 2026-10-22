@@ -1,22 +1,52 @@
 import { getDictionaryEntries, getDictionaryEntriesBatch } from './dictionaryService';
-import { findMatchingCourseVocab, getCourseVocabLookupMap } from './courseVocabLookup';
+import { findMatchingCourseVocab, findMatchingCourseRecording, getCourseVocabForWords } from './courseVocabLookup';
 import { beginnerDefinitions, sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
 import { numberToToneMarks } from '../utils/pinyin/pinyin';
 import { splitCourseMeasureWords } from '../utils/vocabulary/measureWords';
 import { audioService } from './audioService';
 
-export interface SentenceWordPart {
-  word: string;
-  pinyin?: string;
-  definition?: string;
+import type { SentenceWordContext, SentenceWordLookupResult } from '../types/sentenceLookup';
+import { AppCache } from '../utils/cache';
+import { pronunciationKey } from '../utils/pinyin/pronunciationMatching';
+import { sentenceSegments, sentenceCandidates, validatedSentenceSegments } from '../utils/vocabulary/sentenceSegments';
+export type { SentenceWordLookupResult } from '../types/sentenceLookup';
+
+const wordCache = new AppCache(256);
+const pendingWords = new Map<string, Promise<SentenceWordLookupResult | null>>();
+
+/** Cache only resolved entries; a failed request must be retryable. Context never leaks between sentences. */
+export async function lookupSentenceWord(
+  word: string,
+  characterPreference: 'traditional' | 'simplified' = 'traditional',
+  context?: SentenceWordContext,
+): Promise<SentenceWordLookupResult | null> {
+  const trimmed = word.trim();
+  if (!trimmed) return null;
+  const authoredMeaning = context?.meaning || context?.english;
+  if (authoredMeaning) {
+    return { word: trimmed, pinyin: context?.pinyin ? numberToToneMarks(context.pinyin) : undefined,
+      definitions: beginnerDefinitions([authoredMeaning]), hasAudio: true };
+  }
+  const key = JSON.stringify([trimmed, characterPreference, context?.pinyin || '']);
+  const cached = wordCache.get<SentenceWordLookupResult>(key);
+  if (cached) return cached;
+  const pending = pendingWords.get(key);
+  if (pending) return pending;
+  const task = resolveSentenceWord(trimmed, characterPreference, context?.pinyin).then(result => {
+    const resolved = result && context?.pinyin ? { ...result, pinyin: numberToToneMarks(context.pinyin) } : result;
+    if (resolved?.definitions.length) wordCache.set(key, resolved);
+    return resolved;
+  }).finally(() => { pendingWords.delete(key); });
+  pendingWords.set(key, task);
+  return task;
 }
 
-export interface SentenceWordLookupResult {
-  word: string;
-  pinyin?: string;
-  definitions: string[];
-  fallbackParts?: SentenceWordPart[];
-  hasAudio?: boolean;
+export async function segmentSentenceText(text: string, authoredWords: string[] = []) {
+  const segments = sentenceSegments(text, authoredWords);
+  const candidates = sentenceCandidates(segments.filter(part => !authoredWords.includes(part.segment)));
+  const valid = await validateSentenceWords(candidates);
+  for (const word of authoredWords) valid.add(word);
+  return validatedSentenceSegments(segments, valid);
 }
 
 /**
@@ -28,7 +58,7 @@ export async function validateSentenceWords(words: string[]): Promise<Set<string
 
   const [dictEntries, courseVocabMap] = await Promise.all([
     getDictionaryEntriesBatch(words),
-    getCourseVocabLookupMap().catch(() => new Map()),
+    getCourseVocabForWords(words).catch(() => new Map()),
   ]);
 
   const validSet = new Set<string>();
@@ -49,9 +79,10 @@ export async function validateSentenceWords(words: string[]): Promise<Set<string
  * 2. Dictionary (CEDICT) entries with sanitized definitions
  * 3. Multi-character phrase decomposition (character-by-character readings & definitions)
  */
-export async function lookupSentenceWord(
+async function resolveSentenceWord(
   word: string,
-  characterPreference: 'traditional' | 'simplified' = 'traditional',
+  characterPreference: 'traditional' | 'simplified',
+  expectedPinyin?: string,
 ): Promise<SentenceWordLookupResult | null> {
   const trimmed = word.trim();
   if (!trimmed) return null;
@@ -59,7 +90,8 @@ export async function lookupSentenceWord(
   // 1. Book (course) vocabulary first: the meaning the learner was taught
   try {
     const courseCard = await findMatchingCourseVocab(trimmed);
-    if (courseCard) {
+    const readingMatches = !expectedPinyin || pronunciationKey(courseCard?.pinyin) === pronunciationKey(expectedPinyin);
+    if (courseCard && readingMatches && [courseCard.front, courseCard.traditional, courseCard.simplified].includes(trimmed) && courseCard.back) {
       const pinyin = courseCard.pinyin ? numberToToneMarks(courseCard.pinyin) : '';
       const defs = courseCard.back
         ? splitCourseMeasureWords(courseCard.back)
@@ -69,8 +101,9 @@ export async function lookupSentenceWord(
             .slice(0, 2)
         : [];
 
-      return {
+      if (defs.length) return {
         word: trimmed,
+        headword: courseCard.traditional || trimmed,
         pinyin,
         definitions: defs,
         hasAudio: true,
@@ -86,13 +119,17 @@ export async function lookupSentenceWord(
     if (entries && entries.length > 0) {
       // Beginner hover: skip proper-noun / abbreviation entries (新 Xīn "abbr. for Xinjiang")
       // when a common-word entry exists, and drop those senses from the gloss.
-      const cleaned = entries.map((entry) => ({
+      const matching = expectedPinyin
+        ? entries.filter(entry => entry.pinyin?.some(reading => pronunciationKey(reading) === pronunciationKey(expectedPinyin)))
+        : entries;
+      const cleaned = matching.map((entry) => ({
         entry,
         defs: beginnerDefinitions(sanitizeDictionaryDefinitions(entry.definitions, {
           preferredScript: characterPreference,
         }).definitions),
       }));
       const best = cleaned.find((c) => c.defs.length > 0) ?? cleaned[0];
+      if (!best) return { word: trimmed, pinyin: expectedPinyin, definitions: [], hasAudio: true };
       const primary = best.entry;
       const rawPinyin = primary.pinyin?.[0] ? numberToToneMarks(primary.pinyin[0]) : '';
       const cleanDefs = best.defs.slice(0, 2);
@@ -100,6 +137,7 @@ export async function lookupSentenceWord(
       if (cleanDefs.length > 0 || rawPinyin) {
         return {
           word: trimmed,
+          headword: primary.traditional || trimmed,
           pinyin: rawPinyin,
           definitions: cleanDefs,
           hasAudio: true,
@@ -110,39 +148,21 @@ export async function lookupSentenceWord(
     // Continue to character decomposition
   }
 
-  // 3. Multi-character phrase decomposition (e.g. unknown compound, idiom, or A-not-A form)
-  const chars = Array.from(trimmed);
-  if (chars.length > 1) {
+  // Unknown phrases are read as validated words, never presented as a made-up compound.
+  if (Array.from(trimmed).length > 1) {
     try {
-      const resolvedParts: SentenceWordPart[] = [];
-      for (const char of chars) {
-        const charEntries = await getDictionaryEntries(char);
-        if (charEntries && charEntries.length > 0) {
-          const entry = charEntries[0];
-          const pinyin = entry.pinyin?.[0] ? numberToToneMarks(entry.pinyin[0]) : '';
-          const defs = sanitizeDictionaryDefinitions(entry.definitions, {
-            preferredScript: characterPreference,
-          }).definitions;
-          resolvedParts.push({
-            word: char,
-            pinyin,
-            definition: defs[0] || '',
-          });
-        } else {
-          resolvedParts.push({ word: char });
-        }
-      }
-
-      if (resolvedParts.some((part) => part.definition || part.pinyin)) {
-        return {
-          word: trimmed,
-          definitions: [],
-          fallbackParts: resolvedParts,
-          hasAudio: true,
-        };
+      const segments = await segmentSentenceText(trimmed);
+      const parts = await Promise.all(segments.filter(part => part.isWordLike).map(async part => {
+        // A lexical entry without usable gloss must not recurse into itself.
+        if (part.segment === trimmed) return { word: part.segment };
+        const resolved = await lookupSentenceWord(part.segment, characterPreference);
+        return { word: part.segment, pinyin: resolved?.pinyin, definition: resolved?.definitions[0] };
+      }));
+      if (parts.some(part => part.pinyin || part.definition)) {
+        return { word: trimmed, definitions: [], fallbackParts: parts, hasAudio: true };
       }
     } catch {
-      // Fallback
+      // Keep unknown and unavailable results retryable.
     }
   }
 
@@ -162,6 +182,7 @@ export async function playSentenceWordAudio(
   word: string,
   characterPreference: 'traditional' | 'simplified' = 'traditional',
   rate?: number,
+  pinyin?: string,
 ): Promise<void> {
   const trimmed = word.trim();
   if (!trimmed) return;
@@ -170,7 +191,7 @@ export async function playSentenceWordAudio(
   const language = characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN';
 
   try {
-    const courseMatch = await findMatchingCourseVocab(trimmed);
+    const courseMatch = await findMatchingCourseRecording(trimmed, pinyin);
     if (courseMatch?.audio && audioService.isAudioFileName(courseMatch.audio)) {
       await audioService.play(courseMatch.audio, effectiveRate, trimmed, language);
       return;
