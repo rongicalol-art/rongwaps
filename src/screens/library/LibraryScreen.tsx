@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import {
@@ -23,6 +23,8 @@ import { LibraryCardGrid } from './components/LibraryCardGrid';
 import { LibraryHomeView } from './components/LibraryHomeView';
 import { LibrarySearchField } from './components/LibrarySearchField';
 import { MoveCardsDialog } from './MoveCardsDialog';
+import { EditCardDialog } from './EditCardDialog';
+import { LibraryContextMenu, type LibraryMenuAction, type MenuPoint } from './components/LibraryContextMenu';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
 
@@ -59,6 +61,11 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
     setSelectedFolderColorId,
     isCreatingFolder,
     handleCreateFolder,
+    editFolderId,
+    openEditFolder,
+    editCardTarget,
+    setEditCardTarget,
+    saveEditedCard,
     deleteTargetId,
     setDeleteTargetId,
     handleDeleteCustomCard,
@@ -104,6 +111,37 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
     },
     [isStarred, toggleFavorite, handleDeleteCustomCard]
   );
+
+  const [menu, setMenu] = useState<{ kind: 'folder' | 'card'; id: string; name: string; point: MenuPoint } | null>(null);
+  const closeMenu = useCallback(() => setMenu(null), []);
+
+  const handleCardMenu = useCallback(
+    (card: DBDictionaryEntry | UserFlashcard, point: MenuPoint) => {
+      const custom = card as UserFlashcard;
+      setMenu({ kind: 'card', id: custom.id, name: custom.traditional || custom.simplified, point });
+    },
+    [],
+  );
+
+  const menuActions: LibraryMenuAction[] = !menu
+    ? []
+    : menu.kind === 'folder'
+      ? [
+          { id: 'edit', label: 'Edit folder', icon: 'pencil', onSelect: () => openEditFolder(menu.id) },
+          { id: 'delete', label: 'Delete folder', icon: 'trash', danger: true, onSelect: () => setDeleteFolderTarget({ id: menu.id, name: menu.name }) },
+        ]
+      : [
+          {
+            id: 'edit',
+            label: 'Edit card',
+            icon: 'pencil',
+            onSelect: () => {
+              const card = (items as UserFlashcard[]).find((item) => item.id === menu.id);
+              if (card) setEditCardTarget(card);
+            },
+          },
+          { id: 'delete', label: 'Delete card', icon: 'trash', danger: true, onSelect: () => void handleDeleteCustomCard(menu.id) },
+        ];
 
   return (
     <div className="relative flex flex-1 w-full flex-col text-ui-ink">
@@ -163,7 +201,10 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
               setSearchQuery('');
               setActiveView('folder');
             }}
-            onDeleteFolder={(id, name) => setDeleteFolderTarget({ id, name })}
+            onFolderMenu={(id, point) => {
+              const folder = allCollections.find((collection) => collection.id === id);
+              if (folder) setMenu({ kind: 'folder', id, name: folder.title, point });
+            }}
             onCreateFolder={() => {
               setNewFolderName('');
               setShowFolderModal(true);
@@ -241,6 +282,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 onAddCard={onAddCard}
                 onRemoveCard={handleRemoveCard}
                 onOpenCard={handleOpenCard}
+                onCardMenu={handleCardMenu}
                 isSelecting={isSelecting}
                 selectedKeys={selectedKeys}
                 getItemKey={getItemKey}
@@ -260,7 +302,10 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         setSelectedColorId={setSelectedFolderColorId}
         isCreatingFolder={isCreatingFolder}
         handleCreateFolder={handleCreateFolder}
+        mode={editFolderId ? 'edit' : 'create'}
       />
+      <EditCardDialog card={editCardTarget} onSave={saveEditedCard} onClose={() => setEditCardTarget(null)} />
+      {menu && <LibraryContextMenu point={menu.point} label={menu.kind === 'folder' ? `${menu.name} folder options` : `${menu.name} card options`} actions={menuActions} onClose={closeMenu} />}
       <DeleteCardModal
         deleteTargetId={deleteTargetId}
         setDeleteTargetId={setDeleteTargetId}

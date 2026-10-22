@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { cn } from '../../../utils/cn';
 import { FolderSvg } from '../../../lib/widgets';
+import { useMenuTrigger, type MenuPoint } from './LibraryContextMenu';
 
 interface FolderItemProps {
   id: string;
@@ -14,7 +15,8 @@ interface FolderItemProps {
   colorBack?: string;
   isNewButton?: boolean;
   onSelect: () => void;
-  onDeleteRequest?: () => void;
+  /** Right-click / long-press on an editable folder. */
+  onMenuRequest?: (point: MenuPoint) => void;
 }
 
 export function FolderItem({
@@ -27,58 +29,11 @@ export function FolderItem({
   colorBack,
   isNewButton = false,
   onSelect,
-  onDeleteRequest,
+  onMenuRequest,
   className,
 }: FolderItemProps) {
-  const isDeletable = !['starred', 'custom'].includes(id) && !isNewButton && !!onDeleteRequest;
-  const pressTimer = useRef<NodeJS.Timeout | null>(null);
-  const wasLongPress = useRef(false);
-
-  const startPress = () => {
-    if (!isDeletable) return;
-    wasLongPress.current = false;
-    pressTimer.current = setTimeout(() => {
-      wasLongPress.current = true;
-      if (onDeleteRequest) {
-        onDeleteRequest();
-      }
-    }, 700);
-  };
-
-  const endPress = () => {
-    if (pressTimer.current) {
-      clearTimeout(pressTimer.current);
-      pressTimer.current = null;
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (pressTimer.current) {
-        clearTimeout(pressTimer.current);
-      }
-    };
-  }, []);
-
-  const handleClick = (e: React.MouseEvent) => {
-    if (wasLongPress.current) {
-      e.preventDefault();
-      e.stopPropagation();
-      wasLongPress.current = false;
-      return;
-    }
-    onSelect();
-  };
-
-  const handleContextMenu = (e: React.MouseEvent) => {
-    if (isDeletable) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (onDeleteRequest) {
-        onDeleteRequest();
-      }
-    }
-  };
+  const isEditable = !['starred', 'custom'].includes(id) && !isNewButton && !!onMenuRequest;
+  const menuTrigger = useMenuTrigger((point) => onMenuRequest?.(point), !isEditable);
 
   const frontColor = isNewButton
     ? '#E8EDF2'
@@ -89,12 +44,8 @@ export function FolderItem({
 
   return (
     <button
-      onClick={handleClick}
-      onContextMenu={handleContextMenu}
-      onTouchStart={startPress}
-      onTouchEnd={endPress}
-      onMouseDown={startPress}
-      onMouseUp={endPress}
+      onClick={onSelect}
+      {...menuTrigger}
       className={cn(
         'group flex shrink-0 cursor-pointer select-none flex-col items-center gap-2 rounded-control px-2 py-3 outline-none transition-colors hover:bg-ui-surface focus-ring',
         className,

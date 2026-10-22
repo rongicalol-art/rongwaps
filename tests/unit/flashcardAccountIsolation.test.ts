@@ -126,7 +126,7 @@ test('custom-card cache stays isolated across account changes, logout and delaye
       const original = flashcardService.getCachedFlashcards('B');
       const operations = [
         () => flashcardService.createFlashcard(card('A')),
-        () => flashcardService.updateFlashcardTranslation('A', card('A').id, 'wrong owner'),
+        () => flashcardService.updateFlashcard('A', card('A').id, { translation: 'wrong owner' }),
         () => flashcardService.deleteFlashcard('A', card('A').id),
         () => flashcardService.moveFlashcards('A', [card('A').id], 'wrong folder'),
         () => flashcardService.deleteFolder('A', 'fixture-folder'),

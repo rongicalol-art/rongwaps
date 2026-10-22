@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
 import { AppIcon } from '../../../lib/widgets';
+import { useMenuTrigger, type MenuPoint } from './LibraryContextMenu';
 
 type LibraryCardItem = DBDictionaryEntry | UserFlashcard;
 
@@ -13,6 +14,8 @@ interface SpellCardProps {
   onRemove: (item: LibraryCardItem) => void;
   /** Stable, item-based handler — see the `memo` comparator below. */
   onOpen: (item: LibraryCardItem) => void;
+  /** Stable, item-based handler. Opens the edit/delete menu of a custom card. */
+  onMenu?: (item: LibraryCardItem, point: MenuPoint) => void;
   index: number;
   /** Select mode: the card toggles instead of opening, and shows a tick. */
   selecting?: boolean;
@@ -20,7 +23,7 @@ interface SpellCardProps {
   onToggleSelect?: (item: LibraryCardItem) => void;
 }
 
-function SpellCardBase({ item, activeTab, onRemove, onOpen, index, selecting = false, selected = false, onToggleSelect }: SpellCardProps) {
+function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selecting = false, selected = false, onToggleSelect }: SpellCardProps) {
   const isStarred = activeTab === 'starred';
   const simplified = item.simplified;
   // Runtime guard: malformed cloud/persisted cards may lack both fields, and
@@ -46,8 +49,11 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, index, selecting = f
     definition = fbItem.translation || '';
   }
 
+  const menuTrigger = useMenuTrigger((point) => onMenu?.(item, point), isStarred || selecting || !onMenu);
+
   return (
     <motion.div
+      {...menuTrigger}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -73,15 +79,24 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, index, selecting = f
         ) : (
           <button
             type="button"
-            onClick={(e) => { e.stopPropagation(); onRemove(item); }}
-            aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isStarred || !onMenu) {
+                onRemove(item);
+                return;
+              }
+              const rect = e.currentTarget.getBoundingClientRect();
+              onMenu(item, { x: rect.left, y: rect.bottom + 4 });
+            }}
+            aria-label={isStarred ? `Remove ${traditional} from saved words` : `Options for ${traditional}`}
+            aria-haspopup={isStarred ? undefined : 'menu'}
             className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
               isStarred
                 ? 'text-feedback-warning-edge hover:bg-feedback-warning/10'
-                : 'text-ui-muted hover:bg-feedback-danger/10 hover:text-feedback-danger'
+                : 'text-ui-muted hover:bg-ui-divider/60 hover:text-ui-ink'
             }`}
           >
-            <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={isStarred ? 18 : 16} />
+            <AppIcon name={isStarred ? 'bookmarkFilled' : 'more'} size={isStarred ? 18 : 20} />
           </button>
         )}
 
@@ -121,6 +136,7 @@ export const SpellCard = memo(SpellCardBase, (prev, next) => (
   && prev.activeTab === next.activeTab
   && prev.onRemove === next.onRemove
   && prev.onOpen === next.onOpen
+  && prev.onMenu === next.onMenu
   && prev.selecting === next.selecting
   && prev.selected === next.selected
   && prev.onToggleSelect === next.onToggleSelect

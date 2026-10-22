@@ -4,7 +4,7 @@ import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
 import { useUserFlashcards } from '../../../features/library';
 import { useAppStore } from '../../../store/useAppStore';
-import { flashcardService } from '../../../services/flashcardService';
+import { flashcardService, type FlashcardTextPatch } from '../../../services/flashcardService';
 import { userService } from '../../../services/userService';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 import { DBDictionaryEntry } from '../../../types/database';
@@ -69,6 +69,7 @@ export function useLibrary() {
   );
   const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const deleteCustomFolder = useAppStore((state) => state.deleteCustomFolder);
+  const updateCustomFolder = useAppStore((state) => state.updateCustomFolder);
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
   const setLibraryActiveView = useAppStore((state) => state.setLibraryActiveView);
   // The folder view is store-backed so the header's back action and this screen
@@ -112,7 +113,12 @@ export function useLibrary() {
   const [favoriteResults, setFavoriteResults] = useState<DBDictionaryEntry[]>([]);
   const [isLoadingFavs, setIsLoadingFavs] = useState(false);
 
-  const [showFolderModal, setShowFolderModal] = useState(false);
+  const [showFolderModal, setShowFolderModalOpen] = useState(false);
+  const [editFolderId, setEditFolderId] = useState<string | null>(null);
+  const setShowFolderModal = useCallback((show: boolean) => {
+    setShowFolderModalOpen(show);
+    if (!show) setEditFolderId(null);
+  }, []);
   const [newFolderName, setNewFolderName] = useState('');
   const [selectedFolderColorId, setSelectedFolderColorId] = useState<string>(FOLDER_COLOR_PALETTE[0].id);
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
@@ -175,8 +181,41 @@ export function useLibrary() {
     return () => { cancelled = true; };
   }, [favorites]);
 
+  const openEditFolder = (folderId: string) => {
+    const index = customFolders.findIndex((folder) => folder.id === folderId);
+    if (index < 0) return;
+    setNewFolderName(customFolders[index].name);
+    setSelectedFolderColorId(resolveFolderColor(customFolders[index].color, index).id);
+    setEditFolderId(folderId);
+    setShowFolderModalOpen(true);
+  };
+
+  const confirmEditFolder = async (folderId: string) => {
+    const patch = { name: newFolderName.trim(), color: serializeFolderColor(selectedFolderColorId) };
+    setIsCreatingFolder(true);
+    updateCustomFolder(folderId, patch);
+    setShowFolderModal(false);
+    if (currentUser) {
+      try {
+        await flashcardService.updateFolder(currentUser.id, folderId, patch);
+      } catch {
+        try {
+          useAppStore.getState().setCustomFolders(await userService.getFolders());
+        } catch (reconcileErr) {
+          debugLogger.error('Supabase', "Failed to reconcile folders after edit error:", reconcileErr);
+        }
+        useAppStore.getState().setSyncError("Couldn't save the folder — check your connection and try again.");
+      }
+    }
+    setIsCreatingFolder(false);
+  };
+
   const handleCreateFolder = async () => {
     if (!newFolderName.trim()) return;
+    if (editFolderId) {
+      await confirmEditFolder(editFolderId);
+      return;
+    }
 
     setIsCreatingFolder(true);
     const folderId = crypto.randomUUID();
@@ -213,6 +252,22 @@ export function useLibrary() {
       await flashcardService.deleteFlashcard(currentUser.id, cid);
     } else {
       deleteLocalFlashcard(cid);
+    }
+  };
+
+  const [editCardTarget, setEditCardTarget] = useState<UserFlashcard | null>(null);
+  const saveEditedCard = async (patch: FlashcardTextPatch) => {
+    if (!editCardTarget) return;
+    const cardId = editCardTarget.id;
+    setEditCardTarget(null);
+    if (currentUser) {
+      try {
+        await flashcardService.updateFlashcard(currentUser.id, cardId, patch);
+      } catch {
+        useAppStore.getState().setSyncError("Couldn't save the card — check your connection and try again.");
+      }
+    } else {
+      useAppStore.getState().updateLocalFlashcard(cardId, patch);
     }
   };
 
@@ -351,6 +406,11 @@ export function useLibrary() {
     setSelectedFolderColorId,
     isCreatingFolder,
     handleCreateFolder,
+    editFolderId,
+    openEditFolder,
+    editCardTarget,
+    setEditCardTarget,
+    saveEditedCard,
     deleteTargetId,
     setDeleteTargetId,
     handleDeleteCustomCard,

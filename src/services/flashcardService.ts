@@ -4,6 +4,10 @@ import { UserFlashcard, UserFolder } from "../types/models";
 
 type FlashcardListener = (cards: UserFlashcard[]) => void;
 
+export type FlashcardTextPatch = Partial<
+  Pick<UserFlashcard, 'simplified' | 'traditional' | 'pinyin' | 'translation' | 'notes'>
+>;
+
 /**
  * Custom flashcard + folder writes with an observable flashcard cache.
  *
@@ -124,20 +128,30 @@ class FlashcardService {
     }
   }
 
-  async updateFlashcardTranslation(userId: string, cardId: string, translation: string) {
+  /** Edits the given text fields only; empty optional fields are stored as null. */
+  async updateFlashcard(userId: string, cardId: string, patch: FlashcardTextPatch) {
     try {
       if (this.currentUserId === userId && this.cachedFlashcards) {
         this.cachedFlashcards = this.cachedFlashcards.map((c) =>
-          c.id === cardId ? { ...c, translation } : c,
+          c.id === cardId ? { ...c, ...patch } : c,
         );
         this.notifyFlashcards();
       }
 
       const { error } = await supabase
         .from("user_flashcards")
-        .update({ translation })
+        .update({
+          ...(patch.simplified !== undefined && { simplified: patch.simplified }),
+          ...(patch.translation !== undefined && { translation: patch.translation }),
+          ...(patch.traditional !== undefined && { traditional: patch.traditional || null }),
+          ...(patch.pinyin !== undefined && { pinyin: patch.pinyin || null }),
+          ...(patch.notes !== undefined && { notes: patch.notes || null }),
+        })
         .match({ id: cardId, user_id: userId });
-      if (error) throw error;
+      if (error) {
+        await this.refetchFlashcards(userId);
+        throw error;
+      }
     } catch (e) {
       debugLogger.error('Supabase', "Error updating flashcard", e);
       throw e;
@@ -255,6 +269,17 @@ class FlashcardService {
     );
     if (error) {
       debugLogger.error('Supabase', "Error importing guest folders", error);
+      throw error;
+    }
+  }
+
+  async updateFolder(userId: string, folderId: string, patch: { name: string; color: string }) {
+    const { error } = await supabase
+      .from("user_folders")
+      .update({ name: patch.name, color: patch.color })
+      .match({ id: folderId, user_id: userId });
+    if (error) {
+      debugLogger.error('Supabase', "Error updating folder", error);
       throw error;
     }
   }

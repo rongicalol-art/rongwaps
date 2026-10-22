@@ -158,7 +158,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     const translation = next.join('; ');
     for (const cardId of savedFolderCardsMap.values()) {
       if (currentUser) {
-        void flashcardService.updateFlashcardTranslation(currentUser.id, cardId, translation).catch(() => {});
+        void flashcardService.updateFlashcard(currentUser.id, cardId, { translation }).catch(() => {});
       } else {
         updateLocalFlashcard(cardId, { translation });
       }

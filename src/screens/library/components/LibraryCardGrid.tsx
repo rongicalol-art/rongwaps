@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { AppIcon } from '../../../lib/widgets';
 import { SpellCard } from './SpellCard';
+import type { MenuPoint } from './LibraryContextMenu';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { UserFlashcard } from '../../../types/models';
 
@@ -11,6 +12,7 @@ interface LibraryCardGridProps {
   onAddCard?: () => void;
   onRemoveCard: (card: DBDictionaryEntry | UserFlashcard) => void;
   onOpenCard: (card: DBDictionaryEntry | UserFlashcard) => void;
+  onCardMenu?: (card: DBDictionaryEntry | UserFlashcard, point: MenuPoint) => void;
   isSelecting?: boolean;
   selectedKeys?: ReadonlySet<string>;
   getItemKey?: (card: DBDictionaryEntry | UserFlashcard) => string;
@@ -24,6 +26,7 @@ export function LibraryCardGrid({
   onAddCard,
   onRemoveCard,
   onOpenCard,
+  onCardMenu,
   isSelecting = false,
   selectedKeys,
   getItemKey,
@@ -63,6 +66,7 @@ export function LibraryCardGrid({
               index={idx}
               onRemove={onRemoveCard}
               onOpen={onOpenCard}
+              onMenu={onCardMenu}
               selecting={isSelecting}
               selected={Boolean(selectedKeys && getItemKey && selectedKeys.has(getItemKey(item)))}
               onToggleSelect={onToggleSelect}

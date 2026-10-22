@@ -15,6 +15,8 @@ interface FolderModalProps {
   setSelectedColorId: (id: string) => void;
   isCreatingFolder: boolean;
   handleCreateFolder: () => void;
+  /** `edit` renames/recolours an existing folder; the submit handler is the same prop. */
+  mode?: 'create' | 'edit';
 }
 
 export function FolderModal({
@@ -26,7 +28,9 @@ export function FolderModal({
   setSelectedColorId,
   isCreatingFolder,
   handleCreateFolder,
+  mode = 'create',
 }: FolderModalProps) {
+  const isEdit = mode === 'edit';
   const inputRef = useRef<HTMLInputElement>(null);
   const currentColor = resolveFolderColor(selectedColorId);
 
@@ -40,8 +44,8 @@ export function FolderModal({
         className="rounded-feature p-6"
       >
         <Dialog.Header>
-          <Dialog.Title>New Folder</Dialog.Title>
-          <Dialog.Close label="Close new folder" />
+          <Dialog.Title>{isEdit ? 'Edit folder' : 'New Folder'}</Dialog.Title>
+          <Dialog.Close label={isEdit ? 'Close edit folder' : 'Close new folder'} />
         </Dialog.Header>
         <Dialog.Body>
       {/* Live Folder Preview */}
@@ -116,10 +120,10 @@ export function FolderModal({
         onClick={handleCreateFolder}
         disabled={!newFolderName.trim()}
         loading={isCreatingFolder}
-        loadingLabel="Creating folder"
+        loadingLabel={isEdit ? 'Saving folder' : 'Creating folder'}
         className="uppercase tracking-widest"
       >
-        Create folder
+        {isEdit ? 'Save' : 'Create folder'}
       </ActionButton>
         </Dialog.Body>
       </Dialog.Content>

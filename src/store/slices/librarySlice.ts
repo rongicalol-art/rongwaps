@@ -31,6 +31,7 @@ export interface LibraryState {
   setCustomFolders: (folders: { id: string; name: string; color: string }[]) => void;
   addCustomFolder: (name: string, color: string, id?: string) => void;
   deleteCustomFolder: (id: string) => void;
+  updateCustomFolder: (id: string, patch: { name: string; color: string }) => void;
   /**
    * Id of the user the current folder list was last pulled from on this
    * device. Null until folders have ever been pulled for an account — the
@@ -79,6 +80,9 @@ export function createLibrarySlice(set: SetState): LibraryState {
     }),
     deleteCustomFolder: (id) => set((s) => ({
       customFolders: s.customFolders.filter(f => f.id !== id),
+    })),
+    updateCustomFolder: (id, patch) => set((s) => ({
+      customFolders: s.customFolders.map(f => (f.id === id ? { ...f, ...patch } : f)),
     })),
     foldersSyncedUserId: null,
     setFoldersSyncedUserId: (userId) => set({ foldersSyncedUserId: userId }),

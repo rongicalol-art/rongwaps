@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ActionButton, SectionEyebrow } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
+import type { MenuPoint } from './LibraryContextMenu';
 import { LibraryRecentChips, type RecentItem } from './LibraryRecentChips';
 
 interface LibraryCollectionSummary {
@@ -21,7 +22,7 @@ interface LibraryHomeViewProps {
   searchQuery: string;
   onSearchChange: (value: string) => void;
   onSelectCollection: (id: string) => void;
-  onDeleteFolder: (id: string, name: string) => void;
+  onFolderMenu: (id: string, point: MenuPoint) => void;
   onCreateFolder: () => void;
   onSelectWord?: (word: string) => void;
 }
@@ -35,7 +36,7 @@ export function LibraryHomeView({
   searchQuery,
   onSearchChange,
   onSelectCollection,
-  onDeleteFolder,
+  onFolderMenu,
   onCreateFolder,
   onSelectWord,
 }: LibraryHomeViewProps) {
@@ -68,7 +69,7 @@ export function LibraryHomeView({
                   key={collection.id}
                   {...collection}
                   onSelect={() => onSelectCollection(collection.id)}
-                  onDeleteRequest={() => onDeleteFolder(collection.id, collection.title)}
+                  onMenuRequest={(point) => onFolderMenu(collection.id, point)}
                 />
               ))}
               {!normalizedSearch && (
