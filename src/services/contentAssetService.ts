@@ -1,5 +1,4 @@
 import type { CharacterJson } from 'hanzi-writer';
-import { lookupStrokeData } from './contentPacks';
 
 const jsonCache = new Map<string, unknown>();
 const jsonRequests = new Map<string, Promise<unknown>>();
@@ -41,15 +40,7 @@ export function loadHanziCharacterData(character: string): Promise<CharacterJson
   if (existing) return existing;
 
   const request = (async () => {
-    // 1. Pack-first lookup: 100% offline-capable and IndexedDB-cached for course characters
-    try {
-      const packedData = await lookupStrokeData(character);
-      if (packedData) return packedData;
-    } catch {
-      // Fall through to global CDNs
-    }
-
-    // 2. Global CDNs fallback for general dictionary characters outside course vocabulary
+    // Public, versioned stroke data from open CDNs: edge-cached, kept by the browser, ~3 kB per character.
     const encodedCharacter = encodeURIComponent(character);
     let lastError: unknown;
 

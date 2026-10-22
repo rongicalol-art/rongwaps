@@ -150,6 +150,17 @@ const pwaPlugin = VitePWA({
         },
       },
       {
+        // Stroke-order data (open, version-pinned hanzi-writer-data): ~3 kB per character,
+        // kept so characters already viewed also draw offline.
+        urlPattern: /^https:\/\/(cdn\.jsdelivr\.net\/npm\/hanzi-writer-data@|unpkg\.com\/hanzi-writer-data@)/,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'rongwaps-stroke-data',
+          expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 365 },
+          cacheableResponse: { statuses: [200] },
+        },
+      },
+      {
         // LXGW WenKai TC (Chinese fallback behind the local TW-EduKai) is the
         // only remaining remote font. Cache it stale-while-revalidate.
         urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
