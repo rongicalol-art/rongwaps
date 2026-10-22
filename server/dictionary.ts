@@ -20,14 +20,16 @@ async function initialize() {
   starting = (async () => {
     const production = process.env.NODE_ENV === 'production';
     const workerData = { root: resolve(process.cwd(), production ? 'dist' : 'public'), generatedRoot: resolve(process.cwd(), production ? 'dist' : '.vite/study') };
+    // A capped heap makes V8 collect early instead of growing toward the host's memory limit (Render: 512 MB total).
+    const resourceLimits = { maxOldGenerationSizeMb: 128, maxYoungGenerationSizeMb: 8 };
     let instance: Worker;
     if (process.env.NODE_ENV === 'production') {
-      instance = new Worker(new URL('./dictionary.worker.js', import.meta.url), { workerData });
+      instance = new Worker(new URL('./dictionary.worker.js', import.meta.url), { workerData, resourceLimits });
     } else {
       // Compile the development worker with the existing toolchain; no loader assumptions.
       const { build } = await import('esbuild');
       const bundle = await build({ entryPoints: ['server/dictionary.worker.ts'], bundle: true, platform: 'node', format: 'cjs', write: false });
-      instance = new Worker(bundle.outputFiles[0].text, { eval: true, workerData });
+      instance = new Worker(bundle.outputFiles[0].text, { eval: true, workerData, resourceLimits });
     }
     worker = instance;
     await new Promise<void>((resolveReady, reject) => {
