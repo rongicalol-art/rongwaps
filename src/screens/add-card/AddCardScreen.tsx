@@ -10,6 +10,7 @@ const CARD_SIZE = 'w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] h-[min
 export function AddCardScreen({ onClose }: AddCardScreenProps) {
   const {
     folderName,
+    folderAccent,
     view,
     direction,
     cardData,
@@ -31,10 +32,12 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
   const hasResults = view === 'front' && suggestions.length > 0;
   const cardTone = isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-border hover:bg-ui-hover';
   const cardBase = `${CARD_SIZE} relative bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col p-6 transition-colors overflow-hidden`;
+  const hint = 'mb-4 text-center text-lg font-bold text-ui-muted-strong';
   const slide = direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back';
 
   const renderFrontScreen = () => (
     <div key="front" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${slide}`}>
+      <p className={hint}>Type Chinese, pinyin or English</p>
       <div onClick={() => frontInputRef.current?.focus()} className={`${cardBase} ${cardTone}`}>
         <div className={`flex flex-col items-center justify-center gap-3 ${hasResults ? 'shrink-0' : 'flex-1'}`}>
           <input
@@ -87,6 +90,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
 
   const renderBackScreen = () => (
     <div key="back" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${slide}`}>
+      <p className={hint}>What does it mean?</p>
       <div onClick={() => meaningInputRef.current?.focus()} className={`${cardBase} ${cardTone}`}>
         <div className="flex items-baseline gap-2 self-start bg-ui-surface px-3 py-1.5 rounded-xs border-2 border-b-[length:var(--depth-sm)] border-ui-border">
           <span className="text-xl text-brand-primary font-chinese font-bold leading-none">{cardData.front}</span>
@@ -132,7 +136,12 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
       <ScreenHeader
         variant="panel"
         tone="practice"
-        title={folderName}
+        leftContent={(
+          <span className="flex min-w-0 items-center gap-2 text-sm font-black text-ui-ink-strong sm:text-base">
+            <AppIcon name="folder" size={22} className={folderAccent} />
+            <span className="truncate max-w-40">{folderName}</span>
+          </span>
+        )}
         progress={view === 'front' ? 50 : 100}
         onBack={view === 'back' ? handleBack : undefined}
         onClose={view === 'front' ? onClose : undefined}
