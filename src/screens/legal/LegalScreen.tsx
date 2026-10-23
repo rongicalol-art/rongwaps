@@ -4,20 +4,20 @@ import { StickyWorkspaceHeader } from '../../lib/widgets';
 import type { LegalPage } from '../../app/routes';
 import { LEGAL_EFFECTIVE_DATE } from './legalMeta';
 import { AboutContent } from './AboutContent';
-import { CreditsContent } from './CreditsContent';
+import { SourcesContent } from './SourcesContent';
 import { PrivacyPolicyContent } from './PrivacyPolicyContent';
 import { TermsContent } from './TermsContent';
 
 /** `dated`: binding documents show their effective date. */
 const PAGES: Record<LegalPage, { title: string; Content: () => React.JSX.Element; dated?: boolean }> = {
   about: { title: "About Ron's Mandarin", Content: AboutContent },
-  credits: { title: 'Credits', Content: CreditsContent },
+  sources: { title: 'Sources & Licenses', Content: SourcesContent },
   privacy: { title: 'Privacy Policy', Content: PrivacyPolicyContent, dated: true },
   terms: { title: 'Terms of Service', Content: TermsContent, dated: true },
 };
 
 /**
- * Public About, Credits or legal page. Standalone on purpose: it renders outside the workspace
+ * Public About, Sources & Licenses or legal page. Standalone on purpose: it renders outside the workspace
  * shell, so it needs no sign-in and is not covered by the sign-in window.
  * It owns its own scroller because the document itself never scrolls.
  */

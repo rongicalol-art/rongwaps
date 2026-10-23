@@ -17,13 +17,13 @@ export function tabFromPathname(pathname: string): TabRoute | null {
 }
 
 /**
- * Public pages (About, Credits, legal). They render outside the workspace shell (no sign-in, no
+ * Public pages (About, Sources & Licenses, legal). They render outside the workspace shell (no sign-in, no
  * sync, no side nav) so they can be linked from the sign-in window and read by
  * anyone, including people who have not created an account.
  */
 export const LEGAL_ROUTES = {
   about: '/about',
-  credits: '/credits',
+  sources: '/sources',
   privacy: '/privacy',
   terms: '/terms',
 } as const;

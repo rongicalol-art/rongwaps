@@ -80,7 +80,7 @@ export function SettingsAccountSection({ onNavigate, onResetProgress }: { onNavi
           <Link to={LEGAL_ROUTES.privacy} onClick={onNavigate} className={linkClass}>Privacy Policy</Link>
           <Link to={LEGAL_ROUTES.terms} onClick={onNavigate} className={linkClass}>Terms of Service</Link>
           <Link to={LEGAL_ROUTES.about} onClick={onNavigate} className={linkClass}>About</Link>
-          <Link to={LEGAL_ROUTES.credits} onClick={onNavigate} className={linkClass}>Credits</Link>
+          <Link to={LEGAL_ROUTES.sources} onClick={onNavigate} className={linkClass}>Sources &amp; Licenses</Link>
         </div>
       </div>
 

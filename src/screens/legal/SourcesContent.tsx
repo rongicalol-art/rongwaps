@@ -1,5 +1,14 @@
 import type { ReactNode } from 'react';
-import { ContactLink, LegalList, LegalParagraph, LegalSection, legalLinkClass } from './LegalBlocks';
+import { Link } from 'react-router';
+import { LEGAL_ROUTES } from '../../app/routes';
+import { ContactLink, LegalList, LegalParagraph, LegalSection, LegalSummary, legalLinkClass } from './LegalBlocks';
+
+const SUMMARY = [
+  '本頁列出 App 使用的所有外部內容來源及其授權條款。',
+  '課程內容依循《時代華語》（淡江大學華語中心編著，正中書局出版），課本素材之著作權屬原權利人；本 App 與出版社無隸屬或背書關係。',
+  '其他音檔、字形資料、字型、圖示與程式庫均依各自的開放授權使用，相關授權不受本 App 使用條款限制。',
+  '權利人如有疑慮，請來信聯絡，我們會儘速處理。',
+];
 
 function Ext({ href, children }: { href: string; children: ReactNode }) {
   return (
@@ -11,11 +20,19 @@ function Ext({ href, children }: { href: string; children: ReactNode }) {
 
 /**
  * Every third-party source the shipped app uses. When a pack, font, voice or
- * library with attribution terms is added, credit it here in the same change.
+ * library with attribution terms is added, list it here in the same change.
  */
-export function CreditsContent() {
+export function SourcesContent() {
   return (
     <>
+      <LegalSummary points={SUMMARY} />
+
+      <LegalParagraph>
+        Ron&apos;s Mandarin is built on the work of many people. This page lists every outside source the app uses,
+        who made it, and the license it is used under. Where a source has an open license, that license applies
+        to that material, and nothing in our Terms limits the rights it gives you.
+      </LegalParagraph>
+
       <LegalSection title="Textbook">
         <LegalParagraph>
           Lessons follow <strong>時代華語 Modern Chinese</strong>, Books 1 to 4, edited by the Tamkang University
@@ -113,6 +130,21 @@ export function CreditsContent() {
             </>,
           ]}
         />
+      </LegalSection>
+
+      <LegalSection title="What we made">
+        <LegalParagraph>
+          Everything not listed above was made for Ron&apos;s Mandarin: the app&apos;s code and design, illustrations,
+          memory hooks, character explanations, practice exercises and the way lessons are arranged. These are
+          not open-licensed; see the <Link to={LEGAL_ROUTES.terms} className={legalLinkClass}>Terms</Link>.
+        </LegalParagraph>
+      </LegalSection>
+
+      <LegalSection title="Missing something?">
+        <LegalParagraph>
+          If you made something the app uses and it is missing or credited wrongly here, email <ContactLink /> and
+          we will fix it.
+        </LegalParagraph>
       </LegalSection>
     </>
   );
