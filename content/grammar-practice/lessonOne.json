@@ -748,7 +748,7 @@
         "id": "l1g1-own-pick",
         "kind": "listen-pick",
         "source": "own",
-        "prompt": "Which did you hear?",
+        "prompt": "Tap what you hear.",
         "clip": {
           "reading": "B1L01-R01",
           "line": 3,
@@ -1016,7 +1016,7 @@
         "id": "l1g2-own-listen",
         "source": "own",
         "kind": "listen-build",
-        "prompt": "Build what you hear.",
+        "prompt": "Tap what you hear.",
         "clip": {
           "reading": "B1L01-R01",
           "line": 4,
@@ -1092,7 +1092,7 @@
         "id": "l1g2-own-pick",
         "kind": "listen-pick",
         "source": "own",
-        "prompt": "Which did you hear?",
+        "prompt": "Tap what you hear.",
         "clip": {
           "reading": "B1L01-R01",
           "line": 1,

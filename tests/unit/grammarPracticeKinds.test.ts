@@ -140,7 +140,7 @@ test('order-build: a missing repeated word keeps the first occurrence correct', 
 });
 
 const listen: ListenBuildItem = {
-  id: 'ln', source: 'own', kind: 'listen-build', prompt: 'Build what you hear.',
+  id: 'ln', source: 'own', kind: 'listen-build', prompt: 'Tap what you hear.',
   clip: { reading: 'B1L01-R01', line: 4, file: 'B1-01-1-1.mp3', start: 22.69, end: 24.52 },
   tiles: [tile('漂亮'), tile('是'), tile('她'), tile('不'), tile('很')],
   accepted: [{ order: ['她', '很', '漂亮'], sentence: sentence('她很漂亮。') }],

@@ -1628,7 +1628,7 @@
                 "id": "l1g1-own-pick",
                 "kind": "listen-pick",
                 "source": "own",
-                "prompt": "Which did you hear?",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L01-R01",
                   "line": 3,
@@ -2467,7 +2467,7 @@
                 "id": "l1g2-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L01-R01",
                   "line": 4,
@@ -2549,7 +2549,7 @@
                 "id": "l1g2-own-pick",
                 "kind": "listen-pick",
                 "source": "own",
-                "prompt": "Which did you hear?",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L01-R01",
                   "line": 1,
@@ -9024,7 +9024,7 @@
                 "id": "l2g03-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L02-R01",
                   "line": 1,
@@ -15687,7 +15687,7 @@
                 "id": "l3-g2-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L03-R01",
                   "line": 1,
@@ -32917,7 +32917,7 @@
                 "id": "l04-g5-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "page": "B1L04-G05-P105",
                   "file": "B1-04-2-3.mp3",
@@ -40623,7 +40623,7 @@
                 "id": "l05-g04-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L05-R02",
                   "line": 6,
@@ -55316,7 +55316,7 @@
                 "id": "l7g2-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L07-R03",
                   "line": 3,
@@ -65081,7 +65081,7 @@
                 "id": "l8g2-own-listen",
                 "source": "own",
                 "kind": "listen-build",
-                "prompt": "Build what you hear.",
+                "prompt": "Tap what you hear.",
                 "clip": {
                   "reading": "B1L08-R03",
                   "line": 5,

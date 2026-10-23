@@ -135,7 +135,7 @@ function clipIssues(clip: ListenClip, item: ListenBuildItem | ListenPickItem): s
   } else if (!/^B1L\d{2}-R\d{2}$/.test(clip.reading) || !Number.isInteger(clip.line) || clip.line < 0) problems.push(`clip must name its dialogue (B1L02-R01) and a line index, not ${clip.reading} line ${clip.line}.`);
   if (!/^B1-\d{2}-\d-\d\.mp3$/.test(clip.file)) problems.push(`clip file ${clip.file} is not a book track (B1-02-1-1.mp3).`);
   if (!(clip.start >= 0 && clip.end > clip.start && clip.end - clip.start <= MAX_CLIP_SECONDS)) problems.push(`clip ${clip.start}–${clip.end}s must be a stretch of at most ${MAX_CLIP_SECONDS}s.`);
-  if (!item.prompt?.trim()) problems.push('prompt is required: the task, e.g. "Build what you hear."');
+  if (!item.prompt?.trim()) problems.push('prompt is required: the task, e.g. "Tap what you hear."');
   if (HAN.test(item.prompt ?? '') || HAN.test(item.sub ?? '')) problems.push('the title and sub must not show Chinese: it would give the answer away.');
   return problems;
 }

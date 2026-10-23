@@ -227,7 +227,7 @@ export type ListenClip = DialogueClip | GrammarTrackClip;
 
 /**
  * Listen, then build: the learner hears a stretch of a book dialogue and builds what was said on
- * the free line, exactly as in `order-build`. The title is the task ("Build what you hear") and no
+ * the free line, exactly as in `order-build`. The title is the task ("Tap what you hear") and no
  * Chinese shows before the answer. Exactly one order is right: the one that was said.
  */
 export interface ListenBuildItem extends PracticeItemBase, Pick<OrderBuildItem, 'tiles' | 'accepted' | 'repairs' | 'fallbackRepair'> {

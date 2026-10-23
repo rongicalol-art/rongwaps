@@ -25,7 +25,7 @@ export interface GrammarPracticeViewProps {
   shortcutsDisabled?: boolean;
 }
 
-const QUIET_KINDS = new Set(['listen-build', 'listen-pick', 'match-pairs']);
+const QUIET_KINDS = new Set(['match-pairs']);
 
 /**
  * The book exercise after a grammar page, one item at a time in a single
@@ -48,7 +48,7 @@ export function GrammarPracticeView({
   const checkRef = useRef<(() => void) | null>(null);
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
-  // The play button, or the two columns, already say what to do; elsewhere the item says so with `quiet`.
+  // The two columns already say what to do; elsewhere the item says so with `quiet`.
   const title = item.quiet || QUIET_KINDS.has(item.kind) ? null : item.prompt ?? practice.title;
   const inlineBank =item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
 
