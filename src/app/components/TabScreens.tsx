@@ -70,10 +70,6 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     setActiveActivity('flashcards-review');
   }, [setActiveActivity]);
 
-  const handleAddCard = useCallback(() => {
-    setActiveActivity('create-card');
-  }, [setActiveActivity]);
-
   const handlePlayFlashcards = useCallback(() => {
     setActiveActivity('flashcards-library');
   }, [setActiveActivity]);
@@ -111,7 +107,6 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
             onStartReview={handleStartReview}
             onStartMoreReview={handleStartMoreReview}
             onNavigateToPath={handleNavigateToPath}
-            onAddCard={handleAddCard}
             onPlayFlashcards={handlePlayFlashcards}
             menuToggle={menuToggle}
             onProfileClick={handleProfileClick}

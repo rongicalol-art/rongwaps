@@ -1,13 +1,9 @@
 import { debugLogger } from '../../../utils/debug/debugLogger';
-import { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
 import { useDictionarySearch, SearchResult } from '../../../hooks/useDictionarySearch';
-
-type ViewState = 'front' | 'back';
-type Direction = 'fwd' | 'back' | 'none';
-
 import { resolveFolderColor } from '../../../utils/folderColors';
 import { meaningText } from '../../../utils/vocabulary/dictionaryDefinitions';
 
@@ -16,168 +12,113 @@ export function useAddCard(onClose: () => void) {
   const customFolders = useAppStore((state) => state.customFolders);
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const addLocalFlashcard = useAppStore((state) => state.addLocalFlashcard);
-  
+
   const folderId = libraryActiveFolder;
-  const targetFolder = customFolders.find(f => f.id === folderId);
+  const targetFolder = customFolders.find((f) => f.id === folderId);
   const folderName = folderId === 'starred' ? 'Starred' : targetFolder?.name || 'Library';
-  const folderAccent = folderId === 'starred'
-    ? 'text-feedback-warning-edge'
-    : targetFolder
-    ? resolveFolderColor(targetFolder.color).accent
-    : 'text-brand-primary';
-  
-  // App State
-  const [view, setView] = useState<ViewState>('front');
-  const [direction, setDirection] = useState<Direction>('none');
-  const [cardData, setCardData] = useState({ 
-    front: '', 
-    meaning: '', 
-    pinyin: '', 
-    availableMeanings: [] as string[], 
-    measureWords: [] as string[] 
+  const folderAccent =
+    folderId === 'starred'
+      ? 'text-feedback-warning-edge'
+      : targetFolder
+      ? resolveFolderColor(targetFolder.color).accent
+      : 'text-brand-primary';
+
+  const [cardData, setCardData] = useState({
+    front: '',
+    meaning: '',
+    pinyin: '',
+    notes: '',
+    availableMeanings: [] as string[],
+    measureWords: [] as string[],
   });
-  
-  // UI State
-  const [isFocused, setIsFocused] = useState(false);
+
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
   const frontInputRef = useRef<HTMLInputElement>(null);
-  const meaningInputRef = useRef<HTMLTextAreaElement>(null);
-  
+
   // Smart Dictionary Suggestions
-  const { results: suggestions, isSearching } = useDictionarySearch(cardData.front);
+  const { results: suggestions } = useDictionarySearch(cardData.front);
 
-  // Auto-resize textarea
-  useLayoutEffect(() => {
-    if (meaningInputRef.current) {
-      meaningInputRef.current.style.height = 'auto';
-      meaningInputRef.current.style.height = meaningInputRef.current.scrollHeight + 'px';
-    }
-  }, [cardData.meaning, view]);
-
-  // Auto-focus inputs on screen change
+  // Auto-focus on mount
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (view === 'front' && frontInputRef.current) {
-        frontInputRef.current.focus();
-      } else if (view === 'back' && meaningInputRef.current) {
-        meaningInputRef.current.focus();
-      }
+      frontInputRef.current?.focus();
     }, 100);
     return () => clearTimeout(timer);
-  }, [view]);
+  }, []);
 
   const handleSelectSuggestion = (entry: SearchResult) => {
-    const defs = entry.definitions && Array.isArray(entry.definitions) ? entry.definitions : [];
+    const defs =
+      entry.definitions && Array.isArray(entry.definitions)
+        ? entry.definitions
+        : typeof entry.definitions === 'string'
+        ? [entry.definitions]
+        : Object.values(entry.definitions as Record<string, string>);
     const firstDef = defs.length > 0 ? defs[0] : '';
 
-    setCardData({
-      ...cardData,
+    setCardData((prev) => ({
+      ...prev,
       front: entry.traditional || entry.simplified,
       meaning: firstDef,
       pinyin: entry.pinyin_accented || '',
       availableMeanings: defs,
-      measureWords: entry.measure_words || []
-    });
-    
-    setDirection('fwd');
-    setView('back');
-  };
-
-  const handleNext = () => {
-    if (cardData.front.trim()) {
-      const exactMatch = suggestions.find(s => s.traditional === cardData.front.trim() || s.simplified === cardData.front.trim());
-      let newMeanings = cardData.availableMeanings;
-      let newMeaning = cardData.meaning;
-      let newPinyin = cardData.pinyin;
-      let newMeasureWords = cardData.measureWords;
-
-      if (exactMatch && newMeanings.length === 0) {
-        newMeanings = Array.isArray(exactMatch.definitions) ? exactMatch.definitions : [];
-        if (!newMeaning && newMeanings.length > 0) newMeaning = newMeanings[0];
-        if (!newPinyin) newPinyin = exactMatch.pinyin_accented || '';
-        if (newMeasureWords.length === 0 && exactMatch.measure_words) newMeasureWords = exactMatch.measure_words;
-      }
-
-      if (newMeanings.length > 0 || newPinyin || newMeaning || newMeasureWords.length > 0) {
-        setCardData({
-          ...cardData,
-          meaning: newMeaning || cardData.meaning,
-          pinyin: newPinyin || cardData.pinyin,
-          availableMeanings: newMeanings,
-          measureWords: newMeasureWords
-        });
-      }
-
-      setDirection('fwd');
-      setView('back');
-    }
-  };
-
-  const handleBack = () => {
-    setDirection('back');
-    setView('front');
+      measureWords: entry.measure_words || [],
+    }));
   };
 
   const handleSave = async () => {
-    if (cardData.meaning.trim() && cardData.front.trim()) {
-      const newCard = {
-        id: crypto.randomUUID(),
-        userId: currentUser?.id || 'guest',
-        folderId: folderId === 'starred' ? 'custom' : folderId,
-        simplified: cardData.front.trim(),
-        traditional: cardData.front.trim(),
-        pinyin: cardData.pinyin.trim(),
-        translation: meaningText(cardData.meaning),
-        measure_words: cardData.measureWords && cardData.measureWords.length > 0 ? cardData.measureWords : undefined,
-        createdAt: Date.now()
-      };
+    if (!cardData.front.trim() || !cardData.meaning.trim() || saving) return;
+    setSaving(true);
 
-      // Close the screen first so the exit transition starts instantly
+    const newCard = {
+      id: crypto.randomUUID(),
+      userId: currentUser?.id || 'guest',
+      folderId: folderId === 'starred' ? 'custom' : folderId,
+      simplified: cardData.front.trim(),
+      traditional: cardData.front.trim(),
+      pinyin: cardData.pinyin.trim() || undefined,
+      translation: meaningText(cardData.meaning),
+      notes: cardData.notes.trim() || undefined,
+      measure_words:
+        cardData.measureWords && cardData.measureWords.length > 0
+          ? cardData.measureWords
+          : undefined,
+      createdAt: Date.now(),
+    };
+
+    try {
+      if (currentUser) {
+        await flashcardService.createFlashcard(newCard);
+      } else {
+        addLocalFlashcard(newCard);
+      }
       onClose();
-
-      // Defer the state write until the transition is complete
-      setTimeout(async () => {
-        try {
-          if (currentUser) {
-            await flashcardService.createFlashcard(newCard);
-          } else {
-            addLocalFlashcard(newCard);
-          }
-        } catch (e) {
-          debugLogger.error('Supabase', "Failed to save flashcard asynchronously:", e);
-        }
-      }, 350);
+    } catch (e) {
+      debugLogger.error('Supabase', 'Failed to save flashcard:', e);
+      setSaveError("Couldn't save card. Please try again.");
+      setSaving(false);
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent, action: () => void) => {
-    if (e.key === 'Enter') {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !(e.target instanceof HTMLTextAreaElement)) {
       e.preventDefault();
-      action();
+      void handleSave();
     }
   };
 
   return {
     folderName,
     folderAccent,
-    view,
-    setView,
-    direction,
-    setDirection,
     cardData,
     setCardData,
-    isFocused,
-    setIsFocused,
     saveError,
     setSaveError,
+    saving,
     frontInputRef,
-    meaningInputRef,
     suggestions,
-    isSearching,
     handleSelectSuggestion,
-    handleNext,
-    handleBack,
     handleSave,
-    handleKeyDown
+    handleKeyDown,
   };
 }

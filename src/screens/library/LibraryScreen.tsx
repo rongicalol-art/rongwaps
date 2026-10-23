@@ -24,6 +24,7 @@ import { LibraryHomeView } from './components/LibraryHomeView';
 import { LibrarySearchField } from './components/LibrarySearchField';
 import { MoveCardsDialog } from './MoveCardsDialog';
 import { EditCardDialog } from './EditCardDialog';
+import { AddCardDialog } from './AddCardDialog';
 import { LibraryContextMenu, type LibraryMenuAction, type MenuPoint } from './components/LibraryContextMenu';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
@@ -111,6 +112,15 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
     },
     [isStarred, toggleFavorite, handleDeleteCustomCard]
   );
+
+  const [isAddCardOpen, setIsAddCardOpen] = useState(false);
+  const handleOpenAddCard = useCallback(() => {
+    if (onAddCard) {
+      onAddCard();
+      return;
+    }
+    setIsAddCardOpen(true);
+  }, [onAddCard]);
 
   const [menu, setMenu] = useState<{ kind: 'folder' | 'card'; id: string; name: string; point: MenuPoint } | null>(null);
   const closeMenu = useCallback(() => setMenu(null), []);
@@ -266,8 +276,8 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                   isStarred ? 'Save words from Dictionary.' : 'Create your first flashcard.'
                 }
                 action={
-                  !isStarred && onAddCard ? (
-                    <ActionButton variant="primary" onClick={onAddCard} className="w-auto px-7">
+                  !isStarred ? (
+                    <ActionButton variant="primary" onClick={handleOpenAddCard} className="w-auto px-7">
                       <AppIcon name="add" size={18} />
                       Add card
                     </ActionButton>
@@ -279,7 +289,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 items={items}
                 isStarred={isStarred}
                 libraryActiveFolder={libraryActiveFolder}
-                onAddCard={onAddCard}
+                onAddCard={handleOpenAddCard}
                 onRemoveCard={handleRemoveCard}
                 onOpenCard={handleOpenCard}
                 onCardMenu={handleCardMenu}
@@ -303,6 +313,12 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         isCreatingFolder={isCreatingFolder}
         handleCreateFolder={handleCreateFolder}
         mode={editFolderId ? 'edit' : 'create'}
+      />
+      <AddCardDialog
+        open={isAddCardOpen}
+        onClose={() => setIsAddCardOpen(false)}
+        folderId={libraryActiveFolder}
+        folderTitle={activeCollection?.title}
       />
       <EditCardDialog card={editCardTarget} onSave={saveEditedCard} onClose={() => setEditCardTarget(null)} />
       {menu && <LibraryContextMenu point={menu.point} label={menu.kind === 'folder' ? `${menu.name} folder options` : `${menu.name} card options`} actions={menuActions} onClose={closeMenu} />}
