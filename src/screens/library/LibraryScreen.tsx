@@ -151,12 +151,14 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         leftSlot={activeView === 'folder' ? activeCollection.icon : undefined}
         rightContent={
           activeView === 'folder' ? (
-            <span
-              className="whitespace-nowrap text-[11px] font-black uppercase tracking-widest text-ui-muted"
-              aria-label={`${totalCount} ${totalCount === 1 ? 'card' : 'cards'}`}
-            >
-              {totalCount} {totalCount === 1 ? 'card' : 'cards'}
-            </span>
+            totalCount > 0 ? (
+              <span
+                className="whitespace-nowrap text-[11px] font-black uppercase tracking-widest text-ui-muted"
+                aria-label={`${totalCount} ${totalCount === 1 ? 'card' : 'cards'}`}
+              >
+                {totalCount} {totalCount === 1 ? 'card' : 'cards'}
+              </span>
+            ) : undefined
           ) : onProfileClick ? (
             <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} />
           ) : undefined
@@ -248,31 +250,14 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                   </ActionButton>
                 }
               />
-            ) : items.length === 0 ? (
+            ) : items.length === 0 && (isStarred || !onAddCard) ? (
               <EmptyState
                 key="empty-folder"
-                icon={isStarred ? 'bookmarkFilled' : 'sparkles'}
-                iconBg={
-                  activeCollection?.lightBg ||
-                  (isStarred ? 'bg-feedback-warning/15' : 'bg-brand-primary-soft')
-                }
-                iconColor={
-                  isStarred
-                    ? 'text-feedback-warning-edge'
-                    : activeCollection?.accentColor || 'text-brand-primary'
-                }
+                icon={isStarred ? 'bookmarkFilled' : 'folder'}
+                iconBg={activeCollection?.lightBg || 'bg-feedback-warning/15'}
+                iconColor={isStarred ? 'text-feedback-warning-edge' : activeCollection?.accentColor}
                 title={isStarred ? 'No saved words' : 'No cards yet'}
-                description={
-                  isStarred ? 'Save words from Dictionary.' : 'Create your first flashcard.'
-                }
-                action={
-                  !isStarred && onAddCard ? (
-                    <ActionButton variant="primary" onClick={onAddCard} className="w-auto px-7">
-                      <AppIcon name="add" size={18} />
-                      Add card
-                    </ActionButton>
-                  ) : undefined
-                }
+                description={isStarred ? 'Save words from Dictionary.' : undefined}
               />
             ) : (
               <LibraryCardGrid
@@ -280,6 +265,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 isStarred={isStarred}
                 libraryActiveFolder={libraryActiveFolder}
                 onAddCard={onAddCard}
+                tone={activeCollection}
                 onRemoveCard={handleRemoveCard}
                 onOpenCard={handleOpenCard}
                 onCardMenu={handleCardMenu}

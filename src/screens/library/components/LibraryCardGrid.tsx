@@ -4,12 +4,22 @@ import { SpellCard } from './SpellCard';
 import type { MenuPoint } from './LibraryContextMenu';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { UserFlashcard } from '../../../types/models';
+import { cn } from '../../../utils/cn';
+
+/** Folder colour classes (from `resolveFolderColor`) used to tint the add tile. */
+interface FolderTone {
+  lightBg?: string;
+  accentColor?: string;
+  accentBg?: string;
+  onAccent?: string;
+}
 
 interface LibraryCardGridProps {
   items: (DBDictionaryEntry | UserFlashcard)[];
   isStarred: boolean;
   libraryActiveFolder: string;
   onAddCard?: () => void;
+  tone?: FolderTone;
   onRemoveCard: (card: DBDictionaryEntry | UserFlashcard) => void;
   onOpenCard: (card: DBDictionaryEntry | UserFlashcard) => void;
   onCardMenu?: (card: DBDictionaryEntry | UserFlashcard, point: MenuPoint) => void;
@@ -24,6 +34,7 @@ export function LibraryCardGrid({
   isStarred,
   libraryActiveFolder,
   onAddCard,
+  tone,
   onRemoveCard,
   onOpenCard,
   onCardMenu,
@@ -43,15 +54,27 @@ export function LibraryCardGrid({
     >
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {!isStarred && onAddCard && !isSelecting && (
-          <motion.button
-            whileTap={{ scale: 0.96 }}
+          <button
+            type="button"
             onClick={onAddCard}
             aria-label="Add a card to this folder"
-            className="flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center rounded-feature border-2 border-dashed border-ui-divider bg-ui-surface/60 text-center text-ui-muted outline-none transition-[border-color,background-color,color] duration-150 hover:border-brand-primary hover:bg-brand-primary/5 hover:text-brand-primary focus-ring"
+            className={cn(
+              'flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center gap-2.5 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border text-center outline-none transition-[transform,filter] duration-150 hover:brightness-[0.98] active:scale-[0.98] focus-ring',
+              tone?.lightBg ?? 'bg-brand-primary-soft',
+              tone?.accentColor ?? 'text-brand-primary'
+            )}
           >
-            <AppIcon name="add" size={26} className="mb-2" />
-            <span className="block text-[14px] font-black">Add card</span>
-          </motion.button>
+            <span
+              className={cn(
+                'flex h-10 w-10 items-center justify-center rounded-xl',
+                tone?.accentBg ?? 'bg-brand-primary',
+                tone?.onAccent ?? 'text-white'
+              )}
+            >
+              <AppIcon name="add" size={22} />
+            </span>
+            <span className="block text-[15px] font-black">Add card</span>
+          </button>
         )}
 
         {items.map((item, idx) => {
@@ -73,6 +96,15 @@ export function LibraryCardGrid({
             />
           );
         })}
+
+        {/* Empty folder: faint slots show where cards will go. Counts fill one row per breakpoint. */}
+        {items.length === 0 && !isStarred && onAddCard && (
+          <>
+            <div aria-hidden className="min-h-[140px] rounded-feature border-2 border-dashed border-ui-divider opacity-70" />
+            <div aria-hidden className="min-h-[140px] rounded-feature border-2 border-dashed border-ui-divider opacity-45" />
+            <div aria-hidden className="min-h-[140px] rounded-feature border-2 border-dashed border-ui-divider opacity-25 sm:hidden lg:block" />
+          </>
+        )}
       </div>
     </motion.div>
   );
