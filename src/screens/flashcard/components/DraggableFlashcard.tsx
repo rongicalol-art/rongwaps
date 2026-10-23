@@ -140,7 +140,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     const hasHook = showWordHookChip && Boolean(wordHook);
     return (
       <div
-        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-2"
+        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-2 transition-opacity duration-150 group-has-[[data-fc-word]:hover]/back:opacity-0 group-has-[[data-fc-word]:hover]/back:pointer-events-none"
         onPointerDown={(event) => event.stopPropagation()}
       >
         {hasHook && (
@@ -336,7 +336,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             ref={backRef}
             data-reveal={isFlipped}
             className={cn(
-              'absolute inset-0 flex flex-col',
+              'absolute inset-0 flex flex-col group/back',
               isHookOpen ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-5 sm:p-8 sm:pb-6',
               isFlipped ? 'pointer-events-auto' : 'pointer-events-none [&_[data-fc-word]]:pointer-events-auto',
             )}

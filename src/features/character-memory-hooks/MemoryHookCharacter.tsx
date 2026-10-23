@@ -148,12 +148,7 @@ export function MemoryHookCharacter({
   const showTooltipNow = () => {
     updateAnchor();
     setShowTooltip(true);
-    const rect = buttonRef.current?.getBoundingClientRect();
-    if (rect) {
-      const spaceAbove = rect.top;
-      const spaceBelow = window.innerHeight - rect.bottom;
-      setTooltipAbove(spaceAbove >= 220 && (spaceBelow < 220 || spaceAbove > spaceBelow + 80));
-    }
+    setTooltipAbove(true);
   };
 
   const arm = () => {
@@ -189,9 +184,7 @@ export function MemoryHookCharacter({
       return;
     }
     setTooltipAnchor({ x: rect.left + rect.width / 2, top: rect.top, bottom: rect.bottom });
-    const spaceAbove = rect.top;
-    const spaceBelow = window.innerHeight - rect.bottom;
-    setTooltipAbove(spaceAbove >= 220 && (spaceBelow < 220 || spaceAbove > spaceBelow + 80));
+    setTooltipAbove(rect.top >= 120 || rect.top >= window.innerHeight - rect.bottom);
   }, []);
 
   useEffect(() => {

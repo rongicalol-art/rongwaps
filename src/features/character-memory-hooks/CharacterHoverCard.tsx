@@ -123,21 +123,9 @@ export function CharacterHoverCard({
     const spaceBelow = window.innerHeight - anchor.bottom;
     const needed = measuredHeight + TOOLTIP_GAP + EDGE;
 
+    // Prefer placing ABOVE unless space above is critically constrained
     const canFitAbove = spaceAbove >= needed;
-    const canFitBelow = spaceBelow >= needed;
-
-    let isAbove: boolean;
-    if (canFitAbove && !canFitBelow) {
-      isAbove = true;
-    } else if (!canFitAbove && canFitBelow) {
-      isAbove = false;
-    } else if (canFitAbove && canFitBelow) {
-      // Both fit: if the character is in the upper 48% of the viewport (common in flashcards),
-      // place below to avoid obscuring card header controls (lightbulb, brush, bookmark).
-      isAbove = spaceAbove > spaceBelow && anchor.top > window.innerHeight * 0.48;
-    } else {
-      isAbove = spaceAbove > spaceBelow;
-    }
+    const isAbove = canFitAbove || spaceAbove >= spaceBelow;
 
     const left = Math.min(
       Math.max(EDGE, anchor.x - measuredWidth / 2),
@@ -158,7 +146,7 @@ export function CharacterHoverCard({
 
   if (!open || !anchor) return null;
 
-  const initialAbove = initialAboveProp ?? (anchor.top > (typeof window === 'undefined' ? 800 : window.innerHeight) * 0.52);
+  const initialAbove = initialAboveProp ?? true;
   const currentLeft = placement ? placement.left : Math.min(Math.max(EDGE, anchor.x - width / 2), viewport - width - EDGE);
   const currentTop = placement
     ? placement.top
