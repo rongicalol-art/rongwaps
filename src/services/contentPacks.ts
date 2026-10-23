@@ -128,13 +128,9 @@ export async function fetchAllFlashcardExamples(card: Flashcard): Promise<Flashc
   return pack?.get(key)?.examples ?? [];
 }
 
-export async function fetchVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {
-  try {
-    return await loadPack<DBVocabularyRow[]>('vocabulary', bookId);
-  } catch (error) {
-    debugLogger.warn('Cache', `Static vocabulary pack unavailable for book ${bookId}.`, error);
-    return null;
-  }
+/** Null only for a book the manifest lacks. Load failures throw, so callers never cache them as an empty book. */
+export function fetchVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {
+  return loadPack<DBVocabularyRow[]>('vocabulary', bookId);
 }
 
 let allVocabRowsCache: DBVocabularyRow[] | null = null;

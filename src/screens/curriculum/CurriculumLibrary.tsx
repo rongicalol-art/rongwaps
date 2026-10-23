@@ -51,7 +51,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   profileAvatarUrl,
 }: CurriculumLibraryProps) {
   const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
-  const { hasFullCourseAccess } = useAuth();
+  const { currentUser, hasFullCourseAccess } = useAuth();
   const activeLearnedCards = useAppStore((state) => (
     state.activeActivity ? null : state.learnedCards
   ));
@@ -78,6 +78,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   );
   const { progress, isLoading, error } = useCourseDashboard({
     activeBookId,
+    userId: currentUser?.id ?? null,
     hasFullCourseAccess,
     learnedCards: stableLearnedCardsRef.current,
     selectedLessons,

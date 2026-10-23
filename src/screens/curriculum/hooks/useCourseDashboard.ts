@@ -10,6 +10,8 @@ import { aggregateLessonPartProgress } from '../../../utils/lesson/lessonPartPro
 
 interface UseCourseDashboardOptions {
   activeBookId: number;
+  /** Refetch on sign-in: a pack request sent before the session token is ready fails. */
+  userId: string | null;
   hasFullCourseAccess: boolean;
   learnedCards: string[];
   selectedLessons: number[];
@@ -28,6 +30,7 @@ const EMPTY_PROGRESS: CourseDashboardProgress = {
 
 export function useCourseDashboard({
   activeBookId,
+  userId,
   hasFullCourseAccess,
   learnedCards,
   selectedLessons,
@@ -54,10 +57,10 @@ export function useCourseDashboard({
       .then((courseCards) => {
         if (isMounted) setCards(courseCards);
       })
-      .catch((loadError) => {
+      .catch(() => {
         if (!isMounted) return;
         setCards([]);
-        setError(loadError instanceof Error ? loadError.message : 'Course progress is unavailable.');
+        setError('Lessons could not load. Refresh to try again.');
       })
       .finally(() => {
         if (isMounted) setIsLoading(false);
@@ -66,7 +69,7 @@ export function useCourseDashboard({
     return () => {
       isMounted = false;
     };
-  }, [activeBookId, hasFullCourseAccess]);
+  }, [activeBookId, hasFullCourseAccess, userId]);
 
 
   const progress = useMemo<CourseDashboardProgress>(() => {
