@@ -97,6 +97,7 @@ export function GrammarLessonScreen({
     continueAfterStudy,
     goBackToPreviousGrammar,
     isPracticing,
+    practiceInitialIndex,
     finishPractice,
     canGoBack,
     currentGrammarIndex,
@@ -177,6 +178,7 @@ export function GrammarLessonScreen({
   useGrammarLessonKeyboardNavigation({
     isBookOpen,
     isConfusionOpen,
+    isPracticing,
     canGoBack,
     continueAfterStudy,
     goBackToPreviousGrammar,
@@ -250,6 +252,7 @@ export function GrammarLessonScreen({
                         // Its own boundary: loading the exercise never blanks the page behind it.
                         <Suspense fallback={null}>
                         <GrammarPracticeView
+                          key={`practice-${page.id}-${practiceInitialIndex}`}
                           practice={page.practice}
                           script={characterPreference}
                           showPinyin={showPinyin}
@@ -259,6 +262,7 @@ export function GrammarLessonScreen({
                           onComplete={finishPractice}
                           onExit={goBackToPreviousGrammar}
                           barHost={barHost}
+                          initialIndex={practiceInitialIndex}
                           shortcutsDisabled={isBookOpen || isConfusionOpen || Boolean(dictionaryWord)}
                         />
                         </Suspense>

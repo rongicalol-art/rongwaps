@@ -58,12 +58,14 @@ export function useGrammarLessonPage({
   });
 
   const [isPracticing, setIsPracticing] = useState(false);
+  const [practiceInitialIndex, setPracticeInitialIndex] = useState(0);
 
   useEffect(() => {
     if (initialPageId) {
       const targetIndex = part.grammarPages.findIndex((p) => p.id === initialPageId);
       if (targetIndex >= 0) {
         setCurrentGrammarIndex(targetIndex);
+        setPracticeInitialIndex(0);
         setIsPracticing(false);
       }
     }
@@ -90,23 +92,36 @@ export function useGrammarLessonPage({
       return;
     }
     setIsPracticing(false);
+    setPracticeInitialIndex(0);
     setCurrentGrammarIndex(next.grammarIndex);
   }, [completedPageIds, currentGrammarIndex, isLastPage, markPageComplete, markPartComplete, onClose, onProceedToReading, page, part]);
 
   const continueAfterStudy = useCallback(() => {
     if (!contentReady || isPracticing) return; // keyboard advance waits for content; the exercise drives itself
-    if (page.practice) setIsPracticing(true);
-    else completePage();
+    if (page.practice) {
+      setPracticeInitialIndex(0);
+      setIsPracticing(true);
+    } else {
+      completePage();
+    }
   }, [completePage, contentReady, isPracticing, page.practice]);
 
-  /** Back from the exercise returns to its page; from a page, to the previous page. */
+  /** Back from the exercise returns to its page; from a page, to the previous page (or previous exercise). */
   const goBackToPreviousGrammar = useCallback(() => {
     if (isPracticing) {
       setIsPracticing(false);
+      setPracticeInitialIndex(0);
       return;
     }
     if (!previousPage) return;
+    if (previousPage.practice) {
+      setCurrentGrammarIndex((index) => Math.max(0, index - 1));
+      setPracticeInitialIndex(Math.max(0, previousPage.practice.items.length - 1));
+      setIsPracticing(true);
+      return;
+    }
     setCurrentGrammarIndex((index) => Math.max(0, index - 1));
+    setPracticeInitialIndex(0);
   }, [isPracticing, previousPage]);
 
   // Progress counts each page and each exercise as a step.
@@ -123,6 +138,7 @@ export function useGrammarLessonPage({
     continueAfterStudy,
     goBackToPreviousGrammar,
     isPracticing,
+    practiceInitialIndex,
     finishPractice: completePage,
     canGoBack: isPracticing || Boolean(previousPage),
     totalSteps: steps.length,

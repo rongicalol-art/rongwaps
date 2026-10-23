@@ -59,18 +59,23 @@ export function PracticeDock({
     return () => window.removeEventListener('keydown', onKey);
   }, [action, checked, ready, shortcutsDisabled]);
 
-  // Right arrow skips, like the Skip button.
+  // Arrow keys: Right skips to next, Left goes back.
   useEffect(() => {
     if (checked || checking || shortcutsDisabled) return;
     const onArrow = (event: KeyboardEvent) => {
-      if (event.key !== 'ArrowRight' || event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
-      event.preventDefault();
-      onSkip();
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        onSkip();
+      } else if (event.key === 'ArrowLeft' && onBack) {
+        event.preventDefault();
+        onBack();
+      }
     };
     window.addEventListener('keydown', onArrow);
     return () => window.removeEventListener('keydown', onArrow);
-  }, [checked, checking, shortcutsDisabled, onSkip]);
+  }, [checked, checking, shortcutsDisabled, onSkip, onBack]);
 
   if (!host) return null;
   return createPortal(
