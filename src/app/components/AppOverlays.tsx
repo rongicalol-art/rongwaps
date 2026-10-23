@@ -5,7 +5,6 @@ import { ReaderWindow } from './ReaderWindow';
 import { DebugToolsOverlay } from './DebugToolsOverlay';
 import { DictionaryDetailOverlay } from '../../features/dictionary';
 import { useAppStore } from '../../store/useAppStore';
-import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
 const AppSettingsDrawer = lazy(() => import('./AppSettingsDrawer').then((m) => ({ default: m.AppSettingsDrawer })));
 const SaveWordModal = lazy(() => import('../../features/library').then((m) => ({ default: m.SaveWordModal })));
@@ -99,7 +98,8 @@ export function AppOverlays({
       />
 
       <DictionaryDetailOverlay />
-      <Suspense fallback={<WorkspaceWindow tone="canvas"><LoadingScreen tone="canvas" /></WorkspaceWindow>}>
+      {/* Drawer and modal slide in over the screen; a full-window loader here would flash on first open. */}
+      <Suspense fallback={null}>
       {saveOpened && <SaveWordModal />}
       {settingsOpened && <AppSettingsDrawer
         isOpen={isSettingsOpen}
