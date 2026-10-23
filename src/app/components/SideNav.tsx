@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { AppIcon, BrandWordmark, PlayfulNavIcon, type PlayfulNavIconName } from '../../lib/widgets';
 
 export interface SideNavProps {
-  activeTab: 'path' | 'search' | 'library' | 'profile';
+  activeTab: 'path' | 'search' | 'library' | 'profile' | 'play';
   activeActivity?: string | null;
-  onTabChange: (tab: 'path' | 'search' | 'library' | 'profile') => void;
+  onTabChange: (tab: 'path' | 'search' | 'library' | 'profile' | 'play') => void;
   onSettingsClick: () => void;
   onToggleCollapse?: () => void;
   accentClass?: string;
@@ -23,6 +23,7 @@ export const NAV_TABS: ReadonlyArray<{
   { id: 'search', label: 'Dictionary', icon: 'dictionary' },
   { id: 'library', label: 'Library', icon: 'library' },
   { id: 'profile', label: 'Profile', icon: 'profile' },
+  { id: 'play', label: 'Play', icon: 'quiz' },
 ] as const;
 
 export function navTabLabel(tab: SideNavProps['activeTab']): string {

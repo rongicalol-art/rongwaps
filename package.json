@@ -17,7 +17,7 @@
     "clean": "rm -rf dist dist-server",
     "clean:local": "rm -rf output dist dist-server .audit .vite",
     "typecheck": "node --stack-size=6000 node_modules/typescript/lib/tsc.js --noEmit",
-    "lint": "eslint src shared tests server scripts vite.config.ts --max-warnings=0",
+    "lint": "eslint src shared tests server scripts games vite.config.ts --max-warnings=0",
     "test": "ACCEPTANCE_STRICT=true tsx --test tests/*.test.ts tests/unit/*.test.ts tests/content/*.test.ts tests/pipeline/*.test.ts",
     "content:export": "tsx scripts/content/exportAuthoredContent.ts",
     "content:validate": "tsx scripts/content/validateLessons.ts",
@@ -67,7 +67,12 @@
     "flashcard-extras:export": "tsx scripts/performance/exportFlashcardExtras.ts",
     "predev": "npm run flashcard-extras:export",
     "prebuild": "npm run flashcard-extras:export",
-    "perf:check": "tsx scripts/performance/checkBudget.ts"
+    "perf:check": "tsx scripts/performance/checkBudget.ts",
+    "games:dev": "wrangler dev --config games/wrangler.jsonc",
+    "games:types": "wrangler types games/worker-configuration.d.ts --config games/wrangler.jsonc",
+    "games:check": "tsc --project games/tsconfig.json && wrangler deploy --dry-run --config games/wrangler.jsonc",
+    "games:test": "node tests/games/runtime.mjs",
+    "games:deploy": "wrangler deploy --config games/wrangler.jsonc"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",
@@ -112,6 +117,7 @@
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.65.0",
     "vite": "^6.2.3",
-    "vite-plugin-pwa": "^1.3.0"
+    "vite-plugin-pwa": "^1.3.0",
+    "wrangler": "4.152.0"
   }
 }

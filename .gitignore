@@ -42,3 +42,7 @@ materials/
 
 # Claude Code local overrides
 .claude/settings.local.json
+
+# Cloudflare local runtime and generated binding declarations
+.wrangler/
+games/worker-configuration.d.ts

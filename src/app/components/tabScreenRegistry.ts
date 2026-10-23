@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { CurriculumLibrary } from '../../screens/curriculum';
 import type { LibraryScreen } from '../../screens/library';
+import type { PlayScreen } from '../../screens/play';
 import type { ProfileScreen } from '../../screens/profile';
 import type { SearchScreen } from '../../screens/search';
 
@@ -14,6 +15,7 @@ interface TabScreenMap {
   search: typeof SearchScreen;
   library: typeof LibraryScreen;
   profile: typeof ProfileScreen;
+  play: typeof PlayScreen;
 }
 export type TabScreenKey = keyof TabScreenMap;
 
@@ -22,6 +24,7 @@ const loaders: { [K in TabScreenKey]: () => Promise<TabScreenMap[K]> } = {
   search: () => import('../../screens/search').then((m) => m.SearchScreen),
   library: () => import('../../screens/library').then((m) => m.LibraryScreen),
   profile: () => import('../../screens/profile').then((m) => m.ProfileScreen),
+  play: () => import('../../screens/play').then((m) => m.PlayScreen),
 };
 
 const loaded: { [K in TabScreenKey]?: TabScreenMap[K] } = {};

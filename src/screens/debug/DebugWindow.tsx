@@ -12,6 +12,7 @@ import { CurriculumSkeleton } from '../curriculum';
 import { LibrarySkeleton, ReviewHubCard, DailyReviewPreview } from '../library';
 import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
+import { WordBombPreview } from '../play';
 import { TonePreview } from '../tones';
 import { PinyinPreview } from '../pinyin';
 import { GrammarPracticePreview } from '../../features/grammar-practice';
@@ -335,6 +336,7 @@ export const DebugWindow = () => {
             <FlashcardActionsPreview />
             <SentenceLookupPreview />
             <QuizPreview />
+            <WordBombPreview />
             <GrammarPracticePreview />
             <TonePreview />
             <PinyinPreview />

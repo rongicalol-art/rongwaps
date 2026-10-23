@@ -14,6 +14,7 @@ const TAB_LOADING_MESSAGE: Record<string, string> = {
   library: 'Loading library…',
   search: 'Loading dictionary…',
   profile: 'Loading profile…',
+  play: 'Loading Word Bomb…',
 };
 
 interface TabScreensProps {
@@ -48,6 +49,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
   const SearchScreen = getTabScreen('search');
   const LibraryScreen = getTabScreen('library');
   const ProfileScreen = getTabScreen('profile');
+  const PlayScreen = getTabScreen('play');
 
   const menuToggle = useMemo(
     () => ({ onClick: onToggleNav, label: 'Menu' }),
@@ -121,6 +123,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
         {activeTab === 'search' && SearchScreen && (
           <SearchScreen menuToggle={menuToggle} onProfileClick={handleProfileClick} profileAvatarUrl={profileAvatarUrl} />
         )}
+        {activeTab === 'play' && PlayScreen && <PlayScreen menuToggle={menuToggle} />}
         {activeTab === 'profile' && ProfileScreen && (
           <ProfileScreen
             menuToggle={menuToggle}

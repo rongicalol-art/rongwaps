@@ -194,3 +194,41 @@ Before publication, run `HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scri
 - Audio CDN (optional): put the `vocabulary-audio` bucket behind a CDN/Cloudflare R2 custom domain and set `VITE_AUDIO_BASE_URL` to its origin at build time. Files already have content-hashed names, so use long immutable caching.
 - Every `dist/data` JSON gets Brotli/gzip sidecars from `npm run build:precompress` (last build step; re-run it after a manual `trimBetaContent`). The server ignores a sidecar older than its JSON.
 - Manifest-listed packs are fetched as `file.json?v=<sha256>`; the server sends those as immutable (1 year), so repeat visits make no request at all. Breakdown opens use one `decomposition-runtime/hot.json` (all course characters + parts) instead of ~8 shard requests.
+
+# Word Bomb multiplayer
+
+The Play tab (`/play`) contains a 2–4 player Book 1 quiz race. The host picks Introduction or a currently available school-beta lesson. Every player receives the same deck (up to 20 distinct meanings) and starts after a three-second countdown. Wrong answers return after two seconds; correct answers advance after 650 ms. Personal study progress and SRS are never read or written by the game.
+
+Finishing fixes a player's place and enables spectating. Active racers receive only their own question and feedback. Finished players can switch between remaining players. Results appear after everyone finishes, leaves, or reaches the five-minute match deadline. Reconnecting the same authenticated user restores their queue and place; an explicit Leave forfeits an unfinished race. A room expires after 30 minutes, and each user can create at most five rooms per hour.
+
+## Ownership and transport
+
+- `shared/wordBomb.ts` owns game rules and per-player snapshots.
+- `games/index.ts` authenticates through the existing Express school-beta gate before creating or joining a room. No Supabase secret or new login system is used by the Worker.
+- `games/room.ts` owns one SQLite-backed Durable Object per room. State is persisted before broadcasting; hibernatable sockets store only player identity and spectating selection. Finished order and queues survive hibernation.
+- `POST /rooms` and `POST /rooms/:code` require the existing access token in the Authorization header. They return a one-use, 30-second connection ticket. The browser sends this ticket as a WebSocket subprotocol, never the Supabase token in a URL.
+- The Worker accepts only its configured `APP_ORIGIN`. Its namespace is internal; a room code alone cannot bypass authentication.
+- `src/services/wordBombService.ts` owns HTTP, WebSockets and reconnects. Transient room state is screen-local; the URL retains only the room code.
+
+## Setup status
+
+Wrangler is installed and pinned. Generated Worker types, the deployment dry run and a local SQLite Durable Object integration test pass. Cloudflare CLI is not authenticated yet; production deployment and Render configuration remain pending.
+
+For a fresh checkout:
+
+1. Inspect `wrangler --help`, `wrangler types --help`, `wrangler dev --help` and `wrangler deploy --help` through the project-local binary. Verify script flags against that version.
+2. Run `npm run games:types`, then `npm run games:check`. Generated binding declarations are ignored; regenerate them for every fresh checkout and binding change.
+3. For local development, run the normal app on localhost:3000 and the Worker on localhost:8787. Override the Worker's `APP_ORIGIN` to exactly `http://localhost:3000` using the installed CLI's documented variable override. The Express development configuration defaults `GAMES_SERVER_URL` to localhost:8787.
+4. For production, keep `APP_ORIGIN=https://ronsmandarin.com`, verify the authenticated member's Workers deployment role, then deploy the Worker. Set Render's `GAMES_SERVER_URL` to the returned HTTPS Worker origin and restart the web service. The client obtains that public origin from `/api/games/config`; no rebuild or custom game domain is required.
+
+The production Play tab shows a setup message while `GAMES_SERVER_URL` is absent. Existing lessons keep working.
+
+## Verification
+
+Run the repository gate (`typecheck`, `lint`, `test`, `jev:lint`) and the Worker-specific typecheck/dry run. The game unit tests cover pacing, replayed answers, missed-word retries, snapshot privacy, spectating, rematches, rejoining, expiry, ownership and malformed messages.
+
+Use Ctrl+Shift+0 → UI Previews → Word Bomb for fake-player visual checks. These previews open no game connection and write no personal progress.
+
+Run `npm run games:test` for synthetic two-player tests against the actual local Worker runtime, including socket hibernation and ticket replay rejection. Before deployment completion, also exercise two separate test accounts against the deployed Worker: create/join, both ready, synchronized start, correct/wrong answers, first-finisher spectating, second-finisher results, socket reconnect, rematch and deadline expiry. Check mobile at 390 pixels and desktop at 1440 pixels. Do not test by answering an owner's real personal review deck.
+
+Cloudflare's [SQLite-backed Durable Objects pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/) documents free-tier limits; exceeding an allowance can stop operations. Hibernation and room cleanup reduce idle work but do not guarantee any fixed traffic level is free.

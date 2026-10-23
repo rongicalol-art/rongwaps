@@ -48,7 +48,8 @@ type CourseBook = BookMeta & {
 };
 
 /** Beta: only Book 1, Introduction + Lessons 1-8 are playable. Raise or remove to open more. */
-export const BETA_LAST_LESSON = 8;
+import { BETA_LAST_LESSON } from '../../shared/courseAccess';
+export { BETA_LAST_LESSON } from '../../shared/courseAccess';
 
 const BEYOND_BETA_BOOK_STATUS: BookMeta['status'] = 'locked';
 

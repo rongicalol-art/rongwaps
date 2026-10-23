@@ -16,6 +16,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |
 | Server and grading | `API_SPEC.md`, `server/` |
+| Multiplayer rooms and game hosting | `DEPLOY.md` → Word Bomb multiplayer, `games/`, `shared/wordBomb.ts` |
 | Audio & karaoke alignment | `reference/OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
 | Architectural boundary changes | `ARCHITECTURE.md`, `../AGENTS.md`, `DECISIONS.md` |

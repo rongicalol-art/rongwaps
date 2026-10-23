@@ -39,6 +39,7 @@ const SCREEN_SLICES = [
   'library',
   'listening',
   'profile',
+  'play',
   'quiz',
   'reader',
   'search',
@@ -105,6 +106,7 @@ const restricted = (patterns) => ['error', { patterns }];
 export default [
   {
     ignores: [
+      'games/worker-configuration.d.ts',
       '.vite/**/*',
       'dist/**/*',
       'node_modules/**/*',

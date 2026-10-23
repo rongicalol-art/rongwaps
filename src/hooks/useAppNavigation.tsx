@@ -8,7 +8,7 @@ import {
 import type { ActivityType } from '../types/models';
 import { useResumeLaunch } from './useResumeLaunch';
 
-export type TabType = 'path' | 'search' | 'library' | 'profile';
+export type TabType = 'path' | 'search' | 'library' | 'profile' | 'play';
 export type { ActivityType } from '../types/models';
 
 export function useAppNavigation() {

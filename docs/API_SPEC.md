@@ -6,6 +6,12 @@ There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 4
 
 Protected lesson-content requests require a valid Supabase user and `has_beta_access() = true` from a request-scoped database client. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
 
+## Multiplayer bootstrap
+
+`GET /api/games/config` returns the configured public game-server origin (`GAMES_SERVER_URL`) or `null`. It is not cached and contains no credentials.
+
+`GET /api/games/session?lesson=N` requires the normal school-beta authorization even in development. It is limited to 60 requests per authenticated user per minute and returns that user's ID plus the selected available Book 1 lesson's vocabulary. The game Worker calls it with the existing session token before admitting a player; the response is `private, no-store`. See [DEPLOY.md → Word Bomb multiplayer](DEPLOY.md#word-bomb-multiplayer) for room transport, setup status and verification.
+
 ## 🚦 Rate limits
 
 Protected lesson-content requests are limited per client IP and authenticated user. Exceeding a limit
