@@ -207,7 +207,7 @@ export function ScreenHeader({
       ) : (
         <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
           {progress !== undefined ? (
-            <div className="relative w-full flex items-center justify-center gap-3">
+            <div className={cn('relative w-full flex items-center justify-center gap-3', progressOverlay && 'min-h-16')}>
               {usesStudyPartRail ? (
                 <StudyPartProgressRail
                   parts={studyParts}

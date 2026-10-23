@@ -6,7 +6,7 @@ import { leaveRace, raceSend, reportRaceProgress } from './raceController';
 import type { RaceSelection } from '../../../shared/quizRace';
 
 /** While a race is on screen: its quiz types, a session key of its own, and the shared seed (same quiz on every phone). */
-export function useRaceQuiz(): { types: readonly QuizTypeId[]; sessionKey: string; seed: string; selection: RaceSelection; phase: 'lobby' | 'preparing' | 'race' | 'results'; preparedCount: number; playerCount: number } | null {
+export function useRaceQuiz(): { types: readonly QuizTypeId[]; sessionKey: string; seed: string; selection: RaceSelection; phase: 'lobby' | 'preparing' | 'race' | 'review' | 'results'; preparedCount: number; playerCount: number } | null {
   const race = useAppStore(useShallow(state => {
     const active = state.racePlaying ? state.race : null;
     return {
@@ -29,12 +29,12 @@ export function useRaceReady(planHash: string | null) {
     status: state.raceStatus,
   })));
   useEffect(() => {
-    if (planHash && race.phase === 'preparing' && !race.prepared && race.status === 'live') raceSend({ type: 'ready', planHash });
+    if (planHash && race.phase === 'preparing' && !race.prepared && race.status === 'live') raceSend({ type: 'ready', planHash, reviewFlow: 1 });
   }, [planHash, race.code, race.round, race.phase, race.prepared, race.status]);
 }
 
 /** Reports first-pass progress to the room; does nothing outside a race. */
-export function useRaceReporter(answered: number, total: number, correct: number, firstPassDone: boolean) {
+export function useRaceReporter(answered: number, total: number, correct: number, firstPassDone: boolean, reviewComplete: boolean) {
   const race = useAppStore(useShallow(state => ({ playing: state.racePlaying, phase: state.racePlaying ? state.race?.phase : undefined })));
   useEffect(() => {
     if (!race.playing) return;
@@ -43,7 +43,7 @@ export function useRaceReporter(answered: number, total: number, correct: number
       leaveRace();
       return;
     }
-    if (race.phase !== 'race') return;
-    reportRaceProgress(firstPassDone ? total : Math.min(answered, total), total, correct);
-  }, [race.playing, race.phase, answered, total, correct, firstPassDone]);
+    if (race.phase !== 'race' && race.phase !== 'review') return;
+    reportRaceProgress(firstPassDone ? total : Math.min(answered, total), total, correct, reviewComplete);
+  }, [race.playing, race.phase, answered, total, correct, firstPassDone, reviewComplete]);
 }

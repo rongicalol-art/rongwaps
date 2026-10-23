@@ -2,7 +2,7 @@
  * Lobby protocol (presence, lesson chat, cheers, invites). Short keys keep frames small.
  * A lesson key is `bookId * 100 + lessonId`.
  */
-import { stripControl, type RaceRoomSummary, type SocialColor } from './quizRace';
+import { MAX_SOCIAL_IMAGE_LENGTH, stripControl, type RaceRoomSummary, type SocialColor } from './quizRace';
 
 export const CHEER_PHRASES = ['加油！', '好棒！', '一起考試？', '等我一下'] as const;
 export const ACTIVITIES = ['lesson', 'cards', 'quiz', 'grammar', 'reading', 'writing', 'race'] as const;
@@ -15,7 +15,7 @@ export interface ChatMessage { id: number; l: number; u: string; n: string; c: S
 export interface LessonCount { n: number; f: Person[] }
 
 export type LobbyClientMessage =
-  | { t: 'here'; l: number | null; a: Activity | null; show: boolean }
+  | { t: 'here'; l: number | null; a: Activity | null; show: boolean; i?: string }
   | { t: 'sub'; online: boolean; chat: number | null }
   | { t: 'say'; l: number; text: string }
   | { t: 'cheer'; to: string[]; p: number }
@@ -43,7 +43,8 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   const data = value as Record<string, unknown>;
   if (data.t === 'here') {
     const a = (ACTIVITIES as readonly unknown[]).includes(data.a) ? data.a as Activity : null;
-    return { t: 'here', l: lessonKey(data.l), a, show: data.show !== false };
+    const i = typeof data.i === 'string' && data.i.length <= MAX_SOCIAL_IMAGE_LENGTH ? data.i : undefined;
+    return { t: 'here', l: lessonKey(data.l), a, show: data.show !== false, ...(i ? { i } : {}) };
   }
   if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat) };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {

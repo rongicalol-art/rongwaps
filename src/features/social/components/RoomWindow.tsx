@@ -92,14 +92,14 @@ function Results({ race, me }: { race: RaceSnapshot; me: string | null }) {
   const myPhoto = useProfileAvatar();
   const ranked = [...race.players].sort((a, b) => (a.place ?? 99) - (b.place ?? 99) || b.answered - a.answered);
   const mine = race.players.find((player) => player.id === me);
-  const waiting = race.phase === 'race';
+  const waiting = race.phase === 'race' || race.phase === 'review';
   const headline = race.prepareError ? 'Race didn’t start' : waiting ? 'Waiting for the others' : mine?.place === 1 ? 'You came first' : mine?.place ? `You came ${['', 'first', 'second', 'third', 'fourth'][mine.place]}` : 'Race over';
   return (
     <>
       <div className="text-center">
         <PlayfulNavIcon name="reward" className="mx-auto h-16 w-16" />
         <h2 className="mt-2 text-3xl font-black text-ui-ink-strong">{headline}</h2>
-        {race.prepareError && <p role="status" className="mt-2 text-sm font-bold text-ui-muted-strong">{race.prepareError === 'content-mismatch' ? 'Players have different quiz data. Update the app and start another room.' : 'Fewer than two players loaded the first question in time. Try again after it’s ready.'}</p>}
+        {race.prepareError && <p role="status" className="mt-2 text-sm font-bold text-ui-muted-strong">{race.prepareError === 'content-mismatch' ? 'Players have different quiz data. Update the app and start another room.' : race.prepareError === 'client-mismatch' ? 'Someone is using an older app version. Refresh everyone’s app and try again.' : 'Fewer than two players loaded the first question in time. Try again after it’s ready.'}</p>}
       </div>
       <ol className="mt-6 grid min-w-0 gap-2.5">
         {ranked.map((player) => (
@@ -107,7 +107,7 @@ function Results({ race, me }: { race: RaceSnapshot; me: string | null }) {
             <span className="w-6 shrink-0 text-lg font-black tabular-nums text-ui-ink-strong">{player.place ?? (waiting ? '' : '–')}</span>
             <Avatar name={player.name} color={socialColor(player.color)} size="md" src={player.id === me ? myPhoto : player.image} />
             <span className="min-w-0 flex-1 truncate text-base font-black text-ui-ink-strong">{player.id === me ? 'You' : player.name}</span>
-            <span className="shrink-0 text-sm font-extrabold tabular-nums text-ui-ink-strong">{player.left ? 'Left' : !waiting && player.finishedAt === null ? 'Not finished' : `${player.correct}/${player.total || '–'}`}</span>
+            <span className="shrink-0 text-sm font-extrabold tabular-nums text-ui-ink-strong">{player.left ? 'Left' : player.finishedAt !== null ? `${player.correct}/${player.total || '–'}` : player.total > 0 && player.answered >= player.total ? 'Reviewing' : !waiting ? 'Not finished' : `${player.correct}/${player.total || '–'}`}</span>
           </li>
         ))}
       </ol>

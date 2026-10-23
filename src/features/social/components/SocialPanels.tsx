@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, AvatarStack, Drawer } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { SocialPanel } from '../../../store/slices/socialSlice';
 import type { Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
-import { createRace, joinRace, leaveRace } from '../raceController';
+import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
 import { defaultSelection, describeSelection } from '../socialText';
 import { ChatThread } from './ChatThread';
@@ -84,11 +84,15 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
   const onlineTotal = useOnlineTotal();
   const rooms = useAppStore((state) => state.socialRooms);
   const identity = useSocialIdentity();
+  const userId = useAppStore((state) => state.currentUser?.id ?? null);
   const race = useAppStore(state => state.race);
   const pending = useAppStore(state => state.racePending);
   const seats = MAX_PLAYERS - (race?.players.filter(player => !player.left).length ?? 1);
   const [picked, setPicked] = useState<string[]>([]);
+  const [recentRoom, setRecentRoom] = useState<string | null>(null);
+  useEffect(() => { setRecentRoom(getRecentRaceCode(userId)); }, [userId, panel.tab]);
   const list = panel.tab === 'online' ? online : people;
+  const openRooms = rooms.filter((room) => room.code !== recentRoom);
   const toggle = (id: string) => setPicked((prev) => (prev.includes(id) ? prev.filter((value) => value !== id) : prev.length < seats ? [...prev, id] : prev));
   return (
     <Drawer
@@ -107,17 +111,28 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
         />
       </div>
       <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
-        {panel.tab === 'rooms' ? (rooms.length === 0 ? <EmptyNote>No open rooms right now.</EmptyNote> : rooms.map((room) => (
-          <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-3.5 last:border-b-0">
-            <AvatarStack people={room.players.map((player) => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="md" />
+        {panel.tab === 'rooms' ? <>
+          {recentRoom && <div className="flex items-center gap-3 border-b-2 border-ui-divider py-3.5">
             <span className="min-w-0 flex-1">
-              <span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span>
-              <span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span>
+              <span className="block text-base font-black text-ui-ink-strong">Rejoin last room</span>
+              <span className="block text-sm font-bold text-ui-muted">Room code {recentRoom}</span>
             </span>
-            <span className="text-xs font-black tabular-nums text-ui-muted-strong">{room.players.length}/4</span>
-            <ActionButton size="sm" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
-          </div>
-        ))) : list.length === 0 ? <EmptyNote>{panel.tab === 'online' ? 'Nobody else is online.' : 'Nobody else is in this lesson.'}</EmptyNote> : list.map((person) => (
+            <ActionButton size="sm" disabled={pending} onClick={() => { void joinRace(identity, recentRoom); }}>Rejoin</ActionButton>
+          </div>}
+          {openRooms.length === 0
+            ? <EmptyNote>{recentRoom ? 'No other open rooms right now.' : 'No open rooms right now.'}</EmptyNote>
+            : openRooms.map((room) => (
+              <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-3.5 last:border-b-0">
+                <AvatarStack people={room.players.map((player) => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="md" />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span>
+                  <span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span>
+                </span>
+                <span className="text-xs font-black tabular-nums text-ui-muted-strong">{room.players.length}/4</span>
+                <ActionButton size="sm" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
+              </div>
+            ))}
+        </> : list.length === 0 ? <EmptyNote>{panel.tab === 'online' ? 'Nobody else is online.' : 'Nobody else is in this lesson.'}</EmptyNote> : list.map((person) => (
           <button key={person.u} type="button" onClick={() => toggle(person.u)} aria-pressed={picked.includes(person.u)} className="block w-full text-left outline-none focus-ring-inline">
             <PersonRow
               person={person}

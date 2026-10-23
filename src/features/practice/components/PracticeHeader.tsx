@@ -93,7 +93,7 @@ export function PracticeHeader({
         progressSize="compact"
         closeIconColor={iconColor}
         closeIconClassName={iconClassName}
-        progressOverlay={<RaceBar />}
+        progressOverlay={racing ? <RaceBar /> : undefined}
         {...(racing ? { accentBgClassName: 'bg-transparent' } : {})}
         rightAction={
           <div className="flex h-11 shrink-0 items-center pointer-events-auto">

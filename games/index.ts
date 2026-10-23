@@ -1,4 +1,4 @@
-import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialName } from '../shared/quizRace';
+import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socialName } from '../shared/quizRace';
 import { verifyAccessToken } from './auth';
 import { newSeed } from './room';
 export { GameRoom } from './room';
@@ -47,6 +47,7 @@ export default {
       const data = await body(request);
       const name = socialName(data.name);
       const color = socialColor(data.color);
+      const image = socialImage(data.image, env.SUPABASE_URL);
       if (!name) return reply({ error: 'Add a display name in your profile first.' }, 400);
       if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt) });
       if (url.pathname === '/rooms') {
@@ -57,15 +58,15 @@ export default {
           const candidate = Array.from(crypto.getRandomValues(new Uint8Array(6)), value => alphabet[value % alphabet.length]).join('');
           const code = await account.reserveCreation(candidate);
           const stub = env.ROOMS.getByName(code);
-          if (await stub.create(newRaceRoom(code, selection, data.open === true, newSeed(), Date.now()), userId, name, color)) {
-            return reply({ code, userId, ...await stub.enter(userId, name, color, expiresAt) });
+          if (await stub.create(newRaceRoom(code, selection, data.open === true, newSeed(), Date.now()), userId, name, color, image)) {
+            return reply({ code, userId, ...await stub.enter(userId, name, color, image, expiresAt) });
           }
           await account.releaseRoom(code);
         }
         return reply({ error: 'Could not create a room. Try again.' }, 503);
       }
       if (!match || !ROOM_CODE.test(match[1])) return reply({ error: 'Invalid room code.' }, 400);
-      return reply({ code: match[1], userId, ...await env.ROOMS.getByName(match[1]).enter(userId, name, color, expiresAt) });
+      return reply({ code: match[1], userId, ...await env.ROOMS.getByName(match[1]).enter(userId, name, color, image, expiresAt) });
     } catch (error) {
       const message = error instanceof Error && /room|lesson|full|started|expired/i.test(error.message) ? error.message : 'Could not join. Check the code and your connection.';
       return reply({ error: message }, /limit reached/i.test(message) ? 429 : 400);

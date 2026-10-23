@@ -112,10 +112,10 @@ export function stopLobby() {
 }
 
 export const lobby = {
-  here(l: number | null, a: Activity | null, show: boolean) {
-    if (here.l === l && here.a === a && here.show === show) return;
+  here(l: number | null, a: Activity | null, show: boolean, i?: string) {
+    if (here.l === l && here.a === a && here.show === show && here.i === i) return;
     if (here.l !== l) useAppStore.getState().setSocial({ socialPeople: [] });
-    here = { t: 'here', l, a, show };
+    here = { t: 'here', l, a, show, i };
     send(here);
   },
   subscribe(online: boolean, chat: number | null) {

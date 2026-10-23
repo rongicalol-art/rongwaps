@@ -201,9 +201,9 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   }, [resetAll]);
 
   useReviewTone(isReviewPass && !isDone && !(introActive && reviewPass === 1 && !introToned));
-  // Quiz race: the first pass is the race; a review round after it is the learner's own.
+  // A race participant is only finished after every missed word has been corrected in review.
   const firstPassOver = isReviewPass || isDone;
-  useRaceReporter(currentIndex + (session.inBeatDone ?? 0), firstPassRef.current?.total ?? activeCards.length, firstPassRef.current?.correct ?? learnedCount, firstPassOver);
+  useRaceReporter(currentIndex + (session.inBeatDone ?? 0), firstPassRef.current?.total ?? activeCards.length, firstPassRef.current?.correct ?? learnedCount, firstPassOver, isDone);
 
   const shownIndex = currentIndex + (session.inBeatDone ?? 0);
   const progress = useMemo(

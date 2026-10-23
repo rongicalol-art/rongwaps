@@ -169,7 +169,7 @@ function act(userId: string, action: RaceAction) {
   try { applyRaceAction(race.room, userId, { ...action, round: race.room.round }, Date.now(), () => Math.random().toString(36).slice(2, 10)); } catch { return; }
   if (action.type === 'ready' && userId === ME && race.room.phase === 'preparing') {
     for (const player of race.room.players.filter(entry => entry.id !== ME && !entry.left)) {
-      try { applyRaceAction(race.room, player.id, { type: 'ready', planHash: action.planHash, round: race.room.round }, Date.now(), () => Math.random().toString(36).slice(2, 10)); } catch { /* A simulated player can leave during preparation. */ }
+      try { applyRaceAction(race.room, player.id, { type: 'ready', planHash: action.planHash, reviewFlow: 1, round: race.room.round }, Date.now(), () => Math.random().toString(36).slice(2, 10)); } catch { /* A simulated player can leave during preparation. */ }
     }
   }
   broadcast();
@@ -193,7 +193,7 @@ function racePlayers() {
       if (!race || race.room.code !== code || race.room.round !== round || race.room.phase !== 'race') return;
       const total = race.room.players.find((entry) => entry.id === ME)?.total || 12;
       answered += 1; if (Math.random() < 0.8) correct += 1;
-      act(player.id, { type: 'progress', answered: Math.min(answered, total), total, correct: Math.min(correct, total) });
+      act(player.id, { type: 'progress', answered: Math.min(answered, total), total, correct: Math.min(correct, total), reviewComplete: answered >= total });
       if (answered < total) step();
     }, between(2500, 5500));
     step();

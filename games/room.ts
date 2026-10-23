@@ -26,7 +26,7 @@ export class GameRoom extends DurableObject<Env> {
     const room = JSON.parse(row.data) as Partial<RaceRoomState>;
     // The previous Worker used this binding for a different game; do not reinterpret those rooms.
     return room.selection?.lessons && Array.isArray(room.selection.types) && Array.isArray(room.players)
-      && Number.isSafeInteger(room.round) && ['lobby', 'preparing', 'race', 'results'].includes(room.phase ?? '') ? room as RaceRoomState : null;
+      && Number.isSafeInteger(room.round) && ['lobby', 'preparing', 'race', 'review', 'results'].includes(room.phase ?? '') ? room as RaceRoomState : null;
   }
 
   private record<T>(id: number): T | null {
@@ -68,10 +68,10 @@ export class GameRoom extends DurableObject<Env> {
     return true;
   }
 
-  async create(room: RaceRoomState, userId: string, name: string, color: string): Promise<boolean> {
+  async create(room: RaceRoomState, userId: string, name: string, color: string, image?: string): Promise<boolean> {
     const existing = this.read();
     if (existing) return existing.players.some(player => player.id === userId && !player.left);
-    const player = enterRace(room, userId, name, color, Date.now());
+    const player = enterRace(room, userId, name, color, Date.now(), image);
     player.disconnectedAt = Date.now();
     this.write(1, room);
     await this.ctx.storage.setAlarm(room.expiresAt);
@@ -130,7 +130,11 @@ export class GameRoom extends DurableObject<Env> {
       else player.disconnectedAt ??= now;
     }
     const before = room.players.filter(player => !player.left).map(player => player.id);
+    const phaseBefore = room.phase;
     advanceRace(room, now);
+    if (phaseBefore === 'race' && room.phase === 'review') {
+      for (const player of room.players) if (!player.left) this.ctx.waitUntil(this.env.ROOMS.getByName(`limit:${player.id}`).renewRoom(room.code, room.expiresAt));
+    }
     const after = new Set(room.players.filter(player => !player.left).map(player => player.id));
     for (const id of before) if (!after.has(id)) this.ctx.waitUntil(this.env.ROOMS.getByName(`limit:${id}`).releaseRoom(room.code));
   }
@@ -139,6 +143,7 @@ export class GameRoom extends DurableObject<Env> {
     const times = [room.expiresAt];
     if (this.record<number>(5) !== null) times.push(Date.now() + LISTING_RETRY_MS);
     if (room.phase === 'race') times.push(room.deadline);
+    if (room.phase === 'review' && room.reviewDeadline) times.push(room.reviewDeadline);
     if (room.phase === 'preparing' && room.prepareDeadline) times.push(room.prepareDeadline);
     for (const player of room.players) if (!player.left && player.disconnectedAt != null) times.push(player.disconnectedAt + DISCONNECT_GRACE_MS);
     for (const socket of this.sockets()) times.push(this.lastSeen(socket) + STALE_MS, (socket.deserializeAttachment() as Attachment).authUntil ?? 0);
@@ -146,11 +151,11 @@ export class GameRoom extends DurableObject<Env> {
     await this.ctx.storage.setAlarm(Math.max(Date.now() + 1000, Math.min(...times)));
   }
 
-  async enter(userId: string, name: string, color: string, authUntil: number): Promise<{ ticket: string }> {
+  async enter(userId: string, name: string, color: string, image: string | undefined, authUntil: number): Promise<{ ticket: string }> {
     const room = this.read();
     if (!room) throw new Error('Room not found. Check the code.');
     this.sweep(room, Date.now());
-    const player = enterRace(room, userId, name, color, Date.now());
+    const player = enterRace(room, userId, name, color, Date.now(), image);
     if (room.phase === 'preparing') { player.preparedAt = null; player.planHash = undefined; }
     if (!this.connections().includes(userId)) player.disconnectedAt ??= Date.now();
     const ticket = crypto.randomUUID();

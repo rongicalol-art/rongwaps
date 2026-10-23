@@ -17,6 +17,8 @@ let settings: Extract<RaceFrame, { type: 'settings' }> | null = null;
 let settingsInFlight: Extract<RaceFrame, { type: 'settings' }> | null = null;
 const invites = new Set<string>();
 let rememberedAccount: string | null = null;
+const RECENT_ROOM_TTL_MS = 60 * 60_000;
+let recentRoomMemory: { userId: string; code: string; expiresAt: number } | null = null;
 export function setRaceLauncher(next: typeof launcher) { launcher = next; }
 
 function remember(code: string | null) {
@@ -24,6 +26,34 @@ function remember(code: string | null) {
   if (!id) return;
   rememberedAccount = code ? id : null;
   try { if (code) sessionStorage.setItem(`race-room:${id}`, code); else sessionStorage.removeItem(`race-room:${id}`); } catch { /* In-memory reconnect still works without storage. */ }
+}
+
+function saveRecentRoom(userId: string, code: string) {
+  const now = Date.now();
+  if (recentRoomMemory?.userId === userId && recentRoomMemory.code === code && recentRoomMemory.expiresAt > now + RECENT_ROOM_TTL_MS / 2) return;
+  const recent = { userId, code, expiresAt: now + RECENT_ROOM_TTL_MS };
+  recentRoomMemory = recent;
+  try { localStorage.setItem(`race-recent:${userId}`, JSON.stringify({ code, expiresAt: recent.expiresAt })); } catch { /* In-memory recovery still works in this tab. */ }
+}
+
+export function getRecentRaceCode(userId: string | null): string | null {
+  if (!userId) return null;
+  try {
+    const value = JSON.parse(localStorage.getItem(`race-recent:${userId}`) ?? 'null') as { code?: unknown; expiresAt?: unknown } | null;
+    if (value && typeof value.code === 'string' && ROOM_CODE.test(value.code) && typeof value.expiresAt === 'number' && value.expiresAt > Date.now()) return value.code;
+    localStorage.removeItem(`race-recent:${userId}`);
+  } catch { /* Fall back to the current tab's in-memory value. */ }
+  return recentRoomMemory?.userId === userId && recentRoomMemory.expiresAt > Date.now() ? recentRoomMemory.code : null;
+}
+
+function forgetRecentRoom(userId: string | null, code: string) {
+  if (!userId) return;
+  if (recentRoomMemory?.userId === userId && recentRoomMemory.code === code) recentRoomMemory = null;
+  try {
+    const key = `race-recent:${userId}`;
+    const saved = JSON.parse(localStorage.getItem(key) ?? 'null') as { code?: unknown } | null;
+    if (saved?.code === code) localStorage.removeItem(key);
+  } catch { /* Storage is optional. */ }
 }
 
 function drainInvites() {
@@ -37,7 +67,7 @@ useAppStore.subscribe((state, previous) => { if (state.socialStatus !== previous
 
 function replayProgress() {
   const state = useAppStore.getState();
-  if (!progress || !room || state.raceStatus !== 'live' || state.race?.phase !== 'race' || state.race.round !== progress.round) return;
+  if (!progress || !room || state.raceStatus !== 'live' || !['race', 'review'].includes(state.race?.phase ?? '') || state.race?.round !== progress.round) return;
   const key = JSON.stringify(progress);
   if (sentProgress !== key && room.send(progress) !== false) sentProgress = key;
 }
@@ -57,7 +87,7 @@ function onState(state: RaceSnapshot, userId: string) {
     clearRace(false);
     return;
   }
-  if (!before && state.phase === 'race' && me.finishedAt === null && me.answered > 0) {
+  if (!before && (state.phase === 'race' || state.phase === 'review') && me.finishedAt === null && me.answered > 0) {
     leaveRace();
     store.showFeedbackToast('This race was already in progress on another page. Join a new round.');
     return;
@@ -70,8 +100,9 @@ function onState(state: RaceSnapshot, userId: string) {
   if (before && JSON.stringify(before.selection) === JSON.stringify(state.selection)) state = { ...state, selection: before.selection };
   if (before?.round !== state.round) { progress = null; sentProgress = ''; }
   store.setSocial({ race: state, socialMe: userId, racePending: false, ...(before ? {} : { socialPanel: null, socialInvite: null }) });
+  saveRecentRoom(userId, state.code);
   remember(state.code);
-  const starting = (state.phase === 'preparing' || state.phase === 'race') && me.finishedAt === null;
+  const starting = (state.phase === 'preparing' || state.phase === 'race' || state.phase === 'review') && me.finishedAt === null;
   if (starting && !store.racePlaying) {
     store.setSocial({ racePlaying: true });
     launcher?.start(state);
@@ -97,7 +128,7 @@ async function open(identity: Identity, target: Parameters<typeof connectRace>[1
         onState: (state, id) => {
           if (version !== generation) return;
           const me = state.players.find(player => player.id === id);
-          if (restoring && state.phase === 'race' && me?.finishedAt === null) {
+          if (restoring && (state.phase === 'race' || state.phase === 'review') && me?.finishedAt === null) {
             leaveRace();
             useAppStore.getState().showFeedbackToast('Reloading ends your race. Join a new round when you are ready.');
             return;
@@ -124,6 +155,9 @@ async function open(identity: Identity, target: Parameters<typeof connectRace>[1
       if (version !== generation) return;
       useAppStore.getState().setSocial({ racePending: false, raceStatus: 'off' });
       remember(null);
+      if ('code' in target && error instanceof Error && /expired|not found|no longer accepting/i.test(error.message)) {
+        forgetRecentRoom(useAppStore.getState().currentUser?.id ?? null, target.code);
+      }
       invites.clear();
       useAppStore.getState().showFeedbackToast(error instanceof Error ? error.message : 'Could not open the room.');
     } finally { if (version === generation) { pending = null; abort = null; } }
@@ -172,16 +206,19 @@ export function raceSend(action: RaceAction) {
   if (action.type === 'start' && settings) { state.showFeedbackToast('Saving your quiz choices. Try Start again in a moment.'); return; }
   return room?.send({ ...action, round: state.race.round });
 }
-export function reportRaceProgress(answered: number, total: number, correct: number) {
+export function reportRaceProgress(answered: number, total: number, correct: number, reviewComplete = false) {
   const race = useAppStore.getState().race;
   if (!race) return;
-  progress = { type: 'progress', round: race.round, answered, total, correct };
+  progress = { type: 'progress', round: race.round, answered, total, correct, reviewComplete };
   replayProgress();
 }
 function clearRace(notifyServer: boolean) {
   ++generation; abort?.abort(); abort = null; pending = null;
   const store = useAppStore.getState();
   const previous = room;
+  const recentCode = previous?.code ?? store.race?.code;
+  const recentUser = store.currentUser?.id ?? rememberedAccount;
+  if (recentCode && recentUser) saveRecentRoom(recentUser, recentCode);
   room = null; progress = null; sentProgress = ''; settings = null; settingsInFlight = null; invites.clear(); remember(null);
   if (previous) {
     if (notifyServer) previous.send({ type: 'leave', round: store.race?.round ?? 1 });

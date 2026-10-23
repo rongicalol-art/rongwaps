@@ -80,7 +80,7 @@ test('disconnect buffers only latest progress and reconnect replays it once; rem
   h.api.reportRaceProgress(2,4,1); h.api.reportRaceProgress(3,4,2);
   assert.equal(sent.length,1);
   live=true; h.calls[0].handlers.onStatus('live'); h.calls[0].handlers.onState(race,'me');
-  assert.deepEqual(sent.at(-1),{type:'progress',round:1,answered:3,total:4,correct:2});
+  assert.deepEqual(sent.at(-1),{type:'progress',round:1,answered:3,total:4,correct:2,reviewComplete:false});
   h.api.reportRaceProgress(3,4,2); assert.equal(sent.length,2);
   h.calls[0].handlers.onState(snapshot(2),'me');
   assert.equal(sent.length,2,'old-round progress is not sent into the rematch');

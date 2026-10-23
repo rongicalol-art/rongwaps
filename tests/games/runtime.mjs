@@ -133,19 +133,22 @@ try {
   send(host, { type: 'start' });
   await until(() => host.state.phase === 'preparing' && guest.state.phase === 'preparing');
   assert.equal(host.state.deadline, 0, 'starting preparation does not start the race clock');
-  send(host, { type: 'ready', planHash });
+  send(host, { type: 'ready', planHash, reviewFlow: 1 });
   await until(() => host.state.players.find(p => p.id === 'alice').preparedAt !== null);
   assert.equal(host.state.phase, 'preparing', 'one ready player cannot start the race');
   await mf.unsafeEvictDurableObject('games', 'GameRoom', { name: created.code, webSockets: 'hibernate' });
-  send(guest, { type: 'ready', planHash });
+  send(guest, { type: 'ready', planHash, reviewFlow: 1 });
   await until(() => guest.state.phase === 'race');
   assert.ok(host.state.startedAt, 'the race clock starts after both players are ready');
   await mf.unsafeEvictDurableObject('games', 'GameRoom', { name: created.code, webSockets: 'hibernate' });
   await delay(60);
-  send(host, { type: 'progress', answered: 5, total: 5, correct: 4 });
+  send(host, { type: 'progress', answered: 5, total: 5, correct: 4, reviewComplete: false });
+  await until(() => guest.state.players.find(p => p.id === 'alice').answered === 5);
+  assert.equal(guest.state.players.find(p => p.id === 'alice').finishedAt, null, 'first-pass completion waits for review');
+  send(host, { type: 'progress', answered: 5, total: 5, correct: 4, reviewComplete: true });
   await until(() => guest.state.players.find(p => p.id === 'alice').place === 1);
   await delay(60);
-  send(guest, { type: 'progress', answered: 9, total: 4, correct: 9 });
+  send(guest, { type: 'progress', answered: 9, total: 4, correct: 9, reviewComplete: true });
   await until(() => host.state.phase === 'results');
   const bobPlayer = host.state.players.find(p => p.id === 'bob');
   assert.deepEqual([bobPlayer.answered, bobPlayer.correct, bobPlayer.place], [4, 4, 2]);
@@ -228,12 +231,18 @@ try {
   // A race deadline ends the room even when nobody sends another action.
   send(otherHost, {type:'start'});
   await until(()=>otherHost.state.phase==='preparing' && switched.state.phase==='preparing');
-  send(otherHost,{type:'ready',planHash}); send(switched,{type:'ready',planHash});
+  send(otherHost,{type:'ready',planHash,reviewFlow:1}); send(switched,{type:'ready',planHash,reviewFlow:1});
   await until(()=>switched.state.phase==='race');
   const deadlineSql=await mf.unsafeGetDurableObjectStorage('games','GameRoom',{name:other.code});
   const deadlineState=JSON.parse((await deadlineSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
   deadlineState.deadline=Date.now()-1;
   await deadlineSql.exec('UPDATE state SET data=? WHERE id=1',JSON.stringify(deadlineState));
+  await control(`/__test/room/${other.code}/alarm`);
+  await until(()=>otherHost.state.phase==='review' && switched.state.phase==='review');
+  assert.ok(otherHost.state.players.every(p=>p.place===null),'the review window does not invent finishers');
+  const reviewState=JSON.parse((await deadlineSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
+  reviewState.reviewDeadline=Date.now()-1;
+  await deadlineSql.exec('UPDATE state SET data=? WHERE id=1',JSON.stringify(reviewState));
   await control(`/__test/room/${other.code}/alarm`);
   await until(()=>otherHost.state.phase==='results' && switched.state.phase==='results');
   assert.ok(otherHost.state.players.every(p=>p.place===null),'timeouts do not invent finishers');
@@ -297,7 +306,7 @@ try {
   await until(()=>slowHost.state?.players.length===2 && slowGuest.state);
   send(slowHost,{type:'start'});
   await until(()=>slowHost.state.phase==='preparing' && slowGuest.state.phase==='preparing');
-  send(slowHost,{type:'ready',planHash});
+  send(slowHost,{type:'ready',planHash,reviewFlow:1});
   await until(()=>slowHost.state.players.find(p=>p.id==='slow-host').preparedAt!==null);
   const slowSql=await mf.unsafeGetDurableObjectStorage('games','GameRoom',{name:slow.code});
   const slowState=JSON.parse((await slowSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
@@ -313,9 +322,9 @@ try {
   await until(()=>mismatchHost.state?.players.length===2 && mismatchGuest.state);
   send(mismatchHost,{type:'start'});
   await until(()=>mismatchHost.state.phase==='preparing' && mismatchGuest.state.phase==='preparing');
-  send(mismatchHost,{type:'ready',planHash});
+  send(mismatchHost,{type:'ready',planHash,reviewFlow:1});
   await until(()=>mismatchHost.state.players.find(p=>p.id==='mismatch-host').preparedAt!==null);
-  send(mismatchGuest,{type:'ready',planHash:'b'.repeat(64)});
+  send(mismatchGuest,{type:'ready',planHash:'b'.repeat(64),reviewFlow:1});
   await until(()=>mismatchHost.state.phase==='results' && mismatchHost.state.prepareError==='content-mismatch');
   assert.equal(mismatchHost.state.startedAt,null,'different lesson data cannot enter a race');
 
@@ -343,11 +352,12 @@ try {
   const students = await Promise.all(Array.from({ length: 150 }, async (_, index) => {
     const id = `load-${index}`;
     const client = await open('/lobby/socket', 'lobby', (await post('/lobby', id)).ticket);
-    send(client, { t: 'here', l: 101, a: 'lesson', show: true });
+    send(client, { t: 'here', l: 101, a: 'lesson', show: true, i: `https://lh3.googleusercontent.com/${id}` });
     send(client, { t: 'sub', online: true, chat: 101 });
     return { id, client };
   }));
   await until(() => students.every(({client}) => last(client, 'counts')?.n === 150 && last(client, 'online')?.v.length === 150 && last(client, 'people')?.v.length === 150));
+  assert.ok(students.every(({id, client}) => last(client, 'online').v.some(person => person.u === id && person.i === `https://lh3.googleusercontent.com/${id}`)), 'profile photos stay present in 150-person snapshots');
   const lobbyMs = Math.round(performance.now() - started);
   const stableCount = students[0].client.frames.filter(f => f.t === 'counts').length;
   await control('/__test/lobby/main/alarm');
@@ -356,6 +366,13 @@ try {
   const burstAt = performance.now();
   for (const {id, client} of students) send(client, { t: 'say', l: 101, text: id });
   await until(() => students.every(({client}) => client.frames.filter(f => f.t === 'msg' && f.m.t.startsWith('load-')).length === 150));
+  assert.ok(students.every(({id, client}) => client.frames.some(frame => frame.t === 'msg' && frame.m.u === id && frame.m.i === `https://lh3.googleusercontent.com/${id}`)), 'chat messages include the sender profile photo');
+  const priorHistoryFrames = students[0].client.frames.filter(frame => frame.t === 'history').length;
+  send(students[0].client, { t: 'sub', online: true, chat: null });
+  send(students[0].client, { t: 'sub', online: true, chat: 101 });
+  await until(() => students[0].client.frames.filter(frame => frame.t === 'history').length > priorHistoryFrames);
+  const chatHistory = last(students[0].client, 'history').v;
+  assert.ok(chatHistory.some(message => message.i && message.u.startsWith('load-')), `chat history decorates online senders with their profile photos: ${JSON.stringify(chatHistory.slice(0, 2))}`);
   const chatMs = Math.round(performance.now() - burstAt);
   assert.equal((await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n, 50);
   const races = await Promise.all(Array.from({length: 38}, async (_, group) => {
@@ -365,14 +382,14 @@ try {
     await until(() => players.every(p => p.client.state?.connected.length === members.length));
     send(players[0].client, {type:'start'});
     await until(() => players.every(p => p.client.state.phase === 'preparing'));
-    players.forEach(p => send(p.client, {type:'ready',planHash}));
+    players.forEach(p => send(p.client, {type:'ready',planHash,reviewFlow:1}));
     await until(() => players.every(p => p.client.state.phase === 'race'));
     return players;
   }));
   const latencies = [];
   await Promise.all(races.map(async players => {
     const at = performance.now();
-    players.forEach(p => send(p.client, {type:'progress', answered:1, total:1, correct:1}));
+    players.forEach(p => send(p.client, {type:'progress', answered:1, total:1, correct:1, reviewComplete:true}));
     await until(() => players.every(p => p.client.state.phase === 'results'));
     assert.deepEqual(players[0].client.state.players.map(p => p.place).sort(), players.map((_, i) => i + 1));
     latencies.push(performance.now() - at);

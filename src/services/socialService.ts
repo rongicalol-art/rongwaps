@@ -3,7 +3,7 @@ import type { LobbyClientMessage, LobbyServerMessage } from '../../shared/lobby'
 import type { RaceFrame, RaceSelection, RaceSnapshot } from '../../shared/quizRace';
 
 export type SocialStatus = 'off' | 'connecting' | 'live' | 'reconnecting';
-export interface Identity { name: string; color: string }
+export interface Identity { name: string; color: string; image?: string }
 interface Socket<T> { send: (message: T) => boolean | void; close: () => void }
 class ConnectionError extends Error { constructor(message: string, readonly status: number) { super(message); } }
 
@@ -129,7 +129,7 @@ export function connectLobby(identity: Identity, handlers: {
   onMessage: (message: LobbyServerMessage) => void; onStatus: (status: SocialStatus) => void; onOpen: () => void;
 }): Socket<LobbyClientMessage> {
   return reconnecting<LobbyServerMessage, LobbyClientMessage>({
-    path: () => '/lobby/socket', protocol: 'lobby', issue: signal => ticket('/lobby', identity, signal), fatal: [4001, 1008], ...handlers,
+    path: () => '/lobby/socket', protocol: 'lobby', issue: signal => ticket('/lobby', { name: identity.name, color: identity.color }, signal), fatal: [4001, 1008], ...handlers,
   });
 }
 

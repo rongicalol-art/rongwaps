@@ -1,9 +1,9 @@
 import { DurableObject } from 'cloudflare:workers';
 import { parseLobbyMessage, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity } from '../shared/lobby';
-import { socialColor, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
+import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 
 type Att = {
-  u: string; n: string; c: SocialColor; show: boolean; l: number | null; a: Activity | null;
+  u: string; n: string; c: SocialColor; i?: string; show: boolean; l: number | null; a: Activity | null;
   on: boolean; ch: number | null; say: number[]; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
@@ -47,7 +47,7 @@ export class Lobby extends DurableObject<Env> {
     this.ctx.storage.sql.exec('INSERT OR REPLACE INTO rooms VALUES (?,?,?)', summary.code, JSON.stringify(summary), Date.now());
     if (summary.open && summary.players.length && !this.ctx.storage.sql.exec('SELECT id FROM chat WHERE room=? LIMIT 1', summary.code).toArray().length) {
       const lesson = 100 + Number(Object.keys(summary.selection.lessons)[0]);
-      this.post({ u: hostUid, n: summary.host, c: socialColor(summary.hostColor) }, lesson, '', summary.code);
+      this.post({ u: hostUid, n: summary.host, c: socialColor(summary.hostColor), i: summary.hostImage }, lesson, '', summary.code);
     }
     await this.schedule();
   }
@@ -64,7 +64,7 @@ export class Lobby extends DurableObject<Env> {
     }
     try { socket.send(frame); } catch { socket.close(1011, 'Reconnect.'); }
   }
-  private person(att: Att): Person { return { u: att.u, n: att.n, c: att.c, l: att.l, a: att.a }; }
+  private person(att: Att): Person { return { u: att.u, n: att.n, c: att.c, l: att.l, a: att.a, ...(att.i ? { i: att.i } : {}) }; }
 
   async fetch(request: Request): Promise<Response> {
     if (request.headers.get('Origin') !== this.env.APP_ORIGIN || request.headers.get('Upgrade')?.toLowerCase() !== 'websocket') return new Response('Forbidden', { status: 403 });
@@ -99,8 +99,9 @@ export class Lobby extends DurableObject<Env> {
     let message;
     try { message = parseLobbyMessage(JSON.parse(raw)); } catch { return; }
     if (message.t === 'here') {
-      if (message.l === att.l && message.a === att.a && message.show === att.show) return;
-      att.l = message.l; att.a = message.a; att.show = message.show;
+      const image = socialImage(message.i, this.env.SUPABASE_URL);
+      if (message.l === att.l && message.a === att.a && message.show === att.show && image === att.i) return;
+      att.l = message.l; att.a = message.a; att.show = message.show; att.i = image;
       socket.serializeAttachment(att);
       // Clear old lesson people immediately, including when leaving the last lesson.
       this.sent.get(socket)?.delete('people');
@@ -146,17 +147,19 @@ export class Lobby extends DurableObject<Env> {
     }
   }
 
-  private post(att: Pick<Att, 'u' | 'n' | 'c'>, lesson: number, text: string, room: string | null) {
+  private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null) {
     const now = Date.now();
     const id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO chat (lesson,uid,name,color,text,room,ts) VALUES (?,?,?,?,?,?,?) RETURNING id', lesson, att.u, att.n, att.c, text, room, now).one().id;
     // IDs are global, so id-50 would incorrectly delete one lesson's history when another lesson is busy.
     this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id NOT IN (SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT ?))', lesson, now - CHAT_TTL_MS, lesson, CHAT_KEEP);
-    const frame = JSON.stringify({ t: 'msg', m: this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now }) } satisfies LobbyServerMessage);
+    const frame = JSON.stringify({ t: 'msg', m: this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now }, att.i) } satisfies LobbyServerMessage);
     for (const socket of this.sockets()) if ((socket.deserializeAttachment() as Att).ch === lesson) this.send(socket, frame);
   }
 
-  private message(row: ChatRow): ChatMessage {
+  private message(row: ChatRow, image?: string): ChatMessage {
     const base: ChatMessage = { id: row.id, l: row.lesson, u: row.uid, n: row.name, c: socialColor(row.color), t: row.text, ts: row.ts };
+    const avatar = socialImage(image, this.env.SUPABASE_URL);
+    if (avatar) base.i = avatar;
     if (row.room) {
       const data = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM rooms WHERE code=?', row.room).toArray()[0];
       if (data) base.r = JSON.parse(data.data) as RaceRoomSummary;
@@ -165,8 +168,9 @@ export class Lobby extends DurableObject<Env> {
   }
 
   private history(lesson: number, now: number) {
+    const images = new Map(this.attachments().filter(att => att.i).map(att => [att.u, att.i!]));
     return this.ctx.storage.sql.exec<ChatRow>('SELECT * FROM chat WHERE lesson=? AND ts>=? ORDER BY id DESC LIMIT ?', lesson, now - CHAT_TTL_MS, CHAT_KEEP)
-      .toArray().reverse().map(row => this.message(row)).filter(message => message.t || message.r);
+      .toArray().reverse().map(row => this.message(row, images.get(row.uid))).filter(message => message.t || message.r);
   }
   private online(atts: Att[]) { return atts.filter(att => att.show).map(att => this.person(att)); }
   private rooms(): RaceRoomSummary[] {
