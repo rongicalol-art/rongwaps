@@ -2,7 +2,7 @@ import { useNavigate, useNavigationType } from 'react-router';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { StickyWorkspaceHeader } from '../../lib/widgets';
 import type { LegalPage } from '../../app/routes';
-import { LEGAL_EFFECTIVE_DATE } from './legalMeta';
+import { LEGAL_EFFECTIVE_DATE, formatLegalDate } from './legalMeta';
 import { AboutContent } from './AboutContent';
 import { SourcesContent } from './SourcesContent';
 import { PrivacyPolicyContent } from './PrivacyPolicyContent';
@@ -39,7 +39,7 @@ export function LegalScreen({ page }: { page: LegalPage }) {
           <span className="rounded-xs border-2 border-ui-border bg-ui-surface px-2 py-0.5 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
             Beta
           </span>
-          {dated && <p className="text-sm font-bold text-ui-muted-strong">Effective {LEGAL_EFFECTIVE_DATE}</p>}
+          {dated && <p className="text-sm font-bold text-ui-muted-strong">Effective {formatLegalDate(LEGAL_EFFECTIVE_DATE)}</p>}
         </div>
         <Content />
       </main>

@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { authService } from '../../services/authService';
+import { removeAllProfileMedia } from '../../services/profileMedia';
 import { userService } from '../../services/userService';
 import { useAppStore } from '../../store/useAppStore';
 import { downloadJsonFile } from '../../utils/browser/downloadFile';
@@ -26,6 +27,11 @@ export function useAccountActions() {
    * discards in-memory sync state that still points at the deleted user.
    */
   const deleteAccount = useCallback(async () => {
+    const userId = useAppStore.getState().currentUser?.id;
+    if (userId) {
+      // Never block deletion on photos; scripts/dev/purgeOrphanProfileMedia.ts sweeps leftovers.
+      await removeAllProfileMedia(userId).catch((error) => debugLogger.warn('Auth', 'Profile photo removal failed:', error));
+    }
     await userService.deleteMyAccount();
 
     try {

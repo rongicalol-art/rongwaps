@@ -157,3 +157,20 @@ centre-crop and covers to at most 1600px wide before uploading. Display uses
 one-hour signed URLs, held in memory and refreshed after 50 minutes. No public
 URLs or signed URLs are persisted in profile settings. Older rows default to an
 empty display name (auth-name fallback), blue initials, ink cover, and no uploads.
+Account deletion removes both photos through the Storage API before calling
+`delete_my_account` (SQL cannot delete Storage files); failures never block
+deletion. `scripts/dev/purgeOrphanProfileMedia.ts` (service-role key, dry run by
+default, `--apply` to delete) removes photo folders whose account is gone.
+
+## Inactive account cleanup
+
+`20261023120000_inactive_account_cleanup.sql` enables `pg_cron` and schedules
+`delete-inactive-accounts` daily at 19:00 UTC (03:00 Taiwan). It deletes, at most
+500 per run, auth users whose newest activity is older than 12 months, cascading
+to every user table (Terms §5, Privacy §6). Activity = newest of account creation,
+last sign-in, `auth.sessions.updated_at` (token refresh), `user_profiles.updated_at`,
+`user_card_progress.last_updated` and `user_review_events.created_at`. Emails in
+`private.beta_owner_emails` or `private.full_course_access_emails` are exempt.
+Dry run: `select * from private.inactive_accounts();`. Both functions are private
+and not executable by `anon`/`authenticated`. No warning email is sent yet (no
+custom SMTP). Run the orphan-photo script after cleanups.

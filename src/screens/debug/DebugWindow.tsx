@@ -1,5 +1,6 @@
 import { FlashcardActionsPreview } from '../flashcard';
 import { SentenceLookupPreview } from './SentenceLookupPreview';
+import { LegalUpdatePreview } from './LegalUpdatePreview';
 import { PerformancePanel } from './PerformancePanel';
 import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
@@ -337,6 +338,7 @@ export const DebugWindow = () => {
             <GrammarPracticePreview />
             <TonePreview />
             <PinyinPreview />
+            <LegalUpdatePreview />
           </div>
         )}
 

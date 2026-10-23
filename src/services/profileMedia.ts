@@ -19,8 +19,10 @@ export function profileImageFileError(file: File): string | null {
   return null;
 }
 
+const ownedPaths = (userId: string) => [`${userId}/avatar.webp`, `${userId}/cover.webp`];
+
 function ownedPath(userId: string, path: string): string {
-  if (![`${userId}/avatar.webp`, `${userId}/cover.webp`].includes(path)) throw new Error('Invalid profile media path');
+  if (!ownedPaths(userId).includes(path)) throw new Error('Invalid profile media path');
   return path;
 }
 
@@ -77,6 +79,13 @@ export async function uploadProfileMedia(userId: string, kind: 'avatar' | 'cover
   signedUrls.delete(path);
   return path;
 }
+/** Account deletion: SQL cannot delete Storage files, so the owner removes both before the account goes. */
+export async function removeAllProfileMedia(userId: string): Promise<void> {
+  const { error } = await supabase.storage.from(BUCKET).remove(ownedPaths(userId));
+  if (error) throw error;
+  signedUrls.clear();
+}
+
 export async function removeProfileMedia(userId: string, path: string): Promise<void> {
   const { error } = await supabase.storage.from(BUCKET).remove([ownedPath(userId, path)]);
   if (error) throw error;

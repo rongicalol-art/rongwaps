@@ -118,6 +118,8 @@ Enable these Authentication hooks after applying the migration:
 
 The first filters registrations; the second checks provider-owned identities on sign-in and refresh. The PostgREST pre-request function and restrictive user-table policies also block previously issued unauthorized tokens. Express verifies `has_beta_access` using each request's token; the client checks the same RPC before publishing a signed-in user. Existing users and progress are retained.
 
+`20261023120000_inactive_account_cleanup.sql` schedules the daily 12-month inactive-account deletion with `pg_cron` (see `docs/DATABASE_SCHEMA.md`). Check `select * from private.inactive_accounts();` after applying it; it must not list anyone who is still studying.
+
 Grant an owner exception only after the owner explicitly supplies the exact Google email; insert its lowercase value into `private.beta_owner_emails` through an administrative database connection. Removing that row immediately denies subsequent protected requests. Neither client-editable `user_metadata` nor Google's account-picker hints authorize access.
 
 Local security tests: use a disposable Supabase Postgres container, clone its initialized `postgres` database into `school_beta_test`, copy both migrations into the container, then run `tests/database/schoolBetaAccess.test.sql` with psql's `migration` and `course_migration` variables pointing to them. The fixture refuses other database names and never uses real user progress.
