@@ -10,8 +10,8 @@ import { cn } from '../../../utils/cn';
 interface FolderTone {
   lightBg?: string;
   accentColor?: string;
-  accentBg?: string;
-  onAccent?: string;
+  /** Folder hex, for the soft tinted border. */
+  colorFront?: string;
 }
 
 interface LibraryCardGridProps {
@@ -58,22 +58,19 @@ export function LibraryCardGrid({
             type="button"
             onClick={onAddCard}
             aria-label="Add a card to this folder"
+            style={tone?.colorFront ? { borderColor: `color-mix(in srgb, ${tone.colorFront} 38%, var(--color-ui-canvas))` } : undefined}
             className={cn(
-              'flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center gap-2.5 rounded-feature border-2 border-b-[length:var(--depth-md)] border-ui-border text-center outline-none transition-[transform,filter] duration-150 hover:brightness-[0.98] active:scale-[0.98] focus-ring',
+              // Same shell and slots as SpellCard: a blank card with a plus where the word sits.
+              'relative flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-md)] px-4 py-6 text-center outline-none transition-[transform,filter] duration-150 hover:brightness-[0.98] active:scale-[0.98] focus-ring',
+              tone?.colorFront ? '' : 'border-ui-border',
               tone?.lightBg ?? 'bg-brand-primary-soft',
               tone?.accentColor ?? 'text-brand-primary'
             )}
           >
-            <span
-              className={cn(
-                'flex h-10 w-10 items-center justify-center rounded-xl',
-                tone?.accentBg ?? 'bg-brand-primary',
-                tone?.onAccent ?? 'text-white'
-              )}
-            >
-              <AppIcon name="add" size={22} />
+            <span className="mb-3 flex h-12 items-center justify-center">
+              <AppIcon name="add" size={44} />
             </span>
-            <span className="block text-[15px] font-black">Add card</span>
+            <span className="text-sm font-extrabold">New card</span>
           </button>
         )}
 

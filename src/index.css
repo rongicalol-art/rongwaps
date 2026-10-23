@@ -559,21 +559,16 @@ body {
 .rw-wave-playing > span { animation: rw-wave 480ms ease-in-out infinite alternate; }
 @media (prefers-reduced-motion: reduce) { .rw-wave-playing > span { animation: none; } }
 
-@keyframes slideInFwd {
-  0% { transform: translateX(50px) scale(0.95); opacity: 0; }
-  100% { transform: translateX(0) scale(1); opacity: 1; }
-}
-@keyframes slideInBack {
-  0% { transform: translateX(-50px) scale(0.95); opacity: 0; }
-  100% { transform: translateX(0) scale(1); opacity: 1; }
-}
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
 
-.anim-fwd { animation: slideInFwd 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-.anim-back { animation: slideInBack 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+/* Add card: one card that flips between the search side and the meaning side. */
+.flip-card { transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.3, 0.8, 0.3, 1); }
+.flip-card[data-flipped="true"] { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-face-back { transform: rotateY(180deg); }
 .anim-float { animation: none; }
 .spring-transition { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
@@ -589,8 +584,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-fwd,
-  .anim-back,
+  .flip-card { transition: none; }
   .anim-float,
   .anim-teaser-marquee {
     animation: none;

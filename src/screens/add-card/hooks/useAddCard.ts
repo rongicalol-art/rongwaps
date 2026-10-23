@@ -6,7 +6,6 @@ import { flashcardService } from '../../../services/flashcardService';
 import { useDictionarySearch, SearchResult } from '../../../hooks/useDictionarySearch';
 
 type ViewState = 'front' | 'back';
-type Direction = 'fwd' | 'back' | 'none';
 
 import { resolveFolderColor } from '../../../utils/folderColors';
 import { meaningText } from '../../../utils/vocabulary/dictionaryDefinitions';
@@ -28,7 +27,6 @@ export function useAddCard(onClose: () => void) {
   
   // App State
   const [view, setView] = useState<ViewState>('front');
-  const [direction, setDirection] = useState<Direction>('none');
   const [cardData, setCardData] = useState({ 
     front: '', 
     meaning: '', 
@@ -79,19 +77,14 @@ export function useAddCard(onClose: () => void) {
       measureWords: entry.measure_words || []
     });
     
-    setDirection('fwd');
     setView('back');
   };
 
   const handleNext = () => {
     if (cardData.front.trim()) {
       const typed = cardData.front.trim();
+      // Continue uses exactly what was typed; a result is only taken when tapped.
       const exactMatch = suggestions.find(s => s.traditional === typed || s.simplified === typed);
-      // Pinyin/English input is a search, not the card face: take the top hit.
-      if (!exactMatch && !/[㐀-鿿]/.test(typed) && suggestions[0]) {
-        handleSelectSuggestion(suggestions[0]);
-        return;
-      }
       let newMeanings = cardData.availableMeanings;
       let newMeaning = cardData.meaning;
       let newPinyin = cardData.pinyin;
@@ -114,13 +107,11 @@ export function useAddCard(onClose: () => void) {
         });
       }
 
-      setDirection('fwd');
       setView('back');
     }
   };
 
   const handleBack = () => {
-    setDirection('back');
     setView('front');
   };
 
@@ -168,8 +159,6 @@ export function useAddCard(onClose: () => void) {
     folderAccent,
     view,
     setView,
-    direction,
-    setDirection,
     cardData,
     setCardData,
     isFocused,
