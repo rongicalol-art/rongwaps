@@ -4,14 +4,14 @@ One Node service (`npm run build`, then `npm start`) serves the SPA and the API.
 
 ## Beta readiness audit — October 23, 2026
 
-**Decision: hold invitations until the remaining launch checks and hosting decision are resolved.** The original audit below used metadata and aggregate statistics only; progress failure reproductions used isolated, synthetic hook fixtures. The follow-up fixes are described separately here; no production user records, schema or grants were changed.
+**Decision: complete the remaining launch checks before invitations; keep Render Free with its cold-start delay accepted by the owner.** The original audit below used metadata and aggregate statistics only; progress failure reproductions used isolated, synthetic hook fixtures. The follow-up fixes are described separately here; no production user records, schema or grants were changed.
 
 ### Progress fixes — October 23 follow-up
 
 - Fixed the three progress blockers in this audit: late async sync results are scoped to their starting login snapshot, each sync operation pins its bearer token across requests/batches, failed saves and pulls retry with bounded backoff, and failed resets restore the entire cleared progress state after waiting for active sync. Reconnect pulls before flushing pending work. First-pull retries retain reviews made locally after an account switch.
 - `tests/unit/cloudSyncLifecycle.test.ts` exercises the actual hooks and slice actions with synthetic transport/effects. It covers account switches, sign-out, a new login to the same account, overlapping pulls, pending uploads, retry/reconnect, reset rollback, and bearer-token isolation across 501-record uploads. It does not use real learner progress.
 - The follow-up suite passed **1,110 tests**, including the lifecycle regressions. The production build and size budgets passed. The scoped Jev gate has no applicable rules for these backend/state files; it is not an independent semantic review of the lifecycle.
-- The Render dashboard confirmed `ronsmandarin` uses the **Free** compute plan. Its cheapest displayed paid option is **$7/month, 0.5 CPU, 512 MB RAM**. No paid upgrade was submitted; removing cold starts requires approval of that recurring charge.
+- The Render dashboard confirmed `ronsmandarin` uses the **Free** compute plan. Its cheapest displayed paid option is **$7/month, 0.5 CPU, 512 MB RAM**. The owner explicitly chose **Keep Free for now** after reviewing that price. No paid upgrade was submitted; cold-start delays remain an accepted beta limitation.
 - The security/device/restore checks listed below remain open. Concurrent grammar, add-card and flashcard work is outside this fix; rerun the release gate on the final combined release candidate.
 
 ### Fix before invitations
