@@ -1,6 +1,6 @@
 /**
  * Study together: presence, lesson chat, invites and the quiz race. Everything live is ephemeral (rebuilt from the
- * games Worker on connect); only the learner's own choices (`showOnline`, `blockedUsers`) are persisted locally.
+ * games Worker on connect); only the learner's own choices (`showOnline`, `socialMuted`) are persisted locally.
  */
 import type { ChatMessage, LessonCount, Person } from '../../../shared/lobby';
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
@@ -18,8 +18,6 @@ export interface SocialState {
   /** No cheer or invite pop-ups and no unread dot (people and chat still update). */
   socialMuted: boolean;
   setSocialMuted: (muted: boolean) => void;
-  blockedUsers: string[];
-  toggleBlockedUser: (userId: string) => void;
 
   socialStatus: SocialStatus;
   socialMe: string | null;
@@ -43,7 +41,7 @@ export interface SocialState {
   racePlaying: boolean;
   raceStatus: SocialStatus;
   racePending: boolean;
-  setSocial: (patch: Partial<Omit<SocialState, 'setSocial' | 'setShowOnline' | 'toggleBlockedUser' | 'setSocialMuted'>>) => void;
+  setSocial: (patch: Partial<Omit<SocialState, 'setSocial' | 'setShowOnline' | 'setSocialMuted'>>) => void;
 }
 
 type SetState = (patch: Partial<SocialState> | ((state: SocialState) => Partial<SocialState>)) => void;
@@ -76,24 +74,14 @@ export function createSocialSlice(set: SetState): SocialState {
     setShowOnline: (showOnline) => set({ showOnline }),
     socialMuted: false,
     setSocialMuted: (socialMuted) => set({ socialMuted, ...(socialMuted ? { socialUnread: false, socialCheer: null, socialInvite: null } : {}) }),
-    blockedUsers: [],
-    toggleBlockedUser: (userId) => set((state) => ({
-      blockedUsers: state.blockedUsers.includes(userId)
-        ? state.blockedUsers.filter((id) => id !== userId)
-        : [...state.blockedUsers, userId].slice(-200),
-      ...(!state.blockedUsers.includes(userId) ? {
-        ...(state.socialInvite?.from.u === userId ? { socialInvite: null } : {}),
-        ...(state.socialCheer?.from.u === userId ? { socialCheer: null } : {}),
-      } : {}),
-    })),
     ...LIVE_DEFAULTS,
     setSocial: (patch) => set(patch),
   };
 }
 
-export const SOCIAL_PERSISTED_KEYS = ['showOnline', 'socialMuted', 'blockedUsers'] as const;
-/** Live state belongs to the signed-in account; blocks are per account too. */
-export const SOCIAL_ACCOUNT_SWITCH_DEFAULTS = { ...LIVE_DEFAULTS, blockedUsers: [] as string[] };
+export const SOCIAL_PERSISTED_KEYS = ['showOnline', 'socialMuted'] as const;
+/** Live state belongs to the signed-in account. */
+export const SOCIAL_ACCOUNT_SWITCH_DEFAULTS = { ...LIVE_DEFAULTS };
 
 /** The lesson key the Lobby uses: book 1 lesson 4 → 104. */
 export const lessonKey = (bookId: number, lessonId: number) => bookId * 100 + lessonId;

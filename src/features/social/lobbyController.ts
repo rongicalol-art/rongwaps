@@ -43,15 +43,15 @@ function receive(message: LobbyServerMessage) {
       const mine = message.m.u === store.socialMe;
       set({
         socialChat: { lesson: chat.lesson, messages: [...chat.messages, message.m].slice(-CHAT_CAP) },
-        socialUnread: !store.socialMuted && (store.socialUnread || (!reading && !mine && !store.blockedUsers.includes(message.m.u))),
+        socialUnread: !store.socialMuted && (store.socialUnread || (!reading && !mine)),
       });
       break;
     }
     case 'cheer':
-      if (!store.socialMuted && !store.blockedUsers.includes(message.from.u)) set({ socialCheer: { from: message.from, phrase: message.p, at: Date.now() } });
+      if (!store.socialMuted) set({ socialCheer: { from: message.from, phrase: message.p, at: Date.now() } });
       break;
     case 'invite':
-      if (!store.socialMuted && !store.blockedUsers.includes(message.from.u) && !store.race && !store.racePending) set({ socialInvite: { from: message.from, room: message.room } });
+      if (!store.socialMuted && !store.race && !store.racePending) set({ socialInvite: { from: message.from, room: message.room } });
       break;
   }
 }

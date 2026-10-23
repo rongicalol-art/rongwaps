@@ -38,14 +38,12 @@ export function PartyChatThread() {
 
 function MessageThread({ chat, ready, send, report }: { chat: ChatMessage[] | null; ready: boolean; send: (text: string) => boolean; report: (id: number) => void }) {
   const me = useAppStore((state) => state.socialMe);
-  const blocked = useAppStore((state) => state.blockedUsers);
-  const toggleBlockedUser = useAppStore((state) => state.toggleBlockedUser);
   const identity = useSocialIdentity();
   const [open, setOpen] = useState<number | null>(null);
   const [draft, setDraft] = useState('');
   const scroller = useRef<HTMLDivElement>(null);
   const rate = useRef<ChatRate | null>(null);
-  const visible = (chat ?? []).filter((message) => !blocked.includes(message.u));
+  const visible = chat ?? [];
 
   useLayoutEffect(() => {
     const el = scroller.current;
@@ -99,7 +97,6 @@ function MessageThread({ chat, ready, send, report }: { chat: ChatMessage[] | nu
                           <div className="mt-1 flex gap-3 px-1 text-xs font-extrabold text-ui-muted">
                             {HAN.test(line.t) && <span>Tap a word for pinyin and meaning</span>}
                             <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { report(line.id); setOpen(null); useAppStore.getState().showFeedbackToast('Reported'); }}>Report</button>
-                            <button type="button" className="outline-none hover:text-ui-ink focus-ring-inline" onClick={() => { toggleBlockedUser(line.u); setOpen(null); }}>Block</button>
                           </div>
                         )}
                       </div>

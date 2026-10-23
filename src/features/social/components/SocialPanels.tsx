@@ -26,9 +26,8 @@ function useOnlineTotal() {
 
 function useOthers(list: Person[], hideRoom = false) {
   const me = useAppStore((state) => state.socialMe);
-  const blocked = useAppStore((state) => state.blockedUsers);
   const race = useAppStore(state => state.race);
-  return list.filter((person) => person.u !== me && !blocked.includes(person.u) && (!hideRoom || !race?.players.some(player => player.id === person.u && !player.left)));
+  return list.filter((person) => person.u !== me && (!hideRoom || !race?.players.some(player => player.id === person.u && !player.left)));
 }
 
 const close = () => useAppStore.getState().setSocial({ socialPanel: null });
@@ -89,7 +88,6 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
               <div className="min-w-0"><p className="text-xs font-extrabold text-ui-muted-strong">{online.some(person => person.u === selected.u) || people.some(person => person.u === selected.u) ? 'Online now' : 'Last seen studying'}</p><h3 className="break-words text-2xl font-black text-ui-ink-strong">{selected.n}</h3></div>
             </div>
             <div className="mt-4 border-t-2 border-ui-divider pt-4"><p className="text-xs font-black text-ui-muted">Currently studying</p><p className="mt-1 text-base font-extrabold text-ui-ink-strong">{heading(selected.l)}</p><p className="mt-4 text-xs font-black text-ui-muted">Activity</p><p className="mt-1 text-base font-extrabold text-ui-ink-strong">{activityLabel(selected.a)}</p></div>
-            <button type="button" className="mt-6 py-2 text-sm font-black text-ui-muted-strong outline-none focus-ring-inline" onClick={() => { useAppStore.getState().toggleBlockedUser(selected.u); setProfile(null); }}>Block</button>
           </> : list.length === 0 ? <EmptyNote>{panel.tab === 'online' ? 'Nobody else is online.' : 'Nobody else is here yet.'}</EmptyNote> : list.map((person, index) => <div key={person.u}>
             {panel.tab === 'online' && (index === 0 || list[index - 1].l !== person.l) && <h3 className="pb-1 pt-4 text-xs font-black text-ui-muted-strong">{heading(person.l)}</h3>}
             <PersonRow person={person} lesson={panel.tab === 'online' ? null : lesson} onOpen={() => setProfile(person)} action={<ActionButton size="sm" variant="secondary" onClick={() => invite(person)}>Invite</ActionButton>} />

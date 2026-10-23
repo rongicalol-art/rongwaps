@@ -7,9 +7,8 @@ import { useAppStore } from '../../../store/useAppStore';
 export function GlobalPresenceButton() {
   const samples = useAppStore(state => state.socialFaces);
   const me = useAppStore(state => state.socialMe);
-  const blocked = useAppStore(state => state.blockedUsers);
   const total = useAppStore(state => Math.max(0, state.socialOnlineTotal - (state.showOnline && state.socialStatus === 'live' ? 1 : 0)));
-  const faces = samples.filter(person => person.u !== me && !blocked.includes(person.u)).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }));
+  const faces = samples.filter(person => person.u !== me).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }));
   return <button type="button" aria-label={`${total} classmates online. Open profiles and chat.`}
     onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', chatScope: 'global' } })}
     className="flex h-10 min-w-10 items-center justify-center gap-1 rounded-control px-1 text-ui-muted-strong outline-none transition-colors hover:bg-ui-hover focus-ring-inline">
@@ -18,18 +17,17 @@ export function GlobalPresenceButton() {
   </button>;
 }
 
-/** Others in one lesson (from the Lobby's per-lesson counts), without me or anyone I blocked. */
+/** Others in one lesson (from the Lobby's per-lesson counts), without me. */
 function useLessonOthers(lesson: number | null) {
   const entry = useAppStore((state) => (lesson === null ? undefined : state.socialCounts[lesson]));
   const me = useAppStore((state) => state.socialMe);
-  const blocked = useAppStore((state) => state.blockedUsers);
   const mePresent = useAppStore(state => state.socialPeople.some(person => person.u === state.socialMe && person.l === lesson));
   return useMemo(() => {
     if (!entry) return { faces: [], total: 0 };
-    const others = entry.f.filter((person) => person.u !== me && !blocked.includes(person.u));
+    const others = entry.f.filter((person) => person.u !== me);
     const meHere = mePresent || entry.f.some((person) => person.u === me);
     return { faces: others.map((person) => ({ name: person.n, color: person.c, src: person.i })), total: Math.max(others.length, entry.n - (meHere ? 1 : 0)) };
-  }, [entry, me, blocked, mePresent]);
+  }, [entry, me, mePresent]);
 }
 
 /** Faces on a Books lesson tile: who's studying it now. Fades in; renders nothing when nobody is. */

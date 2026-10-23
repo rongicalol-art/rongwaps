@@ -15,7 +15,6 @@ const EMPTY: ChatMessage[] = [];
 export function PracticeFaces() {
   const people = useAppStore((state) => state.socialPeople);
   const me = useAppStore((state) => state.socialMe);
-  const blocked = useAppStore((state) => state.blockedUsers);
   const unread = useAppStore((state) => state.socialUnread);
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
   const racing = useAppStore((state) => Boolean(state.race));
@@ -23,7 +22,7 @@ export function PracticeFaces() {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState<number | null>(null);
   const root = useRef<HTMLDivElement>(null);
-  const others = useMemo(() => people.filter((person) => person.u !== me && !blocked.includes(person.u)), [people, me, blocked]);
+  const others = useMemo(() => people.filter((person) => person.u !== me), [people, me]);
   const lesson = people.find((person) => person.u === me)?.l ?? others[0]?.l ?? null;
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export function PracticeFaces() {
     lobby.cheer(to, index);
     window.setTimeout(() => { setOpen(false); setSent(null); }, 650);
   };
-  const lastLine = [...chat].reverse().find((line) => line.u !== me && !line.r && !blocked.includes(line.u));
+  const lastLine = [...chat].reverse().find((line) => line.u !== me && !line.r);
   const openChat = () => { setOpen(false); useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } }); };
   return (
     <div ref={root} className="relative mr-1">

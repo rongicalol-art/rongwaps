@@ -274,7 +274,6 @@ const PERSISTED_ARRAY_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
-  'blockedUsers',
 ] as const;
 
 /** Persisted slice fields whose runtime shape is a plain record. */
@@ -292,6 +291,8 @@ const PERSISTED_RECORD_KEYS = [
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {
   const cleaned = { ...state };
+  // Retired social preference: discard saved blocks from older clients.
+  delete cleaned.blockedUsers;
   for (const key of PERSISTED_ARRAY_KEYS) {
     if (key in cleaned && !Array.isArray(cleaned[key])) {
       debugLogger.warn('Sync', `Persisted "${key}" was not an array; using an empty list.`, cleaned[key]);
