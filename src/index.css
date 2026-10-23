@@ -44,6 +44,26 @@
   font-display: swap;
 }
 
+/* Nunito (latin subset) lacks tone-marked pinyin vowels and its latin-ext slice misses ǐ ǒ ǖ ǚ ǜ.
+   Noto Sans subset, scoped by unicode-range, keeps every pinyin tone mark in one consistent face. */
+@font-face {
+  font-family: 'RW-Pinyin';
+  src: url('/fonts/pinyin-400.woff2') format('woff2');
+  font-weight: 100 599;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0101, U+0113, U+011B, U+012B, U+014D, U+016B, U+01CD-01DC, U+0261;
+}
+
+@font-face {
+  font-family: 'RW-Pinyin';
+  src: url('/fonts/pinyin-700.woff2') format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0101, U+0113, U+011B, U+012B, U+014D, U+016B, U+01CD-01DC, U+0261;
+}
+
 /* Approved profile cover palette: fixed across book themes. Plain :root (not @theme) because the
    preset is picked at runtime via inline var(), which Tailwind's unused-theme-var pruning can't see. */
 :root {
@@ -70,13 +90,13 @@
   --color-streak: #ef8f3c;
   --color-streak-edge: #d2732a;
 
-  --font-sans: "Nunito", "RW-Extras", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-chinese-sans: "Nunito", "PingFang TC", "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
-  --font-kaiti-tc: "Nunito", "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW-WenKai", ui-sans-serif, system-ui, sans-serif;
-  --font-kaiti-sc: "Nunito", "LXGW-WenKai", "Kaiti SC", "STKaiti", "KaiTi", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Nunito", "RW-Pinyin", "RW-Extras", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-chinese-sans: "Nunito", "RW-Pinyin", "PingFang TC", "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
+  --font-kaiti-tc: "Nunito", "RW-Pinyin", "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW-WenKai", ui-sans-serif, system-ui, sans-serif;
+  --font-kaiti-sc: "Nunito", "RW-Pinyin", "LXGW-WenKai", "Kaiti SC", "STKaiti", "KaiTi", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
   --font-kaiti: var(--font-kaiti-tc);
-  --font-chinese-huninn: "Nunito", "Huninn", "Rounded-SC", "RW-Extras", "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", ui-sans-serif, system-ui, sans-serif;
-  --font-chinese-rounded-sc: "Nunito", "Rounded-SC", "Huninn", "RW-Extras", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", ui-sans-serif, system-ui, sans-serif;
+  --font-chinese-huninn: "Nunito", "RW-Pinyin", "Huninn", "Rounded-SC", "RW-Extras", "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", ui-sans-serif, system-ui, sans-serif;
+  --font-chinese-rounded-sc: "Nunito", "RW-Pinyin", "Rounded-SC", "Huninn", "RW-Extras", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", ui-sans-serif, system-ui, sans-serif;
   /* Character font: Rounded (Huninn) by default; the study setting writes
      `data-character-font="kai"` on <html> to swap in the calligraphy stack. */
   --font-chinese: var(--font-chinese-huninn);
