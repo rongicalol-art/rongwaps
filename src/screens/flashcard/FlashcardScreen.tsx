@@ -24,6 +24,7 @@ interface FlashcardScreenProps {
   selectedLessons?: number[];
   isReviewDeck?: boolean;
   isLibraryDeck?: boolean;
+  isIndependentStudy?: boolean;
   onClose?: () => void;
   onContinue?: () => void;
   continueLabel?: string;
@@ -50,6 +51,7 @@ export function FlashcardScreen({
   selectedLessons = [],
   isReviewDeck = false,
   isLibraryDeck = false,
+  isIndependentStudy = false,
   onClose,
   onContinue,
   continueLabel,
@@ -384,6 +386,7 @@ export function FlashcardScreen({
         <FlashcardAnswerBar
           concealed={(introActive && !introLanded) || cardsDone}
           isFlipped={shownFlipped}
+          hideFlip={isIndependentStudy}
           onFlip={handleCardTap}
           onHard={() => triggerKeyboardRate(1, 1)}
           onUnsure={() => triggerKeyboardRate(2, 1)}

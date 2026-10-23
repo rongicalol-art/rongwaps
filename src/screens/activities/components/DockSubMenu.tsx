@@ -1,14 +1,21 @@
 import { useEffect, useState, type RefObject } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { ActionButton, AppIcon, PlayfulNavIcon, type PlayfulNavIconName } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+
+export interface DockSubMenuOption<T extends string> {
+  value: T;
+  label: string;
+  icon?: Parameters<typeof AppIcon>[0]['name'];
+  playfulIcon?: PlayfulNavIconName;
+}
 
 export interface DockSubMenuProps<T extends string> {
   open: boolean;
   onClose: () => void;
   modeKey: string;
   containerRef: RefObject<HTMLDivElement | null>;
-  options: ReadonlyArray<{ value: T; label: string; icon: Parameters<typeof AppIcon>[0]['name'] }>;
+  options: ReadonlyArray<DockSubMenuOption<T>>;
   selectedValue?: T | null;
   onSelect: (value: T) => void;
   label: string;
@@ -111,8 +118,12 @@ export function DockSubMenu<T extends string>({
                   onClose();
                 }}
               >
-                <AppIcon name={mode.icon} size={22} />
-                {mode.label}
+                {mode.playfulIcon ? (
+                  <PlayfulNavIcon name={mode.playfulIcon} className="h-6 w-6 shrink-0" />
+                ) : mode.icon ? (
+                  <AppIcon name={mode.icon} size={22} className="shrink-0" />
+                ) : null}
+                <span>{mode.label}</span>
               </ActionButton>
             ))}
           </div>

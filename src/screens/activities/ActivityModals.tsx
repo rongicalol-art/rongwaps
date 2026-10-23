@@ -43,7 +43,6 @@ export function ActivityModals({
   isLibraryMode = false,
   isShellOverlayOpen,
   onOpenGrammarPart,
-  onOpenReading,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
 
@@ -155,7 +154,6 @@ export function ActivityModals({
 
   const {
     visibleStudyParts,
-    practiceGrammarPart,
     selectStudyPart,
     toggleStudyPart,
     onPartContinue,
@@ -242,6 +240,7 @@ export function ActivityModals({
                   selectedLessons={selectedLessons}
                   isReviewMode={isReviewSession}
                   isLibraryMode={effectiveLibraryMode}
+                  isIndependentStudy={isIndependentStudy}
                   activeQuizMode={activeQuizMode}
                   direction={direction}
                   onClose={handleClose}
@@ -270,10 +269,6 @@ export function ActivityModals({
                       quizMode={activeQuizMode}
                       layout={dockLayout}
                       autoHide={dockAutoHide}
-                      onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
-                        ? () => onOpenGrammarPart(practiceGrammarPart.id)
-                        : undefined}
-                      onOpenReading={onOpenReading}
                       onSelectQuizMode={(mode) => {
                         setActiveQuizMode(mode);
                         setActiveActivity('quiz');

@@ -23,6 +23,7 @@ interface ActivityScreensProps {
   selectedLessons: number[];
   isReviewMode: boolean;
   isLibraryMode: boolean;
+  isIndependentStudy?: boolean;
   activeQuizMode: QuizScreenProps['mode'] | null;
   direction: number;
   onClose: () => void;
@@ -56,6 +57,7 @@ export function ActivityScreens({
   selectedLessons,
   isReviewMode,
   isLibraryMode,
+  isIndependentStudy = false,
   activeQuizMode,
   direction,
   onClose,
@@ -97,6 +99,7 @@ export function ActivityScreens({
             selectedLessons={selectedLessons}
             isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
             isLibraryDeck={(activeActivity === 'flashcards-library' || isLibraryMode) && !(isReviewMode || activeActivity === 'flashcards-review')}
+            isIndependentStudy={isIndependentStudy}
             onClose={onClose}
             onContinue={onContinue}
             continueLabel={continueLabel}

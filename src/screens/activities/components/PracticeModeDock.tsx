@@ -5,15 +5,13 @@ import { useDismiss } from '../../../hooks/useDismiss';
 import { useFloatingDockSleep } from '../../../hooks/useFloatingDockSleep';
 import { cn } from '../../../utils/cn';
 import type { QuizMode } from '../../../types/models';
-import { DockSubMenu } from './DockSubMenu';
+import { DockSubMenu, type DockSubMenuOption } from './DockSubMenu';
 import { DOCK_SWAP, PracticeDockSlotOutlet, usePracticeDockSlot } from '../../../features/practice';
-import { PracticeStudyAction } from './PracticeStudyAction';
 import type { PracticeDockLayout } from './practiceDockLayout';
 
 export const PRACTICE_ACTIVITIES = [
   { id: 'flashcards', label: 'Flashcards', icon: 'flashcards' },
   { id: 'quiz', label: 'Quiz', icon: 'quiz' },
-  { id: 'listening', label: 'Listening', icon: 'listening' },
   { id: 'writing', label: 'Writing', icon: 'writing' },
   { id: 'pinyin', label: 'Pinyin', icon: 'pinyinPractice' },
   { id: 'tones', label: 'Tones', icon: 'tones' },
@@ -21,13 +19,27 @@ export const PRACTICE_ACTIVITIES = [
 
 export type PracticeActivityId = (typeof PRACTICE_ACTIVITIES)[number]['id'];
 
+export const DOCK_TABS = [
+  { id: 'flashcards', label: 'Flashcards', icon: 'flashcards' },
+  { id: 'quiz', label: 'Quiz', icon: 'quiz' },
+  { id: 'practiceHub', label: 'Practice Hub', icon: 'practiceHub' },
+] as const;
+
+export type DockTabId = (typeof DOCK_TABS)[number]['id'];
+
+export type PracticeHubOptionId = 'writing' | 'pinyin' | 'tones';
+
+const PRACTICE_HUB_OPTIONS: ReadonlyArray<DockSubMenuOption<PracticeHubOptionId>> = [
+  { value: 'writing', label: 'Writing', playfulIcon: 'writing' },
+  { value: 'pinyin', label: 'Pinyin', playfulIcon: 'pinyinPractice' },
+  { value: 'tones', label: 'Tones', playfulIcon: 'tones' },
+];
+
 /** The single anchored sub-menu the dock can have open at a time. */
-type DockMenu = 'quiz' | 'study';
+type DockMenu = 'quiz' | 'practiceHub';
 
 export interface PracticeModeDockProps {
   onChange: (activity: PracticeActivityId) => void;
-  onOpenGrammar?: () => void;
-  onOpenReading?: () => void;
   onSelectQuizMode: (mode: QuizMode) => void;
   quizMode?: QuizMode | null;
   value: PracticeActivityId;
@@ -37,15 +49,13 @@ export interface PracticeModeDockProps {
   autoHide?: boolean;
 }
 
-const QUIZ_MODES = [
+const QUIZ_MODES: ReadonlyArray<DockSubMenuOption<QuizMode>> = [
   { value: 'choices', label: 'Choose', icon: 'choices' },
   { value: 'typing', label: 'Type', icon: 'typeText' },
 ] as const;
 
 export function PracticeModeDock({
   onChange,
-  onOpenGrammar,
-  onOpenReading,
   onSelectQuizMode,
   quizMode,
   value,
@@ -60,6 +70,13 @@ export function PracticeModeDock({
   const [openMenu, setOpenMenu] = useState<DockMenu | null>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const modesContainerRef = useRef<HTMLDivElement>(null);
+
+  const dockValue: DockTabId =
+    value === 'writing' || value === 'pinyin' || value === 'tones'
+      ? 'practiceHub'
+      : value === 'quiz'
+        ? 'quiz'
+        : 'flashcards';
 
   const { isAsleep, dockProps, wake } = useFloatingDockSleep({
     ref: dockRef,
@@ -122,7 +139,7 @@ export function PracticeModeDock({
               ref={modesContainerRef}
               className={cn(
                 'relative',
-                isVertical ? 'w-full' : 'dock-pill min-w-0 flex-1 w-full max-w-xs',
+                isVertical ? 'w-full' : 'dock-pill min-w-0 flex-1 w-full max-w-56',
               )}
             >
               <DockSubMenu<QuizMode>
@@ -136,31 +153,44 @@ export function PracticeModeDock({
                 selectedValue={quizMode}
                 onSelect={onSelectQuizMode}
               />
-              <SegmentedControl<PracticeActivityId>
-                value={value}
+              <DockSubMenu<PracticeHubOptionId>
+                open={openMenu === 'practiceHub'}
+                onClose={() => setOpenMenu(null)}
+                modeKey="practiceHub"
+                side={side}
+                containerRef={modesContainerRef}
+                label="Practice options"
+                options={PRACTICE_HUB_OPTIONS}
+                selectedValue={value === 'writing' || value === 'pinyin' || value === 'tones' ? value : null}
+                onSelect={(selectedMode) => {
+                  onChange(selectedMode);
+                }}
+              />
+              <SegmentedControl<DockTabId>
+                value={dockValue}
                 ariaLabel="Practice mode"
                 layoutId="practice-modes-dock-pill"
                 tone="soft"
                 hoverLabels
                 orientation={isVertical ? 'vertical' : 'horizontal'}
                 tooltipSide={side}
-                className={cn('w-full rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface shadow-ambient-sm', isVertical ? 'p-1.5' : 'h-full p-1.5 px-2.5')}
-                options={PRACTICE_ACTIVITIES.map((activity) => {
-                  const isSubMenu = activity.id === 'quiz';
-                  const isMenuOpen = openMenu === activity.id;
+                className={cn('w-full rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface shadow-ambient-sm', isVertical ? 'p-1.5' : 'h-full p-1.5 px-2')}
+                options={DOCK_TABS.map((tab) => {
+                  const isSubMenu = tab.id === 'quiz' || tab.id === 'practiceHub';
+                  const isMenuOpen = openMenu === tab.id;
                   return {
-                    value: activity.id,
-                    label: activity.label,
+                    value: tab.id,
+                    label: tab.label,
                     showLabel: false,
                     icon: (
                       <PlayfulNavIcon
-                        name={activity.icon}
+                        name={tab.icon}
                         className="h-7 w-7"
                       />
                     ),
                     buttonProps: {
                       ...(isSubMenu && {
-                        'data-mode': activity.id,
+                        'data-mode': tab.id,
                         'aria-haspopup': 'menu' as const,
                         'aria-expanded': isMenuOpen,
                       }),
@@ -171,37 +201,25 @@ export function PracticeModeDock({
                     },
                   };
                 })}
-                onChange={(activity) => {
-                  if (activity === 'quiz' && value === activity) {
-                    setOpenMenu((current) => (current === 'quiz' ? null : 'quiz'));
+                onChange={(tabId) => {
+                  if (tabId === 'practiceHub') {
+                    setOpenMenu((current) => (current === 'practiceHub' ? null : 'practiceHub'));
+                    return;
+                  }
+                  if (tabId === 'quiz') {
+                    if (value === 'quiz') {
+                      setOpenMenu((current) => (current === 'quiz' ? null : 'quiz'));
+                      return;
+                    }
+                    setOpenMenu(null);
+                    onChange('quiz');
                     return;
                   }
                   setOpenMenu(null);
-                  onChange(activity);
+                  onChange(tabId as PracticeActivityId);
                 }}
               />
             </div>
-
-            <AnimatePresence initial={false}>
-              {(onOpenGrammar || onOpenReading) && (
-                <PracticeStudyAction
-                  isOpen={openMenu === 'study'}
-                  onToggle={() => {
-                    if (onOpenGrammar && onOpenReading) {
-                      setOpenMenu((current) => (current === 'study' ? null : 'study'));
-                    } else if (onOpenGrammar) {
-                      onOpenGrammar();
-                    } else if (onOpenReading) {
-                      onOpenReading();
-                    }
-                  }}
-                  onClose={() => setOpenMenu(null)}
-                  onOpenGrammar={onOpenGrammar}
-                  onOpenReading={onOpenReading}
-                  side={side}
-                />
-              )}
-            </AnimatePresence>
           </motion.div>
         )}
         </AnimatePresence>

@@ -10,6 +10,8 @@ interface FlashcardAnswerBarProps {
   onGotIt: () => void;
   /** Hidden while the review intro plays (the intro raises it in) and under Cards done, which brings its own buttons. */
   concealed?: boolean;
+  /** When true, hides the "Flip card" button on the front of the card (e.g. independent study with floating dock). */
+  hideFlip?: boolean;
 }
 
 const HINT_MS = 3000;
@@ -17,7 +19,15 @@ const HINT_MS = 3000;
 const hintsSeen = { front: false, back: false };
 
 /** Under-card controls: reveal the answer, then grade it with three choices. */
-export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotIt, concealed = false }: FlashcardAnswerBarProps) {
+export function FlashcardAnswerBar({
+  isFlipped,
+  onFlip,
+  onHard,
+  onUnsure,
+  onGotIt,
+  concealed = false,
+  hideFlip = false,
+}: FlashcardAnswerBarProps) {
   const [hintsVisible, setHintsVisible] = useState(() => !hintsSeen[isFlipped ? 'back' : 'front']);
   useEffect(() => {
     const phase = isFlipped ? 'back' : 'front';
@@ -35,6 +45,8 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
     }, HINT_MS);
     return () => window.clearTimeout(timer);
   }, [concealed, isFlipped]);
+
+  if (!isFlipped && hideFlip) return null;
 
   const hintedLabelClass = cn(
     'relative motion-safe:transition-transform duration-200',
