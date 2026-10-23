@@ -40,3 +40,13 @@ test('build then parse round-trips', () => {
   const state = { readerIndex: 1, grammarPartId: null, dictionaryWord: null, activity: 'writing' };
   assert.deepEqual(parseOverlayParams(buildOverlayParams(state)), state);
 });
+
+test('overlay changes preserve a game invite and closing removes only overlay keys', () => {
+  const empty = { readerIndex: null, grammarPartId: null, dictionaryWord: null, activity: null };
+  const invite = '?room=ABC234';
+  const opened = buildOverlayParams({ ...empty, dictionaryWord: '你好' }, invite);
+  assert.equal(new URLSearchParams(opened).get('room'), 'ABC234');
+  assert.equal(parseOverlayParams(opened).dictionaryWord, '你好');
+  assert.equal(buildOverlayParams(empty, opened), invite);
+  assert.equal(buildOverlayParams(empty, '?room=ABC234&reader=true&readingIndex=2'), invite);
+});

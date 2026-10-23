@@ -89,7 +89,7 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
       grammarPartId: desired.grammarPartId,
       dictionaryWord: desired.dictionaryWord,
       activity: desired.activity,
-    });
+    }, location.search);
   }, [location.key, location.search]);
 
   // state → URL: only when no URL-driven application is in flight.
@@ -100,7 +100,9 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
       grammarPartId: d.grammar.activeGrammarPartId,
       dictionaryWord: d.dictionary.dictionaryWord,
       activity: d.activity.activeActivity,
-    });
+    }, location.search);
+    const present = d.reader.activeReadingIndex !== null || Boolean(d.grammar.activeGrammarPartId
+      || d.dictionary.dictionaryWord || d.activity.activeActivity);
 
     if (pendingApplyRef.current) {
       // The store has caught up with the URL — clear the pending handoff.
@@ -111,12 +113,11 @@ export function useOverlayUrlSync(deps: OverlaySyncDeps) {
     }
 
     if (paramsFromState === location.search) {
-      wasOverlayPresentRef.current = paramsFromState !== '';
+      wasOverlayPresentRef.current = present;
       return;
     }
 
     // Opening pushes a history entry; changing or closing replaces.
-    const present = paramsFromState !== '';
     const shouldPush = present && !wasOverlayPresentRef.current;
     wasOverlayPresentRef.current = present;
     appliedParamsRef.current = paramsFromState;

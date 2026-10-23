@@ -59,8 +59,10 @@ function parseBoundedIndex(value: string | null): number | null {
   return parsed;
 }
 
-export function buildOverlayParams(state: OverlayUrlState): string {
-  const params = new URLSearchParams();
+export function buildOverlayParams(state: OverlayUrlState, search = ''): string {
+  const params = new URLSearchParams(search);
+  // Overlay sync owns these keys; preserve screen-owned params such as room.
+  for (const key of ['reader', 'readingIndex', 'grammarPart', 'word', 'activity']) params.delete(key);
   if (state.readerIndex !== null) params.set('reader', String(state.readerIndex));
   if (state.grammarPartId) params.set('grammarPart', state.grammarPartId);
   if (state.dictionaryWord) params.set('word', state.dictionaryWord);
