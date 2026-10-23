@@ -246,6 +246,7 @@ export function ActivityModals({
                   direction={direction}
                   onClose={handleClose}
                   onWritingClose={handleWritingClose}
+                  onOpenWriting={() => setActiveActivity('writing')}
                   onCreateCardClose={() => setActiveActivity(null)}
                   onContinue={onPartContinue}
                   continueLabel={partContinueLabel}

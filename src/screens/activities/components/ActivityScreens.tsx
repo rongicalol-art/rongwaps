@@ -27,6 +27,7 @@ interface ActivityScreensProps {
   direction: number;
   onClose: () => void;
   onWritingClose: () => void;
+  onOpenWriting: () => void;
   onCreateCardClose: () => void;
   onContinue?: () => void;
   continueLabel: string;
@@ -59,6 +60,7 @@ export function ActivityScreens({
   direction,
   onClose,
   onWritingClose,
+  onOpenWriting,
   onCreateCardClose,
   onContinue,
   continueLabel,
@@ -101,6 +103,7 @@ export function ActivityScreens({
             onStartQuiz={onStartQuiz}
             quizFirstId={quizFirstId}
             sessionDeck={sessionDeck}
+            onOpenWriting={onOpenWriting}
           />
         </AnimatedActivityScreen>
       )}

@@ -10,8 +10,6 @@ interface FlashcardAnswerBarProps {
   onGotIt: () => void;
   /** Hidden while the review intro plays (the intro raises it in) and under Cards done, which brings its own buttons. */
   concealed?: boolean;
-  writing?: boolean;
-  onCloseWriting?: () => void;
 }
 
 const HINT_MS = 3000;
@@ -19,7 +17,7 @@ const HINT_MS = 3000;
 const hintsSeen = { front: false, back: false };
 
 /** Under-card controls: reveal the answer, then grade it with three choices. */
-export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotIt, concealed = false, writing = false, onCloseWriting }: FlashcardAnswerBarProps) {
+export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotIt, concealed = false }: FlashcardAnswerBarProps) {
   const [hintsVisible, setHintsVisible] = useState(() => !hintsSeen[isFlipped ? 'back' : 'front']);
   useEffect(() => {
     const phase = isFlipped ? 'back' : 'front';
@@ -44,9 +42,9 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
   );
 
   return (
-    <div className={cn('rw-answer-bar pointer-events-auto w-full shrink-0 border-t-2 border-ui-divider px-4 pb-sheet-safe pt-4 sm:px-8', 'bg-ui-practice-canvas transition-opacity duration-200', writing && 'border-transparent', concealed && 'pointer-events-none opacity-0')}>
+    <div className={cn('rw-answer-bar pointer-events-auto w-full shrink-0 border-t-2 border-ui-divider px-4 pb-sheet-safe pt-4 sm:px-8', 'bg-ui-practice-canvas transition-opacity duration-200', concealed && 'pointer-events-none opacity-0')}>
       <div className="mx-auto w-full max-w-md">
-      {writing ? <div className="flex justify-center"><ActionButton variant="secondary" onClick={onCloseWriting}>Back to card</ActionButton></div> : isFlipped ? (
+      {isFlipped ? (
         <div className="grid grid-cols-3 gap-2 sm:gap-3">
           <ActionButton
             variant="secondary"

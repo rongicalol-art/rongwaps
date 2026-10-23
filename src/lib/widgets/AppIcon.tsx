@@ -83,7 +83,7 @@ import {
   PiFlowerFill,
   PiDropFill,
   PiPencilFill,
-  PiPencilSimpleBold,
+  PiPaintBrushBold,
   PiSquaresFourFill,
   PiBookOpenFill,
 } from 'react-icons/pi';
@@ -179,7 +179,7 @@ export type AppIconName =
   | 'camera'
   | 'upload'
   | 'pencil'
-  | 'pencilOutline'
+  | 'writingOutline'
   | 'grid'
   | 'quiz'
   | 'quizMark'
@@ -514,7 +514,7 @@ const ICONS: Record<AppIconName, IconType> = {
   camera: PiCameraBold,
   upload: PiUploadSimpleBold,
   pencil: PiPencilFill,
-  pencilOutline: PiPencilSimpleBold,
+  writingOutline: PiPaintBrushBold,
   grid: PiSquaresFourFill,
   book: PiBookOpenFill,
   answerYes: AnswerYesIcon,

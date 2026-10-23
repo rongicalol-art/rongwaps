@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
-import { useReducedMotion } from 'motion/react';
 import type HanziWriterType from 'hanzi-writer';
 import { DESIGN_TOKENS } from '../../data/designTokens';
 import { loadHanziCharacterData } from '../../services/contentAssetService';
@@ -18,7 +17,6 @@ export function HanziCanvas({
   onAnimationStart,
   onAnimationEnd,
   accentHex = DESIGN_TOKENS.color.brand.primary,
-  appearance = 'tile',
 }: { 
   char: string; 
   status: 'idle' | 'quizzing' | 'completed'; 
@@ -31,11 +29,8 @@ export function HanziCanvas({
   accentHex?: string;
   accentEdge?: string;
   bgAccent?: string;
-  appearance?: 'tile' | 'inline';
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [strokeState, setStrokeState] = useState<'loading' | 'ready' | 'error'>('loading');
-  const reduceMotion = useReducedMotion();
   const [writer, setWriter] = useState<HanziWriterInstance | null>(null);
   const isAnimatingRef = useRef(false);
 
@@ -53,10 +48,9 @@ export function HanziCanvas({
   useEffect(() => {
     if (!containerRef.current) return;
     let canceled = false;
-    setStrokeState('loading');
     const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#0284C7');
     const resolvedDangerColor = resolveDesignTokenColor(DESIGN_TOKENS.color.feedback.danger, '#FF4B4B');
-    const resolvedOutlineColor = resolveDesignTokenColor(appearance === 'inline' ? DESIGN_TOKENS.color.divider : DESIGN_TOKENS.color.border, '#C3C8CC');
+    const resolvedOutlineColor = resolveDesignTokenColor(DESIGN_TOKENS.color.border, '#C3C8CC');
 
     let currentWriter: HanziWriterInstance | null = null;
 
@@ -74,7 +68,6 @@ export function HanziCanvas({
         highlightOnComplete: false,
         showOutline: true,
         strokeColor: resolvedStrokeColor,
-        ...(appearance === 'inline' ? { drawingColor: resolvedStrokeColor } : {}),
         highlightColor: resolvedDangerColor,
         outlineColor: resolvedOutlineColor,
         drawingWidth: Math.max(10, size * 0.08),
@@ -83,14 +76,7 @@ export function HanziCanvas({
         strokeFadeDuration: 250,
         leniency: 1.5,
         charDataLoader: (requestedChar, onLoad, onError) => {
-          loadHanziCharacterData(requestedChar).then(data => {
-            if (canceled) return;
-            onLoad(data);
-            setStrokeState('ready');
-          }).catch(error => {
-            if (!canceled) setStrokeState('error');
-            onError(error);
-          });
+          loadHanziCharacterData(requestedChar).then(onLoad).catch(onError);
         },
       });
 
@@ -116,7 +102,7 @@ export function HanziCanvas({
       }
 
       setWriter(writerInstance);
-    }).catch(() => { if (!canceled) setStrokeState('error'); });
+    });
 
     return () => {
       canceled = true;
@@ -125,7 +111,7 @@ export function HanziCanvas({
         currentWriter.cancelQuiz();
       }
     };
-  }, [accentHex, char, size, appearance]);
+  }, [accentHex, char, size]);
 
   useEffect(() => {
     if (!writer) return;
@@ -160,11 +146,6 @@ export function HanziCanvas({
   // Handle on-demand stroke order animation
   useEffect(() => {
     if (!writer || !animateSignal) return;
-    if (appearance === 'inline' && reduceMotion) {
-      writer.cancelQuiz();
-      writer.showCharacter();
-      return;
-    }
 
     let canceled = false;
     isAnimatingRef.current = true;
@@ -209,28 +190,24 @@ export function HanziCanvas({
         writer.cancelQuiz();
       }
     };
-  }, [writer, animateSignal, appearance, reduceMotion]);
+  }, [writer, animateSignal]);
 
   return (
     <div
       data-canvas-container="true"
-      aria-busy={strokeState === 'loading'}
       className="relative mx-auto select-none pointer-events-auto"
       style={{ width: size, height: size }}
       onClick={(e) => e.stopPropagation()}
     >
       <div 
-        className={appearance === 'inline' ? 'pointer-events-none absolute inset-0' : 'absolute inset-0 overflow-hidden rounded-feature bg-ui-surface border-0 border-b-[length:var(--depth-lg)] border-b-ui-border shadow-ambient-sm'}
+        className="absolute inset-0 overflow-hidden rounded-feature bg-ui-surface border-0 border-b-[length:var(--depth-lg)] border-b-ui-border shadow-ambient-sm"
       >
         {/* Background Grid Lines (Tiánzìgé format) */}
-        <div className={`absolute inset-x-0 inset-y-0 pointer-events-none flex items-center justify-center ${appearance === 'inline' ? 'opacity-65' : 'opacity-30'}`}>
-          <div className={appearance === 'inline' ? 'w-full border-t border-dashed border-ui-divider' : 'w-full h-[2px] border-t-2 border-dashed border-ui-muted'} />
-          <div className={appearance === 'inline' ? 'absolute h-full border-l border-dashed border-ui-divider' : 'absolute h-full w-[2px] border-l-2 border-dashed border-ui-muted'} />
+        <div className="absolute inset-x-0 inset-y-0 pointer-events-none flex items-center justify-center opacity-30">
+          <div className="w-full h-[2px] border-t-2 border-dashed border-ui-muted" />
+          <div className="absolute h-full w-[2px] border-l-2 border-dashed border-ui-muted" />
         </div>
       </div>
-      {appearance === 'inline' && strokeState !== 'ready' && <span role={strokeState === 'error' ? 'alert' : 'status'} className="absolute inset-0 z-20 flex items-center justify-center px-4 text-center text-sm font-bold text-ui-muted-strong">
-        {strokeState === 'error' ? 'Stroke data unavailable. Try again.' : 'Loading strokes…'}
-      </span>}
       <div 
         ref={containerRef} 
         role="group"
