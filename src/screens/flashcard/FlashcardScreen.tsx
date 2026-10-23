@@ -90,6 +90,9 @@ export function FlashcardScreen({
     error,
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
+  const [showWriting, setShowWriting] = useState(false);
+  useEffect(() => setShowWriting(false), [currentCard?.id]);
+
   const dailyPlan = useAppStore(state => state.dailyReviewPlan);
 
   const showPinyin = useAppStore((state) => state.showPinyin);
@@ -200,6 +203,7 @@ export function FlashcardScreen({
     isReviewDeck,
     isLibraryDeck,
     activeBreakdown,
+    writing: showWriting,
     completed,
     isReviewPass,
     isDeckDone,
@@ -208,9 +212,10 @@ export function FlashcardScreen({
   });
 
   const handleCardTap = useCallback(() => {
+    if (showWriting) return;
     if (!isFlipped && currentCard && !autoPlayAudio) triggerManualReveal();
     setIsFlipped((prev) => !prev);
-  }, [autoPlayAudio, currentCard, isFlipped, setIsFlipped, triggerManualReveal]);
+  }, [autoPlayAudio, currentCard, isFlipped, setIsFlipped, triggerManualReveal, showWriting]);
 
   const { isLoading: isContentLoading } = useFlashcardExtras(currentCard);
   useEffect(() => {
@@ -229,7 +234,13 @@ export function FlashcardScreen({
     setShowHook(false);
   }, [currentIndex, isFlipped]);
 
+  const handleWritingChange = useCallback((writing: boolean) => {
+    if (writing) { pauseFlow(); setIsFlipped(true); setShowHook(false); }
+    setShowWriting(writing);
+  }, [pauseFlow, setIsFlipped]);
+
   const handleToggleHook = useCallback(() => {
+    setShowWriting(false);
     if (!isFlipped) {
       if (currentCard && !autoPlayAudio) triggerManualReveal();
       setIsFlipped(true);
@@ -242,6 +253,7 @@ export function FlashcardScreen({
   useFlashcardKeyboardShortcuts({
     completed,
     isIntroActive: introActive,
+    isWriting: showWriting,
     activeBreakdown,
     currentIndex,
     maxVisitedIndex,
@@ -338,16 +350,16 @@ export function FlashcardScreen({
       <EdgeNavButtons
         onPrevious={() => triggerNav(-1)}
         onNext={() => triggerNav(1)}
-        canNavigatePrevious={canNavigatePrevious}
-        canNavigateNext={canNavigateNext}
+        canNavigatePrevious={canNavigatePrevious && !showWriting}
+        canNavigateNext={canNavigateNext && !showWriting}
         previousLabel="Previous flashcard"
         nextLabel="Next flashcard"
       />
 
       <div ref={stageRef} className={cn('relative flex min-h-0 w-full flex-1 flex-col border-t-2 transition-colors duration-300', cardsDone ? 'border-transparent' : 'border-ui-divider')}>
         <div aria-hidden className="absolute inset-0 z-0 flex">
-          <div className="h-full w-1/2" onClick={() => canNavigatePrevious && triggerNav(-1)} />
-          <div className="h-full w-1/2" onClick={() => canNavigateNext && triggerNav(1)} />
+          <div className="h-full w-1/2" onClick={() => !showWriting && canNavigatePrevious && triggerNav(-1)} />
+          <div className="h-full w-1/2" onClick={() => !showWriting && canNavigateNext && triggerNav(1)} />
         </div>
         <div data-fc-cardarea className={cn(
             'pointer-events-none relative mx-auto flex min-h-0 w-full max-w-2xl flex-1 flex-col justify-center px-4 py-5 sm:px-8 xl:max-w-3xl 2xl:max-w-4xl',
@@ -369,6 +381,8 @@ export function FlashcardScreen({
                   toneColors={toneColors}
                   showTranslation={showTranslation}
                   simpleDefinitions={simpleDefinitions}
+                  showWriting={showWriting}
+                  onWritingChange={handleWritingChange}
                   showHook={showHook}
                   onToggleHook={handleToggleHook}
                   onCardTap={handleCardTap}
@@ -380,6 +394,8 @@ export function FlashcardScreen({
         <FlashcardAnswerBar
           concealed={(introActive && !introLanded) || cardsDone}
           isFlipped={shownFlipped}
+          writing={showWriting}
+          onCloseWriting={() => handleWritingChange(false)}
           onFlip={handleCardTap}
           onHard={() => triggerKeyboardRate(1, 1)}
           onUnsure={() => triggerKeyboardRate(2, 1)}

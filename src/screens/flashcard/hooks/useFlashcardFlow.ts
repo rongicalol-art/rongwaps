@@ -24,6 +24,7 @@ interface UseFlashcardFlowProps {
   isLibraryDeck: boolean;
   activeBreakdown: unknown;
   completed: boolean;
+  writing?: boolean;
   /** Missed cards coming back: the header shows its plain amber counter, not the part rail. */
   isReviewPass?: boolean;
   /** Deck finished: the header keeps only its close button. */
@@ -48,6 +49,7 @@ export function useFlashcardFlow({
   isLibraryDeck,
   activeBreakdown,
   completed,
+  writing = false,
   isReviewPass = false,
   isDeckDone = false,
   onContinue,
@@ -150,17 +152,17 @@ export function useFlashcardFlow({
     cleanupPhase: progressInfo?.cleanupPhase,
     minimal: isDeckDone,
     onShuffleClick: toggleShuffle,
-    onFlowClick: toggleFlow,
+    onFlowClick: writing ? undefined : toggleFlow,
     onRestartClick: restartSession,
     isShuffled,
     flowStatus,
   });
 
   useEffect(() => {
-    if (!activeBreakdown) return;
+    if (!activeBreakdown && !writing) return;
     pauseFlow();
     audioService.stop();
-  }, [activeBreakdown, pauseFlow]);
+  }, [activeBreakdown, writing, pauseFlow]);
 
   useEffect(() => {
     if (!completed) return;

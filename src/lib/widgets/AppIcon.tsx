@@ -83,7 +83,7 @@ import {
   PiFlowerFill,
   PiDropFill,
   PiPencilFill,
-  PiPencilBold,
+  PiPencilSimpleBold,
   PiSquaresFourFill,
   PiBookOpenFill,
 } from 'react-icons/pi';
@@ -514,7 +514,7 @@ const ICONS: Record<AppIconName, IconType> = {
   camera: PiCameraBold,
   upload: PiUploadSimpleBold,
   pencil: PiPencilFill,
-  pencilOutline: PiPencilBold,
+  pencilOutline: PiPencilSimpleBold,
   grid: PiSquaresFourFill,
   book: PiBookOpenFill,
   answerYes: AnswerYesIcon,

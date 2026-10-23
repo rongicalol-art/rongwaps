@@ -53,6 +53,8 @@ export interface FlashcardBackFaceProps {
   hookLoaded?: boolean;
   /** Word in plain ink; flipping it off eases the word into its tone colour. */
   wordInk?: boolean;
+  /** Inline practice replaces the word and examples while retaining its pinyin and meaning. */
+  writing?: React.ReactNode;
 }
 
 export const FlashcardBackFace = React.memo(function FlashcardBackFace({
@@ -71,6 +73,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
   hook,
   hookLoaded = false,
   wordInk = false,
+  writing,
 }: FlashcardBackFaceProps) {
   const storeSimpleDefinitions = useAppStore((state) => state.simpleDefinitions);
   const isSimpleActive = (simpleDefinitions ?? storeSimpleDefinitions) && Boolean(card.simple);
@@ -123,7 +126,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
     () => alignWordSyllables(card.front, card.pinyin, card.traditional),
     [card.front, card.pinyin, card.traditional],
   );
-  const stacked = showPinyin && syllables !== null;
+  const stacked = !writing && showPinyin && syllables !== null;
   const pinyinTextClass = cn(
     "font-extrabold tracking-wide text-ui-ink",
     showHook
@@ -131,7 +134,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
       : "text-[17px] sm:text-[19px] lg:text-[21px]",
   );
 
-  const withExample = primaryExamples.length > 0 || resolvedLoading;
+  const withExample = !writing && (primaryExamples.length > 0 || resolvedLoading);
   const getBackFrontFontSize = (len: number) => {
     // An example shares the card: cap the glyph by viewport height so word + sentence fit without clipping.
     if (withExample && !showHook) {
@@ -167,7 +170,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
       <div
         className={cn(
           "flex w-full shrink-0 min-h-full flex-col items-center rounded-feature bg-transparent",
-          showHook
+          writing ? "px-0 pt-12 pb-3" : showHook
             ? "px-2 sm:px-4 pt-12 pb-1 sm:pb-2"
             : cn(
                 "px-4 sm:px-8",
@@ -182,15 +185,16 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
             <span
               className={cn(
                 pinyinTextClass,
+                writing && "text-brand-primary",
                 "rw-rise rw-rise-1 text-center",
                 showHook ? "mb-1" : "mb-2",
               )}
             >
-              <TonePinyin pinyin={card.pinyin ?? ""} colored={toneColors} />
+              <TonePinyin pinyin={card.pinyin ?? ""} colored={!writing && toneColors} />
             </span>
           )}
 
-          <div
+          {writing || <div
             data-fc-word
             className={cn(
               "flex flex-row justify-center flex-wrap",
@@ -251,7 +255,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
                 </div>
               );
             })}
-          </div>
+          </div>}
           {hasDefinition && (
             <div
               className={cn(
@@ -276,7 +280,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
               >
                 {primaryMeaning}
               </h2>
-              {formatPosLabel(card.pos) && (
+              {!writing && formatPosLabel(card.pos) && (
                 <PosBadge
                   pos={card.pos}
                   size="lg"
@@ -285,7 +289,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
               )}
             </div>
           )}
-          {hasDefinition && measureWords.length > 0 && (
+          {!writing && hasDefinition && measureWords.length > 0 && (
             <div
               className={cn(
                 "rw-rise rw-rise-3 flex flex-wrap items-center justify-center gap-2",
@@ -322,7 +326,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
               )}
             </div>
           )}
-          {hasDefinition && moreSenses.length > 0 && !showHook && (
+          {!writing && hasDefinition && moreSenses.length > 0 && !showHook && (
             <div
               className="rw-rise rw-rise-3 mt-3 flex w-full flex-col items-center gap-2"
               onPointerDown={(event) => event.stopPropagation()}
@@ -350,7 +354,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
             </div>
           )}
 
-          {showHook && hookLoaded && hook && (
+          {!writing && showHook && hookLoaded && hook && (
             <div className="rw-rise rw-rise-3 w-full max-w-md sm:max-w-lg pt-2 sm:pt-2.5 pb-0.5 flex flex-col items-center">
               <div className="relative w-full rounded-feature border-2 border-feedback-warning-edge border-b-[length:var(--depth-md)] bg-feedback-warning-surface px-3.5 py-3 sm:px-4.5 sm:py-3.5 text-left shadow-ambient-sm">
                 <div className="flex items-center gap-1.5 mb-1.5">
@@ -369,7 +373,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
               </div>
             </div>
           )}
-          {(resolvedLoading || primaryExamples.length > 0) && (
+          {!writing && (resolvedLoading || primaryExamples.length > 0) && (
             <div className="rw-rise rw-rise-3 w-full shrink-0">
               <FlashcardExamples
                 compact
@@ -384,7 +388,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
         </div>
       </div>
 
-      {restExamples.length > 0 && (
+      {!writing && restExamples.length > 0 && (
         <div className="w-full shrink-0">
           <FlashcardExamples
             searchTerms={searchTerms}
@@ -395,7 +399,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
           />
         </div>
       )}
-      {canShowMore && (
+      {!writing && canShowMore && (
         <div className="flex w-full shrink-0 flex-col items-center gap-1 px-6 pb-8 pt-1">
           <ActionButton variant="quiet" size="sm" loading={loadingMore} loadingLabel="Loading…" onClick={loadMore}>
             Show more examples

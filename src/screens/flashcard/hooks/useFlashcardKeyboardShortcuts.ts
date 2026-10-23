@@ -5,6 +5,7 @@ export interface UseFlashcardKeyboardShortcutsOptions {
   completed: boolean;
   /** The review deal intro owns the keyboard (Space / Enter deal it). */
   isIntroActive?: boolean;
+  isWriting?: boolean;
   activeBreakdown: string | null;
   currentIndex: number;
   maxVisitedIndex: number;
@@ -23,6 +24,7 @@ export interface UseFlashcardKeyboardShortcutsOptions {
 export function useFlashcardKeyboardShortcuts({
   completed,
   isIntroActive = false,
+  isWriting = false,
   activeBreakdown,
   currentIndex,
   maxVisitedIndex,
@@ -44,6 +46,7 @@ export function useFlashcardKeyboardShortcuts({
   const isReviewDeckRef = useRef(isReviewDeck);
   const completedRef = useRef(completed);
   const introRef = useRef(isIntroActive);
+  const writingRef = useRef(isWriting);
   const onToggleHintRef = useRef(onToggleHint);
 
   currentIndexRef.current = currentIndex;
@@ -53,11 +56,12 @@ export function useFlashcardKeyboardShortcuts({
   isReviewDeckRef.current = isReviewDeck;
   completedRef.current = completed;
   introRef.current = isIntroActive;
+  writingRef.current = isWriting;
   onToggleHintRef.current = onToggleHint;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (completedRef.current || introRef.current) return;
+      if (completedRef.current || introRef.current || writingRef.current) return;
       if (document.querySelector('[role="dialog"][aria-label^="Lesson "]')) return;
       if (
         document.activeElement instanceof HTMLInputElement ||

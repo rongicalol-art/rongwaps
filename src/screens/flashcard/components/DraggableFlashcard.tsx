@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
 import { motion, useIsPresent, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
 import { shouldShowWordHook } from '../../../features/character-memory-hooks';
@@ -8,6 +8,8 @@ import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
 import { FavoriteButton } from '../../../features/library';
+import { FlashcardAnswerBar } from './FlashcardAnswerBar';
+import { useFlashcardKeyboardShortcuts } from '../hooks/useFlashcardKeyboardShortcuts';
 import { FlashcardWritingPractice } from './FlashcardWritingPractice';
 import { useCardSwipe } from '../hooks/useCardSwipe';
 import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
@@ -27,6 +29,8 @@ export interface DraggableFlashcardProps {
   isExamplesLoading?: boolean;
   showHook?: boolean;
   onToggleHook?: () => void;
+  showWriting?: boolean;
+  onWritingChange?: (writing: boolean) => void;
 }
 
 // direction: 1 = exit left, -1 = exit right. The next card rises into place once this one has left.
@@ -93,9 +97,27 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   isExamplesLoading,
   showHook: controlledShowHook,
   onToggleHook,
+  showWriting: controlledWriting,
+  onWritingChange,
 }: DraggableFlashcardProps) {
   const isPresent = useIsPresent();
-  const [showWriting, setShowWriting] = useState(false);
+  const [internalWriting, setInternalWriting] = useState(false);
+  const isWriting = (controlledWriting ?? internalWriting) && isFlipped;
+  const backRef = useRef<HTMLDivElement>(null);
+  const writingPoseRef = useRef<DOMRect | null>(null);
+  const setWriting = useCallback((writing: boolean) => {
+    writingPoseRef.current = backRef.current?.querySelector(writing ? '[data-fc-word]' : '[data-fc-writing-canvas]')?.getBoundingClientRect() ?? null;
+    if (onWritingChange) onWritingChange(writing);
+    else setInternalWriting(writing);
+  }, [onWritingChange]);
+  useEffect(() => {
+    if (!isWriting) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { event.preventDefault(); setWriting(false); }
+    };
+    window.addEventListener('keydown', escape);
+    return () => window.removeEventListener('keydown', escape);
+  }, [isWriting, setWriting]);
   const [isDragging, setIsDragging] = useState(false);
   const [isSwiped, setIsSwiped] = useState(false);
   const wasSwipedRef = useRef(false);
@@ -112,7 +134,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   const showHook = controlledShowHook !== undefined ? controlledShowHook : internalShowHook;
   // The hint only belongs to the answer side. Hide it synchronously on the
   // front so the word-pose measurement never uses the compact hint layout.
-  const isHookOpen = showHook && isFlipped;
+  const isHookOpen = showHook && isFlipped && !isWriting;
 
   useEffect(() => {
     if (controlledShowHook === undefined) {
@@ -139,7 +161,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     const hasHook = showWordHookChip && Boolean(wordHook);
     return (
       <div
-        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-2"
+        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-0.5"
         onPointerDown={(event) => event.stopPropagation()}
       >
         {hasHook && (
@@ -150,27 +172,31 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             onClick={(event) => {
               event.stopPropagation();
               if (isDragging) return;
+              if (isWriting) setWriting(false);
               handleToggleHook();
             }}
             className={cn(
-              'flex h-10 w-10 items-center justify-center rounded-compact focus-ring hover:bg-ui-hover active:scale-95',
+              'flex h-11 w-11 sm:h-10 sm:w-10 items-center justify-center rounded-compact border border-transparent focus-ring hover:bg-ui-hover active:scale-95',
               isHookOpen ? 'text-feedback-warning hover:text-feedback-warning-edge' : 'text-ui-muted',
             )}
           >
             {/* Same outline-to-filled language as the bookmark beside it. */}
-            <AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={22} />
+            <AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={20} />
           </button>
         )}
         {Array.from(card.front).some(isHanziChar) && <button
           type="button"
-          aria-label={`Write ${card.front}`}
+          aria-label={isWriting ? `Return to card for ${card.front}` : `Write ${card.front}`}
+          aria-pressed={isWriting}
           onClick={(event) => {
             event.stopPropagation();
-            if (!isDragging) setShowWriting(true);
+            if (isDragging) return;
+            if (isHookOpen) handleToggleHook();
+            setWriting(!isWriting);
           }}
-          className="flex h-10 w-10 items-center justify-center rounded-compact text-ui-muted focus-ring hover:bg-ui-hover active:scale-95"
+          className={cn('flex h-11 w-11 sm:h-10 sm:w-10 items-center justify-center rounded-compact border focus-ring active:scale-95', isWriting ? 'border-brand-primary-soft-edge bg-brand-primary-soft text-brand-primary' : 'border-transparent text-ui-muted hover:bg-ui-hover')}
         >
-          <AppIcon name="pencilOutline" size={22} />
+          <AppIcon name="pencilOutline" size={20} />
         </button>}
         <FavoriteButton
           word={card.front}
@@ -180,17 +206,17 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
           definitions={card.back}
           size="lg"
           variant="ghost"
-          className="h-10 w-10 rounded-compact text-ui-muted hover:bg-ui-hover hover:text-ui-muted active:scale-95"
+          className="h-11 w-11 sm:h-10 sm:w-10 rounded-compact text-ui-muted hover:bg-ui-hover hover:text-ui-muted active:scale-95 [&_svg]:h-5 [&_svg]:w-5"
         />
       </div>
     );
   };
 
   const { bind } = useCardSwipe(swipeRef, {
-    enabled: isInteractive,
+    enabled: isInteractive && !isWriting,
     onDragChange: setIsDragging,
     onTap: (target) => {
-      if (!isInteractive || wasSwipedRef.current) return;
+      if (!isInteractive || isWriting || wasSwipedRef.current) return;
       if ((target as HTMLElement | null)?.closest('button')) return;
       onCardTap();
     },
@@ -206,7 +232,6 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   // Settle: the card holds ONE word, the answer's own. Before the flip it is posed big and centred with the
   // rest hidden; flipping animates it to its natural place (and back), so it scrolls with its content.
   const surfaceRef = useRef<HTMLDivElement>(null);
-  const backRef = useRef<HTMLDivElement>(null);
   const wordAnimRef = useRef<Animation | null>(null);
   const didMountRef = useRef(false);
   // Reset on unmount so StrictMode's dev-only remount does not play the first-pose settle animation.
@@ -299,9 +324,23 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- observer only needs the flip state
   }, [isFlipped]);
 
+  useLayoutEffect(() => {
+    const from = writingPoseRef.current;
+    writingPoseRef.current = null;
+    const target = backRef.current?.querySelector<HTMLElement>(isWriting ? '[data-fc-writing-canvas]' : '[data-fc-word]');
+    if (!from || !target || reduceMotion) return;
+    const to = target.getBoundingClientRect();
+    if (!to.width) return;
+    const x = from.left + from.width / 2 - to.left - to.width / 2;
+    const y = from.top + from.height / 2 - to.top - to.height / 2;
+    const animation = target.animate([
+      { transform: `translate(${x}px, ${y}px) scale(${Math.min(1.4, from.width / to.width)})`, opacity: 0.4 },
+      { transform: 'none', opacity: 1 },
+    ], { duration: 280, easing: SETTLE_EASE });
+    return () => animation.cancel();
+  }, [isWriting, reduceMotion]);
+
   return (
-    <>
-    {showWriting && <FlashcardWritingPractice word={card.front} onClose={() => setShowWriting(false)} />}
     <motion.div
       data-fc-card={card.id}
       custom={direction}
@@ -338,7 +377,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             data-reveal={isFlipped}
             className={cn(
               'absolute inset-0 flex flex-col',
-              isHookOpen ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-5 sm:p-8 sm:pb-6',
+              isWriting ? 'p-4 pb-4 sm:p-8 sm:pb-6' : isHookOpen ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-5 sm:p-8 sm:pb-6',
               isFlipped ? 'pointer-events-auto' : 'pointer-events-none [&_[data-fc-word]]:pointer-events-auto',
             )}
           >
@@ -358,6 +397,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
               hook={wordHook}
               hookLoaded
               wordInk={!isFlipped}
+              writing={isWriting ? <FlashcardWritingPractice word={card.front} /> : undefined}
             />
           </div>
         </div>
@@ -366,24 +406,46 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         <SwipeVerdict side="no" />
       </div>
     </motion.div>
-    </>
   );
 });
 
 
-/** Safe DEV sample: flips and writing stay local; no review callbacks record progress. */
+const PREVIEW_WORDS: Flashcard[] = [
+  { id: 'preview-buy', bookId: 1, lessonId: 3, front: '買', traditional: '買', simplified: '买', pinyin: 'mǎi', back: 'to buy', pos: 'V' },
+  { id: 'preview-teacher', bookId: 1, lessonId: 1, front: '老師', traditional: '老師', simplified: '老师', pinyin: 'lǎoshī', back: 'teacher', pos: 'N' },
+];
+const previewNoop = () => {};
+
+/** Real card/keyboard controls with fake words and local-only rating callbacks. */
 export function FlashcardActionsPreview() {
-  return <section className="space-y-3">
-    <h2 className="text-xl font-black text-ui-ink-strong">Flashcard actions · safe preview</h2>
-    <div className="relative h-128 w-full [container-type:size]">
-      <DraggableFlashcard
-        card={{ id: 'preview-buy', bookId: 1, lessonId: 3, front: '買', traditional: '買', simplified: '买', pinyin: 'mǎi', back: 'to buy', pos: 'V' }}
-        direction={1}
-        isFlipped
-        setActiveBreakdown={() => {}}
-        triggerSwipeRate={() => false}
-        onCardTap={() => {}}
-      />
+  const [wordIndex, setWordIndex] = useState(0);
+  const [flipped, setFlipped] = useState(true);
+  const [writing, setWriting] = useState(false);
+  const [rating, setRating] = useState('');
+  const [active, setActive] = useState(false);
+  const card = PREVIEW_WORDS[wordIndex];
+  const rate = (level: number) => { setRating(`Preview rating: ${level}`); return false; };
+  useFlashcardKeyboardShortcuts({
+    completed: !active, isWriting: writing, activeBreakdown: null,
+    currentIndex: 0, maxVisitedIndex: 0, cardsLength: 1, currentCard: card,
+    isReviewDeck: false, autoPlayAudio: false, pauseFlow: previewNoop,
+    triggerNav: previewNoop, triggerKeyboardRate: rate,
+    setIsFlipped: setFlipped, onManualRevealAudio: previewNoop,
+  });
+  return <section className="space-y-3" onFocusCapture={() => setActive(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setActive(false); }}>
+    <div className="flex flex-wrap items-center gap-3">
+      <h2 className="text-xl font-black text-ui-ink-strong">Flashcard actions · safe preview</h2>
+      <select aria-label="Preview word" className="rounded-control border-2 border-ui-divider bg-ui-surface px-3 py-2 font-bold text-ui-ink focus-ring" value={wordIndex} onChange={event => { setWordIndex(Number(event.target.value)); setFlipped(true); setWriting(false); setRating(''); }}>
+        {PREVIEW_WORDS.map((word, index) => <option key={word.id} value={index}>{word.front}</option>)}
+      </select>
     </div>
+    <div className="relative h-128 w-full [container-type:size]">
+      <DraggableFlashcard key={card.id} card={card} direction={1} isFlipped={flipped}
+        showWriting={writing} onWritingChange={setWriting}
+        setActiveBreakdown={previewNoop} triggerSwipeRate={rate}
+        onCardTap={() => setFlipped(value => !value)} />
+    </div>
+    <FlashcardAnswerBar isFlipped={flipped} writing={writing} onCloseWriting={() => setWriting(false)} onFlip={() => setFlipped(true)} onHard={() => rate(1)} onUnsure={() => rate(2)} onGotIt={() => rate(3)} />
+    {rating && <p role="status" className="text-sm font-bold text-ui-muted-strong">{rating}</p>}
   </section>;
 }
