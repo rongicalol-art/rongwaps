@@ -114,7 +114,6 @@ export function SignInWindow() {
 
 /** Which account to pick in Google, written as the address with a blank to fill. */
 function SchoolAccountHint() {
-  const reduceMotion = useReducedMotion();
   return (
     <div className="flex items-center gap-3.5">
       <span
@@ -126,14 +125,9 @@ function SchoolAccountHint() {
       <div className="min-w-0">
         <p className="text-sm font-black text-ui-ink-strong">For Shu-Te students</p>
         <p className="flex items-baseline text-base font-extrabold text-ui-ink" aria-label="Use your s…@stu.edu.tw school account">
+          <span aria-hidden="true" className="mr-1.5 font-bold text-ui-muted-strong">Use:</span>
           <span aria-hidden="true">s</span>
-          <span aria-hidden="true" className="relative mx-1.5 inline-block w-16 border-b-[3px] border-dashed border-ui-border">
-            <motion.span
-              className="absolute bottom-0.5 left-0 h-4 w-0.5 rounded-full bg-brand-primary"
-              animate={reduceMotion ? undefined : { opacity: [1, 1, 0, 0] }}
-              transition={{ duration: 1.1, times: [0, 0.5, 0.5, 1], repeat: Infinity }}
-            />
-          </span>
+          <span aria-hidden="true" className="mx-1.5 inline-block w-16 border-b-[3px] border-dashed border-ui-border" />
           <span aria-hidden="true">@stu.edu.tw</span>
         </p>
       </div>
