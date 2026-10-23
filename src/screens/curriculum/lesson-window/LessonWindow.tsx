@@ -11,6 +11,8 @@ import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
+import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
+import { useAppStore } from '../../../store/useAppStore';
 import {
   getAggregatedPart,
   getDefaultMode,
@@ -116,6 +118,7 @@ function PracticeHubDrawer({
               <span>Quiz</span>
               <AppIcon name="next" size={18} className="ml-auto text-ui-muted-strong" />
             </ActionButton>
+            <ChallengeCard onOpen={onClose} />
             <div aria-hidden="true" className="border-t border-ui-divider" />
           </>
         )}
@@ -319,6 +322,7 @@ function LessonBody({
           </div>
           <div className="mt-12 flex flex-col">
             <LessonTitle lesson={lesson} part={activePart} isDesktop />
+            <HereButton lesson={lessonKey(bookId, lesson.id)} />
             <div className="mt-6">{modeButtons}</div>
             <div className="mt-auto pt-5">{actions}</div>
           </div>
@@ -343,7 +347,7 @@ function LessonBody({
             onTogglePart={handleTogglePart}
             className="mx-4 mt-2"
           />
-          <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} isDesktop={false} /></div>
+          <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} isDesktop={false} /><HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
           <div className="px-4 pb-3 pt-3">
             {modeButtons}
           </div>
@@ -395,6 +399,11 @@ export function LessonWindow({ lesson, isHidden, onClose, ...bodyProps }: Lesson
   });
 
   const isOpen = Boolean(lesson) && !isHidden;
+  const viewing = lesson ? lessonKey(bodyProps.bookId, lesson.id) : null;
+  useEffect(() => {
+    useAppStore.getState().setSocial({ socialViewingLesson: viewing });
+    return () => useAppStore.getState().setSocial({ socialViewingLesson: null });
+  }, [viewing]);
   const ariaLabel = lesson ? `${lesson.label}: ${getEnglishLessonTitle(lesson.title)}` : 'Lesson';
   const body = lesson && (
     <LessonBody

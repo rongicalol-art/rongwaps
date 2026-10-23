@@ -74,6 +74,10 @@ const EXPECTED_PERSISTED_KEYS = [
   'matchPairType',
   'dockStyle',
   'dockAutoHide',
+  // Study together (local choices only)
+  'showOnline',
+  'socialMuted',
+  'blockedUsers',
 ].sort();
 
 test('persisted key set matches the declared slices contract exactly', () => {
@@ -124,6 +128,9 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
+  // Study together: live state and blocks belong to the signed-in account.
+  'blockedUsers', 'race', 'racePlaying', 'racePending', 'raceStatus', 'socialOnlineTotal', 'socialChat', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe',
+  'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson',
 ].sort();
 
 test('account-switch defaults match the reset contract exactly', () => {

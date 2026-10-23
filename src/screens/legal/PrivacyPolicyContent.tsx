@@ -51,6 +51,12 @@ export function PrivacyPolicyContent() {
               <strong>Your content:</strong> the folders and custom flashcards you create.
             </>,
             <>
+              <strong>Study together:</strong> while the app is open, other signed-in students can see your display
+              name, avatar colour and which lesson and activity you are on. You can turn this off with Settings → Show
+              me online. Lesson chat messages, quiz rooms you open and reports you make are visible to the other
+              students in that lesson or room.
+            </>,
+            <>
               <strong>Messages:</strong> anything you send us by email, such as feedback or requests.
             </>,
             <>
@@ -106,6 +112,10 @@ export function PrivacyPolicyContent() {
               <strong>Cloudflare R2</strong> stores audio files and lesson content. They contain no personal data.
             </>,
             <>
+              <strong>Cloudflare Workers</strong> run study together: who is online (kept only while you are
+              connected), lesson chat, quiz rooms and chat reports.
+            </>,
+            <>
               <strong>Our web host</strong> serves the app and may keep standard server logs.
             </>,
             <>
@@ -142,6 +152,7 @@ export function PrivacyPolicyContent() {
           items={[
             'Account, learning data and your content: until you delete your account, or until your account has had no sign-in for 12 months, whichever comes first.',
             'Deleting your account removes your profile, progress, folders and cards from our database right away. Our database provider may keep routine backups for a limited time afterwards.',
+            'Study together: who is online is kept only while you are connected. Lesson chat shows the last 50 messages per lesson for 24 hours; expired storage is cleaned hourly. Quiz rooms expire automatically and races have a ten-minute limit. We keep up to 1,000 recent chat reports for up to 30 days.',
             'Emails you send us: as long as needed to handle your request.',
             'Anonymous statistics contain no personal data and may be kept.',
             'Cached audio is stored by text, not by user, so it is not linked to you.',

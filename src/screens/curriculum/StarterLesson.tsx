@@ -13,16 +13,17 @@ interface StarterLessonProps {
   isSelecting?: boolean;
   isSelected?: boolean;
   onToggle?: (id: number) => void;
+  faces?: React.ReactNode;
   onLongPress?: (id: number) => void;
 }
 
 /** The Introduction is a lesson row like the rest, with its own label and art. */
-export function StarterLesson({ starterLesson, activeBook, onOpen, isSelecting, isSelected, onToggle, onLongPress }: StarterLessonProps) {
+export function StarterLesson({ starterLesson, activeBook, onOpen, isSelecting, isSelected, onToggle, onLongPress, faces }: StarterLessonProps) {
   if (activeBook.id !== 1 || !starterLesson) return null;
 
   return (
     <div className="w-full max-w-[400px]">
-      <LessonItem lesson={{ ...starterLesson, label: 'Introduction' }} onOpen={onOpen} onLongPress={onLongPress} onToggle={onToggle} isSelecting={isSelecting} isSelected={isSelected} art={INTRODUCTION_ART} />
+      <LessonItem lesson={{ ...starterLesson, label: 'Introduction' }} onOpen={onOpen} onLongPress={onLongPress} onToggle={onToggle} isSelecting={isSelecting} isSelected={isSelected} art={INTRODUCTION_ART} faces={faces} />
       <div className="mx-auto mb-5 h-6 w-1 rounded-full bg-ui-border" />
     </div>
   );

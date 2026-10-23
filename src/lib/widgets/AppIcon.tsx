@@ -64,6 +64,7 @@ import {
   PiHandWavingBold,
   PiBowlFoodBold,
   PiUsersThreeBold,
+  PiConfettiFill,
   PiSwatchesBold,
   PiPersonBold,
   PiLightningBold,
@@ -86,6 +87,11 @@ import {
   PiPaintBrushBold,
   PiSquaresFourFill,
   PiBookOpenFill,
+  PiPaperPlaneRightFill,
+  PiLinkBold,
+  PiBellSimpleBold,
+  PiBellSimpleSlashBold,
+  PiChatCircleDotsBold,
 } from 'react-icons/pi';
 
 export type AppIconName =
@@ -159,6 +165,7 @@ export type AppIconName =
   | 'greeting'
   | 'food'
   | 'family'
+  | 'party'
   | 'colors'
   | 'body'
   | 'actions'
@@ -185,6 +192,11 @@ export type AppIconName =
   | 'quizMark'
   | 'writing'
   | 'book'
+  | 'send'
+  | 'link'
+  | 'bell'
+  | 'bellOff'
+  | 'chat'
   | 'answerYes'
   | 'answerNo'
   | 'statusCheck'
@@ -494,6 +506,7 @@ const ICONS: Record<AppIconName, IconType> = {
   greeting: PiHandWavingBold,
   food: PiBowlFoodBold,
   family: PiUsersThreeBold,
+  party: PiConfettiFill,
   colors: PiSwatchesBold,
   body: PiPersonBold,
   actions: PiLightningBold,
@@ -517,6 +530,11 @@ const ICONS: Record<AppIconName, IconType> = {
   writingOutline: PiPaintBrushBold,
   grid: PiSquaresFourFill,
   book: PiBookOpenFill,
+  send: PiPaperPlaneRightFill,
+  link: PiLinkBold,
+  bell: PiBellSimpleBold,
+  bellOff: PiBellSimpleSlashBold,
+  chat: PiChatCircleDotsBold,
   answerYes: AnswerYesIcon,
   answerNo: AnswerNoIcon,
   statusCheck: DuoStatusCheckIcon,

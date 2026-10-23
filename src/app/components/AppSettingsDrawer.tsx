@@ -25,6 +25,8 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
+  const showOnline = useAppStore((state) => state.showOnline);
+  const setShowOnline = useAppStore((state) => state.setShowOnline);
   const [isConfirmResetOpen, setIsConfirmResetOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const [resetError, setResetError] = useState<string | null>(null);
@@ -90,6 +92,10 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
                     onChange={(value) => updatePreferences({ pronunciationRate: Number(value) })}
                   />
                 </div>
+              </SettingsPageSection>
+
+              <SettingsPageSection title="Study together">
+                <SettingsToggleRow checked={showOnline} onClick={() => setShowOnline(!showOnline)} label="Show me online" className="border-b-0" />
               </SettingsPageSection>
 
               {!isStandalone && (

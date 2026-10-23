@@ -6,21 +6,21 @@ There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 4
 
 Protected lesson-content requests require a valid Supabase user and `has_beta_access() = true` from a request-scoped database client. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
 
-## Multiplayer bootstrap
+## Study together bootstrap
 
 `GET /api/games/config` returns the configured public game-server origin (`GAMES_SERVER_URL`) or `null`. It is not cached and contains no credentials.
 
-`GET /api/games/session?lesson=N` requires the normal school-beta authorization even in development. It is limited to 60 requests per authenticated user per minute and returns that user's ID plus the selected available Book 1 lesson's vocabulary. The game Worker calls it with the existing session token before admitting a player; the response is `private, no-store`. See [DEPLOY.md → Word Bomb multiplayer](DEPLOY.md#word-bomb-multiplayer) for room transport, setup status and verification.
+The games Worker verifies Supabase access tokens itself (JWKS), so the app server has no other game endpoint. The Worker provides authenticated `POST /rooms/:code/leave` in addition to room creation/join and socket tickets. See [DEPLOY.md → Study together](DEPLOY.md#study-together-presence-lesson-chat-quiz-races) for the Lobby, race rooms, limits and verification.
 
 ## 🚦 Rate limits
 
-Protected lesson-content requests are limited per client IP and authenticated user. Exceeding a limit
+Cold or unverified requests are limited per client IP; verified tokens bypass that shared-IP counter. Authenticated requests also have a separate per-user quota. Exceeding a limit
 returns `429` with `{ "error": "Too many requests. Try again later." }` and standard `RateLimit-*`
 headers.
 
 | Request | Limiter | Window | Limit |
 | --- | --- | --- | --- |
-| Protected lesson content | `apiLimiter` + authenticated user limiter | 1 min | 60/IP, 600/user |
+| Protected lesson content | cold-token `apiLimiter` + authenticated user limiter | 1 min | 300/IP for cold/unverified tokens, 1,200/user |
 
 ---
 
@@ -90,7 +90,7 @@ flowchart TD
 
 ## Dictionary and lesson preparation
 
-`GET /api/dictionary/search?q=…&limit=30` returns at most 50 ranked results. Queries are capped at 128 characters and four wildcards. `POST /api/dictionary/lookup` accepts `{ "words": ["你好"] }` (at most 64 words) and returns a word-to-dictionary-rows object. `POST /api/dictionary/course` accepts the same body and returns matching course cards, including reading-specific recordings. `GET /api/dictionary/examples?word=…&limit=3` returns up to 30 examples. These endpoints require the same verified school session as lesson content, use `private, no-store` and `Vary: Authorization`, and share the 60/IP/minute limiter with protected content; dictionary calls also have a 180/user/minute limit. Invalid requests return 400; unavailable search returns 503 and the client exposes a retryable error.
+`GET /api/dictionary/search?q=…&limit=30` returns at most 50 ranked results. Queries are capped at 128 characters and four wildcards. `POST /api/dictionary/lookup` accepts `{ "words": ["你好"] }` (at most 64 words) and returns a word-to-dictionary-rows object. `POST /api/dictionary/course` accepts the same body and returns matching course cards, including reading-specific recordings. `GET /api/dictionary/examples?word=…&limit=3` returns up to 30 examples. These endpoints require the same verified school session as lesson content, use `private, no-store` and `Vary: Authorization`, and share the 300/IP/minute cold-token limiter with protected content; dictionary calls also have a 180/user/minute limit. Invalid requests return 400; unavailable search returns 503 and the client exposes a retryable error.
 
 The server keeps one lazy dictionary worker per process. Character/Latin postings narrow candidates before the shared ranking engine runs; typo and segmentation fallback retain the original corpus semantics. The worker isolates parsing and searching from HTTP/authentication. Its exact-shard cache holds eight shards and its result cache 96 queries. At most 32 jobs queue; startup and query deadlines return errors instead of leaving a permanent spinner. Global search requires a connection; warm lesson definitions remain available in memory.
 

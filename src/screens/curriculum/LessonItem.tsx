@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from 'react';
+import { memo, useRef, useState, type ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import type { CourseLessonProgress } from '../../types/models';
@@ -13,6 +13,8 @@ interface LessonItemProps {
   onOpen: (id: number) => void;
   /** Artwork override (the Introduction has its own); defaults to the lesson's landscape. */
   art?: string;
+  /** `art` is a lesson picture: fill the tile with rounded corners instead of insetting an icon. */
+  isPhoto?: boolean;
   /** Long press: start picking lessons with this one selected. Omit to disable selecting. */
   onLongPress?: (id: number) => void;
   /** While picking, a tap toggles the lesson instead of opening it. */
@@ -21,6 +23,8 @@ interface LessonItemProps {
   isPrevSelected?: boolean;
   isNextSelected?: boolean;
   onToggle?: (id: number) => void;
+  /** Who's studying this lesson now (study together); sits at the tile's right edge. */
+  faces?: ReactNode;
 }
 
 /** Selected neighbours fuse into one block: only the outer corners and the last row's edge stay. */
@@ -36,12 +40,14 @@ function LessonItemBase({
   lesson,
   onOpen,
   art,
+  isPhoto = false,
   onLongPress,
   isSelecting = false,
   isSelected = false,
   isPrevSelected = false,
   isNextSelected = false,
   onToggle,
+  faces,
 }: LessonItemProps) {
   const isLocked = lesson.state === 'locked';
   const englishTitle = getEnglishLessonTitle(lesson.title);
@@ -124,7 +130,7 @@ function LessonItemBase({
         style={{ WebkitTouchCallout: 'none' }}
         className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent"
       >
-        <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-compact bg-ui-surface">
+        <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-compact bg-ui-surface">
           <img
             src={art ?? LESSON_LANDSCAPE_ART[lesson.id]}
             alt=""
@@ -137,7 +143,15 @@ function LessonItemBase({
               }
             }}
             onError={() => { openWhenLoaded.current = false; }}
-            className={cn('h-full w-full object-contain p-1', isLocked && 'opacity-35 grayscale')}
+            className={cn(
+              'h-full w-full transition-[filter,opacity] duration-200 ease-out motion-reduce:transition-none',
+              isPhoto ? 'rounded-compact object-cover' : 'object-contain p-1',
+              isLocked
+                ? 'opacity-35 grayscale'
+                : isSelected
+                  ? 'opacity-100 grayscale-0'
+                  : 'opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0',
+            )}
           />
         </span>
 
@@ -155,6 +169,7 @@ function LessonItemBase({
             {englishTitle}
           </span>
         </span>
+        {!isLocked && faces}
       </button>
     </motion.div>
   );

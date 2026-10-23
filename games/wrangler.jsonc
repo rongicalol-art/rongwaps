@@ -4,8 +4,8 @@
   "main": "index.ts",
   "compatibility_date": "2026-10-23",
   "workers_dev": true,
-  "vars": { "APP_ORIGIN": "https://ronsmandarin.com" },
-  "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "GameRoom" }] },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameRoom"] }],
+  "vars": { "APP_ORIGIN": "https://ronsmandarin.com", "SUPABASE_URL": "https://ylpzxpqyfaayavkvhikw.supabase.co" },
+  "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "GameRoom" }, { "name": "LOBBY", "class_name": "Lobby" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameRoom"] }, { "tag": "v2", "new_sqlite_classes": ["Lobby"] }],
   "observability": { "enabled": true, "head_sampling_rate": 0.1, "traces": { "enabled": true, "head_sampling_rate": 0.1 } }
 }

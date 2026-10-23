@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { getOAuthLoginErrorMessage } from '../../services/authService';
+import { useAppStore } from '../../store/useAppStore';
 import { useAuth } from '../../hooks/useAuth';
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { ActionButton, AlertBanner, AppIcon, ConfirmationDialog } from '../../lib/widgets';
@@ -14,7 +16,7 @@ const DELETE_PHRASE = 'DELETE';
  * legal links (always).
  */
 export function SettingsAccountSection({ onNavigate, onResetProgress }: { onNavigate: () => void; onResetProgress: () => void }) {
-  const { currentUser } = useAuth();
+  const { currentUser, loginWithGoogle } = useAuth();
   const { exportData, deleteAccount } = useAccountActions();
   const [isExporting, setIsExporting] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
@@ -61,6 +63,10 @@ export function SettingsAccountSection({ onNavigate, onResetProgress }: { onNavi
   return (
     <SettingsPageSection title="Account">
       <div className="flex flex-col gap-3 px-2">
+        {/* Dev skips the sign-in window; this signs in on localhost (Google returns here). */}
+        {!currentUser && import.meta.env.DEV && (
+          <ActionButton fullWidth onClick={() => { loginWithGoogle().catch((error: unknown) => useAppStore.getState().showFeedbackToast(getOAuthLoginErrorMessage(error))); }}>Sign in with Google</ActionButton>
+        )}
         {currentUser && (
           <ActionButton variant="secondary" fullWidth onClick={handleExport} loading={isExporting} loadingLabel="Preparing download">
             <AppIcon name="download" size={18} />

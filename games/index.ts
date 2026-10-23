@@ -1,7 +1,8 @@
-import { newGameRoom, type GameWord } from '../shared/wordBomb';
+import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialName } from '../shared/quizRace';
+import { verifyAccessToken } from './auth';
+import { newSeed } from './room';
 export { GameRoom } from './room';
-
-const ROOM_CODE = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
+export { Lobby } from './lobby';
 
 async function body(request: Request): Promise<Record<string, unknown>> {
   const reader = request.body?.getReader();
@@ -28,38 +29,46 @@ export default {
     const reply = (value: object, status = 200) => Response.json(value, { status, headers: cors });
     if (request.headers.get('Origin') !== env.APP_ORIGIN) return reply({ error: 'Origin not allowed.' }, 403);
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
-    const match = url.pathname.match(/^\/rooms\/([A-Z2-9]{6})(\/socket)?$/);
-    if (match?.[2] && ROOM_CODE.test(match[1])) return env.ROOMS.getByName(match[1]).fetch(request);
-    if (request.method !== 'POST' || (url.pathname !== '/rooms' && !match)) return reply({ error: 'Not found.' }, 404);
-    const authorization = request.headers.get('Authorization');
-    if (!authorization?.startsWith('Bearer ') || authorization.length > 8192) return reply({ error: 'Sign in to play.' }, 401);
+    if (url.pathname === '/lobby/socket') return env.LOBBY.getByName('main').fetch(request);
+    const match = url.pathname.match(/^\/rooms\/([A-Z2-9]{6})(\/(?:socket|leave))?$/);
+    if (match?.[2] === '/socket' && ROOM_CODE.test(match[1])) return env.ROOMS.getByName(match[1]).fetch(request);
+    if (request.method !== 'POST' || (url.pathname !== '/rooms' && url.pathname !== '/lobby' && !match)) return reply({ error: 'Not found.' }, 404);
+    let auth: Awaited<ReturnType<typeof verifyAccessToken>>;
+    try { auth = await verifyAccessToken(request.headers.get('Authorization'), env.SUPABASE_URL); }
+    catch { return reply({ error: 'Sign-in verification is unavailable. Try again shortly.' }, 503); }
+    if (!auth) return reply({ error: 'Sign in with your school account.' }, 401);
+    const { userId, expiresAt } = auth;
     try {
+      if (match?.[2] === '/leave' && ROOM_CODE.test(match[1])) {
+        await env.ROOMS.getByName(match[1]).exit(userId);
+        return reply({ ok: true });
+      }
+      if (!await env.ROOMS.getByName(`limit:${userId}`).allowRequest()) return reply({ error: 'Too many connection requests. Try again shortly.' }, 429);
       const data = await body(request);
-      const lesson = url.pathname === '/rooms' ? Number(data.lesson) : 0;
-      const session = await fetch(`${env.APP_ORIGIN}/api/games/session?lesson=${lesson}`, {
-        headers: { Authorization: authorization }, signal: AbortSignal.timeout(10_000), redirect: 'manual',
-      });
-      if (!session.ok) return reply({ error: 'Could not verify your school account or lesson access.' }, session.status >= 300 && session.status < 400 ? 503 : session.status);
-      const identity = await session.json() as { userId: string; lesson: number; words: GameWord[] };
-      if (!identity.userId || !Array.isArray(identity.words)) return reply({ error: 'Game service unavailable.' }, 503);
-      const name = typeof data.name === 'string' ? data.name.trim().slice(0, 30) : '';
-      if (!name) return reply({ error: 'Choose a display name.' }, 400);
+      const name = socialName(data.name);
+      const color = socialColor(data.color);
+      if (!name) return reply({ error: 'Add a display name in your profile first.' }, 400);
+      if (url.pathname === '/lobby') return reply({ userId, ...await env.LOBBY.getByName('main').issue(userId, name, color, expiresAt) });
       if (url.pathname === '/rooms') {
-        if (!await env.ROOMS.getByName(`limit:${identity.userId}`).allowCreation()) return reply({ error: 'Room limit reached. Try again in an hour.' }, 429);
+        const selection = parseSelection(data.selection);
         const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        const account = env.ROOMS.getByName(`limit:${userId}`);
         for (let attempt = 0; attempt < 3; attempt++) {
-          const code = Array.from(crypto.getRandomValues(new Uint8Array(6)), value => alphabet[value % alphabet.length]).join('');
+          const candidate = Array.from(crypto.getRandomValues(new Uint8Array(6)), value => alphabet[value % alphabet.length]).join('');
+          const code = await account.reserveCreation(candidate);
           const stub = env.ROOMS.getByName(code);
-          if (await stub.create(newGameRoom(code, identity.lesson, identity.words, Date.now()))) {
-            return reply({ code, userId: identity.userId, ...await stub.enter(identity.userId, name) });
+          if (await stub.create(newRaceRoom(code, selection, data.open === true, newSeed(), Date.now()), userId, name, color)) {
+            return reply({ code, userId, ...await stub.enter(userId, name, color, expiresAt) });
           }
+          await account.releaseRoom(code);
         }
         return reply({ error: 'Could not create a room. Try again.' }, 503);
       }
       if (!match || !ROOM_CODE.test(match[1])) return reply({ error: 'Invalid room code.' }, 400);
-      return reply({ code: match[1], userId: identity.userId, ...await env.ROOMS.getByName(match[1]).enter(identity.userId, name) });
-    } catch {
-      return reply({ error: 'Could not join this room. Check the code, room capacity and connection.' }, 400);
+      return reply({ code: match[1], userId, ...await env.ROOMS.getByName(match[1]).enter(userId, name, color, expiresAt) });
+    } catch (error) {
+      const message = error instanceof Error && /room|lesson|full|started|expired/i.test(error.message) ? error.message : 'Could not join. Check the code and your connection.';
+      return reply({ error: message }, /limit reached/i.test(message) ? 429 : 400);
     }
   },
 } satisfies ExportedHandler<Env>;

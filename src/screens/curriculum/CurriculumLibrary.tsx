@@ -20,6 +20,8 @@ import { StarterLesson } from './StarterLesson';
 import { CurriculumSkeleton } from './components/CurriculumSkeleton';
 import { useCourseDashboard } from './hooks/useCourseDashboard';
 import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWindow';
+import { LessonFaces, lessonKey } from '../../features/social';
+import { lessonThumbnail } from '../../data/lessonThumbnails';
 
 interface CurriculumLibraryProps {
   activeBookId?: number;
@@ -173,6 +175,9 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         isSelected={isPicked(lesson)}
         isPrevSelected={isPicked(lessons[index - 1])}
         isNextSelected={isPicked(lessons[index + 1])}
+        faces={<LessonFaces lesson={lessonKey(activeBookId, lesson.id)} />}
+        art={lessonThumbnail(activeBookId, lesson.id)}
+        isPhoto={Boolean(lessonThumbnail(activeBookId, lesson.id))}
       />
     </div>
   ));
@@ -225,6 +230,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                   <div className="w-full max-w-[400px]" ref={refIfCurrent(starterLesson)}>
                     <StarterLesson
                       starterLesson={starterLesson}
+                      faces={<LessonFaces lesson={lessonKey(activeBookId, starterLesson.id)} />}
                       activeBook={activeBook}
                       onOpen={handleLessonClick}
                       onLongPress={selection.toggle}

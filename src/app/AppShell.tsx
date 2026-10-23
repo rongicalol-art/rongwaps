@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { LoadingScreen } from '../lib/widgets';
 import { AppWorkspace } from './components/AppWorkspace';
 import { AppOverlays } from './components/AppOverlays';
@@ -7,6 +7,9 @@ import { PwaUpdatePrompt } from './components/PwaUpdatePrompt';
 import { ResumeLaunch } from '../features/practice';
 import { useAppShell } from './hooks/useAppShell';
 import { SignInWindow } from '../screens/auth';
+
+/** Study together loads in its own chunk after first idle; nothing social is in the boot bundle. */
+const SocialRoot = lazy(() => import('../features/social/SocialRoot'));
 
 export default function AppShell() {
   useEffect(() => {
@@ -24,9 +27,10 @@ export default function AppShell() {
   const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   const ready = !isLoading && !isSignedOut;
+  const [socialReady, setSocialReady] = useState(false);
   useEffect(() => {
     if (!ready) return;
-    const run = () => { void import('./warmBreakdownData').then((m) => m.warmBreakdownData()); };
+    const run = () => { setSocialReady(true); void import('./warmBreakdownData').then((m) => m.warmBreakdownData()); };
     if (window.requestIdleCallback) {
       const id = window.requestIdleCallback(run, { timeout: 4000 });
       return () => window.cancelIdleCallback(id);
@@ -116,6 +120,12 @@ export default function AppShell() {
           onStartOver={activity.resumeLaunch.onStartOver}
           onClose={activity.resumeLaunch.onClose}
         />
+      )}
+
+      {socialReady && (
+        <Suspense fallback={null}>
+          <SocialRoot setActiveActivity={activity.onSetActiveActivity} />
+        </Suspense>
       )}
 
       <PwaUpdatePrompt />

@@ -6,6 +6,7 @@ import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionSta
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
+import { useRaceReporter } from '../../features/social';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
@@ -200,6 +201,9 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   }, [resetAll]);
 
   useReviewTone(isReviewPass && !isDone && !(introActive && reviewPass === 1 && !introToned));
+  // Quiz race: the first pass is the race; a review round after it is the learner's own.
+  const firstPassOver = isReviewPass || isDone;
+  useRaceReporter(currentIndex + (session.inBeatDone ?? 0), firstPassRef.current?.total ?? activeCards.length, firstPassRef.current?.correct ?? learnedCount, firstPassOver);
 
   const shownIndex = currentIndex + (session.inBeatDone ?? 0);
   const progress = useMemo(

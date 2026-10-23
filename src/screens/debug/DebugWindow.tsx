@@ -2,6 +2,7 @@ import { FlashcardActionsPreview } from '../flashcard';
 import { SentenceLookupPreview } from './SentenceLookupPreview';
 import { LegalUpdatePreview } from './LegalUpdatePreview';
 import { PerformancePanel } from './PerformancePanel';
+import { SocialSimulatorPanel } from './SocialSimulatorPanel';
 import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
 import { debugLogger, DebugLog } from '../../utils/debug/debugLogger';
@@ -12,7 +13,6 @@ import { CurriculumSkeleton } from '../curriculum';
 import { LibrarySkeleton, ReviewHubCard, DailyReviewPreview } from '../library';
 import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
-import { WordBombPreview } from '../play';
 import { TonePreview } from '../tones';
 import { PinyinPreview } from '../pinyin';
 import { GrammarPracticePreview } from '../../features/grammar-practice';
@@ -20,7 +20,7 @@ import { GrammarPracticePreview } from '../../features/grammar-practice';
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 
 export const DebugWindow = () => {
-  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews' | 'daily' | 'performance'>('logs');
+  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews' | 'daily' | 'performance' | 'social'>('logs');
   const [selectedSkeleton, setSelectedSkeleton] = useState<string>('dictionary');
   const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
@@ -164,6 +164,7 @@ export const DebugWindow = () => {
         </button>
           <button type="button" onClick={() => setActiveTab('daily')} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2 font-bold focus-ring">Daily review</button>
           <button type="button" onClick={() => setActiveTab('performance')} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2 font-bold focus-ring">Performance</button>
+          <button type="button" onClick={() => setActiveTab('social')} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2 font-bold focus-ring">Study together</button>
       </div>
 
       <div className="flex-1 overflow-hidden min-h-0">
@@ -319,6 +320,7 @@ export const DebugWindow = () => {
 
         {activeTab === 'daily' && <div className="h-full overflow-y-auto pb-10"><DailyReviewPreview /></div>}
         {activeTab === 'performance' && <PerformancePanel />}
+        {activeTab === 'social' && <div className="h-full overflow-y-auto pb-10"><SocialSimulatorPanel /></div>}
         {activeTab === 'previews' && (
           <div className="flex h-full flex-col gap-8 overflow-y-auto pb-6">
             <section className="flex flex-col gap-4">
@@ -336,7 +338,6 @@ export const DebugWindow = () => {
             <FlashcardActionsPreview />
             <SentenceLookupPreview />
             <QuizPreview />
-            <WordBombPreview />
             <GrammarPracticePreview />
             <TonePreview />
             <PinyinPreview />

@@ -35,7 +35,8 @@ function clearSnapshot(sessionKey: string) {
  * Mixed vocab quiz: the director plans one beat per question (a beat may cover 3-5 words).
  * `useCardSession` still counts words, so a beat's words advance together.
  */
-export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: readonly QuizTypeId[]) {
+/** `seed` (a quiz race) replaces the per-device round seed, so every player gets the same plan. */
+export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: readonly QuizTypeId[], seed?: string) {
   const matchPairType = useAppStore((state) => state.matchPairType);
 
   const [status, setStatus] = useState<BeatStatus>('idle');
@@ -59,10 +60,11 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
     matchRef.current = { done: new Set(), missed: [] };
   }, [stopAnswerAudio]);
 
+  const orderedCards = useMemo(() => seed ? [...cards].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0) : cards, [cards, seed]);
   const typesKey = types?.join(',') ?? '';
   // Picked types keep only the words that fit them (a one-character word has no Build the word).
   // eslint-disable-next-line react-hooks/exhaustive-deps -- types is keyed by typesKey
-  const quizCards = useMemo(() => wordsForQuizTypes(cards, types ?? []), [cards, typesKey]);
+  const quizCards = useMemo(() => wordsForQuizTypes(orderedCards, types ?? []), [orderedCards, typesKey]);
   const session = useCardSession(quizCards, sessionKey, {
     requeueMissed: false,
     onSessionReset: () => {
@@ -79,13 +81,13 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
 
   const isReviewPass = pass > 0 || session.resumedReview;
   const idsKey = activeCards.map((card) => card.id).join(',');
-  if (snapshotRef.current?.key !== sessionKey) snapshotRef.current = { key: sessionKey, value: readSnapshot(sessionKey) };
+  if (snapshotRef.current?.key !== sessionKey) snapshotRef.current = { key: sessionKey, value: seed ? { nonce: seed } : readSnapshot(sessionKey) };
   const planKey = `${sessionKey}|${idsKey}|${pass}|${isReviewPass}|${typesKey}|${session.resetNonce}`;
   if (planConfigRef.current?.key !== planKey) planConfigRef.current = { key: planKey, matchPairType };
   const planning = useQuizPlan(activeCards, {
     seed: `${sessionKey}|${snapshotRef.current.value.nonce}|${pass}`,
-    reviewPass: isReviewPass, extraCards: cards, confusions: useAppStore.getState().wordConfusions,
-    types, matchPairType: planConfigRef.current.matchPairType,
+    reviewPass: isReviewPass, extraCards: orderedCards, confusions: seed ? {} : useAppStore.getState().wordConfusions,
+    types, matchPairType: seed ? 'mixed' : planConfigRef.current.matchPairType,
   }, planKey, !completed);
   const { beats } = planning;
 

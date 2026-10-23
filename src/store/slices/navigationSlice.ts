@@ -1,7 +1,7 @@
 import type { ActivityType, LessonPartSelectionMap, QuizMode } from '../../types/models';
 
 export interface NavigationState {
-  activeTab: 'path' | 'search' | 'library' | 'profile' | 'play';
+  activeTab: 'path' | 'search' | 'library' | 'profile';
   setActiveTab: (tab: NavigationState['activeTab']) => void;
   activeActivity: ActivityType;
   setActiveActivity: (activity: ActivityType) => void;

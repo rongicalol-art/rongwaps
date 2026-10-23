@@ -31,7 +31,7 @@ const edgeVariantClasses: Record<ActionButtonVariant, string> = {
 
 const surfaceVariantClasses: Record<ActionButtonVariant, string> = {
   primary: 'bg-brand-primary text-brand-on-primary hover:brightness-105',
-  secondary: 'border-2 border-[var(--btn-edge,var(--color-ui-border))] bg-ui-surface text-brand-primary-deep hover:bg-ui-hover',
+  secondary: 'border-2 border-[var(--btn-edge,var(--color-ui-border))] bg-ui-surface text-ui-muted-strong hover:bg-ui-hover',
   quiet: 'bg-transparent text-brand-primary-deep hover:bg-brand-primary-soft active:bg-brand-primary-wash',
   danger: 'bg-feedback-danger text-white hover:brightness-105',
   success: 'bg-feedback-success text-white hover:brightness-105',

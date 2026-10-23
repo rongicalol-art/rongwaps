@@ -1,5 +1,5 @@
 import { lookupDictionary, searchDictionary, lookupCourseCards, lookupExamples } from './dictionary.js';
-import { gameConfiguration, gameSession } from './games.js';
+import { gameConfiguration } from './games.js';
 import { statSync } from 'node:fs';
 import express from "express";
 import compression from "compression";
@@ -114,7 +114,7 @@ function isVerified(token: string | null): boolean {
 // Only unverified requests count per IP (carrier NAT puts many phones on one IP).
 const apiLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
-  limit: 120,
+  limit: 300, // Admit a 150-student classroom plus reconnects before token checks are warm.
   skip: (req) => isVerified(bearerToken(req)),
   standardHeaders: true,
   legacyHeaders: false,
@@ -164,7 +164,6 @@ export async function requireAuth(req: express.Request, res: express.Response, n
 }
 
 app.get('/api/games/config', gameConfiguration);
-app.get('/api/games/session', apiLimiter, requireAuth, userLimiter(60), gameSession);
 
 const dictionaryLimiter = userLimiter(180);
 app.use('/api/dictionary', (_req, res, next) => {

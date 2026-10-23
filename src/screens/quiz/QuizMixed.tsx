@@ -1,5 +1,6 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
+import type { Flashcard } from '../../data/flashcards';
 import { useAppStore } from '../../store/useAppStore';
 import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { useQuizMixed } from './hooks/useQuizMixed';
@@ -12,6 +13,7 @@ import { WordBuild } from './formats/WordBuild';
 import { useQuizAudioPreparation } from './hooks/useQuizAudioPreparation';
 import { QuizAudioPreparation } from './components/QuizAudioPreparation';
 import { ActionButton, EmptyState, LoadingScreen } from '../../lib/widgets';
+import { useRaceQuiz, useRaceReady } from '../../features/social';
 
 const TITLES: Record<QuizFormat, string> = {
   'pair-match': 'Tap the pairs',
@@ -33,9 +35,9 @@ const PICK_SHAPE: Partial<Record<QuizFormat, { prompt: PickPrompt; choice: PickC
  * The mixed vocab quiz: every question type (or only the picked `types`) is open to every word; the director
  * varies them and covers each word once.
  */
-export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[] | null }> = ({ cards, sessionKey, types = null, ...shell }) => {
+export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[] | null; seed?: string }> = ({ cards, sessionKey, types = null, seed, ...shell }) => {
   const buildCheck = useRef<(() => void) | null>(null);
-  const session = useQuizMixed(cards, sessionKey, types ?? undefined);
+  const session = useQuizMixed(cards, sessionKey, types ?? undefined, seed);
   const { beat, currentCard, status, followUp, isReviewPass } = session;
   const activeBeatId = `${sessionKey}|${session.beatKey}|${currentCard?.id ?? ''}|${session.resetNonce ?? 0}`;
   const [readyBeatId, setReadyBeatId] = useState<string | null>(null);
@@ -44,6 +46,34 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
     setReadyBeatId(ready ? activeBeatId : null);
   }, [activeBeatId]);
   const audio = useQuizAudioPreparation(session.audioBeats, session.audioPreparationKey, session.completed);
+  const race = useRaceQuiz();
+  const racePlanSource = useMemo(() => {
+    if (!seed || session.planning.pending || session.planning.error || !session.planning.beats.length) return '';
+    const describeCard = (card: Flashcard) => [card.id, card.bookId, card.lessonId, card.partId ?? null, card.front, card.back, card.simple ?? null, card.pinyin ?? null, card.audio ?? null, card.traditional ?? null, card.simplified ?? null];
+    return JSON.stringify({
+      seed,
+      types: types ?? [],
+      deck: [...cards].sort((a, b) => a.id.localeCompare(b.id)).map(describeCard),
+      beats: session.planning.beats.map((question) => ({
+        format: question.format,
+        cards: question.cards.map(describeCard),
+        options: question.options?.map(describeCard),
+        shown: question.shown ? describeCard(question.shown) : null,
+        tiles: question.tiles ?? null,
+      })),
+    });
+  }, [seed, types, cards, session.planning.beats, session.planning.pending, session.planning.error]);
+  const [racePlanDigest, setRacePlanDigest] = useState<{ source: string; hash: string; error?: boolean } | null>(null);
+  useEffect(() => {
+    if (!racePlanSource) return;
+    let current = true;
+    void crypto.subtle.digest('SHA-256', new TextEncoder().encode(racePlanSource)).then((value) => {
+      if (current) setRacePlanDigest({ source: racePlanSource, hash: [...new Uint8Array(value)].map(byte => byte.toString(16).padStart(2, '0')).join('') });
+    }).catch(() => { if (current) setRacePlanDigest({ source: racePlanSource, hash: '', error: true }); });
+    return () => { current = false; };
+  }, [racePlanSource]);
+  const planHash = racePlanDigest?.source === racePlanSource ? racePlanDigest.hash : null;
+  useRaceReady(seed && beat && !session.planning.pending && !session.planning.error && audio.ready ? planHash : null);
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === shell.activeBookId) || SAMPLE_BOOKS[0];
 
 
@@ -61,7 +91,7 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const isMatch = matchCards.length > 0;
   const missedFeedback = status === 'wrong' && isMatch;
   const showPinyin = useAppStore((state) => state.showPinyin);
-  const matchPairType = useAppStore((state) => state.matchPairType);
+  const matchPairType = useAppStore((state) => seed ? 'mixed' : state.matchPairType);
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
   const matchVariant: 'sound' | 'hanzi' = matchPairType === 'audio'
     ? 'sound'
@@ -80,6 +110,8 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       preparation={session.planning.pending ? <div className="flex flex-1 flex-col items-center justify-center"><LoadingScreen inline message="Preparing quiz…" tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Cancel</ActionButton></div>
         : session.planning.error ? <EmptyState title="Quiz couldn’t load" action={<div className="flex gap-3"><ActionButton onClick={session.planning.retry}>Retry</ActionButton><ActionButton variant="secondary" onClick={shell.onEnd}>Back</ActionButton></div>} />
         : !audio.ready ? <QuizAudioPreparation progress={audio.progress} error={audio.error} onRetry={audio.retry} onBack={shell.onEnd} />
+        : seed && race?.phase === 'preparing' && racePlanDigest?.source === racePlanSource && racePlanDigest.error ? <EmptyState title="Quiz couldn’t sync" description="This browser couldn’t verify the shared quiz data. Leave this race and try an updated browser." action={<ActionButton variant="secondary" onClick={shell.onEnd}>Leave race</ActionButton>} />
+        : seed && race?.phase === 'preparing' ? <div className="flex flex-1 flex-col items-center justify-center gap-4"><LoadingScreen inline message={`${planHash ? 'Waiting for everyone’s audio' : 'Checking the shared quiz'}… ${race.preparedCount}/${race.playerCount}`} tone="practice" /><ActionButton variant="secondary" onClick={shell.onEnd}>Leave race</ActionButton></div>
         : undefined}
       wide
       status={status}

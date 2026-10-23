@@ -98,3 +98,46 @@ test('retired grading API returns 404 without contacting auth or grading provide
     await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
   }
 });
+
+test('150 cold student accounts behind one campus IP reach authentication without sharing a user quota', async (context) => {
+  const previousUrl = process.env.VITE_SUPABASE_URL;
+  const previousKey = process.env.VITE_SUPABASE_ANON_KEY;
+  // The server reuses its Supabase client across requests/tests; keep the same synthetic project.
+  process.env.VITE_SUPABASE_URL = 'https://beta-fixture.supabase.co';
+  process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
+  const server = app.listen(0, '127.0.0.1');
+  await new Promise<void>(resolve => server.once('listening', resolve));
+  const address = server.address();
+  assert.ok(address && typeof address !== 'string');
+  const base = `http://127.0.0.1:${address.port}`;
+  const networkFetch = globalThis.fetch;
+  let authRequests = 0;
+  context.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = new URL(String(input));
+    if (url.origin === base) return networkFetch(input, init);
+    assert.equal(url.origin, 'https://beta-fixture.supabase.co');
+    const identity = new Headers(init?.headers).get('Authorization')?.replace('Bearer ', '');
+    if (url.pathname === '/auth/v1/user') { authRequests++; return Response.json({ id: identity, email: 'synthetic@stu.edu.tw' }); }
+    assert.equal(url.pathname, '/rest/v1/rpc/has_beta_access');
+    return Response.json(true);
+  });
+  try {
+    // This checks the one-minute NAT quota; bound TCP concurrency so developer/CI socket limits
+    // do not turn a rate-limit regression into an unrelated local connection failure.
+    const responses: Response[] = [];
+    for (let offset = 0; offset < 150; offset += 25) {
+      responses.push(...await Promise.all(Array.from({ length: 25 }, async (_, index) => {
+        const response = await fetch(`${base}/api/dictionary/search`, { headers: { Authorization: `Bearer classroom-${offset + index}` } });
+        await response.arrayBuffer();
+        return response;
+      })));
+    }
+    // The empty search is rejected by the route after authentication, without loading a dictionary worker.
+    assert.ok(responses.every(response => response.status === 400), `classroom status counts: ${JSON.stringify(responses.reduce<Record<number, number>>((counts, response) => { counts[response.status] = (counts[response.status] ?? 0) + 1; return counts; }, {}))}`);
+    assert.equal(authRequests, 150);
+  } finally {
+    await new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve()));
+    if (previousUrl === undefined) delete process.env.VITE_SUPABASE_URL; else process.env.VITE_SUPABASE_URL = previousUrl;
+    if (previousKey === undefined) delete process.env.VITE_SUPABASE_ANON_KEY; else process.env.VITE_SUPABASE_ANON_KEY = previousKey;
+  }
+});

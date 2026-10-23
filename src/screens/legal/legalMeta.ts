@@ -2,7 +2,7 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-10-23';
+export const LEGAL_EFFECTIVE_DATE = '2026-10-30';
 
 export interface LegalUpdate {
   page: 'terms' | 'privacy';
@@ -16,7 +16,10 @@ export interface LegalUpdate {
  * and a summary here; signed-in users then see a banner until 30 days after it
  * takes effect. Keep null when nothing meaningful changed.
  */
-export const LEGAL_UPDATE: LegalUpdate | null = null;
+export const LEGAL_UPDATE: LegalUpdate | null = {
+  page: 'privacy',
+  summary: 'Study together: while you are online, classmates see your display name and lesson, and each lesson has a chat. You can hide yourself in Settings.',
+};
 
 const NOTICE_AFTER_EFFECTIVE_MS = 30 * 24 * 60 * 60 * 1000;
 

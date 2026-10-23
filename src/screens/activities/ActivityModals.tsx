@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ActionButton, ActivityModalWrapper, AppIcon, type AppIconName, EmptyState, LoadingScreen } from '../../lib/widgets';
 import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
@@ -38,13 +38,18 @@ interface ActivityModalsProps {
 export function ActivityModals({
   activeActivity,
   setActiveActivity,
-  activeBookId,
-  selectedLessons,
+  activeBookId: selectedBookId,
+  selectedLessons: savedLessons,
   isLibraryMode = false,
   isShellOverlayOpen,
   onOpenGrammarPart,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
+  const race = useAppStore(state => state.racePlaying ? state.race?.selection : null);
+  const activeBookId = race ? 1 : selectedBookId;
+  const raceSelection = race;
+  const selectedLessons = useMemo(() => raceSelection ? Object.keys(raceSelection.lessons).map(Number) : savedLessons, [raceSelection, savedLessons]);
+  const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`1:${lesson}`, parts])) : undefined, [raceSelection]);
 
   const validModes = activities.map(a => a.id);
   const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);
@@ -57,17 +62,19 @@ export function ActivityModals({
 
   const resolvedActivity = activeActivity === 'flashcards-library' ? 'flashcards' : activeActivity === 'flashcards-review' ? 'flashcards' : activeActivity;
   const isReviewMode = useAppStore(state => state.isReviewMode);
-  const isReviewSession = isReviewMode || activeActivity === 'flashcards-review';
-  const effectiveLibraryMode = (isLibraryMode || activeActivity === 'flashcards-library') && !isReviewSession;
+  const isReviewSession = !race && (isReviewMode || activeActivity === 'flashcards-review');
+  const effectiveLibraryMode = !race && (isLibraryMode || activeActivity === 'flashcards-library') && !isReviewSession;
 
   const isPracticeSession = Boolean(activeActivity && activeActivity !== 'create-card');
-  const { cards: deckCards, isLoading: isLoadingDeck, error: deckError, retry: retryDeck } = useActivityDataLoader(
+  const { cards: visibleCards, deckCards: fullDeck, isLoading: isLoadingDeck, error: deckError, retry: retryDeck } = useActivityDataLoader(
     activeBookId,
     selectedLessons,
     isReviewSession,
     effectiveLibraryMode,
     isPracticeSession,
+    raceParts,
   );
+  const deckCards = race ? fullDeck : visibleCards;
   const sessionDeckRef = useRef<Flashcard[]>([]);
   if (deckCards.length > 0) sessionDeckRef.current = deckCards;
 
@@ -96,9 +103,9 @@ export function ActivityModals({
   // Lesson-part practice hides the mode dock; Writing keeps it for its controls.
   const isLessonPartFocused = isLessonWindowOpen && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
   const isIndependentStudy = selectedLessons.length > 1 && !isReviewSession && !effectiveLibraryMode;
-  const hasDock = isLessonPartFocused
+  const hasDock = !race && (isLessonPartFocused
     ? resolvedActivity === 'writing'
-    : isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
+    : isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz'));
   useEffect(() => {
     if (isPracticeSession && !isLoadingDeck) {
       return preloadRemainingPracticeChunks(resolvedActivity);
@@ -241,18 +248,18 @@ export function ActivityModals({
                   isReviewMode={isReviewSession}
                   isLibraryMode={effectiveLibraryMode}
                   isIndependentStudy={isIndependentStudy}
-                  activeQuizMode={activeQuizMode}
+                  activeQuizMode={race ? 'choices' : activeQuizMode}
                   direction={direction}
                   onClose={handleClose}
                   onWritingClose={handleWritingClose}
                   onOpenWriting={() => setActiveActivity('writing')}
                   onCreateCardClose={() => setActiveActivity(null)}
-                  onContinue={onPartContinue}
+                  onContinue={race ? undefined : onPartContinue}
                   continueLabel={partContinueLabel}
                   quizFirstId={deckCards[0]?.id}
                   sessionDeck={sessionDeckRef.current}
                   quizTypes={quizTypes}
-                  sessionStats={sessionStats}
+                  sessionStats={race ? null : sessionStats}
                   onStartQuiz={(types, stats) => {
                     setQuizTypes(types);
                     setSessionStats(stats);

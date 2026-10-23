@@ -1,10 +1,11 @@
 import { memo } from 'react';
 import { AppIcon, BrandWordmark, PlayfulNavIcon, type PlayfulNavIconName } from '../../lib/widgets';
+import type { TabRoute } from '../routes';
 
 export interface SideNavProps {
-  activeTab: 'path' | 'search' | 'library' | 'profile' | 'play';
+  activeTab: 'path' | 'search' | 'library' | 'profile';
   activeActivity?: string | null;
-  onTabChange: (tab: 'path' | 'search' | 'library' | 'profile' | 'play') => void;
+  onTabChange: (tab: TabRoute) => void;
   onSettingsClick: () => void;
   onToggleCollapse?: () => void;
   accentClass?: string;
@@ -15,7 +16,7 @@ export interface SideNavProps {
 /** Top-level workspace names. One owner: the nav renders them, and the shell
  *  titles the document with the same label, so a tab never has two names. */
 export const NAV_TABS: ReadonlyArray<{
-  id: SideNavProps['activeTab'];
+  id: TabRoute;
   label: string;
   icon: PlayfulNavIconName;
 }> = [
@@ -23,7 +24,6 @@ export const NAV_TABS: ReadonlyArray<{
   { id: 'search', label: 'Dictionary', icon: 'dictionary' },
   { id: 'library', label: 'Library', icon: 'library' },
   { id: 'profile', label: 'Profile', icon: 'profile' },
-  { id: 'play', label: 'Play', icon: 'quiz' },
 ] as const;
 
 export function navTabLabel(tab: SideNavProps['activeTab']): string {

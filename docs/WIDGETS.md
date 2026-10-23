@@ -34,8 +34,9 @@
 | CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
 | VideoBackground | `VideoBackground.tsx` | Static decorative artwork via `posterSrc`; no continuous video decoding. Optional scrim and children. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
-| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`). |
+| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
+| Avatar / AvatarStack | `AvatarStack.tsx` | Initials on a profile avatar colour (`avatarStyle`), optional live dot; `AvatarStack` overlaps up to `max` faces then "+N" and renders nothing when empty. Study together faces (Books tiles, lesson window, practice header, rooms). |
 | ProfileAvatarButton | `ProfileAvatarButton.tsx` | Signed-in avatar button for `StickyWorkspaceHeader` `rightContent` (Books / Library / Dictionary). |
 | RongWapsCharacterPortrait | `RongWapsCharacterPortrait.tsx` | 1:1 character bust; requires `character` + `label`. |
 | PosBadge | `PosBadge.tsx` | Part-of-speech tag with hover explainer; renders nothing without `pos`. |

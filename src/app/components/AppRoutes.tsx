@@ -14,9 +14,11 @@ interface AppRoutesProps extends Omit<TabScreensProps, 'activeTab'> {
  * keeps working) and the catch-all sends unknown URLs to it too.
  */
 export function AppRoutes({ activeTab, ...tabScreenProps }: AppRoutesProps) {
+  // A persisted tab that is no longer routed (e.g. hidden Play) boots Books.
+  const bootTab = activeTab in TAB_ROUTES ? activeTab : 'path';
   return (
     <Routes>
-      <Route index element={<TabScreens activeTab={activeTab} {...tabScreenProps} />} />
+      <Route index element={<TabScreens activeTab={bootTab} {...tabScreenProps} />} />
       {(Object.keys(TAB_ROUTES) as TabRoute[]).map((tab) => (
         <Route
           key={tab}
@@ -24,7 +26,7 @@ export function AppRoutes({ activeTab, ...tabScreenProps }: AppRoutesProps) {
           element={<TabScreens activeTab={tab} {...tabScreenProps} />}
         />
       ))}
-      <Route path="*" element={<Navigate to={`/${activeTab}`} replace />} />
+      <Route path="*" element={<Navigate to={`/${bootTab}`} replace />} />
     </Routes>
   );
 }

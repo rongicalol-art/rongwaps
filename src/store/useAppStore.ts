@@ -90,6 +90,12 @@ import {
   DEFAULT_PREFERENCES,
   selectPracticePreferences,
 } from './slices/practicePreferencesSlice';
+import {
+  createSocialSlice,
+  SOCIAL_PERSISTED_KEYS,
+  SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
+  type SocialState,
+} from './slices/socialSlice';
 
 export type {
   UserSnapshot,
@@ -126,7 +132,8 @@ export type AppStoreData =
   & UiState
   & SyncState
   & GrammarProgressState
-  & PracticePreferencesState;
+  & PracticePreferencesState
+  & SocialState;
 
 export type AppState = AppStoreData & AppStoreActions;
 
@@ -238,6 +245,7 @@ export const PERSISTED_KEYS = [
   ...SYNC_PERSISTED_KEYS,
   ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
   ...PRACTICE_PREFERENCES_PERSISTED_KEYS,
+  ...SOCIAL_PERSISTED_KEYS,
 ] as const;
 
 function derivePersistedState(state: AppState): Partial<AppState> {
@@ -266,6 +274,7 @@ const PERSISTED_ARRAY_KEYS = [
   'startedPartIds',
   'completedPageIds',
   'completedPartIds',
+  'blockedUsers',
 ] as const;
 
 /** Persisted slice fields whose runtime shape is a plain record. */
@@ -309,6 +318,7 @@ export const ACCOUNT_SWITCH_DEFAULTS = {
   ...SYNC_ACCOUNT_SWITCH_DEFAULTS,
   ...GRAMMAR_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
   ...PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
+  ...SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
 } as Partial<AppState>;
 
 export interface AppStoreActions {
@@ -328,6 +338,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
       ...createSyncSlice(set),
       ...createGrammarProgressSlice(set),
       ...createPracticePreferencesSlice(set),
+      ...createSocialSlice(set),
       resetAccountScopedState: () => set({ ...ACCOUNT_SWITCH_DEFAULTS }),
     }),
     {

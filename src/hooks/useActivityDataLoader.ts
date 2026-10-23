@@ -61,10 +61,12 @@ export function useActivityDataLoader(
   isReviewDeck: boolean = false,
   isLibraryDeck: boolean = false,
   enabled: boolean = true,
+  selectionOverride?: LessonPartSelectionMap,
 ) {
   const effectiveLibraryDeck = isLibraryDeck && !isReviewDeck;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
-  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
+  const savedSelection = useAppStore((state) => state.selectedLessonParts);
+  const selectedLessonParts = selectionOverride ?? savedSelection;
   const deckExclusions = useAppStore((state) => state.deckExclusions);
   const setDeckExclusions = useAppStore((state) => state.setDeckExclusions);
   const { currentUser } = useAuth();
@@ -165,6 +167,7 @@ export function useActivityDataLoader(
       try {
         const result = await loadActivityDeck({
           activeBookId,
+          selectedLessonParts,
           selectedLessons: stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [],
           isReviewDeck,
           isLibraryDeck: effectiveLibraryDeck,
@@ -192,7 +195,7 @@ export function useActivityDataLoader(
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites, enabled, attempt]);
+  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, effectiveLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites, enabled, attempt, selectedLessonParts]);
 
   return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds,
     retry: () => { setError(null); setAttempt((value) => value + 1); } };

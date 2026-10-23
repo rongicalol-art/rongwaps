@@ -1,16 +1,14 @@
 import { useState, type CSSProperties } from 'react';
 import type { ProfileSettings } from '../../../store/slices/profileSlice';
 import { useAppStore } from '../../../store/useAppStore';
+import { avatarStyle } from '../../../lib/widgets';
+
+export { avatarStyle };
 
 export function coverStyle(preset: ProfileSettings['coverPreset'], image?: string): CSSProperties {
   return image ? { backgroundImage: `url("${image}")` } : {
     backgroundColor: `var(--color-cover-${preset}-bg)`, color: `var(--color-cover-${preset}-glyph)`,
   };
-}
-export function avatarStyle(color: ProfileSettings['avatarColor']): CSSProperties {
-  const background = color === 'blue' ? 'avatar-blue-bg' : color === 'ink' ? 'ui-ink-strong' : `cover-${color}-bg`;
-  const ink = color === 'ink' ? 'ui-surface' : `avatar-${color}-ink`;
-  return { backgroundColor: `var(--color-${background})`, color: `var(--color-${ink})` };
 }
 export function ProfileAvatar({ name, color, image, className = '' }: {
   name: string; color: ProfileSettings['avatarColor']; image?: string; className?: string;

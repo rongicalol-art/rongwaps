@@ -4,7 +4,7 @@ import { cn } from '../../utils/cn';
 export type PlayfulNavIconName =
   | 'books' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
   | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
-  | 'meaning' | 'characters' | 'trueFalse' | 'build' | 'tonesPractice';
+  | 'meaning' | 'characters' | 'trueFalse' | 'build' | 'tonesPractice' | 'challenge';
 
 interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
   name: PlayfulNavIconName;
@@ -25,6 +25,7 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   writing: new URL('../../assets/icons/flat/pencil.svg?no-inline', import.meta.url).href,
   tones: new URL('../../assets/icons/flat/mixer.svg?no-inline', import.meta.url).href,
   tonesPractice: new URL('../../assets/icons/flat/tones-practice.svg?no-inline', import.meta.url).href,
+  challenge: new URL('../../assets/icons/flat/lightning.svg?no-inline', import.meta.url).href,
   global: new URL('../../assets/icons/flat/globe.svg?no-inline', import.meta.url).href,
   curriculum: new URL('../../assets/icons/flat/book.svg?no-inline', import.meta.url).href,
   grammar: new URL('../../assets/icons/flat/light-bulb.svg?no-inline', import.meta.url).href,

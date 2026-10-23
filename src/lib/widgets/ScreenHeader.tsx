@@ -58,6 +58,8 @@ export interface ScreenHeaderProps {
   isRetry?: boolean;
   cleanupPhase?: { currentIndex: number; totalCount: number } | null;
   partSegments?: PartSegment[];
+  /** Drawn over the progress rail (a quiz race's other players). */
+  progressOverlay?: React.ReactNode;
   studyParts?: CourseLessonPartProgress[];
   onSelectStudyPart?: (partId: number) => void;
   onToggleStudyPart?: (partId: number) => void;
@@ -96,6 +98,7 @@ export function ScreenHeader({
   isRetry = false,
   cleanupPhase = null,
   partSegments = [],
+  progressOverlay,
   studyParts = [],
   onSelectStudyPart,
   onToggleStudyPart,
@@ -204,7 +207,7 @@ export function ScreenHeader({
       ) : (
         <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
           {progress !== undefined ? (
-            <div className="w-full flex items-center justify-center gap-3">
+            <div className="relative w-full flex items-center justify-center gap-3">
               {usesStudyPartRail ? (
                 <StudyPartProgressRail
                   parts={studyParts}
@@ -252,9 +255,12 @@ export function ScreenHeader({
                     className={`absolute inset-0 rounded-full ${accentBgClassName}`}
                     style={{ x: progressOffset }}
                   />
-                  <div aria-hidden className="absolute inset-x-2 top-1 h-1.5 overflow-hidden rounded-full">
-                    <motion.div data-practice-progress-highlight className="absolute inset-0 rounded-full bg-white/30" style={{ x: progressOffset }} />
-                  </div>
+                  {/* A race hands the bar to RaceBar (own fill + shine); this one would run ahead of it. */}
+                  {accentBgClassName !== 'bg-transparent' && (
+                    <div aria-hidden className="absolute inset-x-2 top-1 h-1.5 overflow-hidden rounded-full">
+                      <motion.div data-practice-progress-highlight className="absolute inset-0 rounded-full bg-white/30" style={{ x: progressOffset }} />
+                    </div>
+                  )}
                 </div>
                 </div>
               )}
@@ -263,6 +269,7 @@ export function ScreenHeader({
                   {Math.round(progress)}%
                 </span>
               )}
+              {progressOverlay}
             </div>
           ) : title ? (
             <div className="min-w-0 text-left">

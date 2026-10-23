@@ -7,7 +7,6 @@ export const TAB_ROUTES = {
   search: '/search',
   library: '/library',
   profile: '/profile',
-  play: '/play',
 } as const;
 
 export type TabRoute = keyof typeof TAB_ROUTES;

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { QuizChoices } from './QuizChoices';
@@ -13,6 +13,7 @@ import type { SessionStats } from '../../features/practice';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from '../flashcard';
 import type { Flashcard } from '../../data/flashcards';
+import { useRaceQuiz } from '../../features/social';
 
 interface QuizScreenProps {
   activeBookId: number;
@@ -44,8 +45,11 @@ export function QuizScreen({
   sessionStats = null,
   sessionDeck,
 }: QuizScreenProps) {
-  const { cards: loadedCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
-  const cards = isReviewDeck && sessionDeck?.length ? sessionDeck : loadedCards;
+  const race = useRaceQuiz();
+  const raceSelection = race?.selection;
+  const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`1:${lesson}`, parts])) : undefined, [raceSelection]);
+  const { cards: loadedCards, deckCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, !race && isReviewDeck, !race && isLibraryDeck, true, raceParts);
+  const cards = race ? deckCards : isReviewDeck && sessionDeck?.length ? sessionDeck : loadedCards;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const launchCleanup = useRef<number | undefined>(undefined);
   useEffect(() => {
@@ -56,7 +60,9 @@ export function QuizScreen({
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const reduceMotion = useReducedMotion();
   /** Picked on Cards done, or here: opened from the quiz button, the mixed quiz asks first. */
-  const [picked, setPicked] = useState<readonly QuizTypeId[] | null>(quizTypes);
+  const [chosen, setPicked] = useState<readonly QuizTypeId[] | null>(quizTypes);
+  // A quiz race skips the picker: the room chose the types, and every player shares its seed.
+  const picked = race ? race.types : chosen;
   // Opened from the dock: its quiz button grows into the Mixed card (read once, where the button is now).
   const [entrance] = useState<QuizPickerEntrance>(() => {
     if (reduceMotion) return { kind: 'none' };
@@ -76,7 +82,7 @@ export function QuizScreen({
   });
   // The quiz never shares the flashcards' saved place: its own key, and each pick keeps its own progress.
   const quizKey = quizSessionKey(sessionKey);
-  const mixedKey = picked?.length ? `${sessionKey}|types:${picked.join('+')}` : quizKey;
+  const mixedKey = race ? race.sessionKey : picked?.length ? `${sessionKey}|types:${picked.join('+')}` : quizKey;
   const mixed = mode === 'choices' && quizFormat === 'mixed';
 
 
@@ -102,6 +108,7 @@ export function QuizScreen({
                 cards={cards}
                 sessionKey={mixedKey}
                 types={picked}
+                seed={race?.seed}
                 sessionStats={sessionStats}
                 onEnd={onClose || (() => {})}
                 onContinue={onContinue}

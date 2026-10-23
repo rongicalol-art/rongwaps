@@ -12,6 +12,7 @@ import { PracticeSettingsScreen } from './PracticeSettingsScreen';
 import type { PracticeHeaderActions } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
+import { PracticeFaces, RaceBar, useRaceFill } from '../../social';
 
 interface PracticeHeaderProps
   extends Omit<ScreenHeaderProps, 'rightAction' | 'variant' | 'tone'>,
@@ -72,10 +73,12 @@ export function PracticeHeader({
     useAppStore.getState().showFeedbackToast('Restarted');
   };
 
+  const racing = useRaceFill();
   const iconColor = quietControls ? undefined : activeBook.accentHex;
   const iconClassName = quietControls ? 'text-ui-muted' : activeBook.accent;
   const isFlowActive = flowStatus === 'playing';
-  const hasSessionControls = Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
+  const hasSessionControls = !racing && Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
+  const raceStatus = useAppStore(state => state.raceStatus);
   const flowLabel = isFlowActive ? 'Flow' : flowStatus === 'paused' ? 'Resume' : 'Flow';
 
   return (
@@ -90,8 +93,12 @@ export function PracticeHeader({
         progressSize="compact"
         closeIconColor={iconColor}
         closeIconClassName={iconClassName}
+        progressOverlay={<RaceBar />}
+        {...(racing ? { accentBgClassName: 'bg-transparent' } : {})}
         rightAction={
           <div className="flex h-11 shrink-0 items-center pointer-events-auto">
+            <PracticeFaces />
+            {racing && raceStatus !== 'live' && <span role="status" className="px-2 text-sm font-bold text-ui-muted-strong">Reconnecting…</span>}
             {hasSessionControls && (
               <DropdownMenu
                 label="Session controls"
