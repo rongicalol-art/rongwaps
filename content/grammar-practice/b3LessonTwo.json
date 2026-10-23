@@ -11,6 +11,7 @@
         "source": "p.51 #1",
         "kind": "slot-build",
         "prompt": "Reminding a friend about an arrangement:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "不是",
@@ -98,6 +99,7 @@
         "source": "p.52 #1",
         "kind": "slot-build",
         "prompt": "Asking someone for a favor while they are out:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "順便",
@@ -185,6 +187,7 @@
         "source": "p.53 #1",
         "kind": "slot-build",
         "prompt": "Describing unpredictable spring weather:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "一會兒",
@@ -272,6 +275,7 @@
         "source": "p.54 #1",
         "kind": "slot-build",
         "prompt": "Giving up after trying repeatedly:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "算了",
@@ -359,6 +363,7 @@
         "source": "p.62 #1",
         "kind": "slot-build",
         "prompt": "Expressing stubborn refusal:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "就是",
@@ -446,6 +451,7 @@
         "source": "p.64 #1",
         "kind": "slot-build",
         "prompt": "Highlighting effort leading to outcome:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "經過",
@@ -533,6 +539,7 @@
         "source": "p.65 #1",
         "kind": "slot-build",
         "prompt": "Explaining a problem-solving approach:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "用",

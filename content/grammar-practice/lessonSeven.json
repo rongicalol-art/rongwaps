@@ -160,6 +160,7 @@
           "english": "He comes from the United States to Taiwan."
         },
         "prompt": "You are in Taiwan. Describe his trip.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 163,
@@ -329,6 +330,7 @@
           "english": "He goes from his home to school."
         },
         "prompt": "You are at his home. Describe where he goes.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 163,
@@ -499,6 +501,7 @@
           "english": "He goes from the restaurant to the library."
         },
         "prompt": "You are at the restaurant. Describe where he goes.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 163,
@@ -516,6 +519,7 @@
         "id": "l7g1-o1",
         "source": "own",
         "prompt": "You’re at school. Tell your friend you came from the hotel.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -581,6 +585,7 @@
         "id": "l7g2-b1",
         "source": "p.164 #1",
         "prompt": "You’re at school. Ask how your friend gets to his home.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -645,6 +650,7 @@
         "id": "l7g2-b2",
         "source": "p.164 #2",
         "prompt": "You’re at school. Say how he gets here every day.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -709,6 +715,7 @@
         "id": "l7g2-b3",
         "source": "p.164 #3",
         "prompt": "The hotel is far. Say you don’t want to walk there.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -772,6 +779,7 @@
         "id": "l7g2-o1",
         "source": "own",
         "prompt": "You came on your own bikes. Say how you came.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -917,7 +925,7 @@
       {
         "id": "l7g3-b1",
         "source": "p.166 #1",
-        "prompt": "Yesterday 25°C, today 30°C. Build the sentence: the weather has changed.",
+        "prompt": "Yesterday 25°C, today 30°C. The weather has changed.",
         "scene": {
           "type": "picture",
           "page": 166,
@@ -986,7 +994,7 @@
       {
         "id": "l7g3-b2",
         "source": "p.166 #2",
-        "prompt": "The bowl was $80, now $120. Build the sentence: prices have gone up.",
+        "prompt": "The bowl was $80, now $120. Prices have gone up.",
         "scene": {
           "type": "picture",
           "page": 166,
@@ -1165,6 +1173,7 @@
           "english": "You cannot say “吃飯得很快”; you should say “吃飯吃得很快”. We understand now! Thank you, teacher."
         },
         "prompt": "You didn’t get it before, but now you do. Build your reply.",
+        "quiet": true,
         "glossary": [
           {
             "traditional": "懂",
@@ -1186,6 +1195,7 @@
         "id": "l7g4-b1",
         "source": "p.171 #1",
         "prompt": "Describe taking the MRT first, then say you do not want to walk.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -1249,6 +1259,7 @@
         "id": "l7g4-b2",
         "source": "p.171 #2",
         "prompt": "There’s a supermarket near your home. What is convenient?",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -1324,7 +1335,7 @@
       {
         "id": "l7g4-b3",
         "source": "p.171 #3",
-        "prompt": "Say which sport you can play first, then which you cannot.",
+        "prompt": "First the sport you can play, then the one you cannot.",
         "scene": {
           "type": "picture",
           "page": 171,
@@ -1397,6 +1408,7 @@
         "id": "l7g4-o1",
         "source": "own",
         "prompt": "Make playing soccer the topic: say you all like it.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -1591,6 +1603,7 @@
           "english": "Do you like summer? Summer here is both hot and uncomfortable; I do not like it."
         },
         "prompt": "Summer here is so hot you can’t sleep. Do you like it? Where do the two 又 go?",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -1724,6 +1737,7 @@
           "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
         },
         "prompt": "Great noodles at $50, others $150. Where do the two 又 go?",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -1860,12 +1874,14 @@
           "english": "Does he often go to the seaside? He can swim and likes sunbathing and goes to the seaside every weekend."
         },
         "prompt": "Why does he go to the beach every weekend? Where do the two 又 go?",
+        "quiet": true,
         "gaps": true
       },
       {
         "id": "l7g5-o1",
         "source": "own",
         "prompt": "You want to visit Japan and Korea. Make both countries the topic.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -1930,6 +1946,7 @@
         "source": "own",
         "kind": "order-build",
         "prompt": "Say the hotel is both big and comfortable.",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "飯店",

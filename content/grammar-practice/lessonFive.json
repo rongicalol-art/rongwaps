@@ -7,6 +7,7 @@
         "id": "l05-g01-book-1",
         "source": "p.116 #1",
         "prompt": "Where are they?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 116,
@@ -71,6 +72,7 @@
         "id": "l05-g01-book-2",
         "source": "p.116 #2",
         "prompt": "Is Xiaomei at the library? Answer from the picture.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 116,
@@ -230,7 +232,8 @@
           ],
           "alt": "A teacher at the board, students facing him, and a clock showing nine."
         },
-        "prompt": "Ask whether Teacher Li is at school at nine this morning."
+        "prompt": "Ask whether Teacher Li is at school at nine this morning.",
+        "quiet": true
       }
     ],
     "allowWords": [
@@ -247,7 +250,7 @@
         "id": "l05-g02-book-1",
         "source": "p.117 #1",
         "kind": "order-build",
-        "prompt": "Say that you buy coffee at the café.",
+        "prompt": "You buy coffee at the café.",
         "tiles": [
           {
             "traditional": "是",
@@ -314,7 +317,7 @@
         "id": "l05-g02-book-2",
         "source": "p.117 #2",
         "kind": "order-build",
-        "prompt": "Say that you like reading at home.",
+        "prompt": "You like reading at home.",
         "tiles": [
           {
             "traditional": "看書",
@@ -401,7 +404,7 @@
         "id": "l05-g02-book-3",
         "source": "p.117 #3",
         "kind": "order-build",
-        "prompt": "Say that you are not eating dinner at home today.",
+        "prompt": "You are not eating dinner at home today.",
         "tiles": [
           {
             "traditional": "吃晚飯",
@@ -476,6 +479,7 @@
         "source": "own",
         "kind": "order-build",
         "prompt": "Ask your friend where they read.",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "你",
@@ -566,7 +570,7 @@
           "alt": "Two pens, one priced $100 and the other $50."
         },
         "kind": "order-build",
-        "prompt": "This pen is too expensive. Suggest buying the cheaper one, using 吧.",
+        "prompt": "This pen is too expensive. Suggest buying the cheaper one.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -631,7 +635,7 @@
           "alt": "A steaming cup on a saucer."
         },
         "kind": "order-build",
-        "prompt": "It is cold. Suggest having hot coffee, using 吧.",
+        "prompt": "It is cold. Suggest having hot coffee.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -696,7 +700,7 @@
           "alt": "Two people at a counter selling noodles and drinks."
         },
         "kind": "order-build",
-        "prompt": "You both want food. Suggest going to eat together, using 吧.",
+        "prompt": "You both want food. Suggest going to eat together.",
         "tiles": [
           {
             "traditional": "吧",
@@ -766,6 +770,7 @@
         "id": "l05-g04-book-1",
         "source": "p.125 #1",
         "prompt": "Where is my book?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 125,
@@ -834,6 +839,7 @@
         "id": "l05-g04-book-2",
         "source": "p.125 #2",
         "prompt": "Where is the younger brother?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 125,
@@ -903,6 +909,7 @@
         "id": "l05-g04-book-3",
         "source": "p.125 #3",
         "prompt": "Where does she read?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 125,
@@ -978,6 +985,7 @@
         "id": "l05-g04-book-4",
         "source": "p.125 #4",
         "prompt": "What is Xiaoming doing in the library?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 125,
@@ -1147,7 +1155,7 @@
         "id": "l05-g05-book-1",
         "source": "p.126 #1",
         "kind": "order-build",
-        "prompt": "Say there are 1,000 students at your school.",
+        "prompt": "There are 1,000 students at your school.",
         "tiles": [
           {
             "traditional": "在",
@@ -1200,7 +1208,7 @@
       {
         "id": "l05-g05-book-2",
         "source": "p.126 #2",
-        "prompt": "There is no drink shop near your home. Answer the question.",
+        "prompt": "There is no drink shop near your home.",
         "kind": "order-build",
         "sub": "你家旁邊有飲料店嗎？",
         "tiles": [
@@ -1260,7 +1268,7 @@
         "id": "l05-g05-book-3",
         "source": "p.126 #3",
         "kind": "order-build",
-        "prompt": "Say there is a book on your table. Start with the place.",
+        "prompt": "There is a book on your table. Start with the place.",
         "tiles": [
           {
             "traditional": "在",

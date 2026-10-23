@@ -11,6 +11,7 @@
         "source": "p.101 #1",
         "kind": "slot-build",
         "prompt": "Exclaiming at a delicious meal:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "好",
@@ -98,6 +99,7 @@
         "source": "p.102 #1",
         "kind": "slot-build",
         "prompt": "Describing dedicated service:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "親自",
@@ -185,6 +187,7 @@
         "source": "p.103 #1",
         "kind": "slot-build",
         "prompt": "Describing indecisiveness when buying shoes:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "試來試去",
@@ -272,6 +275,7 @@
         "source": "p.105 #1",
         "kind": "slot-build",
         "prompt": "Expressing relief at arriving at destination:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "終於",
@@ -359,6 +363,7 @@
         "source": "p.113 #1",
         "kind": "slot-build",
         "prompt": "Complaining about noisy construction next door:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "個不停",
@@ -446,6 +451,7 @@
         "source": "p.114 #1",
         "kind": "slot-build",
         "prompt": "Describing ideal bath water temperature:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "不冷不熱",
@@ -533,6 +539,7 @@
         "source": "p.115 #1",
         "kind": "slot-build",
         "prompt": "Describing an intense study schedule:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "除了",
@@ -620,6 +627,7 @@
         "source": "p.117 #1",
         "kind": "slot-build",
         "prompt": "Describing someone's reading habits:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "不是",

@@ -59,8 +59,8 @@ test('a wrong word explains itself wherever it lands (build the sentence)', () =
   assert.deepEqual(found, []);
 });
 
-test('a sentence to fix says what it means, so exactly one fix is right', () => {
-  const found = newItems.filter(({ item }) => item.kind === 'spot-fix' && !item.sub?.trim()).map(({ key, item }) => `${key} ${item.id}`);
+test('a sentence to fix is titled by what it means, so exactly one fix is right', () => {
+  const found = newItems.filter(({ item }) => item.kind === 'spot-fix' && (!item.prompt?.trim() || /\b(tap|wrong|wrote)\b/i.test(item.prompt))).map(({ key, item }) => `${key} ${item.id}`);
   assert.deepEqual(found, []);
 });
 

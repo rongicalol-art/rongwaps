@@ -7,6 +7,7 @@
         "id": "b1l06-g01-p135-practice-1",
         "source": "p.136 #1",
         "prompt": "Can you play soccer?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "You learned to play from your brother and can join his team. 你會不會踢足球？",
         "tiles": [
@@ -64,6 +65,7 @@
         "id": "b1l06-g01-p135-practice-2",
         "source": "p.136 #2",
         "prompt": "Can your younger brother speak Chinese?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "Your brother has never learned Chinese and cannot speak it. 你弟弟會說中文嗎？",
         "tiles": [
@@ -126,7 +128,7 @@
       {
         "id": "b1l06-g01-p135-practice-3",
         "source": "p.136 #3",
-        "prompt": "Ask whether your friend can make beef noodles. Use a verb–not–verb question.",
+        "prompt": "Ask whether your friend can make beef noodles (verb–not–verb).",
         "kind": "order-build",
         "sub": "B replies afterward: 我不會做牛肉麵。",
         "tiles": [
@@ -271,7 +273,8 @@
           "english": "I do not want to swim; let’s play ball."
         },
         "sub": "You know how to swim, but you prefer to play ball this afternoon.",
-        "prompt": "Your friend suggests swimming this afternoon. Answer."
+        "prompt": "Your friend suggests swimming this afternoon. Answer.",
+        "quiet": true
       }
     ]
   },
@@ -283,6 +286,7 @@
         "id": "b1l06-g02-p136-practice-1",
         "source": "p.137 #1",
         "prompt": "How much does he drink?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 137,
@@ -355,6 +359,7 @@
         "id": "b1l06-g02-p136-practice-2",
         "source": "p.137 #2",
         "prompt": "How does he eat?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 137,
@@ -422,6 +427,7 @@
         "id": "b1l06-g02-p136-practice-3",
         "source": "p.137 #3",
         "prompt": "How did you sleep last night?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "You were comfortable all night and feel rested this morning. 你昨天晚上睡得怎麼樣？",
         "tiles": [
@@ -511,6 +517,7 @@
         "id": "b1l06-g02-p136-practice-4",
         "source": "p.138 #1",
         "prompt": "How well does your friend play tennis?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "Your friend plays tennis skillfully and wins the school games. 你朋友打網球打得怎麼樣？",
         "tiles": [
@@ -573,6 +580,7 @@
         "id": "b1l06-g02-p136-practice-5",
         "source": "p.138 #2",
         "prompt": "Did he sleep well last night?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 138,
@@ -646,6 +654,7 @@
         "id": "b1l06-g02-p136-practice-6",
         "source": "p.138 #3",
         "prompt": "Do you play soccer well?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "You know the rules, but your kicks often miss the ball. 你踢足球踢得好不好？",
         "tiles": [
@@ -707,6 +716,7 @@
         "id": "b1l06-g02-p136-practice-7",
         "source": "p.139 #1",
         "prompt": "Does your mom make beef noodles well?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "Everyone enjoys your mother’s beef noodles and asks her to cook them again. 你媽媽牛肉麵做得好不好？",
         "tiles": [
@@ -770,6 +780,7 @@
         "id": "b1l06-g02-p136-practice-8",
         "source": "p.139 #2",
         "prompt": "How do you play basketball?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "You often lose the ball and miss the basket. 你籃球打得怎麼樣？",
         "tiles": [
@@ -831,7 +842,7 @@
       {
         "id": "b1l06-g02-p136-practice-9",
         "source": "p.139 #3",
-        "prompt": "Ask your friend how well their older brother plays baseball. The reply comes afterward.",
+        "prompt": "Ask how well their older brother plays baseball.",
         "kind": "order-build",
         "sub": "B replies afterward: 我哥哥棒球打得很好。",
         "tiles": [
@@ -894,6 +905,7 @@
         "id": "b1l06-g02-p136-practice-10",
         "source": "p.140 #1",
         "prompt": "How is your cooking?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "Everyone enjoys your cooking and asks for more. 你的飯做得怎麼樣？",
         "tiles": [
@@ -951,6 +963,7 @@
         "id": "b1l06-g02-p136-practice-11",
         "source": "p.140 #2",
         "prompt": "Does your older brother play basketball well?",
+        "quiet": true,
         "kind": "order-build",
         "sub": "Your older brother plays skillfully and wins the school basketball games. 你哥哥的籃球打得好不好？",
         "tiles": [
@@ -1012,7 +1025,7 @@
       {
         "id": "b1l06-g02-p136-practice-12",
         "source": "p.140 #3",
-        "prompt": "Ask how well she speaks English. The reply comes afterward.",
+        "prompt": "Ask how well she speaks English.",
         "kind": "order-build",
         "sub": "B replies afterward: 她的英文說得很好。",
         "tiles": [
@@ -1076,7 +1089,7 @@
       {
         "id": "b1l06-g03-p146-practice-1",
         "source": "p.146 #1",
-        "prompt": "Say you are a little tired and want to rest.",
+        "prompt": "You are a little tired and want to rest.",
         "kind": "order-build",
         "sub": "After work, you feel slightly tired.",
         "tiles": [
@@ -1138,7 +1151,7 @@
       {
         "id": "b1l06-g03-p146-practice-2",
         "source": "p.146 #2",
-        "prompt": "Say you are a little thirsty and want something to drink.",
+        "prompt": "You are a little thirsty and want something to drink.",
         "kind": "order-build",
         "sub": "Your mouth feels dry.",
         "tiles": [
@@ -1352,14 +1365,14 @@
         },
         "sub": "Your things fill every shelf, and there is nowhere to put the rest.",
         "prompt": "Your things do not fit. Say you think the room is a little small.",
+        "quiet": true,
         "gaps": true
       },
       {
         "id": "b1l06-g03-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "Your friend wrote this about a movie. Tap the word that’s wrong.",
-        "sub": "They mean: I think this movie is very interesting.",
+        "prompt": "I think this movie is very interesting.",
         "chunks": [
           {
             "traditional": "我"
@@ -1835,7 +1848,7 @@
       {
         "id": "b1l06-g04-p147-practice-6",
         "source": "p.148 #3",
-        "prompt": "Ask the librarian if you may read here before they reply.",
+        "prompt": "Ask the librarian if you may read here.",
         "scene": {
           "type": "picture",
           "page": 148,

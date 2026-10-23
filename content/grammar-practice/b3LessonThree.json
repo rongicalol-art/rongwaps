@@ -11,6 +11,7 @@
         "source": "p.78 #1",
         "kind": "slot-build",
         "prompt": "Encouraging a friend to test a vehicle:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "試開",
@@ -98,6 +99,7 @@
         "source": "p.80 #1",
         "kind": "slot-build",
         "prompt": "Suggesting a better venue for group study:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "不如",
@@ -185,6 +187,7 @@
         "source": "p.81 #1",
         "kind": "slot-build",
         "prompt": "Pointing out the only downside of a product:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "就是",
@@ -272,6 +275,7 @@
         "source": "p.82 #1",
         "kind": "slot-build",
         "prompt": "Urging a sibling to stop wasting money:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "別再",
@@ -359,6 +363,7 @@
         "source": "p.88 #1",
         "kind": "slot-build",
         "prompt": "Praising a multifunctional device:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "不僅",
@@ -446,6 +451,7 @@
         "source": "p.90 #1",
         "kind": "slot-build",
         "prompt": "Describing someone's speech skills:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "一次比一次",

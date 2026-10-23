@@ -7,6 +7,7 @@
         "id": "l8g1-p1",
         "source": "p.186 #1",
         "prompt": "You really like this movie. What is it like?",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -99,6 +100,7 @@
         "id": "l8g1-p2",
         "source": "p.186 #2",
         "prompt": "The new bike fits you; long rides don’t tire you. How does it ride?",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -177,6 +179,7 @@
         "id": "l8g1-p3",
         "source": "p.186 #3",
         "prompt": "Friends learned to swim in one lesson. What is swimming like to learn?",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -360,7 +363,8 @@
           "english": "I think he did not draw this picture well; it looks a little bad.",
           "simplified": "我觉得这张画他画得不好，有点儿难看。"
         },
-        "prompt": "He drew this picture badly. How does it look?"
+        "prompt": "He drew this picture badly. How does it look?",
+        "quiet": true
       },
       {
         "id": "l8g1-p5",
@@ -456,7 +460,8 @@
           "english": "Bubble milk tea tastes good; everyone wants to buy a cup.",
           "simplified": "珍珠奶茶很好喝，大家都想买一杯。"
         },
-        "prompt": "Everyone wants a cup of bubble milk tea. How does it taste?"
+        "prompt": "Everyone wants a cup of bubble milk tea. How does it taste?",
+        "quiet": true
       },
       {
         "id": "l8g1-p6",
@@ -552,7 +557,8 @@
           "english": "That place is far away and hard to find; I do not want to go with you.",
           "simplified": "那个地方又远又难找，我不想跟你去。"
         },
-        "prompt": "You checked three maps and still can’t find the place. What is it like?"
+        "prompt": "You checked three maps and still can’t find the place. What is it like?",
+        "quiet": true
       }
     ],
     "allowWords": [
@@ -827,12 +833,13 @@
           "english": "Because he likes green, he often wears green clothes."
         },
         "prompt": "Why does he often wear green? (He likes green.)",
+        "quiet": true,
         "gaps": true
       },
       {
         "id": "l8g2-p2",
         "source": "p.187 #2",
-        "prompt": "Ask your friend why they want to go to the beach. The reply comes afterward.",
+        "prompt": "Ask why they want to go to the beach.",
         "kind": "order-build",
         "sub": "B replies afterward: 因為我想游泳，也想曬太陽，所以想去海邊玩。",
         "tiles": [
@@ -1203,6 +1210,7 @@
           "english": "Because I want to visit Taiwan, I want to learn Chinese."
         },
         "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.)",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -1366,7 +1374,7 @@
         "id": "l8g3-p1",
         "source": "p.193 #1",
         "kind": "order-build",
-        "prompt": "You see a Korean passport. Ask him to confirm your guess that he is Korean, using 吧.",
+        "prompt": "You see a Korean passport. Check your guess: he is Korean.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -1422,7 +1430,7 @@
         "id": "l8g3-p2",
         "source": "p.193 #2",
         "kind": "order-build",
-        "prompt": "Your friend always carries coffee. Check your guess that they like drinking it, using 吧.",
+        "prompt": "Your friend always carries coffee. Check your guess: they like drinking it.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -1478,7 +1486,7 @@
         "id": "l8g3-p3",
         "source": "p.193 #3",
         "kind": "order-build",
-        "prompt": "Your friend carries basketball shoes and a ball. Check your guess that they can play, using 吧.",
+        "prompt": "Your friend carries basketball shoes and a ball. Check your guess: they can play.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -1813,12 +1821,12 @@
             "simplified": "桃园"
           }
         ],
-        "prompt": "The MRT to the airport is fast and easy. Say you want to try it."
+        "prompt": "You want to try the MRT."
       },
       {
         "id": "l8g4-p3",
         "source": "p.194 #3",
-        "prompt": "Nobody likes this song. Say you’ll give it a listen.",
+        "prompt": "Nobody likes this song. You’ll give it a listen.",
         "kind": "order-build",
         "sub": "他們都不太喜歡這首歌，你呢？",
         "tiles": [
@@ -1883,6 +1891,7 @@
         "source": "own",
         "kind": "order-build",
         "prompt": "The skirt is on the counter. Say you will try it on and see.",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "喝",
@@ -2098,6 +2107,7 @@
           "simplified": "我的日本朋友快要来了。"
         },
         "prompt": "Today is April 3; your friend comes April 5. Where do 快要 and 了 go?",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -2204,6 +2214,7 @@
           "simplified": "我们快要休息了。"
         },
         "prompt": "It’s 11:50. The break starts at 12:00. Where do 快要 and 了 go?",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -2334,6 +2345,7 @@
           "simplified": "弟弟快要十岁了。"
         },
         "prompt": "Today is October 1; your brother turns ten October 10. Where do 快要 and 了 go?",
+        "quiet": true,
         "gaps": true
       }
     ]

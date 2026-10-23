@@ -25,6 +25,8 @@ export interface GrammarPracticeViewProps {
   shortcutsDisabled?: boolean;
 }
 
+const QUIET_KINDS = new Set(['listen-build', 'listen-pick', 'match-pairs']);
+
 /**
  * The book exercise after a grammar page, one item at a time in a single
  * column, with sentence choices beneath the answer and actions in the bottom bar. A wrong answer says why and offers
@@ -46,7 +48,9 @@ export function GrammarPracticeView({
   const checkRef = useRef<(() => void) | null>(null);
   const item = practice.items[index];
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
-  const inlineBank = item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
+  // The play button, or the two columns, already say what to do; elsewhere the item says so with `quiet`.
+  const title = item.quiet || QUIET_KINDS.has(item.kind) ? null : item.prompt ?? practice.title;
+  const inlineBank =item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);
@@ -87,11 +91,7 @@ export function GrammarPracticeView({
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 pb-24">
-      <header className="flex flex-col gap-1">
-        <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
-        {/* The item's own question is the title; the book's general instruction only when an item has none. */}
-        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{item.prompt ?? practice.title}</h1>
-      </header>
+      {title && <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{title}</h1>}
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

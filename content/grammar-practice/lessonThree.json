@@ -138,7 +138,8 @@
           ],
           "alt": "A woman holds one flower in each hand."
         },
-        "prompt": "How many flowers does she have?"
+        "prompt": "How many flowers does she have?",
+        "quiet": true
       },
       {
         "id": "l3-g1-book-2",
@@ -277,7 +278,8 @@
           ],
           "alt": "Two books side by side."
         },
-        "prompt": "How many books do you want to buy?"
+        "prompt": "How many books do you want to buy?",
+        "quiet": true
       },
       {
         "id": "l3-g1-book-3",
@@ -404,7 +406,8 @@
           "pinyin": "Nǐ yǒu jǐ běn Yīngwén shū?",
           "english": "How many books in English do you have?"
         },
-        "prompt": "Ask how many English books your friend has."
+        "prompt": "Ask how many English books your friend has.",
+        "quiet": true
       },
       {
         "id": "l3-g1-own-1",
@@ -476,7 +479,8 @@
           "pinyin": "Wǒ yǒu wǔ běn Zhōngwén shū.",
           "english": "I have five books in Chinese."
         },
-        "prompt": "Say you have five Chinese books."
+        "prompt": "Say you have five Chinese books.",
+        "quiet": true
       },
       {
         "id": "l3-g1-own-2",
@@ -572,7 +576,8 @@
           "pinyin": "Wǒ yǒu liǎng ge péngyǒu.",
           "english": "I have two friends."
         },
-        "prompt": "Say you have two friends."
+        "prompt": "Say you have two friends.",
+        "quiet": true
       }
     ],
     "allowWords": [
@@ -984,7 +989,7 @@
           ],
           "alt": "Three shirts hang beside one another."
         },
-        "prompt": "Your friend is by the shirts; you are far away. Answer."
+        "prompt": "Your friend is by the shirts; you are far away."
       },
       {
         "id": "l3-g3-book-2",
@@ -1079,7 +1084,7 @@
           ],
           "alt": "Four flowers in a row."
         },
-        "prompt": "You are by the flowers; your friend is far away. Answer."
+        "prompt": "You are by the flowers; your friend is far away."
       },
       {
         "id": "l3-g3-book-3",
@@ -1175,7 +1180,7 @@
           ],
           "alt": "A shirt, a pen, a book, eggs, flowers, and a cake."
         },
-        "prompt": "Point to the pen beside you. Which kind do you want?"
+        "prompt": "The pen is beside you."
       },
       {
         "id": "l3-g3-own-1",
@@ -1263,7 +1268,8 @@
           "pinyin": "Nǐ xǐhuān hē nǎ zhǒng chá?",
           "english": "Which kind of tea do you like drinking?"
         },
-        "prompt": "Ask your friend which kind of tea they like."
+        "prompt": "Ask your friend which kind of tea they like.",
+        "quiet": true
       }
     ],
     "allowWords": [
@@ -1279,7 +1285,7 @@
       {
         "id": "l3-g4-book-1",
         "source": "p.84 #1",
-        "prompt": "You want the gift on the left. Answer.",
+        "prompt": "You want the gift on the left.",
         "scene": {
           "type": "picture",
           "page": 84,
@@ -1348,7 +1354,7 @@
       {
         "id": "l3-g4-book-2",
         "source": "p.84 #2",
-        "prompt": "You want the book on the right. Answer.",
+        "prompt": "You want the book on the right.",
         "scene": {
           "type": "picture",
           "page": 84,
@@ -1426,7 +1432,7 @@
       {
         "id": "l3-g4-book-3",
         "source": "p.84 #3",
-        "prompt": "You like the decorated cake on the right. Answer.",
+        "prompt": "You like the decorated cake on the right.",
         "scene": {
           "type": "picture",
           "page": 84,
@@ -1496,6 +1502,7 @@
         "id": "l3-g4-own-1",
         "source": "own",
         "prompt": "Say you like pretty flowers.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -1568,6 +1575,7 @@
         "source": "p.85 #1",
         "kind": "order-build",
         "prompt": "Say that all five pens are expensive.",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "沒有",
@@ -1625,6 +1633,7 @@
         "source": "p.85 #2",
         "kind": "order-build",
         "prompt": "Say that all four people are your classmates.",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "不",
@@ -1691,7 +1700,7 @@
           "alt": "Both people grimace at the tea in front of them."
         },
         "kind": "order-build",
-        "prompt": "Say that neither of them likes drinking this kind of tea.",
+        "prompt": "Neither of them likes drinking this kind of tea.",
         "tiles": [
           {
             "traditional": "這種茶",

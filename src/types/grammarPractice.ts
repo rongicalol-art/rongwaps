@@ -121,6 +121,11 @@ interface PracticeItemBase {
   source: string;
   /** The item's title: its question or task, phrased so it never gives the answer away. Falls back to the book's instruction. */
   prompt?: string;
+  /**
+   * The screen already poses the question (a Chinese question or frame, a picture, a bubble that
+   * repeats the prompt), so no title shows. `prompt` stays as the item's plain-English task.
+   */
+  quiet?: boolean;
   sub?: string;
   /** Words the book glosses beside its exercise, shown under the line the book prints them after. */
   glossary?: PracticeGlossEntry[];

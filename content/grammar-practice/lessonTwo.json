@@ -7,6 +7,7 @@
         "id": "l2g01-1",
         "source": "p.55 #1",
         "prompt": "What time is it?",
+        "quiet": true,
         "scene": {
           "type": "moment",
           "moment": {
@@ -77,6 +78,7 @@
         "id": "l2g01-2",
         "source": "p.55 #2",
         "prompt": "What day of the week is today?",
+        "quiet": true,
         "scene": {
           "type": "month",
           "year": 2019,
@@ -137,6 +139,7 @@
         "id": "l2g01-3",
         "source": "p.55 #3",
         "prompt": "What is the date today?",
+        "quiet": true,
         "scene": {
           "type": "month",
           "year": 2019,
@@ -209,6 +212,7 @@
         "id": "l2g01-4",
         "source": "own",
         "prompt": "Ask which day of the week it is.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -268,6 +272,7 @@
         "id": "l2g02-1",
         "source": "p.55 #1",
         "prompt": "When does your class end today?",
+        "quiet": true,
         "scene": {
           "type": "moment",
           "moment": {
@@ -347,7 +352,7 @@
       {
         "id": "l2g02-2",
         "source": "p.55 #2",
-        "prompt": "Monday is your day off. Which day don’t you go to school?",
+        "prompt": "Monday is your day off.",
         "kind": "order-build",
         "sub": "你星期幾不去學校？",
         "tiles": [
@@ -426,6 +431,7 @@
         "id": "l2g02-3",
         "source": "p.55 #3",
         "prompt": "When are you going to Japan?",
+        "quiet": true,
         "scene": {
           "type": "moment",
           "moment": {
@@ -513,7 +519,7 @@
       {
         "id": "l2g02-4",
         "source": "own",
-        "prompt": "You stay at school at noon. Answer.",
+        "prompt": "You stay at school at noon.",
         "kind": "order-build",
         "sub": "你中午回家嗎？",
         "tiles": [
@@ -641,7 +647,7 @@
       {
         "id": "l2g03-1",
         "source": "p.56 #1",
-        "prompt": "All your friends are Taiwanese. Answer.",
+        "prompt": "All your friends are Taiwanese.",
         "kind": "order-build",
         "sub": "你有美國朋友嗎？",
         "tiles": [
@@ -700,7 +706,7 @@
       {
         "id": "l2g03-2",
         "source": "p.56 #2",
-        "prompt": "The phone in the picture is yours. Answer.",
+        "prompt": "The phone in the picture is yours.",
         "scene": {
           "type": "picture",
           "page": 56,
@@ -1001,7 +1007,8 @@
           "english": "Mom’s birthday is February 24."
         },
         "gaps": true,
-        "prompt": "Say that Mom’s birthday is February 24."
+        "prompt": "Say that Mom’s birthday is February 24.",
+        "quiet": true
       },
       {
         "id": "l2g04-2",
@@ -1095,7 +1102,8 @@
           "english": "Do you like Taiwanese fruit?"
         },
         "gaps": true,
-        "prompt": "Ask whether your friend likes Taiwanese fruit. Link Taiwan to the fruit with 的."
+        "prompt": "Ask whether your friend likes Taiwanese fruit. Link Taiwan to the fruit with 的.",
+        "quiet": true
       },
       {
         "id": "l2g04-3",
@@ -1183,6 +1191,7 @@
           "english": "My child is going to the United States tomorrow."
         },
         "prompt": "Say that your child is going to the United States tomorrow. Include 的 after “my”.",
+        "quiet": true,
         "gaps": true
       }
     ],
@@ -1198,7 +1207,7 @@
       {
         "id": "l2g05-1",
         "source": "p.61 #1",
-        "prompt": "You don’t want any fruit. Answer.",
+        "prompt": "You don’t want any fruit.",
         "kind": "order-build",
         "sub": "你要吃水果嗎？",
         "tiles": [
@@ -1260,7 +1269,7 @@
       {
         "id": "l2g05-2",
         "source": "p.61 #2",
-        "prompt": "You don’t like coming to school. Answer.",
+        "prompt": "You don’t like coming to school.",
         "kind": "order-build",
         "sub": "你喜歡來學校嗎？",
         "tiles": [
@@ -1326,7 +1335,7 @@
       {
         "id": "l2g05-3",
         "source": "p.61 #3",
-        "prompt": "What do you love to drink? (Milk tea.)",
+        "prompt": "You love milk tea.",
         "kind": "order-build",
         "sub": "你愛喝什麼？",
         "tiles": [
@@ -1540,7 +1549,8 @@
           "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
           "english": "I love eating fruit, but I do not love drinking bubble milk tea."
         },
-        "prompt": "You love eating fruit but dislike drinking bubble milk tea."
+        "prompt": "You love eating fruit but dislike drinking bubble milk tea.",
+        "quiet": true
       }
     ]
   },
@@ -1551,7 +1561,7 @@
       {
         "id": "l2g06-1",
         "source": "p.62 #1",
-        "prompt": "Ask whether Taiwan is hot. The reply comes afterward.",
+        "prompt": "Ask whether Taiwan is hot.",
         "scene": {
           "type": "picture",
           "page": 62,
@@ -1634,7 +1644,7 @@
       {
         "id": "l2g06-2",
         "source": "p.62 #2",
-        "prompt": "Ask whether your friend likes eating fruit. Use a verb–not–verb question.",
+        "prompt": "Ask whether your friend likes eating fruit (verb–not–verb).",
         "kind": "order-build",
         "sub": "B replies afterward: 我很喜歡吃。",
         "tiles": [
@@ -1699,7 +1709,7 @@
       {
         "id": "l2g06-3",
         "source": "p.62 #3",
-        "prompt": "Ask whether your friend wants to go to his home. Use a verb–not–verb question.",
+        "prompt": "Ask whether your friend wants to go to his home (verb–not–verb).",
         "kind": "order-build",
         "sub": "B replies afterward: 我不要去他家。",
         "tiles": [
@@ -1762,6 +1772,7 @@
         "id": "l2g06-4",
         "source": "own",
         "prompt": "Ask whether he has Taiwanese friends.",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {

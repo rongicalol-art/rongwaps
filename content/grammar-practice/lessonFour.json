@@ -6,7 +6,7 @@
       {
         "id": "l04-g1-book1",
         "source": "p.96 #1",
-        "prompt": "You like red clothes. Answer with the clothes as the topic.",
+        "prompt": "You like red clothes. Put the clothes first.",
         "kind": "order-build",
         "sub": "你喜歡紅色的衣服嗎？",
         "tiles": [
@@ -69,7 +69,7 @@
       {
         "id": "l04-g1-book2",
         "source": "p.96 #2",
-        "prompt": "You want this kind of pencil. Answer with the pencil as the topic.",
+        "prompt": "You want this kind of pencil. Put the pencil first.",
         "scene": {
           "type": "picture",
           "page": 96,
@@ -145,7 +145,7 @@
         "id": "l04-g1-book3",
         "source": "p.96 #3",
         "kind": "order-build",
-        "prompt": "Say that you like eating both cake and beef noodles. Put the foods first.",
+        "prompt": "You like eating both cake and beef noodles. Put the foods first.",
         "tiles": [
           {
             "traditional": "喜歡吃",
@@ -207,7 +207,7 @@
         "id": "l04-g1-book4",
         "source": "p.97 #4",
         "kind": "order-build",
-        "prompt": "Say that you like all three gifts. Put the gifts first.",
+        "prompt": "You like all three gifts. Put the gifts first.",
         "tiles": [
           {
             "traditional": "也",
@@ -270,7 +270,7 @@
         "id": "l04-g2-book1",
         "source": "p.98 #1",
         "kind": "order-build",
-        "prompt": "Say you want cake and would also like beef noodles.",
+        "prompt": "You want cake and would also like beef noodles.",
         "tiles": [
           {
             "traditional": "牛肉麵",
@@ -331,7 +331,7 @@
         "id": "l04-g2-book2",
         "source": "p.98 #2",
         "kind": "order-build",
-        "prompt": "The beef noodles are delicious. Say the cake is delicious too.",
+        "prompt": "The beef noodles are delicious. The cake is too.",
         "tiles": [
           {
             "traditional": "都",
@@ -386,7 +386,7 @@
         "id": "l04-g2-book3",
         "source": "p.98 #3",
         "kind": "order-build",
-        "prompt": "Zhongming likes buying inexpensive things. Say Youmei does too.",
+        "prompt": "Zhongming likes buying inexpensive things. Youmei does too.",
         "tiles": [
           {
             "traditional": "東西",
@@ -448,8 +448,7 @@
         "id": "l04-g2-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "Your friend wrote this about shopping. Tap the word that’s wrong.",
-        "sub": "They mean: I buy a book, and I buy a pen too.",
+        "prompt": "I buy a book, and I buy a pen too.",
         "chunks": [
           {
             "traditional": "我"
@@ -621,6 +620,7 @@
           "alt": "A boy pulling at a tight shirt that leaves his middle uncovered."
         },
         "prompt": "The shirt does not fit. Say it is too small.",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -742,6 +742,7 @@
           "english": "He is so tired."
         },
         "prompt": "He has worked all day. Say he is too tired.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 99,
@@ -851,6 +852,7 @@
           "english": "It tastes so good; my friends and I all drink it often."
         },
         "prompt": "Exclaim that the milk tea tastes so good, using 太…了. Then say you and your friends drink it often.",
+        "quiet": true,
         "gaps": true
       },
       {
@@ -868,7 +870,7 @@
           "alt": "A thermometer marked 40°C."
         },
         "kind": "order-build",
-        "prompt": "It is 40°C today. Exclaim how hot it is with 太…了.",
+        "prompt": "It is 40°C today. How hot it is!",
         "tiles": [
           {
             "traditional": "很",
@@ -930,6 +932,7 @@
         "id": "l04-g4-book1",
         "source": "p.104 #1",
         "prompt": "How do you say 5,080?",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -986,7 +989,6 @@
         "source": "p.104 #2",
         "kind": "spot-fix",
         "prompt": "0936-068-493",
-        "sub": "They mean the phone number 0936-068-493.",
         "chunks": [
           {
             "traditional": "零九三六"
@@ -1033,7 +1035,6 @@
         "source": "p.104 #3",
         "kind": "spot-fix",
         "prompt": "5,005 people",
-        "sub": "They mean: 5,005 people.",
         "chunks": [
           {
             "traditional": "五千"
@@ -1084,6 +1085,7 @@
         "id": "l04-g4-own1",
         "source": "own",
         "prompt": "How do you say 78,000?",
+        "quiet": true,
         "kind": "order-build",
         "tiles": [
           {
@@ -1142,6 +1144,7 @@
         "source": "own",
         "kind": "order-build",
         "prompt": "How do you say 630,000?",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "六十三",
@@ -1213,6 +1216,7 @@
         "id": "l04-g5-book1",
         "source": "p.106 #1",
         "prompt": "How many people are there?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 106,
@@ -1283,6 +1287,7 @@
         "id": "l04-g5-book2",
         "source": "p.106 #2",
         "prompt": "How much are the two cups of black tea?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 106,
@@ -1354,6 +1359,7 @@
         "id": "l04-g5-book3",
         "source": "p.106 #3",
         "prompt": "How much is this jacket?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 106,
@@ -1426,6 +1432,7 @@
         "id": "l04-g5-book4",
         "source": "p.107 #1",
         "prompt": "What time is it?",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 107,
@@ -1490,8 +1497,7 @@
         "id": "l04-g5-book6",
         "source": "p.107 #3",
         "kind": "spot-fix",
-        "prompt": "US$8.45 altogether",
-        "sub": "They mean: a little over eight dollars altogether.",
+        "prompt": "A little over eight dollars altogether.",
         "chunks": [
           {
             "traditional": "一共"
@@ -1542,8 +1548,7 @@
         "id": "l04-g5-book5",
         "source": "p.107 #2",
         "kind": "spot-fix",
-        "prompt": "Mr. Li’s child",
-        "sub": "They mean: his child turned ten a few months ago.",
+        "prompt": "His child turned ten a few months ago.",
         "chunks": [
           {
             "traditional": "他的"

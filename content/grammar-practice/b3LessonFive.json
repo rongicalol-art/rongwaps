@@ -11,6 +11,7 @@
         "source": "p.128 #1",
         "kind": "slot-build",
         "prompt": "Precaution against bad weather:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "萬一",
@@ -98,6 +99,7 @@
         "source": "p.130 #1",
         "kind": "slot-build",
         "prompt": "Describing successive cloudy days:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "一連",
@@ -185,6 +187,7 @@
         "source": "p.132 #1",
         "kind": "slot-build",
         "prompt": "Surprised by exam performance:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "以為",
@@ -272,6 +275,7 @@
         "source": "p.133 #1",
         "kind": "slot-build",
         "prompt": "Approving a friend's plan to postpone travel:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "也好",
@@ -359,6 +363,7 @@
         "source": "p.141 #1",
         "kind": "slot-build",
         "prompt": "Describing an unexpected result of rushing:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "結果",
@@ -446,6 +451,7 @@
         "source": "p.143 #1",
         "kind": "slot-build",
         "prompt": "Describing someone's severe phone addiction:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "甚至",
@@ -533,6 +539,7 @@
         "source": "p.144 #1",
         "kind": "slot-build",
         "prompt": "Describing scenic region:",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "以東",

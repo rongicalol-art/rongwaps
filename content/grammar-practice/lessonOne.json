@@ -147,7 +147,8 @@
           "pinyin": "Xiǎolín Yǒuměi shì xīn xuésheng, tā shì Rìběn rén.",
           "english": "Xiaolin Youmei is the new student; she is Japanese."
         },
-        "prompt": "Who is the new student?"
+        "prompt": "Who is the new student?",
+        "quiet": true
       },
       {
         "id": "l1g1-p2",
@@ -269,7 +270,8 @@
           "pinyin": "Jiālè shì Yīngguó rén, tā xìng Gāo.",
           "english": "Jiale is British; his surname is Gao."
         },
-        "prompt": "Where is Jiale from?"
+        "prompt": "Where is Jiale from?",
+        "quiet": true
       },
       {
         "id": "l1g1-p3",
@@ -391,7 +393,8 @@
           "pinyin": "Wáng xiǎojiě shì Měiguó rén, tā jiào Yíwén.",
           "english": "Miss Wang is American; her given name is Yiwen."
         },
-        "prompt": "Where is Miss Wang from?"
+        "prompt": "Where is Miss Wang from?",
+        "quiet": true
       },
       {
         "id": "l1g1-p4",
@@ -618,13 +621,15 @@
           "pinyin": "Yìnní xuésheng xìng Lǐ, jiào Zhōngmíng.",
           "english": "The Indonesian student is surnamed Li and called Zhongming."
         },
-        "prompt": "Introduce the Indonesian student."
+        "prompt": "Introduce the Indonesian student.",
+        "quiet": true
       },
       {
         "id": "l1g1-own-order",
         "source": "own",
         "kind": "order-build",
         "prompt": "Jiale is British. Say that he is not American.",
+        "quiet": true,
         "tiles": [
           {
             "traditional": "是",
@@ -690,8 +695,7 @@
         "id": "l1g1-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "Your friend wrote this. Tap the word that’s wrong.",
-        "sub": "They mean: His surname is Li.",
+        "prompt": "His surname is Li.",
         "chunks": [
           {
             "traditional": "他"
@@ -792,7 +796,7 @@
       {
         "id": "l1g2-p1",
         "source": "p.39 #1",
-        "prompt": "You think Youmei is pretty. Say so.",
+        "prompt": "You think Youmei is pretty.",
         "scene": {
           "type": "picture",
           "page": 39,
@@ -1231,12 +1235,13 @@
           "english": "Is Zhongming surnamed Wang?"
         },
         "prompt": "Ask whether Zhongming’s surname is Wang.",
+        "quiet": true,
         "gaps": true
       },
       {
         "id": "l1g3-p2",
         "source": "p.40 #2",
-        "prompt": "Ask whether Miss Li is Japanese. The reply comes afterward.",
+        "prompt": "Ask whether Miss Li is Japanese.",
         "kind": "order-build",
         "sub": "B replies afterward: 不是，她是臺灣人。",
         "tiles": [
@@ -1294,6 +1299,7 @@
         "id": "l1g3-p3",
         "source": "p.40 #3",
         "prompt": "Is she cute? Answer from the picture.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 40,
@@ -1368,7 +1374,7 @@
       {
         "id": "l1g4-p1",
         "source": "p.44 #1",
-        "prompt": "You are American. Say so, then ask the same about your friend.",
+        "prompt": "You are American. Then ask about your friend.",
         "kind": "order-build",
         "sub": "Your friend replies next: 我是印尼人。",
         "tiles": [
@@ -1443,7 +1449,7 @@
       {
         "id": "l1g4-p2",
         "source": "p.44 #2",
-        "prompt": "You are Gao Jiale. Reply.",
+        "prompt": "You are Gao Jiale.",
         "kind": "order-build",
         "sub": "我姓李，你呢？",
         "tiles": [
@@ -1496,7 +1502,7 @@
       {
         "id": "l1g4-p3",
         "source": "p.45 #3",
-        "prompt": "Say he is busy, then ask how your friend is.",
+        "prompt": "He is busy. Then ask how your friend is.",
         "scene": {
           "type": "picture",
           "page": 45,
@@ -1687,7 +1693,7 @@
       {
         "id": "l1g5-p1",
         "source": "p.45 #1",
-        "prompt": "You enjoy Taiwan. Answer.",
+        "prompt": "You enjoy Taiwan.",
         "kind": "order-build",
         "sub": "你喜歡台灣嗎？",
         "tiles": [
@@ -1740,7 +1746,7 @@
       {
         "id": "l1g5-p2",
         "source": "p.45 #2",
-        "prompt": "You like Miss Li, not Miss Wang. Answer.",
+        "prompt": "You like Miss Li, not Miss Wang.",
         "kind": "order-build",
         "sub": "你喜歡誰？",
         "tiles": [
@@ -1794,6 +1800,7 @@
         "id": "l1g5-p3",
         "source": "p.45 #3",
         "prompt": "Does Mr. Wang love Mrs. Wang? Answer from the picture.",
+        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 45,
@@ -1865,8 +1872,7 @@
         "id": "l1g5-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "Your friend wrote this question. Tap the word that’s wrong.",
-        "sub": "They mean: Do you like Miss Li?",
+        "prompt": "Do you like Miss Li?",
         "chunks": [
           {
             "traditional": "你"
