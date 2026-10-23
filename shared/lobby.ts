@@ -8,6 +8,30 @@ export const CHEER_PHRASES = ['加油！', '好棒！', '一起考試？', '等�
 export const ACTIVITIES = ['lesson', 'cards', 'quiz', 'grammar', 'reading', 'writing', 'race'] as const;
 export type Activity = typeof ACTIVITIES[number];
 export const CHAT_MAX = 300;
+export const GLOBAL_CHAT = 0;
+export const CHAT_KEEP = 50;
+export const CHAT_TTL_MS = 24 * 3_600_000;
+export const SOCIAL_FRAME_BYTES = 4096;
+
+/** Plain text only; cap visible characters and remove control/bidi spoofing characters. */
+export function chatText(value: unknown): string {
+  if (typeof value !== 'string') return '';
+  const clean = stripControl(value.replace(/[\r\n\t]+/g, ' ')).replace(/[\u007f-\u009f\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, '').trim();
+  return Array.from(clean).slice(0, CHAT_MAX).join('');
+}
+
+export interface ChatRate { times: number[]; text: string; at: number }
+/** Stored by account so reconnecting cannot reset the chat cooldown. */
+export function nextChatRate(previous: ChatRate | null, text: string, now: number): ChatRate | null {
+  const times = (previous?.times ?? []).filter(time => now - time < 10_000);
+  if (times.length >= 5 || (previous && (now - previous.at < 1000 || (previous.text === text && now - previous.at < 30_000)))) return null;
+  return { times: [...times, now], text, at: now };
+}
+
+export type PartyChatClientMessage = { type: 'chat'; text: string } | { type: 'chat-report'; id: number };
+export type PartyChatServerMessage =
+  | { type: 'chat-history'; code: string; messages: ChatMessage[] }
+  | { type: 'chat-message'; code: string; message: ChatMessage };
 
 export interface Person { u: string; n: string; c: SocialColor; l: number | null; a: Activity | null; i?: string }
 /** `r` turns the line into a room card (an open room announced in this lesson). */
@@ -25,7 +49,7 @@ export type LobbyClientMessage =
 export type LobbyServerMessage =
   | { t: 'error'; message: string }
   | { t: 'me'; u: string }
-  | { t: 'counts'; v: Record<string, LessonCount>; n?: number }
+  | { t: 'counts'; v: Record<string, LessonCount>; n?: number; f?: Person[] }
   | { t: 'people'; l: number | null; v: Person[] }
   | { t: 'online'; v: Person[] }
   | { t: 'history'; l: number; v: ChatMessage[] }
@@ -48,7 +72,7 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   }
   if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat) };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
-    const text = stripControl(data.text, true).trim().slice(0, CHAT_MAX);
+    const text = chatText(data.text);
     if (text) return { t: 'say', l: Number(data.l), text };
   }
   if (data.t === 'cheer' && Array.isArray(data.to) && Number.isInteger(data.p) && Number(data.p) >= 0 && Number(data.p) < CHEER_PHRASES.length) {

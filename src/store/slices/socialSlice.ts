@@ -7,8 +7,9 @@ import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
 
 export type SocialPanel =
-  | { kind: 'people'; tab: 'lesson' | 'online' | 'chat' }
+  | { kind: 'people'; tab: 'lesson' | 'online' | 'chat' | 'party'; chatScope?: 'global' | 'lesson' }
   | { kind: 'challenge'; tab: 'lesson' | 'online' | 'rooms' }
+  | { kind: 'partyChat' }
   | null;
 
 export interface SocialState {
@@ -24,10 +25,13 @@ export interface SocialState {
   socialMe: string | null;
   socialCounts: Record<string, LessonCount>;
   socialOnlineTotal: number;
+  socialFaces: Person[];
   socialPeople: Person[];
   socialOnline: Person[];
   socialRooms: RaceRoomSummary[];
   socialChat: { lesson: number; messages: ChatMessage[] } | null;
+  /** Ephemeral private room messages; cleared when leaving or switching accounts. */
+  socialPartyChat: { code: string; messages: ChatMessage[] } | null;
   socialUnread: boolean;
   socialInvite: { from: Person; room: RaceRoomSummary } | null;
   socialCheer: { from: Person; phrase: number; at: number } | null;
@@ -49,10 +53,12 @@ const LIVE_DEFAULTS = {
   socialMe: null,
   socialCounts: {},
   socialOnlineTotal: 0,
+  socialFaces: [],
   socialPeople: [],
   socialOnline: [],
   socialRooms: [],
   socialChat: null,
+  socialPartyChat: null,
   socialUnread: false,
   socialInvite: null,
   socialCheer: null,

@@ -1,17 +1,15 @@
 import { DurableObject } from 'cloudflare:workers';
-import { parseLobbyMessage, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 
 type Att = {
   u: string; n: string; c: SocialColor; i?: string; show: boolean; l: number | null; a: Activity | null;
-  on: boolean; ch: number | null; say: number[]; cheer: number; inv: number[];
+  on: boolean; ch: number | null; cheer: number; inv: number[];
   activeAt: number; tokens: number; updatedAt: number;
   authUntil: number;
 };
 type ChatRow = { id: number; lesson: number; uid: string; name: string; color: string; text: string; room: string | null; ts: number };
 const FLUSH_MS = 2000;
-const CHAT_KEEP = 50;
-const CHAT_TTL_MS = 24 * 3_600_000;
 const ROOM_TTL_MS = 35 * 60_000;
 const STALE_MS = 90_000;
 
@@ -27,6 +25,7 @@ export class Lobby extends DurableObject<Env> {
     if (!sql.exec<{ name: string }>('PRAGMA table_info(tickets)').toArray().some(column => column.name === 'auth_until')) sql.exec('ALTER TABLE tickets ADD COLUMN auth_until INTEGER NOT NULL DEFAULT 0');
     sql.exec('CREATE TABLE IF NOT EXISTS chat (id INTEGER PRIMARY KEY AUTOINCREMENT, lesson INTEGER NOT NULL, uid TEXT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, text TEXT NOT NULL, room TEXT, ts INTEGER NOT NULL)');
     sql.exec('CREATE INDEX IF NOT EXISTS chat_lesson ON chat (lesson, id)');
+    sql.exec('CREATE TABLE IF NOT EXISTS chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
     sql.exec('CREATE TABLE IF NOT EXISTS rooms (code TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
     sql.exec('CREATE TABLE IF NOT EXISTS reports (id INTEGER PRIMARY KEY AUTOINCREMENT, msg INTEGER NOT NULL, uid TEXT NOT NULL, text TEXT NOT NULL, reporter TEXT NOT NULL, ts INTEGER NOT NULL)');
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair('ping', 'pong'));
@@ -79,7 +78,7 @@ export class Lobby extends DurableObject<Env> {
     const [client, server] = Object.values(new WebSocketPair());
     this.ctx.acceptWebSocket(server);
     // Hidden until the client's privacy preference arrives; never briefly disclose hidden users.
-    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), show: false, l: null, a: null, on: false, ch: null, say: [], cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until };
+    const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until };
     server.serializeAttachment(att);
     this.send(server, { t: 'me', u: att.u });
     await this.schedule();
@@ -88,7 +87,7 @@ export class Lobby extends DurableObject<Env> {
 
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer) {
     if (socket.readyState !== 1) return;
-    if (typeof raw !== 'string' || raw.length > 2048) { socket.close(1008, 'Invalid message.'); return; }
+    if (typeof raw !== 'string' || raw.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(raw).byteLength > SOCIAL_FRAME_BYTES) { socket.close(1008, 'Invalid message.'); return; }
     const att = socket.deserializeAttachment() as Att;
     if ((att.authUntil ?? 0) <= Date.now()) { socket.close(4002, 'Refresh your sign-in.'); return; }
     const now = Date.now();
@@ -115,9 +114,10 @@ export class Lobby extends DurableObject<Env> {
       if (onlineOpened) this.send(socket, { t: 'online', v: this.online(this.attachments()) }, 'online');
     } else if (message.t === 'say') {
       if (att.ch !== message.l) return;
-      att.say = att.say.filter(time => now - time < 10_000);
-      if (att.say.length >= 5 || now - (att.say.at(-1) ?? 0) < 1000) return;
-      att.say.push(now); socket.serializeAttachment(att);
+      const saved = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM chat_rate WHERE uid=?', att.u).toArray()[0];
+      const rate = nextChatRate(saved ? JSON.parse(saved.data) as ChatRate : null, message.text, now);
+      if (!rate) { this.send(socket, { t: 'error', message: 'Please wait before sending another message.' }); return; }
+      this.ctx.storage.sql.exec('INSERT OR REPLACE INTO chat_rate VALUES (?,?,?)', att.u, JSON.stringify(rate), now);
       this.post(att, message.l, message.text, null);
     } else if (message.t === 'cheer') {
       if (now - att.cheer < 3000) return;
@@ -195,7 +195,7 @@ export class Lobby extends DurableObject<Env> {
       group.push(person); byLesson.set(person.l, group);
     }
     const counts: Record<string, LessonCount> = Object.fromEntries([...byLesson].map(([key, people]) => [key, { n: people.length, f: people.slice(0, 3) }]));
-    const countFrame = JSON.stringify({ t: 'counts', v: counts, n: online.length } satisfies LobbyServerMessage);
+    const countFrame = JSON.stringify({ t: 'counts', v: counts, n: online.length, f: online.slice(0, 4) } satisfies LobbyServerMessage);
     const onlineFrame = JSON.stringify({ t: 'online', v: online } satisfies LobbyServerMessage);
     const rooms = JSON.stringify({ t: 'rooms', v: this.rooms() } satisfies LobbyServerMessage);
     const people = new Map<number | null, string>();
@@ -220,6 +220,7 @@ export class Lobby extends DurableObject<Env> {
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires<=?', now);
     this.ctx.storage.sql.exec('DELETE FROM rooms WHERE updated<?', now - ROOM_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM chat WHERE ts<?', now - CHAT_TTL_MS);
+    this.ctx.storage.sql.exec('DELETE FROM chat_rate WHERE updated<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM reports WHERE ts<? OR id NOT IN (SELECT id FROM reports ORDER BY id DESC LIMIT 1000)', now - 30 * CHAT_TTL_MS);
     this.flush();
     const hasData = this.ctx.storage.sql.exec('SELECT 1 FROM chat UNION ALL SELECT 1 FROM rooms UNION ALL SELECT 1 FROM reports LIMIT 1').toArray().length > 0;

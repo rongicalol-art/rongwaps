@@ -2,6 +2,7 @@ import { connectRace, leaveRaceRoom, type Identity } from '../../services/social
 import { useAppStore } from '../../store/useAppStore';
 import { MAX_PLAYERS, ROOM_CODE, type RaceAction, type RaceFrame, type RaceSelection, type RaceSnapshot } from '../../../shared/quizRace';
 import { lobby } from './lobbyController';
+import { CHAT_KEEP, chatText, type PartyChatClientMessage } from '../../../shared/lobby';
 
 let room: Awaited<ReturnType<typeof connectRace>> | null = null;
 let connect: typeof connectRace = connectRace;
@@ -143,6 +144,14 @@ async function open(identity: Identity, target: Parameters<typeof connectRace>[1
           if (status === 'off') clearRace(false);
         },
         onError: message => { if (version === generation) useAppStore.getState().showFeedbackToast(message); },
+        onChat: message => {
+          if (version !== generation) return;
+          const store = useAppStore.getState();
+          if (store.race?.code !== message.code) return;
+          const previous = store.socialPartyChat?.code === message.code ? store.socialPartyChat.messages : [];
+          const messages = message.type === 'chat-history' ? message.messages : previous.some(line => line.id === message.message.id) ? previous : [...previous, message.message];
+          store.setSocial({ socialPartyChat: { code: message.code, messages: messages.slice(-CHAT_KEEP) } });
+        },
       }, controller.signal);
       if (version !== generation) {
         next.close();
@@ -206,6 +215,12 @@ export function raceSend(action: RaceAction) {
   if (action.type === 'start' && settings) { state.showFeedbackToast('Saving your quiz choices. Try Start again in a moment.'); return; }
   return room?.send({ ...action, round: state.race.round });
 }
+export function partySend(message: PartyChatClientMessage): boolean {
+  const state = useAppStore.getState();
+  if (!state.race || state.raceStatus !== 'live') return false;
+  const frame = message.type === 'chat' ? { ...message, text: chatText(message.text) } : message;
+  return !!room && room.send(frame) !== false;
+}
 export function reportRaceProgress(answered: number, total: number, correct: number, reviewComplete = false) {
   const race = useAppStore.getState().race;
   if (!race) return;
@@ -226,6 +241,6 @@ function clearRace(notifyServer: boolean) {
     if (notifyServer && connect === connectRace) leaving = leaveRaceRoom(previous.code).catch(() => {});
   }
   if (store.racePlaying) launcher?.stop();
-  store.setSocial({ race: null, racePlaying: false, racePending: false, raceStatus: 'off' });
+  store.setSocial({ race: null, racePlaying: false, racePending: false, raceStatus: 'off', socialPartyChat: null, ...(store.socialPanel?.kind === 'partyChat' ? { socialPanel: null } : {}) });
 }
 export function leaveRace() { clearRace(true); }

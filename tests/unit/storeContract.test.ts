@@ -130,7 +130,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'completedPartIds',
   // Study together: live state and blocks belong to the signed-in account.
   'blockedUsers', 'race', 'racePlaying', 'racePending', 'raceStatus', 'socialOnlineTotal', 'socialChat', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe',
-  'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson',
+  'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson',
 ].sort();
 
 test('account-switch defaults match the reset contract exactly', () => {

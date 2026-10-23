@@ -53,7 +53,7 @@ const every = (fn: () => void, min: number, max: number) => { const loop = () =>
 const othersIn = (lesson: number | null) => users.filter((user) => user.l === lesson);
 
 function emit() {
-  const everyone = me.show && me.l !== null ? [...users, meAsPerson()] : users;
+  const everyone = me.show ? [...users, meAsPerson()] : users;
   const counts: Record<string, LessonCount> = {};
   for (const person of everyone) {
     if (person.l === null) continue;
@@ -61,7 +61,7 @@ function emit() {
     entry.n += 1;
     if (entry.f.length < 3) entry.f.push(person);
   }
-  deliver({ t: 'counts', v: counts, n: everyone.length });
+  deliver({ t: 'counts', v: counts, n: everyone.length, f: everyone.slice(0, 4) });
   deliver({ t: 'people', l: me.l, v: me.l === null ? [] : everyone.filter((person) => person.l === me.l) });
   if (sub.online) deliver({ t: 'online', v: everyone.slice(0, 100) });
   deliver({ t: 'rooms', v: rooms });
@@ -225,9 +225,18 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
     }
   }
   later(broadcast, 50);
+  later(() => handlers.onChat?.({ type: 'chat-history', code, messages: [] }), 100);
   return {
     code,
     send: (action) => {
+      if (action.type === 'chat-report') return true;
+      if (action.type === 'chat') {
+        const line: ChatMessage = { id: nextId++, l: 0, u: ME, n: myName(), c: useAppStore.getState().avatarColor, t: action.text, ts: Date.now() };
+        handlers.onChat?.({ type: 'chat-message', code, message: line });
+        const friend = room.players.find(player => player.id !== ME);
+        if (friend) later(() => handlers.onChat?.({ type: 'chat-message', code, message: { ...line, id: nextId++, u: friend.id, n: friend.name, c: friend.color as SocialColor, i: friend.image, t: pick(REPLIES) } }), 1500);
+        return true;
+      }
       act(ME, action);
       if (action.type === 'leave') race = null;
     },

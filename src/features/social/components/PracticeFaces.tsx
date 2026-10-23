@@ -33,7 +33,9 @@ export function PracticeFaces() {
     return () => document.removeEventListener('pointerdown', away);
   }, [open]);
 
-  if (others.length === 0 || racing) return null;
+  if (racing) return <button type="button" aria-label="Party chat" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'partyChat' } })}
+    className="grid h-11 w-11 place-items-center rounded-control text-ui-muted-strong outline-none hover:bg-ui-hover focus-ring-inline"><AppIcon name="chat" size={22} /></button>;
+  if (others.length === 0) return null;
   const phrase = (index: number) => {
     const to = others.map((person) => person.u);
     setSent(index);

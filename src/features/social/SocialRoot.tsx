@@ -7,6 +7,8 @@ import { ChallengePanel, PeoplePanel } from './components/SocialPanels';
 import { RoomWindow } from './components/RoomWindow';
 import { joinRace, leaveRace, restoreRace, setRaceLauncher } from './raceController';
 import { useSocialIdentity, useSocialLifecycle } from './useSocialLifecycle';
+import { Drawer } from '../../lib/widgets';
+import { PartyChatThread } from './components/ChatThread';
 
 /**
  * Study together, mounted by the app shell after first idle (its own chunk). Owns the Lobby lifecycle and the
@@ -66,6 +68,7 @@ export default function SocialRoot({ setActiveActivity }: { setActiveActivity: (
       {race && !racePlaying && <RoomWindow key={`${race.code}:${race.round}`} race={race} />}
       {panel?.kind === 'people' && <PeoplePanel panel={panel} />}
       {panel?.kind === 'challenge' && <ChallengePanel panel={panel} />}
+      {panel?.kind === 'partyChat' && race && <Drawer isOpen onClose={() => useAppStore.getState().setSocial({ socialPanel: null })} title={<Drawer.Title>Party chat</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full" contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4"><PartyChatThread /></Drawer>}
     </>
   );
 }

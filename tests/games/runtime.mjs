@@ -116,6 +116,24 @@ try {
   send(bob, { t: 'here', l: 101, a: 'lesson', show: false });
   await until(() => last(alice, 'counts')?.v['101']?.n === 1);
 
+  // Global chat is isolated from lesson subscribers and returns bounded history on opening.
+  send(bob, { t: 'sub', online: false, chat: 0 });
+  await until(() => last(bob, 'history')?.l === 0);
+  const aliceMessages = alice.frames.filter(frame => frame.t === 'msg').length;
+  send(bob, { t: 'say', l: 0, text: 'Global hello' });
+  await until(() => last(bob, 'msg')?.m.t === 'Global hello');
+  assert.equal(alice.frames.filter(frame => frame.t === 'msg').length, aliceMessages, 'global chat only fans out to its subscribers');
+  send(alice, { t: 'sub', online: true, chat: 0 });
+  await until(() => last(alice, 'history')?.l === 0);
+  assert.ok(last(alice, 'history').v.some(line => line.t === 'Global hello'));
+  send(alice, { t: 'sub', online: true, chat: 101 });
+  send(bob, { t: 'sub', online: false, chat: 101 });
+
+  // Frame size is measured in bytes, including multi-byte text.
+  const oversized = await open('/lobby/socket', 'lobby', (await post('/lobby', 'oversized')).ticket);
+  oversized.socket.send(JSON.stringify({ t: 'say', l: 0, text: '字'.repeat(1400) }));
+  await until(() => oversized.closed === 1008);
+
   // Race room: open room is listed and announced, invite reaches Bob, full race to results, rematch.
   const created = await post('/rooms', 'alice', { selection: { lessons: { 1: [1, 2], 99: [1] }, types: ['meaning', 'nope'] }, open: true });
   const host = await open(`/rooms/${created.code}/socket`, 'quiz-race', created.ticket);
@@ -128,6 +146,22 @@ try {
   await until(() => last(bob, 'invite')?.room.code === created.code);
   const guest = await open(`/rooms/${created.code}/socket`, 'quiz-race', (await post(`/rooms/${created.code}`, 'bob')).ticket);
   await until(() => host.state.players.length === 2 && guest.state);
+  // Party chat stays in the authenticated room, keeps its rate state across hibernation, and caps history.
+  await until(() => host.frames.some(frame => frame.type === 'chat-history'));
+  const lobbyFrames = alice.frames.length;
+  send(host, { type: 'chat', text: 'Private party hello' });
+  await until(() => guest.frames.some(frame => frame.type === 'chat-message' && frame.message.t === 'Private party hello'));
+  assert.ok(!alice.frames.slice(lobbyFrames).some(frame => frame.type === 'chat-message'));
+  await mf.unsafeEvictDurableObject('games', 'GameRoom', { name: created.code, webSockets: 'hibernate' });
+  send(host, { type: 'chat', text: 'Private party hello' });
+  await until(() => host.errors.length === 1);
+  assert.match(host.errors.pop(), /wait/);
+  const partySql = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: created.code });
+  const storedLine = (await partySql.exec('SELECT data FROM room_chat LIMIT 1'))[0].data;
+  await partySql.exec('WITH RECURSIVE n(x) AS (VALUES(1) UNION ALL SELECT x+1 FROM n WHERE x<60) INSERT INTO room_chat(data,ts) SELECT ?,? FROM n', storedLine, Date.now());
+  send(guest, { type: 'chat', text: 'Ready to play' });
+  await until(() => host.frames.some(frame => frame.type === 'chat-message' && frame.message.t === 'Ready to play'));
+  assert.equal((await partySql.exec('SELECT COUNT(*) AS n FROM room_chat'))[0].n, 50);
   send(guest, { type: 'start' });
   await until(() => guest.errors.length === 1);
   send(host, { type: 'start' });

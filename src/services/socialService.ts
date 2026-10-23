@@ -1,5 +1,5 @@
 import { authService } from './authService';
-import type { LobbyClientMessage, LobbyServerMessage } from '../../shared/lobby';
+import { SOCIAL_FRAME_BYTES, type LobbyClientMessage, type LobbyServerMessage, type PartyChatClientMessage, type PartyChatServerMessage } from '../../shared/lobby';
 import type { RaceFrame, RaceSelection, RaceSnapshot } from '../../shared/quizRace';
 
 export type SocialStatus = 'off' | 'connecting' | 'live' | 'reconnecting';
@@ -94,6 +94,7 @@ function reconnecting<In, Out>(options: {
         if (stopped || socket !== next) return;
         lastMessage = Date.now(); attempts = 0;
         if (event.data === 'pong') return;
+        if (typeof event.data !== 'string' || event.data.length > 1_048_576) { next.close(1008, 'Invalid message.'); return; }
         let message: In;
         try { message = JSON.parse(String(event.data)) as In; } catch { return; }
         options.onMessage(message);
@@ -119,7 +120,9 @@ function reconnecting<In, Out>(options: {
   return {
     send(message) {
       if (stopped || socket?.readyState !== WebSocket.OPEN) return false;
-      try { socket.send(JSON.stringify(message)); return true; } catch { socket.close(); return false; }
+      const frame = JSON.stringify(message);
+      if (socket.bufferedAmount > 65_536 || new TextEncoder().encode(frame).byteLength > SOCIAL_FRAME_BYTES) return false;
+      try { socket.send(frame); return true; } catch { socket.close(); return false; }
     },
     close: stop,
   };
@@ -138,13 +141,14 @@ export async function leaveRaceRoom(code: string) { await request(`/rooms/${code
 
 export async function connectRace(identity: Identity, target: { code: string } | { selection: RaceSelection; open: boolean }, handlers: {
   onState: (state: RaceSnapshot, userId: string) => void; onStatus: (status: SocialStatus) => void; onError: (message: string) => void;
-}, signal?: AbortSignal): Promise<Socket<RaceFrame> & { code: string }> {
+  onChat?: (message: PartyChatServerMessage) => void;
+}, signal?: AbortSignal): Promise<Socket<RaceFrame | PartyChatClientMessage> & { code: string }> {
   let code = 'code' in target ? target.code : '';
   let userId = '';
   const first = await ticket(code ? `/rooms/${code}` : '/rooms', { ...identity, ...('code' in target ? {} : target) }, signal);
   code = first.code || code;
   let firstUsed = false;
-  const socket = reconnecting<{ type: string; state?: RaceSnapshot; error?: string }, RaceFrame>({
+  const socket = reconnecting<PartyChatServerMessage | { type: 'state'; state: RaceSnapshot } | { type: 'error'; error: string }, RaceFrame | PartyChatClientMessage>({
     path: () => `/rooms/${code}/socket`, protocol: 'quiz-race',
     issue: async abort => {
       if (!firstUsed) { firstUsed = true; return first; }
@@ -154,6 +158,7 @@ export async function connectRace(identity: Identity, target: { code: string } |
     onMessage: message => {
       if (message.type === 'state' && message.state) handlers.onState(message.state, userId || first.userId);
       if (message.type === 'error' && message.error) handlers.onError(message.error);
+      if (message.type === 'chat-history' || message.type === 'chat-message') handlers.onChat?.(message);
     },
     onStatus: handlers.onStatus, onError: handlers.onError, fatal: [1000, 4000, 4001, 1008],
   });

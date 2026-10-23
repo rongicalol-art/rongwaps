@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, newRaceRoom, parseRaceAction, parseSelection, REVIEW_GRACE_MS, socialImage, summarizeRoom } from '../../shared/quizRace';
-import { parseLobbyMessage } from '../../shared/lobby';
+import { chatText, nextChatRate, parseLobbyMessage, type ChatRate } from '../../shared/lobby';
 import { RACE_TYPES } from '../../shared/quizRace';
 import type { QuizTypeId } from '../../src/utils/vocabulary/quizDirector';
 
@@ -232,4 +232,25 @@ test('players with different quiz data return to results instead of racing diffe
   assert.equal(room.phase, 'results');
   assert.equal(room.prepareError, 'content-mismatch');
   assert.equal(room.startedAt, null);
+});
+
+
+test('chat normalizes controls, preserves emoji boundaries and treats markup as text', () => {
+  assert.equal(chatText('  hi\nthere\u202e\u0007  '), 'hi there');
+  assert.equal(Array.from(chatText('😀'.repeat(400))).length, 300);
+  assert.equal(chatText('<script>alert(1)</script>'), '<script>alert(1)</script>');
+  assert.equal(chatText({ text: 'injected' }), '');
+  assert.deepEqual(parseLobbyMessage({ t: 'say', l: 0, text: 'Hello everyone' }), { t: 'say', l: 0, text: 'Hello everyone' });
+});
+
+test('chat cooldown, burst and duplicate limits survive serialized state', () => {
+  let rate: ChatRate | null = nextChatRate(null, 'first', 100_000);
+  assert.equal(nextChatRate(rate, 'too soon', 100_999), null);
+  for (let index = 1; index < 5; index++) rate = nextChatRate(rate, `line ${index}`, 100_000 + index * 1000);
+  assert.ok(rate);
+  assert.equal(nextChatRate(rate, 'sixth', 105_000), null);
+  const restored = JSON.parse(JSON.stringify(rate)) as ChatRate;
+  assert.equal(nextChatRate(restored, 'line 4', 111_000), null);
+  assert.ok(nextChatRate(restored, 'new line', 111_000));
+  assert.ok(nextChatRate(restored, 'line 4', 135_000));
 });

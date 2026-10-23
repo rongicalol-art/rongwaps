@@ -22,14 +22,17 @@ export function MuteButton() {
 }
 
 /** One person: face with live dot, name, where they are; `action` sits on the right. */
-export function PersonRow({ person, lesson, action }: { person: Person; lesson: number | null; action?: ReactNode }) {
+export function PersonRow({ person, lesson, action, onOpen }: { person: Person; lesson: number | null; action?: ReactNode; onOpen?: () => void }) {
+  const content = <>
+    <Avatar name={person.n} color={person.c} size="lg" src={person.i} live />
+    <span className="min-w-0 flex-1">
+      <span className="block truncate text-base font-black text-ui-ink-strong">{person.n}</span>
+      <span className="block truncate text-sm font-bold text-ui-muted">{whereLabel(person.l, person.a, person.l === lesson)}</span>
+    </span>
+  </>;
   return (
     <div className="flex items-center gap-3 border-b-2 border-ui-divider py-3 last:border-b-0">
-      <Avatar name={person.n} color={person.c} size="lg" src={person.i} live />
-      <span className="min-w-0 flex-1">
-        <span className="block truncate text-base font-black text-ui-ink-strong">{person.n}</span>
-        <span className="block truncate text-sm font-bold text-ui-muted">{whereLabel(person.l, person.a, person.l === lesson)}</span>
-      </span>
+      {onOpen ? <button type="button" onClick={onOpen} aria-label={`View ${person.n}'s profile`} className="flex min-w-0 flex-1 items-center gap-3 rounded-compact text-left outline-none hover:bg-ui-hover focus-ring-inline">{content}</button> : <span className="flex min-w-0 flex-1 items-center gap-3">{content}</span>}
       {action}
     </div>
   );

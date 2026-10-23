@@ -101,8 +101,6 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
             onStartPathPractice={startPathPractice}
             onOpenGrammarPart={onOpenGrammarPart}
             onOpenReadingPart={onOpenReadingPart}
-            onProfileClick={handleProfileClick}
-            profileAvatarUrl={profileAvatarUrl}
             menuToggle={menuToggle}
           />
         )}

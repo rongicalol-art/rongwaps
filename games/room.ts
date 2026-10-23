@@ -1,5 +1,6 @@
 import { DurableObject } from 'cloudflare:workers';
-import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, parseRaceAction, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
+import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, parseRaceAction, socialColor, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
+import { CHAT_KEEP, CHAT_TTL_MS, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatText, nextChatRate, type ChatMessage, type ChatRate, type PartyChatServerMessage } from '../shared/lobby';
 
 type Attachment = { userId: string; activeAt: number; tokens: number; updatedAt: number; authUntil: number };
 const STALE_MS = 90_000;
@@ -16,6 +17,9 @@ export class GameRoom extends DurableObject<Env> {
   }
   private initialize() {
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS state (id INTEGER PRIMARY KEY, data TEXT NOT NULL)');
+    this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_chat (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT NOT NULL, ts INTEGER NOT NULL)');
+    this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL)');
+    this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_reports (id INTEGER PRIMARY KEY AUTOINCREMENT, msg INTEGER NOT NULL, reporter TEXT NOT NULL, data TEXT NOT NULL, UNIQUE(msg,reporter))');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS tickets (ticket TEXT PRIMARY KEY, user_id TEXT NOT NULL, expires INTEGER NOT NULL, auth_until INTEGER NOT NULL DEFAULT 0)');
     if (!this.ctx.storage.sql.exec<{ name: string }>('PRAGMA table_info(tickets)').toArray().some(column => column.name === 'auth_until')) this.ctx.storage.sql.exec('ALTER TABLE tickets ADD COLUMN auth_until INTEGER NOT NULL DEFAULT 0');
   }
@@ -82,6 +86,39 @@ export class GameRoom extends DurableObject<Env> {
   private connections() { return [...new Set(this.sockets().map(socket => (socket.deserializeAttachment() as Attachment).userId))]; }
   private lastSeen(socket: WebSocket) {
     return Math.max((socket.deserializeAttachment() as Attachment).activeAt ?? 0, this.ctx.getWebSocketAutoResponseTimestamp(socket)?.getTime() ?? 0);
+  }
+
+  private chatHistory(): ChatMessage[] {
+    return this.ctx.storage.sql.exec<{ id: number; data: string }>('SELECT id,data FROM room_chat WHERE ts>=? ORDER BY id DESC LIMIT ?', Date.now() - CHAT_TTL_MS, CHAT_KEEP)
+      .toArray().reverse().map(row => ({ ...JSON.parse(row.data) as ChatMessage, id: row.id }));
+  }
+
+  private chat(room: RaceRoomState, userId: string, data: Record<string, unknown>, now: number): boolean {
+    if (data.type !== 'chat' && data.type !== 'chat-report') return false;
+    const player = room.players.find(entry => entry.id === userId && !entry.left);
+    if (!player) throw new Error('Join the room first.');
+    if (data.type === 'chat-report') {
+      if (!Number.isSafeInteger(data.id) || Number(data.id) < 1) throw new Error('Invalid message.');
+      const row = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM room_chat WHERE id=?', Number(data.id)).toArray()[0];
+      if (row) this.ctx.storage.sql.exec('INSERT OR IGNORE INTO room_reports (msg,reporter,data) VALUES (?,?,?)', Number(data.id), userId, row.data);
+      this.ctx.storage.sql.exec('DELETE FROM room_reports WHERE id NOT IN (SELECT id FROM room_reports ORDER BY id DESC LIMIT 1000)');
+      return true;
+    }
+    const text = chatText(data.text);
+    if (!text) throw new Error('Write a message first.');
+    const saved = this.ctx.storage.sql.exec<{ data: string }>('SELECT data FROM room_chat_rate WHERE uid=?', userId).toArray()[0];
+    const rate = nextChatRate(saved ? JSON.parse(saved.data) as ChatRate : null, text, now);
+    if (!rate) throw new Error('Please wait before sending another message.');
+    this.ctx.storage.sql.exec('INSERT OR REPLACE INTO room_chat_rate VALUES (?,?)', userId, JSON.stringify(rate));
+    const line: ChatMessage = { id: 0, l: GLOBAL_CHAT, u: userId, n: player.name, c: socialColor(player.color), t: text, ts: now, ...(player.image ? { i: player.image } : {}) };
+    line.id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO room_chat (data,ts) VALUES (?,?) RETURNING id', JSON.stringify(line), now).one().id;
+    this.ctx.storage.sql.exec('DELETE FROM room_chat WHERE ts<? OR id NOT IN (SELECT id FROM room_chat ORDER BY id DESC LIMIT ?)', now - CHAT_TTL_MS, CHAT_KEEP);
+    const frame = JSON.stringify({ type: 'chat-message', code: room.code, message: line } satisfies PartyChatServerMessage);
+    const members = new Set(room.players.filter(entry => !entry.left).map(entry => entry.id));
+    for (const target of this.sockets()) if (members.has((target.deserializeAttachment() as Attachment).userId)) {
+      try { target.send(frame); } catch { target.close(1011, 'Reconnect to restore the room.'); }
+    }
+    return true;
   }
 
   private broadcast(room: RaceRoomState) {
@@ -213,6 +250,7 @@ export class GameRoom extends DurableObject<Env> {
     server.serializeAttachment({ userId: entry.user_id, activeAt: Date.now(), tokens: 20, updatedAt: Date.now(), authUntil: entry.auth_until } satisfies Attachment);
     player.disconnectedAt = null;
     this.commit(current);
+    server.send(JSON.stringify({ type: 'chat-history', code: current.code, messages: this.chatHistory() } satisfies PartyChatServerMessage));
     await this.schedule(current);
     return new Response(null, { status: 101, webSocket: client, headers: { 'Sec-WebSocket-Protocol': 'quiz-race' } });
   }
@@ -221,7 +259,7 @@ export class GameRoom extends DurableObject<Env> {
     const room = this.read();
     if (!room || Date.now() >= room.expiresAt) { socket.close(4000, 'Room expired.'); return; }
     if (socket.readyState !== 1) return;
-    if (typeof message !== 'string' || message.length > 2048) { socket.close(1008, 'Invalid message.'); return; }
+    if (typeof message !== 'string' || message.length > SOCIAL_FRAME_BYTES || new TextEncoder().encode(message).byteLength > SOCIAL_FRAME_BYTES) { socket.close(1008, 'Invalid message.'); return; }
     const att = socket.deserializeAttachment() as Attachment;
     if ((att.authUntil ?? 0) <= Date.now()) { socket.close(4002, 'Refresh your sign-in.'); return; }
     const now = Date.now();
@@ -230,7 +268,9 @@ export class GameRoom extends DurableObject<Env> {
     if (att.tokens < 1) { socket.close(1008, 'Too many actions.'); return; }
     att.tokens -= 1; socket.serializeAttachment(att);
     try {
-      const action = parseRaceAction(JSON.parse(message));
+      const data: unknown = JSON.parse(message);
+      if (data && typeof data === 'object' && this.chat(room, att.userId, data as Record<string, unknown>, now)) return;
+      const action = parseRaceAction(data);
       if (action.type === 'leave') { await this.exit(att.userId); return; }
       const before = JSON.stringify(room);
       const phase = room.phase;

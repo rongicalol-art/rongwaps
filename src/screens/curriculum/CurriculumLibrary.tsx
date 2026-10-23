@@ -4,7 +4,6 @@ import { SAMPLE_BOOKS } from '../../data/books';
 import {
   AlertBanner,
   StickyWorkspaceHeader,
-  ProfileAvatarButton,
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
@@ -20,7 +19,7 @@ import { StarterLesson } from './StarterLesson';
 import { CurriculumSkeleton } from './components/CurriculumSkeleton';
 import { useCourseDashboard } from './hooks/useCourseDashboard';
 import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWindow';
-import { LessonFaces, lessonKey } from '../../features/social';
+import { GlobalPresenceButton, LessonFaces, lessonKey } from '../../features/social';
 import { lessonThumbnail } from '../../data/lessonThumbnails';
 
 interface CurriculumLibraryProps {
@@ -36,9 +35,6 @@ interface CurriculumLibraryProps {
   onOpenReadingPart?: (target: { bookId: number; lessonId: number; partId: number }) => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Books home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
-  /** Opens the Profile tab (rendered as the avatar in the header's right side). */
-  onProfileClick?: () => void;
-  profileAvatarUrl?: string;
 }
 
 export const CurriculumLibrary = memo(function CurriculumLibrary({
@@ -49,8 +45,6 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   onOpenGrammarPart,
   onOpenReadingPart,
   menuToggle,
-  onProfileClick,
-  profileAvatarUrl,
 }: CurriculumLibraryProps) {
   const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
   const { currentUser, hasFullCourseAccess } = useAuth();
@@ -191,7 +185,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         <StickyWorkspaceHeader
           title={activeBook.title}
           menuToggle={menuToggle}
-          rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} /> : undefined}
+          rightContent={<GlobalPresenceButton />}
         />
 
         <BookCarousel

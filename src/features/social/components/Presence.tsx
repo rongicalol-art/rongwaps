@@ -3,6 +3,21 @@ import { motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, AvatarStack } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 
+/** Global classmates in the existing header slot; full roster loads only after opening it. */
+export function GlobalPresenceButton() {
+  const samples = useAppStore(state => state.socialFaces);
+  const me = useAppStore(state => state.socialMe);
+  const blocked = useAppStore(state => state.blockedUsers);
+  const total = useAppStore(state => Math.max(0, state.socialOnlineTotal - (state.showOnline && state.socialStatus === 'live' ? 1 : 0)));
+  const faces = samples.filter(person => person.u !== me && !blocked.includes(person.u)).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }));
+  return <button type="button" aria-label={`${total} classmates online. Open profiles and chat.`}
+    onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', chatScope: 'global' } })}
+    className="flex h-10 min-w-10 items-center justify-center gap-1 rounded-control px-1 text-ui-muted-strong outline-none transition-colors hover:bg-ui-hover focus-ring-inline">
+    {faces.length ? <AvatarStack people={faces} size="sm" max={3} /> : <AppIcon name="family" size={22} />}
+    <span className="text-xs font-black tabular-nums">{total > 99 ? '99+' : total}</span>
+  </button>;
+}
+
 /** Others in one lesson (from the Lobby's per-lesson counts), without me or anyone I blocked. */
 function useLessonOthers(lesson: number | null) {
   const entry = useAppStore((state) => (lesson === null ? undefined : state.socialCounts[lesson]));

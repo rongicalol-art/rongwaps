@@ -25,6 +25,7 @@ export function Avatar({ name, color, size = 'md', live = false, src, className 
       <span aria-hidden className="select-none">{(name.trim()[0] || '?').toUpperCase()}</span>
       {src && (
         <img
+          key={src}
           src={src}
           alt=""
           loading="lazy"

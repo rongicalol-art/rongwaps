@@ -4,7 +4,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { lessonKey } from '../../store/slices/socialSlice';
 import { getSelectedLessonIds } from '../../utils/lesson/lessonPartSelection';
 import { useProfileAvatar } from '../../hooks/useProfileAvatar';
-import type { Activity } from '../../../shared/lobby';
+import { GLOBAL_CHAT, type Activity } from '../../../shared/lobby';
 import type { ActivityType } from '../../types/models';
 import { lobby, startLobby, stopLobby } from './lobbyController';
 
@@ -45,11 +45,13 @@ export function useSocialLifecycle() {
     const fromActivity = state.racePlaying && state.race ? Number(Object.keys(state.race.selection.lessons)[0]) : activity ? getSelectedLessonIds(state.selectedLessonParts, book)[0] : undefined;
     const lesson = fromActivity !== undefined ? lessonKey(state.racePlaying ? 1 : book, fromActivity) : state.socialViewingLesson;
     const a: Activity | null = state.racePlaying ? 'race' : activity ? ACTIVITY[activity] ?? 'lesson' : lesson !== null ? 'lesson' : null;
-    return { lesson, a, show: state.showOnline, online: state.socialPanel?.tab === 'online' };
+    const panel = state.socialPanel;
+    const chat = panel?.kind === 'people' && panel.tab === 'chat' && (panel.chatScope === 'global' || lesson === null) ? GLOBAL_CHAT : lesson;
+    return { lesson, a, show: state.showOnline, online: panel?.kind !== 'partyChat' && panel?.tab === 'online', chat };
   }));
   useEffect(() => {
     lobby.here(presence.lesson, presence.a, presence.show, identity.image);
     // The current lesson's chat is followed so the unread dot and room cards arrive; Online only while open.
-    lobby.subscribe(presence.online, presence.lesson);
+    lobby.subscribe(presence.online, presence.chat);
   }, [presence, identity.image]);
 }

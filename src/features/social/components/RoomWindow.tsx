@@ -7,6 +7,8 @@ import { BETA_LAST_LESSON } from '../../../../shared/courseAccess';
 import { MAX_PLAYERS, RACE_TYPES, socialColor, type RaceSelection, type RaceSnapshot, type RaceType } from '../../../../shared/quizRace';
 import { leaveRace, raceSend } from '../raceController';
 import { lessonsSummary, typeLabel } from '../socialText';
+import { PanelTabs } from './SocialBits';
+import { PartyChatThread } from './ChatThread';
 
 const LESSONS = [{ id: 0, title: 'Getting Started' }, ...SAMPLE_LESSONS.filter((lesson) => lesson.id <= BETA_LAST_LESSON)
   .map((lesson) => ({ id: lesson.id, title: lesson.title.split('·')[0].trim() }))];
@@ -120,6 +122,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
   const me = useAppStore((state) => state.socialMe);
   const myPhoto = useProfileAvatar();
   const [sheet, setSheet] = useState<'words' | 'types' | null>(null);
+  const [tab, setTab] = useState<'party' | 'chat'>('party');
   const status = useAppStore(state => state.raceStatus);
   const live = status === 'live';
   const isHost = race.hostId === me;
@@ -141,13 +144,15 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
       : null;
   return (
     <WorkspaceWindow role="dialog" aria-modal="true" aria-label="Quiz room" layer="window" tone="practice">
-      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto custom-scrollbar">
-        <div className="mx-auto flex w-full max-w-[35rem] flex-1 flex-col px-4 pb-6 pt-6 md:pt-14">
+      <div className="flex min-h-0 flex-1 flex-col">
+        <div className="mx-auto flex min-h-0 w-full max-w-[35rem] flex-1 flex-col px-4 pb-6 pt-6 md:pt-14">
           <div className="flex items-center gap-3">
             <IconActionButton size="lg" label="Leave room" onClick={leaveRace} icon={<AppIcon name="close" size={22} />} />
             <h1 className="min-w-0 flex-1 truncate text-2xl font-black text-ui-ink-strong">{isHost ? 'Your room' : `${host?.name ?? 'Quiz'}’s room`}</h1>
             <ActionButton size="sm" variant="secondary" onClick={copy} aria-label="Copy invite link" className="gap-1.5 tracking-widest"><AppIcon name="link" size={16} />{race.code}</ActionButton>
           </div>
+          <div className="mt-4 shrink-0"><PanelTabs label="Party" value={tab} onChange={setTab} tabs={[{ id: 'party', label: 'Party' }, { id: 'chat', label: 'Chat' }]} /></div>
+          {tab === 'chat' ? <PartyChatThread /> : <div className="flex min-h-0 flex-1 flex-col overflow-y-auto custom-scrollbar">
           {race.phase === 'lobby' ? (
             <>
               <div className="mt-5 grid grid-cols-4 gap-2.5">
@@ -188,6 +193,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
             </>
           ) : <div className="mt-8"><Results race={race} me={me} /></div>}
           <div className="mt-auto pt-6 md:mt-7">{foot}</div>
+          </div>}
         </div>
       </div>
       {isHost && live && race.phase === 'lobby' && sheet === 'words' && <WordsSheet selection={race.selection} onChange={(next) => settings(next)} onClose={() => setSheet(null)} />}

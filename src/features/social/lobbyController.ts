@@ -24,7 +24,7 @@ function receive(message: LobbyServerMessage) {
       const prev = store.socialCounts;
       const next: typeof prev = {};
       for (const [key, entry] of Object.entries(message.v)) next[key] = prev[key] && JSON.stringify(prev[key]) === JSON.stringify(entry) ? prev[key] : entry;
-      set({ socialCounts: next, socialOnlineTotal: message.n ?? Object.values(next).reduce((sum, entry) => sum + entry.n, 0) });
+      set({ socialCounts: next, socialFaces: message.f ?? Object.values(next).flatMap(entry => entry.f).slice(0, 4), socialOnlineTotal: message.n ?? Object.values(next).reduce((sum, entry) => sum + entry.n, 0) });
       break;
     }
     case 'people': if (message.l === here.l) set({ socialPeople: message.v }); break;
@@ -78,7 +78,7 @@ export function setLobbyTransport(next: LobbyTransport | null) {
     useAppStore.getState().setSocial({ socialStatus: 'live' });
     next.send(here); next.send(sub);
   } else if (lastIdentity) {
-    useAppStore.getState().setSocial({ socialStatus: 'off', socialCounts: {}, socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null });
+    useAppStore.getState().setSocial({ socialStatus: 'off', socialCounts: {}, socialFaces: [], socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null });
     startLobby(lastIdentity);
   }
 }
@@ -95,7 +95,7 @@ export function startLobby(identity: Identity) {
     onMessage: message => { if (version === generation) receive(message); },
     onStatus: status => {
       if (version !== generation) return;
-      useAppStore.getState().setSocial({ socialStatus: status, ...(status !== 'live' ? { socialCounts: {}, socialPeople: [], socialOnline: [], socialRooms: [], socialOnlineTotal: 0 } : {}) });
+      useAppStore.getState().setSocial({ socialStatus: status, ...(status !== 'live' ? { socialCounts: {}, socialFaces: [], socialPeople: [], socialOnline: [], socialRooms: [], socialOnlineTotal: 0 } : {}) });
       if (status === 'off') { socket = null; identityKey = ''; }
     },
     onOpen: () => { if (version === generation) { send(here); send(sub); } },
@@ -108,7 +108,7 @@ export function stopLobby() {
   socket = null;
   identityKey = '';
   const state = useAppStore.getState();
-  state.setSocial({ socialStatus: 'off', socialMe: state.race ? state.socialMe : null, socialCounts: {}, socialOnlineTotal: 0, socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null, socialUnread: false, socialInvite: null, socialCheer: null });
+  state.setSocial({ socialStatus: 'off', socialMe: state.race ? state.socialMe : null, socialCounts: {}, socialFaces: [], socialOnlineTotal: 0, socialPeople: [], socialOnline: [], socialRooms: [], socialChat: null, socialUnread: false, socialInvite: null, socialCheer: null });
 }
 
 export const lobby = {

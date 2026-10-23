@@ -1,6 +1,7 @@
 import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socialName } from '../shared/quizRace';
 import { verifyAccessToken } from './auth';
 import { newSeed } from './room';
+import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
 export { GameRoom } from './room';
 export { Lobby } from './lobby';
 
@@ -12,7 +13,7 @@ async function body(request: Request): Promise<Record<string, unknown>> {
     const { done, value } = await reader.read();
     if (done) break;
     bytes += value.byteLength;
-    if (bytes > 2048) { await reader.cancel(); throw new Error('Request too large.'); }
+    if (bytes > SOCIAL_FRAME_BYTES) { await reader.cancel(); throw new Error('Request too large.'); }
     text += decoder.decode(value, { stream: true });
   }
   const value: unknown = JSON.parse(text + decoder.decode());
