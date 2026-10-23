@@ -1,3 +1,4 @@
+import { Fragment, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion, type MotionValue } from 'motion/react';
 import { AppIcon, CharacterGlyph } from '../../lib/widgets';
@@ -5,8 +6,10 @@ import { cn } from '../../utils/cn';
 import { renderHookText } from './hookText';
 import type { CharacterPartsState } from './useCharacterParts';
 
-const CARD_WIDTH = 292;
+const CARD_WIDTH_DEFAULT = 296;
+const CARD_WIDTH_3_PARTS = 352;
 const EDGE = 12;
+const TOOLTIP_GAP = 14;
 /** Parts beyond this switch from the equation row to a compact grid. */
 const MAX_EQUATION = 3;
 const MAX_GRID = 5;
@@ -15,7 +18,7 @@ export interface CharacterHoverCardProps {
   open: boolean;
   char: string;
   anchor: { x: number; top: number; bottom: number } | null;
-  above: boolean;
+  above?: boolean;
   data: CharacterPartsState;
   /** undefined while loading, null when none; shown only when there are no parts. */
   hook: string | null | undefined;
@@ -23,10 +26,40 @@ export interface CharacterHoverCardProps {
   magneticY?: MotionValue<number>;
 }
 
-function Tile({ glyph }: { glyph: string }) {
+function Tile({ glyph, compact }: { glyph: string; compact?: boolean }) {
   return (
-    <span className="flex h-14 w-14 items-center justify-center rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface">
-      <CharacterGlyph character={glyph} className="text-[32px] leading-none text-ui-ink-strong" />
+    <span
+      className={cn(
+        'flex shrink-0 items-center justify-center rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface',
+        compact ? 'h-11 w-11 sm:h-12 sm:w-12' : 'h-13 w-13 sm:h-14 sm:w-14',
+      )}
+    >
+      <CharacterGlyph
+        character={glyph}
+        className={cn(
+          'leading-none text-ui-ink-strong',
+          compact ? 'text-2xl sm:text-[26px]' : 'text-3xl sm:text-[32px]',
+        )}
+      />
+    </span>
+  );
+}
+
+function ResultTile({ glyph, compact }: { glyph: string; compact?: boolean }) {
+  return (
+    <span
+      className={cn(
+        'flex shrink-0 items-center justify-center rounded-compact border-2 border-brand-primary bg-brand-primary/10',
+        compact ? 'h-11 w-11 sm:h-12 sm:w-12' : 'h-13 w-13 sm:h-14 sm:w-14',
+      )}
+    >
+      <CharacterGlyph
+        character={glyph}
+        className={cn(
+          'leading-none text-brand-primary',
+          compact ? 'text-2xl sm:text-[26px]' : 'text-3xl sm:text-[32px]',
+        )}
+      />
     </span>
   );
 }
@@ -44,30 +77,105 @@ function Skeleton() {
 /**
  * Hover card for a character: its parts as an equation (up to three), a
  * compact grid for longer breakdowns, or its memory hook when it has no
- * parts. Same portal and fixed width as the old hook popover, so it never
- * clips or resizes while loading.
+ * parts. Sized to fit comfortably without collision and positioned cleanly
+ * relative to the viewport.
  */
-export function CharacterHoverCard({ open, char, anchor, above, data, hook, magneticX, magneticY }: CharacterHoverCardProps) {
+export function CharacterHoverCard({
+  open,
+  char,
+  anchor,
+  above: initialAboveProp,
+  data,
+  hook,
+  magneticX,
+  magneticY,
+}: CharacterHoverCardProps) {
   const reduceMotion = useReducedMotion();
-  if (!open || !anchor) return null;
+  const cardRef = useRef<HTMLSpanElement>(null);
+  const [placement, setPlacement] = useState<{
+    left: number;
+    top: number;
+    arrowLeft: number;
+    above: boolean;
+  } | null>(null);
 
-  const viewport = typeof window === 'undefined' ? 1024 : window.innerWidth;
-  const width = Math.min(CARD_WIDTH, viewport - EDGE * 2);
-  const x = Math.min(Math.max(anchor.x, width / 2 + EDGE), viewport - width / 2 - EDGE);
-  const arrowX = width / 2 + (anchor.x - x);
   const { parts } = data;
   const equation = parts.length > 0 && parts.length <= MAX_EQUATION;
+  const isThreeParts = equation && parts.length === 3;
   const gridParts = parts.length > 6 ? parts.slice(0, MAX_GRID) : parts;
   const hidden = parts.length - gridParts.length;
   const hasBody = !data.loaded || parts.length > 0 || Boolean(hook);
 
+  const viewport = typeof window === 'undefined' ? 1024 : window.innerWidth;
+  const targetWidth = isThreeParts ? CARD_WIDTH_3_PARTS : CARD_WIDTH_DEFAULT;
+  const width = Math.min(targetWidth, viewport - EDGE * 2);
+
+  useLayoutEffect(() => {
+    if (!open || !anchor || !cardRef.current) {
+      setPlacement(null);
+      return;
+    }
+    const cardEl = cardRef.current;
+    const measuredWidth = cardEl.offsetWidth || width;
+    const measuredHeight = cardEl.offsetHeight || 180;
+
+    const spaceAbove = anchor.top;
+    const spaceBelow = window.innerHeight - anchor.bottom;
+    const needed = measuredHeight + TOOLTIP_GAP + EDGE;
+
+    const canFitAbove = spaceAbove >= needed;
+    const canFitBelow = spaceBelow >= needed;
+
+    let isAbove: boolean;
+    if (canFitAbove && !canFitBelow) {
+      isAbove = true;
+    } else if (!canFitAbove && canFitBelow) {
+      isAbove = false;
+    } else if (canFitAbove && canFitBelow) {
+      // Both fit: if the character is in the upper 48% of the viewport (common in flashcards),
+      // place below to avoid obscuring card header controls (lightbulb, brush, bookmark).
+      isAbove = spaceAbove > spaceBelow && anchor.top > window.innerHeight * 0.48;
+    } else {
+      isAbove = spaceAbove > spaceBelow;
+    }
+
+    const left = Math.min(
+      Math.max(EDGE, anchor.x - measuredWidth / 2),
+      window.innerWidth - measuredWidth - EDGE,
+    );
+
+    const top = isAbove
+      ? Math.max(EDGE, anchor.top - measuredHeight - TOOLTIP_GAP)
+      : Math.min(window.innerHeight - measuredHeight - EDGE, anchor.bottom + TOOLTIP_GAP);
+
+    const arrowLeft = Math.min(
+      Math.max(anchor.x - left, 16),
+      measuredWidth - 16,
+    );
+
+    setPlacement({ left, top, arrowLeft, above: isAbove });
+  }, [open, anchor, data.loaded, parts.length, hook, width]);
+
+  if (!open || !anchor) return null;
+
+  const initialAbove = initialAboveProp ?? (anchor.top > (typeof window === 'undefined' ? 800 : window.innerHeight) * 0.52);
+  const currentLeft = placement ? placement.left : Math.min(Math.max(EDGE, anchor.x - width / 2), viewport - width - EDGE);
+  const currentTop = placement
+    ? placement.top
+    : initialAbove
+      ? Math.max(EDGE, anchor.top - 190 - TOOLTIP_GAP)
+      : anchor.bottom + TOOLTIP_GAP;
+  const currentAbove = placement ? placement.above : initialAbove;
+  const currentArrowLeft = placement ? placement.arrowLeft : width / 2;
+
   const card = (
     <motion.span
+      ref={cardRef}
       key="character-hover-card"
-      initial={{ opacity: 0, scale: 0.97, y: above ? 6 : -6 }}
+      initial={{ opacity: 0, scale: 0.97, y: currentAbove ? 6 : -6 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.18, ease: 'easeOut' }}
-      style={{ transformOrigin: above ? '50% 100%' : '50% 0%', width }}
+      style={{ transformOrigin: currentAbove ? '50% 100%' : '50% 0%', width }}
       className="relative block"
     >
       <span className="block rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface px-3.5 py-3 text-left shadow-ambient-sm">
@@ -80,22 +188,61 @@ export function CharacterHoverCard({ open, char, anchor, above, data, hook, magn
         {!data.loaded ? (
           <Skeleton />
         ) : equation ? (
-          <span className="flex items-start justify-center gap-1.5">
+          <div className="flex items-start justify-center gap-1 sm:gap-1.5 w-full">
             {parts.map((part, index) => (
-              <span key={`${part.glyph}-${index}`} className="contents">
-                {index > 0 && <span className="flex h-14 w-3.5 items-center justify-center text-lg font-black text-ui-muted">+</span>}
-                <span className="flex w-[68px] flex-col items-center gap-1 text-center">
-                  <Tile glyph={part.glyph} />
-                  {part.pinyin && <span className="text-[13px] font-black leading-tight text-brand-primary">{part.pinyin}</span>}
-                  {part.meaning && <span className="break-words text-xs font-extrabold leading-tight text-ui-muted-strong">{part.meaning}</span>}
-                </span>
-              </span>
+              <Fragment key={`${part.glyph}-${index}`}>
+                {index > 0 && (
+                  <span
+                    className={cn(
+                      'flex shrink-0 items-center justify-center font-black text-ui-muted select-none',
+                      isThreeParts ? 'h-11 w-2 sm:h-12 sm:w-2.5 text-sm' : 'h-13 w-3 sm:h-14 sm:w-3.5 text-base',
+                    )}
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                )}
+                <div
+                  className={cn(
+                    'flex flex-col items-center text-center min-w-0 flex-1',
+                    isThreeParts ? 'max-w-[62px]' : 'max-w-[72px]',
+                  )}
+                >
+                  <Tile glyph={part.glyph} compact={isThreeParts} />
+                  {part.pinyin && (
+                    <span className="mt-1 block w-full truncate text-[11px] sm:text-xs font-black leading-tight text-brand-primary">
+                      {part.pinyin}
+                    </span>
+                  )}
+                  {part.meaning && (
+                    <span
+                      className="mt-0.5 block w-full line-clamp-2 break-words text-[10px] sm:text-[11px] font-extrabold leading-tight text-ui-muted-strong"
+                      title={part.meaning}
+                    >
+                      {part.meaning}
+                    </span>
+                  )}
+                </div>
+              </Fragment>
             ))}
-            <span className="flex h-14 w-3.5 items-center justify-center text-lg font-black text-ui-muted">→</span>
-            <span className="flex w-[68px] flex-col items-center">
-              <span className="flex h-14 w-14 items-center justify-center rounded-compact border-2 border-brand-primary bg-brand-primary/10"><CharacterGlyph character={char} className="text-[32px] leading-none text-brand-primary" /></span>
+            <span
+              className={cn(
+                'flex shrink-0 items-center justify-center font-black text-ui-muted select-none',
+                isThreeParts ? 'h-11 w-2 sm:h-12 sm:w-2.5 text-sm' : 'h-13 w-3 sm:h-14 sm:w-3.5 text-base',
+              )}
+              aria-hidden="true"
+            >
+              →
             </span>
-          </span>
+            <div
+              className={cn(
+                'flex flex-col items-center text-center min-w-0 flex-1',
+                isThreeParts ? 'max-w-[62px]' : 'max-w-[72px]',
+              )}
+            >
+              <ResultTile glyph={char} compact={isThreeParts} />
+            </div>
+          </div>
         ) : parts.length > 0 ? (
           <span className="grid grid-cols-2 gap-2">
             {gridParts.map((part, index) => (
@@ -118,13 +265,33 @@ export function CharacterHoverCard({ open, char, anchor, above, data, hook, magn
           </span>
         ) : null}
       </span>
-      <span
-        style={{ left: arrowX }}
-        className={cn(
-          'absolute -translate-x-1/2 border-x-[8px] border-x-transparent border-t-[8px] border-t-ui-border',
-          above ? 'top-full' : 'bottom-full rotate-180',
-        )}
-      />
+      {currentAbove ? (
+        <>
+          <span
+            style={{ left: currentArrowLeft }}
+            className="absolute top-full -translate-x-1/2 border-x-[8px] border-x-transparent border-t-[8px] border-t-ui-border"
+            aria-hidden="true"
+          />
+          <span
+            style={{ left: currentArrowLeft }}
+            className="absolute top-full -translate-x-1/2 -mt-[2px] border-x-[6px] border-x-transparent border-t-[6px] border-t-ui-surface"
+            aria-hidden="true"
+          />
+        </>
+      ) : (
+        <>
+          <span
+            style={{ left: currentArrowLeft }}
+            className="absolute bottom-full -translate-x-1/2 border-x-[8px] border-x-transparent border-b-[8px] border-b-ui-border"
+            aria-hidden="true"
+          />
+          <span
+            style={{ left: currentArrowLeft }}
+            className="absolute bottom-full -translate-x-1/2 -mb-[2px] border-x-[6px] border-x-transparent border-b-[6px] border-b-ui-surface"
+            aria-hidden="true"
+          />
+        </>
+      )}
     </motion.span>
   );
 
@@ -133,9 +300,9 @@ export function CharacterHoverCard({ open, char, anchor, above, data, hook, magn
       aria-hidden="true"
       className="pointer-events-none fixed z-popover"
       style={{
-        left: x,
-        top: above ? anchor.top : anchor.bottom,
-        transform: `translate(-50%, ${above ? 'calc(-100% - 10px)' : '10px'})`,
+        left: currentLeft,
+        top: currentTop,
+        width,
       }}
     >
       {magneticX && magneticY ? <motion.div style={{ x: magneticX, y: magneticY }}>{card}</motion.div> : card}

@@ -146,14 +146,20 @@ export function MemoryHookCharacter({
   }, [hoverCapable, reduceMotion, tooltipDisabled, magnetRadius, magnetStrength, magnetX, magnetY]);
 
   const showTooltipNow = () => {
+    updateAnchor();
     setShowTooltip(true);
     const rect = buttonRef.current?.getBoundingClientRect();
-    setTooltipAbove(rect ? rect.top > 150 : true);
+    if (rect) {
+      const spaceAbove = rect.top;
+      const spaceBelow = window.innerHeight - rect.bottom;
+      setTooltipAbove(spaceAbove >= 220 && (spaceBelow < 220 || spaceAbove > spaceBelow + 80));
+    }
   };
 
   const arm = () => {
     if (tooltipDisabled) return;
     setArmed(true);
+    updateAnchor();
     const rect = buttonRef.current?.getBoundingClientRect();
     centerRef.current = rect
       ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
@@ -178,7 +184,14 @@ export function MemoryHookCharacter({
   // face scrolls; the card itself can move between renders).
   const updateAnchor = useCallback(() => {
     const rect = buttonRef.current?.getBoundingClientRect();
-    setTooltipAnchor(rect ? { x: rect.left + rect.width / 2, top: rect.top, bottom: rect.bottom } : null);
+    if (!rect) {
+      setTooltipAnchor(null);
+      return;
+    }
+    setTooltipAnchor({ x: rect.left + rect.width / 2, top: rect.top, bottom: rect.bottom });
+    const spaceAbove = rect.top;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    setTooltipAbove(spaceAbove >= 220 && (spaceBelow < 220 || spaceAbove > spaceBelow + 80));
   }, []);
 
   useEffect(() => {
