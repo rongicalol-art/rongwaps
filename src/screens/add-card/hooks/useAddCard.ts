@@ -4,8 +4,9 @@ import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
 import { useDictionarySearch, SearchResult } from '../../../hooks/useDictionarySearch';
-import { resolveFolderColor } from '../../../utils/folderColors';
 import { meaningText } from '../../../utils/vocabulary/dictionaryDefinitions';
+
+export type AddCardView = 'front' | 'back';
 
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();
@@ -15,13 +16,10 @@ export function useAddCard(onClose: () => void) {
 
   const folderId = libraryActiveFolder;
   const targetFolder = customFolders.find((f) => f.id === folderId);
-  const folderName = folderId === 'starred' ? 'Starred' : targetFolder?.name || 'Library';
-  const folderAccent =
-    folderId === 'starred'
-      ? 'text-feedback-warning-edge'
-      : targetFolder
-      ? resolveFolderColor(targetFolder.color).accent
-      : 'text-brand-primary';
+  const folderName = folderId === 'starred' ? 'Saved words' : targetFolder?.name || 'Custom cards';
+
+  const [view, setView] = useState<AddCardView>('front');
+  const [direction, setDirection] = useState<'fwd' | 'back' | 'none'>('none');
 
   const [cardData, setCardData] = useState({
     front: '',
@@ -34,36 +32,81 @@ export function useAddCard(onClose: () => void) {
 
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+
   const frontInputRef = useRef<HTMLInputElement>(null);
+  const meaningInputRef = useRef<HTMLInputElement>(null);
 
   // Smart Dictionary Suggestions
   const { results: suggestions } = useDictionarySearch(cardData.front);
 
-  // Auto-focus on mount
+  // Focus management
   useEffect(() => {
     const timer = setTimeout(() => {
-      frontInputRef.current?.focus();
-    }, 100);
+      if (view === 'front') {
+        frontInputRef.current?.focus();
+      } else {
+        meaningInputRef.current?.focus();
+      }
+    }, 80);
     return () => clearTimeout(timer);
-  }, []);
+  }, [view]);
 
   const handleSelectSuggestion = (entry: SearchResult) => {
-    const defs =
-      entry.definitions && Array.isArray(entry.definitions)
-        ? entry.definitions
+    const defs = entry.definitions
+      ? Array.isArray(entry.definitions)
+        ? (entry.definitions as string[])
         : typeof entry.definitions === 'string'
         ? [entry.definitions]
-        : Object.values(entry.definitions as Record<string, string>);
-    const firstDef = defs.length > 0 ? defs[0] : '';
+        : Object.values(entry.definitions as Record<string, string>)
+      : [];
+    const firstDef = defs.length > 0 ? String(defs[0] ?? '') : '';
 
     setCardData((prev) => ({
       ...prev,
       front: entry.traditional || entry.simplified,
-      meaning: firstDef,
-      pinyin: entry.pinyin_accented || '',
-      availableMeanings: defs,
+      meaning: prev.meaning || firstDef,
+      pinyin: prev.pinyin || entry.pinyin_accented || '',
+      availableMeanings: defs.map((d) => String(d ?? '')),
       measureWords: entry.measure_words || [],
     }));
+  };
+
+  const handleNext = () => {
+    if (!cardData.front.trim()) return;
+
+    // If an exact dictionary match exists and meaning wasn't filled yet, auto-populate
+    const exactMatch = suggestions.find(
+      (s) =>
+        s.traditional === cardData.front.trim() ||
+        s.simplified === cardData.front.trim(),
+    );
+
+    if (exactMatch && !cardData.meaning) {
+      const defs = exactMatch.definitions
+        ? Array.isArray(exactMatch.definitions)
+          ? exactMatch.definitions
+          : typeof exactMatch.definitions === 'string'
+          ? [exactMatch.definitions]
+          : Object.values(exactMatch.definitions)
+        : [];
+      const firstDef = defs.length > 0 ? String(defs[0] ?? '') : '';
+
+      setCardData((prev) => ({
+        ...prev,
+        meaning: firstDef,
+        pinyin: prev.pinyin || exactMatch.pinyin_accented || '',
+        availableMeanings: defs.map((d) => String(d ?? '')),
+        measureWords: exactMatch.measure_words || prev.measureWords,
+      }));
+    }
+
+    setDirection('fwd');
+    setView('back');
+  };
+
+  const handleBack = () => {
+    setDirection('back');
+    setView('front');
   };
 
   const handleSave = async () => {
@@ -100,24 +143,28 @@ export function useAddCard(onClose: () => void) {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !(e.target instanceof HTMLTextAreaElement)) {
+  const handleKeyDown = (e: React.KeyboardEvent, action: () => void) => {
+    if (e.key === 'Enter') {
       e.preventDefault();
-      void handleSave();
+      action();
     }
   };
 
   return {
     folderName,
-    folderAccent,
+    view,
+    direction,
     cardData,
     setCardData,
     saveError,
     setSaveError,
     saving,
     frontInputRef,
+    meaningInputRef,
     suggestions,
     handleSelectSuggestion,
+    handleNext,
+    handleBack,
     handleSave,
     handleKeyDown,
   };
