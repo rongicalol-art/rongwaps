@@ -11,7 +11,8 @@ export function PrivacyPolicyContent() {
     <>
       <LegalSection title="Who we are">
         <LegalParagraph>
-          Ron&apos;s Mandarin is a Chinese-learning web app, currently in open beta. This policy explains what
+          Ron&apos;s Mandarin is a Chinese-learning web app, currently in an invite-only beta for Shu-Te
+          University students. This policy explains what
           data it handles and why. Questions or requests: <ContactLink />.
         </LegalParagraph>
       </LegalSection>
@@ -20,7 +21,7 @@ export function PrivacyPolicyContent() {
         <LegalList
           items={[
             <>
-              <strong>Account:</strong> your email address, plus your name and profile picture from your
+              <strong>Account:</strong> your school email address, plus your name and profile picture from your
               Google account, kept only in your sign-in record. Sign-in goes through Google and Supabase; we
               never see your Google password.
             </>,
@@ -118,8 +119,8 @@ export function PrivacyPolicyContent() {
 
       <LegalSection title="Children">
         <LegalParagraph>
-          Ron&apos;s Mandarin is not directed at children under 13 and we do not knowingly collect their data. If you
-          believe a child has given us data, email us and we will delete it.
+          Ron&apos;s Mandarin is for adults 18 and older, and we do not knowingly collect data from anyone younger.
+          If you believe someone under 18 has given us data, email us and we will delete it.
         </LegalParagraph>
       </LegalSection>
 

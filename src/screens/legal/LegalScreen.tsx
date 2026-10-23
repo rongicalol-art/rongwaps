@@ -3,23 +3,28 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { StickyWorkspaceHeader } from '../../lib/widgets';
 import type { LegalPage } from '../../app/routes';
 import { LEGAL_EFFECTIVE_DATE } from './legalMeta';
+import { AboutContent } from './AboutContent';
+import { CreditsContent } from './CreditsContent';
 import { PrivacyPolicyContent } from './PrivacyPolicyContent';
 import { TermsContent } from './TermsContent';
 
-const PAGES: Record<LegalPage, { title: string; Content: () => React.JSX.Element }> = {
-  privacy: { title: 'Privacy Policy', Content: PrivacyPolicyContent },
-  terms: { title: 'Terms of Service', Content: TermsContent },
+/** `dated`: binding documents show their effective date. */
+const PAGES: Record<LegalPage, { title: string; Content: () => React.JSX.Element; dated?: boolean }> = {
+  about: { title: "About Ron's Mandarin", Content: AboutContent },
+  credits: { title: 'Credits', Content: CreditsContent },
+  privacy: { title: 'Privacy Policy', Content: PrivacyPolicyContent, dated: true },
+  terms: { title: 'Terms of Service', Content: TermsContent, dated: true },
 };
 
 /**
- * Public legal page. Standalone on purpose: it renders outside the workspace
+ * Public About, Credits or legal page. Standalone on purpose: it renders outside the workspace
  * shell, so it needs no sign-in and is not covered by the sign-in window.
  * It owns its own scroller because the document itself never scrolls.
  */
 export function LegalScreen({ page }: { page: LegalPage }) {
   const navigate = useNavigate();
   const navigationType = useNavigationType();
-  const { title, Content } = PAGES[page];
+  const { title, Content, dated } = PAGES[page];
   useDocumentTitle(title);
 
   // A pushed entry came from inside the app, so Back returns there; a direct
@@ -34,7 +39,7 @@ export function LegalScreen({ page }: { page: LegalPage }) {
           <span className="rounded-xs border-2 border-ui-border bg-ui-surface px-2 py-0.5 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
             Beta
           </span>
-          <p className="text-sm font-bold text-ui-muted-strong">Effective {LEGAL_EFFECTIVE_DATE}</p>
+          {dated && <p className="text-sm font-bold text-ui-muted-strong">Effective {LEGAL_EFFECTIVE_DATE}</p>}
         </div>
         <Content />
       </main>

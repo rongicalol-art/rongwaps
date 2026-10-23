@@ -15,7 +15,7 @@ export function TermsContent() {
 
       <LegalSection title="Beta service">
         <LegalParagraph>
-          Ron&apos;s Mandarin is in open beta and provided &quot;as is&quot; and &quot;as available&quot;. Features can
+          Ron&apos;s Mandarin is in an invite-only beta for Shu-Te University students and is provided &quot;as is&quot; and &quot;as available&quot;. Features can
           change or break, content can contain mistakes, and the service may be interrupted or reset. We give
           no warranty that it will be error-free, always available, or fit for a particular purpose.
         </LegalParagraph>
@@ -23,8 +23,9 @@ export function TermsContent() {
 
       <LegalSection title="Your account">
         <LegalParagraph>
-          You sign in with Google. Keep your account secure and tell us if you suspect misuse. You can delete
-          your account at any time in Settings, then Account.
+          You must be 18 or older. You sign in with your Shu-Te University Google account; access ends if that
+          account is no longer accepted. Keep your account secure and tell us if you suspect misuse. You can
+          delete your account at any time in Settings, then Account.
         </LegalParagraph>
       </LegalSection>
 
@@ -32,7 +33,8 @@ export function TermsContent() {
         <LegalParagraph>Please do not:</LegalParagraph>
         <LegalList
           items={[
-            'scrape, copy in bulk, or resell the app, its audio, or its lesson content;',
+            'scrape, copy in bulk, share, or resell the app, its audio, or its lesson content;',
+            'use the app’s content to train or test AI models, or to build a competing product;',
             'create accounts automatically or use bots or scripts against the app;',
             'try to get around usage limits, rate limits, or other protections;',
             'probe, attack, or overload the service, or access other people’s data;',
@@ -48,39 +50,14 @@ export function TermsContent() {
         </LegalParagraph>
       </LegalSection>
 
-      <LegalSection title="Pronunciation audio credits">
+      <LegalSection title="Course content">
         <LegalParagraph>
-          Additional character pronunciation recordings: Taiwan Ministry of Digital Affairs, 2025,{' '}
-          <a href="https://www.cns11643.gov.tw" className={legalLinkClass}>CNS11643 Chinese Standard Interchange Code — audio files</a>.{' '}
-          These recordings are released under the{' '}
-          <a href="https://data.gov.tw/license" className={legalLinkClass}>Open Government Data License, version 1.0</a>{' '}
-          and may be reused under its terms. Original neutral-tone WAVs were transcoded to MP3. The app&apos;s usage restrictions do not override that license.
-        </LegalParagraph>
-        <LegalParagraph>
-          Supplemental 團圓 pronunciation: Yue Tan / Shtooka Project, 2009, via{' '}
-          <a href="https://commons.wikimedia.org/wiki/File:Zh-tu%C3%A1nyu%C3%A1n.ogg" className={legalLinkClass}>Wikimedia Commons</a>,{' '}
-          licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/us/" className={legalLinkClass}>CC BY-SA 3.0 US</a>.
-          The original Ogg was transcoded to MP3; the recording remains available under that license.
-        </LegalParagraph>
-        <LegalParagraph>
-          Six supplemental word recordings were generated locally with the preset Vivian voice from{' '}
-          <a href="https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice" className={legalLinkClass}>Qwen3-TTS</a>,{' '}
-          whose model is released under Apache 2.0. No textbook recording was replaced or used for voice cloning.
-        </LegalParagraph>
-      </LegalSection>
-
-      <LegalSection title="Character data credits">
-        <LegalParagraph>
-          Character decomposition data (component trees and indexes) is derived from the{' '}
-          <a href="https://github.com/cjkvi/cjkvi-ids" className={legalLinkClass}>CJKVI IDS</a>{' '}
-          and <a href="https://gitlab.chise.org/CHISE/ids" className={legalLinkClass}>CHISE</a>{' '}
-          projects (GPL-2.0-or-later; portions of the IDS data derive from the CDP database by
-          C.C. Hsieh and team at Academia Sinica) and{' '}
-          <a href="https://github.com/skishore/makemeahanzi" className={legalLinkClass}>Make Me a Hanzi</a>{' '}
-          (LGPL-3.0-or-later, derived from Unihan and CJKlib; Unihan is © Unicode, Inc.).
-          The generated data pack is distributed under{' '}
-          <a href="https://www.gnu.org/licenses/gpl-3.0.html" className={legalLinkClass}>GPL-3.0-or-later</a>;
-          its full license texts and notices ship with the pack, and the derivation tooling is available on request.
+          The app follows the 時代華語 Modern Chinese textbooks and is meant for students who own them. Material
+          from the books stays the property of its publisher and authors; you may use it in the app for your own
+          study only. Ron&apos;s Mandarin is not affiliated with or endorsed by the publisher. Third-party data,
+          audio and fonts are listed with their licenses on the{' '}
+          <Link to={LEGAL_ROUTES.credits} className={legalLinkClass}>Credits</Link> page; those licenses still apply
+          to that material.
         </LegalParagraph>
       </LegalSection>
 
@@ -92,10 +69,12 @@ export function TermsContent() {
         </LegalParagraph>
       </LegalSection>
 
-      <LegalSection title="Paid plans">
+      <LegalSection title="Price and tips">
         <LegalParagraph>
-          Ron&apos;s Mandarin is free during the beta. We may introduce paid plans later; they would come with separate
-          terms that you would need to accept.
+          Ron&apos;s Mandarin is free during the beta. Tips are voluntary gifts to support development: they do not
+          buy content, unlock features or create any extra obligation, and they are not refundable except where
+          the law requires. We may introduce paid plans later; they would come with separate terms that you
+          would need to accept.
         </LegalParagraph>
       </LegalSection>
 

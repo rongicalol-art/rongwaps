@@ -79,6 +79,8 @@ export function SettingsAccountSection({ onNavigate, onResetProgress }: { onNavi
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
           <Link to={LEGAL_ROUTES.privacy} onClick={onNavigate} className={linkClass}>Privacy Policy</Link>
           <Link to={LEGAL_ROUTES.terms} onClick={onNavigate} className={linkClass}>Terms of Service</Link>
+          <Link to={LEGAL_ROUTES.about} onClick={onNavigate} className={linkClass}>About</Link>
+          <Link to={LEGAL_ROUTES.credits} onClick={onNavigate} className={linkClass}>Credits</Link>
         </div>
       </div>
 
