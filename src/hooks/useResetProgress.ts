@@ -22,8 +22,34 @@ export function useResetProgress({
   onGrammarCleared,
 }: UseResetProgressOptions) {
   return useCallback(async () => {
+    const owner = useAppStore.getState().currentUser;
+    if ((owner?.id ?? null) !== (currentUser?.id ?? null)) throw new Error('Account changed before reset.');
+    const isCurrent = () => useAppStore.getState().currentUser === owner;
+    if (currentUser && useAppStore.getState().syncStatus === 'syncing') {
+      await new Promise<void>((resolve, reject) => {
+        const timeout = window.setTimeout(() => {
+          unsubscribe();
+          reject(new Error('Cloud sync did not become idle before reset.'));
+        }, 10_000);
+        const unsubscribe = useAppStore.subscribe((state) => {
+          if (state.currentUser === owner && state.syncStatus === 'syncing') return;
+          window.clearTimeout(timeout);
+          unsubscribe();
+          if (state.currentUser === owner) resolve();
+          else reject(new Error('Account changed before reset.'));
+        });
+      });
+    }
+    if (!isCurrent()) return;
+    // Snapshot after active sync settles so a failed reset restores its latest
+    // acknowledged outbox and progress, not the state from before the wait.
     const appState = useAppStore.getState();
     const appSnapshot = {
+      reviewEvents: appState.reviewEvents,
+      pendingReviewEvents: appState.pendingReviewEvents,
+      dailyReviewPlan: appState.dailyReviewPlan,
+      learningBatches: appState.learningBatches,
+      wordConfusions: appState.wordConfusions,
       srsData: appState.srsData,
       learnedCards: appState.learnedCards,
       sessionProgress: appState.sessionProgress,
@@ -38,21 +64,6 @@ export function useResetProgress({
       completedPartIds: appState.completedPartIds,
     };
 
-    if (currentUser && appState.syncStatus === 'syncing') {
-      await new Promise<void>((resolve, reject) => {
-        const timeout = window.setTimeout(() => {
-          unsubscribe();
-          reject(new Error('Cloud sync did not become idle before reset.'));
-        }, 10_000);
-        const unsubscribe = useAppStore.subscribe((state) => {
-          if (state.syncStatus === 'syncing') return;
-          window.clearTimeout(timeout);
-          unsubscribe();
-          resolve();
-        });
-      });
-    }
-
     appState.resetProgress();
     appState.resetGrammarProgress();
 
@@ -60,13 +71,14 @@ export function useResetProgress({
       if (currentUser) {
         // Remember the reset epoch so this device does not wipe itself again
         // when the next pull reports the reset it just performed.
-        const resetAt = await userService.resetLearningProgress();
+        const resetAt = await userService.resetLearningProgress(currentUser.id);
+        if (!isCurrent()) return;
         if (resetAt) useAppStore.getState().setProgressResetSeen(currentUser.id, resetAt);
       }
       onActivityCleared();
       onGrammarCleared();
     } catch (error) {
-      useAppStore.setState(appSnapshot);
+      if (isCurrent()) useAppStore.setState(appSnapshot);
       throw error;
     }
   }, [currentUser, onActivityCleared, onGrammarCleared]);

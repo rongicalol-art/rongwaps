@@ -3,6 +3,8 @@ import { useAuth } from './useAuth';
 import { useAppStore } from '../store/useAppStore';
 import { useCloudSyncFetch } from './useCloudSyncFetch';
 import { useCloudSyncSave } from './useCloudSyncSave';
+import { getNextCloudSyncBackoff } from '../utils/sync/cloudSyncQueue';
+import { debugLogger } from '../utils/debug/debugLogger';
 
 /**
  * Cloud sync composition root.
@@ -33,7 +35,6 @@ export function useCloudSync() {
     persistedOwnerRef,
     lastSyncedSettingsRef,
     hasFetchedForUserRef,
-    fetchFromCloud,
   });
 
   useEffect(() => {
@@ -43,8 +44,37 @@ export function useCloudSync() {
       return;
     }
     hasFetchedForUserRef.current = null;
-    void fetchFromCloud();
-  }, [currentUser, fetchFromCloud]);
+    const owner = useAppStore.getState().currentUser;
+    let cancelled = false;
+    let retry: ReturnType<typeof setTimeout> | undefined;
+    let backoffMs = 0;
+    let pullRevision = 0;
+    const pull = async () => {
+      if (cancelled || useAppStore.getState().currentUser !== owner) return;
+      const revision = ++pullRevision;
+      clearTimeout(retry);
+      const loaded = await fetchFromCloud();
+      if (cancelled || revision !== pullRevision || useAppStore.getState().currentUser !== owner) return;
+      if (loaded) {
+        backoffMs = 0;
+        void requestSave().catch((error: unknown) => debugLogger.error('Sync', 'Post-pull save failed:', error));
+      } else {
+        backoffMs = getNextCloudSyncBackoff(backoffMs, null);
+        retry = setTimeout(() => { void pull(); }, backoffMs);
+      }
+    };
+    const reconnect = () => { void pull(); };
+    const visible = () => { if (document.visibilityState === 'visible') reconnect(); };
+    window.addEventListener('online', reconnect);
+    document.addEventListener('visibilitychange', visible);
+    void pull();
+    return () => {
+      cancelled = true;
+      clearTimeout(retry);
+      window.removeEventListener('online', reconnect);
+      document.removeEventListener('visibilitychange', visible);
+    };
+  }, [currentUser, fetchFromCloud, requestSave]);
 
   return { fetchFromCloud, requestSave };
 }

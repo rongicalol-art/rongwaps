@@ -1,4 +1,4 @@
-import { useCallback, type MutableRefObject } from 'react';
+import { useCallback, useRef, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
 import type { SRSData } from '../utils/srs/srsEngine';
 import { debugLogger } from '../utils/debug/debugLogger';
@@ -31,8 +31,13 @@ export function useCloudSyncFetch({
   hasFetchedForUserRef,
   activeUserIdRef,
 }: UseCloudSyncFetchOptions) {
+  const requestRevisionRef = useRef(0);
   const fetchFromCloud = useCallback(async () => {
-    if (!currentUser) return;
+    const sessionUser = useAppStore.getState().currentUser;
+    if (!currentUser || sessionUser?.id !== currentUser.id) return false;
+    const revision = ++requestRevisionRef.current;
+    const isCurrent = () => useAppStore.getState().currentUser === sessionUser
+      && revision === requestRevisionRef.current;
     const {
       setSyncStatus,
       setSyncError,
@@ -58,11 +63,16 @@ export function useCloudSyncFetch({
 
       useAppStore.setState({ lastActiveUserId: currentUser.id });
       persistedOwnerRef.current = currentUser.id;
+      // The cleared local state now belongs to this account, even if its
+      // first pull fails. Retrying must not clear its new local reviews again.
+      activeUserIdRef.current = currentUser.id;
 
+      let srsAtPullStart = useAppStore.getState().srsData;
       const lastCursor = checkpointForUser(useAppStore.getState().syncCheckpoint, currentUser.id)?.cursor ?? null;
-      let cloudData = await userService.getSyncState(
-        lastCursor ? { since: lastCursor } : undefined,
-      );
+      const authorization = await userService.getSyncAuthorization(currentUser.id);
+      if (!isCurrent()) return false;
+      let cloudData = await userService.getSyncState({ since: lastCursor ?? undefined, authorization });
+      if (!isCurrent()) return false;
 
       // A reset performed on another device wipes this device's progress
       // BEFORE it is merged or pushed; otherwise the stale local copy would be
@@ -82,13 +92,14 @@ export function useCloudSyncFetch({
         setSyncCheckpoint({ userId: currentUser.id, cursor: null, srs: {} });
         // An incremental pull omits rows older than the cursor, which the wipe
         // just dropped locally: refetch everything.
-        if (lastCursor) cloudData = await userService.getSyncState();
+        srsAtPullStart = epoch.srsData;
+        if (lastCursor) cloudData = await userService.getSyncState({ authorization });
+        if (!isCurrent()) return false;
       }
       const resetToRemember = epoch ? epoch.seenResetAt : cloudData.progressResetAt;
       if (resetToRemember && resetToRemember !== seenReset) {
         useAppStore.getState().setProgressResetSeen(currentUser.id, resetToRemember);
       }
-      const srsAtPullStart = useAppStore.getState().srsData;
       let baselineAfterPull: Record<string, SRSData> | null = null;
 
       const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
@@ -115,22 +126,17 @@ export function useCloudSyncFetch({
         }
 
         const localProgress = useAppStore.getState();
-        if (isAccountSwitch) {
-          setSrsDataAndLearnedCards(cloudData.srsData, cloudData.learnedCards);
-          baselineAfterPull = cloudData.srsData;
-        } else {
-          const { merged, baseline } = mergePulledSrsData({
-            priorBaseline: checkpointForUser(localProgress.syncCheckpoint, currentUser.id)?.srs ?? null,
-            atPullStart: srsAtPullStart,
-            current: localProgress.srsData,
-            cloud: cloudData.srsData,
-          });
-          setSrsDataAndLearnedCards(
-            merged,
-            Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
-          );
-          baselineAfterPull = baseline;
-        }
+        const { merged, baseline } = mergePulledSrsData({
+          priorBaseline: checkpointForUser(localProgress.syncCheckpoint, currentUser.id)?.srs ?? null,
+          atPullStart: srsAtPullStart,
+          current: localProgress.srsData,
+          cloud: cloudData.srsData,
+        });
+        setSrsDataAndLearnedCards(
+          merged,
+          Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
+        );
+        baselineAfterPull = baseline;
       }
 
       useAppStore.getState().mergeReviewHistory(
@@ -150,6 +156,7 @@ export function useCloudSyncFetch({
       });
       if (guestFolders.length > 0) {
         await flashcardService.importFolders(currentUser.id, guestFolders);
+        if (!isCurrent()) return false;
       }
       const folders = guestFolders.length > 0 ? guestFolders : cloudData.folders;
       if (!isSameFolderList(useAppStore.getState().customFolders, folders)) {
@@ -171,10 +178,13 @@ export function useCloudSyncFetch({
       });
       setSyncStatus('success');
       setSyncError(null);
+      return true;
     } catch (error: unknown) {
+      if (!isCurrent()) return false;
       debugLogger.error('Sync', 'Failed to fetch from cloud:', error);
       setSyncStatus('error');
       setSyncError("Couldn't load your latest progress. Check your connection — we'll retry.");
+      return false;
     }
   }, [
     currentUser,

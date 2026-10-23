@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
+import type { UserSnapshot } from '../store/slices/authSlice';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
@@ -28,7 +29,6 @@ export interface UseCloudSyncSaveOptions {
   persistedOwnerRef: MutableRefObject<string | null>;
   lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
-  fetchFromCloud: () => Promise<void>;
 }
 
 export function useCloudSyncSave({
@@ -36,23 +36,26 @@ export function useCloudSyncSave({
   persistedOwnerRef,
   lastSyncedSettingsRef,
   hasFetchedForUserRef,
-  fetchFromCloud,
 }: UseCloudSyncSaveOptions) {
   const coordinatorRef = useRef<SaveCoordinator | null>(null);
-  const performSaveRef = useRef<(snapshot: CloudSaveSnapshot) => Promise<void>>(async () => {});
+  const performSaveRef = useRef<(snapshot: CloudSaveSnapshot, owner: UserSnapshot) => Promise<void>>(async () => {});
   const syncTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const saveBackoffMsRef = useRef(0);
   const autoSaveDirtySinceRef = useRef<number | null>(null);
 
-  const performSave = useCallback(async (snapshot: CloudSaveSnapshot) => {
+  const performSave = useCallback(async (snapshot: CloudSaveSnapshot, owner: UserSnapshot) => {
     const { store, userId, deltaSrsData } = snapshot;
-    if (persistedOwnerRef.current !== userId) {
-      return;
-    }
-    await userService.syncReviewEvents(store.pendingReviewEvents);
-    if (persistedOwnerRef.current !== userId) return;
+    const coordinator = coordinatorRef.current;
+    const isCurrent = () => coordinatorRef.current === coordinator && coordinator !== null
+      && useAppStore.getState().currentUser === owner && persistedOwnerRef.current === userId;
+    if (!isCurrent()) return;
+    const authorization = await userService.getSyncAuthorization(userId);
+    if (!isCurrent()) return;
+    await userService.syncReviewEvents(store.pendingReviewEvents, authorization);
+    if (!isCurrent()) return;
     useAppStore.getState().acknowledgeReviewEvents(store.pendingReviewEvents.map(event => event.id));
-    await userService.syncCardProgress(deltaSrsData, store.learnedCards);
+    await userService.syncCardProgress(deltaSrsData, store.learnedCards, authorization);
+    if (!isCurrent()) return;
     // Re-read: a pull may have advanced the checkpoint while this save ran.
     const checkpoint = checkpointForUser(useAppStore.getState().syncCheckpoint, userId);
     if (checkpoint) {
@@ -64,7 +67,8 @@ export function useCloudSyncSave({
 
     const settings = buildMetadataPayload(store);
     if (hasMetadataChanged(lastSyncedSettingsRef.current, settings)) {
-      const serverUpdatedAt = await userService.syncSettings(userId, settings);
+      const serverUpdatedAt = await userService.syncSettings(userId, settings, authorization);
+      if (!isCurrent()) return;
       lastSyncedSettingsRef.current = settings;
       // Server time, never this device's clock: the pull compares it with the
       // profile's (server-stamped) updated_at to decide whose settings are newer.
@@ -75,16 +79,20 @@ export function useCloudSyncSave({
   performSaveRef.current = performSave;
 
   useEffect(() => {
-    if (!currentUser) {
+    saveBackoffMsRef.current = 0;
+    autoSaveDirtySinceRef.current = null;
+    const owner = useAppStore.getState().currentUser;
+    if (!currentUser || owner?.id !== currentUser.id) {
       coordinatorRef.current = null;
       autoSaveDirtySinceRef.current = null;
       return;
     }
 
     const userId = currentUser.id;
-    coordinatorRef.current = createSingleFlightSaveCoordinator(
+    const coordinator = createSingleFlightSaveCoordinator(
       () => {
-        if (hasFetchedForUserRef.current !== userId) return null;
+        if (coordinatorRef.current !== coordinator || hasFetchedForUserRef.current !== userId
+          || useAppStore.getState().currentUser !== owner) return null;
         const store = useAppStore.getState();
         return {
           fingerprint: createCloudSyncFingerprint(userId, {
@@ -101,27 +109,44 @@ export function useCloudSyncSave({
           },
         };
       },
-      (snapshot) => performSaveRef.current(snapshot),
+      (snapshot) => performSaveRef.current(snapshot, owner),
     );
+    coordinatorRef.current = coordinator;
+    return () => {
+      coordinatorRef.current = null;
+      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+    };
   }, [currentUser, hasFetchedForUserRef]);
 
-  const requestSave = useCallback(async () => {
-    if (!currentUser || !coordinatorRef.current) return;
+  const requestSave = useCallback(async function save() {
+    const owner = useAppStore.getState().currentUser;
+    const coordinator = coordinatorRef.current;
+    if (!currentUser || owner?.id !== currentUser.id || !coordinator
+      || hasFetchedForUserRef.current !== currentUser.id) return;
+    const isCurrent = () => useAppStore.getState().currentUser === owner && coordinatorRef.current === coordinator;
     const { setSyncStatus, setSyncError } = useAppStore.getState();
     setSyncStatus('syncing');
     try {
-      await coordinatorRef.current.request();
+      await coordinator.request();
+      if (!isCurrent()) return;
       saveBackoffMsRef.current = 0;
       autoSaveDirtySinceRef.current = null;
       setSyncStatus('success');
       setSyncError(null);
     } catch (error: unknown) {
+      if (!isCurrent()) return;
       saveBackoffMsRef.current = getNextCloudSyncBackoff(saveBackoffMsRef.current, error);
       setSyncStatus('error');
       setSyncError("Couldn't save to the cloud. Your work is safe on this device — we'll retry.");
+      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+      syncTimeoutRef.current = setTimeout(() => {
+        if (isCurrent()) void save().catch((retryError: unknown) => {
+          debugLogger.error('Sync', 'Cloud save retry failed:', retryError);
+        });
+      }, saveBackoffMsRef.current);
       throw error;
     }
-  }, [currentUser]);
+  }, [currentUser, hasFetchedForUserRef]);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -131,8 +156,7 @@ export function useCloudSyncSave({
       });
     };
     const handleVisibility = () => {
-      if (document.visibilityState === 'visible') void fetchFromCloud();
-      else requestBestEffortSave();
+      if (document.visibilityState !== 'visible') requestBestEffortSave();
     };
 
     window.addEventListener('blur', requestBestEffortSave);
@@ -143,7 +167,7 @@ export function useCloudSyncSave({
       window.removeEventListener('pagehide', requestBestEffortSave);
       document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [currentUser, fetchFromCloud, requestSave]);
+  }, [currentUser, requestSave]);
 
   useEffect(() => {
     if (!currentUser) return;

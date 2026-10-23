@@ -69,9 +69,18 @@ function overlapWindowStart(cursorIso: string): string {
 }
 
 export const userService = {
-  syncReviewEvents: async (events: ReviewEvent[]) => {
+  // Pin each sync operation to its starting account, even if Auth switches
+  // sessions while a request or a multi-batch upload is in flight.
+  getSyncAuthorization: async (userId: string): Promise<string> => {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) throw error;
+    if (data.session?.user.id !== userId) throw new Error('Account changed during sync.');
+    return `Bearer ${data.session.access_token}`;
+  },
+  syncReviewEvents: async (events: ReviewEvent[], authorization: string) => {
     for (let i = 0; i < events.length; i += RPC_BATCH_SIZE) {
-      const { error } = await supabase.rpc('append_review_events', { p_events: events.slice(i, i + RPC_BATCH_SIZE) as unknown as Json });
+      const { error } = await supabase.rpc('append_review_events', { p_events: events.slice(i, i + RPC_BATCH_SIZE) as unknown as Json })
+        .setHeader('Authorization', authorization);
       if (error) throw error;
     }
   },
@@ -79,10 +88,12 @@ export const userService = {
   // flags included), profile settings and folders. Pass { since } to fetch
   // only card rows at/after that ISO timestamp (bounded incremental pull);
   // omit for a full pull.
-  getSyncState: async (options?: { since?: string }): Promise<UserSyncState> => {
-    const { data, error } = await supabase.rpc('get_sync_state', {
+  getSyncState: async (options?: { since?: string; authorization?: string }): Promise<UserSyncState> => {
+    const request = supabase.rpc('get_sync_state', {
       p_since: options?.since ? overlapWindowStart(options.since) : null,
     });
+    if (options?.authorization) request.setHeader('Authorization', options.authorization);
+    const { data, error } = await request;
     if (error) {
       debugLogger.error('Supabase', 'Error fetching sync state:', error);
       throw error;
@@ -109,7 +120,7 @@ export const userService = {
   // and last_updated from the JWT; last write wins by review time). Cards in
   // `learnedCards` carry `learned_at`. Errors propagate: the caller keeps the
   // changes dirty and retries.
-  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[]) => {
+  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[], authorization: string) => {
     const learned = new Set(learnedCards);
     const upserts = Object.entries(srsData).map(
       ([cardId, data]) => srsDataToUpsert(data, cardId, learned.has(cardId)),
@@ -117,7 +128,7 @@ export const userService = {
     for (let i = 0; i < upserts.length; i += RPC_BATCH_SIZE) {
       const { error } = await supabase.rpc('upsert_card_progress', {
         p_records: upserts.slice(i, i + RPC_BATCH_SIZE),
-      });
+      }).setHeader('Authorization', authorization);
       if (error) {
         debugLogger.error('Supabase', 'upsert_card_progress failed:', error);
         throw error;
@@ -129,7 +140,7 @@ export const userService = {
   // which is embedded in every access token). Returns the server-stamped
   // `updated_at` (a trigger overwrites the client value; the client one only
   // matters before that migration is applied).
-  syncSettings: async (userId: string, settings: CloudMetadataPayload): Promise<string | null> => {
+  syncSettings: async (userId: string, settings: CloudMetadataPayload, authorization: string): Promise<string | null> => {
     const { data, error } = await supabase
       .from('user_profiles')
       .upsert(
@@ -137,6 +148,7 @@ export const userService = {
         { onConflict: 'id' },
       )
       .select('updated_at')
+      .setHeader('Authorization', authorization)
       .maybeSingle();
     if (error) {
       debugLogger.error('Supabase', 'Error syncing settings:', error);
@@ -148,14 +160,15 @@ export const userService = {
   // Delete only learning progress. Saved words, custom folders, and custom cards
   // deliberately remain intact. Resolves to the reset epoch the server stamped
   // (null if it cannot be read back — the next pull then applies it instead).
-  resetLearningProgress: async (): Promise<string | null> => {
-    const { error } = await supabase.rpc('reset_user_learning_progress');
+  resetLearningProgress: async (userId: string): Promise<string | null> => {
+    const authorization = await userService.getSyncAuthorization(userId);
+    const { error } = await supabase.rpc('reset_user_learning_progress').setHeader('Authorization', authorization);
     if (error) {
       debugLogger.error('Supabase', 'Learning progress reset failed:', error);
       throw error;
     }
     try {
-      return await userService.getProgressResetAt();
+      return await userService.getProgressResetAt(authorization);
     } catch (readError) {
       debugLogger.warn('Supabase', 'Could not read back the progress reset epoch:', readError);
       return null;
@@ -164,8 +177,8 @@ export const userService = {
 
   // The server's current reset epoch (profile-only pull). The resetting device
   // records it so it does not wipe its own fresh state on the next pull.
-  getProgressResetAt: async (): Promise<string | null> => {
-    const state = await userService.getSyncState({ since: PROFILE_ONLY_SINCE });
+  getProgressResetAt: async (authorization?: string): Promise<string | null> => {
+    const state = await userService.getSyncState({ since: PROFILE_ONLY_SINCE, authorization });
     return state.progressResetAt ?? null;
   },
 
