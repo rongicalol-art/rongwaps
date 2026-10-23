@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useAddCard } from './hooks/useAddCard';
-import { ActionButton, AppIcon, ScreenHeader } from '../../lib/widgets';
+import { ActionButton, AppIcon, CustomProgressBar, IconActionButton, ScreenHeader } from '../../lib/widgets';
 
 interface AddCardScreenProps {
   onClose: () => void;
@@ -9,12 +9,15 @@ interface AddCardScreenProps {
 export function AddCardScreen({ onClose }: AddCardScreenProps) {
   const {
     folderName,
+    folderAccent,
     view,
+    direction,
     cardData,
     setCardData,
+    isFocused,
+    setIsFocused,
     saveError,
     setSaveError,
-    saving,
     frontInputRef,
     meaningInputRef,
     suggestions,
@@ -22,225 +25,231 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
     handleNext,
     handleBack,
     handleSave,
-    handleKeyDown,
+    handleKeyDown
   } = useAddCard(onClose);
 
-  const canContinue = cardData.front.trim() !== '';
-  const canSave = cardData.meaning.trim() !== '';
+  const renderFrontScreen = () => (
+    <div key="front" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
+      <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-ui-ink tracking-tight">Type character</h2>
+        <p className="text-ui-muted-strong font-bold mt-2 text-lg">Front face of your card</p>
+      </div>
 
-  return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans selection:bg-brand-primary selection:text-white overscroll-none">
-      <ScreenHeader
-        variant="window"
-        tone="practice"
-        progress={view === 'front' ? 50 : 100}
-        onClose={view === 'front' ? onClose : undefined}
-        onBack={view === 'back' ? handleBack : undefined}
-        maxWidth="2xl"
-      />
+      <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
+        <motion.div 
+          onClick={() => frontInputRef.current?.focus()}
+          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors overflow-hidden
+            ${!cardData.front && !isFocused ? 'anim-float' : ''}
+            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-border hover:bg-ui-hover'}`}
+        >
+          <motion.div className={`absolute top-6 left-6 transition-colors ${isFocused ? 'text-brand-primary' : 'text-ui-muted'}`}>
+            <AppIcon name="typeText" size={26} />
+          </motion.div>
 
-      {/* MAIN CONTENT AREA */}
-      <main className="relative z-10 mx-auto flex w-full max-w-lg flex-1 flex-col items-center justify-center overflow-x-hidden overflow-y-auto px-4 py-6 custom-scrollbar">
-        <div className="mb-2 text-center">
-          <span className="text-xs font-black uppercase tracking-wider text-ui-muted">
-            Adding to {folderName}
-          </span>
-        </div>
+          <motion.div className="flex-1 flex flex-col items-center justify-center w-full relative pt-4 pb-2">
+            <input
+              ref={frontInputRef}
+              type="text"
+              aria-label="Type character"
+              value={cardData.front}
+              onChange={(e) => setCardData({...cardData, front: e.target.value})}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              onKeyDown={(e) => handleKeyDown(e, handleNext)}
+              className={`w-full text-center bg-transparent font-black font-chinese text-ui-ink outline-none placeholder:text-ui-muted transition-all duration-300 leading-tight ${
+                cardData.front.length > 5 ? 'text-[40px] sm:text-[50px]' : 'text-[60px] sm:text-[80px]'}`}
+              placeholder="好"
+              maxLength={15}
+              autoComplete="off"
+            />
+            <motion.div className={`h-2 rounded-full mt-4 transition-all duration-300 ${isFocused ? 'bg-brand-primary w-32' : 'bg-ui-divider w-16'} ${cardData.front.length > 0 ? 'hidden' : 'opacity-100 scale-x-100'}`} />
+          </motion.div>
 
-        <h2 className="mb-6 text-center text-2xl font-black tracking-tight text-ui-ink-strong sm:text-3xl">
-          {view === 'front' ? 'Front of card' : 'Back of card'}
-        </h2>
-
-        <div className="w-full">
-          <AnimatePresence mode="wait">
-            {view === 'front' ? (
-              <motion.div
-                key="front-step"
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 16 }}
-                transition={{ duration: 0.18, ease: 'easeOut' }}
-                className="flex w-full flex-col gap-4"
+          <AnimatePresence>
+            {suggestions.length > 0 && view === 'front' && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="w-full flex gap-2 flex-col pt-4 mt-auto overflow-hidden shrink-0"
               >
-                {/* Tactile Card */}
-                <div
-                  onClick={() => frontInputRef.current?.focus()}
-                  className="flex min-h-72 cursor-text flex-col items-center justify-center rounded-feature border-2 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-8 transition-colors focus-within:border-brand-primary sm:p-10"
-                >
-                  <input
-                    ref={frontInputRef}
-                    autoFocus
-                    aria-label="Character"
-                    value={cardData.front}
-                    onChange={(e) => setCardData({ ...cardData, front: e.target.value })}
-                    onKeyDown={(e) => handleKeyDown(e, handleNext)}
-                    className="w-full rounded-control bg-transparent text-center font-chinese text-6xl font-bold leading-tight text-ui-ink-strong outline-none placeholder:text-ui-muted focus-ring-inline sm:text-7xl"
-                    placeholder="字"
-                    autoComplete="off"
-                  />
-                  <input
-                    aria-label="Pinyin"
-                    value={cardData.pinyin}
-                    onChange={(e) => setCardData({ ...cardData, pinyin: e.target.value })}
-                    onKeyDown={(e) => handleKeyDown(e, handleNext)}
-                    className="mt-3 w-full rounded-control bg-transparent text-center text-base font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline sm:text-lg"
-                    placeholder="pinyin"
-                    autoComplete="off"
-                  />
+                <div className="w-full flex items-center gap-2 mb-2">
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
+                  <div className="text-[10px] sm:text-xs font-bold text-ui-muted uppercase tracking-wider text-center px-1">Suggestions</div>
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
                 </div>
-
-                {/* Suggestions */}
-                {suggestions.length > 0 && cardData.front.trim() && (
-                  <div className="flex flex-col gap-1.5">
-                    <span className="px-1 text-xs font-black uppercase tracking-wider text-ui-muted">
-                      Dictionary matches
-                    </span>
-                    <div className="custom-scrollbar flex max-h-36 flex-col gap-1.5 overflow-y-auto">
-                      {suggestions.slice(0, 3).map((item) => {
-                        const def = item.definitions
-                          ? Array.isArray(item.definitions)
-                            ? String(item.definitions[0] ?? '')
-                            : typeof item.definitions === 'string'
-                            ? item.definitions
-                            : String(Object.values(item.definitions)[0] ?? '')
-                          : '';
-                        return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => handleSelectSuggestion(item)}
-                            className="focus-ring-inline flex items-center justify-between gap-2 rounded-compact border-2 border-b-[length:var(--depth-sm)] border-ui-border bg-ui-canvas px-3 py-2 text-left transition-colors hover:border-brand-primary hover:bg-brand-primary-soft"
-                          >
-                            <div className="flex items-center gap-2">
-                              <span className="font-chinese text-lg font-bold text-ui-ink-strong">
-                                {item.traditional || item.simplified}
-                              </span>
-                              <span className="text-xs font-black text-brand-primary">
-                                {item.pinyin_accented}
-                              </span>
-                            </div>
-                            <span className="max-w-40 truncate text-xs font-bold text-ui-muted-strong">
-                              {def}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="back-step"
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -16 }}
-                transition={{ duration: 0.18, ease: 'easeOut' }}
-                className="flex w-full flex-col gap-4"
-              >
-                {/* Tactile Card Back */}
-                <div
-                  onClick={() => meaningInputRef.current?.focus()}
-                  className="flex min-h-72 cursor-text flex-col items-center justify-center rounded-feature border-2 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-8 transition-colors focus-within:border-brand-primary sm:p-10"
-                >
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="font-chinese text-4xl font-bold text-ui-ink-strong sm:text-5xl">
-                      {cardData.front}
-                    </span>
-                    {cardData.pinyin && (
-                      <span className="text-sm font-black text-brand-primary sm:text-base">
-                        {cardData.pinyin}
+                <div className="flex flex-col w-full gap-2 max-h-[160px] sm:max-h-[200px] overflow-y-auto no-scrollbar pb-2 px-1">
+                  {suggestions.slice(0, 15).map((s, i) => (
+                    <motion.button 
+                      key={i} 
+                      whileHover={{ scale: 1.02, x: 2 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={(e) => { e.stopPropagation(); handleSelectSuggestion(s); }}
+                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-ui-canvas rounded-control border-b-[length:var(--depth-sm)] border-ui-border hover:border-brand-primary-edge hover:bg-brand-primary-soft transition-colors group shrink-0"
+                    >
+                      <span className="font-chinese text-[22px] sm:text-[28px] font-black text-ui-ink group-hover:text-brand-primary transition-colors shrink-0 w-12 sm:w-16 text-center">
+                        {s.traditional || s.simplified}
                       </span>
-                    )}
-                  </div>
-
-                  <div className="my-4 h-1 w-12 rounded-full bg-ui-divider" />
-
-                  <input
-                    ref={meaningInputRef}
-                    autoFocus
-                    aria-label="Meaning"
-                    value={cardData.meaning}
-                    onChange={(e) => setCardData({ ...cardData, meaning: e.target.value })}
-                    onKeyDown={(e) => handleKeyDown(e, handleSave)}
-                    className="w-full rounded-control bg-transparent text-center text-2xl font-bold leading-tight text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline sm:text-3xl"
-                    placeholder="Meaning"
-                    autoComplete="off"
-                  />
-
-                  {/* Multiple definitions selector */}
-                  {cardData.availableMeanings.length > 1 && (
-                    <div className="mt-4 flex flex-wrap justify-center gap-1.5">
-                      {cardData.availableMeanings.slice(0, 3).map((def) => (
-                        <button
-                          key={def}
-                          type="button"
-                          onClick={() => setCardData({ ...cardData, meaning: def })}
-                          className={`focus-ring-inline rounded-compact border px-2.5 py-1 text-xs font-bold transition-colors ${
-                            cardData.meaning === def
-                              ? 'border-brand-primary bg-brand-primary text-white'
-                              : 'border-ui-border bg-ui-canvas text-ui-muted-strong hover:bg-ui-hover'
-                          }`}
-                        >
-                          {def}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Memory hook / Notes field */}
-                <div className="flex flex-col rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-2.5 transition-colors focus-within:border-brand-primary focus-within:bg-brand-primary-soft">
-                  <span className="text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                    Memory hook (optional)
-                  </span>
-                  <input
-                    aria-label="Memory hook"
-                    value={cardData.notes}
-                    onChange={(e) => setCardData({ ...cardData, notes: e.target.value })}
-                    onKeyDown={(e) => handleKeyDown(e, handleSave)}
-                    placeholder="A story, a picture, a sound-alike"
-                    className="w-full rounded-control bg-transparent text-sm font-bold text-ui-ink outline-none placeholder:text-ui-muted focus-ring-inline"
-                  />
+                      <div className="flex flex-col ml-2 overflow-hidden flex-1 justify-center">
+                        <span className="text-[12px] sm:text-[14px] font-bold text-ui-muted group-hover:text-brand-primary leading-none mb-1 mt-1 transition-colors">
+                          {s.pinyin_accented || s.simplified}
+                        </span>
+                        <span className="text-[11px] sm:text-[13px] text-ui-muted-strong truncate font-bold leading-none">
+                          {s.definitions && Array.isArray(s.definitions) ? s.definitions[0] : ''}
+                        </span>
+                      </div>
+                    </motion.button>
+                  ))}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+
+  const renderBackScreen = () => (
+    <div key="back" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
+      <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-ui-ink tracking-tight">Type meaning</h2>
+        <p className="text-ui-muted-strong font-bold mt-2 text-lg">Back face of your card</p>
+      </div>
+
+      <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
+        <motion.div 
+          onClick={() => meaningInputRef.current?.focus()}
+          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors
+            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-border hover:bg-ui-hover'}`}
+        >
+          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-ui-muted font-bold text-sm bg-ui-surface px-4 py-2 rounded-control border-b-[length:var(--depth-sm)] border-ui-border spring-transition hover:-translate-y-0.5">
+            <span className="opacity-70 uppercase text-xs tracking-wider">Front</span>
+            <span className="text-xl text-brand-primary font-chinese">{cardData.front}</span>
+          </motion.div>
+
+          <motion.div className="flex-1 flex flex-col items-center justify-center w-full relative pt-4 pb-2">
+            <textarea
+              ref={meaningInputRef}
+              aria-label="Type meaning"
+              value={cardData.meaning}
+              onChange={(e) => setCardData({ ...cardData, meaning: e.target.value })}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSave(); } }}
+              className={`w-full text-center bg-transparent font-black text-ui-ink outline-none placeholder:text-ui-muted resize-none overflow-hidden py-2 leading-snug ${
+                cardData.meaning.length > 30 ? 'text-[24px] sm:text-[32px]' : cardData.meaning.length > 15 ? 'text-[32px] sm:text-[44px]' : 'text-[40px] sm:text-[60px]'}`}
+              placeholder="Meaning"
+              autoComplete="off"
+              rows={1}
+            />
+            <motion.div className={`h-2 rounded-full mt-2 transition-all duration-300 ${isFocused ? 'bg-brand-primary w-48' : 'bg-ui-divider w-24'} ${cardData.meaning.length > 0 ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'}`} />
+          </motion.div>
+
+          <AnimatePresence>
+            {cardData.availableMeanings.length > 1 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="w-full flex gap-2 flex-col pt-4 overflow-hidden shrink-0 mt-auto"
+              >
+                <div className="w-full flex items-center gap-2 mb-2">
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
+                  <div className="text-[10px] sm:text-xs font-bold text-ui-muted uppercase tracking-wider text-center px-1">Suggestions</div>
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
+                </div>
+                <div className="flex flex-col gap-2 px-2 pb-4 pt-1 max-h-[140px] sm:max-h-[160px] overflow-y-auto no-scrollbar w-full">
+                  <AnimatePresence>
+                    {cardData.availableMeanings.filter(m => m !== cardData.meaning).map((meaning) => (
+                      <motion.button 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.15 }}
+                        key={meaning} 
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={(e) => { e.stopPropagation(); setCardData({...cardData, meaning}); }}
+                        className="w-full text-center px-4 py-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-border text-ui-muted hover:text-brand-primary hover:border-brand-primary-edge hover:bg-brand-primary-soft font-bold rounded-control text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
+                      >
+                        {meaning}
+                      </motion.button>
+                    ))}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans selection:bg-brand-primary selection:text-white overscroll-none">
+      <ScreenHeader
+        variant="panel"
+        tone="practice"
+        onBack={view === 'back' ? handleBack : undefined}
+        onClose={view === 'front' ? onClose : undefined}
+        maxWidth="none"
+        centerContent={(
+          <div className="flex w-full flex-col items-center gap-2">
+            <span className="font-bold text-ui-muted uppercase tracking-widest text-xs">
+              Adding to <span className={folderAccent}>{folderName}</span>
+            </span>
+            <CustomProgressBar
+              progress={view === 'front' ? 50 : 100}
+              size="sm"
+            />
+          </div>
+        )}
+        rightAction={(
+            <IconActionButton
+              disabled
+              size="lg"
+              label="Card settings coming soon"
+              icon={<AppIcon name="settings" size={25} className="opacity-40" />}
+            />
+          )}
+        />
+
+      {/* MAIN CONTENT AREA */}
+      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center overflow-x-hidden overflow-y-auto p-2 no-scrollbar">
+        {view === 'front' ? renderFrontScreen() : renderBackScreen()}
       </main>
 
       {/* BOTTOM FIXED ACTION BAR */}
-      <footer className="pointer-events-none relative z-20 shrink-0 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent p-4 md:p-6">
-        <div className="mx-auto w-full max-w-lg">
-          {saveError && (
-            <div
-              role="alert"
-              className="pointer-events-auto mb-3 flex items-center justify-center gap-2 rounded-control border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 bg-feedback-danger/10 px-4 py-3 text-center text-sm font-bold text-feedback-danger-edge"
-            >
-              <span>{saveError}</span>
-              <button
-                type="button"
-                onClick={() => setSaveError(null)}
-                className="ml-2 font-black text-feedback-danger hover:text-feedback-danger-edge"
-                aria-label="Dismiss error"
+      <footer className="pointer-events-none relative z-20 shrink-0 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent p-4 pt-8 md:p-6 md:pt-10">
+          <div className="max-w-4xl mx-auto w-full">
+            {saveError && (
+              <div
+                role="alert"
+                className="mb-3 px-4 py-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control text-feedback-danger-edge font-bold text-sm text-center flex items-center justify-center gap-2"
               >
-                <AppIcon name="close" size={14} />
-              </button>
-            </div>
-          )}
-          <ActionButton
-            variant="primary"
-            size="lg"
-            fullWidth
-            onClick={view === 'front' ? handleNext : handleSave}
-            disabled={view === 'front' ? !canContinue : !canSave}
-            loading={view === 'back' && saving}
-            loadingLabel="Saving card"
-            className="pointer-events-auto text-lg uppercase tracking-widest"
-          >
-            {view === 'front' ? 'Continue' : 'Save card'}
-          </ActionButton>
-        </div>
+                <span>{saveError}</span>
+                <button
+                  onClick={() => setSaveError(null)}
+                  className="ml-2 text-feedback-danger hover:text-feedback-danger-edge font-black"
+                  aria-label="Dismiss error"
+                >
+                  <AppIcon name="close" size={14} />
+                </button>
+              </div>
+            )}
+            <ActionButton
+              variant="primary"
+              size="lg"
+              fullWidth
+              onClick={view === 'front' ? handleNext : handleSave}
+              disabled={view === 'front' ? !cardData.front.trim() : !cardData.meaning.trim()}
+              className="pointer-events-auto uppercase tracking-widest text-lg"
+            >
+              {view === 'front' ? 'CONTINUE' : 'SAVE CARD'}
+            </ActionButton>
+          </div>
       </footer>
     </div>
   );
