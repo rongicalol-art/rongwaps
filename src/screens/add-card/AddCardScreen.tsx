@@ -30,14 +30,15 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
   } = useAddCard(onClose);
 
   const hasResults = view === 'front' && suggestions.length > 0;
-  const cardTone = isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-border hover:bg-ui-hover';
-  const cardBase = `${CARD_SIZE} relative bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col p-6 transition-colors overflow-hidden`;
-  const hint = 'mb-4 text-center text-lg font-bold text-ui-muted-strong';
+  const cardTone = isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-divider hover:bg-ui-hover';
+  const cardBase = `${CARD_SIZE} relative bg-ui-surface rounded-feature border-[3px] border-b-[length:var(--depth-xl)] cursor-text flex flex-col p-6 transition-colors overflow-hidden`;
+  const hint = 'mb-5 text-center text-xl sm:text-2xl font-black tracking-tight text-ui-ink-strong';
+  const em = 'text-brand-primary';
   const slide = direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back';
 
   const renderFrontScreen = () => (
     <div key="front" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${slide}`}>
-      <p className={hint}>Type Chinese, pinyin or English</p>
+      <p className={hint}>Type <span className={em}>Chinese</span>, <span className={em}>pinyin</span> or <span className={em}>English</span></p>
       <div onClick={() => frontInputRef.current?.focus()} className={`${cardBase} ${cardTone}`}>
         <div className={`flex flex-col items-center justify-center gap-3 ${hasResults ? 'shrink-0' : 'flex-1'}`}>
           <input
@@ -90,7 +91,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
 
   const renderBackScreen = () => (
     <div key="back" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${slide}`}>
-      <p className={hint}>What does it mean?</p>
+      <p className={hint}>What does it <span className={em}>mean</span>?</p>
       <div onClick={() => meaningInputRef.current?.focus()} className={`${cardBase} ${cardTone}`}>
         <div className="flex items-baseline gap-2 self-start bg-ui-surface px-3 py-1.5 rounded-xs border-2 border-b-[length:var(--depth-sm)] border-ui-border">
           <span className="text-xl text-brand-primary font-chinese font-bold leading-none">{cardData.front}</span>
