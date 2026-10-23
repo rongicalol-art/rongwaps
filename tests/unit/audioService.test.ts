@@ -77,6 +77,7 @@ class FakeAudio {
 class FakeSpeechSynthesisUtterance {
   lang = '';
   rate = 1;
+  volume = 1;
   voice: SpeechSynthesisVoice | null = null;
   onend: (() => void) | null = null;
   onerror: (() => void) | null = null;
@@ -259,6 +260,43 @@ test('English definitions never fall back to a Chinese voice', async () => {
   assert.equal(speechState.spoken.at(-1)?.voice?.lang, 'en-US');
   service.stop();
   await playback;
+});
+
+test('a tap unlocks speech synchronously before delayed Flow definitions on iOS', async () => {
+  const synth = window.speechSynthesis;
+  const savedSpeak = synth.speak;
+  let inGesture = true;
+  let unlocked = false;
+  const accepted: FakeSpeechSynthesisUtterance[] = [];
+  synth.speak = (utterance) => {
+    if (inGesture) unlocked = true;
+    if (unlocked) accepted.push(utterance as unknown as FakeSpeechSynthesisUtterance);
+  };
+  const service = new AudioService();
+  try {
+    service.initialize();
+    inGesture = false;
+    assert.equal(unlocked, true, 'speak must run before the tap handler returns');
+    assert.equal(accepted[0]?.volume, 0, 'unlock must be silent');
+    accepted[0]?.onend?.();
+    service.initialize();
+    assert.equal(accepted.length, 1, 'initialization must not enqueue repeated unlocks');
+
+    const recording = service.play('https://audio.example.test/flow-chinese.mp3');
+    await tick();
+    (service.getGlobalAudio() as unknown as FakeAudio).onended?.();
+    await recording;
+    service.stop();
+    const definition = service.speakText('hello there', 'en-US');
+    await tick();
+    assert.equal(accepted[1]?.text, 'hello there');
+    assert.equal(accepted[1]?.voice?.lang, 'en-US');
+    accepted[1]?.onend?.();
+    await definition;
+  } finally {
+    service.stop();
+    synth.speak = savedSpeak;
+  }
 });
 
 test('playRange seeks to the start and stops at the range end', async () => {
