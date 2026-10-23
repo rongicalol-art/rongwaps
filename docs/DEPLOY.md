@@ -212,7 +212,7 @@ Finishing fixes a player's place and enables spectating. Active racers receive o
 
 ## Setup status
 
-Wrangler is installed and pinned. Generated Worker types, the deployment dry run and a local SQLite Durable Object integration test pass. Cloudflare CLI is not authenticated yet; production deployment and Render configuration remain pending.
+Wrangler 4.152.0 is installed and pinned. Generated Worker types, the deployment dry run and the local SQLite Durable Object integration test pass. The Worker is deployed at `https://rons-mandarin-games.ronm222007.workers.dev`; live health, anonymous rejection and origin rejection checks pass. Render has `GAMES_SERVER_URL` set to that origin, and the live `/api/games/config` returns it. A complete race with two designated school test accounts on production remains a launch check; local tests use synthetic identities and never production tokens.
 
 For a fresh checkout:
 
