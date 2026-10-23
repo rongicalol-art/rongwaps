@@ -85,7 +85,13 @@ export function useAddCard(onClose: () => void) {
 
   const handleNext = () => {
     if (cardData.front.trim()) {
-      const exactMatch = suggestions.find(s => s.traditional === cardData.front.trim() || s.simplified === cardData.front.trim());
+      const typed = cardData.front.trim();
+      const exactMatch = suggestions.find(s => s.traditional === typed || s.simplified === typed);
+      // Pinyin/English input is a search, not the card face: take the top hit.
+      if (!exactMatch && !/[㐀-鿿]/.test(typed) && suggestions[0]) {
+        handleSelectSuggestion(suggestions[0]);
+        return;
+      }
       let newMeanings = cardData.availableMeanings;
       let newMeaning = cardData.meaning;
       let newPinyin = cardData.pinyin;
