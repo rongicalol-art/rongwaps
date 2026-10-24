@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
-import { playSentence } from '../../../services/audio/sentenceAudio';
+import { playFlowSentence, playSentence } from '../../../services/audio/sentenceAudio';
 import type { Flashcard } from '../../../data/flashcards';
 import type { PracticeFlowStatus } from '../../../types/models';
 import type { LessonSentence } from './useLessonSentences';
@@ -12,8 +12,6 @@ export function sentenceText(sentence: LessonSentence, characterPreference: 'tra
   return characterPreference === 'simplified' && sentence.record.simplified ? sentence.record.simplified : sentence.record.traditional;
 }
 
-/** Flow's repeat-after-me gap: as long as the clip, at least this long. */
-const MIN_SHADOW_MS = 1200;
 const wait = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
 /** useCardSession deals cards; a sentence travels as one keyed by its record id. */
@@ -27,6 +25,9 @@ function toCard({ record }: LessonSentence): Flashcard {
  */
 export function useSentenceSession(sentences: LessonSentence[], sessionKey: string) {
   const characterPreference = useAppStore((state) => state.characterPreference);
+  const flowBackDelayMs = useAppStore((state) => state.flowBackDelayMs);
+  const flowSpeakTranslation = useAppStore((state) => state.flowSpeakTranslation);
+  const flowRepeatPause = useAppStore((state) => state.flowRepeatPause);
   const cards = useMemo(() => sentences.map(toCard), [sentences]);
   const byId = useMemo(() => new Map(sentences.map((sentence) => [sentence.record.id, sentence])), [sentences]);
   /** Cards opened this round stay open, so moving on never changes the height of what's above. */
@@ -107,25 +108,30 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     else setFlowStatus('playing');
   }, [pauseFlow]);
 
-  /** Flow (header menu): open the card, play it, leave room to repeat it, move on; the last one finishes. */
+  /** Flow (header menu): open the card, play it (English and repeat pause per settings), move on; the last one finishes. */
   useEffect(() => {
     if (flowStatus !== 'playing' || !current || completed) return;
     let cancelled = false;
     void (async () => {
       setOpenIds((ids) => (ids.has(current.record.id) ? ids : new Set(ids).add(current.record.id)));
-      const { audio } = current.record;
+      const { audio, english } = current.record;
+      const token = ++tokenRef.current;
+      const isCancelled = () => cancelled || tokenRef.current !== token;
+      // No book recording: leave time to read it rather than play the synthetic voice.
       if (audio) {
-        if (!(await play(current)) || cancelled) return;
-        const clipMs = audio.start !== undefined && audio.end !== undefined ? (audio.end - audio.start) * 1000 : 0;
-        await wait(Math.max(MIN_SHADOW_MS, clipMs));
+        await playFlowSentence(sentenceText(current, characterPreference), audio, english, characterPreference, {
+          speakTranslation: flowSpeakTranslation, repeatPause: flowRepeatPause, isCancelled,
+        });
       } else {
-        await wait(MIN_SHADOW_MS * 2);
+        await wait(flowBackDelayMs * 2);
       }
-      if (cancelled) return;
+      if (isCancelled()) return;
+      await wait(flowBackDelayMs);
+      if (isCancelled()) return;
       if (advanceOrComplete() === 'completed') setFlowStatus('finished');
     })();
     return () => { cancelled = true; };
-  }, [advanceOrComplete, completed, current, flowStatus, play]);
+  }, [advanceOrComplete, characterPreference, completed, current, flowBackDelayMs, flowRepeatPause, flowSpeakTranslation, flowStatus]);
 
   const toggleHard = useCallback((id: string) => {
     setHardIds((ids) => {

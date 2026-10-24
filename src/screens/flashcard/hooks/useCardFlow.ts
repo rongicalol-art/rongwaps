@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import type { PracticeFlowStatus } from '../../../types/models';
 import { audioService } from '../../../services/audioService';
+import { playFlowSentence } from '../../../services/audio/sentenceAudio';
+import { fetchPackedFlashcardExtras } from '../../../services/contentPacks';
 import { useAppStore } from '../../../store/useAppStore';
 
 interface UseCardFlowOptions {
@@ -29,6 +31,10 @@ export function useCardFlow({
   const flowBackDelayMs = useAppStore((state) => state.flowBackDelayMs);
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const speakDefinition = useAppStore((state) => state.speakDefinition);
+  const flowExamples = useAppStore((state) => state.flowExamples);
+  const flowSpeakTranslation = useAppStore((state) => state.flowSpeakTranslation);
+  const flowRepeatPause = useAppStore((state) => state.flowRepeatPause);
+  const characterPreference = useAppStore((state) => state.characterPreference);
   const onAdvanceRef = useRef(onAdvance);
   const onReplayRef = useRef(onReplay);
   const onFinishSetRef = useRef(onFinishSet);
@@ -95,6 +101,24 @@ export function useCardFlow({
         await audioService.speakText(currentCard.back, 'en-US', Math.min(pronunciationRate, 1.1));
       }
       if (cancelled) return;
+
+      // The card's best example with a recording (book voice first; never the synthetic voice).
+      if (flowExamples) {
+        const extras = await fetchPackedFlashcardExtras(currentCard).catch(() => null);
+        const example = extras?.examples.filter((item) => item.audio).sort((a, b) => a.rank - b.rank || Number(a.audio?.voice !== 'book') - Number(b.audio?.voice !== 'book'))[0];
+        if (cancelled) return;
+        if (example) {
+          await wait(flowFrontDelayMs);
+          if (cancelled) return;
+          await playFlowSentence(example.chinese, example.audio, example.english, characterPreference, {
+            speakTranslation: flowSpeakTranslation,
+            repeatPause: flowRepeatPause,
+            rate: pronunciationRate,
+            isCancelled: () => cancelled,
+          });
+          if (cancelled) return;
+        }
+      }
       await wait(flowBackDelayMs);
       if (cancelled) return;
 
@@ -120,7 +144,7 @@ export function useCardFlow({
     return () => {
       cancelled = true;
     };
-  }, [currentCard, currentIndex, flowBackDelayMs, flowFrontDelayMs, flowStatus, flowStep, pronunciationRate, speakDefinition, totalCount]);
+  }, [characterPreference, currentCard, currentIndex, flowBackDelayMs, flowExamples, flowFrontDelayMs, flowRepeatPause, flowSpeakTranslation, flowStatus, flowStep, pronunciationRate, speakDefinition, totalCount]);
 
   useEffect(() => () => audioService.stop(), []);
 

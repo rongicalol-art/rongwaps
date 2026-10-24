@@ -32,7 +32,10 @@ type BooleanPreferenceKey =
   | 'replayAudioAfterAnswer'
   | 'autoAdvanceCorrect'
   | 'autoAdvanceWrong'
-  | 'dockAutoHide';
+  | 'dockAutoHide'
+  | 'flowExamples'
+  | 'flowSpeakTranslation'
+  | 'flowRepeatPause';
 
 export const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
   { value: 0.5, label: 'Slowest (0.5x)' },
@@ -186,7 +189,7 @@ export function PracticeSettingsScreen({
               </div>
             </SettingsPageSection>
 
-            <SettingsPageSection title="Flow pacing">
+            <SettingsPageSection title="Flow">
               <div className="flex flex-col gap-4 px-2">
                 <SettingsDropdownPicker
                   label="Flip delay"
@@ -203,6 +206,24 @@ export function PracticeSettingsScreen({
                   onChange={(value) => onPreferencesChange({ flowBackDelayMs: Number(value) })}
                 />
               </div>
+              <SettingsToggleRow
+                checked={preferences.flowExamples}
+                onClick={toggle('flowExamples')}
+                label="Play example sentence"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.flowSpeakTranslation}
+                onClick={toggle('flowSpeakTranslation')}
+                label="Speak sentence translation"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.flowRepeatPause}
+                onClick={toggle('flowRepeatPause')}
+                label="Pause to repeat"
+                className="border-b-0"
+              />
             </SettingsPageSection>
 
             <SettingsPageSection title="Practice dock">

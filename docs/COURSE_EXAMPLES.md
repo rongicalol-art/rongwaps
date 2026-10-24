@@ -33,7 +33,10 @@ English meaning, curriculum location, source card, and extraction provenance.
   one line when a sentence doesn't align) and the English shows; opened cards stay open. Hold
   a character on a closed card to peek its pinyin; tap one on an open card for its breakdown.
   Mark cards Hard; the end screen offers a Hard-only round. The header menu has Shuffle and
-  Flow (open, play, pause as long as the clip to repeat it, move on; any input pauses it).
+  Flow (open, play, the Next card delay, move on; any input pauses it). Study settings → Flow:
+  Speak sentence translation and Pause to repeat (`playFlowSentence`) apply here and to the
+  flashcard example Flow plays (Play example sentence: the best-ranked example with a recording,
+  book voice first).
   Position and resume come from `useCardSession`; nothing is graded, so it never writes SRS.
   The lesson window offers it only for parts that have records. Preview: debug window → UI
   Previews.

@@ -55,6 +55,12 @@ export interface PracticePreferences {
   dockStyle: PracticeDockStyle;
   /** Fade the practice dock when idle. */
   dockAutoHide: boolean;
+  /** Flashcard Flow also plays the card's top example sentence. */
+  flowExamples: boolean;
+  /** Flow speaks a sentence's English after it (Sentences, flashcard examples). */
+  flowSpeakTranslation: boolean;
+  /** Flow waits as long as a sentence after playing it, so it can be repeated aloud. */
+  flowRepeatPause: boolean;
 }
 
 type PaceTimings = Pick<
@@ -112,6 +118,9 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   matchPairType: 'mixed',
   dockStyle: 'bottom-center',
   dockAutoHide: false,
+  flowExamples: true,
+  flowSpeakTranslation: false,
+  flowRepeatPause: false,
 };
 
 export interface PracticePreferencesActions {
@@ -156,6 +165,9 @@ export const PRACTICE_PREFERENCES_PERSISTED_KEYS = [
   'matchPairType',
   'dockStyle',
   'dockAutoHide',
+  'flowExamples',
+  'flowSpeakTranslation',
+  'flowRepeatPause',
 ] as const;
 
 export const PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS = {};

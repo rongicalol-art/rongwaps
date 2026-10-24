@@ -74,6 +74,9 @@ const EXPECTED_PERSISTED_KEYS = [
   'matchPairType',
   'dockStyle',
   'dockAutoHide',
+  'flowExamples',
+  'flowSpeakTranslation',
+  'flowRepeatPause',
   // Study together (local choices only)
   'showOnline',
   'socialMuted',
