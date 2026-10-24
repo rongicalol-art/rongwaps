@@ -2,12 +2,9 @@ import { useEffect, useState } from 'react';
 import { fetchContentBlobUrl } from '../../../services/staticContentService';
 import type { PracticeCastMember } from '../../../types/models';
 import wangThinking from '../../../assets/images/grammar-practice/wang-thinking.webp';
-import restlessSleep from '../../../assets/images/grammar-practice/restless-sleep.webp';
 import { bookPagePath } from '../../../utils/grammar/bookPagePath';
-import { CountdownScene } from './CountdownScene';
-import { ChangeScene } from './ChangeScene';
 import { objectScene } from './ObjectScenes';
-import { RouteScene } from './RouteScene';
+import { generatedPictureAssets } from './generatedPictureAssets';
 
 interface PictureSceneProps {
   page: number;
@@ -61,92 +58,34 @@ export function PageCrop({ src, box, alt, onLoad, onError }: {
   );
 }
 
-/** One owner for the source-checked pilots and their scene-first presentation. */
+/** Generated scenes share their presentation with the slot-build layout check. */
 export function sceneFirstPicture(props: PictureSceneProps) {
-  const key = `${props.page}:${props.box.join(',')}`;
-  if (key === '99:0.207,0.34,0.08,0.11') {
-    // The adult shirt draft is not source-faithful. Keep the book's boy until a redraw is approved.
-    return <BookPictureScene {...props} />;
-  }
-  if (key === '125:0.178,0.262,0.125,0.073') {
-    return (
-      <svg role="img" aria-label={props.alt} viewBox="0 0 340 250" className="mx-auto h-[196px] max-w-full sm:h-60">
-        <ellipse cx="170" cy="234" rx="128" ry="8" className="fill-ui-divider" />
-        <rect x="80" y="130" width="17" height="102" rx="6" className="fill-brand-secondary-edge" />
-        <rect x="243" y="130" width="17" height="102" rx="6" className="fill-brand-secondary-edge" />
-        <rect x="56" y="122" width="228" height="20" rx="8" className="fill-brand-secondary-edge" />
-        <rect x="56" y="112" width="228" height="20" rx="8" className="fill-brand-secondary" />
-        <path d="M70 118h70" className="fill-none stroke-brand-on-primary opacity-30 [stroke-linecap:round] [stroke-width:4]" />
-        <rect x="110" y="96" width="122" height="16" rx="5" className="fill-brand-primary-edge" />
-        <rect x="118" y="84" width="112" height="16" rx="3" className="fill-ui-surface" />
-        <path d="M126 89h96M126 95h96" className="fill-none stroke-ui-divider [stroke-width:2]" />
-        <rect x="110" y="72" width="122" height="15" rx="5" className="fill-brand-primary" />
-        <path d="M206 72v26l7 -5 7 5V72z" className="fill-brand-secondary" />
-      </svg>
-    );
-  }
-  if (key === '138:0.647,0.281,0.205,0.145') return <IllustratedPicture {...props} src={restlessSleep} />;
-  if (key === '166:0.252,0.258,0.211,0.119') {
-    return <ChangeScene before={{ date: { month: 3, day: 28 }, label: '昨天 · 星期三', value: '25°C' }} now={{ date: { month: 3, day: 29 }, label: '今天 · 星期四', value: '30°C' }} />;
-  }
-  if (key === '166:0.615,0.243,0.219,0.145') {
-    return (
-      <ChangeScene alt={props.alt} before={{ label: '2016年', value: '$80' }} now={{ label: '現在', value: '$120' }}>
-        <svg viewBox="0 0 250 140" className="h-28 w-56" aria-hidden="true">
-          <path d="M70 46L160 6M84 48L178 14" className="fill-none stroke-brand-primary-deep [stroke-linecap:round] [stroke-width:7]" />
-          <rect x="92" y="112" width="66" height="18" rx="7" className="fill-brand-secondary-edge" />
-          <path d="M24 58Q36 124 125 124Q214 124 226 58Z" className="fill-brand-secondary-edge" />
-          <path d="M24 52Q36 118 125 118Q214 118 226 52Z" className="fill-brand-secondary" />
-          <path d="M44 74Q58 104 98 110" className="fill-none stroke-brand-on-primary opacity-30 [stroke-linecap:round] [stroke-width:7]" />
-          <ellipse cx="125" cy="52" rx="103" ry="20" className="fill-brand-secondary-edge" />
-          <ellipse cx="125" cy="50" rx="92" ry="14" className="fill-brand-secondary-soft" />
-          <path d="M62 50q14 -10 28 0t28 0 28 0 28 0M70 56q14 -8 28 0t28 0 28 0" className="fill-none stroke-brand-secondary [stroke-linecap:round] [stroke-width:3.5]" />
-          <rect x="132" y="38" width="30" height="13" rx="6" transform="rotate(-8 147 44)" className="fill-brand-secondary-edge" />
-          <rect x="94" y="40" width="26" height="12" rx="6" transform="rotate(10 107 46)" className="fill-brand-secondary-edge" />
-        </svg>
-      </ChangeScene>
-    );
-  }
-  if (key === '195:0.193,0.676,0.293,0.136') {
-    return <CountdownScene now={{ date: { month: 4, day: 3 }, label: { traditional: '今天', pinyin: 'jīntiān', english: 'today' } }} next={{ date: { month: 4, day: 5 } }} renderChinese={(text) => text.traditional} />;
-  }
-  if (key === '196:0.202,0.148,0.287,0.121') {
-    return <CountdownScene now={{ time: '11:50', label: { traditional: '現在', pinyin: 'xiànzài', english: 'now' } }} next={{ time: '12:00', label: { traditional: '中午休息時間', pinyin: 'zhōngwǔ xiūxí shíjiān', english: 'noon break' } }} renderChinese={(text) => text.traditional} />;
-  }
-  if (key === '196:0.2,0.344,0.275,0.123') {
-    return <CountdownScene now={{ date: { month: 10, day: 1 }, label: { traditional: '今天', pinyin: 'jīntiān', english: 'today' } }} next={{ date: { month: 10, day: 10 }, label: { traditional: '弟弟十歲生日', pinyin: 'dìdi shí suì shēngrì', english: 'younger brother’s tenth birthday' } }} renderChinese={(text) => text.traditional} />;
-  }
-  return null;
+  const art = generatedPictureAssets[`${props.page}:${props.box.join(',')}`];
+  if (!art) return null;
+  return <IllustratedPicture key={art.src} {...props} src={art.src} alt={art.alt ?? props.alt} caption={art.caption} />;
 }
 
 /** Reviewed replacements are keyed by the exact source crop; everything else keeps the scan. */
 export function PictureScene(props: PictureSceneProps) {
-  // Redrawn object pictures replace the scan but keep the item's own layout and instruction.
-  const drawn = objectScene(`${props.page}:${props.box.join(',')}`, props.alt);
-  if (drawn) return drawn;
   const reviewed = sceneFirstPicture(props);
   if (reviewed) return reviewed;
+  const drawn = objectScene(`${props.page}:${props.box.join(',')}`, props.alt);
+  if (drawn) return drawn;
   if (props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {
     return <img src={wangThinking} alt={props.alt} draggable={false} className="mx-auto block h-auto max-h-[230px] w-full max-w-[285px] select-none object-contain sm:max-h-[300px]" />;
-  }
-  // Source-checked diagram replacements; coordinates identify the printed exercise, not a guessed alt-text match.
-  const key = `${props.page}:${props.box.join(',')}`;
-  if (key === '163:0.173,0.332,0.296,0.1') {
-    return <RouteScene from={{ icon: 'usa', label: '美國' }} to={{ icon: 'taiwan', label: '台灣' }} arrived={false} showPurpose={false} />;
-  }
-  if (key === '163:0.18,0.502,0.28,0.095') {
-    return <RouteScene from={{ icon: 'home', label: '家' }} to={{ icon: 'school', label: '學校' }} arrived={false} showPurpose={false} />;
-  }
-  if (key === '163:0.176,0.677,0.23,0.084') {
-    return <RouteScene from={{ icon: 'restaurant', label: '餐廳' }} to={{ icon: 'library', label: '圖書館' }} arrived={false} showPurpose={false} />;
   }
   return <BookPictureScene {...props} />;
 }
 
-function IllustratedPicture({ src, ...props }: PictureSceneProps & { src: string }) {
+function IllustratedPicture({ src, caption, ...props }: PictureSceneProps & { src: string; caption?: string }) {
   const [failed, setFailed] = useState(false);
   if (failed) return <BookPictureScene {...props} />;
-  return <img src={src} alt={props.alt} onError={() => setFailed(true)} draggable={false} className="mx-auto block h-auto max-h-[196px] w-full max-w-sm select-none object-contain sm:max-h-60" />;
+  return (
+    <figure className="mx-auto w-full max-w-sm">
+      <img src={src} alt={props.alt} onError={() => setFailed(true)} draggable={false} className="mx-auto block h-auto max-h-[196px] w-full select-none object-contain sm:max-h-60" />
+      {caption && <figcaption className="mt-2 text-center font-chinese text-sm font-bold text-ui-ink">{caption}</figcaption>}
+    </figure>
+  );
 }
 
 /** A crop of the printed book 1 page, shown as the picture an exercise is about. */
