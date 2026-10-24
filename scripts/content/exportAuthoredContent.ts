@@ -222,15 +222,35 @@ async function loadSourceReadings(bookId: number): Promise<ReadingRecord[]> {
   return JSON.parse(await readFile(readingsPath, 'utf8')) as ReadingRecord[];
 }
 
-/** Reading lines get their studio recording; Book 1 readings play the official track instead. */
-async function attachReadingAudio(readings: ReadingRecord[]) {
+interface AlignedLineSource { text: string; start: number; end: number; unmatched?: boolean }
+
+/**
+ * Reading lines without a hosted track (Book 1 plays its official track instead): the line's clip
+ * of the book's own recording (forced-aligned, streamed from the official Drive file), else its
+ * studio recording.
+ */
+async function attachReadingAudio(bookId: number, readings: ReadingRecord[]) {
   const studio = JSON.parse(await readFile(resolve(ROOT, 'content/audio/grammar_studio_audio.json'), 'utf8').catch(() => '{}')) as Record<string, { file: string }>;
+  const index = JSON.parse(await readFile(resolve(ROOT, `content/audio/audio_index_book${bookId}.json`), 'utf8').catch(() => '{}')) as {
+    streamUrlPattern?: string; dialogueTracks?: Array<{ file: string; id: string }>;
+  };
+  const alignment = JSON.parse(await readFile(resolve(ROOT, `content/dialogueAlignment-book${bookId}.json`), 'utf8').catch(() => '{}')) as Record<string, {
+    audioFile: string; lines: AlignedLineSource[];
+  }>;
+  const trackIds = new Map((index.dialogueTracks ?? []).map((track) => [track.file, track.id]));
   const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
   for (const reading of readings) {
-    for (const line of reading.paragraphs) {
+    const aligned = alignment[reading.id];
+    const trackId = aligned && trackIds.get(aligned.audioFile);
+    reading.paragraphs.forEach((line, lineIndex) => {
+      const range = aligned?.lines[lineIndex];
+      if (trackId && index.streamUrlPattern && range && !range.unmatched && range.end > range.start && range.text === line.traditional) {
+        line.audio = { voice: 'book', file: index.streamUrlPattern.replace('{FILE_ID}', trackId), start: range.start, end: range.end, cache: false };
+        return;
+      }
       const clip = studio[han(line.traditional)];
       if (clip) line.audio = { voice: 'studio', file: clip.file };
-    }
+    });
   }
 }
 
@@ -238,7 +258,7 @@ async function main() {
   console.log('Exporting authored content to public/data packs...');
   for (const bookId of [1, 3]) {
     const readings = await loadSourceReadings(bookId);
-    if (bookId !== 1) await attachReadingAudio(readings);
+    if (bookId !== 1) await attachReadingAudio(bookId, readings);
     const grammarParts = await loadSourceGrammarParts(bookId);
 
     await exportPack(READINGS_DIR, 'readings', bookId, readings);

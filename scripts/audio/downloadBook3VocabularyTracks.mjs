@@ -1,7 +1,7 @@
 /**
- * Download the official Book 3 vocabulary tracks for local sentence alignment.
- * These originals stay in ignored output/ and are never uploaded by this script.
- * Usage: node scripts/audio/downloadBook3VocabularyTracks.mjs
+ * Download the official Book 3 vocabulary tracks (or, with --dialogue, the dialogue tracks) for
+ * local alignment. These originals stay in ignored output/ and are never uploaded by this script.
+ * Usage: node scripts/audio/downloadBook3VocabularyTracks.mjs [--dialogue]
  * Requires: ffprobe.
  */
 import { createHash } from 'node:crypto';
@@ -13,13 +13,15 @@ import { promisify } from 'node:util';
 const execFileAsync = promisify(execFile);
 const INDEX_PATH = 'content/audio/audio_index_book3.json';
 const OUT_DIR = 'output/official-audio/book3';
-const MANIFEST_PATH = path.join(OUT_DIR, 'vocabulary-manifest.json');
+const DIALOGUE = process.argv.includes('--dialogue');
+const KIND = DIALOGUE ? 'dialogue' : 'vocabulary';
+const MANIFEST_PATH = path.join(OUT_DIR, `${KIND}-manifest.json`);
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/126.0 Safari/537.36';
 const CONCURRENCY = 3;
 
 const index = JSON.parse(await readFile(INDEX_PATH, 'utf8'));
-const tracks = index.vocabularyTracks;
-if (!Array.isArray(tracks) || tracks.length !== 32) throw new Error('Expected 32 indexed Book 3 vocabulary tracks.');
+const tracks = DIALOGUE ? index.dialogueTracks : index.vocabularyTracks;
+if (!Array.isArray(tracks) || tracks.length !== 32) throw new Error(`Expected 32 indexed Book 3 ${KIND} tracks.`);
 
 await mkdir(OUT_DIR, { recursive: true });
 let cursor = 0;
@@ -70,7 +72,7 @@ await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 results.sort((a, b) => a.file.localeCompare(b.file));
 await writeFile(MANIFEST_PATH, JSON.stringify({
   bookId: 3,
-  source: 'Official TKU CLC Book 3 vocabulary tracks; local alignment copies only',
+  source: `Official TKU CLC Book 3 ${KIND} tracks; local alignment copies only`,
   encoding: 'original source files; not re-encoded or published',
   count: results.length,
   files: results,

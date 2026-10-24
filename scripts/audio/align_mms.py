@@ -6,13 +6,17 @@ Each line gets per-character onsets; a character's `end` is the NEXT character's
 onset (seamless karaoke — a word lights from its first char's onset to the next
 word's onset). Divergent recordings surface as low per-char/per-line scores.
 
-Run: output/venv/bin/python scripts/audio/align_mms.py [READING_ID ...]
+Run: output/venv/bin/python scripts/audio/align_mms.py [--book 3] [READING_ID ...]
 Writes: content/dialogueAlignment.json, output/mms_alignment_report.json
+  (--book 3: content/dialogueAlignment-book3.json from content/readings/book-3.json against the
+   untrimmed official tracks in output/official-audio/book3/, which
+   `node scripts/audio/downloadBook3VocabularyTracks.mjs --dialogue` downloads)
 """
 import json
 import re
 import subprocess
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -22,11 +26,27 @@ from torchaudio.pipelines import MMS_FA as bundle
 from pypinyin import lazy_pinyin
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-READINGS = json.loads((ROOT / 'output' / 'readings.json').read_text())
-AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book1'
-OUT_FILE = ROOT / 'content' / 'dialogueAlignment.json'
-REPORT = ROOT / 'output' / 'mms_alignment_report.json'
+BOOK = int(sys.argv[sys.argv.index('--book') + 1]) if '--book' in sys.argv else 1
 MANIFEST_PATH = ROOT / 'content' / 'audio' / 'audio_manifest_book1.json'
+if BOOK == 1:
+    READINGS = json.loads((ROOT / 'output' / 'readings.json').read_text())
+    AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book1'
+    OUT_FILE = ROOT / 'content' / 'dialogueAlignment.json'
+    REPORT = ROOT / 'output' / 'mms_alignment_report.json'
+else:
+    # Authored readings: dialogue N of lesson LL plays the official track B{book}-LL-N-1.mp3.
+    READINGS = [{
+        'id': reading['id'],
+        'audioFile': f"B{BOOK}-{reading['audioReference']}.mp3",
+        'lessonId': reading['lessonId'],
+        'dialogueNumber': reading['dialogueNumber'],
+        'lines': reading['paragraphs'],
+    } for reading in json.loads((ROOT / 'content' / 'readings' / f'book-{BOOK}.json').read_text())]
+    AUDIO_DIR = ROOT / 'output' / 'official-audio' / f'book{BOOK}'
+    OUT_FILE = ROOT / 'content' / f'dialogueAlignment-book{BOOK}.json'
+    REPORT = ROOT / 'output' / f'mms_alignment_report_book{BOOK}.json'
+# Whisper only needs the opening (spoken title, then line 1) to find where line 1 starts.
+ONSET_SEARCH_SEC = 90
 
 CN_DIGITS = '零一二三四五六七八九'
 PINYIN_VARIANTS = {
@@ -132,7 +152,11 @@ def find_reading_onset_whisper(audio_path, line1_text, whisper_model):
     if not needle:
         return 0.0
     prefix = needle[:6]
-    for seg in whisper_model.transcribe(str(audio_path)):
+    with tempfile.NamedTemporaryFile(suffix='.wav') as head:
+        subprocess.run(['ffmpeg', '-v', 'quiet', '-y', '-i', str(audio_path), '-t', str(ONSET_SEARCH_SEC),
+                        '-ac', '1', '-ar', '16000', head.name], check=True)
+        segments = whisper_model.transcribe(head.name)
+    for seg in segments:
         text = (seg.text or '').strip()
         if not text:
             continue
@@ -270,15 +294,17 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
 
 
 def main():
-    only = set(sys.argv[1:]) if len(sys.argv) > 1 else None
+    args = [a for i, a in enumerate(sys.argv[1:], 1) if a != '--book' and sys.argv[i - 1] != '--book']
+    only = set(args) or None
     model = bundle.get_model()
     dictionary = bundle.get_dict()
     aligner = bundle.get_aligner()
 
+    # Only Book 1's hosted tracks are intro-trimmed; other books align against the untrimmed originals.
     trim_by_file = {
         f['file']: f.get('trimmedIntroSec', 0)
         for f in json.loads(MANIFEST_PATH.read_text())['files']
-    }
+    } if BOOK == 1 else {}
     # Whisper is only needed to find line-1 onset for un-trimmed 短文 tracks.
     needs_whisper = any(
         (not only or r['id'] in only) and not trim_by_file.get(r['audioFile'])
