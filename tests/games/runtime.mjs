@@ -304,6 +304,16 @@ try {
   await until(() => switched.state?.players.length === 2 && !newHost.state.players.some(p=>p.id==='new-host'));
   assert.equal(otherHost.state.players.length, 2);
 
+  // Never-public rooms still support invitations and settings without any Lobby publication.
+  const privateLobby = await open('/lobby/socket', 'lobby', (await post('/lobby', 'other-host')).ticket);
+  send(privateLobby, { t: 'invite', to: ['bob'], code: other.code });
+  await until(() => last(bob, 'invite')?.room.code === other.code);
+  assert.equal(last(bob, 'invite').room.open, false);
+  privateLobby.socket.close(1000, 'Done');
+  send(otherHost, {type:'settings', selection:{lessons:{1:[1]},types:['meaning']}, open:false});
+  await until(() => switched.state.selection.types[0] === 'meaning');
+  assert.equal((await listingStore.exec('SELECT * FROM rooms WHERE code=?', other.code)).length, 0);
+
   // A race deadline ends the room even when nobody sends another action.
   send(otherHost, {type:'start'});
   await until(()=>otherHost.state.phase==='preparing' && switched.state.phase==='preparing');
@@ -322,6 +332,26 @@ try {
   await control(`/__test/room/${other.code}/alarm`);
   await until(()=>otherHost.state.phase==='results' && switched.state.phase==='results');
   assert.ok(otherHost.state.players.every(p=>p.place===null),'timeouts do not invent finishers');
+  const privateUsage = await (await mf.dispatchFetch(`https://games.test/__test/room/${other.code}/usage`)).json();
+  assert.equal(privateUsage.listingCalls, 0, 'private creation, joins, settings and racing never call the Lobby');
+  assert.equal((await listingStore.exec('SELECT * FROM rooms WHERE code=?', other.code)).length, 0);
+
+  // Once made public, turning private must remove the listing, including after failure and hibernation.
+  send(otherHost, {type:'rematch'});
+  await until(() => switched.state.phase === 'lobby');
+  send(otherHost, {type:'settings', selection:{lessons:{1:[1]},types:['meaning']}, open:true});
+  await until(() => switched.state.open);
+  await delay(60);
+  assert.equal(JSON.parse((await listingStore.exec('SELECT data FROM rooms WHERE code=?', other.code))[0].data).open, true);
+  await control('/__test/lobby/main/fail');
+  send(otherHost, {type:'settings', selection:{lessons:{1:[1]},types:['meaning']}, open:false});
+  await until(() => !switched.state.open);
+  assert.ok((await deadlineSql.exec('SELECT * FROM state WHERE id=5')).length, 'failed public-to-private update remains pending');
+  await mf.unsafeEvictDurableObject('games', 'GameRoom', {name:other.code, webSockets:'hibernate'});
+  await control('/__test/lobby/main/recover');
+  await control(`/__test/room/${other.code}/alarm`);
+  assert.equal(JSON.parse((await listingStore.exec('SELECT data FROM rooms WHERE code=?', other.code))[0].data).open, false);
+  assert.equal((await deadlineSql.exec('SELECT * FROM state WHERE id=5')).length, 0);
 
   // Chat keeps 50 messages PER LESSON despite global IDs advancing in another busy lesson.
   const lobbySql = await mf.unsafeGetDurableObjectStorage('games', 'Lobby', { name: 'main' });

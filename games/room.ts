@@ -130,13 +130,15 @@ export class GameRoom extends DurableObject<Env> {
 
   private commit(room: RaceRoomState, listing = true) {
     const previous = listing ? this.read() : null;
+    const pendingListing = listing && this.record<number>(5) !== null;
     const announce = room.open && !room.announced && room.players.length > 0;
     if (announce) room.announced = true;
     room.revision = (room.revision ?? 0) + 1;
     this.write(1, room);
     this.broadcast(room);
-    // Readiness, scores and temporary disconnects do not change a room listing.
-    if (listing && (!previous?.revision || this.record<number>(5) !== null
+    // Never-public rooms need no Lobby entry; previously public rooms must still publish closure.
+    if (listing && (room.announced || previous?.open || pendingListing)
+      && (!previous?.revision || pendingListing
       || JSON.stringify({ ...summarizeRoom(previous), revision: 0 }) !== JSON.stringify({ ...summarizeRoom(room), revision: 0 }))) {
       this.write(5, room.revision);
       const publication = this.publishListing(room);
