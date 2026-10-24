@@ -116,6 +116,18 @@ function playbackTimeoutError(): Error {
   return error;
 }
 
+/**
+ * Runs `start` once the current frame is painted. iOS Safari loads and starts a clip synchronously, so starting it
+ * inside a tap held the tap's visual response until the audio began. Hidden pages (no frames) start at once.
+ */
+export function afterPaint(start: () => void): void {
+  if (typeof requestAnimationFrame !== 'function' || typeof document === 'undefined' || document.visibilityState !== 'visible') {
+    start();
+    return;
+  }
+  requestAnimationFrame(() => { setTimeout(start, 0); });
+}
+
 export function silenceAudio(audio: HTMLAudioElement): void {
   audio.onended = null;
   audio.onerror = null;

@@ -17,6 +17,7 @@ import {
   wait,
 } from './audio/speechEngine';
 import {
+  afterPaint,
   playHtmlAudio,
   prepareAudioElement,
   playRangeOnAudioElement,
@@ -271,14 +272,15 @@ export class AudioService {
         } else startSpeechFallback();
       };
 
-      const playUrl = (url: string) => {
+      const playUrl = (url: string) => afterPaint(() => {
+        // Stopped or replaced before the frame painted: nothing to start.
         if (this.activePlaybackFinish !== finish) return;
         this.activePlaybackCleanup = playHtmlAudio(audio, url, effectiveRate, () => {
           // Cache explicitly completed recordings without delaying first sound.
           if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).catch(() => {});
           finish();
         }, handleAudioFailure, startTime);
-      };
+      });
       this.playRecordedSource(audioFileName, playUrl, finish, handleAudioFailure);
     });
   }

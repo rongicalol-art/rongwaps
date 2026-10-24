@@ -174,17 +174,32 @@ test('a race needs two connected players; deadlines and round numbers reject lat
   assert.throws(() => parseRaceAction({ type: 'ready', round: 1, planHash: 'different' }), /Invalid/);
 });
 
-test('progress freezes the deck size and cannot add correct answers without advancing', () => {
+test('progress freezes the deck size and never lets correct pass answered', () => {
   const room = newRaceRoom('ABCDEF', parseSelection({ lessons: { 1: [1] } }), false, 's', 0);
   enterRace(room, 'a', 'A', 'blue', 0); enterRace(room, 'b', 'B', 'jade', 0);
   applyRaceAction(room, 'a', { type: 'start', round: 1 }, 1, seed);
   ready(room, ['a', 'b'], 2);
   applyRaceAction(room, 'a', { type: 'progress', round: 1, answered: 2, total: 4, correct: 1, reviewComplete: false }, 2, seed);
+  // A late frame for an answer already counted still adds its point.
   applyRaceAction(room, 'a', { type: 'progress', round: 1, answered: 2, total: 4, correct: 2, reviewComplete: false }, 3, seed);
-  assert.equal(room.players[0].correct, 1);
+  assert.equal(room.players[0].correct, 2);
   assert.throws(() => applyRaceAction(room, 'a', { type: 'progress', round: 1, answered: 3, total: 5, correct: 3, reviewComplete: false }, 4, seed), /deck changed/);
   applyRaceAction(room, 'a', { type: 'progress', round: 1, answered: 1, total: 4, correct: 1, reviewComplete: false }, 5, seed);
-  assert.equal(room.players[0].answered, 2);
+  assert.deepEqual([room.players[0].answered, room.players[0].correct], [2, 2]);
+  applyRaceAction(room, 'a', parseRaceAction({ type: 'progress', round: 1, answered: 3, total: 4, correct: 4, reviewComplete: false }), 6, seed);
+  assert.equal(room.players[0].correct, 3);
+});
+
+test('lost or merged progress frames never cost points: the final score is the phone\'s count', () => {
+  const room = newRaceRoom('ABCDEF', parseSelection({ lessons: { 1: [1] } }), false, 's', 0);
+  enterRace(room, 'a', 'A', 'blue', 0); enterRace(room, 'b', 'B', 'jade', 0);
+  applyRaceAction(room, 'a', { type: 'start', round: 1 }, 1, seed);
+  ready(room, ['a', 'b'], 2);
+  // Answered ran ahead of correct (frames for those answers were lost on a reconnect)…
+  applyRaceAction(room, 'a', { type: 'progress', round: 1, answered: 30, total: 44, correct: 18, reviewComplete: false }, 3, seed);
+  // …then the review finished with 42 first-pass answers right.
+  applyRaceAction(room, 'a', { type: 'progress', round: 1, answered: 44, total: 44, correct: 42, reviewComplete: true }, 4, seed);
+  assert.deepEqual([room.players[0].correct, room.players[0].finishedAt], [42, 4]);
 });
 
 test('preparation timeout removes players who never finish loading, then closes a one-player race', () => {

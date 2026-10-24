@@ -121,7 +121,7 @@ test('preparation updates keep the quiz open until the race actually starts', as
   h.api.leaveRace();
 });
 
-test('rapid settings edits stay optimistic and send the latest choice after the previous acknowledgement', async () => {
+test('rapid settings edits stay optimistic and each latest choice is sent without waiting for an echo', async () => {
   const h = await controller(); const sent: unknown[]=[];
   const opening=h.api.joinRace(identity,'ABCDEF');await flush();
   h.calls[0].resolve({code:'ABCDEF',send:frame=>{sent.push(frame);return true;},close:()=>{}});await opening;
@@ -129,11 +129,27 @@ test('rapid settings edits stay optimistic and send the latest choice after the 
   const first={lessons:{1:[1,2]},types:[]};const latest={lessons:{1:[1,2,3]},types:[]};
   h.api.raceSend({type:'settings',selection:first,open:true});
   h.api.raceSend({type:'settings',selection:latest,open:true});
-  assert.equal(sent.length,1);
+  assert.equal(sent.length,2);
   assert.deepEqual((h.state().race as RaceSnapshot).selection,latest);
   h.calls[0].handlers.onState({...initial,selection:first,revision:1},'me');
-  assert.equal(sent.length,2);assert.deepEqual((h.state().race as RaceSnapshot).selection,latest);
+  assert.equal(sent.length,2,'a stale echo does not resend');assert.deepEqual((h.state().race as RaceSnapshot).selection,latest);
   h.calls[0].handlers.onState({...initial,selection:latest,revision:2},'me');
   h.api.raceSend({type:'start'});
   assert.deepEqual(sent.at(-1),{type:'start',round:1});h.api.leaveRace();
+});
+
+test('Start is never blocked by a quiz choice the server does not echo, and a refusal restores the server room', async () => {
+  const h = await controller(); const sent: Array<{type:string}>=[];
+  const opening=h.api.joinRace(identity,'ABCDEF');await flush();
+  h.calls[0].resolve({code:'ABCDEF',send:frame=>{sent.push(frame as {type:string});return true;},close:()=>{}});await opening;
+  const initial=snapshot();h.calls[0].handlers.onStatus('live');h.calls[0].handlers.onState(initial,'me');
+  // e.g. an older server drops a lesson it does not know and the room does not change: no echo ever comes.
+  h.api.raceSend({type:'settings',selection:{lessons:{1:[1],9:[1,2,3]},types:[]},open:true});
+  h.api.raceSend({type:'start'});
+  assert.deepEqual(sent.map(frame=>frame.type),['settings','start']);
+  assert.equal(h.errors.length,0);
+  h.api.raceSend({type:'settings',selection:{lessons:{9:[1]},types:[]},open:true});
+  h.calls[0].handlers.onError('Pick at least one lesson part.');
+  assert.deepEqual((h.state().race as RaceSnapshot).selection,initial.selection);
+  h.api.leaveRace();
 });

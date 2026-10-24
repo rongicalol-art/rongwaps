@@ -15,7 +15,9 @@ let leaving: Promise<void> = Promise.resolve();
 let progress: Extract<RaceFrame, { type: 'progress' }> | null = null;
 let sentProgress = '';
 let settings: Extract<RaceFrame, { type: 'settings' }> | null = null;
-let settingsInFlight: Extract<RaceFrame, { type: 'settings' }> | null = null;
+let sentSettings = '';
+/** The room as the server last sent it, before the host's unconfirmed quiz choice is overlaid. */
+let serverRace: RaceSnapshot | null = null;
 const invites = new Set<string>();
 let rememberedAccount: string | null = null;
 const RECENT_ROOM_TTL_MS = 60 * 60_000;
@@ -70,12 +72,24 @@ function replayProgress() {
   const state = useAppStore.getState();
   if (!progress || !room || state.raceStatus !== 'live' || !['race', 'review'].includes(state.race?.phase ?? '') || state.race?.round !== progress.round) return;
   const key = JSON.stringify(progress);
-  if (sentProgress !== key && room.send(progress) !== false) sentProgress = key;
+  if (sentProgress === key) return;
+  // Marked before sending: a transport that answers synchronously must not re-send the same frame.
+  sentProgress = key;
+  if (room.send(progress) === false) sentProgress = '';
 }
 function flushSettings() {
-  if (!settings || settingsInFlight || !room || useAppStore.getState().raceStatus !== 'live') return;
-  settingsInFlight = settings;
-  if (room.send(settings) === false) settingsInFlight = null;
+  if (!settings || !room || useAppStore.getState().raceStatus !== 'live') return;
+  // The latest choice is sent once; the socket keeps frame order, so no echo is awaited before the next one or Start.
+  const key = JSON.stringify(settings);
+  if (sentSettings === key) return;
+  sentSettings = key;
+  if (room.send(settings) === false) sentSettings = '';
+}
+/** The server refused something: show its room again instead of a choice it may never confirm. */
+function dropSettings() {
+  if (!settings) return;
+  settings = null; sentSettings = '';
+  if (serverRace) useAppStore.getState().setSocial({ race: serverRace });
 }
 const sameSettings = (state: RaceSnapshot, frame: NonNullable<typeof settings>) => state.round === frame.round && state.open === frame.open && JSON.stringify(state.selection) === JSON.stringify(frame.selection);
 
@@ -94,9 +108,9 @@ function onState(state: RaceSnapshot, userId: string) {
     return;
   }
   if (before?.code === state.code && (before.revision ?? 0) > (state.revision ?? 0)) return;
-  if (state.phase !== 'lobby' || state.hostId !== userId || (settings && settings.round !== state.round)) { settings = null; settingsInFlight = null; }
-  if (settingsInFlight && sameSettings(state, settingsInFlight)) settingsInFlight = null;
+  if (state.phase !== 'lobby' || state.hostId !== userId || (settings && settings.round !== state.round)) settings = null;
   if (settings && sameSettings(state, settings)) settings = null;
+  serverRace = state;
   if (settings) state = { ...state, selection: settings.selection, open: settings.open };
   if (before && JSON.stringify(before.selection) === JSON.stringify(state.selection)) state = { ...state, selection: before.selection };
   if (before?.round !== state.round) { progress = null; sentProgress = ''; }
@@ -140,10 +154,10 @@ async function open(identity: Identity, target: Parameters<typeof connectRace>[1
         onStatus: status => {
           if (version !== generation) return;
           useAppStore.getState().setSocial({ raceStatus: status });
-          if (status === 'reconnecting') { sentProgress = ''; settingsInFlight = null; }
+          if (status === 'reconnecting') { sentProgress = ''; sentSettings = ''; }
           if (status === 'off') clearRace(false);
         },
-        onError: message => { if (version === generation) useAppStore.getState().showFeedbackToast(message); },
+        onError: message => { if (version !== generation) return; dropSettings(); useAppStore.getState().showFeedbackToast(message); },
         onChat: message => {
           if (version !== generation) return;
           const store = useAppStore.getState();
@@ -212,7 +226,7 @@ export function raceSend(action: RaceAction) {
     state.setSocial({ race: { ...state.race, selection: action.selection, open: action.open } });
     flushSettings(); return;
   }
-  if (action.type === 'start' && settings) { state.showFeedbackToast('Saving your quiz choices. Try Start again in a moment.'); return; }
+  if (action.type === 'start') flushSettings();
   return room?.send({ ...action, round: state.race.round });
 }
 export function partySend(message: PartyChatClientMessage): boolean {
@@ -234,7 +248,7 @@ function clearRace(notifyServer: boolean) {
   const recentCode = previous?.code ?? store.race?.code;
   const recentUser = store.currentUser?.id ?? rememberedAccount;
   if (recentCode && recentUser) saveRecentRoom(recentUser, recentCode);
-  room = null; progress = null; sentProgress = ''; settings = null; settingsInFlight = null; invites.clear(); remember(null);
+  room = null; progress = null; sentProgress = ''; settings = null; sentSettings = ''; serverRace = null; invites.clear(); remember(null);
   if (previous) {
     if (notifyServer) previous.send({ type: 'leave', round: store.race?.round ?? 1 });
     previous.close();

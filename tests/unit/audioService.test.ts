@@ -167,6 +167,37 @@ test('starting a new file resolves and stops the previous playback', async () =>
   await secondPlayback;
 });
 
+test('a tap paints before its clip starts, and a stop before that paint starts nothing', async () => {
+  const frames: FrameRequestCallback[] = [];
+  const saved = { raf: globalThis.requestAnimationFrame, document: Object.getOwnPropertyDescriptor(globalThis, 'document') };
+  globalThis.requestAnimationFrame = (callback) => { frames.push(callback); return frames.length; };
+  Object.defineProperty(globalThis, 'document', { configurable: true, value: { visibilityState: 'visible' } });
+  try {
+    const service = new AudioService();
+    const audio = FakeAudio.instances.at(-1)!;
+    const url = 'https://audio.example.test/tile.mp3';
+    const playback = service.play(url);
+    await tick();
+    assert.notEqual(audio.src, url, 'no media work inside the tap');
+    frames.shift()?.(0);
+    await tick();
+    assert.equal(audio.src, url);
+    service.stop();
+    await playback;
+
+    const cancelled = service.play('https://audio.example.test/cancelled.mp3');
+    service.stop();
+    await cancelled;
+    frames.shift()?.(0);
+    await tick();
+    assert.equal(audio.src, url, 'a stopped clip never starts');
+  } finally {
+    globalThis.requestAnimationFrame = saved.raf;
+    if (saved.document) Object.defineProperty(globalThis, 'document', saved.document);
+    else delete (globalThis as { document?: unknown }).document;
+  }
+});
+
 test('queued source-change events cannot finish a newly selected or unlocked clip', async () => {
   for (const unlock of [false, true]) {
     const service = new AudioService();

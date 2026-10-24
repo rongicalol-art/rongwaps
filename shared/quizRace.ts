@@ -199,10 +199,11 @@ export function applyRaceAction(room: RaceRoomState, userId: string, action: Rac
   } else if (action.type === 'progress') {
     if ((room.phase !== 'race' && room.phase !== 'review') || player.finishedAt !== null) return;
     if (!action.total || (player.total && player.total !== action.total)) throw new Error('The quiz deck changed. Leave and start a new race.');
-    const answered = Math.min(action.answered, action.total);
-    if (action.reviewComplete && answered < action.total) throw new Error('The review is not complete.');
-    if (answered < player.answered) return;
-    player.correct = Math.max(player.correct, Math.min(action.correct, player.correct + answered - player.answered));
+    const reported = Math.min(action.answered, action.total);
+    if (action.reviewComplete && reported < action.total) throw new Error('The review is not complete.');
+    // Order-independent: a lost, merged or early frame never costs points. The latest counts win, capped by answered.
+    const answered = Math.max(player.answered, reported);
+    player.correct = Math.max(player.correct, Math.min(action.correct, answered));
     player.total = action.total;
     player.answered = answered;
     if (player.total > 0 && player.answered >= player.total && action.reviewComplete) {
