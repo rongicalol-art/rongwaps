@@ -11,6 +11,14 @@ const THUMBNAILS: Record<string, string> = {
   '1:6': new URL('../assets/images/lesson-thumbs/b1l06.webp', import.meta.url).href,
   '1:7': new URL('../assets/images/lesson-thumbs/b1l07.webp', import.meta.url).href,
   '1:8': new URL('../assets/images/lesson-thumbs/b1l08.webp', import.meta.url).href,
+  '1:9': new URL('../assets/images/lesson-thumbs/b1l09.webp', import.meta.url).href,
+  '1:10': new URL('../assets/images/lesson-thumbs/b1l10.webp', import.meta.url).href,
+  '1:11': new URL('../assets/images/lesson-thumbs/b1l11.webp', import.meta.url).href,
+  '1:12': new URL('../assets/images/lesson-thumbs/b1l12.webp', import.meta.url).href,
+  '1:13': new URL('../assets/images/lesson-thumbs/b1l13.webp', import.meta.url).href,
+  '1:14': new URL('../assets/images/lesson-thumbs/b1l14.webp', import.meta.url).href,
+  '1:15': new URL('../assets/images/lesson-thumbs/b1l15.webp', import.meta.url).href,
+  '1:16': new URL('../assets/images/lesson-thumbs/b1l16.webp', import.meta.url).href,
 };
 
 export const lessonThumbnail = (bookId: number, lessonId: number): string | undefined => THUMBNAILS[`${bookId}:${lessonId}`];
