@@ -44,7 +44,7 @@ const SentenceCard = memo(function SentenceCard({
   sentence, text, highlightTerms, focused, distance, open, hard, onTap, onToggleHard, onCharTap,
 }: SentenceCardProps) {
   const reduceMotion = useReducedMotion();
-  const { record, speaker } = sentence;
+  const { record } = sentence;
   const chars = useMemo(() => Array.from(text), [text]);
   const syllables = useMemo(() => alignWordSyllables(text, record.pinyin), [text, record.pinyin]);
   const highlighted = useMemo(() => highlightMask(text, highlightTerms), [text, highlightTerms]);
@@ -86,11 +86,8 @@ const SentenceCard = memo(function SentenceCard({
         !focused && (distance === 1 ? 'opacity-40' : 'opacity-15'),
       )}
     >
-      {(speaker || (hard && !open)) && (
-        <div className={cn('flex items-center justify-between gap-3', stacked ? 'mb-2' : 'mb-1')}>
-          <p className="font-chinese-sans text-sm font-semibold text-ui-muted">{speaker}</p>
-          {hard && !open && <AppIcon name="bookmarkFilled" size={16} className="text-brand-primary" aria-label="Marked hard" />}
-        </div>
+      {hard && !open && (
+        <AppIcon name="bookmarkFilled" size={16} className="float-right ml-3 mt-1 text-brand-primary" aria-label="Marked hard" />
       )}
       <p lang="zh" className={cn('font-chinese text-[24px] text-ui-ink-strong sm:text-[30px]', stacked ? 'leading-[2.1]' : 'leading-[1.75]')}>
         {chars.map((char, index) => {
@@ -183,7 +180,7 @@ interface SentenceFeedProps {
  * swipe, wheel and touchpad; keys and Flow scroll it programmatically.
  */
 export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverlayOpen = false }: SentenceFeedProps) {
-  const { deck, currentIndex, openIds, hardIds, goTo, next, toggleOpen, toggleHard } = session;
+  const { deck, current, currentIndex, openIds, hardIds, goTo, next, play, toggleOpen, toggleHard, pauseFlow } = session;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -229,26 +226,34 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
       const target = event.target;
       if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"], [role="menu"]')) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
-      if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === ' ') {
-        if (event.key === ' ' && target instanceof HTMLElement && target.closest('button')) return;
+      if (target instanceof HTMLElement && target.closest('button') && (event.key === ' ' || event.key === 'Enter')) return;
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
         event.preventDefault();
+        pauseFlow();
         next();
       } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
         event.preventDefault();
+        pauseFlow();
         goTo(Math.max(0, currentIndex - 1));
-      } else if (event.key === 'Enter') {
-        if (target instanceof HTMLElement && target.closest('button')) return;
+      } else if (event.key === ' ') {
         event.preventDefault();
+        pauseFlow();
+        if (current?.record.audio) void play(current);
+      } else if (event.key === 'Enter') {
+        event.preventDefault();
+        pauseFlow();
         toggleOpen();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [currentIndex, goTo, isOverlayOpen, next, toggleOpen]);
+  }, [current, currentIndex, goTo, isOverlayOpen, next, pauseFlow, play, toggleOpen]);
 
   return (
     <div
       ref={scrollerRef}
+      onPointerDown={pauseFlow}
+      onWheel={pauseFlow}
       className="relative h-full snap-y snap-mandatory overflow-y-auto [container-type:size] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 sm:px-6">

@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
-import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
+import { fetchCourseExampleRecords } from '../../../services/contentPacks';
 import { extractWordVariants } from '../../../utils/vocabulary/wordForms';
-import type { CourseExampleRecord, ReadingRecord } from '../../../types/models';
+import type { CourseExampleRecord } from '../../../types/models';
 
 /** Where a sentence comes from in the book: a dialogue line, the Reading, or a word's example. */
 export type SentenceKind = 'dialogue' | 'reading' | 'example';
@@ -10,7 +10,6 @@ export type SentenceKind = 'dialogue' | 'reading' | 'example';
 export interface LessonSentence {
   record: CourseExampleRecord;
   kind: SentenceKind;
-  speaker?: string;
 }
 
 const KIND_BY_PREFIX: Record<string, SentenceKind> = { D: 'dialogue', R: 'reading', E: 'example' };
@@ -21,17 +20,8 @@ function sentenceKind(id: string): SentenceKind {
   return KIND_BY_PREFIX[id.slice(id.lastIndexOf('-') + 1, id.lastIndexOf('-') + 2)] ?? 'example';
 }
 
-/** Collects a reading's lines by text, so dialogue sentences can show who says them. */
-export function speakersByLine(readings: ReadonlyArray<ReadingRecord[] | null>): Map<string, string> {
-  const speakers = new Map<string, string>();
-  for (const pack of readings) for (const reading of pack ?? []) for (const line of reading.paragraphs ?? []) {
-    if (line.speaker && line.traditional) speakers.set(line.traditional, line.speaker);
-  }
-  return speakers;
-}
-
 /** The records in these `book:lesson:part` keys, in book order (dialogue, Reading, examples), each sentence once. */
-export function buildLessonSentences(records: readonly CourseExampleRecord[], parts: ReadonlySet<string>, speakers: ReadonlyMap<string, string>): LessonSentence[] {
+export function buildLessonSentences(records: readonly CourseExampleRecord[], parts: ReadonlySet<string>): LessonSentence[] {
   const seen = new Set<string>();
   const block = (id: string) => id.slice(id.lastIndexOf('-'));
   return records
@@ -43,8 +33,7 @@ export function buildLessonSentences(records: readonly CourseExampleRecord[], pa
       || KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind)
       || block(a.record.id).localeCompare(block(b.record.id))
       || a.record.id.localeCompare(b.record.id))
-    .filter(({ record }) => !seen.has(record.traditional) && Boolean(seen.add(record.traditional)))
-    .map((sentence) => ({ ...sentence, speaker: sentence.kind === 'dialogue' ? speakers.get(sentence.record.traditional) : undefined }));
+    .filter(({ record }) => !seen.has(record.traditional) && Boolean(seen.add(record.traditional)));
 }
 
 /**
@@ -53,28 +42,22 @@ export function buildLessonSentences(records: readonly CourseExampleRecord[], pa
  */
 export function useLessonSentences(activeBookId: number, selectedLessons: number[], isReviewDeck = false, isLibraryDeck = false) {
   const { cards, isLoading: isLoadingDeck, error: deckError } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
-  const [packs, setPacks] = useState<{ records: CourseExampleRecord[]; speakers: Map<string, string> } | null>(null);
+  const [records, setRecords] = useState<CourseExampleRecord[] | null>(null);
   const [loadError, setLoadError] = useState<unknown>(null);
 
-  const bookIds = useMemo(() => [...new Set(cards.map((card) => card.bookId))].sort().join(','), [cards]);
   useEffect(() => {
     if (isLoadingDeck) return;
     let current = true;
-    const books = bookIds ? bookIds.split(',').map(Number) : [];
-    void Promise.all([fetchCourseExampleRecords(), ...books.map((bookId) => fetchReadingsPack(bookId))])
-      .then(([records, ...readings]) => {
-        if (!current) return;
-        setPacks({ records, speakers: speakersByLine(readings) });
-      })
+    void fetchCourseExampleRecords()
+      .then((loaded) => { if (current) setRecords(loaded); })
       .catch((error) => { if (current) setLoadError(error); });
     return () => { current = false; };
-  }, [bookIds, isLoadingDeck]);
+  }, [isLoadingDeck]);
 
-  const sentences = useMemo(() => (packs ? buildLessonSentences(
-    packs.records,
+  const sentences = useMemo(() => (records ? buildLessonSentences(
+    records,
     new Set(cards.map((card) => `${card.bookId}:${card.lessonId}:${card.partId ?? 1}`)),
-    packs.speakers,
-  ) : []), [cards, packs]);
+  ) : []), [cards, records]);
 
   /** The deck's words, every written form: highlighted wherever they occur. */
   const highlightTerms = useMemo(
@@ -85,7 +68,7 @@ export function useLessonSentences(activeBookId: number, selectedLessons: number
   return {
     sentences,
     highlightTerms,
-    isLoading: isLoadingDeck || (!packs && !loadError && !deckError),
+    isLoading: isLoadingDeck || (!records && !loadError && !deckError),
     loadError: deckError || loadError,
   };
 }

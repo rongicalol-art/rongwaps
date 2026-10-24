@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ActionButton } from '../../lib/widgets';
-import { fetchCourseExampleRecords, fetchReadingsPack } from '../../services/contentPacks';
-import { buildLessonSentences, speakersByLine, type LessonSentence } from './hooks/useLessonSentences';
+import { fetchCourseExampleRecords } from '../../services/contentPacks';
+import { buildLessonSentences, type LessonSentence } from './hooks/useLessonSentences';
 import { useSentenceSession } from './hooks/useSentenceSession';
 import { SentenceFeed } from './components/SentenceFeed';
 import { SentenceDock } from './components/SentenceDock';
@@ -13,9 +13,7 @@ import { SentenceDock } from './components/SentenceDock';
 export function SentencesPreview() {
   const [sentences, setSentences] = useState<LessonSentence[]>([]);
   useEffect(() => {
-    void Promise.all([fetchCourseExampleRecords(), fetchReadingsPack(1)]).then(([records, readings]) => {
-      setSentences(buildLessonSentences(records, new Set(['1:1:1']), speakersByLine([readings])));
-    });
+    void fetchCourseExampleRecords().then((records) => setSentences(buildLessonSentences(records, new Set(['1:1:1']))));
   }, []);
   const session = useSentenceSession(sentences, 'debug-preview:sentences');
   const highlightTerms = [...new Set(sentences.map((sentence) => sentence.record.sourceFront))];

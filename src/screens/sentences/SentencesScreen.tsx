@@ -43,6 +43,8 @@ export function SentencesScreen({
     minimal: session.completed,
     onShuffleClick: session.toggleShuffle,
     isShuffled: session.isShuffled,
+    onFlowClick: session.toggleFlow,
+    flowStatus: session.flowStatus,
   });
 
   if (isLoading) return null;
@@ -88,7 +90,7 @@ export function SentencesScreen({
         <SentenceFeed
           session={session}
           highlightTerms={highlightTerms}
-          onOpenCharacter={(char) => { session.stopAudio(); setBreakdown(char); }}
+          onOpenCharacter={(char) => { session.pauseFlow(); session.stopAudio(); setBreakdown(char); }}
           isOverlayOpen={Boolean(breakdown)}
         />
       </div>

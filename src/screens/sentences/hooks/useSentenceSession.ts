@@ -4,12 +4,17 @@ import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import type { Flashcard } from '../../../data/flashcards';
+import type { PracticeFlowStatus } from '../../../types/models';
 import type { LessonSentence } from './useLessonSentences';
 
 /** The text shown for a sentence in the learner's script. */
 export function sentenceText(sentence: LessonSentence, characterPreference: 'traditional' | 'simplified'): string {
   return characterPreference === 'simplified' && sentence.record.simplified ? sentence.record.simplified : sentence.record.traditional;
 }
+
+/** Flow's repeat-after-me gap: as long as the clip, at least this long. */
+const MIN_SHADOW_MS = 1200;
+const wait = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
 /** useCardSession deals cards; a sentence travels as one keyed by its record id. */
 function toCard({ record }: LessonSentence): Flashcard {
@@ -27,6 +32,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
   /** Cards opened this round stay open, so moving on never changes the height of what's above. */
   const [openIds, setOpenIds] = useState<ReadonlySet<string>>(() => new Set());
   const [hardIds, setHardIds] = useState<ReadonlySet<string>>(() => new Set());
+  const [flowStatus, setFlowStatus] = useState<PracticeFlowStatus>('idle');
   /** Bumped by every play and stop: a clip from an older request changes nothing. */
   const tokenRef = useRef(0);
 
@@ -37,6 +43,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
   const resetCard = useCallback(() => {
     stopAudio();
     setOpenIds(new Set());
+    setFlowStatus('idle');
   }, [stopAudio]);
 
   const session = useCardSession(cards, sessionKey, { onSessionReset: resetCard, onAnswerStateReset: resetCard, requeueMissed: false });
@@ -86,6 +93,40 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     if (upcoming.record.audio) void play(upcoming);
   }, [currentIndex, deck, finish, goTo, play]);
 
+  /** Anything the learner does takes over from Flow. */
+  const flowRef = useRef(flowStatus);
+  flowRef.current = flowStatus;
+  const pauseFlow = useCallback(() => {
+    if (flowRef.current !== 'playing') return;
+    stopAudio();
+    setFlowStatus('paused');
+  }, [stopAudio]);
+
+  const toggleFlow = useCallback(() => {
+    if (flowRef.current === 'playing') pauseFlow();
+    else setFlowStatus('playing');
+  }, [pauseFlow]);
+
+  /** Flow (header menu): open the card, play it, leave room to repeat it, move on; the last one finishes. */
+  useEffect(() => {
+    if (flowStatus !== 'playing' || !current || completed) return;
+    let cancelled = false;
+    void (async () => {
+      setOpenIds((ids) => (ids.has(current.record.id) ? ids : new Set(ids).add(current.record.id)));
+      const { audio } = current.record;
+      if (audio) {
+        if (!(await play(current)) || cancelled) return;
+        const clipMs = audio.start !== undefined && audio.end !== undefined ? (audio.end - audio.start) * 1000 : 0;
+        await wait(Math.max(MIN_SHADOW_MS, clipMs));
+      } else {
+        await wait(MIN_SHADOW_MS * 2);
+      }
+      if (cancelled) return;
+      if (advanceOrComplete() === 'completed') setFlowStatus('finished');
+    })();
+    return () => { cancelled = true; };
+  }, [advanceOrComplete, completed, current, flowStatus, play]);
+
   const toggleHard = useCallback((id: string) => {
     setHardIds((ids) => {
       const nextIds = new Set(ids);
@@ -118,6 +159,9 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     toggleOpen,
     toggleHard,
     stopAudio,
+    flowStatus,
+    toggleFlow,
+    pauseFlow,
     reviewHard,
     play,
   };

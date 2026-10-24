@@ -24,16 +24,18 @@ English meaning, curriculum location, source card, and extraction provenance.
   B·L meta carry the source book's accent too.
 
 - Practice hub → **Sentences** (`src/screens/sentences/`) is a sentence feed for the deck's
-  parts: every record once, in book order (Dialogue with speakers from the readings pack,
-  Reading, Examples), the part's words highlighted. One card sits in focus, neighbours faded;
-  native scroll snapping moves it (swipe, wheel, ↑/↓). The bottom dock (answer-bar slot) has
-  Next (also Space; it plays the next sentence, Finish on the last) and Play. Tap a card (or
-  Enter) to open it: pinyin stacks over each character (`alignWordSyllables`; one line when
-  a sentence doesn't align) and the English shows; opened cards stay open. Hold a character
-  on a closed card to peek its pinyin; tap one on an open card for its breakdown. Mark cards
-  Hard; the end screen offers a Hard-only round. Shuffle is in the header menu. Position and
-  resume come from `useCardSession`; nothing is graded, so it never writes SRS. The lesson
-  window offers it only for parts that have records. Preview: debug window → UI Previews.
+  parts: every record once, in book order (Dialogue, Reading, Examples), the part's words
+  highlighted. One card sits in focus, neighbours faded; native scroll snapping moves it.
+  Touch: a bottom dock (answer-bar slot) with Next (plays the next sentence, Finish on the
+  last) and Play. Mouse/trackpad: no dock; Space plays the card, ↑/↓ move (↓ plays the next).
+  Tap a card (or Enter) to open it: pinyin stacks over each character (`alignWordSyllables`;
+  one line when a sentence doesn't align) and the English shows; opened cards stay open. Hold
+  a character on a closed card to peek its pinyin; tap one on an open card for its breakdown.
+  Mark cards Hard; the end screen offers a Hard-only round. The header menu has Shuffle and
+  Flow (open, play, pause as long as the clip to repeat it, move on; any input pauses it).
+  Position and resume come from `useCardSession`; nothing is graded, so it never writes SRS.
+  The lesson window offers it only for parts that have records. Preview: debug window → UI
+  Previews.
 
 ## Matching a word to its sentences
 
