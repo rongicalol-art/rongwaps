@@ -97,6 +97,14 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     if (current.record.audio) void play(current);
   }, [current, openIds, play, stopAudio]);
 
+  /** The dock's main button and Space: Show (open and play) → Next → Finish on the last card. */
+  const primaryAction = useCallback(() => {
+    if (!current) return;
+    if (!openIds.has(current.record.id)) toggleOpen();
+    else if (currentIndex < deck.length - 1) goTo(currentIndex + 1);
+    else finish();
+  }, [current, currentIndex, deck.length, finish, goTo, openIds, toggleOpen]);
+
   const toggleHard = useCallback((id: string) => {
     setHardIds((ids) => {
       const nextIds = new Set(ids);
@@ -153,6 +161,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     goTo,
     finish,
     toggleOpen,
+    primaryAction,
     toggleHard,
     toggleFlow,
     pauseFlow,

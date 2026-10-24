@@ -26,11 +26,12 @@ English meaning, curriculum location, source card, and extraction provenance.
 - Practice hub → **Sentences** (`src/screens/sentences/`) is a sentence feed for the deck's
   parts: every record once, in book order (Dialogue with speakers from the readings pack,
   Reading, Examples), the part's words highlighted. One card sits in focus, neighbours faded;
-  native scroll snapping moves it (swipe, wheel, ↑/↓). Tap or Space opens a card: its
-  recording plays and pinyin + English show (opened cards stay open). Hold a character to peek
+  native scroll snapping moves it (swipe, wheel, ↑/↓). A bottom dock (answer-bar slot) holds
+  Flow, the main button (Show → Next → Finish, also Space) and Replay. Show or a tap on the
+  card opens it: its recording plays and pinyin + English show (opened cards stay open). Hold a character to peek
   its pinyin (`alignWordSyllables`); tap a character on an open card for its breakdown. Mark
-  cards Hard; the end screen offers a Hard-only round. Header Shuffle and Flow (open, play,
-  pause as long as the clip to repeat it, move on). Session position, shuffle and resume come
+  cards Hard; the end screen offers a Hard-only round. Shuffle sits in the header menu; Flow
+  opens, plays, pauses as long as the clip to repeat it, and moves on. Session position, shuffle and resume come
   from `useCardSession`; nothing is graded, so it never writes SRS. The lesson window offers
   it only for parts that have records. Preview: debug window → UI Previews.
 

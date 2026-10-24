@@ -4,6 +4,7 @@ import { fetchCourseExampleRecords, fetchReadingsPack } from '../../services/con
 import { buildLessonSentences, speakersByLine, type LessonSentence } from './hooks/useLessonSentences';
 import { useSentenceSession } from './hooks/useSentenceSession';
 import { SentenceFeed } from './components/SentenceFeed';
+import { SentenceDock } from './components/SentenceDock';
 
 /**
  * DEV-only (debug window → UI Previews): the sentence feed on Book 1, Lesson 1, Part 1, read
@@ -23,9 +24,6 @@ export function SentencesPreview() {
     <section className="flex shrink-0 flex-col gap-2">
       <div className="flex items-center gap-3">
         <h2 className="text-xl font-black text-ui-ink-strong">Sentences · B1 L1 Part 1</h2>
-        <ActionButton variant="secondary" size="sm" onClick={session.toggleFlow}>
-          {session.flowStatus === 'playing' ? 'Pause flow' : 'Flow'}
-        </ActionButton>
         <span className="text-sm font-bold text-ui-muted-strong">{session.currentIndex + 1} / {session.deck.length}</span>
       </div>
       <div className="h-[640px] overflow-hidden rounded-feature bg-ui-practice-canvas">
@@ -34,7 +32,12 @@ export function SentencesPreview() {
             <ActionButton variant="primary" onClick={session.resetAll}>Done · read again</ActionButton>
           </div>
         ) : (
-          <SentenceFeed session={session} highlightTerms={highlightTerms} onOpenCharacter={() => {}} />
+          <div className="flex h-full flex-col">
+            <div className="min-h-0 flex-1">
+              <SentenceFeed session={session} highlightTerms={highlightTerms} onOpenCharacter={() => {}} />
+            </div>
+            <SentenceDock session={session} />
+          </div>
         )}
       </div>
     </section>

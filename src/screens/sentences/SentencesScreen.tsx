@@ -9,6 +9,7 @@ import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { useLessonSentences } from './hooks/useLessonSentences';
 import { useSentenceSession } from './hooks/useSentenceSession';
 import { SentenceFeed } from './components/SentenceFeed';
+import { SentenceDock } from './components/SentenceDock';
 
 interface SentencesScreenProps {
   activeBookId: number;
@@ -42,8 +43,6 @@ export function SentencesScreen({
     minimal: session.completed,
     onShuffleClick: session.toggleShuffle,
     isShuffled: session.isShuffled,
-    onFlowClick: session.toggleFlow,
-    flowStatus: session.flowStatus,
   });
 
   if (isLoading) return null;
@@ -85,12 +84,15 @@ export function SentencesScreen({
 
   return (
     <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink">
-      <SentenceFeed
-        session={session}
-        highlightTerms={highlightTerms}
-        onOpenCharacter={(char) => { session.pauseFlow(); setBreakdown(char); }}
-        isOverlayOpen={Boolean(breakdown)}
-      />
+      <div className="min-h-0 flex-1">
+        <SentenceFeed
+          session={session}
+          highlightTerms={highlightTerms}
+          onOpenCharacter={(char) => { session.pauseFlow(); setBreakdown(char); }}
+          isOverlayOpen={Boolean(breakdown)}
+        />
+      </div>
+      <SentenceDock session={session} />
       <CharacterBreakdownOverlay activeBreakdown={breakdown} onClose={() => setBreakdown(null)} activeBook={activeBook} />
     </div>
   );

@@ -1,6 +1,6 @@
 import { memo, useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { AppIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { alignWordSyllables } from '../../../utils/pinyin/pinyinTones';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
@@ -36,13 +36,12 @@ interface SentenceCardProps {
   open: boolean;
   hard: boolean;
   onTap: () => void;
-  onPlay: () => void;
   onToggleHard: () => void;
   onCharTap: (char: string) => void;
 }
 
 const SentenceCard = memo(function SentenceCard({
-  sentence, text, highlightTerms, focused, distance, open, hard, onTap, onPlay, onToggleHard, onCharTap,
+  sentence, text, highlightTerms, focused, distance, open, hard, onTap, onToggleHard, onCharTap,
 }: SentenceCardProps) {
   const reduceMotion = useReducedMotion();
   const { record, speaker } = sentence;
@@ -152,16 +151,6 @@ const SentenceCard = memo(function SentenceCard({
                     <AppIcon name={hard ? 'bookmarkFilled' : 'bookmark'} size={16} />
                     <span>Hard</span>
                   </button>
-                  {record.audio && (
-                    <button
-                      type="button"
-                      aria-label={`Play ${text}`}
-                      onClick={(event) => { event.stopPropagation(); onPlay(); }}
-                      className="flex h-9 w-9 items-center justify-center rounded-compact text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring"
-                    >
-                      <AppIcon name="audio" size={18} />
-                    </button>
-                  )}
                 </div>
               </div>
             </div>
@@ -186,7 +175,7 @@ interface SentenceFeedProps {
  * swipe, wheel and touchpad; keys and Flow scroll it programmatically.
  */
 export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverlayOpen = false }: SentenceFeedProps) {
-  const { deck, currentIndex, openIds, hardIds, goTo, toggleOpen, toggleHard, play, pauseFlow, finish } = session;
+  const { deck, currentIndex, openIds, hardIds, goTo, toggleOpen, toggleHard, pauseFlow, finish, primaryAction } = session;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -245,19 +234,19 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
         if (target instanceof HTMLElement && target.closest('button')) return;
         event.preventDefault();
         pauseFlow();
-        toggleOpen();
+        primaryAction();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [currentIndex, deck.length, finish, goTo, isOverlayOpen, pauseFlow, toggleOpen]);
+  }, [currentIndex, deck.length, finish, goTo, isOverlayOpen, pauseFlow, primaryAction]);
 
   return (
     <div
       ref={scrollerRef}
       onPointerDown={pauseFlow}
       onWheel={pauseFlow}
-      className="relative h-full snap-y snap-mandatory overflow-y-auto [container-type:size] overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="relative h-full snap-y snap-mandatory overflow-y-auto [container-type:size] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 sm:px-6">
         <div aria-hidden="true" className="h-[calc(50cqh-4.5rem)] shrink-0" />
@@ -272,17 +261,11 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
               open={openIds.has(sentence.record.id)}
               hard={hardIds.has(sentence.record.id)}
               onTap={index === currentIndex ? toggleOpen : () => goTo(index)}
-              onPlay={() => { void play(sentence); }}
               onToggleHard={() => toggleHard(sentence.record.id)}
               onCharTap={onOpenCharacter}
             />
           </div>
         ))}
-        <div className="flex shrink-0 snap-center justify-center py-4">
-          <ActionButton variant="primary" size="lg" onClick={finish} className="min-w-48">
-            Finish
-          </ActionButton>
-        </div>
         <div aria-hidden="true" className="h-[calc(50cqh-4.5rem)] shrink-0" />
       </div>
     </div>
