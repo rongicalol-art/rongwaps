@@ -50,11 +50,9 @@ test('beta locks lessons past BETA_LAST_LESSON and books 2, 4 (Book 3 unlocked)'
   assert.deepEqual(SAMPLE_BOOKS.map((b) => b.status === 'locked'), [false, true, false, true]);
 });
 
-test('isLessonLocked: Intro and 1-8 open, 9+ and books 2, 4 locked; Book 3 lessons 1-5 open', async () => {
+test('isLessonLocked: Intro and Book 1 lessons 1-16 open; Book 3 lessons 1-5 open', async () => {
   const { isLessonLocked } = await import('../../src/data/books');
-  assert.equal(isLessonLocked(1, 0), false);
-  assert.equal(isLessonLocked(1, 8), false);
-  assert.equal(isLessonLocked(1, 9), true);
+  for (let lesson = 0; lesson <= 16; lesson++) assert.equal(isLessonLocked(1, lesson), false, `Book 1 lesson ${lesson}`);
   assert.equal(isLessonLocked(2, 1), true);
   assert.equal(isLessonLocked(3, 1), false);
   assert.equal(isLessonLocked(3, 5), false);
@@ -63,11 +61,9 @@ test('isLessonLocked: Intro and 1-8 open, 9+ and books 2, 4 locked; Book 3 lesso
 });
 
 test('full-course access unlocks every lesson without changing the beta defaults', async () => {
-  const { SAMPLE_BOOKS, SAMPLE_LESSONS, isLessonLocked } = await import('../../src/data/books');
-  assert.equal(isLessonLocked(1, 9), true);
-  assert.equal(isLessonLocked(1, 9, true), false);
+  const { SAMPLE_BOOKS, isLessonLocked } = await import('../../src/data/books');
+  assert.equal(isLessonLocked(2, 1), true);
   assert.equal(isLessonLocked(2, 1, true), false);
   assert.equal(isLessonLocked(4, 16, true), false);
-  assert.equal(SAMPLE_LESSONS.find((lesson) => lesson.id === 9)?.status, 'locked');
   assert.equal(SAMPLE_BOOKS.find((book) => book.id === 2)?.status, 'locked');
 });

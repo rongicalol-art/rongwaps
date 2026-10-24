@@ -17,7 +17,7 @@ test('race types stay in step with the quiz director', () => {
 });
 
 test('selection keeps only beta lessons and real parts', () => {
-  assert.deepEqual(parseSelection({ lessons: { 0: [1], 8: [3, 3, 2], 9: [1], x: [1], 2: [0, 4] }, types: ['build', 'bad'] }), { lessons: { 0: [1], 8: [2, 3] }, types: ['build'] });
+  assert.deepEqual(parseSelection({ lessons: { 0: [1], 8: [3, 3, 2], 9: [1], 16: [1, 2, 3], 17: [1], x: [1], 2: [0, 4] }, types: ['build', 'bad'] }), { lessons: { 0: [1], 8: [2, 3], 9: [1], 16: [1, 2, 3] }, types: ['build'] });
   assert.throws(() => parseSelection({ lessons: { 2: [] } }));
 });
 
