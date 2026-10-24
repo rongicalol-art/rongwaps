@@ -44,7 +44,7 @@ Folder URLs use the form
   → `audio/mpeg`, supports Range requests, sets
   `Content-Disposition: attachment; filename="B1-…mp3"`.
 - Book 1 track IDs are in `content/audio/audio_index_book1.json`; Book 3
-  vocabulary track IDs are in `content/audio/audio_index_book3.json`.
+  vocabulary and dialogue track IDs are in `content/audio/audio_index_book3.json`.
 
 ### 4. Book 3 vocabulary audio
 
@@ -727,3 +727,14 @@ their own rely on detection alone.
   decision on the compounds listed in §3.2.
 - Source verification of the authored sense rules (they are reviewed against
   the app's own readings, not against the printed book's vocabulary list).
+
+### Book 3 dialogue audio
+
+- `node scripts/audio/downloadBook3VocabularyTracks.mjs --dialogue` downloads the 32 official
+  dialogue tracks (`B3-LL-P-1.mp3`) to ignored `output/official-audio/book3/`.
+- `output/venv/bin/python scripts/audio/align_mms.py --book 3` force-aligns
+  `content/readings/book-3.json` to the untrimmed tracks (Whisper finds line 1 after the spoken
+  title) → `content/dialogueAlignment-book3.json`. A reading averaging below 0.85 is marked
+  unmatched: its authored text doesn't follow the recording.
+- `npm run content:export` attaches each matched line's clip (Drive stream URL) to the Book 3
+  readings pack; unmatched lines keep their studio recording.

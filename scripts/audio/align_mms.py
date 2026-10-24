@@ -57,6 +57,10 @@ PUNCT = r'[，。？！、：；“”‘’（）《》〈〉…—\s,.?!:;"\'(
 # Mean char score below this → line marked `unmatched` → client falls back to
 # TTS (the recording diverges from the authored text, e.g. number readings).
 UNMATCHED_SCORE_THRESHOLD = 0.5
+# Books other than Book 1: a reading whose mean line score is below this doesn't follow its
+# recording (the authored text was rewritten), so every line is unmatched and keeps its studio
+# clip. Book 3 measured 0.94 for the one reading the book records verbatim, at most 0.68 otherwise.
+READING_MATCH_THRESHOLD = 0.85
 
 
 def expand_digits(text: str) -> str:
@@ -284,6 +288,10 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
             'text': line['traditional'], 'chars': len(chars),
             'meanScore': round(mean_score, 3),
         })
+
+    if BOOK != 1 and lines and float(np.mean([l['score'] for l in lines])) < READING_MATCH_THRESHOLD:
+        for line in lines:
+            line['unmatched'] = True
 
     return {
         'audioFile': reading['audioFile'],

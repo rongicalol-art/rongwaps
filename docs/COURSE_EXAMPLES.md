@@ -45,11 +45,12 @@ English meaning, curriculum location, source card, and extraction provenance.
   part n; no pinyin is shown when the pack has none) and its words' own examples (flashcard
   extras, `sourceCardId` = the card). Audio is the book track's aligned line when
   `officialAudioFileName` hosts the track, else the line's studio recording; examples keep the
-  recording their pack chose. Book 3's dialogue tracks are not hosted yet, so its dialogue lines
-  play studio audio until they are. Before hosting them, re-align: the current
-  `dialogue-alignment/book-3.json` times don't fit the official tracks (B3L01-R01 ends at
-  235 s; `B3-01-1-1.mp3` is 171.5 s with a ~19 s spoken title first). The 32 dialogue tracks
-  (`B3-LL-P-1.mp3`) are in the official Drive folder listed in `content/audio/audio_index_book3.json`.
+  recording their pack chose.
+- Book 3 dialogue audio: the content export gives each line its book clip (aligned by
+  `align_mms.py --book 3` against the official track, streamed from Drive, `cache: false`)
+  when the reading follows its recording, else its studio recording. Only B3L01-R01 follows its
+  recording word for word (mean line score 0.94); L1 dialogue 2 through L5 were rewritten
+  (≤ 0.68), so the script marks those lines unmatched and they keep studio audio.
 
 ## Matching a word to its sentences
 
