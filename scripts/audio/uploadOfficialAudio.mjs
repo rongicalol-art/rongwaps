@@ -1,5 +1,5 @@
 /**
- * Upload the official 時代華語 audio (Book 1 re-encoded; with --book 3, the Book 3 originals) to
+ * Upload the official 時代華語 audio (re-encoded; --book 3 for Book 3) to
  * Cloudflare R2.
  *
  * Files land in the R2 bucket served at VITE_AUDIO_BASE_URL, so the client
@@ -11,14 +11,14 @@
  *     node scripts/audio/uploadOfficialAudio.mjs [--book 3] [--dry-run]
  *
  * Source files: output/official-audio/book1/*.mp3 (see downloadOfficialAudio.mjs), or
- * output/official-audio/book3/*.mp3 (downloadBook3VocabularyTracks.mjs, with and without --dialogue).
+ * output/official-audio/book3-r2/*.mp3 (downloadBook3VocabularyTracks.mjs [--dialogue], then reencodeBook3Audio.mjs).
  */
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const BOOK = process.argv.includes('--book') ? Number(process.argv[process.argv.indexOf('--book') + 1]) : 1;
-const SOURCE_DIR = `output/official-audio/book${BOOK}`;
+const SOURCE_DIR = BOOK === 3 ? 'output/official-audio/book3-r2' : `output/official-audio/book${BOOK}`;
 const CONCURRENCY = 4;
 const DRY_RUN = process.argv.includes('--dry-run');
 
@@ -84,7 +84,7 @@ console.log(`\n${uploaded}/${files.length} uploaded to ${BUCKET}.`);
 // Verify a sample of what the public client path would serve.
 if (!DRY_RUN && uploaded === files.length && VITE_AUDIO_BASE_URL) {
   const base = VITE_AUDIO_BASE_URL.replace(/\/+$/, '');
-  const samples = files.filter((file) => /-1-1\.mp3$/.test(file)).slice(0, 3);
+  const samples = files.filter((file) => /-1-[12]\.mp3$/.test(file)).slice(0, 3);
   for (const file of samples) {
     const response = await fetch(`${base}/${file}`, { method: 'HEAD' });
     console.log(`verify ${file} -> ${response.status} ${response.headers.get('content-type')}`);

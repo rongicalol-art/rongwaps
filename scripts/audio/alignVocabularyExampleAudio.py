@@ -726,7 +726,7 @@ def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, trac
 def track_reference(book_id, track, book3_track_index):
     if book_id == 1:
         return track['file'], track['id']
-    return book3_track_index['streamUrlPattern'].replace('{FILE_ID}', track['id']), track['id']
+    return track['file'], track['id']
 
 
 def reuse_exact_sentence_ranges(entries):
@@ -801,8 +801,6 @@ def make_audio_entry(book_id, file, score, word_segment, example_segment, next_s
         'voice': 'book', 'file': file,
         'start': round(start, 2), 'end': round(end, 2),
     }
-    if book_id == 3:
-        audio['cache'] = False
     return audio, None
 
 
@@ -1074,7 +1072,7 @@ def main():
         'tracks': {
             filename: {
                 'sha256': sha,
-                'source': 'book1-r2' if filename.startswith('B1-') else 'official-tku-drive',
+                'source': 'book1-r2' if filename.startswith('B1-') else 'book3-r2',
                 'durationSec': track_durations[filename],
             }
             for filename, sha in sorted(track_hashes.items())

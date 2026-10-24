@@ -88,13 +88,9 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
         } else {
           const track = book3Tracks.get(entry.alignment.track);
           assert.ok(track, `${sourceCardId} Book 3 track exists`);
-          assert.equal(entry.alignment.driveFileId, track.id, `${sourceCardId} Book 3 Drive provenance`);
-          assert.equal(
-            entry.audio.file,
-            `https://drive.usercontent.google.com/download?id=${track.id}&export=download`,
-            `${sourceCardId} Book 3 streaming URL`,
-          );
-          assert.equal(entry.audio.cache, false, `${sourceCardId} Book 3 range must stream without whole-file caching`);
+          assert.equal(entry.alignment.driveFileId, track.id, `${sourceCardId} Book 3 provenance`);
+          assert.equal(entry.audio.file, entry.alignment.track, `${sourceCardId} Book 3 playback path`);
+          assert.equal(entry.audio.cache, undefined, `${sourceCardId} Book 3 cache policy`);
         }
       } else {
         assert.ok(entry.issue, `${sourceCardId} rejected range is documented for speech fallback`);

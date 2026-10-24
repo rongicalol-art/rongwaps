@@ -51,9 +51,11 @@ Folder URLs use the form
 - Official source page: <https://sites.google.com/clc.tku.edu.tw/modernchinese-official/音檔>.
 - The linked Book 3 Drive folder contains 32 vocabulary tracks named
   `B3-LL-P-2.mp3` (Lessons 1–16, Parts 1–2). The index stores their Drive IDs.
-- The app streams timestamp ranges from the official `drive.usercontent.google.com`
-  URLs; the audio is not mirrored or uploaded to app storage. Local originals for
-  alignment live only in ignored `output/official-audio/book3/`.
+- Local originals (vocabulary + dialogue) live in ignored `output/official-audio/book3/` and are
+  the alignment source. `node scripts/audio/reencodeBook3Audio.mjs` re-encodes them to mono 96 kbps
+  (`output/official-audio/book3-r2/`, hashes in `content/audio/audio_manifest_book3.json`), and
+  `uploadOfficialAudio.mjs --book 3` puts them in the R2 bucket like Book 1. The app plays
+  timestamp ranges from `B3-LL-P-T.mp3` via `VITE_AUDIO_BASE_URL`; nothing streams from Drive.
 
 ### 5. Other official/licensed channels
 
@@ -736,5 +738,5 @@ their own rely on detection alone.
   `content/readings/book-3.json` to the untrimmed tracks (Whisper finds line 1 after the spoken
   title) → `content/dialogueAlignment-book3.json`. A reading averaging below 0.85 is marked
   unmatched: its authored text doesn't follow the recording.
-- `npm run content:export` attaches each matched line's clip (Drive stream URL) to the Book 3
+- `npm run content:export` attaches each matched line's clip (the `B3-…mp3` R2 file) to the Book 3
   readings pack; unmatched lines keep their studio recording.

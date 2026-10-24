@@ -1,0 +1,460 @@
+{
+  "bookId": 3,
+  "source": "Official TKU CLC Book 3 audio, re-encoded for Cloudflare R2",
+  "encoding": {
+    "codec": "mp3",
+    "bitrateKbps": 96,
+    "channels": 1
+  },
+  "count": 64,
+  "files": [
+    {
+      "file": "B3-01-1-1.mp3",
+      "id": "1paacCXcKJ9pfiP3lCSJoRxYIqnSYkAtl",
+      "bytes": 2058669,
+      "sha256": "eff5e26a5a7c28ea4f8752f6f9cf63c2787d19f02a3738c0d0b0b0ddeb6e1964",
+      "durationSec": 171.491
+    },
+    {
+      "file": "B3-01-1-2.mp3",
+      "id": "11M1r5UDI-CNd6FWnP72JxHtqnLE2vlNS",
+      "bytes": 6550605,
+      "sha256": "e187627926230ec78306661c843c172890a19d8867e14660706e1b11a284dbfc",
+      "durationSec": 545.822
+    },
+    {
+      "file": "B3-01-2-1.mp3",
+      "id": "122Qq5rfM_q5W8SRHqz4csqiE3oxayRA8",
+      "bytes": 1637901,
+      "sha256": "c9aec05b416d0999fbae878855f1aaaa5b6bd621970c0ca6149ad0a160a40f64",
+      "durationSec": 136.427
+    },
+    {
+      "file": "B3-01-2-2.mp3",
+      "id": "1BMpDHDGu-6H58HNmTlg2N68uiFJK6dkA",
+      "bytes": 3634605,
+      "sha256": "95705d77ab66ab09ccd1d0ca9be2309539497bb9908698078e80faadcadb3c58",
+      "durationSec": 302.825
+    },
+    {
+      "file": "B3-02-1-1.mp3",
+      "id": "1XEMpti7NxKUPY-omrjCIIwyqcyyUFmZ0",
+      "bytes": 1995885,
+      "sha256": "36fdbd326b56308dfe70e0de24834311bbe14325b6f660656a9ece61471f8596",
+      "durationSec": 166.269
+    },
+    {
+      "file": "B3-02-1-2.mp3",
+      "id": "1iBuBcfH61sUq9hEsNVQsb4mGXRytqJ0g",
+      "bytes": 4095981,
+      "sha256": "a82971e8203b61ebf22ec27cd082083ed0ea8ca12c7f77371e98fa704ffc842d",
+      "durationSec": 341.276
+    },
+    {
+      "file": "B3-02-2-1.mp3",
+      "id": "1tu21dbdRlzVGD1htcMS3uxOT0-PJSTEs",
+      "bytes": 1879245,
+      "sha256": "d63cd3c962bbc40d33f066f3ca5c9f5acb909894455c78bff3f9653784bda084",
+      "durationSec": 156.537
+    },
+    {
+      "file": "B3-02-2-2.mp3",
+      "id": "1Q89pWAcfN8T3v9cLYHzZaU_G9SQrl73A",
+      "bytes": 4870701,
+      "sha256": "8ea47bb3bc497a2dd456c45d5bef6b19b1bade6e3102186562493e2c25ecc15d",
+      "durationSec": 405.83
+    },
+    {
+      "file": "B3-03-1-1.mp3",
+      "id": "1oegL4IcZM7bHuE63o9r6tyMmosXwLs7c",
+      "bytes": 2740941,
+      "sha256": "c6173baf89e590ec1ea58b20e9d3705017c69d1ccc7d5f962f07bb6da47650e0",
+      "durationSec": 228.34
+    },
+    {
+      "file": "B3-03-1-2.mp3",
+      "id": "1cmBlAugwhxS39auC66pE3ryR1IPW_BKi",
+      "bytes": 5629005,
+      "sha256": "eed57bff067db8899c6dceb6a7a6918ba2375cf18a524a4f40f55e32e34892f1",
+      "durationSec": 469.023
+    },
+    {
+      "file": "B3-03-2-1.mp3",
+      "id": "15PAwLxw2aYX633ZGw-ebNoR37BLnJcLn",
+      "bytes": 1438893,
+      "sha256": "132f84675525284aa81bf5028bd4eec64942268e39d7c0b8cb4d133828cac569",
+      "durationSec": 119.845
+    },
+    {
+      "file": "B3-03-2-2.mp3",
+      "id": "1QpQUYf2KXYoguzrTuPGpriw2zXXyapkd",
+      "bytes": 3687021,
+      "sha256": "9735dc3bd63be4d6642e302bb7dfc43089e8e91c0ab70261cd97a3f5d790a811",
+      "durationSec": 307.185
+    },
+    {
+      "file": "B3-04-1-1.mp3",
+      "id": "1ePvpeG0xUJicLffdX3vAB1LNI9UrkuyY",
+      "bytes": 2262285,
+      "sha256": "0bb15c8bd8ca767d7a48bd26470fa42dcffa3e2caa65393a7d7132acd00d4099",
+      "durationSec": 188.47
+    },
+    {
+      "file": "B3-04-1-2.mp3",
+      "id": "1ZFtizUW-UOGdFO0pNJTifd9LeiQIvEf0",
+      "bytes": 4093677,
+      "sha256": "d4f8d2695f2e3aa850b37898113b4b2a955c7c1c1ccb95f6d1d209d5722cdcec",
+      "durationSec": 341.073
+    },
+    {
+      "file": "B3-04-2-1.mp3",
+      "id": "1ELtwPqRX9rZHcc5_8I2l5m5VUDry_nta",
+      "bytes": 1748781,
+      "sha256": "3282f85a5947e37b119aaba51c4c124190d3e2d3ae7916810a5ae21bc7a17b01",
+      "durationSec": 145.68
+    },
+    {
+      "file": "B3-04-2-2.mp3",
+      "id": "1SK_uEkLr0IiJsrR1LTXOOpNVjsPHXwWu",
+      "bytes": 4648077,
+      "sha256": "8e326612aa9b662f55cceb63631452b46064e1e676fa810b92d2578c62544b1f",
+      "durationSec": 387.287
+    },
+    {
+      "file": "B3-05-1-1.mp3",
+      "id": "1fQHqfs6wL5uLn0zL0XEELDIEMd2TZ8bs",
+      "bytes": 2331405,
+      "sha256": "5d9584427196c9f0956767340c722b904b4ff93ddf18d8a777cafff523d80850",
+      "durationSec": 194.226
+    },
+    {
+      "file": "B3-05-1-2.mp3",
+      "id": "1gL4VN0Rk1FuwViRsw5ZZZUz6BYcZkrbV",
+      "bytes": 5660973,
+      "sha256": "f06c1ce286fb02b81e0f022b81518be10654ac8648555c001ebbf7cef733eafb",
+      "durationSec": 471.673
+    },
+    {
+      "file": "B3-05-2-1.mp3",
+      "id": "1tD34FIBPPfj098c2NFCOEUic3dnns63F",
+      "bytes": 1748781,
+      "sha256": "88ae76d7a346ee049977d2b0c0352e3cf02bd21b6bfb6c09966fe9af8e428801",
+      "durationSec": 145.665
+    },
+    {
+      "file": "B3-05-2-2.mp3",
+      "id": "1Ljb961R_GuEaPoHv2yK1jXDb3gkjOKZf",
+      "bytes": 5745357,
+      "sha256": "fd5ce51152c1cf04abb638cb0f4b5d4c67b21f73c012e37c2c29c68c28367c45",
+      "durationSec": 478.712
+    },
+    {
+      "file": "B3-06-1-1.mp3",
+      "id": "12TvoDzya2iaq1UZUqGZzmPtI81c-CDGk",
+      "bytes": 2089485,
+      "sha256": "2e411c25f48be219cee42de51b06b39d3c0fa5f6fc275bdafd5c4d91fcd0e749",
+      "durationSec": 174.056
+    },
+    {
+      "file": "B3-06-1-2.mp3",
+      "id": "1pIFl7gLPflyW5ml4DyMWHct3TToYcu8j",
+      "bytes": 5651757,
+      "sha256": "059e415bb4fda83eaecf9d33cfc7532fbc473c30df72b0854ce3fd0301e4fcb8",
+      "durationSec": 470.909
+    },
+    {
+      "file": "B3-06-2-1.mp3",
+      "id": "1Ao644zkr1VETVA1iwEI7uXFcZ1sDSIlM",
+      "bytes": 2101293,
+      "sha256": "ee44e6be32bc320adf9d51493db09c13477dca70fc4af950457af94c3ea42954",
+      "durationSec": 175.047
+    },
+    {
+      "file": "B3-06-2-2.mp3",
+      "id": "1SPZJNofC6YRvDf34zS5clp1myRv16wy4",
+      "bytes": 4105197,
+      "sha256": "d2bb7726b4599c7bbe09fdffed99345486b04b85c4e401686914df95fa585c33",
+      "durationSec": 342.027
+    },
+    {
+      "file": "B3-07-1-1.mp3",
+      "id": "1FKH5qxN2gQeyiJ9cJ3LlhxNpM2IqCsQb",
+      "bytes": 2645901,
+      "sha256": "fc575452033f10ff06f1c3844d203c208d65ad7c5a3a47783e860919a0aabf63",
+      "durationSec": 220.417
+    },
+    {
+      "file": "B3-07-1-2.mp3",
+      "id": "11Ek_Gcsi2avds5QWXMSsjPijkvMwZz1b",
+      "bytes": 6340077,
+      "sha256": "d495cb39b7e0a32b23c82e1d8c9a89d44d9319a18e7ff9fa1d7cd30eab3aaf3a",
+      "durationSec": 528.265
+    },
+    {
+      "file": "B3-07-2-1.mp3",
+      "id": "1g0cy99UB5wjYU6e6zZZudiCh5wthmM5l",
+      "bytes": 2104461,
+      "sha256": "5bbcd346f181753cd6372028ddcbd67365e9914ed455890a8b5d40fde958f670",
+      "durationSec": 175.311
+    },
+    {
+      "file": "B3-07-2-2.mp3",
+      "id": "1HoAQwh9uS3lnBaOJpSDRJPX-_TejHhrL",
+      "bytes": 3769965,
+      "sha256": "6bf28b80c1ddf805c1e1fa5d95a2c8e9c529b2a88ee85793631bd7bb39315e06",
+      "durationSec": 314.089
+    },
+    {
+      "file": "B3-08-1-1.mp3",
+      "id": "1DMtIrwAK9dQ4hiZDDAheytZvzMoSVHFH",
+      "bytes": 2360781,
+      "sha256": "0a7524cb134a3f37ca6b47899d060a65ae33f4bd5a0f63a90e109b9e57e43bd7",
+      "durationSec": 196.665
+    },
+    {
+      "file": "B3-08-1-2.mp3",
+      "id": "15SGuxl_QNEDtvn2Eps2CWFXKL3os6YXb",
+      "bytes": 5734989,
+      "sha256": "8996f1df28fb1bf3e9e2c9eb563f4111125d99737e6931487fbe592e1fff9e11",
+      "durationSec": 477.852
+    },
+    {
+      "file": "B3-08-2-1.mp3",
+      "id": "1Vh8hBtyYo01jJqz5oAgid_iGv_JkWI42",
+      "bytes": 1709325,
+      "sha256": "6974ebe7daa861436ae8b29f3f00c53f82fd2d0a6805be01c20f370ca3fa29f6",
+      "durationSec": 142.37
+    },
+    {
+      "file": "B3-08-2-2.mp3",
+      "id": "1wkm4s9MgZWhjD8eIH9qHX79rUuy7bw0g",
+      "bytes": 3599757,
+      "sha256": "fd5586b5c40df6bbead9c2175550dde2ad5d19613c644c327d382d4839e743e4",
+      "durationSec": 299.911
+    },
+    {
+      "file": "B3-09-1-1.mp3",
+      "id": "10gNbbNyK8-0yFdvnWjQIVA8nd50MS50O",
+      "bytes": 2636685,
+      "sha256": "78d9ab60b71de534d3ce71d624a568dff7b149e21ac0e9d631cd90e5b8053bd8",
+      "durationSec": 219.659
+    },
+    {
+      "file": "B3-09-1-2.mp3",
+      "id": "1xfJsqjPeviFrUcNDR4GP5DDKN9yw9ba0",
+      "bytes": 5818797,
+      "sha256": "a85e121d1110660e3ab31d38b50cb6aad869347ecd9330fb301428624eeb0f7a",
+      "durationSec": 484.846
+    },
+    {
+      "file": "B3-09-2-1.mp3",
+      "id": "1g8y-EstxLzITwIXPpSw7meGlHGDOKbRj",
+      "bytes": 1870893,
+      "sha256": "c95d7ab33abd55737bb1a4cde649dddb4e3d3376e88e713b27fee4465f9f4750",
+      "durationSec": 155.856
+    },
+    {
+      "file": "B3-09-2-2.mp3",
+      "id": "1KP_i986Ird_bGFwv8UHFhgeA-eSJC9Sz",
+      "bytes": 3903597,
+      "sha256": "1daf716d038e706c6bcd574596bded1de2741769789116f0d46460f219d2f916",
+      "durationSec": 325.238
+    },
+    {
+      "file": "B3-10-1-1.mp3",
+      "id": "1eNBoDM2LWFZet7WuNgj66kwSl5NEDhAG",
+      "bytes": 1918413,
+      "sha256": "e660461bce05bb1f44da2ff156451b13072f908a541b4ee3feaee7e3d8672094",
+      "durationSec": 159.794
+    },
+    {
+      "file": "B3-10-1-2.mp3",
+      "id": "1oxv08-JCqsKmZeod_JSLLcUzRMuBl_X_",
+      "bytes": 5756013,
+      "sha256": "3c213cc8d48efa50ea95929392bf3316977f05eb31bf344d9b07c2fd6ea1d162",
+      "durationSec": 479.593
+    },
+    {
+      "file": "B3-10-2-1.mp3",
+      "id": "1Z6J8o2XBUy9DtxyPmEq2O-jJ20S3CbyT",
+      "bytes": 1910349,
+      "sha256": "52da3139f906fc6dd4c9e8afb18dea1aff20b5288742df67c88308522f65fb36",
+      "durationSec": 159.121
+    },
+    {
+      "file": "B3-10-2-2.mp3",
+      "id": "1ptTrVJQ8qI7oYxfj8K1A4St9u-LhdDjQ",
+      "bytes": 5949549,
+      "sha256": "b335883f859b81c85c839961e860ff343d632bba2fd51f8c96995a557d39c8e6",
+      "durationSec": 495.732
+    },
+    {
+      "file": "B3-11-1-1.mp3",
+      "id": "1bFtafpax26H_1vWIUpiKPYsM99jdnkXc",
+      "bytes": 2643597,
+      "sha256": "73b73dab9e0a8b05b693474f54cecc8e94122d7e0c663432459183da9be0609e",
+      "durationSec": 220.246
+    },
+    {
+      "file": "B3-11-1-2.mp3",
+      "id": "1rGVewEsHyr7EiyAgmF0tKmSiVxrtQnm7",
+      "bytes": 5416749,
+      "sha256": "2018aeada63a773b8eeb91d25ed030ca606ba58e0bf5a542b1266decfc3087e1",
+      "durationSec": 451.328
+    },
+    {
+      "file": "B3-11-2-1.mp3",
+      "id": "1HAwjlAzpyCJY58zPq7uaf8_FnDlHUGpu",
+      "bytes": 1791981,
+      "sha256": "33b6d3e7888e1464477cc7c4db1136d255fcee3703278773a125199268489838",
+      "durationSec": 149.277
+    },
+    {
+      "file": "B3-11-2-2.mp3",
+      "id": "1-UT7GcySQGP7kP499h5mavQQBh7mn3bI",
+      "bytes": 6289389,
+      "sha256": "e3c994e6d7f445174b8d466e39e731582481a1384ef8ff4b12b5864fad39b0eb",
+      "durationSec": 524.049
+    },
+    {
+      "file": "B3-12-1-1.mp3",
+      "id": "1ev4WWq7dB59ZcpPqRo_cCSdXCKh_Aq81",
+      "bytes": 2190285,
+      "sha256": "ef7bf5353702889dbd0278d05d319166617414ec42d69cc89486878af500bb5d",
+      "durationSec": 182.466
+    },
+    {
+      "file": "B3-12-1-2.mp3",
+      "id": "16j0chcJK_pKFq09X6-RV0gIcy80xlD3J",
+      "bytes": 5808717,
+      "sha256": "e3dfcc9c2d9b0b7d9874afb9fcf5c7ac3701fb6041ad085e6b949b06775e2f6c",
+      "durationSec": 483.998
+    },
+    {
+      "file": "B3-12-2-1.mp3",
+      "id": "1oJ1LLu2U6mECCF1ZXbPqjSwje9tQlojq",
+      "bytes": 2330541,
+      "sha256": "7906ab0c3eef9ffb5fe7241877b116cbb46a4a8de02e330f243dfb8565cccd51",
+      "durationSec": 194.156
+    },
+    {
+      "file": "B3-12-2-2.mp3",
+      "id": "11umdziwV0tx8iFbIYpAB1LQaN_xLfPM_",
+      "bytes": 3956589,
+      "sha256": "7193155e115a524427721b36585259bba19c56b130cd6d579a2262c869471bb7",
+      "durationSec": 329.654
+    },
+    {
+      "file": "B3-13-1-1.mp3",
+      "id": "1Fcr3TQ8lRl1uXhFpLJ4kr3w3PD4kJrPY",
+      "bytes": 2189997,
+      "sha256": "323460807a6c7b234ed582b75018870a7353cc1b94331c429a8e6588e4f4db98",
+      "durationSec": 182.429
+    },
+    {
+      "file": "B3-13-1-2.mp3",
+      "id": "1RU7no9f2PBr3fkgz0S6Nh_TOW8-ZHodu",
+      "bytes": 5201325,
+      "sha256": "a34ceff081c9b7ea8bf2616125be72f4d59a876a817b4b6082ebf959e0473c70",
+      "durationSec": 433.373
+    },
+    {
+      "file": "B3-13-2-1.mp3",
+      "id": "1acVUxDIKHMJlHmnq1jyLzLvUM5xAPnXF",
+      "bytes": 1944621,
+      "sha256": "3a34f878d8e1df99ae218ca5d9009918b4795326df039c18d945628331219322",
+      "durationSec": 161.98
+    },
+    {
+      "file": "B3-13-2-2.mp3",
+      "id": "1-t2D9OmOAnwzRKUe1ZOEqzBYJAQV7o5w",
+      "bytes": 4589901,
+      "sha256": "44db75dd3bf5a5a36b5705dc03bad2e1d3ae9938358a0e169ae9290a2b04b704",
+      "durationSec": 382.435
+    },
+    {
+      "file": "B3-14-1-1.mp3",
+      "id": "1r7o8pO4PMAADC2bdJkZ8VaZUD10yzG1U",
+      "bytes": 2766285,
+      "sha256": "6fce5fbe202517a6a3a76d8db922fe1de8186c589a7ef148b5720f9389270a34",
+      "durationSec": 230.451
+    },
+    {
+      "file": "B3-14-1-2.mp3",
+      "id": "16cap8mas7Lp54j0Itaz_uu135mV_3caV",
+      "bytes": 6099885,
+      "sha256": "900ea2382999c6d6ad6904fecb463ffb7c63539f6072ebfd89a0b625c9c09a8c",
+      "durationSec": 508.255
+    },
+    {
+      "file": "B3-14-2-1.mp3",
+      "id": "175rIds5R-g-qxiwzVypOrBLLNV4TCkbF",
+      "bytes": 1475469,
+      "sha256": "d021c4a889bdf7219e1d920a0a33ffafe7f909502f9eccdb2a3f24562f51d803",
+      "durationSec": 122.887
+    },
+    {
+      "file": "B3-14-2-2.mp3",
+      "id": "1UlIS5I3_Pjwu4QIijzdAbRV-cLqKpqMZ",
+      "bytes": 3284685,
+      "sha256": "3e2f4bc048ed45f0b84ce80e9761e5231df62ec2a07d21fe2fae6961f5c93e4a",
+      "durationSec": 273.649
+    },
+    {
+      "file": "B3-15-1-1.mp3",
+      "id": "1VvD5gqElazP4jo_fSLGCVlYXkUSMm9HS",
+      "bytes": 2780397,
+      "sha256": "9491de829c31737ba88e37fca2352d1ae9bf90285fddfab2825cbe21d0ca39d9",
+      "durationSec": 231.64
+    },
+    {
+      "file": "B3-15-1-2.mp3",
+      "id": "1lT-gvYddXxy8LlWeHB6MFe5Y5MRNbUyt",
+      "bytes": 6514605,
+      "sha256": "15e65b8cb01f0357a7d14f2efd16c8de89fb8c671089496c19acdc9ca0a56630",
+      "durationSec": 542.811
+    },
+    {
+      "file": "B3-15-2-1.mp3",
+      "id": "1HnNk5GdPltH3tfCCeWYy7AOJWoz7s7KA",
+      "bytes": 2309517,
+      "sha256": "8c0342c6366aefb5d07e6bdd00d55a7c7a8284e0fcbd670f46732da0dc1d85ea",
+      "durationSec": 192.404
+    },
+    {
+      "file": "B3-15-2-2.mp3",
+      "id": "1rhIId8_43NgZkeDvcKWc6Zvs-EknWtnM",
+      "bytes": 5537421,
+      "sha256": "84d2ba3acac46661e002cf229ad5152fa76257b06c286461df6b9a7a38f82a4c",
+      "durationSec": 461.39
+    },
+    {
+      "file": "B3-16-1-1.mp3",
+      "id": "1QjVu-5laPdLSuJ-0kfECvpaNabCuxS81",
+      "bytes": 2176749,
+      "sha256": "b26292281e59021d6efce12bf2559e5fd08b7293f52c6e215efb103be5e4110c",
+      "durationSec": 181.324
+    },
+    {
+      "file": "B3-16-1-2.mp3",
+      "id": "12hxjO75B2f6oWPWItdytn4Z02HkXgRim",
+      "bytes": 4716333,
+      "sha256": "3b66a0524ec6a5159ade9996fe9ac924a796278b701805fae0d2ec8d595df88f",
+      "durationSec": 392.961
+    },
+    {
+      "file": "B3-16-2-1.mp3",
+      "id": "1eZwMu_vh5XbPmcm9M7Y5CwfOvkvOTJYn",
+      "bytes": 2139309,
+      "sha256": "438d6d49cece2428769187f17db9252a4b0feb6ce0b795c8804cdb640a6c329b",
+      "durationSec": 178.215
+    },
+    {
+      "file": "B3-16-2-2.mp3",
+      "id": "1lXyITvNvz2qdijlppI5rlRSrWqJ06Sdg",
+      "bytes": 5127309,
+      "sha256": "21f2cb7b162b450970f6d2a7d2584bd3c56f83aec97cdce8d94fb914e88d9932",
+      "durationSec": 427.208
+    }
+  ]
+}
