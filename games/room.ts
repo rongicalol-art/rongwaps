@@ -214,8 +214,8 @@ export class GameRoom extends DurableObject<Env> {
   /** Also used by authenticated HTTP leave and by a newer room taking over the account. */
   async exit(userId: string) {
     const room = this.read();
-    if (!room) return;
-    if (room.players.some(player => player.id === userId && !player.left) && Date.now() < room.expiresAt) {
+    if (!room || !room.players.some(player => player.id === userId && !player.left)) return;
+    if (Date.now() < room.expiresAt) {
       applyRaceAction(room, userId, { type: 'leave' }, Date.now(), newSeed);
     }
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE user_id=?', userId);

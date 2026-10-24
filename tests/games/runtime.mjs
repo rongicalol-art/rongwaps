@@ -220,10 +220,27 @@ try {
   await until(() => resumed.state && guest.state.connected.includes('alice'));
   assert.equal(resumed.state.round, guest.state.round);
 
+  // Nonmember Leave requests cannot mutate another room or bypass the account request limit.
+  const roomBeforeSpam = (await partySql.exec('SELECT data FROM state WHERE id=1'))[0].data;
+  const spamToken = await token('leave-nonmember');
+  const spamStatuses = await Promise.all(Array.from({ length: 40 }, async () => {
+    const response = await mf.dispatchFetch(`https://games.test/rooms/${created.code}/leave`, {
+      method: 'POST', headers: { Origin: origin, Authorization: `Bearer ${spamToken}` },
+    });
+    return response.status;
+  }));
+  assert.ok(spamStatuses.includes(200), 'nonmember Leave remains an idempotent success within the limit');
+  assert.ok(spamStatuses.includes(429), 'Leave shares the account request limit');
+  assert.ok(spamStatuses.every(status => status === 200 || status === 429));
+  assert.equal((await partySql.exec('SELECT data FROM state WHERE id=1'))[0].data, roomBeforeSpam, 'nonmembers cannot change room state or its revision');
+
   // HTTP leave is authoritative even when its WebSocket frame cannot be delivered.
   resumed.socket.close(1011, 'offline');
   await post(`/rooms/${created.code}/leave`, 'alice');
   await until(() => guest.state.hostId === 'bob' && guest.state.players.length === 1);
+  const roomAfterLeave = (await partySql.exec('SELECT data FROM state WHERE id=1'))[0].data;
+  await post(`/rooms/${created.code}/leave`, 'alice');
+  assert.equal((await partySql.exec('SELECT data FROM state WHERE id=1'))[0].data, roomAfterLeave, 'repeated Leave does not republish an unchanged room');
   await post(`/rooms/${created.code}/leave`, 'bob');
   await delay(1200);
   const emptyRoom = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: created.code });

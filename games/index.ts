@@ -40,11 +40,11 @@ export default {
     if (!auth) return reply({ error: 'Sign in with your school account.' }, 401);
     const { userId, expiresAt } = auth;
     try {
+      if (!await env.ROOMS.getByName(`limit:${userId}`).allowRequest()) return reply({ error: 'Too many connection requests. Try again shortly.' }, 429);
       if (match?.[2] === '/leave' && ROOM_CODE.test(match[1])) {
         await env.ROOMS.getByName(match[1]).exit(userId);
         return reply({ ok: true });
       }
-      if (!await env.ROOMS.getByName(`limit:${userId}`).allowRequest()) return reply({ error: 'Too many connection requests. Try again shortly.' }, 429);
       const data = await body(request);
       const name = socialName(data.name);
       const color = socialColor(data.color);
