@@ -253,6 +253,15 @@ export interface ListenPickItem extends PracticeItemBase {
   answer: number;
 }
 
+/** Compare two grammatical sentences by meaning, with the explanation shown only after a tap. */
+export interface SameMeaningItem extends PracticeItemBase {
+  kind: 'same-meaning';
+  sentences: [PracticeSentence, PracticeSentence];
+  same: boolean;
+  /** Explain the shared meaning or the difference, on either answer. */
+  note: string;
+}
+
 /** One tappable word of a sentence a friend wrote; `tail` is punctuation that stays after it. */
 export interface SpotChunk extends PracticeText {
   tail?: string;
@@ -345,7 +354,7 @@ export interface StoryOrderItem extends PracticeItemBase {
 
 export type PracticeItem =
   | SlotBuildItem | SlotReelsItem | ChatBuildItem
-  | OrderBuildItem | ListenBuildItem | ListenPickItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
+  | OrderBuildItem | ListenBuildItem | ListenPickItem | SameMeaningItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
 export type PracticeKind = PracticeItem['kind'];
 
 export interface GrammarPractice {

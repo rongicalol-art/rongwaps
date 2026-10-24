@@ -1,9 +1,9 @@
-import type { ListenPickItem, MatchPairsItem, SortGroupsItem, SpotFixItem } from '../../types/models';
+import type { ListenPickItem, MatchPairsItem, SameMeaningItem, SortGroupsItem, SpotFixItem } from '../../types/models';
 import { matchRepair, type PracticeVerdict } from './grammarPracticeCheck';
 
 /**
  * Answer checks for the kinds that are answered by choosing: spot the mistake, match the
- * pair, sort by use. Pure, like `grammarPracticeCheck.ts`.
+ * pair, sort by use, compare meanings. Pure, like `grammarPracticeCheck.ts`.
  */
 
 /** `choice` is the replacement tile's `traditional`, or null for "Take it out". */
@@ -30,4 +30,8 @@ export function checkSortCard(item: SortGroupsItem, card: number, group: 0 | 1):
 /** The written sentence picked for a clip: right, or what that sentence would have sounded like. */
 export function checkListenPick(item: ListenPickItem, choice: number): PracticeVerdict {
   return choice === item.answer ? { correct: true, mark: [] } : { correct: false, note: item.options[choice].note, mark: [] };
+}
+
+export function checkSameMeaning(item: SameMeaningItem, same: boolean): PracticeVerdict {
+  return { correct: same === item.same, note: item.note, mark: [] };
 }

@@ -2666,6 +2666,28 @@
           "english": "Today is colder than yesterday."
         },
         "successNote": "Do not use 很 after 比."
+      },
+      {
+        "id": "l14g3-own-meaning",
+        "source": "own",
+        "kind": "same-meaning",
+        "prompt": "Same meaning?",
+        "sentences": [
+          {
+            "traditional": "今天比昨天冷。",
+            "simplified": "今天比昨天冷。",
+            "pinyin": "Jīntiān bǐ zuótiān lěng.",
+            "english": "Today is colder than yesterday."
+          },
+          {
+            "traditional": "昨天比今天冷。",
+            "simplified": "昨天比今天冷。",
+            "pinyin": "Zuótiān bǐ jīntiān lěng.",
+            "english": "Yesterday was colder than today."
+          }
+        ],
+        "same": false,
+        "note": "The first says today is colder; the second says yesterday was colder. Swapping the two sides of 比 reverses the comparison."
       }
     ],
     "allowWords": [

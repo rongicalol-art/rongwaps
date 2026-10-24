@@ -94,6 +94,15 @@ function itemIssues(item: PracticeItem): string[] {
     case 'listen-pick':
       problems.push(...pickIssues(item));
       break;
+    case 'same-meaning':
+      if (item.source !== 'own') problems.push('same-meaning is an own comparison, after the printed exercises.');
+      if (!item.prompt?.trim()) problems.push('prompt is required: Same meaning?');
+      if (item.sentences.length !== 2) problems.push('compare exactly two sentences.');
+      item.sentences.forEach((sentence, index) => problems.push(...sentenceIssues(sentence, `sentence ${index + 1}`)));
+      if (typeof item.same !== 'boolean') problems.push('same must be true or false.');
+      if (!item.note?.trim()) problems.push('note must explain the shared meaning or the difference.');
+      if (item.sentences.length === 2 && plain(item.sentences[0].traditional) === plain(item.sentences[1].traditional)) problems.push('compare different sentences, not identical copies.');
+      break;
     default:
       problems.push(...choiceIssues(item));
   }

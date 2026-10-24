@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import type { DialogueClip, GrammarPractice, ListenClip, PracticeItem } from '../../src/types/models';
-import { checkListenPick, checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
+import { checkListenPick, checkMatchPair, checkSameMeaning, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
 import { checkOrderBuild, checkStoryOrder } from '../../src/utils/grammar/grammarPracticeSequence';
 import { readJson } from '../acceptance_helpers';
 
@@ -13,7 +13,7 @@ const pages = fs.readdirSync(dir).filter((file) => file.endsWith('.json')).flatM
   const lesson = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')) as Record<string, GrammarPractice>;
   return Object.entries(lesson).map(([key, page]) => ({ key, items: page.items }));
 });
-const isNewKind = (item: PracticeItem) => ['order-build', 'listen-build', 'listen-pick', 'spot-fix', 'match-pairs', 'sort-groups', 'story-order'].includes(item.kind);
+const isNewKind = (item: PracticeItem) => ['order-build', 'listen-build', 'listen-pick', 'same-meaning', 'spot-fix', 'match-pairs', 'sort-groups', 'story-order'].includes(item.kind);
 const newItems = pages.flatMap(({ key, items }) => items.filter(isNewKind).map((item) => ({ key, item })));
 
 test('every new-kind item is titled by its own task', () => {
@@ -41,12 +41,32 @@ test('every new-kind item is solved by its own answer key', () => {
         case 'match-pairs': return item.replies.every((reply, index) => reply.answers === undefined || checkMatchPair(item, reply.answers, index).correct);
         case 'sort-groups': return item.cards.every((card, index) => checkSortCard(item, index, card.group).correct);
         case 'story-order': return checkStoryOrder(item, item.answer).correct;
+        case 'same-meaning': return checkSameMeaning(item, item.same).correct;
         default: return true;
       }
     })();
     return ok ? [] : [`${key} ${item.id}`];
   });
   assert.deepEqual(failed, []);
+});
+
+test('meaning comparisons distinguish reversed sequences and comparisons from equivalent word orders', () => {
+  const expected = new Map([
+    ['l9g3-own-meaning', false],
+    ['l12g2-own-meaning', true],
+    ['l14g3-own-meaning', false],
+    ['l15g1-own-meaning', true],
+  ]);
+  const pairs = newItems.flatMap(({ item }) => item.kind === 'same-meaning' ? [item] : []);
+  for (const [id, same] of expected) {
+    const item = pairs.find((pair) => pair.id === id);
+    assert.ok(item, id);
+    assert.equal(checkSameMeaning(item, same).correct, true, id);
+    const wrong = checkSameMeaning(item, !same);
+    assert.equal(wrong.correct, false, id);
+    assert.equal(wrong.note, item.note, id);
+    assert.ok(item.sentences.every((line) => line.simplified && line.pinyin && line.english), id);
+  }
 });
 
 test('a wrong word explains itself wherever it lands (build the sentence)', () => {

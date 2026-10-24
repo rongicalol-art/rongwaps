@@ -6,6 +6,7 @@ import { ListenBuildExercise } from './ListenBuildExercise';
 import { ListenPickExercise } from './ListenPickExercise';
 import { MatchPairsExercise } from './MatchPairsExercise';
 import { OrderBuildExercise } from './OrderBuildExercise';
+import { SameMeaningExercise } from './SameMeaningExercise';
 import { SlotBuildExercise } from './SlotBuildExercise';
 import { SlotReelsExercise } from './SlotReelsExercise';
 import { SortGroupsExercise } from './SortGroupsExercise';
@@ -24,6 +25,7 @@ export const PRACTICE_EXERCISES: { [K in PracticeKind]: ComponentType<PracticeEx
   'order-build': OrderBuildExercise,
   'listen-build': ListenBuildExercise,
   'listen-pick': ListenPickExercise,
+  'same-meaning': SameMeaningExercise,
   'spot-fix': SpotFixExercise,
   'match-pairs': MatchPairsExercise,
   'sort-groups': SortGroupsExercise,

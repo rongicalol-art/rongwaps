@@ -91,7 +91,7 @@ export function GrammarPracticeView({
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 pb-24">
-      {title && <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{title}</h1>}
+      {title && <h1 className={`text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl ${item.kind === 'same-meaning' ? 'sm:text-center' : ''}`}>{title}</h1>}
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
@@ -123,7 +123,7 @@ export function GrammarPracticeView({
         host={barHost}
         status={status}
         ready={ready}
-        hasCheck={item.kind !== 'match-pairs' && item.kind !== 'listen-pick' && item.kind !== 'sort-groups' && item.kind !== 'spot-fix'}
+        hasCheck={item.kind !== 'match-pairs' && item.kind !== 'listen-pick' && item.kind !== 'same-meaning' && item.kind !== 'sort-groups' && item.kind !== 'spot-fix'}
         checking={checking}
         result={result}
         script={script}

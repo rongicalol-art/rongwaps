@@ -377,6 +377,28 @@
     },
     "successNote": "不一樣 before the describing word means “not equally”.",
     "fix": "不一樣"
+   },
+   {
+    "id": "l15g1-own-meaning",
+    "source": "own",
+    "kind": "same-meaning",
+    "prompt": "Same meaning?",
+    "sentences": [
+     {
+      "traditional": "弟弟跟哥哥一樣聰明。",
+      "simplified": "弟弟跟哥哥一样聪明。",
+      "pinyin": "Dìdi gēn gēge yíyàng cōngmíng.",
+      "english": "The younger brother is as smart as the older brother."
+     },
+     {
+      "traditional": "哥哥跟弟弟一樣聰明。",
+      "simplified": "哥哥跟弟弟一样聪明。",
+      "pinyin": "Gēge gēn dìdi yíyàng cōngmíng.",
+      "english": "The older brother is as smart as the younger brother."
+     }
+    ],
+    "same": true,
+    "note": "Both say the brothers are equally smart. Swapping the people keeps the meaning of 跟…一樣."
    }
   ]
  },

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson } from '../acceptance_helpers';
-import type { GrammarPractice, ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
+import type { GrammarPractice, ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SameMeaningItem, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
 import { checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
 import { checkOrderBuild, checkStoryOrder, misplacedPositions } from '../../src/utils/grammar/grammarPracticeSequence';
 import { validateGrammarPractice } from '../../src/utils/grammar/validateGrammarPractice';
@@ -9,6 +9,21 @@ import { validateGrammarPractice } from '../../src/utils/grammar/validateGrammar
 const sentence = (traditional: string): PracticeSentence => ({ traditional, pinyin: 'pinyin', english: 'English' });
 const tile = (traditional: string) => ({ traditional, pinyin: 'pinyin' });
 const validate = (item: Parameters<typeof validateGrammarPractice>[0]['items'][number]) => validateGrammarPractice({ bookPage: 1, title: 'T', items: [item] }, 'p').map((issue) => issue.message);
+
+test('same-meaning requires two distinct complete sentences, a boolean key, and an explanation', () => {
+  const pair: SameMeaningItem = {
+    id: 'meaning', source: 'own', kind: 'same-meaning', prompt: 'Same meaning?',
+    sentences: [sentence('我先吃飯，再看書。'), sentence('我先看書，再吃飯。')],
+    same: false, note: 'The order of eating and reading is reversed.',
+  };
+  assert.deepEqual(validate(pair), []);
+  assert.match(validate({ ...pair, sentences: [pair.sentences[0]] } as unknown as SameMeaningItem).join(), /exactly two/);
+  assert.match(validate({ ...pair, sentences: [pair.sentences[0], pair.sentences[0]] }).join(), /identical copies/);
+  assert.match(validate({ ...pair, sentences: [pair.sentences[0], { ...pair.sentences[1], english: '' }] }).join(), /English are all required/);
+  assert.match(validate({ ...pair, same: 'false' } as unknown as SameMeaningItem).join(), /true or false/);
+  assert.match(validate({ ...pair, note: '' }).join(), /note must explain/);
+  assert.match(validate({ ...pair, source: 'p.208 #1' }).join(), /own comparison/);
+});
 
 const order: OrderBuildItem = {
   id: 'o', source: 'own', kind: 'order-build', prompt: 'Say it.',

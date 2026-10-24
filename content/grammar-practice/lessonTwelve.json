@@ -1509,66 +1509,26 @@
         "fallbackRepair": "Put 以前 before the past situation and 現在 before the present one."
       },
       {
-        "id": "l12g2-own-spot",
+        "id": "l12g2-own-meaning",
         "source": "own",
-        "kind": "spot-fix",
-        "prompt": "I was fat before; now I have lost weight.",
-        "chunks": [
+        "kind": "same-meaning",
+        "prompt": "Same meaning?",
+        "sentences": [
           {
-            "traditional": "我"
+            "traditional": "下課以後我們去騎車。",
+            "simplified": "下课以后我们去骑车。",
+            "pinyin": "Xiàkè yǐhòu wǒmen qù qí chē.",
+            "english": "We go cycling after class."
           },
           {
-            "traditional": "以後"
-          },
-          {
-            "traditional": "很胖"
-          },
-          {
-            "traditional": "，現在瘦了",
-            "tail": "。"
+            "traditional": "我們下課以後去騎車。",
+            "simplified": "我们下课以后去骑车。",
+            "pinyin": "Wǒmen xiàkè yǐhòu qù qí chē.",
+            "english": "We go cycling after class."
           }
         ],
-        "wrong": 1,
-        "tiles": [
-          {
-            "traditional": "以前",
-            "pinyin": "yǐqián"
-          },
-          {
-            "traditional": "現在",
-            "pinyin": "xiànzài",
-            "simplified": "现在"
-          },
-          {
-            "traditional": "本來",
-            "pinyin": "běnlái",
-            "simplified": "本来"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "現在"
-            ],
-            "note": "現在 is already printed in the second clause; the first clause needs 以前."
-          },
-          {
-            "placed": [
-              "本來"
-            ],
-            "note": "本來 is not printed in this sentence; the past state needs 以前."
-          }
-        ],
-        "hint": "The first clause is about the past.",
-        "fix": "以前",
-        "takeOutNote": "Without a time word the sentence loses the past meaning; replace 以後 with 以前.",
-        "result": {
-          "traditional": "我以前很胖，現在瘦了。",
-          "pinyin": "Wǒ yǐqián hěn pàng, xiànzài shòu le.",
-          "english": "I was fat before; now I have lost weight.",
-          "simplified": "我以前很胖，现在瘦了。"
-        },
-        "successNote": "以前 points to the past; 以後 points to the future."
+        "same": true,
+        "note": "Both say we go cycling after class. Moving 我們 before the time phrase keeps the same meaning."
       },
       {
         "id": "l12g2-own-sort",

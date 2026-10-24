@@ -1157,6 +1157,28 @@
      1
     ],
     "successNote": "先 starts the plan, 再 moves to the next step, and 晚上 finishes the day."
+   },
+   {
+    "id": "l9g3-own-meaning",
+    "source": "own",
+    "kind": "same-meaning",
+    "prompt": "Same meaning?",
+    "sentences": [
+     {
+      "traditional": "我先吃飯，再看書。",
+      "simplified": "我先吃饭，再看书。",
+      "pinyin": "Wǒ xiān chīfàn, zài kànshū.",
+      "english": "I eat first, then read."
+     },
+     {
+      "traditional": "我先看書，再吃飯。",
+      "simplified": "我先看书，再吃饭。",
+      "pinyin": "Wǒ xiān kànshū, zài chīfàn.",
+      "english": "I read first, then eat."
+     }
+    ],
+    "same": false,
+    "note": "The first says eat, then read; the second says read, then eat. 先…再 sets the order."
    }
   ]
  },
