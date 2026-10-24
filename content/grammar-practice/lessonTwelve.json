@@ -1,0 +1,2599 @@
+{
+  "B1L12-G01-P271": {
+    "bookPage": 272,
+    "title": "Based on the pictures, complete the sentences with 用.",
+    "items": [
+      {
+        "id": "l12g1-p1",
+        "source": "p.272 #1",
+        "kind": "slot-build",
+        "prompt": "He can write characters in Chinese, not in English. Complete both parts.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他會用中文"
+              },
+              {
+                "type": "slot",
+                "id": "cn",
+                "answers": [
+                  "寫字"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，不會用英文"
+              },
+              {
+                "type": "slot",
+                "id": "en",
+                "answers": [
+                  "寫字"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "寫字",
+            "pinyin": "xiě zì",
+            "simplified": "写字"
+          },
+          {
+            "traditional": "寫字",
+            "pinyin": "xiě zì",
+            "simplified": "写字"
+          },
+          {
+            "traditional": "說",
+            "pinyin": "shuō",
+            "simplified": "说"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "說"
+            ],
+            "mark": [
+              "說"
+            ],
+            "note": "The pictures show writing, so use 寫字 in both parts."
+          }
+        ],
+        "fallbackRepair": "Use 寫字 after both 用中文 and 用英文.",
+        "result": {
+          "traditional": "他會用中文寫字，不會用英文寫字。",
+          "pinyin": "Tā huì yòng Zhōngwén xiě zì, bú huì yòng Yīngwén xiě zì.",
+          "english": "He can write characters in Chinese, but not in English.",
+          "simplified": "他会用中文写字，不会用英文写字。"
+        }
+      },
+      {
+        "id": "l12g1-p2",
+        "source": "p.272 #2",
+        "kind": "slot-build",
+        "prompt": "He likes using his phone to call and does not like using a pen to write letters. Complete both parts.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他喜歡用手機"
+              },
+              {
+                "type": "slot",
+                "id": "call",
+                "answers": [
+                  "打電話"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，不喜歡用筆"
+              },
+              {
+                "type": "slot",
+                "id": "write",
+                "answers": [
+                  "寫信"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "打電話",
+            "pinyin": "dǎ diànhuà",
+            "simplified": "打电话"
+          },
+          {
+            "traditional": "寫信",
+            "pinyin": "xiě xìn",
+            "simplified": "写信"
+          },
+          {
+            "traditional": "看書",
+            "pinyin": "kàn shū",
+            "simplified": "看书"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看書"
+            ],
+            "mark": [
+              "看書"
+            ],
+            "note": "The picture shows a phone and a letter, not a book."
+          },
+          {
+            "slot": {
+              "id": "call",
+              "tile": "寫信"
+            },
+            "note": "The phone takes 打電話; 寫信 belongs with 用筆."
+          },
+          {
+            "slot": {
+              "id": "write",
+              "tile": "打電話"
+            },
+            "note": "The pen takes 寫信; 打電話 belongs with 手機."
+          }
+        ],
+        "fallbackRepair": "Use 打電話 with 手機 and 寫信 with 筆.",
+        "result": {
+          "traditional": "他喜歡用手機打電話，不喜歡用筆寫信。",
+          "pinyin": "Tā xǐhuān yòng shǒujī dǎ diànhuà, bù xǐhuān yòng bǐ xiě xìn.",
+          "english": "He likes using his phone to call and does not like using a pen to write letters.",
+          "simplified": "他喜欢用手机打电话，不喜欢用笔写信。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 272,
+          "box": [
+            0.182,
+            0.383,
+            0.25,
+            0.113
+          ],
+          "alt": "Phone call beside a boy writing on paper."
+        }
+      },
+      {
+        "id": "l12g1-p3",
+        "source": "p.272 #3",
+        "kind": "slot-build",
+        "prompt": "He often uses his phone to call and his computer to work. Complete both parts.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他常"
+              },
+              {
+                "type": "slot",
+                "id": "use1",
+                "answers": [
+                  "用"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "手機"
+              },
+              {
+                "type": "slot",
+                "id": "call",
+                "answers": [
+                  "打電話"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，也常"
+              },
+              {
+                "type": "slot",
+                "id": "use2",
+                "answers": [
+                  "用"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "電腦"
+              },
+              {
+                "type": "slot",
+                "id": "work",
+                "answers": [
+                  "工作"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "打電話",
+            "pinyin": "dǎ diànhuà",
+            "simplified": "打电话"
+          },
+          {
+            "traditional": "工作",
+            "pinyin": "gōngzuò"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看"
+            ],
+            "mark": [
+              "看"
+            ],
+            "note": "The picture shows working on a computer, so use 工作."
+          },
+          {
+            "slot": {
+              "id": "use1",
+              "tile": "打電話"
+            },
+            "note": "The first 常 gap takes 用 before 手機; 打電話 comes after 手機."
+          },
+          {
+            "slot": {
+              "id": "use1",
+              "tile": "工作"
+            },
+            "note": "The first gap takes 用; 工作 completes 用電腦."
+          },
+          {
+            "slot": {
+              "id": "call",
+              "tile": "用"
+            },
+            "note": "After 手機 comes 打電話; 用 belongs before each tool."
+          },
+          {
+            "slot": {
+              "id": "call",
+              "tile": "工作"
+            },
+            "note": "手機 takes 打電話; 工作 goes with 電腦."
+          },
+          {
+            "slot": {
+              "id": "use2",
+              "tile": "打電話"
+            },
+            "note": "The second 常 gap takes 用 before 電腦; 打電話 already belongs after 手機."
+          },
+          {
+            "slot": {
+              "id": "use2",
+              "tile": "工作"
+            },
+            "note": "The second gap takes 用; 工作 comes after 電腦."
+          },
+          {
+            "slot": {
+              "id": "work",
+              "tile": "用"
+            },
+            "note": "After 電腦 comes 工作; 用 belongs before the tool."
+          },
+          {
+            "slot": {
+              "id": "work",
+              "tile": "打電話"
+            },
+            "note": "電腦 takes 工作; 打電話 belongs after 手機."
+          }
+        ],
+        "fallbackRepair": "Use 用 before each tool, then 打電話 and 工作.",
+        "result": {
+          "traditional": "他常用手機打電話，也常用電腦工作。",
+          "pinyin": "Tā cháng yòng shǒujī dǎ diànhuà, yě cháng yòng diànnǎo gōngzuò.",
+          "english": "He often uses his phone to call and his computer to work.",
+          "simplified": "他常用手机打电话，也常用电脑工作。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 272,
+          "box": [
+            0.182,
+            0.525,
+            0.278,
+            0.07
+          ],
+          "alt": "Two desks: a man on a phone with a laptop, and a person waving at a laptop."
+        }
+      },
+      {
+        "id": "l12g1-own-1",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that you use your phone to take photos.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "手機",
+            "pinyin": "shǒujī",
+            "simplified": "手机"
+          },
+          {
+            "traditional": "照相",
+            "pinyin": "zhàoxiàng"
+          },
+          {
+            "traditional": "給",
+            "pinyin": "gěi",
+            "simplified": "给"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "用",
+              "手機",
+              "照相"
+            ],
+            "sentence": {
+              "traditional": "我用手機照相。",
+              "pinyin": "Wǒ yòng shǒujī zhàoxiàng.",
+              "english": "I use my phone to take photos.",
+              "simplified": "我用手机照相。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "給"
+            ],
+            "mark": [
+              "給"
+            ],
+            "note": "給 marks a receiver. The phone is the tool, so use 用."
+          }
+        ],
+        "fallbackRepair": "Put 用 before the tool 手機.",
+        "successNote": "用 + tool + action: 用手機照相."
+      },
+      {
+        "id": "l12g1-own-2",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that he often chats with friends in Chinese.",
+        "tiles": [
+          {
+            "traditional": "他常",
+            "pinyin": "tā cháng"
+          },
+          {
+            "traditional": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "中文",
+            "pinyin": "Zhōngwén"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          },
+          {
+            "traditional": "朋友聊天",
+            "pinyin": "péngyǒu liáotiān"
+          },
+          {
+            "traditional": "對",
+            "pinyin": "duì",
+            "simplified": "对"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他常",
+              "用",
+              "中文",
+              "跟",
+              "朋友聊天"
+            ],
+            "sentence": {
+              "traditional": "他常用中文跟朋友聊天。",
+              "pinyin": "Tā cháng yòng Zhōngwén gēn péngyǒu liáotiān.",
+              "english": "He often chats with friends in Chinese."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "對"
+            ],
+            "mark": [
+              "對"
+            ],
+            "note": "Use 跟 for the people you chat with; 對 marks an attitude or target."
+          }
+        ],
+        "fallbackRepair": "Use 用 before the language, then 跟 before the people."
+      }
+    ],
+    "allowWords": []
+  },
+  "B1L12-G02-P272": {
+    "bookPage": 273,
+    "title": "Complete the sentences with 以前 or 以後 based on the pictures.",
+    "items": [
+      {
+        "id": "l12g2-p1",
+        "source": "p.273 #1",
+        "kind": "slot-build",
+        "prompt": "She was a student before; now she is a teacher.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "t",
+                "answers": [
+                  "以前"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "是學生，現在是老師。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The student role is in the past, so use 以前."
+          },
+          {
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "現在 is already printed in the second clause."
+          }
+        ],
+        "fallbackRepair": "Use 以前 for the past role.",
+        "result": {
+          "traditional": "我以前是學生，現在是老師。",
+          "pinyin": "Wǒ yǐqián shì xuéshēng, xiànzài shì lǎoshī.",
+          "english": "I was a student before; now I am a teacher.",
+          "simplified": "我以前是学生，现在是老师。"
+        },
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 273,
+          "box": [
+            0.186,
+            0.242,
+            0.186,
+            0.1
+          ],
+          "alt": "A schoolgirl and an arrow to a woman teacher at a blackboard."
+        }
+      },
+      {
+        "id": "l12g2-p2",
+        "source": "p.273 #2",
+        "kind": "slot-build",
+        "prompt": "Your brother works in Taiwan now; later he will work in the US.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "哥哥現在在台灣工作，他"
+              },
+              {
+                "type": "slot",
+                "id": "t",
+                "answers": [
+                  "以後"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要去美國工作。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以前"
+            ],
+            "mark": [
+              "以前"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The US job is in the future, so use 以後."
+          },
+          {
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "現在 is already the first time word; the future needs 以後."
+          }
+        ],
+        "fallbackRepair": "Use 以後 for the future plan.",
+        "result": {
+          "traditional": "哥哥現在在台灣工作，他以後要去美國工作。",
+          "pinyin": "Gēge xiànzài zài Táiwān gōngzuò, tā yǐhòu yào qù Měiguó gōngzuò.",
+          "english": "My brother works in Taiwan now; later he will work in the US.",
+          "simplified": "哥哥现在在台湾工作，他以后要去美国工作。"
+        },
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 273,
+          "box": [
+            0.185,
+            0.388,
+            0.225,
+            0.109
+          ],
+          "alt": "Taiwan and an arrow to a US map with a laptop."
+        }
+      },
+      {
+        "id": "l12g2-p3",
+        "source": "p.273 #3",
+        "kind": "slot-build",
+        "prompt": "She liked tea before; now she likes coffee.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "姐姐"
+              },
+              {
+                "type": "slot",
+                "id": "t",
+                "answers": [
+                  "以前"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡喝茶，現在喜歡喝咖啡。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The tea habit is in the past, so use 以前."
+          },
+          {
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "現在 is already printed in the second clause."
+          }
+        ],
+        "fallbackRepair": "Use 以前 for the past habit.",
+        "result": {
+          "traditional": "姐姐以前喜歡喝茶，現在喜歡喝咖啡。",
+          "pinyin": "Jiějie yǐqián xǐhuān hē chá, xiànzài xǐhuān hē kāfēi.",
+          "english": "My older sister liked tea before; now she likes coffee.",
+          "simplified": "姐姐以前喜欢喝茶，现在喜欢喝咖啡。"
+        },
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 273,
+          "box": [
+            0.189,
+            0.554,
+            0.225,
+            0.064
+          ],
+          "alt": "A teapot and cup, an arrow, then a cup of coffee."
+        }
+      },
+      {
+        "id": "l12g2-p4",
+        "source": "p.273 #4",
+        "kind": "slot-build",
+        "prompt": "She has been sick often; she decided to exercise more from now on.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她最近常常生病，她決定"
+              },
+              {
+                "type": "slot",
+                "id": "t",
+                "answers": [
+                  "以後"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要多運動。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以前"
+            ],
+            "mark": [
+              "以前"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The decision is about the future, so use 以後."
+          },
+          {
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "The decision looks forward; use 以後."
+          }
+        ],
+        "fallbackRepair": "Use 以後 for the future decision.",
+        "result": {
+          "traditional": "她最近常常生病，她決定以後要多運動。",
+          "pinyin": "Tā zuìjìn chángcháng shēngbìng, tā juédìng yǐhòu yào duō yùndòng.",
+          "english": "She has been sick often; she decided to exercise more from now on.",
+          "simplified": "她最近常常生病，她决定以后要多运动。"
+        },
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 273,
+          "box": [
+            0.182,
+            0.671,
+            0.19,
+            0.085
+          ],
+          "alt": "A person sick in bed, an arrow, then a woman jogging."
+        }
+      },
+      {
+        "id": "l12g2-p5",
+        "source": "p.275 #1",
+        "kind": "order-build",
+        "prompt": "You eat dinner before seven every day. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "每天",
+            "pinyin": "měitiān"
+          },
+          {
+            "traditional": "七點",
+            "pinyin": "qī diǎn",
+            "simplified": "七点"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "吃晚飯",
+            "pinyin": "chī wǎnfàn",
+            "simplified": "吃晚饭"
+          },
+          {
+            "traditional": "晚上",
+            "pinyin": "wǎnshang"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "每天",
+              "七點",
+              "以前",
+              "吃晚飯"
+            ],
+            "sentence": {
+              "traditional": "我每天七點以前吃晚飯。",
+              "pinyin": "Wǒ měitiān qī diǎn yǐqián chī wǎnfàn.",
+              "english": "I eat dinner before seven every day.",
+              "simplified": "我每天七点以前吃晚饭。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "晚上"
+            ],
+            "mark": [
+              "晚上"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The sentence needs the clock time 七點, not 晚上."
+          }
+        ],
+        "fallbackRepair": "Put 以前 after 七點.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible."
+      },
+      {
+        "id": "l12g2-p6",
+        "source": "p.275 #2",
+        "kind": "order-build",
+        "prompt": "You came to Taiwan two years ago. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "兩年",
+            "pinyin": "liǎng nián",
+            "simplified": "两年"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "來",
+            "pinyin": "lái",
+            "simplified": "来"
+          },
+          {
+            "traditional": "台灣",
+            "pinyin": "Táiwān",
+            "simplified": "台湾"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "兩年",
+              "以前",
+              "來",
+              "台灣"
+            ],
+            "sentence": {
+              "traditional": "我兩年以前來台灣。",
+              "pinyin": "Wǒ liǎng nián yǐqián lái Táiwān.",
+              "english": "I came to Taiwan two years ago.",
+              "simplified": "我两年以前来台湾。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "“Two years ago” is 兩年以前."
+          }
+        ],
+        "fallbackRepair": "Put 以前 after 兩年.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible."
+      },
+      {
+        "id": "l12g2-p7",
+        "source": "p.275 #3",
+        "kind": "order-build",
+        "prompt": "He said he left home ten minutes ago. Complete the reply.",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "說",
+            "pinyin": "shuō",
+            "simplified": "说"
+          },
+          {
+            "traditional": "十分鐘",
+            "pinyin": "shí fēnzhōng",
+            "simplified": "十分钟"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "就出門了",
+            "pinyin": "jiù chūmén le",
+            "simplified": "就出门了"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "說",
+              "十分鐘",
+              "以前",
+              "就出門了"
+            ],
+            "sentence": {
+              "traditional": "他說十分鐘以前就出門了。",
+              "pinyin": "Tā shuō shí fēnzhōng yǐqián jiù chūmén le.",
+              "english": "He said he left home ten minutes ago.",
+              "simplified": "他说十分钟以前就出门了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "“Ten minutes ago” is 十分鐘以前."
+          }
+        ],
+        "fallbackRepair": "Put 以前 after 十分鐘.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible."
+      },
+      {
+        "id": "l12g2-p8",
+        "source": "p.276 #1",
+        "kind": "order-build",
+        "prompt": "After class, you go ride bikes. Say it with 以後.",
+        "tiles": [
+          {
+            "traditional": "下課",
+            "pinyin": "xiàkè",
+            "simplified": "下课"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          },
+          {
+            "traditional": "我們",
+            "pinyin": "wǒmen",
+            "simplified": "我们"
+          },
+          {
+            "traditional": "去",
+            "pinyin": "qù"
+          },
+          {
+            "traditional": "騎腳踏車",
+            "pinyin": "qí jiǎotàchē",
+            "simplified": "骑脚踏车"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "下課",
+              "以後",
+              "我們",
+              "去",
+              "騎腳踏車"
+            ],
+            "sentence": {
+              "traditional": "下課以後，我們去騎腳踏車。",
+              "pinyin": "Xiàkè yǐhòu, wǒmen qù qí jiǎotàchē.",
+              "english": "After class, we go ride bikes.",
+              "simplified": "下课以后，我们去骑脚踏车。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以前"
+            ],
+            "mark": [
+              "以前"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The bike ride comes after class, so use 以後."
+          }
+        ],
+        "fallbackRepair": "Put 以後 after 下課.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 276,
+          "box": [
+            0.177,
+            0.246,
+            0.355,
+            0.095
+          ],
+          "alt": "A classroom, an arrow, then two children riding bicycles."
+        }
+      },
+      {
+        "id": "l12g2-p9",
+        "source": "p.276 #2",
+        "kind": "order-build",
+        "prompt": "You wash your hands before eating. Say it with 以前.",
+        "tiles": [
+          {
+            "traditional": "吃飯",
+            "pinyin": "chīfàn",
+            "simplified": "吃饭"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "洗手",
+            "pinyin": "xǐ shǒu"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "吃飯",
+              "以前",
+              "要",
+              "洗手"
+            ],
+            "sentence": {
+              "traditional": "吃飯以前要洗手。",
+              "pinyin": "Chīfàn yǐqián yào xǐ shǒu.",
+              "english": "Wash your hands before eating.",
+              "simplified": "吃饭以前要洗手。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Washing hands comes before eating, so use 以前."
+          }
+        ],
+        "fallbackRepair": "Put 以前 after 吃飯.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 276,
+          "box": [
+            0.177,
+            0.404,
+            0.355,
+            0.085
+          ],
+          "alt": "Hands being washed, an arrow, then a girl eating."
+        }
+      },
+      {
+        "id": "l12g2-p10",
+        "source": "p.276 #3",
+        "kind": "order-build",
+        "prompt": "You brush your teeth before sleeping. Say it with 以前.",
+        "tiles": [
+          {
+            "traditional": "睡覺",
+            "pinyin": "shuìjiào",
+            "simplified": "睡觉"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "刷牙",
+            "pinyin": "shuāyá"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "睡覺",
+              "以前",
+              "要",
+              "刷牙"
+            ],
+            "sentence": {
+              "traditional": "睡覺以前要刷牙。",
+              "pinyin": "Shuìjiào yǐqián yào shuāyá.",
+              "english": "Brush your teeth before sleeping.",
+              "simplified": "睡觉以前要刷牙。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Brushing comes before sleeping, so use 以前."
+          }
+        ],
+        "fallbackRepair": "Put 以前 after 睡覺.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 276,
+          "box": [
+            0.198,
+            0.557,
+            0.311,
+            0.081
+          ],
+          "alt": "A girl brushing her teeth, an arrow, then a girl asleep."
+        }
+      },
+      {
+        "id": "l12g2-p11",
+        "source": "p.276 #4",
+        "kind": "order-build",
+        "prompt": "After graduation, you want to be a doctor. Say it with 以後.",
+        "tiles": [
+          {
+            "traditional": "畢業",
+            "pinyin": "bìyè",
+            "simplified": "毕业"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "想",
+            "pinyin": "xiǎng"
+          },
+          {
+            "traditional": "當醫生",
+            "pinyin": "dāng yīshēng",
+            "simplified": "当医生"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "畢業",
+              "以後",
+              "我",
+              "想",
+              "當醫生"
+            ],
+            "sentence": {
+              "traditional": "畢業以後，我想當醫生。",
+              "pinyin": "Bìyè yǐhòu, wǒ xiǎng dāng yīshēng.",
+              "english": "After graduation, I want to be a doctor.",
+              "simplified": "毕业以后，我想当医生。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以前"
+            ],
+            "mark": [
+              "以前"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Being a doctor comes after graduation, so use 以後."
+          }
+        ],
+        "fallbackRepair": "Put 以後 after 畢業.",
+        "sub": "Editorial model based on the reviewer's picture read; other natural completions are possible.",
+        "scene": {
+          "type": "picture",
+          "page": 276,
+          "box": [
+            0.202,
+            0.718,
+            0.309,
+            0.089
+          ],
+          "alt": "A graduate, an arrow, then a woman doctor."
+        }
+      },
+      {
+        "id": "l12g2-own-1",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that you were in Japan before and are in Taiwan now.",
+        "tiles": [
+          {
+            "traditional": "我以前",
+            "pinyin": "wǒ yǐqián"
+          },
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "日本",
+            "pinyin": "Rìběn"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          },
+          {
+            "traditional": "在臺灣",
+            "pinyin": "zài Táiwān",
+            "simplified": "在台湾"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我以前",
+              "在",
+              "日本",
+              "現在",
+              "在臺灣"
+            ],
+            "sentence": {
+              "traditional": "我以前在日本，現在在臺灣。",
+              "pinyin": "Wǒ yǐqián zài Rìběn, xiànzài zài Táiwān.",
+              "english": "I was in Japan before; now I am in Taiwan.",
+              "simplified": "我以前在日本，现在在台湾。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "note": "The first clause is about the past, so use 以前 there."
+          }
+        ],
+        "fallbackRepair": "Put 以前 before the past situation and 現在 before the present one."
+      },
+      {
+        "id": "l12g2-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "I was fat before; now I have lost weight.",
+        "chunks": [
+          {
+            "traditional": "我"
+          },
+          {
+            "traditional": "以後"
+          },
+          {
+            "traditional": "很胖"
+          },
+          {
+            "traditional": "，現在瘦了",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          },
+          {
+            "traditional": "本來",
+            "pinyin": "běnlái",
+            "simplified": "本来"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "現在"
+            ],
+            "note": "現在 is already printed in the second clause; the first clause needs 以前."
+          },
+          {
+            "placed": [
+              "本來"
+            ],
+            "note": "本來 is not printed in this sentence; the past state needs 以前."
+          }
+        ],
+        "hint": "The first clause is about the past.",
+        "fix": "以前",
+        "takeOutNote": "Without a time word the sentence loses the past meaning; replace 以後 with 以前.",
+        "result": {
+          "traditional": "我以前很胖，現在瘦了。",
+          "pinyin": "Wǒ yǐqián hěn pàng, xiànzài shòu le.",
+          "english": "I was fat before; now I have lost weight.",
+          "simplified": "我以前很胖，现在瘦了。"
+        },
+        "successNote": "以前 points to the past; 以後 points to the future."
+      },
+      {
+        "id": "l12g2-own-sort",
+        "source": "own",
+        "kind": "sort-groups",
+        "prompt": "Is the sentence about the past or the future?",
+        "groups": [
+          {
+            "label": "Past"
+          },
+          {
+            "label": "Future"
+          }
+        ],
+        "cards": [
+          {
+            "sentence": {
+              "traditional": "我以前很胖。",
+              "pinyin": "Wǒ yǐqián hěn pàng.",
+              "english": "I was fat before."
+            },
+            "group": 0,
+            "note": "以前 points back to the past."
+          },
+          {
+            "sentence": {
+              "traditional": "我以後要去英國。",
+              "pinyin": "Wǒ yǐhòu yào qù Yīngguó.",
+              "english": "I will go to England in the future.",
+              "simplified": "我以后要去英国。"
+            },
+            "group": 1,
+            "note": "以後 points forward to the future."
+          },
+          {
+            "sentence": {
+              "traditional": "以前我想當記者。",
+              "pinyin": "Yǐqián wǒ xiǎng dāng jìzhě.",
+              "english": "Before, I wanted to be a reporter.",
+              "simplified": "以前我想当记者。"
+            },
+            "group": 0,
+            "note": "以前 marks a past wish."
+          },
+          {
+            "sentence": {
+              "traditional": "下班以後我要去上課。",
+              "pinyin": "Xiàbān yǐhòu wǒ yào qù shàngkè.",
+              "english": "After work I will go to class.",
+              "simplified": "下班以后我要去上课。"
+            },
+            "group": 1,
+            "note": "以後 after 下班 points to a later time."
+          }
+        ],
+        "successNote": "以前 looks back; 以後 looks forward."
+      }
+    ],
+    "allowWords": [
+      "法國",
+      "英國",
+      "美國",
+      "刷牙",
+      "畢業",
+      "十分鐘",
+      "出門"
+    ]
+  },
+  "B1L12-G03-P281": {
+    "bookPage": 281,
+    "title": "Rearrange the following sentences.",
+    "items": [
+      {
+        "id": "l12g3-p1",
+        "source": "p.281 #1",
+        "kind": "order-build",
+        "prompt": "Say that the restaurant is too far and inconvenient for us.",
+        "tiles": [
+          {
+            "traditional": "那家餐廳",
+            "pinyin": "nà jiā cāntīng",
+            "simplified": "那家餐厅"
+          },
+          {
+            "traditional": "太遠了",
+            "pinyin": "tài yuǎn le",
+            "simplified": "太远了"
+          },
+          {
+            "traditional": "對我們",
+            "pinyin": "duì wǒmen",
+            "simplified": "对我们"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "不方便",
+            "pinyin": "bù fāngbiàn"
+          },
+          {
+            "traditional": "給我們",
+            "pinyin": "gěi wǒmen",
+            "simplified": "给我们"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "那家餐廳",
+              "太遠了",
+              "對我們",
+              "都",
+              "不方便"
+            ],
+            "sentence": {
+              "traditional": "那家餐廳太遠了，對我們都不方便。",
+              "pinyin": "Nà jiā cāntīng tài yuǎn le, duì wǒmen dōu bù fāngbiàn.",
+              "english": "That restaurant is too far; it is inconvenient for all of us.",
+              "simplified": "那家餐厅太远了，对我们都不方便。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "給我們"
+            ],
+            "mark": [
+              "給我們"
+            ],
+            "note": "給 marks a receiver. The restaurant affects us, so use 對我們."
+          }
+        ],
+        "fallbackRepair": "Put 對 before the people who are affected.",
+        "quiet": true
+      },
+      {
+        "id": "l12g3-p2",
+        "source": "p.281 #2",
+        "kind": "slot-build",
+        "prompt": "He said many things to me yesterday, but I did not understand some of it.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他昨天"
+              },
+              {
+                "type": "slot",
+                "id": "target",
+                "answers": [
+                  "對",
+                  "跟"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我說了很多話，"
+              },
+              {
+                "type": "slot",
+                "id": "but",
+                "answers": [
+                  "可是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "有的我不太懂。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "對",
+            "pinyin": "duì",
+            "simplified": "对"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          },
+          {
+            "traditional": "可是",
+            "pinyin": "kěshì"
+          },
+          {
+            "traditional": "所以",
+            "pinyin": "suǒyǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "從 marks a starting place. The person spoken to needs 對 or 跟."
+          },
+          {
+            "placed": [
+              "所以"
+            ],
+            "mark": [
+              "所以"
+            ],
+            "note": "The second clause contrasts with the first, so use 可是, not 所以."
+          },
+          {
+            "slot": {
+              "id": "target",
+              "tile": "可是"
+            },
+            "note": "Use 對 or 跟 before 我; 可是 opens the contrasting clause."
+          },
+          {
+            "slot": {
+              "id": "but",
+              "tile": "對"
+            },
+            "note": "The contrast gap takes 可是; 對 belongs before the person spoken to."
+          },
+          {
+            "slot": {
+              "id": "but",
+              "tile": "跟"
+            },
+            "note": "The contrast gap takes 可是; 跟 belongs before the person spoken to."
+          }
+        ],
+        "fallbackRepair": "Put 對 or 跟 before 我, and 可是 before the contrasting clause.",
+        "result": {
+          "traditional": "他昨天對我說了很多話，可是有的我不太懂。",
+          "pinyin": "Tā zuótiān duì wǒ shuō le hěn duō huà, kěshì yǒude wǒ bú tài dǒng.",
+          "english": "He said many things to me yesterday, but I did not understand some of it.",
+          "simplified": "他昨天对我说了很多话，可是有的我不太懂。"
+        },
+        "successNote": "Both 對我說 and 跟我說 are natural here; 可是 marks the contrast.",
+        "alternatives": [
+          {
+            "traditional": "他昨天跟我說了很多話，可是有的我不太懂。",
+            "pinyin": "Tā zuótiān gēn wǒ shuō le hěn duō huà, kěshì yǒude wǒ bú tài dǒng.",
+            "english": "He said many things to me yesterday, but I did not understand some of it.",
+            "simplified": "他昨天跟我说了很多话，可是有的我不太懂。"
+          }
+        ],
+        "sub": "The book scrambles these chunks. This item practises the 對 phrase in the finished sentence."
+      },
+      {
+        "id": "l12g3-p3",
+        "source": "p.281 #3",
+        "kind": "slot-build",
+        "prompt": "Exercise is good for the body; too many sweets are bad for it.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "運動"
+              },
+              {
+                "type": "slot",
+                "id": "good",
+                "answers": [
+                  "對身體"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很好，吃太多甜點"
+              },
+              {
+                "type": "slot",
+                "id": "bad",
+                "answers": [
+                  "對身體"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "effect",
+                "answers": [
+                  "不好"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "對身體",
+            "pinyin": "duì shēntǐ",
+            "simplified": "对身体"
+          },
+          {
+            "traditional": "對身體",
+            "pinyin": "duì shēntǐ",
+            "simplified": "对身体"
+          },
+          {
+            "traditional": "對眼睛",
+            "pinyin": "duì yǎnjīng",
+            "simplified": "对眼睛"
+          },
+          {
+            "traditional": "不好",
+            "pinyin": "bù hǎo"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "對眼睛"
+            ],
+            "mark": [
+              "對眼睛"
+            ],
+            "note": "The sentence is about the body (身體), not the eyes."
+          },
+          {
+            "placed": [
+              "很好"
+            ],
+            "mark": [
+              "很好"
+            ],
+            "note": "Too many sweets are bad, so use 不好 in the second clause."
+          },
+          {
+            "slot": {
+              "id": "good",
+              "tile": "不好"
+            },
+            "note": "The first effect is positive: 很好. 不好 describes the sweets’ effect."
+          },
+          {
+            "slot": {
+              "id": "bad",
+              "tile": "不好"
+            },
+            "note": "The second clause starts with 對身體; 不好 belongs in the final effect slot."
+          },
+          {
+            "slot": {
+              "id": "effect",
+              "tile": "對身體"
+            },
+            "note": "The final effect is 不好; 對身體 belongs before the two effects."
+          }
+        ],
+        "fallbackRepair": "Use 對身體 for the target and 不好 for the bad effect.",
+        "result": {
+          "traditional": "運動對身體很好，吃太多甜點對身體不好。",
+          "pinyin": "Yùndòng duì shēntǐ hěn hǎo, chī tài duō tiándiǎn duì shēntǐ bù hǎo.",
+          "english": "Exercise is good for the body; eating too many sweets is bad for it.",
+          "simplified": "运动对身体很好，吃太多甜点对身体不好。"
+        },
+        "sub": "The book scrambles these chunks. This item practises the 對 phrase in the finished sentence."
+      },
+      {
+        "id": "l12g3-p4",
+        "source": "p.281 #4",
+        "kind": "slot-build",
+        "prompt": "Mr. Li treats Mrs. Li well; after work he often asks her to rest more.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "李先生"
+              },
+              {
+                "type": "slot",
+                "id": "toward",
+                "answers": [
+                  "對"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "李太太很好，下班以後常常要她多休息。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "對",
+            "pinyin": "duì",
+            "simplified": "对"
+          },
+          {
+            "traditional": "給",
+            "pinyin": "gěi",
+            "simplified": "给"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "給"
+            ],
+            "mark": [
+              "給"
+            ],
+            "note": "Use 對 for how someone treats another person."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "從 marks a starting point; the attitude needs 對."
+          }
+        ],
+        "fallbackRepair": "Use 對 before 李太太 and 她 for Mrs. Li.",
+        "result": {
+          "traditional": "李先生對李太太很好，下班以後常常要她多休息。",
+          "pinyin": "Lǐ xiānsheng duì Lǐ tàitai hěn hǎo, xiàbān yǐhòu chángcháng yào tā duō xiūxi.",
+          "english": "Mr. Li treats Mrs. Li well; after work he often asks her to rest more.",
+          "simplified": "李先生对李太太很好，下班以后常常要她多休息。"
+        },
+        "sub": "The book scrambles these chunks. This item practises the 對 phrase in the finished sentence."
+      }
+    ],
+    "allowWords": []
+  },
+  "B1L12-G04-P282": {
+    "bookPage": 283,
+    "title": "Read the article and answer the questions. / Complete the dialogues with V 過了.",
+    "items": [
+      {
+        "id": "l12g4-p1",
+        "source": "p.283 #1",
+        "kind": "order-build",
+        "prompt": "Has he been to France?",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "去過",
+            "pinyin": "qùguo",
+            "simplified": "去过"
+          },
+          {
+            "traditional": "法國",
+            "pinyin": "Fǎguó",
+            "simplified": "法国"
+          },
+          {
+            "traditional": "沒去過",
+            "pinyin": "méi qùguo",
+            "simplified": "没去过"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "去過",
+              "法國"
+            ],
+            "sentence": {
+              "traditional": "他去過法國。",
+              "pinyin": "Tā qùguo Fǎguó.",
+              "english": "He has been to France.",
+              "simplified": "他去过法国。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒去過"
+            ],
+            "mark": [
+              "沒去過"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The article says he went to France, so use 去過."
+          }
+        ],
+        "fallbackRepair": "Use 去過 for an experience he has had.",
+        "quiet": true,
+        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。"
+      },
+      {
+        "id": "l12g4-p2",
+        "source": "p.283 #2",
+        "kind": "order-build",
+        "prompt": "Has he studied Indonesian?",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "學過",
+            "pinyin": "xuéguo",
+            "simplified": "学过"
+          },
+          {
+            "traditional": "印尼文",
+            "pinyin": "Yìnníwén"
+          },
+          {
+            "traditional": "沒學過",
+            "pinyin": "méi xuéguo",
+            "simplified": "没学过"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "學過",
+              "印尼文"
+            ],
+            "sentence": {
+              "traditional": "他學過印尼文。",
+              "pinyin": "Tā xuéguo Yìnníwén.",
+              "english": "He has studied Indonesian.",
+              "simplified": "他学过印尼文。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒學過"
+            ],
+            "mark": [
+              "沒學過"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The article says he learned some Indonesian, so use 學過."
+          }
+        ],
+        "fallbackRepair": "Use 學過 for an experience he has had.",
+        "quiet": true,
+        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。"
+      },
+      {
+        "id": "l12g4-p3",
+        "source": "p.283 #3",
+        "kind": "order-build",
+        "prompt": "Has he been a reporter?",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "沒當過",
+            "pinyin": "méi dāngguo",
+            "simplified": "没当过"
+          },
+          {
+            "traditional": "記者",
+            "pinyin": "jìzhě",
+            "simplified": "记者"
+          },
+          {
+            "traditional": "當過",
+            "pinyin": "dāngguo",
+            "simplified": "当过"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "沒當過",
+              "記者"
+            ],
+            "sentence": {
+              "traditional": "他沒當過記者。",
+              "pinyin": "Tā méi dāngguo jìzhě.",
+              "english": "He has not been a reporter.",
+              "simplified": "他没当过记者。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "當過"
+            ],
+            "mark": [
+              "當過"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The article says being a reporter is a hope, not an experience, so use 沒當過."
+          }
+        ],
+        "fallbackRepair": "Use 沒 + verb + 過 for an experience he has not had.",
+        "quiet": true,
+        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。"
+      },
+      {
+        "id": "l12g4-p4",
+        "source": "p.283 #4",
+        "kind": "order-build",
+        "prompt": "Ask whether the other person has already attended the Chinese class.",
+        "tiles": [
+          {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "上過",
+            "pinyin": "shàngguo",
+            "simplified": "上过"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "嗎",
+            "pinyin": "ma",
+            "simplified": "吗"
+          },
+          {
+            "traditional": "沒",
+            "pinyin": "méi",
+            "simplified": "没"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "上過",
+              "了",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "你上過了嗎？",
+              "pinyin": "Nǐ shàngguo le ma?",
+              "english": "Have you already attended it?",
+              "simplified": "你上过了吗？"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "Use 沒 + verb + 過 for a negative statement, not inside this question."
+          }
+        ],
+        "fallbackRepair": "Ask 上過了嗎 with 過 and final 了.",
+        "quiet": true
+      },
+      {
+        "id": "l12g4-p5",
+        "source": "p.283 #5",
+        "kind": "order-build",
+        "prompt": "Say you have already seen the doctor.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "看過",
+            "pinyin": "kànguo",
+            "simplified": "看过"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "沒",
+            "pinyin": "méi",
+            "simplified": "没"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "看過",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "我看過了。",
+              "pinyin": "Wǒ kànguo le.",
+              "english": "I have already seen him.",
+              "simplified": "我看过了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "The answer is positive: 看過了."
+          },
+          {
+            "placed": [
+              "看"
+            ],
+            "mark": [
+              "看"
+            ],
+            "note": "Use 看過 with 過 before 了."
+          }
+        ],
+        "fallbackRepair": "Say 看過了 for “already seen”.",
+        "quiet": true
+      },
+      {
+        "id": "l12g4-p6",
+        "source": "p.283 #6",
+        "kind": "order-build",
+        "prompt": "Tell your mother that she already said it.",
+        "tiles": [
+          {
+            "traditional": "妳",
+            "pinyin": "nǐ",
+            "simplified": "你"
+          },
+          {
+            "traditional": "說",
+            "pinyin": "shuō",
+            "simplified": "说"
+          },
+          {
+            "traditional": "過",
+            "pinyin": "guo",
+            "simplified": "过"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "沒",
+            "pinyin": "méi",
+            "simplified": "没"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "妳",
+              "說",
+              "過",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "妳說過了。",
+              "pinyin": "Nǐ shuōguo le.",
+              "english": "You have already said it.",
+              "simplified": "你说过了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "The answer is positive: 說過了."
+          }
+        ],
+        "fallbackRepair": "Say 說過了 for “already said”.",
+        "quiet": true
+      },
+      {
+        "id": "l12g4-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "I have eaten stinky tofu before.",
+        "chunks": [
+          {
+            "traditional": "我"
+          },
+          {
+            "traditional": "吃過了"
+          },
+          {
+            "traditional": "臭豆腐",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "吃過",
+            "pinyin": "chīguo",
+            "simplified": "吃过"
+          },
+          {
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "過",
+            "pinyin": "guo",
+            "simplified": "过"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "吃"
+            ],
+            "note": "The sentence needs both 吃 and 過: 吃過."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "note": "Put 過 after the verb 吃, not after the object."
+          }
+        ],
+        "hint": "The sentence is about an experience, not “already finished now”.",
+        "fix": "吃過",
+        "takeOutNote": "Without 了 the sentence describes an experience; replace 吃過了 with 吃過.",
+        "result": {
+          "traditional": "我吃過臭豆腐。",
+          "pinyin": "Wǒ chīguo chòudòufu.",
+          "english": "I have eaten stinky tofu before.",
+          "simplified": "我吃过臭豆腐。"
+        },
+        "successNote": "過 marks an experience; V過了 relates a finished action to now."
+      }
+    ],
+    "allowWords": [
+      "法國",
+      "印尼文",
+      "臭豆腐"
+    ]
+  },
+  "B1L12-G05-P284": {
+    "bookPage": 284,
+    "title": "Answer the questions with……的時候，……",
+    "items": [
+      {
+        "id": "l12g5-p1",
+        "source": "p.284 #1",
+        "kind": "order-build",
+        "prompt": "You are happiest when you listen to music. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "聽音樂",
+            "pinyin": "tīng yīnyuè",
+            "simplified": "听音乐"
+          },
+          {
+            "traditional": "的時候",
+            "pinyin": "de shíhou",
+            "simplified": "的时候"
+          },
+          {
+            "traditional": "最開心",
+            "pinyin": "zuì kāixīn",
+            "simplified": "最开心"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "聽音樂",
+              "的時候",
+              "最開心"
+            ],
+            "sentence": {
+              "traditional": "我聽音樂的時候最開心。",
+              "pinyin": "Wǒ tīng yīnyuè de shíhou zuì kāixīn.",
+              "english": "I am happiest when I listen to music.",
+              "simplified": "我听音乐的时候最开心。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The question asks “when”; use 的時候, not 以後."
+          }
+        ],
+        "fallbackRepair": "Put 的時候 after the activity.",
+        "quiet": true
+      },
+      {
+        "id": "l12g5-p2",
+        "source": "p.284 #2",
+        "kind": "order-build",
+        "prompt": "When you have a fever, you drink more water. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "發燒",
+            "pinyin": "fāshāo",
+            "simplified": "发烧"
+          },
+          {
+            "traditional": "的時候",
+            "pinyin": "de shíhou",
+            "simplified": "的时候"
+          },
+          {
+            "traditional": "會",
+            "pinyin": "huì",
+            "simplified": "会"
+          },
+          {
+            "traditional": "多喝水",
+            "pinyin": "duō hē shuǐ"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "發燒",
+              "的時候",
+              "會",
+              "多喝水"
+            ],
+            "sentence": {
+              "traditional": "我發燒的時候，會多喝水。",
+              "pinyin": "Wǒ fāshāo de shíhou, huì duō hē shuǐ.",
+              "english": "When I have a fever, I drink more water.",
+              "simplified": "我发烧的时候，会多喝水。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "會"
+            ],
+            "mark": [
+              "會"
+            ],
+            "note": "Put 會 before the action that happens in that situation."
+          },
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "note": "Use the condition 如果…就…; 以後 would say “after my phone cannot go online”, not an if-then plan."
+          }
+        ],
+        "fallbackRepair": "Put 的時候 after 發燒, then say what you do.",
+        "quiet": true
+      },
+      {
+        "id": "l12g5-p3",
+        "source": "p.284 #3",
+        "kind": "order-build",
+        "prompt": "When you are not in class, you read. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "不上課",
+            "pinyin": "bú shàngkè",
+            "simplified": "不上课"
+          },
+          {
+            "traditional": "的時候",
+            "pinyin": "de shíhou",
+            "simplified": "的时候"
+          },
+          {
+            "traditional": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "在看書",
+            "pinyin": "zài kàn shū",
+            "simplified": "在看书"
+          },
+          {
+            "traditional": "以前",
+            "pinyin": "yǐqián"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "不上課",
+              "的時候",
+              "都",
+              "在看書"
+            ],
+            "sentence": {
+              "traditional": "我不上課的時候，都在看書。",
+              "pinyin": "Wǒ bú shàngkè de shíhou, dōu zài kàn shū.",
+              "english": "When I am not in class, I read.",
+              "simplified": "我不上课的时候，都在看书。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "都"
+            ],
+            "mark": [
+              "都"
+            ],
+            "note": "都 goes before the verb phrase 在看書, not after 的時候."
+          },
+          {
+            "placed": [
+              "以前"
+            ],
+            "mark": [
+              "以前"
+            ],
+            "note": "Use 要是/如果 for the condition; 以前 would place the condition in the past, not a hypothetical."
+          }
+        ],
+        "fallbackRepair": "Put 的時候 after 不上課, then 都在看書.",
+        "quiet": true
+      },
+      {
+        "id": "l12g5-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "I am busy when I work.",
+        "chunks": [
+          {
+            "traditional": "我"
+          },
+          {
+            "traditional": "工作"
+          },
+          {
+            "traditional": "時候"
+          },
+          {
+            "traditional": "很忙",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "工作的",
+            "pinyin": "gōngzuò de"
+          },
+          {
+            "traditional": "工作得",
+            "pinyin": "gōngzuò de"
+          },
+          {
+            "traditional": "工作",
+            "pinyin": "gōngzuò"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "工作得"
+            ],
+            "note": "Use 的 to link 工作 to 的時候; 得 links an action to how it is done."
+          },
+          {
+            "placed": [
+              "工作"
+            ],
+            "mark": [
+              "工作"
+            ],
+            "note": "時候 needs the link 的 before it: 工作的時候."
+          }
+        ],
+        "hint": "時候 needs a link before it.",
+        "fix": "工作的",
+        "takeOutNote": "Without 的 the description cannot join 時候; replace 工作 with 工作的.",
+        "result": {
+          "traditional": "我工作的時候很忙。",
+          "pinyin": "Wǒ gōngzuò de shíhou hěn máng.",
+          "english": "I am busy when I work.",
+          "simplified": "我工作的时候很忙。"
+        },
+        "successNote": "Description + 的 + 時候: 工作的時候."
+      }
+    ],
+    "allowWords": [
+      "開心"
+    ]
+  }
+}

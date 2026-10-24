@@ -1,0 +1,1094 @@
+{
+  "B1L16-G01": {
+    "bookPage": 374,
+    "title": "根據地圖與生活環境，使用「A離B（Adv.）遠/近」完成下列句子。",
+    "items": [
+      {
+        "id": "l16g1-p0a",
+        "source": "p.374 I#1",
+        "kind": "order-build",
+        "prompt": "The hospital is near the school. Complete the sentence.",
+        "tiles": [
+          {
+            "traditional": "學校",
+            "pinyin": "xuéxiào",
+            "simplified": "学校"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "醫院",
+            "pinyin": "yīyuàn",
+            "simplified": "医院"
+          },
+          {
+            "traditional": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "很遠",
+            "pinyin": "hěn yuǎn",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "學校",
+              "離",
+              "醫院",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "學校離醫院很近。",
+              "pinyin": "Xuéxiào lí yīyuàn hěn jìn.",
+              "english": "The school is close to the hospital.",
+              "simplified": "学校离医院很近。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很遠"
+            ],
+            "mark": [
+              "很遠"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says the hospital is near, so use 很近."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between the two places, then 很近.",
+        "quiet": true
+      },
+      {
+        "id": "l16g1-p0b",
+        "source": "p.374 I#2",
+        "kind": "order-build",
+        "prompt": "The department store is far from your home. Complete the sentence.",
+        "tiles": [
+          {
+            "traditional": "我家",
+            "pinyin": "wǒ jiā"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "百貨公司",
+            "pinyin": "bǎihuò gōngsī",
+            "simplified": "百货公司"
+          },
+          {
+            "traditional": "很遠",
+            "pinyin": "hěn yuǎn",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我家",
+              "離",
+              "百貨公司",
+              "很遠"
+            ],
+            "sentence": {
+              "traditional": "我家離百貨公司很遠。",
+              "pinyin": "Wǒ jiā lí bǎihuò gōngsī hěn yuǎn.",
+              "english": "My home is far from the department store.",
+              "simplified": "我家离百货公司很远。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很近"
+            ],
+            "mark": [
+              "很近"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says it is far, so use 很遠."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between the two places, then 很遠.",
+        "quiet": true
+      },
+      {
+        "id": "l16g1-p0c",
+        "source": "p.374 I#3",
+        "kind": "order-build",
+        "prompt": "The supermarket is near the school. Complete the sentence.",
+        "tiles": [
+          {
+            "traditional": "學校",
+            "pinyin": "xuéxiào",
+            "simplified": "学校"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "超級市場",
+            "pinyin": "chāojí shìchǎng",
+            "simplified": "超级市场"
+          },
+          {
+            "traditional": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "很遠",
+            "pinyin": "hěn yuǎn",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "學校",
+              "離",
+              "超級市場",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "學校離超級市場很近。",
+              "pinyin": "Xuéxiào lí chāojí shìchǎng hěn jìn.",
+              "english": "The school is close to the supermarket.",
+              "simplified": "学校离超级市场很近。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很遠"
+            ],
+            "mark": [
+              "很遠"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says it is near, so use 很近."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between the two places, then 很近.",
+        "quiet": true
+      },
+      {
+        "id": "l16g1-p1",
+        "source": "p.374 I#4",
+        "kind": "order-build",
+        "prompt": "Taipei is close to Kaohsiung; the high-speed train takes only an hour and a half. Complete the sentence.",
+        "tiles": [
+          {
+            "traditional": "台北",
+            "pinyin": "Táiběi"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "高雄",
+            "pinyin": "Gāoxióng"
+          },
+          {
+            "traditional": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "很遠",
+            "pinyin": "hěn yuǎn",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "台北",
+              "離",
+              "高雄",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "台北離高雄很近，搭高鐵只要一個半小時。",
+              "pinyin": "Táiběi lí Gāoxióng hěn jìn, dā gāotiě zhǐyào yí ge bàn xiǎoshí.",
+              "english": "Taipei is close to Kaohsiung; the high-speed train takes only an hour and a half.",
+              "simplified": "台北离高雄很近，搭高铁只要一个半小时。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很遠"
+            ],
+            "mark": [
+              "很遠"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The train takes only 90 minutes, so 很近 fits."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance between two places; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between the two cities, then 很近.",
+        "quiet": true
+      },
+      {
+        "id": "l16g1-p2",
+        "source": "p.374 II#1",
+        "kind": "order-build",
+        "prompt": "Your home is close to the MRT station; it takes three minutes to walk. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我家",
+            "pinyin": "wǒ jiā"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "捷運站",
+            "pinyin": "jiéyùn zhàn",
+            "simplified": "捷运站"
+          },
+          {
+            "traditional": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "很遠",
+            "pinyin": "hěn yuǎn",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我家",
+              "離",
+              "捷運站",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "我家離捷運站很近，走三分鐘就到了。",
+              "pinyin": "Wǒ jiā lí jiéyùn zhàn hěn jìn, zǒu sān fēnzhōng jiù dào le.",
+              "english": "My home is close to the MRT station; a three-minute walk gets there.",
+              "simplified": "我家离捷运站很近，走三分钟就到了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很遠"
+            ],
+            "mark": [
+              "很遠"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Three minutes is close, so use 很近."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between 我家 and 捷運站, then 很近.",
+        "quiet": true
+      },
+      {
+        "id": "l16g1-p3",
+        "source": "p.374 II#2",
+        "kind": "order-build",
+        "prompt": "Your country is Canada, far from Taiwan. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "臺灣",
+            "pinyin": "Táiwān",
+            "simplified": "台湾"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "我的國家",
+            "pinyin": "wǒ de guójiā",
+            "simplified": "我的国家"
+          },
+          {
+            "traditional": "很遠",
+            "pinyin": "hěn yuǎn",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "臺灣",
+              "離",
+              "我的國家",
+              "很遠"
+            ],
+            "sentence": {
+              "traditional": "臺灣離我的國家很遠。",
+              "pinyin": "Táiwān lí wǒ de guójiā hěn yuǎn.",
+              "english": "Taiwan is far from my country.",
+              "simplified": "台湾离我的国家很远。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很近"
+            ],
+            "mark": [
+              "很近"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Canada is far from Taiwan, so use 很遠."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between 臺灣 and 我的國家, then 很遠.",
+        "quiet": true
+      },
+      {
+        "id": "l16g1-own-1",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Say that your home is not too far from the company.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我家離公司"
+              },
+              {
+                "type": "slot",
+                "id": "adv",
+                "answers": [
+                  "不太"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "遠。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不太",
+            "pinyin": "bú tài"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "真",
+            "pinyin": "zhēn"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The task says “not too far”, so use 不太遠."
+          },
+          {
+            "placed": [
+              "真"
+            ],
+            "mark": [
+              "真"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The task says “not too far”, not “really far”."
+          },
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "從 marks a starting point. The distance phrase needs 離."
+          }
+        ],
+        "fallbackRepair": "Put 不太 before 遠.",
+        "result": {
+          "traditional": "我家離公司不太遠。",
+          "pinyin": "Wǒ jiā lí gōngsī bú tài yuǎn.",
+          "english": "My home is not too far from the company.",
+          "simplified": "我家离公司不太远。"
+        }
+      },
+      {
+        "id": "l16g1-own-2",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that the bank is not too far from here.",
+        "tiles": [
+          {
+            "traditional": "銀行",
+            "pinyin": "yínháng",
+            "simplified": "银行"
+          },
+          {
+            "traditional": "離",
+            "pinyin": "lí",
+            "simplified": "离"
+          },
+          {
+            "traditional": "這裡",
+            "pinyin": "zhèlǐ",
+            "simplified": "这里"
+          },
+          {
+            "traditional": "不太",
+            "pinyin": "bú tài"
+          },
+          {
+            "traditional": "遠",
+            "pinyin": "yuǎn",
+            "simplified": "远"
+          },
+          {
+            "traditional": "從",
+            "pinyin": "cóng",
+            "simplified": "从"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "銀行",
+              "離",
+              "這裡",
+              "不太",
+              "遠"
+            ],
+            "sentence": {
+              "traditional": "銀行離這裡不太遠。",
+              "pinyin": "Yínháng lí zhèlǐ bú tài yuǎn.",
+              "english": "The bank is not too far from here.",
+              "simplified": "银行离这里不太远。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "從"
+            ],
+            "mark": [
+              "從"
+            ],
+            "note": "離 marks the distance; 從 marks a starting point."
+          }
+        ],
+        "fallbackRepair": "Put 離 between 銀行 and 這裡, then 不太遠."
+      }
+    ],
+    "allowWords": [
+      "捷運站",
+      "高鐵",
+      "高雄",
+      "國家",
+      "搭",
+      "超級市場"
+    ]
+  },
+  "B1L16-G02": {
+    "bookPage": 383,
+    "title": "Complete the sentences with 本來／原來……後來……",
+    "items": [
+      {
+        "id": "l16g2-own-1",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that he originally had no car and later bought one.",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "本來",
+            "pinyin": "běnlái",
+            "simplified": "本来"
+          },
+          {
+            "traditional": "沒有車",
+            "pinyin": "méiyǒu chē",
+            "simplified": "没有车"
+          },
+          {
+            "traditional": "後來",
+            "pinyin": "hòulái",
+            "simplified": "后来"
+          },
+          {
+            "traditional": "買車了",
+            "pinyin": "mǎi chē le",
+            "simplified": "买车了"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "本來",
+              "沒有車",
+              "後來",
+              "買車了"
+            ],
+            "sentence": {
+              "traditional": "他本來沒有車，後來買車了。",
+              "pinyin": "Tā běnlái méiyǒu chē, hòulái mǎi chē le.",
+              "english": "He originally had no car, but later bought one.",
+              "simplified": "他本来没有车，后来买车了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Use 後來 for a change in a past story; 以後 means “after” a point in time."
+          }
+        ],
+        "fallbackRepair": "Use 本來 for the original state and 後來 for the change."
+      },
+      {
+        "id": "l16g2-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "We originally wanted to go to Taroko, but later went to Kaohsiung.",
+        "chunks": [
+          {
+            "traditional": "我們"
+          },
+          {
+            "traditional": "本來想去太魯閣"
+          },
+          {
+            "traditional": "，可是"
+          },
+          {
+            "traditional": "原來"
+          },
+          {
+            "traditional": "去高雄了",
+            "tail": "。"
+          }
+        ],
+        "wrong": 3,
+        "tiles": [
+          {
+            "traditional": "後來",
+            "pinyin": "hòulái",
+            "simplified": "后来"
+          },
+          {
+            "traditional": "本來",
+            "pinyin": "běnlái",
+            "simplified": "本来"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "本來"
+            ],
+            "note": "本來 already appears in the first clause. The change needs 後來."
+          },
+          {
+            "placed": [
+              "以後"
+            ],
+            "note": "以後 means “after” a time; a change in the story uses 後來."
+          }
+        ],
+        "hint": "The second clause describes what happened later.",
+        "fix": "後來",
+        "takeOutNote": "The change needs 後來; replace the repeated 原來.",
+        "result": {
+          "traditional": "我們本來想去太魯閣，可是後來去高雄了。",
+          "pinyin": "Wǒmen běnlái xiǎng qù Tàilǔgé, kěshì hòulái qù Gāoxióng le.",
+          "english": "We originally wanted to go to Taroko, but later went to Kaohsiung.",
+          "simplified": "我们本来想去太鲁阁，可是后来去高雄了。"
+        },
+        "successNote": "本來 opens the plan; 後來 marks the change."
+      }
+    ],
+    "allowWords": [
+      "太魯閣",
+      "高雄"
+    ]
+  },
+  "B1L16-G03": {
+    "bookPage": 385,
+    "title": "Complete the sentences with 更.",
+    "items": [
+      {
+        "id": "l16g3-own-1",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that today is even colder than yesterday.",
+        "tiles": [
+          {
+            "traditional": "今天",
+            "pinyin": "jīntiān"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "昨天",
+            "pinyin": "zuótiān"
+          },
+          {
+            "traditional": "更",
+            "pinyin": "gèng"
+          },
+          {
+            "traditional": "冷",
+            "pinyin": "lěng"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "今天",
+              "比",
+              "昨天",
+              "更",
+              "冷"
+            ],
+            "sentence": {
+              "traditional": "今天比昨天更冷。",
+              "pinyin": "Jīntiān bǐ zuótiān gèng lěng.",
+              "english": "Today is even colder than yesterday."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "Do not put 很 after 比; use 更 for “even more”."
+          }
+        ],
+        "fallbackRepair": "Use 比 before 昨天 and 更 before 冷."
+      },
+      {
+        "id": "l16g3-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "My older brother’s grades are even better than mine.",
+        "chunks": [
+          {
+            "traditional": "哥哥成績"
+          },
+          {
+            "traditional": "比"
+          },
+          {
+            "traditional": "我"
+          },
+          {
+            "traditional": "很好",
+            "tail": "。"
+          }
+        ],
+        "wrong": 3,
+        "tiles": [
+          {
+            "traditional": "更好",
+            "pinyin": "gèng hǎo"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "好",
+            "pinyin": "hǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很好"
+            ],
+            "mark": [
+              "很好"
+            ],
+            "note": "After 比, “even better” is 更好; 很好 is a plain description."
+          },
+          {
+            "placed": [
+              "好"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The sentence says “even better”, so keep 更."
+          }
+        ],
+        "hint": "比 needs the “even more” word.",
+        "fix": "更好",
+        "takeOutNote": "The comparison needs 更; replace 很好 with 更好.",
+        "result": {
+          "traditional": "哥哥成績比我更好。",
+          "pinyin": "Gēge chéngjī bǐ wǒ gèng hǎo.",
+          "english": "My older brother’s grades are even better than mine.",
+          "simplified": "哥哥成绩比我更好。"
+        },
+        "successNote": "更 raises the degree after 比."
+      }
+    ],
+    "allowWords": []
+  },
+  "B1L16-G04": {
+    "bookPage": 387,
+    "title": "Complete the sentences with the 了…就 pattern.",
+    "items": [
+      {
+        "id": "l16g4-own-1",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that you arrived at the classroom and immediately began preparing for class.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "到了教室",
+            "pinyin": "dào le jiàoshì"
+          },
+          {
+            "traditional": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "開始",
+            "pinyin": "kāishǐ",
+            "simplified": "开始"
+          },
+          {
+            "traditional": "準備上課",
+            "pinyin": "zhǔnbèi shàngkè",
+            "simplified": "准备上课"
+          },
+          {
+            "traditional": "以後",
+            "pinyin": "yǐhòu",
+            "simplified": "以后"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "到了教室",
+              "就",
+              "開始",
+              "準備上課"
+            ],
+            "sentence": {
+              "traditional": "我到了教室，就開始準備上課。",
+              "pinyin": "Wǒ dào le jiàoshì, jiù kāishǐ zhǔnbèi shàngkè.",
+              "english": "When I arrived at the classroom, I immediately began preparing for class.",
+              "simplified": "我到了教室，就开始准备上课。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "以後"
+            ],
+            "mark": [
+              "以後"
+            ],
+            "note": "Use 就 before the second action; 以後 alone cannot join the two clauses here."
+          }
+        ],
+        "fallbackRepair": "Put 就 before the second action."
+      }
+    ],
+    "allowWords": []
+  },
+  "B1L16-G05": {
+    "bookPage": 389,
+    "title": "Complete the sentences with V + 得 + complement.",
+    "items": [
+      {
+        "id": "l16g5-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "He introduced his country extremely well.",
+        "chunks": [
+          {
+            "traditional": "他介紹自己國家"
+          },
+          {
+            "traditional": "介紹"
+          },
+          {
+            "traditional": "的"
+          },
+          {
+            "traditional": "非常好",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "tiles": [
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "Use 得 after a verb to introduce how the action was done."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "了 marks completion; the complement after the verb needs 得."
+          }
+        ],
+        "hint": "The word links the verb to how he did it.",
+        "fix": "得",
+        "takeOutNote": "The complement needs 得; replace 的 with 得.",
+        "result": {
+          "traditional": "他介紹自己國家介紹得非常好。",
+          "pinyin": "Tā jièshào zìjǐ guójiā jièshào de fēicháng hǎo.",
+          "english": "He introduced his country extremely well.",
+          "simplified": "他介绍自己国家介绍得非常好。"
+        },
+        "successNote": "Verb + 得 + how it was done."
+      },
+      {
+        "id": "l16g5-own-2",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that everyone had a wonderful time.",
+        "tiles": [
+          {
+            "traditional": "大家",
+            "pinyin": "dàjiā"
+          },
+          {
+            "traditional": "玩",
+            "pinyin": "wán"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "非常開心",
+            "pinyin": "fēicháng kāixīn",
+            "simplified": "非常开心"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "大家",
+              "玩",
+              "得",
+              "非常開心"
+            ],
+            "sentence": {
+              "traditional": "大家玩得非常開心。",
+              "pinyin": "Dàjiā wán de fēicháng kāixīn.",
+              "english": "Everyone had a wonderful time.",
+              "simplified": "大家玩得非常开心。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "Use 得 after the verb 玩 to introduce the result."
+          }
+        ],
+        "fallbackRepair": "Put 得 after 玩 and 非常開心 after it."
+      }
+    ],
+    "allowWords": []
+  }
+}

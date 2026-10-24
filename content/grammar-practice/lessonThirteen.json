@@ -1,0 +1,1963 @@
+{
+ "B1L13-G01-P295": {
+  "bookPage": 295,
+  "title": "Complete the following dialogues with “Reduplicated Action V(一)V” pattern.",
+  "allowWords": [],
+  "items": [
+   {
+    "id": "l13g1-p1",
+    "source": "p.295 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "你",
+      "pinyin": "nǐ"
+     },
+     {
+      "traditional": "要",
+      "pinyin": "yào"
+     },
+     {
+      "traditional": "不要",
+      "pinyin": "bú yào"
+     },
+     {
+      "traditional": "看看",
+      "pinyin": "kàn kàn"
+     },
+     {
+      "traditional": "看",
+      "pinyin": "kàn"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "你",
+       "要",
+       "不要",
+       "看看"
+      ],
+      "sentence": {
+       "traditional": "你要不要看看？",
+       "simplified": "你要不要看看？",
+       "pinyin": "Nǐ yào bu yào kàn kàn?",
+       "english": "Do you want to take a look?"
+      }
+     },
+     {
+      "order": [
+       "要",
+       "不要",
+       "看看"
+      ],
+      "sentence": {
+       "traditional": "要不要看看？",
+       "simplified": "要不要看看？",
+       "pinyin": "Yào bu yào kàn kàn?",
+       "english": "Do you want to take a look?"
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "看"
+      ],
+      "note": "A single 看 is not the light reduplicated action; use 看看."
+     },
+     {
+      "notLast": "看看",
+      "note": "Put 看看 at the end of the question."
+     }
+    ],
+    "fallbackRepair": "Suggest a light action: V V.",
+    "prompt": "The book is interesting. Ask your friend to take a look.",
+    "successNote": "看看 softens the suggestion."
+   },
+   {
+    "id": "l13g1-p2",
+    "source": "p.295 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "常常",
+      "pinyin": "chángcháng"
+     },
+     {
+      "traditional": "看看書",
+      "pinyin": "kàn kàn shū",
+      "simplified": "看看书"
+     },
+     {
+      "traditional": "打打球",
+      "pinyin": "dǎ dǎ qiú"
+     },
+     {
+      "traditional": "看書",
+      "pinyin": "kàn shū",
+      "simplified": "看书"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "常常",
+       "看看書",
+       "打打球"
+      ],
+      "sentence": {
+       "traditional": "我常常看看書、打打球。",
+       "simplified": "我常常看看书、打打球。",
+       "pinyin": "Wǒ chángcháng kàn kàn shū, dǎ dǎ qiú.",
+       "english": "I often read a little and play a little ball."
+      }
+     },
+     {
+      "order": [
+       "常常",
+       "看看書",
+       "打打球"
+      ],
+      "sentence": {
+       "traditional": "常常看看書、打打球。",
+       "simplified": "常常看看書、打打球。",
+       "pinyin": "Chángcháng kàn kàn shū, dǎ dǎ qiú.",
+       "english": "I often read a little and play a little ball."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "看書"
+      ],
+      "note": "Use the reduplicated 看看書 for a light action."
+     },
+     {
+      "before": [
+       "打打球",
+       "看看書"
+      ],
+      "note": "Both actions are fine; keep each reduplicated."
+     }
+    ],
+    "fallbackRepair": "Two light actions after class.",
+    "prompt": "Answer what you often do after class.",
+    "successNote": "Repeat each verb to soften the routine."
+   },
+   {
+    "id": "l13g1-p3",
+    "source": "p.295 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我們",
+      "pinyin": "wǒmen",
+      "simplified": "我们"
+     },
+     {
+      "traditional": "可以",
+      "pinyin": "kěyǐ"
+     },
+     {
+      "traditional": "去",
+      "pinyin": "qù"
+     },
+     {
+      "traditional": "買買",
+      "pinyin": "mǎi mǎi",
+      "simplified": "买买"
+     },
+     {
+      "traditional": "衣服",
+      "pinyin": "yīfu"
+     },
+     {
+      "traditional": "買",
+      "pinyin": "mǎi",
+      "simplified": "买"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我們",
+       "可以",
+       "去",
+       "買買",
+       "衣服"
+      ],
+      "sentence": {
+       "traditional": "我們可以去買買衣服。",
+       "simplified": "我们可以去买买衣服。",
+       "pinyin": "Wǒmen kěyǐ qù mǎi mǎi yīfu.",
+       "english": "We can go and buy some clothes."
+      }
+     },
+     {
+      "order": [
+       "可以",
+       "去",
+       "買買",
+       "衣服"
+      ],
+      "sentence": {
+       "traditional": "可以去買買衣服。",
+       "simplified": "可以去买买衣服。",
+       "pinyin": "Kěyǐ qù mǎi mǎi yīfu.",
+       "english": "We can go and buy some clothes."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "買"
+      ],
+      "note": "Use 買買 for the light “buy some” action."
+     },
+     {
+      "before": [
+       "衣服",
+       "買買"
+      ],
+      "note": "Put 買買 before the object 衣服."
+     }
+    ],
+    "fallbackRepair": "Light action: 買買 + object.",
+    "prompt": "Answer what you can do at the department store.",
+    "successNote": "買買 makes the shopping sound casual."
+   },
+   {
+    "id": "l13g1-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: I take a look.",
+    "sub": "Do not add 了 after a reduplicated verb.",
+    "chunks": [
+     {
+      "traditional": "我"
+     },
+     {
+      "traditional": "看看",
+      "tail": " "
+     },
+     {
+      "traditional": "了",
+      "tail": "。"
+     }
+    ],
+    "wrong": 2,
+    "tiles": [
+     {
+      "traditional": "一",
+      "pinyin": "yī"
+     },
+     {
+      "traditional": "看",
+      "pinyin": "kàn"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "一"
+      ],
+      "note": "一 belongs between the two verbs: 看一看, not after 了."
+     },
+     {
+      "placed": [
+       "看"
+      ],
+      "note": "A third 看 does not fit here."
+     }
+    ],
+    "hint": "Which word should not follow the repeated verb?",
+    "result": {
+     "traditional": "我看看。",
+     "simplified": "我看看。",
+     "pinyin": "Wǒ kàn kàn.",
+     "english": "I take a look."
+    },
+    "successNote": "Reduplication already softens the action; no 了."
+   }
+  ]
+ },
+ "B1L13-G02-P296": {
+  "bookPage": 296,
+  "title": "Describe the following pictures with 從……往……。",
+  "allowWords": [
+   "台北",
+   "台北101"
+  ],
+  "items": [
+   {
+    "id": "l13g2-p1",
+    "source": "p.296 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "從這裡",
+      "pinyin": "cóng zhèlǐ",
+      "simplified": "从这里"
+     },
+     {
+      "traditional": "往上",
+      "pinyin": "wǎng shàng"
+     },
+     {
+      "traditional": "看",
+      "pinyin": "kàn"
+     },
+     {
+      "traditional": "往這裡",
+      "pinyin": "wǎng zhèlǐ",
+      "simplified": "往这里"
+     },
+     {
+      "traditional": "從上",
+      "pinyin": "cóng shàng",
+      "simplified": "从上"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "從這裡",
+       "往上",
+       "看"
+      ],
+      "sentence": {
+       "traditional": "從這裡往上看。",
+       "simplified": "从这里往上看。",
+       "pinyin": "Cóng zhèlǐ wǎng shàng kàn.",
+       "english": "Look up from here."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "往這裡"
+      ],
+      "note": "The tower is above you, so use 往上."
+     },
+     {
+      "placed": [
+       "從上"
+      ],
+      "note": "Start with 從這裡, then 往上."
+     },
+     {
+      "before": [
+       "看",
+       "往上"
+      ],
+      "note": "Put 往上看 before the period."
+     }
+    ],
+    "fallbackRepair": "Start: 從這裡; direction: 往上.",
+    "prompt": "You are at the bottom looking up at Taipei 101. Describe the view.",
+    "scene": {
+     "type": "picture",
+     "page": 296,
+     "box": [
+      0.163,
+      0.571,
+      0.213,
+      0.144
+     ],
+     "alt": "A person with a camera looking up at Taipei 101, with the tower slightly cropped at the bottom."
+    }
+   },
+   {
+    "id": "l13g2-p2",
+    "source": "p.296 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "從車裡",
+      "pinyin": "cóng chē lǐ",
+      "simplified": "从车里"
+     },
+     {
+      "traditional": "往外",
+      "pinyin": "wǎng wài"
+     },
+     {
+      "traditional": "看",
+      "pinyin": "kàn"
+     },
+     {
+      "traditional": "往車裡",
+      "pinyin": "wǎng chē lǐ",
+      "simplified": "往车里"
+     },
+     {
+      "traditional": "從外",
+      "pinyin": "cóng wài",
+      "simplified": "从外"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "從車裡",
+       "往外",
+       "看"
+      ],
+      "sentence": {
+       "traditional": "從車裡往外看。",
+       "simplified": "从车里往外看。",
+       "pinyin": "Cóng chē lǐ wǎng wài kàn.",
+       "english": "Look out from inside the car."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "往車裡"
+      ],
+      "note": "She is looking out, so use 往外."
+     },
+     {
+      "placed": [
+       "從外"
+      ],
+      "note": "Start inside: 從車裡, then 往外."
+     },
+     {
+      "before": [
+       "看",
+       "往外"
+      ],
+      "note": "Put 往外看 with 看 last."
+     }
+    ],
+    "fallbackRepair": "Start: 從車裡; direction: 往外.",
+    "prompt": "You are inside the car looking out. Describe the view.",
+    "scene": {
+     "type": "picture",
+     "page": 296,
+     "box": [
+      0.384,
+      0.578,
+      0.238,
+      0.142
+     ],
+     "alt": "A woman looking out of a car window."
+    }
+   },
+   {
+    "id": "l13g2-p3",
+    "source": "p.296 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "從學校"
+        ]
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "往郵局走"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "，你會看到"
+       },
+       {
+        "type": "slot",
+        "id": "g2",
+        "answers": [
+         "一隻貓",
+         "郵局"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "從學校",
+      "pinyin": "cóng xuéxiào",
+      "simplified": "从学校"
+     },
+     {
+      "traditional": "往郵局走",
+      "pinyin": "wǎng yóujú zǒu",
+      "simplified": "往邮局走"
+     },
+     {
+      "traditional": "一隻貓",
+      "pinyin": "yì zhī māo",
+      "simplified": "一只猫"
+     },
+     {
+      "traditional": "郵局",
+      "pinyin": "yóujú",
+      "simplified": "邮局"
+     },
+     {
+      "traditional": "一隻狗",
+      "pinyin": "yì zhī gǒu",
+      "simplified": "一只狗"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "一隻狗"
+      },
+      "note": "The picture shows a cat, not a dog."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "往郵局走"
+      },
+      "note": "Start with 從學校, then 往郵局走."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "從學校"
+      },
+      "note": "從學校 goes in the start slot; 往郵局走 follows."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "一隻貓"
+      },
+      "note": "The object comes after 看到, not at the start."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "郵局"
+      },
+      "note": "The object comes after 看到, not at the start."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "一隻狗"
+      },
+      "note": "The object comes after 看到, not at the start."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "一隻貓"
+      },
+      "note": "The object comes after 看到."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "郵局"
+      },
+      "note": "The object comes after 看到."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "一隻狗"
+      },
+      "note": "The object comes after 看到."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "從學校"
+      },
+      "note": "g2 is the object after 看到; use 一隻貓 or 郵局, not the start place."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "往郵局走"
+      },
+      "note": "g2 is the object after 看到; use 一隻貓 or 郵局, not the direction phrase."
+     }
+    ],
+    "fallbackRepair": "從 + start + 往 + direction + 走，你會看到 + object.",
+    "result": {
+     "traditional": "從學校往郵局走，你會看到一隻貓。",
+     "simplified": "从学校往邮局走，你会看到一只猫。",
+     "pinyin": "Cóng xuéxiào wǎng yóujú zǒu, nǐ huì kàndào yì zhī māo.",
+     "english": "Walk from the school toward the post office; you will see a cat."
+    },
+    "alternatives": [
+     {
+      "traditional": "從學校往郵局走，你會看到郵局。",
+      "simplified": "从学校往邮局走，你会看到邮局。",
+      "pinyin": "Cóng xuéxiào wǎng yóujú zǒu, nǐ huì kàndào yóujú.",
+      "english": "Walk from the school toward the post office; you will see the post office."
+     }
+    ],
+    "prompt": "Start at the school and walk toward the post office. Say what you will see.",
+    "successNote": "從 marks the start; 往 marks the direction.",
+    "scene": {
+     "type": "picture",
+     "page": 296,
+     "box": [
+      0.625,
+      0.57,
+      0.285,
+      0.163
+     ],
+     "alt": "A map from 學校 along a winding road to 郵局, with a cat and a figure."
+    }
+   }
+  ]
+ },
+ "B1L13-G03-P297": {
+  "bookPage": 297,
+  "title": "Complete the following dialogues with 就.",
+  "allowWords": [
+   "台北",
+   "台北101",
+   "介紹",
+   "國家"
+  ],
+  "items": [
+   {
+    "id": "l13g3-p1",
+    "source": "p.297 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "六點",
+      "pinyin": "liù diǎn",
+      "simplified": "六点"
+     },
+     {
+      "traditional": "就",
+      "pinyin": "jiù"
+     },
+     {
+      "traditional": "到學校",
+      "pinyin": "dào xuéxiào",
+      "simplified": "到学校"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "也",
+      "pinyin": "yě"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "六點",
+       "就",
+       "到學校",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "我六點就到學校了。",
+       "simplified": "我六点就到学校了。",
+       "pinyin": "Wǒ liù diǎn jiù dào xuéxiào le.",
+       "english": "I got to school at six."
+      }
+     },
+     {
+      "order": [
+       "六點",
+       "就",
+       "到學校",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "六點就到學校了。",
+       "simplified": "六点就到學校了。",
+       "pinyin": "Liù diǎn jiù dào xuéxiào le.",
+       "english": "I got to school at six."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "也"
+      ],
+      "note": "也 means “also”; the sentence is about early arrival, so use 就."
+     },
+     {
+      "before": [
+       "到學校",
+       "就"
+      ],
+      "note": "Put 就 after the time 六點."
+     }
+    ],
+    "fallbackRepair": "Time + 就 + action + 了.",
+    "prompt": "You arrived early. Say you got to school at six."
+   },
+   {
+    "id": "l13g3-p2",
+    "source": "p.297 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "往前走",
+      "pinyin": "wǎng qián zǒu"
+     },
+     {
+      "traditional": "就",
+      "pinyin": "jiù"
+     },
+     {
+      "traditional": "可以",
+      "pinyin": "kěyǐ"
+     },
+     {
+      "traditional": "看到",
+      "pinyin": "kàndào"
+     },
+     {
+      "traditional": "台北101",
+      "pinyin": "Táiběi Yīlíngyī",
+      "simplified": "台北101"
+     },
+     {
+      "traditional": "往後走",
+      "pinyin": "wǎng hòu zǒu",
+      "simplified": "往后走"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "往前走",
+       "就",
+       "可以",
+       "看到",
+       "台北101"
+      ],
+      "sentence": {
+       "traditional": "往前走，就可以看到台北101。",
+       "simplified": "往前走，就可以看到台北101。",
+       "pinyin": "Wǎng qián zǒu, jiù kěyǐ kàndào Táiběi Yīlíngyī.",
+       "english": "Walk forward and you can see Taipei 101."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "往後走"
+      ],
+      "note": "The tower is ahead, so use 往前走."
+     },
+     {
+      "before": [
+       "可以",
+       "就"
+      ],
+      "note": "Put 就 before 可以."
+     }
+    ],
+    "fallbackRepair": "Instruction + 就 + easy result.",
+    "prompt": "The tower is ahead. Say how to get there."
+   },
+   {
+    "id": "l13g3-p3",
+    "source": "p.297 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "你上網找一找，"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "就"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "找到了。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "就",
+      "pinyin": "jiù"
+     },
+     {
+      "traditional": "也",
+      "pinyin": "yě"
+     },
+     {
+      "traditional": "都",
+      "pinyin": "dōu"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "也"
+      },
+      "note": "也 says “also”; the easy result takes 就."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "都"
+      },
+      "note": "都 says “all”; the easy result takes 就."
+     }
+    ],
+    "fallbackRepair": "Instruction + 就 + result.",
+    "result": {
+     "traditional": "你上網找一找，就找到了。",
+     "simplified": "你上网找一找，就找到了。",
+     "pinyin": "Nǐ shàngwǎng zhǎo yī zhǎo, jiù zhǎodào le.",
+     "english": "Look online and you will find it."
+    },
+    "prompt": "Complete the easy result."
+   },
+   {
+    "id": "l13g3-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: I got up at six.",
+    "sub": "The sentence should say “as early as six”.",
+    "chunks": [
+     {
+      "traditional": "我"
+     },
+     {
+      "traditional": "六點",
+      "simplified": "六点"
+     },
+     {
+      "traditional": "也",
+      "tail": " "
+     },
+     {
+      "traditional": "起床",
+      "tail": " "
+     },
+     {
+      "traditional": "了",
+      "tail": "。"
+     }
+    ],
+    "wrong": 2,
+    "tiles": [
+     {
+      "traditional": "就",
+      "pinyin": "jiù"
+     },
+     {
+      "traditional": "都",
+      "pinyin": "dōu"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "都"
+      ],
+      "note": "都 says “all”, not “as early as six”."
+     }
+    ],
+    "hint": "Which word says “as early as”?",
+    "result": {
+     "traditional": "我六點就起床了。",
+     "simplified": "我六点就起床了。",
+     "pinyin": "Wǒ liù diǎn jiù qǐchuáng le.",
+     "english": "I got up at six."
+    },
+    "successNote": "就 goes after the time word and before the verb.",
+    "fix": "就",
+    "takeOutNote": "Do not remove 也; swap it for 就."
+   }
+  ]
+ },
+ "B1L13-G04-P303": {
+  "bookPage": 303,
+  "title": "Complete the following sentences with 就（要）……了.",
+  "allowWords": [
+   "下星期二"
+  ],
+  "items": [
+   {
+    "id": "l13g4-p1",
+    "source": "p.303 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "明天",
+      "pinyin": "míngtiān"
+     },
+     {
+      "traditional": "就要",
+      "pinyin": "jiù yào"
+     },
+     {
+      "traditional": "考試",
+      "pinyin": "kǎoshì",
+      "simplified": "考试"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "明天",
+       "就要",
+       "考試",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "明天就要考試了。",
+       "simplified": "明天就要考试了。",
+       "pinyin": "Míngtiān jiù yào kǎoshì le.",
+       "english": "The exam is tomorrow."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "在"
+      ],
+      "note": "在 is “at”; the countdown takes 就要."
+     },
+     {
+      "notLast": "了",
+      "note": "Put 了 at the end."
+     }
+    ],
+    "fallbackRepair": "Time + 就要 + event + 了.",
+    "prompt": "The exam is tomorrow. Say it is about to happen."
+   },
+   {
+    "id": "l13g4-p2",
+    "source": "p.303 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "她",
+      "pinyin": "tā"
+     },
+     {
+      "traditional": "下星期二",
+      "pinyin": "xià xīngqī èr",
+      "simplified": "下星期二"
+     },
+     {
+      "traditional": "就要",
+      "pinyin": "jiù yào"
+     },
+     {
+      "traditional": "回國",
+      "pinyin": "huíguó",
+      "simplified": "回国"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "她",
+       "下星期二",
+       "就要",
+       "回國",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "她下星期二就要回國了。",
+       "simplified": "她下星期二就要回国了。",
+       "pinyin": "Tā xià xīngqī èr jiù yào huíguó le.",
+       "english": "She is going back to her country next Tuesday."
+      }
+     },
+     {
+      "order": [
+       "下星期二",
+       "就要",
+       "回國",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "下星期二就要回國了。",
+       "simplified": "下星期二就要回国了。",
+       "pinyin": "Xià xīngqī èr jiù yào huíguó le.",
+       "english": "She is going back next Tuesday."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "在"
+      ],
+      "note": "在 is “at”; the countdown takes 就要."
+     },
+     {
+      "notLast": "了",
+      "note": "Put 了 at the end."
+     }
+    ],
+    "fallbackRepair": "Subject + time + 就要 + event + 了.",
+    "prompt": "She returns next Tuesday. Say it is about to happen."
+   },
+   {
+    "id": "l13g4-p3",
+    "source": "p.303 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "火車十分鐘以後"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "就要"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "來"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "了"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "就要",
+      "pinyin": "jiù yào"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "了"
+      },
+      "note": "了 goes at the end, not before 來."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "在"
+      },
+      "note": "在 is “at”; the countdown takes 就要."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "就要"
+      },
+      "note": "就要 goes before the event 來."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "在"
+      },
+      "note": "在 is “at”; the countdown takes 就要."
+     }
+    ],
+    "fallbackRepair": "Time + 就要 + event + 了.",
+    "result": {
+     "traditional": "火車十分鐘以後就要來了。",
+     "simplified": "火车十分钟以后就要来了。",
+     "pinyin": "Huǒchē shí fēnzhōng yǐhòu jiù yào lái le.",
+     "english": "The train is coming in ten minutes."
+    },
+    "prompt": "The train comes in ten minutes. Complete the countdown.",
+    "successNote": "就要 goes before 來; 了 closes the sentence."
+   }
+  ]
+ },
+ "B1L13-G05-P304": {
+  "bookPage": 304,
+  "title": "Rearrange the following sentences. / Rewrite the following sentences with pattern A or B.",
+  "allowWords": [
+   "八個小時",
+   "十六個小時",
+   "十分鐘以後",
+   "半個鐘頭",
+   "鐘頭",
+   "書法課",
+   "日文",
+   "日本",
+   "華語課"
+  ],
+  "items": [
+   {
+    "id": "l13g5-p1",
+    "source": "p.304 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他",
+      "pinyin": "tā"
+     },
+     {
+      "traditional": "每天",
+      "pinyin": "měitiān"
+     },
+     {
+      "traditional": "跑",
+      "pinyin": "pǎo"
+     },
+     {
+      "traditional": "半個小時",
+      "pinyin": "bàn ge xiǎoshí",
+      "simplified": "半个小时"
+     },
+     {
+      "traditional": "跑半個",
+      "pinyin": "pǎo bàn ge",
+      "simplified": "跑半个"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他",
+       "每天",
+       "跑",
+       "半個小時"
+      ],
+      "sentence": {
+       "traditional": "他每天跑半個小時。",
+       "simplified": "他每天跑半个小时。",
+       "pinyin": "Tā měitiān pǎo bàn ge xiǎoshí.",
+       "english": "He runs for half an hour every day."
+      }
+     },
+     {
+      "order": [
+       "跑",
+       "半個小時"
+      ],
+      "sentence": {
+       "traditional": "跑半個小時。",
+       "simplified": "跑半个小時。",
+       "pinyin": "Pǎo bàn ge xiǎoshí.",
+       "english": "Run for half an hour."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "跑半個"
+      ],
+      "note": "Use the full duration 半個小時."
+     },
+     {
+      "before": [
+       "半個小時",
+       "跑"
+      ],
+      "note": "Put the duration after the verb 跑."
+     }
+    ],
+    "fallbackRepair": "Subject + time + verb + duration.",
+    "prompt": "Rearrange: how long does he run every day?"
+   },
+   {
+    "id": "l13g5-p2",
+    "source": "p.304 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "需要",
+      "pinyin": "xūyào"
+     },
+     {
+      "traditional": "休息",
+      "pinyin": "xiūxi"
+     },
+     {
+      "traditional": "十分鐘",
+      "pinyin": "shí fēnzhōng",
+      "simplified": "十分钟"
+     },
+     {
+      "traditional": "休息需要",
+      "pinyin": "xiūxi xūyào",
+      "simplified": "休息需要"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "需要",
+       "休息",
+       "十分鐘"
+      ],
+      "sentence": {
+       "traditional": "我需要休息十分鐘。",
+       "simplified": "我需要休息十分钟。",
+       "pinyin": "Wǒ xūyào xiūxi shí fēnzhōng.",
+       "english": "I need to rest for ten minutes."
+      }
+     },
+     {
+      "order": [
+       "需要",
+       "休息",
+       "十分鐘"
+      ],
+      "sentence": {
+       "traditional": "需要休息十分鐘。",
+       "simplified": "需要休息十分鐘。",
+       "pinyin": "Xūyào xiūxi shí fēnzhōng.",
+       "english": "Need to rest for ten minutes."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "休息需要"
+      ],
+      "note": "Put 需要 before the action 休息."
+     },
+     {
+      "before": [
+       "十分鐘",
+       "休息"
+      ],
+      "note": "Put the duration after 休息."
+     }
+    ],
+    "fallbackRepair": "Subject + 需要 + verb + duration.",
+    "prompt": "Rearrange: how long do you need to rest?"
+   },
+   {
+    "id": "l13g5-p3",
+    "source": "p.304 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我現在太累了，可以"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "先"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "睡十分鐘"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "嗎"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "？"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "先",
+      "pinyin": "xiān"
+     },
+     {
+      "traditional": "嗎",
+      "pinyin": "ma",
+      "simplified": "吗"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "嗎"
+      },
+      "note": "嗎 goes at the end, not before 睡."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "了"
+      },
+      "note": "了 does not fit before 睡 here."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "先"
+      },
+      "note": "先 goes before the action 睡."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "了"
+      },
+      "note": "Use 嗎 to ask the question, not 了."
+     }
+    ],
+    "fallbackRepair": "先 before the action; 嗎 at the end.",
+    "result": {
+     "traditional": "我現在太累了，可以先睡十分鐘嗎？",
+     "simplified": "我现在太累了，可以先睡十分钟吗？",
+     "pinyin": "Wǒ xiànzài tài lèi le, kěyǐ xiān shuì shí fēnzhōng ma?",
+     "english": "I am too tired now; can I sleep for ten minutes first?"
+    },
+    "prompt": "Place 先 and 嗎 in the sentence: you are tired and want to sleep ten minutes."
+   },
+   {
+    "id": "l13g5-p4",
+    "source": "p.306 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他每天都",
+      "pinyin": "tā měitiān dōu",
+      "simplified": "他每天都"
+     },
+     {
+      "traditional": "走",
+      "pinyin": "zǒu"
+     },
+     {
+      "traditional": "半個鐘頭",
+      "pinyin": "bàn ge zhōngtóu",
+      "simplified": "半个钟头"
+     },
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "路",
+      "pinyin": "lù"
+     },
+     {
+      "traditional": "得",
+      "pinyin": "de"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他每天都",
+       "走",
+       "半個鐘頭",
+       "的",
+       "路"
+      ],
+      "sentence": {
+       "traditional": "他每天都走半個鐘頭的路。",
+       "simplified": "他每天都走半个钟头的路。",
+       "pinyin": "Tā měitiān dōu zǒu bàn ge zhōngtóu de lù.",
+       "english": "He walks for half an hour every day."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "得"
+      ],
+      "note": "Use 的 to join the duration to the noun 路."
+     },
+     {
+      "before": [
+       "路",
+       "的"
+      ],
+      "note": "Put 的 before 路."
+     }
+    ],
+    "fallbackRepair": "Pattern B: V + duration + 的 + O.",
+    "prompt": "Rewrite with 的: he walks for half an hour every day."
+   },
+   {
+    "id": "l13g5-p5",
+    "source": "p.306 #2",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我一個星期要上五天"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "的"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "班。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "得",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "得"
+      },
+      "note": "Use 的 to join the duration 五天 to the noun 班."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "了"
+      },
+      "note": "了 does not join the duration to the noun; use 的."
+     }
+    ],
+    "fallbackRepair": "Pattern B: V + duration + 的 + O.",
+    "result": {
+     "traditional": "我一個星期要上五天的班。",
+     "simplified": "我一个星期要上五天的班。",
+     "pinyin": "Wǒ yí ge xīngqī yào shàng wǔ tiān de bān.",
+     "english": "I work five days a week."
+    },
+    "prompt": "Rewrite with 的: I work five days a week.",
+    "successNote": "的 joins the duration to the noun 班.",
+    "sub": "This is a frame: place 的 between the duration 五天 and the noun 班."
+   },
+   {
+    "id": "l13g5-p6",
+    "source": "p.306 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我想",
+      "pinyin": "wǒ xiǎng"
+     },
+     {
+      "traditional": "上",
+      "pinyin": "shàng"
+     },
+     {
+      "traditional": "華語課",
+      "pinyin": "Huáyǔ kè",
+      "simplified": "华语课"
+     },
+     {
+      "traditional": "上",
+      "pinyin": "shàng"
+     },
+     {
+      "traditional": "兩個月",
+      "pinyin": "liǎng ge yuè",
+      "simplified": "两个月"
+     },
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我想",
+       "上",
+       "華語課",
+       "上",
+       "兩個月"
+      ],
+      "sentence": {
+       "traditional": "我想上華語課上兩個月。",
+       "simplified": "我想上华语课上两个月。",
+       "pinyin": "Wǒ xiǎng shàng Huáyǔ kè shàng liǎng ge yuè.",
+       "english": "I want to take Chinese classes for two months."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "的"
+      ],
+      "note": "Pattern A repeats the verb; it does not use 的 here."
+     },
+     {
+      "before": [
+       "兩個月",
+       "上"
+      ],
+      "note": "Put the duration after the repeated verb 上."
+     }
+    ],
+    "fallbackRepair": "Pattern A: VO + V + duration.",
+    "prompt": "Rewrite with pattern A: I want to take Chinese classes for two months.",
+    "sub": "Build the full sentence from the tiles. The source sentence is already pattern B; rewrite it with pattern A."
+   },
+   {
+    "id": "l13g5-p7",
+    "source": "p.306 #4",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我明天要"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "坐"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "飛機"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "坐"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "十六個小時。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "坐",
+      "pinyin": "zuò"
+     },
+     {
+      "traditional": "坐",
+      "pinyin": "zuò"
+     },
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "的"
+      },
+      "note": "Pattern A repeats the verb; do not use 的 here."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "的"
+      },
+      "note": "Pattern A repeats the verb; do not use 的 here."
+     }
+    ],
+    "fallbackRepair": "Pattern A: VO + V + duration.",
+    "result": {
+     "traditional": "我明天要坐飛機坐十六個小時。",
+     "simplified": "我明天要坐飞机坐十六个小时。",
+     "pinyin": "Wǒ míngtiān yào zuò fēijī zuò shíliù ge xiǎoshí.",
+     "english": "I have to fly for sixteen hours tomorrow."
+    },
+    "prompt": "Rewrite with pattern A: I have to fly for sixteen hours tomorrow.",
+    "successNote": "Repeat 坐 before the duration.",
+    "sub": "This is a frame: place the repeated 坐 in both gaps. The source sentence is already pattern B; rewrite it with pattern A."
+   },
+   {
+    "id": "l13g5-p8",
+    "source": "p.306 #5",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我每天"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "做"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "功課"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "做"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "兩個小時。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "做",
+      "pinyin": "zuò"
+     },
+     {
+      "traditional": "做",
+      "pinyin": "zuò"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "在"
+      },
+      "note": "在 is “at”; the action verb is 做."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "在"
+      },
+      "note": "Repeat 做 before the duration."
+     }
+    ],
+    "fallbackRepair": "Repeat the verb before the duration.",
+    "result": {
+     "traditional": "我每天做功課做兩個小時。",
+     "simplified": "我每天做功課做兩個小時。",
+     "pinyin": "Wǒ měitiān zuò gōngkè zuò liǎng ge xiǎoshí.",
+     "english": "I do homework for two hours every day."
+    },
+    "prompt": "Place the repeated verb: I do homework for two hours every day."
+   },
+   {
+    "id": "l13g5-p9",
+    "source": "p.306 #6",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他打算",
+      "pinyin": "tā dǎsuàn"
+     },
+     {
+      "traditional": "上",
+      "pinyin": "shàng"
+     },
+     {
+      "traditional": "一年",
+      "pinyin": "yī nián"
+     },
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "書法課",
+      "pinyin": "shūfǎ kè",
+      "simplified": "书法课"
+     },
+     {
+      "traditional": "得",
+      "pinyin": "de"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他打算",
+       "上",
+       "一年",
+       "的",
+       "書法課"
+      ],
+      "sentence": {
+       "traditional": "他打算上一年的書法課。",
+       "simplified": "他打算上一年的书法课。",
+       "pinyin": "Tā dǎsuàn shàng yī nián de shūfǎ kè.",
+       "english": "He plans to take calligraphy classes for a year."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "得"
+      ],
+      "note": "Use 的 to join the duration to 書法課."
+     },
+     {
+      "before": [
+       "書法課",
+       "的"
+      ],
+      "note": "Put 的 before 書法課."
+     }
+    ],
+    "fallbackRepair": "Pattern B: V + duration + 的 + O.",
+    "prompt": "Rearrange: he plans to take calligraphy classes for a year."
+   },
+   {
+    "id": "l13g5-p10",
+    "source": "p.306 #7",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我明天需要走半天"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "的"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "路。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "得",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "得"
+      },
+      "note": "Use 的 to join the duration to the noun 路."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "了"
+      },
+      "note": "了 does not join the duration to the noun; use 的."
+     }
+    ],
+    "fallbackRepair": "Pattern B: V + duration + 的 + O.",
+    "result": {
+     "traditional": "我明天需要走半天的路。",
+     "simplified": "我明天需要走半天的路。",
+     "pinyin": "Wǒ míngtiān xūyào zǒu bàntiān de lù.",
+     "english": "I need to walk for half a day tomorrow."
+    },
+    "prompt": "Place 的: I need to walk for half a day tomorrow."
+   },
+   {
+    "id": "l13g5-p11",
+    "source": "p.306 #8",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我決定去日本學一年"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "的"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "日文。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "的",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "得",
+      "pinyin": "de"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "得"
+      },
+      "note": "Use 的 to join the duration to 日文."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "了"
+      },
+      "note": "了 does not join the duration to the noun; use 的."
+     }
+    ],
+    "fallbackRepair": "Pattern B: V + duration + 的 + O.",
+    "result": {
+     "traditional": "我決定去日本學一年的日文。",
+     "simplified": "我决定去日本学一年的日文。",
+     "pinyin": "Wǒ juédìng qù Rìběn xué yī nián de Rìwén.",
+     "english": "I decided to study Japanese in Japan for a year."
+    },
+    "prompt": "Place 的: I decided to study Japanese in Japan for a year."
+   }
+  ]
+ }
+}

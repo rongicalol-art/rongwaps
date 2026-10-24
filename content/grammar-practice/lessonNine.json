@@ -1,0 +1,2312 @@
+{
+ "B1L09-G01-P205": {
+  "bookPage": 206,
+  "title": "Complete the following dialogues.",
+  "allowWords": [],
+  "items": [
+   {
+    "id": "l9g1-p1",
+    "source": "p.206 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他們",
+      "pinyin": "tāmen",
+      "simplified": "他们"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "唱歌",
+      "pinyin": "chànggē"
+     },
+     {
+      "traditional": "唱在歌",
+      "pinyin": "chàng zài gē"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他們",
+       "在",
+       "唱歌"
+      ],
+      "sentence": {
+       "traditional": "他們在唱歌。",
+       "simplified": "他们在唱歌。",
+       "pinyin": "Tāmen zài chànggē.",
+       "english": "They are singing."
+      }
+     },
+     {
+      "order": [
+       "在",
+       "唱歌"
+      ],
+      "sentence": {
+       "traditional": "在唱歌。",
+       "simplified": "在唱歌。",
+       "pinyin": "Zài chànggē.",
+       "english": "Singing."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "唱在歌"
+      ],
+      "note": "Keep 在 before the whole action: 他們在唱歌。"
+     },
+     {
+      "before": [
+       "唱歌",
+       "在"
+      ],
+      "note": "Put 在 before the action 唱歌, not after it."
+     },
+     {
+      "notFirst": "在",
+      "note": "Start with the subject 他們; 在 comes after it."
+     }
+    ],
+    "fallbackRepair": "Action happening now: subject + 在 + action.",
+    "prompt": "The choir is singing. Say what they are doing.",
+    "scene": {
+     "type": "picture",
+     "page": 206,
+     "box": [
+      0.155,
+      0.378,
+      0.22,
+      0.135
+     ],
+     "alt": "Four people holding sheet music and singing, with music notes above them."
+    },
+    "successNote": "在 sits right before the action that is happening now."
+   },
+   {
+    "id": "l9g1-p2",
+    "source": "p.206 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他們",
+      "pinyin": "tāmen",
+      "simplified": "他们"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "做什麼",
+      "pinyin": "zuò shénme",
+      "simplified": "做什么"
+     },
+     {
+      "traditional": "做在什麼",
+      "pinyin": "zuò zài shénme",
+      "simplified": "做在什么"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他們",
+       "在",
+       "做什麼"
+      ],
+      "sentence": {
+       "traditional": "他們在做什麼？",
+       "simplified": "他们在做什么？",
+       "pinyin": "Tāmen zài zuò shénme?",
+       "english": "What are they doing?"
+      }
+     },
+     {
+      "order": [
+       "在",
+       "做什麼"
+      ],
+      "sentence": {
+       "traditional": "在做什麼？",
+       "simplified": "在做什麼？",
+       "pinyin": "Zài zuò shénme?",
+       "english": "What are they doing?"
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "做在什麼"
+      ],
+      "note": "Build 在 + 做什麼: 他們在做什麼？"
+     },
+     {
+      "before": [
+       "做什麼",
+       "在"
+      ],
+      "note": "Put 在 before 做什麼."
+     },
+     {
+      "notFirst": "在",
+      "note": "Start with the subject 他們; 在 comes after it."
+     }
+    ],
+    "fallbackRepair": "Question: subject + 在 + 做什麼 + ？",
+    "prompt": "The dancers are performing a Japanese dance. Ask what they are doing.",
+    "scene": {
+     "type": "picture",
+     "page": 206,
+     "box": [
+      0.412,
+      0.38,
+      0.23,
+      0.13
+     ],
+     "alt": "Three women in kimono-style robes with open fans and music notes."
+    }
+   },
+   {
+    "id": "l9g1-p3",
+    "source": "p.206 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他",
+      "pinyin": "tā"
+     },
+     {
+      "traditional": "這個孩子",
+      "pinyin": "zhège háizi",
+      "simplified": "这个孩子"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "畫畫",
+      "pinyin": "huàhuà",
+      "simplified": "画画"
+     },
+     {
+      "traditional": "畫在畫",
+      "pinyin": "huà zài huà",
+      "simplified": "画在画"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他",
+       "在",
+       "畫畫"
+      ],
+      "sentence": {
+       "traditional": "他在畫畫。",
+       "simplified": "他在画画。",
+       "pinyin": "Tā zài huàhuà.",
+       "english": "He is drawing."
+      }
+     },
+     {
+      "order": [
+       "這個孩子",
+       "在",
+       "畫畫"
+      ],
+      "sentence": {
+       "traditional": "這個孩子在畫畫。",
+       "simplified": "这个孩子在画画。",
+       "pinyin": "Zhège háizi zài huàhuà.",
+       "english": "This child is drawing."
+      }
+     },
+     {
+      "order": [
+       "在",
+       "畫畫"
+      ],
+      "sentence": {
+       "traditional": "在畫畫。",
+       "simplified": "在画画。",
+       "pinyin": "Zài huàhuà.",
+       "english": "Drawing."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "畫在畫"
+      ],
+      "note": "Keep 在 before the action 畫畫."
+     },
+     {
+      "before": [
+       "畫畫",
+       "在"
+      ],
+      "note": "Put 在 before 畫畫."
+     },
+     {
+      "notFirst": "在",
+      "note": "Start with the person; 在 comes after the subject."
+     }
+    ],
+    "fallbackRepair": "Answer: person + 在 + action.",
+    "prompt": "The child is drawing. Answer what he is doing.",
+    "scene": {
+     "type": "picture",
+     "page": 206,
+     "box": [
+      0.675,
+      0.38,
+      0.19,
+      0.13
+     ],
+     "alt": "A child sitting on the floor drawing on a large sheet of paper, crayons nearby."
+    }
+   },
+   {
+    "id": "l9g1-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: he is playing basketball.",
+    "sub": "Use the word that shows an action happening now.",
+    "chunks": [
+     {
+      "traditional": "他"
+     },
+     {
+      "traditional": "是"
+     },
+     {
+      "traditional": "打籃球",
+      "simplified": "打篮球",
+      "tail": "。"
+     }
+    ],
+    "wrong": 1,
+    "fix": "在",
+    "tiles": [
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "有",
+      "pinyin": "yǒu"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "有"
+      ],
+      "note": "有 does not mark the action as happening now. Use 在 before 打籃球."
+     }
+    ],
+    "takeOutNote": "Do not remove 是; swap it for 在.",
+    "hint": "Which word shows an action happening now?",
+    "result": {
+     "traditional": "他在打籃球。",
+     "simplified": "他在打篮球。",
+     "pinyin": "Tā zài dǎ lánqiú.",
+     "english": "He is playing basketball."
+    },
+    "successNote": "在 before 打籃球 shows the action is happening now."
+   }
+  ]
+ },
+ "B1L09-G02-P206": {
+  "bookPage": 207,
+  "title": "Complete the following dialogues with 從……到……。",
+  "allowWords": [
+   "餐廳",
+   "法國",
+   "棒球",
+   "比賽"
+  ],
+  "items": [
+   {
+    "id": "l9g2-p1",
+    "source": "p.207 #1",
+    "kind": "slot-build",
+    "gaps": true,
+    "scene": {
+     "type": "picture",
+     "page": 207,
+     "box": [
+      0.16,
+      0.222,
+      0.235,
+      0.142
+     ],
+     "alt": "Restaurant storefront with a window notice reading 2/5~2/20 休息."
+    },
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "slot",
+        "id": "gStart",
+        "answers": []
+       },
+       {
+        "type": "text",
+        "traditional": "這家餐廳",
+        "simplified": "这家餐厅"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "從"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "二月五號",
+        "simplified": "二月五号"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "到"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "二月二十號",
+        "simplified": "二月二十号"
+       },
+       {
+        "type": "slot",
+        "id": "g2",
+        "answers": []
+       },
+       {
+        "type": "text",
+        "traditional": "休息。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "從",
+      "pinyin": "cóng",
+      "simplified": "从"
+     },
+     {
+      "traditional": "到",
+      "pinyin": "dào"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "gStart",
+       "tile": "從"
+      },
+      "note": "從 marks the start time, so it goes right before 二月五號."
+     },
+     {
+      "slot": {
+       "id": "gStart",
+       "tile": "到"
+      },
+      "note": "到 marks the finish; it cannot open the sentence."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "到"
+      },
+      "note": "The start date takes 從, not 到."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "從"
+      },
+      "note": "到 marks the end; 從 cannot replace it."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "從"
+      },
+      "note": "Put 從 before the start date, not after the end date."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "到"
+      },
+      "note": "到 goes before the finish date, not after it."
+     },
+     {
+      "slot": {
+       "id": "gStart",
+       "tile": "在"
+      },
+      "note": "在 is not a range marker; use 從 for the start and 到 for the finish."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "在"
+      },
+      "note": "在 is not a range marker; use 從 for the start and 到 for the finish."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "在"
+      },
+      "note": "在 is not a range marker; use 從 for the start and 到 for the finish."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "在"
+      },
+      "note": "在 is not a range marker; use 從 for the start and 到 for the finish."
+     }
+    ],
+    "fallbackRepair": "Start with 從 and finish with 到.",
+    "result": {
+     "traditional": "這家餐廳從二月五號到二月二十號休息。",
+     "simplified": "这家餐厅从二月五号到二月二十号休息。",
+     "pinyin": "Zhè jiā càntīng cóng èryuè wǔ hào dào èryuè èrshí hào xiūxi.",
+     "english": "This restaurant is closed from February 5 to February 20."
+    },
+    "prompt": "The notice says 2/5 to 2/20. Put 從 and 到 in the right places.",
+    "quiet": true,
+    "successNote": "從 opens the start date; 到 opens the finish date."
+   },
+   {
+    "id": "l9g2-p2",
+    "source": "p.207 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "棒球比賽",
+      "pinyin": "bàngqiú bǐsài",
+      "simplified": "棒球比赛"
+     },
+     {
+      "traditional": "從",
+      "pinyin": "cóng",
+      "simplified": "从"
+     },
+     {
+      "traditional": "下午一點",
+      "pinyin": "xiàwǔ yī diǎn",
+      "simplified": "下午一点"
+     },
+     {
+      "traditional": "到",
+      "pinyin": "dào"
+     },
+     {
+      "traditional": "下午四點",
+      "pinyin": "xiàwǔ sì diǎn",
+      "simplified": "下午四点"
+     },
+     {
+      "traditional": "到下午",
+      "pinyin": "dào xiàwǔ"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "棒球比賽",
+       "從",
+       "下午一點",
+       "到",
+       "下午四點"
+      ],
+      "sentence": {
+       "traditional": "棒球比賽從下午一點到下午四點。",
+       "simplified": "棒球比赛从下午一点到下午四点。",
+       "pinyin": "Bàngqiú bǐsài cóng xiàwǔ yī diǎn dào xiàwǔ sì diǎn.",
+       "english": "The baseball game is from 1 p.m. to 4 p.m."
+      }
+     },
+     {
+      "order": [
+       "從",
+       "下午一點",
+       "到",
+       "下午四點"
+      ],
+      "sentence": {
+       "traditional": "從下午一點到下午四點。",
+       "simplified": "从下午一点到下午四点。",
+       "pinyin": "Cóng xiàwǔ yī diǎn dào xiàwǔ sì diǎn.",
+       "english": "From 1 p.m. to 4 p.m."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "到下午"
+      ],
+      "note": "到 needs a time after it; use 到下午四點."
+     },
+     {
+      "before": [
+       "下午四點",
+       "到"
+      ],
+      "note": "Put 到 before the finish time 下午四點."
+     },
+     {
+      "before": [
+       "下午一點",
+       "從"
+      ],
+      "note": "Put 從 before the start time 下午一點."
+     }
+    ],
+    "fallbackRepair": "Range: 從 + start + 到 + finish.",
+    "prompt": "The schedule shows 13:00–16:00. Say when the baseball game is.",
+    "scene": {
+     "type": "picture",
+     "page": 207,
+     "box": [
+      0.393,
+      0.222,
+      0.255,
+      0.142
+     ],
+     "alt": "Weekly schedule headed 賽程表 with 13:00 and 16:00, a baseball bat and trophy in the shaded block."
+    }
+   },
+   {
+    "id": "l9g2-p3",
+    "source": "p.207 #3",
+    "kind": "slot-build",
+    "gaps": true,
+    "scene": {
+     "type": "picture",
+     "page": 207,
+     "box": [
+      0.643,
+      0.222,
+      0.24,
+      0.16
+     ],
+     "alt": "Two scenes: 2013~2017 France with a painter and the Eiffel Tower; 2018 America with a laptop and the Statue of Liberty."
+    },
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "是，他"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "從"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "2013年"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "到"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "2017年"
+       },
+       {
+        "type": "slot",
+        "id": "g2",
+        "answers": [
+         "都"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "在法國學畫畫。",
+        "simplified": "在法国学画画。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "從",
+      "pinyin": "cóng",
+      "simplified": "从"
+     },
+     {
+      "traditional": "到",
+      "pinyin": "dào"
+     },
+     {
+      "traditional": "都",
+      "pinyin": "dōu"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "從"
+      },
+      "note": "到 marks the finish year 2017年."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "從"
+      },
+      "note": "都 goes before 在法國學畫畫, not 從."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "到"
+      },
+      "note": "The start year 2013年 takes 從, not 到."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "到"
+      },
+      "note": "都 goes before the verb phrase; 到 marks the finish year."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "都"
+      },
+      "note": "都 goes before 在法國學畫畫, not before the start year."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "都"
+      },
+      "note": "都 goes before the verb phrase, not between the years."
+     }
+    ],
+    "fallbackRepair": "從 + start year + 到 + finish year + 都 + action.",
+    "result": {
+     "traditional": "是，他從2013年到2017年都在法國學畫畫。",
+     "simplified": "是，他从2013年到2017年都在法国学画画。",
+     "pinyin": "Shì, tā cóng èr líng yī sān nián dào èr líng yī qī nián dōu zài Fǎguó xué huàhuà.",
+     "english": "Yes, he studied painting in France from 2013 to 2017."
+    },
+    "prompt": "A asks whether he studied painting in France from 2013 to 2017. Answer yes with the full range.",
+    "successNote": "從 opens the start year, 到 opens the finish year, and 都 comes before the action."
+   },
+   {
+    "id": "l9g2-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the finish time: the class runs from 4:00 to 5:30.",
+    "sub": "You mean 4:00–5:30, not 4:00–4:30.",
+    "chunks": [
+     {
+      "traditional": "我"
+     },
+     {
+      "traditional": "從",
+      "simplified": "从"
+     },
+     {
+      "traditional": "四點",
+      "simplified": "四点"
+     },
+     {
+      "traditional": "到"
+     },
+     {
+      "traditional": "四點半",
+      "simplified": "四点半"
+     },
+     {
+      "traditional": "上英文課",
+      "simplified": "上英文课",
+      "tail": "。"
+     }
+    ],
+    "wrong": 4,
+    "fix": "五點半",
+    "tiles": [
+     {
+      "traditional": "五點半",
+      "pinyin": "wǔ diǎn bàn",
+      "simplified": "五点半"
+     },
+     {
+      "traditional": "五點",
+      "pinyin": "wǔ diǎn",
+      "simplified": "五点"
+     },
+     {
+      "traditional": "四點",
+      "pinyin": "sì diǎn",
+      "simplified": "四点"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "五點"
+      ],
+      "note": "五點 is 5:00, not 5:30; use 五點半."
+     },
+     {
+      "placed": [
+       "四點"
+      ],
+      "note": "四點 repeats the start; the finish is 五點半."
+     }
+    ],
+    "takeOutNote": "The finish time is wrong, not missing; swap it for 五點半.",
+    "hint": "Check the finish of the range.",
+    "result": {
+     "traditional": "我從四點到五點半上英文課。",
+     "simplified": "我从四点到五点半上英文课。",
+     "pinyin": "Wǒ cóng sì diǎn dào wǔ diǎn bàn shàng Yīngwén kè.",
+     "english": "I have English class from four to five thirty."
+    },
+    "successNote": "The finish time follows 到."
+   }
+  ]
+ },
+ "B1L09-G03-P207": {
+  "bookPage": 208,
+  "title": "Complete the following dialogues.",
+  "allowWords": [],
+  "items": [
+   {
+    "id": "l9g3-p1",
+    "source": "p.208 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "先",
+      "pinyin": "xiān"
+     },
+     {
+      "traditional": "上畫畫課",
+      "pinyin": "shàng huàhuà kè",
+      "simplified": "上画画课"
+     },
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "上網球課",
+      "pinyin": "shàng wǎngqiú kè",
+      "simplified": "上网球课"
+     },
+     {
+      "traditional": "再打網球",
+      "pinyin": "zài dǎ wǎngqiú",
+      "simplified": "再打网球"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "先",
+       "上畫畫課",
+       "再",
+       "上網球課"
+      ],
+      "sentence": {
+       "traditional": "我先上畫畫課，再上網球課。",
+       "simplified": "我先上画画课，再上网球课。",
+       "pinyin": "Wǒ xiān shàng huàhuà kè, zài shàng wǎngqiú kè.",
+       "english": "I take art class first, then tennis class."
+      }
+     },
+     {
+      "order": [
+       "先",
+       "上畫畫課",
+       "再",
+       "上網球課"
+      ],
+      "sentence": {
+       "traditional": "先上畫畫課，再上網球課。",
+       "simplified": "先上画画课，再上网球课。",
+       "pinyin": "Xiān shàng huàhuà kè, zài shàng wǎngqiú kè.",
+       "english": "First art class, then tennis class."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "再打網球"
+      ],
+      "note": "The question asks 上什麼課, so name the class: 再上網球課."
+     },
+     {
+      "before": [
+       "再",
+       "先"
+      ],
+      "note": "Put 先 before the first class and 再 before the second."
+     },
+     {
+      "before": [
+       "上網球課",
+       "再"
+      ],
+      "note": "Put 再 before the second action 上網球課."
+     }
+    ],
+    "fallbackRepair": "Plan: 先 + first action，再 + next action.",
+    "prompt": "First the art class, then tennis. Say your afternoon plan.",
+    "scene": {
+     "type": "picture",
+     "page": 208,
+     "box": [
+      0.14,
+      0.51,
+      0.215,
+      0.095
+     ],
+     "alt": "A person painting at an easel, then an arrow to a person playing tennis."
+    }
+   },
+   {
+    "id": "l9g3-p2",
+    "source": "p.208 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我們",
+      "pinyin": "wǒmen",
+      "simplified": "我们"
+     },
+     {
+      "traditional": "先",
+      "pinyin": "xiān"
+     },
+     {
+      "traditional": "去圖書館",
+      "pinyin": "qù túshūguǎn",
+      "simplified": "去图书馆"
+     },
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "去山上",
+      "pinyin": "qù shānshang"
+     },
+     {
+      "traditional": "再圖書館",
+      "pinyin": "zài túshūguǎn",
+      "simplified": "再图书馆"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我們",
+       "先",
+       "去圖書館",
+       "再",
+       "去山上"
+      ],
+      "sentence": {
+       "traditional": "我們先去圖書館，再去山上。",
+       "simplified": "我们先去图书馆，再去山上。",
+       "pinyin": "Wǒmen xiān qù túshūguǎn, zài qù shānshang.",
+       "english": "We go to the library first, then to the mountain."
+      }
+     },
+     {
+      "order": [
+       "先",
+       "去圖書館",
+       "再",
+       "去山上"
+      ],
+      "sentence": {
+       "traditional": "先去圖書館，再去山上。",
+       "simplified": "先去图书馆，再去山上。",
+       "pinyin": "Xiān qù túshūguǎn, zài qù shānshang.",
+       "english": "First the library, then the mountain."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "再圖書館"
+      ],
+      "note": "Use 再去 + place: 再去山上."
+     },
+     {
+      "before": [
+       "去山上",
+       "再"
+      ],
+      "note": "Put 再 before the second place 去山上."
+     },
+     {
+      "before": [
+       "再",
+       "先"
+      ],
+      "note": "先 marks the first place; 再 marks the second."
+     }
+    ],
+    "fallbackRepair": "Two places: 先 + place 1，再 + place 2.",
+    "prompt": "First the library, then the mountain. Answer where you want to go this weekend.",
+    "scene": {
+     "type": "picture",
+     "page": 208,
+     "box": [
+      0.36,
+      0.51,
+      0.27,
+      0.098
+     ],
+     "alt": "A bookshelf, then an arrow to two people sitting by a river with mountains behind."
+    }
+   },
+   {
+    "id": "l9g3-p3",
+    "source": "p.208 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "先",
+      "pinyin": "xiān"
+     },
+     {
+      "traditional": "游泳",
+      "pinyin": "yóuyǒng"
+     },
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "吃晚飯",
+      "pinyin": "chī wǎnfàn",
+      "simplified": "吃晚饭"
+     },
+     {
+      "traditional": "再游泳",
+      "pinyin": "zài yóuyǒng",
+      "simplified": "再游泳"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "先",
+       "游泳",
+       "再",
+       "吃晚飯"
+      ],
+      "sentence": {
+       "traditional": "我先游泳，再吃晚飯。",
+       "simplified": "我先游泳，再吃晚饭。",
+       "pinyin": "Wǒ xiān yóuyǒng, zài chī wǎnfàn.",
+       "english": "I swim first, then eat dinner."
+      }
+     },
+     {
+      "order": [
+       "先",
+       "游泳",
+       "再",
+       "吃晚飯"
+      ],
+      "sentence": {
+       "traditional": "先游泳，再吃晚飯。",
+       "simplified": "先游泳，再吃晚飯。",
+       "pinyin": "Xiān yóuyǒng, zài chī wǎnfàn.",
+       "english": "First swim, then eat dinner."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "再游泳"
+      ],
+      "note": "The second picture is dinner; use 再吃晚飯."
+     },
+     {
+      "before": [
+       "吃晚飯",
+       "再"
+      ],
+      "note": "Put 再 before the second action 吃晚飯."
+     },
+     {
+      "before": [
+       "再",
+       "先"
+      ],
+      "note": "先 marks the first action 游泳."
+     }
+    ],
+    "fallbackRepair": "Two actions: 先 + action 1，再 + action 2.",
+    "prompt": "You are not skipping dinner: first swim, then eat dinner. Answer.",
+    "scene": {
+     "type": "picture",
+     "page": 208,
+     "box": [
+      0.65,
+      0.51,
+      0.22,
+      0.098
+     ],
+     "alt": "A swimmer, then an arrow to a woman sitting at a table with a meal."
+    }
+   },
+   {
+    "id": "l9g3-own-story",
+    "source": "own",
+    "kind": "story-order",
+    "prompt": "Put the plan in order.",
+    "steps": [
+     {
+      "traditional": "我再回家做功課。",
+      "simplified": "我再回家做功课。",
+      "pinyin": "Wǒ zài huí jiā zuò gōngkè.",
+      "english": "Then I go home and do homework.",
+      "note": "再 marks the action after the first one."
+     },
+     {
+      "traditional": "晚上我跟朋友一起吃飯。",
+      "simplified": "晚上我跟朋友一起吃饭。",
+      "pinyin": "Wǎnshang wǒ gēn péngyǒu yìqǐ chīfàn.",
+      "english": "In the evening I eat with a friend.",
+      "note": "晚上 is later than the study plan."
+     },
+     {
+      "traditional": "我先去圖書館看書。",
+      "simplified": "我先去图书馆看书。",
+      "pinyin": "Wǒ xiān qù túshūguǎn kànshū.",
+      "english": "First I go to the library to read.",
+      "note": "先 marks the first action."
+     }
+    ],
+    "answer": [
+     2,
+     0,
+     1
+    ],
+    "successNote": "先 starts the plan, 再 moves to the next step, and 晚上 finishes the day."
+   }
+  ]
+ },
+ "B1L09-G04-P213": {
+  "bookPage": 213,
+  "title": "Answer the following questions. / Complete the following dialogues with 能.",
+  "allowWords": [],
+  "items": [
+   {
+    "id": "l9g4-p1",
+    "source": "p.213 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他",
+      "pinyin": "tā"
+     },
+     {
+      "traditional": "現在",
+      "pinyin": "xiànzài",
+      "simplified": "现在"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     },
+     {
+      "traditional": "說話",
+      "pinyin": "shuōhuà",
+      "simplified": "说话"
+     },
+     {
+      "traditional": "能",
+      "pinyin": "néng"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他",
+       "現在",
+       "不能",
+       "說話"
+      ],
+      "sentence": {
+       "traditional": "他現在不能說話。",
+       "simplified": "他现在不能说话。",
+       "pinyin": "Tā xiànzài bù néng shuōhuà.",
+       "english": "He cannot speak now."
+      }
+     },
+     {
+      "order": [
+       "不能",
+       "說話"
+      ],
+      "sentence": {
+       "traditional": "不能說話。",
+       "simplified": "不能说话。",
+       "pinyin": "Bù néng shuōhuà.",
+       "english": "He cannot speak."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "能"
+      ],
+      "note": "The sore throat stops him; use 不能."
+     },
+     {
+      "before": [
+       "說話",
+       "不能"
+      ],
+      "note": "Put 不能 before the action 說話."
+     }
+    ],
+    "fallbackRepair": "Ability now: subject + 能 / 不能 + action.",
+    "prompt": "The picture shows a sore throat. Answer whether he can speak now.",
+    "scene": {
+     "type": "picture",
+     "page": 213,
+     "box": [
+      0.2,
+      0.465,
+      0.16,
+      0.112
+     ],
+     "alt": "A person holding their throat with a pained expression."
+    }
+   },
+   {
+    "id": "l9g4-p2",
+    "source": "p.213 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他",
+      "pinyin": "tā"
+     },
+     {
+      "traditional": "現在",
+      "pinyin": "xiànzài",
+      "simplified": "现在"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     },
+     {
+      "traditional": "打球",
+      "pinyin": "dǎqiú"
+     },
+     {
+      "traditional": "能",
+      "pinyin": "néng"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他",
+       "現在",
+       "不能",
+       "打球"
+      ],
+      "sentence": {
+       "traditional": "他現在不能打球。",
+       "simplified": "他现在不能打球。",
+       "pinyin": "Tā xiànzài bù néng dǎqiú.",
+       "english": "He cannot play ball now."
+      }
+     },
+     {
+      "order": [
+       "不能",
+       "打球"
+      ],
+      "sentence": {
+       "traditional": "不能打球。",
+       "simplified": "不能打球。",
+       "pinyin": "Bù néng dǎqiú.",
+       "english": "He cannot play ball."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "能"
+      ],
+      "note": "His foot is in a cast; use 不能."
+     },
+     {
+      "before": [
+       "打球",
+       "不能"
+      ],
+      "note": "Put 不能 before the action 打球."
+     }
+    ],
+    "fallbackRepair": "Ability now: subject + 能 / 不能 + action.",
+    "prompt": "The picture shows him on crutches. Answer whether he can play ball now.",
+    "scene": {
+     "type": "picture",
+     "page": 213,
+     "box": [
+      0.43,
+      0.462,
+      0.13,
+      0.118
+     ],
+     "alt": "A man on crutches with one foot in a cast."
+    }
+   },
+   {
+    "id": "l9g4-p3",
+    "source": "p.213 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "一天",
+      "pinyin": "yì tiān"
+     },
+     {
+      "traditional": "能",
+      "pinyin": "néng"
+     },
+     {
+      "traditional": "喝",
+      "pinyin": "hē"
+     },
+     {
+      "traditional": "兩杯",
+      "pinyin": "liǎng bēi",
+      "simplified": "两杯"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "一天",
+       "能",
+       "喝",
+       "兩杯"
+      ],
+      "sentence": {
+       "traditional": "我一天能喝兩杯。",
+       "simplified": "我一天能喝两杯。",
+       "pinyin": "Wǒ yì tiān néng hē liǎng bēi.",
+       "english": "I can drink two cups a day."
+      }
+     },
+     {
+      "order": [
+       "一天",
+       "能",
+       "喝",
+       "兩杯"
+      ],
+      "sentence": {
+       "traditional": "一天能喝兩杯。",
+       "simplified": "一天能喝兩杯。",
+       "pinyin": "Yì tiān néng hē liǎng bēi.",
+       "english": "I can drink two cups a day."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "不能"
+      ],
+      "note": "The model answer gives a limit you can reach; use 能."
+     },
+     {
+      "before": [
+       "喝",
+       "能"
+      ],
+      "note": "Put 能 before the action 喝."
+     }
+    ],
+    "fallbackRepair": "Ability: subject + 能 + action + amount.",
+    "prompt": "Answer with a daily coffee limit of two cups.",
+    "scene": {
+     "type": "picture",
+     "page": 213,
+     "box": [
+      0.67,
+      0.465,
+      0.17,
+      0.103
+     ],
+     "alt": "A cup of hot coffee on a saucer with two cookies."
+    }
+   },
+   {
+    "id": "l9g4-p4",
+    "source": "p.214 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "妳",
+      "pinyin": "nǐ"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     },
+     {
+      "traditional": "開",
+      "pinyin": "kāi",
+      "simplified": "开"
+     },
+     {
+      "traditional": "我的車",
+      "pinyin": "wǒ de chē",
+      "simplified": "我的车"
+     },
+     {
+      "traditional": "可以",
+      "pinyin": "kěyǐ"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "妳",
+       "不能",
+       "開",
+       "我的車"
+      ],
+      "sentence": {
+       "traditional": "妳不能開我的車。",
+       "simplified": "你不能开我的车。",
+       "pinyin": "Nǐ bù néng kāi wǒ de chē.",
+       "english": "You cannot drive my car."
+      }
+     },
+     {
+      "order": [
+       "不能",
+       "開",
+       "我的車"
+      ],
+      "sentence": {
+       "traditional": "不能開我的車。",
+       "simplified": "不能开我的车。",
+       "pinyin": "Bù néng kāi wǒ de chē.",
+       "english": "You cannot drive my car."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "可以"
+      ],
+      "note": "The task is to refuse, so use 不能."
+     },
+     {
+      "before": [
+       "開",
+       "不能"
+      ],
+      "note": "Put 不能 before the action 開."
+     },
+     {
+      "notFirst": "不能",
+      "note": "Start with the person 妳; 不能 comes before the action."
+     }
+    ],
+    "fallbackRepair": "Refusal: person + 不能 + action.",
+    "prompt": "The left picture shows one woman asking to borrow the other’s car. Refuse the request.",
+    "scene": {
+     "type": "picture",
+     "page": 214,
+     "box": [
+      0.125,
+      0.445,
+      0.735,
+      0.2
+     ],
+     "alt": "Three pictures in a row; the left picture shows two women in a car, one asking to borrow the other’s car."
+    }
+   },
+   {
+    "id": "l9g4-p5",
+    "source": "p.214 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "圖書館裡",
+      "pinyin": "túshūguǎn lǐ",
+      "simplified": "图书馆里"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     },
+     {
+      "traditional": "說話",
+      "pinyin": "shuōhuà",
+      "simplified": "说话"
+     },
+     {
+      "traditional": "可以",
+      "pinyin": "kěyǐ"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "在",
+       "圖書館裡",
+       "不能",
+       "說話"
+      ],
+      "sentence": {
+       "traditional": "在圖書館裡不能說話。",
+       "simplified": "在图书馆里不能说话。",
+       "pinyin": "Zài túshūguǎn lǐ bù néng shuōhuà.",
+       "english": "You cannot talk in the library."
+      }
+     },
+     {
+      "order": [
+       "不能",
+       "說話"
+      ],
+      "sentence": {
+       "traditional": "不能說話。",
+       "simplified": "不能说话。",
+       "pinyin": "Bù néng shuōhuà.",
+       "english": "You cannot talk."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "可以"
+      ],
+      "note": "The library rule blocks talking; use 不能."
+     },
+     {
+      "before": [
+       "說話",
+       "不能"
+      ],
+      "note": "Put 不能 before the action 說話."
+     }
+    ],
+    "fallbackRepair": "Rule: place + 不能 + action.",
+    "prompt": "Answer with the library rule: can we talk there?",
+    "scene": {
+     "type": "picture",
+     "page": 214,
+     "box": [
+      0.39,
+      0.46,
+      0.235,
+      0.155
+     ],
+     "alt": "People sitting around a table with laptops in a library."
+    }
+   },
+   {
+    "id": "l9g4-p6",
+    "source": "p.214 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "因為",
+      "pinyin": "yīnwèi",
+      "simplified": "因为"
+     },
+     {
+      "traditional": "樓下",
+      "pinyin": "lóuxià",
+      "simplified": "楼下"
+     },
+     {
+      "traditional": "有人",
+      "pinyin": "yǒu rén"
+     },
+     {
+      "traditional": "在睡覺",
+      "pinyin": "zài shuìjiào",
+      "simplified": "在睡觉"
+     },
+     {
+      "traditional": "所以",
+      "pinyin": "suǒyǐ"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "因為",
+       "樓下",
+       "有人",
+       "在睡覺"
+      ],
+      "sentence": {
+       "traditional": "因為樓下有人在睡覺。",
+       "simplified": "因为楼下有人在睡觉。",
+       "pinyin": "Yīnwèi lóuxià yǒu rén zài shuìjiào.",
+       "english": "Because someone downstairs is sleeping."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "所以"
+      ],
+      "note": "The question asks why; answer with 因為, not 所以."
+     },
+     {
+      "before": [
+       "有人",
+       "因為"
+      ],
+      "note": "Start the reason with 因為."
+     }
+    ],
+    "fallbackRepair": "Reason: 因為 + situation.",
+    "prompt": "Explain why dancing upstairs is not allowed: someone downstairs is sleeping.",
+    "scene": {
+     "type": "picture",
+     "page": 214,
+     "box": [
+      0.62,
+      0.46,
+      0.24,
+      0.165
+     ],
+     "alt": "Above, people at a table with question marks; below, a person asleep on a sofa and another with their head down."
+    }
+   },
+   {
+    "id": "l9g4-p7",
+    "source": "p.215 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     },
+     {
+      "traditional": "去",
+      "pinyin": "qù"
+     },
+     {
+      "traditional": "百貨公司",
+      "pinyin": "bǎihuò gōngsī",
+      "simplified": "百货公司"
+     },
+     {
+      "traditional": "能",
+      "pinyin": "néng"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "不能",
+       "去",
+       "百貨公司"
+      ],
+      "sentence": {
+       "traditional": "我不能去百貨公司。",
+       "simplified": "我不能去百货公司。",
+       "pinyin": "Wǒ bù néng qù bǎihuò gōngsī.",
+       "english": "I cannot go to the department store."
+      }
+     },
+     {
+      "order": [
+       "不能",
+       "去",
+       "百貨公司"
+      ],
+      "sentence": {
+       "traditional": "不能去百貨公司。",
+       "simplified": "不能去百貨公司。",
+       "pinyin": "Bù néng qù bǎihuò gōngsī.",
+       "english": "I cannot go to the department store."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "能"
+      ],
+      "note": "The homework blocks the trip; use 不能."
+     },
+     {
+      "before": [
+       "去",
+       "不能"
+      ],
+      "note": "Put 不能 before the action 去."
+     }
+    ],
+    "fallbackRepair": "Outside condition: subject + 不能 + action.",
+    "prompt": "You have a lot of homework. Say you cannot go to the department store.",
+    "scene": {
+     "type": "picture",
+     "page": 215,
+     "box": [
+      0.19,
+      0.455,
+      0.22,
+      0.135
+     ],
+     "alt": "A young man at a desk with books and papers; a clock reads 21:00."
+    }
+   },
+   {
+    "id": "l9g4-p8",
+    "source": "p.215 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "不能",
+      "pinyin": "bù néng"
+     },
+     {
+      "traditional": "坐",
+      "pinyin": "zuò"
+     },
+     {
+      "traditional": "計程車",
+      "pinyin": "jìchéngchē",
+      "simplified": "计程车"
+     },
+     {
+      "traditional": "能",
+      "pinyin": "néng"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "不能",
+       "坐",
+       "計程車"
+      ],
+      "sentence": {
+       "traditional": "我不能坐計程車。",
+       "simplified": "我不能坐计程车。",
+       "pinyin": "Wǒ bù néng zuò jìchéngchē.",
+       "english": "I cannot take a taxi."
+      }
+     },
+     {
+      "order": [
+       "不能",
+       "坐",
+       "計程車"
+      ],
+      "sentence": {
+       "traditional": "不能坐計程車。",
+       "simplified": "不能坐計程车。",
+       "pinyin": "Bù néng zuò jìchéngchē.",
+       "english": "I cannot take a taxi."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "能"
+      ],
+      "note": "The money problem blocks the taxi; use 不能."
+     },
+     {
+      "before": [
+       "坐",
+       "不能"
+      ],
+      "note": "Put 不能 before the action 坐."
+     }
+    ],
+    "fallbackRepair": "Outside condition: subject + 不能 + action.",
+    "prompt": "The taxi is too expensive and you do not have much money. Say you cannot take a taxi.",
+    "scene": {
+     "type": "picture",
+     "page": 215,
+     "box": [
+      0.423,
+      0.455,
+      0.185,
+      0.15
+     ],
+     "alt": "A woman looking worried with an empty coin purse."
+    }
+   },
+   {
+    "id": "l9g4-p9",
+    "source": "p.215 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "你",
+      "pinyin": "nǐ"
+     },
+     {
+      "traditional": "能",
+      "pinyin": "néng"
+     },
+     {
+      "traditional": "幫我",
+      "pinyin": "bāng wǒ",
+      "simplified": "帮我"
+     },
+     {
+      "traditional": "寄信",
+      "pinyin": "jì xìn"
+     },
+     {
+      "traditional": "嗎",
+      "pinyin": "ma",
+      "simplified": "吗"
+     },
+     {
+      "traditional": "寄幫我",
+      "pinyin": "jì bāng wǒ",
+      "simplified": "寄帮我"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "你",
+       "能",
+       "幫我",
+       "寄信",
+       "嗎"
+      ],
+      "sentence": {
+       "traditional": "你能幫我寄信嗎？",
+       "simplified": "你能帮我寄信吗？",
+       "pinyin": "Nǐ néng bāng wǒ jì xìn ma?",
+       "english": "Can you mail a letter for me?"
+      }
+     },
+     {
+      "order": [
+       "能",
+       "幫我",
+       "寄信",
+       "嗎"
+      ],
+      "sentence": {
+       "traditional": "能幫我寄信嗎？",
+       "simplified": "能幫我寄信嗎？",
+       "pinyin": "Néng bāng wǒ jì xìn ma?",
+       "english": "Can you mail a letter for me?"
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "寄幫我"
+      ],
+      "note": "Use 幫我 before the action 寄信."
+     },
+     {
+      "notLast": "嗎",
+      "note": "Put 嗎 at the end of the question."
+     },
+     {
+      "before": [
+       "幫我",
+       "能"
+      ],
+      "note": "Put 能 before 幫我。"
+     }
+    ],
+    "fallbackRepair": "Request: 你 + 能 + 幫我 + action + 嗎？",
+    "prompt": "Ask your friend to mail a letter for you.",
+    "scene": {
+     "type": "picture",
+     "page": 215,
+     "box": [
+      0.634,
+      0.455,
+      0.225,
+      0.148
+     ],
+     "alt": "Two men near a parcel outside a post office, with a speech bubble showing the 郵 sign."
+    }
+   },
+   {
+    "id": "l9g4-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: he can only walk.",
+    "sub": "Keep the meaning “only can”.",
+    "chunks": [
+     {
+      "traditional": "他"
+     },
+     {
+      "traditional": "只"
+     },
+     {
+      "traditional": "走",
+      "tail": "。"
+     }
+    ],
+    "wrong": 1,
+    "fix": "只能",
+    "tiles": [
+     {
+      "traditional": "只能",
+      "pinyin": "zhǐ néng"
+     },
+     {
+      "traditional": "可以",
+      "pinyin": "kěyǐ"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "可以"
+      ],
+      "note": "可以 means permission, not “only can”; use 只能."
+     }
+    ],
+    "takeOutNote": "Do not remove 只; add 能 after it: 只能.",
+    "hint": "How do you say “only can”?",
+    "result": {
+     "traditional": "他只能走。",
+     "simplified": "他只能走。",
+     "pinyin": "Tā zhǐ néng zǒu.",
+     "english": "He can only walk."
+    },
+    "successNote": "只 comes before 能: 只能 + action."
+   }
+  ]
+ },
+ "B1L09-G05-P216": {
+  "bookPage": 216,
+  "title": "Answer the following questions.",
+  "allowWords": [
+   "友美",
+   "元真",
+   "跳"
+  ],
+  "items": [
+   {
+    "id": "l9g5-p1",
+    "source": "p.216 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "友美",
+      "pinyin": "Yǒuměi"
+     },
+     {
+      "traditional": "跳舞",
+      "pinyin": "tiàowǔ"
+     },
+     {
+      "traditional": "跳得",
+      "pinyin": "tiào de"
+     },
+     {
+      "traditional": "比較",
+      "pinyin": "bǐjiào",
+      "simplified": "比较"
+     },
+     {
+      "traditional": "好",
+      "pinyin": "hǎo"
+     },
+     {
+      "traditional": "很",
+      "pinyin": "hěn"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "友美",
+       "跳舞",
+       "跳得",
+       "比較",
+       "好"
+      ],
+      "sentence": {
+       "traditional": "友美跳舞跳得比較好。",
+       "simplified": "友美跳舞跳得比较好。",
+       "pinyin": "Yǒuměi tiàowǔ tiào de bǐjiào hǎo.",
+       "english": "Youmei dances better."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "很"
+      ],
+      "note": "The question compares two dancers, so use 比較, not 很."
+     },
+     {
+      "before": [
+       "好",
+       "比較"
+      ],
+      "note": "Put 比較 before the quality 好."
+     },
+     {
+      "before": [
+       "跳得",
+       "比較"
+      ],
+      "note": "Keep 跳得 before 比較: 跳得比較好."
+     }
+    ],
+    "fallbackRepair": "Comparison: action + 得 + 比較 + quality.",
+    "prompt": "You think 友美 dances better. Say it.",
+    "scene": {
+     "type": "picture",
+     "page": 216,
+     "box": [
+      0.145,
+      0.634,
+      0.225,
+      0.155
+     ],
+     "alt": "Two women dancing under music notes, captioned 友美 and 元真."
+    }
+   },
+   {
+    "id": "l9g5-p2",
+    "source": "p.216 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "覺得",
+      "pinyin": "juéde",
+      "simplified": "觉得"
+     },
+     {
+      "traditional": "這件衣服",
+      "pinyin": "zhè jiàn yīfu",
+      "simplified": "这件衣服"
+     },
+     {
+      "traditional": "比較",
+      "pinyin": "bǐjiào",
+      "simplified": "比较"
+     },
+     {
+      "traditional": "好看",
+      "pinyin": "hǎokàn"
+     },
+     {
+      "traditional": "很",
+      "pinyin": "hěn"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "覺得",
+       "這件衣服",
+       "比較",
+       "好看"
+      ],
+      "sentence": {
+       "traditional": "我覺得這件衣服比較好看。",
+       "simplified": "我觉得这件衣服比较好看。",
+       "pinyin": "Wǒ juéde zhè jiàn yīfu bǐjiào hǎokàn.",
+       "english": "I think this piece of clothing looks better."
+      }
+     },
+     {
+      "order": [
+       "這件衣服",
+       "比較",
+       "好看"
+      ],
+      "sentence": {
+       "traditional": "這件衣服比較好看。",
+       "simplified": "这件衣服比較好看。",
+       "pinyin": "Zhè jiàn yīfu bǐjiào hǎokàn.",
+       "english": "This piece of clothing looks better."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "很"
+      ],
+      "note": "The question compares the two garments, so use 比較, not 很."
+     },
+     {
+      "before": [
+       "好看",
+       "比較"
+      ],
+      "note": "Put 比較 before the quality 好看."
+     }
+    ],
+    "fallbackRepair": "Opinion: 我覺得 + thing + 比較 + quality.",
+    "prompt": "You think the T-shirt looks better. Say it.",
+    "scene": {
+     "type": "picture",
+     "page": 216,
+     "box": [
+      0.372,
+      0.634,
+      0.225,
+      0.09
+     ],
+     "alt": "Two garments: a long-sleeved top and a short-sleeved T-shirt."
+    }
+   },
+   {
+    "id": "l9g5-p3",
+    "source": "p.217 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "國安",
+      "pinyin": "Guó’ān",
+      "simplified": "国安"
+     },
+     {
+      "traditional": "的房間",
+      "pinyin": "de fángjiān",
+      "simplified": "的房间"
+     },
+     {
+      "traditional": "比較",
+      "pinyin": "bǐjiào",
+      "simplified": "比较"
+     },
+     {
+      "traditional": "大",
+      "pinyin": "dà"
+     },
+     {
+      "traditional": "中明",
+      "pinyin": "Zhōngmíng"
+     },
+     {
+      "traditional": "很",
+      "pinyin": "hěn"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "國安",
+       "的房間",
+       "比較",
+       "大"
+      ],
+      "sentence": {
+       "traditional": "國安的房間比較大。",
+       "simplified": "国安的房间比较大。",
+       "pinyin": "Guó’ān de fángjiān bǐjiào dà.",
+       "english": "Guoan’s room is bigger."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "中明"
+      ],
+      "note": "The task says 國安’s room is bigger; use 國安."
+     },
+     {
+      "placed": [
+       "很"
+      ],
+      "note": "The question compares the two rooms, so use 比較, not 很."
+     },
+     {
+      "before": [
+       "大",
+       "比較"
+      ],
+      "note": "Put 比較 before the quality 大."
+     }
+    ],
+    "fallbackRepair": "Comparison: thing + 比較 + quality.",
+    "prompt": "Look at the two rooms. Which one is bigger?",
+    "scene": {
+     "type": "picture",
+     "page": 216,
+     "box": [
+      0.612,
+      0.638,
+      0.238,
+      0.164
+     ],
+     "alt": "Top: 國安 beside a room. Bottom: 中明 beside a bedroom with a bed."
+    }
+   },
+   {
+    "id": "l9g5-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: the weather is warmer today.",
+    "sub": "One degree word is enough.",
+    "chunks": [
+     {
+      "traditional": "今天的天氣",
+      "simplified": "今天的天气"
+     },
+     {
+      "traditional": "很"
+     },
+     {
+      "traditional": "比較",
+      "simplified": "比较"
+     },
+     {
+      "traditional": "熱",
+      "simplified": "热",
+      "tail": "。"
+     }
+    ],
+    "wrong": 1,
+    "tiles": [
+     {
+      "traditional": "太",
+      "pinyin": "tài"
+     },
+     {
+      "traditional": "都",
+      "pinyin": "dōu"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "太"
+      ],
+      "note": "太 would say “too hot”; the comparison needs only 比較."
+     },
+     {
+      "placed": [
+       "都"
+      ],
+      "note": "都 does not fit between the subject and 比較."
+     }
+    ],
+    "hint": "Which degree word is extra?",
+    "result": {
+     "traditional": "今天的天氣比較熱。",
+     "simplified": "今天的天气比较热。",
+     "pinyin": "Jīntiān de tiānqì bǐjiào rè.",
+     "english": "The weather is warmer today."
+    },
+    "successNote": "Use one degree word: 比較 + quality.",
+    "takeOutNote": "比較 already marks the comparison; 很 is an extra degree word."
+   }
+  ]
+ }
+}

@@ -1,0 +1,2511 @@
+{
+ "B1L11-G01-P247": {
+  "bookPage": 248,
+  "title": "Complete the following dialogues using 了.",
+  "allowWords": [
+   "電影票",
+   "牛肉麵"
+  ],
+  "items": [
+   {
+    "id": "l11g1-p1",
+    "source": "p.248 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "買",
+      "pinyin": "mǎi",
+      "simplified": "买"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "買",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "我買了。",
+       "simplified": "我买了。",
+       "pinyin": "Wǒ mǎi le.",
+       "english": "I bought it."
+      }
+     },
+     {
+      "order": [
+       "買",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "買了。",
+       "simplified": "买了。",
+       "pinyin": "Mǎi le.",
+       "english": "I bought it."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒"
+      ],
+      "note": "The ticket is in her hand; she did buy it, so use 買了."
+     },
+     {
+      "notLast": "了",
+      "note": "Put 了 after the verb 買."
+     }
+    ],
+    "fallbackRepair": "Bought: verb + 了.",
+    "prompt": "She is holding a movie ticket. Answer whether she bought it.",
+    "successNote": "The picture shows the ticket, so the answer is yes.",
+    "scene": {
+     "type": "picture",
+     "page": 248,
+     "box": [
+      0.522,
+      0.582,
+      0.155,
+      0.093
+     ],
+     "alt": "A hand holding a movie ticket labelled 電影票."
+    }
+   },
+   {
+    "id": "l11g1-p2",
+    "source": "p.248 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "吃",
+      "pinyin": "chī"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "一碗",
+      "pinyin": "yì wǎn"
+     },
+     {
+      "traditional": "牛肉麵",
+      "pinyin": "niúròu miàn",
+      "simplified": "牛肉面"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "吃",
+       "了",
+       "一碗",
+       "牛肉麵"
+      ],
+      "sentence": {
+       "traditional": "我吃了一碗牛肉麵。",
+       "simplified": "我吃了一碗牛肉面。",
+       "pinyin": "Wǒ chī le yì wǎn niúròu miàn.",
+       "english": "I ate one bowl of beef noodle soup."
+      }
+     },
+     {
+      "order": [
+       "吃",
+       "了",
+       "一碗",
+       "牛肉麵"
+      ],
+      "sentence": {
+       "traditional": "吃了一碗牛肉麵。",
+       "simplified": "吃了一碗牛肉面。",
+       "pinyin": "Chī le yì wǎn niúròu miàn.",
+       "english": "I ate one bowl of beef noodle soup."
+      }
+     },
+     {
+      "order": [
+       "吃",
+       "了",
+       "一碗"
+      ],
+      "sentence": {
+       "traditional": "吃了一碗。",
+       "simplified": "吃了一碗。",
+       "pinyin": "Chī le yì wǎn.",
+       "english": "I ate one bowl."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒"
+      ],
+      "note": "The empty bowl shows you did eat; use 吃了."
+     },
+     {
+      "before": [
+       "一碗",
+       "了"
+      ],
+      "note": "Put 了 after the verb 吃, before the amount."
+     }
+    ],
+    "fallbackRepair": "Completed past action with a quantity.",
+    "prompt": "The picture shows one empty bowl. Say how much beef noodle soup you ate.",
+    "successNote": "With a quantified object, 了 follows the verb.",
+    "scene": {
+     "type": "picture",
+     "page": 248,
+     "box": [
+      0.718,
+      0.587,
+      0.175,
+      0.09
+     ],
+     "alt": "A full bowl of beef noodle soup beside an empty bowl."
+    }
+   },
+   {
+    "id": "l11g1-p3",
+    "source": "p.248 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "寫",
+      "pinyin": "xiě",
+      "simplified": "写"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "十個",
+      "pinyin": "shí ge",
+      "simplified": "十个"
+     },
+     {
+      "traditional": "句子",
+      "pinyin": "jùzi"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "寫",
+       "了",
+       "十個",
+       "句子"
+      ],
+      "sentence": {
+       "traditional": "我寫了十個句子。",
+       "simplified": "我写了十个句子。",
+       "pinyin": "Wǒ xiě le shí ge jùzi.",
+       "english": "I wrote ten sentences."
+      }
+     },
+     {
+      "order": [
+       "寫",
+       "了",
+       "十個",
+       "句子"
+      ],
+      "sentence": {
+       "traditional": "寫了十個句子。",
+       "simplified": "写了十个句子。",
+       "pinyin": "Xiě le shí ge jùzi.",
+       "english": "I wrote ten sentences."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒"
+      ],
+      "note": "The task is done, so use 寫了."
+     },
+     {
+      "before": [
+       "十個",
+       "了"
+      ],
+      "note": "Put 了 after the verb 寫."
+     }
+    ],
+    "fallbackRepair": "Completed: verb + 了 + quantity + object.",
+    "prompt": "The teacher asked for ten sentences. Say you wrote them."
+   },
+   {
+    "id": "l11g1-p4",
+    "source": "p.248 #4",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "看到",
+      "pinyin": "kàndào"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "一隻狗",
+      "pinyin": "yì zhī gǒu",
+      "simplified": "一只狗"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "看到",
+       "了",
+       "一隻狗"
+      ],
+      "sentence": {
+       "traditional": "看到了一隻狗。",
+       "simplified": "看到了一只狗。",
+       "pinyin": "Kàndào le yì zhī gǒu.",
+       "english": "Saw a dog."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒"
+      ],
+      "note": "The picture shows she saw the dog; use 看到."
+     },
+     {
+      "before": [
+       "一隻狗",
+       "了"
+      ],
+      "note": "Put 了 after 看到, before the object."
+     }
+    ],
+    "fallbackRepair": "Saw it: 看到 + 了 + object.",
+    "prompt": "She saw a dog on the road yesterday. Complete the sentence.",
+    "scene": {
+     "type": "picture",
+     "page": 248,
+     "box": [
+      0.722,
+      0.701,
+      0.16,
+      0.12
+     ],
+     "alt": "A child in a school hat and backpack walking toward a small dog."
+    }
+   },
+   {
+    "id": "l11g1-p5",
+    "source": "p.248 #5",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "去",
+      "pinyin": "qù"
+     },
+     {
+      "traditional": "了",
+      "pinyin": "le"
+     },
+     {
+      "traditional": "三個",
+      "pinyin": "sān ge",
+      "simplified": "三个"
+     },
+     {
+      "traditional": "地方",
+      "pinyin": "dìfāng"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "去",
+       "了",
+       "三個",
+       "地方"
+      ],
+      "sentence": {
+       "traditional": "去了三個地方。",
+       "simplified": "去了三个地方。",
+       "pinyin": "Qù le sān ge dìfāng.",
+       "english": "Went to three places."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒"
+      ],
+      "note": "You did go this morning, so use 去了."
+     },
+     {
+      "before": [
+       "三個",
+       "了"
+      ],
+      "note": "Put 了 after the verb 去."
+     }
+    ],
+    "fallbackRepair": "Completed: 去 + 了 + quantity + place.",
+    "prompt": "You already went to three places this morning. Complete the sentence."
+   },
+   {
+    "id": "l11g1-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: he did not come.",
+    "sub": "Keep the past negative.",
+    "chunks": [
+     {
+      "traditional": "他"
+     },
+     {
+      "traditional": "沒",
+      "simplified": "没"
+     },
+     {
+      "traditional": "來",
+      "simplified": "来"
+     },
+     {
+      "traditional": "了",
+      "tail": "。"
+     }
+    ],
+    "wrong": 3,
+    "tiles": [
+     {
+      "traditional": "已經",
+      "pinyin": "yǐjīng",
+      "simplified": "已经"
+     },
+     {
+      "traditional": "都",
+      "pinyin": "dōu"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "已經"
+      ],
+      "note": "已經 does not fit after 來 here."
+     },
+     {
+      "placed": [
+       "都"
+      ],
+      "note": "都 does not fit after 來 here."
+     }
+    ],
+    "hint": "Does a negative past sentence need an ending word?",
+    "result": {
+     "traditional": "他沒來。",
+     "simplified": "他没来。",
+     "pinyin": "Tā méi lái.",
+     "english": "He did not come."
+    },
+    "successNote": "沒 already marks the past negative; do not add 了.",
+    "takeOutNote": "沒 already marks the past negative; do not add 了."
+   }
+  ]
+ },
+ "B1L11-G02-P249": {
+  "bookPage": 250,
+  "title": "Choose 沒, 沒有 or 還沒 to fill in the blanks below.",
+  "allowWords": [],
+  "items": [
+   {
+    "id": "l11g2-p1",
+    "source": "p.250 #1",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "昨天他來上課了"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "沒",
+         "沒有"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "沒"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "來，因為他生病了。"
+       }
+      ],
+      "me": true,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu",
+      "simplified": "没有"
+     },
+     {
+      "traditional": "還沒",
+      "pinyin": "háiméi",
+      "simplified": "还没"
+     },
+     {
+      "traditional": "還沒",
+      "pinyin": "háiméi",
+      "simplified": "还没"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "還沒"
+      },
+      "note": "還沒 means “not yet”; this question asks whether the past action happened."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "還沒"
+      },
+      "note": "He was sick yesterday, so the action did not happen at all; use 沒."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "沒有"
+      },
+      "note": "Use the short answer 沒 before the verb."
+     }
+    ],
+    "fallbackRepair": "Did not happen: 沒 + verb.",
+    "result": {
+     "traditional": "昨天他來上課了沒？沒來，因為他生病了。",
+     "simplified": "昨天他来上课了没？没来，因为他生病了。",
+     "pinyin": "Zuótiān tā lái shàngkè le méi? Méi lái, yīnwèi tā shēngbìng le.",
+     "english": "Did he come to class yesterday? He did not come, because he was sick."
+    },
+    "prompt": "Choose 沒, 沒有 or 還沒.",
+    "alternatives": [
+     {
+      "traditional": "昨天他來上課了沒有？沒來，因為他生病了。",
+      "simplified": "昨天他来上课了没有？没来，因为他生病了。",
+      "pinyin": "Zuótiān tā lái shàngkè le méiyǒu? Méi lái, yīnwèi tā shēngbìng le.",
+      "english": "Did he come to class yesterday? He did not come, because he was sick."
+     }
+    ],
+    "successNote": "Use 沒 for a past action that did not happen."
+   },
+   {
+    "id": "l11g2-p2",
+    "source": "p.250 #2",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "他們去圖書館了"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "沒有",
+         "沒"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "還沒"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "，他們決定明天去。"
+       }
+      ],
+      "me": true,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu",
+      "simplified": "没有"
+     },
+     {
+      "traditional": "還沒",
+      "pinyin": "háiméi",
+      "simplified": "还没"
+     },
+     {
+      "traditional": "不",
+      "pinyin": "bù"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "還沒"
+      },
+      "note": "還沒 belongs before the verb; it does not fill the question ending."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "沒"
+      },
+      "note": "They decided to go tomorrow, so it is “not yet”: 還沒."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "沒有"
+      },
+      "note": "The answer is “not yet”, so use 還沒 before 去."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "不"
+      },
+      "note": "不 is for present or habitual negation; this asks about a past action."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "不"
+      },
+      "note": "The answer is “not yet”, so use 還沒, not 不."
+     }
+    ],
+    "fallbackRepair": "Not yet: 還沒 + verb.",
+    "result": {
+     "traditional": "他們去圖書館了沒有？還沒，他們決定明天去。",
+     "simplified": "他们去图书馆了没有？还没，他们决定明天去。",
+     "pinyin": "Tāmen qù túshūguǎn le méiyǒu? Háiméi, tāmen juédìng míngtiān qù.",
+     "english": "Did they go to the library? Not yet; they decided to go tomorrow."
+    },
+    "prompt": "Choose 沒, 沒有 or 還沒.",
+    "alternatives": [
+     {
+      "traditional": "他們去圖書館了沒？還沒，他們決定明天去。",
+      "simplified": "他们去图书馆了没？还没，他们决定明天去。",
+      "pinyin": "Tāmen qù túshūguǎn le méi? Háiméi, tāmen juédìng míngtiān qù.",
+      "english": "Did they go to the library? Not yet; they decided to go tomorrow."
+     }
+    ]
+   },
+   {
+    "id": "l11g2-p3",
+    "source": "p.250 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "聽說這部電影很好看，你看了"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "沒有"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "沒"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "看，我不喜歡看電影。"
+       }
+      ],
+      "me": true,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu",
+      "simplified": "没有"
+     },
+     {
+      "traditional": "還沒",
+      "pinyin": "háiméi",
+      "simplified": "还没"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "還沒"
+      },
+      "note": "還沒 belongs before the verb, not in the question ending."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "還沒"
+      },
+      "note": "The answer says “I don’t like movies”; the action simply did not happen, so use 沒."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "沒有"
+      },
+      "note": "Use the short answer 沒 before 看."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "沒"
+      },
+      "note": "This question uses the full 了沒有 ending; put the short 沒 in the answer blank, not here."
+     }
+    ],
+    "fallbackRepair": "Question ending 了沒有; answer 沒 + verb.",
+    "result": {
+     "traditional": "聽說這部電影很好看，你看了沒有？我沒看，我不喜歡看電影。",
+     "simplified": "听说这部电影很好看，你看了没有？我没看，我不喜欢看电影。",
+     "pinyin": "Tīngshuō zhè bù diànyǐng hěn hǎokàn, nǐ kàn le méiyǒu? Wǒ méi kàn, wǒ bù xǐhuān kàn diànyǐng.",
+     "english": "I heard this movie is good; did you see it? I did not; I do not like watching movies."
+    },
+    "prompt": "Choose 沒, 沒有 or 還沒."
+   },
+   {
+    "id": "l11g2-p4",
+    "source": "p.250 #4",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "哥哥吃早飯了"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "沒有",
+         "沒"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "還沒"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "，他要先運動再吃。"
+       }
+      ],
+      "me": true,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu",
+      "simplified": "没有"
+     },
+     {
+      "traditional": "還沒",
+      "pinyin": "háiméi",
+      "simplified": "还没"
+     },
+     {
+      "traditional": "不",
+      "pinyin": "bù"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "還沒"
+      },
+      "note": "還沒 belongs before the verb, not in the question ending."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "沒"
+      },
+      "note": "He will eat after exercising, so it is “not yet”: 還沒."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "沒有"
+      },
+      "note": "The answer is “not yet”, so use 還沒 before 吃."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "不"
+      },
+      "note": "不 is for present or habitual negation; this asks about a past action."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "不"
+      },
+      "note": "The answer is “not yet”, so use 還沒, not 不."
+     }
+    ],
+    "fallbackRepair": "Not yet: 還沒 + verb.",
+    "result": {
+     "traditional": "哥哥吃早飯了沒有？還沒，他要先運動再吃。",
+     "simplified": "哥哥吃早饭了没有？还没，他要先运动再吃。",
+     "pinyin": "Gēge chī zǎofàn le méiyǒu? Háiméi, tā yào xiān yùndòng zài chī.",
+     "english": "Has older brother eaten breakfast? Not yet; he wants to exercise first, then eat."
+    },
+    "prompt": "Choose 沒, 沒有 or 還沒.",
+    "alternatives": [
+     {
+      "traditional": "哥哥吃早飯了沒？還沒，他要先運動再吃。",
+      "simplified": "哥哥吃早饭了没？还没，他要先运动再吃。",
+      "pinyin": "Gēge chī zǎofàn le méi? Háiméi, tā yào xiān yùndòng zài chī.",
+      "english": "Has older brother eaten breakfast? Not yet; he wants to exercise first, then eat."
+     }
+    ]
+   }
+  ]
+ },
+ "B1L11-G03-P251": {
+  "bookPage": 252,
+  "title": "Complete the sentences with 是……的.",
+  "allowWords": [
+   "台中",
+   "元真",
+   "友美"
+  ],
+  "items": [
+   {
+    "id": "l11g3-p1",
+    "source": "p.252 #1",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "你看，這是我買的新衣服。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "你是"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "哪天"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "買的？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我是昨天買的。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "哪天",
+      "pinyin": "nǎ tiān"
+     },
+     {
+      "traditional": "哪裡",
+      "pinyin": "nǎlǐ",
+      "simplified": "哪里"
+     },
+     {
+      "traditional": "怎麼",
+      "pinyin": "zěnme",
+      "simplified": "怎么"
+     },
+     {
+      "traditional": "誰",
+      "pinyin": "shéi",
+      "simplified": "谁"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "哪裡"
+      },
+      "note": "哪裡 asks where, but the answer is a day: 昨天."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "怎麼"
+      },
+      "note": "怎麼 asks how, but the answer is a day: 昨天."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "誰"
+      },
+      "note": "誰 asks who, but the answer is a day: 昨天."
+     }
+    ],
+    "fallbackRepair": "Ask about the day: 哪天 + 買的？",
+    "result": {
+     "traditional": "你是哪天買的？",
+     "simplified": "你是哪天买的？",
+     "pinyin": "Nǐ shì nǎ tiān mǎi de?",
+     "english": "Which day did you buy it?"
+    },
+    "prompt": "Ask about the time of the purchase.",
+    "sub": "The next line answers 我是昨天買的."
+   },
+   {
+    "id": "l11g3-p2",
+    "source": "p.252 #2",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "我看到他的女朋友了。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "你是"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "哪天"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "看到的？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "是昨天看到的。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "真的啊？你是"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "哪裡"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "看到的？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "是在學校附近的咖啡廳看到的。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "哪天",
+      "pinyin": "nǎ tiān"
+     },
+     {
+      "traditional": "哪裡",
+      "pinyin": "nǎlǐ",
+      "simplified": "哪里"
+     },
+     {
+      "traditional": "怎麼",
+      "pinyin": "zěnme",
+      "simplified": "怎么"
+     },
+     {
+      "traditional": "誰",
+      "pinyin": "shéi",
+      "simplified": "谁"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "哪裡"
+      },
+      "note": "The answer 昨天 is a day, so the question word is 哪天."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "怎麼"
+      },
+      "note": "The answer is a day, not a method."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "誰"
+      },
+      "note": "The answer is a day, not a person."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "哪天"
+      },
+      "note": "The answer 在學校附近的咖啡廳 is a place, so use 哪裡."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "怎麼"
+      },
+      "note": "The answer is a place, not a method."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "誰"
+      },
+      "note": "The answer is a place, not a person."
+     }
+    ],
+    "fallbackRepair": "Ask when with 哪天, where with 哪裡.",
+    "result": {
+     "traditional": "你是哪天看到的？真的啊？你是哪裡看到的？",
+     "simplified": "你是哪天看到的？真的啊？你是哪里看到的？",
+     "pinyin": "Nǐ shì nǎ tiān kàndào de? Zhēnde a? Nǐ shì nǎlǐ kàndào de?",
+     "english": "Which day did you see her? Really? Where did you see her?"
+    },
+    "prompt": "Ask when and where he saw her."
+   },
+   {
+    "id": "l11g3-p3",
+    "source": "p.252 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "聽說元真去台中了，她是哪天去的？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "她是"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "昨天"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "去的。"
+       }
+      ],
+      "me": true,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "她是"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "怎麼"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "去的？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "她是開車去的。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "她是跟友美一起去的嗎？"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "A",
+       "simplified": "A"
+      }
+     },
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "她不是"
+       },
+       {
+        "type": "slot",
+        "id": "g2",
+        "answers": [
+         "跟友美"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "一起去的，是"
+       },
+       {
+        "type": "slot",
+        "id": "g3",
+        "answers": [
+         "跟她妹妹",
+         "跟同學"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "一起去的。"
+       }
+      ],
+      "me": true,
+      "speaker": {
+       "traditional": "B",
+       "simplified": "B"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "昨天",
+      "pinyin": "zuótiān"
+     },
+     {
+      "traditional": "怎麼",
+      "pinyin": "zěnme",
+      "simplified": "怎么"
+     },
+     {
+      "traditional": "跟友美",
+      "pinyin": "gēn Yǒuměi"
+     },
+     {
+      "traditional": "跟她妹妹",
+      "pinyin": "gēn tā mèimei"
+     },
+     {
+      "traditional": "跟同學",
+      "pinyin": "gēn tóngxué",
+      "simplified": "跟同学"
+     },
+     {
+      "traditional": "去",
+      "pinyin": "qù"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "怎麼"
+      },
+      "note": "This blank is B’s date answer; use 昨天."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "跟友美"
+      },
+      "note": "This blank is a date, not a companion."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "跟她妹妹"
+      },
+      "note": "This blank is a date, not a companion."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "跟同學"
+      },
+      "note": "This blank is a date, not a companion."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "昨天"
+      },
+      "note": "A asks how she went; use 怎麼."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "跟友美"
+      },
+      "note": "A asks how, not with whom."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "跟她妹妹"
+      },
+      "note": "A asks how, not with whom."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "跟同學"
+      },
+      "note": "A asks how, not with whom."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "昨天"
+      },
+      "note": "The 不是 clause rejects 友美; use 跟友美."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "怎麼"
+      },
+      "note": "This blank names the companion, not the method."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "昨天"
+      },
+      "note": "The 是 clause names the real companion, not the date."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "怎麼"
+      },
+      "note": "This blank names the real companion, not the method."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "去"
+      },
+      "note": "This blank needs a date, method, or companion, not the verb 去."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "去"
+      },
+      "note": "This blank needs a date, method, or companion, not the verb 去."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "去"
+      },
+      "note": "This blank needs a date, method, or companion, not the verb 去."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "去"
+      },
+      "note": "This blank needs a date, method, or companion, not the verb 去."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "跟她妹妹"
+      },
+      "note": "The 不是 clause rejects 友美, so g2 is 跟友美; 跟她妹妹 belongs in the 是 clause."
+     },
+     {
+      "slot": {
+       "id": "g2",
+       "tile": "跟同學"
+      },
+      "note": "The printed question asks whether it was 友美, so g2 is 跟友美; 跟同學 is the alternative in the 是 clause."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "跟友美"
+      },
+      "note": "The 是 clause names the real companion, not 友美; use 跟她妹妹 or 跟同學."
+     }
+    ],
+    "fallbackRepair": "Date: 昨天; method: 怎麼; companion: 跟友美 / 跟她妹妹 or 跟同學.",
+    "result": {
+     "traditional": "她是昨天去的。她是怎麼去的？她不是跟友美一起去的，是跟她妹妹一起去的。",
+     "simplified": "她是昨天去的。她是怎么去的？她不是跟友美一起去的，是跟她妹妹一起去的。",
+     "pinyin": "Tā shì zuótiān qù de. Tā shì zěnme qù de? Tā bú shì gēn Yǒuměi yìqǐ qù de, shì gēn tā mèimei yìqǐ qù de.",
+     "english": "She went yesterday. How did she go? She did not go with Youmei; she went with her younger sister."
+    },
+    "prompt": "Answer B’s date, ask how, then correct the companion.",
+    "sub": "Use 昨天 as the model date; the companion correction is editorial.",
+    "alternatives": [
+     {
+      "traditional": "她是昨天去的。她是怎麼去的？她不是跟友美一起去的，是跟同學一起去的。",
+      "simplified": "她是昨天去的。她是怎么去的？她不是跟友美一起去的，是跟同学一起去的。",
+      "pinyin": "Tā shì zuótiān qù de. Tā shì zěnme qù de? Tā bú shì gēn Yǒuměi yìqǐ qù de, shì gēn tóngxué yìqǐ qù de.",
+      "english": "She went yesterday. How did she go? She did not go with Youmei; she went with a classmate."
+     }
+    ]
+   },
+   {
+    "id": "l11g3-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the negative 是……的 sentence: he did not come by car.",
+    "sub": "Keep the negative emphasis on 開車.",
+    "chunks": [
+     {
+      "traditional": "他"
+     },
+     {
+      "traditional": "沒",
+      "simplified": "没"
+     },
+     {
+      "traditional": "是",
+      "tail": " "
+     },
+     {
+      "traditional": "開車",
+      "simplified": "开车"
+     },
+     {
+      "traditional": "來",
+      "simplified": "来"
+     },
+     {
+      "traditional": "的",
+      "tail": "。"
+     }
+    ],
+    "wrong": 1,
+    "fix": "不",
+    "tiles": [
+     {
+      "traditional": "不",
+      "pinyin": "bù"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu",
+      "simplified": "没有"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒有"
+      ],
+      "note": "沒有 cannot replace the negative 是 here; use 不."
+     }
+    ],
+    "takeOutNote": "Do not remove 沒; swap it for 不: 不是.",
+    "hint": "Which negative word goes before 是?",
+    "result": {
+     "traditional": "他不是開車來的。",
+     "simplified": "他不是开车来的。",
+     "pinyin": "Tā bú shì kāichē lái de.",
+     "english": "He did not come by car."
+    },
+    "successNote": "A negative 是……的 sentence keeps 是: 不是…的."
+   }
+  ]
+ },
+ "B1L11-G04-P257": {
+  "bookPage": 258,
+  "title": "Complete the sentences with 先……，等……，再……。",
+  "allowWords": [
+   "碗",
+   "咖啡廳",
+   "牛奶"
+  ],
+  "items": [
+   {
+    "id": "l11g4-p1",
+    "source": "p.258 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我們",
+      "pinyin": "wǒmen",
+      "simplified": "我们"
+     },
+     {
+      "traditional": "明天",
+      "pinyin": "míngtiān"
+     },
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "洗",
+      "pinyin": "xǐ"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我們",
+       "明天",
+       "再",
+       "洗"
+      ],
+      "sentence": {
+       "traditional": "我們明天再洗。",
+       "simplified": "我们明天再洗。",
+       "pinyin": "Wǒmen míngtiān zài xǐ.",
+       "english": "We will wash them tomorrow."
+      }
+     },
+     {
+      "order": [
+       "再",
+       "洗"
+      ],
+      "sentence": {
+       "traditional": "再洗。",
+       "simplified": "再洗。",
+       "pinyin": "Zài xǐ.",
+       "english": "Wash them later."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "在"
+      ],
+      "note": "在 is “at”; the future “then” word is 再."
+     },
+     {
+      "before": [
+       "洗",
+       "再"
+      ],
+      "note": "Put 再 before the action 洗."
+     }
+    ],
+    "fallbackRepair": "Future “then”: 再 + action.",
+    "prompt": "The bowls are too many. Say you will wash them tomorrow.",
+    "scene": {
+     "type": "picture",
+     "page": 258,
+     "box": [
+      0.17,
+      0.747,
+      0.354,
+      0.092
+     ],
+     "alt": "Stacked bowls, an arrow, and hands washing a bowl at a sink."
+    }
+   },
+   {
+    "id": "l11g4-p2",
+    "source": "p.258 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我們",
+      "pinyin": "wǒmen",
+      "simplified": "我们"
+     },
+     {
+      "traditional": "明天",
+      "pinyin": "míngtiān"
+     },
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "去",
+      "pinyin": "qù"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我們",
+       "明天",
+       "再",
+       "去"
+      ],
+      "sentence": {
+       "traditional": "我們明天再去。",
+       "simplified": "我们明天再去。",
+       "pinyin": "Wǒmen míngtiān zài qù.",
+       "english": "We will go tomorrow."
+      }
+     },
+     {
+      "order": [
+       "再",
+       "去"
+      ],
+      "sentence": {
+       "traditional": "再去。",
+       "simplified": "再去。",
+       "pinyin": "Zài qù.",
+       "english": "Go later."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "在"
+      ],
+      "note": "在 is “at”; the future “then” word is 再."
+     },
+     {
+      "before": [
+       "去",
+       "再"
+      ],
+      "note": "Put 再 before the action 去."
+     }
+    ],
+    "fallbackRepair": "Future “then”: 再 + action.",
+    "prompt": "The department store is closed. Say you will go tomorrow."
+   },
+   {
+    "id": "l11g4-p3",
+    "source": "p.259 #3",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "這家咖啡廳人好多！等"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "人少了"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "，我再"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "來"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "人少了",
+      "pinyin": "rén shǎo le"
+     },
+     {
+      "traditional": "人多了",
+      "pinyin": "rén duō le"
+     },
+     {
+      "traditional": "來",
+      "pinyin": "lái",
+      "simplified": "来"
+     },
+     {
+      "traditional": "去",
+      "pinyin": "qù"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "人多了"
+      },
+      "note": "The café is crowded now; wait until 人少了."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "去"
+      },
+      "note": "The picture shows her coming to the door; use 來."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "來"
+      },
+      "note": "g0 is the condition she waits for; use 人少了, not 來."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "去"
+      },
+      "note": "g0 is the condition she waits for; use 人少了, not 去."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "人少了"
+      },
+      "note": "g1 is what she will do after waiting; use 來."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "人多了"
+      },
+      "note": "g1 is what she will do after waiting; use 來. 人多了 is the opposite condition."
+     }
+    ],
+    "fallbackRepair": "Wait until 人少了, then 再來.",
+    "result": {
+     "traditional": "這家咖啡廳人好多！等人少了，我再來。",
+     "simplified": "这家咖啡厅人好多！等人少了，我再来。",
+     "pinyin": "Zhè jiā kāfēitīng rén hǎo duō! Děng rén shǎo le, wǒ zài lái.",
+     "english": "This café is so crowded! Wait until there are fewer people; then I will come again."
+    },
+    "prompt": "Look at the pictures. Complete what she waits for and what she will do.",
+    "scene": {
+     "type": "picture",
+     "page": 259,
+     "box": [
+      0.1,
+      0.162,
+      0.69,
+      0.096
+     ],
+     "alt": "Three panels: a crowded café, a quieter café, and a woman at the CAFE door."
+    }
+   },
+   {
+    "id": "l11g4-p4",
+    "source": "p.259 #4",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "她不吃早飯，常常"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "不舒服"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "，"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "喝牛奶"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "。"
+       }
+      ],
+      "me": true
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "不舒服",
+      "pinyin": "bù shūfu"
+     },
+     {
+      "traditional": "喝牛奶",
+      "pinyin": "hē niúnǎi"
+     },
+     {
+      "traditional": "肚子餓",
+      "pinyin": "dùzi è"
+     },
+     {
+      "traditional": "吃飯",
+      "pinyin": "chīfàn",
+      "simplified": "吃饭"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "肚子餓"
+      },
+      "note": "The picture shows stomach discomfort, not hunger."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "吃飯"
+      },
+      "note": "She does not eat breakfast; the picture shows discomfort."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "肚子餓"
+      },
+      "note": "This slot needs the drink shown in the third picture: 喝牛奶."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "吃飯"
+      },
+      "note": "This slot needs the drink shown in the third picture: 喝牛奶."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "喝牛奶"
+      },
+      "note": "g0 is the state after skipping breakfast; use 不舒服, not the drink."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "不舒服"
+      },
+      "note": "g1 is what she drinks in the third picture; use 喝牛奶."
+     }
+    ],
+    "fallbackRepair": "State + drink: 不舒服，喝牛奶.",
+    "result": {
+     "traditional": "她不吃早飯，常常不舒服，喝牛奶。",
+     "simplified": "她不吃早饭，常常不舒服，喝牛奶。",
+     "pinyin": "Tā bù chī zǎofàn, chángcháng bù shūfu, hē niúnǎi.",
+     "english": "She does not eat breakfast; she often feels unwell and drinks milk."
+    },
+    "prompt": "Look at the pictures. What happens because she skips breakfast?",
+    "scene": {
+     "type": "picture",
+     "page": 259,
+     "box": [
+      0.17,
+      0.29,
+      0.57,
+      0.095
+     ],
+     "alt": "Three panels: a woman with a crossed-out food bubble, stomach pain, and a glass labelled 牛奶."
+    }
+   },
+   {
+    "id": "l11g4-p5",
+    "source": "p.259 #5",
+    "kind": "slot-build",
+    "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "妳"
+       },
+       {
+        "type": "slot",
+        "id": "g0",
+        "answers": [
+         "先"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "吃水果，等爸爸回家了，我們"
+       },
+       {
+        "type": "slot",
+        "id": "g1",
+        "answers": [
+         "再"
+        ]
+       },
+       {
+        "type": "text",
+        "traditional": "一起吃飯。"
+       }
+      ],
+      "me": false,
+      "speaker": {
+       "traditional": "媽媽",
+       "simplified": "媽媽"
+      }
+     }
+    ],
+    "tiles": [
+     {
+      "traditional": "先",
+      "pinyin": "xiān"
+     },
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "在",
+      "pinyin": "zài"
+     }
+    ],
+    "repairs": [
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "再"
+      },
+      "note": "The first step takes 先: 先吃水果."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "在"
+      },
+      "note": "在 is “at”; the first-step word is 先."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "先"
+      },
+      "note": "After 等爸爸回家了, the next step takes 再."
+     },
+     {
+      "slot": {
+       "id": "g1",
+       "tile": "在"
+      },
+      "note": "在 is “at”; the next-step word is 再."
+     }
+    ],
+    "fallbackRepair": "先 + first step; 等 + condition; 再 + next step.",
+    "result": {
+     "traditional": "妳先吃水果，等爸爸回家了，我們再一起吃飯。",
+     "simplified": "你先吃水果，等爸爸回家了，我们再一起吃饭。",
+     "pinyin": "Nǐ xiān chī shuǐguǒ, děng bàba huí jiā le, wǒmen zài yìqǐ chīfàn.",
+     "english": "You eat fruit first; after Dad comes home, we will eat together."
+    },
+    "prompt": "The girl is hungry; the family will eat together after Dad comes home.",
+    "scene": {
+     "type": "picture",
+     "page": 259,
+     "box": [
+      0.15,
+      0.455,
+      0.58,
+      0.085
+     ],
+     "alt": "Three panels: a girl eating fruit, a father arriving, and the family eating together."
+    }
+   },
+   {
+    "id": "l11g4-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: we will go tomorrow.",
+    "sub": "The future “then” word is missing.",
+    "chunks": [
+     {
+      "traditional": "我們",
+      "simplified": "我们"
+     },
+     {
+      "traditional": "明天"
+     },
+     {
+      "traditional": "在"
+     },
+     {
+      "traditional": "去",
+      "tail": "。"
+     }
+    ],
+    "wrong": 2,
+    "fix": "再",
+    "tiles": [
+     {
+      "traditional": "再",
+      "pinyin": "zài"
+     },
+     {
+      "traditional": "到",
+      "pinyin": "dào"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "到"
+      ],
+      "note": "到 marks an endpoint; the future “then” word is 再."
+     }
+    ],
+    "takeOutNote": "Do not remove 在; swap it for 再.",
+    "hint": "Which word means “then, later”?",
+    "result": {
+     "traditional": "我們明天再去。",
+     "simplified": "我们明天再去。",
+     "pinyin": "Wǒmen míngtiān zài qù.",
+     "english": "We will go tomorrow."
+    },
+    "successNote": "再 means “then, later” in a future plan."
+   }
+  ]
+ },
+ "B1L11-G05-P259": {
+  "bookPage": 260,
+  "title": "Complete the following dialogues.",
+  "allowWords": [],
+  "items": [
+   {
+    "id": "l11g5-p1",
+    "source": "p.260 #1",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "他",
+      "pinyin": "tā"
+     },
+     {
+      "traditional": "要",
+      "pinyin": "yào"
+     },
+     {
+      "traditional": "給",
+      "pinyin": "gěi",
+      "simplified": "给"
+     },
+     {
+      "traditional": "女朋友",
+      "pinyin": "nǚpéngyǒu"
+     },
+     {
+      "traditional": "打電話",
+      "pinyin": "dǎ diànhuà",
+      "simplified": "打电话"
+     },
+     {
+      "traditional": "跟",
+      "pinyin": "gēn"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "他",
+       "要",
+       "給",
+       "女朋友",
+       "打電話"
+      ],
+      "sentence": {
+       "traditional": "他要給女朋友打電話。",
+       "simplified": "他要给女朋友打电话。",
+       "pinyin": "Tā yào gěi nǚpéngyǒu dǎ diànhuà.",
+       "english": "He is going to call his girlfriend."
+      }
+     },
+     {
+      "order": [
+       "給",
+       "女朋友",
+       "打電話"
+      ],
+      "sentence": {
+       "traditional": "給女朋友打電話。",
+       "simplified": "给女朋友打电话。",
+       "pinyin": "Gěi nǚpéngyǒu dǎ diànhuà.",
+       "english": "Call his girlfriend."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "跟"
+      ],
+      "note": "跟 means “with”; the receiver takes 給."
+     },
+     {
+      "before": [
+       "打電話",
+       "給"
+      ],
+      "note": "Put 給 before the receiver and the action."
+     }
+    ],
+    "fallbackRepair": "Receiver: 給 + person + action.",
+    "prompt": "He is thinking about a girl. Answer who he will call.",
+    "scene": {
+     "type": "picture",
+     "page": 260,
+     "box": [
+      0.56,
+      0.183,
+      0.19,
+      0.133
+     ],
+     "alt": "A young man with a phone; his thought bubble shows a smiling woman."
+    }
+   },
+   {
+    "id": "l11g5-p2",
+    "source": "p.260 #2",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "給",
+      "pinyin": "gěi",
+      "simplified": "给"
+     },
+     {
+      "traditional": "孩子",
+      "pinyin": "háizi"
+     },
+     {
+      "traditional": "買",
+      "pinyin": "mǎi",
+      "simplified": "买"
+     },
+     {
+      "traditional": "衣服",
+      "pinyin": "yīfu"
+     },
+     {
+      "traditional": "媽媽",
+      "pinyin": "māma",
+      "simplified": "妈妈"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "給",
+       "孩子",
+       "買",
+       "衣服"
+      ],
+      "sentence": {
+       "traditional": "我給孩子買衣服。",
+       "simplified": "我给孩子买衣服。",
+       "pinyin": "Wǒ gěi háizi mǎi yīfu.",
+       "english": "I am buying clothes for the children."
+      }
+     },
+     {
+      "order": [
+       "給",
+       "孩子",
+       "買",
+       "衣服"
+      ],
+      "sentence": {
+       "traditional": "給孩子買衣服。",
+       "simplified": "给孩子买衣服。",
+       "pinyin": "Gěi háizi mǎi yīfu.",
+       "english": "Buy clothes for the children."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "媽媽"
+      ],
+      "note": "The thought bubble shows children, not the mother; use 孩子."
+     },
+     {
+      "before": [
+       "買",
+       "給"
+      ],
+      "note": "Put 給 before the receiver 孩子."
+     }
+    ],
+    "fallbackRepair": "Receiver: 給 + person + action.",
+    "prompt": "Look at the thought bubble. Who are you buying clothes for?",
+    "scene": {
+     "type": "picture",
+     "page": 260,
+     "box": [
+      0.691,
+      0.312,
+      0.216,
+      0.114
+     ],
+     "alt": "Two women at a department-store counter; the thought bubble shows two children."
+    }
+   },
+   {
+    "id": "l11g5-p3",
+    "source": "p.260 #3",
+    "kind": "order-build",
+    "tiles": [
+     {
+      "traditional": "我",
+      "pinyin": "wǒ"
+     },
+     {
+      "traditional": "還沒",
+      "pinyin": "háiméi",
+      "simplified": "还没"
+     },
+     {
+      "traditional": "給",
+      "pinyin": "gěi",
+      "simplified": "给"
+     },
+     {
+      "traditional": "老師",
+      "pinyin": "lǎoshī",
+      "simplified": "老师"
+     },
+     {
+      "traditional": "寫信",
+      "pinyin": "xiěxìn",
+      "simplified": "写信"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi",
+      "simplified": "没"
+     }
+    ],
+    "accepted": [
+     {
+      "order": [
+       "我",
+       "還沒",
+       "給",
+       "老師",
+       "寫信"
+      ],
+      "sentence": {
+       "traditional": "我還沒給老師寫信。",
+       "simplified": "我还没给老师写信。",
+       "pinyin": "Wǒ háiméi gěi lǎoshī xiěxìn.",
+       "english": "I still have not written to the teacher."
+      }
+     },
+     {
+      "order": [
+       "還沒",
+       "給",
+       "老師",
+       "寫信"
+      ],
+      "sentence": {
+       "traditional": "還沒給老師寫信。",
+       "simplified": "还没给老师写信。",
+       "pinyin": "Háiméi gěi lǎoshī xiěxìn.",
+       "english": "I still have not written to the teacher."
+      }
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "沒"
+      ],
+      "note": "The reply is “not yet”, so use 還沒."
+     },
+     {
+      "before": [
+       "老師",
+       "給"
+      ],
+      "note": "Put 給 before the receiver 老師."
+     }
+    ],
+    "fallbackRepair": "Not yet: 還沒 + 給 + receiver + action.",
+    "prompt": "You still have not written to the teacher. Complete the reply."
+   },
+   {
+    "id": "l11g5-own-spot",
+    "source": "own",
+    "kind": "spot-fix",
+    "prompt": "Fix the sentence: I go with a friend.",
+    "sub": "給 marks a receiver; this sentence needs “with”.",
+    "chunks": [
+     {
+      "traditional": "我"
+     },
+     {
+      "traditional": "給",
+      "simplified": "给"
+     },
+     {
+      "traditional": "朋友"
+     },
+     {
+      "traditional": "一起"
+     },
+     {
+      "traditional": "去",
+      "tail": "。"
+     }
+    ],
+    "wrong": 1,
+    "fix": "跟",
+    "tiles": [
+     {
+      "traditional": "跟",
+      "pinyin": "gēn"
+     },
+     {
+      "traditional": "幫",
+      "pinyin": "bāng",
+      "simplified": "帮"
+     }
+    ],
+    "repairs": [
+     {
+      "placed": [
+       "幫"
+      ],
+      "note": "幫 means “help”, not “with”."
+     }
+    ],
+    "takeOutNote": "Do not remove 給; swap it for 跟.",
+    "hint": "Which word means “with”?",
+    "result": {
+     "traditional": "我跟朋友一起去。",
+     "simplified": "我跟朋友一起去。",
+     "pinyin": "Wǒ gēn péngyǒu yìqǐ qù.",
+     "english": "I go with a friend."
+    },
+    "successNote": "跟 means “with”; 給 marks the receiver of an action."
+   }
+  ]
+ }
+}

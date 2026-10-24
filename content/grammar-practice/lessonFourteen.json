@@ -1,0 +1,2201 @@
+{
+  "B1L14-G01-P319": {
+    "bookPage": 319,
+    "title": "Answer the following questions.",
+    "items": [
+      {
+        "id": "l14g1-p1",
+        "source": "p.319 #1",
+        "kind": "order-build",
+        "prompt": "You exercised for half an hour this morning. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "運動",
+            "pinyin": "yùndòng",
+            "simplified": "运动"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "半個小時",
+            "pinyin": "bàn ge xiǎoshí",
+            "simplified": "半个小时"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "運動",
+              "了",
+              "半個小時"
+            ],
+            "sentence": {
+              "traditional": "我運動了半個小時。",
+              "pinyin": "Wǒ yùndòng le bàn ge xiǎoshí.",
+              "english": "I exercised for half an hour.",
+              "simplified": "我运动了半个小时。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩個小時"
+            ],
+            "mark": [
+              "兩個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says half an hour, so use 半個小時."
+          }
+        ],
+        "fallbackRepair": "Put 了 after 運動, then the duration.",
+        "quiet": true
+      },
+      {
+        "id": "l14g1-p2",
+        "source": "p.319 #2",
+        "kind": "order-build",
+        "prompt": "You walked from the classroom to the dormitory for ten minutes. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "走",
+            "pinyin": "zǒu"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "十分鐘",
+            "pinyin": "shí fēnzhōng",
+            "simplified": "十分钟"
+          },
+          {
+            "traditional": "半個小時",
+            "pinyin": "bàn ge xiǎoshí",
+            "simplified": "半个小时"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "走",
+              "了",
+              "十分鐘"
+            ],
+            "sentence": {
+              "traditional": "我走了十分鐘。",
+              "pinyin": "Wǒ zǒu le shí fēnzhōng.",
+              "english": "I walked for ten minutes.",
+              "simplified": "我走了十分钟。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "半個小時"
+            ],
+            "mark": [
+              "半個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says ten minutes, so use 十分鐘."
+          }
+        ],
+        "fallbackRepair": "Put 了 after 走, then the duration.",
+        "quiet": true
+      },
+      {
+        "id": "l14g1-p3",
+        "source": "p.319 #3",
+        "kind": "order-build",
+        "prompt": "Teacher Wang taught for two hours yesterday. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "教",
+            "pinyin": "jiāo"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "十分鐘",
+            "pinyin": "shí fēnzhōng",
+            "simplified": "十分钟"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "教",
+              "了",
+              "兩個小時"
+            ],
+            "sentence": {
+              "traditional": "他教了兩個小時。",
+              "pinyin": "Tā jiāo le liǎng ge xiǎoshí.",
+              "english": "He taught for two hours.",
+              "simplified": "他教了两个小时。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十分鐘"
+            ],
+            "mark": [
+              "十分鐘"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says two hours, so use 兩個小時."
+          }
+        ],
+        "fallbackRepair": "Put 了 after 教, then the duration.",
+        "quiet": true
+      },
+      {
+        "id": "l14g1-p3a",
+        "source": "p.320 #1",
+        "kind": "slot-build",
+        "prompt": "You swam from 6:00 to 8:00 this morning. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我今天早上"
+              },
+              {
+                "type": "slot",
+                "id": "vo",
+                "answers": [
+                  "游泳"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "v",
+                "answers": [
+                  "游"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "兩個小時"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "游泳",
+            "pinyin": "yóuyǒng"
+          },
+          {
+            "traditional": "游",
+            "pinyin": "yóu"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看"
+            ],
+            "mark": [
+              "看"
+            ],
+            "note": "The picture shows swimming, so use 游泳 and its repeated verb 游."
+          },
+          {
+            "placed": [
+              "一個小時"
+            ],
+            "mark": [
+              "一個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "From 6:00 to 8:00 is 兩個小時."
+          },
+          {
+            "slot": {
+              "id": "vo",
+              "tile": "游"
+            },
+            "note": "The object slot takes 游泳; 游 is the repeated verb before 了."
+          },
+          {
+            "slot": {
+              "id": "vo",
+              "tile": "兩個小時"
+            },
+            "note": "The object slot takes 游泳; 兩個小時 is the duration after 了."
+          },
+          {
+            "slot": {
+              "id": "v",
+              "tile": "游泳"
+            },
+            "note": "The repeated-verb slot takes 游; 游泳 is the object before it."
+          },
+          {
+            "slot": {
+              "id": "v",
+              "tile": "兩個小時"
+            },
+            "note": "The repeated-verb slot takes 游; 兩個小時 is the duration after 了."
+          },
+          {
+            "slot": {
+              "id": "d",
+              "tile": "游泳"
+            },
+            "note": "The duration slot takes 兩個小時; 游泳 is the object."
+          },
+          {
+            "slot": {
+              "id": "d",
+              "tile": "游"
+            },
+            "note": "The duration slot takes 兩個小時; 游 is the repeated verb."
+          }
+        ],
+        "fallbackRepair": "Use 游泳 + 游 before 了 + the duration.",
+        "result": {
+          "traditional": "我今天早上游泳游了兩個小時。",
+          "pinyin": "Wǒ jīntiān zǎoshang yóuyǒng yóu le liǎng ge xiǎoshí.",
+          "english": "I swam for two hours this morning.",
+          "simplified": "我今天早上游泳游了两个小时。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 320,
+          "box": [
+            0.19,
+            0.535,
+            0.18,
+            0.14
+          ],
+          "alt": "Two swimmer-and-clock panels with a down arrow; the clocks read 6:00 and 8:00."
+        },
+        "sub": "Editorial model; the printed clocks read 6:00 and 8:00."
+      },
+      {
+        "id": "l14g1-p4",
+        "source": "p.320 #2",
+        "kind": "slot-build",
+        "prompt": "You used the computer for half an hour last night. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我昨天晚上看電腦看了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "半個小時"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "半個小時",
+            "pinyin": "bàn ge xiǎoshí",
+            "simplified": "半个小时"
+          },
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一個小時"
+            ],
+            "mark": [
+              "一個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The clock shows half an hour, so use 半個小時."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "了 is already printed after 看; the gap needs the duration."
+          }
+        ],
+        "fallbackRepair": "Put the duration 半個小時 after 了.",
+        "result": {
+          "traditional": "我昨天晚上看電腦看了半個小時。",
+          "pinyin": "Wǒ zuótiān wǎnshang kàn diànnǎo kàn le bàn ge xiǎoshí.",
+          "english": "I used the computer for half an hour last night.",
+          "simplified": "我昨天晚上看电脑看了半个小时。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 320,
+          "box": [
+            0.18,
+            0.67,
+            0.19,
+            0.12
+          ],
+          "alt": "A woman at a computer; clocks show 7:00 and 7:30."
+        }
+      },
+      {
+        "id": "l14g1-p5",
+        "source": "p.320 #3",
+        "kind": "slot-build",
+        "prompt": "You sang for several hours last weekend. Complete the sentence with one possible duration.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們上週末唱歌唱了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "三個小時",
+                  "兩個小時",
+                  "四個小時"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "三個小時",
+            "pinyin": "sān ge xiǎoshí",
+            "simplified": "三个小时"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "四個小時",
+            "pinyin": "sì ge xiǎoshí",
+            "simplified": "四个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "了 is already printed after 唱; the gap needs the duration."
+          }
+        ],
+        "fallbackRepair": "Put 三個小時 after 了.",
+        "result": {
+          "traditional": "我們上週末唱歌唱了三個小時。",
+          "pinyin": "Wǒmen shàng zhōumò chànggē chàng le sān ge xiǎoshí.",
+          "english": "We sang for three hours last weekend.",
+          "simplified": "我们上周末唱歌唱了三个小时。"
+        },
+        "alternatives": [
+          {
+            "traditional": "我們上週末唱歌唱了兩個小時。",
+            "pinyin": "Wǒmen shàng zhōumò chànggē chàng le liǎng ge xiǎoshí.",
+            "english": "We sang for two hours last weekend.",
+            "simplified": "我们上周末唱歌唱了两个小时。"
+          },
+          {
+            "traditional": "我們上週末唱歌唱了四個小時。",
+            "pinyin": "Wǒmen shàng zhōumò chànggē chàng le sì ge xiǎoshí.",
+            "english": "We sang for four hours last weekend.",
+            "simplified": "我们上周末唱歌唱了四个小时。"
+          }
+        ],
+        "sub": "Editorial model; the book does not print a duration for this picture.",
+        "scene": {
+          "type": "picture",
+          "page": 320,
+          "box": [
+            0.19,
+            0.79,
+            0.18,
+            0.12
+          ],
+          "alt": "Four people singing from song sheets."
+        }
+      },
+      {
+        "id": "l14g1-p6",
+        "source": "p.321 #1",
+        "kind": "slot-build",
+        "prompt": "You read for two hours yesterday afternoon. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我昨天下午看了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "兩個小時"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的書。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一個小時"
+            ],
+            "mark": [
+              "一個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The clock shows two hours."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "了 is already printed after 看; the gap needs the duration."
+          }
+        ],
+        "fallbackRepair": "Put 兩個小時 before 的書.",
+        "result": {
+          "traditional": "我昨天下午看了兩個小時的書。",
+          "pinyin": "Wǒ zuótiān xiàwǔ kàn le liǎng ge xiǎoshí de shū.",
+          "english": "I read for two hours yesterday afternoon.",
+          "simplified": "我昨天下午看了两个小时的书。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 321,
+          "box": [
+            0.2,
+            0.5,
+            0.15,
+            0.08
+          ],
+          "alt": "A girl reading an open book; caption 2:00 PM to 4:00 PM."
+        }
+      },
+      {
+        "id": "l14g1-p7",
+        "source": "p.321 #2",
+        "kind": "slot-build",
+        "prompt": "You read for an hour and a half the night before last. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我前天晚上看了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "一個半"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "小時的書。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一個半",
+            "pinyin": "yí ge bàn",
+            "simplified": "一个半"
+          },
+          {
+            "traditional": "一個",
+            "pinyin": "yí ge",
+            "simplified": "一个"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一個"
+            ],
+            "mark": [
+              "一個"
+            ],
+            "title": "Try the requested meaning",
+            "note": "An hour and a half is 一個半小時."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "了 is already printed after 看; the gap needs the duration."
+          }
+        ],
+        "fallbackRepair": "Put 一個半 before 小時的書.",
+        "result": {
+          "traditional": "我前天晚上看了一個半小時的書。",
+          "pinyin": "Wǒ qiántiān wǎnshang kàn le yí ge bàn xiǎoshí de shū.",
+          "english": "I read for an hour and a half the night before last.",
+          "simplified": "我前天晚上看了一个半小时的书。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 321,
+          "box": [
+            0.19,
+            0.64,
+            0.18,
+            0.08
+          ],
+          "alt": "A person studying at a desk; caption 8:00 PM to 9:30 PM."
+        }
+      },
+      {
+        "id": "l14g1-p8",
+        "source": "p.321 #3",
+        "kind": "slot-build",
+        "prompt": "You drove for two hours and ten minutes last weekend. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我上週末上午開了兩個小時"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "十分鐘"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的車。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "十分鐘",
+            "pinyin": "shí fēnzhōng",
+            "simplified": "十分钟"
+          },
+          {
+            "traditional": "十分",
+            "pinyin": "shí fēn"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十分"
+            ],
+            "mark": [
+              "十分"
+            ],
+            "note": "The extra time is 十分鐘, with 鐘."
+          },
+          {
+            "placed": [
+              "了"
+            ],
+            "mark": [
+              "了"
+            ],
+            "note": "了 is already printed after 開; the gap needs the extra duration."
+          }
+        ],
+        "fallbackRepair": "Add 十分鐘 to the two hours.",
+        "result": {
+          "traditional": "我上週末上午開了兩個小時十分鐘的車。",
+          "pinyin": "Wǒ shàng zhōumò shàngwǔ kāi le liǎng ge xiǎoshí shí fēnzhōng de chē.",
+          "english": "I drove for two hours and ten minutes last weekend.",
+          "simplified": "我上周末上午开了两个小时十分钟的车。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 321,
+          "box": [
+            0.17,
+            0.76,
+            0.2,
+            0.11
+          ],
+          "alt": "A woman driving with a map of Taiwan; caption 7:00 AM to 9:10 AM."
+        }
+      },
+      {
+        "id": "l14g1-own-1",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that he attended class for five hours yesterday.",
+        "tiles": [
+          {
+            "traditional": "他昨天",
+            "pinyin": "tā zuótiān"
+          },
+          {
+            "traditional": "上課",
+            "pinyin": "shàngkè",
+            "simplified": "上课"
+          },
+          {
+            "traditional": "上",
+            "pinyin": "shàng"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "五個小時",
+            "pinyin": "wǔ ge xiǎoshí",
+            "simplified": "五个小时"
+          },
+          {
+            "traditional": "兩年",
+            "pinyin": "liǎng nián",
+            "simplified": "两年"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他昨天",
+              "上課",
+              "上",
+              "了",
+              "五個小時"
+            ],
+            "sentence": {
+              "traditional": "他昨天上課上了五個小時。",
+              "pinyin": "Tā zuótiān shàngkè shàng le wǔ ge xiǎoshí.",
+              "english": "He attended class for five hours yesterday.",
+              "simplified": "他昨天上课上了五个小时。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩年"
+            ],
+            "mark": [
+              "兩年"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says five hours, so use 五個小時."
+          }
+        ],
+        "fallbackRepair": "Repeat the verb 上 before 了 and the duration.",
+        "successNote": "上課上了五個小時 repeats the verb before the duration."
+      }
+    ],
+    "allowWords": [
+      "電腦",
+      "唱歌",
+      "開車",
+      "半個小時"
+    ]
+  },
+  "B1L14-G02-P322": {
+    "bookPage": 322,
+    "title": "Answer the following questions.",
+    "items": [
+      {
+        "id": "l14g2-p1",
+        "source": "p.322 #1",
+        "kind": "order-build",
+        "prompt": "You have been waiting for an hour. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我們",
+            "pinyin": "wǒmen",
+            "simplified": "我们"
+          },
+          {
+            "traditional": "等",
+            "pinyin": "děng"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我們",
+              "等",
+              "了",
+              "一個小時",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "我們等了一個小時了。",
+              "pinyin": "Wǒmen děng le yí ge xiǎoshí le.",
+              "english": "We have been waiting for an hour.",
+              "simplified": "我们等了一个小时了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩個小時"
+            ],
+            "mark": [
+              "兩個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says one hour, so use 一個小時."
+          }
+        ],
+        "fallbackRepair": "Use 了 after 等 and a second 了 after the duration.",
+        "quiet": true
+      },
+      {
+        "id": "l14g2-p2",
+        "source": "p.322 #2",
+        "kind": "order-build",
+        "prompt": "You have lived in Taiwan for three years. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我在台灣",
+            "pinyin": "wǒ zài Táiwān",
+            "simplified": "我在台湾"
+          },
+          {
+            "traditional": "住",
+            "pinyin": "zhù"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "三年",
+            "pinyin": "sān nián"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "兩年",
+            "pinyin": "liǎng nián",
+            "simplified": "两年"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我在台灣",
+              "住",
+              "了",
+              "三年",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "我在台灣住了三年了。",
+              "pinyin": "Wǒ zài Táiwān zhù le sān nián le.",
+              "english": "I have lived in Taiwan for three years.",
+              "simplified": "我在台湾住了三年了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩年"
+            ],
+            "mark": [
+              "兩年"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says three years, so use 三年."
+          }
+        ],
+        "fallbackRepair": "Use 了 after 住 and a second 了 after 三年.",
+        "quiet": true
+      },
+      {
+        "id": "l14g2-p3",
+        "source": "p.322 #3",
+        "kind": "order-build",
+        "prompt": "You have been reading for two hours. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我們",
+            "pinyin": "wǒmen",
+            "simplified": "我们"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我們",
+              "看",
+              "了",
+              "兩個小時",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "我們看了兩個小時了。",
+              "pinyin": "Wǒmen kàn le liǎng ge xiǎoshí le.",
+              "english": "We have been reading for two hours.",
+              "simplified": "我们看了两个小时了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一個小時"
+            ],
+            "mark": [
+              "一個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says two hours, so use 兩個小時."
+          }
+        ],
+        "fallbackRepair": "Use 了 after 看 and a second 了 after the duration.",
+        "quiet": true
+      },
+      {
+        "id": "l14g2-p4",
+        "source": "p.323 #1",
+        "kind": "slot-build",
+        "prompt": "It is 9 p.m.; he started using the computer at 9 a.m. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他已經用電腦用了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "十二個"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "小時"
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "十二個",
+            "pinyin": "shí’èr ge",
+            "simplified": "十二个"
+          },
+          {
+            "traditional": "十個",
+            "pinyin": "shí ge",
+            "simplified": "十个"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十個小時"
+            ],
+            "mark": [
+              "十個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "From 9 a.m. to 9 p.m. is twelve hours."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The final slot needs 了, not 的."
+          },
+          {
+            "slot": {
+              "id": "d",
+              "tile": "十個"
+            },
+            "note": "The duration is 十二個小時; 十個 is too few for 9 a.m. to 9 p.m."
+          },
+          {
+            "slot": {
+              "id": "d",
+              "tile": "了"
+            },
+            "note": "The duration slot takes 十二個; 了 fills the final slot."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "十二個"
+            },
+            "note": "The final slot takes 了; 十二個 belongs in the duration slot."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "十個"
+            },
+            "note": "The final slot takes 了; 十個 is a wrong duration and belongs nowhere here."
+          }
+        ],
+        "fallbackRepair": "Put 十二個 before 小時 and a final 了 at the end.",
+        "result": {
+          "traditional": "他已經用電腦用了十二個小時了。",
+          "pinyin": "Tā yǐjīng yòng diànnǎo yòng le shí’èr ge xiǎoshí le.",
+          "english": "He has been using the computer for twelve hours.",
+          "simplified": "他已经用电脑用了十二个小时了。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 323,
+          "box": [
+            0.173,
+            0.537,
+            0.173,
+            0.08
+          ],
+          "alt": "A person at a computer; caption 9:00 a.m. to 9:00 p.m."
+        }
+      },
+      {
+        "id": "l14g2-p5",
+        "source": "p.323 #2",
+        "kind": "slot-build",
+        "prompt": "It is 9 p.m.; they started riding bikes at 7 p.m. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他們已經騎腳踏車騎了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "兩個小時"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一個小時"
+            ],
+            "mark": [
+              "一個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "From 7 to 9 p.m. is two hours."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The final slot needs 了, not 的."
+          },
+          {
+            "slot": {
+              "id": "d",
+              "tile": "了"
+            },
+            "note": "The duration slot takes 兩個小時; 了 fills the final slot."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "兩個小時"
+            },
+            "note": "The final slot takes 了; 兩個小時 belongs in the duration slot."
+          }
+        ],
+        "fallbackRepair": "Put 兩個小時 after 了 and a final 了 at the end.",
+        "result": {
+          "traditional": "他們已經騎腳踏車騎了兩個小時了。",
+          "pinyin": "Tāmen yǐjīng qí jiǎotàchē qí le liǎng ge xiǎoshí le.",
+          "english": "They have been riding bikes for two hours.",
+          "simplified": "他们已经骑脚踏车骑了两个小时了。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 323,
+          "box": [
+            0.173,
+            0.646,
+            0.152,
+            0.108
+          ],
+          "alt": "Two people riding bicycles; caption 7:00 to 9:00 p.m."
+        }
+      },
+      {
+        "id": "l14g2-p6",
+        "source": "p.323 #3",
+        "kind": "slot-build",
+        "prompt": "It is 9 p.m.; they started dancing at 8 p.m. Complete the sentence.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他們已經跳舞跳了"
+              },
+              {
+                "type": "slot",
+                "id": "d",
+                "answers": [
+                  "一個小時"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一個小時",
+            "pinyin": "yí ge xiǎoshí",
+            "simplified": "一个小时"
+          },
+          {
+            "traditional": "兩個小時",
+            "pinyin": "liǎng ge xiǎoshí",
+            "simplified": "两个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩個小時"
+            ],
+            "mark": [
+              "兩個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "From 8 to 9 p.m. is one hour."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The final slot needs 了, not 的."
+          },
+          {
+            "slot": {
+              "id": "d",
+              "tile": "了"
+            },
+            "note": "The duration slot takes 一個小時; 了 fills the final slot."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "一個小時"
+            },
+            "note": "The final slot takes 了; 一個小時 belongs in the duration slot."
+          }
+        ],
+        "fallbackRepair": "Put 一個小時 after 了 and a final 了 at the end.",
+        "result": {
+          "traditional": "他們已經跳舞跳了一個小時了。",
+          "pinyin": "Tāmen yǐjīng tiàowǔ tiào le yí ge xiǎoshí le.",
+          "english": "They have been dancing for an hour.",
+          "simplified": "他们已经跳舞跳了一个小时了。"
+        },
+        "scene": {
+          "type": "picture",
+          "page": 323,
+          "box": [
+            0.195,
+            0.792,
+            0.135,
+            0.105
+          ],
+          "alt": "A couple ballroom dancing."
+        }
+      },
+      {
+        "id": "l14g2-p7",
+        "source": "p.324 #1",
+        "kind": "slot-build",
+        "prompt": "It has been raining for an hour at Taipei 101. Complete the reply.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "已經下雨下了一個小時"
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "過",
+            "pinyin": "guo",
+            "simplified": "过"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The final slot needs 了, not 的."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "mark": [
+              "過"
+            ],
+            "note": "過 marks an experience; this action reaches now, so use 了."
+          }
+        ],
+        "fallbackRepair": "Add the final 了 after the duration.",
+        "result": {
+          "traditional": "已經下雨下了一個小時了。",
+          "pinyin": "Yǐjīng xià yǔ xià le yí ge xiǎoshí le.",
+          "english": "It has been raining for an hour.",
+          "simplified": "已经下雨下了一个小时了。"
+        },
+        "sub": "Editorial model; the book does not print a duration for this picture.",
+        "scene": {
+          "type": "picture",
+          "page": 324,
+          "box": [
+            0.256,
+            0.486,
+            0.095,
+            0.103
+          ],
+          "alt": "Taipei 101 in the rain."
+        }
+      },
+      {
+        "id": "l14g2-p8",
+        "source": "p.324 #2",
+        "kind": "slot-build",
+        "prompt": "You have been writing Chinese characters for ten years. Complete the reply.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我已經寫了十年的中文字"
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "過",
+            "pinyin": "guo",
+            "simplified": "过"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The final slot needs 了, not 的."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "mark": [
+              "過"
+            ],
+            "note": "過 marks an experience; this duration reaches now, so use 了."
+          }
+        ],
+        "fallbackRepair": "Add the final 了 after the object.",
+        "result": {
+          "traditional": "我已經寫了十年的中文字了。",
+          "pinyin": "Wǒ yǐjīng xiě le shí nián de Zhōngwén zì le.",
+          "english": "I have been writing Chinese characters for ten years.",
+          "simplified": "我已经写了十年的中文字了。"
+        },
+        "sub": "Editorial model; the book does not print a duration for this picture.",
+        "scene": {
+          "type": "picture",
+          "page": 324,
+          "box": [
+            0.444,
+            0.503,
+            0.165,
+            0.103
+          ],
+          "alt": "A girl writing the character 好 at a desk."
+        }
+      },
+      {
+        "id": "l14g2-p9",
+        "source": "p.324 #3",
+        "kind": "slot-build",
+        "prompt": "You have been reading for an hour. Complete the reply.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你已經看了一個小時的書"
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "過",
+            "pinyin": "guo",
+            "simplified": "过"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "The final slot needs 了, not 的."
+          },
+          {
+            "placed": [
+              "過"
+            ],
+            "mark": [
+              "過"
+            ],
+            "note": "過 marks an experience; this duration reaches now, so use 了."
+          }
+        ],
+        "fallbackRepair": "Add the final 了 after the object.",
+        "result": {
+          "traditional": "你已經看了一個小時的書了。",
+          "pinyin": "Nǐ yǐjīng kàn le yí ge xiǎoshí de shū le.",
+          "english": "You have been reading for an hour.",
+          "simplified": "你已经看了一个小时的书了。"
+        },
+        "sub": "Editorial model; the book does not print a duration for this picture.",
+        "scene": {
+          "type": "picture",
+          "page": 324,
+          "box": [
+            0.645,
+            0.49,
+            0.2,
+            0.125
+          ],
+          "alt": "A boy reading at a desk while a woman stands behind him."
+        }
+      },
+      {
+        "id": "l14g2-own-order",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Say that he has slept for eight hours (and is still sleeping).",
+        "tiles": [
+          {
+            "traditional": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "睡",
+            "pinyin": "shuì"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "八個小時",
+            "pinyin": "bā ge xiǎoshí",
+            "simplified": "八个小时"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "六個小時",
+            "pinyin": "liù ge xiǎoshí",
+            "simplified": "六个小时"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "睡",
+              "了",
+              "八個小時",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "他睡了八個小時了。",
+              "pinyin": "Tā shuì le bā ge xiǎoshí le.",
+              "english": "He has slept for eight hours.",
+              "simplified": "他睡了八个小时了。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "六個小時"
+            ],
+            "mark": [
+              "六個小時"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context says eight hours, so use 八個小時."
+          }
+        ],
+        "fallbackRepair": "Use 了 after 睡 and a second 了 after the duration.",
+        "successNote": "Verb + 了 + duration + 了 reaches now."
+      }
+    ],
+    "allowWords": [
+      "電腦",
+      "腳踏車",
+      "跳舞",
+      "跳",
+      "下雨",
+      "寫字"
+    ]
+  },
+  "B1L14-G03-P331": {
+    "bookPage": 332,
+    "title": "Answer the following questions. / Use 比 to write complete sentences.",
+    "items": [
+      {
+        "id": "l14g3-p1",
+        "source": "p.332 #1",
+        "kind": "order-build",
+        "prompt": "You prefer tea because it tastes better than coffee. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "我喜歡",
+            "pinyin": "wǒ xǐhuān",
+            "simplified": "我喜欢"
+          },
+          {
+            "traditional": "茶",
+            "pinyin": "chá"
+          },
+          {
+            "traditional": "因為茶",
+            "pinyin": "yīnwèi chá",
+            "simplified": "因为茶"
+          },
+          {
+            "traditional": "比咖啡",
+            "pinyin": "bǐ kāfēi"
+          },
+          {
+            "traditional": "好喝",
+            "pinyin": "hǎohē"
+          },
+          {
+            "traditional": "難喝",
+            "pinyin": "nánhē",
+            "simplified": "难喝"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我喜歡",
+              "茶",
+              "因為茶",
+              "比咖啡",
+              "好喝"
+            ],
+            "sentence": {
+              "traditional": "我喜歡茶，因為茶比咖啡好喝。",
+              "pinyin": "Wǒ xǐhuān chá, yīnwèi chá bǐ kāfēi hǎohē.",
+              "english": "I prefer tea because tea tastes better than coffee.",
+              "simplified": "我喜欢茶，因为茶比咖啡好喝。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "難喝"
+            ],
+            "mark": [
+              "難喝"
+            ],
+            "title": "Try the requested meaning",
+            "note": "You prefer tea, so say tea tastes better: 好喝."
+          }
+        ],
+        "fallbackRepair": "Put 比 before 咖啡 and 好喝 after it.",
+        "quiet": true
+      },
+      {
+        "id": "l14g3-p2",
+        "source": "p.332 #2",
+        "kind": "slot-build",
+        "prompt": "You want to see a movie because it is more interesting than playing ball. Answer the question.",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我想去看電影，因為看電影"
+              },
+              {
+                "type": "slot",
+                "id": "bi",
+                "answers": [
+                  "比"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "打球"
+              },
+              {
+                "type": "slot",
+                "id": "adj",
+                "answers": [
+                  "有趣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "跟",
+            "pinyin": "gēn"
+          },
+          {
+            "traditional": "有趣",
+            "pinyin": "yǒuqù"
+          },
+          {
+            "traditional": "貴",
+            "pinyin": "guì",
+            "simplified": "贵"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "跟"
+            ],
+            "mark": [
+              "跟"
+            ],
+            "note": "Use 比 for comparison; 跟 joins two people."
+          },
+          {
+            "placed": [
+              "貴"
+            ],
+            "mark": [
+              "貴"
+            ],
+            "title": "Try the requested meaning",
+            "note": "The context is “more interesting”, so use 有趣."
+          },
+          {
+            "slot": {
+              "id": "bi",
+              "tile": "有趣"
+            },
+            "note": "The comparison slot takes 比; 有趣 is the quality after 打球."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "比"
+            },
+            "note": "The quality slot takes 有趣; 比 belongs before 打球."
+          }
+        ],
+        "fallbackRepair": "Use 比 before 打球 and 有趣 after it.",
+        "result": {
+          "traditional": "我想去看電影，因為看電影比打球有趣。",
+          "pinyin": "Wǒ xiǎng qù kàn diànyǐng, yīnwèi kàn diànyǐng bǐ dǎ qiú yǒuqù.",
+          "english": "I want to see a movie because it is more interesting than playing ball.",
+          "simplified": "我想去看电影，因为看电影比打球有趣。"
+        }
+      },
+      {
+        "id": "l14g3-p3",
+        "source": "p.332 #3",
+        "kind": "order-build",
+        "prompt": "You cook every day because cooking is cheaper than eating out. Answer the question.",
+        "tiles": [
+          {
+            "traditional": "因為",
+            "pinyin": "yīnwèi",
+            "simplified": "因为"
+          },
+          {
+            "traditional": "做飯",
+            "pinyin": "zuòfàn",
+            "simplified": "做饭"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "在外面吃",
+            "pinyin": "zài wàimiàn chī"
+          },
+          {
+            "traditional": "便宜",
+            "pinyin": "piányi"
+          },
+          {
+            "traditional": "貴",
+            "pinyin": "guì",
+            "simplified": "贵"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "因為",
+              "做飯",
+              "比",
+              "在外面吃",
+              "便宜"
+            ],
+            "sentence": {
+              "traditional": "因為做飯比在外面吃便宜。",
+              "pinyin": "Yīnwèi zuòfàn bǐ zài wàimiàn chī piányi.",
+              "english": "Because cooking is cheaper than eating out.",
+              "simplified": "因为做饭比在外面吃便宜。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "貴"
+            ],
+            "mark": [
+              "貴"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Cooking saves money, so say 便宜, not 貴."
+          }
+        ],
+        "fallbackRepair": "Put 比 before the second activity and 便宜 after it.",
+        "quiet": true
+      },
+      {
+        "id": "l14g3-p4",
+        "source": "p.333 #1",
+        "kind": "order-build",
+        "prompt": "You have many English books; your brother has only three. Compare them.",
+        "tiles": [
+          {
+            "traditional": "我的",
+            "pinyin": "wǒ de"
+          },
+          {
+            "traditional": "英文書",
+            "pinyin": "Yīngwén shū",
+            "simplified": "英文书"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "弟弟",
+            "pinyin": "dìdi"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "少",
+            "pinyin": "shǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我的",
+              "英文書",
+              "比",
+              "弟弟",
+              "多"
+            ],
+            "sentence": {
+              "traditional": "我的英文書比弟弟多。",
+              "pinyin": "Wǒ de Yīngwén shū bǐ dìdi duō.",
+              "english": "I have more English books than my brother.",
+              "simplified": "我的英文书比弟弟多。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "少"
+            ],
+            "mark": [
+              "少"
+            ],
+            "title": "Try the requested meaning",
+            "note": "You have many books and he has three, so use 多."
+          }
+        ],
+        "fallbackRepair": "Put 比 between the two people and 多 after it.",
+        "quiet": true
+      },
+      {
+        "id": "l14g3-p5",
+        "source": "p.333 #2",
+        "kind": "order-build",
+        "prompt": "Beef dumplings cost eight yuan each; pork dumplings cost five. Compare them.",
+        "tiles": [
+          {
+            "traditional": "牛肉餃子",
+            "pinyin": "niúròu jiǎozi",
+            "simplified": "牛肉饺子"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "豬肉餃子",
+            "pinyin": "zhūròu jiǎozi",
+            "simplified": "猪肉饺子"
+          },
+          {
+            "traditional": "貴",
+            "pinyin": "guì",
+            "simplified": "贵"
+          },
+          {
+            "traditional": "三塊錢",
+            "pinyin": "sān kuài qián",
+            "simplified": "三块钱"
+          },
+          {
+            "traditional": "便宜",
+            "pinyin": "piányi"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "牛肉餃子",
+              "比",
+              "豬肉餃子",
+              "貴",
+              "三塊錢"
+            ],
+            "sentence": {
+              "traditional": "牛肉餃子比豬肉餃子貴三塊錢。",
+              "pinyin": "Niúròu jiǎozi bǐ zhūròu jiǎozi guì sān kuài qián.",
+              "english": "Beef dumplings are three yuan more expensive than pork dumplings.",
+              "simplified": "牛肉饺子比猪肉饺子贵三块钱。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "便宜"
+            ],
+            "mark": [
+              "便宜"
+            ],
+            "title": "Try the requested meaning",
+            "note": "Beef dumplings cost more, so use 貴."
+          }
+        ],
+        "fallbackRepair": "Put 比 before the pork dumplings and 貴 after them.",
+        "quiet": true
+      },
+      {
+        "id": "l14g3-p6",
+        "source": "p.333 #3",
+        "kind": "order-build",
+        "prompt": "You eat one bowl of rice; your brother eats three. Compare the amounts.",
+        "tiles": [
+          {
+            "traditional": "哥哥",
+            "pinyin": "gēge"
+          },
+          {
+            "traditional": "吃的飯",
+            "pinyin": "chī de fàn",
+            "simplified": "吃的饭"
+          },
+          {
+            "traditional": "比",
+            "pinyin": "bǐ"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "少",
+            "pinyin": "shǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "哥哥",
+              "吃的飯",
+              "比",
+              "我",
+              "多"
+            ],
+            "sentence": {
+              "traditional": "哥哥吃的飯比我多。",
+              "pinyin": "Gēge chī de fàn bǐ wǒ duō.",
+              "english": "My older brother eats more rice than I do.",
+              "simplified": "哥哥吃的饭比我多。"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "少"
+            ],
+            "mark": [
+              "少"
+            ],
+            "title": "Try the requested meaning",
+            "note": "He eats three bowls and you eat one, so use 多."
+          }
+        ],
+        "fallbackRepair": "Put 比 between 哥哥吃的飯 and 我, then 多.",
+        "quiet": true
+      },
+      {
+        "id": "l14g3-own-spot",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Today is colder than yesterday.",
+        "chunks": [
+          {
+            "traditional": "今天"
+          },
+          {
+            "traditional": "比昨天"
+          },
+          {
+            "traditional": "很冷",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "tiles": [
+          {
+            "traditional": "冷",
+            "pinyin": "lěng"
+          },
+          {
+            "traditional": "很冷",
+            "pinyin": "hěn lěng"
+          },
+          {
+            "traditional": "冷一點兒",
+            "pinyin": "lěng yìdiǎnr",
+            "simplified": "冷一点儿"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很冷"
+            ],
+            "mark": [
+              "很冷"
+            ],
+            "note": "Do not put 很 after 比. The comparison already carries the degree: 比昨天冷."
+          },
+          {
+            "placed": [
+              "冷一點兒"
+            ],
+            "title": "Try the requested meaning",
+            "note": "一點兒 means “a little”; the prompt says simply colder, so use 冷."
+          }
+        ],
+        "hint": "比 already compares the two days.",
+        "fix": "冷",
+        "takeOutNote": "The comparison needs the bare adjective 冷; replace 很冷 with 冷.",
+        "result": {
+          "traditional": "今天比昨天冷。",
+          "pinyin": "Jīntiān bǐ zuótiān lěng.",
+          "english": "Today is colder than yesterday."
+        },
+        "successNote": "Do not use 很 after 比."
+      }
+    ],
+    "allowWords": [
+      "豬肉",
+      "牛肉",
+      "餃子"
+    ]
+  }
+}
