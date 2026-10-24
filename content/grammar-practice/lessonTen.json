@@ -71,7 +71,7 @@
             "mark": [
               "對"
             ],
-            "note": "Use 跟 before the person you are with. 對 marks the person a feeling is directed at, not a companion."
+            "note": "Use 跟 for the companion here; 對 does not mean “together with”."
           }
         ],
         "fallbackRepair": "Put 跟 before the person you are with.",
@@ -191,9 +191,9 @@
             "pinyin": "nǐ hǎo"
           },
           {
-            "traditional": "對",
-            "pinyin": "duì",
-            "simplified": "对"
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng"
           }
         ],
         "accepted": [
@@ -216,12 +216,12 @@
         "repairs": [
           {
             "placed": [
-              "對"
+              "從"
             ],
             "mark": [
-              "對"
+              "從"
             ],
-            "note": "Use 跟 for the person you speak to. 對 would describe an attitude toward the teacher."
+            "note": "從 marks a starting point; use 跟 before the person being spoken to in this sentence."
           }
         ],
         "fallbackRepair": "Put 跟 before the person she speaks to.",
@@ -267,9 +267,9 @@
             "simplified": "你发烧了"
           },
           {
-            "traditional": "對",
-            "pinyin": "duì",
-            "simplified": "对"
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng"
           }
         ],
         "accepted": [
@@ -292,12 +292,12 @@
         "repairs": [
           {
             "placed": [
-              "對"
+              "從"
             ],
             "mark": [
-              "對"
+              "從"
             ],
-            "note": "Use 跟 for the person spoken to. 對 would describe an attitude toward her."
+            "note": "從 marks a starting point; use 跟 before the person being spoken to in this sentence."
           }
         ],
         "fallbackRepair": "Put 跟 before the person the doctor speaks to.",
@@ -414,7 +414,7 @@
             "placed": [
               "對"
             ],
-            "note": "對 marks the person a feeling is directed at. For asking someone for something, use 跟."
+            "note": "Use 跟 for the person being asked for something here; 對 does not express that request."
           },
           {
             "placed": [
@@ -1114,102 +1114,98 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "她們穿的"
+                "traditional": "她們穿"
               },
               {
                 "type": "slot",
-                "id": "dem",
+                "id": "g1",
                 "answers": [
-                  "這兩件"
+                  "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "衣服"
+                "traditional": "這兩件衣服"
               },
               {
                 "type": "slot",
-                "id": "all",
-                "answers": [
-                  "都是"
-                ]
+                "id": "g2",
+                "answers": []
               },
               {
                 "type": "text",
-                "traditional": "媽媽做的。"
+                "traditional": "都是媽媽做的"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
               }
             ],
-            "me": true,
-            "speaker": {
-              "traditional": "B"
-            }
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "這兩件",
-            "pinyin": "zhè liǎng jiàn",
-            "simplified": "这两件"
+            "traditional": "的",
+            "pinyin": "de"
           },
           {
-            "traditional": "那兩件",
-            "pinyin": "nà liǎng jiàn",
-            "simplified": "那两件"
-          },
-          {
-            "traditional": "都是",
-            "pinyin": "dōu shì"
-          },
-          {
-            "traditional": "還是",
-            "pinyin": "háishi",
-            "simplified": "还是"
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "那兩件"
+              "得"
             ],
             "mark": [
-              "那兩件"
+              "得"
             ],
-            "title": "Try the requested meaning",
-            "note": "The prompt points to these two dresses, so use 這兩件."
-          },
-          {
-            "placed": [
-              "還是"
-            ],
-            "mark": [
-              "還是"
-            ],
-            "note": "還是 asks “or”; the answer states that both were made by her, so use 都是."
+            "note": "得 introduces how an action is done; 的 links the description to the dresses."
           },
           {
             "slot": {
-              "id": "dem",
-              "tile": "都是"
+              "id": "g0",
+              "tile": "的"
             },
-            "note": "Use 這兩件 before 衣服; 都是 belongs in the later slot."
+            "note": "Put 的 after 她們穿 to link the description to 這兩件衣服."
           },
           {
             "slot": {
-              "id": "all",
-              "tile": "這兩件"
+              "id": "g2",
+              "tile": "的"
             },
-            "note": "Use 都是 for “both are”; 這兩件 belongs before 衣服."
+            "note": "Put 的 after 她們穿 to link the description to 這兩件衣服."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "的"
+            },
+            "note": "Put 的 after 她們穿 to link the description to 這兩件衣服."
           }
         ],
-        "fallbackRepair": "Use 這兩件 for these two and 都是 for both.",
+        "fallbackRepair": "Put 的 after 她們穿 to link the description to 這兩件衣服.",
         "result": {
           "traditional": "她們穿的這兩件衣服都是媽媽做的。",
           "pinyin": "Tāmen chuān de zhè liǎng jiàn yīfu dōu shì māma zuò de.",
           "english": "Both dresses they are wearing were made by their mother.",
           "simplified": "她们穿的这两件衣服都是妈妈做的。"
         },
-        "successNote": "This item practises 這兩件 and 都是; the 的 in 穿的 is printed in the frame."
+        "successNote": "This item practises 這兩件 and 都是; the 的 in 穿的 is printed in the frame.",
+        "gaps": true
       },
       {
         "id": "l10g2-own-spot",
@@ -1494,26 +1490,40 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "快要考試了，你要多"
+                "traditional": "快要考試了，你要"
               },
               {
                 "type": "slot",
-                "id": "more",
+                "id": "g1",
                 "answers": [
-                  "練習"
+                  "多"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "，少"
+                "traditional": "練習，"
               },
               {
                 "type": "slot",
-                "id": "less",
+                "id": "g2",
                 "answers": [
-                  "看手機"
+                  "少"
                 ]
+              },
+              {
+                "type": "text",
+                "traditional": "看手機"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": []
               },
               {
                 "type": "text",
@@ -1525,69 +1535,80 @@
         ],
         "tiles": [
           {
-            "traditional": "練習",
-            "pinyin": "liànxí",
-            "simplified": "练习"
+            "traditional": "多",
+            "pinyin": "duō"
           },
           {
-            "traditional": "看手機",
-            "pinyin": "kàn shǒujī",
-            "simplified": "看手机"
+            "traditional": "少",
+            "pinyin": "shǎo"
           },
           {
-            "traditional": "運動",
-            "pinyin": "yùndòng",
-            "simplified": "运动"
-          },
-          {
-            "traditional": "休息",
-            "pinyin": "xiūxi"
+            "traditional": "都",
+            "pinyin": "dōu"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "運動"
+              "都"
             ],
             "mark": [
-              "運動"
+              "都"
             ],
-            "title": "Try the requested meaning",
-            "note": "The task is about exam practice, not exercise."
-          },
-          {
-            "placed": [
-              "休息"
-            ],
-            "mark": [
-              "休息"
-            ],
-            "title": "Try the requested meaning",
-            "note": "The task asks for more practice, not more rest."
+            "note": "都 means “all”; it does not express doing one action more and another less."
           },
           {
             "slot": {
-              "id": "more",
-              "tile": "看手機"
+              "id": "g0",
+              "tile": "多"
             },
-            "note": "The first gap takes the action to increase: 練習. 看手機 is the action to reduce."
+            "note": "Put 多 before the action to increase: 練習."
           },
           {
             "slot": {
-              "id": "less",
-              "tile": "練習"
+              "id": "g0",
+              "tile": "少"
             },
-            "note": "The second gap takes the action to reduce: 看手機. 練習 is the action to increase."
+            "note": "Put 少 before the action to reduce: 看手機."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "少"
+            },
+            "note": "Put 少 before the action to reduce: 看手機."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "多"
+            },
+            "note": "Put 多 before the action to increase: 練習."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "多"
+            },
+            "note": "Put 多 before the action to increase: 練習."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "少"
+            },
+            "note": "Put 少 before the action to reduce: 看手機."
           }
         ],
-        "fallbackRepair": "Use 多 + 練習 and 少 + 看手機.",
+        "fallbackRepair": "Put 多 before the action to increase: 練習. Put 少 before the action to reduce: 看手機.",
         "result": {
           "traditional": "快要考試了，你要多練習，少看手機。",
           "pinyin": "Kuài yào kǎoshì le, nǐ yào duō liànxí, shǎo kàn shǒujī.",
           "english": "The exam is coming; you should practise more and look at your phone less.",
           "simplified": "快要考试了，你要多练习，少看手机。"
         },
-        "quiet": true
+        "quiet": true,
+        "gaps": true
       },
       {
         "id": "l10g3-own-spot",
@@ -2069,6 +2090,21 @@
               "english": "If I have a lot of money, I will buy a car.",
               "simplified": "要是我有很多钱，就买车。"
             }
+          },
+          {
+            "order": [
+              "我",
+              "要是",
+              "有很多錢",
+              "就",
+              "買車"
+            ],
+            "sentence": {
+              "traditional": "我要是有很多錢就買車。",
+              "simplified": "我要是有很多钱就买车。",
+              "pinyin": "Wǒ yàoshi yǒu hěn duō qián jiù mǎi chē.",
+              "english": "If I have a lot of money, I will buy a car."
+            }
           }
         ],
         "repairs": [
@@ -2132,6 +2168,21 @@
               "pinyin": "Rúguǒ wǒ de shǒujī bù néng shàngwǎng, jiù wèn péngyǒu.",
               "english": "If my phone cannot go online, I will ask a friend.",
               "simplified": "如果我的手机不能上网，就问朋友。"
+            }
+          },
+          {
+            "order": [
+              "我的手機",
+              "如果",
+              "不能上網",
+              "就",
+              "問朋友"
+            ],
+            "sentence": {
+              "traditional": "我的手機如果不能上網就問朋友。",
+              "simplified": "我的手机如果不能上网就问朋友。",
+              "pinyin": "Wǒ de shǒujī rúguǒ bù néng shàngwǎng jiù wèn péngyǒu.",
+              "english": "If my phone cannot go online, I will ask a friend."
             }
           }
         ],

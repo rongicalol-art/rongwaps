@@ -246,6 +246,51 @@
        "pinyin": "Gēn mèimei yíyàng kuài.",
        "english": "As fast as younger sister."
       }
+     },
+     {
+      "order": [
+       "姐姐",
+       "跟",
+       "妹妹",
+       "跑得",
+       "一樣快"
+      ],
+      "sentence": {
+       "traditional": "姐姐跟妹妹跑得一樣快。",
+       "simplified": "姐姐跟妹妹跑得一樣快。",
+       "pinyin": "Jiějie gēn mèimei pǎo de yíyàng kuài.",
+       "english": "Older sister runs as fast as younger sister."
+      }
+     },
+     {
+      "order": [
+       "妹妹",
+       "跑得",
+       "跟",
+       "姐姐",
+       "一樣快"
+      ],
+      "sentence": {
+       "traditional": "妹妹跑得跟姐姐一樣快。",
+       "simplified": "妹妹跑得跟姐姐一樣快。",
+       "pinyin": "Mèimei pǎo de gēn jiějie yíyàng kuài.",
+       "english": "Older sister runs as fast as younger sister."
+      }
+     },
+     {
+      "order": [
+       "妹妹",
+       "跟",
+       "姐姐",
+       "跑得",
+       "一樣快"
+      ],
+      "sentence": {
+       "traditional": "妹妹跟姐姐跑得一樣快。",
+       "simplified": "妹妹跟姐姐跑得一樣快。",
+       "pinyin": "Mèimei gēn jiějie pǎo de yíyàng kuài.",
+       "english": "Older sister runs as fast as younger sister."
+      }
      }
     ],
     "repairs": [
@@ -348,12 +393,17 @@
      {
       "segments": [
        {
+        "type": "slot",
+        "id": "g0",
+        "answers": []
+       },
+       {
         "type": "text",
         "traditional": "你"
        },
        {
         "type": "slot",
-        "id": "g0",
+        "id": "g1",
         "answers": [
          "一"
         ]
@@ -364,15 +414,23 @@
        },
        {
         "type": "slot",
-        "id": "g1",
+        "id": "g2",
         "answers": [
          "就"
         ]
        },
        {
         "type": "text",
-        "traditional": "給我打電話。",
-        "simplified": "给我打电话。"
+        "traditional": "給我打電話"
+       },
+       {
+        "type": "slot",
+        "id": "g3",
+        "answers": []
+       },
+       {
+        "type": "text",
+        "traditional": "。"
        }
       ],
       "me": true
@@ -389,48 +447,72 @@
      },
      {
       "traditional": "以後",
-      "pinyin": "yǐhòu",
-      "simplified": "以后"
+      "simplified": "以后",
+      "pinyin": "yǐhòu"
      }
     ],
     "repairs": [
+     {
+      "placed": [
+       "以後"
+      ],
+      "mark": [
+       "以後"
+      ],
+      "note": "以後 says “after”; 一…就… expresses the immediate sequence requested here."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "一"
+      },
+      "note": "Put 一 before the trigger 到家."
+     },
      {
       "slot": {
        "id": "g0",
        "tile": "就"
       },
-      "note": "一 marks the trigger, before 到家."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "以後"
-      },
-      "note": "Use 一 before the trigger, not 以後."
+      "note": "Put 就 before the result 給我打電話."
      },
      {
       "slot": {
        "id": "g1",
+       "tile": "就"
+      },
+      "note": "Put 就 before the result 給我打電話."
+     },
+     {
+      "slot": {
+       "id": "g2",
        "tile": "一"
       },
-      "note": "就 marks the second action."
+      "note": "Put 一 before the trigger 到家."
      },
      {
       "slot": {
-       "id": "g1",
-       "tile": "以後"
+       "id": "g3",
+       "tile": "一"
       },
-      "note": "Use 就 before the second action."
+      "note": "Put 一 before the trigger 到家."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "就"
+      },
+      "note": "Put 就 before the result 給我打電話."
      }
     ],
-    "fallbackRepair": "一 + trigger，就 + result.",
+    "fallbackRepair": "Put 一 before the trigger 到家. Put 就 before the result 給我打電話.",
     "result": {
      "traditional": "你一到家，就給我打電話。",
      "simplified": "你一到家，就给我打电话。",
      "pinyin": "Nǐ yí dào jiā, jiù gěi wǒ dǎ diànhuà.",
      "english": "Call me as soon as you get home."
     },
-    "prompt": "Rewrite with 一……就……: call me as soon as you get home."
+    "prompt": "Rewrite with 一……就……: call me as soon as you get home.",
+    "gaps": true
    },
    {
     "id": "l15g3-p2",
@@ -440,12 +522,17 @@
      {
       "segments": [
        {
+        "type": "slot",
+        "id": "g0",
+        "answers": []
+       },
+       {
         "type": "text",
         "traditional": "他"
        },
        {
         "type": "slot",
-        "id": "g0",
+        "id": "g1",
         "answers": [
          "一"
         ]
@@ -456,15 +543,23 @@
        },
        {
         "type": "slot",
-        "id": "g1",
+        "id": "g2",
         "answers": [
          "就"
         ]
        },
        {
         "type": "text",
-        "traditional": "知道他不是台灣人。",
-        "simplified": "知道他不是台湾人。"
+        "traditional": "知道他不是台灣人"
+       },
+       {
+        "type": "slot",
+        "id": "g3",
+        "answers": []
+       },
+       {
+        "type": "text",
+        "traditional": "。"
        }
       ],
       "me": true
@@ -480,42 +575,65 @@
       "pinyin": "jiù"
      },
      {
-      "traditional": "馬上",
-      "pinyin": "mǎshàng",
-      "simplified": "马上"
+      "traditional": "以後",
+      "simplified": "以后",
+      "pinyin": "yǐhòu"
      }
     ],
     "repairs": [
+     {
+      "placed": [
+       "以後"
+      ],
+      "mark": [
+       "以後"
+      ],
+      "note": "以後 says “after”; 一…就… expresses the immediate result requested here."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "一"
+      },
+      "note": "Put 一 before the trigger 說話."
+     },
      {
       "slot": {
        "id": "g0",
        "tile": "就"
       },
-      "note": "一 marks the trigger, before 說話."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "馬上"
-      },
-      "note": "Use 一 before the trigger."
+      "note": "Put 就 before the result 知道."
      },
      {
       "slot": {
        "id": "g1",
+       "tile": "就"
+      },
+      "note": "Put 就 before the result 知道."
+     },
+     {
+      "slot": {
+       "id": "g2",
        "tile": "一"
       },
-      "note": "就 marks the immediate result."
+      "note": "Put 一 before the trigger 說話."
      },
      {
       "slot": {
-       "id": "g1",
-       "tile": "馬上"
+       "id": "g3",
+       "tile": "一"
       },
-      "note": "The pattern uses 就, not 馬上, for the result."
+      "note": "Put 一 before the trigger 說話."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "就"
+      },
+      "note": "Put 就 before the result 知道."
      }
     ],
-    "fallbackRepair": "一 + trigger，就 + result.",
+    "fallbackRepair": "Put 一 before the trigger 說話. Put 就 before the result 知道.",
     "result": {
      "traditional": "他一說話，大家就知道他不是台灣人。",
      "simplified": "他一说话，大家就知道他不是台湾人。",
@@ -523,7 +641,7 @@
      "english": "As soon as he speaks, everyone knows he is not Taiwanese."
     },
     "prompt": "Rewrite with 一……就……: everyone knows as soon as he speaks.",
-    "sub": "The result clause is already in the sentence: 他不是台灣人。"
+    "gaps": true
    },
    {
     "id": "l15g3-p3",
@@ -533,12 +651,17 @@
      {
       "segments": [
        {
+        "type": "slot",
+        "id": "g0",
+        "answers": []
+       },
+       {
         "type": "text",
         "traditional": "這件事我"
        },
        {
         "type": "slot",
-        "id": "g0",
+        "id": "g1",
         "answers": [
          "一"
         ]
@@ -549,15 +672,23 @@
        },
        {
         "type": "slot",
-        "id": "g1",
+        "id": "g2",
         "answers": [
          "就"
         ]
        },
        {
         "type": "text",
-        "traditional": "開始做了。",
-        "simplified": "开始做了。"
+        "traditional": "開始做了"
+       },
+       {
+        "type": "slot",
+        "id": "g3",
+        "answers": []
+       },
+       {
+        "type": "text",
+        "traditional": "。"
        }
       ],
       "me": true
@@ -573,49 +704,73 @@
       "pinyin": "jiù"
      },
      {
-      "traditional": "馬上",
-      "pinyin": "mǎshàng",
-      "simplified": "马上"
+      "traditional": "以後",
+      "simplified": "以后",
+      "pinyin": "yǐhòu"
      }
     ],
     "repairs": [
+     {
+      "placed": [
+       "以後"
+      ],
+      "mark": [
+       "以後"
+      ],
+      "note": "以後 says “after”; 一…就… expresses the immediate sequence requested here."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "一"
+      },
+      "note": "Put 一 before the trigger 決定."
+     },
      {
       "slot": {
        "id": "g0",
        "tile": "就"
       },
-      "note": "一 marks the trigger, before 決定."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "馬上"
-      },
-      "note": "Use 一 before the trigger."
+      "note": "Put 就 before the result 開始做."
      },
      {
       "slot": {
        "id": "g1",
+       "tile": "就"
+      },
+      "note": "Put 就 before the result 開始做."
+     },
+     {
+      "slot": {
+       "id": "g2",
        "tile": "一"
       },
-      "note": "就 marks the immediate result."
+      "note": "Put 一 before the trigger 決定."
      },
      {
       "slot": {
-       "id": "g1",
-       "tile": "馬上"
+       "id": "g3",
+       "tile": "一"
       },
-      "note": "The pattern uses 就, not 馬上, for the result."
+      "note": "Put 一 before the trigger 決定."
+     },
+     {
+      "slot": {
+       "id": "g3",
+       "tile": "就"
+      },
+      "note": "Put 就 before the result 開始做."
      }
     ],
-    "fallbackRepair": "一 + trigger，就 + result.",
+    "fallbackRepair": "Put 一 before the trigger 決定. Put 就 before the result 開始做.",
     "result": {
      "traditional": "這件事我一決定，就開始做了。",
      "simplified": "这件事我一决定，就开始做了。",
      "pinyin": "Zhè jiàn shì wǒ yí juédìng, jiù kāishǐ zuò le.",
      "english": "As soon as I decided this, I started doing it."
     },
-    "prompt": "Rewrite with 一……就……: as soon as I decided, I started."
+    "prompt": "Rewrite with 一……就……: as soon as I decided, I started.",
+    "gaps": true
    },
    {
     "id": "l15g3-own-spot",
@@ -913,6 +1068,31 @@
        "pinyin": "Tīng zhe yīnyuè, hē zhe kāfēi.",
        "english": "Listening to music and drinking coffee."
       }
+     },
+     {
+      "order": [
+       "宜文",
+       "喝著咖啡",
+       "聽著音樂"
+      ],
+      "sentence": {
+       "traditional": "宜文喝著咖啡聽著音樂。",
+       "simplified": "宜文喝着咖啡听着音乐。",
+       "pinyin": "Yíwén hē zhe kāfēi tīng zhe yīnyuè.",
+       "english": "Yiwen is listening to music and drinking coffee."
+      }
+     },
+     {
+      "order": [
+       "喝著咖啡",
+       "聽著音樂"
+      ],
+      "sentence": {
+       "traditional": "喝著咖啡聽著音樂。",
+       "simplified": "喝着咖啡听着音乐。",
+       "pinyin": "Hē zhe kāfēi tīng zhe yīnyuè.",
+       "english": "Yiwen is listening to music and drinking coffee."
+      }
      }
     ],
     "repairs": [
@@ -921,18 +1101,10 @@
        "了"
       ],
       "note": "Both actions are continuing, so use 著, not 了."
-     },
-     {
-      "before": [
-       "喝著咖啡",
-       "聽著音樂"
-      ],
-      "note": "Both states can come in either order; keep 著 on each verb."
      }
     ],
     "fallbackRepair": "Two ongoing states: V著 + O，V著 + O.",
     "prompt": "Look at the picture. What is Yiwen doing?",
-    "sub": "The book prints no target phrases; the model follows the headphones and the drink in the picture.",
     "scene": {
      "type": "picture",
      "page": 354,

@@ -490,7 +490,7 @@
        },
        {
         "type": "text",
-        "traditional": "。"
+        "traditional": "？"
        }
       ],
       "me": false,
@@ -505,7 +505,8 @@
         "type": "slot",
         "id": "g1",
         "answers": [
-         "沒"
+         "沒",
+         "沒有"
         ]
        },
        {
@@ -523,28 +524,24 @@
     "tiles": [
      {
       "traditional": "沒",
-      "pinyin": "méi",
-      "simplified": "没"
+      "pinyin": "méi"
      },
      {
       "traditional": "沒",
-      "pinyin": "méi",
-      "simplified": "没"
+      "pinyin": "méi"
      },
      {
       "traditional": "沒有",
-      "pinyin": "méiyǒu",
-      "simplified": "没有"
+      "pinyin": "méiyǒu"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu"
      },
      {
       "traditional": "還沒",
-      "pinyin": "háiméi",
-      "simplified": "还没"
-     },
-     {
-      "traditional": "還沒",
-      "pinyin": "háiméi",
-      "simplified": "还没"
+      "simplified": "还没",
+      "pinyin": "hái méi"
      }
     ],
     "repairs": [
@@ -561,16 +558,9 @@
        "tile": "還沒"
       },
       "note": "He was sick yesterday, so the action did not happen at all; use 沒."
-     },
-     {
-      "slot": {
-       "id": "g1",
-       "tile": "沒有"
-      },
-      "note": "Use the short answer 沒 before the verb."
      }
     ],
-    "fallbackRepair": "Did not happen: 沒 + verb.",
+    "fallbackRepair": "Use 沒 or 沒有 for a past action that did not happen.",
     "result": {
      "traditional": "昨天他來上課了沒？沒來，因為他生病了。",
      "simplified": "昨天他来上课了没？没来，因为他生病了。",
@@ -580,13 +570,25 @@
     "prompt": "Choose 沒, 沒有 or 還沒.",
     "alternatives": [
      {
+      "traditional": "昨天他來上課了沒？沒有來，因為他生病了。",
+      "simplified": "昨天他来上课了没？没有来，因为他生病了。",
+      "pinyin": "Zuótiān tā lái shàngkè le méi? Méiyǒu lái, yīnwèi tā shēngbìng le.",
+      "english": "Did he come to class yesterday? He did not come, because he was sick."
+     },
+     {
       "traditional": "昨天他來上課了沒有？沒來，因為他生病了。",
       "simplified": "昨天他来上课了没有？没来，因为他生病了。",
       "pinyin": "Zuótiān tā lái shàngkè le méiyǒu? Méi lái, yīnwèi tā shēngbìng le.",
       "english": "Did he come to class yesterday? He did not come, because he was sick."
+     },
+     {
+      "traditional": "昨天他來上課了沒有？沒有來，因為他生病了。",
+      "simplified": "昨天他来上课了没有？没有来，因为他生病了。",
+      "pinyin": "Zuótiān tā lái shàngkè le méiyǒu? Méiyǒu lái, yīnwèi tā shēngbìng le.",
+      "english": "Did he come to class yesterday? He did not come, because he was sick."
      }
     ],
-    "successNote": "Use 沒 for a past action that did not happen."
+    "successNote": "沒 and 沒有 both work here; 還沒 adds the meaning “not yet”."
    },
    {
     "id": "l11g2-p2",
@@ -673,14 +675,14 @@
        "id": "g1",
        "tile": "沒"
       },
-      "note": "They decided to go tomorrow, so it is “not yet”: 還沒."
+      "note": "沒 and 沒有 say it has not happened; use 還沒 to include the requested meaning “not yet”."
      },
      {
       "slot": {
        "id": "g1",
        "tile": "沒有"
       },
-      "note": "The answer is “not yet”, so use 還沒 before 去."
+      "note": "沒 and 沒有 say it has not happened; use 還沒 to include the requested meaning “not yet”."
      },
      {
       "slot": {
@@ -704,7 +706,7 @@
      "pinyin": "Tāmen qù túshūguǎn le méiyǒu? Háiméi, tāmen juédìng míngtiān qù.",
      "english": "Did they go to the library? Not yet; they decided to go tomorrow."
     },
-    "prompt": "Choose 沒, 沒有 or 還沒.",
+    "prompt": "Complete the chat. Say “not yet” for the action that is still planned.",
     "alternatives": [
      {
       "traditional": "他們去圖書館了沒？還沒，他們決定明天去。",
@@ -729,6 +731,7 @@
         "type": "slot",
         "id": "g0",
         "answers": [
+         "沒",
          "沒有"
         ]
        },
@@ -753,7 +756,8 @@
         "type": "slot",
         "id": "g1",
         "answers": [
-         "沒"
+         "沒",
+         "沒有"
         ]
        },
        {
@@ -771,18 +775,24 @@
     "tiles": [
      {
       "traditional": "沒",
-      "pinyin": "méi",
-      "simplified": "没"
+      "pinyin": "méi"
+     },
+     {
+      "traditional": "沒",
+      "pinyin": "méi"
      },
      {
       "traditional": "沒有",
-      "pinyin": "méiyǒu",
-      "simplified": "没有"
+      "pinyin": "méiyǒu"
+     },
+     {
+      "traditional": "沒有",
+      "pinyin": "méiyǒu"
      },
      {
       "traditional": "還沒",
-      "pinyin": "háiméi",
-      "simplified": "还没"
+      "simplified": "还没",
+      "pinyin": "hái méi"
      }
     ],
     "repairs": [
@@ -799,30 +809,37 @@
        "tile": "還沒"
       },
       "note": "The answer says “I don’t like movies”; the action simply did not happen, so use 沒."
-     },
-     {
-      "slot": {
-       "id": "g1",
-       "tile": "沒有"
-      },
-      "note": "Use the short answer 沒 before 看."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "沒"
-      },
-      "note": "This question uses the full 了沒有 ending; put the short 沒 in the answer blank, not here."
      }
     ],
-    "fallbackRepair": "Question ending 了沒有; answer 沒 + verb.",
+    "fallbackRepair": "Use 沒 or 沒有 for a past action that did not happen.",
     "result": {
      "traditional": "聽說這部電影很好看，你看了沒有？我沒看，我不喜歡看電影。",
      "simplified": "听说这部电影很好看，你看了没有？我没看，我不喜欢看电影。",
      "pinyin": "Tīngshuō zhè bù diànyǐng hěn hǎokàn, nǐ kàn le méiyǒu? Wǒ méi kàn, wǒ bù xǐhuān kàn diànyǐng.",
      "english": "I heard this movie is good; did you see it? I did not; I do not like watching movies."
     },
-    "prompt": "Choose 沒, 沒有 or 還沒."
+    "prompt": "Choose 沒, 沒有 or 還沒.",
+    "alternatives": [
+     {
+      "traditional": "聽說這部電影很好看，你看了沒？我沒有看，我不喜歡看電影。",
+      "simplified": "听说这部电影很好看，你看了没？我没有看，我不喜欢看电影。",
+      "pinyin": "Tīngshuō zhè bù diànyǐng hěn hǎokàn, nǐ kàn le méi? Wǒ méiyǒu kàn, wǒ bù xǐhuān kàn diànyǐng.",
+      "english": "I heard this movie is good; did you see it? I did not; I do not like watching movies."
+     },
+     {
+      "traditional": "聽說這部電影很好看，你看了沒？我沒看，我不喜歡看電影。",
+      "simplified": "听说这部电影很好看，你看了没？我没看，我不喜欢看电影。",
+      "pinyin": "Tīngshuō zhè bù diànyǐng hěn hǎokàn, nǐ kàn le méi? Wǒ méi kàn, wǒ bù xǐhuān kàn diànyǐng.",
+      "english": "I heard this movie is good; did you see it? I did not; I do not like watching movies."
+     },
+     {
+      "traditional": "聽說這部電影很好看，你看了沒有？我沒有看，我不喜歡看電影。",
+      "simplified": "听说这部电影很好看，你看了没有？我没有看，我不喜欢看电影。",
+      "pinyin": "Tīngshuō zhè bù diànyǐng hěn hǎokàn, nǐ kàn le méiyǒu? Wǒ méiyǒu kàn, wǒ bù xǐhuān kàn diànyǐng.",
+      "english": "I heard this movie is good; did you see it? I did not; I do not like watching movies."
+     }
+    ],
+    "successNote": "沒 and 沒有 both work here; 還沒 adds the meaning “not yet”."
    },
    {
     "id": "l11g2-p4",
@@ -909,14 +926,14 @@
        "id": "g1",
        "tile": "沒"
       },
-      "note": "He will eat after exercising, so it is “not yet”: 還沒."
+      "note": "沒 and 沒有 say it has not happened; use 還沒 to include the requested meaning “not yet”."
      },
      {
       "slot": {
        "id": "g1",
        "tile": "沒有"
       },
-      "note": "The answer is “not yet”, so use 還沒 before 吃."
+      "note": "沒 and 沒有 say it has not happened; use 還沒 to include the requested meaning “not yet”."
      },
      {
       "slot": {
@@ -940,7 +957,7 @@
      "pinyin": "Gēge chī zǎofàn le méiyǒu? Háiméi, tā yào xiān yùndòng zài chī.",
      "english": "Has older brother eaten breakfast? Not yet; he wants to exercise first, then eat."
     },
-    "prompt": "Choose 沒, 沒有 or 還沒.",
+    "prompt": "Complete the chat. Say “not yet” for the action that is still planned.",
     "alternatives": [
      {
       "traditional": "哥哥吃早飯了沒？還沒，他要先運動再吃。",
@@ -1674,6 +1691,33 @@
        "pinyin": "Zài xǐ.",
        "english": "Wash them later."
       }
+     },
+     {
+      "order": [
+       "明天",
+       "我們",
+       "再",
+       "洗"
+      ],
+      "sentence": {
+       "traditional": "明天我們再洗。",
+       "simplified": "明天我们再洗。",
+       "pinyin": "Míngtiān wǒmen zài xǐ.",
+       "english": "We will wash them tomorrow."
+      }
+     },
+     {
+      "order": [
+       "我們",
+       "再",
+       "洗"
+      ],
+      "sentence": {
+       "traditional": "我們再洗。",
+       "simplified": "我们再洗。",
+       "pinyin": "Wǒmen zài xǐ.",
+       "english": "We will wash them tomorrow."
+      }
      }
     ],
     "repairs": [
@@ -1757,6 +1801,33 @@
        "simplified": "再去。",
        "pinyin": "Zài qù.",
        "english": "Go later."
+      }
+     },
+     {
+      "order": [
+       "明天",
+       "我們",
+       "再",
+       "去"
+      ],
+      "sentence": {
+       "traditional": "明天我們再去。",
+       "simplified": "明天我们再去。",
+       "pinyin": "Míngtiān wǒmen zài qù.",
+       "english": "We will go tomorrow."
+      }
+     },
+     {
+      "order": [
+       "我們",
+       "再",
+       "去"
+      ],
+      "sentence": {
+       "traditional": "我們再去。",
+       "simplified": "我们再去。",
+       "pinyin": "Wǒmen zài qù.",
+       "english": "We will go tomorrow."
       }
      }
     ],

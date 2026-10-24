@@ -193,33 +193,47 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
                 "traditional": "我今天早上"
               },
               {
                 "type": "slot",
-                "id": "vo",
-                "answers": [
-                  "游泳"
-                ]
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "游泳"
               },
               {
                 "type": "slot",
-                "id": "v",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "游"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
                 "answers": [
-                  "游"
+                  "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "了"
+                "traditional": "兩個小時"
               },
               {
                 "type": "slot",
-                "id": "d",
-                "answers": [
-                  "兩個小時"
-                ]
+                "id": "g4",
+                "answers": []
               },
               {
                 "type": "text",
@@ -231,92 +245,55 @@
         ],
         "tiles": [
           {
-            "traditional": "游泳",
-            "pinyin": "yóuyǒng"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
-            "traditional": "游",
-            "pinyin": "yóu"
-          },
-          {
-            "traditional": "兩個小時",
-            "pinyin": "liǎng ge xiǎoshí",
-            "simplified": "两个小时"
-          },
-          {
-            "traditional": "一個小時",
-            "pinyin": "yí ge xiǎoshí",
-            "simplified": "一个小时"
-          },
-          {
-            "traditional": "看",
-            "pinyin": "kàn"
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "看"
+              "過"
             ],
             "mark": [
-              "看"
+              "過"
             ],
-            "note": "The picture shows swimming, so use 游泳 and its repeated verb 游."
-          },
-          {
-            "placed": [
-              "一個小時"
-            ],
-            "mark": [
-              "一個小時"
-            ],
-            "title": "Try the requested meaning",
-            "note": "From 6:00 to 8:00 is 兩個小時."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
             "slot": {
-              "id": "vo",
-              "tile": "游"
+              "id": "g0",
+              "tile": "了"
             },
-            "note": "The object slot takes 游泳; 游 is the repeated verb before 了."
+            "note": "Put 了 directly after the verb, before the duration."
           },
           {
             "slot": {
-              "id": "vo",
-              "tile": "兩個小時"
+              "id": "g1",
+              "tile": "了"
             },
-            "note": "The object slot takes 游泳; 兩個小時 is the duration after 了."
+            "note": "Put 了 directly after the verb, before the duration."
           },
           {
             "slot": {
-              "id": "v",
-              "tile": "游泳"
+              "id": "g2",
+              "tile": "了"
             },
-            "note": "The repeated-verb slot takes 游; 游泳 is the object before it."
+            "note": "Put 了 directly after the verb, before the duration."
           },
           {
             "slot": {
-              "id": "v",
-              "tile": "兩個小時"
+              "id": "g4",
+              "tile": "了"
             },
-            "note": "The repeated-verb slot takes 游; 兩個小時 is the duration after 了."
-          },
-          {
-            "slot": {
-              "id": "d",
-              "tile": "游泳"
-            },
-            "note": "The duration slot takes 兩個小時; 游泳 is the object."
-          },
-          {
-            "slot": {
-              "id": "d",
-              "tile": "游"
-            },
-            "note": "The duration slot takes 兩個小時; 游 is the repeated verb."
+            "note": "Put 了 directly after the verb, before the duration."
           }
         ],
-        "fallbackRepair": "Use 游泳 + 游 before 了 + the duration.",
+        "fallbackRepair": "Put 了 directly after the verb, before the duration. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我今天早上游泳游了兩個小時。",
           "pinyin": "Wǒ jīntiān zǎoshang yóuyǒng yóu le liǎng ge xiǎoshí.",
@@ -334,7 +311,7 @@
           ],
           "alt": "Two swimmer-and-clock panels with a down arrow; the clocks read 6:00 and 8:00."
         },
-        "sub": "Editorial model; the printed clocks read 6:00 and 8:00."
+        "gaps": true
       },
       {
         "id": "l14g1-p4",
@@ -345,15 +322,47 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "我昨天晚上看電腦看了"
+                "traditional": "我昨天晚上"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "看電腦"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "看"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
                 "answers": [
-                  "半個小時"
+                  "了"
                 ]
+              },
+              {
+                "type": "text",
+                "traditional": "半個小時"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
+                "answers": []
               },
               {
                 "type": "text",
@@ -365,42 +374,55 @@
         ],
         "tiles": [
           {
-            "traditional": "半個小時",
-            "pinyin": "bàn ge xiǎoshí",
-            "simplified": "半个小时"
-          },
-          {
-            "traditional": "一個小時",
-            "pinyin": "yí ge xiǎoshí",
-            "simplified": "一个小时"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一個小時"
+              "過"
             ],
             "mark": [
-              "一個小時"
+              "過"
             ],
-            "title": "Try the requested meaning",
-            "note": "The clock shows half an hour, so use 半個小時."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
-            "placed": [
-              "了"
-            ],
-            "mark": [
-              "了"
-            ],
-            "note": "了 is already printed after 看; the gap needs the duration."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
           }
         ],
-        "fallbackRepair": "Put the duration 半個小時 after 了.",
+        "fallbackRepair": "Put 了 directly after the verb, before the duration. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我昨天晚上看電腦看了半個小時。",
           "pinyin": "Wǒ zuótiān wǎnshang kàn diànnǎo kàn le bàn ge xiǎoshí.",
@@ -417,28 +439,59 @@
             0.12
           ],
           "alt": "A woman at a computer; clocks show 7:00 and 7:30."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g1-p5",
         "source": "p.320 #3",
         "kind": "slot-build",
-        "prompt": "You sang for several hours last weekend. Complete the sentence with one possible duration.",
+        "prompt": "You sang for three hours last weekend. Complete the sentence.",
         "lines": [
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "我們上週末唱歌唱了"
+                "traditional": "我們上週末"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "唱歌"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "唱"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
                 "answers": [
-                  "三個小時",
-                  "兩個小時",
-                  "四個小時"
+                  "了"
                 ]
+              },
+              {
+                "type": "text",
+                "traditional": "三個小時"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
+                "answers": []
               },
               {
                 "type": "text",
@@ -450,58 +503,61 @@
         ],
         "tiles": [
           {
-            "traditional": "三個小時",
-            "pinyin": "sān ge xiǎoshí",
-            "simplified": "三个小时"
-          },
-          {
-            "traditional": "兩個小時",
-            "pinyin": "liǎng ge xiǎoshí",
-            "simplified": "两个小时"
-          },
-          {
-            "traditional": "四個小時",
-            "pinyin": "sì ge xiǎoshí",
-            "simplified": "四个小时"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "了"
+              "過"
             ],
             "mark": [
-              "了"
+              "過"
             ],
-            "note": "了 is already printed after 唱; the gap needs the duration."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
+          },
+          {
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
           }
         ],
-        "fallbackRepair": "Put 三個小時 after 了.",
+        "fallbackRepair": "Put 了 directly after the verb, before the duration. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我們上週末唱歌唱了三個小時。",
           "pinyin": "Wǒmen shàng zhōumò chànggē chàng le sān ge xiǎoshí.",
           "english": "We sang for three hours last weekend.",
           "simplified": "我们上周末唱歌唱了三个小时。"
         },
-        "alternatives": [
-          {
-            "traditional": "我們上週末唱歌唱了兩個小時。",
-            "pinyin": "Wǒmen shàng zhōumò chànggē chàng le liǎng ge xiǎoshí.",
-            "english": "We sang for two hours last weekend.",
-            "simplified": "我们上周末唱歌唱了两个小时。"
-          },
-          {
-            "traditional": "我們上週末唱歌唱了四個小時。",
-            "pinyin": "Wǒmen shàng zhōumò chànggē chàng le sì ge xiǎoshí.",
-            "english": "We sang for four hours last weekend.",
-            "simplified": "我们上周末唱歌唱了四个小时。"
-          }
-        ],
-        "sub": "Editorial model; the book does not print a duration for this picture.",
         "scene": {
           "type": "picture",
           "page": 320,
@@ -512,7 +568,8 @@
             0.12
           ],
           "alt": "Four people singing from song sheets."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g1-p6",
@@ -523,19 +580,53 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "我昨天下午看了"
+                "traditional": "我昨天下午"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "看"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
                 "answers": [
-                  "兩個小時"
+                  "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "的書。"
+                "traditional": "兩個小時"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": [
+                  "的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "書"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
               }
             ],
             "me": true
@@ -543,42 +634,86 @@
         ],
         "tiles": [
           {
-            "traditional": "兩個小時",
-            "pinyin": "liǎng ge xiǎoshí",
-            "simplified": "两个小时"
-          },
-          {
-            "traditional": "一個小時",
-            "pinyin": "yí ge xiǎoshí",
-            "simplified": "一个小时"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一個小時"
+              "得"
             ],
             "mark": [
-              "一個小時"
+              "得"
             ],
-            "title": "Try the requested meaning",
-            "note": "The clock shows two hours."
+            "note": "得 introduces how an action is done; 的 links the duration to the noun here."
           },
           {
-            "placed": [
-              "了"
-            ],
-            "mark": [
-              "了"
-            ],
-            "note": "了 is already printed after 看; the gap needs the duration."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g0",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
           }
         ],
-        "fallbackRepair": "Put 兩個小時 before 的書.",
+        "fallbackRepair": "Put 了 directly after the verb, before the duration. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我昨天下午看了兩個小時的書。",
           "pinyin": "Wǒ zuótiān xiàwǔ kàn le liǎng ge xiǎoshí de shū.",
@@ -595,7 +730,8 @@
             0.08
           ],
           "alt": "A girl reading an open book; caption 2:00 PM to 4:00 PM."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g1-p7",
@@ -606,19 +742,53 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "我前天晚上看了"
+                "traditional": "我前天晚上"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "看"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
                 "answers": [
-                  "一個半"
+                  "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "小時的書。"
+                "traditional": "一個半小時"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": [
+                  "的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "書"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
               }
             ],
             "me": true
@@ -626,42 +796,86 @@
         ],
         "tiles": [
           {
-            "traditional": "一個半",
-            "pinyin": "yí ge bàn",
-            "simplified": "一个半"
-          },
-          {
-            "traditional": "一個",
-            "pinyin": "yí ge",
-            "simplified": "一个"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一個"
+              "得"
             ],
             "mark": [
-              "一個"
+              "得"
             ],
-            "title": "Try the requested meaning",
-            "note": "An hour and a half is 一個半小時."
+            "note": "得 introduces how an action is done; 的 links the duration to the noun here."
           },
           {
-            "placed": [
-              "了"
-            ],
-            "mark": [
-              "了"
-            ],
-            "note": "了 is already printed after 看; the gap needs the duration."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g0",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
           }
         ],
-        "fallbackRepair": "Put 一個半 before 小時的書.",
+        "fallbackRepair": "Put 了 directly after the verb, before the duration. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我前天晚上看了一個半小時的書。",
           "pinyin": "Wǒ qiántiān wǎnshang kàn le yí ge bàn xiǎoshí de shū.",
@@ -678,7 +892,8 @@
             0.08
           ],
           "alt": "A person studying at a desk; caption 8:00 PM to 9:30 PM."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g1-p8",
@@ -689,19 +904,53 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "我上週末上午開了兩個小時"
+                "traditional": "我上週末上午"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "開"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
                 "answers": [
-                  "十分鐘"
+                  "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "的車。"
+                "traditional": "兩個小時十分鐘"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": [
+                  "的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "車"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。"
               }
             ],
             "me": true
@@ -709,40 +958,86 @@
         ],
         "tiles": [
           {
-            "traditional": "十分鐘",
-            "pinyin": "shí fēnzhōng",
-            "simplified": "十分钟"
-          },
-          {
-            "traditional": "十分",
-            "pinyin": "shí fēn"
-          },
-          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "十分"
+              "得"
             ],
             "mark": [
-              "十分"
+              "得"
             ],
-            "note": "The extra time is 十分鐘, with 鐘."
+            "note": "得 introduces how an action is done; 的 links the duration to the noun here."
           },
           {
-            "placed": [
-              "了"
-            ],
-            "mark": [
-              "了"
-            ],
-            "note": "了 is already printed after 開; the gap needs the extra duration."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g0",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "了"
+            },
+            "note": "Put 了 directly after the verb, before the duration."
+          },
+          {
+            "slot": {
+              "id": "g4",
+              "tile": "的"
+            },
+            "note": "Put 的 between the duration and the noun."
           }
         ],
-        "fallbackRepair": "Add 十分鐘 to the two hours.",
+        "fallbackRepair": "Put 了 directly after the verb, before the duration. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我上週末上午開了兩個小時十分鐘的車。",
           "pinyin": "Wǒ shàng zhōumò shàngwǔ kāi le liǎng ge xiǎoshí shí fēnzhōng de chē.",
@@ -759,7 +1054,8 @@
             0.11
           ],
           "alt": "A woman driving with a map of Taiwan; caption 7:00 AM to 9:10 AM."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g1-own-1",
@@ -1045,23 +1341,46 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "他已經用電腦用了"
+                "traditional": "他已經"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "用電腦"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "用"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
                 "answers": [
-                  "十二個"
+                  "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "小時"
+                "traditional": "十二個小時"
               },
               {
                 "type": "slot",
-                "id": "le",
+                "id": "g4",
                 "answers": [
                   "了"
                 ]
@@ -1076,74 +1395,52 @@
         ],
         "tiles": [
           {
-            "traditional": "十二個",
-            "pinyin": "shí’èr ge",
-            "simplified": "十二个"
-          },
-          {
-            "traditional": "十個",
-            "pinyin": "shí ge",
-            "simplified": "十个"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "了",
             "pinyin": "le"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "十個小時"
+              "過"
             ],
             "mark": [
-              "十個小時"
+              "過"
             ],
-            "title": "Try the requested meaning",
-            "note": "From 9 a.m. to 9 p.m. is twelve hours."
-          },
-          {
-            "placed": [
-              "的"
-            ],
-            "mark": [
-              "的"
-            ],
-            "note": "The final slot needs 了, not 的."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
             "slot": {
-              "id": "d",
-              "tile": "十個"
-            },
-            "note": "The duration is 十二個小時; 十個 is too few for 9 a.m. to 9 p.m."
-          },
-          {
-            "slot": {
-              "id": "d",
+              "id": "g0",
               "tile": "了"
             },
-            "note": "The duration slot takes 十二個; 了 fills the final slot."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           },
           {
             "slot": {
-              "id": "le",
-              "tile": "十二個"
+              "id": "g1",
+              "tile": "了"
             },
-            "note": "The final slot takes 了; 十二個 belongs in the duration slot."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           },
           {
             "slot": {
-              "id": "le",
-              "tile": "十個"
+              "id": "g2",
+              "tile": "了"
             },
-            "note": "The final slot takes 了; 十個 is a wrong duration and belongs nowhere here."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           }
         ],
-        "fallbackRepair": "Put 十二個 before 小時 and a final 了 at the end.",
+        "fallbackRepair": "Put one 了 after the verb and another after the duration phrase to show the action continues now. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "他已經用電腦用了十二個小時了。",
           "pinyin": "Tā yǐjīng yòng diànnǎo yòng le shí’èr ge xiǎoshí le.",
@@ -1160,7 +1457,8 @@
             0.08
           ],
           "alt": "A person at a computer; caption 9:00 a.m. to 9:00 p.m."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g2-p5",
@@ -1171,19 +1469,46 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "他們已經騎腳踏車騎了"
+                "traditional": "他們已經"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "騎腳踏車"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "騎"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
                 "answers": [
-                  "兩個小時"
+                  "了"
                 ]
               },
               {
+                "type": "text",
+                "traditional": "兩個小時"
+              },
+              {
                 "type": "slot",
-                "id": "le",
+                "id": "g4",
                 "answers": [
                   "了"
                 ]
@@ -1198,60 +1523,52 @@
         ],
         "tiles": [
           {
-            "traditional": "兩個小時",
-            "pinyin": "liǎng ge xiǎoshí",
-            "simplified": "两个小时"
-          },
-          {
-            "traditional": "一個小時",
-            "pinyin": "yí ge xiǎoshí",
-            "simplified": "一个小时"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "了",
             "pinyin": "le"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一個小時"
+              "過"
             ],
             "mark": [
-              "一個小時"
+              "過"
             ],
-            "title": "Try the requested meaning",
-            "note": "From 7 to 9 p.m. is two hours."
-          },
-          {
-            "placed": [
-              "的"
-            ],
-            "mark": [
-              "的"
-            ],
-            "note": "The final slot needs 了, not 的."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
             "slot": {
-              "id": "d",
+              "id": "g0",
               "tile": "了"
             },
-            "note": "The duration slot takes 兩個小時; 了 fills the final slot."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           },
           {
             "slot": {
-              "id": "le",
-              "tile": "兩個小時"
+              "id": "g1",
+              "tile": "了"
             },
-            "note": "The final slot takes 了; 兩個小時 belongs in the duration slot."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           }
         ],
-        "fallbackRepair": "Put 兩個小時 after 了 and a final 了 at the end.",
+        "fallbackRepair": "Put one 了 after the verb and another after the duration phrase to show the action continues now. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "他們已經騎腳踏車騎了兩個小時了。",
           "pinyin": "Tāmen yǐjīng qí jiǎotàchē qí le liǎng ge xiǎoshí le.",
@@ -1268,7 +1585,8 @@
             0.108
           ],
           "alt": "Two people riding bicycles; caption 7:00 to 9:00 p.m."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g2-p6",
@@ -1279,19 +1597,46 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "他們已經跳舞跳了"
+                "traditional": "他們已經"
               },
               {
                 "type": "slot",
-                "id": "d",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "跳舞"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "跳"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
                 "answers": [
-                  "一個小時"
+                  "了"
                 ]
               },
               {
+                "type": "text",
+                "traditional": "一個小時"
+              },
+              {
                 "type": "slot",
-                "id": "le",
+                "id": "g4",
                 "answers": [
                   "了"
                 ]
@@ -1306,60 +1651,52 @@
         ],
         "tiles": [
           {
-            "traditional": "一個小時",
-            "pinyin": "yí ge xiǎoshí",
-            "simplified": "一个小时"
-          },
-          {
-            "traditional": "兩個小時",
-            "pinyin": "liǎng ge xiǎoshí",
-            "simplified": "两个小时"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "了",
             "pinyin": "le"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "兩個小時"
+              "過"
             ],
             "mark": [
-              "兩個小時"
+              "過"
             ],
-            "title": "Try the requested meaning",
-            "note": "From 8 to 9 p.m. is one hour."
-          },
-          {
-            "placed": [
-              "的"
-            ],
-            "mark": [
-              "的"
-            ],
-            "note": "The final slot needs 了, not 的."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
             "slot": {
-              "id": "d",
+              "id": "g0",
               "tile": "了"
             },
-            "note": "The duration slot takes 一個小時; 了 fills the final slot."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           },
           {
             "slot": {
-              "id": "le",
-              "tile": "一個小時"
+              "id": "g1",
+              "tile": "了"
             },
-            "note": "The final slot takes 了; 一個小時 belongs in the duration slot."
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           }
         ],
-        "fallbackRepair": "Put 一個小時 after 了 and a final 了 at the end.",
+        "fallbackRepair": "Put one 了 after the verb and another after the duration phrase to show the action continues now. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "他們已經跳舞跳了一個小時了。",
           "pinyin": "Tāmen yǐjīng tiàowǔ tiào le yí ge xiǎoshí le.",
@@ -1376,7 +1713,8 @@
             0.105
           ],
           "alt": "A couple ballroom dancing."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g2-p7",
@@ -1387,12 +1725,46 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "已經下雨下了一個小時"
+                "traditional": "已經"
               },
               {
                 "type": "slot",
-                "id": "le",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "下雨"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "下"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一個小時"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
                 "answers": [
                   "了"
                 ]
@@ -1411,43 +1783,54 @@
             "pinyin": "le"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "過",
-            "pinyin": "guo",
-            "simplified": "过"
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "的"
+              "過"
             ],
             "mark": [
-              "的"
+              "過"
             ],
-            "note": "The final slot needs 了, not 的."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
-            "placed": [
-              "過"
-            ],
-            "mark": [
-              "過"
-            ],
-            "note": "過 marks an experience; this action reaches now, so use 了."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g2",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           }
         ],
-        "fallbackRepair": "Add the final 了 after the duration.",
+        "fallbackRepair": "Put one 了 after the verb and another after the duration phrase to show the action continues now. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "已經下雨下了一個小時了。",
           "pinyin": "Yǐjīng xià yǔ xià le yí ge xiǎoshí le.",
           "english": "It has been raining for an hour.",
           "simplified": "已经下雨下了一个小时了。"
         },
-        "sub": "Editorial model; the book does not print a duration for this picture.",
         "scene": {
           "type": "picture",
           "page": 324,
@@ -1458,7 +1841,8 @@
             0.103
           ],
           "alt": "Taipei 101 in the rain."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g2-p8",
@@ -1469,12 +1853,46 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "我已經寫了十年的中文字"
+                "traditional": "我已經"
               },
               {
                 "type": "slot",
-                "id": "le",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "寫"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "十年"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "的中文字"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
                 "answers": [
                   "了"
                 ]
@@ -1493,43 +1911,54 @@
             "pinyin": "le"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "過",
-            "pinyin": "guo",
-            "simplified": "过"
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "的"
+              "過"
             ],
             "mark": [
-              "的"
+              "過"
             ],
-            "note": "The final slot needs 了, not 的."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
-            "placed": [
-              "過"
-            ],
-            "mark": [
-              "過"
-            ],
-            "note": "過 marks an experience; this duration reaches now, so use 了."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           }
         ],
-        "fallbackRepair": "Add the final 了 after the object.",
+        "fallbackRepair": "Put one 了 after the verb and another after the duration phrase to show the action continues now. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "我已經寫了十年的中文字了。",
           "pinyin": "Wǒ yǐjīng xiě le shí nián de Zhōngwén zì le.",
           "english": "I have been writing Chinese characters for ten years.",
           "simplified": "我已经写了十年的中文字了。"
         },
-        "sub": "Editorial model; the book does not print a duration for this picture.",
         "scene": {
           "type": "picture",
           "page": 324,
@@ -1540,7 +1969,8 @@
             0.103
           ],
           "alt": "A girl writing the character 好 at a desk."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g2-p9",
@@ -1551,12 +1981,46 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "你已經看了一個小時的書"
+                "traditional": "你已經"
               },
               {
                 "type": "slot",
-                "id": "le",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "看"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一個小時"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "的書"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
                 "answers": [
                   "了"
                 ]
@@ -1575,43 +2039,54 @@
             "pinyin": "le"
           },
           {
-            "traditional": "的",
-            "pinyin": "de"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "過",
-            "pinyin": "guo",
-            "simplified": "过"
+            "simplified": "过",
+            "pinyin": "guò"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "的"
+              "過"
             ],
             "mark": [
-              "的"
+              "過"
             ],
-            "note": "The final slot needs 了, not 的."
+            "note": "過 marks an experience; this sentence needs 了 for its duration."
           },
           {
-            "placed": [
-              "過"
-            ],
-            "mark": [
-              "過"
-            ],
-            "note": "過 marks an experience; this duration reaches now, so use 了."
+            "slot": {
+              "id": "g0",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g1",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
+          },
+          {
+            "slot": {
+              "id": "g3",
+              "tile": "了"
+            },
+            "note": "Put one 了 after the verb and another after the duration phrase to show the action continues now."
           }
         ],
-        "fallbackRepair": "Add the final 了 after the object.",
+        "fallbackRepair": "Put one 了 after the verb and another after the duration phrase to show the action continues now. Put 的 between the duration and the noun.",
         "result": {
           "traditional": "你已經看了一個小時的書了。",
           "pinyin": "Nǐ yǐjīng kàn le yí ge xiǎoshí de shū le.",
           "english": "You have been reading for an hour.",
           "simplified": "你已经看了一个小时的书了。"
         },
-        "sub": "Editorial model; the book does not print a duration for this picture.",
         "scene": {
           "type": "picture",
           "page": 324,
@@ -1622,7 +2097,8 @@
             0.125
           ],
           "alt": "A boy reading at a desk while a woman stands behind him."
-        }
+        },
+        "gaps": true
       },
       {
         "id": "l14g2-own-order",
@@ -2003,7 +2479,7 @@
         "id": "l14g3-p5",
         "source": "p.333 #2",
         "kind": "order-build",
-        "prompt": "Beef dumplings cost eight yuan each; pork dumplings cost five. Compare them.",
+        "prompt": "Beef dumplings cost eight yuan each; pork dumplings cost five. Compare them. Start with 牛肉餃子.",
         "tiles": [
           {
             "traditional": "牛肉餃子",
@@ -2060,7 +2536,7 @@
               "便宜"
             ],
             "title": "Try the requested meaning",
-            "note": "Beef dumplings cost more, so use 貴."
+            "note": "Starting with the beef dumplings, say 貴 because they cost more; 便宜 works when the pork dumplings come first."
           }
         ],
         "fallbackRepair": "Put 比 before the pork dumplings and 貴 after them.",
@@ -2070,7 +2546,7 @@
         "id": "l14g3-p6",
         "source": "p.333 #3",
         "kind": "order-build",
-        "prompt": "You eat one bowl of rice; your brother eats three. Compare the amounts.",
+        "prompt": "You eat one bowl of rice; your brother eats three. Compare the amounts. Start with 哥哥.",
         "tiles": [
           {
             "traditional": "哥哥",
@@ -2124,7 +2600,7 @@
               "少"
             ],
             "title": "Try the requested meaning",
-            "note": "He eats three bowls and you eat one, so use 多."
+            "note": "Starting with 哥哥, say 多 because he eats more; 少 works when 我 comes first."
           }
         ],
         "fallbackRepair": "Put 比 between 哥哥吃的飯 and 我, then 多.",

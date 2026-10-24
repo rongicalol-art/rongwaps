@@ -704,6 +704,21 @@
        "pinyin": "Liù diǎn jiù dào xuéxiào le.",
        "english": "I got to school at six."
       }
+     },
+     {
+      "order": [
+       "六點",
+       "我",
+       "就",
+       "到學校",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "六點我就到學校了。",
+       "simplified": "六点我就到学校了。",
+       "pinyin": "Liù diǎn wǒ jiù dào xuéxiào le.",
+       "english": "I got to school at six."
+      }
      }
     ],
     "repairs": [
@@ -1041,6 +1056,21 @@
        "pinyin": "Xià xīngqī èr jiù yào huíguó le.",
        "english": "She is going back next Tuesday."
       }
+     },
+     {
+      "order": [
+       "下星期二",
+       "她",
+       "就要",
+       "回國",
+       "了"
+      ],
+      "sentence": {
+       "traditional": "下星期二她就要回國了。",
+       "simplified": "下星期二她就要回国了。",
+       "pinyin": "Xià xīngqī èr tā jiù yào huíguó le.",
+       "english": "She is going back to her country next Tuesday."
+      }
      }
     ],
     "repairs": [
@@ -1066,12 +1096,17 @@
      {
       "segments": [
        {
+        "type": "slot",
+        "id": "g0",
+        "answers": []
+       },
+       {
         "type": "text",
         "traditional": "火車十分鐘以後"
        },
        {
         "type": "slot",
-        "id": "g0",
+        "id": "g1",
         "answers": [
          "就要"
         ]
@@ -1082,7 +1117,7 @@
        },
        {
         "type": "slot",
-        "id": "g1",
+        "id": "g2",
         "answers": [
          "了"
         ]
@@ -1111,35 +1146,44 @@
     ],
     "repairs": [
      {
+      "placed": [
+       "在"
+      ],
+      "mark": [
+       "在"
+      ],
+      "note": "在 marks an action happening now; the train arrives in ten minutes."
+     },
+     {
+      "slot": {
+       "id": "g0",
+       "tile": "就要"
+      },
+      "note": "Put 就要 before the coming event 來."
+     },
+     {
       "slot": {
        "id": "g0",
        "tile": "了"
       },
-      "note": "了 goes at the end, not before 來."
-     },
-     {
-      "slot": {
-       "id": "g0",
-       "tile": "在"
-      },
-      "note": "在 is “at”; the countdown takes 就要."
+      "note": "Put 了 at the end of the countdown statement."
      },
      {
       "slot": {
        "id": "g1",
+       "tile": "了"
+      },
+      "note": "Put 了 at the end of the countdown statement."
+     },
+     {
+      "slot": {
+       "id": "g2",
        "tile": "就要"
       },
-      "note": "就要 goes before the event 來."
-     },
-     {
-      "slot": {
-       "id": "g1",
-       "tile": "在"
-      },
-      "note": "在 is “at”; the countdown takes 就要."
+      "note": "Put 就要 before the coming event 來."
      }
     ],
-    "fallbackRepair": "Time + 就要 + event + 了.",
+    "fallbackRepair": "Put 就要 before the coming event 來. Put 了 at the end of the countdown statement.",
     "result": {
      "traditional": "火車十分鐘以後就要來了。",
      "simplified": "火车十分钟以后就要来了。",
@@ -1147,7 +1191,8 @@
      "english": "The train is coming in ten minutes."
     },
     "prompt": "The train comes in ten minutes. Complete the countdown.",
-    "successNote": "就要 goes before 來; 了 closes the sentence."
+    "successNote": "就要 goes before 來; 了 closes the sentence.",
+    "gaps": true
    }
   ]
  },
@@ -1189,9 +1234,8 @@
       "simplified": "半个小时"
      },
      {
-      "traditional": "跑半個",
-      "pinyin": "pǎo bàn ge",
-      "simplified": "跑半个"
+      "traditional": "休息",
+      "pinyin": "xiūxí"
      }
     ],
     "accepted": [
@@ -1220,14 +1264,31 @@
        "pinyin": "Pǎo bàn ge xiǎoshí.",
        "english": "Run for half an hour."
       }
+     },
+     {
+      "order": [
+       "每天",
+       "他",
+       "跑",
+       "半個小時"
+      ],
+      "sentence": {
+       "traditional": "每天他跑半個小時。",
+       "simplified": "每天他跑半个小时。",
+       "pinyin": "Měitiān tā pǎo bàn ge xiǎoshí.",
+       "english": "He runs for half an hour every day."
+      }
      }
     ],
     "repairs": [
      {
       "placed": [
-       "跑半個"
+       "休息"
       ],
-      "note": "Use the full duration 半個小時."
+      "mark": [
+       "休息"
+      ],
+      "note": "The question asks how long he runs, so use 跑 rather than 休息."
      },
      {
       "before": [
@@ -1263,9 +1324,8 @@
       "simplified": "十分钟"
      },
      {
-      "traditional": "休息需要",
-      "pinyin": "xiūxi xūyào",
-      "simplified": "休息需要"
+      "traditional": "走路",
+      "pinyin": "zǒulù"
      }
     ],
     "accepted": [
@@ -1300,9 +1360,12 @@
     "repairs": [
      {
       "placed": [
-       "休息需要"
+       "走路"
       ],
-      "note": "Put 需要 before the action 休息."
+      "mark": [
+       "走路"
+      ],
+      "note": "The question asks how long you need to rest; use 休息 rather than 走路."
      },
      {
       "before": [

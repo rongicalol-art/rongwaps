@@ -23,8 +23,8 @@
       "pinyin": "chànggē"
      },
      {
-      "traditional": "唱在歌",
-      "pinyin": "chàng zài gē"
+      "traditional": "要",
+      "pinyin": "yào"
      }
     ],
     "accepted": [
@@ -57,9 +57,12 @@
     "repairs": [
      {
       "placed": [
-       "唱在歌"
+       "要"
       ],
-      "note": "Keep 在 before the whole action: 他們在唱歌。"
+      "mark": [
+       "要"
+      ],
+      "note": "要 describes what someone is going to do; the picture shows an action already happening, so put 在 before the action."
      },
      {
       "before": [
@@ -108,9 +111,8 @@
       "simplified": "做什么"
      },
      {
-      "traditional": "做在什麼",
-      "pinyin": "zuò zài shénme",
-      "simplified": "做在什么"
+      "traditional": "要",
+      "pinyin": "yào"
      }
     ],
     "accepted": [
@@ -143,9 +145,12 @@
     "repairs": [
      {
       "placed": [
-       "做在什麼"
+       "要"
       ],
-      "note": "Build 在 + 做什麼: 他們在做什麼？"
+      "mark": [
+       "要"
+      ],
+      "note": "要 describes what someone is going to do; the picture shows an action already happening, so put 在 before the action."
      },
      {
       "before": [
@@ -197,9 +202,8 @@
       "simplified": "画画"
      },
      {
-      "traditional": "畫在畫",
-      "pinyin": "huà zài huà",
-      "simplified": "画在画"
+      "traditional": "要",
+      "pinyin": "yào"
      }
     ],
     "accepted": [
@@ -245,9 +249,12 @@
     "repairs": [
      {
       "placed": [
-       "畫在畫"
+       "要"
       ],
-      "note": "Keep 在 before the action 畫畫."
+      "mark": [
+       "要"
+      ],
+      "note": "要 describes what someone is going to do; the picture shows an action already happening, so put 在 before the action."
      },
      {
       "before": [
@@ -530,8 +537,8 @@
       "simplified": "下午四点"
      },
      {
-      "traditional": "到下午",
-      "pinyin": "dào xiàwǔ"
+      "traditional": "在",
+      "pinyin": "zài"
      }
     ],
     "accepted": [
@@ -568,9 +575,12 @@
     "repairs": [
      {
       "placed": [
-       "到下午"
+       "在"
       ],
-      "note": "到 needs a time after it; use 到下午四點."
+      "mark": [
+       "在"
+      ],
+      "note": "在 introduces a time; this task needs the full range 從 + start + 到 + finish."
      },
      {
       "before": [
@@ -940,9 +950,8 @@
       "pinyin": "qù shānshang"
      },
      {
-      "traditional": "再圖書館",
-      "pinyin": "zài túshūguǎn",
-      "simplified": "再图书馆"
+      "traditional": "也",
+      "pinyin": "yě"
      }
     ],
     "accepted": [
@@ -979,9 +988,12 @@
     "repairs": [
      {
       "placed": [
-       "再圖書館"
+       "也"
       ],
-      "note": "Use 再去 + place: 再去山上."
+      "mark": [
+       "也"
+      ],
+      "note": "也 adds another action; use 再 to show that the second trip comes after the first."
      },
      {
       "before": [
@@ -1207,6 +1219,20 @@
        "pinyin": "Bù néng shuōhuà.",
        "english": "He cannot speak."
       }
+     },
+     {
+      "order": [
+       "現在",
+       "他",
+       "不能",
+       "說話"
+      ],
+      "sentence": {
+       "traditional": "現在他不能說話。",
+       "simplified": "现在他不能说话。",
+       "pinyin": "Xiànzài tā bù néng shuōhuà.",
+       "english": "He cannot speak now."
+      }
      }
     ],
     "repairs": [
@@ -1290,6 +1316,20 @@
        "simplified": "不能打球。",
        "pinyin": "Bù néng dǎqiú.",
        "english": "He cannot play ball."
+      }
+     },
+     {
+      "order": [
+       "現在",
+       "他",
+       "不能",
+       "打球"
+      ],
+      "sentence": {
+       "traditional": "現在他不能打球。",
+       "simplified": "现在他不能打球。",
+       "pinyin": "Xiànzài tā bù néng dǎqiú.",
+       "english": "He cannot play ball now."
       }
      }
     ],
@@ -1380,6 +1420,21 @@
        "traditional": "一天能喝兩杯。",
        "simplified": "一天能喝兩杯。",
        "pinyin": "Yì tiān néng hē liǎng bēi.",
+       "english": "I can drink two cups a day."
+      }
+     },
+     {
+      "order": [
+       "一天",
+       "我",
+       "能",
+       "喝",
+       "兩杯"
+      ],
+      "sentence": {
+       "traditional": "一天我能喝兩杯。",
+       "simplified": "一天我能喝两杯。",
+       "pinyin": "Yì tiān wǒ néng hē liǎng bēi.",
        "english": "I can drink two cups a day."
       }
      }
@@ -1860,9 +1915,8 @@
       "simplified": "吗"
      },
      {
-      "traditional": "寄幫我",
-      "pinyin": "jì bāng wǒ",
-      "simplified": "寄帮我"
+      "traditional": "想",
+      "pinyin": "xiǎng"
      }
     ],
     "accepted": [
@@ -1899,9 +1953,12 @@
     "repairs": [
      {
       "placed": [
-       "寄幫我"
+       "想"
       ],
-      "note": "Use 幫我 before the action 寄信."
+      "mark": [
+       "想"
+      ],
+      "note": "想 asks what your friend wants to do; 能 asks for the help requested here."
      },
      {
       "notLast": "嗎",
@@ -1916,7 +1973,7 @@
      }
     ],
     "fallbackRepair": "Request: 你 + 能 + 幫我 + action + 嗎？",
-    "prompt": "Ask your friend to mail a letter for you.",
+    "prompt": "Ask whether your friend can help you mail a letter.",
     "scene": {
      "type": "picture",
      "page": 215,

@@ -53,6 +53,20 @@
               "english": "The school is close to the hospital.",
               "simplified": "学校离医院很近。"
             }
+          },
+          {
+            "order": [
+              "醫院",
+              "離",
+              "學校",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "醫院離學校很近。",
+              "simplified": "医院离学校很近。",
+              "pinyin": "Yīyuàn lí xuéxiào hěn jìn.",
+              "english": "The school is close to the hospital."
+            }
           }
         ],
         "repairs": [
@@ -127,6 +141,20 @@
               "pinyin": "Wǒ jiā lí bǎihuò gōngsī hěn yuǎn.",
               "english": "My home is far from the department store.",
               "simplified": "我家离百货公司很远。"
+            }
+          },
+          {
+            "order": [
+              "百貨公司",
+              "離",
+              "我家",
+              "很遠"
+            ],
+            "sentence": {
+              "traditional": "百貨公司離我家很遠。",
+              "simplified": "百货公司离我家很远。",
+              "pinyin": "Bǎihuò gōngsī lí wǒ jiā hěn yuǎn.",
+              "english": "My home is far from the department store."
             }
           }
         ],
@@ -204,6 +232,20 @@
               "english": "The school is close to the supermarket.",
               "simplified": "学校离超级市场很近。"
             }
+          },
+          {
+            "order": [
+              "超級市場",
+              "離",
+              "學校",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "超級市場離學校很近。",
+              "simplified": "超级市场离学校很近。",
+              "pinyin": "Chāojí shìchǎng lí xuéxiào hěn jìn.",
+              "english": "The school is close to the supermarket."
+            }
           }
         ],
         "repairs": [
@@ -277,6 +319,20 @@
               "pinyin": "Táiběi lí Gāoxióng hěn jìn, dā gāotiě zhǐyào yí ge bàn xiǎoshí.",
               "english": "Taipei is close to Kaohsiung; the high-speed train takes only an hour and a half.",
               "simplified": "台北离高雄很近，搭高铁只要一个半小时。"
+            }
+          },
+          {
+            "order": [
+              "高雄",
+              "離",
+              "台北",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "高雄離台北很近。",
+              "simplified": "高雄离台北很近。",
+              "pinyin": "Gāoxióng lí Táiběi hěn jìn.",
+              "english": "Taipei is close to Kaohsiung; the high-speed train takes only an hour and a half."
             }
           }
         ],
@@ -353,6 +409,20 @@
               "english": "My home is close to the MRT station; a three-minute walk gets there.",
               "simplified": "我家离捷运站很近，走三分钟就到了。"
             }
+          },
+          {
+            "order": [
+              "捷運站",
+              "離",
+              "我家",
+              "很近"
+            ],
+            "sentence": {
+              "traditional": "捷運站離我家很近。",
+              "simplified": "捷运站离我家很近。",
+              "pinyin": "Jiéyùn zhàn lí wǒ jiā hěn jìn.",
+              "english": "My home is close to the MRT station; a three-minute walk gets there."
+            }
           }
         ],
         "repairs": [
@@ -428,6 +498,20 @@
               "pinyin": "Táiwān lí wǒ de guójiā hěn yuǎn.",
               "english": "Taiwan is far from my country.",
               "simplified": "台湾离我的国家很远。"
+            }
+          },
+          {
+            "order": [
+              "我的國家",
+              "離",
+              "臺灣",
+              "很遠"
+            ],
+            "sentence": {
+              "traditional": "我的國家離臺灣很遠。",
+              "simplified": "我的国家离台湾很远。",
+              "pinyin": "Wǒ de guójiā lí Táiwān hěn yuǎn.",
+              "english": "Taiwan is far from my country."
             }
           }
         ],
@@ -590,6 +674,21 @@
               "pinyin": "Yínháng lí zhèlǐ bú tài yuǎn.",
               "english": "The bank is not too far from here.",
               "simplified": "银行离这里不太远。"
+            }
+          },
+          {
+            "order": [
+              "這裡",
+              "離",
+              "銀行",
+              "不太",
+              "遠"
+            ],
+            "sentence": {
+              "traditional": "這裡離銀行不太遠。",
+              "simplified": "这里离银行不太远。",
+              "pinyin": "Zhèlǐ lí yínháng bú tài yuǎn.",
+              "english": "The bank is not too far from here."
             }
           }
         ],

@@ -5,7 +5,9 @@ import {
   LESSON_NINE_PART_TWO,
 } from '../../src/data/grammar/lessonNine';
 import { evaluateGrammarPlacements, findCanonicalTile } from '../../src/utils/grammar/grammarExercise';
-import { validateInteractiveLessons } from '../acceptance_helpers';
+import { getPatternRowGroups } from '../../src/utils/grammar/grammarPatternLayout';
+import type { GrammarPractice } from '../../src/types/models';
+import { readJson, validateInteractiveLessons } from '../acceptance_helpers';
 
 const parts = [LESSON_NINE_PART_ONE, LESSON_NINE_PART_TWO];
 const pages = parts.flatMap((part) => part.grammarPages);
@@ -16,24 +18,30 @@ test('Lesson 9 follows two source dialogues with five ordered grammar points', (
   assert.deepEqual(pages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5]);
   assert.deepEqual(parts.map((part) => part.dialogue.lines.length), [8, 8]);
   assert.deepEqual(pages.map((page) => page.printedPages[0]), [205, 206, 207, 213, 216]);
-  assert.ok(pages.every((page) => page.examples.length >= 5));
+  // Printed numbered examples: three on each page, except 能's three groups of three.
+  assert.deepEqual(pages.map((page) => page.examples.length), [3, 3, 3, 9, 3]);
 });
 
-test('Lesson 9 gives every grammar point its own visual manipulative', () => {
-  assert.ok(pages[0].liveSceneLab);
-  assert.ok(pages[1].timeRangeLab);
-  assert.ok(pages[2].sequenceLab);
-  assert.ok(pages[3].abilityLab);
-  assert.ok(pages[4].compareLab);
+test('Lesson 9 preserves every printed exercise under its grammar point', () => {
+  const practice = readJson<Record<string, GrammarPractice>>('content/grammar-practice/lessonNine.json');
+  assert.deepEqual(Object.keys(practice), pages.map((page) => page.id));
+  assert.deepEqual(pages.map((page) => practice[page.id].items.filter((item) => item.source !== 'own').map((item) => item.source)), [
+    ['p.206 #1', 'p.206 #2', 'p.206 #3'],
+    ['p.207 #1', 'p.207 #2', 'p.207 #3'],
+    ['p.208 #1', 'p.208 #2', 'p.208 #3'],
+    ['p.213 #1', 'p.213 #2', 'p.213 #3', 'p.214 #1', 'p.214 #2', 'p.214 #3', 'p.215 #1', 'p.215 #2', 'p.215 #3'],
+    ['p.216 #1', 'p.216 #2', 'p.217 #3'],
+  ]);
 });
 
-test('Lesson 9 keeps authored pattern shapes compact', () => {
-  assert.deepEqual(pages.map((page) => page.patternColumns.length), [3, 2, 2, 3, 3]);
-  assert.ok(pages[1].patternRows.every((row) => row.complement.length === 0));
-  assert.ok(pages[2].patternRows.every((row) => row.complement.length === 0));
+test('Lesson 9 tables retain the printed grids without inventing tables for prose sections', () => {
+  assert.deepEqual(pages.map((page) => page.patternColumns.length), [3, 0, 6, 0, 4]);
+  assert.deepEqual(pages[1].patternRows, []);
+  assert.deepEqual(pages[3].subsections?.map((section) => section.patternRows?.length ?? 0), [0, 0, 0]);
+  assert.deepEqual(pages[2].patternRows.map((row) => getPatternRowGroups(row).length), [6, 6]);
   assert.deepEqual(
-    pages[4].patternRows[1].grammar.map((word) => word.traditional),
-    ['跑', '得', '比較'],
+    pages[4].patternRows.map((row) => getPatternRowGroups(row).flat().map((word) => word.traditional).join('')),
+    ['今天的天氣比較熱', '哥哥跑得比較快'],
   );
 });
 
