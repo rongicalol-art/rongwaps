@@ -1,6 +1,6 @@
 # Book 1 reading art: Luna execution brief
 
-Status: app illustrations are applied for Book 1 lessons 1–8, slots 1–3. Later lessons remain planned. Lesson 1 slot 1 is the approved style benchmark. Slot 3 is the short reading, not a third dialogue.
+Status: app illustrations are applied for Book 1 lessons 1–16, slots 1–3. Lesson 1 slot 1 remains the approved style benchmark. Slot 3 is the short reading, not a third dialogue.
 
 Source: `content/readings/book-1.json`. Character identities: `src/utils/lesson/speakerCharacters.ts` and the saved portraits. Scenes below select one illustrative moment from each reading; they are not literal transcriptions. Where a short reading leaves its narrator unnamed, named cast members are illustrative casting choices, not claims about narrator identity.
 
@@ -8,11 +8,11 @@ Source: `content/readings/book-1.json`. Character identities: `src/utils/lesson/
 
 > Use `docs/reference/READING_ART_PROMPTS.md` as the complete image-generation brief. Generate only the lesson/slot or batch I request. Do not generate the entire book unless I explicitly ask. Use the built-in image-generation tool and imagegen skill. For each image, read the master prompt and its scene block, inspect and attach the approved L01-R01 illustration as the style reference, then inspect and attach only the cast portraits listed for that scene. Combine the master prompt, the selected cast descriptions, and the scene block into one complete prompt; do not send a scene block alone. Preserve character identities while changing pose, expression, camera, and setting. Produce one 16:9 image per reading. Inspect the actual output against the acceptance checklist. Save new images under `output/imagegen/book-1/B1Lxx-R0x.png`, using a version suffix if the filename already exists, and save the exact submitted prompt beside each image as `.prompt.txt`. Show each result for review. Keep the approved L01-R01 image. Generation only: do not replace app assets, edit reading content, change packs, or wire images into the app. Stop after the requested batch.
 
-Suggested first batch: L01 slots 2–3 and L02 slots 1–3. Then proceed one lesson at a time so character/style drift is caught early. A batch means separate image-generation calls, one image per call.
+Generation batches A–C for Lessons 9–16 are complete. Generate additional images only for a newly requested batch; use separate image-generation calls, one image per call.
 
 ## Reference priority
 
-1. **Approved scene: composition quality, rendering, saturation, proportions.** `output/imagegen/b1l01-dialogue-1-new-classmate.png`. Original copy if needed: `/Users/ronianb.gica/.codex/generated_images/01a1587a-6697-7f01-aaa3-84dfbedcca29/exec-9437019f-37fd-4e30-8e11-dd6f00ce0e5a.png`. This is a style reference, not a template to reproduce its classroom or poses. Inspect it first. If neither copy exists, request the approved image again before generation.
+1. **Current primary approved style reference: composition quality, rendering, saturation and proportions.** `src/assets/images/readings/b1l01-r01-new-classmate-v8.webp`. Inspect it first as a style reference, not as a template for its classroom or poses.
 2. **Individual portraits: identity, hair, face, outfit colors.** All filenames below are relative to `src/assets/images/characters/portraits/`. Attach only the scene's listed cast; identify which reference belongs to which name in the submitted prompt.
 3. **Scene block: action, setting, props, framing.** The scene block overrides the master prompt only where explicitly stated, such as adding a winter coat over an established outfit.
 
@@ -41,7 +41,7 @@ Asset: one polished 16:9 landscape illustration for a Mandarin-learning reading.
 
 Use the attached approved classroom illustration as the visual benchmark. Use the separately attached, named character portraits to lock identities: recognizable faces, hairstyle silhouettes, skin tones, outfit colors, friendly geometric proportions. Adult university students, not children. Keep the same illustration system across the whole series; do not blend or swap character features. Repose the characters naturally for this scene.
 
-Style: Kurzgesagt-inspired approachable flat vector illustration, rounded geometric forms, smooth curves, simplified expressive faces, crisp shape boundaries and confident single-hue color blocks. Keep eyes open with a clear natural gaze by default; use closed eyes only for an explicitly requested blink, sleep or wink. Expressions should feel natural, varied and suited to the scene; avoid repeated broad smiles and keep mouths closed by default. Open mouths only for explicit laughter or singing. Treat the approved illustration as a reference for color, shape language and rendering only; do not copy its facial expression. Extremely saturated colors with strong warm/cool contrast: deep teal, indigo and cobalt against coral, golden yellow and cyan; occasional magenta accents. Let each scene choose a dominant pair rather than using every hue equally. Favor solid flat color, with sparse hard-edged shadow shapes and only the subtle tonal variation visible in the approved example. No conspicuous gradients, grain, texture, painterly shading, heavy outlines, photorealism or 3D.
+Style: Kurzgesagt-inspired approachable flat vector illustration, rounded geometric forms, smooth curves, simplified expressive faces, crisp shape boundaries and confident single-hue color blocks. Keep eyes open with a clear natural gaze by default; use closed eyes only for an explicitly requested blink, sleep or wink. Expressions should feel natural, varied and suited to the scene; avoid repeated broad smiles and keep mouths closed by default. Draw mouths as simple single-line marks, with no detailed lips or facial anatomy. Open mouths only for explicit laughter or singing, and keep them simple. The scene-specific facial-acting directions below override generic smile cues. Treat the approved illustration as a reference for color, shape language and rendering only; do not copy its facial expression. Extremely saturated colors with strong warm/cool contrast: deep teal, indigo and cobalt against coral, golden yellow and cyan; occasional magenta accents. Let each scene choose a dominant pair rather than using every hue equally. Favor solid flat color, with sparse hard-edged shadow shapes and only the subtle tonal variation visible in the approved example. No conspicuous gradients, grain, texture, painterly shading, heavy outlines, photorealism or 3D.
 
 Art direction: creative, dynamic and clearly composed. One primary action, strong silhouettes, purposeful diagonal or curved visual flow, expressive body language. Establish foreground, subject and background through overlap and scale. Vary camera height, distance, architecture and time of day across images. Give props physical places in the scene; do not scatter floating icons around people. Backgrounds support the action with a few deliberate shapes. Keep faces, hands and the key object comfortably within frame and readable at thumbnail size. Full image, no borders, no crop-dependent composition.
 
@@ -217,16 +217,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `guoan.webp`, `youmei.webp`.
 - Scene prompt: At a quiet school desk, Guoan points to a difficult passage in an open workbook while Youmei leans in thoughtfully, equally puzzled but ready to help find an answer. Use sparse abstract page marks only. In the far background through an open doorway, calligraphy brushes drying on a rack hint at Jiale's class without adding a third visible character. The workbook forms a strong diagonal between the friends, hands and faces. Warm coral desk edges against deep teal shelves and cyan daylight. Focus on shared problem-solving; no floating question marks or magical solution imagery.
+- Facial acting: Guoan is frustrated by the passage; Youmei is quietly puzzled but determined to help.
 
 ### B1L09-R02 — Finding time to study
 
 - Cast references: `zhongming.webp`, `jiale.webp`, `teacher.webp`.
 - Scene prompt: Zhongming and Jiale stop beside their teacher in a school corridor to ask for help arranging study time before midterms. Jiale holds a closed workbook against his chest, looking hopeful, while Zhongming gestures toward a spacious classroom across the corridor from shelves visible through a library entrance. The teacher listens with a reassuring open hand. Strong corridor perspective, a broad doorway framing the teacher, and geometric afternoon sunlight. Burnt orange and golden yellow against royal-blue architecture. No detailed calendars or timetable text; make the social act of asking for help the single focal moment.
+- Facial acting: Jiale is hopeful but worried about the clash; Zhongming is practical and assured; the teacher is reassuring.
 
 ### B1L09-R03 — Language exchange
 
 - Cast references: `youmei.webp`, `yiwen.webp`.
 - Scene prompt: Use Yiwen as the illustrative language-exchange partner. Youmei and Yiwen sit across the corner of a library table, taking turns speaking and writing in open notebooks. One points to a line while the other practices aloud with a small confident smile. Pages contain minimal abstract ink strokes, no readable Japanese or Chinese. A strong overhead three-quarter view connects their faces through a shared notebook. Cobalt evening outside the window, golden desk lamp and coral stationery against teal surroundings. The mood is warm mutual learning before an exam, with no score charts or flags.
+- Facial acting: Youmei concentrates on explaining; Yiwen has a small moment of recognition and understanding.
 
 ## Lesson 10 — Health and care
 
@@ -234,16 +237,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `yuanzhen.webp`, `teacher.webp`.
 - Scene prompt: At the classroom doorway, Yuanzhen tells the teacher that Guoan is sick and cannot attend. Yuanzhen holds her phone down at her side after receiving his message; the teacher responds attentively and gestures toward a small hygiene station with a mask packet and handwashing area nearby. Keep these contextual props understated; Guoan is absent and must not appear. Use a medium view framed by the open door, with one empty chair visible beyond. Coral scarf and warm sunlight contrast with royal-blue clothing and teal classroom surfaces. Compassionate and everyday, without medical infographics.
+- Facial acting: Yuanzhen is concerned about her absent friend; the teacher listens with calm seriousness.
 
 ### B1L10-R02 — A reassuring clinic visit
 
 - Cast references: `guoan.webp`, `doctor.webp`.
-- Scene prompt: Guoan sits in a simple clinic consultation, holding a tissue near his nose as the doctor calmly explains a small medicine packet and a glass of water on the desk. Make Guoan tired but reassured; keep his green hoodie visible beneath the navy jacket. The doctor wears the saved white coat and green shirt. View slightly over the doctor's shoulder toward Guoan, with the desktop curving into frame. Cool cyan clinic surfaces and deep teal shadows contrast with warm faces and restrained coral accents. No pill dosages, instructions, readable charts or exaggerated illness effects.
+- Scene prompt: Guoan sits in a simple clinic consultation, holding a tissue near his nose as the doctor calmly explains a small medicine packet and a glass of water on the desk. Make Guoan tired and uncomfortable but attentive; keep his green hoodie visible beneath the navy jacket. The doctor wears the saved white coat and green shirt. View slightly over the doctor's shoulder toward Guoan, with the desktop curving into frame. Cool cyan clinic surfaces and deep teal shadows contrast with warm faces and restrained coral accents. No pill dosages, instructions, readable charts or exaggerated illness effects.
+- Facial acting: Guoan is tired and uncomfortable; the doctor is composed and attentive.
 
 ### B1L10-R03 — A visit with fruit
 
 - Cast references: `guoan.webp`, `yuanzhen.webp`.
 - Scene prompt: Yuanzhen visits recovering Guoan at home, setting a small basket of apples and a closed homework notebook beside his sofa. Guoan sits under a blanket, smiling gratefully, with water on a side table. She remains at a natural conversational distance; the scene centers on care and companionship. Use a cozy low three-quarter viewpoint, with a large coral apple in the near foreground drawing the eye toward their faces. Deep teal room, golden window light and cobalt scarf shadows. No crowded sickroom, medicine display or miraculous recovery symbolism.
+- Facial acting: Guoan is weary but grateful; Yuanzhen is relieved to see him recovering.
 
 ## Lesson 11 — New friendships
 
@@ -251,33 +257,39 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `youmei.webp`, `yiwen.webp`.
 - Scene prompt: In the dormitory, Youmei pauses writing a reply card to show Yiwen the card she received from an online friend. Yiwen leans beside the desk with affectionate curiosity. An open laptop sits quietly behind them showing only abstract page blocks; the handwritten card in their hands is the focal object, with unlettered ink marks. Tight three-quarter composition, desk edge sweeping toward their faces, warm coral lamp against saturated indigo evening. Keep the mood intrigued and thoughtful, not romantic fantasy; no hearts, floating message bubbles, or invented portrait of the online friend.
+- Facial acting: Youmei is absorbed and slightly shy; Yiwen is intrigued by the unexpected card.
 
 ### B1L11-R02 — I'll come with you
 
 - Cast references: `yiwen.webp`, `youmei.webp`.
 - Scene prompt: In the classroom after a lesson, Yiwen reassures nervous Youmei about meeting her online friend by offering to accompany her. Yiwen sits turned toward Youmei, one supportive hand resting lightly on her forearm; Youmei's shoulders relax into a relieved smile. The closed card peeks from Youmei's notebook, linking back to the previous scene. Use a quiet medium close view with a strong diagonal of desk corners and a sunlit doorway behind. Saturated teal, coral and golden light. Express trust through posture; no thought bubbles, imagined stranger or meetup already taking place.
+- Facial acting: Youmei is hesitant but visibly relaxing; Yiwen is confidently supportive.
 
 ### B1L11-R03 — Meeting in person
 
 - Cast references: `youmei.webp`, `yiwen.webp`.
 - Scene prompt: At a lively but uncluttered restaurant table, Youmei and Yiwen laugh with the online friend during their first meeting. Show the unnamed young adult male friend from behind in the near foreground, using a simple dark-haired silhouette and neutral blue shirt; do not reuse any named cast member's distinctive hair or clothing. His raised phone is taking a group photograph, with its screen turned away. Youmei and Yiwen remain fully visible beyond a few shared dishes. Curved table and overlapping plates create depth; coral food and golden lights contrast with indigo restaurant walls. No written menus or phone UI.
+- Facial acting: Youmei is bashfully pleased; Yiwen is amused and at ease; the unnamed friend is seen from behind taking the photo. No broad open-mouth laughter.
 
 ## Lesson 12 — Work and ambitions
 
 ### B1L12-R01 — What will we become?
 
 - Cast references: `zhongming.webp`, `guoan.webp`.
-- Scene prompt: On a school terrace, Zhongming and Guoan discuss future jobs after class. Zhongming looks animated and aspirational, while Guoan smiles with an easygoing shrug, holding a drawing folder from his competition. Through a large window, a modest career display shows simple unlettered photographs of a clinic, microphone and bank building as background context, not floating dream icons. A strong low-angle view emphasizes the friends against bold campus architecture. Yellow and green clothing against cobalt and coral surfaces. Keep them in current student outfits; no dressing the cast as careers they do not yet have.
+- Scene prompt: On a school terrace, Zhongming and Guoan discuss future jobs after class. Zhongming looks animated and aspirational, while Guoan responds with dry, easygoing amusement and a shrug, holding a drawing folder from his competition. Through a large window, a modest career display shows simple unlettered photographs of a clinic, microphone and bank building as background context, not floating dream icons. A strong low-angle view emphasizes the friends against bold campus architecture. Yellow and green clothing against cobalt and coral surfaces. Keep them in current student outfits; no dressing the cast as careers they do not yet have.
+- Facial acting: Zhongming is eager and ambitious; Guoan responds with dry, easygoing amusement.
 
 ### B1L12-R02 — After-school bakery work
 
 - Cast references: `guoan.webp`, `zhongming.webp`.
 - Scene prompt: At a neighborhood bakery after school, Guoan brings a tray of fresh bread toward the counter while chatting with Zhongming, who has stopped by with his school bag. Add a plain work apron over Guoan's recognizable hoodie, leaving the green color visible. An open homework notebook is neatly put aside near his bag to hint that studying came first. View at tray height, with large golden bread forms leading to the two faces. Deep teal display shelves and coral counter edges create warm/cool contrast. No brands, price cards or invented boss character.
+- Facial acting: Guoan is quietly proud of the bread; Zhongming is tempted and newly interested in the job.
 
 ### B1L12-R03 — Different kinds of work
 
 - Cast references: `zhongming.webp`.
 - Scene prompt: Zhongming watches a television discussion about work from his living-room sofa, leaning forward thoughtfully rather than scrolling his phone. On the television, a simplified interview set contains two anonymous adult silhouettes; behind them, one coherent studio backdrop juxtaposes an office window and workshop machinery as broad abstract shapes. Keep the television content secondary and free of lettering or overlays. Frame from behind one sofa arm so Zhongming's thoughtful profile is clear. Indigo evening room, coral sofa and golden television light. Communicate reflection about job comfort and difficult work without caricaturing workers or making a moralizing poster.
+- Facial acting: Zhongming is reflective and mildly troubled by the television discussion, without smiling.
 
 ## Lesson 13 — Phones and museum plans
 
@@ -285,16 +297,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `zhongming.webp`.
 - Scene prompt: Zhongming sits at his home desk during a phone call with offscreen Guoan, relieved that his phone connection is working again. He studies a phone page showing a simple museum-building image and a tiny unlabeled street map while listening through one earbud. A finger hovers above the map as he checks the meeting location. Use a close over-the-shoulder angle that shows his delighted profile and the basic screen shapes without UI text. Yellow overshirt against indigo desk and cyan window light, with a coral accent. Do not show the museum visit already happening or add floating digital symbols.
+- Facial acting: Zhongming shows relief and focused interest after his connection starts working.
 
 ### B1L13-R02 — Just in time at the museum
 
 - Cast references: `teacher.webp`, `guoan.webp`, `jiale.webp`, `zhongming.webp`.
 - Scene prompt: Outside a museum entrance, the teacher, Guoan and Jiale wait at the head of a short suggested queue as Zhongming arrives with a quick apologetic wave. Jiale holds his phone down, eager to go inside; Guoan turns to spot Zhongming. The teacher welcomes him with a calm gesture. Use a low wide view with broad entrance steps and tall geometric columns, a warm open doorway anchoring the composition. Cobalt and teal museum facade against golden doors and coral paving. Keep four identifiable faces; only a couple of distant queue silhouettes, no signs or ticket text.
+- Facial acting: Zhongming is apologetic on arrival; Jiale is impatiently curious; Guoan is relieved; the teacher remains composed.
 
 ### B1L13-R03 — Finding the exhibition
 
 - Cast references: `youmei.webp`.
 - Scene prompt: Youmei steps out of an MRT station and checks her phone to find a science exhibition, then confidently turns right along a broad urban sidewalk. The phone shows only a simple route line; keep her gaze lifting toward the destination rather than fixed downward. A science hall with a large abstract planet sculpture is visible beyond the first crossing. Use a sweeping street-corner curve and the station canopy to frame her movement. Saturated cyan sky, cobalt station structure and coral pedestrian paving. One coherent navigation moment, without arrows floating in the air or a montage of phone functions.
+- Facial acting: Youmei looks assured and alert after finding her route.
 
 ## Lesson 14 — New Year's Eve
 
@@ -302,16 +317,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `teacher.webp`, `jiale.webp`, `yiwen.webp`, `guoan.webp`.
 - Scene prompt: After class on December 30, Jiale excitedly discusses his first New Year's Eve in Taiwan with the teacher, Yiwen and Guoan. Yiwen gestures invitingly toward her home in the direction of the city; the teacher holds an extra folded jacket as a reminder to dress warmly. Through the classroom window, Taipei 101 sits in the distant skyline in daylight. Frame the group around a corner desk with lively staggered poses. Golden afternoon light against indigo windows and teal furniture. This is the planning scene: no fireworks, feast or concert already occurring.
+- Facial acting: Jiale is expectant, Yiwen is inviting, Guoan is interested, and the teacher is knowingly cautious about the cold.
 
 ### B1L14-R02 — Everyone brings something
 
 - Cast references: `yiwen.webp`, `guoan.webp`, `youmei.webp`, `jiale.webp`, `teacher.webp`.
 - Scene prompt: At Yiwen's home, guests arrive carrying the shared New Year's Eve dinner. Yiwen holds the door open; Guoan and Youmei set down containers of dumplings, baozi and beef soup, the teacher brings a carrier of pearl milk teas, and Jiale admires the green park beyond the window. Capture the welcoming moment around a single curved table rather than five separate actions. Wide three-quarter view; keep the faces distinct, hands simple and dishes large. Coral interior, teal park and golden evening lighting. Include a few bottles unobtrusively, no labels, banners or fireworks yet.
+- Facial acting: Yiwen is welcoming; Guoan is proud to contribute; Youmei is bashfully pleased; Jiale is absorbed by the view; the teacher is appreciative.
 
 ### B1L14-R03 — Taipei lights up
 
 - Cast references: `youmei.webp`, `yiwen.webp`, `jiale.webp`, `guoan.webp`, `teacher.webp`.
 - Scene prompt: From behind and slightly beside the friends, look across a lively New Year's Eve concert gathering toward Taipei 101 and brilliant fireworks. Put the five familiar characters in the near foreground with enough turned profiles and outfit cues to recognize them; add simple winter layers over their signature clothes. Yiwen and Youmei lift their arms with the music, while the others share the excitement. Use a broad curved crowd line and recognizable stepped tower silhouette. Electric cyan and magenta bursts against deep indigo, with warm golden stage light. Abstract distant crowd only; no year numerals or event text.
+- Facial acting: Youmei is awestruck by the fireworks; Yiwen is exuberant through gesture; Jiale is fascinated; Guoan is relaxed; the teacher is quietly delighted. No identical grins or universally closed eyes.
 
 ## Lesson 15 — Zodiac and lanterns
 
@@ -319,16 +337,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `jiale.webp`, `youmei.webp`, `yuanzhen.webp`.
 - Scene prompt: At a classroom table, Jiale and Youmei look through a book of simple zodiac animal illustrations as Yuanzhen points with a delighted smile to a small cat picture beside a rabbit picture. Present the cat and rabbit as plain illustrated cards on the table, without flags, labels or a full zodiac diagram. A friendly dragon illustration is visible on the open book page as a secondary hook. High three-quarter camera, curved arrangement of hands around the book, coral animal accents against cobalt tabletop and golden light. Express discovery about different zodiac traditions through faces and tangible objects.
+- Facial acting: Yuanzhen is confidently amused about the cat zodiac; Youmei is surprised; Jiale is fascinated and analytical.
 
 ### B1L15-R02 — The little tiger lantern
 
 - Cast references: `zhongming.webp`, `yiwen.webp`.
 - Scene prompt: Zhongming holds up a handmade lantern decorated as a cute tiger while Yiwen leans closer in delight as they plan a Lantern Festival outing. Set the scene on a neighborhood walkway near dusk, with a few distant lanterns suggesting the coming festival rather than showing the full event. The tiger lantern is the clear hero: warm golden body, simple dark stripes, small rounded ears, securely attached handle. Use a close low view that frames both faces around it. Cobalt twilight and teal foliage against coral and amber. No zodiac labels or printed lantern text.
+- Facial acting: Zhongming admires the lantern with quiet pride; Yiwen leans in with curious delight.
 
 ### B1L15-R03 — The zodiac river race
 
 - Cast references: none; approved classroom image remains the rendering/style reference only.
 - Scene prompt: Illustrate the legendary zodiac river race as one continuous panoramic scene with exactly twelve distinct animals. At the finish bank, rat first and ox second lead toward dry land; tiger, rabbit, dragon, snake, horse, goat, monkey, rooster and dog form a staggered procession across the river; pig is last, still approaching from far behind. Friendly rounded animals, all safely visible and identifiable, not human cast in costume. A sweeping S-shaped cyan river and coral banks organize the action. Give each animal a separate silhouette and simplified readable traits. Dynamic splashes as a few clean flat shapes; no finish numbers, text, panels or extra animals.
+- Facial acting: Twelve distinct friendly animals with distinct attitudes: rat triumphant, ox patient, tiger determined, rabbit alert, dragon serene, snake sly, horse spirited, goat cautious, monkey playful, rooster proud, dog eager, pig unhurried. Exactly 12, no duplicates.
 
 ## Lesson 16 — Traveling in Taiwan
 
@@ -336,16 +357,19 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 
 - Cast references: `jiale.webp`, `guoan.webp`.
 - Scene prompt: At a campus picnic table, Jiale and Guoan enthusiastically consider a short Taiwan holiday using an unfolded map and a few unlettered travel photographs. One large photograph shows a deep marble gorge with a turquoise river; two smaller ones show Sun Moon Lake and a snowy mountain. Make these physical photographs, not giant imagined landscapes floating around the friends. High three-quarter view with the map cutting diagonally through the frame, faces above it and a bag anchoring the foreground. Coral table, cobalt map and golden afternoon light. They are planning, not already traveling or visiting all three places at once.
+- Facial acting: Jiale is eager about seeing snow; Guoan is undecided and weighing the travel options.
 
 ### B1L16-R02 — Look at the snow!
 
 - Cast references: `jiale.webp`, `guoan.webp`.
 - Scene prompt: Back at school after their holidays, Jiale shows Guoan a large photograph of himself bundled against wind on a snowy mountain. Guoan leans in with delighted curiosity, holding a separate unlettered coastal photograph from Sizihwan. Keep the real foreground Jiale in his normal orange sweater, and the tiny photographed version in winter layers. A low table-level camera makes the snowy photograph the focal object while both faces remain prominent. Deep teal common-room setting, coral seating and crisp cyan-white photo shapes. One shared storytelling moment; no multi-panel travel collage, hotel bathroom scene or implication Guoan visited Taroko.
+- Facial acting: Jiale is animated recalling the trip; Guoan is impressed by the snow photo. Tiny photographed Jiale looks exhilarated by the cold.
 
 ### B1L16-R03 — A Taiwan night-market evening
 
 - Cast references: `youmei.webp`, `zhongming.webp`, `yiwen.webp`.
 - Scene prompt: The three friends wander into a vibrant Taiwanese night market. Youmei carries pearl milk tea, Zhongming admires a steaming bowl of beef noodles at a stall, and Yiwen points toward a bamboo steamer of xiaolongbao. A broad curved market lane leads past simple game stalls and warm lanterns, with the city and a distant mountain silhouette beyond. Keep three friends as the focal group, with only a few abstract visitors and understated vendor silhouettes. Low wide view, bold coral and golden food stalls against cobalt night and teal distant landscape. No readable signs, decorative fake Chinese or travel-poster typography.
+- Facial acting: Youmei is absorbed in tasting her drink; Zhongming anticipates the noodles; Yiwen is curious about the steaming dumplings.
 
 ## Acceptance before keeping an image
 
@@ -357,6 +381,6 @@ Use the cast and scene instructions below. Deliver exactly one coherent illustra
 - No readable or garbled text, captions, speech bubbles, watermarks, unwanted flags, floating UI/icons, duplicated limbs, broken hands or impossible props. L15-R03 additionally needs a deliberate count and identity check for all twelve animals.
 - Save the exact full submitted prompt and actual image path. If an image fails, retry with one focused correction and the same identity/style references; do not loosen the master style to hide a failure.
 
-## Later integration — outside this generation task
+## Application integration
 
-Only after owner review: copy selected images to versioned siblings in `src/assets/images/readings/`, preserve originals, and update the relevant `src/data/readingIllustrations.ts` entries and accurate alt text. All 48 reading IDs already have mappings, so this is an artwork replacement task, not a new content model. Follow the repo verification gate for that separate code change. The application must never import images from `output/` or another scratch folder.
+All 48 reading IDs from `B1L01-R01` through `B1L16-R03` map to versioned WebP assets in `src/assets/images/readings/` through `src/data/readingIllustrations.ts`. The reader uses the selected reading part's own illustration. Keep generation PNGs and exact submitted prompts in the ignored `output/imagegen/book-1/` folder; the application imports only versioned assets under `src/`.

@@ -106,37 +106,101 @@ const READING_ILLUSTRATIONS: Record<string, ReadingIllustration> = {
     url: new URL('../assets/images/readings/b1l08-r03-fashion-showcase-v4.webp', import.meta.url).href,
     alt: 'Yiwen browses a mannequin display while Jiale reads a car magazine nearby.',
   },
+  'B1L09-R01': {
+    url: new URL('../assets/images/readings/b1l09-r01-tricky-sentences-v2.webp', import.meta.url).href,
+    alt: 'Guoan points to a difficult passage in an open workbook as Youmei studies beside him.',
+  },
+  'B1L09-R02': {
+    url: new URL('../assets/images/readings/b1l09-r02-finding-time-to-study-v2.webp', import.meta.url).href,
+    alt: 'Jiale holds a workbook while Zhongming gestures toward a classroom and their teacher listens.',
+  },
   'B1L09-R03': {
-    url: new URL('../assets/images/readings/b1l09-r03-language-exchange.webp', import.meta.url).href,
-    alt: 'Youmei and Yuanzhen collaborating on language exchange over open notebooks beneath a desk lamp.',
+    url: new URL('../assets/images/readings/b1l09-r03-language-exchange-v2.webp', import.meta.url).href,
+    alt: 'Youmei points to a line in her notebook as Yiwen listens and writes at a lamp-lit library table.',
+  },
+  'B1L10-R01': {
+    url: new URL('../assets/images/readings/b1l10-r01-looking-after-classmate-v2.webp', import.meta.url).href,
+    alt: 'Yuanzhen tells the teacher that Guoan is sick while the teacher gestures toward a classroom hygiene station.',
+  },
+  'B1L10-R02': {
+    url: new URL('../assets/images/readings/b1l10-r02-reassuring-clinic-visit-v2.webp', import.meta.url).href,
+    alt: 'At a clinic desk, Guoan holds a tissue while the doctor explains a small packet beside a glass of water.',
   },
   'B1L10-R03': {
-    url: new URL('../assets/images/readings/b1l10-r03-sick-visit.webp', import.meta.url).href,
-    alt: 'A student brings a bowl of fruit and notebooks to a classmate resting sick in bed.',
+    url: new URL('../assets/images/readings/b1l10-r03-sick-visit-v2.webp', import.meta.url).href,
+    alt: 'Yuanzhen brings Guoan a basket of apples while he rests under a blanket at home, with a notebook nearby.',
+  },
+  'B1L11-R01': {
+    url: new URL('../assets/images/readings/b1l11-r01-new-friend-card-v2.webp', import.meta.url).href,
+    alt: 'At a dorm desk, Youmei shows Yiwen an unlettered card while an open laptop sits behind them.',
+  },
+  'B1L11-R02': {
+    url: new URL('../assets/images/readings/b1l11-r02-come-with-you-v3.webp', import.meta.url).href,
+    alt: 'Yiwen rests a hand gently on Youmei’s forearm as Youmei relaxes over a desk; a card peeks from her notebook.',
   },
   'B1L11-R03': {
-    url: new URL('../assets/images/readings/b1l11-r03-restaurant-selfie.webp', import.meta.url).href,
-    alt: 'Two friends taking a selfie together at a restaurant table filled with delicious dishes.',
+    url: new URL('../assets/images/readings/b1l11-r03-meeting-in-person-v2.webp', import.meta.url).href,
+    alt: 'Youmei and Yiwen meet an online friend at a restaurant as he takes their group photo.',
+  },
+  'B1L12-R01': {
+    url: new URL('../assets/images/readings/b1l12-r01-what-will-we-become-v2.webp', import.meta.url).href,
+    alt: 'Zhongming and Guoan discuss future jobs on a school terrace, with a small career display beyond them.',
+  },
+  'B1L12-R02': {
+    url: new URL('../assets/images/readings/b1l12-r02-after-school-bakery-work-v2.webp', import.meta.url).href,
+    alt: 'Guoan carries fresh bread toward a bakery counter while Zhongming stops by with his school bag.',
   },
   'B1L12-R03': {
-    url: new URL('../assets/images/readings/b1l12-r03-work-perspectives.webp', import.meta.url).href,
-    alt: 'An analyst working in a modern office with coffee overlooking an industrial shipyard and cranes.',
+    url: new URL('../assets/images/readings/b1l12-r03-different-kinds-of-work-v2.webp', import.meta.url).href,
+    alt: 'Zhongming watches a television discussion about different kinds of work from his sofa.',
+  },
+  'B1L13-R01': {
+    url: new URL('../assets/images/readings/b1l13-r01-the-museum-link-arrived-v2.webp', import.meta.url).href,
+    alt: 'Zhongming checks a museum link and meeting map on his phone after his connection starts working.',
+  },
+  'B1L13-R02': {
+    url: new URL('../assets/images/readings/b1l13-r02-just-in-time-at-the-museum-v2.webp', import.meta.url).href,
+    alt: 'Zhongming arrives at the museum to meet the teacher, Guoan and Jiale, who wait near the entrance.',
   },
   'B1L13-R03': {
-    url: new URL('../assets/images/readings/b1l13-r03-smartphone-navigation.webp', import.meta.url).href,
-    alt: 'A pedestrian using a glowing smartphone navigation map at a bustling city intersection.',
+    url: new URL('../assets/images/readings/b1l13-r03-finding-the-exhibition-v3.webp', import.meta.url).href,
+    alt: 'Youmei checks her phone route, then turns right toward a science hall beyond the MRT station.',
+  },
+  'B1L14-R01': {
+    url: new URL('../assets/images/readings/b1l14-r01-plans-for-a-special-evening-v2.webp', import.meta.url).href,
+    alt: 'Jiale, Yiwen and Guoan ask the teacher about New Year’s Eve plans after class.',
+  },
+  'B1L14-R02': {
+    url: new URL('../assets/images/readings/b1l14-r02-new-years-eve-dinner-v2.webp', import.meta.url).href,
+    alt: 'At Yiwen’s New Year’s Eve gathering, she welcomes friends bringing dinner as Jiale looks toward a green park.',
   },
   'B1L14-R03': {
-    url: new URL('../assets/images/readings/b1l14-r03-taipei-101-new-year.webp', import.meta.url).href,
-    alt: 'Friends waving glowing light sticks in a crowd celebrating New Year’s Eve before Taipei 101 fireworks.',
+    url: new URL('../assets/images/readings/b1l14-r03-taipei-101-new-year-v2.webp', import.meta.url).href,
+    alt: 'Five friends watch New Year\'s Eve fireworks over Taipei 101, with Yiwen raising a hand and Youmei looking up in awe.',
+  },
+  'B1L15-R01': {
+    url: new URL('../assets/images/readings/b1l15-r01-cat-instead-of-rabbit-v2.webp', import.meta.url).href,
+    alt: 'Jiale and Youmei look at pictures of a cat and rabbit while Yuanzhen points them out; a dragon appears in the open book.',
+  },
+  'B1L15-R02': {
+    url: new URL('../assets/images/readings/b1l15-r02-tiger-lantern-v2.webp', import.meta.url).href,
+    alt: 'Zhongming holds a glowing tiger lantern on a dusk walkway as Yiwen leans in to admire it.',
   },
   'B1L15-R03': {
-    url: new URL('../assets/images/readings/b1l15-r03-zodiac-river-race.webp', import.meta.url).href,
-    alt: 'A swimming ox carrying a triumphant rat across a wide river toward the shore under a full moon.',
+    url: new URL('../assets/images/readings/b1l15-r03-zodiac-river-race-v2.webp', import.meta.url).href,
+    alt: 'Twelve zodiac animals race along a winding river: rat and ox lead, with pig trailing far behind.',
+  },
+  'B1L16-R01': {
+    url: new URL('../assets/images/readings/b1l16-r01-taiwan-holiday-route-v2.webp', import.meta.url).href,
+    alt: 'Jiale holds up a snowy mountain photo as he and Guoan compare three Taiwan destinations on an unfolded map.',
+  },
+  'B1L16-R02': {
+    url: new URL('../assets/images/readings/b1l16-r02-look-at-snow-v3.webp', import.meta.url).href,
+    alt: 'Jiale shows Guoan a snowy mountain photo of himself while Guoan holds a coastal photo.',
   },
   'B1L16-R03': {
-    url: new URL('../assets/images/readings/b1l16-r03-taiwan-market-panorama.webp', import.meta.url).href,
-    alt: 'A night market vendor serving soup dumplings and bubble tea against a scenic island landscape.',
+    url: new URL('../assets/images/readings/b1l16-r03-night-market-evening-v2.webp', import.meta.url).href,
+    alt: 'Youmei sips pearl milk tea, Zhongming looks at beef noodles, and Yiwen points to xiaolongbao at a Taiwan night market.',
   },
 };
 
