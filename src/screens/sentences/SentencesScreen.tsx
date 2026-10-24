@@ -1,8 +1,14 @@
+import { useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
+import { LessonComplete } from '../../features/practice';
+import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { ActionButton, EmptyState, PlayfulNavIcon } from '../../lib/widgets';
+import { useAppStore } from '../../store/useAppStore';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
+import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { useLessonSentences } from './hooks/useLessonSentences';
-import { SentenceList } from './components/SentenceList';
+import { useSentenceSession } from './hooks/useSentenceSession';
+import { SentenceFeed } from './components/SentenceFeed';
 
 interface SentencesScreenProps {
   activeBookId: number;
@@ -12,7 +18,7 @@ interface SentencesScreenProps {
   onClose: () => void;
 }
 
-/** Read the part's sentences: hanzi first, pinyin and English on demand, the book's recordings. */
+/** Read the part's sentences one card at a time: tap to hear and see the answer, Flow to play them all. */
 export function SentencesScreen({
   activeBookId,
   selectedLessons = [],
@@ -20,8 +26,25 @@ export function SentencesScreen({
   isReviewDeck = false,
   onClose,
 }: SentencesScreenProps) {
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
+  const sessionKey = `${getDeckIdentityKey({
+    activeBookId, selectedLessons, selectedLessonParts, libraryActiveFolder, isReviewDeck, isLibraryDeck,
+  })}:sentences`;
   const { sentences, highlightTerms, isLoading, loadError } = useLessonSentences(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
-  usePracticeHeaderRegistration({ currentIndex: 0, totalCount: 0, showLightbulb: false, minimal: true });
+  const session = useSentenceSession(sentences, sessionKey);
+  const [breakdown, setBreakdown] = useState<string | null>(null);
+
+  usePracticeHeaderRegistration({
+    currentIndex: session.progressInfo.displayIndex,
+    totalCount: session.progressInfo.totalCount,
+    showLightbulb: false,
+    minimal: session.completed,
+    onShuffleClick: session.toggleShuffle,
+    isShuffled: session.isShuffled,
+    onFlowClick: session.toggleFlow,
+    flowStatus: session.flowStatus,
+  });
 
   if (isLoading) return null;
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) ?? SAMPLE_BOOKS[0];
@@ -47,11 +70,28 @@ export function SentencesScreen({
     );
   }
 
+  if (session.completed) {
+    return (
+      <LessonComplete
+        learnedCount={session.deck.length - session.hardCount}
+        unlearnedCount={session.hardCount}
+        onReviewUnlearned={session.reviewHard}
+        onContinue={onClose}
+        continueLabel="Done"
+        onResetAll={session.resetAll}
+      />
+    );
+  }
+
   return (
     <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink">
-      <div className="flex-1 overflow-y-auto overscroll-contain">
-        <SentenceList sentences={sentences} highlightTerms={highlightTerms} />
-      </div>
+      <SentenceFeed
+        session={session}
+        highlightTerms={highlightTerms}
+        onOpenCharacter={(char) => { session.pauseFlow(); setBreakdown(char); }}
+        isOverlayOpen={Boolean(breakdown)}
+      />
+      <CharacterBreakdownOverlay activeBreakdown={breakdown} onClose={() => setBreakdown(null)} activeBook={activeBook} />
     </div>
   );
 }

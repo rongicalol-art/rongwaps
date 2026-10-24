@@ -23,13 +23,16 @@ English meaning, curriculum location, source card, and extraction provenance.
   by book with no headers (order carries the ranking). Sentence pinyin and the
   B·L meta carry the source book's accent too.
 
-- Practice hub → **Sentences** (`src/screens/sentences/`) lists every record for the
-  deck's parts in book order (Dialogue with speakers from the readings pack, Reading,
-  Examples), each sentence once, with the part's words highlighted. A 汉字 / Pinyin /
-  English switch (remembered per device) sets what shows under each sentence; rows play
-  their recording and Play all reads them in order. Rows without a recording have no play
-  button. Reading only: it never records progress. The lesson window offers it only for
-  parts that have records. Preview: debug window → UI Previews.
+- Practice hub → **Sentences** (`src/screens/sentences/`) is a sentence feed for the deck's
+  parts: every record once, in book order (Dialogue with speakers from the readings pack,
+  Reading, Examples), the part's words highlighted. One card sits in focus, neighbours faded;
+  native scroll snapping moves it (swipe, wheel, ↑/↓). Tap or Space opens a card: its
+  recording plays and pinyin + English show (opened cards stay open). Hold a character to peek
+  its pinyin (`alignWordSyllables`); tap a character on an open card for its breakdown. Mark
+  cards Hard; the end screen offers a Hard-only round. Header Shuffle and Flow (open, play,
+  pause as long as the clip to repeat it, move on). Session position, shuffle and resume come
+  from `useCardSession`; nothing is graded, so it never writes SRS. The lesson window offers
+  it only for parts that have records. Preview: debug window → UI Previews.
 
 ## Matching a word to its sentences
 
