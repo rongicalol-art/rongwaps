@@ -26,10 +26,12 @@ import {
 } from './audio/playbackEngine';
 import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
+import { ShortAudioClips } from './audio/shortAudioClips';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
 export class AudioService {
   private defaultRate = 1.0;
+  private shortClips = new ShortAudioClips();
   private objectUrls: Map<string, string> = new Map();
   private globalAudio: HTMLAudioElement | null = null;
   private spareAudio: HTMLAudioElement | null = null; // pre-unlocked; hosts the next overlapped clip
@@ -51,6 +53,7 @@ export class AudioService {
     }
   }
   public initialize(): void {
+    this.shortClips.unlock();
     if (this.isInitialized) return;
     // iOS unlocks speech separately from HTML audio. This must stay synchronous
     // in the tap handler: Flow reads definitions later, after recorded Chinese.
@@ -102,10 +105,11 @@ export class AudioService {
     return preloadAudioFiles(audioFileNames, this.objectUrls,
       (fileName) => this.getAudioObjectUrl(fileName, signal), signal, onProgress);
   }
-  public prepareRecording(fileName: string | undefined, signal?: AbortSignal): Promise<void> {
+  public async prepareRecording(fileName: string | undefined, signal?: AbortSignal, primeMedia = true): Promise<void> {
     const src = fileName && getCachedObjectUrl(this.objectUrls, fileName);
-    if (!src || !this.globalAudio || this.activePlaybackFinish) return Promise.resolve();
-    return prepareAudioElement(this.globalAudio, src, signal);
+    if (!src) return;
+    if (await this.shortClips.prepare(src, signal) && this.defaultRate === 1) return;
+    if (primeMedia && this.globalAudio && !this.activePlaybackFinish) await prepareAudioElement(this.globalAudio, src, signal);
   }
   private trackPlayback(resolve: () => void): () => void {
     let settled = false;
@@ -267,19 +271,22 @@ export class AudioService {
           return;
         }
         try { audio.pause(); audio.src = ''; audio.load?.(); } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
-        if (options?.fallback !== 'none' && error instanceof Error && error.name === 'TimeoutError' && textToSpeak) {
-          void this.startSpeech(textToSpeak, fallbackLanguage, 0.86 * effectiveRate, finish, true);
-        } else startSpeechFallback();
+        startSpeechFallback();
       };
 
       const playUrl = (url: string) => afterPaint(() => {
         // Stopped or replaced before the frame painted: nothing to start.
         if (this.activePlaybackFinish !== finish) return;
-        this.activePlaybackCleanup = playHtmlAudio(audio, url, effectiveRate, () => {
-          // Cache explicitly completed recordings without delaying first sound.
-          if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).catch(() => {});
-          finish();
-        }, handleAudioFailure, startTime);
+        const playNative = () => {
+          if (this.activePlaybackFinish !== finish) return;
+          this.activePlaybackCleanup = playHtmlAudio(audio, url, effectiveRate, () => {
+            // Cache explicitly completed recordings without delaying first sound.
+            if (typeof caches !== 'undefined') void this.getAudioObjectUrl(audioFileName).then((src) => this.shortClips.prepare(src)).catch(() => {});
+            finish();
+          }, handleAudioFailure, startTime);
+        };
+        this.activePlaybackCleanup = this.shortClips.play(this.objectUrls.get(audioFileName) ?? url, effectiveRate, startTime, finish, playNative) ?? null;
+        if (!this.activePlaybackCleanup) playNative();
       });
       this.playRecordedSource(audioFileName, playUrl, finish, handleAudioFailure);
     });

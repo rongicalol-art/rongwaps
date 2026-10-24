@@ -57,7 +57,12 @@ export function useWordBuildAudio(card: Flashcard, tiles: string[], enabled: boo
       }
       if (requestCounter.current === request) {
         tileAudioRef.current = { key: audioKey, clips };
-        void audioService.preload([...new Set(clips.values())], controller.signal);
+        void audioService.preload([...new Set(clips.values())], controller.signal).then(async () => {
+          for (const audio of clips.values()) {
+            if (controller.signal.aborted) return;
+            await audioService.prepareRecording(audio, controller.signal, false);
+          }
+        }).catch(() => { /* Leaving the question cancels preparation. */ });
       }
       return clips;
     });

@@ -68,3 +68,30 @@ test('missing listening recordings block the question instead of treating an emp
     assert.fail('a listening question without a recording must never open');
   }), /no recording/);
 });
+
+
+test('every current clip prepares before readiness; lookahead does not repeatedly replace the native decoder', async () => {
+  const preload = audioService.preload;
+  const prepare = audioService.prepareRecording;
+  const first = question('full-word');
+  first.cards.push({ ...first.cards[0], id: 'tile', audio: 'tile.mp3' });
+  const next = question('next-word');
+  const prepared: Array<[string | undefined, boolean | undefined]> = [];
+  const ready: QuizBeat[] = [];
+  let release!: () => void;
+  audioService.preload = async () => {};
+  audioService.prepareRecording = async (file, _signal, primeMedia) => {
+    prepared.push([file, primeMedia]);
+    if (file === 'tile.mp3') await new Promise<void>((resolve) => { release = resolve; });
+  };
+  try {
+    const pending = prepareQuizAudio([first, next], new AbortController().signal, () => {}, (beat) => ready.push(beat));
+    await new Promise((resolve) => setImmediate(resolve));
+    assert.deepEqual(prepared, [['full-word.mp3', true], ['tile.mp3', false]]);
+    assert.deepEqual(ready, [], 'downloading alone must not open unprepared tiles');
+    release();
+    await pending;
+    assert.deepEqual(ready, [first, next]);
+    assert.deepEqual(prepared.at(-1), ['next-word.mp3', false]);
+  } finally { audioService.preload = preload; audioService.prepareRecording = prepare; }
+});

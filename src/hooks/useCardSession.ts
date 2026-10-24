@@ -233,12 +233,13 @@ export function useCardSession(
 
     const controller = new AbortController();
     let timeoutId: number | undefined;
-    void audioService.preload([currentAudio], controller.signal).then(() => {
+    void audioService.preload([currentAudio], controller.signal).then(async () => {
+      if (!controller.signal.aborted) await audioService.prepareRecording(currentAudio, controller.signal);
       if (controller.signal.aborted) return;
       timeoutId = window.setTimeout(() => {
         void audioService.preload(upcomingAudios, controller.signal);
       }, 500);
-    });
+    }).catch(() => { /* Navigation cancels decoder preparation. */ });
     return () => { window.clearTimeout(timeoutId); controller.abort(); };
   }, [activeCards, currentIndex]);
 
