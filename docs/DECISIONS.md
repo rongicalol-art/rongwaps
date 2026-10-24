@@ -10,6 +10,12 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-10-24 — Example audio: the book's recording first everywhere
+
+- Chosen: a vocabulary example plays its aligned book clip whenever one exists, including Book 3 L1–5 (which used to prefer our studio recordings); our studio clip is only the fallback for a sentence the book never recorded. Flashcard extras went from 12,036 studio examples to 36.
+- Reason: the owner wants the book's own voice; studio audio is a backup.
+- Affects: `scripts/audio/vocabularyExampleAudio.ts`, `public/data/vocabulary/book-3.json`, `public/data/flashcard-extras/`, `tests/content/vocabularyExampleAudio.test.ts`.
+
 ### 2026-10-18 — Decomposition runtime ships to production as a GPL-3.0-or-later data pack
 
 - Chosen:
