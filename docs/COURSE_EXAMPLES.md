@@ -26,8 +26,9 @@ English meaning, curriculum location, source card, and extraction provenance.
 - Practice hub → **Sentences** (`src/screens/sentences/`) is a sentence feed for the deck's
   parts: every record once, in book order (Dialogue, Reading, Examples), the part's words
   highlighted. One card sits in focus, neighbours faded; native scroll snapping moves it.
-  Touch: a bottom dock (answer-bar slot) with Next (plays the next sentence, Finish on the
-  last) and Play. Mouse/trackpad: no dock; Space plays the card, ↑/↓ move (↓ plays the next).
+  Touch: scroll to move; one Play button in a bottom dock (answer-bar slot) plays the focused
+  card, and a Finish button follows the last card. Mouse/trackpad: no dock; Space plays the
+  card, ↑/↓ move (↓ plays the next).
   Tap a card (or Enter) to open it: pinyin stacks over each character (`alignWordSyllables`;
   one line when a sentence doesn't align) and the English shows; opened cards stay open. Hold
   a character on a closed card to peek its pinyin; tap one on an open card for its breakdown.

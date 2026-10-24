@@ -1,6 +1,6 @@
 import { memo, useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { AppIcon } from '../../../lib/widgets';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { alignWordSyllables } from '../../../utils/pinyin/pinyinTones';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
@@ -180,7 +180,7 @@ interface SentenceFeedProps {
  * swipe, wheel and touchpad; keys and Flow scroll it programmatically.
  */
 export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverlayOpen = false }: SentenceFeedProps) {
-  const { deck, current, currentIndex, openIds, hardIds, goTo, next, play, toggleOpen, toggleHard, pauseFlow } = session;
+  const { deck, current, currentIndex, openIds, hardIds, goTo, next, finish, play, toggleOpen, toggleHard, pauseFlow } = session;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -274,6 +274,11 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
             />
           </div>
         ))}
+        <div className="flex shrink-0 snap-center justify-center py-2">
+          <ActionButton variant="secondary" size="lg" onClick={finish} className="min-w-48 uppercase tracking-wider">
+            Finish
+          </ActionButton>
+        </div>
         <div aria-hidden="true" className="h-[calc(50cqh-4.5rem)] shrink-0" />
       </div>
     </div>

@@ -72,7 +72,7 @@ export function ActivityPracticeHeader({
         onRestartClick={practiceHeaderActions.onRestartClick}
         isShuffled={practiceHeaderActions.isShuffled}
         flowStatus={practiceHeaderActions.flowStatus}
-        showFlow={isFlashcards}
+        showFlow={Boolean(practiceHeaderActions.onFlowClick)}
         quietControls={isFlashcards}
         settings={{
           preferences: practicePreferences,

@@ -67,7 +67,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     moveTo(index);
   }, [currentIndex, moveTo, stopAudio]);
 
-  /** Next on the last card ends the round wherever the feed is. */
+  /** Ends the round wherever the feed is (the feed's Finish, ↓ on the last card). */
   const finish = useCallback(() => {
     stopAudio();
     moveTo(deck.length - 1);
@@ -156,6 +156,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     hardCount: hardInRound.length,
     goTo,
     next,
+    finish,
     toggleOpen,
     toggleHard,
     stopAudio,
