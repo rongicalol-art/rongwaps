@@ -40,6 +40,13 @@ English meaning, curriculum location, source card, and extraction provenance.
   Position and resume come from `useCardSession`; nothing is graded, so it never writes SRS.
   The lesson window offers it only for parts that have records. Preview: debug window → UI
   Previews.
+- A book without course-example records (Book 3) gets its Sentences from
+  `screens/sentences/utils/bookSentences.ts`: its dialogue lines (readings pack; dialogue n =
+  part n; no pinyin is shown when the pack has none) and its words' own examples (flashcard
+  extras, `sourceCardId` = the card). Audio is the book track's aligned line when
+  `officialAudioFileName` hosts the track, else the line's studio recording; examples keep the
+  recording their pack chose. Book 3's dialogue tracks are not hosted yet, so its dialogue lines
+  play studio audio until they are.
 
 ## Matching a word to its sentences
 

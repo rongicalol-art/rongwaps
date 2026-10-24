@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
-import { fetchCourseExampleRecords } from '../../../services/contentPacks';
+import { fetchCourseExampleRecords, fetchDialogueAlignmentPack, fetchPackedFlashcardExtras, fetchReadingsPack } from '../../../services/contentPacks';
+import { exampleSentenceRecords, readingSentenceRecords } from '../utils/bookSentences';
+import type { Flashcard } from '../../../data/flashcards';
 import { extractWordVariants } from '../../../utils/vocabulary/wordForms';
 import type { CourseExampleRecord } from '../../../types/models';
 
@@ -37,6 +39,26 @@ export function buildLessonSentences(records: readonly CourseExampleRecord[], pa
 }
 
 /**
+ * Course-example records (Book 1); a book without any (Book 3) is built from its dialogue lines and
+ * its words' own examples instead.
+ */
+async function loadSentenceRecords(cards: readonly Flashcard[]): Promise<CourseExampleRecord[]> {
+  const records = await fetchCourseExampleRecords();
+  const covered = new Set(records.map((record) => record.bookId));
+  const otherBooks = [...new Set(cards.map((card) => card.bookId))].filter((bookId) => !covered.has(bookId));
+  const built = await Promise.all(otherBooks.map(async (bookId) => {
+    const bookCards = cards.filter((card) => card.bookId === bookId);
+    const [readings, alignments, extras] = await Promise.all([
+      fetchReadingsPack(bookId),
+      fetchDialogueAlignmentPack(bookId),
+      Promise.all(bookCards.map((card) => fetchPackedFlashcardExtras(card))),
+    ]);
+    return [...readingSentenceRecords(readings ?? [], alignments), ...exampleSentenceRecords(bookCards, extras)];
+  }));
+  return [...records, ...built.flat()];
+}
+
+/**
  * The book's sentences for the deck's parts (dialogue lines, Reading, word examples), in book
  * order, each sentence once. Reading only: nothing here touches SRS.
  */
@@ -48,11 +70,11 @@ export function useLessonSentences(activeBookId: number, selectedLessons: number
   useEffect(() => {
     if (isLoadingDeck) return;
     let current = true;
-    void fetchCourseExampleRecords()
+    void loadSentenceRecords(cards)
       .then((loaded) => { if (current) setRecords(loaded); })
       .catch((error) => { if (current) setLoadError(error); });
     return () => { current = false; };
-  }, [isLoadingDeck]);
+  }, [cards, isLoadingDeck]);
 
   const sentences = useMemo(() => (records ? buildLessonSentences(
     records,

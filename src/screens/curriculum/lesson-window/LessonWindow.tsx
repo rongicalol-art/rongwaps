@@ -13,7 +13,7 @@ import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
-import { fetchCourseExampleRecords } from '../../../services/contentPacks';
+import { fetchCourseExampleRecords, fetchReadingsPack } from '../../../services/contentPacks';
 import {
   getAggregatedPart,
   getDefaultMode,
@@ -71,18 +71,26 @@ function LessonTitle({ lesson, part, isDesktop }: { lesson: CourseLessonProgress
   );
 }
 
-/** Whether the book has any sentences for these parts (Sentences is offered only then). */
-function useHasPartSentences(bookId: number, lessonId: number, partIds: number[]): boolean {
+/**
+ * Whether these parts have sentences (Sentences is offered only then). Book 1 has course-example
+ * records; a book without them (Book 3) reads its dialogues (dialogue n = part n) and its words'
+ * own examples, so any part with words or a dialogue has some.
+ */
+function useHasPartSentences(bookId: number, lessonId: number, partIds: number[], hasWords: boolean): boolean {
   const [hasSentences, setHasSentences] = useState(false);
   const partsKey = partIds.join(',');
   useEffect(() => {
     let current = true;
     const parts = new Set(partsKey.split(',').map(Number));
-    void fetchCourseExampleRecords().then((records) => {
-      if (current) setHasSentences(records.some((r) => r.bookId === bookId && r.lessonId === lessonId && parts.has(r.partId)));
+    void Promise.all([fetchCourseExampleRecords(), fetchReadingsPack(bookId)]).then(([records, readings]) => {
+      if (!current) return;
+      const hasCourseRecords = records.some((r) => r.bookId === bookId);
+      setHasSentences(hasCourseRecords
+        ? records.some((r) => r.bookId === bookId && r.lessonId === lessonId && parts.has(r.partId))
+        : hasWords || Boolean(readings?.some((r) => r.lessonId === lessonId && parts.has(r.dialogueNumber))));
     });
     return () => { current = false; };
-  }, [bookId, lessonId, partsKey]);
+  }, [bookId, hasWords, lessonId, partsKey]);
   return hasSentences;
 }
 
@@ -229,7 +237,7 @@ function LessonBody({
   const activeIndex = Math.max(0, parts.findIndex((p) => p.id === (selectedPartIds[0] ?? resolvedPartId)));
   const selectedParts = parts.filter((p) => selectedPartIds.includes(p.id));
   const activePart = selectedParts.length > 0 ? getAggregatedPart(selectedParts) : parts[activeIndex];
-  const hasSentences = useHasPartSentences(bookId, lesson.id, selectedPartIds.length > 0 ? selectedPartIds : activePart ? [activePart.id] : []);
+  const hasSentences = useHasPartSentences(bookId, lesson.id, selectedPartIds.length > 0 ? selectedPartIds : activePart ? [activePart.id] : [], Boolean(activePart && activePart.vocab.total > 0));
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
