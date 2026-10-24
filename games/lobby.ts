@@ -180,8 +180,10 @@ export class Lobby extends DurableObject<Env> {
 
   private async schedule() {
     const now = Date.now();
-    if (now - this.lastFlush >= FLUSH_MS) { this.flush(); await this.ctx.storage.setAlarm(now + 60_000); }
-    else await this.ctx.storage.setAlarm(this.lastFlush + FLUSH_MS);
+    let next = this.lastFlush + FLUSH_MS;
+    if (now - this.lastFlush >= FLUSH_MS) { this.flush(); next = now + 60_000; }
+    const scheduled = await this.ctx.storage.getAlarm();
+    if (scheduled === null || next < scheduled) await this.ctx.storage.setAlarm(next);
   }
 
   private flush() {

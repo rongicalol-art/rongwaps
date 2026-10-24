@@ -19,7 +19,24 @@ async function token(sub, overrides = {}) {
 
 const bundle = await build({ stdin: { resolveDir: process.cwd(), sourcefile: 'games-test-entry.ts', contents: `
 import worker, { GameRoom as BaseRoom, Lobby as BaseLobby } from './games/index';
-export class GameRoom extends BaseRoom { runAlarm() { return this.alarm(); } }
+export class GameRoom extends BaseRoom {
+  usage = { alarmWrites: 0, sqlRowsWritten: 0, listingCalls: 0 };
+  constructor(ctx, env) {
+    super(ctx, env);
+    const setAlarm = ctx.storage.setAlarm.bind(ctx.storage);
+    ctx.storage.setAlarm = (...args) => { this.usage.alarmWrites++; return setAlarm(...args); };
+    const sql = ctx.storage.sql;
+    const exec = sql.exec.bind(sql);
+    sql.exec = (...args) => {
+      const cursor = exec(...args);
+      this.usage.sqlRowsWritten += cursor.rowsWritten;
+      return cursor;
+    };
+  }
+  async publishListing(room) { this.usage.listingCalls++; return super.publishListing(room); }
+  getUsage() { return this.usage; }
+  runAlarm() { return this.alarm(); }
+}
 export class Lobby extends BaseLobby {
   runAlarm() { return this.alarm(); }
   async failListings(enabled) { await this.ctx.storage.put('fixture-listing-outage', enabled); }
@@ -38,6 +55,7 @@ export default { async fetch(request, env, ctx) {
   if (url.pathname.startsWith('/__test/')) {
     const [, , kind, code, action] = url.pathname.split('/');
     const stub = kind === 'lobby' ? env.LOBBY.getByName('main') : env.ROOMS.getByName(code);
+    if (action === 'usage') return Response.json(await stub.getUsage());
     if (action === 'age') await stub.ageConnections();
     else if (action === 'fail') await stub.failListings(true);
     else if (action === 'recover') await stub.failListings(false);
@@ -176,8 +194,11 @@ try {
   assert.ok(host.state.startedAt, 'the race clock starts after both players are ready');
   await mf.unsafeEvictDurableObject('games', 'GameRoom', { name: created.code, webSockets: 'hibernate' });
   await delay(60);
+  const hibernatedUsage = await (await mf.dispatchFetch(`https://games.test/__test/room/${created.code}/usage`)).json();
   send(host, { type: 'progress', answered: 5, total: 5, correct: 4, reviewComplete: false });
   await until(() => guest.state.players.find(p => p.id === 'alice').answered === 5);
+  const progressUsage = await (await mf.dispatchFetch(`https://games.test/__test/room/${created.code}/usage`)).json();
+  assert.equal(progressUsage.alarmWrites, hibernatedUsage.alarmWrites, 'progress preserves an earlier alarm even after hibernation');
   assert.equal(guest.state.players.find(p => p.id === 'alice').finishedAt, null, 'first-pass completion waits for review');
   send(host, { type: 'progress', answered: 5, total: 5, correct: 4, reviewComplete: true });
   await until(() => guest.state.players.find(p => p.id === 'alice').place === 1);
@@ -213,12 +234,16 @@ try {
   assert.equal(bob.frames.filter(f => f.t === 'invite').length, invitesBefore);
 
   // Hibernated disconnect preserves host and progress, then a new socket resumes the same player.
+  const listingStore = await mf.unsafeGetDurableObjectStorage('games', 'Lobby', { name: 'main' });
+  const listingBeforeReconnect = (await listingStore.exec('SELECT data FROM rooms WHERE code=?', created.code))[0].data;
   host.socket.close(1011, 'network lost');
   await until(() => !guest.state.connected.includes('alice'));
   assert.equal(guest.state.hostId, 'alice');
   const resumed = await open(`/rooms/${created.code}/socket`, 'quiz-race', (await post(`/rooms/${created.code}`, 'alice')).ticket);
   await until(() => resumed.state && guest.state.connected.includes('alice'));
   assert.equal(resumed.state.round, guest.state.round);
+  await delay(60);
+  assert.equal((await listingStore.exec('SELECT data FROM rooms WHERE code=?', created.code))[0].data, listingBeforeReconnect, 'temporary disconnect and unchanged rejoin do not republish the listing');
 
   // Nonmember Leave requests cannot mutate another room or bypass the account request limit.
   const roomBeforeSpam = (await partySql.exec('SELECT data FROM state WHERE id=1'))[0].data;
@@ -438,14 +463,32 @@ try {
     return players;
   }));
   const latencies = [];
+  const usageFor = async players => {
+    const response = await mf.dispatchFetch('https://games.test/__test/room/' + players[0].client.state.code + '/usage');
+    assert.equal(response.status, 200);
+    return response.json();
+  };
+  const usageBefore = await Promise.all(races.map(usageFor));
+  // Forty answers per student, paced below the server token bucket, rather than one finish frame.
+  for (let word = 1; word < 40; word++) {
+    for (const players of races) players.forEach(p => send(p.client, {type:'progress', answered:word, total:40, correct:word, reviewComplete:false}));
+    await until(() => races.every(players => players.every(p => p.client.state.players.every(player => player.answered === word))));
+    await delay(250);
+  }
   await Promise.all(races.map(async players => {
     const at = performance.now();
-    players.forEach(p => send(p.client, {type:'progress', answered:1, total:1, correct:1, reviewComplete:true}));
+    players.forEach(p => send(p.client, {type:'progress', answered:40, total:40, correct:40, reviewComplete:true}));
     await until(() => players.every(p => p.client.state.phase === 'results'));
     assert.deepEqual(players[0].client.state.players.map(p => p.place).sort(), players.map((_, i) => i + 1));
     latencies.push(performance.now() - at);
   }));
   latencies.sort((a,b)=>a-b);
+  const usageAfter = await Promise.all(races.map(usageFor));
+  const raceUsage = Object.fromEntries(Object.keys(usageBefore[0]).map(key => [key, usageAfter.reduce((sum, usage, index) => sum + usage[key] - usageBefore[index][key], 0)]));
+  assert.equal(raceUsage.listingCalls, 0, 'scores and completion do not republish unchanged listings');
+  assert.ok(raceUsage.alarmWrites < 600, '6,000 answers must not each rewrite the alarm');
+  assert.equal(races.flat().filter(player => player.client.closed !== null).length, 0, 'sustained progress must not disconnect players');
+  console.log(JSON.stringify({ progressMessages: 6000, raceUsage, note: 'Local room SQL rows, alarm writes and listing RPC calls; excludes setup, lobby, account objects and Cloudflare compute billing.' }));
   console.log(JSON.stringify({ users:150, raceRooms:races.length, lobbyConvergenceMs:lobbyMs, chat150FanoutMs:chatMs, raceFinishP95Ms:Math.round(latencies[Math.ceil(latencies.length*0.95)-1]), jwksFetches }));
   assert.equal(jwksFetches, 1, 'concurrent access checks share cached signing keys');
 

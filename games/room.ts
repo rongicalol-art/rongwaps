@@ -129,17 +129,21 @@ export class GameRoom extends DurableObject<Env> {
   }
 
   private commit(room: RaceRoomState, listing = true) {
+    const previous = listing ? this.read() : null;
     const announce = room.open && !room.announced && room.players.length > 0;
     if (announce) room.announced = true;
     room.revision = (room.revision ?? 0) + 1;
     this.write(1, room);
     this.broadcast(room);
-    if (listing) {
+    // Readiness, scores and temporary disconnects do not change a room listing.
+    if (listing && (!previous?.revision || this.record<number>(5) !== null
+      || JSON.stringify({ ...summarizeRoom(previous), revision: 0 }) !== JSON.stringify({ ...summarizeRoom(room), revision: 0 }))) {
       this.write(5, room.revision);
       const publication = this.publishListing(room);
       this.ctx.waitUntil(publication);
       return publication;
     }
+    return Promise.resolve(true);
   }
 
   /** Persist the pending revision until acknowledged; an evicted room retries from its alarm. */
@@ -185,7 +189,10 @@ export class GameRoom extends DurableObject<Env> {
     for (const player of room.players) if (!player.left && player.disconnectedAt != null) times.push(player.disconnectedAt + DISCONNECT_GRACE_MS);
     for (const socket of this.sockets()) times.push(this.lastSeen(socket) + STALE_MS, (socket.deserializeAttachment() as Attachment).authUntil ?? 0);
     // Give a server-initiated close handshake time to flush before reclaiming an empty object's storage.
-    await this.ctx.storage.setAlarm(Math.max(Date.now() + 1000, Math.min(...times)));
+    const next = Math.max(Date.now() + 1000, Math.min(...times));
+    const scheduled = await this.ctx.storage.getAlarm();
+    // An earlier alarm can recompute the deadline; every answer need not rewrite it.
+    if (scheduled === null || next < scheduled) await this.ctx.storage.setAlarm(next);
   }
 
   async enter(userId: string, name: string, color: string, image: string | undefined, authUntil: number): Promise<{ ticket: string }> {
