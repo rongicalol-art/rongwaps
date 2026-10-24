@@ -15,6 +15,7 @@ export const PRACTICE_ACTIVITIES = [
   { id: 'writing', label: 'Writing', icon: 'writing' },
   { id: 'pinyin', label: 'Pinyin', icon: 'pinyinPractice' },
   { id: 'tones', label: 'Tones', icon: 'tones' },
+  { id: 'sentences', label: 'Sentences', icon: 'reading' },
 ] as const;
 
 export type PracticeActivityId = (typeof PRACTICE_ACTIVITIES)[number]['id'];
@@ -27,12 +28,17 @@ export const DOCK_TABS = [
 
 export type DockTabId = (typeof DOCK_TABS)[number]['id'];
 
-export type PracticeHubOptionId = 'writing' | 'pinyin' | 'tones';
+export type PracticeHubOptionId = 'writing' | 'pinyin' | 'tones' | 'sentences';
+
+const isPracticeHubOption = (value: string): value is PracticeHubOptionId => (
+  value === 'writing' || value === 'pinyin' || value === 'tones' || value === 'sentences'
+);
 
 const PRACTICE_HUB_OPTIONS: ReadonlyArray<DockSubMenuOption<PracticeHubOptionId>> = [
   { value: 'writing', label: 'Writing', playfulIcon: 'writing' },
   { value: 'pinyin', label: 'Pinyin', playfulIcon: 'pinyinPractice' },
   { value: 'tones', label: 'Tones', playfulIcon: 'tones' },
+  { value: 'sentences', label: 'Sentences', playfulIcon: 'reading' },
 ];
 
 /** The single anchored sub-menu the dock can have open at a time. */
@@ -72,7 +78,7 @@ export function PracticeModeDock({
   const modesContainerRef = useRef<HTMLDivElement>(null);
 
   const dockValue: DockTabId =
-    value === 'writing' || value === 'pinyin' || value === 'tones'
+    isPracticeHubOption(value)
       ? 'practiceHub'
       : value === 'quiz'
         ? 'quiz'
@@ -161,7 +167,7 @@ export function PracticeModeDock({
                 containerRef={modesContainerRef}
                 label="Practice options"
                 options={PRACTICE_HUB_OPTIONS}
-                selectedValue={value === 'writing' || value === 'pinyin' || value === 'tones' ? value : null}
+                selectedValue={isPracticeHubOption(value) ? value : null}
                 onSelect={(selectedMode) => {
                   onChange(selectedMode);
                 }}

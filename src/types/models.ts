@@ -104,7 +104,7 @@ export interface DictionarySavedPreview {
   meaning: string;
 }
 
-export type PracticeActivityType = 'flashcards' | 'listening' | 'quiz' | 'writing' | 'pinyin' | 'tones';
+export type PracticeActivityType = 'flashcards' | 'listening' | 'quiz' | 'writing' | 'pinyin' | 'tones' | 'sentences';
 export type QuizMode = 'choices' | 'typing';
 export type ActivityType = PracticeActivityType | 'flashcards-review' | 'flashcards-library' | 'create-card' | null;
 

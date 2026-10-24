@@ -23,6 +23,14 @@ English meaning, curriculum location, source card, and extraction provenance.
   by book with no headers (order carries the ranking). Sentence pinyin and the
   B·L meta carry the source book's accent too.
 
+- Practice hub → **Sentences** (`src/screens/sentences/`) lists every record for the
+  deck's parts in book order (Dialogue with speakers from the readings pack, Reading,
+  Examples), each sentence once, with the part's words highlighted. A 汉字 / Pinyin /
+  English switch (remembered per device) sets what shows under each sentence; rows play
+  their recording and Play all reads them in order. Rows without a recording have no play
+  button. Reading only: it never records progress. The lesson window offers it only for
+  parts that have records. Preview: debug window → UI Previews.
+
 ## Matching a word to its sentences
 
 Vocabulary forms are authored with notation, and matching expands it fully:

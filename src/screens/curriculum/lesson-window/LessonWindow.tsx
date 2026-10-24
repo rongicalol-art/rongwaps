@@ -13,6 +13,7 @@ import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
 import { ChallengeCard, HereButton, lessonKey } from '../../../features/social';
 import { useAppStore } from '../../../store/useAppStore';
+import { fetchCourseExampleRecords } from '../../../services/contentPacks';
 import {
   getAggregatedPart,
   getDefaultMode,
@@ -70,8 +71,24 @@ function LessonTitle({ lesson, part, isDesktop }: { lesson: CourseLessonProgress
   );
 }
 
+/** Whether the book has any sentences for these parts (Sentences is offered only then). */
+function useHasPartSentences(bookId: number, lessonId: number, partIds: number[]): boolean {
+  const [hasSentences, setHasSentences] = useState(false);
+  const partsKey = partIds.join(',');
+  useEffect(() => {
+    let current = true;
+    const parts = new Set(partsKey.split(',').map(Number));
+    void fetchCourseExampleRecords().then((records) => {
+      if (current) setHasSentences(records.some((r) => r.bookId === bookId && r.lessonId === lessonId && parts.has(r.partId)));
+    });
+    return () => { current = false; };
+  }, [bookId, lessonId, partsKey]);
+  return hasSentences;
+}
+
 function PracticeHubDrawer({
   canQuiz,
+  canReadSentences,
   isOpen,
   onClose,
   onQuizIntent,
@@ -81,9 +98,10 @@ function PracticeHubDrawer({
   isOpen: boolean;
   onClose: () => void;
   canQuiz: boolean;
+  canReadSentences: boolean;
   onQuizIntent: () => void;
   onPinyinIntent: () => void;
-  onSelect: (activity: 'quiz' | 'writing' | 'pinyin' | 'tones') => void;
+  onSelect: (activity: 'quiz' | 'writing' | 'pinyin' | 'tones' | 'sentences') => void;
 }) {
   return (
     <Drawer
@@ -158,6 +176,20 @@ function PracticeHubDrawer({
           <PlayfulNavIcon name="tonesPractice" className="h-8 w-8" />
           <span>Tones</span>
         </ActionButton>
+        {canReadSentences && (
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            fullWidth
+            edgeColor="var(--color-ui-border)"
+            onPointerEnter={() => { void preloadPracticeChunks('sentences').catch(() => {}); }}
+            onClick={() => onSelect('sentences')}
+            className="justify-start gap-3 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
+          >
+            <PlayfulNavIcon name="reading" className="h-8 w-8" />
+            <span>Sentences</span>
+          </ActionButton>
+        )}
       </div>
     </Drawer>
   );
@@ -197,6 +229,7 @@ function LessonBody({
   const activeIndex = Math.max(0, parts.findIndex((p) => p.id === (selectedPartIds[0] ?? resolvedPartId)));
   const selectedParts = parts.filter((p) => selectedPartIds.includes(p.id));
   const activePart = selectedParts.length > 0 ? getAggregatedPart(selectedParts) : parts[activeIndex];
+  const hasSentences = useHasPartSentences(bookId, lesson.id, selectedPartIds.length > 0 ? selectedPartIds : activePart ? [activePart.id] : []);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -277,6 +310,7 @@ function LessonBody({
   const practiceHubDrawer = (
     <PracticeHubDrawer
       canQuiz={activePart.vocab.total > 0}
+      canReadSentences={hasSentences}
       isOpen={isPracticeHubOpen}
       onClose={() => setIsPracticeHubOpen(false)}
       onQuizIntent={() => { void preloadPracticeChunks('quiz').catch(() => {}); }}

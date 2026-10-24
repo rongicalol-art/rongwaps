@@ -47,6 +47,7 @@ const PRACTICE_ACTIVITIES = new Set([
   'writing',
   'pinyin',
   'tones',
+  'sentences',
   'flashcards-review',
   'flashcards-library',
 ]);

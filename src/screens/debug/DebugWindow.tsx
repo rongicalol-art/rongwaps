@@ -14,6 +14,7 @@ import { LibrarySkeleton, ReviewHubCard, DailyReviewPreview } from '../library';
 import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
 import { TonePreview } from '../tones';
+import { SentencesPreview } from '../sentences';
 import { PinyinPreview } from '../pinyin';
 import { GrammarPracticePreview } from '../../features/grammar-practice';
 
@@ -340,6 +341,7 @@ export const DebugWindow = () => {
             <QuizPreview />
             <GrammarPracticePreview />
             <TonePreview />
+            <SentencesPreview />
             <PinyinPreview />
             <LegalUpdatePreview />
           </div>
