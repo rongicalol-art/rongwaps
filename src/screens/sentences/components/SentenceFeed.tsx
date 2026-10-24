@@ -48,6 +48,9 @@ const SentenceCard = memo(function SentenceCard({
   const chars = useMemo(() => Array.from(text), [text]);
   const syllables = useMemo(() => alignWordSyllables(text, record.pinyin), [text, record.pinyin]);
   const highlighted = useMemo(() => highlightMask(text, highlightTerms), [text, highlightTerms]);
+  /** Every character has its own syllable: an open card stacks pinyin over each one. */
+  const isAligned = Boolean(syllables) && chars.every((char, index) => !HAN.test(char) || Boolean(syllables?.[index]));
+  const stacked = open && isAligned;
   const [peek, setPeek] = useState<number | null>(null);
   const peekTimerRef = useRef<number | null>(null);
   /** A press that peeked must not also count as a tap when it lifts. */
@@ -61,7 +64,7 @@ const SentenceCard = memo(function SentenceCard({
   useEffect(() => endPress, []);
 
   const startPress = (index: number) => (event: PointerEvent) => {
-    if (!focused || !syllables?.[index]) return;
+    if (!focused || stacked || !syllables?.[index]) return;
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     peekedRef.current = false;
     peekTimerRef.current = window.setTimeout(() => {
@@ -84,12 +87,12 @@ const SentenceCard = memo(function SentenceCard({
       )}
     >
       {(speaker || (hard && !open)) && (
-        <div className="mb-1 flex items-center justify-between gap-3">
+        <div className={cn('flex items-center justify-between gap-3', stacked ? 'mb-2' : 'mb-1')}>
           <p className="font-chinese-sans text-sm font-semibold text-ui-muted">{speaker}</p>
           {hard && !open && <AppIcon name="bookmarkFilled" size={16} className="text-brand-primary" aria-label="Marked hard" />}
         </div>
       )}
-      <p lang="zh" className="font-chinese text-[24px] leading-[1.75] text-ui-ink-strong sm:text-[30px]">
+      <p lang="zh" className={cn('font-chinese text-[24px] text-ui-ink-strong sm:text-[30px]', stacked ? 'leading-[2.1]' : 'leading-[1.75]')}>
         {chars.map((char, index) => {
           const isHan = HAN.test(char);
           return (
@@ -111,10 +114,15 @@ const SentenceCard = memo(function SentenceCard({
                 open && isHan && 'rounded-xs transition-colors hover:bg-brand-primary/10',
               )}
             >
-              {char}
+              {stacked && isHan ? (
+                <ruby className="[ruby-align:center]">
+                  {char}
+                  <rt className="pb-0.5 font-sans text-[11px] font-semibold tracking-normal text-ui-ink sm:text-[13px]">{syllables?.[index]?.text}</rt>
+                </ruby>
+              ) : char}
               {peek === index && syllables?.[index] && (
-                <span className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-0.5 -translate-x-1/2 whitespace-nowrap rounded-compact bg-ui-ink-strong px-1.5 py-0.5 font-sans text-sm font-extrabold leading-tight text-ui-surface">
-                  {syllables[index]?.text.toLowerCase()}
+                <span className="pointer-events-none absolute bottom-full left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xs bg-ui-surface px-1 font-sans text-sm font-semibold leading-tight text-ui-ink">
+                  {syllables[index]?.text}
                 </span>
               )}
             </span>
@@ -133,10 +141,10 @@ const SentenceCard = memo(function SentenceCard({
             className="overflow-hidden"
           >
             <div className="mt-3 border-t-2 border-ui-divider pt-3">
-              {record.pinyin && (
-                <p className="text-base font-semibold leading-snug tracking-wide text-ui-muted-strong sm:text-lg">{numberToToneMarks(record.pinyin)}</p>
+              {record.pinyin && !isAligned && (
+                <p className="mb-1 text-base font-medium leading-snug text-ui-ink sm:text-lg">{numberToToneMarks(record.pinyin)}</p>
               )}
-              <div className="mt-1 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
                 <p className="ui-translation min-w-0 text-base sm:text-lg">{record.english}</p>
                 <div className="-mr-2 flex shrink-0 items-center gap-1 self-end">
                   <button
@@ -175,7 +183,7 @@ interface SentenceFeedProps {
  * swipe, wheel and touchpad; keys and Flow scroll it programmatically.
  */
 export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverlayOpen = false }: SentenceFeedProps) {
-  const { deck, currentIndex, openIds, hardIds, goTo, toggleOpen, toggleHard, pauseFlow, finish, primaryAction } = session;
+  const { deck, currentIndex, openIds, hardIds, goTo, next, toggleOpen, toggleHard } = session;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -221,31 +229,26 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
       const target = event.target;
       if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"], [role="menu"]')) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
-      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === ' ') {
+        if (event.key === ' ' && target instanceof HTMLElement && target.closest('button')) return;
         event.preventDefault();
-        pauseFlow();
-        if (currentIndex < deck.length - 1) goTo(currentIndex + 1);
-        else finish();
+        next();
       } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
         event.preventDefault();
-        pauseFlow();
         goTo(Math.max(0, currentIndex - 1));
-      } else if (event.key === ' ' || event.key === 'Enter') {
+      } else if (event.key === 'Enter') {
         if (target instanceof HTMLElement && target.closest('button')) return;
         event.preventDefault();
-        pauseFlow();
-        primaryAction();
+        toggleOpen();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [currentIndex, deck.length, finish, goTo, isOverlayOpen, pauseFlow, primaryAction]);
+  }, [currentIndex, goTo, isOverlayOpen, next, toggleOpen]);
 
   return (
     <div
       ref={scrollerRef}
-      onPointerDown={pauseFlow}
-      onWheel={pauseFlow}
       className="relative h-full snap-y snap-mandatory overflow-y-auto [container-type:size] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 sm:px-6">

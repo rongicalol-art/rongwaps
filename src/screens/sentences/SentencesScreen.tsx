@@ -88,7 +88,7 @@ export function SentencesScreen({
         <SentenceFeed
           session={session}
           highlightTerms={highlightTerms}
-          onOpenCharacter={(char) => { session.pauseFlow(); setBreakdown(char); }}
+          onOpenCharacter={(char) => { session.stopAudio(); setBreakdown(char); }}
           isOverlayOpen={Boolean(breakdown)}
         />
       </div>
