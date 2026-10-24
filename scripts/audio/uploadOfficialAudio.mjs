@@ -1,5 +1,6 @@
 /**
- * Upload the re-encoded official 時代華語 Book 1 audio to Cloudflare R2.
+ * Upload the official 時代華語 audio (Book 1 re-encoded; with --book 3, the Book 3 originals) to
+ * Cloudflare R2.
  *
  * Files land in the R2 bucket served at VITE_AUDIO_BASE_URL, so the client
  * streams them straight from the CDN.
@@ -7,15 +8,17 @@
  * Usage:
  *   R2_ACCOUNT_ID=... R2_ACCESS_KEY_ID=... R2_SECRET_ACCESS_KEY=... \
  *   R2_BUCKET_NAME=... VITE_AUDIO_BASE_URL=... \
- *     node scripts/audio/uploadOfficialAudio.mjs [--dry-run]
+ *     node scripts/audio/uploadOfficialAudio.mjs [--book 3] [--dry-run]
  *
- * Source files: output/official-audio/book1/*.mp3 (see downloadOfficialAudio.mjs).
+ * Source files: output/official-audio/book1/*.mp3 (see downloadOfficialAudio.mjs), or
+ * output/official-audio/book3/*.mp3 (downloadBook3VocabularyTracks.mjs, with and without --dialogue).
  */
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
-const SOURCE_DIR = 'output/official-audio/book1';
+const BOOK = process.argv.includes('--book') ? Number(process.argv[process.argv.indexOf('--book') + 1]) : 1;
+const SOURCE_DIR = `output/official-audio/book${BOOK}`;
 const CONCURRENCY = 4;
 const DRY_RUN = process.argv.includes('--dry-run');
 
