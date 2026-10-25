@@ -21,6 +21,7 @@ export function useReaderKeyboardNavigation({
 }: ReaderKeyboardNavigationOptions) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (useAppStore.getState().socialPanel) return;
       const target = event.target as HTMLElement | null;
       if (target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable) {
         return;

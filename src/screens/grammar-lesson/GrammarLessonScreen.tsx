@@ -7,13 +7,10 @@ import { findNeighbourGrammarPartId } from '../../data/interactiveGrammarManifes
 import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useAuth } from '../../hooks/useAuth';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
-import { StudySidePanel, WorkspaceWindow } from '../../lib/widgets';
+import { WorkspaceWindow } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
-import { GrammarConfusionDrawer } from './components/GrammarConfusionDrawer';
-import { GrammarConfusionPanel } from './components/GrammarConfusionPanel';
 import { GrammarContinueFooter } from './components/GrammarContinueFooter';
 import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
 import { useGrammarLessonPage } from './hooks/useGrammarLessonPage';
@@ -72,18 +69,8 @@ export function GrammarLessonScreen({
   const bookPageButtonRef = useRef<HTMLButtonElement>(null);
 
   const [isBookOpen, setIsBookOpen] = useState(false);
-  const [isConfusionOpen, setIsConfusionOpen] = useState(false);
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const { hasFullCourseAccess } = useAuth();
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
-
-  const handleToggleConfusion = useCallback(() => {
-    if (isDesktop) {
-      setIsSidePanelOpen((prev) => !prev);
-    } else {
-      setIsConfusionOpen((prev) => !prev);
-    }
-  }, [isDesktop]);
+  const isSocialPanelOpen = useAppStore((state) => state.socialPanel !== null);
 
   // False until the lazy study-page chunk has mounted at least once, so the
   // Continue footer never floats over the loading state.
@@ -112,7 +99,6 @@ export function GrammarLessonScreen({
     onProceedToReading,
   });
 
-  const hasConfusion = Boolean(page.confusion && page.confusion.items.length > 0);
   const printedPages = page.printedPages;
   const bookPageLabel = (page.bookPageAvailable ?? true) && printedPages.length > 0
     ? printedPages.length === 1
@@ -155,7 +141,6 @@ export function GrammarLessonScreen({
 
   useEffect(() => {
     resetFooter();
-    setIsConfusionOpen(false);
     mainRef.current?.scrollTo({ top: 0 });
     if (document.activeElement?.tagName === 'BODY') mainRef.current?.focus();
   }, [currentGrammarIndex, isPracticing, resetFooter]);
@@ -177,7 +162,6 @@ export function GrammarLessonScreen({
 
   useGrammarLessonKeyboardNavigation({
     isBookOpen,
-    isConfusionOpen,
     isPracticing,
     canGoBack,
     continueAfterStudy,
@@ -229,9 +213,6 @@ export function GrammarLessonScreen({
               totalSteps={totalSteps}
               progress={((currentStepIndex + 1) / totalSteps) * 100}
               showReadingAids
-              hasConfusion={hasConfusion}
-              isConfusionOpen={isDesktop ? isSidePanelOpen : isConfusionOpen}
-              onOpenConfusion={handleToggleConfusion}
               bookPageLabel={bookPageLabel}
               onOpenBookPage={() => setIsBookOpen(true)}
               bookPageButtonRef={bookPageButtonRef}
@@ -263,7 +244,7 @@ export function GrammarLessonScreen({
                           onExit={goBackToPreviousGrammar}
                           barHost={barHost}
                           initialIndex={practiceInitialIndex}
-                          shortcutsDisabled={isBookOpen || isConfusionOpen || Boolean(dictionaryWord)}
+                          shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
                         />
                         </Suspense>
                       ) : (
@@ -294,22 +275,6 @@ export function GrammarLessonScreen({
           />
         </div>
 
-        {hasConfusion && page.confusion && isSidePanelOpen && (
-          <StudySidePanel
-            ariaLabel={page.confusion.title}
-            title={page.confusion.title}
-            onClose={() => setIsSidePanelOpen(false)}
-            closeLabel="Hide confusion notes"
-          >
-            <GrammarConfusionPanel
-              confusion={page.confusion}
-              characterPreference={characterPreference}
-              showPinyin={showPinyin}
-              showTranslation={showTranslation}
-              onOpenWord={setDictionaryWord}
-            />
-          </StudySidePanel>
-        )}
       </div>
 
       {isBookOpen && (
@@ -319,17 +284,6 @@ export function GrammarLessonScreen({
           grammarTitle={page.titleEnglish}
           pages={page.printedPages}
           onClose={closeBookViewer}
-        />
-      )}
-      {hasConfusion && page.confusion && (
-        <GrammarConfusionDrawer
-          isOpen={isConfusionOpen}
-          onClose={() => setIsConfusionOpen(false)}
-          confusion={page.confusion}
-          characterPreference={characterPreference}
-          showPinyin={showPinyin}
-          showTranslation={showTranslation}
-          onOpenWord={setDictionaryWord}
         />
       )}
     </WorkspaceWindow>

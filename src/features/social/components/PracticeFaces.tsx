@@ -5,12 +5,13 @@ import { useAppStore } from '../../../store/useAppStore';
 import { CHEER_PHRASES, type ChatMessage } from '../../../../shared/lobby';
 import { lobby } from '../lobbyController';
 import { MuteButton, PersonRow } from './SocialBits';
+import { GlobalPresenceButton } from './Presence';
 
 const EMPTY: ChatMessage[] = [];
 
 /**
  * Practice header (flashcards and friends): faces of who's in this lesson. The popover sends a cheer,
- * 一起考試？ opens a room with them, and Open chat jumps to the lesson chat. Nothing renders when alone.
+ * 一起考試？ opens a room with them, and Open chat jumps to the lesson chat. When alone, the global roster stays available.
  */
 export function PracticeFaces() {
   const people = useAppStore((state) => state.socialPeople);
@@ -34,7 +35,7 @@ export function PracticeFaces() {
 
   if (racing) return <button type="button" aria-label="Party chat" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'partyChat' } })}
     className="grid h-11 w-11 place-items-center rounded-control text-ui-muted-strong outline-none hover:bg-ui-hover focus-ring-inline"><AppIcon name="chat" size={22} /></button>;
-  if (others.length === 0) return null;
+  if (others.length === 0) return <GlobalPresenceButton />;
   const phrase = (index: number) => {
     const to = others.map((person) => person.u);
     setSent(index);

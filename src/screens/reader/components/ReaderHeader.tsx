@@ -2,6 +2,7 @@ import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
 import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
 import type { CharacterFont } from '../../../store/useAppStore';
 import { ReaderSettingsPopover } from './ReaderSettingsPopover';
+import { GlobalPresenceButton } from '../../../features/social';
 
 interface ReaderHeaderProps {
   textSize: ReaderTextSize;
@@ -108,8 +109,7 @@ export function ReaderHeader({
   onSeek,
   onClose,
 }: ReaderHeaderProps) {
-  // Reading Mode's header, Duolingo-style: back, the playback progress bar as
-  // the only chrome, reader settings on the right.
+  // Reading Mode keeps playback, classmates and reader settings in the header.
   return (
     <ScreenHeader
       variant="frosted"
@@ -134,22 +134,25 @@ export function ReaderHeader({
         </>
       }
       rightAction={
-        <ReaderSettingsPopover
-          size="lg"
-          iconSize={25}
-          textSize={textSize}
-          onTextSizeChange={onTextSizeChange}
-          characterFont={characterFont}
-          onCharacterFontChange={onCharacterFontChange}
-          showPinyin={showPinyin}
-          onTogglePinyin={onTogglePinyin}
-          showMeaning={showMeaning}
-          onToggleMeaning={onToggleMeaning}
-          showHoverDefinitions={showHoverDefinitions}
-          onToggleHoverDefinitions={onToggleHoverDefinitions}
-          isSlowAudio={isSlowAudio}
-          onToggleSlowAudio={onToggleSlowAudio}
-        />
+        <div className="flex items-center gap-1">
+          <GlobalPresenceButton />
+          <ReaderSettingsPopover
+            size="lg"
+            iconSize={25}
+            textSize={textSize}
+            onTextSizeChange={onTextSizeChange}
+            characterFont={characterFont}
+            onCharacterFontChange={onCharacterFontChange}
+            showPinyin={showPinyin}
+            onTogglePinyin={onTogglePinyin}
+            showMeaning={showMeaning}
+            onToggleMeaning={onToggleMeaning}
+            showHoverDefinitions={showHoverDefinitions}
+            onToggleHoverDefinitions={onToggleHoverDefinitions}
+            isSlowAudio={isSlowAudio}
+            onToggleSlowAudio={onToggleSlowAudio}
+          />
+        </div>
       }
     />
   );

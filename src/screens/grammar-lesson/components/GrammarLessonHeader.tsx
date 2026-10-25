@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
 import type { CharacterFont } from '../../../store/useAppStore';
+import { GlobalPresenceButton } from '../../../features/social';
 
 interface GrammarLessonHeaderProps {
   title?: string;
@@ -14,9 +15,6 @@ interface GrammarLessonHeaderProps {
   totalSteps: number;
   progress: number;
   showReadingAids: boolean;
-  hasConfusion?: boolean;
-  isConfusionOpen?: boolean;
-  onOpenConfusion?: () => void;
   onClose: () => void;
   onTogglePinyin: () => void;
   onToggleTranslation: () => void;
@@ -34,9 +32,6 @@ export function GrammarLessonHeader({
   showTranslation,
   progress,
   showReadingAids,
-  hasConfusion = false,
-  isConfusionOpen = false,
-  onOpenConfusion,
   onClose,
   onTogglePinyin,
   onToggleTranslation,
@@ -74,18 +69,7 @@ export function GrammarLessonHeader({
       controlSize="lg"
       rightAction={
         <div className="flex items-center gap-2">
-          {hasConfusion && onOpenConfusion && (
-            <IconActionButton
-              size="lg"
-              onClick={onOpenConfusion}
-              className={isConfusionOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-              icon={<AppIcon name="hint" size={25} />}
-              label={isConfusionOpen ? "Hide confusion notes" : "Don't mix these up"}
-              title={isConfusionOpen ? "Hide confusion notes" : "Don't mix these up"}
-              aria-haspopup="dialog"
-              aria-expanded={isConfusionOpen}
-            />
-          )}
+          <GlobalPresenceButton />
           {showReadingAids ? (
             <div ref={aidsRef} className="relative">
               <IconActionButton

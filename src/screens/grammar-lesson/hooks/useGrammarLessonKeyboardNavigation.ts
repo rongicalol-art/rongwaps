@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import type { InteractiveGrammarPart } from '../../../types/models';
+import { useAppStore } from '../../../store/useAppStore';
 
 interface GrammarLessonKeyboardNavigationOptions {
   isBookOpen: boolean;
-  isConfusionOpen: boolean;
   isPracticing: boolean;
   /** A previous page, or an open exercise to step back out of. */
   canGoBack: boolean;
@@ -18,7 +18,6 @@ interface GrammarLessonKeyboardNavigationOptions {
 /** Window-level keyboard shortcuts for the grammar lesson window. */
 export function useGrammarLessonKeyboardNavigation({
   isBookOpen,
-  isConfusionOpen,
   isPracticing,
   canGoBack,
   continueAfterStudy,
@@ -35,7 +34,7 @@ export function useGrammarLessonKeyboardNavigation({
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (isBookOpen || isConfusionOpen) return;
+      if (isBookOpen || useAppStore.getState().socialPanel) return;
       if (event.key === 'Escape') {
         onCloseRef.current();
         return;
@@ -69,5 +68,5 @@ export function useGrammarLessonKeyboardNavigation({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isBookOpen, isConfusionOpen, isPracticing, canGoBack, continueAfterStudy, goBackToPreviousGrammar, navigateToPart, currentGrammarIndex, part]);
+  }, [isBookOpen, isPracticing, canGoBack, continueAfterStudy, goBackToPreviousGrammar, navigateToPart, currentGrammarIndex, part]);
 }
