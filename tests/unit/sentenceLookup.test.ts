@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   lookupSentenceWord,
+  segmentSentenceText,
   validateSentenceWords,
 } from '../../src/services/sentenceLookupService';
 
@@ -32,6 +33,13 @@ test('sentenceLookup: validates known words in batch', async () => {
 
   assert.ok(validSet.has('你好'));
   assert.ok(!validSet.has('nonexistentwordxyz123'));
+});
+
+test('sentenceLookup: new classmates split into lexical words in both scripts', async () => {
+  for (const [phrase, classmate] of [['新同學', '同學'], ['新同学', '同学']]) {
+    const segments = await segmentSentenceText(phrase);
+    assert.deepEqual(segments.map(part => part.segment), ['新', classmate]);
+  }
 });
 
 test('sentenceLookup: looks up dictionary word with pinyin and sanitized definitions', async () => {

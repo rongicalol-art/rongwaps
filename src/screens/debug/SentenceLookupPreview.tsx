@@ -6,6 +6,7 @@ const WORDS: GrammarWordToken[] = [
   { id: 'also', traditional: '也', pinyin: 'yě', meaning: 'also' },
   { id: 'ba', traditional: '把', pinyin: 'bǎ', meaning: 'marks the object affected by an action' },
   { id: 'computer', traditional: '電腦', simplified: '电脑', pinyin: 'diànnǎo', meaning: 'computer' },
+  { id: 'new-classmate', traditional: '新同學', simplified: '新同学', pinyin: 'xīn tóngxué', meaning: 'new classmate' },
 ];
 const noop = () => {};
 
