@@ -7,7 +7,7 @@
         "id": "l14g1-p1",
         "source": "p.319 #1",
         "kind": "order-build",
-        "prompt": "You exercised for half an hour this morning. Answer the question.",
+        "prompt": "Answer using 30 minutes.",
         "tiles": [
           {
             "traditional": "我",
@@ -62,13 +62,14 @@
           }
         ],
         "fallbackRepair": "Put 了 after 運動, then the duration.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：今天早上你運動了多久？"
       },
       {
         "id": "l14g1-p2",
         "source": "p.319 #2",
         "kind": "order-build",
-        "prompt": "You walked from the classroom to the dormitory for ten minutes. Answer the question.",
+        "prompt": "Answer using 10 minutes.",
         "tiles": [
           {
             "traditional": "我",
@@ -122,13 +123,14 @@
           }
         ],
         "fallbackRepair": "Put 了 after 走, then the duration.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：從教室到宿舍，你走了多久？"
       },
       {
         "id": "l14g1-p3",
         "source": "p.319 #3",
         "kind": "order-build",
-        "prompt": "Teacher Wang taught for two hours yesterday. Answer the question.",
+        "prompt": "Answer using two hours.",
         "tiles": [
           {
             "traditional": "他",
@@ -182,13 +184,14 @@
           }
         ],
         "fallbackRepair": "Put 了 after 教, then the duration.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：王老師昨天教了多久？"
       },
       {
         "id": "l14g1-p3a",
         "source": "p.320 #1",
         "kind": "slot-build",
-        "prompt": "You swam from 6:00 to 8:00 this morning. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -317,7 +320,7 @@
         "id": "l14g1-p4",
         "source": "p.320 #2",
         "kind": "slot-build",
-        "prompt": "You used the computer for half an hour last night. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -446,7 +449,7 @@
         "id": "l14g1-p5",
         "source": "p.320 #3",
         "kind": "slot-build",
-        "prompt": "You sang for three hours last weekend. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -575,7 +578,7 @@
         "id": "l14g1-p6",
         "source": "p.321 #1",
         "kind": "slot-build",
-        "prompt": "You read for two hours yesterday afternoon. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -737,7 +740,7 @@
         "id": "l14g1-p7",
         "source": "p.321 #2",
         "kind": "slot-build",
-        "prompt": "You read for an hour and a half the night before last. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -899,7 +902,7 @@
         "id": "l14g1-p8",
         "source": "p.321 #3",
         "kind": "slot-build",
-        "prompt": "You drove for two hours and ten minutes last weekend. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -1139,7 +1142,7 @@
         "id": "l14g2-p1",
         "source": "p.322 #1",
         "kind": "order-build",
-        "prompt": "You have been waiting for an hour. Answer the question.",
+        "prompt": "Answer using one hour.",
         "tiles": [
           {
             "traditional": "我們",
@@ -1199,13 +1202,14 @@
           }
         ],
         "fallbackRepair": "Use 了 after 等 and a second 了 after the duration.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：我們等了多久了？小張為什麼還沒來？"
       },
       {
         "id": "l14g2-p2",
         "source": "p.322 #2",
         "kind": "order-build",
-        "prompt": "You have lived in Taiwan for three years. Answer the question.",
+        "prompt": "Answer using three years.",
         "tiles": [
           {
             "traditional": "我在台灣",
@@ -1264,13 +1268,14 @@
           }
         ],
         "fallbackRepair": "Use 了 after 住 and a second 了 after 三年.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：你的中文說得真好！你在台灣住了幾年了？"
       },
       {
         "id": "l14g2-p3",
         "source": "p.322 #3",
         "kind": "order-build",
-        "prompt": "You have been reading for two hours. Answer the question.",
+        "prompt": "Complete the reply. Use a two-hour reading duration.",
         "tiles": [
           {
             "traditional": "我們",
@@ -1330,13 +1335,14 @@
           }
         ],
         "fallbackRepair": "Use 了 after 看 and a second 了 after the duration.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：時間還早，你們要回家了嗎？"
       },
       {
         "id": "l14g2-p4",
         "source": "p.323 #1",
         "kind": "slot-build",
-        "prompt": "It is 9 p.m.; he started using the computer at 9 a.m. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -1458,13 +1464,14 @@
           ],
           "alt": "A person at a computer; caption 9:00 a.m. to 9:00 p.m."
         },
-        "gaps": true
+        "gaps": true,
+        "sub": "如果現在是晚上九點，那麼他們做這些事做了多久了？"
       },
       {
         "id": "l14g2-p5",
         "source": "p.323 #2",
         "kind": "slot-build",
-        "prompt": "It is 9 p.m.; they started riding bikes at 7 p.m. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -1586,13 +1593,14 @@
           ],
           "alt": "Two people riding bicycles; caption 7:00 to 9:00 p.m."
         },
-        "gaps": true
+        "gaps": true,
+        "sub": "如果現在是晚上九點，那麼他們做這些事做了多久了？"
       },
       {
         "id": "l14g2-p6",
         "source": "p.323 #3",
         "kind": "slot-build",
-        "prompt": "It is 9 p.m.; they started dancing at 8 p.m. Complete the sentence.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -1714,13 +1722,14 @@
           ],
           "alt": "A couple ballroom dancing."
         },
-        "gaps": true
+        "gaps": true,
+        "sub": "如果現在是晚上九點，那麼他們做這些事做了多久了？"
       },
       {
         "id": "l14g2-p7",
         "source": "p.324 #1",
         "kind": "slot-build",
-        "prompt": "It has been raining for an hour at Taipei 101. Complete the reply.",
+        "prompt": "Complete the reply. Use a one-hour duration.",
         "lines": [
           {
             "segments": [
@@ -1842,13 +1851,14 @@
           ],
           "alt": "Taipei 101 in the rain."
         },
-        "gaps": true
+        "gaps": true,
+        "sub": "A：台北的冬天常常下雨。"
       },
       {
         "id": "l14g2-p8",
         "source": "p.324 #2",
         "kind": "slot-build",
-        "prompt": "You have been writing Chinese characters for ten years. Complete the reply.",
+        "prompt": "Complete the reply. Use a ten-year duration.",
         "lines": [
           {
             "segments": [
@@ -1970,13 +1980,14 @@
           ],
           "alt": "A girl writing the character 好 at a desk."
         },
-        "gaps": true
+        "gaps": true,
+        "sub": "A：你的中文字寫得真漂亮！"
       },
       {
         "id": "l14g2-p9",
         "source": "p.324 #3",
         "kind": "slot-build",
-        "prompt": "You have been reading for an hour. Complete the reply.",
+        "prompt": "Complete the reply. Use a one-hour duration.",
         "lines": [
           {
             "segments": [
@@ -2098,7 +2109,8 @@
           ],
           "alt": "A boy reading at a desk while a woman stands behind him."
         },
-        "gaps": true
+        "gaps": true,
+        "sub": "A：你先回去吧，我還想在這裡看書。"
       },
       {
         "id": "l14g2-own-order",
@@ -2183,7 +2195,7 @@
         "id": "l14g3-p1",
         "source": "p.332 #1",
         "kind": "order-build",
-        "prompt": "You prefer tea because it tastes better than coffee. Answer the question.",
+        "prompt": "Prefer tea to coffee and give a reason.",
         "tiles": [
           {
             "traditional": "我喜歡",
@@ -2243,13 +2255,14 @@
           }
         ],
         "fallbackRepair": "Put 比 before 咖啡 and 好喝 after it.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：你喜歡喝咖啡還是茶？"
       },
       {
         "id": "l14g3-p2",
         "source": "p.332 #2",
         "kind": "slot-build",
-        "prompt": "You want to see a movie because it is more interesting than playing ball. Answer the question.",
+        "prompt": "Choose the movie; say it is more interesting than playing ball.",
         "lines": [
           {
             "segments": [
@@ -2343,13 +2356,14 @@
           "pinyin": "Wǒ xiǎng qù kàn diànyǐng, yīnwèi kàn diànyǐng bǐ dǎ qiú yǒuqù.",
           "english": "I want to see a movie because it is more interesting than playing ball.",
           "simplified": "我想去看电影，因为看电影比打球有趣。"
-        }
+        },
+        "sub": "A：這個週末你想去打球，還是去看電影？"
       },
       {
         "id": "l14g3-p3",
         "source": "p.332 #3",
         "kind": "order-build",
-        "prompt": "You cook every day because cooking is cheaper than eating out. Answer the question.",
+        "prompt": "Say cooking is cheaper than eating out.",
         "tiles": [
           {
             "traditional": "因為",
@@ -2409,13 +2423,14 @@
           }
         ],
         "fallbackRepair": "Put 比 before the second activity and 便宜 after it.",
-        "quiet": true
+        "quiet": false,
+        "sub": "A：為什麼你每天都做飯？"
       },
       {
         "id": "l14g3-p4",
         "source": "p.333 #1",
         "kind": "order-build",
-        "prompt": "You have many English books; your brother has only three. Compare them.",
+        "prompt": "Write a complete sentence with 比.",
         "tiles": [
           {
             "traditional": "我的",
@@ -2473,13 +2488,14 @@
           }
         ],
         "fallbackRepair": "Put 比 between the two people and 多 after it.",
-        "quiet": true
+        "quiet": false,
+        "sub": "我有很多英文書，弟弟只有三本。"
       },
       {
         "id": "l14g3-p5",
         "source": "p.333 #2",
         "kind": "order-build",
-        "prompt": "Beef dumplings cost eight yuan each; pork dumplings cost five. Compare them. Start with 牛肉餃子.",
+        "prompt": "Write a complete sentence with 比.",
         "tiles": [
           {
             "traditional": "牛肉餃子",
@@ -2540,13 +2556,14 @@
           }
         ],
         "fallbackRepair": "Put 比 before the pork dumplings and 貴 after them.",
-        "quiet": true
+        "quiet": false,
+        "sub": "豬肉餃子一個五塊錢，牛肉餃子一個八塊錢。"
       },
       {
         "id": "l14g3-p6",
         "source": "p.333 #3",
         "kind": "order-build",
-        "prompt": "You eat one bowl of rice; your brother eats three. Compare the amounts. Start with 哥哥.",
+        "prompt": "Write a complete sentence with 比.",
         "tiles": [
           {
             "traditional": "哥哥",
@@ -2604,7 +2621,8 @@
           }
         ],
         "fallbackRepair": "Put 比 between 哥哥吃的飯 and 我, then 多.",
-        "quiet": true
+        "quiet": false,
+        "sub": "我吃一碗飯，哥哥吃三碗飯。"
       },
       {
         "id": "l14g3-own-spot",

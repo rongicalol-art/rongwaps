@@ -13,6 +13,8 @@ export interface ContextualChineseTextProps extends Omit<HTMLAttributes<HTMLSpan
   focusTerms?: string[];
   characterPreference?: 'traditional' | 'simplified';
   onOpenWord: (word: string) => void;
+  /** Override the study face when the surrounding activity uses a sentence font. */
+  wordClassName?: string;
 }
 
 const NO_TOKENS: GrammarWordToken[] = [];
@@ -24,6 +26,7 @@ export function ContextualChineseText({
   focusTerms = NO_FOCUS,
   characterPreference = 'traditional',
   onOpenWord,
+  wordClassName = 'font-chinese',
   className,
   ...props
 }: ContextualChineseTextProps) {
@@ -36,7 +39,7 @@ export function ContextualChineseText({
         highlightTerms={focusTerms}
         highlightClassName={(term) => cn('font-black', getSemanticRoleClasses(getGrammarSemanticRole(term)))}
         onWordClick={onOpenWord}
-        wordClassName="font-chinese"
+        wordClassName={wordClassName}
       />
     </span>
   );

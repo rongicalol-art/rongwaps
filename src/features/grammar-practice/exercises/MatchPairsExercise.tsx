@@ -75,7 +75,7 @@ export function MatchPairsExercise({
             {number !== null && (
               <span className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-xs border-2 border-feedback-success text-xs font-black text-feedback-success">{number}</span>
             )}
-            <span className="font-chinese text-base leading-snug text-balance sm:text-xl">{textIn(sentence, script)}</span>
+            <span className="font-chinese-sans font-semibold text-base leading-snug text-balance sm:text-xl">{textIn(sentence, script)}</span>
           </span>
           {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{sentence.pinyin}</span>}
           {showTranslation && <span className="text-xs font-extrabold text-ui-muted-strong">{sentence.english}</span>}

@@ -41,6 +41,8 @@ interface ParsedDialogue {
 
 function parseDialogue(sub?: string, prompt?: string): ParsedDialogue | null {
   if (!sub) return null;
+  // A reading or several source turns must stay together, rather than becoming one parsed bubble.
+  if (sub.includes('\n')) return null;
 
   // Check for afterward reply: "B replies afterward: ..." or "Your friend replies next: ..."
   const afterMatch = /^(?:.*?(?:replies afterward|replies next|replies)):\s*(.+)$/i.exec(sub);
@@ -167,16 +169,16 @@ export function OrderBuildExercise({
             drag?.over === String(tile) && 'border-l-2 border-brand-primary bg-brand-primary-soft',
           )}
         >
-          <span className="font-chinese text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
+          <span className="font-chinese-sans font-semibold text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
           {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
         </motion.button>
         {commas.has(position) && (
-          <span className={cn('-ml-1.5 py-0.5 font-chinese text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
+          <span className={cn('-ml-1.5 py-0.5 font-chinese-sans font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
         )}
         </Fragment>
       ))}
       {line.length > 0 && end && (
-        <span className={cn('-ml-1.5 py-0.5 font-chinese text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
+        <span className={cn('-ml-1.5 py-0.5 font-chinese-sans font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
       )}
       {line.length > 0 && <span data-drop-slot="end" aria-hidden="true" className="min-h-10 w-10 shrink-0" />}
     </div>
@@ -187,14 +189,14 @@ export function OrderBuildExercise({
       scene={item.scene}
       arrived={status === 'correct'}
       renderChinese={(text) => (
-        <ContextualChineseText text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+        <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
       )}
     />
   ) : null;
   const incoming = dialogue?.type === 'incoming' ? (
     <div className="flex min-w-0 flex-col gap-2 text-center">
-      <div className="font-chinese text-2xl leading-relaxed text-ui-ink-strong sm:text-3xl">
-        <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+      <div className="font-chinese-sans font-semibold text-2xl leading-relaxed text-ui-ink-strong sm:text-3xl">
+        <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
       </div>
       <PracticePrompt sub={dialogue.gloss} />
     </div>
@@ -203,7 +205,7 @@ export function OrderBuildExercise({
   // The reply that came back is the prompt: read it, then ask what would get that answer.
   const reply = dialogue?.type === 'afterward' ? (
     <PracticeBubble className={BUBBLE_TAIL} side="them">
-      <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+      <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
     </PracticeBubble>
   ) : null;
 
@@ -221,7 +223,7 @@ export function OrderBuildExercise({
           ) : scene : incoming && (
             <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
               <PracticeBubble className={BUBBLE_TAIL} side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
-                <ContextualChineseText text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+                <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
               </PracticeBubble>
             </PracticeCharacterPrompt>
           )}
@@ -232,13 +234,9 @@ export function OrderBuildExercise({
         </div>
       ) : (
         <div className="flex flex-col gap-7">
-          {!children && item.kind === 'order-build' && !item.scene ? (
-            <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
-              <p className={cn(BUBBLE_TAIL, 'border-2 border-ui-divider bg-ui-surface px-5 py-3.5 text-lg font-extrabold text-ui-ink sm:text-xl')}>{item.sub ?? item.prompt}</p>
-            </PracticeCharacterPrompt>
-          ) : <PracticePrompt sub={item.sub} />}
           {children}
           {scene}
+          <PracticePrompt sub={item.sub ?? (item.quiet ? item.prompt : undefined)} />
           {answerLine}
         </div>
       )}

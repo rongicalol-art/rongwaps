@@ -71,7 +71,7 @@
      }
     ],
     "fallbackRepair": "Bought: verb + 了.",
-    "prompt": "She is holding a movie ticket. Answer whether she bought it.",
+    "prompt": "Complete the reply.",
     "successNote": "The picture shows the ticket, so the answer is yes.",
     "scene": {
      "type": "picture",
@@ -83,7 +83,8 @@
       0.093
      ],
      "alt": "A hand holding a movie ticket labelled 電影票."
-    }
+    },
+    "sub": "A：你買電影票了嗎？"
    },
    {
     "id": "l11g1-p2",
@@ -177,7 +178,7 @@
      }
     ],
     "fallbackRepair": "Completed past action with a quantity.",
-    "prompt": "The picture shows one empty bowl. Say how much beef noodle soup you ate.",
+    "prompt": "Complete the sentence.",
     "successNote": "With a quantified object, 了 follows the verb.",
     "scene": {
      "type": "picture",
@@ -189,7 +190,8 @@
       0.09
      ],
      "alt": "A full bowl of beef noodle soup beside an empty bowl."
-    }
+    },
+    "sub": "這家店的牛肉麵真好吃，我____。"
    },
    {
     "id": "l11g1-p3",
@@ -271,7 +273,8 @@
      }
     ],
     "fallbackRepair": "Completed: verb + 了 + quantity + object.",
-    "prompt": "The teacher asked for ten sentences. Say you wrote them."
+    "prompt": "Complete the sentence.",
+    "sub": "老師要我們寫十個句子，我____。"
    },
    {
     "id": "l11g1-p4",
@@ -328,7 +331,7 @@
      }
     ],
     "fallbackRepair": "Saw it: 看到 + 了 + object.",
-    "prompt": "She saw a dog on the road yesterday. Complete the sentence.",
+    "prompt": "Complete the sentence from the picture.",
     "scene": {
      "type": "picture",
      "page": 248,
@@ -339,7 +342,8 @@
       0.12
      ],
      "alt": "A child in a school hat and backpack walking toward a small dog."
-    }
+    },
+    "sub": "妹妹昨天在路上____。（V：看到）"
    },
    {
     "id": "l11g1-p5",
@@ -401,7 +405,8 @@
      }
     ],
     "fallbackRepair": "Completed: 去 + 了 + quantity + place.",
-    "prompt": "You already went to three places this morning. Complete the sentence."
+    "prompt": "Complete the sentence.",
+    "sub": "我今天要去五個地方，上午已經____，下午還要去郵局跟超級市場。"
    },
    {
     "id": "l11g1-own-spot",
@@ -1530,14 +1535,14 @@
        "id": "g2",
        "tile": "跟她妹妹"
       },
-      "note": "The 不是 clause rejects 友美, so g2 is 跟友美; 跟她妹妹 belongs in the 是 clause."
+      "note": "The 不是 clause rejects 友美; use 跟友美 there, then name the companion with 跟她妹妹."
      },
      {
       "slot": {
        "id": "g2",
        "tile": "跟同學"
       },
-      "note": "The printed question asks whether it was 友美, so g2 is 跟友美; 跟同學 is the alternative in the 是 clause."
+      "note": "The printed question asks whether it was 友美; use 跟友美 there, then name the companion with 跟同學."
      },
      {
       "slot": {
@@ -1555,7 +1560,7 @@
      "english": "She went yesterday. How did she go? She did not go with Youmei; she went with her younger sister."
     },
     "prompt": "Answer B’s date, ask how, then correct the companion.",
-    "sub": "Use 昨天 as the model date; the companion correction is editorial.",
+    "sub": "Use 昨天 as the date, then correct the companion.",
     "alternatives": [
      {
       "traditional": "她是昨天去的。她是怎麼去的？她不是跟友美一起去的，是跟同學一起去的。",
@@ -1736,7 +1741,8 @@
      }
     ],
     "fallbackRepair": "Future “then”: 再 + action.",
-    "prompt": "The bowls are too many. Say you will wash them tomorrow.",
+    "prompt": "Complete the sentence from the picture.",
+    "sub": "碗太多了，我們明天____。（再）",
     "scene": {
      "type": "picture",
      "page": 258,
@@ -1847,7 +1853,8 @@
      }
     ],
     "fallbackRepair": "Future “then”: 再 + action.",
-    "prompt": "The department store is closed. Say you will go tomorrow."
+    "prompt": "Complete the reply.",
+    "sub": "百貨公司休息了，我們明天____。（再）"
    },
    {
     "id": "l11g4-p3",
@@ -1925,28 +1932,28 @@
        "id": "g0",
        "tile": "來"
       },
-      "note": "g0 is the condition she waits for; use 人少了, not 來."
+      "note": "After 等, name the condition: 人少了, not 來."
      },
      {
       "slot": {
        "id": "g0",
        "tile": "去"
       },
-      "note": "g0 is the condition she waits for; use 人少了, not 去."
+      "note": "After 等, name the condition: 人少了, not 去."
      },
      {
       "slot": {
        "id": "g1",
        "tile": "人少了"
       },
-      "note": "g1 is what she will do after waiting; use 來."
+      "note": "After 等人少了, use 來 for coming back."
      },
      {
       "slot": {
        "id": "g1",
        "tile": "人多了"
       },
-      "note": "g1 is what she will do after waiting; use 來. 人多了 is the opposite condition."
+      "note": "After 等人少了, use 來 for coming back. 人多了 is the opposite condition."
      }
     ],
     "fallbackRepair": "Wait until 人少了, then 再來.",
@@ -1956,7 +1963,8 @@
      "pinyin": "Zhè jiā kāfēitīng rén hǎo duō! Děng rén shǎo le, wǒ zài lái.",
      "english": "This café is so crowded! Wait until there are fewer people; then I will come again."
     },
-    "prompt": "Look at the pictures. Complete what she waits for and what she will do.",
+    "prompt": "Complete the sentence from the picture.",
+    "sub": "這家咖啡廳人好多！等____，我再____。",
     "scene": {
      "type": "picture",
      "page": 259,
@@ -2059,14 +2067,14 @@
        "id": "g0",
        "tile": "喝牛奶"
       },
-      "note": "g0 is the state after skipping breakfast; use 不舒服, not the drink."
+      "note": "After skipping breakfast, say how she feels: 不舒服, not 喝牛奶."
      },
      {
       "slot": {
        "id": "g1",
        "tile": "不舒服"
       },
-      "note": "g1 is what she drinks in the third picture; use 喝牛奶."
+      "note": "In the final picture, name the drink: 喝牛奶."
      }
     ],
     "fallbackRepair": "State + drink: 不舒服，喝牛奶.",
@@ -2076,7 +2084,8 @@
      "pinyin": "Tā bù chī zǎofàn, chángcháng bù shūfu, hē niúnǎi.",
      "english": "She does not eat breakfast; she often feels unwell and drinks milk."
     },
-    "prompt": "Look at the pictures. What happens because she skips breakfast?",
+    "prompt": "Complete the sentence from the picture.",
+    "sub": "她不吃早飯，常常____，____。",
     "scene": {
      "type": "picture",
      "page": 259,
@@ -2181,7 +2190,7 @@
      "pinyin": "Nǐ xiān chī shuǐguǒ, děng bàba huí jiā le, wǒmen zài yìqǐ chīfàn.",
      "english": "You eat fruit first; after Dad comes home, we will eat together."
     },
-    "prompt": "The girl is hungry; the family will eat together after Dad comes home.",
+    "prompt": "Complete the reply from the pictures.",
     "scene": {
      "type": "picture",
      "page": 259,
@@ -2192,7 +2201,8 @@
       0.085
      ],
      "alt": "Three panels: a girl eating fruit, a father arriving, and the family eating together."
-    }
+    },
+    "sub": "孩子：媽媽，我好餓。"
    },
    {
     "id": "l11g4-own-spot",

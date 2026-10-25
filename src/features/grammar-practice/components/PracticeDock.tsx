@@ -111,9 +111,9 @@ export function PracticeDock({
             {!checking && (
               <div className="ml-auto flex items-center gap-2">
                 <ActionButton variant="quiet" size="md" className={NEUTRAL} onClick={onSkip}>Skip</ActionButton>
-                {hasCheck && (
+                {hasCheck && ready && (
                   <div className="min-w-32 md:min-w-44">
-                    <ActionButton variant="success" size="md" fullWidth disabled={!ready} onClick={onCheck}>Check</ActionButton>
+                    <ActionButton variant="primary" size="md" fullWidth onClick={onCheck}>Check</ActionButton>
                   </div>
                 )}
               </div>
@@ -135,7 +135,7 @@ export function PracticeDock({
               {result?.sentence && (
                 <>
                   <div className="mt-1 flex items-center gap-1">
-                    <p className="font-chinese text-xl font-bold text-ui-ink-strong">{textIn(result.sentence, script)}</p>
+                    <p className="font-chinese-sans font-semibold text-xl text-ui-ink-strong">{textIn(result.sentence, script)}</p>
                     {correct && <SentencePlayButton sentence={result.sentence} script={script} />}
                   </div>
                   <p className="text-sm font-extrabold text-ui-muted-strong">{result.sentence.pinyin} · {result.sentence.english}</p>

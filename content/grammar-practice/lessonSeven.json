@@ -159,7 +159,7 @@
           "pinyin": "Tā cóng Měiguó dào Táiwān lái.",
           "english": "He comes from the United States to Taiwan."
         },
-        "prompt": "You are in Taiwan. Describe his trip.",
+        "prompt": "You are in Taiwan. Describe the picture.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -329,7 +329,7 @@
           "pinyin": "Tā cóng tā jiā dào xuéxiào qù.",
           "english": "He goes from his home to school."
         },
-        "prompt": "You are at his home. Describe where he goes.",
+        "prompt": "You are at his home. Describe the picture.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -500,7 +500,7 @@
           "pinyin": "Tā cóng cāntīng dào túshūguǎn qù.",
           "english": "He goes from the restaurant to the library."
         },
-        "prompt": "You are at the restaurant. Describe where he goes.",
+        "prompt": "You are at the restaurant. Describe the picture.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -518,7 +518,7 @@
       {
         "id": "l7g1-o1",
         "source": "own",
-        "prompt": "You’re at school. Tell your friend you came from the hotel.",
+        "prompt": "You are at school. Start the sentence.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -584,7 +584,7 @@
       {
         "id": "l7g2-b1",
         "source": "p.164 #1",
-        "prompt": "You’re at school. Ask how your friend gets to his home.",
+        "prompt": "You are at school. Ask how your friend gets home.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -649,7 +649,7 @@
       {
         "id": "l7g2-b2",
         "source": "p.164 #2",
-        "prompt": "You’re at school. Say how he gets here every day.",
+        "prompt": "You are at school. Say how he gets here.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -714,7 +714,7 @@
       {
         "id": "l7g2-b3",
         "source": "p.164 #3",
-        "prompt": "The hotel is far. Say you don’t want to walk there.",
+        "prompt": "The hotel is far. Say how you will get there.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -925,7 +925,7 @@
       {
         "id": "l7g3-b1",
         "source": "p.166 #1",
-        "prompt": "Yesterday 25°C, today 30°C. The weather has changed.",
+        "prompt": "Compare the temperatures.",
         "scene": {
           "type": "picture",
           "page": 166,
@@ -994,7 +994,7 @@
       {
         "id": "l7g3-b2",
         "source": "p.166 #2",
-        "prompt": "The bowl was $80, now $120. Prices have gone up.",
+        "prompt": "Compare the prices.",
         "scene": {
           "type": "picture",
           "page": 166,
@@ -1172,7 +1172,7 @@
           "pinyin": "Bù kěyǐ shuō “chīfàn de hěn kuài”, yīnggāi shuō “chīfàn chī de hěn kuài”. Dǒng le! Xièxie lǎoshī.",
           "english": "You cannot say “吃飯得很快”; you should say “吃飯吃得很快”. We understand now! Thank you, teacher."
         },
-        "prompt": "You didn’t get it before, but now you do. Build your reply.",
+        "prompt": "Complete the reply.",
         "quiet": true,
         "glossary": [
           {
@@ -1194,7 +1194,7 @@
       {
         "id": "l7g4-b1",
         "source": "p.171 #1",
-        "prompt": "Describe taking the MRT first, then say you do not want to walk.",
+        "prompt": "You took the MRT first. Complete the sentence.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -1258,7 +1258,7 @@
       {
         "id": "l7g4-b2",
         "source": "p.171 #2",
-        "prompt": "There’s a supermarket near your home. What is convenient?",
+        "prompt": "There is a supermarket near your home. Complete the sentence.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -1335,7 +1335,7 @@
       {
         "id": "l7g4-b3",
         "source": "p.171 #3",
-        "prompt": "First the sport you can play, then the one you cannot.",
+        "prompt": "Use the picture to compare what you can do.",
         "scene": {
           "type": "picture",
           "page": 171,
@@ -1407,7 +1407,7 @@
       {
         "id": "l7g4-o1",
         "source": "own",
-        "prompt": "Make playing soccer the topic: say you all like it.",
+        "prompt": "Make playing soccer the topic.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -1602,7 +1602,7 @@
           "pinyin": "Nǐ xǐhuan xiàtiān ma? Zhèlǐ de xiàtiān yòu rè yòu bù shūfu, wǒ bù xǐhuan.",
           "english": "Do you like summer? Summer here is both hot and uncomfortable; I do not like it."
         },
-        "prompt": "Summer here is so hot you can’t sleep. Do you like it? Where do the two 又 go?",
+        "prompt": "Answer A. Use 又……又…… in B.",
         "quiet": true,
         "gaps": true
       },
@@ -1736,7 +1736,7 @@
           "pinyin": "Nǐ juéde zhè jiā cāntīng de niúròumiàn zěnmeyàng? Yòu hǎochī yòu piányi.",
           "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
         },
-        "prompt": "Great noodles at $50, others $150. Where do the two 又 go?",
+        "prompt": "Answer A using the menu. Use 又……又…… in B.",
         "quiet": true,
         "gaps": true
       },
@@ -1873,14 +1873,14 @@
           "pinyin": "Tā chángcháng qù hǎibiān ma? Tā yòu huì yóuyǒng yòu xǐhuan shài tàiyáng, měi ge zhōumò dōu qù hǎibiān.",
           "english": "Does he often go to the seaside? He can swim and likes sunbathing and goes to the seaside every weekend."
         },
-        "prompt": "Why does he go to the beach every weekend? Where do the two 又 go?",
+        "prompt": "Answer A. Use 又……又…… in B.",
         "quiet": true,
         "gaps": true
       },
       {
         "id": "l7g5-o1",
         "source": "own",
-        "prompt": "You want to visit Japan and Korea. Make both countries the topic.",
+        "prompt": "Make both countries the topic.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -1945,7 +1945,7 @@
         "id": "l7g5-own-order",
         "source": "own",
         "kind": "order-build",
-        "prompt": "Say the hotel is both big and comfortable.",
+        "prompt": "Describe the hotel with 又……又…….",
         "quiet": true,
         "tiles": [
           {

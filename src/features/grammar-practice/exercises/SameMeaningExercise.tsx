@@ -29,7 +29,7 @@ export function SameMeaningExercise({
       <div className="divide-y divide-ui-divider">
         {item.sentences.map((sentence, index) => (
           <div key={index} className="py-6 first:pt-0 last:pb-0 sm:py-8">
-            <p className="font-chinese text-3xl leading-relaxed text-ui-ink-strong sm:text-center" lang={script === 'simplified' ? 'zh-Hans' : 'zh-Hant'}>
+            <p className="font-chinese-sans font-semibold text-3xl leading-relaxed text-ui-ink-strong sm:text-center" lang={script === 'simplified' ? 'zh-Hans' : 'zh-Hant'}>
               {textIn(sentence, script)}
             </p>
             {showPinyin && <p className="mt-1 text-sm font-extrabold text-ui-muted-strong sm:text-center">{sentence.pinyin}</p>}

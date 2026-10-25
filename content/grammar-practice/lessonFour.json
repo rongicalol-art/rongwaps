@@ -6,7 +6,7 @@
       {
         "id": "l04-g1-book1",
         "source": "p.96 #1",
-        "prompt": "You like red clothes. Put the clothes first.",
+        "prompt": "You like red clothes. Answer the question.",
         "kind": "order-build",
         "sub": "你喜歡紅色的衣服嗎？",
         "tiles": [
@@ -69,7 +69,7 @@
       {
         "id": "l04-g1-book2",
         "source": "p.96 #2",
-        "prompt": "You want this kind of pencil. Put the pencil first.",
+        "prompt": "You want this kind of pencil. Answer the question.",
         "scene": {
           "type": "picture",
           "page": 96,
@@ -145,7 +145,7 @@
         "id": "l04-g1-book3",
         "source": "p.96 #3",
         "kind": "order-build",
-        "prompt": "You like eating both cake and beef noodles. Put the foods first.",
+        "prompt": "You like both cake and beef noodles. Answer the question.",
         "tiles": [
           {
             "traditional": "喜歡吃",
@@ -207,7 +207,7 @@
         "id": "l04-g1-book4",
         "source": "p.97 #4",
         "kind": "order-build",
-        "prompt": "You like all three gifts. Put the gifts first.",
+        "prompt": "You like all three gifts. Answer the question.",
         "tiles": [
           {
             "traditional": "也",
@@ -619,7 +619,7 @@
           ],
           "alt": "A boy pulling at a tight shirt that leaves his middle uncovered."
         },
-        "prompt": "The shirt does not fit. Say it is too small.",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "gaps": true
       },
@@ -741,7 +741,7 @@
           "pinyin": "Tā tài lèi le.",
           "english": "He is so tired."
         },
-        "prompt": "He has worked all day. Say he is too tired.",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -851,7 +851,7 @@
           "pinyin": "Tài hǎohē le, wǒ hé wǒ de péngyou dōu chángcháng hē.",
           "english": "It tastes so good; my friends and I all drink it often."
         },
-        "prompt": "Exclaim that the milk tea tastes so good, using 太…了. Then say you and your friends drink it often.",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "gaps": true
       },
@@ -929,10 +929,58 @@
     "title": "Please read the following numbers.",
     "items": [
       {
+        "id": "l04-g4-book1-150",
+        "source": "p.104 #1",
+        "kind": "order-build",
+        "prompt": "Read the number.",
+        "sub": "150",
+        "tiles": [
+          {
+            "traditional": "一百",
+            "simplified": "一百",
+            "pinyin": "yì bǎi"
+          },
+          {
+            "traditional": "五十",
+            "simplified": "五十",
+            "pinyin": "wǔ shí"
+          },
+          {
+            "traditional": "十五",
+            "simplified": "十五",
+            "pinyin": "shí wǔ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "一百",
+              "五十"
+            ],
+            "sentence": {
+              "traditional": "一百五十。",
+              "pinyin": "Yì bǎi wǔ shí.",
+              "english": "One hundred fifty."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十五"
+            ],
+            "mark": [
+              "十五"
+            ],
+            "note": "This is 150, so keep 百 before 五十."
+          }
+        ],
+        "fallbackRepair": "Read 150 by grouping the number into Chinese units."
+      },
+      {
         "id": "l04-g4-book1",
         "source": "p.104 #1",
-        "prompt": "How do you say 5,080?",
-        "quiet": true,
+        "prompt": "Read the number.",
         "kind": "order-build",
         "tiles": [
           {
@@ -982,169 +1030,14 @@
             "note": "5,080 has no hundreds, so 百 is not said. 零 marks the gap."
           }
         ],
-        "fallbackRepair": "五千, then 零 for the empty hundreds, then 八十."
-      },
-      {
-        "id": "l04-g4-book2",
-        "source": "p.104 #2",
-        "kind": "spot-fix",
-        "prompt": "0936-068-493",
-        "chunks": [
-          {
-            "traditional": "零九三六"
-          },
-          {
-            "traditional": "零六八"
-          },
-          {
-            "traditional": "四百九十三",
-            "tail": "。"
-          }
-        ],
-        "wrong": 2,
-        "fix": "四九三",
-        "tiles": [
-          {
-            "traditional": "四九三",
-            "pinyin": "sì jiǔ sān"
-          },
-          {
-            "traditional": "三九四",
-            "pinyin": "sān jiǔ sì"
-          }
-        ],
-        "takeOutNote": "The last three digits are part of the number.",
-        "hint": "Phone numbers are read one digit at a time, never as an amount.",
-        "result": {
-          "traditional": "零九三六零六八四九三。",
-          "pinyin": "Líng jiǔ sān liù líng liù bā sì jiǔ sān.",
-          "english": "0936-068-493."
-        },
-        "successNote": "Read phone numbers digit by digit: 四九三, not 四百九十三.",
-        "repairs": [
-          {
-            "placed": [
-              "三九四"
-            ],
-            "note": "That is the last digits backwards; read them in order."
-          }
-        ]
-      },
-      {
-        "id": "l04-g4-book3",
-        "source": "p.104 #3",
-        "kind": "spot-fix",
-        "prompt": "5,005 people",
-        "chunks": [
-          {
-            "traditional": "五千"
-          },
-          {
-            "traditional": "零零"
-          },
-          {
-            "traditional": "五"
-          },
-          {
-            "traditional": "個人",
-            "simplified": "个人",
-            "tail": "。"
-          }
-        ],
-        "wrong": 1,
-        "fix": "零",
-        "tiles": [
-          {
-            "traditional": "零",
-            "pinyin": "líng"
-          },
-          {
-            "traditional": "百",
-            "pinyin": "bǎi"
-          }
-        ],
-        "takeOutNote": "Without 零, 五千五 sounds like 5,500.",
-        "hint": "However many zeros are in a row, 零 is said only once.",
-        "result": {
-          "traditional": "五千零五個人。",
-          "simplified": "五千零五个人。",
-          "pinyin": "Wǔ qiān líng wǔ ge rén.",
-          "english": "Five thousand and five people."
-        },
-        "successNote": "One 零 covers the whole gap: 5,005 is 五千零五.",
-        "repairs": [
-          {
-            "placed": [
-              "百"
-            ],
-            "note": "5,005 has no hundreds; one 零 fills the gap."
-          }
-        ]
-      },
-      {
-        "id": "l04-g4-own1",
-        "source": "own",
-        "prompt": "How do you say 78,000?",
-        "quiet": true,
-        "kind": "order-build",
-        "tiles": [
-          {
-            "traditional": "七",
-            "pinyin": "qī"
-          },
-          {
-            "traditional": "萬",
-            "simplified": "万",
-            "pinyin": "wàn"
-          },
-          {
-            "traditional": "八",
-            "pinyin": "bā"
-          },
-          {
-            "traditional": "千",
-            "pinyin": "qiān"
-          },
-          {
-            "traditional": "十",
-            "pinyin": "shí"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "七",
-              "萬",
-              "八",
-              "千"
-            ],
-            "sentence": {
-              "traditional": "七萬八千。",
-              "simplified": "七万八千。",
-              "pinyin": "Qī wàn bā qiān.",
-              "english": "Seventy-eight thousand."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "十"
-            ],
-            "mark": [
-              "十"
-            ],
-            "note": "Chinese counts in 萬 (ten thousands): 78,000 is 七萬八千, never 七十八千."
-          }
-        ],
-        "fallbackRepair": "七萬 (70,000), then 八千 (8,000)."
+        "fallbackRepair": "五千, then 零 for the empty hundreds, then 八十.",
+        "sub": "5,080"
       },
       {
         "id": "l04-g4-own2",
-        "source": "own",
+        "source": "p.104 #1",
         "kind": "order-build",
-        "prompt": "How do you say 630,000?",
-        "quiet": true,
+        "prompt": "Read the number.",
         "tiles": [
           {
             "traditional": "六十三",
@@ -1198,7 +1091,736 @@
             "note": "六十三 already says 63; count it in 萬."
           }
         ],
-        "fallbackRepair": "Group the digits by four: 63 | 0000 is 六十三萬."
+        "fallbackRepair": "Group the digits by four: 63 | 0000 is 六十三萬.",
+        "sub": "630,000"
+      },
+      {
+        "id": "l04-g4-book1-9400000",
+        "source": "p.104 #1",
+        "kind": "order-build",
+        "prompt": "Read the number.",
+        "sub": "9,400,000",
+        "tiles": [
+          {
+            "traditional": "九百",
+            "simplified": "九百",
+            "pinyin": "jiǔ bǎi"
+          },
+          {
+            "traditional": "四十",
+            "simplified": "四十",
+            "pinyin": "sì shí"
+          },
+          {
+            "traditional": "萬",
+            "simplified": "万",
+            "pinyin": "wàn"
+          },
+          {
+            "traditional": "千",
+            "simplified": "千",
+            "pinyin": "qiān"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "九百",
+              "四十",
+              "萬"
+            ],
+            "sentence": {
+              "traditional": "九百四十萬。",
+              "pinyin": "Jiǔ bǎi sì shí wàn.",
+              "english": "Nine million four hundred thousand."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "千"
+            ],
+            "mark": [
+              "千"
+            ],
+            "note": "The number is counted in 萬 here: 九百四十萬."
+          }
+        ],
+        "fallbackRepair": "Read 9,400,000 by grouping the number into Chinese units."
+      },
+      {
+        "id": "l04-g4-book1-309",
+        "source": "p.104 #1",
+        "kind": "order-build",
+        "prompt": "Read the number.",
+        "sub": "309",
+        "tiles": [
+          {
+            "traditional": "三百",
+            "simplified": "三百",
+            "pinyin": "sān bǎi"
+          },
+          {
+            "traditional": "零",
+            "simplified": "零",
+            "pinyin": "líng"
+          },
+          {
+            "traditional": "九",
+            "simplified": "九",
+            "pinyin": "jiǔ"
+          },
+          {
+            "traditional": "十",
+            "simplified": "十",
+            "pinyin": "shí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "三百",
+              "零",
+              "九"
+            ],
+            "sentence": {
+              "traditional": "三百零九。",
+              "pinyin": "Sān bǎi líng jiǔ.",
+              "english": "Three hundred nine."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十"
+            ],
+            "mark": [
+              "十"
+            ],
+            "note": "309 has no tens; read the gap with 零."
+          }
+        ],
+        "fallbackRepair": "Read 309 by grouping the number into Chinese units."
+      },
+      {
+        "id": "l04-g4-book1-7200",
+        "source": "p.104 #1",
+        "kind": "order-build",
+        "prompt": "Read the number.",
+        "sub": "7,200",
+        "tiles": [
+          {
+            "traditional": "七千",
+            "simplified": "七千",
+            "pinyin": "qī qiān"
+          },
+          {
+            "traditional": "二百",
+            "simplified": "二百",
+            "pinyin": "èr bǎi"
+          },
+          {
+            "traditional": "兩千",
+            "simplified": "两千",
+            "pinyin": "liǎng qiān"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "七千",
+              "二百"
+            ],
+            "sentence": {
+              "traditional": "七千二百。",
+              "pinyin": "Qī qiān èr bǎi.",
+              "english": "Seven thousand two hundred."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "兩千"
+            ],
+            "mark": [
+              "兩千"
+            ],
+            "note": "The 2 is in the hundreds place, not the thousands place."
+          }
+        ],
+        "fallbackRepair": "Read 7,200 by grouping the number into Chinese units."
+      },
+      {
+        "id": "l04-g4-book1-800500",
+        "source": "p.104 #1",
+        "kind": "order-build",
+        "prompt": "Read the number.",
+        "sub": "800,500",
+        "tiles": [
+          {
+            "traditional": "八十萬",
+            "simplified": "八十万",
+            "pinyin": "bā shí wàn"
+          },
+          {
+            "traditional": "零",
+            "simplified": "零",
+            "pinyin": "líng"
+          },
+          {
+            "traditional": "五百",
+            "simplified": "五百",
+            "pinyin": "wǔ bǎi"
+          },
+          {
+            "traditional": "千",
+            "simplified": "千",
+            "pinyin": "qiān"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "八十萬",
+              "零",
+              "五百"
+            ],
+            "sentence": {
+              "traditional": "八十萬零五百。",
+              "pinyin": "Bā shí wàn líng wǔ bǎi.",
+              "english": "Eight hundred thousand five hundred."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "千"
+            ],
+            "mark": [
+              "千"
+            ],
+            "note": "After 八十萬, the remaining 500 is 五百."
+          }
+        ],
+        "fallbackRepair": "Read 800,500 by grouping the number into Chinese units."
+      },
+      {
+        "id": "l04-g4-book1-13000000",
+        "source": "p.104 #1",
+        "kind": "order-build",
+        "prompt": "Read the number.",
+        "sub": "13,000,000",
+        "tiles": [
+          {
+            "traditional": "一千",
+            "simplified": "一千",
+            "pinyin": "yì qiān"
+          },
+          {
+            "traditional": "三百",
+            "simplified": "三百",
+            "pinyin": "sān bǎi"
+          },
+          {
+            "traditional": "萬",
+            "simplified": "万",
+            "pinyin": "wàn"
+          },
+          {
+            "traditional": "十",
+            "simplified": "十",
+            "pinyin": "shí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "一千",
+              "三百",
+              "萬"
+            ],
+            "sentence": {
+              "traditional": "一千三百萬。",
+              "pinyin": "Yì qiān sān bǎi wàn.",
+              "english": "Thirteen million."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十"
+            ],
+            "mark": [
+              "十"
+            ],
+            "note": "Group the number in four digits: 1,300 萬."
+          }
+        ],
+        "fallbackRepair": "Read 13,000,000 by grouping the number into Chinese units."
+      },
+      {
+        "id": "l04-g4-book2-0930",
+        "source": "p.104 #2",
+        "kind": "order-build",
+        "prompt": "Read the phone number.",
+        "sub": "0930-252-242",
+        "tiles": [
+          {
+            "traditional": "零九三零",
+            "simplified": "零九三零",
+            "pinyin": "líng jiǔ sān líng"
+          },
+          {
+            "traditional": "二五二",
+            "simplified": "二五二",
+            "pinyin": "èr wǔ èr"
+          },
+          {
+            "traditional": "二四二",
+            "simplified": "二四二",
+            "pinyin": "èr sì èr"
+          },
+          {
+            "traditional": "二二四",
+            "simplified": "二二四",
+            "pinyin": "èr èr sì"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "零九三零",
+              "二五二",
+              "二四二"
+            ],
+            "sentence": {
+              "traditional": "零九三零二五二二四二。",
+              "english": "0930-252-242.",
+              "pinyin": "Líng jiǔ sān líng èr wǔ èr èr sì èr."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "二二四"
+            ],
+            "mark": [
+              "二二四"
+            ],
+            "note": "The last three digits are 242, not 224; read them in the printed order."
+          }
+        ],
+        "fallbackRepair": "Read each phone-number digit in order."
+      },
+      {
+        "id": "l04-g4-book2-0988",
+        "source": "p.104 #2",
+        "kind": "order-build",
+        "prompt": "Read the phone number.",
+        "sub": "0988-321-259",
+        "tiles": [
+          {
+            "traditional": "零九八八",
+            "simplified": "零九八八",
+            "pinyin": "líng jiǔ bā bā"
+          },
+          {
+            "traditional": "三二一",
+            "simplified": "三二一",
+            "pinyin": "sān èr yī"
+          },
+          {
+            "traditional": "二五九",
+            "simplified": "二五九",
+            "pinyin": "èr wǔ jiǔ"
+          },
+          {
+            "traditional": "九五二",
+            "simplified": "九五二",
+            "pinyin": "jiǔ wǔ èr"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "零九八八",
+              "三二一",
+              "二五九"
+            ],
+            "sentence": {
+              "traditional": "零九八八三二一二五九。",
+              "english": "0988-321-259.",
+              "pinyin": "Líng jiǔ bā bā sān èr yī èr wǔ jiǔ."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "九五二"
+            ],
+            "mark": [
+              "九五二"
+            ],
+            "note": "Read the digits in the same order as the phone number."
+          }
+        ],
+        "fallbackRepair": "Read each phone-number digit in order."
+      },
+      {
+        "id": "l04-g4-book2",
+        "source": "p.104 #2",
+        "kind": "spot-fix",
+        "prompt": "Read the phone number.",
+        "chunks": [
+          {
+            "traditional": "零九三六"
+          },
+          {
+            "traditional": "零六八"
+          },
+          {
+            "traditional": "四百九十三",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "四九三",
+        "tiles": [
+          {
+            "traditional": "四九三",
+            "pinyin": "sì jiǔ sān"
+          },
+          {
+            "traditional": "三九四",
+            "pinyin": "sān jiǔ sì"
+          }
+        ],
+        "takeOutNote": "The last three digits are part of the number.",
+        "hint": "Phone numbers are read one digit at a time, never as an amount.",
+        "result": {
+          "traditional": "零九三六零六八四九三。",
+          "pinyin": "Líng jiǔ sān liù líng liù bā sì jiǔ sān.",
+          "english": "0936-068-493."
+        },
+        "successNote": "Read phone numbers digit by digit: 四九三, not 四百九十三.",
+        "repairs": [
+          {
+            "placed": [
+              "三九四"
+            ],
+            "note": "That is the last digits backwards; read them in order."
+          }
+        ],
+        "sub": "0936-068-493"
+      },
+      {
+        "id": "l04-g4-book2-0955",
+        "source": "p.104 #2",
+        "kind": "order-build",
+        "prompt": "Read the phone number.",
+        "sub": "0955-734-068",
+        "tiles": [
+          {
+            "traditional": "零九五五",
+            "simplified": "零九五五",
+            "pinyin": "líng jiǔ wǔ wǔ"
+          },
+          {
+            "traditional": "七三四",
+            "simplified": "七三四",
+            "pinyin": "qī sān sì"
+          },
+          {
+            "traditional": "零六八",
+            "simplified": "零六八",
+            "pinyin": "líng liù bā"
+          },
+          {
+            "traditional": "八六零",
+            "simplified": "八六零",
+            "pinyin": "bā liù líng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "零九五五",
+              "七三四",
+              "零六八"
+            ],
+            "sentence": {
+              "traditional": "零九五五七三四零六八。",
+              "english": "0955-734-068.",
+              "pinyin": "Líng jiǔ wǔ wǔ qī sān sì líng liù bā."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "八六零"
+            ],
+            "mark": [
+              "八六零"
+            ],
+            "note": "Read the digits in the same order as the phone number."
+          }
+        ],
+        "fallbackRepair": "Read each phone-number digit in order."
+      },
+      {
+        "id": "l04-g4-book3-201",
+        "source": "p.105 #3",
+        "kind": "order-build",
+        "prompt": "Read the number with its noun.",
+        "sub": "201（杯子）",
+        "tiles": [
+          {
+            "traditional": "二百",
+            "simplified": "二百",
+            "pinyin": "èr bǎi"
+          },
+          {
+            "traditional": "零",
+            "simplified": "零",
+            "pinyin": "líng"
+          },
+          {
+            "traditional": "一",
+            "simplified": "一",
+            "pinyin": "yī"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "gè"
+          },
+          {
+            "traditional": "杯子",
+            "simplified": "杯子",
+            "pinyin": "bēizi"
+          },
+          {
+            "traditional": "十",
+            "simplified": "十",
+            "pinyin": "shí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "二百",
+              "零",
+              "一",
+              "個",
+              "杯子"
+            ],
+            "sentence": {
+              "traditional": "二百零一個杯子。",
+              "pinyin": "Èr bǎi líng yī ge bēizi.",
+              "english": "Two hundred and one cups."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十"
+            ],
+            "mark": [
+              "十"
+            ],
+            "note": "201 has no tens; use 零 to mark the gap."
+          }
+        ],
+        "fallbackRepair": "Read the number, then its measure word and noun."
+      },
+      {
+        "id": "l04-g4-book3-2200",
+        "source": "p.105 #3",
+        "kind": "order-build",
+        "prompt": "Read the number with its noun.",
+        "sub": "2,200（老師）",
+        "tiles": [
+          {
+            "traditional": "兩千",
+            "simplified": "两千",
+            "pinyin": "liǎng qiān"
+          },
+          {
+            "traditional": "兩百",
+            "simplified": "两百",
+            "pinyin": "liǎng bǎi"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "gè"
+          },
+          {
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī"
+          },
+          {
+            "traditional": "十",
+            "simplified": "十",
+            "pinyin": "shí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "兩千",
+              "兩百",
+              "個",
+              "老師"
+            ],
+            "sentence": {
+              "traditional": "兩千兩百個老師。",
+              "pinyin": "Liǎng qiān liǎng bǎi ge lǎoshī.",
+              "english": "Two thousand two hundred teachers."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十"
+            ],
+            "mark": [
+              "十"
+            ],
+            "note": "The printed amount is 2,200, so use two hundreds, not ten."
+          }
+        ],
+        "fallbackRepair": "Read the number, then its measure word and noun."
+      },
+      {
+        "id": "l04-g4-book3",
+        "source": "p.105 #3",
+        "kind": "spot-fix",
+        "prompt": "Read the number with its noun.",
+        "chunks": [
+          {
+            "traditional": "五千"
+          },
+          {
+            "traditional": "零零"
+          },
+          {
+            "traditional": "五"
+          },
+          {
+            "traditional": "個人",
+            "simplified": "个人",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "fix": "零",
+        "tiles": [
+          {
+            "traditional": "零",
+            "pinyin": "líng"
+          },
+          {
+            "traditional": "百",
+            "pinyin": "bǎi"
+          }
+        ],
+        "takeOutNote": "Without 零, 五千五 sounds like 5,500.",
+        "hint": "However many zeros are in a row, 零 is said only once.",
+        "result": {
+          "traditional": "五千零五個人。",
+          "simplified": "五千零五个人。",
+          "pinyin": "Wǔ qiān líng wǔ ge rén.",
+          "english": "Five thousand and five people."
+        },
+        "successNote": "One 零 covers the whole gap: 5,005 is 五千零五.",
+        "repairs": [
+          {
+            "placed": [
+              "百"
+            ],
+            "note": "5,005 has no hundreds; one 零 fills the gap."
+          }
+        ],
+        "sub": "5,005（人）"
+      },
+      {
+        "id": "l04-g4-book3-512300",
+        "source": "p.105 #3",
+        "kind": "order-build",
+        "prompt": "Read the number with its noun.",
+        "sub": "512,300（錢）",
+        "tiles": [
+          {
+            "traditional": "五十一萬",
+            "simplified": "五十一万",
+            "pinyin": "wǔ shí yī wàn"
+          },
+          {
+            "traditional": "二千",
+            "simplified": "二千",
+            "pinyin": "èr qiān"
+          },
+          {
+            "traditional": "三百",
+            "simplified": "三百",
+            "pinyin": "sān bǎi"
+          },
+          {
+            "traditional": "塊",
+            "simplified": "块",
+            "pinyin": "kuài"
+          },
+          {
+            "traditional": "錢",
+            "simplified": "钱",
+            "pinyin": "qián"
+          },
+          {
+            "traditional": "十",
+            "simplified": "十",
+            "pinyin": "shí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "五十一萬",
+              "二千",
+              "三百",
+              "塊",
+              "錢"
+            ],
+            "sentence": {
+              "traditional": "五十一萬二千三百塊錢。",
+              "pinyin": "Wǔ shí yī wàn èr qiān sān bǎi kuài qián.",
+              "english": "Five hundred twelve thousand three hundred dollars."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十"
+            ],
+            "mark": [
+              "十"
+            ],
+            "note": "Read the 2,300 after 五十一萬 as 二千三百."
+          }
+        ],
+        "fallbackRepair": "Read the number, then its measure word and noun."
       }
     ],
     "allowWords": [
@@ -1215,7 +1837,7 @@
       {
         "id": "l04-g5-book1",
         "source": "p.106 #1",
-        "prompt": "How many people are there?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -1286,7 +1908,7 @@
       {
         "id": "l04-g5-book2",
         "source": "p.106 #2",
-        "prompt": "How much are the two cups of black tea?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -1358,7 +1980,7 @@
       {
         "id": "l04-g5-book3",
         "source": "p.106 #3",
-        "prompt": "How much is this jacket?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -1431,7 +2053,7 @@
       {
         "id": "l04-g5-book4",
         "source": "p.107 #1",
-        "prompt": "What time is it?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -1494,105 +2116,160 @@
         "fallbackRepair": "For a little after eleven, put 多 after 點."
       },
       {
-        "id": "l04-g5-book6",
-        "source": "p.107 #3",
-        "kind": "spot-fix",
-        "prompt": "A little over eight dollars altogether.",
-        "chunks": [
+        "id": "l04-g5-book5",
+        "source": "p.107 #2",
+        "kind": "order-build",
+        "prompt": "Answer using 多.",
+        "sub": "李先生的孩子幾歲？",
+        "tiles": [
           {
-            "traditional": "一共"
+            "traditional": "他的孩子",
+            "pinyin": "tā de háizi"
           },
           {
-            "traditional": "八多塊",
-            "simplified": "八多块"
+            "traditional": "十",
+            "pinyin": "shí"
+          },
+          {
+            "traditional": "歲",
+            "pinyin": "suì",
+            "simplified": "岁"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "十一",
+            "pinyin": "shíyī"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他的孩子",
+              "十",
+              "歲",
+              "多"
+            ],
+            "sentence": {
+              "traditional": "他的孩子十歲多。",
+              "simplified": "他的孩子十岁多。",
+              "pinyin": "Tā de háizi shí suì duō.",
+              "english": "His child is a little over ten."
+            }
+          },
+          {
+            "order": [
+              "十",
+              "歲",
+              "多"
+            ],
+            "sentence": {
+              "traditional": "十歲多。",
+              "simplified": "十岁多。",
+              "pinyin": "Shí suì duō.",
+              "english": "A little over ten years old."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "十一"
+            ],
+            "note": "The child has turned ten but not eleven on the dates shown."
+          }
+        ],
+        "fallbackRepair": "Use 歲多 for ten and a bit; 十多歲 means eleven to nineteen.",
+        "successNote": "十歲多 is ten and a bit; 十多歲 is eleven to nineteen.",
+        "scene": {
+          "type": "change",
+          "before": {
+            "label": "生日",
+            "value": "2016.1.1"
+          },
+          "now": {
+            "label": "今天",
+            "value": "2026.10.24"
+          }
+        }
+      },
+      {
+        "id": "l04-g5-book6",
+        "source": "p.107 #3",
+        "kind": "order-build",
+        "prompt": "Answer using 多.",
+        "sub": "US$8.45\n這些東西一共多少錢？",
+        "tiles": [
+          {
+            "traditional": "一共",
+            "pinyin": "yígòng"
+          },
+          {
+            "traditional": "八",
+            "pinyin": "bā"
+          },
+          {
+            "traditional": "塊",
+            "pinyin": "kuài",
+            "simplified": "块"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
           },
           {
             "traditional": "錢",
-            "simplified": "钱",
-            "tail": "。"
-          }
-        ],
-        "wrong": 1,
-        "fix": "八塊多",
-        "tiles": [
-          {
-            "traditional": "八塊多",
-            "simplified": "八块多",
-            "pinyin": "bā kuài duō"
+            "pinyin": "qián",
+            "simplified": "钱"
           },
           {
-            "traditional": "八十多塊",
-            "simplified": "八十多块",
-            "pinyin": "bāshí duō kuài"
+            "traditional": "八十",
+            "pinyin": "bāshí"
           }
         ],
-        "takeOutNote": "The price is missing.",
-        "hint": "8 is not a round ten, so 多 comes after the measure word.",
-        "result": {
-          "traditional": "一共八塊多錢。",
-          "simplified": "一共八块多钱。",
-          "pinyin": "Yígòng bā kuài duō qián.",
-          "english": "A little over eight dollars altogether."
-        },
-        "successNote": "Round 10, 100, 1,000: 多 before the measure word. Any other number: 多 after it.",
+        "accepted": [
+          {
+            "order": [
+              "一共",
+              "八",
+              "塊",
+              "多",
+              "錢"
+            ],
+            "sentence": {
+              "traditional": "一共八塊多錢。",
+              "simplified": "一共八块多钱。",
+              "pinyin": "Yígòng bā kuài duō qián.",
+              "english": "A little over eight dollars altogether."
+            }
+          },
+          {
+            "order": [
+              "八",
+              "塊",
+              "多",
+              "錢"
+            ],
+            "sentence": {
+              "traditional": "八塊多錢。",
+              "simplified": "八块多钱。",
+              "pinyin": "Bā kuài duō qián.",
+              "english": "A little over eight dollars."
+            }
+          }
+        ],
         "repairs": [
           {
             "placed": [
-              "八十多塊"
+              "八十"
             ],
-            "note": "八十多塊 is over eighty dollars, not over eight."
-          }
-        ]
-      },
-      {
-        "id": "l04-g5-book5",
-        "source": "p.107 #2",
-        "kind": "spot-fix",
-        "prompt": "His child turned ten a few months ago.",
-        "chunks": [
-          {
-            "traditional": "他的"
-          },
-          {
-            "traditional": "孩子"
-          },
-          {
-            "traditional": "十多歲",
-            "simplified": "十多岁",
-            "tail": "。"
+            "note": "The price shown is $8.45, not over eighty dollars."
           }
         ],
-        "wrong": 2,
-        "fix": "十歲多",
-        "tiles": [
-          {
-            "traditional": "十歲多",
-            "simplified": "十岁多",
-            "pinyin": "shí suì duō"
-          },
-          {
-            "traditional": "十一歲",
-            "simplified": "十一岁",
-            "pinyin": "shíyī suì"
-          }
-        ],
-        "takeOutNote": "Say how old the child is.",
-        "hint": "Put 多 right after a round ten and it means 11 to 19, not just past ten.",
-        "result": {
-          "traditional": "他的孩子十歲多。",
-          "simplified": "他的孩子十岁多。",
-          "pinyin": "Tā de háizi shí suì duō.",
-          "english": "His child is a little over ten."
-        },
-        "successNote": "十歲多 is ten and a bit; 十多歲 is eleven to nineteen.",
-        "repairs": [
-          {
-            "placed": [
-              "十一歲"
-            ],
-            "note": "十一歲 is exactly eleven; the child is ten and a bit."
-          }
-        ]
+        "fallbackRepair": "With eight and a bit, put 多 after 塊: 八塊多錢.",
+        "successNote": "Round 10, 100, 1,000: 多 before the measure word. Any other number: 多 after it."
       },
       {
         "id": "l04-g5-own-sort",

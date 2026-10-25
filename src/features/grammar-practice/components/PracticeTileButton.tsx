@@ -26,7 +26,7 @@ export function PracticeTileButton({ tile, script, layoutId, drag, carried, disa
   return (
     <motion.div layout="position" layoutId={layoutId} transition={WORD_FLIGHT} {...drag} className={carried ? 'shrink-0 select-none opacity-30' : 'shrink-0 select-none'}>
       <PracticeChoiceButton compact disabled={disabled} state={selected ? 'selected' : 'idle'} onClick={onClick} aria-label={`Use ${text}`} className="w-auto">
-        <span className="min-w-6 font-chinese text-xl font-bold leading-none text-ui-ink-strong">{text}</span>
+        <span className="min-w-6 font-chinese-sans font-semibold text-xl leading-none text-ui-ink-strong">{text}</span>
       </PracticeChoiceButton>
     </motion.div>
   );

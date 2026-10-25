@@ -82,7 +82,7 @@
      }
     ],
     "fallbackRepair": "A 跟 B 不一樣.",
-    "prompt": "The sister and brother have different interests. Answer the question.",
+    "prompt": "Answer with the comparison pattern.",
     "successNote": "The pictures show different interests, so 不一樣.",
     "scene": {
      "type": "picture",
@@ -94,7 +94,8 @@
       0.097
      ],
      "alt": "Two girls lying on the floor drawing; the left smiles with a music-note bubble, the right looks bored with a scribble bubble."
-    }
+    },
+    "sub": "A：妹妹的興趣跟弟弟的（興趣）一樣嗎？"
    },
    {
     "id": "l15g1-p2",
@@ -174,7 +175,7 @@
      }
     ],
     "fallbackRepair": "Mood: A 跟 B 一樣好.",
-    "prompt": "The two portraits both look happy. Answer about her mood today.",
+    "prompt": "Answer with the comparison pattern.",
     "scene": {
      "type": "picture",
      "page": 348,
@@ -185,7 +186,8 @@
       0.123
      ],
      "alt": "Two portraits of a smiling girl labelled 昨天 and 今天."
-    }
+    },
+    "sub": "A：她今天的心情怎麼樣？"
    },
    {
     "id": "l15g1-p3",
@@ -309,7 +311,7 @@
      }
     ],
     "fallbackRepair": "Action: A 跑得跟 B 一樣快.",
-    "prompt": "The two sisters run at the same speed. Say it.",
+    "prompt": "Neither sister is faster. Answer with the comparison pattern.",
     "scene": {
      "type": "picture",
      "page": 348,
@@ -320,7 +322,8 @@
       0.132
      ],
      "alt": "An older girl and a younger girl running, with motion lines."
-    }
+    },
+    "sub": "A：姐姐跑得快，還是妹妹跑得快？"
    },
    {
     "id": "l15g1-own-spot",
@@ -533,8 +536,9 @@
      "pinyin": "Nǐ yí dào jiā, jiù gěi wǒ dǎ diànhuà.",
      "english": "Call me as soon as you get home."
     },
-    "prompt": "Rewrite with 一……就……: call me as soon as you get home.",
-    "gaps": true
+    "prompt": "Rewrite with 一……，就……。",
+    "gaps": true,
+    "sub": "你到家以後，馬上給我打電話。"
    },
    {
     "id": "l15g3-p2",
@@ -662,8 +666,9 @@
      "pinyin": "Tā yì shuōhuà, dàjiā jiù zhīdào tā bú shì Táiwān rén.",
      "english": "As soon as he speaks, everyone knows he is not Taiwanese."
     },
-    "prompt": "Rewrite with 一……就……: everyone knows as soon as he speaks.",
-    "gaps": true
+    "prompt": "Rewrite with 一……，就……。",
+    "gaps": true,
+    "sub": "他說話的時候，大家馬上知道他不是台灣人。"
    },
    {
     "id": "l15g3-p3",
@@ -791,8 +796,9 @@
      "pinyin": "Zhè jiàn shì wǒ yí juédìng, jiù kāishǐ zuò le.",
      "english": "As soon as I decided this, I started doing it."
     },
-    "prompt": "Rewrite with 一……就……: as soon as I decided, I started.",
-    "gaps": true
+    "prompt": "Rewrite with 一……，就……。",
+    "gaps": true,
+    "sub": "這件事我決定了以後，馬上開始做了。"
    },
    {
     "id": "l15g3-own-spot",
@@ -936,7 +942,7 @@
      }
     ],
     "fallbackRepair": "Ongoing state: V + 著 + O.",
-    "prompt": "Zhongming is watching TV when we arrive. Complete the sentence.",
+    "prompt": "Complete the sentence from the picture.",
     "scene": {
      "type": "picture",
      "page": 354,
@@ -947,7 +953,8 @@
       0.146
      ],
      "alt": "A boy in an armchair watching TV while two people arrive at the open door."
-    }
+    },
+    "sub": "中明____，不知道我們已經來了。"
    },
    {
     "id": "l15g2-p2",
@@ -1028,7 +1035,7 @@
      }
     ],
     "fallbackRepair": "Ongoing state: V + 著 + O.",
-    "prompt": "Guoan often rides a bike to places. Complete the sentence.",
+    "prompt": "Complete the sentence from the picture.",
     "scene": {
      "type": "picture",
      "page": 354,
@@ -1039,7 +1046,8 @@
       0.166
      ],
      "alt": "A helmeted cyclist riding fast along a road."
-    }
+    },
+    "sub": "國安常常____，到很多地方去玩。"
    },
    {
     "id": "l15g2-p3",
@@ -1126,7 +1134,7 @@
      }
     ],
     "fallbackRepair": "Two ongoing states: V著 + O，V著 + O.",
-    "prompt": "Look at the picture. What is Yiwen doing?",
+    "prompt": "Complete the sentence from the picture.",
     "scene": {
      "type": "picture",
      "page": 354,
@@ -1137,7 +1145,8 @@
       0.168
      ],
      "alt": "A girl with headphones on a sofa with a drink; a side table and books are nearby."
-    }
+    },
+    "sub": "宜文____，____，覺得很舒服，還不想寫功課。"
    },
    {
     "id": "l15g2-own-sort",

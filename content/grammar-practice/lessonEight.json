@@ -6,7 +6,7 @@
       {
         "id": "l8g1-p1",
         "source": "p.186 #1",
-        "prompt": "You really like this movie. What is it like?",
+        "prompt": "You enjoy this film. Describe it with 好 or 難.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -99,7 +99,7 @@
       {
         "id": "l8g1-p2",
         "source": "p.186 #2",
-        "prompt": "The new bike fits you; long rides don’t tire you. How does it ride?",
+        "prompt": "The new bike is comfortable on long rides. Describe it.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -178,7 +178,7 @@
       {
         "id": "l8g1-p3",
         "source": "p.186 #3",
-        "prompt": "Friends learned to swim in one lesson. What is swimming like to learn?",
+        "prompt": "Your friends learned to swim in one lesson. Describe swimming.",
         "quiet": true,
         "kind": "order-build",
         "tiles": [
@@ -363,7 +363,7 @@
           "english": "I think he did not draw this picture well; it looks a little bad.",
           "simplified": "我觉得这张画他画得不好，有点儿难看。"
         },
-        "prompt": "He drew this picture badly. How does it look?",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -460,7 +460,7 @@
           "english": "Bubble milk tea tastes good; everyone wants to buy a cup.",
           "simplified": "珍珠奶茶很好喝，大家都想买一杯。"
         },
-        "prompt": "Everyone wants a cup of bubble milk tea. How does it taste?",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -557,7 +557,7 @@
           "english": "That place is far away and hard to find; I do not want to go with you.",
           "simplified": "那个地方又远又难找，我不想跟你去。"
         },
-        "prompt": "You checked three maps and still can’t find the place. What is it like?",
+        "prompt": "Complete the sentence.",
         "quiet": true
       }
     ],
@@ -832,14 +832,14 @@
           "pinyin": "Yīnwèi tā xǐhuān lǜsè, suǒyǐ tā chángcháng chuān lǜsè de yīfu.",
           "english": "Because he likes green, he often wears green clothes."
         },
-        "prompt": "Why does he often wear green? (He likes green.)",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "gaps": true
       },
       {
         "id": "l8g2-p2",
         "source": "p.187 #2",
-        "prompt": "Ask why they want to go to the beach.",
+        "prompt": "Start the chat.",
         "kind": "order-build",
         "sub": "B replies afterward: 因為我想游泳，也想曬太陽，所以想去海邊玩。",
         "tiles": [
@@ -1209,7 +1209,7 @@
           "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán, suǒyǐ wǒ xiǎng xué Zhōngwén.",
           "english": "Because I want to visit Taiwan, I want to learn Chinese."
         },
-        "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.)",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "gaps": true
       },
@@ -1374,7 +1374,7 @@
         "id": "l8g3-p1",
         "source": "p.193 #1",
         "kind": "order-build",
-        "prompt": "You see a Korean passport. Check your guess: he is Korean.",
+        "prompt": "You see a Korean passport. Check your guess.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -1430,7 +1430,7 @@
         "id": "l8g3-p2",
         "source": "p.193 #2",
         "kind": "order-build",
-        "prompt": "Your friend always carries coffee. Check your guess: they like drinking it.",
+        "prompt": "Your friend always carries coffee. Check your guess.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -1486,7 +1486,7 @@
         "id": "l8g3-p3",
         "source": "p.193 #3",
         "kind": "order-build",
-        "prompt": "Your friend carries basketball shoes and a ball. Check your guess: they can play.",
+        "prompt": "Your friend carries basketball shoes and a ball. Check your guess.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -1543,7 +1543,7 @@
         "id": "l8g3-own-sort",
         "source": "own",
         "kind": "sort-groups",
-        "prompt": "Is 吧 making a suggestion or checking a guess?",
+        "prompt": "Sort the uses of 吧.",
         "groups": [
           {
             "label": "Suggestion"
@@ -1624,7 +1624,7 @@
       {
         "id": "l8g4-p1",
         "source": "p.194 #1",
-        "prompt": "Your friend wants to stop waiting. Suggest waiting a bit longer.",
+        "prompt": "Suggest waiting a little longer.",
         "kind": "order-build",
         "sub": "我不想等他了，我們先去餐廳吧。",
         "tiles": [
@@ -1821,12 +1821,12 @@
             "simplified": "桃园"
           }
         ],
-        "prompt": "You want to try the MRT."
+        "prompt": "Complete the dialogue."
       },
       {
         "id": "l8g4-p3",
         "source": "p.194 #3",
-        "prompt": "Nobody likes this song. You’ll give it a listen.",
+        "prompt": "You are curious about the song. Reply to A.",
         "kind": "order-build",
         "sub": "他們都不太喜歡這首歌，你呢？",
         "tiles": [
@@ -1890,7 +1890,7 @@
         "id": "l8g4-own1",
         "source": "own",
         "kind": "order-build",
-        "prompt": "The skirt is on the counter. Say you will try it on and see.",
+        "prompt": "Complete the sentence.",
         "quiet": true,
         "tiles": [
           {
@@ -2106,7 +2106,7 @@
           "english": "My Japanese friend is coming soon.",
           "simplified": "我的日本朋友快要来了。"
         },
-        "prompt": "Today is April 3; your friend comes April 5. Where do 快要 and 了 go?",
+        "prompt": "Complete the sentence using the calendars.",
         "quiet": true,
         "gaps": true
       },
@@ -2213,7 +2213,7 @@
           "english": "We are about to take a break.",
           "simplified": "我们快要休息了。"
         },
-        "prompt": "It’s 11:50. The break starts at 12:00. Where do 快要 and 了 go?",
+        "prompt": "Complete the sentence using the clocks.",
         "quiet": true,
         "gaps": true
       },
@@ -2344,7 +2344,7 @@
           "english": "My younger brother is about to turn ten.",
           "simplified": "弟弟快要十岁了。"
         },
-        "prompt": "Today is October 1; your brother turns ten October 10. Where do 快要 and 了 go?",
+        "prompt": "Complete the sentence using the calendars.",
         "quiet": true,
         "gaps": true
       }

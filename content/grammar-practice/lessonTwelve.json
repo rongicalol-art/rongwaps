@@ -7,7 +7,7 @@
         "id": "l12g1-p1",
         "source": "p.272 #1",
         "kind": "slot-build",
-        "prompt": "He can write characters in Chinese, not in English. Complete both parts.",
+        "prompt": "Complete the sentence.",
         "lines": [
           {
             "segments": [
@@ -139,7 +139,7 @@
         "id": "l12g1-p2",
         "source": "p.272 #2",
         "kind": "slot-build",
-        "prompt": "He likes using his phone to call and does not like using a pen to write letters. Complete both parts.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -282,7 +282,7 @@
         "id": "l12g1-p3",
         "source": "p.272 #3",
         "kind": "slot-build",
-        "prompt": "He often uses his phone to call and his computer to work. Complete both parts.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -552,7 +552,7 @@
         "id": "l12g2-p1",
         "source": "p.273 #1",
         "kind": "slot-build",
-        "prompt": "She was a student before; now she is a teacher.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -635,7 +635,7 @@
         "id": "l12g2-p2",
         "source": "p.273 #2",
         "kind": "slot-build",
-        "prompt": "Your brother works in Taiwan now; later he will work in the US.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -718,7 +718,7 @@
         "id": "l12g2-p3",
         "source": "p.273 #3",
         "kind": "slot-build",
-        "prompt": "She liked tea before; now she likes coffee.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -801,7 +801,7 @@
         "id": "l12g2-p4",
         "source": "p.273 #4",
         "kind": "slot-build",
-        "prompt": "She has been sick often; she decided to exercise more from now on.",
+        "prompt": "Complete the sentence from the picture.",
         "lines": [
           {
             "segments": [
@@ -884,7 +884,8 @@
         "id": "l12g2-p5",
         "source": "p.275 #1",
         "kind": "order-build",
-        "prompt": "You eat dinner before seven every day. Answer the question.",
+        "sub": "A：你每天幾點吃晚飯？ B：____",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "我",
@@ -978,7 +979,8 @@
         "id": "l12g2-p6",
         "source": "p.275 #2",
         "kind": "order-build",
-        "prompt": "You came to Taiwan two years ago. Answer the question.",
+        "sub": "A：你是什麼時候來台灣？ B：____",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "我",
@@ -1059,7 +1061,8 @@
         "id": "l12g2-p7",
         "source": "p.275 #3",
         "kind": "order-build",
-        "prompt": "He said he left home ten minutes ago. Complete the reply.",
+        "sub": "A：十點了，中明還沒來，他遲到了。 B：我給他打電話了，他說____。",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "他",
@@ -1125,7 +1128,7 @@
         "id": "l12g2-p8",
         "source": "p.276 #1",
         "kind": "order-build",
-        "prompt": "After class, you go ride bikes. Say it with 以後.",
+        "prompt": "Write the sentence shown by the pictures.",
         "tiles": [
           {
             "traditional": "下課",
@@ -1217,7 +1220,7 @@
         "id": "l12g2-p9",
         "source": "p.276 #2",
         "kind": "order-build",
-        "prompt": "You wash your hands before eating. Say it with 以前.",
+        "prompt": "Write the sentence shown by the pictures.",
         "tiles": [
           {
             "traditional": "吃飯",
@@ -1287,7 +1290,7 @@
         "id": "l12g2-p10",
         "source": "p.276 #3",
         "kind": "order-build",
-        "prompt": "You brush your teeth before sleeping. Say it with 以前.",
+        "prompt": "Write the sentence shown by the pictures.",
         "tiles": [
           {
             "traditional": "睡覺",
@@ -1357,7 +1360,7 @@
         "id": "l12g2-p11",
         "source": "p.276 #4",
         "kind": "order-build",
-        "prompt": "After graduation, you want to be a doctor. Say it with 以後.",
+        "prompt": "Write the sentence shown by the pictures.",
         "tiles": [
           {
             "traditional": "畢業",
@@ -1605,7 +1608,7 @@
         "id": "l12g3-p1",
         "source": "p.281 #1",
         "kind": "order-build",
-        "prompt": "Say that the restaurant is too far and inconvenient for us.",
+        "prompt": "Rearrange the Chinese sentence.",
         "tiles": [
           {
             "traditional": "那家餐廳",
@@ -1671,7 +1674,7 @@
         "id": "l12g3-p2",
         "source": "p.281 #2",
         "kind": "slot-build",
-        "prompt": "He said many things to me yesterday, but I did not understand some of it.",
+        "prompt": "Rearrange the Chinese sentence.",
         "lines": [
           {
             "segments": [
@@ -1792,7 +1795,7 @@
         "id": "l12g3-p3",
         "source": "p.281 #3",
         "kind": "slot-build",
-        "prompt": "Exercise is good for the body; too many sweets are bad for it.",
+        "prompt": "Rearrange the Chinese sentence.",
         "lines": [
           {
             "segments": [
@@ -1911,7 +1914,7 @@
         "id": "l12g3-p4",
         "source": "p.281 #4",
         "kind": "slot-build",
-        "prompt": "Mr. Li treats Mrs. Li well; after work he often asks her to rest more.",
+        "prompt": "Rearrange the Chinese sentence.",
         "lines": [
           {
             "segments": [
@@ -1990,7 +1993,7 @@
         "id": "l12g4-p1",
         "source": "p.283 #1",
         "kind": "order-build",
-        "prompt": "Has he been to France?",
+        "prompt": "Answer the question from the passage.",
         "tiles": [
           {
             "traditional": "他",
@@ -2040,14 +2043,14 @@
           }
         ],
         "fallbackRepair": "Use 去過 for an experience he has had.",
-        "quiet": true,
-        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。"
+        "quiet": false,
+        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。\n問題一：他去過法國嗎？"
       },
       {
         "id": "l12g4-p2",
         "source": "p.283 #2",
         "kind": "order-build",
-        "prompt": "Has he studied Indonesian?",
+        "prompt": "Answer the question from the passage.",
         "tiles": [
           {
             "traditional": "他",
@@ -2096,14 +2099,14 @@
           }
         ],
         "fallbackRepair": "Use 學過 for an experience he has had.",
-        "quiet": true,
-        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。"
+        "quiet": false,
+        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。\n問題二：他學過印尼文嗎？"
       },
       {
         "id": "l12g4-p3",
         "source": "p.283 #3",
         "kind": "order-build",
-        "prompt": "Has he been a reporter?",
+        "prompt": "Answer the question from the passage.",
         "tiles": [
           {
             "traditional": "他",
@@ -2153,14 +2156,15 @@
           }
         ],
         "fallbackRepair": "Use 沒 + verb + 過 for an experience he has not had.",
-        "quiet": true,
-        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。"
+        "quiet": false,
+        "sub": "我很喜歡學習語言，也很想去很多國家玩。我會說英文、中文、義大利文、德文跟法文，也學了一點兒日文跟印尼文，我去義大利、德國、法國的時候，會說他們的語言，所以很有趣。我想做一個可以用很多語言的工作，當記者很不錯，希望以後能當一個有名的記者。\n問題三：他當過記者嗎？"
       },
       {
         "id": "l12g4-p4",
         "source": "p.283 #4",
         "kind": "order-build",
-        "prompt": "Ask whether the other person has already attended the Chinese class.",
+        "sub": "A：我記得你今天有中文課，你____嗎？ B：還沒，我上的是晚上課。",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "你",
@@ -2220,7 +2224,8 @@
         "id": "l12g4-p5",
         "source": "p.283 #5",
         "kind": "order-build",
-        "prompt": "Say you have already seen the doctor.",
+        "sub": "A：你很不舒服吧？要不要去看醫生？ B：我____，醫生給了我三天藥。",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "我",
@@ -2255,7 +2260,7 @@
             "sentence": {
               "traditional": "我看過了。",
               "pinyin": "Wǒ kànguo le.",
-              "english": "I have already seen him.",
+              "english": "I have already seen the doctor.",
               "simplified": "我看过了。"
             }
           }
@@ -2287,7 +2292,8 @@
         "id": "l12g4-p6",
         "source": "p.283 #6",
         "kind": "order-build",
-        "prompt": "Tell your mother that she already said it.",
+        "sub": "媽媽：我今天晚上要跟朋友去吃飯，不能做晚飯了。 中明：媽，妳____（說），妳忘記了嗎？",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "妳",
@@ -2418,7 +2424,8 @@
         "id": "l12g5-p1",
         "source": "p.284 #1",
         "kind": "order-build",
-        "prompt": "You are happiest when you listen to music. Answer the question.",
+        "sub": "A：你什麼時候最開心？",
+        "prompt": "Answer the question with 的時候。",
         "tiles": [
           {
             "traditional": "我",
@@ -2494,7 +2501,8 @@
         "id": "l12g5-p2",
         "source": "p.284 #2",
         "kind": "order-build",
-        "prompt": "When you have a fever, you drink more water. Answer the question.",
+        "sub": "A：你發燒的時候，會怎麼做？",
+        "prompt": "Answer the question with 的時候。",
         "tiles": [
           {
             "traditional": "我",
@@ -2575,7 +2583,8 @@
         "id": "l12g5-p3",
         "source": "p.284 #3",
         "kind": "order-build",
-        "prompt": "When you are not in class, you read. Answer the question.",
+        "sub": "A：你不上課的時候，都在做什麼？",
+        "prompt": "Answer the question with 的時候。",
         "tiles": [
           {
             "traditional": "我",

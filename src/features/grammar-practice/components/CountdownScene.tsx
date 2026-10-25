@@ -28,7 +28,7 @@ export function CalendarFace({ month, day, next }: { month: number; day: number;
       <rect x="8" y="46" width="104" height="4" className={edge} />
       <rect x="31" y="6" width="9" height="22" rx="4.5" className="fill-ui-ink-strong" />
       <rect x="80" y="6" width="9" height="22" rx="4.5" className="fill-ui-ink-strong" />
-      <text x="60" y="41" textAnchor="middle" className="fill-brand-on-primary font-chinese text-[17px] font-bold">{month}月</text>
+      <text x="60" y="41" textAnchor="middle" className="fill-brand-on-primary font-chinese-sans font-semibold text-[17px] ">{month}月</text>
       <text x="60" y="98" textAnchor="middle" className="fill-ui-ink-strong font-sans text-[46px] font-black tabular-nums">{day}</text>
     </svg>
   );
@@ -75,7 +75,7 @@ export function Moment({ moment, next, renderChinese }: { moment: PracticeMoment
       {moment.time && <ClockFace time={moment.time} next={next} />}
       {moment.label ? (
         <span className="flex flex-col items-center text-center leading-tight">
-          <span className="font-chinese text-sm text-ui-ink-strong sm:text-base">{renderChinese(moment.label)}</span>
+          <span className="font-chinese-sans font-semibold text-sm text-ui-ink-strong sm:text-base">{renderChinese(moment.label)}</span>
         </span>
       ) : (
         <span className="h-9" aria-hidden="true" />

@@ -26,7 +26,7 @@ export function PracticeBubble({ side, children, notes = [], className }: Practi
         className,
       )}
     >
-      <div className="font-chinese text-[22px] leading-normal sm:text-[26px]">{children}</div>
+      <div className="font-chinese-sans font-semibold text-[22px] leading-normal sm:text-[26px]">{children}</div>
       {notes.map((note) => (
         <p key={note} className={cn('mt-0.5 text-sm font-extrabold', mine ? 'text-brand-on-primary/85' : 'text-ui-muted-strong')}>{note}</p>
       ))}

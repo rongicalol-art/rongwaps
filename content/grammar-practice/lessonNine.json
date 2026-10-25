@@ -77,7 +77,7 @@
      }
     ],
     "fallbackRepair": "Action happening now: subject + 在 + action.",
-    "prompt": "The choir is singing. Say what they are doing.",
+    "prompt": "Reply to the question using the picture.",
     "scene": {
      "type": "picture",
      "page": 206,
@@ -89,7 +89,8 @@
      ],
      "alt": "Four people holding sheet music and singing, with music notes above them."
     },
-    "successNote": "在 sits right before the action that is happening now."
+    "successNote": "在 sits right before the action that is happening now.",
+    "sub": "他們在做什麼？"
    },
    {
     "id": "l9g1-p2",
@@ -165,7 +166,7 @@
      }
     ],
     "fallbackRepair": "Question: subject + 在 + 做什麼 + ？",
-    "prompt": "The dancers are performing a Japanese dance. Ask what they are doing.",
+    "prompt": "Ask a question about the picture.",
     "scene": {
      "type": "picture",
      "page": 206,
@@ -269,7 +270,7 @@
      }
     ],
     "fallbackRepair": "Answer: person + 在 + action.",
-    "prompt": "The child is drawing. Answer what he is doing.",
+    "prompt": "Reply to the question using the picture.",
     "scene": {
      "type": "picture",
      "page": 206,
@@ -280,14 +281,14 @@
       0.13
      ],
      "alt": "A child sitting on the floor drawing on a large sheet of paper, crayons nearby."
-    }
+    },
+    "sub": "這個孩子在做什麼？"
    },
    {
     "id": "l9g1-own-spot",
     "source": "own",
     "kind": "spot-fix",
-    "prompt": "Fix the sentence: he is playing basketball.",
-    "sub": "Use the word that shows an action happening now.",
+    "prompt": "Choose the corrected sentence.",
     "chunks": [
      {
       "traditional": "他"
@@ -363,6 +364,18 @@
      {
       "segments": [
        {
+        "type": "text",
+        "traditional": "這家餐廳哪天要休息？"
+       }
+      ],
+      "speaker": {
+       "traditional": "A"
+      },
+      "me": false
+     },
+     {
+      "segments": [
+       {
         "type": "slot",
         "id": "gStart",
         "answers": []
@@ -406,6 +419,9 @@
         "traditional": "休息。"
        }
       ],
+      "speaker": {
+       "traditional": "B"
+      },
       "me": true
      }
     ],
@@ -503,7 +519,7 @@
      "pinyin": "Zhè jiā càntīng cóng èryuè wǔ hào dào èryuè èrshí hào xiūxi.",
      "english": "This restaurant is closed from February 5 to February 20."
     },
-    "prompt": "The notice says 2/5 to 2/20. Put 從 and 到 in the right places.",
+    "prompt": "Complete the reply with 從 and 到.",
     "quiet": true,
     "successNote": "從 opens the start date; 到 opens the finish date."
    },
@@ -598,7 +614,7 @@
      }
     ],
     "fallbackRepair": "Range: 從 + start + 到 + finish.",
-    "prompt": "The schedule shows 13:00–16:00. Say when the baseball game is.",
+    "prompt": "Reply to A using the schedule.",
     "scene": {
      "type": "picture",
      "page": 207,
@@ -609,7 +625,8 @@
       0.142
      ],
      "alt": "Weekly schedule headed 賽程表 with 13:00 and 16:00, a baseball bat and trophy in the shaded block."
-    }
+    },
+    "sub": "棒球比賽的時間是從幾點到幾點？"
    },
    {
     "id": "l9g2-p3",
@@ -628,6 +645,18 @@
      "alt": "Two scenes: 2013~2017 France with a painter and the Eiffel Tower; 2018 America with a laptop and the Statue of Liberty."
     },
     "lines": [
+     {
+      "segments": [
+       {
+        "type": "text",
+        "traditional": "他從2013年到2017年都在法國學畫畫嗎？"
+       }
+      ],
+      "speaker": {
+       "traditional": "A"
+      },
+      "me": false
+     },
      {
       "segments": [
        {
@@ -738,15 +767,14 @@
      "pinyin": "Shì, tā cóng èr líng yī sān nián dào èr líng yī qī nián dōu zài Fǎguó xué huàhuà.",
      "english": "Yes, he studied painting in France from 2013 to 2017."
     },
-    "prompt": "A asks whether he studied painting in France from 2013 to 2017. Answer yes with the full range.",
+    "prompt": "Complete the reply.",
     "successNote": "從 opens the start year, 到 opens the finish year, and 都 comes before the action."
    },
    {
     "id": "l9g2-own-spot",
     "source": "own",
     "kind": "spot-fix",
-    "prompt": "Fix the finish time: the class runs from 4:00 to 5:30.",
-    "sub": "You mean 4:00–5:30, not 4:00–4:30.",
+    "prompt": "Choose the corrected sentence.",
     "chunks": [
      {
       "traditional": "我"
@@ -909,7 +937,7 @@
      }
     ],
     "fallbackRepair": "Plan: 先 + first action，再 + next action.",
-    "prompt": "First the art class, then tennis. Say your afternoon plan.",
+    "prompt": "Reply to A using the picture.",
     "scene": {
      "type": "picture",
      "page": 208,
@@ -920,7 +948,8 @@
       0.095
      ],
      "alt": "A person painting at an easel, then an arrow to a person playing tennis."
-    }
+    },
+    "sub": "你明天下午要上什麼課？"
    },
    {
     "id": "l9g3-p2",
@@ -1011,7 +1040,7 @@
      }
     ],
     "fallbackRepair": "Two places: 先 + place 1，再 + place 2.",
-    "prompt": "First the library, then the mountain. Answer where you want to go this weekend.",
+    "prompt": "Reply to A using the picture.",
     "scene": {
      "type": "picture",
      "page": 208,
@@ -1022,7 +1051,8 @@
       0.098
      ],
      "alt": "A bookshelf, then an arrow to two people sitting by a river with mountains behind."
-    }
+    },
+    "sub": "你們週末想去哪裡？"
    },
    {
     "id": "l9g3-p3",
@@ -1110,7 +1140,7 @@
      }
     ],
     "fallbackRepair": "Two actions: 先 + action 1，再 + action 2.",
-    "prompt": "You are not skipping dinner: first swim, then eat dinner. Answer.",
+    "prompt": "Reply to A using the picture.",
     "scene": {
      "type": "picture",
      "page": 208,
@@ -1121,13 +1151,14 @@
       0.098
      ],
      "alt": "A swimmer, then an arrow to a woman sitting at a table with a meal."
-    }
+    },
+    "sub": "你不去吃晚飯嗎？"
    },
    {
     "id": "l9g3-own-story",
     "source": "own",
     "kind": "story-order",
-    "prompt": "Put the plan in order.",
+    "prompt": "Put the events in order.",
     "steps": [
      {
       "traditional": "我再回家做功課。",
@@ -1162,7 +1193,7 @@
     "id": "l9g3-own-meaning",
     "source": "own",
     "kind": "same-meaning",
-    "prompt": "Same meaning?",
+    "prompt": "Choose the sentence with the same meaning.",
     "sentences": [
      {
       "traditional": "我先吃飯，再看書。",
@@ -1273,7 +1304,7 @@
      }
     ],
     "fallbackRepair": "Ability now: subject + 能 / 不能 + action.",
-    "prompt": "The picture shows a sore throat. Answer whether he can speak now.",
+    "prompt": "Answer A using the picture.",
     "scene": {
      "type": "picture",
      "page": 213,
@@ -1284,7 +1315,8 @@
       0.112
      ],
      "alt": "A person holding their throat with a pained expression."
-    }
+    },
+    "sub": "他現在能說話嗎？"
    },
    {
     "id": "l9g4-p2",
@@ -1371,7 +1403,7 @@
      }
     ],
     "fallbackRepair": "Ability now: subject + 能 / 不能 + action.",
-    "prompt": "The picture shows him on crutches. Answer whether he can play ball now.",
+    "prompt": "Answer A using the picture.",
     "scene": {
      "type": "picture",
      "page": 213,
@@ -1382,7 +1414,8 @@
       0.118
      ],
      "alt": "A man on crutches with one foot in a cast."
-    }
+    },
+    "sub": "他現在能打球嗎？"
    },
    {
     "id": "l9g4-p3",
@@ -1477,7 +1510,7 @@
      }
     ],
     "fallbackRepair": "Ability: subject + 能 + action + amount.",
-    "prompt": "Answer with a daily coffee limit of two cups.",
+    "prompt": "Your daily limit is 兩杯. Answer A.",
     "scene": {
      "type": "picture",
      "page": 213,
@@ -1488,7 +1521,8 @@
       0.103
      ],
      "alt": "A cup of hot coffee on a saucer with two cookies."
-    }
+    },
+    "sub": "你一天能喝多少咖啡？"
    },
    {
     "id": "l9g4-p4",
@@ -1567,7 +1601,7 @@
      }
     ],
     "fallbackRepair": "Refusal: person + 不能 + action.",
-    "prompt": "The left picture shows one woman asking to borrow the other’s car. Refuse the request.",
+    "prompt": "The car’s owner says no. Reply to A.",
     "scene": {
      "type": "picture",
      "page": 214,
@@ -1578,7 +1612,8 @@
       0.2
      ],
      "alt": "Three pictures in a row; the left picture shows two women in a car, one asking to borrow the other’s car."
-    }
+    },
+    "sub": "我能不能開妳的車？"
    },
    {
     "id": "l9g4-p5",
@@ -1652,7 +1687,7 @@
      }
     ],
     "fallbackRepair": "Rule: place + 不能 + action.",
-    "prompt": "Answer with the library rule: can we talk there?",
+    "prompt": "Answer A using the picture.",
     "scene": {
      "type": "picture",
      "page": 214,
@@ -1663,7 +1698,8 @@
       0.155
      ],
      "alt": "People sitting around a table with laptops in a library."
-    }
+    },
+    "sub": "在圖書館裡我們能不能說話？"
    },
    {
     "id": "l9g4-p6",
@@ -1726,7 +1762,7 @@
      }
     ],
     "fallbackRepair": "Reason: 因為 + situation.",
-    "prompt": "Explain why dancing upstairs is not allowed: someone downstairs is sleeping.",
+    "prompt": "Answer A using the picture.",
     "scene": {
      "type": "picture",
      "page": 214,
@@ -1737,7 +1773,8 @@
       0.165
      ],
      "alt": "Above, people at a table with question marks; below, a person asleep on a sofa and another with their head down."
-    }
+    },
+    "sub": "為什麼我們不能在樓上跳舞？"
    },
    {
     "id": "l9g4-p7",
@@ -1811,7 +1848,7 @@
      }
     ],
     "fallbackRepair": "Outside condition: subject + 不能 + action.",
-    "prompt": "You have a lot of homework. Say you cannot go to the department store.",
+    "prompt": "You have a lot of homework. Reply to A.",
     "scene": {
      "type": "picture",
      "page": 215,
@@ -1822,7 +1859,8 @@
       0.135
      ],
      "alt": "A young man at a desk with books and papers; a clock reads 21:00."
-    }
+    },
+    "sub": "今天晚上你要不要跟我去百貨公司？"
    },
    {
     "id": "l9g4-p8",
@@ -1896,7 +1934,7 @@
      }
     ],
     "fallbackRepair": "Outside condition: subject + 不能 + action.",
-    "prompt": "The taxi is too expensive and you do not have much money. Say you cannot take a taxi.",
+    "prompt": "The taxi fare is too high for you. Reply to A.",
     "scene": {
      "type": "picture",
      "page": 215,
@@ -1907,7 +1945,8 @@
       0.15
      ],
      "alt": "A woman looking worried with an empty coin purse."
-    }
+    },
+    "sub": "上課時間快到了，你坐計程車到學校去吧。"
    },
    {
     "id": "l9g4-p9",
@@ -1995,7 +2034,7 @@
      }
     ],
     "fallbackRepair": "Request: 你 + 能 + 幫我 + action + 嗎？",
-    "prompt": "Ask whether your friend can help you mail a letter.",
+    "prompt": "Start the chat.",
     "scene": {
      "type": "picture",
      "page": 215,
@@ -2006,14 +2045,14 @@
       0.148
      ],
      "alt": "Two men near a parcel outside a post office, with a speech bubble showing the 郵 sign."
-    }
+    },
+    "sub": "B replies afterward: 好，沒問題，我明天幫你寄。"
    },
    {
     "id": "l9g4-own-spot",
     "source": "own",
     "kind": "spot-fix",
-    "prompt": "Fix the sentence: he can only walk.",
-    "sub": "Keep the meaning “only can”.",
+    "prompt": "Choose the corrected sentence.",
     "chunks": [
      {
       "traditional": "他"
@@ -2138,7 +2177,7 @@
      }
     ],
     "fallbackRepair": "Comparison: action + 得 + 比較 + quality.",
-    "prompt": "You think 友美 dances better. Say it.",
+    "prompt": "Your preferred dancer is 友美. Reply to A.",
     "scene": {
      "type": "picture",
      "page": 216,
@@ -2149,7 +2188,8 @@
       0.155
      ],
      "alt": "Two women dancing under music notes, captioned 友美 and 元真."
-    }
+    },
+    "sub": "你覺得誰跳舞跳得比較好？"
    },
    {
     "id": "l9g5-p2",
@@ -2230,7 +2270,7 @@
      }
     ],
     "fallbackRepair": "Opinion: 我覺得 + thing + 比較 + quality.",
-    "prompt": "You think the T-shirt looks better. Say it.",
+    "prompt": "You would wear the short-sleeved shirt. Reply to A.",
     "scene": {
      "type": "picture",
      "page": 216,
@@ -2241,7 +2281,8 @@
       0.09
      ],
      "alt": "Two garments: a long-sleeved top and a short-sleeved T-shirt."
-    }
+    },
+    "sub": "你覺得哪件衣服比較好看？"
    },
    {
     "id": "l9g5-p3",
@@ -2314,7 +2355,7 @@
      }
     ],
     "fallbackRepair": "Comparison: thing + 比較 + quality.",
-    "prompt": "Look at the two rooms. Which one is bigger?",
+    "prompt": "Reply to A using the picture.",
     "scene": {
      "type": "picture",
      "page": 216,
@@ -2325,14 +2366,14 @@
       0.164
      ],
      "alt": "Top: 國安 beside a room. Bottom: 中明 beside a bedroom with a bed."
-    }
+    },
+    "sub": "國安的房間大，還是中明的房間大？"
    },
    {
     "id": "l9g5-own-spot",
     "source": "own",
     "kind": "spot-fix",
-    "prompt": "Fix the sentence: the weather is warmer today.",
-    "sub": "One degree word is enough.",
+    "prompt": "Choose the corrected sentence.",
     "chunks": [
      {
       "traditional": "今天的天氣",

@@ -6,7 +6,7 @@
       {
         "id": "l05-g01-book-1",
         "source": "p.116 #1",
-        "prompt": "Where are they?",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -71,7 +71,7 @@
       {
         "id": "l05-g01-book-2",
         "source": "p.116 #2",
-        "prompt": "Is Xiaomei at the library? Answer from the picture.",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -141,86 +141,9 @@
       {
         "id": "l05-g01-book-3",
         "source": "p.117 #3",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "李老師今天早上九點在學校"
-              },
-              {
-                "type": "slot",
-                "id": "ending",
-                "answers": [
-                  "嗎"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "？"
-              }
-            ],
-            "me": true
-          },
-          {
-            "speaker": {
-              "traditional": "B"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "李老師今天早上九點在學校。"
-              }
-            ],
-            "me": false
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "呢",
-            "pinyin": "ne"
-          },
-          {
-            "traditional": "什麼",
-            "simplified": "什么",
-            "pinyin": "shénme"
-          },
-          {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "呢"
-            ],
-            "mark": [
-              "呢"
-            ],
-            "note": "呢 asks \"and …?\" about a new topic. You are checking one yes/no fact, so use 嗎."
-          },
-          {
-            "placed": [
-              "什麼"
-            ],
-            "mark": [
-              "什麼"
-            ],
-            "note": "什麼 asks \"what\" and needs a slot for it. This is a yes/no check, so end with 嗎."
-          }
-        ],
-        "fallbackRepair": "A yes/no question ends with 嗎.",
-        "result": {
-          "traditional": "李老師今天早上九點在學校嗎？",
-          "pinyin": "Lǐ lǎoshī jīntiān zǎoshang jiǔ diǎn zài xuéxiào ma?",
-          "english": "Is Teacher Li at school at nine this morning?"
-        },
+        "kind": "order-build",
+        "prompt": "Ask about the place.",
+        "sub": "李老師今天早上九點在學校。",
         "scene": {
           "type": "picture",
           "page": 116,
@@ -232,8 +155,82 @@
           ],
           "alt": "A teacher at the board, students facing him, and a clock showing nine."
         },
-        "prompt": "Ask whether Teacher Li is at school at nine this morning.",
-        "quiet": true
+        "tiles": [
+          {
+            "traditional": "李老師",
+            "simplified": "李老师",
+            "pinyin": "Lǐ lǎoshī"
+          },
+          {
+            "traditional": "今天早上",
+            "simplified": "今天早上",
+            "pinyin": "jīntiān zǎoshang"
+          },
+          {
+            "traditional": "九點",
+            "simplified": "九点",
+            "pinyin": "jiǔ diǎn"
+          },
+          {
+            "traditional": "在",
+            "simplified": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "李老師",
+              "今天早上",
+              "九點",
+              "在",
+              "哪裡"
+            ],
+            "sentence": {
+              "traditional": "李老師今天早上九點在哪裡？",
+              "simplified": "李老师今天早上九点在哪里？",
+              "pinyin": "Lǐ lǎoshī jīntiān zǎoshang jiǔ diǎn zài nǎlǐ?",
+              "english": "Where is Teacher Li at nine this morning?"
+            }
+          },
+          {
+            "order": [
+              "今天早上",
+              "九點",
+              "李老師",
+              "在",
+              "哪裡"
+            ],
+            "sentence": {
+              "traditional": "今天早上九點李老師在哪裡？",
+              "simplified": "今天早上九点李老师在哪里？",
+              "pinyin": "Jīntiān zǎoshang jiǔ diǎn Lǐ lǎoshī zài nǎlǐ?",
+              "english": "Where is Teacher Li at nine this morning?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "哪裡 is already the question word, so do not add 嗎."
+          }
+        ],
+        "fallbackRepair": "Keep 在 before 哪裡; a question-word question does not end with 嗎."
       }
     ],
     "allowWords": [
@@ -404,7 +401,7 @@
         "id": "l05-g02-book-3",
         "source": "p.117 #3",
         "kind": "order-build",
-        "prompt": "You are not eating dinner at home today.",
+        "prompt": "Complete B’s answer.",
         "tiles": [
           {
             "traditional": "吃晚飯",
@@ -472,7 +469,7 @@
           }
         ],
         "fallbackRepair": "Put 在 before the place and the action after the place.",
-        "sub": "你今天要在家吃晚飯嗎？"
+        "sub": "你今天要在家吃晚飯嗎？\n____，我要在餐廳吃晚飯。"
       },
       {
         "id": "l05-g02-own-order",
@@ -570,7 +567,7 @@
           "alt": "Two pens, one priced $100 and the other $50."
         },
         "kind": "order-build",
-        "prompt": "This pen is too expensive. Suggest buying the cheaper one.",
+        "prompt": "Complete the sentence.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -635,7 +632,7 @@
           "alt": "A steaming cup on a saucer."
         },
         "kind": "order-build",
-        "prompt": "It is cold. Suggest having hot coffee.",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "嗎",
@@ -700,7 +697,7 @@
           "alt": "Two people at a counter selling noodles and drinks."
         },
         "kind": "order-build",
-        "prompt": "You both want food. Suggest going to eat together.",
+        "prompt": "Complete the dialogue.",
         "tiles": [
           {
             "traditional": "吧",
@@ -769,7 +766,7 @@
       {
         "id": "l05-g04-book-1",
         "source": "p.125 #1",
-        "prompt": "Where is my book?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -838,7 +835,7 @@
       {
         "id": "l05-g04-book-2",
         "source": "p.125 #2",
-        "prompt": "Where is the younger brother?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -908,7 +905,7 @@
       {
         "id": "l05-g04-book-3",
         "source": "p.125 #3",
-        "prompt": "Where does she read?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -984,7 +981,7 @@
       {
         "id": "l05-g04-book-4",
         "source": "p.125 #4",
-        "prompt": "What is Xiaoming doing in the library?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",

@@ -72,7 +72,8 @@
      }
     ],
     "fallbackRepair": "Suggest a light action: V V.",
-    "prompt": "The book is interesting. Ask your friend to take a look.",
+    "sub": "A：我覺得這本書很有趣，____？ B：我也看過，真的很有趣。",
+    "prompt": "Complete the dialogue.",
     "successNote": "看看 softens the suggestion."
    },
    {
@@ -148,7 +149,8 @@
      }
     ],
     "fallbackRepair": "Two light actions after class.",
-    "prompt": "Answer what you often do after class.",
+    "sub": "A：你下課以後，常常做什麼？ B：____。",
+    "prompt": "Complete the dialogue.",
     "successNote": "Repeat each verb to soften the routine."
    },
    {
@@ -231,7 +233,8 @@
      }
     ],
     "fallbackRepair": "Light action: 買買 + object.",
-    "prompt": "Answer what you can do at the department store.",
+    "sub": "A：我們可以去百貨公司做什麼？ B：____。",
+    "prompt": "Complete the dialogue.",
     "successNote": "買買 makes the shopping sound casual."
    },
    {
@@ -363,7 +366,7 @@
      }
     ],
     "fallbackRepair": "Start: 從這裡; direction: 往上.",
-    "prompt": "You are at the bottom looking up at Taipei 101. Describe the view.",
+    "prompt": "Describe the view from the picture.",
     "scene": {
      "type": "picture",
      "page": 296,
@@ -442,7 +445,7 @@
      }
     ],
     "fallbackRepair": "Start: 從車裡; direction: 往外.",
-    "prompt": "You are inside the car looking out. Describe the view.",
+    "prompt": "Describe the view from the picture.",
     "scene": {
      "type": "picture",
      "page": 296,
@@ -592,14 +595,14 @@
        "id": "g2",
        "tile": "從學校"
       },
-      "note": "g2 is the object after 看到; use 一隻貓 or 郵局, not the start place."
+      "note": "After 看到, name what you see: 一隻貓 or 郵局, not 學校."
      },
      {
       "slot": {
        "id": "g2",
        "tile": "往郵局走"
       },
-      "note": "g2 is the object after 看到; use 一隻貓 or 郵局, not the direction phrase."
+      "note": "After 看到, name what you see: 一隻貓 or 郵局."
      }
     ],
     "fallbackRepair": "從 + start + 往 + direction + 走，你會看到 + object.",
@@ -617,7 +620,7 @@
       "english": "Walk from the school toward the post office; you will see the post office."
      }
     ],
-    "prompt": "Start at the school and walk toward the post office. Say what you will see.",
+    "prompt": "Complete the description from the map.",
     "successNote": "從 marks the start; 往 marks the direction.",
     "scene": {
      "type": "picture",
@@ -737,7 +740,8 @@
      }
     ],
     "fallbackRepair": "Time + 就 + action + 了.",
-    "prompt": "You arrived early. Say you got to school at six."
+    "sub": "A：我今天很早就到學校來了。 B：你今天是幾點到的？ A：____。",
+    "prompt": "Complete the dialogue."
    },
    {
     "id": "l13g3-p2",
@@ -804,7 +808,8 @@
      }
     ],
     "fallbackRepair": "Instruction + 就 + easy result.",
-    "prompt": "The tower is ahead. Say how to get there."
+    "sub": "A：我想去台北101，請問要怎麼走？ B：____。（往前走……） A：那我知道了，真謝謝你！",
+    "prompt": "Complete the dialogue."
    },
    {
     "id": "l13g3-p3",
@@ -993,7 +998,8 @@
      }
     ],
     "fallbackRepair": "Time + 就要 + event + 了.",
-    "prompt": "The exam is tomorrow. Say it is about to happen."
+    "sub": "____，你不緊張嗎？（明天／考試）",
+    "prompt": "Complete the sentence."
    },
    {
     "id": "l13g4-p2",
@@ -1086,7 +1092,8 @@
      }
     ],
     "fallbackRepair": "Subject + time + 就要 + event + 了.",
-    "prompt": "She returns next Tuesday. Say it is about to happen."
+    "sub": "____，我想送她一個禮物。（下星期二／回國）",
+    "prompt": "Complete the sentence."
    },
    {
     "id": "l13g4-p3",
@@ -1190,7 +1197,8 @@
      "pinyin": "Huǒchē shí fēnzhōng yǐhòu jiù yào lái le.",
      "english": "The train is coming in ten minutes."
     },
-    "prompt": "The train comes in ten minutes. Complete the countdown.",
+    "sub": "____，他們怎麼還沒到？（十分鐘以後／火車來）",
+    "prompt": "Complete the sentence.",
     "successNote": "就要 goes before 來; 了 closes the sentence.",
     "gaps": true
    }
@@ -1299,7 +1307,8 @@
      }
     ],
     "fallbackRepair": "Subject + time + verb + duration.",
-    "prompt": "Rearrange: how long does he run every day?"
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "跑／他／半個小時／每天／。"
    },
    {
     "id": "l13g5-p2",
@@ -1376,7 +1385,8 @@
      }
     ],
     "fallbackRepair": "Subject + 需要 + verb + duration.",
-    "prompt": "Rearrange: how long do you need to rest?"
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "十分鐘／我／休息／需要／。"
    },
    {
     "id": "l13g5-p3",
@@ -1467,7 +1477,8 @@
      "pinyin": "Wǒ xiànzài tài lèi le, kěyǐ xiān shuì shí fēnzhōng ma?",
      "english": "I am too tired now; can I sleep for ten minutes first?"
     },
-    "prompt": "Place 先 and 嗎 in the sentence: you are tired and want to sleep ten minutes."
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "太／我／累／了／現在，先／可以／十分鐘／睡／嗎／？"
    },
    {
     "id": "l13g5-p4",
@@ -1534,7 +1545,8 @@
      }
     ],
     "fallbackRepair": "Pattern B: V + duration + 的 + O.",
-    "prompt": "Rewrite with 的: he walks for half an hour every day."
+    "prompt": "Rewrite the Chinese sentence with pattern A or B.",
+    "sub": "他每天都走路走半個鐘頭。"
    },
    {
     "id": "l13g5-p5",
@@ -1599,9 +1611,9 @@
      "pinyin": "Wǒ yí ge xīngqī yào shàng wǔ tiān de bān.",
      "english": "I work five days a week."
     },
-    "prompt": "Rewrite with 的: I work five days a week.",
+    "prompt": "Rewrite the Chinese sentence with pattern A or B.",
     "successNote": "的 joins the duration to the noun 班.",
-    "sub": "This is a frame: place 的 between the duration 五天 and the noun 班."
+    "sub": "我一個星期要上班上五天。"
    },
    {
     "id": "l13g5-p6",
@@ -1668,8 +1680,8 @@
      }
     ],
     "fallbackRepair": "Pattern A: VO + V + duration.",
-    "prompt": "Rewrite with pattern A: I want to take Chinese classes for two months.",
-    "sub": "Build the full sentence from the tiles. The source sentence is already pattern B; rewrite it with pattern A."
+    "prompt": "Rewrite the Chinese sentence with pattern A or B.",
+    "sub": "我想上兩個月的華語課。"
    },
    {
     "id": "l13g5-p7",
@@ -1745,9 +1757,9 @@
      "pinyin": "Wǒ míngtiān yào zuò fēijī zuò shíliù ge xiǎoshí.",
      "english": "I have to fly for sixteen hours tomorrow."
     },
-    "prompt": "Rewrite with pattern A: I have to fly for sixteen hours tomorrow.",
+    "prompt": "Rewrite the Chinese sentence with pattern A or B.",
     "successNote": "Repeat 坐 before the duration.",
-    "sub": "This is a frame: place the repeated 坐 in both gaps. The source sentence is already pattern B; rewrite it with pattern A."
+    "sub": "我明天要坐十六個小時的飛機。"
    },
    {
     "id": "l13g5-p8",
@@ -1823,7 +1835,8 @@
      "pinyin": "Wǒ měitiān zuò gōngkè zuò liǎng ge xiǎoshí.",
      "english": "I do homework for two hours every day."
     },
-    "prompt": "Place the repeated verb: I do homework for two hours every day."
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "做／我／兩個小時／功課／做／每天／。"
    },
    {
     "id": "l13g5-p9",
@@ -1889,7 +1902,8 @@
      }
     ],
     "fallbackRepair": "Pattern B: V + duration + 的 + O.",
-    "prompt": "Rearrange: he plans to take calligraphy classes for a year."
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "書法課／上／他／打算／的／一年／。"
    },
    {
     "id": "l13g5-p10",
@@ -1954,7 +1968,8 @@
      "pinyin": "Wǒ míngtiān xūyào zǒu bàntiān de lù.",
      "english": "I need to walk for half a day tomorrow."
     },
-    "prompt": "Place 的: I need to walk for half a day tomorrow."
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "明天／半天／需要／的／走路／我／。"
    },
    {
     "id": "l13g5-p11",
@@ -2019,7 +2034,8 @@
      "pinyin": "Wǒ juédìng qù Rìběn xué yī nián de Rìwén.",
      "english": "I decided to study Japanese in Japan for a year."
     },
-    "prompt": "Place 的: I decided to study Japanese in Japan for a year."
+    "prompt": "Rearrange the Chinese sentence.",
+    "sub": "去日本／我／一年／日文／決定／的／學／。"
    }
   ]
  }

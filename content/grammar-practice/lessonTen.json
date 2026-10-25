@@ -7,7 +7,7 @@
         "id": "l10g1-p1",
         "source": "p.227 #1",
         "kind": "order-build",
-        "prompt": "Yuanzhen is at the table with her friend. Say what they are doing.",
+        "prompt": "Describe the picture with 跟.",
         "tiles": [
           {
             "traditional": "元真",
@@ -91,7 +91,7 @@
         "id": "l10g1-p2",
         "source": "p.227 #2",
         "kind": "order-build",
-        "prompt": "Yuanzhen is in the shop. Say that she buys a bag from the owner.",
+        "prompt": "Describe the picture with 跟.",
         "tiles": [
           {
             "traditional": "元真",
@@ -166,7 +166,7 @@
         "id": "l10g1-p3",
         "source": "p.227 #3",
         "kind": "order-build",
-        "prompt": "Yuanzhen greets her teacher at the blackboard. Say what she says to her.",
+        "prompt": "Describe the picture with 跟.",
         "tiles": [
           {
             "traditional": "元真",
@@ -241,7 +241,7 @@
         "id": "l10g1-p4",
         "source": "p.227 #4",
         "kind": "order-build",
-        "prompt": "The doctor tells Yuanzhen she has a fever. Build the sentence.",
+        "prompt": "Describe the picture with 跟.",
         "tiles": [
           {
             "traditional": "醫生",
@@ -317,7 +317,7 @@
         "id": "l10g1-own-order",
         "source": "own",
         "kind": "order-build",
-        "prompt": "Say that you go to the hospital with your friend.",
+        "prompt": "Complete the sentence with 跟.",
         "tiles": [
           {
             "traditional": "我",
@@ -376,7 +376,7 @@
         "id": "l10g1-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "He asks his parents for money.",
+        "prompt": "Choose the corrected sentence.",
         "chunks": [
           {
             "traditional": "他"
@@ -450,7 +450,7 @@
         "id": "l10g2-p1",
         "source": "p.228 #1",
         "kind": "order-build",
-        "prompt": "The book he is reading looks easy. Answer the question.",
+        "prompt": "Reply to A using the picture.",
         "tiles": [
           {
             "traditional": "他",
@@ -520,21 +520,18 @@
             0.082
           ],
           "alt": "A smiling boy reads an open book."
-        }
+        },
+        "sub": "他看的書難不難？"
       },
       {
         "id": "l10g2-p2",
         "source": "p.228 #2",
         "kind": "order-build",
-        "prompt": "The glasses he is wearing look good. Answer the question.",
+        "prompt": "Build a possible reply.",
         "tiles": [
           {
-            "traditional": "他",
-            "pinyin": "tā"
-          },
-          {
-            "traditional": "戴",
-            "pinyin": "dài"
+            "traditional": "他戴",
+            "pinyin": "tā dài"
           },
           {
             "traditional": "的",
@@ -553,13 +550,16 @@
             "traditional": "難看",
             "pinyin": "nánkàn",
             "simplified": "难看"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "accepted": [
           {
             "order": [
-              "他",
-              "戴",
+              "他戴",
               "的",
               "眼鏡",
               "很好看"
@@ -570,27 +570,38 @@
               "english": "The glasses he is wearing look good.",
               "simplified": "他戴的眼镜很好看。"
             }
+          },
+          {
+            "order": [
+              "他戴",
+              "的",
+              "眼鏡",
+              "難看"
+            ],
+            "sentence": {
+              "traditional": "他戴的眼鏡難看。",
+              "simplified": "他戴的眼镜难看。",
+              "pinyin": "Tā dài de yǎnjing nánkàn.",
+              "english": "The glasses he is wearing look ugly."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "難看"
+              "得"
             ],
-            "mark": [
-              "難看"
-            ],
-            "title": "Try the requested meaning",
-            "note": "The glasses look good, so say 很好看, not 難看."
+            "note": "Use 的 to link 他戴 to the noun 眼鏡; 得 introduces a description after a verb."
           }
         ],
-        "fallbackRepair": "Put 的 between 戴 and 眼鏡: 他戴的眼鏡."
+        "fallbackRepair": "Put 的 after the description 他戴, before the noun 眼鏡.",
+        "sub": "他戴的眼鏡怎麼樣？"
       },
       {
         "id": "l10g2-p3",
         "source": "p.228 #3",
         "kind": "order-build",
-        "prompt": "You like the beef noodles he makes. Answer the question.",
+        "prompt": "Build a possible reply.",
         "tiles": [
           {
             "traditional": "喜歡吃",
@@ -649,13 +660,14 @@
             "note": "He makes the noodles, so use 做, not 買."
           }
         ],
-        "fallbackRepair": "Put 的 between 做 and 牛肉麵: 他做的牛肉麵."
+        "fallbackRepair": "Put 的 between 做 and 牛肉麵: 他做的牛肉麵.",
+        "sub": "你喜歡吃他做的牛肉麵嗎？"
       },
       {
         "id": "l10g2-p4",
         "source": "p.229 #1",
         "kind": "order-build",
-        "prompt": "Not everyone who loves singing loves listening to music. Answer the question.",
+        "prompt": "Your friend sings but rarely listens to music. Reply to A.",
         "tiles": [
           {
             "traditional": "愛唱歌",
@@ -713,13 +725,14 @@
             "note": "The answer says “not necessarily”, so use 不一定."
           }
         ],
-        "fallbackRepair": "Put 的 between the description 愛唱歌 and 人."
+        "fallbackRepair": "Put 的 between the description 愛唱歌 and 人.",
+        "sub": "愛唱歌的人一定愛聽音樂嗎？"
       },
       {
         "id": "l10g2-p5",
         "source": "p.229 #2",
         "kind": "order-build",
-        "prompt": "Students who often go online also like reading. Answer the question.",
+        "prompt": "Build a possible reply.",
         "tiles": [
           {
             "traditional": "常常上網",
@@ -745,8 +758,8 @@
             "simplified": "喜欢看书"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "accepted": [
@@ -764,27 +777,38 @@
               "english": "Students who often go online all like reading.",
               "simplified": "常常上网的学生都喜欢看书。"
             }
+          },
+          {
+            "order": [
+              "常常上網",
+              "的",
+              "學生",
+              "喜歡看書"
+            ],
+            "sentence": {
+              "traditional": "常常上網的學生喜歡看書。",
+              "simplified": "常常上网的学生喜欢看书。",
+              "pinyin": "Chángcháng shàngwǎng de xuéshēng xǐhuān kàn shū.",
+              "english": "Students who often go online like reading."
+            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不"
+              "得"
             ],
-            "mark": [
-              "不"
-            ],
-            "title": "Try the requested meaning",
-            "note": "The students do like reading, so the answer is positive: 都喜歡看書."
+            "note": "Use 的 to link 常常上網 to the noun 學生; 得 introduces a description after a verb."
           }
         ],
-        "fallbackRepair": "Put 的 between 常常上網 and 學生."
+        "fallbackRepair": "Put 的 between 常常上網 and 學生.",
+        "sub": "常常上網的學生都不喜歡看書嗎？"
       },
       {
         "id": "l10g2-p6",
         "source": "p.229 #3",
         "kind": "slot-build",
-        "prompt": "People who like to swim at the beach are not afraid of the sun. Complete the answer.",
+        "prompt": "Your friend likes beach swimming and enjoys sunny days. Reply to A.",
         "lines": [
           {
             "segments": [
@@ -876,13 +900,14 @@
           "pinyin": "Xǐhuān qù hǎibiān yóuyǒng de rén bú pà shài tàiyáng.",
           "english": "People who like to swim at the beach are not afraid of the sun.",
           "simplified": "喜欢去海边游泳的人不怕晒太阳。"
-        }
+        },
+        "sub": "喜歡去海邊游泳的人不怕曬太陽嗎？"
       },
       {
         "id": "l10g2-p7",
         "source": "p.230 #1",
         "kind": "slot-build",
-        "prompt": "You want to eat these snacks on the table in front of you. Complete the answer.",
+        "prompt": "You want to try one. Complete the reply.",
         "lines": [
           {
             "segments": [
@@ -1000,13 +1025,14 @@
             0.138
           ],
           "alt": "Two girls at a table with cake and small pastries."
-        }
+        },
+        "sub": "她們吃的這些點心，你也想吃嗎？"
       },
       {
         "id": "l10g2-p8",
         "source": "p.230 #2",
         "kind": "slot-build",
-        "prompt": "The girl in red is the older sister. Answer the question.",
+        "prompt": "You know the girl in red is the older sister. Complete the reply.",
         "lines": [
           {
             "segments": [
@@ -1103,13 +1129,14 @@
           "pinyin": "Chuān hóng yīfu de nàge nǚháizi shì jiějie.",
           "english": "The girl in red is the older sister.",
           "simplified": "穿红衣服的那个女孩子是姐姐。"
-        }
+        },
+        "sub": "穿紅衣服的那個女孩子是姊姊還是妹妹？"
       },
       {
         "id": "l10g2-p9",
         "source": "p.230 #3",
         "kind": "slot-build",
-        "prompt": "Both of these two dresses they are wearing were made by their mother. Complete the answer.",
+        "prompt": "You watched their mother make both dresses. Complete the reply.",
         "lines": [
           {
             "segments": [
@@ -1205,13 +1232,14 @@
           "simplified": "她们穿的这两件衣服都是妈妈做的。"
         },
         "successNote": "This item practises 這兩件 and 都是; the 的 in 穿的 is printed in the frame.",
-        "gaps": true
+        "gaps": true,
+        "sub": "她們穿的這兩件衣服都是媽媽做的嗎？"
       },
       {
         "id": "l10g2-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "The doctor wearing a mask is over there.",
+        "prompt": "Choose the corrected sentence.",
         "chunks": [
           {
             "traditional": "戴口罩"
@@ -1275,7 +1303,7 @@
         "id": "l10g2-own-sort",
         "source": "own",
         "kind": "sort-groups",
-        "prompt": "Does the sentence use 的 or 得?",
+        "prompt": "Sort the 的 and 得 uses.",
         "groups": [
           {
             "label": "的: which one"
@@ -1346,7 +1374,7 @@
         "id": "l10g3-p1",
         "source": "p.231 #1",
         "kind": "order-build",
-        "prompt": "You are too thin. You should eat a little more.",
+        "prompt": "Complete the sentence.",
         "tiles": [
           {
             "traditional": "多",
@@ -1408,13 +1436,14 @@
             "note": "The advice is about eating more, not exercise."
           }
         ],
-        "fallbackRepair": "Put 多 before the action 吃."
+        "fallbackRepair": "Put 多 before the action 吃.",
+        "sub": "你太瘦了，應該要____。"
       },
       {
         "id": "l10g3-p2",
         "source": "p.231 #2",
         "kind": "order-build",
-        "prompt": "You drink too much coffee. You should drink a little less.",
+        "prompt": "Complete the sentence.",
         "tiles": [
           {
             "traditional": "少",
@@ -1479,13 +1508,14 @@
             "note": "Too much coffee means drink less, so use 少, not 多."
           }
         ],
-        "fallbackRepair": "Put 少 before the action 喝."
+        "fallbackRepair": "Put 少 before the action 喝.",
+        "sub": "你平常喝太多咖啡了，應該____。"
       },
       {
         "id": "l10g3-p3",
         "source": "p.231 #3",
         "kind": "slot-build",
-        "prompt": "The exam is coming. You want more practice and less phone time.",
+        "prompt": "Complete the sentence.",
         "lines": [
           {
             "segments": [
@@ -1614,7 +1644,7 @@
         "id": "l10g3-own-spot",
         "source": "own",
         "kind": "spot-fix",
-        "prompt": "You should drink more water.",
+        "prompt": "Choose the corrected sentence.",
         "chunks": [
           {
             "traditional": "你"
@@ -1686,7 +1716,7 @@
         "id": "l10g4-p1",
         "source": "p.236 #1",
         "kind": "order-build",
-        "prompt": "The picture shows the MRT. Say how you will go to the teacher’s home tomorrow.",
+        "prompt": "Reply to A using the picture.",
         "tiles": [
           {
             "traditional": "我",
@@ -1786,13 +1816,14 @@
             0.121
           ],
           "alt": "A modern MRT train with a green-and-blue logo; two women talk below it."
-        }
+        },
+        "sub": "明天你要怎麼去老師家？"
       },
       {
         "id": "l10g4-p2",
         "source": "p.236 #2",
         "kind": "order-build",
-        "prompt": "She is sick. Say she will not come tonight.",
+        "prompt": "She is ill tonight. Reply to A.",
         "tiles": [
           {
             "traditional": "她",
@@ -1883,13 +1914,14 @@
             0.127
           ],
           "alt": "A sick girl in bed with a cooling patch, water and medicine beside her."
-        }
+        },
+        "sub": "今天晚上大家可以吃很多好吃的東西，她會來嗎？"
       },
       {
         "id": "l10g4-p3",
         "source": "p.236 #3",
         "kind": "order-build",
-        "prompt": "The forecast says rain the day after tomorrow. Answer the question.",
+        "prompt": "Reply to A using the forecast.",
         "tiles": [
           {
             "traditional": "後天",
@@ -1974,13 +2006,14 @@
             0.128
           ],
           "alt": "Weather table: today sun 0%, tomorrow umbrella 50%, the day after umbrella 90%."
-        }
+        },
+        "sub": "後天我們要去打棒球，會下雨嗎？"
       },
       {
         "id": "l10g4-own-sort",
         "source": "own",
         "kind": "sort-groups",
-        "prompt": "Is 會 describing an ability or an expected future?",
+        "prompt": "Sort the uses of 會.",
         "groups": [
           {
             "label": "Ability"
@@ -2046,7 +2079,7 @@
         "id": "l10g5-p1",
         "source": "p.237 #1",
         "kind": "order-build",
-        "prompt": "If you have a lot of money, you will buy a car.",
+        "prompt": "You have decided on a car.",
         "tiles": [
           {
             "traditional": "要是",
@@ -2118,13 +2151,14 @@
             "note": "Use 就 for the result after 要是. 所以 introduces a conclusion, not an if-then result."
           }
         ],
-        "fallbackRepair": "Condition first with 要是, result with 就."
+        "fallbackRepair": "Condition first with 要是, result with 就.",
+        "sub": "要是你有很多錢，你想做什麼？"
       },
       {
         "id": "l10g5-p2",
         "source": "p.237 #2",
         "kind": "order-build",
-        "prompt": "If your phone cannot go online, you will ask a friend.",
+        "prompt": "Your friend can help you.",
         "tiles": [
           {
             "traditional": "如果",
@@ -2197,13 +2231,14 @@
             "note": "Use 就 for the result after 如果. 所以 introduces a conclusion, not an if-then result."
           }
         ],
-        "fallbackRepair": "Condition first with 如果, result with 就."
+        "fallbackRepair": "Condition first with 如果, result with 就.",
+        "sub": "如果你的手機不能上網，你會怎麼做？"
       },
       {
         "id": "l10g5-p3",
         "source": "p.237 #3",
         "kind": "order-build",
-        "prompt": "If you want to practise Chinese more, you will speak more Chinese.",
+        "prompt": "Answer with the conditional pattern.",
         "tiles": [
           {
             "traditional": "要是",
@@ -2260,13 +2295,14 @@
             "note": "Use 就 for the result after 要是. 所以 introduces a conclusion, not an if-then result."
           }
         ],
-        "fallbackRepair": "Condition first with 要是, result with 就."
+        "fallbackRepair": "Condition first with 要是, result with 就.",
+        "sub": "要是你想多練習中文，你會怎麼做？"
       },
       {
         "id": "l10g5-own-match",
         "source": "own",
         "kind": "match-pairs",
-        "prompt": "Match each condition with its result.",
+        "prompt": "Match each condition with a suitable result.",
         "lines": [
           {
             "sentence": {

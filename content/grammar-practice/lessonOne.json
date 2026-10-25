@@ -147,7 +147,7 @@
           "pinyin": "Xiǎolín Yǒuměi shì xīn xuésheng, tā shì Rìběn rén.",
           "english": "Xiaolin Youmei is the new student; she is Japanese."
         },
-        "prompt": "Who is the new student?",
+        "prompt": "Complete the dialogue.",
         "quiet": true
       },
       {
@@ -270,7 +270,7 @@
           "pinyin": "Jiālè shì Yīngguó rén, tā xìng Gāo.",
           "english": "Jiale is British; his surname is Gao."
         },
-        "prompt": "Where is Jiale from?",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -393,7 +393,7 @@
           "pinyin": "Wáng xiǎojiě shì Měiguó rén, tā jiào Yíwén.",
           "english": "Miss Wang is American; her given name is Yiwen."
         },
-        "prompt": "Where is Miss Wang from?",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -621,7 +621,7 @@
           "pinyin": "Yìnní xuésheng xìng Lǐ, jiào Zhōngmíng.",
           "english": "The Indonesian student is surnamed Li and called Zhongming."
         },
-        "prompt": "Introduce the Indonesian student.",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -796,7 +796,7 @@
       {
         "id": "l1g2-p1",
         "source": "p.39 #1",
-        "prompt": "You think Youmei is pretty.",
+        "prompt": "Complete the sentence.",
         "scene": {
           "type": "picture",
           "page": 39,
@@ -852,12 +852,13 @@
             "note": "漂亮 describes Youmei; use 很 before the adjective, without 是."
           }
         ],
-        "fallbackRepair": "Put 很 before 漂亮: 友美很漂亮。"
+        "fallbackRepair": "Put 很 before 漂亮: 友美很漂亮。",
+        "sub": "友美____漂亮。"
       },
       {
         "id": "l1g2-p2",
         "source": "p.39 #2",
-        "prompt": "Describe the man in the picture.",
+        "prompt": "Complete the sentence.",
         "scene": {
           "type": "picture",
           "page": 39,
@@ -922,12 +923,12 @@
           }
         ],
         "fallbackRepair": "Say who, then 很 and the adjective: 他很忙。",
-        "sub": "忙 máng · busy"
+        "sub": "他____忙。"
       },
       {
         "id": "l1g2-p3",
         "source": "p.39 #3",
-        "prompt": "She is tired. What about Zhongming?",
+        "prompt": "Complete the sentence.",
         "scene": {
           "type": "picture",
           "page": 39,
@@ -1010,7 +1011,7 @@
           }
         ],
         "fallbackRepair": "Put 不 before the adjective: 中明不累。",
-        "sub": "累 lèi · tired"
+        "sub": "她很累，中明____累。"
       },
       {
         "id": "l1g2-own-listen",
@@ -1234,14 +1235,14 @@
           "pinyin": "Zhōngmíng xìng Wáng ma?",
           "english": "Is Zhongming surnamed Wang?"
         },
-        "prompt": "Ask whether Zhongming’s surname is Wang.",
+        "prompt": "Complete the question.",
         "quiet": true,
         "gaps": true
       },
       {
         "id": "l1g3-p2",
         "source": "p.40 #2",
-        "prompt": "Ask whether Miss Li is Japanese.",
+        "prompt": "Build A’s question.",
         "kind": "order-build",
         "sub": "B replies afterward: 不是，她是臺灣人。",
         "tiles": [
@@ -1298,7 +1299,7 @@
       {
         "id": "l1g3-p3",
         "source": "p.40 #3",
-        "prompt": "Is she cute? Answer from the picture.",
+        "prompt": "Complete the dialogue.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -1311,53 +1312,127 @@
           ],
           "alt": "A smiling girl in a dress with hearts around her head."
         },
-        "kind": "order-build",
-        "sub": "她可愛嗎？",
+        "kind": "slot-build",
+        "gaps": true,
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": true,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她可愛"
+              },
+              {
+                "type": "slot",
+                "id": "question-ending",
+                "answers": [
+                  "嗎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她"
+              },
+              {
+                "type": "slot",
+                "id": "reply-degree",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "可愛。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
             "traditional": "很",
+            "simplified": "很",
             "pinyin": "hěn"
           },
           {
             "traditional": "是",
+            "simplified": "是",
             "pinyin": "shì"
           },
           {
-            "traditional": "她",
-            "pinyin": "tā"
-          },
-          {
-            "traditional": "可愛",
-            "simplified": "可爱",
-            "pinyin": "kě’ài"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "她",
-              "很",
-              "可愛"
-            ],
-            "sentence": {
-              "traditional": "她很可愛。",
-              "pinyin": "Tā hěn kěài.",
-              "english": "She is cute."
-            }
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
-            "placed": [
-              "是"
-            ],
-            "mark": [
-              "是"
-            ],
-            "note": "可愛 is an adjective; say 很可愛 rather than 是可愛."
+            "slot": {
+              "id": "question-ending",
+              "tile": "很"
+            },
+            "note": "很 modifies 可愛 in the reply; 嗎 belongs at the end of this yes/no question."
+          },
+          {
+            "slot": {
+              "id": "question-ending",
+              "tile": "是"
+            },
+            "note": "是 does not follow an adjective here; use 嗎 to make the yes/no question."
+          },
+          {
+            "slot": {
+              "id": "question-ending",
+              "tile": "不"
+            },
+            "note": "不 negates an adjective; a yes/no question ends with 嗎."
+          },
+          {
+            "slot": {
+              "id": "reply-degree",
+              "tile": "嗎"
+            },
+            "note": "嗎 makes a question; B is answering, so describe her with 很可愛."
+          },
+          {
+            "slot": {
+              "id": "reply-degree",
+              "tile": "是"
+            },
+            "note": "可愛 is an adjective; put 很 before it instead of using 是."
+          },
+          {
+            "slot": {
+              "id": "reply-degree",
+              "tile": "不"
+            },
+            "note": "The picture asks for a positive description; use 很可愛, not 不可愛."
           }
         ],
-        "fallbackRepair": "Answer with 她很可愛, without a question particle."
+        "fallbackRepair": "End A’s yes/no question with 嗎; B answers 她很可愛。",
+        "result": {
+          "traditional": "她可愛嗎？\n她很可愛。",
+          "simplified": "她可爱吗？\n她很可爱。",
+          "pinyin": "Tā kě'ài ma? Tā hěn kě'ài.",
+          "english": "Is she cute? She is cute."
+        }
       }
     ]
   },
@@ -1374,9 +1449,9 @@
       {
         "id": "l1g4-p1",
         "source": "p.44 #1",
-        "prompt": "You are American. Then ask about your friend.",
+        "prompt": "Complete the dialogue.",
         "kind": "order-build",
-        "sub": "Your friend replies next: 我是印尼人。",
+        "sub": "A：我是美國人，____？\nB：我是印尼人。",
         "tiles": [
           {
             "traditional": "是",
@@ -1449,7 +1524,7 @@
       {
         "id": "l1g4-p2",
         "source": "p.44 #2",
-        "prompt": "You are Gao Jiale.",
+        "prompt": "You are Gao Jiale. Complete the dialogue.",
         "kind": "order-build",
         "sub": "我姓李，你呢？",
         "tiles": [
@@ -1502,7 +1577,7 @@
       {
         "id": "l1g4-p3",
         "source": "p.45 #3",
-        "prompt": "He is busy. Then ask how your friend is.",
+        "prompt": "Complete the dialogue.",
         "scene": {
           "type": "picture",
           "page": 45,
@@ -1523,7 +1598,7 @@
           }
         ],
         "kind": "order-build",
-        "sub": "Your friend replies next: 我不忙。",
+        "sub": "他很忙，____？",
         "tiles": [
           {
             "traditional": "很忙",
@@ -1693,7 +1768,7 @@
       {
         "id": "l1g5-p1",
         "source": "p.45 #1",
-        "prompt": "You enjoy Taiwan.",
+        "prompt": "You enjoy Taiwan. Answer the question.",
         "kind": "order-build",
         "sub": "你喜歡台灣嗎？",
         "tiles": [
@@ -1746,7 +1821,7 @@
       {
         "id": "l1g5-p2",
         "source": "p.45 #2",
-        "prompt": "You like Miss Li, not Miss Wang.",
+        "prompt": "You like Miss Li, not Miss Wang. Answer the question.",
         "kind": "order-build",
         "sub": "你喜歡誰？",
         "tiles": [
@@ -1799,7 +1874,7 @@
       {
         "id": "l1g5-p3",
         "source": "p.45 #3",
-        "prompt": "Does Mr. Wang love Mrs. Wang? Answer from the picture.",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "picture",
@@ -1821,7 +1896,7 @@
           }
         ],
         "kind": "order-build",
-        "sub": "王先生愛王太太嗎？ 愛 ài · to love",
+        "sub": "王先生愛王太太嗎？",
         "tiles": [
           {
             "traditional": "愛",

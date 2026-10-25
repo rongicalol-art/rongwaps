@@ -20,7 +20,7 @@ export function TileGhost({ drag }: { drag: DragState | null }) {
         (drag.returning ? 'transition-[left,top,opacity] duration-150 ease-out motion-reduce:transition-none opacity-70' : '')
       }
     >
-      <span className="font-chinese text-[22px] font-bold leading-none text-ui-ink-strong">{drag.text}</span>
+      <span className="font-chinese-sans font-semibold text-[22px] leading-none text-ui-ink-strong">{drag.text}</span>
     </div>,
     document.body,
   );

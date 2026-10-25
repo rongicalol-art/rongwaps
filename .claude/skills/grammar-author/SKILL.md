@@ -22,10 +22,14 @@ description: Author, transcribe or review Ron's Mandarin grammar content (gramma
 
 You are the **content author and reviewer** for grammar lessons. Claude is the design and product lead: it writes the brief, owns `src/`, and has the final say on UX. You own Chinese correctness. A taste conflict goes to the owner.
 
+## Exercise prompt rule (owner, 2026-10-24)
+
+Short English task instructions are allowed. The actual problem must come from the book's Chinese question, source sentence, dialogue or picture; do not supply a full English answer translation or narrate the pictured sequence/comparison before answering. Restore original Chinese context using existing `sub`/`lines` fields. For open-ended book questions, keep a minimal practice-situation cue if needed to make grading fair; do not invent a source fact or silently demand one answer. Matching always shows its instruction. Source sentences for rewrite/rearrange tasks stay in Chinese. Feedback may show the full English meaning. This rule overrides older exercise instructions below to preserve printed English verbatim; grammar reference pages still preserve the printed text.
+
 ## Ground truth
 
 - **The printed book is the only source of truth.** Book 1 page scans are in `materials/book1/LXX/p<printed page>.png` (gitignored). Each lesson's transcript, `materials/book1/LXX/transcript.md`, is typed from those scans; every authored item must trace back to a line in it.
-- Follow the book exactly. Don't swap a book item for a "better" one, don't add examples the book doesn't print, and keep the book's English unless it is wrong for the Chinese, in which case flag it in the review rather than silently "fixing" it.
+- Follow the book exactly. Don't swap a book item for a "better" one, don't add examples the book doesn't print, and keep the book's reference-page English unless it is wrong for the Chinese, in which case flag it in the review rather than silently "fixing" it.
 - Traditional characters as printed. Simplified is derived. Pinyin follows the book's tone marks and the 一/不 tone changes as the book prints them.
 
 ## Scope (what you may edit)
@@ -50,7 +54,7 @@ You are the **content author and reviewer** for grammar lessons. Claude is the d
 
 **Faithfulness**
 9. Follow the book's exercise: its instruction (`title`), its items in order, its pictures (`scene`: route / change / countdown). Preserve the original sentence, source, context and learning objective; the answering interaction may change to remove giveaways. Do not replace a book item with invented content. An open blank gets the most natural completion built from taught words, plus the accepted equivalents.
-10. Keep the book's printed English. If it misleads, flag it as BOOK-ERRATA in the review rather than rewriting it.
+10. Keep the book's printed English on reference pages; exercise prompts follow the owner rule above. If printed English misleads, flag it as BOOK-ERRATA in the review rather than rewriting it.
 11. Pinyin uses the book's tones, 一/不 sandhi, and neutral reduplication (看看 kàn kan).
 14. **Learner-facing text only:** `title` is the book's exercise instruction in English (e.g. "Complete the sentences."), never "Exercise". `prompt`/`sub` speak to the learner ("Use 叫 or 姓.") or are omitted; never authoring notes like "The verb is supplied."
 12. Repair notes are one plain-English sentence that names the fix. Explanations are short and paraphrase the book's note. Pattern labels follow `docs/GRAMMAR_LESSON_TEMPLATE.md`.

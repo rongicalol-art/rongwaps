@@ -83,7 +83,7 @@ function IllustratedPicture({ src, caption, ...props }: PictureSceneProps & { sr
   return (
     <figure className="mx-auto w-full max-w-sm">
       <img src={src} alt={props.alt} onError={() => setFailed(true)} draggable={false} className="mx-auto block h-auto max-h-[196px] w-full select-none object-contain sm:max-h-60" />
-      {caption && <figcaption className="mt-2 text-center font-chinese text-sm font-bold text-ui-ink">{caption}</figcaption>}
+      {caption && <figcaption className="mt-2 text-center font-chinese-sans font-semibold text-sm text-ui-ink">{caption}</figcaption>}
     </figure>
   );
 }
@@ -144,9 +144,9 @@ export function CastScene({ page, people, alt }: { page: number; people: Practic
               </div>
             </div>
             <figcaption className="mt-1 flex flex-col items-center leading-tight">
-              <span className="font-chinese text-sm font-black text-ui-ink-strong sm:text-base">{person.name}</span>
+              <span className="font-chinese-sans font-semibold text-sm text-ui-ink-strong sm:text-base">{person.name}</span>
               <span className="text-[10px] font-extrabold text-ui-muted-strong sm:text-xs">{person.pinyin}</span>
-              <span className="mt-0.5 font-chinese text-xs font-bold text-ui-ink">{person.note}</span>
+              <span className="mt-0.5 font-chinese-sans font-semibold text-xs text-ui-ink">{person.note}</span>
             </figcaption>
           </figure>
         );

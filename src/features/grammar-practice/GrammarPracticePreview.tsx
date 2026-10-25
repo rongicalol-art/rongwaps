@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { GrammarPractice, PracticeScene, SlotBuildItem } from '../../types/models';
 import { cn } from '../../utils/cn';
+import { AppIcon, IconActionButton, WorkspaceWindow } from '../../lib/widgets';
 import { GrammarPracticeView } from './GrammarPracticeView';
 
 /** Every authored book exercise, straight from content/grammar-practice (DEV gallery only). */
@@ -36,6 +38,7 @@ const EXERCISES = [
  * exercise from any item. Nothing here touches progress, SRS or sync.
  */
 export function GrammarPracticePreview() {
+  const [focused, setFocused] = useState(false);
   const [selected, setSelected] = useState({ exercise: 0, item: 0 });
   const [run, setRun] = useState(0);
   const [barHost, setBarHost] = useState<HTMLDivElement | null>(null);
@@ -46,6 +49,36 @@ export function GrammarPracticePreview() {
   const chip = (active: boolean) => cn(
     'rounded-control border-2 px-3 py-1.5 text-sm font-extrabold focus-ring',
     active ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep' : 'border-ui-divider bg-ui-surface text-ui-ink',
+  );
+
+  const preview = (
+    <div ref={setBarHost} role="region" aria-label="Grammar practice preview" className={focused
+      ? 'relative min-h-0 flex-1 bg-ui-canvas'
+      : 'relative h-[760px] w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-canvas'}>
+      <div className="absolute inset-0 overflow-y-auto px-4 pb-40 pt-6 sm:px-8">
+        <GrammarPracticeView
+          key={`${selected.exercise}-${selected.item}-${run}`}
+          practice={current.practice}
+          initialIndex={selected.item}
+          script={script}
+          showPinyin={false}
+          showTranslation={false}
+          contextTokens={[]}
+          onOpenWord={() => undefined}
+          onComplete={() => pick(selected.exercise, 0)}
+          barHost={barHost}
+        />
+      </div>
+    </div>
+  );
+
+  if (focused) return createPortal(
+    <WorkspaceWindow animateIn={false} tone="practice" className="workspace-window z-devtools" style={{ paddingLeft: 0 }} role="dialog" aria-modal="true" aria-label="Focused grammar preview">
+      <div className="flex shrink-0 justify-end px-4 py-3 sm:px-8">
+        <IconActionButton label="Close focused preview" onClick={() => setFocused(false)} icon={<AppIcon name="close" size={24} />} />
+      </div>
+      {preview}
+    </WorkspaceWindow>, document.body,
   );
 
   return (
@@ -62,28 +95,14 @@ export function GrammarPracticePreview() {
         </button>
       </div>
       <div className="flex flex-wrap gap-2">
+        <button type="button" onClick={() => setFocused(true)} className={chip(false)}>Focus preview</button>
         {current.practice.items.map((item, index) => (
           <button key={item.id} type="button" onClick={() => pick(selected.exercise, index)} className={chip(index === selected.item)}>
             {index + 1}. {item.kind}
           </button>
         ))}
       </div>
-      <div ref={setBarHost} role="region" aria-label="Grammar practice preview" className="relative h-[760px] w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-canvas">
-        <div className="absolute inset-0 overflow-y-auto px-4 pb-40 pt-6 sm:px-8">
-          <GrammarPracticeView
-            key={`${selected.exercise}-${selected.item}-${run}`}
-            practice={current.practice}
-            initialIndex={selected.item}
-            script={script}
-            showPinyin={false}
-            showTranslation
-            contextTokens={[]}
-            onOpenWord={() => undefined}
-            onComplete={() => pick(selected.exercise, 0)}
-            barHost={barHost}
-          />
-        </div>
-      </div>
+      {preview}
     </div>
   );
 }

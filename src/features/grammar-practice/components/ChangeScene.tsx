@@ -24,7 +24,7 @@ export function ChangeScene({ before, now, children, alt }: ChangeSceneProps) {
             {index === 1 && <AppIcon name="forward" size={24} className="shrink-0 text-ui-muted" />}
             <div className="flex min-w-28 flex-col items-center gap-2 text-center sm:min-w-32">
               {moment.date && <CalendarFace {...moment.date} next={index === 1} />}
-              <span className="font-chinese text-sm text-ui-ink sm:text-base">{moment.label}</span>
+              <span className="font-chinese-sans font-semibold text-sm text-ui-ink sm:text-base">{moment.label}</span>
               <span className="text-3xl font-black tabular-nums text-ui-ink-strong sm:text-4xl">{moment.value}</span>
             </div>
           </div>

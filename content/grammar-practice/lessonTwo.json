@@ -6,7 +6,7 @@
       {
         "id": "l2g01-1",
         "source": "p.55 #1",
-        "prompt": "What time is it?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "moment",
@@ -77,7 +77,7 @@
       {
         "id": "l2g01-2",
         "source": "p.55 #2",
-        "prompt": "What day of the week is today?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "month",
@@ -138,7 +138,7 @@
       {
         "id": "l2g01-3",
         "source": "p.55 #3",
-        "prompt": "What is the date today?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "month",
@@ -271,7 +271,7 @@
       {
         "id": "l2g02-1",
         "source": "p.55 #1",
-        "prompt": "When does your class end today?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "moment",
@@ -430,7 +430,7 @@
       {
         "id": "l2g02-3",
         "source": "p.55 #3",
-        "prompt": "When are you going to Japan?",
+        "prompt": "Answer the question.",
         "quiet": true,
         "scene": {
           "type": "moment",
@@ -519,7 +519,7 @@
       {
         "id": "l2g02-4",
         "source": "own",
-        "prompt": "You stay at school at noon.",
+        "prompt": "At noon, you stay at school. Answer the question.",
         "kind": "order-build",
         "sub": "你中午回家嗎？",
         "tiles": [
@@ -1007,7 +1007,7 @@
           "english": "Mom’s birthday is February 24."
         },
         "gaps": true,
-        "prompt": "Say that Mom’s birthday is February 24.",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -1102,7 +1102,7 @@
           "english": "Do you like Taiwanese fruit?"
         },
         "gaps": true,
-        "prompt": "Ask whether your friend likes Taiwanese fruit. Link Taiwan to the fruit with 的.",
+        "prompt": "Complete the sentence.",
         "quiet": true
       },
       {
@@ -1190,7 +1190,7 @@
           "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
           "english": "My child is going to the United States tomorrow."
         },
-        "prompt": "Say that your child is going to the United States tomorrow. Include 的 after “my”.",
+        "prompt": "Complete the sentence.",
         "quiet": true,
         "gaps": true
       }
@@ -1561,7 +1561,7 @@
       {
         "id": "l2g06-1",
         "source": "p.62 #1",
-        "prompt": "Ask whether Taiwan is hot.",
+        "prompt": "Complete the question.",
         "scene": {
           "type": "picture",
           "page": 62,
@@ -1644,7 +1644,7 @@
       {
         "id": "l2g06-2",
         "source": "p.62 #2",
-        "prompt": "Ask whether your friend likes eating fruit (verb–not–verb).",
+        "prompt": "Complete the question.",
         "kind": "order-build",
         "sub": "B replies afterward: 我很喜歡吃。",
         "tiles": [
@@ -1709,7 +1709,7 @@
       {
         "id": "l2g06-3",
         "source": "p.62 #3",
-        "prompt": "Ask whether your friend wants to go to his home (verb–not–verb).",
+        "prompt": "Complete the question.",
         "kind": "order-build",
         "sub": "B replies afterward: 我不要去他家。",
         "tiles": [

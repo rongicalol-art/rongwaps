@@ -25,7 +25,7 @@ export function MonthScene({ year, month, highlight, renderChinese }: MonthScene
       </p>
       <div className="grid grid-cols-7 gap-y-1 text-center tabular-nums">
         {WEEKDAYS.map((weekday) => (
-          <span key={weekday} className="font-chinese text-xs text-ui-muted">{weekday}</span>
+          <span key={weekday} className="font-chinese-sans font-semibold text-xs text-ui-muted">{weekday}</span>
         ))}
         {Array.from({ length: blanks }, (_, index) => <span key={`blank-${index}`} aria-hidden="true" />)}
         {Array.from({ length: days }, (_, index) => {

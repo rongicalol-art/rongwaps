@@ -91,7 +91,8 @@
           }
         ],
         "fallbackRepair": "Put 離 between the two places, then 很近.",
-        "quiet": true
+        "quiet": false,
+        "sub": "學校____醫院____。"
       },
       {
         "id": "l16g1-p0b",
@@ -180,7 +181,8 @@
           }
         ],
         "fallbackRepair": "Put 離 between the two places, then 很遠.",
-        "quiet": true
+        "quiet": false,
+        "sub": "我家____百貨公司____。"
       },
       {
         "id": "l16g1-p0c",
@@ -270,13 +272,14 @@
           }
         ],
         "fallbackRepair": "Put 離 between the two places, then 很近.",
-        "quiet": true
+        "quiet": false,
+        "sub": "學校____超級市場____。"
       },
       {
         "id": "l16g1-p1",
         "source": "p.374 I#4",
         "kind": "order-build",
-        "prompt": "Taipei is close to Kaohsiung; the high-speed train takes only an hour and a half. Complete the sentence.",
+        "prompt": "Taipei is close to Kaohsiung. Complete the sentence.",
         "tiles": [
           {
             "traditional": "台北",
@@ -358,13 +361,14 @@
           }
         ],
         "fallbackRepair": "Put 離 between the two cities, then 很近.",
-        "quiet": true
+        "quiet": false,
+        "sub": "台北____高雄____，搭高鐵只要一個半小時。"
       },
       {
         "id": "l16g1-p2",
         "source": "p.374 II#1",
         "kind": "order-build",
-        "prompt": "Your home is close to the MRT station; it takes three minutes to walk. Answer the question.",
+        "prompt": "Answer the question.",
         "tiles": [
           {
             "traditional": "我家",
@@ -447,13 +451,14 @@
           }
         ],
         "fallbackRepair": "Put 離 between 我家 and 捷運站, then 很近.",
-        "quiet": true
+        "quiet": false,
+        "sub": "Q：你家離捷運站遠不遠？ A：我家離捷運站____，走三分鐘就到了。"
       },
       {
         "id": "l16g1-p3",
         "source": "p.374 II#2",
         "kind": "order-build",
-        "prompt": "Your country is Canada, far from Taiwan. Answer the question.",
+        "prompt": "Answer the question. Use Canada as the country context.",
         "tiles": [
           {
             "traditional": "臺灣",
@@ -537,7 +542,8 @@
           }
         ],
         "fallbackRepair": "Put 離 between 臺灣 and 我的國家, then 很遠.",
-        "quiet": true
+        "quiet": false,
+        "sub": "Q：臺灣離你國家遠嗎？ A：臺灣離我的國家____。"
       },
       {
         "id": "l16g1-own-1",
@@ -1071,7 +1077,8 @@
         "prompt": "He introduced his country extremely well.",
         "chunks": [
           {
-            "traditional": "他介紹自己國家"
+            "traditional": "他介紹自己的國家",
+            "simplified": "他介绍自己的国家"
           },
           {
             "traditional": "介紹"
@@ -1123,10 +1130,10 @@
         "fix": "得",
         "takeOutNote": "The complement needs 得; replace 的 with 得.",
         "result": {
-          "traditional": "他介紹自己國家介紹得非常好。",
-          "pinyin": "Tā jièshào zìjǐ guójiā jièshào de fēicháng hǎo.",
+          "traditional": "他介紹自己的國家介紹得非常好。",
+          "pinyin": "Tā jièshào zìjǐ de guójiā jièshào de fēicháng hǎo.",
           "english": "He introduced his country extremely well.",
-          "simplified": "他介绍自己国家介绍得非常好。"
+          "simplified": "他介绍自己的国家介绍得非常好。"
         },
         "successNote": "Verb + 得 + how it was done."
       },

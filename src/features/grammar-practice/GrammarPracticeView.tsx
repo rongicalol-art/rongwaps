@@ -1,10 +1,11 @@
-import { useCallback, useRef, useState, type ComponentType } from 'react';
+import { useCallback, useMemo, useRef, useState, type ComponentType } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { GrammarPractice, GrammarWordToken } from '../../types/models';
 import { PracticeDock } from './components/PracticeDock';
 import { PRACTICE_EXERCISES } from './exercises';
 import { ITEM_FADE } from './practiceMotion';
 import type { PracticeExerciseProps, PracticeResult, PracticeScript, PracticeStatus } from './practiceTypes';
+import { shuffleItems } from '../../utils/srs/sessionOrder';
 
 export interface GrammarPracticeViewProps {
   practice: GrammarPractice;
@@ -25,8 +26,6 @@ export interface GrammarPracticeViewProps {
   shortcutsDisabled?: boolean;
 }
 
-const QUIET_KINDS = new Set(['match-pairs']);
-
 /**
  * The book exercise after a grammar page, one item at a time in a single
  * column, with sentence choices beneath the answer and actions in the bottom bar. A wrong answer says why and offers
@@ -46,10 +45,12 @@ export function GrammarPracticeView({
   // The leaving item's inline bank unmounts after the next item's dock tray mounts: a null from it must not clear the new host.
   const claimTray = useCallback((element: HTMLDivElement | null) => { if (element) setTrayHost(element); }, []);
   const checkRef = useRef<(() => void) | null>(null);
-  const item = practice.items[index];
+  const source = practice.items[index];
+  // Mix once on entry, not on each pick or retry. Every occurrence keeps its own identity.
+  const item = useMemo(() => 'tiles' in source ? { ...source, tiles: shuffleItems(source.tiles) } : source, [source]);
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
-  // The two columns already say what to do; elsewhere the item says so with `quiet`.
-  const title = item.quiet || QUIET_KINDS.has(item.kind) ? null : item.prompt ?? practice.title;
+  const needsInstruction = item.kind === 'match-pairs' || (item.kind === 'slot-build' && item.gaps);
+  const title = item.quiet && !needsInstruction ? null : item.prompt ?? practice.title;
   const inlineBank =item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
 
   // A result that lands after the learner moved on is dropped.
