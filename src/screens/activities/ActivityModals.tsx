@@ -55,7 +55,7 @@ export function ActivityModals({
   const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);
   const isOverlayOpen = isShellOverlayOpen || isActivityOverlayOpen;
   const isInteractionActive = useAppStore(state => state.isInteractionActive);
-  const isLessonWindowOpen = useAppStore(state => state.isLessonWindowOpen);
+  const practiceContext = useAppStore(state => state.practiceContext);
   const feedbackToast = useAppStore(state => state.feedbackToast);
   const swipeFeedback = useAppStore(state => state.swipeFeedback);
   const activeToast = feedbackToast || swipeFeedback;
@@ -101,7 +101,7 @@ export function ActivityModals({
   const loadError = deckError || screen.error || data.error;
 
   // Lesson-part practice hides the mode dock; Writing keeps it for its controls.
-  const isLessonPartFocused = isLessonWindowOpen && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
+  const isLessonPartFocused = practiceContext === 'lesson' && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
   const isIndependentStudy = selectedLessons.length > 1 && !isReviewSession && !effectiveLibraryMode;
   const hasDock = !race && (isLessonPartFocused
     ? resolvedActivity === 'writing'
@@ -193,9 +193,9 @@ export function ActivityModals({
       : isReviewSession
       ? 'flashcards-review'
       : 'flashcards';
-    const targetActivity = previousActivityRef.current || (isLessonWindowOpen ? null : defaultStudyCards);
+    const targetActivity = previousActivityRef.current || (isLessonPartFocused ? null : defaultStudyCards);
     setActiveActivity(targetActivity);
-  }, [effectiveLibraryMode, isLessonWindowOpen, isReviewSession, setActiveActivity]);
+  }, [effectiveLibraryMode, isLessonPartFocused, isReviewSession, setActiveActivity]);
 
   return (
     <>

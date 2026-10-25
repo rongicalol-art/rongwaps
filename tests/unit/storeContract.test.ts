@@ -32,6 +32,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'syncCheckpoint',
   'activeTab',
   'activeActivity',
+  'practiceContext',
   'activeQuizMode',
   'isReviewMode',
   'selectedBooks',
@@ -111,6 +112,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'lastOpenedLessons',
   'selectedBooks',
   'activeActivity',
+  'practiceContext',
   'lastActivity',
   'lastCloudUpdate',
   // Session-scoped review snapshot: a pinned due-set must never leak

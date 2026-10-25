@@ -6,6 +6,7 @@ import {
   normalizePartSelection,
 } from '../utils/lesson/lessonPartSelection';
 import type { ActivityType } from '../types/models';
+import type { PracticeContext } from '../store/slices/navigationSlice';
 import { useResumeLaunch } from './useResumeLaunch';
 
 export type TabType = 'path' | 'search' | 'library' | 'profile';
@@ -40,8 +41,8 @@ export function useAppNavigation() {
     }
   }, []);
 
-  const openActivity = useCallback((activity: ActivityType) => {
-    setActiveActivity(activity);
+  const openActivity = useCallback((activity: ActivityType, context?: PracticeContext) => {
+    setActiveActivity(activity, context);
     if (activity && activity !== 'flashcards-library' && activity !== 'create-card' && activity !== 'flashcards-review') {
       setLastActivity(activity);
     }
@@ -49,8 +50,8 @@ export function useAppNavigation() {
 
   const resumeLaunch = useResumeLaunch(openActivity);
   const { intercept } = resumeLaunch;
-  const handleSetActiveActivity = useCallback((activity: ActivityType) => {
-    if (!intercept(activity)) openActivity(activity);
+  const handleSetActiveActivity = useCallback((activity: ActivityType, context?: PracticeContext) => {
+    if (!intercept(activity, context)) openActivity(activity, context);
   }, [intercept, openActivity]);
 
   const clearReviewContext = useCallback(() => {
@@ -69,7 +70,7 @@ export function useAppNavigation() {
       || (lastActivity as string) === 'flashcards-library'
       ? 'flashcards'
       : (lastActivity || 'flashcards');
-    handleSetActiveActivity(fallbackActivity as ActivityType);
+    handleSetActiveActivity(fallbackActivity as ActivityType, 'independent');
   }, [clearReviewContext, handleSetActiveActivity, lastActivity]);
 
   /** Scopes the active book's selection to one or more lesson parts, then opens an activity on it. */
@@ -82,7 +83,7 @@ export function useAppNavigation() {
     next[getLessonSelectionKey(activeBookId, lessonId)] = partIds;
     setSelectedLessonParts(next);
     clearReviewContext();
-    handleSetActiveActivity(activity);
+    handleSetActiveActivity(activity, 'lesson');
   }, [activeBookId, clearReviewContext, handleSetActiveActivity, selectedLessonParts, setSelectedLessonParts]);
 
   const toggleLessonPart = useCallback((lessonId: number, partId: number, availablePartIds: number[]) => {
