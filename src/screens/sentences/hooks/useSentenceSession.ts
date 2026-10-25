@@ -86,7 +86,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     });
   }, [current]);
 
-  /** Next (dock, Space, ↓): the next sentence comes into focus and plays; the last one finishes. */
+  /** Next (↓): the next sentence comes into focus and plays; the last one finishes. */
   const next = useCallback(() => {
     const upcoming = deck[currentIndex + 1];
     if (!upcoming) { finish(); return; }

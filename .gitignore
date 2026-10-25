@@ -46,3 +46,10 @@ materials/
 # Cloudflare local runtime and generated binding declarations
 .wrangler/
 games/worker-configuration.d.ts
+
+# graphify knowledge graph (local)
+graphify-out/
+
+# local screenshot/output scratch
+exercise-screenshots/
+outputs/

@@ -27,9 +27,9 @@ English meaning, curriculum location, source card, and extraction provenance.
   parts: every record once, in book order (Dialogue, Reading, Examples), the part's words
   highlighted. One card sits in focus, neighbours faded; native scroll snapping moves it.
   Touch: scroll to move; one Play button in a bottom dock (answer-bar slot) plays the focused
-  card, and a Finish button follows the last card. Mouse/trackpad: no dock; Space plays the
+  card, and a Finish button follows the last card. Mouse/trackpad: no dock; Enter plays the
   card, ↑/↓ move (↓ plays the next).
-  Tap a card (or Enter) to open it: pinyin stacks over each character (`alignWordSyllables`;
+  Tap a card to open it (Space opens and plays it, and closes it again): pinyin stacks over each character (`alignWordSyllables`;
   one line when a sentence doesn't align) and the English shows; opened cards stay open. Hold
   a character on a closed card to peek its pinyin; tap one on an open card for its breakdown.
   Mark cards Hard; the end screen offers a Hard-only round. The header menu has Shuffle and

@@ -1,5 +1,5 @@
 import { useRegisterSW } from 'virtual:pwa-register/react';
-import { ActionButton, AlertBanner } from '../../lib/widgets';
+import { TopToast } from '../../lib/widgets';
 
 /**
  * Single service-worker registration point. A new version waits until the user
@@ -11,20 +11,16 @@ export function PwaUpdatePrompt() {
     updateServiceWorker,
   } = useRegisterSW();
 
-  if (!needRefresh) return null;
-
   return (
-    <div className="fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[950] mx-auto max-w-sm">
-      <AlertBanner
-        variant="info"
-        message="New version available"
-        onDismiss={() => setNeedRefresh(false)}
-        action={(
-          <ActionButton size="sm" onClick={() => void updateServiceWorker(true)}>
-            Refresh
-          </ActionButton>
-        )}
-      />
-    </div>
+    <TopToast
+      open={needRefresh}
+      icon="sparkles"
+      title="New version available"
+      message="Refresh to get the latest update."
+      dismissLabel="Later"
+      onDismiss={() => setNeedRefresh(false)}
+      actionLabel="Refresh"
+      onAction={() => void updateServiceWorker(true)}
+    />
   );
 }

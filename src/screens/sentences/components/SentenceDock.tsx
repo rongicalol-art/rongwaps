@@ -3,7 +3,7 @@ import type { SentenceSession } from '../hooks/useSentenceSession';
 
 /**
  * The reader's one touch control: Play the focused sentence (scrolling moves between them). Hidden
- * with a mouse or trackpad, where Space plays and the arrows move. It sits in the answer-bar slot,
+ * with a mouse or trackpad, where Space opens (and plays) the card, Enter replays it and the arrows move. It sits in the answer-bar slot,
  * so it clears the practice mode dock when that is shown.
  */
 export function SentenceDock({ session }: { session: SentenceSession }) {

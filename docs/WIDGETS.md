@@ -47,7 +47,7 @@
 | --- | --- | --- |
 | ActivityModalWrapper | `ActivityModalWrapper.tsx` | Workspace-bounded activity dialog; requires `id`, `ariaLabel`, `onClose`. |
 | Dialog | `Dialog.tsx` | Modal primitive; `Dialog.Root/Backdrop/Content/Header/Title/Description/Close/Body/Footer`; `size` and `depth` tiers, focus trap, portal. |
-| Drawer | `Drawer.tsx` | Bottom sheet below `md` (drag-dismiss), floating card at `md+`, or right dock via `mdPlacement="side"`; opens and closes instantly; `tone` `surface`/`practice`/`canvas`; `Drawer.Root/Backdrop/Content/Handle/StickyHeader/Title/Close/Body`. |
+| Drawer | `Drawer.tsx` | Bottom sheet below `md` (drag-dismiss), floating card at `md+`, or a full-height, square right dock flush with the screen edge via `mdPlacement="side"`; opens and closes instantly; `tone` `surface`/`practice`/`canvas`; `Drawer.Root/Backdrop/Content/Handle/StickyHeader/Title/Close/Body`. |
 | WorkspaceWindow | `WorkspaceWindow.tsx` | Frame for any surface taking over the workspace (Reader, Grammar, details, settings). `tone`; `layer` `overlay`/`window`/`window-detail`. Open/close motion comes from `windowMotion.ts` (`sheet`/`focus`/`pop`/`rise` all use a 120ms fade; reduced motion is instant). The frame owns the open motion: content inside mounts without its own entrance, defaulted by layer; never pass raw motion props. |
 | DetailShell | `DetailShell.tsx` | Workspace-bounded detail view; `.Root/.Scroller/.Content/.Floating`. `windowed` opens it as its own `WorkspaceWindow`. |
 | ConfirmationDialog | `ConfirmationDialog.tsx` | Destructive confirm on `Dialog`; focus starts on Cancel; `children` + `confirmDisabled` for type-to-confirm. |
@@ -64,6 +64,7 @@
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
 | AlertBanner | `AlertBanner.tsx` | `variant` danger/warning/info/success; `title`, `onDismiss`, action slot. |
+| TopToast | `TopToast.tsx` | Notice card that drops in at the top (top-right from `md`), same card and spring as the quiz-invite toast: `icon`, `title`, `message`, quiet dismiss plus one primary action; `open` drives enter/exit; `inline` for DEV previews. Used by the legal-update and new-version notices. |
 | EmptyState | `EmptyState.tsx` | Icon badge + headline + copy + optional action; `compact` for drawers. |
 | CircularProgress | `CircularProgress.tsx` | SVG ring; clamped `value`. |
 | CustomProgressBar | `CustomProgressBar.tsx` | Rounded bar; `progress`, `accentClassName`. |
@@ -88,7 +89,7 @@
 
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
-| ContextualChineseText | `ContextualChineseText.tsx` | Grammar/exercise text using SmartSentence; requires `onOpenWord`; authored tokens win. |
+| ContextualChineseText | `ContextualChineseText.tsx` | Grammar/exercise text using SmartSentence; requires `onOpenWord`; authored tokens win; optional `wordClassName` selects the sentence face without changing study-font settings. |
 | ExpandableSearch | `ExpandableSearch.tsx` | Compact trigger expanding to search input; `label` = accessible name. |
 | ProgressMetricCard | `ProgressMetricCard.tsx` | Derived metric (`label`, `value`, `detail`, `icon`); real metrics only. |
 | ReferenceRow | `ReferenceRow.tsx` | Row for reference sheets: glyph, pinyin over meaning, meta, `loading`; `accentClassName` tints glyph. |

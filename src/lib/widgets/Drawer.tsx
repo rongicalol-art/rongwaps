@@ -134,7 +134,7 @@ export function DrawerContent({
     <div
       className={cn(
         'pointer-events-none absolute inset-y-0 right-0 md:flex md:p-6',
-        isSide ? 'md:justify-end md:p-3' : 'md:items-center md:justify-center',
+        isSide ? 'md:justify-end md:p-0' : 'md:items-center md:justify-center',
         workspaceBound ? 'workspace-window' : 'left-0'
       )}
     >
@@ -158,9 +158,11 @@ export function DrawerContent({
           'absolute bottom-0 left-0 right-0 shadow-ambient-lg flex flex-col pointer-events-auto overflow-hidden',
           DRAWER_TONE_BG_CLASSES[tone],
           isSide
-            ? 'top-0 h-full max-h-full rounded-none md:top-auto md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0 md:rounded-modal'
+            ? 'top-0 h-full max-h-full rounded-none md:top-auto md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0'
             : cn(DRAWER_TONE_CONTAINER_CLASSES[tone], DRAWER_SIZE_CLASSES[size], heightClassName, 'md:relative md:inset-auto md:h-auto md:max-h-[80vh] md:w-full md:rounded-modal'),
-          'md:relative md:inset-auto md:border-0 md:border-b-[length:var(--depth-xl)] md:border-ui-border',
+          'md:relative md:inset-auto md:border-0',
+          // The docked side panel is flush with the screen edge: no raised bottom edge.
+          !isSide && 'md:border-b-[length:var(--depth-xl)] md:border-ui-border',
           className
         )}
       >

@@ -1,12 +1,11 @@
 import React from 'react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
-import { LevelTag, Skeleton } from '../../../../lib/widgets';
+import { CharacterGlyph, LevelTag, Skeleton } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
 import { resolveLevel } from '../../../../utils/lesson/levels';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { isPureVariantDefinition } from '../../../../utils/vocabulary/dictionaryDefinitions';
-import { CharacterGlyph } from './CharacterGlyph';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 

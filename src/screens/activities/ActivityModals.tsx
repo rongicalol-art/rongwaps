@@ -5,7 +5,7 @@ import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
-import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
+import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from './practiceLoader';
 import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
 import type { ActivityType } from '../../types/models';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';

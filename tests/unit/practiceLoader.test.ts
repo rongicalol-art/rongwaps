@@ -2,8 +2,8 @@ import { mock } from 'node:test';
 import { buildStudyPacks } from '../../scripts/performance/studyPacks';
 import { test, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
-import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../src/utils/practiceLoader';
-import { preparePracticeData } from '../../src/utils/practiceLoader';
+import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../src/screens/activities/practiceLoader';
+import { preparePracticeData } from '../../src/screens/activities/practiceLoader';
 import {
   getCachedActivityDeck,
   setCachedActivityDeck,

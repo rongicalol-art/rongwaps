@@ -232,7 +232,7 @@ export function SentenceWordTooltipPortal({
               {data.word}
             </span>
             {pinyin && (
-              <span className="font-sans text-xs font-black tracking-wide text-brand-primary">
+              <span className="font-sans text-xs font-black tracking-wide text-white/70">
                 {pinyin}
               </span>
             )}
@@ -288,7 +288,7 @@ export function SentenceWordTooltipPortal({
                 <div key={idx} className="flex min-w-0 items-baseline gap-1.5 text-xs">
                   <span className="font-chinese font-black text-white">{part.word}</span>
                   {part.pinyin && (
-                    <span className="font-sans font-bold text-brand-primary">{part.pinyin}</span>
+                    <span className="font-sans font-bold text-white/55">{part.pinyin}</span>
                   )}
                   {part.definition && (
                     <span className="truncate text-white/75">{part.definition}</span>

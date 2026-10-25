@@ -36,6 +36,7 @@ export * from './StudySidePanel';
 
 // Feedback, empty, and alert presentation
 export * from './AlertBanner';
+export * from './TopToast';
 export * from './EmptyState';
 
 // Progress, loading, and animation presentation

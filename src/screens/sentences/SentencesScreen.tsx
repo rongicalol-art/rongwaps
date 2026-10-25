@@ -85,7 +85,8 @@ export function SentencesScreen({
   }
 
   return (
-    <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink">
+    // Mouse/trackpad hides the Play dock: mirror the header gap below so the focused card sits mid-screen (a bottom mode dock covers it instead).
+    <div className="absolute inset-0 z-content flex flex-col overflow-hidden pt-[72px] font-sans text-ui-ink pointer-fine:pb-[72px] pointer-fine:[[data-dock-bottom]_&]:pb-0">
       <div className="min-h-0 flex-1">
         <SentenceFeed
           session={session}

@@ -1,6 +1,6 @@
 import { MemoryHookBlock } from '../../../character-memory-hooks';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
-import { CharacterGlyph } from '../breakdown/CharacterGlyph';
+import { CharacterGlyph } from '../../../../lib/widgets';
 
 /**
  * "Memory Hook" block for the V3 breakdown summary.

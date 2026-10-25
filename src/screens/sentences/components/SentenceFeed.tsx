@@ -226,7 +226,13 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
       const target = event.target;
       if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"], [role="menu"]')) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
-      if (target instanceof HTMLElement && target.closest('button') && (event.key === ' ' || event.key === 'Enter')) return;
+      if (event.key === ' ' || event.key === 'Enter') {
+        const button = target instanceof HTMLElement ? target.closest('button') : null;
+        // The feed's own buttons (Hard, Finish, Play) keep Space/Enter. Any other focused button (the dock or
+        // menu that brought the learner here) must not swallow the key: drop its focus so it isn't pressed too.
+        if (button && (event.key === 'Enter' || scrollerRef.current?.contains(button) || button.closest('.rw-answer-bar'))) return;
+        button?.blur();
+      }
       if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
         event.preventDefault();
         pauseFlow();
@@ -238,16 +244,18 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
       } else if (event.key === ' ') {
         event.preventDefault();
         pauseFlow();
-        if (current?.record.audio) void play(current);
+        // Opening a card also plays it; Space again closes it.
+        if (current && !openIds.has(current.record.id) && current.record.audio) void play(current);
+        toggleOpen();
       } else if (event.key === 'Enter') {
         event.preventDefault();
         pauseFlow();
-        toggleOpen();
+        if (current?.record.audio) void play(current);
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [current, currentIndex, goTo, isOverlayOpen, next, pauseFlow, play, toggleOpen]);
+  }, [current, currentIndex, goTo, isOverlayOpen, next, openIds, pauseFlow, play, toggleOpen]);
 
   return (
     <div

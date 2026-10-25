@@ -6,7 +6,7 @@ import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import type { ActivityType, CourseLessonProgress } from '../../../types/models';
 import { getEnglishLessonTitle } from '../../../utils/lesson/lessonTitle';
-import { preloadPracticeChunks, prefetchPractice } from '../../../utils/practiceLoader';
+import { preloadPracticeChunks, prefetchPractice } from '../../activities';
 import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection';
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';

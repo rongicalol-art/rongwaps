@@ -116,12 +116,16 @@ export function useFlashcardFlow({
     onFinishSet: handleFinishSetInFlow,
   });
 
+  // Only a flow that is playing owns the audio. Idle, paused or finished: a flip plays the card itself.
+  // The status is read through a ref so pausing flow on an already-flipped card does not replay it.
+  const flowStatusRef = useRef(flowStatus);
+  flowStatusRef.current = flowStatus;
   useEffect(() => {
-    if (flowStatus !== 'idle' || !isFlipped || !currentCard) return;
+    if (flowStatusRef.current === 'playing' || !isFlipped || !currentCard) return;
     if (!autoPlayAudio && !manualRevealAudioRef.current) return;
     manualRevealAudioRef.current = false;
     audioService.playCard(currentCard, pronunciationRate, { overlap: true });
-  }, [autoPlayAudio, currentCard, flowStatus, isFlipped, pronunciationRate]);
+  }, [autoPlayAudio, currentCard, isFlipped, pronunciationRate]);
 
   useEffect(() => {
     manualRevealAudioRef.current = false;

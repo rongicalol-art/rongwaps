@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer } from '../../../lib/widgets';
+import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, SegmentedControl } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { SocialPanel } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
@@ -59,7 +59,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
     <Drawer isOpen onClose={close}
       title={<PanelTitle title={selected ? 'Profile' : panel.tab === 'chat' ? 'Chat' : panel.tab === 'party' ? 'Party' : 'Classmates'} />}
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
-      className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-modal"
+      className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-none"
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
       <div className="shrink-0 pb-3">
         <PanelTabs label="Study together" value={panel.tab}
@@ -67,13 +67,13 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           tabs={[...(lesson === null ? [] : [{ id: 'lesson' as const, label: 'Lesson' }]), { id: 'online', label: 'Online', count: panel.tab === 'online' ? online.length : onlineTotal }, { id: 'chat', label: 'Chat', dot: unread && panel.tab !== 'chat' }, { id: 'party', label: 'Party' }]} />
       </div>
       {panel.tab === 'chat' ? <>
-        <div className="flex shrink-0 gap-3 pb-2">
-          {(['global', ...(lesson === null ? [] : ['lesson'])] as const).map(value => <button key={value} type="button" aria-pressed={scope === value}
-            onClick={() => setPanel({ ...panel, chatScope: value as 'global' | 'lesson' })}
-            className={`rounded-compact px-3 py-1.5 text-sm font-black outline-none focus-ring-inline ${scope === value ? 'bg-brand-primary-soft text-brand-primary-deep' : 'text-ui-muted-strong hover:bg-ui-hover'}`}>
-            {value === 'global' ? 'Global' : lessonHeading(lesson).eyebrow ?? 'Lesson'}
-          </button>)}
-        </div>
+        <SegmentedControl<'global' | 'lesson'>
+          ariaLabel="Chat room"
+          value={scope}
+          onChange={(chatScope) => setPanel({ ...panel, chatScope })}
+          options={[{ value: 'global', label: 'Global' }, ...(lesson === null ? [] : [{ value: 'lesson' as const, label: lessonHeading(lesson).eyebrow ?? 'Lesson' }])]}
+          className="mb-3 shrink-0"
+        />
         <ChatThread key={scope} lesson={scope === 'global' ? GLOBAL_CHAT : lesson ?? GLOBAL_CHAT} />
       </> : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
@@ -93,7 +93,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             <PersonRow person={person} lesson={panel.tab === 'online' ? null : lesson} onOpen={() => setProfile(person)} action={<ActionButton size="sm" variant="secondary" onClick={() => invite(person)}>Invite</ActionButton>} />
           </div>)}
         </div>
-        <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? <ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>
+        {(pending || selected || panel.tab !== 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? <ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
       </>}
     </Drawer>
   );

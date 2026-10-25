@@ -1,4 +1,4 @@
-import { ActionButton, AlertBanner } from '../../lib/widgets';
+import { TopToast } from '../../lib/widgets';
 import { formatLegalDate, type LegalUpdate } from './legalMeta';
 
 const PAGE_TITLES: Record<LegalUpdate['page'], string> = {
@@ -9,20 +9,26 @@ const PAGE_TITLES: Record<LegalUpdate['page'], string> = {
 interface LegalUpdateBannerProps {
   update: LegalUpdate;
   effectiveDate: string;
+  open?: boolean;
+  /** Flow in place (DEV preview) instead of floating at the top. */
+  inline?: boolean;
   onRead: () => void;
   onDismiss: () => void;
 }
 
 /** Announces a Terms/Privacy change ahead of its effective date. */
-export function LegalUpdateBanner({ update, effectiveDate, onRead, onDismiss }: LegalUpdateBannerProps) {
+export function LegalUpdateBanner({ update, effectiveDate, open = true, inline, onRead, onDismiss }: LegalUpdateBannerProps) {
   return (
-    <AlertBanner
-      variant="info"
-      role="status"
+    <TopToast
+      open={open}
+      inline={inline}
+      icon="bell"
       title={`${PAGE_TITLES[update.page]} update`}
       message={`${update.summary} Takes effect ${formatLegalDate(effectiveDate)}.`}
+      dismissLabel="Later"
       onDismiss={onDismiss}
-      action={<ActionButton size="sm" onClick={onRead}>Read</ActionButton>}
+      actionLabel="Read"
+      onAction={onRead}
     />
   );
 }

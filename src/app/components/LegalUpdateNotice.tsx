@@ -10,8 +10,9 @@ const DISMISSED_KEY = 'legal-update-dismissed';
 export function LegalUpdateNotice() {
   const navigate = useNavigate();
   const [dismissed, setDismissed] = useState(() => readString(DISMISSED_KEY) === LEGAL_EFFECTIVE_DATE);
-  if (!LEGAL_UPDATE || dismissed || !isLegalUpdateCurrent(LEGAL_EFFECTIVE_DATE)) return null;
   const update = LEGAL_UPDATE;
+  const show = Boolean(update) && !dismissed && isLegalUpdateCurrent(LEGAL_EFFECTIVE_DATE);
+  if (!update) return null;
 
   const dismiss = () => {
     writeString(DISMISSED_KEY, LEGAL_EFFECTIVE_DATE);
@@ -19,16 +20,15 @@ export function LegalUpdateNotice() {
   };
 
   return (
-    <div className="fixed inset-x-4 top-[max(1rem,env(safe-area-inset-top))] z-[950] mx-auto max-w-sm">
-      <LegalUpdateBanner
-        update={update}
-        effectiveDate={LEGAL_EFFECTIVE_DATE}
-        onDismiss={dismiss}
-        onRead={() => {
-          dismiss();
-          navigate(LEGAL_ROUTES[update.page]);
-        }}
-      />
-    </div>
+    <LegalUpdateBanner
+      open={show}
+      update={update}
+      effectiveDate={LEGAL_EFFECTIVE_DATE}
+      onDismiss={dismiss}
+      onRead={() => {
+        dismiss();
+        navigate(LEGAL_ROUTES[update.page]);
+      }}
+    />
   );
 }

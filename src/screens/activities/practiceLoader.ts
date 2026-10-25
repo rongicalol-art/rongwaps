@@ -1,9 +1,9 @@
-import type { ActivityType, LessonPartSelectionMap } from '../types/models';
-import { loadActivityDeck } from '../hooks/useActivityDataLoader';
-import { loadPracticeScreen, practiceScreenKey } from '../screens/activities/practiceScreens';
-import { isHanziChar } from './characters/hanzi';
-import { warmChineseFont } from './browser/fontWarmup';
-import { FLASHCARD_EXTRAS_CACHE_LIMIT } from './vocabulary/flashcardExtrasPack';
+import type { ActivityType, LessonPartSelectionMap } from '../../types/models';
+import { loadActivityDeck } from '../../hooks/useActivityDataLoader';
+import { loadPracticeScreen, practiceScreenKey } from './practiceScreens';
+import { isHanziChar } from '../../utils/characters/hanzi';
+import { warmChineseFont } from '../../utils/browser/fontWarmup';
+import { FLASHCARD_EXTRAS_CACHE_LIMIT } from '../../utils/vocabulary/flashcardExtrasPack';
 
 /** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
 export async function preloadPracticeChunks(activity?: ActivityType | null): Promise<void> {
@@ -54,8 +54,8 @@ export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
       if (!firstCard || intent.activity !== 'flashcards') return;
       const characters = Array.from(new Set(Array.from(firstCard.front).filter(isHanziChar)));
       void Promise.all([
-        import('../features/flashcards').then(({ preloadFlashcardContent }) => preloadFlashcardContent([firstCard])),
-        import('../services/breakdownService').then(({ getMultipleBreakdowns }) => getMultipleBreakdowns(characters)),
+        import('../../features/flashcards').then(({ preloadFlashcardContent }) => preloadFlashcardContent([firstCard])),
+        import('../../services/breakdownService').then(({ getMultipleBreakdowns }) => getMultipleBreakdowns(characters)),
       ]).catch(() => {});
     })
     : undefined;
@@ -67,12 +67,12 @@ export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
 }
 
 /** Normal lessons prepare completely; bulk review keeps a bounded initial working set. */
-export async function preparePracticeData(cards: readonly import('../data/flashcards').Flashcard[], signal: AbortSignal): Promise<void> {
+export async function preparePracticeData(cards: readonly import('../../data/flashcards').Flashcard[], signal: AbortSignal): Promise<void> {
   signal.throwIfAborted();
   const studyCards = cards.slice(0, FLASHCARD_EXTRAS_CACHE_LIMIT);
   const [content, dictionary, packs, audio] = await Promise.all([
-    import('../features/flashcards/content/flashcardContent'),
-    import('../services/dictionaryService'), import('../services/contentPacks'), import('../services/audioService'),
+    import('../../features/flashcards/content/flashcardContent'),
+    import('../../services/dictionaryService'), import('../../services/contentPacks'), import('../../services/audioService'),
   ]);
   signal.throwIfAborted();
   await packs.prepareStudyPacks(studyCards, signal);

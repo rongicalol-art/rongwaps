@@ -9,11 +9,11 @@ export function GlobalPresenceButton() {
   const me = useAppStore(state => state.socialMe);
   const total = useAppStore(state => Math.max(0, state.socialOnlineTotal - (state.showOnline && state.socialStatus === 'live' ? 1 : 0)));
   const faces = samples.filter(person => person.u !== me).slice(0, 3).map(person => ({ name: person.n, color: person.c, src: person.i }));
-  return <button type="button" aria-label={`${total} classmates online. Open profiles and chat.`}
+  return <button type="button" aria-label={total === 0 ? 'Classmates. Open profiles and chat.' : `${total} classmates online. Open profiles and chat.`}
     onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', chatScope: 'global' } })}
     className="flex h-10 min-w-10 items-center justify-center gap-1 rounded-control px-1 text-ui-muted-strong outline-none transition-colors hover:bg-ui-hover focus-ring-inline">
-    {faces.length ? <AvatarStack people={faces} size="sm" max={3} /> : <AppIcon name="family" size={22} />}
-    <span className="text-xs font-black tabular-nums">{total > 99 ? '99+' : total}</span>
+    {faces.length && total > 0 ? <AvatarStack people={faces} size="sm" max={3} /> : <AppIcon name="family" size={22} />}
+    {total > 0 && <span className="text-xs font-black tabular-nums">{total > 99 ? '99+' : total}</span>}
   </button>;
 }
 

@@ -9,6 +9,7 @@ export function LegalUpdatePreview() {
       <h2 className="text-xl font-black text-ui-ink-strong">Terms change notice · safe preview</h2>
       <div className="max-w-sm">
         <LegalUpdateBanner
+          inline
           update={{ page: 'terms', summary: 'Tips can now be sent through Ko-fi.' }}
           effectiveDate="2026-11-01"
           onRead={noop}

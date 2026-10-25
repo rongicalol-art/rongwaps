@@ -153,16 +153,26 @@ export function getWordChunks(
     }
 
     if (typeof lineAlignment.start === 'number' && typeof lineAlignment.end === 'number') {
-      const unaligned = units.filter((u) => !u.isPunctuation && u.start === undefined);
-      if (unaligned.length > 0) {
-        const totalChars = unaligned.reduce((acc, u) => acc + u.text.length, 0) || 1;
-        const duration = Math.max(0, lineAlignment.end - lineAlignment.start);
+      // Words with no timing (unspoken stage directions, words the aligner dropped) share only the gap
+      // between their timed neighbours. Spreading them over the whole line would give them a range that
+      // overlaps the words actually being spoken, so two words would highlight at once.
+      const spoken = units.filter((u) => !u.isPunctuation);
+      let i = 0;
+      while (i < spoken.length) {
+        if (spoken[i].start !== undefined) { i += 1; continue; }
+        let j = i;
+        while (j < spoken.length && spoken[j].start === undefined) j += 1;
+        const gapStart = i > 0 ? spoken[i - 1].end ?? lineAlignment.start : lineAlignment.start;
+        const gapEnd = Math.max(gapStart, j < spoken.length ? spoken[j].start ?? lineAlignment.end : lineAlignment.end);
+        const run = spoken.slice(i, j);
+        const totalChars = run.reduce((acc, u) => acc + u.text.length, 0) || 1;
         let elapsed = 0;
-        for (const u of unaligned) {
-          u.start = lineAlignment.start + (elapsed / totalChars) * duration;
+        for (const u of run) {
+          u.start = gapStart + (elapsed / totalChars) * (gapEnd - gapStart);
           elapsed += u.text.length;
-          u.end = lineAlignment.start + (elapsed / totalChars) * duration;
+          u.end = gapStart + (elapsed / totalChars) * (gapEnd - gapStart);
         }
+        i = j;
       }
     }
   }

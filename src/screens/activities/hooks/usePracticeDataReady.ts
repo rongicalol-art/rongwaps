@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import { retainStudyPacks } from '../../../services/contentPacks';
-import { preparePracticeData } from '../../../utils/practiceLoader';
+import { preparePracticeData } from '../practiceLoader';
 import { FLASHCARD_EXTRAS_CACHE_LIMIT } from '../../../utils/vocabulary/flashcardExtrasPack';
 
 /** Preparation shares the exact caches read by cards, word popovers and dictionary search. */

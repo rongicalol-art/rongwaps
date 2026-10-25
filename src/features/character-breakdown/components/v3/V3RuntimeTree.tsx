@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useEffect, useRef, type ReactNode } from 'react';
-import { AppIcon, SectionEyebrow, Skeleton } from '../../../../lib/widgets';
+import { AppIcon, CharacterGlyph, SectionEyebrow, Skeleton } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { formatCompactMeaning } from '../../../../utils/vocabulary/dictionaryDefinitions';
 import type { RuntimeVisibleChild } from '../../../character-decomposition';
@@ -8,7 +8,6 @@ import { useRuntimeCharacterMetadata, type RuntimeCharacterMetadata } from '../.
 import { useRuntimeDecompositionTree, type RuntimeTreeNodeState } from '../../hooks/useRuntimeDecompositionTree';
 import { getMultipleBreakdowns } from '../../../../services/breakdownService';
 import { resolveSoundRevealPath } from '../../utils/soundRevealPath';
-import { CharacterGlyph } from '../breakdown/CharacterGlyph';
 import { presentRuntimeChild, usesShapeFallback, type RuntimeChildPresentation } from './runtimeTreeView';
 
 /** Learner copy for a piece with no character of its own (stroke shapes of a drawing). */

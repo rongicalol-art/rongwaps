@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon, Avatar, AvatarStack } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { CHEER_PHRASES, type ChatMessage } from '../../../../shared/lobby';
+import { socialColor } from '../../../../shared/quizRace';
 import { lobby } from '../lobbyController';
 import { MuteButton, PersonRow } from './SocialBits';
 import { GlobalPresenceButton } from './Presence';
@@ -18,7 +19,7 @@ export function PracticeFaces() {
   const me = useAppStore((state) => state.socialMe);
   const unread = useAppStore((state) => state.socialUnread);
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
-  const racing = useAppStore((state) => Boolean(state.race));
+  const race = useAppStore((state) => state.race);
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState<number | null>(null);
@@ -33,8 +34,19 @@ export function PracticeFaces() {
     return () => document.removeEventListener('pointerdown', away);
   }, [open]);
 
-  if (racing) return <button type="button" aria-label="Party chat" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'partyChat' } })}
-    className="grid h-11 w-11 place-items-center rounded-control text-ui-muted-strong outline-none hover:bg-ui-hover focus-ring-inline"><AppIcon name="chat" size={22} /></button>;
+  if (race) {
+    // In a party the header shows who is in it: their faces, no chat styling. Tapping still opens the party panel.
+    const party = race.players.filter((player) => !player.left && player.id !== me);
+    return (
+      <button type="button" aria-label={party.length ? `${party.length} in your party. Open party.` : 'Open party'}
+        onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'partyChat' } })}
+        className="relative mr-1 flex h-11 items-center rounded-control px-1.5 outline-none transition-colors hover:bg-ui-hover focus-ring">
+        {party.length
+          ? <AvatarStack people={party.map((player) => ({ name: player.name, color: socialColor(player.color), src: player.image }))} total={party.length} max={3} size="md" />
+          : <AppIcon name="party" size={22} className="text-ui-muted-strong" />}
+      </button>
+    );
+  }
   if (others.length === 0) return <GlobalPresenceButton />;
   const phrase = (index: number) => {
     const to = others.map((person) => person.u);

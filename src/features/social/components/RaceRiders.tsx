@@ -45,7 +45,7 @@ export function RaceBar() {
         return (
           <span key={player.id} className="absolute top-[calc(50%+0.75rem)] flex h-7 w-7 transition-[left] duration-500 ease-out motion-reduce:transition-none" style={{ left: `clamp(0px, calc(${share * 100}% - 14px), calc(100% - 28px))` }}>
             <span className={`grid h-7 w-7 place-items-center rounded-full border-2 border-ui-surface p-px ${fill}`}>
-              <Avatar name={player.name} color={socialColor(player.color)} size="sm" src={player.id === me ? photo : player.image} className="ring-0!" />
+              <Avatar name={player.name} color={socialColor(player.color)} size="sm" src={player.id === me ? photo : player.image} className="size-full! ring-0!" />
             </span>
           </span>
         );
