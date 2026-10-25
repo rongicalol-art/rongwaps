@@ -1,7 +1,6 @@
 import { useMemo, useEffect, useCallback } from 'react';
 import { useReducedMotion } from 'motion/react';
 import { useSentenceWordHover } from '../../../lib/widgets';
-import type { SentenceWordContext } from '../../../types/sentenceLookup';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { getFocusTokenIds } from '../utils/grammarFocusTokens';
@@ -51,7 +50,7 @@ export function InteractiveGrammarSentence({
   onActiveAlignmentChange,
   onOpenWord,
 }: InteractiveGrammarSentenceProps) {
-  const lookup = useCallback((word: string, context?: SentenceWordContext) => lookupSentenceWord(word, characterPreference, context), [characterPreference]);
+  const lookup = useCallback((word: string) => lookupSentenceWord(word, characterPreference), [characterPreference]);
   const { hoveredWord, activeWordKey: activeWordId, enter, leave, keepOpen, closeTooltip } = useSentenceWordHover(lookup);
   const reduceMotion = Boolean(useReducedMotion());
   const teachingTextSizeClass = TEACHING_TEXT_SIZE_CLASSES[size];
@@ -103,9 +102,9 @@ export function InteractiveGrammarSentence({
               )}
               <button
                 type="button"
-                onPointerEnter={(e) => { if (e.pointerType !== 'touch') enter(e.currentTarget, text, word.id, word); }}
+                onPointerEnter={(e) => { if (e.pointerType !== 'touch') enter(e.currentTarget, text, word.id); }}
                 onPointerLeave={leave}
-                onFocus={(e) => enter(e.currentTarget, text, word.id, word)}
+                onFocus={(e) => enter(e.currentTarget, text, word.id)}
                 onBlur={leave}
                 onClick={(event) => {
                   event.stopPropagation();
