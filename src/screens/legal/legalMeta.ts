@@ -18,7 +18,7 @@ export interface LegalUpdate {
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
   page: 'privacy',
-  summary: 'Study together shares your display name and lesson while you are online; you can hide yourself in Settings. In-app feedback includes screen and browser details and may be emailed to the operator through Resend.',
+  summary: 'Study together shows your name and lesson to others online (hide it in Settings), and feedback is now emailed to us.',
 };
 
 const NOTICE_AFTER_EFFECTIVE_MS = 30 * 24 * 60 * 60 * 1000;
