@@ -2,7 +2,7 @@
 export const LEGAL_CONTACT_EMAIL = 'rongicalol@gmail.com';
 
 /** ISO date the current Terms and Privacy Policy take effect. */
-export const LEGAL_EFFECTIVE_DATE = '2026-10-30';
+export const LEGAL_EFFECTIVE_DATE = '2026-11-01';
 
 export interface LegalUpdate {
   page: 'terms' | 'privacy';
@@ -18,7 +18,7 @@ export interface LegalUpdate {
  */
 export const LEGAL_UPDATE: LegalUpdate | null = {
   page: 'privacy',
-  summary: 'Study together: while you are online, classmates see your display name and lesson, and each lesson has a chat. You can hide yourself in Settings.',
+  summary: 'Study together shares your display name and lesson while you are online; you can hide yourself in Settings. In-app feedback includes screen and browser details and may be emailed to the operator through Resend.',
 };
 
 const NOTICE_AFTER_EFFECTIVE_MS = 30 * 24 * 60 * 60 * 1000;

@@ -1,5 +1,28 @@
 # 🔌 Express API Specification
 
+## Feedback
+
+`POST /api/feedback` requires a verified school-beta session and accepts
+`{ id: UUID-v4, message: string, path: string }`. Messages are trimmed and limited
+to 2,000 characters; paths exclude query strings and fragments. Express adds a
+bounded browser user agent and deployment version (`RENDER_GIT_COMMIT`, then npm
+package version). `public.submit_feedback` saves into the non-API
+`private.feedback` inbox, bound to the authenticated account. No client role can
+read the inbox. Account deletion cascades to its feedback.
+
+Repeated ids with identical messages and paths succeed without another row;
+changed payloads for an existing id fail. Limits: three requests per user per
+minute in Express and five new submissions per account per hour in Postgres.
+Invalid payloads return 400, unauthenticated/unauthorized sessions 401/403,
+throttling 429, and unavailable storage 503. A 200 confirms storage, independently
+of email delivery. All responses from the handler use `private, no-store`.
+
+When `RESEND_API_KEY`, `FEEDBACK_EMAIL_FROM` and `FEEDBACK_EMAIL_TO` are configured
+on the server, it attempts a Resend notification after saving, with a five-second
+timeout and submission-id idempotency key. Failed/unconfigured notifications log
+only the submission id. A user retry attempts notification again; there is no
+background email retry worker. Messages remain available in the database.
+
 The backend (`server/index.ts`) runs under Node.js + Express and serves protected lesson content. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
 
 There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 404 without authenticating or calling a provider. Jev content-review scripts remain development tooling.

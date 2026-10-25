@@ -241,3 +241,26 @@ The synthetic load scenario opens **150 Lobby sockets plus 150 race sockets in 3
 Before launch, exercise two school **test** accounts against the deployed Worker: presence, chat, invite → existing room → Join, host Leave, network loss/rejoin, results/rematch, Report/mute, and a complete race on 390-pixel mobile and 1440-pixel desktop. Reloading an unfinished race should withdraw rather than record answers again. Never race on the owner's real deck. Deploy the Worker and app together: older clients do not send required round numbers, and the short-lived legacy tickets will need to be reissued.
 
 150 concurrent users fits this room/lobby layout; daily cost depends on messages, race answers and active duration. The Workers Free allowances are 100,000 Durable Object requests, 13,000 GB-s and 100,000 SQLite rows written per day. Incoming WebSocket messages count at 20:1 for request billing; outgoing frames and auto-answered pings are not billed as requests. Alarms, RPC calls, ticket/seat records and state writes also consume resources. For example, 150 students each answering 40 race words generates 6,000 progress events before setup/cleanup; repeated all-day races can exceed the free row-write budget. Observe deployed request, duration, SQL and error metrics before promising sustained daily capacity. Free-plan allowance exhaustion can stop social features until reset; ordinary studying remains independent. See Cloudflare's [Durable Objects pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/) and [WebSocket guidance](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
+
+## In-app feedback
+
+Apply `20261025120000_private_feedback.sql` before deploying the feedback form.
+The only write path is the authenticated `submit_feedback` RPC; the private
+inbox is available to the operator through SQL, not client APIs.
+Run `supabase db query --linked --file supabase/tests/feedback.sql` to verify
+permissions, school access, retry deduplication, validation, hourly caps and
+account-deletion cleanup. The fixtures are synthetic and rolled back.
+
+For automatic operator email, configure these **server-only** variables in the
+web host (never in Vite/client config):
+
+- `RESEND_API_KEY`: a Resend sending API key.
+- `FEEDBACK_EMAIL_FROM`: a sender on your verified Resend domain.
+- `FEEDBACK_EMAIL_TO`: the operator inbox, e.g. the public contact address.
+
+No new npm dependency is needed; the server calls Resend using native fetch.
+Send a clearly labeled test from a designated test account and verify delivery
+after configuration. Do not test against the owner's learning progress.
+Submission success confirms database storage; email is best effort and failures
+log only the submission UUID. Inspect the private inbox if email is unavailable:
+`select * from private.feedback order by created_at desc;`.

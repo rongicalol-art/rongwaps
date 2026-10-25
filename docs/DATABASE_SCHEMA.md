@@ -1,5 +1,22 @@
 # 🗄️ Supabase Database Schema
 
+## Feedback inbox (migration `20261025120000`)
+
+`private.feedback` stores submission UUID, account UUID (FK to `auth.users`,
+ON DELETE CASCADE), message, pathname, browser user agent, app version and server
+creation time. RLS is enabled and all client table privileges are revoked.
+The table is outside the Data API. Review as the database operator:
+`select * from private.feedback order by created_at desc;`.
+
+`public.submit_feedback(uuid, text, text, text, text)` is the sole authenticated
+write entry point: SECURITY DEFINER, empty search path, explicit school-beta
+check, authenticated caller ownership, idempotent UUID retries and five new
+messages per hour. An advisory transaction lock per account enforces the cap
+across concurrent servers. No client can SELECT, UPDATE or DELETE feedback.
+The security advisor's warning about authenticated execution of this definer
+function is intentional: its explicit school-access and caller checks protect
+the private table. Verified with the rollback-only `supabase/tests/feedback.sql`.
+
 This document reflects the **live Ron's Mandarin Supabase schema after the 2026-10 user-data migrations** (`20261004`–`20261007140000`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is served 100% pack-first from static edge CDN and cached in local IndexedDB (migration `20261003`). The Supabase database contains strictly private user data.
 
 ---

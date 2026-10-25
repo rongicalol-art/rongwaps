@@ -1,6 +1,7 @@
 import { cn } from '../../utils/cn';
 import { Link } from 'react-router';
-import { LEGAL_CONTACT_EMAIL } from '../../screens/legal';
+import { useState } from 'react';
+import { FeedbackDrawer } from './FeedbackDrawer';
 import { LEGAL_ROUTES } from '../routes';
 
 const linkClass =
@@ -8,6 +9,7 @@ const linkClass =
 
 /** Quiet About / Terms / Privacy / Sources / Feedback links at the foot of the Books, Library and Dictionary pages. */
 export function AppFooter({ className }: { className?: string }) {
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
   return (
     <footer className={cn('flex flex-col items-center gap-3 pt-1 text-center', className)}>
       <nav aria-label="Footer" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
@@ -15,9 +17,10 @@ export function AppFooter({ className }: { className?: string }) {
         <Link to={LEGAL_ROUTES.terms} className={linkClass}>Terms</Link>
         <Link to={LEGAL_ROUTES.privacy} className={linkClass}>Privacy</Link>
         <Link to={LEGAL_ROUTES.sources} className={linkClass}>Sources</Link>
-        <a href={`mailto:${LEGAL_CONTACT_EMAIL}?subject=Ron%27s%20Mandarin%20feedback`} className={linkClass}>Feedback</a>
+        <button type="button" onClick={() => setFeedbackOpen(true)} className={linkClass}>Feedback</button>
       </nav>
       <p className="text-xs font-bold text-ui-muted/80">© {new Date().getFullYear()} Ron's Mandarin</p>
+      <FeedbackDrawer isOpen={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </footer>
   );
 }

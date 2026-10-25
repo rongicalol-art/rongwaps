@@ -1,5 +1,6 @@
 import { lookupDictionary, searchDictionary, lookupCourseCards, lookupExamples } from './dictionary.js';
 import { gameConfiguration } from './games.js';
+import { submitFeedback } from './feedback.js';
 import { statSync } from 'node:fs';
 import express from "express";
 import compression from "compression";
@@ -164,6 +165,7 @@ export async function requireAuth(req: express.Request, res: express.Response, n
 }
 
 app.get('/api/games/config', gameConfiguration);
+app.post('/api/feedback', apiLimiter, requireAuth, userLimiter(3), submitFeedback);
 
 const dictionaryLimiter = userLimiter(180);
 app.use('/api/dictionary', (_req, res, next) => {

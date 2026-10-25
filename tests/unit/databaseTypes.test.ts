@@ -40,6 +40,7 @@ const EXPECTED_FUNCTIONS = [
   'has_full_course_access',
   'require_school_beta_access',
   'reset_user_learning_progress',
+  'submit_feedback',
   'touch_user_profile_updated_at',
   'upsert_card_progress',
 ] as const;

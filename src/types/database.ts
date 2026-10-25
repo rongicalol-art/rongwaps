@@ -225,6 +225,10 @@ export interface Database {
     };
     Views: Record<never, never>;
     Functions: {
+      submit_feedback: {
+        Args: { p_id: string; p_message: string; p_path: string; p_browser: string; p_app_version: string };
+        Returns: boolean;
+      };
       has_beta_access: {
         Args: Record<PropertyKey, never>;
         Returns: boolean;
