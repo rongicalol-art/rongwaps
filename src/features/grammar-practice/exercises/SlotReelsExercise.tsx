@@ -70,7 +70,7 @@ export function SlotReelsExercise({
           <PracticeScene
             scene={item.scene}
             arrived={status === 'correct'}
-            renderChinese={(text) => <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
+            renderChinese={(text) => <ContextualChineseText wordClassName="font-chinese font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
             reelPlace={(reelId) => {
               const option = chosen(reelId);
               return option?.icon ? { icon: option.icon, label: option.label ?? '' } : null;
@@ -78,10 +78,10 @@ export function SlotReelsExercise({
           />
         )}
         <div className="flex flex-col items-center gap-2">
-          <p className="text-center font-chinese-sans font-semibold text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">
+          <p className="text-center font-chinese font-semibold text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">
             {item.segments.map((segment, index) => {
               if (segment.type === 'text') {
-                return <ContextualChineseText wordClassName="font-chinese-sans font-semibold" key={index} text={textIn(segment, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
+                return <ContextualChineseText wordClassName="font-chinese font-semibold" key={index} text={textIn(segment, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
               }
               const option = chosen(segment.id);
               const selected = active === segment.id && !locked;

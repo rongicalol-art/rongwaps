@@ -57,7 +57,7 @@ export function ChatBuildExercise({
   useNumberKeySelection({ items: bank, onSelect: add, disabled: locked || shortcutsDisabled });
 
   const notes = (sentence: PracticeSentence) => [showPinyin && sentence.pinyin, showTranslation && sentence.english].filter((note): note is string => Boolean(note));
-  const say = (sentence: PracticeSentence) => <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={textIn(sentence, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
+  const say = (sentence: PracticeSentence) => <ContextualChineseText wordClassName="font-chinese font-semibold" text={textIn(sentence, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
 
   return (
     <LayoutGroup id={`chat-${item.id}`}>

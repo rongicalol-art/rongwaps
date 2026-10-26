@@ -89,7 +89,7 @@ export function PracticeFaces() {
             <div className="mt-3 grid grid-cols-2 gap-2">
               {CHEER_PHRASES.slice(0, 2).map((text, index) => (
                 <ActionButton key={text} size="sm" variant="secondary" onClick={() => phrase(index)}
-                  className={`font-chinese-sans font-bold normal-case tracking-normal ${sent === index ? '!text-ui-muted' : ''}`}>
+                  className={`font-chinese font-bold normal-case tracking-normal ${sent === index ? '!text-ui-muted' : ''}`}>
                   {sent === index ? '已送出' : text}
                 </ActionButton>
               ))}
@@ -105,7 +105,7 @@ export function PracticeFaces() {
                 <span className="flex items-center gap-1.5 text-sm font-black text-ui-ink-strong">
                   Lesson chat{unread && <span className="h-2 w-2 rounded-full bg-ui-ink-strong" aria-label="New messages" />}
                 </span>
-                <span className="block truncate font-chinese-sans text-sm font-bold text-ui-ink-strong">
+                <span className="block truncate font-chinese text-sm font-bold text-ui-ink-strong">
                   {lastLine ? <><span className="font-black text-ui-ink">{lastLine.n}</span> {lastLine.t}</> : 'Say hi to your classmates'}
                 </span>
               </span>

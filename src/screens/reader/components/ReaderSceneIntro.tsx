@@ -41,7 +41,7 @@ export function ReaderSceneIntro({
         <div className="px-1">
           <h1 className="font-sans text-2xl font-black text-ui-ink-strong sm:text-3xl">{title}</h1>
           {subtitle && (
-            <p className="mt-1 font-chinese-sans text-lg font-semibold text-ui-muted-strong">{subtitle}</p>
+            <p className="mt-1 font-chinese text-lg font-semibold text-ui-muted-strong">{subtitle}</p>
           )}
         </div>
       )}

@@ -131,7 +131,7 @@ export function SlotBuildExercise({
     if (segment.type === 'text') {
       const full = textIn(segment, script);
       const text = previous?.type === 'slot' ? full.replace(LEADING_CLOSING, '') : full;
-      return text && <ContextualChineseText wordClassName="font-chinese-sans font-semibold" key={index} text={text} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
+      return text && <ContextualChineseText wordClassName="font-chinese font-semibold" key={index} text={text} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />;
     }
     const tile = placed[segment.id];
     const next = line.segments[index + 1];
@@ -175,7 +175,7 @@ export function SlotBuildExercise({
     <PracticeScene
       scene={item.scene}
       arrived={status === 'correct'}
-      renderChinese={(text) => <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
+      renderChinese={(text) => <ContextualChineseText wordClassName="font-chinese font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
     />
   ) : null;
   // In a dialogue the character holds the picture up beside her message, instead of it taking its own row above.
@@ -184,12 +184,12 @@ export function SlotBuildExercise({
   return (
     <LayoutGroup id={`slot-build-${item.id}`}>
       <div className={sceneFirst ? "flex flex-col gap-5" : "flex flex-col gap-7"}>
-        {!sceneBeside && sceneNode}
         <PracticePrompt sub={item.sub} />
+        {!sceneBeside && sceneNode}
         {sceneFirst ? item.lines.map((line, index) => (
           <Fragment key={index}>
             <div className="flex flex-col items-center gap-1">
-              <p className="text-center font-chinese-sans font-semibold text-2xl leading-[1.7] text-ui-ink-strong sm:text-3xl">{renderLine(line, 'plain')}</p>
+              <p className="text-center font-chinese font-semibold text-2xl leading-[1.7] text-ui-ink-strong sm:text-3xl">{renderLine(line, 'plain')}</p>
               {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-extrabold text-ui-muted-strong">{note}</p>)}
             </div>
           </Fragment>
@@ -198,12 +198,12 @@ export function SlotBuildExercise({
             {leading.length > 0 && (
               <PracticeCharacterPrompt status={status} waiting={ready}>
                 <div className="flex flex-col items-start gap-2">
-                  {sceneBeside && <div className="mb-1 self-stretch">{sceneNode}</div>}
                   {leading.map((line, index) => (
                     <PracticeBubble key={index} side="them" className={index === 0 ? BUBBLE_TAIL : undefined} notes={index === glossLine ? gloss : []}>
                       {renderLine(line, 'plain')}
                     </PracticeBubble>
                   ))}
+                  {sceneBeside && <div className="mt-1 self-stretch">{sceneNode}</div>}
                 </div>
               </PracticeCharacterPrompt>
             )}
@@ -222,7 +222,7 @@ export function SlotBuildExercise({
         ) : (
           item.lines.map((line, index) => (
             <div key={index} className="flex flex-col items-center gap-1">
-              <p className="text-center font-chinese-sans font-semibold text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">{renderLine(line, 'plain')}</p>
+              <p className="text-center font-chinese font-semibold text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">{renderLine(line, 'plain')}</p>
               {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-extrabold text-ui-muted-strong">{note}</p>)}
             </div>
           ))

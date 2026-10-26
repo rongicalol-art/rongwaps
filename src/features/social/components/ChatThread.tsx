@@ -89,9 +89,9 @@ function MessageThread({ chat, ready, send, report }: { chat: ChatMessage[] | nu
                         <button
                           type="button"
                           onClick={() => setOpen(isOpen ? null : line.id)}
-                          className={`max-w-full whitespace-pre-wrap [overflow-wrap:anywhere] rounded-control border-2 px-3.5 py-2 text-left text-base leading-snug outline-none focus-ring font-chinese-sans font-bold ${mine ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface text-ui-ink-strong'}`}
+                          className={`max-w-full whitespace-pre-wrap [overflow-wrap:anywhere] rounded-control border-2 px-3.5 py-2 text-left text-base leading-snug outline-none focus-ring font-chinese font-bold ${mine ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface text-ui-ink-strong'}`}
                         >
-                          {isOpen && HAN.test(line.t) && !mine ? <SmartSentence text={line.t} className="font-chinese-sans" /> : line.t}
+                          {isOpen && HAN.test(line.t) && !mine ? <SmartSentence text={line.t} className="font-chinese" /> : line.t}
                         </button>
                         {isOpen && !mine && (
                           <div className="mt-1 flex gap-3 px-1 text-xs font-extrabold text-ui-muted">
@@ -116,7 +116,7 @@ function MessageThread({ chat, ready, send, report }: { chat: ChatMessage[] | nu
             maxLength={CHAT_MAX}
             placeholder="Message"
             aria-label="Message"
-            className="h-12 min-w-0 flex-1 rounded-control border-2 border-ui-border bg-ui-surface px-4 font-chinese-sans text-base font-bold text-ui-ink-strong outline-none placeholder:text-ui-muted focus:border-brand-primary"
+            className="h-12 min-w-0 flex-1 rounded-control border-2 border-ui-border bg-ui-surface px-4 font-chinese text-base font-bold text-ui-ink-strong outline-none placeholder:text-ui-muted focus:border-brand-primary"
           />
           <ActionButton type="submit" size="md" variant="primary" aria-label="Send"><AppIcon name="send" size={20} /></ActionButton>
         </form> : <p role="status" className="py-3 text-center text-sm font-bold text-ui-muted-strong">Reconnecting to chat…</p>}

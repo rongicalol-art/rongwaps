@@ -107,7 +107,7 @@ export function ReaderDialogueLine({
               isRightAligned ? 'justify-end' : 'justify-start',
             )}
           >
-            <span className="font-chinese-sans font-bold text-ui-ink-strong">
+            <span className="font-chinese font-bold text-ui-ink-strong">
               {paragraph.speaker}
             </span>
           </div>

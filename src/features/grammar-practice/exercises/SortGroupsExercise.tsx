@@ -48,7 +48,7 @@ export function SortGroupsExercise({
               exit={reduceMotion ? undefined : { opacity: 0, transition: ITEM_FADE }}
               className="flex flex-col gap-1"
             >
-              <p className="font-chinese-sans font-semibold text-3xl leading-snug text-balance text-ui-ink-strong sm:text-4xl">{textIn(current.sentence, script)}</p>
+              <p className="font-chinese font-semibold text-3xl leading-snug text-balance text-ui-ink-strong sm:text-4xl">{textIn(current.sentence, script)}</p>
               {showPinyin && <p className="text-sm font-extrabold text-ui-muted-strong">{current.sentence.pinyin}</p>}
             </motion.div>
           )}

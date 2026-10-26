@@ -169,16 +169,16 @@ export function OrderBuildExercise({
             drag?.over === String(tile) && 'border-l-2 border-brand-primary bg-brand-primary-soft',
           )}
         >
-          <span className="font-chinese-sans font-semibold text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
+          <span className="font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl">{textIn(item.tiles[tile], script)}</span>
           {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
         </motion.button>
         {commas.has(position) && (
-          <span className={cn('-ml-1.5 py-0.5 font-chinese-sans font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
+          <span className={cn('-ml-1.5 py-0.5 font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
         )}
         </Fragment>
       ))}
       {line.length > 0 && end && (
-        <span className={cn('-ml-1.5 py-0.5 font-chinese-sans font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
+        <span className={cn('-ml-1.5 py-0.5 font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
       )}
       {line.length > 0 && <span data-drop-slot="end" aria-hidden="true" className="min-h-10 w-10 shrink-0" />}
     </div>
@@ -189,14 +189,14 @@ export function OrderBuildExercise({
       scene={item.scene}
       arrived={status === 'correct'}
       renderChinese={(text) => (
-        <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+        <ContextualChineseText wordClassName="font-chinese font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
       )}
     />
   ) : null;
   const incoming = dialogue?.type === 'incoming' ? (
     <div className="flex min-w-0 flex-col gap-2 text-center">
-      <div className="font-chinese-sans font-semibold text-2xl leading-relaxed text-ui-ink-strong sm:text-3xl">
-        <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+      <div className="font-chinese font-semibold text-2xl leading-relaxed text-ui-ink-strong sm:text-3xl">
+        <ContextualChineseText wordClassName="font-chinese font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
       </div>
       <PracticePrompt sub={dialogue.gloss} />
     </div>
@@ -205,7 +205,7 @@ export function OrderBuildExercise({
   // The reply that came back is the prompt: read it, then ask what would get that answer.
   const reply = dialogue?.type === 'afterward' ? (
     <PracticeBubble className={BUBBLE_TAIL} side="them">
-      <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+      <ContextualChineseText wordClassName="font-chinese font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
     </PracticeBubble>
   ) : null;
 
@@ -217,26 +217,31 @@ export function OrderBuildExercise({
           {children}
           {scene ? incoming ? (
             <div className="flex flex-col items-center gap-3">
-              {scene}
               {incoming}
+              {scene}
             </div>
-          ) : scene : incoming && (
+          ) : (
+            <div className="flex flex-col items-center gap-3">
+              {reply}
+              {scene}
+            </div>
+          ) : incoming && (
             <PracticeCharacterPrompt status={status} waiting={line.length > 0}>
               <PracticeBubble className={BUBBLE_TAIL} side="them" notes={dialogue.gloss ? [dialogue.gloss] : []}>
-                <ContextualChineseText wordClassName="font-chinese-sans font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
+                <ContextualChineseText wordClassName="font-chinese font-semibold" text={dialogue.utterance} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />
               </PracticeBubble>
             </PracticeCharacterPrompt>
           )}
 
-          {reply && (scene ? reply : <PracticeCharacterPrompt status={status} waiting={line.length > 0}>{reply}</PracticeCharacterPrompt>)}
+          {!scene && reply && <PracticeCharacterPrompt status={status} waiting={line.length > 0}>{reply}</PracticeCharacterPrompt>}
 
           {answerLine}
         </div>
       ) : (
         <div className="flex flex-col gap-7">
           {children}
-          {scene}
           <PracticePrompt sub={item.sub ?? (item.quiet ? item.prompt : undefined)} />
+          {scene}
           {answerLine}
         </div>
       )}

@@ -63,7 +63,7 @@ function LessonTitle({ lesson, part, isDesktop }: { lesson: CourseLessonProgress
         {english}
       </h2>
       {chinese && (
-        <p className={`mt-1 font-chinese-sans font-semibold tracking-wide text-ui-muted-strong ${isDesktop ? 'text-2xl' : 'text-xl'}`}>
+        <p className={`mt-1 font-chinese font-semibold tracking-wide text-ui-muted-strong ${isDesktop ? 'text-2xl' : 'text-xl'}`}>
           {chinese}
         </p>
       )}

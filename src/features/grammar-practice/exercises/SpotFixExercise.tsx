@@ -44,7 +44,7 @@ export function SpotFixExercise({
       <p className="text-sm font-extrabold text-ui-muted-strong">
         {repairing ? 'Choose a replacement, or take the word out.' : 'Tap the word that needs fixing.'}
       </p>
-      <div className="flex flex-wrap items-baseline justify-center gap-x-1 gap-y-3 font-chinese-sans text-2xl font-semibold leading-relaxed text-ui-ink-strong sm:text-3xl">
+      <div className="flex flex-wrap items-baseline justify-center gap-x-1 gap-y-3 font-chinese text-2xl font-semibold leading-relaxed text-ui-ink-strong sm:text-3xl">
         {item.chunks.map((chunk, index) => (
           <Fragment key={index}>
             <button

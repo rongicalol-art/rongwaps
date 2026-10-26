@@ -72,7 +72,7 @@ export function SignInWindow() {
         <div className="mx-auto flex w-full max-w-100 flex-1 flex-col px-6 lg:mx-0 lg:flex-none lg:px-0">
           <motion.div {...rise(0.42)} className="text-center lg:text-left">
             <h1 className="text-4xl font-black leading-tight tracking-tight lg:text-5xl">Welcome</h1>
-            <p className="mt-2 font-chinese-sans text-lg font-semibold text-ui-muted-strong lg:text-xl">歡迎來學中文</p>
+            <p className="mt-2 font-chinese text-lg font-semibold text-ui-muted-strong lg:text-xl">歡迎來學中文</p>
           </motion.div>
 
           <motion.div {...rise(0.52)} className="mt-auto flex flex-col gap-5 pt-8 lg:mt-11 lg:pt-0">

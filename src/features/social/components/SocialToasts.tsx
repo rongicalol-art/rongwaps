@@ -90,7 +90,7 @@ export function CheerToast() {
         >
           <Avatar name={cheer.from.n} color={cheer.from.c} size="sm" src={cheer.from.i} />
           <span className="text-sm font-black text-ui-ink-strong">{cheer.from.n}</span>
-          <span className="font-chinese-sans text-lg font-semibold text-ui-ink-strong">{CHEER_PHRASES[cheer.phrase]}</span>
+          <span className="font-chinese text-lg font-semibold text-ui-ink-strong">{CHEER_PHRASES[cheer.phrase]}</span>
         </motion.div>
       )}
     </AnimatePresence>

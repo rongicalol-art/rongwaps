@@ -242,10 +242,12 @@
      Simplified Chinese uses Simplified Kai (LXGW-WenKai / KaiTi SC). */
   :root[data-character-font='kai'] {
     --font-chinese: var(--font-kaiti-tc);
+    --font-chinese-sans: var(--font-kaiti-tc);
   }
 
   :root[data-character-font='kai'][data-character-preference='simplified'] {
     --font-chinese: var(--font-kaiti-sc);
+    --font-chinese-sans: var(--font-kaiti-sc);
   }
 
   :root[data-character-font='huninn'] {
@@ -272,12 +274,16 @@
      Kai calligraphy has a smaller visual footprint than geometric rounded glyphs.
      We give it an optical boost (1.14em) so its characters feel naturally matching in size,
      and a subtle stroke enhancement that is lean and refined (not fat/bloated). */
-  :root[data-character-font='kai'] .font-chinese {
+  :root[data-character-font='kai'] .font-chinese,
+  :root[data-character-font='kai'] .font-chinese-sans {
     font-size: 1.14em;
     -webkit-text-stroke: 0.22px currentColor;
   }
 
-  :root[data-character-font='kai'] .font-chinese .font-chinese {
+  :root[data-character-font='kai'] .font-chinese .font-chinese,
+  :root[data-character-font='kai'] .font-chinese-sans .font-chinese-sans,
+  :root[data-character-font='kai'] .font-chinese .font-chinese-sans,
+  :root[data-character-font='kai'] .font-chinese-sans .font-chinese {
     font-size: 1em;
   }
 
@@ -286,7 +292,13 @@
   :root[data-character-font='kai'] .font-chinese.font-extrabold,
   :root[data-character-font='kai'] .font-extrabold .font-chinese,
   :root[data-character-font='kai'] .font-chinese.font-bold,
-  :root[data-character-font='kai'] .font-bold .font-chinese {
+  :root[data-character-font='kai'] .font-bold .font-chinese,
+  :root[data-character-font='kai'] .font-chinese-sans.font-black,
+  :root[data-character-font='kai'] .font-black .font-chinese-sans,
+  :root[data-character-font='kai'] .font-chinese-sans.font-extrabold,
+  :root[data-character-font='kai'] .font-extrabold .font-chinese-sans,
+  :root[data-character-font='kai'] .font-chinese-sans.font-bold,
+  :root[data-character-font='kai'] .font-bold .font-chinese-sans {
     -webkit-text-stroke: 0.38px currentColor;
   }
 
