@@ -6,10 +6,10 @@ import {
   AppIcon,
   ConfirmationDialog,
   EmptyState,
-  ProfileAvatarButton,
   StickyWorkspaceHeader,
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
+import { GlobalPresenceButton } from '../../features/social';
 import { useLibrary } from './hooks/useLibrary';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { useReviewOverview } from './hooks/useReviewOverview';
@@ -36,11 +36,9 @@ interface LibraryScreenProps {
   onPlayFlashcards?: () => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Library home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
-  onProfileClick?: () => void;
-  profileAvatarUrl?: string;
 }
 
-export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle, onProfileClick, profileAvatarUrl }: LibraryScreenProps) {
+export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -159,9 +157,9 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 {totalCount} {totalCount === 1 ? 'card' : 'cards'}
               </span>
             ) : undefined
-          ) : onProfileClick ? (
-            <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} />
-          ) : undefined
+          ) : (
+            <GlobalPresenceButton />
+          )
         }
         onBack={
           activeView === 'folder'

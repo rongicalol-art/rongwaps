@@ -25,6 +25,7 @@ import {
   PiFolderFill,
   PiGraduationCapFill,
   PiGaugeBold,
+  PiCopyBold,
   PiEyeBold,
   PiEyeSlashBold,
   PiKeyboardBold,
@@ -125,6 +126,7 @@ export type AppIconName =
   | 'followUp'
   | 'forward'
   | 'grammar'
+  | 'copy'
   | 'lightbulb'
   | 'hint'
   | 'lightbulbFilled'
@@ -463,6 +465,7 @@ const ICONS: Record<AppIconName, IconType> = {
   followUp: PiArrowBendDownRightBold,
   forward: PiArrowRightBold,
   grammar: PiBookBookmarkFill,
+  copy: PiCopyBold,
   lightbulb: PiLightbulbBold,
   lightbulbFilled: PiLightbulbFill,
   hint: StudyBulbIcon,

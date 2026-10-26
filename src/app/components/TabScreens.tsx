@@ -1,7 +1,6 @@
 import React, { memo, useMemo, useCallback } from 'react';
 import { ErrorBoundary, LoadingScreen } from '../../lib/widgets';
 import { useOpenPhase } from '../../hooks/useOpenPhase';
-import { useProfileAvatar } from '../../hooks/useProfileAvatar';
 import { getTabScreen, useTabScreenReady } from './tabScreenRegistry';
 import { useAppStore } from '../../store/useAppStore';
 import type { ActivityType } from '../../types/models';
@@ -43,7 +42,6 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
 }) {
   // One open rule for every tab: hold, then one loader only while waiting, then the screen (chunk already loaded).
   const phase = useOpenPhase(useTabScreenReady(activeTab), undefined, activeTab);
-  const profileAvatarUrl = useProfileAvatar();
   const CurriculumLibrary = getTabScreen('path');
   const SearchScreen = getTabScreen('search');
   const LibraryScreen = getTabScreen('library');
@@ -78,10 +76,6 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     setActiveActivity('flashcards-library');
   }, [setActiveActivity]);
 
-  const handleProfileClick = useCallback(() => {
-    setActiveTab('profile');
-  }, [setActiveTab]);
-
   const handleNavigateToPath = useCallback(() => setActiveTab('path'), [setActiveTab]);
 
   if (phase === 'hold') return null;
@@ -112,12 +106,10 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
             onAddCard={handleAddCard}
             onPlayFlashcards={handlePlayFlashcards}
             menuToggle={menuToggle}
-            onProfileClick={handleProfileClick}
-            profileAvatarUrl={profileAvatarUrl}
           />
         )}
         {activeTab === 'search' && SearchScreen && (
-          <SearchScreen menuToggle={menuToggle} onProfileClick={handleProfileClick} profileAvatarUrl={profileAvatarUrl} />
+          <SearchScreen menuToggle={menuToggle} />
         )}
         {activeTab === 'profile' && ProfileScreen && (
           <ProfileScreen

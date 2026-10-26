@@ -12,7 +12,7 @@ interface DictionaryAsideProps {
   onViewSavedWords: () => void;
 }
 
-/** Today's character and saved words: the glanceable side of the dictionary. TOCFL readiness lives on Profile. */
+/** Today's character and saved words: the glanceable side of the dictionary. On mobile its children flow into the page grid (character before results, saved words after). TOCFL readiness lives on Profile. */
 export function DictionaryAside({
   savedWords,
   isLoadingSavedWords,
@@ -21,14 +21,16 @@ export function DictionaryAside({
   onViewSavedWords,
 }: DictionaryAsideProps) {
   return (
-    <div className="flex flex-col gap-7">
-      <CharacterDailyCard word={characterOfTheDay} onOpenWord={onOpenWord} />
-      <SavedWordsPreview
-        items={savedWords}
-        isLoading={isLoadingSavedWords}
-        onOpenWord={onOpenWord}
-        onViewAll={onViewSavedWords}
-      />
+    <div className="flex flex-col gap-7 max-lg:contents">
+      <div className="max-lg:order-2"><CharacterDailyCard word={characterOfTheDay} onOpenWord={onOpenWord} /></div>
+      <div className="max-lg:order-4">
+        <SavedWordsPreview
+          items={savedWords}
+          isLoading={isLoadingSavedWords}
+          onOpenWord={onOpenWord}
+          onViewAll={onViewSavedWords}
+        />
+      </div>
       <AppFooter className="hidden lg:flex" />
     </div>
   );

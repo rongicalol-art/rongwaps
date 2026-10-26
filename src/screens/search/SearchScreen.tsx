@@ -3,10 +3,11 @@ import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
 import { useDictionarySearch } from '../../hooks/useDictionarySearch';
 import { AppFooter } from '../../app/components/AppFooter';
-import { ProfileAvatarButton, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
+import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { searchVocabulary } from '../../services/vocabularyService';
 import { useAppStore } from '../../store/useAppStore';
 import type { DictionaryListEntry } from '../../types/models';
+import { GlobalPresenceButton } from '../../features/social';
 import { DictionaryAside } from './components/DictionaryAside';
 import { DictionaryResults } from './components/DictionaryResults';
 import { DictionarySearchBar, type SearchMode } from './components/DictionarySearchBar';
@@ -18,16 +19,14 @@ import { useSavedDictionaryPreview } from './hooks/useSavedDictionaryPreview';
 interface SearchScreenProps {
   /** Mobile hamburger shown overlaid left in the sticky header (Dictionary). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
-  onProfileClick?: () => void;
-  profileAvatarUrl?: string;
 }
 
-function DictionaryStickyHeader({ menuToggle, onProfileClick, profileAvatarUrl }: SearchScreenProps) {
+function DictionaryStickyHeader({ menuToggle }: SearchScreenProps) {
   return (
     <StickyWorkspaceHeader
       title="Dictionary"
       menuToggle={menuToggle}
-      rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} src={profileAvatarUrl} /> : undefined}
+      rightContent={<GlobalPresenceButton />}
     />
   );
 }
@@ -39,7 +38,7 @@ const LEVEL_ORDER = ['Novice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'Rare'];
 /** Curriculum search covers every book. */
 const selectedBookIds = [1, 2, 3, 4];
 
-export function SearchScreen({ menuToggle, onProfileClick, profileAvatarUrl }: SearchScreenProps) {
+export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const favorites = useAppStore((state) => state.favorites);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const searchQuery = useAppStore((state) => state.searchQuery);
@@ -169,12 +168,13 @@ export function SearchScreen({ menuToggle, onProfileClick, profileAvatarUrl }: S
 
   return (
     <div className="relative flex w-full flex-1 flex-col text-ui-ink">
-      <DictionaryStickyHeader menuToggle={menuToggle} onProfileClick={onProfileClick} profileAvatarUrl={profileAvatarUrl} />
+      <DictionaryStickyHeader menuToggle={menuToggle} />
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-10 gap-y-7 px-4 pb-32 md:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:pb-20">
-        {/* Search and results stay in one cell: a taller side rail never stretches the two apart. */}
-        <div className="order-1 flex min-w-0 flex-col gap-7 lg:col-start-1 lg:row-start-1">
-          <DictionarySearchBar
+        {/* Desktop: search and results stay in one cell so a taller side rail never stretches the two apart.
+            Mobile: the cells dissolve (`contents`) so Today's character slots between the search bar and the results. */}
+        <div className="contents min-w-0 flex-col gap-7 lg:col-start-1 lg:row-start-1 lg:flex">
+          <div className="max-lg:order-1"><DictionarySearchBar
             value={searchQuery}
             onChange={handleResultsSearch}
             mode={mode}
@@ -183,9 +183,9 @@ export function SearchScreen({ menuToggle, onProfileClick, profileAvatarUrl }: S
             filterSlot={(
               <SearchFilterMenu levelOptions={levelOptions} bookOptions={mode === 'curriculum' ? bookOptions : []} lessonOptions={lessonOptions} value={filters} onChange={setFilters} />
             )}
-          />
+          /></div>
 
-          <DictionaryResults
+          <div className="max-lg:order-3"><DictionaryResults
             mode={mode}
             query={searchTerm}
             results={filteredResults}
@@ -193,12 +193,12 @@ export function SearchScreen({ menuToggle, onProfileClick, profileAvatarUrl }: S
             isLoading={isLoading}
             error={activeError}
             onOpenWord={setDictionaryWord}
-          />
+          /></div>
         </div>
 
         <aside
           aria-label="Today and progress"
-          className={`order-2 min-w-0 lg:col-start-2 lg:row-start-1 lg:self-start lg:sticky-rail ${query ? 'hidden lg:block' : ''}`}
+          className={`min-w-0 lg:col-start-2 lg:row-start-1 lg:self-start lg:sticky-rail ${query ? 'hidden lg:block' : 'contents lg:block'}`}
         >
           <DictionaryAside
             savedWords={savedWords}

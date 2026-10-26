@@ -8,6 +8,7 @@ import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
 import { FavoriteButton } from '../../../features/library';
+import { useAppStore } from '../../../store/useAppStore';
 import { useCardSwipe } from '../hooks/useCardSwipe';
 import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
 
@@ -136,6 +137,29 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     }
   };
 
+  // Dragging the card swipes it, so text can't be selected: copy is a button and Cmd/Ctrl+C instead.
+  const copyCard = () => {
+    const text = [card.front, card.pinyin, card.simple ?? card.back].filter(Boolean).join(' · ');
+    const done = () => useAppStore.getState().showFeedbackToast('Copied');
+    const fail = () => useAppStore.getState().showFeedbackToast("Couldn't copy");
+    if (!navigator.clipboard) { fail(); return; }
+    void navigator.clipboard.writeText(text).then(done).catch(fail);
+  };
+  const copyCardRef = useRef(copyCard);
+  copyCardRef.current = copyCard;
+  useEffect(() => {
+    if (!isInteractive) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'c' || event.altKey || event.shiftKey) return;
+      const target = event.target as HTMLElement | null;
+      if (target?.closest('input, textarea, [contenteditable="true"]') || window.getSelection()?.toString()) return;
+      event.preventDefault();
+      copyCardRef.current();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isInteractive]);
+
   const renderCardActions = () => {
     const hasHook = showWordHookChip && Boolean(wordHook);
     return (
@@ -162,6 +186,17 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             <AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={22} />
           </button>
         )}
+        <button
+          type="button"
+          aria-label={`Copy ${card.front}`}
+          onClick={(event) => {
+            event.stopPropagation();
+            if (!isDragging) copyCard();
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-compact text-ui-muted focus-ring hover:bg-ui-hover active:scale-95"
+        >
+          <AppIcon name="copy" size={22} />
+        </button>
         {onOpenWriting && Array.from(card.front).some(isHanziChar) && <button
           type="button"
           aria-label={`Write ${card.front}`}
