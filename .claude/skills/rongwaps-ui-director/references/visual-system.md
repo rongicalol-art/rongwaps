@@ -31,7 +31,7 @@ Book accents vary; neutrals stay stable across books.
 ## Typography
 
 - `font-sans`: Nunito for all UI copy; titles heavy (black/extrabold), compact, literal.
-- `font-chinese`: per-book study font (rounded Huninn/Rounded-SC default; Kai variants for focused character study). `font-chinese-sans` (PingFang) for Chinese subtitles under titles, `font-semibold`.
+- `font-chinese`: Chinese study and subtitle font (rounded Huninn/Rounded-SC default; Kai stack when selected applies app-wide to all Chinese text). Never hardcode fonts to sans.
 - Same role = same style everywhere (block titles, labels, meta). No long uppercase.
 
 ## Iconography & illustration

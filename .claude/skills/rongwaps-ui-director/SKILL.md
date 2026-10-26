@@ -34,7 +34,7 @@ Goal: a calm, tactile, Duolingo-polished Chinese learning product that feels aut
 
 **Shapes.** Squarish pills, not circles. Not "too roundy" and not "too long": buttons compact with a confident height. Card borders a little heavier (3px, thick bottom edge), consistent thickness across a screen. One radius family per surface.
 
-**Type.** Nunito heavy for titles; Chinese subtitle `font-chinese-sans font-semibold text-ui-muted-strong` (PingFang has real weights). Kai only for focused study characters. Consistent text styles across blocks: a block's title style must match its siblings ("text styles are inconsistent" is a recurring complaint). Short copy; no uppercase sentences.
+**Type.** Nunito heavy for titles; Chinese text uses `font-chinese` (or `font-chinese font-semibold text-ui-muted-strong` for subtitles) so the learner's chosen font (Kai or Huninn) applies everywhere; never hardcode fonts to sans. Consistent text styles across blocks: a block's title style must match its siblings ("text styles are inconsistent" is a recurring complaint). Short copy; no uppercase sentences.
 
 **Images.** Native ratio, uncropped (reading art is 16:9), no text overlays on pictures.
 
