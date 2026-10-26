@@ -92,7 +92,7 @@ test('handles 2-part narrative readings with generic prefix', () => {
 
 test('the header names the part its playback controls target', () => {
   const noop = () => {};
-  for (const partNumber of [1, 2, 3]) {
+  for (const partNumber of [undefined, 1, 2, 3]) {
     for (const playing of [false, true]) {
       const html = renderToStaticMarkup(createElement(ReaderHeader, {
         partNumber, playing, textSize: 'normal', showPinyin: false, showMeaning: false,
@@ -100,8 +100,10 @@ test('the header names the part its playback controls target', () => {
         onToggleMeaning: noop, onToggleSlowAudio: noop, onTogglePlay: noop,
         onScrub: noop, onSeek: noop, onClose: noop,
       }));
-      assert.match(html, new RegExp(`aria-label="${playing ? 'Pause' : 'Play'} Part ${partNumber}"`));
-      assert.match(html, new RegExp(`>Part ${partNumber}</span>`));
+      const target = partNumber === undefined ? 'dialogue' : `Part ${partNumber}`;
+      assert.match(html, new RegExp(`aria-label="${playing ? 'Pause' : 'Play'} ${target}"`));
+      if (partNumber === undefined) assert.doesNotMatch(html, /aria-live="polite"|>Part /);
+      else assert.match(html, new RegExp(`>Part ${partNumber}</span>`));
     }
   }
 });

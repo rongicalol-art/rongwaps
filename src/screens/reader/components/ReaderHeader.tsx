@@ -5,7 +5,7 @@ import { ReaderSettingsPopover } from './ReaderSettingsPopover';
 import { GlobalPresenceButton } from '../../../features/social';
 
 interface ReaderHeaderProps {
-  partNumber: number;
+  partNumber?: number;
   textSize: ReaderTextSize;
   onTextSizeChange: (size: ReaderTextSize) => void;
   characterFont?: CharacterFont;
@@ -127,13 +127,13 @@ export function ReaderHeader({
           <IconActionButton
             size="lg"
             variant="primary"
-            label={`${playing ? 'Pause' : 'Play'} Part ${partNumber}`}
-            title={`${playing ? 'Pause' : 'Play'} Part ${partNumber} (Space)`}
+            label={`${playing ? 'Pause' : 'Play'} ${partNumber !== undefined ? `Part ${partNumber}` : 'dialogue'}`}
+            title={`${playing ? 'Pause' : 'Play'}${partNumber !== undefined ? ` Part ${partNumber}` : ''} (Space)`}
             icon={<AppIcon name={playing ? 'pause' : 'play'} size={22} />}
             onClick={onTogglePlay}
             className="ml-1 [--depth-sm:4px]"
           />
-          <span aria-live="polite" className="ml-2 whitespace-nowrap text-sm font-black text-ui-muted-strong">Part {partNumber}</span>
+          {partNumber !== undefined && <span aria-live="polite" className="ml-2 whitespace-nowrap text-sm font-black text-ui-muted-strong">Part {partNumber}</span>}
         </>
       }
       rightAction={

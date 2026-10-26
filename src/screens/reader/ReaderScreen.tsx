@@ -172,7 +172,7 @@ export function ReaderScreen({
               passing beneath it, so the reading canvases pad their top clear of the bar. */}
           <div className="absolute top-0 left-0 right-0 z-30 pointer-events-auto">
             <ReaderHeader
-              partNumber={reading.dialogueNumber}
+              partNumber={sessionIndices.length > 1 ? reading.dialogueNumber : undefined}
               textSize={textSize}
               onTextSizeChange={setTextSize}
               characterFont={characterFont}
