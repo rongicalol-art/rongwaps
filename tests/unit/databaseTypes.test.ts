@@ -21,26 +21,36 @@ const MIGRATIONS_DIR = resolve(process.cwd(), 'supabase', 'migrations');
 
 /** Tables the migrations leave in `public` (post-drops). Keep in sync with the migrations. */
 const EXPECTED_TABLES = [
+  'folder_members',
   'user_card_progress',
   'user_flashcards',
   'user_folders',
   'user_profiles',
   'user_review_events',
+  'shared_folders',
+  'shared_folder_saves',
 ] as const;
 
 /** Functions the migrations leave in `public` (post-drops, overloads collapsed by name). */
 const EXPECTED_FUNCTIONS = [
+  'enforce_folder_member_cap', 'add_folder_owner', 'protect_folder_owner',
+  'protect_flashcard_creator', 'enforce_folder_card_cap',
+  'create_folder_invite', 'clear_folder_invite', 'get_folder_invite',
+  'join_folder', 'remove_folder_member', 'list_folder_members',
   'append_review_events',
   'delete_my_account',
   'enforce_user_flashcard_cap',
   'export_my_data',
   'get_sync_state',
+  'get_shared_folder',
   'handle_new_user',
   'has_beta_access',
   'has_full_course_access',
   'require_school_beta_access',
   'reset_user_learning_progress',
   'submit_feedback',
+  'save_shared_folder',
+  'enforce_shared_folder_owner_and_cap',
   'touch_user_profile_updated_at',
   'upsert_card_progress',
 ] as const;

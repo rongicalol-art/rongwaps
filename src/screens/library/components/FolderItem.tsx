@@ -1,12 +1,14 @@
 import React from 'react';
 import { cn } from '../../../utils/cn';
-import { FolderSvg } from '../../../lib/widgets';
+import { AppIcon, FolderSvg } from '../../../lib/widgets';
 import { useMenuTrigger, type MenuPoint } from './LibraryContextMenu';
 
 interface FolderItemProps {
   id: string;
   title: string;
   count?: number;
+  shareSaveCount?: number;
+  memberCount?: number;
   className?: string;
   icon?: React.ReactNode;
   accentBg?: string;
@@ -23,6 +25,8 @@ export function FolderItem({
   id,
   title,
   count,
+  shareSaveCount,
+  memberCount,
   accentBg,
   accentBorder,
   colorFront,
@@ -32,7 +36,7 @@ export function FolderItem({
   onMenuRequest,
   className,
 }: FolderItemProps) {
-  const isEditable = !['starred', 'custom'].includes(id) && !isNewButton && !!onMenuRequest;
+  const isEditable = id !== 'starred' && !isNewButton && !!onMenuRequest;
   const menuTrigger = useMenuTrigger((point) => onMenuRequest?.(point), !isEditable);
 
   const frontColor = isNewButton
@@ -64,8 +68,14 @@ export function FolderItem({
           {title}
         </span>
         {!isNewButton && count !== undefined && (
-          <span className="text-[13px] font-extrabold text-ui-muted">
+          <span className="flex items-center gap-1 whitespace-nowrap text-[13px] font-extrabold text-ui-muted">
             {count} {count === 1 ? 'card' : 'cards'}
+            {memberCount !== undefined && memberCount > 1 && <span className="flex items-center gap-0.5" aria-label={`${memberCount} members`}>· <AppIcon name="family" size={13} />{memberCount}</span>}
+            {shareSaveCount !== undefined && (
+              <span className="flex items-center gap-0.5" aria-label={`Shared, saved by ${shareSaveCount}`}>
+                · <AppIcon name="share" size={13} />{shareSaveCount}
+              </span>
+            )}
           </span>
         )}
       </div>

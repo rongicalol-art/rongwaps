@@ -31,7 +31,7 @@ test('matching requires exact word aliases and the intended reading', () => {
 test('custom and starred cards reject conflicting or missing pinyin', () => {
   const map = new Map<string, Flashcard>([['行', { id: '1', front: '行', pinyin: 'xíng', audio: 'walk.mp3', back: 'walk', bookId: 1, lessonId: 1 }]]);
   for (const pinyin of ['háng', undefined]) {
-    const { cards } = mapCustomCardsToFlashcards([{ id: 'c', userId: 'u', simplified: '行', pinyin, translation: 'trade', createdAt: 0 }], map, 'custom');
+    const { cards } = mapCustomCardsToFlashcards([{ id: 'c', userId: 'u', folderId: 'f', simplified: '行', pinyin, translation: 'trade', createdAt: 0 }], map, 'f');
     assert.equal(cards[0].audio, '');
     assert.equal(cards[0].source, 'dictionary');
   }

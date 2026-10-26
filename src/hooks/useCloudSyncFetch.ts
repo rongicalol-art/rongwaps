@@ -150,7 +150,7 @@ export function useCloudSyncFetch({
       // uploaded once.
       const guestFolders = resolveGuestFolderMigration({
         isAccountSwitch,
-        prePullFolders,
+        prePullFolders: prePullFolders.filter((folder) => folder.role !== 'editor' && (!folder.ownerId || folder.ownerId === currentUser.id)),
         prePullFolderOwner,
         serverFolders: cloudData.folders,
       });
@@ -158,7 +158,8 @@ export function useCloudSyncFetch({
         await flashcardService.importFolders(currentUser.id, guestFolders);
         if (!isCurrent()) return false;
       }
-      const folders = guestFolders.length > 0 ? guestFolders : cloudData.folders;
+      const folders = guestFolders.length > 0 ? await userService.getFolders() : cloudData.folders;
+      if (!isCurrent()) return false;
       if (!isSameFolderList(useAppStore.getState().customFolders, folders)) {
         setCustomFolders(folders);
       }

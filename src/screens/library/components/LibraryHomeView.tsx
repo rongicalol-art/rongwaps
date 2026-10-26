@@ -8,6 +8,8 @@ interface LibraryCollectionSummary {
   id: string;
   title: string;
   count: number;
+  shareSaveCount?: number;
+  memberCount?: number;
   icon?: ReactNode;
   accentBg?: string;
   accentBorder?: string;

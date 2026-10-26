@@ -62,7 +62,7 @@ export function useMenuTrigger(onOpen: (point: MenuPoint) => void, disabled = fa
 export interface LibraryMenuAction {
   id: string;
   label: string;
-  icon: 'pencil' | 'trash';
+  icon: 'pencil' | 'trash' | 'share' | 'link' | 'family';
   danger?: boolean;
   onSelect: () => void;
 }

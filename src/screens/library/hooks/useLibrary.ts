@@ -4,14 +4,16 @@ import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
 import { useUserFlashcards } from '../../../features/library';
 import { useAppStore } from '../../../store/useAppStore';
+import { folderCollabService } from '../../../services/folderCollabService';
+import type { UserFolder } from '../../../types/models';
 import { flashcardService, type FlashcardTextPatch } from '../../../services/flashcardService';
 import { userService } from '../../../services/userService';
+import { sharedFolderService, type SharedFolderMine } from '../../../services/sharedFolderService';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
 import {
   STARRED_FOLDER_COLOR,
-  CUSTOM_CARDS_FOLDER_COLOR,
   FOLDER_COLOR_PALETTE,
   resolveFolderColor,
   serializeFolderColor,
@@ -30,20 +32,6 @@ const COLLECTIONS = [
     colorBack: STARRED_FOLDER_COLOR.back,
     lightBg: STARRED_FOLDER_COLOR.lightBg,
     onAccent: STARRED_FOLDER_COLOR.onAccent,
-    count: 0,
-  },
-  {
-    id: 'custom',
-    title: 'Custom cards',
-    label: 'Smart Flashcards',
-    icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: CUSTOM_CARDS_FOLDER_COLOR.accent }),
-    accentBg: CUSTOM_CARDS_FOLDER_COLOR.accentBg,
-    accentBorder: CUSTOM_CARDS_FOLDER_COLOR.accentBorder,
-    accentColor: CUSTOM_CARDS_FOLDER_COLOR.accent,
-    colorFront: CUSTOM_CARDS_FOLDER_COLOR.front,
-    colorBack: CUSTOM_CARDS_FOLDER_COLOR.back,
-    lightBg: CUSTOM_CARDS_FOLDER_COLOR.lightBg,
-    onAccent: CUSTOM_CARDS_FOLDER_COLOR.onAccent,
     count: 0,
   }
 ];
@@ -78,7 +66,7 @@ export function useLibrary() {
   const activeView = useAppStore((state) => state.libraryActiveView);
   const setActiveView = setLibraryActiveView;
 
-  const [deleteFolderTarget, setDeleteFolderTarget] = useState<{ id: string; name: string } | null>(null);
+  const [deleteFolderTarget, setDeleteFolderTarget] = useState<UserFolder | null>(null);
   const deletingFoldersRef = useRef<Set<string>>(new Set());
 
   const confirmDeleteFolder = async () => {
@@ -86,12 +74,23 @@ export function useLibrary() {
     const folderId = deleteFolderTarget.id;
     setDeleteFolderTarget(null);
 
+    if (libraryActiveFolder === folderId) { setLibraryActiveFolder('all'); setActiveView('home'); }
     deletingFoldersRef.current.add(folderId);
     deleteCustomFolder(folderId);
+    // A folder owns its cards: deleting it deletes them (there is no fallback folder).
+    if (!currentUser) {
+      customFlashcards.filter((card) => card.folderId === folderId).forEach((card) => deleteLocalFlashcard(card.id));
+    }
 
     if (currentUser) {
       try {
-        await flashcardService.deleteFolder(currentUser.id, folderId);
+        if (deleteFolderTarget.role === 'editor') {
+          await folderCollabService.leave(folderId);
+          const fresh = await userService.getFolders();
+          if (useAppStore.getState().currentUser?.id !== currentUser.id) return;
+          useAppStore.getState().setCustomFolders(fresh);
+          await flashcardService.refetchFlashcards(currentUser.id);
+        } else await flashcardService.deleteFolder(currentUser.id, folderId);
       } catch (err) {
         debugLogger.error('Supabase', "Failed to delete folder in Supabase:", err);
         try {
@@ -110,6 +109,39 @@ export function useLibrary() {
   };
   
   const customFlashcards = useUserFlashcards();
+  const [sharedFolders, setSharedFolders] = useState<SharedFolderMine[]>([]);
+  const refreshSharedFolders = useCallback(async () => {
+    if (!currentUser) {
+      setSharedFolders([]);
+      return;
+    }
+    try {
+      setSharedFolders(await sharedFolderService.listMine(currentUser.id));
+    } catch (error) {
+      debugLogger.error('Supabase', 'Could not load shared folders', error);
+      useAppStore.getState().showFeedbackToast('Could not load shared folder links', 'neutral', 2500);
+    }
+  }, [currentUser]);
+  useEffect(() => { void refreshSharedFolders(); }, [refreshSharedFolders]);
+
+  const publishSharedFolder = useCallback(async (folderId: string) => {
+    if (!currentUser) throw new Error('Sign in to share a folder.');
+    const folder = customFolders.find((candidate) => candidate.id === folderId);
+    if (!folder) throw new Error('This folder cannot be shared.');
+    const cards = customFlashcards.filter((card) => card.folderId === folderId);
+    // Legacy folder colours are long JSON; the share stores the plain palette id.
+    const color = resolveFolderColor(folder.color, customFolders.indexOf(folder)).id;
+    const shareId = await sharedFolderService.publish(currentUser.id, { ...folder, color }, cards);
+    await refreshSharedFolders();
+    return shareId;
+  }, [currentUser, customFolders, customFlashcards, refreshSharedFolders]);
+
+  const stopSharingFolder = useCallback(async (shareId: string) => {
+    if (!currentUser) return;
+    await sharedFolderService.unpublish(currentUser.id, shareId);
+    await refreshSharedFolders();
+  }, [currentUser, refreshSharedFolders]);
+
   const [favoriteResults, setFavoriteResults] = useState<DBDictionaryEntry[]>([]);
   const [isLoadingFavs, setIsLoadingFavs] = useState(false);
 
@@ -127,6 +159,7 @@ export function useLibrary() {
     const dynFolders = customFolders.map((cf, index) => {
       const folderColor = resolveFolderColor(cf.color, index);
       const count = customFlashcards.filter(c => c.folderId === cf.id).length;
+      const share = sharedFolders.find((item) => item.sourceFolderId === cf.id);
       return {
         id: cf.id,
         title: cf.name,
@@ -139,19 +172,18 @@ export function useLibrary() {
         lightBg: folderColor.lightBg,
         onAccent: folderColor.onAccent,
         icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: folderColor.accent }),
-        count
+        count,
+        shareSaveCount: share?.saveCount,
+        memberCount: cf.memberCount,
       };
     });
 
     const starredCount = favorites.length;
-    const customCount = customFlashcards.filter(c => !c.folderId || c.folderId === 'custom').length;
-
     return [
       { ...COLLECTIONS[0], count: starredCount },
-      { ...COLLECTIONS[1], count: customCount },
       ...dynFolders
     ];
-  }, [customFolders, favorites.length, customFlashcards]);
+  }, [customFolders, favorites.length, customFlashcards, sharedFolders]);
 
   useEffect(() => {
     let cancelled = false;
@@ -285,12 +317,7 @@ export function useLibrary() {
   }, [favoriteResults, searchQuery]);
 
   const filteredCustom = useMemo(() => {
-    let filtered = customFlashcards;
-    if (libraryActiveFolder !== 'custom' && libraryActiveFolder !== 'starred') {
-       filtered = customFlashcards.filter(c => c.folderId === libraryActiveFolder);
-    } else if (libraryActiveFolder === 'custom') {
-       filtered = customFlashcards.filter(c => !c.folderId || c.folderId === 'custom');
-    }
+    const filtered = customFlashcards.filter(c => c.folderId === libraryActiveFolder);
 
     const q = searchQuery.toLowerCase().trim();
     if (!q) return filtered;
@@ -354,6 +381,10 @@ export function useLibrary() {
 
   const moveSelectedTo = async (folderId: string) => {
     const ids = [...selectedKeys];
+    if (currentUser && customFlashcards.some((card) => selectedKeys.has(card.id) && card.userId !== currentUser.id)) {
+      useAppStore.getState().showFeedbackToast('Only cards you added can be moved to another folder', 'neutral', 3000);
+      return;
+    }
     setMoveOpen(false);
     exitSelecting();
     if (currentUser) {
@@ -387,6 +418,7 @@ export function useLibrary() {
 
   return {
     favorites,
+    currentUser,
     toggleFavorite,
     setDictionaryWord,
     libraryActiveFolder,
@@ -397,6 +429,9 @@ export function useLibrary() {
     searchQuery,
     setSearchQuery,
     allCollections,
+    sharedFolders,
+    publishSharedFolder,
+    stopSharingFolder,
     isLoadingFavs,
     showFolderModal,
     setShowFolderModal,

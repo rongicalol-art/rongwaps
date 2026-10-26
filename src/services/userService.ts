@@ -4,13 +4,10 @@ import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srs/srsEngine';
 import { rowsToProgress, srsDataToUpsert, type CardProgressRow } from '../utils/srs/srsRowMapping';
 import type { CloudMetadataPayload } from '../utils/sync/cloudSyncTransforms';
+import type { UserFolder } from '../types/models';
 import type { Json } from '../types/database';
 
-export interface UserFolderRow {
-  id: string;
-  name: string;
-  color: string;
-}
+export type UserFolderRow = UserFolder;
 
 /** Wire shape of the `get_sync_state` RPC (see 20261005 migration). */
 interface SyncStateWire {

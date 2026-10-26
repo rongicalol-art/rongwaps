@@ -17,7 +17,7 @@ The security advisor's warning about authenticated execution of this definer
 function is intentional: its explicit school-access and caller checks protect
 the private table. Verified with the rollback-only `supabase/tests/feedback.sql`.
 
-This document reflects the **live Ron's Mandarin Supabase schema after the 2026-10 user-data migrations** (`20261004`–`20261007140000`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is served 100% pack-first from static edge CDN and cached in local IndexedDB (migration `20261003`). The Supabase database contains strictly private user data.
+This document reflects the **live Ron's Mandarin Supabase schema after the 2026-10 user-data migrations** (`20261004`–`20261007140000`), plus the pending shared-folder migration described below. All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is served 100% pack-first from static edge CDN and cached in local IndexedDB (migration `20261003`). The Supabase database contains private user data and link-addressed shared-folder snapshots.
 
 ---
 
@@ -85,6 +85,20 @@ Granular card-level SRS state (the single source of truth for SRS).
 - **Constraints** (`NOT VALID`: new writes only): `card_id` 1–128 chars; `ease` 1–10, `interval` 0–36500, `repetitions` 0–100000, `learning_step` null or 0–100.
 - **Notes**: Written via the `upsert_card_progress` RPC (batched); read through `get_sync_state`. Due cards for review sessions are derived from local SRS state (`deriveLocalDueCardIds`).
 
+### 5. `shared_folders` (migration `20261026120000`, pending owner application)
+Link-addressed snapshots of custom folders. Re-publishing updates the snapshot and retains its ID; deleting the source folder deletes its share.
+- **Columns**: `id` (URL-safe text slug), `owner_id` (FK → `auth.users` on delete cascade), `source_folder_id` (unique nullable FK → `user_folders` on delete cascade), `name`, `color`, `cards` (jsonb), `save_count`, `created_at`, `updated_at`
+- **Indexes**: `shared_folders_owner_id_idx` on (`owner_id`)
+- **Limits**: at most 50 rows per owner; slug length 8–16; name ≤ 200 chars; color ≤ 64; cards must be an array with at most 500 entries and at most 256 KiB.
+- **RLS / grants**: owner-only select/insert/update/delete. `authenticated` gets column-level insert/update grants that omit `save_count`; only `save_shared_folder` changes it. There is no anonymous table access.
+- **Snapshot card shape**: `{ simplified, traditional, pinyin, translation, notes, measureWords }`; text values are capped at 2000 characters and measure words are a string array.
+
+### 6. `shared_folder_saves` (migration `20261026120000`, pending owner application)
+Deduplicates a user's save of one shared snapshot.
+- **Columns / primary key**: `share_id` (FK → `shared_folders.id` on delete cascade), `user_id` (FK → `auth.users` on delete cascade), `created_at`; primary key (`share_id`, `user_id`).
+- **Indexes**: `shared_folder_saves_user_id_idx` on (`user_id`) supports account deletion cascades.
+- **RLS / grants**: RLS enabled with no client policies or table privileges. Access is only through the save RPC.
+
 ---
 
 ## ⚡ Stored Procedures (RPCs)
@@ -95,6 +109,8 @@ The immutable-history RPC is `SECURITY INVOKER` with owner and school-beta RLS. 
 |---|---|---|
 | `append_review_events(p_events jsonb)` | Insert immutable review observations, idempotent by user/event ID | At most 500 per call; owner and beta RLS; pre-reset events are ignored |
 | `get_sync_state(p_since timestamptz default null)` | The whole pull as one jsonb: `cards` (each with `reviewed_at` and `learned_at`), `cursor`, `profile` (`updated_at`, `settings`, `progress_reset_at`), `folders` | Cards and `review_events` are incremental from `p_since` (`>=`); `cursor` is the newest server write time across both sets. `scheduler_state` rides on each card. Folders and profile are always returned (so `p_since` in the far future is a cheap profile + folders read). Used by `userService.getSyncState` / `getFolders` |
+| `get_shared_folder(p_id text)` | Read one snapshot by link ID | `SECURITY DEFINER`, stable, authenticated-only; returns one snapshot, save count, nullable profile display name and update time. No listing RPC or anonymous access |
+| `save_shared_folder(p_id text)` | Record a user's copy once and return the count | `SECURITY DEFINER`, authenticated-only; increments only after a new `(share_id, auth.uid())` ledger row. Owners do not count their own share |
 | `upsert_card_progress(p_records jsonb)` | Batch upsert card rows (fills `user_id` from JWT) | Max 500 records. Last write wins per row for the SRS fields: they are overwritten only if the incoming `reviewed_at` (default `now()` for records with SRS state but no time, i.e. older clients) is >= the stored one. `learned_at` merges separately (`COALESCE(stored, incoming)`, never cleared), so a learned flag persists with an unchanged or even older review; a stale record that adds nothing is a no-op. A record with no `next_review_date`/`reviewed_at` stores a learned-only placeholder. Numeric fields are clamped to the CHECK ranges. Legacy clients cannot overwrite an existing FSRS snapshot with SM-2 state. `last_updated = now()` on every write |
 | `reset_user_learning_progress()` | Deletes the caller's progress and review-event rows (learned flags included) | Sets `user_profiles.progress_reset_at` (the reset epoch) and `updated_at`; creates the profile row if missing |
 | `export_my_data()` | The caller's own data as one jsonb: `exported_at`, `profile`, `folders`, `flashcards`, `card_progress` (rows include `learned_at` and `scheduler_state`), `review_events` | Backs "Download my data" in Settings (`userService.exportMyData`) |
@@ -111,7 +127,7 @@ The immutable-history RPC is `SECURITY INVOKER` with owner and school-beta RLS. 
 - **Full-course grant** (`20261018154836`, `20261020102750`): `public.has_full_course_access()` checks the caller's verified Google identity against the private, non-API `private.full_course_access_emails` table. The migration explicitly adds `gwaporon311@gmail.com` to both the beta-owner allowlist and full-course grant, so that account can pass the school-beta gate and unlock all books and lessons. Remove the full-course row to revoke the lesson grant; remove the beta-owner row too to revoke beta access.
 - `public.require_school_beta_access()` is the PostgREST pre-request hook: anonymous calls are 401 and unauthorized accounts are 403 before tables or privileged RPCs execute. Administrative service-role operations retain their existing access. The private signup and access-token hooks are executable only by Supabase Auth; they must also be enabled in Auth configuration. See `DEPLOY.md` for activation and the remaining public-content boundaries.
 
-- All `user_*` tables have RLS enabled with owner-only policies; `anon` has no privileges on them (revoked per table in `20260827` and again for the user tables in `20261007120000`, which also stopped default privileges from granting `anon` on future tables/functions), `authenticated` lacks TRUNCATE/REFERENCES/TRIGGER, and the user RPCs are not executable by `anon`/`PUBLIC`.
+- All `user_*` tables have RLS enabled with owner-only policies; `anon` has no privileges on them (revoked per table in `20260827` and again for the user tables in `20261007120000`, which also stopped default privileges from granting `anon` on future tables/functions), `authenticated` lacks TRUNCATE/REFERENCES/TRIGGER, and the user RPCs are not executable by `anon`/`PUBLIC`. Shared snapshots are fetched only through the authenticated `get_shared_folder` RPC; their table remains owner-only and the save ledger has no client policies or privileges.
 - Removed over time: reference content tables (`dictionary`, `character_breakdowns_v2`, `book_vocabulary`, `mnemonics`) and `search_dictionary` (2026-10-03); `user_daily_progress` + `upsert_daily_progress` (nothing read them; XP/streaks were removed), `user_profiles.learned_cards` (legacy array mirror) and `user_profiles.last_activity` (never applied to client state) (2026-10-06); `user_learned_cards`, `append_learned_cards`, `replace_learned_cards` (folded into `user_card_progress.learned_at`) and `user_profiles.email` / `full_name` / `avatar_url` (auth PII duplicates) (2026-10-07); earlier cleanup (2026-08-27): `global_dictionary`, `character_breakdowns` (v1), `historical_dictionary`, `personal_vocabulary` + `personal_vocab_folders`, `user_progress`, `mnemonic_generation_queue`.
 - Synced preferences were moved out of auth `user_metadata` into `user_profiles.settings` (20261005 backfills, 20261006 strips them from `user_metadata`).
 
@@ -191,3 +207,57 @@ last sign-in, `auth.sessions.updated_at` (token refresh), `user_profiles.updated
 Dry run: `select * from private.inactive_accounts();`. Both functions are private
 and not executable by `anon`/`authenticated`. No warning email is sent yet (no
 custom SMTP). Run the orphan-photo script after cleanups.
+
+## Live folder collaboration (migration `20261027120000`, pending owner application)
+
+Collaboration is available only to beta-approved accounts. The existing signup,
+token and PostgREST gates and restrictive `school_beta_access` policies remain
+unchanged; the same restrictive policy applies to `folder_members`.
+
+- `folder_members`: `(folder_id, user_id)` primary key, cascading FKs to
+  `user_folders` and `auth.users`, `role` (`owner`/`editor`), `created_at`, and a
+  user-ID index. Existing folders receive an owner membership; new folders get
+  one through `user_folders_add_owner` / `add_folder_owner()`.
+- `user_folders.invite_code`: unique nullable URL-safe code, 10–16 characters.
+  Members **may read and re-share** this link. Only the owner can create,
+  rotate or clear it. Folder ownership cannot be transferred.
+- `private.my_folder_ids()` is a stable definer helper returning the current
+  caller's memberships. Policy scalar subqueries evaluate it once per statement
+  and avoid recursive membership/folder RLS.
+- `folder_members_select_member` lets members list their folder's membership
+  rows. `folder_members_delete_editor` lets editors leave and owners remove
+  editors. Owners cannot leave; clients have no INSERT/UPDATE grant.
+- The eight old `Users can … their own folders/flashcards` policies are replaced
+  with `user_folders_{select_member,insert_owner,update_owner,delete_owner}` and
+  `user_flashcards_{select_member,insert_member,update_member,delete_member}`.
+  Members read shared folders and read/add/edit/delete cards; folder metadata
+  and deletion remain owner-only. Card creators retain their existing own-row
+  access after leaving, but cannot place cards into a folder they no longer join.
+- `user_flashcards.folder_id` now uses **ON DELETE CASCADE**: deleting a folder
+  deletes every card in it for everyone. `protect_flashcard_creator()` forbids
+  changing a card's creator and allows only that creator to move it.
+- `enforce_folder_member_cap()` serializes membership inserts on the folder row
+  and caps membership at 20, including the owner. `enforce_folder_card_cap()`
+  serializes inserts and moves into a folder and caps cards at 2000. Existing
+  per-creator 5000-card limits stay in place. Corresponding triggers:
+  `folder_members_cap`, `user_flashcards_folder_cap`,
+  `user_flashcards_protect_creator`, `user_folders_protect_owner`.
+- Authenticated-only definer RPCs with empty search paths and explicit beta
+  checks: `create_folder_invite(uuid)` rotates/returns a 12-character code;
+  `clear_folder_invite(uuid)` revokes it; `get_folder_invite(text)` returns name,
+  colour, owner display name, card/member counts and membership status;
+  `join_folder(text)` joins idempotently; `remove_folder_member(uuid,uuid)`
+  removes an editor; `list_folder_members(uuid)` returns member profile names
+  and avatar palette colours to members only.
+- `get_sync_state(timestamptz)` retains its SRS/profile/cursor JSON contract,
+  includes member folders with additive `role`, `ownerId`, `memberCount`,
+  `inviteCode` fields, and adds `flashcards` with creator-owned and member-folder
+  cards. The observable card cache also fetches cards under RLS without a
+  creator filter, on focus and when opening a live folder (30-second throttle).
+  `export_my_data()` is explicitly replaced with the same own-data-only
+  behavior: other creators' cards are never exported.
+- No realtime subscriptions. SRS remains per account and card ID. Guest folder
+  imports exclude editor/member folders.
+
+Apply the pending snapshot and collaboration migrations in order with
+`supabase db push` before shipping this client.

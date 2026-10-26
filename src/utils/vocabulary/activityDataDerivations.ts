@@ -57,12 +57,7 @@ export function mapCustomCardsToFlashcards(
   vocabMap: Map<string, Flashcard>,
   libraryActiveFolder: string,
 ): { cards: Flashcard[]; knownIds: Set<string> } {
-  let filtered = customCards;
-  if (libraryActiveFolder !== 'custom') {
-    filtered = customCards.filter((c) => c.folderId === libraryActiveFolder);
-  } else if (libraryActiveFolder === 'custom') {
-    filtered = customCards.filter((c) => !c.folderId || c.folderId === 'custom');
-  }
+  const filtered = customCards.filter((c) => c.folderId === libraryActiveFolder);
 
   const results: Flashcard[] = filtered.map((c) => {
     const courseMatch =

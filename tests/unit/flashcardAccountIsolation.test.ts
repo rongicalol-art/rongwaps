@@ -35,6 +35,7 @@ const flush = () => new Promise<void>((resolve) => setImmediate(resolve));
 test('custom-card cache stays isolated across account changes, logout and delayed mutations', async (t) => {
   const reads: ReturnType<typeof deferred>[] = [];
   const writes: ReturnType<typeof deferred>[] = [];
+  const imported: unknown[] = [];
   const queue = (list: typeof reads) => {
     const pending = deferred();
     list.push(pending);
@@ -44,8 +45,10 @@ test('custom-card cache stays isolated across account changes, logout and delaye
     const query = {
       select: () => query,
       eq: () => query,
-      order: () => queue(reads),
+      order: () => query,
+      range: () => queue(reads),
       insert: () => queue(writes),
+      upsert: (folders: unknown) => { imported.push(folders); return queue(writes); },
       update: () => query,
       delete: () => query,
       match: () => queue(writes),
@@ -105,6 +108,49 @@ test('custom-card cache stays isolated across account changes, logout and delaye
       assert.equal(flashcardService.getCachedFlashcards('A')?.length, 1);
       assert.deepEqual(seen, [['A']]);
       offTwo();
+    });
+
+    await t.test('shared cards retain their creator and pulls paginate past the API row limit', async () => {
+      const off = subscribe('A');
+      const page = Array.from({ length: 1000 }, (_, index) => ({ ...rows('B')[0], id: `other-creator-${index}` }));
+      reads.shift()!.resolve({ data: page, error: null });
+      await flush();
+      reads.shift()!.resolve({ data: rows('A'), error: null });
+      await flush();
+      assert.equal(flashcardService.getCachedFlashcards('A')?.length, 1001);
+      assert.equal(flashcardService.getCachedFlashcards('A')?.[0].userId, 'B');
+      off();
+    });
+
+    await t.test('opening a shared folder refetches at most once per 30 seconds per account/folder', async () => {
+      const off = subscribe('A');
+      await completeRead('A');
+      const first = flashcardService.refetchFolderFlashcards('A', 'throttle-fixture');
+      assert.equal(reads.length, 1);
+      await flashcardService.refetchFolderFlashcards('A', 'throttle-fixture');
+      assert.equal(reads.length, 1);
+      await completeRead('A');
+      await first;
+      await flashcardService.refetchFolderFlashcards('A', 'throttle-fixture');
+      assert.equal(reads.length, 0);
+      const other = flashcardService.refetchFolderFlashcards('A', 'other-folder');
+      assert.equal(reads.length, 1);
+      await completeRead('A');
+      await other;
+      off();
+    });
+
+    await t.test('guest import never upserts a member folder or a different owner’s folder', async () => {
+      const folder = { id: 'guest-folder', name: 'Guest', color: 'blue' };
+      const upload = flashcardService.importFolders('A', [folder,
+        { ...folder, id: 'member-folder', role: 'editor', ownerId: 'B' },
+        { ...folder, id: 'other-owner', ownerId: 'B' },
+      ]);
+      assert.deepEqual(imported.pop(), [{ id: 'guest-folder', user_id: 'A', name: 'Guest', color: 'blue' }]);
+      writes.shift()!.resolve({ data: null, error: null });
+      await upload;
+      await flashcardService.importFolders('A', [{ ...folder, role: 'editor' }]);
+      assert.equal(writes.length, 0);
     });
 
     await t.test('failed create from a previous login cannot roll back the new login cache', async () => {

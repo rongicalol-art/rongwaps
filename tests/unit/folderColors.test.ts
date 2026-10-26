@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import {
   FOLDER_COLOR_PALETTE,
   STARRED_FOLDER_COLOR,
-  CUSTOM_CARDS_FOLDER_COLOR,
   getFolderColorOption,
   resolveFolderColor,
 } from '../../src/utils/folderColors';
@@ -23,14 +22,10 @@ test('palette has 8 distinct vibrant colors with front and back shades', () => {
   }
 });
 
-test('starred and custom cards canonical folder colors are defined', () => {
+test('starred folder canonical colors are defined', () => {
   assert.equal(STARRED_FOLDER_COLOR.id, 'yellow');
   assert.equal(STARRED_FOLDER_COLOR.front, '#E3B23C');
   assert.equal(STARRED_FOLDER_COLOR.back, '#C4952A');
-
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.id, 'blue');
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.front, '#3A7CA5');
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.back, '#2C6385');
 });
 
 test('getFolderColorOption finds color by id or hex case-insensitively', () => {

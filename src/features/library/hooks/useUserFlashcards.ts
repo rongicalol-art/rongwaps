@@ -14,19 +14,19 @@ const NO_CARDS: UserFlashcard[] = [];
 export function useUserFlashcards(): UserFlashcard[] {
   const { currentUser } = useAuth();
   const localFlashcards = useAppStore((state) => Array.isArray(state.localFlashcards) ? state.localFlashcards : NO_CARDS);
-  const [cards, setCards] = useState<UserFlashcard[]>(() => {
+  const [snapshot, setSnapshot] = useState<{ userId: string | null; cards: UserFlashcard[] }>(() => {
     const cached = currentUser ? flashcardService.getCachedFlashcards(currentUser.id) : localFlashcards;
-    return Array.isArray(cached) ? cached : NO_CARDS;
+    return { userId: currentUser?.id ?? null, cards: Array.isArray(cached) ? cached : NO_CARDS };
   });
 
   useEffect(() => {
     if (!currentUser) {
-      setCards(localFlashcards);
+      setSnapshot({ userId: null, cards: localFlashcards });
       return;
     }
 
     const unsubscribe = flashcardService.subscribeToUserFlashcards(currentUser.id, (updated) => {
-      setCards(Array.isArray(updated) ? updated : NO_CARDS);
+      setSnapshot({ userId: currentUser.id, cards: Array.isArray(updated) ? updated : NO_CARDS });
     });
 
     return () => {
@@ -36,8 +36,8 @@ export function useUserFlashcards(): UserFlashcard[] {
 
   // Cards saved before the encoder fix may hold a JSON-array string as their translation.
   return useMemo(
-    () => (currentUser ? cards.filter((card) => card.userId === currentUser.id) : localFlashcards)
+    () => (currentUser ? snapshot.userId === currentUser.id ? snapshot.cards : NO_CARDS : localFlashcards)
       .map((card) => (card.translation?.startsWith('["') ? { ...card, translation: meaningText(card.translation) } : card)),
-    [cards, currentUser, localFlashcards],
+    [snapshot, currentUser, localFlashcards],
   );
 }

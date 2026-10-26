@@ -184,6 +184,7 @@ export interface Database {
           name: string;
           color: string;
           created_at: string | null;
+          invite_code: string | null;
         };
         Insert: {
           id?: string;
@@ -191,6 +192,7 @@ export interface Database {
           name: string;
           color: string;
           created_at?: string | null;
+          invite_code?: string | null;
         };
         Update: {
           id?: string;
@@ -198,7 +200,56 @@ export interface Database {
           name?: string;
           color?: string;
           created_at?: string | null;
+          invite_code?: string | null;
         };
+        Relationships: [];
+      };
+      folder_members: {
+        Row: { folder_id: string; user_id: string; role: 'owner' | 'editor'; created_at: string | null };
+        Insert: { folder_id: string; user_id: string; role: 'owner' | 'editor'; created_at?: string | null };
+        Update: { folder_id?: string; user_id?: string; role?: 'owner' | 'editor'; created_at?: string | null };
+        Relationships: [{ foreignKeyName: 'folder_members_folder_id_fkey'; columns: ['folder_id']; isOneToOne: false; referencedRelation: 'user_folders'; referencedColumns: ['id'] }];
+      };
+      shared_folders: {
+        Row: {
+          id: string;
+          owner_id: string;
+          source_folder_id: string | null;
+          name: string;
+          color: string | null;
+          cards: Json;
+          save_count: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id: string;
+          owner_id: string;
+          source_folder_id?: string | null;
+          name: string;
+          color?: string | null;
+          cards: Json;
+          save_count?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          owner_id?: string;
+          source_folder_id?: string | null;
+          name?: string;
+          color?: string | null;
+          cards?: Json;
+          save_count?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      shared_folder_saves: {
+        Row: { share_id: string; user_id: string; created_at: string };
+        Insert: { share_id: string; user_id: string; created_at?: string };
+        Update: { share_id?: string; user_id?: string; created_at?: string };
         Relationships: [];
       };
       user_profiles: {
@@ -225,6 +276,22 @@ export interface Database {
     };
     Views: Record<never, never>;
     Functions: {
+      enforce_folder_member_cap: { Args: Record<PropertyKey, never>; Returns: unknown };
+      add_folder_owner: { Args: Record<PropertyKey, never>; Returns: unknown };
+      protect_folder_owner: { Args: Record<PropertyKey, never>; Returns: unknown };
+      protect_flashcard_creator: { Args: Record<PropertyKey, never>; Returns: unknown };
+      enforce_folder_card_cap: { Args: Record<PropertyKey, never>; Returns: unknown };
+
+      create_folder_invite: { Args: { p_folder_id: string }; Returns: string };
+      clear_folder_invite: { Args: { p_folder_id: string }; Returns: undefined };
+      get_folder_invite: {
+        Args: { p_code: string };
+        Returns: { folder_id: string; name: string; color: string; card_count: number; owner_display_name: string | null; member_count: number; already_member: boolean }[];
+      };
+      join_folder: { Args: { p_code: string }; Returns: string };
+      remove_folder_member: { Args: { p_folder_id: string; p_user_id: string }; Returns: undefined };
+      list_folder_members: { Args: { p_folder_id: string }; Returns: { user_id: string; role: 'owner' | 'editor'; display_name: string | null; avatar_color: string | null }[] };
+
       submit_feedback: {
         Args: { p_id: string; p_message: string; p_path: string; p_browser: string; p_app_version: string };
         Returns: boolean;
@@ -249,6 +316,18 @@ export interface Database {
       get_sync_state: {
         Args: { p_since?: string | null };
         Returns: Json;
+      };
+      get_shared_folder: {
+        Args: { p_id: string };
+        Returns: { id: string; name: string; color: string | null; cards: Json; save_count: number; owner_display_name: string | null; updated_at: string }[];
+      };
+      save_shared_folder: {
+        Args: { p_id: string };
+        Returns: number;
+      };
+      enforce_shared_folder_owner_and_cap: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
       };
       reset_user_learning_progress: {
         Args: Record<PropertyKey, never>;

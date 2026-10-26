@@ -73,6 +73,10 @@ export function createSingleFlightSaveCoordinator<T>(
 }
 
 export interface SyncedFolderSnapshot {
+  role?: 'owner' | 'editor';
+  memberCount?: number;
+  ownerId?: string;
+  inviteCode?: string | null;
   id: string;
   name: string;
   color: string;
@@ -107,6 +111,10 @@ export function isSameFolderList(
       && folder.id === other.id
       && folder.name === other.name
       && folder.color === other.color
+      && folder.role === other.role
+      && folder.memberCount === other.memberCount
+      && folder.ownerId === other.ownerId
+      && folder.inviteCode === other.inviteCode
     );
   });
 }

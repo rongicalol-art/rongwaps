@@ -1,0 +1,1 @@
+export { JoinFolderScreen } from './JoinFolderScreen';

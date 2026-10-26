@@ -105,7 +105,6 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
 ];
 
 export const STARRED_FOLDER_COLOR: FolderColorOption = FOLDER_COLOR_PALETTE.find(c => c.id === 'yellow')!;
-export const CUSTOM_CARDS_FOLDER_COLOR: FolderColorOption = FOLDER_COLOR_PALETTE.find(c => c.id === 'blue')!;
 
 export function getFolderColorOption(idOrColor?: string): FolderColorOption | undefined {
   if (!idOrColor) return undefined;
@@ -122,7 +121,7 @@ export function getFolderColorOption(idOrColor?: string): FolderColorOption | un
  */
 export function resolveFolderColor(colorStr: string | undefined, index = 0): FolderColorOption {
   // Cyclic fallback: offsets by 1 so the first custom folder defaults to Purple (index 0 -> Purple)
-  // since Blue is already the default for built-in Custom Cards.
+  // (kept so existing folders keep the colours they already show).
   const fallbackIndex = (index + 1) % FOLDER_COLOR_PALETTE.length;
   const defaultFallback = FOLDER_COLOR_PALETTE[fallbackIndex];
 
