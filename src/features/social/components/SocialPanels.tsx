@@ -67,13 +67,13 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           tabs={[...(lesson === null ? [] : [{ id: 'lesson' as const, label: 'Lesson' }]), { id: 'online', label: 'Online', count: panel.tab === 'online' ? online.length : onlineTotal }, { id: 'chat', label: 'Chat', dot: unread && panel.tab !== 'chat' }, { id: 'party', label: 'Party' }]} />
       </div>
       {panel.tab === 'chat' ? <>
-        <SegmentedControl<'global' | 'lesson'>
+        {lesson !== null && <SegmentedControl<'global' | 'lesson'>
           ariaLabel="Chat room"
           value={scope}
           onChange={(chatScope) => setPanel({ ...panel, chatScope })}
-          options={[{ value: 'global', label: 'Global' }, ...(lesson === null ? [] : [{ value: 'lesson' as const, label: lessonHeading(lesson).eyebrow ?? 'Lesson' }])]}
+          options={[{ value: 'global', label: 'Global' }, { value: 'lesson', label: lessonHeading(lesson).eyebrow ?? 'Lesson' }]}
           className="mb-3 shrink-0"
-        />
+        />}
         <ChatThread key={scope} lesson={scope === 'global' ? GLOBAL_CHAT : lesson ?? GLOBAL_CHAT} />
       </> : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
