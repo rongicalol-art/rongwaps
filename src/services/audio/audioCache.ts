@@ -40,7 +40,7 @@ export async function getAudioFileCache(): Promise<Cache | null> {
   if (audioFileCacheInstance) return audioFileCacheInstance;
   if (typeof caches === 'undefined') return null;
   if (audioFileCacheOpening) return audioFileCacheOpening;
-  audioFileCacheOpening = Promise.resolve().then(() => caches.open('rongwaps-audio-v6'))
+  audioFileCacheOpening = Promise.resolve().then(() => caches.open('rongwaps-audio-v7'))
     .then((cache) => { audioFileCacheInstance = cache; return cache; }, (error) => {
       debugLogger.warn('Audio', 'CacheStorage open failed, proceeding without persistent audio cache', error);
       return null;
@@ -144,7 +144,10 @@ export function publicAudioUrl(fileName: string): string | null {
   const encodedPath = fileName.split('/').map(encodeURIComponent).join('/');
   const customCdn = viteEnv('VITE_AUDIO_BASE_URL');
   if (customCdn && /^https?:\/\//.test(customCdn)) {
-    return customCdn.replace(/\/+$/, '') + '/' + encodedPath;
+    // Quieter R2 copies preserve timing; versioned paths bypass loud CDN copies.
+    const prefix = /^(?:B1-\d{2}-[1-3]-[1-3]|modernchinese-B1L\d{2}-\d-\d+|vocabulary-trimmed\/v1\/B1L\d{2}-\d-\d+-[a-f0-9]{12})\.mp3$/.test(fileName)
+      ? 'normalized/book1-v1/' : '';
+    return customCdn.replace(/\/+$/, '') + '/' + prefix + encodedPath;
   }
   const supabaseUrl = viteEnv('VITE_SUPABASE_URL');
   if (supabaseUrl && /^https?:\/\//.test(supabaseUrl) && !supabaseUrl.includes('your_')) {
