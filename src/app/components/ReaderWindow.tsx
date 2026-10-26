@@ -33,9 +33,11 @@ export function ReaderWindow({ isOpen = false, loadError = false, onRetry, readi
 
   const activeReading = index !== null && readings[index] ? readings[index] : null;
   const shouldRender = isOpen || Boolean(activeReading);
-  const readingText = activeReading
-    ? activeReading.title + activeReading.paragraphs.map((p) => p.traditional + p.simplified).join('')
-    : '';
+  // Scrolling changes the audio target, while the whole selected session stays mounted.
+  const readingText = (sessionIndices?.length ? sessionIndices.map((partIndex) => readings[partIndex]) : [activeReading])
+    .filter((reading) => reading != null)
+    .map((reading) => reading.title + reading.paragraphs.map((p) => p.traditional + p.simplified).join(''))
+    .join('');
   const phase = useOpenPhase(Boolean(activeReading), useFontGate(readingText), shouldRender ? 'open' : 'closed');
   const cameFromLoader = useReplacesLoader(phase === 'loading', shouldRender);
 
