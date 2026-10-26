@@ -28,12 +28,15 @@ interface Choice {
   label: string;
 }
 
-function OptionGroup({ title, options, selected, onSelect, grid = false }: { title: string; options: Choice[]; selected: string | null; onSelect: (id: string | null) => void; grid?: boolean }) {
+/** Equal-width cells in a fixed column count, so a group never leaves one chip alone on its last row. */
+const COLUMNS = { 4: 'grid-cols-4', 6: 'grid-cols-6' } as const;
+
+function OptionGroup({ title, options, selected, onSelect, columns = 4 }: { title: string; options: Choice[]; selected: string | null; onSelect: (id: string | null) => void; columns?: keyof typeof COLUMNS }) {
   if (options.length === 0) return null;
   return (
     <div>
       <p className="mb-2 text-xs font-black uppercase tracking-widest text-ui-muted">{title}</p>
-      <div className={grid ? 'grid grid-cols-6 gap-1.5' : 'flex flex-wrap gap-1.5'}>
+      <div className={cn('grid gap-1.5', COLUMNS[columns])}>
         {options.map((option) => {
           const isActive = option.id === selected;
           return (
@@ -43,11 +46,10 @@ function OptionGroup({ title, options, selected, onSelect, grid = false }: { tit
               aria-pressed={isActive}
               onClick={() => onSelect(isActive ? null : option.id)}
               className={cn(
-                'rounded-control border-2 border-b-[3px] py-1 text-sm font-black tabular-nums transition-colors focus-ring',
-                grid ? 'px-0 text-center' : 'px-2.5',
+                'rounded-compact border-2 px-0 py-1.5 text-center text-sm font-black tabular-nums transition-colors focus-ring',
                 isActive
-                  ? 'border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft text-brand-primary-deep'
-                  : 'border-ui-divider bg-ui-surface text-ui-ink-strong',
+                  ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep'
+                  : 'border-ui-divider bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
               )}
             >
               {option.label}
@@ -104,7 +106,7 @@ export function SearchFilterMenu({ levelOptions, bookOptions = [], lessonOptions
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.98 }}
             transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-            className="absolute right-0 top-full z-50 mt-2 flex w-72 flex-col gap-4 popover-surface p-4 text-left sm:w-80"
+            className="absolute right-0 top-full z-50 mt-2 flex w-72 flex-col gap-3.5 popover-surface p-4 text-left sm:w-80"
           >
             {hasOptions ? (
               <>
@@ -117,7 +119,7 @@ export function SearchFilterMenu({ levelOptions, bookOptions = [], lessonOptions
                 {value.bookId !== null && (
                   <OptionGroup
                     title={`Lesson · Book ${value.bookId}`}
-                    grid
+                    columns={6}
                     options={lessonOptions.map((id) => ({ id: String(id), label: String(id) }))}
                     selected={value.lessonId === null ? null : String(value.lessonId)}
                     onSelect={(id) => onChange({ ...value, lessonId: id === null ? null : Number(id) })}
