@@ -41,16 +41,7 @@ Use the `verify-change` skill.
 - Docs describe what EXISTS. Update `docs/WIDGETS.md` when adding a shared widget.
 - **Ponytail ladder (stop at first rung):** (1) Does it need to exist? (YAGNI) → (2) Already in repo? (`src/lib/widgets/`, `src/utils/`, tokens) → (3) Stdlib / native platform / CSS over JS → (4) Existing dep → (5) Minimum code. Deletion over addition; no unrequested abstractions or "for later" scaffolding; name the duplication before adding an abstraction.
 - **Root-cause fixes only:** Before fixing a bug, grep all callers of the function you touch. Fix once at the shared root, never patch a single caller's symptom.
-
-## Repo map (what ships vs what doesn't)
-
-- `src/` client → `dist/` (ships) · `server/` Express API → `dist-server/` (ships; never imports `src/` except types)
-- `public/` static assets (ships). `public/data/` is GENERATED from `content/` + scripts — never hand-edit
-- `content/` authored source for packs (grammar, readings, dialogue alignment, `audio/` index+manifest)
-- `scripts/` content/audio pipelines, dev-only; never imported by `src/` or `server/`
-- `supabase/migrations/` DB schema, applied with `supabase db push`
-- `tests/` · `docs/` (`docs/INDEX.md` routes) · `.claude/` agent rules/skills
-- Gitignored local scratch: `materials/` `output/` `.audit/` `.agents/`
+- `scripts/` is dev-only: never imported by `src/` or `server/`. DB migrations live in `supabase/migrations/`, applied with `supabase db push`.
 
 ## Architecture (binding)
 

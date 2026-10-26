@@ -31,7 +31,7 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   grammar: new URL('../../assets/icons/flat/light-bulb.svg?no-inline', import.meta.url).href,
   grammarBook: new URL('../../assets/icons/flat/book-bookmark.svg?no-inline', import.meta.url).href,
   hint: new URL('../../assets/icons/flat/light-bulb.svg?no-inline', import.meta.url).href,
-  reading: new URL('../../assets/icons/flat/bubbles-alt.svg?no-inline', import.meta.url).href,
+  reading: new URL('../../assets/icons/flat/post-it.svg?no-inline', import.meta.url).href,
   reference: new URL('../../assets/icons/flat/book.svg?no-inline', import.meta.url).href,
   reward: new URL('../../assets/icons/flat/star.svg?no-inline', import.meta.url).href,
   review: new URL('../../assets/icons/flat/dashboard.svg?no-inline', import.meta.url).href,

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ActionButton, AppIcon, AvatarStack } from '../../../lib/widgets';
+import { ActionButton, AppIcon, AvatarStack, PlayfulNavIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 
 /** Global classmates in the existing header slot; full roster loads only after opening it. */
@@ -60,7 +60,7 @@ export function HereButton({ lesson }: { lesson: number }) {
   );
 }
 
-/** Practice hub: Challenge sits under Quiz; the one book-colour card in the hub. Hidden when study together is off. */
+/** Practice hub: Challenge sits under Quiz; a quiet row like Quiz, with a live online line. Hidden when study together is off. */
 export function ChallengeCard({ onOpen }: { onOpen: () => void }) {
   // Hidden only when study together is off (a brief reconnect keeps it in place).
   const live = useAppStore((state) => state.socialStatus !== 'off');
@@ -74,23 +74,23 @@ export function ChallengeCard({ onOpen }: { onOpen: () => void }) {
   if (!live) return null;
   return (
     <ActionButton
-      variant="primary"
+      variant="secondary"
       size="lg"
       fullWidth
+      edgeColor="var(--color-ui-border)"
       onClick={() => { onOpen(); useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'lesson' } }); }}
-      className="min-h-[5.25rem] justify-start gap-3.5 normal-case tracking-normal"
+      className="min-h-[5rem] justify-start gap-3.5 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
     >
-      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-compact bg-ui-surface"><AppIcon name="party" size={30} className="text-brand-primary" /></span>
+      <PlayfulNavIcon name="challenge" className="h-8 w-8" />
       <span className="min-w-0 flex-1 text-left">
         <span className="block text-lg font-black">Challenge</span>
-        <span className="block text-sm font-bold opacity-85">Race friends or join a room</span>
-      </span>
-      {online.total > 0 && (
-        <span className="flex flex-col items-end gap-1">
-          <AvatarStack people={online.faces} size="sm" max={3} />
-          <span className="flex items-center gap-1 text-xs font-black"><span className="h-2 w-2 rounded-full bg-feedback-success" />{online.total} online</span>
+        <span className="flex items-center gap-1.5 text-sm font-bold text-ui-muted-strong">
+          {online.total > 0 && <span className="h-2 w-2 shrink-0 rounded-full bg-feedback-success" />}
+          <span className="truncate">{online.total > 0 ? `${online.total} online · race or join a room` : 'Race friends or join a room'}</span>
         </span>
-      )}
+      </span>
+      {online.total > 0 && <AvatarStack people={online.faces} size="sm" max={3} />}
+      <AppIcon name="next" size={18} className="shrink-0 text-ui-muted-strong" />
     </ActionButton>
   );
 }
