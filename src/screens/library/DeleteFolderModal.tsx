@@ -1,3 +1,4 @@
+import { isFolderOwner } from '../../utils/vocabulary/folderCollaboration';
 import type { UserFolder } from '../../types/models';
 import { ConfirmationDialog } from '../../lib/widgets';
 
@@ -16,12 +17,12 @@ export function DeleteFolderModal({
 
   return (
     <ConfirmationDialog
-      title={deleteFolderTarget.role === 'editor' ? 'Leave folder?' : 'Delete folder?'}
+      title={!isFolderOwner(deleteFolderTarget) ? 'Leave folder?' : 'Delete folder?'}
       description={
         <>
           <p className="font-extrabold text-ui-ink">"{deleteFolderTarget.name}"</p>
           <p className="mt-1 text-sm font-bold leading-relaxed text-ui-muted-strong">
-            {deleteFolderTarget.role === 'editor'
+            {!isFolderOwner(deleteFolderTarget)
               ? "You'll lose access to this folder and its cards. Cards you added stay in it."
               : (deleteFolderTarget.memberCount ?? 0) > 1
                 ? 'This deletes the folder and all its cards for everyone. This can’t be undone.'
@@ -29,8 +30,8 @@ export function DeleteFolderModal({
           </p>
         </>
       }
-      confirmLabel={deleteFolderTarget.role === 'editor' ? 'Leave folder' : 'Delete'}
-      confirmLoadingLabel={deleteFolderTarget.role === 'editor' ? 'Leaving…' : 'Deleting…'}
+      confirmLabel={!isFolderOwner(deleteFolderTarget) ? 'Leave folder' : 'Delete'}
+      confirmLoadingLabel={!isFolderOwner(deleteFolderTarget) ? 'Leaving…' : 'Deleting…'}
       cancelLabel="Cancel"
       onConfirm={confirmDeleteFolder}
       onCancel={() => setDeleteFolderTarget(null)}

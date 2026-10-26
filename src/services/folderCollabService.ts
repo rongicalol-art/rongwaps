@@ -12,8 +12,8 @@ export const folderCollabService = {
     if (error) throw error;
     return data;
   },
-  async clearInvite(folderId: string): Promise<void> {
-    const { error } = await supabase.rpc('clear_folder_invite', { p_folder_id: folderId });
+  async setRole(folderId: string, userId: string, role: 'viewer' | 'editor'): Promise<void> {
+    const { error } = await supabase.rpc('set_folder_member_role', { p_folder_id: folderId, p_user_id: userId, p_role: role });
     if (error) throw error;
   },
   async getInvite(code: string): Promise<FolderInvite | null> {

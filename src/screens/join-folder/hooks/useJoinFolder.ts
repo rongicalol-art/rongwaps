@@ -42,7 +42,7 @@ export function useJoinFolder(code: string) {
       // Call even for existing members: validates rotation/deletion and is idempotent.
       const id = await folderCollabService.join(code);
       const fresh = await userService.getFolders();
-      await flashcardService.refetchFlashcards(user.id);
+      await flashcardService.refetchFolderFlashcards(user.id, id, true);
       const store = useAppStore.getState();
       if (store.currentUser?.id !== user.id) return;
       store.setCustomFolders(fresh);

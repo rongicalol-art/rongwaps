@@ -32,8 +32,6 @@ export interface LibraryState {
   addCustomFolder: (name: string, color: string, id?: string) => void;
   deleteCustomFolder: (id: string) => void;
   updateCustomFolder: (id: string, patch: { name: string; color: string }) => void;
-  sharedFolderCopies: Record<string, string>;
-  setSharedFolderCopy: (shareId: string, folderId: string) => void;
   /**
    * Id of the user the current folder list was last pulled from on this
    * device. Null until folders have ever been pulled for an account — the
@@ -86,10 +84,6 @@ export function createLibrarySlice(set: SetState): LibraryState {
     updateCustomFolder: (id, patch) => set((s) => ({
       customFolders: s.customFolders.map(f => (f.id === id ? { ...f, ...patch } : f)),
     })),
-    sharedFolderCopies: {},
-    setSharedFolderCopy: (shareId, folderId) => set((s) => ({
-      sharedFolderCopies: { ...s.sharedFolderCopies, [shareId]: folderId },
-    })),
     foldersSyncedUserId: null,
     setFoldersSyncedUserId: (userId) => set({ foldersSyncedUserId: userId }),
     localFlashcards: [],
@@ -109,7 +103,6 @@ export function createLibrarySlice(set: SetState): LibraryState {
 export const LIBRARY_PERSISTED_KEYS = [
   'favorites',
   'customFolders',
-  'sharedFolderCopies',
   'foldersSyncedUserId',
   'localFlashcards',
   'libraryActiveFolder',
@@ -119,7 +112,6 @@ export const LIBRARY_PERSISTED_KEYS = [
 export const LIBRARY_ACCOUNT_SWITCH_DEFAULTS = {
   favorites: [],
   customFolders: [],
-  sharedFolderCopies: {},
   foldersSyncedUserId: null,
   // The library view points at account-scoped folders. `customFolders` is
   // cleared above, so keeping the pointer would leave the library pinned to a

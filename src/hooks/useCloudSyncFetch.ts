@@ -1,3 +1,4 @@
+import { isFolderOwner } from '../utils/vocabulary/folderCollaboration';
 import { useCallback, useRef, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
 import type { SRSData } from '../utils/srs/srsEngine';
@@ -150,7 +151,7 @@ export function useCloudSyncFetch({
       // uploaded once.
       const guestFolders = resolveGuestFolderMigration({
         isAccountSwitch,
-        prePullFolders: prePullFolders.filter((folder) => folder.role !== 'editor' && (!folder.ownerId || folder.ownerId === currentUser.id)),
+        prePullFolders: prePullFolders.filter((folder) => isFolderOwner(folder) && (!folder.ownerId || folder.ownerId === currentUser.id)),
         prePullFolderOwner,
         serverFolders: cloudData.folders,
       });

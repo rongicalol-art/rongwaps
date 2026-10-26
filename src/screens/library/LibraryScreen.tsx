@@ -12,9 +12,9 @@ import {
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
 import { GlobalPresenceButton } from '../../features/social';
-import { FolderMembersDrawer } from './components/FolderMembersDrawer';
+import { FolderShareDrawer } from './components/FolderShareDrawer';
 import { useFolderCollaboration } from './hooks/useFolderCollaboration';
-import { ownsFolder, memberAvatarColor } from '../../utils/vocabulary/folderCollaboration';
+import { isFolderOwner, canEditFolder, memberAvatarColor } from '../../utils/vocabulary/folderCollaboration';
 import { useLibrary } from './hooks/useLibrary';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { useReviewOverview } from './hooks/useReviewOverview';
@@ -32,7 +32,6 @@ import { EditCardDialog } from './EditCardDialog';
 import { LibraryContextMenu, type LibraryMenuAction, type MenuPoint } from './components/LibraryContextMenu';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
-import { shareFolderLink } from '../../utils/browser/shareLink';
 import { useAppStore } from '../../store/useAppStore';
 
 interface LibraryScreenProps {
@@ -91,9 +90,6 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
     setMoveOpen,
     moveSelectedTo,
     currentUser,
-    sharedFolders,
-    publishSharedFolder,
-    stopSharingFolder,
   } = useLibrary();
 
   const collaboration = useFolderCollaboration(activeView, libraryActiveFolder);
@@ -126,31 +122,8 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
   const [menu, setMenu] = useState<{ kind: 'folder' | 'card'; id: string; name: string; point: MenuPoint } | null>(null);
   const closeMenu = useCallback(() => setMenu(null), []);
 
-  const publishAndShare = async (folderId: string, title: string) => {
-    try {
-      const shareId = await publishSharedFolder(folderId);
-      await shareFolderLink(title, shareId);
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Could not share this folder.';
-      useAppStore.getState().showFeedbackToast(message, 'neutral', 3500);
-    }
-  };
-  // Header share reuses an existing link; republishing stays an explicit menu action.
-  const shareOpenFolder = () => {
-    const share = sharedFolders.find((item) => item.sourceFolderId === libraryActiveFolder);
-    const title = activeCollection.title ?? 'Folder';
-    if (share) void shareFolderLink(title, share.id);
-    else void publishAndShare(libraryActiveFolder, title);
-  };
-  const canShareOpenFolder = Boolean(currentUser) && ownsFolder(collaboration.activeFolder);
-  const stopSharing = async (shareId: string) => {
-    try {
-      await stopSharingFolder(shareId);
-      useAppStore.getState().showFeedbackToast('Folder sharing stopped', 'neutral', 2200);
-    } catch {
-      useAppStore.getState().showFeedbackToast('Could not stop sharing this folder', 'neutral', 2500);
-    }
-  };
+  const editable = canEditFolder(collaboration.activeFolder);
+  const canShareOpenFolder = Boolean(currentUser && collaboration.activeFolder);
 
   const handleCardMenu = useCallback(
     (card: DBDictionaryEntry | UserFlashcard, point: MenuPoint) => {
@@ -161,20 +134,9 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
   );
 
   const menuFolder = folders.find((folder) => folder.id === menu?.id);
-  const menuOwner = ownsFolder(menuFolder);
-  const share = sharedFolders.find((item) => item.sourceFolderId === menu?.id);
+  const menuOwner = isFolderOwner(menuFolder);
   const menuActions: LibraryMenuAction[] = !menu ? [] : menu.kind === 'folder' ? [
-    ...(currentUser && menuFolder ? [
-      ...(menuOwner ? [{ id: 'invite', label: 'Invite to edit', icon: 'link' as const, onSelect: () => void collaboration.invite(menu.id) }] : []),
-      { id: 'members', label: 'Members', icon: 'family' as const, onSelect: () => collaboration.setMembersFolderId(menu.id) },
-      ...(menuOwner ? [
-        { id: 'share', label: 'Share copy', icon: 'share' as const, onSelect: () => share ? void shareFolderLink(menu.name, share.id) : void publishAndShare(menu.id, menu.name) },
-        ...(share ? [
-          { id: 'update-share', label: 'Update shared copy', icon: 'share' as const, onSelect: () => void publishAndShare(menu.id, menu.name) },
-          { id: 'stop-share', label: 'Stop sharing', icon: 'trash' as const, danger: true, onSelect: () => void stopSharing(share.id) },
-        ] : []),
-      ] : []),
-    ] : []),
+    ...(currentUser && menuFolder ? [{ id: 'share', label: 'Share', icon: 'share' as const, onSelect: () => collaboration.setShareFolderId(menu.id) }] : []),
     ...(menuOwner ? [{ id: 'edit', label: 'Edit folder', icon: 'pencil' as const, onSelect: () => openEditFolder(menu.id) }] : []),
     { id: 'delete', label: menuOwner ? 'Delete folder' : 'Leave folder', icon: 'trash', danger: true, onSelect: () => { if (menuFolder) setDeleteFolderTarget(menuFolder); } },
   ] : [
@@ -203,12 +165,12 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 </span>
               )}
               {(collaboration.activeFolder?.memberCount ?? 0) > 1 && collaboration.members && (
-                <button className="rounded-control p-1 focus-ring" aria-label="Folder members" onClick={() => collaboration.setMembersFolderId(libraryActiveFolder)}>
+                <span aria-label="Folder people">
                   <AvatarStack people={collaboration.members.map((member) => ({ name: member.display_name || 'Learner', color: memberAvatarColor(member.avatar_color) }))} />
-                </button>
+                </span>
               )}
               {canShareOpenFolder && (
-                <IconActionButton variant="surface" label="Share copy" icon={<AppIcon name="share" size={20} />} onClick={shareOpenFolder} />
+                <IconActionButton variant="surface" label="Share" icon={<AppIcon name="share" size={20} />} onClick={() => collaboration.setShareFolderId(libraryActiveFolder)} />
               )}
             </div>
           ) : (
@@ -302,7 +264,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                   </ActionButton>
                 }
               />
-            ) : items.length === 0 && (isStarred || !onAddCard) ? (
+            ) : items.length === 0 && (isStarred || !onAddCard || !editable) ? (
               <EmptyState
                 key="empty-folder"
                 icon={isStarred ? 'bookmarkFilled' : 'folder'}
@@ -316,12 +278,12 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 items={items}
                 isStarred={isStarred}
                 libraryActiveFolder={libraryActiveFolder}
-                onAddCard={onAddCard}
+                onAddCard={editable ? onAddCard : undefined}
                 tone={activeCollection}
                 onRemoveCard={handleRemoveCard}
                 onOpenCard={handleOpenCard}
-                onCardMenu={handleCardMenu}
-                isSelecting={isSelecting}
+                onCardMenu={editable ? handleCardMenu : undefined}
+                isSelecting={editable && isSelecting}
                 selectedKeys={selectedKeys}
                 getItemKey={getItemKey}
                 onToggleSelect={(card) => toggleSelected(getItemKey(card))}
@@ -349,16 +311,18 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
         setDeleteTargetId={setDeleteTargetId}
         confirmDelete={confirmDelete}
       />
-      <FolderMembersDrawer
-        folder={collaboration.membersFolder}
+      <FolderShareDrawer
+        currentUserId={currentUser?.id}
+        folder={collaboration.shareFolder}
         members={collaboration.members}
         error={collaboration.error}
         busy={collaboration.busy}
-        onClose={() => collaboration.setMembersFolderId(null)}
+        onClose={() => collaboration.setShareFolderId(null)}
         onRetry={collaboration.retry}
         onRemove={(userId) => void collaboration.removeMember(userId)}
-        onInvite={(rotate) => { if (collaboration.membersFolder) void collaboration.invite(collaboration.membersFolder.id, rotate); }}
-        onLeave={() => { if (collaboration.membersFolder) { setDeleteFolderTarget(collaboration.membersFolder); collaboration.setMembersFolderId(null); } }}
+        onCopyLink={collaboration.invite}
+        onSetRole={(userId, role) => void collaboration.setRole(userId, role)}
+        onLeave={() => { if (collaboration.shareFolder) { setDeleteFolderTarget(collaboration.shareFolder); collaboration.setShareFolderId(null); } }}
       />
       <DeleteFolderModal
         deleteFolderTarget={deleteFolderTarget}
@@ -380,12 +344,12 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
       <MoveCardsDialog
         open={moveOpen}
         selectedCount={selectedKeys.size}
-        folders={allCollections.filter((collection) => collection.id !== 'starred' && collection.id !== libraryActiveFolder)}
+        folders={allCollections.filter((collection) => collection.id !== 'starred' && collection.id !== libraryActiveFolder && canEditFolder(folders.find((folder) => folder.id === collection.id)))}
         onMove={(folderId) => void moveSelectedTo(folderId)}
         onClose={() => setMoveOpen(false)}
       />
 
-      {activeView === 'folder' && isSelecting && (
+      {activeView === 'folder' && editable && isSelecting && (
         <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10">
           <div className="mx-auto w-full max-w-md px-4 md:px-6">
             {selectedKeys.size === 0 ? (

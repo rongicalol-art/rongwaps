@@ -63,7 +63,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
           >
             {selected && <AppIcon name="check" size={14} />}
           </span>
-        ) : (
+        ) : (isStarred || onMenu) && (
           <button
             type="button"
             onClick={(e) => {

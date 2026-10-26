@@ -14,32 +14,13 @@ export interface UserFlashcard {
 }
 
 export interface UserFolder {
-  role?: 'owner' | 'editor';
+  role?: 'owner' | 'editor' | 'viewer';
   memberCount?: number;
   ownerId?: string;
   inviteCode?: string | null;
   id: string;
   name: string;
   color: string;
-}
-
-export interface SharedFolderCard {
-  simplified: string;
-  traditional: string;
-  pinyin: string;
-  translation: string;
-  notes: string;
-  measureWords: string[];
-}
-
-export interface SharedFolderPreview {
-  id: string;
-  name: string;
-  color: string | null;
-  cards: SharedFolderCard[];
-  saveCount: number;
-  ownerDisplayName: string | null;
-  updatedAt: string;
 }
 
 export type CourseLessonState = 'current' | 'completed' | 'available' | 'locked';

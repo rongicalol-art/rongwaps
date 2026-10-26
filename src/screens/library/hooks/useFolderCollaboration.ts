@@ -1,70 +1,81 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import { folderCollabService, type FolderMember } from '../../../services/folderCollabService';
 import { userService } from '../../../services/userService';
 import { flashcardService } from '../../../services/flashcardService';
 import { shareFolderLink } from '../../../utils/browser/shareLink';
+import { isFolderOwner } from '../../../utils/vocabulary/folderCollaboration';
 
 export function useFolderCollaboration(activeView: string, activeFolderId: string) {
   const user = useAppStore((state) => state.currentUser);
+  const userId = user?.id;
   const folders = useAppStore((state) => state.customFolders);
-  const [membersFolderId, setMembersFolderId] = useState<string | null>(null);
+  const [shareFolderId, setShareFolderId] = useState<string | null>(null);
   const activeFolder = folders.find((folder) => folder.id === activeFolderId);
-  const membersFolder = folders.find((folder) => folder.id === membersFolderId);
-  const targetId = membersFolderId ?? (activeView === 'folder' && (activeFolder?.memberCount ?? 0) > 1 ? activeFolderId : null);
-  const [result, setResult] = useState<{ folderId: string; members: FolderMember[] } | null>(null);
+  const shareFolder = folders.find((folder) => folder.id === shareFolderId);
+  const targetId = shareFolderId ?? (activeView === 'folder' && (activeFolder?.memberCount ?? 0) > 1 ? activeFolderId : null);
+  const [result, setResult] = useState<{ folderId: string; userId: string; members: FolderMember[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const flight = useRef(false);
   const [revision, setRevision] = useState(0);
 
   useEffect(() => {
-    if (!targetId || !user) return;
+    if (!targetId || !userId) return;
     let cancelled = false;
     setError(null);
     setResult(null);
     folderCollabService.listMembers(targetId).then((members) => {
-      if (!cancelled) setResult({ folderId: targetId, members });
-    }).catch(() => { if (!cancelled) setError('Could not load members. Please try again.'); });
+      if (!cancelled) setResult({ folderId: targetId, userId, members });
+    }).catch(() => { if (!cancelled) setError('Could not load people. Please try again.'); });
     return () => { cancelled = true; };
-  }, [targetId, user, revision]);
+  }, [targetId, userId, revision]);
 
+  const refreshFolder = activeView === 'folder' && Boolean(activeFolder && ((activeFolder.memberCount ?? 0) > 1 || !isFolderOwner(activeFolder)));
   useEffect(() => {
-    if (activeView === 'folder' && user && ((activeFolder?.memberCount ?? 0) > 1 || activeFolder?.role === 'editor')) {
-      void flashcardService.refetchFolderFlashcards(user.id, activeFolderId);
+    if (refreshFolder && userId) {
+      void flashcardService.refetchFolderFlashcards(userId, activeFolderId);
     }
-  }, [activeView, activeFolderId, activeFolder?.memberCount, activeFolder?.role, user]);
+  }, [refreshFolder, activeFolderId, userId]);
 
-  const invite = useCallback(async (folderId: string, rotate = false) => {
-    const folder = folders.find((item) => item.id === folderId);
-    if (!folder || !user) return;
-    try {
-      const code = !rotate && folder.inviteCode ? folder.inviteCode : await folderCollabService.createInvite(folderId);
-      const fresh = await userService.getFolders();
-      if (useAppStore.getState().currentUser?.id !== user.id) return;
-      useAppStore.getState().setCustomFolders(fresh);
-      await shareFolderLink(folder.name, `/join/${code}`);
-    } catch {
-      useAppStore.getState().showFeedbackToast('Could not create or share this invite link', 'neutral', 3000);
-    }
-  }, [folders, user]);
-
-  const removeMember = async (userId: string) => {
-    if (!membersFolderId || !user || busy) return;
+  const invite = useCallback(async (): Promise<boolean> => {
+    if (!shareFolder || !user || flight.current) return false;
+    flight.current = true;
     setBusy(true);
     setError(null);
     try {
-      await folderCollabService.removeMember(membersFolderId, userId);
+      const code = shareFolder.inviteCode ?? await folderCollabService.createInvite(shareFolder.id);
+      const store = useAppStore.getState();
+      if (store.currentUser?.id !== user.id) return false;
+      // Cache a confirmed creation even if sharing is cancelled or copying fails.
+      if (!shareFolder.inviteCode) {
+        store.setCustomFolders(store.customFolders.map((folder) => folder.id === shareFolder.id ? { ...folder, inviteCode: code } : folder));
+      }
+      return await shareFolderLink(shareFolder.name, `/join/${code}`);
+    } catch { setError('Could not share this link. Please try again.'); return false; }
+    finally { flight.current = false; setBusy(false); }
+  }, [shareFolder, user]);
+
+  const changeMembers = async (operation: () => Promise<void>) => {
+    if (!shareFolderId || !user || flight.current) return;
+    flight.current = true;
+    setBusy(true);
+    setError(null);
+    try {
+      await operation();
       const fresh = await userService.getFolders();
       if (useAppStore.getState().currentUser?.id !== user.id) return;
       useAppStore.getState().setCustomFolders(fresh);
       setRevision((value) => value + 1);
-    } catch { setError('Could not remove this member. Please try again.'); }
-    finally { setBusy(false); }
+    } catch { setError('Could not update sharing. Please try again.'); }
+    finally { flight.current = false; setBusy(false); }
   };
 
   return {
-    activeFolder, membersFolder, setMembersFolderId, invite, removeMember, busy, error,
+    activeFolder, shareFolder, setShareFolderId, invite, busy, error,
+    removeMember: (userId: string) => changeMembers(() => folderCollabService.removeMember(shareFolderId!, userId)),
+    setRole: (userId: string, role: 'viewer' | 'editor') => changeMembers(() => folderCollabService.setRole(shareFolderId!, userId, role)),
     retry: () => setRevision((value) => value + 1),
-    members: result?.folderId === targetId ? result.members : null,
+    members: result?.folderId === targetId && result.userId === userId ? result.members : null,
   };
 }

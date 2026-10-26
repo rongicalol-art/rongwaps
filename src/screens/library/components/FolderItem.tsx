@@ -7,7 +7,6 @@ interface FolderItemProps {
   id: string;
   title: string;
   count?: number;
-  shareSaveCount?: number;
   memberCount?: number;
   className?: string;
   icon?: React.ReactNode;
@@ -25,7 +24,6 @@ export function FolderItem({
   id,
   title,
   count,
-  shareSaveCount,
   memberCount,
   accentBg,
   accentBorder,
@@ -71,11 +69,6 @@ export function FolderItem({
           <span className="flex items-center gap-1 whitespace-nowrap text-[13px] font-extrabold text-ui-muted">
             {count} {count === 1 ? 'card' : 'cards'}
             {memberCount !== undefined && memberCount > 1 && <span className="flex items-center gap-0.5" aria-label={`${memberCount} members`}>· <AppIcon name="family" size={13} />{memberCount}</span>}
-            {shareSaveCount !== undefined && (
-              <span className="flex items-center gap-0.5" aria-label={`Shared, saved by ${shareSaveCount}`}>
-                · <AppIcon name="share" size={13} />{shareSaveCount}
-              </span>
-            )}
           </span>
         )}
       </div>

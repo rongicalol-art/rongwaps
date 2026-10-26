@@ -287,7 +287,6 @@ const PERSISTED_RECORD_KEYS = [
   'deckExclusions',
   'progressResetSeen',
   'wordConfusions',
-  'sharedFolderCopies',
 ] as const;
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {

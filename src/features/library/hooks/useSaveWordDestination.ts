@@ -1,3 +1,4 @@
+import { canEditFolder } from '../../../utils/vocabulary/folderCollaboration';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
@@ -40,7 +41,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
   const toggleFavoriteStore = useAppStore((state) => state.toggleFavorite);
   const customFoldersRaw = useAppStore((state) => state.customFolders);
   const customFolders = useMemo(
-    () => (Array.isArray(customFoldersRaw) ? customFoldersRaw.filter((folder) => Boolean(folder)) : []),
+    () => (Array.isArray(customFoldersRaw) ? customFoldersRaw.filter((folder) => Boolean(folder) && canEditFolder(folder)) : []),
     [customFoldersRaw],
   );
   const addCustomFolder = useAppStore((state) => state.addCustomFolder);
@@ -191,7 +192,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
   }, [headword, simplified, currentUser, addLocalFlashcard, resolvedMetadata, meaning]);
 
   const toggleFolder = useCallback(async (folderId: string) => {
-    if (!headword) return;
+    if (!headword || !customFolders.some((folder) => folder.id === folderId)) return;
 
     const existingCardId = savedFolderCardsMap.get(folderId);
 
@@ -205,7 +206,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     } else {
       await addCardToFolder(folderId);
     }
-  }, [headword, savedFolderCardsMap, currentUser, deleteLocalFlashcard, addCardToFolder]);
+  }, [headword, customFolders, savedFolderCardsMap, currentUser, deleteLocalFlashcard, addCardToFolder]);
 
   const createFolderAndAdd = useCallback(async (name: string, colorId: string) => {
     const trimmed = name.trim();

@@ -1,6 +1,11 @@
 -- Rollback-only fixture for a disposable Supabase database after all migrations.
 -- Never run against owner progress. psql -v ON_ERROR_STOP=1 -f this-file
 begin;
+do $$ begin
+  if current_database() <> 'school_beta_test' then
+    raise exception 'Use only the disposable school_beta_test database';
+  end if;
+end $$;
 create function pg_temp.check_collab(ok boolean, label text) returns void language plpgsql as $$
 begin if ok is distinct from true then raise exception '%', label; end if; end;
 $$;
@@ -26,9 +31,39 @@ select public.join_folder('collabtest01');
 select public.join_folder('collabtest01');
 select pg_temp.check_collab((select count(*) from public.folder_members) = 2, 'join idempotent');
 select pg_temp.check_collab((select count(*) from public.user_flashcards) = 1, 'member reads owner cards');
-select pg_temp.check_collab((public.get_sync_state()->'folders'->0->>'role') = 'editor', 'sync includes editor role');
-select pg_temp.check_collab(jsonb_array_length(public.get_sync_state()->'flashcards') = 1, 'sync includes shared cards');
+select pg_temp.check_collab((public.get_sync_state()->'folders'->0->>'role') = 'viewer', 'sync includes viewer role');
+select pg_temp.check_collab(not (public.get_sync_state() ? 'flashcards'), 'sync wire does not include flashcards');
 select pg_temp.check_collab(jsonb_array_length(public.export_my_data()->'flashcards') = 0, 'export excludes other creator data');
+select pg_temp.check_collab((select role from public.folder_members where user_id = auth.uid()) = 'viewer', 'join starts as viewer');
+do $$ begin
+  begin
+    insert into public.user_flashcards(id,user_id,folder_id,simplified,translation,created_at) values
+      ('f2000000-0000-0000-0000-000000000099',auth.uid(),'f1000000-0000-0000-0000-000000000001','測','viewer insert',99);
+    raise exception 'viewer insert allowed';
+  exception when insufficient_privilege then null; end;
+  begin
+    perform public.set_folder_member_role('f1000000-0000-0000-0000-000000000001',auth.uid(),'editor');
+    raise exception 'viewer self promotion allowed';
+  exception when raise_exception then if sqlerrm <> 'Only the owner can change member roles' then raise; end if; end;
+end $$;
+update public.user_flashcards set translation = 'viewer edit';
+delete from public.user_flashcards;
+select pg_temp.check_collab((select translation from public.user_flashcards) = 'character', 'viewer cannot update or delete');
+
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
+select public.set_folder_member_role('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002','editor');
+do $$ begin
+  begin
+    perform public.set_folder_member_role('f1000000-0000-0000-0000-000000000001',auth.uid(),'viewer');
+    raise exception 'owner demotion allowed';
+  exception when raise_exception then if sqlerrm <> 'The owner role cannot be changed' then raise; end if; end;
+  begin
+    perform public.set_folder_member_role('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002','owner');
+    raise exception 'invalid role allowed';
+  exception when raise_exception then if sqlerrm <> 'Role must be viewer or editor' then raise; end if; end;
+end $$;
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000002';
+select pg_temp.check_collab((public.get_sync_state()->'folders'->0->>'role') = 'editor', 'owner promotion reaches sync');
 insert into public.user_flashcards(id,user_id,folder_id,simplified,translation,created_at) values
  ('f2000000-0000-0000-0000-000000000002','f0000000-0000-0000-0000-000000000002','f1000000-0000-0000-0000-000000000001','詞','word',2);
 update public.user_flashcards set translation = 'edited by member' where id = 'f2000000-0000-0000-0000-000000000001';
@@ -50,6 +85,18 @@ end $$;
 update public.user_folders set name = 'stolen' where id = 'f1000000-0000-0000-0000-000000000001';
 select pg_temp.check_collab((select name from public.user_folders) = 'Collaborative fixture', 'editor cannot rename folder');
 
+-- A demoted creator must not be able to update, move out, or delete their own card.
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
+select public.set_folder_member_role('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002','viewer');
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000002';
+update public.user_flashcards set translation = 'demoted edit' where user_id = auth.uid();
+update public.user_flashcards set folder_id = null where user_id = auth.uid();
+delete from public.user_flashcards where user_id = auth.uid();
+select pg_temp.check_collab((select translation from public.user_flashcards where user_id = auth.uid()) = 'word', 'demoted creator cannot edit own card');
+select pg_temp.check_collab((select folder_id from public.user_flashcards where user_id = auth.uid()) = 'f1000000-0000-0000-0000-000000000001'::uuid, 'demoted creator cannot move or delete own card');
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
+select public.set_folder_member_role('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002','editor');
+
 set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000003';
 select pg_temp.check_collab((select count(*) from public.user_folders) = 0, 'nonmember cannot read folder');
 select pg_temp.check_collab((select count(*) from public.user_flashcards) = 0, 'nonmember cannot read cards');
@@ -68,9 +115,23 @@ select pg_temp.check_collab((select count(*) from public.user_flashcards) = 2, '
 delete from public.user_flashcards where id = 'f2000000-0000-0000-0000-000000000001';
 select pg_temp.check_collab((select count(*) from public.user_flashcards) = 1, 'member deletes another creator card');
 
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000003';
+select public.join_folder('collabtest01');
+delete from public.folder_members where user_id = auth.uid();
+select pg_temp.check_collab((select count(*) from public.user_folders) = 0, 'viewer can leave');
+select public.join_folder('collabtest01');
 set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
+select public.remove_folder_member('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000003');
+select pg_temp.check_collab((select count(*) from public.folder_members) = 2, 'owner removes viewer');
 select public.remove_folder_member('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002');
 select pg_temp.check_collab((select count(*) from public.folder_members) = 1, 'owner removes editor');
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000002';
+select pg_temp.check_collab((select count(*) from public.user_flashcards) = 0, 'removed creator cannot read shared cards');
+select pg_temp.check_collab(jsonb_array_length(public.export_my_data()->'flashcards') = 0, 'export cannot bypass revoked folder access');
+update public.user_flashcards set translation = 'removed creator edit' where user_id = auth.uid();
+delete from public.user_flashcards where user_id = auth.uid();
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
+select pg_temp.check_collab((select translation from public.user_flashcards) = 'word', 'removed creator cannot edit or delete');
 delete from public.folder_members where user_id = auth.uid();
 select pg_temp.check_collab((select count(*) from public.folder_members) = 1, 'owner cannot leave');
 -- Capacity checks still apply to privileged inserts, and an existing member
@@ -99,7 +160,14 @@ do $$ begin
     raise exception 'card cap bypassed';
   exception when raise_exception then if sqlerrm <> 'A folder can contain at most 2000 cards' then raise; end if; end;
 end $$;
+select public.remove_folder_member('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002');
+select public.remove_folder_member('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000003');
 select public.clear_folder_invite('f1000000-0000-0000-0000-000000000001');
+reset role;
+delete from public.folder_members where folder_id = 'f1000000-0000-0000-0000-000000000001' and role <> 'owner';
+set local role authenticated;
+select pg_temp.check_collab((select count(*) from public.folder_members) = 1, 'owner remains after capacity fixture cleanup');
+select pg_temp.check_collab((select invite_code is null from public.user_folders), 'owner can clear the invite');
 set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000002';
 select pg_temp.check_collab((select count(*) from public.user_folders) = 0, 'removed editor loses folder access');
 do $$ begin

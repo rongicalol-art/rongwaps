@@ -1,3 +1,4 @@
+import { isFolderOwner, canEditFolder } from '../../../utils/vocabulary/folderCollaboration';
 import { debugLogger } from '../../../utils/debug/debugLogger';
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AppIcon } from '../../../lib/widgets';
@@ -8,7 +9,6 @@ import { folderCollabService } from '../../../services/folderCollabService';
 import type { UserFolder } from '../../../types/models';
 import { flashcardService, type FlashcardTextPatch } from '../../../services/flashcardService';
 import { userService } from '../../../services/userService';
-import { sharedFolderService, type SharedFolderMine } from '../../../services/sharedFolderService';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
@@ -63,6 +63,7 @@ export function useLibrary() {
   // The folder view is store-backed so the header's back action and this screen
   // always agree; deriving it (instead of mirroring it into local state) keeps
   // one source of truth and removes the sync effect between the two.
+  const editable = canEditFolder(customFolders.find((folder) => folder.id === libraryActiveFolder));
   const activeView = useAppStore((state) => state.libraryActiveView);
   const setActiveView = setLibraryActiveView;
 
@@ -84,7 +85,7 @@ export function useLibrary() {
 
     if (currentUser) {
       try {
-        if (deleteFolderTarget.role === 'editor') {
+        if (!isFolderOwner(deleteFolderTarget)) {
           await folderCollabService.leave(folderId);
           const fresh = await userService.getFolders();
           if (useAppStore.getState().currentUser?.id !== currentUser.id) return;
@@ -109,39 +110,6 @@ export function useLibrary() {
   };
   
   const customFlashcards = useUserFlashcards();
-  const [sharedFolders, setSharedFolders] = useState<SharedFolderMine[]>([]);
-  const refreshSharedFolders = useCallback(async () => {
-    if (!currentUser) {
-      setSharedFolders([]);
-      return;
-    }
-    try {
-      setSharedFolders(await sharedFolderService.listMine(currentUser.id));
-    } catch (error) {
-      debugLogger.error('Supabase', 'Could not load shared folders', error);
-      useAppStore.getState().showFeedbackToast('Could not load shared folder links', 'neutral', 2500);
-    }
-  }, [currentUser]);
-  useEffect(() => { void refreshSharedFolders(); }, [refreshSharedFolders]);
-
-  const publishSharedFolder = useCallback(async (folderId: string) => {
-    if (!currentUser) throw new Error('Sign in to share a folder.');
-    const folder = customFolders.find((candidate) => candidate.id === folderId);
-    if (!folder) throw new Error('This folder cannot be shared.');
-    const cards = customFlashcards.filter((card) => card.folderId === folderId);
-    // Legacy folder colours are long JSON; the share stores the plain palette id.
-    const color = resolveFolderColor(folder.color, customFolders.indexOf(folder)).id;
-    const shareId = await sharedFolderService.publish(currentUser.id, { ...folder, color }, cards);
-    await refreshSharedFolders();
-    return shareId;
-  }, [currentUser, customFolders, customFlashcards, refreshSharedFolders]);
-
-  const stopSharingFolder = useCallback(async (shareId: string) => {
-    if (!currentUser) return;
-    await sharedFolderService.unpublish(currentUser.id, shareId);
-    await refreshSharedFolders();
-  }, [currentUser, refreshSharedFolders]);
-
   const [favoriteResults, setFavoriteResults] = useState<DBDictionaryEntry[]>([]);
   const [isLoadingFavs, setIsLoadingFavs] = useState(false);
 
@@ -159,7 +127,6 @@ export function useLibrary() {
     const dynFolders = customFolders.map((cf, index) => {
       const folderColor = resolveFolderColor(cf.color, index);
       const count = customFlashcards.filter(c => c.folderId === cf.id).length;
-      const share = sharedFolders.find((item) => item.sourceFolderId === cf.id);
       return {
         id: cf.id,
         title: cf.name,
@@ -173,7 +140,6 @@ export function useLibrary() {
         onAccent: folderColor.onAccent,
         icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: folderColor.accent }),
         count,
-        shareSaveCount: share?.saveCount,
         memberCount: cf.memberCount,
       };
     });
@@ -183,7 +149,7 @@ export function useLibrary() {
       { ...COLLECTIONS[0], count: starredCount },
       ...dynFolders
     ];
-  }, [customFolders, favorites.length, customFlashcards, sharedFolders]);
+  }, [customFolders, favorites.length, customFlashcards]);
 
   useEffect(() => {
     let cancelled = false;
@@ -278,6 +244,7 @@ export function useLibrary() {
 
   const confirmDelete = async () => {
     if (!deleteTargetId) return;
+    if (!editable) return;
     const cid = deleteTargetId;
     setDeleteTargetId(null);
     if (currentUser) {
@@ -290,6 +257,7 @@ export function useLibrary() {
   const [editCardTarget, setEditCardTarget] = useState<UserFlashcard | null>(null);
   const saveEditedCard = async (patch: FlashcardTextPatch) => {
     if (!editCardTarget) return;
+    if (!editable) return;
     const cardId = editCardTarget.id;
     setEditCardTarget(null);
     if (currentUser) {
@@ -364,9 +332,10 @@ export function useLibrary() {
   // A different folder or the home view starts without a selection.
   useEffect(() => {
     exitSelecting();
-  }, [libraryActiveFolder, activeView, exitSelecting]);
+  }, [libraryActiveFolder, activeView, editable, exitSelecting]);
 
   const confirmBulkRemove = async () => {
+    if (!editable) return;
     const keys = [...selectedKeys];
     setBulkRemoveOpen(false);
     exitSelecting();
@@ -380,6 +349,7 @@ export function useLibrary() {
   };
 
   const moveSelectedTo = async (folderId: string) => {
+    if (!editable || !canEditFolder(customFolders.find((folder) => folder.id === folderId))) return;
     const ids = [...selectedKeys];
     if (currentUser && customFlashcards.some((card) => selectedKeys.has(card.id) && card.userId !== currentUser.id)) {
       useAppStore.getState().showFeedbackToast('Only cards you added can be moved to another folder', 'neutral', 3000);
@@ -429,9 +399,6 @@ export function useLibrary() {
     searchQuery,
     setSearchQuery,
     allCollections,
-    sharedFolders,
-    publishSharedFolder,
-    stopSharingFolder,
     isLoadingFavs,
     showFolderModal,
     setShowFolderModal,

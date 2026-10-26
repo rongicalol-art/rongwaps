@@ -1,3 +1,4 @@
+import { canEditFolder } from '../../../utils/vocabulary/folderCollaboration';
 import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
@@ -116,6 +117,7 @@ export function useAddCard(onClose: () => void) {
   };
 
   const handleSave = async () => {
+    if (!canEditFolder(targetFolder)) { setSaveError('You can only view this folder.'); return; }
     if (cardData.meaning.trim() && cardData.front.trim()) {
       const newCard = {
         id: crypto.randomUUID(),

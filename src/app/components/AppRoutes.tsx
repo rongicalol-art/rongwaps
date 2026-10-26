@@ -5,7 +5,6 @@ import { TAB_ROUTES, type TabRoute } from '../routes';
 import { TabScreens } from './TabScreens';
 
 const JoinFolderScreen = lazy(() => import('../../screens/join-folder').then((m) => ({ default: m.JoinFolderScreen })));
-const SharedFolderScreen = lazy(() => import('../../screens/shared-folder').then((m) => ({ default: m.SharedFolderScreen })));
 
 type TabScreensProps = React.ComponentProps<typeof TabScreens>;
 
@@ -19,18 +18,12 @@ interface AppRoutesProps extends Omit<TabScreensProps, 'activeTab'> {
  * keeps working) and the catch-all sends unknown URLs to it too.
  */
 export function AppRoutes({ activeTab, ...tabScreenProps }: AppRoutesProps) {
-  const sharedFolderMatch = useMatch('/s/:id');
   const joinFolderMatch = useMatch('/join/:code');
   // A persisted tab that is no longer routed (e.g. hidden Play) boots Books.
   const bootTab = activeTab in TAB_ROUTES ? activeTab : 'path';
   if (joinFolderMatch) return <Suspense fallback={<LoadingScreen message="Opening folder invite…" />}>
     <JoinFolderScreen code={joinFolderMatch.params.code ?? ''} />
   </Suspense>;
-  if (sharedFolderMatch) {
-    return <Suspense fallback={<LoadingScreen message="Opening shared folder…" />}>
-      <SharedFolderScreen shareId={sharedFolderMatch.params.id ?? ''} />
-    </Suspense>;
-  }
   return (
     <Routes>
       <Route index element={<TabScreens activeTab={bootTab} {...tabScreenProps} />} />

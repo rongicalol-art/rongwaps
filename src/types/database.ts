@@ -205,52 +205,10 @@ export interface Database {
         Relationships: [];
       };
       folder_members: {
-        Row: { folder_id: string; user_id: string; role: 'owner' | 'editor'; created_at: string | null };
-        Insert: { folder_id: string; user_id: string; role: 'owner' | 'editor'; created_at?: string | null };
-        Update: { folder_id?: string; user_id?: string; role?: 'owner' | 'editor'; created_at?: string | null };
+        Row: { folder_id: string; user_id: string; role: 'owner' | 'editor' | 'viewer'; created_at: string | null };
+        Insert: { folder_id: string; user_id: string; role: 'owner' | 'editor' | 'viewer'; created_at?: string | null };
+        Update: { folder_id?: string; user_id?: string; role?: 'owner' | 'editor' | 'viewer'; created_at?: string | null };
         Relationships: [{ foreignKeyName: 'folder_members_folder_id_fkey'; columns: ['folder_id']; isOneToOne: false; referencedRelation: 'user_folders'; referencedColumns: ['id'] }];
-      };
-      shared_folders: {
-        Row: {
-          id: string;
-          owner_id: string;
-          source_folder_id: string | null;
-          name: string;
-          color: string | null;
-          cards: Json;
-          save_count: number;
-          created_at: string;
-          updated_at: string;
-        };
-        Insert: {
-          id: string;
-          owner_id: string;
-          source_folder_id?: string | null;
-          name: string;
-          color?: string | null;
-          cards: Json;
-          save_count?: number;
-          created_at?: string;
-          updated_at?: string;
-        };
-        Update: {
-          id?: string;
-          owner_id?: string;
-          source_folder_id?: string | null;
-          name?: string;
-          color?: string | null;
-          cards?: Json;
-          save_count?: number;
-          created_at?: string;
-          updated_at?: string;
-        };
-        Relationships: [];
-      };
-      shared_folder_saves: {
-        Row: { share_id: string; user_id: string; created_at: string };
-        Insert: { share_id: string; user_id: string; created_at?: string };
-        Update: { share_id?: string; user_id?: string; created_at?: string };
-        Relationships: [];
       };
       user_profiles: {
         Row: {
@@ -283,6 +241,7 @@ export interface Database {
       enforce_folder_card_cap: { Args: Record<PropertyKey, never>; Returns: unknown };
 
       create_folder_invite: { Args: { p_folder_id: string }; Returns: string };
+      set_folder_member_role: { Args: { p_folder_id: string; p_user_id: string; p_role: 'viewer' | 'editor' }; Returns: undefined };
       clear_folder_invite: { Args: { p_folder_id: string }; Returns: undefined };
       get_folder_invite: {
         Args: { p_code: string };
@@ -290,7 +249,7 @@ export interface Database {
       };
       join_folder: { Args: { p_code: string }; Returns: string };
       remove_folder_member: { Args: { p_folder_id: string; p_user_id: string }; Returns: undefined };
-      list_folder_members: { Args: { p_folder_id: string }; Returns: { user_id: string; role: 'owner' | 'editor'; display_name: string | null; avatar_color: string | null }[] };
+      list_folder_members: { Args: { p_folder_id: string }; Returns: { user_id: string; role: 'owner' | 'editor' | 'viewer'; display_name: string | null; avatar_color: string | null }[] };
 
       submit_feedback: {
         Args: { p_id: string; p_message: string; p_path: string; p_browser: string; p_app_version: string };
@@ -316,18 +275,6 @@ export interface Database {
       get_sync_state: {
         Args: { p_since?: string | null };
         Returns: Json;
-      };
-      get_shared_folder: {
-        Args: { p_id: string };
-        Returns: { id: string; name: string; color: string | null; cards: Json; save_count: number; owner_display_name: string | null; updated_at: string }[];
-      };
-      save_shared_folder: {
-        Args: { p_id: string };
-        Returns: number;
-      };
-      enforce_shared_folder_owner_and_cap: {
-        Args: Record<PropertyKey, never>;
-        Returns: unknown;
       };
       reset_user_learning_progress: {
         Args: Record<PropertyKey, never>;

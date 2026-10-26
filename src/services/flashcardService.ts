@@ -1,3 +1,4 @@
+import { isFolderOwner } from '../utils/vocabulary/folderCollaboration';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { supabase } from "./supabaseClient";
 import type { Database } from '../types/database';
@@ -26,6 +27,7 @@ class FlashcardService {
   private accountGeneration = 0;
   private fetchRevision = 0;
   private folderRefetchedAt = new Map<string, number>();
+  private pendingFetches = new Map<string, Promise<boolean>>();
 
   constructor() {
     if (typeof document === "undefined") return;
@@ -48,26 +50,38 @@ class FlashcardService {
     return this.currentUserId === userId ? this.cachedFlashcards : null;
   }
 
-  async refetchFlashcards(userId: string) {
-    if (this.currentUserId !== userId) return;
+  refetchFlashcards(userId: string, folderId?: string): Promise<boolean> {
+    if (this.currentUserId !== userId) return Promise.resolve(false);
+    const key = folderId ?? '*';
+    const pending = this.pendingFetches.get(key);
+    if (pending) return pending;
+    const request = this.fetchFlashcards(userId, folderId).finally(() => {
+      if (this.pendingFetches.get(key) === request) this.pendingFetches.delete(key);
+    });
+    this.pendingFetches.set(key, request);
+    return request;
+  }
+
+  private async fetchFlashcards(userId: string, folderId?: string): Promise<boolean> {
     const generation = this.accountGeneration;
-    const revision = ++this.fetchRevision;
+    // A full pull supersedes earlier folder pulls; different folders may load together.
+    const revision = folderId ? this.fetchRevision : ++this.fetchRevision;
     const rows: Database['public']['Tables']['user_flashcards']['Row'][] = [];
-    // PostgREST caps each response at 1000 rows; live folders can contain 2000.
     const pageSize = 1000;
     for (let offset = 0; ; offset += pageSize) {
-      const { data, error } = await supabase.from('user_flashcards').select('*')
-        .order('created_at', { ascending: false }).order('id')
+      let query = supabase.from('user_flashcards').select('*');
+      if (folderId) query = query.eq('folder_id', folderId);
+      const { data, error } = await query.order('created_at', { ascending: false }).order('id')
         .range(offset, offset + pageSize - 1);
-      if (generation !== this.accountGeneration || revision !== this.fetchRevision) return;
+      if (generation !== this.accountGeneration || revision !== this.fetchRevision) return false;
       if (error) {
         debugLogger.warn('Supabase', 'refetchFlashcards failed; keeping the previous card list.', error);
-        return;
+        return false;
       }
       rows.push(...(data ?? []));
       if (!data || data.length < pageSize) break;
     }
-    this.cachedFlashcards = rows.map((d) => ({
+    const cards = rows.map((d) => ({
       id: d.id,
       folderId: d.folder_id || "custom",
       simplified: d.simplified,
@@ -79,17 +93,24 @@ class FlashcardService {
       createdAt: d.created_at,
       userId: d.user_id,
     }));
+    const incomingIds = new Set(cards.map((card) => card.id));
+    this.cachedFlashcards = folderId
+      ? [...(this.cachedFlashcards ?? []).filter((card) => card.folderId !== folderId && !incomingIds.has(card.id)), ...cards]
+      : cards;
     this.notifyFlashcards();
+    return true;
   }
 
-  /** Opening the same live folder repeatedly must not flood the free-tier API. */
-  async refetchFolderFlashcards(userId: string, folderId: string) {
+  /** Opening a folder downloads only its cards, at most once per 30 seconds. */
+  async refetchFolderFlashcards(userId: string, folderId: string, force = false) {
     if (this.currentUserId !== userId) return;
-    const key = `${userId}:${folderId}`;
+    const generation = this.accountGeneration;
+    // Finish initial/full loading first so it cannot overwrite this folder's newer rows.
+    await this.pendingFetches.get('*');
+    if (this.currentUserId !== userId || generation !== this.accountGeneration) return;
     const now = Date.now();
-    if (now - (this.folderRefetchedAt.get(key) ?? 0) < 30_000) return;
-    this.folderRefetchedAt.set(key, now);
-    await this.refetchFlashcards(userId);
+    if (!force && now - (this.folderRefetchedAt.get(folderId) ?? 0) < 30_000) return;
+    if (await this.refetchFlashcards(userId, folderId)) this.folderRefetchedAt.set(folderId, Date.now());
   }
 
   async getReviewCards(userId: string, ids: string[]): Promise<UserFlashcard[]> {
@@ -171,6 +192,7 @@ class FlashcardService {
 
   /** Edits the given text fields only; empty optional fields are stored as null. */
   async updateFlashcard(userId: string, cardId: string, patch: FlashcardTextPatch) {
+    if (this.currentUserId && this.currentUserId !== userId) throw new Error('Your account changed. Please try again.');
     try {
       if (this.currentUserId === userId && this.cachedFlashcards) {
         this.cachedFlashcards = this.cachedFlashcards.map((c) =>
@@ -188,7 +210,7 @@ class FlashcardService {
           ...(patch.pinyin !== undefined && { pinyin: patch.pinyin || null }),
           ...(patch.notes !== undefined && { notes: patch.notes || null }),
         })
-        .match({ id: cardId });
+        .match({ id: cardId }).select('id').single();
       if (error) {
         await this.refetchFlashcards(userId);
         throw error;
@@ -200,6 +222,7 @@ class FlashcardService {
   }
 
   async deleteFlashcard(userId: string, cardId: string) {
+    if (this.currentUserId && this.currentUserId !== userId) throw new Error('Your account changed. Please try again.');
     try {
       // Optimistic update
       if (this.currentUserId === userId && this.cachedFlashcards) {
@@ -212,7 +235,7 @@ class FlashcardService {
       const { error } = await supabase
         .from("user_flashcards")
         .delete()
-        .match({ id: cardId });
+        .match({ id: cardId }).select('id').single();
 
       if (error) {
         await this.refetchFlashcards(userId);
@@ -234,15 +257,15 @@ class FlashcardService {
         this.notifyFlashcards();
       }
 
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from("user_flashcards")
         .update({ folder_id: folderId === "custom" ? null : folderId })
         .eq("user_id", userId)
-        .in("id", cardIds);
+        .in("id", cardIds).select('id');
 
-      if (error) {
+      if (error || data?.length !== ids.size) {
         await this.refetchFlashcards(userId);
-        throw error;
+        throw error ?? new Error('Some cards could not be moved. Your access may have changed.');
       }
     } catch (e) {
       debugLogger.error('Supabase', "Error moving flashcards", e);
@@ -253,6 +276,8 @@ class FlashcardService {
   subscribeToUserFlashcards(userId: string, onUpdate: FlashcardListener) {
     if (this.currentUserId !== userId) {
       this.accountGeneration++;
+      this.pendingFetches.clear();
+      this.folderRefetchedAt.clear();
       this.currentUserId = userId;
       this.cachedFlashcards = null;
       this.flashcardListeners.forEach((listener) => listener([]));
@@ -271,6 +296,8 @@ class FlashcardService {
       this.flashcardListeners.delete(onUpdate);
       if (this.flashcardListeners.size === 0) {
         this.accountGeneration++;
+        this.pendingFetches.clear();
+        this.folderRefetchedAt.clear();
         this.currentUserId = null;
         this.cachedFlashcards = null;
       }
@@ -298,7 +325,7 @@ class FlashcardService {
    * createFolder/deleteFolder.
    */
   async importFolders(userId: string, folders: UserFolder[]) {
-    folders = folders.filter((folder) => folder.role !== 'editor' && (!folder.ownerId || folder.ownerId === userId));
+    folders = folders.filter((folder) => isFolderOwner(folder) && (!folder.ownerId || folder.ownerId === userId));
     if (folders.length === 0) return;
     const { error } = await supabase.from("user_folders").upsert(
       folders.map((folder) => ({
@@ -319,7 +346,7 @@ class FlashcardService {
     const { error } = await supabase
       .from("user_folders")
       .update({ name: patch.name, color: patch.color })
-      .match({ id: folderId, user_id: userId });
+      .match({ id: folderId, user_id: userId }).select('id').single();
     if (error) {
       debugLogger.error('Supabase', "Error updating folder", error);
       throw error;
@@ -336,7 +363,7 @@ class FlashcardService {
     const { error } = await supabase
       .from("user_folders")
       .delete()
-      .match({ id: folderId, user_id: userId });
+      .match({ id: folderId, user_id: userId }).select('id').single();
     if (error) {
       debugLogger.error('Supabase', "Error deleting folder", error);
       await this.refetchFlashcards(userId);

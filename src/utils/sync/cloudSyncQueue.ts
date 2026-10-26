@@ -73,7 +73,7 @@ export function createSingleFlightSaveCoordinator<T>(
 }
 
 export interface SyncedFolderSnapshot {
-  role?: 'owner' | 'editor';
+  role?: 'owner' | 'editor' | 'viewer';
   memberCount?: number;
   ownerId?: string;
   inviteCode?: string | null;

@@ -8,7 +8,7 @@ import { takeFolderReturn } from './utils/browser/shareLink';
 
 const AppShell = lazy(() => import('./app/AppShell'));
 const LegalScreen = lazy(() => import('./screens/legal').then((m) => ({ default: m.LegalScreen })));
-const SharedFolderSignIn = lazy(() => import('./screens/shared-folder').then((m) => ({ default: m.SharedFolderSignIn })));
+const JoinFolderSignIn = lazy(() => import('./screens/join-folder/JoinFolderSignIn').then((m) => ({ default: m.JoinFolderSignIn })));
 
 /** Auth and legal pages never load the study workspace or start cloud sync. */
 export default function App() {
@@ -23,18 +23,17 @@ export default function App() {
 
   return <Suspense fallback={<LoadingScreen message="Loading Ron's Mandarin…" fullScreen />}>
     <Routes>
-      <Route path="/s/:id" element={<SharedFolderEntry />} />
-      <Route path="/join/:id" element={<SharedFolderEntry joining />} />
+      <Route path="/join/:id" element={<JoinFolderEntry />} />
       <Route path="*" element={<RegularApp pathname={location.pathname} />} />
     </Routes>
   </Suspense>;
 }
 
-function SharedFolderEntry({ joining = false }: { joining?: boolean }) {
+function JoinFolderEntry() {
   const { id = '' } = useParams();
   const { currentUser, isLoading } = useAuth();
   if (isLoading) return <LoadingScreen message="Opening shared folder…" fullScreen />;
-  if (!currentUser) return <SharedFolderSignIn shareId={id} returnPath={joining ? `/join/${id}` : undefined} />;
+  if (!currentUser) return <JoinFolderSignIn code={id} />;
   return <AppShell />;
 }
 
