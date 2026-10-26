@@ -225,12 +225,14 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
     const onKey = (event: KeyboardEvent) => {
       const target = event.target;
       if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"], [role="menu"]')) return;
-      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.isComposing || event.metaKey || event.ctrlKey || event.altKey) return;
       if (event.key === ' ' || event.key === 'Enter') {
         const button = target instanceof HTMLElement ? target.closest('button') : null;
-        // The feed's own buttons (Hard, Finish, Play) keep Space/Enter. Any other focused button (the dock or
-        // menu that brought the learner here) must not swallow the key: drop its focus so it isn't pressed too.
-        if (button && (event.key === 'Enter' || scrollerRef.current?.contains(button) || button.closest('.rw-answer-bar'))) return;
+        // Hard and Finish keep native activation; Enter also activates the focused Play button.
+        // Space on the Play dock still reveals the sentence, so suppress its audio-only click.
+        if (button && (event.key === 'Enter' || scrollerRef.current?.contains(button))) return;
+        event.preventDefault();
+        if (event.repeat) return;
         button?.blur();
       }
       if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
