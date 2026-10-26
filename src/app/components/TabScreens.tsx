@@ -24,7 +24,7 @@ interface TabScreensProps {
   startPathPractice: () => void;
   setActiveTab: (tab: TabRoute) => void;
   setActiveActivity: (activity: ActivityType) => void;
-  onOpenGrammarPart: (partId: string, pageId?: string | null, onComplete?: () => void) => void;
+  onOpenGrammarPart: (partId: string | string[], pageId?: string | null, onComplete?: () => void) => void;
   onOpenReadingPart: (target: GrammarReadingTarget) => void;
   onToggleNav: () => void;
 }

@@ -81,6 +81,17 @@ export function findReadingIndexForPart(
   return 0;
 }
 
+/** Selected readings in course order; a missing part never pulls in an unselected one. */
+export function findReadingIndicesForParts(
+  readings: ReadingRecord[], bookId: number, lessonId: number, partIds: number[],
+): number[] {
+  return [...new Set(partIds)].sort((a, b) => a - b).flatMap((partId) => {
+    const index = readings.findIndex((reading) => reading.bookId === bookId
+      && reading.lessonId === lessonId && reading.dialogueNumber === partId);
+    return index < 0 ? [] : [index];
+  });
+}
+
 /** The course part whose printed dialogue is this reading. */
 export function findGrammarPartForReading(
   reading: ReadingRecord,

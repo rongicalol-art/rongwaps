@@ -30,9 +30,9 @@ interface CurriculumLibraryProps {
   /** Opens the last-used activity on the lessons selected in the store (independent study). */
   onStartPathPractice?: () => void;
   /** Opens the grammar window for a manifest part id. */
-  onOpenGrammarPart?: (partId: string, pageId?: string | null, onComplete?: () => void) => void;
+  onOpenGrammarPart?: (partId: string | string[], pageId?: string | null, onComplete?: () => void) => void;
   /** Opens the reader on a lesson part's dialogue. */
-  onOpenReadingPart?: (target: { bookId: number; lessonId: number; partId: number }) => void;
+  onOpenReadingPart?: (target: { bookId: number; lessonId: number; partId: number | number[] }) => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Books home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
 }

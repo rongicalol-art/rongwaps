@@ -39,8 +39,8 @@ interface LessonWindowProps {
   onPartChange: (partId: number) => void;
   onClose: () => void;
   onStartPractice: (lessonId: number, partId: number | number[], activity: ActivityType) => void;
-  onOpenGrammarPart: (manifestId: string, onComplete?: () => void) => void;
-  onOpenReadingPart: (target: { bookId: number; lessonId: number; partId: number }) => void;
+  onOpenGrammarPart: (manifestId: string | string[], onComplete?: () => void) => void;
+  onOpenReadingPart: (target: { bookId: number; lessonId: number; partId: number | number[] }) => void;
 }
 
 type BodyProps = Omit<LessonWindowProps, 'lesson' | 'isHidden'> & {
@@ -267,12 +267,13 @@ function LessonBody({
   const handleStart = () => {
     const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
     if (mode === 'vocab') onStartPractice(lesson.id, practiceTarget, 'flashcards');
-    else if (mode === 'grammar' && activePart.grammar) onOpenGrammarPart(activePart.grammar.manifestId, () => {
-      setSelectedPartIds([activePart.id]);
-      onPartChange(activePart.id);
-      onModeChange(activePart.id, 'reading');
-    });
-    else onOpenReadingPart({ bookId, lessonId: lesson.id, partId: selectedPartIds[0] ?? activePart.id });
+    else if (mode === 'grammar' && activePart.grammar) onOpenGrammarPart(
+      selectedParts.length > 1
+        ? selectedParts.flatMap((part) => part.grammar ? [part.grammar.manifestId] : [])
+        : activePart.grammar.manifestId,
+      () => onModeChange(activePart.id, 'reading'),
+    );
+    else onOpenReadingPart({ bookId, lessonId: lesson.id, partId: practiceTarget });
   };
   const swipe = (step: 1 | -1) => {
     const next = parts[activeIndex + step];

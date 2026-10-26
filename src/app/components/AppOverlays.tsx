@@ -27,6 +27,8 @@ interface AppOverlaysProps {
   readerLoadError: boolean;
   onRetryReader: () => void;
   readings: ReaderWindowProps['readings'];
+  readingSessionIndices: ReaderWindowProps['sessionIndices'];
+  onSelectReading: ReaderWindowProps['onSelectReading'];
   readingIndex: ReaderWindowProps['index'];
   onReaderNext: ReaderWindowProps['onNext'];
   onReaderPrevious: ReaderWindowProps['onPrevious'];
@@ -56,6 +58,8 @@ export function AppOverlays({
   readerLoadError,
   onRetryReader,
   readings,
+  readingSessionIndices,
+  onSelectReading,
   readingIndex,
   onReaderNext,
   onReaderPrevious,
@@ -79,6 +83,8 @@ export function AppOverlays({
         loadError={readerLoadError}
         onRetry={onRetryReader}
         readings={readings}
+        sessionIndices={readingSessionIndices}
+        onSelectReading={onSelectReading}
         index={readingIndex}
         onNext={onReaderNext}
         onPrevious={onReaderPrevious}

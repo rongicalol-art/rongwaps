@@ -15,6 +15,7 @@ import { getReaderHeaderTitles } from './ReaderHeader';
 
 interface ReadingNarrativeViewProps {
   reading: ReadingRecord;
+  compactTop?: boolean;
   alignment: DialogueAlignment | null;
   characterPreference: 'traditional' | 'simplified';
   showPinyin: boolean;
@@ -35,6 +36,7 @@ interface ReadingNarrativeViewProps {
 
 export function ReadingNarrativeView({
   reading,
+  compactTop = false,
   alignment,
   characterPreference,
   showPinyin,
@@ -131,7 +133,8 @@ export function ReadingNarrativeView({
   return (
     <article
       className={cn(
-        'mx-auto w-full px-4 pb-16 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-8 sm:pt-[6.5rem] transition-all',
+        'mx-auto w-full px-4 pb-16 sm:px-8 transition-all',
+        compactTop ? 'pt-6 sm:pt-8' : 'pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:pt-[6.5rem]',
         textSize === 'extra-large' ? 'max-w-4xl' : 'max-w-3xl xl:max-w-4xl',
       )}
     >

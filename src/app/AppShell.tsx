@@ -103,6 +103,8 @@ export default function AppShell() {
         readerLoadError={reader.loadError}
         onRetryReader={reader.onRetry}
         readings={reader.readings}
+        readingSessionIndices={reader.sessionIndices}
+        onSelectReading={reader.onSelectReading}
         readingIndex={reader.index}
         onReaderNext={reader.onNext}
         onReaderPrevious={reader.onPrevious}

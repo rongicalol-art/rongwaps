@@ -12,6 +12,7 @@ import { ReaderSceneIntro } from './ReaderSceneIntro';
 
 interface ReadingCanvasProps {
   reading: ReadingRecord;
+  compactTop?: boolean;
   alignment: DialogueAlignment | null;
   characterPreference: 'traditional' | 'simplified';
   showPinyin: boolean;
@@ -32,6 +33,7 @@ interface ReadingCanvasProps {
 
 export function ReadingCanvas({
   reading,
+  compactTop = false,
   alignment,
   characterPreference,
   showPinyin,
@@ -112,7 +114,8 @@ export function ReadingCanvas({
   return (
     <article
       className={cn(
-        'mx-auto w-full px-4 pb-16 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-6 sm:pt-[6.5rem] transition-all',
+        'mx-auto w-full px-4 pb-16 sm:px-6 transition-all',
+        compactTop ? 'pt-6 sm:pt-8' : 'pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:pt-[6.5rem]',
         textSize === 'extra-large' ? 'max-w-4xl' : 'max-w-3xl',
       )}
     >

@@ -1,37 +1,23 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { debugLogger } from '../../utils/debug/debugLogger';
 import type { ReadingRecord } from '../../types/models';
 
-import type { ReaderStudyTargetWord } from './utils/readerStudyTargets';
 import { useDialogueAlignment } from './hooks/useDialogueAlignment';
-import { useReaderStudyData } from './hooks/useReaderStudyData';
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { ReaderHeader } from './components/ReaderHeader';
-import { ReaderSummary } from './components/ReaderSummary';
 import { useReaderKeyboardNavigation } from './hooks/useReaderKeyboardNavigation';
 import { useReaderSwipeNavigation } from './hooks/useReaderSwipeNavigation';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
-import { isNarrativeReading } from './utils/narrativeParagraphs';
+import { ReaderSection, type ReaderPlayTarget } from './components/ReaderSection';
 import { WorkspaceWindow } from '../../lib/widgets';
-
-// Window shell (this module) stays eager so the Reader opens instantly with
-// its canvas tone + header; the heavy reading canvases stream in under a
-// spinner. Never static-import them here or they join the main bundle.
-const ReadingCanvas = lazy(() =>
-  import('./components/ReadingCanvas').then((m) => ({ default: m.ReadingCanvas })),
-);
-const ReadingNarrativeView = lazy(() =>
-  import('./components/ReadingNarrativeView').then((m) => ({ default: m.ReadingNarrativeView })),
-);
-
-
-const EMPTY_WORDS: ReaderStudyTargetWord[] = [];
 
 interface ReaderScreenProps {
   readings: ReadingRecord[];
   index: number;
+  sessionIndices?: number[];
+  onSelectReading?: (index: number) => void;
   /** Lesson-path next step: the reading continues into the next part's grammar. */
   onNext: () => void;
   /** Lesson-path previous step: back into this reading's part grammar. */
@@ -45,6 +31,8 @@ interface ReaderScreenProps {
 export function ReaderScreen({
   readings,
   index,
+  sessionIndices = [],
+  onSelectReading,
   onNext,
   onPrevious,
   onClose,
@@ -86,17 +74,6 @@ export function ReaderScreen({
   const characterFont = useAppStore((state) => state.characterFont);
   const updatePracticePreferences = useAppStore((state) => state.updatePreferences);
   const reading = readings[index] ?? readings[0];
-  // This part's in-text words are underlined and its grammar clauses washed, always.
-  const { targetWords, grammarPoints, usingLessonFallback } = useReaderStudyData({ reading });
-  const newWords = useMemo(
-    () => (usingLessonFallback ? EMPTY_WORDS : targetWords.filter((word) => word.inText)),
-    [targetWords, usingLessonFallback],
-  );
-  const partGrammarPoints = useMemo(
-    () => grammarPoints.filter((point) => point.group === 'part'),
-    [grammarPoints],
-  );
-
   const alignment = useDialogueAlignment(reading?.bookId, reading?.id);
 
   // Audio Hook
@@ -130,33 +107,9 @@ export function ReaderScreen({
     toggleAudio();
   }, [toggleAudio]);
   const toggleSlowAudio = useCallback(() => setSpeed(playbackSpeed < 1 ? 1 : 0.75), [setSpeed, playbackSpeed]);
-  const playLine = useCallback((lineIndex: number) => {
-    followAudioRef.current = true;
-    playAudioLine(lineIndex);
-  }, [playAudioLine]);
   const stopFollowing = useCallback(() => {
     followAudioRef.current = false;
   }, []);
-
-  // Tapping a new word scrolls to where it is spoken and pulses it; a word the text doesn't contain opens its entry.
-  const locateWord = useCallback((word: ReaderStudyTargetWord) => {
-    const chunk = [...(mainRef.current?.querySelectorAll<HTMLElement>('[data-reader-chunk]') ?? [])].find((el) =>
-      word.variants.includes(el.dataset.chunkText ?? ''),
-    );
-    if (!chunk) {
-      useAppStore.getState().setDictionaryWord(word.traditional);
-      return;
-    }
-    stopFollowing();
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    chunk.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-    if (!reduceMotion) {
-      chunk.animate(
-        [{ backgroundColor: 'var(--color-brand-primary-soft-edge)' }, { backgroundColor: 'transparent' }],
-        { duration: 1600, delay: 350, easing: 'ease-out' },
-      );
-    }
-  }, [stopFollowing]);
 
   useReaderKeyboardNavigation({
     onClose,
@@ -169,66 +122,36 @@ export function ReaderScreen({
 
   const { handleTouchStart, handleTouchEnd } = useReaderSwipeNavigation({ onNext, onPrevious });
 
-  // Stable play callbacks: the reading canvases memoize each word, so passing
-  // fresh arrow identities here would re-render every word on every karaoke
-  // tick. The audio hook's play actions do not depend on `currentTime`, so
-  // these stay referentially stable while playback is running.
-  const handlePlayLine = useCallback((lineIndex: number) => {
-    playLine(lineIndex);
-  }, [playLine]);
-
-  // Tapping a word or sentence plays on through the rest of the reading, like tapping a line.
-  const handlePlayFromTime = useCallback((startSec: number) => {
-    playFromTime(startSec);
-  }, [playFromTime]);
-
-  // The grammar examples speak just their own line.
-  const handlePlayLineOnly = useCallback((lineIndex: number) => {
-    followAudioRef.current = false;
-    playAudioLine(lineIndex, true);
-  }, [playAudioLine]);
+  const pendingPlay = useRef<{ index: number; target: ReaderPlayTarget } | null>(null);
+  const performPlay = useCallback((target: ReaderPlayTarget) => {
+    followAudioRef.current = !('lineIndex' in target && target.onlyThisLine);
+    if ('startSec' in target) playFromTime(target.startSec);
+    else playAudioLine(target.lineIndex, target.onlyThisLine);
+  }, [playAudioLine, playFromTime]);
+  const playSection = useCallback((targetIndex: number, target: ReaderPlayTarget) => {
+    if (targetIndex === index) performPlay(target);
+    else if (onSelectReading) {
+      pendingPlay.current = { index: targetIndex, target };
+      onSelectReading(targetIndex);
+    }
+  }, [index, onSelectReading, performPlay]);
+  // The audio hook resets the old recording before this effect cues the selected part.
+  useEffect(() => {
+    if (pendingPlay.current?.index !== index) return;
+    const { target } = pendingPlay.current;
+    pendingPlay.current = null;
+    performPlay(target);
+  }, [index, performPlay]);
 
   // Scroll to top when the reading changes.
   useEffect(() => {
-    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [reading?.id]);
+    if (!sessionIndices.length) mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [reading?.id, sessionIndices.length]);
 
   // Isolate background from accessibility tree and user focus while reader is open
   useWorkspaceIsolation(dialogRef);
 
   if (!reading) return null;
-
-  // Both reading views are mutually exclusive renderings of the same reading,
-  // so they take the same inputs; keep the list in one place so a new input
-  // cannot land on only one of them.
-  const readingViewProps = {
-    reading,
-    alignment,
-    characterPreference,
-    showPinyin,
-    showMeaning,
-    showHoverDefinitions,
-    textSize,
-    activeLineIndex,
-    currentTime,
-    newWords,
-    followAudioRef,
-    footer: (
-      <ReaderSummary
-        reading={reading}
-        characterPreference={characterPreference}
-        hasFinished={hasFinished}
-        words={newWords}
-        grammarPoints={partGrammarPoints}
-        onPlayLine={handlePlayLineOnly}
-        onOpenGrammar={onOpenGrammarPart}
-        onLocateWord={locateWord}
-      />
-    ),
-    onPlayLine: handlePlayLine,
-    onPlayRange: handlePlayFromTime,
-    onPlayFromTime: handlePlayFromTime,
-  };
 
   return (
     <WorkspaceWindow
@@ -279,13 +202,28 @@ export function ReaderScreen({
             onTouchMove={stopFollowing}
             className="relative z-10 flex-1 min-w-0 overflow-y-auto overscroll-none"
           >
-            <Suspense fallback={null}>
-              {isNarrativeReading(reading) ? (
-                <ReadingNarrativeView key={reading.id} {...readingViewProps} />
-              ) : (
-                <ReadingCanvas key={reading.id} {...readingViewProps} />
-              )}
-            </Suspense>
+            <div className={sessionIndices.length > 1 ? 'pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:pt-[6.5rem]' : undefined}>
+              {(sessionIndices.length ? sessionIndices : [index]).map((sectionIndex, position) => (
+                <ReaderSection
+                  key={readings[sectionIndex].id}
+                  reading={readings[sectionIndex]}
+                  index={sectionIndex}
+                  grouped={sessionIndices.length > 1}
+                  first={position === 0}
+                  characterPreference={characterPreference}
+                  showPinyin={showPinyin}
+                  showMeaning={showMeaning}
+                  showHoverDefinitions={showHoverDefinitions}
+                  textSize={textSize}
+                  activeLineIndex={sectionIndex === index ? activeLineIndex : null}
+                  currentTime={sectionIndex === index ? currentTime : 0}
+                  hasFinished={sectionIndex === index && hasFinished}
+                  followAudioRef={followAudioRef}
+                  onPlay={playSection}
+                  onOpenGrammar={onOpenGrammarPart}
+                />
+              ))}
+            </div>
           </main>
 
         </div>

@@ -71,3 +71,33 @@ test('the final grammar footer says Done and keeps Practice when an exercise fol
     assert.doesNotMatch(html, /Proceed to Reading|>Read</);
   }
 });
+
+test('a multi-part grammar session finishes each selected part before returning to reading', () => {
+  const { actions, events } = shellActions();
+  actions.handleOpenGrammarPart(['B1L01-P1', 'B1L01-P2', 'B1L01-P2', 'B1L01-P3'], null, () => { events.push('select-reading'); });
+  assert.deepEqual(events, [['page', null], ['grammar', 'B1L01-P1']]);
+  events.length = 0;
+  actions.handleFinishGrammar();
+  assert.deepEqual(events, [['page', null], ['grammar', 'B1L01-P2']]);
+  events.length = 0;
+  actions.handleFinishGrammar();
+  assert.deepEqual(events, [['page', null], ['grammar', 'B1L01-P3']]);
+  events.length = 0;
+  actions.handleFinishGrammar();
+  assert.deepEqual(events, [['grammar', null], ['page', null], 'select-reading']);
+});
+
+test('closing a multi-part grammar session clears its pending parts and completion', () => {
+  const { actions, events } = shellActions();
+  actions.handleOpenGrammarPart(['B1L01-P1', 'B1L01-P2'], null, () => { events.push('select-reading'); });
+  actions.handleCloseGrammar();
+  events.length = 0;
+  actions.handleFinishGrammar();
+  assert.deepEqual(events, [['grammar', null], ['page', null]]);
+});
+
+test('a reading launch carries all selected parts', () => {
+  const { actions, events } = shellActions();
+  actions.handleProceedToReading({ bookId: 1, lessonId: 2, partId: [1, 2] });
+  assert.deepEqual(events, [['grammar', null], ['page', null], ['open-part-reader', 1, 2, [1, 2]]]);
+});

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../src/utils/lesson/readingContext';
+import { resolveActiveReadingIndex, findReadingIndexForPart, findReadingIndicesForParts } from '../../src/utils/lesson/readingContext';
 import type { ReadingRecord } from '../../src/types/models';
 
 const mockReadings: ReadingRecord[] = [
@@ -172,3 +172,15 @@ test('getCharacterForSpeaker identifies all curriculum dialogue participants to 
   assert.equal(getCharacterForSpeaker('台灣'), null);
 });
 
+
+
+test('selected readings follow course order, deduplicate parts and exclude other lessons', () => {
+  assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [2, 1, 2]), [0, 1]);
+  assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [2]), [1]);
+});
+
+test('missing selected readings never substitute an unselected part', () => {
+  assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [1, 3]), [0]);
+  assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [3]), []);
+  assert.deepEqual(findReadingIndicesForParts(mockReadings, 9, 1, [1, 2]), []);
+});

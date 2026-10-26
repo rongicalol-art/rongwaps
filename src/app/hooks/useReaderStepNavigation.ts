@@ -8,6 +8,7 @@ import type { ReadingRecord } from '../../types/models';
 interface UseReaderStepNavigationOptions {
   activeReadingIndex: number | null;
   readings: ReadingRecord[];
+  sessionIndices?: number[];
   closeReader: () => void;
   openGrammarPart: (partId: string, pageId?: string | null) => void;
   hasFullCourseAccess: boolean;
@@ -23,27 +24,28 @@ interface UseReaderStepNavigationOptions {
 export function useReaderStepNavigation({
   activeReadingIndex,
   readings,
+  sessionIndices,
   closeReader,
   openGrammarPart,
   hasFullCourseAccess,
 }: UseReaderStepNavigationOptions) {
   const handleReaderNext = useCallback(() => {
     if (activeReadingIndex === null) return;
-    const reading = readings[activeReadingIndex];
+    const reading = readings[sessionIndices?.at(-1) ?? activeReadingIndex];
     const nextPart = reading ? findNextGrammarManifestPartForReading(reading, hasFullCourseAccess) : null;
     if (!nextPart) return;
     closeReader();
     openGrammarPart(nextPart.id);
-  }, [activeReadingIndex, readings, closeReader, openGrammarPart, hasFullCourseAccess]);
+  }, [activeReadingIndex, readings, sessionIndices, closeReader, openGrammarPart, hasFullCourseAccess]);
 
   const handleReaderPrevious = useCallback(() => {
     if (activeReadingIndex === null) return;
-    const reading = readings[activeReadingIndex];
+    const reading = readings[sessionIndices?.[0] ?? activeReadingIndex];
     const part = reading ? findGrammarManifestPartForReading(reading) : null;
     if (!part) return;
     closeReader();
     openGrammarPart(part.id, part.grammarPages.at(-1)?.id ?? null);
-  }, [activeReadingIndex, readings, closeReader, openGrammarPart]);
+  }, [activeReadingIndex, readings, sessionIndices, closeReader, openGrammarPart]);
 
   return { handleReaderNext, handleReaderPrevious };
 }

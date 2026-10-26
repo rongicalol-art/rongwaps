@@ -15,6 +15,8 @@ interface ReaderWindowProps {
   loadError?: boolean;
   onRetry?: () => void;
   readings: ReaderScreenProps['readings'];
+  sessionIndices?: ReaderScreenProps['sessionIndices'];
+  onSelectReading?: ReaderScreenProps['onSelectReading'];
   /** Active reading index, or null when Reading Mode is closed. */
   index: number | null;
   onNext: ReaderScreenProps['onNext'];
@@ -24,7 +26,7 @@ interface ReaderWindowProps {
 }
 
 /** Full-viewport Reading Mode window; AnimatePresence owns its exit. */
-export function ReaderWindow({ isOpen = false, loadError = false, onRetry, readings, index, onNext, onPrevious, onClose, onOpenGrammarPart }: ReaderWindowProps) {
+export function ReaderWindow({ isOpen = false, loadError = false, onRetry, readings, sessionIndices, onSelectReading, index, onNext, onPrevious, onClose, onOpenGrammarPart }: ReaderWindowProps) {
   // This window knows when Reading Mode is open, so it owns the reading title;
   // the shell takes it back on close.
   useDocumentTitle(index !== null ? readings[index]?.title ?? null : null);
@@ -51,6 +53,8 @@ export function ReaderWindow({ isOpen = false, loadError = false, onRetry, readi
             animateIn={!cameFromLoader}
             key="reader-screen"
             readings={readings}
+            sessionIndices={sessionIndices}
+            onSelectReading={onSelectReading}
             index={index!}
             onNext={onNext}
             onPrevious={onPrevious}

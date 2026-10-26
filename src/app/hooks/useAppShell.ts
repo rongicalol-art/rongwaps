@@ -66,6 +66,7 @@ export function useAppShell() {
   const readerSteps = useReaderStepNavigation({
     activeReadingIndex: reader.activeReadingIndex,
     readings: reader.readings,
+    sessionIndices: reader.sessionIndices,
     closeReader: actions.handleCloseReader,
     openGrammarPart: actions.handleOpenGrammarPart,
     hasFullCourseAccess,
@@ -105,7 +106,10 @@ export function useAppShell() {
     },
     grammar: {
       activeGrammarPartId: grammar.activeGrammarPartId,
-      setActiveGrammarPartId: grammar.setActiveGrammarPartId,
+      setActiveGrammarPartId: (partId) => {
+        if (partId) actions.handleOpenGrammarPart(partId);
+        else actions.handleCloseGrammar();
+      },
     },
     dictionary: {
       dictionaryWord: shellState.dictionaryWord,
@@ -122,7 +126,7 @@ export function useAppShell() {
     setActiveTab: navigation.setActiveTab,
     setActiveActivity: navigation.setActiveActivity,
     closeReader: reader.closeReader,
-    setActiveGrammarPartId: grammar.setActiveGrammarPartId,
+    setActiveGrammarPartId: actions.handleCloseGrammar,
     isDesktop: responsiveNav.isDesktop,
     isDesktopOrTablet: responsiveNav.isDesktopOrTablet,
     toggleCollapse: responsiveNav.toggleCollapse,
@@ -155,6 +159,8 @@ export function useAppShell() {
       loadError: reader.loadError,
       onRetry: reader.retry,
       readings: reader.readings,
+      sessionIndices: reader.sessionIndices,
+      onSelectReading: reader.navigateReader,
       index: reader.activeReadingIndex,
       onNext: readerSteps.handleReaderNext,
       onPrevious: readerSteps.handleReaderPrevious,
