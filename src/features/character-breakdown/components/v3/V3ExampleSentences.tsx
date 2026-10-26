@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AppIcon, Skeleton, SmartSentence, LevelTag } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
+import { alignSentenceSyllables } from '../../../../utils/pinyin/pinyinTones';
 import { useAppStore } from '../../../../store/useAppStore';
 import { playSentence } from '../../../../services/audio/sentenceAudio';
 import { ShowMoreButton } from './ShowMoreButton';
@@ -62,10 +63,11 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                   <SmartSentence
                     text={sentence.chinese}
                     highlightTerms={[character]}
-                    className="font-chinese text-xl font-bold leading-snug text-ui-ink sm:text-2xl"
+                    syllables={hideExamplePinyin ? null : alignSentenceSyllables(sentence.chinese, sentence.pinyin)}
+                    className="font-chinese text-xl font-bold leading-[2] text-ui-ink sm:text-2xl"
                   />
                 </div>
-                {!hideExamplePinyin && (
+                {!hideExamplePinyin && !alignSentenceSyllables(sentence.chinese, sentence.pinyin) && (
                   <span className="text-[13px] font-extrabold leading-tight text-brand-primary sm:text-sm">
                     {numberToToneMarks(sentence.pinyin)}
                   </span>

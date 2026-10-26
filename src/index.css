@@ -45,11 +45,12 @@
 }
 
 /* Nunito (latin subset) lacks tone-marked pinyin vowels and its latin-ext slice misses ǐ ǒ ǖ ǚ ǜ.
-   Noto Sans subset, scoped by unicode-range, keeps every pinyin tone mark in one consistent face. */
+   Noto Sans subset, scoped by unicode-range, keeps every pinyin tone mark in one consistent face.
+   Nunito semibold (600) is lighter than Noto bold, so the bold face starts at 700 to keep ǒ ě ǎ matching their neighbours. */
 @font-face {
   font-family: 'RW-Pinyin';
   src: url('/fonts/pinyin-400.woff2') format('woff2');
-  font-weight: 100 599;
+  font-weight: 100 699;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0101, U+0113, U+011B, U+012B, U+014D, U+016B, U+01CD-01DC, U+0261;
@@ -58,7 +59,7 @@
 @font-face {
   font-family: 'RW-Pinyin';
   src: url('/fonts/pinyin-700.woff2') format('woff2');
-  font-weight: 600 900;
+  font-weight: 700 900;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0101, U+0113, U+011B, U+012B, U+014D, U+016B, U+01CD-01DC, U+0261;

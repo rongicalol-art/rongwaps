@@ -7,6 +7,7 @@ import {
   type RankedExample,
 } from '../../../utils/vocabulary/courseExamples';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
+import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { cn } from '../../../utils/cn';
 import { useAppStore } from '../../../store/useAppStore';
 import { playSentence } from '../../../services/audio/sentenceAudio';
@@ -47,6 +48,11 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   className = '',
 }: FlashcardExampleRowProps) {
   const characterPreference = useAppStore((state) => state.characterPreference);
+  // Pinyin sits above each character when every hanzi pairs with a syllable; otherwise it stays a line below.
+  const syllables = useMemo(
+    () => (showPinyin ? alignSentenceSyllables(example.chinese, example.pinyin) : null),
+    [showPinyin, example.chinese, example.pinyin],
+  );
   return (
     <li
       className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 ${centered ? '' : '[content-visibility:auto] [contain-intrinsic-size:0_110px]'} ${
@@ -54,7 +60,8 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
       } ${className}`}
     >
       <div className="w-full flow-root">
-        <span className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1">
+        {/* The negative bottom margin keeps the 32px button from making a one-line sentence taller than its text. */}
+        <span className="float-right -mb-2 ml-3 inline-flex items-center gap-1">
           {showMeta && (
             <span
               className="inline-flex items-center select-none"
@@ -79,10 +86,11 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
         <SmartSentence
           text={example.chinese}
           highlightTerms={highlightTerms}
-          className={cn('font-chinese font-bold leading-relaxed text-ui-ink-strong', centered ? 'text-[17px] sm:text-[18px]' : 'text-[18px] sm:text-[20px] md:text-[22px]')}
+          syllables={syllables}
+          className={cn('font-chinese font-bold text-ui-ink-strong', syllables ? 'leading-[2.1]' : 'leading-relaxed', centered ? 'text-[17px] sm:text-[18px]' : 'text-[18px] sm:text-[20px] md:text-[22px]')}
         />
       </div>
-      {showPinyin && example.pinyin && (
+      {showPinyin && example.pinyin && !syllables && (
         <p className={cn('font-semibold tracking-wide leading-snug text-ui-muted-strong', centered ? 'text-[13px]' : 'text-sm sm:text-[15px]')}>
           {numberToToneMarks(example.pinyin)}
         </p>

@@ -9,6 +9,7 @@ export type { HoveredWordState } from './useSentenceLookup';
 export type { SentenceWordPart, SentenceWordLookupResult } from '../../types/sentenceLookup';
 import { calculateTooltipPlacement, type TooltipPlacement } from '../../utils/browser/tooltipPosition';
 import { AppIcon } from './AppIcon';
+import type { WordSyllable } from '../../utils/pinyin/pinyinTones';
 
 export interface SmartSentenceProps {
   text: string;
@@ -25,6 +26,8 @@ export interface SmartSentenceProps {
   onPlayAudio?: (word: string, pinyin?: string) => void;
   /** Whether to show definition tooltips on hover (desktop). Defaults to true. */
   enableHoverTooltip?: boolean;
+  /** One syllable per character of `text` (see alignWordSyllables): each hanzi shows its pinyin above it. */
+  syllables?: (WordSyllable | null)[] | null;
 }
 
 interface HighlightRange {
@@ -49,7 +52,22 @@ function findHighlightRanges(text: string, highlightTerms: string[], highlightCl
   return ranges;
 }
 
-function renderHighlightedText(text: string, startIndex: number, ranges: HighlightRange[]) {
+function renderHighlightedText(text: string, startIndex: number, ranges: HighlightRange[], syllables?: (WordSyllable | null)[] | null) {
+  if (syllables) {
+    return Array.from(text).map((char, offset) => {
+      const index = startIndex + offset;
+      const highlighted = ranges.find((range) => index >= range.start && index < range.end);
+      const syllable = syllables[index];
+      const glyph = highlighted ? <span className={highlighted.className || 'font-black text-brand-primary'}>{char}</span> : char;
+      return syllable ? (
+        <ruby key={offset} className="[ruby-align:center]">
+          {/* A minimum width gives every character the same cell, so short syllables (shì) and long ones (tóng) space the sentence evenly. */}
+          <span className="inline-block min-w-[1.3em] text-center">{glyph}</span>
+          <rt className="pb-0.5 font-sans text-[11px] font-semibold leading-none tracking-normal text-ui-muted-strong sm:text-xs">{syllable.text}</rt>
+        </ruby>
+      ) : <span key={offset}>{glyph}</span>;
+    });
+  }
   if (ranges.length === 0) return text;
 
   const parts: Array<{ text: string; className?: string }> = [];
@@ -91,6 +109,7 @@ export function SmartSentence({
   wordClassName,
   onPlayAudio,
   enableHoverTooltip = true,
+  syllables,
 }: SmartSentenceProps) {
   const authoredWords = useMemo(() => tokens.map(token =>
     characterPreference === 'simplified' && token.simplified ? token.simplified : token.traditional,
@@ -141,13 +160,13 @@ export function SmartSentence({
                   : 'hover:bg-brand-primary/10 hover:text-brand-primary focus-visible:bg-brand-primary/10 focus-visible:text-brand-primary active:bg-brand-primary/20',
               )}
             >
-              {renderHighlightedText(seg.segment, seg.index, highlightRanges)}
+              {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
             </button>
           );
         }
         return (
           <span key={wordKey} className="align-baseline">
-            {renderHighlightedText(seg.segment, seg.index, highlightRanges)}
+            {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
           </span>
         );
       })}

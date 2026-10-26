@@ -1,7 +1,8 @@
-import { AppIcon, SmartSentence, Skeleton, LevelTag } from '../../../lib/widgets';
+import { AppIcon, SmartSentence, Skeleton, LevelTag, ToggleSwitch } from '../../../lib/widgets';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
+import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import type { WordExample } from '../../../types/models';
 
 const PLAY_BUTTON =
@@ -19,6 +20,7 @@ export function WordExamplesSection({
 }) {
   const characterPreference = useAppStore((state) => state.characterPreference);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
+  const updatePreferences = useAppStore((state) => state.updatePreferences);
 
   if (isLoading) {
     return (
@@ -32,6 +34,17 @@ export function WordExamplesSection({
 
   return (
     <section aria-label="Example sentences" className="flex w-full flex-col">
+      {/* The same preference as the breakdown and practice settings: pinyin above each example. */}
+      <button
+        type="button"
+        role="switch"
+        aria-checked={!hideExamplePinyin}
+        onClick={() => updatePreferences({ hideExamplePinyin: !hideExamplePinyin })}
+        className="mb-1 flex items-center gap-2 self-end rounded-compact py-1 pl-2 text-sm font-extrabold text-ui-muted-strong outline-none focus-ring"
+      >
+        Pinyin
+        <ToggleSwitch checked={!hideExamplePinyin} />
+      </button>
       {examples.map((ex, idx) => (
         <div
           key={`${ex.chinese}-${idx}`}
@@ -41,7 +54,8 @@ export function WordExamplesSection({
             <SmartSentence
               text={ex.chinese}
               highlightTerms={[word]}
-              className="font-chinese text-xl font-bold leading-snug text-ui-ink sm:text-2xl"
+              syllables={hideExamplePinyin ? null : alignSentenceSyllables(ex.chinese, ex.pinyin)}
+              className="font-chinese text-xl font-bold leading-[2] text-ui-ink sm:text-2xl"
             />
             <button
               type="button"
@@ -52,7 +66,7 @@ export function WordExamplesSection({
               <AppIcon name="audio" size={18} />
             </button>
           </div>
-          {!hideExamplePinyin && ex.pinyin && (
+          {!hideExamplePinyin && ex.pinyin && !alignSentenceSyllables(ex.chinese, ex.pinyin) && (
             <p className="text-[13px] font-extrabold leading-tight text-brand-primary sm:text-sm">
               {numberToToneMarks(ex.pinyin)}
             </p>

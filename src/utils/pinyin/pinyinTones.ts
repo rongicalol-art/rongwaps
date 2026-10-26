@@ -137,3 +137,15 @@ export function alignWordSyllables(
   let next = 0;
   return chars.map((char) => (isHanziChar(char) ? agreed![next++] : null));
 }
+
+/**
+ * Syllables for a whole example sentence (numbered or tone-marked pinyin), ready to sit above each
+ * character. Null unless every hanzi pairs with a syllable, so callers fall back to a pinyin line.
+ */
+export function alignSentenceSyllables(sentence: string, pinyin: string | null | undefined): (WordSyllable | null)[] | null {
+  if (!pinyin) return null;
+  // Dialogue lines carry speaker labels ("A: ... B: ...") that the hanzi side writes as A：/B：.
+  const spoken = numberToToneMarks(pinyin).replace(/(^|\s)[A-Z][:：]\s*/g, '$1');
+  const aligned = alignWordSyllables(sentence, spoken);
+  return aligned && Array.from(sentence).every((char, index) => !isHanziChar(char) || aligned[index]) ? aligned : null;
+}
