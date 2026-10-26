@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { getLessonTitles, getReaderHeaderTitles } from '../../src/screens/reader/components/ReaderHeader';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { ReaderHeader, getLessonTitles, getReaderHeaderTitles } from '../../src/screens/reader/components/ReaderHeader';
 import type { ReadingRecord } from '../../src/types/models';
 
 test('derives lesson titles correctly from standard lesson format', () => {
@@ -85,4 +87,21 @@ test('handles 2-part narrative readings with generic prefix', () => {
   const titles = getReaderHeaderTitles(reading, 'The New Classmate · 新同學');
   assert.equal(titles.chineseTitle, '自我介紹');
   assert.equal(titles.englishTitle, 'The New Classmate');
+});
+
+
+test('the header names the part its playback controls target', () => {
+  const noop = () => {};
+  for (const partNumber of [1, 2, 3]) {
+    for (const playing of [false, true]) {
+      const html = renderToStaticMarkup(createElement(ReaderHeader, {
+        partNumber, playing, textSize: 'normal', showPinyin: false, showMeaning: false,
+        isSlowAudio: false, progress: 0, onTextSizeChange: noop, onTogglePinyin: noop,
+        onToggleMeaning: noop, onToggleSlowAudio: noop, onTogglePlay: noop,
+        onScrub: noop, onSeek: noop, onClose: noop,
+      }));
+      assert.match(html, new RegExp(`aria-label="${playing ? 'Pause' : 'Play'} Part ${partNumber}"`));
+      assert.match(html, new RegExp(`>Part ${partNumber}</span>`));
+    }
+  }
 });

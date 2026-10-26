@@ -172,6 +172,7 @@ export function ReaderScreen({
               passing beneath it, so the reading canvases pad their top clear of the bar. */}
           <div className="absolute top-0 left-0 right-0 z-30 pointer-events-auto">
             <ReaderHeader
+              partNumber={reading.dialogueNumber}
               textSize={textSize}
               onTextSizeChange={setTextSize}
               characterFont={characterFont}
@@ -198,6 +199,15 @@ export function ReaderScreen({
 
           <main
             ref={mainRef}
+            onScroll={(event) => {
+              if (sessionIndices.length < 2 || !onSelectReading) return;
+              const root = event.currentTarget;
+              const readingLine = root.getBoundingClientRect().top + root.clientHeight / 3;
+              const section = [...root.querySelectorAll<HTMLElement>('[data-reading-id]')]
+                .findLast((element) => element.getBoundingClientRect().top <= readingLine);
+              const nextIndex = readings.findIndex((item) => item.id === section?.dataset.readingId);
+              if (nextIndex >= 0 && nextIndex !== index) onSelectReading(nextIndex);
+            }}
             onWheel={stopFollowing}
             onTouchMove={stopFollowing}
             className="relative z-10 flex-1 min-w-0 overflow-y-auto overscroll-none"
