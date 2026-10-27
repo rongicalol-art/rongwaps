@@ -1,0 +1,2942 @@
+{
+  "BOOK3_LESSON_NINE_PART_ONE": {
+    "id": "B3L09-P01-D01",
+    "bookId": 3,
+    "lessonId": 9,
+    "partId": 1,
+    "title": "Grammar 1–4 · Academic Pressures and Alternatives",
+    "dialogue": {
+      "id": "B3L09-D01",
+      "title": "誰說得念大學才有未來？",
+      "audioReference": "09-1-1",
+      "printedPages": [
+        227,
+        228,
+        229
+      ],
+      "grammarFocus": [
+        "V過來",
+        "怎麼不……反而……呢？",
+        "不但不/沒……反而……",
+        "才……(呢)"
+      ],
+      "lines": [
+        {
+          "id": "b3l9d1-l1",
+          "speaker": "尚恩",
+          "traditional": "恭喜你弟弟參加網球比賽得到了第一名。好久沒看到他了，他最近怎麼樣？",
+          "simplified": "恭喜你弟弟参加网球比赛得到了第一名。好久没看到他了，他最近怎么样？",
+          "pinyin": "Gōngxǐ nǐ dìdi cānjiā wǎngqiú bǐsài dédào le dì-yī míng. Hǎojiǔ méi kàndào tā le, tā zuìjìn zěnmeyàng?",
+          "english": "Congratulations on your younger brother taking first place in the tennis tournament! I haven't seen him in a while; how has he been lately?"
+        },
+        {
+          "id": "b3l9d1-l2",
+          "speaker": "家豪",
+          "traditional": "他忙著準備今年的大學考試，總是睡得不太安心，半夜會突然醒過來。",
+          "simplified": "他忙着准备今年的大学考试，总是睡得不太安心，半夜会突然醒过来。",
+          "pinyin": "Tā mángzhe zhǔnbèi jīnnián de dàxué kǎoshì, zǒngshì shuì de bú tài ānxīn, bànyè huì tūrán xǐng guòlái.",
+          "english": "He's busy preparing for this year's college entrance exams. He never sleeps restfully and often wakes up suddenly in the middle of the night."
+        },
+        {
+          "id": "b3l9d1-l3",
+          "speaker": "尚恩",
+          "traditional": "記得你說過，你弟弟學習和運動的表現都很好。我想只要心情放輕鬆就沒問題了。",
+          "simplified": "记得你说过，你弟弟学习和运动的表现都很好。我想只要心情放轻松就没问题了。",
+          "pinyin": "Jìde nǐ shuō guo, nǐ dìdi xuéxí hé yùndòng de biǎoxiàn dōu hěn hǎo. Wǒ xiǎng zhǐyào xīnqíng fàng qīngsōng jiù méi wèntí le.",
+          "english": "I remember you said your brother performs well in both academics and sports. I think as long as he relaxes his mindset, he'll do fine."
+        },
+        {
+          "id": "b3l9d1-l4",
+          "speaker": "家豪",
+          "traditional": "問題是，我爸媽希望他能考上前三名的大學，不是打球得第一，要求他把全部的時間都拿來準備考試。可是我弟弟覺得打球不會影響他念書，他們還因為這件事吵了一架。",
+          "simplified": "问题是，我爸妈希望他能考上前三名的大学，不是打球得第一，要求他把全部的时间都拿来准备考试。可是我弟弟觉得打球不会影响他念书，他们还因为这件事吵了一架。",
+          "pinyin": "Wèntí shì, wǒ bàmā xīwàng tā néng kǎoshàng qián sān míng de dàxué, búshì dǎqiú dé dì-yī, yāoqiú tā bǎ quánbù de shíjiān dōu nálái zhǔnbèi kǎoshì. Kěshì wǒ dìdi juéde dǎqiú bú huì yǐngxiǎng tā niànshū, tāmen hái yīnwèi zhè jiàn shì chǎo le yí jià.",
+          "english": "The problem is that my parents hope he can test into a top-three university rather than placing first in ball games; they demand he devote all his time to exam prep. But my brother believes playing ball won't hurt his studies, and they even had a big argument over this."
+        },
+        {
+          "id": "b3l9d1-l5",
+          "speaker": "尚恩",
+          "traditional": "哦？你弟弟的運動成績那麼好，我以為你爸媽會為他高興。",
+          "simplified": "哦？你弟弟的运动成绩那么好，我以为你爸妈会为他高兴。",
+          "pinyin": "Ó? Nǐ dìdi de yùndòng chéngjī nàme hǎo, wǒ yǐwéi nǐ bàmā huì wèi tā gāoxìng.",
+          "english": "Oh? Your brother's athletic achievements are so stellar; I thought your parents would be thrilled for him."
+        },
+        {
+          "id": "b3l9d1-l6",
+          "speaker": "家豪",
+          "traditional": "他們是很高興，可是現在要考大學，情況就不同了。我曾經有一次，考試前想跟同學去露營，爸媽知道了就罵我：「快考試了，怎麼不在家念書，反而想出去玩？」不管我怎麼解釋他們都不聽，讓我難過了半天。",
+          "simplified": "他们是很高兴，可是现在要考大学，情况就不同了。我曾经有一次，考试前想跟同学去露营，爸妈知道了就骂我：「快考试了，怎么不在家念书，反而想出去玩？」不管我怎么解释他们都不听，让我难过了半天。",
+          "pinyin": "Tāmen shì hěn gāoxìng, kěshì xiànzài yào kǎo dàxué, qíngkuàng jiù bùtóng le. Wǒ céngjīng yǒu yí cì, kǎoshì qián xiǎng gēn tóngxué qù lùyíng, bàmā zhīdào le jiù mà wǒ: \"Kuài kǎoshì le, zěnme bú zài jiā niànshū, fǎn'ér xiǎng chūqù wán?\" Bùguǎn wǒ zěnme jiěshì tāmen dōu bù tīng, ràng wǒ nánguò le bàntiān.",
+          "english": "They are happy, but now that college exams are ahead, the situation is different. Once before an exam, I wanted to go camping with classmates; when my parents found out, they scolded me: 'Exams are around the corner, why aren't you studying at home instead of wanting to go out playing?' No matter how I explained, they wouldn't listen, which made me upset for a long time."
+        },
+        {
+          "id": "b3l9d1-l7",
+          "speaker": "尚恩",
+          "traditional": "可是，生命中有很多事情比考試還要重要啊！再說，孩子怎麼受得了一直被逼著念書呢？",
+          "simplified": "可是，生命中有很多事情比考试还要重要啊！再说，孩子怎么受得了一直被逼着念书呢？",
+          "pinyin": "Kěshì, shēngmìng zhōng yǒu hěn duō shìqíng bǐ kǎoshì hái yào zhòngyào a! Zàishuō, háizi zěnme shòudeliǎo yìzhí bèi bīzhe niànshū ne?",
+          "english": "Still, there are many things in life even more important than exams! Besides, how can any kid stand being forced to study constantly?"
+        },
+        {
+          "id": "b3l9d1-l8",
+          "speaker": "家豪",
+          "traditional": "我爸媽才不這麼想。其實有一些高中老師也是這樣，雖然他們也教導學生做人做事的道理，但臺灣社會很重視升學，所以考試就變成教學的重心了。",
+          "simplified": "我爸妈才不这么想。其实有一些高中老师也是这样，虽然他们也教导学生做人做事的道理，但台湾社会很重视升学，所以考试就变成教学的重心了。",
+          "pinyin": "Wǒ bàmā cái bù zhème xiǎng. Qíshí yǒu yìxiē gāozhōng lǎoshī yě shì zhèyàng, suīrán tāmen yě jiàodǎo xuéshēng zuòrén zuòshì de dàolǐ, dàn Táiwān shèhuì hěn zhòngshì shēngxué, suǒyǐ kǎoshì jiù biànchéng jiàoxué de zhòngxīn le.",
+          "english": "My parents certainly don't think that way. Actually, some high school teachers are like that too: while they teach life principles, Taiwanese society values college advancement so much that exams become the core focus of teaching."
+        },
+        {
+          "id": "b3l9d1-l9",
+          "speaker": "尚恩",
+          "traditional": "難怪你爸媽也認為考試最重要，好像只要考上好大學，將來就能有成就。",
+          "simplified": "难怪你爸妈也认为考试最重要，好像只要考上好大学，将来就能有成就。",
+          "pinyin": "Nánguài nǐ bàmā yě rènwéi kǎoshì zuì zhòngyào, hǎoxiàng zhǐyào kǎoshàng hǎo dàxué, jiānglái jiù néng yǒu chéngjiù.",
+          "english": "No wonder your parents think exams are paramount, as if as long as you get into a good college, you will achieve success in the future."
+        },
+        {
+          "id": "b3l9d1-l10",
+          "speaker": "家豪",
+          "traditional": "是啊，就是因為這樣，所以老師要求學生做一堆測驗題目、記一堆筆記。要是孩子考不及格或學習成果不好，家長就逼孩子去補習，就算孩子再不滿也得去。",
+          "simplified": "是啊，就是因为这样，所以老师要求学生做一堆测验题目、记一堆笔记。要是孩子考不及格或学习成果不好，家长就逼孩子去补习，就算孩子再不满也得去。",
+          "pinyin": "Shì a, jiùshì yīnwèi zhèyàng, suǒyǐ lǎoshī yāoqiú xuéshēng zuò yì duī cèyàn tímù, jì yì duī bǐjì. Yàoshi háizi kǎo bù jígé huò xuéxí chéngguǒ bù hǎo, jiāzhǎng jiù bī háizi qù bǔxí, jiùsuàn háizi zài bùmǎn yě děi qù.",
+          "english": "Yeah, exactly because of that, teachers demand students do piles of test questions and take heaps of notes. If a child fails or performs poorly, parents force them into cram schools no matter how unhappy they are."
+        },
+        {
+          "id": "b3l9d1-l11",
+          "speaker": "尚恩",
+          "traditional": "不過，我聽語言交換的朋友說，現在不少臺灣老師的教學方式變活潑了。他們利用有趣的教材和網路工具，帶領學生吸收新知識，也讓本來沒有自信的學生，願意主動舉手請教老師了。",
+          "simplified": "不过，我听语言交换的朋友说，现在不少台湾老师的教学方式变活泼了。他们利用有趣的教材和网路工具，带领学生吸收新知识，也让本来没有自信的学生，愿意主动举手请教老师了。",
+          "pinyin": "Búguò, wǒ tīng yǔyán jiāohuàn de péngyǒu shuō, xiànzài bù shǎo Táiwān lǎoshī de jiàoxué fāngshì biàn huópo le. Tāmen lìyòng yǒuqù de jiàocái hé wǎnglù gōngjù, dàilǐng xuéshēng xīshōu xīn zhīshì, yě ràng běnlái méiyǒu zìxìn de xuéshēng, yuànyì zhǔdòng jǔshǒu qǐngjiào lǎoshī le.",
+          "english": "However, I heard from language exchange friends that many Taiwanese teachers are adopting livelier methods now. They use engaging materials and online tools to lead students in absorbing knowledge, prompting even unconfident students to raise their hands and consult teachers."
+        },
+        {
+          "id": "b3l9d1-l12",
+          "speaker": "家豪",
+          "traditional": "是啊，不只教學方式變了，升學制度也改了。像有一些學生體育、美術或音樂的成績非常好，就能以特殊表現，選擇理想的大學。",
+          "simplified": "是啊，不只教学方式变了，升学制度也改了。像有一些学生体育、美术或音乐的成绩非常好，就能以特殊表现，选择理想的大学。",
+          "pinyin": "Shì a, bù zhǐ jiàoxué fāngshì biàn le, shēngxué zhìdù yě gǎi le. Xiàng yǒu yìxiē xuéshēng tǐyù, měishù huò yīnyuè de chéngjī fēicháng hǎo, jiù néng yǐ tèshū biǎoxiàn, xuǎnzé lǐxiǎng de dàxué.",
+          "english": "Right, not only teaching methods have changed, but college admissions systems have evolved too. Students with exceptional sports, art, or music talents can use their special achievements to enter ideal universities."
+        },
+        {
+          "id": "b3l9d1-l13",
+          "speaker": "尚恩",
+          "traditional": "我覺得這樣比較合理。像歐洲就有不少水準很高的職業學校，培養學生的專業能力，將來就比較容易找到工作。",
+          "simplified": "我觉得这样比较合理。像欧洲就有不少水准很高的职业学校，培养学生的专业能力，将来就比较容易找到工作。",
+          "pinyin": "Wǒ juéde zhèyàng bǐjiào hélǐ. Xiàng Ōuzhōu jiù yǒu bù shǎo shuǐzhǔn hěn gāo de zhíyè xuéxiào, péiyǎng xuéshēng de zhuānyè nénglì, jiānglái jiù bǐjiào róngyì zhǎodào gōngzuò.",
+          "english": "I think that's far more reasonable. Europe has many high-standard vocational schools cultivating students' technical expertise, making it easier to find jobs."
+        },
+        {
+          "id": "b3l9d1-l14",
+          "speaker": "家豪",
+          "traditional": "我有一個高中同學沒考上大學，他父母不但沒生氣，反而讓他去義大利遊學。他邊旅行邊學外文，後來就留在當地的職業學校念服裝設計，現在已經是服裝公司的大老闆了。",
+          "simplified": "我有一个高中同学没考上大学，他父母不但没生气，反而让他去义大利游学。他边旅行边学外文，后来就留在当地的职业学校念服装设计，现在已经是服装公司的大老板了。",
+          "pinyin": "Wǒ yǒu yí ge gāozhōng tóngxué méi kǎoshàng dàxué, tā fùmǔ búdàn méi shēngqì, fǎn'ér ràng tā qù Yìdàlì yóuxué. Tā biān lǚxíng biān xué wàiwén, hòulái jiù liú zài dāngdì de zhíyè xuéxiào niàn fúzhuāng shèjì, xiànzài yǐjīng shì fúzhuāng gōngsī de dà lǎobǎn le.",
+          "english": "I had a high school classmate who didn't test into college; his parents didn't get angry at all, but sent him on a study trip to Italy instead. He studied foreign languages while traveling, later studied fashion design at a local vocational academy, and is now the boss of an apparel company."
+        },
+        {
+          "id": "b3l9d1-l15",
+          "speaker": "尚恩",
+          "traditional": "這樣的成就也很好啊！誰說一定要念大學才有美好的未來呢？",
+          "simplified": "这样的成就也很好啊！谁说一定要念大学才有美好的未来呢？",
+          "pinyin": "Zhèyàng de chéngjiù yě hěn hǎo a! Shéi shuō yídìng yào niàn dàxué cái yǒu měihǎo de wèilái ne?",
+          "english": "That kind of accomplishment is wonderful too! Who can say that one must attend university to have a bright future?"
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L09-G01-P235",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 1,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 1,
+        "titleTraditional": "V過來",
+        "titleEnglish": "Return to Normal State with V過來 / V得過來 / V不過來",
+        "learnerPromise": "Describe recovering consciousness, returning to a normal or better state, or having the capacity to handle tasks.",
+        "printedPages": [
+          235,
+          236
+        ],
+        "bookPage": 235,
+        "bookPageAvailable": true,
+        "audioReference": "09-1-1",
+        "explanation": "「動詞＋過來」的「過來」是趨向補語，有回到或恢復到原來正常狀態的意思。常用於：醒過來、改過來、明白過來。若是表示時間或能力是否能應付，則用「V得過來 / V不過來」，如「忙不過來」。",
+        "focusTerms": [
+          "V過來",
+          "醒過來",
+          "改過來",
+          "明白過來",
+          "忙不過來"
+        ],
+        "pattern": "Subject + Verb + (得/不) + 過來 (+ Object)",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "Recovery",
+          "Object"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g1-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g1-r1-c1-w1",
+                  "traditional": "弟弟",
+                  "simplified": "弟弟",
+                  "pinyin": "dìdi",
+                  "meaning": "brother"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r1-c2-w1",
+                  "traditional": "把壞習慣",
+                  "simplified": "把坏习惯",
+                  "pinyin": "bǎ huàixíguàn",
+                  "meaning": "bad habit"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r1-c3-w1",
+                  "traditional": "改過來",
+                  "simplified": "改过来",
+                  "pinyin": "gǎiguòlái",
+                  "meaning": "corrected"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r1-c4-w1",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "already"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g1-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g1-r2-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r2-c2-w1",
+                  "traditional": "過了一會兒",
+                  "simplified": "过了一会儿",
+                  "pinyin": "guò le yìhuǐr",
+                  "meaning": "after a while"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r2-c3-w1",
+                  "traditional": "才明白過來",
+                  "simplified": "才明白过来",
+                  "pinyin": "cái míngbáiguòlái",
+                  "meaning": "understood"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r2-c4-w1",
+                  "traditional": "原因",
+                  "simplified": "原因",
+                  "pinyin": "yuányīn",
+                  "meaning": "reason"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g1-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g1-r3-c1-w1",
+                  "traditional": "資料太多",
+                  "simplified": "资料太多",
+                  "pinyin": "zīliào tài duō",
+                  "meaning": "too much data"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r3-c2-w1",
+                  "traditional": "我一個人",
+                  "simplified": "我一个人",
+                  "pinyin": "wǒ yí ge rén",
+                  "meaning": "me alone"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r3-c3-w1",
+                  "traditional": "忙不過來",
+                  "simplified": "忙不过来",
+                  "pinyin": "mángbúguòlái",
+                  "meaning": "cannot manage"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g1-r3-c4-w1",
+                  "traditional": "工作",
+                  "simplified": "工作",
+                  "pinyin": "gōngzuò",
+                  "meaning": "tasks"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "他忙著準備今年的大學考試，總是睡得不太安心，半夜會突然醒過來。",
+              "simplified": "他忙着准备今年的大学考试，总是睡得不太安心，半夜会突然醒过来。",
+              "pinyin": "Tā mángzhe zhǔnbèi jīnnián de dàxué kǎoshì, zǒngshì shuì de bú tài ānxīn, bànyè huì tūrán xǐng guòlái.",
+              "english": "He is busy preparing for college entrance exams, sleeps uneasily, and suddenly wakes up in the middle of the night.",
+              "words": [
+                {
+                  "id": "b3l9g1-ex1-w1",
+                  "traditional": "他準備考試",
+                  "simplified": "他准备考试",
+                  "pinyin": "tā zhǔnbèi kǎoshì",
+                  "meaning": "he prepares exams",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g1-ex1-w2",
+                  "traditional": "睡得不安心",
+                  "simplified": "睡得不安心",
+                  "pinyin": "shuì de bù ānxīn",
+                  "meaning": "sleeps uneasy",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g1-ex1-w3",
+                  "traditional": "半夜會突然醒過來",
+                  "simplified": "半夜会突然醒过来",
+                  "pinyin": "bànyè huì tūrán xǐng guòlái",
+                  "meaning": "wakes in night",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "被媽媽罵了好幾次以後，弟弟終於把亂丟髒衣服的壞習慣改過來了。",
+              "simplified": "被妈妈骂了好几次以后，弟弟终于把乱丢脏衣服的坏习惯改过来了。",
+              "pinyin": "Bèi māma mà le hǎojǐ cì yǐhòu, dìdi zhōngyú bǎ luàndiū zāng yīfú de huàixíguàn gǎiguòlái le.",
+              "english": "After being scolded several times by mom, younger brother finally corrected his bad habit of throwing dirty clothes around.",
+              "words": [
+                {
+                  "id": "b3l9g1-ex2-w1",
+                  "traditional": "被媽媽罵了以後",
+                  "simplified": "被妈妈骂了以后",
+                  "pinyin": "bèi māma mà le yǐhòu",
+                  "meaning": "after scolded by mom",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g1-ex2-w2",
+                  "traditional": "弟弟把壞習慣",
+                  "simplified": "弟弟把坏习惯",
+                  "pinyin": "dìdi bǎ huàixíguàn",
+                  "meaning": "brother bad habit"
+                },
+                {
+                  "id": "b3l9g1-ex2-w3",
+                  "traditional": "改過來了",
+                  "simplified": "改过来了",
+                  "pinyin": "gǎiguòlái le",
+                  "meaning": "corrected",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "等一下開會要準備的資料很多，我一個人忙不過來，你可以幫我嗎？",
+              "simplified": "等一下开会要准备的资料很多，我一个人忙不过来，你可以帮我吗？",
+              "pinyin": "Děng yíxià kāihuì yào zhǔnbèi de zīliào hěn duō, wǒ yí ge rén mángbúguòlái, nǐ kěyǐ bāng wǒ ma?",
+              "english": "There are lots of materials to prepare for the meeting; I can't manage on my own, could you help me?",
+              "words": [
+                {
+                  "id": "b3l9g1-ex3-w1",
+                  "traditional": "開會資料很多",
+                  "simplified": "开会资料很多",
+                  "pinyin": "kāihuì zīliào hěn duō",
+                  "meaning": "many meeting docs",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g1-ex3-w2",
+                  "traditional": "我一個人忙不過來",
+                  "simplified": "我一个人忙不过来",
+                  "pinyin": "wǒ yí ge rén mángbúguòlái",
+                  "meaning": "I can't cope alone",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g1-ex3-w3",
+                  "traditional": "你可以幫我嗎",
+                  "simplified": "你可以帮我吗",
+                  "pinyin": "nǐ kěyǐ bāng wǒ ma",
+                  "meaning": "can you help me",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g1-cf1",
+              "question": "How do you express that a bad habit has been corrected to a good state?",
+              "answer": "弟弟終於把壞習慣改過來了。",
+              "wrongTraditional": "弟弟終於把壞習慣改過去了。",
+              "wrongSimplified": "弟弟终于把坏习惯改过去了。",
+              "right": {
+                "traditional": "弟弟終於把壞習慣改過來了。",
+                "simplified": "弟弟终于把坏习惯改过来了。",
+                "pinyin": "Dìdi zhōngyú bǎ huàixíguàn gǎiguòlái le.",
+                "english": "Younger brother finally corrected his bad habit.",
+                "words": [
+                  {
+                    "id": "b3l9g1-cf1-w1",
+                    "traditional": "弟弟終於把壞習慣",
+                    "simplified": "弟弟终于把坏习惯",
+                    "pinyin": "dìdi zhōngyú bǎ huàixíguàn",
+                    "meaning": "brother bad habit"
+                  },
+                  {
+                    "id": "b3l9g1-cf1-w2",
+                    "traditional": "改過來了",
+                    "simplified": "改过来了",
+                    "pinyin": "gǎiguòlái le",
+                    "meaning": "corrected",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g1-cf2",
+              "question": "How do you ask for assistance because you have too much work to handle alone?",
+              "answer": "資料太多，我一個人忙不過來。",
+              "wrongTraditional": "資料太多，我一個人忙得不來。",
+              "wrongSimplified": "资料太多，我一个人忙得不来。",
+              "right": {
+                "traditional": "資料太多，我一個人忙不過來。",
+                "simplified": "资料太多，我一个人忙不过来。",
+                "pinyin": "Zīliào tài duō, wǒ yí ge rén mángbúguòlái.",
+                "english": "There are too many materials; I can't handle it all alone.",
+                "words": [
+                  {
+                    "id": "b3l9g1-cf2-w1",
+                    "traditional": "資料太多",
+                    "simplified": "资料太多",
+                    "pinyin": "zīliào tài duō",
+                    "meaning": "too much data",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g1-cf2-w2",
+                    "traditional": "我一個人",
+                    "simplified": "我一个人",
+                    "pinyin": "wǒ yí ge rén",
+                    "meaning": "I alone"
+                  },
+                  {
+                    "id": "b3l9g1-cf2-w3",
+                    "traditional": "忙不過來",
+                    "simplified": "忙不过来",
+                    "pinyin": "mángbúguòlái",
+                    "meaning": "can't cope",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g1-q1",
+            "type": "choice",
+            "prompt": "Say that one person cannot handle so many tasks:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "要準備的東西太多，我一個人"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g1-q1-b1",
+                "answer": "忙不過來",
+                "answerSimplified": "忙不过来",
+                "hint": "cannot manage alone"
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g1-q1-t1",
+                "traditional": "忙不過來",
+                "simplified": "忙不过来",
+                "pinyin": "mángbúguòlái",
+                "meaning": "cannot cope"
+              },
+              {
+                "id": "b3l9g1-q1-t2",
+                "traditional": "忙得過來",
+                "simplified": "忙得过来",
+                "pinyin": "mángdeguòlái",
+                "meaning": "can cope"
+              },
+              {
+                "id": "b3l9g1-q1-t3",
+                "traditional": "忙得不來",
+                "simplified": "忙得不来",
+                "pinyin": "mángdebùlái",
+                "meaning": "ungrammatical"
+              }
+            ],
+            "correctFeedback": "忙不過來 expresses that the volume of work exceeds one's capacity to handle.",
+            "repairFeedback": "Use 忙不過來 to state that you cannot manage all the tasks."
+          }
+        ]
+      },
+      {
+        "id": "B3L09-G02-P237",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 1,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 2,
+        "titleTraditional": "怎麼不……反而……呢？",
+        "titleEnglish": "Why Not... Instead with 怎麼不...反而...",
+        "learnerPromise": "Question why someone fails to do what is reasonable and instead does something contrary or inappropriate.",
+        "printedPages": [
+          237,
+          238
+        ],
+        "bookPage": 237,
+        "bookPageAvailable": true,
+        "audioReference": "09-1-1",
+        "explanation": "「怎麼不……呢？」表示對某種情況提出質疑。「怎麼不」後面是說話者認為該做的事，而「反而」後面接的是不該做或是讓說話者感到意外、不能理解的事。",
+        "focusTerms": [
+          "怎麼不",
+          "反而",
+          "反而想",
+          "反而玩起手機來了"
+        ],
+        "pattern": "(Subject) + 怎麼不 + Expected Action，反而 + Contrary Action + (呢)？",
+        "patternColumns": [
+          "Subject",
+          "怎麼不",
+          "Expected",
+          "反而",
+          "Action"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g2-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g2-r1-c1-w1",
+                  "traditional": "快考試了",
+                  "simplified": "快考试了",
+                  "pinyin": "kuài kǎoshì le",
+                  "meaning": "exams near"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r1-c2-w1",
+                  "traditional": "怎麼不",
+                  "simplified": "怎么不",
+                  "pinyin": "zěnme bù",
+                  "meaning": "why not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r1-c3-w1",
+                  "traditional": "在家念書",
+                  "simplified": "在家念书",
+                  "pinyin": "zài jiā niànshū",
+                  "meaning": "study home"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r1-c4-w1",
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "meaning": "instead"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r1-c5-w1",
+                  "traditional": "想出去玩呢",
+                  "simplified": "想出去玩呢",
+                  "pinyin": "xiǎng chūqù wán ne",
+                  "meaning": "go play"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g2-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g2-r2-c1-w1",
+                  "traditional": "你聽不懂",
+                  "simplified": "你听不懂",
+                  "pinyin": "nǐ tīngbùdǒng",
+                  "meaning": "don't understand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r2-c2-w1",
+                  "traditional": "怎麼不",
+                  "simplified": "怎么不",
+                  "pinyin": "zěnme bù",
+                  "meaning": "why not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r2-c3-w1",
+                  "traditional": "請教老師",
+                  "simplified": "请教老师",
+                  "pinyin": "qǐngjiào lǎoshī",
+                  "meaning": "ask teacher"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r2-c4-w1",
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "meaning": "instead"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r2-c5-w1",
+                  "traditional": "玩起手機了",
+                  "simplified": "玩起手机了",
+                  "pinyin": "wán qǐ shǒujī le",
+                  "meaning": "play phone"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g2-r3-c1-w1",
+                  "traditional": "你三十歲了",
+                  "simplified": "你三十岁了",
+                  "pinyin": "nǐ sānshí suì le",
+                  "meaning": "you're 30"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r3-c2-w1",
+                  "traditional": "怎麼不",
+                  "simplified": "怎么不",
+                  "pinyin": "zěnme bù",
+                  "meaning": "why not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r3-c3-w1",
+                  "traditional": "去找工作",
+                  "simplified": "去找工作",
+                  "pinyin": "qù zhǎo gōngzuò",
+                  "meaning": "find job"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r3-c4-w1",
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "meaning": "instead"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g2-r3-c5-w1",
+                  "traditional": "跟父母要錢",
+                  "simplified": "跟父母要钱",
+                  "pinyin": "gēn fùmǔ yào qián",
+                  "meaning": "ask money"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "快考試了，怎麼不在家念書，反而想出去玩？",
+              "simplified": "快考试了，怎么不在家念书，反而想出去玩？",
+              "pinyin": "Kuài kǎoshì le, zěnme bú zài jiā niànshū, fǎn'ér xiǎng chūqù wán?",
+              "english": "Exams are near; why aren't you studying at home instead of wanting to go out playing?",
+              "words": [
+                {
+                  "id": "b3l9g2-ex1-w1",
+                  "traditional": "快考試了",
+                  "simplified": "快考试了",
+                  "pinyin": "kuài kǎoshì le",
+                  "meaning": "exams near",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g2-ex1-w2",
+                  "traditional": "怎麼不在家念書",
+                  "simplified": "怎么不在家念书",
+                  "pinyin": "zěnme bú zài jiā niànshū",
+                  "meaning": "why not study at home",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g2-ex1-w3",
+                  "traditional": "反而想出去玩",
+                  "simplified": "反而想出去玩",
+                  "pinyin": "fǎn'ér xiǎng chūqù wán",
+                  "meaning": "instead want play",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "你聽不懂老師上課說的，怎麼不舉手請教老師，反而玩起手機來了？",
+              "simplified": "你听不懂老师上课说的，怎么不举手请教老师，反而玩起手机来了？",
+              "pinyin": "Nǐ tīngbùdǒng lǎoshī shàngkè shuō de, zěnme bù jǔshǒu qǐngjiào lǎoshī, fǎn'ér wán qǐ shǒujī lái le?",
+              "english": "You didn't understand the teacher in class; why didn't you raise your hand and ask, instead of playing on your phone?",
+              "words": [
+                {
+                  "id": "b3l9g2-ex2-w1",
+                  "traditional": "聽不懂老師說的",
+                  "simplified": "听不懂老师说的",
+                  "pinyin": "tīngbùdǒng lǎoshī shuō de",
+                  "meaning": "didn't understand teacher",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g2-ex2-w2",
+                  "traditional": "怎麼不請教老師",
+                  "simplified": "怎么不请教老师",
+                  "pinyin": "zěnme bù qǐngjiào lǎoshī",
+                  "meaning": "why not ask teacher",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g2-ex2-w3",
+                  "traditional": "反而玩起手機來了",
+                  "simplified": "反而玩起手机来了",
+                  "pinyin": "fǎn'ér wán qǐ shǒujī lái le",
+                  "meaning": "instead play phone",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "衣服脫了，怎麼不拿去洗，反而丟在地上呢？",
+              "simplified": "衣服脱了，怎么不拿去洗，反而丢在地上呢？",
+              "pinyin": "Yīfú tuō le, zěnme bù ná qù xǐ, fǎn'ér diū zài dìshang ne?",
+              "english": "Now that you took off your clothes, why haven't you taken them to wash instead of dropping them on the floor?",
+              "words": [
+                {
+                  "id": "b3l9g2-ex3-w1",
+                  "traditional": "衣服脫了",
+                  "simplified": "衣服脱了",
+                  "pinyin": "yīfú tuō le",
+                  "meaning": "took off clothes",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g2-ex3-w2",
+                  "traditional": "怎麼不拿去洗",
+                  "simplified": "怎么不拿去洗",
+                  "pinyin": "zěnme bù ná qù xǐ",
+                  "meaning": "why not wash them",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g2-ex3-w3",
+                  "traditional": "反而丟在地上呢",
+                  "simplified": "反而丢在地上呢",
+                  "pinyin": "fǎn'ér diū zài dìshang ne",
+                  "meaning": "instead drop floor",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g2-cf1",
+              "question": "How do you ask why a student isn't asking the teacher about what they don't understand, but playing on their phone instead?",
+              "answer": "怎麼不請教老師，反而玩起手機來了？",
+              "wrongTraditional": "怎麼不請教老師，而且玩起手機來了？",
+              "wrongSimplified": "怎么不请教老师，而且玩起手机来了？",
+              "right": {
+                "traditional": "怎麼不請教老師，反而玩起手機來了？",
+                "simplified": "怎么不请教老师，反而玩起手机来了？",
+                "pinyin": "Zěnme bù qǐngjiào lǎoshī, fǎn'ér wán qǐ shǒujī lái le?",
+                "english": "Why didn't you consult the teacher, instead of playing on your phone?",
+                "words": [
+                  {
+                    "id": "b3l9g2-cf1-w1",
+                    "traditional": "怎麼不請教老師",
+                    "simplified": "怎么不请教老师",
+                    "pinyin": "zěnme bù qǐngjiào lǎoshī",
+                    "meaning": "why not consult teacher",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g2-cf1-w2",
+                    "traditional": "反而玩起手機來了",
+                    "simplified": "反而玩起手机来了",
+                    "pinyin": "fǎn'ér wán qǐ shǒujī lái le",
+                    "meaning": "instead play phone",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g2-cf2",
+              "question": "How do you question why someone isn't studying before exams?",
+              "answer": "快考試了，怎麼不在家念書，反而想出去玩？",
+              "wrongTraditional": "快考試了，為什麼反而不念書？",
+              "wrongSimplified": "快考试了，为什么反而不念书？",
+              "right": {
+                "traditional": "快考試了，怎麼不在家念書，反而想出去玩？",
+                "simplified": "快考试了，怎么不在家念书，反而想出去玩？",
+                "pinyin": "Kuài kǎoshì le, zěnme bú zài jiā niànshū, fǎn'ér xiǎng chūqù wán?",
+                "english": "Exams are near; why aren't you studying at home instead of wanting to go out playing?",
+                "words": [
+                  {
+                    "id": "b3l9g2-cf2-w1",
+                    "traditional": "快考試了",
+                    "simplified": "快考试了",
+                    "pinyin": "kuài kǎoshì le",
+                    "meaning": "exams near",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g2-cf2-w2",
+                    "traditional": "怎麼不在家念書",
+                    "simplified": "怎么不在家念书",
+                    "pinyin": "zěnme bú zài jiā niànshū",
+                    "meaning": "why not study home",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g2-cf2-w3",
+                    "traditional": "反而想出去玩",
+                    "simplified": "反而想出去玩",
+                    "pinyin": "fǎn'ér xiǎng chūqù wán",
+                    "meaning": "instead want play",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g2-q1",
+            "type": "choice",
+            "prompt": "Ask someone why they are playing games during an earthquake rather than seeking shelter:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "剛才地震那麼大，你"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g2-q1-b1",
+                "answer": "怎麼不躲一下反而",
+                "answerSimplified": "怎么不躲一下反而",
+                "hint": "why not take shelter instead"
+              },
+              {
+                "type": "text",
+                "traditional": "一直玩遊戲呢？"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g2-q1-t1",
+                "traditional": "怎麼不躲一下反而",
+                "simplified": "怎么不躲一下反而",
+                "pinyin": "zěnme bù duǒ yíxià fǎn'ér",
+                "meaning": "why not shelter instead"
+              },
+              {
+                "id": "b3l9g2-q1-t2",
+                "traditional": "為什麼不躲而且",
+                "simplified": "为什么不躲而且",
+                "pinyin": "wèishénme bù duǒ érqiě",
+                "meaning": "why not and"
+              },
+              {
+                "id": "b3l9g2-q1-t3",
+                "traditional": "躲一下反而怎麼不",
+                "simplified": "躲一下反而怎么不",
+                "pinyin": "duǒ yíxià fǎn'ér zěnme bù",
+                "meaning": "misordered"
+              }
+            ],
+            "correctFeedback": "怎麼不 + Expected Action，反而 + Contrary Action highlights the irrational contrast.",
+            "repairFeedback": "Pattern: 怎麼不 + Expected Action，反而 + Inappropriate Action."
+          }
+        ]
+      },
+      {
+        "id": "B3L09-G03-P238",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 1,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 3,
+        "titleTraditional": "不但不/沒……，反而……",
+        "titleEnglish": "Not Only Didn't... But on the Contrary with 不但不/沒...反而...",
+        "learnerPromise": "Contrast an absent expected reaction with a surprising, contrary outcome.",
+        "printedPages": [
+          238,
+          239,
+          240
+        ],
+        "bookPage": 238,
+        "bookPageAvailable": true,
+        "audioReference": "09-1-1",
+        "explanation": "「不但不/沒……，反而……」表示事情的發展與預期完全相反。「不但不/沒」後面是沒有發生的預期反應，「反而」後面接的是令人驚訝的反向結果。",
+        "focusTerms": [
+          "不但沒",
+          "不但不",
+          "反而",
+          "反而讓",
+          "反而天天"
+        ],
+        "pattern": "Subject + 不但 + 不/沒 + Expected Verb Phrase，反而 + Contrary Outcome",
+        "patternColumns": [
+          "Subject",
+          "不但不/沒",
+          "Expected",
+          "反而",
+          "Contrary"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g3-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g3-r1-c1-w1",
+                  "traditional": "父母",
+                  "simplified": "父母",
+                  "pinyin": "fùmǔ",
+                  "meaning": "parents"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r1-c2-w1",
+                  "traditional": "不但沒",
+                  "simplified": "不但没",
+                  "pinyin": "búdàn méi",
+                  "meaning": "not only didn't"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r1-c3-w1",
+                  "traditional": "生氣",
+                  "simplified": "生气",
+                  "pinyin": "shēngqì",
+                  "meaning": "get angry"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r1-c4-w1",
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "meaning": "on contrary"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r1-c5-w1",
+                  "traditional": "讓他去遊學",
+                  "simplified": "让他去游学",
+                  "pinyin": "ràng tā qù yóuxué",
+                  "meaning": "let him study abroad"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g3-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g3-r2-c1-w1",
+                  "traditional": "公司",
+                  "simplified": "公司",
+                  "pinyin": "gōngsī",
+                  "meaning": "company"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r2-c2-w1",
+                  "traditional": "不但沒",
+                  "simplified": "不但没",
+                  "pinyin": "búdàn méi",
+                  "meaning": "not only didn't"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r2-c3-w1",
+                  "traditional": "給同樣機會",
+                  "simplified": "给同样机会",
+                  "pinyin": "gěi tóngyàng jīhuì",
+                  "meaning": "give equal chances"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r2-c4-w1",
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "meaning": "on contrary"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r2-c5-w1",
+                  "traditional": "有許多限制",
+                  "simplified": "有许多限制",
+                  "pinyin": "yǒu xǔduō xiànzhì",
+                  "meaning": "has restrictions"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g3-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g3-r3-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r3-c2-w1",
+                  "traditional": "不但不",
+                  "simplified": "不但不",
+                  "pinyin": "búdàn bù",
+                  "meaning": "not only doesn't"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r3-c3-w1",
+                  "traditional": "運動",
+                  "simplified": "运动",
+                  "pinyin": "yùndòng",
+                  "meaning": "exercise"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r3-c4-w1",
+                  "traditional": "反而",
+                  "simplified": "反而",
+                  "pinyin": "fǎn'ér",
+                  "meaning": "on contrary"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g3-r3-c5-w1",
+                  "traditional": "天天吃大餐",
+                  "simplified": "天天吃大餐",
+                  "pinyin": "tiāntiān chī dàcān",
+                  "meaning": "eats big meals"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "我有一個高中同學沒考上大學，他父母不但沒生氣，反而讓他去義大利遊學。",
+              "simplified": "我有一个高中同学没考上大学，他父母不但没生气，反而让他去义大利游学。",
+              "pinyin": "Wǒ yǒu yí ge gāozhōng tóngxué méi kǎoshàng dàxué, tā fùmǔ búdàn méi shēngqì, fǎn'ér ràng tā qù Yìdàlì yóuxué.",
+              "english": "I had a high school classmate who didn't test into college; his parents not only didn't get angry, but sent him on a study trip to Italy instead.",
+              "words": [
+                {
+                  "id": "b3l9g3-ex1-w1",
+                  "traditional": "同學沒考上大學",
+                  "simplified": "同学没考上大学",
+                  "pinyin": "tóngxué méi kǎoshàng dàxué",
+                  "meaning": "classmate didn't enter college",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g3-ex1-w2",
+                  "traditional": "父母不但沒生氣",
+                  "simplified": "父母不但没生气",
+                  "pinyin": "fùmǔ búdàn méi shēngqì",
+                  "meaning": "parents not only not angry",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g3-ex1-w3",
+                  "traditional": "反而讓他去遊學",
+                  "simplified": "反而让他去游学",
+                  "pinyin": "fǎn'ér ràng tā qù yóuxué",
+                  "meaning": "instead let him study abroad",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我們公司不但沒給男女員工同樣的工作機會，反而對女員工有許多不合理的要求。",
+              "simplified": "我们公司不但没给男女员工同样的工作机会，反而对女员工有许多不合理的要求。",
+              "pinyin": "Wǒmen gōngsī búdàn méi gěi nánnǚ yuángōng tóngyàng de gōngzuò jīhuì, fǎn'ér duì nǚ yuángōng yǒu xǔduō bù hélǐ de yāoqiú.",
+              "english": "Our company not only failed to give male and female staff equal work opportunities, but imposed many unreasonable demands on female staff instead.",
+              "words": [
+                {
+                  "id": "b3l9g3-ex2-w1",
+                  "traditional": "不但沒給同樣機會",
+                  "simplified": "不但没给同样机会",
+                  "pinyin": "búdàn méi gěi tóngyàng jīhuì",
+                  "meaning": "not only didn't give equal chance",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g3-ex2-w2",
+                  "traditional": "反而對女員工",
+                  "simplified": "反而对女员工",
+                  "pinyin": "fǎn'ér duì nǚ yuángōng",
+                  "meaning": "instead toward women staff"
+                },
+                {
+                  "id": "b3l9g3-ex2-w3",
+                  "traditional": "有不合理要求",
+                  "simplified": "有不合理要求",
+                  "pinyin": "yǒu bù hélǐ yāoqiú",
+                  "meaning": "has unreasonable demands",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "小金最近胖了很多，體力也變差了，可是他不但不運動，反而天天約朋友吃大餐。",
+              "simplified": "小金最近胖了很多，体力也变差了，可是他不但不运动，反而天天约朋友吃大餐。",
+              "pinyin": "Xiǎojīn zuìjìn pàng le hěn duō, tǐlì yě biàn chà le, kěshì tā búdàn bú yùndòng, fǎn'ér tiāntiān yuē péngyǒu chī dàcān.",
+              "english": "Xiao Jin gained a lot of weight recently and his stamina declined, yet he not only doesn't exercise, but invites friends to feasts every day instead.",
+              "words": [
+                {
+                  "id": "b3l9g3-ex3-w1",
+                  "traditional": "體力變差了",
+                  "simplified": "体力变差了",
+                  "pinyin": "tǐlì biàn chà le",
+                  "meaning": "stamina worsened",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g3-ex3-w2",
+                  "traditional": "他不但不運動",
+                  "simplified": "他不但不运动",
+                  "pinyin": "tā búdàn bú yùndòng",
+                  "meaning": "not only doesn't exercise",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g3-ex3-w3",
+                  "traditional": "反而天天吃大餐",
+                  "simplified": "反而天天吃大餐",
+                  "pinyin": "fǎn'ér tiāntiān chī dàcān",
+                  "meaning": "instead feasts daily",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g3-cf1",
+              "question": "How do you say parents didn't get angry, but instead let him study abroad?",
+              "answer": "父母不但沒生氣，反而讓他去遊學。",
+              "wrongTraditional": "父母不但沒生氣，而且生氣了。",
+              "wrongSimplified": "父母不但没生气，而且生气了。",
+              "right": {
+                "traditional": "父母不但沒生氣，反而讓他去遊學。",
+                "simplified": "父母不但没生气，反而让他去游学。",
+                "pinyin": "Fùmǔ búdàn méi shēngqì, fǎn'ér ràng tā qù yóuxué.",
+                "english": "Parents not only didn't get angry, but let him study abroad instead.",
+                "words": [
+                  {
+                    "id": "b3l9g3-cf1-w1",
+                    "traditional": "父母不但沒生氣",
+                    "simplified": "父母不但没生气",
+                    "pinyin": "fùmǔ búdàn méi shēngqì",
+                    "meaning": "parents not only not angry",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g3-cf1-w2",
+                    "traditional": "反而讓他去遊學",
+                    "simplified": "反而让他去游学",
+                    "pinyin": "fǎn'ér ràng tā qù yóuxué",
+                    "meaning": "instead let study abroad",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g3-cf2",
+              "question": "How do you say that someone not only refuses to move their parked car, but tells you to wait instead?",
+              "answer": "他不但不開走，反而要我等他。",
+              "wrongTraditional": "他不但不開走，就開走了。",
+              "wrongSimplified": "他不但不开走，就开走了。",
+              "right": {
+                "traditional": "他不但不開走，反而要我等他。",
+                "simplified": "他不但不开走，反而要我等他。",
+                "pinyin": "Tā búdàn bù kāizhǒu, fǎn'ér yào wǒ děng tā.",
+                "english": "He not only wouldn't drive away, but told me to wait for him instead.",
+                "words": [
+                  {
+                    "id": "b3l9g3-cf2-w1",
+                    "traditional": "他不但不開走",
+                    "simplified": "他不但不开走",
+                    "pinyin": "tā búdàn bù kāizhǒu",
+                    "meaning": "he not only won't drive away",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g3-cf2-w2",
+                    "traditional": "反而要我等他",
+                    "simplified": "反而要我等他",
+                    "pinyin": "fǎn'ér yào wǒ děng tā",
+                    "meaning": "instead told me wait",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g3-q1",
+            "type": "choice",
+            "prompt": "Describe an obstinate driver blocking the lane:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個人"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g3-q1-b1",
+                "answer": "不但不把車開走反而",
+                "answerSimplified": "不但不把车开走反而",
+                "hint": "not only won't move car instead"
+              },
+              {
+                "type": "text",
+                "traditional": "叫我等他。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g3-q1-t1",
+                "traditional": "不但不把車開走反而",
+                "simplified": "不但不把车开走反而",
+                "pinyin": "búdàn bù bǎ chē kāizhǒu fǎn'ér",
+                "meaning": "not only won't move instead"
+              },
+              {
+                "id": "b3l9g3-q1-t2",
+                "traditional": "而且不把車開走就",
+                "simplified": "而且不把车开走就",
+                "pinyin": "érqiě bù bǎ chē kāizhǒu jiù",
+                "meaning": "and won't move then"
+              },
+              {
+                "id": "b3l9g3-q1-t3",
+                "traditional": "反而不把車開走不但",
+                "simplified": "反而不把车开走不但",
+                "pinyin": "fǎn'ér bù bǎ chē kāizhǒu búdàn",
+                "meaning": "inverted"
+              }
+            ],
+            "correctFeedback": "不但不/沒……反而…… contrasts the expected courtesy with an arrogant reversal.",
+            "repairFeedback": "Pattern: 不但不/沒 + Expected Action，反而 + Contrary Action."
+          }
+        ]
+      },
+      {
+        "id": "B3L09-G04-P240",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 1,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 4,
+        "titleTraditional": "才……(呢)",
+        "titleEnglish": "Emphatic Refutation with 才...(呢)",
+        "learnerPromise": "Strongly refute someone's claim or counter their assertion using 才……(呢).",
+        "printedPages": [
+          240,
+          241
+        ],
+        "bookPage": 240,
+        "bookPageAvailable": true,
+        "audioReference": "09-1-1",
+        "explanation": "這一課的「才」用來加強語氣，強調「才」後面所說的話，常用在反駁或否定對方的說法時，句尾常跟「呢」配合使用。例如：「我才沒借呢！」、「我才不要呢！」",
+        "focusTerms": [
+          "才",
+          "才不",
+          "才沒",
+          "才不要呢",
+          "才好呢"
+        ],
+        "pattern": "Subject + 才 + (不/沒) + Refuted Assertion + (呢)",
+        "patternColumns": [
+          "Subject",
+          "才",
+          "Refutation",
+          "呢"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g4-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g4-r1-c1-w1",
+                  "traditional": "我爸媽",
+                  "simplified": "我爸妈",
+                  "pinyin": "wǒ bàmā",
+                  "meaning": "my parents"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r1-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": "definitely"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r1-c3-w1",
+                  "traditional": "不這麼想",
+                  "simplified": "不这么想",
+                  "pinyin": "bù zhème xiǎng",
+                  "meaning": "don't think so"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r1-c4-w1",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "particle"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g4-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g4-r2-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r2-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": "definitely"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r2-c3-w1",
+                  "traditional": "不要走路去",
+                  "simplified": "不要走路去",
+                  "pinyin": "bú yào zǒulù qù",
+                  "meaning": "won't walk"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r2-c4-w1",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "particle"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g4-r3-c1-w1",
+                  "traditional": "李導演拍的",
+                  "simplified": "李导演拍的",
+                  "pinyin": "Lǐ dǎoyǎn pāi de",
+                  "meaning": "Director Li's"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r3-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": "truly"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r3-c3-w1",
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "great"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g4-r3-c4-w1",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "particle"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "生命中有很多事情比考試重要，我爸媽才不這麼想呢！",
+              "simplified": "生命中有很多事情比考试重要，我爸妈才不这么想呢！",
+              "pinyin": "Shēngmìng zhōng yǒu hěn duō shìqíng bǐ kǎoshì zhòngyào, wǒ bàmā cái bù zhème xiǎng ne!",
+              "english": "There are many things in life more important than exams, but my parents certainly don't think that way!",
+              "words": [
+                {
+                  "id": "b3l9g4-ex1-w1",
+                  "traditional": "生命中有重要事",
+                  "simplified": "生命中有重要事",
+                  "pinyin": "shēngmìng zhōng yǒu zhòngyào shì",
+                  "meaning": "important things in life",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g4-ex1-w2",
+                  "traditional": "我爸媽才不這麼想呢",
+                  "simplified": "我爸妈才不这么想呢",
+                  "pinyin": "wǒ bàmā cái bù zhème xiǎng ne",
+                  "meaning": "parents certainly don't think so",
+                  "suffix": "！"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "走路去太遠了，我才不要呢！搭公車比較快。",
+              "simplified": "走路去太远了，我才不要呢！搭公车比较快。",
+              "pinyin": "Zǒulù qù tài yuǎn le, wǒ cái bú yào ne! Dā gōngchē bǐjiào kuài.",
+              "english": "Walking is way too far; no way I'm doing that! Taking the bus is faster.",
+              "words": [
+                {
+                  "id": "b3l9g4-ex2-w1",
+                  "traditional": "走路太遠了",
+                  "simplified": "走路太远了",
+                  "pinyin": "zǒulù tài yuǎn le",
+                  "meaning": "walking too far",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g4-ex2-w2",
+                  "traditional": "我才不要呢",
+                  "simplified": "我才不要呢",
+                  "pinyin": "wǒ cái bú yào ne",
+                  "meaning": "no way I want that",
+                  "suffix": "！"
+                },
+                {
+                  "id": "b3l9g4-ex2-w3",
+                  "traditional": "搭公車比較快",
+                  "simplified": "搭公车比较快",
+                  "pinyin": "dā gōngchē bǐjiào kuài",
+                  "meaning": "bus is faster",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "王導演拍得一般，我認為李導演拍的才好呢！",
+              "simplified": "王导演拍得一般，我认为李导演拍的才好呢！",
+              "pinyin": "Wáng dǎoyǎn pāi de yībān, wǒ rènwéi Lǐ dǎoyǎn pāi de cái hǎo ne!",
+              "english": "Director Wang's film is so-so; in my opinion, Director Li's film is the truly good one!",
+              "words": [
+                {
+                  "id": "b3l9g4-ex3-w1",
+                  "traditional": "王導演拍得一般",
+                  "simplified": "王导演拍得一般",
+                  "pinyin": "Wáng dǎoyǎn pāi de yībān",
+                  "meaning": "Dir Wang film so-so",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g4-ex3-w2",
+                  "traditional": "李導演拍的才好呢",
+                  "simplified": "李导演拍的才好呢",
+                  "pinyin": "Lǐ dǎoyǎn pāi de cái hǎo ne",
+                  "meaning": "Dir Li film truly good",
+                  "suffix": "！"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g4-cf1",
+              "question": "How do you refute the false accusation that you drank too much alcohol?",
+              "answer": "我才沒喝酒呢，是肚子痛。",
+              "wrongTraditional": "我剛沒喝酒呢，是肚子痛。",
+              "wrongSimplified": "我刚没喝酒呢，是肚子痛。",
+              "right": {
+                "traditional": "我才沒喝酒呢，是肚子痛。",
+                "simplified": "我才没喝酒呢，是肚子痛。",
+                "pinyin": "Wǒ cái méi hējiǔ ne, shì dùzi tòng.",
+                "english": "I definitely didn't drink alcohol; it's a stomachache.",
+                "words": [
+                  {
+                    "id": "b3l9g4-cf1-w1",
+                    "traditional": "我才沒喝酒呢",
+                    "simplified": "我才没喝酒呢",
+                    "pinyin": "wǒ cái méi hējiǔ ne",
+                    "meaning": "I definitely didn't drink",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g4-cf1-w2",
+                    "traditional": "是肚子痛",
+                    "simplified": "是肚子痛",
+                    "pinyin": "shì dùzi tòng",
+                    "meaning": "is stomachache",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g4-cf2",
+              "question": "How do you emphatically refuse an unappealing suggestion to walk?",
+              "answer": "我才不要呢！",
+              "wrongTraditional": "我不要才呢！",
+              "wrongSimplified": "我不要才呢！",
+              "right": {
+                "traditional": "我才不要呢！",
+                "simplified": "我才不要呢！",
+                "pinyin": "Wǒ cái bú yào ne!",
+                "english": "No way do I want that!",
+                "words": [
+                  {
+                    "id": "b3l9g4-cf2-w1",
+                    "traditional": "我才不要呢",
+                    "simplified": "我才不要呢",
+                    "pinyin": "wǒ cái bú yào ne",
+                    "meaning": "no way I want that",
+                    "suffix": "！"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g4-q1",
+            "type": "choice",
+            "prompt": "Strongly refute the rumor that you stayed home due to drinking:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你別亂猜，我"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g4-q1-b1",
+                "answer": "才沒喝酒呢",
+                "answerSimplified": "才没喝酒呢",
+                "hint": "definitely did not drink"
+              },
+              {
+                "type": "text",
+                "traditional": "，是突然發燒了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g4-q1-t1",
+                "traditional": "才沒喝酒呢",
+                "simplified": "才没喝酒呢",
+                "pinyin": "cái méi hējiǔ ne",
+                "meaning": "definitely didn't drink"
+              },
+              {
+                "id": "b3l9g4-q1-t2",
+                "traditional": "剛沒喝酒呢",
+                "simplified": "刚没喝酒呢",
+                "pinyin": "gāng méi hējiǔ ne",
+                "meaning": "just didn't drink"
+              },
+              {
+                "id": "b3l9g4-q1-t3",
+                "traditional": "沒喝酒才呢",
+                "simplified": "没喝酒才呢",
+                "pinyin": "méi hējiǔ cái ne",
+                "meaning": "misplaced cai"
+              }
+            ],
+            "correctFeedback": "才沒……呢 emphatically refutes an untrue assumption.",
+            "repairFeedback": "Pattern: Subject + 才 + 沒/不 + Verb + 呢."
+          }
+        ]
+      }
+    ]
+  },
+  "BOOK3_LESSON_NINE_PART_TWO": {
+    "id": "B3L09-P02-D02",
+    "bookId": 3,
+    "lessonId": 9,
+    "partId": 2,
+    "title": "Grammar 5–7 · Real Competence Over Test Scores",
+    "dialogue": {
+      "id": "B3L09-D02",
+      "title": "教育是有意義的學習",
+      "audioReference": "09-2-1",
+      "printedPages": [
+        242,
+        243
+      ],
+      "grammarFocus": [
+        "尤其是",
+        "V著",
+        "以……代替……"
+      ],
+      "lines": [
+        {
+          "id": "b3l9d2-l1",
+          "speaker": "旁白",
+          "traditional": "臺灣社會一直都很重視學生的學習表現，尤其是考試的成績。人們似乎認為，成績好就代表書讀得好，書讀得好就會有美好的未來。因此，不少家長希望孩子能上好大學，甚至念到博士。為了達成這個目的，家長從孩子念國小、國中起，就非常注意每科的分數，老是擔心孩子進不了好高中、好大學。",
+          "simplified": "台湾社会一直都很重视学生的学习表现，尤其是考试的成绩。人们似乎认为，成绩好就代表书读得好，书读得好就会有美好的未来。因此，不少家长希望孩子能上好大学，甚至念到博士。为了达成这个目的，家长从孩子念国小、国中起，就非常注意每科的分数，老是担心孩子进不了好高中、好大学。",
+          "pinyin": "Táiwān shèhuì yìzhí dōu hěn zhòngshì xuéshēng de xuéxí biǎoxiàn, yóuqí shì kǎoshì de chéngjī. Rénmen sìhū rènwéi, chéngjī hǎo jiù dàibiǎo shū dú de hǎo, shū dú de hǎo jiù huì yǒu měihǎo de wèilái. Yīncǐ, bù shǎo jiāzhǎng xīwàng háizi néng shàng hǎo dàxué, shènzhì niàn dào bóshì. Wèile dáchéng zhè ge mùdì, jiāzhǎng cóng háizi niàn guóxiǎo, guózhōng qǐ, jiù fēicháng zhùyì měi kē de fēnshù, lǎoshì dānxīn háizi jìn bù liǎo hǎo gāozhōng, hǎo dàxué.",
+          "english": "Taiwanese society has always attached great importance to students' academic performance, especially test scores. People seem to believe that good grades equate to doing well in school, and doing well in school ensures a bright future. Consequently, many parents hope their children get into prestigious universities or even obtain doctorates. To achieve this goal, parents closely watch scores in every subject starting from elementary and junior high school, perpetually worrying their children won't enter top high schools or universities."
+        },
+        {
+          "id": "b3l9d2-l2",
+          "speaker": "旁白",
+          "traditional": "有一些家長很誇張，不但陪孩子一起補習，還幫他們把筆記寫在本子上、把重點寫在便條上，以為孩子複習時用得著，這樣考試的成績就會更好。也有家長把孩子的學習時間排得很滿，下課後還叫他們寫很多考卷。後來，大家發現學生雖然掌握了考試的技巧，但在實際生活中碰到困難時，反而缺乏解決問題的能力。畢竟會考試，不代表擁有處理事情的能力。",
+          "simplified": "有一些家长很夸张，不但陪孩子一起补习，还帮他们把笔记写在本子上、把重点写在便条上，以为孩子复习时用得着，这样考试的成绩就会更好。也有家长把孩子的学习时间排得很满，下课后还叫他们写很多考卷。后来，大家发现学生虽然掌握了考试的技巧，但在实际生活中碰到困难时，反而缺乏解决问题的能力。毕竟会考试，不代表拥有处理事情的能力。",
+          "pinyin": "Yǒu yìxiē jiāzhǎng hěn kuāzhāng, búdàn péi háizi yìqǐ bǔxí, hái bāng tāmen bǎ bǐjì xiě zài běnzi shàng, bǎ zhòngdiǎn xiě zài biàntiáo shàng, yǐwéi háizi fùxí shí yòngdezháo, zhèyàng kǎoshì de chéngjī jiù huì gèng hǎo. Yě yǒu jiāzhǎng bǎ háizi de xuéxí shíjiān pái de hěn mǎn, xiàkè hòu hái jiào tāmen xiě hěn duō kǎojuàn. Hòulái, dàjiā fāxiàn xuéshēng suīrán zhǎngwò le kǎoshì de jǐqiào, dàn zài shíjì shēnghuó zhōng pèngdào kùnnán shí, fǎn'ér quēfá jiějué wèntí de nénglì. Bìjìng huì kǎoshì, bù dàibiǎo yǒngyǒu chǔlǐ shìqíng de nénglì.",
+          "english": "Some parents go to extreme lengths: not only attending cram school with their children, but copying notes into notebooks and writing key points on sticky notes, thinking kids will find them useful when reviewing, thereby scoring higher on tests. Other parents pack schedules to the brim and assign piles of test papers after class. Later on, people found that while students mastered test-taking techniques, they lacked problem-solving capabilities when encountering real-world challenges. After all, testing well does not mean having practical competence."
+        },
+        {
+          "id": "b3l9d2-l3",
+          "speaker": "旁白",
+          "traditional": "其實，因為每年出生的孩子越來越少，許多學校的新生也變少了，因為這樣，被大學錄取的機會反而大大地增加了。但是國中、高中的考試沒減少，家長對教育的想法也沒有太大的改變。孩子就算考上了好大學，沒實力的人恐怕畢業後也很難找到工作，更不可能擔任公司的主管，甚至最後變成整個社會的負擔。",
+          "simplified": "其实，因为每年出生的孩子越来越少，许多学校的新生也变少了，因为这样，被大学录取的机会反而大大地增加了。但是国中、高中的考试没减少，家长对教育的想法也没有太大的改变。孩子就算考上了好大学，没实力的人恐怕毕业后也很难找到工作，更不可能担任公司的主管，甚至最后变成整个社会的负担。",
+          "pinyin": "Qíshí, yīnwèi měi nián chūshēng de háizi yuèláiyuè shǎo, xǔduō xuéxiào de xīnshēng yě biàn shǎo le, yīnwèi zhèyàng, bèi dàxué lùqǔ de jīhuì fǎn'ér dàdà de zēngjiā le. Dànshì guózhōng, gāozhōng de kǎoshì méi jiǎnshǎo, jiāzhǎng duì jiàoyù de xiǎngfǎ yě méiyǒu tài dà de gǎibiàn. Háizi jiùsuàn kǎoshàng le hǎo dàxué, méi shílì de rén kǒngpà bìyè hòu yě hěn nán zhǎodào gōngzuò, gèng bù kěnéng dānrèn gōngsī de zhǔguǎn, shènzhì zuìhòu biànchéng zhěnggè shèhuì de fùdān.",
+          "english": "In fact, because fewer children are born each year, freshmen entering schools have declined, significantly increasing university admission rates instead. Yet junior and senior high exams have not decreased, and parents' educational mindset remains mostly unchanged. Even if a child tests into a good college, without genuine competence they will struggle to find employment, let alone serve as company managers, ultimately turning into burdens on society."
+        },
+        {
+          "id": "b3l9d2-l4",
+          "speaker": "旁白",
+          "traditional": "這樣的例子一年比一年多。一直到最近幾年，家長和老師終於明白每個孩子都是獨特的，不是每個人都非念大學不可。再說，考試成績好的人，不一定就能幸福過日子。因此，有意義的學習是讓孩子以思考代替記答案，不僅給孩子自由的空間，發揮出自己的優點，而且還提供更好的教材和教學方式，讓孩子快樂地學習、成長。如果他們的能力可以變得更強，將來就能為社會貢獻一份力量了。",
+          "simplified": "这样的例子一年比一年多。一直到最近几年，家长和老师终于明白每个孩子都是独特的，不是每个人都非念大学不可。再说，考试成绩好的人，不一定就能幸福过日子。因此，有意义的学习是让孩子以思考代替记答案，不仅给孩子自由的空间，发挥出自己的优点，而且还提供更好的教材和教学方式，让孩子快乐地学习、成长。如果他们的能力可以变得更强，将来就能为社会贡献一份力量了。",
+          "pinyin": "Zhèyàng de lìzi yì nián bǐ yì nián duō. Yìzhí dào zuìjìn jǐ nián, jiāzhǎng hé lǎoshī zhōngyú míngbái měi ge háizi dōu shì dútè de, búshì měi ge rén dōu fēi niàn dàxué bùkě. Zàishuō, kǎoshì chéngjī hǎo de rén, bù yídìng jiù néng xìngfú guò rìzi. Yīncǐ, yǒuyìyì de xuéxí shì ràng háizi yǐ sīkǎo dàitì jì dá'àn, bùjǐn gěi háizi zìyóu de kōngjiān, fāhuī chū zìjǐ de yōudiǎn, érqiě hái tígōng gèng hǎo de jiàocái hé jiàoxué fāngshì, ràng háizi kuàilè de xuéxí, chéngzhǎng. Rúguǒ tāmen de nénglì kěyǐ biàn de gèng qiáng, jiānglái jiù néng wèi shèhuì gòngxiàn yí fèn lìliàng le.",
+          "english": "Such examples multiply year after year. Only in recent years have parents and educators finally realized that each child is unique and not everyone must attend university. Furthermore, individuals with high test scores do not necessarily lead happier lives. Meaningful education allows children to replace rote memorization with critical thinking, providing free space to develop talents, along with superior curricula and methods that foster joyful learning and growth. If their capabilities grow stronger, they can contribute meaningful strength to society in the future."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L09-G05-P247",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 2,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 5,
+        "titleTraditional": "尤其是",
+        "titleEnglish": "Singling Out with 尤其是",
+        "learnerPromise": "Highlight the most prominent or noteworthy item within a broader category using 尤其是.",
+        "printedPages": [
+          247,
+          248
+        ],
+        "bookPage": 247,
+        "bookPageAvailable": true,
+        "audioReference": "09-2-1",
+        "explanation": "「尤其是」是副詞短語，表示和其他事物比起來更特別、更突出。通常放在後面的分句中，用來特別強調某個最具代表性的項目。",
+        "focusTerms": [
+          "尤其",
+          "尤其是",
+          "尤其是考試的成績",
+          "尤其是英文會話課"
+        ],
+        "pattern": "Category / Statement，尤其是 + Specific Emphasized Item",
+        "patternColumns": [
+          "Category",
+          "尤其是",
+          "Focus",
+          "Description"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g5-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g5-r1-c1-w1",
+                  "traditional": "重視學生表現",
+                  "simplified": "重视学生表现",
+                  "pinyin": "zhòngshì xuéshēng biǎoxiàn",
+                  "meaning": "values performance"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r1-c2-w1",
+                  "traditional": "尤其是",
+                  "simplified": "尤其是",
+                  "pinyin": "yóuqí shì",
+                  "meaning": "especially"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r1-c3-w1",
+                  "traditional": "考試的成績",
+                  "simplified": "考试的成绩",
+                  "pinyin": "kǎoshì de chéngjī",
+                  "meaning": "exam scores"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r1-c4-w1",
+                  "traditional": "最受注意",
+                  "simplified": "最受注意",
+                  "pinyin": "zuì shòu zhùyì",
+                  "meaning": "most noticed"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g5-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g5-r2-c1-w1",
+                  "traditional": "每門課都有趣",
+                  "simplified": "每门课都有趣",
+                  "pinyin": "měi mén kè dōu yǒuqù",
+                  "meaning": "every course fun"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r2-c2-w1",
+                  "traditional": "尤其是",
+                  "simplified": "尤其是",
+                  "pinyin": "yóuqí shì",
+                  "meaning": "especially"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r2-c3-w1",
+                  "traditional": "英文會話課",
+                  "simplified": "英文会话课",
+                  "pinyin": "yīngwén huìhuà kè",
+                  "meaning": "English speaking"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r2-c4-w1",
+                  "traditional": "特別活潑",
+                  "simplified": "特别活泼",
+                  "pinyin": "tèbié huópo",
+                  "meaning": "especially lively"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g5-r3-c1-w1",
+                  "traditional": "工作都有困難",
+                  "simplified": "工作都有困难",
+                  "pinyin": "gōngzuò dōu yǒu kùnnán",
+                  "meaning": "jobs have issues"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r3-c2-w1",
+                  "traditional": "尤其是",
+                  "simplified": "尤其是",
+                  "pinyin": "yóuqí shì",
+                  "meaning": "especially"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r3-c3-w1",
+                  "traditional": "當警察的",
+                  "simplified": "当警察的",
+                  "pinyin": "dāng jǐngchá de",
+                  "meaning": "being police"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g5-r3-c4-w1",
+                  "traditional": "經常碰危險",
+                  "simplified": "经常碰危险",
+                  "pinyin": "jīngcháng pèng wēixiǎn",
+                  "meaning": "faces danger"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "臺灣社會一直都很重視學生的學習表現，尤其是考試的成績。",
+              "simplified": "台湾社会一直都很重视学生的学习表现，尤其是考试的成绩。",
+              "pinyin": "Táiwān shèhuì yìzhí dōu hěn zhòngshì xuéshēng de xuéxí biǎoxiàn, yóuqí shì kǎoshì de chéngjī.",
+              "english": "Taiwanese society has always attached great importance to students' academic performance, especially test scores.",
+              "words": [
+                {
+                  "id": "b3l9g5-ex1-w1",
+                  "traditional": "重視學生表現",
+                  "simplified": "重视学生表现",
+                  "pinyin": "zhòngshì xuéshēng biǎoxiàn",
+                  "meaning": "values student performance",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g5-ex1-w2",
+                  "traditional": "尤其是考試成績",
+                  "simplified": "尤其是考试成绩",
+                  "pinyin": "yóuqí shì kǎoshì chéngjī",
+                  "meaning": "especially exam scores",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這個學期我選了五門課，每門課都很有意思，尤其是英文會話課，不但老師幽默，而且同學也很熱情。",
+              "simplified": "这个学期我选了五门课，每门课都很有意思，尤其是英文会话课，不但老师幽默，而且同学也很热情。",
+              "pinyin": "Zhè ge xuéqī wǒ xuǎn le wǔ mén kè, měi mén kè dōu hěn yǒuyìsi, yóuqí shì yīngwén huìhuà kè, búdàn lǎoshī yōumò, érqiě tóngxué yě hěn rèqíng.",
+              "english": "I chose five courses this semester and every course is interesting, especially English conversation—not only is the teacher humorous, but classmates are enthusiastic too.",
+              "words": [
+                {
+                  "id": "b3l9g5-ex2-w1",
+                  "traditional": "五門課都有意思",
+                  "simplified": "五门课都有意思",
+                  "pinyin": "wǔ mén kè dōu yǒuyìsi",
+                  "meaning": "5 courses interesting",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g5-ex2-w2",
+                  "traditional": "尤其是英文會話課",
+                  "simplified": "尤其是英文会话课",
+                  "pinyin": "yóuqí shì yīngwén huìhuà kè",
+                  "meaning": "especially English conversation",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "每種工作都有它的困難或問題，尤其是當警察的，經常會碰到麻煩或危險。",
+              "simplified": "每种工作都有它的困难或问题，尤其是当警察的，经常会碰到麻烦或危险。",
+              "pinyin": "Měi zhǒng gōngzuò dōu yǒu tā de kùnnán huò wèntí, yóuqí shì dāng jǐngchá de, jīngcháng huì pèngdào máfan huò wēixiǎn.",
+              "english": "Every job has its difficulties or issues, especially being a police officer, where one often encounters trouble or danger.",
+              "words": [
+                {
+                  "id": "b3l9g5-ex3-w1",
+                  "traditional": "工作都有困難",
+                  "simplified": "工作都有困难",
+                  "pinyin": "gōngzuò dōu yǒu kùnnán",
+                  "meaning": "jobs have issues",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g5-ex3-w2",
+                  "traditional": "尤其是當警察的",
+                  "simplified": "尤其是当警察的",
+                  "pinyin": "yóuqí shì dāng jǐngchá de",
+                  "meaning": "especially being police",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g5-ex3-w3",
+                  "traditional": "經常碰到危險",
+                  "simplified": "经常碰到危险",
+                  "pinyin": "jīngcháng pèngdào wēixiǎn",
+                  "meaning": "often faces danger",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g5-cf1",
+              "question": "How do you emphasize that among all evaluation metrics, test scores are prioritized most?",
+              "answer": "重視學生的表現，尤其是考試的成績。",
+              "wrongTraditional": "重視學生的表現，就是考試的成績。",
+              "wrongSimplified": "重视学生的表现，就是考试的成绩。",
+              "right": {
+                "traditional": "重視學生的表現，尤其是考試的成績。",
+                "simplified": "重视学生的表现，尤其是考试的成绩。",
+                "pinyin": "Zhòngshì xuéshēng de biǎoxiàn, yóuqí shì kǎoshì de chéngjī.",
+                "english": "Values student performance, especially test scores.",
+                "words": [
+                  {
+                    "id": "b3l9g5-cf1-w1",
+                    "traditional": "重視學生表現",
+                    "simplified": "重视学生表现",
+                    "pinyin": "zhòngshì xuéshēng biǎoxiàn",
+                    "meaning": "values performance",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g5-cf1-w2",
+                    "traditional": "尤其是考試的成績",
+                    "simplified": "尤其是考试的成绩",
+                    "pinyin": "yóuqí shì kǎoshì de chéngjī",
+                    "meaning": "especially test scores",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g5-cf2",
+              "question": "How do you highlight English conversation among five interesting courses?",
+              "answer": "五門課都很有意思，尤其是英文會話課。",
+              "wrongTraditional": "五門課都很有意思，可是英文會話課。",
+              "wrongSimplified": "五门课都很有意思，可是英文会话课。",
+              "right": {
+                "traditional": "五門課都很有意思，尤其是英文會話課。",
+                "simplified": "五门课都很有意思，尤其是英文会话课。",
+                "pinyin": "Wǔ mén kè dōu hěn yǒuyìsi, yóuqí shì yīngwén huìhuà kè.",
+                "english": "All five courses are interesting, especially English conversation.",
+                "words": [
+                  {
+                    "id": "b3l9g5-cf2-w1",
+                    "traditional": "五門課都很有意思",
+                    "simplified": "五门课都很有意思",
+                    "pinyin": "wǔ mén kè dōu hěn yǒuyìsi",
+                    "meaning": "all 5 courses interesting",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g5-cf2-w2",
+                    "traditional": "尤其是英文會話課",
+                    "simplified": "尤其是英文会话课",
+                    "pinyin": "yóuqí shì yīngwén huìhuà kè",
+                    "meaning": "especially English conversation",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g5-q1",
+            "type": "choice",
+            "prompt": "Advise a learner to practice speaking, highlighting local conversation:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "想進步就得多說話，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g5-q1-b1",
+                "answer": "尤其是要多跟",
+                "answerSimplified": "尤其是要多跟",
+                "hint": "especially should with"
+              },
+              {
+                "type": "text",
+                "traditional": "臺灣人聊天。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g5-q1-t1",
+                "traditional": "尤其是要多跟",
+                "simplified": "尤其是要多跟",
+                "pinyin": "yóuqí shì yào duō gēn",
+                "meaning": "especially should with"
+              },
+              {
+                "id": "b3l9g5-q1-t2",
+                "traditional": "特別想要多跟",
+                "simplified": "特别想要多跟",
+                "pinyin": "tèbié xiǎng yào duō gēn",
+                "meaning": "particularly want with"
+              },
+              {
+                "id": "b3l9g5-q1-t3",
+                "traditional": "但是要多跟",
+                "simplified": "但是要多跟",
+                "pinyin": "dànshì yào duō gēn",
+                "meaning": "but should with"
+              }
+            ],
+            "correctFeedback": "尤其是 singles out chatting with locals as the most crucial speaking practice.",
+            "repairFeedback": "Use 尤其是 to highlight the most prominent specific practice."
+          }
+        ]
+      },
+      {
+        "id": "B3L09-G06-P248",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 2,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 6,
+        "titleTraditional": "V著",
+        "titleEnglish": "Result / Attainment with V得著 / V不著 / V著了 / 沒V著",
+        "learnerPromise": "Express achieving or failing to achieve an aim with verbs like 找, 猜, 用, 買, 摸.",
+        "printedPages": [
+          248,
+          249,
+          250
+        ],
+        "bookPage": 248,
+        "bookPageAvailable": true,
+        "audioReference": "09-2-1",
+        "explanation": "「著」(zháo) 作為結果或可能補語，說明前面的動作達到了目的或產生了結果。常見搭配有：找著、猜著、買著、摸著、用得著、用不著。否定用「沒V著」或「V不著」。",
+        "focusTerms": [
+          "V著",
+          "用得著",
+          "摸不著",
+          "猜得著",
+          "找著了",
+          "沒找著"
+        ],
+        "pattern": "Subject + Verb + (得/不) + 著 (+ Object)",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "Attainment",
+          "Object"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g6-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g6-r1-c1-w1",
+                  "traditional": "這些筆記",
+                  "simplified": "这些笔记",
+                  "pinyin": "zhèxiē bǐjì",
+                  "meaning": "these notes"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r1-c2-w1",
+                  "traditional": "複習時",
+                  "simplified": "复习时",
+                  "pinyin": "fùxí shí",
+                  "meaning": "during review"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r1-c3-w1",
+                  "traditional": "用得著",
+                  "simplified": "用得着",
+                  "pinyin": "yòngdezháo",
+                  "meaning": "can use"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r1-c4-w1",
+                  "traditional": "它",
+                  "simplified": "它",
+                  "pinyin": "tā",
+                  "meaning": "them"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g6-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g6-r2-c1-w1",
+                  "traditional": "專櫃皮包",
+                  "simplified": "专柜皮包",
+                  "pinyin": "zhuānguì píbāo",
+                  "meaning": "designer bag"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r2-c2-w1",
+                  "traditional": "看得著",
+                  "simplified": "看得着",
+                  "pinyin": "kàndezháo",
+                  "meaning": "can see"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r2-c3-w1",
+                  "traditional": "摸不著",
+                  "simplified": "摸不着",
+                  "pinyin": "mōbùzháo",
+                  "meaning": "cannot touch"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r2-c4-w1",
+                  "traditional": "實物",
+                  "simplified": "实物",
+                  "pinyin": "shíwù",
+                  "meaning": "real object"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g6-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g6-r3-c1-w1",
+                  "traditional": "我和他不熟",
+                  "simplified": "我和他不熟",
+                  "pinyin": "wǒ hé tā bù shú",
+                  "meaning": "not close"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r3-c2-w1",
+                  "traditional": "哪裡",
+                  "simplified": "哪里",
+                  "pinyin": "nǎlǐ",
+                  "meaning": "how could"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r3-c3-w1",
+                  "traditional": "猜得著",
+                  "simplified": "猜得着",
+                  "pinyin": "cāidezháo",
+                  "meaning": "guess right"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g6-r3-c4-w1",
+                  "traditional": "年齡",
+                  "simplified": "年龄",
+                  "pinyin": "niánlíng",
+                  "meaning": "age"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g6-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "家長幫他們把筆記寫在本子上，以為孩子複習時用得著。",
+              "simplified": "家长帮他们把笔记写在本子上，以为孩子复习时用得着。",
+              "pinyin": "Jiāzhǎng bāng tāmen bǎ bǐjì xiě zài běnzi shàng, yǐwéi háizi fùxí shí yòngdezháo.",
+              "english": "Parents help them copy notes into notebooks, assuming the children will find them useful when reviewing.",
+              "words": [
+                {
+                  "id": "b3l9g6-ex1-w1",
+                  "traditional": "筆記寫在本子上",
+                  "simplified": "笔记写在本子上",
+                  "pinyin": "bǐjì xiě zài běnzi shàng",
+                  "meaning": "write notes in book",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g6-ex1-w2",
+                  "traditional": "以為孩子複習時",
+                  "simplified": "以为孩子复习时",
+                  "pinyin": "yǐwéi háizi fùxí shí",
+                  "meaning": "thinking when reviewing"
+                },
+                {
+                  "id": "b3l9g6-ex1-w3",
+                  "traditional": "用得著",
+                  "simplified": "用得着",
+                  "pinyin": "yòngdezháo",
+                  "meaning": "can use",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g6-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "那個專櫃裡放著好多漂亮的名牌皮包，可惜我沒錢買，看得著、摸不著。",
+              "simplified": "那个专柜里放着好多漂亮的名牌皮包，可惜我没钱买，看得着、摸不着。",
+              "pinyin": "Nà ge zhuānguì lǐ fàngzhe hǎoduō piàoliang de míngpái píbāo, kěxī wǒ méi qián mǎi, kàndezháo, mōbùzháo.",
+              "english": "There are so many gorgeous designer bags in that counter; sadly I have no money to buy, able to see but not touch.",
+              "words": [
+                {
+                  "id": "b3l9g6-ex2-w1",
+                  "traditional": "專櫃放著漂亮皮包",
+                  "simplified": "专柜放着漂亮皮包",
+                  "pinyin": "zhuānguì fàngzhe piàoliang píbāo",
+                  "meaning": "counter holds bags",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g6-ex2-w2",
+                  "traditional": "看得著摸不著",
+                  "simplified": "看得着摸不着",
+                  "pinyin": "kàndezháo mōbùzháo",
+                  "meaning": "see but can't touch",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g6-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "游小姐的男朋友看起來很年輕，我跟他不熟，哪裡猜得著他幾歲呢？",
+              "simplified": "游小姐的男朋友看起来很年轻，我跟他不熟，哪里猜得着他几岁呢？",
+              "pinyin": "Yóu xiǎojiě de nánpéngyǒu kàn qǐlái hěn niánqīng, wǒ gēn tā bù shú, nǎlǐ cāidezháo tā jǐ suì ne?",
+              "english": "Miss You's boyfriend looks very young; I don't know him well, how could I guess his age?",
+              "words": [
+                {
+                  "id": "b3l9g6-ex3-w1",
+                  "traditional": "男朋友看起來年輕",
+                  "simplified": "男朋友看起来年轻",
+                  "pinyin": "nánpéngyǒu kàn qǐlái niánqīng",
+                  "meaning": "boyfriend looks young",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g6-ex3-w2",
+                  "traditional": "我跟他不熟",
+                  "simplified": "我跟他不熟",
+                  "pinyin": "wǒ gēn tā bù shú",
+                  "meaning": "not close to him",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g6-ex3-w3",
+                  "traditional": "哪裡猜得著幾歲",
+                  "simplified": "哪里猜得着几岁",
+                  "pinyin": "nǎlǐ cāidezháo jǐ suì",
+                  "meaning": "how can I guess age",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g6-cf1",
+              "question": "How do you say you finally found your lost phone after searching for hours?",
+              "answer": "找了半天，終於找著了。",
+              "wrongTraditional": "找了半天，終於找在手機了。",
+              "wrongSimplified": "找了半天，终于找在手机了。",
+              "right": {
+                "traditional": "找了半天，終於找著了。",
+                "simplified": "找了半天，终于找着了。",
+                "pinyin": "Zhǎo le bàntiān, zhōngyú zhǎozháo le.",
+                "english": "Searched for a long time, finally found it.",
+                "words": [
+                  {
+                    "id": "b3l9g6-cf1-w1",
+                    "traditional": "找了半天",
+                    "simplified": "找了半天",
+                    "pinyin": "zhǎo le bàntiān",
+                    "meaning": "searched long",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g6-cf1-w2",
+                    "traditional": "終於找著了",
+                    "simplified": "终于找着了",
+                    "pinyin": "zhōngyú zhǎozháo le",
+                    "meaning": "finally found it",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g6-cf2",
+              "question": "How do you tell a friend that they can use your spare computer?",
+              "answer": "這台舊電腦你用得著，借你吧。",
+              "wrongTraditional": "這台舊電腦你看得著，借你吧。",
+              "wrongSimplified": "这台旧电脑你看得着，借你吧。",
+              "right": {
+                "traditional": "這台舊電腦你用得著，借你吧。",
+                "simplified": "这台旧电脑你用得着，借你吧。",
+                "pinyin": "Zhè tái jiù diànnǎo nǐ yòngdezháo, jiè nǐ ba.",
+                "english": "You can make use of this old computer, so let me lend it to you.",
+                "words": [
+                  {
+                    "id": "b3l9g6-cf2-w1",
+                    "traditional": "這台舊電腦",
+                    "simplified": "这台旧电脑",
+                    "pinyin": "zhè tái jiù diànnǎo",
+                    "meaning": "this old PC"
+                  },
+                  {
+                    "id": "b3l9g6-cf2-w2",
+                    "traditional": "你用得著",
+                    "simplified": "你用得着",
+                    "pinyin": "nǐ yòngdezháo",
+                    "meaning": "you can use",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l9g6-cf2-w3",
+                    "traditional": "借你吧",
+                    "simplified": "借你吧",
+                    "pinyin": "jiè nǐ ba",
+                    "meaning": "lend you",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g6-q1",
+            "type": "choice",
+            "prompt": "Offer your spare laptop to a friend who urgently needs one for an essay:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我有一台舊筆電，你現在"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g6-q1-b1",
+                "answer": "用得著就拿去",
+                "answerSimplified": "用得着就拿去",
+                "hint": "can use it so take it"
+              },
+              {
+                "type": "text",
+                "traditional": "用吧。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g6-q1-t1",
+                "traditional": "用得著就拿去",
+                "simplified": "用得着就拿去",
+                "pinyin": "yòngdezháo jiù ná qù",
+                "meaning": "can use so take"
+              },
+              {
+                "id": "b3l9g6-q1-t2",
+                "traditional": "用不著就拿去",
+                "simplified": "用不着就拿去",
+                "pinyin": "yòngbùzháo jiù ná qù",
+                "meaning": "can't use so take"
+              },
+              {
+                "id": "b3l9g6-q1-t3",
+                "traditional": "用著了就拿去",
+                "simplified": "用着了就拿去",
+                "pinyin": "yòngzháo le jiù ná qù",
+                "meaning": "used so take"
+              }
+            ],
+            "correctFeedback": "用得著 indicates that an object is applicable or useful for the needed task.",
+            "repairFeedback": "Use 用得著 to state that something can be put to good use."
+          }
+        ]
+      },
+      {
+        "id": "B3L09-G07-P250",
+        "bookId": 3,
+        "lessonId": 9,
+        "partId": 2,
+        "lessonTitle": "誰說得念大學才有未來？",
+        "lessonTitleEnglish": "Who Can Say That There Is No Future Unless You Are a College Graduate?",
+        "grammarNumber": 7,
+        "titleTraditional": "以……代替……",
+        "titleEnglish": "Replacing with 以...代替...",
+        "learnerPromise": "Express substituting one method, entity, or action for another using 以……代替…….",
+        "printedPages": [
+          250,
+          251
+        ],
+        "bookPage": 250,
+        "bookPageAvailable": true,
+        "audioReference": "09-2-1",
+        "explanation": "「以」有「用」的意思，「以……代替……」表示用某樣東西或某種做法來替換原本的東西或做法。",
+        "focusTerms": [
+          "以",
+          "代替",
+          "以思考代替記答案",
+          "以搭公車代替開車"
+        ],
+        "pattern": "Subject + 以 + Substitute + 代替 + Original Entity",
+        "patternColumns": [
+          "Subject",
+          "以",
+          "Substitute",
+          "代替",
+          "Original"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l9g7-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g7-r1-c1-w1",
+                  "traditional": "孩子",
+                  "simplified": "孩子",
+                  "pinyin": "háizi",
+                  "meaning": "children"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r1-c2-w1",
+                  "traditional": "以",
+                  "simplified": "以",
+                  "pinyin": "yǐ",
+                  "meaning": "using"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r1-c3-w1",
+                  "traditional": "思考",
+                  "simplified": "思考",
+                  "pinyin": "sīkǎo",
+                  "meaning": "thinking"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r1-c4-w1",
+                  "traditional": "代替",
+                  "simplified": "代替",
+                  "pinyin": "dàitì",
+                  "meaning": "replace"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r1-c5-w1",
+                  "traditional": "記答案",
+                  "simplified": "记答案",
+                  "pinyin": "jì dá'àn",
+                  "meaning": "memorizing answers"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g7-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g7-r2-c1-w1",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r2-c2-w1",
+                  "traditional": "以",
+                  "simplified": "以",
+                  "pinyin": "yǐ",
+                  "meaning": "using"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r2-c3-w1",
+                  "traditional": "水果點心",
+                  "simplified": "水果点心",
+                  "pinyin": "shuǐguǒ diǎnxīn",
+                  "meaning": "fruit snacks"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r2-c4-w1",
+                  "traditional": "代替",
+                  "simplified": "代替",
+                  "pinyin": "dàitì",
+                  "meaning": "replace"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r2-c5-w1",
+                  "traditional": "甜點",
+                  "simplified": "甜点",
+                  "pinyin": "tiándiǎn",
+                  "meaning": "sweets"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l9g7-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l9g7-r3-c1-w1",
+                  "traditional": "大家",
+                  "simplified": "大家",
+                  "pinyin": "dàjiā",
+                  "meaning": "everyone"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r3-c2-w1",
+                  "traditional": "以",
+                  "simplified": "以",
+                  "pinyin": "yǐ",
+                  "meaning": "using"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r3-c3-w1",
+                  "traditional": "騎自行車",
+                  "simplified": "骑自行车",
+                  "pinyin": "qí zìxíngchē",
+                  "meaning": "cycling"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r3-c4-w1",
+                  "traditional": "代替",
+                  "simplified": "代替",
+                  "pinyin": "dàitì",
+                  "meaning": "replace"
+                }
+              ],
+              [
+                {
+                  "id": "b3l9g7-r3-c5-w1",
+                  "traditional": "開車",
+                  "simplified": "开车",
+                  "pinyin": "kāichē",
+                  "meaning": "driving"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l9g7-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "因此，有意義的學習是讓孩子以思考代替記答案。",
+              "simplified": "因此，有意义的学习是让孩子以思考代替记答案。",
+              "pinyin": "Yīncǐ, yǒuyìyì de xuéxí shì ràng háizi yǐ sīkǎo dàitì jì dá'àn.",
+              "english": "Therefore, meaningful learning allows children to substitute critical thinking for memorizing answers.",
+              "words": [
+                {
+                  "id": "b3l9g7-ex1-w1",
+                  "traditional": "有意義的學習",
+                  "simplified": "有意义的学习",
+                  "pinyin": "yǒuyìyì de xuéxí",
+                  "meaning": "meaningful learning"
+                },
+                {
+                  "id": "b3l9g7-ex1-w2",
+                  "traditional": "以思考代替記答案",
+                  "simplified": "以思考代替记答案",
+                  "pinyin": "yǐ sīkǎo dàitì jì dá'àn",
+                  "meaning": "thinking replace memorizing",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g7-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "媽媽很重視家人的健康，常以蔬菜水果做成的點心代替一般的甜點。",
+              "simplified": "妈妈很重视家人的健康，常以蔬菜水果做成的点心代替一般的甜点。",
+              "pinyin": "Māma hěn zhòngshì jiārén de jiànkāng, cháng yǐ shūcài shuǐguǒ zuòchéng de diǎnxīn dàitì yìbān de tiándiǎn.",
+              "english": "Mom values our family's health, often using snacks made of fruits and vegetables to replace ordinary sweets.",
+              "words": [
+                {
+                  "id": "b3l9g7-ex2-w1",
+                  "traditional": "重視家人的健康",
+                  "simplified": "重视家人的健康",
+                  "pinyin": "zhòngshì jiārén de jiànkāng",
+                  "meaning": "values family health",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g7-ex2-w2",
+                  "traditional": "以水果點心代替甜點",
+                  "simplified": "以水果点心代替甜点",
+                  "pinyin": "yǐ shuǐguǒ diǎnxīn dàitì tiándiǎn",
+                  "meaning": "fruit snacks replace sweets",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l9g7-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "如果大家都能以搭公車、騎自行車代替開車，這樣空氣就不會那麼髒了。",
+              "simplified": "如果大家都能以搭公车、骑自行车代替开车，这样空气就不会那么脏了。",
+              "pinyin": "Rúguǒ dàjiā dōu néng yǐ dā gōngchē, qí zìxíngchē dàitì kāichē, zhèyàng kōngqì jiù bú huì nàme zāng le.",
+              "english": "If everyone took buses or rode bicycles instead of driving cars, the air wouldn't be so polluted.",
+              "words": [
+                {
+                  "id": "b3l9g7-ex3-w1",
+                  "traditional": "以騎車代替開車",
+                  "simplified": "以骑车代替开车",
+                  "pinyin": "yǐ qíchē dàitì kāichē",
+                  "meaning": "cycle instead of drive",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l9g7-ex3-w2",
+                  "traditional": "空氣就不會髒了",
+                  "simplified": "空气就不会脏了",
+                  "pinyin": "kōngqì jiù bú huì zāng le",
+                  "meaning": "air won't be dirty",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l9g7-cf1",
+              "question": "How do you express replacing rote memorization of answers with critical thinking?",
+              "answer": "讓孩子以思考代替記答案。",
+              "wrongTraditional": "讓孩子以記答案代替思考。",
+              "wrongSimplified": "让孩子以记答案代替思考。",
+              "right": {
+                "traditional": "讓孩子以思考代替記答案。",
+                "simplified": "让孩子以思考代替记答案。",
+                "pinyin": "Ràng háizi yǐ sīkǎo dàitì jì dá'àn.",
+                "english": "Let children substitute thinking for memorizing answers.",
+                "words": [
+                  {
+                    "id": "b3l9g7-cf1-w1",
+                    "traditional": "讓孩子",
+                    "simplified": "让孩子",
+                    "pinyin": "ràng háizi",
+                    "meaning": "let children"
+                  },
+                  {
+                    "id": "b3l9g7-cf1-w2",
+                    "traditional": "以思考",
+                    "simplified": "以思考",
+                    "pinyin": "yǐ sīkǎo",
+                    "meaning": "with thinking"
+                  },
+                  {
+                    "id": "b3l9g7-cf1-w3",
+                    "traditional": "代替記答案",
+                    "simplified": "代替记答案",
+                    "pinyin": "dàitì jì dá'àn",
+                    "meaning": "replace memorizing answers",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l9g7-cf2",
+              "question": "How do you state that the professor replaced written exams with written reports?",
+              "answer": "教授決定以寫報告代替筆試。",
+              "wrongTraditional": "教授決定以筆試代替寫報告。",
+              "wrongSimplified": "教授决定以笔试代替写报告。",
+              "right": {
+                "traditional": "教授決定以寫報告代替筆試。",
+                "simplified": "教授决定以写报告代替笔试。",
+                "pinyin": "Jiàoshòu juédìng yǐ xiě bàogào dàitì bǐshì.",
+                "english": "The professor decided to use report writing instead of written exams.",
+                "words": [
+                  {
+                    "id": "b3l9g7-cf2-w1",
+                    "traditional": "教授決定",
+                    "simplified": "教授决定",
+                    "pinyin": "jiàoshòu juédìng",
+                    "meaning": "professor decided"
+                  },
+                  {
+                    "id": "b3l9g7-cf2-w2",
+                    "traditional": "以寫報告",
+                    "simplified": "以写报告",
+                    "pinyin": "yǐ xiě bàogào",
+                    "meaning": "with report writing"
+                  },
+                  {
+                    "id": "b3l9g7-cf2-w3",
+                    "traditional": "代替筆試",
+                    "simplified": "代替笔试",
+                    "pinyin": "dàitì bǐshì",
+                    "meaning": "replace written exam",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l9g7-q1",
+            "type": "choice",
+            "prompt": "State that reports will replace written exams for finals:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "哲學課教授決定"
+              },
+              {
+                "type": "blank",
+                "id": "b3l9g7-q1-b1",
+                "answer": "以寫報告代替",
+                "answerSimplified": "以写报告代替",
+                "hint": "use reports to replace"
+              },
+              {
+                "type": "text",
+                "traditional": "期末筆試。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l9g7-q1-t1",
+                "traditional": "以寫報告代替",
+                "simplified": "以写报告代替",
+                "pinyin": "yǐ xiě bàogào dàitì",
+                "meaning": "use reports replace"
+              },
+              {
+                "id": "b3l9g7-q1-t2",
+                "traditional": "以筆試代替",
+                "simplified": "以笔试代替",
+                "pinyin": "yǐ bǐshì dàitì",
+                "meaning": "inverted meaning"
+              },
+              {
+                "id": "b3l9g7-q1-t3",
+                "traditional": "代替寫報告以",
+                "simplified": "代替写报告以",
+                "pinyin": "dàitì xiě bàogào yǐ",
+                "meaning": "misordered"
+              }
+            ],
+            "correctFeedback": "以 A 代替 B means using A (writing reports) to replace B (written test).",
+            "repairFeedback": "Pattern: 以 + New Method + 代替 + Old Method."
+          }
+        ]
+      }
+    ]
+  }
+}

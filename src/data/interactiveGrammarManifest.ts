@@ -838,6 +838,45 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L08-G06-P222"
       }
     ]
+  },
+  {
+    "id": "B3L09-P01-D01",
+    "bookId": 3,
+    "lessonId": 9,
+    "partId": 1,
+    "title": "Grammar 1–4 · College and Future Prospects",
+    "grammarPages": [
+      {
+        "id": "B3L09-G01-P235"
+      },
+      {
+        "id": "B3L09-G02-P237"
+      },
+      {
+        "id": "B3L09-G03-P238"
+      },
+      {
+        "id": "B3L09-G04-P240"
+      }
+    ]
+  },
+  {
+    "id": "B3L09-P02-D02",
+    "bookId": 3,
+    "lessonId": 9,
+    "partId": 2,
+    "title": "Grammar 5–7 · Education Is Meaningful Learning",
+    "grammarPages": [
+      {
+        "id": "B3L09-G05-P247"
+      },
+      {
+        "id": "B3L09-G06-P248"
+      },
+      {
+        "id": "B3L09-G07-P250"
+      }
+    ]
   }
 ];
 

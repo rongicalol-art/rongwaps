@@ -461,4 +461,13 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L08-G04-P219': detected('況且', [inOrder(['況且'])]),
   'B3L08-G05-P221': detected('非……不可', [inOrder(['非', '不可'], 8)]),
   'B3L08-G06-P222': detected('畢竟', [inOrder(['畢竟'])]),
+
+  // Book 3 Lesson 9 — 誰說得念大學才有未來？
+  'B3L09-G01-P235': detected('V過來', [inOrder(['過來'])]),
+  'B3L09-G02-P237': detected('怎麼不……反而……呢？', [inOrder(['怎麼不', '反而'], 8)]),
+  'B3L09-G03-P238': detected('不但不/沒……反而……', [inOrder(['不但', '反而'], 8)]),
+  'B3L09-G04-P240': detected('才……(呢)', [inOrder(['才', '呢'], 6), inOrder(['才不']), inOrder(['才沒'])]),
+  'B3L09-G05-P247': detected('尤其是', [inOrder(['尤其是']), inOrder(['尤其'])]),
+  'B3L09-G06-P248': detected('V著', [inOrder(['得著']), inOrder(['不著']), inOrder(['著了'])]),
+  'B3L09-G07-P250': detected('以……代替……', [inOrder(['以', '代替'], 8)]),
 };
