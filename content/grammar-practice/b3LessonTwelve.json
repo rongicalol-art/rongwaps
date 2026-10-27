@@ -1,0 +1,1662 @@
+{
+  "B3L12-G01-P313": {
+    "bookPage": 313,
+    "title": "Practice: 這就",
+    "items": [
+      {
+        "id": "b3l12g1-p1",
+        "source": "p.314 #1",
+        "kind": "slot-build",
+        "prompt": "Parent asks if Teacher Guan is in to thank him. Reply that you will fetch him right now:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他在辦公室，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "這就去叫"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他出來。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "這就去叫",
+            "simplified": "这就去叫",
+            "pinyin": "zhè jiù qù jiào"
+          },
+          {
+            "traditional": "難道去叫",
+            "simplified": "难道去叫",
+            "pinyin": "nándào qù jiào"
+          },
+          {
+            "traditional": "況且去叫",
+            "simplified": "况且去叫",
+            "pinyin": "kuàngqiě qù jiào"
+          }
+        ],
+        "accepted": "這就去叫",
+        "result": {
+          "traditional": "他在辦公室，我這就去叫他出來。",
+          "simplified": "他在办公室，我这就去叫他出来。",
+          "pinyin": "Tā zài bàngōngshì, wǒ zhè jiù qù jiào tā chūlái.",
+          "english": "He is in the office; I will go call him right now."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難道去叫"
+            ],
+            "note": "Immediate actions use 這就, not 難道."
+          },
+          {
+            "placed": [
+              "況且去叫"
+            ],
+            "note": "Use 這就 to express carrying out an immediate action right away."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 這就去叫."
+      },
+      {
+        "id": "b3l12g1-p2",
+        "source": "p.314 #2",
+        "kind": "slot-build",
+        "prompt": "Child feels feverish and ill. Mom says to bear with it, she will take him to the doctor immediately:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "媽媽"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你忍耐一下，媽媽"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "這就帶你"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "去看醫生。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "這就帶你",
+            "simplified": "这就带你",
+            "pinyin": "zhè jiù dài nǐ"
+          },
+          {
+            "traditional": "難怪帶你",
+            "simplified": "难怪带你",
+            "pinyin": "nánguài dài nǐ"
+          },
+          {
+            "traditional": "尤其帶你",
+            "simplified": "尤其带你",
+            "pinyin": "yóuqí dài nǐ"
+          }
+        ],
+        "accepted": "這就帶你",
+        "result": {
+          "traditional": "你忍耐一下，媽媽這就帶你去看醫生。",
+          "simplified": "你忍耐一下，妈妈这就带你去看医生。",
+          "pinyin": "Nǐ rěnnài yíxià, māma zhè jiù dài nǐ qù kàn yīshēng.",
+          "english": "Bear with it a moment; Mom will take you to see the doctor right now."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難怪帶你"
+            ],
+            "note": "Use 這就 to indicate action taken on the spot."
+          },
+          {
+            "placed": [
+              "尤其帶你"
+            ],
+            "note": "Immediate responsive actions take 這就."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 這就帶你."
+      },
+      {
+        "id": "b3l12g1-p3",
+        "source": "p.314 #3",
+        "kind": "slot-build",
+        "prompt": "Leather shoes are 35% off today. Respond eagerly that you're going to buy them right now:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "太好了，那我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "這就去買"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一雙。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "這就去買",
+            "simplified": "这就去买",
+            "pinyin": "zhè jiù qù mǎi"
+          },
+          {
+            "traditional": "固然去買",
+            "simplified": "固然去买",
+            "pinyin": "gùrán qù mǎi"
+          },
+          {
+            "traditional": "偏偏去買",
+            "simplified": "偏偏去买",
+            "pinyin": "piānpiān qù mǎi"
+          }
+        ],
+        "accepted": "這就去買",
+        "result": {
+          "traditional": "太好了，那我這就去買一雙。",
+          "simplified": "太好了，那我这就去买一双。",
+          "pinyin": "Tài hǎo le, nà wǒ zhè jiù qù mǎi yì shuāng.",
+          "english": "Great, then I'll head over to buy a pair right away."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "固然去買"
+            ],
+            "note": "Use 這就 to express prompt action on the spot."
+          },
+          {
+            "placed": [
+              "偏偏去買"
+            ],
+            "note": "這就 indicates doing something immediately right now."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 這就去買."
+      },
+      {
+        "id": "b3l12g1-p4",
+        "source": "p.313 #2",
+        "kind": "slot-build",
+        "prompt": "Customer received wrong drink. Apologize and say you will replace it immediately:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "服務生"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不好意思，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "這就幫您"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "換一杯熱紅茶。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "這就幫您",
+            "simplified": "这就帮您",
+            "pinyin": "zhè jiù bāng nín"
+          },
+          {
+            "traditional": "幸虧幫您",
+            "simplified": "幸亏帮您",
+            "pinyin": "xìngkuī bāng nín"
+          },
+          {
+            "traditional": "反倒幫您",
+            "simplified": "反倒帮您",
+            "pinyin": "fǎndào bāng nín"
+          }
+        ],
+        "accepted": "這就幫您",
+        "result": {
+          "traditional": "不好意思，我這就幫您換一杯熱紅茶。",
+          "simplified": "不好意思，我这就帮您换一杯热红茶。",
+          "pinyin": "Bù hǎoyìsi, wǒ zhè jiù bāng nín huàn yì bēi rè hóngchá.",
+          "english": "Sorry about that, I will exchange a cup of hot black tea for you right away."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "幸虧幫您"
+            ],
+            "note": "Carrying out a correction immediately takes 這就."
+          },
+          {
+            "placed": [
+              "反倒幫您"
+            ],
+            "note": "Use 這就 for immediate service actions on the spot."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 這就幫您."
+      }
+    ]
+  },
+  "B3L12-G02-P314": {
+    "bookPage": 314,
+    "title": "Practice: 在……方面",
+    "items": [
+      {
+        "id": "b3l12g2-p1",
+        "source": "p.315 #1",
+        "kind": "slot-build",
+        "prompt": "A asks for concert advice. State that Lao Li has rich experience in organizing events:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "在辦活動"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "方面"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，老李的經驗很豐富。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "方面",
+            "simplified": "方面",
+            "pinyin": "fāngmiàn"
+          },
+          {
+            "traditional": "立場",
+            "simplified": "立场",
+            "pinyin": "lìchǎng"
+          },
+          {
+            "traditional": "原則",
+            "simplified": "原则",
+            "pinyin": "yuánzé"
+          }
+        ],
+        "accepted": "方面",
+        "result": {
+          "traditional": "在辦活動方面，老李的經驗很豐富。",
+          "simplified": "在办活动方面，老李的经验很丰富。",
+          "pinyin": "Zài bàn huódòng fāngmiàn, Lǎo Lǐ de jīngyàn hěn fēngfù.",
+          "english": "In terms of organizing events, Lao Li's experience is very extensive."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "立場"
+            ],
+            "note": "Frame the domain using 在……方面."
+          },
+          {
+            "placed": [
+              "原則"
+            ],
+            "note": "Defining an activity scope takes 在……方面."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 方面."
+      },
+      {
+        "id": "b3l12g2-p2",
+        "source": "p.315 #2",
+        "kind": "slot-build",
+        "prompt": "Dr. Chen is also an artist. Affirm that he has always been outstanding in art:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，他在藝術"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "方面"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "也一向很優秀。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "方面",
+            "simplified": "方面",
+            "pinyin": "fāngmiàn"
+          },
+          {
+            "traditional": "題目",
+            "simplified": "题目",
+            "pinyin": "tímù"
+          },
+          {
+            "traditional": "規矩",
+            "simplified": "规矩",
+            "pinyin": "guīju"
+          }
+        ],
+        "accepted": "方面",
+        "result": {
+          "traditional": "是啊，他在藝術方面也一向很優秀。",
+          "simplified": "是啊，他在艺术方面也一向很优秀。",
+          "pinyin": "Shì a, tā zài yìshù fāngmiàn yě yíxiàng hěn yōuxiù.",
+          "english": "Yes, he has always been outstanding in the realm of art as well."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "題目"
+            ],
+            "note": "Use 藝術方面 with 在 to specify the domain."
+          },
+          {
+            "placed": [
+              "規矩"
+            ],
+            "note": "Specifying a talent domain uses 在……方面."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 方面."
+      },
+      {
+        "id": "b3l12g2-p3",
+        "source": "p.315 #3",
+        "kind": "slot-build",
+        "prompt": "Friend needs decorating help. Recommend Xiao Lin for his talent in interior design:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "在設計"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "方面"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，小林很有才華，你可以找他。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "方面",
+            "simplified": "方面",
+            "pinyin": "fāngmiàn"
+          },
+          {
+            "traditional": "對象",
+            "simplified": "对象",
+            "pinyin": "duìxiàng"
+          },
+          {
+            "traditional": "代價",
+            "simplified": "代价",
+            "pinyin": "dàijià"
+          }
+        ],
+        "accepted": "方面",
+        "result": {
+          "traditional": "在設計方面，小林很有才華，你可以找他。",
+          "simplified": "在设计方面，小林很有才华，你可以找他。",
+          "pinyin": "Zài shèjì fāngmiàn, Xiǎo Lín hěn yǒu cáihuá, nǐ kěyǐ zhǎo tā.",
+          "english": "In terms of design, Xiao Lin is very talented; you can consult him."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "對象"
+            ],
+            "note": "Marking field of skill requires 在……方面."
+          },
+          {
+            "placed": [
+              "代價"
+            ],
+            "note": "The frame 在 + field + 方面 marks domain."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 方面."
+      },
+      {
+        "id": "b3l12g2-p4",
+        "source": "p.308 #1",
+        "kind": "slot-build",
+        "prompt": "Interviewer asks about experience. Answer that your experience is rich in sales:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "家豪"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "在推銷"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "方面"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我的經驗相當豐富。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "方面",
+            "simplified": "方面",
+            "pinyin": "fāngmiàn"
+          },
+          {
+            "traditional": "背景",
+            "simplified": "背景",
+            "pinyin": "bèijǐng"
+          },
+          {
+            "traditional": "條件",
+            "simplified": "条件",
+            "pinyin": "tiáojiàn"
+          }
+        ],
+        "accepted": "方面",
+        "result": {
+          "traditional": "在推銷方面，我的經驗相當豐富。",
+          "simplified": "在推销方面，我的经验相当丰富。",
+          "pinyin": "Zài tuīxiāo fāngmiàn, wǒ de jīngyàn xiāngdāng fēngfù.",
+          "english": "In terms of sales promotion, my experience is quite rich."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "背景"
+            ],
+            "note": "Frame the area of experience with 在……方面."
+          },
+          {
+            "placed": [
+              "條件"
+            ],
+            "note": "Use 方面 with 在 to specify the professional scope."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 方面."
+      }
+    ]
+  },
+  "B3L12-G03-P316": {
+    "bookPage": 316,
+    "title": "Practice: 往往",
+    "items": [
+      {
+        "id": "b3l12g3-p1",
+        "source": "p.317 #1",
+        "kind": "slot-build",
+        "prompt": "Colleague asks why you recheck documents. State that past habit is to confirm content again:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "照過去的習慣，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "往往會再"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "確認一次內容。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "往往會再",
+            "simplified": "往往会再",
+            "pinyin": "wǎngwǎng huì zài"
+          },
+          {
+            "traditional": "難怪會再",
+            "simplified": "难怪会再",
+            "pinyin": "nánguài huì zài"
+          },
+          {
+            "traditional": "索性會再",
+            "simplified": "索性会再",
+            "pinyin": "suǒxìng huì zài"
+          }
+        ],
+        "accepted": "往往會再",
+        "result": {
+          "traditional": "照過去的習慣，我往往會再確認一次內容。",
+          "simplified": "照过去的习惯，我往往会再确认一次内容。",
+          "pinyin": "Zhào guòqù de xíguàn, wǒ wǎngwǎng huì zài quèrèn yí cì nèiróng.",
+          "english": "According to past habit, I tend to verify the content once more."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難怪會再"
+            ],
+            "note": "Regular patterns based on habits use 往往."
+          },
+          {
+            "placed": [
+              "索性會再"
+            ],
+            "note": "Use 往往 to indicate habitual tendencies."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 往往會再."
+      },
+      {
+        "id": "b3l12g3-p2",
+        "source": "p.317 #2",
+        "kind": "slot-build",
+        "prompt": "A asks about New Year habits. Note that families regularly pay respects to ancestors on Eve:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "除夕當天全家人"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "往往得拜"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "祖先，還要吃年夜飯。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "往往得拜",
+            "simplified": "往往得拜",
+            "pinyin": "wǎngwǎng děi bài"
+          },
+          {
+            "traditional": "畢竟得拜",
+            "simplified": "毕竟得拜",
+            "pinyin": "bìjìng děi bài"
+          },
+          {
+            "traditional": "反倒得拜",
+            "simplified": "反倒得拜",
+            "pinyin": "fǎndào děi bài"
+          }
+        ],
+        "accepted": "往往得拜",
+        "result": {
+          "traditional": "除夕當天全家人往往得拜祖先，還要吃年夜飯。",
+          "simplified": "除夕当天全家人往往得拜祖先，还要吃年夜饭。",
+          "pinyin": "Chúxì dāngtiān quánjiārén wǎngwǎng děi bài zǔxiān, hái yào chī niányèfàn.",
+          "english": "On New Year's Eve, the entire family regularly has to pay respects to ancestors, and eat reunion dinner."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "畢竟得拜"
+            ],
+            "note": "Use 往往 to describe established annual regularities."
+          },
+          {
+            "placed": [
+              "反倒得拜"
+            ],
+            "note": "Regular customs under set conditions take 往往."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 往往得拜."
+      },
+      {
+        "id": "b3l12g3-p3",
+        "source": "p.320 #2",
+        "kind": "slot-build",
+        "prompt": "State that nervous and excited feelings are often common manifestations in interviews:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "我"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這樣的心情，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "往往"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "是面試時經常有的表現。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "往往",
+            "simplified": "往往",
+            "pinyin": "wǎngwǎng"
+          },
+          {
+            "traditional": "未必",
+            "simplified": "未必",
+            "pinyin": "wèibì"
+          },
+          {
+            "traditional": "好在",
+            "simplified": "好在",
+            "pinyin": "hǎozài"
+          }
+        ],
+        "accepted": "往往",
+        "result": {
+          "traditional": "這樣的心情，往往是面試時經常有的表現。",
+          "simplified": "这样的心情，往往是面试时经常有的表现。",
+          "pinyin": "Zhèyàng de xīnqíng, wǎngwǎng shì miànshì shí jīngcháng yǒu de biǎoxiàn.",
+          "english": "Such feelings are often the manifestations common during interviews."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "未必"
+            ],
+            "note": "Common natural tendencies take 往往."
+          },
+          {
+            "placed": [
+              "好在"
+            ],
+            "note": "Use 往往 to describe empirical regularities."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 往往."
+      },
+      {
+        "id": "b3l12g3-p4",
+        "source": "p.309 #1",
+        "kind": "slot-build",
+        "prompt": "Manager praises communication concept. Reiterate that good dialogue resolves trouble:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "經理"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "透過良好溝通，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "往往"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "能解決不必要的麻煩。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "往往",
+            "simplified": "往往",
+            "pinyin": "wǎngwǎng"
+          },
+          {
+            "traditional": "多虧",
+            "simplified": "多亏",
+            "pinyin": "duōkuī"
+          },
+          {
+            "traditional": "何必",
+            "simplified": "何必",
+            "pinyin": "hébì"
+          }
+        ],
+        "accepted": "往往",
+        "result": {
+          "traditional": "透過良好溝通，往往能解決不必要的麻煩。",
+          "simplified": "透过良好沟通，往往能解决不必要的麻烦。",
+          "pinyin": "Tòuguò liánghǎo gōutōng, wǎngwǎng néng jiějué bú bìyào de máfan.",
+          "english": "Through good communication, unnecessary troubles can often be resolved."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "多虧"
+            ],
+            "note": "General truths and outcomes take 往往."
+          },
+          {
+            "placed": [
+              "何必"
+            ],
+            "note": "Use 往往 to indicate typical outcomes under sound conditions."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 往往."
+      }
+    ]
+  },
+  "B3L12-G04-P318": {
+    "bookPage": 318,
+    "title": "Practice: 有關",
+    "items": [
+      {
+        "id": "b3l12g4-p1",
+        "source": "p.319 #1",
+        "kind": "slot-build",
+        "prompt": "Foreigner asks about activities. Tell them to check the travel center website regarding such events:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有關這類"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的活動，你看旅遊中心網站就知道了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有關這類",
+            "simplified": "有关这类",
+            "pinyin": "yǒuguān zhè lèi"
+          },
+          {
+            "traditional": "趁著這類",
+            "simplified": "趁着这类",
+            "pinyin": "chènzhe zhè lèi"
+          },
+          {
+            "traditional": "朝著這類",
+            "simplified": "朝着这类",
+            "pinyin": "cháozhe zhè lèi"
+          }
+        ],
+        "accepted": "有關這類",
+        "result": {
+          "traditional": "有關這類的活動，你看旅遊中心網站就知道了。",
+          "simplified": "有关这类的活动，你看旅游中心网站就知道了。",
+          "pinyin": "Yǒuguān zhè lèi de huódòng, nǐ kàn lǚyóu zhōngxīn wǎngzhàn jiù zhīdào le.",
+          "english": "Regarding this category of activities, look at the tourism center website and you will know."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "趁著這類"
+            ],
+            "note": "Introducing a topic at sentence head takes 有關."
+          },
+          {
+            "placed": [
+              "朝著這類"
+            ],
+            "note": "Use 有關 to connect an issue or topic to follow-up details."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 有關這類."
+      },
+      {
+        "id": "b3l12g4-p2",
+        "source": "p.319 #2",
+        "kind": "slot-build",
+        "prompt": "Visitor looks for education references. Point out that books concerning this are inside:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有關"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "這方面的書都在裡面，進去就看到了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有關",
+            "simplified": "有关",
+            "pinyin": "yǒuguān"
+          },
+          {
+            "traditional": "由於",
+            "simplified": "由于",
+            "pinyin": "yóuyú"
+          },
+          {
+            "traditional": "順著",
+            "simplified": "顺着",
+            "pinyin": "shùnzhe"
+          }
+        ],
+        "accepted": "有關",
+        "result": {
+          "traditional": "有關這方面的書都在裡面，進去就看到了。",
+          "simplified": "有关这方面的书都在里面，进去就看到了。",
+          "pinyin": "Yǒuguān zhè fāngmiàn de shū dōu zài lǐmiàn, jìnqù jiù kàndào le.",
+          "english": "Books regarding this aspect are all inside; you'll see them upon entering."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "由於"
+            ],
+            "note": "Introducing topic domain requires 有關."
+          },
+          {
+            "placed": [
+              "順著"
+            ],
+            "note": "Use 有關 to indicate 'pertaining to / regarding'."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 有關."
+      },
+      {
+        "id": "b3l12g4-p3",
+        "source": "p.319 #3",
+        "kind": "slot-build",
+        "prompt": "Asked about climate change. Affirm that issues concerning environmental protection require shared responsibility:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有關環境"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "保護的問題，大家必須共同承擔。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有關環境",
+            "simplified": "有关环境",
+            "pinyin": "yǒuguān huánjìng"
+          },
+          {
+            "traditional": "依據環境",
+            "simplified": "依据环境",
+            "pinyin": "yījù huánjìng"
+          },
+          {
+            "traditional": "趁早環境",
+            "simplified": "趁早环境",
+            "pinyin": "chènzǎo huánjìng"
+          }
+        ],
+        "accepted": "有關環境",
+        "result": {
+          "traditional": "有關環境保護的問題，大家必須共同承擔。",
+          "simplified": "有关环境保护的问题，大家必须共同承担。",
+          "pinyin": "Yǒuguān huánjìng bǎohù de wèntí, dàjiā bìxū gòngtóng chéngdān.",
+          "english": "Regarding issues of environmental protection, everyone must jointly shoulder responsibility."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "依據環境"
+            ],
+            "note": "Use 有關 to introduce a subject or topic for discussion."
+          },
+          {
+            "placed": [
+              "趁早環境"
+            ],
+            "note": "Prepositional topic markers use 有關."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 有關環境."
+      },
+      {
+        "id": "b3l12g4-p4",
+        "source": "p.308 #1",
+        "kind": "slot-build",
+        "prompt": "Manager concludes salary question. Tell applicant that staff will explain matters concerning this:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "王經理"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "有關"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "這方面的問題，會有相關人員來詳細說明。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "有關",
+            "simplified": "有关",
+            "pinyin": "yǒuguān"
+          },
+          {
+            "traditional": "衝著",
+            "simplified": "冲着",
+            "pinyin": "chòngzhe"
+          },
+          {
+            "traditional": "本著",
+            "simplified": "本着",
+            "pinyin": "běnzhe"
+          }
+        ],
+        "accepted": "有關",
+        "result": {
+          "traditional": "有關這方面的問題，會有相關人員來詳細說明。",
+          "simplified": "有关这方面的问题，会有相关人员来详细说明。",
+          "pinyin": "Yǒuguān zhè fāngmiàn de wèntí, huì yǒu xiāngguān rényuán lái xiángxì shuōmíng.",
+          "english": "Regarding questions in this area, relevant personnel will come explain them in detail."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "衝著"
+            ],
+            "note": "Introducing questions in a scope takes 有關."
+          },
+          {
+            "placed": [
+              "本著"
+            ],
+            "note": "Topic introduction at sentence start takes 有關."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 有關."
+      }
+    ]
+  },
+  "B3L12-G05-P325": {
+    "bookPage": 325,
+    "title": "Practice: 儘管",
+    "items": [
+      {
+        "id": "b3l12g5-p1",
+        "source": "p.326 #1",
+        "kind": "slot-build",
+        "prompt": "Colleague praises boss's temper. Note that even though serious problems occurred, he blamed no one:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "儘管產品"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "出現了嚴重的問題，他也沒怪任何人。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "儘管產品",
+            "simplified": "尽管产品",
+            "pinyin": "jǐnguǎn chǎnpǐn"
+          },
+          {
+            "traditional": "莫非產品",
+            "simplified": "莫非产品",
+            "pinyin": "mòfēi chǎnpǐn"
+          },
+          {
+            "traditional": "索性產品",
+            "simplified": "索性产品",
+            "pinyin": "suǒxìng chǎnpǐn"
+          }
+        ],
+        "accepted": "儘管產品",
+        "result": {
+          "traditional": "儘管產品出現了嚴重的問題，他也沒怪任何人。",
+          "simplified": "尽管产品出现了严重的问题，他也没怪任何人。",
+          "pinyin": "Jǐnguǎn chǎnpǐn chūxiàn le yánzhòng de wèntí, tā yě méi guài rènhé rén.",
+          "english": "Even though serious problems appeared with the product, he didn't blame anyone."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "莫非產品"
+            ],
+            "note": "Conceding a real existing fact uses 儘管."
+          },
+          {
+            "placed": [
+              "索性產品"
+            ],
+            "note": "Use 儘管 to contrast a factual premise against contrary outcome."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 儘管產品."
+      },
+      {
+        "id": "b3l12g5-p2",
+        "source": "p.326 #2",
+        "kind": "slot-build",
+        "prompt": "Xiao Li joined planning group. State that despite work being tough, you believe he'll persist:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "儘管工作"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很辛苦，我相信他能夠堅持到底。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "儘管工作",
+            "simplified": "尽管工作",
+            "pinyin": "jǐnguǎn gōngzuò"
+          },
+          {
+            "traditional": "難道工作",
+            "simplified": "难道工作",
+            "pinyin": "nándào gōngzuò"
+          },
+          {
+            "traditional": "畢竟工作",
+            "simplified": "毕竟工作",
+            "pinyin": "bìjìng gōngzuò"
+          }
+        ],
+        "accepted": "儘管工作",
+        "result": {
+          "traditional": "儘管工作很辛苦，我相信他能夠堅持到底。",
+          "simplified": "尽管工作很辛苦，我相信他能够坚持到底。",
+          "pinyin": "Jǐnguǎn gōngzuò hěn xīnkǔ, wǒ xiāngxìn tā nénggòu jiānchí dàodǐ.",
+          "english": "Even though work is arduous, I believe he can persevere to the end."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難道工作"
+            ],
+            "note": "Factual concession takes 儘管."
+          },
+          {
+            "placed": [
+              "畢竟工作"
+            ],
+            "note": "Use 儘管 to introduce the concessive condition 'even though'."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 儘管工作."
+      },
+      {
+        "id": "b3l12g5-p3",
+        "source": "p.326 #3",
+        "kind": "slot-build",
+        "prompt": "Competition is stiff. Note that even though competition is intense, Xiao Lin gives his all:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "儘管競爭"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "非常激烈，小林依然全力以赴。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "儘管競爭",
+            "simplified": "尽管竞争",
+            "pinyin": "jǐnguǎn jìngzhēng"
+          },
+          {
+            "traditional": "哪怕競爭",
+            "simplified": "哪怕竞争",
+            "pinyin": "nǎpà jìngzhēng"
+          },
+          {
+            "traditional": "萬一競爭",
+            "simplified": "万一竞争",
+            "pinyin": "wànyī jìngzhēng"
+          }
+        ],
+        "accepted": "儘管競爭",
+        "result": {
+          "traditional": "儘管競爭非常激烈，小林依然全力以赴。",
+          "simplified": "尽管竞争非常激烈，小林依然全力以赴。",
+          "pinyin": "Jǐnguǎn jìngzhēng fēicháng jīliè, Xiǎo Lín yīrán quánlì yǐ fù.",
+          "english": "Even though competition is fierce, Xiao Lin still goes all out."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "哪怕競爭"
+            ],
+            "note": "Acknowledging an actual situation uses 儘管, not 哪怕 (hypothetical)."
+          },
+          {
+            "placed": [
+              "萬一競爭"
+            ],
+            "note": "Use 儘管 for factual concessive clauses."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 儘管競爭."
+      },
+      {
+        "id": "b3l12g5-p4",
+        "source": "p.325 #1",
+        "kind": "slot-build",
+        "prompt": "Reflecting on interview. Note that although it wasn't the first time, you still worried:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "我"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "儘管"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我不是第一次面試，但還是擔心表現不佳。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "儘管",
+            "simplified": "尽管",
+            "pinyin": "jǐnguǎn"
+          },
+          {
+            "traditional": "除非",
+            "simplified": "除非",
+            "pinyin": "chúfēi"
+          },
+          {
+            "traditional": "要不是",
+            "simplified": "要不是",
+            "pinyin": "yàobúshì"
+          }
+        ],
+        "accepted": "儘管",
+        "result": {
+          "traditional": "儘管我不是第一次面試，但還是擔心表現不佳。",
+          "simplified": "尽管我不是第一次面试，但还是担心表现不佳。",
+          "pinyin": "Jǐnguǎn wǒ bú shì dì-yī cì miànshì, dàn háishì dānxīn biǎoxiàn bù jiā.",
+          "english": "Even though it wasn't my first interview, I was still worried about performing poorly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "除非"
+            ],
+            "note": "Use 儘管 to contrast a factual situation against unexpected worry."
+          },
+          {
+            "placed": [
+              "要不是"
+            ],
+            "note": "Concessive statements of fact take 儘管."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 儘管."
+      }
+    ]
+  },
+  "B3L12-G06-P327": {
+    "bookPage": 327,
+    "title": "Practice: 不論……都……",
+    "items": [
+      {
+        "id": "b3l12g6-p1",
+        "source": "p.327 #1",
+        "kind": "slot-build",
+        "prompt": "Friend asks why you buy in stores. Explain that no matter what you buy, you must check personally:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這是我的習慣，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不論"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "買什麼我都得親自檢查才安心。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不論",
+            "simplified": "不论",
+            "pinyin": "búlùn"
+          },
+          {
+            "traditional": "既然",
+            "simplified": "既然",
+            "pinyin": "jìrán"
+          },
+          {
+            "traditional": "除非",
+            "simplified": "除非",
+            "pinyin": "chúfēi"
+          }
+        ],
+        "accepted": "不論",
+        "result": {
+          "traditional": "這是我的習慣，不論買什麼我都得親自檢查才安心。",
+          "simplified": "这是我的习惯，不论买什么我都得亲自检查才安心。",
+          "pinyin": "Zhè shì wǒ de xíguàn, búlùn mǎi shénme wǒ dōu děi qīnzì jiǎnchá cái ānxīn.",
+          "english": "This is my habit; no matter what I buy, I must check it personally to feel at ease."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "既然"
+            ],
+            "note": "Invariance over alternatives takes 不論……都."
+          },
+          {
+            "placed": [
+              "除非"
+            ],
+            "note": "Use 不論 with question words like 什麼 to denote 'regardless of what'."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不論."
+      },
+      {
+        "id": "b3l12g6-p2",
+        "source": "p.328 #1",
+        "kind": "slot-build",
+        "prompt": "Up at 2 AM. Explain that no matter how tired, you must finish your term paper tonight:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "期末報告明天交，今晚"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不論多累"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我都得完成。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不論多累",
+            "simplified": "不论多累",
+            "pinyin": "búlùn duō lèi"
+          },
+          {
+            "traditional": "固然多累",
+            "simplified": "固然多累",
+            "pinyin": "gùrán duō lèi"
+          },
+          {
+            "traditional": "難得多累",
+            "simplified": "难得多累",
+            "pinyin": "nándé duō lèi"
+          }
+        ],
+        "accepted": "不論多累",
+        "result": {
+          "traditional": "期末報告明天交，今晚不論多累我都得完成。",
+          "simplified": "期末报告明天交，今晚不论多累我都得完成。",
+          "pinyin": "Qímò bàogào míngtiān jiāo, jīnwǎn búlùn duō lèi wǒ dōu děi wánchéng.",
+          "english": "The term paper is due tomorrow; tonight no matter how tired I am, I must finish."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "固然多累"
+            ],
+            "note": "Unconditional resolve uses 不論……都."
+          },
+          {
+            "placed": [
+              "難得多累"
+            ],
+            "note": "Pair 不論 with degree word 多累 to express invariant necessity."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不論多累."
+      },
+      {
+        "id": "b3l12g6-p3",
+        "source": "p.328 #2",
+        "kind": "slot-build",
+        "prompt": "Important meeting tomorrow. State that no matter how late, materials must be prepared:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "我"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "明天的會議很重要，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不論多晚"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我都得把資料準備好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不論多晚",
+            "simplified": "不论多晚",
+            "pinyin": "búlùn duō wǎn"
+          },
+          {
+            "traditional": "何必多晚",
+            "simplified": "何必多晚",
+            "pinyin": "hébì duō wǎn"
+          },
+          {
+            "traditional": "幸虧多晚",
+            "simplified": "幸亏多晚",
+            "pinyin": "xìngkuī duō wǎn"
+          }
+        ],
+        "accepted": "不論多晚",
+        "result": {
+          "traditional": "明天的會議很重要，不論多晚我都得把資料準備好。",
+          "simplified": "明天的会议很重要，不论多晚我都得把资料准备好。",
+          "pinyin": "Míngtiān de huìyì hěn zhòngyào, búlùn duō wǎn wǒ dōu děi bǎ zīliào zhǔnbèi hǎo.",
+          "english": "Tomorrow's meeting is crucial; no matter how late it is, I must prepare the materials."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "何必多晚"
+            ],
+            "note": "Invariance over degree takes 不論."
+          },
+          {
+            "placed": [
+              "幸虧多晚"
+            ],
+            "note": "Use 不論……都 to express 'regardless of how late'."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不論多晚."
+      },
+      {
+        "id": "b3l12g6-p4",
+        "source": "p.328 #3",
+        "kind": "slot-build",
+        "prompt": "Player is praised for academics and sports. State that regardless of coach attending, you will join:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "我"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我準備了很久，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不論"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "教練去不去我都要參加比賽。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不論",
+            "simplified": "不论",
+            "pinyin": "búlùn"
+          },
+          {
+            "traditional": "反倒",
+            "simplified": "反倒",
+            "pinyin": "fǎndào"
+          },
+          {
+            "traditional": "莫非",
+            "simplified": "莫非",
+            "pinyin": "mòfēi"
+          }
+        ],
+        "accepted": "不論",
+        "result": {
+          "traditional": "我準備了很久，不論教練去不去我都要參加比賽。",
+          "simplified": "我准备了很久，不论教练去不去我都要参加比赛。",
+          "pinyin": "Wǒ zhǔnbèi le hěn jiǔ, búlùn jiàoliàn qù bú qù wǒ dōu yào cānjiā bǐsài.",
+          "english": "I prepared for a long time; regardless of whether the coach goes or not, I will participate in the competition."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "反倒"
+            ],
+            "note": "Use 不論 with affirmative-negative choice 去不去."
+          },
+          {
+            "placed": [
+              "莫非"
+            ],
+            "note": "Invariance with A-not-A conditions takes 不論."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不論."
+      }
+    ]
+  }
+}

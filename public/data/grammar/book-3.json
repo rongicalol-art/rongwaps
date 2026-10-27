@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 3,
-  "count": 22,
+  "count": 24,
   "items": [
     {
       "id": "B3L01-P01-D01",
@@ -59544,6 +59544,4036 @@
                   }
                 ],
                 "fallbackRepair": "Fill slot with 至於其他."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "B3L12-P01-D01",
+      "bookId": 3,
+      "lessonId": 12,
+      "partId": 1,
+      "title": "Grammar 1–4 · Do You Have Interview Experience?",
+      "dialogue": {
+        "id": "B3L12-D01",
+        "title": "你有面試的經驗嗎？",
+        "audioReference": "12-1-1",
+        "printedPages": [
+          306,
+          307,
+          308
+        ],
+        "grammarFocus": [
+          "這就",
+          "在……方面",
+          "往往",
+          "有關"
+        ],
+        "lines": [
+          {
+            "id": "b3l12d1-l1",
+            "speaker": "林家豪",
+            "traditional": "您好，我是林家豪。貴公司上星期通知我今天十點來面試。",
+            "simplified": "您好，我是林家豪。贵公司上星期通知我今天十点来面试。",
+            "pinyin": "Nínhǎo, wǒ shì Lín Jiāháo. Guì gōngsī shàngxīngqī tōngzhī wǒ jīntiān shí diǎn lái miànshì.",
+            "english": "Hello, I am Lin Jiahao. Your company informed me last week to come for an interview at ten today."
+          },
+          {
+            "id": "b3l12d1-l2",
+            "speaker": "職員",
+            "traditional": "林先生，歡迎您來本公司參加面試。請坐一下，我這就通知經理。",
+            "simplified": "林先生，欢迎您来本公司参加面试。请坐一下，我这就通知经理。",
+            "pinyin": "Lín xiānshēng, huānyíng nín lái běn gōngsī cānjiā miànshì. Qǐng zuò yíxià, wǒ zhè jiù tōngzhī jīnglǐ.",
+            "english": "Mr. Lin, welcome to our company for the interview. Please take a seat, I will inform the manager right away."
+          },
+          {
+            "id": "b3l12d1-l3",
+            "speaker": "王經理",
+            "traditional": "你好。我姓王，負責今天的面試。",
+            "simplified": "你好。我姓王，负责今天的面试。",
+            "pinyin": "Nǐhǎo. Wǒ xìng Wáng, fùzé jīntiān de miànshì.",
+            "english": "Hello. My surname is Wang, and I am in charge of today's interview."
+          },
+          {
+            "id": "b3l12d1-l4",
+            "speaker": "林家豪",
+            "traditional": "您好，王經理，我是林家豪。這是我的工作經驗相關資料，請您參考。",
+            "simplified": "您好，王经理，我是林家豪。这是我的工作经验相关资料，请您参考。",
+            "pinyin": "Nínhǎo, Wáng jīnglǐ, wǒ shì Lín Jiāháo. Zhè shì wǒ de gōngzuò jīngyàn xiāngguān zīliào, qǐng nín cānkǎo.",
+            "english": "Hello, Manager Wang, I am Lin Jiahao. This is the information related to my work experience for your reference."
+          },
+          {
+            "id": "b3l12d1-l5",
+            "speaker": "王經理",
+            "traditional": "這次我們要找的是銷售人員，你在這方面有經驗嗎？",
+            "simplified": "这次我们要找的是销售人员，你在这方面有经验吗？",
+            "pinyin": "Zhè cì wǒmen yào zhǎo de shì xiāoshòu rényuán, nǐ zài zhè fāngmiàn yǒu jīngyàn ma?",
+            "english": "We are looking for sales personnel this time. Do you have experience in this field?"
+          },
+          {
+            "id": "b3l12d1-l6",
+            "speaker": "林家豪",
+            "traditional": "念大學時，我在電腦公司打過工。向客人介紹商品功能、使用方法、和其他牌子的差異，最重要的是想辦法把商品賣出去。",
+            "simplified": "念大学时，我在电脑公司打过工。向客人介绍商品功能、使用方法、和其他牌子的差异，最重要的是想办法把商品卖出去。",
+            "pinyin": "Niàn dàxué shí, wǒ zài diànnǎo gōngsī dǎguo gōng. Xiàng kèrén jièshào shāngpǐn gōngnéng, shǐyòng fāngfǎ, hé qítā páizi de chāyì, zuì zhòngyào de shì xiǎng bànfǎ bǎ shāngpǐn mài chūqù.",
+            "english": "In university, I worked part-time at a computer company, introducing product features, instructions, and differences from other brands to customers. The most important thing was finding ways to sell products."
+          },
+          {
+            "id": "b3l12d1-l7",
+            "speaker": "王經理",
+            "traditional": "不過推銷時，多多少少都會碰到喜歡隨便批評，甚至對你亂發脾氣的客人，你會怎麼處理呢？",
+            "simplified": "不过推销时，多多少少都会碰到喜欢随便批评，甚至对你乱发脾气的客人，你会怎么处理呢？",
+            "pinyin": "Búguò tuīxiāo shí, duōduōshǎoshǎo dōu huì pèngdào xǐhuan suíbiàn pīpíng, shènzhì duì nǐ luàn fā píqì de kèrén, nǐ huì zěnme chǔlǐ ne?",
+            "english": "However, when selling, you will more or less encounter customers who criticize casually or even lose their tempers at you. How would you handle that?"
+          },
+          {
+            "id": "b3l12d1-l8",
+            "speaker": "林家豪",
+            "traditional": "我會先了解問題是什麼，然後耐心地跟他說明，想辦法讓他理解。我想只要態度親切、謙虛，客人就會接受的。萬一他還是不滿意，我就說笑話逗他開心，或是送他小禮物什麼的。",
+            "simplified": "我会先了解问题是什么，然后耐心地跟他说明，想办法让他理解。我想只要态度亲切、谦虚，客人就会接受的。万一他还是不满意，我就说笑话逗他开心，或是送他小礼物什么的。",
+            "pinyin": "Wǒ huì xiān liǎojiě wèntí shì shénme, ránhòu nàixīn de gēn tā shuōmíng, xiǎng bànfǎ ràng tā lǐjiě. Wǒ xiǎng zhǐyào tàidù qīnqiè, qiānxū, kèrén jiù huì jiēshòu de. Wànyī tā háishì bù mǎnyì, wǒ jiù shuō xiàohuà dòu tā kāixīn, huòshì sòng tā xiǎo lǐwù shénme de.",
+            "english": "I would first find out what the problem is, then patiently explain and help them understand. As long as one is warm and humble, customers will accept it. If they are still dissatisfied, I tease them with jokes to cheer them up, or give a small gift."
+          },
+          {
+            "id": "b3l12d1-l9",
+            "speaker": "王經理",
+            "traditional": "你的推銷觀念很正確。透過良好的溝通，往往能解決不必要的麻煩。在職場上，你碰過什麼大問題嗎？",
+            "simplified": "你的推销观念很正确。透过良好的沟通，往往能解决不必要的麻烦。在职场上，你碰过什么大问题吗？",
+            "pinyin": "Nǐ de tuīxiāo guānniàn hěn zhèngquè. Tòuguò liánghǎo de gōutōng, wǎngwǎng néng jiějué bú bìyào de máfan. Zài zhíchǎng shàng, nǐ pèngguo shénme dà wèntí ma?",
+            "english": "Your sales philosophy is sound. Through good communication, unnecessary troubles can often be resolved. In the workplace, have you encountered any major problems?"
+          },
+          {
+            "id": "b3l12d1-l10",
+            "speaker": "林家豪",
+            "traditional": "沒有。不過有一次，公司舉辦電腦遊戲比賽，經理叫我們早上七點先去布置會場，因為鬧鐘壞了，我睡到八點才醒來。等我趕到時，小組的同事早就把任務完成了。雖然大家沒怪我，但我卻不能原諒自己，從那次之後，我就非常注意時間，絕對不再遲到了。",
+            "simplified": "没有。不过有一次，公司举办电脑游戏比赛，经理叫我们早上七点先去布置会场，因为闹钟坏了，我睡到八点才醒来。等我赶到时，小组的同事早就把任务完成了。虽然大家没怪我，但我却不能原谅自己，从那次之后，我就非常注意时间，绝对不再迟到了。",
+            "pinyin": "Méiyǒu. Búguò yǒu yí cì, gōngsī jǔbàn diànnǎo yóuxì bǐsài, jīnglǐ jiào wǒmen zǎoshang qī diǎn xiān qù bùzhì huìchǎng, yīnwèi nàozhōng huài le, wǒ shuì dào bā diǎn cái xǐnglái. Děng wǒ gǎndào shí, xiǎozǔ de tóngshì zǎojiù bǎ rènwù wánchéng le. Suīrán dàjiā méi guài wǒ, dàn wǒ què bù néng yuánliàng zìjǐ, cóng nà cì zhīhòu, wǒ jiù fēicháng zhùyì shíjiān, juéduì bú zài chídào le.",
+            "english": "No. But once, the company held a computer gaming contest, and the manager asked us to set up at seven in the morning. My alarm broke and I slept until eight. By the time I arrived, my teammates had already finished. Though no one blamed me, I couldn't forgive myself, and since then I've been extremely punctual and never late."
+          },
+          {
+            "id": "b3l12d1-l11",
+            "speaker": "王經理",
+            "traditional": "其實，不論在哪裡工作，準時是最基本的要求。對了，假如主管忙不過來，你願意配合加班嗎？",
+            "simplified": "其实，不论在哪里工作，准时是最基本的要求。对了，假如主管忙不过来，你愿意配合加班吗？",
+            "pinyin": "Qíshí, búlùn zài nǎlǐ gōngzuò, zhǔnshí shì zuì jīběn de yāoqiú. Duì le, jiǎrú zhǔguǎn mángbuguòlái, nǐ yuànyì pèihé jiābān ma?",
+            "english": "In fact, no matter where one works, punctuality is the most fundamental requirement. By the way, if the supervisor is too busy to manage, are you willing to cooperate with overtime?"
+          },
+          {
+            "id": "b3l12d1-l12",
+            "speaker": "林家豪",
+            "traditional": "沒問題。平日或假日，我都能配合。",
+            "simplified": "没问题。平日或假日，我都能配合。",
+            "pinyin": "Méi wèntí. Píngrì huò jiàrì, wǒ dōu néng pèihé.",
+            "english": "No problem. Weekdays or holidays, I can accommodate."
+          },
+          {
+            "id": "b3l12d1-l13",
+            "speaker": "王經理",
+            "traditional": "除了準時，請你再說說自己其他的優點。",
+            "simplified": "除了准时，请你再说对自己其他的优点。",
+            "pinyin": "Chúle zhǔnshí, qǐng nǐ zài shuōshuō zìjǐ qítā de yōudiǎn.",
+            "english": "Besides punctuality, please tell me about your other strengths."
+          },
+          {
+            "id": "b3l12d1-l14",
+            "speaker": "林家豪",
+            "traditional": "我個性開朗、說話幽默、做事細心、溝通能力強，是個容易相處的人。",
+            "simplified": "我个性开朗、说话幽默、做事细心、沟通能力强，是个容易相处的人。",
+            "pinyin": "Wǒ gèxìng kāilǎng, shuōhuà yōumò, zuòshì xìxīn, gōutōng nénglì qiáng, shì ge róngyì xiāngchǔ de rén.",
+            "english": "I have an outgoing personality, a humorous way of speaking, pay attention to detail, communicate strongly, and am easy to get along with."
+          },
+          {
+            "id": "b3l12d1-l15",
+            "speaker": "王經理",
+            "traditional": "聽起來你挺優秀的。對這份工作你還有什麼要了解的？",
+            "simplified": "听起来你挺优秀的。对这份工作你还有什么要了解的？",
+            "pinyin": "Tīng qǐlái nǐ tǐng yōuxiù de. Duì zhè fèn gōngzuò nǐ hái yǒu shénme yào liǎojiě de?",
+            "english": "You sound quite outstanding. Is there anything else you would like to know about this job?"
+          },
+          {
+            "id": "b3l12d1-l16",
+            "speaker": "林家豪",
+            "traditional": "請問薪水怎麼算？有哪些福利？",
+            "simplified": "请问薪水怎么算？有哪些福利？",
+            "pinyin": "Qǐngwèn xīnshuǐ zěnme suàn? Yǒu nǎxiē fúlì?",
+            "english": "May I ask how salary is calculated? What benefits are provided?"
+          },
+          {
+            "id": "b3l12d1-l17",
+            "speaker": "王經理",
+            "traditional": "有關這方面的問題，會有相關人員來跟你詳細說明。",
+            "simplified": "有关这方面的问题，会有相关人员来跟你详细说明。",
+            "pinyin": "Yǒuguān zhè fāngmiàn de wèntí, huì yǒu xiāngguān rényuán lái gēn nǐ xiángxì shuōmíng.",
+            "english": "Regarding questions in this area, relevant personnel will come explain them to you in detail."
+          }
+        ]
+      },
+      "grammarPages": [
+        {
+          "id": "B3L12-G01-P313",
+          "bookPage": 313,
+          "printedPages": [
+            313,
+            314
+          ],
+          "titleTraditional": "這就",
+          "titleSimplified": "这就",
+          "titleEnglish": "Doing Something Immediately: 這就",
+          "learnerPromise": "Use 這就 right before a verb to express that you are carrying out an action right at this very moment.",
+          "pattern": "Subject + 這就 + Verb / VP",
+          "patternColumns": [
+            "Subject",
+            "這就",
+            "Action"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l12g1-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g1-r1-c1",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g1-r1-c2",
+                    "traditional": "這就",
+                    "simplified": "这就",
+                    "pinyin": "zhè jiù",
+                    "meaning": "right away"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g1-r1-c3",
+                    "traditional": "通知經理",
+                    "simplified": "通知经理",
+                    "pinyin": "tōngzhī jīnglǐ",
+                    "meaning": "notify manager"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g1-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g1-r2-c1",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g1-r2-c2",
+                    "traditional": "這就",
+                    "simplified": "这就",
+                    "pinyin": "zhè jiù",
+                    "meaning": "right away"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g1-r2-c3",
+                    "traditional": "幫您換一杯",
+                    "simplified": "帮您换一杯",
+                    "pinyin": "bāng nín huàn yì bēi",
+                    "meaning": "exchange one cup for you"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g1-r3",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g1-r3-c1",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g1-r3-c2",
+                    "traditional": "這就",
+                    "simplified": "这就",
+                    "pinyin": "zhè jiù",
+                    "meaning": "right away"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g1-r3-c3",
+                    "traditional": "到門口去歡迎他",
+                    "simplified": "到门口去欢迎他",
+                    "pinyin": "dào ménkǒu qù huānyíng tā",
+                    "meaning": "go to door to welcome him"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l12g1-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "林先生，歡迎您來本公司參加面試。請坐一下，我這就通知經理。",
+                "simplified": "林先生，欢迎您来本公司参加面试。请坐一下，我这就通知经理。",
+                "pinyin": "Lín xiānshēng, huānyíng nín lái běn gōngsī cānjiā miànshì. Qǐng zuò yíxià, wǒ zhè jiù tōngzhī jīnglǐ.",
+                "english": "Mr. Lin, welcome to our company for the interview. Please have a seat; I will inform the manager right away.",
+                "words": [
+                  {
+                    "id": "b3l12g1-ex1-w1",
+                    "traditional": "請坐一下",
+                    "simplified": "请坐一下",
+                    "pinyin": "qǐng zuò yíxià",
+                    "meaning": "please have a seat",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g1-ex1-w2",
+                    "traditional": "我這就通知經理",
+                    "simplified": "我这就通知经理",
+                    "pinyin": "wǒ zhè jiù tōngzhī jīnglǐ",
+                    "meaning": "I will inform the manager right away",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g1-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "服務生，我點的是熱紅茶，不是冰咖啡。不好意思，我這就幫您換一杯。",
+                "simplified": "服务生，我点的是热红茶，不是冰咖啡。不好意思，我这就帮您换一杯。",
+                "pinyin": "Fúwùshēng, wǒ diǎn de shì rè hóngchá, bú shì bīng kāfēi. Bù hǎoyìsi, wǒ zhè jiù bāng nín huàn yì bēi.",
+                "english": "Waiter, I ordered hot black tea, not iced coffee. Sorry about that, I'll change it for you right away.",
+                "words": [
+                  {
+                    "id": "b3l12g1-ex2-w1",
+                    "traditional": "不好意思",
+                    "simplified": "不好意思",
+                    "pinyin": "bù hǎoyìsi",
+                    "meaning": "sorry / excuse me",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g1-ex2-w2",
+                    "traditional": "我這就幫您換一杯",
+                    "simplified": "我这就帮您换一杯",
+                    "pinyin": "wǒ zhè jiù bāng nín huàn yì bēi",
+                    "meaning": "I will replace a cup for you right away",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g1-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "經理，孔老闆快到公司了。好，我這就到門口去歡迎他。",
+                "simplified": "经理，孔老板快到公司了。好，我这就到门口去欢迎他。",
+                "pinyin": "Jīnglǐ, Kǒng lǎobǎn kuài dào gōngsī le. Hǎo, wǒ zhè jiù dào ménkǒu qù huānyíng tā.",
+                "english": "Manager, Boss Kong is about to arrive at the company. Okay, I will head to the entrance to welcome him right away.",
+                "words": [
+                  {
+                    "id": "b3l12g1-ex3-w1",
+                    "traditional": "快到公司了",
+                    "simplified": "快到公司了",
+                    "pinyin": "kuài dào gōngsī le",
+                    "meaning": "about to arrive at company",
+                    "suffix": "。"
+                  },
+                  {
+                    "id": "b3l12g1-ex3-w2",
+                    "traditional": "我這就到門口去歡迎他",
+                    "simplified": "我这就到门口去欢迎他",
+                    "pinyin": "wǒ zhè jiù dào ménkǒu qù huānyíng tā",
+                    "meaning": "I will head to the doorway to welcome him right away",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l12g1-cf1",
+                "question": "When should you use 這就 instead of a generic time adverb like 馬上?",
+                "answer": "這就 specifically indicates an immediate response or action undertaken on the spot by the speaker, right at this very second.",
+                "wrongTraditional": "我明天這就通知經理。",
+                "wrongSimplified": "我明天这就通知经理。",
+                "right": {
+                  "traditional": "請坐一下，我這就通知經理。",
+                  "simplified": "请坐一下，我这就通知经理。",
+                  "pinyin": "Qǐng zuò yíxià, wǒ zhè jiù tōngzhī jīnglǐ.",
+                  "english": "Please sit down, I will notify the manager right away.",
+                  "words": [
+                    {
+                      "id": "b3l12g1-cf1-w1",
+                      "traditional": "我這就通知",
+                      "simplified": "我这就通知",
+                      "pinyin": "wǒ zhè jiù tōngzhī",
+                      "meaning": "I notify right now"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l12g1-cf2",
+                "question": "Can 這就 be replaced by a simple 就 in immediate responsive declarations?",
+                "answer": "雖然「就」也能表示馬上，但「這就」強化了「現在這一刻立即採取行動」的現場口語語氣。",
+                "wrongTraditional": "孔老闆到了，我快快就去門口。",
+                "wrongSimplified": "孔老板到了，我快快就去门口。",
+                "right": {
+                  "traditional": "好，我這就到門口去歡迎他。",
+                  "simplified": "好，我这就到门口去欢迎他。",
+                  "pinyin": "Hǎo, wǒ zhè jiù dào ménkǒu qù huānyíng tā.",
+                  "english": "Okay, I will head right to the entrance to welcome him.",
+                  "words": [
+                    {
+                      "id": "b3l12g1-cf2-w1",
+                      "traditional": "我這就去",
+                      "simplified": "我这就去",
+                      "pinyin": "wǒ zhè jiù qù",
+                      "meaning": "I go right this moment"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l12g1-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "A: 請問關老師在嗎？我的孩子想當面向他說聲謝謝。 B: 他在，我"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "去叫他。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "這就"
+                },
+                {
+                  "id": "t2",
+                  "text": "難道"
+                },
+                {
+                  "id": "t3",
+                  "text": "況且"
+                },
+                {
+                  "id": "t4",
+                  "text": "畢竟"
+                }
+              ],
+              "correctFeedback": "太棒了！「這就＋動詞」表示說話者現在馬上採取行動。",
+              "repairFeedback": "請確認語境：對方在現場詢問，回答者表示「現在立刻去叫他」，應使用「這就」。"
+            }
+          ],
+          "audioReference": "12-1-1",
+          "bookId": 3,
+          "lessonId": 12,
+          "partId": 1,
+          "lessonTitle": "你有面試的經驗嗎？",
+          "lessonTitleEnglish": "Do You Have Interview Experience?",
+          "grammarNumber": 1,
+          "bookPageAvailable": true,
+          "explanation": "「這」是「現在」的意思，「就」表示馬上，「這就」的後面接動詞或動詞短語，用來表示現在馬上做某事。",
+          "practice": {
+            "bookPage": 313,
+            "title": "Practice: 這就",
+            "items": [
+              {
+                "id": "b3l12g1-p1",
+                "source": "p.314 #1",
+                "kind": "slot-build",
+                "prompt": "Parent asks if Teacher Guan is in to thank him. Reply that you will fetch him right now:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "他在辦公室，我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "這就去叫"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "他出來。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "這就去叫",
+                    "simplified": "这就去叫",
+                    "pinyin": "zhè jiù qù jiào"
+                  },
+                  {
+                    "traditional": "難道去叫",
+                    "simplified": "难道去叫",
+                    "pinyin": "nándào qù jiào"
+                  },
+                  {
+                    "traditional": "況且去叫",
+                    "simplified": "况且去叫",
+                    "pinyin": "kuàngqiě qù jiào"
+                  }
+                ],
+                "accepted": "這就去叫",
+                "result": {
+                  "traditional": "他在辦公室，我這就去叫他出來。",
+                  "simplified": "他在办公室，我这就去叫他出来。",
+                  "pinyin": "Tā zài bàngōngshì, wǒ zhè jiù qù jiào tā chūlái.",
+                  "english": "He is in the office; I will go call him right now."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難道去叫"
+                    ],
+                    "note": "Immediate actions use 這就, not 難道."
+                  },
+                  {
+                    "placed": [
+                      "況且去叫"
+                    ],
+                    "note": "Use 這就 to express carrying out an immediate action right away."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 這就去叫."
+              },
+              {
+                "id": "b3l12g1-p2",
+                "source": "p.314 #2",
+                "kind": "slot-build",
+                "prompt": "Child feels feverish and ill. Mom says to bear with it, she will take him to the doctor immediately:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "媽媽"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "你忍耐一下，媽媽"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "這就帶你"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "去看醫生。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "這就帶你",
+                    "simplified": "这就带你",
+                    "pinyin": "zhè jiù dài nǐ"
+                  },
+                  {
+                    "traditional": "難怪帶你",
+                    "simplified": "难怪带你",
+                    "pinyin": "nánguài dài nǐ"
+                  },
+                  {
+                    "traditional": "尤其帶你",
+                    "simplified": "尤其带你",
+                    "pinyin": "yóuqí dài nǐ"
+                  }
+                ],
+                "accepted": "這就帶你",
+                "result": {
+                  "traditional": "你忍耐一下，媽媽這就帶你去看醫生。",
+                  "simplified": "你忍耐一下，妈妈这就带你去看医生。",
+                  "pinyin": "Nǐ rěnnài yíxià, māma zhè jiù dài nǐ qù kàn yīshēng.",
+                  "english": "Bear with it a moment; Mom will take you to see the doctor right now."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難怪帶你"
+                    ],
+                    "note": "Use 這就 to indicate action taken on the spot."
+                  },
+                  {
+                    "placed": [
+                      "尤其帶你"
+                    ],
+                    "note": "Immediate responsive actions take 這就."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 這就帶你."
+              },
+              {
+                "id": "b3l12g1-p3",
+                "source": "p.314 #3",
+                "kind": "slot-build",
+                "prompt": "Leather shoes are 35% off today. Respond eagerly that you're going to buy them right now:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "太好了，那我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "這就去買"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "一雙。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "這就去買",
+                    "simplified": "这就去买",
+                    "pinyin": "zhè jiù qù mǎi"
+                  },
+                  {
+                    "traditional": "固然去買",
+                    "simplified": "固然去买",
+                    "pinyin": "gùrán qù mǎi"
+                  },
+                  {
+                    "traditional": "偏偏去買",
+                    "simplified": "偏偏去买",
+                    "pinyin": "piānpiān qù mǎi"
+                  }
+                ],
+                "accepted": "這就去買",
+                "result": {
+                  "traditional": "太好了，那我這就去買一雙。",
+                  "simplified": "太好了，那我这就去买一双。",
+                  "pinyin": "Tài hǎo le, nà wǒ zhè jiù qù mǎi yì shuāng.",
+                  "english": "Great, then I'll head over to buy a pair right away."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "固然去買"
+                    ],
+                    "note": "Use 這就 to express prompt action on the spot."
+                  },
+                  {
+                    "placed": [
+                      "偏偏去買"
+                    ],
+                    "note": "這就 indicates doing something immediately right now."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 這就去買."
+              },
+              {
+                "id": "b3l12g1-p4",
+                "source": "p.313 #2",
+                "kind": "slot-build",
+                "prompt": "Customer received wrong drink. Apologize and say you will replace it immediately:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "服務生"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "不好意思，我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "這就幫您"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "換一杯熱紅茶。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "這就幫您",
+                    "simplified": "这就帮您",
+                    "pinyin": "zhè jiù bāng nín"
+                  },
+                  {
+                    "traditional": "幸虧幫您",
+                    "simplified": "幸亏帮您",
+                    "pinyin": "xìngkuī bāng nín"
+                  },
+                  {
+                    "traditional": "反倒幫您",
+                    "simplified": "反倒帮您",
+                    "pinyin": "fǎndào bāng nín"
+                  }
+                ],
+                "accepted": "這就幫您",
+                "result": {
+                  "traditional": "不好意思，我這就幫您換一杯熱紅茶。",
+                  "simplified": "不好意思，我这就帮您换一杯热红茶。",
+                  "pinyin": "Bù hǎoyìsi, wǒ zhè jiù bāng nín huàn yì bēi rè hóngchá.",
+                  "english": "Sorry about that, I will exchange a cup of hot black tea for you right away."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "幸虧幫您"
+                    ],
+                    "note": "Carrying out a correction immediately takes 這就."
+                  },
+                  {
+                    "placed": [
+                      "反倒幫您"
+                    ],
+                    "note": "Use 這就 for immediate service actions on the spot."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 這就幫您."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L12-G02-P314",
+          "bookPage": 314,
+          "printedPages": [
+            314,
+            315
+          ],
+          "titleTraditional": "在……方面",
+          "titleSimplified": "在……方面",
+          "titleEnglish": "Specifying Scope or Domain: 在……方面",
+          "learnerPromise": "Frame a specific domain or angle of discussion using 在……方面.",
+          "pattern": "在 + Domain / Activity + 方面, + Predicate",
+          "patternColumns": [
+            "在",
+            "Domain",
+            "方面",
+            "Assessment"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l12g2-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g2-r1-c1",
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pinyin": "zài",
+                    "meaning": "in"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r1-c2",
+                    "traditional": "這",
+                    "simplified": "这",
+                    "pinyin": "zhè",
+                    "meaning": "this"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r1-c3",
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn",
+                    "meaning": "aspect"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r1-c4",
+                    "traditional": "有經驗嗎",
+                    "simplified": "有经验吗",
+                    "pinyin": "yǒu jīngyàn ma",
+                    "meaning": "have experience?"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g2-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g2-r2-c1",
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pinyin": "zài",
+                    "meaning": "in"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r2-c2",
+                    "traditional": "穿著",
+                    "simplified": "穿着",
+                    "pinyin": "chuānzhuó",
+                    "meaning": "attire"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r2-c3",
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn",
+                    "meaning": "aspect"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r2-c4",
+                    "traditional": "白小姐很有品味",
+                    "simplified": "白小姐很有品味",
+                    "pinyin": "Bái xiǎojiě hěn yǒu pǐnwèi",
+                    "meaning": "Miss Bai has great taste"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g2-r3",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g2-r3-c1",
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pinyin": "zài",
+                    "meaning": "in"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r3-c2",
+                    "traditional": "網球",
+                    "simplified": "网球",
+                    "pinyin": "wǎngqiú",
+                    "meaning": "tennis"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r3-c3",
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn",
+                    "meaning": "aspect"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g2-r3-c4",
+                    "traditional": "表現得非常好",
+                    "simplified": "表现得非常好",
+                    "pinyin": "biǎoxiàn de fēicháng hǎo",
+                    "meaning": "performs exceptionally well"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l12g2-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "這次我們要找的是銷售人員，你在這方面有經驗嗎？",
+                "simplified": "这次我们要找的是销售人员，你在这方面有经验吗？",
+                "pinyin": "Zhè cì wǒmen yào zhǎo de shì xiāoshòu rényuán, nǐ zài zhè fāngmiàn yǒu jīngyàn ma?",
+                "english": "We are looking for sales staff this time. Do you have experience in this field?",
+                "words": [
+                  {
+                    "id": "b3l12g2-ex1-w1",
+                    "traditional": "銷售人員",
+                    "simplified": "销售人员",
+                    "pinyin": "xiāoshòu rényuán",
+                    "meaning": "sales staff",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g2-ex1-w2",
+                    "traditional": "你在這方面有經驗嗎",
+                    "simplified": "你在这方面有经验吗",
+                    "pinyin": "nǐ zài zhè fāngmiàn yǒu jīngyàn ma",
+                    "meaning": "do you have experience in this area?",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g2-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "在穿著方面，白小姐很有品味，身上穿的或手上戴的也都有個人的風格。",
+                "simplified": "在穿着方面，白小姐很有品味，身上穿的或手上戴的也都有个人的风格。",
+                "pinyin": "Zài chuānzhuó fāngmiàn, Bái xiǎojiě hěn yǒu pǐnwèi, shēnshang chuān de huò shǒushang dài de yě dōu yǒu gèrén de fēnggé.",
+                "english": "In terms of attire, Miss Bai has good taste; what she wears on her body or wrist all reflects individual style.",
+                "words": [
+                  {
+                    "id": "b3l12g2-ex2-w1",
+                    "traditional": "在穿著方面",
+                    "simplified": "在穿着方面",
+                    "pinyin": "zài chuānzhuó fāngmiàn",
+                    "meaning": "in terms of dressing",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g2-ex2-w2",
+                    "traditional": "很有品味",
+                    "simplified": "很有品味",
+                    "pinyin": "hěn yǒu pǐnwèi",
+                    "meaning": "has great taste",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g2-ex2-w3",
+                    "traditional": "個人的風格",
+                    "simplified": "个人的风格",
+                    "pinyin": "gèrén de fēnggé",
+                    "meaning": "personal style",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g2-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "小藍從小在網球方面就表現得非常好，長大之後一定能代表國家參加比賽。",
+                "simplified": "小蓝从小在网球方面就表现得非常好，长大之后一定能代表国家参加比赛。",
+                "pinyin": "Xiǎo Lán cóngxiǎo zài wǎngqiú fāngmiàn jiù biǎoxiàn de fēicháng hǎo, zhǎngdà zhīhòu yídìng néng dàibiǎo guójiā cānjiā bǐsài.",
+                "english": "Xiao Lan has performed remarkably well in tennis since childhood; when he grows up, he will surely represent the country in tournaments.",
+                "words": [
+                  {
+                    "id": "b3l12g2-ex3-w1",
+                    "traditional": "在網球方面",
+                    "simplified": "在网球方面",
+                    "pinyin": "zài wǎngqiú fāngmiàn",
+                    "meaning": "in terms of tennis",
+                    "suffix": "就"
+                  },
+                  {
+                    "id": "b3l12g2-ex3-w2",
+                    "traditional": "表現得非常好",
+                    "simplified": "表现得非常好",
+                    "pinyin": "biǎoxiàn de fēicháng hǎo",
+                    "meaning": "performs very well",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g2-ex3-w3",
+                    "traditional": "代表國家參加比賽",
+                    "simplified": "代表国家参加比赛",
+                    "pinyin": "dàibiǎo guójiā cānjiā bǐsài",
+                    "meaning": "represent the country in competition",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l12g2-cf1",
+                "question": "How is 在……方面 different from 對……來說?",
+                "answer": "「在……方面」界定討論的領域、專業或範圍；「對……來說」則界定評估的角度或主體視角。",
+                "wrongTraditional": "對穿著方面，白小姐很有品味。",
+                "wrongSimplified": "对穿着方面，白小姐很有品味。",
+                "right": {
+                  "traditional": "在穿著方面，白小姐很有品味。",
+                  "simplified": "在穿着方面，白小姐很有品味。",
+                  "pinyin": "Zài chuānzhuó fāngmiàn, Bái xiǎojiě hěn yǒu pǐnwèi.",
+                  "english": "In terms of attire, Miss Bai has great taste.",
+                  "words": [
+                    {
+                      "id": "b3l12g2-cf1-w1",
+                      "traditional": "在穿著方面",
+                      "simplified": "在穿着方面",
+                      "pinyin": "zài chuānzhuó fāngmiàn",
+                      "meaning": "in aspect of attire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l12g2-cf2",
+                "question": "Can 方面 be omitted when defining a domain?",
+                "answer": "「在」與「方面」搭配成框架標記範疇，若缺少「方面」，句子往往失去界定領域的完整結構。",
+                "wrongTraditional": "你在這有經驗嗎？",
+                "wrongSimplified": "你在这有经验吗？",
+                "right": {
+                  "traditional": "你在這方面有經驗嗎？",
+                  "simplified": "你在这方面有经验吗？",
+                  "pinyin": "Nǐ zài zhè fāngmiàn yǒu jīngyàn ma?",
+                  "english": "Do you have experience in this field?",
+                  "words": [
+                    {
+                      "id": "b3l12g2-cf2-w1",
+                      "traditional": "在這方面",
+                      "simplified": "在这方面",
+                      "pinyin": "zài zhè fāngmiàn",
+                      "meaning": "in this aspect"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l12g2-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "我從來沒辦過戶外演唱會，在辦活動"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "，老李的經驗很豐富，我恐怕幫不了你。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "方面"
+                },
+                {
+                  "id": "t2",
+                  "text": "原則"
+                },
+                {
+                  "id": "t3",
+                  "text": "立場"
+                },
+                {
+                  "id": "t4",
+                  "text": "題目"
+                }
+              ],
+              "correctFeedback": "正確！「在＋範圍＋方面」用來說明在某個領域或情形下的狀況。",
+              "repairFeedback": "請注意框架搭配：「在辦活動……」接「方面」，用以界定特定範疇。"
+            }
+          ],
+          "audioReference": "12-1-1",
+          "bookId": 3,
+          "lessonId": 12,
+          "partId": 1,
+          "lessonTitle": "你有面試的經驗嗎？",
+          "lessonTitleEnglish": "Do You Have Interview Experience?",
+          "grammarNumber": 2,
+          "bookPageAvailable": true,
+          "explanation": "用來說明在某個範圍或某個情況下的情形。「在」和「方面」中間是該範圍或情況，後面的句子表示產生什麼樣的情形或進一步的說明。",
+          "practice": {
+            "bookPage": 314,
+            "title": "Practice: 在……方面",
+            "items": [
+              {
+                "id": "b3l12g2-p1",
+                "source": "p.315 #1",
+                "kind": "slot-build",
+                "prompt": "A asks for concert advice. State that Lao Li has rich experience in organizing events:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "在辦活動"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "方面"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，老李的經驗很豐富。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn"
+                  },
+                  {
+                    "traditional": "立場",
+                    "simplified": "立场",
+                    "pinyin": "lìchǎng"
+                  },
+                  {
+                    "traditional": "原則",
+                    "simplified": "原则",
+                    "pinyin": "yuánzé"
+                  }
+                ],
+                "accepted": "方面",
+                "result": {
+                  "traditional": "在辦活動方面，老李的經驗很豐富。",
+                  "simplified": "在办活动方面，老李的经验很丰富。",
+                  "pinyin": "Zài bàn huódòng fāngmiàn, Lǎo Lǐ de jīngyàn hěn fēngfù.",
+                  "english": "In terms of organizing events, Lao Li's experience is very extensive."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "立場"
+                    ],
+                    "note": "Frame the domain using 在……方面."
+                  },
+                  {
+                    "placed": [
+                      "原則"
+                    ],
+                    "note": "Defining an activity scope takes 在……方面."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 方面."
+              },
+              {
+                "id": "b3l12g2-p2",
+                "source": "p.315 #2",
+                "kind": "slot-build",
+                "prompt": "Dr. Chen is also an artist. Affirm that he has always been outstanding in art:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "是啊，他在藝術"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "方面"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "也一向很優秀。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn"
+                  },
+                  {
+                    "traditional": "題目",
+                    "simplified": "题目",
+                    "pinyin": "tímù"
+                  },
+                  {
+                    "traditional": "規矩",
+                    "simplified": "规矩",
+                    "pinyin": "guīju"
+                  }
+                ],
+                "accepted": "方面",
+                "result": {
+                  "traditional": "是啊，他在藝術方面也一向很優秀。",
+                  "simplified": "是啊，他在艺术方面也一向很优秀。",
+                  "pinyin": "Shì a, tā zài yìshù fāngmiàn yě yíxiàng hěn yōuxiù.",
+                  "english": "Yes, he has always been outstanding in the realm of art as well."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "題目"
+                    ],
+                    "note": "Use 藝術方面 with 在 to specify the domain."
+                  },
+                  {
+                    "placed": [
+                      "規矩"
+                    ],
+                    "note": "Specifying a talent domain uses 在……方面."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 方面."
+              },
+              {
+                "id": "b3l12g2-p3",
+                "source": "p.315 #3",
+                "kind": "slot-build",
+                "prompt": "Friend needs decorating help. Recommend Xiao Lin for his talent in interior design:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "在設計"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "方面"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，小林很有才華，你可以找他。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn"
+                  },
+                  {
+                    "traditional": "對象",
+                    "simplified": "对象",
+                    "pinyin": "duìxiàng"
+                  },
+                  {
+                    "traditional": "代價",
+                    "simplified": "代价",
+                    "pinyin": "dàijià"
+                  }
+                ],
+                "accepted": "方面",
+                "result": {
+                  "traditional": "在設計方面，小林很有才華，你可以找他。",
+                  "simplified": "在设计方面，小林很有才华，你可以找他。",
+                  "pinyin": "Zài shèjì fāngmiàn, Xiǎo Lín hěn yǒu cáihuá, nǐ kěyǐ zhǎo tā.",
+                  "english": "In terms of design, Xiao Lin is very talented; you can consult him."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "對象"
+                    ],
+                    "note": "Marking field of skill requires 在……方面."
+                  },
+                  {
+                    "placed": [
+                      "代價"
+                    ],
+                    "note": "The frame 在 + field + 方面 marks domain."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 方面."
+              },
+              {
+                "id": "b3l12g2-p4",
+                "source": "p.308 #1",
+                "kind": "slot-build",
+                "prompt": "Interviewer asks about experience. Answer that your experience is rich in sales:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "家豪"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "在推銷"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "方面"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，我的經驗相當豐富。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "方面",
+                    "simplified": "方面",
+                    "pinyin": "fāngmiàn"
+                  },
+                  {
+                    "traditional": "背景",
+                    "simplified": "背景",
+                    "pinyin": "bèijǐng"
+                  },
+                  {
+                    "traditional": "條件",
+                    "simplified": "条件",
+                    "pinyin": "tiáojiàn"
+                  }
+                ],
+                "accepted": "方面",
+                "result": {
+                  "traditional": "在推銷方面，我的經驗相當豐富。",
+                  "simplified": "在推销方面，我的经验相当丰富。",
+                  "pinyin": "Zài tuīxiāo fāngmiàn, wǒ de jīngyàn xiāngdāng fēngfù.",
+                  "english": "In terms of sales promotion, my experience is quite rich."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "背景"
+                    ],
+                    "note": "Frame the area of experience with 在……方面."
+                  },
+                  {
+                    "placed": [
+                      "條件"
+                    ],
+                    "note": "Use 方面 with 在 to specify the professional scope."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 方面."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L12-G03-P316",
+          "bookPage": 316,
+          "printedPages": [
+            316,
+            318
+          ],
+          "titleTraditional": "往往",
+          "titleSimplified": "往往",
+          "titleEnglish": "General Tendencies and Regularities: 往往",
+          "learnerPromise": "State recurring general patterns and empirical regularities using 往往.",
+          "pattern": "Condition, + Subject + 往往 + Regularity",
+          "patternColumns": [
+            "Condition",
+            "Subject",
+            "往往",
+            "Regularity"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l12g3-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g3-r1-c1",
+                    "traditional": "透過良好的溝通",
+                    "simplified": "透过良好的沟通",
+                    "pinyin": "tòuguò liánghǎo de gōutōng",
+                    "meaning": "through good communication"
+                  }
+                ],
+                [],
+                [
+                  {
+                    "id": "b3l12g3-r1-c2",
+                    "traditional": "往往",
+                    "simplified": "往往",
+                    "pinyin": "wǎngwǎng",
+                    "meaning": "often / tend to"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g3-r1-c3",
+                    "traditional": "能解決不必要的麻煩",
+                    "simplified": "能解决不必要的麻烦",
+                    "pinyin": "néng jiějué bú bìyào de máfan",
+                    "meaning": "can resolve unnecessary trouble"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g3-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g3-r2-c1",
+                    "traditional": "要不要去補習",
+                    "simplified": "要不要去补习",
+                    "pinyin": "yào bú yào qù bǔxí",
+                    "meaning": "whether or not to go to cram school"
+                  }
+                ],
+                [],
+                [
+                  {
+                    "id": "b3l12g3-r2-c2",
+                    "traditional": "往往",
+                    "simplified": "往往",
+                    "pinyin": "wǎngwǎng",
+                    "meaning": "often / tend to"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g3-r2-c3",
+                    "traditional": "不是孩子能夠決定的",
+                    "simplified": "不是孩子能够决定的",
+                    "pinyin": "bú shì háizi nénggòu juédìng de",
+                    "meaning": "is not for kids to decide"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g3-r3",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g3-r3-c1",
+                    "traditional": "夢想與真實生活",
+                    "simplified": "梦想与真实生活",
+                    "pinyin": "mèngxiǎng yǔ zhēnshí shēnghuó",
+                    "meaning": "dreams and real life"
+                  }
+                ],
+                [],
+                [
+                  {
+                    "id": "b3l12g3-r3-c2",
+                    "traditional": "往往",
+                    "simplified": "往往",
+                    "pinyin": "wǎngwǎng",
+                    "meaning": "often / tend to"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g3-r3-c3",
+                    "traditional": "有一段距離",
+                    "simplified": "有一段距离",
+                    "pinyin": "yǒu yí duàn jùlí",
+                    "meaning": "have a certain distance"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l12g3-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "你的推銷觀念很正確。透過良好的溝通，往往能解決不必要的麻煩。",
+                "simplified": "你的推销观念很正确。透过良好的沟通，往往能解决不必要的麻烦。",
+                "pinyin": "Nǐ de tuīxiāo guānniàn hěn zhèngquè. Tòuguò liánghǎo de gōutōng, wǎngwǎng néng jiějué bú bìyào de máfan.",
+                "english": "Your sales concept is very correct. Through good communication, unnecessary troubles can often be resolved.",
+                "words": [
+                  {
+                    "id": "b3l12g3-ex1-w1",
+                    "traditional": "透過良好的溝通",
+                    "simplified": "透过良好的沟通",
+                    "pinyin": "tòuguò liánghǎo de gōutōng",
+                    "meaning": "through good communication",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g3-ex1-w2",
+                    "traditional": "往往能解決",
+                    "simplified": "往往能解决",
+                    "pinyin": "wǎngwǎng néng jiějué",
+                    "meaning": "often can resolve",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g3-ex1-w3",
+                    "traditional": "不必要的麻煩",
+                    "simplified": "不必要的麻烦",
+                    "pinyin": "bú bìyào de máfan",
+                    "meaning": "unnecessary trouble",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g3-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "許多家長都會逼孩子念書，要不要去補習往往不是孩子能夠決定的。",
+                "simplified": "许多家长都会逼孩子念书，要不要去补习往往不是孩子能够决定的。",
+                "pinyin": "Xǔduō jiāzhǎng dōu huì bī háizi niànshū, yào bú yào qù bǔxí wǎngwǎng bú shì háizi nénggòu juédìng de.",
+                "english": "Many parents force their children to study; whether to attend cram school is often not up to the children themselves.",
+                "words": [
+                  {
+                    "id": "b3l12g3-ex2-w1",
+                    "traditional": "逼孩子念書",
+                    "simplified": "逼孩子念书",
+                    "pinyin": "bī háizi niànshū",
+                    "meaning": "force kids to study",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g3-ex2-w2",
+                    "traditional": "往往不是",
+                    "simplified": "往往不是",
+                    "pinyin": "wǎngwǎng bú shì",
+                    "meaning": "often is not",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g3-ex2-w3",
+                    "traditional": "孩子能夠決定的",
+                    "simplified": "孩子能够决定的",
+                    "pinyin": "háizi nénggòu juédìng de",
+                    "meaning": "what children can decide",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g3-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "一般來說，夢想與真實生活往往有一段距離，不可能每次都夢想成真。",
+                "simplified": "一般来说，梦想与真实生活往往有一段距离，不可能每次都梦想成真。",
+                "pinyin": "Yìbān lái shuō, mèngxiǎng yǔ zhēnshí shēnghuó wǎngwǎng yǒu yí duàn jùlí, bù kěnéng měi cì dōu mèngxiǎng chéngzhēn.",
+                "english": "Generally speaking, there is often a gap between dreams and real life; one cannot realize every single dream.",
+                "words": [
+                  {
+                    "id": "b3l12g3-ex3-w1",
+                    "traditional": "夢想與真實生活",
+                    "simplified": "梦想与真实生活",
+                    "pinyin": "mèngxiǎng yǔ zhēnshí shēnghuó",
+                    "meaning": "dreams and real life",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g3-ex3-w2",
+                    "traditional": "往往有一段距離",
+                    "simplified": "往往有一段距离",
+                    "pinyin": "wǎngwǎng yǒu yí duàn jùlí",
+                    "meaning": "often have a distance",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g3-ex3-w3",
+                    "traditional": "不可能每次都夢想成真",
+                    "simplified": "不可能每次都梦想成真",
+                    "pinyin": "bù kěnéng měi cì dōu mèngxiǎng chéngzhēn",
+                    "meaning": "impossible to realize dreams every time",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l12g3-cf1",
+                "question": "How does 往往 differ from 常常?",
+                "answer": "「往往」表示在一定條件下經常出現的規律或客觀事實，不能用於個人主觀意願或未發生的事，且不能被否定（不能說「不往往」）；「常常」純粹表示頻率高，可用於個人習慣與意願。",
+                "wrongTraditional": "我希望下個月往往去慢跑。",
+                "wrongSimplified": "我希望下个月往往去慢跑。",
+                "right": {
+                  "traditional": "只要天氣好，他往往起床後就去慢跑。",
+                  "simplified": "只要天气好，他往往起床后就去慢跑。",
+                  "pinyin": "Zhǐyào tiānqì hǎo, tā wǎngwǎng qǐchuáng hòu jiù qù mànpǎo.",
+                  "english": "As long as the weather is fine, he tends to go jogging after getting up.",
+                  "words": [
+                    {
+                      "id": "b3l12g3-cf1-w1",
+                      "traditional": "往往起床後",
+                      "simplified": "往往起床后",
+                      "pinyin": "wǎngwǎng qǐchuáng hòu",
+                      "meaning": "tend to after getting up"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l12g3-cf2",
+                "question": "Can 往往 appear with negative markers like 不 before it?",
+                "answer": "不行。「往往」前面不能加否定詞，否定詞必須放在「往往」之後（例如：往往不是、往往沒有）。",
+                "wrongTraditional": "他不往往週末去打球。",
+                "wrongSimplified": "他不往往周末去打球。",
+                "right": {
+                  "traditional": "要不要補習往往不是孩子能決定的。",
+                  "simplified": "要不要补习往往不是孩子能决定的。",
+                  "pinyin": "Yào bú yào bǔxí wǎngwǎng bú shì háizi néng juédìng de.",
+                  "english": "Whether to attend cram school is often not something children can decide.",
+                  "words": [
+                    {
+                      "id": "b3l12g3-cf2-w1",
+                      "traditional": "往往不是",
+                      "simplified": "往往不是",
+                      "pinyin": "wǎngwǎng bú shì",
+                      "meaning": "often is not"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l12g3-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "照我過去的習慣，為了讓資料正確，我"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "會請其他人再檢查一次。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "往往"
+                },
+                {
+                  "id": "t2",
+                  "text": "難怪"
+                },
+                {
+                  "id": "t3",
+                  "text": "何況"
+                },
+                {
+                  "id": "t4",
+                  "text": "索性"
+                }
+              ],
+              "correctFeedback": "沒錯！「往往」表示在特定條件或規律下經常出現的常態情況。",
+              "repairFeedback": "請注意句意：根據過去的習慣和規律，常態性地請人檢查，應用「往往」。"
+            }
+          ],
+          "audioReference": "12-1-1",
+          "bookId": 3,
+          "lessonId": 12,
+          "partId": 1,
+          "lessonTitle": "你有面試的經驗嗎？",
+          "lessonTitleEnglish": "Do You Have Interview Experience?",
+          "grammarNumber": 3,
+          "bookPageAvailable": true,
+          "explanation": "「往往」表示在一定的條件下，從過去到現在經常發生的經驗或情況，不能用在未發生的事情，而且有一定的規律。用於一般的看法或事實，不能用在個人主觀的意願。",
+          "practice": {
+            "bookPage": 316,
+            "title": "Practice: 往往",
+            "items": [
+              {
+                "id": "b3l12g3-p1",
+                "source": "p.317 #1",
+                "kind": "slot-build",
+                "prompt": "Colleague asks why you recheck documents. State that past habit is to confirm content again:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "照過去的習慣，我"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "往往會再"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "確認一次內容。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "往往會再",
+                    "simplified": "往往会再",
+                    "pinyin": "wǎngwǎng huì zài"
+                  },
+                  {
+                    "traditional": "難怪會再",
+                    "simplified": "难怪会再",
+                    "pinyin": "nánguài huì zài"
+                  },
+                  {
+                    "traditional": "索性會再",
+                    "simplified": "索性会再",
+                    "pinyin": "suǒxìng huì zài"
+                  }
+                ],
+                "accepted": "往往會再",
+                "result": {
+                  "traditional": "照過去的習慣，我往往會再確認一次內容。",
+                  "simplified": "照过去的习惯，我往往会再确认一次内容。",
+                  "pinyin": "Zhào guòqù de xíguàn, wǒ wǎngwǎng huì zài quèrèn yí cì nèiróng.",
+                  "english": "According to past habit, I tend to verify the content once more."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難怪會再"
+                    ],
+                    "note": "Regular patterns based on habits use 往往."
+                  },
+                  {
+                    "placed": [
+                      "索性會再"
+                    ],
+                    "note": "Use 往往 to indicate habitual tendencies."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 往往會再."
+              },
+              {
+                "id": "b3l12g3-p2",
+                "source": "p.317 #2",
+                "kind": "slot-build",
+                "prompt": "A asks about New Year habits. Note that families regularly pay respects to ancestors on Eve:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "除夕當天全家人"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "往往得拜"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "祖先，還要吃年夜飯。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "往往得拜",
+                    "simplified": "往往得拜",
+                    "pinyin": "wǎngwǎng děi bài"
+                  },
+                  {
+                    "traditional": "畢竟得拜",
+                    "simplified": "毕竟得拜",
+                    "pinyin": "bìjìng děi bài"
+                  },
+                  {
+                    "traditional": "反倒得拜",
+                    "simplified": "反倒得拜",
+                    "pinyin": "fǎndào děi bài"
+                  }
+                ],
+                "accepted": "往往得拜",
+                "result": {
+                  "traditional": "除夕當天全家人往往得拜祖先，還要吃年夜飯。",
+                  "simplified": "除夕当天全家人往往得拜祖先，还要吃年夜饭。",
+                  "pinyin": "Chúxì dāngtiān quánjiārén wǎngwǎng děi bài zǔxiān, hái yào chī niányèfàn.",
+                  "english": "On New Year's Eve, the entire family regularly has to pay respects to ancestors, and eat reunion dinner."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "畢竟得拜"
+                    ],
+                    "note": "Use 往往 to describe established annual regularities."
+                  },
+                  {
+                    "placed": [
+                      "反倒得拜"
+                    ],
+                    "note": "Regular customs under set conditions take 往往."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 往往得拜."
+              },
+              {
+                "id": "b3l12g3-p3",
+                "source": "p.320 #2",
+                "kind": "slot-build",
+                "prompt": "State that nervous and excited feelings are often common manifestations in interviews:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "我"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "這樣的心情，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "往往"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "是面試時經常有的表現。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "往往",
+                    "simplified": "往往",
+                    "pinyin": "wǎngwǎng"
+                  },
+                  {
+                    "traditional": "未必",
+                    "simplified": "未必",
+                    "pinyin": "wèibì"
+                  },
+                  {
+                    "traditional": "好在",
+                    "simplified": "好在",
+                    "pinyin": "hǎozài"
+                  }
+                ],
+                "accepted": "往往",
+                "result": {
+                  "traditional": "這樣的心情，往往是面試時經常有的表現。",
+                  "simplified": "这样的心情，往往是面试时经常有的表现。",
+                  "pinyin": "Zhèyàng de xīnqíng, wǎngwǎng shì miànshì shí jīngcháng yǒu de biǎoxiàn.",
+                  "english": "Such feelings are often the manifestations common during interviews."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "未必"
+                    ],
+                    "note": "Common natural tendencies take 往往."
+                  },
+                  {
+                    "placed": [
+                      "好在"
+                    ],
+                    "note": "Use 往往 to describe empirical regularities."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 往往."
+              },
+              {
+                "id": "b3l12g3-p4",
+                "source": "p.309 #1",
+                "kind": "slot-build",
+                "prompt": "Manager praises communication concept. Reiterate that good dialogue resolves trouble:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "經理"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "透過良好溝通，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "往往"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "能解決不必要的麻煩。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "往往",
+                    "simplified": "往往",
+                    "pinyin": "wǎngwǎng"
+                  },
+                  {
+                    "traditional": "多虧",
+                    "simplified": "多亏",
+                    "pinyin": "duōkuī"
+                  },
+                  {
+                    "traditional": "何必",
+                    "simplified": "何必",
+                    "pinyin": "hébì"
+                  }
+                ],
+                "accepted": "往往",
+                "result": {
+                  "traditional": "透過良好溝通，往往能解決不必要的麻煩。",
+                  "simplified": "透过良好沟通，往往能解决不必要的麻烦。",
+                  "pinyin": "Tòuguò liánghǎo gōutōng, wǎngwǎng néng jiějué bú bìyào de máfan.",
+                  "english": "Through good communication, unnecessary troubles can often be resolved."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "多虧"
+                    ],
+                    "note": "General truths and outcomes take 往往."
+                  },
+                  {
+                    "placed": [
+                      "何必"
+                    ],
+                    "note": "Use 往往 to indicate typical outcomes under sound conditions."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 往往."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L12-G04-P318",
+          "bookPage": 318,
+          "printedPages": [
+            318,
+            319
+          ],
+          "titleTraditional": "有關",
+          "titleSimplified": "有关",
+          "titleEnglish": "Introducing a Topic: 有關",
+          "learnerPromise": "Introduce the topic or matter under discussion at the sentence opening with 有關.",
+          "pattern": "有關 + Topic, + Predicate / Explanation",
+          "patternColumns": [
+            "有關",
+            "Topic",
+            "Explanation"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l12g4-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g4-r1-c1",
+                    "traditional": "有關",
+                    "simplified": "有关",
+                    "pinyin": "yǒuguān",
+                    "meaning": "regarding"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g4-r1-c2",
+                    "traditional": "這方面的問題",
+                    "simplified": "这方面的问题",
+                    "pinyin": "zhè fāngmiàn de wèntí",
+                    "meaning": "questions in this area"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g4-r1-c3",
+                    "traditional": "會有相關人員來說明",
+                    "simplified": "会有相关人员来说明",
+                    "pinyin": "huì yǒu xiāngguān rényuán lái shuōmíng",
+                    "meaning": "relevant staff will explain"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g4-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g4-r2-c1",
+                    "traditional": "有關",
+                    "simplified": "有关",
+                    "pinyin": "yǒuguān",
+                    "meaning": "regarding"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g4-r2-c2",
+                    "traditional": "那個明星的新聞",
+                    "simplified": "那个明星的新闻",
+                    "pinyin": "nà ge míngxīng de xīnwén",
+                    "meaning": "that celebrity news"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g4-r2-c3",
+                    "traditional": "還要經過詳細地調查",
+                    "simplified": "还要经过详细地调查",
+                    "pinyin": "hái yào jīngguò xiángxì de diàochá",
+                    "meaning": "still requires detailed investigation"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g4-r3",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g4-r3-c1",
+                    "traditional": "有關",
+                    "simplified": "有关",
+                    "pinyin": "yǒuguān",
+                    "meaning": "regarding"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g4-r3-c2",
+                    "traditional": "法律方面的問題",
+                    "simplified": "法律方面的问题",
+                    "pinyin": "fǎlǜ fāngmiàn de wèntí",
+                    "meaning": "legal questions"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g4-r3-c3",
+                    "traditional": "你最好請教專業律師",
+                    "simplified": "你最好请教专业律师",
+                    "pinyin": "nǐ zuìhǎo qǐngjiào zhuānyè lǜshī",
+                    "meaning": "you best consult a lawyer"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l12g4-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "有關這方面的問題，會有相關人員來跟你詳細說明。",
+                "simplified": "有关这方面的问题，会有相关人员来跟你详细说明。",
+                "pinyin": "Yǒuguān zhè fāngmiàn de wèntí, huì yǒu xiāngguān rényuán lái gēn nǐ xiángxì shuōmíng.",
+                "english": "Regarding questions in this area, relevant personnel will come explain them to you in detail.",
+                "words": [
+                  {
+                    "id": "b3l12g4-ex1-w1",
+                    "traditional": "有關這方面的問題",
+                    "simplified": "有关这方面的问题",
+                    "pinyin": "yǒuguān zhè fāngmiàn de wèntí",
+                    "meaning": "regarding questions in this aspect",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g4-ex1-w2",
+                    "traditional": "相關人員",
+                    "simplified": "相关人员",
+                    "pinyin": "xiāngguān rényuán",
+                    "meaning": "relevant personnel",
+                    "suffix": "來"
+                  },
+                  {
+                    "id": "b3l12g4-ex1-w3",
+                    "traditional": "詳細說明",
+                    "simplified": "详细说明",
+                    "pinyin": "xiángxì shuōmíng",
+                    "meaning": "explain in detail",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g4-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "有關那個明星吸毒的新聞，還要經過詳細地調查，才能確定是真是假。",
+                "simplified": "有关那个明星吸毒的新闻，还要经过详细地调查，才能确定是真是假。",
+                "pinyin": "Yǒuguān nà ge míngxīng xīdú de xīnwén, hái yào jīngguò xiángxì de diàochá, cái néng quèdìng shì zhēn shì jiǎ.",
+                "english": "Regarding the news about that celebrity taking drugs, a thorough investigation is still needed to confirm truth or falsehood.",
+                "words": [
+                  {
+                    "id": "b3l12g4-ex2-w1",
+                    "traditional": "有關那個明星吸毒的新聞",
+                    "simplified": "有关那个明星吸毒的新闻",
+                    "pinyin": "yǒuguān nà ge míngxīng xīdú de xīnwén",
+                    "meaning": "regarding that celebrity drug news",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g4-ex2-w2",
+                    "traditional": "詳細地調查",
+                    "simplified": "详细地调查",
+                    "pinyin": "xiángxì de diàochá",
+                    "meaning": "detailed investigation",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g4-ex2-w3",
+                    "traditional": "確定是真是假",
+                    "simplified": "确定是真是假",
+                    "pinyin": "quèdìng shì zhēn shì jiǎ",
+                    "meaning": "confirm true or false",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g4-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "有關法律方面的問題，你最好請教專業律師，不要隨便相信網路上的說法。",
+                "simplified": "有关法律方面的问题，你最好请教专业律师，不要随便相信网络上的说法。",
+                "pinyin": "Yǒuguān fǎlǜ fāngmiàn de wèntí, nǐ zuìhǎo qǐngjiào zhuānyè lǜshī, bú yào suíbiàn xiāngxìn wǎnglù shàng de shuōfǎ.",
+                "english": "Regarding legal questions, you had better consult a professional lawyer rather than blindly trusting claims on the internet.",
+                "words": [
+                  {
+                    "id": "b3l12g4-ex3-w1",
+                    "traditional": "有關法律方面的問題",
+                    "simplified": "有关法律方面的问题",
+                    "pinyin": "yǒuguān fǎlǜ fāngmiàn de wèntí",
+                    "meaning": "regarding questions on law",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g4-ex3-w2",
+                    "traditional": "請教專業律師",
+                    "simplified": "请教专业律师",
+                    "pinyin": "qǐngjiào zhuānyè lǜshī",
+                    "meaning": "consult professional lawyer",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g4-ex3-w3",
+                    "traditional": "網路上的說法",
+                    "simplified": "网络上的说法",
+                    "pinyin": "wǎnglù shàng de shuōfǎ",
+                    "meaning": "claims on internet",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l12g4-cf1",
+                "question": "How is 有關 used compared with 對於?",
+                "answer": "「有關」置於句首引出討論的題材或對象，指「涉及……」；「對於」則引出對象以表達對該對象的態度或看法。",
+                "wrongTraditional": "在於這方面的問題，會有專人說明。",
+                "wrongSimplified": "在于这方面的问题，会有专人说明。",
+                "right": {
+                  "traditional": "有關這方面的問題，會有相關人員說明。",
+                  "simplified": "有关这方面的问题，会有相关人员说明。",
+                  "pinyin": "Yǒuguān zhè fāngmiàn de wèntí, huì yǒu xiāngguān rényuán shuōmíng.",
+                  "english": "Regarding questions in this area, relevant personnel will explain.",
+                  "words": [
+                    {
+                      "id": "b3l12g4-cf1-w1",
+                      "traditional": "有關這方面",
+                      "simplified": "有关这方面",
+                      "pinyin": "yǒuguān zhè fāngmiàn",
+                      "meaning": "regarding this aspect"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l12g4-cf2",
+                "question": "Can 有關 directly modify a noun or introduce a prepositional topic?",
+                "answer": "「有關」常置於句首作介詞引導話題（有關……），亦可作為修飾語（跟……有關的資料）。",
+                "wrongTraditional": "朝向這方面的問題，請看網站。",
+                "wrongSimplified": "朝向这方面的问题，请看网站。",
+                "right": {
+                  "traditional": "有關這類的活動，你看旅遊中心網站就知道了。",
+                  "simplified": "有关这类的活动，你看旅游中心网站就知道了。",
+                  "pinyin": "Yǒuguān zhè lèi de huódòng, nǐ kàn lǚyóu zhōngxīn wǎngzhàn jiù zhīdào le.",
+                  "english": "Regarding this type of activity, check the travel center website and you will know.",
+                  "words": [
+                    {
+                      "id": "b3l12g4-cf2-w1",
+                      "traditional": "有關這類的活動",
+                      "simplified": "有关这类的活动",
+                      "pinyin": "yǒuguān zhè lèi de huódòng",
+                      "meaning": "regarding this type of activity"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l12g4-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "我剛到臺灣，不知道有什麼適合外國人的活動。"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "這類的活動，你看旅遊中心的網站就知道了。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "有關"
+                },
+                {
+                  "id": "t2",
+                  "text": "至於"
+                },
+                {
+                  "id": "t3",
+                  "text": "趁著"
+                },
+                {
+                  "id": "t4",
+                  "text": "朝著"
+                }
+              ],
+              "correctFeedback": "答對了！「有關」常放在句首，用來引出特定事物或情況進行進一步說明。",
+              "repairFeedback": "請注意語意：句首引出「這類活動」的話題，接續提供說明建議，應使用「有關」。"
+            }
+          ],
+          "audioReference": "12-1-1",
+          "bookId": 3,
+          "lessonId": 12,
+          "partId": 1,
+          "lessonTitle": "你有面試的經驗嗎？",
+          "lessonTitleEnglish": "Do You Have Interview Experience?",
+          "grammarNumber": 4,
+          "bookPageAvailable": true,
+          "explanation": "「有關」常放在句首，連接事物或情況，後面的句子表示進一步地說明或建議。",
+          "practice": {
+            "bookPage": 318,
+            "title": "Practice: 有關",
+            "items": [
+              {
+                "id": "b3l12g4-p1",
+                "source": "p.319 #1",
+                "kind": "slot-build",
+                "prompt": "Foreigner asks about activities. Tell them to check the travel center website regarding such events:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "有關這類"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "的活動，你看旅遊中心網站就知道了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "有關這類",
+                    "simplified": "有关这类",
+                    "pinyin": "yǒuguān zhè lèi"
+                  },
+                  {
+                    "traditional": "趁著這類",
+                    "simplified": "趁着这类",
+                    "pinyin": "chènzhe zhè lèi"
+                  },
+                  {
+                    "traditional": "朝著這類",
+                    "simplified": "朝着这类",
+                    "pinyin": "cháozhe zhè lèi"
+                  }
+                ],
+                "accepted": "有關這類",
+                "result": {
+                  "traditional": "有關這類的活動，你看旅遊中心網站就知道了。",
+                  "simplified": "有关这类的活动，你看旅游中心网站就知道了。",
+                  "pinyin": "Yǒuguān zhè lèi de huódòng, nǐ kàn lǚyóu zhōngxīn wǎngzhàn jiù zhīdào le.",
+                  "english": "Regarding this category of activities, look at the tourism center website and you will know."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "趁著這類"
+                    ],
+                    "note": "Introducing a topic at sentence head takes 有關."
+                  },
+                  {
+                    "placed": [
+                      "朝著這類"
+                    ],
+                    "note": "Use 有關 to connect an issue or topic to follow-up details."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 有關這類."
+              },
+              {
+                "id": "b3l12g4-p2",
+                "source": "p.319 #2",
+                "kind": "slot-build",
+                "prompt": "Visitor looks for education references. Point out that books concerning this are inside:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "有關"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "這方面的書都在裡面，進去就看到了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "有關",
+                    "simplified": "有关",
+                    "pinyin": "yǒuguān"
+                  },
+                  {
+                    "traditional": "由於",
+                    "simplified": "由于",
+                    "pinyin": "yóuyú"
+                  },
+                  {
+                    "traditional": "順著",
+                    "simplified": "顺着",
+                    "pinyin": "shùnzhe"
+                  }
+                ],
+                "accepted": "有關",
+                "result": {
+                  "traditional": "有關這方面的書都在裡面，進去就看到了。",
+                  "simplified": "有关这方面的书都在里面，进去就看到了。",
+                  "pinyin": "Yǒuguān zhè fāngmiàn de shū dōu zài lǐmiàn, jìnqù jiù kàndào le.",
+                  "english": "Books regarding this aspect are all inside; you'll see them upon entering."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "由於"
+                    ],
+                    "note": "Introducing topic domain requires 有關."
+                  },
+                  {
+                    "placed": [
+                      "順著"
+                    ],
+                    "note": "Use 有關 to indicate 'pertaining to / regarding'."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 有關."
+              },
+              {
+                "id": "b3l12g4-p3",
+                "source": "p.319 #3",
+                "kind": "slot-build",
+                "prompt": "Asked about climate change. Affirm that issues concerning environmental protection require shared responsibility:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "有關環境"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "保護的問題，大家必須共同承擔。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "有關環境",
+                    "simplified": "有关环境",
+                    "pinyin": "yǒuguān huánjìng"
+                  },
+                  {
+                    "traditional": "依據環境",
+                    "simplified": "依据环境",
+                    "pinyin": "yījù huánjìng"
+                  },
+                  {
+                    "traditional": "趁早環境",
+                    "simplified": "趁早环境",
+                    "pinyin": "chènzǎo huánjìng"
+                  }
+                ],
+                "accepted": "有關環境",
+                "result": {
+                  "traditional": "有關環境保護的問題，大家必須共同承擔。",
+                  "simplified": "有关环境保护的问题，大家必须共同承担。",
+                  "pinyin": "Yǒuguān huánjìng bǎohù de wèntí, dàjiā bìxū gòngtóng chéngdān.",
+                  "english": "Regarding issues of environmental protection, everyone must jointly shoulder responsibility."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "依據環境"
+                    ],
+                    "note": "Use 有關 to introduce a subject or topic for discussion."
+                  },
+                  {
+                    "placed": [
+                      "趁早環境"
+                    ],
+                    "note": "Prepositional topic markers use 有關."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 有關環境."
+              },
+              {
+                "id": "b3l12g4-p4",
+                "source": "p.308 #1",
+                "kind": "slot-build",
+                "prompt": "Manager concludes salary question. Tell applicant that staff will explain matters concerning this:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "王經理"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "有關"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "這方面的問題，會有相關人員來詳細說明。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "有關",
+                    "simplified": "有关",
+                    "pinyin": "yǒuguān"
+                  },
+                  {
+                    "traditional": "衝著",
+                    "simplified": "冲着",
+                    "pinyin": "chòngzhe"
+                  },
+                  {
+                    "traditional": "本著",
+                    "simplified": "本着",
+                    "pinyin": "běnzhe"
+                  }
+                ],
+                "accepted": "有關",
+                "result": {
+                  "traditional": "有關這方面的問題，會有相關人員來詳細說明。",
+                  "simplified": "有关这方面的问题，会有相关人员来详细说明。",
+                  "pinyin": "Yǒuguān zhè fāngmiàn de wèntí, huì yǒu xiāngguān rényuán lái xiángxì shuōmíng.",
+                  "english": "Regarding questions in this area, relevant personnel will come explain them in detail."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "衝著"
+                    ],
+                    "note": "Introducing questions in a scope takes 有關."
+                  },
+                  {
+                    "placed": [
+                      "本著"
+                    ],
+                    "note": "Topic introduction at sentence start takes 有關."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 有關."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "B3L12-P02-D02",
+      "bookId": 3,
+      "lessonId": 12,
+      "partId": 2,
+      "title": "Grammar 5–6 · My Interview Experience",
+      "dialogue": {
+        "id": "B3L12-D02",
+        "title": "短文 · 我的面試經驗",
+        "audioReference": "12-2-1",
+        "printedPages": [
+          320,
+          321,
+          322
+        ],
+        "grammarFocus": [
+          "儘管",
+          "不論……都……"
+        ],
+        "lines": [
+          {
+            "id": "b3l12d2-l1",
+            "speaker": "旁白",
+            "traditional": "一般來說，現代人找工作得經過面試。面試時表現得好，被錄取的機會就比較大。今天，我就來跟各位說說我最近面試的經驗和感想。",
+            "simplified": "一般来说，现代人找工作得经过面试。面试时表现得好，被录取的机会就比较大。今天，我就来跟各位说说我最近面试的经验和感想。",
+            "pinyin": "Yìbān lái shuō, xiàndài rén zhǎo gōngzuò děi jīngguò miànshì. Miànshì shí biǎoxiàn de hǎo, bèi lùqǔ de jīhuì jiù bǐjiào dà. Jīntiān, wǒ jiù lái gēn gèwèi shuōshuo wǒ zuìjìn miànshì de jīngyàn hé gǎnxiǎng.",
+            "english": "Generally speaking, modern people must go through interviews to find jobs. Performing well in an interview brings greater chances of being hired. Today, let me share my recent interview experience and thoughts with everyone."
+          },
+          {
+            "id": "b3l12d2-l2",
+            "speaker": "旁白",
+            "traditional": "上個月，我在網站上，看到某家企業有銷售人員的需求，就立刻把個人資料寄過去。資料中除了說明我過去的工作經驗，也包含我對工作的看法和態度。兩個星期之後，我收到了面試通知。儘管我不是第一次參加面試，但還是擔心表現不佳，所以面試當天很早就醒來，出門前還一再確認穿著是不是整齊、資料是不是都放進了背包。我想，這樣又緊張又興奮的心情，往往是面試時經常有的表現。",
+            "simplified": "上个月，我在网站上，看到某家企业有销售人员的需求，就立刻把个人资料寄过去。资料中除了说明我过去的工作经验，也包含我对工作的看法和态度。两个星期之后，我收到了面试通知。尽管我不是第一次参加面试，但还是担心表现不佳，所以面试当天很早就醒来，出门前还一再确认穿着是不是整齐、资料是不是都放进了背包。我想，这样又紧张又兴奋的心情，往往是面试时经常有的表现。",
+            "pinyin": "Shàng gè yuè, wǒ zài wǎngzhàn shàng, kàndào mǒu jiā qǐyè yǒu xiāoshòu rényuán de xūqiú, jiù lìkè bǎ gèrén zīliào jì guòqù. Zīliào zhōng chúle shuōmíng wǒ guòqù de gōngzuò jīngyàn, yě bāohán wǒ duì gōngzuò de kànfǎ hé tàidù. Liǎng gè xīngqī zhīhòu, wǒ shōudào le miànshì tōngzhī. Jǐnguǎn wǒ bú shì dì-yī cì cānjiā miànshì, dàn háishì dānxīn biǎoxiàn bù jiā, suǒyǐ miànshì dāngtiān hěn zǎo jiù xǐnglái, chūmén qián hái yízài quèrèn chuānzhuó shì bú shì zhěngqí, zīliào shì bú shì dōu fàng jìn le bèibāo. Wǒ xiǎng, zhèyàng yòu jǐnzhāng yòu xīngfèn de xīnqíng, wǎngwǎng shì miànshì shí jīngcháng yǒu de biǎoxiàn.",
+            "english": "Last month, I saw on a website that an enterprise needed sales personnel and sent my personal information immediately. Beyond outlining my past work experience, the materials covered my views and attitudes toward work. Two weeks later, I received an interview notification. Even though it wasn't my first interview, I still worried about performing poorly, so I woke up very early on the day, repeatedly verifying that my attire was neat and my materials were all packed. Such nervous yet excited feelings are often common during interviews."
+          },
+          {
+            "id": "b3l12d2-l3",
+            "speaker": "旁白",
+            "traditional": "一開始，經理請我說明對銷售工作的想法。我回答他，銷售人員是最常接觸顧客的，所以對客人要有禮貌，態度也要主動，絕對不能像木頭一樣沒反應；萬一他們亂發脾氣，就該忍耐、冷靜。畢竟，只顧自己的感覺，把跟顧客的關係搞壞，讓大家都不高興，又有什麼好處呢？",
+            "simplified": "一开始，经理请我说明对销售工作的想法。我回答他，销售人员是最常接触顾客的，所以对客人要有礼貌，态度也要主动，绝对不能像木头一样没反应；万一他们乱发脾气，就该忍耐、冷静。毕竟，只顾自己的感觉，把跟顾客的关系搞坏，让大家都不高兴，又有什么好处呢？",
+            "pinyin": "Yì kāishǐ, jīnglǐ qǐng wǒ shuōmíng duì xiāoshòu gōngzuò de xiǎngfǎ. Wǒ huídá tā, xiāoshòu rényuán shì zuì cháng jiēchù gùkè de, suǒyǐ duì kèrén yào yǒu lǐmào, tàidù yě yào zhǔdòng, juéduì bù néng xiàng mùtou yíyàng méi fǎnyìng; wànyī tāmen luàn fā píqì, jiù gāi rěnnài, lěngjìng. Bìjìng, zhǐ gù zìjǐ de gǎnjué, bǎ gēn gùkè de guānxì gǎo huài, ràng dàjiā dōu bù gāoxìng, yòu yǒu shénme hǎochù ne?",
+            "english": "To begin, the manager asked for my thoughts on sales work. I replied that sales staff have the closest contact with customers, so one must be polite, take the initiative, and never act unresponsive like a piece of wood. If customers lose their temper, one should be patient and calm. After all, considering only one's own feelings and ruining relations with customers brings no benefit."
+          },
+          {
+            "id": "b3l12d2-l4",
+            "speaker": "旁白",
+            "traditional": "後來，經理又問我對團體合作的看法。我之前的工作，就是以小組的方式來推銷產品，所以能理解合作是必要的。況且，主管要領導整個部門，為全公司創造好成績，要是小組人員不配合，恐怕就不能順利實行銷售計畫，也會出現混亂的情況。因此，為了公司，我認為不論主管有什麼要求，只要是合理的，員工都應該配合。",
+            "simplified": "后来，经理又问我对团体合作的看法。我之前的工作，就是以小组的方式来推销产品，所以能理解合作是必要的。况且，主管要领导整个部门，为全公司创造好成绩，要是小组人员不配合，恐怕就不能顺利实行销售计划，也会出现混乱的情况。因此，为了公司，我认为不论主管有什么要求，只要是合理的，员工都应该配合。",
+            "pinyin": "Hòulái, jīnglǐ yòu wèn wǒ duì tuántǐ hézuò de kànfǎ. Wǒ zhīqián de gōngzuò, jiù shì yǐ xiǎozǔ de fāngshì lái tuīxiāo chǎnpǐn, suǒyǐ néng lǐjiě hézuò shì bìyào de. Kuàngqiě, zhǔguǎn yào lǐngdǎo zhěnggè bùmén, wèi quán gōngsī chuàngzào hǎo chéngjì, yàoshi xiǎozǔ rényuán bù pèihé, kǒngpà jiù bù néng shùnlì shíxíng xiāoshòu jìhuà, yě huì chūxiàn hùnluàn de qíngkuàng. Yīncǐ, wèile gōngsī, wǒ rènwéi búlùn zhǔguǎn yǒu shénme yāoqiú, zhǐyào shì hélǐ de, yuángōng dōu yīnggāi pèihé.",
+            "english": "Later, the manager asked about my views on teamwork. My previous work promoted products in teams, so I understand cooperation is essential. Moreover, supervisors lead entire departments to create results; without staff cooperation, plans cannot proceed smoothly and chaos results. Therefore, no matter what reasonable requests the supervisor makes, employees should cooperate."
+          },
+          {
+            "id": "b3l12d2-l5",
+            "speaker": "旁白",
+            "traditional": "最後，經理問我要是被錄取了，能為公司付出什麼。我說，在推銷產品方面，我的經驗很豐富，商品銷售可說是我一輩子的事業，所以一定會盡最大的力量認真工作、完成任務。",
+            "simplified": "最后，经理问我要是被录取了，能为公司付出什么。我说，在推销产品方面，我的经验很丰富，商品销售可说是我一辈子的事业，所以一定会尽最大的力量认真工作、完成任务。",
+            "pinyin": "Zuìhòu, jīnglǐ wèn wǒ yàoshi bèi lùqǔ le, néng wèi gōngsī fùchū shénme. Wǒ shuō, zài tuīxiāo chǎnpǐn fāngmiàn, wǒ de jīngyàn hěn fēngfù, shāngpǐn xiāoshòu kě shuō shì wǒ yíbèizi de shìyè, suǒyǐ yídìng huì jìn zuìdà de lìliàng rènzhēn gōngzuò, wánchéng rènwù.",
+            "english": "Finally, the manager asked what I could contribute to the company if hired. I stated that my experience in sales is extensive, that sales can be said to be my lifelong career, and that I would dedicate my utmost efforts to working conscientiously and accomplishing missions."
+          },
+          {
+            "id": "b3l12d2-l6",
+            "speaker": "旁白",
+            "traditional": "上星期我收到了通過面試的通知，下個月就要上班了。盼望了好久，我終於美夢成真了。很多人說，想找到理想的工作，多多少少需要一點兒運氣。其實，個性、能力，加上不斷地努力才是最重要的。",
+            "simplified": "上星期我收到了通过面试的通知，下个月就要上班了。盼望了好久，我终于美梦成真了。很多人说，想找到理想的工作，多多少少需要一点儿运气。其实，个性、能力，加上不断地努力才是最重要的。",
+            "pinyin": "Shàng xīngqī wǒ shōudào le tōngguò miànshì de tōngzhī, xià gè yuè jiù yào shàngbān le. Pànwàng le hǎojiǔ, wǒ zhōngyú měimèng chéngzhēn le. Hěn duō rén shuō, xiǎng zhǎodào lǐxiǎng de gōngzuò, duōduōshǎoshǎo xūyào yìdiǎnr yùnqì. Qíshí, gèxìng, nénglì, jiāshàng búduàn de nǔlì cái shì zuì zhòngyào de.",
+            "english": "Last week I received notification of passing the interview, and I start next month. After longing for so long, my dream has finally come true. Many say finding an ideal job takes a bit of luck, but personality, ability, and persistent effort are truly what matter most."
+          },
+          {
+            "id": "b3l12d2-l7",
+            "speaker": "旁白",
+            "traditional": "以上就是我找工作的經驗和感想，如果有任何問題，歡迎跟我聯絡，謝謝！",
+            "simplified": "以上就是我找工作的经验和感想，如果有任何问题，欢迎跟我联络，谢谢！",
+            "pinyin": "Yǐshàng jiù shì wǒ zhǎo gōngzuò de jīngyàn hé gǎnxiǎng, rúguǒ yǒu rènhé wèntí, huānyíng gēn wǒ liánluò, xièxie!",
+            "english": "The above is my experience and reflection on job seeking. If you have questions, please feel free to contact me. Thank you!"
+          }
+        ]
+      },
+      "grammarPages": [
+        {
+          "id": "B3L12-G05-P325",
+          "bookPage": 325,
+          "printedPages": [
+            325,
+            326
+          ],
+          "titleTraditional": "儘管",
+          "titleSimplified": "尽管",
+          "titleEnglish": "Concession: 儘管",
+          "learnerPromise": "State a factual concessive condition with 儘管 to contrast against an unexpected outcome.",
+          "pattern": "儘管 + Fact, + (但是 / 可是 / 還是 / 卻) + Contrary Result",
+          "patternColumns": [
+            "儘管",
+            "Fact",
+            "Contrast",
+            "Result"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l12g5-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g5-r1-c1",
+                    "traditional": "儘管",
+                    "simplified": "尽管",
+                    "pinyin": "jǐnguǎn",
+                    "meaning": "even though"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r1-c2",
+                    "traditional": "我不是第一次面試",
+                    "simplified": "我不是第一次面试",
+                    "pinyin": "wǒ bú shì dì-yī cì miànshì",
+                    "meaning": "I am not first time interviewing"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r1-c3",
+                    "traditional": "但還是",
+                    "simplified": "但还是",
+                    "pinyin": "dàn háishì",
+                    "meaning": "but still"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r1-c4",
+                    "traditional": "擔心表現不佳",
+                    "simplified": "担心表现不佳",
+                    "pinyin": "dānxīn biǎoxiàn bù jiā",
+                    "meaning": "worry about poor performance"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g5-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g5-r2-c1",
+                    "traditional": "儘管",
+                    "simplified": "尽管",
+                    "pinyin": "jǐnguǎn",
+                    "meaning": "even though"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r2-c2",
+                    "traditional": "平時測驗成績不理想",
+                    "simplified": "平时测验成绩不理想",
+                    "pinyin": "píngshí cèyàn chéngjī bù lǐxiǎng",
+                    "meaning": "regular quiz scores not ideal"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r2-c3",
+                    "traditional": "卻不",
+                    "simplified": "却不",
+                    "pinyin": "què bù",
+                    "meaning": "yet not"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r2-c4",
+                    "traditional": "影響他對中文的興趣",
+                    "simplified": "影响他对中文的兴趣",
+                    "pinyin": "yǐngxiǎng tā duì Zhōngwén de xìngqù",
+                    "meaning": "affect his interest in Chinese"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g5-r3",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g5-r3-c1",
+                    "traditional": "儘管",
+                    "simplified": "尽管",
+                    "pinyin": "jǐnguǎn",
+                    "meaning": "even though"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r3-c2",
+                    "traditional": "已經下課了",
+                    "simplified": "已经下课了",
+                    "pinyin": "yǐjīng xiàkè le",
+                    "meaning": "class already ended"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r3-c3",
+                    "traditional": "張老師還是",
+                    "simplified": "张老师还是",
+                    "pinyin": "Zhāng lǎoshī háishì",
+                    "meaning": "Teacher Zhang still"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g5-r3-c4",
+                    "traditional": "留在教室裡改作業",
+                    "simplified": "留在教室里改作业",
+                    "pinyin": "liú zài jiàoshì lǐ gǎi zuòyè",
+                    "meaning": "stay in classroom grading"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l12g5-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "儘管我不是第一次參加面試，但還是擔心表現不佳。",
+                "simplified": "尽管我不是第一次参加面试，但还是担心表现不佳。",
+                "pinyin": "Jǐnguǎn wǒ bú shì dì-yī cì cānjiā miànshì, dàn háishì dānxīn biǎoxiàn bù jiā.",
+                "english": "Even though it was not my first time attending an interview, I was still worried about performing poorly.",
+                "words": [
+                  {
+                    "id": "b3l12g5-ex1-w1",
+                    "traditional": "儘管我不是",
+                    "simplified": "尽管我不是",
+                    "pinyin": "jǐnguǎn wǒ bú shì",
+                    "meaning": "even though I am not",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g5-ex1-w2",
+                    "traditional": "第一次參加面試",
+                    "simplified": "第一次参加面试",
+                    "pinyin": "dì-yī cì cānjiā miànshì",
+                    "meaning": "first time attending interview",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g5-ex1-w3",
+                    "traditional": "但還是擔心",
+                    "simplified": "但还是担心",
+                    "pinyin": "dàn háishì dānxīn",
+                    "meaning": "but still worried",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g5-ex1-w4",
+                    "traditional": "表現不佳",
+                    "simplified": "表现不佳",
+                    "pinyin": "biǎoxiàn bù jiā",
+                    "meaning": "poor performance",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g5-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "儘管他平時測驗的成績都不理想，卻不影響他對中文的興趣。",
+                "simplified": "尽管他平时测验的成绩都不理想，却不影响他对中文的兴趣。",
+                "pinyin": "Jǐnguǎn tā píngshí cèyàn de chéngjī dōu bù lǐxiǎng, què bù yǐngxiǎng tā duì Zhōngwén de xìngqù.",
+                "english": "Even though his regular quiz scores were not ideal, it did not affect his interest in Chinese.",
+                "words": [
+                  {
+                    "id": "b3l12g5-ex2-w1",
+                    "traditional": "儘管他平時測驗",
+                    "simplified": "尽管他平时测验",
+                    "pinyin": "jǐnguǎn tā píngshí cèyàn",
+                    "meaning": "even though his regular quizzes",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g5-ex2-w2",
+                    "traditional": "成績都不理想",
+                    "simplified": "成绩都不理想",
+                    "pinyin": "chéngjī dōu bù lǐxiǎng",
+                    "meaning": "grades are all not ideal",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g5-ex2-w3",
+                    "traditional": "卻不影響",
+                    "simplified": "却不影响",
+                    "pinyin": "què bù yǐngxiǎng",
+                    "meaning": "yet does not affect",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g5-ex2-w4",
+                    "traditional": "對中文的興趣",
+                    "simplified": "对中文的兴趣",
+                    "pinyin": "duì Zhōngwén de xìngqù",
+                    "meaning": "interest in Chinese",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g5-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "儘管已經下課了，張老師還是留在教室裡改作業，直到晚餐時間才離開。",
+                "simplified": "尽管已经下课了，张老师还是留在教室里改作业，直到晚餐时间才离开。",
+                "pinyin": "Jǐnguǎn yǐjīng xiàkè le, Zhāng lǎoshī háishì liú zài jiàoshì lǐ gǎi zuòyè, zhídào wǎncān shíjiān cái líkāi.",
+                "english": "Even though class had already dismissed, Teacher Zhang still stayed in the classroom correcting homework until dinnertime.",
+                "words": [
+                  {
+                    "id": "b3l12g5-ex3-w1",
+                    "traditional": "儘管已經下課了",
+                    "simplified": "尽管已经下课了",
+                    "pinyin": "jǐnguǎn yǐjīng xiàkè le",
+                    "meaning": "even though class is dismissed",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g5-ex3-w2",
+                    "traditional": "還是留在教室裡",
+                    "simplified": "还是留在教室里",
+                    "pinyin": "háishì liú zài jiàoshì lǐ",
+                    "meaning": "still remained in classroom",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g5-ex3-w3",
+                    "traditional": "改作業",
+                    "simplified": "改作业",
+                    "pinyin": "gǎi zuòyè",
+                    "meaning": "grade homework",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g5-ex3-w4",
+                    "traditional": "直到晚餐時間才離開",
+                    "simplified": "直到晚餐时间才离开",
+                    "pinyin": "zhídào wǎncān shíjiān cái líkāi",
+                    "meaning": "only left until dinnertime",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l12g5-cf1",
+                "question": "How is 儘管 different from 即使?",
+                "answer": "「儘管」引導的是已經發生的既成事實；「即使」引導的是假設性的退讓條件（即便如此……）。",
+                "wrongTraditional": "即使已經下課了，張老師昨天留在教室改作業。",
+                "wrongSimplified": "即使已经下课了，张老师昨天留在教室改作业。",
+                "right": {
+                  "traditional": "儘管已經下課了，張老師還是留在教室改作業。",
+                  "simplified": "尽管已经下课了，张老师还是留在教室改作业。",
+                  "pinyin": "Jǐnguǎn yǐjīng xiàkè le, Zhāng lǎoshī háishì liú zài jiàoshì gǎi zuòyè.",
+                  "english": "Even though class had dismissed, Teacher Zhang still stayed in the classroom grading.",
+                  "words": [
+                    {
+                      "id": "b3l12g5-cf1-w1",
+                      "traditional": "儘管已經下課",
+                      "simplified": "尽管已经下课",
+                      "pinyin": "jǐnguǎn yǐjīng xiàkè",
+                      "meaning": "even though class dismissed"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l12g5-cf2",
+                "question": "Can 儘管 pair with 但 / 還是 / 卻 in the following clause?",
+                "answer": "是的，「儘管」後面常搭配「但是、可是、還是、卻」以凸顯出乎意料的轉折結果。",
+                "wrongTraditional": "儘管平時成績不好，所以他很開心。",
+                "wrongSimplified": "尽管平时成绩不好，所以他很开心。",
+                "right": {
+                  "traditional": "儘管成績不理想，卻不影響他的興趣。",
+                  "simplified": "尽管成绩不理想，却不影响他的兴趣。",
+                  "pinyin": "Jǐnguǎn chéngjī bù lǐxiǎng, què bù yǐngxiǎng tā de xìngqù.",
+                  "english": "Even though grades were not ideal, it did not affect his interest.",
+                  "words": [
+                    {
+                      "id": "b3l12g5-cf2-w1",
+                      "traditional": "卻不影響",
+                      "simplified": "却不影响",
+                      "pinyin": "què bù yǐngxiǎng",
+                      "meaning": "yet does not affect"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l12g5-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "我進公司兩年了，好像沒看過老闆生氣。是啊，"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "產品出現了嚴重的問題，他也沒怪任何人，脾氣真好。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "儘管"
+                },
+                {
+                  "id": "t2",
+                  "text": "何妨"
+                },
+                {
+                  "id": "t3",
+                  "text": "莫非"
+                },
+                {
+                  "id": "t4",
+                  "text": "索性"
+                }
+              ],
+              "correctFeedback": "太棒了！「儘管」主要用來描述既成事實的讓步，後接相反的結果。",
+              "repairFeedback": "請注意語意關係：前半句說明「產品出現嚴重問題」之事實，後半句為轉折結果，應使用「儘管」。"
+            }
+          ],
+          "audioReference": "12-2-1",
+          "bookId": 3,
+          "lessonId": 12,
+          "partId": 2,
+          "lessonTitle": "你有面試的經驗嗎？",
+          "lessonTitleEnglish": "Do You Have Interview Experience?",
+          "grammarNumber": 5,
+          "bookPageAvailable": true,
+          "explanation": "「儘管」是連詞，用在第一個句子的句首，主要用來描述事實或某件事的結論，與「雖然」的意思相近；後面的分句常用「可是、但是、還是、卻」，表示與前句的結果相反。",
+          "practice": {
+            "bookPage": 325,
+            "title": "Practice: 儘管",
+            "items": [
+              {
+                "id": "b3l12g5-p1",
+                "source": "p.326 #1",
+                "kind": "slot-build",
+                "prompt": "Colleague praises boss's temper. Note that even though serious problems occurred, he blamed no one:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "儘管產品"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "出現了嚴重的問題，他也沒怪任何人。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "儘管產品",
+                    "simplified": "尽管产品",
+                    "pinyin": "jǐnguǎn chǎnpǐn"
+                  },
+                  {
+                    "traditional": "莫非產品",
+                    "simplified": "莫非产品",
+                    "pinyin": "mòfēi chǎnpǐn"
+                  },
+                  {
+                    "traditional": "索性產品",
+                    "simplified": "索性产品",
+                    "pinyin": "suǒxìng chǎnpǐn"
+                  }
+                ],
+                "accepted": "儘管產品",
+                "result": {
+                  "traditional": "儘管產品出現了嚴重的問題，他也沒怪任何人。",
+                  "simplified": "尽管产品出现了严重的问题，他也没怪任何人。",
+                  "pinyin": "Jǐnguǎn chǎnpǐn chūxiàn le yánzhòng de wèntí, tā yě méi guài rènhé rén.",
+                  "english": "Even though serious problems appeared with the product, he didn't blame anyone."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "莫非產品"
+                    ],
+                    "note": "Conceding a real existing fact uses 儘管."
+                  },
+                  {
+                    "placed": [
+                      "索性產品"
+                    ],
+                    "note": "Use 儘管 to contrast a factual premise against contrary outcome."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 儘管產品."
+              },
+              {
+                "id": "b3l12g5-p2",
+                "source": "p.326 #2",
+                "kind": "slot-build",
+                "prompt": "Xiao Li joined planning group. State that despite work being tough, you believe he'll persist:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "儘管工作"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "很辛苦，我相信他能夠堅持到底。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "儘管工作",
+                    "simplified": "尽管工作",
+                    "pinyin": "jǐnguǎn gōngzuò"
+                  },
+                  {
+                    "traditional": "難道工作",
+                    "simplified": "难道工作",
+                    "pinyin": "nándào gōngzuò"
+                  },
+                  {
+                    "traditional": "畢竟工作",
+                    "simplified": "毕竟工作",
+                    "pinyin": "bìjìng gōngzuò"
+                  }
+                ],
+                "accepted": "儘管工作",
+                "result": {
+                  "traditional": "儘管工作很辛苦，我相信他能夠堅持到底。",
+                  "simplified": "尽管工作很辛苦，我相信他能够坚持到底。",
+                  "pinyin": "Jǐnguǎn gōngzuò hěn xīnkǔ, wǒ xiāngxìn tā nénggòu jiānchí dàodǐ.",
+                  "english": "Even though work is arduous, I believe he can persevere to the end."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難道工作"
+                    ],
+                    "note": "Factual concession takes 儘管."
+                  },
+                  {
+                    "placed": [
+                      "畢竟工作"
+                    ],
+                    "note": "Use 儘管 to introduce the concessive condition 'even though'."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 儘管工作."
+              },
+              {
+                "id": "b3l12g5-p3",
+                "source": "p.326 #3",
+                "kind": "slot-build",
+                "prompt": "Competition is stiff. Note that even though competition is intense, Xiao Lin gives his all:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "儘管競爭"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "非常激烈，小林依然全力以赴。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "儘管競爭",
+                    "simplified": "尽管竞争",
+                    "pinyin": "jǐnguǎn jìngzhēng"
+                  },
+                  {
+                    "traditional": "哪怕競爭",
+                    "simplified": "哪怕竞争",
+                    "pinyin": "nǎpà jìngzhēng"
+                  },
+                  {
+                    "traditional": "萬一競爭",
+                    "simplified": "万一竞争",
+                    "pinyin": "wànyī jìngzhēng"
+                  }
+                ],
+                "accepted": "儘管競爭",
+                "result": {
+                  "traditional": "儘管競爭非常激烈，小林依然全力以赴。",
+                  "simplified": "尽管竞争非常激烈，小林依然全力以赴。",
+                  "pinyin": "Jǐnguǎn jìngzhēng fēicháng jīliè, Xiǎo Lín yīrán quánlì yǐ fù.",
+                  "english": "Even though competition is fierce, Xiao Lin still goes all out."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "哪怕競爭"
+                    ],
+                    "note": "Acknowledging an actual situation uses 儘管, not 哪怕 (hypothetical)."
+                  },
+                  {
+                    "placed": [
+                      "萬一競爭"
+                    ],
+                    "note": "Use 儘管 for factual concessive clauses."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 儘管競爭."
+              },
+              {
+                "id": "b3l12g5-p4",
+                "source": "p.325 #1",
+                "kind": "slot-build",
+                "prompt": "Reflecting on interview. Note that although it wasn't the first time, you still worried:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "我"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "儘管"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "我不是第一次面試，但還是擔心表現不佳。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "儘管",
+                    "simplified": "尽管",
+                    "pinyin": "jǐnguǎn"
+                  },
+                  {
+                    "traditional": "除非",
+                    "simplified": "除非",
+                    "pinyin": "chúfēi"
+                  },
+                  {
+                    "traditional": "要不是",
+                    "simplified": "要不是",
+                    "pinyin": "yàobúshì"
+                  }
+                ],
+                "accepted": "儘管",
+                "result": {
+                  "traditional": "儘管我不是第一次面試，但還是擔心表現不佳。",
+                  "simplified": "尽管我不是第一次面试，但还是担心表现不佳。",
+                  "pinyin": "Jǐnguǎn wǒ bú shì dì-yī cì miànshì, dàn háishì dānxīn biǎoxiàn bù jiā.",
+                  "english": "Even though it wasn't my first interview, I was still worried about performing poorly."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "除非"
+                    ],
+                    "note": "Use 儘管 to contrast a factual situation against unexpected worry."
+                  },
+                  {
+                    "placed": [
+                      "要不是"
+                    ],
+                    "note": "Concessive statements of fact take 儘管."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 儘管."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L12-G06-P327",
+          "bookPage": 327,
+          "printedPages": [
+            327,
+            328
+          ],
+          "titleTraditional": "不論……都……",
+          "titleSimplified": "不论……都……",
+          "titleEnglish": "Unconditional Invariance: 不論……都……",
+          "learnerPromise": "Express that regardless of conditions, variables, or alternatives, the outcome remains invariant using 不論……都…….",
+          "pattern": "不論 + Variable Condition, + Subject + 都 + Invariant Result",
+          "patternColumns": [
+            "不論",
+            "Condition",
+            "Subject",
+            "都",
+            "Result"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l12g6-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g6-r1-c1",
+                    "traditional": "不論",
+                    "simplified": "不论",
+                    "pinyin": "búlùn",
+                    "meaning": "no matter"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r1-c2",
+                    "traditional": "主管有什麼要求",
+                    "simplified": "主管有什么要求",
+                    "pinyin": "zhǔguǎn yǒu shénme yāoqiú",
+                    "meaning": "what supervisor demands"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r1-c3",
+                    "traditional": "員工",
+                    "simplified": "员工",
+                    "pinyin": "yuángōng",
+                    "meaning": "employees"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r1-c4",
+                    "traditional": "都",
+                    "simplified": "都",
+                    "pinyin": "dōu",
+                    "meaning": "all"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r1-c5",
+                    "traditional": "應該配合",
+                    "simplified": "应该配合",
+                    "pinyin": "yīnggāi pèihé",
+                    "meaning": "should cooperate"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g6-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g6-r2-c1",
+                    "traditional": "不論",
+                    "simplified": "不论",
+                    "pinyin": "búlùn",
+                    "meaning": "no matter"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r2-c2",
+                    "traditional": "你說什麼",
+                    "simplified": "你说什么",
+                    "pinyin": "nǐ shuō shénme",
+                    "meaning": "what you say"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r2-c3",
+                    "traditional": "包老闆",
+                    "simplified": "包老板",
+                    "pinyin": "Bāo lǎobǎn",
+                    "meaning": "Boss Bao"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r2-c4",
+                    "traditional": "都",
+                    "simplified": "都",
+                    "pinyin": "dōu",
+                    "meaning": "all"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r2-c5",
+                    "traditional": "不會改變",
+                    "simplified": "不会改变",
+                    "pinyin": "bú huì gǎibiàn",
+                    "meaning": "will not change"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g6-r3",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g6-r3-c1",
+                    "traditional": "不論",
+                    "simplified": "不论",
+                    "pinyin": "búlùn",
+                    "meaning": "no matter"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r3-c2",
+                    "traditional": "有升學或工作問題",
+                    "simplified": "有升学或工作问题",
+                    "pinyin": "yǒu shēngxué huò gōngzuò wèntí",
+                    "meaning": "have schooling or job problems"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r3-c3",
+                    "traditional": "大家",
+                    "simplified": "大家",
+                    "pinyin": "dàjiā",
+                    "meaning": "everyone"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r3-c4",
+                    "traditional": "都",
+                    "simplified": "都",
+                    "pinyin": "dōu",
+                    "meaning": "all"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r3-c5",
+                    "traditional": "可以請教紀伯伯",
+                    "simplified": "可以请教纪伯伯",
+                    "pinyin": "kěyǐ qǐngjiào Jì bóbo",
+                    "meaning": "can consult Uncle Ji"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l12g6-r4",
+              "columns": [
+                [
+                  {
+                    "id": "b3l12g6-r4-c1",
+                    "traditional": "不論",
+                    "simplified": "不论",
+                    "pinyin": "búlùn",
+                    "meaning": "no matter"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r4-c2",
+                    "traditional": "教練去不去",
+                    "simplified": "教练去不去",
+                    "pinyin": "jiàoliàn qù bú qù",
+                    "meaning": "coach goes or not"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r4-c3",
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r4-c4",
+                    "traditional": "都",
+                    "simplified": "都",
+                    "pinyin": "dōu",
+                    "meaning": "all"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l12g6-r4-c5",
+                    "traditional": "要參加",
+                    "simplified": "要参加",
+                    "pinyin": "yào cānjiā",
+                    "meaning": "will participate"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l12g6-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "我認為不論主管有什麼要求，只要是合理的，員工都應該配合。",
+                "simplified": "我认为不论主管有什么要求，只要是合理的，员工都应该配合。",
+                "pinyin": "Wǒ rènwéi búlùn zhǔguǎn yǒu shénme yāoqiú, zhǐyào shì hélǐ de, yuángōng dōu yīnggāi pèihé.",
+                "english": "I believe that no matter what demands the supervisor has, as long as they are reasonable, employees should cooperate.",
+                "words": [
+                  {
+                    "id": "b3l12g6-ex1-w1",
+                    "traditional": "不論主管有什麼要求",
+                    "simplified": "不论主管有什么要求",
+                    "pinyin": "búlùn zhǔguǎn yǒu shénme yāoqiú",
+                    "meaning": "no matter what supervisor demands",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex1-w2",
+                    "traditional": "只要是合理的",
+                    "simplified": "只要是合理的",
+                    "pinyin": "zhǐyào shì hélǐ de",
+                    "meaning": "as long as reasonable",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex1-w3",
+                    "traditional": "員工都應該配合",
+                    "simplified": "员工都应该配合",
+                    "pinyin": "yuángōng dōu yīnggāi pèihé",
+                    "meaning": "employees should all cooperate",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g6-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "包老闆很堅持自己的想法，不論你說什麼，他都不會改變。",
+                "simplified": "包老板很坚持自己的想法，不论你说什么，他都不会改变。",
+                "pinyin": "Bāo lǎobǎn hěn jiānchí zìjǐ de xiǎngfǎ, búlùn nǐ shuō shénme, tā dōu bú huì gǎibiàn.",
+                "english": "Boss Bao is very stubborn about his opinions; no matter what you say, he will not change.",
+                "words": [
+                  {
+                    "id": "b3l12g6-ex2-w1",
+                    "traditional": "堅持自己的想法",
+                    "simplified": "坚持自己的想法",
+                    "pinyin": "jiānchí zìjǐ de xiǎngfǎ",
+                    "meaning": "insist on own views",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex2-w2",
+                    "traditional": "不論你說什麼",
+                    "simplified": "不论你说什么",
+                    "pinyin": "búlùn nǐ shuō shénme",
+                    "meaning": "no matter what you say",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex2-w3",
+                    "traditional": "他都不會改變",
+                    "simplified": "他都不会改变",
+                    "pinyin": "tā dōu bú huì gǎibiàn",
+                    "meaning": "he will not change",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g6-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "不論你有升學或工作方面的問題，都可以請教紀伯伯，他一定能給你寶貴的意見。",
+                "simplified": "不论你有升学或工作方面的问题，都可以请教纪伯伯，他一定能给你宝贵的意见。",
+                "pinyin": "Búlùn nǐ yǒu shēngxué huò gōngzuò fāngmiàn de wèntí, dōu kěyǐ qǐngjiào Jì bóbo, tā yídìng néng gěi nǐ bǎoguì de yìjiàn.",
+                "english": "No matter whether you have questions about schooling or jobs, you can consult Uncle Ji; he will surely give you valuable advice.",
+                "words": [
+                  {
+                    "id": "b3l12g6-ex3-w1",
+                    "traditional": "不論你有升學或工作問題",
+                    "simplified": "不论你有升学或工作问题",
+                    "pinyin": "búlùn nǐ yǒu shēngxué huò gōngzuò wèntí",
+                    "meaning": "no matter if you have school or work questions",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex3-w2",
+                    "traditional": "都可以請教",
+                    "simplified": "都可以请教",
+                    "pinyin": "dōu kěyǐ qǐngjiào",
+                    "meaning": "all can consult",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l12g6-ex3-w3",
+                    "traditional": "寶貴的意見",
+                    "simplified": "宝贵的意见",
+                    "pinyin": "bǎoguì de yìjiàn",
+                    "meaning": "valuable advice",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l12g6-ex4",
+              "number": 4,
+              "text": {
+                "traditional": "我為了這次的比賽準備了很久，不論教練去不去，我都要參加。",
+                "simplified": "我为了这次的比赛准备了很久，不论教练去不去，我都要参加。",
+                "pinyin": "Wǒ wèile zhè cì de bǐsài zhǔnbèi le hěn jiǔ, búlùn jiàoliàn qù bú qù, wǒ dōu yào cānjiā.",
+                "english": "I prepared for this competition for a long time; regardless of whether the coach goes or not, I will participate.",
+                "words": [
+                  {
+                    "id": "b3l12g6-ex4-w1",
+                    "traditional": "準備了很久",
+                    "simplified": "准备了很久",
+                    "pinyin": "zhǔnbèi le hěn jiǔ",
+                    "meaning": "prepared for a long time",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex4-w2",
+                    "traditional": "不論教練去不去",
+                    "simplified": "不论教练去不去",
+                    "pinyin": "búlùn jiàoliàn qù bú qù",
+                    "meaning": "regardless whether coach goes or not",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l12g6-ex4-w3",
+                    "traditional": "我都要參加",
+                    "simplified": "我都要参加",
+                    "pinyin": "wǒ dōu yào cānjiā",
+                    "meaning": "I will participate anyway",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l12g6-cf1",
+                "question": "What types of conditions follow 不論?",
+                "answer": "「不論」後面通常接疑問代詞（什麼、哪裡）、反義詞對舉（遠近、好壞）或正反問句（去不去），表示各種變數下結論都不變。",
+                "wrongTraditional": "不論教練去，我都要參加。",
+                "wrongSimplified": "不论教练去，我都要参加。",
+                "right": {
+                  "traditional": "不論教練去不去，我都要參加。",
+                  "simplified": "不论教练去不去，我都要参加。",
+                  "pinyin": "Búlùn jiàoliàn qù bú qù, wǒ dōu yào cānjiā.",
+                  "english": "No matter whether the coach goes or not, I will participate.",
+                  "words": [
+                    {
+                      "id": "b3l12g6-cf1-w1",
+                      "traditional": "不論去不去",
+                      "simplified": "不论去不去",
+                      "pinyin": "búlùn qù bú qù",
+                      "meaning": "regardless whether go or not"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l12g6-cf2",
+                "question": "How is 不論……都 different from 既然……就?",
+                "answer": "「不論……都」表示排除任何變數限制，結果始終恆定；「既然……就」表示在既成前題下順理成章採取對應動作。",
+                "wrongTraditional": "既然主管有什麼要求，員工都要配合。",
+                "wrongSimplified": "既然主管有什么要求，员工都要配合。",
+                "right": {
+                  "traditional": "不論主管有什麼要求，員工都應該配合。",
+                  "simplified": "不论主管有什么要求，员工都应该配合。",
+                  "pinyin": "Búlùn zhǔguǎn yǒu shénme yāoqiú, yuángōng dōu yīnggāi pèihé.",
+                  "english": "No matter what the supervisor requires, employees should cooperate.",
+                  "words": [
+                    {
+                      "id": "b3l12g6-cf2-w1",
+                      "traditional": "不論主管要求",
+                      "simplified": "不论主管要求",
+                      "pinyin": "búlùn zhǔguǎn yāoqiú",
+                      "meaning": "no matter supervisor demands"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l12g6-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "這是我的購物習慣，"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "買什麼，我都要親自檢查才安心。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "不論"
+                },
+                {
+                  "id": "t2",
+                  "text": "既然"
+                },
+                {
+                  "id": "t3",
+                  "text": "除非"
+                },
+                {
+                  "id": "t4",
+                  "text": "未免"
+                }
+              ],
+              "correctFeedback": "答得很好！「不論……都……」搭配疑問詞「什麼」，表示任何情況下結果都不變。",
+              "repairFeedback": "請注意條件多樣性：後接「買什麼」，後句搭配「都」，表示無條件的通則，應使用「不論」。"
+            }
+          ],
+          "audioReference": "12-2-1",
+          "bookId": 3,
+          "lessonId": 12,
+          "partId": 2,
+          "lessonTitle": "你有面試的經驗嗎？",
+          "lessonTitleEnglish": "Do You Have Interview Experience?",
+          "grammarNumber": 6,
+          "bookPageAvailable": true,
+          "explanation": "用來表示雖然情況不同，但是最後的結果不因情況而受影響。「不論」的後面可搭配疑問詞、反義複合詞或正反問句，表示各種情況；「都」後面則是一定會出現的結果或事實。",
+          "practice": {
+            "bookPage": 327,
+            "title": "Practice: 不論……都……",
+            "items": [
+              {
+                "id": "b3l12g6-p1",
+                "source": "p.327 #1",
+                "kind": "slot-build",
+                "prompt": "Friend asks why you buy in stores. Explain that no matter what you buy, you must check personally:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "這是我的習慣，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "不論"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "買什麼我都得親自檢查才安心。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "不論",
+                    "simplified": "不论",
+                    "pinyin": "búlùn"
+                  },
+                  {
+                    "traditional": "既然",
+                    "simplified": "既然",
+                    "pinyin": "jìrán"
+                  },
+                  {
+                    "traditional": "除非",
+                    "simplified": "除非",
+                    "pinyin": "chúfēi"
+                  }
+                ],
+                "accepted": "不論",
+                "result": {
+                  "traditional": "這是我的習慣，不論買什麼我都得親自檢查才安心。",
+                  "simplified": "这是我的习惯，不论买什么我都得亲自检查才安心。",
+                  "pinyin": "Zhè shì wǒ de xíguàn, búlùn mǎi shénme wǒ dōu děi qīnzì jiǎnchá cái ānxīn.",
+                  "english": "This is my habit; no matter what I buy, I must check it personally to feel at ease."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "既然"
+                    ],
+                    "note": "Invariance over alternatives takes 不論……都."
+                  },
+                  {
+                    "placed": [
+                      "除非"
+                    ],
+                    "note": "Use 不論 with question words like 什麼 to denote 'regardless of what'."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 不論."
+              },
+              {
+                "id": "b3l12g6-p2",
+                "source": "p.328 #1",
+                "kind": "slot-build",
+                "prompt": "Up at 2 AM. Explain that no matter how tired, you must finish your term paper tonight:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "期末報告明天交，今晚"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "不論多累"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "我都得完成。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "不論多累",
+                    "simplified": "不论多累",
+                    "pinyin": "búlùn duō lèi"
+                  },
+                  {
+                    "traditional": "固然多累",
+                    "simplified": "固然多累",
+                    "pinyin": "gùrán duō lèi"
+                  },
+                  {
+                    "traditional": "難得多累",
+                    "simplified": "难得多累",
+                    "pinyin": "nándé duō lèi"
+                  }
+                ],
+                "accepted": "不論多累",
+                "result": {
+                  "traditional": "期末報告明天交，今晚不論多累我都得完成。",
+                  "simplified": "期末报告明天交，今晚不论多累我都得完成。",
+                  "pinyin": "Qímò bàogào míngtiān jiāo, jīnwǎn búlùn duō lèi wǒ dōu děi wánchéng.",
+                  "english": "The term paper is due tomorrow; tonight no matter how tired I am, I must finish."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "固然多累"
+                    ],
+                    "note": "Unconditional resolve uses 不論……都."
+                  },
+                  {
+                    "placed": [
+                      "難得多累"
+                    ],
+                    "note": "Pair 不論 with degree word 多累 to express invariant necessity."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 不論多累."
+              },
+              {
+                "id": "b3l12g6-p3",
+                "source": "p.328 #2",
+                "kind": "slot-build",
+                "prompt": "Important meeting tomorrow. State that no matter how late, materials must be prepared:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "我"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "明天的會議很重要，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "不論多晚"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "我都得把資料準備好。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "不論多晚",
+                    "simplified": "不论多晚",
+                    "pinyin": "búlùn duō wǎn"
+                  },
+                  {
+                    "traditional": "何必多晚",
+                    "simplified": "何必多晚",
+                    "pinyin": "hébì duō wǎn"
+                  },
+                  {
+                    "traditional": "幸虧多晚",
+                    "simplified": "幸亏多晚",
+                    "pinyin": "xìngkuī duō wǎn"
+                  }
+                ],
+                "accepted": "不論多晚",
+                "result": {
+                  "traditional": "明天的會議很重要，不論多晚我都得把資料準備好。",
+                  "simplified": "明天的会议很重要，不论多晚我都得把资料准备好。",
+                  "pinyin": "Míngtiān de huìyì hěn zhòngyào, búlùn duō wǎn wǒ dōu děi bǎ zīliào zhǔnbèi hǎo.",
+                  "english": "Tomorrow's meeting is crucial; no matter how late it is, I must prepare the materials."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "何必多晚"
+                    ],
+                    "note": "Invariance over degree takes 不論."
+                  },
+                  {
+                    "placed": [
+                      "幸虧多晚"
+                    ],
+                    "note": "Use 不論……都 to express 'regardless of how late'."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 不論多晚."
+              },
+              {
+                "id": "b3l12g6-p4",
+                "source": "p.328 #3",
+                "kind": "slot-build",
+                "prompt": "Player is praised for academics and sports. State that regardless of coach attending, you will join:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "我"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我準備了很久，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "不論"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "教練去不去我都要參加比賽。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "不論",
+                    "simplified": "不论",
+                    "pinyin": "búlùn"
+                  },
+                  {
+                    "traditional": "反倒",
+                    "simplified": "反倒",
+                    "pinyin": "fǎndào"
+                  },
+                  {
+                    "traditional": "莫非",
+                    "simplified": "莫非",
+                    "pinyin": "mòfēi"
+                  }
+                ],
+                "accepted": "不論",
+                "result": {
+                  "traditional": "我準備了很久，不論教練去不去我都要參加比賽。",
+                  "simplified": "我准备了很久，不论教练去不去我都要参加比赛。",
+                  "pinyin": "Wǒ zhǔnbèi le hěn jiǔ, búlùn jiàoliàn qù bú qù wǒ dōu yào cānjiā bǐsài.",
+                  "english": "I prepared for a long time; regardless of whether the coach goes or not, I will participate in the competition."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "反倒"
+                    ],
+                    "note": "Use 不論 with affirmative-negative choice 去不去."
+                  },
+                  {
+                    "placed": [
+                      "莫非"
+                    ],
+                    "note": "Invariance with A-not-A conditions takes 不論."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 不論."
               }
             ]
           }

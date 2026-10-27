@@ -487,4 +487,12 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L11-G04-P299': detected('卻', [inOrder(['卻'])]),
   'B3L11-G05-P301': detected('對得起 / 對不起', [inOrder(['對得起']), inOrder(['對不起'])]),
   'B3L11-G06-P302': detected('至於', [inOrder(['至於'])]),
+
+  // Book 3 Lesson 12 — 你有面試的經驗嗎？
+  'B3L12-G01-P313': detected('這就', [inOrder(['這就'])]),
+  'B3L12-G02-P314': detected('在……方面', [inOrder(['在', '方面'], 8)]),
+  'B3L12-G03-P316': detected('往往', [inOrder(['往往'])]),
+  'B3L12-G04-P318': detected('有關', [inOrder(['有關'])]),
+  'B3L12-G05-P325': detected('儘管', [inOrder(['儘管'])]),
+  'B3L12-G06-P327': detected('不論……都……', [inOrder(['不論', '都'], 10)]),
 };

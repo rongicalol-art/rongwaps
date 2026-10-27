@@ -952,6 +952,42 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L11-G06-P302"
       }
     ]
+  },
+  {
+    "id": "B3L12-P01-D01",
+    "bookId": 3,
+    "lessonId": 12,
+    "partId": 1,
+    "title": "Grammar 1–4 · Do You Have Interview Experience?",
+    "grammarPages": [
+      {
+        "id": "B3L12-G01-P313"
+      },
+      {
+        "id": "B3L12-G02-P314"
+      },
+      {
+        "id": "B3L12-G03-P316"
+      },
+      {
+        "id": "B3L12-G04-P318"
+      }
+    ]
+  },
+  {
+    "id": "B3L12-P02-D02",
+    "bookId": 3,
+    "lessonId": 12,
+    "partId": 2,
+    "title": "Grammar 5–6 · My Interview Experience",
+    "grammarPages": [
+      {
+        "id": "B3L12-G05-P325"
+      },
+      {
+        "id": "B3L12-G06-P327"
+      }
+    ]
   }
 ];
 
