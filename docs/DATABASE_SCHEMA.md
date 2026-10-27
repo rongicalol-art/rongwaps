@@ -207,7 +207,7 @@ Dry run: `select * from private.inactive_accounts();`. Both functions are privat
 and not executable by `anon`/`authenticated`. No warning email is sent yet (no
 custom SMTP). Run the orphan-photo script after cleanups.
 
-## Live folder collaboration (migration `20261027120000`, pending owner application)
+## Live folder collaboration (migrations `20261027120000`–`20261028120001`)
 
 Collaboration is available only to beta-approved accounts. The existing signup,
 token and PostgREST gates and restrictive `school_beta_access` policies remain
@@ -260,5 +260,7 @@ unchanged; the same restrictive policy applies to `folder_members`.
 - No realtime subscriptions. SRS remains per account and card ID. Guest folder
   imports exclude editor/member folders.
 
-Apply the pending snapshot, collaboration and `20261028120000` sharing migrations in order with
-`supabase db push` before shipping this client.
+Apply the sharing migrations in order with `supabase db push` when provisioning
+another database. `20261028120001_folder_access_revocation.sql` adds the
+membership checks for live card reads and exports after the original sharing
+migration; previously applied migration files are not replayed by a push.
