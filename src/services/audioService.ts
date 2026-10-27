@@ -39,7 +39,6 @@ export class AudioService {
   private isInitialized = false;
   private rangeRafHandle: number | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
-  private speechUnlockUtterance: SpeechSynthesisUtterance | null = null;
   private activePlaybackFinish: (() => void) | null = null;
   private activePlaybackCleanup: (() => void) | null = null;
   constructor() {
@@ -56,24 +55,6 @@ export class AudioService {
   public initialize(): void {
     this.shortClips.unlock();
     if (this.isInitialized) return;
-    // iOS unlocks speech separately from HTML audio. This must stay synchronous
-    // in the tap handler: Flow reads definitions later, after recorded Chinese.
-    if (!this.currentUtterance && typeof window !== 'undefined' && window.speechSynthesis
-      && typeof SpeechSynthesisUtterance !== 'undefined') {
-      try {
-        const utterance = new SpeechSynthesisUtterance(' ');
-        utterance.lang = 'en-US';
-        utterance.volume = 0;
-        this.speechUnlockUtterance = utterance;
-        utterance.onend = utterance.onerror = () => {
-          if (this.speechUnlockUtterance === utterance) this.speechUnlockUtterance = null;
-        };
-        window.speechSynthesis.speak(utterance);
-      } catch (error) {
-        this.speechUnlockUtterance = null;
-        debugLogger.warn('Audio', 'Speech unlock failed', error);
-      }
-    }
     try { if (this.globalAudio && typeof Audio !== 'undefined') this.spareAudio ??= new Audio(); }
     catch (error) { debugLogger.warn('Audio', 'Spare audio initialization failed', error); }
     for (const audio of [this.globalAudio, this.spareAudio]) {
