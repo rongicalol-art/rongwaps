@@ -65,7 +65,7 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                     text={sentence.chinese}
                     highlightTerms={[character]}
                     syllables={hideExamplePinyin ? null : alignSentenceSyllables(sentence.chinese, sentence.pinyin)}
-                    speakerLines
+                    exampleLayout
                     className="font-chinese text-xl font-bold leading-[1.9] text-ui-ink sm:text-2xl"
                   />
                 </div>
