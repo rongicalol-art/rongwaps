@@ -659,6 +659,41 @@ function enableCache() {
   Object.defineProperty(globalThis, 'caches', { configurable: true, value: { open: async () => memoryCache } });
 }
 
+type AudioCacheModule = typeof import('../../src/services/audio/audioCache');
+
+async function loadIsolatedAudioCache(name: string): Promise<AudioCacheModule> {
+  const modulePath = `../../src/services/audio/audioCache.ts?test=${name}`;
+  return await import(modulePath) as AudioCacheModule;
+}
+
+function disableIndexedDbForAudioCache(): () => void {
+  const original = Object.getOwnPropertyDescriptor(globalThis, 'indexedDB');
+  Object.defineProperty(globalThis, 'indexedDB', { configurable: true, value: undefined });
+  return () => {
+    if (original) Object.defineProperty(globalThis, 'indexedDB', original);
+    else Reflect.deleteProperty(globalThis, 'indexedDB');
+  };
+}
+
+function fillPersistentAudioCache(audioCache: AudioCacheModule, count: number, bytes: number): string[] {
+  cacheEntries.clear();
+  const urls: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const url = audioCache.audioFileCacheRequest(`prune-fixture-${i}.mp3`).url;
+    urls.push(url);
+    cacheEntries.set(url, new Response(null, { headers: { 'Content-Length': String(bytes) } }));
+  }
+  return urls;
+}
+
+async function waitForAudioCacheFixture(predicate: () => boolean, description: string): Promise<void> {
+  for (let turn = 0; turn < 1000; turn++) {
+    if (predicate()) return;
+    await new Promise<void>((resolve) => setImmediate(resolve));
+  }
+  assert.fail(`Timed out waiting for ${description}`);
+}
+
 test('dictionary cards do not guess a missing or failed reading with TTS', async () => {
   const service = new AudioService();
   let unavailable = 0;
@@ -1093,12 +1128,179 @@ test('empty audio and HTML error pages never become persistent recordings', asyn
 });
 
 test('persistent recording byte limits still work when IndexedDB is unavailable', async () => {
+  enableCache();
+  const restoreIndexedDb = disableIndexedDbForAudioCache();
   const { pruneAudioCacheToLimit, audioFileCacheRequest } = await import('../../src/services/audio/audioCache');
   cacheEntries.clear();
   for (let i = 0; i < 4; i++) cacheEntries.set(audioFileCacheRequest(`large-${i}.mp3`).url, new Response('mp3', { headers: { 'Content-Length': String(50 * 1024 * 1024) } }));
-  await pruneAudioCacheToLimit();
-  assert.equal(cacheEntries.size, 3);
-  cacheEntries.clear();
+  try {
+    await pruneAudioCacheToLimit();
+    assert.equal(cacheEntries.size, 3);
+  } finally {
+    cacheEntries.clear();
+    restoreIndexedDb();
+  }
+});
+
+test('scheduled cache pruning serializes overlapping passes without excess eviction', async () => {
+  enableCache();
+  const restoreIndexedDb = disableIndexedDbForAudioCache();
+  const audioCache = await loadIsolatedAudioCache('scheduled-overlap');
+  const clipBytes = 5 * 1024 * 1024;
+  fillPersistentAudioCache(audioCache, 32, clipBytes);
+
+  const originalKeys = memoryCache.keys;
+  const originalMatch = memoryCache.match;
+  const originalDelete = memoryCache.delete;
+  const originalSetTimeout = globalThis.setTimeout;
+  const scheduled: Array<{ callback: () => void; delay: number }> = [];
+  let keysCalls = 0;
+  let activeScans = 0;
+  let maxConcurrentScans = 0;
+  let matchCalls = 0;
+  let deleteCalls = 0;
+  let enterFirstScan!: () => void;
+  const firstScanEntered = new Promise<void>((resolve) => { enterFirstScan = resolve; });
+  let releaseFirstScan!: () => void;
+  const firstScanGate = new Promise<void>((resolve) => { releaseFirstScan = resolve; });
+
+  memoryCache.keys = async () => {
+    const snapshot = [...cacheEntries.keys()].map((url) => new Request(url));
+    keysCalls++;
+    activeScans++;
+    maxConcurrentScans = Math.max(maxConcurrentScans, activeScans);
+    if (keysCalls === 1) {
+      enterFirstScan();
+      await firstScanGate;
+    }
+    activeScans--;
+    return snapshot;
+  };
+  memoryCache.match = async (request) => { matchCalls++; return originalMatch(request); };
+  memoryCache.delete = async (request) => { deleteCalls++; return originalDelete(request); };
+  globalThis.setTimeout = ((callback: TimerHandler, delay = 0) => {
+    scheduled.push({ callback: callback as () => void, delay });
+    return scheduled.length as unknown as ReturnType<typeof setTimeout>;
+  }) as unknown as typeof setTimeout;
+
+  try {
+    audioCache.schedulePruneAudioCache();
+    const firstTimer = scheduled.shift()!;
+    assert.equal(firstTimer.delay, 4000);
+    firstTimer.callback();
+    await firstScanEntered;
+
+    audioCache.schedulePruneAudioCache();
+    const secondTimer = scheduled.shift()!;
+    assert.equal(secondTimer.delay, 4000);
+    secondTimer.callback();
+    releaseFirstScan();
+
+    await waitForAudioCacheFixture(
+      () => keysCalls >= 2 && matchCalls >= 62 && deleteCalls >= 2,
+      'both serialized prune passes to inspect the fixture',
+    );
+    await new Promise<void>((resolve) => setImmediate(resolve));
+
+    assert.equal(maxConcurrentScans, 1, 'CacheStorage scans must not overlap');
+    assert.equal(keysCalls, 2, 'the second request must rescan after the first snapshot');
+    assert.equal(cacheEntries.size, 30, '160 MiB should be pruned to the 150 MiB cap exactly');
+    assert.equal(cacheEntries.size * clipBytes, 150 * 1024 * 1024);
+  } finally {
+    releaseFirstScan();
+    globalThis.setTimeout = originalSetTimeout;
+    memoryCache.keys = originalKeys;
+    memoryCache.match = originalMatch;
+    memoryCache.delete = originalDelete;
+    restoreIndexedDb();
+    cacheEntries.clear();
+  }
+});
+
+test('a prune request during a cache snapshot reruns after writes arrive', async () => {
+  enableCache();
+  const restoreIndexedDb = disableIndexedDbForAudioCache();
+  const audioCache = await loadIsolatedAudioCache('write-during-snapshot');
+  const clipBytes = 5 * 1024 * 1024;
+  const originalUrls = fillPersistentAudioCache(audioCache, 30, clipBytes);
+  const newUrl = audioCache.audioFileCacheRequest('arrived-during-prune.mp3').url;
+
+  const originalKeys = memoryCache.keys;
+  const originalMatch = memoryCache.match;
+  const originalDelete = memoryCache.delete;
+  let keysCalls = 0;
+  let activeScans = 0;
+  let maxConcurrentScans = 0;
+  let enterFirstScan!: () => void;
+  const firstScanEntered = new Promise<void>((resolve) => { enterFirstScan = resolve; });
+  let releaseFirstScan!: () => void;
+  const firstScanGate = new Promise<void>((resolve) => { releaseFirstScan = resolve; });
+
+  memoryCache.keys = async () => {
+    const snapshot = [...cacheEntries.keys()].map((url) => new Request(url));
+    keysCalls++;
+    activeScans++;
+    maxConcurrentScans = Math.max(maxConcurrentScans, activeScans);
+    if (keysCalls === 1) {
+      enterFirstScan();
+      await firstScanGate;
+    }
+    activeScans--;
+    return snapshot;
+  };
+
+  try {
+    const activeRun = audioCache.pruneAudioCacheToLimit();
+    await firstScanEntered;
+    cacheEntries.set(newUrl, new Response(null, { headers: { 'Content-Length': String(clipBytes) } }));
+    const requestedRun = audioCache.pruneAudioCacheToLimit();
+    releaseFirstScan();
+    await Promise.all([activeRun, requestedRun]);
+
+    assert.equal(maxConcurrentScans, 1, 'CacheStorage scans must stay serialized');
+    assert.equal(keysCalls, 2, 'the new write must be covered by a follow-up snapshot');
+    assert.equal(cacheEntries.size, 30, '155 MiB should return to the 150 MiB cap');
+    assert.equal(cacheEntries.size * clipBytes, 150 * 1024 * 1024);
+    assert.equal(cacheEntries.has(newUrl), true, 'the new entry is present in the final cache');
+    assert.equal(cacheEntries.has(originalUrls[0]), false, 'the oldest entry was evicted to make room');
+  } finally {
+    releaseFirstScan();
+    memoryCache.keys = originalKeys;
+    memoryCache.match = originalMatch;
+    memoryCache.delete = originalDelete;
+    restoreIndexedDb();
+    cacheEntries.clear();
+  }
+});
+
+test('audio cache pruning can run again after a failed scan', async () => {
+  enableCache();
+  const restoreIndexedDb = disableIndexedDbForAudioCache();
+  const audioCache = await loadIsolatedAudioCache('recovery-after-failure');
+  const clipBytes = 5 * 1024 * 1024;
+  fillPersistentAudioCache(audioCache, 32, clipBytes);
+
+  const originalKeys = memoryCache.keys;
+  let keysCalls = 0;
+  memoryCache.keys = async () => {
+    keysCalls++;
+    if (keysCalls === 1) throw new Error('fixture cache scan failure');
+    return originalKeys();
+  };
+
+  try {
+    await audioCache.pruneAudioCacheToLimit();
+    assert.equal(cacheEntries.size, 32, 'a failed scan leaves stored recordings untouched');
+    await audioCache.pruneAudioCacheToLimit();
+
+    assert.equal(keysCalls, 2, 'a later request starts a fresh scan after failure');
+    assert.equal(cacheEntries.size, 30);
+    assert.equal(cacheEntries.size * clipBytes, 150 * 1024 * 1024);
+  } finally {
+    memoryCache.keys = originalKeys;
+    restoreIndexedDb();
+    cacheEntries.clear();
+  }
 });
 
 test('active AbortError and synchronous range failures settle playback instead of hanging', async () => {

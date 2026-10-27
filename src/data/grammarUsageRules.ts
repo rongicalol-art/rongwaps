@@ -453,4 +453,12 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L07-G04-P189': detected('V成', [inOrder(['談成']), inOrder(['辦成']), inOrder(['做成']), inOrder(['去不成']), inOrder(['辦不成']), inOrder(['買得成']), inOrder(['沒看成'])]),
   'B3L07-G05-P195': detected('就……來說', [inOrder(['就', '來說'], 8)]),
   'B3L07-G06-P197': detected('V/Vs得……', [inOrder(['得'], 4)]),
+
+  // Book 3 Lesson 8 — 穿著和品味
+  'B3L08-G01-P210': detected('S 把 NP1 + V 成 NP2', [inOrder(['把', '成'], 8)]),
+  'B3L08-G02-P211': detected('再……，也/都……', [inOrder(['再', '也'], 8), inOrder(['再', '都'], 8)]),
+  'B3L08-G03-P213': detected('V慣', [inOrder(['慣'])]),
+  'B3L08-G04-P219': detected('況且', [inOrder(['況且'])]),
+  'B3L08-G05-P221': detected('非……不可', [inOrder(['非', '不可'], 8)]),
+  'B3L08-G06-P222': detected('畢竟', [inOrder(['畢竟'])]),
 };

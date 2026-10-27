@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 3,
-  "count": 14,
+  "count": 16,
   "items": [
     {
       "id": "B3L01-R01",
@@ -1470,6 +1470,184 @@
           "simplified": "经过这趟丰富的旅行后，马丁的心情好多了，想法也改变了。回到法国后，到底要换新工作，还是要克服困难勇敢走下去，他相信自己一定能做出最佳选择，让生活过得更充实、更有意义。",
           "pinyin": "Jīngguò zhè tàng fēngfù de lǚxíng hòu, Mǎdīng de xīnqíng hǎo duō le, xiǎngfǎ yě gǎibiàn le. Huí dào Fǎguó hòu, dàodǐ yào huàn xīn gōngzuò, háishì yào kèfú kùnnan yǒnggǎn zǒu xiàqu, tā xiāngxìn zìjǐ yídìng néng zuòchū zuìjiā xuǎnzé, ràng shēnghuó guò de gèng chōngshí, gèng yǒu yìyì.",
           "english": "After this enriching journey, Martin felt much better and his outlook shifted. Upon returning to France, whether to switch jobs or face difficulties bravely, he was confident he could make the best choice to make his life more fulfilling and meaningful."
+        }
+      ]
+    },
+    {
+      "id": "B3L08-R01",
+      "bookId": 3,
+      "lessonId": 8,
+      "dialogueNumber": 1,
+      "title": "穿著和品味",
+      "setting": "東賢和朋子在聊天",
+      "printedPages": "202–204",
+      "audioReference": "08-1-1",
+      "paragraphs": [
+        {
+          "speaker": "東賢",
+          "traditional": "朋子，妳最近穿衣服的風格跟以前很不一樣，名牌衣服怎麼不穿了呢？",
+          "simplified": "朋子，你最近穿衣服的风格跟以前很不一样，名牌衣服怎么不穿了呢？",
+          "pinyin": "Péngzǐ, nǐ zuìjìn chuān yīfú de fēnggé gēn yǐqián hěn bù yíyàng, míngpái yīfú zěnme bù chuān le ne?",
+          "english": "Tomoko, your clothing style lately is very different from before. How come you don't wear brand-name clothes anymore?"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "我想改變別人對我的看法。以前，我的穿著容易讓人產生誤會，以為我是個不好相處的人。",
+          "simplified": "我想改变别人对我的看法。以前，我的穿着容易让人产生误会，以为我是个不好相处的人。",
+          "pinyin": "Wǒ xiǎng gǎibiàn biérén duì wǒ de kànfǎ. Yǐqián, wǒ de chuānzhuó róngyì ràng rén chǎnshēng wùhuì, yǐwéi wǒ shì ge bù hǎo xiāngchǔ de rén.",
+          "english": "I want to change what people think of me. In the past, my dressing easily gave people misunderstandings, assuming I was hard to get along with."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "說真的，剛認識妳的時候，妳從頭到腳都是名牌，總是覺得我們有一段距離。",
+          "simplified": "说真的，刚认识你的时候，你从头到脚都是名牌，总是觉得我们有一段距离。",
+          "pinyin": "Shuō zhēn de, gāng rènshì nǐ de shíhòu, nǐ cóng tóu dào jiǎo dōushì míngpái, zǒngshì juéde wǒmen yǒu yí duàn jùlí.",
+          "english": "Honestly, when I first met you, you wore designer labels from head to toe, and I always felt a distance between us."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "唉！不用說也知道你會這麼想。其實這跟我爸媽有關，他們對穿衣服很講究，也覺得穿名牌才有品味，所以影響了我對穿著的看法。",
+          "simplified": "唉！不用说也知道你会这么想。其实这跟我爸妈有关，他们对穿衣服很讲究，也觉得穿名牌才有品味，所以影响了我对穿着的看法。",
+          "pinyin": "Ài! Búyòng shuō yě zhīdào nǐ huì zhème xiǎng. Qíshí zhè gēn wǒ bàmā yǒuguān, tāmen duì chuān yīfú hěn jiǎngjiù, yě juéde chuān míngpái cái yǒu pǐnwèi, suǒyǐ yǐngxiǎng le wǒ duì chuānzhuó de kànfǎ.",
+          "english": "Sigh! It goes without saying you'd think that. Actually this has to do with my parents; they are very particular about clothing and feel only designer clothes have taste, so that influenced my view on dressing."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "妳爸媽的朋友，不是大老闆就是政治人物，有這樣的想法很自然啊！合適的穿著對他們很重要，名牌衣服才能表現出他們的地位。",
+          "simplified": "你爸妈的朋友，不是大老板就是政治人物，有这样的想法很自然啊！合适的人穿着对他们很重要，名牌衣服才能表现出他们的地位。",
+          "pinyin": "Nǐ bàmā de péngyǒu, búshì dà lǎobǎn jiùshì zhèngzhì rénwù, yǒu zhèyàng de xiǎngfǎ hěn zìrán a! Héshì de chuānzhuó duì tāmen hěn zhòngyào, míngpái yīfú cái néng biǎoxiàn chū tāmen de dìwèi.",
+          "english": "Your parents' friends are either big bosses or political figures, so having that mindset is quite natural! Appropriate attire is very important for them; designer clothing expresses their status."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "你說的沒錯，可是我還是不希望大家把我看成只愛買名牌的人。",
+          "simplified": "你说得没错，可是我还是不希望大家把我看成只爱买名牌的人。",
+          "pinyin": "Nǐ shuō de méicuò, kěshì wǒ háishì bù xīwàng dàjiā bǎ wǒ kànchéng zhǐ ài mǎi míngpái de rén.",
+          "english": "What you said is true, but I still don't want everyone to look at me as someone who only cares about buying luxury brands."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "跟以前比起來，妳現在的穿著更能表現出個人的特色。",
+          "simplified": "跟以前比起来，你现在的穿着更能表现出个人的特色。",
+          "pinyin": "Gēn yǐqián bǐ qǐlái, nǐ xiànzài de chuānzhuó gèng néng biǎoxiàn chū gèrén de tèsè.",
+          "english": "Compared to before, your dressing now expresses your personal character much better."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "以前我和朋友聊天的話題，常常是哪些服裝很流行，哪個名牌又請了大明星拍廣告什麼的，現在我只想穿得舒適，又有屬於自己的風格，是不是名牌真的無所謂。",
+          "simplified": "以前我和朋友聊天的话题，常常是哪些服装很流行，哪个名牌又请了大明星拍广告什么的，现在我只想穿得舒适，又有属于自己的风格，是不是名牌真的无所谓。",
+          "pinyin": "Yǐqián wǒ hé péngyǒu liáotiān de huàtí, chángcháng shì nǎxiē fúzhuāng hěn liúxíng, nǎge míngpái yòu qǐng le dà míngxīng pāi guǎnggào shénmede, xiànzài wǒ zhǐ xiǎng chuān de shūshì, yòu yǒu shǔyú zìjǐ de fēnggé, shì bú shì míngpái zhēn de wúsuǒwèi.",
+          "english": "In the past, topics when chatting with friends were often about which clothes were trendy, or which brand hired a celebrity for an ad. Now I just want to dress comfortably and have my own style; whether it's a name brand really doesn't matter."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "一般來說，明星的穿著都會吸引大家注意，所以服裝公司才會花大錢請明星拍廣告，這是正常的商業作法。其實多了解一些流行的現象也沒什麼不好。",
+          "simplified": "一般来说，明星的穿着都会吸引大家注意，所以服装公司才会花大钱请明星拍广告，这是正常的商业作法。其实多了解一些流行的现象也没什么不好。",
+          "pinyin": "Yìbān láishuō, míngxīng de chuānzhuó dōu huì xīyǐn dàjiā zhùyì, suǒyǐ fúzhuāng gōngsī cái huì huā dà qián qǐng míngxīng pāi guǎnggào, zhè shì zhèngcháng de shāngyè zuòfǎ. Qíshí duō liǎojiě yìxiē liúxíng de xiànxiàng yě méi shénme bù hǎo.",
+          "english": "Generally speaking, celebrities' attire draws attention, so apparel companies spend big money to hire stars for commercials; that's a normal commercial practice. Actually, understanding fashion trends isn't a bad thing either."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "嗯，問題是流行的穿著不一定就有品味，再英俊、再漂亮的人也應該找到自己的風格。",
+          "simplified": "嗯，问题是流行的穿着不一定就有品味，再英俊、再漂亮的人也应该找到自己的风格。",
+          "pinyin": "Èn, wèntí shì liúxíng de chuānzhuó bù yídìng jiù yǒu pǐnwèi, zài yīngjùn, zài piàoliang de rén yě yīnggāi zhǎodào zìjǐ de fēnggé.",
+          "english": "Mm, the issue is that trendy dressing doesn't necessarily have good taste. No matter how handsome or pretty someone is, they should still find their own style."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "我同意妳的說法。想穿出自己的風格，可以多看看專櫃跟雜誌上流行的服裝，想像穿在自己身上的樣子。過些時間，就能抓到感覺了。",
+          "simplified": "我同意你的说法。想穿出自己的风格，可以多看看专柜跟杂志上流行的服装，想象穿在自己身上的样子。过些时间，就能抓到感觉了。",
+          "pinyin": "Wǒ tóngyì nǐ de shuōfǎ. Xiǎng chuān chū zìjǐ de fēnggé, kěyǐ duō kànkan zhuānguì gēn zázhì shàng liúxíng de fúzhuāng, xiǎngxiàng chuān zài zìjǐ shēnshang de yàngzi. Guò xiē shíjiān, jiù néng zhuādào gǎnjué le.",
+          "english": "I agree with what you said. If you want to dress with personal style, browse department counters and fashion magazines, and imagine what looks good on you. In time, you'll catch the feeling."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "不過也不能只跟著流行，一定要有自己的想法。我有幾個朋友跟我剛好相反，他們不僅天天穿名牌，也常上街買衣服，什麼流行就買什麼，好像花多少錢都沒有限制。",
+          "simplified": "不过也不能只跟着流行，一定要有自己的想法。我有几个朋友跟我刚好相反，他们不仅天天穿名牌，也常上街买衣服，什么流行就买什么，好像花多少钱都没有限制。",
+          "pinyin": "Búguò yě bù néng zhǐ gēnzhe liúxíng, yídìng yào yǒu zìjǐ de xiǎngfǎ. Wǒ yǒu jǐ ge péngyǒu gēn wǒ gānghǎo xiāngfǎn, tāmen bùjǐn tiāntiān chuān míngpái, yě cháng shàngjiē mǎi yīfú, shénme liúxíng jiù mǎi shénme, hǎoxiàng huā duōshao qián dōu méiyǒu xiànzhì.",
+          "english": "Still, one shouldn't just follow trends; you must have your own perspective. I have a few friends who are the exact opposite of me: not only do they wear designer clothes every day, but they often go shopping, buying whatever is trendy, as if there is no spending limit."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "難怪大家都說女孩子的櫃子裡永遠少一件衣服。",
+          "simplified": "难怪大家都说女孩子的柜子里永远少一件衣服。",
+          "pinyin": "Nánguài dàjiā dōu shuō nǚhái zǐ de guìzi lǐ yǒngyuǎn shǎo yí jiàn yīfú.",
+          "english": "No wonder everyone says a woman's wardrobe is always missing one piece of clothing."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "我可不是喔！以前，一有新商品我就去買；現在，我了解自己真正的需要是什麼，絕對不會亂買了。",
+          "simplified": "我可不是喔！以前，一有新商品我就去买；现在，我了解自己真正的需要是什么，绝对不会乱买了。",
+          "pinyin": "Wǒ kě bú shì ō! Yǐqián, yì yǒu xīn shāngpǐn wǒ jiù qù mǎi; xiànzài, wǒ liǎojiě zìjǐ zhēnzhèng de xūyào shì shénme, juéduì bú huì luàn mǎi le.",
+          "english": "Not me, though! In the past, as soon as a new product came out I went to buy it; now, I understand what my real needs are, and I definitely won't buy recklessly."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "其實穿衣服也是個學問。名牌衣服，有的人穿起來好看，有的人穿起來可能很醜呢！",
+          "simplified": "其实穿衣服也是个学问。名牌衣服，有的人穿起来好看，有的人穿起来可能很丑呢！",
+          "pinyin": "Qíshí chuān yīfú yě shì ge xuéwèn. Míngpái yīfú, yǒu de rén chuān qǐlái hǎokàn, yǒu de rén chuān qǐlái kěnéng hěn chǒu ne!",
+          "english": "Actually, dressing well is a skill in itself. Brand-name clothes look great on some people, but on others they can look quite ugly!"
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "沒錯。對我來說，只要穿得慣、穿得自在，把自己當衣服的主人，這樣就能對自己更有信心了。",
+          "simplified": "没错。对我来说，只要穿得惯、穿得自在，把自己当衣服的主人，这样就能对自己更有信心了。",
+          "pinyin": "Méicuò. Duì wǒ láishuō, zhǐyào chuān de guàn, chuān de zìzài, bǎ zìjǐ dāng yīfú de zhǔrén, zhèyàng jiù néng duì zìjǐ gèng yǒu xìnxīn le.",
+          "english": "Exactly. To me, as long as I feel accustomed and at ease wearing them, treating myself as the master of the clothes, that's how I gain more self-confidence."
+        },
+        {
+          "speaker": "東賢",
+          "traditional": "妳本來條件就好，加上穿著又變得這麼有品味，難怪越來越有魅力了。",
+          "simplified": "你本来条件就好，加上穿着又变得这么有品味，难怪越来越有魅力了。",
+          "pinyin": "Nǐ běnlái tiáojiàn jiù hǎo, jiāshàng chuānzhuó yòu biànde zhème yǒu pǐnwèi, nánguài yuèláiyuè yǒu mèilì le.",
+          "english": "You naturally have great qualities, and now that your attire has become so tasteful, no wonder you're growing more charming by the day."
+        },
+        {
+          "speaker": "朋子",
+          "traditional": "別開玩笑了，你的品味比我更好呢！",
+          "simplified": "别开玩笑了，你的品味比我更好呢！",
+          "pinyin": "Bié kāi wánxiào le, nǐ de pǐnwèi bǐ wǒ gèng hǎo ne!",
+          "english": "Stop joking, your taste is even better than mine!"
+        }
+      ]
+    },
+    {
+      "id": "B3L08-R02",
+      "bookId": 3,
+      "lessonId": 8,
+      "dialogueNumber": 2,
+      "title": "快時尚",
+      "setting": "短文閱讀 · 快時尚",
+      "printedPages": "215–216",
+      "audioReference": "08-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "東賢以前是模特兒，他曾經和一家服裝公司合作，為推銷新產品拍廣告。廣告播出以後，商品賣得非常好。但是，過不了多久，就有樣式更新、更吸引人的服裝出來了。這種「快時尚」的現象，對民眾的生活產生了很大的影響。",
+          "simplified": "东贤以前是模特儿，他曾经和一家服装公司合作，为推销新产品拍广告。广告播出以后，商品卖得非常好。但是，过不了多久，就有样式更新、更吸引人的服装出来了。这种「快时尚」的现象，对民众的生活产生了很大的影响。",
+          "pinyin": "Dōngxián yǐqián shì mótèr, tā céngjīng hé yì jiā fúzhuāng gōngsī hézuò, wèi tuīxiāo xīn chǎnpǐn pāi guǎnggào. Guǎnggào bōchū yǐhòu, shāngpǐn mài de fēicháng hǎo. Dànshì, guò bù liǎo duōjiǔ, jiù yǒu yàngshì gèng xīn, gèng xīyǐn rén de fúzhuāng chūlái le. Zhè zhǒng \"kuàishíshàng\" de xiànxiàng, duì mínzhòng de shēnghuó chǎnshēng le hěn dà de yǐngxiǎng.",
+          "english": "Dongxian was formerly a model; he once collaborated with an apparel firm to film commercials for new product promotions. After the commercial aired, products sold extremely well. However, before long, newer and more attractive styles came out. This phenomenon of fast fashion has profoundly impacted everyday life."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "所謂「快時尚」，意思是服裝公司掌握最新流行的方向，很快把服裝設計、生產出來，讓顧客能趕上流行，也能擁有平價的時尚商品。不過，流行的變化速度太快，越來越多新衣服還沒穿就被丟掉，讓人們不能不思考這樣的時尚有沒有意義。",
+          "simplified": "所谓「快时尚」，意思是服装公司掌握最新流行的方向，很快把服装设计、生产出来，让顾客能赶上流行，也能拥有平价的时尚商品。不过，流行的变化速度太快，越来越多新衣服还没穿就被丢掉，让人们不能不思考这样的时尚有没有意义。",
+          "pinyin": "Suǒwèi \"kuàishíshàng\", yìsi shì fúzhuāng gōngsī zhǎngwò zuìxīn liúxíng de fāngxiàng, hěn kuài bǎ fúzhuāng shèjì, shēngchǎn chūlái, ràng gùkè néng gǎnshàng liúxíng, yě néng yǒngyǒu píngjià de shíshàng shāngpǐn. Búguò, liúxíng de biànhuà sùdù tài kuài, yuèláiyuè duō xīn yīfú hái méi chuān jiù bèi diūdiào, ràng rénmen bù néng bù sīkǎo zhèyàng de shíshàng yǒu méiyǒu yìyì.",
+          "english": "The so-called fast fashion means apparel companies capture the latest fashion trends and quickly design and manufacture clothes, allowing customers to catch up with trends while owning affordable fashion items. However, fashion trends change so quickly that more and more new clothes are thrown out before being worn, forcing people to reconsider if such fashion holds real meaning."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "因為工作的需求，東賢的衣櫃裡掛著各式各樣的「快時尚」服裝。平時他不覺得有什麼問題，等到搬家時，才發現衣服這麼多，處理起來真的很麻煩。有的連一次也沒穿過，可是已經不流行了，到底要留下來、送人還是丟掉，讓東賢相當頭痛。他不得不承認，「快時尚」也是有壞處的。",
+          "simplified": "因为工作的需求，东贤的衣柜里挂着各式各样的「快时尚」服装。平时他不觉得有什么问题，等到搬家时，才发现衣服这么多，处理起来真的很麻烦。有的连一次也没穿过，可是已经不流行了，到底要留下来、送人还是丢掉，让东贤相当头痛。他不得不承认，「快时尚」也是有坏处的。",
+          "pinyin": "Yīnwèi gōngzuò de xūqiú, Dōngxián de yīguì lǐ guàzhe gèshì gèyàng de \"kuàishíshàng\" fúzhuāng. Píngshí tā bù juéde yǒu shénme wèntí, děng dào bānjiā shí, cái fāxiàn yīfú zhème duō, chǔlǐ qǐlái zhēn de hěn máfan. Yǒude lián yí cì yě méi chuān guo, kěshì yǐjīng bù liúxíng le, dàodǐ yào liú xiàlái, sòng rén háishì diūdiào, ràng Dōngxián xiāngdāng tóutòng. Tā bùdébù chéngrèn, \"kuàishíshàng\" yě shì yǒu huàichù de.",
+          "english": "Due to job needs, Dongxian's closet was hung with all kinds of fast-fashion garments. Ordinarily he felt no issue, but when moving, he realized there were so many clothes and sorting them out was genuinely troublesome. Some hadn't even been worn once, yet were already out of style; whether to keep, gift, or toss them gave Dongxian a huge headache. He had to admit that fast fashion also brings harms."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "過去，東賢對穿著不太有自信，也很擔心跟不上流行，所以才不斷地追求時尚。現在，他比較冷靜了，他要當衣服的主人，不再為了趕流行亂買衣服。況且把舊衣服修改一下，也能使自己穿得很有個性、很有品味，所以在東賢心中，沒有什麼是非買不可的。畢竟「快時尚」只是一時的流行，長得再帥、再漂亮的人，也應該找出屬於自己最合適的穿著，這樣才是正確的選擇。",
+          "simplified": "过去，东贤对穿着不太有自信，也很担心跟不上流行，所以才不断地追求时尚。现在，他比较冷静了，他要当衣服的主人，不再为了赶流行乱买衣服。况且把旧衣服修改一下，也能使自己穿得很有个性、很有品味，所以在东贤心中，没有什么是非买不可的。毕竟「快时尚」只是一时的流行，长得再帅、再漂亮的人，也应该找出属于自己最合适的人穿着，这样才是正确的选择。",
+          "pinyin": "Guòqù, Dōngxián duì chuānzhuó bú tài yǒu zìxìn, yě hěn dānxīn gēnbushàng liúxíng, suǒyǐ cái búduàn de zhuīqiú shíshàng. Xiànzài, tā bǐjiào lěngjìng le, tā yào dāng yīfú de zhǔrén, bú zài wèile gǎn liúxíng luàn mǎi yīfú. Kuàngqiě bǎ jiù yīfú xiūgǎi yíxià, yě néng shǐ zìjǐ chuān de hěn gèxìng, hěn yǒu pǐnwèi, suǒyǐ zài Dōngxián xīnzhōng, méiyǒu shénme shì fēi mǎi bù kě de. Bìjìng \"kuàishíshàng\" zhǐ shì yìshí de liúxíng, zhǎng de zài shuài, zài piàoliang de rén, yě yīnggāi zhǎochū shǔyú zìjǐ zuì héshì de chuānzhuó, zhèyàng cái shì zhèngquè de xuǎnzé.",
+          "english": "In the past, Dongxian lacked confidence in dressing and constantly feared falling behind trends, which drove him to chase fashion non-stop. Now he has calmed down; he wants to be the master of clothes and no longer buys thoughtlessly to chase fads. Moreover, modifying old clothes can also allow one to dress with distinction and taste, so in his mind, nothing is an absolute must-buy. After all, fast fashion is merely a temporary fad; no matter how handsome or pretty one is, finding the attire that truly suits oneself is the right choice."
         }
       ]
     }

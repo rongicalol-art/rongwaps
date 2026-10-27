@@ -802,6 +802,42 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L07-G06-P197"
       }
     ]
+  },
+  {
+    "id": "B3L08-P01-D01",
+    "bookId": 3,
+    "lessonId": 8,
+    "partId": 1,
+    "title": "Grammar 1–3 · Clothes and Taste",
+    "grammarPages": [
+      {
+        "id": "B3L08-G01-P210"
+      },
+      {
+        "id": "B3L08-G02-P211"
+      },
+      {
+        "id": "B3L08-G03-P213"
+      }
+    ]
+  },
+  {
+    "id": "B3L08-P02-D02",
+    "bookId": 3,
+    "lessonId": 8,
+    "partId": 2,
+    "title": "Grammar 4–6 · Fast Fashion and Rational Choices",
+    "grammarPages": [
+      {
+        "id": "B3L08-G04-P219"
+      },
+      {
+        "id": "B3L08-G05-P221"
+      },
+      {
+        "id": "B3L08-G06-P222"
+      }
+    ]
   }
 ];
 

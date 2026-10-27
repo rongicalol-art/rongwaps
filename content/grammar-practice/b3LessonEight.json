@@ -1,0 +1,1848 @@
+{
+  "B3L08-G01-P210": {
+    "bookPage": 210,
+    "title": "Practice: S 把 NP1 + V 成 NP2",
+    "items": [
+      {
+        "id": "b3l8g1-p1",
+        "source": "p.210 #1",
+        "kind": "slot-build",
+        "prompt": "A suggests writing a novel based on blog entries. Complete B's response about turning travel notes into a book:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我常看你的部落格，內容很充實，可以寫小說了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "謝謝！我正打算把旅遊經驗"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "寫成"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一本書。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "寫成",
+            "simplified": "写成",
+            "pinyin": "xiěchéng"
+          },
+          {
+            "traditional": "寫到",
+            "simplified": "写到",
+            "pinyin": "xiědào"
+          },
+          {
+            "traditional": "看成",
+            "simplified": "看成",
+            "pinyin": "kànchéng"
+          }
+        ],
+        "accepted": "寫成",
+        "result": {
+          "traditional": "謝謝！我正打算把旅遊經驗寫成一本書。",
+          "simplified": "谢谢！我正打算把旅游经验写成一本书。",
+          "pinyin": "Xièxie! Wǒ zhèng dǎsuàn bǎ lǚyóu jīngyàn xiěchéng yì běn shū.",
+          "english": "Thanks! I'm actually planning to turn my travel experiences into a book."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "寫到"
+            ],
+            "note": "Use 寫成 ('write into / transform into a work'), not 寫到 (which denotes physical destination or degree)."
+          },
+          {
+            "placed": [
+              "看成"
+            ],
+            "note": "看成 means to view or mistake as, not to write and produce a book."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 寫成."
+      },
+      {
+        "id": "b3l8g1-p2",
+        "source": "p.210 #2",
+        "kind": "slot-build",
+        "prompt": "A confuses similar characters. Complete B's confession about mistaking 白 for 自:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "「白」跟「自」這兩個字太像了，我老是弄錯。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "嗯。我也常把「白」"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "看成"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "「自」。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "看成",
+            "simplified": "看成",
+            "pinyin": "kànchéng"
+          },
+          {
+            "traditional": "看見",
+            "simplified": "看见",
+            "pinyin": "kànjiàn"
+          },
+          {
+            "traditional": "看作",
+            "simplified": "看作",
+            "pinyin": "kànzuò"
+          }
+        ],
+        "accepted": "看成",
+        "result": {
+          "traditional": "嗯。我也常把「白」看成「自」。",
+          "simplified": "嗯。我也常把「白」看成「自」。",
+          "pinyin": "Èn. Wǒ yě cháng bǎ \"bái\" kànchéng \"zì\".",
+          "english": "Yeah. I also often mistake \"bai\" for \"zi\"."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "看見"
+            ],
+            "note": "To express visually mistaking one character for another, use 把...看成..., not 看見 ('to see')."
+          },
+          {
+            "placed": [
+              "看作"
+            ],
+            "note": "看成 specifically denotes confusing or mistaking one object for another."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 看成."
+      },
+      {
+        "id": "b3l8g1-p3",
+        "source": "p.210 #3",
+        "kind": "slot-build",
+        "prompt": "Seven people gifted a birthday cake. Complete B's reply about dividing it evenly:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這是我們七個人一起送你的蛋糕。祝你生日快樂！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "謝謝！我把它"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "切成七塊"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，剛好一人一塊。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "切成七塊",
+            "simplified": "切成七块",
+            "pinyin": "qiēchéng qī kuài"
+          },
+          {
+            "traditional": "切在七塊",
+            "simplified": "切在七块",
+            "pinyin": "qiēzài qī kuài"
+          },
+          {
+            "traditional": "分給七個",
+            "simplified": "分给七个",
+            "pinyin": "fēngěi qī ge"
+          }
+        ],
+        "accepted": "切成七塊",
+        "result": {
+          "traditional": "謝謝！我把它切成七塊，剛好一人一塊。",
+          "simplified": "谢谢！我把它切成七块，刚好一人一块。",
+          "pinyin": "Xièxie! Wǒ bǎ tā qiēchéng qī kuài, gānghǎo yì rén yí kuài.",
+          "english": "Thank you! I'll cut it into seven slices, exactly one slice per person."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "切在七塊"
+            ],
+            "note": "Use 成 to denote resulting divided pieces (切成), not a location 在."
+          },
+          {
+            "placed": [
+              "分給七個"
+            ],
+            "note": "The measure word for cake slices is 塊 (切成七塊)."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 切成七塊."
+      },
+      {
+        "id": "b3l8g1-p4",
+        "source": "p.211 #1",
+        "kind": "slot-build",
+        "prompt": "Friend's soup is too sweet because they confused sugar for salt. How do you ask them?",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你煮的湯好甜，是不是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "把糖放成"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "鹽了？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "把糖放成",
+            "simplified": "把糖放成",
+            "pinyin": "bǎ táng fàngchéng"
+          },
+          {
+            "traditional": "把糖放到",
+            "simplified": "把糖放到",
+            "pinyin": "bǎ táng fàngdào"
+          },
+          {
+            "traditional": "把糖看成",
+            "simplified": "把糖看成",
+            "pinyin": "bǎ táng kànchéng"
+          }
+        ],
+        "accepted": "把糖放成",
+        "result": {
+          "traditional": "你煮的湯好甜，是不是把糖放成鹽了？",
+          "simplified": "你煮的汤好甜，是不是把糖放成盐了？",
+          "pinyin": "Nǐ zhǔ de tāng hǎo tián, shì bú shì bǎ táng fàngchéng yán le?",
+          "english": "Your soup is so sweet, did you put in sugar instead of salt by mistake?"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "把糖放到"
+            ],
+            "note": "放成 indicates mistakenly seasoning with sugar in place of salt (result complement 成)."
+          },
+          {
+            "placed": [
+              "把糖看成"
+            ],
+            "note": "The physical seasoning mistake was putting it in (放成), not merely looking."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 把糖放成."
+      }
+    ]
+  },
+  "B3L08-G02-P211": {
+    "bookPage": 211,
+    "title": "Practice: 再……，也/都……",
+    "items": [
+      {
+        "id": "b3l8g2-p1",
+        "source": "p.212 #1",
+        "kind": "slot-build",
+        "prompt": "A advises staying home due to illness. Complete B's refusal because an exam is scheduled:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要是覺得不舒服，就請假在家休息吧。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不可以，今天有考試，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "再不舒服"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "也得去學校。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "再不舒服",
+            "simplified": "再不舒服",
+            "pinyin": "zài bù shūfu"
+          },
+          {
+            "traditional": "更不舒服",
+            "simplified": "更不舒服",
+            "pinyin": "gèng bù shūfu"
+          },
+          {
+            "traditional": "很不舒服",
+            "simplified": "很不舒服",
+            "pinyin": "hěn bù shūfu"
+          }
+        ],
+        "accepted": "再不舒服",
+        "result": {
+          "traditional": "不可以，今天有考試，再不舒服也得去學校。",
+          "simplified": "不可以，今天有考试，再不舒服也得去学校。",
+          "pinyin": "Bù kěyǐ, jīntiān yǒu kǎoshì, zài bù shūfu yě děi qù xuéxiào.",
+          "english": "No way, there's an exam today; no matter how unwell I feel, I must go to school."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "更不舒服"
+            ],
+            "note": "Use 再 + Adjective + 也 to express 'no matter how uncomfortable'."
+          },
+          {
+            "placed": [
+              "很不舒服"
+            ],
+            "note": "Use hypothetical concessive 再, not factual intensifier 很."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 再不舒服."
+      },
+      {
+        "id": "b3l8g2-p2",
+        "source": "p.212 #2",
+        "kind": "slot-build",
+        "prompt": "A baked sweet cookies. Express your willingness to taste them regardless of sweetness:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這是我做的巧克力餅乾，可能有點兒甜，嘗嘗嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "雖然我不愛吃甜點，但這是你做的，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "再甜我也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要嘗嘗。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "再甜我也",
+            "simplified": "再甜我也",
+            "pinyin": "zài tián wǒ yě"
+          },
+          {
+            "traditional": "太甜我也",
+            "simplified": "太甜我也",
+            "pinyin": "tài tián wǒ yě"
+          },
+          {
+            "traditional": "更甜我都",
+            "simplified": "更甜我都",
+            "pinyin": "gèng tián wǒ dōu"
+          }
+        ],
+        "accepted": "再甜我也",
+        "result": {
+          "traditional": "雖然我不愛吃甜點，但這是你做的，再甜我也要嘗嘗。",
+          "simplified": "虽然我不爱吃甜点，但这是你做的，再甜我也要尝尝。",
+          "pinyin": "Suīrán wǒ bú ài chī tiándiǎn, dàn zhè shì nǐ zuò de, zài tián wǒ yě yào chángchang.",
+          "english": "Although I don't love sweets, since you made this, no matter how sweet it is I'll still taste it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "太甜我也"
+            ],
+            "note": "Use hypothetical extreme 再甜...也... ('no matter how sweet'), not complaint 太甜."
+          },
+          {
+            "placed": [
+              "更甜我都"
+            ],
+            "note": "Use 也 with an individual conditional action following 再甜."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 再甜我也."
+      },
+      {
+        "id": "b3l8g2-p3",
+        "source": "p.212 #3",
+        "kind": "slot-build",
+        "prompt": "A asks if a 12-hour flight to see your boyfriend is exhausting. Complete your reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說妳要坐十二小時飛機見男友，不累嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們很久沒見面了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "再累我也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要去見他。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "再累我也",
+            "simplified": "再累我也",
+            "pinyin": "zài lèi wǒ yě"
+          },
+          {
+            "traditional": "太累我都",
+            "simplified": "太累我都",
+            "pinyin": "tài lèi wǒ dōu"
+          },
+          {
+            "traditional": "更累我也",
+            "simplified": "更累我也",
+            "pinyin": "gèng lèi wǒ yě"
+          }
+        ],
+        "accepted": "再累我也",
+        "result": {
+          "traditional": "我們很久沒見面了，再累我也要去見他。",
+          "simplified": "我们很久没见面了，再累我也要去见他。",
+          "pinyin": "Wǒmen hěn jiǔ méi jiànmiàn le, zài lèi wǒ yě yào qù jiàn tā.",
+          "english": "We haven't seen each other in so long; no matter how tired I am, I still want to go see him."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "太累我都"
+            ],
+            "note": "Concessive extreme uses 再 ('no matter how tired'), not complaint 太."
+          },
+          {
+            "placed": [
+              "更累我也"
+            ],
+            "note": "Hypothetical condition paired with 也 uses 再, not comparative 更."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 再累我也."
+      },
+      {
+        "id": "b3l8g2-p4",
+        "source": "p.212 #4",
+        "kind": "slot-build",
+        "prompt": "A student finds characters hard to write. Encourage them that practice brings quick progress:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "老師"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "寫漢字中文才進步得快，漢字"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "再難寫也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "得練習。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "再難寫也",
+            "simplified": "再难写也",
+            "pinyin": "zài nán xiě yě"
+          },
+          {
+            "traditional": "很難寫都",
+            "simplified": "很难写都",
+            "pinyin": "hěn nán xiě dōu"
+          },
+          {
+            "traditional": "更難寫也",
+            "simplified": "更难写也",
+            "pinyin": "gèng nán xiě yě"
+          }
+        ],
+        "accepted": "再難寫也",
+        "result": {
+          "traditional": "寫漢字中文才進步得快，漢字再難寫也得練習。",
+          "simplified": "写汉字中文才进步得快，汉字再难写也得练习。",
+          "pinyin": "Xiě hànzì Zhōngwén cái jìnbù de kuài, hànzì zài nán xiě yě děi liànxí.",
+          "english": "Writing characters makes your Chinese improve faster; no matter how hard characters are to write, one must still practice."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "很難寫都"
+            ],
+            "note": "Use 再 + Stative Verb + 也 to set up the concessive condition."
+          },
+          {
+            "placed": [
+              "更難寫也"
+            ],
+            "note": "Concessive hypothetical pattern uses 再, not 更."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 再難寫也."
+      }
+    ]
+  },
+  "B3L08-G03-P213": {
+    "bookPage": 213,
+    "title": "Practice: V慣",
+    "items": [
+      {
+        "id": "b3l8g3-p1",
+        "source": "p.213 #1",
+        "kind": "slot-build",
+        "prompt": "A asks if you can stomach natto in Japan. Complete B's response about being unable to get used to it:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你住在日本一段時間了，吃得慣納豆嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那種獨特的味道，我到現在還是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃不慣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吃不慣",
+            "simplified": "吃不惯",
+            "pinyin": "chībúguàn"
+          },
+          {
+            "traditional": "吃得慣",
+            "simplified": "吃得惯",
+            "pinyin": "chīdeguàn"
+          },
+          {
+            "traditional": "吃沒慣",
+            "simplified": "吃没惯",
+            "pinyin": "chīméiguàn"
+          }
+        ],
+        "accepted": "吃不慣",
+        "result": {
+          "traditional": "那種獨特的味道，我到現在還是吃不慣。",
+          "simplified": "那种独特的味道，我到现在还是吃不惯。",
+          "pinyin": "Nà zhǒng dútè de wèidào, wǒ dào xiànzài háishì chībúguàn.",
+          "english": "That unique taste, even now I still can't get used to eating it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "吃得慣"
+            ],
+            "note": "The context indicates an inability to adapt; use negative potential 吃不慣."
+          },
+          {
+            "placed": [
+              "吃沒慣"
+            ],
+            "note": "Potential complements take 不 (吃不慣), never 沒."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 吃不慣."
+      },
+      {
+        "id": "b3l8g3-p2",
+        "source": "p.213 #2",
+        "kind": "slot-build",
+        "prompt": "A asks not to be called 'Miss Lin' anymore. Complete B's apology about an ingrained habit:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們已經認識快一年了，別再叫我「林小姐」了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "對不起，我平時"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "叫慣了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，一時改不過來。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "叫慣了",
+            "simplified": "叫惯了",
+            "pinyin": "jiàoguàn le"
+          },
+          {
+            "traditional": "叫得慣",
+            "simplified": "叫得惯",
+            "pinyin": "jiàodeguàn"
+          },
+          {
+            "traditional": "叫習慣",
+            "simplified": "叫习惯",
+            "pinyin": "jiàoxíguàn"
+          }
+        ],
+        "accepted": "叫慣了",
+        "result": {
+          "traditional": "對不起，我平時叫慣了，一時改不過來。",
+          "simplified": "对不起，我平时叫惯了，一时改不过来。",
+          "pinyin": "Duìbuqǐ, wǒ píngshí jiàoguàn le, yìshí gǎibùguòlái.",
+          "english": "Sorry, I'm used to calling you that and can't change overnight."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "叫得慣"
+            ],
+            "note": "叫得慣 is potential ('can get used to'); here an established habit is affirmed with 叫慣了."
+          },
+          {
+            "placed": [
+              "叫習慣"
+            ],
+            "note": "The textbook result complement pattern is V慣了 (叫慣了)."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 叫慣了."
+      },
+      {
+        "id": "b3l8g3-p3",
+        "source": "p.214 #1",
+        "kind": "slot-build",
+        "prompt": "Friend recommends high heels, but you find them too high. Tell your friend you can't wear them comfortably:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這雙皮鞋跟太高了，我平時"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "穿不慣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "這麼高的鞋。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "穿不慣",
+            "simplified": "穿不惯",
+            "pinyin": "chuānbúguàn"
+          },
+          {
+            "traditional": "穿得慣",
+            "simplified": "穿得惯",
+            "pinyin": "chuāndeguàn"
+          },
+          {
+            "traditional": "穿沒慣",
+            "simplified": "穿没惯",
+            "pinyin": "chuānméiguàn"
+          }
+        ],
+        "accepted": "穿不慣",
+        "result": {
+          "traditional": "這雙皮鞋跟太高了，我平時穿不慣這麼高的鞋。",
+          "simplified": "这双皮鞋跟太高了，我平时穿不惯这么高的鞋。",
+          "pinyin": "Zhè shuāng píxié gēn tài gāo le, wǒ píngshí chuānbúguàn zhème gāo de xié.",
+          "english": "The heels on these leather shoes are too high; I'm ordinarily not used to wearing shoes this high."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "穿得慣"
+            ],
+            "note": "You are declining because you cannot comfortably walk in them (穿不慣)."
+          },
+          {
+            "placed": [
+              "穿沒慣"
+            ],
+            "note": "Negative potential complement takes 不 (穿不慣), never 沒."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 穿不慣."
+      },
+      {
+        "id": "b3l8g3-p4",
+        "source": "p.214 #2",
+        "kind": "slot-build",
+        "prompt": "Colleague wonders why you're moving from a convenient apartment. Explain the intolerable noise:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "雖然離公司很近，但是這裡環境太吵，我實在"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "住不慣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "住不慣",
+            "simplified": "住不惯",
+            "pinyin": "zhùbúguàn"
+          },
+          {
+            "traditional": "住得慣",
+            "simplified": "住得惯",
+            "pinyin": "zhùdeguàn"
+          },
+          {
+            "traditional": "住沒慣",
+            "simplified": "住没惯",
+            "pinyin": "zhùméiguàn"
+          }
+        ],
+        "accepted": "住不慣",
+        "result": {
+          "traditional": "雖然離公司很近，但是這裡環境太吵，我實在住不慣。",
+          "simplified": "虽然离公司很近，但是这里环境太吵，我实在住不惯。",
+          "pinyin": "Suīrán lí gōngsī hěn jìn, dànshì zhèlǐ huánjìng tài chǎo, wǒ shízài zhùbúguàn.",
+          "english": "Although it's close to the company, the surroundings here are too noisy; I really can't get used to living here."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "住得慣"
+            ],
+            "note": "住得慣 expresses being able to adapt; here you cannot tolerate the noise (住不慣)."
+          },
+          {
+            "placed": [
+              "住沒慣"
+            ],
+            "note": "Negative potential complement takes 不 (住不慣), never 沒."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 住不慣."
+      }
+    ]
+  },
+  "B3L08-G04-P219": {
+    "bookPage": 219,
+    "title": "Practice: 況且",
+    "items": [
+      {
+        "id": "b3l8g4-p1",
+        "source": "p.220 #1",
+        "kind": "slot-build",
+        "prompt": "A wants to open a restaurant. Reinforce your cautious advice with intense competition:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我想做餐廳生意，你覺得怎麼樣？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "做生意需要不少錢，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "況且現在"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "競爭激烈，最好想清楚。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "況且現在",
+            "simplified": "况且现在",
+            "pinyin": "kuàngqiě xiànzài"
+          },
+          {
+            "traditional": "但是現在",
+            "simplified": "但是现在",
+            "pinyin": "dànshì xiànzài"
+          },
+          {
+            "traditional": "所以現在",
+            "simplified": "所以现在",
+            "pinyin": "suǒyǐ xiànzài"
+          }
+        ],
+        "accepted": "況且現在",
+        "result": {
+          "traditional": "做生意需要不少錢，況且現在競爭激烈，最好想清楚。",
+          "simplified": "做生意需要不少钱，况且现在竞争激烈，最好想清楚。",
+          "pinyin": "Zuò shēngyì xūyào bù shǎo qián, kuàngqiě xiànzài jìngzhēng jīliè, zuìhǎo xiǎng qīngchǔ.",
+          "english": "Doing business requires quite a bit of money, and moreover competition is fierce right now; you'd better think it through carefully."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "但是現在"
+            ],
+            "note": "況且 adds a supplementary reason that compounds the first point, rather than introducing a contrast."
+          },
+          {
+            "placed": [
+              "所以現在"
+            ],
+            "note": "Competition is an independent concurrent factor, not caused by capital requirements."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 況且現在."
+      },
+      {
+        "id": "b3l8g4-p2",
+        "source": "p.220 #2",
+        "kind": "slot-build",
+        "prompt": "A asks how working with a new colleague is going. Add a compounding complaint about his carelessness:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你的新同事怎麼樣？跟大家合作愉快嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他沒什麼耐心，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "況且他又"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "做事馬虎，合作很辛苦。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "況且他又",
+            "simplified": "况且他又",
+            "pinyin": "kuàngqiě tā yòu"
+          },
+          {
+            "traditional": "但是他又",
+            "simplified": "但是他又",
+            "pinyin": "dànshì tā yòu"
+          },
+          {
+            "traditional": "所以他又",
+            "simplified": "所以他又",
+            "pinyin": "suǒyǐ tā yòu"
+          }
+        ],
+        "accepted": "況且他又",
+        "result": {
+          "traditional": "他沒什麼耐心，況且他又做事馬虎，合作很辛苦。",
+          "simplified": "他没什么耐心，况且他又做事马虎，合作很辛苦。",
+          "pinyin": "Tā méi shénme nàixīn, kuàngqiě tā yòu zuòshì mǎhǔ, hézuò hěn xīnkǔ.",
+          "english": "He doesn't have much patience, and moreover he does things sloppily; working with him is really strenuous."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "但是他又"
+            ],
+            "note": "況且 introduces a reinforcing additional grievance rather than a transition."
+          },
+          {
+            "placed": [
+              "所以他又"
+            ],
+            "note": "Sloppiness is a separate flaw layered on, not a result of impatience."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 況且他又."
+      },
+      {
+        "id": "b3l8g4-p3",
+        "source": "p.220 #3",
+        "kind": "slot-build",
+        "prompt": "Manager offered an overseas posting. Explain turning it down due to unfamiliarity and having a young child:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "國外環境我不熟悉，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "況且孩子"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "還小，我不想去。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "況且孩子",
+            "simplified": "况且孩子",
+            "pinyin": "kuàngqiě háizi"
+          },
+          {
+            "traditional": "但是孩子",
+            "simplified": "但是孩子",
+            "pinyin": "dànshì háizi"
+          },
+          {
+            "traditional": "畢竟孩子",
+            "simplified": "毕竟孩子",
+            "pinyin": "bìjìng háizi"
+          }
+        ],
+        "accepted": "況且孩子",
+        "result": {
+          "traditional": "國外環境我不熟悉，況且孩子還小，我不想去。",
+          "simplified": "国外环境我不熟悉，况且孩子还小，我不想去。",
+          "pinyin": "Guówài huánjìng wǒ bù shúxī, kuàngqiě háizi hái xiǎo, wǒ bù xiǎng qù.",
+          "english": "I'm unfamiliar with the overseas environment, and furthermore my child is still young; I don't want to go."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "但是孩子"
+            ],
+            "note": "The young child reinforces the refusal rather than contrasting with unfamiliarity."
+          },
+          {
+            "placed": [
+              "畢竟孩子"
+            ],
+            "note": "Use 況且 to layer a secondary concrete rationale onto the primary one."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 況且孩子."
+      },
+      {
+        "id": "b3l8g4-p4",
+        "source": "p.220 #4",
+        "kind": "slot-build",
+        "prompt": "Friend questions your branded clothing purchases. Justify with personal earnings and durability:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我自己工作賺錢，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "況且名牌"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "衣服能穿很久。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "況且名牌",
+            "simplified": "况且名牌",
+            "pinyin": "kuàngqiě míngpái"
+          },
+          {
+            "traditional": "但是名牌",
+            "simplified": "但是名牌",
+            "pinyin": "dànshì míngpái"
+          },
+          {
+            "traditional": "畢竟名牌",
+            "simplified": "毕竟名牌",
+            "pinyin": "bìjìng míngpái"
+          }
+        ],
+        "accepted": "況且名牌",
+        "result": {
+          "traditional": "我自己工作賺錢，況且名牌衣服能穿很久。",
+          "simplified": "我自己工作赚钱，况且名牌衣服能穿很久。",
+          "pinyin": "Wǒ zìjǐ gōngzuò zhuànqián, kuàngqiě míngpái yīfú néng chuān hěn jiǔ.",
+          "english": "I work and earn my own money, and moreover designer clothes last a very long time."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "但是名牌"
+            ],
+            "note": "Durability is a supporting justification that compounds your financial self-sufficiency (況且)."
+          },
+          {
+            "placed": [
+              "畢竟名牌"
+            ],
+            "note": "Use 況且 to link and reinforce your dual justifications."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 況且名牌."
+      }
+    ]
+  },
+  "B3L08-G05-P221": {
+    "bookPage": 221,
+    "title": "Practice: 非……不可",
+    "items": [
+      {
+        "id": "b3l8g5-p1",
+        "source": "p.221 #2",
+        "kind": "slot-build",
+        "prompt": "A broke his brother's around-the-island bike. Tell him an apology is strictly unavoidable:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "糟糕，我把哥哥準備去環島的自行車弄壞了！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "非向他"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "道歉不可。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "非向他",
+            "simplified": "非向他",
+            "pinyin": "fēi xiàng tā"
+          },
+          {
+            "traditional": "向他非",
+            "simplified": "向他非",
+            "pinyin": "xiàng tā fēi"
+          },
+          {
+            "traditional": "不可向他",
+            "simplified": "不可向他",
+            "pinyin": "bùkě xiàng tā"
+          }
+        ],
+        "accepted": "非向他",
+        "result": {
+          "traditional": "那你非向他道歉不可。",
+          "simplified": "那你非向他道歉不可。",
+          "pinyin": "Nà nǐ fēi xiàng tā dàoqiàn bùkě.",
+          "english": "Then you absolutely must apologize to him."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "向他非"
+            ],
+            "note": "非 must precede the entire prepositional phrase (非向他道歉不可)."
+          },
+          {
+            "placed": [
+              "不可向他"
+            ],
+            "note": "不可 concludes the construction at the end of the sentence."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 非向他."
+      },
+      {
+        "id": "b3l8g5-p2",
+        "source": "p.221 #3",
+        "kind": "slot-build",
+        "prompt": "A wonders whether to give a red envelope for manager's baby. Complete B's confirmation:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "經理的兒子快滿月了，我得包紅包嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "大家都包了紅包，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "非包"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不可。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "非包",
+            "simplified": "非包",
+            "pinyin": "fēi bāo"
+          },
+          {
+            "traditional": "包非",
+            "simplified": "包非",
+            "pinyin": "bāo fēi"
+          },
+          {
+            "traditional": "不非包",
+            "simplified": "不非包",
+            "pinyin": "bù fēi bāo"
+          }
+        ],
+        "accepted": "非包",
+        "result": {
+          "traditional": "大家都包了紅包，你非包不可。",
+          "simplified": "大家都包了红包，你非包不可。",
+          "pinyin": "Dàjiā dōu bāo le hóngbāo, nǐ fēi bāo bùkě.",
+          "english": "Everyone has given red envelopes; you simply must give one too."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "包非"
+            ],
+            "note": "非 must stand directly before the main verb (非包不可)."
+          },
+          {
+            "placed": [
+              "不非包"
+            ],
+            "note": "Do not add redundant negations before 非."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 非包."
+      },
+      {
+        "id": "b3l8g5-p3",
+        "source": "p.221 #4",
+        "kind": "slot-build",
+        "prompt": "Foreign friend visits Taipei. Recommend Taipei 101 as an unmissable destination:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "來台北旅行，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "非去101"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不可。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "非去101",
+            "simplified": "非去101",
+            "pinyin": "fēi qù 101"
+          },
+          {
+            "traditional": "去101非",
+            "simplified": "去101非",
+            "pinyin": "qù 101 fēi"
+          },
+          {
+            "traditional": "不必去",
+            "simplified": "不必去",
+            "pinyin": "bú bì qù"
+          }
+        ],
+        "accepted": "非去101",
+        "result": {
+          "traditional": "來台北旅行，你非去101不可。",
+          "simplified": "来台北旅行，你非去101不可。",
+          "pinyin": "Lái Táiběi lǚxíng, nǐ fēi qù 101 bùkě.",
+          "english": "When traveling to Taipei, you absolutely must visit Taipei 101."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "去101非"
+            ],
+            "note": "Place 非 before the verb phrase (非去101不可)."
+          },
+          {
+            "placed": [
+              "不必去"
+            ],
+            "note": "不必去 ('need not go') completely inverts the enthusiastic recommendation."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 非去101."
+      },
+      {
+        "id": "b3l8g5-p4",
+        "source": "p.222 #2",
+        "kind": "slot-build",
+        "prompt": "Teeth bleeding profusely after a surfing hit. State that medical attention is essential:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "朋友"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他牙齒血流個不停，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "非看醫生"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不可。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "非看醫生",
+            "simplified": "非看医生",
+            "pinyin": "fēi kàn yīshēng"
+          },
+          {
+            "traditional": "看非醫生",
+            "simplified": "看非医生",
+            "pinyin": "kàn fēi yīshēng"
+          },
+          {
+            "traditional": "不可看",
+            "simplified": "不可看",
+            "pinyin": "bùkě kàn"
+          }
+        ],
+        "accepted": "非看醫生",
+        "result": {
+          "traditional": "他牙齒血流個不停，非看醫生不可。",
+          "simplified": "他牙齿血流个不停，非看医生不可。",
+          "pinyin": "Tā yáchǐ xuè liú ge bùtíng, fēi kàn yīshēng bùkě.",
+          "english": "His gums are bleeding non-stop; he absolutely must see a doctor."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "看非醫生"
+            ],
+            "note": "非 must precede the entire verb phrase (非看醫生)."
+          },
+          {
+            "placed": [
+              "不可看"
+            ],
+            "note": "The pattern places 非 before the verb and 不可 at clause end."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 非看醫生."
+      }
+    ]
+  },
+  "B3L08-G06-P222": {
+    "bookPage": 222,
+    "title": "Practice: 畢竟",
+    "items": [
+      {
+        "id": "b3l8g6-p1",
+        "source": "p.223 #1",
+        "kind": "slot-build",
+        "prompt": "A complains about customers non-stop bargaining. Complete B's reminder of basic human nature:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "客人一進門就講價講個不停，這樣怎麼做生意啊！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這很正常，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "畢竟誰都"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不想吃虧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "畢竟誰都",
+            "simplified": "毕竟谁都",
+            "pinyin": "bìjìng shéi dōu"
+          },
+          {
+            "traditional": "究竟誰都",
+            "simplified": "究竟谁都",
+            "pinyin": "jiùjìng shéi dōu"
+          },
+          {
+            "traditional": "只要誰都",
+            "simplified": "只要谁都",
+            "pinyin": "zhǐyào shéi dōu"
+          }
+        ],
+        "accepted": "畢竟誰都",
+        "result": {
+          "traditional": "這很正常，畢竟誰都不想吃虧。",
+          "simplified": "这很正常，毕竟谁都不想吃亏。",
+          "pinyin": "Zhè hěn zhèngcháng, bìjìng shéi dōu bù xiǎng chīkuī.",
+          "english": "This is completely normal; after all, nobody wants to lose out."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "究竟誰都"
+            ],
+            "note": "究竟 is used in questions ('on earth?'), not in explanatory grounding."
+          },
+          {
+            "placed": [
+              "只要誰都"
+            ],
+            "note": "只要 introduces a condition, not an overarching fundamental truth."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 畢竟誰都."
+      },
+      {
+        "id": "b3l8g6-p2",
+        "source": "p.223 #2",
+        "kind": "slot-build",
+        "prompt": "A asks why people still drive when transit is convenient. Complete B's explanation about car autonomy:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "捷運公車都方便，為什麼還開車上下班？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "有些地方公車到不了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "畢竟開車"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "還是比較自由。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "畢竟開車",
+            "simplified": "毕竟开车",
+            "pinyin": "bìjìng kāichē"
+          },
+          {
+            "traditional": "究竟開車",
+            "simplified": "究竟开车",
+            "pinyin": "jiùjìng kāichē"
+          },
+          {
+            "traditional": "雖然開車",
+            "simplified": "虽然开车",
+            "pinyin": "suīrán kāichē"
+          }
+        ],
+        "accepted": "畢竟開車",
+        "result": {
+          "traditional": "有些地方公車到不了，畢竟開車還是比較自由。",
+          "simplified": "有些地方公车到不了，毕竟开车还是比较自由。",
+          "pinyin": "Yǒuxiē dìfāng gōngchē dào bù liǎo, bìjìng kāichē háishì bǐjiào zìyóu.",
+          "english": "Some places buses can't reach; driving, after all, is still freer."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "究竟開車"
+            ],
+            "note": "究竟 is used for inquisitive questions, not persuasive grounding."
+          },
+          {
+            "placed": [
+              "雖然開車"
+            ],
+            "note": "雖然 introduces concession; here 畢竟 highlights the essential advantage."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 畢竟開車."
+      },
+      {
+        "id": "b3l8g6-p3",
+        "source": "p.222 #3",
+        "kind": "slot-build",
+        "prompt": "Colleague works every weekend. Urge them to rest because humans aren't machines:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "別再加班了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "畢竟人"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不是機器，累壞了會生病。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "畢竟人",
+            "simplified": "毕竟人",
+            "pinyin": "bìjìng rén"
+          },
+          {
+            "traditional": "究竟人",
+            "simplified": "究竟人",
+            "pinyin": "jiùjìng rén"
+          },
+          {
+            "traditional": "偏偏人",
+            "simplified": "偏偏人",
+            "pinyin": "piānpiān rén"
+          }
+        ],
+        "accepted": "畢竟人",
+        "result": {
+          "traditional": "別再加班了，畢竟人不是機器，累壞了會生病。",
+          "simplified": "别再加班了，毕竟人不是机器，累坏了会生病。",
+          "pinyin": "Bié zài jiābān le, bìjìng rén bú shì jīqì, lèi huài le huì shēngbìng.",
+          "english": "Stop working overtime; after all, humans aren't machines, getting exhausted will make you sick."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "究竟人"
+            ],
+            "note": "畢竟 appeals to the indisputable reality that humans have physical limits."
+          },
+          {
+            "placed": [
+              "偏偏人"
+            ],
+            "note": "偏偏 implies contrary obstinacy, which does not fit an appeal to rest."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 畢竟人."
+      },
+      {
+        "id": "b3l8g6-p4",
+        "source": "p.222 #2",
+        "kind": "slot-build",
+        "prompt": "Friend pushes high expectations on a three-year-old toddler. Urge moderation:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "別對她要求太高了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "畢竟她"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "才三歲。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "畢竟她",
+            "simplified": "毕竟她",
+            "pinyin": "bìjìng tā"
+          },
+          {
+            "traditional": "究竟她",
+            "simplified": "究竟她",
+            "pinyin": "jiùjìng tā"
+          },
+          {
+            "traditional": "難怪她",
+            "simplified": "难怪她",
+            "pinyin": "nánguài tā"
+          }
+        ],
+        "accepted": "畢竟她",
+        "result": {
+          "traditional": "別對她要求太高了，畢竟她才三歲。",
+          "simplified": "别对她要求太高了，毕竟她才三岁。",
+          "pinyin": "Bié duì tā yāoqiú tài gāo le, bìjìng tā cái sān suì.",
+          "english": "Don't demand too much of her; after all, she's only three years old."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "究竟她"
+            ],
+            "note": "畢竟 invokes the fundamental mitigating reality ('she is only three')."
+          },
+          {
+            "placed": [
+              "難怪她"
+            ],
+            "note": "難怪 expresses 'no wonder', which does not ground the plea."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 畢竟她."
+      }
+    ]
+  }
+}

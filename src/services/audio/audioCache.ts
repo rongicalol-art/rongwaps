@@ -73,13 +73,11 @@ export async function removeAudioMeta(fileName: string): Promise<void> {
   }
 }
 
-/**
- * Enforce the byte cap on the persistent audio cache. Called after a put.
- * Evicts least-recently-accessed entries until the estimated total is under
- * MAX_AUDIO_CACHE_BYTES. All errors are swallowed so caching never blocks
- * playback.
- */
-export async function pruneAudioCacheToLimit(): Promise<void> {
+let audioCachePrune: Promise<void> | null = null;
+let audioCachePruneRequested = false;
+
+/** Run one snapshot pass; the caller serializes passes and queues a rerun if needed. */
+async function pruneAudioCachePass(): Promise<void> {
   const cache = await getAudioFileCache();
   if (!cache) return;
   try {
@@ -112,6 +110,31 @@ export async function pruneAudioCacheToLimit(): Promise<void> {
   } catch (error) {
     debugLogger.warn('Audio', 'Audio cache pruning failed', error);
   }
+}
+
+/**
+ * Enforce the byte cap on the persistent audio cache. Called after a put.
+ * Evicts least-recently-accessed entries until the estimated total is under
+ * MAX_AUDIO_CACHE_BYTES. Concurrent requests share one serialized run; requests
+ * during a snapshot schedule another pass so new writes are included. All
+ * errors are swallowed so caching never blocks playback.
+ */
+export function pruneAudioCacheToLimit(): Promise<void> {
+  if (audioCachePrune) {
+    audioCachePruneRequested = true;
+    return audioCachePrune;
+  }
+  audioCachePrune = Promise.resolve().then(async () => {
+    try {
+      do {
+        audioCachePruneRequested = false;
+        await pruneAudioCachePass();
+      } while (audioCachePruneRequested);
+    } finally {
+      audioCachePrune = null;
+    }
+  });
+  return audioCachePrune;
 }
 
 let pruneTimeout: ReturnType<typeof setTimeout> | null = null;
