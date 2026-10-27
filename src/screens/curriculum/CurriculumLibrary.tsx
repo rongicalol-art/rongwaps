@@ -209,7 +209,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                 transition={{ duration: 0.16, ease: 'easeOut' }}
                 className="w-full"
               >
-                <CurriculumSkeleton hasStarterLesson={activeBook.id === 1} />
+                <CurriculumSkeleton />
               </motion.div>
             ) : (
               <motion.div

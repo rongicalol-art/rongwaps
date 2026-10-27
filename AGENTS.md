@@ -15,7 +15,7 @@ Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/
 ## Session context and execution
 
 - **Owner taste and working style: read `.claude/OWNER_PREFERENCES.md` before any UI, design, motion or copy work.** It is the full, tool-neutral brief (any AI).
-- **One folder, one branch.** Work only in `~/Projects/rongwaps` on `main` (Claude and Codex both). No separate worktrees or side branches unless the owner asks. Commit and push after every finished task so both tools always see the latest.
+- **One folder, one branch.** Work only in `~/Projects/rongwaps` on `main` (Claude and Codex both). No separate worktrees or side branches unless the owner asks. Commit locally after finished tasks. Push or deploy only when the owner explicitly asks; batch releases to avoid repeated app updates interrupting learners.
 - Work inline. Do not spawn subagents unless the owner explicitly asks.
 - Skills: `.claude/skills/` is the source of truth. Codex reads mirrored copies in `.agents/skills/` (local, gitignored, may lag); when they differ, the `.claude/` version wins. `.agents/portable-memory.md` is optional local context: verify its claims against current code.
 - Design/motion: plan, then a clickable prototype, then the owner's pick, then build (see the UI director skill).

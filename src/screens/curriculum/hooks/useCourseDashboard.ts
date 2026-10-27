@@ -108,6 +108,8 @@ export function useCourseDashboard({
     });
 
     const baseLessons = lessonDefinitions
+      // Introduction is hidden until the owner reopens it.
+      .filter((lesson) => lesson.id !== 0)
       .map((lesson) => {
         const lessonCards = cardsByLesson.get(lesson.id) ?? [];
         const partRows = aggregateLessonPartProgress(lessonCards, learnedCards);
