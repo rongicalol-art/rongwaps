@@ -92,22 +92,6 @@ export function pickVoice(
   return ranked[0]?.voice ?? null;
 }
 
-export function kickstartSpeech(): void {
-  try {
-    const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
-    const isMacChrome = ua.includes('Macintosh')
-      && ua.includes('Chrome')
-      && !ua.includes('Edg/')
-      && !ua.includes('OPR/');
-    if (!isMacChrome || typeof window === 'undefined' || !window.speechSynthesis) return;
-    window.speechSynthesis.pause();
-    window.speechSynthesis.resume();
-  } catch (err) {
-    // Graceful degradation: best-effort speech synthesis kickstart on Chromium
-    debugLogger.warn('Audio', 'kickstartSpeech failed', err);
-  }
-}
-
 export async function speakUtterance(
   text: string,
   language: string,
@@ -117,6 +101,14 @@ export async function speakUtterance(
   finish: () => void,
   preferAnyChineseVoice = false,
 ): Promise<void> {
+  const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+  // macOS TextToSpeech can assert on TTSExecutor and terminate the whole
+  // Chromium browser. JS cannot catch that crash; skip native speech before
+  // even constructing an utterance. Recorded audio and Flow remain usable.
+  if (ua.includes('Macintosh') && /(?:Chrome|Chromium)\//.test(ua)) {
+    finish();
+    return;
+  }
   if (!text.trim() || typeof window === 'undefined' || !window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') {
     finish();
     return;
@@ -172,7 +164,6 @@ export async function speakUtterance(
       finish();
     };
     window.speechSynthesis.speak(utterance);
-    kickstartSpeech();
   } catch (error) {
     if (utterance) releaseSpeechUtterance(utterance);
     onUtteranceChange(null);

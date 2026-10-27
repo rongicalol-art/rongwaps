@@ -327,6 +327,70 @@ test('unlocking recorded audio never constructs or speaks TTS; requested speech 
   }
 });
 
+test('Mac Chromium skips every native speech entry point but keeps recordings playable', async () => {
+  const savedNavigator = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  const savedSpeech = Object.getOwnPropertyDescriptor(window, 'speechSynthesis');
+  const savedUtterance = globalThis.SpeechSynthesisUtterance;
+  let nativeCalls = 0;
+  Object.defineProperty(window, 'speechSynthesis', { configurable: true, get() {
+    nativeCalls++;
+    throw new Error('native speech must never be accessed on Mac Chromium');
+  } });
+  class ForbiddenUtterance extends FakeSpeechSynthesisUtterance {
+    constructor(text: string) { super(text); nativeCalls++; }
+  }
+  Object.defineProperty(globalThis, 'SpeechSynthesisUtterance', { configurable: true, value: ForbiddenUtterance });
+  const service = new AudioService();
+  try {
+    for (const browser of ['Chrome/156.0.0.0', 'Chromium/156.0.0.0', 'Chrome/156.0.0.0 Edg/156.0.0.0']) {
+      Object.defineProperty(globalThis, 'navigator', { configurable: true, value: {
+        userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ${browser}`,
+      } });
+      await service.speakText('English definition', 'en-US');
+      await service.speakText('你好', 'zh-TW');
+      await service.speakTTS('你好');
+      await service.play(undefined, 1, 'unrecorded fallback', 'en-US');
+      service.stop();
+    }
+    const recording = service.play('https://audio.example.test/mac-flow.mp3');
+    await tick();
+    assert.equal(service.getGlobalAudio()!.src, 'https://audio.example.test/mac-flow.mp3');
+    (service.getGlobalAudio() as unknown as FakeAudio).onended?.();
+    await recording;
+    assert.equal(nativeCalls, 0);
+  } finally {
+    service.stop();
+    if (savedNavigator) Object.defineProperty(globalThis, 'navigator', savedNavigator);
+    else Reflect.deleteProperty(globalThis, 'navigator');
+    Object.defineProperty(window, 'speechSynthesis', savedSpeech!);
+    Object.defineProperty(globalThis, 'SpeechSynthesisUtterance', { configurable: true, value: savedUtterance });
+  }
+});
+
+test('Mac Safari and non-Mac Chrome still speak definitions', async () => {
+  const savedNavigator = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  const service = new AudioService();
+  try {
+    for (const userAgent of [
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Version/27.0 Safari/605.1.15',
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/156.0.0.0 Safari/537.36',
+      'Mozilla/5.0 (Linux; Android 16) Chrome/156.0.0.0 Mobile Safari/537.36',
+    ]) {
+      Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { userAgent } });
+      const before = speechState.spoken.length;
+      const playback = service.speakText('English definition', 'en-US');
+      await tick();
+      assert.equal(speechState.spoken.length, before + 1);
+      speechState.spoken.at(-1)!.onend?.();
+      await playback;
+    }
+  } finally {
+    service.stop();
+    if (savedNavigator) Object.defineProperty(globalThis, 'navigator', savedNavigator);
+    else Reflect.deleteProperty(globalThis, 'navigator');
+  }
+});
+
 test('playRange seeks to the start and stops at the range end', async () => {
   const service = new AudioService();
   const audio = FakeAudio.instances.at(-1)!;
