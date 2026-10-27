@@ -7,16 +7,21 @@ import type { DBDictionaryRow } from '../src/types/database';
 
 let worker: Worker | undefined;
 let starting: Promise<void> | undefined;
+let generation = 0;
+let cancelStartup: ((error: Error) => void) | undefined;
 let sequence = 0;
 let queued = 0;
 const pending = new Map<number, { resolve: (result: unknown) => void; reject: (error: Error) => void; timer: ReturnType<typeof setTimeout> }>();
-export function closeDictionary() {
+export function closeDictionary(error = new Error('Dictionary closed')) {
+  generation++;
+  cancelStartup?.(error); cancelStartup = undefined;
   void worker?.terminate(); worker = undefined; starting = undefined;
-  for (const job of pending.values()) { clearTimeout(job.timer); job.reject(new Error('Dictionary unavailable')); }
+  for (const job of pending.values()) { clearTimeout(job.timer); job.reject(error); }
   pending.clear();
 }
 async function initialize() {
   if (starting) return starting;
+  const currentGeneration = generation;
   starting = (async () => {
     const production = process.env.NODE_ENV === 'production';
     const workerData = { root: resolve(process.cwd(), production ? 'dist' : 'public'), generatedRoot: resolve(process.cwd(), production ? 'dist' : '.vite/study') };
@@ -29,33 +34,38 @@ async function initialize() {
       // Compile the development worker with the existing toolchain; no loader assumptions.
       const { build } = await import('esbuild');
       const bundle = await build({ entryPoints: ['server/dictionary.worker.ts'], bundle: true, platform: 'node', format: 'cjs', write: false });
+      if (generation !== currentGeneration) throw new Error('Dictionary closed');
       instance = new Worker(bundle.outputFiles[0].text, { eval: true, workerData, resourceLimits });
     }
     worker = instance;
     await new Promise<void>((resolveReady, reject) => {
-      const deadline = setTimeout(() => { closeDictionary(); reject(new Error('Dictionary startup timed out')); }, 20_000);
-      instance.on('error', error => { clearTimeout(deadline); if (worker === instance) closeDictionary(); reject(error); });
-      instance.on('exit', () => { if (worker === instance) { clearTimeout(deadline); closeDictionary(); reject(new Error('Dictionary closed')); } });
+      const deadline = setTimeout(() => { const error = new Error('Dictionary startup timed out'); if (worker === instance) closeDictionary(error); reject(error); }, 20_000);
+      cancelStartup = error => { clearTimeout(deadline); reject(error); };
+      instance.on('error', error => { clearTimeout(deadline); if (worker === instance) closeDictionary(error); reject(error); });
+      instance.on('exit', code => { const error = new Error(`Dictionary worker exited (${code})`); clearTimeout(deadline); if (worker === instance) closeDictionary(error); reject(error); });
       instance.on('message', ({ id, ready, fatal, result, error }) => {
-        if (ready) { clearTimeout(deadline); instance.unref(); resolveReady(); return; }
-        if (fatal) { clearTimeout(deadline); closeDictionary(); reject(new Error(fatal)); return; }
+        if (worker !== instance) return;
+        if (ready) { clearTimeout(deadline); cancelStartup = undefined; instance.unref(); resolveReady(); return; }
+        if (fatal) { const error = new Error(fatal); clearTimeout(deadline); closeDictionary(error); reject(error); return; }
         const job = pending.get(id); if (!job) return;
         clearTimeout(job.timer); pending.delete(id);
         if (error) job.reject(new Error(error)); else job.resolve(result);
         if (!pending.size) instance.unref();
       });
     });
-  })().catch(error => { starting = undefined; throw error; });
+  })().catch(error => { if (generation === currentGeneration) starting = undefined; throw error; });
   return starting;
 }
 async function request<T>(message: object): Promise<T> {
   if (queued >= 32) throw new Error('Dictionary busy. Please try again.');
   queued++;
   try {
+  const currentGeneration = generation;
   await initialize();
+  if (generation !== currentGeneration) throw new Error('Dictionary closed');
   return await new Promise<T>((resolveResult, reject) => {
     const id = ++sequence;
-    const timer = setTimeout(() => { closeDictionary(); }, 15_000);
+    const timer = setTimeout(() => { closeDictionary(new Error('Dictionary request timed out')); }, 15_000);
     pending.set(id, { resolve: result => resolveResult(result as T), reject, timer });
     worker!.ref(); worker!.postMessage({ ...message, id });
   });

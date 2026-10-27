@@ -1222,3 +1222,119 @@ test('preload counts compressed bytes once per recording, including cached files
   }, undefined, (state) => { progress = state; });
   assert.deepEqual(progress, { ready: 2, failed: 0, total: 2, bytes: 650 });
 });
+
+test('temporary audio failures retry once through the shared download; missing files never retry', async t => {
+  const { fetchAudioBlob } = await import('../../src/services/audio/audioCache');
+  for (const failure of ['network', 'body', '503'] as const) {
+    let requests = 0;
+    t.mock.method(globalThis, 'fetch', async () => {
+      requests++;
+      if (requests === 1) {
+        if (failure === 'network') throw new TypeError('Failed to fetch');
+        if (failure === 'body') return new Response(new ReadableStream({ start(controller) {
+          controller.error(new TypeError('Connection lost while reading audio'));
+        } }), { headers: { 'Content-Type': 'audio/mpeg' } });
+        return Response.json({}, { status: 503 });
+      }
+      return new Response(new Blob(['recovered clip'], { type: 'audio/mpeg' }));
+    });
+    const name = `https://audio.example.test/transient-${failure}.mp3`;
+    const [first, second] = await Promise.all([fetchAudioBlob(name), fetchAudioBlob(name)]);
+    assert.equal(first.size, 14);
+    assert.strictEqual(first, second, 'all subscribers share the same recovery attempt');
+    assert.equal(requests, 2);
+    t.mock.restoreAll();
+  }
+  let requests = 0;
+  t.mock.method(globalThis, 'fetch', async () => { requests++; return new Response(null, { status: 404 }); });
+  await assert.rejects(fetchAudioBlob('https://audio.example.test/no-such-recording.mp3'), /404/);
+  assert.equal(requests, 1);
+});
+
+test('cancel during audio retry backoff stops recovery without another request', async t => {
+  const { fetchAudioBlob } = await import('../../src/services/audio/audioCache');
+  let requests = 0;
+  t.mock.method(globalThis, 'fetch', async () => { requests++; return new Response(null, { status: 503 }); });
+  const controller = new AbortController();
+  const pending = fetchAudioBlob('https://audio.example.test/retry-cancel.mp3', controller.signal);
+  const rejected = assert.rejects(pending, { name: 'AbortError' });
+  await tick();
+  controller.abort();
+  await rejected;
+  await new Promise(resolve => setTimeout(resolve, 300));
+  assert.equal(requests, 1);
+});
+
+test('an undecodable cached recording is discarded so Retry fetches a fresh file in the same session', async t => {
+  enableCache();
+  const { audioFileCacheRequest } = await import('../../src/services/audio/audioCache');
+  const name = 'https://audio.example.test/poisoned-cache-aabbccddeeff.mp3';
+  const key = audioFileCacheRequest(name).url;
+  cacheEntries.set(key, new Response(new Blob(['bad mp3'], { type: 'audio/mpeg' })));
+  let requests = 0;
+  t.mock.method(globalThis, 'fetch', async () => { requests++; return new Response(new Blob(['valid replacement'], { type: 'audio/mpeg' })); });
+  const service = new AudioService();
+  const audio = FakeAudio.instances.at(-1)!;
+  await service.preload([name]);
+  const preparation = service.prepareRecording(name);
+  await tick();
+  const badSrc = audio.src;
+  audio.dispatch('error');
+  await assert.rejects(preparation, { name: 'EncodingError' });
+  assert.equal(cacheEntries.has(key), false);
+  assert.equal(requests, 0, 'the first attempt reads the bad cached blob');
+  await service.preload([name]);
+  assert.equal(requests, 1, 'retry fetches instead of reusing the corrupt immutable recording');
+  const ready = service.prepareRecording(name);
+  await tick();
+  assert.notEqual(audio.src, badSrc);
+  audio.readyState = 2;
+  audio.dispatch('canplay');
+  await ready;
+});
+
+
+test('preparation for an old recording cannot become ready from a different recording’s canplay event', async () => {
+  const { prepareAudioElement } = await import('../../src/services/audio/playbackEngine');
+  const audio = new FakeAudio();
+  const controller = new AbortController();
+  let firstReady = false;
+  const first = prepareAudioElement(audio as unknown as HTMLAudioElement, 'blob:first-preparation', controller.signal).then(() => { firstReady = true; });
+  const cancelled = assert.rejects(first, { name: 'AbortError' });
+  const second = prepareAudioElement(audio as unknown as HTMLAudioElement, 'blob:second-preparation');
+  audio.readyState = 2;
+  audio.dispatch('canplay');
+  await second;
+  assert.equal(firstReady, false);
+  controller.abort();
+  await cancelled;
+});
+
+test('a quick retry bypasses poisoned disk audio while its cache deletion is still pending', async t => {
+  enableCache();
+  const { invalidateCachedAudio, fetchAudioBlob, audioFileCacheRequest } = await import('../../src/services/audio/audioCache');
+  const name = 'https://audio.example.test/delayed-eviction-abcdef123456.mp3';
+  cacheEntries.set(audioFileCacheRequest(name).url, new Response(new Blob(['poisoned'], { type: 'audio/mpeg' })));
+  let release!: () => void;
+  const deleting = new Promise<void>(resolve => { release = resolve; });
+  t.mock.method(memoryCache, 'delete', async () => { await deleting; return true; });
+  let requests = 0;
+  t.mock.method(globalThis, 'fetch', async () => { requests++; return new Response(new Blob(['fresh'], { type: 'audio/mpeg' })); });
+  const eviction = invalidateCachedAudio(new Map(), name);
+  try {
+    const recovered = await fetchAudioBlob(name);
+    assert.equal(await recovered.text(), 'fresh');
+    assert.equal(requests, 1);
+  } finally { release(); await eviction; }
+});
+
+test('native network/cancellation failures are not mistaken for corrupted recordings', async () => {
+  const { prepareAudioElement } = await import('../../src/services/audio/playbackEngine');
+  for (const [code, name] of [[1, 'AbortError'], [2, 'NetworkError'], [3, 'EncodingError']] as const) {
+    const audio = new FakeAudio();
+    const pending = prepareAudioElement(audio as unknown as HTMLAudioElement, `blob:error-type-${code}`);
+    Object.assign(audio, { error: { code, message: 'fixture media failure' } });
+    audio.dispatch('error');
+    await assert.rejects(pending, { name });
+  }
+});

@@ -157,6 +157,7 @@ export function publicAudioUrl(fileName: string): string | null {
 }
 
 const blobCachedAt = new WeakMap<Blob, number>();
+const invalidatingAudioFiles = new Set<string>();
 export const audioBlobCachedAt = (blob: Blob): number => blobCachedAt.get(blob) ?? Date.now();
 
 const inFlightBlobFetches = new Map<string, {
@@ -170,6 +171,7 @@ export function isUsableAudioBlob(blob: Blob): boolean {
 
 /** Cache-only lookup: a miss must keep first playback streaming from the CDN. */
 export async function readCachedAudioBlob(fileName: string, allowStale = true): Promise<Blob | null> {
+  if (invalidatingAudioFiles.has(fileName)) return null;
   // Keep a longer disk budget offline; a stalled cache must not hold online audio.
   const cacheWaitMs = typeof navigator !== 'undefined' && navigator.onLine === false ? 1000 : 100;
   let timer: ReturnType<typeof setTimeout>;
@@ -185,7 +187,7 @@ export async function readCachedAudioBlob(fileName: string, allowStale = true): 
       if (!allowStale && !immutable && typeof navigator !== 'undefined' && navigator.onLine === true
         && (!savedAt || Date.now() - savedAt > 86400_000)) return null;
       const blob = await response.blob();
-      if (!isUsableAudioBlob(blob)) return null;
+      if (!isUsableAudioBlob(blob) || invalidatingAudioFiles.has(fileName)) return null;
       blobCachedAt.set(blob, savedAt);
       void touchAudioMeta(fileName, blob.size);
       return blob;
@@ -210,11 +212,31 @@ export async function fetchAudioBlob(fileName: string, signal?: AbortSignal): Pr
       const directUrl = publicAudioUrl(fileName);
       if (!directUrl) throw new Error('No public audio URL configured');
       // A streaming response in the HTTP cache may lack CORS headers.
-      const response = await fetch(directUrl, { signal: controller.signal, cache: 'reload' });
-      if (!response.ok || response.status === 206) throw new Error(`Failed to fetch complete audio: ${response.status}`);
-      if (Number(response.headers.get('Content-Length')) > MAX_AUDIO_MEMORY_BYTES) throw new Error('Recording exceeds download limit');
-      const blob = await response.blob();
-      if (!isUsableAudioBlob(blob) || blob.size > MAX_AUDIO_MEMORY_BYTES) throw new Error('Invalid audio response');
+      let downloaded: Blob | undefined;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        if (attempt) await new Promise(resolve => setTimeout(resolve, 250));
+        controller.signal.throwIfAborted();
+        try {
+          const response = await fetch(directUrl, { signal: controller.signal, cache: 'reload' });
+          // One shared retry handles temporary failures, including a connection lost mid-body.
+          if (!attempt && (response.status === 408 || response.status >= 500)
+            && globalThis.navigator?.onLine !== false) {
+            void response.body?.cancel().catch(() => {});
+            continue;
+          }
+          if (!response.ok || response.status === 206) throw new Error(`Failed to fetch complete audio: ${response.status}`);
+          if (Number(response.headers.get('Content-Length')) > MAX_AUDIO_MEMORY_BYTES) throw new Error('Recording exceeds download limit');
+          const blob = await response.blob();
+          if (!isUsableAudioBlob(blob) || blob.size > MAX_AUDIO_MEMORY_BYTES) throw new Error('Invalid audio response');
+          downloaded = blob;
+          break;
+        } catch (error) {
+          if (!attempt && error instanceof TypeError && globalThis.navigator?.onLine !== false) continue;
+          throw error;
+        }
+      }
+      if (!downloaded) throw new Error('Audio download failed');
+      const blob = downloaded;
       blobCachedAt.set(blob, Date.now());
       void getAudioFileCache().then((cache) => {
         if (!cache) return;
@@ -308,6 +330,21 @@ export function cacheObjectUrl(
     total -= sizes.get(oldest)?.size || 0;
     sizes.delete(oldest);
   }
+}
+
+/** Drop a confirmed undecodable recording so Retry cannot replay poisoned memory/disk entries. */
+export async function invalidateCachedAudio(objectUrls: Map<string, string>, fileName: string): Promise<void> {
+  invalidatingAudioFiles.add(fileName);
+  const src = objectUrls.get(fileName);
+  objectUrls.delete(fileName);
+  objectUrlSizes.get(objectUrls)?.delete(fileName);
+  if (src) URL.revokeObjectURL(src);
+  try {
+    const cache = await getAudioFileCache();
+    await cache?.delete(audioFileCacheRequest(fileName));
+    if (typeof indexedDB !== 'undefined') await del(metaKey(fileName));
+  } catch { /* A broken cache must not prevent a fresh in-memory download. */ }
+  finally { invalidatingAudioFiles.delete(fileName); }
 }
 
 export interface AudioPreloadProgress { ready: number; failed: number; total: number; blocked?: boolean; bytes?: number }

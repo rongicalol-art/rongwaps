@@ -12,10 +12,16 @@ export interface PlayRangeOptions {
 const AUDIO_START_TIMEOUT_MS = 2500;
 const AUDIO_STALL_TIMEOUT_MS = 2500;
 
+function recordingError(audio: HTMLAudioElement): DOMException {
+  const code = audio.error?.code;
+  return new DOMException(audio.error?.message || 'Recording could not be decoded',
+    code === 1 ? 'AbortError' : code === 2 ? 'NetworkError' : 'EncodingError');
+}
+
 /** Decode the current cached clip during visible preparation, before the learner taps Play. */
 export function prepareAudioElement(audio: HTMLAudioElement, src: string, signal?: AbortSignal): Promise<void> {
   if (signal?.aborted) return Promise.reject(new DOMException('Aborted', 'AbortError'));
-  if (audio.src === src && audio.readyState >= 2) return Promise.resolve();
+  if (audio.src === src && audio.readyState >= 2 && !audio.error) return Promise.resolve();
   return new Promise((resolve, reject) => {
     let settled = false;
     const finish = (error?: Error) => {
@@ -27,8 +33,8 @@ export function prepareAudioElement(audio: HTMLAudioElement, src: string, signal
       signal?.removeEventListener('abort', abort);
       if (error) reject(error); else resolve();
     };
-    const ready = () => { if (audio.readyState >= 2) finish(); };
-    const fail = () => finish(new Error('Recording could not be decoded'));
+    const ready = () => { if (audio.src === src && audio.readyState >= 2 && !audio.error) finish(); };
+    const fail = () => finish(recordingError(audio));
     const abort = () => finish(new DOMException('Aborted', 'AbortError'));
     const deadline = setTimeout(() => finish(new Error('Recording preparation timed out')), 2000);
     audio.addEventListener('canplay', ready);
@@ -36,7 +42,7 @@ export function prepareAudioElement(audio: HTMLAudioElement, src: string, signal
     signal?.addEventListener('abort', abort, { once: true });
     try {
       audio.preload = 'auto';
-      if (audio.src !== src) { audio.src = src; audio.load?.(); }
+      if (audio.src !== src || audio.error) { audio.src = src; audio.load?.(); }
       ready();
     } catch { fail(); }
     if (signal?.aborted) abort();
@@ -205,7 +211,7 @@ export function playHtmlAudio(
       cleanup();
       onEnd();
     };
-    audio.onerror = () => fail(new Error('Audio could not be loaded'));
+    audio.onerror = () => fail(recordingError(audio));
     // Replacing src queues abort/emptied for the previous resource. Those
     // events are not failures of this play; actual cancellation rejects play().
 

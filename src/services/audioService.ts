@@ -2,6 +2,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 export { AUDIO_BUCKET } from './audio/audioCache';
 import {
   cacheObjectUrl,
+  invalidateCachedAudio,
   audioBlobCachedAt,
   getCachedObjectUrl,
   fetchAudioBlob,
@@ -109,7 +110,10 @@ export class AudioService {
     const src = fileName && getCachedObjectUrl(this.objectUrls, fileName);
     if (!src) return;
     if (await this.shortClips.prepare(src, signal) && this.defaultRate === 1) return;
-    if (primeMedia && this.globalAudio && !this.activePlaybackFinish) await prepareAudioElement(this.globalAudio, src, signal);
+    if (primeMedia && this.globalAudio && !this.activePlaybackFinish) {
+      try { await prepareAudioElement(this.globalAudio, src, signal); }
+      catch (error) { if (error instanceof Error && error.name === 'EncodingError') await invalidateCachedAudio(this.objectUrls, fileName!); throw error; }
+    }
   }
   private trackPlayback(resolve: () => void): () => void {
     let settled = false;
@@ -209,7 +213,6 @@ export class AudioService {
     this.activePlaybackFinish = null;
     finish?.();
   }
-
   public stop(): void {
     this.pause();
     if (this.globalAudio) {
@@ -224,12 +227,10 @@ export class AudioService {
   public getCurrentTime(): number {
     return this.globalAudio?.currentTime ?? 0;
   }
-
   public isAudioFileName(filename?: string): boolean {
     if (!filename) return false;
     return /\.(mp3|wav|ogg|m4a)(?:$|[?#])|^https?:\/\//i.test(filename);
   }
-
   public play(
     audioFileName?: string,
     playbackRate?: number,
@@ -265,6 +266,7 @@ export class AudioService {
       const handleAudioFailure = (error?: unknown) => {
         if (fallbackStarted || this.activePlaybackFinish !== finish) return;
         fallbackStarted = true;
+        if (error instanceof Error && error.name === 'EncodingError') void invalidateCachedAudio(this.objectUrls, audioFileName);
         if (error instanceof Error && (error.name === 'AbortError' || error.name === 'NotAllowedError')) {
           options?.onUnavailable?.();
           finish();
@@ -310,7 +312,6 @@ export class AudioService {
       ...options, ...(card.source === 'dictionary' ? { fallback: 'none' as const } : {}),
     });
   }
-
   public playRange(
     audioFileName: string,
     startSec: number,
@@ -370,15 +371,12 @@ export class AudioService {
     } else if (stream) run(stream);
     else void this.getAudioObjectUrl(fileName).then(run).catch(fail);
   }
-
   public setDefaultRate(rate: number): void {
     if (Number.isFinite(rate) && rate > 0) this.defaultRate = rate;
   }
-
   public getDefaultRate(): number {
     return this.defaultRate;
   }
-
   public setPlaybackRate(rate: number): void {
     const validRate = Number.isFinite(rate) && rate > 0 ? rate : 1;
     const audio = this.globalAudio;

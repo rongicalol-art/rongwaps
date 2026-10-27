@@ -35,6 +35,7 @@ function cachedLookup(key: string, load: () => Promise<Flashcard[]>): Promise<Fl
 export function fetchVocabulary(bookId?: number, lessonId?: number): Promise<Flashcard[]> {
   return cachedLookup(`vocab-${bookId || 'all'}-${lessonId || 'all'}`, async () => {
     const rows = await (bookId ? fetchVocabularyPack(bookId) : fetchAllVocabularyPacks());
+    if (!rows && !bookId) throw new Error('Vocabulary unavailable. Please try again.');
     return rows ? prepareVocabulary(rows, lessonId) : [];
   });
 }

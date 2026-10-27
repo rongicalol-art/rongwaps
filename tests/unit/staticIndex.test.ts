@@ -34,3 +34,23 @@ test('unavailable indexes remain null and separate indexes cannot share data', a
   assert.equal(missing.getSnapshot(), null);
   assert.deepEqual(loaded.getSnapshot(), { one: 1 });
 });
+
+test('a failed or unavailable index can load again on the next subscription without a page restart', async () => {
+  for (const failure of ['null', 'reject']) {
+    let requests = 0;
+    const value = { reading: 'lǎo' };
+    const index = createStaticIndex(async () => {
+      requests++;
+      if (requests === 1) { if (failure === 'reject') throw new Error('503'); return null; }
+      return value;
+    });
+    const unsubscribe = index.subscribe(() => {});
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(index.getSnapshot(), null);
+    unsubscribe();
+    index.subscribe(() => {});
+    await new Promise(resolve => setImmediate(resolve));
+    assert.strictEqual(index.getSnapshot(), value);
+    assert.equal(requests, 2);
+  }
+});

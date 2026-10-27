@@ -11,10 +11,10 @@ export function createStaticIndex<T>(load: () => Promise<T | null>) {
       if (!requested) {
         requested = true;
         void load().then((loaded) => {
-          if (!loaded) return;
+          if (!loaded) { requested = false; return; }
           index = loaded;
           listeners.forEach((notify) => notify());
-        });
+        }).catch(() => { requested = false; });
       }
       return () => { listeners.delete(listener); };
     },
