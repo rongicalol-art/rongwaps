@@ -916,6 +916,42 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L10-G07-P276"
       }
     ]
+  },
+  {
+    "id": "B3L11-P01-D01",
+    "bookId": 3,
+    "lessonId": 11,
+    "partId": 1,
+    "title": "Grammar 1–3 · Be Careful When Making Online Friends",
+    "grammarPages": [
+      {
+        "id": "B3L11-G01-P289"
+      },
+      {
+        "id": "B3L11-G02-P291"
+      },
+      {
+        "id": "B3L11-G03-P292"
+      }
+    ]
+  },
+  {
+    "id": "B3L11-P02-D02",
+    "bookId": 3,
+    "lessonId": 11,
+    "partId": 2,
+    "title": "Grammar 4–6 · Advantages and Disadvantages of Online Friends",
+    "grammarPages": [
+      {
+        "id": "B3L11-G04-P299"
+      },
+      {
+        "id": "B3L11-G05-P301"
+      },
+      {
+        "id": "B3L11-G06-P302"
+      }
+    ]
   }
 ];
 

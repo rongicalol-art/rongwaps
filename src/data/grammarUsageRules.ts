@@ -479,4 +479,12 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L10-G05-P274': detected('一再', [inOrder(['一再'])]),
   'B3L10-G06-P275': detected('假如', [inOrder(['假如'])]),
   'B3L10-G07-P276': detected('為了……而……', [inOrder(['為了', '而'], 10)]),
+
+  // Book 3 Lesson 11 — 網路交友要小心
+  'B3L11-G01-P289': detected('透過', [inOrder(['透過'])]),
+  'B3L11-G02-P291': detected('以上 / 以下', [inOrder(['以上']), inOrder(['以下'])]),
+  'B3L11-G03-P292': detected('看得起 / 看不起', [inOrder(['看得起']), inOrder(['看不起'])]),
+  'B3L11-G04-P299': detected('卻', [inOrder(['卻'])]),
+  'B3L11-G05-P301': detected('對得起 / 對不起', [inOrder(['對得起']), inOrder(['對不起'])]),
+  'B3L11-G06-P302': detected('至於', [inOrder(['至於'])]),
 };

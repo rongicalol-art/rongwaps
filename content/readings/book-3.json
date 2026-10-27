@@ -1849,5 +1849,179 @@
         "english": "Just as Uncle Lin was striving for health, an old colleague passed away at merely fifty years old from work exhaustion. This somber news dealt him a profound shock, causing him to reevaluate what relentless work is ultimately for, and what true happiness really means. Perhaps nobody has definitive answers, but good health is certainly paramount."
       }
     ]
+  },
+  {
+    "id": "B3L11-R01",
+    "bookId": 3,
+    "lessonId": 11,
+    "dialogueNumber": 1,
+    "title": "網路交友要小心",
+    "audioReference": "11-1-1",
+    "paragraphs": [
+      {
+        "speaker": "朋子",
+        "traditional": "最近新聞提到，有個博士透過社群網站，認識了一個女網友，給了她很多錢以後，才知道被騙了。",
+        "simplified": "最近新闻提到，有个博士透过社群网站，认识了一个女网友，给了她很多钱以后，才知道被骗了。",
+        "pinyin": "Zuìjìn xīnwén tídào, yǒu ge bóshì tòuguò shèqún wǎngzhàn, rènshì le yí ge nǚ wǎngyǒu, gěi le tā hěn duō qián yǐhòu, cái zhīdào bèi piàn le.",
+        "english": "The news recently reported that a PhD holder met a female netizen via social media, gave her a lot of money, and only then realized he had been swindled."
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "我看過那個新聞。那個騙子假裝是大學生，故意找很老實的男生聊天，表面上對他們很好，等對方相信她以後就騙他們說，媽媽病了，需要錢看醫生。對吧？",
+        "simplified": "我看过那个新闻。那个骗子假装是大学生，故意找很老实的男生聊天，表面上对他们很好，等对方相信她以后就骗他们说，妈妈病了，需要钱看医生。对吧？",
+        "pinyin": "Wǒ kànguò nà ge xīnwén. Nà ge piànzi jiǎzhuāng shì dàxuéshēng, gùyì zhǎo hěn lǎoshí de nánshēng liáotiān, biǎomiàn shàng duì tāmen hěn hǎo, děng duìfāng xiāngxìn tā yǐhòu jiù piàn tāmen shuō, māma bìng le, xūyào qián kàn yīshēng. Duì ba?",
+        "english": "I saw that news. That scammer pretended to be a college student, deliberately chatted with honest men, acted very kindly on the surface, and once they trusted her, lied that her mother was sick and needed medical money. Right?"
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "嗯。看到這類新聞，害我不敢上網交友了。你呢？你有這樣的經驗嗎？",
+        "simplified": "嗯。看到这类新闻，害我不敢上网交友了。你呢？你有这样的经验吗？",
+        "pinyin": "Èn. Kàndào zhèlèi xīnwén, hài wǒ bù gǎn shàngwǎng jiāoyǒu le. Nǐ ne? Nǐ yǒu zhèyàng de jīngyàn ma?",
+        "english": "Yes. Seeing news like this makes me afraid to make online friends. What about you? Have you had any experience like that?"
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "以前遇過一次。剛開始我和對方只聊了幾句，後來有幾次聊電影聊得很開心，就越來越熟了，也會互相問候家人。",
+        "simplified": "以前遇过一次。刚开始我和对方只聊了几句，后来有几次聊电影聊得很开心，就越来越熟了，也会互相问候家人。",
+        "pinyin": "Yǐqián yùguò yí cì. Gāng kāishǐ wǒ hé duìfāng zhǐ liáo le jǐ jù, hòulái yǒu jǐ cì liáo diànyǐng liáo de hěn kāixīn, jiù yuèláiyuè shú le, yě huì hùxiāng wènhòu jiārén.",
+        "english": "I encountered it once before. Initially we only chatted a few lines, but later after talking happily about movies several times, we grew closer and began asking after each other's families."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "那時候你想進一步認識對方嗎？比如說跟對方見個面、吃個飯什麼的。",
+        "simplified": "那时候你想进一步认识对方吗？比如说跟对方见个面、吃个饭什么的。",
+        "pinyin": "Nà shíhou nǐ xiǎng jìnyíbù rènshì duìfāng ma? Bǐrú shuō gēn duìfāng jiàn ge miàn, chī ge fàn shénme de.",
+        "english": "At that time did you want to get to know her further? For example, meeting in person, sharing a meal, or something like that?"
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "我沒想過跟她約會。不過大概過了一個月，她突然跟我說，家人發生嚴重的車禍，住院的費用很高，想跟我借十萬塊。",
+        "simplified": "我没想过跟她约会。不过大概过了一个月，她突然跟我说，家人发生严重的车祸，住院的费用很高，想跟我借十万块。",
+        "pinyin": "Wǒ méi xiǎngguò gēn tā yuēhuì. Búguò dàgài guò le yí ge yuè, tā tūrán gēn wǒ shuō, jiārén fāshēng yánzhòng de chēhuò, zhùyuàn de fèiyòng hěn gāo, xiǎng gēn wǒ jiè shí wàn kuài.",
+        "english": "I never considered dating her. However, after about a month, she suddenly told me her family was in a severe car accident with high hospitalization costs, and wanted to borrow 100,000 NTD."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "十萬塊？這麼多！你借她了嗎？",
+        "simplified": "十万块？这么多！你借她了吗？",
+        "pinyin": "Shí wàn kuài? Zhème duō! Nǐ jiè tā le ma?",
+        "english": "100,000 NTD? That's so much! Did you lend it to her?"
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "當然沒。如果是兩萬塊以下，我可能願意借，十萬塊就太多了。再說，雖然對她不陌生，可是畢竟沒見過面，萬一借了以後才發現她說的都是假的，不但錢拿不回來，心也會很痛的。",
+        "simplified": "当然没。如果是两万块以下，我可能愿意借，十万块就太多了。再说，虽然对她不陌生，可是毕竟没见过面，万一借了以后才发现她说的都是假的，不但钱拿不回来，心也会很痛的。",
+        "pinyin": "Dāngrán méi. Rúguǒ shì liǎng wàn kuài yǐxià, wǒ kěnéng yuànyì jiè, shí wàn kuài jiù tài duō le. Zàishuō, suīrán duì tā bù mòshēng, kěshì bìjìng méi jiànguò miàn, wànyī jiè le yǐhòu cái fāxiàn tā shuō de dōu shì jiǎ de, búdàn qián ná bù huílái, xīn yě huì hěn tòng de.",
+        "english": "Of course not. If it were under 20,000 NTD, I might have been willing, but 100,000 is too much. Besides, though she wasn't an unfamiliar stranger, we hadn't met after all; if I lent it and discovered it was all fake, not only would the money be gone, it would hurt deeply."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "是啊。有一些人在網路上填假資料，要是我們不小心，很可能就成了被騙的對象。不過，也許那個網友真的很可憐，需要你的幫助。",
+        "simplified": "是啊。有一些人在网络上填假资料，要是我们不小心，很可能就成了被骗的对象。不过，也许那个网友真的很可怜，需要你的帮助。",
+        "pinyin": "Shì a. Yǒu yìxiē rén zài wǎnglù shàng tián jiǎ zīliào, yàoshì wǒmen bù xiǎoxīn, hěn kěnéng jiù chéng le bèi piàn de duìxiàng. Búguò, yěxǔ nà ge wǎngyǒu zhēnde hěn kělián, xūyào nǐ de bāngzhù.",
+        "english": "Indeed. Some people fill out fake profiles online; if we aren't careful, we could easily become scam targets. Still, perhaps that netizen really was pitiful and needed your help."
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "我本來也很同情她，還問她媽媽得住院住多久。可是她一下子說半個月，一下子說一個月，故意不說清楚。後來，我發現她不誠實，就不再跟她聯絡了。",
+        "simplified": "我本来也很同情她，还问她妈妈得住院住多久。可是她一下子说半个月，一下子说一个月，故意不说清楚。后来，我发现她不诚实，就不再跟她联络了。",
+        "pinyin": "Wǒ běnlái yě hěn tóngqíng tā, hái wèn tā māma děi zhùyuàn zhù duō jiǔ. Kěshì tā yíxiàzi shuō bàn ge yuè, yíxiàzi shuō yí ge yuè, gùyì bù shuō qīngchǔ. Hòulái, wǒ fāxiàn tā bù chéngshí, jiù búzài gēn tā liánluò le.",
+        "english": "I was sympathetic at first, and asked how long her mother had to be hospitalized. But she said half a month one moment and a month the next, deliberately evading clarity. Later, finding her dishonest, I stopped contacting her."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "發現她不誠實？怎麼說呢？",
+        "simplified": "发现她不诚实？怎么说呢？",
+        "pinyin": "Fāxiàn tā bù chéngshí? Zěnme shuō ne?",
+        "english": "Found her dishonest? How so?"
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "那時有一個網友把自己網路交友上當的經驗，寫在部落格上。我看了以後，發現騙他的人和跟我借錢的網友是同一個人，她用同樣的方法騙了不少人。",
+        "simplified": "那时有一个网友把自己网络交友上当的经验，写在部落格上。我看了以后，发现骗他的人和跟我借钱的网友是同一个人，她用同样的方法骗了不少人。",
+        "pinyin": "Nà shí yǒu yí ge wǎngyǒu bǎ zìjǐ wǎnglù jiāoyǒu shàngdàng de jīngyàn, xiě zài bùluògé shàng. Wǒ kàn le yǐhòu, fāxiàn piàn tā de rén hé gēn wǒ jiè qián de wǎngyǒu shì tóng yí ge rén, tā yòng tóngyàng de fāngfǎ piàn le bùshǎo rén.",
+        "english": "At that time a netizen posted his experience being scammed through online dating on a blog. After reading it, I realized his scammer and the netizen borrowing money from me were the same person—she had defrauded many people the same way."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "這種人實在太可惡了。不過那時候你差點兒被騙了，後來還敢上網交朋友嗎？",
+        "simplified": "这种人实在太可恶了。不过那时候你差点儿被骗了，后来还敢上网交朋友吗？",
+        "pinyin": "Zhè zhǒng rén shízài tài kěwù le. Búguò nà shíhou nǐ chàdiǎnr bèi piàn le, hòulái hái gǎn shàngwǎng jiāo péngyǒu ma?",
+        "english": "That kind of person is truly despicable. But having nearly been scammed back then, did you dare make friends online afterward?"
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "雖然我也看不起這種人，但網路交友的方式還是不錯的，而且網友也不都是壞人。",
+        "simplified": "虽然我也看不起这种人，但网络交友的方式还是不错的，而且网友也不都是坏人。",
+        "pinyin": "Suīrán wǒ yě kànbùqǐ zhè zhǒng rén, dàn wǎnglù jiāoyǒu de fāngshì háishì búcuò de, érqiě wǎngyǒu yě bù dōu shì huàirén.",
+        "english": "Although I also look down on such people, making friends online is still a good avenue, and netizens aren't all bad."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "聽你這麼說，讓我回想起剛來臺灣的時候，透過社群網站，找到了會說日語的臺灣網友。他幫我找房子、認識環境，真的很感謝他。",
+        "simplified": "听你这么说，让我回想起刚来台湾的时候，透过社群网站，找到了会说日语的台湾网友。他帮我找房子、认识环境，真的很感谢他。",
+        "pinyin": "Tīng nǐ zhème shuō, ràng wǒ huíxiǎng qǐ gāng lái Táiwān de shíhou, tòuguò shèqún wǎngzhàn, zhǎodào le huì shuō Rìyǔ de Táiwān wǎngyǒu. Tā bāng wǒ zhǎo fángzi, rènshì huánjìng, zhēnde hěn gǎnxiè tā.",
+        "english": "Hearing you say that reminds me of when I first arrived in Taiwan: via social networks I found a Taiwanese netizen who spoke Japanese. He helped me find housing and familiarize myself with surroundings; I'm genuinely grateful to him."
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "嗯！透過網路可以擴大交友的範圍，所以別因為有人被騙了，就拒絕使用這種交友方式。況且在真實生活中，騙子也不少啊！",
+        "simplified": "嗯！透过网络可以扩大交友的范围，所以别因为有人被骗了，就拒绝使用这种交友方式。况且在真实生活中，骗子也不少啊！",
+        "pinyin": "Èn! Tòuguò wǎnglù kěyǐ kuòdà jiāoyǒu de fànwéi, suǒyǐ bié yīnwèi yǒu rén bèi piàn le, jiù jùjué shǐyòng zhè zhǒng jiāoyǒu fāngshì. Kuàngqiě zài zhēnshí shēnghuó zhōng, piànzi yě bù shǎo a!",
+        "english": "Yes! Through the internet we can expand our social circle, so don't reject this channel just because someone was scammed. Besides, there are plenty of swindlers in real life too!"
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "你說的對。網路交友還是可靠的，也能認識不少興趣相同的朋友。像你建立的健身社團網站，裡面有很多訊息，包括健身的影片、舉行活動的日期和地點等等，都很有用、很吸引人。",
+        "simplified": "你说得对。网络交友还是可靠的，也能认识不少兴趣相同的朋友。像你建立的健身社团网站，里面有很多讯息，包括健身的影片、举行活动的日期和地点等等，都很有用、很吸引人。",
+        "pinyin": "Nǐ shuō de duì. Wǎnglù jiāoyǒu háishì kěkào de, yě néng rènshì bùshǎo xìngqù xiāngtóng de péngyǒu. Xiàng nǐ jiànlì de jiànshēn shètuán wǎngzhàn, lǐmiàn yǒu hěn duō xùnxí, bāokuò jiànshēn de yǐngpiàn, jǔxíng huódòng de rìqí hé dìdiǎn děngděng, dōu hěn yǒuyòng, hěn xīyǐn rén.",
+        "english": "You're right. Making friends online can still be reliable, helping us meet friends with shared interests. For instance, the fitness club site you built contains rich content—workout videos, event dates, locations—all very useful and engaging."
+      },
+      {
+        "speaker": "尚恩",
+        "traditional": "既然妳覺得很吸引人，歡迎加入，免費喔！",
+        "simplified": "既然你觉得很吸引人，欢迎加入，免费喔！",
+        "pinyin": "Jìrán nǐ juéde hěn xīyǐn rén, huānyíng jiārù, miǎnfèi o!",
+        "english": "Since you find it appealing, welcome aboard—it's free!"
+      }
+    ]
+  },
+  {
+    "id": "B3L11-R02",
+    "bookId": 3,
+    "lessonId": 11,
+    "dialogueNumber": 2,
+    "title": "短文 · 網路交友的優缺點",
+    "audioReference": "11-2-1",
+    "paragraphs": [
+      {
+        "speaker": "旁白",
+        "traditional": "自從無線網路出現的那天起，現代人的生活似乎就離不開網路了。網路科技的進步，不但改變了從前的生活方式，甚至連人與人之間的關係，也產生了極大的變化。住在不同地區的人，可以透過網路互相交流，這一點是我們祖父母那個年代的人很難想像的。",
+        "simplified": "自从无线网络出现的那天起，现代人的生活似乎就离不开网络了。网络科技的进步，不但改变了从前的生活方式，甚至连人与人之间的关系，也产生了极大的变化。住在不同地区的人，可以透过网络互相交流，这一点是我们祖父母那个年代的人很难想象的。",
+        "pinyin": "Zìcóng wúxiàn wǎnglù chūxiàn de nà tiān qǐ, xiàndài rén de shēnghuó sìhū jiù líbùkāi wǎnglù le. Wǎnglù kējì de jìnbù, búdàn gǎibiàn le cóngqián de shēnghuó fāngshì, shènzhì lián rén yǔ rén zhījiān de guānxì, yě chǎnshēng le jídà de biànhuà. Zhù zài bùtóng dìqū de rén, kěyǐ tòuguò wǎnglù hùxiāng jiāoliú, zhè yì diǎn shì wǒmen zǔfùmǔ nà ge niándài de rén hěn nán xiǎngxiàng de.",
+        "english": "Ever since wireless internet emerged, modern life seems inseparable from the web. Technological advances not only altered former lifestyles, but profoundly transformed relationships between people. Individuals residing in diverse regions can connect online—something hard to fathom for our grandparents' generation."
+      },
+      {
+        "speaker": "旁白",
+        "traditional": "在網路出現以前，想要做報告，得去圖書館借一堆書；想要認識新朋友，就非和本人面對面接觸不可。但現代社會，只要有網路，就沒有時間和空間的限制，人人都可以隨時隨地傳訊息、查資料、認識世界各地的人。不但擴大了視野、增加了知識，甚至能和網友建立珍貴的友誼。但也因為這樣，越來越多人以網路傳訊息代替當面對話。時間久了，有些人反而失去了在真實生活中與人接觸的能力，這真是不可忽視的缺點。",
+        "simplified": "在网络出现以前，想要做报告，得去图书馆借一堆书；想要认识新朋友，就非和本人面对面接触不可。但现代社会，只要有网络，就没有时间和空间的限制，人人都可以随时随地传讯息、查资料、认识世界各地的人。不但扩大了视野、增加了知识，甚至能和网友建立珍贵的友谊。但也因为这样，越来越多人以网络传讯息代替当面对话。时间久了，有些人反而失去了在真实生活中与人接触的能力，这真是不可忽视的缺点。",
+        "pinyin": "Zài wǎnglù chūxiàn yǐqián, xiǎng yào zuò bàogào, děi qù túshūguǎn jiè yì duī shū; xiǎng yào rènshì xīn péngyǒu, jiù fēi hé běnrén miànduìmiàn jiēchù bùkě. Dàn xiàndài shèhuì, zhǐyào yǒu wǎnglù, jiù méiyǒu shíjiān hé kōngjiān de xiànzhì, rénrén dōu kěyǐ suíshí suídì chuán xùnxí, chá zīliào, rènshì shìjiè gèdì de rén. Búdàn kuòdà le shìyě, zēngjiā le zhīshì, shènzhì néng hé wǎngyǒu jiànlì zhēnguì de yǒuyì. Dàn yě yīnwèi zhèyàng, yuèláiyuè duō rén yǐ wǎnglù chuán xùnxí dàitì dāngmiàn duìhuà. Shíjiān jiǔ le, yǒuxiē rén fǎn'ér shīqù le zài zhēnshí shēnghuó zhōng yǔ rén jiēchù de nénglì, zhè zhēn shì bù kě hūshì de quēdiǎn.",
+        "english": "Before the internet, preparing reports meant borrowing piles of library books; meeting new people required face-to-face encounters. Today, with connectivity free from temporal and geographic boundaries, anyone can message, look up info, and meet people worldwide anytime, expanding horizons, building knowledge, and forging valuable friendships. Yet precisely because of this, more people substitute texting for in-person conversations. Over time, some lose real-world interpersonal competence—a significant drawback."
+      },
+      {
+        "speaker": "旁白",
+        "traditional": "再說，網路雖然為現代人帶來了不少好處，但也有壞處。比如有些人在網路上說的話不一定是真的。某人已經五十歲了，在網路上卻說自己才二十歲，甚至拿別人的照片當作自己的大頭照。更嚴重的是，有些騙子利用別人的同情心騙錢，那些騙子不僅可惡，還對不起社會。",
+        "simplified": "再说，网络虽然为现代人带来了不少好处，但也有坏处。比如有些人在网络上说的话不一定是真的。某人已经五十岁了，在网络上却说自己才二十岁，甚至拿别人的照片当作自己的大头照。更严重的是，有些骗子利用别人的同情心骗钱，那些骗子不仅可恶，还对不起社会。",
+        "pinyin": "Zàishuō, wǎnglù suīrán wèi xiàndài rén dàilái le bùshǎo hǎochù, dàn yě yǒu huàichù. Bǐrú yǒuxiē rén zài wǎnglù shàng shuō de huà bù yídìng shì zhēn de. Mǒu rén yǐjīng wǔshí suì le, zài wǎnglù shàng què shuō zìjǐ cái èrshí suì, shènzhì ná biérén de zhàopiàn dāngzuò zìjǐ de dàtóuzhào. Gèng yánzhòng de shì, yǒuxiē piànzi lìyòng biérén de tóngqíngxīn piàn qián, nàxiē piànzi bùjǐn kěwù, hái duìbùqǐ shèhuì.",
+        "english": "Furthermore, while the internet delivers immense convenience, it also brings harms. Online claims may not be truthful: someone already fifty may claim to be twenty, even stealing others' photos for their avatar. More gravely, fraudsters exploit empathy to extort money—scammers who are not only loathsome but fail society."
+      },
+      {
+        "speaker": "旁白",
+        "traditional": "網路只是提供一種更便利的交友方式給大家，至於要不要以網路交友，或是能不能找到合適的對象，就得看個人的智慧了。畢竟真實生活中的朋友，無論如何都比虛擬世界的網友重要，沒有人可以取代。",
+        "simplified": "网络只是提供一种更便利的交友方式给大家，至于要不要以网络交友，或是能不能找到合适的对象，就得看个人的智慧了。毕竟真实生活中的朋友，无论如何都比虚拟世界的网友重要，没有人可以取代。",
+        "pinyin": "Wǎnglù zhǐshì tígōng yì zhǒng gèng biànlì de jiāoyǒu fāngshì gěi dàjiā, zhìyú yào bú yào yǐ wǎnglù jiāoyǒu, huòshì néng bù néng zhǎodào héshì de duìxiàng, jiù děi kàn gèrén de zhìhuì le. Bìjìng zhēnshí shēnghuó zhōng de péngyǒu, wúlùn rúhé dōu bǐ xūnǐ shìjiè de wǎngyǒu zhòngyào, méiyǒu rén kěyǐ qǔdài.",
+        "english": "The internet merely offers a more convenient social conduit; as for whether to seek online friendships or successfully find suitable matches, that depends on personal discernment. After all, real-life companions remain incomparably more vital than virtual contacts and cannot be replaced."
+      }
+    ]
   }
 ]

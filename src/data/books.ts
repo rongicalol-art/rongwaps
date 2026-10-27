@@ -232,6 +232,6 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {
   if (hasFullCourseAccess) return false;
   if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
-  if (bookId === 3) return lessonId > 10;
+  if (bookId === 3) return lessonId > 11;
   return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
 }
