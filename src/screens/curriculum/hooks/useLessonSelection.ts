@@ -1,61 +1,58 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useMemo } from 'react';
+import type { LessonPartSelectionMap } from '../../../types/models';
+import { getSelectedLessonIds, setBookLessonSelection } from '../../../utils/lesson/lessonPartSelection';
+
+interface UseLessonSelectionOptions {
+  activeBookId: number;
+  defaultId?: number | null;
+  selectedLessonParts: LessonPartSelectionMap;
+  availablePartsByLesson: Record<number, number[]>;
+  setSelectedLessonParts: (
+    parts: LessonPartSelectionMap
+      | ((prev: LessonPartSelectionMap) => LessonPartSelectionMap),
+  ) => void;
+}
 
 /**
- * Multi-lesson select mode. Long-pressing a lesson enters it with that lesson
+ * Multi-lesson select mode, persisted in the same per-book deck selection the
+ * practice screens use. Long-pressing a lesson enters it with that lesson
  * selected; tapping then toggles lessons. It ends on cancel, Escape, a book
- * switch, or when the last lesson is deselected.
+ * switch to another book's saved selection, or when the last lesson is
+ * deselected.
  */
-export function useLessonSelection(activeBookId: number, defaultId?: number | null) {
-  const [selectedIds, setSelectedIds] = useState<number[]>(() => (
-    typeof defaultId === 'number' ? [defaultId] : []
-  ));
+export function useLessonSelection({
+  activeBookId,
+  defaultId,
+  selectedLessonParts,
+  availablePartsByLesson,
+  setSelectedLessonParts,
+}: UseLessonSelectionOptions) {
+  const selectedIds = useMemo(() => {
+    const saved = getSelectedLessonIds(selectedLessonParts, activeBookId);
+    if (saved.length > 0) return saved;
+    return typeof defaultId === 'number' ? [defaultId] : [];
+  }, [activeBookId, defaultId, selectedLessonParts]);
+
   const isSelecting = selectedIds.length > 0;
   const isMultiSelecting = selectedIds.length > 1;
 
-  const enter = useCallback((id: number) => setSelectedIds([id]), []);
+  const write = useCallback((ids: number[]) => {
+    setSelectedLessonParts((current) => (
+      setBookLessonSelection(current, activeBookId, ids, availablePartsByLesson)
+    ));
+  }, [activeBookId, availablePartsByLesson, setSelectedLessonParts]);
+
+  const enter = useCallback((id: number) => write([id]), [write]);
   const exit = useCallback(() => {
-    setSelectedIds(typeof defaultId === 'number' ? [defaultId] : []);
-  }, [defaultId]);
+    write(typeof defaultId === 'number' ? [defaultId] : []);
+  }, [defaultId, write]);
 
   const toggle = useCallback((id: number) => {
-    setSelectedIds((current) => {
-      if (current.includes(id)) {
-        const next = current.filter((value) => value !== id);
-        return next.length > 0 ? next : typeof defaultId === 'number' ? [defaultId] : [];
-      }
-      return [...current, id];
-    });
-  }, [defaultId]);
-
-  const prevBookIdRef = useRef(activeBookId);
-  const prevDefaultIdRef = useRef(defaultId);
-  useEffect(() => {
-    const bookChanged = prevBookIdRef.current !== activeBookId;
-    const defaultChanged = prevDefaultIdRef.current !== defaultId;
-    prevBookIdRef.current = activeBookId;
-    prevDefaultIdRef.current = defaultId;
-
-    if (bookChanged || defaultChanged) {
-      setSelectedIds(typeof defaultId === 'number' ? [defaultId] : []);
-      return;
-    }
-
-    setSelectedIds((current) => {
-      if (current.length === 0 && typeof defaultId === 'number') {
-        return [defaultId];
-      }
-      return current;
-    });
-  }, [activeBookId, defaultId]);
-
-  useEffect(() => {
-    if (!isSelecting) return undefined;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') exit();
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [exit, isSelecting]);
+    const next = selectedIds.includes(id)
+      ? selectedIds.filter((value) => value !== id)
+      : [...selectedIds, id];
+    write(next.length > 0 ? next : typeof defaultId === 'number' ? [defaultId] : []);
+  }, [defaultId, selectedIds, write]);
 
   return { selectedIds, isSelecting, isMultiSelecting, enter, exit, toggle };
 }

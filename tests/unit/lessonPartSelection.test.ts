@@ -5,6 +5,7 @@ import {
   isCardInPartSelection,
   normalizePartSelection,
   reconcilePartSelectionsForBook,
+  setBookLessonSelection,
 } from '../../src/utils/lesson/lessonPartSelection';
 import { buildPracticePartSegments } from '../../src/utils/lesson/practicePartSegments';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../../src/utils/srs/sessionProgress';
@@ -27,6 +28,25 @@ test('vocabulary IDs preserve book, lesson, and part identity', () => {
 
 test('selecting every part remains an explicit array', () => {
   assert.deepEqual(normalizePartSelection([1, 2, 3], [1, 2, 3]), [1, 2, 3]);
+});
+
+test('saving a lesson selection replaces only that book', () => {
+  const next = setBookLessonSelection(
+    { '1:5': [1], '2:1': [1] },
+    1,
+    [2, 4],
+    { 2: [1, 2, 3], 4: [1, 2] },
+  );
+
+  assert.deepEqual(next, {
+    '2:1': [1],
+    '1:2': [1, 2, 3],
+    '1:4': [1, 2],
+  });
+});
+
+test('a lesson without part data still saves as part 1', () => {
+  assert.deepEqual(setBookLessonSelection({}, 1, [3], {}), { '1:3': [1] });
 });
 
 test('part selection labels collapse a consecutive run', () => {

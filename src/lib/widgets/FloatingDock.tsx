@@ -40,14 +40,10 @@ export function FloatingDockRoot({
       <AnimatePresence>
         {visible && (
           <motion.div
-            initial={reduceMotion ? { opacity: 0 } : { y: 96 }}
-            animate={reduceMotion ? { opacity: 1, y: 0 } : { y: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { y: 96 }}
-            transition={
-              reduceMotion
-                ? { duration: 0 }
-                : { type: 'spring', stiffness: 380, damping: 34, mass: 0.8 }
-            }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.12, ease: 'easeOut' }}
             className={cn(
               'pointer-events-none inset-x-0 bottom-dock-safe flex justify-center px-4',
               position === 'fixed' ? 'fixed' : 'absolute',

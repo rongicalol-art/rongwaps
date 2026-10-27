@@ -11,16 +11,12 @@ interface PracticeDockSlotValue {
   setExclusive: (exclusive: boolean) => void;
 }
 
-/**
- * Shared choreography for swapping the dock's mode switcher and a mode's own
- * controls: the outgoing one slides down and fades, then the incoming one rises
- * in after it. Transform and opacity only, so it stays on the compositor.
- */
+/** The dock's mode switcher and a mode's own controls swap with a short fade: no travel, no waiting for the other to leave. */
 export const DOCK_SWAP = {
-  distance: 28,
-  exitSeconds: 0.16,
-  enterSeconds: 0.24,
-  ease: [0.32, 0.72, 0, 1] as [number, number, number, number],
+  distance: 0,
+  exitSeconds: 0.08,
+  enterSeconds: 0.12,
+  ease: 'easeOut' as const,
 };
 
 const PracticeDockSlotContext = createContext<PracticeDockSlotValue | null>(null);

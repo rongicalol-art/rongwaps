@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { alignWordSyllables, getPinyinTone, segmentPinyinTones } from '../../src/utils/pinyin/pinyinTones';
+import { alignSentenceSyllables, alignWordSyllables, getPinyinTone, segmentPinyinTones } from '../../src/utils/pinyin/pinyinTones';
 import { splitPinyinWordToSyllables } from '../../src/utils/pinyin/pinyinSyllables';
+import { numberToToneMarks } from '../../src/utils/pinyin/pinyin';
 
 test('getPinyinTone: reads the tone mark, unmarked is neutral', () => {
   assert.equal(getPinyinTone('zhī'), 1);
@@ -9,6 +10,14 @@ test('getPinyinTone: reads the tone mark, unmarked is neutral', () => {
   assert.equal(getPinyinTone('Nǐ'), 3);
   assert.equal(getPinyinTone('dào'), 4);
   assert.equal(getPinyinTone('ma'), 5);
+  assert.equal(getPinyinTone('Ńg'), 2);
+  assert.equal(getPinyinTone('Ǹg'), 4);
+});
+
+test('numberToToneMarks: preserves u: when not followed by a tone digit', () => {
+  assert.equal(numberToToneMarks('Xiǎotōu: Wǒ'), 'Xiǎotōu: Wǒ');
+  assert.equal(numberToToneMarks('lu:4'), 'lǜ');
+  assert.equal(numberToToneMarks('lu:e4'), 'lüè');
 });
 
 test('splitter: a later syllable never starts with a vowel when a split exists', () => {
@@ -51,4 +60,23 @@ test('alignWordSyllables: "/" variants pair by position or must agree', () => {
   assert.deepEqual(alignWordTones('這些', 'zhèxiē/zhèixiē'), [4, 1]);
   assert.equal(alignWordTones('差', 'chà/chā'), null);
   assert.equal(alignWordTones('和', 'hé/hàn'), null);
+});
+
+test('alignSentenceSyllables: handles interjections, 3C, and non-Han parentheticals', () => {
+  const ng = alignSentenceSyllables('嗯，好。', 'Ǹg, hǎo.');
+  assert.deepEqual(ng?.map((s) => s?.text ?? null), ['Ǹg', null, 'hǎo', null]);
+
+  const threeC = alignSentenceSyllables('買3C產品。', 'Mǎi 3C chǎnpǐn.');
+  assert.deepEqual(threeC?.map((s) => s?.text ?? null), ['Mǎi', null, null, 'chǎn', 'pǐn', null]);
+
+  const bruce = alignSentenceSyllables('李小龍（Bruce Lee）很有名。', 'Lǐ Xiǎolóng (Bruce Lee) hěn yǒumíng.');
+  assert.ok(bruce);
+  assert.equal(bruce[0]?.text, 'Lǐ');
+
+  const einstein = alignSentenceSyllables(
+    '愛因斯坦（ Àiyīnsītǎn, Albert Einstein）很有名。',
+    'Àiyīnsītǎn hěn yǒumíng.',
+  );
+  assert.ok(einstein);
+  assert.equal(einstein[0]?.text, 'Ài');
 });

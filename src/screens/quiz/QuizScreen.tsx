@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { QuizChoices } from './QuizChoices';
 import { cancelQuizLaunch } from './quizShuffle';
@@ -14,6 +14,7 @@ import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { QuizTypePicker, type QuizPickerEntrance } from '../flashcard';
 import type { Flashcard } from '../../data/flashcards';
 import { useRaceQuiz } from '../../features/social';
+import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 
 interface QuizScreenProps {
   activeBookId: number;
@@ -30,6 +31,12 @@ interface QuizScreenProps {
   sessionStats?: SessionStats | null;
   /** The review deck snapshot stays available after the daily review is marked complete. */
   sessionDeck?: Flashcard[];
+}
+
+/** The picker is not a round yet: the header keeps only its close button instead of the flashcards' leftover count. */
+function PickerHeader() {
+  usePracticeHeaderRegistration({ currentIndex: 0, totalCount: 0, showLightbulb: false, minimal: true });
+  return null;
 }
 
 export function QuizScreen({
@@ -58,19 +65,12 @@ export function QuizScreen({
   }, []);
   const quizFormat = useAppStore((state) => state.quizFormat);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
-  const reduceMotion = useReducedMotion();
   /** Picked on Cards done, or here: opened from the quiz button, the mixed quiz asks first. */
   const [chosen, setPicked] = useState<readonly QuizTypeId[] | null>(quizTypes);
   // A quiz race skips the picker: the room chose the types, and every player shares its seed.
   const picked = race ? race.types : chosen;
-  // Opened from the dock: its quiz button grows into the Mixed card (read once, where the button is now).
-  const [entrance] = useState<QuizPickerEntrance>(() => {
-    if (reduceMotion) return { kind: 'none' };
-    const r = document.querySelector('button[data-mode="quiz"]')?.getBoundingClientRect();
-    return r && r.width > 0
-      ? { kind: 'morph', look: 'dock', from: { left: r.left, top: r.top, width: r.width, height: r.height } }
-      : { kind: 'rise' };
-  });
+  // The picker appears plainly: no morph out of the dock button, no sliding tiles.
+  const entrance: QuizPickerEntrance = { kind: 'none' };
 
   const sessionKey = getDeckIdentityKey({
     activeBookId,
@@ -115,11 +115,13 @@ export function QuizScreen({
                 continueLabel={continueLabel}
               />
             ) : mixed ? (
-              <div className="absolute inset-0 pt-[72px]">
+              <div className="absolute inset-0 pt-12">
                 <div className="relative h-full">
+                  <PickerHeader />
                   <QuizTypePicker
                     entrance={entrance}
                     deck={cards}
+                    summary={selectedLessons.length > 1 ? `${selectedLessons.length} lessons · ${cards.length} words` : undefined}
                     onStart={setPicked}
                   />
                 </div>

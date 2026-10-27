@@ -8,7 +8,7 @@ import {
 } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { useAuth } from '../../hooks/useAuth';
-import { getLessonSelectionKey, getSelectedLessonIds, reconcilePartSelectionsForBook } from '../../utils/lesson/lessonPartSelection';
+import { getSelectedLessonIds, reconcilePartSelectionsForBook } from '../../utils/lesson/lessonPartSelection';
 import type { ActivityType } from '../../types/models';
 import { AppFooter } from '../../app/components/AppFooter';
 import { BookCarousel } from './BookCarousel';
@@ -80,17 +80,23 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     selectedLessons,
     selectedLessonParts,
   });
+  const availablePartsByLesson = useMemo(
+    () => Object.fromEntries(
+      progress.lessons.map((lesson) => [
+        lesson.id,
+        lesson.state === 'locked' ? [] : lesson.parts.map((part) => part.id),
+      ]),
+    ),
+    [progress.lessons],
+  );
 
   useEffect(() => {
     if (isLoading || error || hasActiveActivity) return;
 
-    const availablePartsByLesson = Object.fromEntries(
-      progress.lessons.map((lesson) => [lesson.id, lesson.state === 'locked' ? [] : lesson.parts.map((part) => part.id)]),
-    );
     setSelectedLessonParts((current) => (
       reconcilePartSelectionsForBook(current, activeBookId, availablePartsByLesson)
     ));
-  }, [activeBookId, error, hasActiveActivity, isLoading, progress.lessons, setSelectedLessonParts]);
+  }, [activeBookId, availablePartsByLesson, error, hasActiveActivity, isLoading, setSelectedLessonParts]);
 
   const setLastOpenedLesson = useAppStore((state) => state.setLastOpenedLesson);
   const handleOpenLesson = useCallback((lessonId: number) => {
@@ -103,7 +109,13 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     [progress.lessons],
   );
   const defaultLessonId = currentLesson?.id ?? null;
-  const selection = useLessonSelection(activeBookId, defaultLessonId);
+  const selection = useLessonSelection({
+    activeBookId,
+    defaultId: defaultLessonId,
+    selectedLessonParts,
+    availablePartsByLesson,
+    setSelectedLessonParts,
+  });
 
   const handleLessonClick = useCallback((lessonId: number) => {
     if (selection.isMultiSelecting) {
@@ -121,19 +133,9 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
       handleOpenLesson(ids[0]);
       return;
     }
-    // Several lessons: scope the book's selection to them (all parts) and open independent study.
-    const partsByLesson = Object.fromEntries(
-      progress.lessons.map((lesson) => [lesson.id, lesson.parts.map((part) => part.id)]),
-    );
-    setSelectedLessonParts((current) => {
-      const bookPrefix = `${activeBookId}:`;
-      const next = Object.fromEntries(Object.entries(current).filter(([key]) => !key.startsWith(bookPrefix)));
-      ids.forEach((id) => { next[getLessonSelectionKey(activeBookId, id)] = partsByLesson[id] ?? [1]; });
-      return next;
-    });
-    selection.exit();
+    // Several lessons: the saved selection is already the deck scope.
     onStartPathPractice?.();
-  }, [activeBookId, handleOpenLesson, onStartPathPractice, progress.lessons, selection, setSelectedLessonParts]);
+  }, [handleOpenLesson, onStartPathPractice, selection.selectedIds]);
   const handlePartChange = useCallback((partIds: number[]) => {
     setLessonWindow((current) => (current ? { ...current, partIds } : current));
   }, []);

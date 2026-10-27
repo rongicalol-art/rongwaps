@@ -50,7 +50,7 @@ export function HereButton({ lesson }: { lesson: number }) {
   return (
     <button
       type="button"
-      onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: unread ? 'chat' : 'lesson' } })}
+      onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: unread ? 'chat' : 'online' } })}
       className="group mt-4 flex items-center gap-2.5 rounded-control py-1 pr-1 text-left outline-none focus-ring-inline"
     >
       <AvatarStack people={faces} max={3} size="sm" />
@@ -78,7 +78,7 @@ export function ChallengeCard({ onOpen }: { onOpen: () => void }) {
       size="lg"
       fullWidth
       edgeColor="var(--color-ui-border)"
-      onClick={() => { onOpen(); useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'lesson' } }); }}
+      onClick={() => { onOpen(); useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'online' } }); }}
       className="min-h-[5rem] justify-start gap-3.5 normal-case tracking-normal !border-ui-border !text-ui-ink-strong"
     >
       <PlayfulNavIcon name="challenge" className="h-8 w-8" />

@@ -8,10 +8,10 @@ export type PinyinTone = 1 | 2 | 3 | 4 | 5;
 
 const TONE_BY_MARK: Record<string, PinyinTone> = {};
 for (const [tone, marks] of [
-  [1, 'āēīōūǖĀĒĪŌŪǕ'],
-  [2, 'áéíóúǘÁÉÍÓÚǗ'],
-  [3, 'ǎěǐǒǔǚǍĚǏǑǓǙ'],
-  [4, 'àèìòùǜÀÈÌÒÙǛ'],
+  [1, 'āēīōūǖĀĒĪŌŪǕ\u0304'],
+  [2, 'áéíóúǘńḿÁÉÍÓÚǗŃḾ\u0301'],
+  [3, 'ǎěǐǒǔǚňǍĚǏǑǓǙŇ\u030C'],
+  [4, 'àèìòùǜǹÀÈÌÒÙǛǸ\u0300'],
 ] as const) {
   for (const mark of marks) TONE_BY_MARK[mark] = tone;
 }
@@ -143,9 +143,18 @@ export function alignWordSyllables(
  * character. Null unless every hanzi pairs with a syllable, so callers fall back to a pinyin line.
  */
 export function alignSentenceSyllables(sentence: string, pinyin: string | null | undefined): (WordSyllable | null)[] | null {
-  if (!pinyin) return null;
-  // Dialogue lines carry speaker labels ("A: ... B: ...") that the hanzi side writes as A：/B：.
-  const spoken = numberToToneMarks(pinyin).replace(/(^|\s)[A-Z][:：]\s*/g, '$1');
+  if (!sentence || !pinyin) return null;
+  // Dialogue lines carry speaker labels ("A: ... B: ...") and embedded Latin/alphanumeric tokens (e.g. "3C", "(Bruce Lee)").
+  let spoken = numberToToneMarks(pinyin).replace(/(^|\s)[A-Z][:：]\s*/g, '$1');
+  if (sentence.includes('/')) spoken = spoken.replaceAll('/', ' ');
+  if (!/[\p{Script=Han}]/u.test((sentence.match(/[（(][^）)]*[）)]/g) ?? []).join(''))) {
+    spoken = spoken.replace(/[（(][^）)]*[）)]/g, ' ');
+  }
+  spoken = spoken.replace(/\b(?:\d+[A-Za-z]+|[A-Za-z]+\d+)\b/g, ' ');
+  const sentenceWithoutParens = sentence.replace(/[（(][^）)]*[）)]/g, ' ');
+  for (const token of sentenceWithoutParens.match(/[A-Za-z]{2,}/g) ?? []) {
+    spoken = spoken.replaceAll(token, ' ');
+  }
   const aligned = alignWordSyllables(sentence, spoken);
   return aligned && Array.from(sentence).every((char, index) => !isHanziChar(char) || aligned[index]) ? aligned : null;
 }

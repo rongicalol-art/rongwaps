@@ -4,7 +4,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import type { WordExample } from '../../../types/models';
-import { dialogueTranslation } from '../../../utils/lesson/dialogueTurns';
+import { splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
 
 const PLAY_BUTTON =
   'flex h-9 w-9 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring';
@@ -73,7 +73,20 @@ export function WordExamplesSection({
               {numberToToneMarks(ex.pinyin)}
             </p>
           )}
-          {ex.english && <p className="ui-translation text-sm leading-snug sm:text-base">{dialogueTranslation(ex.english)}</p>}
+          {ex.english && (
+            <p className="ui-translation text-sm leading-snug sm:text-base">
+              {splitTranslationLines(ex.english).map((line, i) => (
+                <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
+                  {line.label && (
+                    <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
+                      {line.label}
+                    </span>
+                  )}
+                  {line.text}
+                </span>
+              ))}
+            </p>
+          )}
           <span className="mt-1 self-start"><LevelTag bookId={ex.sourceBookId} lessonId={ex.sourceLessonId} /></span>
         </div>
       ))}

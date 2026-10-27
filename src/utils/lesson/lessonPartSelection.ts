@@ -19,6 +19,26 @@ export function formatPartSelection(partIds: number[]): string {
     : `Parts ${ids.join(' + ')}`;
 }
 
+/** Replaces one book's selected lessons, leaving other books and all part choices intact. */
+export function setBookLessonSelection(
+  selections: LessonPartSelectionMap,
+  bookId: number,
+  lessonIds: number[],
+  availablePartsByLesson: Record<number, number[]>,
+): LessonPartSelectionMap {
+  const bookPrefix = `${bookId}:`;
+  const next = Object.fromEntries(
+    Object.entries(selections).filter(([key]) => !key.startsWith(bookPrefix)),
+  );
+
+  for (const lessonId of new Set(lessonIds)) {
+    const parts = availablePartsByLesson[lessonId];
+    next[getLessonSelectionKey(bookId, lessonId)] = parts?.length ? parts : [1];
+  }
+
+  return next;
+}
+
 export function sanitizeLessonPartSelectionMap(value: unknown): LessonPartSelectionMap {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
 

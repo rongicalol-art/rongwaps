@@ -27,17 +27,21 @@ export const ALL_VALID_BASES = new Set([
   'wa', 'wai', 'wan', 'wang', 'wei', 'wen', 'weng', 'wo', 'wu',
   'xi', 'xia', 'xian', 'xiang', 'xiao', 'xie', 'xin', 'xing', 'xiong', 'xiu', 'xu', 'xuan', 'xue', 'xun',
   'ya', 'yan', 'yang', 'yao', 'ye', 'yi', 'yin', 'ying', 'yo', 'yong', 'you', 'yu', 'yuan', 'yue', 'yun',
-  'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo'
+  'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo',
+  'ng', 'n', 'm', 'hm', 'hng'
 ]);
 
 export function stripTones(str: string): string {
-  return str.toLowerCase()
+  return str.normalize('NFC').toLowerCase()
     .replace(/[āáǎà]/g, 'a')
     .replace(/[ēéěè]/g, 'e')
     .replace(/[īíǐì]/g, 'i')
     .replace(/[ōóǒò]/g, 'o')
     .replace(/[ūúǔù]/g, 'u')
-    .replace(/[ǖǘǚǜ]/g, 'ü');
+    .replace(/[ǖǘǚǜ]/g, 'ü')
+    .replace(/[ńňǹ]/g, 'n')
+    .replace(/[ḿ]/g, 'm')
+    .replace(/\u0300|\u0301|\u0304|\u030C/g, '');
 }
 
 // Punctuation/whitespace stripped out of pinyin before word/syllable work.

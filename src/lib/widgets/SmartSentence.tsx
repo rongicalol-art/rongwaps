@@ -188,17 +188,31 @@ export function SmartSentence({
   return (
     <span className={cn(exampleLayout ? 'block' : 'inline', className)}>
       {exampleLayout
-        ? (turns ?? [{ speaker: null, start: 0, end: text.length }]).map((turn) => (
-            // Each speaker on their own line with a hanging label. Plain blocks (not a grid) so lines below a floated play button get the full width back.
-            <span key={turn.start} className={turn.speaker ? 'block pl-[1.2em]' : 'block'}>
-              {turn.speaker && (
-                <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans">
-                  <span className="text-[0.6em] font-black text-ui-muted">{turn.speaker}</span>
-                </span>
-              )}
-              {renderRange(turn.start, turn.end)}
-            </span>
-          ))
+        ? (turns ?? [{ speaker: null, start: 0, end: text.length }]).map((turn) => {
+            const wideLabel = (turn.speaker?.length ?? 0) > 1;
+            return (
+              // Each speaker or numbered example on its own line with a hanging label. Plain blocks (not a grid) so lines below a floated play button get the full width back.
+              <span
+                key={turn.start}
+                className={cn(
+                  'block',
+                  turn.speaker && (wideLabel ? 'pl-[2.2em]' : 'pl-[1.2em]'),
+                )}
+              >
+                {turn.speaker && (
+                  <span
+                    className={cn(
+                      'inline-block font-sans',
+                      wideLabel ? '-ml-[2.2em] min-w-[2.2em] pr-1' : '-ml-[1.2em] min-w-[1.2em]',
+                    )}
+                  >
+                    <span className="text-[0.6em] font-black text-ui-muted">{turn.speaker}</span>
+                  </span>
+                )}
+                {renderRange(turn.start, turn.end)}
+              </span>
+            );
+          })
         : displaySegments.map(renderSegment)}
 
       {hoveredWord && typeof document !== 'undefined' && (

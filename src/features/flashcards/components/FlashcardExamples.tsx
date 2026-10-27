@@ -9,7 +9,7 @@ import {
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { cn } from '../../../utils/cn';
-import { dialogueTranslation } from '../../../utils/lesson/dialogueTurns';
+import { splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
 import { useAppStore } from '../../../store/useAppStore';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 
@@ -96,7 +96,16 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
       )}
       {showTranslation && example.english && (
         <p className="ui-translation -mt-1.5 text-sm leading-snug sm:text-[15px]">
-          {dialogueTranslation(example.english)}
+          {splitTranslationLines(example.english).map((line, i) => (
+            <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
+              {line.label && (
+                <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
+                  {line.label}
+                </span>
+              )}
+              {line.text}
+            </span>
+          ))}
         </p>
       )}
     </li>

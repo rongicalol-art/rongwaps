@@ -163,7 +163,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
                     <span className="max-w-full truncate px-1 text-xs font-extrabold text-ui-muted">{!race.connected.includes(player.id) ? 'Offline' : player.id === race.hostId ? 'Host' : 'Ready'}</span>
                   </div>
                 ) : isHost ? (
-                  <button key={`open-${index}`} type="button" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'lesson' } })}
+                  <button key={`open-${index}`} type="button" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'online' } })}
                     className="flex aspect-[1/1.12] flex-col items-center justify-center gap-1.5 rounded-control border-2 border-dashed border-ui-border text-sm font-extrabold text-ui-muted outline-none focus-ring">
                     <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-dashed border-ui-border"><AppIcon name="plus" size={18} /></span>
                     Invite

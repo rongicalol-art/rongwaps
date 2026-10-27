@@ -79,7 +79,7 @@ export const LessonComplete = ({
   }, [displayPct, reduceMotion]);
 
   return (
-    <div className="absolute inset-0 z-content flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-ui-practice-canvas px-4 pt-14 pb-dock-clearance sm:px-6 sm:pt-16">
+    <div className="absolute inset-0 z-content flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-ui-practice-canvas px-4 pt-14 pb-6 sm:px-6 sm:pt-16">
       <motion.main
         aria-labelledby="lesson-complete-title"
         initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 14 }}

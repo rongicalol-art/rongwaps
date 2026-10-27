@@ -6,7 +6,7 @@ import { useAppStore } from '../../../../store/useAppStore';
 import { playSentence } from '../../../../services/audio/sentenceAudio';
 import { ShowMoreButton } from './ShowMoreButton';
 import type { WordExample } from '../../../../types/models';
-import { dialogueTranslation } from '../../../../utils/lesson/dialogueTurns';
+import { splitTranslationLines } from '../../../../utils/lesson/dialogueTurns';
 
 const INITIAL_VISIBLE = 4;
 
@@ -74,7 +74,18 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                     {numberToToneMarks(sentence.pinyin)}
                   </span>
                 )}
-                <span className="ui-translation text-sm leading-snug sm:text-base">{dialogueTranslation(sentence.english)}</span>
+                <span className="ui-translation text-sm leading-snug sm:text-base">
+                  {splitTranslationLines(sentence.english).map((line, i) => (
+                    <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
+                      {line.label && (
+                        <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
+                          {line.label}
+                        </span>
+                      )}
+                      {line.text}
+                    </span>
+                  ))}
+                </span>
               </li>
             ))}
           </ul>

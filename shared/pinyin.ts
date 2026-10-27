@@ -20,8 +20,8 @@ export function numberToToneMarks(pinyin: string | null | undefined): string {
   if (!pinyin) return '';
 
   return pinyin
-    .replace(/u:/g, 'v')
-    .replace(/U:/g, 'V')
+    .replace(/u:(?=[A-Za-z]*[1-5])/g, 'v')
+    .replace(/U:(?=[A-Za-z]*[1-5])/g, 'V')
     .replace(/([A-Za-züÜvV]+)([1-5])/g, (match, s, toneStr) => {
       const tone = parseInt(toneStr, 10);
 

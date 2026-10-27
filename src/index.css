@@ -389,9 +389,6 @@ body {
 [data-reveal='true'] .rw-rise-3 { transition-delay: 250ms; }
 @media (prefers-reduced-motion: reduce) { [data-reveal] .rw-rise { transition-duration: 1ms; transition-delay: 0ms; } }
 
-/* Independent study keeps the mode dock at the bottom: the flashcard answer bar sits above it. */
-[data-dock-bottom] .rw-answer-bar { padding-bottom: var(--dock-clearance); }
-
 /* Side rails in two-column screens stick just below the sticky header, never behind it. */
 @utility sticky-rail {
   position: sticky;

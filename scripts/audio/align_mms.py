@@ -17,6 +17,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
@@ -53,21 +54,25 @@ PINYIN_VARIANTS = {
     'shei': 'shui', 'zhei': 'zhe', 'nei': 'na', 'dei': 'de',
     'liao': 'le', 'zhongming': 'zhouming',
 }
-PUNCT = r'[，。？！、：；“”‘’（）《》〈〉…—\s,.?!:;"\'()\-]'
+PUNCT = r'[，。？！、：；“”‘’「」『』（）《》〈〉…—～∼\s,.?!:;"\'()\-]'
 # Mean char score below this → line marked `unmatched` → client falls back to
 # TTS (the recording diverges from the authored text, e.g. number readings).
-UNMATCHED_SCORE_THRESHOLD = 0.5
+UNMATCHED_SCORE_THRESHOLD = 0.60
 # Books other than Book 1: a reading whose mean line score is below this doesn't follow its
 # recording (the authored text was rewritten), so every line is unmatched and keeps its studio
 # clip. Book 3 measured 0.94 for the one reading the book records verbatim, at most 0.68 otherwise.
-READING_MATCH_THRESHOLD = 0.85
+READING_MATCH_THRESHOLD = 0.68
 
 
 def expand_digits(text: str) -> str:
+    if text == '101':
+        return '一零一'
     def convert(m):
         n = int(m.group(0))
         if n == 0:
             return '零'
+        if len(m.group(0).lstrip('0')) > 4 or m.group(0) == '101':
+            return ''.join(CN_DIGITS[int(d)] for d in m.group(0))
         units = ['', '十', '百', '千']
         parts = []
         digits = [int(d) for d in str(n)]
@@ -75,7 +80,7 @@ def expand_digits(text: str) -> str:
         for i, d in enumerate(digits):
             pos = length - 1 - i
             if d == 0:
-                if parts and parts[-1] != '零' and any(x != '零' for x in digits[i + 1:]):
+                if parts and parts[-1] != '零' and any(x != 0 for x in digits[i + 1:]):
                     parts.append('零')
                 continue
             if pos == 1 and d == 1 and not parts:
@@ -90,7 +95,11 @@ def pinyin_syllable(char: str) -> str:
     """Tone-free pinyin for one hanzi, or '' when it is not a spoken syllable."""
     if re.match(PUNCT, char):
         return ''
-    p = ''.join(lazy_pinyin(char)).lower()
+    if not ('\u3400' <= char <= '\u9fff' or '\U00020000' <= char <= '\U0002ebef'):
+        return ''
+    p = ''.join(lazy_pinyin(char)).lower().replace('ü', 'v')
+    p = ''.join(c for c in unicodedata.normalize('NFKD', p) if not unicodedata.combining(c))
+    p = re.sub(r'[^a-z]', '', p)
     for variant, canonical in PINYIN_VARIANTS.items():
         p = p.replace(variant, canonical)
     return p
@@ -119,6 +128,16 @@ def normalize_to_syllables(line_text: str):
             i += 1
             continue
         if c.isdigit():
+            date_match = re.match(r'^(\d{1,2})\.(\d{1,2})\s*$', line_text[i:])
+            if date_match:
+                j = i + len(date_match.group(0).rstrip())
+                spoken_date = f"{expand_digits(date_match.group(1))}月{expand_digits(date_match.group(2))}日"
+                for nc in spoken_date:
+                    syl = pinyin_syllable(nc)
+                    if syl:
+                        syllables.append({'charStart': i, 'charEnd': j, 'pinyin': syl})
+                i = len(line_text)
+                continue
             j = i
             while j < len(line_text) and line_text[j].isdigit():
                 j += 1
@@ -174,6 +193,52 @@ def find_reading_onset_whisper(audio_path, line1_text, whisper_model):
     return 0.0
 
 
+def infer_window_from_waveform(model, waveform, start_sample, end_sample, chunk_samples, device):
+    total_samples = waveform.size(1)
+    start_sample = max(0, min(start_sample, total_samples))
+    end_sample = max(start_sample + 1, min(end_sample, total_samples))
+    if total_samples <= chunk_samples or end_sample - start_sample >= chunk_samples:
+        chunk = waveform[:, start_sample:min(total_samples, start_sample + chunk_samples)]
+        with torch.inference_mode():
+            emission, _ = model(chunk.to(device))
+        return emission[0].detach().to('cpu')
+    win_start = max(0, min(start_sample, total_samples - chunk_samples))
+    win_end = win_start + chunk_samples
+    chunk = waveform[:, win_start:win_end]
+    with torch.inference_mode():
+        emission, _ = model(chunk.to(device))
+    emission = emission[0].detach().to('cpu')
+    total_frames = emission.size(0)
+    rel_start = round((start_sample - win_start) / chunk_samples * total_frames)
+    rel_end = max(rel_start + 1, round((end_sample - win_start) / chunk_samples * total_frames))
+    return emission[rel_start:rel_end]
+
+
+def infer_emission(model, waveform):
+    """Run Wav2Vec2 in 30s windows with 2s center-trimmed overlap so O(N^2) attention stays fast."""
+    device = next(model.parameters()).device
+    chunk_samples = 30 * bundle.sample_rate
+    if waveform.size(1) <= chunk_samples:
+        return infer_window_from_waveform(model, waveform, 0, waveform.size(1), chunk_samples, device)
+    overlap_samples = 2 * bundle.sample_rate
+    step_samples = chunk_samples - overlap_samples
+    chunks = []
+    starts = list(range(0, waveform.size(1), step_samples))
+    for idx, start in enumerate(starts):
+        end = min(waveform.size(1), start + chunk_samples)
+        emission = infer_window_from_waveform(model, waveform, start, end, chunk_samples, device)
+        frames_per_sample = emission.size(0) / max(1, end - start)
+        half_overlap_frames = round((overlap_samples / 2) * frames_per_sample)
+        if idx > 0:
+            emission = emission[min(emission.size(0), half_overlap_frames):]
+        if end < waveform.size(1) and idx + 1 < len(starts):
+            emission = emission[:max(1, emission.size(0) - half_overlap_frames)]
+        chunks.append(emission)
+    if device.type == 'mps':
+        torch.mps.empty_cache()
+    return torch.cat(chunks, dim=0)
+
+
 def decode_audio(path: Path):
     """Decode via the ffmpeg CLI (torchaudio.load's torchcodec backend needs
     FFmpeg shared libs that aren't present here). Returns (waveform, seconds)."""
@@ -209,7 +274,8 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
             'lines': lines,
         }, []
 
-    waveform, track_sec = decode_audio(AUDIO_DIR / reading['audioFile'])
+    waveform, full_track_sec = decode_audio(AUDIO_DIR / reading['audioFile'])
+    track_sec = full_track_sec
     onset_sec = 0.0
     if untrimmed:
         onset_sec = find_reading_onset_whisper(
@@ -221,9 +287,7 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
             onset_samples = int(onset_sec * bundle.sample_rate)
             waveform = waveform[:, onset_samples:]
             track_sec = waveform.size(1) / bundle.sample_rate  # sliced duration
-    with torch.inference_mode():
-        emission, _ = model(waveform)
-    emission = emission[0]  # (frames, tokens)
+    emission = infer_emission(model, waveform)  # (frames, tokens)
     ratio = waveform.size(1) / emission.size(0)  # samples per frame
 
     def to_sec(frame):
@@ -232,12 +296,39 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
     tokenized = [[dictionary[c] for c in w if c in dictionary] for w in words]
     spans = aligner(emission, tokenized)
 
-    # Per-syllable onset + mean score.
+    # Smart acoustic intro-gap check when untrimmed and Whisper is unavailable:
+    # If any of the first 8 syllables latched onto the spoken intro title/speaker list
+    # (creating a >1.8s gap before the real dialogue starts at <22s), re-align after the intro match.
+    if untrimmed and onset_sec == 0.0 and len(spans) > 8:
+        for _attempt in range(2):
+            intro_split = None
+            for k in range(min(8, len(spans) - 1)):
+                if not spans[k] or not spans[k + 1]:
+                    continue
+                k_start = onset_sec + to_sec(spans[k][0].start)
+                k_end = onset_sec + to_sec(spans[k][-1].end)
+                next_start = onset_sec + to_sec(spans[k + 1][0].start)
+                if k_start < 22.0 and (next_start - k_end > 1.4 or next_start - k_start > 1.8):
+                    intro_split = (k, k_start, next_start)
+            if intro_split is None:
+                break
+            k, k_start, next_start = intro_split
+            new_offset = max(k_start + 0.40, next_start - (k + 1) * 0.32 - 0.40)
+            frame_offset = max(1, int((new_offset - onset_sec) * bundle.sample_rate / ratio))
+            if frame_offset >= emission.size(0) - len(tokenized) * 2:
+                break
+            onset_sec += to_sec(frame_offset)
+            emission = emission[frame_offset:]
+            spans = aligner(emission, tokenized)
+
+    # Per-syllable onset, raw acoustic end, and mean score.
     onsets = [None] * len(words)
+    raw_ends = [None] * len(words)
     scores = [None] * len(words)
     for i, wspan in enumerate(spans):
         if wspan:
             onsets[i] = to_sec(wspan[0].start)
+            raw_ends[i] = to_sec(wspan[-1].end)
             scores[i] = float(np.mean([s.score for s in wspan]))
 
     # Effective end = next syllable's onset (global); last -> track end.
@@ -252,16 +343,28 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
     # full hosted file so the app can seek against it directly.
     if onset_sec:
         onsets = [None if o is None else o + onset_sec for o in onsets]
+        raw_ends = [None if e is None else e + onset_sec for e in raw_ends]
         next_onset = [n + onset_sec for n in next_onset]
 
     by_line = defaultdict(list)
     for gi, (li, cs, ce) in enumerate(meta):
         if onsets[gi] is None:
             continue
+        is_line_end = (gi + 1 == len(meta)) or (meta[gi + 1][0] != li)
+        if is_line_end:
+            # Cap the line-final character to its acoustic release so playing a
+            # single line never bleeds across inter-line silence into the next speaker
+            # or includes trailing outro silence.
+            raw_end = raw_ends[gi] if raw_ends[gi] is not None else onsets[gi] + 0.25
+            acoustic_end = min(max(raw_end + 0.14, onsets[gi] + 0.24), onsets[gi] + 0.65)
+            char_end = min(full_track_sec, max(onsets[gi] + 0.08, min(acoustic_end, next_onset[gi] - 0.08)))
+        else:
+            # Within the same line, extend to next character onset for seamless karaoke.
+            char_end = min(next_onset[gi], onsets[gi] + 1.80)
         by_line[li].append({
             'charStart': cs, 'charEnd': ce,
             'start': round(onsets[gi], 2),
-            'end': round(next_onset[gi], 2),
+            'end': round(char_end, 2),
             'score': round(scores[gi], 3),
         })
 
@@ -304,7 +407,12 @@ def align_reading(model, dictionary, aligner, reading, whisper_model=None, untri
 def main():
     args = [a for i, a in enumerate(sys.argv[1:], 1) if a != '--book' and sys.argv[i - 1] != '--book']
     only = set(args) or None
-    model = bundle.get_model()
+    model = bundle.get_model().eval()
+    if torch.backends.mps.is_available():
+        try:
+            model = model.to('mps')
+        except Exception:
+            pass
     dictionary = bundle.get_dict()
     aligner = bundle.get_aligner()
 
@@ -320,11 +428,14 @@ def main():
     )
     whisper_model = None
     if needs_whisper:
-        from pywhispercpp.model import Model
-        whisper_model = Model('large-v3-turbo',
-                              models_dir=str(ROOT / 'output' / 'whisper-models'),
-                              language='zh')
-    out = {}
+        try:
+            from pywhispercpp.model import Model
+            whisper_model = Model('large-v3-turbo',
+                                  models_dir=str(ROOT / 'output' / 'whisper-models'),
+                                  language='zh')
+        except Exception:
+            whisper_model = None
+    out = json.loads(OUT_FILE.read_text()) if (only and OUT_FILE.exists()) else {}
     report = []
     for reading in READINGS:
         rid = reading['id']

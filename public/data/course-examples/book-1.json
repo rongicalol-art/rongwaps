@@ -224,8 +224,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-01-1-2.mp3",
-        "start": 56.7,
-        "end": 59.46
+        "start": 56.72,
+        "end": 59.48
       }
     },
     {
@@ -247,7 +247,7 @@
         "voice": "book",
         "file": "B1-01-1-2.mp3",
         "start": 76.91,
-        "end": 79.25
+        "end": 79.23
       }
     },
     {
@@ -290,8 +290,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-01-1-2.mp3",
-        "start": 118.04,
-        "end": 123.62
+        "start": 118.06,
+        "end": 123.64
       }
     },
     {
@@ -313,7 +313,7 @@
         "voice": "book",
         "file": "B1-01-1-2.mp3",
         "start": 130.37,
-        "end": 132.05
+        "end": 132.09
       }
     },
     {
@@ -538,8 +538,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-01-2-2.mp3",
-        "start": 54.46,
-        "end": 58.6
+        "start": 54.47,
+        "end": 58.62
       }
     },
     {
@@ -560,7 +560,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-01-2-2.mp3",
-        "start": 64.67,
+        "start": 64.69,
         "end": 67.47
       }
     },
@@ -831,7 +831,7 @@
         "voice": "book",
         "file": "B1-02-1-2.mp3",
         "start": 18.93,
-        "end": 21.5
+        "end": 21.49
       }
     },
     {
@@ -852,8 +852,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-1-2.mp3",
-        "start": 32.85,
-        "end": 35.81
+        "start": 32.84,
+        "end": 35.8
       }
     },
     {
@@ -870,7 +870,13 @@
       "printedPage": 52,
       "sourceOcrId": "B1L02-V10",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-02-1-2.mp3",
+        "start": 64.3,
+        "end": 69.56
+      }
     },
     {
       "id": "B1L02-1-19-E01",
@@ -891,7 +897,7 @@
         "voice": "book",
         "file": "B1-02-1-2.mp3",
         "start": 94.13,
-        "end": 100.92
+        "end": 100.91
       }
     },
     {
@@ -912,8 +918,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-1-2.mp3",
-        "start": 108.28,
-        "end": 110.77
+        "start": 108.27,
+        "end": 110.75
       }
     },
     {
@@ -956,8 +962,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-1-2.mp3",
-        "start": 154.6,
-        "end": 157.46
+        "start": 154.58,
+        "end": 157.42
       }
     },
     {
@@ -974,7 +980,13 @@
       "printedPage": 53,
       "sourceOcrId": "B1L02-V29",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-02-1-2.mp3",
+        "start": 169.33,
+        "end": 175.72
+      }
     },
     {
       "id": "B1L02-2-01-D02L01",
@@ -1154,8 +1166,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-2-2.mp3",
-        "start": 25.58,
-        "end": 27.02
+        "start": 25.59,
+        "end": 27.38
       }
     },
     {
@@ -1177,7 +1189,7 @@
         "voice": "book",
         "file": "B1-02-2-2.mp3",
         "start": 28.64,
-        "end": 31.33
+        "end": 31.32
       }
     },
     {
@@ -1198,7 +1210,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-2-2.mp3",
-        "start": 37.57,
+        "start": 37.56,
         "end": 40.45
       }
     },
@@ -1220,8 +1232,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-2-2.mp3",
-        "start": 61.33,
-        "end": 66.81
+        "start": 59.5,
+        "end": 66.8
       }
     },
     {
@@ -1242,8 +1254,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-02-2-2.mp3",
-        "start": 76.96,
-        "end": 85.43
+        "start": 78.27,
+        "end": 85.41
       }
     },
     {
@@ -1282,7 +1294,13 @@
       "printedPage": 65,
       "sourceOcrId": "B1L02-V45",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-02-3-2.mp3",
+        "start": 15.51,
+        "end": 21.78
+      }
     },
     {
       "id": "B1L02-3-03-E01",
@@ -1298,7 +1316,13 @@
       "printedPage": 65,
       "sourceOcrId": "B1L02-V46",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-02-3-2.mp3",
+        "start": 28,
+        "end": 30.93
+      }
     },
     {
       "id": "B1L02-3-08-E01",
@@ -1336,7 +1360,13 @@
       "printedPage": 65,
       "sourceOcrId": "B1L02-V52",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-02-3-2.mp3",
+        "start": 57.33,
+        "end": 60.53
+      }
     },
     {
       "id": "B1L02-3-10-E01",
@@ -1357,7 +1387,7 @@
         "voice": "book",
         "file": "B1-02-3-2.mp3",
         "start": 66.65,
-        "end": 68.55
+        "end": 68.53
       }
     },
     {
@@ -1561,7 +1591,7 @@
         "voice": "book",
         "file": "B1-03-1-2.mp3",
         "start": 17.25,
-        "end": 19.36
+        "end": 19.35
       }
     },
     {
@@ -1604,7 +1634,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 36.91,
+        "start": 36.9,
         "end": 43.21
       }
     },
@@ -1626,8 +1656,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 49.14,
-        "end": 52.24
+        "start": 49.13,
+        "end": 52.21
       }
     },
     {
@@ -1648,8 +1678,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 62.59,
-        "end": 64.93
+        "start": 62.58,
+        "end": 64.92
       }
     },
     {
@@ -1671,7 +1701,7 @@
         "voice": "book",
         "file": "B1-03-1-2.mp3",
         "start": 84.09,
-        "end": 90.18
+        "end": 90.34
       }
     },
     {
@@ -1692,8 +1722,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 97.38,
-        "end": 99.62
+        "start": 97.37,
+        "end": 99.61
       }
     },
     {
@@ -1715,7 +1745,7 @@
         "voice": "book",
         "file": "B1-03-1-2.mp3",
         "start": 108.62,
-        "end": 111.09
+        "end": 111.08
       }
     },
     {
@@ -1736,8 +1766,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 119.89,
-        "end": 123.12
+        "start": 119.88,
+        "end": 123.1
       }
     },
     {
@@ -1758,8 +1788,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 142.27,
-        "end": 148.3
+        "start": 142.24,
+        "end": 148.28
       }
     },
     {
@@ -1780,8 +1810,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 152.16,
-        "end": 153.9
+        "start": 152.14,
+        "end": 153.88
       }
     },
     {
@@ -1802,8 +1832,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 160.85,
-        "end": 164.45
+        "start": 160.81,
+        "end": 164.43
       }
     },
     {
@@ -1824,8 +1854,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-1-2.mp3",
-        "start": 170.97,
-        "end": 175.08
+        "start": 170.95,
+        "end": 175.16
       }
     },
     {
@@ -2007,8 +2037,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-2-2.mp3",
-        "start": 14.77,
-        "end": 20.33
+        "start": 14.78,
+        "end": 20.35
       }
     },
     {
@@ -2030,7 +2060,7 @@
         "voice": "book",
         "file": "B1-03-2-2.mp3",
         "start": 26.62,
-        "end": 29.32
+        "end": 29.3
       }
     },
     {
@@ -2051,8 +2081,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-2-2.mp3",
-        "start": 38.49,
-        "end": 45.63
+        "start": 38.5,
+        "end": 44.23
       }
     },
     {
@@ -2096,7 +2126,7 @@
         "voice": "book",
         "file": "B1-03-2-2.mp3",
         "start": 60.56,
-        "end": 63.23
+        "end": 63.25
       }
     },
     {
@@ -2206,7 +2236,7 @@
         "voice": "book",
         "file": "B1-03-2-2.mp3",
         "start": 115.08,
-        "end": 117.1
+        "end": 117.48
       }
     },
     {
@@ -2250,7 +2280,7 @@
         "voice": "book",
         "file": "B1-03-2-2.mp3",
         "start": 146.03,
-        "end": 152.67
+        "end": 152.69
       }
     },
     {
@@ -2271,8 +2301,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-2-2.mp3",
-        "start": 159.01,
-        "end": 161.46
+        "start": 159.02,
+        "end": 161.59
       }
     },
     {
@@ -2294,7 +2324,7 @@
         "voice": "book",
         "file": "B1-03-2-2.mp3",
         "start": 162.94,
-        "end": 166.38
+        "end": 166.39
       }
     },
     {
@@ -2315,8 +2345,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-2-2.mp3",
-        "start": 172.92,
-        "end": 176.57
+        "start": 172.9,
+        "end": 176.59
       }
     },
     {
@@ -2359,8 +2389,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-3-2.mp3",
-        "start": 7.66,
-        "end": 10.79
+        "start": 7.68,
+        "end": 10.8
       }
     },
     {
@@ -2381,8 +2411,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-3-2.mp3",
-        "start": 12.37,
-        "end": 15.23
+        "start": 12.38,
+        "end": 15.24
       }
     },
     {
@@ -2403,8 +2433,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-3-2.mp3",
-        "start": 21.33,
-        "end": 25.79
+        "start": 21.34,
+        "end": 25.8
       }
     },
     {
@@ -2425,8 +2455,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-3-2.mp3",
-        "start": 39.8,
-        "end": 45.59
+        "start": 39.82,
+        "end": 45.6
       }
     },
     {
@@ -2443,7 +2473,13 @@
       "printedPage": 88,
       "sourceOcrId": "B1L03-V50",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-03-3-2.mp3",
+        "start": 57.37,
+        "end": 61
+      }
     },
     {
       "id": "B1L03-3-08-E01",
@@ -2463,8 +2499,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-03-3-2.mp3",
-        "start": 67.24,
-        "end": 70.02
+        "start": 67.25,
+        "end": 70.03
       }
     },
     {
@@ -2713,7 +2749,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-1-2.mp3",
-        "start": 49.45,
+        "start": 49.43,
         "end": 53.22
       }
     },
@@ -2735,8 +2771,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-1-2.mp3",
-        "start": 61.56,
-        "end": 65.89
+        "start": 61.58,
+        "end": 65.88
       }
     },
     {
@@ -2758,7 +2794,7 @@
         "voice": "book",
         "file": "B1-04-1-2.mp3",
         "start": 77.65,
-        "end": 80.38
+        "end": 80.4
       }
     },
     {
@@ -2779,8 +2815,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-1-2.mp3",
-        "start": 91.6,
-        "end": 94.26
+        "start": 91.62,
+        "end": 94.3
       }
     },
     {
@@ -2824,7 +2860,7 @@
         "voice": "book",
         "file": "B1-04-1-2.mp3",
         "start": 113.58,
-        "end": 118.74
+        "end": 118.76
       }
     },
     {
@@ -2868,7 +2904,7 @@
         "voice": "book",
         "file": "B1-04-1-2.mp3",
         "start": 138.36,
-        "end": 141.96
+        "end": 141.94
       }
     },
     {
@@ -3148,8 +3184,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-2-2.mp3",
-        "start": 26.92,
-        "end": 29.8
+        "start": 26.93,
+        "end": 29.79
       }
     },
     {
@@ -3193,7 +3229,7 @@
         "voice": "book",
         "file": "B1-04-2-2.mp3",
         "start": 52.46,
-        "end": 57.6
+        "end": 57.58
       }
     },
     {
@@ -3259,7 +3295,7 @@
         "voice": "book",
         "file": "B1-04-2-2.mp3",
         "start": 109.24,
-        "end": 113.24
+        "end": 113.2
       }
     },
     {
@@ -3276,7 +3312,13 @@
       "printedPage": 103,
       "sourceOcrId": "B1L04-V44",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-04-2-2.mp3",
+        "start": 126.21,
+        "end": 131.83
+      }
     },
     {
       "id": "B1L04-2-21-E01",
@@ -3318,7 +3360,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-2-2.mp3",
-        "start": 151.81,
+        "start": 151.83,
         "end": 155.41
       }
     },
@@ -3429,8 +3471,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-3-2.mp3",
-        "start": 54.7,
-        "end": 59.42
+        "start": 54.71,
+        "end": 59.74
       }
     },
     {
@@ -3473,8 +3515,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-04-3-2.mp3",
-        "start": 80.98,
-        "end": 85.74
+        "start": 80.96,
+        "end": 85.72
       }
     },
     {
@@ -3724,7 +3766,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-1-2.mp3",
-        "start": 16.13,
+        "start": 16.14,
         "end": 20.1
       }
     },
@@ -3746,8 +3788,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-1-2.mp3",
-        "start": 21.64,
-        "end": 23.52
+        "start": 21.65,
+        "end": 23.53
       }
     },
     {
@@ -3813,7 +3855,7 @@
         "voice": "book",
         "file": "B1-05-1-2.mp3",
         "start": 56.48,
-        "end": 58.86
+        "end": 58.84
       }
     },
     {
@@ -3857,7 +3899,7 @@
         "voice": "book",
         "file": "B1-05-1-2.mp3",
         "start": 76.04,
-        "end": 83.48
+        "end": 83.5
       }
     },
     {
@@ -3923,7 +3965,7 @@
         "voice": "book",
         "file": "B1-05-1-2.mp3",
         "start": 110.98,
-        "end": 115.45
+        "end": 115.43
       }
     },
     {
@@ -3966,8 +4008,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-1-2.mp3",
-        "start": 128.46,
-        "end": 132.84
+        "start": 128.47,
+        "end": 132.86
       }
     },
     {
@@ -3984,7 +4026,13 @@
       "printedPage": 114,
       "sourceOcrId": "B1L05-V06",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "book",
+        "file": "B1-05-1-2.mp3",
+        "start": 142.55,
+        "end": 147.51
+      }
     },
     {
       "id": "B1L05-2-01-D02L01",
@@ -4165,8 +4213,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 7.1,
-        "end": 12.13
+        "start": 7.09,
+        "end": 12.11
       }
     },
     {
@@ -4187,8 +4235,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 18.15,
-        "end": 23.08
+        "start": 18.12,
+        "end": 23.04
       }
     },
     {
@@ -4225,8 +4273,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 40.27,
-        "end": 44.34
+        "start": 40.21,
+        "end": 44.44
       }
     },
     {
@@ -4247,8 +4295,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 53.02,
-        "end": 57.82
+        "start": 52.94,
+        "end": 55.6
       }
     },
     {
@@ -4269,8 +4317,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 61.64,
-        "end": 64.32
+        "start": 61.55,
+        "end": 64.25
       }
     },
     {
@@ -4291,8 +4339,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 70.53,
-        "end": 73.23
+        "start": 70.42,
+        "end": 73.12
       }
     },
     {
@@ -4313,8 +4361,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 83.74,
-        "end": 87.73
+        "start": 83.62,
+        "end": 88.5
       }
     },
     {
@@ -4335,8 +4383,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 96.91,
-        "end": 100.03
+        "start": 96.8,
+        "end": 99.88
       }
     },
     {
@@ -4357,8 +4405,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 105.93,
-        "end": 109.23
+        "start": 105.77,
+        "end": 109.07
       }
     },
     {
@@ -4379,8 +4427,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 122.32,
-        "end": 127.03
+        "start": 122.14,
+        "end": 126.83
       }
     },
     {
@@ -4401,8 +4449,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 133.61,
-        "end": 136.89
+        "start": 133.41,
+        "end": 136.77
       }
     },
     {
@@ -4423,8 +4471,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 145.98,
-        "end": 149.6
+        "start": 145.76,
+        "end": 149.38
       }
     },
     {
@@ -4445,8 +4493,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 166.03,
-        "end": 173.92
+        "start": 165.79,
+        "end": 173.65
       }
     },
     {
@@ -4467,8 +4515,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 180.42,
-        "end": 185.04
+        "start": 180.15,
+        "end": 184.75
       }
     },
     {
@@ -4489,8 +4537,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 191.31,
-        "end": 196.27
+        "start": 191.02,
+        "end": 195.98
       }
     },
     {
@@ -4511,8 +4559,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 203.4,
-        "end": 209.28
+        "start": 203.07,
+        "end": 208.97
       }
     },
     {
@@ -4533,8 +4581,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-2-2.mp3",
-        "start": 215.59,
-        "end": 221.37
+        "start": 215.26,
+        "end": 221.06
       }
     },
     {
@@ -4599,8 +4647,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-3-2.mp3",
-        "start": 30.7,
-        "end": 33.2
+        "start": 30.71,
+        "end": 33.21
       }
     },
     {
@@ -4643,8 +4691,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-3-2.mp3",
-        "start": 47.95,
-        "end": 50.19
+        "start": 47.96,
+        "end": 50.2
       }
     },
     {
@@ -4666,7 +4714,7 @@
         "voice": "book",
         "file": "B1-05-3-2.mp3",
         "start": 63.02,
-        "end": 69.88
+        "end": 69.87
       }
     },
     {
@@ -4687,8 +4735,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-05-3-2.mp3",
-        "start": 78.63,
-        "end": 83.17
+        "start": 78.65,
+        "end": 83.19
       }
     },
     {
@@ -4959,7 +5007,7 @@
         "voice": "book",
         "file": "B1-06-1-2.mp3",
         "start": 53.1,
-        "end": 58.96
+        "end": 58.94
       }
     },
     {
@@ -5024,7 +5072,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-1-2.mp3",
-        "start": 87.34,
+        "start": 87.32,
         "end": 93.21
       }
     },
@@ -5046,7 +5094,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-1-2.mp3",
-        "start": 98.45,
+        "start": 98.43,
         "end": 101.97
       }
     },
@@ -5090,7 +5138,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-1-2.mp3",
-        "start": 117.35,
+        "start": 117.33,
         "end": 121.43
       }
     },
@@ -5156,7 +5204,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-1-2.mp3",
-        "start": 145.77,
+        "start": 145.75,
         "end": 150.77
       }
     },
@@ -5420,7 +5468,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-2-2.mp3",
-        "start": 61.46,
+        "start": 61.44,
         "end": 67.29
       }
     },
@@ -5443,7 +5491,7 @@
         "voice": "book",
         "file": "B1-06-2-2.mp3",
         "start": 74.05,
-        "end": 78.22
+        "end": 78.2
       }
     },
     {
@@ -5464,7 +5512,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-2-2.mp3",
-        "start": 85.12,
+        "start": 85.1,
         "end": 88.98
       }
     },
@@ -5530,7 +5578,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-2-2.mp3",
-        "start": 118.39,
+        "start": 118.37,
         "end": 122.67
       }
     },
@@ -5575,7 +5623,7 @@
         "voice": "book",
         "file": "B1-06-2-2.mp3",
         "start": 140.18,
-        "end": 146.13
+        "end": 146.15
       }
     },
     {
@@ -5592,13 +5640,7 @@
       "printedPage": 144,
       "sourceOcrId": "B1L06-V36",
       "provenance": "textbook-ocr",
-      "confidence": "high",
-      "audio": {
-        "voice": "book",
-        "file": "B1-06-2-2.mp3",
-        "start": 163,
-        "end": 171.74
-      }
+      "confidence": "high"
     },
     {
       "id": "B1L06-2-18-E01",
@@ -5640,8 +5682,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-2-2.mp3",
-        "start": 189.5,
-        "end": 196.42
+        "start": 189.51,
+        "end": 196.44
       }
     },
     {
@@ -5662,7 +5704,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-2-2.mp3",
-        "start": 200.57,
+        "start": 200.55,
         "end": 205.07
       }
     },
@@ -5706,8 +5748,8 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-3-2.mp3",
-        "start": 21.19,
-        "end": 24.1
+        "start": 21.21,
+        "end": 24.11
       }
     },
     {
@@ -5751,7 +5793,7 @@
         "voice": "book",
         "file": "B1-06-3-2.mp3",
         "start": 47.11,
-        "end": 50.14
+        "end": 50.29
       }
     },
     {
@@ -5773,7 +5815,7 @@
         "voice": "book",
         "file": "B1-06-3-2.mp3",
         "start": 51.8,
-        "end": 54.81
+        "end": 54.96
       }
     },
     {
@@ -5860,7 +5902,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-3-2.mp3",
-        "start": 87.72,
+        "start": 87.68,
         "end": 93.08
       }
     },
@@ -5904,7 +5946,7 @@
       "audio": {
         "voice": "book",
         "file": "B1-06-3-2.mp3",
-        "start": 115.04,
+        "start": 115.02,
         "end": 121.28
       }
     },
@@ -5949,7 +5991,7 @@
         "voice": "book",
         "file": "B1-06-3-2.mp3",
         "start": 135.61,
-        "end": 146.24
+        "end": 141.16
       }
     },
     {

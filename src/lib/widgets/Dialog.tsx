@@ -146,10 +146,10 @@ export function DialogContent({
       aria-label={ariaLabel}
       tabIndex={-1}
       onKeyDown={modalFocus.onKeyDown}
-      initial={reduceMotion ? { opacity: 0 } : { scale: 0.95, opacity: 0, y: 16 }}
-      animate={{ scale: 1, opacity: 1, y: 0 }}
-      exit={reduceMotion ? { opacity: 0 } : { scale: 0.95, opacity: 0, y: 16 }}
-      transition={reduceMotion ? { duration: 0 } : { type: 'spring', damping: 26, stiffness: 320, mass: 0.8 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.12, ease: 'easeOut' }}
       className={cn(
         'relative w-full rounded-modal border-ui-border bg-ui-surface p-5 sm:p-6 shadow-ambient-lg outline-none flex flex-col max-h-[90vh]',
         DIALOG_SIZES[size],

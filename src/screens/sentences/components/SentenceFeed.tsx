@@ -2,8 +2,9 @@ import { memo, useEffect, useMemo, useRef, useState, type PointerEvent } from 'r
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ActionButton, AppIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import { alignWordSyllables } from '../../../utils/pinyin/pinyinTones';
+import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
+import { splitDialogueTurns, splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
 import { cn } from '../../../utils/cn';
 import { sentenceText, type SentenceSession } from '../hooks/useSentenceSession';
 import type { LessonSentence } from '../hooks/useLessonSentences';
@@ -46,10 +47,21 @@ const SentenceCard = memo(function SentenceCard({
   const reduceMotion = useReducedMotion();
   const { record } = sentence;
   const chars = useMemo(() => Array.from(text), [text]);
-  const syllables = useMemo(() => alignWordSyllables(text, record.pinyin), [text, record.pinyin]);
+  const codeUnitToCharIndex = useMemo(() => {
+    const map = new Map<number, number>();
+    let cu = 0;
+    chars.forEach((ch, idx) => {
+      map.set(cu, idx);
+      cu += ch.length;
+    });
+    map.set(cu, chars.length);
+    return map;
+  }, [chars]);
+  const turns = useMemo(() => splitDialogueTurns(text), [text]);
+  const syllables = useMemo(() => alignSentenceSyllables(text, record.pinyin), [text, record.pinyin]);
   const highlighted = useMemo(() => highlightMask(text, highlightTerms), [text, highlightTerms]);
   /** Every character has its own syllable: an open card stacks pinyin over each one. */
-  const isAligned = Boolean(syllables) && chars.every((char, index) => !HAN.test(char) || Boolean(syllables?.[index]));
+  const isAligned = Boolean(syllables);
   const stacked = open && isAligned;
   const [peek, setPeek] = useState<number | null>(null);
   const peekTimerRef = useRef<number | null>(null);
@@ -90,38 +102,64 @@ const SentenceCard = memo(function SentenceCard({
         <AppIcon name="bookmarkFilled" size={16} className="float-right ml-3 mt-1 text-brand-primary" aria-label="Marked hard" />
       )}
       <p lang="zh" className={cn('font-chinese text-[24px] text-ui-ink-strong sm:text-[30px]', stacked ? 'leading-[2.1]' : 'leading-[1.75]')}>
-        {chars.map((char, index) => {
-          const isHan = HAN.test(char);
+        {(turns ?? [{ speaker: null, start: 0, end: text.length }]).map((turn) => {
+          const fromIdx = codeUnitToCharIndex.get(turn.start) ?? 0;
+          const toIdx = codeUnitToCharIndex.get(turn.end) ?? chars.length;
+          const wideLabel = (turn.speaker?.length ?? 0) > 1;
           return (
             <span
-              key={index}
-              onPointerDown={isHan ? startPress(index) : undefined}
-              onPointerUp={endPress}
-              onPointerLeave={endPress}
-              onPointerCancel={endPress}
-              onContextMenu={(event) => event.preventDefault()}
-              onClick={open && isHan ? (event) => {
-                event.stopPropagation();
-                if (peekedRef.current) { peekedRef.current = false; return; }
-                onCharTap(char);
-              } : undefined}
+              key={turn.start}
               className={cn(
-                'relative',
-                highlighted[index] && 'text-brand-primary',
-                open && isHan && 'rounded-xs transition-colors hover:bg-brand-primary/10',
+                'block',
+                turn.speaker && (wideLabel ? 'pl-[2.2em]' : 'pl-[1.2em]'),
               )}
             >
-              {stacked && isHan ? (
-                <ruby className="[ruby-align:center]">
-                  {char}
-                  <rt className="pb-0.5 font-sans text-[11px] font-semibold tracking-normal text-ui-ink sm:text-[13px]">{syllables?.[index]?.text}</rt>
-                </ruby>
-              ) : char}
-              {peek === index && syllables?.[index] && (
-                <span className="pointer-events-none absolute bottom-full left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xs bg-ui-surface px-1 font-sans text-sm font-semibold leading-tight text-ui-ink">
-                  {syllables[index]?.text}
+              {turn.speaker && (
+                <span
+                  className={cn(
+                    'inline-block font-sans',
+                    wideLabel ? '-ml-[2.2em] min-w-[2.2em] pr-1' : '-ml-[1.2em] min-w-[1.2em]',
+                  )}
+                >
+                  <span className="text-[0.6em] font-black text-ui-muted">{turn.speaker}</span>
                 </span>
               )}
+              {chars.slice(fromIdx, toIdx).map((char, offset) => {
+                const index = fromIdx + offset;
+                const isHan = HAN.test(char);
+                return (
+                  <span
+                    key={index}
+                    onPointerDown={isHan ? startPress(index) : undefined}
+                    onPointerUp={endPress}
+                    onPointerLeave={endPress}
+                    onPointerCancel={endPress}
+                    onContextMenu={(event) => event.preventDefault()}
+                    onClick={open && isHan ? (event) => {
+                      event.stopPropagation();
+                      if (peekedRef.current) { peekedRef.current = false; return; }
+                      onCharTap(char);
+                    } : undefined}
+                    className={cn(
+                      'relative',
+                      highlighted[index] && 'text-brand-primary',
+                      open && isHan && 'rounded-xs transition-colors hover:bg-brand-primary/10',
+                    )}
+                  >
+                    {stacked && isHan ? (
+                      <ruby className="[ruby-align:center]">
+                        {char}
+                        <rt className="pb-0.5 font-sans text-[11px] font-semibold tracking-normal text-ui-ink sm:text-[13px]">{syllables?.[index]?.text}</rt>
+                      </ruby>
+                    ) : char}
+                    {peek === index && syllables?.[index] && (
+                      <span className="pointer-events-none absolute bottom-full left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xs bg-ui-surface px-1 font-sans text-sm font-semibold leading-tight text-ui-ink">
+                        {syllables[index]?.text}
+                      </span>
+                    )}
+                  </span>
+                );
+              })}
             </span>
           );
         })}
@@ -142,7 +180,18 @@ const SentenceCard = memo(function SentenceCard({
                 <p className="mb-1 text-base font-medium leading-snug text-ui-ink sm:text-lg">{numberToToneMarks(record.pinyin)}</p>
               )}
               <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
-                <p className="ui-translation min-w-0 text-base sm:text-lg">{record.english}</p>
+                <p className="ui-translation min-w-0 text-base sm:text-lg">
+                  {splitTranslationLines(record.english).map((line, i) => (
+                    <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
+                      {line.label && (
+                        <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans text-xs font-black text-ui-muted">
+                          {line.label}
+                        </span>
+                      )}
+                      {line.text}
+                    </span>
+                  ))}
+                </p>
                 <div className="-mr-2 flex shrink-0 items-center gap-1 self-end">
                   <button
                     type="button"

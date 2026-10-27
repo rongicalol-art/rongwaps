@@ -396,7 +396,7 @@ export function FlashcardScreen({
         <FlashcardAnswerBar
           concealed={(introActive && !introLanded) || cardsDone}
           isFlipped={shownFlipped}
-          hideFlip={isIndependentStudy}
+          docked={isIndependentStudy}
           onFlip={handleCardTap}
           onHard={() => triggerKeyboardRate(1, 1)}
           onUnsure={() => triggerKeyboardRate(2, 1)}

@@ -43,6 +43,8 @@ interface QuizTypePickerProps {
   onStart: (types: QuizTypeId[]) => void;
   /** Exposes Start to a parent that owns the keyboard (Cards done). */
   startRef?: MutableRefObject<() => void>;
+  /** Quiet line under the title, e.g. how many lessons and words the quiz covers. */
+  summary?: string;
 }
 
 /** The word on Mixed's middle card: a one-character word reads best at this size. */
@@ -75,7 +77,7 @@ function MiniDeck({ hanzi }: { hanzi: string }) {
  * Pick the quiz: Mixed (the default) or any set of single types. The Mixed card arrives first (morphing out of
  * the button that opened it, or rising in place), then the types slide out from under it to their slots.
  */
-export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePickerProps) {
+export function QuizTypePicker({ entrance, deck, onStart, startRef, summary }: QuizTypePickerProps) {
   const available = useMemo(() => availableQuizTypes(deck), [deck]);
   const hanzi = useMemo(() => mixedHanzi(deck), [deck]);
   const types = TYPES.filter((type) => available.has(type.id));
@@ -267,11 +269,12 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
   const mixed = picked.length === 0;
 
   return (
-    <div ref={rootRef} className="absolute inset-0 z-10 flex flex-col items-center">
-      <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center px-4">
-        <h2 ref={titleRef} className="text-2xl font-black text-ui-ink-strong lg:text-[28px]">Choose your quiz</h2>
+    <div ref={rootRef} className="[container-type:size] absolute inset-0 z-10 flex flex-col items-center">
+      <div className="flex min-h-0 w-full flex-1 flex-col items-center overflow-y-auto px-4">
+        <h2 ref={titleRef} className="mt-auto text-2xl font-black text-ui-ink-strong lg:text-[28px]">Choose your quiz</h2>
+        {summary && <p className="mt-1 text-sm font-bold text-ui-ink-muted">{summary}</p>}
         {/* The tiles sit under the Mixed card while they slide out. */}
-        <div ref={heroRef} data-picker-hero className="relative z-[1] mt-6 w-[212px] lg:mt-8 lg:w-[260px]">
+        <div ref={heroRef} data-picker-hero className="relative z-[1] mt-3 w-[212px] lg:w-[260px]">
           <PracticeChoiceButton
             compact
             state={mixed ? 'selected' : 'idle'}
@@ -287,7 +290,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
           </PracticeChoiceButton>
         </div>
         {/* Rows of three; a short last row stays centred under the Mixed card. */}
-        <div ref={gridRef} className="mt-5 flex w-full max-w-[344px] flex-wrap justify-center gap-3 lg:mt-6 lg:max-w-[432px] lg:gap-4">
+        <div ref={gridRef} className="mb-auto mt-3 flex w-full max-w-[344px] flex-wrap justify-center gap-3 lg:max-w-[432px]">
           {types.map((type, index) => {
             const on = picked.includes(type.id);
             return (
@@ -302,7 +305,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
                 className="w-[calc((100%-1.5rem)/3)] lg:w-[calc((100%-2rem)/3)]"
               >
                 {/* Icons share one line across the grid; a two-line label grows down, never pushes its icon. */}
-                <span className="flex h-[92px] flex-col items-center gap-2 pt-[13px] lg:h-[100px]">
+                <span className="flex h-[clamp(72px,16cqh,92px)] flex-col items-center gap-2 pt-[13px] lg:h-[clamp(72px,16cqh,100px)]">
                   <QuizTypeIcon
                     type={type.id}
                     motion={entrance.kind === 'none' ? 'none' : on || plays[type.id] || !entered ? 'once' : 'none'}
@@ -316,16 +319,16 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
             );
           })}
         </div>
-        {/* Phones: the bottom dock spot. Desktop: in the group, under the types. */}
-        <div ref={dockRef} className="absolute inset-x-0 bottom-0 px-4 pb-sheet-safe pt-4 sm:px-8 lg:static lg:mt-12 lg:w-full lg:p-0">
-          <div className="mx-auto w-full max-w-md lg:max-w-xs">
+        {/* Pinned to the bottom of the free area (above the mode dock); the types scroll above it when the window is short. */}
+        <div ref={dockRef} className="absolute inset-x-0 bottom-0 px-4 pb-sheet-safe pt-4 sm:px-8">
+          <div className="mx-auto w-full max-w-md">
             <ActionButton size="lg" fullWidth onClick={start}>
               <span>Start quiz</span>
             </ActionButton>
           </div>
         </div>
       </div>
-      <div aria-hidden className="w-full shrink-0 pb-sheet-safe pt-4 lg:hidden"><div className="h-14" /></div>
+      <div aria-hidden className="w-full shrink-0 pb-sheet-safe pt-2"><div className="h-14" /></div>
     </div>
   );
 }

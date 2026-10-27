@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { FloatingDock, PlayfulNavIcon, SegmentedControl } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
@@ -51,6 +51,8 @@ export interface PracticeModeDockProps {
   value: PracticeActivityId;
   visible?: boolean;
   layout: PracticeDockLayout;
+  /** Element that gets `--dock-inset`: the dock's height plus its offset from that element's bottom, so screens can sit above it. */
+  insetRef?: RefObject<HTMLElement | null>;
   /** Fade the dock when idle. */
   autoHide?: boolean;
 }
@@ -67,6 +69,7 @@ export function PracticeModeDock({
   value,
   visible = true,
   layout,
+  insetRef,
   autoHide = false,
 }: PracticeModeDockProps) {
   const { isVertical, side } = layout;
@@ -83,6 +86,27 @@ export function PracticeModeDock({
       : value === 'quiz'
         ? 'quiz'
         : 'flashcards';
+
+  // Measured, not hardcoded: follows the dock's real size and its bottom offset at every breakpoint. Left in place when the dock hides, so the screens never jump.
+  // An effect, not a layout effect: a parent's ref is only attached after its children's layout effects ran.
+  useEffect(() => {
+    const dock = dockRef.current;
+    const root = dock?.parentElement;
+    const target = insetRef?.current;
+    if (!dock || !root || !target) return undefined;
+    // Only ever grows: swapping the mode switcher for a mode's own controls (grades, writing) must not nudge the screens.
+    let tallest = 0;
+    const measure = () => {
+      tallest = Math.max(tallest, dock.offsetHeight);
+      const px = isVertical ? 0 : Math.ceil(tallest + (parseFloat(getComputedStyle(root).bottom) || 0));
+      target.style.setProperty('--dock-inset', isVertical ? '0px' : `calc(${px}px + 1rem)`);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(dock);
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [insetRef, isVertical]);
 
   const { isAsleep, dockProps, wake } = useFloatingDockSleep({
     ref: dockRef,

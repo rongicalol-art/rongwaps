@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ActionButton, ActivityModalWrapper, AppIcon, type AppIconName, EmptyState, LoadingScreen } from '../../lib/widgets';
 import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
@@ -141,6 +141,12 @@ export function ActivityModals({
   const setActiveQuizMode = useAppStore(state => state.setActiveQuizMode);
 
   const insetClassName = hasDock ? dockLayout.insetClassName : '';
+  // The bottom dock publishes its measured height as `--dock-inset` on this body; the screens sit above it, so they centre in the free area.
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const reservesDock = hasDock && !dockLayout.isVertical;
+  useLayoutEffect(() => {
+    if (!reservesDock) bodyRef.current?.style.removeProperty('--dock-inset');
+  }, [reservesDock]);
   const edgeInsetClassName = hasDock ? dockLayout.edgeInsetClassName : '';
 
   const previousActivityRef = useRef<ActivityType>(null);
@@ -222,7 +228,8 @@ export function ActivityModals({
             </AnimatePresence>
             {showContent && (
               <div
-                data-dock-bottom={isIndependentStudy && !dockLayout.isVertical ? '' : undefined}
+                ref={bodyRef}
+                data-dock-bottom={reservesDock ? '' : undefined}
                 className={cn('relative flex flex-1 flex-col overflow-hidden', hadLoader.current && 'animate-in fade-in duration-200', insetClassName)}
               >
               <PracticeDockSlotProvider isVertical={dockLayout.isVertical}>
@@ -241,6 +248,7 @@ export function ActivityModals({
                   insetClassName={edgeInsetClassName}
                 />
 
+                <div className={cn('absolute inset-x-0 top-0 bottom-[var(--dock-inset,0px)]', reservesDock && 'border-b-2 border-ui-divider')}>
                 <ActivityScreens
                   activeActivity={activeActivity}
                   activeBookId={activeBookId}
@@ -267,6 +275,7 @@ export function ActivityModals({
                   }}
                   edgeInsetClassName={edgeInsetClassName}
                 />
+                </div>
 
                 {/* Floating Pill Dock for Modes */}
                 <AnimatePresence>
@@ -275,6 +284,7 @@ export function ActivityModals({
                       value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
                       quizMode={activeQuizMode}
                       layout={dockLayout}
+                      insetRef={bodyRef}
                       autoHide={dockAutoHide}
                       onSelectQuizMode={(mode) => {
                         setActiveQuizMode(mode);

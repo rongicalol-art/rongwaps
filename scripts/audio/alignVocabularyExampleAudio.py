@@ -48,21 +48,35 @@ CONTENT_PATH = ROOT / 'content/audio/vocabulary_example_audio.json'
 ALIGN_SAMPLE_RATE = bundle.sample_rate
 FINGERPRINT_SAMPLE_RATE = 1000
 EMISSION_CHUNK_SECONDS = 30
-EMISSION_OVERLAP_SECONDS = 1
+EMISSION_OVERLAP_SECONDS = 2
 MIN_WORD_MATCH_SCORE = 0.68
 MIN_SEGMENT_SCORE = 0.64
+MAX_SYLLABLE_DURATION = 2.20
 PINYIN_VARIANTS = {
     'shei': 'shui', 'zhei': 'zhe', 'nei': 'na', 'dei': 'de',
     'liao': 'le', 'zhongming': 'zhouming',
 }
-PUNCT = set('，。？！、：；“”‘’（）《》〈〉…—,.?!:;\'"()[]{}-/\\')
+PUNCT = set('，。？！、：；“”‘’「」『』（）《》〈〉…—～∼,.?!:;\'"()[]{}-/\\')
 CN_DIGITS = '零一二三四五六七八九'
+NUMERAL_CHARS = set('零一二兩三四五六七八九十百千萬')
+NUMERAL_SYLLABLES = {
+    'ling', 'yi', 'er', 'liang', 'san', 'si', 'wu', 'liu',
+    'qi', 'ba', 'jiu', 'shi', 'bai', 'qian', 'wan', 'fen',
+}
 PINYIN_SYLLABLES = {
     to_normal(syllable).lower()
     for readings in PINYIN_DICT.values()
     for syllable in readings.split(',')
 }
-PINYIN_SYLLABLES.update({'shei', 'zhei'})
+PINYIN_SYLLABLES.update({'shei', 'zhei', 'ng', 'n', 'm'})
+
+
+def strip_pinyin_tones(value):
+    lowered = to_normal(value.lower()).replace('ü', 'v')
+    return ''.join(
+        char for char in unicodedata.normalize('NFKD', lowered)
+        if not unicodedata.combining(char)
+    )
 
 
 def read_examples(item):
@@ -82,11 +96,12 @@ def han_count(text):
 
 
 def expand_digits(text):
+    text = text.replace('○', '零').replace('〇', '零')
     def convert(match):
         number = int(match.group(0))
         if number == 0:
             return '零'
-        if len(match.group(0).lstrip('0')) > 4:
+        if len(match.group(0).lstrip('0')) > 4 or match.group(0) == '101':
             return ''.join(CN_DIGITS[int(digit)] for digit in match.group(0))
         units = ['', '十', '百', '千']
         parts = []
@@ -109,7 +124,7 @@ def pinyin_syllable(char):
         return ''
     if not ('\u3400' <= char <= '\u9fff' or '\U00020000' <= char <= '\U0002ebef'):
         return ''
-    plain = ''.join(lazy_pinyin(char)).lower()
+    plain = re.sub(r'[^a-z]', '', strip_pinyin_tones(''.join(lazy_pinyin(char))))
     for variant, canonical in PINYIN_VARIANTS.items():
         plain = plain.replace(variant, canonical)
     return plain
@@ -117,7 +132,7 @@ def pinyin_syllable(char):
 
 def split_pinyin_word(word):
     """Return plausible syllabifications of one printed, unspaced Pinyin word."""
-    normalized = to_normal(word).lower().replace('ü', 'v')
+    normalized = strip_pinyin_tones(word)
     memo = {len(normalized): {0: [()]}}
     for position in range(len(normalized) - 1, -1, -1):
         options = {}
@@ -134,16 +149,28 @@ def split_pinyin_word(word):
     return memo.get(0, {})
 
 
+def strip_speaker_labels(text, pinyin=None):
+    """Remove unspoken dialogue speaker prefixes (e.g. 老師：, 學生：, 姊姊：, A:) before alignment."""
+    cleaned_text = re.sub(r'(?:^|(?<=[。？！?!\s]))[\u4e00-\u9fff]{1,4}[：:](?!「)\s*', ' ', text or '')
+    cleaned_text = re.sub(r'\b[A-Z]\s*[：:]\s*', ' ', cleaned_text)
+    if pinyin is None:
+        return cleaned_text
+    cleaned_pinyin = re.sub(r'(?:^|(?<=[.?!\s]))[^\s:：]{1,20}\s*[：:]\s*', ' ', pinyin or '')
+    return cleaned_text, cleaned_pinyin
+
+
 def printed_pinyin_syllables(text, pinyin):
     """Parse source-book Pinyin, requiring one syllable for every spoken Hanzi."""
     if not pinyin:
         return None
-    pinyin = re.sub(r'\b[A-Z]\s*:', ' ', pinyin)
-    words = re.findall(r'[A-Za-zvV]+', to_normal(pinyin).lower())
-    erhua_count = sum(1 for word in words if len(word) > 2 and word.endswith('r'))
+    text = re.sub(r'[（(][^）)]*[）)]', '', text)
+    pinyin = re.sub(r'[（(][^）)]*[）)]', '', pinyin)
+    text, pinyin = strip_speaker_labels(text, pinyin)
+    words = re.findall(r'[A-Za-zvV]+', strip_pinyin_tones(pinyin))
+    erhua_count = sum(1 for word in words if len(word) > 2 and word.endswith('r') and not word.endswith('er'))
     # In erhua words such as yìdiǎnr, 儿 is represented by the final r rather
     # than its own vowel-bearing syllable.
-    words = [word[:-1] if len(word) > 2 and word.endswith('r') else word for word in words]
+    words = [word[:-1] if len(word) > 2 and word.endswith('r') and not word.endswith('er') else word for word in words]
     expected = han_count(expand_digits(text)) - erhua_count
     if expected <= 0:
         return None
@@ -184,6 +211,7 @@ def normalize_to_syllables(text, pinyin=None):
         source_syllables = printed_pinyin_syllables(text, pinyin)
         if source_syllables:
             return source_syllables
+    text = strip_speaker_labels(text)
     syllables = []
     text = expand_digits(text)
     index = 0
@@ -488,24 +516,50 @@ def decode_for_aligner(path):
     return waveform
 
 
+def infer_window_from_waveform(model, waveform, start_sample, end_sample, chunk_samples, device):
+    """Run model on a full chunk_samples slice of real audio containing [start_sample, end_sample]."""
+    total_samples = waveform.size(1)
+    start_sample = max(0, min(start_sample, total_samples))
+    end_sample = max(start_sample + 1, min(end_sample, total_samples))
+    if total_samples <= chunk_samples or end_sample - start_sample >= chunk_samples:
+        chunk = waveform[:, start_sample:min(total_samples, start_sample + chunk_samples)]
+        with torch.inference_mode():
+            emission, _ = model(chunk.to(device))
+        return emission[0].detach().to('cpu')
+    win_start = max(0, min(start_sample, total_samples - chunk_samples))
+    win_end = win_start + chunk_samples
+    chunk = waveform[:, win_start:win_end]
+    with torch.inference_mode():
+        emission, _ = model(chunk.to(device))
+    emission = emission[0].detach().to('cpu')
+    total_frames = emission.size(0)
+    rel_start = round((start_sample - win_start) / chunk_samples * total_frames)
+    rel_end = max(rel_start + 1, round((end_sample - win_start) / chunk_samples * total_frames))
+    return emission[rel_start:rel_end]
+
+
 def infer_emission(model, waveform, device):
-    """Run Wav2Vec2 in overlapping windows to bound attention memory."""
+    """Run Wav2Vec2 in overlapping windows with center-trimmed overlap to bound memory."""
     chunk_samples = EMISSION_CHUNK_SECONDS * ALIGN_SAMPLE_RATE
+    if waveform.size(1) <= chunk_samples:
+        return infer_window_from_waveform(model, waveform, 0, waveform.size(1), chunk_samples, device)
     overlap_samples = EMISSION_OVERLAP_SECONDS * ALIGN_SAMPLE_RATE
     step_samples = chunk_samples - overlap_samples
+    starts = list(range(0, waveform.size(1), step_samples))
     chunks = []
-    with torch.inference_mode():
-        for index, start in enumerate(range(0, waveform.size(1), step_samples)):
-            end = min(waveform.size(1), start + chunk_samples)
-            chunk = waveform[:, start:end].to(device)
-            emission, _ = model(chunk)
-            emission = emission[0].detach().to('cpu')
-            if index:
-                frames_per_sample = emission.size(0) / max(1, chunk.size(1))
-                drop_frames = min(emission.size(0), round(overlap_samples * frames_per_sample))
-                emission = emission[drop_frames:]
-            chunks.append(emission)
-            print(f"    audio model window {index + 1}: {start / ALIGN_SAMPLE_RATE:.0f}-{end / ALIGN_SAMPLE_RATE:.0f}s", flush=True)
+    for index, start in enumerate(starts):
+        end = min(waveform.size(1), start + chunk_samples)
+        emission = infer_window_from_waveform(model, waveform, start, end, chunk_samples, device)
+        frames_per_sample = emission.size(0) / max(1, end - start)
+        half_overlap_frames = round((overlap_samples / 2) * frames_per_sample)
+        if index > 0:
+            emission = emission[min(emission.size(0), half_overlap_frames):]
+        if end < waveform.size(1) and index + 1 < len(starts):
+            emission = emission[:max(1, emission.size(0) - half_overlap_frames)]
+        chunks.append(emission)
+        print(f"    audio model window {index + 1}: {start / ALIGN_SAMPLE_RATE:.0f}-{end / ALIGN_SAMPLE_RATE:.0f}s", flush=True)
+    if device.type == 'mps':
+        torch.mps.empty_cache()
     return torch.cat(chunks, dim=0)
 
 
@@ -524,10 +578,8 @@ def refine_word_anchors(items, track_path, aligned, source_cache, signal_cache):
     for item in items:
         segment = word_segments.get(item['id'])
         template = source_template(item, source_cache)
-        earliest = cursor + round(
-            (previous_example_length * 0.20 + 0.35) * FINGERPRINT_SAMPLE_RATE
-        ) if cursor else 0
-        max_gap = max(18, min(60, 10 + previous_example_length * 0.55))
+        earliest = max(0, cursor - round(0.25 * FINGERPRINT_SAMPLE_RATE)) if cursor else 0
+        max_gap = max(35, min(65, 20 + previous_example_length * 0.60))
         if template is not None:
             score, position = normalized_match(
                 signal, template, earliest,
@@ -542,14 +594,128 @@ def refine_word_anchors(items, track_path, aligned, source_cache, signal_cache):
                 })
                 cursor = position + len(template)
                 matched += 1
-            else:
-                cursor = earliest
-        else:
-            cursor = earliest
         previous_example_length = (
             han_count(item['_examples'][0]['chinese']) if item['_examples'] else 0
         )
     print(f"    refined {matched}/{len(items)} vocabulary word anchors from source clips", flush=True)
+
+
+def assign_example_windows(aligned, items, track_duration):
+    """Compute acoustic [windowStart, windowEnd] bounds for every word and example segment."""
+    item_by_id = {item['id']: item for item in items}
+    word_segments = []
+    for segment in aligned:
+        if segment.get('kind') != 'word':
+            continue
+        if segment.get('start') is None or segment.get('end') is None:
+            continue
+        if word_segments and float(segment['start']) < float(word_segments[-1]['start']):
+            continue
+        word_segments.append(segment)
+
+    def are_grouped(curr_word, next_word):
+        gap = float(next_word['start']) - float(curr_word['end'])
+        if gap < 2.2:
+            return True
+        curr_item = item_by_id.get(curr_word['sourceCardId'])
+        next_item = item_by_id.get(next_word['sourceCardId'])
+        curr_ex = [han_only(e.get('chinese', '')) for e in (curr_item or {}).get('_examples', [])]
+        next_ex = [han_only(e.get('chinese', '')) for e in (next_item or {}).get('_examples', [])]
+        if curr_ex and curr_ex == next_ex and gap < 4.5:
+            return True
+        if next_word['sourceCardId'].startswith('B1') and not curr_ex and gap < 4.2:
+            return True
+        return False
+
+    word_windows = {}
+    for index, word_seg in enumerate(word_segments):
+        first_idx = index
+        while first_idx > 0 and are_grouped(word_segments[first_idx - 1], word_segments[first_idx]):
+            first_idx -= 1
+        last_idx = index
+        while last_idx + 1 < len(word_segments) and are_grouped(word_segments[last_idx], word_segments[last_idx + 1]):
+            last_idx += 1
+        win_start = float(word_segments[last_idx]['end'])
+        win_end = float(word_segments[last_idx + 1]['start']) if last_idx + 1 < len(word_segments) else track_duration
+        word_seg['windowStart'] = win_start
+        word_seg['windowEnd'] = win_end
+        word_windows[word_seg['sourceCardId']] = (win_start, win_end, first_idx, last_idx)
+
+    for segment in aligned:
+        if segment.get('kind') != 'example':
+            continue
+        info = word_windows.get(segment.get('sourceCardId'))
+        if not info:
+            continue
+        win_start, win_end, first_idx, last_idx = info
+        syllable_count = segment.get('syllableCount', 0)
+        # Handle 1-syllable interjection clip (e.g. B3L01-1-36 嗯) cut from B: inside its own dialogue example
+        if (first_idx == last_idx and first_idx > 0
+                and syllable_count >= 15
+                and win_end - win_start < syllable_count * 0.27):
+            prev_word = word_segments[first_idx - 1]
+            prev_item = item_by_id.get(prev_word['sourceCardId'])
+            if prev_item and not prev_item.get('_examples'):
+                win_start = float(prev_word['end'])
+        segment['windowStart'] = win_start
+        segment['windowEnd'] = win_end
+
+
+def summarize_alignment_spans(valid_spans, seconds_per_frame, track_duration, text, syllables=None, offset_seconds=0.0):
+    """Extract capped start/end, score, maxSyllableGap, and maxSyllableDuration from CTC spans."""
+    bounds = [
+        [
+            offset_seconds + min(state.start for state in span) * seconds_per_frame,
+            offset_seconds + max(state.end for state in span) * seconds_per_frame,
+        ]
+        for span in valid_spans
+    ]
+    if bounds:
+        if bounds[0][1] - bounds[0][0] > 0.65:
+            bounds[0][0] = bounds[0][1] - 0.45
+        if bounds[-1][1] - bounds[-1][0] > 0.65:
+            bounds[-1][1] = bounds[-1][0] + 0.45
+    start = max(0.0, bounds[0][0]) if bounds else 0.0
+    end = min(track_duration, bounds[-1][1]) if bounds else 0.0
+    max_syllable_duration = max((b[1] - b[0] for b in bounds), default=0.0)
+    max_syllable_gap = max(
+        (max(0.0, following[0] - previous[1]) for previous, following in zip(bounds, bounds[1:])),
+        default=0.0,
+    )
+    all_states = [state for span in valid_spans for state in span]
+    score = float(np.mean([state.score for state in all_states])) if all_states else 0.0
+    expanded_text = expand_digits(re.sub(r'[（(][^）)]*[）)]', '', text))
+    numeral_count = sum(1 for char in expanded_text if char in NUMERAL_CHARS)
+    if (score < MIN_SEGMENT_SCORE and numeral_count >= 2
+            and syllables and len(valid_spans) == len(syllables) and len(valid_spans) >= 4):
+        first_score = float(np.mean([s.score for s in valid_spans[0]]))
+        last_score = float(np.mean([s.score for s in valid_spans[-1]]))
+        non_num_states = [
+            state for syl, span in zip(syllables, valid_spans)
+            if syl not in NUMERAL_SYLLABLES for state in span
+        ]
+        if first_score >= 0.70 and last_score >= 0.70 and len(non_num_states) >= 4:
+            non_num_mean = float(np.mean([s.score for s in non_num_states]))
+            if non_num_mean >= 0.85:
+                score = max(score, non_num_mean * 0.92)
+        elif first_score >= 0.70 and last_score >= 0.45 and numeral_count >= 4:
+            non_num_syl_scores = sorted(
+                (float(np.mean([s.score for s in span]))
+                 for syl, span in zip(syllables, valid_spans)
+                 if syl not in NUMERAL_SYLLABLES),
+                reverse=True,
+            )
+            if (len(non_num_syl_scores) >= 4
+                    and float(np.mean(non_num_syl_scores)) >= 0.65
+                    and float(np.mean(non_num_syl_scores[:4])) >= 0.90):
+                score = max(score, float(np.mean(non_num_syl_scores)) * 0.96)
+    return {
+        'start': start,
+        'end': end,
+        'score': score,
+        'maxSyllableGap': max_syllable_gap,
+        'maxSyllableDuration': max_syllable_duration,
+    }
 
 
 def align_segments(model, dictionary, aligner, track_path, segments, tokens, device,
@@ -558,6 +724,7 @@ def align_segments(model, dictionary, aligner, track_path, segments, tokens, dev
     track_duration = waveform.size(1) / ALIGN_SAMPLE_RATE
     emission = infer_emission(model, waveform, device)
     ratio = waveform.size(1) / emission.size(0)
+    seconds_per_frame = ratio / ALIGN_SAMPLE_RATE
     tokenized = [[dictionary[char] for char in token if char in dictionary] for token in tokens]
     if any(not token for token in tokenized):
         raise ValueError('Pinyin token sequence contains a character outside the MMS alignment dictionary.')
@@ -570,29 +737,24 @@ def align_segments(model, dictionary, aligner, track_path, segments, tokens, dev
         if not valid:
             aligned.append({**segment, 'start': None, 'end': None, 'score': 0.0})
             continue
-        all_states = [state for span in valid for state in span]
-        token_bounds = [
-            (min(state.start for state in span), max(state.end for state in span))
-            for span in valid
-        ]
-        max_syllable_gap = max(
-            (max(0, following[0] - previous[1]) * ratio / ALIGN_SAMPLE_RATE
-             for previous, following in zip(token_bounds, token_bounds[1:])),
-            default=0.0,
+        summary = summarize_alignment_spans(
+            valid, seconds_per_frame, track_duration,
+            segment['text'], syllables=tokens[first:last],
         )
         aligned.append({
             **segment,
-            'start': max(0.0, min(state.start for state in all_states) * ratio / ALIGN_SAMPLE_RATE),
-            'end': min(track_duration, max(state.end for state in all_states) * ratio / ALIGN_SAMPLE_RATE),
-            'score': float(np.mean([state.score for state in all_states])),
-            'maxSyllableGap': max_syllable_gap,
+            **summary,
             'alignedSyllables': len(valid),
             'syllableCount': last - first,
             'alignmentMethod': 'sequence',
+            '_syllables': tokens[first:last],
         })
     refine_word_anchors(items, track_path, aligned, source_cache, signal_cache)
-    retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, track_duration)
-    return aligned, track_duration, emission, ratio
+    assign_example_windows(aligned, items, track_duration)
+    retry_unreliable_segments(
+        model, waveform, device, emission, ratio, aligner, aligned, tokenized, track_duration,
+    )
+    return aligned, track_duration, emission, ratio, waveform
 
 
 def max_allowed_syllable_gap(text):
@@ -610,8 +772,18 @@ def segment_quality_issue(segment):
         return True
     han = han_count(segment['text'])
     start, end = segment.get('start'), segment.get('end')
-    duration = float(end) - float(start) if start is not None and end is not None else 0.0
-    min_duration = max(0.30, han * 0.055)
+    if start is None or end is None:
+        return True
+    window_start = segment.get('windowStart')
+    window_end = segment.get('windowEnd')
+    if window_start is not None and float(start) < float(window_start) - 0.08:
+        return True
+    if window_end is not None and float(end) > float(window_end) + 0.08:
+        return True
+    if segment.get('maxSyllableDuration', 0.0) > MAX_SYLLABLE_DURATION:
+        return True
+    duration = float(end) - float(start)
+    min_duration = max(0.30, han * 0.14)
     max_duration = max(5.0, han * 0.72 + 1.0)
     maximum_gap = max_allowed_syllable_gap(segment['text'])
     return (
@@ -621,10 +793,10 @@ def segment_quality_issue(segment):
     )
 
 
-def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, track_duration):
-    """Retry weak whole-track alignments inside adjacent word-anchor bounds."""
-    seconds_per_frame = ratio / ALIGN_SAMPLE_RATE
+def retry_unreliable_segments(model, waveform, device, emission, ratio, aligner, aligned, tokenized, track_duration):
+    """Retry weak or out-of-window alignments inside adjacent word-anchor bounds."""
     previous_example_end = {}
+    previous_window_example = {}
     for index, segment in enumerate(aligned):
         if segment.get('kind') != 'example':
             continue
@@ -634,8 +806,11 @@ def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, trac
                          and candidate.get('sourceCardId') == segment.get('sourceCardId')),
                         None)
         next_word = next((candidate for candidate in aligned[index + 1:]
-                          if candidate.get('kind') == 'word'), None)
+                          if candidate.get('kind') == 'word'
+                          and candidate.get('start') is not None), None)
         local_lower = segment.get('_localLower')
+        if local_lower is None:
+            local_lower = segment.get('windowStart')
         lower = (float(local_lower) + 0.04 if local_lower is not None else
                  float(own_word['end']) + 0.04
                  if own_word and own_word.get('end') is not None else
@@ -643,84 +818,116 @@ def retry_unreliable_segments(emission, ratio, aligner, aligned, tokenized, trac
         if segment['sourceCardId'] in previous_example_end and not segment.get('_allowOverlap'):
             lower = max(lower, previous_example_end[segment['sourceCardId']] + 0.10)
         local_upper = segment.get('_localUpper')
+        if local_upper is None:
+            local_upper = segment.get('windowEnd')
         upper = (float(local_upper) - 0.04 if local_upper is not None else
                  float(next_word['start']) - 0.04
                  if next_word and next_word.get('start') is not None else track_duration)
 
+        win_key = (round(float(local_lower or 0.0), 1), round(float(local_upper or track_duration), 1))
+        seg_han = han_only(segment['text'])
+        if win_key in previous_window_example and not segment.get('_allowOverlap'):
+            prev_han, prev_end = previous_window_example[win_key]
+            if seg_han != prev_han:
+                lower = max(lower, prev_end + 0.10)
+
         if not segment_quality_issue(segment):
-            previous_example_end[segment['sourceCardId']] = float(segment['end'])
+            if segment.get('end') is not None:
+                previous_example_end[segment['sourceCardId']] = float(segment['end'])
+                previous_window_example[win_key] = (seg_han, float(segment['end']))
             continue
         if upper - lower < 0.8:
             continue
 
         first, last = segment['tokenStart'], segment['tokenEnd']
         target_tokens = segment.get('_targetTokens') or tokenized[first:last]
+        target_syllables = segment.get('_syllables')
         if not target_tokens:
             continue
-        low_frame = max(0, math.floor(lower / seconds_per_frame))
-        high_frame = min(emission.size(0), math.ceil(upper / seconds_per_frame))
-        syllable_count = segment['syllableCount']
-        # Search overlapping phrase-sized windows. CTC confidence then picks
-        # the occurrence within the known word-to-word section.
-        expected = max(1.6, min(9.0, syllable_count * 0.38 + 0.5))
-        window_seconds = sorted({
-            max(0.8, min(12.0, expected * scale))
-            for scale in (0.4, 0.55, 0.7, 0.85, 1.05, 1.35, 1.7)
-        })
-        step_frames = max(1, round(0.20 / seconds_per_frame))
-        best = None
-        for seconds in window_seconds:
-            window_frames = max(1, round(seconds / seconds_per_frame))
-            if window_frames > high_frame - low_frame:
-                continue
-            latest_start = high_frame - window_frames
-            starts = list(range(low_frame, latest_start + 1, step_frames))
-            if not starts or starts[-1] != latest_start:
-                starts.append(latest_start)
-            for window_start in starts:
-                window = emission[window_start:window_start + window_frames]
-                spans = aligner(window, target_tokens)
-                valid = [span for span in spans if span]
-                if len(valid) != len(target_tokens):
+
+        seconds_per_frame = ratio / ALIGN_SAMPLE_RATE
+        low_frame = max(0, int(lower / seconds_per_frame))
+        high_frame = min(emission.size(0), int(upper / seconds_per_frame))
+        if high_frame - low_frame < len(target_tokens) * 2:
+            continue
+
+        def search_local_emission(local_emission, local_spf, base_offset):
+            total_frames = local_emission.size(0)
+            window_span_sec = total_frames * local_spf
+            syllable_count = segment['syllableCount']
+            expected = max(1.6, min(18.0, syllable_count * 0.36 + 0.6))
+            max_win = min(window_span_sec, max(12.0, syllable_count * 0.65 + 1.5))
+            window_seconds = sorted({
+                round(min(window_span_sec, max(0.8, min(max_win, expected * scale))), 2)
+                for scale in (0.65, 0.8, 0.95, 1.1, 1.25, 1.5, 1.8)
+            } | {round(window_span_sec, 2)})
+            step_frames = max(1, round(0.25 / local_spf))
+            best_local = None
+            for seconds in window_seconds:
+                window_frames = min(total_frames, max(1, round(seconds / local_spf)))
+                if window_frames < len(target_tokens) * 2:
                     continue
-                states = [state for span in valid for state in span]
-                token_bounds = [
-                    (min(state.start for state in span), max(state.end for state in span))
-                    for span in valid
-                ]
-                start_frame = window_start + min(state.start for state in states)
-                end_frame = window_start + max(state.end for state in states)
-                start = start_frame * seconds_per_frame
-                end = end_frame * seconds_per_frame
-                score = float(np.mean([state.score for state in states]))
-                max_gap = max(
-                    (max(0, following[0] - previous[1]) * seconds_per_frame
-                     for previous, following in zip(token_bounds, token_bounds[1:])),
-                    default=0.0,
+                latest_start = total_frames - window_frames
+                starts = list(range(0, latest_start + 1, step_frames))
+                if not starts or starts[-1] != latest_start:
+                    starts.append(latest_start)
+                for window_start in starts:
+                    window = local_emission[window_start:window_start + window_frames]
+                    spans = aligner(window, target_tokens)
+                    valid = [span for span in spans if span]
+                    if len(valid) != len(target_tokens):
+                        continue
+                    summary = summarize_alignment_spans(
+                        valid, local_spf, track_duration, segment['text'],
+                        syllables=target_syllables,
+                        offset_seconds=base_offset + window_start * local_spf,
+                    )
+                    start = summary['start']
+                    end = summary['end']
+                    score = summary['score']
+                    max_gap = summary['maxSyllableGap']
+                    max_syl_dur = summary['maxSyllableDuration']
+                    han = han_count(segment['text'])
+                    duration = end - start
+                    if score < MIN_SEGMENT_SCORE or max_gap > max_allowed_syllable_gap(segment['text']):
+                        continue
+                    if max_syl_dur > MAX_SYLLABLE_DURATION:
+                        continue
+                    if not max(0.30, han * 0.14) <= duration <= max(5.0, han * 0.72 + 1.0):
+                        continue
+                    rank = score - max_gap * 0.04 - max(0.0, max_syl_dur - 0.45) * 0.05
+                    if best_local is None or rank > best_local['rank']:
+                        best_local = {**summary, 'rank': rank}
+            return best_local
+
+        best = search_local_emission(emission[low_frame:high_frame], seconds_per_frame, lower)
+        # If local emission slice failed or had borderline confidence (e.g. straddling a 30s chunk boundary),
+        # run a single fixed-shape forward pass on the bounded waveform window [lower, upper].
+        if best is None or best['score'] < 0.72:
+            chunk_samples = EMISSION_CHUNK_SECONDS * ALIGN_SAMPLE_RATE
+            low_sample = max(0, int(lower * ALIGN_SAMPLE_RATE))
+            high_sample = min(waveform.size(1), min(low_sample + chunk_samples, int(upper * ALIGN_SAMPLE_RATE)))
+            if high_sample - low_sample >= int(0.6 * ALIGN_SAMPLE_RATE):
+                fresh_emission = infer_window_from_waveform(
+                    model, waveform, low_sample, high_sample, chunk_samples, device,
                 )
-                han = han_count(segment['text'])
-                duration = end - start
-                if score < MIN_SEGMENT_SCORE or max_gap > max_allowed_syllable_gap(segment['text']):
-                    continue
-                if not max(0.30, han * 0.055) <= duration <= max(5.0, han * 0.72 + 1.0):
-                    continue
-                rank = score - max_gap * 0.04
-                if best is None or rank > best['rank']:
-                    best = {
-                        'start': start, 'end': end, 'score': score,
-                        'maxSyllableGap': max_gap, 'rank': rank,
-                    }
+                fresh_spf = ((high_sample - low_sample) / max(1, fresh_emission.size(0))) / ALIGN_SAMPLE_RATE
+                fresh_best = search_local_emission(fresh_emission, fresh_spf, low_sample / ALIGN_SAMPLE_RATE)
+                if fresh_best is not None and (best is None or fresh_best['rank'] > best['rank']):
+                    best = fresh_best
         if best:
             segment.update({
                 'start': best['start'], 'end': best['end'], 'score': best['score'],
                 'maxSyllableGap': best['maxSyllableGap'],
+                'maxSyllableDuration': best['maxSyllableDuration'],
                 'alignedSyllables': segment['syllableCount'],
                 'alignmentMethod': 'local-window',
             })
             print(f"    recovered {segment['exampleId']} at {best['start']:.2f}-{best['end']:.2f}s "
                   f"(score {best['score']:.3f})", flush=True)
-        if segment.get('end') is not None:
+        if segment.get('end') is not None and not segment_quality_issue(segment):
             previous_example_end[segment['sourceCardId']] = float(segment['end'])
+            previous_window_example[win_key] = (seg_han, float(segment['end']))
 
 
 def track_reference(book_id, track, book3_track_index):
@@ -773,7 +980,7 @@ def make_audio_entry(book_id, file, score, word_segment, example_segment, next_s
     if not math.isfinite(start) or not math.isfinite(end) or end <= start:
         return None, 'invalid alignment bounds'
     han = han_count(example_segment['text'])
-    min_duration = max(0.30, han * 0.055)
+    min_duration = max(0.45, han * 0.14)
     max_duration = max(5.0, han * 0.72 + 1.0)
     if example_segment.get('alignedSyllables') != example_segment.get('syllableCount'):
         return None, 'one or more sentence syllables did not align'
@@ -782,15 +989,33 @@ def make_audio_entry(book_id, file, score, word_segment, example_segment, next_s
     maximum_gap = max_allowed_syllable_gap(example_segment['text'])
     if example_segment.get('maxSyllableGap', 0.0) > maximum_gap:
         return None, f"sentence alignment contains a {example_segment['maxSyllableGap']:.2f}s gap"
+    if example_segment.get('maxSyllableDuration', 0.0) > MAX_SYLLABLE_DURATION:
+        return None, f"sentence alignment contains a stretched {example_segment['maxSyllableDuration']:.2f}s syllable"
+
+    window_start = example_segment.get('windowStart')
+    if window_start is None and word_segment and word_segment.get('end') is not None:
+        window_start = float(word_segment['end'])
+    window_end = example_segment.get('windowEnd')
+    if window_end is None and next_segment and next_segment.get('start') is not None:
+        window_end = float(next_segment['start'])
+
+    if window_start is not None and start < float(window_start) - 0.15:
+        return None, 'sentence alignment starts before vocabulary headword window'
+    if window_end is not None and end > float(window_end) + 0.15:
+        return None, 'sentence alignment bleeds past following vocabulary headword'
 
     # Add a small natural lead/tail while staying clear of the vocabulary
     # headword and the next aligned text segment.
     start = max(0.0, start - 0.06)
-    if word_segment and word_segment.get('end') is not None:
-        start = max(start, float(word_segment['end']) + 0.04)
+    if window_start is not None:
+        start = max(start, float(window_start) + 0.04)
     end = min(track_duration, end + 0.14)
+    if window_end is not None:
+        end = min(end, float(window_end) - 0.04)
     if next_segment and next_segment.get('start') is not None:
-        end = min(end, float(next_segment['start']) - 0.03)
+        next_start = float(next_segment['start'])
+        if window_start is None or next_start > float(window_start) + 0.5:
+            end = min(end, next_start - 0.03)
     duration = end - start
     if not min_duration <= duration <= max_duration:
         return None, f'implausible sentence duration {duration:.2f}s for {han} Han characters'
@@ -928,7 +1153,7 @@ def main():
     for book_id, lesson_id, part_id, items, track, track_path, expected_count, course_extras in selected_groups:
         tokens, segments = build_alignment_segments(items)
         try:
-            aligned, track_duration, emission, ratio = align_segments(
+            aligned, track_duration, emission, ratio, waveform = align_segments(
                 model, dictionary, aligner, track_path, segments, tokens, device,
                 items, word_cache, signal_cache,
             )
@@ -947,20 +1172,26 @@ def main():
                         if not token:
                             raise ValueError(f"Course example {extra['exampleId']} has an unsupported MMS syllable: {syllable}")
                         extra_tokens.append(token)
+                    win_start = own_word.get('windowStart', own_word.get('end')) if own_word else None
+                    win_end = own_word.get('windowEnd', next_word.get('start') if next_word else track_duration) if own_word else track_duration
                     aligned.append({
                         'kind': 'example', 'sourceCardId': extra['sourceCardId'],
                         'exampleId': extra['exampleId'], 'text': extra['text'],
                         'pinyinSource': extra['pinyinSource'], 'tokenStart': 0, 'tokenEnd': 0,
                         'start': None, 'end': None, 'score': 0.0, 'maxSyllableGap': 0.0,
+                        'maxSyllableDuration': 0.0,
                         'alignedSyllables': 0, 'syllableCount': len(extra_tokens),
+                        'windowStart': win_start,
+                        'windowEnd': win_end,
                         '_targetTokens': extra_tokens,
-                        '_localLower': own_word.get('end') if own_word else None,
-                        '_localUpper': next_word.get('start') if next_word else track_duration,
+                        '_syllables': extra['syllables'],
+                        '_localLower': win_start,
+                        '_localUpper': win_end,
                         '_allowOverlap': True,
                         '_nextSegment': next_word,
                     })
                 retry_unreliable_segments(
-                    emission, ratio, aligner, aligned,
+                    model, waveform, device, emission, ratio, aligner, aligned,
                     [[dictionary[char] for char in token if char in dictionary] for token in tokens],
                     track_duration,
                 )
@@ -972,13 +1203,30 @@ def main():
                                      if candidate['kind'] == 'word'
                                      and candidate['sourceCardId'] == segment['sourceCardId']), None)
                 next_segment = segment.get('_nextSegment')
-                if next_segment is None and segment.get('end') is not None:
-                    next_segment = min((candidate for candidate in aligned
-                                        if candidate is not segment
-                                        and not candidate.get('_targetTokens')
-                                        and candidate.get('start') is not None
-                                        and candidate['start'] >= segment['end']),
-                                       key=lambda candidate: candidate['start'], default=None)
+                if next_segment is not None and segment.get('end') is not None:
+                    if next_segment.get('start') is None or float(next_segment['start']) < float(segment['end']) - 0.15:
+                        next_segment = None
+                if next_segment is None:
+                    win_start = segment.get('windowStart')
+                    win_end = segment.get('windowEnd')
+                    min_next_start = (
+                        float(segment['end']) - 0.15
+                        if segment.get('end') is not None else
+                        (float(win_start) + 0.15 if win_start is not None else 0.0)
+                    )
+                    # Prefer the next segment in sequence order that starts at or after the current segment's end
+                    for candidate in aligned[index + 1:]:
+                        if candidate.get('_targetTokens') or candidate.get('start') is None:
+                            continue
+                        if float(candidate['start']) < min_next_start:
+                            continue
+                        if (candidate.get('kind') == 'example'
+                                and han_only(candidate.get('text', '')) == han_only(segment.get('text', ''))):
+                            continue
+                        next_segment = candidate
+                        break
+                    if next_segment is None and win_end is not None:
+                        next_segment = {'start': win_end}
                 file, drive_id = track_reference(book_id, track, book3_index)
                 audio, issue = make_audio_entry(
                     book_id, file, segment['score'], word_segment,
