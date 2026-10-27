@@ -1,0 +1,1803 @@
+{
+  "BOOK3_LESSON_FOURTEEN_PART_ONE": {
+    "id": "B3L14-P01-D01",
+    "bookId": 3,
+    "lessonId": 14,
+    "partId": 1,
+    "title": "Grammar 1–3 · The Story of the Double Seventh Festival",
+    "dialogue": {
+      "id": "B3L14-D01",
+      "title": "七夕情人節的故事",
+      "audioReference": "14-1-1",
+      "printedPages": [
+        352,
+        356
+      ],
+      "grammarFocus": [
+        "(這)就要從……V起了",
+        "V下去",
+        "幸虧……要不然……"
+      ],
+      "lines": [
+        {
+          "id": "b3l14d1-l1",
+          "speaker": "尚恩",
+          "traditional": "你這個布做的錢包好漂亮，在哪裡買的？",
+          "simplified": "你这个布做的钱包好漂亮，在哪里买的？",
+          "pinyin": "Nǐ zhège bù zuò de qiánbāo hǎo piàoliang, zài nǎlǐ mǎi de?",
+          "english": "This cloth wallet of yours is so pretty. Where did you buy it?"
+        },
+        {
+          "id": "b3l14d1-l2",
+          "speaker": "家豪",
+          "traditional": "是我女朋友親手做的七夕情人節禮物。法國也有情人節吧？",
+          "simplified": "是我女朋友亲手做的七夕情人节礼物。法国也有情人节吧？",
+          "pinyin": "Shì wǒ nǚpéngyǒu qīnshǒu zuò de Qīxī Qíngrénjié lǐwù. Fǎguó yě yǒu Qíngrénjié ba?",
+          "english": "It's a Qixi Valentine's gift handmade by my girlfriend. France has Valentine's Day too, right?"
+        },
+        {
+          "id": "b3l14d1-l3",
+          "speaker": "尚恩",
+          "traditional": "有啊，不過不是在七夕。你們這個節日背後應該有故事吧？",
+          "simplified": "有啊，不过不是在七夕。你们这个节日背后应该有故事吧？",
+          "pinyin": "Yǒu a, bùguò búshì zài Qīxī. Nǐmen zhège jiérì bèihòu yīnggāi yǒu gùshì ba?",
+          "english": "Yes, but not on Qixi. There must be a story behind your festival, right?"
+        },
+        {
+          "id": "b3l14d1-l4",
+          "speaker": "家豪",
+          "traditional": "這就要從牛郎、織女說起了。從前有個叫牛郎的青年，每天都帶著老牛去田裡工作。有一天，他在河邊休息時，看見了一位非常美麗的姑娘。",
+          "simplified": "这就要从牛郎、织女说起了。从前有个叫牛郎的青年，每天都带着老牛去田里工作。有一天，他在河边休息时，看见了一位非常美丽的姑娘。",
+          "pinyin": "Zhè jiù yào cóng Niúláng, Zhīnǚ shuōqǐ le. Cóngqián yǒu ge jiào Niúláng de qīngnián, měitiān dōu dài zhe lǎoniú qù tián lǐ gōngzuò. Yǒu yì tiān, tā zài hébiān xiūxí shí, kànjiàn le yí wèi fēicháng měilì de gūniáng.",
+          "english": "That has to be told starting from the Cowherd and Weaver Girl. Once there was a young man named Niulang who took his old ox to work the fields every day. One day while resting by the river, he saw an exceptionally beautiful girl."
+        },
+        {
+          "id": "b3l14d1-l5",
+          "speaker": "尚恩",
+          "traditional": "我猜牛郎第一眼看到她，就覺得遇到了真愛吧。",
+          "simplified": "我猜牛郎第一眼看到她，就觉得遇到了真爱吧。",
+          "pinyin": "Wǒ cāi Niúláng dì-yī yǎn kàndào tā, jiù juéde yùdào le zhēn'ài ba.",
+          "english": "I bet the very first moment Niulang saw her, he felt he had found true love."
+        },
+        {
+          "id": "b3l14d1-l6",
+          "speaker": "家豪",
+          "traditional": "是啊。那個天真可愛的姑娘名叫織女，她是天上的仙女，跟著幾個姊姊來人間玩，過幾天就得回到天上。",
+          "simplified": "是啊。那个天真可爱的小姑娘名叫织女，她是天上的仙女，跟着几个姐姐来人间玩，过几天就得回到天上。",
+          "pinyin": "Shì a. Nàge tiānzhēn kě'ài de gūniáng míng jiào Zhīnǚ, tā shì tiānshàng de xiānnǚ, gēn zhe jǐ ge jiějiě lái rénjiān wán, guò jǐ tiān jiù děi huídào tiānshàng.",
+          "english": "Indeed. That innocent and lovely girl was named Weaver Girl. She was a celestial fairy from heaven, visiting the mortal world with her older sisters for fun, and had to return to heaven after a few days."
+        },
+        {
+          "id": "b3l14d1-l7",
+          "speaker": "尚恩",
+          "traditional": "牛郎不想把她留下來嗎？",
+          "simplified": "牛郎不想把她留下来吗？",
+          "pinyin": "Niúláng bù xiǎng bǎ tā liú xiàlái ma?",
+          "english": "Didn't Niulang want to keep her here?"
+        },
+        {
+          "id": "b3l14d1-l8",
+          "speaker": "家豪",
+          "traditional": "當然想啊！為了把織女留在身邊，牛郎就拿走了能讓織女飛回天上的衣服。後來，因為牛郎很溫柔、很體貼，織女就慢慢愛上他了，最後他們成了夫婦，還生了兩個寶貝。",
+          "simplified": "当然想啊！为了把织女留在身边，牛郎就拿走了能让织女飞回天上的衣服。后来，因为牛郎很温柔、很体贴，织女就慢慢爱上他了，最后他们成了夫妇，还生了两个宝贝。",
+          "pinyin": "Dāngrán xiǎng a! Wèile bǎ Zhīnǚ liú zài shēnbiān, Niúláng jiù názǒu le néng ràng Zhīnǚ fēi huí tiānshàng de yīfú. Hòulái, yīnwèi Niúláng hěn wēnróu, hěn tǐtiē, Zhīnǚ jiù mànmàn àishàng tā le, zuìhòu tāmen chéng le fūfù, hái shēng le liǎng ge bǎobèi.",
+          "english": "Of course he did! To keep Weaver Girl by his side, Niulang took away the clothes that allowed her to fly back to heaven. Later, because Niulang was gentle and thoughtful, Weaver Girl gradually fell in love with him, and eventually they became husband and wife and had two precious children."
+        },
+        {
+          "id": "b3l14d1-l9",
+          "speaker": "尚恩",
+          "traditional": "他們就這樣過著幸福快樂的日子嗎？",
+          "simplified": "他们就这样过着幸福快乐的日子吗？",
+          "pinyin": "Tāmen jiù zhèyàng guò zhe xìngfú kuàilè de rìzi ma?",
+          "english": "And did they live happily ever after just like that?"
+        },
+        {
+          "id": "b3l14d1-l10",
+          "speaker": "家豪",
+          "traditional": "唉，沒那麼簡單。天帝知道了以後，氣得叫王母娘娘把織女抓回天上，還把她關了起來。牛郎找來找去，總算在天上某個神祕的地方找到了織女。沒想到王母娘娘卻在他們中間變出一條銀河，讓他們只能遠遠地看著對方。",
+          "simplified": "唉，没那么简单。天帝知道了以后，气得叫王母娘娘把织女抓回天上，还把她关了起来。牛郎找来找去，总算在天上某个神秘的地方找到了织女。没想到王母娘娘却在他们中间变出一条银河，让他们只能远远地看着对方。",
+          "pinyin": "Ài, méi nàme jiǎndān. Tiāndì zhīdào le yǐhòu, qì de jiào Wángmǔ Niángniang bǎ Zhīnǚ zhuā huí tiānshàng, hái bǎ tā guān le qǐlái. Niúláng zhǎoláizhǎoqù, zǒngsuàn zài tiānshàng mǒu ge shénmì de dìfāng zhǎodào le Zhīnǚ. Méi xiǎngdào Wángmǔ Niángniang què zài tāmen zhōngjiān biànchū yì tiáo Yínhé, ràng tāmen zhǐ néng yuǎnyuǎn de kàn zhe duìfāng.",
+          "english": "Alas, it wasn't so simple. When the Heavenly Emperor found out, he was furious and ordered the Queen Mother of the West to drag Weaver Girl back to heaven and lock her up. Niulang searched everywhere and finally found Weaver Girl in a mysterious place in heaven. Unexpectedly, the Queen Mother conjured up the Milky Way between them, allowing them only to gaze at each other from afar."
+        },
+        {
+          "id": "b3l14d1-l11",
+          "speaker": "尚恩",
+          "traditional": "織女不能跟牛郎聚在一起，也不能在人間住下去，真可憐。",
+          "simplified": "织女不能跟牛郎聚在一起，也不能在人间住下去，真可怜。",
+          "pinyin": "Zhīnǚ bù néng gēn Niúláng jù zài yìqǐ, yě bù néng zài rénjiān zhù xiàqù, zhēn kělián.",
+          "english": "Weaver Girl couldn't be together with Niulang, nor could she live on in the mortal world; how pitiful."
+        },
+        {
+          "id": "b3l14d1-l12",
+          "speaker": "家豪",
+          "traditional": "還好姊姊們很同情她，好幾次請求王母娘娘幫忙。王母娘娘仔細觀察了兩人的情況，終於被他們的愛情感動了，答應讓他們在每年的農曆七月初七見面。有人說，七夕年年都會下雨，那就是織女流下的眼淚。",
+          "simplified": "还好姐姐们很同情她，好几次请求王母娘娘帮忙。王母娘娘仔细观察了两人的情况，终于被他们的爱情感动了，答应让他们在每年的农历七月初七见面。有人说，七夕年年都会下雨，那就是织女流下的眼泪。",
+          "pinyin": "Háihǎo jiějiěmen hěn tóngqíng tā, hǎojǐ cì qǐngqiú Wángmǔ Niángniang bāngmáng. Wángmǔ Niángniang zǐxì guānchá le liǎng rén de qíngkuàng, zhōngyú bèi tāmen de àiqíng gǎndòng le, dāyìng ràng tāmen zài měinián de nónglì qīyuè chū qī jiànmiàn. Yǒu rén shuō, Qīxī niánnián dōu huì xiàyǔ, nà jiùshì Zhīnǚ liúxià de yǎnlèi.",
+          "english": "Fortunately her sisters sympathized with her and begged the Queen Mother repeatedly for help. The Queen Mother closely observed the couple's devotion and was finally moved by their love, granting them permission to meet every year on the seventh day of the seventh lunar month. Some say that it rains every year on Qixi, and that is Weaver Girl shedding tears."
+        },
+        {
+          "id": "b3l14d1-l13",
+          "speaker": "尚恩",
+          "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
+          "simplified": "幸亏有姐姐们的帮助，要不然他们一生都不能团圆了。",
+          "pinyin": "Xìngkuī yǒu jiějiěmen de bāngzhù, yàobùrán tāmen yìshēng dōu bù néng tuányuán le.",
+          "english": "Fortunately they had the sisters' help, otherwise they would never have reunited in their entire lives."
+        },
+        {
+          "id": "b3l14d1-l14",
+          "speaker": "家豪",
+          "traditional": "可是一年只能見一次面，這樣的結局讓我很難過。",
+          "simplified": "可是一年只能见一次面，这样的结局让我很难过。",
+          "pinyin": "Kěshì yì nián zhǐ néng jiàn yí cì miàn, zhèyàng de jiéjú ràng wǒ hěn nánguò.",
+          "english": "But meeting only once a year—such an ending makes me sad."
+        },
+        {
+          "id": "b3l14d1-l15",
+          "speaker": "尚恩",
+          "traditional": "怎麼說呢？",
+          "simplified": "怎么说呢？",
+          "pinyin": "Zěnme shuō ne?",
+          "english": "Why do you say that?"
+        },
+        {
+          "id": "b3l14d1-l16",
+          "speaker": "家豪",
+          "traditional": "我女朋友畢業後就要出國念書，我擔心兩個人分開太久，關係就變淡了。",
+          "simplified": "我女朋友毕业后就要出国念书，我担心两个人分开太久，关系就变淡了。",
+          "pinyin": "Wǒ nǚpéngyǒu bìyè hòu jiù yào chūguó niànshū, wǒ dānxīn liǎng ge rén fēnkāi tài jiǔ, guānxì jiù biàn dàn le.",
+          "english": "My girlfriend is going abroad to study after graduation. I worry that being apart too long will cause our relationship to fade."
+        },
+        {
+          "id": "b3l14d1-l17",
+          "speaker": "尚恩",
+          "traditional": "別擔心，現在網路這麼方便，隨時都能聊天、傳照片，距離再遠也沒問題。",
+          "simplified": "别担心，现在网络这么方便，随时都能聊天、传照片，距离再远也没问题。",
+          "pinyin": "Bié dānxīn, xiànzài wǎnglù zhème fāngbiàn, suíshí dōu néng liáotiān, chuán zhàopiàn, jùlí zài yuǎn yě méi wèntí.",
+          "english": "Don't worry. The internet is so convenient now; you can chat and send photos anytime. No matter how far the distance, it won't be a problem."
+        },
+        {
+          "id": "b3l14d1-l18",
+          "speaker": "家豪",
+          "traditional": "沒問題倒是沒問題，不過遠距離的戀愛還是很辛苦的。",
+          "simplified": "没问题倒是没问题，不过远距离的恋爱还是很辛苦的。",
+          "pinyin": "Méi wèntí dàoshì méi wèntí, bùguò yuǎnjùlí de liàn'ài háishì hěn xīnkǔ de.",
+          "english": "No problem is true enough, but a long-distance relationship is still very tough."
+        },
+        {
+          "id": "b3l14d1-l19",
+          "speaker": "尚恩",
+          "traditional": "別想那麼多了，你還是說說跟七夕有關的習俗吧。",
+          "simplified": "别想那么多了，你还是说说跟七夕有关的习俗吧。",
+          "pinyin": "Bié xiǎng nàme duō le, nǐ háishì shuōshuo gēn Qīxī yǒuguān de xísú ba.",
+          "english": "Don't overthink it; why not tell me about customs related to Qixi instead?"
+        },
+        {
+          "id": "b3l14d1-l20",
+          "speaker": "家豪",
+          "traditional": "好吧。七夕那天，當月亮升起時，就會有拜織女的活動。因為織女織布的技巧很好，能織出漂亮的衣服和美麗的雲。人間的姑娘希望能像她那樣又聰明又漂亮，就會用一些親手做的東西來拜她。",
+          "simplified": "好吧。七夕那天，当月亮升起时，就会有拜织女的活动。因为织女织布的技巧很好，能织出漂亮的衣服和美丽的云。人间的小姑娘希望能像她那样又聪明又漂亮，就会用一些亲手做的小东西来拜她。",
+          "pinyin": "Hǎoba. Qīxī nà tiān, dāng yuèliàng shēngqǐ shí, jiù huì yǒu bài Zhīnǚ de huódòng. Yīnwèi Zhīnǚ zhībù de jìqiǎo hěn hǎo, néng zhīchū piàoliang de yīfú hé měilì de yún. Rénjiān de gūniáng xīwàng néng xiàng tā nàyàng yòu cōngmíng yòu piàoliang, jiù huì yòng yìxiē qīnshǒu zuò de xiǎo dōngxī lái bài tā.",
+          "english": "All right. On Qixi day, when the moon rises, there are activities honoring Weaver Girl. Because Weaver Girl's weaving skill was superb, able to weave beautiful clothes and splendid clouds. Girls in the mortal world hoping to be clever and lovely like her would worship her with handmade items."
+        },
+        {
+          "id": "b3l14d1-l21",
+          "speaker": "尚恩",
+          "traditional": "你女朋友在七夕送你這個親手做的錢包，原來有特別的意義啊！",
+          "simplified": "你女朋友在七夕送你这个亲手做的钱包，原来有特别的意义啊！",
+          "pinyin": "Nǐ nǚpéngyǒu zài Qīxī sòng nǐ zhège qīnshǒu zuò de qiánbāo, yuánlái yǒu tèbié de yìyì a!",
+          "english": "So your girlfriend giving you this handmade wallet on Qixi carries a special meaning after all!"
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L14-G01-P360",
+        "bookId": 3,
+        "lessonId": 14,
+        "partId": 1,
+        "lessonTitle": "七夕情人節的故事",
+        "lessonTitleEnglish": "The Story of the Double Seventh Festival (Chinese Valentine's Day)",
+        "grammarNumber": 1,
+        "bookPage": 360,
+        "bookPageAvailable": true,
+        "printedPages": [
+          360,
+          361
+        ],
+        "audioReference": "14-1-1",
+        "titleTraditional": "(這)就要從……V起了",
+        "titleSimplified": "(这)就要从……V起了",
+        "titleEnglish": "Starting to explain/narrate from a specific point",
+        "learnerPromise": "Explain origins or multi-faceted backgrounds by starting at an appropriate context or timeline.",
+        "explanation": "本課對話中使用「(這)就要從……說起了」表示說話者提到的某件事，沒辦法簡單說清楚，得從某個角度、部分或時間開始說，才能讓聽者明白。這個「說」可換成「看、做、寫、找、談、講、聊」等單音節動詞，表示開始做那件事。假如前句已提到主題，就不需用「這/那」。",
+        "pattern": "(這 / 那) + 就要從 + Source / Background + V(說/看/做/寫/找/談/講/聊) + 起了",
+        "patternColumns": [
+          "這",
+          "就要從",
+          "Source",
+          "Action"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l14g1-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g1-r1-c1",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "zhè",
+                  "meaning": "this"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g1-r1-c2",
+                  "traditional": "就要從",
+                  "simplified": "就要从",
+                  "pinyin": "jiù yào cóng",
+                  "meaning": "must start from"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g1-r1-c3",
+                  "traditional": "牛郎、織女",
+                  "simplified": "牛郎、织女",
+                  "pinyin": "Niúláng, Zhīnǚ",
+                  "meaning": "Niulang and Weaver Girl"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g1-r1-c4",
+                  "traditional": "說起了",
+                  "simplified": "说起了",
+                  "pinyin": "shuōqǐ le",
+                  "meaning": "start telling"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l14g1-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g1-r2-c1",
+                  "traditional": "想找資料的話",
+                  "simplified": "想找资料的话",
+                  "pinyin": "xiǎng zhǎo zīliào dehuà",
+                  "meaning": "if wanting old records"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g1-r2-c2",
+                  "traditional": "就要從",
+                  "simplified": "就要从",
+                  "pinyin": "jiù yào cóng",
+                  "meaning": "must start from"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g1-r2-c3",
+                  "traditional": "兩年前的檔案",
+                  "simplified": "两年前的档案",
+                  "pinyin": "liǎng nián qián de dàng'àn",
+                  "meaning": "files from two years ago"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g1-r2-c4",
+                  "traditional": "找起了",
+                  "simplified": "找起了",
+                  "pinyin": "zhǎoqǐ le",
+                  "meaning": "start searching"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l14g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "這就要從牛郎、織女說起了。",
+              "simplified": "这就要从牛郎、织女说起了。",
+              "pinyin": "Zhè jiù yào cóng Niúláng, Zhīnǚ shuōqǐ le.",
+              "english": "That has to be told starting from the story of Niulang and Weaver Girl.",
+              "words": [
+                {
+                  "id": "b3l14g1-ex1-w1",
+                  "traditional": "這就要從",
+                  "simplified": "这就要从",
+                  "pinyin": "zhè jiù yào cóng",
+                  "meaning": "this must start from",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g1-ex1-w2",
+                  "traditional": "牛郎織女",
+                  "simplified": "牛郎织女",
+                  "pinyin": "Niúláng Zhīnǚ",
+                  "meaning": "Niulang and Weaver Girl",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g1-ex1-w3",
+                  "traditional": "說起了",
+                  "simplified": "说起了",
+                  "pinyin": "shuōqǐ le",
+                  "meaning": "start talking from",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這個計畫一再地調整內容，想找到舊資料的話，就要從兩年前的找起了。",
+              "simplified": "这个计划一再地调整内容，想找到旧资料的话，就要从两年前的找起了。",
+              "pinyin": "Zhège jìhuà yízài de tiáozhěng nèiróng, xiǎng zhǎodào jiù zīliào dehuà, jiù yào cóng liǎng nián qián de zhǎoqǐ le.",
+              "english": "This project repeatedly adjusted its content; if you want to find old records, you must search from two years back.",
+              "words": [
+                {
+                  "id": "b3l14g1-ex2-w1",
+                  "traditional": "調整內容",
+                  "simplified": "调整内容",
+                  "pinyin": "tiáozhěng nèiróng",
+                  "meaning": "adjust content",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g1-ex2-w2",
+                  "traditional": "就要從",
+                  "simplified": "就要从",
+                  "pinyin": "jiù yào cóng",
+                  "meaning": "must from",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w3",
+                  "traditional": "兩年前的",
+                  "simplified": "两年前的",
+                  "pinyin": "liǎng nián qián de",
+                  "meaning": "two years ago",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g1-ex2-w4",
+                  "traditional": "找起了",
+                  "simplified": "找起了",
+                  "pinyin": "zhǎoqǐ le",
+                  "meaning": "start looking",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "我花了很多錢去健身房運動，怎麼過了三個月還沒變瘦？這就要從你的飲食習慣說起了。",
+              "simplified": "我花了很多钱去健身房运动，怎么过了三个月还没变瘦？这就要从你的饮食习惯说起了。",
+              "pinyin": "Wǒ huā le hěn duō qián qù jiànshēnfáng yùndòng, zěnme guò le sān ge yuè hái méi biàn shòu? Zhè jiù yào cóng nǐ de yǐnshí xíguàn shuōqǐ le.",
+              "english": "I spent so much money working out at the gym, why haven't I lost weight after three months? Well, to explain that we must start from your eating habits.",
+              "words": [
+                {
+                  "id": "b3l14g1-ex3-w1",
+                  "traditional": "健身房運動",
+                  "simplified": "健身房运动",
+                  "pinyin": "jiànshēnfáng yùndòng",
+                  "meaning": "exercise at gym",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g1-ex3-w2",
+                  "traditional": "這就要從",
+                  "simplified": "这就要从",
+                  "pinyin": "zhè jiù yào cóng",
+                  "meaning": "this must start from",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w3",
+                  "traditional": "飲食習慣",
+                  "simplified": "饮食习惯",
+                  "pinyin": "yǐnshí xíguàn",
+                  "meaning": "eating habits",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g1-ex3-w4",
+                  "traditional": "說起了",
+                  "simplified": "说起了",
+                  "pinyin": "shuōqǐ le",
+                  "meaning": "start discussing",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l14g1-cf1",
+              "question": "When should you use 這就要從……說起了 instead of simple 從……開始?",
+              "answer": "「這就要從……說起了」專門用在面對複雜、具有歷史淵源或不易一句話說清的問題時，引導對方從特定源頭開始理解；「從……開始」僅為一般時間或順序的起點。",
+              "wrongTraditional": "這個問題很簡單，這就要從昨天說起了。",
+              "wrongSimplified": "这个问题很简单，这就要从昨天说起了。",
+              "right": {
+                "traditional": "你們這個節日背後應該有故事吧？這就要從牛郎、織女說起了。",
+                "simplified": "你们这个节日背后应该有故事吧？这就要从牛郎、织女说起了。",
+                "pinyin": "Nǐmen zhège jiérì bèihòu yīnggāi yǒu gùshì ba? Zhè jiù yào cóng Niúláng, Zhīnǚ shuōqǐ le.",
+                "english": "There must be a story behind your festival? That has to be told starting from Niulang and Weaver Girl.",
+                "words": [
+                  {
+                    "id": "b3l14g1-cf1-w1",
+                    "traditional": "這就要從牛郎織女說起了",
+                    "simplified": "这就要从牛郎织女说起了",
+                    "pinyin": "zhè jiù yào cóng Niúláng Zhīnǚ shuōqǐ le",
+                    "meaning": "must start telling from Niulang and Weaver Girl"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l14g1-cf2",
+              "question": "Can single-syllable action verbs like 找, 談, 寫 replace 說 in this pattern?",
+              "answer": "可以。根據敘述的事情不同，可以換成「找起」、「談起」、「做起」、「寫起」等單音節動詞，表示從某個部分開始進行。",
+              "wrongTraditional": "想找兩年前的舊資料，這就要從電腦裡面尋找起了。",
+              "wrongSimplified": "想找两年前的旧资料，这就要从电脑里面寻找起了。",
+              "right": {
+                "traditional": "想找到舊資料的話，就要從兩年前的找起了。",
+                "simplified": "想找到旧资料的话，就要从两年前的找起了。",
+                "pinyin": "Xiǎng zhǎodào jiù zīliào dehuà, jiù yào cóng liǎng nián qián de zhǎoqǐ le.",
+                "english": "If you want to find old records, you must search from two years back.",
+                "words": [
+                  {
+                    "id": "b3l14g1-cf2-w1",
+                    "traditional": "兩年前的找起了",
+                    "simplified": "两年前的找起了",
+                    "pinyin": "liǎng nián qián de zhǎoqǐ le",
+                    "meaning": "start searching from two years ago"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l14g1-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "你們這個節日背後應該有故事吧？"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "牛郎、織女說起了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "這就要從"
+              },
+              {
+                "id": "t2",
+                "text": "總之"
+              },
+              {
+                "id": "t3",
+                "text": "難怪"
+              },
+              {
+                "id": "t4",
+                "text": "何況"
+              }
+            ],
+            "correctFeedback": "太棒了！「這就要從……說起了」用於引導對方從特定歷史源頭開始了解事情背景。",
+            "repairFeedback": "請注意語境：要向對方說明節日由來的背景，應使用「這就要從」。"
+          }
+        ]
+      },
+      {
+        "id": "B3L14-G02-P362",
+        "bookId": 3,
+        "lessonId": 14,
+        "partId": 1,
+        "lessonTitle": "七夕情人節的故事",
+        "lessonTitleEnglish": "The Story of the Double Seventh Festival (Chinese Valentine's Day)",
+        "grammarNumber": 2,
+        "bookPage": 362,
+        "bookPageAvailable": true,
+        "printedPages": [
+          362,
+          363
+        ],
+        "audioReference": "14-1-2",
+        "titleTraditional": "V下去",
+        "titleSimplified": "V下去",
+        "titleEnglish": "Continuing an ongoing action",
+        "learnerPromise": "Express continuation of an ongoing activity or the feasibility of persevering with it.",
+        "explanation": "「下去」放在動詞之後，當作補語，表示某個動作繼續進行，「V下去」後面不可加賓語。常用潛能形式「V得下去」（能繼續）或「V不下去」（無法繼續維持）。",
+        "pattern": "Subject + Verb + 下去 / 得下去 / 不下去",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "下去"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l14g2-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g2-r1-c1",
+                  "traditional": "織女",
+                  "simplified": "织女",
+                  "pinyin": "Zhīnǚ",
+                  "meaning": "Weaver Girl"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g2-r1-c2",
+                  "traditional": "不能在人間",
+                  "simplified": "不能在人间",
+                  "pinyin": "bù néng zài rénjiān",
+                  "meaning": "cannot in mortal realm"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g2-r1-c3",
+                  "traditional": "住下去",
+                  "simplified": "住下去",
+                  "pinyin": "zhù xiàqù",
+                  "meaning": "continue living"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l14g2-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g2-r2-c1",
+                  "traditional": "這部電影很無聊",
+                  "simplified": "这部电影很无聊",
+                  "pinyin": "zhè bù diànyǐng hěn wúliáo",
+                  "meaning": "movie is boring"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g2-r2-c2",
+                  "traditional": "我實在",
+                  "simplified": "我实在",
+                  "pinyin": "wǒ shízài",
+                  "meaning": "I really"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g2-r2-c3",
+                  "traditional": "看不下去了",
+                  "simplified": "看不下去了",
+                  "pinyin": "kàn bu xiàqù le",
+                  "meaning": "cannot keep watching"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l14g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "織女不能跟牛郎聚在一起，也不能在人間住下去，真可憐。",
+              "simplified": "织女不能跟牛郎聚在一起，也不能在人间住下去，真可怜。",
+              "pinyin": "Zhīnǚ bù néng gēn Niúláng jù zài yìqǐ, yě bù néng zài rénjiān zhù xiàqù, zhēn kělián.",
+              "english": "Weaver Girl couldn't be together with Niulang, nor could she continue living in the mortal world; it was so pitiful.",
+              "words": [
+                {
+                  "id": "b3l14g2-ex1-w1",
+                  "traditional": "聚在一起",
+                  "simplified": "聚在一起",
+                  "pinyin": "jù zài yìqǐ",
+                  "meaning": "gather together",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex1-w2",
+                  "traditional": "在人間",
+                  "simplified": "在人间",
+                  "pinyin": "zài rénjiān",
+                  "meaning": "in the world",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g2-ex1-w3",
+                  "traditional": "住下去",
+                  "simplified": "住下去",
+                  "pinyin": "zhù xiàqù",
+                  "meaning": "continue to live",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這部電影很無聊，演員的演戲技巧也不好，我實在看不下去了。",
+              "simplified": "这部电影很无聊，演员的演戏技巧也不好，我实在看不下去了。",
+              "pinyin": "Zhè bù diànyǐng hěn wúliáo, yǎnyuán de yǎnxì jìqiǎo yě bù hǎo, wǒ shízài kàn bu xiàqù le.",
+              "english": "This movie is so boring and the acting is mediocre; I honestly cannot keep watching it.",
+              "words": [
+                {
+                  "id": "b3l14g2-ex2-w1",
+                  "traditional": "演戲技巧",
+                  "simplified": "演戏技巧",
+                  "pinyin": "yǎnxì jìqiǎo",
+                  "meaning": "acting skills",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex2-w2",
+                  "traditional": "實在",
+                  "simplified": "实在",
+                  "pinyin": "shízài",
+                  "meaning": "truly",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g2-ex2-w3",
+                  "traditional": "看不下去了",
+                  "simplified": "看不下去了",
+                  "pinyin": "kàn bu xiàqù le",
+                  "meaning": "cannot keep watching",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "總統給你們的任務很危險，你們能堅持下去嗎？我們是軍人，為了國家，就算犧牲生命也必須完成。",
+              "simplified": "总统给你们的任务很危险，你们能坚持下去吗？我们是军人，为了国家，就算牺牲生命也必须完成。",
+              "pinyin": "Zǒngtǒng gěi nǐmen de rènwù hěn wēixiǎn, nǐmen néng jiānchí xiàqù ma? Wǒmen shì jūnrén, wèile guójiā, jiùsuàn xīshēng shēngmìng yě bìxū wánchéng.",
+              "english": "The mission from the President is dangerous; can you persevere with it? We are soldiers; for our country, we must accomplish it even at the cost of our lives.",
+              "words": [
+                {
+                  "id": "b3l14g2-ex3-w1",
+                  "traditional": "任務危險",
+                  "simplified": "任务危险",
+                  "pinyin": "rènwù wēixiǎn",
+                  "meaning": "dangerous mission",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g2-ex3-w2",
+                  "traditional": "堅持下去",
+                  "simplified": "坚持下去",
+                  "pinyin": "jiānchí xiàqù",
+                  "meaning": "persist on",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b3l14g2-ex3-w3",
+                  "traditional": "犧牲生命",
+                  "simplified": "牺牲生命",
+                  "pinyin": "xīshēng shēngmìng",
+                  "meaning": "sacrifice life",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l14g2-cf1",
+              "question": "How is V下去 different from V起來?",
+              "answer": "「V下去」強調將正在進行的動作持續維持到未來（如住下去、看下去）；「V起來」則指動作的開始與擴展（如唱起來、熱鬧起來）。",
+              "wrongTraditional": "這部電影太無聊了，我實在看下去了。",
+              "wrongSimplified": "这部电影太无聊了，我实在看下去了。",
+              "right": {
+                "traditional": "這部電影太無聊了，我實在看不下去了。",
+                "simplified": "这部电影太无聊了，我实在看不下去了。",
+                "pinyin": "Zhè bù diànyǐng tài wúliáo le, wǒ shízài kàn bu xiàqù le.",
+                "english": "This movie is too boring; I really cannot keep watching it.",
+                "words": [
+                  {
+                    "id": "b3l14g2-cf1-w1",
+                    "traditional": "實在看不下去了",
+                    "simplified": "实在看不下去了",
+                    "pinyin": "shízài kàn bu xiàqù le",
+                    "meaning": "really cannot keep watching"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l14g2-cf2",
+              "question": "Can an object be placed directly after V下去?",
+              "answer": "不行。「V下去」後面不可直接接賓語；若有賓語，必須透過「把」字句提前或移至句首。",
+              "wrongTraditional": "只要你學下去鋼琴，就會發現樂趣。",
+              "wrongSimplified": "只要你学下去钢琴，就会发现乐趣。",
+              "right": {
+                "traditional": "鋼琴雖然難，只要你學得下去，就會發現它的樂趣。",
+                "simplified": "钢琴虽然难，只要你学得下去，就会发现它的乐趣。",
+                "pinyin": "Gāngqín suīrán nán, zhǐyào nǐ xué de xiàqù, jiù huì fāxiàn tā de lèqù.",
+                "english": "Though piano is hard, as long as you keep learning it, you will discover its joys.",
+                "words": [
+                  {
+                    "id": "b3l14g2-cf2-w1",
+                    "traditional": "只要你學得下去",
+                    "simplified": "只要你学得下去",
+                    "pinyin": "zhǐyào nǐ xué de xiàqù",
+                    "meaning": "as long as you can continue learning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l14g2-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "這部電影太無聊了，我實在"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "看不下去"
+              },
+              {
+                "id": "t2",
+                "text": "看過來"
+              },
+              {
+                "id": "t3",
+                "text": "看起來"
+              },
+              {
+                "id": "t4",
+                "text": "看出來"
+              }
+            ],
+            "correctFeedback": "太棒了！「看不下去」表示無法繼續忍受或維持觀看的狀態。",
+            "repairFeedback": "請注意動作的延續性：無法繼續看下去應使用「看不下去」。"
+          }
+        ]
+      },
+      {
+        "id": "B3L14-G03-P363",
+        "bookId": 3,
+        "lessonId": 14,
+        "partId": 1,
+        "lessonTitle": "七夕情人節的故事",
+        "lessonTitleEnglish": "The Story of the Double Seventh Festival (Chinese Valentine's Day)",
+        "grammarNumber": 3,
+        "bookPage": 363,
+        "bookPageAvailable": true,
+        "printedPages": [
+          363,
+          364
+        ],
+        "audioReference": "14-1-3",
+        "titleTraditional": "幸虧……要不然……",
+        "titleSimplified": "幸亏……要不然……",
+        "titleEnglish": "Fortunately..., otherwise...",
+        "learnerPromise": "Explain how a lucky circumstance prevented a terrible outcome from happening.",
+        "explanation": "「幸虧」是副詞，後面敘述某個因為很幸運而發生的事件；要是沒有這個事件，「要不然」後面不好的、令人擔心的情況就會出現。",
+        "pattern": "幸虧 + Fortunate Event, + 要不然 + Negative Consequence",
+        "patternColumns": [
+          "幸虧",
+          "Fortunate",
+          "要不然",
+          "Negative"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l14g3-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g3-r1-c1",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": "fortunately"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g3-r1-c2",
+                  "traditional": "有姊姊們的幫助",
+                  "simplified": "有姐姐们的帮助",
+                  "pinyin": "yǒu jiějiěmen de bāngzhù",
+                  "meaning": "sisters helped"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g3-r1-c3",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": "otherwise"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g3-r1-c4",
+                  "traditional": "他們一生都不能團圓了",
+                  "simplified": "他们一生都不能团圆了",
+                  "pinyin": "tāmen yìshēng dōu bù néng tuányuán le",
+                  "meaning": "they could never reunite"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l14g3-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g3-r2-c1",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": "fortunately"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g3-r2-c2",
+                  "traditional": "奶奶那天沒去寺廟",
+                  "simplified": "奶奶那天没去寺庙",
+                  "pinyin": "nǎinai nà tiān méi qù sìmiào",
+                  "meaning": "grandma didn't go"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g3-r2-c3",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": "otherwise"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g3-r2-c4",
+                  "traditional": "後果就糟了",
+                  "simplified": "后果就糟了",
+                  "pinyin": "hòuguǒ jiù zāo le",
+                  "meaning": "it would be disastrous"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l14g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
+              "simplified": "幸亏有姐姐们的帮助，要不然他们一生都不能团圆了。",
+              "pinyin": "Xìngkuī yǒu jiějiěmen de bāngzhù, yàobùrán tāmen yìshēng dōu bù néng tuányuán le.",
+              "english": "Fortunately they had the sisters' help, otherwise they would never have reunited in their entire lives.",
+              "words": [
+                {
+                  "id": "b3l14g3-ex1-w1",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": "fortunately",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w2",
+                  "traditional": "幫助",
+                  "simplified": "帮助",
+                  "pinyin": "bāngzhù",
+                  "meaning": "help",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex1-w3",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": "otherwise",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g3-ex1-w4",
+                  "traditional": "團圓了",
+                  "simplified": "团圆了",
+                  "pinyin": "tuányuán le",
+                  "meaning": "reunited",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "奶奶天天去拜拜的那座寺廟前天忽然塌了，幸虧她那天沒去，要不然就糟了。",
+              "simplified": "奶奶天天去拜拜的那座寺庙前天忽然塌了，幸亏她那天没去，要不然就糟了。",
+              "pinyin": "Nǎinai tiāntiān qù bàibài de nà zuò sìmiào qiántiān hūrán tā le, xìngkuī tā nà tiān méi qù, yàobùrán jiù zāo le.",
+              "english": "The temple grandma worshipped at every day suddenly collapsed the day before yesterday; luckily she didn't go that day, otherwise it would have been disastrous.",
+              "words": [
+                {
+                  "id": "b3l14g3-ex2-w1",
+                  "traditional": "忽然塌了",
+                  "simplified": "忽然塌了",
+                  "pinyin": "hūrán tā le",
+                  "meaning": "suddenly collapsed",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex2-w2",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": "fortunately",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w3",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": "otherwise",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g3-ex2-w4",
+                  "traditional": "糟了",
+                  "simplified": "糟了",
+                  "pinyin": "zāo le",
+                  "meaning": "awful / in ruins",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "錢先生發生嚴重車禍時，幸虧警察就在路邊，趕快把他送到了醫院，要不然他的命就沒了。",
+              "simplified": "钱先生发生严重车祸时，幸亏警察就在路边，赶快把他送到了医院，要不然他的命就没了。",
+              "pinyin": "Qián xiānshēng fāshēng yánzhòng chēhuò shí, xìngkuī jǐngchá jiù zài lùbiān, gǎnkuài bǎ tā sòngdào le yīyuàn, yàobùrán tā de mìng jiù méi le.",
+              "english": "When Mr. Qian had a severe car accident, fortunately the police were right by the roadside and rushed him to the hospital, otherwise he would have lost his life.",
+              "words": [
+                {
+                  "id": "b3l14g3-ex3-w1",
+                  "traditional": "嚴重車禍",
+                  "simplified": "严重车祸",
+                  "pinyin": "yánzhòng chēhuò",
+                  "meaning": "severe crash",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex3-w2",
+                  "traditional": "幸虧",
+                  "simplified": "幸亏",
+                  "pinyin": "xìngkuī",
+                  "meaning": "fortunately",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g3-ex3-w3",
+                  "traditional": "送到醫院",
+                  "simplified": "送到医院",
+                  "pinyin": "sòngdào yīyuàn",
+                  "meaning": "sent to hospital",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g3-ex3-w4",
+                  "traditional": "要不然",
+                  "simplified": "要不然",
+                  "pinyin": "yàobùrán",
+                  "meaning": "otherwise",
+                  "suffix": ""
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l14g3-cf1",
+              "question": "How is 幸虧……要不然 different from 難怪?",
+              "answer": "「難怪」用於明白原因後的理解；「幸虧……要不然……」則用於慶幸某個幸運轉折避免了後方嚴重的災難性後果。",
+              "wrongTraditional": "難怪有姊姊們幫忙，要不然他們不能團圓。",
+              "wrongSimplified": "难怪有姐姐们帮忙，要不然他们不能团圆。",
+              "right": {
+                "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
+                "simplified": "幸亏有姐姐们的帮助，要不然他们一生都不能团圆了。",
+                "pinyin": "Xìngkuī yǒu jiějiěmen de bāngzhù, yàobùrán tāmen yìshēng dōu bù néng tuányuán le.",
+                "english": "Fortunately they had the sisters' help, otherwise they would never have reunited in their entire lives.",
+                "words": [
+                  {
+                    "id": "b3l14g3-cf1-w1",
+                    "traditional": "幸虧有姊姊們幫助",
+                    "simplified": "幸亏有姐姐们帮助",
+                    "pinyin": "xìngkuī yǒu jiějiěmen bāngzhù",
+                    "meaning": "fortunately had sisters' help"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l14g3-cf2",
+              "question": "Can 幸虧 be paired with clauses indicating positive outcomes directly?",
+              "answer": "「幸虧」本句敘述幸運的正面事實，「要不然」後面則必須陳述「未發生的負面可怕後果」。",
+              "wrongTraditional": "幸虧你沒來幫忙，要不然我們很快就做完了。",
+              "wrongSimplified": "幸亏你没来帮忙，要不然我们很快就做完了。",
+              "right": {
+                "traditional": "幸虧你來幫忙，要不然我一個人絕對忙不過來。",
+                "simplified": "幸亏你来帮忙，要不然我一个人绝对忙不过来。",
+                "pinyin": "Xìngkuī nǐ lái bāngmáng, yàobùrán wǒ yí ge rén juéduì máng bu guòlái.",
+                "english": "Luckily you came to help, otherwise I definitely couldn't have managed alone.",
+                "words": [
+                  {
+                    "id": "b3l14g3-cf2-w1",
+                    "traditional": "幸虧你來幫忙",
+                    "simplified": "幸亏你来帮忙",
+                    "pinyin": "xìngkuī nǐ lái bāngmáng",
+                    "meaning": "fortunately you helped"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l14g3-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "出門時突然下起大雨，"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "我帶了傘，要不然衣服全都淋濕了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "幸虧"
+              },
+              {
+                "id": "t2",
+                "text": "難怪"
+              },
+              {
+                "id": "t3",
+                "text": "何必"
+              },
+              {
+                "id": "t4",
+                "text": "甚至"
+              }
+            ],
+            "correctFeedback": "太棒了！「幸虧」表示因幸運的舉動而避免了糟糕的後果。",
+            "repairFeedback": "請注意慶幸的語氣：表達慶幸自己帶了傘，應選用「幸虧」。"
+          }
+        ]
+      }
+    ]
+  },
+  "BOOK3_LESSON_FOURTEEN_PART_TWO": {
+    "id": "B3L14-P02-D02",
+    "bookId": 3,
+    "lessonId": 14,
+    "partId": 2,
+    "title": "Grammar 4–5 · The Meaning of Chinese Valentine's Day",
+    "dialogue": {
+      "id": "B3L14-D02",
+      "title": "短文 · 情人節的意義",
+      "audioReference": "14-2-1",
+      "printedPages": [
+        365,
+        367
+      ],
+      "grammarFocus": [
+        "根據",
+        "按照 / 按 / 照 NP + V"
+      ],
+      "lines": [
+        {
+          "id": "b3l14d2-l1",
+          "speaker": "旁白",
+          "traditional": "根據中國古代的說法，農曆七月初七是所謂的「七夕」。一提到七夕，人們就會想到牛郎和織女的愛情故事。這個故事不是真的，不過大家對愛情還是有無窮的想像，希望在現實中能夠擁有最美好的愛情。",
+          "simplified": "根据中国古代的说法，农历七月初七是所谓的「七夕」。一提到七夕，人们就会想到牛郎和织女的爱情故事。这个故事不是真的，不过大家对爱情还是有无穷的想象，希望在现实中能够拥有最美好的爱情。",
+          "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chū qī shì suǒwèi de \"Qīxī\". Yì tídào Qīxī, rénmen jiù huì xiǎngdào Niúláng hé Zhīnǚ de àiqíng gùshì. Zhège gùshì búshì zhēn de, bùguò dàjiā duì àiqíng háishì yǒu wúqióng de xiǎngxiàng, xīwàng zài xiànshí zhōng nénggòu yǒngyǒu zuì měihǎo de àiqíng.",
+          "english": "According to ancient Chinese accounts, the seventh day of the seventh lunar month is known as \"Qixi\". Whenever Qixi is mentioned, people think of the love story of Niulang and Weaver Girl. While this tale is not true, people still harbor boundless imagination for romance, hoping to possess the finest love in reality."
+        },
+        {
+          "id": "b3l14d2-l2",
+          "speaker": "旁白",
+          "traditional": "按照過去的習俗，姑娘會在七夕把親手做的小東西送給朋友，向對方表達心意。後來，商人抓到了這個能創造更多利益的機會，就在七夕和西方情人節這兩個節日，推銷屬於情人節的特別禮物。不僅戀愛中的男女願意花錢買，平時只有以網路聊天、寫信等方式談戀愛的情侶，也會在這天送禮。但是某一些商業廣告強調，情人節交換禮物是愛對方的表現，也是情侶之間該有的責任。讓很多人以為不送禮、不約會是個錯誤，而犯了錯的人就得道歉。其實只要對情人是真心的，送不送禮物沒那麼重要，畢竟單純的愛情才是最珍貴的。",
+          "simplified": "按照过去的习俗，姑娘会在七夕把亲手做的小东西送给朋友，向对方表达心意。后来，商人抓到了这个能创造更多利益的机会，就在七夕和西方情人节这两个节日，推销属于情人节的特别礼物。不仅恋爱中的男女愿意花钱买，平时只有以网络聊天、写信等方式谈恋爱的情侣，也会在这天送礼。但是某一些商业广告强调，情人节交换礼物是爱对方的表现，也是情侣之间该有的责任。让很多人以为不送礼、不约会是个错误，而犯了错的人就得道歉。其实只要对情人是真心的，送不送礼物没那么重要，毕竟单纯的爱情才是最珍贵的。",
+          "pinyin": "Ànzhào guòqù de xísú, gūniáng huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxī sòng gěi péngyǒu, xiàng duìfāng biǎodá xīnyì. Hòulái, shāngrén zhuādào le zhège néng chuàngzào gèng duō lìyì de jīhuì, jiù zài Qīxī hé xīfāng Qíngrénjié zhè liǎng ge jiérì, tuīxiāo shǔyú Qíngrénjié de tèbié lǐwù. Bùjǐn liàn'ài zhōng de nánnǚ yuànyì huāqián mǎi, píngshí zhǐyǒu yǐ wǎnglù liáotiān, xiěxìn děng fāngshì tán liàn'ài de qínglǚ, yě huì zài zhè tiān sònglǐ. Dànshì mǒu yìxiē shāngyè guǎnggào qiángdiào, Qíngrénjié jiāohuàn lǐwù shì ài duìfāng de biǎoxiàn, yě shì qínglǚ zhījiān gāi yǒu de zérèn. Ràng hěn duō rén yǐwéi bú sònglǐ, bú yuēhuì shì ge cuòwù, ér fàn le cuò de rén jiù děi dàoqiàn. Qíshí zhǐyào duì qíngrén shì zhēnxīn de, sòng bu sòng lǐwù méi nàme zhòngyào, bìjìng dānchún de àiqíng cái shì zuì zhēnguì de.",
+          "english": "According to past customs, young maidens would give handmade trinkets to friends on Qixi to express their affection. Later, merchants seized upon this opportunity to create greater profits, promoting special Valentine gifts during both Qixi and Western Valentine's Day. Not only were courting couples eager to spend money, but long-distance lovers who usually interacted only by online chatting and letters would also send gifts on this day. However, certain commercial advertisements emphasized that exchanging gifts on Valentine's Day proves one's love and is an obligation between lovers. This led many to believe that not giving gifts or going on dates is a misstep requiring an apology. In reality, as long as one is sincere toward their beloved, whether gifts are given is not so critical—after all, pure love is what is truly precious."
+        },
+        {
+          "id": "b3l14d2-l3",
+          "speaker": "旁白",
+          "traditional": "不過話說回來，像牛郎與織女這樣的愛情故事，還是感動了無數人。不少文學與戲劇都採用這類的題材，畫家也常透過作品來表達浪漫的愛情。如能花點時間欣賞這方面的作品，或許就能更深入了解情人節的意義了。",
+          "simplified": "不过话说回来，像牛郎与织女这样的爱情故事，还是感动了无数人。不少文学与戏剧都采用这类的题材，画家也常透过作品来表达浪漫的爱情。如能花点时间欣赏这方面的作品，或许就能更深入了解情人节的意义了。",
+          "pinyin": "Bùguò huàshuōhuílái, xiàng Niúláng yǔ Zhīnǚ zhèyàng de àiqíng gùshì, háishì gǎndòng le wúshù rén. Bùshǎo wénxué yǔ xìjù dōu cǎiyòng zhè lèi de tícái, huàjiā yě cháng tòuguò zuòpǐn lái biǎodá làngmàn de àiqíng. Rú néng huā diǎn shíjiān xīnshǎng zhè fāngmiàn de zuòpǐn, huòxǔ jiù néng gèng shēnrù liǎojiě Qíngrénjié de yìyì le.",
+          "english": "Then again, love stories like Niulang and Weaver Girl still touch countless hearts. Many literary works and dramas adopt themes of this kind, and painters frequently convey romantic love through their art. If one can take some time to appreciate works in this domain, perhaps one will gain a deeper understanding of Valentine's true meaning."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L14-G04-P369",
+        "bookId": 3,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "情人節的意義",
+        "lessonTitleEnglish": "The Meaning of Chinese Valentine's Day",
+        "grammarNumber": 4,
+        "bookPage": 369,
+        "bookPageAvailable": true,
+        "printedPages": [
+          369,
+          370
+        ],
+        "audioReference": "14-2-1",
+        "titleTraditional": "根據",
+        "titleSimplified": "根据",
+        "titleEnglish": "According to / Based on (basis or evidence)",
+        "learnerPromise": "State the authoritative premise, survey data, law, or evidence underlying a claim or judgment.",
+        "explanation": "「根據」是介詞，意思是用某個行為、情況、資料、研究結果等當作基礎，做出判斷、行動或結論。「根據」的後面接名詞短語，常使用的名詞如：報告、調查、經驗、法律、規定、情況、了解、看法、結果、說明等等。",
+        "pattern": "根據 + Basis (Source / Law / Report / Survey), + Claim / Conclusion",
+        "patternColumns": [
+          "根據",
+          "Basis",
+          "Claim"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l14g4-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g4-r1-c1",
+                  "traditional": "根據",
+                  "simplified": "根据",
+                  "pinyin": "gēnjù",
+                  "meaning": "according to"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g4-r1-c2",
+                  "traditional": "中國古代的說法",
+                  "simplified": "中国古代的说法",
+                  "pinyin": "Zhōngguó gǔdài de shuōfǎ",
+                  "meaning": "ancient Chinese accounts"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g4-r1-c3",
+                  "traditional": "農曆七月初七是七夕",
+                  "simplified": "农历七月初七是七夕",
+                  "pinyin": "nónglì qīyuè chū qī shì Qīxī",
+                  "meaning": "lunar July 7 is Qixi"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l14g4-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g4-r2-c1",
+                  "traditional": "根據",
+                  "simplified": "根据",
+                  "pinyin": "gēnjù",
+                  "meaning": "according to"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g4-r2-c2",
+                  "traditional": "我國的法律規定",
+                  "simplified": "我国的法律规定",
+                  "pinyin": "wǒguó de fǎlǜ guīdìng",
+                  "meaning": "laws of our country"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g4-r2-c3",
+                  "traditional": "十八歲以上才可以喝酒",
+                  "simplified": "十八岁以上才可以喝酒",
+                  "pinyin": "shíbā suì yǐshàng cái kěyǐ hējiǔ",
+                  "meaning": "only 18 and older may drink"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l14g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "根據中國古代的說法，農曆七月初七是所謂的「七夕」。",
+              "simplified": "根据中国古代的说法，农历七月初七是所谓的「七夕」。",
+              "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chū qī shì suǒwèi de \"Qīxī\".",
+              "english": "According to ancient Chinese accounts, the seventh day of the seventh lunar month is what is known as \"Qixi\".",
+              "words": [
+                {
+                  "id": "b3l14g4-ex1-w1",
+                  "traditional": "根據",
+                  "simplified": "根据",
+                  "pinyin": "gēnjù",
+                  "meaning": "according to",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w2",
+                  "traditional": "古代說法",
+                  "simplified": "古代说法",
+                  "pinyin": "gǔdài shuōfǎ",
+                  "meaning": "ancient saying",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g4-ex1-w3",
+                  "traditional": "所謂的",
+                  "simplified": "所谓的",
+                  "pinyin": "suǒwèi de",
+                  "meaning": "so-called",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g4-ex1-w4",
+                  "traditional": "七夕",
+                  "simplified": "七夕",
+                  "pinyin": "Qīxī",
+                  "meaning": "Qixi Festival",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "根據我國的法律，十八歲以上才可以喝酒。",
+              "simplified": "根据我国的法律，十八岁以上才可以喝酒。",
+              "pinyin": "Gēnjù wǒguó de fǎlǜ, shíbā suì yǐshàng cái kěyǐ hējiǔ.",
+              "english": "According to the laws of our country, only those 18 and older can drink alcohol.",
+              "words": [
+                {
+                  "id": "b3l14g4-ex2-w1",
+                  "traditional": "根據法律",
+                  "simplified": "根据法律",
+                  "pinyin": "gēnjù fǎlǜ",
+                  "meaning": "according to law",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g4-ex2-w2",
+                  "traditional": "十八歲以上",
+                  "simplified": "十八岁以上",
+                  "pinyin": "shíbā suì yǐshàng",
+                  "meaning": "18 years and above",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g4-ex2-w3",
+                  "traditional": "才可以喝酒",
+                  "simplified": "才可以喝酒",
+                  "pinyin": "cái kěyǐ hējiǔ",
+                  "meaning": "only then drink alcohol",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "根據氣象調查的資料，全球溫度比以前高了兩度，也因此造成了一些環境問題。",
+              "simplified": "根据气象调查的资料，全球温度比以前高了两度，也因此造成了一些环境问题。",
+              "pinyin": "Gēnjù qìxiàng diàochá de zīliào, quánqiú wēndù bǐ yǐqián gāo le liǎng dù, yě yīncǐ zàochéng le yìxiē huánjìng wèntí.",
+              "english": "According to meteorological survey data, global temperatures have risen two degrees compared to before, and this has caused certain environmental issues.",
+              "words": [
+                {
+                  "id": "b3l14g4-ex3-w1",
+                  "traditional": "根據資料",
+                  "simplified": "根据资料",
+                  "pinyin": "gēnjù zīliào",
+                  "meaning": "according to data",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g4-ex3-w2",
+                  "traditional": "全球溫度",
+                  "simplified": "全球温度",
+                  "pinyin": "quánqiú wēndù",
+                  "meaning": "global temperature",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g4-ex3-w3",
+                  "traditional": "環境問題",
+                  "simplified": "环境问题",
+                  "pinyin": "huánjìng wèntí",
+                  "meaning": "environmental issues",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l14g4-cf1",
+              "question": "When should you use 根據 instead of 按照?",
+              "answer": "「根據」強調判斷、主張或結論的基礎依據（如根據調查、法律、說法）；「按照」則強調具體遵循的方法、程序或標準（如按照規定、食譜做）。",
+              "wrongTraditional": "按照氣象調查的資料，全球溫度比以前高了兩度。",
+              "wrongSimplified": "按照气象调查的资料，全球温度比以前高了两度。",
+              "right": {
+                "traditional": "根據氣象調查的資料，全球溫度比以前高了兩度。",
+                "simplified": "根据气象调查的资料，全球温度比以前高了两度。",
+                "pinyin": "Gēnjù qìxiàng diàochá de zīliào, quánqiú wēndù bǐ yǐqián gāo le liǎng dù.",
+                "english": "According to meteorological survey data, global temperatures have risen two degrees compared to before.",
+                "words": [
+                  {
+                    "id": "b3l14g4-cf1-w1",
+                    "traditional": "根據氣象調查資料",
+                    "simplified": "根据气象调查资料",
+                    "pinyin": "gēnjù qìxiàng diàochá zīliào",
+                    "meaning": "according to meteorological survey data"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l14g4-cf2",
+              "question": "Can 根據 act as a noun in Chinese?",
+              "answer": "可以。「根據」可作名詞，意思是「基礎」或「依據」，例如「這種說法完全沒有科學根據」。而「按照」只能作介詞，不能作名詞。",
+              "wrongTraditional": "網路上很多傳聞是沒有按照的，不能隨便相信。",
+              "wrongSimplified": "网络上很多传闻是没有按照的，不能随便相信。",
+              "right": {
+                "traditional": "網路上有很多訊息是沒有根據的，不能完全相信。",
+                "simplified": "网络上有很多讯息是没有根据的，不能完全相信。",
+                "pinyin": "Wǎnglù shàng yǒu hěn duō xùnxí shì méiyǒu gēnjù de, bù néng wánquán xiāngxìn.",
+                "english": "Many messages on the internet have no foundation; one cannot believe them completely.",
+                "words": [
+                  {
+                    "id": "b3l14g4-cf2-w1",
+                    "traditional": "沒有根據",
+                    "simplified": "没有根据",
+                    "pinyin": "méiyǒu gēnjù",
+                    "meaning": "have no foundation"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l14g4-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": ""
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "我國的法律規定，十八歲以上才可以喝酒。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "根據"
+              },
+              {
+                "id": "t2",
+                "text": "儘管"
+              },
+              {
+                "id": "t3",
+                "text": "至於"
+              },
+              {
+                "id": "t4",
+                "text": "往往"
+              }
+            ],
+            "correctFeedback": "太棒了！「根據」用於引用法律、法規作為判斷或行動的客觀基礎。",
+            "repairFeedback": "請注意客觀依據的引導：引用國家法律規定應使用介詞「根據」。"
+          }
+        ]
+      },
+      {
+        "id": "B3L14-G05-P371",
+        "bookId": 3,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "情人節的意義",
+        "lessonTitleEnglish": "The Meaning of Chinese Valentine's Day",
+        "grammarNumber": 5,
+        "bookPage": 371,
+        "bookPageAvailable": true,
+        "printedPages": [
+          371,
+          372
+        ],
+        "audioReference": "14-2-2",
+        "titleTraditional": "按照 / 按 / 照 NP + V",
+        "titleSimplified": "按照 / 按 / 照 NP + V",
+        "titleEnglish": "In accordance with / Following (method or rule)",
+        "learnerPromise": "Specify the rule, custom, plan, or instruction followed when performing an action.",
+        "explanation": "「按照」是介詞，意思是根據某種方法、要求、規定、計畫、決定、標準等來做事情。「按照」主要強調「怎麼做」，常可簡化為「按」或「照」。",
+        "pattern": "按照 / 按 / 照 + Standard / Instruction + Verb (做/算/辦)",
+        "patternColumns": [
+          "按照",
+          "Standard",
+          "Action"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l14g5-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g5-r1-c1",
+                  "traditional": "按照",
+                  "simplified": "按照",
+                  "pinyin": "ànzhào",
+                  "meaning": "in accordance with"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g5-r1-c2",
+                  "traditional": "過去的習俗",
+                  "simplified": "过去的习俗",
+                  "pinyin": "guòqù de xísú",
+                  "meaning": "past customs"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g5-r1-c3",
+                  "traditional": "姑娘會在七夕送小禮物",
+                  "simplified": "姑娘会在七夕送小礼物",
+                  "pinyin": "gūniáng huì zài Qīxī sòng xiǎo lǐwù",
+                  "meaning": "maidens gave gifts on Qixi"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l14g5-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l14g5-r2-c1",
+                  "traditional": "就按",
+                  "simplified": "就按",
+                  "pinyin": "jiù àn",
+                  "meaning": "just according to"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g5-r2-c2",
+                  "traditional": "會議的決定",
+                  "simplified": "会议的决定",
+                  "pinyin": "huìyì de juédìng",
+                  "meaning": "meeting's decision"
+                }
+              ],
+              [
+                {
+                  "id": "b3l14g5-r2-c3",
+                  "traditional": "去做吧",
+                  "simplified": "去做吧",
+                  "pinyin": "qù zuò ba",
+                  "meaning": "go ahead and do it"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l14g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "按照過去的習俗，姑娘會在七夕把親手做的小東西送給朋友。",
+              "simplified": "按照过去的习俗，姑娘会在七夕把亲手做的小东西送给朋友。",
+              "pinyin": "Ànzhào guòqù de xísú, gūniáng huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxī sòng gěi péngyǒu.",
+              "english": "In accordance with past customs, young women would give handmade trinkets to friends on Qixi.",
+              "words": [
+                {
+                  "id": "b3l14g5-ex1-w1",
+                  "traditional": "按照",
+                  "simplified": "按照",
+                  "pinyin": "ànzhào",
+                  "meaning": "in accordance with",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w2",
+                  "traditional": "過去習俗",
+                  "simplified": "过去习俗",
+                  "pinyin": "guòqù xísú",
+                  "meaning": "past customs",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l14g5-ex1-w3",
+                  "traditional": "親手做",
+                  "simplified": "亲手做",
+                  "pinyin": "qīnshǒu zuò",
+                  "meaning": "handmade",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g5-ex1-w4",
+                  "traditional": "送給朋友",
+                  "simplified": "送给朋友",
+                  "pinyin": "sòng gěi péngyǒu",
+                  "meaning": "give to friends",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "奶奶忽然生病住院了。別擔心，只要按照醫生的話去做，應該可以很快出院的。",
+              "simplified": "奶奶忽然生病住院了。别担心，只要按照医生的话去做，应该可以很快出院的。",
+              "pinyin": "Nǎinai hūrán shēngbìng zhùyuàn le. Bié dānxīn, zhǐyào ànzhào yīshēng de huà qù zuò, yīnggāi kěyǐ hěn kuài chūyuàn de.",
+              "english": "Grandma suddenly fell ill and was hospitalized. Don't worry; as long as she follows the doctor's directions, she should be discharged soon.",
+              "words": [
+                {
+                  "id": "b3l14g5-ex2-w1",
+                  "traditional": "生病住院",
+                  "simplified": "生病住院",
+                  "pinyin": "shēngbìng zhùyuàn",
+                  "meaning": "ill and hospitalized",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l14g5-ex2-w2",
+                  "traditional": "按照",
+                  "simplified": "按照",
+                  "pinyin": "ànzhào",
+                  "meaning": "according to",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w3",
+                  "traditional": "醫生的話",
+                  "simplified": "医生的话",
+                  "pinyin": "yīshēng de huà",
+                  "meaning": "doctor's words",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g5-ex2-w4",
+                  "traditional": "去做",
+                  "simplified": "去做",
+                  "pinyin": "qù zuò",
+                  "meaning": "go do it",
+                  "suffix": "，"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l14g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "下個月的員工訓練要怎麼做呢？昨天已經開過主管會議了，就按會議的決定做吧。",
+              "simplified": "下个月的员工训练要怎么做呢？昨天已经开过主管会议了，就按会议的决定做吧。",
+              "pinyin": "Xià ge yuè de yuángōng xùnliàn yào zěnme zuò ne? Zuótiān yǐjīng kāiguò zhǔguǎn huìyì le, jiù àn huìyì de juédìng zuò ba.",
+              "english": "How should we conduct next month's staff training? We had the managers' meeting yesterday, so just proceed according to the meeting's decisions.",
+              "words": [
+                {
+                  "id": "b3l14g5-ex3-w1",
+                  "traditional": "員工訓練",
+                  "simplified": "员工训练",
+                  "pinyin": "yuángōng xùnliàn",
+                  "meaning": "staff training",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b3l14g5-ex3-w2",
+                  "traditional": "按",
+                  "simplified": "按",
+                  "pinyin": "àn",
+                  "meaning": "according to",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w3",
+                  "traditional": "會議的決定",
+                  "simplified": "会议的决定",
+                  "pinyin": "huìyì de juédìng",
+                  "meaning": "decision of meeting",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l14g5-ex3-w4",
+                  "traditional": "做吧",
+                  "simplified": "做吧",
+                  "pinyin": "zuò ba",
+                  "meaning": "do it",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l14g5-cf1",
+              "question": "Can 按照 be replaced by 按 or 照 in spoken sentences?",
+              "answer": "可以。「按」與「照」是「按照」的單音節口語形式，常搭配「規定」、「決定」、「說明書」等詞，意思完全相同。",
+              "wrongTraditional": "根據會議的決定去做吧。",
+              "wrongSimplified": "根据会议的决定去做吧。",
+              "right": {
+                "traditional": "昨天已經開過主管會議了，就按會議的決定做吧。",
+                "simplified": "昨天已经开过主管会议了，就按会议的决定做吧。",
+                "pinyin": "Zuótiān yǐjīng kāiguò zhǔguǎn huìyì le, jiù àn huìyì de juédìng zuò ba.",
+                "english": "We had the managers' meeting yesterday, so just proceed according to the meeting's decisions.",
+                "words": [
+                  {
+                    "id": "b3l14g5-cf1-w1",
+                    "traditional": "按會議的決定做吧",
+                    "simplified": "按会议的决定做吧",
+                    "pinyin": "àn huìyì de juédìng zuò ba",
+                    "meaning": "do it according to the meeting decision"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l14g5-cf2",
+              "question": "How does 按照 focus on 'how to execute' compared to 根據 focusing on 'why/basis'?",
+              "answer": "「按照」強調遵循什麼標準、規格或指示來做（如薪水按照職位高低發放、咖啡按杯子大小算）；「根據」則強調做出某個判斷的依據或理由。",
+              "wrongTraditional": "這杯咖啡是根據杯子大小算錢的。",
+              "wrongSimplified": "这杯咖啡是根据杯子大小算钱的。",
+              "right": {
+                "traditional": "咖啡的價錢是按照杯子大小算的。",
+                "simplified": "咖啡的价钱是按照杯子大小算的。",
+                "pinyin": "Kāfēi de jiàqián shì ànzhào bēizi dàxiǎo suàn de.",
+                "english": "The price of coffee is calculated according to cup size.",
+                "words": [
+                  {
+                    "id": "b3l14g5-cf2-w1",
+                    "traditional": "按照杯子大小",
+                    "simplified": "按照杯子大小",
+                    "pinyin": "ànzhào bēizi dàxiǎo",
+                    "meaning": "according to cup size"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l14g5-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "別擔心，只要"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "醫生的話去做，應該可以很快出院的。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "按照"
+              },
+              {
+                "id": "t2",
+                "text": "幸虧"
+              },
+              {
+                "id": "t3",
+                "text": "這就要從"
+              },
+              {
+                "id": "t4",
+                "text": "難道"
+              }
+            ],
+            "correctFeedback": "太棒了！「按照」表示依照指示、要求或規定來執行動作。",
+            "repairFeedback": "請注意動作的遵循標準：遵循醫生的指示去做，應選用「按照」。"
+          }
+        ]
+      }
+    ]
+  }
+}

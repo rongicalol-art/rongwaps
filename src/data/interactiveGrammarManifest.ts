@@ -1021,6 +1021,39 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L13-G05-P348"
       }
     ]
+  },
+  {
+    "id": "B3L14-P01-D01",
+    "bookId": 3,
+    "lessonId": 14,
+    "partId": 1,
+    "title": "Grammar 1–3 · The Story of the Double Seventh Festival",
+    "grammarPages": [
+      {
+        "id": "B3L14-G01-P360"
+      },
+      {
+        "id": "B3L14-G02-P362"
+      },
+      {
+        "id": "B3L14-G03-P363"
+      }
+    ]
+  },
+  {
+    "id": "B3L14-P02-D02",
+    "bookId": 3,
+    "lessonId": 14,
+    "partId": 2,
+    "title": "Grammar 4–5 · The Meaning of Chinese Valentine's Day",
+    "grammarPages": [
+      {
+        "id": "B3L14-G04-P369"
+      },
+      {
+        "id": "B3L14-G05-P371"
+      }
+    ]
   }
 ];
 

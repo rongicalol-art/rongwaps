@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 3,
-  "count": 26,
+  "count": 28,
   "items": [
     {
       "id": "B3L01-R01",
@@ -2508,6 +2508,206 @@
           "simplified": "云端就像一张大网，把各种资源连在一起，提供各式各样的服务，一方面带给人们更便利的生活，一方面也带给企业更良好的管理方式，对全球商业、教育、文化等方面都产生了重大的影响，相信未来云端能够带领我们走向美好的新时代。",
           "pinyin": "Yúnduān jiù xiàng yì zhāng dà wǎng, bǎ gèzhǒng zīyuán lián zài yìqǐ, tígōng gèshì gèyàng de fúwù, yì fāngmiàn dài gěi rénmen gèng biànlì de shēnghuó, yì fāngmiàn yě dài gěi qǐyè gèng liánghǎo de guǎnlǐ fāngshì, duì quánqiú shāngyè, jiàoyù, wénhuà děng fāngmiàn dōu chǎnshēng le zhòngdà de yǐngxiǎng, xiāngxìn wèilái yúnduān nénggòu dàilǐng wǒmen zǒuxiàng měihǎo de xīn shídài.",
           "english": "The cloud is like an immense web linking diverse resources to deliver myriad services. It brings convenience to people while equipping enterprises with refined management, exerting profound impact across global business, education, and culture, and guiding us toward a prosperous new era."
+        }
+      ]
+    },
+    {
+      "id": "B3L14-R01",
+      "bookId": 3,
+      "lessonId": 14,
+      "dialogueNumber": 1,
+      "audioReference": "14-1-1",
+      "title": "七夕情人節的故事",
+      "titlePinyin": "Qīxī Qíngrénjié de Gùshì",
+      "titleEnglish": "The Story of the Double Seventh Festival (Chinese Valentine's Day)",
+      "printedPages": [
+        352,
+        356
+      ],
+      "paragraphs": [
+        {
+          "speaker": "尚恩",
+          "traditional": "你這個布做的錢包好漂亮，在哪裡買的？",
+          "simplified": "你这个布做的钱包好漂亮，在哪里买的？",
+          "pinyin": "Nǐ zhège bù zuò de qiánbāo hǎo piàoliang, zài nǎlǐ mǎi de?",
+          "english": "This cloth wallet of yours is so pretty. Where did you buy it?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "是我女朋友親手做的七夕情人節禮物。法國也有情人節吧？",
+          "simplified": "是我女朋友亲手做的七夕情人节礼物。法国也有情人节吧？",
+          "pinyin": "Shì wǒ nǚpéngyǒu qīnshǒu zuò de Qīxī Qíngrénjié lǐwù. Fǎguó yě yǒu Qíngrénjié ba?",
+          "english": "It's a Qixi Valentine's gift handmade by my girlfriend. France has Valentine's Day too, right?"
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "有啊，不過不是在七夕。你們這個節日背後應該有故事吧？",
+          "simplified": "有啊，不过不是在七夕。你们这个节日背后应该有故事吧？",
+          "pinyin": "Yǒu a, bùguò búshì zài Qīxī. Nǐmen zhège jiérì bèihòu yīnggāi yǒu gùshì ba?",
+          "english": "Yes, but not on Qixi. There must be a story behind your festival, right?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "這就要從牛郎、織女說起了。從前有個叫牛郎的青年，每天都帶著老牛去田裡工作。有一天，他在河邊休息時，看見了一位非常美麗的姑娘。",
+          "simplified": "这就要从牛郎、织女说起了。从前有个叫牛郎的青年，每天都带着老牛去田里工作。有一天，他在河边休息时，看见了一位非常美丽的姑娘。",
+          "pinyin": "Zhè jiù yào cóng Niúláng, Zhīnǚ shuōqǐ le. Cóngqián yǒu ge jiào Niúláng de qīngnián, měitiān dōu dài zhe lǎoniú qù tián lǐ gōngzuò. Yǒu yì tiān, tā zài hébiān xiūxí shí, kànjiàn le yí wèi fēicháng měilì de gūniáng.",
+          "english": "That has to be told starting from the Cowherd and Weaver Girl. Once there was a young man named Niulang who took his old ox to work the fields every day. One day while resting by the river, he saw an exceptionally beautiful girl."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "我猜牛郎第一眼看到她，就覺得遇到了真愛吧。",
+          "simplified": "我猜牛郎第一眼看到她，就觉得遇到了真爱吧。",
+          "pinyin": "Wǒ cāi Niúláng dì-yī yǎn kàndào tā, jiù juéde yùdào le zhēn'ài ba.",
+          "english": "I bet the very first moment Niulang saw her, he felt he had found true love."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "是啊。那個天真可愛的姑娘名叫織女，她是天上的仙女，跟著幾個姊姊來人間玩，過幾天就得回到天上。",
+          "simplified": "是啊。那个天真可爱的小姑娘名叫织女，她是天上的仙女，跟着几个姐姐来人间玩，过几天就得回到天上。",
+          "pinyin": "Shì a. Nàge tiānzhēn kě'ài de gūniáng míng jiào Zhīnǚ, tā shì tiānshàng de xiānnǚ, gēn zhe jǐ ge jiějiě lái rénjiān wán, guò jǐ tiān jiù děi huídào tiānshàng.",
+          "english": "Indeed. That innocent and lovely girl was named Weaver Girl. She was a celestial fairy from heaven, visiting the mortal world with her older sisters for fun, and had to return to heaven after a few days."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "牛郎不想把她留下來嗎？",
+          "simplified": "牛郎不想把她留下来吗？",
+          "pinyin": "Niúláng bù xiǎng bǎ tā liú xiàlái ma?",
+          "english": "Didn't Niulang want to keep her here?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "當然想啊！為了把織女留在身邊，牛郎就拿走了能讓織女飛回天上的衣服。後來，因為牛郎很溫柔、很體貼，織女就慢慢愛上他了，最後他們成了夫婦，還生了兩個寶貝。",
+          "simplified": "当然想啊！为了把织女留在身边，牛郎就拿走了能让织女飞回天上的衣服。后来，因为牛郎很温柔、很体贴，织女就慢慢爱上他了，最后他们成了夫妇，还生了两个宝贝。",
+          "pinyin": "Dāngrán xiǎng a! Wèile bǎ Zhīnǚ liú zài shēnbiān, Niúláng jiù názǒu le néng ràng Zhīnǚ fēi huí tiānshàng de yīfú. Hòulái, yīnwèi Niúláng hěn wēnróu, hěn tǐtiē, Zhīnǚ jiù mànmàn àishàng tā le, zuìhòu tāmen chéng le fūfù, hái shēng le liǎng ge bǎobèi.",
+          "english": "Of course he did! To keep Weaver Girl by his side, Niulang took away the clothes that allowed her to fly back to heaven. Later, because Niulang was gentle and thoughtful, Weaver Girl gradually fell in love with him, and eventually they became husband and wife and had two precious children."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "他們就這樣過著幸福快樂的日子嗎？",
+          "simplified": "他们就这样过着幸福快乐的日子吗？",
+          "pinyin": "Tāmen jiù zhèyàng guò zhe xìngfú kuàilè de rìzi ma?",
+          "english": "And did they live happily ever after just like that?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "唉，沒那麼簡單。天帝知道了以後，氣得叫王母娘娘把織女抓回天上，還把她關了起來。牛郎找來找去，總算在天上某個神祕的地方找到了織女。沒想到王母娘娘卻在他們中間變出一條銀河，讓他們只能遠遠地看著對方。",
+          "simplified": "唉，没那么简单。天帝知道了以后，气得叫王母娘娘把织女抓回天上，还把她关了起来。牛郎找来找去，总算在天上某个神秘的地方找到了织女。没想到王母娘娘却在他们中间变出一条银河，让他们只能远远地看着对方。",
+          "pinyin": "Ài, méi nàme jiǎndān. Tiāndì zhīdào le yǐhòu, qì de jiào Wángmǔ Niángniang bǎ Zhīnǚ zhuā huí tiānshàng, hái bǎ tā guān le qǐlái. Niúláng zhǎoláizhǎoqù, zǒngsuàn zài tiānshàng mǒu ge shénmì de dìfāng zhǎodào le Zhīnǚ. Méi xiǎngdào Wángmǔ Niángniang què zài tāmen zhōngjiān biànchū yì tiáo Yínhé, ràng tāmen zhǐ néng yuǎnyuǎn de kàn zhe duìfāng.",
+          "english": "Alas, it wasn't so simple. When the Heavenly Emperor found out, he was furious and ordered the Queen Mother of the West to drag Weaver Girl back to heaven and lock her up. Niulang searched everywhere and finally found Weaver Girl in a mysterious place in heaven. Unexpectedly, the Queen Mother conjured up the Milky Way between them, allowing them only to gaze at each other from afar."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "織女不能跟牛郎聚在一起，也不能在人間住下去，真可憐。",
+          "simplified": "织女不能跟牛郎聚在一起，也不能在人间住下去，真可怜。",
+          "pinyin": "Zhīnǚ bù néng gēn Niúláng jù zài yìqǐ, yě bù néng zài rénjiān zhù xiàqù, zhēn kělián.",
+          "english": "Weaver Girl couldn't be together with Niulang, nor could she live on in the mortal world; how pitiful."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "還好姊姊們很同情她，好幾次請求王母娘娘幫忙。王母娘娘仔細觀察了兩人的情況，終於被他們的愛情感動了，答應讓他們在每年的農曆七月初七見面。有人說，七夕年年都會下雨，那就是織女流下的眼淚。",
+          "simplified": "还好姐姐们很同情她，好几次请求王母娘娘帮忙。王母娘娘仔细观察了两人的情况，终于被他们的爱情感动了，答应让他们在每年的农历七月初七见面。有人说，七夕年年都会下雨，那就是织女流下的眼泪。",
+          "pinyin": "Háihǎo jiějiěmen hěn tóngqíng tā, hǎojǐ cì qǐngqiú Wángmǔ Niángniang bāngmáng. Wángmǔ Niángniang zǐxì guānchá le liǎng rén de qíngkuàng, zhōngyú bèi tāmen de àiqíng gǎndòng le, dāyìng ràng tāmen zài měinián de nónglì qīyuè chū qī jiànmiàn. Yǒu rén shuō, Qīxī niánnián dōu huì xiàyǔ, nà jiùshì Zhīnǚ liúxià de yǎnlèi.",
+          "english": "Fortunately her sisters sympathized with her and begged the Queen Mother repeatedly for help. The Queen Mother closely observed the couple's devotion and was finally moved by their love, granting them permission to meet every year on the seventh day of the seventh lunar month. Some say that it rains every year on Qixi, and that is Weaver Girl shedding tears."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "幸虧有姊姊們的幫助，要不然他們一生都不能團圓了。",
+          "simplified": "幸亏有姐姐们的帮助，要不然他们一生都不能团圆了。",
+          "pinyin": "Xìngkuī yǒu jiějiěmen de bāngzhù, yàobùrán tāmen yìshēng dōu bù néng tuányuán le.",
+          "english": "Fortunately they had the sisters' help, otherwise they would never have reunited in their entire lives."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "可是一年只能見一次面，這樣的結局讓我很難過。",
+          "simplified": "可是一年只能见一次面，这样的结局让我很难过。",
+          "pinyin": "Kěshì yì nián zhǐ néng jiàn yí cì miàn, zhèyàng de jiéjú ràng wǒ hěn nánguò.",
+          "english": "But meeting only once a year—such an ending makes me sad."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "怎麼說呢？",
+          "simplified": "怎么说呢？",
+          "pinyin": "Zěnme shuō ne?",
+          "english": "Why do you say that?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "我女朋友畢業後就要出國念書，我擔心兩個人分開太久，關係就變淡了。",
+          "simplified": "我女朋友毕业后就要出国念书，我担心两个人分开太久，关系就变淡了。",
+          "pinyin": "Wǒ nǚpéngyǒu bìyè hòu jiù yào chūguó niànshū, wǒ dānxīn liǎng ge rén fēnkāi tài jiǔ, guānxì jiù biàn dàn le.",
+          "english": "My girlfriend is going abroad to study after graduation. I worry that being apart too long will cause our relationship to fade."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "別擔心，現在網路這麼方便，隨時都能聊天、傳照片，距離再遠也沒問題。",
+          "simplified": "别担心，现在网络这么方便，随时都能聊天、传照片，距离再远也没问题。",
+          "pinyin": "Bié dānxīn, xiànzài wǎnglù zhème fāngbiàn, suíshí dōu néng liáotiān, chuán zhàopiàn, jùlí zài yuǎn yě méi wèntí.",
+          "english": "Don't worry. The internet is so convenient now; you can chat and send photos anytime. No matter how far the distance, it won't be a problem."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "沒問題倒是沒問題，不過遠距離的戀愛還是很辛苦的。",
+          "simplified": "没问题倒是没问题，不过远距离的恋爱还是很辛苦的。",
+          "pinyin": "Méi wèntí dàoshì méi wèntí, bùguò yuǎnjùlí de liàn'ài háishì hěn xīnkǔ de.",
+          "english": "No problem is true enough, but a long-distance relationship is still very tough."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "別想那麼多了，你還是說說跟七夕有關的習俗吧。",
+          "simplified": "别想那么多了，你还是说说跟七夕有关的习俗吧。",
+          "pinyin": "Bié xiǎng nàme duō le, nǐ háishì shuōshuo gēn Qīxī yǒuguān de xísú ba.",
+          "english": "Don't overthink it; why not tell me about customs related to Qixi instead?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "好吧。七夕那天，當月亮升起時，就會有拜織女的活動。因為織女織布的技巧很好，能織出漂亮的衣服和美麗的雲。人間的姑娘希望能像她那樣又聰明又漂亮，就會用一些親手做的東西來拜她。",
+          "simplified": "好吧。七夕那天，当月亮升起时，就会有拜织女的活动。因为织女织布的技巧很好，能织出漂亮的衣服和美丽的云。人间的小姑娘希望能像她那样又聪明又漂亮，就会用一些亲手做的小东西来拜她。",
+          "pinyin": "Hǎoba. Qīxī nà tiān, dāng yuèliàng shēngqǐ shí, jiù huì yǒu bài Zhīnǚ de huódòng. Yīnwèi Zhīnǚ zhībù de jìqiǎo hěn hǎo, néng zhīchū piàoliang de yīfú hé měilì de yún. Rénjiān de gūniáng xīwàng néng xiàng tā nàyàng yòu cōngmíng yòu piàoliang, jiù huì yòng yìxiē qīnshǒu zuò de xiǎo dōngxī lái bài tā.",
+          "english": "All right. On Qixi day, when the moon rises, there are activities honoring Weaver Girl. Because Weaver Girl's weaving skill was superb, able to weave beautiful clothes and splendid clouds. Girls in the mortal world hoping to be clever and lovely like her would worship her with handmade items."
+        },
+        {
+          "speaker": "尚恩",
+          "traditional": "你女朋友在七夕送你這個親手做的錢包，原來有特別的意義啊！",
+          "simplified": "你女朋友在七夕送你这个亲手做的钱包，原来有特别的意义啊！",
+          "pinyin": "Nǐ nǚpéngyǒu zài Qīxī sòng nǐ zhège qīnshǒu zuò de qiánbāo, yuánlái yǒu tèbié de yìyì a!",
+          "english": "So your girlfriend giving you this handmade wallet on Qixi carries a special meaning after all!"
+        }
+      ]
+    },
+    {
+      "id": "B3L14-R02",
+      "bookId": 3,
+      "lessonId": 14,
+      "dialogueNumber": 2,
+      "audioReference": "14-2-1",
+      "title": "短文 · 情人節的意義",
+      "titlePinyin": "Duǎnwén · Qíngrénjié de Yìyì",
+      "titleEnglish": "Reading · The Meaning of Chinese Valentine's Day",
+      "printedPages": [
+        365,
+        367
+      ],
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "根據中國古代的說法，農曆七月初七是所謂的「七夕」。一提到七夕，人們就會想到牛郎和織女的愛情故事。這個故事不是真的，不過大家對愛情還是有無窮的想像，希望在現實中能夠擁有最美好的愛情。",
+          "simplified": "根据中国古代的说法，农历七月初七是所谓的「七夕」。一提到七夕，人们就会想到牛郎和织女的爱情故事。这个故事不是真的，不过大家对爱情还是有无穷的想象，希望在现实中能够拥有最美好的爱情。",
+          "pinyin": "Gēnjù Zhōngguó gǔdài de shuōfǎ, nónglì qīyuè chū qī shì suǒwèi de \"Qīxī\". Yì tídào Qīxī, rénmen jiù huì xiǎngdào Niúláng hé Zhīnǚ de àiqíng gùshì. Zhège gùshì búshì zhēn de, bùguò dàjiā duì àiqíng háishì yǒu wúqióng de xiǎngxiàng, xīwàng zài xiànshí zhōng nénggòu yǒngyǒu zuì měihǎo de àiqíng.",
+          "english": "According to ancient Chinese accounts, the seventh day of the seventh lunar month is known as \"Qixi\". Whenever Qixi is mentioned, people think of the love story of Niulang and Weaver Girl. While this tale is not true, people still harbor boundless imagination for romance, hoping to possess the finest love in reality."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "按照過去的習俗，姑娘會在七夕把親手做的小東西送給朋友，向對方表達心意。後來，商人抓到了這個能創造更多利益的機會，就在七夕和西方情人節這兩個節日，推銷屬於情人節的特別禮物。不僅戀愛中的男女願意花錢買，平時只有以網路聊天、寫信等方式談戀愛的情侶，也會在這天送禮。但是某一些商業廣告強調，情人節交換禮物是愛對方的表現，也是情侶之間該有的責任。讓很多人以為不送禮、不約會是個錯誤，而犯了錯的人就得道歉。其實只要對情人是真心的，送不送禮物沒那麼重要，畢竟單純的愛情才是最珍貴的。",
+          "simplified": "按照过去的习俗，姑娘会在七夕把亲手做的小东西送给朋友，向对方表达心意。后来，商人抓到了这个能创造更多利益的机会，就在七夕和西方情人节这两个节日，推销属于情人节的特别礼物。不仅恋爱中的男女愿意花钱买，平时只有以网络聊天、写信等方式谈恋爱的情侣，也会在这天送礼。但是某一些商业广告强调，情人节交换礼物是爱对方的表现，也是情侣之间该有的责任。让很多人以为不送礼、不约会是个错误，而犯了错的人就得道歉。其实只要对情人是真心的，送不送礼物没那么重要，毕竟单纯的爱情才是最珍贵的。",
+          "pinyin": "Ànzhào guòqù de xísú, gūniáng huì zài Qīxī bǎ qīnshǒu zuò de xiǎo dōngxī sòng gěi péngyǒu, xiàng duìfāng biǎodá xīnyì. Hòulái, shāngrén zhuādào le zhège néng chuàngzào gèng duō lìyì de jīhuì, jiù zài Qīxī hé xīfāng Qíngrénjié zhè liǎng ge jiérì, tuīxiāo shǔyú Qíngrénjié de tèbié lǐwù. Bùjǐn liàn'ài zhōng de nánnǚ yuànyì huāqián mǎi, píngshí zhǐyǒu yǐ wǎnglù liáotiān, xiěxìn děng fāngshì tán liàn'ài de qínglǚ, yě huì zài zhè tiān sònglǐ. Dànshì mǒu yìxiē shāngyè guǎnggào qiángdiào, Qíngrénjié jiāohuàn lǐwù shì ài duìfāng de biǎoxiàn, yě shì qínglǚ zhījiān gāi yǒu de zérèn. Ràng hěn duō rén yǐwéi bú sònglǐ, bú yuēhuì shì ge cuòwù, ér fàn le cuò de rén jiù děi dàoqiàn. Qíshí zhǐyào duì qíngrén shì zhēnxīn de, sòng bu sòng lǐwù méi nàme zhòngyào, bìjìng dānchún de àiqíng cái shì zuì zhēnguì de.",
+          "english": "According to past customs, young maidens would give handmade trinkets to friends on Qixi to express their affection. Later, merchants seized upon this opportunity to create greater profits, promoting special Valentine gifts during both Qixi and Western Valentine's Day. Not only were courting couples eager to spend money, but long-distance lovers who usually interacted only by online chatting and letters would also send gifts on this day. However, certain commercial advertisements emphasized that exchanging gifts on Valentine's Day proves one's love and is an obligation between lovers. This led many to believe that not giving gifts or going on dates is a misstep requiring an apology. In reality, as long as one is sincere toward their beloved, whether gifts are given is not so critical—after all, pure love is what is truly precious."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "不過話說回來，像牛郎與織女這樣的愛情故事，還是感動了無數人。不少文學與戲劇都採用這類的題材，畫家也常透過作品來表達浪漫的愛情。如能花點時間欣賞這方面的作品，或許就能更深入了解情人節的意義了。",
+          "simplified": "不过话说回来，像牛郎与织女这样的爱情故事，还是感动了无数人。不少文学与戏剧都采用这类的题材，画家也常透过作品来表达浪漫的爱情。如能花点时间欣赏这方面的作品，或许就能更深入了解情人节的意义了。",
+          "pinyin": "Bùguò huàshuōhuílái, xiàng Niúláng yǔ Zhīnǚ zhèyàng de àiqíng gùshì, háishì gǎndòng le wúshù rén. Bùshǎo wénxué yǔ xìjù dōu cǎiyòng zhè lèi de tícái, huàjiā yě cháng tòuguò zuòpǐn lái biǎodá làngmàn de àiqíng. Rú néng huā diǎn shíjiān xīnshǎng zhè fāngmiàn de zuòpǐn, huòxǔ jiù néng gèng shēnrù liǎojiě Qíngrénjié de yìyì le.",
+          "english": "Then again, love stories like Niulang and Weaver Girl still touch countless hearts. Many literary works and dramas adopt themes of this kind, and painters frequently convey romantic love through their art. If one can take some time to appreciate works in this domain, perhaps one will gain a deeper understanding of Valentine's true meaning."
         }
       ]
     }

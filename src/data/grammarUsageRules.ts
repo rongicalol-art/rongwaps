@@ -502,4 +502,11 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L13-G03-P341': detected('更別說', [inOrder(['更別說'])]),
   'B3L13-G04-P347': detected('就是……(也)……', [inOrder(['就是', '也'], 8), inOrder(['就是'])]),
   'B3L13-G05-P348': detected('一方面……，一方面……', [inOrder(['一方面', '一方面'], 12)]),
+
+  // Book 3 Lesson 14 — 七夕情人節的故事
+  'B3L14-G01-P360': detected('(這)就要從……V起了', [inOrder(['就要從']), inOrder(['說起']), inOrder(['談起']), inOrder(['找起'])]),
+  'B3L14-G02-P362': detected('V下去', [inOrder(['下去']), inOrder(['下去了'])]),
+  'B3L14-G03-P363': detected('幸虧……要不然……', [inOrder(['幸虧', '要不然'], 12), inOrder(['幸虧'])]),
+  'B3L14-G04-P369': detected('根據', [inOrder(['根據'])]),
+  'B3L14-G05-P371': detected('按照 / 按 / 照 NP + V', [inOrder(['按照']), inOrder(['就按']), inOrder(['照說明書'])]),
 };
