@@ -988,6 +988,39 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L12-G06-P327"
       }
     ]
+  },
+  {
+    "id": "B3L13-P01-D01",
+    "bookId": 3,
+    "lessonId": 13,
+    "partId": 1,
+    "title": "Grammar 1–3 · Cloud Technology Is Really Convenient",
+    "grammarPages": [
+      {
+        "id": "B3L13-G01-P338"
+      },
+      {
+        "id": "B3L13-G02-P339"
+      },
+      {
+        "id": "B3L13-G03-P341"
+      }
+    ]
+  },
+  {
+    "id": "B3L13-P02-D02",
+    "bookId": 3,
+    "lessonId": 13,
+    "partId": 2,
+    "title": "Grammar 4–5 · Entering the New Era of the Cloud",
+    "grammarPages": [
+      {
+        "id": "B3L13-G04-P347"
+      },
+      {
+        "id": "B3L13-G05-P348"
+      }
+    ]
   }
 ];
 

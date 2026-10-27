@@ -1,0 +1,2035 @@
+{
+  "BOOK3_LESSON_THIRTEEN_PART_ONE": {
+    "id": "B3L13-P01-D01",
+    "bookId": 3,
+    "lessonId": 13,
+    "partId": 1,
+    "title": "Grammar 1–3 · Cloud Technology Is Really Convenient",
+    "dialogue": {
+      "id": "B3L13-D01",
+      "title": "雲端科技真方便",
+      "audioReference": "13-1-1",
+      "printedPages": [
+        331,
+        332,
+        333
+      ],
+      "grammarFocus": [
+        "這下子",
+        "既……又……",
+        "更別說"
+      ],
+      "lines": [
+        {
+          "id": "b3l13d1-l1",
+          "speaker": "朋子",
+          "traditional": "明哲，你不要一直看手機啦。",
+          "simplified": "明哲，你不要一直看手机啦。",
+          "pinyin": "Míngzhé, nǐ bú yào yìzhí kàn shǒujī la.",
+          "english": "Mingzhe, don't keep staring at your phone all the time."
+        },
+        {
+          "id": "b3l13d1-l2",
+          "speaker": "明哲",
+          "traditional": "我在查借書記錄，看看雲端圖書館的電子書還能借多久。",
+          "simplified": "我在查借书记录，看看云端图书馆的电子书还能借多久。",
+          "pinyin": "Wǒ zài chá jiè shū jìlù, kànkan yúnduān túshūguǎn de diànzǐshū hái néng jiè duō jiǔ.",
+          "english": "I'm checking my borrowing record to see how much longer I can keep the cloud library e-book."
+        },
+        {
+          "id": "b3l13d1-l3",
+          "speaker": "朋子",
+          "traditional": "我從來沒用過雲端圖書館系統，你可以教我嗎？",
+          "simplified": "我从来没用过云端图书馆系统，你可以教我吗？",
+          "pinyin": "Wǒ cónglái méi yòngguo yúnduān túshūguǎn xìtǒng, nǐ kěyǐ jiāo wǒ ma?",
+          "english": "I have never used the cloud library system before. Could you teach me?"
+        },
+        {
+          "id": "b3l13d1-l4",
+          "speaker": "明哲",
+          "traditional": "妳只要上雲端圖書館的網站填資料，建立帳號、密碼，就能用了。",
+          "simplified": "你只要上云端图书馆的网站填资料，建立账号、密码，就能用了。",
+          "pinyin": "Nǐ zhǐyào shàng yúnduān túshūguǎn de wǎngzhàn tián zīliào, jiànlì zhànghào, mìmǎ, jiù néng yòng le.",
+          "english": "You just need to fill in information on the cloud library website and create an account and password, then you can use it."
+        },
+        {
+          "id": "b3l13d1-l5",
+          "speaker": "朋子",
+          "traditional": "聽起來不難嘛！什麼時候借都可以嗎？",
+          "simplified": "听起来不难嘛！什么时候借都可以吗？",
+          "pinyin": "Tīng qǐlái bù nán ma! Shénme shíhou jiè dōu kěyǐ ma?",
+          "english": "Sounds easy! Can you borrow anytime?"
+        },
+        {
+          "id": "b3l13d1-l6",
+          "speaker": "明哲",
+          "traditional": "是啊，而且還書時間一到，系統就會自動還書。不像以前，想借書只能親自跑一趟圖書館，要是多借了幾本，還得抱著一堆書回家。",
+          "simplified": "是啊，而且还书时间一到，系统就会自动还书。不像以前，想借书只能亲自跑一趟图书馆，要是多借了几本，还得抱着一堆书回家。",
+          "pinyin": "Shì a, érqiě huán shū shíjiān yí dào, xìtǒng jiù huì zìdòng huán shū. Bù xiàng yǐqián, xiǎng jiè shū zhǐ néng qīnzì pǎo yí tàng túshūguǎn, yàoshi duō jiè le jǐ běn, hái děi bàozhe yì duī shū huí jiā.",
+          "english": "Yes, and as soon as the due date arrives, the system returns it automatically. Unlike before, when borrowing required a trip to the library, and borrowing several books meant lugging a stack home."
+        },
+        {
+          "id": "b3l13d1-l7",
+          "speaker": "朋子",
+          "traditional": "現在的讀者實在太幸福了。",
+          "simplified": "现在的读者实在太幸福了。",
+          "pinyin": "Xiàndài de dúzhě shízài tài xìngfú le.",
+          "english": "Modern readers are truly fortunate."
+        },
+        {
+          "id": "b3l13d1-l8",
+          "speaker": "明哲",
+          "traditional": "就是啊，只要帶著手機或平板，就能隨時隨地閱讀了。",
+          "simplified": "就是啊，只要带着手机或平板，就能随时随地阅读了。",
+          "pinyin": "Jiù shì a, zhǐyào dàizhe shǒujī huò píngbǎn, jiù néng suíshí suídì yuèdú le.",
+          "english": "Exactly; as long as you carry a phone or tablet, you can read anytime, anywhere."
+        },
+        {
+          "id": "b3l13d1-l9",
+          "speaker": "朋子",
+          "traditional": "這樣我的書包就能變得很空，放得下外套、雨傘什麼的。",
+          "simplified": "这样我的书包就能变得很空，放得下外套、雨伞什么的。",
+          "pinyin": "Zhèyàng wǒ de shūbāo jiù néng biàn de hěn kōng, fàng de xià wàitào, yǔsǎn shénme de.",
+          "english": "That way my schoolbag can become very spacious, leaving room for a coat, umbrella, and so on."
+        },
+        {
+          "id": "b3l13d1-l10",
+          "speaker": "明哲",
+          "traditional": "是啊。現在我什麼文件都存在雲端，要是忘了帶隨身碟也不必擔心。",
+          "simplified": "是啊。现在我什么文件都存在云端，要是忘了带随身碟也不必担心。",
+          "pinyin": "Shì a. Xiànzài wǒ shénme wénjiàn dōu cún zài yúnduān, yàoshi wàng le dài suíshēndié yě bú bì dānxīn.",
+          "english": "Indeed. Now I store all documents in the cloud; even if I forget my flash drive, there is no need to worry."
+        },
+        {
+          "id": "b3l13d1-l11",
+          "speaker": "朋子",
+          "traditional": "有一次小組發表報告前五分鐘，我發現忘了帶隨身碟，也沒把預備好的資料寄到同學的電子信箱。我那時候想，這下子沒辦法報告了，還好同學說雲端上也有一份，問題就馬上解決了。",
+          "simplified": "有一次小组发表报告前五分钟，我发现忘了带随身碟，也没把预备好的资料寄到同学的电子信箱。我那时候想，这下子没办法报告了，还好同学说云端上也有一份，问题就马上解决了。",
+          "pinyin": "Yǒu yí cì xiǎozǔ fābiǎo bàogào qián wǔ fēnzhōng, wǒ fāxiàn wàng le dài suíshēndié, yě méi bǎ yùbèi hǎo de zīliào jì dào tóngxué de diànzǐ xìnxīang. Wǒ nà shíhou xiǎng, zhèxiàzi méi bànfǎ bàogào le, hái hǎo tóngxué shuō yúnduān shàng yě yǒu yí fèn, wèntí jiù mǎshàng jiějué le.",
+          "english": "Once, five minutes before our group presentation, I found I had forgotten my flash drive and hadn't emailed the prepared files to classmates. I thought, 'Now we can't present!' Luckily a classmate said there was a copy on the cloud, and the problem was resolved immediately."
+        },
+        {
+          "id": "b3l13d1-l12",
+          "speaker": "明哲",
+          "traditional": "現在的網路科技水平提高了不少，企業能透過高速網路把資料上傳到雲端處理，不同地區的人也能在網路上一起開會，既省時間又方便，更別說提供個人下載資料、傳訊息等基本服務了。",
+          "simplified": "现在的网络科技水平提高了不少，企业能透过高速网络把资料上传到云端处理，不同地区的人也能在网络上一起开会，既省时间又方便，更别说提供个人下载资料、传讯息等基本服务了。",
+          "pinyin": "Xiànzài de wǎnglù kējì shuǐpíng tígāo le bù shǎo, qǐyè néng tòuguò gāosù wǎnglù bǎ zīliào shàngchuán dào yúnduān chǔlǐ, bùtóng dìqū de rén yě néng zài wǎnglù shàng yìqǐ kāihuì, jì shěng shíjiān yòu fāngbiàn, gèng bié shuō tígōng gèrén xiàzài zīliào, chuán xùnxí děng jīběn fúwù le.",
+          "english": "Internet technology standards have improved considerably. Enterprises can upload data to the cloud via high-speed internet for processing, and people in different regions can meet online—saving time and being convenient, not to mention basic personal services like downloads and messaging."
+        },
+        {
+          "id": "b3l13d1-l13",
+          "speaker": "朋子",
+          "traditional": "除了這些優點，雲端還能把會議資料自動存起來，也能把變更的時間和內容記錄下來，讓不能參加會議的人隨時掌握最新情況。",
+          "simplified": "除了这些优点，云端还能把会议资料自动存起来，也能把变更的时间和内容记录下来，让不能参加会议的人随时掌握最新情况。",
+          "pinyin": "Chúle zhèxiē yōudiǎn, yúnduān hái néng bǎ huìyì zīliào zìdòng cún qǐlái, yě néng bǎ biàngēng de shíjiān hé nèiróng jìlù xiàlái, ràng bù néng cānjiā huìyì de rén suíshí zhǎowò zuìxīn qíngkuàng.",
+          "english": "Besides these merits, the cloud automatically archives meeting materials and logs change times and details, enabling absent members to keep abreast of updates anytime."
+        },
+        {
+          "id": "b3l13d1-l14",
+          "speaker": "明哲",
+          "traditional": "其實也有不少老師利用這樣的科技，把教材放上雲端，讓學生預習、複習，提高學習的效果。",
+          "simplified": "其实也有不少老师利用这样的科技，把教材放上云端，让学生预习、复习，提高学习的效果。",
+          "pinyin": "Qíshí yě yǒu bù shǎo lǎoshī lìyòng zhèyàng de kējì, bǎ jiàocái fàng shàng yúnduān, ràng xuéshēng yùxí, fùxí, tígāo xuéxí de xiàoguǒ.",
+          "english": "Actually, quite a few teachers use this technology, putting course materials on the cloud for students to preview and review, boosting learning efficacy."
+        },
+        {
+          "id": "b3l13d1-l15",
+          "speaker": "朋子",
+          "traditional": "不過，我覺得要利用雲端科技來改變傳統的教學方式，恐怕說起來容易，做起來不簡單吧。",
+          "simplified": "不过，我觉得要利用云端科技来改变传统的教学方式，恐怕说起来容易，做起来不简单吧。",
+          "pinyin": "Búguò, wǒ juéde yào lìyòng yúnduān kējì lái gǎibiàn chuántǒng de jiàoxué fāngshì, kǒngpà shuōqǐlái róngyì, zuòqǐlái bù jiǎndān ba.",
+          "english": "However, using cloud technology to transform conventional teaching methods is probably easier said than done."
+        },
+        {
+          "id": "b3l13d1-l16",
+          "speaker": "明哲",
+          "traditional": "明天系主任邀請馬博士來演講，題目跟雲端科技有關，妳要一起去嗎？",
+          "simplified": "明天系主任邀请马博士来演讲，题目跟云端科技有关，你要一起去吗？",
+          "pinyin": "Míngtiān xì zhǔrèn yāoqǐng Mǎ bóshì lái yǎnjiǎng, tímù gēn yúnduān kējì yǒuguān, nǐ yào yìqǐ qù ma?",
+          "english": "Tomorrow the department chair invited Dr. Ma to give a lecture on cloud tech. Do you want to go together?"
+        },
+        {
+          "id": "b3l13d1-l17",
+          "speaker": "朋子",
+          "traditional": "說實話，我本來對雲端科技沒什麼興趣，今天聽你說了這麼多，似乎該研究一下了。",
+          "simplified": "说实话，我本来对云端科技没什么兴趣，今天听你说了这么多，似乎该研究一下了。",
+          "pinyin": "Shuō shíhuà, wǒ běnlái duì yúnduān kējì méi shénme xìngqù, jīntiān tīng nǐ shuō le zhème duō, sìhū gāi yánjiū yíxià le.",
+          "english": "Honestly, I initially had little interest in cloud tech, but hearing you share so much today, it seems I should look into it."
+        },
+        {
+          "id": "b3l13d1-l18",
+          "speaker": "明哲",
+          "traditional": "那我明天騎摩托車去接妳。",
+          "simplified": "那我明天骑摩托车去接你。",
+          "pinyin": "Nà wǒ míngtiān qí mótuōchē qù jiē nǐ.",
+          "english": "Then I'll pick you up on my scooter tomorrow."
+        },
+        {
+          "id": "b3l13d1-l19",
+          "speaker": "朋子",
+          "traditional": "太好了！麻煩你了！",
+          "simplified": "太好了！麻烦你了！",
+          "pinyin": "Tài hǎo le! Máfan nǐ le!",
+          "english": "Wonderful! Thanks so much!"
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L13-G01-P338",
+        "bookId": 3,
+        "lessonId": 13,
+        "partId": 1,
+        "lessonTitle": "雲端科技真方便",
+        "lessonTitleEnglish": "Cloud Technology Is Really Convenient",
+        "grammarNumber": 1,
+        "titleTraditional": "這下子",
+        "titleSimplified": "这下子",
+        "titleEnglish": "Immediate Consequence / Reaction: 這下子",
+        "learnerPromise": "Express an immediate realization, reaction, or consequence of a sudden situation using 這下子 ('now / as a result').",
+        "bookPage": 338,
+        "bookPageAvailable": true,
+        "printedPages": [
+          338,
+          339
+        ],
+        "audioReference": "13-1-1",
+        "explanation": "在對話中說到某件事情或情況，說話的人表達自己的看法，也可以是自己面對突然發生的情況，當下做出的反應。",
+        "pattern": "Event / Situation, + 這下子 + Subject + Reaction / Result",
+        "patternColumns": [
+          "Event",
+          "這下子",
+          "Subject",
+          "Result"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l13g1-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g1-r1-c1",
+                  "traditional": "忘了帶隨身碟",
+                  "simplified": "忘了带随身碟",
+                  "pinyin": "wàng le dài suíshēndié",
+                  "meaning": "forgot flash drive"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r1-c2",
+                  "traditional": "這下子",
+                  "simplified": "这下子",
+                  "pinyin": "zhèxiàzi",
+                  "meaning": "now / in this spot"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r1-c3",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r1-c4",
+                  "traditional": "沒辦法報告了",
+                  "simplified": "没办法报告了",
+                  "pinyin": "méi bànfǎ bàogào le",
+                  "meaning": "have no way to present"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g1-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g1-r2-c1",
+                  "traditional": "早上突然停電",
+                  "simplified": "早上突然停电",
+                  "pinyin": "zǎoshang tūrán tíngdiàn",
+                  "meaning": "sudden morning blackout"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r2-c2",
+                  "traditional": "這下子",
+                  "simplified": "这下子",
+                  "pinyin": "zhèxiàzi",
+                  "meaning": "now / in this spot"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r2-c3",
+                  "traditional": "你們的貨",
+                  "simplified": "你们的货",
+                  "pinyin": "nǐmen de huò",
+                  "meaning": "your goods"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r2-c4",
+                  "traditional": "趕得出來嗎",
+                  "simplified": "赶得出来吗",
+                  "pinyin": "gǎn de chūlái ma",
+                  "meaning": "can finish in time?"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g1-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g1-r3-c1",
+                  "traditional": "旅遊國家發生地震",
+                  "simplified": "旅游国家发生地震",
+                  "pinyin": "lǚyóu guójiā fāshēng dìzhèn",
+                  "meaning": "destination had quake"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r3-c2",
+                  "traditional": "這下子",
+                  "simplified": "这下子",
+                  "pinyin": "zhèxiàzi",
+                  "meaning": "now / in this spot"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r3-c3",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g1-r3-c4",
+                  "traditional": "得改變計畫了",
+                  "simplified": "得改变计划了",
+                  "pinyin": "děi gǎibiàn jìhuà le",
+                  "meaning": "must change plans"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l13g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "我那時候想，這下子沒辦法報告了，還好同學說雲端上也有一份。",
+              "simplified": "我那时候想，这下子没办法报告了，还好同学说云端上也有一份。",
+              "pinyin": "Wǒ nà shíhou xiǎng, zhèxiàzi méi bànfǎ bàogào le, hái hǎo tóngxué shuō yúnduān shàng yě yǒu yí fèn.",
+              "english": "I thought at that moment, 'Now we have no way to present,' but thankfully a classmate said there was also a copy on the cloud.",
+              "words": [
+                {
+                  "id": "b3l13g1-ex1-w1",
+                  "traditional": "這下子",
+                  "simplified": "这下子",
+                  "pinyin": "zhèxiàzi",
+                  "meaning": "now / in this pickle",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g1-ex1-w2",
+                  "traditional": "沒辦法報告了",
+                  "simplified": "没办法报告了",
+                  "pinyin": "méi bànfǎ bàogào le",
+                  "meaning": "no way to present",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g1-ex1-w3",
+                  "traditional": "雲端上也有一份",
+                  "simplified": "云端上也有一份",
+                  "pinyin": "yúnduān shàng yě yǒu yí fèn",
+                  "meaning": "cloud also had a copy",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我們工廠早上突然停電了，什麼都做不了。真的？這下子你們的貨趕得出來嗎？",
+              "simplified": "我们工厂早上突然停电了，什么都做不了。真的？这下子你们的货赶得出来吗？",
+              "pinyin": "Wǒmen gōngchǎng zǎoshang tūrán tíngdiàn le, shénme dōu zuò bù liǎo. Zhēn de? Zhèxiàzi nǐmen de huò gǎn de chūlái ma?",
+              "english": "Our factory suddenly lost power this morning and we couldn't do anything. Really? Now can you still finish the goods in time?",
+              "words": [
+                {
+                  "id": "b3l13g1-ex2-w1",
+                  "traditional": "突然停電了",
+                  "simplified": "突然停电了",
+                  "pinyin": "tūrán tíngdiàn le",
+                  "meaning": "suddenly lost power",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g1-ex2-w2",
+                  "traditional": "這下子",
+                  "simplified": "这下子",
+                  "pinyin": "zhèxiàzi",
+                  "meaning": "now / given this situation",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g1-ex2-w3",
+                  "traditional": "趕得出來嗎",
+                  "simplified": "赶得出来吗",
+                  "pinyin": "gǎn de chūlái ma",
+                  "meaning": "can finish on schedule?",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "沒想到小顧要旅遊的國家昨天發生了大地震。是啊，這下子他得改變計畫了。",
+              "simplified": "没想到小顾要旅游的国家昨天发生了大地震。是啊，这下子他得改变计划了。",
+              "pinyin": "Méi xiǎngdào Xiǎo Gù yào lǚyóu de guójiā zuótiān fāshēng le dà dìzhèn. Shì a, zhèxiàzi tā děi gǎibiàn jìhuà le.",
+              "english": "Unexpectedly the country Xiao Gu planned to visit suffered a major earthquake yesterday. Yes, now he has to change his plans.",
+              "words": [
+                {
+                  "id": "b3l13g1-ex3-w1",
+                  "traditional": "發生了大地震",
+                  "simplified": "发生了大地震",
+                  "pinyin": "fāshēng le dà dìzhèn",
+                  "meaning": "a major earthquake struck",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l13g1-ex3-w2",
+                  "traditional": "這下子",
+                  "simplified": "这下子",
+                  "pinyin": "zhèxiàzi",
+                  "meaning": "now / in this eventuality",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g1-ex3-w3",
+                  "traditional": "得改變計畫了",
+                  "simplified": "得改变计划了",
+                  "pinyin": "děi gǎibiàn jìhuà le",
+                  "meaning": "must change plans",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l13g1-cf1",
+              "question": "When should you use 這下子 instead of simple 現在?",
+              "answer": "「這下子」強調事情發生後的即刻後果或對突發情境的強烈感嘆反應；「現在」僅客觀表示當前時間。",
+              "wrongTraditional": "早上工廠停電了，現在你們的貨趕得出來嗎？",
+              "wrongSimplified": "早上工厂停电了，现在你们的货赶得出来吗？",
+              "right": {
+                "traditional": "工廠突然停電，這下子貨趕得出來嗎？",
+                "simplified": "工厂突然停电，这下子货赶得出来吗？",
+                "pinyin": "Gōngchǎng tūrán tíngdiàn, zhèxiàzi huò gǎn de chūlái ma?",
+                "english": "The factory suddenly lost power; now can the goods be rushed out in time?",
+                "words": [
+                  {
+                    "id": "b3l13g1-cf1-w1",
+                    "traditional": "這下子貨趕得出來嗎",
+                    "simplified": "这下子货赶得出来吗",
+                    "pinyin": "zhèxiàzi huò gǎn de chūlái ma",
+                    "meaning": "now can goods be produced?"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l13g1-cf2",
+              "question": "Can 這下子 be used for anticipated pleasant or unpleasant emergent turns?",
+              "answer": "兩者皆可，但在口語中常帶有「這下可麻煩了」或面對意外轉折的強烈情緒色彩。",
+              "wrongTraditional": "天氣很好，這下子我明天去學校。",
+              "wrongSimplified": "天气很好，这下子我明天去学校。",
+              "right": {
+                "traditional": "突然下大雨沒帶傘，這下子走不成了。",
+                "simplified": "突然下大雨没带伞，这下子走不成了。",
+                "pinyin": "Tūrán xià dàyǔ méi dài sǎn, zhèxiàzi zǒu bù chéng le.",
+                "english": "Sudden heavy rain and no umbrella—now we can't leave.",
+                "words": [
+                  {
+                    "id": "b3l13g1-cf2-w1",
+                    "traditional": "這下子走不成",
+                    "simplified": "这下子走不成",
+                    "pinyin": "zhèxiàzi zǒu bù chéng",
+                    "meaning": "now cannot leave"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l13g1-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "下課了突然下起大雨，大家都沒帶傘，"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "我們只能在學校等雨停了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "這下子"
+              },
+              {
+                "id": "t2",
+                "text": "難道"
+              },
+              {
+                "id": "t3",
+                "text": "況且"
+              },
+              {
+                "id": "t4",
+                "text": "畢竟"
+              }
+            ],
+            "correctFeedback": "太棒了！「這下子」用於面對突發情況時當下做出的即時反應與感慨。",
+            "repairFeedback": "請注意突發事件的因果關係：面對突發大雨沒有雨傘的處境，應使用「這下子」。"
+          }
+        ]
+      },
+      {
+        "id": "B3L13-G02-P339",
+        "bookPage": 339,
+        "lessonId": 13,
+        "bookId": 3,
+        "partId": 1,
+        "lessonTitle": "雲端科技真方便",
+        "lessonTitleEnglish": "Cloud Technology Is Really Convenient",
+        "grammarNumber": 2,
+        "titleTraditional": "既……又……",
+        "titleSimplified": "既……又……",
+        "titleEnglish": "Both... and... (既……又……)",
+        "learnerPromise": "Coordinate two simultaneous positive or negative qualities/actions using 既……又…….",
+        "bookPageAvailable": true,
+        "printedPages": [
+          339,
+          340
+        ],
+        "audioReference": "13-1-1",
+        "explanation": "表示同一個主語具有兩種狀態或情況。「既」跟「又」後面常接形容詞、動詞或動詞短語。所連接的兩個狀態或情況，必須同樣是正面的或負面的。",
+        "pattern": "Subject + 既 + State/Action 1 + 又 + State/Action 2",
+        "patternColumns": [
+          "Subject",
+          "既",
+          "Quality 1",
+          "又",
+          "Quality 2"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l13g2-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g2-r1-c1",
+                  "traditional": "在網路開會",
+                  "simplified": "在网络开会",
+                  "pinyin": "zài wǎnglù kāihuì",
+                  "meaning": "meeting online"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r1-c2",
+                  "traditional": "既",
+                  "simplified": "既",
+                  "pinyin": "jì",
+                  "meaning": "both"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r1-c3",
+                  "traditional": "省時間",
+                  "simplified": "省时间",
+                  "pinyin": "shěng shíjiān",
+                  "meaning": "saves time"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r1-c4",
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r1-c5",
+                  "traditional": "方便",
+                  "simplified": "方便",
+                  "pinyin": "fāngbiàn",
+                  "meaning": "convenient"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g2-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g2-r2-c1",
+                  "traditional": "那家店的衣服",
+                  "simplified": "那家店的衣服",
+                  "pinyin": "nà jiā diàn de yīfu",
+                  "meaning": "clothes of that shop"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r2-c2",
+                  "traditional": "既",
+                  "simplified": "既",
+                  "pinyin": "jì",
+                  "meaning": "both"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r2-c3",
+                  "traditional": "好看",
+                  "simplified": "好看",
+                  "pinyin": "hǎokàn",
+                  "meaning": "good-looking"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r2-c4",
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r2-c5",
+                  "traditional": "便宜",
+                  "simplified": "便宜",
+                  "pinyin": "piányi",
+                  "meaning": "inexpensive"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g2-r3-c1",
+                  "traditional": "到那裡教書",
+                  "simplified": "到那里教书",
+                  "pinyin": "dào nàlǐ jiāoshū",
+                  "meaning": "teaching there"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r3-c2",
+                  "traditional": "既",
+                  "simplified": "既",
+                  "pinyin": "jì",
+                  "meaning": "both"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r3-c3",
+                  "traditional": "能挑戰生活",
+                  "simplified": "能挑战生活",
+                  "pinyin": "néng tiǎozhàn shēnghuó",
+                  "meaning": "challenge life"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r3-c4",
+                  "traditional": "又",
+                  "simplified": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g2-r3-c5",
+                  "traditional": "能開拓視野",
+                  "simplified": "能开拓视野",
+                  "pinyin": "néng kāituò shìyě",
+                  "meaning": "broaden horizon"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l13g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "不同地區的人也能在網路上一起開會，既省時間又方便。",
+              "simplified": "不同地区的人也能在网络上一起开会，既省时间又方便。",
+              "pinyin": "Bùtóng dìqū de rén yě néng zài wǎnglù shàng yìqǐ kāihuì, jì shěng shíjiān yòu fāngbiàn.",
+              "english": "People from diverse areas can also hold meetings online, saving time as well as being convenient.",
+              "words": [
+                {
+                  "id": "b3l13g2-ex1-w1",
+                  "traditional": "在網路上開會",
+                  "simplified": "在网络上开会",
+                  "pinyin": "zài wǎnglù shàng kāihuì",
+                  "meaning": "meet on the internet",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g2-ex1-w2",
+                  "traditional": "既省時間",
+                  "simplified": "既省时间",
+                  "pinyin": "jì shěng shíjiān",
+                  "meaning": "both saves time",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g2-ex1-w3",
+                  "traditional": "又方便",
+                  "simplified": "又方便",
+                  "pinyin": "yòu fāngbiàn",
+                  "meaning": "and is convenient",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "那家網路服裝店的衣服既好看又便宜，吸引了不少年輕人。",
+              "simplified": "那家网络服装店的衣服既好看又便宜，吸引了不少年轻人。",
+              "pinyin": "Nà jiā wǎnglù fúzhuāng diàn de yīfu jì hǎokàn yòu piányi, xīyǐn le bù shǎo niánqīng rén.",
+              "english": "The clothes at that online shop are both good-looking and inexpensive, attracting many youths.",
+              "words": [
+                {
+                  "id": "b3l13g2-ex2-w1",
+                  "traditional": "既好看",
+                  "simplified": "既好看",
+                  "pinyin": "jì hǎokàn",
+                  "meaning": "both good-looking",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g2-ex2-w2",
+                  "traditional": "又便宜",
+                  "simplified": "又便宜",
+                  "pinyin": "yòu piányi",
+                  "meaning": "and cheap",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g2-ex2-w3",
+                  "traditional": "吸引年輕人",
+                  "simplified": "吸引年轻人",
+                  "pinyin": "xīyǐn niánqīng rén",
+                  "meaning": "attracts young people",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "到偏遠地區教書，既能挑戰新生活，又能打開自己的視野。",
+              "simplified": "到偏远地区教书，既能挑战新生活，又能打开自己的视野。",
+              "pinyin": "Dào piānyuǎn dìqū jiāoshū, jì néng tiǎozhàn xīn shēnghuó, yòu néng dǎkāi zìjǐ de shìyě.",
+              "english": "Teaching in remote regions can both challenge one with new experiences and broaden one's horizon.",
+              "words": [
+                {
+                  "id": "b3l13g2-ex3-w1",
+                  "traditional": "偏遠地區教書",
+                  "simplified": "偏远地区教书",
+                  "pinyin": "piānyuǎn dìqū jiāoshū",
+                  "meaning": "teach in remote areas",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g2-ex3-w2",
+                  "traditional": "既能挑戰新生活",
+                  "simplified": "既能挑战新生活",
+                  "pinyin": "jì néng tiǎozhàn xīn shēnghuó",
+                  "meaning": "both challenge new life",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g2-ex3-w3",
+                  "traditional": "又能打開視野",
+                  "simplified": "又能打开视野",
+                  "pinyin": "yòu néng dǎkāi shìyě",
+                  "meaning": "and open horizon",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l13g2-cf1",
+              "question": "Can 既 and 又 pair opposite polarities (one positive, one negative)?",
+              "answer": "不行。「既……又……」連接的兩個性質必須同為正面（褒義）或同為負面（貶義）。",
+              "wrongTraditional": "這件衣服既漂亮又很難看。",
+              "wrongSimplified": "这件衣服既漂亮又很难看。",
+              "right": {
+                "traditional": "這件衣服既好看又便宜。",
+                "simplified": "这件衣服既好看又便宜。",
+                "pinyin": "Zhè jiàn yīfu jì hǎokàn yòu piányi.",
+                "english": "This piece of clothing is both nice-looking and affordable.",
+                "words": [
+                  {
+                    "id": "b3l13g2-cf1-w1",
+                    "traditional": "既好看又便宜",
+                    "simplified": "既好看又便宜",
+                    "pinyin": "jì hǎokàn yòu piányi",
+                    "meaning": "both nice and cheap"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l13g2-cf2",
+              "question": "Can degree adverbs like 很 precede adjectives after 既 / 又?",
+              "answer": "通常不加副詞「很」，直接接單純形容詞（如「既省時間又方便」，不說「既很省時間又很方便」）。",
+              "wrongTraditional": "網上開會既很省時又很方便。",
+              "wrongSimplified": "网上开会既很省时又很方便。",
+              "right": {
+                "traditional": "網上開會既省時又方便。",
+                "simplified": "网上开会既省时又方便。",
+                "pinyin": "Wǎngshàng kāihuì jì shěngshí yòu fāngbiàn.",
+                "english": "Online meetings are both time-saving and convenient.",
+                "words": [
+                  {
+                    "id": "b3l13g2-cf2-w1",
+                    "traditional": "既省時又方便",
+                    "simplified": "既省时又方便",
+                    "pinyin": "jì shěngshí yòu fāngbiàn",
+                    "meaning": "both time-saving and convenient"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l13g2-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "不同地區的人在網路上開會，"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "省時間又方便。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "既"
+              },
+              {
+                "id": "t2",
+                "text": "越"
+              },
+              {
+                "id": "t3",
+                "text": "正"
+              },
+              {
+                "id": "t4",
+                "text": "隨"
+              }
+            ],
+            "correctFeedback": "答對了！「既……又……」表示同時具備兩種同向性質或特點。",
+            "repairFeedback": "請注意句式搭配：後句有「又方便」，前半句應搭配「既省時間」。"
+          }
+        ]
+      },
+      {
+        "id": "B3L13-G03-P341",
+        "bookPage": 341,
+        "lessonId": 13,
+        "bookId": 3,
+        "partId": 1,
+        "lessonTitle": "雲端科技真方便",
+        "lessonTitleEnglish": "Cloud Technology Is Really Convenient",
+        "grammarNumber": 3,
+        "titleTraditional": "更別說",
+        "titleSimplified": "更别说",
+        "titleEnglish": "Not to Mention: 更別說",
+        "learnerPromise": "Dismiss obvious, self-evident follow-ups using 更別說 ('not to mention / let alone').",
+        "bookPageAvailable": true,
+        "printedPages": [
+          341,
+          342
+        ],
+        "audioReference": "13-1-1",
+        "explanation": "「更別說」的意思是「不必說」、「不需要說」，因為「更別說」後面所表達的情況是非常清楚的，不需要再多說。",
+        "pattern": "Basic Case, + 更別說 + Advanced Case + 了",
+        "patternColumns": [
+          "Premise",
+          "更別說",
+          "Base Case"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l13g3-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g3-r1-c1",
+                  "traditional": "在網路開會既省時又方便",
+                  "simplified": "在网络开会既省时又方便",
+                  "pinyin": "zài wǎnglù kāihuì jì shěngshí yòu fāngbiàn",
+                  "meaning": "meeting online saves time"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g3-r1-c2",
+                  "traditional": "更別說",
+                  "simplified": "更别说",
+                  "pinyin": "gèng bié shuō",
+                  "meaning": "let alone"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g3-r1-c3",
+                  "traditional": "提供下載資料等基本服務了",
+                  "simplified": "提供下载资料等基本服务了",
+                  "pinyin": "tígōng xiàzài zīliào děng jīběn fúwù le",
+                  "meaning": "providing basic download services"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g3-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g3-r2-c1",
+                  "traditional": "奶奶連上傳資料都不會",
+                  "simplified": "奶奶连上传资料都不会",
+                  "pinyin": "nǎinai lián shàngchuán zīliào dōu bú huì",
+                  "meaning": "grandma can't even upload files"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g3-r2-c2",
+                  "traditional": "更別說",
+                  "simplified": "更别说",
+                  "pinyin": "gèng bié shuō",
+                  "meaning": "let alone"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g3-r2-c3",
+                  "traditional": "建立自己的網站了",
+                  "simplified": "建立自己的网站了",
+                  "pinyin": "jiànlì zìjǐ de wǎngzhàn le",
+                  "meaning": "building her own website"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g3-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g3-r3-c1",
+                  "traditional": "見到陌生人害羞得說不出話",
+                  "simplified": "见到陌生人害羞得说不出话",
+                  "pinyin": "jiàndào mòshēngrén hàixiū de shuō bù chū huà",
+                  "meaning": "shy to speak before strangers"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g3-r3-c2",
+                  "traditional": "更別說",
+                  "simplified": "更别说",
+                  "pinyin": "gèng bié shuō",
+                  "meaning": "let alone"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g3-r3-c3",
+                  "traditional": "要他在大家面前演講了",
+                  "simplified": "要他在大家面前演讲了",
+                  "pinyin": "yào tā zài dàjiā miànqián yǎnjiǎng le",
+                  "meaning": "asking him to deliver speech"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l13g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "不同地區的人能在網路上開會，更別說提供個人下載資料、傳訊息等基本服務了。",
+              "simplified": "不同地区的人能在网络上开会，更别说提供个人下载资料、传讯息等基本服务了。",
+              "pinyin": "Bùtóng dìqū de rén néng zài wǎnglù shàng kāihuì, gèng bié shuō tígōng gèrén xiàzài zīliào, chuán xùnxí děng jīběn fúwù le.",
+              "english": "People from different areas can meet online, not to mention basic services like personal downloads and messaging.",
+              "words": [
+                {
+                  "id": "b3l13g3-ex1-w1",
+                  "traditional": "在網路上開會",
+                  "simplified": "在网络上开会",
+                  "pinyin": "zài wǎnglù shàng kāihuì",
+                  "meaning": "meeting online",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g3-ex1-w2",
+                  "traditional": "更別說提供",
+                  "simplified": "更别说提供",
+                  "pinyin": "gèng bié shuō tígōng",
+                  "meaning": "not to mention offering",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g3-ex1-w3",
+                  "traditional": "基本服務了",
+                  "simplified": "基本服务了",
+                  "pinyin": "jīběn fúwù le",
+                  "meaning": "basic services",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我奶奶連怎麼上傳資料都不會，更別說建立自己的網站了。",
+              "simplified": "我奶奶连怎么上传资料都不会，更别说建立自己的网站了。",
+              "pinyin": "Wǒ nǎinai lián zěnme shàngchuán zīliào dōu bú huì, gèng bié shuō jiànlì zìjǐ de wǎngzhàn le.",
+              "english": "My grandma doesn't even know how to upload files, let alone build her own website.",
+              "words": [
+                {
+                  "id": "b3l13g3-ex2-w1",
+                  "traditional": "連上傳資料都不會",
+                  "simplified": "连上传资料都不会",
+                  "pinyin": "lián shàngchuán zīliào dōu bú huì",
+                  "meaning": "can't even upload files",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g3-ex2-w2",
+                  "traditional": "更別說建立",
+                  "simplified": "更别说建立",
+                  "pinyin": "gèng bié shuō jiànlì",
+                  "meaning": "let alone build",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g3-ex2-w3",
+                  "traditional": "自己的網站了",
+                  "simplified": "自己的网站了",
+                  "pinyin": "zìjǐ de wǎngzhàn le",
+                  "meaning": "her own website",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "溫先生一見到陌生人，就害羞得說不出話來，更別說要他演講了。",
+              "simplified": "温先生一见到陌生人，就害羞得说不出话来，更别说要他演讲了。",
+              "pinyin": "Wēn xiānshēng yí jiàndào mòshēngrén, jiù hàixiū de shuō bù chū huà lái, gèng bié shuō yào tā yǎnjiǎng le.",
+              "english": "Mr. Wen gets tongue-tied with shyness as soon as he sees a stranger, let alone giving a speech.",
+              "words": [
+                {
+                  "id": "b3l13g3-ex3-w1",
+                  "traditional": "害羞得說不出話",
+                  "simplified": "害羞得说不出话",
+                  "pinyin": "hàixiū de shuō bù chū huà",
+                  "meaning": "shy to the point of speechless",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g3-ex3-w2",
+                  "traditional": "更別說要他",
+                  "simplified": "更别说要他",
+                  "pinyin": "gèng bié shuō yào tā",
+                  "meaning": "let alone asking him to",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g3-ex3-w3",
+                  "traditional": "演講了",
+                  "simplified": "演讲了",
+                  "pinyin": "yǎnjiǎng le",
+                  "meaning": "give a speech",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l13g3-cf1",
+              "question": "How is 更別說 structured with lesser vs. greater extremes?",
+              "answer": "前句先提出較容易或基本的情境（常搭配『連……都……』），「更別說」後則接難度更高或更極端、顯而易見的事情。",
+              "wrongTraditional": "他建立網站都不會，更別說上傳資料了。",
+              "wrongSimplified": "他建立网站都不会，更别说上传资料了。",
+              "right": {
+                "traditional": "他連上傳資料都不會，更別說建網站了。",
+                "simplified": "他连上传资料都不会，更别说建网站了。",
+                "pinyin": "Tā lián shàngchuán zīliào dōu bú huì, gèng bié shuō jiàn wǎngzhàn le.",
+                "english": "He doesn't even know how to upload files, let alone build a site.",
+                "words": [
+                  {
+                    "id": "b3l13g3-cf1-w1",
+                    "traditional": "更別說建網站",
+                    "simplified": "更别说建网站",
+                    "pinyin": "gèng bié shuō jiàn wǎngzhàn",
+                    "meaning": "let alone build a site"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l13g3-cf2",
+              "question": "Can 更別說 be replaced by 只要 or 除非?",
+              "answer": "不行。「更別說」表示遞進排除（不必說也知道），不可與假設連詞混淆。",
+              "wrongTraditional": "連房租都付不起，除非出國旅遊了。",
+              "wrongSimplified": "连房租都付不起，除非出国旅游了。",
+              "right": {
+                "traditional": "連房租都付不起，更別說出國旅遊了。",
+                "simplified": "连房租都付不起，更别说出国旅游了。",
+                "pinyin": "Lián fángzū dōu fù bù qǐ, gèng bié shuō chūguó lǚyóu le.",
+                "english": "Can't even afford rent, let alone travel abroad.",
+                "words": [
+                  {
+                    "id": "b3l13g3-cf2-w1",
+                    "traditional": "更別說出國",
+                    "simplified": "更别说出国",
+                    "pinyin": "gèng bié shuō chūguó",
+                    "meaning": "let alone go abroad"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l13g3-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "小古已經三個月沒工作了，連房租都付不起，"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "出國旅遊了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "更別說"
+              },
+              {
+                "id": "t2",
+                "text": "怪不得"
+              },
+              {
+                "id": "t3",
+                "text": "只不過"
+              },
+              {
+                "id": "t4",
+                "text": "要不然"
+              }
+            ],
+            "correctFeedback": "答得很棒！「更別說」引出顯而易見更不可能成立的極端情況。",
+            "repairFeedback": "請注意邏輯遞進：前半句指出連基本房租都付不起，後續更奢華的出國旅遊自然更不可能，應使用「更別說」。"
+          }
+        ]
+      }
+    ]
+  },
+  "BOOK3_LESSON_THIRTEEN_PART_TWO": {
+    "id": "B3L13-P02-D02",
+    "bookId": 3,
+    "lessonId": 13,
+    "partId": 2,
+    "title": "Grammar 4–5 · Towards The New Cloud Era",
+    "dialogue": {
+      "id": "B3L13-D02",
+      "title": "短文 · 走向雲端的新時代",
+      "audioReference": "13-2-1",
+      "printedPages": [
+        342,
+        343,
+        344
+      ],
+      "grammarFocus": [
+        "就是……(也)……",
+        "一方面……，一方面……"
+      ],
+      "lines": [
+        {
+          "id": "b3l13d2-l1",
+          "speaker": "旁白",
+          "traditional": "想當年還沒有雲端科技時，人們不論想閱讀某位作者出版的作品，或是需要找某類題材的文章，都得到圖書館去查資料、借書。不過，自從有了雲端之後，人們就是不出門，也可透過網路滿足相關的需求。",
+          "simplified": "想当年还没有云端科技时，人们不论想阅读某位作者出版的作品，或是需要找某类题材的文章，都得到图书馆去查资料、借书。不过，自从有了云端之后，人们就是不出门，也可透过网络满足相关的需求。",
+          "pinyin": "Xiǎng dāngnián hái méiyǒu yúnduān kējì shí, rénmen búlùn xiǎng yuèdú mǒu wèi zuòzhě chūbǎn de zuòpǐn, huòshì xūyào zhǎo mǒu lèi tícái de wénzhāng, dōu děi dào túshūguǎn qù chá zīliào, jiè shū. Búguò, zìcóng yǒu le yúnduān zhīhòu, rénmen jiùshì bù chūmén, yě kě tòuguò wǎnglù mǎnzú xiāngguān de xūqiú.",
+          "english": "Back in the days before cloud technology, whether people wanted to read works published by an author or find articles on a topic, they had to go to libraries to research and borrow books. Since the advent of the cloud, however, people can satisfy relevant needs online without leaving home."
+        },
+        {
+          "id": "b3l13d2-l2",
+          "speaker": "旁白",
+          "traditional": "雲端科技的主要功能，是讓人們能隨時隨地上傳或下載資料；也因為不需要使用紙、筆來記錄，還能為地球的環保盡一份力量。以往，雲端科技多用來管理資料和電子郵件；現在遇到淹水、颱風的特殊情況，不出門也能在家開會或學習，把該做的事情都做好。上班族在家中裝上了攝影機，透過手機或電腦能看到家人的活動情況，要是他們碰上了麻煩，就能立刻請鄰居或警察協助。除了個人，企業在管理公共空間或服務方面也用得著雲端。比如說，旅館透過雲端掌握房客進出的情況、調整房間內冷氣的強弱等等。以上都是雲端科技帶來的好處。",
+          "simplified": "云端科技的主要功能，是让人们能随时随地上传或下载资料；也因为不需要使用纸、笔来记录，还能为地球的环保尽一份力量。以往，云端科技多用来管理资料和电子邮件；现在遇到淹水、台风的特殊情况，不出门也能在家开会或学习，把该做的事情都做好。上班族在家中装上了摄影机，透过手机或电脑能看到家人的活动情况，要是他们碰上了麻烦，就能立刻请邻居或警察协助。除了个人，企业在管理公共空间或服务方面也用得着云端。比如说，旅馆透过云端掌握房客进出的情况、调整房间内冷气的强弱等等。以上都是云端科技带来的好处。",
+          "pinyin": "Yúnduān kējì de zhǔyào gōngnéng, shì ràng rénmen néng suíshí suídì shàngchuán huò xiàzài zīliào; yě yīnwèi bù xūyào shǐyòng zhǐ, bǐ lái jìlù, hái néng wèi dìqiú de huánbǎo jìn yí fèn lìliàng. Yǐwǎng, yúnduān kējì duō yòng lái guǎnlǐ zīliào hé diànzǐ yóujiàn; xiànzài yùdào yānshuǐ, táifēng de tèshū qíngkuàng, bù chūmén yě néng zài jiā kāihuì huò xuéxí, bǎ gāi zuò de shìqing dōu zuò hǎo. Shàngbānzú zài jiā zhōng zhuāng shàng le shèyǐngjī, tòuguò shǒujī huò diànnǎo néng kàndào jiārén de huódòng qíngkuàng, yàoshi tāmen pèng shàng le máfan, jiù néng lìkè qǐng línjū huò jǐngchá xiézhù. Chúle gèrén, qǐyè zài guǎnlǐ gōnggòng kōngjiān huò fúwù fāngmiàn yě yòng de zháo yúnduān. Bǐrú shuō, lǚguǎn tòuguò yúnduān zhǎowò fángkè jìnchū de qíngkuàng, tiáozhěng fángjiān nèi lěngqì de qiángruò děngděng. Yǐshàng dōu shì yúnduān kējì dàilái de hǎochù.",
+          "english": "The primary function of cloud tech is enabling people to upload and download data anywhere, anytime; avoiding paper and pen also contributes to environmental conservation. Previously used mainly for data and email management, during flooding or typhoons it allows remote meetings and studies. Commuters can view household activity via cameras on phone or PC and seek prompt assistance if issues arise. Beyond individuals, businesses utilize the cloud for public space and service management—hotels track guest movements and adjust AC levels. All these are benefits brought by cloud technology."
+        },
+        {
+          "id": "b3l13d2-l3",
+          "speaker": "旁白",
+          "traditional": "但話說回來，雖然雲端的優點不少，卻還是有現實的問題需要克服。例如某個時刻突然停電了，或是連不上網路，再重要的會議也只能暫時停下來；也可能因為雲端系統出現安全問題，上傳的資料突然沒了或被偷了。所以最好別太依靠雲端，重要資料也應多存一份。",
+          "simplified": "但话说回来，虽然云端的优点不少，却还是有现实的问题需要克服。例如某个时刻突然停电了，或是连不上网络，再重要的会议也只能暂时停下来；也可能因为云端系统出现安全问题，上传的资料突然没了或被偷了。所以最好别太依靠云端，重要资料也应多存一份。",
+          "pinyin": "Dàn huàshuōhuílái, suīrán yúnduān de yōudiǎn bù shǎo, què háishì yǒu xiànshí de wèntí xūyào kèfú. Lìrú mǒu ge shíkè tūrán tíngdiàn le, huòshì lián bú shàng wǎnglù, zài zhòngyào de huìyì yě zhǐ néng zhànshí tíng xiàlái; yě kěnéng yīnwèi yúnduān xìtǒng chūxiàn ānquán wèntí, shàngchuán de zīliào tūrán méi le huò bèi tōu le. Suǒyǐ zuìhǎo bié tài yīkào yúnduān, zhòngyào zīliào yě yīng duō cún yí fèn.",
+          "english": "Then again, though the cloud offers many perks, practical challenges persist. A sudden power outage or connectivity failure halts even crucial meetings; security breaches can cause uploaded files to vanish or be compromised. Hence one should not rely solely on the cloud and keep duplicate backups of essential data."
+        },
+        {
+          "id": "b3l13d2-l4",
+          "speaker": "旁白",
+          "traditional": "雲端就像一張大網，把各種資源連在一起，提供各式各樣的服務，一方面帶給人們更便利的生活，一方面也帶給企業更良好的管理方式，對全球商業、教育、文化等方面都產生了重大的影響，相信未來雲端能夠帶領我們走向美好的新時代。",
+          "simplified": "云端就像一张大网，把各种资源连在一起，提供各式各样的服务，一方面带给人们更便利的生活，一方面也带给企业更良好的管理方式，对全球商业、教育、文化等方面都产生了重大的影响，相信未来云端能够带领我们走向美好的新时代。",
+          "pinyin": "Yúnduān jiù xiàng yì zhāng dà wǎng, bǎ gèzhǒng zīyuán lián zài yìqǐ, tígōng gèshì gèyàng de fúwù, yì fāngmiàn dài gěi rénmen gèng biànlì de shēnghuó, yì fāngmiàn yě dài gěi qǐyè gèng liánghǎo de guǎnlǐ fāngshì, duì quánqiú shāngyè, jiàoyù, wénhuà děng fāngmiàn dōu chǎnshēng le zhòngdà de yǐngxiǎng, xiāngxìn wèilái yúnduān nénggòu dàilǐng wǒmen zǒuxiàng měihǎo de xīn shídài.",
+          "english": "The cloud is like an immense web linking diverse resources to deliver myriad services. It brings convenience to people while equipping enterprises with refined management, exerting profound impact across global business, education, and culture, and guiding us toward a prosperous new era."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L13-G04-P347",
+        "bookPage": 347,
+        "lessonId": 13,
+        "bookId": 3,
+        "partId": 2,
+        "lessonTitle": "雲端科技真方便",
+        "lessonTitleEnglish": "Cloud Technology Is Really Convenient",
+        "grammarNumber": 4,
+        "titleTraditional": "就是……(也)……",
+        "titleSimplified": "就是……(也)……",
+        "titleEnglish": "Even If / Even (就是……也……)",
+        "learnerPromise": "Express an extreme hypothetical condition that cannot change the outcome using 就是……也…… ('even if... still...').",
+        "bookPageAvailable": true,
+        "printedPages": [
+          347,
+          348
+        ],
+        "audioReference": "13-2-1",
+        "explanation": "「就是」的後面是假設的情況，就算發生這些情況，「也」後面的結果也不會因為這樣而改變。",
+        "pattern": "就是 + Hypothetical Extreme Condition, + (Subject) + 也 + Result",
+        "patternColumns": [
+          "就是",
+          "Extreme",
+          "Subject",
+          "也",
+          "Result"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l13g4-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g4-r1-c1",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "meaning": "even if"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r1-c2",
+                  "traditional": "不出門",
+                  "simplified": "不出门",
+                  "pinyin": "bù chūmén",
+                  "meaning": "not going out"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r1-c3",
+                  "traditional": "人們",
+                  "simplified": "人们",
+                  "pinyin": "rénmen",
+                  "meaning": "people"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r1-c4",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": "still"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r1-c5",
+                  "traditional": "可滿足需求",
+                  "simplified": "可满足需求",
+                  "pinyin": "kě mǎnzú xūqiú",
+                  "meaning": "can satisfy needs"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g4-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g4-r2-c1",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "meaning": "even if"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r2-c2",
+                  "traditional": "吃再多苦",
+                  "simplified": "吃再多苦",
+                  "pinyin": "chī zài duō kǔ",
+                  "meaning": "bear more hardships"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r2-c3",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r2-c4",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": "still"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r2-c5",
+                  "traditional": "要堅持到底",
+                  "simplified": "要坚持到底",
+                  "pinyin": "yào jiānchí dàodǐ",
+                  "meaning": "will persevere to the end"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g4-r3-c1",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "meaning": "even if"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r3-c2",
+                  "traditional": "總統來跟他說",
+                  "simplified": "总统来跟他说",
+                  "pinyin": "zǒngtǒng lái gēn tā shuō",
+                  "meaning": "president talks to him"
+                }
+              ],
+              [],
+              [
+                {
+                  "id": "b3l13g4-r3-c3",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": "still"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g4-r3-c4",
+                  "traditional": "沒有用",
+                  "simplified": "没有用",
+                  "pinyin": "méi yòng",
+                  "meaning": "is useless"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l13g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "自從有了雲端之後，人們就是不出門，也可透過網路滿足相關的需求。",
+              "simplified": "自从有了云端之后，人们就是不出门，也可透过网络满足相关的需求。",
+              "pinyin": "Zìcóng yǒu le yúnduān zhīhòu, rénmen jiùshì bù chūmén, yě kě tòuguò wǎnglù mǎnzú xiāngguān de xūqiú.",
+              "english": "Since having the cloud, even if people don't step out the door, they can satisfy relevant needs through the internet.",
+              "words": [
+                {
+                  "id": "b3l13g4-ex1-w1",
+                  "traditional": "有了雲端之後",
+                  "simplified": "有了云端之后",
+                  "pinyin": "yǒu le yúnduān zhīhòu",
+                  "meaning": "after having cloud",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g4-ex1-w2",
+                  "traditional": "就是不出門",
+                  "simplified": "就是不出门",
+                  "pinyin": "jiùshì bù chūmén",
+                  "meaning": "even if not stepping out",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g4-ex1-w3",
+                  "traditional": "也可滿足需求",
+                  "simplified": "也可满足需求",
+                  "pinyin": "yě kě mǎnzú xūqiú",
+                  "meaning": "can also satisfy needs",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "為了追求夢想，就是吃再多苦，我也要堅持到底。",
+              "simplified": "为了追求梦想，就是吃再多苦，我也要坚持到底。",
+              "pinyin": "Wèile zhuīqiú mèngxiǎng, jiùshì chī zài duō kǔ, wǒ yě yào jiānchí dàodǐ.",
+              "english": "In order to pursue my dream, even if I suffer more hardships, I will persist to the very end.",
+              "words": [
+                {
+                  "id": "b3l13g4-ex2-w1",
+                  "traditional": "追求夢想",
+                  "simplified": "追求梦想",
+                  "pinyin": "zhuīqiú mèngxiǎng",
+                  "meaning": "pursue dream",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g4-ex2-w2",
+                  "traditional": "就是吃再多苦",
+                  "simplified": "就是吃再多苦",
+                  "pinyin": "jiùshì chī zài duō kǔ",
+                  "meaning": "even if eating more bitterness",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g4-ex2-w3",
+                  "traditional": "我也要堅持到底",
+                  "simplified": "我也要坚持到底",
+                  "pinyin": "wǒ yě yào jiānchí dàodǐ",
+                  "meaning": "I also will persist to the end",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "林老闆既然做了決定就不會改變，就是總統來跟他說也沒用。",
+              "simplified": "林老板既然做了决定就不会改变，就是总统来跟他说明没用。",
+              "pinyin": "Lín lǎobǎn jìrán zuò le juédìng jiù bú huì gǎibiàn, jiùshì zǒngtǒng lái gēn tā shuō yě méi yòng.",
+              "english": "Since Boss Lin made the decision he won't change it; even if the president comes to talk to him, it would be useless.",
+              "words": [
+                {
+                  "id": "b3l13g4-ex3-w1",
+                  "traditional": "做了決定不會改變",
+                  "simplified": "做了决定不会改变",
+                  "pinyin": "zuò le juédìng bú huì gǎibiàn",
+                  "meaning": "won't change after deciding",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g4-ex3-w2",
+                  "traditional": "就是總統來",
+                  "simplified": "就是总统来",
+                  "pinyin": "jiùshì zǒngtǒng lái",
+                  "meaning": "even if president comes",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g4-ex3-w3",
+                  "traditional": "也沒用",
+                  "simplified": "也没用",
+                  "pinyin": "yě méi yòng",
+                  "meaning": "is also useless",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l13g4-cf1",
+              "question": "How is 就是……也 different from 只要……就?",
+              "answer": "「就是……也」表示縱使在極端假設下，結果依然不改；「只要……就」表示充分條件（只要A達成，就必然出現B）。",
+              "wrongTraditional": "只要吃再多苦，我也要堅持到底。",
+              "wrongSimplified": "只要吃再多苦，我也要坚持到底。",
+              "right": {
+                "traditional": "就是吃再多苦，我也要堅持到底。",
+                "simplified": "就是吃再多苦，我也要坚持到底。",
+                "pinyin": "Jiùshì chī zài duō kǔ, wǒ yě yào jiānchí dàodǐ.",
+                "english": "Even if I suffer more hardships, I will still persist to the end.",
+                "words": [
+                  {
+                    "id": "b3l13g4-cf1-w1",
+                    "traditional": "就是吃再多苦",
+                    "simplified": "就是吃再多苦",
+                    "pinyin": "jiùshì chī zài duō kǔ",
+                    "meaning": "even if bearing more pain"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l13g4-cf2",
+              "question": "Can 就是 be used interchangeably with 即使 in this concessive structure?",
+              "answer": "可以，「就是……也……」在口語中與「即使……也……」意思相通，極具口語強調色彩。",
+              "wrongTraditional": "除非吃很多苦，我也堅持到底。",
+              "wrongSimplified": "除非吃很多苦，我也坚持到底。",
+              "right": {
+                "traditional": "就是下雪了，我們也不會改變行程。",
+                "simplified": "就是下雪了，我们也不会改变行程。",
+                "pinyin": "Jiùshì xiàxuě le, wǒmen yě bú huì gǎibiàn xíngchéng.",
+                "english": "Even if it snows, we still won't change our itinerary.",
+                "words": [
+                  {
+                    "id": "b3l13g4-cf2-w1",
+                    "traditional": "就是下雪了",
+                    "simplified": "就是下雪了",
+                    "pinyin": "jiùshì xiàxuě le",
+                    "meaning": "even if it snows"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l13g4-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "為了追求自己的理想，"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "吃再多苦，我也要堅持到底。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "就是"
+              },
+              {
+                "id": "t2",
+                "text": "何況"
+              },
+              {
+                "id": "t3",
+                "text": "難怪"
+              },
+              {
+                "id": "t4",
+                "text": "好在"
+              }
+            ],
+            "correctFeedback": "非常好！「就是……也……」引導極端讓步條件，表示縱使如此結果也不變。",
+            "repairFeedback": "請注意句意：縱使承受再多辛苦也要堅持，後句搭配「也」，應使用「就是」。"
+          }
+        ]
+      },
+      {
+        "id": "B3L13-G05-P348",
+        "bookPage": 348,
+        "lessonId": 13,
+        "bookId": 3,
+        "partId": 2,
+        "lessonTitle": "雲端科技真方便",
+        "lessonTitleEnglish": "Cloud Technology Is Really Convenient",
+        "grammarNumber": 5,
+        "titleTraditional": "一方面……，一方面……",
+        "titleSimplified": "一方面……，一方面……",
+        "titleEnglish": "On One Hand, On the Other Hand (一方面……一方面……)",
+        "learnerPromise": "Present two parallel aspects, reasons, or objectives of a situation using 一方面……，一方面…….",
+        "bookPageAvailable": true,
+        "printedPages": [
+          348,
+          349
+        ],
+        "audioReference": "13-2-1",
+        "explanation": "使用「一方面……，一方面……」的句式說明一件事情兩個方面的原因、結果或目的等，前後兩句沒有重要程度的差別。",
+        "pattern": "Subject + 一方面 + Reason / Aspect 1, + 一方面 + (也) + Reason / Aspect 2",
+        "patternColumns": [
+          "Subject",
+          "一方面",
+          "Aspect 1",
+          "一方面",
+          "Aspect 2"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l13g5-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g5-r1-c1",
+                  "traditional": "雲端科技",
+                  "simplified": "云端科技",
+                  "pinyin": "yúnduān kējì",
+                  "meaning": "cloud tech"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r1-c2",
+                  "traditional": "一方面",
+                  "simplified": "一方面",
+                  "pinyin": "yì fāngmiàn",
+                  "meaning": "on one hand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r1-c3",
+                  "traditional": "帶給人們便利的生活",
+                  "simplified": "带给人们便利的生活",
+                  "pinyin": "dài gěi rénmen biànlì de shēnghuó",
+                  "meaning": "brings convenient life"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r1-c4",
+                  "traditional": "一方面",
+                  "simplified": "一方面",
+                  "pinyin": "yì fāngmiàn",
+                  "meaning": "on other hand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r1-c5",
+                  "traditional": "帶給企業良好的管理",
+                  "simplified": "带给企业良好的管理",
+                  "pinyin": "dài gěi qǐyè liánghǎo de guǎnlǐ",
+                  "meaning": "brings good management"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g5-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g5-r2-c1",
+                  "traditional": "錢老闆",
+                  "simplified": "钱老板",
+                  "pinyin": "Qián lǎobǎn",
+                  "meaning": "Boss Qian"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r2-c2",
+                  "traditional": "一方面",
+                  "simplified": "一方面",
+                  "pinyin": "yì fāngmiàn",
+                  "meaning": "on one hand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r2-c3",
+                  "traditional": "要照顧生意",
+                  "simplified": "要照顾生意",
+                  "pinyin": "yào zhàogù shēngyì",
+                  "meaning": "must look after business"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r2-c4",
+                  "traditional": "一方面",
+                  "simplified": "一方面",
+                  "pinyin": "yì fāngmiàn",
+                  "meaning": "on other hand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r2-c5",
+                  "traditional": "要訓練員工",
+                  "simplified": "要训练员工",
+                  "pinyin": "yào xùnliàn yuángōng",
+                  "meaning": "must train staff"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l13g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l13g5-r3-c1",
+                  "traditional": "這部筆電",
+                  "simplified": "这部笔电",
+                  "pinyin": "zhè bù bǐdiàn",
+                  "meaning": "this laptop"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r3-c2",
+                  "traditional": "一方面",
+                  "simplified": "一方面",
+                  "pinyin": "yì fāngmiàn",
+                  "meaning": "on one hand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r3-c3",
+                  "traditional": "打折後便宜得多",
+                  "simplified": "打折后便宜得多",
+                  "pinyin": "dǎzhé hòu piányi de duō",
+                  "meaning": "much cheaper discounted"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r3-c4",
+                  "traditional": "一方面",
+                  "simplified": "一方面",
+                  "pinyin": "yì fāngmiàn",
+                  "meaning": "on other hand"
+                }
+              ],
+              [
+                {
+                  "id": "b3l13g5-r3-c5",
+                  "traditional": "該有的功能它都有",
+                  "simplified": "该有的功能它都有",
+                  "pinyin": "gāi yǒu de gōngnéng tā dōu yǒu",
+                  "meaning": "has all required functions"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l13g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "雲端一方面帶給人們更便利的生活，一方面也帶給企業更良好的管理方式。",
+              "simplified": "云端一方面带给人们更便利的生活，一方面也带给企业更良好的管理方式。",
+              "pinyin": "Yúnduān yì fāngmiàn dài gěi rénmen gèng biànlì de shēnghuó, yì fāngmiàn yě dài gěi qǐyè gèng liánghǎo de guǎnlǐ fāngshì.",
+              "english": "On one hand the cloud brings people a more convenient life, and on the other hand it equips enterprises with better management methods.",
+              "words": [
+                {
+                  "id": "b3l13g5-ex1-w1",
+                  "traditional": "一方面帶給人們便利",
+                  "simplified": "一方面带给人们便利",
+                  "pinyin": "yì fāngmiàn dài gěi rénmen biànlì",
+                  "meaning": "on one hand brings convenience",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g5-ex1-w2",
+                  "traditional": "一方面也帶給企業",
+                  "simplified": "一方面也带给企业",
+                  "pinyin": "yì fāngmiàn yě dài gěi qǐyè",
+                  "meaning": "on the other hand also brings businesses",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g5-ex1-w3",
+                  "traditional": "良好的管理方式",
+                  "simplified": "良好的管理方式",
+                  "pinyin": "liánghǎo de guǎnlǐ fāngshì",
+                  "meaning": "sound management approach",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "錢老闆每天從早忙到晚，一方面要照顧生意，一方面要訓練員工，連陪家人的時間都沒有。",
+              "simplified": "钱老板每天从早忙到晚，一方面要照顾生意，一方面要训练员工，连陪家人的时间都没有。",
+              "pinyin": "Qián lǎobǎn měitiān cóng zǎo máng dào wǎn, yì fāngmiàn yào zhàogù shēngyì, yì fāngmiàn yào xùnliàn yuángōng, lián péi jiārén de shíjiān dōu méiyǒu.",
+              "english": "Boss Qian is busy from morning till night every day: on one hand minding business, on the other training staff, without even time for family.",
+              "words": [
+                {
+                  "id": "b3l13g5-ex2-w1",
+                  "traditional": "從早忙到晚",
+                  "simplified": "从早忙到晚",
+                  "pinyin": "cóng zǎo máng dào wǎn",
+                  "meaning": "busy from dawn till dusk",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g5-ex2-w2",
+                  "traditional": "一方面要照顧生意",
+                  "simplified": "一方面要照顾生意",
+                  "pinyin": "yì fāngmiàn yào zhàogù shēngyì",
+                  "meaning": "on one hand must mind business",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g5-ex2-w3",
+                  "traditional": "一方面要訓練員工",
+                  "simplified": "一方面要训练员工",
+                  "pinyin": "yì fāngmiàn yào xùnliàn yuángōng",
+                  "meaning": "on other hand must train staff",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l13g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "店員建議我買這部筆電，一方面打了折之後便宜得多，一方面筆電該有的功能它都有。",
+              "simplified": "店员建议我买这部笔电，一方面打了折之后便宜得多，一方面笔电该有的功能它都有。",
+              "pinyin": "Diànyuán jiànyì wǒ mǎi zhè bù bǐdiàn, yì fāngmiàn dǎ le zhé zhīhòu piányi de duō, yì fāngmiàn bǐdiàn gāi yǒu de gōngnéng tā dōu yǒu.",
+              "english": "The clerk advised me to purchase this laptop: on one hand it's much cheaper after discount, on the other hand it has all features a laptop should have.",
+              "words": [
+                {
+                  "id": "b3l13g5-ex3-w1",
+                  "traditional": "打了折便宜得多",
+                  "simplified": "打了折便宜得多",
+                  "pinyin": "dǎ le zhé piányi de duō",
+                  "meaning": "discounted and much cheaper",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l13g5-ex3-w2",
+                  "traditional": "一方面筆電",
+                  "simplified": "一方面笔电",
+                  "pinyin": "yì fāngmiàn bǐdiàn",
+                  "meaning": "on other hand the laptop",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l13g5-ex3-w3",
+                  "traditional": "該有的功能都有",
+                  "simplified": "该有的功能都有",
+                  "pinyin": "gāi yǒu de gōngnéng dōu yǒu",
+                  "meaning": "has all necessary features",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l13g5-cf1",
+              "question": "Is there a priority ranking between the two aspects in 一方面……一方面……?",
+              "answer": "沒有。「一方面……，一方面……」並列陳述兩項同等重要的原因、目的或角度，前後無先後輕重之別。",
+              "wrongTraditional": "最重要是一方面照顧生意，次要是一方面訓練員工。",
+              "wrongSimplified": "最重要是一方面照顾生意，次要是一方面训练员工。",
+              "right": {
+                "traditional": "他一方面照顧生意，一方面訓練員工。",
+                "simplified": "他一方面照顾生意，一方面训练员工。",
+                "pinyin": "Tā yì fāngmiàn zhàogù shēngyì, yì fāngmiàn xùnliàn yuángōng.",
+                "english": "On one hand he minds business, and on the other he trains staff.",
+                "words": [
+                  {
+                    "id": "b3l13g5-cf1-w1",
+                    "traditional": "一方面照顧生意",
+                    "simplified": "一方面照顾生意",
+                    "pinyin": "yì fāngmiàn zhàogù shēngyì",
+                    "meaning": "on one hand minds business"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l13g5-cf2",
+              "question": "How is 一方面……一方面…… different from 不但……而且……?",
+              "answer": "「不但……而且……」表示程度遞進，後句比前句更進一層；「一方面……一方面……」則是平行列舉。",
+              "wrongTraditional": "雲端不但一方面帶來便利，而且帶給企業好管理。",
+              "wrongSimplified": "云端不但一方面带来便利，而且带给企业好管理。",
+              "right": {
+                "traditional": "雲端一方面帶來便利，一方面帶給企業良好管理。",
+                "simplified": "云端一方面带来便利，一方面带给企业良好管理。",
+                "pinyin": "Yúnduān yì fāngmiàn dàilái biànlì, yì fāngmiàn dài gěi qǐyè liánghǎo guǎnlǐ.",
+                "english": "The cloud brings convenience on one hand, and gives firms sound management on the other.",
+                "words": [
+                  {
+                    "id": "b3l13g5-cf2-w1",
+                    "traditional": "一方面帶來便利",
+                    "simplified": "一方面带来便利",
+                    "pinyin": "yì fāngmiàn dàilái biànlì",
+                    "meaning": "on one hand brings convenience"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l13g5-q1",
+            "type": "choice",
+            "prompt": "選出最合適的詞語填入空格：",
+            "segments": [
+              {
+                "text": "錢老闆每天忙碌，"
+              },
+              {
+                "slot": "s1"
+              },
+              {
+                "text": "要照顧生意，一方面要訓練員工。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "t1",
+                "text": "一方面"
+              },
+              {
+                "id": "t2",
+                "text": "一再"
+              },
+              {
+                "id": "t3",
+                "text": "一向"
+              },
+              {
+                "id": "t4",
+                "text": "一共"
+              }
+            ],
+            "correctFeedback": "答得很對！「一方面……，一方面……」平行列舉兩項並行的責任或考量。",
+            "repairFeedback": "請注意並列結構：後句搭配「一方面要訓練員工」，前半句應使用「一方面」。"
+          }
+        ]
+      }
+    ]
+  }
+}

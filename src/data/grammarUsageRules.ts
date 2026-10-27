@@ -495,4 +495,11 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L12-G04-P318': detected('有關', [inOrder(['有關'])]),
   'B3L12-G05-P325': detected('儘管', [inOrder(['儘管'])]),
   'B3L12-G06-P327': detected('不論……都……', [inOrder(['不論', '都'], 10)]),
+
+  // Book 3 Lesson 13 — 雲端科技真方便
+  'B3L13-G01-P338': detected('這下子', [inOrder(['這下子'])]),
+  'B3L13-G02-P339': detected('既……又……', [inOrder(['既', '又'], 8)]),
+  'B3L13-G03-P341': detected('更別說', [inOrder(['更別說'])]),
+  'B3L13-G04-P347': detected('就是……(也)……', [inOrder(['就是', '也'], 8), inOrder(['就是'])]),
+  'B3L13-G05-P348': detected('一方面……，一方面……', [inOrder(['一方面', '一方面'], 12)]),
 };

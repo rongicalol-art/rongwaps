@@ -2211,5 +2211,186 @@
         "speaker": "旁白"
       }
     ]
+  },
+  {
+    "id": "B3L13-R01",
+    "bookId": 3,
+    "lessonId": 13,
+    "dialogueNumber": 1,
+    "title": "雲端科技真方便",
+    "audioReference": "13-1-1",
+    "paragraphs": [
+      {
+        "speaker": "朋子",
+        "traditional": "明哲，你不要一直看手機啦。",
+        "simplified": "明哲，你不要一直看手机啦。",
+        "pinyin": "Míngzhé, nǐ bú yào yìzhí kàn shǒujī la.",
+        "english": "Mingzhe, don't keep staring at your phone all the time."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "我在查借書記錄，看看雲端圖書館的電子書還能借多久。",
+        "simplified": "我在查借书记录，看看云端图书馆的电子书还能借多久。",
+        "pinyin": "Wǒ zài chá jiè shū jìlù, kànkan yúnduān túshūguǎn de diànzǐshū hái néng jiè duō jiǔ.",
+        "english": "I'm checking my borrowing record to see how much longer I can keep the cloud library e-book."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "我從來沒用過雲端圖書館系統，你可以教我嗎？",
+        "simplified": "我从来没用过云端图书馆系统，你可以教我吗？",
+        "pinyin": "Wǒ cónglái méi yòngguo yúnduān túshūguǎn xìtǒng, nǐ kěyǐ jiāo wǒ ma?",
+        "english": "I have never used the cloud library system before. Could you teach me?"
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "妳只要上雲端圖書館的網站填資料，建立帳號、密碼，就能用了。",
+        "simplified": "你只要上云端图书馆的网站填资料，建立账号、密码，就能用了。",
+        "pinyin": "Nǐ zhǐyào shàng yúnduān túshūguǎn de wǎngzhàn tián zīliào, jiànlì zhànghào, mìmǎ, jiù néng yòng le.",
+        "english": "You just need to fill in information on the cloud library website and create an account and password, then you can use it."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "聽起來不難嘛！什麼時候借都可以嗎？",
+        "simplified": "听起来不难嘛！什么时候借都可以吗？",
+        "pinyin": "Tīng qǐlái bù nán ma! Shénme shíhou jiè dōu kěyǐ ma?",
+        "english": "Sounds easy! Can you borrow anytime?"
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "是啊，而且還書時間一到，系統就會自動還書。不像以前，想借書只能親自跑一趟圖書館，要是多借了幾本，還得抱著一堆書回家。",
+        "simplified": "是啊，而且还书时间一到，系统就会自动还书。不像以前，想借书只能亲自跑一趟图书馆，要是多借了几本，还得抱着一堆书回家。",
+        "pinyin": "Shì a, érqiě huán shū shíjiān yí dào, xìtǒng jiù huì zìdòng huán shū. Bù xiàng yǐqián, xiǎng jiè shū zhǐ néng qīnzì pǎo yí tàng túshūguǎn, yàoshi duō jiè le jǐ běn, hái děi bàozhe yì duī shū huí jiā.",
+        "english": "Yes, and as soon as the due date arrives, the system returns it automatically. Unlike before, when borrowing required a trip to the library, and borrowing several books meant lugging a stack home."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "現在的讀者實在太幸福了。",
+        "simplified": "现在的读者实在太幸福了。",
+        "pinyin": "Xiàndài de dúzhě shízài tài xìngfú le.",
+        "english": "Modern readers are truly fortunate."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "就是啊，只要帶著手機或平板，就能隨時隨地閱讀了。",
+        "simplified": "就是啊，只要带着手机或平板，就能随时随地阅读了。",
+        "pinyin": "Jiù shì a, zhǐyào dàizhe shǒujī huò píngbǎn, jiù néng suíshí suídì yuèdú le.",
+        "english": "Exactly; as long as you carry a phone or tablet, you can read anytime, anywhere."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "這樣我的書包就能變得很空，放得下外套、雨傘什麼的。",
+        "simplified": "这样我的书包就能变得很空，放得下外套、雨伞什么的。",
+        "pinyin": "Zhèyàng wǒ de shūbāo jiù néng biàn de hěn kōng, fàng de xià wàitào, yǔsǎn shénme de.",
+        "english": "That way my schoolbag can become very spacious, leaving room for a coat, umbrella, and so on."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "是啊。現在我什麼文件都存在雲端，要是忘了帶隨身碟也不必擔心。",
+        "simplified": "是啊。现在我什么文件都存在云端，要是忘了带随身碟也不必担心。",
+        "pinyin": "Shì a. Xiànzài wǒ shénme wénjiàn dōu cún zài yúnduān, yàoshi wàng le dài suíshēndié yě bú bì dānxīn.",
+        "english": "Indeed. Now I store all documents in the cloud; even if I forget my flash drive, there is no need to worry."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "有一次小組發表報告前五分鐘，我發現忘了帶隨身碟，也沒把預備好的資料寄到同學的電子信箱。我那時候想，這下子沒辦法報告了，還好同學說雲端上也有一份，問題就馬上解決了。",
+        "simplified": "有一次小组发表报告前五分钟，我发现忘了带随身碟，也没把预备好的资料寄到同学的电子信箱。我那时候想，这下子没办法报告了，还好同学说云端上也有一份，问题就马上解决了。",
+        "pinyin": "Yǒu yí cì xiǎozǔ fābiǎo bàogào qián wǔ fēnzhōng, wǒ fāxiàn wàng le dài suíshēndié, yě méi bǎ yùbèi hǎo de zīliào jì dào tóngxué de diànzǐ xìnxīang. Wǒ nà shíhou xiǎng, zhèxiàzi méi bànfǎ bàogào le, hái hǎo tóngxué shuō yúnduān shàng yě yǒu yí fèn, wèntí jiù mǎshàng jiějué le.",
+        "english": "Once, five minutes before our group presentation, I found I had forgotten my flash drive and hadn't emailed the prepared files to classmates. I thought, 'Now we can't present!' Luckily a classmate said there was a copy on the cloud, and the problem was resolved immediately."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "現在的網路科技水平提高了不少，企業能透過高速網路把資料上傳到雲端處理，不同地區的人也能在網路上一起開會，既省時間又方便，更別說提供個人下載資料、傳訊息等基本服務了。",
+        "simplified": "现在的网络科技水平提高了不少，企业能透过高速网络把资料上传到云端处理，不同地区的人也能在网络上一起开会，既省时间又方便，更别说提供个人下载资料、传讯息等基本服务了。",
+        "pinyin": "Xiànzài de wǎnglù kējì shuǐpíng tígāo le bù shǎo, qǐyè néng tòuguò gāosù wǎnglù bǎ zīliào shàngchuán dào yúnduān chǔlǐ, bùtóng dìqū de rén yě néng zài wǎnglù shàng yìqǐ kāihuì, jì shěng shíjiān yòu fāngbiàn, gèng bié shuō tígōng gèrén xiàzài zīliào, chuán xùnxí děng jīběn fúwù le.",
+        "english": "Internet technology standards have improved considerably. Enterprises can upload data to the cloud via high-speed internet for processing, and people in different regions can meet online—saving time and being convenient, not to mention basic personal services like downloads and messaging."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "除了這些優點，雲端還能把會議資料自動存起來，也能把變更的時間和內容記錄下來，讓不能參加會議的人隨時掌握最新情況。",
+        "simplified": "除了这些优点，云端还能把会议资料自动存起来，也能把变更的时间和内容记录下来，让不能参加会议的人随时掌握最新情况。",
+        "pinyin": "Chúle zhèxiē yōudiǎn, yúnduān hái néng bǎ huìyì zīliào zìdòng cún qǐlái, yě néng bǎ biàngēng de shíjiān hé nèiróng jìlù xiàlái, ràng bù néng cānjiā huìyì de rén suíshí zhǎowò zuìxīn qíngkuàng.",
+        "english": "Besides these merits, the cloud automatically archives meeting materials and logs change times and details, enabling absent members to keep abreast of updates anytime."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "其實也有不少老師利用這樣的科技，把教材放上雲端，讓學生預習、複習，提高學習的效果。",
+        "simplified": "其实也有不少老师利用这样的科技，把教材放上云端，让学生预习、复习，提高学习的效果。",
+        "pinyin": "Qíshí yě yǒu bù shǎo lǎoshī lìyòng zhèyàng de kējì, bǎ jiàocái fàng shàng yúnduān, ràng xuéshēng yùxí, fùxí, tígāo xuéxí de xiàoguǒ.",
+        "english": "Actually, quite a few teachers use this technology, putting course materials on the cloud for students to preview and review, boosting learning efficacy."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "不過，我覺得要利用雲端科技來改變傳統的教學方式，恐怕說起來容易，做起來不簡單吧。",
+        "simplified": "不过，我觉得要利用云端科技来改变传统的教学方式，恐怕说起来容易，做起来不简单吧。",
+        "pinyin": "Búguò, wǒ juéde yào lìyòng yúnduān kējì lái gǎibiàn chuántǒng de jiàoxué fāngshì, kǒngpà shuōqǐlái róngyì, zuòqǐlái bù jiǎndān ba.",
+        "english": "However, using cloud technology to transform conventional teaching methods is probably easier said than done."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "明天系主任邀請馬博士來演講，題目跟雲端科技有關，妳要一起去嗎？",
+        "simplified": "明天系主任邀请马博士来演讲，题目跟云端科技有关，你要一起去吗？",
+        "pinyin": "Míngtiān xì zhǔrèn yāoqǐng Mǎ bóshì lái yǎnjiǎng, tímù gēn yúnduān kējì yǒuguān, nǐ yào yìqǐ qù ma?",
+        "english": "Tomorrow the department chair invited Dr. Ma to give a lecture on cloud tech. Do you want to go together?"
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "說實話，我本來對雲端科技沒什麼興趣，今天聽你說了這麼多，似乎該研究一下了。",
+        "simplified": "说实话，我本来对云端科技没什么兴趣，今天听你说了这么多，似乎该研究一下了。",
+        "pinyin": "Shuō shíhuà, wǒ běnlái duì yúnduān kējì méi shénme xìngqù, jīntiān tīng nǐ shuō le zhème duō, sìhū gāi yánjiū yíxià le.",
+        "english": "Honestly, I initially had little interest in cloud tech, but hearing you share so much today, it seems I should look into it."
+      },
+      {
+        "speaker": "明哲",
+        "traditional": "那我明天騎摩托車去接妳。",
+        "simplified": "那我明天骑摩托车去接你。",
+        "pinyin": "Nà wǒ míngtiān qí mótuōchē qù jiē nǐ.",
+        "english": "Then I'll pick you up on my scooter tomorrow."
+      },
+      {
+        "speaker": "朋子",
+        "traditional": "太好了！麻煩你了！",
+        "simplified": "太好了！麻烦你了！",
+        "pinyin": "Tài hǎo le! Máfan nǐ le!",
+        "english": "Wonderful! Thanks so much!"
+      }
+    ]
+  },
+  {
+    "id": "B3L13-R02",
+    "bookId": 3,
+    "lessonId": 13,
+    "dialogueNumber": 2,
+    "title": "短文 · 走向雲端的新時代",
+    "audioReference": "13-2-1",
+    "paragraphs": [
+      {
+        "speaker": "旁白",
+        "traditional": "想當年還沒有雲端科技時，人們不論想閱讀某位作者出版的作品，或是需要找某類題材的文章，都得到圖書館去查資料、借書。不過，自從有了雲端之後，人們就是不出門，也可透過網路滿足相關的需求。",
+        "simplified": "想当年还没有云端科技时，人们不论想阅读某位作者出版的作品，或是需要找某类题材的文章，都得到图书馆去查资料、借书。不过，自从有了云端之后，人们就是不出门，也可透过网络满足相关的需求。",
+        "pinyin": "Xiǎng dāngnián hái méiyǒu yúnduān kējì shí, rénmen búlùn xiǎng yuèdú mǒu wèi zuòzhě chūbǎn de zuòpǐn, huòshì xūyào zhǎo mǒu lèi tícái de wénzhāng, dōu děi dào túshūguǎn qù chá zīliào, jiè shū. Búguò, zìcóng yǒu le yúnduān zhīhòu, rénmen jiùshì bù chūmén, yě kě tòuguò wǎnglù mǎnzú xiāngguān de xūqiú.",
+        "english": "Back in the days before cloud technology, whether people wanted to read works published by an author or find articles on a topic, they had to go to libraries to research and borrow books. Since the advent of the cloud, however, people can satisfy relevant needs online without leaving home."
+      },
+      {
+        "speaker": "旁白",
+        "traditional": "雲端科技的主要功能，是讓人們能隨時隨地上傳或下載資料；也因為不需要使用紙、筆來記錄，還能為地球的環保盡一份力量。以往，雲端科技多用來管理資料和電子郵件；現在遇到淹水、颱風的特殊情況，不出門也能在家開會或學習，把該做的事情都做好。上班族在家中裝上了攝影機，透過手機或電腦能看到家人的活動情況，要是他們碰上了麻煩，就能立刻請鄰居或警察協助。除了個人，企業在管理公共空間或服務方面也用得著雲端。比如說，旅館透過雲端掌握房客進出的情況、調整房間內冷氣的強弱等等。以上都是雲端科技帶來的好處。",
+        "simplified": "云端科技的主要功能，是让人们能随时随地上传或下载资料；也因为不需要使用纸、笔来记录，还能为地球的环保尽一份力量。以往，云端科技多用来管理资料和电子邮件；现在遇到淹水、台风的特殊情况，不出门也能在家开会或学习，把该做的事情都做好。上班族在家中装上了摄影机，透过手机或电脑能看到家人的活动情况，要是他们碰上了麻烦，就能立刻请邻居或警察协助。除了个人，企业在管理公共空间或服务方面也用得着云端。比如说，旅馆透过云端掌握房客进出的情况、调整房间内冷气的强弱等等。以上都是云端科技带来的好处。",
+        "pinyin": "Yúnduān kējì de zhǔyào gōngnéng, shì ràng rénmen néng suíshí suídì shàngchuán huò xiàzài zīliào; yě yīnwèi bù xūyào shǐyòng zhǐ, bǐ lái jìlù, hái néng wèi dìqiú de huánbǎo jìn yí fèn lìliàng. Yǐwǎng, yúnduān kējì duō yòng lái guǎnlǐ zīliào hé diànzǐ yóujiàn; xiànzài yùdào yānshuǐ, táifēng de tèshū qíngkuàng, bù chūmén yě néng zài jiā kāihuì huò xuéxí, bǎ gāi zuò de shìqing dōu zuò hǎo. Shàngbānzú zài jiā zhōng zhuāng shàng le shèyǐngjī, tòuguò shǒujī huò diànnǎo néng kàndào jiārén de huódòng qíngkuàng, yàoshi tāmen pèng shàng le máfan, jiù néng lìkè qǐng línjū huò jǐngchá xiézhù. Chúle gèrén, qǐyè zài guǎnlǐ gōnggòng kōngjiān huò fúwù fāngmiàn yě yòng de zháo yúnduān. Bǐrú shuō, lǚguǎn tòuguò yúnduān zhǎowò fángkè jìnchū de qíngkuàng, tiáozhěng fángjiān nèi lěngqì de qiángruò děngděng. Yǐshàng dōu shì yúnduān kējì dàilái de hǎochù.",
+        "english": "The primary function of cloud tech is enabling people to upload and download data anywhere, anytime; avoiding paper and pen also contributes to environmental conservation. Previously used mainly for data and email management, during flooding or typhoons it allows remote meetings and studies. Commuters can view household activity via cameras on phone or PC and seek prompt assistance if issues arise. Beyond individuals, businesses utilize the cloud for public space and service management—hotels track guest movements and adjust AC levels. All these are benefits brought by cloud technology."
+      },
+      {
+        "speaker": "旁白",
+        "traditional": "但話說回來，雖然雲端的優點不少，卻還是有現實的問題需要克服。例如某個時刻突然停電了，或是連不上網路，再重要的會議也只能暫時停下來；也可能因為雲端系統出現安全問題，上傳的資料突然沒了或被偷了。所以最好別太依靠雲端，重要資料也應多存一份。",
+        "simplified": "但话说回来，虽然云端的优点不少，却还是有现实的问题需要克服。例如某个时刻突然停电了，或是连不上网络，再重要的会议也只能暂时停下来；也可能因为云端系统出现安全问题，上传的资料突然没了或被偷了。所以最好别太依靠云端，重要资料也应多存一份。",
+        "pinyin": "Dàn huàshuōhuílái, suīrán yúnduān de yōudiǎn bù shǎo, què háishì yǒu xiànshí de wèntí xūyào kèfú. Lìrú mǒu ge shíkè tūrán tíngdiàn le, huòshì lián bú shàng wǎnglù, zài zhòngyào de huìyì yě zhǐ néng zhànshí tíng xiàlái; yě kěnéng yīnwèi yúnduān xìtǒng chūxiàn ānquán wèntí, shàngchuán de zīliào tūrán méi le huò bèi tōu le. Suǒyǐ zuìhǎo bié tài yīkào yúnduān, zhòngyào zīliào yě yīng duō cún yí fèn.",
+        "english": "Then again, though the cloud offers many perks, practical challenges persist. A sudden power outage or connectivity failure halts even crucial meetings; security breaches can cause uploaded files to vanish or be compromised. Hence one should not rely solely on the cloud and keep duplicate backups of essential data."
+      },
+      {
+        "speaker": "旁白",
+        "traditional": "雲端就像一張大網，把各種資源連在一起，提供各式各樣的服務，一方面帶給人們更便利的生活，一方面也帶給企業更良好的管理方式，對全球商業、教育、文化等方面都產生了重大的影響，相信未來雲端能夠帶領我們走向美好的新時代。",
+        "simplified": "云端就像一张大网，把各种资源连在一起，提供各式各样的服务，一方面带给人们更便利的生活，一方面也带给企业更良好的管理方式，对全球商业、教育、文化等方面都产生了重大的影响，相信未来云端能够带领我们走向美好的新时代。",
+        "pinyin": "Yúnduān jiù xiàng yì zhāng dà wǎng, bǎ gèzhǒng zīyuán lián zài yìqǐ, tígōng gèshì gèyàng de fúwù, yì fāngmiàn dài gěi rénmen gèng biànlì de shēnghuó, yì fāngmiàn yě dài gěi qǐyè gèng liánghǎo de guǎnlǐ fāngshì, duì quánqiú shāngyè, jiàoyù, wénhuà děng fāngmiàn dōu chǎnshēng le zhòngdà de yǐngxiǎng, xiāngxìn wèilái yúnduān nénggòu dàilǐng wǒmen zǒuxiàng měihǎo de xīn shídài.",
+        "english": "The cloud is like an immense web linking diverse resources to deliver myriad services. It brings convenience to people while equipping enterprises with refined management, exerting profound impact across global business, education, and culture, and guiding us toward a prosperous new era."
+      }
+    ]
   }
 ]

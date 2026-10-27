@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "version": "e39612ca606943ff",
-  "generatedAt": "2026-10-27T13:13:34.699Z",
-  "totalCount": 72,
+  "version": "991ced6c3c38b3fc",
+  "generatedAt": "2026-10-27T13:20:24.298Z",
+  "totalCount": 74,
   "books": [
     {
       "bookId": 1,
@@ -13,10 +13,10 @@
     },
     {
       "bookId": 3,
-      "count": 24,
+      "count": 26,
       "path": "/data/readings/book-3.json",
-      "sha256": "e39612ca606943ff58abd77ad96bb35666eb5ea6250c7b2779482b97d939786f",
-      "bytes": 259348
+      "sha256": "991ced6c3c38b3fc98d07e625e7f7f957f7bf02572631d16b28e994e436a946d",
+      "bytes": 279269
     }
   ]
 }
