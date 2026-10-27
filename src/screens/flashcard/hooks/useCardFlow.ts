@@ -5,6 +5,7 @@ import { audioService } from '../../../services/audioService';
 import { playFlowSentence } from '../../../services/audio/sentenceAudio';
 import { fetchPackedFlashcardExtras } from '../../../services/contentPacks';
 import { useAppStore } from '../../../store/useAppStore';
+import { getCardMeaning } from '../../../utils/vocabulary/meaningChoices';
 
 interface UseCardFlowOptions {
   currentCard?: Flashcard;
@@ -32,6 +33,7 @@ export function useCardFlow({
   const flowBackDelayMs = useAppStore((state) => state.flowBackDelayMs);
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
   const speakDefinition = useAppStore((state) => state.speakDefinition);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
   const flowExamples = useAppStore((state) => state.flowExamples);
   const flowSpeakTranslation = useAppStore((state) => state.flowSpeakTranslation);
   const flowRepeatPause = useAppStore((state) => state.flowRepeatPause);
@@ -103,8 +105,9 @@ export function useCardFlow({
       await wait(flowFrontDelayMs);
       if (isCancelled()) return;
 
-      if (speakDefinition && currentCard.back) {
-        await audioService.speakText(currentCard.back, 'en-US', Math.min(pronunciationRate, 1.1));
+      const definition = getCardMeaning(currentCard, simpleDefinitions);
+      if (speakDefinition && definition) {
+        await audioService.speakText(definition, 'en-US', Math.min(pronunciationRate, 1.1));
       }
       if (isCancelled()) return;
 
@@ -150,7 +153,7 @@ export function useCardFlow({
     return () => {
       cancelled = true;
     };
-  }, [characterPreference, currentCard, currentIndex, flowBackDelayMs, flowExamples, flowFrontDelayMs, flowRepeatPause, flowSpeakTranslation, flowStatus, flowStep, pronunciationRate, speakDefinition, totalCount]);
+  }, [characterPreference, currentCard, currentIndex, flowBackDelayMs, flowExamples, flowFrontDelayMs, flowRepeatPause, flowSpeakTranslation, flowStatus, flowStep, pronunciationRate, simpleDefinitions, speakDefinition, totalCount]);
 
   useEffect(() => () => audioService.stop(), []);
 
