@@ -1087,6 +1087,39 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L15-G05-P395"
       }
     ]
+  },
+  {
+    "id": "B3L16-P01-D01",
+    "bookId": 3,
+    "lessonId": 16,
+    "partId": 1,
+    "title": "Grammar 1–2 · Cherishing Food Starts with You and Me",
+    "grammarPages": [
+      {
+        "id": "B3L16-G01-P404"
+      },
+      {
+        "id": "B3L16-G02-P406"
+      }
+    ]
+  },
+  {
+    "id": "B3L16-P02-D02",
+    "bookId": 3,
+    "lessonId": 16,
+    "partId": 2,
+    "title": "Grammar 3–5 · Xie Laoban's Food Bank",
+    "grammarPages": [
+      {
+        "id": "B3L16-G03-P413"
+      },
+      {
+        "id": "B3L16-G04-P415"
+      },
+      {
+        "id": "B3L16-G05-P417"
+      }
+    ]
   }
 ];
 

@@ -516,4 +516,11 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L15-G03-P392': detected('同時', [inOrder(['同時'])]),
   'B3L15-G04-P393': detected('及', [inOrder(['及'])]),
   'B3L15-G05-P395': detected('總而言之 / 總之', [inOrder(['總而言之']), inOrder(['總之'])]),
+
+  // Book 3 Lesson 16 — 愛惜食物，從你我做起
+  'B3L16-G01-P404': detected('當作 / 當做', [inOrder(['當作']), inOrder(['當做'])]),
+  'B3L16-G02-P406': detected('至少', [inOrder(['至少'])]),
+  'B3L16-G03-P413': detected('由於……(因此)……', [inOrder(['由於', '因此'], 12), inOrder(['由於']), inOrder(['是由於'])]),
+  'B3L16-G04-P415': detected('使得', [inOrder(['使得'])]),
+  'B3L16-G05-P417': detected('於是', [inOrder(['於是'])]),
 };

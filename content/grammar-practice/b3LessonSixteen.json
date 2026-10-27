@@ -1,0 +1,1404 @@
+{
+  "B3L16-G01-P404": {
+    "bookPage": 404,
+    "title": "當作 / 當做",
+    "items": [
+      {
+        "id": "b3l16g1-p1",
+        "source": "p.404 #1",
+        "kind": "slot-build",
+        "prompt": "Food that is still safe to eat should not be treated as garbage. Fill the slot:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "瑪莉"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "還能吃的食物，就不該被"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "當作"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "垃圾丟掉。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "成為",
+            "simplified": "成为",
+            "pinyin": "chéngwéi"
+          },
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          }
+        ],
+        "accepted": "當作",
+        "result": {
+          "traditional": "還能吃的食物，就不該被當作垃圾丟掉。",
+          "simplified": "还能吃的食物，就不该被当作垃圾丢掉。",
+          "pinyin": "Hái néng chī de shíwù, jiù bù gāi bèi dàngzuò lājī diūdiào.",
+          "english": "Edible food should not be discarded as trash."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "成為"
+            ],
+            "note": "Use 當作 to express regarding or treating one entity as another."
+          },
+          {
+            "placed": [
+              "至少"
+            ],
+            "note": "當作 is required here to indicate treating food as waste."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 當作."
+      },
+      {
+        "id": "b3l16g1-p2",
+        "source": "p.404 #2",
+        "kind": "slot-build",
+        "prompt": "He often works overtime and already treats the workplace like home. Complete the sentence:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他常常加班，已經把公司"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "當作"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "自己的家了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "叫做",
+            "simplified": "叫做",
+            "pinyin": "jiàozuò"
+          },
+          {
+            "traditional": "使得",
+            "simplified": "使得",
+            "pinyin": "shǐde"
+          }
+        ],
+        "accepted": "當作",
+        "result": {
+          "traditional": "他常常加班，已經把公司當作自己的家了。",
+          "simplified": "他常常加班，已经把公司当作自己的家了。",
+          "pinyin": "Tā chángcháng jiābān, yǐjīng bǎ gōngsī dàngzuò zìjǐ de jiā le.",
+          "english": "He often works overtime and already treats the company as his own home."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "叫做"
+            ],
+            "note": "Use 當作 to regard the company as home."
+          },
+          {
+            "placed": [
+              "使得"
+            ],
+            "note": "當作 expresses viewing the office as one's home."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 當作."
+      },
+      {
+        "id": "b3l16g1-p3",
+        "source": "p.405 #2",
+        "kind": "slot-build",
+        "prompt": "Since nobody raised questions, the instructor assumed everyone grasped the material:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "老師"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "如果沒人舉手問問題，老師就"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "當作"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "你們全都懂了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "總之",
+            "simplified": "总之",
+            "pinyin": "zǒngzhī"
+          },
+          {
+            "traditional": "按說",
+            "simplified": "按说",
+            "pinyin": "ànshuō"
+          }
+        ],
+        "accepted": "當作",
+        "result": {
+          "traditional": "如果沒人舉手問問題，老師就當作你們全都懂了。",
+          "simplified": "如果没人举手问问题，老师就当作你们全都懂了。",
+          "pinyin": "Rúguǒ méi rén jǔshǒu wèn wèntí, lǎoshī jiù dàngzuò nǐmen quándōu dǒng le.",
+          "english": "If no one raises hands to ask questions, the teacher will take it as you all understand."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總之"
+            ],
+            "note": "Use 當作 to express presuming or treating a condition as established."
+          },
+          {
+            "placed": [
+              "按說"
+            ],
+            "note": "當作 represents regarding silence as comprehension."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 當作."
+      },
+      {
+        "id": "b3l16g1-p4",
+        "source": "p.405 #3",
+        "kind": "slot-build",
+        "prompt": "Thirsty after running, he took cider from the fridge and drank it as fruit juice:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "弟弟太渴了，把冰箱裡的水果酒"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "當作"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "果汁喝了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "換成",
+            "simplified": "换成",
+            "pinyin": "huànchéng"
+          },
+          {
+            "traditional": "變成",
+            "simplified": "变成",
+            "pinyin": "biànchéng"
+          }
+        ],
+        "accepted": "當作",
+        "result": {
+          "traditional": "弟弟太渴了，把冰箱裡的水果酒當作果汁喝了。",
+          "simplified": "弟弟太渴了，把冰箱里的水果酒当作果汁喝了。",
+          "pinyin": "Dìdi tài kě le, bǎ bīngxiāng lǐ de shuǐguǒjiǔ dàngzuò guǒzhī hē le.",
+          "english": "Younger brother was too thirsty and drank cider from the fridge mistaking it for fruit juice."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "換成"
+            ],
+            "note": "Use 當作 to express mistaking cider for fruit juice."
+          },
+          {
+            "placed": [
+              "變成"
+            ],
+            "note": "當作 indicates treating one beverage as another."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 當作."
+      }
+    ]
+  },
+  "B3L16-G02-P406": {
+    "bookPage": 406,
+    "title": "至少",
+    "items": [
+      {
+        "id": "b3l16g2-p1",
+        "source": "p.406 #1",
+        "kind": "slot-build",
+        "prompt": "Living space may be tight, but at least we do not worry about food shortage. Fill the slot:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "生活空間不大，但"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "至少"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不必擔心食物不夠。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          },
+          {
+            "traditional": "常常",
+            "simplified": "常常",
+            "pinyin": "chángcháng"
+          },
+          {
+            "traditional": "簡直",
+            "simplified": "简直",
+            "pinyin": "jiǎnzhí"
+          }
+        ],
+        "accepted": "至少",
+        "result": {
+          "traditional": "生活空間不大，但至少不必擔心食物不夠。",
+          "simplified": "生活空间不大，但至少不必担心食物不够。",
+          "pinyin": "Shēnghuó kōngjiān bú dà, dàn zhìshǎo búbì dānxīn shíwù bú gòu.",
+          "english": "Living space isn't large, but at least we don't have to worry about food shortage."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "常常"
+            ],
+            "note": "Use 至少 to indicate the reassuring minimum baseline."
+          },
+          {
+            "placed": [
+              "簡直"
+            ],
+            "note": "至少 denotes the baseline comfort in this situation."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 至少."
+      },
+      {
+        "id": "b3l16g2-p2",
+        "source": "p.406 #2",
+        "kind": "slot-build",
+        "prompt": "His injuries are serious; it will take at least two months to recover:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "瑪莉"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他受了很嚴重的傷，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "至少"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "兩個月才能完全恢復。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          },
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "總算",
+            "simplified": "总算",
+            "pinyin": "zǒngsuàn"
+          }
+        ],
+        "accepted": "至少",
+        "result": {
+          "traditional": "他受了很嚴重的傷，至少兩個月才能完全恢復。",
+          "simplified": "他受了很严重的伤，至少两个月才能完全恢复。",
+          "pinyin": "Tā shòu le hěn yánzhòng de shāng, zhìshǎo liǎng ge yuè cái néng wánquán huīfù.",
+          "english": "He was severely injured; it will take at least two months to fully recover."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "當作"
+            ],
+            "note": "Use 至少 before a duration to indicate minimum time needed."
+          },
+          {
+            "placed": [
+              "總算"
+            ],
+            "note": "至少 indicates the minimum required duration."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 至少."
+      },
+      {
+        "id": "b3l16g2-p3",
+        "source": "p.406 #3",
+        "kind": "slot-build",
+        "prompt": "Don't rush! At least listen to advice before making your choice:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "小華"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你太急了吧！"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "至少"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "得先聽聽其他人的意見。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          },
+          {
+            "traditional": "幸虧",
+            "simplified": "幸亏",
+            "pinyin": "xìngkuī"
+          },
+          {
+            "traditional": "難道",
+            "simplified": "难道",
+            "pinyin": "nándào"
+          }
+        ],
+        "accepted": "至少",
+        "result": {
+          "traditional": "你太急了吧！至少得先聽聽其他人的意見。",
+          "simplified": "你太急了吧！至少得先听听其他人的意见。",
+          "pinyin": "Nǐ tài jí le ba! Zhìshǎo děi xiān tīngting qítā rén de yìjiàn.",
+          "english": "You're too hasty! At least listen to others' opinions first."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "幸虧"
+            ],
+            "note": "Use 至少 to specify a necessary preliminary step."
+          },
+          {
+            "placed": [
+              "難道"
+            ],
+            "note": "至少 specifies the minimum prerequisite action."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 至少."
+      },
+      {
+        "id": "b3l16g2-p4",
+        "source": "p.407 #1",
+        "kind": "slot-build",
+        "prompt": "Due to lack of funds, we still need at least fifty million to finish:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "因為經費不夠，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "至少"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "還需要五千萬才能順利完成。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          },
+          {
+            "traditional": "按說",
+            "simplified": "按说",
+            "pinyin": "ànshuō"
+          },
+          {
+            "traditional": "向來",
+            "simplified": "向来",
+            "pinyin": "xiànglái"
+          }
+        ],
+        "accepted": "至少",
+        "result": {
+          "traditional": "因為經費不夠，至少還需要五千萬才能順利完成。",
+          "simplified": "因为经费不够，至少还需要五千万才能顺利完成。",
+          "pinyin": "Yīnwèi jīngfèi bú gòu, zhìshǎo hái xūyào wǔqiānwàn cái néng shùnlì wánchéng.",
+          "english": "Due to insufficient funds, at least fifty million more is needed to complete it smoothly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "按說"
+            ],
+            "note": "Use 至少 before monetary quantities to show minimum requirements."
+          },
+          {
+            "placed": [
+              "向來"
+            ],
+            "note": "至少 expresses the minimum threshold."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 至少."
+      }
+    ]
+  },
+  "B3L16-G03-P413": {
+    "bookPage": 413,
+    "title": "由於……(因此)……",
+    "items": [
+      {
+        "id": "b3l16g3-p1",
+        "source": "p.413 #1",
+        "kind": "slot-build",
+        "prompt": "Because the new dishes failed to draw patrons, edible food was discarded daily:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "旁白"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "由於"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "新菜無法吸引顧客，因此每天都有食物被丟掉。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "由於",
+            "simplified": "由于",
+            "pinyin": "yóuyú"
+          },
+          {
+            "traditional": "儘管",
+            "simplified": "尽管",
+            "pinyin": "jǐnguǎn"
+          },
+          {
+            "traditional": "既然",
+            "simplified": "既然",
+            "pinyin": "jìrán"
+          }
+        ],
+        "accepted": "由於",
+        "result": {
+          "traditional": "由於新菜無法吸引顧客，因此每天都有食物被丟掉。",
+          "simplified": "由于新菜无法吸引顾客，因此每天都有食物被丢掉。",
+          "pinyin": "Yóuyú xīn cài wúfǎ xīyǐn gùkè, yīncǐ měitiān dōu yǒu shíwù bèi diūdiào.",
+          "english": "Owing to new dishes failing to attract customers, food was thrown away daily."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "儘管"
+            ],
+            "note": "Use 由於 at sentence start to introduce formal causes."
+          },
+          {
+            "placed": [
+              "既然"
+            ],
+            "note": "由於 pairs with 因此 to show cause and consequence."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 由於."
+      },
+      {
+        "id": "b3l16g3-p2",
+        "source": "p.413 #2",
+        "kind": "slot-build",
+        "prompt": "Suboptimal urban planning caused traffic congestion when commerce expanded:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "由於都市規劃不理想，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "因此"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "商業活動增加後交通變得又擠又亂。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "因此",
+            "simplified": "因此",
+            "pinyin": "yīncǐ"
+          },
+          {
+            "traditional": "幸虧",
+            "simplified": "幸亏",
+            "pinyin": "xìngkuī"
+          },
+          {
+            "traditional": "總算",
+            "simplified": "总算",
+            "pinyin": "zǒngsuàn"
+          }
+        ],
+        "accepted": "因此",
+        "result": {
+          "traditional": "由於都市規劃不理想，因此商業活動增加後交通變得又擠又亂。",
+          "simplified": "由于都市规划不理想，因此商业活动增加后交通变得又挤又乱。",
+          "pinyin": "Yóuyú dūshì guīhuà bù lǐxiǎng, yīncǐ shāngyè huódòng zēngjiā hòu jiāotōng biàn de yòu jǐ yòu luàn.",
+          "english": "Due to flawed city planning, traffic became packed and chaotic once commerce grew."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "幸虧"
+            ],
+            "note": "Use 因此 to introduce formal results after 由於."
+          },
+          {
+            "placed": [
+              "總算"
+            ],
+            "note": "因此 marks the logical outcome of the earlier situation."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 因此."
+      },
+      {
+        "id": "b3l16g3-p3",
+        "source": "p.413 #3",
+        "kind": "slot-build",
+        "prompt": "City air quality worsened precisely because of the growth in factories:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "瑪莉"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "空氣品質越來越差，是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "由於"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "工廠越來越多。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "由於",
+            "simplified": "由于",
+            "pinyin": "yóuyú"
+          },
+          {
+            "traditional": "根據",
+            "simplified": "根据",
+            "pinyin": "gēnjù"
+          },
+          {
+            "traditional": "關於",
+            "simplified": "关于",
+            "pinyin": "guānyú"
+          }
+        ],
+        "accepted": "由於",
+        "result": {
+          "traditional": "空氣品質越來越差，是由於工廠越來越多。",
+          "simplified": "空气品质越来越差，是由于工厂越来越多。",
+          "pinyin": "Kōngqì pǐnzhí yuè lái yuè chà, shì yóuyú gōngchǎng yuè lái yuè duō.",
+          "english": "Air quality is worsening because factories are multiplying."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "根據"
+            ],
+            "note": "Use 是由於 when the causal clause is placed at the end."
+          },
+          {
+            "placed": [
+              "關於"
+            ],
+            "note": "是由於 explains the root cause of the worsening air."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 由於."
+      },
+      {
+        "id": "b3l16g3-p4",
+        "source": "p.414 #1",
+        "kind": "slot-build",
+        "prompt": "Due to lack of funds and cultural value, the mayor decided not to repair it:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "由於"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "缺乏經費與文化價值，市長決定不予修理。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "由於",
+            "simplified": "由于",
+            "pinyin": "yóuyú"
+          },
+          {
+            "traditional": "何況",
+            "simplified": "何况",
+            "pinyin": "hékuàng"
+          },
+          {
+            "traditional": "反而",
+            "simplified": "反而",
+            "pinyin": "fǎn'ér"
+          }
+        ],
+        "accepted": "由於",
+        "result": {
+          "traditional": "由於缺乏經費與文化價值，市長決定不予修理。",
+          "simplified": "由于缺乏经费与文化价值，市长决定不予修理。",
+          "pinyin": "Yóuyú quēfá jīngfèi yǔ wénhuà jiàzhí, shìzhǎng juédìng bù yǔ xiūlǐ.",
+          "english": "Owing to lack of funding and cultural value, the mayor decided not to repair it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "何況"
+            ],
+            "note": "Use 由於 to state the formal reasons leading to the decision."
+          },
+          {
+            "placed": [
+              "反而"
+            ],
+            "note": "由於 provides the underlying cause."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 由於."
+      }
+    ]
+  },
+  "B3L16-G04-P415": {
+    "bookPage": 415,
+    "title": "使得",
+    "items": [
+      {
+        "id": "b3l16g4-p1",
+        "source": "p.415 #1",
+        "kind": "slot-build",
+        "prompt": "The thought of food being thrown away made him sleep poorly at night:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "旁白"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "每次想到這點，都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "使得"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他夜裡睡不好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "使得",
+            "simplified": "使得",
+            "pinyin": "shǐde"
+          },
+          {
+            "traditional": "為了",
+            "simplified": "为了",
+            "pinyin": "wèile"
+          },
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          }
+        ],
+        "accepted": "使得",
+        "result": {
+          "traditional": "每次想到這點，都使得他夜裡睡不好。",
+          "simplified": "每次想到这点，都使得他夜里睡不好。",
+          "pinyin": "Měi cì xiǎngdào zhè diǎn, dōu shǐde tā yèlǐ shuì bù hǎo.",
+          "english": "Thinking of this every time made him sleep poorly at night."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "為了"
+            ],
+            "note": "Use 使得 to formally link the cause to its real outcome."
+          },
+          {
+            "placed": [
+              "至少"
+            ],
+            "note": "使得 indicates causing sleeplessness."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 使得."
+      },
+      {
+        "id": "b3l16g4-p2",
+        "source": "p.415 #2",
+        "kind": "slot-build",
+        "prompt": "The massive earthquake caused many houses and roadways to collapse:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "大地震的規模很大，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "使得"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "許多房屋跟馬路都塌了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "使得",
+            "simplified": "使得",
+            "pinyin": "shǐde"
+          },
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "總之",
+            "simplified": "总之",
+            "pinyin": "zǒngzhī"
+          }
+        ],
+        "accepted": "使得",
+        "result": {
+          "traditional": "大地震的規模很大，使得許多房屋跟馬路都塌了。",
+          "simplified": "大地震的规模很大，使得许多房屋跟马路都塌了。",
+          "pinyin": "Dà dìzhèn de guīmó hěn dà, shǐde xǔduō fángwū gēn mǎlù dōu tā le.",
+          "english": "The earthquake scale was massive, causing many houses and roads to collapse."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "當作"
+            ],
+            "note": "Use 使得 to denote an actual event causing major damage."
+          },
+          {
+            "placed": [
+              "總之"
+            ],
+            "note": "使得 expresses causal consequence."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 使得."
+      },
+      {
+        "id": "b3l16g4-p3",
+        "source": "p.415 #3",
+        "kind": "slot-build",
+        "prompt": "Because the heritage site is so well maintained, visitor counts rise annually:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "瑪莉"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "古蹟維持得很好，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "使得"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "參觀民眾一年比一年多。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "使得",
+            "simplified": "使得",
+            "pinyin": "shǐde"
+          },
+          {
+            "traditional": "幸虧",
+            "simplified": "幸亏",
+            "pinyin": "xìngkuī"
+          },
+          {
+            "traditional": "按說",
+            "simplified": "按说",
+            "pinyin": "ànshuō"
+          }
+        ],
+        "accepted": "使得",
+        "result": {
+          "traditional": "古蹟維持得很好，使得參觀民眾一年比一年多。",
+          "simplified": "古迹维持得很好，使得参观民众一年比一年多。",
+          "pinyin": "Gǔjī wéichí de hěn hǎo, shǐde cānguān mínzhòng yì nián bǐ yì nián duō.",
+          "english": "The heritage site is maintained well, causing visitors to increase year after year."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "幸虧"
+            ],
+            "note": "Use 使得 to state the direct causal outcome of good maintenance."
+          },
+          {
+            "placed": [
+              "按說"
+            ],
+            "note": "使得 expresses the causation of increasing visitors."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 使得."
+      },
+      {
+        "id": "b3l16g4-p4",
+        "source": "p.415 #4",
+        "kind": "slot-build",
+        "prompt": "Industry progressed too rapidly, which ironically caused agriculture to be ignored:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "工業進步得太快，反而"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "使得"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "農業慢慢不被重視了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "使得",
+            "simplified": "使得",
+            "pinyin": "shǐde"
+          },
+          {
+            "traditional": "值得",
+            "simplified": "值得",
+            "pinyin": "zhíde"
+          },
+          {
+            "traditional": "怪不得",
+            "simplified": "怪不得",
+            "pinyin": "guàibùdé"
+          }
+        ],
+        "accepted": "使得",
+        "result": {
+          "traditional": "工業進步得太快，反而使得農業慢慢不被重視了。",
+          "simplified": "工业进步得太快，反而使得农业慢慢不被重视了。",
+          "pinyin": "Gōngyè jìnbù de tài kuài, fǎn'ér shǐde nóngyè mànman bú bèi zhòngshì le.",
+          "english": "Industry advanced too quickly, which conversely caused agriculture to be overlooked."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "值得"
+            ],
+            "note": "Use 使得 with 反而 to convey an ironic consequence."
+          },
+          {
+            "placed": [
+              "怪不得"
+            ],
+            "note": "使得 formalizes the causal effect."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 使得."
+      }
+    ]
+  },
+  "B3L16-G05-P417": {
+    "bookPage": 417,
+    "title": "於是",
+    "items": [
+      {
+        "id": "b3l16g5-p1",
+        "source": "p.417 #1",
+        "kind": "slot-build",
+        "prompt": "Sleepless over food waste, he thereupon set up a donation fridge outside:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "旁白"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這點使得他夜裡睡不好。"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "於是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，他在門外放了一台冰箱。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "於是",
+            "simplified": "于是",
+            "pinyin": "yúshì"
+          },
+          {
+            "traditional": "至少",
+            "simplified": "至少",
+            "pinyin": "zhìshǎo"
+          },
+          {
+            "traditional": "總之",
+            "simplified": "总之",
+            "pinyin": "zǒngzhī"
+          }
+        ],
+        "accepted": "於是",
+        "result": {
+          "traditional": "這點使得他夜裡睡不好。於是，他在門外放了一台冰箱。",
+          "simplified": "这点使得他夜里睡不好。于是，他在门外放了一台冰箱。",
+          "pinyin": "Zhè diǎn shǐde tā yèlǐ shuì bù hǎo. Yúshì, tā zài ménwài fàng le yì tái bīngxiāng.",
+          "english": "This troubled his sleep at night. Thereupon, he placed a fridge outside."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "至少"
+            ],
+            "note": "Use 於是 to introduce an action taken in response to a situation."
+          },
+          {
+            "placed": [
+              "總之"
+            ],
+            "note": "於是 describes taking prompt responsive action."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 於是."
+      },
+      {
+        "id": "b3l16g5-p2",
+        "source": "p.417 #2",
+        "kind": "slot-build",
+        "prompt": "People wanted more comfortable living, and thereupon invented practical home devices:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "為了擁有舒適的生活，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "於是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "發明了許多實用商品。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "於是",
+            "simplified": "于是",
+            "pinyin": "yúshì"
+          },
+          {
+            "traditional": "當作",
+            "simplified": "当作",
+            "pinyin": "dàngzuò"
+          },
+          {
+            "traditional": "難怪",
+            "simplified": "难怪",
+            "pinyin": "nánguài"
+          }
+        ],
+        "accepted": "於是",
+        "result": {
+          "traditional": "為了擁有舒適的生活，於是發明了許多實用商品。",
+          "simplified": "为了拥有舒适的生活，于是发明了许多实用商品。",
+          "pinyin": "Wèile yǒngyǒu shūshì de shēnghuó, yúshì fāmíng le xǔduō shíyòng shāngpǐn.",
+          "english": "To have comfortable lives, people thereupon invented many practical commodities."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "當作"
+            ],
+            "note": "Use 於是 to connect motivation with responsive innovation."
+          },
+          {
+            "placed": [
+              "難怪"
+            ],
+            "note": "於是 indicates the purposeful invention."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 於是."
+      },
+      {
+        "id": "b3l16g5-p3",
+        "source": "p.417 #3",
+        "kind": "slot-build",
+        "prompt": "He did not receive fair recognition, thereupon resolving to switch jobs:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "瑪莉"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "沒得到相對的肯定，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "於是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他決定換一份新工作。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "於是",
+            "simplified": "于是",
+            "pinyin": "yúshì"
+          },
+          {
+            "traditional": "既然",
+            "simplified": "既然",
+            "pinyin": "jìrán"
+          },
+          {
+            "traditional": "何況",
+            "simplified": "何况",
+            "pinyin": "hékuàng"
+          }
+        ],
+        "accepted": "於是",
+        "result": {
+          "traditional": "沒得到相對的肯定，於是他決定換一份新工作。",
+          "simplified": "没得到相对的肯定，于是他决定换一份新工作。",
+          "pinyin": "Méi dédào xiāngduì de kěndìng, yúshì tā juédìng huàn yí fèn xīn gōngzuò.",
+          "english": "Receiving no proportionate recognition, he thereupon decided to switch jobs."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "既然"
+            ],
+            "note": "Use 於是 to introduce the decisive step chosen."
+          },
+          {
+            "placed": [
+              "何況"
+            ],
+            "note": "於是 introduces the action taken in reaction."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 於是."
+      },
+      {
+        "id": "b3l16g5-p4",
+        "source": "p.417 #4",
+        "kind": "slot-build",
+        "prompt": "Upon hearing that his child was sick, he rushed home immediately:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "東賢"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "家人告訴他孩子病了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "於是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他急忙搭車趕回家去。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "於是",
+            "simplified": "于是",
+            "pinyin": "yúshì"
+          },
+          {
+            "traditional": "總之",
+            "simplified": "总之",
+            "pinyin": "zǒngzhī"
+          },
+          {
+            "traditional": "幸虧",
+            "simplified": "幸亏",
+            "pinyin": "xìngkuī"
+          }
+        ],
+        "accepted": "於是",
+        "result": {
+          "traditional": "家人告訴他孩子病了，於是他急忙搭車趕回家去。",
+          "simplified": "家人告诉他孩子病了，于是他急忙搭车赶回家去。",
+          "pinyin": "Jiārén gàosù tā háizi bìng le, yúshì tā jímáng dāchē gǎn huíjiā qù.",
+          "english": "His family informed him the child was sick, whereupon he rushed home by car."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總之"
+            ],
+            "note": "Use 於是 to connect hearing the urgent news to immediately heading home."
+          },
+          {
+            "placed": [
+              "幸虧"
+            ],
+            "note": "於是 introduces the immediate action taken."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 於是."
+      }
+    ]
+  }
+}
