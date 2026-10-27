@@ -509,4 +509,11 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L14-G03-P363': detected('幸虧……要不然……', [inOrder(['幸虧', '要不然'], 12), inOrder(['幸虧'])]),
   'B3L14-G04-P369': detected('根據', [inOrder(['根據'])]),
   'B3L14-G05-P371': detected('按照 / 按 / 照 NP + V', [inOrder(['按照']), inOrder(['就按']), inOrder(['照說明書'])]),
+
+  // Book 3 Lesson 15 — 去淡水參觀古蹟
+  'B3L15-G01-P383': detected('簡直', [inOrder(['簡直'])]),
+  'B3L15-G02-P384': detected('Vs得沒話說', [inOrder(['得沒話說'])]),
+  'B3L15-G03-P392': detected('同時', [inOrder(['同時'])]),
+  'B3L15-G04-P393': detected('及', [inOrder(['及'])]),
+  'B3L15-G05-P395': detected('總而言之 / 總之', [inOrder(['總而言之']), inOrder(['總之'])]),
 };

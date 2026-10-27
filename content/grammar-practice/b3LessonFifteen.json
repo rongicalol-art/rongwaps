@@ -1,0 +1,1408 @@
+{
+  "B3L15-G01-P383": {
+    "bookPage": 383,
+    "title": "Practice: 簡直",
+    "items": [
+      {
+        "id": "b3l15g1-p1",
+        "source": "p.383 #1",
+        "kind": "slot-build",
+        "prompt": "The dragons carved in stone are extraordinarily vivid. Emphasize that they look practically ready to take flight:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "明哲"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那座寺廟裡的龍刻得十分生動，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "簡直"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "快飛起來了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "簡直",
+            "simplified": "简直",
+            "pinyin": "jiǎnzhí"
+          },
+          {
+            "traditional": "總之",
+            "simplified": "总之",
+            "pinyin": "zǒngzhī"
+          },
+          {
+            "traditional": "幸虧",
+            "simplified": "幸亏",
+            "pinyin": "xìngkuī"
+          }
+        ],
+        "accepted": "簡直",
+        "result": {
+          "traditional": "那座寺廟裡的龍刻得十分生動，簡直快飛起來了。",
+          "simplified": "那座寺庙里的龙刻得十分生动，简直快飞起来了。",
+          "pinyin": "Nà zuò sìmiào lǐ de lóng kè de shífēn shēngdòng, jiǎnzhí kuài fēi qǐlái le.",
+          "english": "The dragons carved in that temple are so vivid they look practically ready to take flight."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總之"
+            ],
+            "note": "Use 簡直 to make an exaggerated vivid comparison."
+          },
+          {
+            "placed": [
+              "幸虧"
+            ],
+            "note": "簡直 provides hyperbolic emphasis on lifelike qualities."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 簡直."
+      },
+      {
+        "id": "b3l15g1-p2",
+        "source": "p.383 #2",
+        "kind": "slot-build",
+        "prompt": "Praise Miss Fang's ethereal beauty and complexion:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "方小姐皮膚好又漂亮，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "簡直像"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "仙女一樣。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "簡直像",
+            "simplified": "简直像",
+            "pinyin": "jiǎnzhí xiàng"
+          },
+          {
+            "traditional": "難道像",
+            "simplified": "难道像",
+            "pinyin": "nándào xiàng"
+          },
+          {
+            "traditional": "往往像",
+            "simplified": "往往像",
+            "pinyin": "wǎngwǎng xiàng"
+          }
+        ],
+        "accepted": "簡直像",
+        "result": {
+          "traditional": "方小姐皮膚好又漂亮，簡直像仙女一樣。",
+          "simplified": "方小姐皮肤好又漂亮，简直像仙女一样。",
+          "pinyin": "Fāng xiǎojiě pífū hǎo yòu piàoliang, jiǎnzhí xiàng xiānnǚ yíyàng.",
+          "english": "Miss Fang has such fine skin and is so lovely; she looks virtually like a fairy."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難道像"
+            ],
+            "note": "Comparing someone to a fairy maiden uses 簡直像."
+          },
+          {
+            "placed": [
+              "往往像"
+            ],
+            "note": "Use 簡直像 for hyperbolic simile."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 簡直像."
+      },
+      {
+        "id": "b3l15g1-p3",
+        "source": "p.383 #3",
+        "kind": "slot-build",
+        "prompt": "Colleague marvels at Manager Bi's flawless efficiency:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "畢經理做事又快又好，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "簡直"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "就像機器一樣。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "簡直",
+            "simplified": "简直",
+            "pinyin": "jiǎnzhí"
+          },
+          {
+            "traditional": "偏偏",
+            "simplified": "偏偏",
+            "pinyin": "piānpiān"
+          },
+          {
+            "traditional": "甚至",
+            "simplified": "甚至",
+            "pinyin": "shènzhì"
+          }
+        ],
+        "accepted": "簡直",
+        "result": {
+          "traditional": "畢經理做事又快又好，簡直就像機器一樣。",
+          "simplified": "毕经理做事又快又好，简直就像机器一样。",
+          "pinyin": "Bì jīnglǐ zuòshì yòu kuài yòu hǎo, jiǎnzhí jiù xiàng jīqì yíyàng.",
+          "english": "Manager Bi works fast and well; he is practically just like a machine."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "偏偏"
+            ],
+            "note": "Use 簡直 for an exaggerated simile."
+          },
+          {
+            "placed": [
+              "甚至"
+            ],
+            "note": "Emphasis before 就像 takes 簡直."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 簡直."
+      },
+      {
+        "id": "b3l15g1-p4",
+        "source": "p.384 #2",
+        "kind": "slot-build",
+        "prompt": "Friend sang amazingly in KTV. Compare him to a live concert singer:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他唱歌唱得太好聽了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "簡直是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "歌星的水準。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "簡直是",
+            "simplified": "简直是",
+            "pinyin": "jiǎnzhí shì"
+          },
+          {
+            "traditional": "究竟是",
+            "simplified": "究竟是",
+            "pinyin": "jiūjìng shì"
+          },
+          {
+            "traditional": "畢竟是",
+            "simplified": "毕竟是",
+            "pinyin": "bìjìng shì"
+          }
+        ],
+        "accepted": "簡直是",
+        "result": {
+          "traditional": "他唱歌唱得太好聽了，簡直是歌星的水準。",
+          "simplified": "他唱歌唱得太好听了，简直是歌星的水准。",
+          "pinyin": "Tā chànggē chàng de tài hǎotīng le, jiǎnzhí shì gēxīng de shuǐzhǔn.",
+          "english": "His singing is so wonderful, it's practically at the level of a pop star."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "究竟是"
+            ],
+            "note": "Praising singing as reaching star quality uses 簡直是."
+          },
+          {
+            "placed": [
+              "畢竟是"
+            ],
+            "note": "Use 簡直是 to express exaggerated praise."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 簡直是."
+      }
+    ]
+  },
+  "B3L15-G02-P384": {
+    "bookPage": 384,
+    "title": "Practice: Vs得沒話說",
+    "items": [
+      {
+        "id": "b3l15g2-p1",
+        "source": "p.384 #1",
+        "kind": "slot-build",
+        "prompt": "Praise the breathtaking sunset at Tamsui pier:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "明哲"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "大家都說淡水碼頭的夕陽美"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "得沒話說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "呢！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "得沒話說",
+            "simplified": "得没话说",
+            "pinyin": "de méi huà shuō"
+          },
+          {
+            "traditional": "得受不了",
+            "simplified": "得受不了",
+            "pinyin": "de shòu bù liǎo"
+          },
+          {
+            "traditional": "極了",
+            "simplified": "极了",
+            "pinyin": "jí le"
+          }
+        ],
+        "accepted": "得沒話說",
+        "result": {
+          "traditional": "大家都說淡水碼頭的夕陽美得沒話說呢！",
+          "simplified": "大家都说淡水码头的夕阳美得没话说呢！",
+          "pinyin": "Dàjiā dōu shuō Dànshuǐ mǎtóu de xīyáng měi de méi huà shuō ne!",
+          "english": "Everyone says the sunset at Tamsui pier is gorgeous beyond words!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "得受不了"
+            ],
+            "note": "The idiom for superlative praise is 得沒話說."
+          },
+          {
+            "placed": [
+              "極了"
+            ],
+            "note": "Use the degree complement phrase 得沒話說."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 得沒話說."
+      },
+      {
+        "id": "b3l15g2-p2",
+        "source": "p.385 #2",
+        "kind": "slot-build",
+        "prompt": "Praise the computer's blazing processing speed:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這台新電腦處理資料快"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "得沒話說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，幾秒就完成了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "得沒話說",
+            "simplified": "得没话说",
+            "pinyin": "de méi huà shuō"
+          },
+          {
+            "traditional": "得不得了",
+            "simplified": "得不得了",
+            "pinyin": "de bùdéliǎo"
+          },
+          {
+            "traditional": "得很",
+            "simplified": "得很",
+            "pinyin": "de hěn"
+          }
+        ],
+        "accepted": "得沒話說",
+        "result": {
+          "traditional": "這台新電腦處理資料快得沒話說，幾秒就完成了。",
+          "simplified": "这台新电脑处理资料快得没话说，几秒就完成了。",
+          "pinyin": "Zhè tái xīn diànnǎo chǔlǐ zīliào kuài de méi huà shuō, jǐ miǎo jiù wánchéng le.",
+          "english": "This new computer processes data with speed beyond words; it finishes in seconds."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "得不得了"
+            ],
+            "note": "Use the textbook pattern 得沒話說."
+          },
+          {
+            "placed": [
+              "得很"
+            ],
+            "note": "Pattern is 得沒話說."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 得沒話說."
+      },
+      {
+        "id": "b3l15g2-p3",
+        "source": "p.385 #3",
+        "kind": "slot-build",
+        "prompt": "Praise Classmate Fang's outstanding integrity and deeds:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "老師"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "方同學熱心助人，簡直是優秀"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "得沒話說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "得沒話說",
+            "simplified": "得没话说",
+            "pinyin": "de méi huà shuō"
+          },
+          {
+            "traditional": "不用說",
+            "simplified": "不用说",
+            "pinyin": "bú yòng shuō"
+          },
+          {
+            "traditional": "極了",
+            "simplified": "极了",
+            "pinyin": "jí le"
+          }
+        ],
+        "accepted": "得沒話說",
+        "result": {
+          "traditional": "方同學熱心助人，簡直是優秀得沒話說。",
+          "simplified": "方同学热心助人，简直是优秀得没话说。",
+          "pinyin": "Fāng tóngxué rèxīn zhùrén, jiǎnzhí shì yōuxiù de méi huà shuō.",
+          "english": "Classmate Fang is so warm-hearted; he is practically exemplary beyond words."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不用說"
+            ],
+            "note": "Use 得沒話說 for superlative commendation."
+          },
+          {
+            "placed": [
+              "極了"
+            ],
+            "note": "Pattern is 得沒話說."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 得沒話說."
+      },
+      {
+        "id": "b3l15g2-p4",
+        "source": "p.385 #1",
+        "kind": "slot-build",
+        "prompt": "Father insists his physical health is totally flawless:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "父親"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我每天運動，身體好"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "得沒話說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，不必做健檢。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "得沒話說",
+            "simplified": "得没话说",
+            "pinyin": "de méi huà shuō"
+          },
+          {
+            "traditional": "說不出",
+            "simplified": "说不出",
+            "pinyin": "shuō bù chū"
+          },
+          {
+            "traditional": "得多",
+            "simplified": "得多",
+            "pinyin": "de duō"
+          }
+        ],
+        "accepted": "得沒話說",
+        "result": {
+          "traditional": "我每天運動，身體好得沒話說，不必做健檢。",
+          "simplified": "我每天运动，身体好得没话说，不必做健检。",
+          "pinyin": "Wǒ měitiān yùndòng, shēntǐ hǎo de méi huà shuō, búbì zuò jiànjiǎn.",
+          "english": "I exercise every day; my health is beyond reproach, no checkup needed."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "說不出"
+            ],
+            "note": "The correct idiom is 得沒話說."
+          },
+          {
+            "placed": [
+              "得多"
+            ],
+            "note": "Use 得沒話說 to express irreproachable health."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 得沒話說."
+      }
+    ]
+  },
+  "B3L15-G03-P392": {
+    "bookPage": 392,
+    "title": "Practice: 同時",
+    "items": [
+      {
+        "id": "b3l15g3-p1",
+        "source": "p.392 #1",
+        "kind": "slot-build",
+        "prompt": "State that mankind chronicles history while forging it at the same time:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "旁白"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "人類每天都在記錄歷史，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "同時"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "也在創造歷史。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "同時",
+            "simplified": "同时",
+            "pinyin": "tóngshí"
+          },
+          {
+            "traditional": "難道",
+            "simplified": "难道",
+            "pinyin": "nándào"
+          },
+          {
+            "traditional": "況且",
+            "simplified": "况且",
+            "pinyin": "kuàngqiě"
+          }
+        ],
+        "accepted": "同時",
+        "result": {
+          "traditional": "人類每天都在記錄歷史，同時也在創造歷史。",
+          "simplified": "人类每天都在记录历史，同时也在创造历史。",
+          "pinyin": "Rénlèi měitiān dōu zài jìlù lìshǐ, tóngshí yě zài chuàngzào lìshǐ.",
+          "english": "Humanity records history every day, while simultaneously forging it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難道"
+            ],
+            "note": "Connecting two concurrent historical deeds takes 同時."
+          },
+          {
+            "placed": [
+              "況且"
+            ],
+            "note": "Use 同時 to describe dual simultaneous dimensions."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 同時."
+      },
+      {
+        "id": "b3l15g3-p2",
+        "source": "p.392 #2",
+        "kind": "slot-build",
+        "prompt": "Two runners crossed the finish line at the exact same moment:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "沒想到我們兩個人竟然"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "同時"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "到達了終點。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "同時",
+            "simplified": "同时",
+            "pinyin": "tóngshí"
+          },
+          {
+            "traditional": "有時",
+            "simplified": "有时",
+            "pinyin": "yǒushí"
+          },
+          {
+            "traditional": "準時",
+            "simplified": "准时",
+            "pinyin": "zhǔnshí"
+          }
+        ],
+        "accepted": "同時",
+        "result": {
+          "traditional": "沒想到我們兩個人竟然同時到達了終點。",
+          "simplified": "没想到我们两个人竟然同时到达了终点。",
+          "pinyin": "Méi xiǎngdào wǒmen liǎng ge rén jìngrán tóngshí dàodá le zhōngdiǎn.",
+          "english": "Unexpectedly the two of us actually reached the finish line simultaneously."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "有時"
+            ],
+            "note": "Reaching a mark at the exact same moment is 同時."
+          },
+          {
+            "placed": [
+              "準時"
+            ],
+            "note": "準時 means punctual, whereas 同時 means simultaneous."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 同時."
+      },
+      {
+        "id": "b3l15g3-p3",
+        "source": "p.392 #3",
+        "kind": "slot-build",
+        "prompt": "Describe Confucius as both philosopher and venerated educator:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "孔子是哲學家，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "同時也是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "受人尊敬的老師。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "同時也是",
+            "simplified": "同时也是",
+            "pinyin": "tóngshí yě shì"
+          },
+          {
+            "traditional": "難怪也是",
+            "simplified": "难怪也是",
+            "pinyin": "nánguài yě shì"
+          },
+          {
+            "traditional": "往往也是",
+            "simplified": "往往也是",
+            "pinyin": "wǎngwǎng yě shì"
+          }
+        ],
+        "accepted": "同時也是",
+        "result": {
+          "traditional": "孔子是哲學家，同時也是受人尊敬的老師。",
+          "simplified": "孔子是哲学家，同时也是受人尊敬的老师。",
+          "pinyin": "Kǒngzǐ shì zhéxuéjiā, tóngshí yě shì shòu rén zūnjìng de lǎoshī.",
+          "english": "Confucius was a philosopher, and concurrently a deeply revered teacher."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難怪也是"
+            ],
+            "note": "Pairing two concurrent roles takes 同時也是."
+          },
+          {
+            "placed": [
+              "往往也是"
+            ],
+            "note": "Use 同時也是 for coordinate identities."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 同時也是."
+      },
+      {
+        "id": "b3l15g3-p4",
+        "source": "p.393 #1",
+        "kind": "slot-build",
+        "prompt": "She works full-time while also raising her two children:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她除了努力工作，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "同時也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要照顧兩個小孩。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "同時也",
+            "simplified": "同时也",
+            "pinyin": "tóngshí yě"
+          },
+          {
+            "traditional": "偏偏也",
+            "simplified": "偏偏也",
+            "pinyin": "piānpiān yě"
+          },
+          {
+            "traditional": "畢竟也",
+            "simplified": "毕竟也",
+            "pinyin": "bìjìng yě"
+          }
+        ],
+        "accepted": "同時也",
+        "result": {
+          "traditional": "她除了努力工作，同時也要照顧兩個小孩。",
+          "simplified": "她除了努力工作，同时也要照顾两个小孩。",
+          "pinyin": "Tā chúle nǔlì gōngzuò, tóngshí yě yào zhàogù liǎng ge xiǎohái.",
+          "english": "Besides working hard, she simultaneously has to take care of two children."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "偏偏也"
+            ],
+            "note": "Balancing dual commitments is expressed with 同時也."
+          },
+          {
+            "placed": [
+              "畢竟也"
+            ],
+            "note": "Use 同時也 to state parallel duties."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 同時也."
+      }
+    ]
+  },
+  "B3L15-G04-P393": {
+    "bookPage": 393,
+    "title": "Practice: 及",
+    "items": [
+      {
+        "id": "b3l15g4-p1",
+        "source": "p.393 #1",
+        "kind": "slot-build",
+        "prompt": "Connect historical meaning and commemorative value formally:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "旁白"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "只要建築具有歷史意義"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "及"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "紀念價值，就該被重視。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "及",
+            "simplified": "及",
+            "pinyin": "jí"
+          },
+          {
+            "traditional": "但",
+            "simplified": "但",
+            "pinyin": "dàn"
+          },
+          {
+            "traditional": "卻",
+            "simplified": "却",
+            "pinyin": "què"
+          }
+        ],
+        "accepted": "及",
+        "result": {
+          "traditional": "只要建築具有歷史意義及紀念價值，就該被重視。",
+          "simplified": "只要建筑具有历史意义及纪念价值，就该被重视。",
+          "pinyin": "Zhǐyào jiànzhù jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì.",
+          "english": "As long as a structure has historical meaning and commemorative value, it should be valued."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "但"
+            ],
+            "note": "Connecting coordinate noun phrases formally uses 及."
+          },
+          {
+            "placed": [
+              "卻"
+            ],
+            "note": "Use formal conjunction 及 between noun terms."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 及."
+      },
+      {
+        "id": "b3l15g4-p2",
+        "source": "p.394 #2",
+        "kind": "slot-build",
+        "prompt": "List modern devices: phones, laptops, and tablets:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "手機、筆記型電腦"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "及"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "平板電腦都是常用設備。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "及",
+            "simplified": "及",
+            "pinyin": "jí"
+          },
+          {
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng"
+          },
+          {
+            "traditional": "以",
+            "simplified": "以",
+            "pinyin": "yǐ"
+          }
+        ],
+        "accepted": "及",
+        "result": {
+          "traditional": "手機、筆記型電腦及平板電腦都是常用設備。",
+          "simplified": "手机、笔记型电脑及平板电脑都是常用设备。",
+          "pinyin": "Shǒujī, bǐjìxíng diànnǎo jí píngbǎn diànnǎo dōu shì chángyòng shèbèi.",
+          "english": "Cell phones, laptops, and tablets are all commonly used equipment."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "從"
+            ],
+            "note": "Use 及 before the last item in a formal series."
+          },
+          {
+            "placed": [
+              "以"
+            ],
+            "note": "Conjunction for the final listed item is 及."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 及."
+      },
+      {
+        "id": "b3l15g4-p3",
+        "source": "p.394 #3",
+        "kind": "slot-build",
+        "prompt": "Company strives to improve quality and services:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "老闆"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "公司必須提升產品品質"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "及"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "售後服務。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "及",
+            "simplified": "及",
+            "pinyin": "jí"
+          },
+          {
+            "traditional": "被",
+            "simplified": "被",
+            "pinyin": "bèi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          }
+        ],
+        "accepted": "及",
+        "result": {
+          "traditional": "公司必須提升產品品質及售後服務。",
+          "simplified": "公司必须提升产品品质及售后服务。",
+          "pinyin": "Gōngsī bìxū tíshēng chǎnpǐn pǐnzhí jí shòuhòu fúwù.",
+          "english": "The company must elevate product quality as well as after-sales service."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "被"
+            ],
+            "note": "Connecting coordinate items takes 及."
+          },
+          {
+            "placed": [
+              "把"
+            ],
+            "note": "Use 及 to join parallel nouns."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 及."
+      },
+      {
+        "id": "b3l15g4-p4",
+        "source": "p.394 #1",
+        "kind": "slot-build",
+        "prompt": "Connect cultural values and modern public functions:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這座公園增加了文化價值"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "及"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "現代功能。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "及",
+            "simplified": "及",
+            "pinyin": "jí"
+          },
+          {
+            "traditional": "正",
+            "simplified": "正",
+            "pinyin": "zhèng"
+          },
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          }
+        ],
+        "accepted": "及",
+        "result": {
+          "traditional": "這座公園增加了文化價值及現代功能。",
+          "simplified": "这座公园增加了文化价值及现代功能。",
+          "pinyin": "Zhè zuò gōngyuán zēngjiā le wénhuà jiàzhí jí xiàndài gōngnéng.",
+          "english": "This park increased cultural value as well as modern functionality."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "正"
+            ],
+            "note": "Pairing coordinate qualities takes 及."
+          },
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "Use 及 to join noun phrases."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 及."
+      }
+    ]
+  },
+  "B3L15-G05-P395": {
+    "bookPage": 395,
+    "title": "Practice: 總而言之 / 總之",
+    "items": [
+      {
+        "id": "b3l15g5-p1",
+        "source": "p.395 #1",
+        "kind": "slot-build",
+        "prompt": "Conclude that historic sites form puzzle pieces of our past:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "旁白"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "總而言之"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，古蹟就像歷史拼圖中的一片。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "總而言之",
+            "simplified": "总而言之",
+            "pinyin": "zǒng'éryánzhī"
+          },
+          {
+            "traditional": "難怪如此",
+            "simplified": "难怪如此",
+            "pinyin": "nánguài rúcǐ"
+          },
+          {
+            "traditional": "說來話長",
+            "simplified": "说来话长",
+            "pinyin": "shuōláihuàcháng"
+          }
+        ],
+        "accepted": "總而言之",
+        "result": {
+          "traditional": "總而言之，古蹟就像歷史拼圖中的一片。",
+          "simplified": "总而言之，古迹就像历史拼图中的一片。",
+          "pinyin": "Zǒng'éryánzhī, gǔjī jiù xiàng lìshǐ pīntú zhōng de yí piàn.",
+          "english": "In short, historic sites are like a piece in history's jigsaw puzzle."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難怪如此"
+            ],
+            "note": "To synthesize a takeaway summary, use 總而言之."
+          },
+          {
+            "placed": [
+              "說來話長"
+            ],
+            "note": "Use 總而言之 for concluding summaries."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 總而言之."
+      },
+      {
+        "id": "b3l15g5-p2",
+        "source": "p.395 #2",
+        "kind": "slot-build",
+        "prompt": "Summarize the collective responsibility to resolve product defects:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "經理"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "雙方都有責任，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "總而言之"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，大家要一起解決。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "總而言之",
+            "simplified": "总而言之",
+            "pinyin": "zǒng'éryánzhī"
+          },
+          {
+            "traditional": "總算如此",
+            "simplified": "总算如此",
+            "pinyin": "zǒngsuàn rúcǐ"
+          },
+          {
+            "traditional": "偏偏這樣",
+            "simplified": "偏偏这样",
+            "pinyin": "piānpiān zhèyàng"
+          }
+        ],
+        "accepted": "總而言之",
+        "result": {
+          "traditional": "雙方都有責任，總而言之，大家要一起解決。",
+          "simplified": "双方都有责任，总而言之，大家要一起解决。",
+          "pinyin": "Shuāngfāng dōu yǒu zérèn, zǒng'éryánzhī, dàjiā yào yìqǐ jiějué.",
+          "english": "Both sides share responsibility; all in all, everyone must resolve it together."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總算如此"
+            ],
+            "note": "To wrap up a situation with a bottom-line conclusion, use 總而言之."
+          },
+          {
+            "placed": [
+              "偏偏這樣"
+            ],
+            "note": "Use 總而言之 to provide summary direction."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 總而言之."
+      },
+      {
+        "id": "b3l15g5-p3",
+        "source": "p.395 #3",
+        "kind": "slot-build",
+        "prompt": "List numerous partner requirements, then summarize in brief:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "要聰明、帥氣又體貼，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "總之"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，各方面都得一百分。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "總之",
+            "simplified": "总之",
+            "pinyin": "zǒngzhī"
+          },
+          {
+            "traditional": "總共",
+            "simplified": "总共",
+            "pinyin": "zǒnggòng"
+          },
+          {
+            "traditional": "總算",
+            "simplified": "总算",
+            "pinyin": "zǒngsuàn"
+          }
+        ],
+        "accepted": "總之",
+        "result": {
+          "traditional": "要聰明、帥氣又體貼，總之，各方面都得一百分。",
+          "simplified": "要聪明、帅气又体贴，总之，各方面都得一百分。",
+          "pinyin": "Yào cōngmíng, shuàiqì yòu tǐtiē, zǒngzhī, gè fāngmiàn dōu děi yībǎi fēn.",
+          "english": "They must be smart, handsome, and caring; in a word, all aspects must score 100."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總共"
+            ],
+            "note": "總共 is for numerical sums, while 總之 is for summarizing conclusions."
+          },
+          {
+            "placed": [
+              "總算"
+            ],
+            "note": "總算 indicates final realization after hardship; use 總之 for summary."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 總之."
+      },
+      {
+        "id": "b3l15g5-p4",
+        "source": "p.396 #1",
+        "kind": "slot-build",
+        "prompt": "Acknowledge the internet has benefits and pitfalls, concluding caution is needed:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "網路有優點也有風險，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "總而言之"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，使用時要特別小心。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "總而言之",
+            "simplified": "总而言之",
+            "pinyin": "zǒng'éryánzhī"
+          },
+          {
+            "traditional": "難怪會說",
+            "simplified": "难怪会说",
+            "pinyin": "nánguài huì shuō"
+          },
+          {
+            "traditional": "何必如此",
+            "simplified": "何必如此",
+            "pinyin": "hébì rúcǐ"
+          }
+        ],
+        "accepted": "總而言之",
+        "result": {
+          "traditional": "網路有優點也有風險，總而言之，使用時要特別小心。",
+          "simplified": "网络有优点也有风险，总而言之，使用时要特别小心。",
+          "pinyin": "Wǎnglù yǒu yōudiǎn yě yǒu fēngxiǎn, zǒng'éryánzhī, shǐyòng shí yào tèbié xiǎoxīn.",
+          "english": "The internet has pros and risks; in short, one must exercise special care when using it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "難怪會說"
+            ],
+            "note": "Drawing a prudent conclusion uses 總而言之."
+          },
+          {
+            "placed": [
+              "何必如此"
+            ],
+            "note": "Use 總而言之 for concluding advice."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 總而言之."
+      }
+    ]
+  }
+}

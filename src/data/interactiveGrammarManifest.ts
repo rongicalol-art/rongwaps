@@ -1054,6 +1054,39 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L14-G05-P371"
       }
     ]
+  },
+  {
+    "id": "B3L15-P01-D01",
+    "bookId": 3,
+    "lessonId": 15,
+    "partId": 1,
+    "title": "Grammar 1–2 · Visit the Historic Sites in Tamsui",
+    "grammarPages": [
+      {
+        "id": "B3L15-G01-P383"
+      },
+      {
+        "id": "B3L15-G02-P384"
+      }
+    ]
+  },
+  {
+    "id": "B3L15-P02-D02",
+    "bookId": 3,
+    "lessonId": 15,
+    "partId": 2,
+    "title": "Grammar 3–5 · Historic Sites in the Jigsaw Puzzle of History",
+    "grammarPages": [
+      {
+        "id": "B3L15-G03-P392"
+      },
+      {
+        "id": "B3L15-G04-P393"
+      },
+      {
+        "id": "B3L15-G05-P395"
+      }
+    ]
   }
 ];
 

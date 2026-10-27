@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 3,
-  "count": 28,
+  "count": 30,
   "items": [
     {
       "id": "B3L01-P01-D01",
@@ -70184,6 +70184,3095 @@
                   }
                 ],
                 "fallbackRepair": "Fill slot with 照."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "B3L15-P01-D01",
+      "bookId": 3,
+      "lessonId": 15,
+      "partId": 1,
+      "title": "Grammar 1–2 · Visit the Historic Sites in Tamsui",
+      "dialogue": {
+        "id": "B3L15-D01",
+        "title": "去淡水參觀古蹟",
+        "audioReference": "15-1-1",
+        "printedPages": [
+          375,
+          377
+        ],
+        "grammarFocus": [
+          "簡直",
+          "Vs得沒話說"
+        ],
+        "lines": [
+          {
+            "id": "b3l15d1-l1",
+            "speaker": "明哲",
+            "traditional": "老師要我們寫一份報告，主題是臺灣的古蹟，我想介紹紅毛城。",
+            "simplified": "老师要我们写一份报告，主题是台湾的古迹，我想介绍红毛城。",
+            "pinyin": "Lǎoshī yào wǒmen xiě yí fèn bàogào, zhǔtí shì Táiwān de gǔjī, wǒ xiǎng jièshào Hóngmáochéng.",
+            "english": "The teacher wants us to write a report on the theme of Taiwan's historic sites. I want to introduce Fort San Domingo."
+          },
+          {
+            "id": "b3l15d1-l2",
+            "speaker": "尚恩",
+            "traditional": "你說的紅毛城就是淡水那座著名的古蹟吧，我知道紅毛城是一棟古老的房子，它有什麼特色嗎？",
+            "simplified": "你说得红毛城就是淡水那座著名的古迹吧，我知道红毛城是一栋古老的房子，它有什么特色吗？",
+            "pinyin": "Nǐ shuō de Hóngmáochéng jiùshì Dànshuǐ nà zuò zhùmíng de gǔjī ba, wǒ zhīdào Hóngmáochéng shì yí dòng gǔlǎo de fángzi, tā yǒu shénme tèsè ma?",
+            "english": "The Fort San Domingo you mentioned is that famous historic site in Tamsui, right? I know it's an old building, does it have any special features?"
+          },
+          {
+            "id": "b3l15d1-l3",
+            "speaker": "明哲",
+            "traditional": "紅毛城是荷蘭人在三、四百年前蓋的，在臺灣的歷史上，具有政治和外交上的意義。",
+            "simplified": "红毛城是荷兰人在三、四百年前盖的，在台湾的历史上，具有政治和外交上的意义。",
+            "pinyin": "Hóngmáochéng shì Hélánrén zài sān, sì bǎi nián qián gài de, zài Táiwān de lìshǐ shàng, jùyǒu zhèngzhì hé wàijiāo shàng de yìyì.",
+            "english": "Fort San Domingo was built by the Dutch three or four hundred years ago; in Taiwan's history, it carries political and diplomatic significance."
+          },
+          {
+            "id": "b3l15d1-l4",
+            "speaker": "尚恩",
+            "traditional": "聽起來很有意思，週末我跟你一起去吧！",
+            "simplified": "听起来很有意思，周末我跟你一起去吧！",
+            "pinyin": "Tīng qǐlái hěn yǒu yìsi, zhōumò wǒ gēn nǐ yìqǐ qù ba!",
+            "english": "Sounds very interesting; let me go with you this weekend!"
+          },
+          {
+            "id": "b3l15d1-l5",
+            "speaker": "明哲",
+            "traditional": "好啊。那我先帶你去參觀龍山寺。那裡有石頭刻的龍，刻得十分生動，看過的人都說那幾條龍簡直快飛起來了，是非常了不起的藝術品。",
+            "simplified": "好啊。那我先带你去参观龙山寺。那里有石头刻的龙，刻得十分生动，看过的人都说那几条龙简直快飞起来了，是非常了不起的艺术品。",
+            "pinyin": "Hǎo a. Nà wǒ xiān dài nǐ qù cānguān Lóngshānsì. Nàlǐ yǒu shítou kè de lóng, kè de shífēn shēngdòng, kànguò de rén dōu shuō nà jǐ tiáo lóng jiǎnzhí kuài fēi qǐlái le, shì fēicháng liǎobùqǐ de yìshùpǐn.",
+            "english": "Sure. Then first I'll take you to visit Longshan Temple. There are stone-carved dragons there, sculpted so vividly that everyone who sees them says they look as if they're about to fly away; they are truly marvelous works of art."
+          },
+          {
+            "id": "b3l15d1-l6",
+            "speaker": "尚恩",
+            "traditional": "旅遊網站也說龍山寺在宗教上的地位很重要，值得參觀。",
+            "simplified": "旅游网站也说龙山寺在宗教上的地位很重要，值得参观。",
+            "pinyin": "Lǚyóu wǎngzhàn yě shuō Lóngshānsì zài zōngjiào shàng de dìwèi hěn zhòngyào, zhíde cānguān.",
+            "english": "Travel websites also note that Longshan Temple holds an important religious standing and is well worth visiting."
+          },
+          {
+            "id": "b3l15d1-l7",
+            "speaker": "明哲",
+            "traditional": "對臺灣人來說，龍山寺不僅是一座古蹟，更是拜拜求平安、健康、發財的地方。",
+            "simplified": "对台湾人来说，龙山寺不仅是一座古迹，更是拜拜求平安、健康、发财的地方。",
+            "pinyin": "Duì Táiwānrén lái shuō, Lóngshānsì bùjǐn shì yí zuò gǔjī, gèng shì bàibài qiú píng'ān, jiànkāng, fācái de dìfāng.",
+            "english": "To Taiwanese people, Longshan Temple is not only a historic site, but even more a place to pray for peace, health, and prosperity."
+          },
+          {
+            "id": "b3l15d1-l8",
+            "speaker": "尚恩",
+            "traditional": "聽你這麼說，倒是讓我想起了老家的教堂。自從我有記憶以來，我們全家每個禮拜天都上教堂。教堂旁的廣場，每到假日就有人來擺攤子，賣一些跟宗教有關的商品，還有吃的、用的小東西。",
+            "simplified": "听你这么说，倒是让我想起了老家的教堂。自从我有记忆以来，我们全家每个礼拜天都上教堂。教堂旁的广场，每到假日就有人来摆摊子，卖一些跟宗教有关的商品，还有吃的、用的小东西。",
+            "pinyin": "Tīng nǐ zhème shuō, dàoshì ràng wǒ xiǎngqǐ le lǎojiā de jiàotáng. Zìcóng wǒ yǒu jìyì yǐlái, wǒmen quánjiā měi ge lǐbàitiān dōu shàng jiàotáng. Jiàotáng páng de guǎngchǎng, měi dào jiàrì jiù yǒu rén lái bǎi tānzi, mài yìxiē gēn zōngjiào yǒuguān de shāngpǐn, hái yǒu chī de, yòng de xiǎo dōngxī.",
+            "english": "Hearing you say that actually reminds me of the church back in my hometown. For as long as I can remember, our entire family went to church every Sunday. In the plaza next to the church, people would set up stalls on holidays selling religious items, as well as food and daily odds and ends."
+          },
+          {
+            "id": "b3l15d1-l9",
+            "speaker": "明哲",
+            "traditional": "這跟臺灣很像。在臺灣，寺廟常是當地人生活的中心，居住在附近的人除了常去拜拜，也會在周圍做生意，一到週末就熱鬧極了。",
+            "simplified": "这跟台湾很像。在台湾，寺庙常是当地人生活的中心，居住在附近的人除了常去拜拜，也会在周围做生意，一到周末就热闹极了。",
+            "pinyin": "Zhè gēn Táiwān hěn xiàng. Zài Táiwān, sìmiào cháng shì dāngdìrén shēnghuó de zhōngxīn, jūzhù zài fùjìn de rén chúle cháng qù bàibài, yě huì zài zhōuwéi zuò shēngyì, yí dào zhōumò jiù rènào jí le.",
+            "english": "That is very much like Taiwan. Here temples are often the hub of local community life; residents nearby not only pray often, but also conduct business around them, making weekends exceptionally lively."
+          },
+          {
+            "id": "b3l15d1-l10",
+            "speaker": "尚恩",
+            "traditional": "我去過台南的孔廟，還有佛教、道教的寺廟，情形也差不多。",
+            "simplified": "我去过台南的孔庙，还有佛教、道教的寺庙，情形也差不多。",
+            "pinyin": "Wǒ qùguò Táinán de Kǒngmiào, hái yǒu Fójiào, Dàojiào de sìmiào, qíngxíng yě chàbùduō.",
+            "english": "I've visited Tainan's Confucian Temple, as well as Buddhist and Taoist temples; the situation is quite similar."
+          },
+          {
+            "id": "b3l15d1-l11",
+            "speaker": "明哲",
+            "traditional": "你從小就信天主教，有機會我帶你去參觀天主教和基督教的教堂，有些古老的教堂被保留下來，還成了有名的古蹟呢。",
+            "simplified": "你从小就信天主教，有机会我带你去参观天主教和基督教的教堂，有些古老的教堂被保留下来，还成了有名的古迹呢。",
+            "pinyin": "Nǐ cóngxiǎo jiù xìn Tiānzhǔjiào, yǒu jīhuì wǒ dài nǐ qù cānguān Tiānzhǔjiào hé Jīdūjiào de jiàotáng, yǒuxiē gǔlǎo de jiàotáng bèi bǎoliú xiàlái, hái chéng le yǒumíng de gǔjī ne.",
+            "english": "You've been Catholic since childhood; when there's a chance, I'll take you to visit Catholic and Protestant churches. Some ancient churches have been preserved and even became renowned historic landmarks."
+          },
+          {
+            "id": "b3l15d1-l12",
+            "speaker": "尚恩",
+            "traditional": "太好了！這樣我就能更了解東西方宗教文化的差異了。",
+            "simplified": "太好了！这样我就能更了解东西方宗教文化的差异了。",
+            "pinyin": "Tài hǎo le! Zhèyàng wǒ jiù néng gèng liǎojiě dōngxīfāng zōngjiào wénhuà de chāyì le.",
+            "english": "Wonderful! That way I can gain a deeper understanding of the differences between Eastern and Western religious cultures."
+          },
+          {
+            "id": "b3l15d1-l13",
+            "speaker": "明哲",
+            "traditional": "其實把古蹟好好保留下來很重要。幾年前，我看到一座古蹟被燒光的新聞，那時候覺得很難過，沒辦法用文字來形容。",
+            "simplified": "其实把古迹好好保留下来很重要。几年前，我看到一座古迹被烧光的新闻，那时候觉得很难过，没办法用文字来形容。",
+            "pinyin": "Qíshí bǎ gǔjī hǎohǎo bǎoliú xiàlái hěn zhòngyào. Jǐ nián qián, wǒ kàndào yí zuò gǔjī bèi shāoguāng de xīnwén, nà shíhòu juéde hěn nánguò, méi bànfǎ yòng wénzì lái xíngróng.",
+            "english": "Actually preserving historic sites properly is very important. A few years ago I saw news of a historic landmark burning down completely; I felt so heartbroken then that words couldn't begin to describe it."
+          },
+          {
+            "id": "b3l15d1-l14",
+            "speaker": "尚恩",
+            "traditional": "我能體會你的心情。要是大家不重視古蹟的存在，被破壞了也不修理，從文化和歷史價值來看，都是相當可惜的。",
+            "simplified": "我能体会你的心情。要是大家不重视古迹的存在，被破坏了也不修理，从文化和历史价值来看，都是相当可惜的。",
+            "pinyin": "Wǒ néng tǐhuì nǐ de xīnqíng. Yàoshi dàjiā bù zhòngshì gǔjī de cúnzài, bèi pòhuài le yě bù xiūlǐ, cóng wénhuà hé lìshǐ jiàzhí lái kàn, dōu shì xiāngdāng kěxī de.",
+            "english": "I can empathize with your feelings. If people don't value the existence of historic relics and don't repair them when damaged, in terms of cultural and historical worth, that is deeply regrettable."
+          },
+          {
+            "id": "b3l15d1-l15",
+            "speaker": "明哲",
+            "traditional": "是啊。古蹟記錄了祖先生活在這塊土地上的事實，要是不見了，對家鄉的記憶也會沒了。",
+            "simplified": "是啊。古迹记录了祖先生活在这块土地上的事实，要是不见了，对家乡的记忆也会没了。",
+            "pinyin": "Shì a. Gǔjī jìlù le zǔxiān shēnghuó zài zhè kuài tǔdì shàng de shìshí, yàoshi bú jiàn le, duì jiāxiāng de jìyì yě huì méi le.",
+            "english": "Indeed. Historic relics document the reality of our ancestors living on this land; if they disappear, our collective memory of our homeland will vanish as well."
+          },
+          {
+            "id": "b3l15d1-l16",
+            "speaker": "尚恩",
+            "traditional": "好了好了，你別擔心了。我們換個開心的話題吧！",
+            "simplified": "好了好了，你别担心了。我们换个开心的话题吧！",
+            "pinyin": "Hǎo le hǎo le, nǐ bié dānxīn le. Wǒmen huàn ge kāixīn de huàtí ba!",
+            "english": "Alright, alright, don't worry so much. Let's switch to a cheerier topic!"
+          },
+          {
+            "id": "b3l15d1-l17",
+            "speaker": "明哲",
+            "traditional": "嗯。除了紅毛城，我還可以帶你去淡水碼頭看夕陽，大家都說那裡的夕陽美得沒話說呢！",
+            "simplified": "嗯。除了红毛城，我还可以带你去淡水码头看夕阳，大家都说那里的夕阳美得没话说呢！",
+            "pinyin": "En. Chúle Hóngmáochéng, wǒ hái kěyǐ dài nǐ qù Dànshuǐ mǎtóu kàn xīyáng, dàjiā dōu shuō nàlǐ de xīyáng měi de méi huà shuō ne!",
+            "english": "Mm. Besides Fort San Domingo, I can also take you to Tamsui pier to watch the sunset—everyone says the sunset there is incomparably gorgeous!"
+          },
+          {
+            "id": "b3l15d1-l18",
+            "speaker": "尚恩",
+            "traditional": "太棒了，幸好你是我的好朋友，願意當我的導遊，要不然我就看不到美麗的夕陽，更別說了解臺灣的古蹟了。",
+            "simplified": "太棒了，幸好你是我的好朋友，愿意当我的导游，要不然我就看不到美丽的夕阳，更别说了解台湾的古迹了。",
+            "pinyin": "Tài bàng le, xìnghǎo nǐ shì wǒ de hǎo péngyǒu, yuànyì dāng wǒ de dǎoyóu, yàobùrán wǒ jiù kàn bú dào měilì de xīyáng, gèng bié shuō liǎojiě Táiwān de gǔjī le.",
+            "english": "Terrific! Luckily you're my good friend and willing to be my guide, otherwise I wouldn't get to see the beautiful sunset, let alone understand Taiwan's historic landmarks."
+          },
+          {
+            "id": "b3l15d1-l19",
+            "speaker": "明哲",
+            "traditional": "你別開玩笑了，我可不是專業的導遊啊。週末我打算跟當地人聊聊，從他們口中說出的歷史，一定更有意思。",
+            "simplified": "你别开玩笑了，我可不是专业的导游啊。周末我打算跟当地人聊聊，从他们口中说出的历史，一定更有意思。",
+            "pinyin": "Nǐ bié kāi wánxiào le, wǒ kě búshì zhuānyè de dǎoyóu a. Zhōumò wǒ dǎsuàn gēn dāngdìrén liáoliao, cóng tāmen kǒuzhōng shuōchū de lìshǐ, yídìng gèng yǒu yìsi.",
+            "english": "Stop teasing, I'm certainly no professional tour guide. Over the weekend I plan to chat with locals; history told from their own mouths will surely be even more fascinating."
+          },
+          {
+            "id": "b3l15d1-l20",
+            "speaker": "尚恩",
+            "traditional": "是啊。那麼週末見吧！",
+            "simplified": "是啊。那么周末见吧！",
+            "pinyin": "Shì a. Nàme zhōumò jiàn ba!",
+            "english": "Indeed. See you this weekend then!"
+          }
+        ]
+      },
+      "grammarPages": [
+        {
+          "id": "B3L15-G01-P383",
+          "bookId": 3,
+          "lessonId": 15,
+          "partId": 1,
+          "lessonTitle": "去淡水參觀古蹟",
+          "lessonTitleEnglish": "Visit the Historic Sites in Tamsui",
+          "grammarNumber": 1,
+          "bookPage": 383,
+          "bookPageAvailable": true,
+          "printedPages": [
+            383,
+            384
+          ],
+          "audioReference": "15-1-1",
+          "titleTraditional": "簡直",
+          "titleSimplified": "简直",
+          "titleEnglish": "Simply / Virtually / Practically",
+          "learnerPromise": "Use vivid, hyperbolic emphasis to characterize extreme degrees or lifelike qualities.",
+          "explanation": "「簡直」是副詞，後面可連接「像、就像、是、就是」等。表示說話者用較誇張、生動的方式，來形容差不多達到某個情況或程度。",
+          "pattern": "Subject + 簡直 + (就 / 像 / 是) + Exaggerated Predicate",
+          "patternColumns": [
+            "Subject",
+            "簡直",
+            "Exaggeration"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l15g1-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g1-r1-c1",
+                    "traditional": "那幾條龍",
+                    "simplified": "那几条龙",
+                    "pinyin": "nà jǐ tiáo lóng",
+                    "meaning": "those dragons"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g1-r1-c2",
+                    "traditional": "簡直",
+                    "simplified": "简直",
+                    "pinyin": "jiǎnzhí",
+                    "meaning": "simply"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g1-r1-c3",
+                    "traditional": "快飛起來了",
+                    "simplified": "快飞起来了",
+                    "pinyin": "kuài fēi qǐlái le",
+                    "meaning": "about to take flight"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l15g1-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g1-r2-c1",
+                    "traditional": "方小姐皮膚很好",
+                    "simplified": "方小姐皮肤很好",
+                    "pinyin": "Fāng xiǎojiě pífū hěn hǎo",
+                    "meaning": "Miss Fang's skin is great"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g1-r2-c2",
+                    "traditional": "簡直",
+                    "simplified": "简直",
+                    "pinyin": "jiǎnzhí",
+                    "meaning": "simply"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g1-r2-c3",
+                    "traditional": "像個仙女一樣",
+                    "simplified": "像个仙女一样",
+                    "pinyin": "xiàng ge xiānnǚ yíyàng",
+                    "meaning": "just like a fairy maiden"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l15g1-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "看過的人都說那幾條龍簡直快飛起來了。",
+                "simplified": "看过的人都说那几条龙简直快飞起来了。",
+                "pinyin": "Kànguò de rén dōu shuō nà jǐ tiáo lóng jiǎnzhí kuài fēi qǐlái le.",
+                "english": "Everyone who saw them said those dragons practically looked ready to take flight.",
+                "words": [
+                  {
+                    "id": "b3l15g1-ex1-w1",
+                    "traditional": "那幾條龍",
+                    "simplified": "那几条龙",
+                    "pinyin": "nà jǐ tiáo lóng",
+                    "meaning": "those dragons",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g1-ex1-w2",
+                    "traditional": "簡直",
+                    "simplified": "简直",
+                    "pinyin": "jiǎnzhí",
+                    "meaning": "simply / virtually",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g1-ex1-w3",
+                    "traditional": "快飛起來了",
+                    "simplified": "快飞起来了",
+                    "pinyin": "kuài fēi qǐlái le",
+                    "meaning": "about to fly",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g1-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "方小姐長得很漂亮，皮膚也很好，簡直像個仙女一樣。",
+                "simplified": "方小姐长得很漂亮，皮肤也很好，简直像个仙女一样。",
+                "pinyin": "Fāng xiǎojiě zhǎng de hěn piàoliang, pífū yě hěn hǎo, jiǎnzhí xiàng ge xiānnǚ yíyàng.",
+                "english": "Miss Fang is so lovely and has such fine skin; she looks virtually like a celestial fairy.",
+                "words": [
+                  {
+                    "id": "b3l15g1-ex2-w1",
+                    "traditional": "長得很漂亮",
+                    "simplified": "长得很漂亮",
+                    "pinyin": "zhǎng de hěn piàoliang",
+                    "meaning": "looks very pretty",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g1-ex2-w2",
+                    "traditional": "簡直像",
+                    "simplified": "简直像",
+                    "pinyin": "jiǎnzhí xiàng",
+                    "meaning": "simply like",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g1-ex2-w3",
+                    "traditional": "仙女一樣",
+                    "simplified": "仙女一样",
+                    "pinyin": "xiānnǚ yíyàng",
+                    "meaning": "like a fairy",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g1-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "在工作上，畢經理總是做得又快又好，也從來沒犯過什麼錯，簡直就像機器一樣。",
+                "simplified": "在工作上，毕经理总是做得又快又好，也从来没犯过什么错，简直就像机器一样。",
+                "pinyin": "Zài gōngzuò shàng, Bì jīnglǐ zǒngshì zuò de yòu kuài yòu hǎo, yě cónglái méi fànguò shénme cuò, jiǎnzhí jiù xiàng jīqì yíyàng.",
+                "english": "At work, Manager Bi is always swift and precise, never making errors; he is practically like a machine.",
+                "words": [
+                  {
+                    "id": "b3l15g1-ex3-w1",
+                    "traditional": "又快又好",
+                    "simplified": "又快又好",
+                    "pinyin": "yòu kuài yòu hǎo",
+                    "meaning": "both fast and good",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g1-ex3-w2",
+                    "traditional": "沒犯過錯",
+                    "simplified": "没犯过错",
+                    "pinyin": "méi fànguò cuò",
+                    "meaning": "never made mistake",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g1-ex3-w3",
+                    "traditional": "簡直就像",
+                    "simplified": "简直就像",
+                    "pinyin": "jiǎnzhí jiù xiàng",
+                    "meaning": "practically just like",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g1-ex3-w4",
+                    "traditional": "機器一樣",
+                    "simplified": "机器一样",
+                    "pinyin": "jīqì yíyàng",
+                    "meaning": "like a machine",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l15g1-cf1",
+                "question": "How is 簡直 different from ordinary intensifiers like 很 or 非常?",
+                "answer": "「很」與「非常」是客觀的程度副詞；「簡直」則帶有說話者生動、誇張的譬喻評價，常搭配「像」、「快……了」或極端狀態。",
+                "wrongTraditional": "那幾條龍很像快飛起來了，非常了不起。",
+                "wrongSimplified": "那几条龙很像快飞起来了，非常了不起。",
+                "right": {
+                  "traditional": "看過的人都說那幾條龍簡直快飛起來了。",
+                  "simplified": "看过的人都说那几条龙简直快飞起来了。",
+                  "pinyin": "Kànguò de rén dōu shuō nà jǐ tiáo lóng jiǎnzhí kuài fēi qǐlái le.",
+                  "english": "Everyone who saw them said those dragons practically looked ready to take flight.",
+                  "words": [
+                    {
+                      "id": "b3l15g1-cf1-w1",
+                      "traditional": "簡直快飛起來了",
+                      "simplified": "简直快飞起来了",
+                      "pinyin": "jiǎnzhí kuài fēi qǐlái le",
+                      "meaning": "virtually about to take flight"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l15g1-cf2",
+                "question": "Can 簡直 directly precede an adjective without 像 or 是?",
+                "answer": "可以，但該形容詞通常表示極端程度或帶有誇張意味，例如「簡直太棒了」、「簡直不可思議」。",
+                "wrongTraditional": "他唱歌唱得簡直好聽極了的一首歌。",
+                "wrongSimplified": "他唱歌唱得简直好听极了的一首歌。",
+                "right": {
+                  "traditional": "聽他唱歌，簡直像在演唱會現場一樣。",
+                  "simplified": "听他唱歌，简直像在演唱会现场一样。",
+                  "pinyin": "Tīng tā chànggē, jiǎnzhí xiàng zài yǎnchànghuì xiànchǎng yíyàng.",
+                  "english": "Listening to him sing feels virtually like being at a live concert.",
+                  "words": [
+                    {
+                      "id": "b3l15g1-cf2-w1",
+                      "traditional": "簡直像在演唱會",
+                      "simplified": "简直像在演唱会",
+                      "pinyin": "jiǎnzhí xiàng zài yǎnchànghuì",
+                      "meaning": "practically like at a concert"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l15g1-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "那座廟裡的石龍刻得十分生動，看過的人都說"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "快飛起來了。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "簡直"
+                },
+                {
+                  "id": "t2",
+                  "text": "總之"
+                },
+                {
+                  "id": "t3",
+                  "text": "幸虧"
+                },
+                {
+                  "id": "t4",
+                  "text": "何況"
+                }
+              ],
+              "correctFeedback": "太棒了！「簡直」用於誇張、生動地形容藝術雕刻幾近飛騰的逼真神韻。",
+              "repairFeedback": "請注意生動誇張的修辭：形容神韻栩栩如生幾同真實，應使用「簡直」。"
+            }
+          ],
+          "practice": {
+            "bookPage": 383,
+            "title": "Practice: 簡直",
+            "items": [
+              {
+                "id": "b3l15g1-p1",
+                "source": "p.383 #1",
+                "kind": "slot-build",
+                "prompt": "The dragons carved in stone are extraordinarily vivid. Emphasize that they look practically ready to take flight:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "明哲"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "那座寺廟裡的龍刻得十分生動，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "簡直"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "快飛起來了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "簡直",
+                    "simplified": "简直",
+                    "pinyin": "jiǎnzhí"
+                  },
+                  {
+                    "traditional": "總之",
+                    "simplified": "总之",
+                    "pinyin": "zǒngzhī"
+                  },
+                  {
+                    "traditional": "幸虧",
+                    "simplified": "幸亏",
+                    "pinyin": "xìngkuī"
+                  }
+                ],
+                "accepted": "簡直",
+                "result": {
+                  "traditional": "那座寺廟裡的龍刻得十分生動，簡直快飛起來了。",
+                  "simplified": "那座寺庙里的龙刻得十分生动，简直快飞起来了。",
+                  "pinyin": "Nà zuò sìmiào lǐ de lóng kè de shífēn shēngdòng, jiǎnzhí kuài fēi qǐlái le.",
+                  "english": "The dragons carved in that temple are so vivid they look practically ready to take flight."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "總之"
+                    ],
+                    "note": "Use 簡直 to make an exaggerated vivid comparison."
+                  },
+                  {
+                    "placed": [
+                      "幸虧"
+                    ],
+                    "note": "簡直 provides hyperbolic emphasis on lifelike qualities."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 簡直."
+              },
+              {
+                "id": "b3l15g1-p2",
+                "source": "p.383 #2",
+                "kind": "slot-build",
+                "prompt": "Praise Miss Fang's ethereal beauty and complexion:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "方小姐皮膚好又漂亮，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "簡直像"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "仙女一樣。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "簡直像",
+                    "simplified": "简直像",
+                    "pinyin": "jiǎnzhí xiàng"
+                  },
+                  {
+                    "traditional": "難道像",
+                    "simplified": "难道像",
+                    "pinyin": "nándào xiàng"
+                  },
+                  {
+                    "traditional": "往往像",
+                    "simplified": "往往像",
+                    "pinyin": "wǎngwǎng xiàng"
+                  }
+                ],
+                "accepted": "簡直像",
+                "result": {
+                  "traditional": "方小姐皮膚好又漂亮，簡直像仙女一樣。",
+                  "simplified": "方小姐皮肤好又漂亮，简直像仙女一样。",
+                  "pinyin": "Fāng xiǎojiě pífū hǎo yòu piàoliang, jiǎnzhí xiàng xiānnǚ yíyàng.",
+                  "english": "Miss Fang has such fine skin and is so lovely; she looks virtually like a fairy."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難道像"
+                    ],
+                    "note": "Comparing someone to a fairy maiden uses 簡直像."
+                  },
+                  {
+                    "placed": [
+                      "往往像"
+                    ],
+                    "note": "Use 簡直像 for hyperbolic simile."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 簡直像."
+              },
+              {
+                "id": "b3l15g1-p3",
+                "source": "p.383 #3",
+                "kind": "slot-build",
+                "prompt": "Colleague marvels at Manager Bi's flawless efficiency:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "畢經理做事又快又好，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "簡直"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "就像機器一樣。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "簡直",
+                    "simplified": "简直",
+                    "pinyin": "jiǎnzhí"
+                  },
+                  {
+                    "traditional": "偏偏",
+                    "simplified": "偏偏",
+                    "pinyin": "piānpiān"
+                  },
+                  {
+                    "traditional": "甚至",
+                    "simplified": "甚至",
+                    "pinyin": "shènzhì"
+                  }
+                ],
+                "accepted": "簡直",
+                "result": {
+                  "traditional": "畢經理做事又快又好，簡直就像機器一樣。",
+                  "simplified": "毕经理做事又快又好，简直就像机器一样。",
+                  "pinyin": "Bì jīnglǐ zuòshì yòu kuài yòu hǎo, jiǎnzhí jiù xiàng jīqì yíyàng.",
+                  "english": "Manager Bi works fast and well; he is practically just like a machine."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "偏偏"
+                    ],
+                    "note": "Use 簡直 for an exaggerated simile."
+                  },
+                  {
+                    "placed": [
+                      "甚至"
+                    ],
+                    "note": "Emphasis before 就像 takes 簡直."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 簡直."
+              },
+              {
+                "id": "b3l15g1-p4",
+                "source": "p.384 #2",
+                "kind": "slot-build",
+                "prompt": "Friend sang amazingly in KTV. Compare him to a live concert singer:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "他唱歌唱得太好聽了，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "簡直是"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "歌星的水準。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "簡直是",
+                    "simplified": "简直是",
+                    "pinyin": "jiǎnzhí shì"
+                  },
+                  {
+                    "traditional": "究竟是",
+                    "simplified": "究竟是",
+                    "pinyin": "jiūjìng shì"
+                  },
+                  {
+                    "traditional": "畢竟是",
+                    "simplified": "毕竟是",
+                    "pinyin": "bìjìng shì"
+                  }
+                ],
+                "accepted": "簡直是",
+                "result": {
+                  "traditional": "他唱歌唱得太好聽了，簡直是歌星的水準。",
+                  "simplified": "他唱歌唱得太好听了，简直是歌星的水准。",
+                  "pinyin": "Tā chànggē chàng de tài hǎotīng le, jiǎnzhí shì gēxīng de shuǐzhǔn.",
+                  "english": "His singing is so wonderful, it's practically at the level of a pop star."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "究竟是"
+                    ],
+                    "note": "Praising singing as reaching star quality uses 簡直是."
+                  },
+                  {
+                    "placed": [
+                      "畢竟是"
+                    ],
+                    "note": "Use 簡直是 to express exaggerated praise."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 簡直是."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L15-G02-P384",
+          "bookId": 3,
+          "lessonId": 15,
+          "partId": 1,
+          "lessonTitle": "去淡水參觀古蹟",
+          "lessonTitleEnglish": "Visit the Historic Sites in Tamsui",
+          "grammarNumber": 2,
+          "bookPage": 384,
+          "bookPageAvailable": true,
+          "printedPages": [
+            384,
+            386
+          ],
+          "audioReference": "15-1-2",
+          "titleTraditional": "Vs得沒話說",
+          "titleSimplified": "Vs得没话说",
+          "titleEnglish": "Beyond words / Superlatively great",
+          "learnerPromise": "Praise superlative quality, speed, beauty, or conduct that leaves zero room for critique.",
+          "explanation": "這個語法表示說話者對某件事情、某個情況，找不出更合適、更好的語詞來形容或說明。多用於正面極致語氣。",
+          "pattern": "Subject + Stative Verb + 得沒話說",
+          "patternColumns": [
+            "Subject",
+            "Vs",
+            "得沒話說"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l15g2-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g2-r1-c1",
+                    "traditional": "淡水碼頭的夕陽",
+                    "simplified": "淡水码头的夕阳",
+                    "pinyin": "Dànshuǐ mǎtóu de xīyáng",
+                    "meaning": "Tamsui pier sunset"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g2-r1-c2",
+                    "traditional": "美",
+                    "simplified": "美",
+                    "pinyin": "měi",
+                    "meaning": "beautiful"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g2-r1-c3",
+                    "traditional": "得沒話說",
+                    "simplified": "得没话说",
+                    "pinyin": "de méi huà shuō",
+                    "meaning": "beyond words"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l15g2-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g2-r2-c1",
+                    "traditional": "電腦處理速度",
+                    "simplified": "电脑处理速度",
+                    "pinyin": "diànnǎo chǔlǐ sùdù",
+                    "meaning": "computer speed"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g2-r2-c2",
+                    "traditional": "快",
+                    "simplified": "快",
+                    "pinyin": "kuài",
+                    "meaning": "fast"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g2-r2-c3",
+                    "traditional": "得沒話說",
+                    "simplified": "得没话说",
+                    "pinyin": "de méi huà shuō",
+                    "meaning": "beyond words"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l15g2-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "大家都說那裡的夕陽美得沒話說呢！",
+                "simplified": "大家都说那里的夕阳美得没话说呢！",
+                "pinyin": "Dàjiā dōu shuō nàlǐ de xīyáng měi de méi huà shuō ne!",
+                "english": "Everyone says the sunset there is incomparably gorgeous!",
+                "words": [
+                  {
+                    "id": "b3l15g2-ex1-w1",
+                    "traditional": "那裡的夕陽",
+                    "simplified": "那里的夕阳",
+                    "pinyin": "nàlǐ de xīyáng",
+                    "meaning": "sunset there",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g2-ex1-w2",
+                    "traditional": "美得沒話說",
+                    "simplified": "美得没话说",
+                    "pinyin": "měi de méi huà shuō",
+                    "meaning": "gorgeous beyond words",
+                    "suffix": "！"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g2-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "這台電腦處理資料的速度快得沒話說，上傳和下載影片只要幾秒就完成了。",
+                "simplified": "这台电脑处理资料的速度快得没话说，上传和下载影片只要几秒就完成了。",
+                "pinyin": "Zhè tái diànnǎo chǔlǐ zīliào de sùdù kuài de méi huà shuō, shàngchuán hé xiàzài yǐngpiàn zhǐyào jǐ miǎo jiù wánchéng le.",
+                "english": "This computer's processing speed is blazingly fast; uploading and downloading videos takes just a few seconds.",
+                "words": [
+                  {
+                    "id": "b3l15g2-ex2-w1",
+                    "traditional": "處理速度",
+                    "simplified": "处理速度",
+                    "pinyin": "chǔlǐ sùdù",
+                    "meaning": "processing speed",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g2-ex2-w2",
+                    "traditional": "快得沒話說",
+                    "simplified": "快得没话说",
+                    "pinyin": "kuài de méi huà shuō",
+                    "meaning": "incomparably fast",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g2-ex2-w3",
+                    "traditional": "上傳下載",
+                    "simplified": "上传下载",
+                    "pinyin": "shàngchuán xiàzài",
+                    "meaning": "upload and download",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g2-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "方同學不僅用功讀書、尊敬老師，假日還去育幼院服務，簡直是優秀得沒話說。",
+                "simplified": "方同学不仅用功读书、尊敬老师，假日还去育幼院服务，简直是优秀得没话说。",
+                "pinyin": "Fāng tóngxué bùjǐn yònggōng dúshū, zūnjìng lǎoshī, jiàrì hái qù yùyòuyuàn fúwù, jiǎnzhí shì yōuxiù de méi huà shuō.",
+                "english": "Classmate Fang not only studies hard and respects instructors, but even volunteers at the orphanage on holidays; he is practically exemplary beyond reproach.",
+                "words": [
+                  {
+                    "id": "b3l15g2-ex3-w1",
+                    "traditional": "用功讀書",
+                    "simplified": "用功读书",
+                    "pinyin": "yònggōng dúshū",
+                    "meaning": "study diligently",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g2-ex3-w2",
+                    "traditional": "育幼院服務",
+                    "simplified": "育幼院服务",
+                    "pinyin": "yùyòuyuàn fúwù",
+                    "meaning": "orphanage service",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g2-ex3-w3",
+                    "traditional": "優秀得沒話說",
+                    "simplified": "优秀得没话说",
+                    "pinyin": "yōuxiù de méi huà shuō",
+                    "meaning": "superlatively outstanding",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l15g2-cf1",
+                "question": "Is Vs得沒話說 used for praise or complaints?",
+                "answer": "主要用於極高程度的正面讚嘆與誇獎（如「美得沒話說」、「快得沒話說」）；不用於批評或責備人。",
+                "wrongTraditional": "這個服務人員態度很差得沒話說，真令人討厭。",
+                "wrongSimplified": "这个服务人员态度很差得没话说，真令人讨厌。",
+                "right": {
+                  "traditional": "大家都說那裡的夕陽美得沒話說呢！",
+                  "simplified": "大家都说那里的夕阳美得没话说呢！",
+                  "pinyin": "Dàjiā dōu shuō nàlǐ de xīyáng měi de méi huà shuō ne!",
+                  "english": "Everyone says the sunset there is incomparably gorgeous!",
+                  "words": [
+                    {
+                      "id": "b3l15g2-cf1-w1",
+                      "traditional": "美得沒話說",
+                      "simplified": "美得没话说",
+                      "pinyin": "měi de méi huà shuō",
+                      "meaning": "beautiful beyond words"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l15g2-cf2",
+                "question": "Can 沒話說 be used by itself as a predicate?",
+                "answer": "可以。口語中「服務沒話說」、「品質沒話說」常直接作謂語，表示品質或表現達到無可挑剔的極致水準。",
+                "wrongTraditional": "這座古蹟的建築難怪沒話說。",
+                "wrongSimplified": "这座古迹的建筑难怪没话说。",
+                "right": {
+                  "traditional": "這家餐廳的服務和料理品質真的沒話說。",
+                  "simplified": "这家餐厅的服务和料理品质真的没话说。",
+                  "pinyin": "Zhè jiā cāntīng de fúwù hé liàolǐ pǐnzhí zhēn de méi huà shuō.",
+                  "english": "The service and culinary quality at this restaurant are truly beyond reproach.",
+                  "words": [
+                    {
+                      "id": "b3l15g2-cf2-w1",
+                      "traditional": "品質沒話說",
+                      "simplified": "品质没话说",
+                      "pinyin": "pǐnzhí méi huà shuō",
+                      "meaning": "quality beyond words"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l15g2-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "大家都說淡水碼頭的夕陽"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "呢！"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "美得沒話說"
+                },
+                {
+                  "id": "t2",
+                  "text": "美得受不了"
+                },
+                {
+                  "id": "t3",
+                  "text": "美麗極得"
+                },
+                {
+                  "id": "t4",
+                  "text": "看不下去"
+                }
+              ],
+              "correctFeedback": "太棒了！「美得沒話說」表示美麗至極，找不出更讚美的詞句來形容。",
+              "repairFeedback": "請注意極致讚美補語：形容風景無可挑剔的絕美，應使用「美得沒話說」。"
+            }
+          ],
+          "practice": {
+            "bookPage": 384,
+            "title": "Practice: Vs得沒話說",
+            "items": [
+              {
+                "id": "b3l15g2-p1",
+                "source": "p.384 #1",
+                "kind": "slot-build",
+                "prompt": "Praise the breathtaking sunset at Tamsui pier:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "明哲"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "大家都說淡水碼頭的夕陽美"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "得沒話說"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "呢！"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "得沒話說",
+                    "simplified": "得没话说",
+                    "pinyin": "de méi huà shuō"
+                  },
+                  {
+                    "traditional": "得受不了",
+                    "simplified": "得受不了",
+                    "pinyin": "de shòu bù liǎo"
+                  },
+                  {
+                    "traditional": "極了",
+                    "simplified": "极了",
+                    "pinyin": "jí le"
+                  }
+                ],
+                "accepted": "得沒話說",
+                "result": {
+                  "traditional": "大家都說淡水碼頭的夕陽美得沒話說呢！",
+                  "simplified": "大家都说淡水码头的夕阳美得没话说呢！",
+                  "pinyin": "Dàjiā dōu shuō Dànshuǐ mǎtóu de xīyáng měi de méi huà shuō ne!",
+                  "english": "Everyone says the sunset at Tamsui pier is gorgeous beyond words!"
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "得受不了"
+                    ],
+                    "note": "The idiom for superlative praise is 得沒話說."
+                  },
+                  {
+                    "placed": [
+                      "極了"
+                    ],
+                    "note": "Use the degree complement phrase 得沒話說."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 得沒話說."
+              },
+              {
+                "id": "b3l15g2-p2",
+                "source": "p.385 #2",
+                "kind": "slot-build",
+                "prompt": "Praise the computer's blazing processing speed:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "這台新電腦處理資料快"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "得沒話說"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，幾秒就完成了。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "得沒話說",
+                    "simplified": "得没话说",
+                    "pinyin": "de méi huà shuō"
+                  },
+                  {
+                    "traditional": "得不得了",
+                    "simplified": "得不得了",
+                    "pinyin": "de bùdéliǎo"
+                  },
+                  {
+                    "traditional": "得很",
+                    "simplified": "得很",
+                    "pinyin": "de hěn"
+                  }
+                ],
+                "accepted": "得沒話說",
+                "result": {
+                  "traditional": "這台新電腦處理資料快得沒話說，幾秒就完成了。",
+                  "simplified": "这台新电脑处理资料快得没话说，几秒就完成了。",
+                  "pinyin": "Zhè tái xīn diànnǎo chǔlǐ zīliào kuài de méi huà shuō, jǐ miǎo jiù wánchéng le.",
+                  "english": "This new computer processes data with speed beyond words; it finishes in seconds."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "得不得了"
+                    ],
+                    "note": "Use the textbook pattern 得沒話說."
+                  },
+                  {
+                    "placed": [
+                      "得很"
+                    ],
+                    "note": "Pattern is 得沒話說."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 得沒話說."
+              },
+              {
+                "id": "b3l15g2-p3",
+                "source": "p.385 #3",
+                "kind": "slot-build",
+                "prompt": "Praise Classmate Fang's outstanding integrity and deeds:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "老師"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "方同學熱心助人，簡直是優秀"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "得沒話說"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "得沒話說",
+                    "simplified": "得没话说",
+                    "pinyin": "de méi huà shuō"
+                  },
+                  {
+                    "traditional": "不用說",
+                    "simplified": "不用说",
+                    "pinyin": "bú yòng shuō"
+                  },
+                  {
+                    "traditional": "極了",
+                    "simplified": "极了",
+                    "pinyin": "jí le"
+                  }
+                ],
+                "accepted": "得沒話說",
+                "result": {
+                  "traditional": "方同學熱心助人，簡直是優秀得沒話說。",
+                  "simplified": "方同学热心助人，简直是优秀得没话说。",
+                  "pinyin": "Fāng tóngxué rèxīn zhùrén, jiǎnzhí shì yōuxiù de méi huà shuō.",
+                  "english": "Classmate Fang is so warm-hearted; he is practically exemplary beyond words."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "不用說"
+                    ],
+                    "note": "Use 得沒話說 for superlative commendation."
+                  },
+                  {
+                    "placed": [
+                      "極了"
+                    ],
+                    "note": "Pattern is 得沒話說."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 得沒話說."
+              },
+              {
+                "id": "b3l15g2-p4",
+                "source": "p.385 #1",
+                "kind": "slot-build",
+                "prompt": "Father insists his physical health is totally flawless:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "父親"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我每天運動，身體好"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "得沒話說"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，不必做健檢。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "得沒話說",
+                    "simplified": "得没话说",
+                    "pinyin": "de méi huà shuō"
+                  },
+                  {
+                    "traditional": "說不出",
+                    "simplified": "说不出",
+                    "pinyin": "shuō bù chū"
+                  },
+                  {
+                    "traditional": "得多",
+                    "simplified": "得多",
+                    "pinyin": "de duō"
+                  }
+                ],
+                "accepted": "得沒話說",
+                "result": {
+                  "traditional": "我每天運動，身體好得沒話說，不必做健檢。",
+                  "simplified": "我每天运动，身体好得没话说，不必做健检。",
+                  "pinyin": "Wǒ měitiān yùndòng, shēntǐ hǎo de méi huà shuō, búbì zuò jiànjiǎn.",
+                  "english": "I exercise every day; my health is beyond reproach, no checkup needed."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "說不出"
+                    ],
+                    "note": "The correct idiom is 得沒話說."
+                  },
+                  {
+                    "placed": [
+                      "得多"
+                    ],
+                    "note": "Use 得沒話說 to express irreproachable health."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 得沒話說."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "B3L15-P02-D02",
+      "bookId": 3,
+      "lessonId": 15,
+      "partId": 2,
+      "title": "Grammar 3–5 · Historic Sites in the Jigsaw Puzzle of History",
+      "dialogue": {
+        "id": "B3L15-D02",
+        "title": "短文 · 歷史拼圖中的古蹟",
+        "audioReference": "15-2-1",
+        "printedPages": [
+          386,
+          388
+        ],
+        "grammarFocus": [
+          "同時",
+          "及",
+          "總而言之 / 總之"
+        ],
+        "lines": [
+          {
+            "id": "b3l15d2-l1",
+            "speaker": "旁白",
+            "traditional": "歷史是人類真實生活有系統的記錄。人類每天都在記錄歷史，同時也在創造歷史。古蹟是歷史的一部分，透過相關的研究，人們能明白在某塊土地上，曾經發生過什麼重大的事情，也能體會祖先克服困難的精神。因此，現代人除了得感謝祖先留下來的智慧，也必須好好地保護古蹟。",
+            "simplified": "历史是人类真实生活有系统的记录。人类每天都在记录历史，同时也在创造历史。古迹是历史的一部分，透过相关的研究，人们能明白在某块土地上，曾经发生过什么重大的事情，也能体会祖先克服困难的精神。因此，现代人除了得感谢祖先留下来的智慧，也必须好好地保护古迹。",
+            "pinyin": "Lìshǐ shì rénlèi zhēnshí shēnghuó yǒu xìtǒng de jìlù. Rénlèi měitiān dōu zài jìlù lìshǐ, tóngshí yě zài chuàngzào lìshǐ. Gǔjī shì lìshǐ de yí bùfèn, tòuguò xiāngguān de yánjiū, rénmen néng míngbái zài mǒu kuài tǔdì shàng, céngjīng fāshēng guò shénme zhòngdà de shìqíng, yě néng tǐhuì zǔxiān kèfú kùnnán de jīngshén. Yīncǐ, xiàndàirén chúle děi gǎnxiè zǔxiān liú xiàlái de zhìhuì, yě bìxū hǎohǎo de bǎohù gǔjī.",
+            "english": "History is a systematic chronicle of mankind's real lives. Humanity records history every day, while simultaneously forging it. Historic sites form a vital piece of history; through relevant research, people can comprehend what momentous events once transpired upon a given land and appreciate the perseverance of ancestors overcoming hardships. Thus, modern people must not only express gratitude for the ancestral wisdom passed down, but also conscientiously safeguard historic relics."
+          },
+          {
+            "id": "b3l15d2-l2",
+            "speaker": "旁白",
+            "traditional": "一般人認為，古蹟是從以前保留到現在的古屋、古廟、古橋等等。不過，古蹟事實上是祖先留給我們的寶貝。不論是某個國王住過的大房子，或是某個民族建立的小寺廟，只要它具有歷史意義及紀念價值，就該被重視和保留。",
+            "simplified": "一般人认为，古迹是从以前保留到现在的古屋、古庙、古桥等等。不过，古迹事实上是祖先留给我们的宝贝。不论是某个国王住过的大房子，或是某个民族建立的小寺庙，只要它具有历史意义及纪念价值，就该被重视和保留。",
+            "pinyin": "Yìbānrén rènwéi, gǔjī shì cóng yǐqián bǎoliú dào xiànzài de gǔwū, gǔmiào, gǔqiáo děngděng. Búguò, gǔjī shìshíshàng shì zǔxiān liú gěi wǒmen de bǎobèi. Búlùn shì mǒu ge guówáng zhùguò de dà fángzi, huòshì mǒu ge mínzú jiànlì de xiǎo sìmiào, zhǐyào tā jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì hé bǎoliú.",
+            "english": "People commonly regard historic sites simply as ancient residences, old temples, and stone bridges preserved down from antiquity. In fact, however, historic sites are treasures bequeathed to us by forebears. Whether an expansive mansion where a monarch once dwelt or a small sanctuary built by an ethnic group, as long as it possesses historical meaning and commemorative value, it deserves reverence and conservation."
+          },
+          {
+            "id": "b3l15d2-l3",
+            "speaker": "旁白",
+            "traditional": "絕大部分的古蹟，給人一種既陌生又熟悉的感覺。一方面是古蹟裡的某一些物品、圖畫，在現代已極少見，甚至不存在了；一方面是從祖父母口中說出的古人古事，透過參觀相關的古蹟，能讓人感覺更親切。這樣的現象十分有趣，如果能夠深入研究，還有機會發現歷史上的祕密呢！",
+            "simplified": "绝大部分的古迹，给人一种既陌生又熟悉的感觉。一方面是古迹里的某一些物品、图画，在现代已极少见，甚至不存在了；一方面是从祖父母口中说出的古人古事，透过参观相关的古迹，能让人感觉更亲切。这样的现象十分有趣，如果能够深入研究，还有机会发现历史上的秘密呢！",
+            "pinyin": "Jué dà bùfèn de gǔjī, gěi rén yì zhǒng jì mòshēng yòu shúxī de gǎnjué. Yì fāngmiàn shì gǔjī lǐ de mǒu yìxiē wùpǐn, túhuà, zài xiàndài yǐ jí shǎojiàn, shènzhì bù cúnzài le; yì fāngmiàn shì cóng zǔfùmǔ kǒuzhōng shuōchū de gǔrén gǔshì, tòuguò cānguān xiāngguān de gǔjī, néng ràng rén gǎnjué gèng qīnqiè. Zhèyàng de xiànxiàng shífēn yǒuqù, rúguǒ nénggòu shēnrù yánjiū, hái yǒu jīhuì fāxiàn lìshǐ shàng de mìmì ne!",
+            "english": "The vast majority of historic sites evoke an ambiance both alien and familiar. On one hand, certain artifacts and murals within historic buildings are exceptionally rare today, or have vanished completely; on the other hand, ancient tales recounted by grandparents feel far more intimate when experienced in person at historic locations. This phenomenon is deeply engaging, and with deeper exploration, one might even uncover long-forgotten secrets of history!"
+          },
+          {
+            "id": "b3l15d2-l4",
+            "speaker": "旁白",
+            "traditional": "其實，某個國家的古蹟維持得越久、越好，人民越覺得驕傲。況且，參觀古蹟早就是現代人的休閒活動，所以得採用積極的方法來保護古蹟。最重要的是國家得提供經費，請專業人員使用新科技，讓古蹟恢復到良好的狀態；其次是重新整理古蹟周圍的環境，變成公園或藝術表演的場所，增加古蹟的文化價值及現代功能。例如，某個幾百年前因為戰爭而建設的房子，地下有幾條又暗又神祕的隧道。最初只有年輕人敢進去，後來市長決定把那裡當成旅遊景點，開放給一般民眾參觀，好些當地人還因為這樣有了工作、發了財。",
+            "simplified": "其实，某个国家的古迹维持得越久、越好，人民越觉得骄傲。况且，参观古迹早就是现代人的休闲活动，所以得采用积极的方法来保护古迹。最重要的是国家得提供经费，请专业人员使用新科技，让古迹恢复到良好的状态；其次是重新整理古迹周围的环境，变成公园或艺术表演的场所，增加古迹的文化价值及现代功能。例如，某个几百年前因为战争而建设的房子，地下有几条又暗又神秘的隧道。最初只有年轻人敢进去，后来市长决定把那里当成旅游景点，开放给一般民众参观，好些当地人还因为这样有了工作、发了财。",
+            "pinyin": "Qíshí, mǒu ge guójiā de gǔjī wéichí de yuè jiǔ, yuè hǎo, rénmín yuè juéde jiāo'ào. Kuàngqiě, cānguān gǔjī zǎojiù shì xiàndàirén de xiūxián huódòng, suǒyǐ děi cǎiyòng jījí de fāngfǎ lái bǎohù gǔjī. Zuì zhòngyào de shì guójiā děi tígōng jīngfèi, qǐng zhuānyè rényuán shǐyòng xīn kējì, ràng gǔjī huīfù dào liánghǎo de zhuàngtài; qícì shì chóngxīn zhěnglǐ gǔjī zhōuwéi de huánjìng, biànchéng gōngyuán huò yìshù biǎoyǎn de chǎngsuǒ, zēngjiā gǔjī de wénhuà jiàzhí jí xiàndài gōngnéng. Lìrú, mǒu ge jǐ bǎi nián qián yīnwèi zhànzhēng ér jiànshè de fángzi, dìxià yǒu jǐ tiáo yòu àn yòu shénmì de suìdào. Zuìchū zhǐyǒu niánqīngrén gǎn jìnqù, hòulái shìzhǎng juédìng bǎ nàlǐ dāngchéng lǚyóu jǐngdiǎn, kāifàng gěi yìbān mínzhòng cānguān, hǎoxiē dāngdìrén hái yīnwèi zhèyàng yǒu le gōngzuò, fā le cái.",
+            "english": "In truth, the longer and better a country preserves its historic sites, the prouder its citizenry feels. What is more, visiting historic landmarks has long been a mainstream leisure pursuit, warranting proactive conservation strategies. Crucially, the government must allocate funding and engage specialists leveraging modern technology to restore monuments to prime condition; secondarily, the surrounding premises should be refurbished into public parks or venues for performing arts, augmenting cultural value and modern utility. For example, beneath a centuries-old structure erected during wartime lay several dark, secretive tunnels. Initially only bold youths ventured within; later the mayor designated the site as a tourist attraction accessible to the general public, providing numerous locals with employment and newfound prosperity."
+          },
+          {
+            "id": "b3l15d2-l5",
+            "speaker": "旁白",
+            "traditional": "總而言之，古蹟就像歷史拼圖中的一片，如果能認得這個部分，就能透過它們拼出有意義的歷史故事。從這些故事中，我們能避免再次犯錯，尋找更有價值的生命意義，創造更美好的明天。這就是所謂的「了解過去、掌握未來」吧！",
+            "simplified": "总而言之，古迹就像历史拼图中的一片，如果能认得这个部分，就能透过它们拼出有意义的历史故事。从这些故事中，我们能避免再次犯错，寻找更有价值的生命意义，创造更美好的明天。这就是所谓的「了解过去、掌握未来」吧！",
+            "pinyin": "Zǒng'éryánzhī, gǔjī jiù xiàng lìshǐ pīntú zhōng de yí piàn, rúguǒ néng rènde zhège bùfèn, jiù néng tòuguò tāmen pīnchū yǒu yìyì de lìshǐ gùshì. Cóng zhèxiē gùshì zhōng, wǒmen néng bìmiǎn zàicì fàncuò, xúnzhǎo gèng yǒu jiàzhí de shēngmìng yìyì, chuàngzào gèng měihǎo de míngtiān. Zhè jiùshì suǒwèi de \"liǎojiě guòqù, zhǎngwò wèilái\" ba!",
+            "english": "In short, historic sites resemble pieces in history's vast jigsaw puzzle; if we can recognize each segment, we can assemble coherent historical narratives through them. From these stories we can avoid repeating mistakes, discover deeper life purpose, and forge a brighter tomorrow. That, after all, is what is meant by 'understanding the past to master the future'!"
+          }
+        ]
+      },
+      "grammarPages": [
+        {
+          "id": "B3L15-G03-P392",
+          "bookId": 3,
+          "lessonId": 15,
+          "partId": 2,
+          "lessonTitle": "歷史拼圖中的古蹟",
+          "lessonTitleEnglish": "Historic Sites in the Jigsaw Puzzle of History",
+          "grammarNumber": 3,
+          "bookPage": 392,
+          "bookPageAvailable": true,
+          "printedPages": [
+            392,
+            393
+          ],
+          "audioReference": "15-2-1",
+          "titleTraditional": "同時",
+          "titleSimplified": "同时",
+          "titleEnglish": "At the same time / Concurrently / Furthermore",
+          "learnerPromise": "Connect two concurrent actions, events, or dual identities in coordinate clauses.",
+          "explanation": "「同時」當名詞或副詞使用時，表示動作、事件在相同的時間或時段發生。在複句中的功能是連詞，連接兩個對等的句子，表示進一層的關係。",
+          "pattern": "Clause 1, + 同時 + (也) + Clause 2",
+          "patternColumns": [
+            "Clause 1",
+            "同時",
+            "Clause 2"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l15g3-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g3-r1-c1",
+                    "traditional": "人類每天在記錄歷史",
+                    "simplified": "人类每天在记录历史",
+                    "pinyin": "rénlèi měitiān zài jìlù lìshǐ",
+                    "meaning": "humans record history daily"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g3-r1-c2",
+                    "traditional": "同時",
+                    "simplified": "同时",
+                    "pinyin": "tóngshí",
+                    "meaning": "simultaneously"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g3-r1-c3",
+                    "traditional": "也在創造歷史",
+                    "simplified": "也在创造历史",
+                    "pinyin": "yě zài chuàngzào lìshǐ",
+                    "meaning": "also create history"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l15g3-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g3-r2-c1",
+                    "traditional": "孔子是哲學代表人物",
+                    "simplified": "孔子是哲学代表人物",
+                    "pinyin": "Kǒngzǐ shì zhéxué dàibiǎo rénwù",
+                    "meaning": "Confucius represents philosophy"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g3-r2-c2",
+                    "traditional": "同時",
+                    "simplified": "同时",
+                    "pinyin": "tóngshí",
+                    "meaning": "furthermore"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g3-r2-c3",
+                    "traditional": "也是最受尊敬的老師",
+                    "simplified": "也是最受尊敬的老师",
+                    "pinyin": "yě shì zuì shòu zūnjìng de lǎoshī",
+                    "meaning": "also most revered teacher"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l15g3-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "人類每天都在記錄歷史，同時也在創造歷史。",
+                "simplified": "人类每天都在记录历史，同时也在创造历史。",
+                "pinyin": "Rénlèi měitiān dōu zài jìlù lìshǐ, tóngshí yě zài chuàngzào lìshǐ.",
+                "english": "Humanity records history every day, while simultaneously forging history.",
+                "words": [
+                  {
+                    "id": "b3l15g3-ex1-w1",
+                    "traditional": "記錄歷史",
+                    "simplified": "记录历史",
+                    "pinyin": "jìlù lìshǐ",
+                    "meaning": "record history",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g3-ex1-w2",
+                    "traditional": "同時也在",
+                    "simplified": "同时也在",
+                    "pinyin": "tóngshí yě zài",
+                    "meaning": "at the same time also",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g3-ex1-w3",
+                    "traditional": "創造歷史",
+                    "simplified": "创造历史",
+                    "pinyin": "chuàngzào lìshǐ",
+                    "meaning": "create history",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g3-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "我和姊姊比賽看誰先把房間打掃乾淨，沒想到最後我們同時完成了。",
+                "simplified": "我和姐姐比赛看谁先把房间打扫干净，没想到最后我们同时完成了。",
+                "pinyin": "Wǒ hé jiějiě bǐsài kàn shéi xiān bǎ fángjiān dǎsǎo gānjìng, méi xiǎngdào zuìhòu wǒmen tóngshí wánchéng le.",
+                "english": "My older sister and I competed to see who could clean their room first; unexpectedly, we finished at the exact same moment.",
+                "words": [
+                  {
+                    "id": "b3l15g3-ex2-w1",
+                    "traditional": "打掃乾淨",
+                    "simplified": "打扫干净",
+                    "pinyin": "dǎsǎo gānjìng",
+                    "meaning": "clean up",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g3-ex2-w2",
+                    "traditional": "同時完成",
+                    "simplified": "同时完成",
+                    "pinyin": "tóngshí wánchéng",
+                    "meaning": "finish simultaneously",
+                    "suffix": "了。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g3-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "在中國歷史上，孔子是哲學方面的代表人物，同時也是華人最尊敬的老師。",
+                "simplified": "在中国历史上，孔子是哲学方面的代表人物，同时也是华人最尊敬的老师。",
+                "pinyin": "Zài Zhōngguó lìshǐ shàng, Kǒngzǐ shì zhéxué fāngmiàn de dàibiǎo rénwù, tóngshí yě shì Huárén zuì zūnjìng de lǎoshī.",
+                "english": "In Chinese history, Confucius is an exemplary philosopher, and concurrently the teacher most venerated by Chinese people.",
+                "words": [
+                  {
+                    "id": "b3l15g3-ex3-w1",
+                    "traditional": "代表人物",
+                    "simplified": "代表人物",
+                    "pinyin": "dàibiǎo rénwù",
+                    "meaning": "representative figure",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g3-ex3-w2",
+                    "traditional": "同時也是",
+                    "simplified": "同时也是",
+                    "pinyin": "tóngshí yě shì",
+                    "meaning": "at the same time also is",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g3-ex3-w3",
+                    "traditional": "最尊敬的老師",
+                    "simplified": "最尊敬的老师",
+                    "pinyin": "zuì zūnjìng de lǎoshī",
+                    "meaning": "most revered teacher",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l15g3-cf1",
+                "question": "How is 同時 different from 一邊……一邊……?",
+                "answer": "「一邊……一邊……」專門指同一個主體在當下同時做出兩個肢體或口語動作（如一邊吃飯一邊看電視）；「同時」則能連結宏觀的社會事件、多重身分或更進一步的觀點。",
+                "wrongTraditional": "他一邊是公司老闆，一邊是大學教授。",
+                "wrongSimplified": "他一边是公司老板，一边是大学教授。",
+                "right": {
+                  "traditional": "他是這家公司的老闆，同時也是大學哲學系的教授。",
+                  "simplified": "他是这家公司的老板，同时也是大学哲学系的教授。",
+                  "pinyin": "Tā shì zhè jiā gōngsī de lǎobǎn, tóngshí yě shì dàxué zhéxuéxì de jiàoshòu.",
+                  "english": "He is the boss of this firm, and simultaneously a professor in the college philosophy department.",
+                  "words": [
+                    {
+                      "id": "b3l15g3-cf1-w1",
+                      "traditional": "同時也是教授",
+                      "simplified": "同时也是教授",
+                      "pinyin": "tóngshí yě shì jiàoshòu",
+                      "meaning": "concurrently also a professor"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l15g3-cf2",
+                "question": "Can 同時 serve as an adverb meaning 'at the same time'?",
+                "answer": "可以。「同時」可作時間副詞，修飾動詞（如「同時出發」、「同時到達」），表示多方行動分秒不差同步完成。",
+                "wrongTraditional": "我們兩個一邊到家了，真巧。",
+                "wrongSimplified": "我们两个一边到家了，真巧。",
+                "right": {
+                  "traditional": "沒想到我們兩個居然同時完成了。",
+                  "simplified": "没想到我们两个居然同时完成了。",
+                  "pinyin": "Méi xiǎngdào wǒmen liǎng ge jūrán tóngshí wánchéng le.",
+                  "english": "Unexpectedly the two of us actually finished at the exact same moment.",
+                  "words": [
+                    {
+                      "id": "b3l15g3-cf2-w1",
+                      "traditional": "同時完成",
+                      "simplified": "同时完成",
+                      "pinyin": "tóngshí wánchéng",
+                      "meaning": "finish simultaneously"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l15g3-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "人類每天都在記錄歷史，"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "也在創造歷史。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "同時"
+                },
+                {
+                  "id": "t2",
+                  "text": "難怪"
+                },
+                {
+                  "id": "t3",
+                  "text": "往往"
+                },
+                {
+                  "id": "t4",
+                  "text": "甚至"
+                }
+              ],
+              "correctFeedback": "太棒了！「同時」用於連接同時間進行的兩種重大使命與歷史進程。",
+              "repairFeedback": "請注意平行並存的關係：記錄歷史與創造歷史兩者並進，應填入「同時」。"
+            }
+          ],
+          "practice": {
+            "bookPage": 392,
+            "title": "Practice: 同時",
+            "items": [
+              {
+                "id": "b3l15g3-p1",
+                "source": "p.392 #1",
+                "kind": "slot-build",
+                "prompt": "State that mankind chronicles history while forging it at the same time:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "旁白"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "人類每天都在記錄歷史，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "同時"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "也在創造歷史。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "同時",
+                    "simplified": "同时",
+                    "pinyin": "tóngshí"
+                  },
+                  {
+                    "traditional": "難道",
+                    "simplified": "难道",
+                    "pinyin": "nándào"
+                  },
+                  {
+                    "traditional": "況且",
+                    "simplified": "况且",
+                    "pinyin": "kuàngqiě"
+                  }
+                ],
+                "accepted": "同時",
+                "result": {
+                  "traditional": "人類每天都在記錄歷史，同時也在創造歷史。",
+                  "simplified": "人类每天都在记录历史，同时也在创造历史。",
+                  "pinyin": "Rénlèi měitiān dōu zài jìlù lìshǐ, tóngshí yě zài chuàngzào lìshǐ.",
+                  "english": "Humanity records history every day, while simultaneously forging it."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難道"
+                    ],
+                    "note": "Connecting two concurrent historical deeds takes 同時."
+                  },
+                  {
+                    "placed": [
+                      "況且"
+                    ],
+                    "note": "Use 同時 to describe dual simultaneous dimensions."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 同時."
+              },
+              {
+                "id": "b3l15g3-p2",
+                "source": "p.392 #2",
+                "kind": "slot-build",
+                "prompt": "Two runners crossed the finish line at the exact same moment:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "沒想到我們兩個人竟然"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "同時"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "到達了終點。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "同時",
+                    "simplified": "同时",
+                    "pinyin": "tóngshí"
+                  },
+                  {
+                    "traditional": "有時",
+                    "simplified": "有时",
+                    "pinyin": "yǒushí"
+                  },
+                  {
+                    "traditional": "準時",
+                    "simplified": "准时",
+                    "pinyin": "zhǔnshí"
+                  }
+                ],
+                "accepted": "同時",
+                "result": {
+                  "traditional": "沒想到我們兩個人竟然同時到達了終點。",
+                  "simplified": "没想到我们两个人竟然同时到达了终点。",
+                  "pinyin": "Méi xiǎngdào wǒmen liǎng ge rén jìngrán tóngshí dàodá le zhōngdiǎn.",
+                  "english": "Unexpectedly the two of us actually reached the finish line simultaneously."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "有時"
+                    ],
+                    "note": "Reaching a mark at the exact same moment is 同時."
+                  },
+                  {
+                    "placed": [
+                      "準時"
+                    ],
+                    "note": "準時 means punctual, whereas 同時 means simultaneous."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 同時."
+              },
+              {
+                "id": "b3l15g3-p3",
+                "source": "p.392 #3",
+                "kind": "slot-build",
+                "prompt": "Describe Confucius as both philosopher and venerated educator:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "孔子是哲學家，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "同時也是"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "受人尊敬的老師。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "同時也是",
+                    "simplified": "同时也是",
+                    "pinyin": "tóngshí yě shì"
+                  },
+                  {
+                    "traditional": "難怪也是",
+                    "simplified": "难怪也是",
+                    "pinyin": "nánguài yě shì"
+                  },
+                  {
+                    "traditional": "往往也是",
+                    "simplified": "往往也是",
+                    "pinyin": "wǎngwǎng yě shì"
+                  }
+                ],
+                "accepted": "同時也是",
+                "result": {
+                  "traditional": "孔子是哲學家，同時也是受人尊敬的老師。",
+                  "simplified": "孔子是哲学家，同时也是受人尊敬的老师。",
+                  "pinyin": "Kǒngzǐ shì zhéxuéjiā, tóngshí yě shì shòu rén zūnjìng de lǎoshī.",
+                  "english": "Confucius was a philosopher, and concurrently a deeply revered teacher."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難怪也是"
+                    ],
+                    "note": "Pairing two concurrent roles takes 同時也是."
+                  },
+                  {
+                    "placed": [
+                      "往往也是"
+                    ],
+                    "note": "Use 同時也是 for coordinate identities."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 同時也是."
+              },
+              {
+                "id": "b3l15g3-p4",
+                "source": "p.393 #1",
+                "kind": "slot-build",
+                "prompt": "She works full-time while also raising her two children:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "她除了努力工作，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "同時也"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "要照顧兩個小孩。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "同時也",
+                    "simplified": "同时也",
+                    "pinyin": "tóngshí yě"
+                  },
+                  {
+                    "traditional": "偏偏也",
+                    "simplified": "偏偏也",
+                    "pinyin": "piānpiān yě"
+                  },
+                  {
+                    "traditional": "畢竟也",
+                    "simplified": "毕竟也",
+                    "pinyin": "bìjìng yě"
+                  }
+                ],
+                "accepted": "同時也",
+                "result": {
+                  "traditional": "她除了努力工作，同時也要照顧兩個小孩。",
+                  "simplified": "她除了努力工作，同时也要照顾两个小孩。",
+                  "pinyin": "Tā chúle nǔlì gōngzuò, tóngshí yě yào zhàogù liǎng ge xiǎohái.",
+                  "english": "Besides working hard, she simultaneously has to take care of two children."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "偏偏也"
+                    ],
+                    "note": "Balancing dual commitments is expressed with 同時也."
+                  },
+                  {
+                    "placed": [
+                      "畢竟也"
+                    ],
+                    "note": "Use 同時也 to state parallel duties."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 同時也."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L15-G04-P393",
+          "bookId": 3,
+          "lessonId": 15,
+          "partId": 2,
+          "lessonTitle": "歷史拼圖中的古蹟",
+          "lessonTitleEnglish": "Historic Sites in the Jigsaw Puzzle of History",
+          "grammarNumber": 4,
+          "bookPage": 393,
+          "bookPageAvailable": true,
+          "printedPages": [
+            393,
+            395
+          ],
+          "audioReference": "15-2-2",
+          "titleTraditional": "及",
+          "titleSimplified": "及",
+          "titleEnglish": "And / As well as (formal conjunction)",
+          "learnerPromise": "Connect coordinate nouns or noun phrases in formal and written Chinese.",
+          "explanation": "「及」是連詞，意思和「和」、「跟」一樣，不過用法較正式，多用於書面。「及」的前後常是名詞、名詞短語。如果用來連接三個以上的名詞或名詞短語，「及」則用在最後兩個之間。",
+          "pattern": "Noun 1, + (Noun 2) + 及 + Noun 3",
+          "patternColumns": [
+            "Noun 1",
+            "及",
+            "Noun 2"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l15g4-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g4-r1-c1",
+                    "traditional": "歷史意義",
+                    "simplified": "历史意义",
+                    "pinyin": "lìshǐ yìyì",
+                    "meaning": "historical meaning"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g4-r1-c2",
+                    "traditional": "及",
+                    "simplified": "及",
+                    "pinyin": "jí",
+                    "meaning": "and"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g4-r1-c3",
+                    "traditional": "紀念價值",
+                    "simplified": "纪念价值",
+                    "pinyin": "jìniàn jiàzhí",
+                    "meaning": "commemorative value"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l15g4-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g4-r2-c1",
+                    "traditional": "手機、筆電",
+                    "simplified": "手机、笔电",
+                    "pinyin": "shǒujī, bǐdiàn",
+                    "meaning": "phones and laptops"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g4-r2-c2",
+                    "traditional": "及",
+                    "simplified": "及",
+                    "pinyin": "jí",
+                    "meaning": "and"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g4-r2-c3",
+                    "traditional": "平板電腦",
+                    "simplified": "平板电脑",
+                    "pinyin": "píngbǎn diànnǎo",
+                    "meaning": "tablets"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l15g4-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "只要它具有歷史意義及紀念價值，就該被重視和保留。",
+                "simplified": "只要它具有历史意义及纪念价值，就该被重视和保留。",
+                "pinyin": "Zhǐyào tā jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì hé bǎoliú.",
+                "english": "As long as it possesses historical meaning and commemorative worth, it deserves esteem and conservation.",
+                "words": [
+                  {
+                    "id": "b3l15g4-ex1-w1",
+                    "traditional": "歷史意義",
+                    "simplified": "历史意义",
+                    "pinyin": "lìshǐ yìyì",
+                    "meaning": "historical meaning",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g4-ex1-w2",
+                    "traditional": "及紀念價值",
+                    "simplified": "及纪念价值",
+                    "pinyin": "jí jìniàn jiàzhí",
+                    "meaning": "and commemorative value",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g4-ex1-w3",
+                    "traditional": "重視保留",
+                    "simplified": "重视保留",
+                    "pinyin": "zhòngshì bǎoliú",
+                    "meaning": "value and preserve",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g4-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "手機、筆電及平板都是現代人常用的3C產品。",
+                "simplified": "手机、笔电及平板都是现代人常用的3C产品。",
+                "pinyin": "Shǒujī, bǐdiàn jí píngbǎn dōu shì xiàndàirén chángyòng de 3C chǎnpǐn.",
+                "english": "Phones, laptops, and tablets are all electronic devices commonly used by modern people.",
+                "words": [
+                  {
+                    "id": "b3l15g4-ex2-w1",
+                    "traditional": "手機筆電",
+                    "simplified": "手机笔电",
+                    "pinyin": "shǒujī bǐdiàn",
+                    "meaning": "phones and laptops",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g4-ex2-w2",
+                    "traditional": "及平板",
+                    "simplified": "及平板",
+                    "pinyin": "jí píngbǎn",
+                    "meaning": "and tablets",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g4-ex2-w3",
+                    "traditional": "常用產品",
+                    "simplified": "常用产品",
+                    "pinyin": "chángyòng chǎnpǐn",
+                    "meaning": "commonly used products",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g4-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "老闆希望公司可以提高產品的品質及更好的服務。",
+                "simplified": "老板希望公司可以提高产品的品质及更好的服务。",
+                "pinyin": "Lǎobǎn xīwàng gōngsī kěyǐ tígāo chǎnpǐn de pǐnzhí jí gèng hǎo de fúwù.",
+                "english": "The boss hopes the company can enhance product quality as well as provide better services.",
+                "words": [
+                  {
+                    "id": "b3l15g4-ex3-w1",
+                    "traditional": "產品品質",
+                    "simplified": "产品品质",
+                    "pinyin": "chǎnpǐn pǐnzhí",
+                    "meaning": "product quality",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g4-ex3-w2",
+                    "traditional": "及更好服務",
+                    "simplified": "及更好服务",
+                    "pinyin": "jí gèng hǎo fúwù",
+                    "meaning": "and better service",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l15g4-cf1",
+                "question": "Can 及 connect independent clauses or conversational questions?",
+                "answer": "不行。「及」主要用於書面語，且專門連接名詞或名詞短語；口語句子或動詞分句的連接應用「和」或「而且」。",
+                "wrongTraditional": "今天天氣很好，及我們一起去公園散步吧。",
+                "wrongSimplified": "今天天气很好，及我们一起去公园散步吧。",
+                "right": {
+                  "traditional": "只要它具有歷史意義及紀念價值，就該被重視。",
+                  "simplified": "只要它具有历史意义及纪念价值，就该被重视。",
+                  "pinyin": "Zhǐyào tā jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì.",
+                  "english": "As long as it possesses historical meaning and commemorative value, it should be treasured.",
+                  "words": [
+                    {
+                      "id": "b3l15g4-cf1-w1",
+                      "traditional": "意義及價值",
+                      "simplified": "意义及价值",
+                      "pinyin": "yìyì jí jiàzhí",
+                      "meaning": "meaning and value"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l15g4-cf2",
+                "question": "Where does 及 appear when connecting three or more noun items?",
+                "answer": "連接三個或以上名詞時，「及」僅放在最後兩項之間（如：英國、美國及德國）。",
+                "wrongTraditional": "手機及筆電及平板都是現代常用的產品。",
+                "wrongSimplified": "手机及笔电及平板都是现代常用的产品。",
+                "right": {
+                  "traditional": "手機、筆電及平板都是現代人常用的3C產品。",
+                  "simplified": "手机、笔电及平板都是现代人常用的3C产品。",
+                  "pinyin": "Shǒujī, bǐdiàn jí píngbǎn dōu shì xiàndàirén chángyòng de 3C chǎnpǐn.",
+                  "english": "Phones, laptops, and tablets are all common 3C products used today.",
+                  "words": [
+                    {
+                      "id": "b3l15g4-cf2-w1",
+                      "traditional": "筆電及平板",
+                      "simplified": "笔电及平板",
+                      "pinyin": "bǐdiàn jí píngbǎn",
+                      "meaning": "laptops and tablets"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l15g4-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": "只要古蹟具有歷史意義"
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "紀念價值，就該被好好保留。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "及"
+                },
+                {
+                  "id": "t2",
+                  "text": "卻"
+                },
+                {
+                  "id": "t3",
+                  "text": "簡直"
+                },
+                {
+                  "id": "t4",
+                  "text": "只好"
+                }
+              ],
+              "correctFeedback": "太棒了！書面語中並列連接名詞短語「歷史意義」與「紀念價值」，使用連詞「及」。",
+              "repairFeedback": "請注意書面連詞用法：在正式文體中連接兩個名詞詞組，應填入「及」。"
+            }
+          ],
+          "practice": {
+            "bookPage": 393,
+            "title": "Practice: 及",
+            "items": [
+              {
+                "id": "b3l15g4-p1",
+                "source": "p.393 #1",
+                "kind": "slot-build",
+                "prompt": "Connect historical meaning and commemorative value formally:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "旁白"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "只要建築具有歷史意義"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "及"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "紀念價值，就該被重視。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "及",
+                    "simplified": "及",
+                    "pinyin": "jí"
+                  },
+                  {
+                    "traditional": "但",
+                    "simplified": "但",
+                    "pinyin": "dàn"
+                  },
+                  {
+                    "traditional": "卻",
+                    "simplified": "却",
+                    "pinyin": "què"
+                  }
+                ],
+                "accepted": "及",
+                "result": {
+                  "traditional": "只要建築具有歷史意義及紀念價值，就該被重視。",
+                  "simplified": "只要建筑具有历史意义及纪念价值，就该被重视。",
+                  "pinyin": "Zhǐyào jiànzhù jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì.",
+                  "english": "As long as a structure has historical meaning and commemorative value, it should be valued."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "但"
+                    ],
+                    "note": "Connecting coordinate noun phrases formally uses 及."
+                  },
+                  {
+                    "placed": [
+                      "卻"
+                    ],
+                    "note": "Use formal conjunction 及 between noun terms."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 及."
+              },
+              {
+                "id": "b3l15g4-p2",
+                "source": "p.394 #2",
+                "kind": "slot-build",
+                "prompt": "List modern devices: phones, laptops, and tablets:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "手機、筆記型電腦"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "及"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "平板電腦都是常用設備。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "及",
+                    "simplified": "及",
+                    "pinyin": "jí"
+                  },
+                  {
+                    "traditional": "從",
+                    "simplified": "从",
+                    "pinyin": "cóng"
+                  },
+                  {
+                    "traditional": "以",
+                    "simplified": "以",
+                    "pinyin": "yǐ"
+                  }
+                ],
+                "accepted": "及",
+                "result": {
+                  "traditional": "手機、筆記型電腦及平板電腦都是常用設備。",
+                  "simplified": "手机、笔记型电脑及平板电脑都是常用设备。",
+                  "pinyin": "Shǒujī, bǐjìxíng diànnǎo jí píngbǎn diànnǎo dōu shì chángyòng shèbèi.",
+                  "english": "Cell phones, laptops, and tablets are all commonly used equipment."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "從"
+                    ],
+                    "note": "Use 及 before the last item in a formal series."
+                  },
+                  {
+                    "placed": [
+                      "以"
+                    ],
+                    "note": "Conjunction for the final listed item is 及."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 及."
+              },
+              {
+                "id": "b3l15g4-p3",
+                "source": "p.394 #3",
+                "kind": "slot-build",
+                "prompt": "Company strives to improve quality and services:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "老闆"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "公司必須提升產品品質"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "及"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "售後服務。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "及",
+                    "simplified": "及",
+                    "pinyin": "jí"
+                  },
+                  {
+                    "traditional": "被",
+                    "simplified": "被",
+                    "pinyin": "bèi"
+                  },
+                  {
+                    "traditional": "把",
+                    "simplified": "把",
+                    "pinyin": "bǎ"
+                  }
+                ],
+                "accepted": "及",
+                "result": {
+                  "traditional": "公司必須提升產品品質及售後服務。",
+                  "simplified": "公司必须提升产品品质及售后服务。",
+                  "pinyin": "Gōngsī bìxū tíshēng chǎnpǐn pǐnzhí jí shòuhòu fúwù.",
+                  "english": "The company must elevate product quality as well as after-sales service."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "被"
+                    ],
+                    "note": "Connecting coordinate items takes 及."
+                  },
+                  {
+                    "placed": [
+                      "把"
+                    ],
+                    "note": "Use 及 to join parallel nouns."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 及."
+              },
+              {
+                "id": "b3l15g4-p4",
+                "source": "p.394 #1",
+                "kind": "slot-build",
+                "prompt": "Connect cultural values and modern public functions:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "這座公園增加了文化價值"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "及"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "現代功能。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "及",
+                    "simplified": "及",
+                    "pinyin": "jí"
+                  },
+                  {
+                    "traditional": "正",
+                    "simplified": "正",
+                    "pinyin": "zhèng"
+                  },
+                  {
+                    "traditional": "更",
+                    "simplified": "更",
+                    "pinyin": "gèng"
+                  }
+                ],
+                "accepted": "及",
+                "result": {
+                  "traditional": "這座公園增加了文化價值及現代功能。",
+                  "simplified": "这座公园增加了文化价值及现代功能。",
+                  "pinyin": "Zhè zuò gōngyuán zēngjiā le wénhuà jiàzhí jí xiàndài gōngnéng.",
+                  "english": "This park increased cultural value as well as modern functionality."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "正"
+                    ],
+                    "note": "Pairing coordinate qualities takes 及."
+                  },
+                  {
+                    "placed": [
+                      "更"
+                    ],
+                    "note": "Use 及 to join noun phrases."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 及."
+              }
+            ]
+          }
+        },
+        {
+          "id": "B3L15-G05-P395",
+          "bookId": 3,
+          "lessonId": 15,
+          "partId": 2,
+          "lessonTitle": "歷史拼圖中的古蹟",
+          "lessonTitleEnglish": "Historic Sites in the Jigsaw Puzzle of History",
+          "grammarNumber": 5,
+          "bookPage": 395,
+          "bookPageAvailable": true,
+          "printedPages": [
+            395,
+            396
+          ],
+          "audioReference": "15-2-3",
+          "titleTraditional": "總而言之 / 總之",
+          "titleSimplified": "总而言之 / 总之",
+          "titleEnglish": "In short / In conclusion / All in all",
+          "learnerPromise": "Synthesize multiple previous premises into a concise conclusion or guiding takeaway.",
+          "explanation": "「總而言之」也可以簡單說成「總之」。「總而言之」是將前面的內容或情況做個簡單的結論，不用說得太詳細。",
+          "pattern": "Detailed Premises. + 總而言之 / 總之, + Concise Summary / Action",
+          "patternColumns": [
+            "Details",
+            "總之",
+            "Summary"
+          ],
+          "patternRows": [
+            {
+              "id": "b3l15g5-r1",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g5-r1-c1",
+                    "traditional": "古蹟有各種價值",
+                    "simplified": "古迹有各种价值",
+                    "pinyin": "gǔjī yǒu gèzhǒng jiàzhí",
+                    "meaning": "historic relics have values"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g5-r1-c2",
+                    "traditional": "總而言之",
+                    "simplified": "总而言之",
+                    "pinyin": "zǒng'éryánzhī",
+                    "meaning": "in a word"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g5-r1-c3",
+                    "traditional": "它就像歷史拼圖的一片",
+                    "simplified": "它就像历史拼图的一片",
+                    "pinyin": "tā jiù xiàng lìshǐ pīntú de yí piàn",
+                    "meaning": "it's like a jigsaw piece"
+                  }
+                ]
+              ]
+            },
+            {
+              "id": "b3l15g5-r2",
+              "columns": [
+                [
+                  {
+                    "id": "b3l15g5-r2-c1",
+                    "traditional": "各方面要求都很高",
+                    "simplified": "各方面要求都很高",
+                    "pinyin": "gè fāngmiàn yāoqiú dōu hěn gāo",
+                    "meaning": "high requirements"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g5-r2-c2",
+                    "traditional": "總之",
+                    "simplified": "总之",
+                    "pinyin": "zǒngzhī",
+                    "meaning": "all in all"
+                  }
+                ],
+                [
+                  {
+                    "id": "b3l15g5-r2-c3",
+                    "traditional": "各方面得一百分才行",
+                    "simplified": "各方面得一百分才行",
+                    "pinyin": "gè fāngmiàn děi yībǎi fēn cái xíng",
+                    "meaning": "needs 100% on everything"
+                  }
+                ]
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "id": "b3l15g5-ex1",
+              "number": 1,
+              "text": {
+                "traditional": "總而言之，古蹟就像歷史拼圖中的一片，如果能認得這個部分，就能透過它們拼出有意義的歷史故事。",
+                "simplified": "总而言之，古迹就像历史拼图中的一片，如果能认得这个部分，就能透过它们拼出有意义的历史故事。",
+                "pinyin": "Zǒng'éryánzhī, gǔjī jiù xiàng lìshǐ pīntú zhōng de yí piàn, rúguǒ néng rènde zhège bùfèn, jiù néng tòuguò tāmen pīnchū yǒu yìyì de lìshǐ gùshì.",
+                "english": "In short, historic sites are like pieces in history's jigsaw puzzle; if we can recognize them, we can assemble meaningful historical narratives.",
+                "words": [
+                  {
+                    "id": "b3l15g5-ex1-w1",
+                    "traditional": "總而言之",
+                    "simplified": "总而言之",
+                    "pinyin": "zǒng'éryánzhī",
+                    "meaning": "in a word / all in all",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g5-ex1-w2",
+                    "traditional": "歷史拼圖",
+                    "simplified": "历史拼图",
+                    "pinyin": "lìshǐ pīntú",
+                    "meaning": "history jigsaw",
+                    "suffix": ""
+                  },
+                  {
+                    "id": "b3l15g5-ex1-w3",
+                    "traditional": "拼出故事",
+                    "simplified": "拼出故事",
+                    "pinyin": "pīnchū gùshì",
+                    "meaning": "piece together story",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g5-ex2",
+              "number": 2,
+              "text": {
+                "traditional": "這個產品的品質有問題，不完全是小張的錯，檢查人員也有責任。總而言之，大家應該要一起解決這個問題。",
+                "simplified": "这个产品的品质有问题，不完全是小张的错，检查人员也有责任。总而言之，大家应该要一起解决这个问题。",
+                "pinyin": "Zhège chǎnpǐn de pǐnzhí yǒu wèntí, bù wánquán shì Xiǎo Zhāng de cuò, jiǎnchá rényuán yě yǒu zérèn. Zǒng'éryánzhī, dàjiā yīnggāi yào yìqǐ jiějué zhège wèntí.",
+                "english": "The product quality issues are not solely Xiao Zhang's fault; the inspectors bear responsibility too. In short, everyone should work together to solve this problem.",
+                "words": [
+                  {
+                    "id": "b3l15g5-ex2-w1",
+                    "traditional": "品質有問題",
+                    "simplified": "品质有问题",
+                    "pinyin": "pǐnzhí yǒu wèntí",
+                    "meaning": "quality issues",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g5-ex2-w2",
+                    "traditional": "總而言之",
+                    "simplified": "总而言之",
+                    "pinyin": "zǒng'éryánzhī",
+                    "meaning": "in short",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g5-ex2-w3",
+                    "traditional": "一起解決",
+                    "simplified": "一起解决",
+                    "pinyin": "yìqǐ jiějué",
+                    "meaning": "resolve together",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l15g5-ex3",
+              "number": 3,
+              "text": {
+                "traditional": "我理想的結婚對象，得有房子、車子，當然還得長得帥、聰明、體貼等等。總之，各方面都得一百分才行。",
+                "simplified": "我理想的结婚对象，得有房子、车子，当然还得长得帅、聪明、体贴等等。总之，各方面都得一百分才行。",
+                "pinyin": "Wǒ lǐxiǎng de jiéhūn duìxiàng, děi yǒu fángzi, chēzi, dāngrán hái děi zhǎng de shuài, cōngmíng, tǐtiē děngděng. Zǒngzhī, gè fāngmiàn dōu děi yībǎi fēn cái xíng.",
+                "english": "My ideal partner must have a house and car, and naturally must be handsome, intelligent, and thoughtful. In short, they must score a hundred in every category.",
+                "words": [
+                  {
+                    "id": "b3l15g5-ex3-w1",
+                    "traditional": "結婚對象",
+                    "simplified": "结婚对象",
+                    "pinyin": "jiéhūn duìxiàng",
+                    "meaning": "marriage partner",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g5-ex3-w2",
+                    "traditional": "總之",
+                    "simplified": "总之",
+                    "pinyin": "zǒngzhī",
+                    "meaning": "in brief / all in all",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l15g5-ex3-w3",
+                    "traditional": "一百分才行",
+                    "simplified": "一百分才行",
+                    "pinyin": "yībǎi fēn cái xíng",
+                    "meaning": "must score 100",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ],
+          "confusion": {
+            "title": "Don't mix these up",
+            "items": [
+              {
+                "id": "b3l15g5-cf1",
+                "question": "How is 總之 / 總而言之 different from 總算?",
+                "answer": "「總算」表示經過漫長等待或艱辛努力後事情「終於實現」；「總之 / 總而言之」則是對前面各項討論進行綜合歸納（意即「一句話說到底」）。",
+                "wrongTraditional": "討論了三個小時，總之我們把計畫定下來了。",
+                "wrongSimplified": "讨论了三个小时，总之我们把计划定下来了。",
+                "right": {
+                  "traditional": "大家討論了很久，總算把解決方案定下來了。",
+                  "simplified": "大家讨论了很久，总算把解决方案定下来了。",
+                  "pinyin": "Dàjiā tǎolùn le hěn jiǔ, zǒngsuàn bǎ jiějué fāng'àn dìng xiàlái le.",
+                  "english": "Everyone discussed for a long time and finally settled on a solution.",
+                  "words": [
+                    {
+                      "id": "b3l15g5-cf1-w1",
+                      "traditional": "總算定下來",
+                      "simplified": "总算定下来",
+                      "pinyin": "zǒngsuàn dìng xiàlái",
+                      "meaning": "finally settled on"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "b3l15g5-cf2",
+                "question": "How is 總之 different from 總共?",
+                "answer": "「總共」是數量上的統計（合計、總計）；「總之」則是語意上的總結概括。",
+                "wrongTraditional": "這次去淡水參觀古蹟，總之花了三千塊錢。",
+                "wrongSimplified": "这次去淡水参观古迹，总之花了三千块钱。",
+                "right": {
+                  "traditional": "去淡水參觀古蹟，總共花了我三千塊錢。",
+                  "simplified": "去淡水参观古迹，总共花了我三千块钱。",
+                  "pinyin": "Qù Dànshuǐ cānguān gǔjī, zǒnggòng huā le wǒ sānqiān kuài qián.",
+                  "english": "Visiting historic sites in Tamsui cost me three thousand dollars in total.",
+                  "words": [
+                    {
+                      "id": "b3l15g5-cf2-w1",
+                      "traditional": "總共花了",
+                      "simplified": "总共花了",
+                      "pinyin": "zǒnggòng huā le",
+                      "meaning": "in total spent"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "questions": [
+            {
+              "id": "b3l15g5-q1",
+              "type": "choice",
+              "prompt": "選出最合適的詞語填入空格：",
+              "segments": [
+                {
+                  "text": ""
+                },
+                {
+                  "slot": "s1"
+                },
+                {
+                  "text": "，古蹟就像歷史拼圖中的一片，記錄了祖先的生活事實。"
+                }
+              ],
+              "tiles": [
+                {
+                  "id": "t1",
+                  "text": "總而言之"
+                },
+                {
+                  "id": "t2",
+                  "text": "難怪"
+                },
+                {
+                  "id": "t3",
+                  "text": "偏偏"
+                },
+                {
+                  "id": "t4",
+                  "text": "甚至"
+                }
+              ],
+              "correctFeedback": "太棒了！「總而言之」用於對前文所述的歷史價值與功能進行宏觀概括總結。",
+              "repairFeedback": "請注意總結語氣：對前面的各項論述作概括歸納，應選用「總而言之」。"
+            }
+          ],
+          "practice": {
+            "bookPage": 395,
+            "title": "Practice: 總而言之 / 總之",
+            "items": [
+              {
+                "id": "b3l15g5-p1",
+                "source": "p.395 #1",
+                "kind": "slot-build",
+                "prompt": "Conclude that historic sites form puzzle pieces of our past:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "旁白"
+                    },
+                    "segments": [
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "總而言之"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，古蹟就像歷史拼圖中的一片。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "總而言之",
+                    "simplified": "总而言之",
+                    "pinyin": "zǒng'éryánzhī"
+                  },
+                  {
+                    "traditional": "難怪如此",
+                    "simplified": "难怪如此",
+                    "pinyin": "nánguài rúcǐ"
+                  },
+                  {
+                    "traditional": "說來話長",
+                    "simplified": "说来话长",
+                    "pinyin": "shuōláihuàcháng"
+                  }
+                ],
+                "accepted": "總而言之",
+                "result": {
+                  "traditional": "總而言之，古蹟就像歷史拼圖中的一片。",
+                  "simplified": "总而言之，古迹就像历史拼图中的一片。",
+                  "pinyin": "Zǒng'éryánzhī, gǔjī jiù xiàng lìshǐ pīntú zhōng de yí piàn.",
+                  "english": "In short, historic sites are like a piece in history's jigsaw puzzle."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難怪如此"
+                    ],
+                    "note": "To synthesize a takeaway summary, use 總而言之."
+                  },
+                  {
+                    "placed": [
+                      "說來話長"
+                    ],
+                    "note": "Use 總而言之 for concluding summaries."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 總而言之."
+              },
+              {
+                "id": "b3l15g5-p2",
+                "source": "p.395 #2",
+                "kind": "slot-build",
+                "prompt": "Summarize the collective responsibility to resolve product defects:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "經理"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "雙方都有責任，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "總而言之"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，大家要一起解決。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "總而言之",
+                    "simplified": "总而言之",
+                    "pinyin": "zǒng'éryánzhī"
+                  },
+                  {
+                    "traditional": "總算如此",
+                    "simplified": "总算如此",
+                    "pinyin": "zǒngsuàn rúcǐ"
+                  },
+                  {
+                    "traditional": "偏偏這樣",
+                    "simplified": "偏偏这样",
+                    "pinyin": "piānpiān zhèyàng"
+                  }
+                ],
+                "accepted": "總而言之",
+                "result": {
+                  "traditional": "雙方都有責任，總而言之，大家要一起解決。",
+                  "simplified": "双方都有责任，总而言之，大家要一起解决。",
+                  "pinyin": "Shuāngfāng dōu yǒu zérèn, zǒng'éryánzhī, dàjiā yào yìqǐ jiějué.",
+                  "english": "Both sides share responsibility; all in all, everyone must resolve it together."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "總算如此"
+                    ],
+                    "note": "To wrap up a situation with a bottom-line conclusion, use 總而言之."
+                  },
+                  {
+                    "placed": [
+                      "偏偏這樣"
+                    ],
+                    "note": "Use 總而言之 to provide summary direction."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 總而言之."
+              },
+              {
+                "id": "b3l15g5-p3",
+                "source": "p.395 #3",
+                "kind": "slot-build",
+                "prompt": "List numerous partner requirements, then summarize in brief:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "要聰明、帥氣又體貼，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "總之"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，各方面都得一百分。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "總之",
+                    "simplified": "总之",
+                    "pinyin": "zǒngzhī"
+                  },
+                  {
+                    "traditional": "總共",
+                    "simplified": "总共",
+                    "pinyin": "zǒnggòng"
+                  },
+                  {
+                    "traditional": "總算",
+                    "simplified": "总算",
+                    "pinyin": "zǒngsuàn"
+                  }
+                ],
+                "accepted": "總之",
+                "result": {
+                  "traditional": "要聰明、帥氣又體貼，總之，各方面都得一百分。",
+                  "simplified": "要聪明、帅气又体贴，总之，各方面都得一百分。",
+                  "pinyin": "Yào cōngmíng, shuàiqì yòu tǐtiē, zǒngzhī, gè fāngmiàn dōu děi yībǎi fēn.",
+                  "english": "They must be smart, handsome, and caring; in a word, all aspects must score 100."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "總共"
+                    ],
+                    "note": "總共 is for numerical sums, while 總之 is for summarizing conclusions."
+                  },
+                  {
+                    "placed": [
+                      "總算"
+                    ],
+                    "note": "總算 indicates final realization after hardship; use 總之 for summary."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 總之."
+              },
+              {
+                "id": "b3l15g5-p4",
+                "source": "p.396 #1",
+                "kind": "slot-build",
+                "prompt": "Acknowledge the internet has benefits and pitfalls, concluding caution is needed:",
+                "lines": [
+                  {
+                    "speaker": {
+                      "traditional": "B"
+                    },
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "網路有優點也有風險，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "s1",
+                        "answers": [
+                          "總而言之"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "，使用時要特別小心。"
+                      }
+                    ]
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "總而言之",
+                    "simplified": "总而言之",
+                    "pinyin": "zǒng'éryánzhī"
+                  },
+                  {
+                    "traditional": "難怪會說",
+                    "simplified": "难怪会说",
+                    "pinyin": "nánguài huì shuō"
+                  },
+                  {
+                    "traditional": "何必如此",
+                    "simplified": "何必如此",
+                    "pinyin": "hébì rúcǐ"
+                  }
+                ],
+                "accepted": "總而言之",
+                "result": {
+                  "traditional": "網路有優點也有風險，總而言之，使用時要特別小心。",
+                  "simplified": "网络有优点也有风险，总而言之，使用时要特别小心。",
+                  "pinyin": "Wǎnglù yǒu yōudiǎn yě yǒu fēngxiǎn, zǒng'éryánzhī, shǐyòng shí yào tèbié xiǎoxīn.",
+                  "english": "The internet has pros and risks; in short, one must exercise special care when using it."
+                },
+                "repairs": [
+                  {
+                    "placed": [
+                      "難怪會說"
+                    ],
+                    "note": "Drawing a prudent conclusion uses 總而言之."
+                  },
+                  {
+                    "placed": [
+                      "何必如此"
+                    ],
+                    "note": "Use 總而言之 for concluding advice."
+                  }
+                ],
+                "fallbackRepair": "Fill slot with 總而言之."
               }
             ]
           }
