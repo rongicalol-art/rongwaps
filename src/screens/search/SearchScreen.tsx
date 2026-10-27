@@ -53,7 +53,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const query = searchQuery.trim();
   const searchTerm = query || DEFAULT_QUERY;
   const deferredQuery = useDeferredValue(searchTerm);
-  const { results: dictionaryResults, isSearching, searchError } = useDictionarySearch(deferredQuery);
+  const { results: dictionaryResults, isSearching, searchError, retry } = useDictionarySearch(deferredQuery);
   const { items: savedWords, isLoading: isLoadingSavedWords } = useSavedDictionaryPreview(favorites);
 
   const characterOfTheDay = useMemo(() => {
@@ -192,6 +192,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
             isFiltered={isFiltered}
             isLoading={isLoading}
             error={activeError}
+            onRetry={mode === 'global' ? retry : undefined}
             onOpenWord={setDictionaryWord}
           /></div>
         </div>

@@ -183,7 +183,7 @@ app.get('/api/dictionary/search', async (req, res) => {
     res.status(400).json({ error: 'Invalid search' }); return;
   }
   try { res.json(await searchDictionary(query, limit)); }
-  catch { res.status(503).json({ error: 'Dictionary unavailable. Please try again.' }); }
+  catch (error) { captureServerException(error, 'dictionary-search'); res.status(503).json({ error: 'Dictionary unavailable. Please try again.' }); }
 });
 app.post(['/api/dictionary/lookup', '/api/dictionary/course'], async (req, res) => {
   const words: unknown = req.body?.words;
@@ -191,7 +191,7 @@ app.post(['/api/dictionary/lookup', '/api/dictionary/course'], async (req, res) 
     res.status(400).json({ error: 'Invalid words' }); return;
   }
   try { res.json(await (req.path.endsWith('/course') ? lookupCourseCards : lookupDictionary)([...new Set((words as string[]).map(word => word.trim()))])); }
-  catch { res.status(503).json({ error: 'Dictionary unavailable. Please try again.' }); }
+  catch (error) { captureServerException(error, 'dictionary-lookup'); res.status(503).json({ error: 'Dictionary unavailable. Please try again.' }); }
 });
 
 app.get('/api/dictionary/examples', async (req, res) => {
@@ -201,7 +201,7 @@ app.get('/api/dictionary/examples', async (req, res) => {
     res.status(400).json({ error: 'Invalid word' }); return;
   }
   try { res.json(await lookupExamples(word, limit)); }
-  catch { res.status(503).json({ error: 'Examples unavailable. Please try again.' }); }
+  catch (error) { captureServerException(error, 'dictionary-examples'); res.status(503).json({ error: 'Examples unavailable. Please try again.' }); }
 });
 
 app.use("/api", (_req: express.Request, res: express.Response) => {

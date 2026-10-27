@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import type { DictionaryListEntry } from '../../../types/models';
 import { DictionaryCard } from './DictionaryCard';
 import type { SearchMode } from './DictionarySearchBar';
-import { AlertBanner, EmptyState, Skeleton } from '../../../lib/widgets';
+import { ActionButton, AlertBanner, EmptyState, Skeleton } from '../../../lib/widgets';
 
 interface DictionaryResultsProps {
   mode: SearchMode;
@@ -11,6 +11,7 @@ interface DictionaryResultsProps {
   favorites?: string[];
   isLoading: boolean;
   error: string | null;
+  onRetry?: () => void;
   /** Filters are narrowing the list, so an empty list says so. */
   isFiltered?: boolean;
   onOpenWord: (word: string) => void;
@@ -23,6 +24,7 @@ export function DictionaryResults({
   results,
   isLoading,
   error,
+  onRetry,
   isFiltered = false,
   onOpenWord,
 }: DictionaryResultsProps) {
@@ -30,8 +32,11 @@ export function DictionaryResults({
   return (
     <div className="w-full">
       {error && (
-        <AlertBanner variant="danger" message={error} className="mb-4" />
+        <AlertBanner variant="danger" message={error} className="mb-4"
+          action={onRetry ? <ActionButton variant="quiet" size="sm" onClick={onRetry}>Try again</ActionButton> : undefined} />
       )}
+
+      {isLoading && <p role="status" className="mb-3 text-sm text-ui-muted">Searching…</p>}
 
       {!error && !isLoading && results.length === 0 && (
         <EmptyState

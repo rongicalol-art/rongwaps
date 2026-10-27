@@ -310,7 +310,7 @@ export function cacheObjectUrl(
   }
 }
 
-export interface AudioPreloadProgress { ready: number; failed: number; total: number; blocked?: boolean }
+export interface AudioPreloadProgress { ready: number; failed: number; total: number; blocked?: boolean; bytes?: number }
 
 export async function preloadAudioFiles(
   audioFileNames: (string | undefined)[],
@@ -322,7 +322,7 @@ export async function preloadAudioFiles(
   if (typeof window === 'undefined') return;
   const validNames = [...new Set(audioFileNames.filter((name) => name && /\.(mp3|wav|ogg|m4a)(?:$|[?#])|^https?:\/\//i.test(name)))] as string[];
   const queue = [...validNames];
-  const progress: AudioPreloadProgress = { ready: 0, failed: 0, total: queue.length };
+  const progress: AudioPreloadProgress = { ready: 0, failed: 0, total: queue.length, bytes: 0 };
   onProgress?.({ ...progress });
 
   const processNext = async (): Promise<void> => {
@@ -330,7 +330,10 @@ export async function preloadAudioFiles(
       const fileName = queue.shift()!;
       try {
         if (!getCachedObjectUrl(objectUrls, fileName)) await getAudioObjectUrl(fileName);
-        if (!signal?.aborted) progress.ready++;
+        if (!signal?.aborted) {
+          progress.ready++;
+          progress.bytes! += objectUrlSizes.get(objectUrls)?.get(fileName)?.size ?? 0;
+        }
       } catch (error) {
         if (!signal?.aborted) { progress.failed++; debugLogger.warn('Audio', 'Failed to preload audio', { fileName: fileName.split('?')[0], error }); }
         // fetch TypeError means transport/CORS failure, not a missing recording.

@@ -101,7 +101,7 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   }, [beats]);
   const beatIndex = Math.max(0, starts.findIndex((start, i) => currentIndex >= start && currentIndex < start + beats[i].cards.length));
   const beat: QuizBeat | undefined = beats[beatIndex];
-  const audioBeats = useMemo(() => beats.slice(beatIndex, beatIndex + 2), [beats, beatIndex]);
+  const audioBeats = useMemo(() => beats.slice(beatIndex, beatIndex + (seed ? 5 : 2)), [beats, beatIndex, seed]);
   // Typed like useCardSession's card (undefined only before the deck loads; the shell renders nothing then).
   const currentCard = beat?.cards[0] as Flashcard;
   const beatEnd = beat ? starts[beatIndex] + beat.cards.length : 0;

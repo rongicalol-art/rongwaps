@@ -45,8 +45,8 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const onBuildReady = useCallback((ready: boolean) => {
     setReadyBeatId(ready ? activeBeatId : null);
   }, [activeBeatId]);
-  const audio = useQuizAudioPreparation(session.audioBeats, session.audioPreparationKey, session.completed);
   const race = useRaceQuiz();
+  const audio = useQuizAudioPreparation(session.audioBeats, session.audioPreparationKey, session.completed, race?.phase === 'preparing');
   const racePlanSource = useMemo(() => {
     if (!seed || session.planning.pending || session.planning.error || !session.planning.beats.length) return '';
     const describeCard = (card: Flashcard) => [card.id, card.bookId, card.lessonId, card.partId ?? null, card.front, card.back, card.simple ?? null, card.pinyin ?? null, card.audio ?? null, card.traditional ?? null, card.simplified ?? null];

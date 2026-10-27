@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { build } from 'esbuild';
 import { searchDictionary } from '../../src/services/dictionarySearchService';
 import { lookupDictionaryApi } from '../../src/services/dictionaryApi';
 import { executeRemoteSearch } from '../../src/services/dictionaryService';
@@ -32,4 +33,20 @@ test('exact lookup batches only requested words and stops after cancellation', a
   await assert.rejects(lookupDictionaryApi(Array.from({ length: 130 }, (_, id) => `fixture-${id}`), controller.signal), { name: 'AbortError' });
   assert.equal(batches.length, 1);
   assert.equal(batches[0].length, 64);
+});
+
+
+test('a failed warm dictionary lookup cannot block the global search', async () => {
+  const bundle = await build({ entryPoints: ['src/services/dictionarySearchService.ts'], bundle: true, platform: 'node', format: 'esm', write: false,
+    plugins: [{ name: 'failed-warm-lookup', setup(plugin) {
+      plugin.onResolve({ filter: /contentPacks$|dictionaryApi$/ }, args => ({ path: args.path, namespace: 'fixture' }));
+      plugin.onLoad({ filter: /.*/, namespace: 'fixture' }, args => ({ contents: args.path.endsWith('contentPacks')
+        ? "export const getLoadedStudyCards=()=>[{front:'老師'}]; export const fetchDictionaryRowsFromPacks=async()=>{throw new Error('warm lookup unavailable');};"
+        : "export const searchDictionaryApi=async query=>[{id:1,traditional:query}];" }));
+    } }],
+  });
+  const service = await import(`data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/services/dictionarySearchService');
+  const partial: unknown[][] = [];
+  assert.equal((await service.searchDictionary('老師', 30, rows => partial.push(rows)))[0].traditional, '老師');
+  assert.deepEqual(partial, []);
 });

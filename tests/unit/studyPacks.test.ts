@@ -8,7 +8,7 @@ import { lessonExtras, flashcardExtrasKey, flashcardExtrasShard, type FlashcardE
 import { fetchCurriculumDeckData } from '../../src/services/activityDeckFetcher';
 import { fetchPackedFlashcardExtras, fetchDictionaryRowsFromPacks } from '../../src/services/contentPacks';
 import { fetchExamples } from '../../src/services/vocabularyService';
-import { searchDictionary } from '../../src/services/dictionarySearchService';
+import { executeRemoteSearch } from '../../src/services/dictionaryService';
 
 // Exercises the generated assets through the actual pack loader, with no SRS writes.
 test('lesson bundles keep lesson examples (capped tail) and every definition while eliminating broad client downloads', async t => {
@@ -23,12 +23,15 @@ test('lesson bundles keep lesson examples (capped tail) and every definition whi
   const parts = manifest.parts.filter(part => part.bookId === 1 && part.lessonId === 1 && part.partId === 1);
   assert.ok(parts.length);
   const paths: string[] = [];
+  let dictionaryAvailable = false;
   const original = Object.getOwnPropertyDescriptor(globalThis, 'window');
   Object.defineProperty(globalThis, 'window', { configurable: true, value: {} });
   t.after(() => { if (original) Object.defineProperty(globalThis, 'window', original); else Reflect.deleteProperty(globalThis, 'window'); });
   t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL) => {
     const path = String(input); paths.push(path);
-    if (path.startsWith('/api/')) throw new Error('fixture offline');
+    if (path.startsWith('/api/')) return dictionaryAvailable
+      ? Response.json([{ id: 987654, traditional: '同學', definitions: ['successful global search'] }])
+      : Response.json({}, { status: 503 });
     const bytes = assets.get(path); assert.ok(bytes, `unexpected broad download: ${path}`);
     return new Response(new Uint8Array(bytes), { headers: { 'Content-Type': 'application/json' } });
   });
@@ -47,7 +50,16 @@ test('lesson bundles keep lesson examples (capped tail) and every definition whi
   const before = paths.length;
   assert.ok((await fetchExamples(card.front)).length);
   assert.equal(paths.length, before, 'examples resolve without fetching other books');
-  assert.ok((await searchDictionary(card.front)).length, 'warm exact search works offline');
+  const partial: unknown[][] = [];
+  await assert.rejects(executeRemoteSearch(card.front, rows => partial.push(rows)), /503/);
+  assert.ok(partial[0]?.length, 'warm exact results publish before the global request fails');
+  dictionaryAvailable = true;
+  const requestsBeforeRetry = paths.length;
+  const recovered = await executeRemoteSearch(card.front) as Array<{ id: number }>;
+  assert.equal(recovered[0].id, 987654, 'retry must replace local rows with the full global response');
+  assert.equal(paths.length, requestsBeforeRetry + 1, 'a failed search never caches its partial rows as a successful response');
+  await executeRemoteSearch(card.front);
+  assert.equal(paths.length, requestsBeforeRetry + 1, 'only the completed global response is cached');
   assert.ok(paths.filter(path => path.startsWith('/data/')).every(path => path.startsWith('/data/study/')));
   const oldBytes = brotliCompressSync(await readFile('public/data/search/dictionary-search-index.json'), { params: { [constants.BROTLI_PARAM_QUALITY]: 6 } }).length;
   const newBytes = parts.reduce((sum, part) => sum + assets.get(part.path + '.br')!.length, 0);

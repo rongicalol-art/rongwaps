@@ -46,6 +46,7 @@ export function useDictionarySearch(externalQuery: string) {
 
     setIsSearching(true);
     setSearchError(null);
+    setResults([]);
 
     try {
       let complete = false;
@@ -73,7 +74,7 @@ export function useDictionarySearch(externalQuery: string) {
           if (resultCache.size > RESULT_CACHE_LIMIT) resultCache.delete(resultCache.keys().next().value as string);
         }
         setResults(cleanedData);
-        setIsSearching(false);
+        if (complete) setIsSearching(false);
       };
       const data = await executeRemoteSearch(queryNormalized, publish);
       complete = true;
@@ -82,7 +83,6 @@ export function useDictionarySearch(externalQuery: string) {
       if (currentId !== searchIdRef.current) return;
       debugLogger.error('Supabase', 'SuperSearch RPC Failed:', err);
       setSearchError('Search is having trouble right now. Please try again.');
-      setResults([]);
     } finally {
       if (currentId === searchIdRef.current) setIsSearching(false);
     }
@@ -116,5 +116,6 @@ export function useDictionarySearch(externalQuery: string) {
     results,
     isSearching,
     searchError,
+    retry: () => { void executeSearch(externalQuery); },
   };
 }

@@ -943,8 +943,8 @@ test('quiz preparation reports distinct cached, downloaded and failed files hone
     }, undefined, (progress) => snapshots.push(progress));
   assert.deepEqual(fetched, ['new.mp3', 'missing.mp3']);
   assert.deepEqual(snapshots, [
-    { ready: 0, failed: 0, total: 3 }, { ready: 1, failed: 0, total: 3 },
-    { ready: 2, failed: 0, total: 3 }, { ready: 2, failed: 1, total: 3 },
+    { ready: 0, failed: 0, total: 3, bytes: 0 }, { ready: 1, failed: 0, total: 3, bytes: 0 },
+    { ready: 2, failed: 0, total: 3, bytes: 0 }, { ready: 2, failed: 1, total: 3, bytes: 0 },
   ]);
 });
 
@@ -957,7 +957,7 @@ test('a shared transport failure stops quiz downloads without declaring remainin
     throw new TypeError('Failed to fetch');
   }, undefined, (state) => { progress = state; });
   assert.equal(attempted.length, 3);
-  assert.deepEqual(progress, { ready: 0, failed: 3, total: 19, blocked: true });
+  assert.deepEqual(progress, { ready: 0, failed: 3, total: 19, blocked: true, bytes: 0 });
 });
 
 test('canceling one preload subscriber preserves the other subscriber and only fetches once', async () => {
@@ -1208,4 +1208,17 @@ test('offline playback allows a slow local cache to finish before the longer dea
     if (oldNavigator) Object.defineProperty(globalThis, 'navigator', oldNavigator);
     else Reflect.deleteProperty(globalThis, 'navigator');
   }
+});
+
+
+test('preload counts compressed bytes once per recording, including cached files', async () => {
+  const { preloadAudioFiles, cacheObjectUrl } = await import('../../src/services/audio/audioCache');
+  const urls = new Map<string, string>();
+  cacheObjectUrl(urls, 'cached.mp3', 'blob:cached-byte-count', 250);
+  let progress;
+  await preloadAudioFiles(['cached.mp3', 'new.mp3', 'cached.mp3'], urls, async (name) => {
+    cacheObjectUrl(urls, name, 'blob:new-byte-count', 400);
+    return 'blob:new-byte-count';
+  }, undefined, (state) => { progress = state; });
+  assert.deepEqual(progress, { ready: 2, failed: 0, total: 2, bytes: 650 });
 });

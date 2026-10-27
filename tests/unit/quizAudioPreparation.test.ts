@@ -95,3 +95,40 @@ test('every current clip prepares before readiness; lookahead does not repeatedl
     assert.deepEqual(prepared.at(-1), ['next-word.mp3', false]);
   } finally { audioService.preload = preload; audioService.prepareRecording = prepare; }
 });
+
+
+test('buffer downloads stay compressed and only the nearest two questions decode', async () => {
+  const preload = audioService.preload;
+  const prepare = audioService.prepareRecording;
+  const questions = Array.from({ length: 5 }, (_, i) => question(`buffer-${i}`));
+  const downloads: string[] = [];
+  const decoded: string[] = [];
+  const bytes: number[] = [];
+  audioService.preload = async (files, _signal, onProgress) => {
+    downloads.push(...files as string[]);
+    onProgress?.({ ready: files.length, failed: 0, total: files.length, bytes: 128 });
+  };
+  audioService.prepareRecording = async (file) => { decoded.push(file!); };
+  try {
+    await prepareQuizAudio(questions, new AbortController().signal, () => {}, (_beat, _files, size) => bytes.push(size));
+    assert.deepEqual(downloads, questions.map(beat => beat.cards[0].audio));
+    assert.deepEqual(decoded, ['buffer-0.mp3', 'buffer-1.mp3']);
+    assert.deepEqual(bytes, [128, 128, 128, 128, 128]);
+    decoded.length = 0;
+    await prepareQuizAudio(questions, new AbortController().signal, () => {}, () => {}, 0);
+    assert.deepEqual(decoded, [], 'background buffering must never decode the whole window');
+  } finally { audioService.preload = preload; audioService.prepareRecording = prepare; }
+});
+
+test('blocked or incomplete downloads never report a ready question', async () => {
+  const preload = audioService.preload;
+  const first = question('blocked');
+  try {
+    for (const blocked of [true, false]) {
+      audioService.preload = async (_files, _signal, onProgress) => onProgress?.({ ready: 0, failed: 0, total: 1, blocked });
+      await assert.rejects(prepareQuizAudio([first], new AbortController().signal, () => {}, () => {
+        assert.fail('incomplete audio cannot be ready');
+      }), /download failed/);
+    }
+  } finally { audioService.preload = preload; }
+});
