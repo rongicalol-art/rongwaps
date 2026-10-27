@@ -2,38 +2,172 @@
   "B3L05-G01-P128": {
     "bookPage": 128,
     "title": "Practice: 萬一",
-    "allowWords": [
-      "萬一"
-    ],
     "items": [
       {
         "id": "b3l5g1-p1",
-        "source": "p.128 #1",
+        "source": "p.130 #1",
         "kind": "slot-build",
-        "prompt": "Precaution against bad weather:",
-        "quiet": true,
-        "tiles": [
+        "prompt": "Your friend isn't taking enough travel cash. Advise them:",
+        "lines": [
           {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
+            "speaker": {
+              "traditional": "朋友"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我明天要去旅行，帶這些現金應該夠吧？"
+              }
+            ]
           },
           {
-            "traditional": "一連",
-            "simplified": "一连",
-            "pinyin": "yìlián"
-          },
-          {
-            "traditional": "以為",
-            "simplified": "以为",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "結果",
-            "simplified": "结果",
-            "pinyin": "jiéguǒ"
+            "speaker": {
+              "traditional": "我"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "多帶一點吧，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "萬一遇到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "急事才有現金可用。"
+              }
+            ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "萬一遇到",
+            "simplified": "万一遇到",
+            "pinyin": "wànyī yùdào"
+          },
+          {
+            "traditional": "要是遇到",
+            "simplified": "要是遇到",
+            "pinyin": "yàoshi yùdào"
+          },
+          {
+            "traditional": "所以遇到",
+            "simplified": "所以遇到",
+            "pinyin": "suǒyǐ yùdào"
+          }
+        ],
+        "accepted": "萬一遇到",
+        "result": {
+          "traditional": "多帶一點吧，萬一遇到急事才有現金可用。",
+          "simplified": "多带一点吧，万一遇到急事才有现金可用。",
+          "pinyin": "Duō dài yìdiǎn ba, wànyī yùdào jíshì cái yǒu xiànjīn kě yòng.",
+          "english": "Bring a bit more; in case you run into an emergency, you'll have cash on hand."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "要是遇到"
+            ],
+            "note": "萬一 specifically marks an unexpected adverse risk, pairing with 才."
+          },
+          {
+            "placed": [
+              "所以遇到"
+            ],
+            "note": "所以 denotes cause and effect, not an unlikely contingency."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 萬一遇到."
+      },
+      {
+        "id": "b3l5g1-p2",
+        "source": "p.130 #2",
+        "kind": "slot-build",
+        "prompt": "Rain is pouring near a typhoon. Ask the teacher about class:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "學生"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "老師，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "萬一明天"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "風雨太大，我們需要來學校嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "老師"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "如果政府宣布停班停課，就不必來了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "萬一明天",
+            "simplified": "万一明天",
+            "pinyin": "wànyī míngtiān"
+          },
+          {
+            "traditional": "雖然明天",
+            "simplified": "虽然明天",
+            "pinyin": "suīrán míngtiān"
+          },
+          {
+            "traditional": "因為明天",
+            "simplified": "因为明天",
+            "pinyin": "yīnwèi míngtiān"
+          }
+        ],
+        "accepted": "萬一明天",
+        "result": {
+          "traditional": "老師，萬一明天風雨太大，我們需要來學校嗎？",
+          "simplified": "老师，万一明天风雨太大，我们需要来学校吗？",
+          "pinyin": "Lǎoshī, wànyī míngtiān fēngyǔ tài dà, wǒmen xūyào lái xuéxiào ma?",
+          "english": "Teacher, in case tomorrow's storm is too severe, do we need to come to school?"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "雖然明天"
+            ],
+            "note": "雖然 indicates concession; here a contingency is being proposed."
+          },
+          {
+            "placed": [
+              "因為明天"
+            ],
+            "note": "因為 indicates reason, not a hypothetical emergency."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 萬一明天."
+      },
+      {
+        "id": "b3l5g1-p3",
+        "source": "p.128 #1",
+        "kind": "slot-build",
+        "prompt": "Check windows before the storm. Complete the warning:",
         "lines": [
           {
             "speaker": {
@@ -42,86 +176,164 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "背包裡最好放一件輕便雨衣，"
+                "traditional": "要注意門窗，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "萬一"
+                  "萬一吹壞"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "遇上午後雷陣雨才不會淋濕。"
+                "traditional": "造成意外就麻煩了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "好，我現在就去檢查所有窗戶。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "萬一吹壞",
+            "simplified": "万一吹坏",
+            "pinyin": "wànyī chuīhuài"
+          },
+          {
+            "traditional": "只要吹壞",
+            "simplified": "只要吹坏",
+            "pinyin": "zhǐyào chuīhuài"
+          },
+          {
+            "traditional": "因為吹壞",
+            "simplified": "因为吹坏",
+            "pinyin": "yīnwèi chuīhuài"
+          }
+        ],
+        "accepted": "萬一吹壞",
         "result": {
-          "traditional": "背包裡最好放一件輕便雨衣，萬一遇上午後雷陣雨才不會淋濕。",
-          "simplified": "背包里最好放一件轻便雨衣，万一遇上午后雷阵雨才不会淋濕。",
-          "pinyin": "Bēibāo lǐ zuì hǎo fàng yí jiàn qīngbiàn yǔyī, wànyī yù shàng wǔhòu léizhènyǔ cái bú huì línshī.",
-          "english": "It's best to put a lightweight raincoat in your backpack, in case you encounter an afternoon thunderstorm so you won't get soaked."
+          "traditional": "要注意門窗，萬一吹壞造成意外就麻煩了。",
+          "simplified": "要注意门窗，万一吹坏造成意外就麻烦了。",
+          "pinyin": "Yào zhùyì ménchuāng, wànyī chuīhuài zàochéng yìwài jiù máfan le.",
+          "english": "Check doors and windows; in case they get blown broken and cause accidents it will be troublesome."
         },
         "repairs": [
           {
             "placed": [
-              "一連"
+              "只要吹壞"
             ],
-            "note": "一連 indicates continuous duration across units of time."
+            "note": "只要 means as long as, not a warning against an accident."
           },
           {
             "placed": [
-              "以為"
+              "因為吹壞"
             ],
-            "note": "以為 expresses a mistaken belief or assumption."
-          },
-          {
-            "placed": [
-              "結果"
-            ],
-            "note": "結果 introduces an outcome or unintended consequence."
+            "note": "因為 denotes an established cause, not a risk to guard against."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 萬一吹壞."
+      },
+      {
+        "id": "b3l5g1-p4",
+        "source": "p.129 #3",
+        "kind": "slot-build",
+        "prompt": "Prepare supplies before the blackout. Complete the sentence:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "家裡多買些蠟燭，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "萬一停電"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "才不會一片漆黑。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "對，手電筒也要裝好電池。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "萬一停電",
+            "simplified": "万一停电",
+            "pinyin": "wànyī tíngdiàn"
+          },
+          {
+            "traditional": "既然停電",
+            "simplified": "既然停电",
+            "pinyin": "jìrán tíngdiàn"
+          },
+          {
+            "traditional": "除非停電",
+            "simplified": "除非停电",
+            "pinyin": "chúfēi tíngdiàn"
+          }
+        ],
+        "accepted": "萬一停電",
+        "result": {
+          "traditional": "家裡多買些蠟燭，萬一停電才不會一片漆黑。",
+          "simplified": "家里多买些蜡烛，万一停电才不会一片漆黑。",
+          "pinyin": "Jiā lǐ duō mǎi xiē làzhú, wànyī tíngdiàn cái bú huì yí piàn qīhēi.",
+          "english": "Buy some more candles at home, so in case power cuts out it won't be pitch-black."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "既然停電"
+            ],
+            "note": "既然 means since; the blackout hasn't happened yet."
+          },
+          {
+            "placed": [
+              "除非停電"
+            ],
+            "note": "除非 means unless; 萬一 introduces the possible emergency."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 萬一停電."
       }
     ]
   },
   "B3L05-G02-P130": {
     "bookPage": 130,
     "title": "Practice: 一連",
-    "allowWords": [
-      "一連"
-    ],
     "items": [
       {
         "id": "b3l5g2-p1",
         "source": "p.130 #1",
         "kind": "slot-build",
-        "prompt": "Describing successive cloudy days:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "一連",
-            "simplified": "一连",
-            "pinyin": "yìlián"
-          },
-          {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
-          },
-          {
-            "traditional": "以為",
-            "simplified": "以为",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "也好",
-            "simplified": "也好",
-            "pinyin": "yěhǎo"
-          }
-        ],
+        "prompt": "A notes the endless rainfall. Complete B's agreement:",
         "lines": [
           {
             "speaker": {
@@ -130,86 +342,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "臺北的冬天常常陰雨綿綿，"
+                "traditional": "這場暴雨下了好久啊！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "一連"
+                  "一連下了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "兩週都見不到陽光。"
+                "traditional": "好幾天大雨，到處都積水了。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "一連下了",
+            "simplified": "一连下了",
+            "pinyin": "yìlián xià le"
+          },
+          {
+            "traditional": "常常下了",
+            "simplified": "常常下了",
+            "pinyin": "chángcháng xià le"
+          },
+          {
+            "traditional": "大概下了",
+            "simplified": "大概下了",
+            "pinyin": "dàgài xià le"
+          }
+        ],
+        "accepted": "一連下了",
         "result": {
-          "traditional": "臺北的冬天常常陰雨綿綿，一連兩週都見不到陽光。",
-          "simplified": "台北的冬天常常陰雨綿綿，一连两周都见不到阳光。",
-          "pinyin": "Táiběi de dōngtiān chángcháng yīnyǔ miánmián, yìlián liǎng zhōu dōu jiàn bú dào yángguāng.",
-          "english": "Taipei's winter is often overcast and drizzly, with no sunshine seen for two weeks in a row."
+          "traditional": "是啊，一連下了好幾天大雨，到處都積水了。",
+          "simplified": "是啊，一连下了好几天大雨，到处都积水了。",
+          "pinyin": "Shì a, yìlián xià le hǎojǐ tiān dàyǔ, dàochù dōu jīshuǐ le.",
+          "english": "Yes, it rained heavily for several days in a row; water accumulated everywhere."
         },
         "repairs": [
           {
             "placed": [
-              "萬一"
+              "常常下了"
             ],
-            "note": "萬一 introduces an unfavorable low-probability contingency."
+            "note": "常常 denotes frequent separate events, not unbroken continuous days."
           },
           {
             "placed": [
-              "以為"
+              "大概下了"
             ],
-            "note": "以為 expresses a mistaken belief or assumption."
-          },
-          {
-            "placed": [
-              "也好"
-            ],
-            "note": "也好 expresses supportive agreement with a suggestion."
+            "note": "大概 conveys guesswork rather than consecutive duration."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 一連下了."
+      },
+      {
+        "id": "b3l5g2-p2",
+        "source": "p.130 #2",
+        "kind": "slot-build",
+        "prompt": "A asks if B understood the foreign speaker. Complete B's response:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "剛才那位先生說的話，你聽懂了嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一連說了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "好幾個句子，我一句都聽不懂。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一連說了",
+            "simplified": "一连说了",
+            "pinyin": "yìlián shuō le"
+          },
+          {
+            "traditional": "慢慢說了",
+            "simplified": "慢慢说了",
+            "pinyin": "mànman shuō le"
+          },
+          {
+            "traditional": "偶爾說了",
+            "simplified": "偶尔说了",
+            "pinyin": "ǒu'ěr shuō le"
+          }
+        ],
+        "accepted": "一連說了",
+        "result": {
+          "traditional": "他一連說了好幾個句子，我一句都聽不懂。",
+          "simplified": "他一连说了好几个句子，我一句都听不懂。",
+          "pinyin": "Tā yìlián shuō le hǎojǐ ge jùzi, wǒ yí jù dōu tīng bu dǒng.",
+          "english": "He uttered several sentences in rapid succession; I didn't understand a single one."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "慢慢說了"
+            ],
+            "note": "慢慢 means slowly; 一連 conveys rapid consecutive utterances."
+          },
+          {
+            "placed": [
+              "偶爾說了"
+            ],
+            "note": "偶爾 means occasionally, not continuous succession."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一連說了."
+      },
+      {
+        "id": "b3l5g2-p3",
+        "source": "p.130 #3",
+        "kind": "slot-build",
+        "prompt": "A asks why B looks exhausted. Complete B's explanation:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你臉色好蒼白，最近很忙嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "為了趕報告，我已經"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一連三天"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "沒睡好覺了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一連三天",
+            "simplified": "一连三天",
+            "pinyin": "yìlián sān tiān"
+          },
+          {
+            "traditional": "總共三天",
+            "simplified": "总共三天",
+            "pinyin": "zǒnggòng sān tiān"
+          },
+          {
+            "traditional": "平常三天",
+            "simplified": "平常三天",
+            "pinyin": "píngcháng sān tiān"
+          }
+        ],
+        "accepted": "一連三天",
+        "result": {
+          "traditional": "為了趕報告，我已經一連三天沒睡好覺了。",
+          "simplified": "为了赶报告，我已经一连三天没睡好觉了。",
+          "pinyin": "Wèile gǎn bàogào, wǒ yǐjīng yìlián sān tiān méi shuì hǎo jiào le.",
+          "english": "To rush the report, I haven't slept well for three days straight."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總共三天"
+            ],
+            "note": "總共 counts total days, which could be separated."
+          },
+          {
+            "placed": [
+              "平常三天"
+            ],
+            "note": "平常 means ordinarily, not an unbroken streak."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一連三天."
+      },
+      {
+        "id": "b3l5g2-p4",
+        "source": "p.130 #4",
+        "kind": "slot-build",
+        "prompt": "A notices B eating instant noodles every day. Complete B's confession:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你怎麼又在吃泡麵？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "最近手頭緊，我已經"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一連兩週"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "都吃泡麵了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一連兩週",
+            "simplified": "一连两周",
+            "pinyin": "yìlián liǎng zhōu"
+          },
+          {
+            "traditional": "偶爾兩週",
+            "simplified": "偶尔两周",
+            "pinyin": "ǒu'ěr liǎng zhōu"
+          },
+          {
+            "traditional": "最多兩週",
+            "simplified": "最多两周",
+            "pinyin": "zuìduō liǎng zhōu"
+          }
+        ],
+        "accepted": "一連兩週",
+        "result": {
+          "traditional": "最近手頭緊，我已經一連兩週都吃泡麵了。",
+          "simplified": "最近手头紧，我已经一连两周都吃泡面了。",
+          "pinyin": "Zuìjìn shǒutóu jǐn, wǒ yǐjīng yìlián liǎng zhōu dōu chī pàomiàn le.",
+          "english": "Tight on money lately, I've already eaten instant noodles for two weeks straight."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "偶爾兩週"
+            ],
+            "note": "偶爾 means occasionally, conflicting with unbroken routine."
+          },
+          {
+            "placed": [
+              "最多兩週"
+            ],
+            "note": "最多 means at most; use 一連 for an unbroken stretch."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一連兩週."
       }
     ]
   },
   "B3L05-G03-P132": {
     "bookPage": 132,
-    "title": "Practice: 以為…沒想到…",
-    "allowWords": [
-      "以為"
-    ],
+    "title": "Practice: 以為……，沒想到……",
     "items": [
       {
         "id": "b3l5g3-p1",
         "source": "p.132 #1",
         "kind": "slot-build",
-        "prompt": "Surprised by exam performance:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "以為",
-            "simplified": "以为",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "一連",
-            "simplified": "一连",
-            "pinyin": "yìlián"
-          },
-          {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
-          },
-          {
-            "traditional": "甚至",
-            "simplified": "甚至",
-            "pinyin": "shènzhì"
-          }
-        ],
+        "prompt": "A asks why B gave up renting that apartment. Complete B's answer:",
         "lines": [
           {
             "speaker": {
@@ -218,86 +668,316 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我"
+                "traditional": "你不是很喜歡那棟公寓嗎？為什麼不租了？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我以為屋況很好，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "以為"
+                  "沒想到"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "這次期末考考砸了，[沒想到"
+                "traditional": "廚房設備有大問題。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "沒想到",
+            "simplified": "没想到",
+            "pinyin": "méi xiǎngdào"
+          },
+          {
+            "traditional": "所以是",
+            "simplified": "所以是",
+            "pinyin": "suǒyǐ shì"
+          },
+          {
+            "traditional": "而且是",
+            "simplified": "而且是",
+            "pinyin": "érqiě shì"
+          }
+        ],
+        "accepted": "沒想到",
         "result": {
-          "traditional": "我以為這次期末考考砸了，沒想到竟然拿到了最高分！",
-          "simplified": "我以为这次期末考考砸了，没想到竟然拿到了最高分！",
-          "pinyin": "Wǒ yǐwéi zhè cì qīmòkǎo kǎo zá le, méi xiǎngdào jìngrán ná dào le zuì gāo fēn!",
-          "english": "I thought I messed up this final exam; unexpectedly I actually scored the highest mark!"
+          "traditional": "我以為屋況很好，沒想到廚房設備有大問題。",
+          "simplified": "我以为屋况很好，没想到厨房设备有大问题。",
+          "pinyin": "Wǒ yǐwéi wūkuàng hěn hǎo, méi xiǎngdào chúfáng shèbèi yǒu dà wèntí.",
+          "english": "I thought the condition was great, not expecting that the kitchen equipment had big issues."
         },
         "repairs": [
           {
             "placed": [
-              "一連"
+              "所以是"
             ],
-            "note": "一連 indicates continuous duration across units of time."
+            "note": "所以 establishes logical cause; 沒想到 marks an unforeseen contradiction."
           },
           {
             "placed": [
-              "萬一"
+              "而且是"
             ],
-            "note": "萬一 introduces an unfavorable low-probability contingency."
-          },
-          {
-            "placed": [
-              "甚至"
-            ],
-            "note": "甚至 introduces an extreme case or escalation."
+            "note": "而且 adds parallel points; 以為 pairs with 沒想到."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 沒想到."
+      },
+      {
+        "id": "b3l5g3-p2",
+        "source": "p.133 #1",
+        "kind": "slot-build",
+        "prompt": "A mentions manager's anger about the document. Complete B's explanation:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "資料沒給經理簽名就給老闆，難怪經理很生氣。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我以為"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "經理不必簽名，沒想到還是得請他簽名。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "我以為",
+            "simplified": "我以为",
+            "pinyin": "wǒ yǐwéi"
+          },
+          {
+            "traditional": "我知道",
+            "simplified": "我知道",
+            "pinyin": "wǒ zhīdào"
+          },
+          {
+            "traditional": "我同意",
+            "simplified": "我同意",
+            "pinyin": "wǒ tóngyì"
+          }
+        ],
+        "accepted": "我以為",
+        "result": {
+          "traditional": "我以為經理不必簽名，沒想到還是得請他簽名。",
+          "simplified": "我以为经理不必签名，没想到还是得请他签名。",
+          "pinyin": "Wǒ yǐwéi jīnglǐ bú bì qiānmíng, méi xiǎngdào háishì děi qǐng tā qiānmíng.",
+          "english": "I thought the manager didn't need to sign, not expecting I still had to ask him to."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "我知道"
+            ],
+            "note": "知道 implies factual knowledge, contradicting the mistaken belief."
+          },
+          {
+            "placed": [
+              "我同意"
+            ],
+            "note": "同意 means agree with, not an erroneous belief."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 我以為."
+      },
+      {
+        "id": "b3l5g3-p3",
+        "source": "p.132 #2",
+        "kind": "slot-build",
+        "prompt": "A asks about B's lingering cold. Complete B's mistake:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你感冒拖了這麼久，怎麼還沒好？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我以為多喝水就會好，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "沒想到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "越發嚴重了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "沒想到",
+            "simplified": "没想到",
+            "pinyin": "méi xiǎngdào"
+          },
+          {
+            "traditional": "所以也",
+            "simplified": "所以也",
+            "pinyin": "suǒyǐ yě"
+          },
+          {
+            "traditional": "因為也",
+            "simplified": "因为也",
+            "pinyin": "yīnwèi yě"
+          }
+        ],
+        "accepted": "沒想到",
+        "result": {
+          "traditional": "我以為多喝水就會好，沒想到越發嚴重了。",
+          "simplified": "我以为多喝水就会好，没想到越发严重了。",
+          "pinyin": "Wǒ yǐwéi duō hē shuǐ jiù huì hǎo, méi xiǎngdào yuèfā yánzhòng le.",
+          "english": "I thought drinking plenty of water would fix it, not expecting it got increasingly worse."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "所以也"
+            ],
+            "note": "Getting worse contradicts drinking water to heal."
+          },
+          {
+            "placed": [
+              "因為也"
+            ],
+            "note": "因為 states a reason, not the surprise turn."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 沒想到."
+      },
+      {
+        "id": "b3l5g3-p4",
+        "source": "p.132 #3",
+        "kind": "slot-build",
+        "prompt": "A wonders why B didn't buy the brand coat. Complete B's realization:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那件名牌外套打折，你怎麼沒買？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我以為"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "打折很便宜，沒想到折扣後我還是買不起。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "我以為",
+            "simplified": "我以为",
+            "pinyin": "wǒ yǐwéi"
+          },
+          {
+            "traditional": "我決定",
+            "simplified": "我决定",
+            "pinyin": "wǒ juédìng"
+          },
+          {
+            "traditional": "我發現",
+            "simplified": "我发现",
+            "pinyin": "wǒ fāxiàn"
+          }
+        ],
+        "accepted": "我以為",
+        "result": {
+          "traditional": "我以為打折很便宜，沒想到折扣後我還是買不起。",
+          "simplified": "我以为打折很便宜，没想到折扣后我还是买不起。",
+          "pinyin": "Wǒ yǐwéi dǎzhé hěn piányi, méi xiǎngdào zhékòu hòu wǒ háishì mǎi bu qǐ.",
+          "english": "I thought the discount would be cheap, not expecting that after discount I still couldn't afford it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "我決定"
+            ],
+            "note": "決定 expresses a personal decision, not an assumption."
+          },
+          {
+            "placed": [
+              "我發現"
+            ],
+            "note": "發現 marks real discovery, not a mistaken preconception."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 我以為."
       }
     ]
   },
   "B3L05-G04-P133": {
     "bookPage": 133,
-    "title": "Practice: 也好",
-    "allowWords": [
-      "也好"
-    ],
+    "title": "Practice: ……，還是……吧",
     "items": [
       {
         "id": "b3l5g4-p1",
-        "source": "p.133 #1",
+        "source": "p.134 #1",
         "kind": "slot-build",
-        "prompt": "Approving a friend's plan to postpone travel:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "也好",
-            "simplified": "也好",
-            "pinyin": "yěhǎo"
-          },
-          {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
-          },
-          {
-            "traditional": "一連",
-            "simplified": "一连",
-            "pinyin": "yìlián"
-          },
-          {
-            "traditional": "以為",
-            "simplified": "以为",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "Rain pours and taxis are rare. Complete B's decision:",
         "lines": [
           {
             "speaker": {
@@ -306,86 +986,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "既然景區目前在維修，我們改期再去"
+                "traditional": "雨下得這麼大，你要搭車還是坐我的車？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "外面等不到計程車，我"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "也好"
+                  "還是坐"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "，免得多跑一趟。"
+                "traditional": "你的車吧。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "還是坐",
+            "simplified": "还是坐",
+            "pinyin": "háishì zuò"
+          },
+          {
+            "traditional": "大概坐",
+            "simplified": "大概坐",
+            "pinyin": "dàgài zuò"
+          },
+          {
+            "traditional": "只好坐",
+            "simplified": "只好坐",
+            "pinyin": "zhǐhǎo zuò"
+          }
+        ],
+        "accepted": "還是坐",
         "result": {
-          "traditional": "既然景區目前在維修，我們改期再去也好，免得多跑一趟。",
-          "simplified": "既然景区目前在维修，我们改期再去也好，免得多跑一趟。",
-          "pinyin": "Jìrán jǐngqū mùqián zài wéixiū, wǒmen gǎiqī zài qù yě hǎo, miǎnde duō pǎo yí tàng.",
-          "english": "Since the scenic area is currently under maintenance, rescheduling our visit works well too, avoiding a wasted trip."
+          "traditional": "外面等不到計程車，我還是坐你的車吧。",
+          "simplified": "外面等不到计程车，我还是坐你的车吧。",
+          "pinyin": "Wàimiàn děng bu dào jìchéngchē, wǒ háishì zuò nǐ de chē ba.",
+          "english": "There are no taxis outside; I had better take your car."
         },
         "repairs": [
           {
             "placed": [
-              "萬一"
+              "大概坐"
             ],
-            "note": "萬一 introduces an unfavorable low-probability contingency."
+            "note": "大概 conveys uncertainty, whereas 還是……吧 presents a recommendation/choice."
           },
           {
             "placed": [
-              "一連"
+              "只好坐"
             ],
-            "note": "一連 indicates continuous duration across units of time."
-          },
-          {
-            "placed": [
-              "以為"
-            ],
-            "note": "以為 expresses a mistaken belief or assumption."
+            "note": "只好 expresses reluctant resignation without 吧 in this suggested pair."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 還是坐."
+      },
+      {
+        "id": "b3l5g4-p2",
+        "source": "p.134 #2",
+        "kind": "slot-build",
+        "prompt": "A drives 2 hours each way to work. Advise A:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我家離公司很遠，得開兩個小時車才到。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "每天開這麼久太累了，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "還是搬家"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "還是搬家",
+            "simplified": "还是搬家",
+            "pinyin": "háishì bānjiā"
+          },
+          {
+            "traditional": "所以搬家",
+            "simplified": "所以搬家",
+            "pinyin": "suǒyǐ bānjiā"
+          },
+          {
+            "traditional": "或者搬家",
+            "simplified": "或者搬家",
+            "pinyin": "huòzhě bānjiā"
+          }
+        ],
+        "accepted": "還是搬家",
+        "result": {
+          "traditional": "每天開這麼久太累了，你還是搬家吧。",
+          "simplified": "每天开这么久太累了，你还是搬家吧。",
+          "pinyin": "Měitiān kāi zhème jiǔ tài lèi le, nǐ háishì bānjiā ba.",
+          "english": "Driving this long every day is too tiring; you had better move."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "所以搬家"
+            ],
+            "note": "所以 states a consequence, not a softened proposal with 吧."
+          },
+          {
+            "placed": [
+              "或者搬家"
+            ],
+            "note": "或者 leaves multiple equal choices open rather than proposing the best one."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 還是搬家."
+      },
+      {
+        "id": "b3l5g4-p3",
+        "source": "p.134 #3",
+        "kind": "slot-build",
+        "prompt": "A's old laptop crashed for the 3rd time this month. Advise A:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我的電腦又壞了，這個月第三次了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這部用了好多年，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "還是換新"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "還是換新",
+            "simplified": "还是换新",
+            "pinyin": "háishì huàn xīn"
+          },
+          {
+            "traditional": "而且換新",
+            "simplified": "而且换新",
+            "pinyin": "érqiě huàn xīn"
+          },
+          {
+            "traditional": "必須換新",
+            "simplified": "必须换新",
+            "pinyin": "bìxū huàn xīn"
+          }
+        ],
+        "accepted": "還是換新",
+        "result": {
+          "traditional": "這部用了好多年，你還是換新的吧。",
+          "simplified": "这部用了好多年，你还是换新的吧。",
+          "pinyin": "Zhè bù yòng le hǎo duō nián, nǐ háishì huàn xīn de ba.",
+          "english": "This unit has been used for years; you had better replace it with a new one."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "而且換新"
+            ],
+            "note": "而且 adds another action, not a concluding recommendation."
+          },
+          {
+            "placed": [
+              "必須換新"
+            ],
+            "note": "必須 is a strict demand, clashing with the gentle suggestion of 吧."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 還是換新."
+      },
+      {
+        "id": "b3l5g4-p4",
+        "source": "p.134 #4",
+        "kind": "slot-build",
+        "prompt": "Phone calls home went unanswered. Complete B's counsel:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "剛才打電話回家沒人接，要不要現在過去？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "先別急著跑一趟，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "還是稍後"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "再打吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "還是稍後",
+            "simplified": "还是稍后",
+            "pinyin": "háishì shāohòu"
+          },
+          {
+            "traditional": "可能稍後",
+            "simplified": "可能稍后",
+            "pinyin": "kěnéng shāohòu"
+          },
+          {
+            "traditional": "已經稍後",
+            "simplified": "已经稍后",
+            "pinyin": "yǐjīng shāohòu"
+          }
+        ],
+        "accepted": "還是稍後",
+        "result": {
+          "traditional": "先別急著跑一趟，你還是稍後再打吧。",
+          "simplified": "先别急着跑一趟，你还是稍后再打吧。",
+          "pinyin": "Xiān bié jí zhe pǎo yí tàng, nǐ háishì shāohòu zài dǎ ba.",
+          "english": "Don't rush to make the trip yet; you had better call again a little later."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "可能稍後"
+            ],
+            "note": "可能 indicates probability rather than offering helpful advice."
+          },
+          {
+            "placed": [
+              "已經稍後"
+            ],
+            "note": "已經 marks completed events, not a future recommendation."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 還是稍後."
       }
     ]
   },
   "B3L05-G05-P141": {
     "bookPage": 141,
     "title": "Practice: 結果",
-    "allowWords": [
-      "結果"
-    ],
     "items": [
       {
         "id": "b3l5g5-p1",
         "source": "p.141 #1",
         "kind": "slot-build",
-        "prompt": "Describing an unexpected result of rushing:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "結果",
-            "simplified": "结果",
-            "pinyin": "jiéguǒ"
-          },
-          {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
-          },
-          {
-            "traditional": "一連",
-            "simplified": "一连",
-            "pinyin": "yìlián"
-          },
-          {
-            "traditional": "也好",
-            "simplified": "也好",
-            "pinyin": "yěhǎo"
-          }
-        ],
+        "prompt": "A bought clothes without fitting. Complete B's discovery:",
         "lines": [
           {
             "speaker": {
@@ -394,86 +1312,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他出門時走得太急，"
+                "traditional": "你昨天買的那件上衣，穿起來合適嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "昨天沒試穿就買，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "結果"
+                  "結果回家"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "把重要的合約落在客廳桌上了。"
+                "traditional": "穿上才發現太小了。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "結果回家",
+            "simplified": "结果回家",
+            "pinyin": "jiéguǒ huíjiā"
+          },
+          {
+            "traditional": "如果回家",
+            "simplified": "如果回家",
+            "pinyin": "rúguǒ huíjiā"
+          },
+          {
+            "traditional": "雖然回家",
+            "simplified": "虽然回家",
+            "pinyin": "suīrán huíjiā"
+          }
+        ],
+        "accepted": "結果回家",
         "result": {
-          "traditional": "他出門時走得太急，結果把重要的合約落在客廳桌上了。",
-          "simplified": "他出门时走得太急，结果把重要的合约落在客厅桌上了。",
-          "pinyin": "Tā chūmén shí zǒu de tài jí, jiéguǒ bǎ zhòngyào de héyuē là zài kètīng zhuō shàng le.",
-          "english": "He walked out in too much of a rush, and as a result left the important contract behind on the living room table."
+          "traditional": "昨天沒試穿就買，結果回家穿上才發現太小了。",
+          "simplified": "昨天没试穿就买，结果回家穿上才发现太小了。",
+          "pinyin": "Zuótiān méi shìchuān jiù mǎi, jiéguǒ huíjiā chuān shàng cái fāxiàn tài xiǎo le.",
+          "english": "I bought it yesterday without trying it on; as a result, I discovered it was too small once I got home."
         },
         "repairs": [
           {
             "placed": [
-              "萬一"
+              "如果回家"
             ],
-            "note": "萬一 introduces an unfavorable low-probability contingency."
+            "note": "如果 sets a hypothetical condition; 結果 introduces the actual consequence."
           },
           {
             "placed": [
-              "一連"
+              "雖然回家"
             ],
-            "note": "一連 indicates continuous duration across units of time."
-          },
-          {
-            "placed": [
-              "也好"
-            ],
-            "note": "也好 expresses supportive agreement with a suggestion."
+            "note": "雖然 signals concession, not the eventual negative outcome."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 結果回家."
+      },
+      {
+        "id": "b3l5g5-p2",
+        "source": "p.141 #2",
+        "kind": "slot-build",
+        "prompt": "Everyone wore masks, but an unexpected illness happened:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "出門戴口罩能預防流感嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們天天戴口罩，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "結果妹妹"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "還是感冒了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "結果妹妹",
+            "simplified": "结果妹妹",
+            "pinyin": "jiéguǒ mèimei"
+          },
+          {
+            "traditional": "因為妹妹",
+            "simplified": "因为妹妹",
+            "pinyin": "yīnwèi mèimei"
+          },
+          {
+            "traditional": "為了妹妹",
+            "simplified": "为了妹妹",
+            "pinyin": "wèile mèimei"
+          }
+        ],
+        "accepted": "結果妹妹",
+        "result": {
+          "traditional": "我們天天戴口罩，結果妹妹還是感冒了。",
+          "simplified": "我们天天戴口罩，结果妹妹还是感冒了。",
+          "pinyin": "Wǒmen tiāntiān dài kǒuzhào, jiéguǒ mèimei háishì gǎnmào le.",
+          "english": "We wore masks every day; as a result, younger sister still caught a cold."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "因為妹妹"
+            ],
+            "note": "因為 states a reason; 結果 marks the contrary outcome."
+          },
+          {
+            "placed": [
+              "為了妹妹"
+            ],
+            "note": "為了 marks a purpose, not the resulting outcome."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 結果妹妹."
+      },
+      {
+        "id": "b3l5g5-p3",
+        "source": "p.141 #3",
+        "kind": "slot-build",
+        "prompt": "Language exchange produced great results. Complete B's report:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你跟臺灣朋友語言交換學得怎麼樣？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們常常練習，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "結果我的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "中文進步得很快。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "結果我的",
+            "simplified": "结果我的",
+            "pinyin": "jiéguǒ wǒ de"
+          },
+          {
+            "traditional": "如果我的",
+            "simplified": "如果我的",
+            "pinyin": "rúguǒ wǒ de"
+          },
+          {
+            "traditional": "雖然我的",
+            "simplified": "虽然我的",
+            "pinyin": "suīrán wǒ de"
+          }
+        ],
+        "accepted": "結果我的",
+        "result": {
+          "traditional": "我們常常練習，結果我的中文進步得很快。",
+          "simplified": "我们常常练习，结果我的中文进步得很快。",
+          "pinyin": "Wǒmen chángcháng liànxí, jiéguǒ wǒ de Zhōngwén jìnbù de hěn kuài.",
+          "english": "We practiced often; as a result, my Chinese improved very quickly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "如果我的"
+            ],
+            "note": "如果 introduces hypothesis; the progress is an actual result."
+          },
+          {
+            "placed": [
+              "雖然我的"
+            ],
+            "note": "雖然 introduces concession, not the actual outcome."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 結果我的."
+      },
+      {
+        "id": "b3l5g5-p4",
+        "source": "p.141 #4",
+        "kind": "slot-build",
+        "prompt": "A paid extra by mistake at the market. Complete B's report:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你剛才是不是多給了五百塊？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "對啊，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "結果店員"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "馬上把錢還給我了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "結果店員",
+            "simplified": "结果店员",
+            "pinyin": "jiéguǒ diànyuán"
+          },
+          {
+            "traditional": "大概店員",
+            "simplified": "大概店员",
+            "pinyin": "dàgài diànyuán"
+          },
+          {
+            "traditional": "除非店員",
+            "simplified": "除非店员",
+            "pinyin": "chúfēi diànyuán"
+          }
+        ],
+        "accepted": "結果店員",
+        "result": {
+          "traditional": "對啊，結果店員馬上把錢還給我了。",
+          "simplified": "对啊，结果店员马上把钱还给我了。",
+          "pinyin": "Duì a, jiéguǒ diànyuán mǎshàng bǎ qián huán gěi wǒ le.",
+          "english": "Yes, and in the end the clerk returned the money to me right away."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "大概店員"
+            ],
+            "note": "大概 means probably; the clerk definitively returned the money."
+          },
+          {
+            "placed": [
+              "除非店員"
+            ],
+            "note": "除非 means unless, which does not fit an actual outcome."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 結果店員."
       }
     ]
   },
   "B3L05-G06-P143": {
     "bookPage": 143,
-    "title": "Practice: 甚至",
-    "allowWords": [
-      "甚至"
-    ],
+    "title": "Practice: 甚至(連)……也/都……",
     "items": [
       {
         "id": "b3l5g6-p1",
         "source": "p.143 #1",
         "kind": "slot-build",
-        "prompt": "Describing someone's severe phone addiction:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "甚至",
-            "simplified": "甚至",
-            "pinyin": "shènzhì"
-          },
-          {
-            "traditional": "結果",
-            "simplified": "结果",
-            "pinyin": "jiéguǒ"
-          },
-          {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
-          },
-          {
-            "traditional": "也好",
-            "simplified": "也好",
-            "pinyin": "yěhǎo"
-          }
-        ],
+        "prompt": "The twins look identical. Complete B's explanation of the confusion:",
         "lines": [
           {
             "speaker": {
@@ -482,86 +1638,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他走路時機不離手，"
+                "traditional": "我剛剛叫大明，他為什麼不理我？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那是小明，他們太像了，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "甚至"
+                  "甚至連"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "過馬路時也盯著螢幕看，非常危險。"
+                "traditional": "父母都常叫錯名字。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "甚至連",
+            "simplified": "甚至连",
+            "pinyin": "shènzhì lián"
+          },
+          {
+            "traditional": "而且連",
+            "simplified": "而且连",
+            "pinyin": "érqiě lián"
+          },
+          {
+            "traditional": "只要連",
+            "simplified": "只要连",
+            "pinyin": "zhǐyào lián"
+          }
+        ],
+        "accepted": "甚至連",
         "result": {
-          "traditional": "他走路時機不離手，甚至過馬路時也盯著螢幕看，非常危險。",
-          "simplified": "他走路时机不离手，甚至过马路时也盯着螢幕看，非常危险。",
-          "pinyin": "Tā zǒulù shí jī bù lí shǒu, shènzhì guò mǎlù shí yě dīng zhe yíngmù kàn, fēicháng wēixiǎn.",
-          "english": "He never lets go of his phone when walking, even staring at the screen while crossing the street, which is very dangerous."
+          "traditional": "那是小明，他們太像了，甚至連父母都常叫錯名字。",
+          "simplified": "那是小明，他们太像了，甚至连父母都常叫错名字。",
+          "pinyin": "Nà shì Xiǎomíng, tāmen tài xiàng le, shènzhì lián fùmǔ dōu cháng jiào cuò míngzi.",
+          "english": "That was Xiaoming; they look so alike that even their parents often call them by the wrong name."
         },
         "repairs": [
           {
             "placed": [
-              "結果"
+              "而且連"
             ],
-            "note": "結果 introduces an outcome or unintended consequence."
+            "note": "而且 adds extra facts, while 甚至 emphasizes an extreme surprising degree."
           },
           {
             "placed": [
-              "萬一"
+              "只要連"
             ],
-            "note": "萬一 introduces an unfavorable low-probability contingency."
-          },
-          {
-            "placed": [
-              "也好"
-            ],
-            "note": "也好 expresses supportive agreement with a suggestion."
+            "note": "只要 means as long as, which does not fit an escalating degree."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 甚至連."
+      },
+      {
+        "id": "b3l5g6-p2",
+        "source": "p.143 #2",
+        "kind": "slot-build",
+        "prompt": "The shopkeeper has an incredible memory. Complete B's observation:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家店老闆的記性真好！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，他記性很好，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "甚至能說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "出每位常客的名字。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "甚至能說",
+            "simplified": "甚至能说",
+            "pinyin": "shènzhì néng shuō"
+          },
+          {
+            "traditional": "如果能說",
+            "simplified": "如果能说",
+            "pinyin": "rúguǒ néng shuō"
+          },
+          {
+            "traditional": "雖然能說",
+            "simplified": "虽然能说",
+            "pinyin": "suīrán néng shuō"
+          }
+        ],
+        "accepted": "甚至能說",
+        "result": {
+          "traditional": "是啊，他記性很好，甚至能說出每位常客的名字。",
+          "simplified": "是啊，他记性很好，甚至能说出每位常客的名字。",
+          "pinyin": "Shì a, tā jìxing hěn hǎo, shènzhì néng shuō chū měi wèi chángkè de míngzi.",
+          "english": "Yes, his memory is so good that he can even name every regular customer."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "如果能說"
+            ],
+            "note": "如果 sets a hypothetical condition, but this is an observed ability."
+          },
+          {
+            "placed": [
+              "雖然能說"
+            ],
+            "note": "雖然 marks concession, not escalating evidence of good memory."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 甚至能說."
+      },
+      {
+        "id": "b3l5g6-p3",
+        "source": "p.143 #3",
+        "kind": "slot-build",
+        "prompt": "Xiao Li is obsessed with that star. Complete B's description:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "小李真的很迷那位明星嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他超迷那個明星，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "甚至連簽"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "名海報都有好幾十張。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "甚至連簽",
+            "simplified": "甚至连签",
+            "pinyin": "shènzhì lián qiān"
+          },
+          {
+            "traditional": "只要連簽",
+            "simplified": "只要连签",
+            "pinyin": "zhǐyào lián qiān"
+          },
+          {
+            "traditional": "或者連簽",
+            "simplified": "或者连签",
+            "pinyin": "huòzhě lián qiān"
+          }
+        ],
+        "accepted": "甚至連簽",
+        "result": {
+          "traditional": "他超迷那個明星，甚至連簽名海報都有好幾十張。",
+          "simplified": "他超迷那个明星，甚至连签名海报都有好几十张。",
+          "pinyin": "Tā chāo mí nà ge míngxīng, shènzhì lián qiānmíng hǎibào dōu yǒu hǎojǐshí zhāng.",
+          "english": "He's super obsessed with that celebrity; he even has dozens of signed posters."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "只要連簽"
+            ],
+            "note": "只要 marks conditional premise, not escalating degree."
+          },
+          {
+            "placed": [
+              "或者連簽"
+            ],
+            "note": "或者 gives alternative choices, not an extreme example."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 甚至連簽."
+      },
+      {
+        "id": "b3l5g6-p4",
+        "source": "p.143 #4",
+        "kind": "slot-build",
+        "prompt": "The manager is swamped with work. Complete B's comment:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "馬經理最近是不是特別忙？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他忙得不可開交，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "甚至連吃"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "飯的時間都沒有。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "甚至連吃",
+            "simplified": "甚至连吃",
+            "pinyin": "shènzhì lián chī"
+          },
+          {
+            "traditional": "如果連吃",
+            "simplified": "如果连吃",
+            "pinyin": "rúguǒ lián chī"
+          },
+          {
+            "traditional": "大概連吃",
+            "simplified": "大概连吃",
+            "pinyin": "dàgài lián chī"
+          }
+        ],
+        "accepted": "甚至連吃",
+        "result": {
+          "traditional": "他忙得不可開交，甚至連吃飯的時間都沒有。",
+          "simplified": "他忙得不可开交，甚至连吃饭的时间都没有。",
+          "pinyin": "Tā máng de bùkěkāijiāo, shènzhì lián chīfàn de shíjiān dōu méiyǒu.",
+          "english": "He is unimaginably busy; he doesn't even have time to eat."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "如果連吃"
+            ],
+            "note": "如果 sets a hypothetical condition, but his lack of meal time is real."
+          },
+          {
+            "placed": [
+              "大概連吃"
+            ],
+            "note": "大概 marks conjecture, while 甚至 highlights the startling reality."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 甚至連吃."
       }
     ]
   },
   "B3L05-G07-P144": {
     "bookPage": 144,
-    "title": "Practice: 以東/西/南/北",
-    "allowWords": [
-      "以東"
-    ],
+    "title": "Practice: 方位詞：以東/以西/以南/以北",
     "items": [
       {
         "id": "b3l5g7-p1",
-        "source": "p.144 #1",
+        "source": "p.145 #1",
         "kind": "slot-build",
-        "prompt": "Describing scenic region:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "以東",
-            "simplified": "以东",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "甚至",
-            "simplified": "甚至",
-            "pinyin": "shènzhì"
-          },
-          {
-            "traditional": "結果",
-            "simplified": "结果",
-            "pinyin": "jiéguǒ"
-          },
-          {
-            "traditional": "萬一",
-            "simplified": "万一",
-            "pinyin": "wànyī"
-          }
-        ],
+        "prompt": "A needs cheap housing. Recommend an area west of the station:",
         "lines": [
           {
             "speaker": {
@@ -570,48 +1964,312 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "基隆港"
+                "traditional": "下個月房租要漲了，能介紹便宜的房子給我嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我建議你找"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "以東"
+                  "火車站西"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "的海岸線以奇石峭壁聞名，吸引了無數攝影愛好者。"
+                "traditional": "的房子，那裡房租比較便宜。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "火車站西",
+            "simplified": "火车站西",
+            "pinyin": "huǒchēzhàn xī"
+          },
+          {
+            "traditional": "火車站前",
+            "simplified": "火车站前",
+            "pinyin": "huǒchēzhàn qián"
+          },
+          {
+            "traditional": "火車站裡",
+            "simplified": "火车站里",
+            "pinyin": "huǒchēzhàn lǐ"
+          }
+        ],
+        "accepted": "火車站西",
         "result": {
-          "traditional": "基隆港以東的海岸線以奇石峭壁聞名，吸引了無數攝影愛好者。",
-          "simplified": "基隆港以东的海岸线以奇石峭壁闻名，吸引了无数摄影爱好者。",
-          "pinyin": "Jīlóng Gǎng yǐ dōng de hǎi'ànxiàn yǐ qíshí qiàobì wénmíng, xīyǐn le wúshù shèyǐng àihàozhě.",
-          "english": "The coastline east of Keelung Port is famous for strange rocks and precipitous cliffs, attracting countless photography lovers."
+          "traditional": "我建議你找火車站西的房子，那裡房租比較便宜。",
+          "simplified": "我建议你找火车站西的房子，那里房租比较便宜。",
+          "pinyin": "Wǒ jiànyì nǐ zhǎo huǒchēzhàn xī de fángzi, nàlǐ fángzū bǐjiào piányi.",
+          "english": "I suggest you look for an apartment west of the train station; the rent there is cheaper."
         },
         "repairs": [
           {
             "placed": [
-              "甚至"
+              "火車站前"
             ],
-            "note": "甚至 introduces an extreme case or escalation."
+            "note": "Housing right in front of the station is typically more expensive."
           },
           {
             "placed": [
-              "結果"
+              "火車站裡"
             ],
-            "note": "結果 introduces an outcome or unintended consequence."
-          },
-          {
-            "placed": [
-              "萬一"
-            ],
-            "note": "萬一 introduces an unfavorable low-probability contingency."
+            "note": "Inside the station has no residential apartments."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 火車站西."
+      },
+      {
+        "id": "b3l5g7-p2",
+        "source": "p.145 #2",
+        "kind": "slot-build",
+        "prompt": "A asks about typhoon impact. State impact on areas south of here:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說颱風要來，對我們這裡影響大嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "主要對"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我們以南"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的地區影響比較大。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "我們以南",
+            "simplified": "我们以南",
+            "pinyin": "wǒmen yǐ nán"
+          },
+          {
+            "traditional": "我們從南",
+            "simplified": "我们从南",
+            "pinyin": "wǒmen cóng nán"
+          },
+          {
+            "traditional": "我們往南",
+            "simplified": "我们往南",
+            "pinyin": "wǒmen wǎng nán"
+          }
+        ],
+        "accepted": "我們以南",
+        "result": {
+          "traditional": "主要對我們以南的地區影響比較大。",
+          "simplified": "主要对我们以南的地区影响比较大。",
+          "pinyin": "Zhǔyào duì wǒmen yǐ nán de dìqū yǐngxiǎng bǐjiào dà.",
+          "english": "It will mainly have a greater impact on regions south of us."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "我們從南"
+            ],
+            "note": "從 indicates starting point of movement, not a geographic zone."
+          },
+          {
+            "placed": [
+              "我們往南"
+            ],
+            "note": "往 indicates travel direction rather than an area definition."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 我們以南."
+      },
+      {
+        "id": "b3l5g7-p3",
+        "source": "p.145 #3",
+        "kind": "slot-build",
+        "prompt": "A asks about earthquake areas. Complete B's description of central-north zone:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你知道這次地震災情主要在哪裡嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "災情主要集中在"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "中部以北"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的山區。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "中部以北",
+            "simplified": "中部以北",
+            "pinyin": "zhōngbù yǐ běi"
+          },
+          {
+            "traditional": "中部向北",
+            "simplified": "中部向北",
+            "pinyin": "zhōngbù xiàng běi"
+          },
+          {
+            "traditional": "中部朝北",
+            "simplified": "中部朝北",
+            "pinyin": "zhōngbù cháo běi"
+          }
+        ],
+        "accepted": "中部以北",
+        "result": {
+          "traditional": "災情主要集中在中部以北的山區。",
+          "simplified": "灾情主要集中在中部以北的山区。",
+          "pinyin": "Zāiqíng zhǔyào jízhōng zài zhōngbù yǐ běi de shānqū.",
+          "english": "The disaster damage was mainly concentrated in mountainous areas north of the central region."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "中部向北"
+            ],
+            "note": "向 indicates orientation/facing, not geographic extent."
+          },
+          {
+            "placed": [
+              "中部朝北"
+            ],
+            "note": "朝 indicates facing direction, not geographic regional scope."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 中部以北."
+      },
+      {
+        "id": "b3l5g7-p4",
+        "source": "p.145 #4",
+        "kind": "slot-build",
+        "prompt": "A asks where coworkers live. Complete B's answer about the area east of company:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "大家上班都住在哪個區域？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "許多同事住在"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "公司以東"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的新社區裡。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "公司以東",
+            "simplified": "公司以东",
+            "pinyin": "gōngsī yǐ dōng"
+          },
+          {
+            "traditional": "公司從東",
+            "simplified": "公司从东",
+            "pinyin": "gōngsī cóng dōng"
+          },
+          {
+            "traditional": "公司到東",
+            "simplified": "公司到东",
+            "pinyin": "gōngsī dào dōng"
+          }
+        ],
+        "accepted": "公司以東",
+        "result": {
+          "traditional": "許多同事住在公司以東的新社區裡。",
+          "simplified": "许多同事住在公司以东的新社区里。",
+          "pinyin": "Xǔduō tóngshì zhù zài gōngsī yǐ dōng de xīn shèqū lǐ.",
+          "english": "Many colleagues live in the new community east of the company."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "公司從東"
+            ],
+            "note": "從 indicates movement origin, not geographic location."
+          },
+          {
+            "placed": [
+              "公司到東"
+            ],
+            "note": "到 indicates destination, not an expansive area."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 公司以東."
       }
     ]
   }

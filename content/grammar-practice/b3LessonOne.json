@@ -2,36 +2,114 @@
   "B3L01-G01-P29": {
     "bookPage": 29,
     "title": "Practice: 可以說是",
-    "allowWords": [
-      "可以說是"
-    ],
     "items": [
       {
         "id": "b3l1g1-p1",
         "source": "p.29 #1",
+        "kind": "order-build",
+        "prompt": "A asks about the popular student in the guitar club. Complete B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說他是你們學校吉他社的，常常在學校表演，很多學生喜歡他。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "kěyǐ shuō shì"
+          },
+          {
+            "traditional": "學校的",
+            "simplified": "学校的",
+            "pinyin": "xuéxiào de"
+          },
+          {
+            "traditional": "明星人物",
+            "simplified": "明星人物",
+            "pinyin": "míngxīng rénwù"
+          },
+          {
+            "traditional": "可以說",
+            "simplified": "可以说",
+            "pinyin": "kěyǐ shuō"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "可以說是",
+              "學校的",
+              "明星人物"
+            ],
+            "sentence": {
+              "traditional": "他可以說是學校的明星人物。",
+              "simplified": "他可以说是学校的明星人物。",
+              "pinyin": "Tā kěyǐ shuō shì xuéxiào de míngxīng rénwù.",
+              "english": "You could say he is a celebrity at school."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "可以說"
+            ],
+            "note": "Use 可以說是 before a noun phrase; 可以說 without 是 indicates ability or permission to speak."
+          }
+        ],
+        "fallbackRepair": "Build: 他 + 可以說是 + 學校的明星人物."
+      },
+      {
+        "id": "b3l1g1-p2",
+        "source": "p.29 #2",
         "kind": "slot-build",
-        "prompt": "Complimenting someone's achievement:",
-        "quiet": true,
+        "prompt": "A compliments your chances in the singing contest. Complete B's reply:",
         "tiles": [
           {
             "traditional": "可以說是",
             "simplified": "可以说是",
-            "pinyin": "pīnyīn"
+            "pinyin": "kěyǐ shuō shì"
           },
           {
-            "traditional": "多麼",
-            "simplified": "多么",
-            "pinyin": "duóme/duōme"
+            "traditional": "可以說",
+            "simplified": "可以说",
+            "pinyin": "kěyǐ shuō"
+          },
+          {
+            "traditional": "算了吧",
+            "simplified": "算了吧",
+            "pinyin": "suànle ba"
           },
           {
             "traditional": "再說",
             "simplified": "再说",
             "pinyin": "zàishuō"
-          },
-          {
-            "traditional": "算了吧",
-            "simplified": "算了吧",
-            "pinyin": "pīnyīn"
           }
         ],
         "lines": [
@@ -42,7 +120,18 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他學了三年中文，現在"
+                "traditional": "這次的華語歌唱比賽，你一定能表現得很好。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不一定，我參加過很多次比賽，這次"
               },
               {
                 "type": "slot",
@@ -53,73 +142,348 @@
               },
               {
                 "type": "text",
-                "traditional": "個中國通了。"
+                "traditional": "最難比的一次。"
               }
             ]
           }
         ],
         "result": {
-          "traditional": "他學了三年中文，現在可以說是個中國通了。",
-          "simplified": "他学了三年中文，现在可以说是个中国通了。",
-          "pinyin": "Tā xué le sān nián zhōngwén, xiànzài kěyǐ shuō shì ge zhōngguótōng le.",
-          "english": "He has studied Chinese for three years; you could say he is an expert on China now."
+          "traditional": "不一定，我參加過很多次比賽，這次可以說是最難比的一次。",
+          "simplified": "不一定，我参加过很多次比赛，这次可以说是最难比的一次。",
+          "pinyin": "Bù yídìng, wǒ cānjiā guò hěn duō cì bǐsài, zhè cì kěyǐ shuō shì zuì nán bǐ de yí cì.",
+          "english": "Not necessarily; I have joined many contests, and this time you could say is the toughest competition."
         },
         "repairs": [
           {
             "placed": [
-              "多麼"
+              "可以說"
             ],
-            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
-          },
-          {
-            "placed": [
-              "再說"
-            ],
-            "note": "再說 introduces an additional reason, not a descriptive summary."
+            "note": "Use 可以說是 to evaluate or explain the situation; 可以說 means ability to speak."
           },
           {
             "placed": [
               "算了吧"
             ],
-            "note": "算了吧 expresses resignation or dropping an idea, which contradicts the sentence context."
+            "note": "算了吧 means \"forget it\", which does not fit evaluating this contest."
+          },
+          {
+            "placed": [
+              "再說"
+            ],
+            "note": "再說 introduces an additional reason, not an evaluation phrase."
           }
         ]
+      },
+      {
+        "id": "b3l1g1-p3",
+        "source": "p.30 #1",
+        "kind": "order-build",
+        "prompt": "You have watched every drama this star acted in. How do you describe yourself?",
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "kěyǐ shuō shì"
+          },
+          {
+            "traditional": "他的",
+            "simplified": "他的",
+            "pinyin": "tā de"
+          },
+          {
+            "traditional": "戲迷",
+            "simplified": "戏迷",
+            "pinyin": "xìmí"
+          },
+          {
+            "traditional": "看過",
+            "simplified": "看过",
+            "pinyin": "kàn guò"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "可以說是",
+              "他的",
+              "戲迷"
+            ],
+            "sentence": {
+              "traditional": "我可以說是他的戲迷。",
+              "simplified": "我可以说是他的戏迷。",
+              "pinyin": "Wǒ kěyǐ shuō shì tā de xìmí.",
+              "english": "You could say that I am a fan of his."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看過"
+            ],
+            "note": "The sentence states who you are (他的戲迷); do not add 看過 here."
+          }
+        ],
+        "fallbackRepair": "Build: 我 + 可以說是 + 他的戲迷."
+      },
+      {
+        "id": "b3l1g1-p4",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "You are able to speak a sentence in Chinese. Complete your reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你學了一年中文，現在能跟朋友聊天嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我還不太會聊天，不過我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "可以說"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "幾句簡單的中文。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "可以說",
+            "simplified": "可以说",
+            "pinyin": "kěyǐ shuō"
+          },
+          {
+            "traditional": "可以說是",
+            "simplified": "可以说是",
+            "pinyin": "kěyǐ shuō shì"
+          },
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          }
+        ],
+        "accepted": "可以說",
+        "result": {
+          "traditional": "我還不太會聊天，不過我可以說幾句簡單的中文。",
+          "simplified": "我还不太会聊天，不过我可以说几句简单的中文。",
+          "pinyin": "Wǒ hái bú tài huì liáotiān, bùguò wǒ kěyǐ shuō jǐ jù jiǎndān de Zhōngwén.",
+          "english": "I can't really chat yet, but I can say a few simple sentences of Chinese."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "可以說是"
+            ],
+            "note": "Use 可以說 without 是 to express the ability or possibility of speaking."
+          },
+          {
+            "placed": [
+              "再說"
+            ],
+            "note": "再說 means \"furthermore / besides\", not ability to speak."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 可以說 (can say)."
       }
     ]
   },
   "B3L01-G02-P30": {
     "bookPage": 30,
     "title": "Practice: 多麼…啊",
-    "allowWords": [
-      "多麼"
-    ],
     "items": [
       {
         "id": "b3l1g2-p1",
-        "source": "p.30 #1",
+        "source": "p.31 #1",
+        "kind": "order-build",
+        "prompt": "A is happy to have great teachers and classmates. Build B's agreement:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我在華語中心學中文，很高興能遇到很好的老師和同學。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "能遇到",
+            "simplified": "能遇到",
+            "pinyin": "néng yùdào"
+          },
+          {
+            "traditional": "好老師",
+            "simplified": "好老师",
+            "pinyin": "hǎo lǎoshī"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme"
+          },
+          {
+            "traditional": "不容易",
+            "simplified": "不容易",
+            "pinyin": "bù róngyì"
+          },
+          {
+            "traditional": "啊",
+            "simplified": "啊",
+            "pinyin": "a"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "能遇到",
+              "好老師",
+              "多麼",
+              "不容易",
+              "啊"
+            ],
+            "sentence": {
+              "traditional": "能遇到好老師多麼不容易啊！",
+              "simplified": "能遇到好老师多么不容易啊！",
+              "pinyin": "Néng yùdào hǎo lǎoshī duóme bù róngyì a!",
+              "english": "How hard it is to meet good teachers!"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "In an exclamatory sentence ending with 啊, use 多麼 instead of 很."
+          }
+        ],
+        "fallbackRepair": "Build: 能遇到好老師 + 多麼 + 不容易 + 啊."
+      },
+      {
+        "id": "b3l1g2-p2",
+        "source": "p.31 #2",
+        "kind": "order-build",
+        "prompt": "Admiring the scenery at the scenic spot:",
+        "tiles": [
+          {
+            "traditional": "這裡的",
+            "simplified": "这里的",
+            "pinyin": "zhèlǐ de"
+          },
+          {
+            "traditional": "風景",
+            "simplified": "风景",
+            "pinyin": "fēngjǐng"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme"
+          },
+          {
+            "traditional": "漂亮",
+            "simplified": "漂亮",
+            "pinyin": "piàoliang"
+          },
+          {
+            "traditional": "啊",
+            "simplified": "啊",
+            "pinyin": "a"
+          },
+          {
+            "traditional": "真",
+            "simplified": "真",
+            "pinyin": "zhēn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這裡的",
+              "風景",
+              "多麼",
+              "漂亮",
+              "啊"
+            ],
+            "sentence": {
+              "traditional": "這裡的風景多麼漂亮啊！",
+              "simplified": "这里的风景多么漂亮啊！",
+              "pinyin": "Zhèlǐ de fēngjǐng duóme piàoliang a!",
+              "english": "How beautiful the scenery here is!"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "真"
+            ],
+            "note": "Use the exclamatory adverb 多麼 with 啊."
+          }
+        ],
+        "fallbackRepair": "Build: 這裡的 + 風景 + 多麼 + 漂亮 + 啊."
+      },
+      {
+        "id": "b3l1g2-p3",
+        "source": "p.31 #3",
         "kind": "slot-build",
-        "prompt": "Admiring a great teacher:",
-        "quiet": true,
+        "prompt": "The movie was great but box office was poor. Complete B's exclamation:",
         "tiles": [
           {
             "traditional": "多麼",
             "simplified": "多么",
-            "pinyin": "duóme/duōme"
+            "pinyin": "duóme"
           },
           {
-            "traditional": "可以說是",
-            "simplified": "可以说是",
-            "pinyin": "pīnyīn"
+            "traditional": "多",
+            "simplified": "多",
+            "pinyin": "duō"
           },
           {
-            "traditional": "算了吧",
-            "simplified": "算了吧",
-            "pinyin": "pīnyīn"
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
           },
           {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
+            "traditional": "太",
+            "simplified": "太",
+            "pinyin": "tài"
           }
         ],
         "lines": [
@@ -130,7 +494,18 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "能遇到這麼有愛心的好老師，我們"
+                "traditional": "這部電影拍得很好，不過聽說票房只賣了二十萬元。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "電影拍得這麼好，票房卻這麼差，"
               },
               {
                 "type": "slot",
@@ -141,53 +516,137 @@
               },
               {
                 "type": "text",
-                "traditional": "幸運啊！"
+                "traditional": "可惜啊！"
               }
             ]
           }
         ],
         "result": {
-          "traditional": "能遇到這麼有愛心的好老師，我們多麼幸運啊！",
-          "simplified": "能遇到这么有爱心的好老师，我们多么幸运啊！",
-          "pinyin": "Néng yùdào zhème yǒu àixīn de hǎo lǎoshī, wǒmen duōme xìngyùn a!",
-          "english": "To meet such a caring teacher, how fortunate we are!"
+          "traditional": "電影拍得這麼好，票房卻這麼差，多麼可惜啊！",
+          "simplified": "电影拍得这么好，票房却这么差，多么可惜啊！",
+          "pinyin": "Diànyǐng pāi de zhème hǎo, piàofáng què zhème chà, duóme kěxī a!",
+          "english": "The movie was made so well, yet the box office is so poor; what a pity!"
         },
         "repairs": [
           {
             "placed": [
-              "可以說是"
+              "多"
             ],
-            "note": "可以說是 means \"you could say that\", which does not fit this slot."
+            "note": "Use the two-syllable exclamatory adverb 多麼 with 啊."
           },
           {
             "placed": [
-              "算了吧"
+              "很"
             ],
-            "note": "算了吧 expresses resignation or dropping an idea, which contradicts the sentence context."
+            "note": "很 does not form the exclamatory pattern with ending 啊."
           },
           {
             "placed": [
-              "順便"
+              "太"
             ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+            "note": "太 is followed by 了 (太可惜了), not alone before adjective + 啊."
           }
         ]
+      },
+      {
+        "id": "b3l1g2-p4",
+        "source": "p.31 #4",
+        "kind": "order-build",
+        "prompt": "Exclaiming at how delicious every dish at the restaurant is:",
+        "tiles": [
+          {
+            "traditional": "這裡的菜",
+            "simplified": "这里的菜",
+            "pinyin": "zhèlǐ de cài"
+          },
+          {
+            "traditional": "味道",
+            "simplified": "味道",
+            "pinyin": "wèidào"
+          },
+          {
+            "traditional": "多麼",
+            "simplified": "多么",
+            "pinyin": "duóme"
+          },
+          {
+            "traditional": "好",
+            "simplified": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "啊",
+            "simplified": "啊",
+            "pinyin": "a"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這裡的菜",
+              "味道",
+              "多麼",
+              "好",
+              "啊"
+            ],
+            "sentence": {
+              "traditional": "這裡的菜味道多麼好啊！",
+              "simplified": "这里的菜味道多么好啊！",
+              "pinyin": "Zhèlǐ de cài wèidào duóme hǎo a!",
+              "english": "How delicious the food here tastes!"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "Use the exclamatory frame 多麼…啊."
+          }
+        ],
+        "fallbackRepair": "Build: 這裡的菜 + 味道 + 多麼 + 好 + 啊."
       }
     ]
   },
   "B3L01-G03-P32": {
     "bookPage": 32,
     "title": "Practice: 再說",
-    "allowWords": [
-      "再說"
-    ],
     "items": [
       {
         "id": "b3l1g3-p1",
         "source": "p.32 #1",
-        "kind": "slot-build",
-        "prompt": "Giving reasons not to go out in bad weather:",
-        "quiet": true,
+        "kind": "order-build",
+        "prompt": "B gives an additional reason to join the cultural exchange event:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這個週末學校舉辦文化交流活動，你會參加嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "當然參加，活動當天可以吃到各國特色的菜，"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "再說",
@@ -195,25 +654,94 @@
             "pinyin": "zàishuō"
           },
           {
-            "traditional": "可以說是",
-            "simplified": "可以说是",
-            "pinyin": "pīnyīn"
+            "traditional": "也可以",
+            "simplified": "也可以",
+            "pinyin": "yě kěyǐ"
           },
           {
-            "traditional": "多麼",
-            "simplified": "多么",
-            "pinyin": "duóme/duōme"
+            "traditional": "認識",
+            "simplified": "认识",
+            "pinyin": "rènshi"
           },
           {
-            "traditional": "算了",
-            "simplified": "算了",
-            "pinyin": "suànle"
+            "traditional": "新朋友",
+            "simplified": "新朋友",
+            "pinyin": "xīn péngyou"
+          },
+          {
+            "traditional": "而且",
+            "simplified": "而且",
+            "pinyin": "érqiě"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "再說",
+              "也可以",
+              "認識",
+              "新朋友"
+            ],
+            "sentence": {
+              "traditional": "再說也可以認識新朋友。",
+              "simplified": "再说也可以认识新朋友。",
+              "pinyin": "Zàishuō yě kěyǐ rènshi xīn péngyou.",
+              "english": "Besides, one can also meet new friends."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "而且"
+            ],
+            "note": "Use 再說 to introduce an additional reinforcing reason."
+          }
+        ],
+        "fallbackRepair": "Build: 再說 + 也可以 + 認識 + 新朋友."
+      },
+      {
+        "id": "b3l1g3-p2",
+        "source": "p.32 #2",
+        "kind": "slot-build",
+        "prompt": "A suggests eating out, but B wants to stay home. Complete B's reply:",
+        "tiles": [
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          },
+          {
+            "traditional": "所以",
+            "simplified": "所以",
+            "pinyin": "suǒyǐ"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          },
+          {
+            "traditional": "但是",
+            "simplified": "但是",
+            "pinyin": "dànshì"
           }
         ],
         "lines": [
           {
             "speaker": {
               "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天我好累，不想做飯了，晚餐我們出去吃吧。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
             },
             "segments": [
               {
@@ -229,58 +757,61 @@
               },
               {
                 "type": "text",
-                "traditional": "快下大雨了，我們別出門了吧。"
+                "traditional": "我剛回到家，別出門了吧！"
               }
             ]
           }
         ],
         "result": {
-          "traditional": "外面冷得很，再說快下大雨了，我們別出門了吧。",
-          "simplified": "外面冷得很，再说快下大雨了，我们别出门了吧。",
-          "pinyin": "Wàimiàn lěng de hěn, zàishuō kuài xià dàyǔ le, wǒmen bié chūmén le ba.",
-          "english": "It's freezing outside; besides, it's about to pour rain, let's not go out."
+          "traditional": "外面冷得很，再說我剛回到家，別出門了吧！",
+          "simplified": "外面冷得很，再说我刚回到家，别出门了吧！",
+          "pinyin": "Wàimiàn lěng de hěn, zàishuō wǒ gāng huí dào jiā, bié chūmén le ba!",
+          "english": "It is very cold outside; besides, I just got home, so let's not go out!"
         },
         "repairs": [
           {
             "placed": [
-              "可以說是"
+              "所以"
             ],
-            "note": "可以說是 means \"you could say that\", which does not fit this slot."
+            "note": "所以 introduces a result, but here B gives an additional reason."
           },
           {
             "placed": [
-              "多麼"
+              "因為"
             ],
-            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
+            "note": "因為 introduces the cause; to add another independent reason, use 再說."
           },
           {
             "placed": [
-              "算了"
+              "但是"
             ],
-            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
+            "note": "但是 expresses contrast, not an additional reason."
           }
         ]
-      }
-    ]
-  },
-  "B3L01-G04-P38": {
-    "bookPage": 38,
-    "title": "Practice: 而",
-    "allowWords": [
-      "而"
-    ],
-    "items": [
+      },
       {
-        "id": "b3l1g4-p1",
-        "source": "p.38 #1",
-        "kind": "slot-build",
-        "prompt": "Explaining someone's decision:",
-        "quiet": true,
+        "id": "b3l1g3-p3",
+        "source": "p.33 #3",
+        "kind": "order-build",
+        "prompt": "A invites B to travel to Vietnam in summer. Build B's polite decline:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "暑假我們去越南旅行，怎麼樣？"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "而",
-            "simplified": "而",
-            "pinyin": "ér"
+            "traditional": "我去過了",
+            "simplified": "我去过了",
+            "pinyin": "wǒ qù guò le"
           },
           {
             "traditional": "再說",
@@ -288,14 +819,155 @@
             "pinyin": "zàishuō"
           },
           {
-            "traditional": "多麼",
-            "simplified": "多么",
-            "pinyin": "duóme/duōme"
+            "traditional": "機票",
+            "simplified": "机票",
+            "pinyin": "jīpiào"
           },
           {
-            "traditional": "可以說是",
-            "simplified": "可以说是",
-            "pinyin": "pīnyīn"
+            "traditional": "太貴了",
+            "simplified": "太贵了",
+            "pinyin": "tài guì le"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我去過了",
+              "再說",
+              "機票",
+              "太貴了"
+            ],
+            "sentence": {
+              "traditional": "我去過了，再說機票太貴了。",
+              "simplified": "我去过了，再说机票太贵了。",
+              "pinyin": "Wǒ qù guò le, zàishuō jīpiào tài guì le.",
+              "english": "I have already been there; besides, plane tickets are too expensive."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "因為"
+            ],
+            "note": "Use 再說 to add another reason explaining why you decline."
+          }
+        ],
+        "fallbackRepair": "Build: 我去過了 + ， + 再說 + 機票 + 太貴了."
+      }
+    ]
+  },
+  "B3L01-G04-P38": {
+    "bookPage": 38,
+    "title": "Practice: 而",
+    "items": [
+      {
+        "id": "b3l1g4-p1",
+        "source": "p.39 #1",
+        "kind": "order-build",
+        "prompt": "Explaining why Ms. Li is eating so little lately:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "李小姐最近怎麼吃得這麼少？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "她因為",
+            "simplified": "她因为",
+            "pinyin": "tā yīnwèi"
+          },
+          {
+            "traditional": "要參加",
+            "simplified": "要参加",
+            "pinyin": "yào cānjiā"
+          },
+          {
+            "traditional": "比賽",
+            "simplified": "比赛",
+            "pinyin": "bǐsài"
+          },
+          {
+            "traditional": "而決定",
+            "simplified": "而决定",
+            "pinyin": "ér juédìng"
+          },
+          {
+            "traditional": "少吃一點",
+            "simplified": "少吃一点",
+            "pinyin": "shǎo chī yìdiǎn"
+          },
+          {
+            "traditional": "所以",
+            "simplified": "所以",
+            "pinyin": "suǒyǐ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "她因為",
+              "要參加",
+              "比賽",
+              "而決定",
+              "少吃一點"
+            ],
+            "sentence": {
+              "traditional": "她因為要參加比賽而決定少吃一點。",
+              "simplified": "她因为要参加比赛而决定少吃一点。",
+              "pinyin": "Tā yīnwèi yào cānjiā bǐsài ér juédìng shǎo chī yìdiǎn.",
+              "english": "Because she will enter a competition, she decided to eat less."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "所以"
+            ],
+            "note": "Use the formal connector 而 to link the causal clause directly to the predicate action."
+          }
+        ],
+        "fallbackRepair": "Build: 她因為 + 要參加比賽 + 而決定 + 少吃一點."
+      },
+      {
+        "id": "b3l1g4-p2",
+        "source": "p.39 #2",
+        "kind": "slot-build",
+        "prompt": "Mr. Wang's pet cat is sick. Complete the explanation for his poor appetite:",
+        "tiles": [
+          {
+            "traditional": "而",
+            "simplified": "而",
+            "pinyin": "ér"
+          },
+          {
+            "traditional": "但是",
+            "simplified": "但是",
+            "pinyin": "dànshì"
+          },
+          {
+            "traditional": "再說",
+            "simplified": "再说",
+            "pinyin": "zàishuō"
+          },
+          {
+            "traditional": "而且",
+            "simplified": "而且",
+            "pinyin": "érqiě"
           }
         ],
         "lines": [
@@ -306,7 +978,18 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他因為熱愛中華文化，"
+                "traditional": "聽說王先生最近心情不太好，你知道為什麼嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他家的小貓生病了，他因為擔心小貓"
               },
               {
                 "type": "slot",
@@ -317,73 +1000,204 @@
               },
               {
                 "type": "text",
-                "traditional": "決定到臺灣留學。"
+                "traditional": "吃不下飯。"
               }
             ]
           }
         ],
         "result": {
-          "traditional": "他因為熱愛中華文化，而決定到臺灣留學。",
-          "simplified": "他因为热爱中华文化，而决定到台湾留学。",
-          "pinyin": "Tā yīnwèi rè'ài zhōnghuá wénhuà, ér juédìng dào Táiwān liúxué.",
-          "english": "Because he loves Chinese culture, he decided to study in Taiwan."
+          "traditional": "他家的小貓生病了，他因為擔心小貓而吃不下飯。",
+          "simplified": "他家的小猫生病了，他因为担心小猫而吃不下饭。",
+          "pinyin": "Tā jiā de xiǎomāo shēngbìng le, tā yīnwèi dānxīn xiǎomāo ér chī bú xià fàn.",
+          "english": "His little cat is sick, and because of worrying about the cat, he can't eat."
         },
         "repairs": [
           {
             "placed": [
+              "但是"
+            ],
+            "note": "The sentence links cause and result (因為…而…), not contrast."
+          },
+          {
+            "placed": [
               "再說"
             ],
-            "note": "再說 introduces an additional reason, not a descriptive summary."
+            "note": "再說 introduces an additional reason, not the direct outcome."
           },
           {
             "placed": [
-              "多麼"
+              "而且"
             ],
-            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
-          },
-          {
-            "placed": [
-              "可以說是"
-            ],
-            "note": "可以說是 means \"you could say that\", which does not fit this slot."
+            "note": "Use 而 to link the cause to the subsequent verb phrase."
           }
         ]
+      },
+      {
+        "id": "b3l1g4-p3",
+        "source": "p.39 #3",
+        "kind": "order-build",
+        "prompt": "Explaining why the restaurant attracts so many office workers:",
+        "tiles": [
+          {
+            "traditional": "這家店",
+            "simplified": "这家店",
+            "pinyin": "zhè jiā diàn"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          },
+          {
+            "traditional": "價錢便宜",
+            "simplified": "价钱便宜",
+            "pinyin": "jiàqián piányi"
+          },
+          {
+            "traditional": "而吸引了",
+            "simplified": "而吸引了",
+            "pinyin": "ér xīyǐn le"
+          },
+          {
+            "traditional": "上班族",
+            "simplified": "上班族",
+            "pinyin": "shàngbānzú"
+          },
+          {
+            "traditional": "所以",
+            "simplified": "所以",
+            "pinyin": "suǒyǐ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這家店",
+              "因為",
+              "價錢便宜",
+              "而吸引了",
+              "上班族"
+            ],
+            "sentence": {
+              "traditional": "這家店因為價錢便宜而吸引了上班族。",
+              "simplified": "这家店因为价钱便宜而吸引了上班族。",
+              "pinyin": "Zhè jiā diàn yīnwèi jiàqián piányi ér xīyǐn le shàngbānzú.",
+              "english": "Because of cheap prices, this shop attracted office workers."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "所以"
+            ],
+            "note": "Use the connector 而 to link the cause with the verb phrase."
+          }
+        ],
+        "fallbackRepair": "Build: 這家店 + 因為價錢便宜 + 而吸引了 + 許多上班族."
       }
     ]
   },
   "B3L01-G05-P40": {
     "bookPage": 40,
     "title": "Practice: V出",
-    "allowWords": [
-      "出"
-    ],
     "items": [
       {
         "id": "b3l1g5-p1",
         "source": "p.40 #1",
-        "kind": "slot-build",
-        "prompt": "Describing an author's success:",
-        "quiet": true,
+        "kind": "order-build",
+        "prompt": "A asks if you can come up with a touching story. Build B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "老師要我們寫一個讓人感動的故事，你想得出這樣的故事嗎？"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "出",
-            "simplified": "出",
-            "pinyin": "pīnyīn"
+            "traditional": "想了很久",
+            "simplified": "想了很久",
+            "pinyin": "xiǎng le hěn jiǔ"
           },
           {
-            "traditional": "而",
-            "simplified": "而",
-            "pinyin": "ér"
+            "traditional": "才寫出",
+            "simplified": "才写出",
+            "pinyin": "cái xiě chū"
           },
           {
-            "traditional": "再說",
-            "simplified": "再说",
-            "pinyin": "zàishuō"
+            "traditional": "一個",
+            "simplified": "一个",
+            "pinyin": "yí ge"
           },
           {
-            "traditional": "多麼",
-            "simplified": "多么",
-            "pinyin": "duóme/duōme"
+            "traditional": "感人故事",
+            "simplified": "感人故事",
+            "pinyin": "gǎnrén gùshì"
+          },
+          {
+            "traditional": "寫完",
+            "simplified": "写完",
+            "pinyin": "xiě wán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "想了很久",
+              "才寫出",
+              "一個",
+              "感人故事"
+            ],
+            "sentence": {
+              "traditional": "我想了很久才寫出一個感人故事。",
+              "simplified": "我想了很久才写出一个感人故事。",
+              "pinyin": "Wǒ xiǎng le hěn jiǔ cái xiě chū yí ge gǎnrén gùshì.",
+              "english": "I thought for a long time before writing out a touching story."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "寫完"
+            ],
+            "note": "寫出 emphasizes creating and producing a new piece of work, not just finishing it."
+          }
+        ],
+        "fallbackRepair": "Build: 我想了很久 + 才寫出 + 一個 + 感人的故事."
+      },
+      {
+        "id": "b3l1g5-p2",
+        "source": "p.40 #2",
+        "kind": "slot-build",
+        "prompt": "The director demands the right acting emotion. Complete the director's words:",
+        "tiles": [
+          {
+            "traditional": "演不出",
+            "simplified": "演不出",
+            "pinyin": "yǎn bù chū"
+          },
+          {
+            "traditional": "演得出",
+            "simplified": "演得出",
+            "pinyin": "yǎn de chū"
+          },
+          {
+            "traditional": "演不完",
+            "simplified": "演不完",
+            "pinyin": "yǎn bù wán"
+          },
+          {
+            "traditional": "演不好",
+            "simplified": "演不好",
+            "pinyin": "yǎn bù hǎo"
           }
         ],
         "lines": [
@@ -394,84 +1208,220 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "那位作家終於寫"
+                "traditional": "導演，我已經演了好幾次了，您還是不滿意嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你怎麼一直"
               },
               {
                 "type": "slot",
                 "id": "slot1",
                 "answers": [
-                  "出"
+                  "演不出"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "了一部令人感動的劇本。"
+                "traditional": "我要的感覺？再試一次！"
               }
             ]
           }
         ],
         "result": {
-          "traditional": "那位作家終於寫出了一部令人感動的劇本。",
-          "simplified": "那位作家终于写出了一部令人感动的剧本。",
-          "pinyin": "Nà wèi zuòjiā zhōngyú xiě chū le yí bù lìngrén gǎndòng de jùběn.",
-          "english": "That author finally produced a moving script."
+          "traditional": "你怎麼一直演不出我要的感覺？再試一次！",
+          "simplified": "你怎么一直演不出我要的感觉？再试一次！",
+          "pinyin": "Nǐ zěnme yìzhí yǎn bù chū wǒ yào de gǎnjué? Zài shì yí cì!",
+          "english": "Why can you never project the feeling I want? Try again!"
         },
         "repairs": [
           {
             "placed": [
-              "而"
+              "演得出"
             ],
-            "note": "而 is a coordinating conjunction connecting clauses."
+            "note": "The director is dissatisfied; negative potential complement 演不出 is required."
           },
           {
             "placed": [
-              "再說"
+              "演不完"
             ],
-            "note": "再說 introduces an additional reason, not a descriptive summary."
+            "note": "演不完 means unable to finish performing, which does not match bringing out the feeling."
           },
           {
             "placed": [
-              "多麼"
+              "演不好"
             ],
-            "note": "多麼 is an exclamatory degree adverb, not used before noun phrases."
+            "note": "Use the target pattern V出 (演不出感覺) for bringing out an intended effect."
           }
         ]
+      },
+      {
+        "id": "b3l1g5-p3",
+        "source": "p.40 #3",
+        "kind": "order-build",
+        "prompt": "Complimenting a first-time clothing designer:",
+        "tiles": [
+          {
+            "traditional": "第一次",
+            "simplified": "第一次",
+            "pinyin": "dì yī cì"
+          },
+          {
+            "traditional": "就能",
+            "simplified": "就能",
+            "pinyin": "jiù néng"
+          },
+          {
+            "traditional": "設計出",
+            "simplified": "设计出",
+            "pinyin": "shèjì chū"
+          },
+          {
+            "traditional": "這麼棒的",
+            "simplified": "这么棒的",
+            "pinyin": "zhème bàng de"
+          },
+          {
+            "traditional": "衣服",
+            "simplified": "衣服",
+            "pinyin": "yīfu"
+          },
+          {
+            "traditional": "設計好",
+            "simplified": "设计好",
+            "pinyin": "shèjì hǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "第一次",
+              "就能",
+              "設計出",
+              "這麼棒的",
+              "衣服"
+            ],
+            "sentence": {
+              "traditional": "第一次就能設計出這麼棒的衣服！",
+              "simplified": "第一次就能设计出这么棒的衣服！",
+              "pinyin": "Dì yī cì jiù néng shèjì chū zhème bàng de yīfu!",
+              "english": "To be able to design such wonderful clothes on the first try!"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "設計好"
+            ],
+            "note": "Use 設計出 for creating a brand new design."
+          }
+        ],
+        "fallbackRepair": "Build: 第一次 + 就能設計出 + 這麼棒的 + 衣服."
       }
     ]
   },
   "B3L01-G06-P42": {
-    "bookPage": 42,
-    "title": "Practice: 像…這樣子",
-    "allowWords": [
-      "像"
-    ],
+    "bookPage": 41,
+    "title": "Practice: 就算……也……",
     "items": [
       {
         "id": "b3l1g6-p1",
         "source": "p.42 #1",
-        "kind": "slot-build",
-        "prompt": "Commenting on a dedicated friend:",
-        "quiet": true,
+        "kind": "order-build",
+        "prompt": "A warns that it is snowing outside. Build B's determined response:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "外面下大雪了，你今天還要出門跑步嗎？"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "像",
-            "simplified": "像",
-            "pinyin": "pīnyīn"
+            "traditional": "就算下雪",
+            "simplified": "就算下雪",
+            "pinyin": "jiùsuàn xiàxuě"
           },
           {
-            "traditional": "而",
-            "simplified": "而",
-            "pinyin": "ér"
+            "traditional": "我也要",
+            "simplified": "我也要",
+            "pinyin": "wǒ yě yào"
           },
           {
-            "traditional": "出",
-            "simplified": "出",
-            "pinyin": "pīnyīn"
+            "traditional": "去跑步",
+            "simplified": "去跑步",
+            "pinyin": "qù pǎobù"
           },
           {
-            "traditional": "再說",
-            "simplified": "再说",
-            "pinyin": "zàishuō"
+            "traditional": "雖然",
+            "simplified": "虽然",
+            "pinyin": "suīrán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "就算下雪",
+              "我也要",
+              "去跑步"
+            ],
+            "sentence": {
+              "traditional": "就算下雪我也要去跑步。",
+              "simplified": "就算下雪我也要去跑步。",
+              "pinyin": "Jiùsuàn xiàxuě wǒ yě yào qù pǎobù.",
+              "english": "Even if it snows, I still want to go running."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "雖然"
+            ],
+            "note": "雖然 expresses an established fact; 就算 expresses a hypothetical condition (even if)."
+          }
+        ],
+        "fallbackRepair": "Build: 就算下雪 + 我也要 + 去跑步."
+      },
+      {
+        "id": "b3l1g6-p2",
+        "source": "p.42 #2",
+        "kind": "slot-build",
+        "prompt": "Work is busy, but parents are elderly. Complete B's words:",
+        "tiles": [
+          {
+            "traditional": "就算",
+            "simplified": "就算",
+            "pinyin": "jiùsuàn"
+          },
+          {
+            "traditional": "如果",
+            "simplified": "如果",
+            "pinyin": "rúguǒ"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          },
+          {
+            "traditional": "雖然",
+            "simplified": "虽然",
+            "pinyin": "suīrán"
           }
         ],
         "lines": [
@@ -482,48 +1432,141 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": ""
+                "traditional": "你又要回鄉下看父母了？平時工作那麼忙，很辛苦吧！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，父母年紀大了，"
               },
               {
                 "type": "slot",
                 "id": "slot1",
                 "answers": [
-                  "像"
+                  "就算"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "他這樣子努力奮鬥的青年，大家都非常佩服。"
+                "traditional": "工作再忙，我也得回去看看他們。"
               }
             ]
           }
         ],
         "result": {
-          "traditional": "像他這樣子努力奮鬥的青年，大家都非常佩服。",
-          "simplified": "像他这样子努力奋鬥的青年，大家都非常佩服。",
-          "pinyin": "Xiàng tā zhèyàngzi nǔlì fèndòu de qīngnián, dàjiā dōu fēicháng pèifú.",
-          "english": "A young person striving hard like him, everyone admires greatly."
+          "traditional": "是啊，父母年紀大了，就算工作再忙，我也得回去看看他們。",
+          "simplified": "是啊，父母年纪大了，就算工作再忙，我也得回去看看他们。",
+          "pinyin": "Shì a, fùmǔ niánjì dà le, jiùsuàn gōngzuò zài máng, wǒ yě děi huíqù kànkan tāmen.",
+          "english": "Yes, my parents are getting on in years; even if work is ever so busy, I still must go back to see them."
         },
         "repairs": [
           {
             "placed": [
-              "而"
+              "如果"
             ],
-            "note": "而 is a coordinating conjunction connecting clauses."
+            "note": "如果 introduces a simple condition; 就算 emphasizes that the condition will not alter the duty."
           },
           {
             "placed": [
-              "出"
+              "因為"
             ],
-            "note": "出 follows a verb to indicate bringing a result into existence (V出)."
+            "note": "因為 indicates cause, but here working busy does not cause him to visit parents."
           },
           {
             "placed": [
-              "再說"
+              "雖然"
             ],
-            "note": "再說 introduces an additional reason, not a descriptive summary."
+            "note": "雖然 pairs with 但是/還是 for facts; 就算 pairs with 也 for concession."
           }
         ]
+      },
+      {
+        "id": "b3l1g6-p3",
+        "source": "p.42 #3",
+        "kind": "order-build",
+        "prompt": "Urging a recovering friend to eat something for energy:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你病剛好，多吃一點兒才有體力。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不餓，不想吃東西。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就算",
+            "simplified": "就算",
+            "pinyin": "jiùsuàn"
+          },
+          {
+            "traditional": "吃不下",
+            "simplified": "吃不下",
+            "pinyin": "chī bu xià"
+          },
+          {
+            "traditional": "也得",
+            "simplified": "也得",
+            "pinyin": "yě děi"
+          },
+          {
+            "traditional": "吃一點",
+            "simplified": "吃一点",
+            "pinyin": "chī yìdiǎn"
+          },
+          {
+            "traditional": "要是",
+            "simplified": "要是",
+            "pinyin": "yàoshi"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "就算",
+              "吃不下",
+              "也得",
+              "吃一點"
+            ],
+            "sentence": {
+              "traditional": "不行，就算吃不下也得吃一點。",
+              "simplified": "不行，就算吃不下也得吃一点。",
+              "pinyin": "Bù xíng, jiùsuàn chī bu xià yě děi chī yìdiǎn.",
+              "english": "No way, even if you have no appetite you must eat a little."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "要是"
+            ],
+            "note": "Use 就算 to emphasize that having no appetite does not change the necessity to eat."
+          }
+        ],
+        "fallbackRepair": "Build: 不行 + ， + 就算吃不下 + 也得吃一點."
       }
     ]
   }

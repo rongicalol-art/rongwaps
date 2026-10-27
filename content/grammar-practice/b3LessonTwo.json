@@ -1,39 +1,13 @@
 {
   "B3L02-G01-P51": {
-    "bookPage": 51,
-    "title": "Practice: 不是…嗎",
-    "allowWords": [
-      "不是"
-    ],
+    "bookPage": 50,
+    "title": "Practice: 早就……了",
     "items": [
       {
         "id": "b3l2g1-p1",
         "source": "p.51 #1",
-        "kind": "slot-build",
-        "prompt": "Reminding a friend about an arrangement:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "不是",
-            "simplified": "不是",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
-          },
-          {
-            "traditional": "算了",
-            "simplified": "算了",
-            "pinyin": "suànle"
-          },
-          {
-            "traditional": "一會兒",
-            "simplified": "一会儿",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "A mentions World Culture Day this Friday. Build B's reply:",
         "lines": [
           {
             "speaker": {
@@ -42,46 +16,228 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我們明天"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "不是"
-                ]
-              },
+                "traditional": "我剛剛聽同學說，這個星期五是華語中心的世界文化日。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "text",
-                "traditional": "約好要一起去圖書館[嗎"
+                "traditional": "你不知道嗎？"
               }
             ]
           }
         ],
-        "result": {
-          "traditional": "我們明天不是約好要一起去圖書館嗎？",
-          "simplified": "我们明天不是约好要一起去图书馆吗？",
-          "pinyin": "Wǒmen míngtiān bú shì yuē hǎo yào yìqǐ qù túshūguǎn ma?",
-          "english": "Didn't we arrange to go to the library together tomorrow?"
-        },
+        "tiles": [
+          {
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī"
+          },
+          {
+            "traditional": "早就",
+            "simplified": "早就",
+            "pinyin": "zǎojiù"
+          },
+          {
+            "traditional": "跟我們",
+            "simplified": "跟我们",
+            "pinyin": "gēn wǒmen"
+          },
+          {
+            "traditional": "說過了",
+            "simplified": "说过了",
+            "pinyin": "shuō guò le"
+          },
+          {
+            "traditional": "剛剛",
+            "simplified": "刚刚",
+            "pinyin": "gānggāng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "老師",
+              "早就",
+              "跟我們",
+              "說過了"
+            ],
+            "sentence": {
+              "traditional": "老師早就跟我們說過了。",
+              "simplified": "老师早就跟我们说过了。",
+              "pinyin": "Lǎoshī zǎo jiù gēn wǒmen shuō guò le.",
+              "english": "The teacher told us long ago."
+            }
+          }
+        ],
         "repairs": [
+          {
+            "placed": [
+              "剛剛"
+            ],
+            "note": "剛剛 means just now; use 早就 to express that the teacher already told us long ago."
+          }
+        ],
+        "fallbackRepair": "Build: 老師 + 早就 + 跟我們 + 說過了."
+      },
+      {
+        "id": "b3l2g1-p2",
+        "source": "p.51 #2",
+        "kind": "order-build",
+        "prompt": "A recommends a famous novel about a hardworking youth. Build B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那本小說好看極了，內容是一個年輕人肯吃苦又敢接受挑戰的故事，你一定要看。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那本小說很有名，"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "早就",
+            "simplified": "早就",
+            "pinyin": "zǎojiù"
+          },
+          {
+            "traditional": "看過了",
+            "simplified": "看过了",
+            "pinyin": "kàn guò le"
+          },
+          {
+            "traditional": "剛剛",
+            "simplified": "刚刚",
+            "pinyin": "gānggāng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "早就",
+              "看過了"
+            ],
+            "sentence": {
+              "traditional": "我早就看過了。",
+              "simplified": "我早就看过了。",
+              "pinyin": "Wǒ zǎo jiù kàn guò le.",
+              "english": "I read it a long time ago."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "剛剛"
+            ],
+            "note": "Use 早就 to emphasize you read it long ago, not just now."
+          }
+        ],
+        "fallbackRepair": "Build: 我 + 早就 + 看過了."
+      },
+      {
+        "id": "b3l2g1-p3",
+        "source": "p.51 #3",
+        "kind": "slot-build",
+        "prompt": "The professor was angry about the missing paper. Complete B's response showing warning was given long before:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他因為每天忙著打工，而沒完成期末報告，讓教授相當生氣。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "教授"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "早就"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "提醒他了，是他自己不聽。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "早就",
+            "simplified": "早就",
+            "pinyin": "zǎojiù"
+          },
+          {
+            "traditional": "剛才",
+            "simplified": "刚才",
+            "pinyin": "gāngcái"
+          },
+          {
+            "traditional": "順便",
+            "simplified": "顺便",
+            "pinyin": "shùnbiàn"
+          }
+        ],
+        "accepted": "早就",
+        "result": {
+          "traditional": "教授早就提醒他了，是他自己不聽。",
+          "simplified": "教授早就提醒他了，是他自己不听。",
+          "pinyin": "Jiàoshòu zǎo jiù tíxǐng tā le, shì tā zìjǐ bù tīng.",
+          "english": "The professor had warned him long ago, but he wouldn't listen."
+        },
+        "fallbackRepair": "Select 早就 to express that the warning occurred long before.",
+        "repairs": [
+          {
+            "placed": [
+              "剛才"
+            ],
+            "note": "剛才 means just now; the professor had warned him long before."
+          },
           {
             "placed": [
               "順便"
             ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
-          },
-          {
-            "placed": [
-              "算了"
-            ],
-            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
-          },
-          {
-            "placed": [
-              "一會兒"
-            ],
-            "note": "一會兒 expresses alternating quick actions (一會兒…一會兒…), not a single statement."
+            "note": "順便 means conveniently in passing, which does not fit here."
           }
         ]
       }
@@ -90,38 +246,12 @@
   "B3L02-G02-P52": {
     "bookPage": 52,
     "title": "Practice: 順便",
-    "allowWords": [
-      "順便"
-    ],
     "items": [
       {
         "id": "b3l2g2-p1",
         "source": "p.52 #1",
-        "kind": "slot-build",
-        "prompt": "Asking someone for a favor while they are out:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
-          },
-          {
-            "traditional": "不是",
-            "simplified": "不是",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "算了",
-            "simplified": "算了",
-            "pinyin": "suànle"
-          },
-          {
-            "traditional": "一會兒",
-            "simplified": "一会儿",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "A is leaving work and heading home. Build B's convenient request:",
         "lines": [
           {
             "speaker": {
@@ -130,86 +260,233 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你經過超商時，請"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "順便"
-                ]
-              },
+                "traditional": "我現在準備下班了，差不多七點到家。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "text",
-                "traditional": "幫我拿網購的包裹。"
+                "traditional": "好。對了，你"
               }
             ]
           }
         ],
-        "result": {
-          "traditional": "你經過超商時，請順便幫我拿網購的包裹。",
-          "simplified": "你经过超商时，请顺便帮我拿网购的包裹。",
-          "pinyin": "Nǐ jīngguò chāoshāng shí, qǐng shùnbiàn bāng wǒ ná wǎnggòu de bāoguǒ.",
-          "english": "When you pass by the convenience store, please conveniently pick up my online parcel."
-        },
+        "tiles": [
+          {
+            "traditional": "順便",
+            "simplified": "顺便",
+            "pinyin": "shùnbiàn"
+          },
+          {
+            "traditional": "幫我",
+            "simplified": "帮我",
+            "pinyin": "bāng wǒ"
+          },
+          {
+            "traditional": "買杯咖啡",
+            "simplified": "买杯咖啡",
+            "pinyin": "mǎi bēi kāfēi"
+          },
+          {
+            "traditional": "吧",
+            "simplified": "吧",
+            "pinyin": "ba"
+          },
+          {
+            "traditional": "隨便",
+            "simplified": "随便",
+            "pinyin": "suíbiàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "順便",
+              "幫我",
+              "買杯咖啡",
+              "吧"
+            ],
+            "sentence": {
+              "traditional": "順便幫我買杯咖啡吧。",
+              "simplified": "顺便帮我买杯咖啡吧。",
+              "pinyin": "Shùnbiàn bāng wǒ mǎi bēi kāfēi ba.",
+              "english": "Conveniently buy me a cup of coffee on the way."
+            }
+          }
+        ],
         "repairs": [
           {
             "placed": [
-              "不是"
+              "隨便"
             ],
-            "note": "不是 forms rhetorical questions (不是…嗎) or negation, not alternating actions."
-          },
-          {
-            "placed": [
-              "算了"
-            ],
-            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
-          },
-          {
-            "placed": [
-              "一會兒"
-            ],
-            "note": "一會兒 expresses alternating quick actions (一會兒…一會兒…), not a single statement."
+            "note": "隨便 means as you like; use 順便 to mean conveniently on the way."
           }
-        ]
+        ],
+        "fallbackRepair": "Build: 順便 + 幫我 + 買杯咖啡 + 吧."
+      },
+      {
+        "id": "b3l2g2-p2",
+        "source": "p.52 #2",
+        "kind": "order-build",
+        "prompt": "A is going to the convenience store downstairs. Build A's polite offer:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我要去樓下的便利商店買午飯，"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "順便",
+            "simplified": "顺便",
+            "pinyin": "shùnbiàn"
+          },
+          {
+            "traditional": "幫你",
+            "simplified": "帮你",
+            "pinyin": "bāng nǐ"
+          },
+          {
+            "traditional": "買一份",
+            "simplified": "买一份",
+            "pinyin": "mǎi yí fèn"
+          },
+          {
+            "traditional": "好嗎",
+            "simplified": "好吗",
+            "pinyin": "hǎo ma"
+          },
+          {
+            "traditional": "隨便",
+            "simplified": "随便",
+            "pinyin": "suíbiàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "順便",
+              "幫你",
+              "買一份",
+              "好嗎"
+            ],
+            "sentence": {
+              "traditional": "順便幫你買一份好嗎？",
+              "simplified": "顺便帮你买一份好吗？",
+              "pinyin": "Shùnbiàn bāng nǐ mǎi yí fèn hǎo ma?",
+              "english": "Should I pick up a portion for you on the way?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "隨便"
+            ],
+            "note": "Use 順便 for a helpful action done on the way."
+          }
+        ],
+        "fallbackRepair": "Build: 順便 + 幫你 + 買一份 + 好嗎."
+      },
+      {
+        "id": "b3l2g2-p3",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Build B's explanation of snacking at the convenience store:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你在便利商店看書那麼久，肚子不餓嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "如果"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "餓了",
+            "simplified": "饿了",
+            "pinyin": "è le"
+          },
+          {
+            "traditional": "就順便",
+            "simplified": "就顺便",
+            "pinyin": "jiù shùnbiàn"
+          },
+          {
+            "traditional": "買個泡麵",
+            "simplified": "买个泡面",
+            "pinyin": "mǎi ge pàomiàn"
+          },
+          {
+            "traditional": "隨便",
+            "simplified": "随便",
+            "pinyin": "suíbiàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "餓了",
+              "就順便",
+              "買個泡麵"
+            ],
+            "sentence": {
+              "traditional": "如果餓了就順便買個泡麵。",
+              "simplified": "如果饿了就顺便买个泡面。",
+              "pinyin": "Rúguǒ è le jiù shùnbiàn mǎi ge pàomiàn.",
+              "english": "If I get hungry, I casually buy instant noodles on the spot."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "隨便"
+            ],
+            "note": "Use 順便 to mean taking advantage of being there already."
+          }
+        ],
+        "fallbackRepair": "Build: 餓了 + 就順便 + 買個泡麵."
       }
     ]
   },
   "B3L02-G03-P53": {
     "bookPage": 53,
-    "title": "Practice: 一會兒…一會兒…",
-    "allowWords": [
-      "一會兒"
-    ],
+    "title": "Practice: 一會兒……，一會兒……",
     "items": [
       {
         "id": "b3l2g3-p1",
-        "source": "p.53 #1",
-        "kind": "slot-build",
-        "prompt": "Describing unpredictable spring weather:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "一會兒",
-            "simplified": "一会儿",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
-          },
-          {
-            "traditional": "算了",
-            "simplified": "算了",
-            "pinyin": "suànle"
-          },
-          {
-            "traditional": "不是",
-            "simplified": "不是",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "source": "p.54 #1",
+        "kind": "order-build",
+        "prompt": "B explains having forgotten the report due to a hectic alternating schedule:",
         "lines": [
           {
             "speaker": {
@@ -218,46 +495,229 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "春天常常"
+                "traditional": "老師要我們今天把報告交給他，你帶來了沒有？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "什麼！今天交嗎？我最近太忙了，"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一會兒",
+            "simplified": "一会儿",
+            "pinyin": "yìhuǐr"
+          },
+          {
+            "traditional": "要打工",
+            "simplified": "要打工",
+            "pinyin": "yào dǎgōng"
+          },
+          {
+            "traditional": "一會兒",
+            "simplified": "一会儿",
+            "pinyin": "yìhuǐr"
+          },
+          {
+            "traditional": "要考試",
+            "simplified": "要考试",
+            "pinyin": "yào kǎoshì"
+          },
+          {
+            "traditional": "一直",
+            "simplified": "一直",
+            "pinyin": "yìzhí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "一會兒",
+              "要打工",
+              "一會兒",
+              "要考試"
+            ],
+            "sentence": {
+              "traditional": "一會兒要打工，一會兒要考試。",
+              "simplified": "一会儿要打工，一会儿要考试。",
+              "pinyin": "Yìhuǐr yào dǎgōng, yìhuǐr yào kǎoshì.",
+              "english": "One moment working, the next taking exams."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一直"
+            ],
+            "note": "Use 一會兒……一會兒…… for two alternating tasks."
+          }
+        ],
+        "fallbackRepair": "Build: 一會兒 + 要打工 + 一會兒 + 要考試."
+      },
+      {
+        "id": "b3l2g3-p2",
+        "source": "p.54 #2",
+        "kind": "order-build",
+        "prompt": "A wavers between going and not going to the party. Build B's reaction:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "明天的舞會我不太想去。不過一個人在家挺無聊的，那就去吧！等一下，我看還是不去好了……"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "你",
+            "simplified": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "一會兒",
+            "simplified": "一会儿",
+            "pinyin": "yìhuǐr"
+          },
+          {
+            "traditional": "要去",
+            "simplified": "要去",
+            "pinyin": "yào qù"
+          },
+          {
+            "traditional": "一會兒",
+            "simplified": "一会儿",
+            "pinyin": "yìhuǐr"
+          },
+          {
+            "traditional": "又不去",
+            "simplified": "又不去",
+            "pinyin": "yòu bú qù"
+          },
+          {
+            "traditional": "一直",
+            "simplified": "一直",
+            "pinyin": "yìzhí"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "一會兒",
+              "要去",
+              "一會兒",
+              "又不去"
+            ],
+            "sentence": {
+              "traditional": "你一會兒要去，一會兒又不去。",
+              "simplified": "你一会儿要去，一会儿又不去。",
+              "pinyin": "Nǐ yìhuǐr yào qù, yìhuǐr yòu bú qù.",
+              "english": "One moment you want to go, and the next you don't!"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一直"
+            ],
+            "note": "Use 一會兒……一會兒…… for fluctuating back and forth."
+          }
+        ],
+        "fallbackRepair": "Build: 你 + 一會兒 + 要去 + 一會兒 + 又不去."
+      },
+      {
+        "id": "b3l2g3-p3",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Describe the convenience store clerk's busy routine:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "臺灣超商的店員工作真的很辛苦。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，他們"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
                   "一會兒"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "出太陽，[一會兒"
+                "traditional": "煮咖啡，一會兒擦桌子，忙得不得了。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "一會兒",
+            "simplified": "一会儿",
+            "pinyin": "yìhuǐr"
+          },
+          {
+            "traditional": "順便",
+            "simplified": "顺便",
+            "pinyin": "shùnbiàn"
+          },
+          {
+            "traditional": "早就",
+            "simplified": "早就",
+            "pinyin": "zǎojiù"
+          }
+        ],
+        "accepted": "一會兒",
         "result": {
-          "traditional": "春天常常一會兒出太陽，一會兒刮大風。",
-          "simplified": "春天常常一会儿出太阳，一会儿刮大风。",
-          "pinyin": "Chūntiān chángcháng yìhuǐr chū tàiyáng, yìhuǐr guā dàfēng.",
-          "english": "In spring, it is sunny one moment, and windy the next."
+          "traditional": "是啊，他們一會兒煮咖啡，一會兒擦桌子，忙得不得了。",
+          "simplified": "是啊，他们一会儿煮咖啡，一会儿擦桌子，忙得不得了。",
+          "pinyin": "Shì a, tāmen yìhuǐr zhǔ kāfēi, yìhuǐr cā zhuōzi, máng de bùdéliǎo.",
+          "english": "Yeah, they brew coffee one moment and wipe tables the next; they're crazy busy."
         },
+        "fallbackRepair": "Select 一會兒 to pair with the alternating pattern.",
         "repairs": [
           {
             "placed": [
               "順便"
             ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+            "note": "順便 means conveniently on the way; use 一會兒 for rapidly alternating duties."
           },
           {
             "placed": [
-              "算了"
+              "早就"
             ],
-            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
-          },
-          {
-            "placed": [
-              "不是"
-            ],
-            "note": "不是 forms rhetorical questions (不是…嗎) or negation, not alternating actions."
+            "note": "早就 means long ago, which does not fit alternating actions."
           }
         ]
       }
@@ -266,16 +726,205 @@
   "B3L02-G04-P54": {
     "bookPage": 54,
     "title": "Practice: 算了",
-    "allowWords": [
-      "算了"
-    ],
     "items": [
       {
         "id": "b3l2g4-p1",
-        "source": "p.54 #1",
+        "source": "p.55 #1",
+        "kind": "order-build",
+        "prompt": "There is a 20-minute line at the noodle shop. Build B's compromise:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家麵店排隊排得那麼長，我們得等差不多二十分鐘。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "二十分鐘！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "算了",
+            "simplified": "算了",
+            "pinyin": "suànle"
+          },
+          {
+            "traditional": "我們去",
+            "simplified": "我们去",
+            "pinyin": "wǒmen qù"
+          },
+          {
+            "traditional": "別家麵店",
+            "simplified": "别家面店",
+            "pinyin": "bié jiā miàndiàn"
+          },
+          {
+            "traditional": "吃吧",
+            "simplified": "吃吧",
+            "pinyin": "chī ba"
+          },
+          {
+            "traditional": "隨便",
+            "simplified": "随便",
+            "pinyin": "suíbiàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "算了",
+              "我們去",
+              "別家麵店",
+              "吃吧"
+            ],
+            "sentence": {
+              "traditional": "算了，我們去別家麵店吃吧。",
+              "simplified": "算了，我们去别家面店吃吧。",
+              "pinyin": "Suànle, wǒmen qù bié jiā miàndiàn chī ba.",
+              "english": "Forget it, let's go eat at another noodle shop."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "隨便"
+            ],
+            "note": "算了 expresses giving up on waiting and taking an alternative."
+          }
+        ],
+        "fallbackRepair": "Build: 算了 + 我們去 + 別家麵店 + 吃吧."
+      },
+      {
+        "id": "b3l2g4-p2",
+        "source": "p.55 #2",
+        "kind": "order-build",
+        "prompt": "Meeting is starting immediately and dessert was left in the cab. Build B's advice:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "啊！我把要請同事吃的甜點忘在計程車上了，我現在就打電話去問。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "馬上要開會了，"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "算了",
+            "simplified": "算了",
+            "pinyin": "suànle"
+          },
+          {
+            "traditional": "別打了",
+            "simplified": "别打了",
+            "pinyin": "bié dǎ le"
+          },
+          {
+            "traditional": "來不及了",
+            "simplified": "来不及了",
+            "pinyin": "láibují le"
+          },
+          {
+            "traditional": "行了",
+            "simplified": "行了",
+            "pinyin": "xíng le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "算了",
+              "別打了",
+              "來不及了"
+            ],
+            "sentence": {
+              "traditional": "算了，別打了，來不及了。",
+              "simplified": "算了，别打了，来不及了。",
+              "pinyin": "Suànle, bié dǎ le, láibují le.",
+              "english": "Forget it, don't call; there's no time."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "行了"
+            ],
+            "note": "Use 算了 to express dropping the matter."
+          }
+        ],
+        "fallbackRepair": "Build: 算了 + 別打了 + 來不及了."
+      },
+      {
+        "id": "b3l2g4-p3",
+        "source": "own",
         "kind": "slot-build",
-        "prompt": "Giving up after trying repeatedly:",
-        "quiet": true,
+        "prompt": "Shawn decides not to travel to another bank just to save a few dollars in ATM fees:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "朋子"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你可以去附近的銀行提款機領，不用手續費。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "尚恩"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "沒關係，手續費不過幾塊錢，我在這裡領"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "算了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "算了",
@@ -290,62 +939,29 @@
           {
             "traditional": "一會兒",
             "simplified": "一会儿",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "不是",
-            "simplified": "不是",
-            "pinyin": "pīnyīn"
+            "pinyin": "yìhuǐr"
           }
         ],
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "排隊的人實在太多了，我們去別家吃"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "算了"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "吧。"
-              }
-            ]
-          }
-        ],
+        "accepted": "算了",
         "result": {
-          "traditional": "排隊的人實在太多了，我們去別家吃算了吧。",
-          "simplified": "排队的人实在太多了，我们去别家吃算了吧。",
-          "pinyin": "Páiduì de rén shízài tài duō le, wǒmen qù bié jiā chī suàn le ba.",
-          "english": "There are really too many people lining up; let's just go eat elsewhere."
+          "traditional": "沒關係，手續費不過幾塊錢，我在這裡領算了。",
+          "simplified": "没关系，手续费不过几块钱，我在这里领算了。",
+          "pinyin": "Méi guānxi, shǒuxùfèi búguò jǐ kuài qián, wǒ zài zhèlǐ lǐng suànle.",
+          "english": "That's fine; the fee is just a few dollars, I might as well just withdraw here."
         },
+        "fallbackRepair": "Select 算了 to accept the compromise.",
         "repairs": [
           {
             "placed": [
               "順便"
             ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+            "note": "The speaker decides to accept the fee and just withdraw here (在...領算了)."
           },
           {
             "placed": [
               "一會兒"
             ],
-            "note": "一會兒 expresses alternating quick actions (一會兒…一會兒…), not a single statement."
-          },
-          {
-            "placed": [
-              "不是"
-            ],
-            "note": "不是 forms rhetorical questions (不是…嗎) or negation, not alternating actions."
+            "note": "一會兒 indicates a duration or alternation, not settling on a choice."
           }
         ]
       }
@@ -353,39 +969,84 @@
   },
   "B3L02-G05-P62": {
     "bookPage": 62,
-    "title": "Practice: 就是",
-    "allowWords": [
-      "就是"
-    ],
+    "title": "Practice: V開",
     "items": [
       {
         "id": "b3l2g5-p1",
-        "source": "p.62 #1",
-        "kind": "slot-build",
-        "prompt": "Expressing stubborn refusal:",
-        "quiet": true,
-        "tiles": [
+        "source": "p.63 #1",
+        "kind": "order-build",
+        "prompt": "The teacher begins class. Build the instruction:",
+        "lines": [
           {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          },
-          {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
-          },
-          {
-            "traditional": "算了",
-            "simplified": "算了",
-            "pinyin": "suànle"
-          },
-          {
-            "traditional": "一會兒",
-            "simplified": "一会儿",
-            "pinyin": "pīnyīn"
+            "speaker": {
+              "traditional": "老師"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "各位同學早安！上課了，請大家"
+              }
+            ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "把課本",
+            "simplified": "把课本",
+            "pinyin": "bǎ kèběn"
+          },
+          {
+            "traditional": "翻開",
+            "simplified": "翻开",
+            "pinyin": "fān kāi"
+          },
+          {
+            "traditional": "翻到",
+            "simplified": "翻到",
+            "pinyin": "fān dào"
+          },
+          {
+            "traditional": "第五十頁",
+            "simplified": "第五十页",
+            "pinyin": "dì wǔshí yè"
+          },
+          {
+            "traditional": "翻完",
+            "simplified": "翻完",
+            "pinyin": "fān wán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "把課本",
+              "翻開",
+              "翻到",
+              "第五十頁"
+            ],
+            "sentence": {
+              "traditional": "把課本翻開，翻到第五十頁。",
+              "simplified": "把课本翻开，翻到第五十页。",
+              "pinyin": "Bǎ kèběn fān kāi, fān dào dì wǔshí yè.",
+              "english": "Open your textbooks and turn to page 50."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "翻完"
+            ],
+            "note": "翻開 expresses opening the book pages apart."
+          }
+        ],
+        "fallbackRepair": "Build: 把課本 + 翻開 + 翻到 + 第五十頁."
+      },
+      {
+        "id": "b3l2g5-p2",
+        "source": "p.63 #2",
+        "kind": "slot-build",
+        "prompt": "A asks how to open a stiff door. Complete B's suggestion:",
         "lines": [
           {
             "speaker": {
@@ -394,46 +1055,150 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "弟弟脾氣很固執，他不喜歡吃的菜"
+                "traditional": "請問這個門怎麼開啊？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你往外推推看，應該"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "就是"
+                  "推得開"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "一口都不肯嚐。"
+                "traditional": "。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "推得開",
+            "simplified": "推得开",
+            "pinyin": "tuī de kāi"
+          },
+          {
+            "traditional": "推得動",
+            "simplified": "推得动",
+            "pinyin": "tuī de dòng"
+          },
+          {
+            "traditional": "推得好",
+            "simplified": "推得好",
+            "pinyin": "tuī de hǎo"
+          }
+        ],
+        "accepted": "推得開",
         "result": {
-          "traditional": "弟弟脾氣很固執，他不喜歡吃的菜就是一口都不肯嚐。",
-          "simplified": "弟弟脾气很固執，他不喜欢吃的菜就是一口都不肯尝。",
-          "pinyin": "Dìdi píqì hěn gùzhí, tā bù xǐhuān chī de cài jiùshì yì kǒu dōu bù kěn cháng.",
-          "english": "Younger brother is very stubborn; dishes he dislikes, he simply won't taste even one bite."
+          "traditional": "你往外推推看，應該推得開。",
+          "simplified": "你往外推推看，应该推得开。",
+          "pinyin": "Nǐ wǎng wài tuītuī kàn, yīnggāi tuī de kāi.",
+          "english": "Try pushing outward; you should be able to push it open."
         },
+        "fallbackRepair": "Select 推得開 for the potential complement of opening apart.",
         "repairs": [
           {
             "placed": [
-              "順便"
+              "推得動"
             ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+            "note": "The task asks how to open the door (開門), so use 推得開."
           },
           {
             "placed": [
-              "算了"
+              "推得好"
             ],
-            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
+            "note": "Use the potential complement 開 for opening apart."
+          }
+        ]
+      },
+      {
+        "id": "b3l2g5-p3",
+        "source": "p.63 #3",
+        "kind": "slot-build",
+        "prompt": "B is busy cooking and cannot leave the kitchen. Complete B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我想打掃房間，可是書桌太重了，我搬不開，你來幫我吧。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "好，可是我現在"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "走不開"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，等一下馬上過去幫你。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "走不開",
+            "simplified": "走不开",
+            "pinyin": "zǒu bu kāi"
+          },
+          {
+            "traditional": "走不完",
+            "simplified": "走不完",
+            "pinyin": "zǒu bu wán"
+          },
+          {
+            "traditional": "走不到",
+            "simplified": "走不到",
+            "pinyin": "zǒu bu dào"
+          }
+        ],
+        "accepted": "走不開",
+        "result": {
+          "traditional": "好，可是我現在走不開，等一下馬上過去幫你。",
+          "simplified": "好，可是我现在走不开，等一下马上过去帮你。",
+          "pinyin": "Hǎo, kěshì wǒ xiànzài zǒu bu kāi, děng yíxià mǎshàng guòqù bāng nǐ.",
+          "english": "Sure, but I cannot step away right now; I will help you right after this."
+        },
+        "fallbackRepair": "Select 走不開 to express inability to step away.",
+        "repairs": [
+          {
+            "placed": [
+              "走不完"
+            ],
+            "note": "走不開 means unable to step away from one's current post/task."
           },
           {
             "placed": [
-              "一會兒"
+              "走不到"
             ],
-            "note": "一會兒 expresses alternating quick actions (一會兒…一會兒…), not a single statement."
+            "note": "Use 走不開 for being unable to leave one's task right now."
           }
         ]
       }
@@ -442,38 +1207,12 @@
   "B3L02-G06-P64": {
     "bookPage": 64,
     "title": "Practice: 經過",
-    "allowWords": [
-      "經過"
-    ],
     "items": [
       {
         "id": "b3l2g6-p1",
         "source": "p.64 #1",
-        "kind": "slot-build",
-        "prompt": "Highlighting effort leading to outcome:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "經過",
-            "simplified": "经过",
-            "pinyin": "jīngguò"
-          },
-          {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          },
-          {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
-          },
-          {
-            "traditional": "算了",
-            "simplified": "算了",
-            "pinyin": "suànle"
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "A asks why your view on marriage changed. Build B's response:",
         "lines": [
           {
             "speaker": {
@@ -482,46 +1221,238 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": ""
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "經過"
-                ]
-              },
+                "traditional": "妳不是不想結婚嗎？怎麼現在改變想法了？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "text",
-                "traditional": "好幾個月的準備，他順利通過了華語能力測驗。"
+                "traditional": "其實，"
               }
             ]
           }
         ],
-        "result": {
-          "traditional": "經過好幾個月的準備，他順利通過了華語能力測驗。",
-          "simplified": "经过好几个月的准备，他顺利通过了华语能力测验。",
-          "pinyin": "Jīngguò hǎo jǐ ge yuè de zhǔnbèi, tā shùnlì tōngguò le huáyǔ nénglì cèyàn.",
-          "english": "Through several months of preparation, he smoothly passed the Chinese proficiency test."
-        },
+        "tiles": [
+          {
+            "traditional": "經過",
+            "simplified": "经过",
+            "pinyin": "jīngguò"
+          },
+          {
+            "traditional": "這件事",
+            "simplified": "这件事",
+            "pinyin": "zhè jiàn shì"
+          },
+          {
+            "traditional": "我覺得",
+            "simplified": "我觉得",
+            "pinyin": "wǒ juéde"
+          },
+          {
+            "traditional": "應該",
+            "simplified": "应该",
+            "pinyin": "yīnggāi"
+          },
+          {
+            "traditional": "好好把握",
+            "simplified": "好好把握",
+            "pinyin": "hǎohāo bǎwò"
+          },
+          {
+            "traditional": "通過",
+            "simplified": "通过",
+            "pinyin": "tōngguò"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "經過",
+              "這件事",
+              "我覺得",
+              "應該",
+              "好好把握"
+            ],
+            "sentence": {
+              "traditional": "經過這件事我覺得應該好好把握。",
+              "simplified": "经过这件事我觉得应该好好把握。",
+              "pinyin": "Jīngguò zhè jiàn shì wǒ juéde yīnggāi hǎohāo bǎwò.",
+              "english": "After going through this experience, I feel I should cherish it."
+            }
+          }
+        ],
         "repairs": [
           {
             "placed": [
-              "就是"
+              "通過"
             ],
-            "note": "就是 introduces a sole exception or emphatic persistence."
+            "note": "Use 經過 for an experience or event that leads to an insight."
+          }
+        ],
+        "fallbackRepair": "Build: 經過 + 這件事 + 我覺得 + 應該 + 好好把握."
+      },
+      {
+        "id": "b3l2g6-p2",
+        "source": "p.64 #2",
+        "kind": "slot-build",
+        "prompt": "A is surprised by your delicious cooking. Complete B's explanation of practice over time:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你從來不做飯，怎麼可能做出這麼好吃的牛肉麵？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "其實我一結婚就開始學做菜，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "經過努力"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，現在做菜的技巧不輸給我媽呢！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "經過努力",
+            "simplified": "经过努力",
+            "pinyin": "jīngguò nǔlì"
+          },
+          {
+            "traditional": "通過努力",
+            "simplified": "通过努力",
+            "pinyin": "tōngguò nǔlì"
+          },
+          {
+            "traditional": "按照努力",
+            "simplified": "按照努力",
+            "pinyin": "ànzhào nǔlì"
+          }
+        ],
+        "accepted": "經過努力",
+        "result": {
+          "traditional": "其實我一結婚就開始學做菜，經過努力，現在做菜的技巧不輸給我媽呢！",
+          "simplified": "其实我一结婚就开始学做菜，经过努力，现在做菜的技巧不输给我妈呢！",
+          "pinyin": "Qíshí wǒ yì jiéhūn jiù kāishǐ xué zuòcài, jīngguò nǔlì, xiànzài zuòcài de jìqiǎo bù shū gěi wǒ mā ne!",
+          "english": "Actually I started learning cooking right after marriage; through effort, my skills are now as good as my mom's!"
+        },
+        "fallbackRepair": "Select 經過努力 to express the process gone through.",
+        "repairs": [
+          {
+            "placed": [
+              "通過努力"
+            ],
+            "note": "經過 emphasizes the elapsed process of effort."
           },
           {
             "placed": [
-              "順便"
+              "按照努力"
             ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+            "note": "按照 means according to; use 經過 for the process undergone."
+          }
+        ]
+      },
+      {
+        "id": "b3l2g6-p3",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Explain convenience store promotional events:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家超商怎麼常常送禮物？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "有些超商"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "每經過"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一段時間，就會舉辦活動吸引顧客。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "每經過",
+            "simplified": "每经过",
+            "pinyin": "měi jīngguò"
+          },
+          {
+            "traditional": "每通過",
+            "simplified": "每通过",
+            "pinyin": "měi tōngguò"
+          },
+          {
+            "traditional": "每按照",
+            "simplified": "每按照",
+            "pinyin": "měi ànzhào"
+          }
+        ],
+        "accepted": "每經過",
+        "result": {
+          "traditional": "有些超商每經過一段時間，就會舉辦活動吸引顧客。",
+          "simplified": "有些超商每经过一段时间，就会举办活动吸引顾客。",
+          "pinyin": "Yǒuxiē chāoshāng měi jīngguò yí duàn shíjiān, jiù huì jǔbàn huódòng xīyǐn gùkè.",
+          "english": "Some convenience stores hold events every so often to attract customers."
+        },
+        "fallbackRepair": "Select 每經過 to express every elapsed period of time.",
+        "repairs": [
+          {
+            "placed": [
+              "每通過"
+            ],
+            "note": "經過 pairs with an elapsed time interval."
           },
           {
             "placed": [
-              "算了"
+              "每按照"
             ],
-            "note": "算了 expresses resignation or dropping an idea, which contradicts the sentence context."
+            "note": "按照 means according to; use 經過 for time elapsed."
           }
         ]
       }
@@ -529,39 +1460,13 @@
   },
   "B3L02-G07-P65": {
     "bookPage": 65,
-    "title": "Practice: 用…來…",
-    "allowWords": [
-      "用"
-    ],
+    "title": "Practice: 用 NP (來) V",
     "items": [
       {
         "id": "b3l2g7-p1",
-        "source": "p.65 #1",
-        "kind": "slot-build",
-        "prompt": "Explaining a problem-solving approach:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "用",
-            "simplified": "用",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "經過",
-            "simplified": "经过",
-            "pinyin": "jīngguò"
-          },
-          {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          },
-          {
-            "traditional": "順便",
-            "simplified": "顺便",
-            "pinyin": "shùnbiàn"
-          }
-        ],
+        "source": "p.66 #1",
+        "kind": "order-build",
+        "prompt": "Reassure A about how grades are determined in class:",
         "lines": [
           {
             "speaker": {
@@ -570,46 +1475,234 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他習慣"
+                "traditional": "這次期中考我考得非常不好，可能會被當。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你放心，教授說這學期的成績主要是"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "用",
+            "simplified": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "平時成績",
+            "simplified": "平时成绩",
+            "pinyin": "píngshí chéngjì"
+          },
+          {
+            "traditional": "來決定",
+            "simplified": "来决定",
+            "pinyin": "lái juédìng"
+          },
+          {
+            "traditional": "的",
+            "simplified": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "為了",
+            "simplified": "为了",
+            "pinyin": "wèile"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "用",
+              "平時成績",
+              "來決定",
+              "的"
+            ],
+            "sentence": {
+              "traditional": "用平時成績來決定的。",
+              "simplified": "用平时成绩来决定的。",
+              "pinyin": "Yòng píngshí chéngjì lái juédìng de.",
+              "english": "Determined using the regular exam scores."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "為了"
+            ],
+            "note": "用 NP 來 V indicates the concrete method or basis used."
+          }
+        ],
+        "fallbackRepair": "Build: 用 + 平時成績 + 來決定 + 的."
+      },
+      {
+        "id": "b3l2g7-p2",
+        "source": "p.66 #2",
+        "kind": "order-build",
+        "prompt": "Advice on resolving workplace differences:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "最近我跟同事常常對工作的想法不同，花了太多時間來討論，真累！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你是一個性格開朗的人，"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "應該",
+            "simplified": "应该",
+            "pinyin": "yīnggāi"
+          },
+          {
+            "traditional": "用",
+            "simplified": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "好方法",
+            "simplified": "好方法",
+            "pinyin": "hǎo fāngfǎ"
+          },
+          {
+            "traditional": "來處理",
+            "simplified": "来处理",
+            "pinyin": "lái chǔlǐ"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "應該",
+              "用",
+              "好方法",
+              "來處理"
+            ],
+            "sentence": {
+              "traditional": "應該用好方法來處理。",
+              "simplified": "应该用好方法来处理。",
+              "pinyin": "Yīnggāi yòng hǎo fāngfǎ lái chǔlǐ.",
+              "english": "You should use a good method to handle it."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "因為"
+            ],
+            "note": "Use 用 NP 來 V to specify the means used to handle the situation."
+          }
+        ],
+        "fallbackRepair": "Build: 應該 + 用 + 好方法 + 來處理."
+      },
+      {
+        "id": "b3l2g7-p3",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Convenience stores use giveaways to attract customers:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "為什麼那家超商總是有那麼多顧客排隊？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "因為他們"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
                   "用"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "寫日記的方式[來"
+                "traditional": "送小禮物的方式吸引顧客。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "用",
+            "simplified": "用",
+            "pinyin": "yòng"
+          },
+          {
+            "traditional": "為",
+            "simplified": "为",
+            "pinyin": "wèi"
+          },
+          {
+            "traditional": "由",
+            "simplified": "由",
+            "pinyin": "yóu"
+          }
+        ],
+        "accepted": "用",
         "result": {
-          "traditional": "他習慣用寫日記的方式來記錄生活中的點點滴滴。",
-          "simplified": "他习惯用写日记的方式来记录生活中的点点滴滴。",
-          "pinyin": "Tā xíguàn yòng xiě rìjì de fāngshì lái jìlù shēnghuó zhōng de diǎndiǎndīdī.",
-          "english": "He is used to using journaling to record every bit of daily life."
+          "traditional": "因為他們用送小禮物的方式吸引顧客。",
+          "simplified": "因为他们用送小礼物的方式吸引顾客。",
+          "pinyin": "Yīnwèi tāmen yòng sòng xiǎo lǐwù de fāngshì xīyǐn gùkè.",
+          "english": "Because they use the method of giving small gifts to attract customers."
         },
+        "fallbackRepair": "Select 用 to express using this method.",
         "repairs": [
           {
             "placed": [
-              "經過"
+              "為"
             ],
-            "note": "經過 indicates passing through a process or passing by a place."
+            "note": "Use 用 to introduce the method used (用……的方式)."
           },
           {
             "placed": [
-              "就是"
+              "由"
             ],
-            "note": "就是 introduces a sole exception or emphatic persistence."
-          },
-          {
-            "placed": [
-              "順便"
-            ],
-            "note": "順便 means \"in passing / conveniently\", which requires an action done alongside a primary task."
+            "note": "Use 用 to state the means used."
           }
         ]
       }

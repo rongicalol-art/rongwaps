@@ -400,41 +400,57 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L01-G03-P32': detected('再說', [inOrder(['再說'])]),
   'B3L01-G04-P38': detected('而', [inOrder(['而'])]),
   'B3L01-G05-P40': detected('V出', [inOrder(['出'])]),
-  'B3L01-G06-P42': detected('像…這樣子', [inOrder(['像', '這樣子'], 6)]),
+  'B3L01-G06-P42': detected('就算……也', [inOrder(['就算', '也'], 6)]),
 
   // Book 3 Lesson 2 — 便利商店真方便
-  'B3L02-G01-P51': detected('不是…嗎', [inOrder(['不是', '嗎'], 8)]),
+  'B3L02-G01-P51': detected('早就……了', [inOrder(['早就', '了'], 8)]),
   'B3L02-G02-P52': detected('順便', [inOrder(['順便'])]),
   'B3L02-G03-P53': detected('一會兒…一會兒…', [inOrder(['一會兒', '一會兒'], 6)]),
   'B3L02-G04-P54': detected('算了', [inOrder(['算了'])]),
-  'B3L02-G05-P62': detected('就是', [inOrder(['就是'])]),
+  'B3L02-G05-P62': detected('V開', [inOrder(['開'])]),
   'B3L02-G06-P64': detected('經過', [inOrder(['經過'])]),
   'B3L02-G07-P65': detected('用…來…', [inOrder(['用', '來'], 6)]),
 
   // Book 3 Lesson 3 — 貨比三家不吃虧
   'B3L03-G01-P78': detected('試+V', [inOrder(['試'])]),
-  'B3L03-G02-P80': detected('不如', [inOrder(['不如'])]),
-  'B3L03-G03-P81': detected('就是 (except)', [inOrder(['就是'])]),
-  'B3L03-G04-P82': detected('別再…了', [inOrder(['別再', '了'], 6)]),
-  'B3L03-G05-P88': detected('不僅…也/還…', [inOrder(['不僅'])]),
-  'B3L03-G06-P90': detected('一次比一次', [inOrder(['一次比一次'])]),
+  'B3L03-G02-P80': detected('V掉', [inOrder(['掉'])]),
+  'B3L03-G03-P81': detected('什麼(N)都……，就是……', [inOrder(['什麼', '都', '就是'], 10)]),
+  'B3L03-G04-P82': detected('別再……了', [inOrder(['別再', '了'], 6), inOrder(['不再', '了'], 6)]),
+  'B3L03-G05-P88': detected('不僅……也/還……', [inOrder(['不僅'])]),
+  'B3L03-G06-P90': detected('NP 一M比一M + Vs (了)', [inOrder(['比'], 4)]),
 
-  // Book 3 Lesson 4 — 滿月
-  'B3L04-G01-P101': detected('好+Vs+的+N啊', [inOrder(['好', '的'], 4)]),
-  'B3L04-G02-P102': detected('親自', [inOrder(['親自'])]),
-  'B3L04-G03-P103': detected('V來V去', [inOrder(['來', '去'], 3)]),
-  'B3L04-G04-P105': detected('終於', [inOrder(['終於'])]),
-  'B3L04-G05-P113': detected('V個不停', [inOrder(['個不停'])]),
-  'B3L04-G06-P114': detected('不A不B', [inOrder(['不', '不'], 4)]),
-  'B3L04-G07-P115': detected('除了…就是…', [inOrder(['除了', '就是'], 6)]),
-  'B3L04-G08-P117': detected('不是…就是…', [inOrder(['不是', '就是'], 6)]),
+  // Book 3 Lesson 4 — 孩子滿月了
+  'B3L04-G01-P101': detected('好Vs的N(啊)!', [inOrder(['好', '的'], 4)]),
+  'B3L04-G02-P103': detected('V來V去，還是……', [inOrder(['來', '去'], 3), inOrder(['還是'])]),
+  'B3L04-G03-P105': detected('終於', [inOrder(['終於'])]),
+  'B3L04-G04-P113': detected('V個不停 / V個沒完', [inOrder(['個不停']), inOrder(['個沒完'])]),
+  'B3L04-G05-P114': detected('不Vs1不Vs2', [inOrder(['不', '不'], 4)]),
+  'B3L04-G06-P115': detected('除了……(以外)，就是……', [inOrder(['除了', '就是'], 8)]),
+  'B3L04-G07-P117': detected('不是……，就是……', [inOrder(['不是', '就是'], 8)]),
 
   // Book 3 Lesson 5 — 地震與颱風
   'B3L05-G01-P128': detected('萬一', [inOrder(['萬一'])]),
   'B3L05-G02-P130': detected('一連', [inOrder(['一連'])]),
   'B3L05-G03-P132': detected('以為…沒想到…', [inOrder(['以為', '沒想到'], 8), inOrder(['以為'])]),
-  'B3L05-G04-P133': detected('也好', [inOrder(['也好'])]),
+  'B3L05-G04-P133': detected('……，還是……吧', [inOrder(['還是', '吧'], 8)]),
   'B3L05-G05-P141': detected('結果', [inOrder(['結果'])]),
   'B3L05-G06-P143': detected('甚至', [inOrder(['甚至'])]),
   'B3L05-G07-P144': detected('以東/西/南/北', [inOrder(['以東']), inOrder(['以西']), inOrder(['以南']), inOrder(['以北'])]),
+
+  // Book 3 Lesson 6 — 休閒新生活
+  'B3L06-G01-P155': detected('……倒是/是……，可是/但是/不過……', [inOrder(['倒是', '可是'], 8), inOrder(['倒是', '但是'], 8), inOrder(['倒是', '不過'], 8), inOrder(['是', '可是'], 6), inOrder(['是', '不過'], 6), inOrder(['倒是'])]),
+  'B3L06-G02-P157': detected('X分之Y', [inOrder(['分之'])]),
+  'B3L06-G03-P159': detected('總算', [inOrder(['總算'])]),
+  'B3L06-G04-P160': detected('既然……，就……', [inOrder(['既然', '就'], 8), inOrder(['既然'])]),
+  'B3L06-G05-P167': detected('在……中', [inOrder(['在', '中'], 6)]),
+  'B3L06-G06-P169': detected('不能不 / 不得不', [inOrder(['不能不']), inOrder(['不得不'])]),
+  'B3L06-G07-P171': detected('正＋V', [inOrder(['正要']), inOrder(['正想']), inOrder(['正打算']), inOrder(['正準備']), inOrder(['正'])]),
+
+  // Book 3 Lesson 7 — 背包客的旅行
+  'B3L07-G01-P184': detected('才……就……', [inOrder(['才', '就'], 8)]),
+  'B3L07-G02-P186': detected('話說回來', [inOrder(['話說回來'])]),
+  'B3L07-G03-P187': detected('這麼說', [inOrder(['這麼說'])]),
+  'B3L07-G04-P189': detected('V成', [inOrder(['談成']), inOrder(['辦成']), inOrder(['做成']), inOrder(['去不成']), inOrder(['辦不成']), inOrder(['買得成']), inOrder(['沒看成'])]),
+  'B3L07-G05-P195': detected('就……來說', [inOrder(['就', '來說'], 8)]),
+  'B3L07-G06-P197': detected('V/Vs得……', [inOrder(['得'], 4)]),
 };

@@ -1,170 +1,200 @@
 {
-  "LESSON_TWO_DIALOGUE_ONE": {
-    "id": "B3L02-D01",
-    "title": "對話 · Dialogue",
-    "setting": "在便利商店 · At the convenience store",
-    "printedPages": [
-      44,
-      45,
-      46
-    ],
-    "audioReference": "02-1-1",
-    "grammarFocus": [
-      "不是…嗎",
-      "順便",
-      "一會兒…一會兒…",
-      "算了"
-    ],
-    "lines": [
-      {
-        "id": "b3l2d1-1",
-        "speaker": "尚恩",
-        "text": {
-          "traditional": "朋子，臺灣的便利商店真的太神奇了！不僅能買東西，還能繳水電費、寄包裹，甚至還能買高鐵票！",
-          "simplified": "朋子，台湾的便利商店真的太神奇了！不仅能买东西，还能缴水电费、寄包裹，甚至还能买高铁票！",
-          "pinyin": "",
-          "english": "Tomoko, Taiwan's convenience stores are really amazing! Not only can you buy things, but you can also pay utility bills, send packages, and even buy high-speed rail tickets!"
-        }
-      },
-      {
-        "id": "b3l2d1-2",
-        "speaker": "朋子",
-        "text": {
-          "traditional": "是啊，臺灣的超商密度可以說是世界第一呢。走幾步路就有一家，肚子餓了隨時都能買到熱騰騰的便當。",
-          "simplified": "是啊，台湾的超商密度可以说是世界第一呢。走几步路就有一家，肚子饿了随时都能买到热騰騰的便当。",
-          "pinyin": "",
-          "english": "Yes, Taiwan's convenience store density is practically number one in the world. There's one every few steps, and when you are hungry you can buy piping hot bento boxes anytime."
-        }
-      },
-      {
-        "id": "b3l2d1-3",
-        "speaker": "尚恩",
-        "text": {
-          "traditional": "我剛來臺灣的時候，看到店員一會兒煮咖啡，一會兒幫客人微波便當，一會兒又幫忙結帳，真是嚇了一跳！",
-          "simplified": "我刚来台湾的时候，看到店员一会儿煮咖啡，一会儿帮客人微波便当，一会儿又帮忙结帐，真是吓了一跳！",
-          "pinyin": "",
-          "english": "When I first came to Taiwan, seeing the clerk brewing coffee one moment, microwaving bento for customers the next, and helping check out right after, I was really astonished!"
-        }
-      },
-      {
-        "id": "b3l2d1-4",
-        "speaker": "朋子",
-        "text": {
-          "traditional": "臺灣的超商店員樣樣精通，工作非常辛苦。",
-          "simplified": "台湾的超商店员样样精通，工作非常辛苦。",
-          "pinyin": "",
-          "english": "Taiwan's convenience store clerks master everything; their work is very hardworking."
-        }
-      },
-      {
-        "id": "b3l2d1-5",
-        "speaker": "尚恩",
-        "text": {
-          "traditional": "你今天也是來便利商店繳費的嗎？",
-          "simplified": "你今天也是来便利商店缴费的吗？",
-          "pinyin": "",
-          "english": "Did you come to the convenience store to pay bills today too?"
-        }
-      },
-      {
-        "id": "b3l2d1-6",
-        "speaker": "朋子",
-        "text": {
-          "traditional": "不是，我是順便來拿網購的包裹，順便買杯冰美式咖啡。",
-          "simplified": "不是，我是顺便来拿网购的包裹，顺便买杯冰美式咖啡。",
-          "pinyin": "",
-          "english": "No, I came by the way to pick up an online shopping parcel, and pick up an iced Americano while I'm at it."
-        }
-      },
-      {
-        "id": "b3l2d1-7",
-        "speaker": "尚恩",
-        "text": {
-          "traditional": "我本來想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商買個便當吃算了。",
-          "simplified": "我本来想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商买个便当吃算了。",
-          "pinyin": "",
-          "english": "I originally wanted to go home and cook dinner, but I worked overtime and was too tired today. I guess never mind, I might as well just buy a bento at the convenience store."
-        }
-      },
-      {
-        "id": "b3l2d1-8",
-        "speaker": "朋子",
-        "text": {
-          "traditional": "哈哈，偶爾吃一次沒關係啦。走，我們一起進去吹冷氣選便當！",
-          "simplified": "哈哈，偶爾吃一次没关系啦。走，我们一起进去吹冷气选便当！",
-          "pinyin": "",
-          "english": "Haha, having it once in a while is fine. Come on, let's go inside, enjoy the air conditioning and pick a bento!"
-        }
-      }
-    ]
-  },
-  "LESSON_TWO_DIALOGUE_TWO": {
-    "id": "B3L02-D02",
-    "title": "短文 · 臺灣超商的生活樂趣 · Convenience Store Life in Taiwan",
-    "setting": "短文閱讀 · Reading narrative",
-    "printedPages": [
-      57,
-      58
-    ],
-    "audioReference": "02-2-1",
-    "grammarFocus": [
-      "就是",
-      "經過",
-      "用…來…"
-    ],
-    "lines": [
-      {
-        "id": "b3l2d2-1",
-        "speaker": "旁白",
-        "text": {
-          "traditional": "在臺灣，便利商店已經成為人們日常生活中不可缺少的一部分。",
-          "simplified": "在台湾，便利商店已经成为人们日常生活中不可缺少的一部分。",
-          "pinyin": "",
-          "english": "In Taiwan, convenience stores have become an indispensable part of people's daily lives."
-        }
-      },
-      {
-        "id": "b3l2d2-2",
-        "speaker": "旁白",
-        "text": {
-          "traditional": "許多外國人來到臺灣，第一件印象深刻的事就是街頭巷尾隨處可見的超商。",
-          "simplified": "许多外国人来到台湾，第一件印象深刻的事就是街头巷尾随处可见的超商。",
-          "pinyin": "",
-          "english": "When many foreigners arrive in Taiwan, the first deep impression they have is the convenience stores seen everywhere on street corners."
-        }
-      },
-      {
-        "id": "b3l2d2-3",
-        "speaker": "旁白",
-        "text": {
-          "traditional": "人們經過一整天忙碌的工作後，走進燈光明亮的便利商店，喝一杯香濃的咖啡，心情就放鬆了下來。",
-          "simplified": "人们经过一整天忙碌的工作后，走进灯光明亮的便利商店，喝一杯香浓的咖啡，心情就放松了下来。",
-          "pinyin": "",
-          "english": "After a busy day of work, people walk into the brightly lit convenience store and drink an aromatic coffee, relaxing their mood."
-        }
-      },
-      {
-        "id": "b3l2d2-4",
-        "speaker": "旁白",
-        "text": {
-          "traditional": "現代人常用手機 App 來累積超商點數，兌換各種實用的生活用品或美食。",
-          "simplified": "现代人常用手机 App 来累积超商点数，兌换各种实用的生活用品或美食。",
-          "pinyin": "",
-          "english": "Modern people frequently use mobile apps to accumulate convenience store points and redeem various practical daily necessities or delicacies."
-        }
-      },
-      {
-        "id": "b3l2d2-5",
-        "speaker": "旁白",
-        "text": {
-          "traditional": "便利商店不僅提供了極大的生活便利，更為現代都市人的生活增添了許多溫暖與樂趣。",
-          "simplified": "便利商店不仅提供了极大的生活便利，更为现代都市人的生活增添了许多温暖与乐趣。",
-          "pinyin": "",
-          "english": "Convenience stores not only provide immense daily convenience, but also add warmth and joy to the lives of modern urbanites."
-        }
-      }
-    ]
-  },
+  "LESSON_TWO_DIALOGUE_ONE": [
+    {
+      "id": "b3l2-d1-l1",
+      "speaker": "朋子",
+      "traditional": "你提著一大包東西，要去哪裡啊？",
+      "simplified": "你提着一大包东西，要去哪里啊？",
+      "pinyin": "Nǐ tízhe yí dà bāo dōngxi, yào qù nǎlǐ a?",
+      "english": "You’re carrying a large bag of things; where are you off to?"
+    },
+    {
+      "id": "b3l2-d1-l2",
+      "speaker": "尚恩",
+      "traditional": "我要去便利商店送洗衣服。",
+      "simplified": "我要去便利商店送洗衣服。",
+      "pinyin": "Wǒ yào qù biànlì shāngdiàn sòngxǐ yīfu.",
+      "english": "I’m going to the convenience store to send clothes for dry cleaning."
+    },
+    {
+      "id": "b3l2-d1-l3",
+      "speaker": "朋子",
+      "traditional": "臺灣的便利商店有送洗衣服的服務，我怎麼不知道？",
+      "simplified": "台湾的便利商店有送洗衣服的服务，我怎么不知道？",
+      "pinyin": "Táiwān de biànlì shāngdiàn yǒu sòngxǐ yīfu de fúwù, wǒ zěnme bù zhīdào?",
+      "english": "Taiwan’s convenience stores have laundry services? How did I not know?"
+    },
+    {
+      "id": "b3l2-d1-l4",
+      "speaker": "尚恩",
+      "traditional": "早就有了，挺方便的。我剛到臺灣時，跟朋友去便利商店，被嚇了一跳。",
+      "simplified": "早就有了，挺方便的。我刚到台湾时，跟朋友去便利商店，被吓了一跳。",
+      "pinyin": "Zǎo jiù yǒu le, tǐng fāngbiàn de. Wǒ gāng dào Táiwān shí, gēn péngyou qù biànlì shāngdiàn, bèi xià le yí tiào.",
+      "english": "They’ve had it for a long time; it’s quite convenient. When I first arrived in Taiwan, I went to a convenience store with a friend and was shocked."
+    },
+    {
+      "id": "b3l2-d1-l5",
+      "speaker": "朋子",
+      "traditional": "怎麼了？被什麼事嚇了一跳？",
+      "simplified": "怎么了？被什么事吓了一跳？",
+      "pinyin": "Zěnme le? Bèi shénme shì xià le yí tiào?",
+      "english": "What happened? What shocked you?"
+    },
+    {
+      "id": "b3l2-d1-l6",
+      "speaker": "尚恩",
+      "traditional": "我沒想到臺灣的便利商店有這麼多服務。像領錢、買票，還有收電話費、水電費什麼的。",
+      "simplified": "我没想到台湾的便利商店有这么多服务。像领钱、买票，还有收电话费、水电费什么的。",
+      "pinyin": "Wǒ méi xiǎngdào Táiwān de biànlì shāngdiàn yǒu zhème duō fúwù. Xiàng lǐngqián, mǎipiào, hái yǒu shōu diànhuàfèi, shuǐdiànfèi shénmede.",
+      "english": "I never expected Taiwan’s convenience stores to offer so many services. Like withdrawing money, buying tickets, plus collecting phone bills, utilities, and so on."
+    },
+    {
+      "id": "b3l2-d1-l7",
+      "speaker": "朋子",
+      "traditional": "對，真的很多。我覺得現在臺灣的便利商店比以前方便，比如說，提供休息空間，讓客人坐下來，好好地吃個東西、喝點飲料。",
+      "simplified": "对，真的很多。我觉得现在台湾的便利商店比以前方便，比如说，提供休息空间，让客人坐下来，好好地吃个东西、喝点饮料。",
+      "pinyin": "Duì, zhēnde hěn duō. Wǒ juéde xiànzài Táiwān de biànlì shāngdiàn bǐ yǐqián fāngbiàn, bǐrú shuō, tígōng xiūxí kōngjiān, ràng kèrén zuò xiàlai, hǎohāode chī ge dōngxi, hē diǎn yǐnliào.",
+      "english": "Right, really a lot. I feel Taiwan’s convenience stores now are more convenient than before; for instance, providing seating areas so customers can sit down and comfortably have a bite to eat or drink a beverage."
+    },
+    {
+      "id": "b3l2-d1-l8",
+      "speaker": "尚恩",
+      "traditional": "是啊。現在我早晚都去，有時候整個下午都在那裡看書、寫功課。如果餓了，就順便買個泡麵，還能免費使用熱水，真方便。",
+      "simplified": "是啊。现在我早晚都去，有时候整个下午都在那里看书、写功课。如果饿了，就顺便买个泡面，还能免费使用热水，真方便。",
+      "pinyin": "Shì a. Xiànzài wǒ zǎowǎn dōu qù, yǒu shíhou zhěng ge xiàwǔ dōu zài nàlǐ kànshū, xiě gōngkè. Rúguǒ è le, jiù shùnbiàn mǎi ge pàomiàn, hái néng miǎnfèi shǐyòng rèshuǐ, zhēn fāngbiàn.",
+      "english": "Yeah. Now I go both morning and night; sometimes I spend the whole afternoon there reading and doing homework. If I get hungry, I casually buy instant noodles, and can even use hot water for free; it’s really convenient."
+    },
+    {
+      "id": "b3l2-d1-l9",
+      "speaker": "朋子",
+      "traditional": "我來不及做早餐的話，就去那裡買個饅頭、牛奶。有時候也去買最愛的熱狗跟汽水，雖然沒什麼營養，但是可以讓心情變得更好，哈哈哈！",
+      "simplified": "我来不及做早餐的话，就去那里买个馒头、牛奶。有时候也去买最爱的热狗跟汽水，虽然没什么营养，但是可以让心情变得更好，哈哈哈！",
+      "pinyin": "Wǒ láibují zuò zǎocān dehuà, jiù qù nàlǐ mǎi ge mántou, niúnǎi. Yǒu shíhou yě qù mǎi zuì ài de règǒu gēn qìshuǐ, suīrán méi shénme yíngyǎng, dànshì kěyǐ ràng xīnqíng biàn de gèng hǎo, hāhāhā!",
+      "english": "If I don’t have time to make breakfast, I go there to buy a steamed bun and milk. Sometimes I also buy my favorite hot dog and soda; although not very nutritious, it puts me in a better mood, hahaha!"
+    },
+    {
+      "id": "b3l2-d1-l10",
+      "speaker": "尚恩",
+      "traditional": "是啊。對了，我聽說日本的便利商店也很方便，商品也很多。",
+      "simplified": "是啊。对了，我听说日本的便利商店也很方便，商品也很多。",
+      "pinyin": "Shì a. Duì le, wǒ tīngshuō Rìběn de biànlì shāngdiàn yě hěn fāngbiàn, shāngpǐn yě hěn duō.",
+      "english": "Yeah. By the way, I heard convenience stores in Japan are also very convenient, and have lots of merchandise."
+    },
+    {
+      "id": "b3l2-d1-l11",
+      "speaker": "朋子",
+      "traditional": "跟臺灣的差不多。從中餐、西餐，到白菜、香蕉等蔬菜水果都買得到，也有各式各樣的生活用品。",
+      "simplified": "跟台湾的差不多。从中餐、西餐，到白菜、香蕉等蔬菜水果都买得到，也有各式各样的生活用品。",
+      "pinyin": "Gēn Táiwān de chàbùduō. Cóng zhōngcān, xīcān, dào báicài, xiāngjiāo děng shūcài shuǐguǒ dōu mǎi de dào, yě yǒu gèshì gèyàng de shēnghuó yòngpǐn.",
+      "english": "About the same as Taiwan’s. From Chinese food and Western meals to vegetables and fruits like cabbage and bananas, you can buy them all; there are also all kinds of daily necessities."
+    },
+    {
+      "id": "b3l2-d1-l12",
+      "speaker": "尚恩",
+      "traditional": "我個人覺得便利商店在日本和臺灣能夠成功，除了是二十四小時的，也因為提供的服務非常多，能滿足大家的需求。",
+      "simplified": "我个人觉得便利商店在日本和台湾能够成功，除了是二十四小时的，也因为提供的服务非常多，能满足大家的需求。",
+      "pinyin": "Wǒ gèrén juéde biànlì shāngdiàn zài Rìběn hàn Táiwān nénggòu chénggōng, chúle shì èrshísì xiǎoshí de, yě yīnwèi tígōng de fúwù fēicháng duō, néng mǎnzú dàjiā de xūqiú.",
+      "english": "Personally, I think convenience stores are successful in Japan and Taiwan not only because they are open 24 hours, but also because they provide so many services, meeting everyone’s needs."
+    },
+    {
+      "id": "b3l2-d1-l13",
+      "speaker": "朋子",
+      "traditional": "嗯，我同意。法國沒有這樣的商店嗎？",
+      "simplified": "嗯，我同意。法国没有这样的商店吗？",
+      "pinyin": "Èn, wǒ tóngyì. Fǎguó méiyǒu zhèyàng de shāngdiàn ma?",
+      "english": "Mm, I agree. Doesn’t France have stores like this?"
+    },
+    {
+      "id": "b3l2-d1-l14",
+      "speaker": "尚恩",
+      "traditional": "法國沒有二十四小時的，也沒有這麼多服務。我想主要是因為法國人的想法和工作習慣跟臺灣人不一樣吧。",
+      "simplified": "法国没有二十四小时的，也没有这么多服务。我想主要是因为法国人的想法和工作习惯跟台湾人不一样吧。",
+      "pinyin": "Fǎguó méiyǒu èrshísì xiǎoshí de, yě méiyǒu zhème duō fúwù. Wǒ xiǎng zhǔyào shì yīnwèi Fǎguórén de xiǎngfǎ hàn gōngzuò xíguàn gēn Táiwānrén bù yíyàng ba.",
+      "english": "France doesn’t have 24-hour ones, nor so many services. I think it’s mainly because French people’s mindset and working habits are different from Taiwanese people’s."
+    },
+    {
+      "id": "b3l2-d1-l15",
+      "speaker": "朋子",
+      "traditional": "我的法國朋友也說，臺灣便利商店的店員一會兒煮咖啡，一會兒擦桌子，太辛苦了。",
+      "simplified": "我的法国朋友也说，台湾便利商店的店员一会儿煮咖啡，一会儿擦桌子，太辛苦了。",
+      "pinyin": "Wǒ de Fǎguó péngyou yě shuō, Táiwān biànlì shāngdiàn de diànyuán yìhuǐr zhǔ kāfēi, yìhuǐr cā zhuōzi, tài xīnkǔ le.",
+      "english": "My French friend also said that Taiwanese convenience store clerks make coffee one moment and wipe tables the next; it’s so hard!"
+    },
+    {
+      "id": "b3l2-d1-l16",
+      "speaker": "尚恩",
+      "traditional": "是啊，他們真的太忙了。（看錶）不好意思，我等一下有個約會，現在得先去送洗衣服了，也順便領點錢。",
+      "simplified": "是啊，他们真的太忙了。（看表）不好意思，我等一下有个约会，现在得先去送洗衣服了，也顺便领点钱。",
+      "pinyin": "Shì a, tāmen zhēnde tài máng le. (Kàn biǎo) Bù hǎoyìsi, wǒ děng yíxià yǒu ge yuēhuì, xiànzài děi xiān qù sòngxǐ yīfu le, yě shùnbiàn lǐng diǎn qián.",
+      "english": "Yeah, they really are too busy. (Looks at watch) Excuse me, I have an appointment shortly, so I need to go drop off the laundry now and also withdraw some cash on the way."
+    },
+    {
+      "id": "b3l2-d1-l17",
+      "speaker": "朋子",
+      "traditional": "附近有一家銀行的自動提款機不收手續費，你可以去那裡領。",
+      "simplified": "附近有一家银行的自动提款机不收手续费，你可以去那里领。",
+      "pinyin": "Fùjìn yǒu yì jiā yínháng de zìdòng tíkuǎnjī bù shōu shǒuxùfèi, nǐ kěyǐ qù nàlǐ lǐng.",
+      "english": "There is an ATM from a nearby bank that doesn’t charge fees; you could withdraw there."
+    },
+    {
+      "id": "b3l2-d1-l18",
+      "speaker": "尚恩",
+      "traditional": "沒關係，手續費不過幾塊錢，我在便利商店領算了。",
+      "simplified": "没关系，手续费不过几块钱，我在便利商店领算了。",
+      "pinyin": "Méi guānxi, shǒuxùfèi búguò jǐ kuài qián, wǒ zài biànlì shāngdiàn lǐng suànle.",
+      "english": "That’s fine; the transaction fee is only a few dollars, I might as well just withdraw it at the convenience store."
+    },
+    {
+      "id": "b3l2-d1-l19",
+      "speaker": "朋子",
+      "traditional": "嗯，你說的對。",
+      "simplified": "嗯，你说得对。",
+      "pinyin": "Èn, nǐ shuō de duì.",
+      "english": "Mm, you’re right."
+    }
+  ],
+  "LESSON_TWO_DIALOGUE_TWO": [
+    {
+      "id": "b3l2-d2-l1",
+      "speaker": "旁白",
+      "traditional": "在臺灣，許多人的生活離不開超商，所以街上到處都看得到超商，每走幾步路就有一家，有時候還能看到兩家超商連在一起。為什麼超商能吸引顧客不斷地上門呢？",
+      "simplified": "在台湾，许多人的生活离不开超商，所以街上到处都看得到超商，每走几步路就有一家，有时候还能看到两家超商连在一起。为什么超商能吸引顾客不断地上门呢？",
+      "pinyin": "Zài Táiwān, xǔduō rén de shēnghuó lí bu kāi chāoshāng, suǒyǐ jiē shàng dàochù dōu kàn de dào chāoshāng, měi zǒu jǐ bù lù jiù yǒu yì jiā, yǒu shíhou hái néng kàndào liǎng jiā chāoshāng lián zài yìqǐ. Wèishénme chāoshāng néng xīyǐn gùkè búduàn de shàngmén ne?",
+      "english": "In Taiwan, many people cannot do without convenience stores in their daily lives, so convenience stores can be seen everywhere on the streets. There is one every few steps, and sometimes you can even see two stores right next to each other. Why are convenience stores able to attract a steady stream of customers?"
+    },
+    {
+      "id": "b3l2-d2-l2",
+      "speaker": "旁白",
+      "traditional": "一提到超商的優點，大家馬上想到的，就是可以買到各式各樣的東西。比如，忽然下雨了，沒帶傘的話，就能趕快進超商買把傘；天氣變冷了，就能買到厚的手套和帽子；要是想喝點兒下午茶，也能買到點心，順便再帶杯咖啡回家。而且在超商，還能付停車費、信用卡費、水電費，連送洗衣服都不是問題。",
+      "simplified": "一提到超商的优点，大家马上想到的，就是可以买到各式各样的东西。比如，忽然下雨了，没带伞的话，就能赶快进超商买把伞；天气变冷了，就能买到厚的手套和帽子；要是想喝点儿下午茶，也能买到点心，顺便再带杯咖啡回家。而且在超商，还能付停车费、信用卡费、水电费，连送洗衣服都不是问题。",
+      "pinyin": "Yì tídào chāoshāng de yōudiǎn, dàjiā mǎshàng xiǎngdào de, jiù shì kěyǐ mǎi dào gèshì gèyàng de dōngxi. Bǐrú, hūrán xiàyǔ le, méi dài sǎn dehuà, jiù néng gǎnkuài jìn chāoshāng mǎi bǎ sǎn; tiānqì biàn lěng le, jiù néng mǎi dào hòu de shǒutào hàn màozi; yàoshi xiǎng hē diǎnr xiàwǔchá, yě néng mǎi dào diǎnxin, shùnbiàn zài dài bēi kāfēi huíjiā. Érqiě zài chāoshāng, hái néng fù tíngchēfèi, xìnyòngkǎfèi, shuǐdiànfèi, lián sòngxǐ yīfu dōu bú shì wèntí.",
+      "english": "When mentioning the merits of convenience stores, what immediately comes to mind is that you can purchase all kinds of goods. For instance, if it suddenly rains and you haven’t brought an umbrella, you can quickly step in to buy one; when the weather turns cold, you can purchase thick gloves and a hat; if you want afternoon tea, you can get a snack and pick up a coffee to take home on the way. What’s more, at convenience stores you can pay parking fees, credit card bills, and utilities; even sending clothes to be washed is no problem at all."
+    },
+    {
+      "id": "b3l2-d2-l3",
+      "speaker": "旁白",
+      "traditional": "逛超商也能夠增加不少生活的樂趣，因為超商經常進一些特別的商品來吸引顧客，像外國的零食、飲料和化妝品等；而且有一些超商每經過一段時間，就會舉辦活動，用送神祕小禮物的方式來吸引顧客。不少人為了這些小禮物，一天就去買好幾回。對臺灣人來說，超商就像一個親切的好鄰居，每次進去時，店員都帶著微笑對客人說聲歡迎，他們的服務態度真的很不錯。",
+      "simplified": "逛超商也能够增加不少生活的乐趣，因为超商经常进一些特别的商品来吸引顾客，像外国的零食、饮料和化妆品等；而且有一些超商每经过一段时间，就会举办活动，用送神秘小礼物的方式来吸引顾客。不少人为了这些小礼物，一天就去买好几回。对台湾人来说，超商就像一个亲切的好邻居，每次进去时，店员都带着微笑对客人说声欢迎，他们的服务态度真的很不错。",
+      "pinyin": "Guàng chāoshāng yě nénggòu zēngjiā bù shǎo shēnghuó de lèqù, yīnwèi chāoshāng jīngcháng jìn yìxiē tèbié de shāngpǐn lái xīyǐn gùkè, xiàng wàiguó de língshí, yǐnliào hàn huàzhuāngpǐn děng; érqiě yǒu yìxiē chāoshāng měi jīngguò yí duàn shíjiān, jiù huì jǔbàn huódòng, yòng sòng shénmì xiǎo lǐwù de fāngshì lái xīyǐn gùkè. Bù shǎo rén wèile zhèxiē xiǎo lǐwù, yì tiān jiù qù mǎi hǎojǐ huí. Duì Táiwānrén lái shuō, chāoshāng jiù xiàng yí ge qīnqiè de hǎo línjū, měi cì jìnqu shí, diànyuán dōu dàizhe wēixiào duì kèrén shuō shēng huānyíng, tāmen de fúwù tàidù zhēnde hěn búcuò.",
+      "english": "Browsing convenience stores can also add much fun to daily life, because convenience stores regularly stock special items to attract customers, such as imported snacks, drinks, cosmetics, and more. Furthermore, every so often some convenience stores hold promotional events, using mystery gift giveaways to draw customers. For the sake of these small gifts, many people go make purchases several times a day. To Taiwanese people, the convenience store is like a friendly good neighbor; every time you walk in, the clerk smiles and greets guests with a warm welcome—their service attitude is truly great."
+    },
+    {
+      "id": "b3l2-d2-l4",
+      "speaker": "旁白",
+      "traditional": "不過，超商的工作是很辛苦的。在小小幾坪的空間裡，店員一會兒要收錢、找零錢，一會兒又要煮咖啡、幫客人把食物加熱，有時候還要教顧客使用機器買票。如果碰到態度差的顧客或看到滿桌的垃圾，也不能生氣。有顧客抱怨時，公司還會要求店員改善服務品質。想當好一個超商店員，真的不容易。",
+      "simplified": "不过，超商的工作是很辛苦的。在小小几坪的空间里，店员一会儿要收钱、找零钱，一会儿又要煮咖啡、帮客人把食物加热，有时候还要教顾客使用机器买票。如果碰到态度差的顾客或看到满桌的垃圾，也不能生气。有顾客抱怨时，公司还会要求店员改善服务品质。想当好一个超商店员，真的不容易。",
+      "pinyin": "Bùguò, chāoshāng de gōngzuò shì hěn xīnkǔ de. Zài xiǎoxiǎo jǐ píng de kōngjiān lǐ, diànyuán yìhuǐr yào shōuqián, zhǎo língqián, yìhuǐr yòu yào zhǔ kāfēi, bāng kèrén bǎ shíwù jiārè, yǒu shíhou hái yào jiāo gùkè shǐyòng jīqì mǎipiào. Rúguǒ pèng dào tàidù chà de gùkè huò kàndào mǎnzhuō de lājī, yě bù néng shēngqì. Yǒu gùkè bàoyuàn shí, gōngsī hái huì yāoqiú diànyuán gǎishàn fúwù pǐnzhí. Xiǎng dāng hǎo yí ge chāoshāng diànyuán, zhēnde bù róngyì.",
+      "english": "However, convenience store work is very arduous. Within just a few ping of space, the clerk must collect cash and make change one moment, then brew coffee and heat food for customers the next; sometimes they also need to teach customers how to use the ticketing kiosks. Even if they encounter rude customers or see tables strewn with trash, they cannot lose their temper. When a customer complains, the company requires clerks to improve service quality. Being a great convenience store clerk is truly not easy."
+    },
+    {
+      "id": "b3l2-d2-l5",
+      "speaker": "旁白",
+      "traditional": "超商的功能多、服務速度快，但是也有缺點，比如有些商品比超級市場貴了點兒。不過，以臺灣人的習慣，不需要花太多時間就買得到想要的東西，就算多付一點兒錢也是可以接受的。",
+      "simplified": "超商的功能多、服务速度快，但是也有缺点，比如有些商品比超级市场贵了点儿。不过，以台湾人的习惯，不需要花太多时间就买得到想要的东西，就算多付一点儿钱也是可以接受的。",
+      "pinyin": "Chāoshāng de gōngnéng duō, fúwù sùdù kuài, dànshì yě yǒu quēdiǎn, bǐrú yǒuxiē shāngpǐn bǐ chāojí shìchǎng guì le diǎnr. Bùguò, yǐ Táiwānrén de xíguàn, bù xūyào huā tài duō shíjiān jiù mǎi de dào xiǎng yào de dōngxi, jiùsuàn duō fù yìdiǎnr qián yě shì kěyǐ jiēshòu de.",
+      "english": "Convenience stores have many functions and fast service, but there are also disadvantages; for instance, some goods are slightly more expensive than at supermarkets. However, according to Taiwanese habits, being able to buy what you want without spending too much time makes paying a little extra acceptable."
+    }
+  ],
   "LESSON_TWO_PART_ONE": {
     "id": "B3L02-P01-D01",
     "bookId": 3,
@@ -180,319 +210,165 @@
         "lessonTitle": "便利商店真方便",
         "lessonTitleEnglish": "Convenience Stores Are So Convenient",
         "grammarNumber": 1,
-        "titleTraditional": "不是…嗎",
-        "titleEnglish": "Isn't It...?",
-        "learnerPromise": "Use rhetorical questions with 不是…嗎 to confirm or emphasize a known fact.",
+        "titleTraditional": "早就……了",
+        "titleEnglish": "Long Ago / Long Since",
+        "learnerPromise": "Express that something was already done or known long before using 早就……了.",
         "printedPages": [
+          50,
           51
         ],
         "bookPageAvailable": true,
         "audioReference": "02-1-3",
-        "explanation": "This rhetorical pattern asks a question to confirm something the speaker believes is true, or to gently remind the listener.",
+        "explanation": "用「早就……了」表示說話者覺得「時間已經很久了」，強調事情發生得很早或知道得很早。Using 早就……了 means that the speaker feels it has already been a long time or that an action occurred well in advance.",
         "focusTerms": [
-          "不是…嗎"
+          "早就",
+          "了"
         ],
-        "pattern": "Subject + 不是 + Predicate + 嗎",
+        "pattern": "Subject + 早就 + Verb Phrase + 了",
         "patternColumns": [
-          "Subject",
-          "不是",
-          "Predicate",
-          "嗎"
+          "Who",
+          "早就",
+          "Action",
+          "了"
         ],
         "patternRows": [
           {
             "id": "b3l2g1-r1",
-            "subject": [
-              {
-                "id": "b3l2g1-r1-c1-w1",
-                "traditional": "你",
-                "simplified": "你",
-                "pinyin": "nǐ",
-                "meaning": "you"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "b3l2g1-r1-c2-w1",
-                "traditional": "不是",
-                "simplified": "不是",
-                "pinyin": "bú shì",
-                "meaning": "is not; aren't"
-              }
-            ],
-            "complement": [
-              {
-                "id": "b3l2g1-r1-c3-w1",
-                "traditional": "早就",
-                "simplified": "早就",
-                "pinyin": "zǎo jiù",
-                "meaning": "already at an earlier time"
-              },
-              {
-                "id": "b3l2g1-r1-c3-w2",
-                "traditional": "計畫",
-                "simplified": "计划",
-                "pinyin": "jìhuà",
-                "meaning": "plan"
-              },
-              {
-                "id": "b3l2g1-r1-c3-w3",
-                "traditional": "好",
-                "simplified": "好",
-                "pinyin": "hǎo",
-                "meaning": "so; how (adverb of degree)"
-              },
-              {
-                "id": "b3l2g1-r1-c3-w4",
-                "traditional": "出國",
-                "simplified": "出国",
-                "pinyin": "chū guó",
-                "meaning": "to go abroad"
-              },
-              {
-                "id": "b3l2g1-r1-c3-w5",
-                "traditional": "了",
-                "simplified": "了",
-                "pinyin": "le",
-                "meaning": "completion particle"
-              }
-            ],
             "columns": [
               [
                 {
                   "id": "b3l2g1-r1-c1-w1",
-                  "traditional": "你",
-                  "simplified": "你",
-                  "pinyin": "nǐ",
-                  "meaning": "you"
+                  "traditional": "便利商店",
+                  "simplified": "便利商店",
+                  "pinyin": "biànlì shāngdiàn",
+                  "meaning": "convenience store"
                 }
               ],
               [
                 {
                   "id": "b3l2g1-r1-c2-w1",
-                  "traditional": "不是",
-                  "simplified": "不是",
-                  "pinyin": "bú shì",
-                  "meaning": "is not; aren't"
+                  "traditional": "早就",
+                  "simplified": "早就",
+                  "pinyin": "zǎojiù",
+                  "meaning": "long since"
                 }
               ],
               [
                 {
                   "id": "b3l2g1-r1-c3-w1",
-                  "traditional": "早就",
-                  "simplified": "早就",
-                  "pinyin": "zǎo jiù",
-                  "meaning": "already at an earlier time"
-                },
-                {
-                  "id": "b3l2g1-r1-c3-w2",
-                  "traditional": "計畫",
-                  "simplified": "计划",
-                  "pinyin": "jìhuà",
-                  "meaning": "plan"
-                },
-                {
-                  "id": "b3l2g1-r1-c3-w3",
-                  "traditional": "好",
-                  "simplified": "好",
-                  "pinyin": "hǎo",
-                  "meaning": "so; how (adverb of degree)"
-                },
-                {
-                  "id": "b3l2g1-r1-c3-w4",
-                  "traditional": "出國",
-                  "simplified": "出国",
-                  "pinyin": "chū guó",
-                  "meaning": "to go abroad"
-                },
-                {
-                  "id": "b3l2g1-r1-c3-w5",
-                  "traditional": "了",
-                  "simplified": "了",
-                  "pinyin": "le",
-                  "meaning": "completion particle"
+                  "traditional": "有",
+                  "simplified": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "had"
                 }
               ],
               [
                 {
                   "id": "b3l2g1-r1-c4-w1",
-                  "traditional": "嗎",
-                  "simplified": "吗",
-                  "pinyin": "ma",
-                  "meaning": "question particle",
-                  "suffix": "？"
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "completion particle"
                 }
               ]
             ],
-            "english": "Didn't you plan to go abroad a long time ago?"
-          },
-          {
-            "id": "b3l2g1-r2",
             "subject": [
               {
-                "id": "b3l2g1-r2-c1-w1",
+                "id": "b3l2g1-r1-s1",
                 "traditional": "便利商店",
                 "simplified": "便利商店",
                 "pinyin": "biànlì shāngdiàn",
-                "meaning": "convenience store (M: 家 jiā)"
+                "meaning": "convenience store"
               }
             ],
             "grammar": [
               {
-                "id": "b3l2g1-r2-c2-w1",
-                "traditional": "不是",
-                "simplified": "不是",
-                "pinyin": "bú shì",
-                "meaning": "is not; aren't"
+                "id": "b3l2g1-r1-g1",
+                "traditional": "早就",
+                "simplified": "早就",
+                "pinyin": "zǎojiù",
+                "meaning": "long since"
               }
             ],
             "complement": [
               {
-                "id": "b3l2g1-r2-c3-w1",
-                "traditional": "到處",
-                "simplified": "到处",
-                "pinyin": "dàochù",
-                "meaning": "everywhere"
-              },
-              {
-                "id": "b3l2g1-r2-c3-w2",
-                "traditional": "都",
-                "simplified": "都",
-                "pinyin": "dōu",
-                "meaning": "all; both"
-              },
-              {
-                "id": "b3l2g1-r2-c3-w3",
-                "traditional": "有",
-                "simplified": "有",
-                "pinyin": "yǒu",
-                "meaning": "there is"
+                "id": "b3l2g1-r1-c1",
+                "traditional": "有了",
+                "simplified": "有了",
+                "pinyin": "yǒu le",
+                "meaning": "already have"
               }
             ],
+            "english": "Convenience stores have had that service for a long time."
+          },
+          {
+            "id": "b3l2g1-r2",
             "columns": [
               [
                 {
                   "id": "b3l2g1-r2-c1-w1",
-                  "traditional": "便利商店",
-                  "simplified": "便利商店",
-                  "pinyin": "biànlì shāngdiàn",
-                  "meaning": "convenience store (M: 家 jiā)"
+                  "traditional": "大家",
+                  "simplified": "大家",
+                  "pinyin": "dàjiā",
+                  "meaning": "everyone"
                 }
               ],
               [
                 {
                   "id": "b3l2g1-r2-c2-w1",
-                  "traditional": "不是",
-                  "simplified": "不是",
-                  "pinyin": "bú shì",
-                  "meaning": "is not; aren't"
+                  "traditional": "早就",
+                  "simplified": "早就",
+                  "pinyin": "zǎojiù",
+                  "meaning": "long since"
                 }
               ],
               [
                 {
                   "id": "b3l2g1-r2-c3-w1",
-                  "traditional": "到處",
-                  "simplified": "到处",
-                  "pinyin": "dàochù",
-                  "meaning": "everywhere"
-                },
-                {
-                  "id": "b3l2g1-r2-c3-w2",
-                  "traditional": "都",
-                  "simplified": "都",
-                  "pinyin": "dōu",
-                  "meaning": "all; both"
-                },
-                {
-                  "id": "b3l2g1-r2-c3-w3",
-                  "traditional": "有",
-                  "simplified": "有",
-                  "pinyin": "yǒu",
-                  "meaning": "there is"
+                  "traditional": "知道",
+                  "simplified": "知道",
+                  "pinyin": "zhīdào",
+                  "meaning": "knew"
                 }
               ],
               [
                 {
                   "id": "b3l2g1-r2-c4-w1",
-                  "traditional": "嗎",
-                  "simplified": "吗",
-                  "pinyin": "ma",
-                  "meaning": "question particle",
-                  "suffix": "？"
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "completion particle"
                 }
               ]
             ],
-            "english": "Aren't convenience stores everywhere?"
-          },
-          {
-            "id": "b3l2g1-r3",
             "subject": [
               {
-                "id": "b3l2g1-r3-c1-w1",
-                "traditional": "今天",
-                "simplified": "今天",
-                "pinyin": "jīntiān",
-                "meaning": "today"
+                "id": "b3l2g1-r2-s1",
+                "traditional": "大家",
+                "simplified": "大家",
+                "pinyin": "dàjiā",
+                "meaning": "everyone"
               }
             ],
             "grammar": [
               {
-                "id": "b3l2g1-r3-c2-w1",
-                "traditional": "不是",
-                "simplified": "不是",
-                "pinyin": "bú shì",
-                "meaning": "is not; aren't"
+                "id": "b3l2g1-r2-g1",
+                "traditional": "早就",
+                "simplified": "早就",
+                "pinyin": "zǎojiù",
+                "meaning": "long since"
               }
             ],
             "complement": [
               {
-                "id": "b3l2g1-r3-c3-w1",
-                "traditional": "放假",
-                "simplified": "放假",
-                "pinyin": "fàngjià",
-                "meaning": "to have a vacation"
+                "id": "b3l2g1-r2-c1",
+                "traditional": "知道了",
+                "simplified": "知道了",
+                "pinyin": "zhīdào le",
+                "meaning": "already knew"
               }
             ],
-            "columns": [
-              [
-                {
-                  "id": "b3l2g1-r3-c1-w1",
-                  "traditional": "今天",
-                  "simplified": "今天",
-                  "pinyin": "jīntiān",
-                  "meaning": "today"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g1-r3-c2-w1",
-                  "traditional": "不是",
-                  "simplified": "不是",
-                  "pinyin": "bú shì",
-                  "meaning": "is not; aren't"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g1-r3-c3-w1",
-                  "traditional": "放假",
-                  "simplified": "放假",
-                  "pinyin": "fàngjià",
-                  "meaning": "to have a vacation"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g1-r3-c4-w1",
-                  "traditional": "嗎",
-                  "simplified": "吗",
-                  "pinyin": "ma",
-                  "meaning": "question particle",
-                  "suffix": "？"
-                }
-              ]
-            ],
-            "english": "Isn't today a holiday?"
+            "english": "Everyone knew this a long time ago."
           }
         ],
         "confusion": {
@@ -500,128 +376,95 @@
           "items": [
             {
               "id": "b3l2g1-cf1",
-              "question": "Does 不是…嗎 ask a genuine information question?",
-              "answer": "No. 不是…嗎 is a rhetorical question reminding or confirming something obvious to the speaker.",
-              "wrongTraditional": "你不是昨天幾點來的？",
-              "wrongSimplified": "你不是昨天几点来的？",
+              "question": "How does 早就 differ from 已經?",
+              "answer": "早就 emphasizes the subjective feeling of 'long before / way ahead of time', whereas 已經 simply states factual completion.",
+              "wrongTraditional": "我剛才早就知道了。",
+              "wrongSimplified": "我刚才早就知道了。",
               "right": {
-                "traditional": "你昨天幾點來的？",
-                "simplified": "你昨天几点来的？",
-                "pinyin": "Nǐ zuótiān jǐdiǎn lái de?",
-                "english": "What time did you arrive yesterday?",
+                "traditional": "這件事我早就知道了。",
+                "simplified": "这件事我早就知道了。",
+                "pinyin": "Zhè jiàn shì wǒ zǎo jiù zhīdào le.",
+                "english": "I knew about this a long time ago.",
                 "words": [
                   {
                     "id": "b3l2g1-cf1-w1",
-                    "traditional": "你",
-                    "simplified": "你",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "這件事",
+                    "simplified": "这件事",
+                    "pinyin": "zhè jiàn shì",
+                    "meaning": "this matter"
                   },
                   {
                     "id": "b3l2g1-cf1-w2",
-                    "traditional": "昨",
-                    "simplified": "昨",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
                   },
                   {
                     "id": "b3l2g1-cf1-w3",
-                    "traditional": "天",
-                    "simplified": "天",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "早就",
+                    "simplified": "早就",
+                    "pinyin": "zǎojiù",
+                    "meaning": "long since"
                   },
                   {
                     "id": "b3l2g1-cf1-w4",
-                    "traditional": "幾",
-                    "simplified": "几",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "知道",
+                    "simplified": "知道",
+                    "pinyin": "zhīdào",
+                    "meaning": "knew"
                   },
                   {
                     "id": "b3l2g1-cf1-w5",
-                    "traditional": "點",
-                    "simplified": "点",
-                    "pinyin": "diǎn",
-                    "english": "point"
-                  },
-                  {
-                    "id": "b3l2g1-cf1-w6",
-                    "traditional": "來",
-                    "simplified": "来",
-                    "pinyin": "",
-                    "english": ""
-                  },
-                  {
-                    "id": "b3l2g1-cf1-w7",
-                    "traditional": "的",
-                    "simplified": "的",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "了",
+                    "simplified": "了",
+                    "pinyin": "le",
+                    "meaning": "completion",
+                    "suffix": "。"
                   }
                 ]
               }
             },
             {
               "id": "b3l2g1-cf2",
-              "question": "Can 不是…嗎 take question words like 什麼 inside?",
-              "answer": "No. Rhetorical 不是…嗎 frames a complete statement to seek agreement; drop question words.",
-              "wrongTraditional": "這不是什麼好東西嗎？",
-              "wrongSimplified": "这不是什么好东西吗？",
+              "question": "Can 早就 be used for things that just happened?",
+              "answer": "No. 早就 implies a significant amount of elapsed time; for recent events use 剛才 or 剛剛.",
+              "wrongTraditional": "他早就剛剛出門了。",
+              "wrongSimplified": "他早就刚刚出门了。",
               "right": {
-                "traditional": "這不是好東西嗎？",
-                "simplified": "这不是好东西吗？",
-                "pinyin": "Zhè bú shì hǎo dōngxi ma?",
-                "english": "Isn't this a great thing?",
+                "traditional": "他早就出門了。",
+                "simplified": "他早就出门了。",
+                "pinyin": "Tā zǎo jiù chūmén le.",
+                "english": "He went out a long time ago.",
                 "words": [
                   {
                     "id": "b3l2g1-cf2-w1",
-                    "traditional": "這",
-                    "simplified": "这",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "他",
+                    "simplified": "他",
+                    "pinyin": "tā",
+                    "meaning": "he"
                   },
                   {
                     "id": "b3l2g1-cf2-w2",
-                    "traditional": "不",
-                    "simplified": "不",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "早就",
+                    "simplified": "早就",
+                    "pinyin": "zǎojiù",
+                    "meaning": "long since"
                   },
                   {
                     "id": "b3l2g1-cf2-w3",
-                    "traditional": "是",
-                    "simplified": "是",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "出門",
+                    "simplified": "出门",
+                    "pinyin": "chūmén",
+                    "meaning": "went out"
                   },
                   {
                     "id": "b3l2g1-cf2-w4",
-                    "traditional": "好",
-                    "simplified": "好",
-                    "pinyin": "",
-                    "english": ""
-                  },
-                  {
-                    "id": "b3l2g1-cf2-w5",
-                    "traditional": "東",
-                    "simplified": "东",
-                    "pinyin": "",
-                    "english": ""
-                  },
-                  {
-                    "id": "b3l2g1-cf2-w6",
-                    "traditional": "西",
-                    "simplified": "西",
-                    "pinyin": "",
-                    "english": ""
-                  },
-                  {
-                    "id": "b3l2g1-cf2-w7",
-                    "traditional": "嗎",
-                    "simplified": "吗",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "了",
+                    "simplified": "了",
+                    "pinyin": "le",
+                    "meaning": "completion",
+                    "suffix": "。"
                   }
                 ]
               }
@@ -900,17 +743,54 @@
         "questions": [
           {
             "id": "b3l2g1-q1",
-            "prompt": "A: 我找不到錢包。 B: 你的錢包___在背包裡___？",
-            "options": [
-              "不是…嗎",
-              "順便",
-              "一會兒"
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你不知道嗎？老師",
+                "simplified": "你不知道吗？老师"
+              },
+              {
+                "type": "blank",
+                "id": "b3l2g1-q1-b1",
+                "answer": "早就",
+                "answerSimplified": "早就",
+                "hint": "Use the adverb meaning 'long ago'."
+              },
+              {
+                "type": "text",
+                "traditional": "跟我們說過了。",
+                "simplified": "跟我们说过了。"
+              }
             ],
-            "answer": [
-              "不是…嗎"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g1-q1-t1",
+                "traditional": "早就",
+                "simplified": "早就",
+                "pinyin": "zǎojiù",
+                "meaning": "long since"
+              },
+              {
+                "id": "b3l2g1-q1-t2",
+                "traditional": "剛才",
+                "simplified": "刚才",
+                "pinyin": "gāngcái",
+                "meaning": "just now"
+              },
+              {
+                "id": "b3l2g1-q1-t3",
+                "traditional": "順便",
+                "simplified": "顺便",
+                "pinyin": "shùnbiàn",
+                "meaning": "conveniently"
+              }
+            ],
+            "correctFeedback": "早就 pairs with 過/了 to emphasize that something was told long ago.",
+            "repairFeedback": "Use 早就 to emphasize that the announcement occurred well in advance."
           }
-        ]
+        ],
+        "bookPage": 50
       },
       {
         "id": "B3L02-G02-P52",
@@ -934,10 +814,9 @@
         ],
         "pattern": "Subject + Action 1 + 順便 + Action 2",
         "patternColumns": [
-          "Subject",
-          "Action 1",
+          "Context",
           "順便",
-          "Action 2"
+          "Action"
         ],
         "patternRows": [
           {
@@ -1836,15 +1715,51 @@
         "questions": [
           {
             "id": "b3l2g2-q1",
-            "prompt": "你去郵局寄信時，可以___幫我買幾張郵票嗎？",
-            "options": [
-              "順便",
-              "不是",
-              "算了"
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你去便利商店時，可以",
+                "simplified": "你去便利商店时，可以"
+              },
+              {
+                "type": "blank",
+                "id": "b3l2g2-q1-b1",
+                "answer": "順便",
+                "answerSimplified": "顺便",
+                "hint": "Meaning 'conveniently on the way'."
+              },
+              {
+                "type": "text",
+                "traditional": "幫我買杯咖啡嗎？",
+                "simplified": "帮我买杯咖啡吗？"
+              }
             ],
-            "answer": [
-              "順便"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g2-q1-t1",
+                "traditional": "順便",
+                "simplified": "顺便",
+                "pinyin": "shùnbiàn",
+                "meaning": "conveniently"
+              },
+              {
+                "id": "b3l2g2-q1-t2",
+                "traditional": "隨便",
+                "simplified": "随便",
+                "pinyin": "suíbiàn",
+                "meaning": "casually"
+              },
+              {
+                "id": "b3l2g2-q1-t3",
+                "traditional": "早就",
+                "simplified": "早就",
+                "pinyin": "zǎojiù",
+                "meaning": "long since"
+              }
+            ],
+            "correctFeedback": "順便 introduces a secondary request done along with the primary trip.",
+            "repairFeedback": "Use 順便 for an action done on the way without extra trouble."
           }
         ]
       },
@@ -1870,10 +1785,8 @@
         ],
         "pattern": "Subject + 一會兒 + Action 1 + 一會兒 + Action 2",
         "patternColumns": [
-          "Subject",
-          "一會兒",
+          "Who",
           "Action 1",
-          "一會兒",
           "Action 2"
         ],
         "patternRows": [
@@ -2700,15 +2613,51 @@
         "questions": [
           {
             "id": "b3l2g3-q1",
-            "prompt": "山上的天氣變化真快，剛才還出大太陽，現在___下起雨來了。",
-            "options": [
-              "一會兒",
-              "順便",
-              "算了"
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天天氣變化真快，",
+                "simplified": "今天天气变化真快，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l2g3-q1-b1",
+                "answer": "一會兒",
+                "answerSimplified": "一会儿",
+                "hint": "Adverb for rapidly alternating states."
+              },
+              {
+                "type": "text",
+                "traditional": "出太陽，一會兒下大雨。",
+                "simplified": "出太阳，一会儿下大雨。"
+              }
             ],
-            "answer": [
-              "一會兒"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g3-q1-t1",
+                "traditional": "一會兒",
+                "simplified": "一会儿",
+                "pinyin": "yìhuǐr",
+                "meaning": "one moment"
+              },
+              {
+                "id": "b3l2g3-q1-t2",
+                "traditional": "順便",
+                "simplified": "顺便",
+                "pinyin": "shùnbiàn",
+                "meaning": "conveniently"
+              },
+              {
+                "id": "b3l2g3-q1-t3",
+                "traditional": "早就",
+                "simplified": "早就",
+                "pinyin": "zǎojiù",
+                "meaning": "long since"
+              }
+            ],
+            "correctFeedback": "一會兒……一會兒…… links contrasting actions alternating rapidly.",
+            "repairFeedback": "Use 一會兒 to pair with the second 一會兒 for rapid alternation."
           }
         ]
       },
@@ -2734,7 +2683,7 @@
         ],
         "pattern": "Situation + 算了",
         "patternColumns": [
-          "Situation",
+          "Context",
           "Action",
           "算了"
         ],
@@ -3704,115 +3653,222 @@
         "questions": [
           {
             "id": "b3l2g4-q1",
-            "prompt": "這件衣服太貴了，我們看別件___。",
-            "options": [
-              "算了",
-              "順便",
-              "一會兒"
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "排隊要等二十分鐘，太久了，我們去別家吃",
+                "simplified": "排队要等二十分钟，太久了，我们去别家吃"
+              },
+              {
+                "type": "blank",
+                "id": "b3l2g4-q1-b1",
+                "answer": "算了",
+                "answerSimplified": "算了",
+                "hint": "Colloquial phrase for accepting a compromise."
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
             ],
-            "answer": [
-              "算了"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g4-q1-t1",
+                "traditional": "算了",
+                "simplified": "算了",
+                "pinyin": "suànle",
+                "meaning": "let it pass"
+              },
+              {
+                "id": "b3l2g4-q1-t2",
+                "traditional": "順便",
+                "simplified": "顺便",
+                "pinyin": "shùnbiàn",
+                "meaning": "conveniently"
+              },
+              {
+                "id": "b3l2g4-q1-t3",
+                "traditional": "早就",
+                "simplified": "早就",
+                "pinyin": "zǎojiù",
+                "meaning": "long since"
+              }
+            ],
+            "correctFeedback": "算了 placed after an alternative action indicates a practical compromise.",
+            "repairFeedback": "Use 算了 to drop the long wait and choose another restaurant."
           }
         ]
       }
     ],
     "dialogue": {
       "id": "B3L02-D01",
-      "title": "對話 · Dialogue",
-      "setting": "在便利商店 · At the convenience store",
+      "title": "對話 · 便利商店真方便 · Convenience Stores Are So Convenient",
+      "audioReference": "02-1-1",
       "printedPages": [
         44,
         45,
         46
       ],
-      "audioReference": "02-1-1",
       "grammarFocus": [
-        "不是…嗎",
+        "早就……了",
         "順便",
-        "一會兒…一會兒…",
+        "一會兒……，一會兒……",
         "算了"
       ],
       "lines": [
         {
-          "id": "b3l2d1-1",
-          "speaker": "尚恩",
-          "text": {
-            "traditional": "朋子，臺灣的便利商店真的太神奇了！不僅能買東西，還能繳水電費、寄包裹，甚至還能買高鐵票！",
-            "simplified": "朋子，台湾的便利商店真的太神奇了！不仅能买东西，还能缴水电费、寄包裹，甚至还能买高铁票！",
-            "pinyin": "",
-            "english": "Tomoko, Taiwan's convenience stores are really amazing! Not only can you buy things, but you can also pay utility bills, send packages, and even buy high-speed rail tickets!"
-          }
-        },
-        {
-          "id": "b3l2d1-2",
+          "id": "b3l2-d1-l1",
           "speaker": "朋子",
-          "text": {
-            "traditional": "是啊，臺灣的超商密度可以說是世界第一呢。走幾步路就有一家，肚子餓了隨時都能買到熱騰騰的便當。",
-            "simplified": "是啊，台湾的超商密度可以说是世界第一呢。走几步路就有一家，肚子饿了随时都能买到热騰騰的便当。",
-            "pinyin": "",
-            "english": "Yes, Taiwan's convenience store density is practically number one in the world. There's one every few steps, and when you are hungry you can buy piping hot bento boxes anytime."
-          }
+          "traditional": "你提著一大包東西，要去哪裡啊？",
+          "simplified": "你提着一大包东西，要去哪里啊？",
+          "pinyin": "Nǐ tízhe yí dà bāo dōngxi, yào qù nǎlǐ a?",
+          "english": "You’re carrying a large bag of things; where are you off to?"
         },
         {
-          "id": "b3l2d1-3",
+          "id": "b3l2-d1-l2",
           "speaker": "尚恩",
-          "text": {
-            "traditional": "我剛來臺灣的時候，看到店員一會兒煮咖啡，一會兒幫客人微波便當，一會兒又幫忙結帳，真是嚇了一跳！",
-            "simplified": "我刚来台湾的时候，看到店员一会儿煮咖啡，一会儿帮客人微波便当，一会儿又帮忙结帐，真是吓了一跳！",
-            "pinyin": "",
-            "english": "When I first came to Taiwan, seeing the clerk brewing coffee one moment, microwaving bento for customers the next, and helping check out right after, I was really astonished!"
-          }
+          "traditional": "我要去便利商店送洗衣服。",
+          "simplified": "我要去便利商店送洗衣服。",
+          "pinyin": "Wǒ yào qù biànlì shāngdiàn sòngxǐ yīfu.",
+          "english": "I’m going to the convenience store to send clothes for dry cleaning."
         },
         {
-          "id": "b3l2d1-4",
+          "id": "b3l2-d1-l3",
           "speaker": "朋子",
-          "text": {
-            "traditional": "臺灣的超商店員樣樣精通，工作非常辛苦。",
-            "simplified": "台湾的超商店员样样精通，工作非常辛苦。",
-            "pinyin": "",
-            "english": "Taiwan's convenience store clerks master everything; their work is very hardworking."
-          }
+          "traditional": "臺灣的便利商店有送洗衣服的服務，我怎麼不知道？",
+          "simplified": "台湾的便利商店有送洗衣服的服务，我怎么不知道？",
+          "pinyin": "Táiwān de biànlì shāngdiàn yǒu sòngxǐ yīfu de fúwù, wǒ zěnme bù zhīdào?",
+          "english": "Taiwan’s convenience stores have laundry services? How did I not know?"
         },
         {
-          "id": "b3l2d1-5",
+          "id": "b3l2-d1-l4",
           "speaker": "尚恩",
-          "text": {
-            "traditional": "你今天也是來便利商店繳費的嗎？",
-            "simplified": "你今天也是来便利商店缴费的吗？",
-            "pinyin": "",
-            "english": "Did you come to the convenience store to pay bills today too?"
-          }
+          "traditional": "早就有了，挺方便的。我剛到臺灣時，跟朋友去便利商店，被嚇了一跳。",
+          "simplified": "早就有了，挺方便的。我刚到台湾时，跟朋友去便利商店，被吓了一跳。",
+          "pinyin": "Zǎo jiù yǒu le, tǐng fāngbiàn de. Wǒ gāng dào Táiwān shí, gēn péngyou qù biànlì shāngdiàn, bèi xià le yí tiào.",
+          "english": "They’ve had it for a long time; it’s quite convenient. When I first arrived in Taiwan, I went to a convenience store with a friend and was shocked."
         },
         {
-          "id": "b3l2d1-6",
+          "id": "b3l2-d1-l5",
           "speaker": "朋子",
-          "text": {
-            "traditional": "不是，我是順便來拿網購的包裹，順便買杯冰美式咖啡。",
-            "simplified": "不是，我是顺便来拿网购的包裹，顺便买杯冰美式咖啡。",
-            "pinyin": "",
-            "english": "No, I came by the way to pick up an online shopping parcel, and pick up an iced Americano while I'm at it."
-          }
+          "traditional": "怎麼了？被什麼事嚇了一跳？",
+          "simplified": "怎么了？被什么事吓了一跳？",
+          "pinyin": "Zěnme le? Bèi shénme shì xià le yí tiào?",
+          "english": "What happened? What shocked you?"
         },
         {
-          "id": "b3l2d1-7",
+          "id": "b3l2-d1-l6",
           "speaker": "尚恩",
-          "text": {
-            "traditional": "我本來想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商買個便當吃算了。",
-            "simplified": "我本来想回家煮晚餐，但今天加班太累了，我看就算了吧，在超商买个便当吃算了。",
-            "pinyin": "",
-            "english": "I originally wanted to go home and cook dinner, but I worked overtime and was too tired today. I guess never mind, I might as well just buy a bento at the convenience store."
-          }
+          "traditional": "我沒想到臺灣的便利商店有這麼多服務。像領錢、買票，還有收電話費、水電費什麼的。",
+          "simplified": "我没想到台湾的便利商店有这么多服务。像领钱、买票，还有收电话费、水电费什么的。",
+          "pinyin": "Wǒ méi xiǎngdào Táiwān de biànlì shāngdiàn yǒu zhème duō fúwù. Xiàng lǐngqián, mǎipiào, hái yǒu shōu diànhuàfèi, shuǐdiànfèi shénmede.",
+          "english": "I never expected Taiwan’s convenience stores to offer so many services. Like withdrawing money, buying tickets, plus collecting phone bills, utilities, and so on."
         },
         {
-          "id": "b3l2d1-8",
+          "id": "b3l2-d1-l7",
           "speaker": "朋子",
-          "text": {
-            "traditional": "哈哈，偶爾吃一次沒關係啦。走，我們一起進去吹冷氣選便當！",
-            "simplified": "哈哈，偶爾吃一次没关系啦。走，我们一起进去吹冷气选便当！",
-            "pinyin": "",
-            "english": "Haha, having it once in a while is fine. Come on, let's go inside, enjoy the air conditioning and pick a bento!"
-          }
+          "traditional": "對，真的很多。我覺得現在臺灣的便利商店比以前方便，比如說，提供休息空間，讓客人坐下來，好好地吃個東西、喝點飲料。",
+          "simplified": "对，真的很多。我觉得现在台湾的便利商店比以前方便，比如说，提供休息空间，让客人坐下来，好好地吃个东西、喝点饮料。",
+          "pinyin": "Duì, zhēnde hěn duō. Wǒ juéde xiànzài Táiwān de biànlì shāngdiàn bǐ yǐqián fāngbiàn, bǐrú shuō, tígōng xiūxí kōngjiān, ràng kèrén zuò xiàlai, hǎohāode chī ge dōngxi, hē diǎn yǐnliào.",
+          "english": "Right, really a lot. I feel Taiwan’s convenience stores now are more convenient than before; for instance, providing seating areas so customers can sit down and comfortably have a bite to eat or drink a beverage."
+        },
+        {
+          "id": "b3l2-d1-l8",
+          "speaker": "尚恩",
+          "traditional": "是啊。現在我早晚都去，有時候整個下午都在那裡看書、寫功課。如果餓了，就順便買個泡麵，還能免費使用熱水，真方便。",
+          "simplified": "是啊。现在我早晚都去，有时候整个下午都在那里看书、写功课。如果饿了，就顺便买个泡面，还能免费使用热水，真方便。",
+          "pinyin": "Shì a. Xiànzài wǒ zǎowǎn dōu qù, yǒu shíhou zhěng ge xiàwǔ dōu zài nàlǐ kànshū, xiě gōngkè. Rúguǒ è le, jiù shùnbiàn mǎi ge pàomiàn, hái néng miǎnfèi shǐyòng rèshuǐ, zhēn fāngbiàn.",
+          "english": "Yeah. Now I go both morning and night; sometimes I spend the whole afternoon there reading and doing homework. If I get hungry, I casually buy instant noodles, and can even use hot water for free; it’s really convenient."
+        },
+        {
+          "id": "b3l2-d1-l9",
+          "speaker": "朋子",
+          "traditional": "我來不及做早餐的話，就去那裡買個饅頭、牛奶。有時候也去買最愛的熱狗跟汽水，雖然沒什麼營養，但是可以讓心情變得更好，哈哈哈！",
+          "simplified": "我来不及做早餐的话，就去那里买个馒头、牛奶。有时候也去买最爱的热狗跟汽水，虽然没什么营养，但是可以让心情变得更好，哈哈哈！",
+          "pinyin": "Wǒ láibují zuò zǎocān dehuà, jiù qù nàlǐ mǎi ge mántou, niúnǎi. Yǒu shíhou yě qù mǎi zuì ài de règǒu gēn qìshuǐ, suīrán méi shénme yíngyǎng, dànshì kěyǐ ràng xīnqíng biàn de gèng hǎo, hāhāhā!",
+          "english": "If I don’t have time to make breakfast, I go there to buy a steamed bun and milk. Sometimes I also buy my favorite hot dog and soda; although not very nutritious, it puts me in a better mood, hahaha!"
+        },
+        {
+          "id": "b3l2-d1-l10",
+          "speaker": "尚恩",
+          "traditional": "是啊。對了，我聽說日本的便利商店也很方便，商品也很多。",
+          "simplified": "是啊。对了，我听说日本的便利商店也很方便，商品也很多。",
+          "pinyin": "Shì a. Duì le, wǒ tīngshuō Rìběn de biànlì shāngdiàn yě hěn fāngbiàn, shāngpǐn yě hěn duō.",
+          "english": "Yeah. By the way, I heard convenience stores in Japan are also very convenient, and have lots of merchandise."
+        },
+        {
+          "id": "b3l2-d1-l11",
+          "speaker": "朋子",
+          "traditional": "跟臺灣的差不多。從中餐、西餐，到白菜、香蕉等蔬菜水果都買得到，也有各式各樣的生活用品。",
+          "simplified": "跟台湾的差不多。从中餐、西餐，到白菜、香蕉等蔬菜水果都买得到，也有各式各样的生活用品。",
+          "pinyin": "Gēn Táiwān de chàbùduō. Cóng zhōngcān, xīcān, dào báicài, xiāngjiāo děng shūcài shuǐguǒ dōu mǎi de dào, yě yǒu gèshì gèyàng de shēnghuó yòngpǐn.",
+          "english": "About the same as Taiwan’s. From Chinese food and Western meals to vegetables and fruits like cabbage and bananas, you can buy them all; there are also all kinds of daily necessities."
+        },
+        {
+          "id": "b3l2-d1-l12",
+          "speaker": "尚恩",
+          "traditional": "我個人覺得便利商店在日本和臺灣能夠成功，除了是二十四小時的，也因為提供的服務非常多，能滿足大家的需求。",
+          "simplified": "我个人觉得便利商店在日本和台湾能够成功，除了是二十四小时的，也因为提供的服务非常多，能满足大家的需求。",
+          "pinyin": "Wǒ gèrén juéde biànlì shāngdiàn zài Rìběn hàn Táiwān nénggòu chénggōng, chúle shì èrshísì xiǎoshí de, yě yīnwèi tígōng de fúwù fēicháng duō, néng mǎnzú dàjiā de xūqiú.",
+          "english": "Personally, I think convenience stores are successful in Japan and Taiwan not only because they are open 24 hours, but also because they provide so many services, meeting everyone’s needs."
+        },
+        {
+          "id": "b3l2-d1-l13",
+          "speaker": "朋子",
+          "traditional": "嗯，我同意。法國沒有這樣的商店嗎？",
+          "simplified": "嗯，我同意。法国没有这样的商店吗？",
+          "pinyin": "Èn, wǒ tóngyì. Fǎguó méiyǒu zhèyàng de shāngdiàn ma?",
+          "english": "Mm, I agree. Doesn’t France have stores like this?"
+        },
+        {
+          "id": "b3l2-d1-l14",
+          "speaker": "尚恩",
+          "traditional": "法國沒有二十四小時的，也沒有這麼多服務。我想主要是因為法國人的想法和工作習慣跟臺灣人不一樣吧。",
+          "simplified": "法国没有二十四小时的，也没有这么多服务。我想主要是因为法国人的想法和工作习惯跟台湾人不一样吧。",
+          "pinyin": "Fǎguó méiyǒu èrshísì xiǎoshí de, yě méiyǒu zhème duō fúwù. Wǒ xiǎng zhǔyào shì yīnwèi Fǎguórén de xiǎngfǎ hàn gōngzuò xíguàn gēn Táiwānrén bù yíyàng ba.",
+          "english": "France doesn’t have 24-hour ones, nor so many services. I think it’s mainly because French people’s mindset and working habits are different from Taiwanese people’s."
+        },
+        {
+          "id": "b3l2-d1-l15",
+          "speaker": "朋子",
+          "traditional": "我的法國朋友也說，臺灣便利商店的店員一會兒煮咖啡，一會兒擦桌子，太辛苦了。",
+          "simplified": "我的法国朋友也说，台湾便利商店的店员一会儿煮咖啡，一会儿擦桌子，太辛苦了。",
+          "pinyin": "Wǒ de Fǎguó péngyou yě shuō, Táiwān biànlì shāngdiàn de diànyuán yìhuǐr zhǔ kāfēi, yìhuǐr cā zhuōzi, tài xīnkǔ le.",
+          "english": "My French friend also said that Taiwanese convenience store clerks make coffee one moment and wipe tables the next; it’s so hard!"
+        },
+        {
+          "id": "b3l2-d1-l16",
+          "speaker": "尚恩",
+          "traditional": "是啊，他們真的太忙了。（看錶）不好意思，我等一下有個約會，現在得先去送洗衣服了，也順便領點錢。",
+          "simplified": "是啊，他们真的太忙了。（看表）不好意思，我等一下有个约会，现在得先去送洗衣服了，也顺便领点钱。",
+          "pinyin": "Shì a, tāmen zhēnde tài máng le. (Kàn biǎo) Bù hǎoyìsi, wǒ děng yíxià yǒu ge yuēhuì, xiànzài děi xiān qù sòngxǐ yīfu le, yě shùnbiàn lǐng diǎn qián.",
+          "english": "Yeah, they really are too busy. (Looks at watch) Excuse me, I have an appointment shortly, so I need to go drop off the laundry now and also withdraw some cash on the way."
+        },
+        {
+          "id": "b3l2-d1-l17",
+          "speaker": "朋子",
+          "traditional": "附近有一家銀行的自動提款機不收手續費，你可以去那裡領。",
+          "simplified": "附近有一家银行的自动提款机不收手续费，你可以去那里领。",
+          "pinyin": "Fùjìn yǒu yì jiā yínháng de zìdòng tíkuǎnjī bù shōu shǒuxùfèi, nǐ kěyǐ qù nàlǐ lǐng.",
+          "english": "There is an ATM from a nearby bank that doesn’t charge fees; you could withdraw there."
+        },
+        {
+          "id": "b3l2-d1-l18",
+          "speaker": "尚恩",
+          "traditional": "沒關係，手續費不過幾塊錢，我在便利商店領算了。",
+          "simplified": "没关系，手续费不过几块钱，我在便利商店领算了。",
+          "pinyin": "Méi guānxi, shǒuxùfèi búguò jǐ kuài qián, wǒ zài biànlì shāngdiàn lǐng suànle.",
+          "english": "That’s fine; the transaction fee is only a few dollars, I might as well just withdraw it at the convenience store."
+        },
+        {
+          "id": "b3l2-d1-l19",
+          "speaker": "朋子",
+          "traditional": "嗯，你說的對。",
+          "simplified": "嗯，你说得对。",
+          "pinyin": "Èn, nǐ shuō de duì.",
+          "english": "Mm, you’re right."
         }
       ]
     },
@@ -3835,454 +3891,97 @@
         "lessonTitle": "便利商店真方便",
         "lessonTitleEnglish": "Convenience Stores Are So Convenient",
         "grammarNumber": 5,
-        "titleTraditional": "就是",
-        "titleEnglish": "Simply / Just Won't",
-        "learnerPromise": "Emphasize stubbornness or an unyielding result using 就是.",
+        "titleTraditional": "V開",
+        "titleEnglish": "Complement 開 (Apart / Away)",
+        "learnerPromise": "Express separating things or moving away from a spot using the complement 開.",
         "printedPages": [
-          62
+          62,
+          63
         ],
         "bookPageAvailable": true,
         "audioReference": "02-2-3",
-        "explanation": "就是 here acts as an emphatic adverb indicating that something simply happens or fails despite repeated efforts.",
+        "explanation": "「開」當結果補語，有「本來在一起的東西分離」的意思，例如：打開、拉開。「開」也有「人或物離開本來的地方」的意思，例如：走開、離開、拿開。也可以在結果補語「開」的前面加上可能補語「得」或「不」，例如：打得開、打不開、走得開、走不開。開 as a complement denotes physical separation or departure from a position.",
         "focusTerms": [
-          "就是"
+          "開",
+          "得開",
+          "不開"
         ],
-        "pattern": "Subject + 就是 + Predicate",
+        "pattern": "Verb + 開 / 得開 / 不開",
         "patternColumns": [
-          "Subject",
-          "就是",
-          "Predicate"
+          "Who",
+          "Verb",
+          "開",
+          "What"
         ],
         "patternRows": [
           {
             "id": "b3l2g5-r1",
-            "subject": [
-              {
-                "id": "b3l2g5-r1-c1-w1",
-                "traditional": "這個",
-                "simplified": "这个",
-                "pinyin": "zhè ge",
-                "meaning": "this"
-              },
-              {
-                "id": "b3l2g5-r1-c1-w2",
-                "traditional": "門",
-                "simplified": "门",
-                "pinyin": "mén",
-                "meaning": "measure word (courses)"
-              },
-              {
-                "id": "b3l2g5-r1-c1-w3",
-                "traditional": "我",
-                "simplified": "我",
-                "pinyin": "wǒ",
-                "meaning": "I"
-              },
-              {
-                "id": "b3l2g5-r1-c1-w4",
-                "traditional": "開",
-                "simplified": "开",
-                "pinyin": "kāi",
-                "meaning": "to open"
-              },
-              {
-                "id": "b3l2g5-r1-c1-w5",
-                "traditional": "了",
-                "simplified": "了",
-                "pinyin": "le",
-                "meaning": "completion particle"
-              },
-              {
-                "id": "b3l2g5-r1-c1-w6",
-                "traditional": "半天",
-                "simplified": "半天",
-                "pinyin": "bàntiān",
-                "meaning": "a long time",
-                "suffix": "，"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "b3l2g5-r1-c2-w1",
-                "traditional": "就是",
-                "simplified": "就是",
-                "pinyin": "jiù shì",
-                "meaning": "simply; exactly; except"
-              }
-            ],
-            "complement": [
-              {
-                "id": "b3l2g5-r1-c3-w1",
-                "traditional": "打",
-                "simplified": "打",
-                "pinyin": "dǎ",
-                "meaning": "to play ball"
-              },
-              {
-                "id": "b3l2g5-r1-c3-w2",
-                "traditional": "不",
-                "simplified": "不",
-                "pinyin": "bù",
-                "meaning": "no"
-              },
-              {
-                "id": "b3l2g5-r1-c3-w3",
-                "traditional": "開",
-                "simplified": "开",
-                "pinyin": "kāi",
-                "meaning": "to open",
-                "suffix": "。"
-              }
-            ],
             "columns": [
               [
                 {
                   "id": "b3l2g5-r1-c1-w1",
-                  "traditional": "這個",
-                  "simplified": "这个",
-                  "pinyin": "zhè ge",
-                  "meaning": "this"
-                },
-                {
-                  "id": "b3l2g5-r1-c1-w2",
-                  "traditional": "門",
-                  "simplified": "门",
-                  "pinyin": "mén",
-                  "meaning": "measure word (courses)"
-                },
-                {
-                  "id": "b3l2g5-r1-c1-w3",
-                  "traditional": "我",
-                  "simplified": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I"
-                },
-                {
-                  "id": "b3l2g5-r1-c1-w4",
-                  "traditional": "開",
-                  "simplified": "开",
-                  "pinyin": "kāi",
-                  "meaning": "to open"
-                },
-                {
-                  "id": "b3l2g5-r1-c1-w5",
-                  "traditional": "了",
-                  "simplified": "了",
-                  "pinyin": "le",
-                  "meaning": "completion particle"
-                },
-                {
-                  "id": "b3l2g5-r1-c1-w6",
-                  "traditional": "半天",
-                  "simplified": "半天",
-                  "pinyin": "bàntiān",
-                  "meaning": "a long time",
-                  "suffix": "，"
+                  "traditional": "許多人",
+                  "simplified": "许多人",
+                  "pinyin": "xǔduō rén",
+                  "meaning": "many people"
                 }
               ],
               [
                 {
                   "id": "b3l2g5-r1-c2-w1",
-                  "traditional": "就是",
-                  "simplified": "就是",
-                  "pinyin": "jiù shì",
-                  "meaning": "simply; exactly; except"
+                  "traditional": "離不",
+                  "simplified": "离不",
+                  "pinyin": "lí bu",
+                  "meaning": "cannot leave"
                 }
               ],
               [
                 {
                   "id": "b3l2g5-r1-c3-w1",
-                  "traditional": "打",
-                  "simplified": "打",
-                  "pinyin": "dǎ",
-                  "meaning": "to play ball"
-                },
-                {
-                  "id": "b3l2g5-r1-c3-w2",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "meaning": "no"
-                },
-                {
-                  "id": "b3l2g5-r1-c3-w3",
                   "traditional": "開",
                   "simplified": "开",
                   "pinyin": "kāi",
-                  "meaning": "to open",
-                  "suffix": "。"
+                  "meaning": "apart"
+                }
+              ],
+              [
+                {
+                  "id": "b3l2g5-r1-c4-w1",
+                  "traditional": "超商",
+                  "simplified": "超商",
+                  "pinyin": "chāoshāng",
+                  "meaning": "convenience stores"
                 }
               ]
             ],
-            "english": "I've been trying to open this door forever, but it simply won't open."
-          },
-          {
-            "id": "b3l2g5-r2",
             "subject": [
               {
-                "id": "b3l2g5-r2-c1-w1",
-                "traditional": "我",
-                "simplified": "我",
-                "pinyin": "wǒ",
-                "meaning": "I"
-              },
-              {
-                "id": "b3l2g5-r2-c1-w2",
-                "traditional": "勸",
-                "simplified": "劝",
-                "pinyin": "quàn",
-                "meaning": "to advise"
-              },
-              {
-                "id": "b3l2g5-r2-c1-w3",
-                "traditional": "了",
-                "simplified": "了",
-                "pinyin": "le",
-                "meaning": "completion particle"
-              },
-              {
-                "id": "b3l2g5-r2-c1-w4",
-                "traditional": "他",
-                "simplified": "他",
-                "pinyin": "tā",
-                "meaning": "he"
-              },
-              {
-                "id": "b3l2g5-r2-c1-w5",
-                "traditional": "好多",
-                "simplified": "好多",
-                "pinyin": "hǎo duō",
-                "meaning": "many"
-              },
-              {
-                "id": "b3l2g5-r2-c1-w6",
-                "traditional": "次",
-                "simplified": "次",
-                "pinyin": "cì",
-                "meaning": "measure word (times)",
-                "suffix": "，"
+                "id": "b3l2g5-r1-s1",
+                "traditional": "許多人",
+                "simplified": "许多人",
+                "pinyin": "xǔduō rén",
+                "meaning": "many people"
               }
             ],
             "grammar": [
               {
-                "id": "b3l2g5-r2-c2-w1",
-                "traditional": "他",
-                "simplified": "他",
-                "pinyin": "tā",
-                "meaning": "he"
-              },
-              {
-                "id": "b3l2g5-r2-c2-w2",
-                "traditional": "就是",
-                "simplified": "就是",
-                "pinyin": "jiù shì",
-                "meaning": "simply; exactly; except"
+                "id": "b3l2g5-r1-g1",
+                "traditional": "離不開",
+                "simplified": "离不开",
+                "pinyin": "lí bu kāi",
+                "meaning": "cannot separate from"
               }
             ],
             "complement": [
               {
-                "id": "b3l2g5-r2-c3-w1",
-                "traditional": "不",
-                "simplified": "不",
-                "pinyin": "bù",
-                "meaning": "no"
-              },
-              {
-                "id": "b3l2g5-r2-c3-w2",
-                "traditional": "聽",
-                "simplified": "听",
-                "pinyin": "tīng",
-                "meaning": "to listen",
-                "suffix": "。"
+                "id": "b3l2g5-r1-c1",
+                "traditional": "超商",
+                "simplified": "超商",
+                "pinyin": "chāoshāng",
+                "meaning": "convenience store"
               }
             ],
-            "columns": [
-              [
-                {
-                  "id": "b3l2g5-r2-c1-w1",
-                  "traditional": "我",
-                  "simplified": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I"
-                },
-                {
-                  "id": "b3l2g5-r2-c1-w2",
-                  "traditional": "勸",
-                  "simplified": "劝",
-                  "pinyin": "quàn",
-                  "meaning": "to advise"
-                },
-                {
-                  "id": "b3l2g5-r2-c1-w3",
-                  "traditional": "了",
-                  "simplified": "了",
-                  "pinyin": "le",
-                  "meaning": "completion particle"
-                },
-                {
-                  "id": "b3l2g5-r2-c1-w4",
-                  "traditional": "他",
-                  "simplified": "他",
-                  "pinyin": "tā",
-                  "meaning": "he"
-                },
-                {
-                  "id": "b3l2g5-r2-c1-w5",
-                  "traditional": "好多",
-                  "simplified": "好多",
-                  "pinyin": "hǎo duō",
-                  "meaning": "many"
-                },
-                {
-                  "id": "b3l2g5-r2-c1-w6",
-                  "traditional": "次",
-                  "simplified": "次",
-                  "pinyin": "cì",
-                  "meaning": "measure word (times)",
-                  "suffix": "，"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g5-r2-c2-w1",
-                  "traditional": "他",
-                  "simplified": "他",
-                  "pinyin": "tā",
-                  "meaning": "he"
-                },
-                {
-                  "id": "b3l2g5-r2-c2-w2",
-                  "traditional": "就是",
-                  "simplified": "就是",
-                  "pinyin": "jiù shì",
-                  "meaning": "simply; exactly; except"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g5-r2-c3-w1",
-                  "traditional": "不",
-                  "simplified": "不",
-                  "pinyin": "bù",
-                  "meaning": "no"
-                },
-                {
-                  "id": "b3l2g5-r2-c3-w2",
-                  "traditional": "聽",
-                  "simplified": "听",
-                  "pinyin": "tīng",
-                  "meaning": "to listen",
-                  "suffix": "。"
-                }
-              ]
-            ],
-            "english": "I advised him many times, but he simply refused to listen."
-          },
-          {
-            "id": "b3l2g5-r3",
-            "subject": [
-              {
-                "id": "b3l2g5-r3-c1-w1",
-                "traditional": "這",
-                "simplified": "这",
-                "pinyin": "zhè/zhèi",
-                "meaning": "this"
-              },
-              {
-                "id": "b3l2g5-r3-c1-w2",
-                "traditional": "台",
-                "simplified": "台",
-                "pinyin": "tái",
-                "meaning": "measure word (machines)"
-              },
-              {
-                "id": "b3l2g5-r3-c1-w3",
-                "traditional": "機器",
-                "simplified": "机器",
-                "pinyin": "jīqì",
-                "meaning": "machine (M: 部 bù)",
-                "suffix": "，"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "b3l2g5-r3-c2-w1",
-                "traditional": "就是",
-                "simplified": "就是",
-                "pinyin": "jiù shì",
-                "meaning": "simply; exactly; except"
-              }
-            ],
-            "complement": [
-              {
-                "id": "b3l2g5-r3-c3-w1",
-                "traditional": "動",
-                "simplified": "动",
-                "pinyin": "dòng",
-                "meaning": "to move"
-              },
-              {
-                "id": "b3l2g5-r3-c3-w2",
-                "traditional": "不了",
-                "simplified": "不了",
-                "pinyin": "bù le",
-                "meaning": "no thanks",
-                "suffix": "。"
-              }
-            ],
-            "columns": [
-              [
-                {
-                  "id": "b3l2g5-r3-c1-w1",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè/zhèi",
-                  "meaning": "this"
-                },
-                {
-                  "id": "b3l2g5-r3-c1-w2",
-                  "traditional": "台",
-                  "simplified": "台",
-                  "pinyin": "tái",
-                  "meaning": "measure word (machines)"
-                },
-                {
-                  "id": "b3l2g5-r3-c1-w3",
-                  "traditional": "機器",
-                  "simplified": "机器",
-                  "pinyin": "jīqì",
-                  "meaning": "machine (M: 部 bù)",
-                  "suffix": "，"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g5-r3-c2-w1",
-                  "traditional": "就是",
-                  "simplified": "就是",
-                  "pinyin": "jiù shì",
-                  "meaning": "simply; exactly; except"
-                }
-              ],
-              [
-                {
-                  "id": "b3l2g5-r3-c3-w1",
-                  "traditional": "動",
-                  "simplified": "动",
-                  "pinyin": "dòng",
-                  "meaning": "to move"
-                },
-                {
-                  "id": "b3l2g5-r3-c3-w2",
-                  "traditional": "不了",
-                  "simplified": "不了",
-                  "pinyin": "bù le",
-                  "meaning": "no thanks",
-                  "suffix": "。"
-                }
-              ]
-            ],
-            "english": "This machine simply won't start."
+            "english": "Many people cannot do without convenience stores."
           }
         ],
         "confusion": {
@@ -4290,100 +3989,96 @@
           "items": [
             {
               "id": "b3l2g5-cf1",
-              "question": "Does emphatic 就是 mean 'A equals B'?",
-              "answer": "Emphatic 就是 expresses stubborn insistence or refusal ('simply won't'); not the equational 'is'.",
-              "wrongTraditional": "那本書就是字典書。",
-              "wrongSimplified": "那本书就是字典书。",
+              "question": "How does complement 開 differ from 開始?",
+              "answer": "Complement 開 indicates separation or leaving a spot (打不開, 走不開). 開始 indicates the onset of an action.",
+              "wrongTraditional": "我打開始了書本。",
+              "wrongSimplified": "我打开始了书本。",
               "right": {
-                "traditional": "那本書就是字典。",
-                "simplified": "那本书就是字典。",
-                "pinyin": "Nà běn shū jiùshì zìdiǎn.",
-                "english": "That book is indeed a dictionary.",
+                "traditional": "我打開了課本。",
+                "simplified": "我打开了课本。",
+                "pinyin": "Wǒ dǎ kāi le kèběn.",
+                "english": "I opened the textbook.",
                 "words": [
                   {
                     "id": "b3l2g5-cf1-w1",
-                    "traditional": "那",
-                    "simplified": "那",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
                   },
                   {
                     "id": "b3l2g5-cf1-w2",
-                    "traditional": "本",
-                    "simplified": "本",
-                    "pinyin": "běn",
-                    "english": "this (current)"
+                    "traditional": "打開",
+                    "simplified": "打开",
+                    "pinyin": "dǎkāi",
+                    "meaning": "open"
                   },
                   {
                     "id": "b3l2g5-cf1-w3",
-                    "traditional": "書",
-                    "simplified": "书",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "了",
+                    "simplified": "了",
+                    "pinyin": "le",
+                    "meaning": "completion"
                   },
                   {
                     "id": "b3l2g5-cf1-w4",
-                    "traditional": "就是",
-                    "simplified": "就是",
-                    "pinyin": "jiùshì",
-                    "english": "even if"
-                  },
-                  {
-                    "id": "b3l2g5-cf1-w5",
-                    "traditional": "字",
-                    "simplified": "字",
-                    "pinyin": "",
-                    "english": ""
-                  },
-                  {
-                    "id": "b3l2g5-cf1-w6",
-                    "traditional": "典",
-                    "simplified": "典",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "課本",
+                    "simplified": "课本",
+                    "pinyin": "kèběn",
+                    "meaning": "textbook",
+                    "suffix": "。"
                   }
                 ]
               }
             },
             {
               "id": "b3l2g5-cf2",
-              "question": "Where does emphatic 就是 sit with negation 不?",
-              "answer": "就是 sits before 不 (就是不聽, 就是不去), emphasizing obstinate refusal.",
-              "wrongTraditional": "他不會就是去。",
-              "wrongSimplified": "他不会就是去。",
+              "question": "What does 走不開 mean?",
+              "answer": "走不開 means being tied up and unable to leave one's post, not physical inability to walk.",
+              "wrongTraditional": "我腳痛，走不開路。",
+              "wrongSimplified": "我脚痛，走不开路。",
               "right": {
-                "traditional": "他就是不去。",
-                "simplified": "他就是不去。",
-                "pinyin": "Tā jiùshì bú qù.",
-                "english": "He simply refuses to go.",
+                "traditional": "我在做飯，現在走不開。",
+                "simplified": "我在做饭，现在走不开。",
+                "pinyin": "Wǒ zài zuòfàn, xiànzài zǒu bu kāi.",
+                "english": "I am cooking and cannot step away right now.",
                 "words": [
                   {
                     "id": "b3l2g5-cf2-w1",
-                    "traditional": "他",
-                    "simplified": "他",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "我",
+                    "simplified": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I"
                   },
                   {
                     "id": "b3l2g5-cf2-w2",
-                    "traditional": "就是",
-                    "simplified": "就是",
-                    "pinyin": "jiùshì",
-                    "english": "even if"
+                    "traditional": "在",
+                    "simplified": "在",
+                    "pinyin": "zài",
+                    "meaning": "in middle of"
                   },
                   {
                     "id": "b3l2g5-cf2-w3",
-                    "traditional": "不",
-                    "simplified": "不",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "做飯",
+                    "simplified": "做饭",
+                    "pinyin": "zuòfàn",
+                    "meaning": "cooking",
+                    "suffix": "，"
                   },
                   {
                     "id": "b3l2g5-cf2-w4",
-                    "traditional": "去",
-                    "simplified": "去",
-                    "pinyin": "",
-                    "english": ""
+                    "traditional": "現在",
+                    "simplified": "现在",
+                    "pinyin": "xiànzài",
+                    "meaning": "now"
+                  },
+                  {
+                    "id": "b3l2g5-cf2-w5",
+                    "traditional": "走不開",
+                    "simplified": "走不开",
+                    "pinyin": "zǒu bu kāi",
+                    "meaning": "cannot step away",
+                    "suffix": "。"
                   }
                 ]
               }
@@ -4706,17 +4401,54 @@
         "questions": [
           {
             "id": "b3l2g5-q1",
-            "prompt": "我找了半天，___找不到家裡的鑰匙。",
-            "options": [
-              "就是",
-              "順便",
-              "算了"
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "上課了，請大家把課本翻",
+                "simplified": "上课了，请大家把课本翻"
+              },
+              {
+                "type": "blank",
+                "id": "b3l2g5-q1-b1",
+                "answer": "開",
+                "answerSimplified": "开",
+                "hint": "Complement meaning open/apart."
+              },
+              {
+                "type": "text",
+                "traditional": "，翻到第五十頁。",
+                "simplified": "，翻到第五十页。"
+              }
             ],
-            "answer": [
-              "就是"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g5-q1-t1",
+                "traditional": "開",
+                "simplified": "开",
+                "pinyin": "kāi",
+                "meaning": "apart / open"
+              },
+              {
+                "id": "b3l2g5-q1-t2",
+                "traditional": "完",
+                "simplified": "完",
+                "pinyin": "wán",
+                "meaning": "finish"
+              },
+              {
+                "id": "b3l2g5-q1-t3",
+                "traditional": "起",
+                "simplified": "起",
+                "pinyin": "qǐ",
+                "meaning": "upward"
+              }
+            ],
+            "correctFeedback": "翻開 expresses opening a book so pages are parted.",
+            "repairFeedback": "Use 開 as the result complement for opening apart."
           }
-        ]
+        ],
+        "bookPage": 62
       },
       {
         "id": "B3L02-G06-P64",
@@ -5733,15 +5465,46 @@
         "questions": [
           {
             "id": "b3l2g6-q1",
-            "prompt": "___老師的耐心指導，學生的發音變得越來越標準了。",
-            "options": [
-              "經過",
-              "就是",
-              "順便"
+            "number": 1,
+            "segments": [
+              {
+                "type": "blank",
+                "id": "b3l2g6-q1-b1",
+                "answer": "經過",
+                "answerSimplified": "经过",
+                "hint": "Preposition meaning 'after / through a process'."
+              },
+              {
+                "type": "text",
+                "traditional": "這件事，我覺得應該好好把握機會。",
+                "simplified": "这件事，我觉得应该好好把握机会。"
+              }
             ],
-            "answer": [
-              "經過"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g6-q1-t1",
+                "traditional": "經過",
+                "simplified": "经过",
+                "pinyin": "jīngguò",
+                "meaning": "through / after"
+              },
+              {
+                "id": "b3l2g6-q1-t2",
+                "traditional": "通過",
+                "simplified": "通过",
+                "pinyin": "tōngguò",
+                "meaning": "pass through"
+              },
+              {
+                "id": "b3l2g6-q1-t3",
+                "traditional": "要是",
+                "simplified": "要是",
+                "pinyin": "yàoshi",
+                "meaning": "if"
+              }
+            ],
+            "correctFeedback": "經過 introduces the event or experience that led to the realization.",
+            "repairFeedback": "Use 經過 for having experienced a life event."
           }
         ]
       },
@@ -5767,9 +5530,8 @@
         ],
         "pattern": "Subject + 用 + Tool / Method + 來 + Action",
         "patternColumns": [
-          "Subject",
-          "用",
-          "Tool",
+          "Who",
+          "用 + NP",
           "來",
           "Action"
         ],
@@ -6606,83 +6368,108 @@
         "questions": [
           {
             "id": "b3l2g7-q1",
-            "prompt": "我們可以___開會的方式___解決大家的分歧。",
-            "options": [
-              "用…來…",
-              "經過",
-              "就是"
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "教授說這學期的成績主要是",
+                "simplified": "教授说这学期的成绩主要是"
+              },
+              {
+                "type": "blank",
+                "id": "b3l2g7-q1-b1",
+                "answer": "用平常考試的成績",
+                "answerSimplified": "用平常考试的成绩",
+                "hint": "The method/basis used."
+              },
+              {
+                "type": "text",
+                "traditional": "來決定的。",
+                "simplified": "来决定的。"
+              }
             ],
-            "answer": [
-              "用…來…"
-            ]
+            "tiles": [
+              {
+                "id": "b3l2g7-q1-t1",
+                "traditional": "用平常考試的成績",
+                "simplified": "用平常考试的成绩",
+                "pinyin": "yòng píngcháng kǎoshì de chéngjì",
+                "meaning": "using regular test scores"
+              },
+              {
+                "id": "b3l2g7-q1-t2",
+                "traditional": "為了平常考試",
+                "simplified": "为了平常考试",
+                "pinyin": "wèile píngcháng kǎoshì",
+                "meaning": "for regular tests"
+              },
+              {
+                "id": "b3l2g7-q1-t3",
+                "traditional": "經過平時成績",
+                "simplified": "经过平时成绩",
+                "pinyin": "jīngguò píngshí chéngjì",
+                "meaning": "after regular scores"
+              }
+            ],
+            "correctFeedback": "用 NP 來 V indicates the concrete method or basis used to decide.",
+            "repairFeedback": "Use 用 NP 来 V to state what the evaluation is based on."
           }
         ]
       }
     ],
     "dialogue": {
       "id": "B3L02-D02",
-      "title": "短文 · 臺灣超商的生活樂趣 · Convenience Store Life in Taiwan",
-      "setting": "短文閱讀 · Reading narrative",
-      "printedPages": [
-        57,
-        58
-      ],
+      "title": "短文 · 臺灣的超商 · Convenience Stores in Taiwan",
       "audioReference": "02-2-1",
+      "printedPages": [
+        56,
+        57
+      ],
       "grammarFocus": [
-        "就是",
+        "V開",
         "經過",
-        "用…來…"
+        "用 NP (來) V"
       ],
       "lines": [
         {
-          "id": "b3l2d2-1",
+          "id": "b3l2-d2-l1",
           "speaker": "旁白",
-          "text": {
-            "traditional": "在臺灣，便利商店已經成為人們日常生活中不可缺少的一部分。",
-            "simplified": "在台湾，便利商店已经成为人们日常生活中不可缺少的一部分。",
-            "pinyin": "",
-            "english": "In Taiwan, convenience stores have become an indispensable part of people's daily lives."
-          }
+          "traditional": "在臺灣，許多人的生活離不開超商，所以街上到處都看得到超商，每走幾步路就有一家，有時候還能看到兩家超商連在一起。為什麼超商能吸引顧客不斷地上門呢？",
+          "simplified": "在台湾，许多人的生活离不开超商，所以街上到处都看得到超商，每走几步路就有一家，有时候还能看到两家超商连在一起。为什么超商能吸引顾客不断地上门呢？",
+          "pinyin": "Zài Táiwān, xǔduō rén de shēnghuó lí bu kāi chāoshāng, suǒyǐ jiē shàng dàochù dōu kàn de dào chāoshāng, měi zǒu jǐ bù lù jiù yǒu yì jiā, yǒu shíhou hái néng kàndào liǎng jiā chāoshāng lián zài yìqǐ. Wèishénme chāoshāng néng xīyǐn gùkè búduàn de shàngmén ne?",
+          "english": "In Taiwan, many people cannot do without convenience stores in their daily lives, so convenience stores can be seen everywhere on the streets. There is one every few steps, and sometimes you can even see two stores right next to each other. Why are convenience stores able to attract a steady stream of customers?"
         },
         {
-          "id": "b3l2d2-2",
+          "id": "b3l2-d2-l2",
           "speaker": "旁白",
-          "text": {
-            "traditional": "許多外國人來到臺灣，第一件印象深刻的事就是街頭巷尾隨處可見的超商。",
-            "simplified": "许多外国人来到台湾，第一件印象深刻的事就是街头巷尾随处可见的超商。",
-            "pinyin": "",
-            "english": "When many foreigners arrive in Taiwan, the first deep impression they have is the convenience stores seen everywhere on street corners."
-          }
+          "traditional": "一提到超商的優點，大家馬上想到的，就是可以買到各式各樣的東西。比如，忽然下雨了，沒帶傘的話，就能趕快進超商買把傘；天氣變冷了，就能買到厚的手套和帽子；要是想喝點兒下午茶，也能買到點心，順便再帶杯咖啡回家。而且在超商，還能付停車費、信用卡費、水電費，連送洗衣服都不是問題。",
+          "simplified": "一提到超商的优点，大家马上想到的，就是可以买到各式各样的东西。比如，忽然下雨了，没带伞的话，就能赶快进超商买把伞；天气变冷了，就能买到厚的手套和帽子；要是想喝点儿下午茶，也能买到点心，顺便再带杯咖啡回家。而且在超商，还能付停车费、信用卡费、水电费，连送洗衣服都不是问题。",
+          "pinyin": "Yì tídào chāoshāng de yōudiǎn, dàjiā mǎshàng xiǎngdào de, jiù shì kěyǐ mǎi dào gèshì gèyàng de dōngxi. Bǐrú, hūrán xiàyǔ le, méi dài sǎn dehuà, jiù néng gǎnkuài jìn chāoshāng mǎi bǎ sǎn; tiānqì biàn lěng le, jiù néng mǎi dào hòu de shǒutào hàn màozi; yàoshi xiǎng hē diǎnr xiàwǔchá, yě néng mǎi dào diǎnxin, shùnbiàn zài dài bēi kāfēi huíjiā. Érqiě zài chāoshāng, hái néng fù tíngchēfèi, xìnyòngkǎfèi, shuǐdiànfèi, lián sòngxǐ yīfu dōu bú shì wèntí.",
+          "english": "When mentioning the merits of convenience stores, what immediately comes to mind is that you can purchase all kinds of goods. For instance, if it suddenly rains and you haven’t brought an umbrella, you can quickly step in to buy one; when the weather turns cold, you can purchase thick gloves and a hat; if you want afternoon tea, you can get a snack and pick up a coffee to take home on the way. What’s more, at convenience stores you can pay parking fees, credit card bills, and utilities; even sending clothes to be washed is no problem at all."
         },
         {
-          "id": "b3l2d2-3",
+          "id": "b3l2-d2-l3",
           "speaker": "旁白",
-          "text": {
-            "traditional": "人們經過一整天忙碌的工作後，走進燈光明亮的便利商店，喝一杯香濃的咖啡，心情就放鬆了下來。",
-            "simplified": "人们经过一整天忙碌的工作后，走进灯光明亮的便利商店，喝一杯香浓的咖啡，心情就放松了下来。",
-            "pinyin": "",
-            "english": "After a busy day of work, people walk into the brightly lit convenience store and drink an aromatic coffee, relaxing their mood."
-          }
+          "traditional": "逛超商也能夠增加不少生活的樂趣，因為超商經常進一些特別的商品來吸引顧客，像外國的零食、飲料和化妝品等；而且有一些超商每經過一段時間，就會舉辦活動，用送神祕小禮物的方式來吸引顧客。不少人為了這些小禮物，一天就去買好幾回。對臺灣人來說，超商就像一個親切的好鄰居，每次進去時，店員都帶著微笑對客人說聲歡迎，他們的服務態度真的很不錯。",
+          "simplified": "逛超商也能够增加不少生活的乐趣，因为超商经常进一些特别的商品来吸引顾客，像外国的零食、饮料和化妆品等；而且有一些超商每经过一段时间，就会举办活动，用送神秘小礼物的方式来吸引顾客。不少人为了这些小礼物，一天就去买好几回。对台湾人来说，超商就像一个亲切的好邻居，每次进去时，店员都带着微笑对客人说声欢迎，他们的服务态度真的很不错。",
+          "pinyin": "Guàng chāoshāng yě nénggòu zēngjiā bù shǎo shēnghuó de lèqù, yīnwèi chāoshāng jīngcháng jìn yìxiē tèbié de shāngpǐn lái xīyǐn gùkè, xiàng wàiguó de língshí, yǐnliào hàn huàzhuāngpǐn děng; érqiě yǒu yìxiē chāoshāng měi jīngguò yí duàn shíjiān, jiù huì jǔbàn huódòng, yòng sòng shénmì xiǎo lǐwù de fāngshì lái xīyǐn gùkè. Bù shǎo rén wèile zhèxiē xiǎo lǐwù, yì tiān jiù qù mǎi hǎojǐ huí. Duì Táiwānrén lái shuō, chāoshāng jiù xiàng yí ge qīnqiè de hǎo línjū, měi cì jìnqu shí, diànyuán dōu dàizhe wēixiào duì kèrén shuō shēng huānyíng, tāmen de fúwù tàidù zhēnde hěn búcuò.",
+          "english": "Browsing convenience stores can also add much fun to daily life, because convenience stores regularly stock special items to attract customers, such as imported snacks, drinks, cosmetics, and more. Furthermore, every so often some convenience stores hold promotional events, using mystery gift giveaways to draw customers. For the sake of these small gifts, many people go make purchases several times a day. To Taiwanese people, the convenience store is like a friendly good neighbor; every time you walk in, the clerk smiles and greets guests with a warm welcome—their service attitude is truly great."
         },
         {
-          "id": "b3l2d2-4",
+          "id": "b3l2-d2-l4",
           "speaker": "旁白",
-          "text": {
-            "traditional": "現代人常用手機 App 來累積超商點數，兌換各種實用的生活用品或美食。",
-            "simplified": "现代人常用手机 App 来累积超商点数，兌换各种实用的生活用品或美食。",
-            "pinyin": "",
-            "english": "Modern people frequently use mobile apps to accumulate convenience store points and redeem various practical daily necessities or delicacies."
-          }
+          "traditional": "不過，超商的工作是很辛苦的。在小小幾坪的空間裡，店員一會兒要收錢、找零錢，一會兒又要煮咖啡、幫客人把食物加熱，有時候還要教顧客使用機器買票。如果碰到態度差的顧客或看到滿桌的垃圾，也不能生氣。有顧客抱怨時，公司還會要求店員改善服務品質。想當好一個超商店員，真的不容易。",
+          "simplified": "不过，超商的工作是很辛苦的。在小小几坪的空间里，店员一会儿要收钱、找零钱，一会儿又要煮咖啡、帮客人把食物加热，有时候还要教顾客使用机器买票。如果碰到态度差的顾客或看到满桌的垃圾，也不能生气。有顾客抱怨时，公司还会要求店员改善服务品质。想当好一个超商店员，真的不容易。",
+          "pinyin": "Bùguò, chāoshāng de gōngzuò shì hěn xīnkǔ de. Zài xiǎoxiǎo jǐ píng de kōngjiān lǐ, diànyuán yìhuǐr yào shōuqián, zhǎo língqián, yìhuǐr yòu yào zhǔ kāfēi, bāng kèrén bǎ shíwù jiārè, yǒu shíhou hái yào jiāo gùkè shǐyòng jīqì mǎipiào. Rúguǒ pèng dào tàidù chà de gùkè huò kàndào mǎnzhuō de lājī, yě bù néng shēngqì. Yǒu gùkè bàoyuàn shí, gōngsī hái huì yāoqiú diànyuán gǎishàn fúwù pǐnzhí. Xiǎng dāng hǎo yí ge chāoshāng diànyuán, zhēnde bù róngyì.",
+          "english": "However, convenience store work is very arduous. Within just a few ping of space, the clerk must collect cash and make change one moment, then brew coffee and heat food for customers the next; sometimes they also need to teach customers how to use the ticketing kiosks. Even if they encounter rude customers or see tables strewn with trash, they cannot lose their temper. When a customer complains, the company requires clerks to improve service quality. Being a great convenience store clerk is truly not easy."
         },
         {
-          "id": "b3l2d2-5",
+          "id": "b3l2-d2-l5",
           "speaker": "旁白",
-          "text": {
-            "traditional": "便利商店不僅提供了極大的生活便利，更為現代都市人的生活增添了許多溫暖與樂趣。",
-            "simplified": "便利商店不仅提供了极大的生活便利，更为现代都市人的生活增添了许多温暖与乐趣。",
-            "pinyin": "",
-            "english": "Convenience stores not only provide immense daily convenience, but also add warmth and joy to the lives of modern urbanites."
-          }
+          "traditional": "超商的功能多、服務速度快，但是也有缺點，比如有些商品比超級市場貴了點兒。不過，以臺灣人的習慣，不需要花太多時間就買得到想要的東西，就算多付一點兒錢也是可以接受的。",
+          "simplified": "超商的功能多、服务速度快，但是也有缺点，比如有些商品比超级市场贵了点儿。不过，以台湾人的习惯，不需要花太多时间就买得到想要的东西，就算多付一点儿钱也是可以接受的。",
+          "pinyin": "Chāoshāng de gōngnéng duō, fúwù sùdù kuài, dànshì yě yǒu quēdiǎn, bǐrú yǒuxiē shāngpǐn bǐ chāojí shìchǎng guì le diǎnr. Bùguò, yǐ Táiwānrén de xíguàn, bù xūyào huā tài duō shíjiān jiù mǎi de dào xiǎng yào de dōngxi, jiùsuàn duō fù yìdiǎnr qián yě shì kěyǐ jiēshòu de.",
+          "english": "Convenience stores have many functions and fast service, but there are also disadvantages; for instance, some goods are slightly more expensive than at supermarkets. However, according to Taiwanese habits, being able to buy what you want without spending too much time makes paying a little extra acceptable."
         }
       ]
     },

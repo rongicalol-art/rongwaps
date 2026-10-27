@@ -164,6 +164,10 @@ export function validateInteractiveLessons(
 
       page.questions.forEach((question) => {
         registerId(question.id, `${pageLocation} question`, pageIds, issues);
+        if (!Array.isArray(question.tiles) || !Array.isArray(question.segments)) {
+          issues.push({ location: `${pageLocation} question ${question.id}`, message: 'Question segments and tiles are required.' });
+          return;
+        }
         const availableAnswers = new Set(
           question.tiles.flatMap((tile) => [tile.traditional, tile.simplified].filter(Boolean)),
         );
@@ -230,7 +234,11 @@ export function validateInteractiveLessons(
       }
     });
   });
-  for (let lessonId = READING_LESSON_MIN; lessonId <= READING_LESSON_MAX; lessonId += 1) {
+  const maxLesson = Math.min(
+    READING_LESSON_MAX,
+    Math.max(READING_LESSON_MIN, ...parts.map((part) => part.lessonId), ...readings.map((reading) => reading.lessonId)),
+  );
+  for (let lessonId = READING_LESSON_MIN; lessonId <= maxLesson; lessonId += 1) {
     const lessonReadings = readingsByLesson.get(lessonId) ?? [];
     if (lessonReadings.length < 2 || lessonReadings.length > 3) {
       issues.push({ location: `lesson ${lessonId}`, message: `Expected 2 or 3 readings; found ${lessonReadings.length}.` });

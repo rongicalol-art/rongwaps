@@ -655,19 +655,16 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
     "bookId": 3,
     "lessonId": 4,
     "partId": 1,
-    "title": "Grammar 1–4 · The Baby's Full Month",
+    "title": "Grammar 1–3 · The Baby's Full Month",
     "grammarPages": [
       {
         "id": "B3L04-G01-P101"
       },
       {
-        "id": "B3L04-G02-P102"
+        "id": "B3L04-G02-P103"
       },
       {
-        "id": "B3L04-G03-P103"
-      },
-      {
-        "id": "B3L04-G04-P105"
+        "id": "B3L04-G03-P105"
       }
     ]
   },
@@ -676,19 +673,19 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
     "bookId": 3,
     "lessonId": 4,
     "partId": 2,
-    "title": "Grammar 5–8 · The Baby's Full Month",
+    "title": "Grammar 4–7 · The Baby's Full Month",
     "grammarPages": [
       {
-        "id": "B3L04-G05-P113"
+        "id": "B3L04-G04-P113"
       },
       {
-        "id": "B3L04-G06-P114"
+        "id": "B3L04-G05-P114"
       },
       {
-        "id": "B3L04-G07-P115"
+        "id": "B3L04-G06-P115"
       },
       {
-        "id": "B3L04-G08-P117"
+        "id": "B3L04-G07-P117"
       }
     ]
   },
@@ -728,6 +725,81 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
       },
       {
         "id": "B3L05-G07-P144"
+      }
+    ]
+  },
+  {
+    "id": "B3L06-P01-D01",
+    "bookId": 3,
+    "lessonId": 6,
+    "partId": 1,
+    "title": "Grammar 1–4 · Balanced Work and Leisure",
+    "grammarPages": [
+      {
+        "id": "B3L06-G01-P155"
+      },
+      {
+        "id": "B3L06-G02-P157"
+      },
+      {
+        "id": "B3L06-G03-P159"
+      },
+      {
+        "id": "B3L06-G04-P160"
+      }
+    ]
+  },
+  {
+    "id": "B3L06-P02-D02",
+    "bookId": 3,
+    "lessonId": 6,
+    "partId": 2,
+    "title": "Grammar 5–7 · Balanced Work and Leisure",
+    "grammarPages": [
+      {
+        "id": "B3L06-G05-P167"
+      },
+      {
+        "id": "B3L06-G06-P169"
+      },
+      {
+        "id": "B3L06-G07-P171"
+      }
+    ]
+  },
+  {
+    "id": "B3L07-P01-D01",
+    "bookId": 3,
+    "lessonId": 7,
+    "partId": 1,
+    "title": "Grammar 1–4 · Travel Decisions and Outcomes",
+    "grammarPages": [
+      {
+        "id": "B3L07-G01-P184"
+      },
+      {
+        "id": "B3L07-G02-P186"
+      },
+      {
+        "id": "B3L07-G03-P187"
+      },
+      {
+        "id": "B3L07-G04-P189"
+      }
+    ]
+  },
+  {
+    "id": "B3L07-P02-D02",
+    "bookId": 3,
+    "lessonId": 7,
+    "partId": 2,
+    "title": "Grammar 5–6 · Perspective and Degree of Impact",
+    "grammarPages": [
+      {
+        "id": "B3L07-G05-P195"
+      },
+      {
+        "id": "B3L07-G06-P197"
       }
     ]
   }

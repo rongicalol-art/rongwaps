@@ -1,39 +1,165 @@
 {
   "B3L04-G01-P101": {
     "bookPage": 101,
-    "title": "Practice: 好+Vs+的+N啊",
-    "allowWords": [
-      "好"
-    ],
+    "title": "Practice: 好Vs的N(啊)!",
     "items": [
       {
         "id": "b3l4g1-p1",
-        "source": "p.101 #1",
+        "source": "p.102 #1",
         "kind": "slot-build",
-        "prompt": "Exclaiming at a delicious meal:",
-        "quiet": true,
-        "tiles": [
+        "prompt": "The student asks the teacher to check their handwriting homework. Complete the teacher's compliment:",
+        "lines": [
           {
-            "traditional": "好",
-            "simplified": "好",
-            "pinyin": "pīnyīn"
+            "speaker": {
+              "traditional": "學生"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "老師，這是我寫的漢字作業，請您幫我看看。"
+              }
+            ]
           },
           {
-            "traditional": "親自",
-            "simplified": "亲自",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          },
-          {
-            "traditional": "除了",
-            "simplified": "除了",
-            "pinyin": "pīnyīn"
+            "speaker": {
+              "traditional": "老師"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好漂亮的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "字啊！可以給大家看看嗎？"
+              }
+            ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "好漂亮的",
+            "simplified": "好漂亮的",
+            "pinyin": "hǎo piàoliang de"
+          },
+          {
+            "traditional": "很漂亮的",
+            "simplified": "很漂亮的",
+            "pinyin": "hěn piàoliang de"
+          },
+          {
+            "traditional": "太漂亮的",
+            "simplified": "太漂亮的",
+            "pinyin": "tài piàoliang de"
+          }
+        ],
+        "accepted": "好漂亮的",
+        "result": {
+          "traditional": "好漂亮的字啊！可以給大家看看嗎？",
+          "simplified": "好漂亮的字啊！可以给大家看看吗？",
+          "pinyin": "Hǎo piàoliang de zì a! Kěyǐ gěi dàjiā kànkan ma?",
+          "english": "What beautiful handwriting! Can we show it to everyone?"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "很漂亮的"
+            ],
+            "note": "很 creates a declarative description, not an exclamatory phrase with 啊."
+          },
+          {
+            "placed": [
+              "太漂亮的"
+            ],
+            "note": "太 combines with 了 (太…了), not 的…啊."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 好漂亮的."
+      },
+      {
+        "id": "b3l4g1-p2",
+        "source": "p.102 #2",
+        "kind": "slot-build",
+        "prompt": "A tells B about cosmetics being 35% off today. Complete A's sentence:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好優惠的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "價格啊！今天專櫃化妝品全部打六五折。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這麼好！我們快去看看吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好優惠的",
+            "simplified": "好优惠的",
+            "pinyin": "hǎo yōuhuì de"
+          },
+          {
+            "traditional": "真優惠的",
+            "simplified": "真优惠的",
+            "pinyin": "zhēn yōuhuì de"
+          },
+          {
+            "traditional": "多優惠的",
+            "simplified": "多优惠的",
+            "pinyin": "duō yōuhuì de"
+          }
+        ],
+        "accepted": "好優惠的",
+        "result": {
+          "traditional": "好優惠的價格啊！今天專櫃化妝品全部打六五折。",
+          "simplified": "好优惠的价格啊！今天专柜化妆品全部打六五折。",
+          "pinyin": "Hǎo yōuhuì de jiàgé a! Jīntiān zhuānguì huàzhuāngpǐn quánbù dǎ liùwǔzhé.",
+          "english": "What a favorable price! Today the counter cosmetics are all 35% off."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "真優惠的"
+            ],
+            "note": "真 modifies verbs/adjectives directly (真優惠), without 的 in this exclamatory slot."
+          },
+          {
+            "placed": [
+              "多優惠的"
+            ],
+            "note": "多 forms exclamations directly before adjectives without 的 (多麼優惠)."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 好優惠的."
+      },
+      {
+        "id": "b3l4g1-p3",
+        "source": "p.102 #3",
+        "kind": "slot-build",
+        "prompt": "A mentions a coworker who always pays when eating out. Complete B's response:",
         "lines": [
           {
             "speaker": {
@@ -42,86 +168,156 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "哇，"
-              },
+                "traditional": "我有一個同事每次出去吃飯都是他請客。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "好"
+                  "好大方的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "豐盛[的"
+                "traditional": "同事！他一定很有錢吧。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "好大方的",
+            "simplified": "好大方的",
+            "pinyin": "hǎo dàfāng de"
+          },
+          {
+            "traditional": "最大方的",
+            "simplified": "最大方的",
+            "pinyin": "zuì dàfāng de"
+          },
+          {
+            "traditional": "很小氣的",
+            "simplified": "很小气的",
+            "pinyin": "hěn xiǎoqì de"
+          }
+        ],
+        "accepted": "好大方的",
         "result": {
-          "traditional": "哇，好豐盛的晚餐啊！謝謝媽媽為我們準備大餐。",
-          "simplified": "哇，好丰盛的晚餐啊！谢谢妈妈为我们准备大餐。",
-          "pinyin": "Wā, hǎo fēngshèng de wǎncān a! Xièxie māma wèi wǒmen zhǔnbèi dàcān.",
-          "english": "Wow, what a lavish dinner! Thank you mom for preparing a feast for us."
+          "traditional": "好大方的同事！他一定很有錢吧。",
+          "simplified": "好大方的同事！他一定很有钱吧。",
+          "pinyin": "Hǎo dàfāng de tóngshì! Tā yídìng hěn yǒuqián ba.",
+          "english": "What a generous colleague! He must be very wealthy."
         },
         "repairs": [
           {
             "placed": [
-              "親自"
+              "最大方的"
             ],
-            "note": "親自 indicates doing something in person."
+            "note": "最 expresses superlative comparison, not an exclamatory praise."
           },
           {
             "placed": [
-              "終於"
+              "很小氣的"
             ],
-            "note": "終於 indicates at last / finally after a wait or difficulty."
-          },
-          {
-            "placed": [
-              "除了"
-            ],
-            "note": "除了…就是… expresses exclusive limitation to one thing."
+            "note": "小氣 means stingy, which contradicts someone always treating others."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 好大方的."
+      },
+      {
+        "id": "b3l4g1-p4",
+        "source": "p.102 #4",
+        "kind": "slot-build",
+        "prompt": "A's friend forgot both wallet and office keys in one morning. Complete B's reaction:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我朋友出門忘了帶錢包，回公司又發現沒帶鑰匙。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好糊塗的"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "朋友啊！他今天怎麼心不在焉。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好糊塗的",
+            "simplified": "好糊涂的",
+            "pinyin": "hǎo hútu de"
+          },
+          {
+            "traditional": "很糊塗的",
+            "simplified": "很糊涂的",
+            "pinyin": "hěn hútu de"
+          },
+          {
+            "traditional": "太糊塗了",
+            "simplified": "太糊涂了",
+            "pinyin": "tài hútu le"
+          }
+        ],
+        "accepted": "好糊塗的",
+        "result": {
+          "traditional": "好糊塗的朋友啊！他今天怎麼心不在焉。",
+          "simplified": "好糊涂的朋友啊！他今天怎么心不在焉。",
+          "pinyin": "Hǎo hútu de péngyou a! Tā jīntiān zěnme xīnbúzàiyān.",
+          "english": "What a muddle-headed friend! Why is he so absent-minded today."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "很糊塗的"
+            ],
+            "note": "很 forms a neutral descriptive clause, not an exclamatory phrase."
+          },
+          {
+            "placed": [
+              "太糊塗了"
+            ],
+            "note": "太…了 modifies a predicate, not an attributive exclamatory noun phrase."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 好糊塗的."
       }
     ]
   },
-  "B3L04-G02-P102": {
-    "bookPage": 102,
-    "title": "Practice: 親自",
-    "allowWords": [
-      "親自"
-    ],
+  "B3L04-G02-P103": {
+    "bookPage": 103,
+    "title": "Practice: V來V去，還是……",
     "items": [
       {
         "id": "b3l4g2-p1",
-        "source": "p.102 #1",
+        "source": "p.104 #1",
         "kind": "slot-build",
-        "prompt": "Describing dedicated service:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "親自",
-            "simplified": "亲自",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "好",
-            "simplified": "好",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          },
-          {
-            "traditional": "不停",
-            "simplified": "不停",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A asks why B hasn't replaced their torn gloves. Complete B's reply:",
         "lines": [
           {
             "speaker": {
@@ -130,86 +326,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "主廚"
+                "traditional": "你的手套破了，怎麼還不換掉呢？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "手套一雙比一雙貴，我看來看去，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "親自"
+                  "還是決定"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "走到客人的桌前，詢問大家對菜餚的意見。"
+                "traditional": "繼續戴。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "還是決定",
+            "simplified": "还是决定",
+            "pinyin": "háishì juédìng"
+          },
+          {
+            "traditional": "決定不了",
+            "simplified": "决定不了",
+            "pinyin": "juédìng buliǎo"
+          },
+          {
+            "traditional": "所以決定",
+            "simplified": "所以决定",
+            "pinyin": "suǒyǐ juédìng"
+          }
+        ],
+        "accepted": "還是決定",
         "result": {
-          "traditional": "主廚親自走到客人的桌前，詢問大家對菜餚的意見。",
-          "simplified": "主厨亲自走到客人的桌前，詢问大家对菜餚的意见。",
-          "pinyin": "Zhǔchú qīnzì zǒu dào kèrén de zhuō qián, xúnwèn dàjiā duì càiyáo de yìjiàn.",
-          "english": "The head chef walked to the customers' table in person to inquire about feedback on dishes."
+          "traditional": "手套一雙比一雙貴，我看來看去，還是決定繼續戴。",
+          "simplified": "手套一双比一双贵，我看来看去，还是决定继续戴。",
+          "pinyin": "Shǒutào yì shuāng bǐ yì shuāng guì, wǒ kàn lái kàn qù, háishì juédìng jìxù dài.",
+          "english": "Gloves get more expensive from pair to pair; after looking back and forth, I still decided to keep wearing these."
         },
         "repairs": [
           {
             "placed": [
-              "好"
+              "決定不了"
             ],
-            "note": "好+Vs+的+N啊 expresses exclamation about an attribute."
+            "note": "The speaker reached a decision to keep wearing the old gloves."
           },
           {
             "placed": [
-              "終於"
+              "所以決定"
             ],
-            "note": "終於 indicates at last / finally after a wait or difficulty."
-          },
-          {
-            "placed": [
-              "不停"
-            ],
-            "note": "不停 indicates continuous action, which does not fit this slot."
+            "note": "Use 還是 after V來V去 to show returning to a steadfast decision."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 還是決定."
+      },
+      {
+        "id": "b3l4g2-p2",
+        "source": "p.104 #2",
+        "kind": "slot-build",
+        "prompt": "A praises this pizza place. Complete B's response about what they hear:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "以披薩的味道來說，這家餐廳做得最道地。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽來聽去，大家都說"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "還是這家"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "最好吃。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "還是這家",
+            "simplified": "还是这家",
+            "pinyin": "háishì zhè jiā"
+          },
+          {
+            "traditional": "不是這家",
+            "simplified": "不是这家",
+            "pinyin": "búshì zhè jiā"
+          },
+          {
+            "traditional": "大概這家",
+            "simplified": "大概这家",
+            "pinyin": "dàgài zhè jiā"
+          }
+        ],
+        "accepted": "還是這家",
+        "result": {
+          "traditional": "聽來聽去，大家都說還是這家最好吃。",
+          "simplified": "听来听去，大家都说还是这家最好吃。",
+          "pinyin": "Tīng lái tīng qù, dàjiā dōu shuō háishì zhè jiā zuì hǎochī.",
+          "english": "Hearing it again and again, everyone says this shop is still the most delicious."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不是這家"
+            ],
+            "note": "Everyone agrees this place is the top choice."
+          },
+          {
+            "placed": [
+              "大概這家"
+            ],
+            "note": "Use 還是 to indicate the standout choice after comparing."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 還是這家."
+      },
+      {
+        "id": "b3l4g2-p3",
+        "source": "p.104 #3",
+        "kind": "slot-build",
+        "prompt": "Complete A's comment explaining why they kept shopping here:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我覺得買來買去，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "還是這家"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的東西最實在。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "難怪你逛來逛去，最後還是逛回這裡來了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "還是這家",
+            "simplified": "还是这家",
+            "pinyin": "háishì zhè jiā"
+          },
+          {
+            "traditional": "大概這家",
+            "simplified": "大概这家",
+            "pinyin": "dàgài zhè jiā"
+          },
+          {
+            "traditional": "所以這家",
+            "simplified": "所以这家",
+            "pinyin": "suǒyǐ zhè jiā"
+          }
+        ],
+        "accepted": "還是這家",
+        "result": {
+          "traditional": "我覺得買來買去，還是這家的東西最實在。",
+          "simplified": "我觉得买来买去，还是这家的东西最实在。",
+          "pinyin": "Wǒ juéde mǎi lái mǎi qù, háishì zhè jiā de dōngxi zuì shízài.",
+          "english": "I feel that after buying from here and there, this shop's goods are still the most solid."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "大概這家"
+            ],
+            "note": "The speaker feels certain about this store's quality."
+          },
+          {
+            "placed": [
+              "所以這家"
+            ],
+            "note": "Use 還是 after 買來買去 to express the conclusion reached."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 還是這家."
+      },
+      {
+        "id": "b3l4g2-p4",
+        "source": "p.104 #4",
+        "kind": "slot-build",
+        "prompt": "A asks which country suits B best after living abroad. Complete B's conclusion:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你住過很多國家，覺得哪個國家最適合你？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我住來住去，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "還是覺得"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "臺灣的生活最舒服。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "還是覺得",
+            "simplified": "还是觉得",
+            "pinyin": "háishì juéde"
+          },
+          {
+            "traditional": "只要覺得",
+            "simplified": "只要觉得",
+            "pinyin": "zhǐyào juéde"
+          },
+          {
+            "traditional": "所以覺得",
+            "simplified": "所以觉得",
+            "pinyin": "suǒyǐ juéde"
+          }
+        ],
+        "accepted": "還是覺得",
+        "result": {
+          "traditional": "我住來住去，還是覺得臺灣的生活最舒服。",
+          "simplified": "我住来住去，还是觉得台湾的生活最舒服。",
+          "pinyin": "Wǒ zhù lái zhù qù, háishì juéde Táiwān de shēnghuó zuì shūfu.",
+          "english": "After living in so many places, I still feel life in Taiwan is the most comfortable."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "只要覺得"
+            ],
+            "note": "還是 conveys the enduring conclusion reached after long experience."
+          },
+          {
+            "placed": [
+              "所以覺得"
+            ],
+            "note": "Use 還是 after 住來住去 to state the ultimate feeling."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 還是覺得."
       }
     ]
   },
-  "B3L04-G03-P103": {
-    "bookPage": 103,
-    "title": "Practice: V來V去",
-    "allowWords": [
-      "試來試去"
-    ],
+  "B3L04-G03-P105": {
+    "bookPage": 105,
+    "title": "Practice: 終於",
     "items": [
       {
         "id": "b3l4g3-p1",
-        "source": "p.103 #1",
+        "source": "p.106 #1",
         "kind": "slot-build",
-        "prompt": "Describing indecisiveness when buying shoes:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "試來試去",
-            "simplified": "试来试去",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "親自",
-            "simplified": "亲自",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          },
-          {
-            "traditional": "好酸",
-            "simplified": "好酸",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A hasn't been back to the US for New Year in 5 years. Complete A's sentence:",
         "lines": [
           {
             "speaker": {
@@ -218,86 +652,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他在鞋店裡"
+                "traditional": "我有五年沒回國了，今年有長假，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "試來試去"
+                  "終於可以"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "，最後還是買了第一雙。"
+                "traditional": "回去跟家人團聚。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我呢，每年都希望出國，但是都出不去。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "終於可以",
+            "simplified": "终于可以",
+            "pinyin": "zhōngyú kěyǐ"
+          },
+          {
+            "traditional": "最後可以",
+            "simplified": "最后可以",
+            "pinyin": "zuìhòu kěyǐ"
+          },
+          {
+            "traditional": "忽然可以",
+            "simplified": "忽然可以",
+            "pinyin": "hūrán kěyǐ"
+          }
+        ],
+        "accepted": "終於可以",
         "result": {
-          "traditional": "他在鞋店裡試來試去，最後還是買了第一雙。",
-          "simplified": "他在鞋店里试来试去，最后还是买了第一双。",
-          "pinyin": "Tā zài xiédiàn lǐ shì lái shì qù, zuìhòu háishì mǎi le dì yī shuāng.",
-          "english": "He tried shoes back and forth in the store, and finally still bought the first pair."
+          "traditional": "我有五年沒回國了，今年有長假，終於可以回去跟家人團聚。",
+          "simplified": "我有五年没回国了，今年有长假，终于可以回去跟家人团聚。",
+          "pinyin": "Wǒ yǒu wǔ nián méi huíguó le, jīnnián yǒu chángjià, zhōngyú kěyǐ huíqù gēn jiārén tuánjù.",
+          "english": "I haven't returned home in five years; with a long vacation this year, I can finally go back and reunite with family."
         },
         "repairs": [
           {
             "placed": [
-              "親自"
+              "最後可以"
             ],
-            "note": "親自 indicates doing something in person."
+            "note": "最後 indicates chronological sequence, while 終於 conveys relief after long anticipation."
           },
           {
             "placed": [
-              "終於"
+              "忽然可以"
             ],
-            "note": "終於 indicates at last / finally after a wait or difficulty."
-          },
-          {
-            "placed": [
-              "好酸"
-            ],
-            "note": "好酸 describes taste or soreness, which does not fit the sentence structure."
+            "note": "忽然 means suddenly, not an outcome achieved after a long wait."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 終於可以."
+      },
+      {
+        "id": "b3l4g3-p2",
+        "source": "p.106 #2",
+        "kind": "slot-build",
+        "prompt": "A asks if the rude young person apologized. Complete B's understanding:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個年輕人對你太沒禮貌了，他跟你道歉了嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他沒錯，不用道歉，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "終於明白"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "他們的想法了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "終於明白",
+            "simplified": "终于明白",
+            "pinyin": "zhōngyú míngbai"
+          },
+          {
+            "traditional": "總是明白",
+            "simplified": "总是明白",
+            "pinyin": "zǒngshì míngbai"
+          },
+          {
+            "traditional": "剛剛明白",
+            "simplified": "刚刚明白",
+            "pinyin": "gānggang míngbai"
+          }
+        ],
+        "accepted": "終於明白",
+        "result": {
+          "traditional": "他沒錯，不用道歉，我終於明白他們的想法了。",
+          "simplified": "他没错，不用道歉，我终于明白他们的想法了。",
+          "pinyin": "Tā méi cuò, bú yòng dàoqiàn, wǒ zhōngyú míngbai tāmen de xiǎngfǎ le.",
+          "english": "He wasn't wrong, no apology needed; I finally understood their perspective."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "總是明白"
+            ],
+            "note": "總是 means always; 終於 indicates reaching comprehension after a long process."
+          },
+          {
+            "placed": [
+              "剛剛明白"
+            ],
+            "note": "剛剛 means just now, without the connotation of eventual breakthrough."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 終於明白."
+      },
+      {
+        "id": "b3l4g3-p3",
+        "source": "p.106 #3",
+        "kind": "slot-build",
+        "prompt": "A arrives late and apologizes for keeping B waiting. Complete B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "對不起，我來晚了，讓你等這麼久，真不好意思。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "沒關係，你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "終於到了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我們快進去吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "終於到了",
+            "simplified": "终于到了",
+            "pinyin": "zhōngyú dào le"
+          },
+          {
+            "traditional": "已經到了",
+            "simplified": "已经到了",
+            "pinyin": "yǐjīng dào le"
+          },
+          {
+            "traditional": "慢慢到了",
+            "simplified": "慢慢到了",
+            "pinyin": "mànman dào le"
+          }
+        ],
+        "accepted": "終於到了",
+        "result": {
+          "traditional": "沒關係，你終於到了，我們快進去吧。",
+          "simplified": "没关系，你终于到了，我们快进去吧。",
+          "pinyin": "Méi guānxi, nǐ zhōngyú dào le, wǒmen kuài jìnqu ba.",
+          "english": "No problem, you're finally here; let's hurry inside."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "已經到了"
+            ],
+            "note": "已經 marks completed state; 終於 emphasizes relief after a prolonged wait."
+          },
+          {
+            "placed": [
+              "慢慢到了"
+            ],
+            "note": "慢慢 describes slow manner, not an eventual arrival."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 終於到了."
+      },
+      {
+        "id": "b3l4g3-p4",
+        "source": "p.106 #4",
+        "kind": "slot-build",
+        "prompt": "You stayed up for weeks on a final report and finished today. Tell your friend:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "期末報告寫完了嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "報告"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "終於寫完"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了，我今天可以好好睡一覺了！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "終於寫完",
+            "simplified": "终于写完",
+            "pinyin": "zhōngyú xiě wán"
+          },
+          {
+            "traditional": "剛好寫完",
+            "simplified": "刚好写完",
+            "pinyin": "gānghǎo xiě wán"
+          },
+          {
+            "traditional": "大概寫完",
+            "simplified": "大概写完",
+            "pinyin": "dàgài xiě wán"
+          }
+        ],
+        "accepted": "終於寫完",
+        "result": {
+          "traditional": "報告終於寫完了，我今天可以好好睡一覺了！",
+          "simplified": "报告终于写完了，我今天可以好好睡一觉了！",
+          "pinyin": "Bàogào zhōngyú xiě wán le, wǒ jīntiān kěyǐ hǎohāo shuì yí jiào le!",
+          "english": "The report is finally finished; today I can finally get a good night's sleep!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "剛好寫完"
+            ],
+            "note": "剛好 means just by coincidence/just finished, lacking the relief of long struggle."
+          },
+          {
+            "placed": [
+              "大概寫完"
+            ],
+            "note": "大概 means approximately, showing uncertainty."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 終於寫完."
       }
     ]
   },
-  "B3L04-G04-P105": {
-    "bookPage": 105,
-    "title": "Practice: 終於",
-    "allowWords": [
-      "終於"
-    ],
+  "B3L04-G04-P113": {
+    "bookPage": 113,
+    "title": "Practice: V個不停 / V個沒完",
     "items": [
       {
         "id": "b3l4g4-p1",
-        "source": "p.105 #1",
+        "source": "p.113 #1",
         "kind": "slot-build",
-        "prompt": "Expressing relief at arriving at destination:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          },
-          {
-            "traditional": "親自",
-            "simplified": "亲自",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "好",
-            "simplified": "好",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "走來走去",
-            "simplified": "走来走去",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A notes that student Gao wants to understand every question. Complete B's observation:",
         "lines": [
           {
             "speaker": {
@@ -306,86 +978,324 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "開了五個多小時的山路，我們"
+                "traditional": "高同學只要發現問題，就一定要弄清楚。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，他上課的時候，總是"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "終於"
+                  "問個不停"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "抵達了溫泉飯店。"
+                "traditional": "。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "問個不停",
+            "simplified": "问个不停",
+            "pinyin": "wèn ge bùtíng"
+          },
+          {
+            "traditional": "問了一問",
+            "simplified": "问了一问",
+            "pinyin": "wèn le yí wèn"
+          },
+          {
+            "traditional": "不常發問",
+            "simplified": "不常发问",
+            "pinyin": "bù cháng fāwèn"
+          }
+        ],
+        "accepted": "問個不停",
         "result": {
-          "traditional": "開了五個多小時的山路，我們終於抵達了溫泉飯店。",
-          "simplified": "开了五个多小时的山路，我们终于抵达了温泉饭店。",
-          "pinyin": "Kāi le wǔ ge duō xiǎoshí de shānlù, wǒmen zhōngyú dǐdá le wēnquán fàndiàn.",
-          "english": "Driving over five hours on mountain roads, we finally arrived at the hot spring hotel."
+          "traditional": "是啊，他上課的時候，總是問個不停。",
+          "simplified": "是啊，他上课的时候，总是问个不停。",
+          "pinyin": "Shì a, tā shàngkè de shíhou, zǒngshì wèn ge bùtíng.",
+          "english": "Yes, during class he is always asking questions non-stop."
         },
         "repairs": [
           {
             "placed": [
-              "親自"
+              "問了一問"
             ],
-            "note": "親自 indicates doing something in person."
+            "note": "問了一問 means asked briefly, the opposite of ceaseless questioning."
           },
           {
             "placed": [
-              "好"
+              "不常發問"
             ],
-            "note": "好+Vs+的+N啊 expresses exclamation about an attribute."
-          },
-          {
-            "placed": [
-              "走來走去"
-            ],
-            "note": "走來走去 describes walking back and forth, not reaching an outcome."
+            "note": "不常發問 contradicts Gao's insatiable curiosity."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 問個不停."
+      },
+      {
+        "id": "b3l4g4-p2",
+        "source": "p.113 #2",
+        "kind": "slot-build",
+        "prompt": "A asks why mother talks for so long on the phone. Complete B's explanation:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "為什麼你媽媽每次打電話給你，都講得那麼久呢？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她不放心我一個人在國外，在電話裡"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "念個沒完"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "念個沒完",
+            "simplified": "念个没完",
+            "pinyin": "niàn ge méiwán"
+          },
+          {
+            "traditional": "念了一念",
+            "simplified": "念了一念",
+            "pinyin": "niàn le yí niàn"
+          },
+          {
+            "traditional": "不願多念",
+            "simplified": "不愿多念",
+            "pinyin": "bú yuàn duō niàn"
+          }
+        ],
+        "accepted": "念個沒完",
+        "result": {
+          "traditional": "她不放心我一個人在國外，在電話裡念個沒完。",
+          "simplified": "她不放心我一个人在国外，在电话里念个没完。",
+          "pinyin": "Tā bù fàngxīn wǒ yí ge rén zài guówài, zài diànhuà lǐ niàn ge méiwán.",
+          "english": "She worries about me being abroad alone, so on the phone she nags on and on without end."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "念了一念"
+            ],
+            "note": "念了一念 means mentioned casually once."
+          },
+          {
+            "placed": [
+              "不願多念"
+            ],
+            "note": "不願多念 means reluctant to nag, contradicting a long phone call."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 念個沒完."
+      },
+      {
+        "id": "b3l4g4-p3",
+        "source": "p.113 #3",
+        "kind": "slot-build",
+        "prompt": "A mentions Ms. Li's habit when in a bad mood. Complete A's remark:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "李小姐每次心情不好，就"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃個不停"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這樣做不但解決不了問題，還會變胖呢！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吃個不停",
+            "simplified": "吃个不停",
+            "pinyin": "chī ge bùtíng"
+          },
+          {
+            "traditional": "吃了一點",
+            "simplified": "吃了一点",
+            "pinyin": "chī le yìdiǎn"
+          },
+          {
+            "traditional": "不想吃了",
+            "simplified": "不想吃了",
+            "pinyin": "bù xiǎng chī le"
+          }
+        ],
+        "accepted": "吃個不停",
+        "result": {
+          "traditional": "李小姐每次心情不好，就吃個不停。",
+          "simplified": "李小姐每次心情不好，就吃个不停。",
+          "pinyin": "Lǐ xiǎojiě měi cì xīnqíng bù hǎo, jiù chī ge bùtíng.",
+          "english": "Whenever Ms. Li is in a bad mood, she eats non-stop."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "吃了一點"
+            ],
+            "note": "吃了一點 wouldn't cause someone to worry about gaining weight."
+          },
+          {
+            "placed": [
+              "不想吃了"
+            ],
+            "note": "不想吃了 contradicts eating to cope with bad moods."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 吃個不停."
+      },
+      {
+        "id": "b3l4g4-p4",
+        "source": "p.113 #4",
+        "kind": "slot-build",
+        "prompt": "People in the library have been chatting loudly for an hour. Ask them to stop:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "請問大家都在這裡安靜自習呢，"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "請你們別再"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "聊個沒完"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了，好嗎？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "聊個沒完",
+            "simplified": "聊个没完",
+            "pinyin": "liáo ge méiwán"
+          },
+          {
+            "traditional": "聊了一會",
+            "simplified": "聊了一会",
+            "pinyin": "liáo le yìhuǐ"
+          },
+          {
+            "traditional": "聊聊天吧",
+            "simplified": "聊聊天吧",
+            "pinyin": "liáo liáo tiān ba"
+          }
+        ],
+        "accepted": "聊個沒完",
+        "result": {
+          "traditional": "請你們別再聊個沒完了，好嗎？",
+          "simplified": "请你们别再聊个没完了，好吗？",
+          "pinyin": "Qǐng nǐmen bié zài liáo ge méiwán le, hǎo ma?",
+          "english": "Could you please stop chatting incessantly? Okay?"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "聊了一會"
+            ],
+            "note": "聊了一會 denotes a brief chat, not incessant disruption."
+          },
+          {
+            "placed": [
+              "聊聊天吧"
+            ],
+            "note": "聊聊天吧 invites more conversation, which is improper in a library."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 聊個沒完."
       }
     ]
   },
-  "B3L04-G05-P113": {
-    "bookPage": 113,
-    "title": "Practice: V個不停",
-    "allowWords": [
-      "個不停"
-    ],
+  "B3L04-G05-P114": {
+    "bookPage": 114,
+    "title": "Practice: 不Vs1不Vs2",
     "items": [
       {
         "id": "b3l4g5-p1",
-        "source": "p.113 #1",
+        "source": "p.114 #1",
         "kind": "slot-build",
-        "prompt": "Complaining about noisy construction next door:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "個不停",
-            "simplified": "个不停",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          },
-          {
-            "traditional": "親自",
-            "simplified": "亲自",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "好酸",
-            "simplified": "好酸",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A asks if the new student is tall. Complete B's description:",
         "lines": [
           {
             "speaker": {
@@ -394,86 +1304,404 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "隔壁的裝潢工程整天敲"
+                "traditional": "聽說新來的同學籃球打得很好。他個子高嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "個不停"
+                  "不高不矮"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "，讓人無法專心讀書。"
+                "traditional": "，跟你差不多。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "不高不矮",
+            "simplified": "不高不矮",
+            "pinyin": "bù gāo bù ǎi"
+          },
+          {
+            "traditional": "不長不短",
+            "simplified": "不长不短",
+            "pinyin": "bù cháng bù duǎn"
+          },
+          {
+            "traditional": "不大不小",
+            "simplified": "不大不小",
+            "pinyin": "bú dà bù xiǎo"
+          }
+        ],
+        "accepted": "不高不矮",
         "result": {
-          "traditional": "隔壁的裝潢工程整天敲個不停，讓人無法專心讀書。",
-          "simplified": "隔壁的装潢工程整天敲个不停，让人无法专心读书。",
-          "pinyin": "Gébì de zhuānghuáng gōngchéng zhěngtiān qiāo ge bùtíng, ràng rén wúfǎ zhuānxīn dúshū.",
-          "english": "The renovation work next door hammered non-stop all day, making it impossible to focus on studying."
+          "traditional": "他不高不矮，跟你差不多。",
+          "simplified": "他不高不矮，跟你差不多。",
+          "pinyin": "Tā bù gāo bù ǎi, gēn nǐ chàbùduō.",
+          "english": "He is neither tall nor short, about the same as you."
         },
         "repairs": [
           {
             "placed": [
-              "終於"
+              "不長不短"
             ],
-            "note": "終於 indicates at last / finally after a wait or difficulty."
+            "note": "長/短 describes length or duration, not human height (高/矮)."
           },
           {
             "placed": [
-              "親自"
+              "不大不小"
             ],
-            "note": "親自 indicates doing something in person."
-          },
-          {
-            "placed": [
-              "好酸"
-            ],
-            "note": "好酸 describes taste or soreness, which does not fit the sentence structure."
+            "note": "大/小 describes size or age, not height."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 不高不矮."
+      },
+      {
+        "id": "b3l4g5-p2",
+        "source": "p.114 #2",
+        "kind": "slot-build",
+        "prompt": "A asks how far B's home is from school. Complete B's answer:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你家離學校遠不遠？得搭車上學嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我家"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不遠不近"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，坐公車或走路都可以。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不遠不近",
+            "simplified": "不远不近",
+            "pinyin": "bù yuǎn bú jìn"
+          },
+          {
+            "traditional": "不多不少",
+            "simplified": "不多不少",
+            "pinyin": "bù duō bù shǎo"
+          },
+          {
+            "traditional": "不快不慢",
+            "simplified": "不快不慢",
+            "pinyin": "bú kuài bú màn"
+          }
+        ],
+        "accepted": "不遠不近",
+        "result": {
+          "traditional": "我家不遠不近，坐公車或走路都可以。",
+          "simplified": "我家不远不近，坐公车或走路都可以。",
+          "pinyin": "Wǒ jiā bù yuǎn bú jìn, zuò gōngchē huò zǒulù dōu kěyǐ.",
+          "english": "My home is neither far nor close; taking the bus or walking are both fine."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不多不少"
+            ],
+            "note": "多/少 applies to quantity, not physical distance."
+          },
+          {
+            "placed": [
+              "不快不慢"
+            ],
+            "note": "快/慢 applies to speed, not location distance."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不遠不近."
+      },
+      {
+        "id": "b3l4g5-p3",
+        "source": "p.114 #3",
+        "kind": "slot-build",
+        "prompt": "A talks about a three-year-old piece of clothing. Complete A's comment:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這件衣服買了三年，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不新不舊"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，可是樣子不流行了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你不想穿的話，就送給我吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不新不舊",
+            "simplified": "不新不旧",
+            "pinyin": "bù xīn bú jiù"
+          },
+          {
+            "traditional": "不好不壞",
+            "simplified": "不好不坏",
+            "pinyin": "bù hǎo bú huài"
+          },
+          {
+            "traditional": "不冷不熱",
+            "simplified": "不冷不热",
+            "pinyin": "bù lěng bú rè"
+          }
+        ],
+        "accepted": "不新不舊",
+        "result": {
+          "traditional": "這件衣服買了三年，不新不舊，可是樣子不流行了。",
+          "simplified": "这件衣服买了三年，不新不旧，可是样子不流行了。",
+          "pinyin": "Zhè jiàn yīfu mǎi le sān nián, bù xīn bú jiù, kěshì yàngzi bù liúxíng le.",
+          "english": "I bought these clothes three years ago; they're neither new nor old, but the style is no longer in fashion."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不好不壞"
+            ],
+            "note": "好/壞 describes quality or condition generally, but 新/舊 directly addresses age of clothing."
+          },
+          {
+            "placed": [
+              "不冷不熱"
+            ],
+            "note": "冷/熱 describes temperature, not the condition of clothes."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不新不舊."
+      },
+      {
+        "id": "b3l4g5-p4",
+        "source": "p.115 #1",
+        "kind": "slot-build",
+        "prompt": "A classmate thinks you write characters fast, but you think it's moderate. Reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你寫漢字的速度真快！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我覺得"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不快不慢"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，只要常練習就能寫順手。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不快不慢",
+            "simplified": "不快不慢",
+            "pinyin": "bú kuài bú màn"
+          },
+          {
+            "traditional": "不大不小",
+            "simplified": "不大不小",
+            "pinyin": "bú dà bù xiǎo"
+          },
+          {
+            "traditional": "不多不少",
+            "simplified": "不多不少",
+            "pinyin": "bù duō bù shǎo"
+          }
+        ],
+        "accepted": "不快不慢",
+        "result": {
+          "traditional": "我覺得不快不慢，只要常練習就能寫順手。",
+          "simplified": "我觉得不快不慢，只要常练习就能写顺手。",
+          "pinyin": "Wǒ juéde bú kuài bú màn, zhǐyào cháng liànxí jiù néng xiě shùnshǒu.",
+          "english": "I feel it's neither fast nor slow; as long as you practice often you will write smoothly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不大不小"
+            ],
+            "note": "大/小 describes font size, not speed of writing."
+          },
+          {
+            "placed": [
+              "不多不少"
+            ],
+            "note": "多/少 describes count of characters, not writing pace."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不快不慢."
       }
     ]
   },
-  "B3L04-G06-P114": {
-    "bookPage": 114,
-    "title": "Practice: 不A不B",
-    "allowWords": [
-      "不冷不熱"
-    ],
+  "B3L04-G06-P115": {
+    "bookPage": 115,
+    "title": "Practice: 除了……(以外)，就是……",
     "items": [
       {
         "id": "b3l4g6-p1",
-        "source": "p.114 #1",
+        "source": "p.116 #1",
         "kind": "slot-build",
-        "prompt": "Describing ideal bath water temperature:",
-        "quiet": true,
-        "tiles": [
+        "prompt": "The patient asks about post-discharge care. Complete the doctor's instruction:",
+        "lines": [
           {
-            "traditional": "不冷不熱",
-            "simplified": "不冷不热",
-            "pinyin": "pīnyīn"
+            "speaker": {
+              "traditional": "病人"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "醫生，請問我回家後應該注意哪些事情？"
+              }
+            ]
           },
           {
-            "traditional": "個不停",
-            "simplified": "个不停",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          },
-          {
-            "traditional": "親自",
-            "simplified": "亲自",
-            "pinyin": "pīnyīn"
+            "speaker": {
+              "traditional": "醫生"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "身體很虛弱，除了多休息以外，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "就是不要"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "洗冷水澡。"
+              }
+            ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "就是不要",
+            "simplified": "就是不要",
+            "pinyin": "jiùshì bú yào"
+          },
+          {
+            "traditional": "還會不要",
+            "simplified": "还会不要",
+            "pinyin": "hái huì bú yào"
+          },
+          {
+            "traditional": "也是不要",
+            "simplified": "也是不要",
+            "pinyin": "yě shì bú yào"
+          }
+        ],
+        "accepted": "就是不要",
+        "result": {
+          "traditional": "身體很虛弱，除了多休息以外，就是不要洗冷水澡。",
+          "simplified": "身体很虚弱，除了多休息以外，就是不要洗冷水澡。",
+          "pinyin": "Shēntǐ hěn xūruò, chúle duō xiūxi yǐwài, jiùshì bú yào xǐ lěngshuǐzǎo.",
+          "english": "Your body is very weak; other than resting plenty, it's just not taking cold showers."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "還會不要"
+            ],
+            "note": "In 除了…就是… exclusive pattern, 就是 pairs with 除了 to state the only other requirement."
+          },
+          {
+            "placed": [
+              "也是不要"
+            ],
+            "note": "也是 is not used with 除了 in this single-alternative construction."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 就是不要."
+      },
+      {
+        "id": "b3l4g6-p2",
+        "source": "p.116 #2",
+        "kind": "slot-build",
+        "prompt": "A wonders why B's backpack is so heavy. Complete B's explanation:",
         "lines": [
           {
             "speaker": {
@@ -482,174 +1710,244 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "洗澡水的溫度最好調得"
+                "traditional": "你的背包提起來好重，裡面到底裝了什麼？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "裡面除了筆電以外，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "不冷不熱"
+                  "就是幾本"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "，感覺最放鬆。"
+                "traditional": "厚厚的專業課本。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "就是幾本",
+            "simplified": "就是几本",
+            "pinyin": "jiùshì jǐ běn"
+          },
+          {
+            "traditional": "只是幾本",
+            "simplified": "只是几本",
+            "pinyin": "zhǐshì jǐ běn"
+          },
+          {
+            "traditional": "還是幾本",
+            "simplified": "还是几本",
+            "pinyin": "háishì jǐ běn"
+          }
+        ],
+        "accepted": "就是幾本",
         "result": {
-          "traditional": "洗澡水的溫度最好調得不冷不熱，感覺最放鬆。",
-          "simplified": "洗澡水的温度最好调得不冷不热，感觉最放松。",
-          "pinyin": "Xǐzǎoshuǐ de wēndù zuì hǎo tiáo de bù lěng bú rè, gǎnjué zuì fàngsōng.",
-          "english": "The bath water temperature is best set neither cold nor hot, feeling most relaxing."
+          "traditional": "裡面除了筆電以外，就是幾本厚厚的專業課本。",
+          "simplified": "里面除了笔电以外，就是几本厚厚的专业课本。",
+          "pinyin": "Lǐmiàn chúle bǐdiàn yǐwài, jiùshì jǐ běn hòuhòu de zhuānyè kèběn.",
+          "english": "Inside, besides my laptop, it's just a few thick specialized textbooks."
         },
         "repairs": [
           {
             "placed": [
-              "個不停"
+              "只是幾本"
             ],
-            "note": "V個不停 indicates relentless non-stop action."
+            "note": "除了… pairs with 就是… to specify the exclusive remaining items."
           },
           {
             "placed": [
-              "終於"
+              "還是幾本"
             ],
-            "note": "終於 indicates at last / finally after a wait or difficulty."
-          },
-          {
-            "placed": [
-              "親自"
-            ],
-            "note": "親自 indicates doing something in person."
+            "note": "還是 does not pair with 除了 to mark exhaustive contents."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 就是幾本."
+      },
+      {
+        "id": "b3l4g6-p3",
+        "source": "p.116 #3",
+        "kind": "slot-build",
+        "prompt": "A asks who knows that Xiao Ming failed his design course. Complete B's response:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "小明修的設計課被教授當了，有誰知道這件事？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這件事除了他自己以外，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "就是室友"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "知道了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就是室友",
+            "simplified": "就是室友",
+            "pinyin": "jiùshì shìyǒu"
+          },
+          {
+            "traditional": "而且室友",
+            "simplified": "而且室友",
+            "pinyin": "érqiě shìyǒu"
+          },
+          {
+            "traditional": "大概室友",
+            "simplified": "大概室友",
+            "pinyin": "dàgài shìyǒu"
+          }
+        ],
+        "accepted": "就是室友",
+        "result": {
+          "traditional": "這件事除了他自己以外，就是室友知道了。",
+          "simplified": "这件事除了他自己以外，就是室友知道了。",
+          "pinyin": "Zhè jiàn shì chúle tā zìjǐ yǐwài, jiùshì shìyǒu zhīdào le.",
+          "english": "Regarding this matter, besides himself, it's just his roommate who knows."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "而且室友"
+            ],
+            "note": "而且 links clauses additively; 除了… pairs with 就是… for exclusive scope."
+          },
+          {
+            "placed": [
+              "大概室友"
+            ],
+            "note": "就是 conveys that only the roommate knows."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 就是室友."
+      },
+      {
+        "id": "b3l4g6-p4",
+        "source": "p.116 #4",
+        "kind": "slot-build",
+        "prompt": "Classmates ask about your Chinese study method. Complete your answer:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你的中文學得真好，有什麼特別的秘訣嗎？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我學中文除了上課以外，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "就是常看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "中文新聞。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就是常看",
+            "simplified": "就是常看",
+            "pinyin": "jiùshì cháng kàn"
+          },
+          {
+            "traditional": "雖然常看",
+            "simplified": "虽然常看",
+            "pinyin": "suīrán cháng kàn"
+          },
+          {
+            "traditional": "如果常看",
+            "simplified": "如果常看",
+            "pinyin": "rúguǒ cháng kàn"
+          }
+        ],
+        "accepted": "就是常看",
+        "result": {
+          "traditional": "我學中文除了上課以外，就是常看中文新聞。",
+          "simplified": "我学中文除了上课以外，就是常看中文新闻。",
+          "pinyin": "Wǒ xué Zhōngwén chúle shàngkè yǐwài, jiùshì cháng kàn Zhōngwén xīnwén.",
+          "english": "For learning Chinese, besides class, it's just regularly watching Chinese news."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "雖然常看"
+            ],
+            "note": "雖然 indicates concession; 除了 pairs with 就是."
+          },
+          {
+            "placed": [
+              "如果常看"
+            ],
+            "note": "如果 sets a hypothesis, not the sole daily activity."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 就是常看."
       }
     ]
   },
-  "B3L04-G07-P115": {
-    "bookPage": 115,
-    "title": "Practice: 除了…就是…",
-    "allowWords": [
-      "除了"
-    ],
+  "B3L04-G07-P117": {
+    "bookPage": 116,
+    "title": "Practice: 不是……，就是……",
     "items": [
       {
         "id": "b3l4g7-p1",
-        "source": "p.115 #1",
-        "kind": "slot-build",
-        "prompt": "Describing an intense study schedule:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "除了",
-            "simplified": "除了",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "不冷不熱",
-            "simplified": "不冷不热",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "個不停",
-            "simplified": "个不停",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "終於",
-            "simplified": "终于",
-            "pinyin": "zhōngyú"
-          }
-        ],
-        "lines": [
-          {
-            "speaker": {
-              "traditional": "A"
-            },
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "考試前一個月，他的生活"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "除了"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "念書[就是"
-              }
-            ]
-          }
-        ],
-        "result": {
-          "traditional": "考試前一個月，他的生活除了念書就是刷題，非常拼命。",
-          "simplified": "考试前一个月，他的生活除了念书就是刷题，非常拼命。",
-          "pinyin": "Kǎoshì qián yí ge yuè, tā de shēnghuó chúle niànshū jiùshì shuātí, fēicháng pīnmìng.",
-          "english": "One month before exams, his life besides studying was just doing exercises, extraordinarily hardworking."
-        },
-        "repairs": [
-          {
-            "placed": [
-              "不冷不熱"
-            ],
-            "note": "不冷不熱 describes moderate temperature."
-          },
-          {
-            "placed": [
-              "個不停"
-            ],
-            "note": "V個不停 indicates relentless non-stop action."
-          },
-          {
-            "placed": [
-              "終於"
-            ],
-            "note": "終於 indicates at last / finally after a wait or difficulty."
-          }
-        ]
-      }
-    ]
-  },
-  "B3L04-G08-P117": {
-    "bookPage": 117,
-    "title": "Practice: 不是…就是…",
-    "allowWords": [
-      "不是"
-    ],
-    "items": [
-      {
-        "id": "b3l4g8-p1",
         "source": "p.117 #1",
         "kind": "slot-build",
-        "prompt": "Describing someone's reading habits:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "不是",
-            "simplified": "不是",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "除了",
-            "simplified": "除了",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "不冷不熱",
-            "simplified": "不冷不热",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "個不停",
-            "simplified": "个不停",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A asks where the grapes and muffins went. Complete B's deduction:",
         "lines": [
           {
             "speaker": {
@@ -658,48 +1956,312 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他的床頭擺滿了書，平時"
+                "traditional": "我放在桌上的葡萄跟鬆餅怎麼不見了？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "家裡只有他們倆，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "不是"
+                  "不是哥哥"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "讀歷史小說，[就是"
+                "traditional": "吃了，就是弟弟吃了。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "不是哥哥",
+            "simplified": "不是哥哥",
+            "pinyin": "búshì gēge"
+          },
+          {
+            "traditional": "要是哥哥",
+            "simplified": "要是哥哥",
+            "pinyin": "yàoshi gēge"
+          },
+          {
+            "traditional": "雖然哥哥",
+            "simplified": "虽然哥哥",
+            "pinyin": "suīrán gēge"
+          }
+        ],
+        "accepted": "不是哥哥",
         "result": {
-          "traditional": "他的床頭擺滿了書，平時不是讀歷史小說，就是讀哲學散文。",
-          "simplified": "他的床头摆满了书，平时不是读历史小说，就是读哲学散文。",
-          "pinyin": "Tā de chuángtóu bǎi mǎn le shū, píngshí bú shì dú lìshǐ xiǎoshuō, jiùshì dú zhéxué sǎnwén.",
-          "english": "His bedside is filled with books; usually if he's not reading historical novels, he's reading philosophical essays."
+          "traditional": "家裡只有他們倆，不是哥哥吃了，就是弟弟吃了。",
+          "simplified": "家里只有他们俩，不是哥哥吃了，就是弟弟吃了。",
+          "pinyin": "Jiā lǐ zhǐyǒu tāmen liǎ, búshì gēge chī le, jiùshì dìdi chī le.",
+          "english": "Only the two of them are home; if it wasn't older brother who ate them, it was younger brother."
         },
         "repairs": [
           {
             "placed": [
-              "除了"
+              "要是哥哥"
             ],
-            "note": "除了…就是… expresses exclusive limitation to one thing."
+            "note": "要是 introduces a hypothetical condition; 不是…就是… presents two mutually exhaustive choices."
           },
           {
             "placed": [
-              "不冷不熱"
+              "雖然哥哥"
             ],
-            "note": "不冷不熱 describes moderate temperature."
-          },
-          {
-            "placed": [
-              "個不停"
-            ],
-            "note": "V個不停 indicates relentless non-stop action."
+            "note": "雖然 introduces concession, not an alternative choice."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 不是哥哥."
+      },
+      {
+        "id": "b3l4g7-p2",
+        "source": "p.117 #2",
+        "kind": "slot-build",
+        "prompt": "A asks when the online store sale starts. Complete B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那家網路商店什麼時候開始打折？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "時間我不太確定，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不是週五"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，就是週六吧。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不是週五",
+            "simplified": "不是周五",
+            "pinyin": "búshì zhōuwǔ"
+          },
+          {
+            "traditional": "既然週五",
+            "simplified": "既然周五",
+            "pinyin": "jìrán zhōuwǔ"
+          },
+          {
+            "traditional": "而且週六",
+            "simplified": "而且周六",
+            "pinyin": "érqiě zhōuliù"
+          }
+        ],
+        "accepted": "不是週五",
+        "result": {
+          "traditional": "時間我不太確定，不是週五，就是週六吧。",
+          "simplified": "时间我不太确定，不是周五，就是周六吧。",
+          "pinyin": "Shíjiān wǒ bú tài quèdìng, búshì zhōuwǔ, jiùshì zhōuliù ba.",
+          "english": "I'm not completely sure of the time; it's either Friday or Saturday."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "既然週五"
+            ],
+            "note": "既然 means since/given that; use 不是…就是… for alternative possibilities."
+          },
+          {
+            "placed": [
+              "而且週六"
+            ],
+            "note": "Use 不是… to lead the first of the two exclusive alternatives."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 不是週五."
+      },
+      {
+        "id": "b3l4g7-p3",
+        "source": "p.117 #3",
+        "kind": "slot-build",
+        "prompt": "A wonders why B is replacing a 1-year-old laptop. Complete B's complaint:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你的筆電才買一年，怎麼又要換了？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這部筆電毛病很多，不是當機，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "就是太慢"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就是太慢",
+            "simplified": "就是太慢",
+            "pinyin": "jiùshì tài màn"
+          },
+          {
+            "traditional": "不必當機",
+            "simplified": "不必当机",
+            "pinyin": "búbì dàngjī"
+          },
+          {
+            "traditional": "免得太慢",
+            "simplified": "免得太慢",
+            "pinyin": "miǎnde tài màn"
+          }
+        ],
+        "accepted": "就是太慢",
+        "result": {
+          "traditional": "這部筆電毛病很多，不是當機，就是太慢。",
+          "simplified": "这部笔电毛病很多，不是当机，就是太慢。",
+          "pinyin": "Zhè bù bǐdiàn máobìng hěn duō, búshì dàngjī, jiùshì tài màn.",
+          "english": "This laptop has many issues; it either crashes or runs too slowly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "不必當機"
+            ],
+            "note": "不必 means no need to; use 不是…就是… for alternating problems."
+          },
+          {
+            "placed": [
+              "免得太慢"
+            ],
+            "note": "免得 means so as to avoid; not part of the alternative pattern."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 就是太慢."
+      },
+      {
+        "id": "b3l4g7-p4",
+        "source": "p.117 #4",
+        "kind": "slot-build",
+        "prompt": "A coworker works overtime and then cares for hospitalized family. Advise them:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你看起來好累，臉色不太好。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你每天不是加班，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "就是照看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "病人，得多休息！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就是照看",
+            "simplified": "就是照看",
+            "pinyin": "jiùshì zhàokàn"
+          },
+          {
+            "traditional": "只管加班",
+            "simplified": "只管加班",
+            "pinyin": "zhǐguǎn jiābān"
+          },
+          {
+            "traditional": "就算照看",
+            "simplified": "就算照看",
+            "pinyin": "jiùsuàn zhàokàn"
+          }
+        ],
+        "accepted": "就是照看",
+        "result": {
+          "traditional": "你每天不是加班，就是照看病人，得多休息！",
+          "simplified": "你每天不是加班，就是照看病人，得多休息！",
+          "pinyin": "Nǐ měitiān búshì jiābān, jiùshì zhàokàn bìngrén, děi duō xiūxi!",
+          "english": "Every day you're either working overtime or looking after the patient; you must get more rest!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "只管加班"
+            ],
+            "note": "只管 means merely/by all means; use 不是…就是… for two all-consuming routines."
+          },
+          {
+            "placed": [
+              "就算照看"
+            ],
+            "note": "就算 means even if; not used in this alternative pair."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 就是照看."
       }
     ]
   }

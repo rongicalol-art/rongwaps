@@ -2,38 +2,12 @@
   "B3L03-G01-P78": {
     "bookPage": 78,
     "title": "Practice: 試+V",
-    "allowWords": [
-      "試開"
-    ],
     "items": [
       {
         "id": "b3l3g1-p1",
         "source": "p.78 #1",
         "kind": "slot-build",
-        "prompt": "Encouraging a friend to test a vehicle:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "試開",
-            "simplified": "试开",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "不如",
-            "simplified": "不如",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "別再",
-            "simplified": "别再",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "一次比一次",
-            "simplified": "一次比一次",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A wonders about the expensive sofa. Complete B's advice:",
         "lines": [
           {
             "speaker": {
@@ -42,86 +16,226 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "買車前應該先去"
+                "traditional": "這套沙發怎麼這麼貴啊！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這套沙發賣得相當好。您可以"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "試開"
+                  "試坐看看"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "，感受一下操控感。"
+                "traditional": "，覺得舒服的話再買。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "試坐看看",
+            "simplified": "试坐看看",
+            "pinyin": "shìzuò kànkan"
+          },
+          {
+            "traditional": "試買看看",
+            "simplified": "试买看看",
+            "pinyin": "shìmǎi kànkan"
+          },
+          {
+            "traditional": "坐著不走",
+            "simplified": "坐着不走",
+            "pinyin": "zuòzhe bù zǒu"
+          }
+        ],
+        "accepted": "試坐看看",
         "result": {
-          "traditional": "買車前應該先去試開，感受一下操控感。",
-          "simplified": "买车前应该先去试开，感受一下操控感。",
-          "pinyin": "Mǎi chē qián yīnggāi xiān qù shìkāi, gǎnshòu yíxià cāokònggǎn.",
-          "english": "Before buying a car you should try driving it first to get a feel of handling."
+          "traditional": "這套沙發賣得相當好。您可以試坐看看，覺得舒服的話再買。",
+          "simplified": "这套沙发卖得相当好。您可以试坐看看，觉得舒服的话再买。",
+          "pinyin": "Zhè tào shāfā mài de xiāngdāng hǎo. Nín kěyǐ shìzuò kànkan, juéde shūfu dehuà zài mǎi.",
+          "english": "This sofa sells quite well. You can try sitting on it, and buy if it feels comfortable."
         },
         "repairs": [
           {
             "placed": [
-              "不如"
+              "試買看看"
             ],
-            "note": "不如 expresses \"might as well / better to\", comparing two choices."
+            "note": "You test suitability by sitting (試坐), not by buying."
           },
           {
             "placed": [
-              "別再"
+              "坐著不走"
             ],
-            "note": "別再…了 dissuades someone from continuing an action."
-          },
-          {
-            "placed": [
-              "一次比一次"
-            ],
-            "note": "一次比一次 indicates sequential progressive escalation."
+            "note": "The clerk invites the guest to test comfort, not refuse to leave."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 試坐看看 (try sitting)."
+      },
+      {
+        "id": "b3l3g1-p2",
+        "source": "p.79 #2",
+        "kind": "order-build",
+        "prompt": "A customer wants to buy cosmetics but worries about skin reactions. Build B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我如果用了不好的化妝品，臉馬上就變紅了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "很多客人",
+            "simplified": "很多客人",
+            "pinyin": "hěn duō kèrén"
+          },
+          {
+            "traditional": "試用後",
+            "simplified": "试用后",
+            "pinyin": "shìyòng hòu"
+          },
+          {
+            "traditional": "都說",
+            "simplified": "都说",
+            "pinyin": "dōu shuō"
+          },
+          {
+            "traditional": "沒問題",
+            "simplified": "没问题",
+            "pinyin": "méi wèntí"
+          },
+          {
+            "traditional": "試吃後",
+            "simplified": "试吃后",
+            "pinyin": "shìchī hòu"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "很多客人",
+              "試用後",
+              "都說",
+              "沒問題"
+            ],
+            "sentence": {
+              "traditional": "很多客人試用後都說沒問題。",
+              "simplified": "很多客人试用后都说没问题。",
+              "pinyin": "Hěn duō kèrén shìyòng hòu dōu shuō méi wèntí.",
+              "english": "Many customers tried using it and said there was no problem."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "試吃後"
+            ],
+            "note": "Cosmetics are tested by use (試用), not by eating (試吃)."
+          }
+        ],
+        "fallbackRepair": "Build: 很多客人 + 試用後 + 都說 + 沒問題."
+      },
+      {
+        "id": "b3l3g1-p3",
+        "source": "p.79 #3",
+        "kind": "order-build",
+        "prompt": "A likes a hat and asks if it suits them. Build B's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這頂帽子真好看！適合我嗎？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "你可以",
+            "simplified": "你可以",
+            "pinyin": "nǐ kěyǐ"
+          },
+          {
+            "traditional": "試戴一下",
+            "simplified": "试戴一下",
+            "pinyin": "shìdài yíxià"
+          },
+          {
+            "traditional": "看看樣子",
+            "simplified": "看看样子",
+            "pinyin": "kànkan yàngzi"
+          },
+          {
+            "traditional": "合不合適",
+            "simplified": "合不合适",
+            "pinyin": "hé bu héshì"
+          },
+          {
+            "traditional": "試穿一下",
+            "simplified": "试穿一下",
+            "pinyin": "shìchuān yíxià"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你可以",
+              "試戴一下",
+              "看看樣子",
+              "合不合適"
+            ],
+            "sentence": {
+              "traditional": "你可以試戴一下看看樣子合不合適。",
+              "simplified": "你可以试戴一下看看样子合不合适。",
+              "pinyin": "Nǐ kěyǐ shìdài yíxià kànkan yàngzi hé bu héshì.",
+              "english": "You can try wearing it to see if the style suits you."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "試穿一下"
+            ],
+            "note": "Hats use the verb 戴 (試戴), whereas clothes use 穿 (試穿)."
+          }
+        ],
+        "fallbackRepair": "Build: 你可以 + 試戴一下 + 看看樣子 + 合不合適."
       }
     ]
   },
   "B3L03-G02-P80": {
-    "bookPage": 80,
-    "title": "Practice: 不如",
-    "allowWords": [
-      "不如"
-    ],
+    "bookPage": 79,
+    "title": "Practice: V掉",
     "items": [
       {
         "id": "b3l3g2-p1",
         "source": "p.80 #1",
-        "kind": "slot-build",
-        "prompt": "Suggesting a better venue for group study:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "不如",
-            "simplified": "不如",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "試試",
-            "simplified": "试试",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "別再",
-            "simplified": "别再",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "A asked about the cost of raising a child to college graduation. Build B's reply:",
         "lines": [
           {
             "speaker": {
@@ -130,86 +244,226 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "咖啡店太吵了，我們"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "不如"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "去圖書館討論功課吧。"
+                "traditional": "你要孩子學英文、鋼琴什麼的，需要不少錢吧？"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "聽說",
+            "simplified": "听说",
+            "pinyin": "tīngshuō"
+          },
+          {
+            "traditional": "要花掉",
+            "simplified": "要花掉",
+            "pinyin": "yào huādiào"
+          },
+          {
+            "traditional": "一棟房子",
+            "simplified": "一栋房子",
+            "pinyin": "yí dòng fángzi"
+          },
+          {
+            "traditional": "的錢",
+            "simplified": "的钱",
+            "pinyin": "de qián"
+          },
+          {
+            "traditional": "要花完",
+            "simplified": "要花完",
+            "pinyin": "yào huāwán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "聽說",
+              "要花掉",
+              "一棟房子",
+              "的錢"
+            ],
+            "sentence": {
+              "traditional": "聽說要花掉一棟房子的錢。",
+              "simplified": "听说要花掉一栋房子的钱。",
+              "pinyin": "Tīngshuō yào huādiào yí dòng fángzi de qián.",
+              "english": "I heard it will consume the cost of an entire house."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "要花完"
+            ],
+            "note": "花掉 emphasizes the enormous sum consumed away, not completing a schedule."
+          }
+        ],
+        "fallbackRepair": "Build: 聽說 + 要花掉 + 一棟房子 + 的錢."
+      },
+      {
+        "id": "b3l3g2-p2",
+        "source": "p.80 #2",
+        "kind": "order-build",
+        "prompt": "A bought fresh pizza for everyone. Build A's urge to eat:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家披薩店的披薩好香喔！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen"
+          },
+          {
+            "traditional": "趁熱",
+            "simplified": "趁热",
+            "pinyin": "chènrè"
+          },
+          {
+            "traditional": "把它",
+            "simplified": "把它",
+            "pinyin": "bǎ tā"
+          },
+          {
+            "traditional": "吃掉吧",
+            "simplified": "吃掉吧",
+            "pinyin": "chīdiào ba"
+          },
+          {
+            "traditional": "扔掉吧",
+            "simplified": "扔掉吧",
+            "pinyin": "rēngdiào ba"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你們",
+              "趁熱",
+              "把它",
+              "吃掉吧"
+            ],
+            "sentence": {
+              "traditional": "你們趁熱把它吃掉吧。",
+              "simplified": "你们趁热把它吃掉吧。",
+              "pinyin": "Nǐmen chènrè bǎ tā chīdiào ba.",
+              "english": "Eat it up while it's hot."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "扔掉吧"
+            ],
+            "note": "Fresh, tasty food is eaten (吃掉), not thrown away (扔掉)."
+          }
+        ],
+        "fallbackRepair": "Build: 你們 + 趁熱 + 把它 + 吃掉吧."
+      },
+      {
+        "id": "b3l3g2-p3",
+        "source": "p.80 #3",
+        "kind": "slot-build",
+        "prompt": "The refrigerator is broken. Complete B's response about the drink:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "冰箱壞了，裡面的牛肉不能吃了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "好。不過飲料還好，我等一下就"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "喝掉"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "喝掉",
+            "simplified": "喝掉",
+            "pinyin": "hēdiào"
+          },
+          {
+            "traditional": "走掉",
+            "simplified": "走掉",
+            "pinyin": "zǒudiào"
+          },
+          {
+            "traditional": "喝完",
+            "simplified": "喝完",
+            "pinyin": "hēwán"
+          }
+        ],
+        "accepted": "喝掉",
         "result": {
-          "traditional": "咖啡店太吵了，我們不如去圖書館討論功課吧。",
-          "simplified": "咖啡店太吵了，我们不如去图书馆讨论功课吧。",
-          "pinyin": "Kāfēidiàn tài chǎo le, wǒmen bùrú qù túshūguǎn tǎolùn gōngkè ba.",
-          "english": "The coffee shop is too noisy; it would be better for us to go to the library to discuss homework."
+          "traditional": "好。不過飲料還好，我等一下就喝掉。",
+          "simplified": "好。不过饮料还好，我等一下就喝掉。",
+          "pinyin": "Hǎo. Bùguò yǐnliào hái hǎo, wǒ děng yíxià jiù hēdiào.",
+          "english": "Okay. But the drink is still fine; I will drink it up shortly."
         },
         "repairs": [
           {
             "placed": [
-              "試試"
+              "走掉"
             ],
-            "note": "試試 tests an action in general, not comparative preference."
+            "note": "Drinks are consumed (喝掉), not walking away (走掉)."
           },
           {
             "placed": [
-              "別再"
+              "喝完"
             ],
-            "note": "別再…了 dissuades someone from continuing an action."
-          },
-          {
-            "placed": [
-              "就是"
-            ],
-            "note": "就是 introduces a sole exception or emphatic persistence."
+            "note": "喝掉 emphasizes disposing of the drink before it spoils in the broken fridge."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 喝掉 (drink up)."
       }
     ]
   },
   "B3L03-G03-P81": {
     "bookPage": 81,
-    "title": "Practice: 就是 (except)",
-    "allowWords": [
-      "就是"
-    ],
+    "title": "Practice: 什麼(N)都……，就是……",
     "items": [
       {
         "id": "b3l3g3-p1",
         "source": "p.81 #1",
-        "kind": "slot-build",
-        "prompt": "Pointing out the only downside of a product:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          },
-          {
-            "traditional": "不如",
-            "simplified": "不如",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "別再",
-            "simplified": "别再",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "試穿",
-            "simplified": "试穿",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "A notes the convenience store carries everything. Build B's single exception:",
         "lines": [
           {
             "speaker": {
@@ -218,86 +472,155 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "這台筆記型電腦性能強大，"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "就是"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "重量重了點。"
+                "traditional": "這家便利商店的東西真不少，吃的、喝的都有。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "這家店",
+            "simplified": "这家店",
+            "pinyin": "zhè jiā diàn"
+          },
+          {
+            "traditional": "什麼都賣",
+            "simplified": "什么都卖",
+            "pinyin": "shénme dōu mài"
+          },
+          {
+            "traditional": "就是不賣",
+            "simplified": "就是不卖",
+            "pinyin": "jiùshì bú mài"
+          },
+          {
+            "traditional": "熱食",
+            "simplified": "热食",
+            "pinyin": "rèshí"
+          },
+          {
+            "traditional": "只要不賣",
+            "simplified": "只要不卖",
+            "pinyin": "zhǐyào bú mài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這家店",
+              "什麼都賣",
+              "就是不賣",
+              "熱食"
+            ],
+            "sentence": {
+              "traditional": "這家店什麼都賣就是不賣熱食。",
+              "simplified": "这家店什么都卖就是不卖热食。",
+              "pinyin": "Zhè jiā diàn shénme dōu mài jiùshì bú mài rèshí.",
+              "english": "This shop sells everything, except it does not sell hot food."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "只要不賣"
+            ],
+            "note": "Use 就是 to introduce the exception to 什麼都賣."
+          }
+        ],
+        "fallbackRepair": "Build: 這家店 + 什麼都賣 + 就是不賣 + 熱食."
+      },
+      {
+        "id": "b3l3g3-p2",
+        "source": "p.81 #2",
+        "kind": "slot-build",
+        "prompt": "A invites you to play basketball. Complete your reply explaining your sports interest:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們這個週末要去打籃球，你要不要一起去？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "什麼運動"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "都喜歡，就是對籃球不感興趣。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "什麼運動",
+            "simplified": "什么运动",
+            "pinyin": "shénme yùndòng"
+          },
+          {
+            "traditional": "什麼時候",
+            "simplified": "什么时候",
+            "pinyin": "shénme shíhou"
+          },
+          {
+            "traditional": "什麼地方",
+            "simplified": "什么地方",
+            "pinyin": "shénme dìfang"
+          }
+        ],
+        "accepted": "什麼運動",
         "result": {
-          "traditional": "這台筆記型電腦性能強大，就是重量重了點。",
-          "simplified": "这台笔记型电脑性能强大，就是重量重了点。",
-          "pinyin": "Zhè tái bǐjìxíng diànnǎo xìngnéng qiángdà, jiùshì zhòngliàng zhòng le diǎn.",
-          "english": "This laptop has powerful performance; it's just that the weight is a bit heavy."
+          "traditional": "我什麼運動都喜歡，就是對籃球不感興趣。",
+          "simplified": "我什么运动都喜欢，就是对篮球不感兴趣。",
+          "pinyin": "Wǒ shénme yùndòng dōu xǐhuan, jiùshì duì lánqiú bù gǎn xìngqù.",
+          "english": "I like all kinds of sports, except I am not interested in basketball."
         },
         "repairs": [
           {
             "placed": [
-              "不如"
+              "什麼時候"
             ],
-            "note": "不如 expresses \"might as well / better to\", comparing two choices."
+            "note": "Basketball is a sport, so specify the activity with 什麼運動, not time (什麼時候)."
           },
           {
             "placed": [
-              "別再"
+              "什麼地方"
             ],
-            "note": "別再…了 dissuades someone from continuing an action."
-          },
-          {
-            "placed": [
-              "試穿"
-            ],
-            "note": "試穿 tests trying on clothes, not comparative preference."
+            "note": "Use 什麼運動 for sports activities, not locations (什麼地方)."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 什麼運動."
       }
     ]
   },
   "B3L03-G04-P82": {
     "bookPage": 82,
-    "title": "Practice: 別再…了",
-    "allowWords": [
-      "別再"
-    ],
+    "title": "Practice: 別再……了",
     "items": [
       {
         "id": "b3l3g4-p1",
-        "source": "p.82 #1",
+        "source": "p.83 #1",
         "kind": "slot-build",
-        "prompt": "Urging a sibling to stop wasting money:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "別再",
-            "simplified": "别再",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "不如",
-            "simplified": "不如",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          },
-          {
-            "traditional": "試穿",
-            "simplified": "试穿",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "prompt": "A lost their phone and looked everywhere. Complete B's urge to stop looking:",
         "lines": [
           {
             "speaker": {
@@ -306,86 +629,235 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你的薪水快花光了，"
+                "traditional": "我的手機不見了，什麼地方都找了，就是找不到。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "算了，"
               },
               {
                 "type": "slot",
-                "id": "slot1",
+                "id": "s1",
                 "answers": [
-                  "別再"
+                  "別再找了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "亂買奢侈品[了"
+                "traditional": "，我們去問問警察吧。"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "別再找了",
+            "simplified": "别再找了",
+            "pinyin": "bié zài zhǎo le"
+          },
+          {
+            "traditional": "不再找了",
+            "simplified": "不再找了",
+            "pinyin": "búzài zhǎo le"
+          },
+          {
+            "traditional": "慢慢找吧",
+            "simplified": "慢慢找吧",
+            "pinyin": "mànman zhǎo ba"
+          }
+        ],
+        "accepted": "別再找了",
         "result": {
-          "traditional": "你的薪水快花光了，別再亂買奢侈品了！",
-          "simplified": "你的薪水快花光了，别再乱买奢侈品了！",
-          "pinyin": "Nǐ de xīnshuǐ kuài huā guāng le, bié zài luàn mǎi shēchǐpǐn le!",
-          "english": "Your salary is almost used up; stop buying luxury goods mindlessly!"
+          "traditional": "算了，別再找了，我們去問問警察吧。",
+          "simplified": "算了，别再找了，我们去问问警察吧。",
+          "pinyin": "Suànle, bié zài zhǎo le, wǒmen qù wènwen jǐngchá ba.",
+          "english": "Forget it, stop searching; let's go ask the police."
         },
         "repairs": [
           {
             "placed": [
-              "不如"
+              "不再找了"
             ],
-            "note": "不如 expresses \"might as well / better to\", comparing two choices."
+            "note": "When urging someone else to stop searching, use 別再……了."
           },
           {
             "placed": [
-              "就是"
+              "慢慢找吧"
             ],
-            "note": "就是 introduces a sole exception or emphatic persistence."
-          },
-          {
-            "placed": [
-              "試穿"
-            ],
-            "note": "試穿 tests trying on clothes, not comparative preference."
+            "note": "B suggests quitting the search, not continuing slowly."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 別再找了."
+      },
+      {
+        "id": "b3l3g4-p2",
+        "source": "p.83 #2",
+        "kind": "order-build",
+        "prompt": "A felt unwell after hospital pills. Build sister's advice:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我吃了對面那家醫院的藥，不太舒服。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "妳最好",
+            "simplified": "你最好",
+            "pinyin": "nǐ zuìhǎo"
+          },
+          {
+            "traditional": "別再去",
+            "simplified": "别再去",
+            "pinyin": "bié zài qù"
+          },
+          {
+            "traditional": "那家醫院",
+            "simplified": "那家医院",
+            "pinyin": "nà jiā yīyuàn"
+          },
+          {
+            "traditional": "看病了",
+            "simplified": "看病了",
+            "pinyin": "kànbìng le"
+          },
+          {
+            "traditional": "不再去",
+            "simplified": "不再去",
+            "pinyin": "búzài qù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "妳最好",
+              "別再去",
+              "那家醫院",
+              "看病了"
+            ],
+            "sentence": {
+              "traditional": "妳最好別再去那家醫院看病了。",
+              "simplified": "你最好别再去那家医院看病了。",
+              "pinyin": "Nǐ zuìhǎo bié zài qù nà jiā yīyuàn kànbìng le.",
+              "english": "You had better not go to that hospital to see a doctor anymore."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不再去"
+            ],
+            "note": "When advising someone else, use 別再, not personal resolution 不再."
+          }
+        ],
+        "fallbackRepair": "Build: 妳最好 + 別再去 + 那家醫院 + 看病了."
+      },
+      {
+        "id": "b3l3g4-p3",
+        "source": "p.83 #3",
+        "kind": "slot-build",
+        "prompt": "A scolded B for spending money on gaming. Complete B's personal resolution:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "要不是你花了太多錢玩遊戲，早就買得起平板了。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我知道錯了，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "以後不再"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "亂花錢了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "以後不再",
+            "simplified": "以后不再",
+            "pinyin": "yǐhòu búzài"
+          },
+          {
+            "traditional": "以後別再",
+            "simplified": "以后别再",
+            "pinyin": "yǐhòu bié zài"
+          },
+          {
+            "traditional": "天天都想",
+            "simplified": "天天都想",
+            "pinyin": "tiāntiān dōu xiǎng"
+          }
+        ],
+        "accepted": "以後不再",
+        "result": {
+          "traditional": "我知道錯了，我以後不再亂花錢了。",
+          "simplified": "我知道错了，我以后不再乱花钱了。",
+          "pinyin": "Wǒ zhīdào cuò le, wǒ yǐhòu búzài luànhuāqián le.",
+          "english": "I know I was wrong; I will no longer waste money recklessly from now on."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "以後別再"
+            ],
+            "note": "When stating your own resolution, use 不再……了, not the imperative 別再."
+          },
+          {
+            "placed": [
+              "天天都想"
+            ],
+            "note": "B is expressing remorse and promising to cease spending."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 以後不再."
       }
     ]
   },
   "B3L03-G05-P88": {
     "bookPage": 88,
-    "title": "Practice: 不僅…也/還…",
-    "allowWords": [
-      "不僅"
-    ],
+    "title": "Practice: 不僅……也/還……",
     "items": [
       {
         "id": "b3l3g5-p1",
-        "source": "p.88 #1",
-        "kind": "slot-build",
-        "prompt": "Praising a multifunctional device:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "不僅",
-            "simplified": "不仅",
-            "pinyin": "bù jǐn"
-          },
-          {
-            "traditional": "不如",
-            "simplified": "不如",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "別再",
-            "simplified": "别再",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "就是",
-            "simplified": "就是",
-            "pinyin": "jiùshì"
-          }
-        ],
+        "source": "p.89 #1",
+        "kind": "order-build",
+        "prompt": "A wonders why so many people joined the tech event. Build B's reason:",
         "lines": [
           {
             "speaker": {
@@ -394,86 +866,172 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "這款智慧手錶"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "不僅"
-                ]
-              },
+                "traditional": "今天來參加這次活動的人真多！"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "text",
-                "traditional": "能測量心跳，[還"
+                "traditional": "那是因為舉辦活動的公司"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "不僅",
+            "simplified": "不仅",
+            "pinyin": "bùjǐn"
+          },
+          {
+            "traditional": "送小禮物",
+            "simplified": "送小礼物",
+            "pinyin": "sòng xiǎo lǐwù"
+          },
+          {
+            "traditional": "還讓大家",
+            "simplified": "还让大家",
+            "pinyin": "hái ràng dàjiā"
+          },
+          {
+            "traditional": "試用",
+            "simplified": "试用",
+            "pinyin": "shìyòng"
+          },
+          {
+            "traditional": "新產品",
+            "simplified": "新产品",
+            "pinyin": "xīn chǎnpǐn"
+          },
+          {
+            "traditional": "但是",
+            "simplified": "但是",
+            "pinyin": "dànshì"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "不僅",
+              "送小禮物",
+              "還讓大家",
+              "試用",
+              "新產品"
+            ],
+            "sentence": {
+              "traditional": "那是因為舉辦活動的公司不僅送小禮物還讓大家試用新產品。",
+              "simplified": "那是因为举办活动的公司不仅送小礼物还让大家试用新产品。",
+              "pinyin": "Nà shì yīnwèi jǔbàn huódòng de gōngsī bùjǐn sòng xiǎo lǐwù hái ràng dàjiā shìyòng xīn chǎnpǐn.",
+              "english": "That is because the company holding the event not only gives small gifts, but also lets everyone test new products."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "但是"
+            ],
+            "note": "不僅 connects progressive additions, so pair with 還 rather than 但是."
+          }
+        ],
+        "fallbackRepair": "Build: 不僅 + 送小禮物 + 還讓大家 + 試用 + 新產品."
+      },
+      {
+        "id": "b3l3g5-p2",
+        "source": "p.89 #2",
+        "kind": "slot-build",
+        "prompt": "A asks why you recommend Professor Li's class. Complete B's response:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "為什麼你推薦我選李教授的課？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "因為他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不僅有名"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，人也很親切。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不僅有名",
+            "simplified": "不仅有名",
+            "pinyin": "bùjǐn yǒumíng"
+          },
+          {
+            "traditional": "只有有名",
+            "simplified": "只有有名",
+            "pinyin": "zhǐyǒu yǒumíng"
+          },
+          {
+            "traditional": "非常嚴肅",
+            "simplified": "非常严肃",
+            "pinyin": "fēicháng yánsù"
+          }
+        ],
+        "accepted": "不僅有名",
         "result": {
-          "traditional": "這款智慧手錶不僅能測量心跳，還具備定位功能。",
-          "simplified": "这款智慧手表不仅能测量心跳，还具备定位功能。",
-          "pinyin": "Zhè kuǎn zhìhuì shǒubiǎo bùjǐn néng cèliáng xīntiào, hái jùbèi dìngwèi gōngnéng.",
-          "english": "This smart watch not only can measure heartbeat, but also possesses positioning functionality."
+          "traditional": "因為他不僅有名，人也很親切。",
+          "simplified": "因为他不仅有名，人也很亲切。",
+          "pinyin": "Yīnwèi tā bùjǐn yǒumíng, rén yě hěn qīnqiè.",
+          "english": "Because he is not only famous, but also very kind."
         },
         "repairs": [
           {
             "placed": [
-              "不如"
+              "只有有名"
             ],
-            "note": "不如 expresses \"might as well / better to\", comparing two choices."
+            "note": "Use 不僅 to pair with 也 for listing complementary virtues."
           },
           {
             "placed": [
-              "別再"
+              "非常嚴肅"
             ],
-            "note": "別再…了 dissuades someone from continuing an action."
-          },
-          {
-            "placed": [
-              "就是"
-            ],
-            "note": "就是 introduces a sole exception or emphatic persistence."
+            "note": "嚴肅 does not pair logically with 人也很親切."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 不僅有名."
       }
     ]
   },
   "B3L03-G06-P90": {
     "bookPage": 90,
-    "title": "Practice: 一次比一次",
-    "allowWords": [
-      "一次比一次"
-    ],
+    "title": "Practice: NP 一M比一M + Vs (了)",
     "items": [
       {
         "id": "b3l3g6-p1",
         "source": "p.90 #1",
-        "kind": "slot-build",
-        "prompt": "Describing someone's speech skills:",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "一次比一次",
-            "simplified": "一次比一次",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "不僅",
-            "simplified": "不仅",
-            "pinyin": "bù jǐn"
-          },
-          {
-            "traditional": "不如",
-            "simplified": "不如",
-            "pinyin": "pīnyīn"
-          },
-          {
-            "traditional": "別再",
-            "simplified": "别再",
-            "pinyin": "pīnyīn"
-          }
-        ],
+        "kind": "order-build",
+        "prompt": "A asks why you're studying so hard this term. Build B's explanation:",
         "lines": [
           {
             "speaker": {
@@ -482,48 +1040,154 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他在公開演講時越來越有自信，表現得"
-              },
-              {
-                "type": "slot",
-                "id": "slot1",
-                "answers": [
-                  "一次比一次"
-                ]
-              },
+                "traditional": "你最近怎麼變得這麼用功？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
               {
                 "type": "text",
-                "traditional": "自然。"
+                "traditional": "這學期選的課，"
               }
             ]
           }
         ],
+        "tiles": [
+          {
+            "traditional": "一門比",
+            "simplified": "一门比",
+            "pinyin": "yì mén bǐ"
+          },
+          {
+            "traditional": "一門難",
+            "simplified": "一门难",
+            "pinyin": "yì mén nán"
+          },
+          {
+            "traditional": "所以每天",
+            "simplified": "所以每天",
+            "pinyin": "suǒyǐ měitiān"
+          },
+          {
+            "traditional": "都得念書",
+            "simplified": "都得念书",
+            "pinyin": "dōu děi niànshū"
+          },
+          {
+            "traditional": "一門門",
+            "simplified": "一门门",
+            "pinyin": "yì mén mén"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "一門比",
+              "一門難",
+              "所以每天",
+              "都得念書"
+            ],
+            "sentence": {
+              "traditional": "這學期選的課，一門比一門難所以每天都得念書。",
+              "simplified": "这学期选的课，一门比一门难所以每天都得念书。",
+              "pinyin": "Zhè xuéqī xuǎn de kè, yì mén bǐ yì mén nán suǒyǐ měitiān dōu děi niànshū.",
+              "english": "The classes I chose this term are harder from one course to the next, so I must study daily."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "一門門"
+            ],
+            "note": "To express increasing difficulty from course to course, use 一門比一門."
+          }
+        ],
+        "fallbackRepair": "Build: 一門比 + 一門難 + 所以每天 + 都得念書."
+      },
+      {
+        "id": "b3l3g6-p2",
+        "source": "p.90 #2",
+        "kind": "slot-build",
+        "prompt": "A notes you bought new pants. Complete B's humorous explanation of weight gain:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你又買新褲子了啊？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "換了工作以後我吃得多，肚子一天"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "比一天大"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "比一天大",
+            "simplified": "比一天大",
+            "pinyin": "bǐ yì tiān dà"
+          },
+          {
+            "traditional": "一天很大",
+            "simplified": "一天很大",
+            "pinyin": "yì tiān hěn dà"
+          },
+          {
+            "traditional": "比昨天小",
+            "simplified": "比昨天小",
+            "pinyin": "bǐ zuótiān xiǎo"
+          }
+        ],
+        "accepted": "比一天大",
         "result": {
-          "traditional": "他在公開演講時越來越有自信，表現得一次比一次自然。",
-          "simplified": "他在公开演讲时越来越有自信，表现得一次比一次自然。",
-          "pinyin": "Tā zài gōngkāi yǎnjiǎng shí yuè lái yuè yǒu zìxìn, biǎoxiàn de yí cì bǐ yí cì zìrán.",
-          "english": "He becomes more and more confident during public speaking, performing more naturally with each time."
+          "traditional": "換了工作以後我吃得多，肚子一天比一天大了。",
+          "simplified": "换了工作以后我吃得多，肚子一天比一天大了。",
+          "pinyin": "Huàn le gōngzuò yǐhòu wǒ chī de duō, dùzi yì tiān bǐ yì tiān dà le.",
+          "english": "After changing jobs I eat a lot, and my belly has grown bigger day by day."
         },
         "repairs": [
           {
             "placed": [
-              "不僅"
+              "一天很大"
             ],
-            "note": "不僅…也… coordinates two progressive points."
+            "note": "Use 比一天大 to form 一天比一天大, showing incremental increase."
           },
           {
             "placed": [
-              "不如"
+              "比昨天小"
             ],
-            "note": "不如 expresses \"might as well / better to\", comparing two choices."
-          },
-          {
-            "placed": [
-              "別再"
-            ],
-            "note": "別再…了 dissuades someone from continuing an action."
+            "note": "The speaker is explaining why they needed larger pants, so their belly did not get smaller."
           }
-        ]
+        ],
+        "fallbackRepair": "Fill slot with 比一天大."
       }
     ]
   }

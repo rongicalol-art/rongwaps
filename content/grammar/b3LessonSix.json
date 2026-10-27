@@ -1,0 +1,2994 @@
+{
+  "BOOK3_LESSON_SIX_PART_ONE": {
+    "id": "B3L06-P01-D01",
+    "bookId": 3,
+    "lessonId": 6,
+    "partId": 1,
+    "title": "Grammar 1–4 · Balanced Work and Leisure",
+    "dialogue": {
+      "id": "B3L06-D01",
+      "title": "暑假的打算",
+      "audioReference": "06-1-1",
+      "printedPages": [
+        148,
+        149,
+        150,
+        151
+      ],
+      "grammarFocus": [
+        "……倒是/是……，可是/但是/不過……",
+        "X分之Y",
+        "總算",
+        "既然……，就……"
+      ],
+      "lines": [
+        {
+          "id": "b3l6d1-l1",
+          "speaker": "尚恩",
+          "traditional": "暑假快到了，你有什麼打算？最近我和幾個朋友計畫去環島旅行，想跟我們去嗎？",
+          "simplified": "暑假快到了，你有什么打算？最近我和几个朋友计划去环岛旅行，想跟我们去吗？",
+          "pinyin": "Shǔjià kuài dào le, nǐ yǒu shénme dǎsuàn? Zuìjìn wǒ hé jǐ ge péngyou jìhuà qù huándǎo lǚxíng, xiǎng gēn wǒmen qù ma?",
+          "english": "Summer vacation is almost here. What are your plans? Recently a few friends and I are planning a trip around the island; want to come with us?"
+        },
+        {
+          "id": "b3l6d1-l2",
+          "speaker": "明哲",
+          "traditional": "想倒是想，可是我要趁暑假多打一點兒工，多存一些錢。因為畢業後，我打算去法國留學。",
+          "simplified": "想倒是想，可是我要趁暑假多打一点儿工，多存一些钱。因为毕业后，我打算去法国留学。",
+          "pinyin": "Xiǎng dàoshì xiǎng, kěshì wǒ yào chèn shǔjià duō dǎ yìdiǎnr gōng, duō cún yìxiē qián. Yīnwèi bìyè hòu, wǒ dǎsuàn qù Fǎguó liúxué.",
+          "english": "I do want to, but I need to take advantage of summer break to work a bit more and save more money. Because after graduation, I plan to study abroad in France."
+        },
+        {
+          "id": "b3l6d1-l3",
+          "speaker": "尚恩",
+          "traditional": "你平常下課後就去補習，暑假還要打工，有休閒活動的時間嗎？",
+          "simplified": "你平常下课后就去补习，暑假还要打工，有休闲活动的时间吗？",
+          "pinyin": "Nǐ píngcháng xiàkè hòu jiù qù bǔxí, shǔjià hái yào dǎgōng, yǒu xiūxián huódòng de shíjiān ma?",
+          "english": "You usually go to tutoring after class, and you have to work part-time in the summer; do you have time for leisure activities?"
+        },
+        {
+          "id": "b3l6d1-l4",
+          "speaker": "明哲",
+          "traditional": "我有空的時候還是會上網看看電影、玩玩遊戲什麼的。",
+          "simplified": "我有空的时候还是会上网看看电影、玩玩游戏什么的。",
+          "pinyin": "Wǒ yǒu kòng de shíhou háishì huì shàngwǎng kànkan diànyǐng, wánwan yóuxì shénme de.",
+          "english": "When I'm free, I still go online to watch movies, play games, and stuff."
+        },
+        {
+          "id": "b3l6d1-l5",
+          "speaker": "尚恩",
+          "traditional": "你不想去戶外走走嗎？最近有人調查臺灣青少年的休閒活動，發現其中有五分之四的人最常去的休閒場所是「家裡」。最讓我驚訝的是，這五分之四裡面有一半的人，週末都在家上網或睡覺。",
+          "simplified": "你不想去户外走走吗？最近有人调查台湾青少年的休闲活动，发现其中有五分之四的人最常去的休闲场所是「家里」。最让我惊讶的是，这五分之四里面有一半的人，周末都在家上网或睡觉。",
+          "pinyin": "Nǐ bù xiǎng qù hùwài zǒuzou ma? Zuìjìn yǒurén diàochá Táiwān qīngshàonián de xiūxián huódòng, fāxiàn qízhōng yǒu wǔ fēn zhī sì de rén zuì cháng qù de xiūxián chǎngsuǒ shì 'jiālǐ'. Zuì ràng wǒ jīngyà de shì, zhè wǔ fēn zhī sì lǐmiàn yǒu yíbàn de rén, zhōumò dōu zài jiā shàngwǎng huò shuìjiào.",
+          "english": "Don't you want to go outdoors? Recently someone surveyed leisure activities of Taiwanese youth and found that for 4/5 of them, the most frequented leisure venue is 'home'. What surprised me most is that half of that 4/5 spend weekends online or sleeping at home."
+        },
+        {
+          "id": "b3l6d1-l6",
+          "speaker": "明哲",
+          "traditional": "哈哈哈！我就是其中一個。其實，我不但喜歡戶外活動，以前還常跟哥哥去日本滑雪，做一些刺激的活動。我知道運動對身心健康很有幫助，只是最近又打工又補習，回到家就累得不想動了。",
+          "simplified": "哈哈哈！我就是其中一个。其实，我不但喜欢户外活动，以前还常跟哥哥去日本滑雪，做一些刺激的活动。我知道运动对身心健康很有帮助，只是最近又打工又补习，回到家就累得不想动了。",
+          "pinyin": "Hāhāhā! Wǒ jiùshì qízhōng yí ge. Qíshí, wǒ búdàn xǐhuan hùwài huódòng, yǐqián hái cháng gēn gēge qù Rìběn huáxuě, zuò yìxiē cìjī de huódòng. Wǒ zhīdào yùndòng duì shēnxīn jiànkāng hěn yǒu bāngzhù, zhǐshì zuìjìn yòu dǎgōng yòu bǔxí, huí dào jiā jiù lèi de bù xiǎng dòng le.",
+          "english": "Hahaha! I'm one of them. Actually, not only do I like outdoor activities, I used to often go skiing in Japan with my older brother and do thrilling activities. I know exercise helps physical and mental health; it's just that lately with both part-time work and tutoring, I'm too tired to move once I get home."
+        },
+        {
+          "id": "b3l6d1-l7",
+          "speaker": "尚恩",
+          "traditional": "這樣你的體力會越來越差的，應該多出去流流汗才好。下個週末有一場海灘球賽，我們還少一位球員。你有興趣嘗試嗎？",
+          "simplified": "这样你的体力会越来越差的，应该多出去流流汗才好。下个周末有一场海滩球赛，我们还少一位球员。你有兴趣尝试吗？",
+          "pinyin": "Zhèyàng nǐ de tǐlì huì yuè lái yuè chà de, yīnggāi duō chūqù liúliúhàn cái hǎo. Xià ge zhōumò yǒu yì chǎng hǎitān qiúsài, wǒmen hái shǎo yí wèi qiúyuán. Nǐ yǒu xìngqù chángshì ma?",
+          "english": "Your physical stamina will get worse and worse this way; it's better to get out and sweat. Next weekend there is a beach ball game, and we're short one player. Interested in trying?"
+        },
+        {
+          "id": "b3l6d1-l8",
+          "speaker": "明哲",
+          "traditional": "我不去！我怕水，對大海還有心理障礙。",
+          "simplified": "我不去！我怕水，对大海还有心理障碍。",
+          "pinyin": "Wǒ bú qù! Wǒ pà shuǐ, duì dàhǎi hái yǒu xīnlǐ zhàng'ài.",
+          "english": "I'm not going! I'm afraid of water and still have a psychological barrier toward the sea."
+        },
+        {
+          "id": "b3l6d1-l9",
+          "speaker": "尚恩",
+          "traditional": "你不想克服這個障礙嗎？",
+          "simplified": "你不想克服这个障碍吗？",
+          "pinyin": "Nǐ bù xiǎng kèfú zhège zhàng'ài ma?",
+          "english": "Don't you want to overcome this barrier?"
+        },
+        {
+          "id": "b3l6d1-l10",
+          "speaker": "明哲",
+          "traditional": "當然想。上個星期我跟一位會衝浪的朋友見面，看他自由自在衝浪的樣子，好酷喔！真希望這輩子也能學會衝浪。",
+          "simplified": "当然想。上个星期我跟一位会冲浪的朋友见面，看他自由自在冲浪的样子，好酷喔！真希望这辈子也能学会冲浪。",
+          "pinyin": "Dāngrán xiǎng. Shàng ge xīngqī wǒ gēn yí wèi huì chōnglàng de péngyou jiànmiàn, kàn tā zìyóuzìzài chōnglàng de yàngzi, hǎo kù o! Zhēn xīwàng zhè bèizi yě néng xuéhuì chōnglàng.",
+          "english": "Of course I do. Last week I met a friend who surfs; watching him surf freely and easily looked so cool! I really hope I can learn to surf in this lifetime."
+        },
+        {
+          "id": "b3l6d1-l11",
+          "speaker": "尚恩",
+          "traditional": "這樣好了，等你去了法國，我請我叔叔教你。他是個衝浪教練，我從小就跟著他學。記得有一次練習時，牙齒被衝浪板打到了，流了很多血，有一段時間不敢衝浪。還好，最後總算克服了。",
+          "simplified": "这样好了，等你去了法国，我请我叔叔教你。他是个冲浪教练，我从小就跟着他学。记得有一次练习时，牙齿被冲浪板打到了，流了很多血，有一段时间不敢冲浪。还好，最后总算克服了。",
+          "pinyin": "Zhèyàng hǎo le, děng nǐ qù le Fǎguó, wǒ qǐng wǒ shūshu jiāo nǐ. Tā shì ge chōnglàng jiàoliàn, wǒ cóng xiǎo jiù gēnzhe tā xué. Jìde yǒu yí cì liànxí shí, yáchǐ bèi chōnglàngbǎn dǎdào le, liú le hěn duō xiě, yǒu yí duàn shíjiān bù gǎn chōnglàng. Hái hǎo, zuìhòu zǒngsuàn kèfú le.",
+          "english": "How about this: once you go to France, I'll ask my uncle to teach you. He's a surf coach; I learned with him growing up. I remember once during practice my tooth got hit by the surfboard, bleeding a lot, and for a while I didn't dare to surf. Fortunately, I finally overcame it."
+        },
+        {
+          "id": "b3l6d1-l12",
+          "speaker": "明哲",
+          "traditional": "既然你這樣說，下個週末我就跟你去參加海灘球賽吧。",
+          "simplified": "既然你这样说，下个周末我就跟你去参加海滩球赛吧。",
+          "pinyin": "Jìrán nǐ zhèyàng shuō, xià ge zhōumò wǒ jiù gēn nǐ qù cānjiā hǎitān qiúsài ba.",
+          "english": "Since you put it that way, next weekend I'll go with you to join the beach ball game."
+        },
+        {
+          "id": "b3l6d1-l13",
+          "speaker": "尚恩",
+          "traditional": "太好了。不過，參加球賽是需要體力的，你最好主動一點兒，每天去慢跑。要是比賽贏了，我就招待你去吃大餐。",
+          "simplified": "太好了。不过，参加球赛是需要体力的，你最好主动一点儿，每天去慢跑。要是比赛赢了，我就招待你去吃大餐。",
+          "pinyin": "Tài hǎo le. Búguò, cānjiā qiúsài shì xūyào tǐlì de, nǐ zuìhǎo zhǔdòng yìdiǎnr, měitiān qù mànpǎo. Yàoshi bǐsài yíng le, wǒ jiù zhāodài nǐ qù chī dàcān.",
+          "english": "Awesome. However, playing in the game takes stamina; you'd better be proactive and jog every day. If we win the game, I'll treat you to a feast."
+        },
+        {
+          "id": "b3l6d1-l14",
+          "speaker": "明哲",
+          "traditional": "太棒了！我今天就開始去跑步，練練體力。",
+          "simplified": "太棒了！我今天就开始去跑步，练练体力。",
+          "pinyin": "Tài bàng le! Wǒ jīntiān jiù kāishǐ qù pǎobù, liànlian tǐlì.",
+          "english": "Fantastic! Starting today I'll go running to build up my stamina."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L06-G01-P155",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 1,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 1,
+        "titleTraditional": "……倒是/是……，可是/但是/不過……",
+        "titleEnglish": "Conceding a Point Before Contrasting",
+        "learnerPromise": "Concede a point politely before introducing a contrast or reservation using 倒是 or 是.",
+        "printedPages": [
+          155,
+          156,
+          157
+        ],
+        "bookPage": 155,
+        "bookPageAvailable": true,
+        "audioReference": "06-1-1",
+        "explanation": "「倒是」是副詞，前句「……倒是/是……」表示說話的人認同對方的看法或事實，語氣比較客氣。後句接「可是/但是/不過……」進一步表達不同的看法或保留條件。「倒是」的「倒」可以省略，變成「……是……，可是……」。",
+        "focusTerms": [
+          "倒是",
+          "可是",
+          "但是",
+          "不過"
+        ],
+        "pattern": "Topic + 倒是/是 + Predicate，可是/但是/不過 + Contrast",
+        "patternColumns": [
+          "Topic",
+          "Concession",
+          "Contrast"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g1-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g1-r1-c1-w1",
+                  "traditional": "環島",
+                  "simplified": "环岛",
+                  "pinyin": "huándǎo",
+                  "meaning": "island trip"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g1-r1-c2-w1",
+                  "traditional": "想倒是想",
+                  "simplified": "想倒是想",
+                  "pinyin": "xiǎng dàoshì xiǎng",
+                  "meaning": "do want to"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g1-r1-c3-w1",
+                  "traditional": "可是得打工",
+                  "simplified": "可是得打工",
+                  "pinyin": "kěshì děi dǎgōng",
+                  "meaning": "but must work"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g1-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g1-r2-c1-w1",
+                  "traditional": "這家店",
+                  "simplified": "这家店",
+                  "pinyin": "zhè jiā diàn",
+                  "meaning": "this shop"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g1-r2-c2-w1",
+                  "traditional": "好是好",
+                  "simplified": "好是好",
+                  "pinyin": "hǎo shì hǎo",
+                  "meaning": "good indeed"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g1-r2-c3-w1",
+                  "traditional": "不過耗吸管",
+                  "simplified": "不过耗吸管",
+                  "pinyin": "búguò hào xīguǎn",
+                  "meaning": "uses many straws"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g1-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g1-r3-c1-w1",
+                  "traditional": "他媽媽",
+                  "simplified": "他妈妈",
+                  "pinyin": "tā māma",
+                  "meaning": "his mother"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g1-r3-c2-w1",
+                  "traditional": "溫柔是溫柔",
+                  "simplified": "温柔是温柔",
+                  "pinyin": "wēnróu shì wēnróu",
+                  "meaning": "gentle indeed"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g1-r3-c3-w1",
+                  "traditional": "但是生氣兇",
+                  "simplified": "但是生气凶",
+                  "pinyin": "dànshì shēngqì xiōng",
+                  "meaning": "fierce when angry"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "想倒是想，可是我要趁暑假多打一點兒工，多存一些錢。",
+              "simplified": "想倒是想，可是我要趁暑假多打一点儿工，多存一些钱。",
+              "pinyin": "Xiǎng dàoshì xiǎng, kěshì wǒ yào chèn shǔjià duō dǎ yìdiǎnr gōng, duō cún yìxiē qián.",
+              "english": "I do want to, but I need to take advantage of summer break to work a bit more and save more money.",
+              "words": [
+                {
+                  "id": "b3l6g1-ex1-w1",
+                  "traditional": "想倒是想",
+                  "simplified": "想倒是想",
+                  "pinyin": "xiǎng dàoshì xiǎng",
+                  "meaning": "do want to",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g1-ex1-w2",
+                  "traditional": "可是我要",
+                  "simplified": "可是我要",
+                  "pinyin": "kěshì wǒ yào",
+                  "meaning": "but I must"
+                },
+                {
+                  "id": "b3l6g1-ex1-w3",
+                  "traditional": "趁暑假",
+                  "simplified": "趁暑假",
+                  "pinyin": "chèn shǔjià",
+                  "meaning": "take opportunity of break"
+                },
+                {
+                  "id": "b3l6g1-ex1-w4",
+                  "traditional": "多打工",
+                  "simplified": "多打工",
+                  "pinyin": "duō dǎgōng",
+                  "meaning": "work more"
+                },
+                {
+                  "id": "b3l6g1-ex1-w5",
+                  "traditional": "多存錢",
+                  "simplified": "多存钱",
+                  "pinyin": "duō cún qián",
+                  "meaning": "save more money",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "生意好是好，不過一家店一年用掉十萬根吸管，這樣好嗎？",
+              "simplified": "生意好是好，不过一家店一年用掉十万根吸管，这样好吗？",
+              "pinyin": "Shēngyì hǎo shì hǎo, búguò yì jiā diàn yì nián yòngdiào shí wàn gēn xīguǎn, zhèyàng hǎo ma?",
+              "english": "Business is indeed good, but one store uses up 100,000 straws a year; is this good?",
+              "words": [
+                {
+                  "id": "b3l6g1-ex2-w1",
+                  "traditional": "生意",
+                  "simplified": "生意",
+                  "pinyin": "shēngyì",
+                  "meaning": "business"
+                },
+                {
+                  "id": "b3l6g1-ex2-w2",
+                  "traditional": "好是好",
+                  "simplified": "好是好",
+                  "pinyin": "hǎo shì hǎo",
+                  "meaning": "good indeed",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g1-ex2-w3",
+                  "traditional": "不過一家店",
+                  "simplified": "不过一家店",
+                  "pinyin": "búguò yì jiā diàn",
+                  "meaning": "but one store"
+                },
+                {
+                  "id": "b3l6g1-ex2-w4",
+                  "traditional": "用掉吸管",
+                  "simplified": "用掉吸管",
+                  "pinyin": "yòngdiào xīguǎn",
+                  "meaning": "uses up straws"
+                },
+                {
+                  "id": "b3l6g1-ex2-w5",
+                  "traditional": "這樣好嗎",
+                  "simplified": "这样好吗",
+                  "pinyin": "zhèyàng hǎo ma",
+                  "meaning": "is this good",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "溫柔倒是挺溫柔的，但是生起氣來就很兇。",
+              "simplified": "温柔倒是挺温柔的，但是生起气来就很凶。",
+              "pinyin": "Wēnróu dàoshì tǐng wēnróu de, dànshì shēng qǐ qì lái jiù hěn xiōng.",
+              "english": "She is indeed gentle, but when she gets angry she can be very fierce.",
+              "words": [
+                {
+                  "id": "b3l6g1-ex3-w1",
+                  "traditional": "溫柔倒是",
+                  "simplified": "温柔倒是",
+                  "pinyin": "wēnróu dàoshì",
+                  "meaning": "gentle indeed"
+                },
+                {
+                  "id": "b3l6g1-ex3-w2",
+                  "traditional": "挺溫柔的",
+                  "simplified": "挺温柔的",
+                  "pinyin": "tǐng wēnróu de",
+                  "meaning": "quite gentle",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g1-ex3-w3",
+                  "traditional": "但是生氣",
+                  "simplified": "但是生气",
+                  "pinyin": "dànshì shēngqì",
+                  "meaning": "but getting angry"
+                },
+                {
+                  "id": "b3l6g1-ex3-w4",
+                  "traditional": "就很兇",
+                  "simplified": "就很凶",
+                  "pinyin": "jiù hěn xiōng",
+                  "meaning": "is very fierce",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g1-cf1",
+              "question": "How does 倒是 differ from a direct contrast with 卻?",
+              "answer": "倒是 politely concedes and validates the initial predicate before adding a contrast, whereas 卻 introduces an abrupt contradiction without concession.",
+              "wrongTraditional": "想卻想，可是暑假得打工。",
+              "wrongSimplified": "想却想，可是暑假得打工。",
+              "right": {
+                "traditional": "想倒是想，可是暑假得打工。",
+                "simplified": "想倒是想，可是暑假得打工。",
+                "pinyin": "Xiǎng dàoshì xiǎng, kěshì shǔjià děi dǎgōng.",
+                "english": "I do want to, but I must work over the summer.",
+                "words": [
+                  {
+                    "id": "b3l6g1-cf1-w1",
+                    "traditional": "想倒是想",
+                    "simplified": "想倒是想",
+                    "pinyin": "xiǎng dàoshì xiǎng",
+                    "meaning": "do want to",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g1-cf1-w2",
+                    "traditional": "可是暑假",
+                    "simplified": "可是暑假",
+                    "pinyin": "kěshì shǔjià",
+                    "meaning": "but summer"
+                  },
+                  {
+                    "id": "b3l6g1-cf1-w3",
+                    "traditional": "得打工",
+                    "simplified": "得打工",
+                    "pinyin": "děi dǎgōng",
+                    "meaning": "must work",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g1-cf2",
+              "question": "Can 倒 be omitted in the ……倒是/是…… pattern?",
+              "answer": "Yes, 倒 can be omitted, yielding the identical concession pattern ……是……，可是/但是/不過…….",
+              "wrongTraditional": "這家店是好，所以耗費吸管很多。",
+              "wrongSimplified": "这家店是好，所以耗费吸管很多。",
+              "right": {
+                "traditional": "這家店好是好，不過耗費吸管很多。",
+                "simplified": "这家店好是好，不过耗费吸管很多。",
+                "pinyin": "Zhè jiā diàn hǎo shì hǎo, búguò hàofèi xīguǎn hěn duō.",
+                "english": "This shop is good indeed, but it consumes many straws.",
+                "words": [
+                  {
+                    "id": "b3l6g1-cf2-w1",
+                    "traditional": "這家店",
+                    "simplified": "这家店",
+                    "pinyin": "zhè jiā diàn",
+                    "meaning": "this shop"
+                  },
+                  {
+                    "id": "b3l6g1-cf2-w2",
+                    "traditional": "好是好",
+                    "simplified": "好是好",
+                    "pinyin": "hǎo shì hǎo",
+                    "meaning": "good indeed",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g1-cf2-w3",
+                    "traditional": "不過耗費",
+                    "simplified": "不过耗费",
+                    "pinyin": "búguò hàofèi",
+                    "meaning": "but consumes"
+                  },
+                  {
+                    "id": "b3l6g1-cf2-w4",
+                    "traditional": "吸管很多",
+                    "simplified": "吸管很多",
+                    "pinyin": "xīguǎn hěn duō",
+                    "meaning": "many straws",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g1-q1",
+            "type": "choice",
+            "prompt": "Choose the natural completion for polite concession:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那部新電影好看嗎？"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g1-q1-b1",
+                "answer": "好看倒是好看",
+                "answerSimplified": "好看倒是好看",
+                "hint": "it is indeed good, but..."
+              },
+              {
+                "type": "text",
+                "traditional": "，不過時間太長了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g1-q1-t1",
+                "traditional": "好看倒是好看",
+                "simplified": "好看倒是好看",
+                "pinyin": "hǎokàn dàoshì hǎokàn",
+                "meaning": "good indeed"
+              },
+              {
+                "id": "b3l6g1-q1-t2",
+                "traditional": "好看所以好看",
+                "simplified": "好看所以好看",
+                "pinyin": "hǎokàn suǒyǐ hǎokàn",
+                "meaning": "good so good"
+              },
+              {
+                "id": "b3l6g1-q1-t3",
+                "traditional": "好看因為好看",
+                "simplified": "好看因为好看",
+                "pinyin": "hǎokàn yīnwèi hǎokàn",
+                "meaning": "good because good"
+              }
+            ],
+            "correctFeedback": "好看倒是好看 politely validates that it's good before stating the drawback.",
+            "repairFeedback": "倒是 concedes the quality before the contrast with 不過."
+          }
+        ]
+      },
+      {
+        "id": "B3L06-G02-P157",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 1,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 2,
+        "titleTraditional": "X分之Y",
+        "titleEnglish": "Fractions and Percentages",
+        "learnerPromise": "Express fractions and percentages correctly with the whole preceding the part.",
+        "printedPages": [
+          157,
+          158,
+          159
+        ],
+        "bookPage": 157,
+        "bookPageAvailable": true,
+        "audioReference": "06-1-1",
+        "explanation": "「X分之Y」用來表示分數或百分比。X代表整體（分母），Y代表部分（分子）。中文的順序是先說整體，再說「分之」，最後說部分。例如：三分之二（2/3）、百分之五十（50%）。",
+        "focusTerms": [
+          "分之",
+          "三分之二",
+          "五分之四",
+          "百分之五十"
+        ],
+        "pattern": "Whole (X) + 分之 + Part (Y)",
+        "patternColumns": [
+          "Whole",
+          "Link",
+          "Part"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g2-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g2-r1-c1-w1",
+                  "traditional": "五",
+                  "simplified": "五",
+                  "pinyin": "wǔ",
+                  "meaning": "five"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g2-r1-c2-w1",
+                  "traditional": "分之",
+                  "simplified": "分之",
+                  "pinyin": "fēn zhī",
+                  "meaning": "parts of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g2-r1-c3-w1",
+                  "traditional": "四",
+                  "simplified": "四",
+                  "pinyin": "sì",
+                  "meaning": "four"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g2-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g2-r2-c1-w1",
+                  "traditional": "百",
+                  "simplified": "百",
+                  "pinyin": "bǎi",
+                  "meaning": "hundred"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g2-r2-c2-w1",
+                  "traditional": "分之",
+                  "simplified": "分之",
+                  "pinyin": "fēn zhī",
+                  "meaning": "parts of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g2-r2-c3-w1",
+                  "traditional": "五十",
+                  "simplified": "五十",
+                  "pinyin": "wǔshí",
+                  "meaning": "fifty"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g2-r3-c1-w1",
+                  "traditional": "三",
+                  "simplified": "三",
+                  "pinyin": "sān",
+                  "meaning": "three"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g2-r3-c2-w1",
+                  "traditional": "分之",
+                  "simplified": "分之",
+                  "pinyin": "fēn zhī",
+                  "meaning": "parts of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g2-r3-c3-w1",
+                  "traditional": "二",
+                  "simplified": "二",
+                  "pinyin": "èr",
+                  "meaning": "two"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "發現其中有五分之四的人最常去的休閒場所是「家裡」。",
+              "simplified": "发现其中有五分之四的人最常去的休闲场所是「家里」。",
+              "pinyin": "Fāxiàn qízhōng yǒu wǔ fēn zhī sì de rén zuì cháng qù de xiūxián chǎngsuǒ shì 'jiālǐ'.",
+              "english": "Found that among them, four-fifths of people had 'home' as their most frequented leisure venue.",
+              "words": [
+                {
+                  "id": "b3l6g2-ex1-w1",
+                  "traditional": "發現其中",
+                  "simplified": "发现其中",
+                  "pinyin": "fāxiàn qízhōng",
+                  "meaning": "found among them"
+                },
+                {
+                  "id": "b3l6g2-ex1-w2",
+                  "traditional": "有五分之四",
+                  "simplified": "有五分之四",
+                  "pinyin": "yǒu wǔ fēn zhī sì",
+                  "meaning": "has four-fifths"
+                },
+                {
+                  "id": "b3l6g2-ex1-w3",
+                  "traditional": "的人最常去",
+                  "simplified": "的人最常去",
+                  "pinyin": "de rén zuì cháng qù",
+                  "meaning": "people most often go"
+                },
+                {
+                  "id": "b3l6g2-ex1-w4",
+                  "traditional": "的場所是家裡",
+                  "simplified": "的场所是家里",
+                  "pinyin": "de chǎngsuǒ shì jiālǐ",
+                  "meaning": "venue is home",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "在這座海島上，有百分之九十的人會游泳，百分之五十會衝浪。",
+              "simplified": "在这座海岛上，有百分之九十的人会游泳，百分之五十会冲浪。",
+              "pinyin": "Zài zhè zuò hǎidǎo shàng, yǒu bǎi fēn zhī jiǔshí de rén huì yóuyǒng, bǎi fēn zhī wǔshí huì chōnglàng.",
+              "english": "On this island, 90 percent of people can swim, and 50 percent can surf.",
+              "words": [
+                {
+                  "id": "b3l6g2-ex2-w1",
+                  "traditional": "在這座海島",
+                  "simplified": "在这座海岛",
+                  "pinyin": "zài zhè zuò hǎidǎo",
+                  "meaning": "on this island"
+                },
+                {
+                  "id": "b3l6g2-ex2-w2",
+                  "traditional": "百分之九十",
+                  "simplified": "百分之九十",
+                  "pinyin": "bǎi fēn zhī jiǔshí",
+                  "meaning": "90 percent"
+                },
+                {
+                  "id": "b3l6g2-ex2-w3",
+                  "traditional": "的人會游泳",
+                  "simplified": "的人会游泳",
+                  "pinyin": "de rén huì yóuyǒng",
+                  "meaning": "people can swim",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g2-ex2-w4",
+                  "traditional": "百分之五十",
+                  "simplified": "百分之五十",
+                  "pinyin": "bǎi fēn zhī wǔshí",
+                  "meaning": "50 percent"
+                },
+                {
+                  "id": "b3l6g2-ex2-w5",
+                  "traditional": "會衝浪",
+                  "simplified": "会冲浪",
+                  "pinyin": "huì chōnglàng",
+                  "meaning": "can surf",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "為了當成功的球員，他每天用三分之二的時間練球。",
+              "simplified": "为了当成功的球员，他每天用三分之二的时间练球。",
+              "pinyin": "Wèile dāng chénggōng de qiúyuán, tā měitiān yòng sān fēn zhī èr de shíjiān liànqiú.",
+              "english": "To become a successful player, he spends two-thirds of his daily time practicing.",
+              "words": [
+                {
+                  "id": "b3l6g2-ex3-w1",
+                  "traditional": "為了當成功",
+                  "simplified": "为了当成功",
+                  "pinyin": "wèile dāng chénggōng",
+                  "meaning": "to become successful"
+                },
+                {
+                  "id": "b3l6g2-ex3-w2",
+                  "traditional": "的球員",
+                  "simplified": "的球员",
+                  "pinyin": "de qiúyuán",
+                  "meaning": "player",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g2-ex3-w3",
+                  "traditional": "他每天用",
+                  "simplified": "他每天用",
+                  "pinyin": "tā měitiān yòng",
+                  "meaning": "he daily uses"
+                },
+                {
+                  "id": "b3l6g2-ex3-w4",
+                  "traditional": "三分之二",
+                  "simplified": "三分之二",
+                  "pinyin": "sān fēn zhī èr",
+                  "meaning": "two-thirds"
+                },
+                {
+                  "id": "b3l6g2-ex3-w5",
+                  "traditional": "的時間練球",
+                  "simplified": "的时间练球",
+                  "pinyin": "de shíjiān liànqiú",
+                  "meaning": "time practicing",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g2-cf1",
+              "question": "What is the correct word order for fractions in Chinese?",
+              "answer": "Chinese puts the whole (denominator) first, followed by 分之, then the part (numerator). E.g. 四分之三 is 3/4.",
+              "wrongTraditional": "班上有三分之四的同學參加了活動。",
+              "wrongSimplified": "班上有三分之四的同学参加了活动。",
+              "right": {
+                "traditional": "班上有四分之三的同學參加了活動。",
+                "simplified": "班上有四分之三的同学参加了活动。",
+                "pinyin": "Bān shàng yǒu sì fēn zhī sān de tóngxué cānjiā le huódòng.",
+                "english": "Three-fourths of the students in class joined the event.",
+                "words": [
+                  {
+                    "id": "b3l6g2-cf1-w1",
+                    "traditional": "班上有",
+                    "simplified": "班上有",
+                    "pinyin": "bān shàng yǒu",
+                    "meaning": "in class have"
+                  },
+                  {
+                    "id": "b3l6g2-cf1-w2",
+                    "traditional": "四分之三",
+                    "simplified": "四分之三",
+                    "pinyin": "sì fēn zhī sān",
+                    "meaning": "three-fourths"
+                  },
+                  {
+                    "id": "b3l6g2-cf1-w3",
+                    "traditional": "的同學",
+                    "simplified": "的同学",
+                    "pinyin": "de tóngxué",
+                    "meaning": "classmates"
+                  },
+                  {
+                    "id": "b3l6g2-cf1-w4",
+                    "traditional": "參加了活動",
+                    "simplified": "参加了活动",
+                    "pinyin": "cānjiā le huódòng",
+                    "meaning": "joined activity",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g2-cf2",
+              "question": "How do you express percentages like 50%?",
+              "answer": "Use 百分之 followed by the percentage number, e.g. 百分之五十.",
+              "wrongTraditional": "在這座海島上，有五十分之百的人會衝浪。",
+              "wrongSimplified": "在这座海岛上，有五十分之百的人会冲浪。",
+              "right": {
+                "traditional": "在這座海島上，有百分之五十的人會衝浪。",
+                "simplified": "在这座海岛上，有百分之五十的人会冲浪。",
+                "pinyin": "Zài zhè zuò hǎidǎo shàng, yǒu bǎi fēn zhī wǔshí de rén huì chōnglàng.",
+                "english": "On this island, 50% of the people can surf.",
+                "words": [
+                  {
+                    "id": "b3l6g2-cf2-w1",
+                    "traditional": "在這座海島上",
+                    "simplified": "在这座海岛上",
+                    "pinyin": "zài zhè zuò hǎidǎo shàng",
+                    "meaning": "on this island",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g2-cf2-w2",
+                    "traditional": "有百分之五十",
+                    "simplified": "有百分之五十",
+                    "pinyin": "yǒu bǎi fēn zhī wǔshí",
+                    "meaning": "has 50%"
+                  },
+                  {
+                    "id": "b3l6g2-cf2-w3",
+                    "traditional": "的人會衝浪",
+                    "simplified": "的人会冲浪",
+                    "pinyin": "de rén huì chōnglàng",
+                    "meaning": "people can surf",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g2-q1",
+            "type": "choice",
+            "prompt": "How do you say 'three-fourths' (3/4) in Chinese?",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "班上有"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g2-q1-b1",
+                "answer": "四分之三",
+                "answerSimplified": "四分之三",
+                "hint": "three-fourths"
+              },
+              {
+                "type": "text",
+                "traditional": "的同學參加了活動。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g2-q1-t1",
+                "traditional": "四分之三",
+                "simplified": "四分之三",
+                "pinyin": "sì fēn zhī sān",
+                "meaning": "3/4"
+              },
+              {
+                "id": "b3l6g2-q1-t2",
+                "traditional": "三分之四",
+                "simplified": "三分之四",
+                "pinyin": "sān fēn zhī sì",
+                "meaning": "4/3"
+              },
+              {
+                "id": "b3l6g2-q1-t3",
+                "traditional": "四個之三",
+                "simplified": "四个之三",
+                "pinyin": "sì ge zhī sān",
+                "meaning": "three of four"
+              }
+            ],
+            "correctFeedback": "四分之三 puts the whole (4) first, followed by 分之 and the part (3).",
+            "repairFeedback": "Chinese fraction order is denominator first, then 分之, then numerator."
+          }
+        ]
+      },
+      {
+        "id": "B3L06-G03-P159",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 1,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 3,
+        "titleTraditional": "總算",
+        "titleEnglish": "Finally, At Long Last",
+        "learnerPromise": "Express relief that an anticipated outcome was finally achieved using 總算.",
+        "printedPages": [
+          159,
+          160
+        ],
+        "bookPage": 159,
+        "bookPageAvailable": true,
+        "audioReference": "06-1-1",
+        "explanation": "「總算」當副詞，表示經過一段時間的等待、努力或困難後，期待的事情終於實現了，帶有如釋重負或欣慰的語氣，常用在口語。",
+        "focusTerms": [
+          "總算",
+          "總算克服",
+          "總算寫完",
+          "總算拿到"
+        ],
+        "pattern": "Subject + 總算 + Relieved Outcome",
+        "patternColumns": [
+          "Subject",
+          "Adverb",
+          "Outcome"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g3-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g3-r1-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g3-r1-c2-w1",
+                  "traditional": "總算",
+                  "simplified": "总算",
+                  "pinyin": "zǒngsuàn",
+                  "meaning": "finally"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g3-r1-c3-w1",
+                  "traditional": "克服了障礙",
+                  "simplified": "克服了障碍",
+                  "pinyin": "kèfú le zhàng'ài",
+                  "meaning": "overcame barrier"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g3-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g3-r2-c1-w1",
+                  "traditional": "今天",
+                  "simplified": "今天",
+                  "pinyin": "jīntiān",
+                  "meaning": "today"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g3-r2-c2-w1",
+                  "traditional": "總算",
+                  "simplified": "总算",
+                  "pinyin": "zǒngsuàn",
+                  "meaning": "finally"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g3-r2-c3-w1",
+                  "traditional": "暖和一點了",
+                  "simplified": "暖和一点了",
+                  "pinyin": "nuǎnhuo yìdiǎn le",
+                  "meaning": "a bit warmer"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g3-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g3-r3-c1-w1",
+                  "traditional": "她",
+                  "simplified": "她",
+                  "pinyin": "tā",
+                  "meaning": "she"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g3-r3-c2-w1",
+                  "traditional": "總算",
+                  "simplified": "总算",
+                  "pinyin": "zǒngsuàn",
+                  "meaning": "finally"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g3-r3-c3-w1",
+                  "traditional": "回到自由生活",
+                  "simplified": "回到自由生活",
+                  "pinyin": "huí dào zìyóu shēnghuó",
+                  "meaning": "returned to free life"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "有一段時間不敢衝浪。還好，最後總算克服了。",
+              "simplified": "有一段时间不敢冲浪。还好，最后总算克服了。",
+              "pinyin": "Yǒu yí duàn shíjiān bù gǎn chōnglàng. Hái hǎo, zuìhòu zǒngsuàn kèfú le.",
+              "english": "For a while I didn't dare to surf. Fortunately, in the end I finally overcame it.",
+              "words": [
+                {
+                  "id": "b3l6g3-ex1-w1",
+                  "traditional": "不敢衝浪",
+                  "simplified": "不敢冲浪",
+                  "pinyin": "bù gǎn chōnglàng",
+                  "meaning": "dare not surf",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l6g3-ex1-w2",
+                  "traditional": "還好最後",
+                  "simplified": "还好最后",
+                  "pinyin": "hái hǎo zuìhòu",
+                  "meaning": "fortunately finally"
+                },
+                {
+                  "id": "b3l6g3-ex1-w3",
+                  "traditional": "總算克服了",
+                  "simplified": "总算克服了",
+                  "pinyin": "zǒngsuàn kèfú le",
+                  "meaning": "at last overcame",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "今年冬天半個月在十度以下，今天總算暖和一點了。",
+              "simplified": "今年冬天半个月在十度以下，今天总算暖和一点了。",
+              "pinyin": "Jīnnián dōngtiān bàn ge yuè zài shí dù yǐxià, jīntiān zǒngsuàn nuǎnhuo yìdiǎn le.",
+              "english": "This winter temperatures were below 10 degrees for half a month; today it's finally a bit warmer.",
+              "words": [
+                {
+                  "id": "b3l6g3-ex2-w1",
+                  "traditional": "今年冬天",
+                  "simplified": "今年冬天",
+                  "pinyin": "jīnnián dōngtiān",
+                  "meaning": "this winter"
+                },
+                {
+                  "id": "b3l6g3-ex2-w2",
+                  "traditional": "在十度以下",
+                  "simplified": "在十度以下",
+                  "pinyin": "zài shí dù yǐxià",
+                  "meaning": "below ten degrees",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g3-ex2-w3",
+                  "traditional": "今天總算",
+                  "simplified": "今天总算",
+                  "pinyin": "jīntiān zǒngsuàn",
+                  "meaning": "today finally"
+                },
+                {
+                  "id": "b3l6g3-ex2-w4",
+                  "traditional": "暖和一點了",
+                  "simplified": "暖和一点了",
+                  "pinyin": "nuǎnhuo yìdiǎn le",
+                  "meaning": "warmer a bit",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "王媽媽的孩子長大了，她總算能回到自由的生活了。",
+              "simplified": "王妈妈的孩子长大了，她总算能回到自由的生活了。",
+              "pinyin": "Wáng māma de háizi zhǎngdà le, tā zǒngsuàn néng huí dào zìyóu de shēnghuó le.",
+              "english": "Mother Wang's children grew up; she can finally return to a free lifestyle.",
+              "words": [
+                {
+                  "id": "b3l6g3-ex3-w1",
+                  "traditional": "孩子長大了",
+                  "simplified": "孩子长大了",
+                  "pinyin": "háizi zhǎngdà le",
+                  "meaning": "children grew up",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g3-ex3-w2",
+                  "traditional": "她總算能",
+                  "simplified": "她总算能",
+                  "pinyin": "tā zǒngsuàn néng",
+                  "meaning": "she finally can"
+                },
+                {
+                  "id": "b3l6g3-ex3-w3",
+                  "traditional": "回到自由生活",
+                  "simplified": "回到自由生活",
+                  "pinyin": "huí dào zìyóu shēnghuó",
+                  "meaning": "return to free life",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g3-cf1",
+              "question": "What emotional tone distinguishes 總算 from 終於?",
+              "answer": "總算 expresses emotional relief and reassurance after a long wait, effort, or difficulty.",
+              "wrongTraditional": "公車總是來了，真讓人放心。",
+              "wrongSimplified": "公车总是来了，真让人放心。",
+              "right": {
+                "traditional": "公車總算來了，真讓人放心。",
+                "simplified": "公车总算来了，真让人放心。",
+                "pinyin": "Gōngchē zǒngsuàn lái le, zhēn ràng rén fàngxīn.",
+                "english": "The bus finally came at long last; what a relief.",
+                "words": [
+                  {
+                    "id": "b3l6g3-cf1-w1",
+                    "traditional": "公車總算",
+                    "simplified": "公车总算",
+                    "pinyin": "gōngchē zǒngsuàn",
+                    "meaning": "bus finally"
+                  },
+                  {
+                    "id": "b3l6g3-cf1-w2",
+                    "traditional": "來了",
+                    "simplified": "来了",
+                    "pinyin": "lái le",
+                    "meaning": "came",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g3-cf1-w3",
+                    "traditional": "真讓人放心",
+                    "simplified": "真让人放心",
+                    "pinyin": "zhēn ràng rén fàngxīn",
+                    "meaning": "really reassuring",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g3-cf2",
+              "question": "Can 總算 be used for habitual recurring events?",
+              "answer": "No. 總算 marks the long-awaited culmination of a process, not a habitual action like 總是.",
+              "wrongTraditional": "他總算每天早上六點起床運動。",
+              "wrongSimplified": "他总算每天早上六点起床运动。",
+              "right": {
+                "traditional": "他總是每天早上六點起床運動。",
+                "simplified": "他总是每天早上六点起床运动。",
+                "pinyin": "Tā zǒngshì měitiān zǎoshang liù diǎn qǐchuáng yùndòng.",
+                "english": "He always gets up at six in the morning to exercise.",
+                "words": [
+                  {
+                    "id": "b3l6g3-cf2-w1",
+                    "traditional": "他總是",
+                    "simplified": "他总是",
+                    "pinyin": "tā zǒngshì",
+                    "meaning": "he always"
+                  },
+                  {
+                    "id": "b3l6g3-cf2-w2",
+                    "traditional": "每天早上",
+                    "simplified": "每天早上",
+                    "pinyin": "měitiān zǎoshang",
+                    "meaning": "every morning"
+                  },
+                  {
+                    "id": "b3l6g3-cf2-w3",
+                    "traditional": "六點起床",
+                    "simplified": "六点起床",
+                    "pinyin": "liù diǎn qǐchuáng",
+                    "meaning": "get up at 6"
+                  },
+                  {
+                    "id": "b3l6g3-cf2-w4",
+                    "traditional": "運動",
+                    "simplified": "运动",
+                    "pinyin": "yùndòng",
+                    "meaning": "exercise",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g3-q1",
+            "type": "choice",
+            "prompt": "Express relief that something long waited for arrived:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "等了一整天，雨"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g3-q1-b1",
+                "answer": "總算停了",
+                "answerSimplified": "总算停了",
+                "hint": "finally stopped"
+              },
+              {
+                "type": "text",
+                "traditional": "，我們可以出門了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g3-q1-t1",
+                "traditional": "總算停了",
+                "simplified": "总算停了",
+                "pinyin": "zǒngsuàn tíng le",
+                "meaning": "finally stopped"
+              },
+              {
+                "id": "b3l6g3-q1-t2",
+                "traditional": "總是停了",
+                "simplified": "总是停了",
+                "pinyin": "zǒngshì tíng le",
+                "meaning": "always stopped"
+              },
+              {
+                "id": "b3l6g3-q1-t3",
+                "traditional": "打算停了",
+                "simplified": "打算停了",
+                "pinyin": "dǎsuàn tíng le",
+                "meaning": "planning stopped"
+              }
+            ],
+            "correctFeedback": "總算停了 conveys heartfelt relief after waiting all day.",
+            "repairFeedback": "總算 expresses relief after a long period of waiting."
+          }
+        ]
+      },
+      {
+        "id": "B3L06-G04-P160",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 1,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 4,
+        "titleTraditional": "既然……，就……",
+        "titleEnglish": "Since / Given That..., Then...",
+        "learnerPromise": "Propose an action or suggestion based on an established fact using 既然……就…….",
+        "printedPages": [
+          160,
+          161
+        ],
+        "bookPage": 160,
+        "bookPageAvailable": true,
+        "audioReference": "06-1-1",
+        "explanation": "「既然」當連詞，放在前句句首，引出已經發生、確定或被接受的事實。「就」放在後句，引出說話者對該事實提出的主觀建議、看法或結論。",
+        "focusTerms": [
+          "既然",
+          "就",
+          "既然這樣",
+          "既然來了"
+        ],
+        "pattern": "既然 + Established Fact，(Subject) + 就 + Suggestion / Conclusion",
+        "patternColumns": [
+          "Since",
+          "Then",
+          "Action"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g4-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g4-r1-c1-w1",
+                  "traditional": "既然你這樣說",
+                  "simplified": "既然你这样说",
+                  "pinyin": "jìrán nǐ zhèyàng shuō",
+                  "meaning": "since you say so"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g4-r1-c2-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g4-r1-c3-w1",
+                  "traditional": "跟你去打球",
+                  "simplified": "跟你去打球",
+                  "pinyin": "gēn nǐ qù dǎqiú",
+                  "meaning": "go play ball with you"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g4-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g4-r2-c1-w1",
+                  "traditional": "既然大家累了",
+                  "simplified": "既然大家累了",
+                  "pinyin": "jìrán dàjiā lèi le",
+                  "meaning": "since all tired"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g4-r2-c2-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g4-r2-c3-w1",
+                  "traditional": "先回家休息",
+                  "simplified": "先回家休息",
+                  "pinyin": "xiān huí jiā xiūxi",
+                  "meaning": "rest at home first"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g4-r3-c1-w1",
+                  "traditional": "既然生了孩子",
+                  "simplified": "既然生了孩子",
+                  "pinyin": "jìrán shēng le háizi",
+                  "meaning": "since had child"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g4-r3-c2-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g4-r3-c3-w1",
+                  "traditional": "該用心教導",
+                  "simplified": "该用心教导",
+                  "pinyin": "gāi yòngxīn jiàodǎo",
+                  "meaning": "should teach well"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "既然你這樣說，下個週末我就跟你去參加海灘球賽吧。",
+              "simplified": "既然你这样说，下个周末我就跟你去参加海滩球赛吧。",
+              "pinyin": "Jìrán nǐ zhèyàng shuō, xià ge zhōumò wǒ jiù gēn nǐ qù cānjiā hǎitān qiúsài ba.",
+              "english": "Since you put it that way, next weekend I'll go with you to join the beach ball game.",
+              "words": [
+                {
+                  "id": "b3l6g4-ex1-w1",
+                  "traditional": "既然你",
+                  "simplified": "既然你",
+                  "pinyin": "jìrán nǐ",
+                  "meaning": "since you"
+                },
+                {
+                  "id": "b3l6g4-ex1-w2",
+                  "traditional": "這樣說",
+                  "simplified": "这样说",
+                  "pinyin": "zhèyàng shuō",
+                  "meaning": "say so",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g4-ex1-w3",
+                  "traditional": "下個週末",
+                  "simplified": "下个周末",
+                  "pinyin": "xià ge zhōumò",
+                  "meaning": "next weekend"
+                },
+                {
+                  "id": "b3l6g4-ex1-w4",
+                  "traditional": "我就跟你去",
+                  "simplified": "我就跟你去",
+                  "pinyin": "wǒ jiù gēn nǐ qù",
+                  "meaning": "I then go with you"
+                },
+                {
+                  "id": "b3l6g4-ex1-w5",
+                  "traditional": "參加球賽吧",
+                  "simplified": "参加球赛吧",
+                  "pinyin": "cānjiā qiúsài ba",
+                  "meaning": "join ball game",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "逛夜市好是好，可是我累了。既然這樣，我們先回家休息好了。",
+              "simplified": "逛夜市好是好，可是我累了。既然这样，我们先回家休息好了。",
+              "pinyin": "Guàng yèshì hǎo shì hǎo, kěshì wǒ lèi le. Jìrán zhèyàng, wǒmen xiān huí jiā xiūxi hǎo le.",
+              "english": "Visiting the night market is fine, but I'm tired. In that case, let's just go home and rest first.",
+              "words": [
+                {
+                  "id": "b3l6g4-ex2-w1",
+                  "traditional": "逛夜市好是好",
+                  "simplified": "逛夜市好是好",
+                  "pinyin": "guàng yèshì hǎo shì hǎo",
+                  "meaning": "night market good indeed",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g4-ex2-w2",
+                  "traditional": "可是我累了",
+                  "simplified": "可是我累了",
+                  "pinyin": "kěshì wǒ lèi le",
+                  "meaning": "but I'm tired",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l6g4-ex2-w3",
+                  "traditional": "既然這樣",
+                  "simplified": "既然这样",
+                  "pinyin": "jìrán zhèyàng",
+                  "meaning": "since so",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g4-ex2-w4",
+                  "traditional": "我們先回家",
+                  "simplified": "我们先回家",
+                  "pinyin": "wǒmen xiān huí jiā",
+                  "meaning": "we first return home"
+                },
+                {
+                  "id": "b3l6g4-ex2-w5",
+                  "traditional": "休息好了",
+                  "simplified": "休息好了",
+                  "pinyin": "xiūxi hǎo le",
+                  "meaning": "rest then",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "既然你覺得這份工作不能發揮實力，就換個工作吧。",
+              "simplified": "既然你觉得这份工作不能发挥实力，就换个工作吧。",
+              "pinyin": "Jìrán nǐ juéde zhè fèn gōngzuò bùnéng fāhuī shílì, jiù huàn ge gōngzuò ba.",
+              "english": "Since you feel this job doesn't let you use your abilities, then change jobs.",
+              "words": [
+                {
+                  "id": "b3l6g4-ex3-w1",
+                  "traditional": "既然你覺得",
+                  "simplified": "既然你觉得",
+                  "pinyin": "jìrán nǐ juéde",
+                  "meaning": "since you feel"
+                },
+                {
+                  "id": "b3l6g4-ex3-w2",
+                  "traditional": "不能發揮實力",
+                  "simplified": "不能发挥实力",
+                  "pinyin": "bùnéng fāhuī shílì",
+                  "meaning": "cannot show skill",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g4-ex3-w3",
+                  "traditional": "就換個工作吧",
+                  "simplified": "就换个工作吧",
+                  "pinyin": "jiù huàn ge gōngzuò ba",
+                  "meaning": "then change job",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g4-cf1",
+              "question": "How does 既然 differ from 如果 / 要是?",
+              "answer": "既然 introduces an acknowledged fact or confirmed reality ('since'), while 如果 introduces an uncertain hypothesis ('if').",
+              "wrongTraditional": "如果下雨了，我們就留在家裡吧。",
+              "wrongSimplified": "如果下雨了，我们就留在家里吧。",
+              "right": {
+                "traditional": "既然下雨了，我們就留在家裡吧。",
+                "simplified": "既然下雨了，我们就留在家里吧。",
+                "pinyin": "Jìrán xiàyǔ le, wǒmen jiù liú zài jiā lǐ ba.",
+                "english": "Since it is raining, let's just stay home.",
+                "words": [
+                  {
+                    "id": "b3l6g4-cf1-w1",
+                    "traditional": "既然下雨了",
+                    "simplified": "既然下雨了",
+                    "pinyin": "jìrán xiàyǔ le",
+                    "meaning": "since it rained",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g4-cf1-w2",
+                    "traditional": "我們就留",
+                    "simplified": "我们就留",
+                    "pinyin": "wǒmen jiù liú",
+                    "meaning": "we then stay"
+                  },
+                  {
+                    "id": "b3l6g4-cf1-w3",
+                    "traditional": "在家裡吧",
+                    "simplified": "在家里吧",
+                    "pinyin": "zài jiā lǐ ba",
+                    "meaning": "at home",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g4-cf2",
+              "question": "What adverb typically introduces the consequence after 既然?",
+              "answer": "就 is used in the second clause to propose an action, deduction, or response.",
+              "wrongTraditional": "既然你這樣說，而且去參加比賽吧。",
+              "wrongSimplified": "既然你这样说，而且去参加比赛吧。",
+              "right": {
+                "traditional": "既然你這樣說，就去參加比賽吧。",
+                "simplified": "既然你这样说，就去参加比赛吧。",
+                "pinyin": "Jìrán nǐ zhèyàng shuō, jiù qù cānjiā bǐsài ba.",
+                "english": "Since you put it that way, then go join the competition.",
+                "words": [
+                  {
+                    "id": "b3l6g4-cf2-w1",
+                    "traditional": "既然你",
+                    "simplified": "既然你",
+                    "pinyin": "jìrán nǐ",
+                    "meaning": "since you"
+                  },
+                  {
+                    "id": "b3l6g4-cf2-w2",
+                    "traditional": "這樣說",
+                    "simplified": "这样说",
+                    "pinyin": "zhèyàng shuō",
+                    "meaning": "say so",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g4-cf2-w3",
+                    "traditional": "就去參加",
+                    "simplified": "就去参加",
+                    "pinyin": "jiù qù cānjiā",
+                    "meaning": "then go join"
+                  },
+                  {
+                    "id": "b3l6g4-cf2-w4",
+                    "traditional": "比賽吧",
+                    "simplified": "比赛吧",
+                    "pinyin": "bǐsài ba",
+                    "meaning": "competition",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g4-q1",
+            "type": "choice",
+            "prompt": "Select the sentence with a verified fact followed by a recommendation:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "大家都吃飽了，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g4-q1-b1",
+                "answer": "既然這樣我們就",
+                "answerSimplified": "既然这样我们就",
+                "hint": "since it's so, let's..."
+              },
+              {
+                "type": "text",
+                "traditional": "出發吧。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g4-q1-t1",
+                "traditional": "既然這樣我們就",
+                "simplified": "既然这样我们就",
+                "pinyin": "jìrán zhèyàng wǒmen jiù",
+                "meaning": "since so we then"
+              },
+              {
+                "id": "b3l6g4-q1-t2",
+                "traditional": "要是這樣我們就",
+                "simplified": "要是这样我们就",
+                "pinyin": "yàoshi zhèyàng wǒmen jiù",
+                "meaning": "if so we then"
+              },
+              {
+                "id": "b3l6g4-q1-t3",
+                "traditional": "雖然這樣我們就",
+                "simplified": "虽然这样我们就",
+                "pinyin": "suīrán zhèyàng wǒmen jiù",
+                "meaning": "although so we then"
+              }
+            ],
+            "correctFeedback": "既然 recognizes the existing fact and provides the premise for departing.",
+            "repairFeedback": "既然 pairs with 就 to deduce a proposal from an acknowledged fact."
+          }
+        ]
+      }
+    ]
+  },
+  "BOOK3_LESSON_SIX_PART_TWO": {
+    "id": "B3L06-P02-D02",
+    "bookId": 3,
+    "lessonId": 6,
+    "partId": 2,
+    "title": "Grammar 5–7 · Balanced Work and Leisure",
+    "dialogue": {
+      "id": "B3L06-D02",
+      "title": "張先生的決定",
+      "audioReference": "06-2-1",
+      "printedPages": [
+        162,
+        163,
+        164
+      ],
+      "grammarFocus": [
+        "在……中",
+        "不能不 / 不得不",
+        "正＋V"
+      ],
+      "lines": [
+        {
+          "id": "b3l6d2-l1",
+          "speaker": "旁白",
+          "traditional": "張文華在老闆的眼中，是個認真又有能力的好員工，所以進公司不久就當上了經理。他不僅要管理各部門的員工，還得負責市場研究、規劃新產品的設計等，經常因為加班而犧牲週末的休息時間；手機裡記著每天的行程和大大小小的事情，甚至連客人的興趣都記在上面。他的生活裡好像只有工作，分分秒秒都很緊張。",
+          "simplified": "张文华在老板的眼中，是个认真又有能力的好员工，所以进公司不久就当上了经理。他不仅要管理各部门的员工，还得负责市场研究、规划新产品的设计等，经常因为加班而牺牲周末的休息时间；手机里记着每天的行程和大大小小的事情，甚至连客人的兴趣都记在上面。他的生活里好像只有工作，分分秒秒都很紧张。",
+          "pinyin": "Zhāng Wénhuá zài lǎobǎn de yǎn zhōng, shì ge rènzhēn yòu yǒu nénglì de hǎo yuángōng, suǒyǐ jìn gōngsī bùjiǔ jiù dāngshang le jīnglǐ. Tā bùjǐn yào guǎnlǐ gè bùmén de yuángōng, hái děi fùzé shìchǎng yánjiū, guīhuà xīn chǎnpǐn de shèjì děng, jīngcháng yīnwèi jiābān ér xīshēng zhōumò de xiūxi shíjiān; shǒujī lǐ jìzhe měitiān de xíngchéng hé dàdàxiǎoxiǎo de shìqing, shènzhì lián kèrén de xìngqù dōu jì zài shàngmiàn. Tā de shēnghuó lǐ hǎoxiàng zhǐyǒu gōngzuò, fēnfēnmiǎomiǎo dōu hěn jǐnzhāng.",
+          "english": "Narrator: In his boss's eyes, Zhang Wenhua was a diligent and capable employee, so not long after joining the company he became manager. He not only managed employees of various departments, but also oversaw market research and product design planning, often sacrificing weekend rest for overtime; his phone recorded daily schedules and matters large and small, even guests' interests. Life seemed to consist only of work, tense every second."
+        },
+        {
+          "id": "b3l6d2-l2",
+          "speaker": "旁白",
+          "traditional": "除了辦公室裡必要的工作，為了讓生意談得更順利，有時張文華下班以後，還得陪客人到酒吧去喝幾杯。雖然他覺得那裡的音樂聽起來像噪音，但是為了工作不能不去，有時候還會喝得太多。有一次他醉得很厲害，第二天上班時，一整天都覺得精神很差，一直到了第三天才慢慢恢復。",
+          "simplified": "除了办公室里必要的工作，为了让生意谈得更顺利，有时张文华下班以后，还得陪客人到酒吧去喝几杯。虽然他觉得那里的音乐听起来像噪音，但是为了工作不能不去，有时候还会喝得太多。有一次他醉得很厉害，第二天上班时，一整天都觉得精神很差，一直到了第三天才慢慢恢复。",
+          "pinyin": "Chúle bàngōngshì lǐ bìyào de gōngzuò, wèile ràng shēngyì tán de gèng shùnlì, yǒushí Zhāng Wénhuá xiàbān yǐhòu, hái děi péi kèrén dào jiǔbā qù hē jǐ bēi. Suīrán tā juéde nàlǐ de yīnyuè tīng qǐlai xiàng zàoyīn, dànshì wèile gōngzuò bùnéng bú qù, yǒu shíhou hái huì hē de tài duō. Yǒu yí cì tā zuì de hěn lìhai, dì-èr tiān shàngbān shí, yì zhěng tiān dōu juéde jīngshén hěn chà, yìzhí dào le dì-sān tiān cái mànmàn huīfù.",
+          "english": "Besides essential office tasks, to make business negotiations run smoothly, Zhang Wenhua sometimes had to accompany clients to bars for drinks after work. Although he felt the music there sounded like noise, for work he could not not go, and sometimes drank too much. Once he got very drunk, felt terrible all day at work the next day, and only gradually recovered by the third day."
+        },
+        {
+          "id": "b3l6d2-l3",
+          "speaker": "旁白",
+          "traditional": "有一天張文華正準備出門上班時，他看到電視上播著新聞，有位明星因為工作太累、太緊張，以吸毒來忘掉痛苦，結果被警察抓了。看到這樣的新聞，他突然明白不能因為工作，而傷害自己的身心健康，所以決定重新規劃自己的生活。",
+          "simplified": "有一天张文华正准备出门上班时，他看到电视上播着新闻，有位明星因为工作太累、太紧张，以吸毒来忘掉痛苦，结果被警察抓了。看到这样的新闻，他突然明白不能因为工作，而伤害自己的身心健康，所以决定重新规划自己的生活。",
+          "pinyin": "Yǒu yì tiān Zhāng Wénhuá zhèng zhǔnbèi chūmén shàngbān shí, tā kàndào diànshì shàng bōzhe xīnwén, yǒu wèi míngxīng yīnwèi gōngzuò tài lèi, tài jǐnzhāng, yǐ xīdú lái wàngdiào tòngkǔ, jiéguǒ bèi jǐngchá zhuā le. Kàndào zhèyàng de xīnwén, tā tūrán míngbai bùnéng yīnwèi gōngzuò, ér shānghài zìjǐ de shēnxīn jiànkāng, suǒyǐ juédìng chóngxīn guīhuà zìjǐ de shēnghuó.",
+          "english": "One day as Zhang Wenhua was just preparing to leave for work, he saw news on TV: a celebrity, overwhelmed and stressed from work, took drugs to forget the pain and was arrested by police. Seeing this news, he suddenly realized one must not harm mental and physical health for work, so he decided to replan his life."
+        },
+        {
+          "id": "b3l6d2-l4",
+          "speaker": "旁白",
+          "traditional": "從那天起，他試著把年輕時的興趣找回來，開始玩音響、參加樂團。一放假就帶著孩子去海邊釣魚、去山上摘水果，也開始在院子裡種起花來了。當開花的季節到了，家人就會在院子裡看看花、聊聊天。上個星期他的樂團辦了一場戶外演唱會，好多人都去看他們的表演，結束時還放了煙火，熱鬧得不得了。",
+          "simplified": "从那天起，他试着把年轻时的兴趣找回来，开始玩音响、参加乐团。一放假就带着孩子去海边钓鱼、去山上摘水果，也开始在院子里种起花来了。当开花的季节到了，家人就会在院子里看看花、聊聊天。上个星期他的乐团办了一场户外演唱会，好多人都去看他们的表演，结束时还放了烟火，热闹得不得了。",
+          "pinyin": "Cóng nà tiān qǐ, tā shìzhe bǎ niánqīng shí de xìngqù zhǎo huílái, kāishǐ wán yīnxiǎng, cānjiā yuètuán. Yí fàngjià jiù dàizhe háizi qù hǎibiān diàoyú, qù shānshàng zhāi shuǐguǒ, yě kāishǐ zài yuànzi lǐ zhòng qǐ huā lái le. Dāng kāihuā de jìjié dào le, jiārén jiù huì zài yuànzi lǐ kànkan huā, liáoliao tiān. Shàng ge xīngqī tā de yuètuán bàn le yì chǎng hùwài yǎnchànghuì, hǎo duō rén dōu qù kàn tāmen de biǎoyǎn, jiéshù shí hái fàng le yānhuǒ, rènào de bùdéliǎo.",
+          "english": "From that day on, he tried to recover hobbies from his youth, taking up audio gear and joining a band. On holidays he took his children fishing by the sea and fruit-picking on the mountain, and started planting flowers in the yard. When blooming season arrived, the family would enjoy the flowers and chat in the yard. Last week his band held an outdoor concert, crowds came to watch, and fireworks went off at the finale—it was lively beyond words."
+        },
+        {
+          "id": "b3l6d2-l5",
+          "speaker": "旁白",
+          "traditional": "過去張文華滿腦子都是工作，現在下班時間快到時，就趕快把必要的工作完成，馬上離開辦公室。對他來說，生活的意義不再只是工作，「休息是為了走更遠的路」，努力往前走時，也要停下來看看周圍美麗的風景。",
+          "simplified": "过去张文华满脑子都是工作，现在下班时间快到时，就赶快把必要的工作完成，马上离开办公室。对他来说，生活的意义不再只是工作，「休息是为了走更远的路」，努力往前走时，也要停下来看看周围美丽的风景。",
+          "pinyin": "Guòqù Zhāng Wénhuá mǎnnǎozǐ dōu shì gōngzuò, xiànzài xiàbān shíjiān kuài dào shí, jiù gǎnkuài bǎ bìyào de gōngzuò wánchéng, mǎshàng líkāi bàngōngshì. Duì tā lái shuō, shēnghuó de yìyì bú zài zhǐshì gōngzuò, 'xiūxi shì wèile zǒu gèng yuǎn de lù', nǔlì wǎng qián zǒu shí, yě yào tíng xiàlai kànkan zhōuwéi měilì de fēngjǐng.",
+          "english": "In the past Zhang Wenhua's head was full of work; now when off-work time nears, he quickly finishes essential tasks and leaves the office immediately. To him, life's meaning is no longer just work: 'rest is for walking a longer road'; while striving forward, one must also pause to take in the beautiful scenery around."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L06-G05-P167",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 2,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 5,
+        "titleTraditional": "在……中",
+        "titleEnglish": "Within / In the Midst of...",
+        "learnerPromise": "Frame perspective or experience within a process or scope using 在……中.",
+        "printedPages": [
+          167,
+          168
+        ],
+        "bookPage": 167,
+        "bookPageAvailable": true,
+        "audioReference": "06-2-1",
+        "explanation": "「在……中」用來表示處於某個情況、過程或範圍裡面。「在」的後面接名詞短語或情境短語，表示「在某人的眼光/心意裡」、「在某個活動/環境裡」。",
+        "focusTerms": [
+          "在……中",
+          "在眼中",
+          "在心中",
+          "在會議中"
+        ],
+        "pattern": "在 + Situation / Scope + 中",
+        "patternColumns": [
+          "Preposition",
+          "Scope",
+          "Postposition"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g5-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g5-r1-c1-w1",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": "in"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g5-r1-c2-w1",
+                  "traditional": "老闆眼中",
+                  "simplified": "老板眼中",
+                  "pinyin": "lǎobǎn yǎn zhōng",
+                  "meaning": "boss's eyes"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g5-r1-c3-w1",
+                  "traditional": "是個好員工",
+                  "simplified": "是个好员工",
+                  "pinyin": "shì ge hǎo yuángōng",
+                  "meaning": "is good employee"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g5-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g5-r2-c1-w1",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": "in"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g5-r2-c2-w1",
+                  "traditional": "我心中",
+                  "simplified": "我心中",
+                  "pinyin": "wǒ xīn zhōng",
+                  "meaning": "my heart"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g5-r2-c3-w1",
+                  "traditional": "家人最重要",
+                  "simplified": "家人最重要",
+                  "pinyin": "jiārén zuì zhòngyào",
+                  "meaning": "family is most important"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g5-r3-c1-w1",
+                  "traditional": "在",
+                  "simplified": "在",
+                  "pinyin": "zài",
+                  "meaning": "in"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g5-r3-c2-w1",
+                  "traditional": "留學生活",
+                  "simplified": "留学生活",
+                  "pinyin": "liúxué shēnghuó",
+                  "meaning": "study abroad life"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g5-r3-c3-w1",
+                  "traditional": "學會了獨立",
+                  "simplified": "学会了独立",
+                  "pinyin": "xuéhuì le dúlì",
+                  "meaning": "learned independence"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "張文華在老闆的眼中，是個認真又有能力的好員工。",
+              "simplified": "张文华在老板的眼中，是个认真又有能力的好员工。",
+              "pinyin": "Zhāng Wénhuá zài lǎobǎn de yǎn zhōng, shì ge rènzhēn yòu yǒu nénglì de hǎo yuángōng.",
+              "english": "In the boss's eyes, Zhang Wenhua was a conscientious and capable good employee.",
+              "words": [
+                {
+                  "id": "b3l6g5-ex1-w1",
+                  "traditional": "張文華在",
+                  "simplified": "张文华在",
+                  "pinyin": "Zhāng Wénhuá zài",
+                  "meaning": "Zhang Wenhua in"
+                },
+                {
+                  "id": "b3l6g5-ex1-w2",
+                  "traditional": "老闆的眼中",
+                  "simplified": "老板的眼中",
+                  "pinyin": "lǎobǎn de yǎn zhōng",
+                  "meaning": "boss's eyes",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g5-ex1-w3",
+                  "traditional": "是個認真",
+                  "simplified": "是个认真",
+                  "pinyin": "shì ge rènzhēn",
+                  "meaning": "is a conscientious"
+                },
+                {
+                  "id": "b3l6g5-ex1-w4",
+                  "traditional": "又有能力",
+                  "simplified": "又有能力",
+                  "pinyin": "yòu yǒu nénglì",
+                  "meaning": "and capable"
+                },
+                {
+                  "id": "b3l6g5-ex1-w5",
+                  "traditional": "的好員工",
+                  "simplified": "的好员工",
+                  "pinyin": "de hǎo yuángōng",
+                  "meaning": "good employee",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我每天回家吃晚飯，因為在我心中，家人比什麼都重要。",
+              "simplified": "我每天回家吃晚饭，因为在我心中，家人比什么都重要。",
+              "pinyin": "Wǒ měitiān huí jiā chī wǎnfàn, yīnwèi zài wǒ xīn zhōng, jiārén bǐ shénme dōu zhòngyào.",
+              "english": "I go home every day for dinner because in my heart, family is more important than anything.",
+              "words": [
+                {
+                  "id": "b3l6g5-ex2-w1",
+                  "traditional": "我每天回家",
+                  "simplified": "我每天回家",
+                  "pinyin": "wǒ měitiān huí jiā",
+                  "meaning": "I daily return home"
+                },
+                {
+                  "id": "b3l6g5-ex2-w2",
+                  "traditional": "吃晚飯",
+                  "simplified": "吃晚饭",
+                  "pinyin": "chī wǎnfàn",
+                  "meaning": "eat dinner",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g5-ex2-w3",
+                  "traditional": "因為在我心中",
+                  "simplified": "因为在我心中",
+                  "pinyin": "yīnwèi zài wǒ xīn zhōng",
+                  "meaning": "because in my heart",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g5-ex2-w4",
+                  "traditional": "家人比什麼",
+                  "simplified": "家人比什么",
+                  "pinyin": "jiārén bǐ shénme",
+                  "meaning": "family than anything"
+                },
+                {
+                  "id": "b3l6g5-ex2-w5",
+                  "traditional": "都重要",
+                  "simplified": "都重要",
+                  "pinyin": "dōu zhòngyào",
+                  "meaning": "is all important",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "在會議報告中的第十頁，你翻一下應該就看得到。",
+              "simplified": "在会议报告中的第十页，你翻一下应该就看得到。",
+              "pinyin": "Zài huìyì bàogào zhōng de dì-shí yè, nǐ fān yíxià yīnggāi jiù kàn de dào.",
+              "english": "On page 10 of the meeting report, if you flip there you should see it.",
+              "words": [
+                {
+                  "id": "b3l6g5-ex3-w1",
+                  "traditional": "在會議報告",
+                  "simplified": "在会议报告",
+                  "pinyin": "zài huìyì bàogào",
+                  "meaning": "in meeting report"
+                },
+                {
+                  "id": "b3l6g5-ex3-w2",
+                  "traditional": "中的第十頁",
+                  "simplified": "中的第十页",
+                  "pinyin": "zhōng de dì-shí yè",
+                  "meaning": "10th page of",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g5-ex3-w3",
+                  "traditional": "你翻一下",
+                  "simplified": "你翻一下",
+                  "pinyin": "nǐ fān yíxià",
+                  "meaning": "you flip a bit"
+                },
+                {
+                  "id": "b3l6g5-ex3-w4",
+                  "traditional": "應該就看得到",
+                  "simplified": "应该就看得到",
+                  "pinyin": "yīnggāi jiù kàn de dào",
+                  "meaning": "should see it",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g5-cf1",
+              "question": "What does 在……中 convey compared to 在……上?",
+              "answer": "在……中 scopes within an ongoing process, collective category, or mental perspective ('in the eyes/heart of'), whereas 在……上 marks a specific field or topical domain.",
+              "wrongTraditional": "他在老闆的眼上是個認真的好員工。",
+              "wrongSimplified": "他在老板的眼上是个认真的好员工。",
+              "right": {
+                "traditional": "他在老闆的眼中是個認真的好員工。",
+                "simplified": "他在老板的眼中是个认真的好员工。",
+                "pinyin": "Tā zài lǎobǎn de yǎn zhōng shì ge rènzhēn de hǎo yuángōng.",
+                "english": "In his boss's eyes, he is a conscientious and good employee.",
+                "words": [
+                  {
+                    "id": "b3l6g5-cf1-w1",
+                    "traditional": "他在老闆的",
+                    "simplified": "他在老板的",
+                    "pinyin": "tā zài lǎobǎn de",
+                    "meaning": "he in boss's"
+                  },
+                  {
+                    "id": "b3l6g5-cf1-w2",
+                    "traditional": "眼中是個",
+                    "simplified": "眼中是个",
+                    "pinyin": "yǎn zhōng shì ge",
+                    "meaning": "eyes is a"
+                  },
+                  {
+                    "id": "b3l6g5-cf1-w3",
+                    "traditional": "認真的",
+                    "simplified": "认真的",
+                    "pinyin": "rènzhēn de",
+                    "meaning": "conscientious"
+                  },
+                  {
+                    "id": "b3l6g5-cf1-w4",
+                    "traditional": "好員工",
+                    "simplified": "好员工",
+                    "pinyin": "hǎo yuángōng",
+                    "meaning": "good employee",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g5-cf2",
+              "question": "Can 在……中 frame an ongoing life period or experience?",
+              "answer": "Yes, such as 在留學生活中 or 在每天忙碌的工作中.",
+              "wrongTraditional": "在留學生活上，他學會了獨立生活。",
+              "wrongSimplified": "在留学生活上，他学会了独立生活。",
+              "right": {
+                "traditional": "在留學生活中，他學會了獨立生活。",
+                "simplified": "在留学生活中，他学会了独立生活。",
+                "pinyin": "Zài liúxué shēnghuó zhōng, tā xuéhuì le dúlì shēnghuó.",
+                "english": "During his study abroad life, he learned to live independently.",
+                "words": [
+                  {
+                    "id": "b3l6g5-cf2-w1",
+                    "traditional": "在留學生活",
+                    "simplified": "在留学生活",
+                    "pinyin": "zài liúxué shēnghuó",
+                    "meaning": "in study abroad life"
+                  },
+                  {
+                    "id": "b3l6g5-cf2-w2",
+                    "traditional": "中",
+                    "simplified": "中",
+                    "pinyin": "zhōng",
+                    "meaning": "during",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g5-cf2-w3",
+                    "traditional": "他學會了",
+                    "simplified": "他学会了",
+                    "pinyin": "tā xuéhuì le",
+                    "meaning": "he learned"
+                  },
+                  {
+                    "id": "b3l6g5-cf2-w4",
+                    "traditional": "獨立生活",
+                    "simplified": "独立生活",
+                    "pinyin": "dúlì shēnghuó",
+                    "meaning": "independent life",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g5-q1",
+            "type": "choice",
+            "prompt": "Select the phrase meaning 'in the boss's eyes':",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "張文華"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g5-q1-b1",
+                "answer": "在老闆眼中",
+                "answerSimplified": "在老板眼中",
+                "hint": "in the boss's eyes"
+              },
+              {
+                "type": "text",
+                "traditional": "是個好員工。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g5-q1-t1",
+                "traditional": "在老闆眼中",
+                "simplified": "在老板眼中",
+                "pinyin": "zài lǎobǎn yǎn zhōng",
+                "meaning": "in boss's eyes"
+              },
+              {
+                "id": "b3l6g5-q1-t2",
+                "traditional": "從老闆眼裡",
+                "simplified": "从老板眼里",
+                "pinyin": "cóng lǎobǎn yǎn lǐ",
+                "meaning": "from boss's eyes"
+              },
+              {
+                "id": "b3l6g5-q1-t3",
+                "traditional": "向老闆身上",
+                "simplified": "向老板身上",
+                "pinyin": "xiàng lǎobǎn shēnshàng",
+                "meaning": "toward boss's body"
+              }
+            ],
+            "correctFeedback": "在……眼中 / 中 captures perspective within someone's view.",
+            "repairFeedback": "在 pairs with 中 / 眼中 to mark a perspective or situation."
+          }
+        ]
+      },
+      {
+        "id": "B3L06-G06-P169",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 2,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 6,
+        "titleTraditional": "不能不 / 不得不",
+        "titleEnglish": "Cannot But / Have No Choice But To",
+        "learnerPromise": "Distinguish between moral necessity (不能不) and reluctant helplessness (不得不).",
+        "printedPages": [
+          169,
+          170
+        ],
+        "bookPage": 169,
+        "bookPageAvailable": true,
+        "audioReference": "06-2-1",
+        "explanation": "「不能不」表示應該、必須、一定要做某件事，不做不行，側重於責任或道理上的義務。「不得不」表示當事人主觀上不願意，但因客觀條件或現實無奈只好去做，語氣比「不能不」更強，帶有不得已的無奈感。",
+        "focusTerms": [
+          "不能不",
+          "不得不",
+          "不得不離開",
+          "不得不退休"
+        ],
+        "pattern": "Subject + 不能不 / 不得不 + Predicate",
+        "patternColumns": [
+          "Situation",
+          "Modal",
+          "Action"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g6-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g6-r1-c1-w1",
+                  "traditional": "孩子需要房間",
+                  "simplified": "孩子需要房间",
+                  "pinyin": "háizi xūyào fángjiān",
+                  "meaning": "kids need room"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g6-r1-c2-w1",
+                  "traditional": "不能不",
+                  "simplified": "不能不",
+                  "pinyin": "bùnéng bù",
+                  "meaning": "cannot not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g6-r1-c3-w1",
+                  "traditional": "換大房子",
+                  "simplified": "换大房子",
+                  "pinyin": "huàn dà fángzi",
+                  "meaning": "change to big house"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g6-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g6-r2-c1-w1",
+                  "traditional": "生病的關係",
+                  "simplified": "生病的关系",
+                  "pinyin": "shēngbìng de guānxì",
+                  "meaning": "due to illness"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g6-r2-c2-w1",
+                  "traditional": "不得不",
+                  "simplified": "不得不",
+                  "pinyin": "bùdébù",
+                  "meaning": "have no choice but"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g6-r2-c3-w1",
+                  "traditional": "早點退休",
+                  "simplified": "早点退休",
+                  "pinyin": "zǎodiǎn tuìxiū",
+                  "meaning": "retire early"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g6-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g6-r3-c1-w1",
+                  "traditional": "房子被燒了",
+                  "simplified": "房子被烧了",
+                  "pinyin": "fángzi bèi shāo le",
+                  "meaning": "house burned"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g6-r3-c2-w1",
+                  "traditional": "不得不",
+                  "simplified": "不得不",
+                  "pinyin": "bùdébù",
+                  "meaning": "have no choice but"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g6-r3-c3-w1",
+                  "traditional": "搬到安全處",
+                  "simplified": "搬到安全处",
+                  "pinyin": "bān dào ānquán chù",
+                  "meaning": "move to safety"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g6-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "牛先生為了讓孩子有房間，不能不換大一點的房子。",
+              "simplified": "牛先生为了让孩子有房间，不能不换大一点的房子。",
+              "pinyin": "Niú xiānsheng wèile ràng háizi yǒu fángjiān, bùnéng bù huàn dà yìdiǎn de fángzi.",
+              "english": "Mr. Niu, in order to give each child a room, cannot but change to a bigger apartment.",
+              "words": [
+                {
+                  "id": "b3l6g6-ex1-w1",
+                  "traditional": "牛先生為了",
+                  "simplified": "牛先生为了",
+                  "pinyin": "Niú xiānsheng wèile",
+                  "meaning": "Mr. Niu in order to"
+                },
+                {
+                  "id": "b3l6g6-ex1-w2",
+                  "traditional": "讓孩子有房間",
+                  "simplified": "让孩子有房间",
+                  "pinyin": "ràng háizi yǒu fángjiān",
+                  "meaning": "let kids have rooms",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g6-ex1-w3",
+                  "traditional": "不能不換",
+                  "simplified": "不能不换",
+                  "pinyin": "bùnéng bù huàn",
+                  "meaning": "cannot not change"
+                },
+                {
+                  "id": "b3l6g6-ex1-w4",
+                  "traditional": "大房子",
+                  "simplified": "大房子",
+                  "pinyin": "dà fángzi",
+                  "meaning": "big house",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g6-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "今晚爸媽讓我照顧弟妹，我不能不早一點回家。",
+              "simplified": "今晚爸妈让我照顾弟妹，我不能不早一点回家。",
+              "pinyin": "Jīnwǎn bàmā ràng wǒ zhàogù dìmèi, wǒ bùnéng bù zǎo yìdiǎn huí jiā.",
+              "english": "Tonight parents had me look after siblings; I must head home a bit early.",
+              "words": [
+                {
+                  "id": "b3l6g6-ex2-w1",
+                  "traditional": "今晚爸媽",
+                  "simplified": "今晚爸妈",
+                  "pinyin": "jīnwǎn bàmā",
+                  "meaning": "tonight parents"
+                },
+                {
+                  "id": "b3l6g6-ex2-w2",
+                  "traditional": "讓我照顧弟妹",
+                  "simplified": "让我照顾弟妹",
+                  "pinyin": "ràng wǒ zhàogù dìmèi",
+                  "meaning": "had me look after siblings",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g6-ex2-w3",
+                  "traditional": "我不能不",
+                  "simplified": "我不能不",
+                  "pinyin": "wǒ bùnéng bù",
+                  "meaning": "I cannot not"
+                },
+                {
+                  "id": "b3l6g6-ex2-w4",
+                  "traditional": "早一點回家",
+                  "simplified": "早一点回家",
+                  "pinyin": "zǎo yìdiǎn huí jiā",
+                  "meaning": "earlier go home",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g6-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "我叔叔因為生病的關係，不得不早一點退休。",
+              "simplified": "我叔叔因为生病的关系，不得不早一点退休。",
+              "pinyin": "Wǒ shūshu yīnwèi shēngbìng de guānxì, bùdébù zǎo yìdiǎn tuìxiū.",
+              "english": "My uncle, due to illness, had no choice but to retire early.",
+              "words": [
+                {
+                  "id": "b3l6g6-ex3-w1",
+                  "traditional": "我叔叔因為",
+                  "simplified": "我叔叔因为",
+                  "pinyin": "wǒ shūshu yīnwèi",
+                  "meaning": "my uncle because of"
+                },
+                {
+                  "id": "b3l6g6-ex3-w2",
+                  "traditional": "生病的關係",
+                  "simplified": "生病的关系",
+                  "pinyin": "shēngbìng de guānxì",
+                  "meaning": "due to illness",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g6-ex3-w3",
+                  "traditional": "不得不早點",
+                  "simplified": "不得不早点",
+                  "pinyin": "bùdébù zǎodiǎn",
+                  "meaning": "had no choice but earlier"
+                },
+                {
+                  "id": "b3l6g6-ex3-w4",
+                  "traditional": "退休",
+                  "simplified": "退休",
+                  "pinyin": "tuìxiū",
+                  "meaning": "retire",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g6-cf1",
+              "question": "When do you use 不能不 instead of 不得不?",
+              "answer": "不能不 emphasizes duty, ethical obligation, or logical necessity ('cannot not do'), while 不得不 emphasizes helplessness and reluctant lack of choice.",
+              "wrongTraditional": "照顧父母是子女不得不盡的責任。",
+              "wrongSimplified": "照顾父母是子女不得不尽的责任。",
+              "right": {
+                "traditional": "照顧父母是子女不能不盡的責任。",
+                "simplified": "照顾父母是子女不能不尽的责任。",
+                "pinyin": "Zhàogù fùmǔ shì zǐnǚ bùnéng bú jìn de zérèn.",
+                "english": "Caring for parents is a duty children cannot fail to fulfill.",
+                "words": [
+                  {
+                    "id": "b3l6g6-cf1-w1",
+                    "traditional": "照顧父母是",
+                    "simplified": "照顾父母是",
+                    "pinyin": "zhàogù fùmǔ shì",
+                    "meaning": "caring parents is"
+                  },
+                  {
+                    "id": "b3l6g6-cf1-w2",
+                    "traditional": "子女不能不",
+                    "simplified": "子女不能不",
+                    "pinyin": "zǐnǚ bùnéng bù",
+                    "meaning": "children cannot not"
+                  },
+                  {
+                    "id": "b3l6g6-cf1-w3",
+                    "traditional": "盡的責任",
+                    "simplified": "尽的责任",
+                    "pinyin": "jìn de zérèn",
+                    "meaning": "fulfill duty",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g6-cf2",
+              "question": "When do you use 不得不 instead of 不能不?",
+              "answer": "不得不 conveys reluctant resignation forced by external hardship (illness, fire, accidents).",
+              "wrongTraditional": "房子被燒了，他不能不搬到朋友家住。",
+              "wrongSimplified": "房子被烧了，他不能不搬到朋友家住。",
+              "right": {
+                "traditional": "房子被燒了，他不得不搬到朋友家住。",
+                "simplified": "房子被烧了，他不得不搬到朋友家住。",
+                "pinyin": "Fángzi bèi shāo le, tā bùdébù bān dào péngyou jiā zhù.",
+                "english": "His house burned down; he had no choice but to move to a friend's house.",
+                "words": [
+                  {
+                    "id": "b3l6g6-cf2-w1",
+                    "traditional": "房子被燒了",
+                    "simplified": "房子被烧了",
+                    "pinyin": "fángzi bèi shāo le",
+                    "meaning": "house was burned",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g6-cf2-w2",
+                    "traditional": "他不得不搬",
+                    "simplified": "他不得不搬",
+                    "pinyin": "tā bùdébù bān",
+                    "meaning": "he had to move"
+                  },
+                  {
+                    "id": "b3l6g6-cf2-w3",
+                    "traditional": "到朋友家住",
+                    "simplified": "到朋友家住",
+                    "pinyin": "dào péngyou jiā zhù",
+                    "meaning": "to friend's home live",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g6-q1",
+            "type": "choice",
+            "prompt": "Choose the term expressing reluctant lack of choice:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "生了這場大病，他"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g6-q1-b1",
+                "answer": "不得不放棄",
+                "answerSimplified": "不得不放弃",
+                "hint": "had no choice but to give up"
+              },
+              {
+                "type": "text",
+                "traditional": "出國留學的計畫。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g6-q1-t1",
+                "traditional": "不得不放棄",
+                "simplified": "不得不放弃",
+                "pinyin": "bùdébù fàngqì",
+                "meaning": "had to give up"
+              },
+              {
+                "id": "b3l6g6-q1-t2",
+                "traditional": "絕不能放棄",
+                "simplified": "绝不能放弃",
+                "pinyin": "jué bùnéng fàngqì",
+                "meaning": "must not give up"
+              },
+              {
+                "id": "b3l6g6-q1-t3",
+                "traditional": "不必再放棄",
+                "simplified": "不必再放弃",
+                "pinyin": "búbì zài fàngqì",
+                "meaning": "no need give up"
+              }
+            ],
+            "correctFeedback": "不得不放棄 accurately conveys the reluctant sacrifice forced by illness.",
+            "repairFeedback": "不得不 expresses helplessness in having to perform an unwanted action."
+          }
+        ]
+      },
+      {
+        "id": "B3L06-G07-P171",
+        "bookId": 3,
+        "lessonId": 6,
+        "partId": 2,
+        "lessonTitle": "休閒新生活",
+        "lessonTitleEnglish": "Balanced Work and Leisure",
+        "grammarNumber": 7,
+        "titleTraditional": "正＋V",
+        "titleEnglish": "Just Coinciding with / Just About To",
+        "learnerPromise": "Describe coincident timing right as an intended action begins using 正＋V.",
+        "printedPages": [
+          171,
+          172
+        ],
+        "bookPage": 171,
+        "bookPageAvailable": true,
+        "audioReference": "06-2-1",
+        "explanation": "「正」當副詞，有剛好、巧合的意思。表示第一件事剛好準備要做或剛開始做時，第二件事巧合地發生了。「正」後面常接「要、想、打算、準備」等動詞，表示「正要……的時候，巧合的事情發生了」。",
+        "focusTerms": [
+          "正要",
+          "正想",
+          "正打算",
+          "正準備"
+        ],
+        "pattern": "Subject + 正 + Verb (要/想/打算/準備) + Action 1，Coincident Action 2",
+        "patternColumns": [
+          "Subject",
+          "Just",
+          "Action"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l6g7-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g7-r1-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g7-r1-c2-w1",
+                  "traditional": "正準備出門",
+                  "simplified": "正准备出门",
+                  "pinyin": "zhèng zhǔnbèi chūmén",
+                  "meaning": "just preparing to leave"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g7-r1-c3-w1",
+                  "traditional": "電視播著新聞",
+                  "simplified": "电视播着新闻",
+                  "pinyin": "diànshì bōzhe xīnwén",
+                  "meaning": "TV played news"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g7-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g7-r2-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g7-r2-c2-w1",
+                  "traditional": "正想打電話",
+                  "simplified": "正想打电话",
+                  "pinyin": "zhèng xiǎng dǎ diànhuà",
+                  "meaning": "just about to call"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g7-r2-c3-w1",
+                  "traditional": "他就打來了",
+                  "simplified": "他就打来了",
+                  "pinyin": "tā jiù dǎ lái le",
+                  "meaning": "he just called"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l6g7-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l6g7-r3-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g7-r3-c2-w1",
+                  "traditional": "正要進電梯",
+                  "simplified": "正要进电梯",
+                  "pinyin": "zhèng yào jìn diàntī",
+                  "meaning": "just entering elevator"
+                }
+              ],
+              [
+                {
+                  "id": "b3l6g7-r3-c3-w1",
+                  "traditional": "突然發生地震",
+                  "simplified": "突然发生地震",
+                  "pinyin": "tūrán fāshēng dìzhèn",
+                  "meaning": "suddenly quake hit"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l6g7-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "有一天張文華正準備出門上班時，他看到電視上播著新聞。",
+              "simplified": "有一天张文华正准备出门上班时，他看到电视上播着新闻。",
+              "pinyin": "Yǒu yì tiān Zhāng Wénhuá zhèng zhǔnbèi chūmén shàngbān shí, tā kàndào diànshì shàng bōzhe xīnwén.",
+              "english": "One day as Zhang Wenhua was just preparing to leave for work, he saw the news playing on TV.",
+              "words": [
+                {
+                  "id": "b3l6g7-ex1-w1",
+                  "traditional": "有一天張文華",
+                  "simplified": "有一天张文华",
+                  "pinyin": "yǒu yì tiān Zhāng Wénhuá",
+                  "meaning": "one day Zhang Wenhua"
+                },
+                {
+                  "id": "b3l6g7-ex1-w2",
+                  "traditional": "正準備出門",
+                  "simplified": "正准备出门",
+                  "pinyin": "zhèng zhǔnbèi chūmén",
+                  "meaning": "just preparing to leave"
+                },
+                {
+                  "id": "b3l6g7-ex1-w3",
+                  "traditional": "上班時",
+                  "simplified": "上班时",
+                  "pinyin": "shàngbān shí",
+                  "meaning": "for work",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g7-ex1-w4",
+                  "traditional": "看到電視上",
+                  "simplified": "看到电视上",
+                  "pinyin": "kàndào diànshì shàng",
+                  "meaning": "saw on TV"
+                },
+                {
+                  "id": "b3l6g7-ex1-w5",
+                  "traditional": "播著新聞",
+                  "simplified": "播着新闻",
+                  "pinyin": "bōzhe xīnwén",
+                  "meaning": "broadcast news",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g7-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我正想打電話給小紀時，就接到他打來的電話。",
+              "simplified": "我正想打电话给小纪时，就接到他打来的电话。",
+              "pinyin": "Wǒ zhèng xiǎng dǎ diànhuà gěi Xiǎo Jì shí, jiù jiēdào tā dǎ lái de diànhuà.",
+              "english": "Just as I was thinking of calling Xiao Ji, I received a phone call from him.",
+              "words": [
+                {
+                  "id": "b3l6g7-ex2-w1",
+                  "traditional": "我正想",
+                  "simplified": "我正想",
+                  "pinyin": "wǒ zhèng xiǎng",
+                  "meaning": "I just thought"
+                },
+                {
+                  "id": "b3l6g7-ex2-w2",
+                  "traditional": "打電話給他",
+                  "simplified": "打电话给他",
+                  "pinyin": "dǎ diànhuà gěi tā",
+                  "meaning": "call him",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g7-ex2-w3",
+                  "traditional": "就接到他",
+                  "simplified": "就接到他",
+                  "pinyin": "jiù jiēdào tā",
+                  "meaning": "then received his"
+                },
+                {
+                  "id": "b3l6g7-ex2-w4",
+                  "traditional": "打來的電話",
+                  "simplified": "打来的电话",
+                  "pinyin": "dǎ lái de diànhuà",
+                  "meaning": "incoming call",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l6g7-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "我正要進電梯時，突然發生地震，還好我沒進去。",
+              "simplified": "我正要进电梯时，突然发生地震，还好我没进去。",
+              "pinyin": "Wǒ zhèng yào jìn diàntī shí, tūrán fāshēng dìzhèn, hái hǎo wǒ méi jìnqù.",
+              "english": "Just as I was about to enter the elevator, an earthquake struck; luckily I hadn't stepped inside.",
+              "words": [
+                {
+                  "id": "b3l6g7-ex3-w1",
+                  "traditional": "我正要進電梯",
+                  "simplified": "我正要进电梯",
+                  "pinyin": "wǒ zhèng yào jìn diàntī",
+                  "meaning": "I was about to enter elevator"
+                },
+                {
+                  "id": "b3l6g7-ex3-w2",
+                  "traditional": "突然發生地震",
+                  "simplified": "突然发生地震",
+                  "pinyin": "tūrán fāshēng dìzhèn",
+                  "meaning": "suddenly quake struck",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l6g7-ex3-w3",
+                  "traditional": "還好我沒進去",
+                  "simplified": "还好我没进去",
+                  "pinyin": "hái hǎo wǒ méi jìnqù",
+                  "meaning": "luckily didn't enter",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l6g7-cf1",
+              "question": "What is the difference between 正＋V and 正在＋V?",
+              "answer": "正＋V marks the exact threshold moment or coincidence right as an intention starts (often with 要/想/打算/準備). 正在＋V marks continuous ongoing duration.",
+              "wrongTraditional": "我正在要出門，你就來了。",
+              "wrongSimplified": "我正在要出门，你就来了。",
+              "right": {
+                "traditional": "我正要出門，你就來了。",
+                "simplified": "我正要出门，你就来了。",
+                "pinyin": "Wǒ zhèng yào chūmén, nǐ jiù lái le.",
+                "english": "Just as I was about to head out, you arrived.",
+                "words": [
+                  {
+                    "id": "b3l6g7-cf1-w1",
+                    "traditional": "我正要出門",
+                    "simplified": "我正要出门",
+                    "pinyin": "wǒ zhèng yào chūmén",
+                    "meaning": "I was about to head out",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g7-cf1-w2",
+                    "traditional": "你就來了",
+                    "simplified": "你就来了",
+                    "pinyin": "nǐ jiù lái le",
+                    "meaning": "you then arrived",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l6g7-cf2",
+              "question": "What verbs typically follow 正 to express threshold timing?",
+              "answer": "Verbs expressing impending action or intention such as 要, 想, 打算, and 準備.",
+              "wrongTraditional": "有一天他正已經出門，看到新聞。",
+              "wrongSimplified": "有一天他正已经出门，看到新闻。",
+              "right": {
+                "traditional": "有一天他正準備出門，看到新聞。",
+                "simplified": "有一天他正准备出门，看到新闻。",
+                "pinyin": "Yǒu yì tiān tā zhèng zhǔnbèi chūmén, kàndào xīnwén.",
+                "english": "One day right as he was preparing to leave, he saw the news.",
+                "words": [
+                  {
+                    "id": "b3l6g7-cf2-w1",
+                    "traditional": "有一天他",
+                    "simplified": "有一天他",
+                    "pinyin": "yǒu yì tiān tā",
+                    "meaning": "one day he"
+                  },
+                  {
+                    "id": "b3l6g7-cf2-w2",
+                    "traditional": "正準備出門",
+                    "simplified": "正准备出门",
+                    "pinyin": "zhèng zhǔnbèi chūmén",
+                    "meaning": "just preparing to leave",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l6g7-cf2-w3",
+                    "traditional": "看到新聞",
+                    "simplified": "看到新闻",
+                    "pinyin": "kàndào xīnwén",
+                    "meaning": "saw news",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l6g7-q1",
+            "type": "choice",
+            "prompt": "Select the sentence describing a coincidence just as you were about to call:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "真巧！我"
+              },
+              {
+                "type": "blank",
+                "id": "b3l6g7-q1-b1",
+                "answer": "正想找你",
+                "answerSimplified": "正想找你",
+                "hint": "was just thinking of finding you"
+              },
+              {
+                "type": "text",
+                "traditional": "，你就打來了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l6g7-q1-t1",
+                "traditional": "正想找你",
+                "simplified": "正想找你",
+                "pinyin": "zhèng xiǎng zhǎo nǐ",
+                "meaning": "just thinking of finding you"
+              },
+              {
+                "id": "b3l6g7-q1-t2",
+                "traditional": "總算找你",
+                "simplified": "总算找你",
+                "pinyin": "zǒngsuàn zhǎo nǐ",
+                "meaning": "finally finding you"
+              },
+              {
+                "id": "b3l6g7-q1-t3",
+                "traditional": "總是找你",
+                "simplified": "总是找你",
+                "pinyin": "zǒngshì zhǎo nǐ",
+                "meaning": "always finding you"
+              }
+            ],
+            "correctFeedback": "正想找你 denotes the exact coincident moment.",
+            "repairFeedback": "正＋想 expresses coincident timing right as you were about to call."
+          }
+        ]
+      }
+    ]
+  }
+}

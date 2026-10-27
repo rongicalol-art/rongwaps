@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "version": "a4283a34b5c9db27",
-  "generatedAt": "2026-10-24T15:23:43.570Z",
-  "totalCount": 43,
+  "version": "79056a37f6c0c08b",
+  "generatedAt": "2026-10-27T12:27:59.961Z",
+  "totalCount": 47,
   "books": [
     {
       "bookId": 1,
@@ -13,10 +13,10 @@
     },
     {
       "bookId": 3,
-      "count": 10,
+      "count": 14,
       "path": "/data/grammar/book-3.json",
-      "sha256": "a4283a34b5c9db273b1c7742beb70aa67ee6b5a6fba021ccd2292045635fd4eb",
-      "bytes": 1341265
+      "sha256": "79056a37f6c0c08b794d07233f62b80da5e0546d5212339bac7d89a42823866a",
+      "bytes": 1659540
     }
   ]
 }

@@ -1,0 +1,2576 @@
+{
+  "BOOK3_LESSON_SEVEN_PART_ONE": {
+    "id": "B3L07-P01-D01",
+    "bookId": 3,
+    "lessonId": 7,
+    "partId": 1,
+    "title": "Grammar 1–4 · Backpacker's Travel",
+    "dialogue": {
+      "id": "B3L07-D01",
+      "title": "走吧！當背包客去",
+      "audioReference": "07-1-1",
+      "printedPages": [
+        176,
+        177,
+        178,
+        179
+      ],
+      "grammarFocus": [
+        "才……就……",
+        "話說回來",
+        "這麼說，……",
+        "V成"
+      ],
+      "lines": [
+        {
+          "id": "b3l7d1-l1",
+          "speaker": "明哲",
+          "traditional": "東賢，你姊姊是不是又計畫去旅行了？",
+          "simplified": "东贤，你姊姊是不是又计划去旅行了？",
+          "pinyin": "Dōngxián, nǐ jiějie shì bú shì yòu jìhuà qù lǚxíng le?",
+          "english": "Dongxian, is your older sister planning another trip again?"
+        },
+        {
+          "id": "b3l7d1-l2",
+          "speaker": "東賢",
+          "traditional": "沒錯。她正準備去非洲大草原。",
+          "simplified": "没错。她正准备去非洲大草原。",
+          "pinyin": "Méicuò. Tā zhèng zhǔnbèi qù Fēizhōu dà cǎoyuán.",
+          "english": "That's right. She's just getting ready to go to the African savanna."
+        },
+        {
+          "id": "b3l7d1-l3",
+          "speaker": "明哲",
+          "traditional": "我常看她部落格裡的背包客日記，不但內容充實、想法獨特，而且跟旅遊相關的建議也寫得很詳細，讓我打開了視野。",
+          "simplified": "我常看她部落格里的背包客日记，不但内容充实、想法独特，而且跟旅游相关的建议也写得很详细，让我打开了视野。",
+          "pinyin": "Wǒ cháng kàn tā bùluògé lǐ de bēibāokè rìjì, búdàn nèiróng chōngshí, xiǎngfǎ dútè, érqiě gēn lǚyóu xiāngguān de jiànyì yě xiě de hěn xiángxì, ràng wǒ dǎkāi le shìyě.",
+          "english": "I often read the backpacker diary on her blog. Not only is the content substantial and original, but the travel tips are written in great detail, which broadened my horizons."
+        },
+        {
+          "id": "b3l7d1-l4",
+          "speaker": "東賢",
+          "traditional": "我姊姊真的很厲害，一個人上山下海到處旅行。數一數，她已經去過三十幾個國家了。因為她的關係，我也對旅行產生了興趣，上個月她來臺灣時，我們還一起騎自行車環島呢！",
+          "simplified": "我姊姊真的很厉害，一个人上山下海到处旅行。数一数，她已经去过三十几个国家了。因为她的关系，我也对旅行产生了兴趣，上个月她来台湾时，我们还一起骑自行车环岛呢！",
+          "pinyin": "Wǒ jiějie zhēnde hěn lìhai, yì ge rén shàngshān xiàhǎi dàochù lǚxíng. Shǔ yì shǔ, tā yǐjīng qù guò sānshí jǐ ge guójiā le. Yīnwèi tā de guānxì, wǒ yě duì lǚxíng chǎnshēng le xìngqù, shàng ge yuè tā lái Táiwān shí, wǒmen hái yìqǐ qí zìxíngchē huándǎo ne!",
+          "english": "My sister is truly amazing, traveling everywhere by herself from mountains to seas. Counting them up, she's visited over thirty countries. Because of her, I also got interested in travel; when she came to Taiwan last month, we even cycled around the island together!"
+        },
+        {
+          "id": "b3l7d1-l5",
+          "speaker": "明哲",
+          "traditional": "真好。我猜，這次的環島旅行一定讓你姊姊很難忘吧？",
+          "simplified": "真好。我猜，这次的环岛旅行一定让你姊姊很难忘吧？",
+          "pinyin": "Zhēn hǎo. Wǒ cāi, zhè cì de huándǎo lǚxíng yídìng ràng nǐ jiějie hěn nánwàng ba?",
+          "english": "How wonderful. I bet this island-cycling trip was unforgettable for your sister?"
+        },
+        {
+          "id": "b3l7d1-l6",
+          "speaker": "東賢",
+          "traditional": "唉，怎麼說呢？我們本來計畫旅行十天，可惜才六天就結束了。",
+          "simplified": "唉，怎么说呢？我们本来计划旅行十天，可惜才六天就结束了。",
+          "pinyin": "Ài, zěnme shuō ne? Wǒmen běnlái jìhuà lǚxíng shí tiān, kěxī cái liù tiān jiù jiéshù le.",
+          "english": "Well, how should I put it? We originally planned a 10-day trip, but unfortunately it ended after just 6 days."
+        },
+        {
+          "id": "b3l7d1-l7",
+          "speaker": "明哲",
+          "traditional": "怎麼回事？",
+          "simplified": "怎么回事？",
+          "pinyin": "Zěnme huí shì?",
+          "english": "What happened?"
+        },
+        {
+          "id": "b3l7d1-l8",
+          "speaker": "東賢",
+          "traditional": "我們的運氣很差，碰到了壞天氣。出發前，氣象預報說那幾天都是晴天。頭幾天的天氣很好，誰知道到了第六天，一到山區天空就突然變黑，也下起了大雨，我的衣服都濕了，自行車也壞了。",
+          "simplified": "我们的运气很差，碰到了坏天气。出发前，气象预报说那几天都是晴天。头几天的天气很好，谁知道到了第六天，一到山区天空就突然变黑，也下起了大雨，我的衣服都湿了，自行车也坏了。",
+          "pinyin": "Wǒmen de yùnqì hěn chà, pèngdào le huài tiānqì. Chūfā qián, qìxiàng yùbào shuō nà jǐ tiān dōu shì qíngtiān. Tóu jǐ tiān de tiānqì hěn hǎo, shéi zhīdào dào le dì-liù tiān, yí dào shānqū tiānkōng jiù tūrán biàn hēi, yě xià qǐ le dàyǔ, wǒ de yīfu dōu shī le, zìxíngchē yě huài le.",
+          "english": "Our luck was terrible; we ran into bad weather. Before leaving, the weather forecast said those days would all be sunny. The first few days were great, but on the sixth day, as soon as we hit the mountains the sky turned black and heavy rain poured down. My clothes were soaked and my bike broke down."
+        },
+        {
+          "id": "b3l7d1-l9",
+          "speaker": "明哲",
+          "traditional": "那真糟糕！不過山區的天氣本來變化就很大，有時山下還是晴天，山上已經變涼，甚至起風、下雨了。後來你們怎麼辦？",
+          "simplified": "那真糟糕！不过山区的天气本来变化就很大，有时山下还是晴天，山上已经变凉，甚至起风、下雨了。后来你们怎么办？",
+          "pinyin": "Nà zhēn zāogāo! Búguò shānqū de tiānqì běnlái biànhuà jiù hěn dà, yǒushí shānxià háishì qíngtiān, shānshàng yǐjīng biàn liáng, shènzhì qǐfēng, xiàyǔ le. Hòulái nǐmen zěnme bàn?",
+          "english": "That's awful! But mountain weather changes a lot naturally; sometimes it's still sunny at the foot of the mountain while cool, windy, or rainy up top. What did you do then?"
+        },
+        {
+          "id": "b3l7d1-l10",
+          "speaker": "東賢",
+          "traditional": "那時，我們的手機訊號很弱，一直連絡不到能修理的人，只好推著自行車走了很長的一段路。",
+          "simplified": "那时，我们的手机讯号很弱，一直连络不到能修理的人，只好推着自行车走了很长的一段路。",
+          "pinyin": "Nà shí, wǒmen de shǒujī xùnhào hěn ruò, yìzhí liánluò bú dào néng xiūlǐ de rén, zhǐhǎo tuī zhe zìxíngchē zǒu le hěn cháng de yí duàn lù.",
+          "english": "Back then our cell reception was very weak and we couldn't reach anyone to repair it, so we had no choice but to push the bikes along a long stretch of road."
+        },
+        {
+          "id": "b3l7d1-l11",
+          "speaker": "明哲",
+          "traditional": "附近沒有商店嗎？有沒有車子經過？",
+          "simplified": "附近没有商店吗？有没有车子经过？",
+          "pinyin": "Fùjìn méiyǒu shāngdiàn ma? Yǒu méiyǒu chēzi jīngguò?",
+          "english": "Were there no shops nearby? Did any cars pass by?"
+        },
+        {
+          "id": "b3l7d1-l12",
+          "speaker": "東賢",
+          "traditional": "那是在偏僻的山區，附近什麼都沒有。還好後來遇到一個當地人，他幫我們把車修好。沒想到那時候我姊姊突然發燒了，我們不得不縮短行程，趕快下山去醫院。",
+          "simplified": "那是在偏僻的山区，附近什么都没有。还好后来遇到一个当地人，他帮我们把车修好。没想到那时候我姊姊突然发烧了，我们不得不缩短行程，赶快下山去医院。",
+          "pinyin": "Nà shì zài piānpì de shānqū, fùjìn shénme dōu méiyǒu. Hái hǎo hòulái yùdào yí ge dāngdì rén, tā bāng wǒmen bǎ chē xiū hǎo. Méi xiǎngdào nà shíhou wǒ jiějie tūrán fāshāo le, wǒmen bùdébù suōduǎn xíngchéng, gǎnkuài xiàshān qù yīyuàn.",
+          "english": "It was in a remote mountain area with nothing around. Fortunately we ran into a local who fixed our bike. Little did we expect my sister suddenly ran a fever, so we had to cut the trip short and hurry down the mountain to the hospital."
+        },
+        {
+          "id": "b3l7d1-l13",
+          "speaker": "明哲",
+          "traditional": "聽起來這次的旅行不太順利。不過話說回來，就是因為不確定會碰到什麼，所以旅行才這麼迷人。",
+          "simplified": "听起来这次的旅行不太顺利。不过话说回来，就是因为不确定会碰到什么，所以旅行才这么迷人。",
+          "pinyin": "Tīng qǐlai zhè cì de lǚxíng bú tài shùnlì. Búguò huàshuō huílái, jiùshì yīnwèi bú quèdìng huì pèngdào shénme, suǒyǐ lǚxíng cái zhème mírén.",
+          "english": "Sounds like this trip wasn't very smooth. But then again, it's precisely because you never know what you'll encounter that travel is so enchanting."
+        },
+        {
+          "id": "b3l7d1-l14",
+          "speaker": "東賢",
+          "traditional": "沒錯，我姊姊也是這麼說的。",
+          "simplified": "没错，我姊姊也是这么说的。",
+          "pinyin": "Méicuò, wǒ jiějie yě shì zhème shuō de.",
+          "english": "Exactly; my sister said so too."
+        },
+        {
+          "id": "b3l7d1-l15",
+          "speaker": "明哲",
+          "traditional": "你姊姊這次去非洲，還是一個人去嗎？有個人陪比較好吧。",
+          "simplified": "你姊姊这次去非洲，还是一样一个人去吗？有个人陪比较好吧。",
+          "pinyin": "Nǐ jiějie zhè cì qù Fēizhōu, háishì yí ge rén qù ma? Yǒu ge rén péi bǐjiào hǎo ba.",
+          "english": "Is your sister going to Africa by herself again this time? It might be better to have someone accompany her."
+        },
+        {
+          "id": "b3l7d1-l16",
+          "speaker": "東賢",
+          "traditional": "她早就習慣一個人旅行了，想去哪裡就去哪裡，不必在意別人的想法。再說，她的旅行經驗這麼豐富，一個人去絕對沒問題的。像規劃行程、辦簽證，上網查當地的氣溫、地形等等，對她來說，都是小事。",
+          "simplified": "她早就习惯一个人旅行了，想去哪里就去哪里，不必在意别人的想法。再说，她的旅行经验这么丰富，一个人去绝对没问题的。像规划行程、办签证，上网查当地的气温、地形等等，对她来说，都是小事。",
+          "pinyin": "Tā zǎojiù xíguàn yí ge rén lǚxíng le, xiǎng qù nǎlǐ jiù qù nǎlǐ, bú bì zàiyì biérén de xiǎngfǎ. Zàishuō, tā de lǚxíng jīngyàn zhème fēngfù, yí ge rén qù juéduì méi wèntí de. Xiàng guīhuà xíngchéng, bàn qiānzhèng, shàngwǎng chá dāngdì de qìwēn, dìxíng děngděng, duì tā lái shuō, dōu shì xiǎoshì.",
+          "english": "She's long used to solo travel: going wherever she wants without having to care about others' opinions. Besides, with her rich travel experience, going alone is no problem at all. Planning itineraries, applying for visas, checking weather and terrain online—to her, these are all easy."
+        },
+        {
+          "id": "b3l7d1-l17",
+          "speaker": "明哲",
+          "traditional": "這麼說，不管她想去哪裡，沒有去不成的？",
+          "simplified": "这么说，不管她想去哪里，没有去不成的？",
+          "pinyin": "Zhème shuō, bùguǎn tā xiǎng qù nǎlǐ, méiyǒu qù bu chéng de?",
+          "english": "So that means, wherever she wants to go, there's nowhere she can't make it to?"
+        },
+        {
+          "id": "b3l7d1-l18",
+          "speaker": "東賢",
+          "traditional": "是啊。我姊姊有背包客的性格，她認為只有走出舒服的生活環境，才能發現不一樣的自己。",
+          "simplified": "是啊。我姊姊有背包客的性格，她认为只有走出舒服的生活环境，才能发现不一样的自己。",
+          "pinyin": "Shì a. Wǒ jiějie yǒu bēibāokè de xìnggé, tā rènwéi zhǐyǒu zǒuchū shūfu de shēnghuó huánjìng, cái néng fāxiàn bù yíyàng de zìjǐ.",
+          "english": "Yeah. My sister has the spirit of a backpacker; she believes only by stepping out of one's comfort zone can one discover a different self."
+        },
+        {
+          "id": "b3l7d1-l19",
+          "speaker": "明哲",
+          "traditional": "難怪你姊姊的背包客日記，內容總是那麼吸引人。",
+          "simplified": "难怪你姊姊的背包客日记，内容总是那么吸引人。",
+          "pinyin": "Nánguài nǐ jiějie de bēibāokè rìjì, nèiróng zǒngshì nàme xīyǐnrén.",
+          "english": "No wonder her backpacker diary is always so captivating."
+        },
+        {
+          "id": "b3l7d1-l20",
+          "speaker": "東賢",
+          "traditional": "對了，你不是剛跟女朋友分開了嗎？要是你因為失戀而覺得很痛苦，就當個背包客出去走走吧。",
+          "simplified": "对了，你不是刚跟女朋友分开了吗？要是你因为失恋而觉得很痛苦，就当个背包客出去走走吧。",
+          "pinyin": "Duì le, nǐ bú shì gāng gēn nǚpéngyou fēnkāi le ma? Yàoshi nǐ yīnwèi shīliàn ér juéde hěn tòngkǔ, jiù dāng ge bēibāokè chūqù zǒuzou ba.",
+          "english": "By the way, didn't you just break up with your girlfriend? If you're hurting from the heartbreak, why not go on a backpacking trip to clear your head?"
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L07-G01-P184",
+        "bookId": 3,
+        "lessonId": 7,
+        "partId": 1,
+        "lessonTitle": "背包客的旅行",
+        "lessonTitleEnglish": "Backpacker's Travel",
+        "grammarNumber": 1,
+        "titleTraditional": "才……就……",
+        "titleEnglish": "Only / Barely... Then Already...",
+        "learnerPromise": "Express unexpected brevity, small quantity, or rapid immediate consequence using 才……就…….",
+        "printedPages": [
+          184,
+          185,
+          186
+        ],
+        "bookPage": 184,
+        "bookPageAvailable": true,
+        "audioReference": "07-1-1",
+        "explanation": "「才……就……」有兩種主要用法：(1)「才」強調時間短、數量少、次數少或程度低，後面接「就」表示緊接著出現的事實，說話者對這樣的情況感到驚訝或認為不足；(2)「才」後面的動作剛發生，「就」後面的動作緊接著發生，表示兩件事銜接得非常緊密。",
+        "focusTerms": [
+          "才",
+          "就",
+          "才六天就",
+          "才畢業就"
+        ],
+        "pattern": "Subject + 才 + Brief Action / Small Quantity + 就 + Consequence",
+        "patternColumns": [
+          "Subject",
+          "才",
+          "Condition",
+          "就",
+          "Result"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l7g1-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g1-r1-c1-w1",
+                  "traditional": "旅行",
+                  "simplified": "旅行",
+                  "pinyin": "lǚxíng",
+                  "meaning": "trip"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r1-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": "only"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r1-c3-w1",
+                  "traditional": "六天",
+                  "simplified": "六天",
+                  "pinyin": "liù tiān",
+                  "meaning": "six days"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r1-c4-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r1-c5-w1",
+                  "traditional": "結束了",
+                  "simplified": "结束了",
+                  "pinyin": "jiéshù le",
+                  "meaning": "ended"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g1-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g1-r2-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r2-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": "only"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r2-c3-w1",
+                  "traditional": "二十幾歲",
+                  "simplified": "二十几岁",
+                  "pinyin": "èrshí jǐ suì",
+                  "meaning": "in twenties"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r2-c4-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "already"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r2-c5-w1",
+                  "traditional": "當了老闆",
+                  "simplified": "当了老板",
+                  "pinyin": "dāng le lǎobǎn",
+                  "meaning": "became boss"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g1-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g1-r3-c1-w1",
+                  "traditional": "弟弟",
+                  "simplified": "弟弟",
+                  "pinyin": "dìdi",
+                  "meaning": "brother"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r3-c2-w1",
+                  "traditional": "才",
+                  "simplified": "才",
+                  "pinyin": "cái",
+                  "meaning": "just"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r3-c3-w1",
+                  "traditional": "剛畢業",
+                  "simplified": "刚毕业",
+                  "pinyin": "gāng bìyè",
+                  "meaning": "graduated"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r3-c4-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g1-r3-c5-w1",
+                  "traditional": "找到工作",
+                  "simplified": "找到工作",
+                  "pinyin": "zhǎodào gōngzuò",
+                  "meaning": "found job"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l7g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "我們本來計畫旅行十天，可惜才六天就結束了。",
+              "simplified": "我们本来计划旅行十天，可惜才六天就结束了。",
+              "pinyin": "Wǒmen běnlái jìhuà lǚxíng shí tiān, kěxī cái liù tiān jiù jiéshù le.",
+              "english": "We originally planned a ten-day trip, but unfortunately it ended in only six days.",
+              "words": [
+                {
+                  "id": "b3l7g1-ex1-w1",
+                  "traditional": "本來計畫",
+                  "simplified": "本来计划",
+                  "pinyin": "běnlái jìhuà",
+                  "meaning": "originally planned"
+                },
+                {
+                  "id": "b3l7g1-ex1-w2",
+                  "traditional": "旅行十天",
+                  "simplified": "旅行十天",
+                  "pinyin": "lǚxíng shí tiān",
+                  "meaning": "trip ten days",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g1-ex1-w3",
+                  "traditional": "可惜才六天",
+                  "simplified": "可惜才六天",
+                  "pinyin": "kěxī cái liù tiān",
+                  "meaning": "pity only 6 days"
+                },
+                {
+                  "id": "b3l7g1-ex1-w4",
+                  "traditional": "就結束了",
+                  "simplified": "就结束了",
+                  "pinyin": "jiù jiéshù le",
+                  "meaning": "then ended",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "他能力很強，才二十幾歲就已經是三家公司的老闆了。",
+              "simplified": "他能力很强，才二十几岁就已经是三家公司的老板了。",
+              "pinyin": "Tā nénglì hěn qiáng, cái èrshí jǐ suì jiù yǐjīng shì sān jiā gōngsī de lǎobǎn le.",
+              "english": "He is very capable; at barely twenty-something he is already the boss of three companies.",
+              "words": [
+                {
+                  "id": "b3l7g1-ex2-w1",
+                  "traditional": "他能力很強",
+                  "simplified": "他能力很强",
+                  "pinyin": "tā nénglì hěn qiáng",
+                  "meaning": "he is capable",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g1-ex2-w2",
+                  "traditional": "才二十幾歲",
+                  "simplified": "才二十几岁",
+                  "pinyin": "cái èrshí jǐ suì",
+                  "meaning": "barely in 20s"
+                },
+                {
+                  "id": "b3l7g1-ex2-w3",
+                  "traditional": "就已經是",
+                  "simplified": "就已经是",
+                  "pinyin": "jiù yǐjīng shì",
+                  "meaning": "already is"
+                },
+                {
+                  "id": "b3l7g1-ex2-w4",
+                  "traditional": "三家公司的老闆",
+                  "simplified": "三家公司的老板",
+                  "pinyin": "sān jiā gōngsī de lǎobǎn",
+                  "meaning": "boss of 3 firms",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "弟弟才剛畢業就立刻找到了一份好工作，運氣真好。",
+              "simplified": "弟弟才刚毕业就立刻找到了一份好工作，运气真好。",
+              "pinyin": "Dìdi cái gāng bìyè jiù lìkè zhǎodào le yí fèn hǎo gōngzuò, yùnqì zhēn hǎo.",
+              "english": "My younger brother barely graduated when he immediately found a good job; what great luck.",
+              "words": [
+                {
+                  "id": "b3l7g1-ex3-w1",
+                  "traditional": "弟弟才剛畢業",
+                  "simplified": "弟弟才刚毕业",
+                  "pinyin": "dìdi cái gāng bìyè",
+                  "meaning": "brother barely graduated"
+                },
+                {
+                  "id": "b3l7g1-ex3-w2",
+                  "traditional": "就立刻找到了",
+                  "simplified": "就立刻找到了",
+                  "pinyin": "jiù lìkè zhǎodào le",
+                  "meaning": "then immediately found"
+                },
+                {
+                  "id": "b3l7g1-ex3-w3",
+                  "traditional": "好工作",
+                  "simplified": "好工作",
+                  "pinyin": "hǎo gōngzuò",
+                  "meaning": "good job",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l7g1-cf1",
+              "question": "How does 才……就 differ from 剛……就?",
+              "answer": "才……就 emphasizes surprising brevity, small quantity, or earliness. 剛……就 merely denotes that an event just took place temporally.",
+              "wrongTraditional": "他剛學了三天就說得非常好。",
+              "wrongSimplified": "他刚学了三天就说得非常好。",
+              "right": {
+                "traditional": "他才學了三天就說得非常好。",
+                "simplified": "他才学了三天就说得非常好。",
+                "pinyin": "Tā cái xué le sān tiān jiù shuō de fēicháng hǎo.",
+                "english": "He studied for only three days and already speaks very well.",
+                "words": [
+                  {
+                    "id": "b3l7g1-cf1-w1",
+                    "traditional": "他才學了",
+                    "simplified": "他才学了",
+                    "pinyin": "tā cái xué le",
+                    "meaning": "he only studied"
+                  },
+                  {
+                    "id": "b3l7g1-cf1-w2",
+                    "traditional": "三天",
+                    "simplified": "三天",
+                    "pinyin": "sān tiān",
+                    "meaning": "three days"
+                  },
+                  {
+                    "id": "b3l7g1-cf1-w3",
+                    "traditional": "就說得很好",
+                    "simplified": "就说得很好",
+                    "pinyin": "jiù shuō de hěn hǎo",
+                    "meaning": "spoke very well",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l7g1-cf2",
+              "question": "Can 就 be omitted in the 才……就 structure?",
+              "answer": "No, 就 connects the surprising premise (marked by 才) to the resulting rapid event or state.",
+              "wrongTraditional": "我才出門而且下雨了。",
+              "wrongSimplified": "我才出门而且下雨了。",
+              "right": {
+                "traditional": "我才出門就下起雨來了。",
+                "simplified": "我才出门就下起雨来了。",
+                "pinyin": "Wǒ cái chūmén jiù xià qǐ yǔ lái le.",
+                "english": "No sooner had I stepped out the door than it started raining.",
+                "words": [
+                  {
+                    "id": "b3l7g1-cf2-w1",
+                    "traditional": "我才出門",
+                    "simplified": "我才出门",
+                    "pinyin": "wǒ cái chūmén",
+                    "meaning": "I barely went out"
+                  },
+                  {
+                    "id": "b3l7g1-cf2-w2",
+                    "traditional": "就下起雨",
+                    "simplified": "就下起雨",
+                    "pinyin": "jiù xià qǐ yǔ",
+                    "meaning": "then started raining"
+                  },
+                  {
+                    "id": "b3l7g1-cf2-w3",
+                    "traditional": "來了",
+                    "simplified": "来了",
+                    "pinyin": "lái le",
+                    "meaning": "came",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l7g1-q1",
+            "type": "choice",
+            "prompt": "Express surprise at how fast a phone ran out of battery:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這支新手機"
+              },
+              {
+                "type": "blank",
+                "id": "b3l7g1-q1-b1",
+                "answer": "才用了一小時就",
+                "answerSimplified": "才用了一小时就",
+                "hint": "barely used an hour and already"
+              },
+              {
+                "type": "text",
+                "traditional": "沒電了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l7g1-q1-t1",
+                "traditional": "才用了一小時就",
+                "simplified": "才用了一小时就",
+                "pinyin": "cái yòng le yì xiǎoshí jiù",
+                "meaning": "barely used 1 hr and then"
+              },
+              {
+                "id": "b3l7g1-q1-t2",
+                "traditional": "總算用一小時就",
+                "simplified": "总算用一小时就",
+                "pinyin": "zǒngsuàn yòng yì xiǎoshí jiù",
+                "meaning": "finally used 1 hr and then"
+              },
+              {
+                "id": "b3l7g1-q1-t3",
+                "traditional": "經常滿一小時就",
+                "simplified": "经常满一小时就",
+                "pinyin": "jīngcháng mǎn yì xiǎoshí jiù",
+                "meaning": "often full 1 hr then"
+              }
+            ],
+            "correctFeedback": "才……就 highlights the unexpectedly short duration before running out of power.",
+            "repairFeedback": "Use 才……就 to emphasize unexpected brevity."
+          }
+        ]
+      },
+      {
+        "id": "B3L07-G02-P186",
+        "bookId": 3,
+        "lessonId": 7,
+        "partId": 1,
+        "lessonTitle": "背包客的旅行",
+        "lessonTitleEnglish": "Backpacker's Travel",
+        "grammarNumber": 2,
+        "titleTraditional": "話說回來",
+        "titleEnglish": "On the Other Hand / Then Again",
+        "learnerPromise": "Balance an agreed point with a realistic counter-consideration using 話說回來.",
+        "printedPages": [
+          186,
+          187
+        ],
+        "bookPage": 186,
+        "bookPageAvailable": true,
+        "audioReference": "07-1-1",
+        "explanation": "「話說回來」用於對話中，說話的人在認同或不反對對方的說法之後，進一步提出自己不同、補充或更切合實際的看法；也可以用來拉回談話的主題。前面常搭配「不過、可是、但是」等轉折詞。",
+        "focusTerms": [
+          "話說回來",
+          "不過話說回來",
+          "可是話說回來"
+        ],
+        "pattern": "Agreed Point，(不過/可是/但是) + 話說回來，Counter-Perspective",
+        "patternColumns": [
+          "Point",
+          "Transition",
+          "View"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l7g2-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g2-r1-c1-w1",
+                  "traditional": "旅行不順利",
+                  "simplified": "旅行不顺利",
+                  "pinyin": "lǚxíng bú shùnlì",
+                  "meaning": "trip not smooth"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g2-r1-c2-w1",
+                  "traditional": "不過話說回來",
+                  "simplified": "不过话说回来",
+                  "pinyin": "búguò huàshuō huílái",
+                  "meaning": "then again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g2-r1-c3-w1",
+                  "traditional": "未知才迷人",
+                  "simplified": "未知才迷人",
+                  "pinyin": "wèizhī cái mírén",
+                  "meaning": "unknown is charming"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g2-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g2-r2-c1-w1",
+                  "traditional": "找資料方便",
+                  "simplified": "找资料方便",
+                  "pinyin": "zhǎo zīliào fāngbiàn",
+                  "meaning": "search is easy"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g2-r2-c2-w1",
+                  "traditional": "不過話說回來",
+                  "simplified": "不过话说回来",
+                  "pinyin": "búguò huàshuō huílái",
+                  "meaning": "then again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g2-r2-c3-w1",
+                  "traditional": "網路不全對",
+                  "simplified": "网络不全对",
+                  "pinyin": "wǎnglù bù quán duì",
+                  "meaning": "web not all true"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g2-r3-c1-w1",
+                  "traditional": "捷運旁方便",
+                  "simplified": "捷运旁方便",
+                  "pinyin": "jiéyùn páng fāngbiàn",
+                  "meaning": "subway convenient"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g2-r3-c2-w1",
+                  "traditional": "可是話說回來",
+                  "simplified": "可是话说回来",
+                  "pinyin": "kěshì huàshuō huílái",
+                  "meaning": "then again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g2-r3-c3-w1",
+                  "traditional": "你最要方便",
+                  "simplified": "你最要方便",
+                  "pinyin": "nǐ zuì yào fāngbiàn",
+                  "meaning": "you wanted convenience"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l7g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "不過話說回來，就是因為不確定會碰到什麼，所以旅行才這麼迷人。",
+              "simplified": "不过话说回来，就是因为不确定会碰到什么，所以旅行才这么迷人。",
+              "pinyin": "Búguò huàshuō huílái, jiùshì yīnwèi bú quèdìng huì pèngdào shénme, suǒyǐ lǚxíng cái zhème mírén.",
+              "english": "Then again, it's precisely because you never know what you'll encounter that travel is so enchanting.",
+              "words": [
+                {
+                  "id": "b3l7g2-ex1-w1",
+                  "traditional": "不過話說回來",
+                  "simplified": "不过话说回来",
+                  "pinyin": "búguò huàshuō huílái",
+                  "meaning": "then again",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g2-ex1-w2",
+                  "traditional": "就是因為",
+                  "simplified": "就是因为",
+                  "pinyin": "jiùshì yīnwèi",
+                  "meaning": "precisely because"
+                },
+                {
+                  "id": "b3l7g2-ex1-w3",
+                  "traditional": "不確定碰到什麼",
+                  "simplified": "不确定碰到什么",
+                  "pinyin": "bú quèdìng pèngdào shénme",
+                  "meaning": "uncertain what met",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g2-ex1-w4",
+                  "traditional": "所以旅行",
+                  "simplified": "所以旅行",
+                  "pinyin": "suǒyǐ lǚxíng",
+                  "meaning": "so travel"
+                },
+                {
+                  "id": "b3l7g2-ex1-w5",
+                  "traditional": "才這麼迷人",
+                  "simplified": "才这么迷人",
+                  "pinyin": "cái zhème mírén",
+                  "meaning": "is so charming",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "上網找資料方便。不過話說回來，網路上的資料不一定都是對的。",
+              "simplified": "上网找资料方便。不过话说回来，网络上的资料不一定都是对的。",
+              "pinyin": "Shàngwǎng zhǎo zīliào fāngbiàn. Búguò huàshuō huílái, wǎnglù shàng de zīliào bù yídìng dōu shì duì de.",
+              "english": "Searching online is convenient. But then again, info on the web isn't necessarily all accurate.",
+              "words": [
+                {
+                  "id": "b3l7g2-ex2-w1",
+                  "traditional": "找資料方便",
+                  "simplified": "找资料方便",
+                  "pinyin": "zhǎo zīliào fāngbiàn",
+                  "meaning": "search easy",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l7g2-ex2-w2",
+                  "traditional": "不過話說回來",
+                  "simplified": "不过话说回来",
+                  "pinyin": "búguò huàshuō huílái",
+                  "meaning": "then again",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g2-ex2-w3",
+                  "traditional": "網路資料",
+                  "simplified": "网络资料",
+                  "pinyin": "wǎnglù zīliào",
+                  "meaning": "web data"
+                },
+                {
+                  "id": "b3l7g2-ex2-w4",
+                  "traditional": "不一定都對",
+                  "simplified": "不一定都对",
+                  "pinyin": "bù yídìng dōu duì",
+                  "meaning": "not all true",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "捷運站旁很吵。可是話說回來，你當初不是說方便最重要嗎？",
+              "simplified": "捷运站旁很吵。可是话说回来，你当初不是说方便最重要吗？",
+              "pinyin": "Jiéyùnzhàn páng hěn chǎo. Kěshì huàshuō huílái, nǐ dāngchū bú shì shuō fāngbiàn zuì zhòngyào ma?",
+              "english": "It's noisy near the subway station. But then again, didn't you initially say convenience was most important?",
+              "words": [
+                {
+                  "id": "b3l7g2-ex3-w1",
+                  "traditional": "捷運旁很吵",
+                  "simplified": "捷运旁很吵",
+                  "pinyin": "jiéyùn páng hěn chǎo",
+                  "meaning": "noisy near MRT",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l7g2-ex3-w2",
+                  "traditional": "可是話說回來",
+                  "simplified": "可是话说回来",
+                  "pinyin": "kěshì huàshuō huílái",
+                  "meaning": "then again",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g2-ex3-w3",
+                  "traditional": "你當初說",
+                  "simplified": "你当初说",
+                  "pinyin": "nǐ dāngchū shuō",
+                  "meaning": "you said initially"
+                },
+                {
+                  "id": "b3l7g2-ex3-w4",
+                  "traditional": "方便最重要嗎",
+                  "simplified": "方便最重要吗",
+                  "pinyin": "fāngbiàn zuì zhòngyào ma",
+                  "meaning": "convenience most important",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l7g2-cf1",
+              "question": "What function does 話說回來 perform in conversation?",
+              "answer": "It introduces a balanced, realistic counter-point without directly attacking or invalidating the other person's earlier observation.",
+              "wrongTraditional": "不過總而言之，網路資料不全對。",
+              "wrongSimplified": "不过总而言之，网络资料不全对。",
+              "right": {
+                "traditional": "不過話說回來，網路資料不全對。",
+                "simplified": "不过话说回来，网络资料不全对。",
+                "pinyin": "Búguò huàshuō huílái, wǎnglù zīliào bù quán duì.",
+                "english": "Then again, web information is not entirely accurate.",
+                "words": [
+                  {
+                    "id": "b3l7g2-cf1-w1",
+                    "traditional": "不過話說回來",
+                    "simplified": "不过话说回来",
+                    "pinyin": "búguò huàshuō huílái",
+                    "meaning": "then again",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g2-cf1-w2",
+                    "traditional": "網路資料",
+                    "simplified": "网络资料",
+                    "pinyin": "wǎnglù zīliào",
+                    "meaning": "web info"
+                  },
+                  {
+                    "id": "b3l7g2-cf1-w3",
+                    "traditional": "不全對",
+                    "simplified": "不全对",
+                    "pinyin": "bù quán duì",
+                    "meaning": "not all correct",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l7g2-cf2",
+              "question": "What conjunctions usually precede 話說回來?",
+              "answer": "Adversative words such as 不過, 可是, or 但是.",
+              "wrongTraditional": "因為話說回來，旅行也是很危險的。",
+              "wrongSimplified": "因为话说回来，旅行也是很危险的。",
+              "right": {
+                "traditional": "可是話說回來，旅行也是很危險的。",
+                "simplified": "可是话说回来，旅行也是很危险的。",
+                "pinyin": "Kěshì huàshuō huílái, lǚxíng yě shì hěn wēixiǎn de.",
+                "english": "Then again, traveling can also be very dangerous.",
+                "words": [
+                  {
+                    "id": "b3l7g2-cf2-w1",
+                    "traditional": "可是話說回來",
+                    "simplified": "可是话说回来",
+                    "pinyin": "kěshì huàshuō huílái",
+                    "meaning": "then again",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g2-cf2-w2",
+                    "traditional": "旅行也是",
+                    "simplified": "旅行也是",
+                    "pinyin": "lǚxíng yě shì",
+                    "meaning": "travel also is"
+                  },
+                  {
+                    "id": "b3l7g2-cf2-w3",
+                    "traditional": "很危險的",
+                    "simplified": "很危险的",
+                    "pinyin": "hěn wēixiǎn de",
+                    "meaning": "very dangerous",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l7g2-q1",
+            "type": "choice",
+            "prompt": "Introduce a balanced counter-perspective acknowledging the initial point:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "跟團旅遊很輕鬆，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l7g2-q1-b1",
+                "answer": "不過話說回來",
+                "answerSimplified": "不过话说回来",
+                "hint": "then again / on the other hand"
+              },
+              {
+                "type": "text",
+                "traditional": "自由度就少多了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l7g2-q1-t1",
+                "traditional": "不過話說回來",
+                "simplified": "不过话说回来",
+                "pinyin": "búguò huàshuō huílái",
+                "meaning": "then again"
+              },
+              {
+                "id": "b3l7g2-q1-t2",
+                "traditional": "而且話說回來",
+                "simplified": "而且话说回来",
+                "pinyin": "érqiě huàshuō huílái",
+                "meaning": "moreover saying back"
+              },
+              {
+                "id": "b3l7g2-q1-t3",
+                "traditional": "因為話說回來",
+                "simplified": "因为话说回来",
+                "pinyin": "yīnwèi huàshuō huílái",
+                "meaning": "because saying back"
+              }
+            ],
+            "correctFeedback": "不過話說回來 smoothly pivots to the other side of the coin.",
+            "repairFeedback": "話說回來 pairs with adversatives like 不過 to introduce a counter-perspective."
+          }
+        ]
+      },
+      {
+        "id": "B3L07-G03-P187",
+        "bookId": 3,
+        "lessonId": 7,
+        "partId": 1,
+        "lessonTitle": "背包客的旅行",
+        "lessonTitleEnglish": "Backpacker's Travel",
+        "grammarNumber": 3,
+        "titleTraditional": "這麼說，……",
+        "titleEnglish": "In That Case / That Means...",
+        "learnerPromise": "Deduce a logical conclusion from a conversation partner's statement using 這麼說.",
+        "printedPages": [
+          187,
+          188
+        ],
+        "bookPage": 187,
+        "bookPageAvailable": true,
+        "audioReference": "07-1-1",
+        "explanation": "「這麼說」意思是「按照你說的情況來看」。說話者根據對方剛才敘述的事實或情況，提出自己的合理推論、判斷或結論。",
+        "focusTerms": [
+          "這麼說",
+          "這麼說來"
+        ],
+        "pattern": "Partner Statement → 這麼說，+ Deduction / Inference",
+        "patternColumns": [
+          "Trigger",
+          "Marker",
+          "Deduction"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l7g3-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g3-r1-c1-w1",
+                  "traditional": "她經驗豐富",
+                  "simplified": "她经验丰富",
+                  "pinyin": "tā jīngyàn fēngfù",
+                  "meaning": "she experienced"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g3-r1-c2-w1",
+                  "traditional": "這麼說",
+                  "simplified": "这么说",
+                  "pinyin": "zhème shuō",
+                  "meaning": "in that case"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g3-r1-c3-w1",
+                  "traditional": "沒去不成的",
+                  "simplified": "没去不成的",
+                  "pinyin": "méi qù bu chéng de",
+                  "meaning": "none she can't visit"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g3-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g3-r2-c1-w1",
+                  "traditional": "孩子快滿月",
+                  "simplified": "孩子快满月",
+                  "pinyin": "háizi kuài mǎnyuè",
+                  "meaning": "baby turns 1 month"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g3-r2-c2-w1",
+                  "traditional": "這麼說",
+                  "simplified": "这么说",
+                  "pinyin": "zhème shuō",
+                  "meaning": "in that case"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g3-r2-c3-w1",
+                  "traditional": "會請吃油飯",
+                  "simplified": "会请吃油饭",
+                  "pinyin": "huì qǐng chī yóufàn",
+                  "meaning": "will treat glutinous rice"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g3-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g3-r3-c1-w1",
+                  "traditional": "強烈颱風來",
+                  "simplified": "强烈台风来",
+                  "pinyin": "qiángliè táifēng lái",
+                  "meaning": "typhoon strikes"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g3-r3-c2-w1",
+                  "traditional": "這麼說",
+                  "simplified": "这么说",
+                  "pinyin": "zhème shuō",
+                  "meaning": "in that case"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g3-r3-c3-w1",
+                  "traditional": "會放颱風假",
+                  "simplified": "会放台风假",
+                  "pinyin": "huì fàng táifēng jià",
+                  "meaning": "will have typhoon day off"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l7g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "這麼說，不管她想去哪裡，沒有去不成的？",
+              "simplified": "这么说，不管她想去哪里，没有去不成的？",
+              "pinyin": "Zhème shuō, bùguǎn tā xiǎng qù nǎlǐ, méiyǒu qù bu chéng de?",
+              "english": "In that case, wherever she wants to go, there's nowhere she can't make it to?",
+              "words": [
+                {
+                  "id": "b3l7g3-ex1-w1",
+                  "traditional": "這麼說",
+                  "simplified": "这么说",
+                  "pinyin": "zhème shuō",
+                  "meaning": "in that case",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g3-ex1-w2",
+                  "traditional": "不管想去哪",
+                  "simplified": "不管想去哪",
+                  "pinyin": "bùguǎn xiǎng qù nǎ",
+                  "meaning": "wherever wants to go"
+                },
+                {
+                  "id": "b3l7g3-ex1-w3",
+                  "traditional": "沒有去不成的",
+                  "simplified": "没有去不成的",
+                  "pinyin": "méiyǒu qù bu chéng de",
+                  "meaning": "none cannot reach",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "小張孩子快滿月了。這麼說，他會請同事吃油飯和紅蛋了。",
+              "simplified": "小张孩子快满月了。这么说，他会请同事吃油饭和红蛋了。",
+              "pinyin": "Xiǎo Zhāng háizi kuài mǎnyuè le. Zhème shuō, tā huì qǐng tóngshì chī yóufàn hé hóngdàn le.",
+              "english": "Xiao Zhang's baby is almost a month old. In that case, he'll treat coworkers to oily rice and red eggs.",
+              "words": [
+                {
+                  "id": "b3l7g3-ex2-w1",
+                  "traditional": "孩子快滿月",
+                  "simplified": "孩子快满月",
+                  "pinyin": "háizi kuài mǎnyuè",
+                  "meaning": "baby turns 1 month",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l7g3-ex2-w2",
+                  "traditional": "這麼說",
+                  "simplified": "这么说",
+                  "pinyin": "zhème shuō",
+                  "meaning": "in that case",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g3-ex2-w3",
+                  "traditional": "他會請吃油飯",
+                  "simplified": "他会请吃油饭",
+                  "pinyin": "tā huì qǐng chī yóufàn",
+                  "meaning": "treat oily rice",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "強颱明天經過北部。這麼說，明天可能會放颱風假喔！",
+              "simplified": "强台明天经过北部。这么说，明天可能会放台风假喔！",
+              "pinyin": "Qiángtái míngtiān jīngguò běibù. Zhème shuō, míngtiān kěnéng huì fàng táifēng jià o!",
+              "english": "A strong typhoon passes the north tomorrow. That means tomorrow might be a typhoon holiday!",
+              "words": [
+                {
+                  "id": "b3l7g3-ex3-w1",
+                  "traditional": "明天經過北部",
+                  "simplified": "明天经过北部",
+                  "pinyin": "míngtiān jīngguò běibù",
+                  "meaning": "passes north tomorrow",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l7g3-ex3-w2",
+                  "traditional": "這麼說",
+                  "simplified": "这么说",
+                  "pinyin": "zhème shuō",
+                  "meaning": "in that case",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g3-ex3-w3",
+                  "traditional": "可能放颱風假",
+                  "simplified": "可能放台风假",
+                  "pinyin": "kěnéng fàng táifēng jià",
+                  "meaning": "might have typhoon off",
+                  "suffix": "！"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l7g3-cf1",
+              "question": "How does 這麼說 differ from 也就是說?",
+              "answer": "這麼說 draws a tentative deduction from someone else's statement. 也就是說 restates or clarifies the same meaning in other words.",
+              "wrongTraditional": "也就是說，明天可能會放颱風假喔！",
+              "wrongSimplified": "也就是说，明天可能会放台风假喔！",
+              "right": {
+                "traditional": "這麼說，明天可能會放颱風假喔！",
+                "simplified": "这么说，明天可能会放台风假喔！",
+                "pinyin": "Zhème shuō, míngtiān kěnéng huì fàng táifēng jià o!",
+                "english": "In that case, tomorrow might be a typhoon day off!",
+                "words": [
+                  {
+                    "id": "b3l7g3-cf1-w1",
+                    "traditional": "這麼說",
+                    "simplified": "这么说",
+                    "pinyin": "zhème shuō",
+                    "meaning": "in that case",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g3-cf1-w2",
+                    "traditional": "明天可能",
+                    "simplified": "明天可能",
+                    "pinyin": "míngtiān kěnéng",
+                    "meaning": "tomorrow might"
+                  },
+                  {
+                    "id": "b3l7g3-cf1-w3",
+                    "traditional": "放颱風假",
+                    "simplified": "放台风假",
+                    "pinyin": "fàng táifēng jià",
+                    "meaning": "typhoon day off",
+                    "suffix": "！"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l7g3-cf2",
+              "question": "What position does 這麼說 take in a sentence?",
+              "answer": "It stands at the beginning of the responsive turn, preceding the speaker's deduction.",
+              "wrongTraditional": "明天可能會放颱風假，這麼說！",
+              "wrongSimplified": "明天可能会放台风假，这么说！",
+              "right": {
+                "traditional": "這麼說，明天可能會放颱風假！",
+                "simplified": "这么说，明天可能会放台风假！",
+                "pinyin": "Zhème shuō, míngtiān kěnéng huì fàng táifēng jià!",
+                "english": "In that case, tomorrow might be a typhoon day off!",
+                "words": [
+                  {
+                    "id": "b3l7g3-cf2-w1",
+                    "traditional": "這麼說",
+                    "simplified": "这么说",
+                    "pinyin": "zhème shuō",
+                    "meaning": "in that case",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g3-cf2-w2",
+                    "traditional": "可能放假",
+                    "simplified": "可能放假",
+                    "pinyin": "kěnéng fàngjià",
+                    "meaning": "might have holiday",
+                    "suffix": "！"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l7g3-q1",
+            "type": "choice",
+            "prompt": "Draw a conclusion after someone drank espresso late:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喝了那麼濃的咖啡，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l7g3-q1-b1",
+                "answer": "這麼說你今晚",
+                "answerSimplified": "这么说你今晚",
+                "hint": "that means tonight you"
+              },
+              {
+                "type": "text",
+                "traditional": "肯定睡不著了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l7g3-q1-t1",
+                "traditional": "這麼說你今晚",
+                "simplified": "这么说你今晚",
+                "pinyin": "zhème shuō nǐ jīnwǎn",
+                "meaning": "that means tonight you"
+              },
+              {
+                "id": "b3l7g3-q1-t2",
+                "traditional": "總算說你今晚",
+                "simplified": "总算说你今晚",
+                "pinyin": "zǒngsuàn shuō nǐ jīnwǎn",
+                "meaning": "finally say tonight you"
+              },
+              {
+                "id": "b3l7g3-q1-t3",
+                "traditional": "雖然說你今晚",
+                "simplified": "虽然说你今晚",
+                "pinyin": "suīrán shuō nǐ jīnwǎn",
+                "meaning": "although say tonight you"
+              }
+            ],
+            "correctFeedback": "這麼說 naturally introduces the logical conclusion based on their coffee intake.",
+            "repairFeedback": "這麼說 begins a deductive inference from the speaker's premise."
+          }
+        ]
+      },
+      {
+        "id": "B3L07-G04-P189",
+        "bookId": 3,
+        "lessonId": 7,
+        "partId": 1,
+        "lessonTitle": "背包客的旅行",
+        "lessonTitleEnglish": "Backpacker's Travel",
+        "grammarNumber": 4,
+        "titleTraditional": "V成",
+        "titleEnglish": "Result Complement: Completed / Realized",
+        "learnerPromise": "Express successful completion, failure, or possibility using V成, 沒V成, V得成, or V不成.",
+        "printedPages": [
+          189,
+          190
+        ],
+        "bookPage": 189,
+        "bookPageAvailable": true,
+        "audioReference": "07-1-1",
+        "explanation": "「成」是結果補語，有成功、實現、完成的意思。「V成」表示動作已經實現；「沒V成」表示過去未能實現；「V得成」和「V不成」則表示未來或當下是否具備實現的可能性。",
+        "focusTerms": [
+          "V成",
+          "辦不成",
+          "談成了",
+          "去不成",
+          "沒看成"
+        ],
+        "pattern": "Verb + 成 / 不成 / 得成 / 沒 + Verb + 成",
+        "patternColumns": [
+          "Verb",
+          "Complement",
+          "Status"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l7g4-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g4-r1-c1-w1",
+                  "traditional": "沒有",
+                  "simplified": "没有",
+                  "pinyin": "méiyǒu",
+                  "meaning": "none"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g4-r1-c2-w1",
+                  "traditional": "去不成的",
+                  "simplified": "去不成的",
+                  "pinyin": "qù bu chéng de",
+                  "meaning": "cannot reach"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g4-r1-c3-w1",
+                  "traditional": "地方",
+                  "simplified": "地方",
+                  "pinyin": "dìfang",
+                  "meaning": "places"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g4-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g4-r2-c1-w1",
+                  "traditional": "跨年活動",
+                  "simplified": "跨年活动",
+                  "pinyin": "kuànián huódòng",
+                  "meaning": "New Year event"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g4-r2-c2-w1",
+                  "traditional": "恐怕",
+                  "simplified": "恐怕",
+                  "pinyin": "kǒngpà",
+                  "meaning": "afraid"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g4-r2-c3-w1",
+                  "traditional": "辦不成了",
+                  "simplified": "办不成了",
+                  "pinyin": "bàn bu chéng le",
+                  "meaning": "cannot be held"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g4-r3-c1-w1",
+                  "traditional": "生意",
+                  "simplified": "生意",
+                  "pinyin": "shēngyì",
+                  "meaning": "business"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g4-r3-c2-w1",
+                  "traditional": "終於",
+                  "simplified": "终于",
+                  "pinyin": "zhōngyú",
+                  "meaning": "finally"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g4-r3-c3-w1",
+                  "traditional": "談成了",
+                  "simplified": "谈成了",
+                  "pinyin": "tánchéng le",
+                  "meaning": "negotiated successfully"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l7g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "不管她想去哪裡，沒有去不成的？",
+              "simplified": "不管她想去哪里，没有去不成的？",
+              "pinyin": "Bùguǎn tā xiǎng qù nǎlǐ, méiyǒu qù bu chéng de?",
+              "english": "Wherever she wants to go, there's nowhere she can't make it to?",
+              "words": [
+                {
+                  "id": "b3l7g4-ex1-w1",
+                  "traditional": "不管想去哪",
+                  "simplified": "不管想去哪",
+                  "pinyin": "bùguǎn xiǎng qù nǎ",
+                  "meaning": "wherever wants to go",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g4-ex1-w2",
+                  "traditional": "沒有去不成",
+                  "simplified": "没有去不成",
+                  "pinyin": "méiyǒu qù bu chéng",
+                  "meaning": "nowhere cannot go"
+                },
+                {
+                  "id": "b3l7g4-ex1-w3",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "of",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "明天下雨機會很高，明天的跨年活動恐怕辦不成了。",
+              "simplified": "明天下雨机会很高，明天的跨年活动恐怕办不成了。",
+              "pinyin": "Míngtiān xiàyǔ jīhuì hěn gāo, míngtiān de kuànián huódòng kǒngpà bàn bu chéng le.",
+              "english": "The chance of rain tomorrow is high; tomorrow's New Year event probably can't be held.",
+              "words": [
+                {
+                  "id": "b3l7g4-ex2-w1",
+                  "traditional": "下雨機會高",
+                  "simplified": "下雨机会高",
+                  "pinyin": "xiàyǔ jīhuì gāo",
+                  "meaning": "rain chance high",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g4-ex2-w2",
+                  "traditional": "跨年活動",
+                  "simplified": "跨年活动",
+                  "pinyin": "kuànián huódòng",
+                  "meaning": "countdown event"
+                },
+                {
+                  "id": "b3l7g4-ex2-w3",
+                  "traditional": "恐怕辦不成了",
+                  "simplified": "恐怕办不成了",
+                  "pinyin": "kǒngpà bàn bu chéng le",
+                  "meaning": "afraid cannot hold",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "我們跟大公司的生意今天談成了，老闆要請大家吃大餐。",
+              "simplified": "我们跟大公司的生意今天谈成了，老板要请大家吃大餐。",
+              "pinyin": "Wǒmen gēn dà gōngsī de shēngyì jīntiān tánchéng le, lǎobǎn yào qǐng dàjiā chī dàcān.",
+              "english": "Our deal with the big corporation was finalized today; boss is treating us to a feast.",
+              "words": [
+                {
+                  "id": "b3l7g4-ex3-w1",
+                  "traditional": "跟公司的生意",
+                  "simplified": "跟公司的生意",
+                  "pinyin": "gēn gōngsī de shēngyì",
+                  "meaning": "deal with company"
+                },
+                {
+                  "id": "b3l7g4-ex3-w2",
+                  "traditional": "今天談成了",
+                  "simplified": "今天谈成了",
+                  "pinyin": "jīntiān tánchéng le",
+                  "meaning": "today settled",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g4-ex3-w3",
+                  "traditional": "請吃大餐",
+                  "simplified": "请吃大餐",
+                  "pinyin": "qǐng chī dàcān",
+                  "meaning": "treat feast",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l7g4-cf1",
+              "question": "How does 沒V成 differ from V不成?",
+              "answer": "沒V成 refers to an action in the past that failed to materialize. V不成 indicates an ongoing or future impossibility.",
+              "wrongTraditional": "昨天的戶外音樂會，我們辦不成了。",
+              "wrongSimplified": "昨天的户外音乐会，我们办不成了。",
+              "right": {
+                "traditional": "昨天的戶外音樂會，我們沒辦成。",
+                "simplified": "昨天的户外音乐会，我们没办成。",
+                "pinyin": "Zuótiān de hùwài yīnyuèhuì, wǒmen méi bànchéng.",
+                "english": "Yesterday's outdoor concert we didn't manage to hold.",
+                "words": [
+                  {
+                    "id": "b3l7g4-cf1-w1",
+                    "traditional": "昨天音樂會",
+                    "simplified": "昨天音乐会",
+                    "pinyin": "zuótiān yīnyuèhuì",
+                    "meaning": "yesterday concert",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g4-cf1-w2",
+                    "traditional": "我們沒辦成",
+                    "simplified": "我们没办成",
+                    "pinyin": "wǒmen méi bànchéng",
+                    "meaning": "we did not hold",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l7g4-cf2",
+              "question": "What does V得成 express?",
+              "answer": "V得成 expresses affirmative potential—that an action has the feasible capability to succeed.",
+              "wrongTraditional": "提早兩小時排隊，絕對買不成烤鴨。",
+              "wrongSimplified": "提早两小时排队，绝对买不成烤鸭。",
+              "right": {
+                "traditional": "提早兩小時排隊，絕對買得成烤鴨。",
+                "simplified": "提早两小时排队，绝对买得成烤鸭。",
+                "pinyin": "Tízǎo liǎng xiǎoshí páiduì, juéduì mǎi de chéng kǎoyā.",
+                "english": "Line up two hours early and you will definitely succeed in buying roast duck.",
+                "words": [
+                  {
+                    "id": "b3l7g4-cf2-w1",
+                    "traditional": "提早排隊",
+                    "simplified": "提早排队",
+                    "pinyin": "tízǎo páiduì",
+                    "meaning": "line up early",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g4-cf2-w2",
+                    "traditional": "絕對買得成",
+                    "simplified": "绝对买得成",
+                    "pinyin": "juéduì mǎi de chéng",
+                    "meaning": "definitely can buy"
+                  },
+                  {
+                    "id": "b3l7g4-cf2-w3",
+                    "traditional": "烤鴨",
+                    "simplified": "烤鸭",
+                    "pinyin": "kǎoyā",
+                    "meaning": "roast duck",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l7g4-q1",
+            "type": "choice",
+            "prompt": "Express that a business deal was successfully finalized:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們跟大公司的合約，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l7g4-q1-b1",
+                "answer": "今天終於談成了",
+                "answerSimplified": "今天终于谈成了",
+                "hint": "today finally negotiated successfully"
+              },
+              {
+                "type": "text",
+                "traditional": "，老闆要請客！"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l7g4-q1-t1",
+                "traditional": "今天終於談成了",
+                "simplified": "今天终于谈成了",
+                "pinyin": "jīntiān zhōngyú tánchéng le",
+                "meaning": "today finally settled"
+              },
+              {
+                "id": "b3l7g4-q1-t2",
+                "traditional": "今天恐怕談不成",
+                "simplified": "今天恐怕谈不成",
+                "pinyin": "jīntiān kǒngpà tán bu chéng",
+                "meaning": "today afraid cannot settle"
+              },
+              {
+                "id": "b3l7g4-q1-t3",
+                "traditional": "今天差點沒談成",
+                "simplified": "今天差点没谈成",
+                "pinyin": "jīntiān chàdiǎn méi tánchéng",
+                "meaning": "today almost not settled"
+              }
+            ],
+            "correctFeedback": "談成了 indicates the negotiations were successfully concluded.",
+            "repairFeedback": "V成 signals successful realization of the action."
+          }
+        ]
+      }
+    ]
+  },
+  "BOOK3_LESSON_SEVEN_PART_TWO": {
+    "id": "B3L07-P02-D02",
+    "bookId": 3,
+    "lessonId": 7,
+    "partId": 2,
+    "title": "Grammar 5–6 · Backpacker's Travel",
+    "dialogue": {
+      "id": "B3L07-D02",
+      "title": "馬丁的環島旅行",
+      "audioReference": "07-2-1",
+      "printedPages": [
+        191,
+        192,
+        193
+      ],
+      "grammarFocus": [
+        "就……來說",
+        "V/Vs得……"
+      ],
+      "lines": [
+        {
+          "id": "b3l7d2-l1",
+          "speaker": "旁白",
+          "traditional": "馬丁的好兄弟尚恩在臺灣學習中文，他常寄臺灣的明信片給馬丁。明信片上有的是有名的景點，像臺北101、太魯閣、孔廟；有的是臺灣文化的代表，像寺廟、歌仔戲、夜市小吃等等。",
+          "simplified": "马丁的好兄弟尚恩在台湾学习中文，他常寄台湾的明信片给马丁。明信片上有的是有名的景点，像台北101、太鲁阁、孔庙；有的是台湾文化的代表，像寺庙、歌仔戏、夜市小吃等等。",
+          "pinyin": "Mǎdīng de hǎo xiōngdì Shàng'ēn zài Táiwān xuéxí Zhōngwén, tā cháng jì Táiwān de míngxìnpiàn gěi Mǎdīng. Míngxìnpiàn shàng yǒudeshì yǒumíng de jǐngdiǎn, xiàng Táiběi 101, Tàilǔgé, Kǒngmiào; yǒudeshì Táiwān wénhuà de dàibiǎo, xiàng sìmiào, gēzǎixì, yèshì xiǎochī děngděng.",
+          "english": "Narrator: Martin's close pal Shawn was studying Chinese in Taiwan and often mailed Taiwan postcards to Martin. Some depicted famous attractions like Taipei 101, Taroko Gorge, and the Confucius Temple; others represented Taiwanese culture, such as temples, Taiwanese opera, and night market snacks."
+        },
+        {
+          "id": "b3l7d2-l2",
+          "speaker": "旁白",
+          "traditional": "馬丁常聽尚恩提到跟臺灣相關的事。比如，臺灣曾經是荷蘭和日本等國家的殖民地；臺灣人和中國人都說中文，可是有一些詞的用法不太一樣；就選舉文化來說，臺灣和法國很不同，不過願意服務民眾的人，都比較容易當選。",
+          "simplified": "马丁常听尚恩提到跟台湾相关的事。比如，台湾曾经是荷兰和日本等国家的殖民地；台湾人和中国人都说中文，可是有一些词的用法不太一样；就选举文化来说，台湾和法国很不同，不过愿意服务民众的人，都比较容易当选。",
+          "pinyin": "Mǎdīng cháng tīng Shàng'ēn tídào gēn Táiwān xiāngguān de shì. Bǐrú, Táiwān céngjīng shì Hélán hé Rìběn děng guójiā de zhímíndì; Táiwānrén hé Zhōngguórén dōu shuō Zhōngwén, kěshì yǒu yìxiē cí de yòngfǎ bú tài yíyàng; jiù xuǎnjǔ wénhuà lái shuō, Táiwān hé Fǎguó hěn bù tóng, búguò yuànyì fúwù mínzhòng de rén, dōu bǐjiào róngyì dāngxuǎn.",
+          "english": "Martin often heard Shawn mention matters regarding Taiwan. For example, Taiwan had once been a colony of the Netherlands and Japan; both Taiwanese and mainland Chinese speak Chinese, but certain word usages differ; in terms of election culture, Taiwan and France are very different, though those willing to serve the public are more likely to get elected."
+        },
+        {
+          "id": "b3l7d2-l3",
+          "speaker": "旁白",
+          "traditional": "馬丁覺得尚恩在臺灣的生活很有意思，他想，有一天一定要親自來確認一下，看看這個島是不是真的像尚恩說的那樣有意思。最近馬丁的工作不太順利，所以他決定給自己放個假，到離法國約一萬公里以外的臺灣走走。不僅要嚐嚐小吃，還計畫一個人騎自行車環島旅行。",
+          "simplified": "马丁觉得尚恩在台湾的生活很有意思，他想，有一天一定要亲自来确认一下，看看这个岛是不是真的像尚恩说的那样有意思。最近马丁的工作不太顺利，所以他决定给自己放个假，到离法国约一万公里以外的台湾走走。不仅要尝尝小吃，还计划一个人骑自行车环岛旅行。",
+          "pinyin": "Mǎdīng juéde Shàng'ēn zài Táiwān de shēnghuó hěn yǒu yìsi, tā xiǎng, yǒu yì tiān yídìng yào qīnzì lái quèrèn yíxià, kànkan zhè ge dǎo shì bú shì zhēnde xiàng Shàng'ēn shuō de nàyàng yǒu yìsi. Zuìjìn Mǎdīng de gōngzuò bú tài shùnlì, suǒyǐ tā juédìng gěi zìjǐ fàng ge jià, dào lí Fǎguó yuē yí wàn gōnglǐ yǐwài de Táiwān zǒuzou. Bùjǐn yào chángchang xiǎochī, hái jìhuà yí ge rén qí zìxíngchē huándǎo lǚxíng.",
+          "english": "Martin found Shawn's life in Taiwan fascinating and felt that one day he must come personally verify if this island was really as intriguing as Shawn described. Recently Martin's work wasn't going smoothly, so he decided to take a holiday and visit Taiwan, some 10,000 kilometers away from France. He planned not only to taste local snacks, but also to cycle around the island alone."
+        },
+        {
+          "id": "b3l7d2-l4",
+          "speaker": "旁白",
+          "traditional": "其實馬丁剛到臺灣時，還忘不了工作的問題，所以心情不太好。但是，當他在東部又寬又平的公路上，邊騎著自行車，邊欣賞美麗的風景時，他忽然覺得就像在天堂一樣，太美好、太值得了！還有一次，馬丁坐在椅子上，很專心地看著寺廟前的歌仔戲表演。演員演出時，剛好穿著和明信片上一樣的服裝，那種熟悉的感覺讓他很興奮，立刻拿起相機拍了起來。這段時間他也認識了一些樂觀、幽默的朋友，大家一起聊天、開玩笑，讓他開心得把工作的問題都忘了。馬丁覺得在臺灣經驗過的這些美好生活，就是這次旅行最珍貴的紀念。",
+          "simplified": "其实马丁刚到台湾时，还忘不了工作的问题，所以心情不太好。但是，当他在东部又宽又平的公路上，边骑着自行车，边欣赏美丽的风景时，他忽然觉得就像在天堂一样，太美好、太值得了！还有一次，马丁坐在椅子上，很专心地看着寺庙前的歌仔戏表演。演员演出时，刚好穿着和明信片上一样的服装，那种熟悉的感觉让他很兴奋，立刻拿起相机拍了起来。这段时间他也认识了一些乐观、幽默的朋友，大家一起聊天、开玩笑，让他开心得把工作的问题都忘了。马丁觉得在台湾经验过的这些美好生活，就是这次旅行最珍贵的纪念。",
+          "pinyin": "Qíshí Mǎdīng gāng dào Táiwān shí, hái wàng buliǎo gōngzuò de wèntí, suǒyǐ xīnqíng bú tài hǎo. Dànshì, dāng tā zài dōngbù yòu kuān yòu píng de gōnglù shàng, biān qí zhe zìxíngchē, biān xīnshǎng měilì de fēngjǐng shí, tā hūrán juéde jiù xiàng zài tiāntáng yíyàng, tài měihǎo, tài zhídé le! Hái yǒu yí cì, Mǎdīng zuò zài yǐzi shàng, hěn zhuānxīn de kàn zhe sìmiào qián de gēzǎixì biǎoyǎn. Yǎnyuán yǎnchū shí, gānghǎo chuān zhe hé míngxìnpiàn shàng yíyàng de fúzhuāng, nà zhǒng shóuxī de gǎnjué ràng tā hěn xīngfèn, lìkè ná qǐ xiàngjī pāi le qǐlai. Zhè duàn shíjiān tā yě rènshí le yìxiē lèguān, yōumò de péngyou, dàjiā yìqǐ liáotiān, kāiwánxiào, ràng tā kāixīn de bǎ gōngzuò de wèntí dōu wàng le. Mǎdīng juéde zài Táiwān jīngyàn guò de zhèxiē měihǎo shēnghuó, jiùshì zhè cì lǚxíng zuì zhēnguì de jìniàn.",
+          "english": "Actually when Martin first arrived, he couldn't put work troubles out of mind and was in a low mood. But as he cycled along wide flat highways in eastern Taiwan while admiring the breathtaking scenery, he suddenly felt like he was in paradise—it was wonderful and so worthwhile! Another time, sitting on a chair, he watched a Taiwanese opera performance in front of a temple attentively. The actors were dressed in the exact costumes shown on the postcards; that familiar feeling thrilled him, and he immediately snapped photos. During this trip he also befriended optimistic, humorous companions whose chats and jokes made him forget his work stress. Martin felt these wonderful experiences were the most precious souvenirs of the trip."
+        },
+        {
+          "id": "b3l7d2-l5",
+          "speaker": "旁白",
+          "traditional": "經過這趟豐富的旅行後，馬丁的心情好多了，想法也改變了。回到法國後，到底要換新工作，還是要克服困難勇敢走下去，他相信自己一定能做出最佳選擇，讓生活過得更充實、更有意義。",
+          "simplified": "经过这趟丰富的旅行后，马丁的心情好多了，想法也改变了。回到法国后，到底要换新工作，还是要克服困难勇敢走下去，他相信自己一定能做出最佳选择，让生活过得更充实、更有意义。",
+          "pinyin": "Jīngguò zhè tàng fēngfù de lǚxíng hòu, Mǎdīng de xīnqíng hǎo duō le, xiǎngfǎ yě gǎibiàn le. Huí dào Fǎguó hòu, dàodǐ yào huàn xīn gōngzuò, háishì yào kèfú kùnnan yǒnggǎn zǒu xiàqu, tā xiāngxìn zìjǐ yídìng néng zuòchū zuìjiā xuǎnzé, ràng shēnghuó guò de gèng chōngshí, gèng yǒu yìyì.",
+          "english": "After this enriching journey, Martin felt much better and his outlook shifted. Upon returning to France, whether to switch jobs or face difficulties bravely, he was confident he could make the best choice to make his life more fulfilling and meaningful."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "id": "B3L07-G05-P195",
+        "bookId": 3,
+        "lessonId": 7,
+        "partId": 2,
+        "lessonTitle": "背包客的旅行",
+        "lessonTitleEnglish": "Backpacker's Travel",
+        "grammarNumber": 5,
+        "titleTraditional": "就……來說",
+        "titleEnglish": "In Terms of / Speaking From the Standpoint of...",
+        "learnerPromise": "Frame an analytical point from a specific scope or standpoint using 就……來說.",
+        "printedPages": [
+          195,
+          196,
+          197
+        ],
+        "bookPage": 195,
+        "bookPageAvailable": true,
+        "audioReference": "07-2-1",
+        "explanation": "「就……來說」常用在書面語中，「就」有針對的意思，用來引出說話者針對某個特定範圍、對象或角度進行的敘述、比較或分析。",
+        "focusTerms": [
+          "就……來說",
+          "就文化來說",
+          "就課程來說",
+          "就生活來說"
+        ],
+        "pattern": "就 + Domain / Scope + 來說，Statement",
+        "patternColumns": [
+          "Preposition",
+          "Target Domain",
+          "Framing",
+          "Assertion"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l7g5-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g5-r1-c1-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "in terms of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r1-c2-w1",
+                  "traditional": "選舉文化",
+                  "simplified": "选举文化",
+                  "pinyin": "xuǎnjǔ wénhuà",
+                  "meaning": "election culture"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r1-c3-w1",
+                  "traditional": "來說",
+                  "simplified": "来说",
+                  "pinyin": "lái shuō",
+                  "meaning": "speaking"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r1-c4-w1",
+                  "traditional": "兩國很不同",
+                  "simplified": "两国很不同",
+                  "pinyin": "liǎng guó hěn bù tóng",
+                  "meaning": "two nations differ"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g5-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g5-r2-c1-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "in terms of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r2-c2-w1",
+                  "traditional": "購物方式",
+                  "simplified": "购物方式",
+                  "pinyin": "gòuwù fāngshì",
+                  "meaning": "shopping method"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r2-c3-w1",
+                  "traditional": "來說",
+                  "simplified": "来说",
+                  "pinyin": "lái shuō",
+                  "meaning": "speaking"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r2-c4-w1",
+                  "traditional": "網路很方便",
+                  "simplified": "网络很方便",
+                  "pinyin": "wǎnglù hěn fāngbiàn",
+                  "meaning": "internet is easy"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g5-r3-c1-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "in terms of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r3-c2-w1",
+                  "traditional": "系上課程",
+                  "simplified": "系上课程",
+                  "pinyin": "xì shàng kèchéng",
+                  "meaning": "dept courses"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r3-c3-w1",
+                  "traditional": "來說",
+                  "simplified": "来说",
+                  "pinyin": "lái shuō",
+                  "meaning": "speaking"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g5-r3-c4-w1",
+                  "traditional": "越來越難了",
+                  "simplified": "越来越难了",
+                  "pinyin": "yuè lái yuè nán le",
+                  "meaning": "increasingly hard"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l7g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "就選舉文化來說，臺灣和法國很不同。",
+              "simplified": "就选举文化来说，台湾和法国很不同。",
+              "pinyin": "Jiù xuǎnjǔ wénhuà lái shuō, Táiwān hé Fǎguó hěn bù tóng.",
+              "english": "In terms of election culture, Taiwan and France are very different.",
+              "words": [
+                {
+                  "id": "b3l7g5-ex1-w1",
+                  "traditional": "就選舉文化",
+                  "simplified": "就选举文化",
+                  "pinyin": "jiù xuǎnjǔ wénhuà",
+                  "meaning": "in terms of election"
+                },
+                {
+                  "id": "b3l7g5-ex1-w2",
+                  "traditional": "來說",
+                  "simplified": "来说",
+                  "pinyin": "lái shuō",
+                  "meaning": "speaking",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g5-ex1-w3",
+                  "traditional": "臺灣和法國",
+                  "simplified": "台湾和法国",
+                  "pinyin": "Táiwān hé Fǎguó",
+                  "meaning": "Taiwan and France"
+                },
+                {
+                  "id": "b3l7g5-ex1-w4",
+                  "traditional": "很不同",
+                  "simplified": "很不同",
+                  "pinyin": "hěn bù tóng",
+                  "meaning": "very different",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "就購物的方式來說，使用網路不僅方便，比價也容易多了。",
+              "simplified": "就购物的方式来说，使用网络不仅方便，比价也容易多了。",
+              "pinyin": "Jiù gòuwù de fāngshì lái shuō, shǐyòng wǎnglù bùjǐn fāngbiàn, bǐjià yě róngyì duō le.",
+              "english": "In terms of shopping methods, using the internet is not only convenient, but price comparison is much easier.",
+              "words": [
+                {
+                  "id": "b3l7g5-ex2-w1",
+                  "traditional": "就購物方式",
+                  "simplified": "就购物方式",
+                  "pinyin": "jiù gòuwù fāngshì",
+                  "meaning": "in shopping method"
+                },
+                {
+                  "id": "b3l7g5-ex2-w2",
+                  "traditional": "來說",
+                  "simplified": "来说",
+                  "pinyin": "lái shuō",
+                  "meaning": "speaking",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g5-ex2-w3",
+                  "traditional": "網路方便",
+                  "simplified": "网络方便",
+                  "pinyin": "wǎnglù fāngbiàn",
+                  "meaning": "web convenient"
+                },
+                {
+                  "id": "b3l7g5-ex2-w4",
+                  "traditional": "比價容易",
+                  "simplified": "比价容易",
+                  "pinyin": "bǐjià róngyì",
+                  "meaning": "comparing price easy",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "就我們系的課程來說，不僅一學期比一學期難，報告也變多了。",
+              "simplified": "就我们系的课程来说，不仅一学期比一学期难，报告也变多了。",
+              "pinyin": "Jiù wǒmen xì de kèchéng lái shuō, bùjǐn yì xuéqī bǐ yì xuéqī nán, bàogào yě biàn duō le.",
+              "english": "In terms of our department's courses, not only is each semester harder than the last, but reports have also increased.",
+              "words": [
+                {
+                  "id": "b3l7g5-ex3-w1",
+                  "traditional": "就系上課程",
+                  "simplified": "就系上课程",
+                  "pinyin": "jiù xì shàng kèchéng",
+                  "meaning": "in dept courses"
+                },
+                {
+                  "id": "b3l7g5-ex3-w2",
+                  "traditional": "來說",
+                  "simplified": "来说",
+                  "pinyin": "lái shuō",
+                  "meaning": "speaking",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g5-ex3-w3",
+                  "traditional": "越來越難",
+                  "simplified": "越来越难",
+                  "pinyin": "yuè lái yuè nán",
+                  "meaning": "harder and harder"
+                },
+                {
+                  "id": "b3l7g5-ex3-w4",
+                  "traditional": "報告也變多",
+                  "simplified": "报告也变多",
+                  "pinyin": "bàogào yě biàn duō",
+                  "meaning": "reports also grew",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l7g5-cf1",
+              "question": "How does 就……來說 differ from 對……來說?",
+              "answer": "就……來說 targets a specific objective domain or criteria ('in terms of X'). 對……來說 introduces an individual's personal subjective perspective ('to person X').",
+              "wrongTraditional": "對選舉文化來說，兩國很不同。",
+              "wrongSimplified": "对选举文化来说，两国很不同。",
+              "right": {
+                "traditional": "就選舉文化來說，兩國很不同。",
+                "simplified": "就选举文化来说，两国很不同。",
+                "pinyin": "Jiù xuǎnjǔ wénhuà lái shuō, liǎng guó hěn bù tóng.",
+                "english": "In terms of election culture, the two countries are very different.",
+                "words": [
+                  {
+                    "id": "b3l7g5-cf1-w1",
+                    "traditional": "就選舉文化",
+                    "simplified": "就选举文化",
+                    "pinyin": "jiù xuǎnjǔ wénhuà",
+                    "meaning": "in election culture"
+                  },
+                  {
+                    "id": "b3l7g5-cf1-w2",
+                    "traditional": "來說",
+                    "simplified": "来说",
+                    "pinyin": "lái shuō",
+                    "meaning": "speaking",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g5-cf1-w3",
+                    "traditional": "兩國很不同",
+                    "simplified": "两国很不同",
+                    "pinyin": "liǎng guó hěn bù tóng",
+                    "meaning": "2 nations differ",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l7g5-cf2",
+              "question": "Can 來說 be replaced with 看 in this pattern?",
+              "answer": "來說 is standard in this written construction; do not use 看 or other verbs inside the frame.",
+              "wrongTraditional": "就這棟房子的環境來看說，還不錯。",
+              "wrongSimplified": "就这栋房子的环境来看说，还不错。",
+              "right": {
+                "traditional": "就這棟房子的環境來說，還不錯。",
+                "simplified": "就这栋房子的环境来说，还不错。",
+                "pinyin": "Jiù zhè dòng fángzi de huánjìng lái shuō, hái búcuò.",
+                "english": "In terms of this house's environment, it's pretty good.",
+                "words": [
+                  {
+                    "id": "b3l7g5-cf2-w1",
+                    "traditional": "就房子環境",
+                    "simplified": "就房子环境",
+                    "pinyin": "jiù fángzi huánjìng",
+                    "meaning": "in house setting"
+                  },
+                  {
+                    "id": "b3l7g5-cf2-w2",
+                    "traditional": "來說",
+                    "simplified": "来说",
+                    "pinyin": "lái shuō",
+                    "meaning": "speaking",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "b3l7g5-cf2-w3",
+                    "traditional": "還不錯",
+                    "simplified": "还不错",
+                    "pinyin": "hái búcuò",
+                    "meaning": "not bad",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l7g5-q1",
+            "type": "choice",
+            "prompt": "Introduce a critique framed from the standpoint of product quality:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家新公司，"
+              },
+              {
+                "type": "blank",
+                "id": "b3l7g5-q1-b1",
+                "answer": "就產品品質來說",
+                "answerSimplified": "就产品品质来说",
+                "hint": "in terms of product quality"
+              },
+              {
+                "type": "text",
+                "traditional": "還有進步的空間。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l7g5-q1-t1",
+                "traditional": "就產品品質來說",
+                "simplified": "就产品品质来说",
+                "pinyin": "jiù chǎnpǐn pǐnzhì lái shuō",
+                "meaning": "in terms of quality"
+              },
+              {
+                "id": "b3l7g5-q1-t2",
+                "traditional": "對產品品質來說",
+                "simplified": "对产品品质来说",
+                "pinyin": "duì chǎnpǐn pǐnzhì lái shuō",
+                "meaning": "to product quality"
+              },
+              {
+                "id": "b3l7g5-q1-t3",
+                "traditional": "向產品品質來說",
+                "simplified": "向产品品质来说",
+                "pinyin": "xiàng chǎnpǐn pǐnzhì lái shuō",
+                "meaning": "toward product quality"
+              }
+            ],
+            "correctFeedback": "就……來說 evaluates an objective domain or quality.",
+            "repairFeedback": "Use 就……來說 to scope analysis by a specific standard or domain."
+          }
+        ]
+      },
+      {
+        "id": "B3L07-G06-P197",
+        "bookId": 3,
+        "lessonId": 7,
+        "partId": 2,
+        "lessonTitle": "背包客的旅行",
+        "lessonTitleEnglish": "Backpacker's Travel",
+        "grammarNumber": 6,
+        "titleTraditional": "V/Vs得……",
+        "titleEnglish": "Degree Complement: Result or Extreme Extent",
+        "learnerPromise": "Depict vivid or extreme results of an action or state using V/Vs得.",
+        "printedPages": [
+          197,
+          198
+        ],
+        "bookPage": 197,
+        "bookPageAvailable": true,
+        "audioReference": "07-2-1",
+        "explanation": "「得」的後面是補語，用來詳細說明前面動作（V）或狀態（Vs）所達到的程度或造成的結果。常用生動、誇張的短句進行描寫，如「吃得站不起來」、「忙得沒時間上廁所」。",
+        "focusTerms": [
+          "得",
+          "開心得",
+          "痛得",
+          "忙得沒時間"
+        ],
+        "pattern": "Verb / Stative Verb + 得 + Degree / Vivid Consequence",
+        "patternColumns": [
+          "Predicate",
+          "Particle",
+          "Degree"
+        ],
+        "patternRows": [
+          {
+            "id": "b3l7g6-r1",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g6-r1-c1-w1",
+                  "traditional": "開心",
+                  "simplified": "开心",
+                  "pinyin": "kāixīn",
+                  "meaning": "happy"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g6-r1-c2-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": "to extent of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g6-r1-c3-w1",
+                  "traditional": "忘了工作",
+                  "simplified": "忘了工作",
+                  "pinyin": "wàng le gōngzuò",
+                  "meaning": "forgot work"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g6-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g6-r2-c1-w1",
+                  "traditional": "吃",
+                  "simplified": "吃",
+                  "pinyin": "chī",
+                  "meaning": "ate"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g6-r2-c2-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": "to extent of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g6-r2-c3-w1",
+                  "traditional": "站不起來",
+                  "simplified": "站不起来",
+                  "pinyin": "zhàn bu qǐlai",
+                  "meaning": "cannot stand up"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l7g6-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l7g6-r3-c1-w1",
+                  "traditional": "忙",
+                  "simplified": "忙",
+                  "pinyin": "máng",
+                  "meaning": "busy"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g6-r3-c2-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": "to extent of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l7g6-r3-c3-w1",
+                  "traditional": "沒時間吃飯",
+                  "simplified": "没时间吃饭",
+                  "pinyin": "méi shíjiān chīfàn",
+                  "meaning": "no time to eat"
+                }
+              ]
+            ]
+          }
+        ],
+        "examples": [
+          {
+            "id": "b3l7g6-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "大家一起聊天開玩笑，讓他開心得把工作的問題都忘了。",
+              "simplified": "大家一起聊天开玩笑，让他开心得把工作的问题都忘了。",
+              "pinyin": "Dàjiā yìqǐ liáotiān kāiwánxiào, ràng tā kāixīn de bǎ gōngzuò de wèntí dōu wàng le.",
+              "english": "Everyone chatted and joked together, making him so happy he forgot his work troubles.",
+              "words": [
+                {
+                  "id": "b3l7g6-ex1-w1",
+                  "traditional": "聊天開玩笑",
+                  "simplified": "聊天开玩笑",
+                  "pinyin": "liáotiān kāiwánxiào",
+                  "meaning": "chat and joke",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g6-ex1-w2",
+                  "traditional": "讓他開心得",
+                  "simplified": "让他开心得",
+                  "pinyin": "ràng tā kāixīn de",
+                  "meaning": "made him happy to"
+                },
+                {
+                  "id": "b3l7g6-ex1-w3",
+                  "traditional": "把工作問題都忘了",
+                  "simplified": "把工作问题都忘了",
+                  "pinyin": "bǎ gōngzuò wèntí dōu wàng le",
+                  "meaning": "forgot work issues",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g6-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我在那家吃到飽餐廳吃了一連四個小時，吃得我都站不起來了。",
+              "simplified": "我在那家吃到饱餐厅吃了一连四个小时，吃得我都站不起来了。",
+              "pinyin": "Wǒ zài nà jiā chīdàobǎo cāntīng chī le yìlián sì ge xiǎoshí, chī de wǒ dōu zhàn bu qǐlai le.",
+              "english": "I ate for four hours straight at that buffet, eating so much I couldn't even stand up.",
+              "words": [
+                {
+                  "id": "b3l7g6-ex2-w1",
+                  "traditional": "吃了四個小時",
+                  "simplified": "吃了四个小时",
+                  "pinyin": "chī le sì ge xiǎoshí",
+                  "meaning": "ate 4 hours",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g6-ex2-w2",
+                  "traditional": "吃得我都",
+                  "simplified": "吃得我都",
+                  "pinyin": "chī de wǒ dōu",
+                  "meaning": "ate to extent I"
+                },
+                {
+                  "id": "b3l7g6-ex2-w3",
+                  "traditional": "站不起來了",
+                  "simplified": "站不起来了",
+                  "pinyin": "zhàn bu qǐlai le",
+                  "meaning": "cannot stand up",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b3l7g6-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "那家包子店的生意好得不得了，店員忙得沒時間吃飯。",
+              "simplified": "那家包子店的生意好得不得了，店员忙得没时间吃饭。",
+              "pinyin": "Nà jiā bāozidiàn de shēngyì hǎo de bùdéliǎo, diànyuán máng de méi shíjiān chīfàn.",
+              "english": "That bun shop's business is extraordinarily good; clerks are so busy they have no time to eat.",
+              "words": [
+                {
+                  "id": "b3l7g6-ex3-w1",
+                  "traditional": "生意好得不得了",
+                  "simplified": "生意好得不得了",
+                  "pinyin": "shēngyì hǎo de bùdéliǎo",
+                  "meaning": "business very good",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l7g6-ex3-w2",
+                  "traditional": "店員忙得",
+                  "simplified": "店员忙得",
+                  "pinyin": "diànyuán máng de",
+                  "meaning": "clerks busy to"
+                },
+                {
+                  "id": "b3l7g6-ex3-w3",
+                  "traditional": "沒時間吃飯",
+                  "simplified": "没时间吃饭",
+                  "pinyin": "méi shíjiān chīfàn",
+                  "meaning": "no time to eat",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "b3l7g6-cf1",
+              "question": "Which 得 particle connects verbs to degree complements?",
+              "answer": "Use 得 (structural particle for complements), not 的 (noun modifier) or 地 (adverbial marker).",
+              "wrongTraditional": "他開心的大笑了起來。",
+              "wrongSimplified": "他开心的大笑了起来。",
+              "right": {
+                "traditional": "他開心得大笑了起來。",
+                "simplified": "他开心得大笑了起来。",
+                "pinyin": "Tā kāixīn de dàxiào le qǐlai.",
+                "english": "He was so happy that he started laughing out loud.",
+                "words": [
+                  {
+                    "id": "b3l7g6-cf1-w1",
+                    "traditional": "他開心得",
+                    "simplified": "他开心得",
+                    "pinyin": "tā kāixīn de",
+                    "meaning": "he happy to extent"
+                  },
+                  {
+                    "id": "b3l7g6-cf1-w2",
+                    "traditional": "大笑了起來",
+                    "simplified": "大笑了起来",
+                    "pinyin": "dàxiào le qǐlai",
+                    "meaning": "laughed out loud",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "b3l7g6-cf2",
+              "question": "Can V/Vs得 be followed by a full explanatory clause?",
+              "answer": "Yes, it frequently introduces an exaggerated consequence clause like 我都站不起來了 or 沒時間吃飯.",
+              "wrongTraditional": "他忙的連飯都沒吃完。",
+              "wrongSimplified": "他忙的连饭都没吃完。",
+              "right": {
+                "traditional": "他忙得連飯都沒吃完。",
+                "simplified": "他忙得连饭都没吃完。",
+                "pinyin": "Tā máng de lián fàn dōu méi chīwán.",
+                "english": "He was so busy that he didn't even finish his meal.",
+                "words": [
+                  {
+                    "id": "b3l7g6-cf2-w1",
+                    "traditional": "他忙得",
+                    "simplified": "他忙得",
+                    "pinyin": "tā máng de",
+                    "meaning": "he busy to extent"
+                  },
+                  {
+                    "id": "b3l7g6-cf2-w2",
+                    "traditional": "連飯都沒吃完",
+                    "simplified": "连饭都没吃完",
+                    "pinyin": "lián fàn dōu méi chīwán",
+                    "meaning": "didn't finish meal",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "b3l7g6-q1",
+            "type": "choice",
+            "prompt": "Describe intense leg pain after an all-day soccer match:",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "踢了一整天球，我的腳"
+              },
+              {
+                "type": "blank",
+                "id": "b3l7g6-q1-b1",
+                "answer": "痛得走不動了",
+                "answerSimplified": "痛得走不动了",
+                "hint": "hurt so much I couldn't walk"
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "b3l7g6-q1-t1",
+                "traditional": "痛得走不動了",
+                "simplified": "痛得走不动了",
+                "pinyin": "tòng de zǒu bú dòng le",
+                "meaning": "hurt so can't walk"
+              },
+              {
+                "id": "b3l7g6-q1-t2",
+                "traditional": "痛的走不動了",
+                "simplified": "痛的走不动了",
+                "pinyin": "tòng de zǒu bú dòng le",
+                "meaning": "possessive hurt"
+              },
+              {
+                "id": "b3l7g6-q1-t3",
+                "traditional": "痛地走不動了",
+                "simplified": "痛地走不动了",
+                "pinyin": "tòng de zǒu bú dòng le",
+                "meaning": "adverbial hurt"
+              }
+            ],
+            "correctFeedback": "得 links the stative predicate 痛 to the degree complement 走不動了.",
+            "repairFeedback": "Use the complement particle 得 to connect predicate to degree result."
+          }
+        ]
+      }
+    ]
+  }
+}
