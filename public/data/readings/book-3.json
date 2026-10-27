@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 3,
-  "count": 18,
+  "count": 20,
   "items": [
     {
       "id": "B3L01-R01",
@@ -1805,6 +1805,166 @@
           "simplified": "这样的例子一年比一年多。一直到最近几年，家长和老师终于明白每个孩子都是独特的，不是每个人都非念大学不可。再说，考试成绩好的人，不一定就能幸福过日子。因此，有意义的学习是让孩子以思考代替记答案，不仅给孩子自由的空间，发挥出自己的优点，而且还提供更好的教材和教学方式，让孩子快乐地学习、成长。如果他们的能力可以变得更强，将来就能为社会贡献一份力量了。",
           "pinyin": "Zhèyàng de lìzi yì nián bǐ yì nián duō. Yìzhí dào zuìjìn jǐ nián, jiāzhǎng hé lǎoshī zhōngyú míngbái měi ge háizi dōu shì dútè de, búshì měi ge rén dōu fēi niàn dàxué bùkě. Zàishuō, kǎoshì chéngjī hǎo de rén, bù yídìng jiù néng xìngfú guò rìzi. Yīncǐ, yǒuyìyì de xuéxí shì ràng háizi yǐ sīkǎo dàitì jì dá'àn, bùjǐn gěi háizi zìyóu de kōngjiān, fāhuī chū zìjǐ de yōudiǎn, érqiě hái tígōng gèng hǎo de jiàocái hé jiàoxué fāngshì, ràng háizi kuàilè de xuéxí, chéngzhǎng. Rúguǒ tāmen de nénglì kěyǐ biàn de gèng qiáng, jiānglái jiù néng wèi shèhuì gòngxiàn yí fèn lìliàng le.",
           "english": "Such examples multiply year after year. Only in recent years have parents and educators finally realized that each child is unique and not everyone must attend university. Furthermore, individuals with high test scores do not necessarily lead happier lives. Meaningful education allows children to replace rote memorization with critical thinking, providing free space to develop talents, along with superior curricula and methods that foster joyful learning and growth. If their capabilities grow stronger, they can contribute meaningful strength to society in the future."
+        }
+      ]
+    },
+    {
+      "id": "B3L10-R01",
+      "bookId": 3,
+      "lessonId": 10,
+      "dialogueNumber": 1,
+      "title": "健康檢查不麻煩",
+      "audioReference": "10-1-1",
+      "paragraphs": [
+        {
+          "speaker": "芳草",
+          "traditional": "家豪，你手裡拿的是什麼？是健康檢查的簡介嗎？",
+          "simplified": "家豪，你手里拿的是什么？是健康检查的简介吗？",
+          "pinyin": "Jiāháo, nǐ shǒuli ná de shì shénme? Shì jiànkāng jiǎnchá de jiǎnjiè ma?",
+          "english": "Jiahao, what are you holding in your hand? Is it a brochure for health examinations?"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "對啊，早上陪我阿姨去醫院辦理住院手續時，順便拿的，要帶回去給我爸媽看。",
+          "simplified": "对啊，早上陪我阿姨去医院办理住院手续时，顺便拿的，要带回去给我爸妈看。",
+          "pinyin": "Duì a, zǎoshang péi wǒ āyí qù yīyuàn bànlǐ zhùyuàn shǒuxù shí, shùnbiàn ná de, yào dài huíqù gěi wǒ bàmā kàn.",
+          "english": "Yes. I picked it up this morning while accompanying my aunt to handle her hospital admission, to take home for my parents to see."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "你阿姨怎麼了？昨天我還在超市遇到她，看起來很健康啊！",
+          "simplified": "你阿姨怎么了？昨天我还在此超市遇到她，看起来很健康啊！",
+          "pinyin": "Nǐ āyí zěnme le? Zuótiān wǒ hái zài chāoshì yùdào tā, kàn qǐlái hěn jiànkāng a!",
+          "english": "What happened to your aunt? I just ran into her at the supermarket yesterday and she looked in great health!"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "說也奇怪，她一向都有良好的飲食和生活習慣，也從來沒發覺自己有什麼毛病。直到上個月做了全身健康檢查，才知道病了。",
+          "simplified": "说也奇怪，她一向都有良好的饮食和生活习惯，也从来没发觉自己有什么毛病。直到上个月做了全身健康检查，才知道病了。",
+          "pinyin": "Shuō yě qíguài, tā yíxiàng dōu yǒu liánghǎo de yǐnshí hé shēnghuó xíguàn, yě cónglái méi fājué zìjǐ yǒu shénme máobìng. Zhídào shàng ge yuè zuò le quánshēn jiànkāng jiǎnchá, cái zhīdào bìng le.",
+          "english": "Strange to say, she has always maintained healthy dietary and living habits, and never sensed anything wrong. Not until she underwent a comprehensive health check last month did she realize she was ill."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "每次聽你阿姨說話，都感覺她只想著照顧家人，自己一定沒想到會變成病人吧？",
+          "simplified": "每次听你阿姨说话，都感觉她只想著照顾家人，自己一定没想到会变成病人吧？",
+          "pinyin": "Měicì tīng nǐ āyí shuōhuà, dōu gǎnjué tā zhǐ xiǎngzhe zhàogù jiārén, zìjǐ yídìng méi xiǎngdào huì biànchéng bìngrén ba?",
+          "english": "Whenever I hear your aunt speak, I feel she only ever thinks of looking after her family; she certainly never imagined becoming a patient herself."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "是啊，她是家庭主婦，生活很單純，每天管孩子、注意家人的健康，照顧家人就是她生活的重心，從沒想過自己也需要別人照顧。",
+          "simplified": "是啊，她是家庭主妇，生活很单纯，每天管孩子、注意家人的健康，照顾家人就是她生活的重心，从没想过自己也需要别人照顾。",
+          "pinyin": "Shì a, tā shì jiātíng zhǔfù, shēnghuó hěn dānchún, měitiān guǎn háizi, zhùyì jiārén de jiànkāng, zhàogù jiārén jiù shì tā shēnghuó de zhòngxīn, cóng méi xiǎngguò zìjǐ yě xūyào biérén zhàogù.",
+          "english": "Exactly. As a homemaker leading a quiet life, managing kids and watching over family health is the center of her life; she never considered that she too might need looking after."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "不過還好她去做了健檢，才知道該去看醫生。",
+          "simplified": "不过还好她去做了健检，才知道该去看医生。",
+          "pinyin": "Búguò háihǎo tā qù zuò le jiànjiǎn, cái zhīdào gāi qù kàn yīshēng.",
+          "english": "Still, it's fortunate she went for the checkup; only then did she know to see a doctor."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "妳說的沒錯。我早就想帶父母去做了，只不過他們覺得做健檢除了得花時間，還很麻煩，所以很被動，我得趁這個機會，跟他們溝通一下。",
+          "simplified": "你说的没错。我早就想带父母去做了，只不过他们觉得做健检除了得花时间，还很麻烦，所以很被动，我得趁这个机会，跟他们沟通一下。",
+          "pinyin": "Nǐ shuō de méicuò. Wǒ zǎojiù xiǎng dài fùmǔ qù zuò le, zhǐbúguò tāmen juéde zuò jiànjiǎn chúle děi huā shíjiān, hái hěn máfan, suǒyǐ hěn bèidòng, wǒ děi chèn zhè ge jīhuì, gēn tāmen gōutōng yíxià.",
+          "english": "You're right. I had long wanted to take my parents, except they feel exams take time and cause hassle, making them passive about it. I must seize this opportunity to talk with them."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "我先生也一樣。最近他頭痛了好幾天，我想帶他去看病，他不但不配合，反而很生氣地說：「我又沒什麼毛病，為什麼非去不可！」他死也不肯去，害我擔心得不得了。",
+          "simplified": "我先生也一样。最近他头痛了好几天，我想带他去看病，他不但不配合，反而很生气地说：“我又没什么毛病，为什么非去不可！”他死也不肯去，害我担心得不得了。",
+          "pinyin": "Wǒ xiānsheng yě yíyàng. Zuìjìn tā tóutòng le hǎojǐ tiān, wǒ xiǎng dài tā qù kànbìng, tā búdàn bù pèihé, fǎn'ér hěn shēngqì de shuō: 'Wǒ yòu méi shénme máobìng, wèishénme fēi qù bùkě!' Tā sǐ yě bù kěn qù, hài wǒ dānxīn de bùdéliǎo.",
+          "english": "My husband is just the same. He had headaches for several days recently, and when I wanted to take him to the clinic, far from cooperating, he snapped angrily: 'Nothing is wrong with me, why must I go!' He obstinately refused, causing me tremendous worry."
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "如果感覺這麼不舒服，就是身體發出警告，表示健康有問題了。我看妳陪他去醫院，妳也順便做個免費的基本健檢吧。",
+          "simplified": "如果感觉这么不舒服，就是身体发出警告，表示健康有问题了。我看你陪他去医院，你也顺便做个免费的基本健检吧。",
+          "pinyin": "Rúguǒ gǎnjué zhème bù shūfu, jiù shì shēntǐ fāchū jǐnggào, biǎoshì jiànkāng yǒu wèntí le. Wǒ kàn nǐ péi tā qù yīyuàn, nǐ yě shùnbiàn zuò ge miǎnfèi de jīběn jiànjiǎn ba.",
+          "english": "If he feels that uncomfortable, that's the body sounding an alarm that health has issues. I suggest you accompany him to the hospital, and take advantage of a free basic checkup yourself."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "免費健檢的對象，好像年齡得滿四十歲。我還年輕呢！",
+          "simplified": "免费健检的对象，好像年龄得满四十岁。我还年轻呢！",
+          "pinyin": "Miǎnfèi jiànjiǎn de duìxiàng, hǎoxiàng niánlíng děi mǎn sìshí suì. Wǒ hái niánqīng ne!",
+          "english": "The eligibility for free checkups seems to require turning forty. I'm still young!"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "對不起，對不起。",
+          "simplified": "对不起，对不起。",
+          "pinyin": "Duìbùqǐ, duìbùqǐ.",
+          "english": "My apologies, sorry about that."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "沒什麼啦！",
+          "simplified": "没什么啦！",
+          "pinyin": "Méi shénme la!",
+          "english": "No worries at all!"
+        },
+        {
+          "speaker": "家豪",
+          "traditional": "這家醫院的醫生挺有名的，應該很可靠，健檢手續也不麻煩，只要上網填個表就行了。",
+          "simplified": "这家医院的医生挺有名的，应该很可靠，健检手续也不麻烦，只要上网填个表就行了。",
+          "pinyin": "Zhè jiā yīyuàn de yīshēng tǐng yǒumíng de, yīnggāi hěn kěkào, jiànjiǎn shǒuxù yě bù máfan, zhǐyào shàngwǎng tián ge biǎo jiù xíng le.",
+          "english": "The doctors at this hospital are quite renowned and should be dependable; checkup procedures aren't complicated either—just fill out an online form."
+        },
+        {
+          "speaker": "芳草",
+          "traditional": "我最大的願望就是家人都健健康康的。既然手續這麼簡單，那明天就先帶我先生去做個健檢吧。",
+          "simplified": "我最大的愿望就是家人都健健康康的。既然手续这么简单，那明天就先带我先生去做个健检吧。",
+          "pinyin": "Wǒ zuìdà de yuànwàng jiù shì jiārén dōu jiànjiànkāngkāng de. Jìrán shǒuxù zhème jiǎndān, nà míngtiān jiù xiān dài wǒ xiānsheng qù zuò ge jiànjiǎn ba.",
+          "english": "My greatest wish is for my family to stay completely healthy. Since the procedure is that simple, tomorrow I'll take my husband for a health check."
+        }
+      ]
+    },
+    {
+      "id": "B3L10-R02",
+      "bookId": 3,
+      "lessonId": 10,
+      "dialogueNumber": 2,
+      "title": "短文 · 追求健康與幸福的生活",
+      "audioReference": "10-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "家豪的伯伯林水木是一家玩具工廠的大老闆，工作三十年了。雖然這段期間遇到了不少挫折，但是他很堅強，為了給家人安定的生活、當員工的榜樣，他都努力克服、堅持到底，終於擁有了今天的成就。",
+          "simplified": "家豪的伯伯林水木是一家玩具工厂的大老板，工作三十年了。虽然这段期间遇到了不少挫折，但是他很坚强，为了给家人安定的生活、当员工的榜样，他都努力克服、坚持到底，终于拥有了今天的成就。",
+          "pinyin": "Jiāháo de bóbo Lín Shuǐmù shì yì jiā wánjù gōngchǎng de dà lǎobǎn, gōngzuò sānshí nián le. Suīrán zhè duàn qījiān yùdào le bùshǎo cuòzhé, dànshì tā hěn jiānqiáng, wèile gěi jiārén āndìng de shēnghuó, dāng yuángōng de bǎngyàng, tā dōu nǔlì kèfú, jiānchí dàodǐ, zhōngyú yōngyǒu le jīntiān de chéngjiù.",
+          "english": "Jiahao's uncle Lin Shuimu is the owner of a toy factory, where he has worked for thirty years. Although encountering numerous setbacks over this period, he remained steadfast; to provide stability for his family and serve as a model for employees, he persevered through difficulties to the very end, finally achieving today's success."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "過去三十年，林伯伯不但經常到各部門了解情況，對產品標準的要求也較高。他認為自己是公司的主角，要是少了他，銷售成績一定不理想。在家豪的記憶中，伯伯每天的生活就像打仗一樣，老是忙得忘了吃飯，有時緊張得睡不著。有一次他跟部門主管開會，因為討論得太激烈，頭突然痛得不得了，連站都站不起來，助理立刻送他到醫院去。",
+          "simplified": "过去三十年，林伯伯不但经常到各部门了解情况，对产品标准的要求也较高。他认为自己是公司的主角，要是少了他，销售成绩一定不理想。在家豪的记忆中，伯伯每天的生活就像打仗一样，老是忙得忘了吃饭，有时紧张得睡不着。有一次他跟部门主管开会，因为讨论得太激烈，头突然痛得不得了，连站都站不起来，助理立刻送他到医院去。",
+          "pinyin": "Guòqù sānshí nián, Lín bóbo búdàn jīngcháng dào gè bùmén liǎojiě qíngkuàng, duì chǎnpǐn biāozhǔn de yāoqiú yě jiào gāo. Tā rènwéi zìjǐ shì gōngsī de zhǔjiǎo, yàoshì shǎo le tā, xiāoshòu chéngjī yídìng bù lǐxiǎng. Zài Jiāháo de jìyì zhōng, bóbo měitiān de shēnghuó jiù xiàng dǎzhàng yíyàng, lǎoshì máng de wàng le chīfàn, yǒushí jǐnzhāng de shuìbùzháo. Yǒu yí cì tā gēn bùmén zhǔguǎn kāihuì, yīnwèi tǎolùn de tài jīliè, tóu tūrán tòng de bùdéliǎo, lián zhàn dōu zhàn bù qǐlái, zhùlǐ lìkè sòng tā dào yīyuàn qù.",
+          "english": "Over past decades, Uncle Lin not only inspected departments regularly, but maintained demanding product standards. He viewed himself as the company protagonist, believing sales would suffer without him. In Jiahao's memory, his uncle lived every day like a battle, constantly too busy to eat, and sometimes too stressed to sleep. Once in an intense executive meeting, a violent headache incapacitated him so badly he couldn't stand, prompting his assistant to rush him to the hospital."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "醫生告訴林伯伯，想要早日恢復健康，除了調整生活作息，還要培養符合健康的飲食習慣。比如每天早睡早起、按時間吃飯、運動三十分鐘，避免吃太鹹、太油的食物。他也一再警告林伯伯，別拿生命開玩笑，假如不改變過去的生活方式，恐怕連上帝也救不了了。",
+          "simplified": "医生告诉林伯伯，想要早日恢复健康，除了调整生活作息，还要培养符合健康的饮食习惯。比如每天早睡早起、按时间吃饭、运动三十分钟，避免吃太咸、太油的食物。他也一再警告林伯伯，别拿生命开玩笑，假如不改变过去的生活方式，恐怕连上帝也救不了了。",
+          "pinyin": "Yīshēng gàosù Lín bóbo, xiǎng yào zǎorì huīfù jiànkāng, chúle tiáozhěng shēnghuó zuòxī, hái yào péiyǎng fúhé jiànkāng de yǐnshí xíguàn. Bǐrú měitiān zǎoshuì zǎoqǐ, àn shíjiān chīfàn, yùndòng sānshí fēnzhōng, bìmiǎn chī tài xián, tài yóu de shíwù. Tā yě yízài jǐnggào Lín bóbo, bié ná shēngmìng kāiwánxiào, jiǎrú bù gǎibiàn guòqù de shēnghuó fāngshì, kǒngpà lián Shàngdì yě jiù bù liǎo le.",
+          "english": "The doctor advised Uncle Lin that regaining health required adjusting daily schedules and cultivating balanced diet habits: sleeping early and rising early, eating meals on time, exercising thirty minutes daily, and avoiding overly salty or greasy fare. He repeatedly warned Uncle Lin against gambling with life, saying that if past lifestyles persisted, even God couldn't save him."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "最初，林伯伯不太能適應這樣的改變，要是覺得食物的味道太淡，還是會加一些醬料；為了多運動，每天走路去上班，但經常走到一半就沒體力了，只好搭計程車。最後家人不得不一起來協助他，陪他吃飯、運動，甚至走路上下班。還好經過了一段時間，林伯伯終於恢復健康，不再教家人擔心了。",
+          "simplified": "最初，林伯伯不太能适应这样的改变，要是觉得食物的味道太淡，还是会加一些酱料；为了多运动，每天走路去上班，但经常走到一半就没体力了，只好搭出租车。最后家人不得不一起来协助他，陪他吃饭、运动，甚至走路上下班。还好经过了一段时间，林伯伯终于恢复健康，不再教家人担心了。",
+          "pinyin": "Zuìchū, Lín bóbo bú tài néng shìyìng zhèyàng de gǎibiàn, yàoshì juéde shíwù de wèidào tài dàn, háishì huì jiā yìxiē jiàngliào; wèile duō yùndòng, měitiān zǒulù qù shàngbān, dàn jīngcháng zǒu dào yíbàn jiù méi tǐlì le, zhǐhǎo dā jìchéngchē. Zuìhòu jiārén bùdébù yìqǐ lái xiézhù tā, péi tā chīfàn, yùndòng, shènzhì zǒulù shàngxiàbān. Háihǎo jīngguò le yí duàn shíjiān, Lín bóbo zhōngyú huīfù jiànkāng, búzài jiāo jiārén dānxīn le.",
+          "english": "Initially, Uncle Lin struggled with the shift: when food tasted bland he still added sauces; to exercise he walked to work, but frequently ran out of steam halfway and hailed a taxi. Ultimately his family rallied to assist him, sharing meals, exercising, and even walking commutes together. Fortunately, after a while Uncle Lin recovered his health, bringing peace of mind back to his family."
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "就在林伯伯為了健康而努力時，他的一位老朋友因為工作太累，僅僅五十歲就不幸去世了。這個壞消息給了林伯伯很大的刺激，讓他重新思考努力工作到底是為了什麼，真正的幸福又是什麼。或許，誰都找不到正確的答案，不過健康一定是最重要的。",
+          "simplified": "就在林伯伯为了健康而努力时，他的一位老朋友因为工作太累，仅仅五十岁就不幸去世了。这个坏消息给了林伯伯很大的刺激，让他重新思考努力工作到底是为什么，真正的幸福又是什么。或许，谁都找不到正确的答案，不过健康一定是最重要的。",
+          "pinyin": "Jiù zài Lín bóbo wèile jiànkāng ér nǔlì shí, tā de yí wèi lǎo péngyǒu yīnwèi gōngzuò tài lèi, jǐnjǐn wǔshí suì jiù búxìng qùshì le. Zhè ge huài xiāoxī gěi le Lín bóbo hěn dà de cìjī, ràng tā chóngxīn sīkǎo nǔlì gōngzuò dàodǐ shì wèile shénme, zhēnzhèng de xìngfú yòu shì shénme. Huòxǔ, shéi dōu zhǎobùdào zhèngquè de dá'àn, búguò jiànkāng yídìng shì zuì zhòngyào de.",
+          "english": "Just as Uncle Lin was striving for health, an old colleague passed away at merely fifty years old from work exhaustion. This somber news dealt him a profound shock, causing him to reevaluate what relentless work is ultimately for, and what true happiness really means. Perhaps nobody has definitive answers, but good health is certainly paramount."
         }
       ]
     }

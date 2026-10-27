@@ -877,6 +877,45 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
         "id": "B3L09-G07-P250"
       }
     ]
+  },
+  {
+    "id": "B3L10-P01-D01",
+    "bookId": 3,
+    "lessonId": 10,
+    "partId": 1,
+    "title": "Grammar 1–3 · Health Examinations Are Easy",
+    "grammarPages": [
+      {
+        "id": "B3L10-G01-P262"
+      },
+      {
+        "id": "B3L10-G02-P263"
+      },
+      {
+        "id": "B3L10-G03-P265"
+      }
+    ]
+  },
+  {
+    "id": "B3L10-P02-D02",
+    "bookId": 3,
+    "lessonId": 10,
+    "partId": 2,
+    "title": "Grammar 4–7 · Pursuing Health and Happiness",
+    "grammarPages": [
+      {
+        "id": "B3L10-G04-P272"
+      },
+      {
+        "id": "B3L10-G05-P274"
+      },
+      {
+        "id": "B3L10-G06-P275"
+      },
+      {
+        "id": "B3L10-G07-P276"
+      }
+    ]
   }
 ];
 

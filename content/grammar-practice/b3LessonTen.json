@@ -1,0 +1,1960 @@
+{
+  "B3L10-G01-P262": {
+    "bookPage": 262,
+    "title": "Practice: 直到……(以後/時)才……",
+    "items": [
+      {
+        "id": "b3l10g1-p1",
+        "source": "p.262 #1",
+        "kind": "slot-build",
+        "prompt": "A notes your wife called about your forgotten phone. Complete Xiao Duan's reply:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "小段"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我出門時沒注意，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "直到要打"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "電話的時候，才發現沒帶手機。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "直到要打",
+            "simplified": "直到要打",
+            "pinyin": "zhídào yào dǎ"
+          },
+          {
+            "traditional": "自從要打",
+            "simplified": "自从要打",
+            "pinyin": "zìcóng yào dǎ"
+          },
+          {
+            "traditional": "剛好要打",
+            "simplified": "刚好要打",
+            "pinyin": "gānghǎo yào dǎ"
+          }
+        ],
+        "accepted": "直到要打",
+        "result": {
+          "traditional": "我出門時沒注意，直到要打電話的時候，才發現沒帶手機。",
+          "simplified": "我出门时没注意，直到要打电话的时候，才发现没带手机。",
+          "pinyin": "Wǒ chūmén shí méi zhùyì, zhídào yào dǎ diànhuà de shíhou, cái fāxiàn méi dài shǒujī.",
+          "english": "I wasn't paying attention when leaving; not until I needed to call did I realize I forgot my phone."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "自從要打"
+            ],
+            "note": "Delayed realization uses 直到 (not 自從)."
+          },
+          {
+            "placed": [
+              "剛好要打"
+            ],
+            "note": "Pattern: 直到……才…… marks delayed discovery."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 直到要打."
+      },
+      {
+        "id": "b3l10g1-p2",
+        "source": "p.262 #2",
+        "kind": "slot-build",
+        "prompt": "A asks why you look exhausted. State that you couldn't leave until security locked up:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "昨天工作太多，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "直到警衛"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "要關門了，我才回家。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "直到警衛",
+            "simplified": "直到警卫",
+            "pinyin": "zhídào jǐngwèi"
+          },
+          {
+            "traditional": "自從警衛",
+            "simplified": "自从警卫",
+            "pinyin": "zìcóng jǐngwèi"
+          },
+          {
+            "traditional": "幸好警衛",
+            "simplified": "幸好警卫",
+            "pinyin": "xìnghǎo jǐngwèi"
+          }
+        ],
+        "accepted": "直到警衛",
+        "result": {
+          "traditional": "昨天工作太多，直到警衛要關門了，我才回家。",
+          "simplified": "昨天工作太多，直到警卫要关门了，我才回家。",
+          "pinyin": "Zuótiān gōngzuò tài duō, zhídào jǐngwèi yào guānmén le, wǒ cái huíjiā.",
+          "english": "Too much work yesterday; not until the security guard was closing did I finally head home."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "自從警衛"
+            ],
+            "note": "Leaving late is marked by 直到……才……."
+          },
+          {
+            "placed": [
+              "幸好警衛"
+            ],
+            "note": "Use 直到 to mark the delayed time limit."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 直到警衛."
+      },
+      {
+        "id": "b3l10g1-p3",
+        "source": "p.263 #1",
+        "kind": "slot-build",
+        "prompt": "A asks if your brother who went abroad years ago is back. Say he returned only last week:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他在國外很久，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "直到上週"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "才搭飛機回國。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "直到上週",
+            "simplified": "直到上周",
+            "pinyin": "zhídào shàngzhōu"
+          },
+          {
+            "traditional": "剛在上週",
+            "simplified": "刚在上周",
+            "pinyin": "gāng zài shàngzhōu"
+          },
+          {
+            "traditional": "自從上週",
+            "simplified": "自从上周",
+            "pinyin": "zìcóng shàngzhōu"
+          }
+        ],
+        "accepted": "直到上週",
+        "result": {
+          "traditional": "他在國外很久，直到上週才搭飛機回國。",
+          "simplified": "他在国外很久，直到上周才搭飞机回国。",
+          "pinyin": "Tā zài guówài hěn jiǔ, zhídào shàngzhōu cái dā fēijī huíguó.",
+          "english": "He was abroad for a long time; not until last week did he finally fly home."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "剛在上週"
+            ],
+            "note": "Pair with 才 to express a delayed return: 直到上週……才……."
+          },
+          {
+            "placed": [
+              "自從上週"
+            ],
+            "note": "自從 marks a starting point, whereas 才 requires 直到."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 直到上週."
+      },
+      {
+        "id": "b3l10g1-p4",
+        "source": "p.263 #2",
+        "kind": "slot-build",
+        "prompt": "Everyone at school is talking about last night's quake. State you only found out this morning:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "昨晚我睡得很沉，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "直到今天"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "早上到了學校，我才知道有地震。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "直到今天",
+            "simplified": "直到今天",
+            "pinyin": "zhídào jīntiān"
+          },
+          {
+            "traditional": "自從今天",
+            "simplified": "自从今天",
+            "pinyin": "zìcóng jīntiān"
+          },
+          {
+            "traditional": "剛好今天",
+            "simplified": "刚好今天",
+            "pinyin": "gānghǎo jīntiān"
+          }
+        ],
+        "accepted": "直到今天",
+        "result": {
+          "traditional": "昨晚我睡得很沉，直到今天早上到了學校，我才知道有地震。",
+          "simplified": "昨晚我睡得很沉，直到今天早上到了学校，我才知道有地震。",
+          "pinyin": "Zuówǎn wǒ shuì de hěn chén, zhídào jīntiān zǎoshang dào le xuéxiào, wǒ cái zhīdào yǒu dìzhèn.",
+          "english": "I slept deeply last night; not until arriving at school this morning did I realize there was an earthquake."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "自從今天"
+            ],
+            "note": "Delayed realization is expressed with 直到……才……."
+          },
+          {
+            "placed": [
+              "剛好今天"
+            ],
+            "note": "Use 直到 to mark the time when the fact finally became known."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 直到今天."
+      }
+    ]
+  },
+  "B3L10-G02-P263": {
+    "bookPage": 263,
+    "title": "Practice: 只不過",
+    "items": [
+      {
+        "id": "b3l10g2-p1",
+        "source": "p.264 #1",
+        "kind": "slot-build",
+        "prompt": "A asks why you don't see a doctor. Reassure them it's merely a light cold:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "沒關係，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "只不過是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "個小感冒，多喝水很快就會好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "只不過是",
+            "simplified": "只不过是",
+            "pinyin": "zhǐbúguò shì"
+          },
+          {
+            "traditional": "畢竟還是",
+            "simplified": "毕竟还是",
+            "pinyin": "bìjìng háishì"
+          },
+          {
+            "traditional": "反而正是",
+            "simplified": "反而正是",
+            "pinyin": "fǎn'ér zhèng shì"
+          }
+        ],
+        "accepted": "只不過是",
+        "result": {
+          "traditional": "沒關係，只不過是個小感冒，多喝水很快就會好。",
+          "simplified": "没关系，只不过是个小感冒，多喝水很快就会好。",
+          "pinyin": "Méiguānxi, zhǐbúguò shì ge xiǎo gǎnmào, duō hēshuǐ kuài jiù huì hǎo.",
+          "english": "No worries, it's merely a small cold; drinking more water will cure it quickly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "畢竟還是"
+            ],
+            "note": "Softening an illness as minor uses 只不過是 ('it's only a...')."
+          },
+          {
+            "placed": [
+              "反而正是"
+            ],
+            "note": "Use 只不過 to downplay seriousness."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 只不過是."
+      },
+      {
+        "id": "b3l10g2-p2",
+        "source": "p.264 #2",
+        "kind": "slot-build",
+        "prompt": "A asks about tomorrow's proficiency test. State you prepared, only lacking experience:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "準備是準備了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "只不過我"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "缺乏考試經驗，有點兒擔心。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "只不過我",
+            "simplified": "只不过我",
+            "pinyin": "zhǐbúguò wǒ"
+          },
+          {
+            "traditional": "反而讓我",
+            "simplified": "反而让我",
+            "pinyin": "fǎn'ér ràng wǒ"
+          },
+          {
+            "traditional": "畢竟是我",
+            "simplified": "毕竟是我",
+            "pinyin": "bìjìng shì wǒ"
+          }
+        ],
+        "accepted": "只不過我",
+        "result": {
+          "traditional": "準備是準備了，只不過我缺乏考試經驗，有點兒擔心。",
+          "simplified": "准备是准备了，只不过我缺乏考试经验，有点儿担心。",
+          "pinyin": "Zhǔnbèi shì zhǔnbèi le, zhǐbúguò wǒ quēfá kǎoshì jīngyàn, yǒudiǎnr dānxīn.",
+          "english": "I did prepare, it's just that I lack exam experience and feel a bit worried."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "反而讓我"
+            ],
+            "note": "Add a minor qualification with 只不過 ('it's only that...')."
+          },
+          {
+            "placed": [
+              "畢竟是我"
+            ],
+            "note": "Use 只不過 to supplement your statement with a mild drawback."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 只不過我."
+      },
+      {
+        "id": "b3l10g2-p3",
+        "source": "p.264 #3",
+        "kind": "slot-build",
+        "prompt": "A asks how the European concert was. Praise the music, qualifying that tickets were steep:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "演奏非常精彩，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "只不過門"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "票太貴了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "只不過門",
+            "simplified": "只不过门",
+            "pinyin": "zhǐbúguò mén"
+          },
+          {
+            "traditional": "而且連門",
+            "simplified": "而且连门",
+            "pinyin": "érqiě lián mén"
+          },
+          {
+            "traditional": "反而讓門",
+            "simplified": "反而让门",
+            "pinyin": "fǎn'ér ràng mén"
+          }
+        ],
+        "accepted": "只不過門",
+        "result": {
+          "traditional": "演奏非常精彩，只不過門票太貴了。",
+          "simplified": "演奏非常精彩，只不过门票太贵了。",
+          "pinyin": "Yǎnzòu fēicháng jīngcǎi, zhǐbúguò ménpiào tài guì le.",
+          "english": "The performance was spectacular; it's just that the tickets were too expensive."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "而且連門"
+            ],
+            "note": "Add a gentle reservation with 只不過 ('except that...')."
+          },
+          {
+            "placed": [
+              "反而讓門"
+            ],
+            "note": "Use 只不過 to supplement positive feedback with a minor drawback."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 只不過門."
+      },
+      {
+        "id": "b3l10g2-p4",
+        "source": "p.264 #4",
+        "kind": "slot-build",
+        "prompt": "Friend asks about Miss Zhang's handsome fiance. Praise him, qualifying that he speaks little:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他又聰明又英俊，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "只不過話"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "比較少。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "只不過話",
+            "simplified": "只不过话",
+            "pinyin": "zhǐbúguò huà"
+          },
+          {
+            "traditional": "畢竟是話",
+            "simplified": "毕竟是话",
+            "pinyin": "bìjìng shì huà"
+          },
+          {
+            "traditional": "幸好他的",
+            "simplified": "幸好他的",
+            "pinyin": "xìnghǎo tā de"
+          }
+        ],
+        "accepted": "只不過話",
+        "result": {
+          "traditional": "他又聰明又英俊，只不過話比較少。",
+          "simplified": "他又聪明又英俊，只不过话比较少。",
+          "pinyin": "Tā yòu cōngmíng yòu yīngjùn, zhǐbúguò huà bǐjiào shǎo.",
+          "english": "He's both smart and handsome; it's only that he doesn't speak much."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "畢竟是話"
+            ],
+            "note": "Introduce a mild reservation with 只不過 ('it's merely that...')."
+          },
+          {
+            "placed": [
+              "幸好他的"
+            ],
+            "note": "Use 只不過 to qualify the praise."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 只不過話."
+      }
+    ]
+  },
+  "B3L10-G03-P265": {
+    "bookPage": 265,
+    "title": "Practice: 害",
+    "items": [
+      {
+        "id": "b3l10g3-p1",
+        "source": "p.265 #1",
+        "kind": "slot-build",
+        "prompt": "A asks why you look exhausted. State that a terrifying nightmare kept you from sleeping:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "昨夜做了可怕的夢，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "害我整夜"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "都不敢閉上眼睛。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "害我整夜",
+            "simplified": "害我整夜",
+            "pinyin": "hài wǒ zhěngyè"
+          },
+          {
+            "traditional": "讓我整夜",
+            "simplified": "让我整夜",
+            "pinyin": "ràng wǒ zhěngyè"
+          },
+          {
+            "traditional": "被我整夜",
+            "simplified": "被我整夜",
+            "pinyin": "bèi wǒ zhěngyè"
+          }
+        ],
+        "accepted": "害我整夜",
+        "result": {
+          "traditional": "昨夜做了可怕的夢，害我整夜都不敢閉上眼睛。",
+          "simplified": "昨夜做了可怕的梦，害我整夜都不敢闭上眼睛。",
+          "pinyin": "Zuóyè zuò le kěpà de mèng, hài wǒ zhěngyè dōu bù gǎn bìshang yǎnjing.",
+          "english": "I had a dreadful nightmare last night, which caused me to fear closing my eyes all night."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "讓我整夜"
+            ],
+            "note": "害 carries a stronger negative causality than 讓."
+          },
+          {
+            "placed": [
+              "被我整夜"
+            ],
+            "note": "Use 害 to express adverse consequences caused by a situation."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 害我整夜."
+      },
+      {
+        "id": "b3l10g3-p2",
+        "source": "p.265 #2",
+        "kind": "slot-build",
+        "prompt": "A asks about the shirt bought online. Note that it tore on first wash so you can't wear it:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "洗了一次就破了，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "害我不敢"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "再穿出門了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "害我不敢",
+            "simplified": "害我不敢",
+            "pinyin": "hài wǒ bù gǎn"
+          },
+          {
+            "traditional": "叫我不敢",
+            "simplified": "叫我不敢",
+            "pinyin": "jiào wǒ bù gǎn"
+          },
+          {
+            "traditional": "令我不敢",
+            "simplified": "令我不敢",
+            "pinyin": "lìng wǒ bù gǎn"
+          }
+        ],
+        "accepted": "害我不敢",
+        "result": {
+          "traditional": "洗了一次就破了，害我不敢再穿出門了。",
+          "simplified": "洗了一次就破了，害我不敢再穿出门了。",
+          "pinyin": "Xǐ le yí cì jiù pò le, hài wǒ bù gǎn zài chuān chūmén le.",
+          "english": "It ripped after one wash, causing me to not dare wear it out again."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "叫我不敢"
+            ],
+            "note": "Adverse results use 害 (害我……)."
+          },
+          {
+            "placed": [
+              "令我不敢"
+            ],
+            "note": "害 is natural everyday spoken Chinese for unfortunate results."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 害我不敢."
+      },
+      {
+        "id": "b3l10g3-p3",
+        "source": "p.265 #3",
+        "kind": "slot-build",
+        "prompt": "A asks why you haven't toured Taiwan after a year. Blame heavy work for having no free time:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "每天工作實在太忙，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "害我沒空"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "出門去各景點走走。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "害我沒空",
+            "simplified": "害我没空",
+            "pinyin": "hài wǒ méikòng"
+          },
+          {
+            "traditional": "教我沒空",
+            "simplified": "教我没空",
+            "pinyin": "jiāo wǒ méikòng"
+          },
+          {
+            "traditional": "致我沒空",
+            "simplified": "致我没空",
+            "pinyin": "zhì wǒ méikòng"
+          }
+        ],
+        "accepted": "害我沒空",
+        "result": {
+          "traditional": "每天工作實在太忙，害我沒空出門去各景點走走。",
+          "simplified": "每天工作实在太忙，害我没空出门去各景点走走。",
+          "pinyin": "Měitiān gōngzuò shízài tài máng, hài wǒ méikòng chūmén qù gè jǐngdiǎn zǒuzou.",
+          "english": "Work is so busy every day that it prevented me from having time to visit tourist spots."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "教我沒空"
+            ],
+            "note": "Use 害 to express negative disruption caused by work."
+          },
+          {
+            "placed": [
+              "致我沒空"
+            ],
+            "note": "害我沒空 is the authentic expression for unfortunate lack of free time."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 害我沒空."
+      },
+      {
+        "id": "b3l10g3-p4",
+        "source": "p.266 #1",
+        "kind": "slot-build",
+        "prompt": "Coworker had a cold and wore no mask, causing you to catch it. Confront them:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你感冒整天沒戴口罩，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "害我也跟"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "著咳嗽發燒了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "害我也跟",
+            "simplified": "害我也跟",
+            "pinyin": "hài wǒ yě gēn"
+          },
+          {
+            "traditional": "讓我還跟",
+            "simplified": "让我还跟",
+            "pinyin": "ràng wǒ hái gēn"
+          },
+          {
+            "traditional": "被我也跟",
+            "simplified": "被我也跟",
+            "pinyin": "bèi wǒ yě gēn"
+          }
+        ],
+        "accepted": "害我也跟",
+        "result": {
+          "traditional": "你感冒整天沒戴口罩，害我也跟著咳嗽發燒了。",
+          "simplified": "你感冒整天没戴口罩，害我也跟着咳嗽发烧了。",
+          "pinyin": "Nǐ gǎnmào zhěngtiān méi dài kǒuzhào, hài wǒ yě gēnzhe késòu fāshāo le.",
+          "english": "You didn't wear a mask with your cold, causing me to cough and run a fever too."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "讓我還跟"
+            ],
+            "note": "Express complaint over an adverse infection using 害."
+          },
+          {
+            "placed": [
+              "被我也跟"
+            ],
+            "note": "Pattern: Subject + 害 + Object + Bad Outcome."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 害我也跟."
+      }
+    ]
+  },
+  "B3L10-G04-P272": {
+    "bookPage": 272,
+    "title": "Practice: V到底",
+    "items": [
+      {
+        "id": "b3l10g4-p1",
+        "source": "p.273 #1",
+        "kind": "slot-build",
+        "prompt": "A asks if you want to join the 6th marathon race this year. Insist on running it to the end:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "已經跑了五場，當然要"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "堅持到底"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "堅持到底",
+            "simplified": "坚持到底",
+            "pinyin": "jiānchí dàodǐ"
+          },
+          {
+            "traditional": "到底堅持",
+            "simplified": "到底坚持",
+            "pinyin": "dàodǐ jiānchí"
+          },
+          {
+            "traditional": "堅持究竟",
+            "simplified": "坚持究竟",
+            "pinyin": "jiānchí jiùjìng"
+          }
+        ],
+        "accepted": "堅持到底",
+        "result": {
+          "traditional": "已經跑了五場，當然要堅持到底！",
+          "simplified": "已经跑了五场，当然要坚持到底！",
+          "pinyin": "Yǐjīng pǎo le wǔ chǎng, dāngrán yào jiānchí dàodǐ!",
+          "english": "We've already run five races; of course we must persevere to the finish!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "到底堅持"
+            ],
+            "note": "Place 到底 after the verb: 堅持到底."
+          },
+          {
+            "placed": [
+              "堅持究竟"
+            ],
+            "note": "To persist to the finish, use the set phrase 堅持到底."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 堅持到底."
+      },
+      {
+        "id": "b3l10g4-p2",
+        "source": "p.273 #2",
+        "kind": "slot-build",
+        "prompt": "A wants to give up law studies because it's hard. Encourage them that success belongs to those who persist:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "成功是屬於"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "堅持到底"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "的人，我想你做得到。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "堅持到底",
+            "simplified": "坚持到底",
+            "pinyin": "jiānchí dàodǐ"
+          },
+          {
+            "traditional": "持續不斷",
+            "simplified": "持续不断",
+            "pinyin": "chíxù búduàn"
+          },
+          {
+            "traditional": "負責最後",
+            "simplified": "负责最后",
+            "pinyin": "fùzé zuìhòu"
+          }
+        ],
+        "accepted": "堅持到底",
+        "result": {
+          "traditional": "成功是屬於堅持到底的人，我想你做得到。",
+          "simplified": "成功是属于坚持到底的人，我想你做得到。",
+          "pinyin": "Chénggōng shì shǔyú jiānchí dàodǐ de rén, wǒ xiǎng nǐ zuòdedào.",
+          "english": "Success belongs to those who persist to the end; I believe you can do it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "持續不斷"
+            ],
+            "note": "The book idiom for finishing what one starts is 堅持到底."
+          },
+          {
+            "placed": [
+              "負責最後"
+            ],
+            "note": "Use 堅持到底 to emphasize persevering to the very finish."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 堅持到底."
+      },
+      {
+        "id": "b3l10g4-p3",
+        "source": "p.273 #3",
+        "kind": "slot-build",
+        "prompt": "A mentions child asks questions relentlessly. Note that he always probes to the bottom:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他就是這樣，每次都非"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "追問到底"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不可。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "追問到底",
+            "simplified": "追问到底",
+            "pinyin": "zhuīwèn dàodǐ"
+          },
+          {
+            "traditional": "到底追問",
+            "simplified": "到底追问",
+            "pinyin": "dàodǐ zhuīwèn"
+          },
+          {
+            "traditional": "詢問清楚",
+            "simplified": "询问清楚",
+            "pinyin": "xúnwèn qīngchǔ"
+          }
+        ],
+        "accepted": "追問到底",
+        "result": {
+          "traditional": "他就是這樣，每次都非追問到底不可。",
+          "simplified": "他就是这样，每次都非追问到底不可。",
+          "pinyin": "Tā jiù shì zhèyàng, měicì dōu fēi zhuīwèn dàodǐ bùkě.",
+          "english": "He's just like that; every time he insists on questioning things to the very bottom."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "到底追問"
+            ],
+            "note": "Place 到底 after the verb: 追問到底."
+          },
+          {
+            "placed": [
+              "詢問清楚"
+            ],
+            "note": "Combine verb + 到底 (追問到底) to express pressing to the end."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 追問到底."
+      },
+      {
+        "id": "b3l10g4-p4",
+        "source": "p.273 #4",
+        "kind": "slot-build",
+        "prompt": "Friend wants to rest after two hours at Alishan. Persuade them to walk the whole planned trail:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們難得來一次，就把步道"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "走到底吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "！"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "走到底吧",
+            "simplified": "走到底吧",
+            "pinyin": "zǒudàodǐ ba"
+          },
+          {
+            "traditional": "到底走吧",
+            "simplified": "到底走吧",
+            "pinyin": "dàodǐ zǒu ba"
+          },
+          {
+            "traditional": "走乾淨吧",
+            "simplified": "走干净吧",
+            "pinyin": "zǒu gānjìng ba"
+          }
+        ],
+        "accepted": "走到底吧",
+        "result": {
+          "traditional": "我們難得來一次，就把步道走到底吧！",
+          "simplified": "我们难得来一次，就把步道走到底吧！",
+          "pinyin": "Wǒmen nándé lái yí cì, jiù bǎ bùdào zǒudàodǐ ba!",
+          "english": "It's rare we come here; let's walk this trail all the way to the end!"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "到底走吧"
+            ],
+            "note": "Verb precedes 到底: 走到底."
+          },
+          {
+            "placed": [
+              "走乾淨吧"
+            ],
+            "note": "To walk a path to the very end, use 走到底."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 走到底吧."
+      }
+    ]
+  },
+  "B3L10-G05-P274": {
+    "bookPage": 274,
+    "title": "Practice: 一再",
+    "items": [
+      {
+        "id": "b3l10g5-p1",
+        "source": "p.274 #1",
+        "kind": "slot-build",
+        "prompt": "Teacher asks why Daming missed an easy question. State teacher warned repeatedly:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "大明"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "雖然老師"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一再提醒"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "大家，沒想到我還是沒注意到。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一再提醒",
+            "simplified": "一再提醒",
+            "pinyin": "yízài tíxǐng"
+          },
+          {
+            "traditional": "一直提醒",
+            "simplified": "一直提醒",
+            "pinyin": "yìzhí tíxǐng"
+          },
+          {
+            "traditional": "到底提醒",
+            "simplified": "到底提醒",
+            "pinyin": "dàodǐ tíxǐng"
+          }
+        ],
+        "accepted": "一再提醒",
+        "result": {
+          "traditional": "雖然老師一再提醒大家，沒想到我還是沒注意到。",
+          "simplified": "虽然老师一再提醒大家，没想到我还是没注意到。",
+          "pinyin": "Suīrán lǎoshī yízài tíxǐng dàjiā, méi xiǎngdào wǒ háishì méi zhùyì dào.",
+          "english": "Although the teacher reminded everyone repeatedly, I unexpectedly still failed to notice."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "一直提醒"
+            ],
+            "note": "Actions iterated time after time use 一再 (一再提醒)."
+          },
+          {
+            "placed": [
+              "到底提醒"
+            ],
+            "note": "Use 一再 to denote recurring reminders."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一再提醒."
+      },
+      {
+        "id": "b3l10g5-p2",
+        "source": "p.274 #2",
+        "kind": "slot-build",
+        "prompt": "A asks why you almost fought a clerk. State clerk distrusted you despite explaining repeatedly:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "店員以為我偷東西，雖然我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一再向他"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "解釋，他還是不信。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一再向他",
+            "simplified": "一再向他",
+            "pinyin": "yízài xiàng tā"
+          },
+          {
+            "traditional": "向他一再",
+            "simplified": "向他一再",
+            "pinyin": "xiàng tā yízài"
+          },
+          {
+            "traditional": "到底向他",
+            "simplified": "到底向他",
+            "pinyin": "dàodǐ xiàng tā"
+          }
+        ],
+        "accepted": "一再向他",
+        "result": {
+          "traditional": "店員以為我偷東西，雖然我一再向他解釋，他還是不信。",
+          "simplified": "店员以为我偷东西，虽然我一再向他解释，他还是不信。",
+          "pinyin": "Diànyuán yǐwéi wǒ tōu dōngxi, suīrán wǒ yízài xiàng tā jiěshì, tā háishì bú xìn.",
+          "english": "The clerk thought I shoplifted; although I explained to him repeatedly, he still didn't believe me."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "向他一再"
+            ],
+            "note": "一再 typically precedes the prepositional phrase (一再向他解釋)."
+          },
+          {
+            "placed": [
+              "到底向他"
+            ],
+            "note": "Repeated verbal efforts take 一再."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一再向他."
+      },
+      {
+        "id": "b3l10g5-p3",
+        "source": "p.274 #3",
+        "kind": "slot-build",
+        "prompt": "A asks how Miss Zhou's burger shop became famous. Credit her constant sauce adjustments:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在是名店，應該是她"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一再調整"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "改善醬料的味道。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一再調整",
+            "simplified": "一再调整",
+            "pinyin": "yízài tiáozhěng"
+          },
+          {
+            "traditional": "偶爾調整",
+            "simplified": "偶尔调整",
+            "pinyin": "ǒu'ěr tiáozhěng"
+          },
+          {
+            "traditional": "既然調整",
+            "simplified": "既然调整",
+            "pinyin": "jìrán tiáozhěng"
+          }
+        ],
+        "accepted": "一再調整",
+        "result": {
+          "traditional": "現在是名店，應該是她一再調整改善醬料的味道。",
+          "simplified": "现在是名店，应该是她一再调整改善酱料的味道。",
+          "pinyin": "Xiànzài shì míngdiàn, yīnggāi shì tā yízài tiáozhěng gǎishàn jiàngliào de wèidào.",
+          "english": "It's a famous shop now; likely because she repeatedly tweaked and improved sauce flavors."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "偶爾調整"
+            ],
+            "note": "Her repeated dedicated refinement requires 一再調整."
+          },
+          {
+            "placed": [
+              "既然調整"
+            ],
+            "note": "Use 一再 to express persistent recurring improvements."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一再調整."
+      },
+      {
+        "id": "b3l10g5-p4",
+        "source": "p.275 #2",
+        "kind": "slot-build",
+        "prompt": "Neighbors sing at midnight and ignore requests. Tell police you asked repeatedly in vain:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我已經"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "一再請他"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "們安靜，他們還是不理會。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "一再請他",
+            "simplified": "一再请他",
+            "pinyin": "yízài qǐng tā"
+          },
+          {
+            "traditional": "一直請他",
+            "simplified": "一直请他",
+            "pinyin": "yìzhí qǐng tā"
+          },
+          {
+            "traditional": "到底請他",
+            "simplified": "到底请他",
+            "pinyin": "dàodǐ qǐng tā"
+          }
+        ],
+        "accepted": "一再請他",
+        "result": {
+          "traditional": "我已經一再請他們安靜，他們還是不理會。",
+          "simplified": "我已经一再请他们安静，他们还是不理会。",
+          "pinyin": "Wǒ yǐjīng yízài qǐng tāmen ānjìng, tāmen háishì bù lǐhuì.",
+          "english": "I have repeatedly asked them to be quiet, yet they still pay no attention."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "一直請他"
+            ],
+            "note": "Making repeated appeals time after time uses 一再."
+          },
+          {
+            "placed": [
+              "到底請他"
+            ],
+            "note": "Use 一再 to emphasize recurring attempts."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 一再請他."
+      }
+    ]
+  },
+  "B3L10-G06-P275": {
+    "bookPage": 275,
+    "title": "Practice: 假如",
+    "items": [
+      {
+        "id": "b3l10g6-p1",
+        "source": "p.276 #1",
+        "kind": "slot-build",
+        "prompt": "A asks why you gave up on doctoral studies. State scholarship is the prerequisite:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "假如能拿"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "到獎學金，就能繼續念了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "假如能拿",
+            "simplified": "假如能拿",
+            "pinyin": "jiǎrú néng ná"
+          },
+          {
+            "traditional": "就算能拿",
+            "simplified": "就算能拿",
+            "pinyin": "jiùsuàn néng ná"
+          },
+          {
+            "traditional": "既然能拿",
+            "simplified": "既然能拿",
+            "pinyin": "jìrán néng ná"
+          }
+        ],
+        "accepted": "假如能拿",
+        "result": {
+          "traditional": "假如能拿到獎學金，就能繼續念了。",
+          "simplified": "假如能拿到奖学金，就能继续念了。",
+          "pinyin": "Jiǎrú néng nádào jiǎngxuéjīn, jiù néng jìxù niàn le.",
+          "english": "If I can secure a scholarship, I'll be able to continue studying."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "就算能拿"
+            ],
+            "note": "就算 pairs with 也 ('even if'); with 就, use 假如."
+          },
+          {
+            "placed": [
+              "既然能拿"
+            ],
+            "note": "The scholarship hasn't been obtained yet, so hypothesize with 假如."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 假如能拿."
+      },
+      {
+        "id": "b3l10g6-p2",
+        "source": "p.276 #2",
+        "kind": "slot-build",
+        "prompt": "Friend asks what you'd do if assigned to work with eccentric Mr. Wang. Give advice:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "假如是我"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我會先試著好好跟他溝通。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "假如是我",
+            "simplified": "假如是我",
+            "pinyin": "jiǎrú shì wǒ"
+          },
+          {
+            "traditional": "儘管是我",
+            "simplified": "尽管是我",
+            "pinyin": "jǐnguǎn shì wǒ"
+          },
+          {
+            "traditional": "寧可是我",
+            "simplified": "宁可是我",
+            "pinyin": "nìngkě shì wǒ"
+          }
+        ],
+        "accepted": "假如是我",
+        "result": {
+          "traditional": "假如是我，我會先試著好好跟他溝通。",
+          "simplified": "假如是我，我会先试着好好跟他沟通。",
+          "pinyin": "Jiǎrú shì wǒ, wǒ huì xiān shìzhe hǎohǎo gēn tā gōutōng.",
+          "english": "If it were me, I would first try to communicate with him properly."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "儘管是我"
+            ],
+            "note": "Hypothesizing your own reaction in someone's shoes uses 假如."
+          },
+          {
+            "placed": [
+              "寧可是我"
+            ],
+            "note": "Use 假如是我 for 'if it were me'."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 假如是我."
+      },
+      {
+        "id": "b3l10g6-p3",
+        "source": "p.276 #3",
+        "kind": "slot-build",
+        "prompt": "News reports strong typhoon approaching. State your plan if school is off tomorrow:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "假如明天"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "停班停課，我就待在家看電影。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "假如明天",
+            "simplified": "假如明天",
+            "pinyin": "jiǎrú míngtiān"
+          },
+          {
+            "traditional": "既然明天",
+            "simplified": "既然明天",
+            "pinyin": "jìrán míngtiān"
+          },
+          {
+            "traditional": "難怪明天",
+            "simplified": "难怪明天",
+            "pinyin": "nánguài míngtiān"
+          }
+        ],
+        "accepted": "假如明天",
+        "result": {
+          "traditional": "假如明天停班停課，我就待在家看電影。",
+          "simplified": "假如明天停班停课，我就待在家看电影。",
+          "pinyin": "Jiǎrú míngtiān tíngbān tíngkè, wǒ jiù dāi zài jiā kàn diànyǐng.",
+          "english": "If work and school are off tomorrow, I'll stay home and watch movies."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "既然明天"
+            ],
+            "note": "The typhoon closure is conditional, so use 假如."
+          },
+          {
+            "placed": [
+              "難怪明天"
+            ],
+            "note": "Use 假如 to formulate a conditional assumption."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 假如明天."
+      },
+      {
+        "id": "b3l10g6-p4",
+        "source": "p.276 #4",
+        "kind": "slot-build",
+        "prompt": "Friend wonders if a boy likes her. Advise her on his initiative:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "假如他真"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "心喜歡妳，一定會主動約妳。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "假如他真",
+            "simplified": "假如他真",
+            "pinyin": "jiǎrú tā zhēn"
+          },
+          {
+            "traditional": "雖然他真",
+            "simplified": "虽然他真",
+            "pinyin": "suīrán tā zhēn"
+          },
+          {
+            "traditional": "幸虧他真",
+            "simplified": "幸亏他真",
+            "pinyin": "xìngkuī tā zhēn"
+          }
+        ],
+        "accepted": "假如他真",
+        "result": {
+          "traditional": "假如他真心喜歡妳，一定會主動約妳。",
+          "simplified": "假如他真心喜欢你，一定会主动约你。",
+          "pinyin": "Jiǎrú tā zhēnxīn xǐhuan nǐ, yídìng huì zhǔdòng yuē nǐ.",
+          "english": "If he genuinely likes you, he will definitely take initiative to ask you out."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "雖然他真"
+            ],
+            "note": "Setting up a hypothesis takes 假如 ('if')."
+          },
+          {
+            "placed": [
+              "幸虧他真"
+            ],
+            "note": "Use 假如 to state a conditional rule of thumb."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 假如他真."
+      }
+    ]
+  },
+  "B3L10-G07-P276": {
+    "bookPage": 276,
+    "title": "Practice: 為了……而……",
+    "items": [
+      {
+        "id": "b3l10g7-p1",
+        "source": "p.277 #1",
+        "kind": "slot-build",
+        "prompt": "A marvels at your Chinese improvement. Explain you watched TV dramas to understand lines:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我是連續劇戲迷，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "為了聽懂"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "臺詞，而邊看邊跟著說。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "為了聽懂",
+            "simplified": "为了听懂",
+            "pinyin": "wèile tīngdǒng"
+          },
+          {
+            "traditional": "因為聽懂",
+            "simplified": "因为听懂",
+            "pinyin": "yīnwèi tīngdǒng"
+          },
+          {
+            "traditional": "由於聽懂",
+            "simplified": "由于听懂",
+            "pinyin": "yóuyú tīngdǒng"
+          }
+        ],
+        "accepted": "為了聽懂",
+        "result": {
+          "traditional": "我是連續劇戲迷，為了聽懂臺詞，而邊看邊跟著說。",
+          "simplified": "我是连续剧戏迷，为了听懂台词，而边看边跟着说。",
+          "pinyin": "Wǒ shì liánxùjù xìmí, wèile tīngdǒng táicí, ér biān kàn biān gēnzhe shuō.",
+          "english": "I'm a TV drama fan; in order to understand dialogue, I shadowed lines while watching."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "因為聽懂"
+            ],
+            "note": "Understanding dialogue was the desired goal (為了……而……), not the cause."
+          },
+          {
+            "placed": [
+              "由於聽懂"
+            ],
+            "note": "Use 為了……而…… to express action undertaken for a goal."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 為了聽懂."
+      },
+      {
+        "id": "b3l10g7-p2",
+        "source": "p.277 #2",
+        "kind": "slot-build",
+        "prompt": "A notes younger sister looks slim. Explain she cut carbs to lighten weight for running:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她要參加跑步比賽，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "為了減輕"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "體重，而少吃飯多吃蔬菜。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "為了減輕",
+            "simplified": "为了减轻",
+            "pinyin": "wèile jiǎnqīng"
+          },
+          {
+            "traditional": "既然減輕",
+            "simplified": "既然减轻",
+            "pinyin": "jìrán jiǎnqīng"
+          },
+          {
+            "traditional": "儘管減輕",
+            "simplified": "尽管减轻",
+            "pinyin": "jǐnguǎn jiǎnqīng"
+          }
+        ],
+        "accepted": "為了減輕",
+        "result": {
+          "traditional": "她要參加跑步比賽，為了減輕體重，而少吃飯多吃蔬菜。",
+          "simplified": "她要参加跑步比赛，为了减轻体重，而少吃饭多吃蔬菜。",
+          "pinyin": "Tā yào cānjiā pǎobù bǐsài, wèile jiǎnqīng tǐzhòng, ér shǎo chīfàn duō chī shūcài.",
+          "english": "She's competing in a race; to reduce weight, she eats less grain and more greens."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "既然減輕"
+            ],
+            "note": "Reducing weight is her goal; use 為了……而……."
+          },
+          {
+            "placed": [
+              "儘管減輕"
+            ],
+            "note": "Pattern: 為了 + Goal + 而 + Action."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 為了減輕."
+      },
+      {
+        "id": "b3l10g7-p3",
+        "source": "p.277 #3",
+        "kind": "slot-build",
+        "prompt": "A asks why your Kung Fu is impressive. Explain you practiced daily to protect family:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我從小"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "為了保護"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "家人，而每天堅持鍛鍊功夫。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "為了保護",
+            "simplified": "为了保护",
+            "pinyin": "wèile bǎohù"
+          },
+          {
+            "traditional": "因為保護",
+            "simplified": "因为保护",
+            "pinyin": "yīnwèi bǎohù"
+          },
+          {
+            "traditional": "雖然保護",
+            "simplified": "虽然保护",
+            "pinyin": "suīrán bǎohù"
+          }
+        ],
+        "accepted": "為了保護",
+        "result": {
+          "traditional": "我從小為了保護家人，而每天堅持鍛鍊功夫。",
+          "simplified": "我从小为了保护家人，而每天坚持锻炼功夫。",
+          "pinyin": "Wǒ cóngxiǎo wèile bǎohù jiārén, ér měitiān jiānchí duànliàn gōngfu.",
+          "english": "Ever since childhood, in order to protect family, I persisted in practicing Kung Fu daily."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "因為保護"
+            ],
+            "note": "Protecting family is the aspiration (為了……而……)."
+          },
+          {
+            "placed": [
+              "雖然保護"
+            ],
+            "note": "Pattern: 為了 + Purpose + 而 + Diligent Practice."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 為了保護."
+      },
+      {
+        "id": "b3l10g7-p4",
+        "source": "p.278 #1",
+        "kind": "slot-build",
+        "prompt": "Friend asks your purpose in coming to Taiwan. State you travel widely to understand culture:",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "你"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "為了深入"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了解臺灣文化，而常到各地旅行。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "為了深入",
+            "simplified": "为了深入",
+            "pinyin": "wèile shēnrù"
+          },
+          {
+            "traditional": "由於深入",
+            "simplified": "由于深入",
+            "pinyin": "yóuyú shēnrù"
+          },
+          {
+            "traditional": "既然深入",
+            "simplified": "既然深入",
+            "pinyin": "jìrán shēnrù"
+          }
+        ],
+        "accepted": "為了深入",
+        "result": {
+          "traditional": "我為了深入了解臺灣文化，而常到各地旅行。",
+          "simplified": "我为了深入了解台湾文化，而常到各地旅行。",
+          "pinyin": "Wǒ wèile shēnrù liǎojiě Táiwān wénhuà, ér cháng dào gèdì lǚxíng.",
+          "english": "In order to gain deep insight into Taiwanese culture, I often travel across various places."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "由於深入"
+            ],
+            "note": "Cultural understanding is the aim; use 為了……而……."
+          },
+          {
+            "placed": [
+              "既然深入"
+            ],
+            "note": "Pattern: 為了 + Objective + 而 + Action."
+          }
+        ],
+        "fallbackRepair": "Fill slot with 為了深入."
+      }
+    ]
+  }
+}

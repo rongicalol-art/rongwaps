@@ -470,4 +470,13 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L09-G05-P247': detected('尤其是', [inOrder(['尤其是']), inOrder(['尤其'])]),
   'B3L09-G06-P248': detected('V著', [inOrder(['得著']), inOrder(['不著']), inOrder(['著了'])]),
   'B3L09-G07-P250': detected('以……代替……', [inOrder(['以', '代替'], 8)]),
+
+  // Book 3 Lesson 10 — 健康檢查不麻煩
+  'B3L10-G01-P262': detected('直到……(以後/時)才……', [inOrder(['直到', '才'], 12)]),
+  'B3L10-G02-P263': detected('只不過', [inOrder(['只不過'])]),
+  'B3L10-G03-P265': detected('害', [inOrder(['害'])]),
+  'B3L10-G04-P272': detected('V到底', [inOrder(['到底'])]),
+  'B3L10-G05-P274': detected('一再', [inOrder(['一再'])]),
+  'B3L10-G06-P275': detected('假如', [inOrder(['假如'])]),
+  'B3L10-G07-P276': detected('為了……而……', [inOrder(['為了', '而'], 10)]),
 };
