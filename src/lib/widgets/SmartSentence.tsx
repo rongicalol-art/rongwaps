@@ -10,6 +10,7 @@ export type { SentenceWordPart, SentenceWordLookupResult } from '../../types/sen
 import { calculateTooltipPlacement, type TooltipPlacement } from '../../utils/browser/tooltipPosition';
 import { AppIcon } from './AppIcon';
 import type { WordSyllable } from '../../utils/pinyin/pinyinTones';
+import { splitDialogueTurns } from '../../utils/lesson/dialogueTurns';
 
 export interface SmartSentenceProps {
   text: string;
@@ -28,6 +29,8 @@ export interface SmartSentenceProps {
   enableHoverTooltip?: boolean;
   /** One syllable per character of `text` (see alignWordSyllables): each hanzi shows its pinyin above it. */
   syllables?: (WordSyllable | null)[] | null;
+  /** Course examples: put each "A："/"B：" turn on its own line with a hanging label. */
+  speakerLines?: boolean;
 }
 
 interface HighlightRange {
@@ -52,21 +55,17 @@ function findHighlightRanges(text: string, highlightTerms: string[], highlightCl
   return ranges;
 }
 
-function renderHighlightedText(text: string, startIndex: number, ranges: HighlightRange[], syllables?: (WordSyllable | null)[] | null) {
+function renderHighlightedText(text: string, startIndex: number, ranges: HighlightRange[], syllables?: (WordSyllable | null)[] | null): ReactNode {
   if (syllables) {
-    return Array.from(text).map((char, offset) => {
-      const index = startIndex + offset;
-      const highlighted = ranges.find((range) => index >= range.start && index < range.end);
-      const syllable = syllables[index];
-      const glyph = highlighted ? <span className={highlighted.className || 'font-black text-brand-primary'}>{char}</span> : char;
-      return syllable ? (
-        <ruby key={offset} className="[ruby-align:center]">
-          {/* A minimum width gives every character the same cell, so short syllables (shì) and long ones (tóng) space the sentence evenly. */}
-          <span className="inline-block min-w-[1.3em] text-center">{glyph}</span>
-          <rt className="pb-0.5 font-sans text-[11px] font-semibold leading-none tracking-normal text-ui-muted-strong sm:text-xs">{syllable.text}</rt>
-        </ruby>
-      ) : <span key={offset}>{glyph}</span>;
-    });
+    // One reading per word (xiànzài over 現在): characters keep their natural spacing.
+    const reading = Array.from(text).map((_, offset) => syllables[startIndex + offset]?.text ?? '').join('');
+    const glyphs = renderHighlightedText(text, startIndex, ranges);
+    return reading ? (
+      <ruby className="[ruby-align:center]">
+        {glyphs}
+        <rt className="px-0.5 pb-0.5 font-sans text-[11px] font-semibold leading-none tracking-normal text-ui-muted-strong">{reading}</rt>
+      </ruby>
+    ) : glyphs;
   }
   if (ranges.length === 0) return text;
 
@@ -110,6 +109,7 @@ export function SmartSentence({
   onPlayAudio,
   enableHoverTooltip = true,
   syllables,
+  speakerLines = false,
 }: SmartSentenceProps) {
   const authoredWords = useMemo(() => tokens.map(token =>
     characterPreference === 'simplified' && token.simplified ? token.simplified : token.traditional,
@@ -118,58 +118,73 @@ export function SmartSentence({
   const { hoveredWord, activeWordKey, enter, leave, keepOpen, closeTooltip } = useSentenceWordHover(lookupWord);
   const activePlayAudio = onPlayAudio || sentenceLookupHandlers.playAudio;
   const reduceMotion = useReducedMotion();
+  const turns = useMemo(() => (speakerLines ? splitDialogueTurns(text) : null), [speakerLines, text]);
   const highlightRanges = useMemo(() => findHighlightRanges(text, highlightTerms, highlightClassName), [highlightTerms, text, highlightClassName]);
   useEffect(() => { closeTooltip(); }, [text, characterPreference, closeTooltip]);
   const contextFor = (word: string) => tokens.find(token => (
     characterPreference === 'simplified' && token.simplified ? token.simplified : token.traditional
   ) === word);
 
-  return (
-    <span className={cn('inline', className)}>
-      {displaySegments.map((seg, idx) => {
-        const isClickable = seg.isWordLike && /\p{Script=Han}/u.test(seg.segment);
-        const wordKey = `${idx}-${seg.segment}`;
-        const isCurrentWordActive = activeWordKey === wordKey || hoveredWord?.word === seg.segment;
+  const renderSegment = (seg: (typeof displaySegments)[number], idx: number) => {
+    const isClickable = seg.isWordLike && /\p{Script=Han}/u.test(seg.segment);
+    const wordKey = `${idx}-${seg.segment}`;
+    const isCurrentWordActive = activeWordKey === wordKey || hoveredWord?.word === seg.segment;
 
-        if (isClickable) {
-          return (
-            <button
-              key={wordKey}
-              type="button"
-              aria-label={`Open ${seg.segment} in the dictionary`}
-              onPointerEnter={(e) => { if (e.pointerType !== 'touch' && enableHoverTooltip) enter(e.currentTarget, seg.segment, wordKey, contextFor(seg.segment)); }}
-              onPointerLeave={leave}
-              onFocus={(e) => { if (enableHoverTooltip) enter(e.currentTarget, seg.segment, wordKey, contextFor(seg.segment)); }}
-              onBlur={leave}
-              onClick={(e) => {
-                e.stopPropagation();
-                closeTooltip();
-                if (onWordClick) {
-                  onWordClick(seg.segment);
-                } else if (typeof window !== 'undefined') {
-                  window.dispatchEvent(
-                    new CustomEvent('app:select-dictionary-word', { detail: { word: seg.segment } }),
-                  );
-                }
-              }}
-              className={cn(
-                wordClassName,
-                '-mx-0.5 cursor-pointer rounded-xs px-0.5 align-baseline transition-colors focus-ring-inline',
-                isCurrentWordActive
-                  ? 'bg-brand-primary/10 text-brand-primary'
-                  : 'hover:bg-brand-primary/10 hover:text-brand-primary focus-visible:bg-brand-primary/10 focus-visible:text-brand-primary active:bg-brand-primary/20',
+    if (isClickable) {
+      return (
+        <button
+          key={wordKey}
+          type="button"
+          aria-label={`Open ${seg.segment} in the dictionary`}
+          onPointerEnter={(e) => { if (e.pointerType !== 'touch' && enableHoverTooltip) enter(e.currentTarget, seg.segment, wordKey, contextFor(seg.segment)); }}
+          onPointerLeave={leave}
+          onFocus={(e) => { if (enableHoverTooltip) enter(e.currentTarget, seg.segment, wordKey, contextFor(seg.segment)); }}
+          onBlur={leave}
+          onClick={(e) => {
+            e.stopPropagation();
+            closeTooltip();
+            if (onWordClick) {
+              onWordClick(seg.segment);
+            } else if (typeof window !== 'undefined') {
+              window.dispatchEvent(
+                new CustomEvent('app:select-dictionary-word', { detail: { word: seg.segment } }),
+              );
+            }
+          }}
+          className={cn(
+            wordClassName,
+            '-mx-0.5 cursor-pointer rounded-xs px-0.5 align-baseline transition-colors focus-ring-inline',
+            isCurrentWordActive
+              ? 'bg-brand-primary/10 text-brand-primary'
+              : 'hover:bg-brand-primary/10 hover:text-brand-primary focus-visible:bg-brand-primary/10 focus-visible:text-brand-primary active:bg-brand-primary/20',
+          )}
+        >
+          {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
+        </button>
+      );
+    }
+    return (
+      <span key={wordKey} className="align-baseline">
+        {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
+      </span>
+    );
+  };
+
+  return (
+    <span className={cn(turns ? 'block' : 'inline', className)}>
+      {turns
+        ? turns.map((turn) => (
+            // Each speaker on their own line with a hanging label. Plain blocks (not a grid) so lines below a floated play button get the full width back.
+            <span key={turn.start} className="block pl-[1.2em]">
+              {turn.speaker && (
+                <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans">
+                  <span className="text-[0.6em] font-black text-ui-muted">{turn.speaker}</span>
+                </span>
               )}
-            >
-              {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
-            </button>
-          );
-        }
-        return (
-          <span key={wordKey} className="align-baseline">
-            {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
-          </span>
-        );
-      })}
+              {displaySegments.map((seg, idx) => (seg.index >= turn.start && seg.index < turn.end ? renderSegment(seg, idx) : null))}
+            </span>
+          ))
+        : displaySegments.map(renderSegment)}
 
       {hoveredWord && typeof document !== 'undefined' && (
         <SentenceWordTooltipPortal

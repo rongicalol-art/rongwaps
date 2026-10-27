@@ -370,7 +370,8 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
             </div>
           )}
           {(resolvedLoading || primaryExamples.length > 0) && (
-            <div className="rw-rise rw-rise-3 w-full shrink-0">
+            // Same text inset as the example list below (24px phone, 32px wider).
+            <div className={cn("rw-rise rw-rise-3 w-full shrink-0", showHook ? "px-4" : "px-2 sm:px-0")}>
               <FlashcardExamples
                 compact
                 searchTerms={searchTerms}
@@ -385,7 +386,7 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
       </div>
 
       {restExamples.length > 0 && (
-        <div className="w-full shrink-0">
+        <div className={cn("w-full shrink-0", primaryExamples.length > 0 && "border-t-2 border-ui-divider")}>
           <FlashcardExamples
             searchTerms={searchTerms}
             examples={restExamples}

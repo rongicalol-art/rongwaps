@@ -6,6 +6,7 @@ import { useAppStore } from '../../../../store/useAppStore';
 import { playSentence } from '../../../../services/audio/sentenceAudio';
 import { ShowMoreButton } from './ShowMoreButton';
 import type { WordExample } from '../../../../types/models';
+import { dialogueTranslation } from '../../../../utils/lesson/dialogueTurns';
 
 const INITIAL_VISIBLE = 4;
 
@@ -64,7 +65,8 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                     text={sentence.chinese}
                     highlightTerms={[character]}
                     syllables={hideExamplePinyin ? null : alignSentenceSyllables(sentence.chinese, sentence.pinyin)}
-                    className="font-chinese text-xl font-bold leading-[2] text-ui-ink sm:text-2xl"
+                    speakerLines
+                    className="font-chinese text-xl font-bold leading-[1.9] text-ui-ink sm:text-2xl"
                   />
                 </div>
                 {!hideExamplePinyin && !alignSentenceSyllables(sentence.chinese, sentence.pinyin) && (
@@ -72,7 +74,7 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                     {numberToToneMarks(sentence.pinyin)}
                   </span>
                 )}
-                <span className="ui-translation text-sm leading-snug sm:text-base">{sentence.english}</span>
+                <span className="ui-translation text-sm leading-snug sm:text-base">{dialogueTranslation(sentence.english)}</span>
               </li>
             ))}
           </ul>

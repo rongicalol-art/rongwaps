@@ -405,18 +405,28 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
 
 
 /** Safe DEV sample: flips stay local; no review callbacks record progress. */
+const PREVIEW_CARDS: Flashcard[] = [
+  { id: 'preview-buy', bookId: 1, lessonId: 3, front: '買', traditional: '買', simplified: '买', pinyin: 'mǎi', back: 'to buy', pos: 'V' },
+  { id: 'B1L02-1-04', bookId: 1, lessonId: 2, front: '現在', traditional: '現在', simplified: '现在', pinyin: 'xiànzài', back: 'now', pos: 'N' },
+];
+
 export function FlashcardActionsPreview() {
   return <section className="space-y-3">
     <h2 className="text-xl font-black text-ui-ink-strong">Flashcard actions · safe preview</h2>
-    <div className="relative h-128 w-full [container-type:size]">
-      <DraggableFlashcard
-        card={{ id: 'preview-buy', bookId: 1, lessonId: 3, front: '買', traditional: '買', simplified: '买', pinyin: 'mǎi', back: 'to buy', pos: 'V' }}
-        direction={1}
-        isFlipped
-        setActiveBreakdown={() => {}}
-        triggerSwipeRate={() => false}
-        onCardTap={() => {}}
-      />
-    </div>
+    {/* 現在 uses its course id so its real examples load, including a two-speaker one (A：… B：…). */}
+    {PREVIEW_CARDS.map((card) => (
+      <div key={card.id} className="relative h-128 w-full [container-type:size]">
+        <DraggableFlashcard
+          card={card}
+          direction={1}
+          isFlipped
+          showPinyin
+          showTranslation
+          setActiveBreakdown={() => {}}
+          triggerSwipeRate={() => false}
+          onCardTap={() => {}}
+        />
+      </div>
+    ))}
   </section>;
 }

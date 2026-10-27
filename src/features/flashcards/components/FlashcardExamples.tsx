@@ -9,6 +9,7 @@ import {
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import { cn } from '../../../utils/cn';
+import { dialogueTranslation } from '../../../utils/lesson/dialogueTurns';
 import { useAppStore } from '../../../store/useAppStore';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 
@@ -19,7 +20,7 @@ interface FlashcardExamplesProps {
   isLoading: boolean;
   showPinyin: boolean;
   showTranslation: boolean;
-  /** Tighter top margin when rendered inside the hero area. */
+  /** The card's own top match inside the hero: no source chip, the hero sets the side inset. */
   compact?: boolean;
 }
 
@@ -28,10 +29,8 @@ interface FlashcardExampleRowProps {
   highlightTerms: string[];
   showPinyin: boolean;
   showTranslation: boolean;
-  /** Book/location meta line; hidden inside the compact top-match frame. */
+  /** Book/location chip; hidden on the card's own top match. */
   showMeta?: boolean;
-  /** Hero layout: centered, location caption above the sentence. */
-  centered?: boolean;
   /** Bottom divider for list rows; top-match rows inside the card stay clean. */
   divider?: boolean;
   className?: string;
@@ -43,7 +42,6 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   showPinyin,
   showTranslation,
   showMeta = true,
-  centered = false,
   divider = false,
   className = '',
 }: FlashcardExampleRowProps) {
@@ -55,7 +53,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   );
   return (
     <li
-      className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 ${centered ? '' : '[content-visibility:auto] [contain-intrinsic-size:0_110px]'} ${
+      className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 [content-visibility:auto] [contain-intrinsic-size:0_110px] ${
         divider ? 'border-b-2 border-ui-divider' : ''
       } ${className}`}
     >
@@ -87,17 +85,18 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
           text={example.chinese}
           highlightTerms={highlightTerms}
           syllables={syllables}
-          className={cn('font-chinese font-bold text-ui-ink-strong', syllables ? 'leading-[2.1]' : 'leading-relaxed', centered ? 'text-[17px] sm:text-[18px]' : 'text-[18px] sm:text-[20px] md:text-[22px]')}
+          speakerLines
+          className={cn('font-chinese text-[18px] font-bold text-ui-ink-strong sm:text-[20px] md:text-[22px]', syllables ? 'leading-[1.9]' : 'leading-relaxed')}
         />
       </div>
       {showPinyin && example.pinyin && !syllables && (
-        <p className={cn('font-semibold tracking-wide leading-snug text-ui-muted-strong', centered ? 'text-[13px]' : 'text-sm sm:text-[15px]')}>
+        <p className="text-sm font-semibold tracking-wide leading-snug text-ui-muted-strong sm:text-[15px]">
           {numberToToneMarks(example.pinyin)}
         </p>
       )}
       {showTranslation && example.english && (
-        <p className={cn('ui-translation', centered ? 'text-[13px]' : 'text-sm sm:text-[15px]')}>
-          {example.english}
+        <p className="ui-translation text-sm sm:text-[15px]">
+          {dialogueTranslation(example.english)}
         </p>
       )}
     </li>
@@ -178,10 +177,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   let rowIndex = 0;
 
   return (
-    <div className={compact ? 'mt-4 flex w-full max-w-md flex-col rounded-feature bg-ui-canvas py-3' : 'flex w-full flex-col pb-4'} aria-label="Example sentences">
-      {compact && (
-        <span className="px-4 pb-1 text-[10px] font-black uppercase tracking-widest text-ui-muted sm:px-6">Example</span>
-      )}
+    <div className={compact ? 'mt-5 flex w-full flex-col text-left' : 'flex w-full flex-col pb-4'} aria-label="Example sentences">
       {visibleTopMatch.length > 0 && (
         <motion.section {...blockEntrance(0)} aria-label="Top match" className="w-full">
           <ul className="flex w-full flex-col">
@@ -196,9 +192,8 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                   showPinyin={showExamplePinyin}
                   showTranslation={showTranslation}
                   divider={divider && !compact}
-                  centered={compact}
                   showMeta={!compact}
-                  className={compact ? 'px-4 sm:px-6' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
+                  className={compact ? 'pb-1' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
                 />
               );
             })}
@@ -227,9 +222,8 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                     showPinyin={showExamplePinyin}
                     showTranslation={showTranslation}
                     divider={divider && !compact}
-                    centered={compact}
-                  showMeta={!compact}
-                    className={compact ? 'px-4 sm:px-6' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
+                    showMeta={!compact}
+                    className={compact ? 'pb-1' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
                   />
                 );
               })}

@@ -4,6 +4,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import type { WordExample } from '../../../types/models';
+import { dialogueTranslation } from '../../../utils/lesson/dialogueTurns';
 
 const PLAY_BUTTON =
   'flex h-9 w-9 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring';
@@ -55,7 +56,8 @@ export function WordExamplesSection({
               text={ex.chinese}
               highlightTerms={[word]}
               syllables={hideExamplePinyin ? null : alignSentenceSyllables(ex.chinese, ex.pinyin)}
-              className="font-chinese text-xl font-bold leading-[2] text-ui-ink sm:text-2xl"
+              speakerLines
+              className="font-chinese text-xl font-bold leading-[1.9] text-ui-ink sm:text-2xl"
             />
             <button
               type="button"
@@ -71,7 +73,7 @@ export function WordExamplesSection({
               {numberToToneMarks(ex.pinyin)}
             </p>
           )}
-          {ex.english && <p className="ui-translation text-sm leading-snug sm:text-base">{ex.english}</p>}
+          {ex.english && <p className="ui-translation text-sm leading-snug sm:text-base">{dialogueTranslation(ex.english)}</p>}
           <span className="mt-1 self-start"><LevelTag bookId={ex.sourceBookId} lessonId={ex.sourceLessonId} /></span>
         </div>
       ))}
