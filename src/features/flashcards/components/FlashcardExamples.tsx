@@ -85,7 +85,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
           text={example.chinese}
           highlightTerms={highlightTerms}
           syllables={syllables}
-          speakerLines
+          exampleLayout
           className={cn('font-chinese text-[18px] font-bold text-ui-ink-strong sm:text-[20px] md:text-[22px]', syllables ? 'leading-[1.9]' : 'leading-relaxed')}
         />
       </div>

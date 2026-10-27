@@ -29,8 +29,8 @@ export interface SmartSentenceProps {
   enableHoverTooltip?: boolean;
   /** One syllable per character of `text` (see alignWordSyllables): each hanzi shows its pinyin above it. */
   syllables?: (WordSyllable | null)[] | null;
-  /** Course examples: put each "A："/"B：" turn on its own line with a hanging label. */
-  speakerLines?: boolean;
+  /** Course examples: each "A："/"B：" turn on its own line with a hanging label, and long lines wrap at the commas. */
+  exampleLayout?: boolean;
 }
 
 interface HighlightRange {
@@ -109,7 +109,7 @@ export function SmartSentence({
   onPlayAudio,
   enableHoverTooltip = true,
   syllables,
-  speakerLines = false,
+  exampleLayout = false,
 }: SmartSentenceProps) {
   const authoredWords = useMemo(() => tokens.map(token =>
     characterPreference === 'simplified' && token.simplified ? token.simplified : token.traditional,
@@ -118,7 +118,7 @@ export function SmartSentence({
   const { hoveredWord, activeWordKey, enter, leave, keepOpen, closeTooltip } = useSentenceWordHover(lookupWord);
   const activePlayAudio = onPlayAudio || sentenceLookupHandlers.playAudio;
   const reduceMotion = useReducedMotion();
-  const turns = useMemo(() => (speakerLines ? splitDialogueTurns(text) : null), [speakerLines, text]);
+  const turns = useMemo(() => (exampleLayout ? splitDialogueTurns(text) : null), [exampleLayout, text]);
   const highlightRanges = useMemo(() => findHighlightRanges(text, highlightTerms, highlightClassName), [highlightTerms, text, highlightClassName]);
   useEffect(() => { closeTooltip(); }, [text, characterPreference, closeTooltip]);
   const contextFor = (word: string) => tokens.find(token => (
@@ -170,18 +170,33 @@ export function SmartSentence({
     );
   };
 
+  // Wrap at clause punctuation: a clause moves to the next line whole (comma attached), so punctuation never starts a line.
+  const renderRange = (start: number, end: number) => {
+    const clauses: (typeof displaySegments)[] = [[]];
+    displaySegments.forEach((seg) => {
+      if (seg.index < start || seg.index >= end) return;
+      clauses.at(-1)!.push(seg);
+      if (/[，、；：,;]/.test(seg.segment.at(-1) ?? '')) clauses.push([]);
+    });
+    return clauses.filter((c) => c.length > 0).map((clause, i) => (
+      <span key={i} className="inline-block max-w-full">
+        {clause.map((seg) => renderSegment(seg, displaySegments.indexOf(seg)))}
+      </span>
+    ));
+  };
+
   return (
-    <span className={cn(turns ? 'block' : 'inline', className)}>
-      {turns
-        ? turns.map((turn) => (
+    <span className={cn(exampleLayout ? 'block' : 'inline', className)}>
+      {exampleLayout
+        ? (turns ?? [{ speaker: null, start: 0, end: text.length }]).map((turn) => (
             // Each speaker on their own line with a hanging label. Plain blocks (not a grid) so lines below a floated play button get the full width back.
-            <span key={turn.start} className="block pl-[1.2em]">
+            <span key={turn.start} className={turn.speaker ? 'block pl-[1.2em]' : 'block'}>
               {turn.speaker && (
                 <span className="-ml-[1.2em] inline-block min-w-[1.2em] font-sans">
                   <span className="text-[0.6em] font-black text-ui-muted">{turn.speaker}</span>
                 </span>
               )}
-              {displaySegments.map((seg, idx) => (seg.index >= turn.start && seg.index < turn.end ? renderSegment(seg, idx) : null))}
+              {renderRange(turn.start, turn.end)}
             </span>
           ))
         : displaySegments.map(renderSegment)}

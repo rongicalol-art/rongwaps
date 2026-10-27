@@ -56,7 +56,7 @@ export function WordExamplesSection({
               text={ex.chinese}
               highlightTerms={[word]}
               syllables={hideExamplePinyin ? null : alignSentenceSyllables(ex.chinese, ex.pinyin)}
-              speakerLines
+              exampleLayout
               className="font-chinese text-xl font-bold leading-[1.9] text-ui-ink sm:text-2xl"
             />
             <button

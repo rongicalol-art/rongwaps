@@ -408,6 +408,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
 const PREVIEW_CARDS: Flashcard[] = [
   { id: 'preview-buy', bookId: 1, lessonId: 3, front: '買', traditional: '買', simplified: '买', pinyin: 'mǎi', back: 'to buy', pos: 'V' },
   { id: 'B1L02-1-04', bookId: 1, lessonId: 2, front: '現在', traditional: '現在', simplified: '现在', pinyin: 'xiànzài', back: 'now', pos: 'N' },
+  { id: 'B3L01-1-04', bookId: 3, lessonId: 1, front: '演戲', traditional: '演戲', simplified: '演戏', pinyin: 'yǎnxì', back: 'to act in drama', pos: 'SV' },
 ];
 
 export function FlashcardActionsPreview() {
