@@ -53,7 +53,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   );
   return (
     <li
-      className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 [content-visibility:auto] [contain-intrinsic-size:0_110px] ${
+      className={`flex min-w-0 flex-col gap-1 [content-visibility:auto] [contain-intrinsic-size:0_110px] ${
         divider ? 'border-b-2 border-ui-divider' : ''
       } ${className}`}
     >
@@ -95,7 +95,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
         </p>
       )}
       {showTranslation && example.english && (
-        <p className="ui-translation text-sm sm:text-[15px]">
+        <p className="ui-translation -mt-1.5 text-sm leading-snug sm:text-[15px]">
           {dialogueTranslation(example.english)}
         </p>
       )}
@@ -177,7 +177,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   let rowIndex = 0;
 
   return (
-    <div className={compact ? 'mt-5 flex w-full flex-col text-left' : 'flex w-full flex-col pb-4'} aria-label="Example sentences">
+    <div className={compact ? 'mt-4 flex w-full flex-col border-t-2 border-ui-divider pt-3 text-left' : 'flex w-full flex-col pb-4'} aria-label="Example sentences">
       {visibleTopMatch.length > 0 && (
         <motion.section {...blockEntrance(0)} aria-label="Top match" className="w-full">
           <ul className="flex w-full flex-col">
