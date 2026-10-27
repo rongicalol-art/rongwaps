@@ -255,14 +255,10 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
   try {
     // 2. Prefer the static shard packs (IndexedDB-cached, zero network)
     const packed = await fetchDictionaryRowsFromPacks([trimmedWord]);
-    const packedRows = packed.get(trimmedWord);
-    if (packedRows && packedRows.length > 0) {
-      const results = await dereferenceEntries(packedRows.map(mapRowToEntry));
-      dictionaryCache.set(trimmedWord, results);
-      return results;
-    }
-
-    return [];
+    const packedRows = packed.get(trimmedWord) ?? [];
+    const results = packedRows.length > 0 ? await dereferenceEntries(packedRows.map(mapRowToEntry)) : [];
+    dictionaryCache.set(trimmedWord, results);
+    return results;
   } catch (err) {
     debugLogger.warn('Cache', `Unexpected error fetching dictionary entry for ${trimmedWord}:`, err);
     return [];
@@ -294,16 +290,18 @@ export async function getDictionaryEntriesBatch(words: string[], signal?: AbortS
 
   // 2. Fetch from static shard packs for the missing words
   const packedRows = await fetchDictionaryRowsFromPacks(toFetch, signal);
-  for (const word of toFetch) {
+  await Promise.all(toFetch.map(async (word) => {
     signal?.throwIfAborted();
-    const rows = packedRows.get(word);
-    if (rows && rows.length > 0) {
+    const rows = packedRows.get(word) ?? [];
+    if (rows.length > 0) {
       const dereferenced = await dereferenceEntries(rows.map(mapRowToEntry));
-      const entry = dereferenced[0];
+      signal?.throwIfAborted();
       dictionaryCache.set(word, dereferenced);
-      result.set(word, entry);
+      result.set(word, dereferenced[0]);
+    } else {
+      dictionaryCache.set(word, []);
     }
-  }
+  }));
 
   return result;
 }

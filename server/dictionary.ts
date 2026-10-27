@@ -57,7 +57,7 @@ async function initialize() {
   return starting;
 }
 async function request<T>(message: object): Promise<T> {
-  if (queued >= 32) throw new Error('Dictionary busy. Please try again.');
+  if (queued >= 256) throw new Error('Dictionary busy. Please try again.');
   queued++;
   try {
   const currentGeneration = generation;

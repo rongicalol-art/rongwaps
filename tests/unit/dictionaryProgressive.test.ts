@@ -2,8 +2,9 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
 import { searchDictionary } from '../../src/services/dictionarySearchService';
-import { lookupDictionaryApi } from '../../src/services/dictionaryApi';
+import { lookupCourseCardsApi, lookupDictionaryApi } from '../../src/services/dictionaryApi';
 import { executeRemoteSearch } from '../../src/services/dictionaryService';
+import { closeDictionary, lookupDictionary } from '../../server/dictionary';
 
 test('global search downloads a small result page and exposes failures for retry', async t => {
   const paths: string[] = [];
@@ -49,4 +50,38 @@ test('a failed warm dictionary lookup cannot block the global search', async () 
   const partial: unknown[][] = [];
   assert.equal((await service.searchDictionary('老師', 30, rows => partial.push(rows)))[0].traditional, '老師');
   assert.deepEqual(partial, []);
+});
+
+test('same-tick lookup and course requests coalesce into one batch and worker survives concurrent shard bursts', async t => {
+  const calls: Array<{ url: string; words: string[] }> = [];
+  t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
+    const { words } = JSON.parse(String(init?.body)) as { words: string[] };
+    calls.push({ url: String(input), words });
+    return String(input).endsWith('/course')
+      ? Response.json([{ id: 'b1_l1_1', front: '你好', traditional: '你好', simplified: '你好', pinyin: 'ni3 hao3', back: 'hello', bookId: 1, lessonId: 1 }])
+      : Response.json({ 你好: [{ id: 1, traditional: '你好', simplified: '你好', pinyin_accented: 'nǐ hǎo', definitions: ['hello'] }] });
+  });
+  const [first, second, courseA, courseB] = await Promise.all([
+    lookupDictionaryApi(['你好', '老師']),
+    lookupDictionaryApi(['老師', '學生']),
+    lookupCourseCardsApi(['你好']),
+    lookupCourseCardsApi(['你好', '學生']),
+  ]);
+  assert.equal(calls.filter(c => c.url.endsWith('/lookup')).length, 1);
+  assert.deepEqual(calls.find(c => c.url.endsWith('/lookup'))?.words, ['你好', '老師', '學生']);
+  assert.equal(first.get('你好')?.length, 1);
+  assert.deepEqual(second.get('學生'), []);
+  assert.equal(calls.filter(c => c.url.endsWith('/course')).length, 1);
+  assert.equal(courseA.length, 1);
+  assert.equal(courseB.length, 1);
+
+  try {
+    const batches = Array.from({ length: 15 }, (_, i) =>
+      Array.from({ length: 30 }, (_, j) => String.fromCodePoint(0x4e00 + i * 30 + j)),
+    );
+    const results = await Promise.all(batches.map(batch => lookupDictionary(batch)));
+    assert.equal(results.length, 15);
+  } finally {
+    closeDictionary();
+  }
 });

@@ -15,21 +15,43 @@ import type { DBDictionaryRow } from '../src/types/database';
 
 const root = workerData.root as string;
 const json = async <T>(path: string): Promise<T> => JSON.parse(await readFile(resolve(path.startsWith('/data/study/') || path === '/data/search/course-lookup.json' ? workerData.generatedRoot : root, `.${path}`), 'utf8')) as T;
-const shards = new Map<number, Promise<DBDictionaryRow[]>>();
+const shards = new Map<number, Promise<{ schemaVersion: number; items: unknown[] }>>();
 async function lookup(words: string[]) {
   const result: Record<string, DBDictionaryRow[]> = {};
-  await Promise.all(words.map(async word => {
+  const byShard = new Map<number, Set<string>>();
+  for (const word of words) {
+    result[word] = [];
     const key = getDictionaryShard(word);
+    const group = byShard.get(key) ?? new Set<string>();
+    group.add(word);
+    byShard.set(key, group);
+  }
+  for (const [key, group] of byShard) {
     let promise = shards.get(key);
     if (!promise) {
-      promise = json<{ schemaVersion: number; items: unknown[] }>(`/data/dictionary/shard-${String(key).padStart(2, '0')}.json`).then(pack => pack.schemaVersion === 2
-        ? (pack.items as [number, string, string, string, DBDictionaryRow['definitions']][]).map(([id, simplified, traditional, pinyin_accented, definitions]) => ({ id, simplified, traditional: traditional || simplified, pinyin_accented, pinyin_flat: null, definitions }))
-        : pack.items as DBDictionaryRow[]).catch(error => { shards.delete(key); throw error; });
+      promise = json<{ schemaVersion: number; items: unknown[] }>(`/data/dictionary/shard-${String(key).padStart(2, '0')}.json`)
+        .catch(error => { shards.delete(key); throw error; });
       shards.set(key, promise);
-      if (shards.size > 8) shards.delete(shards.keys().next().value!);
+      if (shards.size > 12) shards.delete(shards.keys().next().value!);
     }
-    result[word] = (await promise).filter(row => row.traditional === word || row.simplified === word);
-  }));
+    const pack = await promise;
+    if (pack.schemaVersion === 2) {
+      for (const [id, simplified, rawTraditional, pinyin_accented, definitions] of pack.items as [number, string, string, string, DBDictionaryRow['definitions']][]) {
+        const traditional = rawTraditional || simplified;
+        const matchTrad = group.has(traditional);
+        const matchSimp = simplified !== traditional && group.has(simplified);
+        if (!matchTrad && !matchSimp) continue;
+        const row: DBDictionaryRow = { id, simplified, traditional, pinyin_accented, pinyin_flat: null, definitions };
+        if (matchTrad) result[traditional].push(row);
+        if (matchSimp) result[simplified].push(row);
+      }
+    } else {
+      for (const row of pack.items as DBDictionaryRow[]) {
+        if (group.has(row.traditional)) result[row.traditional].push(row);
+        if (row.simplified !== row.traditional && group.has(row.simplified)) result[row.simplified].push(row);
+      }
+    }
+  }
   return result;
 }
 
@@ -38,6 +60,13 @@ async function start() {
   const index = createDictionaryIndex(items);
   const coursePack = await json<{ cards: Flashcard[]; entries: [string, number][] }>('/data/search/course-lookup.json');
   const course = new Map(coursePack.entries.map(([key, id]) => [key, coursePack.cards[id]]));
+  const courseByWord = new Map<string, Flashcard[]>();
+  for (const [key, card] of course) {
+    const word = key.split('\u0000')[0];
+    const list = courseByWord.get(word) ?? [];
+    list.push(card);
+    courseByWord.set(word, list);
+  }
   const { parts: studyParts } = await json<{ parts: StudyPart[] }>('/data/study/manifest.json');
   const studyCache = new Map<string, StudyPack>();
   let corpus: CourseExampleRecord[] | undefined;
@@ -80,42 +109,45 @@ async function start() {
   const pack = await json<{ parents: Record<string, string>; phonetic: Record<string, string> }>('/data/relations/parts.json');
   const parts: PartsIndex = { parents: new Map(Object.entries(pack.parents).map(([key, value]) => [key, parseMembers(value)])), phonetic: new Map(Object.entries(pack.phonetic)) };
   const cache = new Map<string, SearchResult[]>();
-  parentPort!.on('message', async ({ id, query, words, limit, kind }: { id: number; query?: string; words?: string[]; limit: number; kind?: string }) => {
-    try {
-      if (kind === 'course') {
-        const selected = new Map<string, Flashcard>();
-        for (const word of words ?? []) for (const [key, card] of course) {
-          if (key === word || key.startsWith(word + '\u0000')) selected.set(`${card.id}:${card.pinyin}`, card);
+  let queue = Promise.resolve();
+  parentPort!.on('message', ({ id, query, words, limit, kind }: { id: number; query?: string; words?: string[]; limit: number; kind?: string }) => {
+    queue = queue.then(async () => {
+      try {
+        if (kind === 'course') {
+          const selected = new Map<string, Flashcard>();
+          for (const word of words ?? []) for (const card of courseByWord.get(word) ?? []) {
+            selected.set(`${card.id}:${card.pinyin}`, card);
+          }
+          parentPort!.postMessage({ id, result: [...selected.values()] }); return;
         }
-        parentPort!.postMessage({ id, result: [...selected.values()] }); return;
-      }
-      if (kind === 'examples') { parentPort!.postMessage({ id, result: await examples(query!, limit) }); return; }
-      if (words) { parentPort!.postMessage({ id, result: await lookup(words) }); return; }
-      const key = `${query}:${limit}`;
-      let results = cache.get(key);
-      if (!results) {
-        const q = query!;
-        results = searchByCharacterComponents(items, parts, q, limit);
-        if (!results.length) results = index.search(q, limit);
-        if (!results.length) results = /\p{Script=Han}/u.test(q) ? segmentChineseQuery(items, q, limit) : segmentPinyinQuery(items, q, limit);
-        // The compact search corpus excludes rare stubs; exact dictionary entries still lead.
-        const exact = !/[\s+＋*?＊？a-z]/i.test(q) && /\p{Script=Han}/u.test(q) ? (await lookup([q]))[q].map((row): SearchResult => ({
-          id: row.id, simplified: row.simplified, traditional: row.traditional, pinyin_accented: row.pinyin_accented ?? '',
-          ...sanitizeDictionaryDefinitions(row.definitions), match_type: 'exact', total_score: 6200 + (row.frequency_score ?? 0),
-        })) : [];
-        const seen = new Set(exact.flatMap(row => [row.simplified, row.traditional]));
-        results = [...exact, ...results.filter(row => !seen.has(row.simplified) && !seen.has(row.traditional))].slice(0, limit);
-        results = results.map(row => {
-          const card = course.get(row.traditional) ?? course.get(row.simplified);
-          return card ? { ...row, courseDefinition: card.back, bookId: card.bookId, lessonId: card.lessonId, pos: card.pos,
-            ...(card.pinyin?.trim().toLowerCase() === row.pinyin_accented.trim().toLowerCase() ? { audio: card.audio } : {}),
-          } : row;
-        });
-        cache.set(key, results);
-        if (cache.size > 96) cache.delete(cache.keys().next().value!);
-      }
-      parentPort!.postMessage({ id, result: results });
-    } catch { parentPort!.postMessage({ id, error: 'Dictionary unavailable. Please try again.' }); }
+        if (kind === 'examples') { parentPort!.postMessage({ id, result: await examples(query!, limit) }); return; }
+        if (words) { parentPort!.postMessage({ id, result: await lookup(words) }); return; }
+        const key = `${query}:${limit}`;
+        let results = cache.get(key);
+        if (!results) {
+          const q = query!;
+          results = searchByCharacterComponents(items, parts, q, limit);
+          if (!results.length) results = index.search(q, limit);
+          if (!results.length) results = /\p{Script=Han}/u.test(q) ? segmentChineseQuery(items, q, limit) : segmentPinyinQuery(items, q, limit);
+          // The compact search corpus excludes rare stubs; exact dictionary entries still lead.
+          const exact = !/[\s+＋*?＊？a-z]/i.test(q) && /\p{Script=Han}/u.test(q) ? (await lookup([q]))[q].map((row): SearchResult => ({
+            id: row.id, simplified: row.simplified, traditional: row.traditional, pinyin_accented: row.pinyin_accented ?? '',
+            ...sanitizeDictionaryDefinitions(row.definitions), match_type: 'exact', total_score: 6200 + (row.frequency_score ?? 0),
+          })) : [];
+          const seen = new Set(exact.flatMap(row => [row.simplified, row.traditional]));
+          results = [...exact, ...results.filter(row => !seen.has(row.simplified) && !seen.has(row.traditional))].slice(0, limit);
+          results = results.map(row => {
+            const card = course.get(row.traditional) ?? course.get(row.simplified);
+            return card ? { ...row, courseDefinition: card.back, bookId: card.bookId, lessonId: card.lessonId, pos: card.pos,
+              ...(card.pinyin?.trim().toLowerCase() === row.pinyin_accented.trim().toLowerCase() ? { audio: card.audio } : {}),
+            } : row;
+          });
+          cache.set(key, results);
+          if (cache.size > 96) cache.delete(cache.keys().next().value!);
+        }
+        parentPort!.postMessage({ id, result: results });
+      } catch { parentPort!.postMessage({ id, error: 'Dictionary unavailable. Please try again.' }); }
+    });
   });
   parentPort!.postMessage({ ready: true });
 }

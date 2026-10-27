@@ -36,6 +36,7 @@ export async function getCourseVocabLookupMap(): Promise<Map<string, Flashcard>>
 }
 
 
+const NO_CARDS: Flashcard[] = [];
 const remoteCourse = new Map<string, Flashcard[]>();
 export async function getCourseVocabForWords(words: string[]): Promise<Map<string, Flashcard>> {
   if (courseVocabByWordMap) return courseVocabByWordMap;
@@ -43,8 +44,11 @@ export async function getCourseVocabForWords(words: string[]): Promise<Map<strin
   const missing = [...new Set(words.map(word => word.trim()).filter(word => word && !warm.has(word) && !remoteCourse.has(word)))];
   if (missing.length) {
     const cards = await lookupCourseCardsApi(missing);
-    for (const word of missing) remoteCourse.set(word, cards.filter(card => [card.front, card.traditional, card.simplified].includes(word)));
-    while (remoteCourse.size > 256) remoteCourse.delete(remoteCourse.keys().next().value!);
+    for (const word of missing) {
+      const matched = cards.filter(card => [card.front, card.traditional, card.simplified].includes(word));
+      remoteCourse.set(word, matched.length ? matched : NO_CARDS);
+    }
+    while (remoteCourse.size > 2048) remoteCourse.delete(remoteCourse.keys().next().value!);
   }
   return buildCourseVocabLookupMap([...remoteCourse.values()].flat().concat(getLoadedStudyCards()));
 }
