@@ -56,6 +56,7 @@ export function useAppShell() {
     openReader: reader.openReader,
     openReaderForPart: reader.openReaderForPart,
     closeReader: reader.closeReader,
+    openGrammarParts: grammar.openGrammarParts,
     setActiveGrammarPartId: grammar.setActiveGrammarPartId,
     setActiveGrammarPageId: grammar.setActiveGrammarPageId,
     setIsSettingsOpen: shellState.setIsSettingsOpen,

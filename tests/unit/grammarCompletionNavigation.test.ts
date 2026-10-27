@@ -19,7 +19,8 @@ function shellActions() {
       openReader: () => { events.push('open-reader'); },
       openReaderForPart: (...target) => { events.push(['open-part-reader', ...target]); },
       closeReader: () => {},
-      setActiveGrammarPartId: (partId) => { events.push(['grammar', partId]); },
+      openGrammarParts: (partIds) => { events.push(['grammar-open', partIds]); },
+      setActiveGrammarPartId: (partId) => { events.push(['grammar-close', partId]); },
       setActiveGrammarPageId: (pageId) => { events.push(['page', pageId]); },
       setIsSettingsOpen: () => {},
       setIsNavOpen: () => {},
@@ -37,10 +38,10 @@ test('finishing grammar closes its window and selects reading without opening th
   actions.handleOpenGrammarPart('B1L01-P1', null, () => { events.push('select-reading'); });
   events.length = 0;
   actions.handleFinishGrammar();
-  assert.deepEqual(events, [['grammar', null], ['page', null], 'select-reading']);
+  assert.deepEqual(events, [['grammar-close', null], ['page', null], 'select-reading']);
   events.length = 0;
   actions.handleFinishGrammar();
-  assert.deepEqual(events, [['grammar', null], ['page', null]]);
+  assert.deepEqual(events, [['grammar-close', null], ['page', null]]);
 });
 
 test('closing or switching grammar does not run an earlier completion action', () => {
@@ -51,14 +52,14 @@ test('closing or switching grammar does not run an earlier completion action', (
     else actions.handleOpenGrammarPart('B1L01-P2');
     events.length = 0;
     actions.handleFinishGrammar();
-    assert.deepEqual(events, [['grammar', null], ['page', null]]);
+    assert.deepEqual(events, [['grammar-close', null], ['page', null]]);
   }
 });
 
 test('an explicit reading launch still opens the requested part', () => {
   const { actions, events } = shellActions();
   actions.handleProceedToReading({ bookId: 1, lessonId: 2, partId: 3 });
-  assert.deepEqual(events, [['grammar', null], ['page', null], ['open-part-reader', 1, 2, 3]]);
+  assert.deepEqual(events, [['grammar-close', null], ['page', null], ['open-part-reader', 1, 2, 3]]);
 });
 
 test('the final grammar footer says Done and keeps Practice when an exercise follows', () => {
@@ -72,32 +73,32 @@ test('the final grammar footer says Done and keeps Practice when an exercise fol
   }
 });
 
-test('a multi-part grammar session finishes each selected part before returning to reading', () => {
+test('a multi-part grammar session opens once and returns to reading on finish', () => {
   const { actions, events } = shellActions();
   actions.handleOpenGrammarPart(['B1L01-P1', 'B1L01-P2', 'B1L01-P2', 'B1L01-P3'], null, () => { events.push('select-reading'); });
-  assert.deepEqual(events, [['page', null], ['grammar', 'B1L01-P1']]);
+  assert.deepEqual(events, [['page', null], ['grammar-open', ['B1L01-P1', 'B1L01-P2', 'B1L01-P3']]]);
   events.length = 0;
   actions.handleFinishGrammar();
-  assert.deepEqual(events, [['page', null], ['grammar', 'B1L01-P2']]);
-  events.length = 0;
-  actions.handleFinishGrammar();
-  assert.deepEqual(events, [['page', null], ['grammar', 'B1L01-P3']]);
-  events.length = 0;
-  actions.handleFinishGrammar();
-  assert.deepEqual(events, [['grammar', null], ['page', null], 'select-reading']);
+  assert.deepEqual(events, [['grammar-close', null], ['page', null], 'select-reading']);
 });
 
-test('closing a multi-part grammar session clears its pending parts and completion', () => {
+test('a combined grammar URL restores every selected part', () => {
+  const { actions, events } = shellActions();
+  actions.handleOpenGrammarPart('B1L01-P1,B1L01-P2');
+  assert.deepEqual(events, [['page', null], ['grammar-open', ['B1L01-P1', 'B1L01-P2']]]);
+});
+
+test('closing a multi-part grammar session clears its pending completion', () => {
   const { actions, events } = shellActions();
   actions.handleOpenGrammarPart(['B1L01-P1', 'B1L01-P2'], null, () => { events.push('select-reading'); });
   actions.handleCloseGrammar();
   events.length = 0;
   actions.handleFinishGrammar();
-  assert.deepEqual(events, [['grammar', null], ['page', null]]);
+  assert.deepEqual(events, [['grammar-close', null], ['page', null]]);
 });
 
 test('a reading launch carries all selected parts', () => {
   const { actions, events } = shellActions();
   actions.handleProceedToReading({ bookId: 1, lessonId: 2, partId: [1, 2] });
-  assert.deepEqual(events, [['grammar', null], ['page', null], ['open-part-reader', 1, 2, [1, 2]]]);
+  assert.deepEqual(events, [['grammar-close', null], ['page', null], ['open-part-reader', 1, 2, [1, 2]]]);
 });

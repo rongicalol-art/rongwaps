@@ -7,6 +7,18 @@ export function getLessonSelectionKey(bookId: number, lessonId: number) {
   return `${bookId}:${lessonId}`;
 }
 
+/** "Part 2", "Parts 1–3" for a consecutive run, or "Parts 1 + 3" when there are gaps. */
+export function formatPartSelection(partIds: number[]): string {
+  const ids = Array.from(new Set(partIds)).sort((a, b) => a - b);
+  if (ids.length === 0) return '';
+  if (ids.length === 1) return `Part ${ids[0]}`;
+
+  const consecutive = ids.every((id, index) => index === 0 || id === ids[index - 1] + 1);
+  return consecutive
+    ? `Parts ${ids[0]}–${ids[ids.length - 1]}`
+    : `Parts ${ids.join(' + ')}`;
+}
+
 export function sanitizeLessonPartSelectionMap(value: unknown): LessonPartSelectionMap {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
 

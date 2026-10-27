@@ -19,7 +19,7 @@ Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/
 - Work inline. Do not spawn subagents unless the owner explicitly asks.
 - Skills: `.claude/skills/` is the source of truth. Codex reads mirrored copies in `.agents/skills/` (local, gitignored, may lag); when they differ, the `.claude/` version wins. `.agents/portable-memory.md` is optional local context: verify its claims against current code.
 - Design/motion: plan, then a clickable prototype, then the owner's pick, then build (see the UI director skill).
-- **Never test on the owner's real progress** (answering quiz/flashcards writes SRS and syncs). Check UI in the DEV debug window: Ctrl+Shift+0 → **UI Previews** (quiz question types, feedback bar, Session complete with fake words). Ask before anything that records progress.
+- **Testing on the owner's account is allowed** — the owner opted in globally, so no need to ask. Use the DEV debug window (Ctrl+Shift+0 → **UI Previews**) for UI-only checks, and the real account when the flow needs real data or progress (quiz/flashcards/SRS writes are fine).
 - `.agents/` and the other gitignored scratch folders never feed shipped code.
 
 ## Commands

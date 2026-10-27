@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { findGrammarManifestPartForReading } from '../../../data/interactiveGrammarManifest';
 import { useAppStore } from '../../../store/useAppStore';
 import type { InteractiveGrammarPart } from '../../../types/models';
-import { continueGrammarLesson } from '../../../utils/grammar/grammarLessonFlow';
+import { completedGrammarPartNumbers, continueGrammarLesson } from '../../../utils/grammar/grammarLessonFlow';
 
 interface UseGrammarLessonPageOptions {
   part: InteractiveGrammarPart;
@@ -30,6 +31,7 @@ export function useGrammarLessonPage({
 }: UseGrammarLessonPageOptions) {
   const completedPageIds = useAppStore((state) => state.completedPageIds);
   const markPageComplete = useAppStore((state) => state.markPageComplete);
+  const markPartStarted = useAppStore((state) => state.markPartStarted);
   const markPartComplete = useAppStore((state) => state.markPartComplete);
 
   const firstIncompleteIndex = useMemo(
@@ -74,6 +76,15 @@ export function useGrammarLessonPage({
   const page = part.grammarPages[currentGrammarIndex];
   const previousPage = currentGrammarIndex > 0 ? part.grammarPages[currentGrammarIndex - 1] : null;
   const isLastPage = currentGrammarIndex === part.grammarPages.length - 1;
+  const currentPartId = findGrammarManifestPartForReading({
+    bookId: page.bookId,
+    lessonId: page.lessonId,
+    dialogueNumber: page.partId,
+  })?.id ?? null;
+
+  useEffect(() => {
+    if (currentPartId) markPartStarted(currentPartId);
+  }, [currentPartId, markPartStarted]);
 
   /** Marks this page done, then advances or returns to the lesson on its final page. */
   const completePage = useCallback(() => {
@@ -85,8 +96,22 @@ export function useGrammarLessonPage({
       allPageIds: part.grammarPages.map((grammarPage) => grammarPage.id),
     });
     markPageComplete(page.id);
+
+    // A combined run still credits each source part as its own pages finish.
+    const postCompletion = new Set(completedPageIds);
+    postCompletion.add(page.id);
+    for (const partNumber of completedGrammarPartNumbers(part.grammarPages, [...postCompletion])) {
+      const sourcePage = part.grammarPages.find((grammarPage) => grammarPage.partId === partNumber);
+      if (!sourcePage) continue;
+      const sourcePart = findGrammarManifestPartForReading({
+        bookId: sourcePage.bookId,
+        lessonId: sourcePage.lessonId,
+        dialogueNumber: partNumber,
+      });
+      if (sourcePart) markPartComplete(sourcePart.id);
+    }
+
     if (isLastPage || next.isPartComplete) {
-      markPartComplete(part.id);
       if (onProceedToReading) onProceedToReading(part);
       else onClose();
       return;

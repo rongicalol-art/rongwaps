@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import type { InteractiveGrammarPart } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
 
 interface GrammarLessonKeyboardNavigationOptions {
@@ -9,9 +8,8 @@ interface GrammarLessonKeyboardNavigationOptions {
   canGoBack: boolean;
   continueAfterStudy: () => void;
   goBackToPreviousGrammar: () => void;
-  navigateToPart: (direction: 'next' | 'previous') => void;
   currentGrammarIndex: number;
-  part: InteractiveGrammarPart;
+  grammarPageCount: number;
   onClose: () => void;
 }
 
@@ -22,9 +20,8 @@ export function useGrammarLessonKeyboardNavigation({
   canGoBack,
   continueAfterStudy,
   goBackToPreviousGrammar,
-  navigateToPart,
   currentGrammarIndex,
-  part,
+  grammarPageCount,
   onClose,
 }: GrammarLessonKeyboardNavigationOptions) {
   const onCloseRef = useRef(onClose);
@@ -41,22 +38,10 @@ export function useGrammarLessonKeyboardNavigation({
       }
       const target = event.target as HTMLElement | null;
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
-      if (event.key === 'ArrowRight' && event.shiftKey) {
-        event.preventDefault();
-        navigateToPart('next');
-      } else if (event.key === 'ArrowLeft' && event.shiftKey) {
-        event.preventDefault();
-        navigateToPart('previous');
-      } else if (event.key === ']' && !event.metaKey && !event.ctrlKey) {
-        event.preventDefault();
-        navigateToPart('next');
-      } else if (event.key === '[' && !event.metaKey && !event.ctrlKey) {
-        event.preventDefault();
-        navigateToPart('previous');
-      } else if (event.key === 'ArrowRight') {
+      if (event.key === 'ArrowRight') {
         if (isPracticing) return;
         event.preventDefault();
-        if (event.repeat && currentGrammarIndex >= part.grammarPages.length - 1) return;
+        if (event.repeat && currentGrammarIndex >= grammarPageCount - 1) return;
         continueAfterStudy();
       } else if (event.key === 'ArrowLeft' && canGoBack) {
         if (isPracticing) return;
@@ -68,5 +53,5 @@ export function useGrammarLessonKeyboardNavigation({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isBookOpen, isPracticing, canGoBack, continueAfterStudy, goBackToPreviousGrammar, navigateToPart, currentGrammarIndex, part]);
+  }, [isBookOpen, isPracticing, canGoBack, continueAfterStudy, goBackToPreviousGrammar, currentGrammarIndex, grammarPageCount]);
 }

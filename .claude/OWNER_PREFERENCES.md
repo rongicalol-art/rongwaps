@@ -85,12 +85,12 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 **Process**
 - **Small tweak or bug:** a one-line intent, then just do it.
 - **Design or motion work:** a short plan, then a **clickable HTML prototype** (real tokens, phone 390 and desktop 1440, 2–3 named directions, one recommended), then wait for a pick or "go", then build. Iterate on the same prototype link.
-- **Ask first:** new dependencies, new abstractions, moving or deleting files, multi-file refactors, schema or pack or data changes, and anything that writes the owner's progress.
+- **Ask first:** new dependencies, new abstractions, moving or deleting files, multi-file refactors, schema or pack or data changes.
 - **Work inline:** no subagents unless asked. The owner disliked a Codex session that silently restyled the quiz, so never restyle beyond the request.
 
 **Verifying**
 - Look at the result yourself at 390×844 and 1440×900 before saying "done". Use the DEV debug window: Ctrl+Shift+0 → **UI Previews**.
-- **Never test by answering on the owner's real deck.** It records spaced-repetition reviews and syncs to the cloud.
+- **Testing on the owner's real account/deck is allowed** — the owner opted in; no need to ask. Use the DEV debug window for UI-only checks when it covers the flow.
 - Report honestly what you checked and what you didn't.
 
 **Answering**

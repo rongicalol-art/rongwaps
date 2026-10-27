@@ -18,8 +18,6 @@ interface GrammarWindowProps {
   initialPageId: GrammarLessonScreenProps['initialPageId'];
   onClose: () => void;
   onProceedToReading: NonNullable<GrammarLessonScreenProps['onProceedToReading']>;
-  /** Keyboard part switching (Shift + ←/→) is owned by whoever can load a part. */
-  onNavigatePart?: NonNullable<GrammarLessonScreenProps['onNavigatePart']>;
 }
 
 /** Full-viewport grammar lesson window; AnimatePresence owns its exit. */
@@ -31,7 +29,6 @@ export function GrammarWindow({
   initialPageId,
   onClose,
   onProceedToReading,
-  onNavigatePart,
 }: GrammarWindowProps) {
   // This window knows when a lesson is open, so it owns the lesson title; the
   // shell takes it back on close.
@@ -57,7 +54,6 @@ export function GrammarWindow({
             initialPageId={initialPageId}
             onClose={onClose}
             onProceedToReading={onProceedToReading}
-            onNavigatePart={onNavigatePart}
           />
         </Suspense>
       )}

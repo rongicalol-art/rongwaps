@@ -11,6 +11,7 @@ interface UseAppShellActionsOptions {
   openReader: (bookId: number) => Promise<void> | void;
   openReaderForPart: (bookId: number, lessonId: number, partId: number | number[]) => Promise<void> | void;
   closeReader: () => void;
+  openGrammarParts: (partIds: string[]) => void;
   setActiveGrammarPartId: (partId: string | null) => void;
   setActiveGrammarPageId: (pageId: string | null) => void;
   setIsSettingsOpen: (open: boolean) => void;
@@ -38,13 +39,13 @@ export function useAppShellActions({
   openReader,
   openReaderForPart,
   closeReader,
+  openGrammarParts,
   setActiveGrammarPartId,
   setActiveGrammarPageId,
   setIsSettingsOpen,
   setIsNavOpen,
   isDesktop,
 }: UseAppShellActionsOptions) {
-  const remainingGrammarParts = useRef<string[]>([]);
   const grammarCompletion = useRef<(() => void) | null>(null);
   const handleSetActiveActivity = useCallback((activity: ActivityType) => {
     if (activity) {
@@ -69,17 +70,16 @@ export function useAppShellActions({
   }, [collapseNav, openReader, activeBookId]);
 
   const handleOpenGrammarPart = useCallback((partId: string | string[], pageId?: string | null, onComplete?: () => void) => {
-    const [firstPart, ...remaining] = [...new Set(Array.isArray(partId) ? partId : [partId])];
-    if (!firstPart) return;
-    remainingGrammarParts.current = remaining;
+    const requested = Array.isArray(partId) ? partId : partId.split(',');
+    const partIds = [...new Set(requested.filter(Boolean))];
+    if (partIds.length === 0) return;
     grammarCompletion.current = onComplete ?? null;
     collapseNav();
     setActiveGrammarPageId(pageId ?? null);
-    setActiveGrammarPartId(firstPart);
-  }, [collapseNav, setActiveGrammarPageId, setActiveGrammarPartId]);
+    openGrammarParts(partIds);
+  }, [collapseNav, openGrammarParts, setActiveGrammarPageId]);
 
   const handleCloseGrammar = useCallback(() => {
-    remainingGrammarParts.current = [];
     grammarCompletion.current = null;
     setActiveGrammarPartId(null);
     setActiveGrammarPageId(null);
@@ -100,16 +100,10 @@ export function useAppShellActions({
   }, [collapseNav, handleCloseGrammar, openReaderForPart]);
 
   const handleFinishGrammar = useCallback(() => {
-    const nextPart = remainingGrammarParts.current.shift();
-    if (nextPart) {
-      setActiveGrammarPageId(null);
-      setActiveGrammarPartId(nextPart);
-      return;
-    }
     const onComplete = grammarCompletion.current;
     handleCloseGrammar();
     onComplete?.();
-  }, [handleCloseGrammar, setActiveGrammarPageId, setActiveGrammarPartId]);
+  }, [handleCloseGrammar]);
 
   const handleSettingsClick = useCallback(() => {
     setIsSettingsOpen(true);

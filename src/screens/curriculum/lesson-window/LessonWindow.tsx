@@ -7,7 +7,7 @@ import { useModalFocus } from '../../../hooks/useModalFocus';
 import type { ActivityType, CourseLessonProgress } from '../../../types/models';
 import { getEnglishLessonTitle } from '../../../utils/lesson/lessonTitle';
 import { preloadPracticeChunks, prefetchPractice } from '../../activities';
-import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection';
+import { formatPartSelection, getLessonSelectionKey, normalizePartSelection } from '../../../utils/lesson/lessonPartSelection';
 import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
@@ -26,17 +26,17 @@ import {
 
 export interface LessonWindowTarget {
   lessonId: number;
-  /** Last viewed part; null opens the first unfinished one. */
-  partId: number | null;
+  /** Last part selection; null opens the first unfinished one. */
+  partIds: number[] | null;
 }
 
 interface LessonWindowProps {
   bookId: number;
   lesson: CourseLessonProgress | null;
-  partId: number | null;
+  partIds: number[] | null;
   /** Hidden (not closed) while a practice activity is on top, so "back" lands here. */
   isHidden: boolean;
-  onPartChange: (partId: number) => void;
+  onPartChange: (partIds: number[]) => void;
   onClose: () => void;
   onStartPractice: (lessonId: number, partId: number | number[], activity: ActivityType) => void;
   onOpenGrammarPart: (manifestId: string | string[], onComplete?: () => void) => void;
@@ -51,14 +51,27 @@ type BodyProps = Omit<LessonWindowProps, 'lesson' | 'isHidden'> & {
   onModeChange: (partId: number, mode: PartModeKey) => void;
 };
 
-function LessonTitle({ lesson, part, isDesktop }: { lesson: CourseLessonProgress; part: LessonWindowPart; isDesktop: boolean }) {
+function LessonTitle({
+  lesson,
+  part,
+  selectedPartIds,
+  isDesktop,
+}: {
+  lesson: CourseLessonProgress;
+  part: LessonWindowPart;
+  selectedPartIds: number[];
+  isDesktop: boolean;
+}) {
   const [, lessonChinese] = lesson.title.split('·').map((piece) => piece.trim());
   const [partChinese, ...partEnglish] = part.title.split(' · ');
   const english = partEnglish.length > 0 ? partEnglish.join(' · ') : getEnglishLessonTitle(lesson.title);
   const chinese = partEnglish.length > 0 ? partChinese : lessonChinese;
+  const eyebrow = selectedPartIds.length > 1
+    ? `${lesson.label} · ${formatPartSelection(selectedPartIds)}`
+    : lesson.label;
   return (
     <div>
-      <p className="text-xs font-black uppercase tracking-widest text-ui-muted">{lesson.label}</p>
+      <p className="text-xs font-black uppercase tracking-widest text-ui-muted">{eyebrow}</p>
       <h2 className={isDesktop ? 'mt-1 text-4xl font-black leading-tight text-ui-ink-strong' : 'text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl'}>
         {english}
       </h2>
@@ -206,7 +219,7 @@ function PracticeHubDrawer({
 function LessonBody({
   bookId,
   lesson,
-  partId,
+  partIds,
   isDesktop,
   modes,
   onModeChange,
@@ -220,21 +233,11 @@ function LessonBody({
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
 
-  const resolvedPartId = partId !== null && parts.some((part) => part.id === partId)
-    ? partId
-    : getFirstOpenPartId(parts);
+  const fallbackPartId = getFirstOpenPartId(parts);
+  const selectedPartIds = normalizePartSelection(partIds ?? [], parts.map((part) => part.id))
+    ?? (fallbackPartId !== null ? [fallbackPartId] : []);
 
-  const [selectedPartIds, setSelectedPartIds] = useState<number[]>(() => (
-    resolvedPartId !== null ? [resolvedPartId] : []
-  ));
-
-  useEffect(() => {
-    if (resolvedPartId !== null && selectedPartIds.length <= 1 && !selectedPartIds.includes(resolvedPartId)) {
-      setSelectedPartIds([resolvedPartId]);
-    }
-  }, [resolvedPartId, selectedPartIds]);
-
-  const activeIndex = Math.max(0, parts.findIndex((p) => p.id === (selectedPartIds[0] ?? resolvedPartId)));
+  const activeIndex = Math.max(0, parts.findIndex((p) => p.id === selectedPartIds[0]));
   const selectedParts = parts.filter((p) => selectedPartIds.includes(p.id));
   const activePart = selectedParts.length > 0 ? getAggregatedPart(selectedParts) : parts[activeIndex];
   const hasSentences = useHasPartSentences(bookId, lesson.id, selectedPartIds.length > 0 ? selectedPartIds : activePart ? [activePart.id] : [], Boolean(activePart && activePart.vocab.total > 0));
@@ -244,13 +247,13 @@ function LessonBody({
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
       // Reader/grammar windows open over this one; they own the arrow keys.
-      const dialogs = document.querySelectorAll('[aria-modal="true"]');
-      if (!dialogs[dialogs.length - 1]?.contains(rootRef.current)) return;
+      // DOM order is not stacking order, so any other modal means this one is covered.
+      const ownDialog = rootRef.current?.closest('[role="dialog"]');
+      const coveredByDialog = [...document.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]')]
+        .some((dialog) => dialog !== ownDialog && !dialog.contains(rootRef.current));
+      if (coveredByDialog) return;
       const next = parts[activeIndex + (event.key === 'ArrowLeft' ? -1 : 1)];
-      if (next) {
-        setSelectedPartIds([next.id]);
-        onPartChange(next.id);
-      }
+      if (next) onPartChange([next.id]);
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
@@ -277,25 +280,17 @@ function LessonBody({
   };
   const swipe = (step: 1 | -1) => {
     const next = parts[activeIndex + step];
-    if (next) {
-      setSelectedPartIds([next.id]);
-      onPartChange(next.id);
-    }
+    if (next) onPartChange([next.id]);
   };
   const handleSelectPart = (id: number) => {
-    setSelectedPartIds([id]);
-    onPartChange(id);
+    onPartChange([id]);
   };
   const handleTogglePart = (id: number) => {
-    setSelectedPartIds((prev) => {
-      if (prev.includes(id)) {
-        if (prev.length <= 1) return prev;
-        const next = prev.filter((p) => p !== id);
-        onPartChange(next[0]);
-        return next;
-      }
-      return [...prev, id].sort((a, b) => a - b);
-    });
+    if (selectedPartIds.includes(id)) {
+      if (selectedPartIds.length > 1) onPartChange(selectedPartIds.filter((partId) => partId !== id));
+      return;
+    }
+    onPartChange([...selectedPartIds, id].sort((a, b) => a - b));
   };
 
   const modeButtons = (
@@ -364,7 +359,7 @@ function LessonBody({
             />
           </div>
           <div className="mt-12 flex flex-col">
-            <LessonTitle lesson={lesson} part={activePart} isDesktop />
+            <LessonTitle lesson={lesson} part={activePart} selectedPartIds={selectedPartIds} isDesktop />
             <HereButton lesson={lessonKey(bookId, lesson.id)} />
             <div className="mt-6">{modeButtons}</div>
             <div className="mt-auto pt-5">{actions}</div>
@@ -390,7 +385,7 @@ function LessonBody({
             onTogglePart={handleTogglePart}
             className="mx-4 mt-2"
           />
-          <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} isDesktop={false} /><HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
+          <div className="px-4 pt-4"><LessonTitle lesson={lesson} part={activePart} selectedPartIds={selectedPartIds} isDesktop={false} /><HereButton lesson={lessonKey(bookId, lesson.id)} /></div>
           <div className="px-4 pb-3 pt-3">
             {modeButtons}
           </div>

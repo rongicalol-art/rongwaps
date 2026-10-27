@@ -7,6 +7,8 @@ import {
 } from '../../src/utils/grammar/grammarExercise';
 import {
   buildGrammarPartSegments,
+  combineGrammarParts,
+  completedGrammarPartNumbers,
   continueGrammarLesson,
   selectGrammar,
 } from '../../src/utils/grammar/grammarLessonFlow';
@@ -85,6 +87,25 @@ test('Continue advances to the first grammar not in the post-completion set', ()
     completedPageIds: ['g1'],
     allPageIds,
   }), { grammarIndex: 1 });
+});
+
+test('Selected grammar parts combine into one ordered run', () => {
+  const combined = combineGrammarParts(lessonOneParts);
+  assert.ok(combined);
+  assert.deepEqual(combined.grammarPages.map((page) => page.id), lessonOnePages.map((page) => page.id));
+  assert.deepEqual(combined.grammarPages.map((page) => page.partId), [1, 1, 1, 2, 2]);
+  assert.equal(combined.id, lessonOneParts.map((part) => part.id).join('+'));
+  assert.match(combined.title, /Grammar 1–5 · Parts 1–2/);
+  assert.equal(combineGrammarParts([LESSON_ONE_PART_ONE]), LESSON_ONE_PART_ONE);
+  assert.equal(combineGrammarParts([]), null);
+});
+
+test('A source part completes only when every one of its grammar pages is done', () => {
+  const [first, second] = lessonOneParts;
+  assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, first.grammarPages.map((page) => page.id)), [1]);
+  assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, lessonOnePages.map((page) => page.id)), [1, 2]);
+  assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, second.grammarPages.map((page) => page.id)), [2]);
+  assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, []), []);
 });
 
 test('Grammar part builds one progress segment per grammar point', () => {

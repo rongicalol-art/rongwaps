@@ -3,11 +3,9 @@ import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
-import { findNeighbourGrammarPartId } from '../../data/interactiveGrammarManifest';
 import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
-import { useAuth } from '../../hooks/useAuth';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { WorkspaceWindow } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
@@ -31,8 +29,6 @@ interface GrammarLessonScreenProps {
   part: InteractiveGrammarPart;
   onClose: () => void;
   onProceedToReading?: (part: InteractiveGrammarPart) => void;
-  /** Opens the neighbouring grammar part (Shift + ←/→) without leaving the window. */
-  onNavigatePart?: (partId: string) => void;
   initialPageId?: string;
   initialGrammarIndex?: number;
   /** False when this screen replaces its own loader on the same canvas. */
@@ -59,7 +55,6 @@ export function GrammarLessonScreen({
   part,
   onClose,
   onProceedToReading,
-  onNavigatePart,
   initialPageId,
   initialGrammarIndex,
   animateIn = true,
@@ -69,7 +64,6 @@ export function GrammarLessonScreen({
   const bookPageButtonRef = useRef<HTMLButtonElement>(null);
 
   const [isBookOpen, setIsBookOpen] = useState(false);
-  const { hasFullCourseAccess } = useAuth();
   const isSocialPanelOpen = useAppStore((state) => state.socialPanel !== null);
 
   // False until the lazy study-page chunk has mounted at least once, so the
@@ -112,7 +106,6 @@ export function GrammarLessonScreen({
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const [showPinyin, setShowPinyin] = useState(false);
   const [showTranslation, setShowTranslation] = useState(true);
-  const markPartStarted = useAppStore((state) => state.markPartStarted);
 
   const closeLesson = useCallback(() => {
     audioService.stop();
@@ -123,10 +116,6 @@ export function GrammarLessonScreen({
     setIsBookOpen(false);
     window.requestAnimationFrame(() => bookPageButtonRef.current?.focus());
   }, []);
-
-  useEffect(() => {
-    markPartStarted(part.id);
-  }, [markPartStarted, part.id]);
 
   // The footer waits for the outgoing page to finish leaving: while it fades, the content is short and would show it.
   const pageKey = `${isPracticing ? 'practice' : 'study'}-${page.id}`;
@@ -151,24 +140,14 @@ export function GrammarLessonScreen({
     onDeactivate: () => audioService.stop(),
   });
 
-  const navigateToPart = useCallback(
-    (direction: 'next' | 'previous') => {
-      if (!onNavigatePart) return;
-      const neighbourId = findNeighbourGrammarPartId(part.id, direction, hasFullCourseAccess);
-      if (neighbourId) onNavigatePart(neighbourId);
-    },
-    [onNavigatePart, part.id, hasFullCourseAccess],
-  );
-
   useGrammarLessonKeyboardNavigation({
     isBookOpen,
     isPracticing,
     canGoBack,
     continueAfterStudy,
     goBackToPreviousGrammar,
-    navigateToPart,
     currentGrammarIndex,
-    part,
+    grammarPageCount: part.grammarPages.length,
     onClose,
   });
 
@@ -188,7 +167,7 @@ export function GrammarLessonScreen({
       className="overflow-hidden"
       role="dialog"
       aria-modal="true"
-      aria-label={`Lesson ${part.lessonId}, Part ${part.partId}: ${part.title}`}
+      aria-label={`Lesson ${page.lessonId}, Part ${page.partId}: ${page.titleEnglish}`}
     >
       <div className="flex flex-1 min-h-0 min-w-0">
         <div ref={setBarHost} className="relative flex-1 min-w-0 flex flex-col min-h-0">
@@ -201,7 +180,7 @@ export function GrammarLessonScreen({
             )}
           >
             <GrammarLessonHeader
-              title={`P${part.partId} · Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
+              title={`P${page.partId} · Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
               characterFont={characterFont}
               onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
               showPinyin={showPinyin}

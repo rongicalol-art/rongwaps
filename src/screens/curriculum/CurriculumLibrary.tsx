@@ -94,7 +94,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
 
   const setLastOpenedLesson = useAppStore((state) => state.setLastOpenedLesson);
   const handleOpenLesson = useCallback((lessonId: number) => {
-    setLessonWindow({ lessonId, partId: null });
+    setLessonWindow({ lessonId, partIds: null });
     setLastOpenedLesson(activeBookId, lessonId);
   }, [activeBookId, setLastOpenedLesson]);
   const handleCloseLesson = useCallback(() => setLessonWindow(null), []);
@@ -134,8 +134,8 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     selection.exit();
     onStartPathPractice?.();
   }, [activeBookId, handleOpenLesson, onStartPathPractice, progress.lessons, selection, setSelectedLessonParts]);
-  const handlePartChange = useCallback((partId: number) => {
-    setLessonWindow((current) => (current ? { ...current, partId } : current));
+  const handlePartChange = useCallback((partIds: number[]) => {
+    setLessonWindow((current) => (current ? { ...current, partIds } : current));
   }, []);
 
   const starterLesson = progress.lessons.find((lesson) => lesson.id === 0);
@@ -262,13 +262,13 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
       <LessonWindow
         bookId={activeBookId}
         lesson={progress.lessons.find((lesson) => lesson.id === lessonWindow?.lessonId) ?? null}
-        partId={lessonWindow?.partId ?? null}
+        partIds={lessonWindow?.partIds ?? null}
         isHidden={hasActiveActivity}
         onPartChange={handlePartChange}
         onClose={handleCloseLesson}
         onStartPractice={(lessonId, partId, activity) => {
-          const firstPartId = Array.isArray(partId) ? partId[0] ?? null : partId;
-          setLessonWindow((current) => (current ? { ...current, lessonId, partId: firstPartId } : { lessonId, partId: firstPartId }));
+          const partIds = Array.isArray(partId) ? partId : [partId];
+          setLessonWindow((current) => (current ? { ...current, lessonId, partIds } : { lessonId, partIds }));
           onStartPartPractice?.(lessonId, partId, activity);
         }}
         onOpenGrammarPart={(partId, onComplete) => onOpenGrammarPart?.(partId, null, onComplete)}

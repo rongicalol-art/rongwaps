@@ -21,7 +21,6 @@ interface AppOverlaysProps {
   grammarPageId: GrammarWindowProps['initialPageId'];
   onCloseGrammar: GrammarWindowProps['onClose'];
   onProceedToReading: GrammarWindowProps['onProceedToReading'];
-  onNavigateGrammarPart: GrammarWindowProps['onNavigatePart'];
 
   isReaderOpen: ReaderWindowProps['isOpen'];
   readerLoadError: boolean;
@@ -53,7 +52,6 @@ export function AppOverlays({
   grammarPageId,
   onCloseGrammar,
   onProceedToReading,
-  onNavigateGrammarPart,
   isReaderOpen,
   readerLoadError,
   onRetryReader,
@@ -100,7 +98,6 @@ export function AppOverlays({
         initialPageId={grammarPageId}
         onClose={onCloseGrammar}
         onProceedToReading={onProceedToReading}
-        onNavigatePart={onNavigateGrammarPart}
       />
 
       <DictionaryDetailOverlay />

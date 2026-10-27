@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  formatPartSelection,
   isCardInPartSelection,
   normalizePartSelection,
   reconcilePartSelectionsForBook,
@@ -26,6 +27,14 @@ test('vocabulary IDs preserve book, lesson, and part identity', () => {
 
 test('selecting every part remains an explicit array', () => {
   assert.deepEqual(normalizePartSelection([1, 2, 3], [1, 2, 3]), [1, 2, 3]);
+});
+
+test('part selection labels collapse a consecutive run', () => {
+  assert.equal(formatPartSelection([1, 2, 3]), 'Parts 1–3');
+  assert.equal(formatPartSelection([2, 1]), 'Parts 1–2');
+  assert.equal(formatPartSelection([1, 3]), 'Parts 1 + 3');
+  assert.equal(formatPartSelection([2]), 'Part 2');
+  assert.equal(formatPartSelection([]), '');
 });
 
 test('legacy all selection migrates to Part 1 only', () => {

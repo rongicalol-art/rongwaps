@@ -98,7 +98,6 @@ export default function AppShell() {
         grammarPageId={grammar.pageId ?? undefined}
         onCloseGrammar={grammar.onClose}
         onProceedToReading={grammar.onProceedToReading}
-        onNavigateGrammarPart={grammar.onOpenPart}
         isReaderOpen={reader.isOpen}
         readerLoadError={reader.loadError}
         onRetryReader={reader.onRetry}

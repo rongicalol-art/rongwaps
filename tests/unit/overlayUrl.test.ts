@@ -41,6 +41,11 @@ test('build then parse round-trips', () => {
   assert.deepEqual(parseOverlayParams(buildOverlayParams(state)), state);
 });
 
+test('a combined grammar session keeps every part id', () => {
+  const state = { readerIndex: null, grammarPartId: 'B1L01-P01,B1L01-P02', dictionaryWord: null, activity: null };
+  assert.deepEqual(parseOverlayParams(buildOverlayParams(state)), state);
+});
+
 test('overlay changes preserve a game invite and closing removes only overlay keys', () => {
   const empty = { readerIndex: null, grammarPartId: null, dictionaryWord: null, activity: null };
   const invite = '?room=ABC234';
