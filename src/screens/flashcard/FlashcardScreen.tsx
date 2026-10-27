@@ -18,6 +18,8 @@ import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
 import { useFlashcardKeyboardShortcuts } from './hooks/useFlashcardKeyboardShortcuts';
 import { useFlashcardFlow } from './hooks/useFlashcardFlow';
+import { groupRankedExamples } from '../../utils/vocabulary/courseExamples';
+import { playSentence } from '../../services/audio/sentenceAudio';
 
 interface FlashcardScreenProps {
   activeBookId: number;
@@ -190,7 +192,7 @@ export function FlashcardScreen({
     [cards.length, currentIndex, dealStarted, finishedPassSize, introActive, isDeckDone, isReviewPass, progressInfo],
   );
 
-  const { wrappedHandleNext, pauseFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
+  const { wrappedHandleNext, pauseFlow, toggleFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
     cards,
     currentCard,
     currentIndex,
@@ -217,7 +219,13 @@ export function FlashcardScreen({
     setIsFlipped((prev) => !prev);
   }, [autoPlayAudio, currentCard, isFlipped, setIsFlipped, triggerManualReveal]);
 
-  const { isLoading: isContentLoading } = useFlashcardExtras(currentCard);
+  const { extras, isLoading: isContentLoading } = useFlashcardExtras(currentCard);
+  const handlePlayExample = useCallback(() => {
+    const example = groupRankedExamples(extras.examples).flatMap(group => group.examples)[0];
+    if (!example) return;
+    pauseFlow();
+    void playSentence(example.chinese, example.audio, useAppStore.getState().characterPreference).catch(() => {});
+  }, [extras.examples, pauseFlow]);
   useEffect(() => {
     if (!isContentLoading) prefetchFlashcardExtras(cards, currentIndex);
   }, [isContentLoading, cards, currentIndex]);
@@ -260,6 +268,8 @@ export function FlashcardScreen({
     setIsFlipped,
     onManualRevealAudio: triggerManualReveal,
     onToggleHint: handleToggleHook,
+    onToggleFlow: toggleFlow,
+    onPlayExample: handlePlayExample,
   });
 
   if (isLoading && cards.length === 0) return null;

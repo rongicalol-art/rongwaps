@@ -18,6 +18,8 @@ export interface UseFlashcardKeyboardShortcutsOptions {
   setIsFlipped: (value: boolean | ((prev: boolean) => boolean)) => void;
   onManualRevealAudio: () => void;
   onToggleHint?: () => void;
+  onToggleFlow: () => void;
+  onPlayExample: () => void;
 }
 
 export function useFlashcardKeyboardShortcuts({
@@ -36,6 +38,8 @@ export function useFlashcardKeyboardShortcuts({
   setIsFlipped,
   onManualRevealAudio,
   onToggleHint,
+  onToggleFlow,
+  onPlayExample,
 }: UseFlashcardKeyboardShortcutsOptions) {
   const currentIndexRef = useRef(currentIndex);
   const cardsLengthRef = useRef(cardsLength);
@@ -57,13 +61,10 @@ export function useFlashcardKeyboardShortcuts({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (completedRef.current || introRef.current) return;
+      if (completedRef.current || introRef.current || e.defaultPrevented || e.isComposing || e.metaKey || e.ctrlKey || e.altKey) return;
       if (document.querySelector('[role="dialog"][aria-label^="Lesson "]')) return;
-      if (
-        document.activeElement instanceof HTMLInputElement ||
-        document.activeElement instanceof HTMLTextAreaElement
-      )
-        return;
+      const target = e.target instanceof HTMLElement ? e.target : document.activeElement;
+      if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]')) return;
       if (activeBreakdown) return;
       if (e.repeat && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
 
@@ -76,7 +77,11 @@ export function useFlashcardKeyboardShortcuts({
       const card = currentCardRef.current;
       const reviewDeck = isReviewDeckRef.current;
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key.toLowerCase() === 'f') {
+        if (card) { e.preventDefault(); onToggleFlow(); }
+      } else if (e.key.toLowerCase() === 'e') {
+        if (card) { e.preventDefault(); onPlayExample(); }
+      } else if (e.key === 'ArrowLeft') {
         if (idx > 0) triggerNav(-1);
       } else if (e.key === 'ArrowRight') {
         const canGoNext = (!reviewDeck || idx < maxIdx) && idx < cardsLengthRef.current;
@@ -111,6 +116,8 @@ export function useFlashcardKeyboardShortcuts({
     activeBreakdown,
     autoPlayAudio,
     onManualRevealAudio,
+    onToggleFlow,
+    onPlayExample,
     pauseFlow,
     setIsFlipped,
     triggerKeyboardRate,

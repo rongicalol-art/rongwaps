@@ -175,5 +175,5 @@ export function useFlashcardFlow({
     manualRevealAudioRef.current = true;
   }, []);
 
-  return { wrappedHandleNext, flowStatus, pauseFlow, triggerManualReveal, autoPlayAudio };
+  return { wrappedHandleNext, flowStatus, pauseFlow, toggleFlow, triggerManualReveal, autoPlayAudio };
 }

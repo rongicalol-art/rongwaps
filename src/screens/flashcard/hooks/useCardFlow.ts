@@ -27,6 +27,7 @@ export function useCardFlow({
 }: UseCardFlowOptions) {
   const [flowStatus, setFlowStatus] = useState<PracticeFlowStatus>('idle');
   const [flowStep, setFlowStep] = useState(0);
+  const flowRun = useRef(0);
   const flowFrontDelayMs = useAppStore((state) => state.flowFrontDelayMs);
   const flowBackDelayMs = useAppStore((state) => state.flowBackDelayMs);
   const pronunciationRate = useAppStore((state) => state.pronunciationRate);
@@ -47,10 +48,12 @@ export function useCardFlow({
 
   // Pauses the flow state only; the clip already ringing is left to finish.
   const pauseFlow = useCallback(() => {
+    flowRun.current++;
     setFlowStatus((status) => status === 'playing' ? 'paused' : status);
   }, []);
 
   const stopFlow = useCallback(() => {
+    flowRun.current++;
     audioService.stop();
     setFlowStatus('idle');
     setIsFlippedRef.current(false);
@@ -58,6 +61,7 @@ export function useCardFlow({
 
   const toggleFlow = useCallback(() => {
     if (flowStatus === 'playing') {
+      flowRun.current++;
       audioService.stop();
       setFlowStatus('paused');
       return;
@@ -76,51 +80,53 @@ export function useCardFlow({
     if (flowStatus !== 'playing' || !currentCard) return;
 
     let cancelled = false;
+    const run = ++flowRun.current;
+    const isCancelled = () => cancelled || flowRun.current !== run;
     const wait = (duration: number) => new Promise<void>((resolve) => {
       window.setTimeout(resolve, duration);
     });
     const runFlowStep = async () => {
       setIsFlippedRef.current(false);
       await wait(220);
-      if (cancelled) return;
+      if (isCancelled()) return;
 
       setIsFlippedRef.current(true);
       await wait(360);
-      if (cancelled) return;
+      if (isCancelled()) return;
 
       await Promise.race([
         audioService.playCard(currentCard, pronunciationRate),
         wait(2800),
       ]);
+      if (isCancelled()) return;
       audioService.stop();
-      if (cancelled) return;
       await wait(flowFrontDelayMs);
-      if (cancelled) return;
+      if (isCancelled()) return;
 
       if (speakDefinition && currentCard.back) {
         await audioService.speakText(currentCard.back, 'en-US', Math.min(pronunciationRate, 1.1));
       }
-      if (cancelled) return;
+      if (isCancelled()) return;
 
       // The card's best example with a recording (book voice first; never the synthetic voice).
       if (flowExamples) {
         const extras = await fetchPackedFlashcardExtras(currentCard).catch(() => null);
         const example = extras?.examples.filter((item) => item.audio).sort((a, b) => a.rank - b.rank || Number(a.audio?.voice !== 'book') - Number(b.audio?.voice !== 'book'))[0];
-        if (cancelled) return;
+        if (isCancelled()) return;
         if (example) {
           await wait(flowFrontDelayMs);
-          if (cancelled) return;
+          if (isCancelled()) return;
           await playFlowSentence(example.chinese, example.audio, example.english, characterPreference, {
             speakTranslation: flowSpeakTranslation,
             repeatPause: flowRepeatPause,
             rate: pronunciationRate,
-            isCancelled: () => cancelled,
+            isCancelled,
           });
-          if (cancelled) return;
+          if (isCancelled()) return;
         }
       }
       await wait(flowBackDelayMs);
-      if (cancelled) return;
+      if (isCancelled()) return;
 
       if (currentIndex < totalCount - 1) {
         onAdvanceRef.current();
@@ -130,7 +136,7 @@ export function useCardFlow({
         // Smoothly flip card back to front and transition to next part or loop back to card 0.
         setIsFlippedRef.current(false);
         await wait(320);
-        if (cancelled) return;
+        if (isCancelled()) return;
         if (onFinishSetRef.current) {
           onFinishSetRef.current();
         } else {
