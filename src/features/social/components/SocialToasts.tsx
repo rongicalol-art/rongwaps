@@ -6,6 +6,7 @@ import { CHEER_PHRASES } from '../../../../shared/lobby';
 import { joinRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
 import { describeSelection } from '../socialText';
+import { openMention } from '../lobbyController';
 
 const INVITE_MS = 20_000;
 const CHEER_MS = 2600;
@@ -95,4 +96,20 @@ export function CheerToast() {
       )}
     </AnimatePresence>
   );
+}
+
+export function MentionToast() {
+  const notice = useAppStore(state => state.socialMentionToast);
+  const panelOpen = useAppStore(state => state.socialPanel !== null);
+  const setSocial = useAppStore(state => state.setSocial);
+  useEffect(() => {
+    if (!notice) return;
+    const timer = setTimeout(() => setSocial({ socialMentionToast: null }), 6000);
+    return () => clearTimeout(timer);
+  }, [notice, setSocial]);
+  if (!notice) return null;
+  return <div role="status"><button type="button" onClick={() => openMention(notice)} className={`${place(panelOpen)} flex items-center gap-3 rounded-control border-2 border-ui-border bg-ui-surface p-3 text-left outline-none focus-ring`}>
+    <Avatar name={notice.message.n} color={notice.message.c} size="sm" src={notice.message.i} />
+    <span className="min-w-0"><span className="block font-black text-ui-ink-strong">{notice.message.n} mentioned you</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{notice.room ? 'Party' : notice.channel === 0 ? 'Global' : `Lesson ${notice.channel % 100}`} · {notice.message.t}</span></span>
+  </button></div>;
 }

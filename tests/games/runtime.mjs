@@ -40,6 +40,11 @@ export class GameRoom extends BaseRoom {
 export class Lobby extends BaseLobby {
   runAlarm() { return this.alarm(); }
   async failListings(enabled) { await this.ctx.storage.put('fixture-listing-outage', enabled); }
+  async failMentions(enabled) { await this.ctx.storage.put('fixture-mention-outage', enabled); }
+  async partyMention(uid, notice) {
+    if (await this.ctx.storage.get('fixture-mention-outage')) throw new Error('Synthetic mention outage');
+    return super.partyMention(uid, notice);
+  }
   async upsertRoom(summary, host) {
     if (await this.ctx.storage.get('fixture-listing-outage')) throw new Error('Synthetic listing outage');
     return super.upsertRoom(summary, host);
@@ -59,6 +64,8 @@ export default { async fetch(request, env, ctx) {
     if (action === 'age') await stub.ageConnections();
     else if (action === 'fail') await stub.failListings(true);
     else if (action === 'recover') await stub.failListings(false);
+    else if (action === 'mentionfail') await stub.failMentions(true);
+    else if (action === 'mentionrecover') await stub.failMentions(false);
     else await stub.runAlarm();
     return Response.json({ok:true});
   }
@@ -117,7 +124,7 @@ try {
 
   // Lobby: presence counts, lesson people, chat history and live messages.
   const alice = await open('/lobby/socket', 'lobby', (await post('/lobby', 'alice')).ticket);
-  const bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
+  let bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
   await until(() => last(alice, 'me') && last(bob, 'me'));
   send(alice, { t: 'here', l: 101, a: 'cards', show: true });
   send(bob, { t: 'here', l: 101, a: 'lesson', show: true });
@@ -133,6 +140,31 @@ try {
   await until(() => last(alice, 'cheer')?.p === 1);
   send(bob, { t: 'here', l: 101, a: 'lesson', show: false });
   await until(() => last(alice, 'counts')?.v['101']?.n === 1);
+
+  // Hidden users cannot be pinged by forged IDs until they participate in this channel.
+  await delay(1100);
+  send(alice, { t: 'say', l: 101, text: '@bob forged', mentions: ['bob', 'alice', 'nobody'] });
+  await until(() => last(alice, 'msg')?.m.t === '@bob forged');
+  assert.ok(!last(bob, 'mention'));
+  send(bob, { t: 'say', l: 101, text: 'Here' });
+  await until(() => last(alice, 'msg')?.m.t === 'Here');
+  await delay(1100);
+  send(alice, { t: 'say', l: 101, text: '@bob hello', mentions: ['bob', 'bob', 'alice', 'nobody'] });
+  await until(() => last(bob, 'mention')?.v.message.t === '@bob hello');
+  const notice = last(bob, 'mention').v;
+  assert.equal(bob.frames.filter(frame => frame.t === 'mention' && frame.v.key === notice.key).length, 1);
+  send(bob, { t: 'mention-read', key: notice.key });
+  await delay(100);
+  const mentionSql = await mf.unsafeGetDurableObjectStorage('games', 'Lobby', { name: 'main' });
+  assert.equal((await mentionSql.exec('SELECT read FROM mentions WHERE uid=? AND key=?', 'bob', notice.key))[0].read, 1);
+  assert.equal((await mentionSql.exec('SELECT count(*) AS n FROM mentions WHERE uid=?', 'alice'))[0].n, 0);
+  await mentionSql.exec('DELETE FROM chat WHERE id=?', notice.message.id);
+  bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
+  await until(() => last(bob, 'mentions'));
+  assert.ok(last(bob, 'mentions').v.some(item => item.key === notice.key && item.read && item.message.t === '@bob hello'));
+  assert.ok(!last(bob, 'mention'), 'replay does not produce another live alert');
+  send(bob, { t: 'here', l: 101, a: 'lesson', show: false });
+  send(bob, { t: 'sub', online: false, chat: 101 });
 
   // Global chat is isolated from lesson subscribers and returns bounded history on opening.
   send(bob, { t: 'sub', online: false, chat: 0 });
@@ -167,8 +199,19 @@ try {
   // Party chat stays in the authenticated room, keeps its rate state across hibernation, and caps history.
   await until(() => host.frames.some(frame => frame.type === 'chat-history'));
   const lobbyFrames = alice.frames.length;
-  send(host, { type: 'chat', text: 'Private party hello' });
-  await until(() => guest.frames.some(frame => frame.type === 'chat-message' && frame.message.t === 'Private party hello'));
+  await control('/__test/lobby/main/mentionfail');
+  send(host, { type: 'chat', text: '@bob Private party hello', mentions: ['bob', 'bob', 'alice', 'nobody'] });
+  await until(() => guest.frames.some(frame => frame.type === 'chat-message' && frame.message.t === '@bob Private party hello'));
+  const partyOutbox = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: created.code });
+  assert.equal((await partyOutbox.exec('SELECT count(*) AS n FROM mention_outbox'))[0].n, 1);
+  await control('/__test/lobby/main/mentionrecover');
+  await control(`/__test/room/${created.code}/alarm`);
+  await until(() => last(bob, 'mention')?.v.room === created.code);
+  assert.equal(last(bob, 'mention').v.message.t, '@bob Private party hello');
+  const partyNotice = last(bob, 'mention').v;
+  send(bob, { t: 'mention-open', key: partyNotice.key });
+  await until(() => last(bob, 'mention-open')?.key === partyNotice.key);
+  assert.equal(last(bob, 'mention-open').v.message.t, '@bob Private party hello');
   assert.ok(!alice.frames.slice(lobbyFrames).some(frame => frame.type === 'chat-message'));
   await mf.unsafeEvictDurableObject('games', 'GameRoom', { name: created.code, webSockets: 'hibernate' });
   send(host, { type: 'chat', text: 'Private party hello' });
@@ -270,6 +313,14 @@ try {
   await delay(1200);
   const emptyRoom = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: created.code });
   assert.equal((await emptyRoom.exec('SELECT * FROM state')).length, 0, 'empty rooms release stored data');
+  bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
+  await until(() => last(bob, 'mentions'));
+  assert.equal(last(bob, 'mentions').v.find(item => item.room === created.code)?.message.t, '', 'closed rooms redact private previews on replay');
+  send(bob, { t: 'mention-open', key: partyNotice.key });
+  await until(() => last(bob, 'mention-open')?.key === partyNotice.key);
+  assert.equal(last(bob, 'mention-open').v, null, 'closed rooms cannot reopen a private snapshot');
+  send(bob, { t: 'sub', online: false, chat: 101 });
+  await until(() => last(bob, 'history')?.l === 101);
 
   // A room whose creator never upgraded the socket must expire its reserved seat after the grace period.
   const abandoned = await post('/rooms', 'abandoned', { selection: { lessons: { 1: [1] }, types: [] }, open: true });

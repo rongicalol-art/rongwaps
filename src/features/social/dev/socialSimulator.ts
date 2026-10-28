@@ -82,6 +82,7 @@ function post(from: Person, lesson: number, text: string, room?: RaceRoomSummary
   const list = [...(chats.get(lesson) ?? []), message].slice(-50);
   chats.set(lesson, list);
   if (sub.chat === lesson) deliver({ t: 'msg', m: message });
+  return message;
 }
 
 /** Gives a lesson some earlier conversation the first time you open it. */
@@ -144,6 +145,7 @@ function handle(message: LobbyClientMessage) {
     later(() => post(someoneIn(message.l), message.l, pick(REPLIES)), between(1500, 3500));
     return;
   }
+  if (message.t === 'mention-read') { deliver({ t: 'mention-read', key: message.key }); return; }
   if (message.t === 'cheer') {
     const target = users.find((user) => message.to.includes(user.u));
     if (target) later(() => deliver({ t: 'cheer', from: target, p: pick([0, 1]) }), between(1500, 3000));
@@ -306,5 +308,12 @@ export const simulate = {
     deliver({ t: 'invite', from: host, room });
   },
   cheer() { deliver({ t: 'cheer', from: me.l !== null && othersIn(me.l).length ? pick(othersIn(me.l)) : pick(users), p: pick([0, 1, 3]) }); },
+  mention() {
+    const lesson = sub.chat ?? 101;
+    later(() => {
+      const message = post(someoneIn(lesson), lesson, '@You 加油！');
+      deliver({ t: 'mention', v: { key: `sim:${message.id}`, channel: lesson, message, read: false } });
+    }, 2000);
+  },
   chatBurst() { const lesson = sub.chat ?? 101; for (let index = 0; index < 8; index++) later(() => post(someoneIn(lesson), lesson, pick(LINES)), index * 350); },
 };

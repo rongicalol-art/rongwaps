@@ -1,6 +1,6 @@
 import { DurableObject } from 'cloudflare:workers';
 import { advanceRace, applyRaceAction, DISCONNECT_GRACE_MS, enterRace, parseRaceAction, socialColor, summarizeRoom, type RaceRoomState, type RaceSnapshot } from '../shared/quizRace';
-import { CHAT_KEEP, CHAT_TTL_MS, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatText, nextChatRate, type ChatMessage, type ChatRate, type PartyChatServerMessage } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, GLOBAL_CHAT, SOCIAL_FRAME_BYTES, chatText, nextChatRate, mentionIds, type ChatMessage, type ChatRate, type PartyChatServerMessage, type MentionNotice } from '../shared/lobby';
 
 type Attachment = { userId: string; activeAt: number; tokens: number; updatedAt: number; authUntil: number };
 const STALE_MS = 90_000;
@@ -18,6 +18,7 @@ export class GameRoom extends DurableObject<Env> {
   private initialize() {
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS state (id INTEGER PRIMARY KEY, data TEXT NOT NULL)');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_chat (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT NOT NULL, ts INTEGER NOT NULL)');
+    this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS mention_outbox (id INTEGER PRIMARY KEY AUTOINCREMENT, uid TEXT NOT NULL, data TEXT NOT NULL, ts INTEGER NOT NULL)');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL)');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS room_reports (id INTEGER PRIMARY KEY AUTOINCREMENT, msg INTEGER NOT NULL, reporter TEXT NOT NULL, data TEXT NOT NULL, UNIQUE(msg,reporter))');
     this.ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS tickets (ticket TEXT PRIMARY KEY, user_id TEXT NOT NULL, expires INTEGER NOT NULL, auth_until INTEGER NOT NULL DEFAULT 0)');
@@ -111,14 +112,40 @@ export class GameRoom extends DurableObject<Env> {
     if (!rate) throw new Error('Please wait before sending another message.');
     this.ctx.storage.sql.exec('INSERT OR REPLACE INTO room_chat_rate VALUES (?,?)', userId, JSON.stringify(rate));
     const line: ChatMessage = { id: 0, l: GLOBAL_CHAT, u: userId, n: player.name, c: socialColor(player.color), t: text, ts: now, ...(player.image ? { i: player.image } : {}) };
-    line.id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO room_chat (data,ts) VALUES (?,?) RETURNING id', JSON.stringify(line), now).one().id;
-    this.ctx.storage.sql.exec('DELETE FROM room_chat WHERE ts<? OR id NOT IN (SELECT id FROM room_chat ORDER BY id DESC LIMIT ?)', now - CHAT_TTL_MS, CHAT_KEEP);
-    const frame = JSON.stringify({ type: 'chat-message', code: room.code, message: line } satisfies PartyChatServerMessage);
     const members = new Set(room.players.filter(entry => !entry.left).map(entry => entry.id));
+    const recipients = mentionIds(data.mentions).filter(id => id !== userId && members.has(id));
+    if (recipients.length && this.ctx.storage.sql.exec<{ n: number }>('SELECT count(*) AS n FROM mention_outbox').one().n >= 2000) throw new Error('Mentions are temporarily unavailable.');
+    this.ctx.storage.transactionSync(() => {
+      line.id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO room_chat (data,ts) VALUES (?,?) RETURNING id', JSON.stringify(line), now).one().id;
+      for (const uid of recipients) {
+        const notice: MentionNotice = { key: `p:${room.code}:${line.id}:${now}`, room: room.code, channel: GLOBAL_CHAT, message: line, read: false };
+        this.ctx.storage.sql.exec('INSERT INTO mention_outbox(uid,data,ts) VALUES (?,?,?)', uid, JSON.stringify(notice), now);
+      }
+      this.ctx.storage.sql.exec('DELETE FROM room_chat WHERE ts<? OR id NOT IN (SELECT id FROM room_chat ORDER BY id DESC LIMIT ?)', now - CHAT_TTL_MS, CHAT_KEEP);
+    });
+    if (recipients.length) this.ctx.waitUntil(this.publishMentions(room));
+    const frame = JSON.stringify({ type: 'chat-message', code: room.code, message: line } satisfies PartyChatServerMessage);
     for (const target of this.sockets()) if (members.has((target.deserializeAttachment() as Attachment).userId)) {
       try { target.send(frame); } catch { target.close(1011, 'Reconnect to restore the room.'); }
     }
     return true;
+  }
+
+  canSeeMention(userId: string) {
+    const room = this.read();
+    const now = Date.now();
+    return !!room && now < room.expiresAt && room.players.some(player => player.id === userId && !player.left && (player.disconnectedAt == null || now - player.disconnectedAt < DISCONNECT_GRACE_MS));
+  }
+
+  private async publishMentions(room: RaceRoomState) {
+    const rows = this.ctx.storage.sql.exec<{ id: number; uid: string; data: string }>('SELECT id,uid,data FROM mention_outbox ORDER BY id LIMIT 200').toArray();
+    for (const row of rows) {
+      try {
+        await this.env.LOBBY.getByName('main').partyMention(row.uid, JSON.parse(row.data) as MentionNotice);
+        this.ctx.storage.sql.exec('DELETE FROM mention_outbox WHERE id=?', row.id);
+      } catch { break; }
+    }
+    await this.schedule(room);
   }
 
   private broadcast(room: RaceRoomState) {
@@ -184,7 +211,7 @@ export class GameRoom extends DurableObject<Env> {
 
   private async schedule(room: RaceRoomState) {
     const times = [room.expiresAt];
-    if (this.record<number>(5) !== null) times.push(Date.now() + LISTING_RETRY_MS);
+    if (this.record<number>(5) !== null || this.ctx.storage.sql.exec('SELECT 1 FROM mention_outbox LIMIT 1').toArray().length) times.push(Date.now() + LISTING_RETRY_MS);
     if (room.phase === 'race') times.push(room.deadline);
     if (room.phase === 'review' && room.reviewDeadline) times.push(room.reviewDeadline);
     if (room.phase === 'preparing' && room.prepareDeadline) times.push(room.prepareDeadline);
@@ -278,7 +305,12 @@ export class GameRoom extends DurableObject<Env> {
     att.tokens -= 1; socket.serializeAttachment(att);
     try {
       const data: unknown = JSON.parse(message);
-      if (data && typeof data === 'object' && this.chat(room, att.userId, data as Record<string, unknown>, now)) return;
+      if (data && typeof data === 'object' && ['chat', 'chat-report'].includes(String((data as Record<string, unknown>).type))) {
+        const before = JSON.stringify(room);
+        this.sweep(room, now);
+        if (JSON.stringify(room) !== before) this.commit(room);
+        if (this.chat(room, att.userId, data as Record<string, unknown>, now)) return;
+      }
       const action = parseRaceAction(data);
       if (action.type === 'leave') { await this.exit(att.userId); return; }
       const before = JSON.stringify(room);
@@ -315,6 +347,7 @@ export class GameRoom extends DurableObject<Env> {
     this.ctx.storage.sql.exec('DELETE FROM tickets WHERE expires <= ?', Date.now());
     const before = JSON.stringify(room);
     this.sweep(room, Date.now());
+    await this.publishMentions(room);
     if (Date.now() >= room.expiresAt) {
       room.open = false;
       room.hostId = '';
@@ -326,6 +359,7 @@ export class GameRoom extends DurableObject<Env> {
       if (!await publication && Date.now() - room.expiresAt < LISTING_RETENTION_MS) {
         await this.ctx.storage.setAlarm(Date.now() + LISTING_RETRY_MS); return;
       }
+      if (this.ctx.storage.sql.exec('SELECT 1 FROM mention_outbox LIMIT 1').toArray().length && Date.now() - room.expiresAt < LISTING_RETENTION_MS) { await this.ctx.storage.setAlarm(Date.now() + LISTING_RETRY_MS); return; }
       await this.ctx.storage.deleteAll(); this.initialize(); return;
     }
     if (JSON.stringify(room) !== before) this.commit(room);

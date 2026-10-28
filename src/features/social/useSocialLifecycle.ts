@@ -46,8 +46,8 @@ export function useSocialLifecycle() {
     const lesson = fromActivity !== undefined ? lessonKey(state.racePlaying ? 1 : book, fromActivity) : state.socialViewingLesson;
     const a: Activity | null = state.racePlaying ? 'race' : activity ? ACTIVITY[activity] ?? 'lesson' : lesson !== null ? 'lesson' : null;
     const panel = state.socialPanel;
-    const chat = panel?.kind === 'people' && panel.tab === 'chat' && (panel.chatScope === 'global' || lesson === null) ? GLOBAL_CHAT : lesson;
-    return { lesson, a, show: state.showOnline, online: panel?.kind !== 'partyChat' && panel?.tab === 'online', chat };
+    const chat = panel?.kind === 'people' && panel.tab === 'chat' ? panel.chatScope === 'global' ? GLOBAL_CHAT : panel.chatLesson ?? lesson ?? GLOBAL_CHAT : lesson;
+    return { lesson, a, show: state.showOnline, online: panel?.kind !== 'partyChat' && panel?.kind !== 'partyMention' && (panel?.tab === 'online' || panel?.tab === 'chat'), chat };
   }));
   useEffect(() => {
     lobby.here(presence.lesson, presence.a, presence.show, identity.image);

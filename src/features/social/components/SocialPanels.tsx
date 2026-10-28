@@ -8,6 +8,7 @@ import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceContr
 import { useSocialIdentity } from '../useSocialLifecycle';
 import { activityLabel, defaultSelection, describeSelection } from '../socialText';
 import { ChatThread } from './ChatThread';
+import { openMention } from '../lobbyController';
 import { EmptyNote, PanelTabs, PanelTitle, PersonRow, lessonHeading } from './SocialBits';
 
 /** The lesson the learner is in, for presence lists and a new room's default words. */
@@ -61,21 +62,24 @@ function useClassmates(people: Person[], online: Person[], lesson: number | null
   }, [classmates, lesson]);
 }
 
-const close = () => useAppStore.getState().setSocial({ socialPanel: null });
+const close = () => useAppStore.getState().setSocial({ socialPanel: null, socialMentionTarget: null });
 const setPanel = (socialPanel: SocialPanel) => useAppStore.getState().setSocial({ socialPanel });
 
 /** Classmates drawer: who is online (current lesson first, then other lessons) and the chat thread. */
 export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'people' }> }) {
-  const lesson = useCurrentLesson();
+  const currentLesson = useCurrentLesson();
+  const lesson = panel.chatLesson ?? currentLesson;
   const people = useOthers(useAppStore(state => state.socialPeople));
   const online = useOthers(useAppStore(state => state.socialOnline));
   const onlineTotal = useOnlineTotal();
-  const unread = useAppStore(state => state.socialUnread);
+  const unread = useAppStore(state => state.socialUnread || (!state.socialMuted && state.socialMentions.some(item => !item.read)));
   const identity = useSocialIdentity();
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
   const rooms = useAppStore(state => state.socialRooms);
   const [profile, setProfile] = useState<Person | null>(null);
+  const [mentionsOpen, setMentionsOpen] = useState(false);
+  const mentions = useAppStore(state => state.socialMentions);
   const { classmates, here, others } = useClassmates(people, online, lesson);
   const selected = profile ? classmates.find(person => person.u === profile.u) ?? profile : null;
   const scope = lesson === null ? 'global' : panel.chatScope ?? 'lesson';
@@ -102,14 +106,17 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           ]} />
       </div>
       {panel.tab === 'chat' ? <>
+        <button type="button" onClick={() => setMentionsOpen(!mentionsOpen)} className="self-end rounded-control px-2 py-1 text-sm font-black text-ui-muted-strong outline-none focus-ring-inline">Mentions{mentions.some(item => !item.read) ? ' •' : ''}</button>
+        {mentionsOpen ? <div className="min-h-0 flex-1 overflow-y-auto custom-scrollbar">{mentions.length === 0 ? <EmptyNote>No mentions yet.</EmptyNote> : mentions.map(item => <button key={item.key} type="button" onClick={() => { setMentionsOpen(false); openMention(item); }} className="block w-full border-b-2 border-ui-divider px-2 py-3 text-left outline-none focus-ring-inline"><span className="block font-black text-ui-ink-strong">{item.message.n} mentioned you{item.read ? '' : ' •'}</span><span className="block truncate text-sm font-bold text-ui-muted-strong">{item.room ? 'Party' : item.channel === 0 ? 'Global' : lessonHeading(item.channel).eyebrow} · {item.message.t || 'Chat unavailable'}</span></button>)}</div> : <>
         {lesson !== null && <SegmentedControl<'global' | 'lesson'>
           ariaLabel="Chat room"
           value={scope}
-          onChange={(chatScope) => setPanel({ ...panel, chatScope })}
+          onChange={(chatScope) => { useAppStore.getState().setSocial({ socialMentionTarget: null }); setPanel({ ...panel, chatScope, chatLesson: undefined }); }}
           options={[{ value: 'global', label: 'Global' }, { value: 'lesson', label: lessonHeading(lesson).eyebrow ?? 'Lesson' }]}
           className="mb-3 shrink-0"
         />}
-        <ChatThread key={scope} lesson={scope === 'global' ? GLOBAL_CHAT : lesson ?? GLOBAL_CHAT} />
+        <ChatThread key={`${scope}:${lesson}`} lesson={scope === 'global' ? GLOBAL_CHAT : lesson ?? GLOBAL_CHAT} />
+        </>}
       </> : <>
         <div className="-mx-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 custom-scrollbar">
           {panel.tab === 'party' ? rooms.length === 0 ? <EmptyNote>No open rooms right now.</EmptyNote> : rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">

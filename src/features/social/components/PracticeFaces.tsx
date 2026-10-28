@@ -17,7 +17,7 @@ const EMPTY: ChatMessage[] = [];
 export function PracticeFaces() {
   const people = useAppStore((state) => state.socialPeople);
   const me = useAppStore((state) => state.socialMe);
-  const unread = useAppStore((state) => state.socialUnread);
+  const unread = useAppStore((state) => state.socialUnread || (!state.socialMuted && state.socialMentions.some(item => !item.read)));
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
   const race = useAppStore((state) => state.race);
   const reduce = useReducedMotion();

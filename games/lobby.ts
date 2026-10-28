@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 
 type Att = {
@@ -26,6 +26,8 @@ export class Lobby extends DurableObject<Env> {
     sql.exec('CREATE TABLE IF NOT EXISTS chat (id INTEGER PRIMARY KEY AUTOINCREMENT, lesson INTEGER NOT NULL, uid TEXT NOT NULL, name TEXT NOT NULL, color TEXT NOT NULL, text TEXT NOT NULL, room TEXT, ts INTEGER NOT NULL)');
     sql.exec('CREATE INDEX IF NOT EXISTS chat_lesson ON chat (lesson, id)');
     sql.exec('CREATE TABLE IF NOT EXISTS chat_rate (uid TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
+    sql.exec('CREATE TABLE IF NOT EXISTS mentions (uid TEXT NOT NULL, key TEXT NOT NULL, data TEXT NOT NULL, ts INTEGER NOT NULL, read INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(uid,key))');
+    sql.exec('CREATE INDEX IF NOT EXISTS mentions_uid ON mentions(uid,ts)');
     sql.exec('CREATE TABLE IF NOT EXISTS rooms (code TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL)');
     sql.exec('CREATE TABLE IF NOT EXISTS reports (id INTEGER PRIMARY KEY AUTOINCREMENT, msg INTEGER NOT NULL, uid TEXT NOT NULL, text TEXT NOT NULL, reporter TEXT NOT NULL, ts INTEGER NOT NULL)');
     ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair('ping', 'pong'));
@@ -81,6 +83,7 @@ export class Lobby extends DurableObject<Env> {
     const att: Att = { u: entry.uid, n: entry.name, c: socialColor(entry.color), show: false, l: null, a: null, on: false, ch: null, cheer: 0, inv: [], activeAt: Date.now(), updatedAt: Date.now(), tokens: 30, authUntil: entry.auth_until };
     server.serializeAttachment(att);
     this.send(server, { t: 'me', u: att.u });
+    this.ctx.waitUntil(this.inbox(att.u).then(v => { if (server.readyState === 1) this.send(server, { t: 'mentions', v }); }).catch(() => {}));
     await this.schedule();
     return new Response(null, { status: 101, webSocket: client, headers: { 'Sec-WebSocket-Protocol': 'lobby' } });
   }
@@ -118,7 +121,9 @@ export class Lobby extends DurableObject<Env> {
       const rate = nextChatRate(saved ? JSON.parse(saved.data) as ChatRate : null, message.text, now);
       if (!rate) { this.send(socket, { t: 'error', message: 'Please wait before sending another message.' }); return; }
       this.ctx.storage.sql.exec('INSERT OR REPLACE INTO chat_rate VALUES (?,?,?)', att.u, JSON.stringify(rate), now);
-      this.post(att, message.l, message.text, null);
+      const eligible = new Set(this.attachments().filter(person => person.show && (message.l === 0 || person.l === message.l)).map(person => person.u));
+      for (const row of this.ctx.storage.sql.exec<{ uid: string }>('SELECT DISTINCT uid FROM chat WHERE lesson=? AND ts>=?', message.l, now - CHAT_TTL_MS)) eligible.add(row.uid);
+      this.post(att, message.l, message.text, null, (message.mentions ?? []).filter(id => id !== att.u && eligible.has(id)));
     } else if (message.t === 'cheer') {
       if (now - att.cheer < 3000) return;
       att.cheer = now; socket.serializeAttachment(att);
@@ -137,6 +142,15 @@ export class Lobby extends DurableObject<Env> {
       let delivered = 0;
       for (const target of this.sockets()) if (to.has((target.deserializeAttachment() as Att).u) && target !== socket) { this.send(target, frame); delivered++; }
       if (!delivered) this.send(socket, { t: 'error', message: 'Those classmates are offline. Share your room link instead.' });
+    } else if (message.t === 'mention-open') {
+      const row = this.ctx.storage.sql.exec<{ data: string; read: number }>('SELECT data,read FROM mentions WHERE uid=? AND key=? AND ts>=?', att.u, message.key, now - CHAT_TTL_MS).toArray()[0];
+      const notice = row ? { ...JSON.parse(row.data) as MentionNotice, read: !!row.read } : null;
+      let allowed = false;
+      try { allowed = !!notice?.room && await this.env.ROOMS.getByName(notice.room).canSeeMention(att.u); } catch { /* No private preview on failure. */ }
+      this.send(socket, { t: 'mention-open', key: message.key, v: allowed ? notice : null });
+    } else if (message.t === 'mention-read') {
+      this.ctx.storage.sql.exec('UPDATE mentions SET read=1 WHERE uid=? AND key=?', att.u, message.key);
+      this.send(socket, { t: 'mention-read', key: message.key });
     } else if (message.t === 'report') {
       const row = this.ctx.storage.sql.exec<{ uid: string; text: string }>('SELECT uid,text FROM chat WHERE id=? AND lesson=?', message.id, att.ch ?? -1).toArray()[0];
       if (!row) return;
@@ -147,13 +161,48 @@ export class Lobby extends DurableObject<Env> {
     }
   }
 
-  private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null) {
+  private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null, recipients: string[] = []) {
     const now = Date.now();
-    const id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO chat (lesson,uid,name,color,text,room,ts) VALUES (?,?,?,?,?,?,?) RETURNING id', lesson, att.u, att.n, att.c, text, room, now).one().id;
-    // IDs are global, so id-50 would incorrectly delete one lesson's history when another lesson is busy.
-    this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id NOT IN (SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT ?))', lesson, now - CHAT_TTL_MS, lesson, CHAT_KEEP);
-    const frame = JSON.stringify({ t: 'msg', m: this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now }, att.i) } satisfies LobbyServerMessage);
+    const { line, notices } = this.ctx.storage.transactionSync(() => {
+      const id = this.ctx.storage.sql.exec<{ id: number }>('INSERT INTO chat (lesson,uid,name,color,text,room,ts) VALUES (?,?,?,?,?,?,?) RETURNING id', lesson, att.u, att.n, att.c, text, room, now).one().id;
+      // IDs are global, so pruning is scoped to one channel.
+      this.ctx.storage.sql.exec('DELETE FROM chat WHERE lesson=? AND (ts<? OR id NOT IN (SELECT id FROM chat WHERE lesson=? ORDER BY id DESC LIMIT ?))', lesson, now - CHAT_TTL_MS, lesson, CHAT_KEEP);
+      const line = this.message({ id, lesson, uid: att.u, name: att.n, color: att.c, text, room, ts: now }, att.i);
+      const notices = recipients.map(uid => ({ uid, notice: { key: `l:${id}`, channel: lesson, message: line, read: false } }));
+      for (const { uid, notice } of notices) this.saveMention(uid, notice);
+      return { line, notices };
+    });
+    for (const { uid, notice } of notices) this.deliverMention(uid, notice);
+    const frame = JSON.stringify({ t: 'msg', m: line } satisfies LobbyServerMessage);
     for (const socket of this.sockets()) if ((socket.deserializeAttachment() as Att).ch === lesson) this.send(socket, frame);
+  }
+
+  private async inbox(uid: string): Promise<MentionNotice[]> {
+    const notices = this.ctx.storage.sql.exec<{ data: string; read: number }>('SELECT data,read FROM mentions WHERE uid=? AND ts>=? ORDER BY ts DESC LIMIT 30', uid, Date.now() - CHAT_TTL_MS).toArray().map(row => ({ ...JSON.parse(row.data) as MentionNotice, read: !!row.read }));
+    const access = new Map<string, Promise<boolean>>();
+    for (const notice of notices) if (notice.room && !access.has(notice.room)) {
+      access.set(notice.room, this.env.ROOMS.getByName(notice.room).canSeeMention(uid).catch(() => false));
+    }
+    return Promise.all(notices.map(async notice => {
+      if (!notice.room || await access.get(notice.room)) return notice;
+      return { ...notice, message: { ...notice.message, t: '' } };
+    }));
+  }
+  private saveMention(uid: string, notice: MentionNotice) {
+    const inserted = this.ctx.storage.sql.exec('INSERT OR IGNORE INTO mentions(uid,key,data,ts) VALUES (?,?,?,?) RETURNING key', uid, notice.key, JSON.stringify(notice), notice.message.ts).toArray().length;
+    this.ctx.storage.sql.exec('DELETE FROM mentions WHERE uid=? AND key NOT IN (SELECT key FROM mentions WHERE uid=? ORDER BY ts DESC LIMIT 30)', uid, uid);
+    return !!inserted;
+  }
+
+  private deliverMention(uid: string, notice: MentionNotice) {
+    for (const socket of this.sockets()) if ((socket.deserializeAttachment() as Att).u === uid) this.send(socket, { t: 'mention', v: notice });
+  }
+  async partyMention(uid: string, notice: MentionNotice) {
+    let allowed: boolean;
+    try { allowed = !!notice.room && await this.env.ROOMS.getByName(notice.room).canSeeMention(uid); } catch { throw new Error('Could not verify room membership.'); }
+    const safe = allowed ? notice : { ...notice, message: { ...notice.message, t: '' } };
+    if (this.ctx.storage.transactionSync(() => this.saveMention(uid, safe))) this.deliverMention(uid, safe);
+    await this.schedule();
   }
 
   private message(row: ChatRow, image?: string): ChatMessage {
@@ -223,9 +272,10 @@ export class Lobby extends DurableObject<Env> {
     this.ctx.storage.sql.exec('DELETE FROM rooms WHERE updated<?', now - ROOM_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM chat WHERE ts<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM chat_rate WHERE updated<?', now - CHAT_TTL_MS);
+    this.ctx.storage.sql.exec('DELETE FROM mentions WHERE ts<?', now - CHAT_TTL_MS);
     this.ctx.storage.sql.exec('DELETE FROM reports WHERE ts<? OR id NOT IN (SELECT id FROM reports ORDER BY id DESC LIMIT 1000)', now - 30 * CHAT_TTL_MS);
     this.flush();
-    const hasData = this.ctx.storage.sql.exec('SELECT 1 FROM chat UNION ALL SELECT 1 FROM rooms UNION ALL SELECT 1 FROM reports LIMIT 1').toArray().length > 0;
+    const hasData = this.ctx.storage.sql.exec('SELECT 1 FROM chat UNION ALL SELECT 1 FROM rooms UNION ALL SELECT 1 FROM reports UNION ALL SELECT 1 FROM mentions LIMIT 1').toArray().length > 0;
     if (this.sockets().length || hasData) await this.ctx.storage.setAlarm(now + (this.sockets().length ? 60_000 : 3_600_000));
   }
   async webSocketClose(socket: WebSocket) { if (socket.readyState === 2) socket.close(1000, 'Closed.'); await this.schedule(); }

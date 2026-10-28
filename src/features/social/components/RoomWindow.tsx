@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, Avatar, Drawer, IconActionButton, PlayfulNavIcon, ToggleSwitch, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
 import { SAMPLE_LESSONS } from '../../../data/books';
 import { useAppStore } from '../../../store/useAppStore';
@@ -123,6 +123,11 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
   const myPhoto = useProfileAvatar();
   const [sheet, setSheet] = useState<'words' | 'types' | null>(null);
   const [tab, setTab] = useState<'party' | 'chat'>('party');
+  useEffect(() => {
+    if (tab !== 'chat') return;
+    useAppStore.getState().setSocial({ socialReadingParty: race.code });
+    return () => { if (useAppStore.getState().socialReadingParty === race.code) useAppStore.getState().setSocial({ socialReadingParty: null }); };
+  }, [race.code, tab]);
   const status = useAppStore(state => state.raceStatus);
   const live = status === 'live';
   const isHost = race.hostId === me;

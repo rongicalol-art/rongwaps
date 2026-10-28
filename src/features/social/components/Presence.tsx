@@ -45,7 +45,7 @@ export function LessonFaces({ lesson }: { lesson: number }) {
 /** Lesson window: "N here" opens who's here and the lesson chat. Hidden while nobody else is in the lesson. */
 export function HereButton({ lesson }: { lesson: number }) {
   const { faces, total } = useLessonOthers(lesson);
-  const unread = useAppStore((state) => state.socialUnread);
+  const unread = useAppStore((state) => state.socialUnread || (!state.socialMuted && state.socialMentions.some(item => !item.read)));
   if (total === 0) return null;
   return (
     <button

@@ -2,14 +2,15 @@
  * Study together: presence, lesson chat, invites and the quiz race. Everything live is ephemeral (rebuilt from the
  * games Worker on connect); only the learner's own choices (`showOnline`, `socialMuted`) are persisted locally.
  */
-import type { ChatMessage, LessonCount, Person } from '../../../shared/lobby';
+import type { ChatMessage, LessonCount, Person, MentionNotice } from '../../../shared/lobby';
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
 
 export type SocialPanel =
-  | { kind: 'people'; tab: 'online' | 'chat' | 'party'; chatScope?: 'global' | 'lesson' }
+  | { kind: 'people'; tab: 'online' | 'chat' | 'party'; chatScope?: 'global' | 'lesson'; chatLesson?: number }
   | { kind: 'challenge'; tab: 'online' | 'rooms' }
   | { kind: 'partyChat' }
+  | { kind: 'partyMention' }
   | null;
 
 export interface SocialState {
@@ -31,6 +32,10 @@ export interface SocialState {
   /** Ephemeral private room messages; cleared when leaving or switching accounts. */
   socialPartyChat: { code: string; messages: ChatMessage[] } | null;
   socialUnread: boolean;
+  socialMentions: MentionNotice[];
+  socialMentionToast: MentionNotice | null;
+  socialMentionTarget: MentionNotice | null;
+  socialReadingParty: string | null;
   socialInvite: { from: Person; room: RaceRoomSummary } | null;
   socialCheer: { from: Person; phrase: number; at: number } | null;
   /** Lesson key (`bookId * 100 + lessonId`) of the open lesson window, for presence. */
@@ -58,6 +63,10 @@ const LIVE_DEFAULTS = {
   socialChat: null,
   socialPartyChat: null,
   socialUnread: false,
+  socialMentions: [],
+  socialMentionToast: null,
+  socialMentionTarget: null,
+  socialReadingParty: null,
   socialInvite: null,
   socialCheer: null,
   socialViewingLesson: null,
@@ -73,7 +82,7 @@ export function createSocialSlice(set: SetState): SocialState {
     showOnline: true,
     setShowOnline: (showOnline) => set({ showOnline }),
     socialMuted: false,
-    setSocialMuted: (socialMuted) => set({ socialMuted, ...(socialMuted ? { socialUnread: false, socialCheer: null, socialInvite: null } : {}) }),
+    setSocialMuted: (socialMuted) => set({ socialMuted, ...(socialMuted ? { socialUnread: false, socialCheer: null, socialInvite: null, socialMentionToast: null } : {}) }),
     ...LIVE_DEFAULTS,
     setSocial: (patch) => set(patch),
   };

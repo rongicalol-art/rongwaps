@@ -28,7 +28,7 @@ export function nextChatRate(previous: ChatRate | null, text: string, now: numbe
   return { times: [...times, now], text, at: now };
 }
 
-export type PartyChatClientMessage = { type: 'chat'; text: string } | { type: 'chat-report'; id: number };
+export type PartyChatClientMessage = { type: 'chat'; text: string; mentions?: string[] } | { type: 'chat-report'; id: number };
 export type PartyChatServerMessage =
   | { type: 'chat-history'; code: string; messages: ChatMessage[] }
   | { type: 'chat-message'; code: string; message: ChatMessage };
@@ -36,15 +36,18 @@ export type PartyChatServerMessage =
 export interface Person { u: string; n: string; c: SocialColor; l: number | null; a: Activity | null; i?: string }
 /** `r` turns the line into a room card (an open room announced in this lesson). */
 export interface ChatMessage { id: number; l: number; u: string; n: string; c: SocialColor; t: string; ts: number; r?: RaceRoomSummary; i?: string }
+export interface MentionNotice { key: string; channel: number; room?: string; message: ChatMessage; read: boolean }
 export interface LessonCount { n: number; f: Person[] }
 
 export type LobbyClientMessage =
   | { t: 'here'; l: number | null; a: Activity | null; show: boolean; i?: string }
   | { t: 'sub'; online: boolean; chat: number | null }
-  | { t: 'say'; l: number; text: string }
+  | { t: 'say'; l: number; text: string; mentions?: string[] }
   | { t: 'cheer'; to: string[]; p: number }
   | { t: 'invite'; to: string[]; code: string }
-  | { t: 'report'; id: number };
+  | { t: 'report'; id: number }
+  | { t: 'mention-read'; key: string }
+  | { t: 'mention-open'; key: string };
 
 export type LobbyServerMessage =
   | { t: 'error'; message: string }
@@ -56,10 +59,20 @@ export type LobbyServerMessage =
   | { t: 'msg'; m: ChatMessage }
   | { t: 'cheer'; from: Person; p: number }
   | { t: 'invite'; from: Person; room: RaceRoomSummary }
-  | { t: 'rooms'; v: RaceRoomSummary[] };
+  | { t: 'rooms'; v: RaceRoomSummary[] }
+  | { t: 'mentions'; v: MentionNotice[] }
+  | { t: 'mention'; v: MentionNotice }
+  | { t: 'mention-read'; key: string }
+  | { t: 'mention-open'; key: string; v: MentionNotice | null };
 
 const lessonKey = (value: unknown): number | null => (Number.isInteger(value) && Number(value) >= 0 && Number(value) < 1000 ? Number(value) : null);
 const ROOM_CODE = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
+
+/** Bounded account IDs; callers must independently validate channel eligibility. */
+export function mentionIds(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return [...new Set(value.filter((id): id is string => typeof id === 'string' && id.length > 0 && id.length <= 64))].slice(0, 8);
+}
 
 /** Validates one client frame; throws on anything malformed. */
 export function parseLobbyMessage(value: unknown): LobbyClientMessage {
@@ -73,7 +86,8 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   if (data.t === 'sub') return { t: 'sub', online: data.online === true, chat: lessonKey(data.chat) };
   if (data.t === 'say' && lessonKey(data.l) !== null && typeof data.text === 'string') {
     const text = chatText(data.text);
-    if (text) return { t: 'say', l: Number(data.l), text };
+    const mentions = mentionIds(data.mentions);
+    if (text) return { t: 'say', l: Number(data.l), text, ...(mentions.length ? { mentions } : {}) };
   }
   if (data.t === 'cheer' && Array.isArray(data.to) && Number.isInteger(data.p) && Number(data.p) >= 0 && Number(data.p) < CHEER_PHRASES.length) {
     const to = data.to.filter((id): id is string => typeof id === 'string' && id.length <= 64).slice(0, 8);
@@ -83,6 +97,8 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
     const to = data.to.filter((id): id is string => typeof id === 'string' && id.length <= 64).slice(0, 8);
     if (to.length) return { t: 'invite', to, code: data.code };
   }
+  if (data.t === 'mention-open' && typeof data.key === 'string' && data.key.length <= 100) return { t: 'mention-open', key: data.key };
+  if (data.t === 'mention-read' && typeof data.key === 'string' && data.key.length <= 100) return { t: 'mention-read', key: data.key };
   if (data.t === 'report' && Number.isInteger(data.id) && Number(data.id) > 0) return { t: 'report', id: Number(data.id) };
   throw new Error('Invalid message.');
 }
