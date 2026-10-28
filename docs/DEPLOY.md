@@ -243,6 +243,32 @@ Before launch, exercise two school **test** accounts against the deployed Worker
 
 150 concurrent users fits this room/lobby layout; daily cost depends on messages, race answers and active duration. The Workers Free allowances are 100,000 Durable Object requests, 13,000 GB-s and 100,000 SQLite rows written per day. Incoming WebSocket messages count at 20:1 for request billing; outgoing frames and auto-answered pings are not billed as requests. Alarms, RPC calls, ticket/seat records and state writes also consume resources. For example, 150 students each answering 40 race words generates 6,000 progress events before setup/cleanup; repeated all-day races can exceed the free row-write budget. Observe deployed request, duration, SQL and error metrics before promising sustained daily capacity. Free-plan allowance exhaustion can stop social features until reset; ordinary studying remains independent. See Cloudflare's [Durable Objects pricing](https://developers.cloudflare.com/durable-objects/platform/pricing/) and [WebSocket guidance](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
+### Capacity follow-up — October 29, 2026
+
+Run `npm run games:test -- --users 250 --soak-seconds 120` for the extended local scenario. The default remains 150 users and 10 seconds of paced answers. Users must be even, from 2 to 250; pacing accepts 10–300 seconds. The runner dispatches only into its own Miniflare runtime, uses throwaway JWT signing keys and synthetic accounts, intercepts external key requests, and cannot be pointed at production. No production authentication bypass, new dependency, deployed resource or real learner record is needed.
+
+The extended run ramps in groups of 50, checks a full one-lesson roster, delivers every student's chat message to every subscriber, replaces all Lobby connections, then runs four-player races (the last room may have two players). Setup batches bound the local dispatcher's loopback TCP connections; all student sockets remain connected concurrently. An unbounded setup burst initially produced local `ECONNRESET` failures, so this is not evidence that production can accept 250 simultaneous TCP handshakes. The suite also checks connection 251 is rejected, an abusive sender alone is disconnected, expired sessions close, and unchanged presence does not fan out again. Auto-response pings keep idle Lobby sockets healthy during long races.
+
+Measured on one local 250-user run with 120-second answer pacing:
+
+| Measurement | Result |
+| --- | --- |
+| Concurrent sockets / race rooms | 250 Lobby + 250 race sockets / 63 rooms |
+| Chat deliveries | 62,500, all received |
+| Full chat burst fanout / p95 subscriber batch completion | 1,626 ms / 1,607 ms |
+| Lobby replacement and roster convergence | 2,308 ms |
+| Answer updates / p95 race completion publication | 10,000 / 102 ms |
+| Answer-phase room SQL writes / alarm writes / listing RPCs | 10,000 / 126 / 0 |
+| Unexpected Lobby/race disconnections or race action errors | 0 before intentional rate/expiry checks |
+
+Chat timing measures receipt of the entire 250-message burst, not per-message p95 latency. Room counters exclude setup/cleanup, Lobby and account objects, SQL reads and billed duration. Two minutes is a short sustained check, not an all-day soak or production capacity guarantee. Keep 100–150 simultaneous users as the conservative planning target until the full deployed app is measured; 250 remains the Lobby admission ceiling.
+
+One slow-network bug was reproduced and fixed in the shared client transport: an outgoing buffer above 64 KiB previously rejected frames while leaving the socket live, so a final race update could wait indefinitely without another snapshot. Congestion now closes the connection through the existing reconnect path; the existing controller replays current progress after recovery. Regression checks cover congestion recovery and oversized Unicode frames without disconnecting a healthy socket. Ordinary chat also skips presence/history eligibility scans when there are no selected mentions; mentioned messages retain the existing authorization checks. No end-to-end latency improvement is claimed from that change.
+
+Read-only production inspection found Workers Logs/Traces enabled. The Lobby's last-24-hour dashboard showed 757 requests, 29 aggregate errors, 28 classified client disconnects, zero displayed CPU-limit/memory-limit/internal/uncaught-worker errors, about 1.64 MB p99 memory, and 201 SQL rows written. The displayed categories did not account for every aggregate error; do not reinterpret the remaining difference as a diagnosed bug. These are low-traffic historical observations, not measurements under the synthetic load. Long WebSocket request wall times are not chat-delivery latency.
+
+The captured production browser console had no warnings/errors. A historical local `PeoplePanel` initialization error was present; the current source already ordered that declaration correctly, and opening the panel succeeded. The DEV 50-classmate simulator also opened without a captured console error. Browser automation stalled during responsive viewport testing, so mobile/desktop end-to-end races, physical Safari checks, real database load and cloud quota exhaustion remain unverified. No fake crowd was sent to production, and no deployment or hosting-plan change was made.
+
 ## In-app feedback
 
 Apply `20261025120000_private_feedback.sql` before deploying the feedback form.

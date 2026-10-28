@@ -3,6 +3,14 @@ import { Miniflare, Response, convertV4MiniflareOptions } from 'miniflare';
 import { build } from 'esbuild';
 import assert from 'node:assert/strict';
 import { webcrypto } from 'node:crypto';
+import { parseArgs } from 'node:util';
+
+// This runner only dispatches into local Miniflare, never a supplied URL or real account.
+const { values } = parseArgs({ options: { users: { type: 'string', default: '150' }, 'soak-seconds': { type: 'string', default: '10' } } });
+const userCount = Number(values.users);
+const soakSeconds = Number(values['soak-seconds']);
+assert.ok(Number.isInteger(userCount) && userCount >= 2 && userCount <= 250 && userCount % 2 === 0, '--users must be an even number from 2 to 250');
+assert.ok(Number.isInteger(soakSeconds) && soakSeconds >= 10 && soakSeconds <= 300, '--soak-seconds must be from 10 to 300');
 
 const origin = 'https://school.test';
 const supabase = 'https://project.test';
@@ -84,9 +92,10 @@ const mf = new Miniflare(convertV4MiniflareOptions({ unsafeInspectDurableObjects
 }] }));
 
 const sockets = [];
+let keepAlive;
 async function control(path) { const response = await mf.dispatchFetch('https://games.test' + path); assert.equal(response.status, 200, await response.text()); }
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-async function until(condition) { const end = Date.now() + 6000; while (!condition()) { assert.ok(Date.now() < end, 'Timed out'); await delay(20); } }
+async function until(condition) { const end = Date.now() + 10_000; while (!condition()) { assert.ok(Date.now() < end, 'Timed out'); await delay(20); } }
 async function post(path, user, extra = {}) {
   const response = await mf.dispatchFetch('https://games.test' + path, { method: 'POST', headers: { Origin: origin, Authorization: 'Bearer ' + await token(user), 'Content-Type': 'application/json' },
     body: JSON.stringify({ name: user, color: 'jade', ...extra }) });
@@ -97,12 +106,13 @@ async function open(path, protocol, ticket) {
   const response = await mf.dispatchFetch('https://games.test' + path, { headers: { Origin: origin, Upgrade: 'websocket', 'Sec-WebSocket-Protocol': `${protocol}, ticket.${ticket}` } });
   assert.equal(response.status, 101);
   const socket = response.webSocket;
-  const client = { socket, frames: [], state: null, errors: [], closed: null };
+  const client = { socket, frames: [], state: null, errors: [], closed: null, lastChatAt: 0 };
   socket.addEventListener('close', event => { client.closed = event.code; });
   socket.addEventListener('message', event => {
     if (event.data === 'pong') return;
     const message = JSON.parse(event.data);
     client.frames.push(message);
+    if (message.t === 'msg') client.lastChatAt = performance.now();
     if (message.type === 'state') client.state = message.state;
     if (message.type === 'error') client.errors.push(message.error);
   });
@@ -504,25 +514,36 @@ try {
   await control('/__test/room/ZZZZZZ/alarm');
   assert.equal((await legacySql.exec('SELECT * FROM state')).length,0);
 
-  // 150 simultaneously connected students in one lesson, all receiving chat; 38 independent race rooms.
+  // Ramp to the configured school crowd; all receive chat and race in independent rooms.
   const started = performance.now();
-  const students = await Promise.all(Array.from({ length: 150 }, async (_, index) => {
-    const id = `load-${index}`;
-    const client = await open('/lobby/socket', 'lobby', (await post('/lobby', id)).ticket);
-    send(client, { t: 'here', l: 101, a: 'lesson', show: true, i: `https://lh3.googleusercontent.com/${id}` });
-    send(client, { t: 'sub', online: true, chat: 101 });
-    return { id, client };
-  }));
-  await until(() => students.every(({client}) => last(client, 'counts')?.n === 150 && last(client, 'online')?.v.length === 150 && last(client, 'people')?.v.length === 150));
-  assert.ok(students.every(({id, client}) => last(client, 'online').v.some(person => person.u === id && person.i === `https://lh3.googleusercontent.com/${id}`)), 'profile photos stay present in 150-person snapshots');
+  const students = [];
+  for (let offset = 0; offset < userCount; offset += 50) {
+    const at = performance.now();
+    students.push(...await Promise.all(Array.from({ length: Math.min(50, userCount - offset) }, async (_, i) => {
+      const index = offset + i;
+      const id = `load-${index}`;
+      const client = await open('/lobby/socket', 'lobby', (await post('/lobby', id)).ticket);
+      send(client, { t: 'here', l: 101, a: 'lesson', show: true, i: `https://lh3.googleusercontent.com/${id}` });
+      send(client, { t: 'sub', online: true, chat: 101 });
+      return { id, client };
+    })));
+    await until(() => students.every(({client}) => last(client, 'counts')?.n === students.length && last(client, 'online')?.v.length === students.length && last(client, 'people')?.v.length === students.length));
+    console.log(JSON.stringify({ stage: 'ramp', users: students.length, convergenceMs: Math.round(performance.now() - at) }));
+  }
+  assert.ok(students.every(({id, client}) => last(client, 'online').v.some(person => person.u === id && person.i === `https://lh3.googleusercontent.com/${id}`)), 'profile photos stay present in crowd snapshots');
   const lobbyMs = Math.round(performance.now() - started);
   const stableCount = students[0].client.frames.filter(f => f.t === 'counts').length;
   await control('/__test/lobby/main/alarm');
   await delay(100);
   assert.equal(students[0].client.frames.filter(f => f.t === 'counts').length, stableCount, 'unchanged presence is not broadcast again');
+  const previousChatRows = (await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n;
   const burstAt = performance.now();
   for (const {id, client} of students) send(client, { t: 'say', l: 101, text: id });
-  await until(() => students.every(({client}) => client.frames.filter(f => f.t === 'msg' && f.m.t.startsWith('load-')).length === 150));
+  await until(() => students.every(({client}) => client.frames.filter(f => f.t === 'msg' && f.m.t.startsWith('load-')).length === userCount));
+  const chatMs = Math.round(performance.now() - burstAt);
+  const chatLatencies = students.map(({client}) => client.lastChatAt - burstAt).sort((a,b) => a-b);
+  const chatP95Ms = Math.round(chatLatencies[Math.ceil(userCount * 0.95) - 1]);
+  console.log(JSON.stringify({ stage: 'chat', users: userCount, deliveries: userCount ** 2, fanoutMs: chatMs, batchDeliveryP95Ms: chatP95Ms }));
   assert.ok(students.every(({id, client}) => client.frames.some(frame => frame.t === 'msg' && frame.m.u === id && frame.m.i === `https://lh3.googleusercontent.com/${id}`)), 'chat messages include the sender profile photo');
   const priorHistoryFrames = students[0].client.frames.filter(frame => frame.t === 'history').length;
   send(students[0].client, { t: 'sub', online: true, chat: null });
@@ -530,9 +551,33 @@ try {
   await until(() => students[0].client.frames.filter(frame => frame.t === 'history').length > priorHistoryFrames);
   const chatHistory = last(students[0].client, 'history').v;
   assert.ok(chatHistory.some(message => message.i && message.u.startsWith('load-')), `chat history decorates online senders with their profile photos: ${JSON.stringify(chatHistory.slice(0, 2))}`);
-  const chatMs = Math.round(performance.now() - burstAt);
-  assert.equal((await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n, 50);
-  const races = await Promise.all(Array.from({length: 38}, async (_, group) => {
+  assert.equal((await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n, Math.min(50, previousChatRows + userCount));
+  if (userCount === 250) {
+    const overflow = await post('/lobby', 'overflow');
+    const rejected = await mf.dispatchFetch('https://games.test/lobby/socket', { headers: { Origin: origin, Upgrade: 'websocket', 'Sec-WebSocket-Protocol': `lobby, ticket.${overflow.ticket}` } });
+    assert.equal(rejected.status, 503, 'the 251st connection is rejected without disturbing existing users');
+    await rejected.text();
+    console.log(JSON.stringify({ stage: 'capacity', admitted: userCount, rejectedStatus: rejected.status }));
+  }
+  const reconnectAt = performance.now();
+  const reconnects = [];
+  // Bound the local dispatcher's loopback TCP burst; all user sockets remain concurrent.
+  for (let offset = 0; offset < students.length; offset += 50) reconnects.push(...await Promise.allSettled(students.slice(offset, offset + 50).map(async student => {
+    const old = student.client;
+    student.client = await open('/lobby/socket', 'lobby', (await post('/lobby', student.id)).ticket);
+    await until(() => old.closed === 4001);
+    send(student.client, { t: 'here', l: 101, a: 'lesson', show: true });
+    send(student.client, { t: 'sub', online: true, chat: 101 });
+  })));
+  const failures = reconnects.filter(result => result.status === 'rejected');
+  assert.equal(failures.length, 0, `reconnect failures: ${failures.slice(0, 3).map(result => String(result.reason)).join('; ')}`);
+  await until(() => students.every(({client}) => last(client, 'counts')?.n === userCount && last(client, 'online')?.v.length === userCount));
+  console.log(JSON.stringify({ stage: 'reconnect', users: userCount, convergenceMs: Math.round(performance.now() - reconnectAt) }));
+  keepAlive = setInterval(() => { for (const {client} of students) if (client.closed === null) client.socket.send('ping'); }, 25_000);
+  keepAlive.unref();
+  const races = [];
+  for (let offset = 0; offset < Math.ceil(userCount / 4); offset += 10) races.push(...await Promise.all(Array.from({length: Math.min(10, Math.ceil(userCount / 4) - offset)}, async (_, i) => {
+    const group = offset + i;
     const members = students.slice(group * 4, group * 4 + 4);
     const createdRoom = await post('/rooms', members[0].id, { selection: { lessons: { 1: [1] }, types: ['meaning'] }, open: true });
     const players = await Promise.all(members.map(async (member, i) => ({ id: member.id, client: await open(`/rooms/${createdRoom.code}/socket`, 'quiz-race', i === 0 ? createdRoom.ticket : (await post(`/rooms/${createdRoom.code}`, member.id)).ticket) })));
@@ -542,7 +587,8 @@ try {
     players.forEach(p => send(p.client, {type:'ready',planHash,reviewFlow:1}));
     await until(() => players.every(p => p.client.state.phase === 'race'));
     return players;
-  }));
+  })));
+  console.log(JSON.stringify({ stage: 'races-ready', users: userCount, rooms: races.length }));
   const latencies = [];
   const usageFor = async players => {
     const response = await mf.dispatchFetch('https://games.test/__test/room/' + players[0].client.state.code + '/usage');
@@ -554,7 +600,7 @@ try {
   for (let word = 1; word < 40; word++) {
     for (const players of races) players.forEach(p => send(p.client, {type:'progress', answered:word, total:40, correct:word, reviewComplete:false}));
     await until(() => races.every(players => players.every(p => p.client.state.players.every(player => player.answered === word))));
-    await delay(250);
+    await delay(soakSeconds * 1000 / 40);
   }
   await Promise.all(races.map(async players => {
     const at = performance.now();
@@ -567,14 +613,25 @@ try {
   const usageAfter = await Promise.all(races.map(usageFor));
   const raceUsage = Object.fromEntries(Object.keys(usageBefore[0]).map(key => [key, usageAfter.reduce((sum, usage, index) => sum + usage[key] - usageBefore[index][key], 0)]));
   assert.equal(raceUsage.listingCalls, 0, 'scores and completion do not republish unchanged listings');
-  assert.ok(raceUsage.alarmWrites < 600, '6,000 answers must not each rewrite the alarm');
+  clearInterval(keepAlive);
+  assert.ok(raceUsage.alarmWrites < userCount * 4, 'answers must not each rewrite the alarm');
   assert.equal(races.flat().filter(player => player.client.closed !== null).length, 0, 'sustained progress must not disconnect players');
-  console.log(JSON.stringify({ progressMessages: 6000, raceUsage, note: 'Local room SQL rows, alarm writes and listing RPC calls; excludes setup, lobby, account objects and Cloudflare compute billing.' }));
-  console.log(JSON.stringify({ users:150, raceRooms:races.length, lobbyConvergenceMs:lobbyMs, chat150FanoutMs:chatMs, raceFinishP95Ms:Math.round(latencies[Math.ceil(latencies.length*0.95)-1]), jwksFetches }));
+  assert.ok(students.every(({client}) => client.closed === null && client.errors.length === 0), 'the lobby remains connected without errors during races');
+  assert.ok(races.flat().every(player => player.client.errors.length === 0), 'all race actions succeed');
+  // One abusive sender cannot interrupt the rest of the school, and expired sessions cannot linger.
+  for (let i = 0; i < 80; i++) students[0].client.socket.send('{}');
+  await until(() => students[0].client.closed === 1008);
+  assert.ok(students.slice(1).every(({client}) => client.closed === null), 'rate limiting is isolated to the offending connection');
+  await control('/__test/lobby/main/age');
+  await control('/__test/lobby/main/alarm');
+  await until(() => students.slice(1).every(({client}) => client.closed === 4002));
+  console.log(JSON.stringify({ progressMessages: userCount * 40, raceUsage, note: 'Local room SQL rows, alarm writes and listing RPC calls; excludes setup, lobby, account objects and Cloudflare compute billing.' }));
+  console.log(JSON.stringify({ users:userCount, raceRooms:races.length, soakSeconds, lobbyConvergenceMs:lobbyMs, chatFanoutMs:chatMs, chatBatchP95Ms:chatP95Ms, raceFinishP95Ms:Math.round(latencies[Math.ceil(latencies.length*0.95)-1]), jwksFetches }));
   assert.equal(jwksFetches, 1, 'concurrent access checks share cached signing keys');
 
-  console.log('PASS: lifecycle, host transfer, disconnect/reconnect, HTTP leave, duplicate creation, invite authorization, cleanup, per-lesson chat retention, 150 users, 38 races; JWT verify, lobby presence/people/online/chat/rate limit/cheer/hidden, open room listing + chat card + invite, host-only start, hibernation, race to results, rematch seed, ticket replay, origin');
+  console.log(`PASS: lifecycle, host transfer, disconnect/reconnect, HTTP leave, duplicate creation, invite authorization, cleanup, per-lesson chat retention, ${userCount} users, ${races.length} races; JWT verify, lobby presence/people/online/chat/rate limit/cheer/hidden, open room listing + chat card + invite, host-only start, hibernation, race to results, rematch seed, ticket replay, origin`);
 } finally {
+  clearInterval(keepAlive);
   for (const socket of sockets) try { socket.close(1000); } catch { /* Already closed. */ }
   await mf.dispose();
 }

@@ -121,7 +121,9 @@ function reconnecting<In, Out>(options: {
     send(message) {
       if (stopped || socket?.readyState !== WebSocket.OPEN) return false;
       const frame = JSON.stringify(message);
-      if (socket.bufferedAmount > 65_536 || new TextEncoder().encode(frame).byteLength > SOCIAL_FRAME_BYTES) return false;
+      if (new TextEncoder().encode(frame).byteLength > SOCIAL_FRAME_BYTES) return false;
+      // A rejected final progress frame may have no later event to retry it. Reconnect and replay current state.
+      if (socket.bufferedAmount > 65_536) { socket.close(4002, 'Connection is congested.'); return false; }
       try { socket.send(frame); return true; } catch { socket.close(); return false; }
     },
     close: stop,

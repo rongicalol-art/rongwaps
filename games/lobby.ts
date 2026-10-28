@@ -121,9 +121,13 @@ export class Lobby extends DurableObject<Env> {
       const rate = nextChatRate(saved ? JSON.parse(saved.data) as ChatRate : null, message.text, now);
       if (!rate) { this.send(socket, { t: 'error', message: 'Please wait before sending another message.' }); return; }
       this.ctx.storage.sql.exec('INSERT OR REPLACE INTO chat_rate VALUES (?,?,?)', att.u, JSON.stringify(rate), now);
-      const eligible = new Set(this.attachments().filter(person => person.show && (message.l === 0 || person.l === message.l)).map(person => person.u));
-      for (const row of this.ctx.storage.sql.exec<{ uid: string }>('SELECT DISTINCT uid FROM chat WHERE lesson=? AND ts>=?', message.l, now - CHAT_TTL_MS)) eligible.add(row.uid);
-      this.post(att, message.l, message.text, null, (message.mentions ?? []).filter(id => id !== att.u && eligible.has(id)));
+      let recipients: string[] = [];
+      if (message.mentions?.length) {
+        const eligible = new Set(this.attachments().filter(person => person.show && (message.l === 0 || person.l === message.l)).map(person => person.u));
+        for (const row of this.ctx.storage.sql.exec<{ uid: string }>('SELECT DISTINCT uid FROM chat WHERE lesson=? AND ts>=?', message.l, now - CHAT_TTL_MS)) eligible.add(row.uid);
+        recipients = message.mentions.filter(id => id !== att.u && eligible.has(id));
+      }
+      this.post(att, message.l, message.text, null, recipients);
     } else if (message.t === 'cheer') {
       if (now - att.cheer < 3000) return;
       att.cheer = now; socket.serializeAttachment(att);

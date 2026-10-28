@@ -6,6 +6,7 @@ class FakeSocket {
   static OPEN=1; static CONNECTING=0;
   static instances: FakeSocket[]=[];
   readyState=0;
+  bufferedAmount=0;
   sent:string[]=[];
   onopen:(()=>void)|null=null;
   onmessage:((event:{data:string})=>void)|null=null;
@@ -86,4 +87,27 @@ test('temporary outages retry past six attempts; invalid credentials stop retrie
   status=401;t.mock.timers.tick(20000);await flush();
   const finalAttempts=attempts;assert.equal(h.statuses.at(-1),'off');
   t.mock.timers.tick(120000);await flush();assert.equal(attempts,finalAttempts);
+});
+
+test('a congested socket reconnects instead of silently dropping the final race update',async t=>{
+  t.mock.timers.enable({apis:['setTimeout','setInterval','Date'],now:1000});
+  const h=await setup(t);const socket=h.connect();await flush();
+  const first=FakeSocket.instances[0];first.open();first.bufferedAmount=65_537;
+  assert.equal(socket.send({t:'sub',online:true,chat:101}),false);
+  assert.equal(first.sent.length,0,'a congested connection cannot accept more frames');
+  assert.equal(first.readyState,3,'congestion must initiate recovery even if no more state messages arrive');
+  assert.equal(h.statuses.at(-1),'reconnecting');
+  t.mock.timers.tick(1300);await flush();
+  const next=FakeSocket.instances[1];next.open();
+  assert.equal(socket.send({t:'sub',online:true,chat:101}),true);
+  assert.equal(next.sent.length,1);
+});
+
+test('oversized Unicode frames are rejected without disconnecting a healthy socket',async t=>{
+  const h=await setup(t);const socket=h.connect();await flush();
+  const first=FakeSocket.instances[0];first.open();
+  assert.equal(socket.send({t:'say',l:101,text:'中'.repeat(1500)}),false);
+  assert.equal(first.readyState,1);
+  assert.equal(first.sent.length,0);
+  assert.equal(socket.send({t:'say',l:101,text:'你好'}),true);
 });
