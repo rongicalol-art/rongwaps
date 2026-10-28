@@ -2,20 +2,25 @@ import { useEffect, useState } from 'react';
 import type { DialogueAlignment } from '../../../types/models';
 import { fetchDialogueAlignmentPack } from '../../../services/contentPacks';
 
-let cachedAlignmentMap: Record<string, DialogueAlignment> | null = null;
+const alignmentCache = new Map<number, Record<string, DialogueAlignment>>();
 
 export function useDialogueAlignment(bookId?: number, readingId?: string): DialogueAlignment | null {
+  const targetBookId = bookId ?? 1;
   const [alignmentMap, setAlignmentMap] = useState<Record<string, DialogueAlignment> | null>(
-    () => cachedAlignmentMap,
+    () => alignmentCache.get(targetBookId) ?? null,
   );
 
   useEffect(() => {
-    if (cachedAlignmentMap) return;
+    const cached = alignmentCache.get(targetBookId);
+    if (cached) {
+      setAlignmentMap(cached);
+      return;
+    }
     let cancelled = false;
-    void fetchDialogueAlignmentPack(bookId ?? 1)
+    void fetchDialogueAlignmentPack(targetBookId)
       .then((map) => {
         if (!cancelled && map) {
-          cachedAlignmentMap = map;
+          alignmentCache.set(targetBookId, map);
           setAlignmentMap(map);
         }
       })
@@ -25,7 +30,8 @@ export function useDialogueAlignment(bookId?: number, readingId?: string): Dialo
     return () => {
       cancelled = true;
     };
-  }, [bookId]);
+  }, [targetBookId]);
 
-  return alignmentMap?.[readingId ?? ''] ?? null;
+  const activeMap = alignmentCache.get(targetBookId) ?? alignmentMap;
+  return activeMap?.[readingId ?? ''] ?? null;
 }

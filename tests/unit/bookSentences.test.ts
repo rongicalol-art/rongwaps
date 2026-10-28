@@ -22,9 +22,11 @@ test('a dialogue line belongs to its dialogue-numbered part and sorts as a dialo
 });
 
 test('a dialogue line plays the hosted book track first, its studio recording otherwise', () => {
-  const [hosted] = readingSentenceRecords([reading(1, 'B1L01-R02')], alignment('B1L01-R02'));
-  assert.deepEqual(hosted.audio, { voice: 'book', file: 'B1-01-2-1.mp3', start: 1, end: 2.5 });
-  const [notHosted] = readingSentenceRecords([reading(3, 'B3L01-R02')], alignment('B3L01-R02'));
+  const [hostedBook1] = readingSentenceRecords([reading(1, 'B1L01-R02')], alignment('B1L01-R02'));
+  assert.deepEqual(hostedBook1.audio, { voice: 'book', file: 'B1-01-2-1.mp3', start: 1, end: 2.5 });
+  const [hostedBook3] = readingSentenceRecords([reading(3, 'B3L01-R02')], alignment('B3L01-R02'));
+  assert.deepEqual(hostedBook3.audio, { voice: 'book', file: 'B3-01-2-1.mp3', start: 1, end: 2.5 });
+  const [notHosted] = readingSentenceRecords([reading(2, 'B2L01-R02')], alignment('B2L01-R02'));
   assert.deepEqual(notHosted.audio, { voice: 'studio', file: 'studio.mp3' });
 });
 
