@@ -3,7 +3,9 @@ import test from 'node:test';
 import { build } from 'esbuild';
 import type { MentionNotice } from '../../shared/lobby';
 
-const notice = (id: number, channel: number): MentionNotice => ({ key: `l:${id}`, channel, read: false, message: { id, l: channel, u: 'friend', n: 'Friend', c: 'jade', t: '@Me hello', ts: Date.now() + id } });
+// One fixed clock: `Date.now()` per call can tick between notices and flip their order.
+const NOW = Date.now();
+const notice = (id: number, channel: number): MentionNotice => ({ key: `l:${id}`, channel, read: false, message: { id, l: channel, u: 'friend', n: 'Friend', c: 'jade', t: '@Me hello', ts: NOW + id } });
 
 test('inbox replay preserves live notices and opening another lesson leaves study presence alone', async () => {
   let state: Record<string, unknown> = { socialMentions: [], socialMuted: false, socialPanel: null, socialMe: 'me', socialViewingLesson: 101, socialUnread: false, race: null };
