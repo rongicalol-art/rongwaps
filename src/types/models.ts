@@ -238,7 +238,16 @@ export type RongWapsCharacter =
   | 'doctor'
   | 'cafeWorker'
   | 'apartmentAgent'
-  | 'neighbor';
+  | 'neighbor'
+  | 'tomoko'
+  | 'dongxian'
+  | 'shawn'
+  | 'mary'
+  | 'fangcao'
+  | 'jiahao'
+  | 'mingzhe'
+  | 'managerWang'
+  | 'officeStaff';
 
 /**
  * A single in-context sentence pulled from the course that uses a word.

@@ -19,6 +19,22 @@ const THUMBNAILS: Record<string, string> = {
   '1:14': new URL('../assets/images/lesson-thumbs/b1l14.webp', import.meta.url).href,
   '1:15': new URL('../assets/images/lesson-thumbs/b1l15.webp', import.meta.url).href,
   '1:16': new URL('../assets/images/lesson-thumbs/b1l16.webp', import.meta.url).href,
+  '3:1': new URL('../assets/images/lesson-thumbs/b3l01.webp', import.meta.url).href,
+  '3:2': new URL('../assets/images/lesson-thumbs/b3l02.webp', import.meta.url).href,
+  '3:3': new URL('../assets/images/lesson-thumbs/b3l03.webp', import.meta.url).href,
+  '3:4': new URL('../assets/images/lesson-thumbs/b3l04.webp', import.meta.url).href,
+  '3:5': new URL('../assets/images/lesson-thumbs/b3l05.webp', import.meta.url).href,
+  '3:6': new URL('../assets/images/lesson-thumbs/b3l06.webp', import.meta.url).href,
+  '3:7': new URL('../assets/images/lesson-thumbs/b3l07.webp', import.meta.url).href,
+  '3:8': new URL('../assets/images/lesson-thumbs/b3l08.webp', import.meta.url).href,
+  '3:9': new URL('../assets/images/lesson-thumbs/b3l09.webp', import.meta.url).href,
+  '3:10': new URL('../assets/images/lesson-thumbs/b3l10.webp', import.meta.url).href,
+  '3:11': new URL('../assets/images/lesson-thumbs/b3l11.webp', import.meta.url).href,
+  '3:12': new URL('../assets/images/lesson-thumbs/b3l12.webp', import.meta.url).href,
+  '3:13': new URL('../assets/images/lesson-thumbs/b3l13.webp', import.meta.url).href,
+  '3:14': new URL('../assets/images/lesson-thumbs/b3l14.webp', import.meta.url).href,
+  '3:15': new URL('../assets/images/lesson-thumbs/b3l15.webp', import.meta.url).href,
+  '3:16': new URL('../assets/images/lesson-thumbs/b3l16.webp', import.meta.url).href,
 };
 
 export const lessonThumbnail = (bookId: number, lessonId: number): string | undefined => THUMBNAILS[`${bookId}:${lessonId}`];

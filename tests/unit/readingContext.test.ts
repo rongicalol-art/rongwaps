@@ -174,6 +174,20 @@ test('getCharacterForSpeaker identifies all curriculum dialogue participants to 
 
 
 
+test('Book 3 speakers resolve to their own portraits, including simplified and full names', async () => {
+  const { getCharacterForSpeaker } = await import('../../src/utils/lesson/speakerCharacters');
+  const speakers = {
+    '朋子': 'tomoko', '東賢': 'dongxian', '东贤': 'dongxian', '尚恩': 'shawn',
+    '瑪莉': 'mary', '玛莉': 'mary', '芳草': 'fangcao', '家豪': 'jiahao',
+    '林家豪': 'jiahao', '明哲': 'mingzhe', '王經理': 'managerWang',
+    '王经理': 'managerWang', '職員': 'officeStaff', '职员': 'officeStaff',
+  };
+  for (const [speaker, portrait] of Object.entries(speakers)) {
+    assert.equal(getCharacterForSpeaker(speaker), portrait, speaker);
+  }
+  assert.equal(getCharacterForSpeaker('旁白'), null);
+});
+
 test('selected readings follow course order, deduplicate parts and exclude other lessons', () => {
   assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [2, 1, 2]), [0, 1]);
   assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [2]), [1]);

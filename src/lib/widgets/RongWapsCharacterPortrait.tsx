@@ -15,6 +15,15 @@ const PORTRAITS: Record<RongWapsCharacter, string> = {
   cafeWorker: new URL('../../assets/images/characters/portraits/cafeWorker.webp', import.meta.url).href,
   apartmentAgent: new URL('../../assets/images/characters/portraits/apartmentAgent.webp', import.meta.url).href,
   neighbor: new URL('../../assets/images/characters/portraits/neighbor.webp', import.meta.url).href,
+  tomoko: new URL('../../assets/images/characters/portraits/tomoko.webp', import.meta.url).href,
+  dongxian: new URL('../../assets/images/characters/portraits/dongxian.webp', import.meta.url).href,
+  shawn: new URL('../../assets/images/characters/portraits/shawn.webp', import.meta.url).href,
+  mary: new URL('../../assets/images/characters/portraits/mary.webp', import.meta.url).href,
+  fangcao: new URL('../../assets/images/characters/portraits/fangcao.webp', import.meta.url).href,
+  jiahao: new URL('../../assets/images/characters/portraits/jiahao.webp', import.meta.url).href,
+  mingzhe: new URL('../../assets/images/characters/portraits/mingzhe.webp', import.meta.url).href,
+  managerWang: new URL('../../assets/images/characters/portraits/managerWang.webp', import.meta.url).href,
+  officeStaff: new URL('../../assets/images/characters/portraits/officeStaff.webp', import.meta.url).href,
 };
 
 export interface RongWapsCharacterPortraitProps extends React.HTMLAttributes<HTMLDivElement> {
