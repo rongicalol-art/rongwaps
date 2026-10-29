@@ -1,6 +1,6 @@
 import { getDictionaryEntries, getDictionaryEntriesBatch } from './dictionaryService';
 import { findMatchingCourseVocab, findMatchingCourseRecording, getCourseVocabForWords } from './courseVocabLookup';
-import { beginnerDefinitions, sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
+import { beginnerDefinitions, sanitizeDictionaryDefinitions, sensesForReading } from '../utils/vocabulary/dictionaryDefinitions';
 import { numberToToneMarks } from '../utils/pinyin/pinyin';
 import { splitCourseMeasureWords } from '../utils/vocabulary/measureWords';
 import { audioService } from './audioService';
@@ -120,7 +120,10 @@ async function resolveSentenceWord(
       // Beginner hover: skip proper-noun / abbreviation entries (新 Xīn "abbr. for Xinjiang")
       // when a common-word entry exists, and drop those senses from the gloss.
       const matching = expectedPinyin
-        ? entries.filter(entry => entry.pinyin?.some(reading => pronunciationKey(reading) === pronunciationKey(expectedPinyin)))
+        ? entries.flatMap(entry => {
+            const senses = sensesForReading(entry, expectedPinyin);
+            return senses ? [{ ...entry, pinyin: [expectedPinyin], definitions: senses }] : [];
+          })
         : entries;
       const cleaned = matching.map((entry) => ({
         entry,

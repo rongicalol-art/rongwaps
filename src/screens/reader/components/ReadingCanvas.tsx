@@ -135,7 +135,11 @@ export function ReadingCanvas({
                 showPinyin={showPinyin}
                 showMeaning={showMeaning}
                 isUpcoming={isUpcoming}
+                currentTime={currentTime}
+                newWordChunks={newWordChunks}
                 onPlayLine={onPlayLine}
+                onPlayRange={onPlayRange}
+                wordInteractions={wordInteractions}
                 onLineRef={registerLineRef}
               />
             );
