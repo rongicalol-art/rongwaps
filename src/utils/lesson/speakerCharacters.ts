@@ -12,6 +12,20 @@ export interface CharacterProfileInfo {
 }
 
 export const CHARACTER_PROFILES: Record<RongWapsCharacter, CharacterProfileInfo> = {
+  meixin: { id: 'meixin', nameTraditional: '王美心', nameSimplified: '王美心', pinyin: 'Wáng Měixīn', englishName: 'Meixin', gender: 'female', role: 'Student', description: 'Short dark bob and round glasses.' },
+  ryosuke: { id: 'ryosuke', nameTraditional: '山本良介', nameSimplified: '山本良介', pinyin: 'Shānběn Liángjiè', englishName: 'Ryosuke', gender: 'male', role: 'Student', description: 'Dark side-parted hair and sage overshirt.' },
+  kexin: { id: 'kexin', nameTraditional: '陳可欣', nameSimplified: '陳可欣', pinyin: 'Chén Kěxīn', englishName: 'Kexin', gender: 'female', role: 'Student', description: 'Long dark waves and cobalt jacket.' },
+  yifan: { id: 'yifan', nameTraditional: '莫以凡', nameSimplified: '莫以凡', pinyin: 'Mò Yǐfán', englishName: 'Yifan', gender: 'male', role: 'Student', description: 'Chestnut waves and amber vest.' },
+  mingsheng: { id: 'mingsheng', nameTraditional: '明生', nameSimplified: '明生', pinyin: 'Míngshēng', englishName: 'Mingsheng', gender: 'male', role: 'Resident', description: 'Short dark hair and indigo overshirt.' },
+  ryusuke: { id: 'ryusuke', nameTraditional: '九十九龍介', nameSimplified: '九十九龍介', pinyin: 'Jiǔshíjiǔ Lóngjiè', englishName: 'Ryusuke', gender: 'male', role: 'Visitor', description: 'Short dark hair and navy jacket.' },
+  mrsWang: { id: 'mrsWang', nameTraditional: '王太太', nameSimplified: '王太太', pinyin: 'Wáng Tàitai', englishName: 'Mrs Wang', gender: 'female', role: 'Landlady', description: 'Dark low bun and ochre cardigan.' },
+  book2Classmate: { id: 'book2Classmate', nameTraditional: '同學', nameSimplified: '同學', pinyin: 'Tóngxué', englishName: 'Classmate', gender: 'male', role: 'Student', description: 'Short sandy hair and teal shirt.' },
+  electronicsClerk: { id: 'electronicsClerk', nameTraditional: '店員', nameSimplified: '店員', pinyin: 'Diànyuán', englishName: 'Shop assistant', gender: 'male', role: 'Shop assistant', description: 'Short dark hair and teal shirt.' },
+  confucius: { id: 'confucius', nameTraditional: '孔子', nameSimplified: '孔子', pinyin: 'Kǒngzǐ', englishName: 'Confucius', gender: 'male', role: 'Teacher', description: 'Gray beard and ochre robe.' },
+  zilu: { id: 'zilu', nameTraditional: '子路', nameSimplified: '子路', pinyin: 'Zǐlù', englishName: 'Zilu', gender: 'male', role: 'Student', description: 'Dark topknot and teal robe.' },
+  book2ChildA: { id: 'book2ChildA', nameTraditional: '小孩A', nameSimplified: '小孩A', pinyin: 'Xiǎohái A', englishName: 'Child A', gender: 'male', role: 'Child', description: 'Dark topknot and red robe.' },
+  book2ChildB: { id: 'book2ChildB', nameTraditional: '小孩B', nameSimplified: '小孩B', pinyin: 'Xiǎohái B', englishName: 'Child B', gender: 'male', role: 'Child', description: 'Dark topknot and blue robe.' },
+
   youmei: {
     id: 'youmei',
     nameTraditional: '小林友美',
@@ -180,6 +194,24 @@ export const CHARACTER_PROFILES: Record<RongWapsCharacter, CharacterProfileInfo>
 };
 
 const SPEAKER_ALIASES: Record<string, RongWapsCharacter> = {
+  '美心': 'meixin',
+  '王美心': 'meixin',
+  '良介': 'ryosuke',
+  '山本良介': 'ryosuke',
+  '可欣': 'kexin',
+  '陳可欣': 'kexin',
+  '陈可欣': 'kexin',
+  '以凡': 'yifan',
+  '莫以凡': 'yifan',
+  '明生': 'mingsheng',
+  '龍介': 'ryusuke',
+  '龙介': 'ryusuke',
+  '王太太': 'mrsWang',
+  '孔子': 'confucius',
+  '子路': 'zilu',
+  '小孩A': 'book2ChildA',
+  '小孩B': 'book2ChildB',
+
   // Book 3 cast and office dialogue speakers.
   '朋子': 'tomoko',
   'tomoko': 'tomoko',

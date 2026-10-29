@@ -15,16 +15,14 @@ export function setToneOrigin(x: number, y: number) {
 }
 let transition: ViewTransition | undefined;
 
-function syncTone() {
+/**
+ * Applies a tone or theme change (`apply` flips attributes on <html>) as a spread from the tone origin, or
+ * instantly when the browser can't, the tab is hidden or motion is reduced. Shared by the review tone and the
+ * light/dark switch so both feel the same.
+ */
+export function changeTone(apply: () => void) {
   const root = document.documentElement;
-  const wanted = holders > 0 ? 'review' : undefined;
-  if (root.dataset.tone === wanted && !transition) return;
   transition?.skipTransition();
-  const apply = () => {
-    // A skipped transition can still run its update callback: always apply the latest claim.
-    if (holders > 0) root.dataset.tone = 'review';
-    else delete root.dataset.tone;
-  };
   if (!document.startViewTransition || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     transition = undefined;
     root.classList.remove('review-tone-transition');
@@ -52,6 +50,17 @@ function syncTone() {
   };
   void current.ready.catch(() => {}); // Skipping is expected during rapid navigation or StrictMode replay.
   void current.finished.then(clean, clean);
+}
+
+function syncTone() {
+  const root = document.documentElement;
+  const wanted = holders > 0 ? 'review' : undefined;
+  if (root.dataset.tone === wanted && !transition) return;
+  changeTone(() => {
+    // A skipped transition can still run its update callback: always apply the latest claim.
+    if (holders > 0) root.dataset.tone = 'review';
+    else delete root.dataset.tone;
+  });
 }
 
 /** One claim per mounted review surface; only the first claim and final release change tone. */

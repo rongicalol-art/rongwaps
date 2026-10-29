@@ -84,7 +84,7 @@ export function SegmentedControl<T extends string>({
               'group relative inline-flex h-10 min-w-0 flex-1 items-center justify-center rounded-control px-2 text-sm font-extrabold outline-none select-none transition-colors duration-150 focus-ring disabled:cursor-not-allowed disabled:text-ui-muted',
               orientation === 'vertical' && 'justify-start text-left',
               isSelected
-                ? tone === 'soft' ? 'text-ui-ink-strong' : 'text-white'
+                ? tone === 'soft' ? 'text-ui-ink-strong' : 'text-brand-on-primary'
                 : 'text-ui-muted-strong hover:bg-ui-surface hover:text-ui-ink-strong',
               buttonClassName,
             )}

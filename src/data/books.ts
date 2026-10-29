@@ -1,30 +1,10 @@
 /**
  * Course book catalog.
  *
- * Each book declares its identity plus a single `theme` tone: accent family,
- * text, line and canvas roles. `useBookTheme` writes it onto the global CSS
- * tokens, and the legacy class/hex fields below are derived from the tokens
- * (never from per-book hexes), so a book or the review tone recolours every
- * consumer. Do not add per-book duplicate fields back.
+ * Each book's colours (accent family, text and line roles, light and dark) live in `src/index.css` under
+ * `[data-book="N"]`; `useBookTheme` only sets that attribute. The class/hex fields below point at the shared
+ * tokens (never per-book hexes), so a book, the dark theme or the review tone recolours every consumer.
  */
-
-interface BookTheme {
-  primary: string;
-  primaryEdge: string;
-  primaryDeep: string;
-  primarySoft: string;
-  primarySoftEdge: string;
-  primaryTrack: string;
-  /** Selected-choice / deck wash behind accent text. */
-  primaryWash: string;
-  practiceCanvas: string;
-  inkStrong: string;
-  ink: string;
-  mutedStrong: string;
-  muted: string;
-  border: string;
-  divider: string;
-}
 
 interface BookMeta {
   id: number;
@@ -44,7 +24,6 @@ type CourseBook = BookMeta & {
   accentHex: string;
   edgeHex: string;
   buttonEdge: string;
-  theme: BookTheme;
 };
 
 /** Beta: only Book 1, Introduction + Lessons 1-8 are playable. Raise or remove to open more. */
@@ -53,7 +32,7 @@ export { BETA_LAST_LESSON } from '../../shared/courseAccess';
 
 const BEYOND_BETA_BOOK_STATUS: BookMeta['status'] = 'locked';
 
-function buildBook(meta: BookMeta, theme: BookTheme): CourseBook {
+function buildBook(meta: BookMeta): CourseBook {
   return {
     ...meta,
     bg: 'bg-brand-primary-wash',
@@ -63,86 +42,21 @@ function buildBook(meta: BookMeta, theme: BookTheme): CourseBook {
     accentHex: 'var(--color-brand-primary)',
     edgeHex: 'var(--color-brand-primary-edge)',
     buttonEdge: 'border-brand-primary-edge',
-    theme,
   };
 }
 
 export const SAMPLE_BOOKS: CourseBook[] = [
   buildBook(
     { id: 1, label: 'Book 1', title: 'Modern Chinese 1', subtitle: '時代華語 1', level: 'A1', progress: 0, status: 'active' },
-    {
-      primary: '#3A7CA5',
-      primaryEdge: '#2C6385',
-      primaryDeep: '#1F4D6B',
-      primarySoft: '#F2F6F8',
-      primarySoftEdge: '#C3D7E3',
-      primaryTrack: '#D3DBE0',
-      primaryWash: '#E4EDF3',
-      practiceCanvas: '#F3F2F0',
-      inkStrong: '#34312D',
-      ink: '#4A4743',
-      mutedStrong: '#777777',
-      muted: '#8F8B86',
-      border: '#CBC8C3',
-      divider: '#DEDBD6',
-    },
   ),
   buildBook(
     { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
-    {
-      primary: '#D4793A',
-      primaryEdge: '#B05F27',
-      primaryDeep: '#8A4A1E',
-      primarySoft: '#FBF5EF',
-      primarySoftEdge: '#EBCFB5',
-      primaryTrack: '#E3D9CE',
-      primaryWash: '#F7E8D8',
-      practiceCanvas: '#F3F2F0',
-      inkStrong: '#3A302A',
-      ink: '#54483F',
-      mutedStrong: '#7D7268',
-      muted: '#968B80',
-      border: '#D1C7BB',
-      divider: '#E3DACF',
-    },
   ),
   buildBook(
     { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: 'unlocked' },
-    {
-      primary: '#A0522D',
-      primaryEdge: '#8B4513',
-      primaryDeep: '#6E3510',
-      primarySoft: '#FBF7F3',
-      primarySoftEdge: '#E6D3C5',
-      primaryTrack: '#DDD3CB',
-      primaryWash: '#F6EDE5',
-      practiceCanvas: '#F3F2F0',
-      inkStrong: '#37302B',
-      ink: '#4F4640',
-      mutedStrong: '#7A7068',
-      muted: '#93887F',
-      border: '#CFC5BC',
-      divider: '#E0D8D0',
-    },
   ),
   buildBook(
     { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
-    {
-      primary: '#4F9F2A',
-      primaryEdge: '#3F8420',
-      primaryDeep: '#2C5F16',
-      primarySoft: '#F6FAF3',
-      primarySoftEdge: '#C9E4B4',
-      primaryTrack: '#CED9C7',
-      primaryWash: '#EDF9E2',
-      practiceCanvas: '#F3F2F0',
-      inkStrong: '#2F352C',
-      ink: '#454B41',
-      mutedStrong: '#70776B',
-      muted: '#8A9185',
-      border: '#C6CDC0',
-      divider: '#DBE0D6',
-    },
   ),
 ];
 

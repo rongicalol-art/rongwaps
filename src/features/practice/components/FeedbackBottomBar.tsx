@@ -157,7 +157,7 @@ export function FeedbackBottomBar({
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   className="flex w-full flex-col px-2 origin-bottom md:px-0 lg:min-w-0 lg:flex-1 lg:flex-row lg:items-center lg:gap-5"
                 >
-                  <div className={`flex shrink-0 items-center gap-2 text-[18px] font-extrabold sm:text-[20px] ${isCorrect ? 'text-feedback-success-edge' : 'text-feedback-danger-edge'}`}>
+                  <div className={`flex shrink-0 items-center gap-2 text-[18px] font-extrabold sm:text-[20px] ${isCorrect ? 'text-feedback-success-text' : 'text-feedback-danger-text'}`}>
                     <motion.span
                       initial={reduceMotion ? false : { scale: 0.4, rotate: isCorrect ? -12 : 12 }}
                       animate={{ scale: 1, rotate: 0 }}
@@ -220,7 +220,7 @@ export function FeedbackBottomBar({
                   >
                     <span className="relative">
                       {isCorrect ? 'Continue' : 'Got it'}
-                      <KeyChip className="border-white/40 text-white/80">Space</KeyChip>
+                      <KeyChip className="border-ui-on-solid/40 text-ui-on-solid/80">Space</KeyChip>
                     </span>
                   </ActionButton>
                 ) : showCheckAction ? (
@@ -234,7 +234,7 @@ export function FeedbackBottomBar({
                   >
                     <span className="relative">
                       Check
-                      <KeyChip className="border-white/40 text-white/80">Space</KeyChip>
+                      <KeyChip className="border-ui-on-solid/40 text-ui-on-solid/80">Space</KeyChip>
                     </span>
                   </ActionButton>
                 ) : null}

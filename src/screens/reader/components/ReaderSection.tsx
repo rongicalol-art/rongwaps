@@ -4,7 +4,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { useDialogueAlignment } from '../hooks/useDialogueAlignment';
 import { useReaderStudyData } from '../hooks/useReaderStudyData';
-import { isNarrativeReading } from '../utils/narrativeParagraphs';
+import { isEssayReading } from '../../../utils/lesson/readingKind';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { ReaderSummary } from './ReaderSummary';
 
@@ -72,7 +72,7 @@ export function ReaderSection({ reading, index, grouped, first, onPlay, onOpenGr
         </div>
       )}
       <Suspense fallback={null}>
-        {isNarrativeReading(reading) ? <ReadingNarrativeView {...props} /> : <ReadingCanvas {...props} />}
+        {isEssayReading(reading) ? <ReadingNarrativeView {...props} /> : <ReadingCanvas {...props} />}
       </Suspense>
     </section>
   );

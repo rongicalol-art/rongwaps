@@ -80,13 +80,13 @@ export const FavoriteButton = React.memo(function FavoriteButton({
         ? cn(
             'rounded-control border transition-colors focus-ring',
             isSaved
-              ? 'bg-feedback-warning-subtle text-feedback-warning-edge border-feedback-warning/30 hover:bg-feedback-warning-subtle/80'
+              ? 'bg-feedback-warning-subtle text-feedback-warning-text border-feedback-warning/30 hover:bg-feedback-warning-subtle/80'
               : 'bg-ui-surface border-ui-border text-ui-ink hover:bg-ui-hover',
           )
         : cn(
             'rounded-control outline-none transition-colors focus-ring',
             isSaved
-              ? 'text-feedback-warning-edge hover:opacity-80'
+              ? 'text-feedback-warning-text hover:opacity-80'
               : 'text-ui-muted hover:text-feedback-warning',
           );
 
@@ -110,7 +110,7 @@ export const FavoriteButton = React.memo(function FavoriteButton({
       <AppIcon
         name={isSaved || idleFilled ? 'bookmarkFilled' : 'bookmark'}
         size={iconSize}
-        className={isSaved ? 'text-feedback-warning-edge' : undefined}
+        className={isSaved ? 'text-feedback-warning-text' : undefined}
       />
     </button>
   );

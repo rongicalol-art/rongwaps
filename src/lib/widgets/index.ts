@@ -10,6 +10,7 @@ export * from './ToggleSwitch';
 
 // Icons, flags, and branded presentation
 export * from './AppIcon';
+export * from './SpeakerIcon';
 export * from './BrandWordmark';
 export * from './CloudPuff';
 export * from './CountryFlag';

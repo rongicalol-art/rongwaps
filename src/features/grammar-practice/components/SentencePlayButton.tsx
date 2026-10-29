@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { IconActionButton, SpeakerIcon } from '../../../lib/widgets';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 import { audioService } from '../../../services/audioService';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import { useAppStore } from '../../../store/useAppStore';
@@ -14,7 +15,8 @@ export function SentencePlayButton({ sentence, script }: { sentence: PracticeSen
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const rate = useAppStore((state) => state.pronunciationRate);
-  const play = () => void playSentence(textIn(sentence, script), sentence.audio, script, rate);
+  const speaker = useAudioPending();
+  const play = () => { speaker.claim(); void playSentence(textIn(sentence, script), sentence.audio, script, rate); };
 
   useEffect(() => {
     if (autoPlayAudio || replayAudioAfterAnswer) {
@@ -30,7 +32,7 @@ export function SentencePlayButton({ sentence, script }: { sentence: PracticeSen
       onClick={play}
       size="sm"
       variant="quiet"
-      icon={<AppIcon name="audio" size={22} />}
+      icon={<SpeakerIcon status={speaker.status()} size={22} />}
       label={sentence.audio?.voice === 'book' ? 'Play the sentence (book recording)' : 'Play the sentence'}
       className="-my-1 shrink-0 text-ui-ink-strong hover:brightness-90"
     />

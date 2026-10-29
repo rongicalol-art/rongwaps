@@ -1,3 +1,4 @@
+import { isNarratorSpeaker } from '../../../utils/lesson/readingKind';
 import type { DialogueAlignment, ReadingParagraph, ReadingRecord } from '../../../types/models';
 import { getWordChunks, type PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import { getDialogueSpeakerColorMap, getSpeakerDotColor } from '../../../utils/lesson/speakerColors';
@@ -65,7 +66,7 @@ export function buildReadingLines({
       : paragraph.traditional;
     const lineAlignment = alignment?.lines[index];
     const chunks = getWordChunks(text, paragraph.pinyin, lineAlignment);
-    const isNarrator = !paragraph.speaker || paragraph.speaker.toLowerCase() === 'narrator';
+    const isNarrator = isNarratorSpeaker(paragraph.speaker);
     const isRightAligned = !isNarrator && Boolean(rightSpeaker && paragraph.speaker === rightSpeaker);
     const sentences = splitChunksIntoSentences(chunks, index, lineAlignment?.start, lineAlignment?.end);
 

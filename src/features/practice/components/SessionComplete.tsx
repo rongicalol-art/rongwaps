@@ -66,7 +66,7 @@ interface StatTileProps {
 function StatTile({ label, icon, shown, format, frameClass, inkClass, bodyRef }: StatTileProps) {
   return (
     <div className={`origin-bottom rounded-sm border-b-4 p-0.5 ${frameClass}`}>
-      <span className="block py-1 text-center text-[11px] font-black uppercase tracking-[0.09em] text-white">{label}</span>
+      <span className="block py-1 text-center text-[11px] font-black uppercase tracking-[0.09em] text-ui-on-solid">{label}</span>
       <span ref={bodyRef} className={`relative flex h-13 items-center justify-center gap-1.5 overflow-hidden rounded-[10px] bg-ui-surface md:h-14 ${inkClass}`}>
         <AppIcon name={icon} size={20} className="shrink-0" />
         <b className="inline-block text-[22px] font-black tabular-nums md:text-[24px]">{format(shown)}</b>
@@ -314,7 +314,7 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
 
       <h1
         ref={titleRef}
-        className={`flex flex-wrap justify-center gap-[0.3em] text-center text-[28px] font-black md:text-[34px] ${isPerfect ? 'text-feedback-success-edge' : 'text-ui-ink-strong'}`}
+        className={`flex flex-wrap justify-center gap-[0.3em] text-center text-[28px] font-black md:text-[34px] ${isPerfect ? 'text-feedback-success-text' : 'text-ui-ink-strong'}`}
       >
         {headline.map((word) => <span key={word} className="inline-block max-w-full">{word}</span>)}
       </h1>
@@ -322,15 +322,15 @@ export function SessionComplete({ headline: customHeadline, reviewLabel = 'Revie
       <div ref={tilesRef} className="relative z-10 mt-7 grid w-full max-w-[360px] grid-cols-3 gap-3 md:mt-8 md:max-w-[440px] md:gap-4">
         <StatTile
           label="Words" icon="cards" shown={wordsShown} format={String} bodyRef={wordsBodyRef}
-          frameClass="border-brand-primary-edge bg-brand-primary" inkClass="text-brand-primary-edge"
+          frameClass="border-brand-primary-edge bg-brand-primary" inkClass="text-brand-primary-text"
         />
         <StatTile
           label={pctLabel} icon="target" shown={pctShown} format={(v) => `${v}%`}
-          frameClass="border-feedback-success-edge bg-feedback-success" inkClass="text-feedback-success-edge"
+          frameClass="border-feedback-success-edge bg-feedback-success" inkClass="text-feedback-success-text"
         />
         <StatTile
           label="Time" icon="clock" shown={secondsShown} format={formatTime}
-          frameClass="border-palette-purple-edge bg-palette-purple" inkClass="text-palette-purple-edge"
+          frameClass="border-palette-purple-edge bg-palette-purple" inkClass="text-palette-purple-text"
         />
       </div>
 

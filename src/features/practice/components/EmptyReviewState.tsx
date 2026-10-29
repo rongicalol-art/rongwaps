@@ -27,7 +27,7 @@ export function EmptyReviewState({ onClose, accentBg, buttonEdge, title = "You'r
               variant="primary"
               size="lg"
               fullWidth
-              className={`text-white uppercase tracking-widest ${accentBg} ${buttonEdge}`}
+              className={`text-brand-on-primary uppercase tracking-widest ${accentBg} ${buttonEdge}`}
               onClick={onClose}
             >
               BACK TO PROFILE

@@ -101,7 +101,7 @@ export function SettingsRadioRow({ checked, label, detail, className, ...props }
         className={cn(
           'flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors',
           checked
-            ? 'bg-brand-primary text-white shadow-[0_2px_0_var(--color-brand-primary-edge)]'
+            ? 'bg-brand-primary text-brand-on-primary shadow-[0_2px_0_var(--color-brand-primary-edge)]'
             : 'bg-ui-canvas text-transparent',
         )}
       >

@@ -29,7 +29,7 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 - Rounded pills look bad. Pills and chips are squarish.
 
 **Colour has a job.**
-- The warm off-white canvas never changes: never pure white, never blue-tinted, no dark mode.
+- Two themes: warm off-white (light) and warm charcoal (dark, the "Dark mode" setting). Never pure white, never blue-tinted. Colour only through tokens, so both themes follow; never `text-white` or a hex in components.
 - The book's accent colour carries progress, selection and done states.
 - Green, red and amber are for answer feedback only.
 - The review round uses a muted honey tone, and text and lines warm up with it.

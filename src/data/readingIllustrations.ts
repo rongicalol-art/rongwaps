@@ -10,6 +10,135 @@ import type { ReadingIllustration } from '../types/models';
  * controls-as-images.
  */
 const READING_ILLUSTRATIONS: Record<string, ReadingIllustration> = {
+  'B2L01-R01': {
+    url: new URL('../assets/images/readings/b2l01-r01-scene.webp', import.meta.url).href,
+    alt: "Advice on the campus steps",
+  },
+  'B2L01-R02': {
+    url: new URL('../assets/images/readings/b2l01-r02-scene.webp', import.meta.url).href,
+    alt: "First dance",
+  },
+  'B2L02-R01': {
+    url: new URL('../assets/images/readings/b2l02-r01-scene.webp', import.meta.url).href,
+    alt: "Too many chores",
+  },
+  'B2L02-R02': {
+    url: new URL('../assets/images/readings/b2l02-r02-scene.webp', import.meta.url).href,
+    alt: "A cleaner dorm",
+  },
+  'B2L03-R01': {
+    url: new URL('../assets/images/readings/b2l03-r01-scene.webp', import.meta.url).href,
+    alt: "Viewing the apartment",
+  },
+  'B2L03-R02': {
+    url: new URL('../assets/images/readings/b2l03-r02-scene.webp', import.meta.url).href,
+    alt: "Finding a place to live",
+  },
+  'B2L04-R01': {
+    url: new URL('../assets/images/readings/b2l04-r01-scene.webp', import.meta.url).href,
+    alt: "Trying night-market snacks",
+  },
+  'B2L04-R02': {
+    url: new URL('../assets/images/readings/b2l04-r02-scene.webp', import.meta.url).href,
+    alt: "A lively Taiwanese night market",
+  },
+  'B2L05-R01': {
+    url: new URL('../assets/images/readings/b2l05-r01-scene.webp', import.meta.url).href,
+    alt: "Welcome to the community",
+  },
+  'B2L05-R02': {
+    url: new URL('../assets/images/readings/b2l05-r02-scene.webp', import.meta.url).href,
+    alt: "Mooncakes under the moon",
+  },
+  'B2L06-R01': {
+    url: new URL('../assets/images/readings/b2l06-r01-scene.webp', import.meta.url).href,
+    alt: "A birthday at karaoke",
+  },
+  'B2L06-R02': {
+    url: new URL('../assets/images/readings/b2l06-r02-scene.webp', import.meta.url).href,
+    alt: "Singing together",
+  },
+  'B2L07-R01': {
+    url: new URL('../assets/images/readings/b2l07-r01-scene.webp', import.meta.url).href,
+    alt: "Booking the Hualien train",
+  },
+  'B2L07-R02': {
+    url: new URL('../assets/images/readings/b2l07-r02-scene.webp', import.meta.url).href,
+    alt: "Alishan tickets secured",
+  },
+  'B2L08-R01': {
+    url: new URL('../assets/images/readings/b2l08-r01-scene.webp', import.meta.url).href,
+    alt: "One last sticker",
+  },
+  'B2L08-R02': {
+    url: new URL('../assets/images/readings/b2l08-r02-scene.webp', import.meta.url).href,
+    alt: "Caught up in Korean dramas",
+  },
+  'B2L09-R01': {
+    url: new URL('../assets/images/readings/b2l09-r01-scene.webp', import.meta.url).href,
+    alt: "Time to sleep",
+  },
+  'B2L09-R02': {
+    url: new URL('../assets/images/readings/b2l09-r02-scene.webp', import.meta.url).href,
+    alt: "Learning with friends",
+  },
+  'B2L10-R01': {
+    url: new URL('../assets/images/readings/b2l10-r01-scene.webp', import.meta.url).href,
+    alt: "An invitation to exercise",
+  },
+  'B2L10-R02': {
+    url: new URL('../assets/images/readings/b2l10-r02-scene.webp', import.meta.url).href,
+    alt: "Moving feels better",
+  },
+  'B2L11-R01': {
+    url: new URL('../assets/images/readings/b2l11-r01-scene.webp', import.meta.url).href,
+    alt: "Choosing a student club",
+  },
+  'B2L11-R02': {
+    url: new URL('../assets/images/readings/b2l11-r02-scene.webp', import.meta.url).href,
+    alt: "Service beyond the classroom",
+  },
+  'B2L12-R01': {
+    url: new URL('../assets/images/readings/b2l12-r01-scene.webp', import.meta.url).href,
+    alt: "Thinking about future jobs",
+  },
+  'B2L12-R02': {
+    url: new URL('../assets/images/readings/b2l12-r02-scene.webp', import.meta.url).href,
+    alt: "A chance to work outdoors",
+  },
+  'B2L13-R01': {
+    url: new URL('../assets/images/readings/b2l13-r01-scene.webp', import.meta.url).href,
+    alt: "Comparing a laptop and tablet",
+  },
+  'B2L13-R02': {
+    url: new URL('../assets/images/readings/b2l13-r02-scene.webp', import.meta.url).href,
+    alt: "Do not forget your phone",
+  },
+  'B2L14-R01': {
+    url: new URL('../assets/images/readings/b2l14-r01-scene.webp', import.meta.url).href,
+    alt: "Sharing New Year traditions",
+  },
+  'B2L14-R02': {
+    url: new URL('../assets/images/readings/b2l14-r02-scene.webp', import.meta.url).href,
+    alt: "Nian flees the red doorway",
+  },
+  'B2L15-R01': {
+    url: new URL('../assets/images/readings/b2l15-r01-scene.webp', import.meta.url).href,
+    alt: "The question about the sun",
+  },
+  'B2L15-R02': {
+    url: new URL('../assets/images/readings/b2l15-r02-scene.webp', import.meta.url).href,
+    alt: "A teacher welcomes every learner",
+  },
+  'B2L16-R01': {
+    url: new URL('../assets/images/readings/b2l16-r01-scene.webp', import.meta.url).href,
+    alt: "Looking at culture-day photos",
+  },
+  'B2L16-R02': {
+    url: new URL('../assets/images/readings/b2l16-r02-scene.webp', import.meta.url).href,
+    alt: "A culture-day performance",
+  },
+
   'B1L01-R01': {
     url: new URL('../assets/images/readings/b1l01-r01-new-classmate-v8.webp', import.meta.url).href,
     alt: 'Youmei meets new classmates as Yiwen introduces her and Zhongming turns from his desk.',

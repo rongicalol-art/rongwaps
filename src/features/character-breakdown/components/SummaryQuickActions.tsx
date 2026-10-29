@@ -1,4 +1,5 @@
-import { AppIcon } from '../../../lib/widgets';
+import { AppIcon, SpeakerIcon } from '../../../lib/widgets';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 import { audioService } from '../../../services/audioService';
 import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
 import { FavoriteButton } from '../../library';
@@ -45,6 +46,7 @@ export function SummaryQuickActions({
   const [recording, setRecording] = useState<{ key: string; audio?: string; contextWord?: string } | null>(null);
   const recordingKey = `${headword}|${reading}`;
   const requestId = useRef(0);
+  const speaker = useAudioPending();
   useEffect(() => {
     if (!showAudio) return;
     const counter = requestId;
@@ -74,6 +76,7 @@ export function SummaryQuickActions({
     if (recording?.key !== recordingKey) return;
     const request = ++requestId.current;
     audioService.stop();
+    speaker.claim();
     if (!recording.audio) { speak(); return; }
     const unavailable = () => {
       if (requestId.current === request) speak();
@@ -95,9 +98,9 @@ export function SummaryQuickActions({
         onClick={play}
         className={`${recording.contextWord ? 'flex h-10 items-center gap-1 rounded-compact px-2 focus-ring' : ICON_ACTION} text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95`}
       >
-        <AppIcon name="pronounce" size={22} />
+        {speaker.status() ? <SpeakerIcon status={speaker.status()} size={22} /> : <AppIcon name="pronounce" size={22} />}
         {recording.contextWord && <span className="text-sm">Hear {recording.contextWord}</span>}
-      </button> : <span role="status" className="text-xs text-ui-muted-strong">Checking audio…</span>)}
+      </button> : <span role="status" aria-label="Checking audio" className={`${ICON_ACTION} text-ui-muted`}><SpeakerIcon status="loading" size={22} /></span>)}
       <FavoriteButton
         word={headword}
         traditional={primary?.traditional}

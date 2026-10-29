@@ -29,10 +29,10 @@ const edgeVariantClasses: Record<IconActionButtonVariant, string> = {
 const surfaceVariantClasses: Record<IconActionButtonVariant, string> = {
   quiet: 'bg-transparent text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong active:bg-ui-divider',
   surface: 'border-2 border-ui-border bg-ui-surface text-ui-ink hover:bg-ui-hover',
-  primary: 'bg-brand-primary text-white hover:brightness-105',
-  success: 'border-2 border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge hover:brightness-95',
+  primary: 'bg-brand-primary text-brand-on-primary hover:brightness-105',
+  success: 'border-2 border-feedback-success-edge bg-feedback-success-surface text-feedback-success-text hover:brightness-95',
   danger: 'bg-transparent text-feedback-danger hover:bg-feedback-danger/10 active:bg-feedback-danger/15',
-  warning: 'border-2 border-feedback-warning-edge bg-ui-surface text-feedback-warning-edge hover:bg-ui-hover',
+  warning: 'border-2 border-feedback-warning-edge bg-ui-surface text-feedback-warning-text hover:bg-ui-hover',
 };
 
 export const IconActionButton = forwardRef<HTMLButtonElement, IconActionButtonProps>(function IconActionButton({

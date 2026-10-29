@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+ <!-- Learn: a stack of green study cards with 中 on the front (drawn in-house in the flat icon style). -->
+ <rect x="7.4" y="1.6" width="14" height="17.6" rx="2.4" transform="rotate(10 14.4 10.4)" fill="#16a085"/>
+ <rect x="3" y="4.2" width="14.4" height="18.2" rx="2.4" fill="#1e8449"/>
+ <rect x="3" y="3.4" width="14.4" height="18" rx="2.4" fill="#2ecc71"/>
+ <g fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6.4 9.6h7.6v5.2H6.4Z"/>
+  <path d="M10.2 6.6v11.2"/>
+ </g>
+</svg>

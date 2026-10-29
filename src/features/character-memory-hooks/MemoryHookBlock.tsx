@@ -52,11 +52,11 @@ export function MemoryHookBlock({ cacheKey, word, pinyin, emptyText, className }
           aria-hidden="true"
           className="pointer-events-none absolute -right-8 -top-10 h-24 w-24 rounded-full border-[16px] border-white/20"
         />
-        <span className={cn('relative font-chinese font-bold leading-none text-ui-ink-strong', metrics.glyph)}>
+        <span className={cn('relative font-chinese font-bold leading-none text-feedback-on-warning', metrics.glyph)}>
           {word}
         </span>
         {pinyin && (
-          <span className="relative max-w-full px-2 text-center text-[10px] font-black leading-tight tracking-wide text-ui-ink-strong/70 sm:text-[11px]">
+          <span className="relative max-w-full px-2 text-center text-[10px] font-black leading-tight tracking-wide text-feedback-on-warning/70 sm:text-[11px]">
             {pinyin}
           </span>
         )}
@@ -64,8 +64,8 @@ export function MemoryHookBlock({ cacheKey, word, pinyin, emptyText, className }
 
       <div className="flex min-w-0 flex-1 flex-col justify-center p-4 sm:p-5">
         <div className="mb-2 flex items-center gap-1.5">
-          <AppIcon name="sparkles" size={13} className="text-feedback-warning-edge" />
-          <span className="text-[11px] font-black uppercase tracking-wider text-feedback-warning-edge">
+          <AppIcon name="sparkles" size={13} className="text-feedback-warning-text" />
+          <span className="text-[11px] font-black uppercase tracking-wider text-feedback-warning-text">
             Memory hook
           </span>
         </div>

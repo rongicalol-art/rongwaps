@@ -249,10 +249,10 @@ export function ScreenHeader({
                     },
                   })}
                 >
-                <div ref={progressRailRef} role={onProgressSeek ? undefined : 'progressbar'} aria-label={onProgressSeek ? undefined : 'Study progress'} aria-valuemin={onProgressSeek ? undefined : 0} aria-valuemax={onProgressSeek ? undefined : 100} aria-valuenow={onProgressSeek ? undefined : Math.round(Math.max(0, Math.min(100, progress)))} className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track">
+                <div ref={progressRailRef} role={onProgressSeek ? undefined : 'progressbar'} aria-label={onProgressSeek ? undefined : 'Study progress'} aria-valuemin={onProgressSeek ? undefined : 0} aria-valuemax={onProgressSeek ? undefined : 100} aria-valuenow={onProgressSeek ? undefined : Math.round(Math.max(0, Math.min(100, progress)))} className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track transition-[background-color] duration-700 ease-out [view-transition-name:practice-progress]">
                   <motion.div
                     data-practice-progress-fill
-                    className={`absolute inset-0 rounded-full ${accentBgClassName}`}
+                    className={`absolute inset-0 rounded-full transition-[background-color] duration-700 ease-out ${accentBgClassName}`}
                     style={{ x: progressOffset }}
                   />
                   {/* A race hands the bar to RaceBar (own fill + shine); this one would run ahead of it. */}
@@ -273,7 +273,7 @@ export function ScreenHeader({
             </div>
           ) : title ? (
             <div className="min-w-0 text-left">
-              <p className="truncate text-[9px] font-black uppercase tracking-[0.08em] text-brand-primary sm:text-[10px]">{eyebrow}</p>
+              <p className="truncate text-[9px] font-black uppercase tracking-[0.08em] text-brand-primary-text sm:text-[10px]">{eyebrow}</p>
               <h1 className={cn(
                 "truncate text-base font-black text-ui-ink sm:text-lg",
                 /[\u3400-\u9FFF]/.test(title) ? "font-chinese" : "font-sans",
@@ -292,7 +292,7 @@ export function ScreenHeader({
               {cleanupPhase.currentIndex + 1} / {cleanupPhase.totalCount}
             </span>
           ) : isRetry ? (
-            <span className="mt-0.5 text-xs font-extrabold tracking-wider text-feedback-warning-edge sm:text-sm sm:tracking-widest">
+            <span className="mt-0.5 text-xs font-extrabold tracking-wider text-feedback-warning-text sm:text-sm sm:tracking-widest">
               Again
             </span>
           ) : (

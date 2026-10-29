@@ -21,6 +21,7 @@ export function PracticeFaces() {
   const chat = useAppStore((state) => state.socialChat?.messages ?? EMPTY);
   const race = useAppStore((state) => state.race);
   const reduce = useReducedMotion();
+  const onlineTotal = useAppStore((state) => Math.max(0, state.socialOnlineTotal - (state.showOnline && state.socialStatus === 'live' ? 1 : 0)));
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState<number | null>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -55,6 +56,7 @@ export function PracticeFaces() {
     window.setTimeout(() => { setOpen(false); setSent(null); }, 650);
   };
   const lastLine = [...chat].reverse().find((line) => line.u !== me && !line.r);
+  const openOnline = () => { setOpen(false); useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online' } }); };
   const openChat = () => { setOpen(false); useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'chat' } }); };
   return (
     <div ref={root} className="relative mr-1">
@@ -76,7 +78,7 @@ export function PracticeFaces() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute right-0 top-[calc(100%+0.5rem)] z-popover w-[21rem] max-w-[calc(100vw-2rem)] rounded-feature border-2 border-ui-divider bg-ui-surface p-4"
+            className="fixed right-3 top-[calc(var(--size-window-header)+env(safe-area-inset-top,0px)+0.5rem)] z-popover w-[21rem] max-w-[calc(100vw-1.5rem)] md:right-6 rounded-feature border-2 border-ui-divider bg-ui-surface p-4"
           >
             <div className="flex items-center justify-between">
               <span className="text-lg font-black text-ui-ink-strong">Studying with you</span>
@@ -84,7 +86,13 @@ export function PracticeFaces() {
             </div>
             <div className="mt-1">
               {others.slice(0, 3).map((person) => <PersonRow key={person.u} person={person} lesson={lesson} />)}
-              {others.length > 3 && <p className="pb-1 pt-2 text-sm font-extrabold text-ui-muted">+{others.length - 3} more in this lesson</p>}
+              {(others.length > 3 || onlineTotal > others.length) && (
+                <button type="button" onClick={openOnline} className="-mx-1 mt-1 flex items-center gap-1.5 rounded-compact px-1 py-1 text-sm font-extrabold text-ui-muted outline-none transition-colors hover:text-ui-ink focus-ring-inline">
+                  {others.length > 3 && <span>+{others.length - 3} more here</span>}
+                  {others.length > 3 && onlineTotal > others.length && <span aria-hidden>·</span>}
+                  {onlineTotal > others.length && <><span className="h-2 w-2 rounded-full bg-feedback-success" />{onlineTotal} online</>}
+                </button>
+              )}
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {CHEER_PHRASES.slice(0, 2).map((text, index) => (
@@ -94,18 +102,18 @@ export function PracticeFaces() {
                 </ActionButton>
               ))}
             </div>
-            {/* The chat entry is the latest line itself: tap it to jump into the lesson chat. */}
+            {/* One chat entry: the latest line, opening the lesson chat (its title switches to Everyone). */}
             <button
               type="button"
               onClick={openChat}
               className={`mt-3 flex w-full items-center gap-3 rounded-control border-2 px-3 py-2.5 text-left outline-none transition-colors focus-ring border-ui-divider hover:bg-ui-hover`}
             >
-              {lastLine ? <Avatar name={lastLine.n} color={lastLine.c} size="md" src={lastLine.i} /> : <AppIcon name="chat" size={22} className="text-ui-ink-strong" />}
+              {lastLine ? <Avatar name={lastLine.n} color={lastLine.c} size="md" src={lastLine.i} /> : <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ui-hover text-ui-muted-strong"><AppIcon name="chat" size={20} /></span>}
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-1.5 text-sm font-black text-ui-ink-strong">
-                  Lesson chat{unread && <span className="h-2 w-2 rounded-full bg-ui-ink-strong" aria-label="New messages" />}
+                  Chat{unread && <span className="h-2 w-2 rounded-full bg-ui-ink-strong" aria-label="New messages" />}
                 </span>
-                <span className="block truncate font-chinese text-sm font-bold text-ui-ink-strong">
+                <span className="block truncate font-chinese text-sm font-bold text-ui-muted-strong">
                   {lastLine ? <><span className="font-black text-ui-ink">{lastLine.n}</span> {lastLine.t}</> : 'Say hi to your classmates'}
                 </span>
               </span>

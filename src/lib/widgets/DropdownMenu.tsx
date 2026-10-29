@@ -223,7 +223,7 @@ export function DropdownMenuItem({
       )}
       {...props}
     >
-      {icon && <span className={cn('shrink-0 text-[21px]', active && 'text-brand-primary', iconClassName)}>{icon}</span>}
+      {icon && <span className={cn('shrink-0 text-[21px]', active && 'text-brand-primary-text', iconClassName)}>{icon}</span>}
       <span className="min-w-0 flex-1 truncate">{children ?? label}</span>
     </button>
   );

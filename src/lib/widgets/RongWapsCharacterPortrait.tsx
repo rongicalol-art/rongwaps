@@ -3,6 +3,20 @@ import { cn } from '../../utils/cn';
 import type { RongWapsCharacter } from '../../types/models';
 
 const PORTRAITS: Record<RongWapsCharacter, string> = {
+  meixin: new URL('../../assets/images/characters/portraits/meixin.webp', import.meta.url).href,
+  ryosuke: new URL('../../assets/images/characters/portraits/ryosuke.webp', import.meta.url).href,
+  kexin: new URL('../../assets/images/characters/portraits/kexin.webp', import.meta.url).href,
+  yifan: new URL('../../assets/images/characters/portraits/yifan.webp', import.meta.url).href,
+  mingsheng: new URL('../../assets/images/characters/portraits/mingsheng.webp', import.meta.url).href,
+  ryusuke: new URL('../../assets/images/characters/portraits/ryusuke.webp', import.meta.url).href,
+  mrsWang: new URL('../../assets/images/characters/portraits/mrsWang.webp', import.meta.url).href,
+  book2Classmate: new URL('../../assets/images/characters/portraits/book2Classmate.webp', import.meta.url).href,
+  electronicsClerk: new URL('../../assets/images/characters/portraits/electronicsClerk.webp', import.meta.url).href,
+  confucius: new URL('../../assets/images/characters/portraits/confucius.webp', import.meta.url).href,
+  zilu: new URL('../../assets/images/characters/portraits/zilu.webp', import.meta.url).href,
+  book2ChildA: new URL('../../assets/images/characters/portraits/book2ChildA.webp', import.meta.url).href,
+  book2ChildB: new URL('../../assets/images/characters/portraits/book2ChildB.webp', import.meta.url).href,
+
   youmei: new URL('../../assets/images/characters/portraits/youmei.webp', import.meta.url).href,
   zhongming: new URL('../../assets/images/characters/portraits/zhongming.webp', import.meta.url).href,
   yiwen: new URL('../../assets/images/characters/portraits/yiwen.webp', import.meta.url).href,

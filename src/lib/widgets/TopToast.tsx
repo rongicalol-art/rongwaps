@@ -37,7 +37,7 @@ export function TopToast({ open, title, message, icon = 'bell', dismissLabel = '
             'flex flex-col gap-3 rounded-feature border-2 border-b-[6px] border-ui-border bg-ui-surface p-4',
             inline
               ? 'relative max-w-sm'
-              : 'fixed left-3 right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-popover md:left-auto md:right-6 md:w-[24rem]',
+              : 'fixed left-3 right-3 top-[calc(var(--size-window-header)+env(safe-area-inset-top,0px)+0.75rem)] z-popover md:left-auto md:right-6 md:w-[24rem]',
           )}
         >
           <div className="flex items-start gap-3">

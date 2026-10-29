@@ -52,8 +52,8 @@ export function MemoryHookPopover({
     >
       <span className="block rounded-compact border-2 border-feedback-warning-edge border-b-[length:var(--depth-sm)] bg-feedback-warning-surface px-3 py-2 text-left shadow-ambient-sm">
         <span className="flex items-center gap-1.5 mb-1">
-          <AppIcon name="sparkles" size={11} className="text-feedback-warning-edge" />
-          <span className="text-[10px] font-black uppercase tracking-wider text-feedback-warning-edge">
+          <AppIcon name="sparkles" size={11} className="text-feedback-warning-text" />
+          <span className="text-[10px] font-black uppercase tracking-wider text-feedback-warning-text">
             Memory hook
           </span>
         </span>

@@ -49,7 +49,7 @@ export function FeedbackDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: 
           maxLength={2000} required readOnly={sending} rows={6}
           aria-describedby={error ? `${fieldId}-error` : undefined}
           className="w-full resize-y rounded-control border-2 border-ui-border bg-ui-surface p-4 text-base font-semibold text-ui-ink placeholder:text-ui-muted focus-ring" />
-        {error && <p id={`${fieldId}-error`} role="alert" className="text-sm font-bold text-feedback-danger-edge">{error}</p>}
+        {error && <p id={`${fieldId}-error`} role="alert" className="text-sm font-bold text-feedback-danger-text">{error}</p>}
         {sending
           ? <p role="status" className="py-3 text-center text-sm font-bold text-ui-muted-strong">Sending…</p>
           : <ActionButton type="submit" fullWidth frontClassName="normal-case tracking-normal">Send</ActionButton>}

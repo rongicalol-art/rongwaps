@@ -147,10 +147,10 @@ function LessonItemBase({
               'h-full w-full transition-[filter,opacity] duration-200 ease-out motion-reduce:transition-none',
               isPhoto ? 'rounded-compact object-cover' : 'object-contain p-1',
               isLocked
-                ? 'opacity-35 grayscale'
+                ? 'opacity-35 [filter:var(--art-rest)]'
                 : isSelected
-                  ? 'opacity-100 grayscale-0'
-                  : 'opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0',
+                  ? 'opacity-100'
+                  : 'opacity-60 [filter:var(--art-rest)] group-hover:opacity-100 group-hover:[filter:none]',
             )}
           />
         </span>

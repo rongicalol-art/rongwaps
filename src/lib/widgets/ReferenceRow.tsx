@@ -55,7 +55,7 @@ export function ReferenceRow({
         ) : (
           <>
             {primary && (
-              <span className="block truncate text-xs font-extrabold leading-tight text-brand-primary">
+              <span className="block truncate text-xs font-extrabold leading-tight text-brand-primary-text">
                 {primary}
               </span>
             )}

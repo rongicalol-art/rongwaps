@@ -3,6 +3,23 @@
  * Lessons without one keep their landscape icon (`lessonLandscapeArt`).
  */
 const THUMBNAILS: Record<string, string> = {
+  '2:1': new URL('../assets/images/lesson-thumbs/b2l01.webp', import.meta.url).href,
+  '2:2': new URL('../assets/images/lesson-thumbs/b2l02.webp', import.meta.url).href,
+  '2:3': new URL('../assets/images/lesson-thumbs/b2l03.webp', import.meta.url).href,
+  '2:4': new URL('../assets/images/lesson-thumbs/b2l04.webp', import.meta.url).href,
+  '2:5': new URL('../assets/images/lesson-thumbs/b2l05.webp', import.meta.url).href,
+  '2:6': new URL('../assets/images/lesson-thumbs/b2l06.webp', import.meta.url).href,
+  '2:7': new URL('../assets/images/lesson-thumbs/b2l07.webp', import.meta.url).href,
+  '2:8': new URL('../assets/images/lesson-thumbs/b2l08.webp', import.meta.url).href,
+  '2:9': new URL('../assets/images/lesson-thumbs/b2l09.webp', import.meta.url).href,
+  '2:10': new URL('../assets/images/lesson-thumbs/b2l10.webp', import.meta.url).href,
+  '2:11': new URL('../assets/images/lesson-thumbs/b2l11.webp', import.meta.url).href,
+  '2:12': new URL('../assets/images/lesson-thumbs/b2l12.webp', import.meta.url).href,
+  '2:13': new URL('../assets/images/lesson-thumbs/b2l13.webp', import.meta.url).href,
+  '2:14': new URL('../assets/images/lesson-thumbs/b2l14.webp', import.meta.url).href,
+  '2:15': new URL('../assets/images/lesson-thumbs/b2l15.webp', import.meta.url).href,
+  '2:16': new URL('../assets/images/lesson-thumbs/b2l16.webp', import.meta.url).href,
+
   '1:1': new URL('../assets/images/lesson-thumbs/b1l01.webp', import.meta.url).href,
   '1:2': new URL('../assets/images/lesson-thumbs/b1l02.webp', import.meta.url).href,
   '1:3': new URL('../assets/images/lesson-thumbs/b1l03.webp', import.meta.url).href,

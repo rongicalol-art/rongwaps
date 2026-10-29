@@ -55,7 +55,7 @@ function formatLabel(type: FormatType) {
       };
     case 'pinyin':
       return {
-        icon: <span className="text-xs font-black leading-none text-brand-primary">pīn</span>,
+        icon: <span className="text-xs font-black leading-none text-brand-primary-text">pīn</span>,
         text: 'Pinyin',
       };
     case 'meaning':
@@ -237,7 +237,7 @@ export function PracticeFormatMenu({ mode, isMatchPair = false, className = '' }
                 )}
               >
                 <div className="flex items-center gap-3 rounded-feature border border-brand-primary/20 bg-brand-primary-soft/50 p-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact bg-brand-primary text-white shadow-ambient-xs">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact bg-brand-primary text-brand-on-primary shadow-ambient-xs">
                     <AppIcon name="audio" size={20} />
                   </div>
                   <div className="min-w-0 flex-1">

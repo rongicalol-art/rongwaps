@@ -45,7 +45,7 @@ export function ProfileScreen({ menuToggle }: { menuToggle?: StickyWorkspaceHead
       <div className="profile-layout">
         <div className="profile-main">
           <ProfileHeroCard profile={shownProfile} name={name} handle={emailPrefix ? `@${emailPrefix}` : undefined} firstReview={data.firstReview} bookTitle={book?.title || `Modern Chinese ${bookId}`} avatar={avatar} cover={cover} onEdit={() => editor.open({ ...profile, displayName: profile.displayName || fallbackName }, media.avatar || googleAvatar, media.cover)} />
-          {(accountError || syncError) && <p role="alert" className="text-sm text-feedback-danger-edge">{accountError || syncError}</p>}
+          {(accountError || syncError) && <p role="alert" className="text-sm text-feedback-danger-text">{accountError || syncError}</p>}
           <div className="profile-mobile-streak"><ProfileStreak data={data} /></div>
           <ProfileStatistics data={data} />
           <ProfileTopics data={data} />

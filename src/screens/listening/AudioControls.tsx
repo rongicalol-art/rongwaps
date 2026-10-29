@@ -21,7 +21,7 @@ export function AudioControls({ isPlaying, playAudio, activeBook }: AudioControl
         style={{
           boxShadow: isPlaying ? 'none' : `0 var(--depth-xl) 0 ${activeBook.edgeHex}`,
         }}
-        className={`relative flex h-[130px] w-[130px] items-center justify-center rounded-modal ${activeBook.accentBg} text-white outline-none transition-[transform,filter,box-shadow] duration-150 focus-ring ${isPlaying ? 'translate-y-[length:var(--depth-xl)]' : 'hover:brightness-105 active:translate-y-[length:var(--depth-xl)] active:!shadow-none'}`}
+        className={`relative flex h-[130px] w-[130px] items-center justify-center rounded-modal ${activeBook.accentBg} text-brand-on-primary outline-none transition-[transform,filter,box-shadow] duration-150 focus-ring ${isPlaying ? 'translate-y-[length:var(--depth-xl)]' : 'hover:brightness-105 active:translate-y-[length:var(--depth-xl)] active:!shadow-none'}`}
       >
         <AppIcon name="pronounce" size={72} />
         

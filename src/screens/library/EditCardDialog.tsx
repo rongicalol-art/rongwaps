@@ -75,7 +75,7 @@ function EditCardBody({ card, onSave }: { card: UserFlashcard; onSave: EditCardD
             value={pinyin}
             onChange={(e) => setPinyin(e.target.value)}
             onKeyDown={onEnter}
-            className="w-full bg-transparent text-base font-black text-brand-primary outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
+            className="w-full bg-transparent text-base font-black text-brand-primary-text outline-none placeholder:text-ui-muted focus-ring-inline rounded-control"
             placeholder="pinyin"
           />
         </div>

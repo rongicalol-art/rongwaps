@@ -69,7 +69,7 @@ export function GrammarConfusionPanel({
                   />
                   {(pinyinLine || englishLine) && (
                     <p className="ui-translation mt-1 text-xs sm:text-sm">
-                      {pinyinLine && <span className="font-bold text-brand-primary">{pinyinLine}{englishLine ? ' · ' : ''}</span>}
+                      {pinyinLine && <span className="font-bold text-brand-primary-text">{pinyinLine}{englishLine ? ' · ' : ''}</span>}
                       {englishLine}
                     </p>
                   )}

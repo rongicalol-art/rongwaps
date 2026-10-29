@@ -86,7 +86,7 @@ export function SaveWordModal() {
                   {headword}
                 </span>
                 <span className="min-w-0 flex-1 text-left">
-                  {pinyin && <span className="block text-sm font-black text-brand-primary">{pinyin}</span>}
+                  {pinyin && <span className="block text-sm font-black text-brand-primary-text">{pinyin}</span>}
                   {selectedSense && (
                     <span className="mt-0.5 line-clamp-2 block text-sm font-bold leading-snug text-ui-ink">
                       {selectedSense}
@@ -114,7 +114,7 @@ export function SaveWordModal() {
                     {headword}
                   </span>
                   <span className="min-w-0 flex-1 text-left">
-                    {pinyin && <span className="block text-sm font-black text-brand-primary">{pinyin}</span>}
+                    {pinyin && <span className="block text-sm font-black text-brand-primary-text">{pinyin}</span>}
                     <input
                       autoFocus
                       type="text"
@@ -322,7 +322,7 @@ function FolderTile({
       <div className="relative aspect-[25/21] w-full max-w-[120px] transition-transform duration-200 group-hover:-translate-y-0.5 group-active:scale-95 motion-reduce:transition-none">
         <FolderSvg colorFront={front} colorBack={back} isStarred={isStarred} hasPlus={isNew} />
         {isSaved && (
-          <span className="absolute -right-1.5 -top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-primary text-white shadow-ambient-sm">
+          <span className="absolute -right-1.5 -top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-primary text-brand-on-primary shadow-ambient-sm">
             <AppIcon name="check" size={16} />
           </span>
         )}

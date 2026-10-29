@@ -19,6 +19,8 @@ export interface TocflReadiness {
   focusBand: TocflBand;
   /** Characters still to learn for the focus band to reach 90% known (0 once there). */
   focusToGo: number;
+  /** Characters inside passed course words. */
+  knownChars: Set<string>;
 }
 
 export interface ReadinessCourseCard {
@@ -53,5 +55,13 @@ export function computeTocflReadiness(
 
   const focusToGo = Math.max(0, Math.ceil(focus.total * FOCUS_THRESHOLD) - focus.known);
 
-  return { bands, focusBand: focus.band, focusToGo };
+  return { bands, focusBand: focus.band, focusToGo, knownChars: known };
+}
+
+/** One band's characters the learner doesn't know yet, easiest TBCL level first. */
+export function unknownBandChars(tbclChars: Map<string, number>, knownChars: Set<string>, band: TocflBand): string[] {
+  return [...tbclChars]
+    .filter(([char, level]) => tocflBand(level) === band && !knownChars.has(char))
+    .sort((a, b) => a[1] - b[1])
+    .map(([char]) => char);
 }

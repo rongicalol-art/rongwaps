@@ -3,12 +3,12 @@ import type { GrammarPatternRow, GrammarWordToken, InteractiveGrammarPage } from
 import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammar/grammarPatternLayout';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { cn } from '../../../utils/cn';
-import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { IconActionButton, SpeakerIcon } from '../../../lib/widgets';
 import { playSentence } from '../../../services/audio/sentenceAudio';
-import { SAMPLE_BOOKS } from '../../../data/books';
 import { GrammarExampleItem } from './GrammarExamplesSection';
 import { PlaceValueTable } from './PlaceValueTable';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 
 interface GrammarPatternSectionProps {
   page: InteractiveGrammarPage;
@@ -26,7 +26,7 @@ interface GrammarPatternSectionProps {
 // Eased stops (not a straight ramp) so the shadow dissolves smoothly instead of ending in a hard edge.
 const EDGE_SHADOW_STOPS = [
   [14, 0], [11, 12], [7.5, 28], [4, 48], [1.8, 68], [0.5, 86], [0, 100],
-].map(([alpha, at]) => `color-mix(in srgb, var(--color-ui-ink-strong) ${alpha}%, transparent) ${at}%`).join(', ');
+].map(([alpha, at]) => `color-mix(in srgb, var(--color-ui-scrim) ${alpha}%, transparent) ${at}%`).join(', ');
 
 /**
  * A header title can mix English and Chinese (`Double 了`, `比 + B`). Chinese
@@ -79,6 +79,7 @@ export function GrammarPatternSection({
   const scrollRef = useRef<HTMLDivElement>(null);
   const headRef = useRef<HTMLTableSectionElement>(null);
   const [edges, setEdges] = useState({ left: false, right: false, top: 0 });
+  const speaker = useAudioPending();
   const activeColumns = patternColumns ?? page.patternColumns;
   const activeDetails = patternColumnDetails ?? page.patternColumnDetails;
   const activeRows = patternRows ?? page.patternRows;
@@ -142,19 +143,14 @@ export function GrammarPatternSection({
       />
     );
   }
-  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
-  // The frame colour also fills the container behind the white body, so antialiased
-  // corners blend into the border instead of showing a white fringe.
-  const frameStyle = { borderColor: book.theme.primaryEdge, backgroundColor: book.theme.primaryEdge };
-  // Same colour as the frame so the header reads as part of the border.
-  const headerStyle = { backgroundColor: book.theme.primaryEdge, borderColor: book.theme.primaryEdge };
+  // The band colour also fills the container behind the body, so antialiased corners blend into the
+  // border instead of showing a light fringe; the header uses the same colour so it reads as part of the border.
   return (
     <section aria-label="Sentence pattern">
       {/* One table at every width; on narrow screens it scrolls sideways like a native table. */}
       <div
-        style={frameStyle}
         className={cn(
-          'relative w-full overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-lg)]',
+          'relative w-full overflow-hidden rounded-feature border-2 border-brand-band bg-brand-band border-b-[length:var(--depth-lg)]',
         )}
       >
         {/* Scrollable table container */}
@@ -187,7 +183,7 @@ export function GrammarPatternSection({
               })}
             </colgroup>
             <thead ref={headRef}>
-              <tr style={headerStyle} className="border-b-2">
+              <tr className="border-b-2 border-brand-band bg-brand-band">
                 {layout.sourceColumns.map((sourceIndex) => {
                   const columnTitle = activeColumns[sourceIndex] ?? '';
                   const detail = activeDetails?.[sourceIndex];
@@ -199,7 +195,7 @@ export function GrammarPatternSection({
                       className="px-3 py-3 text-left font-black sm:px-6"
                     >
                       <span
-                        className={cn('ui-eyebrow block text-white [&_.font-chinese]:text-base', wide && 'whitespace-nowrap')}
+                        className={cn('ui-eyebrow block text-brand-on-band [&_.font-chinese]:text-base', wide && 'whitespace-nowrap')}
                         title={detail ? `${columnTitle} · ${detail}` : columnTitle}
                       >
                         <HeaderTitle text={columnTitle} />
@@ -216,17 +212,19 @@ export function GrammarPatternSection({
                 const meaning = showTranslation && row.english;
                 const playButton = row.audio && (
                   <IconActionButton
-                    onClick={() => playSentence(
+                    onClick={() => {
+                      speaker.claim(String(rowIndex));
+                      void playSentence(
                       groups.flat().map((token) => (characterPreference === 'simplified' && token.simplified) || token.traditional).join(''),
                       row.audio,
                       characterPreference,
-                    )}
+                    );
+                    }}
                     size="sm"
                     variant="quiet"
-                    icon={<AppIcon name="audio" size={22} />}
+                    icon={<SpeakerIcon status={speaker.status(String(rowIndex))} size={22} />}
                     label={`Play row ${rowIndex + 1}${row.audio?.voice === 'book' ? ' (book recording)' : ''}`}
-                    style={{ color: book.theme.primary }}
-                    className="shrink-0 hover:brightness-90"
+                    className="shrink-0 text-brand-primary hover:text-brand-primary hover:brightness-90"
                   />
                 );
                 return (

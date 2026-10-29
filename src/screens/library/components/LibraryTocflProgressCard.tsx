@@ -33,7 +33,7 @@ export function LibraryTocflProgressCard({ readiness }: { readiness: TocflReadin
           return (
             <li key={band} className={`rounded-control px-2.5 py-2.5 ${isFocus ? 'bg-brand-primary-soft/45' : ''}`}>
               <div className="flex items-baseline justify-between gap-2">
-                <span className={`text-sm font-extrabold ${isFocus ? 'text-brand-primary' : 'text-ui-ink'}`}>Band {band}</span>
+                <span className={`text-sm font-extrabold ${isFocus ? 'text-brand-primary-text' : 'text-ui-ink'}`}>Band {band}</span>
                 <span className="shrink-0 text-right text-sm font-extrabold tabular-nums text-ui-muted-strong">{known} / {total} chars</span>
               </div>
               <div

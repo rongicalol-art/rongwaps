@@ -43,12 +43,12 @@ export function CharacterTile({
       } ${upcoming && !known ? 'opacity-60' : ''} ${active ? 'ring-2 ring-brand-primary' : ''}`}
     >
       {known && (
-        <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-feedback-success text-ui-surface" aria-hidden>
+        <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-feedback-success text-ui-on-solid" aria-hidden>
           <AppIcon name="check" size={10} />
         </span>
       )}
       <span className="font-chinese text-2xl leading-none text-ui-ink-strong">{glyph}</span>
-      {pinyin && <span className="max-w-full truncate text-[10px] font-extrabold leading-tight text-brand-primary">{pinyin}</span>}
+      {pinyin && <span className="max-w-full truncate text-[10px] font-extrabold leading-tight text-brand-primary-text">{pinyin}</span>}
       <LevelTag bookId={bookId} lessonId={lessonId} level={level} />
     </button>
   );

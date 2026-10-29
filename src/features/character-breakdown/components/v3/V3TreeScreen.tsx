@@ -41,7 +41,7 @@ export function V3TreeScreen({
           <span className="font-chinese text-[62px] leading-none text-ui-ink-strong">{character}</span>
           {(pinyin || meaning) && (
             <span className="min-w-0 text-left">
-              {pinyin && <span className="block text-sm font-black text-brand-primary">{numberToToneMarks(pinyin)}</span>}
+              {pinyin && <span className="block text-sm font-black text-brand-primary-text">{numberToToneMarks(pinyin)}</span>}
               {meaning && <span className="block max-w-[18rem] truncate text-xs font-bold text-ui-muted-strong">{meaning}</span>}
               {level && <span className="mt-1.5 block"><LevelTag variant="chip" level={level} /></span>}
             </span>

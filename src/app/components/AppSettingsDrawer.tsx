@@ -11,6 +11,7 @@ import {
   normalizePronunciationRate,
 } from '../../features/practice';
 import { SettingsAccountSection } from './SettingsAccountSection';
+import { setToneOrigin } from '../../hooks/useReviewTone';
 
 export interface AppSettingsDrawerProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ export interface AppSettingsDrawerProps {
 
 export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSettingsDrawerProps) {
   const characterFont = useAppStore((state) => state.characterFont);
+  const appearance = useAppStore((state) => state.appearance);
   const showPinyin = useAppStore((state) => state.showPinyin);
   const toneColors = useAppStore((state) => state.toneColors);
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
@@ -71,6 +73,18 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
         heightClassName="max-h-[88dvh] md:max-h-full"
       >
             <div className="flex flex-col gap-8 pb-8 text-left">
+              <SettingsPageSection title="Appearance">
+                <SettingsToggleRow
+                  checked={appearance === 'dark'}
+                  onClick={(event) => {
+                    setToneOrigin(event.clientX || window.innerWidth / 2, event.clientY || window.innerHeight / 2);
+                    updatePreferences({ appearance: appearance === 'dark' ? 'light' : 'dark' });
+                  }}
+                  label="Dark mode"
+                  className="border-b-0"
+                />
+              </SettingsPageSection>
+
               <SettingsPageSection title="Characters">
                 <CharacterAppearanceSection
                   characterFont={characterFont}

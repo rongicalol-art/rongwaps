@@ -167,8 +167,8 @@ export function OrderBuildExercise({
           aria-label={`Take back ${textIn(item.tiles[tile], script)}`}
           className={cn(
             'flex select-none flex-col items-center rounded-xs px-1.5 py-0.5 text-brand-primary-deep focus-ring-inline enabled:hover:opacity-75',
-            status === 'correct' && 'text-feedback-success-edge',
-            misplaced?.has(position) && 'text-feedback-danger-edge',
+            status === 'correct' && 'text-feedback-success-text',
+            misplaced?.has(position) && 'text-feedback-danger-text',
             drag?.source.kind === 'placed' && drag.source.tile === tile && 'opacity-30',
             drag?.over === String(tile) && 'border-l-2 border-brand-primary bg-brand-primary-soft',
           )}
@@ -177,12 +177,12 @@ export function OrderBuildExercise({
           {showPinyin && <span className="text-xs font-extrabold text-ui-muted-strong">{item.tiles[tile].pinyin}</span>}
         </motion.button>
         {commas.has(position) && (
-          <span className={cn('-ml-1.5 py-0.5 font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
+          <span className={cn('-ml-1.5 py-0.5 font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-text' : 'text-brand-primary-deep')} aria-hidden="true">，</span>
         )}
         </Fragment>
       ))}
       {line.length > 0 && end && (
-        <span className={cn('-ml-1.5 py-0.5 font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-edge' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
+        <span className={cn('-ml-1.5 py-0.5 font-chinese font-semibold text-2xl leading-[1.3] sm:text-3xl', status === 'correct' ? 'text-feedback-success-text' : 'text-brand-primary-deep')} aria-hidden="true">{end}</span>
       )}
       {line.length > 0 && <span data-drop-slot="end" aria-hidden="true" className="min-h-10 w-10 shrink-0" />}
     </div>

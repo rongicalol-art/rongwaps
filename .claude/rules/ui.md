@@ -12,7 +12,7 @@ Full token scale: `docs/DESIGN_TOKENS.md`. Widget catalog: `docs/WIDGETS.md`. De
 
 ## Look (owner preferences — repeated corrections, treat as law)
 - Premium-playful, Duolingo-like hierarchy. Clean, minimal, easy to read. Remove clutter and redundant labels before adding anything.
-- Backgrounds off-white (or a touch darker) so buttons/cards stand out. Never pure white page, never deep blue, no dark mode.
+- Backgrounds off-white (or a touch darker) so buttons/cards stand out; dark mode is warm charcoal with lighter surfaces. Never pure white page, never deep blue.
 - Gray outlines should read clearly (more contrast, not less).
 - No graph/dot/grid textures as backgrounds — distracting. Texture only, if at all.
 - No visible border or separator on menu bars and top headers; keep them minimal and quiet.
@@ -22,7 +22,7 @@ Full token scale: `docs/DESIGN_TOKENS.md`. Widget catalog: `docs/WIDGETS.md`. De
 
 ## Components
 - Reuse before new: `ActionButton`, `IconActionButton`, `SegmentedControl`, `AppIcon` (Phosphor only), `CountryFlag` (no flag emoji). One dominant primary action per surface; utility actions quiet.
-- Tokens only: `ui-*`, `brand-*`, `feedback-*`. No hex, no hardcoded font families (`font-sans` UI, `font-chinese` glyphs). Prefer the spacing/radius scale; arbitrary pixel values only for component geometry no token covers (card heights, tile sizes) — never for colour, type, or radius. Focus via `.focus-ring` / `.focus-ring-inline`.
+- Tokens only: `ui-*`, `brand-*`, `feedback-*` (text on fills: `brand-on-primary`, `ui-on-solid`, `ui-on-inverse`; never `text-white`). Both themes must work (`docs/DESIGN_TOKENS.md` §5a). No hex, no hardcoded font families (`font-sans` UI, `font-chinese` glyphs). Prefer the spacing/radius scale; arbitrary pixel values only for component geometry no token covers (card heights, tile sizes) — never for colour, type, or radius. Focus via `.focus-ring` / `.focus-ring-inline`.
 - No bordered box inside a bordered container; plain text hierarchy inside. Key hints use `KeyChip` (square, after the label, label stays centred).
 - Animations: Tailwind v4 `translate-*` sets the CSS `translate` property; never animate `transform` translate on an element that has those classes. Verify UI in the DEV debug window (Ctrl+Shift+0 → UI Previews), never by answering on the owner's real deck.
 - Tactile depth: primary/direct actions only. Two-layer stationary base (immovable base layer + moving front surface); never mutate `border-b` on active or translate the whole container. No tactile buttons inside tactile containers; no depth on plain page sections.

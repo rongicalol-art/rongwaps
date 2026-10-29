@@ -92,7 +92,7 @@ export function GrammarStudyPage({
                     id={`subsection-heading-${section.id}`}
                     className="text-xl font-black leading-snug text-ui-ink-strong sm:text-2xl"
                   >
-                    <span className="mr-2 font-sans font-black text-brand-primary">
+                    <span className="mr-2 font-sans font-black text-brand-primary-text">
                       {section.sectionNumber ?? idx + 1}.
                     </span>
                     <span className="text-ui-ink-strong">{section.title}</span>

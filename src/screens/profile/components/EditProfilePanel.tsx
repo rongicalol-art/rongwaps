@@ -44,14 +44,14 @@ export function EditProfilePanel({ editor, name, canUpload, googleAvatar }: {
   };
 
   return <Drawer.Root open={Boolean(draft)} onClose={editor.close} tone="surface" workspaceBound>
-    <Drawer.Backdrop className="bg-ui-ink-strong/20" />
+    <Drawer.Backdrop className="bg-ui-scrim/20" />
     <Drawer.Content size="full" mdPlacement="side" heightClassName="max-h-[88dvh] md:max-h-full" className="profile-edit-panel" dragToDismiss={false}>
       <div className="profile-panel-header"><IconActionButton variant="surface" label="Close edit profile" icon={<AppIcon name="close" size={18} />} onClick={editor.close} /><Drawer.Title>{cropTarget ? `Crop ${cropTarget.kind === 'avatar' ? 'photo' : 'cover'}` : 'Edit profile'}</Drawer.Title></div>
       {draft && <>
         {cropTarget ? <>
           <Drawer.Body className="profile-panel-body profile-crop-body">
             <ProfileImageCropper file={cropTarget.file} kind={cropTarget.kind} busy={editor.busy} onCropChange={setCropSelection} />
-            {editor.error && <p role="alert" className="text-sm text-feedback-danger-edge">{editor.error}</p>}
+            {editor.error && <p role="alert" className="text-sm text-feedback-danger-text">{editor.error}</p>}
           </Drawer.Body>
           <div className="profile-panel-footer flex gap-3">
             <ActionButton variant="secondary" onClick={cancelCrop} disabled={editor.busy}>Cancel</ActionButton>
@@ -77,7 +77,7 @@ export function EditProfilePanel({ editor, name, canUpload, googleAvatar }: {
             {editor.hasCoverUpload && cropFiles.cover && <button type="button" onClick={() => chooseImage('cover', cropFiles.cover)} className="focus-ring mt-2 p-2 text-sm font-black text-ui-muted-strong">Adjust crop</button>}
             </section>
             <section><label htmlFor="profile-name" className="profile-field-label">Name</label><input id="profile-name" className="profile-name-input" value={draft.settings.displayName} maxLength={30} autoComplete="off" onChange={(e) => editor.change({ displayName: e.target.value })} /></section>
-            {editor.error && <p role="alert" className="text-sm text-feedback-danger-edge">{editor.error}</p>}
+            {editor.error && <p role="alert" className="text-sm text-feedback-danger-text">{editor.error}</p>}
           </fieldset></Drawer.Body>
           <div className="profile-panel-footer">{editor.busy ? <p role="status" className="py-3 text-center font-black">Saving image…</p> : <ActionButton fullWidth className="normal-case tracking-normal text-base" onClick={() => void editor.save()}>Save</ActionButton>}</div>
         </>}

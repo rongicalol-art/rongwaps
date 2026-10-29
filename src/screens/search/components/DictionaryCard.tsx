@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react';
-import { AppIcon, LevelTag } from '../../../lib/widgets';
+import { AppIcon, LevelTag, SpeakerIcon } from '../../../lib/widgets';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 import { useLevels } from '../../../hooks/useLevels';
 import { resolveLevel } from '../../../utils/lesson/levels';
 import { FavoriteButton } from '../../../features/library';
@@ -25,6 +26,7 @@ export const DictionaryCard = memo(function DictionaryCard({
   onOpen,
 }: DictionaryCardProps) {
   const levels = useLevels();
+  const speaker = useAudioPending();
   const level = useMemo(() => resolveLevel(entry.traditional, levels), [entry.traditional, levels]);
   const meaning = formatDefinitions(entry.definitions);
   const canPlayAudio = Boolean(entry.audio && audioService.isAudioFileName(entry.audio));
@@ -47,11 +49,12 @@ export const DictionaryCard = memo(function DictionaryCard({
               onClick={() => {
                 if (!entry.audio) return;
                 audioService.stop();
+                speaker.claim();
                 void audioService.play(entry.audio, undefined, undefined, undefined, 0, { fallback: 'none' }).catch(() => undefined);
               }}
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95 focus-ring"
             >
-              <AppIcon name="pronounce" size={20} />
+              {speaker.status() ? <SpeakerIcon status={speaker.status()} size={20} /> : <AppIcon name="pronounce" size={20} />}
             </button>
           )}
           <FavoriteButton

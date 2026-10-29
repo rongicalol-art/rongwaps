@@ -21,7 +21,7 @@ export function useAddCard(onClose: () => void) {
   const targetFolder = customFolders.find(f => f.id === folderId);
   const folderName = folderId === 'starred' ? 'Starred' : targetFolder?.name || 'Library';
   const folderAccent = folderId === 'starred'
-    ? 'text-feedback-warning-edge'
+    ? 'text-feedback-warning-text'
     : targetFolder
     ? resolveFolderColor(targetFolder.color).accent
     : 'text-brand-primary';

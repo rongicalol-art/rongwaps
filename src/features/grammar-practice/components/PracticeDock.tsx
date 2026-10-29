@@ -128,7 +128,7 @@ export function PracticeDock({
             className="flex flex-col gap-3 px-1 md:flex-row md:items-center md:gap-5 md:px-2"
           >
             <div className="min-w-0 flex-1">
-              <div className={cn('flex items-center gap-2 text-lg font-extrabold', correct ? 'text-feedback-success-edge' : 'text-feedback-danger-edge')}>
+              <div className={cn('flex items-center gap-2 text-lg font-extrabold', correct ? 'text-feedback-success-text' : 'text-feedback-danger-text')}>
                 <AppIcon name={correct ? 'check' : 'close'} size={24} />
                 {result?.title ?? (correct ? 'Correct' : 'Not quite')}
               </div>

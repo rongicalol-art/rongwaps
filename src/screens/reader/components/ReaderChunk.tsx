@@ -170,7 +170,7 @@ export const ReaderChunk = memo(function ReaderChunk({
         isActive
           ? 'bg-brand-primary-soft-edge text-ui-ink-strong'
           : isHovered
-            ? 'bg-brand-primary/10 text-brand-primary'
+            ? 'bg-brand-primary/10 text-brand-primary-text'
             : '',
       )}
     >

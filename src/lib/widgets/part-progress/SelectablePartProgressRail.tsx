@@ -80,7 +80,7 @@ export function SelectablePartProgressRail({
               <span className="text-xs font-black">Part {part.id}</span>
               <span className={cn(
                 'rounded-full px-2 py-0.5 text-xs font-black font-sans',
-                part.isSelected ? 'bg-brand-primary text-white' : 'bg-ui-surface text-ui-muted-strong',
+                part.isSelected ? 'bg-brand-primary text-brand-on-primary' : 'bg-ui-surface text-ui-muted-strong',
               )}>
                 {part.isSelected ? 'ON' : 'OFF'}
               </span>

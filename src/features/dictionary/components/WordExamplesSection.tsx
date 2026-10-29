@@ -1,10 +1,11 @@
-import { AppIcon, SmartSentence, Skeleton, LevelTag, ToggleSwitch } from '../../../lib/widgets';
+import { SmartSentence, Skeleton, LevelTag, ToggleSwitch, SpeakerIcon } from '../../../lib/widgets';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../utils/pinyin/pinyinTones';
 import type { WordExample } from '../../../types/models';
 import { splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 
 const PLAY_BUTTON =
   'flex h-9 w-9 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring';
@@ -22,6 +23,7 @@ export function WordExamplesSection({
   const characterPreference = useAppStore((state) => state.characterPreference);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
+  const speaker = useAudioPending();
 
   if (isLoading) {
     return (
@@ -62,14 +64,14 @@ export function WordExamplesSection({
             <button
               type="button"
               aria-label={`Play the example sentence ${ex.chinese}`}
-              onClick={() => { void playSentence(ex.chinese, ex.audio, characterPreference).catch(() => {}); }}
+              onClick={() => { speaker.claim(String(idx)); void playSentence(ex.chinese, ex.audio, characterPreference).catch(() => {}); }}
               className={PLAY_BUTTON}
             >
-              <AppIcon name="audio" size={18} />
+              <SpeakerIcon status={speaker.status(String(idx))} size={18} />
             </button>
           </div>
           {!hideExamplePinyin && ex.pinyin && !alignSentenceSyllables(ex.chinese, ex.pinyin) && (
-            <p className="text-[13px] font-extrabold leading-tight text-brand-primary sm:text-sm">
+            <p className="text-[13px] font-extrabold leading-tight text-brand-primary-text sm:text-sm">
               {numberToToneMarks(ex.pinyin)}
             </p>
           )}

@@ -121,7 +121,7 @@ export function ProfileImageCropper({
   };
 
   return <div className="profile-crop-editor">
-    {error ? <p role="alert" className="text-sm font-bold text-feedback-danger-edge">{error}</p> : <>
+    {error ? <p role="alert" className="text-sm font-bold text-feedback-danger-text">{error}</p> : <>
       <div
         ref={frameRef}
         className={`profile-crop-frame ${kind === 'avatar' ? 'profile-crop-avatar' : 'profile-crop-cover'}`}

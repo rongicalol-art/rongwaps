@@ -54,10 +54,18 @@ Each brand/feedback color has an `-edge` variant (for the tactile bottom border)
 
 A **tone** is a complete colour-role set. Components use only role tokens and never branch on which tone is active.
 
-- **Roles**: `ui-canvas`/`ui-practice-canvas`, `ui-ink-strong`, `ui-ink`, `ui-muted-strong`, `ui-muted`, `ui-border`, `ui-divider`, `brand-primary` + `-edge`/`-deep`/`-soft`/`-soft-edge`/`-track`/`-wash`, and `brand-on-primary` (text on a primary fill; white, dark in Review).
-- **Books**: each book's `theme` in `src/data/books.ts` is its tone; `useBookTheme` writes it inline on `<html>`. Book 1 keeps the neutral grays; Books 2–4 tint text and lines faintly toward their hue. `book.accent|accentBg|bg|buttonEdge|accentHex` are derived from the tokens, never from per-book hexes.
-- **Review**: `data-tone="review"` (claimed through `useReviewTone`, ref-counted) swaps the roles to honey: bar amber, text a dark amber, lines and canvas warm. Defined once in the `:root[data-tone="review"]` block of `src/index.css` (`!important` beats the book's inline values).
-- **Adding a tone/role**: add it to `BookTheme`, the `THEME_CSS_VARS` map, the `@property` list and review block in `index.css`. Pinyin tone colours and feedback green/red are outside the tone layer.
+- **Roles**: `ui-canvas`/`ui-practice-canvas`, `ui-surface`, `ui-ink-strong`, `ui-ink`, `ui-muted-strong`, `ui-muted`, `ui-border`, `ui-divider`, `brand-primary` + `-edge`/`-deep`/`-soft`/`-soft-edge`/`-track`/`-wash`.
+- **Coloured text** uses `brand-primary-text`, `feedback-{success,danger,warning}-text`, `palette-*-text` (the edge shade in light, lifted in dark); never `text-*-edge`.
+- **Text on fills** (never `text-white`): `brand-on-primary` on a primary fill; `ui-on-solid` on feedback/palette fills; `ui-inverse` + `ui-on-inverse` for inverted surfaces (word tooltips); `brand-band` + `brand-on-band` for accent header bands (grammar tables). White in light, dark ink in dark.
+- **Cascade** (all in `src/index.css`, attributes on `<html>`, no inline styles, no `!important`):
+  1. `@theme` defaults = light, Book 1.
+  2. `:root[data-book="N"]`: the active book (`useBookTheme`). Books 2–4 tint text and lines faintly toward their hue.
+  3. `:root[data-theme="dark"]`: warm charcoal (`useAppearance`, the "Dark mode" setting).
+  4. `:root[data-theme="dark"][data-book="N"]`: the book's accent lifted for dark, with dark ink on fills.
+  5. `[data-tone="review"]` (`useReviewTone`, ref-counted, or any subtree): honey, then its dark twin.
+- **Dark rules**: elevation is lightness (canvas < surface < surface-hover), never shadow; every `*-edge` stays darker than its face so tactile buttons read; scrims behind drawers and dialogs use `ui-scrim` (black in dark), never ink. `index.html` sets `data-theme` before first paint from the `rw-appearance` mirror.
+- **Guards**: `tests/unit/themeContrast.test.ts` checks every book × light/dark × review for WCAG contrast and edge order; `code_quality.test.ts` fails on `text-white`/`bg-black`/hex in components (allowlist: brand art, folder colours).
+- **Adding a role**: declare it in `@theme`, in the dark block, in the book/review blocks if it varies, and in the `@property` list if the review spread must interpolate it. Add a contrast pair to the test.
 
 ## 6. Canvas ownership (one page background)
 

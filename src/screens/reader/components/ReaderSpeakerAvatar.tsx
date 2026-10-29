@@ -26,7 +26,7 @@ export function ReaderSpeakerAvatar({
     <div className={cn('shrink-0 select-none', className)}>
       {character ? (
         <div
-          className="h-11 w-11 sm:h-12 sm:w-12 overflow-hidden rounded-b-xl"
+          className="h-11 w-11 sm:h-12 sm:w-12 rounded-b-xl [filter:var(--portrait-glow)]"
           title={speaker}
         >
           <RongWapsCharacterPortrait
@@ -38,7 +38,7 @@ export function ReaderSpeakerAvatar({
       ) : (
         <div
           className={cn(
-            'flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full font-chinese font-black text-sm text-white',
+            'flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full font-chinese font-black text-sm text-ui-on-solid',
             dotColor,
           )}
           aria-hidden="true"

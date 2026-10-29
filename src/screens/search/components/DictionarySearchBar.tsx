@@ -73,7 +73,7 @@ export function DictionarySearchBar({ value, onChange, mode, onModeChange, summa
               aria-pressed={isActive}
               onClick={() => onModeChange(scope.value)}
               className={cn(
-                'rounded-control border-2 border-b-4 px-3.5 py-1.5 text-sm font-black transition-[transform,background-color,border-color] active:translate-y-0.5 active:border-b-2 focus-ring',
+                'whitespace-nowrap rounded-control border-2 border-b-4 px-3.5 py-1.5 text-sm font-black transition-[transform,background-color,border-color] active:translate-y-0.5 active:border-b-2 focus-ring',
                 isActive
                   ? 'border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft text-brand-primary-deep'
                   : 'border-ui-divider bg-ui-surface text-ui-ink-strong',

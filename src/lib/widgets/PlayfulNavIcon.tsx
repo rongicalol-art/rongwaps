@@ -2,7 +2,7 @@ import type { ImgHTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
 
 export type PlayfulNavIconName =
-  | 'books' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
+  | 'learn' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
   | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
   | 'meaning' | 'characters' | 'trueFalse' | 'build' | 'tonesPractice' | 'challenge';
 
@@ -12,8 +12,8 @@ interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
 
 // Keep the artwork in cacheable image files instead of embedding every icon in boot JS.
 const navIconSrc: Record<PlayfulNavIconName, string> = {
-  books: new URL('../../assets/icons/flat/book.svg?no-inline', import.meta.url).href,
-  dictionary: new URL('../../assets/icons/flat/compass.svg?no-inline', import.meta.url).href,
+  learn: new URL('../../assets/icons/flat/learn.svg?no-inline', import.meta.url).href,
+  dictionary: new URL('../../assets/icons/flat/dictionary.svg?no-inline', import.meta.url).href,
   library: new URL('../../assets/icons/flat/folder-orange.svg?no-inline', import.meta.url).href,
   profile: new URL('../../assets/icons/flat/profile-pink.svg?no-inline', import.meta.url).href,
   favorite: new URL('../../assets/icons/flat/heart.svg?no-inline', import.meta.url).href,

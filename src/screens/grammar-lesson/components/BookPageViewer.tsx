@@ -190,7 +190,7 @@ export function BookPageViewer({
             <EmptyState
               icon="error"
               iconBg="bg-feedback-warning-surface"
-              iconColor="text-feedback-warning-edge"
+              iconColor="text-feedback-warning-text"
               title="Book page unavailable"
               description={`The reference is printed page ${page}. Export this page from the source PDF to add it here.`}
             />

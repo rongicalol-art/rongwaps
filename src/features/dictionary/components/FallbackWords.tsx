@@ -34,7 +34,7 @@ export function FallbackWords({
               <span className="font-chinese text-3xl font-black text-ui-ink-strong">{part}</span>
               <div className="mt-1 flex flex-wrap items-center gap-1.5">
                 {(partEntries[0].pinyin || []).slice(0, 2).map((py, i) => (
-                  <span key={i} className="text-xs font-bold text-brand-primary">
+                  <span key={i} className="text-xs font-bold text-brand-primary-text">
                     {numberToToneMarks(py)}
                   </span>
                 ))}

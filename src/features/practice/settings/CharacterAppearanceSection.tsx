@@ -32,7 +32,7 @@ export function CharacterAppearanceSection({ characterFont, onCharacterFontChang
             )}
           >
             <span className={cn(fontClass, 'text-[58px] font-normal leading-[1.15] text-ui-ink-strong')}>學</span>
-            <span className={cn('text-sm font-bold', isSelected ? 'text-brand-primary-edge' : 'text-ui-muted-strong')}>{label}</span>
+            <span className={cn('text-sm font-bold', isSelected ? 'text-brand-primary-text' : 'text-ui-muted-strong')}>{label}</span>
           </button>
         );
       })}

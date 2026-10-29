@@ -432,7 +432,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
       aria-label={`${title}. ${subtitle}.`}
       onClick={() => dealRef.current()}
       tabIndex={-1}
-      className="absolute inset-0 z-30 flex cursor-pointer flex-col items-center outline-none"
+      className="absolute inset-0 z-30 flex cursor-pointer flex-col items-center outline-none [view-transition-name:review-intro]"
     >
       {/* Centred in the space above the skip line, so the sheet never crowds it. */}
       <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center">
@@ -448,15 +448,15 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
               height={size.trophy}
             />
           </div>
-          <h2 className="text-[28px] font-black text-ui-ink-strong" style={{ opacity: 0 }}>{title}</h2>
-          <p className="mt-1.5 text-base font-bold text-ui-muted-strong" style={{ opacity: 0 }}>{subtitle}</p>
+          <h2 className="text-[28px] font-black text-ui-ink-strong transition-colors duration-700 ease-out" style={{ opacity: 0 }}>{title}</h2>
+          <p className="mt-1.5 text-base font-bold text-ui-muted-strong transition-colors duration-700 ease-out" style={{ opacity: 0 }}>{subtitle}</p>
         </div>
         <div ref={slotRef} aria-hidden className="mt-6 w-full" />
       </div>
       <div aria-hidden className="w-full shrink-0 pb-sheet-safe pt-4"><div className="h-14" /></div>
       {/* Where the answer bar will rise: a quiet line that says the intro can be skipped. */}
       <div ref={hintRef} aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 pb-sheet-safe pt-4" style={{ opacity: 0 }}>
-        <p className="flex h-14 items-center justify-center text-sm font-extrabold text-ui-muted">
+        <p className="flex h-14 items-center justify-center text-sm font-extrabold text-ui-muted transition-colors duration-700 ease-out">
           <span className="hidden pointer-fine:inline">Press Space to start</span>
           <span className="pointer-fine:hidden">Tap anywhere to start</span>
         </p>
@@ -465,11 +465,11 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
         {tiles.map(({ card }) => (
           <div
             key={card.id}
-            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center')}
+            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center transition-colors duration-700 ease-out')}
             style={{ opacity: 0, borderWidth: TILE_BORDER, borderRadius: TILE_RADIUS }}
           >
             <span
-              className="font-chinese flex leading-none text-ui-ink"
+              className="font-chinese flex leading-none text-ui-ink transition-colors duration-700 ease-out"
               data-clone-word
               style={{ fontSize: `${fitFont(card.front, size.tw, size.font)}px` }}
             >

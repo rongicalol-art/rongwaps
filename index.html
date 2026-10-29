@@ -7,7 +7,17 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Ron's Mandarin" />
-    <meta name="theme-color" content="#f2f3f4" />
+    <meta name="theme-color" content="#f3f2f0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Dark appearance before first paint (useAppearance keeps rw-appearance in sync). -->
+    <script>
+      try {
+        if (localStorage.getItem('rw-appearance') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#241e18');
+        }
+      } catch (e) {}
+    </script>
 
     <!-- Primary Meta Tags -->
     <title>Ron's Mandarin · Modern Chinese 時代華語</title>

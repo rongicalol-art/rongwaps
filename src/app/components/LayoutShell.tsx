@@ -99,7 +99,7 @@ export function LayoutShell({
       {!isDesktopOrTablet && isNavOpen && (
         <>
           <div
-            className="absolute inset-0 bg-ui-ink-strong/20 z-dock md:hidden"
+            className="absolute inset-0 bg-ui-scrim/20 z-dock md:hidden"
             onClick={() => setIsNavOpen(false)}
           />
           <div

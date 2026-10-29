@@ -30,14 +30,14 @@ const VARIANT_CONFIG: Record<
   }
 > = {
   danger: {
-    classes: 'border-feedback-danger-edge/30 bg-feedback-danger-surface text-feedback-danger-edge',
+    classes: 'border-feedback-danger-edge/30 bg-feedback-danger-surface text-feedback-danger-text',
     icon: 'error',
     iconColor: 'text-feedback-danger',
   },
   warning: {
-    classes: 'border-feedback-warning-edge/30 bg-feedback-warning-surface text-feedback-warning-edge',
+    classes: 'border-feedback-warning-edge/30 bg-feedback-warning-surface text-feedback-warning-text',
     icon: 'lightbulb',
-    iconColor: 'text-feedback-warning-edge',
+    iconColor: 'text-feedback-warning-text',
   },
   info: {
     classes: 'border-brand-primary-edge/30 bg-brand-primary-soft text-brand-primary-deep',
@@ -47,7 +47,7 @@ const VARIANT_CONFIG: Record<
   success: {
     classes: 'border-feedback-success-edge/30 bg-feedback-success-surface text-feedback-success',
     icon: 'check',
-    iconColor: 'text-feedback-success-edge',
+    iconColor: 'text-feedback-success-text',
   },
 };
 

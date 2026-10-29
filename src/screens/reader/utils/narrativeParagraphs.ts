@@ -1,3 +1,4 @@
+import { isNarratorSpeaker } from '../../../utils/lesson/readingKind';
 export interface NarrativeSentenceItem {
   index: number;
   text: string;
@@ -11,36 +12,12 @@ export interface NarrativeParagraphGroup<T extends NarrativeSentenceItem> {
   english: string;
 }
 
+/** Book 1 essays store one sentence per entry (avg <= ~65 chars); Book 3 stores printed paragraphs (avg >= ~100). */
+const AUTHORED_PARAGRAPH_MIN_AVG_CHARS = 80;
+
 const DISCOURSE_TRANSITIONS =
   /^(昨天|今天|明天|上個星期|下個星期|這個學期|開始|這次|每年|每天|平常|最近|但是|所以|現在|下午|晚上|節目裡|工廠裡|很多年輕男生|很多外國人|我覺得|今年是我第一次|華人聊天|老師告訴|台灣最有名的|而且)/;
 
-/**
- * Determines whether a reading record represents a solo narrative/reading rather than a multi-speaker dialogue.
- */
-export function isNarrativeReading(reading?: {
-  dialogueNumber?: number;
-  setting?: string;
-  title?: string;
-  paragraphs?: Array<{ speaker?: string }>;
-} | null): boolean {
-  if (!reading) return false;
-  // Dialogue 1 and Dialogue 2 are always dialogues
-  if (reading.dialogueNumber === 1 || reading.dialogueNumber === 2) return false;
-  // If title explicitly says Dialogue / 對話, it is always a dialogue
-  if (reading.title && (reading.title.includes('對話') || /dialogue/i.test(reading.title))) return false;
-  if (reading.setting && (reading.setting.includes('對話') || /^對話/i.test(reading.setting))) return false;
-
-  // Dialogue 3 is always the narrative / short reading
-  if (reading.dialogueNumber === 3) return true;
-  // Fallbacks for non-numbered readings
-  if (reading.title && (reading.title.includes('短文') || /短文|Reading/i.test(reading.title))) return true;
-  if (reading.setting && reading.setting.includes('短文')) return true;
-
-  const paragraphs = reading.paragraphs ?? [];
-  const speakers = Array.from(new Set(paragraphs.map((p) => p?.speaker).filter(Boolean)));
-  if (speakers.length <= 1 && speakers.every((s) => !s || s.toLowerCase() === 'narrator')) return true;
-  return false;
-}
 
 /**
  * Groups narrative sentences into natural paragraphs for reader mode.
@@ -65,7 +42,7 @@ export function groupSentencesIntoParagraphs<T extends NarrativeSentenceItem>(
     new Set(
       sentences
         .map((s) => s.speaker?.trim())
-        .filter((s): s is string => Boolean(s && s.toLowerCase() !== 'narrator')),
+        .filter((s): s is string => Boolean(s) && !isNarratorSpeaker(s)),
     ),
   );
   if (distinctSpeakers.length > 1) {
@@ -101,6 +78,11 @@ export function groupSentencesIntoParagraphs<T extends NarrativeSentenceItem>(
   }
 
   const totalChars = sentences.reduce((sum, s) => sum + s.text.length, 0);
+
+  // Entries that are already whole paragraphs (Book 3 essays, ~100+ characters each) keep the book's own breaks.
+  if (sentences.length > 1 && totalChars / sentences.length >= AUTHORED_PARAGRAPH_MIN_AVG_CHARS) {
+    return sentences.map((sentence, id) => ({ id, sentences: [sentence], english: sentence.english?.trim() ?? '' }));
+  }
 
   // Short readings remain 1 natural, comfortable paragraph (e.g. L1-L7)
   if (totalChars < 135 || sentences.length < 4) {

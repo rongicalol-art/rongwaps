@@ -7,7 +7,7 @@ import { LEGAL_ROUTES } from '../routes';
 const linkClass =
   'rounded-xs px-1 text-[13px] font-extrabold uppercase tracking-wider text-ui-muted transition-colors hover:text-ui-ink focus-ring-inline';
 
-/** Quiet About / Terms / Privacy / Sources / Feedback links at the foot of the Books, Library and Dictionary pages. */
+/** Quiet About / Terms / Privacy / Sources / Feedback links at the foot of the Learn, Library and Dictionary pages. */
 export function AppFooter({ className }: { className?: string }) {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   return (

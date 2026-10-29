@@ -106,7 +106,7 @@ function GrammarRow({
             <button
               type="button"
               onClick={() => onOpenGrammar(point.partId, point.id)}
-              className="focus-ring-inline self-start text-sm font-extrabold text-brand-primary hover:text-brand-primary-edge"
+              className="focus-ring-inline self-start text-sm font-extrabold text-brand-primary-text hover:text-brand-primary-text"
             >
               Open lesson
             </button>

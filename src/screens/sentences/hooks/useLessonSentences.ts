@@ -5,8 +5,9 @@ import { exampleSentenceRecords, readingSentenceRecords } from '../utils/bookSen
 import type { Flashcard } from '../../../data/flashcards';
 import { extractWordVariants } from '../../../utils/vocabulary/wordForms';
 import type { CourseExampleRecord } from '../../../types/models';
+import { useAppStore } from '../../../store/useAppStore';
 
-/** Where a sentence comes from in the book: a dialogue line, the Reading, or a word's example. */
+/** Where a sentence comes from in the book: a dialogue line, the Reading / essay, or a word's own example (the default). */
 export type SentenceKind = 'dialogue' | 'reading' | 'example';
 
 export interface LessonSentence {
@@ -22,13 +23,14 @@ function sentenceKind(id: string): SentenceKind {
   return KIND_BY_PREFIX[id.slice(id.lastIndexOf('-') + 1, id.lastIndexOf('-') + 2)] ?? 'example';
 }
 
-/** The records in these `book:lesson:part` keys, in book order (dialogue, Reading, examples), each sentence once. */
-export function buildLessonSentences(records: readonly CourseExampleRecord[], parts: ReadonlySet<string>): LessonSentence[] {
+/** The records in these `book:lesson:part` keys, in book order (dialogue, Reading, examples), each sentence once. Without `includeReadings`, only the lessons' authored examples. */
+export function buildLessonSentences(records: readonly CourseExampleRecord[], parts: ReadonlySet<string>, includeReadings = false): LessonSentence[] {
   const seen = new Set<string>();
   const block = (id: string) => id.slice(id.lastIndexOf('-'));
   return records
     .filter((record) => parts.has(`${record.bookId}:${record.lessonId}:${record.partId}`))
     .map((record) => ({ record, kind: sentenceKind(record.id) }))
+    .filter(({ kind }) => includeReadings || kind === 'example')
     .sort((a, b) => a.record.bookId - b.record.bookId
       || a.record.lessonId - b.record.lessonId
       || a.record.partId - b.record.partId
@@ -59,11 +61,12 @@ async function loadSentenceRecords(cards: readonly Flashcard[]): Promise<CourseE
 }
 
 /**
- * The book's sentences for the deck's parts (dialogue lines, Reading, word examples), in book
- * order, each sentence once. Reading only: nothing here touches SRS.
+ * The book's sentences for the deck's parts: the words' authored examples, plus the dialogue lines and
+ * Reading when the "Include reading sentences" setting is on, in book order, each sentence once. Reading only: nothing here touches SRS.
  */
 export function useLessonSentences(activeBookId: number, selectedLessons: number[], isReviewDeck = false, isLibraryDeck = false) {
   const { cards, isLoading: isLoadingDeck, error: deckError } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+  const includeReadings = useAppStore((state) => state.sentencesIncludeReadings);
   const [records, setRecords] = useState<CourseExampleRecord[] | null>(null);
   const [loadError, setLoadError] = useState<unknown>(null);
 
@@ -79,7 +82,8 @@ export function useLessonSentences(activeBookId: number, selectedLessons: number
   const sentences = useMemo(() => (records ? buildLessonSentences(
     records,
     new Set(cards.map((card) => `${card.bookId}:${card.lessonId}:${card.partId ?? 1}`)),
-  ) : []), [cards, records]);
+    includeReadings,
+  ) : []), [cards, records, includeReadings]);
 
   /** The deck's words, every written form: highlighted wherever they occur. */
   const highlightTerms = useMemo(

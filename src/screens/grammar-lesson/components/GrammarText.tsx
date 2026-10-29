@@ -44,7 +44,7 @@ export function GrammarText({
               />
             </p>
             {showPinyin && turn.pinyin && (
-              <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">
+              <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary-text sm:text-sm">
                 {turn.pinyin}
               </p>
             )}
@@ -70,7 +70,7 @@ export function GrammarText({
         />
       </p>
       {showPinyin && text.pinyin && (
-        <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">{text.pinyin}</p>
+        <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary-text sm:text-sm">{text.pinyin}</p>
       )}
       {showTranslation && text.english && (
         <p className="ui-translation mt-1.5 text-[15px] sm:text-base">{text.english}</p>

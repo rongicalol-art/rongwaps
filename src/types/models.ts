@@ -247,7 +247,20 @@ export type RongWapsCharacter =
   | 'jiahao'
   | 'mingzhe'
   | 'managerWang'
-  | 'officeStaff';
+  | 'officeStaff'
+  | 'meixin'
+  | 'ryosuke'
+  | 'kexin'
+  | 'yifan'
+  | 'mingsheng'
+  | 'ryusuke'
+  | 'mrsWang'
+  | 'book2Classmate'
+  | 'electronicsClerk'
+  | 'confucius'
+  | 'zilu'
+  | 'book2ChildA'
+  | 'book2ChildB';
 
 /**
  * A single in-context sentence pulled from the course that uses a word.

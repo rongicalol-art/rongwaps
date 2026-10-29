@@ -62,7 +62,7 @@ export function ConfirmationDialog({
         </Dialog.Description>
         {children}
         {errorMessage && (
-          <p id={errorId} role="alert" className="mt-3 rounded-compact bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-edge">
+          <p id={errorId} role="alert" className="mt-3 rounded-compact bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-text">
             {errorMessage}
           </p>
         )}

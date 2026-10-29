@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { TEST_ALL_READINGS as ALL_READINGS_DATA } from '../acceptance_helpers';
+import { TEST_ALL_READINGS as ALL_READINGS_DATA, getTestReadings } from '../acceptance_helpers';
 import {
   groupSentencesIntoParagraphs,
-  isNarrativeReading,
   type NarrativeSentenceItem,
 } from '../../src/screens/reader/utils/narrativeParagraphs';
+import { isEssayReading } from '../../src/utils/lesson/readingKind';
 
 test('Lesson 1 Self-Introduction remains a single clean paragraph (does not force awkward 1-line breaks)', () => {
   const l1Reading = ALL_READINGS_DATA.find((r) => r.id === 'B1L01-R03')!;
@@ -116,21 +116,20 @@ test('dialogue passages group by speaker turn', () => {
   assert.equal(groups[2].sentences[0].speaker, '中明');
 });
 
-test('isNarrativeReading classifies Dialogue 1 and Dialogue 2 as dialogues, and Dialogue 3 as narrative', () => {
-  for (const reading of ALL_READINGS_DATA) {
-    const isNarrative = isNarrativeReading(reading);
-    if (reading.dialogueNumber === 1 || reading.dialogueNumber === 2) {
-      assert.equal(
-        isNarrative,
-        false,
-        `Reading ${reading.id} (Dialogue ${reading.dialogueNumber}) must never be classified as narrative`,
-      );
-    } else if (reading.dialogueNumber === 3) {
-      assert.equal(
-        isNarrative,
-        true,
-        `Reading ${reading.id} (Dialogue 3) must be classified as narrative`,
-      );
-    }
+test('isEssayReading follows the books: Book 1 part 3 and Book 3 part 2 are essays, the rest dialogues', () => {
+  for (const reading of [...ALL_READINGS_DATA, ...getTestReadings(3)]) {
+    const expected = reading.bookId === 3 ? reading.dialogueNumber === 2 : reading.dialogueNumber === 3;
+    assert.equal(isEssayReading(reading), expected, `Reading ${reading.id} (part ${reading.dialogueNumber})`);
+  }
+});
+
+test('Book 3 essays keep the book\'s own paragraphs; Book 1 essays still regroup sentences', () => {
+  const toItems = (reading: (typeof ALL_READINGS_DATA)[number]): NarrativeSentenceItem[] =>
+    reading.paragraphs.map((p, index) => ({ index, text: p.traditional, english: p.english, speaker: p.speaker }));
+  for (const reading of getTestReadings(3).filter((item) => item.dialogueNumber === 2)) {
+    assert.equal(groupSentencesIntoParagraphs(toItems(reading)).length, reading.paragraphs.length, reading.id);
+  }
+  for (const reading of ALL_READINGS_DATA.filter((item) => item.dialogueNumber === 3)) {
+    assert.ok(groupSentencesIntoParagraphs(toItems(reading)).length <= 3, reading.id);
   }
 });

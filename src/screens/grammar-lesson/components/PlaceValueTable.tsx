@@ -4,7 +4,6 @@ import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
-import { SAMPLE_BOOKS } from '../../../data/books';
 import { getSemanticRoleClasses } from '../../../utils/grammar/grammarSemanticRoles';
 import { getGrammarText } from './GrammarText';
 
@@ -77,28 +76,24 @@ function DigitCell({ token }: { token?: GrammarWordToken }) {
  */
 export function PlaceValueTable({ page, characterPreference, showPinyin, columns, rows }: PlaceValueTableProps) {
   const [openId, setOpenId] = useState<string | null>(rows[0]?.id ?? null);
-  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
-  const frameStyle = { borderColor: book.theme.primaryEdge, backgroundColor: book.theme.primaryEdge };
-  const headerStyle = { backgroundColor: book.theme.primaryEdge, borderColor: book.theme.primaryEdge };
   const columnCount = columns.length;
   const half = Math.ceil(columnCount / 2);
 
   return (
     <section aria-label="Place values">
       <div
-        style={frameStyle}
-        className="relative w-full overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-lg)]"
+        className="relative w-full overflow-hidden rounded-feature border-2 border-brand-band bg-brand-band border-b-[length:var(--depth-lg)]"
       >
         <table className="w-full table-fixed border-collapse text-center">
           <thead>
-            <tr style={headerStyle} className="border-b-2">
+            <tr className="border-b-2 border-brand-band bg-brand-band">
               {columns.map((title, index) => (
                 <th
                   key={title}
                   scope="col"
-                  className={cn('py-3 font-black', index === half && 'border-l-2 border-white/25')}
+                  className={cn('py-3 font-black', index === half && 'border-l-2 border-brand-on-band/25')}
                 >
-                  <span className="ui-eyebrow block whitespace-nowrap text-white [&_.font-chinese]:text-base">
+                  <span className="ui-eyebrow block whitespace-nowrap text-brand-on-band [&_.font-chinese]:text-base">
                     <span className="font-chinese">{title}</span>
                   </span>
                 </th>
@@ -167,8 +162,7 @@ export function PlaceValueTable({ page, characterPreference, showPinyin, columns
                             variant="quiet"
                             icon={<AppIcon name="audio" size={22} />}
                             label={`Play ${number}`}
-                            style={{ color: book.theme.primary }}
-                            className="-mt-0.5 shrink-0 hover:brightness-90"
+                            className="-mt-0.5 shrink-0 text-brand-primary hover:text-brand-primary hover:brightness-90"
                           />
                           <div className="flex min-w-0 flex-1 flex-wrap items-end gap-x-3 gap-y-2">
                             {chunks.map((chunk, chunkIndex) => chunk.length > 0 && (

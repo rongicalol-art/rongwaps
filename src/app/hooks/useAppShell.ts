@@ -1,6 +1,7 @@
 import { useAppNavigation } from '../../hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from '../../hooks/useAudioUnlock';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
+import { useAppearance } from '../../hooks/useAppearance';
 import { useCloudSync } from '../../hooks/useCloudSync';
 import { useAuth } from '../../hooks/useAuth';
 import { useResetProgress } from '../../hooks/useResetProgress';
@@ -25,6 +26,7 @@ export function useAppShell() {
   useAudioUnlock();
   const cloudSync = useCloudSync();
   useCharacterFont();
+  useAppearance();
 
   const shellState = useAppShellState();
   const { currentUser, hasFullCourseAccess, isLoading } = useAuth();

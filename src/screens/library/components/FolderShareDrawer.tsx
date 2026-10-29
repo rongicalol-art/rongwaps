@@ -60,7 +60,7 @@ export function FolderShareDrawer({ folder, currentUserId, members, error, busy,
             })}
           </ul>}
         {!owner && <div className="mt-8 pb-6">
-          <ActionButton variant="quiet" size="sm" disabled={busy} className="normal-case tracking-normal text-feedback-danger-edge hover:bg-feedback-danger/10" onClick={onLeave}>
+          <ActionButton variant="quiet" size="sm" disabled={busy} className="normal-case tracking-normal text-feedback-danger-text hover:bg-feedback-danger/10" onClick={onLeave}>
             Leave folder
           </ActionButton>
         </div>}

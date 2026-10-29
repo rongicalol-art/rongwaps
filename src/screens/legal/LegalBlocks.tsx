@@ -41,7 +41,7 @@ export function LegalSummary({ points }: { points: string[] }) {
   );
 }
 
-export const legalLinkClass = 'rounded-xs font-extrabold text-brand-primary hover:underline focus-ring-inline';
+export const legalLinkClass = 'rounded-xs font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
 
 export function ContactLink() {
   return (

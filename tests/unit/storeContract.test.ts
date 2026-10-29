@@ -67,6 +67,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'simpleDefinitions',
   'hideExamplePinyin',
   'characterFont',
+  'appearance',
   'quizFormat',
   'quizQuestionType',
   'quizChoiceType',
@@ -78,6 +79,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'flowExamples',
   'flowSpeakTranslation',
   'flowRepeatPause',
+  'sentencesIncludeReadings',
   // Study together (local choices only)
   'showOnline',
   'socialMuted',

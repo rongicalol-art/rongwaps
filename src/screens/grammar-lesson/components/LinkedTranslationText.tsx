@@ -33,7 +33,7 @@ export function LinkedTranslationText({
             className={cn(
               'rounded-xs px-0.5 text-left transition-colors',
               isActive
-                ? 'bg-brand-primary text-ui-surface'
+                ? 'bg-brand-primary text-brand-on-primary'
                 : 'hover:bg-brand-primary/10 hover:text-ui-ink-strong focus-ring-inline focus-visible:bg-brand-primary/10',
             )}
           >

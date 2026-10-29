@@ -33,9 +33,9 @@ const surfaceVariantClasses: Record<ActionButtonVariant, string> = {
   primary: 'bg-brand-primary text-brand-on-primary hover:brightness-105',
   secondary: 'border-2 border-[var(--btn-edge,var(--color-ui-border))] bg-ui-surface text-ui-muted-strong hover:bg-ui-hover',
   quiet: 'bg-transparent text-brand-primary-deep hover:bg-brand-primary-soft active:bg-brand-primary-wash',
-  danger: 'bg-feedback-danger text-white hover:brightness-105',
-  success: 'bg-feedback-success text-white hover:brightness-105',
-  warning: 'bg-feedback-warning text-ui-ink-strong hover:brightness-105',
+  danger: 'bg-feedback-danger text-ui-on-solid hover:brightness-105',
+  success: 'bg-feedback-success text-ui-on-solid hover:brightness-105',
+  warning: 'bg-feedback-warning text-feedback-on-warning hover:brightness-105',
 };
 
 const sizeConfig: Record<ActionButtonSize, {

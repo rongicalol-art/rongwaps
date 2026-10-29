@@ -35,13 +35,15 @@ function Bar({ percent, slim = false, label }: { percent: number; slim?: boolean
 
 interface TocflReadinessCardProps {
   readiness: TocflReadiness | null;
+  /** Lists the focus band's characters still to learn; the "more to reach" line calls it. */
+  onStudy?: (band: TocflBand) => void;
 }
 
 /**
  * TOCFL readiness as one slim row: the band to work on, a chunky bar and what
- * is left to the goal. Tap to open the other bands.
+ * is left to the goal. Tap to open the other bands; "N more" lists those characters.
  */
-export function TocflReadinessCard({ readiness }: TocflReadinessCardProps) {
+export function TocflReadinessCard({ readiness, onStudy }: TocflReadinessCardProps) {
   const [open, setOpen] = useState(false);
   const focus = readiness?.bands.find((b) => b.band === readiness.focusBand);
   const others = readiness?.bands.filter((b) => b.band !== readiness.focusBand) ?? [];
@@ -69,11 +71,30 @@ export function TocflReadinessCard({ readiness }: TocflReadinessCardProps) {
         <span className="mt-2.5 block">
           <Bar percent={focusPercent} label={`Band ${readiness.focusBand}: ${focus.known} of ${focus.total} characters known`} />
         </span>
-        <span className="mt-2 flex items-center justify-between text-sm font-extrabold text-ui-muted">
-          <span>{toGo > 0 ? `${toGo} more to reach ${nextBand ? `Band ${nextBand}` : 'the goal'}` : nextBand ? `Ready for Band ${nextBand}` : 'Band complete'}</span>
-          <AppIcon name="expand" size={18} className={cn('transition-transform duration-300', open && 'rotate-180')} />
-        </span>
       </button>
+      <div className="mt-1 flex items-center justify-between gap-2 text-sm font-extrabold text-ui-muted">
+        {toGo > 0 && onStudy ? (
+          <button
+            type="button"
+            onClick={() => onStudy(readiness.focusBand)}
+            className="-mx-1.5 flex min-h-9 items-center gap-1 rounded-compact px-1.5 text-brand-primary-text transition-colors hover:bg-brand-primary/10 focus-ring"
+          >
+            {toGo} more to reach {nextBand ? `Band ${nextBand}` : 'the goal'}
+            <AppIcon name="next" size={16} />
+          </button>
+        ) : (
+          <span className="min-h-9 content-center">{toGo > 0 ? `${toGo} more to reach ${nextBand ? `Band ${nextBand}` : 'the goal'}` : nextBand ? `Ready for Band ${nextBand}` : 'Band complete'}</span>
+        )}
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          aria-expanded={open}
+          aria-label={open ? 'Hide other bands' : 'Show other bands'}
+          className="flex h-9 w-9 items-center justify-center rounded-compact transition-colors hover:bg-ui-hover focus-ring"
+        >
+          <AppIcon name="expand" size={18} className={cn('transition-transform duration-300', open && 'rotate-180')} />
+        </button>
+      </div>
 
       <div className={cn('grid transition-[grid-template-rows] duration-[360ms] ease-[cubic-bezier(0.2,0.9,0.3,1)]', open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
         <div className="overflow-hidden">

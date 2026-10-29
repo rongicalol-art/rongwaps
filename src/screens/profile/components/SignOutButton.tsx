@@ -30,8 +30,8 @@ export function SignOutButton({ onSignOut, isSigningOut }: { onSignOut: () => vo
         className={cn(
           'min-h-11 rounded-control px-4 text-[15px] font-black transition-colors focus-ring disabled:opacity-60',
           confirming
-            ? 'bg-feedback-danger text-white'
-            : 'text-ui-muted hover:bg-feedback-danger-surface hover:text-feedback-danger-edge',
+            ? 'bg-feedback-danger text-ui-on-solid'
+            : 'text-ui-muted hover:bg-feedback-danger-surface hover:text-feedback-danger-text',
         )}
       >
         {isSigningOut ? 'Signing out…' : confirming ? 'Tap again to sign out' : 'Sign out'}

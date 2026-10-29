@@ -26,10 +26,10 @@ export function GrammarBookPageViewer({
         <div
           role="status"
           aria-label="Loading book"
-          className="fixed inset-0 z-shell flex flex-col items-center justify-center gap-5 bg-ui-ink-strong"
+          className="fixed inset-0 z-shell flex flex-col items-center justify-center gap-5 bg-black"
         >
-          <span className="h-11 w-11 animate-spin rounded-full border-4 border-ui-surface/25 border-t-ui-surface" />
-          <span className="text-xs font-black uppercase tracking-widest text-ui-surface/70">
+          <span className="h-11 w-11 animate-spin rounded-full border-4 border-white/25 border-t-white" />
+          <span className="text-xs font-black uppercase tracking-widest text-white/70">
             Loading book…
           </span>
         </div>

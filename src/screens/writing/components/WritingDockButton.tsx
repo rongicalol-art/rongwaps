@@ -10,7 +10,7 @@ import { cn } from '../../../utils/cn';
 const DOCK_BUTTON_TONES = {
   default: 'text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong',
   danger: 'text-ui-muted-strong hover:bg-feedback-danger/10 hover:text-feedback-danger',
-  selected: 'text-white',
+  selected: 'text-brand-on-primary',
 } as const;
 
 interface WritingDockButtonProps

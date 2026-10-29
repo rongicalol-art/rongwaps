@@ -76,7 +76,7 @@ export function WordHero({
 
         <div className="flex min-w-0 max-w-full flex-1 flex-col items-start gap-1.5 text-left">
           <div className="flex min-w-0 items-center gap-1.5">
-            {pinyin && <span className="truncate text-2xl font-black leading-tight text-brand-primary sm:text-[26px]">{pinyin}</span>}
+            {pinyin && <span className="truncate text-2xl font-black leading-tight text-brand-primary-text sm:text-[26px]">{pinyin}</span>}
             {!wide && (
               <SummaryQuickActions
                 className="ml-0.5 flex items-center [&>button]:h-8 [&>button]:w-8"

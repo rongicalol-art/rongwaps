@@ -35,7 +35,8 @@ type BooleanPreferenceKey =
   | 'dockAutoHide'
   | 'flowExamples'
   | 'flowSpeakTranslation'
-  | 'flowRepeatPause';
+  | 'flowRepeatPause'
+  | 'sentencesIncludeReadings';
 
 export const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
   { value: 0.5, label: 'Slowest (0.5x)' },
@@ -222,6 +223,16 @@ export function PracticeSettingsScreen({
                 checked={preferences.flowRepeatPause}
                 onClick={toggle('flowRepeatPause')}
                 label="Pause to repeat"
+                className="border-b-0"
+              />
+            </SettingsPageSection>
+
+            <SettingsPageSection title="Sentences">
+              <SettingsToggleRow
+                checked={preferences.sentencesIncludeReadings}
+                onClick={toggle('sentencesIncludeReadings')}
+                label="Include reading sentences"
+                description="Also practise the dialogue, reading and essay lines, not only the lessons' examples."
                 className="border-b-0"
               />
             </SettingsPageSection>

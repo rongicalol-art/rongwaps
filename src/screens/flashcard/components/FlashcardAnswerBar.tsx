@@ -73,7 +73,7 @@ export function FlashcardAnswerBar({
         fullWidth
         onClick={onHard}
         edgeColor="color-mix(in srgb, var(--color-feedback-danger-edge) 50%, var(--color-ui-border))"
-        className="!text-feedback-danger-edge/80 max-sm:!text-sm max-sm:!px-3"
+        className="!text-feedback-danger-text/80 max-sm:!text-sm max-sm:!px-3"
       >
         <span className={hintedLabelClass}>
           Again
@@ -99,7 +99,7 @@ export function FlashcardAnswerBar({
         fullWidth
         onClick={onGotIt}
         edgeColor="color-mix(in srgb, var(--color-feedback-success-edge) 50%, var(--color-ui-border))"
-        className="!text-feedback-success-edge/80 max-sm:!text-sm max-sm:!px-3"
+        className="!text-feedback-success-text/80 max-sm:!text-sm max-sm:!px-3"
       >
         <span className={hintedLabelClass}>
           Got it

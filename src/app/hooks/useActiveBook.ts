@@ -12,7 +12,7 @@ export function useActiveBook(activeBookId: number, activeTab: string) {
     ? SAMPLE_BOOKS[0]
     : SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0];
 
-  useBookTheme(activeBook.theme);
+  useBookTheme(activeBook.id);
 
   return activeBook;
 }

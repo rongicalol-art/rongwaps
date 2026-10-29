@@ -78,9 +78,9 @@ export function BreakdownExpandPanel({
       {/* Memory hook (rendered only if one exists) */}
       {hookLoaded && hook && (
         <div className="mt-3 flex items-start gap-2.5 rounded-control border border-feedback-warning-edge/40 bg-feedback-warning/10 p-3">
-          <AppIcon name="sparkles" size={15} className="mt-0.5 shrink-0 text-feedback-warning-edge" />
+          <AppIcon name="sparkles" size={15} className="mt-0.5 shrink-0 text-feedback-warning-text" />
           <div className="min-w-0 flex-1">
-            <span className="block text-[10px] font-black uppercase tracking-wider text-feedback-warning-edge">
+            <span className="block text-[10px] font-black uppercase tracking-wider text-feedback-warning-text">
               Memory hook
             </span>
             <p className="mt-0.5 text-xs font-bold leading-relaxed text-ui-muted-strong">
@@ -96,7 +96,7 @@ export function BreakdownExpandPanel({
           <button
             type="button"
             onClick={onOpenDetails}
-            className="inline-flex items-center gap-1 rounded-sm text-xs font-black uppercase tracking-wider text-brand-primary transition-opacity hover:opacity-80 focus-ring"
+            className="inline-flex items-center gap-1 rounded-sm text-xs font-black uppercase tracking-wider text-brand-primary-text transition-opacity hover:opacity-80 focus-ring"
           >
             <span>Inspect characters</span>
             <AppIcon name="forward" size={12} />

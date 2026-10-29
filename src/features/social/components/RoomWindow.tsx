@@ -181,7 +181,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
                 ))}
               </div>
               <div className="mt-6 grid gap-3">
-                <Row icon="books" label="Words" value={lessonsSummary(race.selection.lessons)} onClick={isHost && live ? () => setSheet('words') : undefined} />
+                <Row icon="curriculum" label="Words" value={lessonsSummary(race.selection.lessons)} onClick={isHost && live ? () => setSheet('words') : undefined} />
                 <Row icon="quiz" label="Quiz type" value={typeLabel(race.selection.types)} onClick={isHost && live ? () => setSheet('types') : undefined} />
                 {isHost && live && (
                   <button type="button" role="switch" aria-checked={race.open} onClick={() => settings(race.selection, !race.open)}

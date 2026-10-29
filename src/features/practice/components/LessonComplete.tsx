@@ -137,7 +137,7 @@ export const LessonComplete = ({
                   <span>0 Cards Studied</span>
                 </div>
               ) : isFlawless ? (
-                <div className="inline-flex items-center gap-2 rounded-control bg-feedback-success-surface border-b-[length:var(--depth-sm)] border-feedback-success-edge/40 px-4 py-1.5 text-xs font-black text-feedback-success-edge">
+                <div className="inline-flex items-center gap-2 rounded-control bg-feedback-success-surface border-b-[length:var(--depth-sm)] border-feedback-success-edge/40 px-4 py-1.5 text-xs font-black text-feedback-success-text">
                   <AppIcon name="sparkles" size={14} className="text-feedback-success" />
                   <span>All {totalCards} Cards Mastered!</span>
                 </div>
@@ -148,7 +148,7 @@ export const LessonComplete = ({
                     <span>{learnedCount} Learned</span>
                   </div>
                   {unlearnedCount !== undefined && unlearnedCount > 0 && (
-                    <div className="inline-flex items-center gap-1.5 rounded-control bg-brand-secondary/15 border-b-[length:var(--depth-sm)] border-brand-secondary-edge/30 px-3 py-1.5 text-xs font-black text-brand-secondary-edge">
+                    <div className="inline-flex items-center gap-1.5 rounded-control bg-brand-secondary/15 border-b-[length:var(--depth-sm)] border-brand-secondary-edge/30 px-3 py-1.5 text-xs font-black text-brand-secondary-text">
                       <AppIcon name="restart" size={13} className="text-brand-secondary" />
                       <span>{unlearnedCount} To Review</span>
                     </div>

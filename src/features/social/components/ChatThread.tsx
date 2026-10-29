@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ActionButton, AppIcon, Avatar, PlayfulNavIcon, SmartSentence } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import { CHAT_MAX, chatText, nextChatRate, type ChatRate, type ChatMessage } from '../../../../shared/lobby';
+import { CHAT_MAX, chatText, nextChatRate, type ChatRate, type ChatMessage, type MentionNotice } from '../../../../shared/lobby';
 import { lobby } from '../lobbyController';
 import { joinRace, partySend } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
@@ -59,6 +59,15 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
   const composing = useRef(false);
   const compositionEndedAt = useRef(0);
   const scroller = useRef<HTMLDivElement>(null);
+  const mentions = useAppStore(state => state.socialMentions);
+  const channel = useAppStore(state => state.socialChat?.lesson);
+  const raceCode = useAppStore(state => state.race?.code);
+  // Mentions already read when the thread opened are old news; unread ones and any that arrive later get the jump chip.
+  const oldMentions = useRef<Set<string> | null>(null);
+  oldMentions.current ??= new Set(mentions.filter(item => item.read).map(item => item.key));
+  const seenMentions = useRef<Set<string>>(new Set());
+  const [aboveMention, setAboveMention] = useState<MentionNotice | null>(null);
+  const [flash, setFlash] = useState<number | null>(null);
   const scrolledTarget = useRef<string | null>(null);
   const rate = useRef<ChatRate | null>(null);
   const targetLine = target && (party ? target.room && target.room === useAppStore.getState().race?.code : !target.room && target.channel === useAppStore.getState().socialChat?.lesson) ? target.message : null;
@@ -88,6 +97,34 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
     } else if (el && !targetLine) { scrolledTarget.current = null; el.scrollTop = el.scrollHeight; }
   }, [visible.length, targetLine, target]);
 
+  const checkMentions = () => {
+    const el = scroller.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top;
+    const bottom = el.getBoundingClientRect().bottom;
+    let above: MentionNotice | null = null;
+    for (const item of mentions) {
+      if (oldMentions.current?.has(item.key) || seenMentions.current.has(item.key)) continue;
+      if (party ? item.room !== raceCode : item.room || item.channel !== channel) continue;
+      const node = el.querySelector(`[data-message-id="${item.message.id}"]`);
+      if (!node) continue;
+      const rect = node.getBoundingClientRect();
+      if (rect.bottom <= top + 4) above = item;
+      else if (rect.top < bottom) seenMentions.current.add(item.key);
+    }
+    setAboveMention(above);
+  };
+  useEffect(checkMentions, [mentions, visible.length, channel, party, raceCode]);
+
+  const jumpToMention = (item: MentionNotice) => {
+    const node = scroller.current?.querySelector(`[data-message-id="${item.message.id}"]`);
+    node?.scrollIntoView({ block: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    seenMentions.current.add(item.key);
+    setAboveMention(null);
+    setFlash(item.message.id);
+    window.setTimeout(() => setFlash(null), 1400);
+  };
+
   const say = (text: string) => {
     const value = chatText(text);
     if (!value || !ready) return;
@@ -101,7 +138,15 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div ref={scroller} className="min-h-0 flex-1 overflow-y-auto overscroll-contain py-3 custom-scrollbar">
+      <div className="relative flex min-h-0 flex-1 flex-col">
+      {aboveMention && (
+        <div className="pointer-events-none absolute inset-x-0 top-2 z-10 flex justify-center">
+          <ActionButton size="sm" variant="primary" className="pointer-events-auto" onClick={() => jumpToMention(aboveMention)}>
+            <AppIcon name="back" size={16} className="rotate-90" />Mentioned by {aboveMention.message.n}
+          </ActionButton>
+        </div>
+      )}
+      <div ref={scroller} onScroll={checkMentions} className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-3 pt-8 custom-scrollbar [mask-image:linear-gradient(to_bottom,transparent,black_2rem)]">
         {chat === null ? <EmptyNote>Loading messages…</EmptyNote> : visible.length === 0 ? <EmptyNote>Say hi to your classmates.</EmptyNote> : (
           <div className="flex flex-col gap-2">
             {groups(visible).map((group) => 'room' in group ? (
@@ -116,19 +161,19 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
                 )}
               </div>
             ) : (
-              <div key={group.key} className={`mt-3 flex items-end gap-2.5 ${group.u === me ? 'flex-row-reverse' : ''}`}>
+              <div key={group.key} className={`mt-5 flex items-end gap-3 ${group.u === me ? 'flex-row-reverse' : ''}`}>
                 {group.u !== me && <Avatar name={group.n} color={group.c} size="md" src={group.i} />}
-                <div className={`flex min-w-0 max-w-[80%] flex-col gap-1 ${group.u === me ? 'items-end' : 'items-start'}`}>
-                  {group.u !== me && <span className="ml-1 max-w-full truncate text-sm font-black text-ui-ink">{group.n}</span>}
+                <div className={`flex min-w-0 max-w-[80%] flex-col gap-1.5 ${group.u === me ? 'items-end' : 'items-start'}`}>
+                  {group.u !== me && <span className="ml-1 max-w-full truncate text-[15px] font-black text-ui-ink">{group.n}</span>}
                   {group.lines.map((line) => {
                     const mine = line.u === me;
                     const isOpen = open === line.id;
                     return (
-                      <div key={line.id} data-message-id={line.id} className={`max-w-full ${targetLine?.id === line.id ? 'rounded-control ring-2 ring-brand-primary' : ''}`}>
+                      <div key={line.id} data-message-id={line.id} className={`max-w-full ${targetLine?.id === line.id || flash === line.id ? 'rounded-control ring-2 ring-brand-primary' : ''}`}>
                         <button
                           type="button"
                           onClick={() => setOpen(isOpen ? null : line.id)}
-                          className={`max-w-full whitespace-pre-wrap [overflow-wrap:anywhere] rounded-control border-2 px-3.5 py-2 text-left text-base leading-snug outline-none focus-ring font-chinese font-bold ${mine ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface text-ui-ink-strong'}`}
+                          className={`max-w-full whitespace-pre-wrap [overflow-wrap:anywhere] rounded-control border-2 px-4 py-2.5 text-left text-[17px] leading-snug sm:text-lg outline-none focus-ring font-chinese font-bold ${mine ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-transparent bg-ui-divider/60 text-ui-ink-strong'}`}
                         >
                           {isOpen && HAN.test(line.t) && !mine ? <SmartSentence text={line.t} className="font-chinese" /> : line.t}
                         </button>
@@ -147,11 +192,13 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
           </div>
         )}
       </div>
-      <div className="relative flex flex-col gap-2.5 border-t-2 border-ui-divider pt-3">
+      </div>
+      <div className="relative flex flex-col gap-1.5 pt-2">
         {suggestions.length > 0 && <div role="listbox" ref={picker} id="mention-suggestions" aria-label="Mention a classmate" className="absolute bottom-full left-0 right-0 z-popover mb-2 max-h-60 overflow-y-auto rounded-control border-2 border-ui-border bg-ui-surface p-1">
           {suggestions.map((person, index) => <button key={person.u} id={`mention-option-${index}`} type="button" role="option" aria-selected={index === choice % suggestions.length} onMouseDown={event => event.preventDefault()} onClick={() => select(person)} className={`flex w-full items-center gap-2 rounded-control px-3 py-2 text-left font-bold text-ui-ink-strong ${index === choice % suggestions.length ? 'bg-brand-primary-soft' : 'hover:bg-ui-canvas'}`}><Avatar name={person.n} color={person.c} size="sm" src={person.i} /><span>{person.n}</span>{suggestions.filter(other => other.n === person.n).length > 1 && <span className="text-xs text-ui-muted">Classmate {suggestions.filter(other => other.n === person.n).findIndex(other => other.u === person.u) + 1}</span>}</button>)}
         </div>}
-        {ready ? <form className="flex items-center gap-2" onSubmit={(event) => { event.preventDefault(); if (!composing.current && Date.now() - compositionEndedAt.current > 100) say(draft); }}>
+        {!ready && <p role="status" className="text-center text-xs font-bold text-ui-muted-strong">Reconnecting…</p>}
+        <form className="flex items-center gap-2" onSubmit={(event) => { event.preventDefault(); if (!composing.current && Date.now() - compositionEndedAt.current > 100) say(draft); }}>
           <input
             ref={input}
             role="combobox"
@@ -173,12 +220,13 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
               else if (event.key === 'Escape') { event.preventDefault(); setDismissed(true); }
             }}
             maxLength={CHAT_MAX}
+            disabled={!ready}
             placeholder="Message"
             aria-label="Message"
             className="h-12 min-w-0 flex-1 rounded-control border-2 border-ui-border bg-ui-surface px-4 font-chinese text-base font-bold text-ui-ink-strong outline-none placeholder:text-ui-muted focus:border-brand-primary"
           />
-          <ActionButton type="submit" size="md" variant="primary" aria-label="Send"><AppIcon name="send" size={20} /></ActionButton>
-        </form> : <p role="status" className="py-3 text-center text-sm font-bold text-ui-muted-strong">Reconnecting to chat…</p>}
+          <ActionButton type="submit" size="md" variant="primary" aria-label="Send" disabled={!ready}><AppIcon name="send" size={20} /></ActionButton>
+        </form>
       </div>
     </div>
   );

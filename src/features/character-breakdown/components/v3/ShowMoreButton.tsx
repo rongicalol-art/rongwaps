@@ -5,7 +5,7 @@ export function ShowMoreButton({ label, expanded, onClick }: { label: string; ex
       type="button"
       onClick={onClick}
       aria-expanded={expanded}
-      className="mx-auto mt-2 flex min-h-10 items-center justify-center rounded-compact px-4 text-sm font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
+      className="mx-auto mt-2 flex min-h-10 items-center justify-center rounded-compact px-4 text-sm font-extrabold text-brand-primary-text transition-colors hover:bg-brand-primary/10 focus-ring"
     >
       {label}
     </button>

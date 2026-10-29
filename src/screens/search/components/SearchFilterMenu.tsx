@@ -93,7 +93,7 @@ export function SearchFilterMenu({ levelOptions, bookOptions = [], lessonOptions
         </svg>
         <span className="hidden sm:inline">Filter</span>
         {activeCount > 0 && (
-          <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-primary px-1 text-xs font-black text-white">{activeCount}</span>
+          <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-primary px-1 text-xs font-black text-brand-on-primary">{activeCount}</span>
         )}
       </button>
 
@@ -130,7 +130,7 @@ export function SearchFilterMenu({ levelOptions, bookOptions = [], lessonOptions
                   <button
                     type="button"
                     onClick={() => onChange(NO_SEARCH_FILTERS)}
-                    className="self-start rounded-compact px-2 py-1 text-sm font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
+                    className="self-start rounded-compact px-2 py-1 text-sm font-extrabold text-brand-primary-text transition-colors hover:bg-brand-primary/10 focus-ring"
                   >
                     Clear filters
                   </button>

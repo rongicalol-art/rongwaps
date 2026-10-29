@@ -25,7 +25,7 @@ export function BrandWordmark({
         aria-hidden="true"
         className="relative flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-sm border-b-[length:var(--depth-sm)] border-feedback-warning-edge bg-feedback-warning"
       >
-        <span className="font-chinese translate-y-px text-[23px] font-bold leading-none text-ui-ink">
+        <span className="font-chinese translate-y-px text-[23px] font-bold leading-none text-feedback-on-warning">
           文
         </span>
       </span>
@@ -33,7 +33,7 @@ export function BrandWordmark({
       {!collapsed && (
         <span aria-hidden="true" className="min-w-0 text-[19px] font-black leading-none">
           <span className="text-ui-ink">{owner}</span>{' '}
-          <span className="text-feedback-warning-edge">{subject}</span>
+          <span className="text-feedback-warning-text">{subject}</span>
         </span>
       )}
     </div>

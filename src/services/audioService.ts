@@ -29,6 +29,7 @@ import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
 import { ShortAudioClips } from './audio/shortAudioClips';
 import { reportAudioFailure } from './errorReporting';
+import { playbackWaiting } from './audio/playbackWaiting';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
 export class AudioService {
@@ -47,6 +48,7 @@ export class AudioService {
       if (typeof Audio !== 'undefined') {
         try {
           this.globalAudio = new Audio();
+          this.watchFirstSound(this.globalAudio);
         } catch (error) {
           debugLogger.warn('Audio', 'HTML audio initialization failed; using browser speech fallback', error);
         }
@@ -56,7 +58,7 @@ export class AudioService {
   public initialize(): void {
     this.shortClips.unlock();
     if (this.isInitialized) return;
-    try { if (this.globalAudio && typeof Audio !== 'undefined') this.spareAudio ??= new Audio(); }
+    try { if (this.globalAudio && typeof Audio !== 'undefined' && !this.spareAudio) this.watchFirstSound(this.spareAudio = new Audio()); }
     catch (error) { debugLogger.warn('Audio', 'Spare audio initialization failed', error); }
     for (const audio of [this.globalAudio, this.spareAudio]) {
       if (!audio) continue;
@@ -97,11 +99,17 @@ export class AudioService {
       catch (error) { if (error instanceof Error && error.name === 'EncodingError') await invalidateCachedAudio(this.objectUrls, fileName!); throw error; }
     }
   }
+  /** Real sound (not the silent unlock clip) ends a playback's wait. */
+  private watchFirstSound(audio: HTMLAudioElement): void {
+    audio.addEventListener?.('playing', () => { if (!audio.src.startsWith('data:')) playbackWaiting.started(); });
+  }
   private trackPlayback(resolve: () => void): () => void {
     let settled = false;
+    const seq = playbackWaiting.begin();
     const finish = () => {
       if (settled) return;
       settled = true;
+      playbackWaiting.end(seq);
       if (this.activePlaybackFinish === finish) {
         this.activePlaybackFinish = null;
       }
@@ -122,7 +130,7 @@ export class AudioService {
       language,
       rate,
       (utt) => this.currentUtterance === utt,
-      (utt) => { this.currentUtterance = utt; },
+      (utt) => { this.currentUtterance = utt; utt?.addEventListener?.('start', () => playbackWaiting.started()); },
       finish,
       preferAnyChineseVoice,
     );
@@ -276,7 +284,8 @@ export class AudioService {
           }, handleAudioFailure, startTime);
         };
         this.activePlaybackCleanup = this.shortClips.play(this.objectUrls.get(audioFileName) ?? url, effectiveRate, startTime, finish, playNative) ?? null;
-        if (!this.activePlaybackCleanup) playNative();
+        if (this.activePlaybackCleanup) playbackWaiting.started();
+        else playNative();
       });
       this.playRecordedSource(audioFileName, playUrl, finish, handleAudioFailure);
     });
@@ -292,6 +301,7 @@ export class AudioService {
         void Promise.race([getCharacterAudio(card.front, card.pinyin), wait(2500).then(() => undefined)]).then((audio) => {
           if (this.activePlaybackFinish !== finish) return;
           this.activePlaybackFinish = null; // Transfer cancellation ownership to recorded playback.
+          playbackWaiting.carryOwner();
           void this.play(audio, effectiveRate, undefined, undefined, 0, { ...options, fallback: 'none' }).then(finish, finish);
         }, () => { if (this.activePlaybackFinish === finish) { options?.onUnavailable?.(); finish(); } });
       });

@@ -59,7 +59,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
         {selecting ? (
           <span
             aria-hidden
-            className={`pointer-events-none absolute left-2.5 top-2.5 z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-colors ${selected ? 'border-brand-primary bg-brand-primary text-white' : 'border-ui-divider bg-ui-surface'}`}
+            className={`pointer-events-none absolute left-2.5 top-2.5 z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-colors ${selected ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : 'border-ui-divider bg-ui-surface'}`}
           >
             {selected && <AppIcon name="check" size={14} />}
           </span>
@@ -79,7 +79,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
             aria-haspopup={isStarred ? undefined : 'menu'}
             className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
               isStarred
-                ? 'text-feedback-warning-edge hover:bg-feedback-warning/10'
+                ? 'text-feedback-warning-text hover:bg-feedback-warning/10'
                 : 'text-ui-muted hover:bg-ui-divider/60 hover:text-ui-ink'
             }`}
           >
@@ -89,7 +89,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
 
         <div className="pointer-events-none relative z-0 flex flex-1 flex-col items-center justify-center px-4 py-6">
           <span
-            className="mb-3 font-chinese font-bold leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary"
+            className="mb-3 font-chinese font-bold leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary-text"
             style={{ fontSize: traditional.length > 2 ? '30px' : traditional.length > 1 ? '38px' : '48px' }}
           >
             {traditional}

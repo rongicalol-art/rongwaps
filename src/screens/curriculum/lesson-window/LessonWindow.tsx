@@ -334,7 +334,7 @@ function LessonBody({
       className="-ml-2 mb-3 flex w-fit items-center gap-1 rounded-compact px-2 py-1.5 text-base font-black text-ui-muted-strong outline-none hover:text-ui-ink-strong focus-ring"
     >
       <AppIcon name="next" size={18} className="-scale-x-100" />
-      <span>Books</span>
+      <span>Learn</span>
     </button>
   );
 

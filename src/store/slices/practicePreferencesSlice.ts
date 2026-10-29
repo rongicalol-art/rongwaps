@@ -1,6 +1,7 @@
 export type PracticePreset = 'comfortable' | 'balanced' | 'sprint' | 'custom';
 export type MistakeRepeat = 'off' | 'soon' | 'end';
 export type CharacterFont = 'huninn' | 'kai';
+export type Appearance = 'light' | 'dark';
 export type QuizFormatPreference = 'mixed' | 'fixed';
 export type QuizQuestionType = 'hanzi' | 'pinyin' | 'meaning';
 export type QuizChoiceType = 'meaning' | 'hanzi' | 'pinyin';
@@ -45,6 +46,8 @@ export interface PracticePreferences {
   simpleDefinitions: boolean;
   hideExamplePinyin: boolean;
   characterFont: CharacterFont;
+  /** Warm off-white or warm charcoal; applied by useAppearance. */
+  appearance: Appearance;
   /** Mixed: the director varies the vocab quiz. Fixed: the chosen question and choice formats. */
   quizFormat: QuizFormatPreference;
   quizQuestionType: QuizQuestionType;
@@ -61,6 +64,8 @@ export interface PracticePreferences {
   flowSpeakTranslation: boolean;
   /** Flow waits as long as a sentence after playing it, so it can be repeated aloud. */
   flowRepeatPause: boolean;
+  /** Sentences also lists the readings' sentences (dialogue lines, Reading, essays), not just the lessons' authored examples. */
+  sentencesIncludeReadings: boolean;
 }
 
 type PaceTimings = Pick<
@@ -110,6 +115,7 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   simpleDefinitions: false,
   hideExamplePinyin: true,
   characterFont: 'huninn',
+  appearance: 'light',
   quizFormat: 'mixed',
   quizQuestionType: 'hanzi',
   quizChoiceType: 'meaning',
@@ -121,6 +127,7 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   flowExamples: true,
   flowSpeakTranslation: false,
   flowRepeatPause: false,
+  sentencesIncludeReadings: false,
 };
 
 export interface PracticePreferencesActions {
@@ -157,6 +164,7 @@ export const PRACTICE_PREFERENCES_PERSISTED_KEYS = [
   'simpleDefinitions',
   'hideExamplePinyin',
   'characterFont',
+  'appearance',
   'quizFormat',
   'quizQuestionType',
   'quizChoiceType',
@@ -168,6 +176,7 @@ export const PRACTICE_PREFERENCES_PERSISTED_KEYS = [
   'flowExamples',
   'flowSpeakTranslation',
   'flowRepeatPause',
+  'sentencesIncludeReadings',
 ] as const;
 
 export const PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS = {};
@@ -184,6 +193,9 @@ export function normalizePracticePreferences(persisted: unknown): PracticePrefer
   }
   if ((preferences.characterFont as string) === 'sans') {
     preferences.characterFont = 'huninn';
+  }
+  if (preferences.appearance !== 'light' && preferences.appearance !== 'dark') {
+    preferences.appearance = DEFAULT_PREFERENCES.appearance;
   }
   if (preferences.quizFormat !== 'mixed' && preferences.quizFormat !== 'fixed') {
     preferences.quizFormat = DEFAULT_PREFERENCES.quizFormat;

@@ -56,7 +56,7 @@ export function SpotFixExercise({
               className={cn(
                 'rounded-xs border-b-2 px-1.5 py-1 focus-ring-inline enabled:hover:bg-ui-hover',
                 picked === index ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep' : 'border-ui-divider',
-                picked === index && status === 'wrong' && 'border-feedback-danger text-feedback-danger-edge',
+                picked === index && status === 'wrong' && 'border-feedback-danger text-feedback-danger-text',
               )}
             >
               {textIn(chunk, script)}

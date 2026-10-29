@@ -30,7 +30,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
       aria-label={`Open character of the day: ${word.traditional}`}
     >
       <div className="relative flex w-28 shrink-0 items-center justify-center border-b-[length:var(--depth-lg)] border-brand-primary-edge bg-brand-primary">
-        <span className="relative font-chinese text-[64px] leading-none text-white">
+        <span className="relative font-chinese text-[64px] leading-none text-brand-on-primary">
           {word.traditional}
         </span>
       </div>
@@ -41,7 +41,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
         </span>
 
         <div className="min-w-0">
-          <p className="truncate text-xl font-black leading-tight text-brand-primary">
+          <p className="truncate text-xl font-black leading-tight text-brand-primary-text">
             {word.pinyin}
           </p>
           <p className="line-clamp-2 text-xl font-black leading-tight text-ui-ink-strong">

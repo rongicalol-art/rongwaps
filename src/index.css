@@ -114,6 +114,19 @@
   --color-ui-border: #cbc8c3;
   --color-ui-divider: #dedbd6;
   --color-ui-hover: #efedea;
+  /* Inverse surface (word tooltips): dark box in light, a raised card in dark. */
+  --color-ui-inverse: var(--color-ui-ink-strong);
+  --color-ui-on-inverse: var(--color-ui-surface);
+  /* Text on saturated fills (feedback, palette, streak): white in light, dark ink in dark. */
+  --color-ui-on-solid: #ffffff;
+  /* Behind drawers and dialogs: ink-dark in light, black in dark (never a light wash). */
+  --color-ui-scrim: var(--color-ui-ink-strong);
+  /* Cut-out speaker portraits: no effect in light; in dark a faint glow traces the silhouette off the charcoal. */
+  /* Resting/locked lesson art: plain greyscale in light; dark warms it so it sits on espresso instead of looking dirty. */
+  --art-rest: grayscale(1);
+  --portrait-glow: none;
+  /* Toggle knobs: the light surface in both themes. */
+  --color-ui-knob: var(--color-ui-surface);
 
   --color-brand-primary: #3a7ca5;
   --color-brand-primary-edge: #2c6385;
@@ -123,9 +136,16 @@
   --color-brand-primary-track: #d3dbe0;
   --color-brand-primary-wash: #e4edf3;
   --color-brand-on-primary: #ffffff;
+  /* Accent band (grammar table headers): the edge colour with white in light, the soft edge with ink in dark. */
+  --color-brand-band: var(--color-brand-primary-edge);
+  --color-brand-on-band: #ffffff;
   --color-brand-secondary: #d4793a;
   --color-brand-secondary-edge: #b05f27;
   --color-brand-secondary-soft: #fbf5ef;
+  /* Coloured text (labels, stats, links): the edge shade in light, a lifted shade in dark. Never use an
+     *-edge token for text; edges go dark in dark mode. */
+  --color-brand-primary-text: var(--color-brand-primary-edge);
+  --color-brand-secondary-text: var(--color-brand-secondary-edge);
   --color-brand-disabled: var(--color-ui-border);
   --color-brand-disabled-edge: var(--color-ui-muted);
   --color-brand-text-secondary: var(--color-ui-muted);
@@ -138,10 +158,15 @@
   --color-feedback-warning-edge: #d99a0b;
   --color-feedback-warning-surface: #fff4d6;
   --color-feedback-warning-ink: #8a5a00;
+  /* Text on a yellow fill (logo tile, memory-hook tile, warning buttons): dark ink in both themes. */
+  --color-feedback-on-warning: var(--color-ui-ink-strong);
   --color-feedback-danger: #d9605a;
   --color-feedback-danger-surface: #f8e1df;
   --color-feedback-danger-edge: #b84842;
   --color-feedback-danger-hover: #c9524c;
+  --color-feedback-success-text: var(--color-feedback-success-edge);
+  --color-feedback-danger-text: var(--color-feedback-danger-edge);
+  --color-feedback-warning-text: var(--color-feedback-warning-edge);
 
   /* Pinyin tone colors (flashcard answer face). Each ≥4.5:1 on ui-surface. */
   --color-tone-1: #e11d48;
@@ -159,6 +184,9 @@
   --color-palette-pink: #db74a6;
   --color-palette-pink-edge: #bc5688;
   --color-palette-pink-soft: #fbf1f6;
+  --color-palette-purple-text: var(--color-palette-purple-edge);
+  --color-palette-teal-text: var(--color-palette-teal-edge);
+  --color-palette-pink-text: var(--color-palette-pink-edge);
 
   --radius-xs: 8px;
   --radius-sm: 12px;
@@ -207,6 +235,7 @@
 }
 
 :root {
+  color-scheme: light;
   --size-window-header: 71px;
   --workspace-desktop-nav-width: 288px;
   --workspace-nav-width: 0px;
@@ -624,10 +653,8 @@ body {
   }
 }
 
-/* Tones: a tone is a complete colour-role set (canvas, text, lines, accent) swapped on <html>.
-   Books write theirs inline (useBookTheme, from src/data/books.ts); `data-tone="review"` is the
-   honey tone for review passes (useReviewTone; on any element it warms just that subtree). The !important beats the book's inline values.
-   Registered color roles; components only use these tokens. */
+/* Tones: a tone is a complete colour-role set (canvas, text, lines, accent) swapped by attributes on <html>
+   (see the theme cascade below). Registered so the review spread can interpolate; components only use these tokens. */
 @property --color-ui-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
 @property --color-ui-practice-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
 @property --color-ui-ink-strong { syntax: '<color>'; inherits: true; initial-value: #34312d; }
@@ -661,32 +688,251 @@ body {
 .review-tone-transition::view-transition {
   pointer-events: none;
 }
+/* Parts that keep moving through a tone change (the progress bar, the review intro's sheet) stay live above the
+   frozen snapshot and cross-fade their own colours, instead of freezing and jumping when the spread reaches them. */
+.review-tone-transition::view-transition-group(practice-progress),
+.review-tone-transition::view-transition-new(practice-progress),
+.review-tone-transition::view-transition-group(review-intro),
+.review-tone-transition::view-transition-new(review-intro) {
+  animation: none;
+}
+.review-tone-transition::view-transition-old(practice-progress),
+.review-tone-transition::view-transition-old(review-intro) {
+  display: none;
+}
 @media (prefers-reduced-motion: reduce) {
   .review-tone-transition::view-transition-new(root) { animation: none; }
 }
+/* Theme cascade (no inline styles, no !important), in this order:
+   1. @theme defaults = light, Book 1.
+   2. :root[data-book] = the active book's light tone (useBookTheme). Root only, so subtrees inherit.
+   3. :root[data-theme="dark"] = dark neutrals, feedback, tones, Book 1 accents (useAppearance).
+   4. :root[data-theme="dark"][data-book] = the book's accent lifted for dark.
+   5. [data-tone="review"] = honey, on <html> (useReviewTone) or any subtree; then its dark twin.
+   Contrast for every block is asserted by tests/unit/themeContrast.test.ts. */
+:root[data-book="2"] {
+  --color-brand-primary: #d4793a;
+  --color-brand-primary-edge: #b05f27;
+  --color-brand-primary-deep: #8a4a1e;
+  --color-brand-primary-soft: #fbf5ef;
+  --color-brand-primary-soft-edge: #ebcfb5;
+  --color-brand-primary-track: #e3d9ce;
+  --color-brand-primary-wash: #f7e8d8;
+  --color-ui-ink-strong: #3a302a;
+  --color-ui-ink: #54483f;
+  --color-ui-muted-strong: #7d7268;
+  --color-ui-muted: #968b80;
+  --color-ui-border: #d1c7bb;
+  --color-ui-divider: #e3dacf;
+}
+:root[data-book="3"] {
+  --color-brand-primary: #a0522d;
+  --color-brand-primary-edge: #8b4513;
+  --color-brand-primary-deep: #6e3510;
+  --color-brand-primary-soft: #fbf7f3;
+  --color-brand-primary-soft-edge: #e6d3c5;
+  --color-brand-primary-track: #ddd3cb;
+  --color-brand-primary-wash: #f6ede5;
+  --color-ui-ink-strong: #37302b;
+  --color-ui-ink: #4f4640;
+  --color-ui-muted-strong: #7a7068;
+  --color-ui-muted: #93887f;
+  --color-ui-border: #cfc5bc;
+  --color-ui-divider: #e0d8d0;
+}
+:root[data-book="4"] {
+  --color-brand-primary: #4f9f2a;
+  --color-brand-primary-edge: #3f8420;
+  --color-brand-primary-deep: #2c5f16;
+  --color-brand-primary-soft: #f6faf3;
+  --color-brand-primary-soft-edge: #c9e4b4;
+  --color-brand-primary-track: #ced9c7;
+  --color-brand-primary-wash: #edf9e2;
+  --color-ui-ink-strong: #2f352c;
+  --color-ui-ink: #454b41;
+  --color-ui-muted-strong: #70776b;
+  --color-ui-muted: #8a9185;
+  --color-ui-border: #c6cdc0;
+  --color-ui-divider: #dbe0d6;
+}
+
+/* Warm charcoal. Elevation is lightness (canvas < surface < hover), never shadow; every *-edge stays darker
+   than its face so tactile buttons still read; text on accent fills is dark ink. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-ui-canvas: #241e18;
+  --color-ui-practice-canvas: #241e18;
+  --color-ui-surface: #2c251e;
+  --color-ui-surface-hover: #332b23;
+  --color-ui-hover: #302820;
+  --color-ui-ink-strong: #ede6dc;
+  --color-ui-ink: #ddd5ca;
+  --color-ui-muted-strong: #bcae9f;
+  --color-ui-muted: #a39484;
+  --color-ui-border: #40352b;
+  --color-ui-divider: #352c24;
+  --color-ui-inverse: #3d3329;
+  --color-ui-on-inverse: #ede6dc;
+  --color-ui-on-solid: #ffffff;
+  --color-ui-scrim: #000000;
+  --color-ui-knob: #e8e2db;
+  --art-rest: grayscale(1) sepia(0.35);
+  --portrait-glow: drop-shadow(0 0 5px rgb(245 241 236 / 0.2));
+
+  --color-brand-primary: #4b8bb9;
+  --color-brand-primary-edge: #3a6f94;
+  --color-brand-primary-deep: #a9cde6;
+  --color-brand-primary-soft: #282b2c;
+  --color-brand-primary-soft-edge: #34495a;
+  --color-brand-primary-track: #2f3a42;
+  --color-brand-primary-wash: #233038;
+  --color-brand-on-primary: #ffffff;
+  --color-brand-band: var(--color-brand-primary-soft-edge);
+  --color-brand-on-band: var(--color-ui-ink-strong);
+  --color-brand-secondary: #e29a62;
+  --color-brand-secondary-edge: #b06f3e;
+  --color-brand-secondary-soft: #2a221c;
+  --color-brand-primary-text: var(--color-brand-primary-deep);
+  --color-brand-secondary-text: #f3c39c;
+
+  --color-feedback-success: #56a03a;
+  --color-feedback-success-edge: #3f7d27;
+  --color-feedback-success-hover: #4d9133;
+  --color-feedback-success-surface: #1f2a19;
+  --color-feedback-warning: #f2c14e;
+  --color-feedback-warning-edge: #c49530;
+  --color-feedback-warning-surface: #2e2716;
+  --color-feedback-warning-ink: #f2c97a;
+  --color-feedback-on-warning: #2a1f08;
+  --color-feedback-danger: #cc5d57;
+  --color-feedback-danger-surface: #301c1a;
+  --color-feedback-danger-edge: #a3443f;
+  --color-feedback-danger-hover: #b9524c;
+  --color-feedback-success-text: #8fd06a;
+  --color-feedback-danger-text: #f2a39d;
+  --color-feedback-warning-text: #f0c35a;
+
+  --color-tone-1: #fb7185;
+  --color-tone-2: #f0a54a;
+  --color-tone-3: #4cc59a;
+  --color-tone-4: #7fb3d6;
+  --color-tone-5: #a8a29b;
+
+  --color-palette-purple: #9b72c2;
+  --color-palette-purple-edge: #7a559e;
+  --color-palette-purple-soft: #2a2333;
+  --color-palette-teal: #4fc4a7;
+  --color-palette-teal-edge: #2f8f78;
+  --color-palette-teal-soft: #1d2b27;
+  --color-palette-pink: #e58bb6;
+  --color-palette-pink-edge: #b05b85;
+  --color-palette-pink-soft: #33232b;
+  --color-palette-purple-text: #c9a8ea;
+  --color-palette-teal-text: #6fd6bb;
+  --color-palette-pink-text: #f0a3c8;
+
+  --color-cover-ink-bg: #223039;
+  --color-cover-ink-glyph: #2b3c47;
+  --color-cover-honey-bg: #332a18;
+  --color-cover-honey-glyph: #43371f;
+  --color-cover-jade-bg: #1f2e22;
+  --color-cover-jade-glyph: #293d2c;
+  --color-cover-plum-bg: #2b2433;
+  --color-cover-plum-glyph: #382e43;
+  --color-cover-clay-bg: #35231d;
+  --color-cover-clay-glyph: #463026;
+  --color-cover-plain-bg: #2e261f;
+  --color-avatar-blue-bg: #233038;
+  --color-avatar-blue-ink: #a9cde6;
+  --color-avatar-honey-ink: #e8c77e;
+  --color-avatar-jade-ink: #9fd08f;
+  --color-avatar-plum-ink: #c4b1ea;
+
+  --shadow-ambient-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-ambient-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-ambient-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+:root[data-theme="dark"][data-book="2"] {
+  --color-brand-primary: #c8743c;
+  --color-brand-primary-edge: #9e5a2c;
+  --color-brand-primary-deep: #f3c39c;
+  --color-brand-primary-soft: #2a221c;
+  --color-brand-primary-soft-edge: #5a4030;
+  --color-brand-primary-track: #3d332b;
+  --color-brand-primary-wash: #33271e;
+  --color-brand-on-primary: #ffffff;
+}
+:root[data-theme="dark"][data-book="3"] {
+  --color-brand-primary: #b4683f;
+  --color-brand-primary-edge: #8c4f2e;
+  --color-brand-primary-deep: #ecbea3;
+  --color-brand-primary-soft: #2a221d;
+  --color-brand-primary-soft-edge: #553a2d;
+  --color-brand-primary-track: #3c322c;
+  --color-brand-primary-wash: #33261f;
+  --color-brand-on-primary: #ffffff;
+}
+:root[data-theme="dark"][data-book="4"] {
+  --color-brand-primary: #4f9a36;
+  --color-brand-primary-edge: #3d7a28;
+  --color-brand-primary-deep: #bde3a3;
+  --color-brand-primary-soft: #212a1d;
+  --color-brand-primary-soft-edge: #3b5130;
+  --color-brand-primary-track: #333b2e;
+  --color-brand-primary-wash: #26331f;
+  --color-brand-on-primary: #ffffff;
+}
+
 :root[data-tone="review"],
 [data-tone="review"] {
-  --color-ui-canvas: #f4efe6 !important;
-  --color-ui-practice-canvas: #f4efe6 !important;
-  --color-ui-ink-strong: #4f3d18 !important;
-  --color-ui-ink: #6b5222 !important;
-  --color-ui-muted-strong: #85703f !important;
-  --color-ui-muted: #9a8556 !important;
-  --color-ui-border: #d6c28a !important;
-  --color-ui-divider: #e2d1a4 !important;
-  --color-brand-primary: #dcae4f !important;
-  --color-brand-primary-edge: #c99b3f !important;
-  --color-brand-primary-deep: #8a6a2a !important;
-  --color-brand-primary-soft: #f8f1e0 !important;
-  --color-brand-primary-soft-edge: #e2d1a4 !important;
-  --color-brand-primary-track: #ece3cf !important;
-  --color-brand-primary-wash: #f6ecd2 !important;
-  --color-brand-on-primary: #4f3d18 !important;
+  --color-ui-canvas: #f4efe6;
+  --color-ui-practice-canvas: #f4efe6;
+  --color-ui-ink-strong: #4f3d18;
+  --color-ui-ink: #6b5222;
+  --color-ui-muted-strong: #85703f;
+  --color-ui-muted: #9a8556;
+  --color-ui-border: #d6c28a;
+  --color-ui-divider: #e2d1a4;
+  --color-brand-primary: #dcae4f;
+  --color-brand-primary-edge: #c99b3f;
+  --color-brand-primary-deep: #8a6a2a;
+  --color-brand-primary-soft: #f8f1e0;
+  --color-brand-primary-soft-edge: #e2d1a4;
+  --color-brand-primary-track: #ece3cf;
+  --color-brand-primary-wash: #f6ecd2;
+  --color-brand-on-primary: #4f3d18;
+  --color-brand-primary-text: var(--color-brand-primary-edge);
+}
+:root[data-theme="dark"][data-tone="review"],
+[data-theme="dark"] [data-tone="review"] {
+  --color-ui-canvas: #1f1a0f;
+  --color-ui-practice-canvas: #1f1a0f;
+  --color-ui-surface: #3a2d15;
+  --color-ui-surface-hover: #44351a;
+  --color-ui-hover: #3a2d15;
+  --color-ui-ink-strong: #faf3e3;
+  --color-ui-ink: #f0e5cb;
+  --color-ui-muted-strong: #d4bb7e;
+  --color-ui-muted: #b59c66;
+  --color-ui-border: #7a5f2a;
+  --color-ui-divider: #4a3a1f;
+  --color-brand-primary: #d9ad55;
+  --color-brand-primary-edge: #a8833a;
+  --color-brand-primary-deep: #f0d9a0;
+  --color-brand-primary-soft: #382b14;
+  --color-brand-primary-soft-edge: #6a5226;
+  --color-brand-primary-track: #4a3a1e;
+  --color-brand-primary-wash: #43341a;
+  --color-brand-on-primary: #2a1f08;
+  --color-brand-primary-text: var(--color-brand-primary-deep);
 }
 
 /* Audio preparation blocks: one quick swell rolls across the row while recordings load. */
 @keyframes rw-swell { 0%, 100% { transform: scaleY(.8); } 50% { transform: scaleY(1.1); } }
 .rw-swell { animation: rw-swell 1.5s ease-in-out infinite; animation-delay: calc(var(--i) * -120ms); }
+/* SpeakerIcon while its recording plays: three bars rise and fall in turn. */
+@keyframes rw-sound-bars { 0%, 100% { transform: scaleY(.45); } 50% { transform: scaleY(1); } }
+.rw-sound-bars { animation: rw-sound-bars .9s ease-in-out infinite; animation-delay: calc(var(--i) * 150ms); }
 
 /* Lesson mode icons: one small gesture each (ModeIcon remounts to replay). `mi-once` plays it once; `mi-loop` repeats it
    every ~3.4s with a rest between (the selected mode). Same gestures, the loop keyframes just carry the rest. */

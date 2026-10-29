@@ -7,6 +7,7 @@ import { getReadingIllustration } from '../../../data/readingIllustrations';
 import { fetchReadingsPack } from '../../../services/contentPacks';
 import { useAppStore } from '../../../store/useAppStore';
 import type { CourseLessonProgress, ReadingRecord } from '../../../types/models';
+import { isEssayReading } from '../../../utils/lesson/readingKind';
 
 export interface PartProgress {
   done: number;
@@ -15,7 +16,7 @@ export interface PartProgress {
 
 export interface LessonWindowPart {
   id: number;
-  /** "Dialogue 1 · At school" (part 3: "Reading · …"). */
+  /** "Dialogue 1 · At school", or "Essay · …" for a 短文 (numbered only when the lesson has two dialogues). */
   readingLabel: string;
   /** What the part is about, "Chinese · English" (empty when merged from several parts). */
   title: string;
@@ -134,6 +135,14 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
       ...lessonReadings.map((reading) => reading.dialogueNumber),
     ])).sort((a, b) => a - b);
 
+    const dialogueIds = lessonReadings.filter((reading) => !isEssayReading(reading)).map((reading) => reading.dialogueNumber);
+    const kindLabel = (id: number, reading: ReadingRecord | undefined) => {
+      if (reading && isEssayReading(reading)) return 'Essay';
+      const index = dialogueIds.indexOf(id);
+      if (dialogueIds.length === 1 && index === 0) return 'Dialogue';
+      return `Dialogue ${index >= 0 ? index + 1 : id}`;
+    };
+
     return partIds.map((id) => {
       const vocabRow = lesson.parts.find((part) => part.id === id);
       const reading = lessonReadings.find((item) => item.dialogueNumber === id);
@@ -151,7 +160,8 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
       return {
         id,
         title: partTitle(bookId, lesson.id, id, reading),
-        readingLabel: [id === 3 ? 'Reading' : `Dialogue ${id}`, setting]
+        // An essay's setting only repeats "short reading"; its title already says what it is about.
+        readingLabel: [kindLabel(id, reading), reading && isEssayReading(reading) ? '' : setting]
           .filter((piece, index, all) => piece && all.indexOf(piece) === index)
           .join(' · '),
         vocab,

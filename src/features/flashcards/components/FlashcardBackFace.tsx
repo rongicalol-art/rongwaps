@@ -357,9 +357,9 @@ export const FlashcardBackFace = React.memo(function FlashcardBackFace({
                   <AppIcon
                     name="sparkles"
                     size={12}
-                    className="text-feedback-warning-edge"
+                    className="text-feedback-warning-text"
                   />
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-feedback-warning-edge">
+                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-feedback-warning-text">
                     Memory hook
                   </span>
                 </div>

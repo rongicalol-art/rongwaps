@@ -29,7 +29,7 @@ export function ToggleSwitch({ checked, className }: ToggleSwitchProps) {
       <span
         aria-hidden="true"
         className={cn(
-          'absolute left-0 top-0 h-7 w-7 rounded-xs bg-ui-surface border-2 border-b-4 shadow-ambient-sm transition-transform',
+          'absolute left-0 top-0 h-7 w-7 rounded-xs bg-ui-knob border-2 border-b-4 shadow-ambient-sm transition-transform',
           checked
             ? 'translate-x-[20px] border-brand-primary-edge'
             : 'border-ui-border',

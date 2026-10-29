@@ -1,9 +1,9 @@
-import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { IconActionButton, SpeakerIcon } from '../../../lib/widgets';
 import { playSentence } from '../../../services/audio/sentenceAudio';
 import type { GrammarLessonExample, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarText } from './GrammarText';
 import { GrammarExampleText } from './GrammarExampleText';
-import { SAMPLE_BOOKS } from '../../../data/books';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 
 interface GrammarExamplesSectionProps {
   page: InteractiveGrammarPage;
@@ -31,21 +31,23 @@ export function GrammarExampleItem({
   onOpenWord,
   contextTokens,
 }: GrammarExampleItemProps) {
-  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
+  const speaker = useAudioPending();
   return (
     <div className={'flex items-start gap-2 py-4 pl-3 pr-5 sm:pl-4 sm:pr-6'}>
       <IconActionButton
-        onClick={() => playSentence(
+        onClick={() => {
+          speaker.claim();
+          void playSentence(
           getGrammarText(example.text, characterPreference),
           example.text.audio,
           characterPreference,
-        )}
+        );
+        }}
         size="sm"
         variant="quiet"
-        icon={<AppIcon name="audio" size={22} />}
+        icon={<SpeakerIcon status={speaker.status()} size={22} />}
         label={`Play example ${example.number ?? index + 1}${example.text.audio?.voice === 'book' ? ' (book recording)' : ''}`}
-        style={{ color: book.theme.primary }}
-        className="-mt-0.5 hover:brightness-90"
+        className="-mt-0.5 text-brand-primary hover:text-brand-primary hover:brightness-90"
       />
       <div className="min-w-0 flex-1">
         <GrammarExampleText

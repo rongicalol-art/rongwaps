@@ -23,7 +23,7 @@ export function CustomProgressBar({
           style={{ width: `${clampedProgress}%`, minWidth: clampedProgress > 0 ? '24px' : '0px' }}
         >
           {clampedProgress > 0 && (
-            <div className="absolute top-[3px] left-[6px] right-[6px] h-[4px] bg-white opacity-30 rounded-full" />
+            <div className="absolute top-[3px] left-[6px] right-[6px] h-[4px] bg-white/30 rounded-full" />
           )}
         </div>
       </div>

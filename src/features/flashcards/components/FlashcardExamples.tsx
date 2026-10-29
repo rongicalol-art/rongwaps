@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, Skeleton, SmartSentence, LevelTag } from '../../../lib/widgets';
+import { Skeleton, SmartSentence, LevelTag, SpeakerIcon } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import {
   groupRankedExamples,
@@ -12,6 +12,7 @@ import { cn } from '../../../utils/cn';
 import { splitTranslationLines } from '../../../utils/lesson/dialogueTurns';
 import { useAppStore } from '../../../store/useAppStore';
 import { playSentence } from '../../../services/audio/sentenceAudio';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 
 interface FlashcardExamplesProps {
   /** Every search form (both scripts, fully expanded, longest-first). */
@@ -31,6 +32,8 @@ interface FlashcardExampleRowProps {
   showTranslation: boolean;
   /** Book/location chip; hidden on the card's own top match. */
   showMeta?: boolean;
+  /** The card's own top match: slightly smaller sentence, roomier translation. */
+  compact?: boolean;
   /** Bottom divider for list rows; top-match rows inside the card stay clean. */
   divider?: boolean;
   className?: string;
@@ -42,9 +45,11 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   showPinyin,
   showTranslation,
   showMeta = true,
+  compact = false,
   divider = false,
   className = '',
 }: FlashcardExampleRowProps) {
+  const speaker = useAudioPending();
   const characterPreference = useAppStore((state) => state.characterPreference);
   // Pinyin sits above each character when every hanzi pairs with a syllable; otherwise it stays a line below.
   const syllables = useMemo(
@@ -74,11 +79,12 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
             onPointerDown={(event) => event.stopPropagation()}
             onClick={(event) => {
               event.stopPropagation();
+              speaker.claim();
               void playSentence(example.chinese, example.audio, characterPreference).catch(() => {});
             }}
             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring"
           >
-            <AppIcon name="audio" size={16} />
+            <SpeakerIcon status={speaker.status()} size={16} />
           </button>
         </span>
         <SmartSentence
@@ -86,7 +92,11 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
           highlightTerms={highlightTerms}
           syllables={syllables}
           exampleLayout
-          className={cn('font-chinese text-[18px] font-bold text-ui-ink-strong sm:text-[20px] md:text-[22px]', syllables ? 'leading-[1.9]' : 'leading-relaxed')}
+          className={cn(
+            'font-chinese font-bold text-ui-ink-strong',
+            compact ? 'text-[17px] sm:text-[19px]' : 'text-[18px] sm:text-[20px] md:text-[22px]',
+            syllables ? 'leading-[1.9]' : 'leading-[1.7]',
+          )}
         />
       </div>
       {showPinyin && example.pinyin && !syllables && (
@@ -95,7 +105,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
         </p>
       )}
       {showTranslation && example.english && (
-        <p className="ui-translation -mt-1.5 text-sm leading-snug sm:text-[15px]">
+        <p className={cn('ui-translation text-sm leading-snug sm:text-[15px]', compact ? 'mt-1.5' : '-mt-1.5')}>
           {splitTranslationLines(example.english).map((line, i) => (
             <span key={i} className={line.label ? 'block pl-[1.2em]' : 'block'}>
               {line.label && (
@@ -202,6 +212,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                   showTranslation={showTranslation}
                   divider={divider && !compact}
                   showMeta={!compact}
+                  compact={compact}
                   className={compact ? 'pb-1' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
                 />
               );
@@ -232,6 +243,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                     showTranslation={showTranslation}
                     divider={divider && !compact}
                     showMeta={!compact}
+                  compact={compact}
                     className={compact ? 'pb-1' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
                   />
                 );

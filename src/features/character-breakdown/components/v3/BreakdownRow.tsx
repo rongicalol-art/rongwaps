@@ -36,7 +36,7 @@ export function BreakdownRow({ glyph, highlight, pinyin, meaning, loading = fals
           </>
         ) : (
           <>
-            {pinyin && <span className="block truncate text-[13px] font-extrabold leading-tight text-brand-primary">{pinyin}</span>}
+            {pinyin && <span className="block truncate text-[13px] font-extrabold leading-tight text-brand-primary-text">{pinyin}</span>}
             {meaning && <span className="block line-clamp-2 text-[15px] font-extrabold leading-snug text-ui-ink-strong">{meaning}</span>}
           </>
         )}

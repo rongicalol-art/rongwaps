@@ -36,6 +36,6 @@ export function ReaderWordTooltip({ word, pinyin, characterPreference, anchor, o
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
     onPlayAudio={() => { void playSentenceWordAudio(word, characterPreference, undefined, info?.pinyin || pinyin); }}
-    actions={<FavoriteButton word={info?.headword || word} traditional={info?.headword || word} pinyin={info?.pinyin || pinyin} definitions={info?.definitions || []} size="sm" variant="ghost" className="h-7 w-7 rounded-full text-white/75 hover:bg-white/10 hover:text-white" />}
+    actions={<FavoriteButton word={info?.headword || word} traditional={info?.headword || word} pinyin={info?.pinyin || pinyin} definitions={info?.definitions || []} size="sm" variant="ghost" className="h-7 w-7 rounded-full text-ui-on-inverse/75 hover:bg-ui-on-inverse/10 hover:text-ui-on-inverse" />}
   />;
 }

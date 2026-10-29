@@ -40,7 +40,7 @@ export function useProfileData() {
       if (recentWordIds.length === 3) break;
     }
     return {
-      ...computeStreak(state.reviewEvents, now), progress, vocabById, forms,
+      ...computeStreak(state.reviewEvents, now), progress, activeBookId: state.activeBookId, vocabById, forms,
       known: computeReviewOverview(state.srsData, state.learnedCards, now).knownTotal,
       characters: countKnownCharacters(state.learnedCards, forms),
       reviews: state.reviewEvents.length, grammarPages: state.grammarPages,

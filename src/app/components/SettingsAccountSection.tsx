@@ -58,7 +58,7 @@ export function SettingsAccountSection({ onNavigate, onResetProgress }: { onNavi
     }
   };
 
-  const linkClass = 'rounded-xs text-sm font-extrabold text-brand-primary hover:underline focus-ring-inline';
+  const linkClass = 'rounded-xs text-sm font-extrabold text-brand-primary-text hover:underline focus-ring-inline';
 
   return (
     <SettingsPageSection title="Account">

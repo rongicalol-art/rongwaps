@@ -32,8 +32,8 @@ const ANSWERS: YesNo[] = ['no', 'yes'];
 const INK: Record<PracticeChoiceState, string> = {
   idle: 'text-ui-ink',
   selected: 'text-ui-ink',
-  correct: 'text-feedback-success-edge',
-  wrong: 'text-feedback-danger-edge',
+  correct: 'text-feedback-success-text',
+  wrong: 'text-feedback-danger-text',
   muted: 'text-ui-muted',
 };
 
@@ -89,7 +89,7 @@ export const TrueFalseFlip: React.FC<TrueFalseFlipProps> = ({
         {ANSWERS.map((value) => {
           const state = getPracticeChoiceState(answer === value, isChecked, (value === 'yes') === shownIsRight);
           const isYes = value === 'yes';
-          const answerColor = isYes ? 'text-feedback-success-edge/80' : 'text-feedback-danger-edge/80';
+          const answerColor = isYes ? 'text-feedback-success-text/80' : 'text-feedback-danger-text/80';
           const answerEdge = isYes
             ? 'color-mix(in srgb, var(--color-feedback-success-edge) 50%, var(--color-ui-border))'
             : 'color-mix(in srgb, var(--color-feedback-danger-edge) 50%, var(--color-ui-border))';

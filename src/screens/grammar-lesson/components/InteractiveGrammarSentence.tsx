@@ -106,7 +106,7 @@ export function InteractiveGrammarSentence({
                 )}
                 wordClassName={cn(
                   roleSoftBgClass,
-                  isAligned && 'bg-brand-primary text-ui-surface hover:bg-brand-primary focus-visible:bg-brand-primary',
+                  isAligned && 'bg-brand-primary text-brand-on-primary hover:bg-brand-primary focus-visible:bg-brand-primary',
                 )}
               />
               {word.suffix && (
@@ -117,7 +117,7 @@ export function InteractiveGrammarSentence({
             </span>
 
             {showPinyin && !skipped && (
-              <span className={cn('mx-0.5 mt-1 whitespace-nowrap text-[11px] font-extrabold leading-none sm:text-xs', isFocus && roleColorClass ? roleColorClass : 'text-brand-primary')}>
+              <span className={cn('mx-0.5 mt-1 whitespace-nowrap text-[11px] font-extrabold leading-none sm:text-xs', isFocus && roleColorClass ? roleColorClass : 'text-brand-primary-text')}>
                 {word.pinyin}
               </span>
             )}

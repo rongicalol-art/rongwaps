@@ -143,3 +143,32 @@ test('Code Quality Acceptance: Zero node:crypto or Node.js built-ins imported un
     `Browser source tree under src/ must not import Node.js built-in modules: ${JSON.stringify(violations)}`,
   );
 });
+
+test('Code Quality Acceptance: components colour only through theme tokens (light and dark)', () => {
+  // Brand art (multi-colour icons, the Google logo, confetti), user-picked folder colours and canvas fallbacks keep literals.
+  const allowed = new Set([
+    'src/screens/curriculum/lesson-window/ModeIcon.tsx',
+    'src/screens/flashcard/components/QuizTypeIcon.tsx',
+    'src/screens/auth/SignInWindow.tsx',
+    'src/features/practice/components/lesson-complete/ConfettiBurst.tsx',
+    'src/lib/widgets/FolderSvg.tsx',
+    'src/screens/library/components/FolderItem.tsx',
+    'src/screens/library/MoveCardsDialog.tsx',
+    'src/screens/library/FolderModal.tsx',
+    'src/features/library/components/SaveWordModal.tsx',
+    'src/features/character-breakdown/components/StrokeOrderBox.tsx',
+    'src/screens/writing/HanziCanvas.tsx',
+    // Disabled buttons: white on the shared disabled fill reads in both themes.
+    'src/lib/widgets/ActionButton.tsx',
+    'src/lib/widgets/IconActionButton.tsx',
+    // Page-image viewer is a black lightbox in both themes.
+    'src/screens/grammar-lesson/components/GrammarBookPageViewer.tsx',
+  ]);
+  const files = listFilesRecursive(path.join(PROJECT_ROOT, 'src'), (f) => f.endsWith('.tsx'))
+    .map((file) => path.relative(PROJECT_ROOT, file))
+    .filter((file) => !file.startsWith('src/assets/') && !file.startsWith('src/screens/debug/') && !allowed.has(file));
+  // Also no *-edge as a text colour: edges go dark in dark mode; coloured text uses the *-text tokens.
+  const literal = /\b(?:text|bg)-(?:white|black)(?![\w/-])|#[0-9a-fA-F]{6}\b|\btext-[a-z-]+-edge\b/;
+  const violations = files.filter((file) => literal.test(fs.readFileSync(path.join(PROJECT_ROOT, file), 'utf-8')));
+  assert.deepEqual(violations, [], 'Use ui-*/brand-*/feedback-* tokens (brand-on-primary, ui-on-solid, ui-on-inverse, *-text) so dark mode follows.');
+});

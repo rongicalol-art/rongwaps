@@ -67,7 +67,7 @@ export function V3CharacterSummary({
         <CharacterHeroPanel character={character} accentHex={accentHex} />
         <div className="flex min-w-0 max-w-full flex-col items-start gap-1.5 text-left">
           <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-            {pinyin && <span className="truncate text-2xl font-black sm:text-[26px] leading-tight text-brand-primary">{numberToToneMarks(pinyin)}</span>}
+            {pinyin && <span className="truncate text-2xl font-black sm:text-[26px] leading-tight text-brand-primary-text">{numberToToneMarks(pinyin)}</span>}
             {otherReadings.length > 0 && (
               <span className="text-xs font-bold text-ui-muted sm:text-sm">
                 also{' '}

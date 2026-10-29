@@ -80,10 +80,10 @@ function renderHighlightedText(text: string, startIndex: number, ranges: Highlig
       startIndex + index >= range.start && startIndex + index < range.end
     ));
     const previous = parts.at(-1);
-    if (previous && previous.className === (highlighted ? highlighted.className || 'font-black text-brand-primary' : undefined)) {
+    if (previous && previous.className === (highlighted ? highlighted.className || 'font-black text-brand-primary-text' : undefined)) {
       previous.text += text[index];
     } else {
-      parts.push({ text: text[index], className: highlighted ? highlighted.className || 'font-black text-brand-primary' : undefined });
+      parts.push({ text: text[index], className: highlighted ? highlighted.className || 'font-black text-brand-primary-text' : undefined });
     }
     index += 1;
   }
@@ -158,8 +158,8 @@ export function SmartSentence({
             wordClassName,
             '-mx-0.5 cursor-pointer rounded-xs px-0.5 align-baseline transition-colors focus-ring-inline',
             isCurrentWordActive
-              ? 'bg-brand-primary/10 text-brand-primary'
-              : 'hover:bg-brand-primary/10 hover:text-brand-primary focus-visible:bg-brand-primary/10 focus-visible:text-brand-primary active:bg-brand-primary/20',
+              ? 'bg-brand-primary/10 text-brand-primary-text'
+              : 'hover:bg-brand-primary/10 hover:text-brand-primary-text focus-visible:bg-brand-primary/10 focus-visible:text-brand-primary-text active:bg-brand-primary/20',
           )}
         >
           {renderHighlightedText(seg.segment, seg.index, highlightRanges, syllables)}
@@ -297,16 +297,16 @@ export function SentenceWordTooltipPortal({
         initial={{ opacity: 0, scale: 0.97, y: placement.above ? 4 : -4 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={reduceMotion ? { duration: 0 } : { duration: 0.12, ease: 'easeOut' }}
-        className="relative w-72 max-w-[88vw] select-none rounded-feature bg-ui-ink-strong px-3.5 py-2.5 text-left shadow-ambient-lg"
+        className="relative w-72 max-w-[88vw] select-none rounded-feature bg-ui-inverse px-3.5 py-2.5 text-left shadow-ambient-lg"
       >
         <div className="flex items-start justify-between gap-2.5">
           {/* Word + Pinyin */}
           <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 pt-0.5">
-            <span className="font-chinese text-lg font-black leading-tight text-white">
+            <span className="font-chinese text-lg font-black leading-tight text-ui-on-inverse">
               {data.word}
             </span>
             {pinyin && (
-              <span className="font-sans text-xs font-black tracking-wide text-white/70">
+              <span className="font-sans text-xs font-black tracking-wide text-ui-on-inverse/70">
                 {pinyin}
               </span>
             )}
@@ -322,7 +322,7 @@ export function SentenceWordTooltipPortal({
                   e.stopPropagation();
                   onPlayAudio();
                 }}
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white focus-ring"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-ui-on-inverse/75 transition-colors hover:bg-ui-on-inverse/10 hover:text-ui-on-inverse focus-ring"
               >
                 <AppIcon name="audio" size={15} />
               </button>
@@ -335,18 +335,18 @@ export function SentenceWordTooltipPortal({
         {/* Content */}
         {data.loading ? (
           <div className="mt-2 space-y-1" aria-hidden="true">
-            <div className="h-3 w-3/4 animate-pulse rounded-xs bg-white/20" />
-            <div className="h-3 w-1/2 animate-pulse rounded-xs bg-white/15" />
+            <div className="h-3 w-3/4 animate-pulse rounded-xs bg-ui-on-inverse/20" />
+            <div className="h-3 w-1/2 animate-pulse rounded-xs bg-ui-on-inverse/15" />
           </div>
         ) : definitions.length > 0 ? (
           <div className="mt-1.5 space-y-0.5">
             {definitions.map((def, idx) => (
               <p
                 key={idx}
-                className="font-sans text-xs leading-snug break-words text-white/85"
+                className="font-sans text-xs leading-snug break-words text-ui-on-inverse/85"
               >
                 {definitions.length > 1 && (
-                  <span className="mr-1 text-white/40">{idx + 1}.</span>
+                  <span className="mr-1 text-ui-on-inverse/40">{idx + 1}.</span>
                 )}
                 {def}
               </p>
@@ -354,25 +354,25 @@ export function SentenceWordTooltipPortal({
           </div>
         ) : fallbackParts.length > 0 ? (
           <div className="mt-1.5 space-y-1">
-            <p className="text-xs font-black uppercase tracking-wider text-white/45">
+            <p className="text-xs font-black uppercase tracking-wider text-ui-on-inverse/45">
               Read as words
             </p>
             <div className="space-y-1">
               {fallbackParts.map((part, idx) => (
                 <div key={idx} className="flex min-w-0 items-baseline gap-1.5 text-xs">
-                  <span className="font-chinese font-black text-white">{part.word}</span>
+                  <span className="font-chinese font-black text-ui-on-inverse">{part.word}</span>
                   {part.pinyin && (
-                    <span className="font-sans font-bold text-white/55">{part.pinyin}</span>
+                    <span className="font-sans font-bold text-ui-on-inverse/55">{part.pinyin}</span>
                   )}
                   {part.definition && (
-                    <span className="truncate text-white/75">{part.definition}</span>
+                    <span className="truncate text-ui-on-inverse/75">{part.definition}</span>
                   )}
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <p className="mt-1 font-sans text-xs font-semibold text-white/50">
+          <p className="mt-1 font-sans text-xs font-semibold text-ui-on-inverse/50">
             No local definition found
           </p>
         )}

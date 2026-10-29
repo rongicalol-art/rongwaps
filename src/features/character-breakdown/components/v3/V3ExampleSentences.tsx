@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AppIcon, Skeleton, SmartSentence, LevelTag } from '../../../../lib/widgets';
+import { Skeleton, SmartSentence, LevelTag, SpeakerIcon } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { alignSentenceSyllables } from '../../../../utils/pinyin/pinyinTones';
 import { useAppStore } from '../../../../store/useAppStore';
@@ -7,6 +7,7 @@ import { playSentence } from '../../../../services/audio/sentenceAudio';
 import { ShowMoreButton } from './ShowMoreButton';
 import type { WordExample } from '../../../../types/models';
 import { splitTranslationLines } from '../../../../utils/lesson/dialogueTurns';
+import { useAudioPending } from '../../../../hooks/useAudioPending';
 
 const INITIAL_VISIBLE = 4;
 
@@ -19,6 +20,7 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
   const characterPreference = useAppStore((state) => state.characterPreference);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const [expanded, setExpanded] = useState(false);
+  const speaker = useAudioPending();
 
   useEffect(() => {
     setExpanded(false);
@@ -55,10 +57,10 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                     <button
                       type="button"
                       aria-label={`Play the example sentence ${sentence.chinese}`}
-                      onClick={() => { void playSentence(sentence.chinese, sentence.audio, characterPreference).catch(() => {}); }}
+                      onClick={() => { speaker.claim(String(index)); void playSentence(sentence.chinese, sentence.audio, characterPreference).catch(() => {}); }}
                       className="flex h-8 w-8 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary focus-ring"
                     >
-                      <AppIcon name="audio" size={16} />
+                      <SpeakerIcon status={speaker.status(String(index))} size={16} />
                     </button>
                   </span>
                   <SmartSentence
@@ -70,7 +72,7 @@ export function V3ExampleSentences({ character, sentences, isLoading }: { charac
                   />
                 </div>
                 {!hideExamplePinyin && !alignSentenceSyllables(sentence.chinese, sentence.pinyin) && (
-                  <span className="text-[13px] font-extrabold leading-tight text-brand-primary sm:text-sm">
+                  <span className="text-[13px] font-extrabold leading-tight text-brand-primary-text sm:text-sm">
                     {numberToToneMarks(sentence.pinyin)}
                   </span>
                 )}

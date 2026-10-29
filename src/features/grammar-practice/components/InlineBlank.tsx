@@ -132,8 +132,8 @@ export function InlineBlank({ state, tone = 'plain', word, onSelect, selectLabel
           className={cn(
             'inline select-none px-[0.06em] align-baseline [font:inherit] focus-ring-inline enabled:hover:opacity-75',
             word.carried && 'opacity-30',
-            tone === 'plain' && state === 'correct' && 'text-feedback-success-edge',
-            tone === 'plain' && state === 'wrong' && 'text-feedback-danger-edge',
+            tone === 'plain' && state === 'correct' && 'text-feedback-success-text',
+            tone === 'plain' && state === 'wrong' && 'text-feedback-danger-text',
           )}
         >
           {word.text}

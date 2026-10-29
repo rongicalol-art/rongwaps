@@ -169,7 +169,7 @@ export function CharacterHoverCard({
       <span className="block rounded-compact border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface px-3.5 py-3 text-left shadow-ambient-sm">
         <span className={cn('flex min-w-0 items-baseline gap-2', hasBody && 'mb-3 border-b-2 border-ui-divider pb-2.5')}>
           <CharacterGlyph character={char} className="text-2xl leading-none text-ui-ink-strong" />
-          {data.pinyin && <span className="text-base font-black text-brand-primary">{data.pinyin}</span>}
+          {data.pinyin && <span className="text-base font-black text-brand-primary-text">{data.pinyin}</span>}
           {data.meaning && <span className="min-w-0 truncate text-sm font-extrabold text-ui-ink">{data.meaning}</span>}
         </span>
 
@@ -198,7 +198,7 @@ export function CharacterHoverCard({
                 >
                   <Tile glyph={part.glyph} compact={isThreeParts} />
                   {part.pinyin && (
-                    <span className="mt-1 block w-full truncate text-[11px] sm:text-xs font-black leading-tight text-brand-primary">
+                    <span className="mt-1 block w-full truncate text-[11px] sm:text-xs font-black leading-tight text-brand-primary-text">
                       {part.pinyin}
                     </span>
                   )}
@@ -237,7 +237,7 @@ export function CharacterHoverCard({
               <span key={`${part.glyph}-${index}`} className="grid min-w-0 grid-cols-[40px_minmax(0,1fr)] items-center gap-x-2 rounded-control border-2 border-ui-border border-b-[length:var(--depth-sm)] bg-ui-surface px-2 py-1.5">
                 <CharacterGlyph character={part.glyph} className="flex w-full items-center justify-center text-2xl leading-none text-ui-ink-strong" />
                 <span className="min-w-0">
-                  {part.pinyin && <span className="block truncate text-xs font-black leading-tight text-brand-primary">{part.pinyin}</span>}
+                  {part.pinyin && <span className="block truncate text-xs font-black leading-tight text-brand-primary-text">{part.pinyin}</span>}
                   {part.meaning && <span className="block truncate text-xs font-extrabold leading-tight text-ui-ink">{part.meaning}</span>}
                 </span>
               </span>
@@ -248,7 +248,7 @@ export function CharacterHoverCard({
           </span>
         ) : hook ? (
           <span className="flex items-start gap-2 rounded-control border-2 border-feedback-warning-edge/50 bg-feedback-warning-surface px-2.5 py-2">
-            <AppIcon name="sparkles" size={14} className="mt-0.5 shrink-0 text-feedback-warning-edge" />
+            <AppIcon name="sparkles" size={14} className="mt-0.5 shrink-0 text-feedback-warning-text" />
             <span className="text-[13px] font-bold leading-snug text-ui-ink">{renderHookText(hook)}</span>
           </span>
         ) : null}

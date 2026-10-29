@@ -125,7 +125,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                       <CharacterGlyph character={presentation.title} className="flex w-10 shrink-0 items-center justify-center text-[30px] leading-none text-ui-ink-strong" />
                       <span className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
                         {primaryLine && (
-                          <span className={`break-words text-xs font-extrabold text-brand-primary leading-tight ${canExpand ? 'pr-6' : ''}`}>
+                          <span className={`break-words text-xs font-extrabold text-brand-primary-text leading-tight ${canExpand ? 'pr-6' : ''}`}>
                             {isSound ? `Sound · ${primaryLine}` : primaryLine}
                           </span>
                         )}
@@ -138,7 +138,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                     <span className="flex min-w-0 flex-1 flex-row items-center gap-2.5 sm:flex-col sm:items-stretch sm:gap-0.5">
                       <CharacterGlyph character={presentation.title} className="flex w-10 shrink-0 items-center justify-center text-[32px] leading-none text-ui-ink-strong sm:block sm:w-auto sm:text-[36px] sm:leading-[1.05]" />
                       <span className={`min-w-0 flex-1 break-words text-sm font-extrabold leading-snug text-ui-ink-strong ${canExpand ? 'pr-5 sm:pr-6' : ''}`}>
-                        {primaryLine && <span className="block font-black text-brand-primary sm:inline sm:font-extrabold">{primaryLine}</span>}
+                        {primaryLine && <span className="block font-black text-brand-primary-text sm:inline sm:font-extrabold">{primaryLine}</span>}
                         {primaryLine && presentation.meaning && <span className="hidden sm:inline"> · </span>}
                         <span className="line-clamp-2 sm:contents">
                           {presentation.meaning ? formatCompactMeaning(presentation.meaning) : !primaryLine && 'No meaning recorded'}
@@ -153,7 +153,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
               <div className={`pointer-events-none relative z-1 flex h-full min-w-0 max-w-full flex-col justify-center text-left`}>
                 {useShapeMark ? <span className="flex items-center gap-2 text-ui-muted-strong"><AppIcon name="breakdown" size={depth > 0 ? 21 : 25} /><span className="text-xs font-extrabold">Shape</span></span> : <CharacterGlyph character={presentation.title} className={`leading-none text-ui-ink-strong ${depth > 0 ? 'text-[34px]' : 'text-[40px]'}`} />}
                 {primaryLine || presentation.meaning ? <span className="mt-1 flex min-w-0 items-baseline gap-1.5">
-                {primaryLine && <span className="shrink-0 text-[11px] font-extrabold text-brand-primary">{isSound ? `Sound · ${primaryLine}` : primaryLine}</span>}
+                {primaryLine && <span className="shrink-0 text-[11px] font-extrabold text-brand-primary-text">{isSound ? `Sound · ${primaryLine}` : primaryLine}</span>}
                 {presentation.meaning && <span className="line-clamp-2 text-[11px] font-bold text-ui-muted-strong">{presentation.meaning}</span>}
                 </span> : <span className="mt-1 text-[11px] font-bold text-ui-muted-strong">No meaning recorded</span>}
               </div>

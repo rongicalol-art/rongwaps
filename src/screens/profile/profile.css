@@ -30,7 +30,6 @@
 .profile-topic > span { font-size:13px; font-weight:800; color:var(--color-ui-muted); font-variant-numeric:tabular-nums; }
 .profile-topic .profile-progress { align-self:stretch; height:8px; border-radius:var(--radius-xs); background:var(--color-ui-hover); margin-top:8px; overflow:hidden; }
 .profile-progress i { display:block; height:100%; border-radius:inherit; background:var(--color-brand-primary); }
-.profile-topic .profile-all-known { display:inline-flex; align-items:center; gap:4px; margin-top:6px; font-size:var(--text-xs); font-weight:900; color:var(--color-brand-primary-edge); }
 .profile-card { background:var(--color-ui-surface); border:2px solid var(--color-ui-divider); border-radius:var(--radius-feature); padding:20px; }
 .profile-card h2 { margin:0 0 14px; font-size:var(--text-lg); font-weight:900; }
 .profile-recent h2 { display:flex; align-items:center; gap:8px; }

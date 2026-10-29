@@ -25,7 +25,7 @@ export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, on
           <button
             type="button"
             onClick={onViewAll}
-            className="min-h-9 shrink-0 rounded-compact px-2.5 text-sm font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
+            className="min-h-9 shrink-0 rounded-compact px-2.5 text-sm font-extrabold text-brand-primary-text transition-colors hover:bg-brand-primary/10 focus-ring"
           >
             See all
           </button>

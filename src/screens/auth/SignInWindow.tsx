@@ -79,7 +79,7 @@ export function SignInWindow() {
             <SchoolAccountHint />
 
             {authError && (
-              <div role="alert" className="rounded-sm bg-feedback-danger-surface px-3.5 py-3 text-sm font-bold leading-snug text-feedback-danger-edge">
+              <div role="alert" className="rounded-sm bg-feedback-danger-surface px-3.5 py-3 text-sm font-bold leading-snug text-feedback-danger-text">
                 {authError}
               </div>
             )}
@@ -104,9 +104,9 @@ export function SignInWindow() {
 
       <motion.p {...rise(0.62)} className="px-6 pb-6 pt-4 text-center text-xs font-bold text-ui-muted">
         By continuing you agree to the{' '}
-        <Link to={LEGAL_ROUTES.terms} className="rounded-xs font-extrabold text-brand-primary hover:underline focus-ring-inline">Terms</Link>
+        <Link to={LEGAL_ROUTES.terms} className="rounded-xs font-extrabold text-brand-primary-text hover:underline focus-ring-inline">Terms</Link>
         {' '}and{' '}
-        <Link to={LEGAL_ROUTES.privacy} className="rounded-xs font-extrabold text-brand-primary hover:underline focus-ring-inline">Privacy Policy</Link>.
+        <Link to={LEGAL_ROUTES.privacy} className="rounded-xs font-extrabold text-brand-primary-text hover:underline focus-ring-inline">Privacy Policy</Link>.
       </motion.p>
     </div>
   );

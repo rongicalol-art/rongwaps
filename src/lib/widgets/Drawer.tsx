@@ -108,7 +108,7 @@ export function DrawerBackdrop({ className }: { className?: string }) {
       aria-hidden="true"
       onClick={onClose}
       className={cn(
-        'absolute inset-0 bg-ui-ink-strong/35 pointer-events-auto cursor-pointer',
+        'absolute inset-0 bg-ui-scrim/35 pointer-events-auto cursor-pointer',
         className
       )}
     />

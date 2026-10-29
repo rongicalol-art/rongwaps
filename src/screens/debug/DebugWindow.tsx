@@ -204,7 +204,7 @@ export const DebugWindow = () => {
                           [{log.timestamp}]
                         </span>
                         {log.level !== 'info' && (
-                          <span className={`text-[10px] font-black uppercase px-1.5 py-0.5 rounded-sm ${log.level === 'error' ? 'bg-feedback-danger-surface text-feedback-danger' : 'bg-feedback-warning/15 text-feedback-warning-edge'}`}>
+                          <span className={`text-[10px] font-black uppercase px-1.5 py-0.5 rounded-sm ${log.level === 'error' ? 'bg-feedback-danger-surface text-feedback-danger' : 'bg-feedback-warning/15 text-feedback-warning-text'}`}>
                             {log.level}
                           </span>
                         )}
@@ -220,7 +220,7 @@ export const DebugWindow = () => {
                       )}
                     </div>
 
-                    <p className={`text-[14px] font-bold ${log.level === 'error' ? 'text-feedback-danger' : log.level === 'warn' ? 'text-feedback-warning-edge' : 'text-ui-ink'}`}>
+                    <p className={`text-[14px] font-bold ${log.level === 'error' ? 'text-feedback-danger' : log.level === 'warn' ? 'text-feedback-warning-text' : 'text-ui-ink'}`}>
                       {log.message}
                     </p>
 
@@ -273,7 +273,7 @@ export const DebugWindow = () => {
             </div>
             
             {errorMessage && (
-              <div className="bg-feedback-danger/10 text-feedback-danger-edge p-4 rounded-feature text-sm font-bold border border-feedback-danger-edge/30">
+              <div className="bg-feedback-danger/10 text-feedback-danger-text p-4 rounded-feature text-sm font-bold border border-feedback-danger-edge/30">
                 {errorMessage}
               </div>
             )}

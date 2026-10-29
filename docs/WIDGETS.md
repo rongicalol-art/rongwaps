@@ -30,6 +30,7 @@
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
 | AppIcon | `AppIcon.tsx` | Semantic icon gateway (Phosphor + in-house glyphs/status badges). Includes semantic `camera` and `upload` controls. Decorative by default; pass `title`/`aria-label` to make it `role="img"`. |
+| SpeakerIcon | `SpeakerIcon.tsx` | The speaker on tap-to-hear buttons. `status` from `useAudioPending` (`claim(key)` before playing, `status(key)`): `loading` = small spinner while the recording is fetched (only after 200ms, so cached clips never flash), `playing` = three sound bars while it plays. |
 | BrandWordmark | `BrandWordmark.tsx` | 文 tile + wordmark; `name`, `collapsed`. |
 | CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
 | VideoBackground | `VideoBackground.tsx` | Static decorative artwork via `posterSrc`; no continuous video decoding. Optional scrim and children. |

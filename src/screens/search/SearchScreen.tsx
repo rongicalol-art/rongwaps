@@ -3,7 +3,7 @@ import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
 import { useDictionarySearch } from '../../hooks/useDictionarySearch';
 import { AppFooter } from '../../app/components/AppFooter';
-import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
+import { AppIcon, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { searchVocabulary } from '../../services/vocabularyService';
 import { useAppStore } from '../../store/useAppStore';
 import type { DictionaryListEntry } from '../../types/models';
@@ -15,6 +15,9 @@ import { NO_SEARCH_FILTERS, SearchFilterMenu, type SearchFilters } from './compo
 import { useLevels } from '../../hooks/useLevels';
 import { resolveLevel, tocflLabel } from '../../utils/lesson/levels';
 import { useSavedDictionaryPreview } from './hooks/useSavedDictionaryPreview';
+import { useBandStudyList } from './hooks/useBandStudyList';
+import { useTocflReadiness } from '../../hooks/useTocflReadiness';
+import type { TocflBand } from '../../utils/lesson/tocflReadiness';
 
 interface SearchScreenProps {
   /** Mobile hamburger shown overlaid left in the sticky header (Dictionary). */
@@ -114,7 +117,17 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
     };
   }, [deferredQuery]);
 
+  // TOCFL study list: the rail's "N more to reach" swaps the results for that band's characters still to learn.
+  const readiness = useTocflReadiness();
+  const [studyBand, setStudyBand] = useState<TocflBand | null>(null);
+  const studyList = useBandStudyList(studyBand, readiness);
+  const handleStudyBand = (band: TocflBand) => {
+    setSearchQuery('');
+    setStudyBand(band);
+  };
+
   const handleResultsSearch = (nextQuery: string) => {
+    setStudyBand(null);
     setSearchQuery(nextQuery);
   };
 
@@ -123,7 +136,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
     setActiveTab('library');
   };
 
-  const activeResults = mode === 'global' ? dictionaryResults : courseResults;
+  const activeResults = studyBand ? studyList.results : mode === 'global' ? dictionaryResults : courseResults;
 
   // Filters narrow the current results by word type and level; they reset with the query or scope.
   const levels = useLevels();
@@ -131,7 +144,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const hasQuery = query.length > 0;
   useEffect(() => {
     setFilters(NO_SEARCH_FILTERS);
-  }, [mode, hasQuery]);
+  }, [mode, hasQuery, studyBand]);
   const resultMeta = useMemo(
     () => activeResults.map((entry) => {
       const resolved = resolveLevel(entry.traditional, levels);
@@ -160,9 +173,10 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
     [resultMeta, filters],
   );
   const isFiltered = Object.values(filters).some((filter) => filter !== null);
-  const activeError = mode === 'global' ? searchError : courseSearchError;
-  const isLoading = searchTerm !== deferredQuery || (mode === 'global' ? isSearching : isSearchingCourses);
-  const resultSummary = !isLoading && filteredResults.length > 0
+  const activeError = studyBand ? null : mode === 'global' ? searchError : courseSearchError;
+  const isLoading = studyBand ? studyList.isLoading : searchTerm !== deferredQuery || (mode === 'global' ? isSearching : isSearchingCourses);
+  // The study chip names the list, so the count steps aside for it.
+  const resultSummary = !studyBand && !isLoading && filteredResults.length > 0
     ? (filteredResults.length > 50 ? 'Top 50 results' : `${filteredResults.length} ${filteredResults.length === 1 ? 'result' : 'results'}`)
     : undefined;
 
@@ -178,11 +192,22 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
             value={searchQuery}
             onChange={handleResultsSearch}
             mode={mode}
-            onModeChange={setMode}
+            onModeChange={(next) => { setStudyBand(null); setMode(next); }}
             summary={resultSummary}
-            filterSlot={(
+            filterSlot={(<>
+              {studyBand && (
+                <button
+                  type="button"
+                  onClick={() => setStudyBand(null)}
+                  aria-label={`Band ${studyBand} to learn. Clear`}
+                  className="flex shrink-0 items-center gap-1 rounded-control border-2 border-b-4 border-brand-primary border-b-brand-primary-edge bg-brand-primary-soft px-2.5 py-1.5 text-sm font-black text-brand-primary-deep transition-[transform,border-width] active:translate-y-0.5 active:border-b-2 focus-ring"
+                >
+                  Band {studyBand} to learn
+                  <AppIcon name="close" size={16} />
+                </button>
+              )}
               <SearchFilterMenu levelOptions={levelOptions} bookOptions={mode === 'curriculum' ? bookOptions : []} lessonOptions={lessonOptions} value={filters} onChange={setFilters} />
-            )}
+            </>)}
           /></div>
 
           <div className="max-lg:order-3"><DictionaryResults
@@ -205,6 +230,8 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
             savedWords={savedWords}
             isLoadingSavedWords={isLoadingSavedWords}
             characterOfTheDay={characterOfTheDay}
+            readiness={readiness}
+            onStudyBand={handleStudyBand}
             onOpenWord={setDictionaryWord}
             onViewSavedWords={handleViewSavedWords}
           />

@@ -142,7 +142,7 @@ const SentenceCard = memo(function SentenceCard({
                     } : undefined}
                     className={cn(
                       'relative',
-                      highlighted[index] && 'text-brand-primary',
+                      highlighted[index] && 'text-brand-primary-text',
                       open && isHan && 'rounded-xs transition-colors hover:bg-brand-primary/10',
                     )}
                   >
@@ -199,7 +199,7 @@ const SentenceCard = memo(function SentenceCard({
                     onClick={(event) => { event.stopPropagation(); onToggleHard(); }}
                     className={cn(
                       'flex h-9 items-center gap-1.5 rounded-compact px-2.5 text-sm font-extrabold transition-colors focus-ring',
-                      hard ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-muted-strong hover:bg-ui-hover',
+                      hard ? 'bg-brand-primary/10 text-brand-primary-text' : 'text-ui-muted-strong hover:bg-ui-hover',
                     )}
                   >
                     <AppIcon name={hard ? 'bookmarkFilled' : 'bookmark'} size={16} />
@@ -273,7 +273,9 @@ export function SentenceFeed({ session, highlightTerms, onOpenCharacter, isOverl
     if (isOverlayOpen) return;
     const onKey = (event: KeyboardEvent) => {
       const target = event.target;
-      if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"], [role="menu"]')) return;
+      // The practice modal itself is a dialog and holds focus, so only nested dialogs and menus block keys.
+      if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"], [role="dialog"]:not(#global-activity-modal), [role="menu"]')) return;
+      if (document.querySelector('[role="dialog"][aria-label^="Lesson "]')) return;
       if (event.isComposing || event.metaKey || event.ctrlKey || event.altKey) return;
       if (event.key === ' ' || event.key === 'Enter') {
         const button = target instanceof HTMLElement ? target.closest('button') : null;

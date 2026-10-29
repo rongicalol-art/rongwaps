@@ -28,9 +28,9 @@ export function DictionaryRow({ glyph, pinyin, meaning, pos, trailing, action, o
         aria-label={ariaLabel}
         className="group grid min-w-0 flex-1 grid-cols-[minmax(4rem,auto)_minmax(0,1fr)] items-center gap-3.5 rounded-sm py-4 text-left focus-ring sm:grid-cols-[minmax(5rem,auto)_minmax(0,1fr)] sm:py-5"
       >
-        <span className="font-chinese text-[28px] leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary">{glyph}</span>
+        <span className="font-chinese text-[28px] leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary-text">{glyph}</span>
         <span className="min-w-0">
-          <span className="block truncate text-[13px] font-extrabold leading-tight text-brand-primary">{pinyin || ' '}</span>
+          <span className="block truncate text-[13px] font-extrabold leading-tight text-brand-primary-text">{pinyin || ' '}</span>
           <span className="block truncate text-[15px] font-extrabold leading-snug text-ui-ink-strong">{meaning || ' '}</span>
         </span>
       </button>

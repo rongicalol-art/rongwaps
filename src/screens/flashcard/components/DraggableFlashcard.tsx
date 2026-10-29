@@ -179,7 +179,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             }}
             className={cn(
               'flex h-10 w-10 items-center justify-center rounded-compact focus-ring hover:bg-ui-hover active:scale-95',
-              isHookOpen ? 'text-feedback-warning hover:text-feedback-warning-edge' : 'text-ui-muted',
+              isHookOpen ? 'text-feedback-warning hover:text-feedback-warning-text' : 'text-ui-muted',
             )}
           >
             {/* Same outline-to-filled language as the bookmark beside it. */}

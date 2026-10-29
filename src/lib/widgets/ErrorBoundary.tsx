@@ -69,7 +69,7 @@ export class ErrorBoundary extends Component<Props, State> {
             An unexpected error occurred. You can try again or go back to the home screen.
           </p>
           {import.meta.env.DEV && this.state.error && (
-            <p className="mb-6 max-w-md break-words rounded-control bg-ui-surface px-3 py-2 text-left font-mono text-xs font-bold text-feedback-danger-edge">
+            <p className="mb-6 max-w-md break-words rounded-control bg-ui-surface px-3 py-2 text-left font-mono text-xs font-bold text-feedback-danger-text">
               {this.state.error.message}
             </p>
           )}

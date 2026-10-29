@@ -3,7 +3,8 @@ import { motion, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { PracticeChoiceButton, getPracticeChoiceState } from '../../../features/practice';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { ActionButton, SpeakerIcon } from '../../../lib/widgets';
+import { useAudioPending } from '../../../hooks/useAudioPending';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { useNumberKeySelection } from '../../../hooks/useNumberKeySelection';
@@ -20,18 +21,19 @@ type Book = (typeof SAMPLE_BOOKS)[number];
 /** Plays the word's audio; a tap is a user gesture, so it works in Safari. */
 export const PromptAudioButton: React.FC<{ card: Flashcard; className?: string }> = ({ card, className }) => {
   const rate = useAppStore((state) => state.pronunciationRate);
+  const speaker = useAudioPending();
   return (
     <button
       type="button"
       aria-label="Play audio"
-      onClick={() => { void audioService.playCard(card, rate); }}
+      onClick={() => { speaker.claim(); void audioService.playCard(card, rate); }}
       className={cn(
         'flex items-center justify-center rounded-control text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-ui-ink focus-ring',
         'h-10 w-10',
         className,
       )}
     >
-      <AppIcon name="audio" size={26} />
+      <SpeakerIcon status={speaker.status()} size={26} />
     </button>
   );
 };
@@ -39,6 +41,7 @@ export const PromptAudioButton: React.FC<{ card: Flashcard; className?: string }
 /** Listen and pick: one big speaker button and the answers, nothing else. The feedback bar shows the word. */
 const ListenPrompt: React.FC<{ card: Flashcard }> = ({ card }) => {
   const rate = useAppStore((state) => state.pronunciationRate);
+  const speaker = useAudioPending();
   return (
     <div className="flex justify-center py-4">
       <ActionButton
@@ -46,10 +49,10 @@ const ListenPrompt: React.FC<{ card: Flashcard }> = ({ card }) => {
         data-quiz-launch-target
         size="lg"
         radius="feature"
-        onClick={() => { void audioService.playCard(card, rate); }}
+        onClick={() => { speaker.claim(); void audioService.playCard(card, rate); }}
         className="h-32 w-32 !p-0 md:h-36 md:w-36"
       >
-        <AppIcon name="audio" size={64} className="text-brand-primary-soft" />
+        <SpeakerIcon status={speaker.status()} size={64} className="text-brand-primary-soft" />
       </ActionButton>
     </div>
   );

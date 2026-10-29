@@ -20,7 +20,7 @@ export const NAV_TABS: ReadonlyArray<{
   label: string;
   icon: PlayfulNavIconName;
 }> = [
-  { id: 'path', label: 'Books', icon: 'books' },
+  { id: 'path', label: 'Learn', icon: 'learn' },
   { id: 'search', label: 'Dictionary', icon: 'dictionary' },
   { id: 'library', label: 'Library', icon: 'library' },
   { id: 'profile', label: 'Profile', icon: 'profile' },

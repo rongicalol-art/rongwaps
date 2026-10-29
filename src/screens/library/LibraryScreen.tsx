@@ -269,7 +269,7 @@ export function LibraryScreen({ onStartReview, onStartMoreReview, onNavigateToPa
                 key="empty-folder"
                 icon={isStarred ? 'bookmarkFilled' : 'folder'}
                 iconBg={activeCollection?.lightBg || 'bg-feedback-warning/15'}
-                iconColor={isStarred ? 'text-feedback-warning-edge' : activeCollection?.accentColor}
+                iconColor={isStarred ? 'text-feedback-warning-text' : activeCollection?.accentColor}
                 title={isStarred ? 'No saved words' : 'No cards yet'}
                 description={isStarred ? 'Save words from Dictionary.' : undefined}
               />

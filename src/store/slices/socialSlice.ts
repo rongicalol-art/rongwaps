@@ -7,7 +7,7 @@ import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
 
 export type SocialPanel =
-  | { kind: 'people'; tab: 'online' | 'chat' | 'party'; chatScope?: 'global' | 'lesson'; chatLesson?: number }
+  | { kind: 'people'; tab: 'online' | 'chat'; chatScope?: 'global' | 'lesson'; chatLesson?: number }
   | { kind: 'challenge'; tab: 'online' | 'rooms' }
   | { kind: 'partyChat' }
   | { kind: 'partyMention' }

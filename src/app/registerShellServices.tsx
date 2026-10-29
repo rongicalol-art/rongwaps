@@ -30,7 +30,7 @@ export function registerShellServices(): void {
           definitions={state.info?.definitions || []}
           size="sm"
           variant="ghost"
-          className="h-7 w-7 rounded-full text-white/75 hover:bg-white/10 hover:text-white"
+          className="h-7 w-7 rounded-full text-ui-on-inverse/75 hover:bg-ui-on-inverse/10 hover:text-ui-on-inverse"
         />
       );
     },

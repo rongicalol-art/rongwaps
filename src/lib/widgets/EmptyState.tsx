@@ -13,7 +13,7 @@ export interface EmptyStateProps {
   action?: ReactNode;
   /** Custom background class for the icon circle (e.g. 'bg-feedback-warning/15'). */
   iconBg?: string;
-  /** Custom text color class for the icon (e.g. 'text-feedback-warning-edge'). */
+  /** Custom text color class for the icon (e.g. 'text-feedback-warning-text'). */
   iconColor?: string;
   /** Reduces vertical padding and icon size for compact contexts (e.g. inside popovers or split lists). */
   compact?: boolean;

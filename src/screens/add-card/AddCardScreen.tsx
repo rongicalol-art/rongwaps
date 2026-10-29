@@ -115,7 +115,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
       className={cn(faceBase, 'flip-face-back', faceTone)}
     >
       <div className="flex flex-1 flex-col items-center justify-center gap-1.5 text-center">
-        {cardData.pinyin && <span className="text-xl font-black tracking-wide text-brand-primary-edge">{cardData.pinyin}</span>}
+        {cardData.pinyin && <span className="text-xl font-black tracking-wide text-brand-primary-text">{cardData.pinyin}</span>}
         <span className={cn('font-chinese font-black leading-tight text-ui-ink-strong', backWordSize(Array.from(cardData.front).length))}>
           {cardData.front}
         </span>
@@ -142,7 +142,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               <button
                 key={meaning}
                 onClick={(e) => { e.stopPropagation(); setCardData({ ...cardData, meaning }); }}
-                className="text-balance rounded-xs border-b-[length:var(--depth-sm)] border-ui-border bg-ui-canvas px-3 py-2 text-sm font-bold leading-tight text-ui-muted-strong transition-colors hover:border-brand-primary-edge hover:bg-brand-primary-soft hover:text-brand-primary focus-ring-inline"
+                className="text-balance rounded-xs border-b-[length:var(--depth-sm)] border-ui-border bg-ui-canvas px-3 py-2 text-sm font-bold leading-tight text-ui-muted-strong transition-colors hover:border-brand-primary-edge hover:bg-brand-primary-soft hover:text-brand-primary-text focus-ring-inline"
               >
                 {meaning}
               </button>
@@ -154,7 +154,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
   );
 
   return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans selection:bg-brand-primary selection:text-white overscroll-none">
+    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans selection:bg-brand-primary selection:text-brand-on-primary overscroll-none">
       <ScreenHeader
         variant="panel"
         tone="practice"
@@ -192,12 +192,12 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
           {saveError && (
             <div
               role="alert"
-              className="mb-3 px-4 py-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control text-feedback-danger-edge font-bold text-sm text-center flex items-center justify-center gap-2"
+              className="mb-3 px-4 py-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control text-feedback-danger-text font-bold text-sm text-center flex items-center justify-center gap-2"
             >
               <span>{saveError}</span>
               <button
                 onClick={() => setSaveError(null)}
-                className="ml-2 text-feedback-danger hover:text-feedback-danger-edge font-black"
+                className="ml-2 text-feedback-danger hover:text-feedback-danger-text font-black"
                 aria-label="Dismiss error"
               >
                 <AppIcon name="close" size={14} />
