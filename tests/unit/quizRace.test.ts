@@ -288,11 +288,12 @@ test('chat cooldown, burst and duplicate limits survive serialized state', () =>
   assert.ok(nextChatRate(restored, 'line 4', 135_000));
 });
 
-test('a race uses one book everyone can open; older frames default to Book 1', () => {
+test('a race uses one of Books 1–4; older frames default to Book 1', () => {
   assert.deepEqual(parseSelection({ lessons: { 1: [1] } }), { book: 1, lessons: { 1: [1] }, types: [] });
   assert.deepEqual(parseSelection({ book: 3, lessons: { 0: [1], 2: [1, 2], 17: [1] } }), { book: 3, lessons: { 2: [1, 2] }, types: [] });
-  assert.throws(() => parseSelection({ book: 2, lessons: { 1: [1] } }));
-  assert.throws(() => parseSelection({ book: 4, lessons: { 1: [1] } }));
+  assert.deepEqual(parseSelection({ book: 2, lessons: { 16: [3] } }), { book: 2, lessons: { 16: [3] }, types: [] });
+  assert.deepEqual(parseSelection({ book: 4, lessons: { 1: [1] } }), { book: 4, lessons: { 1: [1] }, types: [] });
+  assert.throws(() => parseSelection({ book: 5, lessons: { 1: [1] } }));
 });
 
 test('six players fit a room; the seventh is turned away', () => {

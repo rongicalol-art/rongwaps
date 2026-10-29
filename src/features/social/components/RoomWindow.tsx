@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, Avatar, Drawer, IconActionButton, PlayfulNavIcon, SegmentedControl, ToggleSwitch, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
-import { INTRODUCTION_ART } from '../../../data/lessonLandscapeArt';
-import { lessonThumbnail } from '../../../data/lessonThumbnails';
+import { LOCKED_BOOK_LESSON_TITLES, SAMPLE_LESSONS } from '../../../data/books';
 import { useAppStore } from '../../../store/useAppStore';
 import { useProfileAvatar } from '../../../hooks/useProfileAvatar';
 import { RACE_BOOKS } from '../../../../shared/courseAccess';
@@ -12,6 +11,9 @@ import { PanelTabs } from './SocialBits';
 import { PartyChatThread } from './ChatThread';
 
 const BOOKS = Object.keys(RACE_BOOKS).map(Number);
+/** The book's own lesson title ("The New Classmate"), without the Chinese half. */
+const lessonTitle = (book: number, id: number) => id === 0 ? 'Getting Started'
+  : (book === 1 ? SAMPLE_LESSONS.find((lesson) => lesson.id === id)?.title.split('·')[0].trim() : LOCKED_BOOK_LESSON_TITLES[book]?.[id - 1]) ?? `Lesson ${id}`;
 const lessonIds = (book: number) => {
   const range = RACE_BOOKS[book] ?? RACE_BOOKS[1];
   return Array.from({ length: range.last - range.first + 1 }, (_, index) => range.first + index);
@@ -37,7 +39,7 @@ function Row({ icon, label, value, onClick }: { icon: PlayfulNavIconName; label:
   );
 }
 
-/** One book per race; each lesson is its picture and number. A picked lesson can narrow to some of its parts. */
+/** One book per race; one row per lesson. A picked lesson shows its own parts, so each lesson can narrow separately. */
 function WordsSheet({ selection, onChange, onClose }: { selection: RaceSelection; onChange: (next: RaceSelection) => void; onClose: () => void }) {
   const book = selection.book ?? 1;
   const toggleLesson = (id: number) => {
@@ -56,33 +58,35 @@ function WordsSheet({ selection, onChange, onClose }: { selection: RaceSelection
   };
   return (
     <Drawer isOpen onClose={onClose} title={<Drawer.Title>Words</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="max-h-[85vh] md:max-h-full">
-      <SegmentedControl ariaLabel="Book" value={String(book)} onChange={pickBook} options={BOOKS.map((id) => ({ value: String(id), label: `Book ${id}` }))} className="mb-4" />
-      <div className="grid grid-cols-3 gap-2.5">
+      <SegmentedControl ariaLabel="Book" value={String(book)} onChange={pickBook} options={BOOKS.map((id) => ({ value: String(id), label: `Book ${id}` }))} className="mb-2" />
+      <ul>
         {lessonIds(book).map((id) => {
           const parts = selection.lessons[id];
-          const art = id === 0 ? INTRODUCTION_ART : lessonThumbnail(book, id);
+          const withParts = Boolean(parts) && id > 0;
           return (
-            <div key={id} className={`flex min-w-0 flex-col gap-2 rounded-control border-2 p-2 transition-colors ${parts ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-divider bg-ui-surface'}`}>
-              <button type="button" aria-pressed={Boolean(parts)} aria-label={id === 0 ? 'Introduction' : `Lesson ${id}`} onClick={() => toggleLesson(id)} className="flex flex-col items-center gap-1.5 rounded-compact outline-none focus-ring">
-                <span className="relative block aspect-square w-full overflow-hidden rounded-compact bg-ui-hover">
-                  {art && <img src={art} alt="" loading="lazy" className={`h-full w-full ${id === 0 ? 'object-contain p-4' : 'object-cover'} ${parts ? '' : 'opacity-80'}`} />}
-                </span>
-                <span className={`flex items-center gap-1 text-sm font-black ${parts ? 'text-brand-primary-text' : 'text-ui-ink-strong'}`}>
-                  {parts && <AppIcon name="check" size={14} />}{id === 0 ? 'Intro' : `L${id}`}
-                </span>
+            <li key={id} className="flex items-center gap-1.5 border-b-2 border-ui-divider last:border-b-0">
+              <button type="button" role="checkbox" aria-checked={Boolean(parts)} onClick={() => toggleLesson(id)}
+                className="-ml-2 flex min-h-14 min-w-0 flex-1 items-center gap-3 rounded-compact px-2 py-1.5 text-left outline-none hover:bg-ui-hover focus-ring-inline">
+                <span className={`grid h-[34px] min-w-9 shrink-0 place-items-center rounded-sm px-1.5 text-[15px] font-black tabular-nums ${parts ? 'bg-brand-primary text-brand-on-primary' : 'bg-ui-hover text-ui-ink'}`}>{id === 0 ? 'Intro' : id}</span>
+                <span className={`min-w-0 flex-1 truncate text-[15px] font-extrabold ${parts ? 'text-ui-ink-strong' : 'text-ui-ink'}`}>{lessonTitle(book, id)}</span>
+                {!withParts && (
+                  <span aria-hidden className={`grid h-[26px] w-[26px] shrink-0 place-items-center rounded-xs border-2 ${parts ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-ui-border'}`}>
+                    {parts && <AppIcon name="check" size={16} />}
+                  </span>
+                )}
               </button>
-              {parts && id > 0 && (
-                <span className="grid grid-cols-3 gap-1">
+              {withParts && (
+                <span role="group" aria-label={`Parts of lesson ${id}`} className="flex shrink-0 gap-1">
                   {[1, 2, 3].map((part) => (
-                    <button key={part} type="button" aria-pressed={parts.includes(part)} aria-label={`Part ${part}`} onClick={() => togglePart(id, part)}
-                      className={`h-7 rounded-xs border-2 text-xs font-black outline-none focus-ring ${parts.includes(part) ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-brand-primary-soft-edge text-ui-muted-strong'}`}>P{part}</button>
+                    <ActionButton key={part} size="sm" variant="secondary" aria-pressed={parts.includes(part)} aria-label={`Part ${part}`} onClick={() => togglePart(id, part)}
+                      className={`!h-[34px] !w-9 !px-0 ${parts.includes(part) ? '!border-brand-primary-edge !bg-brand-primary !text-brand-on-primary' : ''}`}>P{part}</ActionButton>
                   ))}
                 </span>
               )}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
       <div className="sticky -bottom-4 bg-ui-practice-canvas pb-4 pt-4"><ActionButton fullWidth size="lg" onClick={onClose}>Done</ActionButton></div>
     </Drawer>
   );
