@@ -8,6 +8,7 @@ import { cn } from '../../../utils/cn';
 import { checkOrderBuild } from '../../../utils/grammar/grammarPracticeSequence';
 import { PracticeCharacterPrompt } from '../components/PracticeCharacterPrompt';
 import { BUBBLE_TAIL, PracticeBubble } from '../components/PracticeBubble';
+import { SituationCard } from '../components/SituationCard';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
@@ -149,6 +150,9 @@ export function OrderBuildExercise({
         drag?.over === 'end' && 'border-brand-primary bg-brand-primary-soft',
       )}
     >
+      {item.kind === 'order-build' && item.lead && (
+        <span className="py-0.5 font-chinese font-semibold text-2xl leading-[1.3] text-ui-ink-strong sm:text-3xl">{textIn(item.lead, script)}</span>
+      )}
       {line.map((tile, position) => (
         <Fragment key={tile}>
         <motion.button
@@ -235,6 +239,7 @@ export function OrderBuildExercise({
 
           {!scene && reply && <PracticeCharacterPrompt status={status} waiting={line.length > 0}>{reply}</PracticeCharacterPrompt>}
 
+          {item.kind === 'order-build' && item.situation && <SituationCard situation={item.situation} script={script} showPinyin={showPinyin} contextTokens={contextTokens} onOpenWord={onOpenWord} />}
           {answerLine}
         </div>
       ) : (
@@ -242,6 +247,7 @@ export function OrderBuildExercise({
           {children}
           <PracticePrompt sub={item.sub ?? (item.quiet ? item.prompt : undefined)} />
           {scene}
+          {item.kind === 'order-build' && item.situation && <SituationCard situation={item.situation} script={script} showPinyin={showPinyin} contextTokens={contextTokens} onOpenWord={onOpenWord} />}
           {answerLine}
         </div>
       )}

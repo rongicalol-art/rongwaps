@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import type { DialogueClip, GrammarPractice, ListenClip, PracticeItem } from '../../src/types/models';
-import { checkListenPick, checkMatchPair, checkSameMeaning, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
+import { checkReplyPick, checkListenPick, checkMatchPair, checkSameMeaning, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
 import { checkOrderBuild, checkStoryOrder } from '../../src/utils/grammar/grammarPracticeSequence';
 import { readJson } from '../acceptance_helpers';
 
@@ -13,7 +13,7 @@ const pages = fs.readdirSync(dir).filter((file) => file.endsWith('.json')).flatM
   const lesson = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')) as Record<string, GrammarPractice>;
   return Object.entries(lesson).map(([key, page]) => ({ key, items: page.items }));
 });
-const isNewKind = (item: PracticeItem) => ['order-build', 'listen-build', 'listen-pick', 'same-meaning', 'spot-fix', 'match-pairs', 'sort-groups', 'story-order'].includes(item.kind);
+const isNewKind = (item: PracticeItem) => ['reply-pick', 'order-build', 'listen-build', 'listen-pick', 'same-meaning', 'spot-fix', 'match-pairs', 'sort-groups', 'story-order'].includes(item.kind);
 const newItems = pages.flatMap(({ key, items }) => items.filter(isNewKind).map((item) => ({ key, item })));
 
 test('every new-kind item is titled by its own task', () => {
@@ -35,6 +35,7 @@ test('every new-kind item is solved by its own answer key', () => {
   const failed = newItems.flatMap(({ key, item }) => {
     const ok = (() => {
       switch (item.kind) {
+        case 'reply-pick': return item.options.every((option, index) => checkReplyPick(item, index).correct === Boolean(option.ok));
         case 'order-build':
         case 'listen-build': return item.accepted.every((answer) => checkOrderBuild(item, answer.order).correct);
         case 'spot-fix': return checkSpotFix(item, item.wrong, item.fix ?? null).correct;

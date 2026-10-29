@@ -1,5 +1,6 @@
-import type { GrammarPractice, ListenBuildItem, ListenClip, ListenPickItem, MatchPairsItem, PracticeItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../types/models';
+import type { GrammarPractice, ReplyPickItem, ListenBuildItem, ListenClip, ListenPickItem, MatchPairsItem, PracticeItem, PracticeSentence, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../types/models';
 import { practiceSlots, slotBuildSolutions } from './grammarPracticeCheck';
+import { replyFills } from './grammarPracticePicks';
 import type { LessonValidationIssue } from './validateInteractiveLessons';
 
 const HAN = /\p{Script=Han}/u;
@@ -90,6 +91,9 @@ function itemIssues(item: PracticeItem): string[] {
       break;
     case 'spot-fix':
       problems.push(...spotIssues(item));
+      break;
+    case 'reply-pick':
+      problems.push(...replyPickIssues(item));
       break;
     case 'listen-pick':
       problems.push(...pickIssues(item));
@@ -220,4 +224,23 @@ export function validateGrammarPractice(practice: GrammarPractice, location: str
     itemIssues(item).forEach((message) => issues.push({ location: `${location} ${item.id}`, message }));
   });
   return issues;
+}
+
+/** Phrase banks may have several right replies; every choice must explain its outcome. */
+function replyPickIssues(item: ReplyPickItem): string[] {
+  const problems: string[] = [];
+  if (item.options.length < 2 || item.options.length > 10) problems.push('reply-pick needs 2–10 options (the longest book bank prints 10).');
+  if (!item.options.some((option) => option.ok)) problems.push('reply-pick needs at least one ok option.');
+  if (new Set(item.options.map((option) => plain(option.traditional))).size !== item.options.length) problems.push('duplicate option text.');
+  if (!item.lines && !item.situation) problems.push('reply-pick needs lines or situation.');
+  if (item.lines && item.lines.flatMap((line) => line.segments).filter((segment) => segment.type === 'slot').length !== 1) problems.push('reply-pick lines need exactly one slot.');
+  item.options.forEach((option, index) => {
+    if (option.ok) problems.push(...sentenceIssues(option.result, `option ${index + 1} result`));
+    else if (!option.note?.trim()) problems.push(`option ${index + 1} needs a note.`);
+    if (item.fill) {
+      if (!option.traditional.includes('～')) problems.push(`option ${index + 1} must contain ～.`);
+      for (const part of replyFills(item)) if (option.result && !option.result.traditional.includes(part.traditional)) problems.push(`option ${index + 1} result must contain fill ${part.traditional}.`);
+    } else if (option.traditional.includes('～')) problems.push(`option ${index + 1} contains ～ without fill.`);
+  });
+  return problems;
 }

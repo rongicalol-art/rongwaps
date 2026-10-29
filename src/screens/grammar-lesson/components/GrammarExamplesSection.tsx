@@ -57,6 +57,7 @@ export function GrammarExampleItem({
           contextTokens={contextTokens}
           onOpenWord={onOpenWord}
         />
+        {example.fromDialogue && <p className="mt-1 text-xs font-extrabold text-brand-primary-text">★ From the dialogue</p>}
       </div>
     </div>
   );

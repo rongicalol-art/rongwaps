@@ -12,6 +12,9 @@ import { AppIcon } from './AppIcon';
 import type { WordSyllable } from '../../utils/pinyin/pinyinTones';
 import { splitDialogueTurns } from '../../utils/lesson/dialogueTurns';
 
+/** Punctuation that must stay on the same line as the word before it. */
+const CLOSING_MARK = /^[，。、；：？！」』）,.;:?!)]+$/;
+
 export interface SmartSentenceProps {
   text: string;
   className?: string;
@@ -213,7 +216,15 @@ export function SmartSentence({
               </span>
             );
           })
-        : displaySegments.map(renderSegment)}
+        : displaySegments.map((seg, i) => {
+            // Closing marks never start a line: they ride with the word before them.
+            if (i > 0 && CLOSING_MARK.test(seg.segment)) return null;
+            let end = i + 1;
+            while (end < displaySegments.length && CLOSING_MARK.test(displaySegments[end].segment)) end += 1;
+            return end > i + 1
+              ? <span key={`glue-${i}`} className="whitespace-nowrap">{displaySegments.slice(i, end).map((part, at) => renderSegment(part, i + at))}</span>
+              : renderSegment(seg, i);
+          })}
 
       {hoveredWord && typeof document !== 'undefined' && (
         <SentenceWordTooltipPortal

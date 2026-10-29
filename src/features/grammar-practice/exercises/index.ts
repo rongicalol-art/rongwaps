@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import type { PracticeItem, PracticeKind } from '../../../types/models';
 import type { PracticeExerciseProps } from '../practiceTypes';
+import { ReplyPickExercise } from './ReplyPickExercise';
 import { ChatBuildExercise } from './ChatBuildExercise';
 import { ListenBuildExercise } from './ListenBuildExercise';
 import { ListenPickExercise } from './ListenPickExercise';
@@ -19,6 +20,7 @@ import { StoryOrderExercise } from './StoryOrderExercise';
  * its structural rules in `validateGrammarPractice.ts`, and a UI Preview entry.
  */
 export const PRACTICE_EXERCISES: { [K in PracticeKind]: ComponentType<PracticeExerciseProps<Extract<PracticeItem, { kind: K }>>> } = {
+  'reply-pick': ReplyPickExercise,
   'slot-build': SlotBuildExercise,
   'slot-reels': SlotReelsExercise,
   'chat-build': ChatBuildExercise,

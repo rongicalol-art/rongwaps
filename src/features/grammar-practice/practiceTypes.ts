@@ -35,3 +35,6 @@ export interface PracticeExerciseProps<T extends PracticeItem = PracticeItem> {
 
 export const textIn = (text: PracticeText, script: PracticeScript) =>
   (script === 'simplified' && text.simplified ? text.simplified : text.traditional);
+
+/** Closing marks that must not start a line: they stay with the blank before them. */
+export const LEADING_CLOSING = /^[。？！，」]+/;

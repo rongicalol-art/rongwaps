@@ -35,6 +35,18 @@ export interface PracticeText {
   simplified?: string;
 }
 
+/** A book situation: Chinese shown, English one tap away. */
+export interface PracticeSituation extends PracticeText { english: string; pinyin?: string }
+
+export interface ReplyOption extends PracticeText {
+  pinyin?: string;
+  ok?: boolean;
+  /** Required for a wrong option. */
+  note?: string;
+  /** Required for a right option. */
+  result?: PracticeSentence;
+}
+
 /** A place or plan on the route map. `label` is the plain English caption under the pin. */
 export interface PracticePlace {
   icon: PracticeIconName;
@@ -193,6 +205,9 @@ export interface ChatBuildItem extends PracticeItemBase {
  */
 export interface OrderBuildItem extends PracticeItemBase {
   kind: 'order-build';
+  situation?: PracticeSituation;
+  /** The book's printed start of the reply, shown fixed before the free line (B：不可以，今天有很重要的考試，___). */
+  lead?: PracticeText;
   scene?: PracticeScene;
   tiles: PracticeTile[];
   accepted: ChatAnswer[];
@@ -352,9 +367,20 @@ export interface StoryOrderItem extends PracticeItemBase {
   successNote?: string;
 }
 
+/** Pick a written reply; several options may fit the book’s phrase bank. */
+export interface ReplyPickItem extends PracticeItemBase {
+  kind: 'reply-pick';
+  /** Exactly one slot; its answers are ignored. */
+  lines?: PracticeLine[];
+  situation?: PracticeSituation;
+  /** The pattern ～ stands for in each option; a two-part pattern lists its parts (多麼…啊 → [多麼, 啊]) and the nth ～ takes the nth part. */
+  fill?: PracticeTile | PracticeTile[];
+  options: ReplyOption[];
+}
+
 export type PracticeItem =
   | SlotBuildItem | SlotReelsItem | ChatBuildItem
-  | OrderBuildItem | ListenBuildItem | ListenPickItem | SameMeaningItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
+  | ReplyPickItem | OrderBuildItem | ListenBuildItem | ListenPickItem | SameMeaningItem | SpotFixItem | MatchPairsItem | SortGroupsItem | StoryOrderItem;
 export type PracticeKind = PracticeItem['kind'];
 
 export interface GrammarPractice {

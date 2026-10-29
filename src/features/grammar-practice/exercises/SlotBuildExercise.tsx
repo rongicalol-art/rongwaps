@@ -13,9 +13,8 @@ import { PracticeScene } from '../components/PracticeScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
 import { TileGhost } from '../components/TileGhost';
 import { useTileDrag, type DragSource } from '../useTileDrag';
-import { textIn, type PracticeExerciseProps } from '../practiceTypes';
+import { LEADING_CLOSING, textIn, type PracticeExerciseProps } from '../practiceTypes';
 
-const LEADING_CLOSING = /^[。？！，」]+/;
 
 /**
  * Fill the blanks from the dock (book pictures, "complete the sentence"). A plain

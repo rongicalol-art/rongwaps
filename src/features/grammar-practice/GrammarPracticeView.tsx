@@ -49,9 +49,9 @@ export function GrammarPracticeView({
   // Mix once on entry, not on each pick or retry. Every occurrence keeps its own identity.
   const item = useMemo(() => 'tiles' in source ? { ...source, tiles: shuffleItems(source.tiles) } : source, [source]);
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
-  const needsInstruction = item.kind === 'match-pairs' || (item.kind === 'slot-build' && item.gaps);
+  const needsInstruction = item.kind === 'reply-pick' || item.kind === 'match-pairs' || (item.kind === 'slot-build' && item.gaps);
   const title = item.quiet && !needsInstruction ? null : item.prompt ?? practice.title;
-  const inlineBank =item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
+  const inlineBank = item.kind === 'reply-pick' || item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
 
   // A result that lands after the learner moved on is dropped.
   const currentItemId = useRef(item.id);

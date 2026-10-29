@@ -58,6 +58,8 @@ export interface GrammarPatternRow {
 }
 
 export interface GrammarLessonExample {
+  /** The book’s ★: this example comes from the dialogue. */
+  fromDialogue?: boolean;
   id: string;
   number: number;
   text: GrammarLessonText;
@@ -301,6 +303,8 @@ export interface InteractiveGrammarPage {
   bookPageAvailable?: boolean;
   audioReference: string;
   explanation: string;
+  /** The book’s printed English 說明, verbatim. */
+  explanationEnglish?: string;
   subsections?: GrammarSubsection[];
   lessonWorld?: GrammarLessonWorld;
   focusTerms?: string[];

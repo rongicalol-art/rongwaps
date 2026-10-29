@@ -4,7 +4,7 @@
       "id": "b3l3-d1-l1",
       "speaker": "芳草",
       "traditional": "瑪莉，這家專櫃的洋裝看起來真漂亮，而且現在週年慶打八折呢！",
-      "simplified": "瑪莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
+      "simplified": "玛莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
       "pinyin": "",
       "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!"
     },
@@ -28,7 +28,7 @@
       "id": "b3l3-d1-l4",
       "speaker": "芳草",
       "traditional": "瑪莉，妳看這件怎麼樣？我覺得腰部有點緊，而且價格還是太高了。",
-      "simplified": "瑪莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
+      "simplified": "玛莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
       "pinyin": "",
       "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high."
     },
@@ -52,7 +52,7 @@
       "id": "b3l3-d1-l7",
       "speaker": "瑪莉",
       "traditional": "放心吧，樓上有幾個專櫃不僅質料柔軟，價格也很實在。",
-      "simplified": "放心吧，楼上有几个专柜不仅质料柔軟，价格也很实在。",
+      "simplified": "放心吧，楼上有几个专柜不仅质料柔软，价格也很实在。",
       "pinyin": "",
       "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair."
     },
@@ -86,7 +86,7 @@
       "id": "b3l3-d2-l3",
       "speaker": "旁白",
       "traditional": "以前人們為了比價，得跑好幾家實體店鋪，費時又費力。",
-      "simplified": "以前人们为了比价，得跑好几家实体店鋪，费时又费力。",
+      "simplified": "以前人们为了比价，得跑好几家实体店铺，费时又费力。",
       "pinyin": "",
       "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious."
     },
@@ -94,7 +94,7 @@
       "id": "b3l3-d2-l4",
       "speaker": "旁白",
       "traditional": "現在網路科技發達，大家不僅能透過比價網站輕鬆查詢價格，還能參考其他消費者的評價。",
-      "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查詢价格，还能参考其他消费者的评价。",
+      "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查询价格，还能参考其他消费者的评价。",
       "pinyin": "",
       "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers."
     },
@@ -132,20 +132,23 @@
         "bookPage": 78,
         "bookPageAvailable": true,
         "audioReference": "03-1-3",
-        "explanation": "決定購買或使用某物品以前，先試試看是不是真的喜歡、真的合適。這個「V」常是單音節的動詞，例如：吃、穿、用、喝、開等。Before deciding to buy a product or to use it, first try to see if you really like it or if it is really suitable. The \"V\" is often a monosyllabic verb, such as 吃, 穿, 用, 喝, 開, 坐, 戴, 躺, etc.",
+        "explanation": "決定購買或使用某物品以前，先試試看是不是真的喜歡、真的合適。這個「V」常是單音節的動詞，例如：吃、穿、用、喝、開等。",
         "focusTerms": [
           "試",
           "試穿",
           "試喝",
           "試用",
-          "試坐"
+          "試坐",
+          "試戴",
+          "試擦",
+          "試躺"
         ],
         "pattern": "Subject + 試 + Verb",
         "patternColumns": [
-          "Who",
+          "Subject",
           "試",
-          "Action",
-          "Goal"
+          "Verb",
+          "Rest"
         ],
         "patternRows": [
           {
@@ -154,10 +157,10 @@
               [
                 {
                   "id": "b3l3g1-r1-c1-w1",
-                  "traditional": "妳",
-                  "simplified": "你",
-                  "pinyin": "nǐ",
-                  "meaning": "you"
+                  "traditional": "妳都",
+                  "simplified": "你都",
+                  "pinyin": "nǐ dōu",
+                  "meaning": "you, all"
                 }
               ],
               [
@@ -181,12 +184,159 @@
               [
                 {
                   "id": "b3l3g1-r1-c4-w1",
-                  "traditional": "這件洋裝",
-                  "simplified": "这件洋装",
-                  "pinyin": "zhè jiàn yángzhuāng",
-                  "meaning": "this dress"
+                  "traditional": "一下吧",
+                  "simplified": "一下吧",
+                  "pinyin": "yíxià ba",
+                  "meaning": "a little"
                 }
               ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g1-r1-c1-w1",
+                "traditional": "妳都",
+                "simplified": "你都",
+                "pinyin": "nǐ dōu",
+                "meaning": "you, all"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g1-r1-c2-w1",
+                "traditional": "試",
+                "simplified": "试",
+                "pinyin": "shì",
+                "meaning": "try"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g1-r1-c3-w1",
+                "traditional": "穿",
+                "simplified": "穿",
+                "pinyin": "chuān",
+                "meaning": "wear"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g1-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g1-r2-c1-w1",
+                  "traditional": "一定要",
+                  "simplified": "一定要",
+                  "pinyin": "yídìng yào",
+                  "meaning": "must"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g1-r2-c2-w1",
+                  "traditional": "試",
+                  "simplified": "试",
+                  "pinyin": "shì",
+                  "meaning": "try"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g1-r2-c3-w1",
+                  "traditional": "躺",
+                  "simplified": "躺",
+                  "pinyin": "tǎng",
+                  "meaning": "lie down"
+                }
+              ],
+              []
+            ],
+            "subject": [
+              {
+                "id": "b3l3g1-r2-c1-w1",
+                "traditional": "一定要",
+                "simplified": "一定要",
+                "pinyin": "yídìng yào",
+                "meaning": "must"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g1-r2-c2-w1",
+                "traditional": "試",
+                "simplified": "试",
+                "pinyin": "shì",
+                "meaning": "try"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g1-r2-c3-w1",
+                "traditional": "躺",
+                "simplified": "躺",
+                "pinyin": "tǎng",
+                "meaning": "lie down"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g1-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g1-r3-c1-w1",
+                  "traditional": "給客人免費",
+                  "simplified": "给客人免费",
+                  "pinyin": "gěi kèrén miǎnfèi",
+                  "meaning": "free for customers"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g1-r3-c2-w1",
+                  "traditional": "試",
+                  "simplified": "试",
+                  "pinyin": "shì",
+                  "meaning": "try"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g1-r3-c3-w1",
+                  "traditional": "喝",
+                  "simplified": "喝",
+                  "pinyin": "hē",
+                  "meaning": "drink"
+                }
+              ],
+              []
+            ],
+            "subject": [
+              {
+                "id": "b3l3g1-r3-c1-w1",
+                "traditional": "給客人免費",
+                "simplified": "给客人免费",
+                "pinyin": "gěi kèrén miǎnfèi",
+                "meaning": "free for customers"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g1-r3-c2-w1",
+                "traditional": "試",
+                "simplified": "试",
+                "pinyin": "shì",
+                "meaning": "try"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g1-r3-c3-w1",
+                "traditional": "喝",
+                "simplified": "喝",
+                "pinyin": "hē",
+                "meaning": "drink"
+              }
             ]
           }
         ],
@@ -429,7 +579,8 @@
                   "suffix": "！"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l3g1-ex2",
@@ -610,6 +761,10 @@
             "correctFeedback": "試坐 indicates testing the sofa by sitting on it prior to buying.",
             "repairFeedback": "Use 試坐 before deciding to buy the sofa."
           }
+        ],
+        "explanationEnglish": "Before deciding to buy a product or to use it, first try to see if you really like it or if it is really suitable. There \"V\" are often monosyllable verbs, such as 吃, 穿, 用, 喝, 開, etc.",
+        "patternAccentColumn": [
+          1
         ]
       },
       {
@@ -630,20 +785,27 @@
         "bookPage": 79,
         "bookPageAvailable": true,
         "audioReference": "03-1-3",
-        "explanation": "「掉」是補語，用在及物動詞的後面，有去除或出現不好的結果的意思，例如：吃掉、扔掉、賣掉、拿掉等。如果「掉」用在不及物動詞的後面，表示離開的意思，例如：走掉、飛掉、跑掉、壞掉等。The complement 掉 is used after transitive verbs to mean removal, consumption, or undesirable results (吃掉, 扔掉, 賣掉, 拿掉). After intransitive verbs, it indicates departure or disappearance (走掉, 飛掉, 跑掉, 壞掉).",
+        "explanation": "「掉」是補語，用在及物動詞的後面，有去除或出現不好的結果的意思，例如：吃掉、扔掉、賣掉、拿掉等。如果「掉」用在不及物動詞的後面，表示離開的意思，例如：走掉、飛掉、跑掉、壞掉等。",
         "focusTerms": [
           "掉",
           "扔掉",
           "賣掉",
           "跑掉",
-          "吃掉"
+          "吃掉",
+          "丟掉",
+          "花掉",
+          "V掉了",
+          "沒V掉",
+          "V得掉",
+          "V不掉",
+          "跑不掉"
         ],
         "pattern": "Verb + 掉",
         "patternColumns": [
-          "Who",
-          "Action",
+          "Subject",
+          "Verb",
           "掉",
-          "Result"
+          "Rest"
         ],
         "patternRows": [
           {
@@ -652,10 +814,10 @@
               [
                 {
                   "id": "b3l3g2-r1-c1-w1",
-                  "traditional": "我朋友",
-                  "simplified": "我朋友",
-                  "pinyin": "wǒ péngyou",
-                  "meaning": "my friend"
+                  "traditional": "只好",
+                  "simplified": "只好",
+                  "pinyin": "zhǐhǎo",
+                  "meaning": "can only"
                 }
               ],
               [
@@ -673,18 +835,165 @@
                   "traditional": "掉",
                   "simplified": "掉",
                   "pinyin": "diào",
-                  "meaning": "away (complement)"
+                  "meaning": "away"
+                }
+              ],
+              []
+            ],
+            "subject": [
+              {
+                "id": "b3l3g2-r1-c1-w1",
+                "traditional": "只好",
+                "simplified": "只好",
+                "pinyin": "zhǐhǎo",
+                "meaning": "can only"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g2-r1-c2-w1",
+                "traditional": "扔",
+                "simplified": "扔",
+                "pinyin": "rēng",
+                "meaning": "throw"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g2-r1-c3-w1",
+                "traditional": "掉",
+                "simplified": "掉",
+                "pinyin": "diào",
+                "meaning": "away"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g2-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g2-r2-c1-w1",
+                  "traditional": "不如",
+                  "simplified": "不如",
+                  "pinyin": "bùrú",
+                  "meaning": "might as well"
                 }
               ],
               [
                 {
-                  "id": "b3l3g2-r1-c4-w1",
-                  "traditional": "破衣服",
-                  "simplified": "破衣服",
-                  "pinyin": "pò yīfu",
-                  "meaning": "torn clothes"
+                  "id": "b3l3g2-r2-c2-w1",
+                  "traditional": "賣",
+                  "simplified": "卖",
+                  "pinyin": "mài",
+                  "meaning": "sell"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g2-r2-c3-w1",
+                  "traditional": "掉",
+                  "simplified": "掉",
+                  "pinyin": "diào",
+                  "meaning": "off"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g2-r2-c4-w1",
+                  "traditional": "吧",
+                  "simplified": "吧",
+                  "pinyin": "ba",
+                  "meaning": "suggestion"
                 }
               ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g2-r2-c1-w1",
+                "traditional": "不如",
+                "simplified": "不如",
+                "pinyin": "bùrú",
+                "meaning": "might as well"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g2-r2-c2-w1",
+                "traditional": "賣",
+                "simplified": "卖",
+                "pinyin": "mài",
+                "meaning": "sell"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g2-r2-c3-w1",
+                "traditional": "掉",
+                "simplified": "掉",
+                "pinyin": "diào",
+                "meaning": "off"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g2-r3-c1-w1",
+                  "traditional": "他會",
+                  "simplified": "他会",
+                  "pinyin": "tā huì",
+                  "meaning": "he might"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g2-r3-c2-w1",
+                  "traditional": "跑",
+                  "simplified": "跑",
+                  "pinyin": "pǎo",
+                  "meaning": "run"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g2-r3-c3-w1",
+                  "traditional": "掉",
+                  "simplified": "掉",
+                  "pinyin": "diào",
+                  "meaning": "away"
+                }
+              ],
+              []
+            ],
+            "subject": [
+              {
+                "id": "b3l3g2-r3-c1-w1",
+                "traditional": "他會",
+                "simplified": "他会",
+                "pinyin": "tā huì",
+                "meaning": "he might"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g2-r3-c2-w1",
+                "traditional": "跑",
+                "simplified": "跑",
+                "pinyin": "pǎo",
+                "meaning": "run"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g2-r3-c3-w1",
+                "traditional": "掉",
+                "simplified": "掉",
+                "pinyin": "diào",
+                "meaning": "away"
+              }
             ]
           }
         ],
@@ -851,8 +1160,8 @@
             "id": "b3l3g2-ex1",
             "number": 1,
             "text": {
-              "traditional": "沒穿幾次就破了，最後只好扔掉。",
-              "simplified": "没穿几次就破了，最后只好扔掉。",
+              "traditional": "……沒穿幾次就破了，最後只好扔掉。",
+              "simplified": "……没穿几次就破了，最后只好扔掉。",
               "pinyin": "Méi chuān jǐ cì jiù pò le, zuìhòu zhǐhǎo rēngdiào.",
               "english": "After wearing them just a few times they tore, and in the end they had to throw them away.",
               "words": [
@@ -861,7 +1170,8 @@
                   "traditional": "沒穿幾次",
                   "simplified": "没穿几次",
                   "pinyin": "méi chuān jǐ cì",
-                  "meaning": "wearing few times"
+                  "meaning": "wearing few times",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l3g2-ex1-w2",
@@ -894,23 +1204,25 @@
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l3g2-ex2",
             "number": 2,
             "text": {
-              "traditional": "你那輛車不常開又舊得很，不如賣掉吧！",
-              "simplified": "你那辆车不常开又旧得很，不如卖掉吧！",
-              "pinyin": "Nǐ nà liàng chē bù cháng kāi yòu jiù de hěn, bùrú màidiào ba!",
-              "english": "You don't drive that car often and it's quite old; you might as well sell it off!",
+              "traditional": "A：你那輛車不常開又舊得很，不如賣掉吧！\nB：它還能開，賣掉太可惜了。",
+              "simplified": "A：你那辆车不常开又旧得很，不如卖掉吧！\nB：它还能开，卖掉太可惜了。",
+              "pinyin": "A: Nǐ nà liàng chē bù cháng kāi yòu jiù de hěn, bùrú màidiào ba! B: Tā hái néng kāi, màidiào tài kěxí le.",
+              "english": "A: You don't drive that car often and it's quite old; you might as well sell it off! B: It can still be driven; selling it would be such a pity.",
               "words": [
                 {
                   "id": "b3l3g2-ex2-w1",
                   "traditional": "你那輛車",
                   "simplified": "你那辆车",
                   "pinyin": "nǐ nà liàng chē",
-                  "meaning": "that car of yours"
+                  "meaning": "that car of yours",
+                  "prefix": "A："
                 },
                 {
                   "id": "b3l3g2-ex2-w2",
@@ -948,6 +1260,31 @@
                   "pinyin": "ba",
                   "meaning": "suggestion",
                   "suffix": "！"
+                },
+                {
+                  "id": "b3l3g2-ex2-w7",
+                  "traditional": "它還能開",
+                  "simplified": "它还能开",
+                  "pinyin": "tā hái néng kāi",
+                  "meaning": "it can still be driven",
+                  "suffix": "，",
+                  "prefix": "\nB："
+                },
+                {
+                  "id": "b3l3g2-ex2-w8",
+                  "traditional": "賣掉",
+                  "simplified": "卖掉",
+                  "pinyin": "màidiào",
+                  "meaning": "sell off",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l3g2-ex2-w9",
+                  "traditional": "太可惜了",
+                  "simplified": "太可惜了",
+                  "pinyin": "tài kěxí le",
+                  "meaning": "such a pity",
+                  "suffix": "。"
                 }
               ]
             }
@@ -956,17 +1293,18 @@
             "id": "b3l3g2-ex3",
             "number": 3,
             "text": {
-              "traditional": "我擔心送皮鞋給男朋友，他會跑掉。",
-              "simplified": "我担心送皮鞋给男朋友，他会跑掉。",
-              "pinyin": "Wǒ dānxīn sòng píxié gěi nánpéngyou, tā huì pǎodiào.",
-              "english": "I worry that if I gift leather shoes to my boyfriend, he will run away.",
+              "traditional": "A：我擔心送皮鞋給男朋友，他會跑掉。\nB：那就送他皮帶好了，這樣他就跑不掉了。",
+              "simplified": "A：我担心送皮鞋给男朋友，他会跑掉。\nB：那就送他皮带好了，这样他就跑不掉了。",
+              "pinyin": "A: Wǒ dānxīn sòng píxié gěi nánpéngyou, tā huì pǎodiào. B: Nà jiù sòng tā pídài hǎo le, zhèyàng tā jiù pǎo bu diào le.",
+              "english": "A: I worry that if I gift leather shoes to my boyfriend, he will run away. B: Then give him a belt; that way he won't be able to run away.",
               "words": [
                 {
                   "id": "b3l3g2-ex3-w1",
                   "traditional": "我擔心",
                   "simplified": "我担心",
                   "pinyin": "wǒ dānxīn",
-                  "meaning": "I worry"
+                  "meaning": "I worry",
+                  "prefix": "A："
                 },
                 {
                   "id": "b3l3g2-ex3-w2",
@@ -996,6 +1334,31 @@
                   "simplified": "跑掉",
                   "pinyin": "pǎodiào",
                   "meaning": "run away",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l3g2-ex3-w6",
+                  "traditional": "那就送他皮帶好了",
+                  "simplified": "那就送他皮带好了",
+                  "pinyin": "nà jiù sòng tā pídài hǎo le",
+                  "meaning": "then give him a belt",
+                  "suffix": "，",
+                  "prefix": "\nB："
+                },
+                {
+                  "id": "b3l3g2-ex3-w7",
+                  "traditional": "這樣他就",
+                  "simplified": "这样他就",
+                  "pinyin": "zhèyàng tā jiù",
+                  "meaning": "that way he",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l3g2-ex3-w8",
+                  "traditional": "跑不掉了",
+                  "simplified": "跑不掉了",
+                  "pinyin": "pǎo bu diào le",
+                  "meaning": "cannot run away",
                   "suffix": "。"
                 }
               ]
@@ -1054,6 +1417,10 @@
             "correctFeedback": "賣掉 indicates disposing of an old car by selling it.",
             "repairFeedback": "Use 賣掉 to express parting with an old car through sale."
           }
+        ],
+        "explanationEnglish": "The complement 掉 is used after the transitive verb, and it means to remove or produce bad results, such as 吃掉, 扔掉, 賣掉, 拿掉, etc. If the complement 掉 is used after the intransitive verb, it means to leave. For example, 走掉, 飛掉, 跑掉, 壞掉, etc.",
+        "patternAccentColumn": [
+          2
         ]
       },
       {
@@ -1073,17 +1440,23 @@
         "bookPage": 81,
         "bookPageAvailable": true,
         "audioReference": "03-1-3",
-        "explanation": "「什麼（N）都……」表示「全部、任何」，而「就是」的後面是唯一的選擇或不同的情況。「什麼(N)都...」 means \"all, anything\"; the statement after 就是 indicates the single exception or differing condition.",
+        "explanation": "「什麼（……）都……」表示「全部、任何」，例如：「他什麼忙都幫」表示他任何忙都會幫，「我什麼東西都吃」表示任何東西我都吃。而「就是」的後面是唯一的選擇或不同的情況。例如：他什麼茶都喝，就是不喝紅茶。",
         "focusTerms": [
           "什麼都",
-          "就是"
+          "就是",
+          "什麼",
+          "都",
+          "什麼（……）都……"
         ],
         "pattern": "什麼(N)都 + Predicate，就是 + Exception",
         "patternColumns": [
-          "Who",
-          "Scope",
+          "Topic",
+          "什麼…",
           "都",
-          "Exception"
+          "Action",
+          "就是",
+          "Exception",
+          "Rest"
         ],
         "patternRows": [
           {
@@ -1104,27 +1477,223 @@
                   "traditional": "什麼",
                   "simplified": "什么",
                   "pinyin": "shénme",
-                  "meaning": "anything"
-                }
-              ],
-              [
-                {
-                  "id": "b3l3g3-r1-c3-w1",
-                  "traditional": "都好",
-                  "simplified": "都好",
-                  "pinyin": "dōu hǎo",
-                  "meaning": "all good"
+                  "meaning": "everything"
                 }
               ],
               [
                 {
                   "id": "b3l3g3-r1-c4-w1",
-                  "traditional": "就是價格高",
-                  "simplified": "就是价格高",
-                  "pinyin": "jiùshì jiàgé gāo",
-                  "meaning": "except price is high"
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r1-c5-w1",
+                  "traditional": "好",
+                  "simplified": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "good"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r1-c6-w1",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "meaning": "except"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r1-c7-w1",
+                  "traditional": "價格高了很多",
+                  "simplified": "价格高了很多",
+                  "pinyin": "jiàgé gāo le hěn duō",
+                  "meaning": "prices much higher"
+                }
+              ],
+              []
+            ],
+            "subject": [
+              {
+                "id": "b3l3g3-r1-c1-w1",
+                "traditional": "這個專櫃",
+                "simplified": "这个专柜",
+                "pinyin": "zhè ge zhuānguì",
+                "meaning": "this counter"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g3-r1-c2-w1",
+                "traditional": "什麼",
+                "simplified": "什么",
+                "pinyin": "shénme",
+                "meaning": "everything"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g3-r1-c4-w1",
+                "traditional": "都",
+                "simplified": "都",
+                "pinyin": "dōu",
+                "meaning": "all"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g3-r2",
+            "columns": [
+              [],
+              [
+                {
+                  "id": "b3l3g3-r2-c2-w1",
+                  "traditional": "什麼工作",
+                  "simplified": "什么工作",
+                  "pinyin": "shénme gōngzuò",
+                  "meaning": "any job"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r2-c4-w1",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r2-c5-w1",
+                  "traditional": "願意做",
+                  "simplified": "愿意做",
+                  "pinyin": "yuànyì zuò",
+                  "meaning": "willing to do"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r2-c6-w1",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "meaning": "except"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r2-c7-w1",
+                  "traditional": "不能接受",
+                  "simplified": "不能接受",
+                  "pinyin": "bù néng jiēshòu",
+                  "meaning": "cannot accept"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r2-c8-w1",
+                  "traditional": "老闆要我每天加班",
+                  "simplified": "老板要我每天加班",
+                  "pinyin": "lǎobǎn yào wǒ měi tiān jiābān",
+                  "meaning": "boss wants daily overtime"
                 }
               ]
+            ],
+            "subject": [],
+            "grammar": [
+              {
+                "id": "b3l3g3-r2-c2-w1",
+                "traditional": "什麼工作",
+                "simplified": "什么工作",
+                "pinyin": "shénme gōngzuò",
+                "meaning": "any job"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g3-r2-c4-w1",
+                "traditional": "都",
+                "simplified": "都",
+                "pinyin": "dōu",
+                "meaning": "all"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g3-r3",
+            "columns": [
+              [],
+              [
+                {
+                  "id": "b3l3g3-r3-c2-w1",
+                  "traditional": "什麼服裝",
+                  "simplified": "什么服装",
+                  "pinyin": "shénme fúzhuāng",
+                  "meaning": "all kinds of clothing"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r3-c4-w1",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r3-c5-w1",
+                  "traditional": "設計過",
+                  "simplified": "设计过",
+                  "pinyin": "shèjì guò",
+                  "meaning": "have designed"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r3-c6-w1",
+                  "traditional": "就是",
+                  "simplified": "就是",
+                  "pinyin": "jiùshì",
+                  "meaning": "except"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g3-r3-c7-w1",
+                  "traditional": "沒設計過帽子",
+                  "simplified": "没设计过帽子",
+                  "pinyin": "méi shèjì guò màozi",
+                  "meaning": "never designed hats"
+                }
+              ],
+              []
+            ],
+            "subject": [],
+            "grammar": [
+              {
+                "id": "b3l3g3-r3-c2-w1",
+                "traditional": "什麼服裝",
+                "simplified": "什么服装",
+                "pinyin": "shénme fúzhuāng",
+                "meaning": "all kinds of clothing"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g3-r3-c4-w1",
+                "traditional": "都",
+                "simplified": "都",
+                "pinyin": "dōu",
+                "meaning": "all"
+              }
             ]
           }
         ],
@@ -1355,7 +1924,8 @@
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l3g3-ex2",
@@ -1524,6 +2094,12 @@
             "correctFeedback": "就是 highlights the single drawback amidst general satisfaction.",
             "repairFeedback": "Use 就是 to introduce the exception to 什麼都好."
           }
+        ],
+        "explanationEnglish": "什麼（……）都…… means \"all, anything\", for example, 他什麼忙都幫 means \"He will help with anything.\" And 我什麼東西都吃 means \"I will eat anything.\" The statement after 就是 means the only option or different situation. For example, 他什麼茶都喝，就是不喝紅茶。",
+        "patternAccentColumn": [
+          1,
+          2,
+          4
         ]
       },
       {
@@ -1544,16 +2120,19 @@
         "bookPage": 82,
         "bookPageAvailable": true,
         "audioReference": "03-1-3",
-        "explanation": "「別再……了」的意思是，說話的人建議或提醒對方不要再做某件事情了。如果說話的人要提醒自己或敘述別人不再做某件事情了，就使用「不再……了」。「別再...了」 suggests or reminds the listener not to do something anymore. If the speaker mentions themselves or someone else no longer doing something, use 「不再...了」.",
+        "explanation": "「別再……了」的意思是，說話的人建議或提醒對方不要再做某件事情了，例如：別再讓父母擔心了。如果說話的人要提醒自己或敘述別人不再做某件事情了，就使用「不再……了」，例如：我不再喝酒了。",
         "focusTerms": [
           "別再",
           "不再",
-          "了"
+          "了",
+          "別再……了",
+          "不再……了"
         ],
         "pattern": "別再 + Action + 了 / 不再 + Action + 了",
         "patternColumns": [
-          "Who",
-          "Cease",
+          "Subject",
+          "別 / 不",
+          "再",
           "Action",
           "了"
         ],
@@ -1561,27 +2140,28 @@
           {
             "id": "b3l3g4-r1",
             "columns": [
-              [
-                {
-                  "id": "b3l3g4-r1-c1-w1",
-                  "traditional": "妳",
-                  "simplified": "你",
-                  "pinyin": "nǐ",
-                  "meaning": "you"
-                }
-              ],
+              [],
               [
                 {
                   "id": "b3l3g4-r1-c2-w1",
-                  "traditional": "別再",
-                  "simplified": "别再",
-                  "pinyin": "bié zài",
-                  "meaning": "don't anymore"
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "bié",
+                  "meaning": "do not"
                 }
               ],
               [
                 {
                   "id": "b3l3g4-r1-c3-w1",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "meaning": "again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r1-c4-w1",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
@@ -1590,13 +2170,324 @@
               ],
               [
                 {
-                  "id": "b3l3g4-r1-c4-w1",
+                  "id": "b3l3g4-r1-c5-w1",
                   "traditional": "了",
                   "simplified": "了",
                   "pinyin": "le",
-                  "meaning": "particle"
+                  "meaning": "anymore"
                 }
               ]
+            ],
+            "subject": [],
+            "grammar": [
+              {
+                "id": "b3l3g4-r1-c2-w1",
+                "traditional": "別",
+                "simplified": "别",
+                "pinyin": "bié",
+                "meaning": "do not"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r1-c3-w1",
+                "traditional": "再",
+                "simplified": "再",
+                "pinyin": "zài",
+                "meaning": "again"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g4-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g4-r2-c1-w1",
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r2-c2-w1",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "bié",
+                  "meaning": "do not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r2-c3-w1",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "meaning": "again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r2-c4-w1",
+                  "traditional": "幫我洗衣服",
+                  "simplified": "帮我洗衣服",
+                  "pinyin": "bāng wǒ xǐ yīfu",
+                  "meaning": "wash my clothes"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r2-c5-w1",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "anymore"
+                }
+              ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g4-r2-c1-w1",
+                "traditional": "你",
+                "simplified": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g4-r2-c2-w1",
+                "traditional": "別",
+                "simplified": "别",
+                "pinyin": "bié",
+                "meaning": "do not"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r2-c3-w1",
+                "traditional": "再",
+                "simplified": "再",
+                "pinyin": "zài",
+                "meaning": "again"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g4-r3-c1-w1",
+                  "traditional": "我就",
+                  "simplified": "我就",
+                  "pinyin": "wǒ jiù",
+                  "meaning": "then I"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r3-c2-w1",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
+                  "meaning": "will not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r3-c3-w1",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "meaning": "again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r3-c4-w1",
+                  "traditional": "幫你洗",
+                  "simplified": "帮你洗",
+                  "pinyin": "bāng nǐ xǐ",
+                  "meaning": "wash for you"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r3-c5-w1",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "anymore"
+                }
+              ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g4-r3-c1-w1",
+                "traditional": "我就",
+                "simplified": "我就",
+                "pinyin": "wǒ jiù",
+                "meaning": "then I"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g4-r3-c2-w1",
+                "traditional": "不",
+                "simplified": "不",
+                "pinyin": "bú",
+                "meaning": "will not"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r3-c3-w1",
+                "traditional": "再",
+                "simplified": "再",
+                "pinyin": "zài",
+                "meaning": "again"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g4-r4",
+            "columns": [
+              [],
+              [
+                {
+                  "id": "b3l3g4-r4-c2-w1",
+                  "traditional": "別",
+                  "simplified": "别",
+                  "pinyin": "bié",
+                  "meaning": "do not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r4-c3-w1",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "meaning": "again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r4-c4-w1",
+                  "traditional": "踢足球",
+                  "simplified": "踢足球",
+                  "pinyin": "tī zúqiú",
+                  "meaning": "play soccer"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r4-c5-w1",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "anymore"
+                }
+              ]
+            ],
+            "subject": [],
+            "grammar": [
+              {
+                "id": "b3l3g4-r4-c2-w1",
+                "traditional": "別",
+                "simplified": "别",
+                "pinyin": "bié",
+                "meaning": "do not"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r4-c3-w1",
+                "traditional": "再",
+                "simplified": "再",
+                "pinyin": "zài",
+                "meaning": "again"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g4-r5",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g4-r5-c1-w1",
+                  "traditional": "我就",
+                  "simplified": "我就",
+                  "pinyin": "wǒ jiù",
+                  "meaning": "then I"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r5-c2-w1",
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bú",
+                  "meaning": "will not"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r5-c3-w1",
+                  "traditional": "再",
+                  "simplified": "再",
+                  "pinyin": "zài",
+                  "meaning": "again"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r5-c4-w1",
+                  "traditional": "踢",
+                  "simplified": "踢",
+                  "pinyin": "tī",
+                  "meaning": "play"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g4-r5-c5-w1",
+                  "traditional": "了",
+                  "simplified": "了",
+                  "pinyin": "le",
+                  "meaning": "anymore"
+                }
+              ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g4-r5-c1-w1",
+                "traditional": "我就",
+                "simplified": "我就",
+                "pinyin": "wǒ jiù",
+                "meaning": "then I"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g4-r5-c2-w1",
+                "traditional": "不",
+                "simplified": "不",
+                "pinyin": "bú",
+                "meaning": "will not"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g4-r5-c3-w1",
+                "traditional": "再",
+                "simplified": "再",
+                "pinyin": "zài",
+                "meaning": "again"
+              }
             ]
           }
         ],
@@ -1764,34 +2655,19 @@
             "id": "b3l3g4-ex1",
             "number": 1,
             "text": {
-              "traditional": "好了，好了，別再買了，妳還要去看球鞋呢！",
-              "simplified": "好了，好了，别再买了，你还要去看球鞋呢！",
-              "pinyin": "Hǎo le, hǎo le, bié zài mǎi le, nǐ hái yào qù kàn qiúxié ne!",
-              "english": "All right, all right, don't buy any more; you still have to go look at sneakers!",
+              "traditional": "……別再買了，妳還要去看球鞋呢！",
+              "simplified": "……别再买了，你还要去看球鞋呢！",
+              "pinyin": "… Bié zài mǎi le, nǐ hái yào qù kàn qiúxié ne!",
+              "english": "… Don't buy any more; you still have to go look at sneakers!",
               "words": [
-                {
-                  "id": "b3l3g4-ex1-w1",
-                  "traditional": "好了",
-                  "simplified": "好了",
-                  "pinyin": "hǎo le",
-                  "meaning": "all right",
-                  "suffix": "，"
-                },
-                {
-                  "id": "b3l3g4-ex1-w2",
-                  "traditional": "好了",
-                  "simplified": "好了",
-                  "pinyin": "hǎo le",
-                  "meaning": "all right",
-                  "suffix": "，"
-                },
                 {
                   "id": "b3l3g4-ex1-w3",
                   "traditional": "別再買了",
                   "simplified": "别再买了",
                   "pinyin": "bié zài mǎi le",
                   "meaning": "don't buy more",
-                  "suffix": "，"
+                  "suffix": "，",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l3g4-ex1-w4",
@@ -1809,23 +2685,25 @@
                   "suffix": "！"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l3g4-ex2",
             "number": 2,
             "text": {
-              "traditional": "你別再幫我洗衣服了！我自己會洗。",
-              "simplified": "你别再帮我洗衣服了！我自己会洗。",
-              "pinyin": "Nǐ bié zài bāng wǒ xǐ yīfu le! Wǒ zìjǐ huì xǐ.",
-              "english": "Don't wash clothes for me anymore! I can wash them myself.",
+              "traditional": "孩子：你別再幫我洗衣服了！我自己會洗。\n媽媽：我怕你洗不乾淨，如果洗得乾淨，我就不再幫你洗了。",
+              "simplified": "孩子：你别再帮我洗衣服了！我自己会洗。\n妈妈：我怕你洗不干净，如果洗得干净，我就不再帮你洗了。",
+              "pinyin": "Háizi: Nǐ bié zài bāng wǒ xǐ yīfu le! Wǒ zìjǐ huì xǐ. Māma: Wǒ pà nǐ xǐ bu gānjìng, rúguǒ xǐ de gānjìng, wǒ jiù bú zài bāng nǐ xǐ le.",
+              "english": "Child: Don't wash clothes for me anymore! I can wash them myself. Mother: I worry you won't wash them clean; if you do, I won't wash them for you anymore.",
               "words": [
                 {
                   "id": "b3l3g4-ex2-w1",
                   "traditional": "你別再",
                   "simplified": "你别再",
                   "pinyin": "nǐ bié zài",
-                  "meaning": "don't you"
+                  "meaning": "don't you",
+                  "prefix": "孩子："
                 },
                 {
                   "id": "b3l3g4-ex2-w2",
@@ -1842,6 +2720,39 @@
                   "pinyin": "wǒ zìjǐ huì xǐ",
                   "meaning": "I can wash myself",
                   "suffix": "。"
+                },
+                {
+                  "id": "b3l3g4-ex2-w4",
+                  "traditional": "我怕你洗不乾淨",
+                  "simplified": "我怕你洗不干净",
+                  "pinyin": "wǒ pà nǐ xǐ bu gānjìng",
+                  "meaning": "I fear you cannot wash them clean",
+                  "suffix": "，",
+                  "prefix": "\n媽媽："
+                },
+                {
+                  "id": "b3l3g4-ex2-w5",
+                  "traditional": "如果洗得乾淨",
+                  "simplified": "如果洗得干净",
+                  "pinyin": "rúguǒ xǐ de gānjìng",
+                  "meaning": "if you wash them clean",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l3g4-ex2-w6",
+                  "traditional": "我就不再",
+                  "simplified": "我就不再",
+                  "pinyin": "wǒ jiù bú zài",
+                  "meaning": "then I will no longer",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l3g4-ex2-w7",
+                  "traditional": "幫你洗了",
+                  "simplified": "帮你洗了",
+                  "pinyin": "bāng nǐ xǐ le",
+                  "meaning": "wash for you",
+                  "suffix": "。"
                 }
               ]
             }
@@ -1850,10 +2761,10 @@
             "id": "b3l3g4-ex3",
             "number": 3,
             "text": {
-              "traditional": "你的腳受傷了，別再踢足球了。",
-              "simplified": "你的脚受伤了，别再踢足球了。",
-              "pinyin": "Nǐ de jiǎo shòushāng le, bié zài tī zúqiú le.",
-              "english": "Your foot is injured; don't play soccer anymore.",
+              "traditional": "太太：你的腳受傷了，別再踢足球了。\n先生：要是這次比賽輸了，我就不再踢了。",
+              "simplified": "太太：你的脚受伤了，别再踢足球了。\n先生：要是这次比赛输了，我就不再踢了。",
+              "pinyin": "Tàitai: Nǐ de jiǎo shòushāng le, bié zài tī zúqiú le. Xiānsheng: Yàoshi zhè cì bǐsài shū le, wǒ jiù bú zài tī le.",
+              "english": "Wife: Your foot is injured; don't play soccer anymore. Husband: If we lose this match, I won't play anymore.",
               "words": [
                 {
                   "id": "b3l3g4-ex3-w1",
@@ -1861,7 +2772,8 @@
                   "simplified": "你的脚受伤了",
                   "pinyin": "nǐ de jiǎo shòushāng le",
                   "meaning": "your foot is hurt",
-                  "suffix": "，"
+                  "suffix": "，",
+                  "prefix": "太太："
                 },
                 {
                   "id": "b3l3g4-ex3-w2",
@@ -1869,6 +2781,31 @@
                   "simplified": "别再踢足球了",
                   "pinyin": "bié zài tī zúqiú le",
                   "meaning": "don't play soccer",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l3g4-ex3-w3",
+                  "traditional": "要是這次比賽輸了",
+                  "simplified": "要是这次比赛输了",
+                  "pinyin": "yàoshi zhè cì bǐsài shū le",
+                  "meaning": "if we lose this match",
+                  "suffix": "，",
+                  "prefix": "\n先生："
+                },
+                {
+                  "id": "b3l3g4-ex3-w4",
+                  "traditional": "我就不再",
+                  "simplified": "我就不再",
+                  "pinyin": "wǒ jiù bú zài",
+                  "meaning": "then I will no longer",
+                  "suffix": ""
+                },
+                {
+                  "id": "b3l3g4-ex3-w5",
+                  "traditional": "踢了",
+                  "simplified": "踢了",
+                  "pinyin": "tī le",
+                  "meaning": "play",
                   "suffix": "。"
                 }
               ]
@@ -1927,6 +2864,12 @@
             "correctFeedback": "別再買了 urges a friend to stop buying additional items.",
             "repairFeedback": "Use 別再買了 to advise someone to halt continuing an activity."
           }
+        ],
+        "explanationEnglish": "別再……了 means that the person speaking suggests or reminds the other person not to do something anymore. For example, 別再讓父母擔心了。If the speaker reminds himself or mentions that others are not doing something anymore, use 不再……了. For example, 我不再喝酒了。",
+        "patternAccentColumn": [
+          1,
+          2,
+          4
         ]
       }
     ],
@@ -1951,7 +2894,7 @@
           "id": "b3l3-d1-l1",
           "speaker": "芳草",
           "traditional": "瑪莉，這家專櫃的洋裝看起來真漂亮，而且現在週年慶打八折呢！",
-          "simplified": "瑪莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
+          "simplified": "玛莉，这家专柜的洋装看起来真漂亮，而且现在周年庆打八折呢！",
           "pinyin": "",
           "english": "Mary, this boutique's dress looks really beautiful, and there's a twenty percent discount for the anniversary sale!"
         },
@@ -1975,7 +2918,7 @@
           "id": "b3l3-d1-l4",
           "speaker": "芳草",
           "traditional": "瑪莉，妳看這件怎麼樣？我覺得腰部有點緊，而且價格還是太高了。",
-          "simplified": "瑪莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
+          "simplified": "玛莉，你看这件怎么样？我觉得腰部有点紧，而且价格还是太高了。",
           "pinyin": "",
           "english": "Mary, what do you think of this piece? I feel the waist is a bit tight, and the price is still too high."
         },
@@ -1999,7 +2942,7 @@
           "id": "b3l3-d1-l7",
           "speaker": "瑪莉",
           "traditional": "放心吧，樓上有幾個專櫃不僅質料柔軟，價格也很實在。",
-          "simplified": "放心吧，楼上有几个专柜不仅质料柔軟，价格也很实在。",
+          "simplified": "放心吧，楼上有几个专柜不仅质料柔软，价格也很实在。",
           "pinyin": "",
           "english": "Don't worry, several boutiques upstairs not only have soft materials, but their prices are very fair."
         },
@@ -2039,34 +2982,31 @@
         "bookPage": 88,
         "bookPageAvailable": true,
         "audioReference": "03-2-3",
-        "explanation": "「不僅」當連接詞，有「不但」的意思，多用在書面，後面的分句句首用「還、也、而且」。「不僅」 is used as a conjunction meaning \"not only\", similar to 不但 but more formal/written. The subsequent clause opens with 還, 也, or 而且.",
+        "explanation": "「不僅」當連接詞，有「不但」的意思，多用在書面，後面的分句句首用「還、也、而且」。",
         "focusTerms": [
           "不僅",
           "也",
           "還",
-          "而且"
+          "而且",
+          "不僅……，還……",
+          "不僅……，也……",
+          "不僅……，而且……"
         ],
         "pattern": "Subject + 不僅……，也/還/而且……",
         "patternColumns": [
-          "Who",
+          "Subject",
           "不僅",
-          "Item 1",
-          "Next",
-          "Item 2"
+          "First point",
+          "Topic",
+          "還 / 也 / 而且",
+          "Second point",
+          "Rest"
         ],
         "patternRows": [
           {
             "id": "b3l3g5-r1",
             "columns": [
-              [
-                {
-                  "id": "b3l3g5-r1-c1-w1",
-                  "traditional": "我們",
-                  "simplified": "我们",
-                  "pinyin": "wǒmen",
-                  "meaning": "we"
-                }
-              ],
+              [],
               [
                 {
                   "id": "b3l3g5-r1-c2-w1",
@@ -2079,30 +3019,225 @@
               [
                 {
                   "id": "b3l3g5-r1-c3-w1",
-                  "traditional": "要比價格",
-                  "simplified": "要比价格",
-                  "pinyin": "yào bǐ jiàgé",
-                  "meaning": "must compare price"
+                  "traditional": "要比一比價格",
+                  "simplified": "要比一比价格",
+                  "pinyin": "yào bǐ yì bǐ jiàgé",
+                  "meaning": "compare prices"
                 }
               ],
-              [
-                {
-                  "id": "b3l3g5-r1-c4-w1",
-                  "traditional": "還要",
-                  "simplified": "还要",
-                  "pinyin": "hái yào",
-                  "meaning": "also must"
-                }
-              ],
+              [],
               [
                 {
                   "id": "b3l3g5-r1-c5-w1",
-                  "traditional": "比品質",
-                  "simplified": "比品质",
-                  "pinyin": "bǐ pǐnzhì",
+                  "traditional": "還",
+                  "simplified": "还",
+                  "pinyin": "hái",
+                  "meaning": "also"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r1-c6-w1",
+                  "traditional": "要比一比品質",
+                  "simplified": "要比一比品质",
+                  "pinyin": "yào bǐ yì bǐ pǐnzhì",
                   "meaning": "compare quality"
                 }
+              ],
+              []
+            ],
+            "subject": [],
+            "grammar": [
+              {
+                "id": "b3l3g5-r1-c2-w1",
+                "traditional": "不僅",
+                "simplified": "不仅",
+                "pinyin": "bùjǐn",
+                "meaning": "not only"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g5-r1-c3-w1",
+                "traditional": "要比一比價格",
+                "simplified": "要比一比价格",
+                "pinyin": "yào bǐ yì bǐ jiàgé",
+                "meaning": "compare prices"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g5-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g5-r2-c1-w1",
+                  "traditional": "謝先生",
+                  "simplified": "谢先生",
+                  "pinyin": "Xiè xiānsheng",
+                  "meaning": "Mr. Xie"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r2-c2-w1",
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bùjǐn",
+                  "meaning": "not only"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r2-c3-w1",
+                  "traditional": "性格開朗",
+                  "simplified": "性格开朗",
+                  "pinyin": "xìnggé kāilǎng",
+                  "meaning": "cheerful personality"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r2-c4-w1",
+                  "traditional": "工作",
+                  "simplified": "工作",
+                  "pinyin": "gōngzuò",
+                  "meaning": "work"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r2-c5-w1",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": "also"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r2-c6-w1",
+                  "traditional": "很認真負責",
+                  "simplified": "很认真负责",
+                  "pinyin": "hěn rènzhēn fùzé",
+                  "meaning": "serious and responsible"
+                }
+              ],
+              []
+            ],
+            "subject": [
+              {
+                "id": "b3l3g5-r2-c1-w1",
+                "traditional": "謝先生",
+                "simplified": "谢先生",
+                "pinyin": "Xiè xiānsheng",
+                "meaning": "Mr. Xie"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g5-r2-c2-w1",
+                "traditional": "不僅",
+                "simplified": "不仅",
+                "pinyin": "bùjǐn",
+                "meaning": "not only"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g5-r2-c3-w1",
+                "traditional": "性格開朗",
+                "simplified": "性格开朗",
+                "pinyin": "xìnggé kāilǎng",
+                "meaning": "cheerful personality"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g5-r3-c1-w1",
+                  "traditional": "除夕當天",
+                  "simplified": "除夕当天",
+                  "pinyin": "chúxì dāngtiān",
+                  "meaning": "New Year's Eve"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r3-c2-w1",
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bùjǐn",
+                  "meaning": "not only"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r3-c3-w1",
+                  "traditional": "要打掃貼春聯",
+                  "simplified": "要打扫贴春联",
+                  "pinyin": "yào dǎsǎo tiē chūnlián",
+                  "meaning": "clean and put up couplets"
+                }
+              ],
+              [],
+              [
+                {
+                  "id": "b3l3g5-r3-c5-w1",
+                  "traditional": "而且",
+                  "simplified": "而且",
+                  "pinyin": "érqiě",
+                  "meaning": "also"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r3-c6-w1",
+                  "traditional": "家人要在一起",
+                  "simplified": "家人要在一起",
+                  "pinyin": "jiārén yào zài yìqǐ",
+                  "meaning": "family must gather"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g5-r3-c7-w1",
+                  "traditional": "吃年夜飯",
+                  "simplified": "吃年夜饭",
+                  "pinyin": "chī niányèfàn",
+                  "meaning": "eat New Year dinner"
+                }
               ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g5-r3-c1-w1",
+                "traditional": "除夕當天",
+                "simplified": "除夕当天",
+                "pinyin": "chúxì dāngtiān",
+                "meaning": "New Year's Eve"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g5-r3-c2-w1",
+                "traditional": "不僅",
+                "simplified": "不仅",
+                "pinyin": "bùjǐn",
+                "meaning": "not only"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g5-r3-c3-w1",
+                "traditional": "要打掃貼春聯",
+                "simplified": "要打扫贴春联",
+                "pinyin": "yào dǎsǎo tiē chūnlián",
+                "meaning": "clean and put up couplets"
+              }
             ]
           }
         ],
@@ -2329,7 +3464,8 @@
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l3g5-ex2",
@@ -2514,6 +3650,11 @@
             "correctFeedback": "不僅要 pairs with 還要 to emphasize considering both price and quality.",
             "repairFeedback": "Use 不僅要 to introduce the first of two parallel requirements."
           }
+        ],
+        "explanationEnglish": "不僅 is used as a conjunction connective, which means the same as 不但. It is mostly used in writing. The beginning of the following clauses starts with 還, 也, 而且.",
+        "patternAccentColumn": [
+          1,
+          4
         ]
       },
       {
@@ -2534,21 +3675,25 @@
         "bookPage": 90,
         "bookPageAvailable": true,
         "audioReference": "03-2-3",
-        "explanation": "說明事物或情況的程度逐漸變化。This sentence structure explains that the degree of a thing or situation changes gradually from unit to unit. For example: 天氣一天比一天熱了。",
+        "explanation": "說明事物或情況的程度逐漸變化。例如：天氣一天比一天熱了。",
         "focusTerms": [
           "一M比一M",
           "一天比一天",
           "一樣比一樣",
           "一次比一次",
-          "一年比一年"
+          "一年比一年",
+          "一門比一門",
+          "一個比一個",
+          "一條比一條",
+          "一部比一部"
         ],
         "pattern": "NP + 一 M 比 一 M + Vs (了)",
         "patternColumns": [
           "Topic",
-          "Unit",
+          "一 M",
           "比",
-          "Unit",
-          "State"
+          "一 M",
+          "Adjective"
         ],
         "patternRows": [
           {
@@ -2557,19 +3702,19 @@
               [
                 {
                   "id": "b3l3g6-r1-c1-w1",
-                  "traditional": "天氣",
-                  "simplified": "天气",
-                  "pinyin": "tiānqì",
-                  "meaning": "weather"
+                  "traditional": "那裡的商品",
+                  "simplified": "那里的商品",
+                  "pinyin": "nàlǐ de shāngpǐn",
+                  "meaning": "the goods there"
                 }
               ],
               [
                 {
                   "id": "b3l3g6-r1-c2-w1",
-                  "traditional": "一天",
-                  "simplified": "一天",
-                  "pinyin": "yì tiān",
-                  "meaning": "one day"
+                  "traditional": "一樣",
+                  "simplified": "一样",
+                  "pinyin": "yí yàng",
+                  "meaning": "one item"
                 }
               ],
               [
@@ -2578,27 +3723,208 @@
                   "traditional": "比",
                   "simplified": "比",
                   "pinyin": "bǐ",
-                  "meaning": "than / compared to"
+                  "meaning": "than"
                 }
               ],
               [
                 {
                   "id": "b3l3g6-r1-c4-w1",
-                  "traditional": "一天",
-                  "simplified": "一天",
-                  "pinyin": "yì tiān",
-                  "meaning": "one day"
+                  "traditional": "一樣",
+                  "simplified": "一样",
+                  "pinyin": "yí yàng",
+                  "meaning": "another item"
                 }
               ],
               [
                 {
                   "id": "b3l3g6-r1-c5-w1",
-                  "traditional": "熱了",
-                  "simplified": "热了",
-                  "pinyin": "rè le",
-                  "meaning": "hotter"
+                  "traditional": "便宜",
+                  "simplified": "便宜",
+                  "pinyin": "piányi",
+                  "meaning": "cheaper"
                 }
               ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g6-r1-c1-w1",
+                "traditional": "那裡的商品",
+                "simplified": "那里的商品",
+                "pinyin": "nàlǐ de shāngpǐn",
+                "meaning": "the goods there"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g6-r1-c2-w1",
+                "traditional": "一樣",
+                "simplified": "一样",
+                "pinyin": "yí yàng",
+                "meaning": "one item"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g6-r1-c3-w1",
+                "traditional": "比",
+                "simplified": "比",
+                "pinyin": "bǐ",
+                "meaning": "than"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g6-r2",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g6-r2-c1-w1",
+                  "traditional": "考試的成績也",
+                  "simplified": "考试的成绩也",
+                  "pinyin": "kǎoshì de chéngjì yě",
+                  "meaning": "exam results also"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r2-c2-w1",
+                  "traditional": "一次",
+                  "simplified": "一次",
+                  "pinyin": "yí cì",
+                  "meaning": "one time"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r2-c3-w1",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "than"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r2-c4-w1",
+                  "traditional": "一次",
+                  "simplified": "一次",
+                  "pinyin": "yí cì",
+                  "meaning": "another time"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r2-c5-w1",
+                  "traditional": "進步了",
+                  "simplified": "进步了",
+                  "pinyin": "jìnbù le",
+                  "meaning": "improved"
+                }
+              ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g6-r2-c1-w1",
+                "traditional": "考試的成績也",
+                "simplified": "考试的成绩也",
+                "pinyin": "kǎoshì de chéngjì yě",
+                "meaning": "exam results also"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g6-r2-c2-w1",
+                "traditional": "一次",
+                "simplified": "一次",
+                "pinyin": "yí cì",
+                "meaning": "one time"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g6-r2-c3-w1",
+                "traditional": "比",
+                "simplified": "比",
+                "pinyin": "bǐ",
+                "meaning": "than"
+              }
+            ]
+          },
+          {
+            "id": "b3l3g6-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l3g6-r3-c1-w1",
+                  "traditional": "空氣",
+                  "simplified": "空气",
+                  "pinyin": "kōngqì",
+                  "meaning": "air"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r3-c2-w1",
+                  "traditional": "一年",
+                  "simplified": "一年",
+                  "pinyin": "yì nián",
+                  "meaning": "one year"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r3-c3-w1",
+                  "traditional": "比",
+                  "simplified": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "than"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r3-c4-w1",
+                  "traditional": "一年",
+                  "simplified": "一年",
+                  "pinyin": "yì nián",
+                  "meaning": "another year"
+                }
+              ],
+              [
+                {
+                  "id": "b3l3g6-r3-c5-w1",
+                  "traditional": "差了",
+                  "simplified": "差了",
+                  "pinyin": "chà le",
+                  "meaning": "worse"
+                }
+              ]
+            ],
+            "subject": [
+              {
+                "id": "b3l3g6-r3-c1-w1",
+                "traditional": "空氣",
+                "simplified": "空气",
+                "pinyin": "kōngqì",
+                "meaning": "air"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "b3l3g6-r3-c2-w1",
+                "traditional": "一年",
+                "simplified": "一年",
+                "pinyin": "yì nián",
+                "meaning": "one year"
+              }
+            ],
+            "complement": [
+              {
+                "id": "b3l3g6-r3-c3-w1",
+                "traditional": "比",
+                "simplified": "比",
+                "pinyin": "bǐ",
+                "meaning": "than"
+              }
             ]
           }
         ],
@@ -2785,7 +4111,8 @@
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l3g6-ex2",
@@ -2945,6 +4272,12 @@
             "correctFeedback": "一天比一天大了 describes an incremental increase in size day after day.",
             "repairFeedback": "Use 一天比一天 to describe incremental change across successive days."
           }
+        ],
+        "explanationEnglish": "This sentence structure explains that the degree of a thing or situation changes gradually. For example, 天氣一天比一天熱了。",
+        "patternAccentColumn": [
+          1,
+          2,
+          3
         ]
       }
     ],
@@ -2981,7 +4314,7 @@
           "id": "b3l3-d2-l3",
           "speaker": "旁白",
           "traditional": "以前人們為了比價，得跑好幾家實體店鋪，費時又費力。",
-          "simplified": "以前人们为了比价，得跑好几家实体店鋪，费时又费力。",
+          "simplified": "以前人们为了比价，得跑好几家实体店铺，费时又费力。",
           "pinyin": "",
           "english": "In the past, to compare prices people had to run around several physical shops, which was time-consuming and laborious."
         },
@@ -2989,7 +4322,7 @@
           "id": "b3l3-d2-l4",
           "speaker": "旁白",
           "traditional": "現在網路科技發達，大家不僅能透過比價網站輕鬆查詢價格，還能參考其他消費者的評價。",
-          "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查詢价格，还能参考其他消费者的评价。",
+          "simplified": "现在网路科技发达，大家不仅能透过比价网站轻松查询价格，还能参考其他消费者的评价。",
           "pinyin": "",
           "english": "Now with advanced internet technology, people not only can easily query prices via price-comparison sites, but also consult reviews from other consumers."
         },

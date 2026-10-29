@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import type { GrammarPractice, PracticeScene, SlotBuildItem } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { AppIcon, IconActionButton, WorkspaceWindow } from '../../lib/widgets';
+import { REPLY_PICK_PREVIEW } from './replyPickPreview';
 import { GrammarPracticeView } from './GrammarPracticeView';
 
 /** Every authored book exercise, straight from content/grammar-practice (DEV gallery only). */
@@ -30,6 +31,7 @@ const SCENE_SAMPLES: GrammarPractice = {
 };
 const EXERCISES = [
   ...Object.values(SOURCES).flatMap((file) => Object.entries(file)).map(([pageId, practice]) => ({ pageId, practice })),
+  { pageId: 'reply-pick-fixtures', practice: REPLY_PICK_PREVIEW },
   { pageId: 'scene-samples', practice: SCENE_SAMPLES },
 ];
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammar/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
@@ -23,6 +24,9 @@ export function GrammarStudyPage({
   onOpenWord,
   hideHeader = false,
 }: GrammarStudyPageProps) {
+  const [language, setLanguage] = useState({ pageId: page.id, chinese: false });
+  if (language.pageId !== page.id) setLanguage({ pageId: page.id, chinese: false });
+  const chinese = language.pageId === page.id && language.chinese;
   const teachingTokens = getGrammarTeachingTokens(page);
   const hasSubsections = Boolean(page.subsections && page.subsections.length > 0);
   // Examples the book prints under a table row show there, not again in the list.
@@ -46,13 +50,18 @@ export function GrammarStudyPage({
           </h1>
           <p className="prose-chinese max-w-none text-base font-bold leading-7 text-ui-ink sm:text-lg sm:leading-8">
             <GrammarFocusText
-              text={page.explanation}
+              text={page.explanationEnglish && !chinese ? page.explanationEnglish : page.explanation}
               terms={page.focusTerms}
               contextTokens={teachingTokens}
               characterPreference={characterPreference}
               onOpenWord={onOpenWord}
             />
           </p>
+          {page.explanationEnglish && (
+            <button type="button" className="text-sm font-extrabold text-brand-primary-text focus-ring-inline" aria-expanded={chinese} onClick={() => setLanguage({ pageId: page.id, chinese: !chinese })}>
+              {chinese ? 'Show in English' : 'Show in Chinese'}
+            </button>
+          )}
         </header>
       )}
 
