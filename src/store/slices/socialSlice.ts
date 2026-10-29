@@ -1,13 +1,13 @@
 /**
  * Study together: presence, lesson chat, invites and the quiz race. Everything live is ephemeral (rebuilt from the
- * games Worker on connect); only the learner's own choices (`showOnline`, `socialMuted`) are persisted locally.
+ * games Worker on connect); only the learner's own choices (`showOnline`, `showProfile`, `socialMuted`) are persisted locally.
  */
-import type { ChatMessage, LessonCount, Person, MentionNotice } from '../../../shared/lobby';
+import type { ChatMessage, LessonCount, Person, MentionNotice, ProfileCard } from '../../../shared/lobby';
 import type { RaceRoomSummary, RaceSnapshot } from '../../../shared/quizRace';
 import type { SocialStatus } from '../../services/socialService';
 
 export type SocialPanel =
-  | { kind: 'people'; tab: 'online' | 'chat'; chatScope?: 'global' | 'lesson'; chatLesson?: number }
+  | { kind: 'people'; tab: 'online' | 'chat'; chatScope?: 'global' | 'lesson'; chatLesson?: number; visit?: Person }
   | { kind: 'challenge'; tab: 'online' | 'rooms' }
   | { kind: 'partyChat' }
   | { kind: 'partyMention' }
@@ -16,6 +16,9 @@ export type SocialPanel =
 export interface SocialState {
   showOnline: boolean;
   setShowOnline: (show: boolean) => void;
+  /** Whether classmates who visit see your cover and stats (otherwise only your name and photo). */
+  showProfile: boolean;
+  setShowProfile: (show: boolean) => void;
   /** No cheer or invite pop-ups and no unread dot (people and chat still update). */
   socialMuted: boolean;
   setSocialMuted: (muted: boolean) => void;
@@ -37,6 +40,10 @@ export interface SocialState {
   socialMentionTarget: MentionNotice | null;
   socialReadingParty: string | null;
   socialInvite: { from: Person; room: RaceRoomSummary } | null;
+  /** Visit cards by account id; `null` = that classmate doesn't share theirs. */
+  socialCards: Record<string, ProfileCard | null>;
+  /** A classmate to @mention when the chat composer next opens. */
+  socialMentionDraft: Person | null;
   socialCheer: { from: Person; phrase: number; at: number } | null;
   /** Lesson key (`bookId * 100 + lessonId`) of the open lesson window, for presence. */
   socialViewingLesson: number | null;
@@ -46,7 +53,7 @@ export interface SocialState {
   racePlaying: boolean;
   raceStatus: SocialStatus;
   racePending: boolean;
-  setSocial: (patch: Partial<Omit<SocialState, 'setSocial' | 'setShowOnline' | 'setSocialMuted'>>) => void;
+  setSocial: (patch: Partial<Omit<SocialState, 'setSocial' | 'setShowOnline' | 'setShowProfile' | 'setSocialMuted'>>) => void;
 }
 
 type SetState = (patch: Partial<SocialState> | ((state: SocialState) => Partial<SocialState>)) => void;
@@ -68,6 +75,8 @@ const LIVE_DEFAULTS = {
   socialMentionTarget: null,
   socialReadingParty: null,
   socialInvite: null,
+  socialCards: {},
+  socialMentionDraft: null,
   socialCheer: null,
   socialViewingLesson: null,
   socialPanel: null,
@@ -81,6 +90,8 @@ export function createSocialSlice(set: SetState): SocialState {
   return {
     showOnline: true,
     setShowOnline: (showOnline) => set({ showOnline }),
+    showProfile: true,
+    setShowProfile: (showProfile) => set({ showProfile }),
     socialMuted: false,
     setSocialMuted: (socialMuted) => set({ socialMuted, ...(socialMuted ? { socialUnread: false, socialCheer: null, socialInvite: null, socialMentionToast: null } : {}) }),
     ...LIVE_DEFAULTS,
@@ -88,7 +99,7 @@ export function createSocialSlice(set: SetState): SocialState {
   };
 }
 
-export const SOCIAL_PERSISTED_KEYS = ['showOnline', 'socialMuted'] as const;
+export const SOCIAL_PERSISTED_KEYS = ['showOnline', 'showProfile', 'socialMuted'] as const;
 /** Live state belongs to the signed-in account. */
 export const SOCIAL_ACCOUNT_SWITCH_DEFAULTS = { ...LIVE_DEFAULTS };
 

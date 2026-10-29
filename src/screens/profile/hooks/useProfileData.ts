@@ -3,7 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { useAppStore } from '../../../store/useAppStore';
 import { fetchAllVocabularyPacks } from '../../../services/contentPacks';
 import type { DBVocabularyRow } from '../../../types/database';
-import { computeStreak, countKnownCharacters, lessonProgress } from '../../../utils/srs/profileStats';
+import { characterForms, computeStreak, countKnownCharacters, firstReviewAt, lessonProgress } from '../../../utils/srs/profileStats';
 import { computeReviewOverview } from '../../../utils/srs/reviewOverview';
 
 export function useProfileData() {
@@ -29,10 +29,10 @@ export function useProfileData() {
   return useMemo(() => {
     const rows = vocabulary ?? [];
     const vocabById = new Map(rows.map((row) => [row.id, row]));
-    const forms = new Map(rows.map((row) => [row.id, row[state.characterPreference] ?? row.traditional ?? row.simplified ?? '']));
+    const forms = characterForms(rows, state.characterPreference);
     const activeRows = rows.filter((row) => row.id.startsWith(`B${state.activeBookId}L`));
     const progress = lessonProgress(activeRows, state.learnedCards);
-    const firstReview = state.reviewEvents.reduce((first, event) => event.reviewedAt <= now && event.reviewedAt > 0 ? Math.min(first, event.reviewedAt) : first, Infinity);
+    const firstReview = firstReviewAt(state.reviewEvents, now);
     const recentWordIds: string[] = [];
     for (const event of [...state.reviewEvents].sort((a, b) => b.reviewedAt - a.reviewedAt)) {
       if (event.reviewedAt > now || event.reviewedAt <= 0 || recentWordIds.includes(event.cardId) || !vocabById.has(event.cardId)) continue;
@@ -44,7 +44,7 @@ export function useProfileData() {
       known: computeReviewOverview(state.srsData, state.learnedCards, now).knownTotal,
       characters: countKnownCharacters(state.learnedCards, forms),
       reviews: state.reviewEvents.length, grammarPages: state.grammarPages,
-      firstReview: Number.isFinite(firstReview) ? new Date(firstReview).toLocaleDateString('en', { month: 'short', year: 'numeric' }) : null,
+      firstReview: firstReview === null ? null : new Date(firstReview).toLocaleDateString('en', { month: 'short', year: 'numeric' }),
       recentWordIds,
       loading: vocabulary === null && !failed, failed,
       retry: () => { setFailed(false); setAttempt((value) => value + 1); },

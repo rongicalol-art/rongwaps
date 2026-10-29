@@ -31,6 +31,24 @@ test('social profile images only allow Google avatars and signed profile avatar 
   assert.equal(socialImage(`https://lh3.googleusercontent.com/${'a'.repeat(2100)}`, storage), undefined);
 });
 
+test('visit cards may carry only a signed profile cover URL', () => {
+  const storage = 'https://project.supabase.co';
+  const cover = 'https://project.supabase.co/storage/v1/object/sign/profile-media/user/cover.webp?token=secret';
+  assert.equal(socialImage(cover, storage, 'cover'), cover);
+  assert.equal(socialImage('https://project.supabase.co/storage/v1/object/sign/profile-media/user/avatar.webp?token=secret', storage, 'cover'), undefined);
+  assert.equal(socialImage('https://lh3.googleusercontent.com/a/photo=s96-c', storage, 'cover'), undefined);
+});
+
+test('visit card messages keep only bounded, known fields', () => {
+  const card = { cv: 'jade', b: 1, w: 214, k: 168, st: 12, s: 1788220800000, ci: 'https://x.test/cover.webp', extra: 'dropped' };
+  assert.deepEqual(parseLobbyMessage({ t: 'card', to: 'user-b', v: card }), { t: 'card', to: 'user-b', v: { cv: 'jade', b: 1, w: 214, k: 168, st: 12, s: 1788220800000, ci: 'https://x.test/cover.webp' } });
+  assert.deepEqual(parseLobbyMessage({ t: 'card', to: 'user-b', v: { ...card, cv: 'neon' } }), { t: 'card', to: 'user-b', v: null });
+  assert.deepEqual(parseLobbyMessage({ t: 'card', to: 'user-b', v: { ...card, w: -1 } }), { t: 'card', to: 'user-b', v: null });
+  assert.deepEqual(parseLobbyMessage({ t: 'card-ask', u: 'user-b' }), { t: 'card-ask', u: 'user-b' });
+  assert.throws(() => parseLobbyMessage({ t: 'card-ask', u: '' }));
+  assert.throws(() => parseLobbyMessage({ t: 'card', to: 'x'.repeat(65), v: card }));
+});
+
 test('race places are awarded only after all missed words are corrected', () => {
   const room = newRaceRoom('ABCDEF', parseSelection({ lessons: { 1: [1] } }), false, 's', 0);
   enterRace(room, 'a', 'A', 'blue', 0); enterRace(room, 'b', 'B', 'jade', 0);

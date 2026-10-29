@@ -1,6 +1,8 @@
 /** Profile appearance is persisted locally and synced per account. */
+import { COVER_PRESETS } from '../../../shared/lobby';
+
+export { COVER_PRESETS };
 export const AVATAR_COLORS = ['blue', 'honey', 'jade', 'plum', 'ink'] as const;
-export const COVER_PRESETS = ['clay', 'ink', 'honey', 'jade', 'plum', 'plain'] as const;
 export type ProfileSettings = {
   displayName: string;
   avatarColor: typeof AVATAR_COLORS[number];

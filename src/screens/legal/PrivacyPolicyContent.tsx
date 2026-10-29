@@ -53,8 +53,10 @@ export function PrivacyPolicyContent() {
             <>
               <strong>Study together:</strong> while the app is open, other signed-in students can see your display
               name, avatar colour and which lesson and activity you are on. You can turn this off with Settings → Show
-              me online. Lesson chat messages, quiz rooms you open and reports you make are visible to the other
-              students in that lesson or room.
+              me online. A student who opens your profile also sees your cover, book, the month you started and
+              your words known, characters known and day streak, sent straight from your device and not stored; turn
+              this off with Settings → Show my profile. Lesson chat messages, quiz rooms you open and reports you make
+              are visible to the other students in that lesson or room.
             </>,
             <>
               <strong>Messages:</strong> feedback you send in the app or by email. In-app feedback includes

@@ -65,5 +65,6 @@ export * from './CharacterTile';
 export * from './CharacterGlyph';
 export * from './SmartSentence';
 export * from './AvatarStack';
+export * from './ProfileCover';
 
 export { useSentenceWordHover, useSentenceSegments } from './useSentenceLookup';

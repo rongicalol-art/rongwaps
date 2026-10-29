@@ -34,6 +34,30 @@ export type PartyChatServerMessage =
   | { type: 'chat-message'; code: string; message: ChatMessage };
 
 export interface Person { u: string; n: string; c: SocialColor; l: number | null; a: Activity | null; i?: string }
+/** Profile cover presets; the profile slice and the visit card share this list. */
+export const COVER_PRESETS = ['clay', 'ink', 'honey', 'jade', 'plum', 'plain'] as const;
+export type CoverPreset = typeof COVER_PRESETS[number];
+/**
+ * What a classmate sees when visiting a profile. Asked for on demand and answered by the owner's own device;
+ * the Worker only forwards it and never stores it. `ci` cover photo URL, `b` book, `s` first review (ms),
+ * `w` words known, `k` characters known, `st` day streak.
+ */
+export interface ProfileCard { cv: CoverPreset; ci?: string; b: number; s?: number; w: number; k?: number; st: number }
+const cardCount = (value: unknown, max: number): number | null => (Number.isInteger(value) && Number(value) >= 0 && Number(value) <= max ? Number(value) : null);
+/** Shape and bounds only; the Worker separately checks that `ci` is the sender's own signed cover URL. */
+export function parseProfileCard(value: unknown): ProfileCard | null {
+  if (!value || typeof value !== 'object') return null;
+  const data = value as Record<string, unknown>;
+  const cv = COVER_PRESETS.find(preset => preset === data.cv);
+  const b = cardCount(data.b, 9);
+  const w = cardCount(data.w, 100_000);
+  const st = cardCount(data.st, 10_000);
+  if (!cv || !b || w === null || st === null) return null;
+  const k = cardCount(data.k, 100_000);
+  const s = Number.isSafeInteger(data.s) && Number(data.s) > 0 ? Number(data.s) : null;
+  const ci = typeof data.ci === 'string' && data.ci.length <= MAX_SOCIAL_IMAGE_LENGTH ? data.ci : null;
+  return { cv, b, w, st, ...(k !== null ? { k } : {}), ...(s !== null ? { s } : {}), ...(ci ? { ci } : {}) };
+}
 /** `r` turns the line into a room card (an open room announced in this lesson). */
 export interface ChatMessage { id: number; l: number; u: string; n: string; c: SocialColor; t: string; ts: number; r?: RaceRoomSummary; i?: string }
 export interface MentionNotice { key: string; channel: number; room?: string; message: ChatMessage; read: boolean }
@@ -47,7 +71,9 @@ export type LobbyClientMessage =
   | { t: 'invite'; to: string[]; code: string }
   | { t: 'report'; id: number }
   | { t: 'mention-read'; key: string }
-  | { t: 'mention-open'; key: string };
+  | { t: 'mention-open'; key: string }
+  | { t: 'card-ask'; u: string }
+  | { t: 'card'; to: string; v: ProfileCard | null };
 
 export type LobbyServerMessage =
   | { t: 'error'; message: string }
@@ -63,7 +89,9 @@ export type LobbyServerMessage =
   | { t: 'mentions'; v: MentionNotice[] }
   | { t: 'mention'; v: MentionNotice }
   | { t: 'mention-read'; key: string }
-  | { t: 'mention-open'; key: string; v: MentionNotice | null };
+  | { t: 'mention-open'; key: string; v: MentionNotice | null }
+  | { t: 'card-ask'; from: string }
+  | { t: 'card'; u: string; v: ProfileCard | null };
 
 const lessonKey = (value: unknown): number | null => (Number.isInteger(value) && Number(value) >= 0 && Number(value) < 1000 ? Number(value) : null);
 const ROOM_CODE = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
@@ -100,5 +128,8 @@ export function parseLobbyMessage(value: unknown): LobbyClientMessage {
   if (data.t === 'mention-open' && typeof data.key === 'string' && data.key.length <= 100) return { t: 'mention-open', key: data.key };
   if (data.t === 'mention-read' && typeof data.key === 'string' && data.key.length <= 100) return { t: 'mention-read', key: data.key };
   if (data.t === 'report' && Number.isInteger(data.id) && Number(data.id) > 0) return { t: 'report', id: Number(data.id) };
+  const accountId = (id: unknown): id is string => typeof id === 'string' && id.length > 0 && id.length <= 64;
+  if (data.t === 'card-ask' && accountId(data.u)) return { t: 'card-ask', u: data.u };
+  if (data.t === 'card' && accountId(data.to)) return { t: 'card', to: data.to, v: parseProfileCard(data.v) };
   throw new Error('Invalid message.');
 }

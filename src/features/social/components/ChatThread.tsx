@@ -89,6 +89,20 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
 
   useEffect(() => { picker.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' }); }, [choice, suggestions.length]);
 
+  // "Mention" on a classmate's profile opens chat with their name already in the composer.
+  const mentionDraft = useAppStore(state => state.socialMentionDraft);
+  useEffect(() => {
+    if (!mentionDraft || party) return;
+    useAppStore.getState().setSocial({ socialMentionDraft: null });
+    const text = `@${mentionDraft.n}`;
+    setDraft(`${text} `); setTokens([{ id: mentionDraft.u, start: 0, end: text.length, text }]); setCaret(text.length + 1); setDismissed(true);
+    requestAnimationFrame(() => { input.current?.focus(); input.current?.setSelectionRange(text.length + 1, text.length + 1); });
+  }, [mentionDraft, party]);
+  const visit = (u: string) => {
+    const person = people.get(u);
+    if (person) useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', visit: person } });
+  };
+
   useLayoutEffect(() => {
     const el = scroller.current;
     if (el && targetLine && target && scrolledTarget.current !== target.key) {
@@ -162,7 +176,8 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
               </div>
             ) : (
               <div key={group.key} className={`mt-5 flex items-end gap-3 ${group.u === me ? 'flex-row-reverse' : ''}`}>
-                {group.u !== me && <Avatar name={group.n} color={group.c} size="md" src={group.i} />}
+                {group.u !== me && (party ? <Avatar name={group.n} color={group.c} size="md" src={group.i} />
+                  : <button type="button" onClick={() => visit(group.u)} aria-label={`Visit ${group.n}'s profile`} className="shrink-0 rounded-full outline-none focus-ring"><Avatar name={group.n} color={group.c} size="md" src={group.i} /></button>)}
                 <div className={`flex min-w-0 max-w-[80%] flex-col gap-1.5 ${group.u === me ? 'items-end' : 'items-start'}`}>
                   {group.u !== me && <span className="ml-1 max-w-full truncate text-[15px] font-black text-ui-ink">{group.n}</span>}
                   {group.lines.map((line) => {

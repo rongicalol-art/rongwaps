@@ -17,17 +17,17 @@ export const stripControl = (text: string, keepNewlines = false) => Array.from(t
   .filter((char) => { const code = char.charCodeAt(0); return (code >= 32 && code !== 127) || (keepNewlines && code === 10); }).join('');
 export const socialName = (value: unknown): string => typeof value === 'string' ? stripControl(value).trim().slice(0, 30) : '';
 export const MAX_SOCIAL_IMAGE_LENGTH = 2048;
-/** Only provider avatars and signed URLs for the configured profile-media avatar are shared with room members. */
-export function socialImage(value: unknown, supabaseUrl?: string): string | undefined {
+/** Only provider avatars and signed profile-media URLs (avatar, or the cover a visit card shows) are shared. */
+export function socialImage(value: unknown, supabaseUrl?: string, file: 'avatar' | 'cover' = 'avatar'): string | undefined {
   if (typeof value !== 'string' || !value || value.length > MAX_SOCIAL_IMAGE_LENGTH) return undefined;
   try {
     const image = new URL(value);
     if (image.protocol !== 'https:' || image.username || image.password || image.hash) return undefined;
-    const providerAvatar = image.hostname === 'googleusercontent.com' || image.hostname.endsWith('.googleusercontent.com');
+    const providerAvatar = file === 'avatar' && (image.hostname === 'googleusercontent.com' || image.hostname.endsWith('.googleusercontent.com'));
     let profileAvatar = false;
     if (supabaseUrl) {
       const storage = new URL(supabaseUrl);
-      profileAvatar = image.origin === storage.origin && /^\/storage\/v1\/object\/sign\/profile-media\/[^/]+\/avatar\.webp$/.test(image.pathname);
+      profileAvatar = image.origin === storage.origin && image.pathname.endsWith(`/${file}.webp`) && /^\/storage\/v1\/object\/sign\/profile-media\/[^/]+\/(?:avatar|cover)\.webp$/.test(image.pathname);
     }
     return providerAvatar || profileAvatar ? image.href : undefined;
   } catch { return undefined; }

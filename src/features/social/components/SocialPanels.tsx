@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ActionButton, AppIcon, Avatar, AvatarStack, Drawer, DropdownMenu, DropdownMenuItem } from '../../../lib/widgets';
+import { ActionButton, AppIcon, AvatarStack, Drawer, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import type { SocialPanel } from '../../../store/slices/socialSlice';
 import { GLOBAL_CHAT, type Person } from '../../../../shared/lobby';
 import { MAX_PLAYERS, socialColor } from '../../../../shared/quizRace';
 import { createRace, getRecentRaceCode, joinRace, leaveRace } from '../raceController';
 import { useSocialIdentity } from '../useSocialLifecycle';
-import { activityLabel, defaultSelection, describeSelection } from '../socialText';
+import { defaultSelection, describeSelection } from '../socialText';
 import { ChatThread } from './ChatThread';
 import { EmptyNote, MuteButton, PanelTabs, PanelTitle, PersonRow, lessonHeading } from './SocialBits';
+import { VisitProfile } from './VisitProfile';
 
 /** The lesson the learner is in, for presence lists and a new room's default words. */
 function useCurrentLesson() {
@@ -75,11 +76,13 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
   const rooms = useAppStore(state => state.socialRooms);
-  const [profile, setProfile] = useState<Person | null>(null);
   const [roomMenuOpen, setRoomMenuOpen] = useState(false);
   const { classmates, here, others } = useClassmates(people, online, lesson);
   const crowd = classmates.slice(0, 4).map(person => ({ name: person.n, color: person.c, src: person.i }));
-  const selected = profile ? classmates.find(person => person.u === profile.u) ?? profile : null;
+  const visit = panel.tab === 'online' ? panel.visit : undefined;
+  const selected = visit ? classmates.find(person => person.u === visit.u) ?? visit : null;
+  const setProfile = (person: Person | null) => setPanel({ ...panel, visit: person ?? undefined });
+  const mention = (person: Person) => useAppStore.getState().setSocial({ socialMentionDraft: person, socialPanel: { kind: 'people', tab: 'chat', chatScope: 'global' } });
   const scope = lesson === null ? 'global' : panel.chatScope ?? 'lesson';
   const invite = (person: Person) => { void createRace(identity, defaultSelection(person.l ?? lesson), true, [person.u]); };
   const heading = (key: number | null) => {
@@ -109,7 +112,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             </div>
             <MuteButton />
           </div>
-        : selected ? 'Profile' : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
+        : selected ? <IconActionButton size="md" label="Back to classmates" icon={<AppIcon name="back" size={20} />} onClick={() => setProfile(null)} /> : `Online${onlineTotal || classmates.length ? ` ${onlineTotal || classmates.length}` : ''}`}
       tone="practice" size="md" mdPlacement="side" heightClassName="h-[80vh] md:h-full"
       className="top-auto h-[80dvh] max-h-[80dvh] rounded-t-3xl md:h-full md:max-h-full md:rounded-none"
       contentClassName="flex min-h-0 flex-col !overflow-hidden pb-4">
@@ -129,14 +132,8 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             <span className="min-w-0 flex-1"><span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span><span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span></span>
             <ActionButton size="sm" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
           </div>)}
-          {selected ? <>
-            <button type="button" onClick={() => setProfile(null)} className="mb-5 flex items-center gap-2 rounded-compact py-2 text-sm font-black text-ui-muted-strong outline-none focus-ring-inline"><AppIcon name="back" size={16} />Back to classmates</button>
-            <div className="flex items-center gap-4 py-3">
-              <Avatar name={selected.n} color={selected.c} src={selected.i} size="xl" className="h-16 w-16 text-2xl" />
-              <div className="min-w-0"><p className="text-xs font-extrabold text-ui-muted-strong">{online.some(person => person.u === selected.u) || people.some(person => person.u === selected.u) ? 'Online now' : 'Last seen studying'}</p><h3 className="break-words text-2xl font-black text-ui-ink-strong">{selected.n}</h3></div>
-            </div>
-            <div className="mt-4 border-t-2 border-ui-divider pt-4"><p className="text-xs font-black text-ui-muted">Currently studying</p><p className="mt-1 text-base font-extrabold text-ui-ink-strong">{heading(selected.l)}</p><p className="mt-4 text-xs font-black text-ui-muted">Activity</p><p className="mt-1 text-base font-extrabold text-ui-ink-strong">{activityLabel(selected.a)}</p></div>
-          </> : classmates.length === 0 ? <EmptyNote>Nobody else is online.</EmptyNote> : <>
+          {selected ? <VisitProfile key={selected.u} person={selected} lesson={lesson} online={classmates.some(person => person.u === selected.u)} />
+          : classmates.length === 0 ? <EmptyNote>Nobody else is online.</EmptyNote> : <>
             {lesson !== null && (
               here.length > 0 ? (
                 <>
@@ -160,7 +157,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             ))}
           </>}
         </div>
-        {(pending || selected || panel.tab === 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? <ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
+        {(pending || selected || panel.tab === 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? <div className="flex gap-2.5"><ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton><div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
       </>}
     </Drawer>
   );

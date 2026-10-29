@@ -162,6 +162,21 @@ export class Lobby extends DurableObject<Env> {
       if (duplicate) return;
       this.ctx.storage.sql.exec('INSERT INTO reports (msg,uid,text,reporter,ts) VALUES (?,?,?,?,?)', message.id, row.uid, row.text, att.u, now);
       console.log(JSON.stringify({ event: 'chat_report', msg: message.id }));
+    } else if (message.t === 'card-ask' || message.t === 'card') {
+      // Profile visits: only between people who are visibly online; forwarded, never stored.
+      if (!att.show || message.t === 'card-ask' && message.u === att.u) return;
+      const to = message.t === 'card-ask' ? message.u : message.to;
+      let frame: string;
+      if (message.t === 'card-ask') frame = JSON.stringify({ t: 'card-ask', from: att.u } satisfies LobbyServerMessage);
+      else {
+        const { ci, ...card } = message.v ?? {};
+        const cover = socialImage(ci, this.env.SUPABASE_URL, 'cover');
+        frame = JSON.stringify({ t: 'card', u: att.u, v: message.v ? { ...card, ...(cover ? { ci: cover } : {}) } as typeof message.v : null } satisfies LobbyServerMessage);
+      }
+      for (const target of this.sockets()) {
+        const other = target.deserializeAttachment() as Att;
+        if (other.u === to && other.show && target !== socket) this.send(target, frame);
+      }
     }
   }
 

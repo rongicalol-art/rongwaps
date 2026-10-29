@@ -82,6 +82,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'sentencesIncludeReadings',
   // Study together (local choices only)
   'showOnline',
+  'showProfile',
   'socialMuted',
 ].sort();
 
@@ -135,7 +136,7 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'completedPageIds',
   'completedPartIds',
   // Study together: live state and blocks belong to the signed-in account.
-  'race', 'racePlaying', 'racePending', 'raceStatus', 'socialOnlineTotal', 'socialChat', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe',
+  'race', 'racePlaying', 'racePending', 'raceStatus', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
   'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson',
   'socialMentions', 'socialMentionToast', 'socialMentionTarget', 'socialReadingParty',
 ].sort();

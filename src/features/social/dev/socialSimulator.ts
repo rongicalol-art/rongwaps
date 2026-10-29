@@ -4,7 +4,7 @@
  * Lobby/room code paths (`deliver`, `onState`); nothing reaches a server or your study progress.
  */
 import { useAppStore } from '../../../store/useAppStore';
-import type { Activity, ChatMessage, LessonCount, LobbyClientMessage, Person } from '../../../../shared/lobby';
+import { COVER_PRESETS, type Activity, type ChatMessage, type LessonCount, type LobbyClientMessage, type Person } from '../../../../shared/lobby';
 import { applyRaceAction, enterRace, newRaceRoom, summarizeRoom, type RaceAction, type RaceRoomState, type RaceRoomSummary, type RaceSnapshot, type SocialColor } from '../../../../shared/quizRace';
 import type { connectRace } from '../../../services/socialService';
 import { deliver, setLobbyTransport } from '../lobbyController';
@@ -146,6 +146,15 @@ function handle(message: LobbyClientMessage) {
     return;
   }
   if (message.t === 'mention-read') { deliver({ t: 'mention-read', key: message.key }); return; }
+  if (message.t === 'card-ask') {
+    const index = users.findIndex((user) => user.u === message.u);
+    // Every fifth classmate keeps their profile private.
+    if (index >= 0) later(() => deliver({ t: 'card', u: message.u, v: index % 5 === 4 ? null : {
+      cv: COVER_PRESETS[index % COVER_PRESETS.length], b: index % 7 === 6 ? 2 : 1, s: Date.UTC(2026, 8 + (index % 2), 1),
+      w: 40 + ((index * 37) % 300), k: 30 + ((index * 29) % 220), st: (index * 7) % 30,
+    } }), between(250, 900));
+    return;
+  }
   if (message.t === 'cheer') {
     const target = users.find((user) => message.to.includes(user.u));
     if (target) later(() => deliver({ t: 'cheer', from: target, p: pick([0, 1]) }), between(1500, 3000));

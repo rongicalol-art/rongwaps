@@ -27,6 +27,17 @@ export function computeStreak(events: Pick<ReviewEvent, 'reviewedAt'>[], now: nu
   return { streak, studiedToday, todayIndex, week: Array.from({ length: 7 }, (_, i) => days.has(localDay(shiftDay(monday, i)))) };
 }
 
+/** The earliest review that already happened (ms), or null for a new learner. */
+export function firstReviewAt(events: Pick<ReviewEvent, 'reviewedAt'>[], now: number): number | null {
+  const first = events.reduce((min, event) => event.reviewedAt <= now && event.reviewedAt > 0 ? Math.min(min, event.reviewedAt) : min, Infinity);
+  return Number.isFinite(first) ? first : null;
+}
+
+/** Each word's study form in the learner's script, for character counts and word lists. */
+export function characterForms(rows: Pick<DBVocabularyRow, 'id' | 'traditional' | 'simplified'>[], preference: 'traditional' | 'simplified'): Map<string, string> {
+  return new Map(rows.map((row) => [row.id, row[preference] ?? row.traditional ?? row.simplified ?? '']));
+}
+
 /** Caller projects the active character form once; only Han glyphs count. */
 export function countKnownCharacters(learnedCards: string[], vocabById: ReadonlyMap<string, string>): number {
   const characters = new Set<string>();

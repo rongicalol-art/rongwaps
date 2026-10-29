@@ -94,6 +94,13 @@ function receive(message: LobbyServerMessage) {
     case 'invite':
       if (!store.socialMuted && !store.race && !store.racePending) set({ socialInvite: { from: message.from, room: message.room } });
       break;
+    case 'card-ask': {
+      const asker = message.from;
+      void import('./profileCard').then(({ buildProfileCard }) => buildProfileCard())
+        .then(card => send({ t: 'card', to: asker, v: card }), () => send({ t: 'card', to: asker, v: null }));
+      break;
+    }
+    case 'card': set({ socialCards: { ...store.socialCards, [message.u]: message.v } }); break;
   }
 }
 
@@ -173,6 +180,8 @@ export const lobby = {
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),
   readMention: (key: string) => { pendingReads.add(key); flushReads(); },
   report: (id: number) => send({ t: 'report', id }),
+  /** Ask a classmate's device for their visit card; the answer lands in `socialCards`. */
+  askCard: (u: string) => send({ t: 'card-ask', u }),
 };
 
 /** Opening a notification changes only the chat channel, never study presence or room membership. */

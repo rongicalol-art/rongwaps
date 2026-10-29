@@ -29,6 +29,8 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
   const updatePreferences = useAppStore((state) => state.updatePreferences);
   const showOnline = useAppStore((state) => state.showOnline);
   const setShowOnline = useAppStore((state) => state.setShowOnline);
+  const showProfile = useAppStore((state) => state.showProfile);
+  const setShowProfile = useAppStore((state) => state.setShowProfile);
   const [isConfirmResetOpen, setIsConfirmResetOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const [resetError, setResetError] = useState<string | null>(null);
@@ -109,7 +111,8 @@ export function AppSettingsDrawer({ isOpen, onClose, onResetProgress }: AppSetti
               </SettingsPageSection>
 
               <SettingsPageSection title="Study together">
-                <SettingsToggleRow checked={showOnline} onClick={() => setShowOnline(!showOnline)} label="Show me online" className="border-b-0" />
+                <SettingsToggleRow checked={showOnline} onClick={() => setShowOnline(!showOnline)} label="Show me online" />
+                <SettingsToggleRow checked={showProfile} onClick={() => setShowProfile(!showProfile)} label="Show my profile" className="border-b-0" />
               </SettingsPageSection>
 
               {!isStandalone && (

@@ -4,6 +4,7 @@ import {
   PiCameraBold,
   PiUploadSimpleBold,
   PiArrowLeftBold,
+  PiAtBold,
   PiArrowRightBold,
   PiDownloadSimpleBold,
   PiChartBarFill,
@@ -99,6 +100,7 @@ export type AppIconName =
   | 'add'
   | 'analytics'
   | 'appSettings'
+  | 'at'
   | 'audio'
   | 'back'
   | 'bookmark'
@@ -438,6 +440,7 @@ const ICONS: Record<AppIconName, IconType> = {
   add: PiPlusBold,
   analytics: PiChartBarFill,
   appSettings: StudyGearIcon,
+  at: PiAtBold,
   audio: SoftSpeakerIcon,
   back: PiArrowLeftBold,
   bookmark: PiBookmarkSimpleBold,
