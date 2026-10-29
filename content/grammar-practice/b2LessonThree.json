@@ -1,0 +1,4578 @@
+{
+  "B2L03-G01-P75": {
+    "bookPage": 75,
+    "title": "Practice: directional verb + 來 / 去",
+    "allowWords": [
+      "下來",
+      "上來"
+    ],
+    "items": [
+      {
+        "id": "b2l03g1-p1",
+        "source": "p.77 #1",
+        "kind": "slot-build",
+        "prompt": "She is in the room and you are outside the door. What does she want to do?",
+        "promptZh": {
+          "traditional": "她在房間裡，你在門外。她要做什麼？",
+          "simplified": "她在房间里，你在门外。她要做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這個人要",
+                "simplified": "这个人要"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "出來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "出來",
+            "simplified": "出来",
+            "pinyin": "chūlái"
+          },
+          {
+            "traditional": "出去",
+            "simplified": "出去",
+            "pinyin": "chūqù"
+          },
+          {
+            "traditional": "進來",
+            "simplified": "进来",
+            "pinyin": "jìnlái"
+          },
+          {
+            "traditional": "過去",
+            "simplified": "过去",
+            "pinyin": "guòqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "出去"
+            ],
+            "note": "出去 moves away from the speaker; she is coming out toward you."
+          },
+          {
+            "placed": [
+              "進來"
+            ],
+            "note": "進來 means coming in; she is going out of the room."
+          },
+          {
+            "placed": [
+              "過去"
+            ],
+            "note": "過去 means going over there; she is coming out here."
+          }
+        ],
+        "fallbackRepair": "Use 出來: she comes out toward you.",
+        "result": {
+          "traditional": "這個人要出來。",
+          "simplified": "这个人要出来。",
+          "pinyin": "Zhège rén yào chūlái.",
+          "english": "This person wants to come out."
+        },
+        "sub": "門開了。"
+      },
+      {
+        "id": "b2l03g1-p2",
+        "source": "p.77 #2",
+        "kind": "slot-build",
+        "prompt": "Mom is outside the door and your brother is in front of her. What does she say?",
+        "promptZh": {
+          "traditional": "媽媽在門外，弟弟在媽媽前面。媽媽說什麼？",
+          "simplified": "妈妈在门外，弟弟在妈妈前面。妈妈说什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "媽媽說：「",
+                "simplified": "妈妈说：「"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "過來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。」",
+                "simplified": "。」"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "過來",
+            "simplified": "过来",
+            "pinyin": "guòlái"
+          },
+          {
+            "traditional": "過去",
+            "simplified": "过去",
+            "pinyin": "guòqù"
+          },
+          {
+            "traditional": "進來",
+            "simplified": "进来",
+            "pinyin": "jìnlái"
+          },
+          {
+            "traditional": "出去",
+            "simplified": "出去",
+            "pinyin": "chūqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "過去"
+            ],
+            "note": "過去 is away from Mom; she wants him to come to her."
+          },
+          {
+            "placed": [
+              "進來"
+            ],
+            "note": "進來 means coming into a room; they are both outside."
+          },
+          {
+            "placed": [
+              "出去"
+            ],
+            "note": "出去 means going out; he is already outside with her."
+          }
+        ],
+        "fallbackRepair": "Use 過來: she calls him to come to her.",
+        "result": {
+          "traditional": "媽媽說：「過來。」",
+          "simplified": "妈妈说：「过来。」",
+          "pinyin": "Māma shuō: Guòlái.",
+          "english": "Mom says to come over."
+        }
+      },
+      {
+        "id": "b2l03g1-p3",
+        "source": "p.77 #3",
+        "kind": "slot-build",
+        "prompt": "Your friend is waiting outside. What do you need to do?",
+        "promptZh": {
+          "traditional": "朋友在外面等你。你要做什麼？",
+          "simplified": "朋友在外面等你。你要做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我朋友在外面等我，我現在要",
+                "simplified": "我朋友在外面等我，我现在要"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "出去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "出去",
+            "simplified": "出去",
+            "pinyin": "chūqù"
+          },
+          {
+            "traditional": "出來",
+            "simplified": "出来",
+            "pinyin": "chūlái"
+          },
+          {
+            "traditional": "上去",
+            "simplified": "上去",
+            "pinyin": "shàngqù"
+          },
+          {
+            "traditional": "進去",
+            "simplified": "进去",
+            "pinyin": "jìnqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "出來"
+            ],
+            "note": "出來 is toward the speaker; you are inside and going out to your friend."
+          },
+          {
+            "placed": [
+              "上去"
+            ],
+            "note": "上去 means going up, not going out."
+          },
+          {
+            "placed": [
+              "進去"
+            ],
+            "note": "進去 means going in; your friend is outside."
+          }
+        ],
+        "fallbackRepair": "Use 出去: you go out to your friend.",
+        "result": {
+          "traditional": "我朋友在外面等我，我現在要出去。",
+          "simplified": "我朋友在外面等我，我现在要出去。",
+          "pinyin": "Wǒ péngyǒu zài wàimiàn děng wǒ, wǒ xiànzài yào chūqù.",
+          "english": "My friend is waiting outside; I need to go out now."
+        }
+      },
+      {
+        "id": "b2l03g1-p4",
+        "source": "p.77 #4",
+        "kind": "slot-build",
+        "prompt": "Your brother is watching TV upstairs. What does Mom want him to do?",
+        "promptZh": {
+          "traditional": "弟弟在樓上看電視。媽媽要他做什麼？",
+          "simplified": "弟弟在楼上看电视。妈妈要他做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "快吃飯了，弟弟還在樓上看電視，媽媽要他",
+                "simplified": "快吃饭了，弟弟还在楼上看电视，妈妈要他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "下來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "吃飯。",
+                "simplified": "吃饭。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "下來",
+            "simplified": "下来",
+            "pinyin": "xiàlái"
+          },
+          {
+            "traditional": "下去",
+            "simplified": "下去",
+            "pinyin": "xiàqù"
+          },
+          {
+            "traditional": "上來",
+            "simplified": "上来",
+            "pinyin": "shànglái"
+          },
+          {
+            "traditional": "上去",
+            "simplified": "上去",
+            "pinyin": "shàngqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "下去"
+            ],
+            "note": "下去 is away from Mom; she wants him down here."
+          },
+          {
+            "placed": [
+              "上來"
+            ],
+            "note": "上來 means coming up; he is already upstairs."
+          },
+          {
+            "placed": [
+              "上去"
+            ],
+            "note": "上去 means going up; he needs to come down."
+          }
+        ],
+        "fallbackRepair": "Use 下來: he is upstairs and comes down to eat.",
+        "result": {
+          "traditional": "快吃飯了，弟弟還在樓上看電視，媽媽要他下來吃飯。",
+          "simplified": "快吃饭了，弟弟还在楼上看电视，妈妈要他下来吃饭。",
+          "pinyin": "Kuài chīfàn le, dìdi hái zài lóushàng kàn diànshì, māma yào tā xiàlái chīfàn.",
+          "english": "Dinner is almost ready; your brother is still watching TV upstairs, so Mom wants him to come down to eat."
+        },
+        "sub": "快吃飯了。"
+      },
+      {
+        "id": "b2l03g1-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your friend is outside the door. You want him to come into the room.",
+        "promptZh": {
+          "traditional": "朋友在門外。你要他進房間。",
+          "simplified": "朋友在门外。你要他进房间。"
+        },
+        "tiles": [
+          {
+            "traditional": "請",
+            "simplified": "请",
+            "pinyin": "qǐng"
+          },
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "進來",
+            "simplified": "进来",
+            "pinyin": "jìnlái"
+          },
+          {
+            "traditional": "進去",
+            "simplified": "进去",
+            "pinyin": "jìnqù"
+          },
+          {
+            "traditional": "出去",
+            "simplified": "出去",
+            "pinyin": "chūqù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請",
+              "他",
+              "進來"
+            ],
+            "sentence": {
+              "traditional": "請他進來。",
+              "simplified": "请他进来。",
+              "pinyin": "Qǐng tā jìnlái.",
+              "english": "Ask him to come in."
+            }
+          },
+          {
+            "order": [
+              "請",
+              "進來"
+            ],
+            "sentence": {
+              "traditional": "請進來。",
+              "simplified": "请进来。",
+              "pinyin": "Qǐng jìnlái.",
+              "english": "Please come in."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "進去"
+            ],
+            "note": "進去 is going in away from you; you are inside and want him to come to you."
+          },
+          {
+            "placed": [
+              "出去"
+            ],
+            "note": "出去 means going out; he is outside and you want him in."
+          }
+        ],
+        "fallbackRepair": "Use 請 + him + 進來."
+      },
+      {
+        "id": "b2l03g1-p6",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your brother is playing outside. Mom calls him back home to eat.",
+        "promptZh": {
+          "traditional": "弟弟在外面玩。媽媽叫他回家吃飯。",
+          "simplified": "弟弟在外面玩。妈妈叫他回家吃饭。"
+        },
+        "tiles": [
+          {
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma"
+          },
+          {
+            "traditional": "叫他",
+            "simplified": "叫他",
+            "pinyin": "jiào tā"
+          },
+          {
+            "traditional": "回來",
+            "simplified": "回来",
+            "pinyin": "huílái"
+          },
+          {
+            "traditional": "回去",
+            "simplified": "回去",
+            "pinyin": "huíqù"
+          },
+          {
+            "traditional": "吃飯",
+            "simplified": "吃饭",
+            "pinyin": "chīfàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "媽媽",
+              "叫他",
+              "回來",
+              "吃飯"
+            ],
+            "sentence": {
+              "traditional": "媽媽叫他回來吃飯。",
+              "simplified": "妈妈叫他回来吃饭。",
+              "pinyin": "Māma jiào tā huílái chīfàn.",
+              "english": "Mom calls him back to eat."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "回去"
+            ],
+            "note": "回去 means going back away from home; Mom wants him back here."
+          }
+        ],
+        "fallbackRepair": "Use 媽媽 + 叫他 + 回來 + 吃飯."
+      },
+      {
+        "id": "b2l03g1-p7",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You are upstairs and your friend is downstairs.",
+        "promptZh": {
+          "traditional": "你在樓上，朋友在樓下。",
+          "simplified": "你在楼上，朋友在楼下。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "在",
+            "simplified": "在"
+          },
+          {
+            "traditional": "樓上",
+            "simplified": "楼上"
+          },
+          {
+            "traditional": "，",
+            "simplified": "，"
+          },
+          {
+            "traditional": "請",
+            "simplified": "请"
+          },
+          {
+            "traditional": "你",
+            "simplified": "你"
+          },
+          {
+            "traditional": "上去",
+            "simplified": "上去"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 6,
+        "tiles": [
+          {
+            "traditional": "上來",
+            "simplified": "上来",
+            "pinyin": "shànglái"
+          },
+          {
+            "traditional": "下來",
+            "simplified": "下来",
+            "pinyin": "xiàlái"
+          },
+          {
+            "traditional": "進去",
+            "simplified": "进去",
+            "pinyin": "jìnqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "下來"
+            ],
+            "note": "下來 means coming down; your friend is downstairs and must come up."
+          },
+          {
+            "placed": [
+              "進去"
+            ],
+            "note": "進去 means going in, not coming up to you."
+          }
+        ],
+        "hint": "You are upstairs; ask your friend to come up to you.",
+        "result": {
+          "traditional": "我在樓上，請你上來。",
+          "simplified": "我在楼上，请你上来。",
+          "pinyin": "Wǒ zài lóushàng, qǐng nǐ shànglái.",
+          "english": "I am upstairs; please come up."
+        },
+        "fix": "上來",
+        "takeOutNote": "Taking out 上去 leaves 請你, which does not say where to come."
+      }
+    ]
+  },
+  "B2L03-G02-P77": {
+    "bookPage": 77,
+    "title": "Practice: motion verb + directional verb",
+    "allowWords": [
+      "下來",
+      "下去",
+      "回來"
+    ],
+    "items": [
+      {
+        "id": "b2l03g2-p1",
+        "source": "p.78 #1",
+        "kind": "slot-build",
+        "prompt": "Your brother is on the second floor and wants to go to the first floor. How does he get there?",
+        "promptZh": {
+          "traditional": "弟弟在二樓，要到一樓。他怎麼到一樓？",
+          "simplified": "弟弟在二楼，要到一楼。他怎么到一楼？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "孩子從二樓",
+                "simplified": "孩子从二楼"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "跑下來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "跑下來",
+            "simplified": "跑下来",
+            "pinyin": "pǎo xiàlái"
+          },
+          {
+            "traditional": "走下來",
+            "simplified": "走下来",
+            "pinyin": "zǒu xiàlái"
+          },
+          {
+            "traditional": "跑上去",
+            "simplified": "跑上去",
+            "pinyin": "pǎo shàngqù"
+          },
+          {
+            "traditional": "跑出去",
+            "simplified": "跑出去",
+            "pinyin": "pǎo chūqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "走下來"
+            ],
+            "note": "The sentence says he runs fast, not walks."
+          },
+          {
+            "placed": [
+              "跑上去"
+            ],
+            "note": "跑上去 goes up; he starts on the second floor and goes down."
+          },
+          {
+            "placed": [
+              "跑出去"
+            ],
+            "note": "跑出去 means running out, not down the stairs."
+          }
+        ],
+        "fallbackRepair": "Use 跑下來: he runs down from the second floor.",
+        "result": {
+          "traditional": "孩子從二樓跑下來。",
+          "simplified": "孩子从二楼跑下来。",
+          "pinyin": "Háizi cóng èr lóu pǎo xiàlái.",
+          "english": "The child runs down from the second floor."
+        },
+        "sub": "他跑得很快。"
+      },
+      {
+        "id": "b2l03g2-p2",
+        "source": "p.78 #2",
+        "kind": "slot-build",
+        "prompt": "The man is inside the convenience store. You are outside waiting for him. How does he get outside?",
+        "promptZh": {
+          "traditional": "先生在便利商店裡面。你在外面等他。他怎麼到外面？",
+          "simplified": "先生在便利商店里面。你在外面等他。他怎么到外面？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那位先生從便利商店",
+                "simplified": "那位先生从便利商店"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "走出來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "走出來",
+            "simplified": "走出来",
+            "pinyin": "zǒu chūlái"
+          },
+          {
+            "traditional": "走進去",
+            "simplified": "走进去",
+            "pinyin": "zǒu jìnqù"
+          },
+          {
+            "traditional": "走回來",
+            "simplified": "走回来",
+            "pinyin": "zǒu huílái"
+          },
+          {
+            "traditional": "走過去",
+            "simplified": "走过去",
+            "pinyin": "zǒu guòqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "走進去"
+            ],
+            "note": "走進去 goes in; he is inside and comes out to you."
+          },
+          {
+            "placed": [
+              "走回來"
+            ],
+            "note": "走回來 means coming back; he is simply coming out of the store."
+          },
+          {
+            "placed": [
+              "走過去"
+            ],
+            "note": "走過去 goes over there; he comes out toward you."
+          }
+        ],
+        "fallbackRepair": "Use 走出來: he walks out toward you.",
+        "result": {
+          "traditional": "那位先生從便利商店走出來。",
+          "simplified": "那位先生从便利商店走出来。",
+          "pinyin": "Nà wèi xiānshēng cóng biànlì shāngdiàn zǒu chūlái.",
+          "english": "That man walks out of the convenience store."
+        }
+      },
+      {
+        "id": "b2l03g2-p3",
+        "source": "p.78 #3",
+        "kind": "slot-build",
+        "prompt": "What should you do when you talk to your boss?",
+        "promptZh": {
+          "traditional": "跟老闆說話的時候，你要做什麼？",
+          "simplified": "跟老板说话的时候，你要做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "跟老闆說話的時候，請你",
+                "simplified": "跟老板说话的时候，请你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "站起來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，不要坐著。",
+                "simplified": "，不要坐着。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "站起來",
+            "simplified": "站起来",
+            "pinyin": "zhàn qǐlái"
+          },
+          {
+            "traditional": "坐下來",
+            "simplified": "坐下来",
+            "pinyin": "zuò xiàlái"
+          },
+          {
+            "traditional": "站出去",
+            "simplified": "站出去",
+            "pinyin": "zhàn chūqù"
+          },
+          {
+            "traditional": "坐起來",
+            "simplified": "坐起来",
+            "pinyin": "zuò qǐlái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "坐下來"
+            ],
+            "note": "坐下來 means sit down, but the sentence says not to sit."
+          },
+          {
+            "placed": [
+              "站出去"
+            ],
+            "note": "站出去 means stand outside, not stand up."
+          },
+          {
+            "placed": [
+              "坐起來"
+            ],
+            "note": "坐起來 means sit up in bed; you need to stand."
+          }
+        ],
+        "fallbackRepair": "Use 站起來: stand up.",
+        "result": {
+          "traditional": "跟老闆說話的時候，請你站起來，不要坐著。",
+          "simplified": "跟老板说话的时候，请你站起来，不要坐着。",
+          "pinyin": "Gēn lǎobǎn shuōhuà de shíhou, qǐng nǐ zhàn qǐlái, búyào zuò zhe.",
+          "english": "When you talk to your boss, please stand up; do not stay seated."
+        }
+      },
+      {
+        "id": "b2l03g2-p4",
+        "source": "p.78 #4",
+        "kind": "slot-build",
+        "prompt": "The garbage stinks. What do you ask someone to do?",
+        "promptZh": {
+          "traditional": "垃圾很臭。請你做什麼？",
+          "simplified": "垃圾很臭。请你做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這些垃圾很臭，請你",
+                "simplified": "这些垃圾很臭，请你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "拿出去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "拿出去",
+            "simplified": "拿出去",
+            "pinyin": "ná chūqù"
+          },
+          {
+            "traditional": "拿進來",
+            "simplified": "拿进来",
+            "pinyin": "ná jìnlái"
+          },
+          {
+            "traditional": "放下去",
+            "simplified": "放下去",
+            "pinyin": "fàng xiàqù"
+          },
+          {
+            "traditional": "拿回來",
+            "simplified": "拿回来",
+            "pinyin": "ná huílái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "拿進來"
+            ],
+            "note": "拿進來 brings it in; smelly garbage goes out."
+          },
+          {
+            "placed": [
+              "放下去"
+            ],
+            "note": "放下去 means put it down; the garbage must go out."
+          },
+          {
+            "placed": [
+              "拿回來"
+            ],
+            "note": "拿回來 brings it back; you want it out."
+          }
+        ],
+        "fallbackRepair": "Use 拿出去: take the garbage out.",
+        "result": {
+          "traditional": "這些垃圾很臭，請你拿出去。",
+          "simplified": "这些垃圾很臭，请你拿出去。",
+          "pinyin": "Zhèxiē lèsè hěn chòu, qǐng nǐ ná chūqù.",
+          "english": "This garbage stinks; please take it out."
+        }
+      },
+      {
+        "id": "b2l03g2-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "It is raining. He runs in from outside.",
+        "promptZh": {
+          "traditional": "外面下雨了。他從外面跑進房子裡。",
+          "simplified": "外面下雨了。他从外面跑进房子里。"
+        },
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng"
+          },
+          {
+            "traditional": "外面",
+            "simplified": "外面",
+            "pinyin": "wàimiàn"
+          },
+          {
+            "traditional": "跑進來",
+            "simplified": "跑进来",
+            "pinyin": "pǎo jìnlái"
+          },
+          {
+            "traditional": "跑出去",
+            "simplified": "跑出去",
+            "pinyin": "pǎo chūqù"
+          },
+          {
+            "traditional": "進來",
+            "simplified": "进来",
+            "pinyin": "jìnlái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "從",
+              "外面",
+              "跑進來"
+            ],
+            "sentence": {
+              "traditional": "他從外面跑進來。",
+              "simplified": "他从外面跑进来。",
+              "pinyin": "Tā cóng wàimiàn pǎo jìnlái.",
+              "english": "He runs in from outside."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "跑出去"
+            ],
+            "note": "跑出去 means running out; the rain makes him run in."
+          },
+          {
+            "placed": [
+              "進來"
+            ],
+            "note": "Use 跑進來: the verb 跑 comes before 進來."
+          }
+        ],
+        "fallbackRepair": "Use 他 + 從 + 外面 + 跑進來."
+      },
+      {
+        "id": "b2l03g2-p6",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The sofa is heavy. We need to carry it upstairs.",
+        "promptZh": {
+          "traditional": "沙發很重。我們要搬到樓上。",
+          "simplified": "沙发很重。我们要搬到楼上。"
+        },
+        "tiles": [
+          {
+            "traditional": "沙發很重",
+            "simplified": "沙发很重",
+            "pinyin": "shāfā hěn zhòng"
+          },
+          {
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen"
+          },
+          {
+            "traditional": "一起",
+            "simplified": "一起",
+            "pinyin": "yìqǐ"
+          },
+          {
+            "traditional": "搬上去",
+            "simplified": "搬上去",
+            "pinyin": "bān shàngqù"
+          },
+          {
+            "traditional": "搬下來",
+            "simplified": "搬下来",
+            "pinyin": "bān xiàlái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "沙發很重",
+              "我們",
+              "一起",
+              "搬上去"
+            ],
+            "sentence": {
+              "traditional": "沙發很重，我們一起搬上去。",
+              "simplified": "沙发很重，我们一起搬上去。",
+              "pinyin": "Shāfā hěn zhòng, wǒmen yìqǐ bān shàngqù.",
+              "english": "The sofa is heavy; let us carry it up together."
+            }
+          },
+          {
+            "order": [
+              "沙發很重",
+              "我們",
+              "搬上去"
+            ],
+            "sentence": {
+              "traditional": "沙發很重，我們搬上去。",
+              "simplified": "沙发很重，我们搬上去。",
+              "pinyin": "Shāfā hěn zhòng, wǒmen bān shàngqù.",
+              "english": "The sofa is heavy; we'll carry it up."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "搬下來"
+            ],
+            "note": "搬下來 means carry it down; you are taking it up."
+          }
+        ],
+        "fallbackRepair": "Say 沙發很重 + 我們 + 搬上去; 一起 is optional."
+      },
+      {
+        "id": "b2l03g2-p7",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "When the teacher comes into the classroom, everyone is not sitting.",
+        "promptZh": {
+          "traditional": "老師進教室的時候，大家都不坐著。",
+          "simplified": "老师进教室的时候，大家都不坐着。"
+        },
+        "chunks": [
+          {
+            "traditional": "老師",
+            "simplified": "老师"
+          },
+          {
+            "traditional": "進",
+            "simplified": "进"
+          },
+          {
+            "traditional": "教室",
+            "simplified": "教室"
+          },
+          {
+            "traditional": "的時候",
+            "simplified": "的时候"
+          },
+          {
+            "traditional": "，",
+            "simplified": "，"
+          },
+          {
+            "traditional": "我們",
+            "simplified": "我们"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都"
+          },
+          {
+            "traditional": "站上來",
+            "simplified": "站上来"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 7,
+        "tiles": [
+          {
+            "traditional": "站起來",
+            "simplified": "站起来",
+            "pinyin": "zhàn qǐlái"
+          },
+          {
+            "traditional": "坐下來",
+            "simplified": "坐下来",
+            "pinyin": "zuò xiàlái"
+          },
+          {
+            "traditional": "站出去",
+            "simplified": "站出去",
+            "pinyin": "zhàn chūqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "坐下來"
+            ],
+            "note": "坐下來 means sit down; everyone is not sitting, so they stand."
+          },
+          {
+            "placed": [
+              "站出去"
+            ],
+            "note": "站出去 means stand outside; they are in the classroom."
+          }
+        ],
+        "hint": "When the teacher comes in, everyone stands up.",
+        "result": {
+          "traditional": "老師進教室的時候，我們都站起來。",
+          "simplified": "老师进教室的时候，我们都站起来。",
+          "pinyin": "Lǎoshī jìn jiàoshì de shíhou, wǒmen dōu zhàn qǐlái.",
+          "english": "When the teacher comes into the classroom, we all stand up."
+        },
+        "fix": "站起來",
+        "takeOutNote": "Taking out 站上來 leaves 我們都, which does not say what everyone did."
+      }
+    ]
+  },
+  "B2L03-G03-P78": {
+    "bookPage": 78,
+    "title": "Practice: motion verb + directional verb + place",
+    "allowWords": [
+      "上來",
+      "回來",
+      "下去"
+    ],
+    "items": [
+      {
+        "id": "b2l03g3-p1",
+        "source": "p.78 #1",
+        "kind": "slot-build",
+        "prompt": "You are at the fruit shop and want to take the fruit home. What do you say?",
+        "promptZh": {
+          "traditional": "你在水果店，想帶水果回家。你要做什麼？",
+          "simplified": "你在水果店，想带水果回家。你要做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這些水果，我要",
+                "simplified": "这些水果，我要"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "帶回去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "帶回去",
+            "simplified": "带回去",
+            "pinyin": "dài huíqù"
+          },
+          {
+            "traditional": "帶回來",
+            "simplified": "带回来",
+            "pinyin": "dài huílái"
+          },
+          {
+            "traditional": "拿出來",
+            "simplified": "拿出来",
+            "pinyin": "ná chūlái"
+          },
+          {
+            "traditional": "帶過去",
+            "simplified": "带过去",
+            "pinyin": "dài guòqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "帶回來"
+            ],
+            "note": "帶回來 brings them toward the shop; you are taking them home, away from here."
+          },
+          {
+            "placed": [
+              "拿出來"
+            ],
+            "note": "拿出來 means take them out; you are taking them home."
+          },
+          {
+            "placed": [
+              "帶過去"
+            ],
+            "note": "帶過去 means take them over there; you are taking them back home."
+          }
+        ],
+        "fallbackRepair": "Use 帶回去: take the fruit back home.",
+        "result": {
+          "traditional": "這些水果，我要帶回去。",
+          "simplified": "这些水果，我要带回去。",
+          "pinyin": "Zhèxiē shuǐguǒ, wǒ yào dài huíqù.",
+          "english": "These fruits—I want to take them back."
+        },
+        "sub": "你在水果店。"
+      },
+      {
+        "id": "b2l03g3-p2",
+        "source": "p.78 #2",
+        "kind": "slot-build",
+        "prompt": "You are upstairs and the sofa is downstairs. What do you want to do?",
+        "promptZh": {
+          "traditional": "你在樓上，沙發在樓下。你要做什麼？",
+          "simplified": "你在楼上，沙发在楼下。你要做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "樓下的那張沙發，我要",
+                "simplified": "楼下的那张沙发，我要"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "搬上來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "搬上來",
+            "simplified": "搬上来",
+            "pinyin": "bān shànglái"
+          },
+          {
+            "traditional": "搬下去",
+            "simplified": "搬下去",
+            "pinyin": "bān xiàqù"
+          },
+          {
+            "traditional": "搬過來",
+            "simplified": "搬过来",
+            "pinyin": "bān guòlái"
+          },
+          {
+            "traditional": "搬上去",
+            "simplified": "搬上去",
+            "pinyin": "bān shàngqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "搬下去"
+            ],
+            "note": "搬下去 means carry it down; you are upstairs and want it here."
+          },
+          {
+            "placed": [
+              "搬過來"
+            ],
+            "note": "搬過來 means carry it over; it is downstairs and must come up."
+          },
+          {
+            "placed": [
+              "搬上去"
+            ],
+            "note": "搬上去 means carry it up away from you; you are already upstairs."
+          }
+        ],
+        "fallbackRepair": "Use 搬上來: move the sofa up to you.",
+        "result": {
+          "traditional": "樓下的那張沙發，我要搬上來。",
+          "simplified": "楼下的那张沙发，我要搬上来。",
+          "pinyin": "Lóuxià de nà zhāng shāfā, wǒ yào bān shànglái.",
+          "english": "That sofa downstairs—I want to move it up here."
+        }
+      },
+      {
+        "id": "b2l03g3-p3",
+        "source": "p.78 #3",
+        "kind": "slot-build",
+        "prompt": "Your wallet is in the living room. What do you ask your friend to do?",
+        "promptZh": {
+          "traditional": "錢包在客廳。請朋友幫你做什麼？",
+          "simplified": "钱包在客厅。请朋友帮你做什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我的錢包放在客廳，請你幫我",
+                "simplified": "我的钱包放在客厅，请你帮我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "拿出來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "拿出來",
+            "simplified": "拿出来",
+            "pinyin": "ná chūlái"
+          },
+          {
+            "traditional": "拿進去",
+            "simplified": "拿进去",
+            "pinyin": "ná jìnqù"
+          },
+          {
+            "traditional": "拿回來",
+            "simplified": "拿回来",
+            "pinyin": "ná huílái"
+          },
+          {
+            "traditional": "拿過去",
+            "simplified": "拿过去",
+            "pinyin": "ná guòqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "拿進去"
+            ],
+            "note": "拿進去 takes it further in; the wallet is inside and you want it out."
+          },
+          {
+            "placed": [
+              "拿回來"
+            ],
+            "note": "拿回來 means bring it back; it is in the living room, not away."
+          },
+          {
+            "placed": [
+              "拿過去"
+            ],
+            "note": "拿過去 takes it over there; you want it here."
+          }
+        ],
+        "fallbackRepair": "Use 拿出來: take the wallet out to me.",
+        "result": {
+          "traditional": "我的錢包放在客廳，請你幫我拿出來。",
+          "simplified": "我的钱包放在客厅，请你帮我拿出来。",
+          "pinyin": "Wǒ de qiánbāo fàng zài kètīng, qǐng nǐ bāng wǒ ná chūlái.",
+          "english": "My wallet is in the living room; please get it out for me."
+        }
+      },
+      {
+        "id": "b2l03g3-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "These books are yours. You want to take the books back to Japan. Say it with 去.",
+        "promptZh": {
+          "traditional": "這些書是你的。你要帶書回日本。用「去」說。",
+          "simplified": "这些书是你的。你要带书回日本。用「去」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "這些書",
+            "simplified": "这些书",
+            "pinyin": "zhèxiē shū"
+          },
+          {
+            "traditional": "我要",
+            "simplified": "我要",
+            "pinyin": "wǒ yào"
+          },
+          {
+            "traditional": "帶回",
+            "simplified": "带回",
+            "pinyin": "dài huí"
+          },
+          {
+            "traditional": "日本",
+            "simplified": "日本",
+            "pinyin": "Rìběn"
+          },
+          {
+            "traditional": "去",
+            "simplified": "去",
+            "pinyin": "qù"
+          },
+          {
+            "traditional": "帶去",
+            "simplified": "带去",
+            "pinyin": "dài qù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這些書",
+              "我要",
+              "帶回",
+              "日本",
+              "去"
+            ],
+            "sentence": {
+              "traditional": "這些書，我要帶回日本去。",
+              "simplified": "这些书，我要带回日本去。",
+              "pinyin": "Zhèxiē shū, wǒ yào dài huí Rìběn qù.",
+              "english": "These books—I want to take them back to Japan."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "帶去"
+            ],
+            "note": "帶去 has no place; say 帶回 + 日本 + 去."
+          }
+        ],
+        "fallbackRepair": "Use 帶回 + 日本 + 去: the place goes before 去."
+      },
+      {
+        "id": "b2l03g3-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "This glass of water; please take it to the kitchen. Say it with 去.",
+        "promptZh": {
+          "traditional": "這杯水，請你拿到廚房。用「去」說。",
+          "simplified": "这杯水，请你拿到厨房。用「去」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "這杯水",
+            "simplified": "这杯水",
+            "pinyin": "zhè bēi shuǐ"
+          },
+          {
+            "traditional": "請你",
+            "simplified": "请你",
+            "pinyin": "qǐng nǐ"
+          },
+          {
+            "traditional": "拿到",
+            "simplified": "拿到",
+            "pinyin": "ná dào"
+          },
+          {
+            "traditional": "廚房",
+            "simplified": "厨房",
+            "pinyin": "chúfáng"
+          },
+          {
+            "traditional": "去",
+            "simplified": "去",
+            "pinyin": "qù"
+          },
+          {
+            "traditional": "拿來",
+            "simplified": "拿来",
+            "pinyin": "ná lái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這杯水",
+              "請你",
+              "拿到",
+              "廚房",
+              "去"
+            ],
+            "sentence": {
+              "traditional": "這杯水，請你拿到廚房去。",
+              "simplified": "这杯水，请你拿到厨房去。",
+              "pinyin": "Zhè bēi shuǐ, qǐng nǐ ná dào chúfáng qù.",
+              "english": "This glass of water—please take it to the kitchen."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "拿來"
+            ],
+            "note": "拿來 cannot take a place after it; use 拿到 + place + 去."
+          }
+        ],
+        "fallbackRepair": "Use 拿到 + 廚房 + 去."
+      },
+      {
+        "id": "b2l03g3-p6",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The puppy is outside and you are in the room. The puppy runs into your room. Say it with 來.",
+        "promptZh": {
+          "traditional": "小狗在外面，你在房間裡。小狗跑進你的房間。用「來」說。",
+          "simplified": "小狗在外面，你在房间里。小狗跑进你的房间。用「来」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "小狗",
+            "simplified": "小狗",
+            "pinyin": "xiǎo gǒu"
+          },
+          {
+            "traditional": "從外面",
+            "simplified": "从外面",
+            "pinyin": "cóng wàimiàn"
+          },
+          {
+            "traditional": "跑進",
+            "simplified": "跑进",
+            "pinyin": "pǎo jìn"
+          },
+          {
+            "traditional": "房間裡",
+            "simplified": "房间里",
+            "pinyin": "fángjiān lǐ"
+          },
+          {
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái"
+          },
+          {
+            "traditional": "去",
+            "simplified": "去",
+            "pinyin": "qù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "小狗",
+              "從外面",
+              "跑進",
+              "房間裡",
+              "來"
+            ],
+            "sentence": {
+              "traditional": "小狗從外面跑進房間裡來。",
+              "simplified": "小狗从外面跑进房间里来。",
+              "pinyin": "Xiǎo gǒu cóng wàimiàn pǎo jìn fángjiān lǐ lái.",
+              "english": "The puppy runs in from outside into the room."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "去"
+            ],
+            "note": "去 is away from you; the puppy comes into your room, so use 來."
+          }
+        ],
+        "fallbackRepair": "Use 小狗 + 從外面 + 跑進 + 房間裡 + 來."
+      }
+    ]
+  },
+  "B2L03-G04-P79": {
+    "bookPage": 79,
+    "title": "Practice: 把 + directional verb",
+    "items": [
+      {
+        "id": "b2l03g4-p1",
+        "source": "p.79 #1",
+        "kind": "order-build",
+        "prompt": "Put the sentence in order.",
+        "promptZh": {
+          "traditional": "把句子排好。",
+          "simplified": "把句子排好。"
+        },
+        "tiles": [
+          {
+            "traditional": "我昨天",
+            "simplified": "我昨天",
+            "pinyin": "wǒ zuótiān"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū"
+          },
+          {
+            "traditional": "帶回家去",
+            "simplified": "带回家去",
+            "pinyin": "dài huí jiā qù"
+          },
+          {
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我昨天",
+              "沒",
+              "把",
+              "書",
+              "帶回家去"
+            ],
+            "sentence": {
+              "traditional": "我昨天沒把書帶回家去。",
+              "simplified": "我昨天没把书带回家去。",
+              "pinyin": "Wǒ zuótiān méi bǎ shū dài huí jiā qù.",
+              "english": "I did not take the book home yesterday."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "已經"
+            ],
+            "note": "已經 would say you did take it home; the sentence says you did not."
+          },
+          {
+            "before": [
+              "把",
+              "沒"
+            ],
+            "note": "Put 沒 before 把: the negation comes first."
+          }
+        ],
+        "fallbackRepair": "Put 我昨天 first, then 沒 + 把 + 書 + 帶回家去.",
+        "sub": "你昨天的書還在學校。"
+      },
+      {
+        "id": "b2l03g4-p2",
+        "source": "p.79 #2",
+        "kind": "order-build",
+        "prompt": "Put the sentence in order.",
+        "promptZh": {
+          "traditional": "把句子排好。",
+          "simplified": "把句子排好。"
+        },
+        "tiles": [
+          {
+            "traditional": "孩子",
+            "simplified": "孩子",
+            "pinyin": "háizi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "垃圾",
+            "simplified": "垃圾",
+            "pinyin": "lèsè"
+          },
+          {
+            "traditional": "丟進",
+            "simplified": "丢进",
+            "pinyin": "diū jìn"
+          },
+          {
+            "traditional": "袋子裡去",
+            "simplified": "袋子里去",
+            "pinyin": "dàizi lǐ qù"
+          },
+          {
+            "traditional": "進來",
+            "simplified": "进来",
+            "pinyin": "jìnlái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "孩子",
+              "把",
+              "垃圾",
+              "丟進",
+              "袋子裡去"
+            ],
+            "sentence": {
+              "traditional": "孩子把垃圾丟進袋子裡去。",
+              "simplified": "孩子把垃圾丢进袋子里去。",
+              "pinyin": "Háizi bǎ lèsè diū jìn dàizi lǐ qù.",
+              "english": "The child throws the garbage into the bag."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "進來"
+            ],
+            "note": "進來 means come in; the sentence says throw the garbage into the bag."
+          },
+          {
+            "before": [
+              "垃圾",
+              "把"
+            ],
+            "note": "Put 把 before 垃圾: 把 marks the thing being moved."
+          }
+        ],
+        "fallbackRepair": "Put 孩子 + 把 + 垃圾 + 丟進 + 袋子裡去.",
+        "sub": "孩子丟垃圾。垃圾在袋子裡。"
+      },
+      {
+        "id": "b2l03g4-p3",
+        "source": "p.79 #3",
+        "kind": "order-build",
+        "prompt": "Put the sentence in order.",
+        "promptZh": {
+          "traditional": "把句子排好。",
+          "simplified": "把句子排好。"
+        },
+        "tiles": [
+          {
+            "traditional": "請你",
+            "simplified": "请你",
+            "pinyin": "qǐng nǐ"
+          },
+          {
+            "traditional": "把杯子",
+            "simplified": "把杯子",
+            "pinyin": "bǎ bēizi"
+          },
+          {
+            "traditional": "拿起來",
+            "simplified": "拿起来",
+            "pinyin": "ná qǐlái"
+          },
+          {
+            "traditional": "我要",
+            "simplified": "我要",
+            "pinyin": "wǒ yào"
+          },
+          {
+            "traditional": "擦桌子",
+            "simplified": "擦桌子",
+            "pinyin": "cā zhuōzi"
+          },
+          {
+            "traditional": "放下來",
+            "simplified": "放下来",
+            "pinyin": "fàng xiàlái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請你",
+              "把杯子",
+              "拿起來",
+              "我要",
+              "擦桌子"
+            ],
+            "sentence": {
+              "traditional": "請你把杯子拿起來，我要擦桌子。",
+              "simplified": "请你把杯子拿起来，我要擦桌子。",
+              "pinyin": "Qǐng nǐ bǎ bēizi ná qǐlái, wǒ yào cā zhuōzi.",
+              "english": "Please pick up the cup; I want to wipe the table."
+            }
+          },
+          {
+            "order": [
+              "我要",
+              "擦桌子",
+              "請你",
+              "把杯子",
+              "拿起來"
+            ],
+            "sentence": {
+              "traditional": "我要擦桌子，請你把杯子拿起來。",
+              "simplified": "我要擦桌子，请你把杯子拿起来。",
+              "pinyin": "Wǒ yào cā zhuōzi, qǐng nǐ bǎ bēizi ná qǐlái.",
+              "english": "I want to wipe the table; please pick up the cup."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "放下來"
+            ],
+            "note": "放下來 means put it down; you need the cup picked up so you can wipe the table."
+          }
+        ],
+        "fallbackRepair": "Use 請你 + 把杯子 + 拿起來, then 我要 + 擦桌子.",
+        "sub": "杯子在桌子上。你要擦桌子。"
+      },
+      {
+        "id": "b2l03g4-p4",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "The desk is at the door and you want it beside you.",
+        "promptZh": {
+          "traditional": "書桌在門口，你要書桌在你旁邊。",
+          "simplified": "书桌在门口，你要书桌在你旁边。"
+        },
+        "chunks": [
+          {
+            "traditional": "請",
+            "simplified": "请"
+          },
+          {
+            "traditional": "你",
+            "simplified": "你"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把"
+          },
+          {
+            "traditional": "書桌",
+            "simplified": "书桌"
+          },
+          {
+            "traditional": "搬",
+            "simplified": "搬"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 4,
+        "tiles": [
+          {
+            "traditional": "搬過來",
+            "simplified": "搬过来",
+            "pinyin": "bān guòlái"
+          },
+          {
+            "traditional": "搬上去",
+            "simplified": "搬上去",
+            "pinyin": "bān shàngqù"
+          },
+          {
+            "traditional": "搬出去",
+            "simplified": "搬出去",
+            "pinyin": "bān chūqù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "搬上去"
+            ],
+            "note": "搬上去 means carry it up, not over to you."
+          },
+          {
+            "placed": [
+              "搬出去"
+            ],
+            "note": "搬出去 means carry it out; you want it here."
+          }
+        ],
+        "hint": "The desk should come over to you; the verb needs a direction after it.",
+        "result": {
+          "traditional": "請你把書桌搬過來。",
+          "simplified": "请你把书桌搬过来。",
+          "pinyin": "Qǐng nǐ bǎ shūzhuō bān guòlái.",
+          "english": "Please move the desk over here."
+        },
+        "fix": "搬過來",
+        "takeOutNote": "Taking out 搬 leaves 請你把書桌, which has no verb."
+      },
+      {
+        "id": "b2l03g4-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The fruit was downstairs; now it is upstairs. Say it with 把.",
+        "promptZh": {
+          "traditional": "水果在樓下，現在在樓上了。用「把」說。",
+          "simplified": "水果在楼下，现在在楼上了。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "姐姐",
+            "simplified": "姐姐",
+            "pinyin": "jiějie"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "水果",
+            "simplified": "水果",
+            "pinyin": "shuǐguǒ"
+          },
+          {
+            "traditional": "拿上樓",
+            "simplified": "拿上楼",
+            "pinyin": "ná shànglóu"
+          },
+          {
+            "traditional": "去了",
+            "simplified": "去了",
+            "pinyin": "qù le"
+          },
+          {
+            "traditional": "拿下來",
+            "simplified": "拿下来",
+            "pinyin": "ná xiàlái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "姐姐",
+              "把",
+              "水果",
+              "拿上樓",
+              "去了"
+            ],
+            "sentence": {
+              "traditional": "姐姐把水果拿上樓去了。",
+              "simplified": "姐姐把水果拿上楼去了。",
+              "pinyin": "Jiějie bǎ shuǐguǒ ná shànglóu qù le.",
+              "english": "My sister took the fruit upstairs."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "拿下來"
+            ],
+            "note": "拿下來 means bring it down; she takes it up."
+          }
+        ],
+        "fallbackRepair": "Use 姐姐 + 把 + 水果 + 拿上樓 + 去了."
+      }
+    ]
+  },
+  "B2L03-G05-P79": {
+    "bookPage": 79,
+    "title": "Practice: verb reduplication XYXY",
+    "items": [
+      {
+        "id": "b2l03g5-p1",
+        "source": "p.80 #1",
+        "kind": "slot-build",
+        "prompt": "The foreign student wants to get to know Taiwanese friends. Say 認識 twice.",
+        "promptZh": {
+          "traditional": "外國學生想認識台灣朋友。用「認識」說兩次。",
+          "simplified": "外国学生想认识台湾朋友。用「认识」说两次。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "外國學生希望有機會可以",
+                "simplified": "外国学生希望有机会可以"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "認識認識"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "台灣朋友。",
+                "simplified": "台湾朋友。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "認識認識",
+            "simplified": "认识认识",
+            "pinyin": "rènshì rènshì"
+          },
+          {
+            "traditional": "認識一下",
+            "simplified": "认识一下",
+            "pinyin": "rènshì yíxià"
+          },
+          {
+            "traditional": "認識",
+            "simplified": "认识",
+            "pinyin": "rènshì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "認識一下"
+            ],
+            "note": "The book form is XYXY, not 一下."
+          },
+          {
+            "placed": [
+              "認識"
+            ],
+            "note": "Use the doubled form 認識認識."
+          }
+        ],
+        "fallbackRepair": "Use 認識認識: double the two-syllable verb.",
+        "result": {
+          "traditional": "外國學生希望有機會可以認識認識台灣朋友。",
+          "simplified": "外国学生希望有机会可以认识认识台湾朋友。",
+          "pinyin": "Wàiguó xuéshēng xīwàng yǒu jīhuì kěyǐ rènshì rènshì Táiwān péngyǒu.",
+          "english": "The foreign student hopes to have a chance to get to know Taiwanese friends."
+        }
+      },
+      {
+        "id": "b2l03g5-p2",
+        "source": "p.80 #2",
+        "kind": "slot-build",
+        "prompt": "You finished the housework and feel tired. Say 休息 twice.",
+        "promptZh": {
+          "traditional": "你做完家事，覺得很累。用「休息」說兩次。",
+          "simplified": "你做完家事，觉得很累。用「休息」说两次。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我一個人把家事都做完了，覺得有點兒累，要",
+                "simplified": "我一个人把家事都做完了，觉得有点儿累，要"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "休息休息"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "休息休息",
+            "simplified": "休息休息",
+            "pinyin": "xiūxí xiūxí"
+          },
+          {
+            "traditional": "休息一下",
+            "simplified": "休息一下",
+            "pinyin": "xiūxí yíxià"
+          },
+          {
+            "traditional": "練習練習",
+            "simplified": "练习练习",
+            "pinyin": "liànxí liànxí"
+          },
+          {
+            "traditional": "慶祝慶祝",
+            "simplified": "庆祝庆祝",
+            "pinyin": "qìngzhù qìngzhù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "休息一下"
+            ],
+            "note": "The book form is XYXY, not 一下."
+          },
+          {
+            "placed": [
+              "練習練習"
+            ],
+            "note": "You are tired, so you rest, not practice."
+          },
+          {
+            "placed": [
+              "慶祝慶祝"
+            ],
+            "note": "There is nothing to celebrate; you are tired."
+          }
+        ],
+        "fallbackRepair": "Use 休息休息: double the verb for a short rest.",
+        "result": {
+          "traditional": "我一個人把家事都做完了，覺得有點兒累，要休息休息。",
+          "simplified": "我一个人把家事都做完了，觉得有点儿累，要休息休息。",
+          "pinyin": "Wǒ yí ge rén bǎ jiāshì dōu zuò wán le, juéde yǒu diǎnr lèi, yào xiūxí xiūxí.",
+          "english": "I finished all the housework alone and feel a little tired, so I want to rest a bit."
+        },
+        "sub": "家事都做完了。"
+      },
+      {
+        "id": "b2l03g5-p3",
+        "source": "p.80 #3",
+        "kind": "slot-build",
+        "prompt": "Tomorrow is Mom's birthday. Say 慶祝 twice.",
+        "promptZh": {
+          "traditional": "明天是媽媽的生日。用「慶祝」說兩次。",
+          "simplified": "明天是妈妈的生日。用「庆祝」说两次。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "明天是媽媽的生日，我們要買蛋糕給她",
+                "simplified": "明天是妈妈的生日，我们要买蛋糕给她"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "慶祝慶祝"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "慶祝慶祝",
+            "simplified": "庆祝庆祝",
+            "pinyin": "qìngzhù qìngzhù"
+          },
+          {
+            "traditional": "慶祝一下",
+            "simplified": "庆祝一下",
+            "pinyin": "qìngzhù yíxià"
+          },
+          {
+            "traditional": "歡迎歡迎",
+            "simplified": "欢迎欢迎",
+            "pinyin": "huānyíng huānyíng"
+          },
+          {
+            "traditional": "歡迎一下",
+            "simplified": "欢迎一下",
+            "pinyin": "huānyíng yíxià"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "慶祝一下"
+            ],
+            "note": "The book form is XYXY, not 一下."
+          },
+          {
+            "placed": [
+              "歡迎歡迎"
+            ],
+            "note": "A birthday is celebrated; 歡迎 means welcome."
+          },
+          {
+            "placed": [
+              "歡迎一下"
+            ],
+            "note": "A birthday is celebrated, not welcomed."
+          }
+        ],
+        "fallbackRepair": "Use 慶祝慶祝: double the verb.",
+        "result": {
+          "traditional": "明天是媽媽的生日，我們要買蛋糕給她慶祝慶祝。",
+          "simplified": "明天是妈妈的生日，我们要买蛋糕给她庆祝庆祝。",
+          "pinyin": "Míngtiān shì māma de shēngrì, wǒmen yào mǎi dàngāo gěi tā qìngzhù qìngzhù.",
+          "english": "Tomorrow is Mom's birthday; we will buy a cake to celebrate a little."
+        }
+      },
+      {
+        "id": "b2l03g5-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "This matter is important; you want to discuss it with a friend. Say 討論 twice.",
+        "promptZh": {
+          "traditional": "這件事很重要。你要跟朋友討論。用「討論」說兩次。",
+          "simplified": "这件事很重要。你要跟朋友讨论。用「讨论」说两次。"
+        },
+        "tiles": [
+          {
+            "traditional": "這件事",
+            "simplified": "这件事",
+            "pinyin": "zhè jiàn shì"
+          },
+          {
+            "traditional": "很重要",
+            "simplified": "很重要",
+            "pinyin": "hěn zhòngyào"
+          },
+          {
+            "traditional": "我要",
+            "simplified": "我要",
+            "pinyin": "wǒ yào"
+          },
+          {
+            "traditional": "跟朋友",
+            "simplified": "跟朋友",
+            "pinyin": "gēn péngyǒu"
+          },
+          {
+            "traditional": "討論討論",
+            "simplified": "讨论讨论",
+            "pinyin": "tǎolùn tǎolùn"
+          },
+          {
+            "traditional": "討論一下",
+            "simplified": "讨论一下",
+            "pinyin": "tǎolùn yíxià"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這件事",
+              "很重要",
+              "我要",
+              "跟朋友",
+              "討論討論"
+            ],
+            "sentence": {
+              "traditional": "這件事很重要，我要跟朋友討論討論。",
+              "simplified": "这件事很重要，我要跟朋友讨论讨论。",
+              "pinyin": "Zhè jiàn shì hěn zhòngyào, wǒ yào gēn péngyǒu tǎolùn tǎolùn.",
+              "english": "This matter is important; I want to discuss it with a friend."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "討論一下"
+            ],
+            "note": "The book form is XYXY, not 一下."
+          }
+        ],
+        "fallbackRepair": "Say 這件事 + 很重要 + 我要 + 跟朋友 + 討論討論."
+      },
+      {
+        "id": "b2l03g5-p5",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You want to discuss this problem with a friend.",
+        "promptZh": {
+          "traditional": "你要跟朋友討論這個問題。",
+          "simplified": "你要跟朋友讨论这个问题。"
+        },
+        "chunks": [
+          {
+            "traditional": "我們",
+            "simplified": "我们"
+          },
+          {
+            "traditional": "要",
+            "simplified": "要"
+          },
+          {
+            "traditional": "討論討論",
+            "simplified": "讨论讨论"
+          },
+          {
+            "traditional": "一下",
+            "simplified": "一下"
+          },
+          {
+            "traditional": "這個問題",
+            "simplified": "这个问题"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 3,
+        "tiles": [
+          {
+            "traditional": "討論",
+            "simplified": "讨论",
+            "pinyin": "tǎolùn"
+          },
+          {
+            "traditional": "討論一下",
+            "simplified": "讨论一下",
+            "pinyin": "tǎolùn yíxià"
+          },
+          {
+            "traditional": "討論討論",
+            "simplified": "讨论讨论",
+            "pinyin": "tǎolùn tǎolùn"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "討論"
+            ],
+            "note": "討論 alone does not fix the extra word; take it out."
+          },
+          {
+            "placed": [
+              "討論一下"
+            ],
+            "note": "討論一下 is a different short form; here you already have 討論討論."
+          },
+          {
+            "placed": [
+              "討論討論"
+            ],
+            "note": "討論討論 is already in the sentence; do not add it again."
+          }
+        ],
+        "hint": "XYXY already means a short, casual action; it cannot take a phrase that adds the same meaning.",
+        "result": {
+          "traditional": "我們要討論討論這個問題。",
+          "simplified": "我们要讨论讨论这个问题。",
+          "pinyin": "Wǒmen yào tǎolùn tǎolùn zhège wèntí.",
+          "english": "We need to discuss this matter a bit."
+        }
+      }
+    ]
+  },
+  "B2L03-G06-P80": {
+    "bookPage": 80,
+    "title": "Practice: V起來",
+    "items": [
+      {
+        "id": "b2l03g6-p1",
+        "source": "p.80 #1",
+        "kind": "slot-build",
+        "prompt": "The older brother says the soup looks good; the younger brother takes a sip and finds it too sweet. Answer with 喝.",
+        "promptZh": {
+          "traditional": "哥哥說雞湯看起來很好喝。弟弟喝了，覺得太甜。用「喝」回答。",
+          "simplified": "哥哥说鸡汤看起来很好喝。弟弟喝了，觉得太甜。用「喝」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "媽媽今天做的雞湯看起來很好喝。",
+                "simplified": "妈妈今天做的鸡汤看起来很好喝。"
+              }
+            ],
+            "speaker": {
+              "traditional": "哥哥",
+              "simplified": "哥哥"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "可是",
+                "simplified": "可是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "喝起來"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "太甜了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "弟弟",
+              "simplified": "弟弟"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "喝起來",
+            "simplified": "喝起来",
+            "pinyin": "hē qǐlái"
+          },
+          {
+            "traditional": "看起來",
+            "simplified": "看起来",
+            "pinyin": "kànqǐlái"
+          },
+          {
+            "traditional": "太甜了",
+            "simplified": "太甜了",
+            "pinyin": "tài tián le"
+          },
+          {
+            "traditional": "很好喝",
+            "simplified": "很好喝",
+            "pinyin": "hěn hǎohē"
+          },
+          {
+            "traditional": "喝",
+            "simplified": "喝",
+            "pinyin": "hē"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看起來"
+            ],
+            "note": "看起來 is about how it looks; he tasted it."
+          },
+          {
+            "placed": [
+              "很好喝"
+            ],
+            "note": "The first speaker already said it looks good; the brother says it is too sweet."
+          },
+          {
+            "placed": [
+              "喝"
+            ],
+            "note": "Use the V起來 pattern: 喝起來."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "太甜了"
+            },
+            "note": "太甜了 is the comment; it comes after 喝起來."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "喝起來"
+            },
+            "note": "喝起來 comes before the comment, not after it."
+          }
+        ],
+        "fallbackRepair": "Put 喝起來 before the comment 太甜了.",
+        "result": {
+          "traditional": "可是喝起來太甜了。",
+          "simplified": "可是喝起来太甜了。",
+          "pinyin": "Kěshì hē qǐlái tài tián le.",
+          "english": "But it tastes too sweet."
+        }
+      },
+      {
+        "id": "b2l03g6-p2",
+        "source": "p.80 #2",
+        "kind": "slot-build",
+        "prompt": "The MRT station is a 20-minute walk away. Answer with 聽.",
+        "promptZh": {
+          "traditional": "捷運站走路要二十分鐘。用「聽」回答。",
+          "simplified": "捷运站走路要二十分钟。用「听」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "離這裡最近的捷運站，走路要二十分鐘。",
+                "simplified": "离这里最近的捷运站，走路要二十分钟。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "聽起來"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "很遠"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "聽起來",
+            "simplified": "听起来",
+            "pinyin": "tīngqǐlái"
+          },
+          {
+            "traditional": "看起來",
+            "simplified": "看起来",
+            "pinyin": "kànqǐlái"
+          },
+          {
+            "traditional": "很遠",
+            "simplified": "很远",
+            "pinyin": "hěn yuǎn"
+          },
+          {
+            "traditional": "很近",
+            "simplified": "很近",
+            "pinyin": "hěn jìn"
+          },
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看起來"
+            ],
+            "note": "You are hearing about the walk, not seeing it."
+          },
+          {
+            "placed": [
+              "很近"
+            ],
+            "note": "Twenty minutes is far, not near."
+          },
+          {
+            "placed": [
+              "聽"
+            ],
+            "note": "Use the V起來 pattern: 聽起來."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "很遠"
+            },
+            "note": "很遠 is the comment; it comes after 聽起來."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "聽起來"
+            },
+            "note": "聽起來 comes before the comment."
+          }
+        ],
+        "fallbackRepair": "Put 聽起來 before the comment 很遠.",
+        "result": {
+          "traditional": "聽起來很遠。",
+          "simplified": "听起来很远。",
+          "pinyin": "Tīngqǐlái hěn yuǎn.",
+          "english": "It sounds far."
+        }
+      },
+      {
+        "id": "b2l03g6-p3",
+        "source": "p.81 #3",
+        "kind": "slot-build",
+        "prompt": "The house is nice and the transportation is convenient, but they have four children. Answer with 住.",
+        "promptZh": {
+          "traditional": "這個房子不錯，交通很方便，可是他們有四個孩子。用「住」回答。",
+          "simplified": "这个房子不错，交通很方便，可是他们有四个孩子。用「住」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我覺得這個房子不錯，交通也很方便。",
+                "simplified": "我觉得这个房子不错，交通也很方便。"
+              }
+            ],
+            "speaker": {
+              "traditional": "先生",
+              "simplified": "先生"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "可是我們有四個孩子，",
+                "simplified": "可是我们有四个孩子，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "住起來"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "太小了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "太太",
+              "simplified": "太太"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "住起來",
+            "simplified": "住起来",
+            "pinyin": "zhù qǐlái"
+          },
+          {
+            "traditional": "看起來",
+            "simplified": "看起来",
+            "pinyin": "kànqǐlái"
+          },
+          {
+            "traditional": "太小了",
+            "simplified": "太小了",
+            "pinyin": "tài xiǎo le"
+          },
+          {
+            "traditional": "太大了",
+            "simplified": "太大了",
+            "pinyin": "tài dà le"
+          },
+          {
+            "traditional": "住",
+            "simplified": "住",
+            "pinyin": "zhù"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看起來"
+            ],
+            "note": "The comment is about living there, not looks."
+          },
+          {
+            "placed": [
+              "太大了"
+            ],
+            "note": "Four children need more space, so it is too small, not too big."
+          },
+          {
+            "placed": [
+              "住"
+            ],
+            "note": "Use the V起來 pattern: 住起來."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "太小了"
+            },
+            "note": "太小了 is the comment; it comes after 住起來."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "住起來"
+            },
+            "note": "住起來 comes before the comment."
+          }
+        ],
+        "fallbackRepair": "Put 住起來 before the comment 太小了.",
+        "result": {
+          "traditional": "可是我們有四個孩子，住起來太小了。",
+          "simplified": "可是我们有四个孩子，住起来太小了。",
+          "pinyin": "Kěshì wǒmen yǒu sì ge háizi, zhù qǐlái tài xiǎo le.",
+          "english": "But we have four children; it is too small to live in."
+        }
+      },
+      {
+        "id": "b2l03g6-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The food at this restaurant tastes good. Say it with 起來.",
+        "promptZh": {
+          "traditional": "這家餐廳的菜很好吃。用「起來」說。",
+          "simplified": "这家餐厅的菜很好吃。用「起来」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "這家",
+            "simplified": "这家",
+            "pinyin": "zhè jiā"
+          },
+          {
+            "traditional": "餐廳",
+            "simplified": "餐厅",
+            "pinyin": "cāntīng"
+          },
+          {
+            "traditional": "的菜",
+            "simplified": "的菜",
+            "pinyin": "de cài"
+          },
+          {
+            "traditional": "吃起來",
+            "simplified": "吃起来",
+            "pinyin": "chī qǐlái"
+          },
+          {
+            "traditional": "很不錯",
+            "simplified": "很不错",
+            "pinyin": "hěn búcuò"
+          },
+          {
+            "traditional": "看起來",
+            "simplified": "看起来",
+            "pinyin": "kànqǐlái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這家",
+              "餐廳",
+              "的菜",
+              "吃起來",
+              "很不錯"
+            ],
+            "sentence": {
+              "traditional": "這家餐廳的菜吃起來很不錯。",
+              "simplified": "这家餐厅的菜吃起来很不错。",
+              "pinyin": "Zhè jiā cāntīng de cài chī qǐlái hěn búcuò.",
+              "english": "The food at this restaurant tastes pretty good."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看起來"
+            ],
+            "note": "You are talking about taste, not looks."
+          }
+        ],
+        "fallbackRepair": "Use 這家 + 餐廳 + 的菜 + 吃起來 + 很不錯."
+      },
+      {
+        "id": "b2l03g6-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You wear these shoes and feel comfortable. Say it with 起來.",
+        "promptZh": {
+          "traditional": "你穿這雙鞋子，覺得很舒服。用「起來」說。",
+          "simplified": "你穿这双鞋子，觉得很舒服。用「起来」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "這雙鞋子",
+            "simplified": "这双鞋子",
+            "pinyin": "zhè shuāng xiézi"
+          },
+          {
+            "traditional": "穿起來",
+            "simplified": "穿起来",
+            "pinyin": "chuān qǐlái"
+          },
+          {
+            "traditional": "很舒服",
+            "simplified": "很舒服",
+            "pinyin": "hěn shūfu"
+          },
+          {
+            "traditional": "看起來",
+            "simplified": "看起来",
+            "pinyin": "kànqǐlái"
+          },
+          {
+            "traditional": "穿",
+            "simplified": "穿",
+            "pinyin": "chuān"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這雙鞋子",
+              "穿起來",
+              "很舒服"
+            ],
+            "sentence": {
+              "traditional": "這雙鞋子穿起來很舒服。",
+              "simplified": "这双鞋子穿起来很舒服。",
+              "pinyin": "Zhè shuāng xiézi chuān qǐlái hěn shūfu.",
+              "english": "These shoes feel comfortable to wear."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看起來"
+            ],
+            "note": "You are talking about how they feel, not how they look."
+          },
+          {
+            "placed": [
+              "穿"
+            ],
+            "note": "Use the V起來 pattern: 穿起來."
+          }
+        ],
+        "fallbackRepair": "Use 這雙鞋子 + 穿起來 + 很舒服."
+      },
+      {
+        "id": "b2l03g6-p6",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Place 看起來 where it belongs.",
+        "promptZh": {
+          "traditional": "把「看起來」放好。",
+          "simplified": "把「看起来」放好。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家餐廳",
+                "simplified": "这家餐厅"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "看起來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很不錯",
+                "simplified": "很不错"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "看起來",
+            "simplified": "看起来",
+            "pinyin": "kànqǐlái"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "看起來"
+            },
+            "note": "看起來 comes before the comment 很不錯, not after it."
+          }
+        ],
+        "fallbackRepair": "Put 看起來 before 很不錯.",
+        "result": {
+          "traditional": "這家餐廳看起來很不錯。",
+          "simplified": "这家餐厅看起来很不错。",
+          "pinyin": "Zhè jiā cāntīng kànqǐlái hěn búcuò.",
+          "english": "This restaurant looks pretty good."
+        },
+        "sub": "你看到一家餐廳，覺得不錯。",
+        "gaps": true
+      }
+    ]
+  },
+  "B2L03-G07-P81": {
+    "bookPage": 81,
+    "title": "Practice: 替",
+    "items": [
+      {
+        "id": "b2l03g7-p1",
+        "source": "p.81 #1",
+        "kind": "order-build",
+        "prompt": "Your friend forgot his wallet. What do you say?",
+        "promptZh": {
+          "traditional": "朋友忘了帶錢包。你說什麼？",
+          "simplified": "朋友忘了带钱包。你说什么？"
+        },
+        "sub": "A：我忘了帶錢包，怎麼辦？",
+        "tiles": [
+          {
+            "traditional": "沒關係",
+            "simplified": "没关系",
+            "pinyin": "méiguānxi"
+          },
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "替你",
+            "simplified": "替你",
+            "pinyin": "tì nǐ"
+          },
+          {
+            "traditional": "付",
+            "simplified": "付",
+            "pinyin": "fù"
+          },
+          {
+            "traditional": "替付你",
+            "simplified": "替付你",
+            "pinyin": "tì fù nǐ"
+          },
+          {
+            "traditional": "幫",
+            "simplified": "帮",
+            "pinyin": "bāng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "沒關係",
+              "我",
+              "替你",
+              "付"
+            ],
+            "sentence": {
+              "traditional": "沒關係，我替你付。",
+              "simplified": "没关系，我替你付。",
+              "pinyin": "Méiguānxi, wǒ tì nǐ fù.",
+              "english": "It is all right; I will pay for you."
+            }
+          },
+          {
+            "order": [
+              "我",
+              "替你",
+              "付"
+            ],
+            "sentence": {
+              "traditional": "我替你付。",
+              "simplified": "我替你付。",
+              "pinyin": "Wǒ tì nǐ fù.",
+              "english": "I will pay for you."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "替付你"
+            ],
+            "note": "替 comes before the person, then the verb: 替你付."
+          },
+          {
+            "placed": [
+              "幫"
+            ],
+            "note": "幫 needs the person after it; here the person 你 is already inside 替你."
+          }
+        ],
+        "fallbackRepair": "Say 沒關係 + 我 + 替你 + 付."
+      },
+      {
+        "id": "b2l03g7-p2",
+        "source": "p.81 #2",
+        "kind": "slot-build",
+        "prompt": "Your friend cannot go to work tomorrow. What do you say?",
+        "promptZh": {
+          "traditional": "朋友明天不能去上班。你怎麼說？",
+          "simplified": "朋友明天不能去上班。你怎么说？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "明天我有事不能去上班，你可以幫我嗎？",
+                "simplified": "明天我有事不能去上班，你可以帮我吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我沒做過你的工作，沒辦法",
+                "simplified": "我没做过你的工作，没办法"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "替你"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "上班"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "替你",
+            "simplified": "替你",
+            "pinyin": "tì nǐ"
+          },
+          {
+            "traditional": "上班",
+            "simplified": "上班",
+            "pinyin": "shàngbān"
+          },
+          {
+            "traditional": "上課",
+            "simplified": "上课",
+            "pinyin": "shàngkè"
+          },
+          {
+            "traditional": "替上班你",
+            "simplified": "替上班你",
+            "pinyin": "tì shàngbān nǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "上課"
+            ],
+            "note": "He is asking about work, not class."
+          },
+          {
+            "placed": [
+              "替上班你"
+            ],
+            "note": "替 comes before the person, then the verb: 替你上班."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "上班"
+            },
+            "note": "上班 is the verb phrase; it comes after 替你."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "替你"
+            },
+            "note": "替你 comes before the verb phrase."
+          }
+        ],
+        "fallbackRepair": "Say 沒辦法 + 替你 + 上班.",
+        "result": {
+          "traditional": "我沒做過你的工作，沒辦法替你上班。",
+          "simplified": "我没做过你的工作，没办法替你上班。",
+          "pinyin": "Wǒ méi zuò guo nǐ de gōngzuò, méi bànfǎ tì nǐ shàngbān.",
+          "english": "I have never done your job; I cannot go to work for you."
+        }
+      },
+      {
+        "id": "b2l03g7-p3",
+        "source": "p.81 #3",
+        "kind": "slot-build",
+        "prompt": "Your younger brother doesn't want to do his homework and asks you to do it. What do you say?",
+        "promptZh": {
+          "traditional": "弟弟不想寫作業，請你寫他的作業。哥哥說什麼？",
+          "simplified": "弟弟不想写作业，请你写他的作业。哥哥说什么？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不知道怎麼寫這個作業，你可以替我寫嗎？",
+                "simplified": "我不知道怎么写这个作业，你可以替我写吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "弟弟",
+              "simplified": "弟弟"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "如果媽媽知道我",
+                "simplified": "如果妈妈知道我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "替你"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "寫作業"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，她會打我們！",
+                "simplified": "，她会打我们！"
+              }
+            ],
+            "speaker": {
+              "traditional": "哥哥",
+              "simplified": "哥哥"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "替你",
+            "simplified": "替你",
+            "pinyin": "tì nǐ"
+          },
+          {
+            "traditional": "寫作業",
+            "simplified": "写作业",
+            "pinyin": "xiě zuòyè"
+          },
+          {
+            "traditional": "替寫你",
+            "simplified": "替写你",
+            "pinyin": "tì xiě nǐ"
+          },
+          {
+            "traditional": "作業寫",
+            "simplified": "作业写",
+            "pinyin": "zuòyè xiě"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "替寫你"
+            ],
+            "note": "替 comes before the person, then the verb: 替你寫作業."
+          },
+          {
+            "placed": [
+              "作業寫"
+            ],
+            "note": "作業寫 reverses the verb and object; say 寫作業."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "寫作業"
+            },
+            "note": "寫作業 is the verb phrase; it comes after 替你."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "替你"
+            },
+            "note": "替你 comes before the verb phrase."
+          }
+        ],
+        "fallbackRepair": "Say 知道我 + 替你 + 寫作業.",
+        "result": {
+          "traditional": "如果媽媽知道我替你寫作業，她會打我們！",
+          "simplified": "如果妈妈知道我替你写作业，她会打我们！",
+          "pinyin": "Rúguǒ māma zhīdào wǒ tì nǐ xiě zuòyè, tā huì dǎ wǒmen!",
+          "english": "If Mom knows I did your homework for you, she will hit us!"
+        }
+      },
+      {
+        "id": "b2l03g7-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You want your friend to get you a glass of water. Say it with 替.",
+        "promptZh": {
+          "traditional": "你要朋友幫你拿一杯水。用「替」說。",
+          "simplified": "你要朋友帮你拿一杯水。用「替」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "請你",
+            "simplified": "请你",
+            "pinyin": "qǐng nǐ"
+          },
+          {
+            "traditional": "替我",
+            "simplified": "替我",
+            "pinyin": "tì wǒ"
+          },
+          {
+            "traditional": "拿",
+            "simplified": "拿",
+            "pinyin": "ná"
+          },
+          {
+            "traditional": "一杯水",
+            "simplified": "一杯水",
+            "pinyin": "yì bēi shuǐ"
+          },
+          {
+            "traditional": "我替你",
+            "simplified": "我替你",
+            "pinyin": "wǒ tì nǐ"
+          },
+          {
+            "traditional": "拿水",
+            "simplified": "拿水",
+            "pinyin": "ná shuǐ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請你",
+              "替我",
+              "拿",
+              "一杯水"
+            ],
+            "sentence": {
+              "traditional": "請你替我拿一杯水。",
+              "simplified": "请你替我拿一杯水。",
+              "pinyin": "Qǐng nǐ tì wǒ ná yì bēi shuǐ.",
+              "english": "Please get me a glass of water."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "我替你"
+            ],
+            "note": "The person doing the favor is 你, so say 替你."
+          },
+          {
+            "placed": [
+              "拿水"
+            ],
+            "note": "Use 一杯水: the measure phrase comes with 水."
+          }
+        ],
+        "fallbackRepair": "Say 請你 + 替我 + 拿 + 一杯水."
+      },
+      {
+        "id": "b2l03g7-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your sister is busy. Say with 替 that you clean her room for her.",
+        "promptZh": {
+          "traditional": "姐姐很忙。用「替」說你幫她打掃房間。",
+          "simplified": "姐姐很忙。用「替」说你帮她打扫房间。"
+        },
+        "tiles": [
+          {
+            "traditional": "姐姐",
+            "simplified": "姐姐",
+            "pinyin": "jiějie"
+          },
+          {
+            "traditional": "很忙",
+            "simplified": "很忙",
+            "pinyin": "hěn máng"
+          },
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "替她",
+            "simplified": "替她",
+            "pinyin": "tì tā"
+          },
+          {
+            "traditional": "打掃房間",
+            "simplified": "打扫房间",
+            "pinyin": "dǎsǎo fángjiān"
+          },
+          {
+            "traditional": "替她打掃",
+            "simplified": "替她打扫",
+            "pinyin": "tì tā dǎsǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "姐姐",
+              "很忙",
+              "我",
+              "替她",
+              "打掃房間"
+            ],
+            "sentence": {
+              "traditional": "姐姐很忙，我替她打掃房間。",
+              "simplified": "姐姐很忙，我替她打扫房间。",
+              "pinyin": "Jiějie hěn máng, wǒ tì tā dǎsǎo fángjiān.",
+              "english": "My sister is busy, so I clean her room for her."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "替她打掃"
+            ],
+            "note": "打掃 needs its object 房間: 打掃房間."
+          }
+        ],
+        "fallbackRepair": "Say 姐姐 + 很忙 + 我 + 替她 + 打掃房間."
+      },
+      {
+        "id": "b2l03g7-p6",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your friend doesn't know how to set up the internet, so you do it.",
+        "promptZh": {
+          "traditional": "朋友不會裝網路，你來裝。",
+          "simplified": "朋友不会装网路，你来装。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "替",
+            "simplified": "替"
+          },
+          {
+            "traditional": "裝",
+            "simplified": "装"
+          },
+          {
+            "traditional": "網路",
+            "simplified": "网路"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "替你",
+            "simplified": "替你",
+            "pinyin": "tì nǐ"
+          },
+          {
+            "traditional": "幫",
+            "simplified": "帮",
+            "pinyin": "bāng"
+          },
+          {
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "幫"
+            ],
+            "note": "幫 also needs the person right after it: 幫你; here 你 is after the verb."
+          },
+          {
+            "placed": [
+              "給"
+            ],
+            "note": "給 does not mean doing something for someone here."
+          }
+        ],
+        "hint": "The person you do the favor for comes right after the word that means for.",
+        "result": {
+          "traditional": "我替你裝網路。",
+          "simplified": "我替你装网路。",
+          "pinyin": "Wǒ tì nǐ zhuāng wǎnglù.",
+          "english": "I will set up the internet for you."
+        },
+        "fix": "替你",
+        "takeOutNote": "Taking out 替 leaves 我裝網路, which does not say who the internet is for."
+      }
+    ]
+  },
+  "B2L03-G08-P86": {
+    "bookPage": 86,
+    "title": "Practice: 除了……還……",
+    "items": [
+      {
+        "id": "b2l03g8-p1",
+        "source": "p.86 #1",
+        "kind": "slot-build",
+        "prompt": "There is a convenience store and a supermarket outside the school. Answer with 除了…還….",
+        "promptZh": {
+          "traditional": "學校外面有便利商店，也有超市。用「除了…還…」回答。",
+          "simplified": "学校外面有便利商店，也有超市。用「除了…还…」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "學校外面有沒有便利商店？",
+                "simplified": "学校外面有没有便利商店？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "有，",
+                "simplified": "有，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "除了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "便利商店，",
+                "simplified": "便利商店，"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "還有"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "超市。",
+                "simplified": "超市。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "除了",
+            "simplified": "除了",
+            "pinyin": "chúle"
+          },
+          {
+            "traditional": "還有",
+            "simplified": "还有",
+            "pinyin": "hái yǒu"
+          },
+          {
+            "traditional": "也",
+            "simplified": "也",
+            "pinyin": "yě"
+          },
+          {
+            "traditional": "但是",
+            "simplified": "但是",
+            "pinyin": "dànshì"
+          },
+          {
+            "traditional": "因為",
+            "simplified": "因为",
+            "pinyin": "yīnwèi"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "也"
+            ],
+            "note": "With 除了, use 還有 for the second point; 也 alone does not add the supermarket."
+          },
+          {
+            "placed": [
+              "但是"
+            ],
+            "note": "但是 marks contrast; the supermarket is an addition."
+          },
+          {
+            "placed": [
+              "因為"
+            ],
+            "note": "因為 gives a reason; here you are adding a second place."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "還有"
+            },
+            "note": "還有 introduces the second item; it comes after the first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "除了"
+            },
+            "note": "除了 introduces the first item, not the second."
+          }
+        ],
+        "fallbackRepair": "Say 有 + 除了 + 便利商店 + 還有 + 超市.",
+        "result": {
+          "traditional": "有，除了便利商店，還有超市。",
+          "simplified": "有，除了便利商店，还有超市。",
+          "pinyin": "Yǒu, chúle biànlì shāngdiàn, hái yǒu chāoshì.",
+          "english": "Yes; besides the convenience store, there is also a supermarket."
+        }
+      },
+      {
+        "id": "b2l03g8-p2",
+        "source": "p.86 #2",
+        "kind": "slot-build",
+        "prompt": "The rent for that apartment is $15,000 a month. Answer with 除了…還….",
+        "promptZh": {
+          "traditional": "那棟公寓的房租一個月一萬五千塊。用「除了…還…」回答。",
+          "simplified": "那栋公寓的房租一个月一万五千块。用「除了…还…」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那棟公寓看起來不錯，你為什麼不租？",
+                "simplified": "那栋公寓看起来不错，你为什么不租？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "除了"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "房租太貴"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，還要自己裝網路，所以我不要租。",
+                "simplified": "，还要自己装网路，所以我不要租。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "除了",
+            "simplified": "除了",
+            "pinyin": "chúle"
+          },
+          {
+            "traditional": "房租太貴",
+            "simplified": "房租太贵",
+            "pinyin": "fángzū tài guì"
+          },
+          {
+            "traditional": "房租便宜",
+            "simplified": "房租便宜",
+            "pinyin": "fángzū piányí"
+          },
+          {
+            "traditional": "環境很好",
+            "simplified": "环境很好",
+            "pinyin": "huánjìng hěn hǎo"
+          },
+          {
+            "traditional": "也",
+            "simplified": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "房租便宜"
+            ],
+            "note": "Cheap rent is a reason to rent, but the sentence says you will not rent."
+          },
+          {
+            "placed": [
+              "環境很好"
+            ],
+            "note": "A good environment is a reason to rent; the sentence gives reasons not to."
+          },
+          {
+            "placed": [
+              "也"
+            ],
+            "note": "With 除了, the second reason takes 還, not 也."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "房租太貴"
+            },
+            "note": "房租太貴 is the reason; it comes after 除了."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "除了"
+            },
+            "note": "除了 introduces the reason; it comes before 房租太貴."
+          }
+        ],
+        "fallbackRepair": "Put 除了 before 房租太貴.",
+        "result": {
+          "traditional": "除了房租太貴，還要自己裝網路，所以我不要租。",
+          "simplified": "除了房租太贵，还要自己装网路，所以我不要租。",
+          "pinyin": "Chúle fángzū tài guì, hái yào zìjǐ zhuāng wǎnglù, suǒyǐ wǒ bú yào zū.",
+          "english": "Besides the rent being too expensive, I would also have to set up the internet myself, so I do not want to rent it."
+        }
+      },
+      {
+        "id": "b2l03g8-p3",
+        "source": "p.86 #3",
+        "kind": "slot-build",
+        "prompt": "Your roommate stays up late at night, makes the room dirty, and is loud. Answer with 除了…還….",
+        "promptZh": {
+          "traditional": "室友晚上不睡覺，房間也弄得很髒，聲音很大。用「除了…還…」回答。",
+          "simplified": "室友晚上不睡觉，房间也弄得很脏，声音很大。用「除了…还…」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你為什麼要搬出去？宿舍不好嗎？",
+                "simplified": "你为什么要搬出去？宿舍不好吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我跟室友除了",
+                "simplified": "我跟室友除了"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "生活習慣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "不一樣，他還",
+                "simplified": "不一样，他还"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "很吵"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，所以我要搬家。",
+                "simplified": "，所以我要搬家。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "生活習慣",
+            "simplified": "生活习惯",
+            "pinyin": "shēnghuó xíguàn"
+          },
+          {
+            "traditional": "天氣",
+            "simplified": "天气",
+            "pinyin": "tiānqì"
+          },
+          {
+            "traditional": "很吵",
+            "simplified": "很吵",
+            "pinyin": "hěn chǎo"
+          },
+          {
+            "traditional": "很安靜",
+            "simplified": "很安静",
+            "pinyin": "hěn ānjìng"
+          },
+          {
+            "traditional": "環境",
+            "simplified": "环境",
+            "pinyin": "huánjìng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "天氣"
+            ],
+            "note": "The problem is the roommate habits, not the weather."
+          },
+          {
+            "placed": [
+              "很安靜"
+            ],
+            "note": "A quiet roommate would not make you move out."
+          },
+          {
+            "placed": [
+              "環境"
+            ],
+            "note": "The pattern needs the roommate's habit here; 環境 is not a habit."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "很吵"
+            },
+            "note": "很吵 is the comment after 他還; it belongs in the second blank."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "生活習慣"
+            },
+            "note": "生活習慣 is the habit noun; it belongs in the first blank."
+          }
+        ],
+        "fallbackRepair": "Say 除了 + 生活習慣 + 不一樣, 他還 + 很吵.",
+        "result": {
+          "traditional": "我跟室友除了生活習慣不一樣，他還很吵，所以我要搬家。",
+          "simplified": "我跟室友除了生活习惯不一样，他还很吵，所以我要搬家。",
+          "pinyin": "Wǒ gēn shìyǒu chúle shēnghuó xíguàn bù yíyàng, tā hái hěn chǎo, suǒyǐ wǒ yào bānjiā.",
+          "english": "Besides having different living habits, my roommate is also very noisy, so I want to move."
+        }
+      },
+      {
+        "id": "b2l03g8-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You like tea and also like coffee. Say it with 除了…還….",
+        "promptZh": {
+          "traditional": "你喜歡喝茶，也喜歡喝咖啡。用「除了…還…」說。",
+          "simplified": "你喜欢喝茶，也喜欢喝咖啡。用「除了…还…」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "除了",
+            "simplified": "除了",
+            "pinyin": "chúle"
+          },
+          {
+            "traditional": "茶",
+            "simplified": "茶",
+            "pinyin": "chá"
+          },
+          {
+            "traditional": "還喜歡",
+            "simplified": "还喜欢",
+            "pinyin": "hái xǐhuān"
+          },
+          {
+            "traditional": "咖啡",
+            "simplified": "咖啡",
+            "pinyin": "kāfēi"
+          },
+          {
+            "traditional": "但是",
+            "simplified": "但是",
+            "pinyin": "dànshì"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "除了",
+              "茶",
+              "還喜歡",
+              "咖啡"
+            ],
+            "sentence": {
+              "traditional": "我除了茶，還喜歡咖啡。",
+              "simplified": "我除了茶，还喜欢咖啡。",
+              "pinyin": "Wǒ chúle chá, hái xǐhuān kāfēi.",
+              "english": "Besides tea, I also like coffee."
+            }
+          },
+          {
+            "order": [
+              "除了",
+              "茶",
+              "我",
+              "還喜歡",
+              "咖啡"
+            ],
+            "sentence": {
+              "traditional": "除了茶，我還喜歡咖啡。",
+              "simplified": "除了茶，我还喜欢咖啡。",
+              "pinyin": "Chúle chá, wǒ hái xǐhuān kāfēi.",
+              "english": "Besides tea, I also like coffee."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "但是"
+            ],
+            "note": "但是 marks contrast; coffee is an addition, not a contrast."
+          }
+        ],
+        "fallbackRepair": "Say 我 + 除了 + 茶 + 還喜歡 + 咖啡."
+      },
+      {
+        "id": "b2l03g8-p5",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "The food at this restaurant is quite good, and it is comfortable inside. Say it with 除了…還….",
+        "promptZh": {
+          "traditional": "這家餐廳的菜很不錯，裡面也很舒服。用「除了…還…」說。",
+          "simplified": "这家餐厅的菜很不错，里面也很舒服。用「除了…还…」说。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這家餐廳除了",
+                "simplified": "这家餐厅除了"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "菜很好吃"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，",
+                "simplified": "，"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "環境"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "還很好。",
+                "simplified": "还很好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "菜很好吃",
+            "simplified": "菜很好吃",
+            "pinyin": "cài hěn hǎochī"
+          },
+          {
+            "traditional": "環境",
+            "simplified": "环境",
+            "pinyin": "huánjìng"
+          },
+          {
+            "traditional": "天氣",
+            "simplified": "天气",
+            "pinyin": "tiānqì"
+          },
+          {
+            "traditional": "很安靜",
+            "simplified": "很安静",
+            "pinyin": "hěn ānjìng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "天氣"
+            ],
+            "note": "The restaurant's food, not the weather, is the first point."
+          },
+          {
+            "placed": [
+              "很安靜"
+            ],
+            "note": "很安靜 is a comment; the second blank needs the thing that is nice: 環境."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "環境"
+            },
+            "note": "環境 is the thing that is nice; it belongs in the second blank, before 還."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "菜很好吃"
+            },
+            "note": "菜很好吃 is the first point after 除了; it belongs in the first blank."
+          }
+        ],
+        "fallbackRepair": "Say 這家餐廳除了 + 菜很好吃, 環境 + 還很好.",
+        "result": {
+          "traditional": "這家餐廳除了菜很好吃，環境還很好。",
+          "simplified": "这家餐厅除了菜很好吃，环境还很好。",
+          "pinyin": "Zhè jiā cāntīng chúle cài hěn hǎochī, huánjìng hái hěn hǎo.",
+          "english": "Besides the food being good, this restaurant's environment is also very nice."
+        },
+        "successNote": "With different subjects, put the second subject (環境) before 還."
+      }
+    ]
+  },
+  "B2L03-G09-P87": {
+    "bookPage": 87,
+    "title": "Practice: 把 + V得",
+    "allowWords": [
+      "林小姐",
+      "難看"
+    ],
+    "items": [
+      {
+        "id": "b2l03g9-p1",
+        "source": "p.87 #1",
+        "kind": "order-build",
+        "prompt": "Your sister cleaned the bedroom yesterday; it is very clean now. Say it with 把 and 得.",
+        "promptZh": {
+          "traditional": "妹妹昨天打掃臥室，現在很乾淨。用「把」和「得」說。",
+          "simplified": "妹妹昨天打扫卧室，现在很干净。用「把」和「得」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "妹妹昨天",
+            "simplified": "妹妹昨天",
+            "pinyin": "mèimei zuótiān"
+          },
+          {
+            "traditional": "把臥室",
+            "simplified": "把卧室",
+            "pinyin": "bǎ wòshì"
+          },
+          {
+            "traditional": "打掃",
+            "simplified": "打扫",
+            "pinyin": "dǎsǎo"
+          },
+          {
+            "traditional": "得",
+            "simplified": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "很乾淨",
+            "simplified": "很干净",
+            "pinyin": "hěn gānjìng"
+          },
+          {
+            "traditional": "打掃完",
+            "simplified": "打扫完",
+            "pinyin": "dǎsǎo wán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "妹妹昨天",
+              "把臥室",
+              "打掃",
+              "得",
+              "很乾淨"
+            ],
+            "sentence": {
+              "traditional": "妹妹昨天把臥室打掃得很乾淨。",
+              "simplified": "妹妹昨天把卧室打扫得很干净。",
+              "pinyin": "Mèimei zuótiān bǎ wòshì dǎsǎo de hěn gānjìng.",
+              "english": "My sister cleaned the bedroom until it was very clean yesterday."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "打掃完"
+            ],
+            "note": "打掃完 means finished cleaning; the comment 很乾淨 needs 得."
+          }
+        ],
+        "fallbackRepair": "Say 妹妹昨天 + 把臥室 + 打掃 + 得 + 很乾淨."
+      },
+      {
+        "id": "b2l03g9-p2",
+        "source": "p.87 #2",
+        "kind": "slot-build",
+        "prompt": "He writes his name and it looks very bad. Ask him why.",
+        "promptZh": {
+          "traditional": "他寫自己的名字，看起來很難看。你問他為什麼。",
+          "simplified": "他写自己的名字，看起来很难看。你问他为什么。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你為什麼把自己的名字",
+                "simplified": "你为什么把自己的名字"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "寫"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "那麼難看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？",
+                "simplified": "？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "寫",
+            "simplified": "写",
+            "pinyin": "xiě"
+          },
+          {
+            "traditional": "得",
+            "simplified": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "那麼難看",
+            "simplified": "那么难看",
+            "pinyin": "nàme nánkàn"
+          },
+          {
+            "traditional": "寫得",
+            "simplified": "写得",
+            "pinyin": "xiě de"
+          },
+          {
+            "traditional": "寫了",
+            "simplified": "写了",
+            "pinyin": "xiě le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "寫得"
+            ],
+            "note": "寫得 joins the verb and 得; here 寫 and 得 each have their own place."
+          },
+          {
+            "placed": [
+              "寫了"
+            ],
+            "note": "了 marks a finished action; the comment 那麼難看 needs 得."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得"
+            },
+            "note": "得 follows the verb; put 寫 first."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "那麼難看"
+            },
+            "note": "那麼難看 is the comment; it comes after 得."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "寫"
+            },
+            "note": "寫 is the verb; it fills the first blank."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "那麼難看"
+            },
+            "note": "那麼難看 is the comment; it comes after 得."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "寫"
+            },
+            "note": "寫 is the verb; it fills the first blank."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "得"
+            },
+            "note": "得 goes between the verb and the comment, in the second blank."
+          }
+        ],
+        "fallbackRepair": "Use 寫 + 得 + 那麼難看: 你為什麼把自己的名字寫得那麼難看？",
+        "successNote": "寫 and 得 are separate words: 寫 + 得 + the comment.",
+        "result": {
+          "traditional": "你為什麼把自己的名字寫得那麼難看？",
+          "simplified": "你为什么把自己的名字写得那么难看？",
+          "pinyin": "Nǐ wèishénme bǎ zìjǐ de míngzi xiě de nàme nánkàn?",
+          "english": "Why do you write your own name so badly?"
+        }
+      },
+      {
+        "id": "b2l03g9-p3",
+        "source": "p.87 #3",
+        "kind": "slot-build",
+        "prompt": "Miss Lin's new home is very pretty. Say it with 把 and 得.",
+        "promptZh": {
+          "traditional": "林小姐的新家很漂亮。用「把」和「得」說。",
+          "simplified": "林小姐的新家很漂亮。用「把」和「得」说。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "林小姐把新家的客廳",
+                "simplified": "林小姐把新家的客厅"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "弄"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "很漂亮"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "弄",
+            "simplified": "弄",
+            "pinyin": "nòng"
+          },
+          {
+            "traditional": "得",
+            "simplified": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "很漂亮",
+            "simplified": "很漂亮",
+            "pinyin": "hěn piàoliàng"
+          },
+          {
+            "traditional": "弄得",
+            "simplified": "弄得",
+            "pinyin": "nòng de"
+          },
+          {
+            "traditional": "弄了",
+            "simplified": "弄了",
+            "pinyin": "nòng le"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "弄得"
+            ],
+            "note": "弄得 joins the verb and 得; here 弄 and 得 each have their own place."
+          },
+          {
+            "placed": [
+              "弄了"
+            ],
+            "note": "了 marks a finished action; the comment 很漂亮 needs 得."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得"
+            },
+            "note": "得 follows the verb; put 弄 first."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "很漂亮"
+            },
+            "note": "很漂亮 is the comment; it comes after 得."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "弄"
+            },
+            "note": "弄 is the verb; it fills the first blank."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "很漂亮"
+            },
+            "note": "很漂亮 is the comment; it comes after 得."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "弄"
+            },
+            "note": "弄 is the verb; it fills the first blank."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "得"
+            },
+            "note": "得 goes between the verb and the comment, in the second blank."
+          }
+        ],
+        "fallbackRepair": "Use 弄 + 得 + 很漂亮: 林小姐把新家的客廳弄得很漂亮。",
+        "successNote": "弄 and 得 are separate words: 弄 + 得 + the comment.",
+        "result": {
+          "traditional": "林小姐把新家的客廳弄得很漂亮。",
+          "simplified": "林小姐把新家的客厅弄得很漂亮。",
+          "pinyin": "Lín xiǎojiě bǎ xīn jiā de kètīng nòng de hěn piàoliàng.",
+          "english": "Miss Lin made the living room of her new home very pretty."
+        }
+      },
+      {
+        "id": "b2l03g9-p4",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your brother kicked the soccer ball; the ball went far away.",
+        "promptZh": {
+          "traditional": "弟弟踢足球，球跑到很遠的地方。",
+          "simplified": "弟弟踢足球，球跑到很远的地方。"
+        },
+        "chunks": [
+          {
+            "traditional": "弟弟",
+            "simplified": "弟弟"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把"
+          },
+          {
+            "traditional": "足球",
+            "simplified": "足球"
+          },
+          {
+            "traditional": "踢了",
+            "simplified": "踢了"
+          },
+          {
+            "traditional": "很遠",
+            "simplified": "很远"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 3,
+        "tiles": [
+          {
+            "traditional": "踢得",
+            "simplified": "踢得",
+            "pinyin": "tī de"
+          },
+          {
+            "traditional": "踢了",
+            "simplified": "踢了",
+            "pinyin": "tī le"
+          },
+          {
+            "traditional": "踢",
+            "simplified": "踢",
+            "pinyin": "tī"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "踢了"
+            ],
+            "note": "了 marks a finished action; the comment 很遠 needs 得."
+          },
+          {
+            "placed": [
+              "踢"
+            ],
+            "note": "踢 alone does not connect to the comment 很遠; use 踢得."
+          }
+        ],
+        "hint": "The comment 很遠 needs the degree pattern, not a finished-action marker.",
+        "result": {
+          "traditional": "弟弟把足球踢得很遠。",
+          "simplified": "弟弟把足球踢得很远。",
+          "pinyin": "Dìdi bǎ zúqiú tī de hěn yuǎn.",
+          "english": "My younger brother kicked the soccer ball very far."
+        },
+        "fix": "踢得",
+        "takeOutNote": "Taking out 踢了 leaves 弟弟把足球很遠, which has no verb."
+      },
+      {
+        "id": "b2l03g9-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "This matter is already strange. Tell him not to make it stranger. Say it with 把 and 得.",
+        "promptZh": {
+          "traditional": "這件事已經很奇怪。你叫他不要再弄。用「把」和「得」說。",
+          "simplified": "这件事已经很奇怪。你叫他不要再弄。用「把」和「得」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "請你",
+            "simplified": "请你",
+            "pinyin": "qǐng nǐ"
+          },
+          {
+            "traditional": "不要",
+            "simplified": "不要",
+            "pinyin": "búyào"
+          },
+          {
+            "traditional": "把這件事",
+            "simplified": "把这件事",
+            "pinyin": "bǎ zhè jiàn shì"
+          },
+          {
+            "traditional": "弄得更",
+            "simplified": "弄得更",
+            "pinyin": "nòng de gèng"
+          },
+          {
+            "traditional": "奇怪",
+            "simplified": "奇怪",
+            "pinyin": "qíguài"
+          },
+          {
+            "traditional": "更奇怪",
+            "simplified": "更奇怪",
+            "pinyin": "gèng qíguài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請你",
+              "不要",
+              "把這件事",
+              "弄得更",
+              "奇怪"
+            ],
+            "sentence": {
+              "traditional": "請你不要把這件事弄得更奇怪。",
+              "simplified": "请你不要把这件事弄得更奇怪。",
+              "pinyin": "Qǐng nǐ búyào bǎ zhè jiàn shì nòng de gèng qíguài.",
+              "english": "Please do not make this matter even stranger."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "更奇怪"
+            ],
+            "note": "更 is already in 弄得更; do not repeat it."
+          }
+        ],
+        "fallbackRepair": "Say 請你 + 不要 + 把這件事 + 弄得更 + 奇怪."
+      }
+    ]
+  }
+}

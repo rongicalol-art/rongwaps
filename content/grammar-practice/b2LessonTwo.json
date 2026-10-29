@@ -1,0 +1,4899 @@
+{
+  "B2L02-G01-P51": {
+    "bookPage": 51,
+    "title": "Practice: 把+N+V了",
+    "allowWords": [
+      "字典"
+    ],
+    "items": [
+      {
+        "id": "b2l02g1-p1",
+        "source": "p.51 #1",
+        "kind": "order-build",
+        "prompt": "Use 把 to say that you sold your old dictionary.",
+        "promptZh": {
+          "traditional": "用「把」說舊的字典是你賣的。",
+          "simplified": "用「把」说旧的字典是你卖的。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "舊的",
+            "simplified": "旧的",
+            "pinyin": "jiù de"
+          },
+          {
+            "traditional": "字典",
+            "simplified": "字典",
+            "pinyin": "zìdiǎn"
+          },
+          {
+            "traditional": "賣了",
+            "simplified": "卖了",
+            "pinyin": "mài le"
+          },
+          {
+            "traditional": "買了",
+            "simplified": "买了",
+            "pinyin": "mǎi le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "把",
+              "舊的",
+              "字典",
+              "賣了"
+            ],
+            "sentence": {
+              "traditional": "我把舊的字典賣了。",
+              "simplified": "我把旧的字典卖了。",
+              "pinyin": "Wǒ bǎ jiù de zìdiǎn mài le.",
+              "english": "I sold my old dictionary."
+            }
+          },
+          {
+            "order": [
+              "把",
+              "舊的",
+              "字典",
+              "賣了"
+            ],
+            "sentence": {
+              "traditional": "把舊的字典賣了。",
+              "simplified": "把旧的字典卖了。",
+              "pinyin": "Bǎ jiù de zìdiǎn mài le.",
+              "english": "Sold the old dictionary."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "買了"
+            ],
+            "note": "You are selling the old dictionary, not buying it; use 賣了."
+          }
+        ],
+        "fallbackRepair": "Put 把 before the thing you sell, and end the verb with 了."
+      },
+      {
+        "id": "b2l02g1-p2",
+        "source": "p.51 #2",
+        "kind": "order-build",
+        "prompt": "Ask who ate the cake you bought.",
+        "promptZh": {
+          "traditional": "問誰吃了你買的蛋糕。",
+          "simplified": "问谁吃了你买的蛋糕。"
+        },
+        "tiles": [
+          {
+            "traditional": "誰",
+            "simplified": "谁",
+            "pinyin": "shéi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "我買的",
+            "simplified": "我买的",
+            "pinyin": "wǒ mǎi de"
+          },
+          {
+            "traditional": "蛋糕",
+            "simplified": "蛋糕",
+            "pinyin": "dàngāo"
+          },
+          {
+            "traditional": "吃了",
+            "simplified": "吃了",
+            "pinyin": "chī le"
+          },
+          {
+            "traditional": "賣了",
+            "simplified": "卖了",
+            "pinyin": "mài le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "誰",
+              "把",
+              "我買的",
+              "蛋糕",
+              "吃了"
+            ],
+            "sentence": {
+              "traditional": "誰把我買的蛋糕吃了？",
+              "simplified": "谁把我买的蛋糕吃了？",
+              "pinyin": "Shéi bǎ wǒ mǎi de dàngāo chī le?",
+              "english": "Who ate the cake I bought?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "賣了"
+            ],
+            "note": "The cake was eaten, not sold; use 吃了."
+          }
+        ],
+        "fallbackRepair": "Ask 誰 + 把 + the thing + 吃了."
+      },
+      {
+        "id": "b2l02g1-p3",
+        "source": "p.51 #3",
+        "kind": "order-build",
+        "prompt": "You threw away the novels you did not want yesterday. Say it with 把.",
+        "promptZh": {
+          "traditional": "你昨天丟了不要的小說。用「把」說。",
+          "simplified": "你昨天丢了不要的小说。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我昨天",
+            "simplified": "我昨天",
+            "pinyin": "wǒ zuótiān"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "不要的",
+            "simplified": "不要的",
+            "pinyin": "bú yào de"
+          },
+          {
+            "traditional": "小說",
+            "simplified": "小说",
+            "pinyin": "xiǎoshuō"
+          },
+          {
+            "traditional": "丟了",
+            "simplified": "丢了",
+            "pinyin": "diū le"
+          },
+          {
+            "traditional": "丟在",
+            "simplified": "丢在",
+            "pinyin": "diū zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我昨天",
+              "把",
+              "不要的",
+              "小說",
+              "丟了"
+            ],
+            "sentence": {
+              "traditional": "我昨天把不要的小說丟了。",
+              "simplified": "我昨天把不要的小说丢了。",
+              "pinyin": "Wǒ zuótiān bǎ bú yào de xiǎoshuō diū le.",
+              "english": "I threw away the novels I did not want yesterday."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "丟在"
+            ],
+            "note": "丟在 needs a place after it; this sentence ends with 丟了."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 不要的小說; the verb needs 了."
+      },
+      {
+        "id": "b2l02g1-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your friend asks whether you ate the cake yesterday. Say you did not.",
+        "promptZh": {
+          "traditional": "朋友問你昨天吃了蛋糕沒有。你說沒有。",
+          "simplified": "朋友问你昨天吃了蛋糕没有。你说没有。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "蛋糕",
+            "simplified": "蛋糕",
+            "pinyin": "dàngāo"
+          },
+          {
+            "traditional": "吃了",
+            "simplified": "吃了",
+            "pinyin": "chī le"
+          },
+          {
+            "traditional": "不",
+            "simplified": "不",
+            "pinyin": "bù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "沒",
+              "把",
+              "蛋糕",
+              "吃了"
+            ],
+            "sentence": {
+              "traditional": "我沒把蛋糕吃了。",
+              "simplified": "我没把蛋糕吃了。",
+              "pinyin": "Wǒ méi bǎ dàngāo chī le.",
+              "english": "I did not eat the cake."
+            }
+          },
+          {
+            "order": [
+              "沒",
+              "把",
+              "蛋糕",
+              "吃了"
+            ],
+            "sentence": {
+              "traditional": "沒把蛋糕吃了。",
+              "simplified": "没把蛋糕吃了。",
+              "pinyin": "Méi bǎ dàngāo chī le.",
+              "english": "Did not eat the cake."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "note": "Use 沒 for something that did not happen; 不 before 把 refuses to do it."
+          }
+        ],
+        "fallbackRepair": "Put 沒 before 把."
+      },
+      {
+        "id": "b2l02g1-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your younger brother took your pencil. Say it with 把.",
+        "promptZh": {
+          "traditional": "弟弟拿了你的鉛筆。用「把」說。",
+          "simplified": "弟弟拿了你的铅笔。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "弟弟",
+            "simplified": "弟弟",
+            "pinyin": "dìdi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "我的",
+            "simplified": "我的",
+            "pinyin": "wǒ de"
+          },
+          {
+            "traditional": "鉛筆",
+            "simplified": "铅笔",
+            "pinyin": "qiānbǐ"
+          },
+          {
+            "traditional": "拿了",
+            "simplified": "拿了",
+            "pinyin": "ná le"
+          },
+          {
+            "traditional": "拿在",
+            "simplified": "拿在",
+            "pinyin": "ná zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "弟弟",
+              "把",
+              "我的",
+              "鉛筆",
+              "拿了"
+            ],
+            "sentence": {
+              "traditional": "弟弟把我的鉛筆拿了。",
+              "simplified": "弟弟把我的铅笔拿了。",
+              "pinyin": "Dìdi bǎ wǒ de qiānbǐ ná le.",
+              "english": "My younger brother took my pencil."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "拿在"
+            ],
+            "note": "拿在 needs a place after it; here the sentence ends with 拿了."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 我的鉛筆 and end with 拿了."
+      }
+    ]
+  },
+  "B2L02-G02-P51": {
+    "bookPage": 51,
+    "title": "Practice: 把+N+V完",
+    "items": [
+      {
+        "id": "b2l02g2-p1",
+        "source": "p.52 #1",
+        "kind": "slot-build",
+        "prompt": "Your friend asks when you will come over. Say you will come after you finish your calligraphy homework.",
+        "promptZh": {
+          "traditional": "朋友問你什麼時候去他家。你要先寫完書法。",
+          "simplified": "朋友问你什么时候去他家。你要先写完书法。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你什麼時候來我家？",
+                "simplified": "你什么时候来我家？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我",
+                "simplified": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "把"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "書法"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "寫完"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "就去。",
+                "simplified": "就去。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "書法",
+            "simplified": "书法",
+            "pinyin": "shūfǎ"
+          },
+          {
+            "traditional": "寫完",
+            "simplified": "写完",
+            "pinyin": "xiě wán"
+          },
+          {
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi"
+          },
+          {
+            "traditional": "寫了",
+            "simplified": "写了",
+            "pinyin": "xiě le"
+          }
+        ],
+        "result": {
+          "traditional": "我把書法寫完就去。",
+          "simplified": "我把书法写完就去。",
+          "pinyin": "Wǒ bǎ shūfǎ xiě wán jiù qù.",
+          "english": "I will go after I finish my calligraphy homework."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "給"
+            ],
+            "note": "給 marks a recipient; use 把 for the thing you finish."
+          },
+          {
+            "placed": [
+              "寫了"
+            ],
+            "note": "寫了 says you wrote it, not that you finished it; use 寫完."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "書法"
+            },
+            "note": "書法 is the object; 把 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "寫完"
+            },
+            "note": "寫完 is the result; 把 comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "把"
+            },
+            "note": "把 is the marker, not the object."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "寫完"
+            },
+            "note": "寫完 is the result; the object 書法 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "把"
+            },
+            "note": "把 is the marker, not the result."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "書法"
+            },
+            "note": "書法 is the object; the result 寫完 ends the phrase."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 書法 and 完 after 寫."
+      },
+      {
+        "id": "b2l02g2-p2",
+        "source": "p.52 #2",
+        "kind": "order-build",
+        "prompt": "The wife asks whether the dishes are washed. You are still reading the newspaper.",
+        "promptZh": {
+          "traditional": "太太問碗筷洗了沒有。你還在看報紙。",
+          "simplified": "太太问碗筷洗了没有。你还在看报纸。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "還沒",
+            "simplified": "还没",
+            "pinyin": "hái méi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "報紙",
+            "simplified": "报纸",
+            "pinyin": "bàozhǐ"
+          },
+          {
+            "traditional": "看完",
+            "simplified": "看完",
+            "pinyin": "kàn wán"
+          },
+          {
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "還沒",
+              "把",
+              "報紙",
+              "看完"
+            ],
+            "sentence": {
+              "traditional": "我還沒把報紙看完。",
+              "simplified": "我还没把报纸看完。",
+              "pinyin": "Wǒ hái méi bǎ bàozhǐ kàn wán.",
+              "english": "I have not finished reading the newspaper yet."
+            }
+          },
+          {
+            "order": [
+              "還沒",
+              "把",
+              "報紙",
+              "看完"
+            ],
+            "sentence": {
+              "traditional": "還沒把報紙看完。",
+              "simplified": "还没把报纸看完。",
+              "pinyin": "Hái méi bǎ bàozhǐ kàn wán.",
+              "english": "Have not finished reading the newspaper yet."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "已經"
+            ],
+            "note": "已經 would say you finished it; you are still reading, so use 還沒."
+          }
+        ],
+        "fallbackRepair": "Put 沒 before 把 and 完 after 看.",
+        "sub": "太太：碗筷、刀叉，你都洗了嗎？"
+      },
+      {
+        "id": "b2l02g2-p3",
+        "source": "p.52 #3",
+        "kind": "order-build",
+        "prompt": "Your child wants to watch TV now. Tell him to finish dinner first.",
+        "promptZh": {
+          "traditional": "孩子現在就想看電視。媽媽要他先吃完晚飯。",
+          "simplified": "孩子现在就想看电视。妈妈要他先吃完晚饭。"
+        },
+        "tiles": [
+          {
+            "traditional": "你",
+            "simplified": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "晚飯",
+            "simplified": "晚饭",
+            "pinyin": "wǎnfàn"
+          },
+          {
+            "traditional": "吃完",
+            "simplified": "吃完",
+            "pinyin": "chī wán"
+          },
+          {
+            "traditional": "再看電視",
+            "simplified": "再看电视",
+            "pinyin": "zài kàn diànshì"
+          },
+          {
+            "traditional": "看完",
+            "simplified": "看完",
+            "pinyin": "kàn wán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "把",
+              "晚飯",
+              "吃完",
+              "再看電視"
+            ],
+            "sentence": {
+              "traditional": "你把晚飯吃完再看電視。",
+              "simplified": "你把晚饭吃完再看电视。",
+              "pinyin": "Nǐ bǎ wǎnfàn chī wán zài kàn diànshì.",
+              "english": "Finish your dinner first, then watch TV."
+            }
+          },
+          {
+            "order": [
+              "把",
+              "晚飯",
+              "吃完",
+              "再看電視"
+            ],
+            "sentence": {
+              "traditional": "把晚飯吃完再看電視。",
+              "simplified": "把晚饭吃完再看电视。",
+              "pinyin": "Bǎ wǎnfàn chī wán zài kàn diànshì.",
+              "english": "Finish your dinner first, then watch TV."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看完"
+            ],
+            "note": "看完 means finish watching; put 再 before 看電視."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 晚飯 and 再 before 看電視.",
+        "sub": "孩子：可是我現在就想看！"
+      },
+      {
+        "id": "b2l02g2-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your brother is watching TV and has not finished his homework. What do you say to him?",
+        "promptZh": {
+          "traditional": "弟弟在看電視，功課還沒寫完。你跟他說什麼？",
+          "simplified": "弟弟在看电视，功课还没写完。你跟他说什么？"
+        },
+        "tiles": [
+          {
+            "traditional": "請你",
+            "simplified": "请你",
+            "pinyin": "qǐng nǐ"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "功課",
+            "simplified": "功课",
+            "pinyin": "gōngkè"
+          },
+          {
+            "traditional": "寫完",
+            "simplified": "写完",
+            "pinyin": "xiě wán"
+          },
+          {
+            "traditional": "完寫",
+            "simplified": "完写",
+            "pinyin": "wán xiě"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請你",
+              "把",
+              "功課",
+              "寫完"
+            ],
+            "sentence": {
+              "traditional": "請你把功課寫完。",
+              "simplified": "请你把功课写完。",
+              "pinyin": "Qǐng nǐ bǎ gōngkè xiě wán.",
+              "english": "Please finish your homework."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "完寫"
+            ],
+            "note": "完 comes after the verb: 寫完."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 功課 and 完 after 寫."
+      },
+      {
+        "id": "b2l02g2-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your younger brother has finished eating. Say it with 把.",
+        "promptZh": {
+          "traditional": "弟弟吃完飯了。用「把」說一次。",
+          "simplified": "弟弟吃完饭了。用「把」说一次。"
+        },
+        "tiles": [
+          {
+            "traditional": "弟弟",
+            "simplified": "弟弟",
+            "pinyin": "dìdi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "飯",
+            "simplified": "饭",
+            "pinyin": "fàn"
+          },
+          {
+            "traditional": "吃完",
+            "simplified": "吃完",
+            "pinyin": "chī wán"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "看完",
+            "simplified": "看完",
+            "pinyin": "kàn wán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "弟弟",
+              "把",
+              "飯",
+              "吃完",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "弟弟把飯吃完了。",
+              "simplified": "弟弟把饭吃完了。",
+              "pinyin": "Dìdi bǎ fàn chī wán le.",
+              "english": "My younger brother finished his food."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看完"
+            ],
+            "note": "You do not watch rice; you eat it, so use 吃完."
+          }
+        ],
+        "fallbackRepair": "Say 弟弟 + 把 + 飯 + 吃完 + 了."
+      }
+    ]
+  },
+  "B2L02-G03-P52": {
+    "bookPage": 52,
+    "title": "Practice: 把+N+V一V",
+    "allowWords": [
+      "價錢"
+    ],
+    "items": [
+      {
+        "id": "b2l02g3-p1",
+        "source": "p.53 #1",
+        "kind": "slot-build",
+        "prompt": "Before buying a phone, you check prices online first. Say it with 把 and 查價錢.",
+        "promptZh": {
+          "traditional": "買手機以前，先上網查價錢。用「把」說。",
+          "simplified": "买手机以前，先上网查价钱。用「把」说。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "買手機以前，我先上網",
+                "simplified": "买手机以前，我先上网"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "把"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "價錢"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "查一查"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "再去買。",
+                "simplified": "再去买。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "價錢",
+            "simplified": "价钱",
+            "pinyin": "jiàqián"
+          },
+          {
+            "traditional": "查一查",
+            "simplified": "查一查",
+            "pinyin": "chá yī chá"
+          },
+          {
+            "traditional": "查價錢",
+            "simplified": "查价钱",
+            "pinyin": "chá jiàqián"
+          },
+          {
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi"
+          }
+        ],
+        "result": {
+          "traditional": "買手機以前，我先上網把價錢查一查再去買。",
+          "simplified": "买手机以前，我先上网把价钱查一查再去买。",
+          "pinyin": "Mǎi shǒujī yǐqián, wǒ xiān shàngwǎng bǎ jiàqián chá yī chá zài qù mǎi.",
+          "english": "Before buying a phone, I check the prices online first and then go buy it."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "查價錢"
+            ],
+            "note": "The object is already after 把; use just the verb 查一查."
+          },
+          {
+            "placed": [
+              "給"
+            ],
+            "note": "給 marks a recipient; use 把."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "價錢"
+            },
+            "note": "價錢 is the object; 把 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "查一查"
+            },
+            "note": "查一查 is the verb; 把 comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "把"
+            },
+            "note": "把 is the marker, not the object."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "查一查"
+            },
+            "note": "查一查 is the verb; the object 價錢 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "把"
+            },
+            "note": "把 is the marker, not the verb."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "價錢"
+            },
+            "note": "價錢 is the object; the verb 查一查 ends the phrase."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 價錢, and repeat 查 as 查一查."
+      },
+      {
+        "id": "b2l02g3-p2",
+        "source": "p.53 #2",
+        "kind": "slot-build",
+        "prompt": "The teacher says you can go home after a quick bit of homework. Complete her sentence.",
+        "promptZh": {
+          "traditional": "老師說：寫一點功課就可以回家了。",
+          "simplified": "老师说：写一点功课就可以回家了。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你們",
+                "simplified": "你们"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "把"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "功課"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "寫一寫"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "就可以回家了。",
+                "simplified": "就可以回家了。"
+              }
+            ],
+            "speaker": {
+              "traditional": "老師",
+              "simplified": "老师"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "功課",
+            "simplified": "功课",
+            "pinyin": "gōngkè"
+          },
+          {
+            "traditional": "寫一寫",
+            "simplified": "写一写",
+            "pinyin": "xiě yī xiě"
+          },
+          {
+            "traditional": "寫功課",
+            "simplified": "写功课",
+            "pinyin": "xiě gōngkè"
+          },
+          {
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi"
+          }
+        ],
+        "result": {
+          "traditional": "老師說：「你們把功課寫一寫就可以回家了。」",
+          "simplified": "老师说：「你们把功课写一写就可以回家了。」",
+          "pinyin": "Lǎoshī shuō: Nǐmen bǎ gōngkè xiě yī xiě jiù kěyǐ huí jiā le.",
+          "english": "The teacher said, “You can go home after you do a bit of homework.”"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "寫功課"
+            ],
+            "note": "The object is already after 把; use just the verb 寫一寫."
+          },
+          {
+            "placed": [
+              "給"
+            ],
+            "note": "給 marks a recipient; use 把."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "功課"
+            },
+            "note": "功課 is the object; 把 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "寫一寫"
+            },
+            "note": "寫一寫 is the verb; 把 comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "把"
+            },
+            "note": "把 is the marker, not the object."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "寫一寫"
+            },
+            "note": "寫一寫 is the verb; the object 功課 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "把"
+            },
+            "note": "把 is the marker, not the verb."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "功課"
+            },
+            "note": "功課 is the object; the verb 寫一寫 ends the phrase."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 功課 and repeat 寫 as 寫一寫."
+      },
+      {
+        "id": "b2l02g3-p3",
+        "source": "p.53 #3",
+        "kind": "slot-build",
+        "prompt": "Mom asks her child to wipe the table. What does she say?",
+        "promptZh": {
+          "traditional": "媽媽請孩子擦桌子。她怎麼說？",
+          "simplified": "妈妈请孩子擦桌子。她怎么说？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你可以幫我把桌子",
+                "simplified": "你可以帮我把桌子"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "擦一擦"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "嗎？",
+                "simplified": "吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "媽媽",
+              "simplified": "妈妈"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我晚一點兒再擦，現在要跟朋友去看球賽呢！",
+                "simplified": "我晚一点儿再擦，现在要跟朋友去看球赛呢！"
+              }
+            ],
+            "speaker": {
+              "traditional": "孩子",
+              "simplified": "孩子"
+            }
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "擦一擦",
+            "simplified": "擦一擦",
+            "pinyin": "cā yī cā"
+          },
+          {
+            "traditional": "擦桌子",
+            "simplified": "擦桌子",
+            "pinyin": "cā zhuōzi"
+          },
+          {
+            "traditional": "洗一洗",
+            "simplified": "洗一洗",
+            "pinyin": "xǐ yī xǐ"
+          }
+        ],
+        "result": {
+          "traditional": "媽媽：「你可以幫我把桌子擦一擦嗎？」",
+          "simplified": "妈妈：「你可以帮我把桌子擦一擦吗？」",
+          "pinyin": "Māma: Nǐ kěyǐ bāng wǒ bǎ zhuōzi cā yī cā ma?",
+          "english": "Mom: “Can you help me give the table a quick wipe?”"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "擦桌子"
+            ],
+            "note": "The object is already after 把; use just the verb 擦一擦."
+          },
+          {
+            "placed": [
+              "洗一洗"
+            ],
+            "note": "Tables are wiped, not washed."
+          }
+        ],
+        "fallbackRepair": "Use V一V after 把桌子 to make the request gentler."
+      },
+      {
+        "id": "b2l02g3-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The room is a little dirty; your sister gave it a quick sweep. Say it with 把.",
+        "promptZh": {
+          "traditional": "房間有一點兒髒，妹妹掃了一下。用「把」說。",
+          "simplified": "房间有一点儿脏，妹妹扫了一下。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "妹妹",
+            "simplified": "妹妹",
+            "pinyin": "mèimei"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "房間",
+            "simplified": "房间",
+            "pinyin": "fángjiān"
+          },
+          {
+            "traditional": "掃一掃",
+            "simplified": "扫一扫",
+            "pinyin": "sǎo yī sǎo"
+          },
+          {
+            "traditional": "打掃一打",
+            "simplified": "打扫一打",
+            "pinyin": "dǎsǎo yī dǎ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "妹妹",
+              "把",
+              "房間",
+              "掃一掃"
+            ],
+            "sentence": {
+              "traditional": "妹妹把房間掃一掃。",
+              "simplified": "妹妹把房间扫一扫。",
+              "pinyin": "Mèimei bǎ fángjiān sǎo yī sǎo.",
+              "english": "My sister gave the room a quick sweep."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "打掃一打"
+            ],
+            "note": "V一V only takes one-syllable verbs; 打掃 is two syllables, so use 掃一掃."
+          }
+        ],
+        "fallbackRepair": "Use a one-syllable verb: 掃一掃."
+      },
+      {
+        "id": "b2l02g3-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your friend wants to watch the ball game, but the bowls are not washed. Ask him to wash them first.",
+        "promptZh": {
+          "traditional": "朋友想去看球賽，碗還沒洗。請他先洗。",
+          "simplified": "朋友想去看球赛，碗还没洗。请他先洗。"
+        },
+        "tiles": [
+          {
+            "traditional": "請你先",
+            "simplified": "请你先",
+            "pinyin": "qǐng nǐ xiān"
+          },
+          {
+            "traditional": "把碗",
+            "simplified": "把碗",
+            "pinyin": "bǎ wǎn"
+          },
+          {
+            "traditional": "洗一洗",
+            "simplified": "洗一洗",
+            "pinyin": "xǐ yī xǐ"
+          },
+          {
+            "traditional": "再去",
+            "simplified": "再去",
+            "pinyin": "zài qù"
+          },
+          {
+            "traditional": "看球賽",
+            "simplified": "看球赛",
+            "pinyin": "kàn qiúsài"
+          },
+          {
+            "traditional": "洗一洗碗",
+            "simplified": "洗一洗碗",
+            "pinyin": "xǐ yī xǐ wǎn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請你先",
+              "把碗",
+              "洗一洗",
+              "再去",
+              "看球賽"
+            ],
+            "sentence": {
+              "traditional": "請你先把碗洗一洗再去看球賽。",
+              "simplified": "请你先把碗洗一洗再去看球赛。",
+              "pinyin": "Qǐng nǐ xiān bǎ wǎn xǐ yī xǐ zài qù kàn qiúsài.",
+              "english": "Please wash the bowls first, then go watch the ball game."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "洗一洗碗"
+            ],
+            "note": "V一V repeats only the verb; 碗 is already after 把: use 洗一洗."
+          }
+        ],
+        "fallbackRepair": "Put 先 before 把碗, and use 洗一洗 before 再去."
+      }
+    ]
+  },
+  "B2L02-G04-P53": {
+    "bookPage": 53,
+    "title": "Practice: 把+N+V給",
+    "allowWords": [
+      "張小姐",
+      "唱給"
+    ],
+    "items": [
+      {
+        "id": "b2l02g4-p1",
+        "source": "p.53 #1",
+        "kind": "order-build",
+        "prompt": "You gave Miss Zhang a gift yesterday. Say it with 把.",
+        "promptZh": {
+          "traditional": "你昨天送給張小姐一個禮物。用「把」說。",
+          "simplified": "你昨天送给张小姐一个礼物。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我昨天就",
+            "simplified": "我昨天就",
+            "pinyin": "wǒ zuótiān jiù"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "禮物",
+            "simplified": "礼物",
+            "pinyin": "lǐwù"
+          },
+          {
+            "traditional": "送給",
+            "simplified": "送给",
+            "pinyin": "sòng gěi"
+          },
+          {
+            "traditional": "張小姐了",
+            "simplified": "张小姐了",
+            "pinyin": "Zhāng xiǎojiě le"
+          },
+          {
+            "traditional": "送去了",
+            "simplified": "送去了",
+            "pinyin": "sòng qù le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我昨天就",
+              "把",
+              "禮物",
+              "送給",
+              "張小姐了"
+            ],
+            "sentence": {
+              "traditional": "我昨天就把禮物送給張小姐了。",
+              "simplified": "我昨天就把礼物送给张小姐了。",
+              "pinyin": "Wǒ zuótiān jiù bǎ lǐwù sòng gěi Zhāng xiǎojiě le.",
+              "english": "I gave the gift to Miss Zhang yesterday."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "送去了"
+            ],
+            "note": "送去了 does not say who received it; 送給 marks the person."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 禮物 and 送給 before 張小姐."
+      },
+      {
+        "id": "b2l02g4-p2",
+        "source": "p.53 #2",
+        "kind": "order-build",
+        "prompt": "Mom did not mail the birthday card to your brother. Ask with 是不是.",
+        "promptZh": {
+          "traditional": "媽媽沒寄生日卡片給哥哥。用「是不是」問。",
+          "simplified": "妈妈没寄生日卡片给哥哥。用「是不是」问。"
+        },
+        "tiles": [
+          {
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma"
+          },
+          {
+            "traditional": "是不是沒",
+            "simplified": "是不是没",
+            "pinyin": "shì bú shì méi"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "生日卡片",
+            "simplified": "生日卡片",
+            "pinyin": "shēngrì kǎpiàn"
+          },
+          {
+            "traditional": "寄給哥哥",
+            "simplified": "寄给哥哥",
+            "pinyin": "jì gěi gēge"
+          },
+          {
+            "traditional": "送給",
+            "simplified": "送给",
+            "pinyin": "sòng gěi"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "媽媽",
+              "是不是沒",
+              "把",
+              "生日卡片",
+              "寄給哥哥"
+            ],
+            "sentence": {
+              "traditional": "媽媽是不是沒把生日卡片寄給哥哥？",
+              "simplified": "妈妈是不是没把生日卡片寄给哥哥？",
+              "pinyin": "Māma shì bú shì méi bǎ shēngrì kǎpiàn jì gěi gēge?",
+              "english": "Did Mom not mail the birthday card to my brother?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "送給"
+            ],
+            "note": "The card was mailed, not handed over; use 寄給哥哥."
+          }
+        ],
+        "fallbackRepair": "Put 把 after 是不是沒, and use 寄給哥哥 for the person mailed to."
+      },
+      {
+        "id": "b2l02g4-p3",
+        "source": "p.53 #3",
+        "kind": "order-build",
+        "prompt": "He wants to sing that Chinese song to you. Ask him to sing it.",
+        "promptZh": {
+          "traditional": "他想唱那首中文歌給你聽。請他唱。",
+          "simplified": "他想唱那首中文歌给你听。请他唱。"
+        },
+        "tiles": [
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "那首",
+            "simplified": "那首",
+            "pinyin": "nà shǒu"
+          },
+          {
+            "traditional": "中文歌",
+            "simplified": "中文歌",
+            "pinyin": "Zhōngwén gē"
+          },
+          {
+            "traditional": "唱給我聽",
+            "simplified": "唱给我听",
+            "pinyin": "chàng gěi wǒ tīng"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "唱給他聽",
+            "simplified": "唱给他听",
+            "pinyin": "chàng gěi tā tīng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "把",
+              "那首",
+              "中文歌",
+              "唱給我聽",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "把那首中文歌唱給我聽嗎？",
+              "simplified": "把那首中文歌唱给我听吗？",
+              "pinyin": "Bǎ nà shǒu Zhōngwén gē chàng gěi wǒ tīng ma?",
+              "english": "Sing that Chinese song to me?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "唱給他聽"
+            ],
+            "note": "The request is for you, not for him: 唱給我聽."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 那首中文歌, and 唱給我聽 before 嗎."
+      },
+      {
+        "id": "b2l02g4-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your older sister is abroad. Mom mailed the birthday gift to her. Say it with 把.",
+        "promptZh": {
+          "traditional": "姐姐在外國。媽媽寄生日禮物給她了。用「把」說。",
+          "simplified": "姐姐在外国。妈妈寄生日礼物给她了。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "生日禮物",
+            "simplified": "生日礼物",
+            "pinyin": "shēngrì lǐwù"
+          },
+          {
+            "traditional": "寄給",
+            "simplified": "寄给",
+            "pinyin": "jì gěi"
+          },
+          {
+            "traditional": "姐姐了",
+            "simplified": "姐姐了",
+            "pinyin": "jiějie le"
+          },
+          {
+            "traditional": "送給",
+            "simplified": "送给",
+            "pinyin": "sòng gěi"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "媽媽",
+              "把",
+              "生日禮物",
+              "寄給",
+              "姐姐了"
+            ],
+            "sentence": {
+              "traditional": "媽媽把生日禮物寄給姐姐了。",
+              "simplified": "妈妈把生日礼物寄给姐姐了。",
+              "pinyin": "Māma bǎ shēngrì lǐwù jì gěi jiějie le.",
+              "english": "Mom mailed the birthday gift to my older sister."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "送給"
+            ],
+            "note": "送給 means hand it over; the gift was mailed, so use 寄給."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 生日禮物 and 寄給 before 姐姐."
+      },
+      {
+        "id": "b2l02g4-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "He is selling his bicycle; a friend wants to buy it. He sold it. Say it with 把.",
+        "promptZh": {
+          "traditional": "他要賣腳踏車，朋友要買。他賣了。用「把」說。",
+          "simplified": "他要卖脚踏车，朋友要买。他卖了。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "腳踏車",
+            "simplified": "脚踏车",
+            "pinyin": "jiǎotàchē"
+          },
+          {
+            "traditional": "賣給",
+            "simplified": "卖给",
+            "pinyin": "mài gěi"
+          },
+          {
+            "traditional": "朋友了",
+            "simplified": "朋友了",
+            "pinyin": "péngyǒu le"
+          },
+          {
+            "traditional": "賣了",
+            "simplified": "卖了",
+            "pinyin": "mài le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "把",
+              "腳踏車",
+              "賣給",
+              "朋友了"
+            ],
+            "sentence": {
+              "traditional": "他把腳踏車賣給朋友了。",
+              "simplified": "他把脚踏车卖给朋友了。",
+              "pinyin": "Tā bǎ jiǎotàchē mài gěi péngyǒu le.",
+              "english": "He sold his bicycle to a friend."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "賣了"
+            ],
+            "note": "賣了 does not say who bought it; 賣給 introduces the buyer."
+          }
+        ],
+        "fallbackRepair": "Put 把 before 腳踏車 and 賣給 before 朋友."
+      }
+    ]
+  },
+  "B2L02-G05-P54": {
+    "bookPage": 54,
+    "title": "Practice: （有）多+Vs",
+    "items": [
+      {
+        "id": "b2l02g5-p1",
+        "source": "p.54 #1",
+        "kind": "order-build",
+        "prompt": "Your younger sister is eighteen this year. Ask how old she is, using 大.",
+        "promptZh": {
+          "traditional": "妹妹今年十八歲。用「大」問她。",
+          "simplified": "妹妹今年十八岁。用「大」问她。"
+        },
+        "tiles": [
+          {
+            "traditional": "你妹妹",
+            "simplified": "你妹妹",
+            "pinyin": "nǐ mèimei"
+          },
+          {
+            "traditional": "多大",
+            "simplified": "多大",
+            "pinyin": "duō dà"
+          },
+          {
+            "traditional": "幾歲",
+            "simplified": "几岁",
+            "pinyin": "jǐ suì"
+          },
+          {
+            "traditional": "多高",
+            "simplified": "多高",
+            "pinyin": "duō gāo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你妹妹",
+              "多大"
+            ],
+            "sentence": {
+              "traditional": "你妹妹多大？",
+              "simplified": "你妹妹多大？",
+              "pinyin": "Nǐ mèimei duō dà?",
+              "english": "How old is your younger sister?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "幾歲"
+            ],
+            "note": "幾歲 also asks age, but the cue is 大: use 多大."
+          },
+          {
+            "placed": [
+              "多高"
+            ],
+            "note": "多高 asks height, not age."
+          }
+        ],
+        "fallbackRepair": "Ask age with 多大."
+      },
+      {
+        "id": "b2l02g5-p2",
+        "source": "p.54 #2",
+        "kind": "order-build",
+        "prompt": "Ask how expensive the concert tickets are, using 貴.",
+        "promptZh": {
+          "traditional": "用「貴」問那場演唱會的票。",
+          "simplified": "用「贵」问那场演唱会的票。"
+        },
+        "tiles": [
+          {
+            "traditional": "聽說那場",
+            "simplified": "听说那场",
+            "pinyin": "tīngshuō nà chǎng"
+          },
+          {
+            "traditional": "演唱會",
+            "simplified": "演唱会",
+            "pinyin": "yǎnchànghuì"
+          },
+          {
+            "traditional": "的票",
+            "simplified": "的票",
+            "pinyin": "de piào"
+          },
+          {
+            "traditional": "很貴",
+            "simplified": "很贵",
+            "pinyin": "hěn guì"
+          },
+          {
+            "traditional": "有多貴",
+            "simplified": "有多贵",
+            "pinyin": "yǒu duō guì"
+          },
+          {
+            "traditional": "多少錢",
+            "simplified": "多少钱",
+            "pinyin": "duōshǎo qián"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "聽說那場",
+              "演唱會",
+              "的票",
+              "很貴",
+              "有多貴"
+            ],
+            "sentence": {
+              "traditional": "聽說那場演唱會的票很貴，有多貴？",
+              "simplified": "听说那场演唱会的票很贵，有多贵？",
+              "pinyin": "Tīngshuō nà chǎng yǎnchànghuì de piào hěn guì, yǒu duō guì?",
+              "english": "I heard the concert tickets are expensive. How expensive are they?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "多少錢"
+            ],
+            "note": "多少錢 asks the price directly, but the cue is 貴: use 有多貴."
+          }
+        ],
+        "fallbackRepair": "Use 有多貴 for the degree of 貴."
+      },
+      {
+        "id": "b2l02g5-p3",
+        "source": "p.54 #3",
+        "kind": "order-build",
+        "prompt": "You weigh seventy-five kilos now. Ask how heavy you are, using 重.",
+        "promptZh": {
+          "traditional": "你現在七十五公斤。用「重」問你自己。",
+          "simplified": "你现在七十五公斤。用「重」问你自己。"
+        },
+        "tiles": [
+          {
+            "traditional": "你現在",
+            "simplified": "你现在",
+            "pinyin": "nǐ xiànzài"
+          },
+          {
+            "traditional": "多重",
+            "simplified": "多重",
+            "pinyin": "duō zhòng"
+          },
+          {
+            "traditional": "幾公斤",
+            "simplified": "几公斤",
+            "pinyin": "jǐ gōngjīn"
+          },
+          {
+            "traditional": "太重",
+            "simplified": "太重",
+            "pinyin": "tài zhòng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你現在",
+              "多重"
+            ],
+            "sentence": {
+              "traditional": "你現在多重？",
+              "simplified": "你现在多重？",
+              "pinyin": "Nǐ xiànzài duō zhòng?",
+              "english": "How heavy are you now?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "幾公斤"
+            ],
+            "note": "幾公斤 asks for kilos directly; the cue is 重, so use 多重."
+          },
+          {
+            "placed": [
+              "太重"
+            ],
+            "note": "太重 states “too heavy”; it does not ask."
+          }
+        ],
+        "fallbackRepair": "Use 多重 for the degree of 重."
+      },
+      {
+        "id": "b2l02g5-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Ask how far your home is from the station.",
+        "promptZh": {
+          "traditional": "問你家和車站有多遠。",
+          "simplified": "问你家和车站有多远。"
+        },
+        "tiles": [
+          {
+            "traditional": "你家",
+            "simplified": "你家",
+            "pinyin": "nǐ jiā"
+          },
+          {
+            "traditional": "離",
+            "simplified": "离",
+            "pinyin": "lí"
+          },
+          {
+            "traditional": "車站",
+            "simplified": "车站",
+            "pinyin": "chēzhàn"
+          },
+          {
+            "traditional": "有多遠",
+            "simplified": "有多远",
+            "pinyin": "yǒu duō yuǎn"
+          },
+          {
+            "traditional": "很遠",
+            "simplified": "很远",
+            "pinyin": "hěn yuǎn"
+          },
+          {
+            "traditional": "多長",
+            "simplified": "多长",
+            "pinyin": "duō cháng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你家",
+              "離",
+              "車站",
+              "有多遠"
+            ],
+            "sentence": {
+              "traditional": "你家離車站有多遠？",
+              "simplified": "你家离车站有多远？",
+              "pinyin": "Nǐ jiā lí chēzhàn yǒu duō yuǎn?",
+              "english": "How far is your home from the station?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很遠"
+            ],
+            "note": "很遠 states the distance; it does not ask."
+          },
+          {
+            "placed": [
+              "多長"
+            ],
+            "note": "多長 asks length; distance is 多遠."
+          }
+        ],
+        "fallbackRepair": "Use 離 … 有多遠."
+      },
+      {
+        "id": "b2l02g5-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Ask how long this river is.",
+        "promptZh": {
+          "traditional": "問這條河多長。",
+          "simplified": "问这条河多长。"
+        },
+        "tiles": [
+          {
+            "traditional": "這條",
+            "simplified": "这条",
+            "pinyin": "zhè tiáo"
+          },
+          {
+            "traditional": "河",
+            "simplified": "河",
+            "pinyin": "hé"
+          },
+          {
+            "traditional": "有多長",
+            "simplified": "有多长",
+            "pinyin": "yǒu duō cháng"
+          },
+          {
+            "traditional": "多遠",
+            "simplified": "多远",
+            "pinyin": "duō yuǎn"
+          },
+          {
+            "traditional": "很長",
+            "simplified": "很长",
+            "pinyin": "hěn cháng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這條",
+              "河",
+              "有多長"
+            ],
+            "sentence": {
+              "traditional": "這條河有多長？",
+              "simplified": "这条河有多长？",
+              "pinyin": "Zhè tiáo hé yǒu duō cháng?",
+              "english": "How long is this river?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "多遠"
+            ],
+            "note": "多遠 asks distance; the length of a river is 多長."
+          },
+          {
+            "placed": [
+              "很長"
+            ],
+            "note": "很長 states it is long; it does not ask."
+          }
+        ],
+        "fallbackRepair": "Use 有多長 for length."
+      }
+    ]
+  },
+  "B2L02-G06-P54": {
+    "bookPage": 54,
+    "title": "Practice: 時間+沒V了",
+    "allowWords": [
+      "林先生"
+    ],
+    "items": [
+      {
+        "id": "b2l02g6-p1",
+        "source": "p.55 #1",
+        "kind": "order-build",
+        "prompt": "Your friend has very dirty hair. Ask how long it has been.",
+        "promptZh": {
+          "traditional": "朋友的頭髮很髒。問他有多久。",
+          "simplified": "朋友的头发很脏。问他有多久。"
+        },
+        "tiles": [
+          {
+            "traditional": "你",
+            "simplified": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "多久",
+            "simplified": "多久",
+            "pinyin": "duōjiǔ"
+          },
+          {
+            "traditional": "沒洗",
+            "simplified": "没洗",
+            "pinyin": "méi xǐ"
+          },
+          {
+            "traditional": "頭髮",
+            "simplified": "头发",
+            "pinyin": "tóufǎ"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "沒打掃",
+            "simplified": "没打扫",
+            "pinyin": "méi dǎsǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "多久",
+              "沒洗",
+              "頭髮",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "你多久沒洗頭髮了？",
+              "simplified": "你多久没洗头发了？",
+              "pinyin": "Nǐ duōjiǔ méi xǐ tóufǎ le?",
+              "english": "How long has it been since you washed your hair?"
+            }
+          },
+          {
+            "order": [
+              "多久",
+              "沒洗",
+              "頭髮",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "多久沒洗頭髮了？",
+              "simplified": "多久没洗头发了？",
+              "pinyin": "Duōjiǔ méi xǐ tóufǎ le?",
+              "english": "How long has it been since you washed your hair?"
+            }
+          },
+          {
+            "order": [
+              "你",
+              "頭髮",
+              "多久",
+              "沒洗",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "你頭髮多久沒洗了？",
+              "simplified": "你头发多久没洗了？",
+              "pinyin": "Nǐ tóufǎ duōjiǔ méi xǐ le?",
+              "english": "How long has it been since you washed your hair?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒打掃"
+            ],
+            "note": "The hair is dirty; ask about washing it, not cleaning the room."
+          }
+        ],
+        "fallbackRepair": "Put the duration after 你 and before 沒洗."
+      },
+      {
+        "id": "b2l02g6-p2",
+        "source": "p.55 #2",
+        "kind": "slot-build",
+        "prompt": "Mr. Lin does not like to talk. Say how long he can go without speaking.",
+        "promptZh": {
+          "traditional": "林先生不喜歡說話。說他能多久不說話。",
+          "simplified": "林先生不喜欢说话。说他能多久不说话。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "林先生非常不喜歡說話。",
+                "simplified": "林先生非常不喜欢说话。"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "對啊，我想他能",
+                "simplified": "对啊，我想他能"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "半年"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "說話"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "半年",
+            "simplified": "半年",
+            "pinyin": "bàn nián"
+          },
+          {
+            "traditional": "不",
+            "simplified": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "說話",
+            "simplified": "说话",
+            "pinyin": "shuōhuà"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "一個月",
+            "simplified": "一个月",
+            "pinyin": "yí ge yuè"
+          }
+        ],
+        "result": {
+          "traditional": "我想他能半年不說話。",
+          "simplified": "我想他能半年不说话。",
+          "pinyin": "Wǒ xiǎng tā néng bàn nián bù shuōhuà.",
+          "english": "I think he can go half a year without speaking."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "沒"
+            ],
+            "note": "Use 不 for an ability or habit; 沒 would mean he has not spoken."
+          },
+          {
+            "placed": [
+              "一個月"
+            ],
+            "note": "January to June is half a year, not one month."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不"
+            },
+            "note": "不 comes before the verb, not at the start."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "說話"
+            },
+            "note": "說話 is the verb; the duration 半年 comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "半年"
+            },
+            "note": "半年 is the duration; 不 comes before the verb."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "說話"
+            },
+            "note": "說話 is the verb; 不 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "半年"
+            },
+            "note": "半年 is the duration; the verb 說話 comes last."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "不"
+            },
+            "note": "不 comes before the verb; the verb 說話 ends the phrase."
+          }
+        ],
+        "fallbackRepair": "Put 半年 before 不說話.",
+        "sub": "林先生從一月到六月都沒說話。"
+      },
+      {
+        "id": "b2l02g6-p3",
+        "source": "p.55 #3",
+        "kind": "order-build",
+        "prompt": "You have not exercised for two weeks, so you must go today. Why?",
+        "promptZh": {
+          "traditional": "你兩個星期沒運動，今天一定要去。為什麼？",
+          "simplified": "你两个星期没运动，今天一定要去。为什么？"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng"
+          },
+          {
+            "traditional": "兩個星期",
+            "simplified": "两个星期",
+            "pinyin": "liǎng ge xīngqí"
+          },
+          {
+            "traditional": "沒運動",
+            "simplified": "没运动",
+            "pinyin": "méi yùndòng"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "沒去打掃",
+            "simplified": "没去打扫",
+            "pinyin": "méi qù dǎsǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "已經",
+              "兩個星期",
+              "沒運動",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "我已經兩個星期沒運動了。",
+              "simplified": "我已经两个星期没运动了。",
+              "pinyin": "Wǒ yǐjīng liǎng ge xīngqí méi yùndòng le.",
+              "english": "I have not exercised for two weeks."
+            }
+          },
+          {
+            "order": [
+              "已經",
+              "兩個星期",
+              "沒運動",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "已經兩個星期沒運動了。",
+              "simplified": "已经两个星期没运动了。",
+              "pinyin": "Yǐjīng liǎng ge xīngqí méi yùndòng le.",
+              "english": "Have not exercised for two weeks."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒去打掃"
+            ],
+            "note": "The reason is exercise, not cleaning."
+          }
+        ],
+        "fallbackRepair": "Put the duration before 沒運動, and end with 了."
+      },
+      {
+        "id": "b2l02g6-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "He decided to speak only English for the next half year. Say what he will not do.",
+        "promptZh": {
+          "traditional": "他決定從現在開始，半年只說英文。",
+          "simplified": "他决定从现在开始，半年只说英文。"
+        },
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "半年",
+            "simplified": "半年",
+            "pinyin": "bàn nián"
+          },
+          {
+            "traditional": "不",
+            "simplified": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "說中文",
+            "simplified": "说中文",
+            "pinyin": "shuō Zhōngwén"
+          },
+          {
+            "traditional": "不半年",
+            "simplified": "不半年",
+            "pinyin": "bú bàn nián"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "半年",
+              "不",
+              "說中文"
+            ],
+            "sentence": {
+              "traditional": "他半年不說中文。",
+              "simplified": "他半年不说中文。",
+              "pinyin": "Tā bàn nián bù shuō Zhōngwén.",
+              "english": "He will not speak Chinese for half a year."
+            }
+          },
+          {
+            "order": [
+              "半年",
+              "他",
+              "不",
+              "說中文"
+            ],
+            "sentence": {
+              "traditional": "半年他不說中文。",
+              "simplified": "半年他不说中文。",
+              "pinyin": "Bàn nián tā bù shuō Zhōngwén.",
+              "english": "For half a year he will not speak Chinese."
+            }
+          },
+          {
+            "order": [
+              "半年",
+              "不",
+              "說中文"
+            ],
+            "sentence": {
+              "traditional": "半年不說中文。",
+              "simplified": "半年不说中文。",
+              "pinyin": "Bàn nián bù shuō Zhōngwén.",
+              "english": "Will not speak Chinese for half a year."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不半年"
+            ],
+            "note": "Put the duration 半年 before 不: 半年不說中文."
+          }
+        ],
+        "fallbackRepair": "Put 半年 before 不, and 說中文 after it."
+      },
+      {
+        "id": "b2l02g6-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "He has not been home to see his parents for a long time. It has been three months now. Say it with three months.",
+        "promptZh": {
+          "traditional": "他很久沒回家看父母。到現在已經三個月。用「三個月」說。",
+          "simplified": "他很久没回家看父母。到现在已经三个月。用「三个月」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "三個月",
+            "simplified": "三个月",
+            "pinyin": "sān ge yuè"
+          },
+          {
+            "traditional": "沒回家",
+            "simplified": "没回家",
+            "pinyin": "méi huí jiā"
+          },
+          {
+            "traditional": "看父母",
+            "simplified": "看父母",
+            "pinyin": "kàn fùmǔ"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "過",
+            "simplified": "过",
+            "pinyin": "guò"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "三個月",
+              "沒回家",
+              "看父母",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "他三個月沒回家看父母了。",
+              "simplified": "他三个月没回家看父母了。",
+              "pinyin": "Tā sān ge yuè méi huí jiā kàn fùmǔ le.",
+              "english": "He has not been home to see his parents for three months."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "過"
+            ],
+            "note": "過 marks a past experience; here the three months continue to now, so end with 了."
+          }
+        ],
+        "fallbackRepair": "Put 三個月 before 沒回家, and end with 了."
+      }
+    ]
+  },
+  "B2L02-G07-P55": {
+    "bookPage": 55,
+    "title": "Practice: 疑問詞+都/也",
+    "items": [
+      {
+        "id": "b2l02g7-p1",
+        "source": "p.55 #1",
+        "kind": "order-build",
+        "prompt": "Your friend asks when to see a movie. You are free every day.",
+        "promptZh": {
+          "traditional": "朋友問你什麼時候去看電影。你每天都有空。",
+          "simplified": "朋友问你什么时候去看电影。你每天都有空。"
+        },
+        "tiles": [
+          {
+            "traditional": "什麼時候",
+            "simplified": "什么时候",
+            "pinyin": "shénme shíhou"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "可以",
+            "simplified": "可以",
+            "pinyin": "kěyǐ"
+          },
+          {
+            "traditional": "很忙",
+            "simplified": "很忙",
+            "pinyin": "hěn máng"
+          },
+          {
+            "traditional": "明天",
+            "simplified": "明天",
+            "pinyin": "míngtiān"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "什麼時候",
+              "都",
+              "可以"
+            ],
+            "sentence": {
+              "traditional": "什麼時候都可以。",
+              "simplified": "什么时候都可以。",
+              "pinyin": "Shénme shíhou dōu kěyǐ.",
+              "english": "Any time is fine."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很忙"
+            ],
+            "note": "很忙 says you are busy; it does not answer “any time”."
+          },
+          {
+            "placed": [
+              "明天"
+            ],
+            "note": "明天 is one specific time, not any time."
+          }
+        ],
+        "fallbackRepair": "Use 什麼時候 + 都 + 可以."
+      },
+      {
+        "id": "b2l02g7-p2",
+        "source": "p.55 #2",
+        "kind": "order-build",
+        "prompt": "Your friend asks which piece of clothing looks good on him. Say every one looks good.",
+        "promptZh": {
+          "traditional": "朋友問你他穿哪一件衣服好看。你說每一件都好看。",
+          "simplified": "朋友问你他穿哪一件衣服好看。你说每一件都好看。"
+        },
+        "tiles": [
+          {
+            "traditional": "哪一件",
+            "simplified": "哪一件",
+            "pinyin": "nǎ yí jiàn"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "好看",
+            "simplified": "好看",
+            "pinyin": "hǎokàn"
+          },
+          {
+            "traditional": "很貴",
+            "simplified": "很贵",
+            "pinyin": "hěn guì"
+          },
+          {
+            "traditional": "不好看",
+            "simplified": "不好看",
+            "pinyin": "bù hǎokàn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "哪一件",
+              "都",
+              "好看"
+            ],
+            "sentence": {
+              "traditional": "哪一件都好看。",
+              "simplified": "哪一件都好看。",
+              "pinyin": "Nǎ yí jiàn dōu hǎokàn.",
+              "english": "Every one looks good."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很貴"
+            ],
+            "note": "很貴 is about price, not looks."
+          },
+          {
+            "placed": [
+              "不好看"
+            ],
+            "note": "不好看 says they look bad, the opposite."
+          }
+        ],
+        "fallbackRepair": "Use 哪一件 + 都 + 好看."
+      },
+      {
+        "id": "b2l02g7-p3",
+        "source": "p.56 #3",
+        "kind": "order-build",
+        "prompt": "Your friend asks where you want to go for summer vacation. Say you want to go everywhere.",
+        "promptZh": {
+          "traditional": "朋友問你暑假想去哪裡玩。你說每個地方都想去。",
+          "simplified": "朋友问你暑假想去哪里玩。你说每个地方都想去。"
+        },
+        "tiles": [
+          {
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "想去",
+            "simplified": "想去",
+            "pinyin": "xiǎng qù"
+          },
+          {
+            "traditional": "回家",
+            "simplified": "回家",
+            "pinyin": "huí jiā"
+          },
+          {
+            "traditional": "不想去",
+            "simplified": "不想去",
+            "pinyin": "bù xiǎng qù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "哪裡",
+              "都",
+              "想去"
+            ],
+            "sentence": {
+              "traditional": "哪裡都想去。",
+              "simplified": "哪里都想去。",
+              "pinyin": "Nǎlǐ dōu xiǎng qù.",
+              "english": "I want to go everywhere."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "回家"
+            ],
+            "note": "回家 is one place, not everywhere."
+          },
+          {
+            "placed": [
+              "不想去"
+            ],
+            "note": "不想去 says you do not want to go, the opposite."
+          }
+        ],
+        "fallbackRepair": "Use 哪裡 + 都 + 想去."
+      },
+      {
+        "id": "b2l02g7-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Every dish at this restaurant is delicious. Say it with 什麼都.",
+        "promptZh": {
+          "traditional": "這家餐廳的菜都好吃。用「什麼都」說。",
+          "simplified": "这家餐厅的菜都好吃。用「什么都」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "這家餐廳",
+            "simplified": "这家餐厅",
+            "pinyin": "zhè jiā cāntīng"
+          },
+          {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "好吃",
+            "simplified": "好吃",
+            "pinyin": "hǎochī"
+          },
+          {
+            "traditional": "很貴",
+            "simplified": "很贵",
+            "pinyin": "hěn guì"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "這家餐廳",
+              "什麼",
+              "都",
+              "好吃"
+            ],
+            "sentence": {
+              "traditional": "這家餐廳什麼都好吃。",
+              "simplified": "这家餐厅什么都好吃。",
+              "pinyin": "Zhè jiā cāntīng shénme dōu hǎochī.",
+              "english": "Everything at this restaurant is delicious."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很貴"
+            ],
+            "note": "很貴 is about price; the sentence is about every dish being good."
+          }
+        ],
+        "fallbackRepair": "Use 什麼 + 都 + 好吃."
+      },
+      {
+        "id": "b2l02g7-p5",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You have just arrived in Taiwan and know no one.",
+        "promptZh": {
+          "traditional": "你剛剛到台灣，沒有認識的人。",
+          "simplified": "你刚刚到台湾，没有认识的人。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "剛剛",
+            "simplified": "刚刚"
+          },
+          {
+            "traditional": "到",
+            "simplified": "到"
+          },
+          {
+            "traditional": "台灣",
+            "simplified": "台湾"
+          },
+          {
+            "traditional": "，",
+            "simplified": "，"
+          },
+          {
+            "traditional": "誰",
+            "simplified": "谁"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都"
+          },
+          {
+            "traditional": "認識",
+            "simplified": "认识"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 6,
+        "fix": "都不",
+        "tiles": [
+          {
+            "traditional": "都不",
+            "simplified": "都不",
+            "pinyin": "dōu bù"
+          },
+          {
+            "traditional": "也都",
+            "simplified": "也都",
+            "pinyin": "yě dōu"
+          },
+          {
+            "traditional": "什麼都",
+            "simplified": "什么都",
+            "pinyin": "shénme dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "也都"
+            ],
+            "note": "也都 would leave the sentence positive: 誰也認識 means you know everyone."
+          },
+          {
+            "placed": [
+              "什麼都"
+            ],
+            "note": "什麼都認識 means you know everything, not that you know no one."
+          }
+        ],
+        "takeOutNote": "Taking out 都 leaves 誰認識, which asks who knows; you mean you know no one.",
+        "hint": "You mean you know no one yet.",
+        "result": {
+          "traditional": "我剛剛到台灣，誰都不認識。",
+          "simplified": "我刚刚到台湾，谁都不认识。",
+          "pinyin": "Wǒ gānggāng dào Táiwān, shéi dōu bú rènshi.",
+          "english": "I have just arrived in Taiwan and know no one."
+        }
+      }
+    ]
+  },
+  "B2L02-G08-P56": {
+    "bookPage": 56,
+    "title": "Practice: 又",
+    "items": [
+      {
+        "id": "b2l02g8-p1",
+        "source": "p.56 #1",
+        "kind": "order-build",
+        "prompt": "Your sister bought new clothes last week; yesterday she bought new clothes again. Say the second part with 又.",
+        "promptZh": {
+          "traditional": "姐姐上個禮拜買了新衣服。用「又」說她昨天買了新衣服。",
+          "simplified": "姐姐上个礼拜买了新衣服。用「又」说她昨天买了新衣服。"
+        },
+        "tiles": [
+          {
+            "traditional": "昨天",
+            "simplified": "昨天",
+            "pinyin": "zuótiān"
+          },
+          {
+            "traditional": "又",
+            "simplified": "又",
+            "pinyin": "yòu"
+          },
+          {
+            "traditional": "買了",
+            "simplified": "买了",
+            "pinyin": "mǎi le"
+          },
+          {
+            "traditional": "新衣服",
+            "simplified": "新衣服",
+            "pinyin": "xīn yīfu"
+          },
+          {
+            "traditional": "再",
+            "simplified": "再",
+            "pinyin": "zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "昨天",
+              "又",
+              "買了",
+              "新衣服"
+            ],
+            "sentence": {
+              "traditional": "昨天又買了新衣服。",
+              "simplified": "昨天又买了新衣服。",
+              "pinyin": "Zuótiān yòu mǎi le xīn yīfu.",
+              "english": "Yesterday she bought new clothes again."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "再"
+            ],
+            "note": "再 is for intending to do something again; this already happened, so use 又."
+          }
+        ],
+        "fallbackRepair": "Use 又 for something that happened again.",
+        "sub": "姐姐上個禮拜買了新衣服。"
+      },
+      {
+        "id": "b2l02g8-p2",
+        "source": "p.56 #2",
+        "kind": "order-build",
+        "prompt": "He studied Chinese in Taiwan for half a year last year. This year he came once again. Say it with 又.",
+        "promptZh": {
+          "traditional": "他去年來台灣學了半年的中文。用「又」說他今年再一次來。",
+          "simplified": "他去年来台湾学了半年的中文。用「又」说他今年再一次来。"
+        },
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "今年",
+            "simplified": "今年",
+            "pinyin": "jīnnián"
+          },
+          {
+            "traditional": "又來",
+            "simplified": "又来",
+            "pinyin": "yòu lái"
+          },
+          {
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān"
+          },
+          {
+            "traditional": "學中文了",
+            "simplified": "学中文了",
+            "pinyin": "xué Zhōngwén le"
+          },
+          {
+            "traditional": "再",
+            "simplified": "再",
+            "pinyin": "zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "今年",
+              "又來",
+              "台灣",
+              "學中文了"
+            ],
+            "sentence": {
+              "traditional": "他今年又來台灣學中文了。",
+              "simplified": "他今年又来台湾学中文了。",
+              "pinyin": "Tā jīnnián yòu lái Táiwān xué Zhōngwén le.",
+              "english": "This year he came to Taiwan to study Chinese again."
+            }
+          },
+          {
+            "order": [
+              "今年",
+              "他",
+              "又來",
+              "台灣",
+              "學中文了"
+            ],
+            "sentence": {
+              "traditional": "今年他又來台灣學中文了。",
+              "simplified": "今年他又来台湾学中文了。",
+              "pinyin": "Jīnnián tā yòu lái Táiwān xué Zhōngwén le.",
+              "english": "This year he came to Taiwan to study Chinese again."
+            }
+          },
+          {
+            "order": [
+              "今年",
+              "又來",
+              "台灣",
+              "學中文了"
+            ],
+            "sentence": {
+              "traditional": "今年又來台灣學中文了。",
+              "simplified": "今年又来台湾学中文了。",
+              "pinyin": "Jīnnián yòu lái Táiwān xué Zhōngwén le.",
+              "english": "Came to Taiwan to study Chinese again this year."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "再"
+            ],
+            "note": "This already happened this year, so use 又, not 再."
+          }
+        ],
+        "fallbackRepair": "Use 又 for a repeated action.",
+        "sub": "他去年來台灣學了半年的中文。"
+      },
+      {
+        "id": "b2l02g8-p3",
+        "source": "p.56 #3",
+        "kind": "order-build",
+        "prompt": "The student did not do his homework the day before yesterday. Use 又 to say he did not do it yesterday either, and the teacher was unhappy.",
+        "promptZh": {
+          "traditional": "那個學生前天沒寫功課。用「又」說他昨天沒寫。",
+          "simplified": "那个学生前天没写功课。用「又」说他昨天没写。"
+        },
+        "tiles": [
+          {
+            "traditional": "昨天又",
+            "simplified": "昨天又",
+            "pinyin": "zuótiān yòu"
+          },
+          {
+            "traditional": "沒寫",
+            "simplified": "没写",
+            "pinyin": "méi xiě"
+          },
+          {
+            "traditional": "功課",
+            "simplified": "功课",
+            "pinyin": "gōngkè"
+          },
+          {
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī"
+          },
+          {
+            "traditional": "很不高興",
+            "simplified": "很不高兴",
+            "pinyin": "hěn bù gāoxìng"
+          },
+          {
+            "traditional": "再",
+            "simplified": "再",
+            "pinyin": "zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "昨天又",
+              "沒寫",
+              "功課",
+              "老師",
+              "很不高興"
+            ],
+            "sentence": {
+              "traditional": "昨天又沒寫功課，老師很不高興。",
+              "simplified": "昨天又没写功课，老师很不高兴。",
+              "pinyin": "Zuótiān yòu méi xiě gōngkè, lǎoshī hěn bù gāoxìng.",
+              "english": "Yesterday he did not do his homework again, and the teacher was unhappy."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "再"
+            ],
+            "note": "Use 又 for something that happened again; 再 is for a future repeat."
+          }
+        ],
+        "fallbackRepair": "Use 又 before 沒寫.",
+        "sub": "那個學生前天沒寫功課。"
+      },
+      {
+        "id": "b2l02g8-p4",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You have already had one cup and want a second.",
+        "promptZh": {
+          "traditional": "你已經喝了一杯，現在想喝第二杯。",
+          "simplified": "你已经喝了一杯，现在想喝第二杯。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "想",
+            "simplified": "想"
+          },
+          {
+            "traditional": "又",
+            "simplified": "又"
+          },
+          {
+            "traditional": "喝",
+            "simplified": "喝"
+          },
+          {
+            "traditional": "一杯",
+            "simplified": "一杯"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "再",
+        "tiles": [
+          {
+            "traditional": "再",
+            "simplified": "再",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "又一次",
+            "simplified": "又一次",
+            "pinyin": "yòu yí cì"
+          },
+          {
+            "traditional": "還",
+            "simplified": "还",
+            "pinyin": "hái"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "又一次"
+            ],
+            "note": "Use 再 before 喝; 又一次 does not fit after 想."
+          },
+          {
+            "placed": [
+              "還"
+            ],
+            "note": "還喝一杯 means “still drinking a cup”, not one more."
+          }
+        ],
+        "takeOutNote": "Taking out 又 leaves 我想喝一杯, which loses “one more”.",
+        "hint": "You want one more cup.",
+        "result": {
+          "traditional": "我想再喝一杯。",
+          "simplified": "我想再喝一杯。",
+          "pinyin": "Wǒ xiǎng zài hē yì bēi.",
+          "english": "I want one more cup."
+        }
+      },
+      {
+        "id": "b2l02g8-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Autumn has arrived and the weather has turned cold again.",
+        "promptZh": {
+          "traditional": "秋天到了，天氣又一次冷了。",
+          "simplified": "秋天到了，天气又一次冷了。"
+        },
+        "tiles": [
+          {
+            "traditional": "秋天",
+            "simplified": "秋天",
+            "pinyin": "qiūtiān"
+          },
+          {
+            "traditional": "到了",
+            "simplified": "到了",
+            "pinyin": "dào le"
+          },
+          {
+            "traditional": "天氣",
+            "simplified": "天气",
+            "pinyin": "tiānqì"
+          },
+          {
+            "traditional": "又",
+            "simplified": "又",
+            "pinyin": "yòu"
+          },
+          {
+            "traditional": "冷了",
+            "simplified": "冷了",
+            "pinyin": "lěng le"
+          },
+          {
+            "traditional": "再",
+            "simplified": "再",
+            "pinyin": "zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "秋天",
+              "到了",
+              "天氣",
+              "又",
+              "冷了"
+            ],
+            "sentence": {
+              "traditional": "秋天到了，天氣又冷了。",
+              "simplified": "秋天到了，天气又冷了。",
+              "pinyin": "Qiūtiān dào le, tiānqì yòu lěng le.",
+              "english": "Autumn has arrived and the weather has turned cold again."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "再"
+            ],
+            "note": "Use 又 for a state that has returned; 再 is for another action."
+          }
+        ],
+        "fallbackRepair": "Use 又 for a state that has come back."
+      }
+    ]
+  },
+  "B2L02-G09-P56": {
+    "bookPage": 56,
+    "title": "Practice: 時間+才+V",
+    "items": [
+      {
+        "id": "b2l02g9-p1",
+        "source": "p.57 #1",
+        "kind": "order-build",
+        "prompt": "Your friend heard you are going to Japan this weekend. It is actually next weekend. Correct him.",
+        "promptZh": {
+          "traditional": "朋友聽說你這個週末要去日本。不是，是下個週末。",
+          "simplified": "朋友听说你这个周末要去日本。不是，是下个周末。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "下個週末",
+            "simplified": "下个周末",
+            "pinyin": "xià ge zhōumò"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "要",
+            "simplified": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "去日本",
+            "simplified": "去日本",
+            "pinyin": "qù Rìběn"
+          },
+          {
+            "traditional": "這個週末",
+            "simplified": "这个周末",
+            "pinyin": "zhè ge zhōumò"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "下個週末",
+              "才",
+              "要",
+              "去日本"
+            ],
+            "sentence": {
+              "traditional": "我下個週末才要去日本。",
+              "simplified": "我下个周末才要去日本。",
+              "pinyin": "Wǒ xià ge zhōumò cái yào qù Rìběn.",
+              "english": "I am not going to Japan until next weekend."
+            }
+          },
+          {
+            "order": [
+              "下個週末",
+              "我",
+              "才",
+              "要",
+              "去日本"
+            ],
+            "sentence": {
+              "traditional": "下個週末我才要去日本。",
+              "simplified": "下个周末我才要去日本。",
+              "pinyin": "Xià ge zhōumò wǒ cái yào qù Rìběn.",
+              "english": "I am not going to Japan until next weekend."
+            }
+          },
+          {
+            "order": [
+              "下個週末",
+              "才",
+              "要",
+              "去日本"
+            ],
+            "sentence": {
+              "traditional": "下個週末才要去日本。",
+              "simplified": "下个周末才要去日本。",
+              "pinyin": "Xià ge zhōumò cái yào qù Rìběn.",
+              "english": "Not going to Japan until next weekend."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "這個週末"
+            ],
+            "note": "Your friend said this weekend; you correct it to next weekend."
+          }
+        ],
+        "fallbackRepair": "Use 才 to say the trip is later than your friend thinks.",
+        "sub": "朋友：聽說你這個週末要去日本？"
+      },
+      {
+        "id": "b2l02g9-p2",
+        "source": "p.57 #2",
+        "kind": "order-build",
+        "prompt": "Your friend says you have Chinese class at eight. It is actually ten.",
+        "promptZh": {
+          "traditional": "朋友說你早上八點有中文課。不是，是早上十點。",
+          "simplified": "朋友说你早上八点有中文课。不是，是早上十点。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "早上十點",
+            "simplified": "早上十点",
+            "pinyin": "zǎoshang shí diǎn"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "有",
+            "simplified": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "中文課",
+            "simplified": "中文课",
+            "pinyin": "Zhōngwén kè"
+          },
+          {
+            "traditional": "八點",
+            "simplified": "八点",
+            "pinyin": "bā diǎn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "早上十點",
+              "才",
+              "有",
+              "中文課"
+            ],
+            "sentence": {
+              "traditional": "我早上十點才有中文課。",
+              "simplified": "我早上十点才有中文课。",
+              "pinyin": "Wǒ zǎoshang shí diǎn cái yǒu Zhōngwén kè.",
+              "english": "I do not have Chinese class until ten in the morning."
+            }
+          },
+          {
+            "order": [
+              "早上十點",
+              "我",
+              "才",
+              "有",
+              "中文課"
+            ],
+            "sentence": {
+              "traditional": "早上十點我才有中文課。",
+              "simplified": "早上十点我才有中文课。",
+              "pinyin": "Zǎoshang shí diǎn wǒ cái yǒu Zhōngwén kè.",
+              "english": "I do not have Chinese class until ten in the morning."
+            }
+          },
+          {
+            "order": [
+              "早上十點",
+              "才",
+              "有",
+              "中文課"
+            ],
+            "sentence": {
+              "traditional": "早上十點才有中文課。",
+              "simplified": "早上十点才有中文课。",
+              "pinyin": "Zǎoshang shí diǎn cái yǒu Zhōngwén kè.",
+              "english": "Do not have Chinese class until ten in the morning."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "八點"
+            ],
+            "note": "Your friend said eight; the class is at ten."
+          }
+        ],
+        "fallbackRepair": "Use 才 to correct the time to later.",
+        "sub": "朋友：趕快起來！你早上八點有中文課！"
+      },
+      {
+        "id": "b2l02g9-p3",
+        "source": "p.57 #3",
+        "kind": "order-build",
+        "prompt": "Your friend asks about tomorrow night. You are not free tomorrow; you will go the day after tomorrow.",
+        "promptZh": {
+          "traditional": "朋友問你明天晚上要不要去看籃球比賽。你明天沒空，後天要去。",
+          "simplified": "朋友问你明天晚上要不要去看篮球比赛。你明天没空，后天要去。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "後天",
+            "simplified": "后天",
+            "pinyin": "hòutiān"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "要",
+            "simplified": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "去",
+            "simplified": "去",
+            "pinyin": "qù"
+          },
+          {
+            "traditional": "明天",
+            "simplified": "明天",
+            "pinyin": "míngtiān"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "後天",
+              "才",
+              "要",
+              "去"
+            ],
+            "sentence": {
+              "traditional": "我後天才要去。",
+              "simplified": "我后天才要去。",
+              "pinyin": "Wǒ hòutiān cái yào qù.",
+              "english": "I am not going until the day after tomorrow."
+            }
+          },
+          {
+            "order": [
+              "後天",
+              "我",
+              "才",
+              "要",
+              "去"
+            ],
+            "sentence": {
+              "traditional": "後天我才要去。",
+              "simplified": "后天我才要去。",
+              "pinyin": "Hòutiān wǒ cái yào qù.",
+              "english": "I am not going until the day after tomorrow."
+            }
+          },
+          {
+            "order": [
+              "後天",
+              "才",
+              "要",
+              "去"
+            ],
+            "sentence": {
+              "traditional": "後天才要去。",
+              "simplified": "后天才要去。",
+              "pinyin": "Hòutiān cái yào qù.",
+              "english": "Not going until the day after tomorrow."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "明天"
+            ],
+            "note": "You are not free tomorrow; the plan is the day after."
+          }
+        ],
+        "fallbackRepair": "Use 才 to say the plan is later.",
+        "sub": "朋友：你明天晚上要不要跟我一起去看籃球比賽？"
+      },
+      {
+        "id": "b2l02g9-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "We got to the station at nine to wait for him. He arrived at twelve.",
+        "promptZh": {
+          "traditional": "我們九點到車站等他。他十二點到。",
+          "simplified": "我们九点到车站等他。他十二点到。"
+        },
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "十二點",
+            "simplified": "十二点",
+            "pinyin": "shí'èr diǎn"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "到",
+            "simplified": "到",
+            "pinyin": "dào"
+          },
+          {
+            "traditional": "就",
+            "simplified": "就",
+            "pinyin": "jiù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "十二點",
+              "才",
+              "到"
+            ],
+            "sentence": {
+              "traditional": "他十二點才到。",
+              "simplified": "他十二点才到。",
+              "pinyin": "Tā shí'èr diǎn cái dào.",
+              "english": "He did not arrive until twelve."
+            }
+          },
+          {
+            "order": [
+              "十二點",
+              "他",
+              "才",
+              "到"
+            ],
+            "sentence": {
+              "traditional": "十二點他才到。",
+              "simplified": "十二点他才到。",
+              "pinyin": "Shí'èr diǎn tā cái dào.",
+              "english": "He did not arrive until twelve."
+            }
+          },
+          {
+            "order": [
+              "十二點",
+              "才",
+              "到"
+            ],
+            "sentence": {
+              "traditional": "十二點才到。",
+              "simplified": "十二点才到。",
+              "pinyin": "Shí'èr diǎn cái dào.",
+              "english": "Did not arrive until twelve."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "就"
+            ],
+            "note": "就 would say twelve was earlier than expected; it was later, so use 才."
+          }
+        ],
+        "fallbackRepair": "Use 才 because twelve is later than the expected nine."
+      },
+      {
+        "id": "b2l02g9-p5",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You got up at six this morning, which is early, so you were not late.",
+        "promptZh": {
+          "traditional": "你今天早上六點起床，時間很早，所以沒遲到。",
+          "simplified": "你今天早上六点起床，时间很早，所以没迟到。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "早上六點",
+            "simplified": "早上六点"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才"
+          },
+          {
+            "traditional": "起床",
+            "simplified": "起床"
+          },
+          {
+            "traditional": "，",
+            "simplified": "，"
+          },
+          {
+            "traditional": "所以",
+            "simplified": "所以"
+          },
+          {
+            "traditional": "沒遲到",
+            "simplified": "没迟到"
+          },
+          {
+            "traditional": "。",
+            "simplified": "。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "就",
+        "tiles": [
+          {
+            "traditional": "就",
+            "simplified": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          },
+          {
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "才"
+            ],
+            "note": "才 would say six was later than expected; six is early, so use 就."
+          },
+          {
+            "placed": [
+              "已經"
+            ],
+            "note": "已經 says “already”, not “as early as”."
+          }
+        ],
+        "takeOutNote": "Taking out 才 leaves 六點起床, which does not say “as early as six”.",
+        "hint": "Six is earlier than usual.",
+        "result": {
+          "traditional": "我早上六點就起床，所以沒遲到。",
+          "simplified": "我早上六点就起床，所以没迟到。",
+          "pinyin": "Wǒ zǎoshang liù diǎn jiù qǐchuáng, suǒyǐ méi chídào.",
+          "english": "I got up at six, so I was not late."
+        }
+      }
+    ]
+  },
+  "B2L02-G10-P62": {
+    "bookPage": 62,
+    "title": "Practice: 把+N+V在/到",
+    "allowWords": [
+      "室友"
+    ],
+    "items": [
+      {
+        "id": "b2l02g10-p1",
+        "source": "p.62 #1",
+        "kind": "slot-build",
+        "prompt": "Your watch is on your friend's wrist. Ask why.",
+        "promptZh": {
+          "traditional": "你的手錶在朋友的手上。問他為什麼。",
+          "simplified": "你的手表在朋友的手上。问他为什么。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "為什麼你把我的手錶",
+                "simplified": "为什么你把我的手表"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "戴在"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "你的手上？",
+                "simplified": "你的手上？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "戴在",
+            "simplified": "戴在",
+            "pinyin": "dài zài"
+          },
+          {
+            "traditional": "放在",
+            "simplified": "放在",
+            "pinyin": "fàng zài"
+          },
+          {
+            "traditional": "拿在",
+            "simplified": "拿在",
+            "pinyin": "ná zài"
+          },
+          {
+            "traditional": "帶在",
+            "simplified": "帶在",
+            "pinyin": "dài zài"
+          }
+        ],
+        "result": {
+          "traditional": "為什麼你把我的手錶戴在你的手上？",
+          "simplified": "为什么你把我的手表戴在你的手上？",
+          "pinyin": "Wèishénme nǐ bǎ wǒ de shǒubiǎo dài zài nǐ de shǒu shàng?",
+          "english": "Why are you wearing my watch on your wrist?"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "放在"
+            ],
+            "note": "放在 would mean setting it down, not wearing it."
+          },
+          {
+            "placed": [
+              "拿在"
+            ],
+            "note": "拿在 means holding it in your hand, not wearing it on your wrist."
+          },
+          {
+            "placed": [
+              "帶在"
+            ],
+            "note": "帶在 means carrying it with you, not wearing it."
+          }
+        ],
+        "fallbackRepair": "Use 戴在 for something you wear on your wrist."
+      },
+      {
+        "id": "b2l02g10-p2",
+        "source": "p.62 #2",
+        "kind": "slot-build",
+        "prompt": "The student went home, but his textbook is still in the classroom.",
+        "promptZh": {
+          "traditional": "那個學生回家了，課本還在教室裡。",
+          "simplified": "那个学生回家了，课本还在教室里。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個學生把課本",
+                "simplified": "那个学生把课本"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "放在"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "教室裡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，忘了帶回家了。",
+                "simplified": "，忘了带回家了。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "放在",
+            "simplified": "放在",
+            "pinyin": "fàng zài"
+          },
+          {
+            "traditional": "教室裡",
+            "simplified": "教室里",
+            "pinyin": "jiàoshì lǐ"
+          },
+          {
+            "traditional": "帶回家",
+            "simplified": "带回家",
+            "pinyin": "dài huí jiā"
+          },
+          {
+            "traditional": "在家裡",
+            "simplified": "在家里",
+            "pinyin": "zài jiā lǐ"
+          },
+          {
+            "traditional": "寫在",
+            "simplified": "写在",
+            "pinyin": "xiě zài"
+          }
+        ],
+        "result": {
+          "traditional": "那個學生把課本放在教室裡，忘了帶回家了。",
+          "simplified": "那个学生把课本放在教室里，忘了带回家了。",
+          "pinyin": "Nàge xuéshēng bǎ kèběn fàng zài jiàoshì lǐ, wàng le dài huí jiā le.",
+          "english": "The student left his textbook in the classroom and forgot to bring it home."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "帶回家"
+            ],
+            "note": "He forgot to bring it home, so it is not at home."
+          },
+          {
+            "placed": [
+              "在家裡"
+            ],
+            "note": "The textbook is in the classroom, not at home."
+          },
+          {
+            "placed": [
+              "寫在"
+            ],
+            "note": "You do not write a textbook into a place; it stays there: 放在."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "教室裡"
+            },
+            "note": "教室裡 is the place; 放在 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "放在"
+            },
+            "note": "放在 is the verb; the place 教室裡 comes after it."
+          }
+        ],
+        "fallbackRepair": "Use 放在 + place for where the textbook stays."
+      },
+      {
+        "id": "b2l02g10-p3",
+        "source": "p.62 #3",
+        "kind": "slot-build",
+        "prompt": "The room smells bad because the garbage is all in the room.",
+        "promptZh": {
+          "traditional": "房間的味道不好，因為垃圾都在房間裡。",
+          "simplified": "房间的味道不好，因为垃圾都在房间里。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "室友常常把垃圾",
+                "simplified": "室友常常把垃圾"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "丟在"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "房間裡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，所以房間的味道真不好。",
+                "simplified": "，所以房间的味道真不好。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "丟在",
+            "simplified": "丢在",
+            "pinyin": "diū zài"
+          },
+          {
+            "traditional": "房間裡",
+            "simplified": "房间里",
+            "pinyin": "fángjiān lǐ"
+          },
+          {
+            "traditional": "廚房裡",
+            "simplified": "厨房里",
+            "pinyin": "chúfáng lǐ"
+          },
+          {
+            "traditional": "袋子裡",
+            "simplified": "袋子里",
+            "pinyin": "dàizi lǐ"
+          },
+          {
+            "traditional": "戴在",
+            "simplified": "戴在",
+            "pinyin": "dài zài"
+          }
+        ],
+        "result": {
+          "traditional": "室友常常把垃圾丟在房間裡，所以房間的味道真不好。",
+          "simplified": "室友常常把垃圾丢在房间里，所以房间的味道真不好。",
+          "pinyin": "Shìyǒu chángcháng bǎ lèsè diū zài fángjiān lǐ, suǒyǐ fángjiān de wèidào zhēn bù hǎo.",
+          "english": "My roommate often throws garbage in the room, so the room smells really bad."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "廚房裡"
+            ],
+            "note": "The smell is in the room; the garbage is in the room."
+          },
+          {
+            "placed": [
+              "袋子裡"
+            ],
+            "note": "Garbage in a bag would not make the room smell."
+          },
+          {
+            "placed": [
+              "戴在"
+            ],
+            "note": "You do not wear garbage; use 丟在."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "房間裡"
+            },
+            "note": "房間裡 is the place; 丟在 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "丟在"
+            },
+            "note": "丟在 is the verb; the place 房間裡 comes after it."
+          }
+        ],
+        "fallbackRepair": "Use 丟在 + 房間裡."
+      },
+      {
+        "id": "b2l02g10-p4",
+        "source": "p.62 #4",
+        "kind": "slot-build",
+        "prompt": "During the exam, phones may not be on the desk. His bag is beside him. Ask him to put his phone away.",
+        "promptZh": {
+          "traditional": "考試的時候，手機不可以放在桌子上。他的袋子在旁邊。請他放好。",
+          "simplified": "考试的时候，手机不可以放在桌子上。他的袋子在旁边。请他放好。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "考試的時候，不可以把手機放在桌子上，請你",
+                "simplified": "考试的时候，不可以把手机放在桌子上，请你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "把手機"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "放到"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "袋子裡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "把手機",
+            "simplified": "把手机",
+            "pinyin": "bǎ shǒujī"
+          },
+          {
+            "traditional": "放到",
+            "simplified": "放到",
+            "pinyin": "fàng dào"
+          },
+          {
+            "traditional": "袋子裡",
+            "simplified": "袋子里",
+            "pinyin": "dàizi lǐ"
+          },
+          {
+            "traditional": "寫在",
+            "simplified": "写在",
+            "pinyin": "xiě zài"
+          },
+          {
+            "traditional": "帶去",
+            "simplified": "带去",
+            "pinyin": "dài qù"
+          }
+        ],
+        "result": {
+          "traditional": "考試的時候，不可以把手機放在桌子上，請你把手機放到袋子裡。",
+          "simplified": "考试的时候，不可以把手机放在桌子上，请你把手机放到袋子里。",
+          "pinyin": "Kǎoshì de shíhou, bù kěyǐ bǎ shǒujī fàng zài zhuōzi shàng, qǐng nǐ bǎ shǒujī fàng dào dàizi lǐ.",
+          "english": "During the exam, phones may not be on the desk; please put your phone in your bag."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "寫在"
+            ],
+            "note": "You do not write a phone into a bag; use 放到."
+          },
+          {
+            "placed": [
+              "帶去"
+            ],
+            "note": "帶去 needs a destination; the phone goes into the bag: 放到."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "放到"
+            },
+            "note": "放到 is the verb; 把手機 comes first."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "袋子裡"
+            },
+            "note": "袋子裡 is the place; 把手機 comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "把手機"
+            },
+            "note": "把手機 is the object; 放到 comes after it."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "袋子裡"
+            },
+            "note": "袋子裡 is the place; 放到 comes before it."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "把手機"
+            },
+            "note": "把手機 is the object; the place 袋子裡 ends the phrase."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "放到"
+            },
+            "note": "放到 is the verb; the place 袋子裡 comes after it."
+          }
+        ],
+        "fallbackRepair": "Use 放到 + 袋子裡."
+      },
+      {
+        "id": "b2l02g10-p5",
+        "source": "p.62 #5",
+        "kind": "slot-build",
+        "prompt": "A man was hurt on the road. The police came.",
+        "promptZh": {
+          "traditional": "有一個人在馬路上受傷了。警察來了。",
+          "simplified": "有一个人在马路上受伤了。警察来了。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "警察把那個受傷的人",
+                "simplified": "警察把那个受伤的人"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "送到醫院"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "送到醫院",
+            "simplified": "送到医院",
+            "pinyin": "sòng dào yīyuàn"
+          },
+          {
+            "traditional": "送到學校",
+            "simplified": "送到学校",
+            "pinyin": "sòng dào xuéxiào"
+          },
+          {
+            "traditional": "帶到學校",
+            "simplified": "带到学校",
+            "pinyin": "dài dào xuéxiào"
+          },
+          {
+            "traditional": "送到家",
+            "simplified": "送到家",
+            "pinyin": "sòng dào jiā"
+          }
+        ],
+        "result": {
+          "traditional": "警察把那個受傷的人送到醫院。",
+          "simplified": "警察把那个受伤的人送到医院。",
+          "pinyin": "Jǐngchá bǎ nàge shòushāng de rén sòng dào yīyuàn.",
+          "english": "The police took the injured man to the hospital."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "送到學校"
+            ],
+            "note": "A hurt person goes to the hospital, not the school."
+          },
+          {
+            "placed": [
+              "帶到學校"
+            ],
+            "note": "A hurt person goes to the hospital, not the school."
+          },
+          {
+            "placed": [
+              "送到家"
+            ],
+            "note": "A hurt person goes to the hospital, not home."
+          }
+        ],
+        "fallbackRepair": "Use 送到醫院."
+      },
+      {
+        "id": "b2l02g10-p6",
+        "source": "p.62 #6",
+        "kind": "order-build",
+        "prompt": "Drinks are not allowed in the classroom. Say you must not bring drinks into the classroom.",
+        "promptZh": {
+          "traditional": "教室裡不可以喝飲料。你不可以帶飲料進去。",
+          "simplified": "教室里不可以喝饮料。你不可以带饮料进去。"
+        },
+        "tiles": [
+          {
+            "traditional": "你不可以",
+            "simplified": "你不可以",
+            "pinyin": "nǐ bù kěyǐ"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "飲料",
+            "simplified": "饮料",
+            "pinyin": "yǐnliào"
+          },
+          {
+            "traditional": "帶到",
+            "simplified": "带到",
+            "pinyin": "dài dào"
+          },
+          {
+            "traditional": "教室裡",
+            "simplified": "教室里",
+            "pinyin": "jiàoshì lǐ"
+          },
+          {
+            "traditional": "喝完",
+            "simplified": "喝完",
+            "pinyin": "hē wán"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你不可以",
+              "把",
+              "飲料",
+              "帶到",
+              "教室裡"
+            ],
+            "sentence": {
+              "traditional": "你不可以把飲料帶到教室裡。",
+              "simplified": "你不可以把饮料带到教室里。",
+              "pinyin": "Nǐ bù kěyǐ bǎ yǐnliào dài dào jiàoshì lǐ.",
+              "english": "You must not bring drinks into the classroom."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "喝完"
+            ],
+            "note": "喝完 means finish the drink; the rule is about bringing it into the classroom."
+          }
+        ],
+        "fallbackRepair": "Use 把 + 飲料 + 帶到 + 教室裡."
+      },
+      {
+        "id": "b2l02g10-p7",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The book is at school now. When he left, it was in his bag. Say it with 把.",
+        "promptZh": {
+          "traditional": "書現在在學校。他出門的時候，書在他的袋子裡。用「把」說。",
+          "simplified": "书现在在学校。他出门的时候，书在他的袋子里。用「把」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "他把",
+            "simplified": "他把",
+            "pinyin": "tā bǎ"
+          },
+          {
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū"
+          },
+          {
+            "traditional": "帶到",
+            "simplified": "带到",
+            "pinyin": "dài dào"
+          },
+          {
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "帶在",
+            "simplified": "带在",
+            "pinyin": "dài zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他把",
+              "書",
+              "帶到",
+              "學校",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "他把書帶到學校了。",
+              "simplified": "他把书带到学校了。",
+              "pinyin": "Tā bǎ shū dài dào xuéxiào le.",
+              "english": "He brought the book to school."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "帶在"
+            ],
+            "note": "帶在學校 is not used; 帶到 marks the place reached."
+          }
+        ],
+        "fallbackRepair": "Use 帶到 for the place he brought the book to."
+      },
+      {
+        "id": "b2l02g10-p8",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The cup is in his hand and the table is empty. Ask him to put it down.",
+        "promptZh": {
+          "traditional": "杯子在他手上，桌子上沒有東西。請他放好。",
+          "simplified": "杯子在他手上，桌子上没有东西。请他放好。"
+        },
+        "tiles": [
+          {
+            "traditional": "請你",
+            "simplified": "请你",
+            "pinyin": "qǐng nǐ"
+          },
+          {
+            "traditional": "把",
+            "simplified": "把",
+            "pinyin": "bǎ"
+          },
+          {
+            "traditional": "杯子",
+            "simplified": "杯子",
+            "pinyin": "bēizi"
+          },
+          {
+            "traditional": "放在",
+            "simplified": "放在",
+            "pinyin": "fàng zài"
+          },
+          {
+            "traditional": "桌子上",
+            "simplified": "桌子上",
+            "pinyin": "zhuōzi shàng"
+          },
+          {
+            "traditional": "丟在",
+            "simplified": "丢在",
+            "pinyin": "diū zài"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "請你",
+              "把",
+              "杯子",
+              "放在",
+              "桌子上"
+            ],
+            "sentence": {
+              "traditional": "請你把杯子放在桌子上。",
+              "simplified": "请你把杯子放在桌子上。",
+              "pinyin": "Qǐng nǐ bǎ bēizi fàng zài zhuōzi shàng.",
+              "english": "Please put the cup on the table."
+            }
+          },
+          {
+            "order": [
+              "把",
+              "杯子",
+              "放在",
+              "桌子上"
+            ],
+            "sentence": {
+              "traditional": "把杯子放在桌子上。",
+              "simplified": "把杯子放在桌子上。",
+              "pinyin": "Bǎ bēizi fàng zài zhuōzi shàng.",
+              "english": "Put the cup on the table."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "丟在"
+            ],
+            "note": "Do not throw the cup; put it down with 放在."
+          }
+        ],
+        "fallbackRepair": "Use 放在 + 桌子上."
+      }
+    ]
+  },
+  "B2L02-G11-P63": {
+    "bookPage": 63,
+    "title": "Practice: ……，才……",
+    "items": [
+      {
+        "id": "b2l02g11-p1",
+        "source": "p.63 #1",
+        "kind": "slot-build",
+        "prompt": "You cannot enter the movies without a ticket. You have to buy one first.",
+        "promptZh": {
+          "traditional": "沒有票不能進去。你得先買票。",
+          "simplified": "没有票不能进去。你得先买票。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你得先買票，",
+                "simplified": "你得先买票，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "才能進去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "才能進去",
+            "simplified": "才能进去",
+            "pinyin": "cái néng jìnqù"
+          },
+          {
+            "traditional": "才能出來",
+            "simplified": "才能出来",
+            "pinyin": "cái néng chūlái"
+          },
+          {
+            "traditional": "才不能進",
+            "simplified": "才不能进",
+            "pinyin": "cái bù néng jìn"
+          }
+        ],
+        "result": {
+          "traditional": "你得先買票，才能進去。",
+          "simplified": "你得先买票，才能进去。",
+          "pinyin": "Nǐ děi xiān mǎi piào, cái néng jìnqù.",
+          "english": "You have to buy a ticket first; only then can you go in."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "才能出來"
+            ],
+            "note": "You are going into the movies, not coming out."
+          },
+          {
+            "placed": [
+              "才不能進"
+            ],
+            "note": "This says you cannot enter, the opposite."
+          }
+        ],
+        "fallbackRepair": "Use 才 to introduce the result that depends on buying a ticket."
+      },
+      {
+        "id": "b2l02g11-p2",
+        "source": "p.63 #2",
+        "kind": "order-build",
+        "prompt": "You have an 8 a.m. Chinese class tomorrow. Say why you should sleep earlier.",
+        "promptZh": {
+          "traditional": "明天早上八點有中文課。你應該早一點兒睡覺。",
+          "simplified": "明天早上八点有中文课。你应该早一点儿睡觉。"
+        },
+        "tiles": [
+          {
+            "traditional": "你應該",
+            "simplified": "你应该",
+            "pinyin": "nǐ yīnggāi"
+          },
+          {
+            "traditional": "早一點兒",
+            "simplified": "早一点儿",
+            "pinyin": "zǎo yìdiǎnr"
+          },
+          {
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào"
+          },
+          {
+            "traditional": "才不會",
+            "simplified": "才不会",
+            "pinyin": "cái bú huì"
+          },
+          {
+            "traditional": "遲到",
+            "simplified": "迟到",
+            "pinyin": "chídào"
+          },
+          {
+            "traditional": "就會",
+            "simplified": "就会",
+            "pinyin": "jiù huì"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你應該",
+              "早一點兒",
+              "睡覺",
+              "才不會",
+              "遲到"
+            ],
+            "sentence": {
+              "traditional": "你應該早一點兒睡覺，才不會遲到。",
+              "simplified": "你应该早一点儿睡觉，才不会迟到。",
+              "pinyin": "Nǐ yīnggāi zǎo yìdiǎnr shuìjiào, cái bú huì chídào.",
+              "english": "You should go to bed earlier so you will not be late."
+            }
+          },
+          {
+            "order": [
+              "早一點兒",
+              "睡覺",
+              "才不會",
+              "遲到"
+            ],
+            "sentence": {
+              "traditional": "早一點兒睡覺，才不會遲到。",
+              "simplified": "早一点儿睡觉，才不会迟到。",
+              "pinyin": "Zǎo yìdiǎnr shuìjiào, cái bú huì chídào.",
+              "english": "Go to bed earlier so you will not be late."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "就會"
+            ],
+            "note": "就會 says it will happen anyway; you want the purpose, so use 才不會."
+          }
+        ],
+        "fallbackRepair": "Use 才不會 + 遲到."
+      },
+      {
+        "id": "b2l02g11-p3",
+        "source": "p.63 #3",
+        "kind": "slot-build",
+        "prompt": "A friend asks why you did not buy him a gift. You were very busy.",
+        "promptZh": {
+          "traditional": "朋友問你為什麼沒買禮物給他。你很忙。",
+          "simplified": "朋友问你为什么没买礼物给他。你很忙。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "因為我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "太忙"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，才沒買禮物給你的。",
+                "simplified": "，才没买礼物给你的。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "因為我",
+            "simplified": "因为我",
+            "pinyin": "yīnwèi wǒ"
+          },
+          {
+            "traditional": "太忙",
+            "simplified": "太忙",
+            "pinyin": "tài máng"
+          },
+          {
+            "traditional": "所以",
+            "simplified": "所以",
+            "pinyin": "suǒyǐ"
+          },
+          {
+            "traditional": "可是",
+            "simplified": "可是",
+            "pinyin": "kěshì"
+          },
+          {
+            "traditional": "我忙",
+            "simplified": "我忙",
+            "pinyin": "wǒ máng"
+          }
+        ],
+        "result": {
+          "traditional": "因為我太忙，才沒買禮物給你的。",
+          "simplified": "因为我太忙，才没买礼物给你的。",
+          "pinyin": "Yīnwèi wǒ tài máng, cái méi mǎi lǐwù gěi nǐ de.",
+          "english": "It was because I was too busy that I did not buy you a gift."
+        },
+        "repairs": [
+          {
+            "placed": [
+              "所以"
+            ],
+            "note": "所以 introduces a result, not the reason; start with 因為我."
+          },
+          {
+            "placed": [
+              "可是"
+            ],
+            "note": "可是 marks contrast, not the reason after 因為; use 太忙."
+          },
+          {
+            "placed": [
+              "我忙"
+            ],
+            "note": "Use 太忙 after 因為我; 我忙 repeats the subject and leaves out 太."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "太忙"
+            },
+            "note": "太忙 is the reason; 因為我 comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "因為我"
+            },
+            "note": "因為我 starts the reason; 太忙 follows it."
+          }
+        ],
+        "fallbackRepair": "Use 因為 in the first clause."
+      },
+      {
+        "id": "b2l02g11-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your Chinese is not good. Ask him to practice more.",
+        "promptZh": {
+          "traditional": "中文不好。請他多練習。",
+          "simplified": "中文不好。请他多练习。"
+        },
+        "tiles": [
+          {
+            "traditional": "你得",
+            "simplified": "你得",
+            "pinyin": "nǐ děi"
+          },
+          {
+            "traditional": "多練習",
+            "simplified": "多练习",
+            "pinyin": "duō liànxí"
+          },
+          {
+            "traditional": "中文",
+            "simplified": "中文",
+            "pinyin": "Zhōngwén"
+          },
+          {
+            "traditional": "才會",
+            "simplified": "才会",
+            "pinyin": "cái huì"
+          },
+          {
+            "traditional": "好",
+            "simplified": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "才不",
+            "simplified": "才不",
+            "pinyin": "cái bù"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你得",
+              "多練習",
+              "中文",
+              "才會",
+              "好"
+            ],
+            "sentence": {
+              "traditional": "你得多練習，中文才會好。",
+              "simplified": "你得多练习，中文才会好。",
+              "pinyin": "Nǐ děi duō liànxí, Zhōngwén cái huì hǎo.",
+              "english": "You have to practice more; only then will your Chinese be good."
+            }
+          },
+          {
+            "order": [
+              "中文",
+              "你得",
+              "多練習",
+              "才會",
+              "好"
+            ],
+            "sentence": {
+              "traditional": "中文你得多練習，才會好。",
+              "simplified": "中文你得多练习，才会好。",
+              "pinyin": "Zhōngwén nǐ děi duō liànxí, cái huì hǎo.",
+              "english": "You have to practice Chinese more; only then will it be good."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "才不"
+            ],
+            "note": "才不 would say Chinese will not be good, the opposite."
+          }
+        ],
+        "fallbackRepair": "Use 得 in the condition and 才 in the result."
+      },
+      {
+        "id": "b2l02g11-p5",
+        "source": "own",
+        "kind": "sort-groups",
+        "prompt": "Which 才 does each sentence use?",
+        "promptZh": {
+          "traditional": "這些句子是哪一種「才」？",
+          "simplified": "这些句子是哪一种「才」？"
+        },
+        "groups": [
+          {
+            "label": "Time + 才",
+            "pattern": {
+              "traditional": "時間＋才",
+              "simplified": "时间＋才"
+            }
+          },
+          {
+            "label": "Condition + 才",
+            "pattern": {
+              "traditional": "前面的句子＋才",
+              "simplified": "前面的句子＋才"
+            }
+          }
+        ],
+        "cards": [
+          {
+            "sentence": {
+              "traditional": "他昨天晚上十二點才回家。",
+              "simplified": "他昨天晚上十二点才回家。",
+              "pinyin": "Tā zuótiān wǎnshàng shí'èr diǎn cái huí jiā.",
+              "english": "He did not get home until twelve last night."
+            },
+            "group": 0,
+            "note": "十二點 is later than expected, so 才 follows the time."
+          },
+          {
+            "sentence": {
+              "traditional": "他明天才回來。",
+              "simplified": "他明天才回来。",
+              "pinyin": "Tā míngtiān cái huílái.",
+              "english": "He will not be back until tomorrow."
+            },
+            "group": 0,
+            "note": "He will not be back until tomorrow: 才 after the time shows it is later than expected."
+          },
+          {
+            "sentence": {
+              "traditional": "你要先寫完功課，才可以看電視。",
+              "simplified": "你要先写完功课，才可以看电视。",
+              "pinyin": "Nǐ yào xiān xiě wán gōngkè, cái kěyǐ kàn diànshì.",
+              "english": "You have to finish your homework first; only then can you watch TV."
+            },
+            "group": 1,
+            "note": "Finishing homework is the condition; 才 introduces the result."
+          },
+          {
+            "sentence": {
+              "traditional": "你要多運動，身體才會好。",
+              "simplified": "你要多运动，身体才会好。",
+              "pinyin": "Nǐ yào duō yùndòng, shēntǐ cái huì hǎo.",
+              "english": "You need to exercise more; only then will your body be healthy."
+            },
+            "group": 1,
+            "note": "More exercise is the condition; 才 introduces the result."
+          }
+        ],
+        "successNote": "Time + 才 means later than expected. Condition + 才 means only then."
+      }
+    ]
+  }
+}

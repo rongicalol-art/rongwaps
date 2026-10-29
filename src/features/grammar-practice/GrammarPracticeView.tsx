@@ -4,7 +4,7 @@ import type { GrammarPractice, GrammarWordToken } from '../../types/models';
 import { PracticeDock } from './components/PracticeDock';
 import { PRACTICE_EXERCISES } from './exercises';
 import { ITEM_FADE } from './practiceMotion';
-import type { PracticeExerciseProps, PracticeResult, PracticeScript, PracticeStatus } from './practiceTypes';
+import { textIn, type PracticeExerciseProps, type PracticeResult, type PracticeScript, type PracticeStatus } from './practiceTypes';
 import { shuffleItems } from '../../utils/srs/sessionOrder';
 
 export interface GrammarPracticeViewProps {
@@ -51,6 +51,10 @@ export function GrammarPracticeView({
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
   const needsInstruction = item.kind === 'match-pairs' || (item.kind === 'slot-build' && item.gaps);
   const title = item.quiet && !needsInstruction ? null : item.prompt ?? practice.title;
+  const chineseTitle = item.promptZh ? textIn(item.promptZh, script) : null;
+  // English under a Chinese title stays hidden until tapped, per item.
+  const [englishFor, setEnglishFor] = useState<string | null>(null);
+  const showEnglish = englishFor === item.id;
   const inlineBank =item.kind === 'order-build' || item.kind === 'listen-build' || item.kind === 'chat-build' || item.kind === 'slot-build' || item.kind === 'slot-reels';
 
   // A result that lands after the learner moved on is dropped.
@@ -92,7 +96,23 @@ export function GrammarPracticeView({
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 pb-24">
-      {title && <h1 className={`text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl ${item.kind === 'same-meaning' ? 'sm:text-center' : ''}`}>{title}</h1>}
+      {title && chineseTitle ? (
+        <div>
+          <div className="flex items-start gap-3">
+            <h1 lang="zh" className="flex-1 font-chinese text-2xl font-bold leading-snug text-balance text-ui-ink-strong sm:text-3xl">{chineseTitle}</h1>
+            <button
+              type="button"
+              aria-pressed={showEnglish}
+              aria-label="Show the instruction in English"
+              onClick={() => setEnglishFor(showEnglish ? null : item.id)}
+              className="focus-ring -m-2 mt-0 shrink-0 rounded-xs p-2"
+            >
+              <span className={`block rounded-xs border-2 px-1.5 text-xs font-extrabold leading-5 transition-colors ${showEnglish ? 'border-ui-ink-strong text-ui-ink-strong' : 'border-ui-border text-ui-muted-strong'}`}>EN</span>
+            </button>
+          </div>
+          {showEnglish && <p className="mt-1 text-base font-semibold text-ui-muted-strong">{title}</p>}
+        </div>
+      ) : title && <h1 className={`text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl ${item.kind === 'same-meaning' ? 'sm:text-center' : ''}`}>{title}</h1>}
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

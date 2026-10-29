@@ -44,16 +44,22 @@ test('every tone is a complete role set with readable text', () => {
   assert.equal(new Set(SAMPLE_BOOKS.map((b) => b.theme.primary)).size, 4);
 });
 
-test('beta locks lessons past BETA_LAST_LESSON and books 2, 4 (Book 3 unlocked)', async () => {
+test('beta locks lessons past BETA_LAST_LESSON and book 4 (Books 2, 3 unlocked)', async () => {
   const { SAMPLE_LESSONS, BETA_LAST_LESSON } = await import('../../src/data/books');
   for (const l of SAMPLE_LESSONS) assert.equal(l.status, l.id > BETA_LAST_LESSON ? 'locked' : 'available');
-  assert.deepEqual(SAMPLE_BOOKS.map((b) => b.status === 'locked'), [false, true, false, true]);
+  assert.deepEqual(SAMPLE_BOOKS.map((b) => b.status === 'locked'), [false, false, false, true]);
 });
 
-test('isLessonLocked: Intro and Book 1 lessons 1-16 open; Book 3 lessons 1-16 open', async () => {
+test('isLessonLocked: Intro and Book 1 lessons 1-16 open; Book 2 lessons 1-6 open; Book 3 lessons 1-16 open', async () => {
   const { isLessonLocked } = await import('../../src/data/books');
   for (let lesson = 0; lesson <= 16; lesson++) assert.equal(isLessonLocked(1, lesson), false, `Book 1 lesson ${lesson}`);
-  assert.equal(isLessonLocked(2, 1), true);
+  assert.equal(isLessonLocked(2, 1), false);
+  assert.equal(isLessonLocked(2, 2), false);
+  assert.equal(isLessonLocked(2, 3), false);
+  assert.equal(isLessonLocked(2, 4), false);
+  assert.equal(isLessonLocked(2, 5), false);
+  assert.equal(isLessonLocked(2, 6), false);
+  assert.equal(isLessonLocked(2, 7), true);
   assert.equal(isLessonLocked(3, 1), false);
   assert.equal(isLessonLocked(3, 15), false);
   assert.equal(isLessonLocked(3, 16), false);
@@ -63,8 +69,14 @@ test('isLessonLocked: Intro and Book 1 lessons 1-16 open; Book 3 lessons 1-16 op
 
 test('full-course access unlocks every lesson without changing the beta defaults', async () => {
   const { SAMPLE_BOOKS, isLessonLocked } = await import('../../src/data/books');
-  assert.equal(isLessonLocked(2, 1), true);
-  assert.equal(isLessonLocked(2, 1, true), false);
+  assert.equal(isLessonLocked(2, 1), false);
+  assert.equal(isLessonLocked(2, 2), false);
+  assert.equal(isLessonLocked(2, 3), false);
+  assert.equal(isLessonLocked(2, 4), false);
+  assert.equal(isLessonLocked(2, 5), false);
+  assert.equal(isLessonLocked(2, 6), false);
+  assert.equal(isLessonLocked(2, 7), true);
+  assert.equal(isLessonLocked(2, 5, true), false);
   assert.equal(isLessonLocked(4, 16, true), false);
-  assert.equal(SAMPLE_BOOKS.find((book) => book.id === 2)?.status, 'locked');
+  assert.equal(SAMPLE_BOOKS.find((book) => book.id === 2)?.status, 'unlocked');
 });

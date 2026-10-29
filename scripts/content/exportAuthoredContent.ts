@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile, readFile, readdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { getPatternRowGroups } from '../../src/utils/grammar/grammarPatternLayout';
 import type { GrammarPatternRow, GrammarPractice, InteractiveGrammarPart, ReadingRecord, SentenceAudio } from '../../src/types/models';
@@ -78,6 +79,10 @@ async function exportDialogueAlignment(bookId: number) {
   const sourcePath = bookId === 1
     ? SOURCE_ALIGNMENT_PATH
     : resolve(ROOT, `content/dialogueAlignment-book${bookId}.json`);
+  if (!existsSync(sourcePath)) {
+    console.log(`No dialogue alignment source for Book ${bookId}; skipping.`);
+    return;
+  }
   const raw = await readFile(sourcePath, 'utf8');
   const alignmentMap = JSON.parse(raw) as Record<string, unknown>;
 
@@ -205,9 +210,9 @@ async function attachGrammarPractice(parts: InteractiveGrammarPart[], bookId: nu
   const practiceDir = resolve(ROOT, 'content/grammar-practice');
   const pages = new Map(parts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
   for (const file of (await readdir(practiceDir)).filter((name) => name.endsWith('.json'))) {
-    const isB3File = file.startsWith('b3');
-    if (bookId === 1 && isB3File) continue;
-    if (bookId === 3 && !isB3File) continue;
+    // Book 1 practice files are unprefixed; other books use `b<N>Lesson…`.
+    const prefixedBook = /^b(\d+)/.exec(file)?.[1];
+    if (prefixedBook ? Number(prefixedBook) !== bookId : bookId !== 1) continue;
     const content = JSON.parse(await readFile(resolve(practiceDir, file), 'utf8')) as Record<string, GrammarPractice>;
     for (const [pageId, practice] of Object.entries(content)) {
       const page = pages.get(pageId);
@@ -256,7 +261,7 @@ async function attachReadingAudio(bookId: number, readings: ReadingRecord[]) {
 
 async function main() {
   console.log('Exporting authored content to public/data packs...');
-  for (const bookId of [1, 3]) {
+  for (const bookId of [1, 2, 3]) {
     const readings = await loadSourceReadings(bookId);
     if (bookId !== 1) await attachReadingAudio(bookId, readings);
     const grammarParts = await loadSourceGrammarParts(bookId);

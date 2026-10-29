@@ -1,0 +1,5006 @@
+{
+  "B2L04-G01-P99": {
+    "bookPage": 99,
+    "title": "Practice: 就",
+    "items": [
+      {
+        "id": "b2l04g1-p1",
+        "source": "p.100 #1",
+        "kind": "order-build",
+        "prompt": "Your friend asks which one is your new car. Answer with 紅色的英國車.",
+        "promptZh": {
+          "traditional": "朋友問你哪一輛是新車。用「紅色的英國車」回答。",
+          "simplified": "朋友问你哪一辆是新车。用「红色的英国车」回答。"
+        },
+        "sub": "A：你的新車是哪一輛？（紅色的英國車）",
+        "tiles": [
+          {
+            "traditional": "那輛",
+            "simplified": "那辆",
+            "pinyin": "nà liàng"
+          },
+          {
+            "traditional": "紅色的",
+            "simplified": "红色的",
+            "pinyin": "hóngsè de"
+          },
+          {
+            "traditional": "英國車",
+            "simplified": "英国车",
+            "pinyin": "Yīngguó chē"
+          },
+          {
+            "traditional": "就是",
+            "simplified": "就是",
+            "pinyin": "jiùshì"
+          },
+          {
+            "traditional": "我的",
+            "simplified": "我的",
+            "pinyin": "wǒ de"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "那輛",
+              "紅色的",
+              "英國車",
+              "就是",
+              "我的"
+            ],
+            "sentence": {
+              "traditional": "那輛紅色的英國車就是我的。",
+              "simplified": "那辆红色的英国车就是我的。",
+              "pinyin": "Nà liàng hóngsè de Yīngguó chē jiùshì wǒ de.",
+              "english": "That red British car is exactly mine."
+            }
+          },
+          {
+            "order": [
+              "我的",
+              "就是",
+              "那輛",
+              "紅色的",
+              "英國車"
+            ],
+            "sentence": {
+              "traditional": "我的就是那輛紅色的英國車。",
+              "simplified": "我的就是那辆红色的英国车。",
+              "pinyin": "Wǒ de jiùshì nà liàng hóngsè de Yīngguó chē.",
+              "english": "Mine is that red British car."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "才"
+            ],
+            "note": "Use 就是 to point at the exact car; 才 marks lateness or a late result."
+          }
+        ],
+        "fallbackRepair": "Say 那輛 + 紅色的 + 英國車 + 就是 + 我的.",
+        "successNote": "就是 points at exactly the car you mean."
+      },
+      {
+        "id": "b2l04g1-p2",
+        "source": "p.100 #2",
+        "kind": "order-build",
+        "prompt": "Your friend forgot where the key is. Answer with 那本中文書的旁邊.",
+        "promptZh": {
+          "traditional": "朋友忘了鑰匙在哪裡。用「那本中文書的旁邊」回答。",
+          "simplified": "朋友忘了钥匙在哪里。用「那本中文书的旁边」回答。"
+        },
+        "sub": "A：我忘了把鑰匙放在哪裡了。（那本中文書的旁邊）",
+        "tiles": [
+          {
+            "traditional": "就",
+            "simplified": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "在",
+            "simplified": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "那本",
+            "simplified": "那本",
+            "pinyin": "nà běn"
+          },
+          {
+            "traditional": "中文書",
+            "simplified": "中文书",
+            "pinyin": "Zhōngwén shū"
+          },
+          {
+            "traditional": "的旁邊",
+            "simplified": "的旁边",
+            "pinyin": "de pángbiān"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "就",
+              "在",
+              "那本",
+              "中文書",
+              "的旁邊"
+            ],
+            "sentence": {
+              "traditional": "就在那本中文書的旁邊。",
+              "simplified": "就在那本中文书的旁边。",
+              "pinyin": "Jiù zài nà běn Zhōngwén shū de pángbiān.",
+              "english": "It is right next to that Chinese book."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "才"
+            ],
+            "note": "才 means 'only then' or 'late'; the key is right there."
+          },
+          {
+            "before": [
+              "在",
+              "就"
+            ],
+            "note": "Put 就 before 在: 就在."
+          }
+        ],
+        "fallbackRepair": "Say 就 + 在 + 那本 + 中文書 + 的旁邊."
+      },
+      {
+        "id": "b2l04g1-p3",
+        "source": "p.100 #3",
+        "kind": "order-build",
+        "prompt": "Your friend asks which woman is Mr. Wang's girlfriend. Answer with 長頭髮.",
+        "promptZh": {
+          "traditional": "朋友問你哪一位是王先生的女朋友。用「長頭髮」回答。",
+          "simplified": "朋友问你哪一位是王先生的女朋友。用「长头发」回答。"
+        },
+        "sub": "A：聽說王先生的女朋友很漂亮，是哪一位？（長頭髮）",
+        "tiles": [
+          {
+            "traditional": "就是",
+            "simplified": "就是",
+            "pinyin": "jiùshì"
+          },
+          {
+            "traditional": "那個",
+            "simplified": "那个",
+            "pinyin": "nàge"
+          },
+          {
+            "traditional": "長頭髮",
+            "simplified": "长头发",
+            "pinyin": "cháng tóufǎ"
+          },
+          {
+            "traditional": "的",
+            "simplified": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "小姐",
+            "simplified": "小姐",
+            "pinyin": "xiǎojiě"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "就是",
+              "那個",
+              "長頭髮",
+              "的",
+              "小姐"
+            ],
+            "sentence": {
+              "traditional": "就是那個長頭髮的小姐。",
+              "simplified": "就是那个长头发的小姐。",
+              "pinyin": "Jiùshì nàge cháng tóufǎ de xiǎojiě.",
+              "english": "She is exactly that long-haired woman."
+            }
+          },
+          {
+            "order": [
+              "那個",
+              "就是",
+              "長頭髮",
+              "的",
+              "小姐"
+            ],
+            "sentence": {
+              "traditional": "那個就是長頭髮的小姐。",
+              "simplified": "那个就是长头发的小姐。",
+              "pinyin": "Nàge jiùshì cháng tóufǎ de xiǎojiě.",
+              "english": "That is the long-haired woman."
+            }
+          },
+          {
+            "order": [
+              "長頭髮",
+              "的",
+              "小姐",
+              "就是",
+              "那個"
+            ],
+            "sentence": {
+              "traditional": "長頭髮的小姐就是那個。",
+              "simplified": "长头发的小姐就是那个。",
+              "pinyin": "Cháng tóufǎ de xiǎojiě jiùshì nàge.",
+              "english": "The long-haired woman is that one."
+            }
+          },
+          {
+            "order": [
+              "就是",
+              "長頭髮",
+              "的",
+              "那個",
+              "小姐"
+            ],
+            "sentence": {
+              "traditional": "就是長頭髮的那個小姐。",
+              "simplified": "就是长头发的那个小姐。",
+              "pinyin": "Jiùshì cháng tóufǎ de nàge xiǎojiě.",
+              "english": "It is that long-haired woman."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "才"
+            ],
+            "note": "Use 就是 to identify the exact person; 才 does not point someone out."
+          },
+          {
+            "before": [
+              "那個",
+              "就是"
+            ],
+            "note": "Put 就是 first: 就是那個…"
+          }
+        ],
+        "fallbackRepair": "Say 就是 + 那個 + 長頭髮 + 的 + 小姐."
+      },
+      {
+        "id": "b2l04g1-p4",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "Someone asks whether Mr. Wang is home. You are Mr. Wang. How do you answer?",
+        "promptZh": {
+          "traditional": "有人問王先生在不在。你是王先生。你怎麼回答？",
+          "simplified": "有人问王先生在不在。你是王先生。你怎么回答？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "請問，王先生在嗎？",
+                "simplified": "请问，王先生在吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我",
+                "simplified": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "就是"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "就是",
+            "simplified": "就是",
+            "pinyin": "jiùshì"
+          },
+          {
+            "traditional": "就在",
+            "simplified": "就在",
+            "pinyin": "jiù zài"
+          },
+          {
+            "traditional": "才在",
+            "simplified": "才在",
+            "pinyin": "cái zài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "就在"
+            ],
+            "note": "在 answers where someone is, not who they are."
+          },
+          {
+            "placed": [
+              "才在"
+            ],
+            "note": "才 means 'only then' or 'late'; it does not identify you."
+          }
+        ],
+        "fallbackRepair": "Say 我就是: 就是 identifies you.",
+        "result": {
+          "traditional": "我就是。",
+          "simplified": "我就是。",
+          "pinyin": "Wǒ jiùshì.",
+          "english": "I am the one."
+        }
+      },
+      {
+        "id": "b2l04g1-p6",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Your phone is on the table, and your friend cannot find it. The sentence should say that.",
+        "promptZh": {
+          "traditional": "你的手機在桌子上，朋友找不到手機。句子要說這個意思。",
+          "simplified": "你的手机在桌子上，朋友找不到手机。句子要说这个意思。"
+        },
+        "chunks": [
+          {
+            "traditional": "我的",
+            "simplified": "我的"
+          },
+          {
+            "traditional": "手機",
+            "simplified": "手机"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才"
+          },
+          {
+            "traditional": "在桌子上",
+            "simplified": "在桌子上",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "就",
+        "tiles": [
+          {
+            "traditional": "就",
+            "simplified": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "也",
+            "simplified": "也",
+            "pinyin": "yě"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "都"
+            ],
+            "note": "都 would say every phone is on the table; you mean yours is right there."
+          },
+          {
+            "placed": [
+              "也"
+            ],
+            "note": "也 means 'also'; the sentence points at where the phone is."
+          }
+        ],
+        "takeOutNote": "The phone is right there; swap 才 for 就, do not take it out.",
+        "hint": "The sentence needs the word for 'right there'.",
+        "result": {
+          "traditional": "我的手機就在桌子上。",
+          "simplified": "我的手机就在桌子上。",
+          "pinyin": "Wǒ de shǒujī jiù zài zhuōzi shàng.",
+          "english": "My phone is right there on the table."
+        },
+        "successNote": "就 stresses that the phone is exactly there."
+      },
+      {
+        "id": "b2l04g1-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your friend asks where your home is. It is next to the school. Say it with 就.",
+        "promptZh": {
+          "traditional": "朋友問你家在哪裡。我家在學校旁邊。用「就」說。",
+          "simplified": "朋友问你家在哪里。我家在学校旁边。用「就」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我家",
+            "simplified": "我家",
+            "pinyin": "wǒ jiā"
+          },
+          {
+            "traditional": "就",
+            "simplified": "就",
+            "pinyin": "jiù"
+          },
+          {
+            "traditional": "在",
+            "simplified": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "學校旁邊",
+            "simplified": "学校旁边",
+            "pinyin": "xuéxiào pángbiān"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我家",
+              "就",
+              "在",
+              "學校旁邊"
+            ],
+            "sentence": {
+              "traditional": "我家就在學校旁邊。",
+              "simplified": "我家就在学校旁边。",
+              "pinyin": "Wǒ jiā jiù zài xuéxiào pángbiān.",
+              "english": "My home is right next to the school."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "才"
+            ],
+            "note": "Use 就 to say 'right there'; 才 marks lateness or 'only then'."
+          },
+          {
+            "before": [
+              "在",
+              "就"
+            ],
+            "note": "Put 就 before 在: 就在."
+          }
+        ],
+        "fallbackRepair": "Say 我家 + 就 + 在 + 學校旁邊."
+      }
+    ]
+  },
+  "B2L04-G02-P100": {
+    "bookPage": 100,
+    "title": "Practice: V到",
+    "items": [
+      {
+        "id": "b2l04g2-p1",
+        "source": "p.101 #1",
+        "kind": "slot-build",
+        "prompt": "You want to buy things online. It is very convenient to shop online.",
+        "promptZh": {
+          "traditional": "你想在網路上買東西。上網買東西很方便。",
+          "simplified": "你想在网路上买东西。上网买东西很方便。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在上網買東西很方便，什麼東西都",
+                "simplified": "现在上网买东西很方便，什么东西都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "買"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "得到",
+            "simplified": "得到",
+            "pinyin": "de dào"
+          },
+          {
+            "traditional": "不到",
+            "simplified": "不到",
+            "pinyin": "bu dào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看"
+            ],
+            "note": "You buy things online, not look at them."
+          },
+          {
+            "placed": [
+              "不到"
+            ],
+            "note": "The sentence says it is convenient, so everything can be bought."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得到"
+            },
+            "note": "得到 is the result; it comes after the verb 買."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "買"
+            },
+            "note": "買 is the verb; it comes before 得到."
+          }
+        ],
+        "fallbackRepair": "Put 買 before 得到: 買得到.",
+        "result": {
+          "traditional": "現在上網買東西很方便，什麼東西都買得到。",
+          "simplified": "现在上网买东西很方便，什么东西都买得到。",
+          "pinyin": "Xiànzài shàngwǎng mǎi dōngxi hěn fāngbiàn, shénme dōngxi dōu mǎi de dào.",
+          "english": "It is very convenient to buy things online now; you can buy everything."
+        }
+      },
+      {
+        "id": "b2l04g2-p2",
+        "source": "p.101 #2",
+        "kind": "slot-build",
+        "prompt": "The person in front is very tall. You are sitting behind them. Complete the sentence.",
+        "promptZh": {
+          "traditional": "前面的人太高了。你坐在後面。",
+          "simplified": "前面的人太高了。你坐在后面。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "前面的人太高了，我",
+                "simplified": "前面的人太高了，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "黑板上的字。",
+                "simplified": "黑板上的字。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "得到",
+            "simplified": "得到",
+            "pinyin": "de dào"
+          },
+          {
+            "traditional": "不到",
+            "simplified": "不到",
+            "pinyin": "bu dào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "聽"
+            ],
+            "note": "The blackboard is something you look at, not listen to."
+          },
+          {
+            "placed": [
+              "得到"
+            ],
+            "note": "The tall person blocks the view, so the result is not achieved."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不到"
+            },
+            "note": "不到 is the result; it comes after the verb 看."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "看"
+            },
+            "note": "看 is the verb; it comes before 不到."
+          }
+        ],
+        "fallbackRepair": "Put 看 before 不到: 看不到.",
+        "result": {
+          "traditional": "前面的人太高了，我看不到黑板上的字。",
+          "simplified": "前面的人太高了，我看不到黑板上的字。",
+          "pinyin": "Qiánmiàn de rén tài gāo le, wǒ kàn bu dào hēibǎn shàng de zì.",
+          "english": "The person in front is too tall, so I cannot see the words on the blackboard."
+        }
+      },
+      {
+        "id": "b2l04g2-p3",
+        "source": "p.101 #3",
+        "kind": "slot-build",
+        "prompt": "The picture is on the wall. The child wants it, but she is too short.",
+        "promptZh": {
+          "traditional": "那張畫掛在牆上。小孩子要那張畫，可是太矮了。",
+          "simplified": "那张画挂在墙上。小孩子要那张画，可是太矮了。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那張畫掛在牆上，小孩子",
+                "simplified": "那张画挂在墙上，小孩子"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "拿"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "拿",
+            "simplified": "拿",
+            "pinyin": "ná"
+          },
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "得到",
+            "simplified": "得到",
+            "pinyin": "de dào"
+          },
+          {
+            "traditional": "不到",
+            "simplified": "不到",
+            "pinyin": "bu dào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看"
+            ],
+            "note": "She can see the picture, but she wants the picture and cannot reach it."
+          },
+          {
+            "placed": [
+              "得到"
+            ],
+            "note": "The picture is too high, so the result is not achieved."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不到"
+            },
+            "note": "不到 is the result; it comes after the verb 拿."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "拿"
+            },
+            "note": "拿 is the verb; it comes before 不到."
+          }
+        ],
+        "fallbackRepair": "Put 拿 before 不到: 拿不到.",
+        "result": {
+          "traditional": "那張畫掛在牆上，小孩子拿不到。",
+          "simplified": "那张画挂在墙上，小孩子拿不到。",
+          "pinyin": "Nà zhāng huà guà zài qiáng shàng, xiǎo háizi ná bu dào.",
+          "english": "The picture hangs on the wall; the child cannot reach it."
+        }
+      },
+      {
+        "id": "b2l04g2-p4",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "There are many snacks in the night market. You want to eat every kind.",
+        "promptZh": {
+          "traditional": "夜市裡有很多小吃。你每一種都想吃。",
+          "simplified": "夜市里有很多小吃。你每一种都想吃。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "在夜市，什麼小吃都",
+                "simplified": "在夜市，什么小吃都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得到"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吃",
+            "simplified": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "得到",
+            "simplified": "得到",
+            "pinyin": "de dào"
+          },
+          {
+            "traditional": "不到",
+            "simplified": "不到",
+            "pinyin": "bu dào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "買"
+            ],
+            "note": "The prompt says you want to eat, so use 吃, not 買."
+          },
+          {
+            "placed": [
+              "不到"
+            ],
+            "note": "The night market has many snacks, so you can get them."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得到"
+            },
+            "note": "得到 is the result; it comes after the verb 吃."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "吃"
+            },
+            "note": "吃 is the verb; it comes before 得到."
+          }
+        ],
+        "fallbackRepair": "Put 吃 before 得到: 吃得到.",
+        "result": {
+          "traditional": "在夜市，什麼小吃都吃得到。",
+          "simplified": "在夜市，什么小吃都吃得到。",
+          "pinyin": "Zài yèshì, shénme xiǎochī dōu chī de dào.",
+          "english": "In the night market, you can get every kind of snack."
+        },
+        "successNote": "什麼…都… works with 吃得到: every kind is within reach."
+      },
+      {
+        "id": "b2l04g2-p5",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You bought that book yesterday and were happy. The sentence should say that.",
+        "promptZh": {
+          "traditional": "你昨天買了那本書，很高興。句子要說這個意思。",
+          "simplified": "你昨天买了那本书，很高兴。句子要说这个意思。"
+        },
+        "sub": "那本書你找了很久。",
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "昨天",
+            "simplified": "昨天"
+          },
+          {
+            "traditional": "買不到",
+            "simplified": "买不到"
+          },
+          {
+            "traditional": "那本中文書",
+            "simplified": "那本中文书",
+            "tail": "，所以很高興。"
+          }
+        ],
+        "wrong": 2,
+        "fix": "買到了",
+        "tiles": [
+          {
+            "traditional": "買到了",
+            "simplified": "买到了",
+            "pinyin": "mǎi dào le"
+          },
+          {
+            "traditional": "買得到",
+            "simplified": "买得到",
+            "pinyin": "mǎi de dào"
+          },
+          {
+            "traditional": "找不到",
+            "simplified": "找不到",
+            "pinyin": "zhǎo bu dào"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "買得到"
+            ],
+            "note": "This says you can buy it, not that you bought it yesterday."
+          },
+          {
+            "placed": [
+              "找不到"
+            ],
+            "note": "You are talking about buying, not finding."
+          }
+        ],
+        "takeOutNote": "You did get the book, so swap 買不到 for 買到了.",
+        "hint": "You did get the book, so the result was successful.",
+        "result": {
+          "traditional": "我昨天買到了那本中文書，所以很高興。",
+          "simplified": "我昨天买到了那本中文书，所以很高兴。",
+          "pinyin": "Wǒ zuótiān mǎi dào le nà běn Zhōngwén shū, suǒyǐ hěn gāoxìng.",
+          "english": "I bought that Chinese book yesterday, so I was very happy."
+        }
+      },
+      {
+        "id": "b2l04g2-p6",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You want to know whether he can find that shop. Ask him.",
+        "promptZh": {
+          "traditional": "你想知道他能不能找到那家店。你問他。",
+          "simplified": "你想知道他能不能找到那家店。你问他。"
+        },
+        "sub": "那家店在學校後面。",
+        "tiles": [
+          {
+            "traditional": "你",
+            "simplified": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "找",
+            "simplified": "找",
+            "pinyin": "zhǎo"
+          },
+          {
+            "traditional": "得到",
+            "simplified": "得到",
+            "pinyin": "de dào"
+          },
+          {
+            "traditional": "那家店",
+            "simplified": "那家店",
+            "pinyin": "nà jiā diàn"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "不到",
+            "simplified": "不到",
+            "pinyin": "bu dào"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "你",
+              "找",
+              "得到",
+              "那家店",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "你找得到那家店嗎？",
+              "simplified": "你找得到那家店吗？",
+              "pinyin": "Nǐ zhǎo de dào nà jiā diàn ma?",
+              "english": "Can you find that shop?"
+            }
+          },
+          {
+            "order": [
+              "那家店",
+              "你",
+              "找",
+              "得到",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "那家店，你找得到嗎？",
+              "simplified": "那家店，你找得到吗？",
+              "pinyin": "Nà jiā diàn, nǐ zhǎo de dào ma?",
+              "english": "That shop—can you find it?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不到"
+            ],
+            "note": "The question asks whether he can find it, so use 得到."
+          },
+          {
+            "before": [
+              "得到",
+              "找"
+            ],
+            "note": "Put 找 before 得到: 找得到."
+          },
+          {
+            "notLast": "嗎",
+            "note": "嗎 goes at the end of the question."
+          }
+        ],
+        "fallbackRepair": "Say 你 + 找 + 得到 + 那家店 + 嗎."
+      }
+    ],
+    "allowWords": [
+      "小孩子"
+    ]
+  },
+  "B2L04-G03-P101": {
+    "bookPage": 101,
+    "title": "Practice: V懂",
+    "items": [
+      {
+        "id": "b2l04g3-p1",
+        "source": "p.101 #1",
+        "kind": "slot-build",
+        "prompt": "You have never studied Japanese. A friend asks about Japanese songs. Complete the sentence.",
+        "promptZh": {
+          "traditional": "你沒學過日文。朋友問你日文歌的事。",
+          "simplified": "你没学过日文。朋友问你日文歌的事。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我沒學過日文，當然",
+                "simplified": "我没学过日文，当然"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "聽"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不懂"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "日文歌。",
+                "simplified": "日文歌。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "得懂",
+            "simplified": "得懂",
+            "pinyin": "de dǒng"
+          },
+          {
+            "traditional": "不懂",
+            "simplified": "不懂",
+            "pinyin": "bu dǒng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看"
+            ],
+            "note": "You listen to a song, not look at it."
+          },
+          {
+            "placed": [
+              "得懂"
+            ],
+            "note": "Never studying Japanese means no ability, so use the negative 不懂."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不懂"
+            },
+            "note": "不懂 is the result; it comes after the verb 聽."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "聽"
+            },
+            "note": "聽 is the verb; it comes before 不懂."
+          }
+        ],
+        "fallbackRepair": "Put 聽 before 不懂: 聽不懂.",
+        "result": {
+          "traditional": "我沒學過日文，當然聽不懂日文歌。",
+          "simplified": "我没学过日文，当然听不懂日文歌。",
+          "pinyin": "Wǒ méi xué guo Rìwén, dāngrán tīng bu dǒng Rìwén gē.",
+          "english": "I have never studied Japanese, so of course I do not understand Japanese songs."
+        }
+      },
+      {
+        "id": "b2l04g3-p2",
+        "source": "p.101 #2",
+        "kind": "slot-build",
+        "prompt": "This English book is not hard. What do you think of it?",
+        "promptZh": {
+          "traditional": "這本英文書不難。你們覺得怎麼樣？",
+          "simplified": "这本英文书不难。你们觉得怎么样？"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這本英文書不難，我們都",
+                "simplified": "这本英文书不难，我们都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得懂"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "得懂",
+            "simplified": "得懂",
+            "pinyin": "de dǒng"
+          },
+          {
+            "traditional": "不懂",
+            "simplified": "不懂",
+            "pinyin": "bu dǒng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "聽"
+            ],
+            "note": "This is a book, so you read it."
+          },
+          {
+            "placed": [
+              "不懂"
+            ],
+            "note": "The book is not hard, so you can understand it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得懂"
+            },
+            "note": "得懂 is the result; it comes after the verb 看."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "看"
+            },
+            "note": "看 is the verb; it comes before 得懂."
+          }
+        ],
+        "fallbackRepair": "Put 看 before 得懂: 看得懂.",
+        "result": {
+          "traditional": "這本英文書不難，我們都看得懂。",
+          "simplified": "这本英文书不难，我们都看得懂。",
+          "pinyin": "Zhè běn Yīngwén shū bù nán, wǒmen dōu kàn de dǒng.",
+          "english": "This English book is not hard; we all understand it."
+        }
+      },
+      {
+        "id": "b2l04g3-p3",
+        "source": "p.101 #3",
+        "kind": "slot-build",
+        "prompt": "The student is smart. He finds everything the teacher says easy.",
+        "promptZh": {
+          "traditional": "那個學生很聰明。老師上課說的話，他都覺得不難。",
+          "simplified": "那个学生很聪明。老师上课说的话，他都觉得不难。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個學生很聰明，老師上課說的話，他都",
+                "simplified": "那个学生很聪明，老师上课说的话，他都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "聽"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得懂"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "聽",
+            "simplified": "听",
+            "pinyin": "tīng"
+          },
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "得懂",
+            "simplified": "得懂",
+            "pinyin": "de dǒng"
+          },
+          {
+            "traditional": "不懂",
+            "simplified": "不懂",
+            "pinyin": "bu dǒng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看"
+            ],
+            "note": "The teacher speaks, so you listen."
+          },
+          {
+            "placed": [
+              "不懂"
+            ],
+            "note": "He is smart, so he understands."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得懂"
+            },
+            "note": "得懂 is the result; it comes after the verb 聽."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "聽"
+            },
+            "note": "聽 is the verb; it comes before 得懂."
+          }
+        ],
+        "fallbackRepair": "Put 聽 before 得懂: 聽得懂.",
+        "result": {
+          "traditional": "那個學生很聰明，老師上課說的話，他都聽得懂。",
+          "simplified": "那个学生很聪明，老师上课说的话，他都听得懂。",
+          "pinyin": "Nàge xuésheng hěn cōngmíng, lǎoshī shàngkè shuō de huà, tā dōu tīng de dǒng.",
+          "english": "That student is smart; he understands everything the teacher says in class."
+        }
+      },
+      {
+        "id": "b2l04g3-p4",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "This movie has no Chinese. You do not want to watch it.",
+        "promptZh": {
+          "traditional": "這個電影沒有中文。你不想看。",
+          "simplified": "这个电影没有中文。你不想看。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這個電影沒有中文，我",
+                "simplified": "这个电影没有中文，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不懂"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "看",
+            "simplified": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "得懂",
+            "simplified": "得懂",
+            "pinyin": "de dǒng"
+          },
+          {
+            "traditional": "不懂",
+            "simplified": "不懂",
+            "pinyin": "bu dǒng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "得懂"
+            ],
+            "note": "There is no Chinese, so you cannot understand it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不懂"
+            },
+            "note": "不懂 is the result; it comes after the verb 看."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "看"
+            },
+            "note": "看 is the verb; it comes before 不懂."
+          }
+        ],
+        "fallbackRepair": "Put 看 before 不懂: 看不懂.",
+        "result": {
+          "traditional": "這個電影沒有中文，我看不懂。",
+          "simplified": "这个电影没有中文，我看不懂。",
+          "pinyin": "Zhège diànyǐng méi yǒu Zhōngwén, wǒ kàn bu dǒng.",
+          "english": "This movie has no Chinese, so I cannot understand it."
+        }
+      },
+      {
+        "id": "b2l04g3-p5",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You never studied Chinese, so his words were too hard for you. The sentence should say that.",
+        "promptZh": {
+          "traditional": "你沒學過中文，他的話對你太難了。句子要說這個意思。",
+          "simplified": "你没学过中文，他的话对你太难了。句子要说这个意思。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "聽懂了",
+            "simplified": "听懂了"
+          },
+          {
+            "traditional": "他的話",
+            "simplified": "他的话",
+            "tail": "。"
+          }
+        ],
+        "wrong": 1,
+        "fix": "聽不懂",
+        "tiles": [
+          {
+            "traditional": "聽不懂",
+            "simplified": "听不懂",
+            "pinyin": "tīng bu dǒng"
+          },
+          {
+            "traditional": "看得懂",
+            "simplified": "看得懂",
+            "pinyin": "kàn de dǒng"
+          },
+          {
+            "traditional": "聽得懂",
+            "simplified": "听得懂",
+            "pinyin": "tīng de dǒng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "看得懂"
+            ],
+            "note": "This is about hearing, not reading."
+          },
+          {
+            "placed": [
+              "聽得懂"
+            ],
+            "note": "The sentence says you did not understand."
+          }
+        ],
+        "takeOutNote": "You did not understand, so swap 聽懂了 for 聽不懂.",
+        "hint": "His words were too hard for you.",
+        "result": {
+          "traditional": "我聽不懂他的話。",
+          "simplified": "我听不懂他的话。",
+          "pinyin": "Wǒ tīng bu dǒng tā de huà.",
+          "english": "I could not understand his words."
+        }
+      },
+      {
+        "id": "b2l04g3-p6",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You want to know whether your friend has trouble in class. Ask him.",
+        "promptZh": {
+          "traditional": "你想知道朋友上課有沒有問題。你問他。",
+          "simplified": "你想知道朋友上课有没有问题。你问他。"
+        },
+        "tiles": [
+          {
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī"
+          },
+          {
+            "traditional": "說的話",
+            "simplified": "说的话",
+            "pinyin": "shuō de huà"
+          },
+          {
+            "traditional": "你",
+            "simplified": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "聽得懂",
+            "simplified": "听得懂",
+            "pinyin": "tīng de dǒng"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "不懂",
+            "simplified": "不懂",
+            "pinyin": "bu dǒng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "老師",
+              "說的話",
+              "你",
+              "聽得懂",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "老師說的話，你聽得懂嗎？",
+              "simplified": "老师说的话，你听得懂吗？",
+              "pinyin": "Lǎoshī shuō de huà, nǐ tīng de dǒng ma?",
+              "english": "Do you understand what the teacher says?"
+            }
+          },
+          {
+            "order": [
+              "你",
+              "聽得懂",
+              "老師",
+              "說的話",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "你聽得懂老師說的話嗎？",
+              "simplified": "你听得懂老师说的话吗？",
+              "pinyin": "Nǐ tīng de dǒng lǎoshī shuō de huà ma?",
+              "english": "Do you understand what the teacher says?"
+            }
+          },
+          {
+            "order": [
+              "你",
+              "老師",
+              "說的話",
+              "聽得懂",
+              "嗎"
+            ],
+            "sentence": {
+              "traditional": "你老師說的話，聽得懂嗎？",
+              "simplified": "你老师说的话，听得懂吗？",
+              "pinyin": "Nǐ lǎoshī shuō de huà, tīng de dǒng ma?",
+              "english": "Do you understand what your teacher says?"
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不懂"
+            ],
+            "note": "The question asks whether he understands, so use 聽得懂."
+          },
+          {
+            "notLast": "嗎",
+            "note": "嗎 goes at the end of the question."
+          }
+        ],
+        "fallbackRepair": "Say 老師 + 說的話 + 你 + 聽得懂 + 嗎."
+      }
+    ]
+  },
+  "B2L04-G04-P108": {
+    "bookPage": 108,
+    "title": "Practice: Vs得不得了 / Vs極了",
+    "items": [
+      {
+        "id": "b2l04g4-p1",
+        "source": "p.109 #1",
+        "kind": "slot-build",
+        "prompt": "The sun is strong and he keeps wiping his face. Complete the answer with 得不得了.",
+        "promptZh": {
+          "traditional": "太陽很大，他一直擦臉。用「得不得了」回答。",
+          "simplified": "太阳很大，他一直擦脸。用「得不得了」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天的天氣怎麼樣？",
+                "simplified": "今天的天气怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "熱"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得不得了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè"
+          },
+          {
+            "traditional": "冷",
+            "simplified": "冷",
+            "pinyin": "lěng"
+          },
+          {
+            "traditional": "得不得了",
+            "simplified": "得不得了",
+            "pinyin": "de bùdéliǎo"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "冷"
+            ],
+            "note": "He is hot, not cold."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "Use 得不得了 after the adjective; do not put a degree word before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得不得了"
+            },
+            "note": "得不得了 is the degree complement; it comes after 熱."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "熱"
+            },
+            "note": "熱 is the adjective; it comes before 得不得了."
+          }
+        ],
+        "fallbackRepair": "Put 熱 before 得不得了.",
+        "result": {
+          "traditional": "熱得不得了。",
+          "simplified": "热得不得了。",
+          "pinyin": "Rè de bùdéliǎo.",
+          "english": "It is extremely hot."
+        }
+      },
+      {
+        "id": "b2l04g4-p2",
+        "source": "p.109 #2",
+        "kind": "slot-build",
+        "prompt": "The shoes are very expensive. Complete the answer with 得不得了.",
+        "promptZh": {
+          "traditional": "這雙鞋的價錢很高。用「得不得了」回答。",
+          "simplified": "这双鞋的价钱很高。用「得不得了」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這雙鞋貴不貴？",
+                "simplified": "这双鞋贵不贵？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "貴"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得不得了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "貴",
+            "simplified": "贵",
+            "pinyin": "guì"
+          },
+          {
+            "traditional": "便宜",
+            "simplified": "便宜",
+            "pinyin": "piányi"
+          },
+          {
+            "traditional": "得不得了",
+            "simplified": "得不得了",
+            "pinyin": "de bùdéliǎo"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "便宜"
+            ],
+            "note": "Five thousand dollars is expensive, not cheap."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "Use 得不得了 after the adjective; do not put a degree word before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得不得了"
+            },
+            "note": "得不得了 is the degree complement; it comes after 貴."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "貴"
+            },
+            "note": "貴 is the adjective; it comes before 得不得了."
+          }
+        ],
+        "fallbackRepair": "Put 貴 before 得不得了.",
+        "result": {
+          "traditional": "貴得不得了。",
+          "simplified": "贵得不得了。",
+          "pinyin": "Guì de bùdéliǎo.",
+          "english": "They are extremely expensive."
+        }
+      },
+      {
+        "id": "b2l04g4-p3",
+        "source": "p.109 #3",
+        "kind": "slot-build",
+        "prompt": "He drank the drink. Complete the answer with 得不得了.",
+        "promptZh": {
+          "traditional": "他喝了那杯飲料。用「得不得了」回答。",
+          "simplified": "他喝了那杯饮料。用「得不得了」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你買的那杯飲料好喝嗎？",
+                "simplified": "你买的那杯饮料好喝吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好喝"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得不得了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好喝",
+            "simplified": "好喝",
+            "pinyin": "hǎohē"
+          },
+          {
+            "traditional": "好吃",
+            "simplified": "好吃",
+            "pinyin": "hǎochī"
+          },
+          {
+            "traditional": "得不得了",
+            "simplified": "得不得了",
+            "pinyin": "de bùdéliǎo"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "好吃"
+            ],
+            "note": "You drink a drink; 好吃 is for food."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "Use 得不得了 after the adjective; do not put a degree word before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得不得了"
+            },
+            "note": "得不得了 is the degree complement; it comes after 好喝."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "好喝"
+            },
+            "note": "好喝 is the adjective; it comes before 得不得了."
+          }
+        ],
+        "fallbackRepair": "Put 好喝 before 得不得了.",
+        "result": {
+          "traditional": "好喝得不得了。",
+          "simplified": "好喝得不得了。",
+          "pinyin": "Hǎohē de bùdéliǎo.",
+          "english": "It is extremely delicious (of a drink)."
+        }
+      },
+      {
+        "id": "b2l04g4-p4",
+        "source": "p.110 ① #1",
+        "kind": "slot-build",
+        "prompt": "Everyone listened to her song and was happy. Complete the answer with 極了.",
+        "promptZh": {
+          "traditional": "大家聽了她的歌，都很高興。用「極了」回答。",
+          "simplified": "大家听了她的歌，都很高兴。用「极了」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "她唱的歌好聽嗎？",
+                "simplified": "她唱的歌好听吗？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好聽"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "極了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好聽",
+            "simplified": "好听",
+            "pinyin": "hǎotīng"
+          },
+          {
+            "traditional": "難聽",
+            "simplified": "难听",
+            "pinyin": "nántīng"
+          },
+          {
+            "traditional": "極了",
+            "simplified": "极了",
+            "pinyin": "jí le"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "難聽"
+            ],
+            "note": "Everyone was happy, so the song was good to hear."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "極了 already means extremely; do not add 非常."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "極了"
+            },
+            "note": "極了 is the degree complement; it comes after 好聽."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "好聽"
+            },
+            "note": "好聽 is the adjective; it comes before 極了."
+          }
+        ],
+        "fallbackRepair": "Put 好聽 before 極了.",
+        "result": {
+          "traditional": "好聽極了。",
+          "simplified": "好听极了。",
+          "pinyin": "Hǎotīng jí le.",
+          "english": "It sounds extremely good."
+        }
+      },
+      {
+        "id": "b2l04g4-p5",
+        "source": "p.110 ① #2",
+        "kind": "slot-build",
+        "prompt": "They are watching a movie. Complete the answer with 極了.",
+        "promptZh": {
+          "traditional": "他們在看電影。用「極了」回答。",
+          "simplified": "他们在看电影。用「极了」回答。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他們覺得這個電影怎麼樣？",
+                "simplified": "他们觉得这个电影怎么样？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            }
+          },
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好看"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "極了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "好看",
+            "simplified": "好看",
+            "pinyin": "hǎokàn"
+          },
+          {
+            "traditional": "好聽",
+            "simplified": "好听",
+            "pinyin": "hǎotīng"
+          },
+          {
+            "traditional": "極了",
+            "simplified": "极了",
+            "pinyin": "jí le"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "好聽"
+            ],
+            "note": "A movie is something you watch; 好看 is the right comment."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "極了 already means extremely; do not add 非常."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "極了"
+            },
+            "note": "極了 is the degree complement; it comes after 好看."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "好看"
+            },
+            "note": "好看 is the adjective; it comes before 極了."
+          }
+        ],
+        "fallbackRepair": "Put 好看 before 極了.",
+        "result": {
+          "traditional": "好看極了。",
+          "simplified": "好看极了。",
+          "pinyin": "Hǎokàn jí le.",
+          "english": "It is extremely good to watch."
+        }
+      },
+      {
+        "id": "b2l04g4-p6",
+        "source": "p.110 ① #3",
+        "kind": "slot-build",
+        "prompt": "He is playing basketball, and the ball went in. Complete the answer with 極了.",
+        "promptZh": {
+          "traditional": "他打籃球，球進了。用「極了」回答。",
+          "simplified": "他打篮球，球进了。用「极了」回答。"
+        },
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A",
+              "simplified": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他打籃球打得怎麼樣？",
+                "simplified": "他打篮球打得怎么样？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true,
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "打得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "好極了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "打得",
+            "simplified": "打得",
+            "pinyin": "dǎ de"
+          },
+          {
+            "traditional": "好極了",
+            "simplified": "好极了",
+            "pinyin": "hǎo jí le"
+          },
+          {
+            "traditional": "不好",
+            "simplified": "不好",
+            "pinyin": "bù hǎo"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "不好"
+            ],
+            "note": "He plays well, not badly."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "極了 already means extremely; do not add 非常."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "好極了"
+            },
+            "note": "好極了 is the comment; it comes after 打得."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "打得"
+            },
+            "note": "打得 introduces the comment; it comes before 好極了."
+          }
+        ],
+        "fallbackRepair": "Put 打得 before 好極了: 打得好極了.",
+        "result": {
+          "traditional": "打得好極了。",
+          "simplified": "打得好极了。",
+          "pinyin": "Dǎ de hǎo jí le.",
+          "english": "He plays extremely well."
+        }
+      },
+      {
+        "id": "b2l04g4-p7",
+        "source": "p.110 ② #1",
+        "kind": "spot-fix",
+        "prompt": "He is extremely smart. Say it correctly.",
+        "promptZh": {
+          "traditional": "他非常聰明。請說對。",
+          "simplified": "他非常聪明。请说对。"
+        },
+        "chunks": [
+          {
+            "traditional": "他",
+            "simplified": "他"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很"
+          },
+          {
+            "traditional": "聰明得不得了",
+            "simplified": "聪明得不得了",
+            "tail": "！"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          },
+          {
+            "traditional": "太",
+            "simplified": "太",
+            "pinyin": "tài"
+          },
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "Degree words cannot stand before 得不得了; take the extra word out."
+          },
+          {
+            "placed": [
+              "太"
+            ],
+            "note": "Degree words cannot stand before 得不得了; take the extra word out."
+          },
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "Degree words cannot stand before 得不得了; take the extra word out."
+          }
+        ],
+        "hint": "The degree is already inside 得不得了; no extra degree word comes before the adjective.",
+        "result": {
+          "traditional": "他聰明得不得了！",
+          "simplified": "他聪明得不得了！",
+          "pinyin": "Tā cōngmíng de bùdéliǎo!",
+          "english": "He is extremely smart!"
+        }
+      },
+      {
+        "id": "b2l04g4-p8",
+        "source": "p.110 ② #2",
+        "kind": "spot-fix",
+        "prompt": "The weather in Taiwan in summer is extremely hot. Say it correctly.",
+        "promptZh": {
+          "traditional": "台灣夏天的天氣非常熱。請說對。",
+          "simplified": "台湾夏天的天气非常热。请说对。"
+        },
+        "chunks": [
+          {
+            "traditional": "台灣夏天的天氣",
+            "simplified": "台湾夏天的天气"
+          },
+          {
+            "traditional": "熱",
+            "simplified": "热"
+          },
+          {
+            "traditional": "得",
+            "simplified": "得"
+          },
+          {
+            "traditional": "極了",
+            "simplified": "极了",
+            "tail": "！"
+          }
+        ],
+        "wrong": 2,
+        "tiles": [
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          },
+          {
+            "traditional": "的",
+            "simplified": "的",
+            "pinyin": "de"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "極了 follows the adjective directly; take the extra word out."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "極了 follows the adjective directly; take the extra word out."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "note": "極了 follows the adjective directly; take the extra word out."
+          }
+        ],
+        "hint": "極了 follows the adjective directly.",
+        "result": {
+          "traditional": "台灣夏天的天氣熱極了！",
+          "simplified": "台湾夏天的天气热极了！",
+          "pinyin": "Táiwān xiàtiān de tiānqì rè jí le!",
+          "english": "The weather in Taiwan in summer is extremely hot!"
+        }
+      },
+      {
+        "id": "b2l04g4-p9",
+        "source": "p.110 ② #3",
+        "kind": "spot-fix",
+        "prompt": "His room is very clean. Say it correctly.",
+        "promptZh": {
+          "traditional": "他的房間很乾淨。請說對。",
+          "simplified": "他的房间很干净。请说对。"
+        },
+        "chunks": [
+          {
+            "traditional": "他的房間",
+            "simplified": "他的房间"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常"
+          },
+          {
+            "traditional": "乾淨極了",
+            "simplified": "干净极了",
+            "tail": "！"
+          }
+        ],
+        "wrong": 1,
+        "tiles": [
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "太",
+            "simplified": "太",
+            "pinyin": "tài"
+          },
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "乾淨極了 already means extremely clean; take the extra degree word out."
+          },
+          {
+            "placed": [
+              "太"
+            ],
+            "note": "乾淨極了 already means extremely clean; take the extra degree word out."
+          },
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "乾淨極了 already means extremely clean; take the extra degree word out."
+          }
+        ],
+        "hint": "乾淨極了 already means extremely clean, so no extra degree word is needed.",
+        "result": {
+          "traditional": "他的房間乾淨極了！",
+          "simplified": "他的房间干净极了！",
+          "pinyin": "Tā de fángjiān gānjìng jí le!",
+          "english": "His room is extremely clean!"
+        }
+      },
+      {
+        "id": "b2l04g4-p10",
+        "source": "own",
+        "kind": "slot-build",
+        "prompt": "This coffee is very bitter, and he does not want more. Complete the sentence with 得不得了.",
+        "promptZh": {
+          "traditional": "這杯咖啡很苦，他不想再喝。用「得不得了」說。",
+          "simplified": "这杯咖啡很苦，他不想再喝。用「得不得了」说。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這杯咖啡",
+                "simplified": "这杯咖啡"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "苦"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得不得了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "苦",
+            "simplified": "苦",
+            "pinyin": "kǔ"
+          },
+          {
+            "traditional": "甜",
+            "simplified": "甜",
+            "pinyin": "tián"
+          },
+          {
+            "traditional": "得不得了",
+            "simplified": "得不得了",
+            "pinyin": "de bùdéliǎo"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "甜"
+            ],
+            "note": "He did not want more, so the coffee was not sweet."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "Use 得不得了 after the adjective; do not put a degree word before it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得不得了"
+            },
+            "note": "得不得了 is the degree complement; it comes after 苦."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "苦"
+            },
+            "note": "苦 is the adjective; it comes before 得不得了."
+          }
+        ],
+        "fallbackRepair": "Put 苦 before 得不得了: 苦得不得了.",
+        "result": {
+          "traditional": "這杯咖啡苦得不得了。",
+          "simplified": "这杯咖啡苦得不得了。",
+          "pinyin": "Zhè bēi kāfēi kǔ de bùdéliǎo.",
+          "english": "This cup of coffee is extremely bitter."
+        }
+      },
+      {
+        "id": "b2l04g4-p11",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The snacks at the night market are very cheap. Say it with 極了.",
+        "promptZh": {
+          "traditional": "夜市的小吃很便宜。用「極了」說。",
+          "simplified": "夜市的小吃很便宜。用「极了」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "夜市",
+            "simplified": "夜市",
+            "pinyin": "yèshì"
+          },
+          {
+            "traditional": "的小吃",
+            "simplified": "的小吃",
+            "pinyin": "de xiǎochī"
+          },
+          {
+            "traditional": "便宜",
+            "simplified": "便宜",
+            "pinyin": "piányi"
+          },
+          {
+            "traditional": "極了",
+            "simplified": "极了",
+            "pinyin": "jí le"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "夜市",
+              "的小吃",
+              "便宜",
+              "極了"
+            ],
+            "sentence": {
+              "traditional": "夜市的小吃便宜極了。",
+              "simplified": "夜市的小吃便宜极了。",
+              "pinyin": "Yèshì de xiǎochī piányi jí le.",
+              "english": "The snacks at the night market are extremely cheap."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "極了 already means extremely; do not add 很."
+          },
+          {
+            "before": [
+              "便宜",
+              "的小吃"
+            ],
+            "note": "Say what is cheap first: 夜市的小吃."
+          }
+        ],
+        "fallbackRepair": "Say 夜市 + 的小吃 + 便宜 + 極了."
+      },
+      {
+        "id": "b2l04g4-p12",
+        "source": "own",
+        "kind": "same-meaning",
+        "prompt": "Do the two sentences mean the same thing?",
+        "promptZh": {
+          "traditional": "這兩個句子一樣嗎？",
+          "simplified": "这两个句子一样吗？"
+        },
+        "sentences": [
+          {
+            "traditional": "弟弟把桌子擦得很乾淨。",
+            "simplified": "弟弟把桌子擦得很干净。",
+            "pinyin": "Dìdi bǎ zhuōzi cā de hěn gānjìng.",
+            "english": "My brother wiped the table very clean."
+          },
+          {
+            "traditional": "弟弟的桌子乾淨得不得了。",
+            "simplified": "弟弟的桌子干净得不得了。",
+            "pinyin": "Dìdi de zhuōzi gānjìng de bùdéliǎo.",
+            "english": "My brother's table is extremely clean."
+          }
+        ],
+        "same": false,
+        "note": "The first sentence says he wiped the table and the result was very clean (把 + V得). The second only describes how clean the table is (Vs得不得了); it does not say who cleaned it."
+      }
+    ],
+    "allowWords": [
+      "鞋",
+      "唱",
+      "好聽",
+      "難聽"
+    ]
+  },
+  "B2L04-G05-P110": {
+    "bookPage": 110,
+    "title": "Practice: 越來越……",
+    "items": [
+      {
+        "id": "b2l04g5-p1",
+        "source": "p.111 #1",
+        "kind": "order-build",
+        "prompt": "Say the new sentence with 越來越.",
+        "promptZh": {
+          "traditional": "用「越來越」說新的句子。",
+          "simplified": "用「越来越」说新的句子。"
+        },
+        "sub": "冬天到了，今天比昨天更冷了。",
+        "tiles": [
+          {
+            "traditional": "冬天到了",
+            "simplified": "冬天到了",
+            "pinyin": "dōngtiān dào le"
+          },
+          {
+            "traditional": "天氣",
+            "simplified": "天气",
+            "pinyin": "tiānqì"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越",
+            "pinyin": "yuèláiyuè"
+          },
+          {
+            "traditional": "冷",
+            "simplified": "冷",
+            "pinyin": "lěng"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "冬天到了",
+              "天氣",
+              "越來越",
+              "冷",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "冬天到了，天氣越來越冷了。",
+              "simplified": "冬天到了，天气越来越冷了。",
+              "pinyin": "Dōngtiān dào le, tiānqì yuèláiyuè lěng le.",
+              "english": "Winter has come, and the weather is getting colder and colder."
+            }
+          },
+          {
+            "order": [
+              "天氣",
+              "越來越",
+              "冷",
+              "了",
+              "冬天到了"
+            ],
+            "sentence": {
+              "traditional": "天氣越來越冷了，冬天到了。",
+              "simplified": "天气越来越冷了，冬天到了。",
+              "pinyin": "Tiānqì yuèláiyuè lěng le, dōngtiān dào le.",
+              "english": "The weather is getting colder and colder; winter has arrived."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "越來越 already means 'more and more'; do not add 更."
+          },
+          {
+            "before": [
+              "天氣",
+              "冬天到了"
+            ],
+            "note": "Start with 冬天到了."
+          }
+        ],
+        "fallbackRepair": "Say 冬天到了 + 天氣 + 越來越 + 冷 + 了."
+      },
+      {
+        "id": "b2l04g5-p2",
+        "source": "p.111 #2",
+        "kind": "order-build",
+        "prompt": "Say the new sentence with 越來越.",
+        "promptZh": {
+          "traditional": "用「越來越」說新的句子。",
+          "simplified": "用「越来越」说新的句子。"
+        },
+        "sub": "第二課的中國字比第一課的難寫；第三課的中國字比第二課的更難寫……",
+        "tiles": [
+          {
+            "traditional": "中國字",
+            "simplified": "中国字",
+            "pinyin": "Zhōngguó zì"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越",
+            "pinyin": "yuèláiyuè"
+          },
+          {
+            "traditional": "難寫",
+            "simplified": "难写",
+            "pinyin": "nán xiě"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "中國字",
+              "越來越",
+              "難寫",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "中國字越來越難寫了。",
+              "simplified": "中国字越来越难写了。",
+              "pinyin": "Zhōngguó zì yuèláiyuè nán xiě le.",
+              "english": "Chinese characters are getting harder and harder to write."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "越來越 already means 'more and more'; do not add 更."
+          },
+          {
+            "before": [
+              "越來越",
+              "中國字"
+            ],
+            "note": "Start with 中國字."
+          }
+        ],
+        "fallbackRepair": "Say 中國字 + 越來越 + 難寫 + 了."
+      },
+      {
+        "id": "b2l04g5-p3",
+        "source": "p.111 #3",
+        "kind": "order-build",
+        "prompt": "Say the new sentence with 越來越.",
+        "promptZh": {
+          "traditional": "用「越來越」說新的句子。",
+          "simplified": "用「越来越」说新的句子。"
+        },
+        "sub": "那個日本人以前不敢說中文，住在台灣一個月以後，現在敢說了。",
+        "tiles": [
+          {
+            "traditional": "他",
+            "simplified": "他",
+            "pinyin": "tā"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越",
+            "pinyin": "yuèláiyuè"
+          },
+          {
+            "traditional": "敢",
+            "simplified": "敢",
+            "pinyin": "gǎn"
+          },
+          {
+            "traditional": "說中文",
+            "simplified": "说中文",
+            "pinyin": "shuō Zhōngwén"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他",
+              "越來越",
+              "敢",
+              "說中文",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "他越來越敢說中文了。",
+              "simplified": "他越来越敢说中文了。",
+              "pinyin": "Tā yuèláiyuè gǎn shuō Zhōngwén le.",
+              "english": "He is becoming more and more willing to speak Chinese."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "越來越 already means 'more and more'; do not add 更."
+          },
+          {
+            "before": [
+              "敢",
+              "越來越"
+            ],
+            "note": "Put 越來越 before 敢."
+          }
+        ],
+        "fallbackRepair": "Say 他 + 越來越 + 敢 + 說中文 + 了."
+      },
+      {
+        "id": "b2l04g5-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your Chinese is better than before. Say it with 越來越.",
+        "promptZh": {
+          "traditional": "你的中文比以前好。用「越來越」說。",
+          "simplified": "你的中文比以前好。用「越来越」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我的中文",
+            "simplified": "我的中文",
+            "pinyin": "wǒ de Zhōngwén"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越",
+            "pinyin": "yuèláiyuè"
+          },
+          {
+            "traditional": "好",
+            "simplified": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我的中文",
+              "越來越",
+              "好",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "我的中文越來越好了。",
+              "simplified": "我的中文越来越好了。",
+              "pinyin": "Wǒ de Zhōngwén yuèláiyuè hǎo le.",
+              "english": "My Chinese is getting better and better."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "越來越 already shows the change; do not add 很."
+          },
+          {
+            "notLast": "了",
+            "note": "了 goes at the end: …越來越好了."
+          }
+        ],
+        "fallbackRepair": "Say 我的中文 + 越來越 + 好 + 了."
+      },
+      {
+        "id": "b2l04g5-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "There are more and more people at the night market on weekends. Say it with 越來越.",
+        "promptZh": {
+          "traditional": "週末夜市的人很多。用「越來越」說。",
+          "simplified": "周末夜市的人很多。用「越来越」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "夜市",
+            "simplified": "夜市",
+            "pinyin": "yèshì"
+          },
+          {
+            "traditional": "的人",
+            "simplified": "的人",
+            "pinyin": "de rén"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越",
+            "pinyin": "yuèláiyuè"
+          },
+          {
+            "traditional": "多",
+            "simplified": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "了",
+            "simplified": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "少",
+            "simplified": "少",
+            "pinyin": "shǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "夜市",
+              "的人",
+              "越來越",
+              "多",
+              "了"
+            ],
+            "sentence": {
+              "traditional": "夜市的人越來越多了。",
+              "simplified": "夜市的人越来越多了。",
+              "pinyin": "Yèshì de rén yuèláiyuè duō le.",
+              "english": "There are more and more people at the night market."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "少"
+            ],
+            "note": "The night market is getting busier, so there are more people, not fewer."
+          },
+          {
+            "before": [
+              "多",
+              "越來越"
+            ],
+            "note": "Put 越來越 before 多: 越來越多了."
+          }
+        ],
+        "fallbackRepair": "Say 夜市 + 的人 + 越來越 + 多 + 了."
+      },
+      {
+        "id": "b2l04g5-p6",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "Summers in Taiwan are getting hotter every year. The sentence should say that.",
+        "promptZh": {
+          "traditional": "台灣的夏天每年都更熱。句子要說這個意思。",
+          "simplified": "台湾的夏天每年都更热。句子要说这个意思。"
+        },
+        "chunks": [
+          {
+            "traditional": "台灣的夏天",
+            "simplified": "台湾的夏天"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很"
+          },
+          {
+            "traditional": "熱",
+            "simplified": "热",
+            "tail": "。"
+          }
+        ],
+        "wrong": 2,
+        "tiles": [
+          {
+            "traditional": "更",
+            "simplified": "更",
+            "pinyin": "gèng"
+          },
+          {
+            "traditional": "非常",
+            "simplified": "非常",
+            "pinyin": "fēicháng"
+          },
+          {
+            "traditional": "太",
+            "simplified": "太",
+            "pinyin": "tài"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "更"
+            ],
+            "note": "更 also adds a comparison; the sentence already has 越來越."
+          },
+          {
+            "placed": [
+              "非常"
+            ],
+            "note": "越來越 already carries the increase; do not add 非常."
+          },
+          {
+            "placed": [
+              "太"
+            ],
+            "note": "越來越 already carries the increase; do not add 太."
+          }
+        ],
+        "hint": "越來越 already carries the increase; no extra degree word is needed.",
+        "result": {
+          "traditional": "台灣的夏天越來越熱。",
+          "simplified": "台湾的夏天越来越热。",
+          "pinyin": "Táiwān de xiàtiān yuèláiyuè rè.",
+          "english": "Summers in Taiwan are getting hotter and hotter."
+        }
+      }
+    ],
+    "allowWords": [
+      "第二"
+    ]
+  },
+  "B2L04-G06-P111": {
+    "bookPage": 111,
+    "title": "Practice: V起 (V得起 / V不起)",
+    "items": [
+      {
+        "id": "b2l04g6-p1",
+        "source": "p.112 #1",
+        "kind": "slot-build",
+        "prompt": "I want to buy that brand's watch, but it is too expensive. Complete the sentence.",
+        "promptZh": {
+          "traditional": "我想買那個牌子的錶，可是太貴了。",
+          "simplified": "我想买那个牌子的表，可是太贵了。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個牌子的錶太貴了，我",
+                "simplified": "那个牌子的表太贵了，我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "買"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不起"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "租",
+            "simplified": "租",
+            "pinyin": "zū"
+          },
+          {
+            "traditional": "得起",
+            "simplified": "得起",
+            "pinyin": "de qǐ"
+          },
+          {
+            "traditional": "不起",
+            "simplified": "不起",
+            "pinyin": "bu qǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "租"
+            ],
+            "note": "You are talking about buying a watch, not renting it."
+          },
+          {
+            "placed": [
+              "得起"
+            ],
+            "note": "The watch is too expensive, so you cannot afford it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不起"
+            },
+            "note": "不起 is the result; it comes after the verb 買."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "買"
+            },
+            "note": "買 is the verb; it comes before 不起."
+          }
+        ],
+        "fallbackRepair": "Put 買 before 不起: 買不起.",
+        "result": {
+          "traditional": "那個牌子的錶太貴了，我買不起。",
+          "simplified": "那个牌子的表太贵了，我买不起。",
+          "pinyin": "Nàge páizi de biǎo tài guì le, wǒ mǎi bu qǐ.",
+          "english": "That brand's watch is too expensive; I cannot afford it."
+        }
+      },
+      {
+        "id": "b2l04g6-p2",
+        "source": "p.112 #2",
+        "kind": "slot-build",
+        "prompt": "That bowl of beef noodles costs only forty dollars. Complete the sentence.",
+        "promptZh": {
+          "traditional": "那碗牛肉麵只賣四十塊錢。",
+          "simplified": "那碗牛肉面只卖四十块钱。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那碗牛肉麵只賣四十塊錢，誰都",
+                "simplified": "那碗牛肉面只卖四十块钱，谁都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得起"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吃",
+            "simplified": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "住",
+            "simplified": "住",
+            "pinyin": "zhù"
+          },
+          {
+            "traditional": "得起",
+            "simplified": "得起",
+            "pinyin": "de qǐ"
+          },
+          {
+            "traditional": "不起",
+            "simplified": "不起",
+            "pinyin": "bu qǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "住"
+            ],
+            "note": "You eat beef noodles; 住 is about housing."
+          },
+          {
+            "placed": [
+              "不起"
+            ],
+            "note": "Forty dollars is cheap, so everyone can afford it."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得起"
+            },
+            "note": "得起 is the result; it comes after the verb 吃."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "吃"
+            },
+            "note": "吃 is the verb; it comes before 得起."
+          }
+        ],
+        "fallbackRepair": "Put 吃 before 得起: 吃得起.",
+        "result": {
+          "traditional": "那碗牛肉麵只賣四十塊錢，誰都吃得起。",
+          "simplified": "那碗牛肉面只卖四十块钱，谁都吃得起。",
+          "pinyin": "Nà wǎn niúròu miàn zhǐ mài sìshí kuài qián, shéi dōu chī de qǐ.",
+          "english": "That bowl of beef noodles costs only forty dollars; anyone can afford to eat it."
+        }
+      },
+      {
+        "id": "b2l04g6-p3",
+        "source": "p.112 #3",
+        "kind": "slot-build",
+        "prompt": "A three-hundred-dollar coffee is too expensive; the fifty-dollar one is okay. Complete the sentence.",
+        "promptZh": {
+          "traditional": "一杯三百元的咖啡太貴，五十元的可以。",
+          "simplified": "一杯三百元的咖啡太贵，五十元的可以。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我",
+                "simplified": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "喝不起"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "一杯三百元的咖啡，只",
+                "simplified": "一杯三百元的咖啡，只"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "喝得起"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "五十元的。",
+                "simplified": "五十元的。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "喝不起",
+            "simplified": "喝不起",
+            "pinyin": "hē bu qǐ"
+          },
+          {
+            "traditional": "喝得起",
+            "simplified": "喝得起",
+            "pinyin": "hē de qǐ"
+          },
+          {
+            "traditional": "吃不起",
+            "simplified": "吃不起",
+            "pinyin": "chī bu qǐ"
+          },
+          {
+            "traditional": "吃得起",
+            "simplified": "吃得起",
+            "pinyin": "chī de qǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "吃不起"
+            ],
+            "note": "Coffee is something you drink, not eat."
+          },
+          {
+            "placed": [
+              "吃得起"
+            ],
+            "note": "Coffee is something you drink, not eat."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "喝得起"
+            },
+            "note": "Three hundred dollars is too much, so the first blank needs 喝不起."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "喝不起"
+            },
+            "note": "Fifty dollars is affordable, so the second blank needs 喝得起."
+          }
+        ],
+        "fallbackRepair": "Put 喝不起 first and 喝得起 second.",
+        "result": {
+          "traditional": "我喝不起一杯三百元的咖啡，只喝得起五十元的。",
+          "simplified": "我喝不起一杯三百元的咖啡，只喝得起五十元的。",
+          "pinyin": "Wǒ hē bu qǐ yì bēi sānbǎi yuán de kāfēi, zhǐ hē de qǐ wǔshí yuán de.",
+          "english": "I cannot afford a three-hundred-dollar coffee; I can only afford a fifty-dollar one."
+        }
+      },
+      {
+        "id": "b2l04g6-p4",
+        "source": "p.112 #4",
+        "kind": "slot-build",
+        "prompt": "The rent for this apartment is fifty thousand dollars a month. Your friend asks if you want to rent it. Complete the answer.",
+        "promptZh": {
+          "traditional": "這個公寓的房租五萬塊錢。朋友問你要不要租。",
+          "simplified": "这个公寓的房租五万块钱。朋友问你要不要租。"
+        },
+        "sub": "A：這個公寓一個月的房租五萬塊錢，你要租嗎？",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這麼貴，我怎麼",
+                "simplified": "这么贵，我怎么"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "租"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得起"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？",
+                "simplified": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "B",
+              "simplified": "B"
+            },
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "租",
+            "simplified": "租",
+            "pinyin": "zū"
+          },
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          },
+          {
+            "traditional": "得起",
+            "simplified": "得起",
+            "pinyin": "de qǐ"
+          },
+          {
+            "traditional": "不起",
+            "simplified": "不起",
+            "pinyin": "bu qǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "買"
+            ],
+            "note": "The question is about renting, not buying."
+          },
+          {
+            "placed": [
+              "不起"
+            ],
+            "note": "The question asks how you could afford it; use 得起."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得起"
+            },
+            "note": "得起 is the result; it comes after the verb 租."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "租"
+            },
+            "note": "租 is the verb; it comes before 得起."
+          }
+        ],
+        "fallbackRepair": "Put 租 before 得起: 租得起.",
+        "result": {
+          "traditional": "這麼貴，我怎麼租得起？",
+          "simplified": "这么贵，我怎么租得起？",
+          "pinyin": "Zhème guì, wǒ zěnme zū de qǐ?",
+          "english": "It is so expensive; how could I afford to rent it?"
+        }
+      },
+      {
+        "id": "b2l04g6-p6",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "The book is cheap, so everyone can buy it. The sentence should say that.",
+        "promptZh": {
+          "traditional": "這本書很便宜，大家都可以買。句子要說這個意思。",
+          "simplified": "这本书很便宜，大家都可以买。句子要说这个意思。"
+        },
+        "chunks": [
+          {
+            "traditional": "這本書",
+            "simplified": "这本书"
+          },
+          {
+            "traditional": "很便宜",
+            "simplified": "很便宜"
+          },
+          {
+            "traditional": "，誰都",
+            "simplified": "，谁都"
+          },
+          {
+            "traditional": "買不起",
+            "simplified": "买不起",
+            "tail": "。"
+          }
+        ],
+        "wrong": 3,
+        "fix": "買得起",
+        "tiles": [
+          {
+            "traditional": "買得起",
+            "simplified": "买得起",
+            "pinyin": "mǎi de qǐ"
+          },
+          {
+            "traditional": "租得起",
+            "simplified": "租得起",
+            "pinyin": "zū de qǐ"
+          },
+          {
+            "traditional": "吃得起",
+            "simplified": "吃得起",
+            "pinyin": "chī de qǐ"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "租得起"
+            ],
+            "note": "This is about buying a book, not renting."
+          },
+          {
+            "placed": [
+              "吃得起"
+            ],
+            "note": "You cannot eat a book."
+          }
+        ],
+        "takeOutNote": "The book is cheap, so swap 買不起 for 買得起.",
+        "hint": "The book is cheap, so everyone can buy it.",
+        "result": {
+          "traditional": "這本書很便宜，誰都買得起。",
+          "simplified": "这本书很便宜，谁都买得起。",
+          "pinyin": "Zhè běn shū hěn piányi, shéi dōu mǎi de qǐ.",
+          "english": "This book is very cheap; anyone can afford it."
+        }
+      },
+      {
+        "id": "b2l04g6-p7",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "He is rich and wants to live in this apartment. Say it with 住 and 起.",
+        "promptZh": {
+          "traditional": "他很有錢，想住這間公寓。用「住」和「起」說。",
+          "simplified": "他很有钱，想住这间公寓。用「住」和「起」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "他很有錢",
+            "simplified": "他很有钱",
+            "pinyin": "tā hěn yǒu qián"
+          },
+          {
+            "traditional": "當然",
+            "simplified": "当然",
+            "pinyin": "dāngrán"
+          },
+          {
+            "traditional": "住得起",
+            "simplified": "住得起",
+            "pinyin": "zhù de qǐ"
+          },
+          {
+            "traditional": "這間公寓",
+            "simplified": "这间公寓",
+            "pinyin": "zhè jiān gōngyù"
+          },
+          {
+            "traditional": "住不起",
+            "simplified": "住不起",
+            "pinyin": "zhù bu qǐ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "他很有錢",
+              "當然",
+              "住得起",
+              "這間公寓"
+            ],
+            "sentence": {
+              "traditional": "他很有錢，當然住得起這間公寓。",
+              "simplified": "他很有钱，当然住得起这间公寓。",
+              "pinyin": "Tā hěn yǒu qián, dāngrán zhù de qǐ zhè jiān gōngyù.",
+              "english": "He is rich, so of course he can afford to live in this apartment."
+            }
+          },
+          {
+            "order": [
+              "他很有錢",
+              "這間公寓",
+              "當然",
+              "住得起"
+            ],
+            "sentence": {
+              "traditional": "他很有錢，這間公寓當然住得起。",
+              "simplified": "他很有钱，这间公寓当然住得起。",
+              "pinyin": "Tā hěn yǒu qián, zhè jiān gōngyù dāngrán zhù de qǐ.",
+              "english": "He is rich; of course he can afford to live in this apartment."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "住不起"
+            ],
+            "note": "He is rich, so he can afford it."
+          },
+          {
+            "before": [
+              "這間公寓",
+              "住得起"
+            ],
+            "note": "Put 住得起 before the place: 住得起這間公寓."
+          }
+        ],
+        "fallbackRepair": "Say 他很有錢 + 當然 + 住得起 + 這間公寓."
+      },
+      {
+        "id": "b2l04g6-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "The rent for that apartment is very expensive. Say it with 租 and 起.",
+        "promptZh": {
+          "traditional": "那間公寓的房租太貴了。用「租」和「起」說。",
+          "simplified": "那间公寓的房租太贵了。用「租」和「起」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "那間公寓",
+            "simplified": "那间公寓",
+            "pinyin": "nà jiān gōngyù"
+          },
+          {
+            "traditional": "的房租",
+            "simplified": "的房租",
+            "pinyin": "de fángzū"
+          },
+          {
+            "traditional": "太貴了",
+            "simplified": "太贵了",
+            "pinyin": "tài guì le"
+          },
+          {
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen"
+          },
+          {
+            "traditional": "租不起",
+            "simplified": "租不起",
+            "pinyin": "zū bu qǐ"
+          },
+          {
+            "traditional": "買不起",
+            "simplified": "买不起",
+            "pinyin": "mǎi bu qǐ"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "那間公寓",
+              "的房租",
+              "太貴了",
+              "我們",
+              "租不起"
+            ],
+            "sentence": {
+              "traditional": "那間公寓的房租太貴了，我們租不起。",
+              "simplified": "那间公寓的房租太贵了，我们租不起。",
+              "pinyin": "Nà jiān gōngyù de fángzū tài guì le, wǒmen zū bu qǐ.",
+              "english": "The rent for that apartment is too expensive; we cannot afford to rent it."
+            }
+          },
+          {
+            "order": [
+              "我們",
+              "租不起",
+              "那間公寓",
+              "的房租",
+              "太貴了"
+            ],
+            "sentence": {
+              "traditional": "我們租不起，那間公寓的房租太貴了。",
+              "simplified": "我们租不起，那间公寓的房租太贵了。",
+              "pinyin": "Wǒmen zū bu qǐ, nà jiān gōngyù de fángzū tài guì le.",
+              "english": "We cannot afford to rent it; the rent for that apartment is too expensive."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "買不起"
+            ],
+            "note": "You rent an apartment; 買不起 is about buying."
+          }
+        ],
+        "fallbackRepair": "Say 那間公寓 + 的房租 + 太貴了 + 我們 + 租不起."
+      }
+    ]
+  },
+  "B2L04-G07-P112": {
+    "bookPage": 112,
+    "title": "Practice: V飽",
+    "items": [
+      {
+        "id": "b2l04g7-p1",
+        "source": "p.112 #1",
+        "kind": "slot-build",
+        "prompt": "There are too few dishes. Your brother still wants to eat.",
+        "promptZh": {
+          "traditional": "這些菜太少了。哥哥還想吃。",
+          "simplified": "这些菜太少了。哥哥还想吃。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這些菜太少了，哥哥",
+                "simplified": "这些菜太少了，哥哥"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "不飽"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吃",
+            "simplified": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "睡",
+            "simplified": "睡",
+            "pinyin": "shuì"
+          },
+          {
+            "traditional": "得飽",
+            "simplified": "得饱",
+            "pinyin": "de bǎo"
+          },
+          {
+            "traditional": "不飽",
+            "simplified": "不饱",
+            "pinyin": "bu bǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "睡"
+            ],
+            "note": "This is about food, not sleep."
+          },
+          {
+            "placed": [
+              "得飽"
+            ],
+            "note": "The dishes are too few, so he cannot get full."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "不飽"
+            },
+            "note": "不飽 is the result; it comes after the verb 吃."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "吃"
+            },
+            "note": "吃 is the verb; it comes before 不飽."
+          }
+        ],
+        "fallbackRepair": "Put 吃 before 不飽: 吃不飽.",
+        "result": {
+          "traditional": "這些菜太少了，哥哥吃不飽。",
+          "simplified": "这些菜太少了，哥哥吃不饱。",
+          "pinyin": "Zhèxiē cài tài shǎo le, gēge chī bu bǎo.",
+          "english": "There are too few dishes; my brother cannot get full."
+        }
+      },
+      {
+        "id": "b2l04g7-p2",
+        "source": "p.112 #2",
+        "kind": "slot-build",
+        "prompt": "You only ate a little fruit for dinner.",
+        "promptZh": {
+          "traditional": "你晚餐只吃了一點兒水果。",
+          "simplified": "你晚餐只吃了一点儿水果。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你晚餐只吃了一點兒水果，",
+                "simplified": "你晚餐只吃了一点儿水果，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "吃"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "得飽"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "嗎？",
+                "simplified": "吗？"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "吃",
+            "simplified": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "睡",
+            "simplified": "睡",
+            "pinyin": "shuì"
+          },
+          {
+            "traditional": "得飽",
+            "simplified": "得饱",
+            "pinyin": "de bǎo"
+          },
+          {
+            "traditional": "不飽",
+            "simplified": "不饱",
+            "pinyin": "bu bǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "睡"
+            ],
+            "note": "This is about eating dinner, not sleeping."
+          },
+          {
+            "placed": [
+              "不飽"
+            ],
+            "note": "The question asks whether the little fruit was enough; use 得飽."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "得飽"
+            },
+            "note": "得飽 is the result; it comes after the verb 吃."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "吃"
+            },
+            "note": "吃 is the verb; it comes before 得飽."
+          }
+        ],
+        "fallbackRepair": "Put 吃 before 得飽: 吃得飽嗎?",
+        "result": {
+          "traditional": "你晚餐只吃了一點兒水果，吃得飽嗎？",
+          "simplified": "你晚餐只吃了一点儿水果，吃得饱吗？",
+          "pinyin": "Nǐ wǎncān zhǐ chī le yìdiǎnr shuǐguǒ, chī de bǎo ma?",
+          "english": "You only ate a little fruit for dinner; is that enough to fill you up?"
+        }
+      },
+      {
+        "id": "b2l04g7-p3",
+        "source": "p.112 #3",
+        "kind": "slot-build",
+        "prompt": "He slept ten hours last night.",
+        "promptZh": {
+          "traditional": "他昨晚睡了十個鐘頭。",
+          "simplified": "他昨晚睡了十个钟头。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他昨晚睡了十個鐘頭，當然",
+                "simplified": "他昨晚睡了十个钟头，当然"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "睡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "飽了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "睡",
+            "simplified": "睡",
+            "pinyin": "shuì"
+          },
+          {
+            "traditional": "吃",
+            "simplified": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "飽了",
+            "simplified": "饱了",
+            "pinyin": "bǎo le"
+          },
+          {
+            "traditional": "不飽",
+            "simplified": "不饱",
+            "pinyin": "bu bǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "吃"
+            ],
+            "note": "He slept ten hours, so this is about sleep."
+          },
+          {
+            "placed": [
+              "不飽"
+            ],
+            "note": "Ten hours is enough, so he slept enough."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "飽了"
+            },
+            "note": "飽了 is the result; it comes after the verb 睡."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "睡"
+            },
+            "note": "睡 is the verb; it comes before 飽了."
+          }
+        ],
+        "fallbackRepair": "Put 睡 before 飽了: 睡飽了.",
+        "result": {
+          "traditional": "他昨晚睡了十個鐘頭，當然睡飽了。",
+          "simplified": "他昨晚睡了十个钟头，当然睡饱了。",
+          "pinyin": "Tā zuówǎn shuì le shí ge zhōngtóu, dāngrán shuì bǎo le.",
+          "english": "He slept ten hours last night, so of course he slept enough."
+        }
+      },
+      {
+        "id": "b2l04g7-p6",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "Your brother ate three bowls of rice and is full. Say it with 吃飽.",
+        "promptZh": {
+          "traditional": "弟弟吃了三碗飯。用「吃飽」說。",
+          "simplified": "弟弟吃了三碗饭。用「吃饱」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "弟弟",
+            "simplified": "弟弟",
+            "pinyin": "dìdi"
+          },
+          {
+            "traditional": "吃了",
+            "simplified": "吃了",
+            "pinyin": "chī le"
+          },
+          {
+            "traditional": "三碗飯",
+            "simplified": "三碗饭",
+            "pinyin": "sān wǎn fàn"
+          },
+          {
+            "traditional": "吃飽了",
+            "simplified": "吃饱了",
+            "pinyin": "chī bǎo le"
+          },
+          {
+            "traditional": "沒吃飽",
+            "simplified": "没吃饱",
+            "pinyin": "méi chī bǎo"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "弟弟",
+              "吃了",
+              "三碗飯",
+              "吃飽了"
+            ],
+            "sentence": {
+              "traditional": "弟弟吃了三碗飯，吃飽了。",
+              "simplified": "弟弟吃了三碗饭，吃饱了。",
+              "pinyin": "Dìdi chī le sān wǎn fàn, chī bǎo le.",
+              "english": "My brother ate three bowls of rice and is full."
+            }
+          },
+          {
+            "order": [
+              "弟弟",
+              "吃飽了",
+              "吃了",
+              "三碗飯"
+            ],
+            "sentence": {
+              "traditional": "弟弟吃飽了，吃了三碗飯。",
+              "simplified": "弟弟吃饱了，吃了三碗饭。",
+              "pinyin": "Dìdi chī bǎo le, chī le sān wǎn fàn.",
+              "english": "My brother is full; he ate three bowls of rice."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒吃飽"
+            ],
+            "note": "Three bowls is enough, so he is full, not still hungry."
+          }
+        ],
+        "fallbackRepair": "Say 弟弟 + 吃了 + 三碗飯 + 吃飽了."
+      },
+      {
+        "id": "b2l04g7-p4",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You ate a lot and do not want to eat anymore. Say it with 吃飽.",
+        "promptZh": {
+          "traditional": "你吃了很多，不想再吃了。用「吃飽」說。",
+          "simplified": "你吃了很多，不想再吃了。用「吃饱」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "吃飽了",
+            "simplified": "吃饱了",
+            "pinyin": "chī bǎo le"
+          },
+          {
+            "traditional": "不想",
+            "simplified": "不想",
+            "pinyin": "bù xiǎng"
+          },
+          {
+            "traditional": "再",
+            "simplified": "再",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "吃",
+            "simplified": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "睡飽了",
+            "simplified": "睡饱了",
+            "pinyin": "shuì bǎo le"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "吃飽了",
+              "不想",
+              "再",
+              "吃"
+            ],
+            "sentence": {
+              "traditional": "我吃飽了，不想再吃。",
+              "simplified": "我吃饱了，不想再吃。",
+              "pinyin": "Wǒ chī bǎo le, bù xiǎng zài chī.",
+              "english": "I am full and do not want to eat anymore."
+            }
+          },
+          {
+            "order": [
+              "我",
+              "不想",
+              "再",
+              "吃",
+              "吃飽了"
+            ],
+            "sentence": {
+              "traditional": "我不想再吃，吃飽了。",
+              "simplified": "我不想再吃，吃饱了。",
+              "pinyin": "Wǒ bù xiǎng zài chī, chī bǎo le.",
+              "english": "I do not want to eat anymore; I am full."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "睡飽了"
+            ],
+            "note": "You are full from eating, not from sleeping."
+          }
+        ],
+        "fallbackRepair": "Say 我 + 吃飽了 + 不想 + 再 + 吃."
+      },
+      {
+        "id": "b2l04g7-p5",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You slept only three hours last night, so you did not sleep well. The sentence should say that.",
+        "promptZh": {
+          "traditional": "你昨天只睡了三個鐘頭，所以睡得不好。句子要說這個意思。",
+          "simplified": "你昨天只睡了三个钟头，所以睡得不好。句子要说这个意思。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "昨天",
+            "simplified": "昨天"
+          },
+          {
+            "traditional": "只睡了",
+            "simplified": "只睡了"
+          },
+          {
+            "traditional": "三個鐘頭",
+            "simplified": "三个钟头"
+          },
+          {
+            "traditional": "，當然",
+            "simplified": "，当然"
+          },
+          {
+            "traditional": "睡得飽",
+            "simplified": "睡得饱",
+            "tail": "。"
+          }
+        ],
+        "wrong": 5,
+        "fix": "睡不飽",
+        "tiles": [
+          {
+            "traditional": "睡不飽",
+            "simplified": "睡不饱",
+            "pinyin": "shuì bu bǎo"
+          },
+          {
+            "traditional": "吃得飽",
+            "simplified": "吃得饱",
+            "pinyin": "chī de bǎo"
+          },
+          {
+            "traditional": "睡得飽",
+            "simplified": "睡得饱",
+            "pinyin": "shuì de bǎo"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "吃得飽"
+            ],
+            "note": "This is about sleep, not food."
+          },
+          {
+            "placed": [
+              "睡得飽"
+            ],
+            "note": "Three hours is not enough."
+          }
+        ],
+        "takeOutNote": "Three hours is not enough, so swap 睡得飽 for 睡不飽.",
+        "hint": "You slept only three hours, so you did not get enough sleep.",
+        "result": {
+          "traditional": "我昨天只睡了三個鐘頭，當然睡不飽。",
+          "simplified": "我昨天只睡了三个钟头，当然睡不饱。",
+          "pinyin": "Wǒ zuótiān zhǐ shuì le sān ge zhōngtóu, dāngrán shuì bu bǎo.",
+          "english": "I slept only three hours yesterday, so of course I did not get enough sleep."
+        }
+      }
+    ],
+    "allowWords": [
+      "昨晚"
+    ]
+  },
+  "B2L04-G08-P113": {
+    "bookPage": 113,
+    "title": "Practice: 對……有興趣",
+    "items": [
+      {
+        "id": "b2l04g8-p1",
+        "source": "p.113 #1",
+        "kind": "order-build",
+        "prompt": "Make a sentence with 陳先生 and 做家事. Use 有一點兒.",
+        "promptZh": {
+          "traditional": "用「陳先生」和「做家事」說。用「有一點兒」。",
+          "simplified": "用「陈先生」和「做家事」说。用「有一点儿」。"
+        },
+        "tiles": [
+          {
+            "traditional": "陳先生",
+            "simplified": "陈先生",
+            "pinyin": "Chén xiānsheng"
+          },
+          {
+            "traditional": "對",
+            "simplified": "对",
+            "pinyin": "duì"
+          },
+          {
+            "traditional": "做家事",
+            "simplified": "做家事",
+            "pinyin": "zuò jiāshì"
+          },
+          {
+            "traditional": "有一點兒",
+            "simplified": "有一点儿",
+            "pinyin": "yǒu yìdiǎnr"
+          },
+          {
+            "traditional": "興趣",
+            "simplified": "兴趣",
+            "pinyin": "xìngqù"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "陳先生",
+              "對",
+              "做家事",
+              "有一點兒",
+              "興趣"
+            ],
+            "sentence": {
+              "traditional": "陳先生對做家事有一點兒興趣。",
+              "simplified": "陈先生对做家事有一点儿兴趣。",
+              "pinyin": "Chén xiānsheng duì zuò jiāshì yǒu yìdiǎnr xìngqù.",
+              "english": "Mr. Chen is a little interested in doing housework."
+            }
+          },
+          {
+            "order": [
+              "對",
+              "做家事",
+              "陳先生",
+              "有一點兒",
+              "興趣"
+            ],
+            "sentence": {
+              "traditional": "對做家事，陳先生有一點兒興趣。",
+              "simplified": "对做家事，陈先生有一点儿兴趣。",
+              "pinyin": "Duì zuò jiāshì, Chén xiānsheng yǒu yìdiǎnr xìngqù.",
+              "english": "As for doing housework, Mr. Chen is a little interested."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "The phrase 有一點兒 already gives the degree; 很 would change it to 'very'."
+          },
+          {
+            "before": [
+              "做家事",
+              "對"
+            ],
+            "note": "Put 對 before what he is interested in: 對做家事."
+          }
+        ],
+        "fallbackRepair": "Say 陳先生 + 對 + 做家事 + 有一點兒 + 興趣."
+      },
+      {
+        "id": "b2l04g8-p2",
+        "source": "p.113 #2",
+        "kind": "slot-build",
+        "prompt": "Yamamoto Ryosuke wants to learn Chinese. Say his interest with 越來越.",
+        "promptZh": {
+          "traditional": "山本良介想學中文。用「越來越」說他的興趣。",
+          "simplified": "山本良介想学中文。用「越来越」说他的兴趣。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "山本良介",
+                "simplified": "山本良介"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "對學中文"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "越來越"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "有興趣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "對學中文",
+            "simplified": "对学中文",
+            "pinyin": "duì xué Zhōngwén"
+          },
+          {
+            "traditional": "越來越",
+            "simplified": "越来越",
+            "pinyin": "yuèláiyuè"
+          },
+          {
+            "traditional": "有興趣",
+            "simplified": "有兴趣",
+            "pinyin": "yǒu xìngqù"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "越來越 already shows the change; do not add 很 here."
+          },
+          {
+            "placed": [
+              "都"
+            ],
+            "note": "都 would mean all people; the sentence is about one person."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "越來越"
+            },
+            "note": "越來越 is the adverb; it comes after 對學中文."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "有興趣"
+            },
+            "note": "有興趣 is the predicate; it comes last."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "對學中文"
+            },
+            "note": "對學中文 introduces what he is interested in; it comes first."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "有興趣"
+            },
+            "note": "有興趣 comes after 越來越."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "對學中文"
+            },
+            "note": "對學中文 comes before the predicate."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "越來越"
+            },
+            "note": "越來越 comes before 有興趣."
+          }
+        ],
+        "fallbackRepair": "Put 對學中文 + 越來越 + 有興趣 in that order.",
+        "result": {
+          "traditional": "山本良介對學中文越來越有興趣。",
+          "simplified": "山本良介对学中文越来越有兴趣。",
+          "pinyin": "Shānběn Liángjiè duì xué Zhōngwén yuèláiyuè yǒu xìngqù.",
+          "english": "Ryosuke Yamamoto is becoming more and more interested in learning Chinese."
+        }
+      },
+      {
+        "id": "b2l04g8-p3",
+        "source": "p.113 #3",
+        "kind": "slot-build",
+        "prompt": "Miss Bai likes visiting night markets and also goes often. Say it with 不但…也….",
+        "promptZh": {
+          "traditional": "白小姐很喜歡逛夜市，也常常去。用「不但…也…」說。",
+          "simplified": "白小姐很喜欢逛夜市，也常常去。用「不但…也…」说。"
+        },
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "白小姐對逛夜市",
+                "simplified": "白小姐对逛夜市"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不但"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "有興趣，",
+                "simplified": "有兴趣，"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "也"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "常去。",
+                "simplified": "常去。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "不但",
+            "simplified": "不但",
+            "pinyin": "búdàn"
+          },
+          {
+            "traditional": "也",
+            "simplified": "也",
+            "pinyin": "yě"
+          },
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "可是",
+            "simplified": "可是",
+            "pinyin": "kěshì"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "都"
+            ],
+            "note": "都 would mean all night markets; the sentence adds a second fact with 不但…也…."
+          },
+          {
+            "placed": [
+              "可是"
+            ],
+            "note": "可是 marks contrast; the sentence adds an action, not a contrast."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "也"
+            },
+            "note": "也 introduces the second fact; the first blank needs 不但."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "不但"
+            },
+            "note": "不但 introduces the first fact; the second blank needs 也."
+          }
+        ],
+        "fallbackRepair": "Put 不但 in the first blank and 也 in the second.",
+        "result": {
+          "traditional": "白小姐對逛夜市不但有興趣，也常去。",
+          "simplified": "白小姐对逛夜市不但有兴趣，也常去。",
+          "pinyin": "Bái xiǎojiě duì guàng yèshì búdàn yǒu xìngqù, yě cháng qù.",
+          "english": "Miss Bai is not only interested in visiting night markets; she also goes often."
+        }
+      },
+      {
+        "id": "b2l04g8-p4",
+        "source": "p.113 #4",
+        "kind": "slot-build",
+        "prompt": "That student likes history and science. Say it with 對…有興趣.",
+        "promptZh": {
+          "traditional": "那個學生喜歡歷史，也喜歡科學。用「對…有興趣」說。",
+          "simplified": "那个学生喜欢历史，也喜欢科学。用「对…有兴趣」说。"
+        },
+        "sub": "那個學生只喜歡歷史、科學，別的都不喜歡。",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "那個學生對歷史、科學",
+                "simplified": "那个学生对历史、科学"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "都"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "興趣"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "都",
+            "simplified": "都",
+            "pinyin": "dōu"
+          },
+          {
+            "traditional": "也",
+            "simplified": "也",
+            "pinyin": "yě"
+          },
+          {
+            "traditional": "有",
+            "simplified": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méi yǒu"
+          },
+          {
+            "traditional": "興趣",
+            "simplified": "兴趣",
+            "pinyin": "xìngqù"
+          },
+          {
+            "traditional": "才",
+            "simplified": "才",
+            "pinyin": "cái"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "也"
+            },
+            "note": "也 would add 'also' to another interest; the sentence says both subjects."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "有"
+            },
+            "note": "有 is the verb; it belongs in the second blank."
+          },
+          {
+            "slot": {
+              "id": "s1",
+              "tile": "興趣"
+            },
+            "note": "興趣 is the noun; it belongs in the last blank."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "都"
+            },
+            "note": "都 goes before the verb, in the first blank."
+          },
+          {
+            "slot": {
+              "id": "s2",
+              "tile": "興趣"
+            },
+            "note": "興趣 is the noun; it belongs in the last blank."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "都"
+            },
+            "note": "都 goes before the verb, in the first blank."
+          },
+          {
+            "slot": {
+              "id": "s3",
+              "tile": "有"
+            },
+            "note": "有 is the verb; it belongs in the second blank."
+          },
+          {
+            "placed": [
+              "也"
+            ],
+            "note": "也 would mean 'also', not both subjects. Use 都."
+          },
+          {
+            "placed": [
+              "沒有"
+            ],
+            "note": "The sentence says he is interested, not uninterested."
+          },
+          {
+            "placed": [
+              "才"
+            ],
+            "note": "才 marks 'only then'; use 都 for both subjects."
+          }
+        ],
+        "fallbackRepair": "Put 都 before 有, and 有 before 興趣.",
+        "result": {
+          "traditional": "那個學生對歷史、科學都有興趣。",
+          "simplified": "那个学生对历史、科学都有兴趣。",
+          "pinyin": "Nàge xuésheng duì lìshǐ, kēxué dōu yǒu xìngqù.",
+          "english": "That student is interested in both history and science."
+        },
+        "successNote": "對 A、B 都有興趣 means interested in both."
+      },
+      {
+        "id": "b2l04g8-p6",
+        "source": "own",
+        "kind": "spot-fix",
+        "prompt": "You like learning Chinese. The sentence should say that.",
+        "promptZh": {
+          "traditional": "你喜歡學中文。句子要說這個意思。",
+          "simplified": "你喜欢学中文。句子要说这个意思。"
+        },
+        "chunks": [
+          {
+            "traditional": "我",
+            "simplified": "我"
+          },
+          {
+            "traditional": "對",
+            "simplified": "对"
+          },
+          {
+            "traditional": "學中文",
+            "simplified": "学中文"
+          },
+          {
+            "traditional": "沒興趣",
+            "simplified": "没兴趣",
+            "tail": "。"
+          }
+        ],
+        "wrong": 3,
+        "fix": "有興趣",
+        "tiles": [
+          {
+            "traditional": "有興趣",
+            "simplified": "有兴趣",
+            "pinyin": "yǒu xìngqù"
+          },
+          {
+            "traditional": "沒興趣",
+            "simplified": "没兴趣",
+            "pinyin": "méi xìngqù"
+          },
+          {
+            "traditional": "有",
+            "simplified": "有",
+            "pinyin": "yǒu"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒興趣"
+            ],
+            "note": "You like Chinese, so the sentence needs the positive form."
+          },
+          {
+            "placed": [
+              "有"
+            ],
+            "note": "有 alone is not the phrase; the sentence needs 有興趣."
+          }
+        ],
+        "takeOutNote": "You like Chinese, so swap 沒興趣 for 有興趣.",
+        "hint": "You like learning Chinese.",
+        "result": {
+          "traditional": "我對學中文有興趣。",
+          "simplified": "我对学中文有兴趣。",
+          "pinyin": "Wǒ duì xué Zhōngwén yǒu xìngqù.",
+          "english": "I am interested in learning Chinese."
+        }
+      },
+      {
+        "id": "b2l04g8-p5",
+        "source": "own",
+        "kind": "order-build",
+        "prompt": "You like visiting night markets. Say it with 對…有興趣.",
+        "promptZh": {
+          "traditional": "你很喜歡逛夜市。用「對…有興趣」說。",
+          "simplified": "你很喜欢逛夜市。用「对…有兴趣」说。"
+        },
+        "tiles": [
+          {
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "對",
+            "simplified": "对",
+            "pinyin": "duì"
+          },
+          {
+            "traditional": "逛夜市",
+            "simplified": "逛夜市",
+            "pinyin": "guàng yèshì"
+          },
+          {
+            "traditional": "很",
+            "simplified": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "有興趣",
+            "simplified": "有兴趣",
+            "pinyin": "yǒu xìngqù"
+          },
+          {
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méi yǒu"
+          }
+        ],
+        "accepted": [
+          {
+            "order": [
+              "我",
+              "對",
+              "逛夜市",
+              "很",
+              "有興趣"
+            ],
+            "sentence": {
+              "traditional": "我對逛夜市很有興趣。",
+              "simplified": "我对逛夜市很有兴趣。",
+              "pinyin": "Wǒ duì guàng yèshì hěn yǒu xìngqù.",
+              "english": "I am very interested in visiting night markets."
+            }
+          },
+          {
+            "order": [
+              "對",
+              "逛夜市",
+              "我",
+              "很",
+              "有興趣"
+            ],
+            "sentence": {
+              "traditional": "對逛夜市，我很有興趣。",
+              "simplified": "对逛夜市，我很有兴趣。",
+              "pinyin": "Duì guàng yèshì, wǒ hěn yǒu xìngqù.",
+              "english": "As for visiting night markets, I am very interested."
+            }
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "沒有"
+            ],
+            "note": "The sentence says you are interested, not uninterested."
+          },
+          {
+            "before": [
+              "逛夜市",
+              "對"
+            ],
+            "note": "Put 對 before 逛夜市: 對逛夜市有興趣."
+          }
+        ],
+        "fallbackRepair": "Say 我 + 對 + 逛夜市 + 很 + 有興趣."
+      }
+    ],
+    "allowWords": [
+      "陳先生"
+    ]
+  }
+}

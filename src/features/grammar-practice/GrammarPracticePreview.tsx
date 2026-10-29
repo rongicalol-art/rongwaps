@@ -26,6 +26,7 @@ const SCENE_SAMPLES: GrammarPractice = {
     sceneItem('moment', { type: 'moment', moment: { date: { month: 10, day: 16 }, label: { traditional: '今天', pinyin: 'jīntiān', english: 'today' } } }),
     sceneItem('month', { type: 'month', year: 2026, month: 10, highlight: [16, 17] }),
     sceneItem('picture', { type: 'picture', page: 163, box: [0.1, 0.2, 0.8, 0.3], alt: 'Printed book page 163, top half' }),
+    { ...sceneItem('chinese-title', { type: 'month', year: 2026, month: 10, highlight: [16] }), prompt: 'What day is it today?', promptZh: { traditional: '今天是星期幾？', simplified: '今天是星期几？' } },
   ],
 };
 const EXERCISES = [

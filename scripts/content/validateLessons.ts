@@ -4,7 +4,7 @@ import { validateInteractiveLessons, type LessonValidationIssue } from '../../sr
 import type { InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
 
 const ROOT = process.cwd();
-const books = [1, 3];
+const books = [1, 2, 3];
 const allIssues: LessonValidationIssue[] = [];
 
 for (const bookId of books) {

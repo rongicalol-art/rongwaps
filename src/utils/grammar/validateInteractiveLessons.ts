@@ -234,11 +234,12 @@ export function validateInteractiveLessons(
       }
     });
   });
-  const maxLesson = Math.min(
-    READING_LESSON_MAX,
-    Math.max(READING_LESSON_MIN, ...parts.map((part) => part.lessonId), ...readings.map((reading) => reading.lessonId)),
-  );
-  for (let lessonId = READING_LESSON_MIN; lessonId <= maxLesson; lessonId += 1) {
+  // Only authored lessons are in scope: an empty or not-yet-written book must
+  // validate, and each newly authored lesson still needs its two readings.
+  const inScopeLessons = [...new Set([...parts.map((part) => part.lessonId), ...readings.map((reading) => reading.lessonId)])]
+    .filter((lessonId) => lessonId >= READING_LESSON_MIN && lessonId <= READING_LESSON_MAX)
+    .sort((a, b) => a - b);
+  for (const lessonId of inScopeLessons) {
     const lessonReadings = readingsByLesson.get(lessonId) ?? [];
     if (lessonReadings.length < 2 || lessonReadings.length > 3) {
       issues.push({ location: `lesson ${lessonId}`, message: `Expected 2 or 3 readings; found ${lessonReadings.length}.` });
@@ -300,8 +301,7 @@ export function validateInteractiveLessons(
   });
   const presentBookIds = new Set(parts.map((part) => part.bookId));
   Object.keys(GRAMMAR_USAGE_RULES).forEach((pageId) => {
-    const isB3 = pageId.startsWith('B3');
-    const pageBookId = isB3 ? 3 : 1;
+    const pageBookId = Number(/^B(\d+)/.exec(pageId)?.[1] ?? 1);
     if (!presentBookIds.has(pageBookId)) return;
     const known = parts.some((part) =>
       part.grammarPages.some((page) => page.id === pageId),

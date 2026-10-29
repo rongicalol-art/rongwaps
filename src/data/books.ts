@@ -88,7 +88,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     },
   ),
   buildBook(
-    { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
+    { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: 'unlocked' },
     {
       primary: '#D4793A',
       primaryEdge: '#B05F27',
@@ -228,10 +228,14 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 };
 
 
+/** Authored lessons open per unlocked book. Book 2 opens one lesson per AUTHOR run. */
+const OPEN_LESSON_COUNTS: Record<number, number> = { 2: 6, 3: 16 };
+
 /** True for any beta-locked lesson unless the verified account has a full-course grant. */
 export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {
   if (hasFullCourseAccess) return false;
   if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
-  if (bookId === 3) return lessonId > 16;
+  const openLessons = OPEN_LESSON_COUNTS[bookId];
+  if (openLessons !== undefined) return lessonId > openLessons;
   return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
 }
