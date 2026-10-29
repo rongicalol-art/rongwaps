@@ -171,8 +171,9 @@ export function FlashcardScreen({
   }, [restartDeckSession]);
 
   const isDeckDone = completed && (practiceOnly || missedCount === 0);
-  /** A quiz follows: the last card shrinks into the Cards done sheet instead of the screen swapping. */
-  const cardsDone = isDeckDone && Boolean(onStartQuiz) && !practiceOnly;
+  /** A quiz follows: the last card shrinks into the Cards done sheet instead of the screen swapping.
+   * Extra rounds (Review again) end there too, so the learner lands back where they left, ready for the quiz. */
+  const cardsDone = isDeckDone && Boolean(onStartQuiz);
   if (!isDeckDone) lastFlippedRef.current = isFlipped;
 
   // The whole app turns warm for review passes (the intro included); after the last card it drains with Cards done.
@@ -319,7 +320,7 @@ export function FlashcardScreen({
   };
 
   const tricky = firstPassRef.current?.trickyCards ?? trickyCards;
-  if (isDeckDone && (!onStartQuiz || practiceOnly)) {
+  if (isDeckDone && !onStartQuiz) {
     const stats = sessionStats();
     return (
       <SessionComplete
