@@ -26,11 +26,10 @@ type CourseBook = BookMeta & {
   buttonEdge: string;
 };
 
-/** Beta: only Book 1, Introduction + Lessons 1-8 are playable. Raise or remove to open more. */
+/** Beta: all four books are open, Lessons 1-16 (Book 1 also its Introduction). */
 import { BETA_LAST_LESSON } from '../../shared/courseAccess';
 export { BETA_LAST_LESSON } from '../../shared/courseAccess';
 
-const BEYOND_BETA_BOOK_STATUS: BookMeta['status'] = 'locked';
 
 function buildBook(meta: BookMeta): CourseBook {
   return {
@@ -50,13 +49,13 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     { id: 1, label: 'Book 1', title: 'Modern Chinese 1', subtitle: '時代華語 1', level: 'A1', progress: 0, status: 'active' },
   ),
   buildBook(
-    { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
+    { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: 'unlocked' },
   ),
   buildBook(
     { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: 'unlocked' },
   ),
   buildBook(
-    { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
+    { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: 'unlocked' },
   ),
 ];
 
@@ -146,6 +145,7 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {
   if (hasFullCourseAccess) return false;
   if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
-  if (bookId === 3) return lessonId > 16;
+  // Books 2–4 are open while still being authored (Books 2 and 4 have vocabulary only).
+  if (bookId >= 2 && bookId <= 4) return lessonId > 16;
   return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
 }
