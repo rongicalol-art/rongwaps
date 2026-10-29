@@ -54,9 +54,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
       role="status"
       aria-live="polite"
       aria-busy="true"
-      className={`${containerClass} ${inline ? '' : `${toneClass} `}flex flex-col justify-center items-center overflow-hidden animate-in fade-in duration-200 select-none`}
+      className={`${containerClass} ${inline ? '' : `${toneClass} `}flex flex-col justify-center items-center overflow-hidden select-none`}
     >
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex animate-in fade-in flex-col items-center justify-center duration-200">
         <div className="relative flex h-44 w-44 items-center justify-center">
         {!artReady && <span aria-hidden className="absolute h-10 w-10 animate-spin rounded-full border-4 border-brand-primary-track border-t-brand-primary motion-reduce:animate-none" />}
         {animate && <LottiePlayer

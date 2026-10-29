@@ -33,6 +33,8 @@ interface ActivityModalsProps {
   isShellOverlayOpen: boolean;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
   onOpenReading?: () => void;
+  /** False when the lazy-load fallback window was already on screen, so the modal skips its own fade. */
+  animateIn?: boolean;
 }
 
 export function ActivityModals({
@@ -43,6 +45,7 @@ export function ActivityModals({
   isLibraryMode = false,
   isShellOverlayOpen,
   onOpenGrammarPart,
+  animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
   const race = useAppStore(state => state.racePlaying ? state.race?.selection : null);
@@ -207,7 +210,7 @@ export function ActivityModals({
     <>
       <AnimatePresence>
         {activeActivity && (
-          <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose}>
+          <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose} animateIn={animateIn}>
             <AnimatePresence>
               {(phase === 'loading' || loadError) && !showContent && (
                 <motion.div
@@ -323,7 +326,7 @@ export function ActivityModals({
                       : isRestart
                         ? 'statusRestart'
                         : 'statusCheck';
-                const textColor = isLearned ? 'text-feedback-success-edge' : isReview ? 'text-feedback-danger-edge' : 'text-ui-ink-strong';
+                const textColor = isLearned ? 'text-feedback-success-text' : isReview ? 'text-feedback-danger-text' : 'text-ui-ink-strong';
 
                 return (
                   <motion.div

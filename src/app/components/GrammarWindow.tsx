@@ -47,7 +47,7 @@ export function GrammarWindow({
         </WorkspaceWindow>
       )}
       {shouldRender && phase === 'ready' && part && (
-        <Suspense key={part.id} fallback={<WorkspaceWindow tone="canvas"><LoadingScreen message="Loading grammar…" tone="canvas" /></WorkspaceWindow>}>
+        <Suspense key={part.id} fallback={<WorkspaceWindow tone="canvas" animateIn={false}><LoadingScreen message="Loading grammar…" tone="canvas" /></WorkspaceWindow>}>
           <GrammarLessonScreen
             animateIn={!cameFromLoader}
             part={part}

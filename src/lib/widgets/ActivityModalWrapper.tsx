@@ -7,10 +7,12 @@ interface ActivityModalWrapperProps {
   id: string;
   ariaLabel: string;
   onClose?: () => void;
+  /** False skips the enter fade, e.g. when a loader on the same canvas was already showing. */
+  animateIn?: boolean;
   children: React.ReactNode;
 }
 
-export const ActivityModalWrapper: React.FC<ActivityModalWrapperProps> = ({ id, ariaLabel, onClose, children }) => {
+export const ActivityModalWrapper: React.FC<ActivityModalWrapperProps> = ({ id, ariaLabel, onClose, animateIn = true, children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const motionSpec = getWindowMotion('rise', useReducedMotion());
   const modalFocusProps = useModalFocus({
@@ -29,7 +31,7 @@ export const ActivityModalWrapper: React.FC<ActivityModalWrapperProps> = ({ id, 
       aria-label={ariaLabel}
       tabIndex={-1}
       onKeyDown={modalFocusProps.onKeyDown}
-      initial={motionSpec.initial}
+      initial={animateIn ? motionSpec.initial : false}
       animate={motionSpec.animate}
       exit={motionSpec.exit}
       transition={motionSpec.transition}

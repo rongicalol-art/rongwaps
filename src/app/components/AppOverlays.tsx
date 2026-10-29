@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import type { AppSettingsDrawer as AppSettingsDrawerType } from './AppSettingsDrawer';
 import { GrammarWindow } from './GrammarWindow';
 import { ReaderWindow } from './ReaderWindow';
@@ -70,6 +70,12 @@ export function AppOverlays({
   const saveWordTarget = useAppStore((state) => state.saveWordTarget);
   const [settingsOpened, setSettingsOpened] = useState(false);
   const [saveOpened, setSaveOpened] = useState(false);
+  // Finishing a grammar lesson opens the reader while grammar fades out; the
+  // reader appears at once beneath it so the hub never shows between the two.
+  const grammarCovering = isGrammarOpen || Boolean(grammarPart);
+  const grammarWasCovering = useRef(false);
+  const readerOpensUnderGrammar = grammarWasCovering.current;
+  useEffect(() => { grammarWasCovering.current = grammarCovering; }, [grammarCovering]);
   if (isSettingsOpen && !settingsOpened) setSettingsOpened(true);
   if (saveWordTarget && !saveOpened) setSaveOpened(true);
   return (
@@ -77,6 +83,7 @@ export function AppOverlays({
       {/* Reader and Grammar share the `z-window` rung; Grammar renders after
           the Reader so a grammar part opened from a reading sits on top. */}
       <ReaderWindow
+        animateIn={!readerOpensUnderGrammar}
         isOpen={isReaderOpen}
         loadError={readerLoadError}
         onRetry={onRetryReader}

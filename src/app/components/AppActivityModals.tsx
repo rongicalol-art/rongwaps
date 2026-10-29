@@ -5,14 +5,20 @@ const ActivityModals = lazy(() => import('../../screens/activities/ActivityModal
 
 type ActivityModalsProps = React.ComponentProps<typeof ActivityModals>;
 
+function LessonFallback({ onShown }: { onShown: () => void }) {
+  React.useEffect(onShown, [onShown]);
+  return <WorkspaceWindow tone="practice"><LoadingScreen message="Loading lesson…" tone="practice" /></WorkspaceWindow>;
+}
+
 /** Lazy practice-modal shell. */
 export function AppActivityModals(props: ActivityModalsProps) {
   const [opened, setOpened] = React.useState(false);
+  const sawFallback = React.useRef(false);
   if (props.activeActivity && !opened) setOpened(true);
   if (!opened) return null;
   return (
-    <Suspense fallback={<WorkspaceWindow tone="practice"><LoadingScreen message="Loading lesson…" tone="practice" /></WorkspaceWindow>}>
-      <ActivityModals {...props} />
+    <Suspense fallback={<LessonFallback onShown={() => { sawFallback.current = true; }} />}>
+      <ActivityModals {...props} animateIn={!sawFallback.current} />
     </Suspense>
   );
 }
