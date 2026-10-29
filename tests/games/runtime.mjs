@@ -198,7 +198,7 @@ try {
   const created = await post('/rooms', 'alice', { selection: { lessons: { 1: [1, 2], 99: [1] }, types: ['meaning', 'nope'] }, open: true });
   const host = await open(`/rooms/${created.code}/socket`, 'quiz-race', created.ticket);
   await until(() => host.state);
-  assert.deepEqual(host.state.selection, { lessons: { 1: [1, 2] }, types: ['meaning'] });
+  assert.deepEqual(host.state.selection, { book: 1, lessons: { 1: [1, 2] }, types: ['meaning'] });
   await until(() => last(bob, 'rooms')?.v.some(room => room.code === created.code));
   send(bob, { t: 'sub', online: false, chat: 101 });
   await until(() => [...bob.frames].some(frame => frame.t === 'msg' && frame.m.r?.code === created.code));

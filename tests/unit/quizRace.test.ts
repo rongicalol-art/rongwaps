@@ -17,7 +17,7 @@ test('race types stay in step with the quiz director', () => {
 });
 
 test('selection keeps only beta lessons and real parts', () => {
-  assert.deepEqual(parseSelection({ lessons: { 0: [1], 8: [3, 3, 2], 9: [1], 16: [1, 2, 3], 17: [1], x: [1], 2: [0, 4] }, types: ['build', 'bad'] }), { lessons: { 0: [1], 8: [2, 3], 9: [1], 16: [1, 2, 3] }, types: ['build'] });
+  assert.deepEqual(parseSelection({ lessons: { 0: [1], 8: [3, 3, 2], 9: [1], 16: [1, 2, 3], 17: [1], x: [1], 2: [0, 4] }, types: ['build', 'bad'] }), { book: 1, lessons: { 0: [1], 8: [2, 3], 9: [1], 16: [1, 2, 3] }, types: ['build'] });
   assert.throws(() => parseSelection({ lessons: { 2: [] } }));
 });
 
@@ -286,4 +286,29 @@ test('chat cooldown, burst and duplicate limits survive serialized state', () =>
   assert.equal(nextChatRate(restored, 'line 4', 111_000), null);
   assert.ok(nextChatRate(restored, 'new line', 111_000));
   assert.ok(nextChatRate(restored, 'line 4', 135_000));
+});
+
+test('a race uses one book everyone can open; older frames default to Book 1', () => {
+  assert.deepEqual(parseSelection({ lessons: { 1: [1] } }), { book: 1, lessons: { 1: [1] }, types: [] });
+  assert.deepEqual(parseSelection({ book: 3, lessons: { 0: [1], 2: [1, 2], 17: [1] } }), { book: 3, lessons: { 2: [1, 2] }, types: [] });
+  assert.throws(() => parseSelection({ book: 2, lessons: { 1: [1] } }));
+  assert.throws(() => parseSelection({ book: 4, lessons: { 1: [1] } }));
+});
+
+test('six players fit a room; the seventh is turned away', () => {
+  const room = newRaceRoom('ABCDEF', parseSelection({ lessons: { 1: [1] } }), false, 's', 0);
+  for (const id of ['a', 'b', 'c', 'd', 'e', 'f']) enterRace(room, id, id, 'blue', 0);
+  assert.throws(() => enterRace(room, 'g', 'g', 'blue', 0), /full/);
+});
+
+test('only the host removes players, between rounds, and a removed player cannot rejoin', () => {
+  const room = newRaceRoom('ABCDEF', parseSelection({ lessons: { 1: [1] } }), false, 's', 0);
+  enterRace(room, 'host', 'Host', 'blue', 0); enterRace(room, 'b', 'B', 'jade', 0); enterRace(room, 'c', 'C', 'plum', 0);
+  assert.throws(() => applyRaceAction(room, 'b', { type: 'remove', id: 'c', round: 1 }, 1, seed), /Only the host/);
+  assert.throws(() => applyRaceAction(room, 'host', { type: 'remove', id: 'host', round: 1 }, 1, seed));
+  applyRaceAction(room, 'host', { type: 'remove', id: 'c', round: 1 }, 1, seed);
+  assert.deepEqual(room.players.map(player => player.id), ['host', 'b']);
+  assert.throws(() => enterRace(room, 'c', 'C', 'plum', 2), /removed you/);
+  assert.deepEqual(parseRaceAction({ type: 'remove', id: 'c', round: 1 }), { type: 'remove', id: 'c', round: 1 });
+  assert.throws(() => parseRaceAction({ type: 'remove', id: '', round: 1 }));
 });

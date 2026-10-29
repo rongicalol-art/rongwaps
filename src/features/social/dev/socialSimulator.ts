@@ -125,7 +125,7 @@ function simRoom(host: Person, lesson: number | null): RaceRoomSummary {
     hostColor: host.c,
     hostImage: host.i,
     players: players.map((player) => ({ name: player.n, color: player.c, image: player.i })),
-    selection: { lessons: { [id]: id === 0 ? [1] : [1, 2, 3] }, types: [] },
+    selection: { book: 1, lessons: { [id]: id === 0 ? [1] : [1, 2, 3] }, types: [] },
     open: true,
     joinable: true,
   };
@@ -216,7 +216,7 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
   handlers.onStatus('live');
   const now = Date.now();
   const listed = 'code' in target ? rooms.find((room) => room.code === target.code) : undefined;
-  const selection = 'code' in target ? listed?.selection ?? { lessons: { 1: [1, 2, 3] }, types: [] } : target.selection;
+  const selection = 'code' in target ? listed?.selection ?? { book: 1, lessons: { 1: [1, 2, 3] }, types: [] } : target.selection;
   const code = 'code' in target ? target.code : Array.from({ length: 6 }, () => pick('ABCDEFGHJKLMNPQRSTUVWXYZ23456789'.split(''))).join('');
   const room = newRaceRoom(code, selection, 'code' in target ? true : target.open, Math.random().toString(36).slice(2, 10), now);
   race = { room, onState: handlers.onState };

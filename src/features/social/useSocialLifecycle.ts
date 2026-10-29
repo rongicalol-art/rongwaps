@@ -43,7 +43,7 @@ export function useSocialLifecycle() {
     const activity = state.activeActivity;
     const book = state.activeBookId;
     const fromActivity = state.racePlaying && state.race ? Number(Object.keys(state.race.selection.lessons)[0]) : activity ? getSelectedLessonIds(state.selectedLessonParts, book)[0] : undefined;
-    const lesson = fromActivity !== undefined ? lessonKey(state.racePlaying ? 1 : book, fromActivity) : state.socialViewingLesson;
+    const lesson = fromActivity !== undefined ? lessonKey(state.racePlaying && state.race ? state.race.selection.book ?? 1 : book, fromActivity) : state.socialViewingLesson;
     const a: Activity | null = state.racePlaying ? 'race' : activity ? ACTIVITY[activity] ?? 'lesson' : lesson !== null ? 'lesson' : null;
     const panel = state.socialPanel;
     const chat = panel?.kind === 'people' && panel.tab === 'chat' ? panel.chatScope === 'global' ? GLOBAL_CHAT : panel.chatLesson ?? lesson ?? GLOBAL_CHAT : lesson;

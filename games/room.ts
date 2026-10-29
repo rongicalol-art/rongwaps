@@ -317,6 +317,12 @@ export class GameRoom extends DurableObject<Env> {
       const phase = room.phase;
       this.sweep(room, now);
       applyRaceAction(room, att.userId, action, now, newSeed);
+      if (action.type === 'remove') {
+        // Close the removed player's connection before the new state goes out; their seat is gone for good.
+        this.ctx.storage.sql.exec('DELETE FROM tickets WHERE user_id=?', action.id);
+        for (const target of this.sockets()) if ((target.deserializeAttachment() as Attachment).userId === action.id) target.close(4003, 'The host removed you from this room.');
+        this.ctx.waitUntil(this.env.ROOMS.getByName(`limit:${action.id}`).releaseRoom(room.code));
+      }
       if (action.type === 'start' || action.type === 'rematch' || (action.type === 'ready' && phase === 'preparing' && room.phase === 'race')) {
         for (const player of room.players) if (!player.left) this.ctx.waitUntil(this.env.ROOMS.getByName(`limit:${player.id}`).renewRoom(room.code, room.expiresAt));
       }

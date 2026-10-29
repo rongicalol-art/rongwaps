@@ -47,7 +47,7 @@ export class Lobby extends DurableObject<Env> {
     if (previous && (previous.revision ?? 0) >= (summary.revision ?? 0)) return;
     this.ctx.storage.sql.exec('INSERT OR REPLACE INTO rooms VALUES (?,?,?)', summary.code, JSON.stringify(summary), Date.now());
     if (summary.open && summary.players.length && !this.ctx.storage.sql.exec('SELECT id FROM chat WHERE room=? LIMIT 1', summary.code).toArray().length) {
-      const lesson = 100 + Number(Object.keys(summary.selection.lessons)[0]);
+      const lesson = (summary.selection.book ?? 1) * 100 + Number(Object.keys(summary.selection.lessons)[0]);
       this.post({ u: hostUid, n: summary.host, c: socialColor(summary.hostColor), i: summary.hostImage }, lesson, '', summary.code);
     }
     await this.schedule();

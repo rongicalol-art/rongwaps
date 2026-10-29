@@ -162,7 +162,7 @@ export async function connectRace(identity: Identity, target: { code: string } |
       if (message.type === 'error' && message.error) handlers.onError(message.error);
       if (message.type === 'chat-history' || message.type === 'chat-message') handlers.onChat?.(message);
     },
-    onStatus: handlers.onStatus, onError: handlers.onError, fatal: [1000, 4000, 4001, 1008],
+    onStatus: handlers.onStatus, onError: handlers.onError, fatal: [1000, 4000, 4001, 4003, 1008],
   });
   if (signal?.aborted) socket.close();
   return { ...socket, code };

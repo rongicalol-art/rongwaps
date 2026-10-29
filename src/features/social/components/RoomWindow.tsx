@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
-import { ActionButton, AppIcon, Avatar, Drawer, IconActionButton, PlayfulNavIcon, ToggleSwitch, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
-import { SAMPLE_LESSONS } from '../../../data/books';
+import { ActionButton, AppIcon, Avatar, Drawer, IconActionButton, PlayfulNavIcon, SegmentedControl, ToggleSwitch, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
+import { INTRODUCTION_ART } from '../../../data/lessonLandscapeArt';
+import { lessonThumbnail } from '../../../data/lessonThumbnails';
 import { useAppStore } from '../../../store/useAppStore';
 import { useProfileAvatar } from '../../../hooks/useProfileAvatar';
-import { BETA_LAST_LESSON } from '../../../../shared/courseAccess';
-import { MAX_PLAYERS, RACE_TYPES, socialColor, type RaceSelection, type RaceSnapshot, type RaceType } from '../../../../shared/quizRace';
+import { RACE_BOOKS } from '../../../../shared/courseAccess';
+import { MAX_PLAYERS, RACE_TYPES, socialColor, type RacePlayer, type RaceSelection, type RaceSnapshot, type RaceType } from '../../../../shared/quizRace';
 import { leaveRace, raceSend } from '../raceController';
 import { lessonsSummary, typeLabel } from '../socialText';
 import { PanelTabs } from './SocialBits';
 import { PartyChatThread } from './ChatThread';
 
-const LESSONS = [{ id: 0, title: 'Getting Started' }, ...SAMPLE_LESSONS.filter((lesson) => lesson.id <= BETA_LAST_LESSON)
-  .map((lesson) => ({ id: lesson.id, title: lesson.title.split('·')[0].trim() }))];
+const BOOKS = Object.keys(RACE_BOOKS).map(Number);
+const lessonIds = (book: number) => {
+  const range = RACE_BOOKS[book] ?? RACE_BOOKS[1];
+  return Array.from({ length: range.last - range.first + 1 }, (_, index) => range.first + index);
+};
+const ORDINAL = ['', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth'];
 
 function Row({ icon, label, value, onClick }: { icon: PlayfulNavIconName; label: string; value: string; onClick?: () => void }) {
   const body = (
@@ -32,7 +37,9 @@ function Row({ icon, label, value, onClick }: { icon: PlayfulNavIconName; label:
   );
 }
 
+/** One book per race; each lesson is its picture and number. A picked lesson can narrow to some of its parts. */
 function WordsSheet({ selection, onChange, onClose }: { selection: RaceSelection; onChange: (next: RaceSelection) => void; onClose: () => void }) {
+  const book = selection.book ?? 1;
   const toggleLesson = (id: number) => {
     const lessons = { ...selection.lessons };
     if (lessons[id]) { if (Object.keys(lessons).length > 1) delete lessons[id]; } else lessons[id] = id === 0 ? [1] : [1, 2, 3];
@@ -43,29 +50,67 @@ function WordsSheet({ selection, onChange, onClose }: { selection: RaceSelection
     const next = parts.includes(part) ? (parts.length > 1 ? parts.filter((value) => value !== part) : parts) : [...parts, part].sort();
     onChange({ ...selection, lessons: { ...selection.lessons, [id]: next } });
   };
+  const pickBook = (next: string) => {
+    const id = Number(next);
+    if (id !== book) onChange({ ...selection, book: id, lessons: { [Math.max(1, RACE_BOOKS[id].first)]: [1, 2, 3] } });
+  };
   return (
-    <Drawer isOpen onClose={onClose} title={<Drawer.Title>Words</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="max-h-[80vh] md:max-h-full">
-      {LESSONS.map((lesson) => {
-        const parts = selection.lessons[lesson.id];
-        return (
-          <div key={lesson.id} className="flex items-center gap-3 border-b-2 border-ui-divider py-1.5 last:border-b-0">
-            <button type="button" aria-pressed={Boolean(parts)} onClick={() => toggleLesson(lesson.id)} className="flex min-w-0 flex-1 items-center gap-3 py-2.5 text-left outline-none focus-ring-inline">
-              <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-xs border-2 ${parts ? 'border-brand-primary bg-brand-primary text-brand-on-primary' : 'border-ui-border bg-ui-surface'}`}>{parts && <AppIcon name="check" size={14} />}</span>
-              <span className={`grid h-7 min-w-10 place-items-center rounded-xs px-1.5 text-xs font-black ${parts ? 'bg-brand-primary-soft text-brand-primary-deep' : 'bg-ui-hover text-ui-ink-strong'}`}>{lesson.id === 0 ? 'Intro' : `L${lesson.id}`}</span>
-              <span className="truncate text-base font-extrabold text-ui-ink-strong">{lesson.title}</span>
-            </button>
-            {parts && lesson.id > 0 && (
-              <span className="flex gap-1.5">
-                {[1, 2, 3].map((part) => (
-                  <ActionButton key={part} size="sm" variant="secondary" aria-pressed={parts.includes(part)} onClick={() => togglePart(lesson.id, part)}
-                    className={`!px-2.5 ${parts.includes(part) ? '!border-brand-primary !bg-brand-primary-soft !text-brand-primary-deep' : ''}`}>P{part}</ActionButton>
-                ))}
-              </span>
-            )}
-          </div>
-        );
-      })}
-      <div className="pt-4"><ActionButton fullWidth size="lg" onClick={onClose}>Done</ActionButton></div>
+    <Drawer isOpen onClose={onClose} title={<Drawer.Title>Words</Drawer.Title>} tone="practice" size="md" mdPlacement="side" heightClassName="max-h-[85vh] md:max-h-full">
+      <SegmentedControl ariaLabel="Book" value={String(book)} onChange={pickBook} options={BOOKS.map((id) => ({ value: String(id), label: `Book ${id}` }))} className="mb-4" />
+      <div className="grid grid-cols-3 gap-2.5">
+        {lessonIds(book).map((id) => {
+          const parts = selection.lessons[id];
+          const art = id === 0 ? INTRODUCTION_ART : lessonThumbnail(book, id);
+          return (
+            <div key={id} className={`flex min-w-0 flex-col gap-2 rounded-control border-2 p-2 transition-colors ${parts ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-divider bg-ui-surface'}`}>
+              <button type="button" aria-pressed={Boolean(parts)} aria-label={id === 0 ? 'Introduction' : `Lesson ${id}`} onClick={() => toggleLesson(id)} className="flex flex-col items-center gap-1.5 rounded-compact outline-none focus-ring">
+                <span className="relative block aspect-square w-full overflow-hidden rounded-compact bg-ui-hover">
+                  {art && <img src={art} alt="" loading="lazy" className={`h-full w-full ${id === 0 ? 'object-contain p-4' : 'object-cover'} ${parts ? '' : 'opacity-80'}`} />}
+                </span>
+                <span className={`flex items-center gap-1 text-sm font-black ${parts ? 'text-brand-primary-text' : 'text-ui-ink-strong'}`}>
+                  {parts && <AppIcon name="check" size={14} />}{id === 0 ? 'Intro' : `L${id}`}
+                </span>
+              </button>
+              {parts && id > 0 && (
+                <span className="grid grid-cols-3 gap-1">
+                  {[1, 2, 3].map((part) => (
+                    <button key={part} type="button" aria-pressed={parts.includes(part)} aria-label={`Part ${part}`} onClick={() => togglePart(id, part)}
+                      className={`h-7 rounded-xs border-2 text-xs font-black outline-none focus-ring ${parts.includes(part) ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary' : 'border-brand-primary-soft-edge text-ui-muted-strong'}`}>P{part}</button>
+                  ))}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <div className="sticky -bottom-4 bg-ui-practice-canvas pb-4 pt-4"><ActionButton fullWidth size="lg" onClick={onClose}>Done</ActionButton></div>
+    </Drawer>
+  );
+}
+
+/** A seat's options: a classmate's profile, and Remove for the host before a round. */
+function SeatSheet({ player, canRemove, onClose }: { player: RacePlayer; canRemove: boolean; onClose: () => void }) {
+  const online = useAppStore((state) => state.race?.connected.includes(player.id) ?? false);
+  const visit = () => {
+    onClose();
+    useAppStore.getState().setSocial({ socialPanel: { kind: 'people', tab: 'online', visit: { u: player.id, n: player.name, c: socialColor(player.color), l: null, a: 'race', ...(player.image ? { i: player.image } : {}) } } });
+  };
+  const remove = () => {
+    raceSend({ type: 'remove', id: player.id });
+    useAppStore.getState().showFeedbackToast(`${player.name} was removed from the room`);
+    onClose();
+  };
+  return (
+    <Drawer isOpen onClose={onClose} title={<Drawer.Title>{player.name}</Drawer.Title>} tone="practice" size="sm" mdPlacement="side" heightClassName="max-h-[60vh] md:max-h-full"
+      className="top-auto h-auto rounded-t-3xl md:h-full md:rounded-none" contentClassName="pb-8">
+      <div className="flex items-center gap-3.5">
+        <Avatar name={player.name} color={socialColor(player.color)} src={player.image} size="xl" live={online} className="h-16 w-16 text-2xl" />
+        <span className="text-sm font-extrabold text-ui-muted-strong">{online ? 'In this room' : 'Offline'}</span>
+      </div>
+      <div className="mt-5 grid gap-2.5">
+        <ActionButton fullWidth size="lg" variant="secondary" onClick={visit}>View profile</ActionButton>
+        {canRemove && <ActionButton fullWidth size="lg" variant="secondary" onClick={remove}>Remove from room</ActionButton>}
+      </div>
     </Drawer>
   );
 }
@@ -95,7 +140,7 @@ function Results({ race, me }: { race: RaceSnapshot; me: string | null }) {
   const ranked = [...race.players].sort((a, b) => (a.place ?? 99) - (b.place ?? 99) || b.answered - a.answered);
   const mine = race.players.find((player) => player.id === me);
   const waiting = race.phase === 'race' || race.phase === 'review';
-  const headline = race.prepareError ? 'Race didn’t start' : waiting ? 'Waiting for the others' : mine?.place === 1 ? 'You came first' : mine?.place ? `You came ${['', 'first', 'second', 'third', 'fourth'][mine.place]}` : 'Race over';
+  const headline = race.prepareError ? 'Race didn’t start' : waiting ? 'Waiting for the others' : mine?.place === 1 ? 'You came first' : mine?.place ? `You came ${ORDINAL[mine.place] ?? `#${mine.place}`}` : 'Race over';
   return (
     <>
       <div className="text-center">
@@ -122,6 +167,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
   const me = useAppStore((state) => state.socialMe);
   const myPhoto = useProfileAvatar();
   const [sheet, setSheet] = useState<'words' | 'types' | null>(null);
+  const [seat, setSeat] = useState<string | null>(null);
   const [tab, setTab] = useState<'party' | 'chat'>('party');
   useEffect(() => {
     if (tab !== 'chat') return;
@@ -133,6 +179,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
   const isHost = race.hostId === me;
   const host = race.players.find((player) => player.id === race.hostId);
   const present = race.players.filter((player) => !player.left);
+  const seatPlayer = present.find((player) => player.id === seat && player.id !== me);
   const settings = (selection: RaceSelection, open = race.open) => raceSend({ type: 'settings', selection, open });
   const ready = present.length >= 2 && present.every(player => race.connected.includes(player.id));
   const copy = () => {
@@ -160,33 +207,44 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
           {tab === 'chat' ? <PartyChatThread /> : <div className="flex min-h-0 flex-1 flex-col overflow-y-auto custom-scrollbar">
           {race.phase === 'lobby' ? (
             <>
-              <div className="mt-5 grid grid-cols-4 gap-2.5">
-                {Array.from({ length: MAX_PLAYERS }, (_, index) => present[index]).map((player, index) => player ? (
-                  <div key={player.id} className="flex aspect-[1/1.12] flex-col items-center justify-center gap-1 rounded-control border-2 border-b-[5px] border-ui-border bg-ui-surface">
-                    <Avatar name={player.name} color={socialColor(player.color)} size="xl" src={player.id === me ? myPhoto : player.image} />
-                    <span className="max-w-full truncate px-1 text-sm font-black text-ui-ink-strong">{player.id === me ? 'You' : player.name}</span>
-                    <span className="max-w-full truncate px-1 text-xs font-extrabold text-ui-muted">{!race.connected.includes(player.id) ? 'Offline' : player.id === race.hostId ? 'Host' : 'Ready'}</span>
-                  </div>
-                ) : isHost ? (
-                  <button key={`open-${index}`} type="button" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'online' } })}
-                    className="flex aspect-[1/1.12] flex-col items-center justify-center gap-1.5 rounded-control border-2 border-dashed border-ui-border text-sm font-extrabold text-ui-muted outline-none focus-ring">
-                    <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-dashed border-ui-border"><AppIcon name="plus" size={18} /></span>
-                    Invite
-                  </button>
-                ) : (
-                  <div key={`open-${index}`} className="flex aspect-[1/1.12] flex-col items-center justify-center gap-1.5 rounded-control border-2 border-dashed border-ui-border text-sm font-extrabold text-ui-muted">
-                    <span className="h-10 w-10 rounded-full border-2 border-dashed border-ui-border" />
-                    Open
-                  </div>
-                ))}
+              <div className="mt-5 grid grid-cols-3 gap-2.5">
+                {Array.from({ length: MAX_PLAYERS }, (_, index) => present[index]).map((player, index) => {
+                  if (!player) return isHost ? (
+                    <button key={`open-${index}`} type="button" onClick={() => useAppStore.getState().setSocial({ socialPanel: { kind: 'challenge', tab: 'online' } })}
+                      className="flex min-h-[8.5rem] flex-col items-center justify-center gap-1.5 rounded-control border-2 border-dashed border-ui-border text-sm font-extrabold text-ui-muted outline-none focus-ring">
+                      <span className="grid h-11 w-11 place-items-center rounded-full border-2 border-dashed border-ui-border"><AppIcon name="plus" size={18} /></span>
+                      Invite
+                    </button>
+                  ) : (
+                    <div key={`open-${index}`} className="flex min-h-[8.5rem] flex-col items-center justify-center gap-1.5 rounded-control border-2 border-dashed border-ui-border text-sm font-extrabold text-ui-muted">
+                      <span className="h-11 w-11 rounded-full border-2 border-dashed border-ui-border" />
+                      Open
+                    </div>
+                  );
+                  const mine = player.id === me;
+                  const online = race.connected.includes(player.id);
+                  const hosting = player.id === race.hostId;
+                  const body = <>
+                    <Avatar name={player.name} color={socialColor(player.color)} size="xl" src={mine ? myPhoto : player.image} live={online} className="h-16 w-16 text-2xl" />
+                    <span className="max-w-full truncate px-1 text-[15px] font-black text-ui-ink-strong">{mine ? 'You' : player.name}</span>
+                    <span className={`flex max-w-full items-center gap-1 truncate px-1 text-xs font-black ${hosting ? 'text-brand-primary-text' : 'text-ui-muted'}`}>
+                      {hosting && <AppIcon name="crown" size={13} />}{!online ? 'Offline' : hosting ? 'Host' : 'Ready'}
+                    </span>
+                  </>;
+                  return mine ? (
+                    <div key={player.id} className="flex min-h-[8.5rem] min-w-0 flex-col items-center justify-center gap-1.5 rounded-control border-2 border-b-[5px] border-ui-border bg-ui-surface">{body}</div>
+                  ) : (
+                    <ActionButton key={player.id} variant="secondary" fullWidth onClick={() => setSeat(player.id)} aria-label={`${player.name}: options`}
+                      className="min-h-[8.5rem] min-w-0 flex-col gap-1.5 !px-1 normal-case tracking-normal">{body}</ActionButton>
+                  );
+                })}
               </div>
               <div className="mt-6 grid gap-3">
-                <Row icon="curriculum" label="Words" value={lessonsSummary(race.selection.lessons)} onClick={isHost && live ? () => setSheet('words') : undefined} />
+                <Row icon="curriculum" label="Words" value={lessonsSummary(race.selection)} onClick={isHost && live ? () => setSheet('words') : undefined} />
                 <Row icon="quiz" label="Quiz type" value={typeLabel(race.selection.types)} onClick={isHost && live ? () => setSheet('types') : undefined} />
                 {isHost && live && (
                   <button type="button" role="switch" aria-checked={race.open} onClick={() => settings(race.selection, !race.open)}
                     className="flex min-h-16 items-center gap-3.5 rounded-control border-2 border-ui-divider px-4 py-2.5 text-left outline-none focus-ring">
-                    <PlayfulNavIcon name="global" className="h-8 w-8" />
                     <span className="min-w-0 flex-1">
                       <span className="block text-base font-black text-ui-ink-strong">Open room</span>
                       <span className="block text-xs font-bold text-ui-muted">{race.open ? 'Shows in Rooms and this lesson’s chat' : 'Join with your room code or invite link'}</span>
@@ -202,6 +260,7 @@ export function RoomWindow({ race }: { race: RaceSnapshot }) {
         </div>
       </div>
       {isHost && live && race.phase === 'lobby' && sheet === 'words' && <WordsSheet selection={race.selection} onChange={(next) => settings(next)} onClose={() => setSheet(null)} />}
+      {seatPlayer && <SeatSheet player={seatPlayer} canRemove={isHost && live && (race.phase === 'lobby' || race.phase === 'results')} onClose={() => setSeat(null)} />}
       {isHost && live && race.phase === 'lobby' && sheet === 'types' && <TypesSheet types={race.selection.types} onChange={(types) => settings({ ...race.selection, types })} onClose={() => setSheet(null)} />}
     </WorkspaceWindow>
   );

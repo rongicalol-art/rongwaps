@@ -5,6 +5,7 @@ import {
   PiUploadSimpleBold,
   PiArrowLeftBold,
   PiAtBold,
+  PiCrownSimpleFill,
   PiArrowRightBold,
   PiDownloadSimpleBold,
   PiChartBarFill,
@@ -108,6 +109,7 @@ export type AppIconName =
   | 'books'
   | 'breakdown'
   | 'cards'
+  | 'crown'
   | 'check'
   | 'clock'
   | 'download'
@@ -447,6 +449,7 @@ const ICONS: Record<AppIconName, IconType> = {
   bookmarkFilled: PiBookmarkSimpleFill,
   books: PiBooksBold,
   breakdown: PiPuzzlePieceFill,
+  crown: PiCrownSimpleFill,
   cards: PiCardsFill,
   check: PiCheckBold,
   clock: PiClockFill,

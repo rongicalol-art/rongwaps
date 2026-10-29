@@ -3,7 +3,7 @@
  * The room never sends questions: every player builds the same mixed quiz locally from
  * `selection` and `seed`, and reports only progress counts.
  */
-import { BETA_LAST_LESSON } from './courseAccess';
+import { RACE_BOOKS } from './courseAccess';
 
 export const RACE_TYPES = ['meaning', 'listen', 'hanzi', 'match', 'true-false', 'build'] as const;
 export type RaceType = typeof RACE_TYPES[number];
@@ -32,7 +32,7 @@ export function socialImage(value: unknown, supabaseUrl?: string, file: 'avatar'
     return providerAvatar || profileAvatar ? image.href : undefined;
   } catch { return undefined; }
 }
-export const MAX_PLAYERS = 4;
+export const MAX_PLAYERS = 6;
 export const DISCONNECT_GRACE_MS = 60_000;
 export const REVIEW_GRACE_MS = 5 * 60_000;
 export const ROOM_CODE = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{6}$/;
@@ -41,8 +41,8 @@ const RACE_MS = 10 * 60_000;
 export const PREPARATION_TIMEOUT_MS = 60_000;
 const MAX_WORDS = 2000;
 
-/** Book 1 lessons (key "0"–"8") to their picked parts (1–3); `types` empty = Mixed. */
-export interface RaceSelection { lessons: Record<string, number[]>; types: RaceType[] }
+/** One book (`RACE_BOOKS`), its lessons ("0" = Introduction) to their picked parts (1–3); `types` empty = Mixed. */
+export interface RaceSelection { book: number; lessons: Record<string, number[]>; types: RaceType[] }
 export interface RacePlayer {
   id: string; name: string; color: string; image?: string;
   answered: number; total: number; correct: number;
@@ -50,7 +50,7 @@ export interface RacePlayer {
   preparedAt?: number | null;
   planHash?: string;
   reviewFlow?: number;
-  leftReason?: 'left' | 'disconnected' | 'preparation-timeout';
+  leftReason?: 'left' | 'disconnected' | 'preparation-timeout' | 'removed';
   /** Null while connected; persisted so eviction cannot reset a disconnected seat's grace period. */
   disconnectedAt?: number | null;
 }
@@ -59,11 +59,14 @@ export interface RaceRoomState {
   phase: 'lobby' | 'preparing' | 'race' | 'review' | 'results'; players: RacePlayer[]; prepareError?: 'not-ready' | 'content-mismatch' | 'client-mismatch';
   startedAt: number | null; deadline: number; reviewDeadline?: number; prepareDeadline?: number; expiresAt: number; round: number;
   revision?: number;
+  /** Players the host removed; they cannot rejoin this room. */
+  removed?: string[];
 }
 export type RaceSnapshot = RaceRoomState & { serverTime: number; connected: string[] };
 export type RaceAction =
   | { type: 'settings'; selection: RaceSelection; open: boolean }
   | { type: 'start' | 'rematch' | 'leave' }
+  | { type: 'remove'; id: string }
   | { type: 'ready'; planHash: string; reviewFlow: 0 | 1 }
   | { type: 'progress'; answered: number; total: number; correct: number; reviewComplete: boolean };
 export type RaceFrame = RaceAction & { round: number };
@@ -79,11 +82,15 @@ const isCount = (value: unknown): value is number => Number.isInteger(value) && 
 
 export function parseSelection(value: unknown): RaceSelection {
   const data = (value && typeof value === 'object' ? value : {}) as Record<string, unknown>;
+  // Older clients send no book: their picks are Book 1.
+  const book = data.book === undefined ? 1 : Number(data.book);
+  const range = RACE_BOOKS[book];
+  if (!range) throw new Error('Pick a book everyone can open.');
   const lessons: Record<string, number[]> = {};
   const input = data.lessons && typeof data.lessons === 'object' ? data.lessons as Record<string, unknown> : {};
   for (const [key, parts] of Object.entries(input)) {
     const lesson = Number(key);
-    if (!Number.isInteger(lesson) || lesson < 0 || lesson > BETA_LAST_LESSON || !Array.isArray(parts)) continue;
+    if (!Number.isInteger(lesson) || lesson < range.first || lesson > range.last || !Array.isArray(parts)) continue;
     const picked = [...new Set(parts.filter((part): part is number => Number.isInteger(part) && part >= 1 && part <= (lesson === 0 ? 1 : 3)))].sort();
     if (picked.length) lessons[String(lesson)] = picked;
   }
@@ -91,7 +98,7 @@ export function parseSelection(value: unknown): RaceSelection {
   const types = Array.isArray(data.types)
     ? [...new Set(data.types.filter((type): type is RaceType => (RACE_TYPES as readonly unknown[]).includes(type)))]
     : [];
-  return { lessons, types };
+  return { book, lessons, types };
 }
 
 export function parseRaceAction(value: unknown): RaceFrame {
@@ -100,6 +107,7 @@ export function parseRaceAction(value: unknown): RaceFrame {
   if (!Number.isSafeInteger(data.round) || Number(data.round) < 1) throw new Error('Rejoin the room to update your connection.');
   const round = Number(data.round);
   if (data.type === 'start' || data.type === 'rematch' || data.type === 'leave') return { type: data.type, round };
+  if (data.type === 'remove' && typeof data.id === 'string' && data.id.length > 0 && data.id.length <= 64) return { type: 'remove', id: data.id, round };
   if (data.type === 'ready' && typeof data.planHash === 'string' && /^[a-f\d]{64}$/i.test(data.planHash)) return { type: 'ready', planHash: data.planHash.toLowerCase(), reviewFlow: data.reviewFlow === 1 ? 1 : 0, round };
   if (data.type === 'settings') return { type: 'settings', selection: parseSelection(data.selection), open: data.open === true, round };
   if (data.type === 'progress' && isCount(data.answered) && isCount(data.total) && isCount(data.correct)) {
@@ -124,6 +132,7 @@ function seatColor(room: RaceRoomState, wanted: string): SocialColor {
 export function enterRace(room: RaceRoomState, id: string, name: string, color: string, now: number, image?: string): RacePlayer {
   advanceRace(room, now);
   if (now >= room.expiresAt) throw new Error('This room has expired.');
+  if (room.removed?.includes(id)) throw new Error('The host removed you from this room.');
   const existing = room.players.find(player => player.id === id);
   if (existing) {
     let rejoining = false;
@@ -214,6 +223,12 @@ export function applyRaceAction(room: RaceRoomState, userId: string, action: Rac
   } else if (action.type === 'leave') {
     depart(room, userId, now);
     failPreparationIfUnderstaffed(room);
+  } else if (action.type === 'remove') {
+    if (!isHost || (room.phase !== 'lobby' && room.phase !== 'results')) throw new Error('Only the host can remove players before a round.');
+    const target = room.players.find(entry => entry.id === action.id && !entry.left);
+    if (!target || target.id === userId) throw new Error('That player is not in this room.');
+    room.removed = [...new Set([...(room.removed ?? []), target.id])];
+    depart(room, target.id, now, 'removed');
   } else if (action.type === 'rematch') {
     if (!isHost || room.phase !== 'results') throw new Error('Only the host can start a rematch.');
     room.players = room.players.filter(entry => !entry.left).map(fresh);

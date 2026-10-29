@@ -75,6 +75,8 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const identity = useSocialIdentity();
   const pending = useAppStore(state => state.racePending);
   const hasRoom = useAppStore(state => !!state.race);
+  const roomPlayers = useAppStore(state => state.race?.players);
+  const inMyRoom = (person: Person) => !!roomPlayers?.some(player => player.id === person.u && !player.left);
   const rooms = useAppStore(state => state.socialRooms);
   const [roomMenuOpen, setRoomMenuOpen] = useState(false);
   const { classmates, here, others } = useClassmates(people, online, lesson);
@@ -157,7 +159,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
             ))}
           </>}
         </div>
-        {(pending || selected || panel.tab === 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? <div className="flex gap-2.5"><ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton><div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
+        {(pending || selected || panel.tab === 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? inMyRoom(selected) ? <ActionButton fullWidth size="lg" variant="secondary" onClick={() => mention(selected)}><AppIcon name="at" size={20} />Mention</ActionButton> : <div className="flex gap-2.5"><ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton><div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
       </>}
     </Drawer>
   );

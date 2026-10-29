@@ -54,7 +54,7 @@ export function QuizScreen({
 }: QuizScreenProps) {
   const race = useRaceQuiz();
   const raceSelection = race?.selection;
-  const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`1:${lesson}`, parts])) : undefined, [raceSelection]);
+  const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`${raceSelection.book ?? 1}:${lesson}`, parts])) : undefined, [raceSelection]);
   const { cards: loadedCards, deckCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, !race && isReviewDeck, !race && isLibraryDeck, true, raceParts);
   const cards = race ? deckCards : isReviewDeck && sessionDeck?.length ? sessionDeck : loadedCards;
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);

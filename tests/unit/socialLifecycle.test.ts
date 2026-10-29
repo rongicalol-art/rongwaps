@@ -6,7 +6,7 @@ import { newRaceRoom, enterRace, type RaceSnapshot } from '../../shared/quizRace
 type Handlers = { onState: (state: RaceSnapshot, userId: string) => void; onStatus: (status: string) => void; onError: (message: string) => void };
 type Handle = { code: string; send: (frame: unknown) => boolean; close: () => void };
 const snapshot = (round = 1): RaceSnapshot => {
-  const state = newRaceRoom('ABCDEF', { lessons: { 1: [1] }, types: [] }, true, 's', Date.now());
+  const state = newRaceRoom('ABCDEF', { book: 1, lessons: { 1: [1] }, types: [] }, true, 's', Date.now());
   enterRace(state, 'me', 'Me', 'blue', Date.now()); enterRace(state, 'friend', 'Friend', 'jade', Date.now());
   return { ...state, round, serverTime: Date.now(), connected: ['me', 'friend'] };
 };
@@ -36,7 +36,7 @@ async function controller() {
   return { api, calls, invited, leaves, errors, state: () => state, update };
 }
 const identity = { name: 'Me', color: 'blue' };
-const selection = { lessons: { 1: [1] }, types: [] };
+const selection = { book: 1, lessons: { 1: [1] }, types: [] };
 const flush = async () => { await new Promise(resolve => setImmediate(resolve)); };
 
 test('repeated invites coalesce pending creation and reuse the waiting room', async () => {
@@ -126,7 +126,7 @@ test('rapid settings edits stay optimistic and each latest choice is sent withou
   const opening=h.api.joinRace(identity,'ABCDEF');await flush();
   h.calls[0].resolve({code:'ABCDEF',send:frame=>{sent.push(frame);return true;},close:()=>{}});await opening;
   const initial=snapshot();h.calls[0].handlers.onStatus('live');h.calls[0].handlers.onState(initial,'me');
-  const first={lessons:{1:[1,2]},types:[]};const latest={lessons:{1:[1,2,3]},types:[]};
+  const first={book:1,lessons:{1:[1,2]},types:[]};const latest={book:1,lessons:{1:[1,2,3]},types:[]};
   h.api.raceSend({type:'settings',selection:first,open:true});
   h.api.raceSend({type:'settings',selection:latest,open:true});
   assert.equal(sent.length,2);
@@ -144,11 +144,11 @@ test('Start is never blocked by a quiz choice the server does not echo, and a re
   h.calls[0].resolve({code:'ABCDEF',send:frame=>{sent.push(frame as {type:string});return true;},close:()=>{}});await opening;
   const initial=snapshot();h.calls[0].handlers.onStatus('live');h.calls[0].handlers.onState(initial,'me');
   // e.g. an older server drops a lesson it does not know and the room does not change: no echo ever comes.
-  h.api.raceSend({type:'settings',selection:{lessons:{1:[1],9:[1,2,3]},types:[]},open:true});
+  h.api.raceSend({type:'settings',selection:{book:1,lessons:{1:[1],9:[1,2,3]},types:[]},open:true});
   h.api.raceSend({type:'start'});
   assert.deepEqual(sent.map(frame=>frame.type),['settings','start']);
   assert.equal(h.errors.length,0);
-  h.api.raceSend({type:'settings',selection:{lessons:{9:[1]},types:[]},open:true});
+  h.api.raceSend({type:'settings',selection:{book:1,lessons:{9:[1]},types:[]},open:true});
   h.calls[0].handlers.onError('Pick at least one lesson part.');
   assert.deepEqual((h.state().race as RaceSnapshot).selection,initial.selection);
   h.api.leaveRace();

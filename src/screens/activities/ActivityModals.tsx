@@ -49,10 +49,10 @@ export function ActivityModals({
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
   const race = useAppStore(state => state.racePlaying ? state.race?.selection : null);
-  const activeBookId = race ? 1 : selectedBookId;
+  const activeBookId = race ? race.book ?? 1 : selectedBookId;
   const raceSelection = race;
   const selectedLessons = useMemo(() => raceSelection ? Object.keys(raceSelection.lessons).map(Number) : savedLessons, [raceSelection, savedLessons]);
-  const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`1:${lesson}`, parts])) : undefined, [raceSelection]);
+  const raceParts = useMemo(() => raceSelection ? Object.fromEntries(Object.entries(raceSelection.lessons).map(([lesson, parts]) => [`${raceSelection.book ?? 1}:${lesson}`, parts])) : undefined, [raceSelection]);
 
   const validModes = activities.map(a => a.id);
   const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);

@@ -1,5 +1,6 @@
 import type { Activity } from '../../../shared/lobby';
 import type { RaceSelection, RaceType } from '../../../shared/quizRace';
+import { RACE_BOOKS } from '../../../shared/courseAccess';
 
 const TYPE_LABEL: Record<RaceType, string> = {
   meaning: 'Pick meaning', listen: 'Listen', hanzi: 'Pick character', match: 'Pair match', 'true-false': 'True or false', build: 'Build the word',
@@ -14,21 +15,25 @@ export const activityLabel = (activity: Activity | null) => (activity ? ACTIVITY
 const lessonName = (lesson: number) => (lesson === 0 ? 'Intro' : `L${lesson}`);
 const partsName = (parts: number[]) => (parts.length === 3 ? 'P1–3' : parts.map((part) => `P${part}`).join(' '));
 
-/** "L1 · P1–3", "L2–4", or "L1, L3" (one lesson shows its parts). */
-export function lessonsSummary(lessons: RaceSelection['lessons']): string {
+/** "Book 3 · L1 · P1–3", "Book 1 · L2–4", or "Book 1 · L1, L3" (one lesson shows its parts). */
+export function lessonsSummary({ book, lessons }: Pick<RaceSelection, 'book' | 'lessons'>): string {
   const keys = Object.keys(lessons).map(Number).sort((a, b) => a - b);
-  if (keys.length === 1) return `${lessonName(keys[0])} · ${partsName(lessons[keys[0]])}`;
   const run = keys.every((key, index) => index === 0 || key === keys[index - 1] + 1);
-  return run ? `${lessonName(keys[0])}–${keys[keys.length - 1]}` : keys.map(lessonName).join(', ');
+  const picked = keys.length === 1 ? `${lessonName(keys[0])} · ${partsName(lessons[keys[0]])}`
+    : run ? `${lessonName(keys[0])}–${keys[keys.length - 1]}` : keys.map(lessonName).join(', ');
+  return `Book ${book ?? 1} · ${picked}`;
 }
 
-/** A new room covers the learner's lesson (Book 1 during the beta), all parts. */
+/** A new room covers the learner's lesson when everyone can open it (`RACE_BOOKS`), all parts; else Book 1 Lesson 1. */
 export function defaultSelection(lesson: number | null): RaceSelection {
-  const id = lesson !== null && Math.floor(lesson / 100) === 1 ? lesson % 100 : 1;
-  return { lessons: { [id]: id === 0 ? [1] : [1, 2, 3] }, types: [] };
+  const book = lesson === null ? 1 : Math.floor(lesson / 100);
+  const id = lesson === null ? 1 : lesson % 100;
+  const range = RACE_BOOKS[book];
+  if (!range || id < range.first || id > range.last) return { book: 1, lessons: { 1: [1, 2, 3] }, types: [] };
+  return { book, lessons: { [id]: id === 0 ? [1] : [1, 2, 3] }, types: [] };
 }
 
-export const describeSelection = (selection: RaceSelection) => `${lessonsSummary(selection.lessons)} · ${typeLabel(selection.types)}`;
+export const describeSelection = (selection: RaceSelection) => `${lessonsSummary(selection)} · ${typeLabel(selection.types)}`;
 
 /** "Lesson 4 · Quiz" for a presence row; lesson keys are `bookId * 100 + lessonId`. */
 export function whereLabel(lesson: number | null, activity: Activity | null, sameLesson: boolean): string {
