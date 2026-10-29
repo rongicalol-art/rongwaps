@@ -11,9 +11,11 @@ import { CARD_SURFACE_CLASS, EASE_OUT, TILE_BORDER, TILE_RADIUS, TILE_RATIO, fit
 const loadTrophy = () => import('../../../assets/animations/review-trophy.json').then((m) => m.default);
 const TROPHY_LAST_FRAME = 70;
 
-/** The tuck: one easing for the whole glide of the first missed tile into the real card. */
-const TUCK_EASE = 'cubic-bezier(.22,1,.36,1)';
-const TUCK_MS = 780;
+/** The tuck: one easing for every move. A soft start from rest, then a long settle. */
+const GLIDE_EASE = 'cubic-bezier(.3,.1,.15,1)';
+/** Exits fade on an ease-in: visible while they start to move, gone as they arrive. */
+const FADE_EASE = 'cubic-bezier(.5,0,.75,.4)';
+const TUCK_MS = 820;
 const MAX_TILES = 6;
 const MAX_MISSED_TILES = 3;
 interface ReviewDealIntroProps {
@@ -297,33 +299,35 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
         anims.length = 0;
         const base = (el: Element) => { const t = snap.get(el)!.transform; return t === 'none' ? '' : `${t} `; };
 
+        // Fades ease in: each thing stays readable while it starts to move, then is gone as it arrives.
+        const fade = (el: Element, duration: number, delay = 0) =>
+          A(el, [{ opacity: snap.get(el)!.opacity }, { opacity: 0 }], { duration, delay, easing: FADE_EASE });
+        // The trophy and text drift up and away, top first.
         [trophyWrap, title, subtitle].forEach((el, i) => {
-          A(el, [{ transform: base(el) }, { transform: base(el) + (ghostMode ? 'translateY(-12px)' : 'translateY(-28px) scale(.96)') }],
-            { duration: ghostMode ? 240 : 500, delay: ghostMode ? 0 : i * 35, easing: TUCK_EASE });
-          // Opacity has its own clock: the fast movement easing must not erase the text at the start.
-          A(el, [{ opacity: snap.get(el)!.opacity }, { opacity: snap.get(el)!.opacity, offset: 0.25 }, { opacity: 0 }],
-            { duration: ghostMode ? 240 : 500, delay: ghostMode ? 0 : i * 35, easing: 'linear' });
+          const duration = ghostMode ? 280 : 560;
+          const delay = ghostMode ? 0 : i * 40;
+          A(el, [{ transform: base(el) }, { transform: base(el) + (ghostMode ? 'translateY(-12px)' : 'translateY(-24px) scale(.97)') }],
+            { duration, delay, easing: GLIDE_EASE });
+          fade(el, duration - 40, delay);
         });
-        if (hint) A(hint, [{ opacity: snap.get(hint)!.opacity }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
-        tileEls.forEach((el) => {
-          if (el === morphEl) return;
-          const known = knownEls.includes(el);
-          // The sheet gathers toward the leading tile, which stays above it.
-          // Hold the starting opacity briefly so the movement can be read.
+        if (hint) fade(hint, 240);
+        // The rest of the sheet gathers in under the leading tile, nearest first, like a pile closing up.
+        const others = tileEls.filter((el) => el !== morphEl);
+        const dist = (el: HTMLElement) => {
+          const r = tileRects.get(el)!;
+          return liftedRect ? Math.hypot(liftedRect.left - r.left, liftedRect.top - r.top) : 0;
+        };
+        const far = Math.max(1, ...others.map(dist));
+        others.forEach((el) => {
           const rect = tileRects.get(el)!;
-          const travel = ghostMode ? 0.12 : 0.28;
+          const travel = ghostMode ? 0.2 : 0.6;
           const dx = liftedRect ? (liftedRect.left - rect.left) * travel : 0;
           const dy = liftedRect ? (liftedRect.top - rect.top) * travel : -16;
-          A(
-            el,
-            [
-              { transform: base(el) },
-              { transform: `${base(el)}translate(${dx}px,${dy}px) scale(${ghostMode ? 0.96 : known ? 0.88 : 0.92})` },
-            ],
-            { duration: ghostMode ? 280 : 480, easing: TUCK_EASE },
-          );
-          A(el, [{ opacity: snap.get(el)!.opacity }, { opacity: snap.get(el)!.opacity, offset: 0.25 }, { opacity: 0 }],
-            { duration: ghostMode ? 220 : 480, easing: 'linear' });
+          const duration = ghostMode ? 280 : 560;
+          const delay = ghostMode ? 0 : Math.round((dist(el) / far) * 60);
+          A(el, [{ transform: base(el) }, { transform: `${base(el)}translate(${dx}px,${dy}px) scale(${ghostMode ? 0.96 : 0.9})` }],
+            { duration, delay, easing: GLIDE_EASE });
+          fade(el, duration, delay);
         });
 
         if (ghostMode) {
@@ -372,7 +376,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
             A(word, [
               { transform: `translate(-50%,-50%) translate(${fromLeft + liftedRect.width / 2 - wordX}px,${fromTop + liftedRect.height / 2 - wordY}px) scale(${morphFont / endFont})` },
               { transform: 'translate(-50%,-50%)' },
-            ], { duration: TUCK_MS, easing: TUCK_EASE });
+            ], { duration: TUCK_MS, easing: GLIDE_EASE });
           }
           Object.assign(morphEl.style, {
             left: `${real.left}px`, top: `${real.top}px`, width: `${real.width}px`, height: `${real.height}px`,
@@ -381,7 +385,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
           A(morphEl, [
             { transform: `translate(${fromLeft - real.left}px,${fromTop - real.top}px) scale(${liftedRect.width / real.width},${liftedRect.height / real.height})`, opacity: snap.get(morphEl)!.opacity },
             { transform: 'none', opacity: 1 },
-          ], { duration: TUCK_MS, easing: TUCK_EASE });
+          ], { duration: TUCK_MS, easing: GLIDE_EASE });
         }
         if (answerBar) {
           const raise = A(answerBar, [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 520, easing: EASE_OUT });
