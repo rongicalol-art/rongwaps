@@ -16,7 +16,8 @@ assert.ok(total <= 850_000, `Initial JS exceeds 850 kB: ${total}`);
 const style = html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/)?.[1];
 assert.ok(style);
 const css = (await stat(resolve(root, `dist${style}`))).size;
-assert.ok(css <= 260_000, `Critical CSS exceeds 260 kB: ${css}`);
+// 270 kB: dark mode and per-book tones (Oct 2026) moved theme colours into CSS.
+assert.ok(css <= 270_000, `Critical CSS exceeds 270 kB: ${css}`);
 const assets = await readdir(resolve(root, 'dist/assets'));
 for (const worker of ['quizPlanner.worker-']) {
   assert.ok(assets.some((file) => file.startsWith(worker)), `Missing production worker: ${worker}`);

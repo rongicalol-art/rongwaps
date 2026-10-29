@@ -1,23 +1,18 @@
 import { useEffect } from 'react';
 import { audioService } from '../services/audioService';
 
+/**
+ * iOS only resumes audio inside a tap. The audio context suspends after idle and
+ * on interruptions (app switch, lock screen, calls), so every tap re-unlocks it,
+ * capture phase, before the tap's own handler starts playback.
+ */
 export function useAudioUnlock() {
   useEffect(() => {
-    // Run before click handlers start playback on the reused iOS audio elements.
-    const unlockAudio = () => {
-      audioService.initialize();
-      document.removeEventListener('click', unlockAudio, true);
-      document.removeEventListener('touchend', unlockAudio, true);
-      document.removeEventListener('keydown', unlockAudio, true);
-    };
-    document.addEventListener('click', unlockAudio, true);
-    document.addEventListener('touchend', unlockAudio, true);
-    document.addEventListener('keydown', unlockAudio, true);
-    
+    const unlockAudio = () => audioService.initialize();
+    const events = ['click', 'touchend', 'keydown'] as const;
+    for (const event of events) document.addEventListener(event, unlockAudio, true);
     return () => {
-      document.removeEventListener('click', unlockAudio, true);
-      document.removeEventListener('touchend', unlockAudio, true);
-      document.removeEventListener('keydown', unlockAudio, true);
+      for (const event of events) document.removeEventListener(event, unlockAudio, true);
     };
   }, []);
 }

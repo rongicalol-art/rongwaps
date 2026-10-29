@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { TopToast } from '../../lib/widgets';
 
@@ -6,10 +7,18 @@ import { TopToast } from '../../lib/widgets';
  * accepts it, so the app is never swapped silently mid-session.
  */
 export function PwaUpdatePrompt() {
+  const registration = useRef<ServiceWorkerRegistration | undefined>(undefined);
   const {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
-  } = useRegisterSW();
+  } = useRegisterSW({ onRegisteredSW: (_url, reg) => { registration.current = reg; } });
+
+  useEffect(() => {
+    // Tabs left open for days learn about a new deploy when the learner returns.
+    const check = () => { if (document.visibilityState === 'visible') void registration.current?.update().catch(() => {}); };
+    document.addEventListener('visibilitychange', check);
+    return () => document.removeEventListener('visibilitychange', check);
+  }, []);
 
   return (
     <TopToast

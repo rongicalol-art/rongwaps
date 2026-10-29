@@ -29,6 +29,9 @@ export class ShortAudioClips {
     }, 15_000);
   }
 
+  /** Audio context state for failure reports ('none' before the first tap). */
+  public state(): string { return this.context?.state ?? 'none'; }
+
   public unlock(): void {
     try { void this.getContext()?.resume().catch(() => {}); }
     catch { /* A later gesture or native media can still play. */ }

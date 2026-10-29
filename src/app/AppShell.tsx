@@ -7,6 +7,9 @@ import { PwaUpdatePrompt } from './components/PwaUpdatePrompt';
 import { ResumeLaunch } from '../features/practice';
 import { useAppShell } from './hooks/useAppShell';
 import { SignInWindow } from '../screens/auth';
+import { registerShellServices } from './registerShellServices';
+
+registerShellServices();
 
 /** Study together loads in its own chunk after first idle; nothing social is in the boot bundle. */
 const SocialRoot = lazy(() => import('../features/social/SocialRoot'));

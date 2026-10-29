@@ -248,3 +248,43 @@ test('bounded shard cache releases old parts and retains the most recently used 
     assert.equal(stub.calls.filter((call) => call.url.endsWith('part-2.json')).length, 2);
   });
 });
+
+test('after a deploy, a removed part refetches the manifest once and loads the new part', async () => {
+  let manifestFetches = 0;
+  const calls: string[] = [];
+  const stub = (async (input: RequestInfo | URL) => {
+    const url = String(input);
+    calls.push(url);
+    const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json' } });
+    if (url === '/data/test/manifest.json') {
+      manifestFetches++;
+      const path = manifestFetches === 1 ? '/data/test/part-1-old.json' : '/data/test/part-1-new.json';
+      return json({ schemaVersion: 1, version: `v${manifestFetches}`, parts: [{ key: 1, count: 2, path }] });
+    }
+    if (url === '/data/test/part-1-new.json') return json(packBody(1, 2)());
+    return new Response('{"error":"Not found"}', { status: 404, headers: { 'content-type': 'application/json' } });
+  }) as typeof fetch;
+
+  await withFetch(stub, async () => {
+    const loader = createTestLoader();
+    assert.deepEqual(await loader.loadPart(1), ['item-1-a', 'item-1-b']);
+    assert.equal(manifestFetches, 2);
+    assert.deepEqual(calls, ['/data/test/manifest.json', '/data/test/part-1-old.json', '/data/test/manifest.json', '/data/test/part-1-new.json']);
+  });
+});
+
+test('a missing part with an unchanged manifest still fails', async () => {
+  let manifestFetches = 0;
+  const stub = (async (input: RequestInfo | URL) => {
+    if (String(input) === '/data/test/manifest.json') {
+      manifestFetches++;
+      return new Response(JSON.stringify(validManifest), { status: 200, headers: { 'content-type': 'application/json' } });
+    }
+    return new Response('{}', { status: 404, headers: { 'content-type': 'application/json' } });
+  }) as typeof fetch;
+
+  await withFetch(stub, async () => {
+    await assert.rejects(createTestLoader().loadPart(1), { name: 'PackMissError' });
+    assert.equal(manifestFetches, 2);
+  });
+});

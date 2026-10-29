@@ -1,4 +1,7 @@
+import { PackMissError } from './errors';
 import { fetchStaticJson, pruneStaticJsonCache, removeStaticJsonCache } from './staticContentService';
+
+class PackValidationError extends Error { override name = 'PackValidationError'; }
 
 /**
  * Shared pack-loading mechanism for the pack-first content strategy.
@@ -114,8 +117,27 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     return manifestPromise;
   }
 
+  /**
+   * A deploy replaces every pack, so a tab holding the previous manifest asks for
+   * files that are gone (404) or changed (validation). Refetch the manifest once.
+   */
   async function loadPartUncached(key: number): Promise<TLoaded | null> {
-    const manifest = await getManifest();
+    const stale = await getManifest();
+    try {
+      return await loadPartFrom(stale, key);
+    } catch (error) {
+      if (!(error instanceof PackMissError || error instanceof PackValidationError)) throw error;
+      if (manifestPromise) {
+        const current = await manifestPromise.catch(() => null);
+        if (current === stale) manifestPromise = null;
+      }
+      const fresh = await getManifest();
+      if ((fresh as { version: string }).version === (stale as { version: string }).version) throw error;
+      return loadPartFrom(fresh, key);
+    }
+  }
+
+  async function loadPartFrom(manifest: TManifest, key: number): Promise<TLoaded | null> {
     const part = getParts(manifest).find((candidate) => candidate.key === key);
     if (!part || !part.path.startsWith(partPathPrefix)) return null;
 
@@ -123,7 +145,7 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     const pack = await fetchStaticJson<TPack>(versionedPath(part.path, part.sha256), partLabel(key), { persistentKey });
     if (!validatePack(pack, part, manifest)) {
       await removeStaticJsonCache(persistentKey);
-      throw new Error(`${partLabel(key)} failed validation`);
+      throw new PackValidationError(`${partLabel(key)} failed validation`);
     }
 
     const loaded = transform(pack);

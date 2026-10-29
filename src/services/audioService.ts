@@ -28,6 +28,7 @@ import {
 import type { Flashcard } from '../data/flashcards';
 import { getCharacterAudio } from './pronunciationAudio';
 import { ShortAudioClips } from './audio/shortAudioClips';
+import { reportAudioFailure } from './errorReporting';
 
 type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
 export class AudioService {
@@ -247,6 +248,12 @@ export class AudioService {
       const handleAudioFailure = (error?: unknown) => {
         if (fallbackStarted || this.activePlaybackFinish !== finish) return;
         fallbackStarted = true;
+        if (!(error instanceof Error && error.name === 'AbortError')) reportAudioFailure(error, {
+          stage: 'play',
+          context: this.shortClips.state(),
+          standalone: String(typeof matchMedia === 'function' && matchMedia('(display-mode: standalone)').matches),
+          visible: typeof document === 'undefined' ? 'unknown' : document.visibilityState,
+        });
         if (error instanceof Error && error.name === 'EncodingError') void invalidateCachedAudio(this.objectUrls, audioFileName);
         if (error instanceof Error && (error.name === 'AbortError' || error.name === 'NotAllowedError')) {
           options?.onUnavailable?.();
