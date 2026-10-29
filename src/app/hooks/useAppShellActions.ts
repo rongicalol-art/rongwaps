@@ -105,6 +105,15 @@ export function useAppShellActions({
     onComplete?.();
   }, [handleCloseGrammar]);
 
+  // A quiz race starts for everyone at once, so whatever window this learner has open steps aside;
+  // otherwise the shell keeps the quiz hidden behind the reading or grammar window.
+  const handleStartRaceQuiz = useCallback(() => {
+    handleCloseGrammar();
+    handleCloseReader();
+    setIsSettingsOpen(false);
+    handleSetActiveActivity('quiz');
+  }, [handleCloseGrammar, handleCloseReader, setIsSettingsOpen, handleSetActiveActivity]);
+
   const handleSettingsClick = useCallback(() => {
     setIsSettingsOpen(true);
     if (!isDesktop()) setIsNavOpen(false);
@@ -121,5 +130,6 @@ export function useAppShellActions({
     handleProceedToReading,
     handleFinishGrammar,
     handleSettingsClick,
+    handleStartRaceQuiz,
   };
 }

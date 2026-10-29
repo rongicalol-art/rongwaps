@@ -15,7 +15,10 @@ import { PartyChatThread } from './components/ChatThread';
  * Study together, mounted by the app shell after first idle (its own chunk). Owns the Lobby lifecycle and the
  * social overlays; screens only read the store.
  */
-export default function SocialRoot({ setActiveActivity }: { setActiveActivity: (activity: ActivityType) => void }) {
+export default function SocialRoot({ setActiveActivity, startRaceQuiz }: { setActiveActivity: (activity: ActivityType) => void; startRaceQuiz: () => void }) {
+  // Read at race start; a ref keeps the launcher effect (and the room) from restarting when the shell re-renders.
+  const startQuiz = useRef(startRaceQuiz);
+  startQuiz.current = startRaceQuiz;
   useSocialLifecycle();
   const identity = useSocialIdentity();
   const panel = useAppStore((state) => state.socialPanel);
@@ -40,19 +43,16 @@ export default function SocialRoot({ setActiveActivity }: { setActiveActivity: (
   const lifecycle = useRef({ version: 0 });
   const account = useRef(userId);
 
-  // A race opens the existing mixed quiz on the room's lessons and parts (Book 1 during the beta).
+  // A race opens the existing mixed quiz on the room's book, lessons and parts.
   useEffect(() => {
     const owner = lifecycle.current;
     const version = ++owner.version;
     if (account.current !== userId) leaveRace();
     account.current = userId;
     setRaceLauncher({
-      start: () => {
-        const store = useAppStore.getState();
-        // The activity consumes the room's selection directly; personal deck/preferences stay intact.
-        // Bypass normal saved-quiz interception: this room owns a fresh session key.
-        store.setActiveActivity('quiz');
-      },
+      // The quiz consumes the room's selection directly; personal deck/preferences stay intact, and the room's
+      // fresh session key bypasses saved-quiz interception. Open reading/grammar windows close first.
+      start: () => startQuiz.current(),
       stop: () => setActiveActivity(null),
     });
     if (userId && !roomCode) restoreRace(identity, userId);

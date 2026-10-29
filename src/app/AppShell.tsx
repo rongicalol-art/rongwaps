@@ -128,7 +128,7 @@ export default function AppShell() {
 
       {socialReady && (
         <Suspense fallback={null}>
-          <SocialRoot setActiveActivity={activity.onSetActiveActivity} />
+          <SocialRoot setActiveActivity={activity.onSetActiveActivity} startRaceQuiz={activity.onStartRaceQuiz} />
         </Suspense>
       )}
 

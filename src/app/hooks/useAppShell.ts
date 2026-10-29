@@ -184,6 +184,7 @@ export function useAppShell() {
       activeBook,
       selectedLessons: navigation.selectedLessons,
       onSetActiveActivity: actions.handleSetActiveActivity,
+      onStartRaceQuiz: actions.handleStartRaceQuiz,
       onStartPartPractice: actions.handleStartPartPractice,
       onStartPathPractice: actions.handleStartPathPractice,
       onOpenReading: actions.handleOpenReading,
