@@ -202,6 +202,134 @@ const READING_ILLUSTRATIONS: Record<string, ReadingIllustration> = {
     url: new URL('../assets/images/readings/b1l16-r03-night-market-evening-v2.webp', import.meta.url).href,
     alt: 'Youmei sips pearl milk tea, Zhongming looks at beef noodles, and Yiwen points to xiaolongbao at a Taiwan night market.',
   },
+  'B3L01-R01': {
+    url: new URL('../assets/images/readings/b3l01-r01-scene.webp', import.meta.url).href,
+    alt: "Tomoko offers Dongxian an autograph notebook at a caf\u00e9.",
+  },
+  'B3L01-R02': {
+    url: new URL('../assets/images/readings/b3l01-r02-scene.webp', import.meta.url).href,
+    alt: "Dongxian practices directing behind a movie camera.",
+  },
+  'B3L02-R01': {
+    url: new URL('../assets/images/readings/b3l02-r01-scene.webp', import.meta.url).href,
+    alt: "Tomoko asks Shawn about his laundry bag outside a convenience store.",
+  },
+  'B3L02-R02': {
+    url: new URL('../assets/images/readings/b3l02-r02-scene.webp', import.meta.url).href,
+    alt: "A convenience-store worker hands a customer a takeaway coffee.",
+  },
+  'B3L03-R01': {
+    url: new URL('../assets/images/readings/b3l03-r01-scene.webp', import.meta.url).href,
+    alt: "Fangcao holds up a dress while Mary considers its fit.",
+  },
+  'B3L03-R02': {
+    url: new URL('../assets/images/readings/b3l03-r02-scene.webp', import.meta.url).href,
+    alt: "A shopper examines the quality of a fabric bag at a market stall.",
+  },
+  'B3L04-R01': {
+    url: new URL('../assets/images/readings/b3l04-r01-scene.webp', import.meta.url).href,
+    alt: "Mary brings Fangcao a wrapped bottle as a gift at her doorway.",
+  },
+  'B3L04-R02': {
+    url: new URL('../assets/images/readings/b3l04-r02-scene.webp', import.meta.url).href,
+    alt: "Jialin writes a letter beside her sleeping baby and a bowl of soup.",
+  },
+  'B3L05-R01': {
+    url: new URL('../assets/images/readings/b3l05-r01-scene.webp', import.meta.url).href,
+    alt: "Fangcao and Jiahao discuss storm damage beside a fallen tree.",
+  },
+  'B3L05-R02': {
+    url: new URL('../assets/images/readings/b3l05-r02-scene.webp', import.meta.url).href,
+    alt: "Two volunteers pass a carton of supplies during earthquake relief.",
+  },
+  'B3L06-R01': {
+    url: new URL('../assets/images/readings/b3l06-r01-scene.webp', import.meta.url).href,
+    alt: "Shawn invites Mingzhe to play volleyball outside campus.",
+  },
+  'B3L06-R02': {
+    url: new URL('../assets/images/readings/b3l06-r02-scene.webp', import.meta.url).href,
+    alt: "Zhang Wenhua waters flowers with his daughter in the garden.",
+  },
+  'B3L07-R01': {
+    url: new URL('../assets/images/readings/b3l07-r01-scene.webp', import.meta.url).href,
+    alt: "Mingzhe and Dongxian discuss a cycling route on a tablet.",
+  },
+  'B3L07-R02': {
+    url: new URL('../assets/images/readings/b3l07-r02-scene.webp', import.meta.url).href,
+    alt: "Martin cycles along a sunny coastal road in eastern Taiwan.",
+  },
+  'B3L08-R01': {
+    url: new URL('../assets/images/readings/b3l08-r01-scene.webp', import.meta.url).href,
+    alt: "Tomoko and Dongxian discuss personal style on a campus bench.",
+  },
+  'B3L08-R02': {
+    url: new URL('../assets/images/readings/b3l08-r02-scene.webp', import.meta.url).href,
+    alt: "Dongxian sorts clothing while considering what to keep.",
+  },
+  'B3L09-R01': {
+    url: new URL('../assets/images/readings/b3l09-r01-scene.webp', import.meta.url).href,
+    alt: "Shawn listens as Jiahao discusses his younger brother and tennis.",
+  },
+  'B3L09-R02': {
+    url: new URL('../assets/images/readings/b3l09-r02-scene.webp', import.meta.url).href,
+    alt: "Two students build and test a wooden bridge model together.",
+  },
+  'B3L10-R01': {
+    url: new URL('../assets/images/readings/b3l10-r01-scene.webp', import.meta.url).href,
+    alt: "Fangcao and Jiahao look through a health-check brochure.",
+  },
+  'B3L10-R02': {
+    url: new URL('../assets/images/readings/b3l10-r02-scene.webp', import.meta.url).href,
+    alt: "Uncle Lin walks with a family member as he improves his health.",
+  },
+  'B3L11-R01': {
+    url: new URL('../assets/images/readings/b3l11-r01-scene.webp', import.meta.url).href,
+    alt: "Tomoko and Shawn discuss a suspicious online message.",
+  },
+  'B3L11-R02': {
+    url: new URL('../assets/images/readings/b3l11-r02-scene.webp', import.meta.url).href,
+    alt: "Two friends put their phones aside to talk in person.",
+  },
+  'B3L12-R01': {
+    url: new URL('../assets/images/readings/b3l12-r01-scene.webp', import.meta.url).href,
+    alt: "Jiahao offers his work-experience documents during an interview.",
+  },
+  'B3L12-R02': {
+    url: new URL('../assets/images/readings/b3l12-r02-scene.webp', import.meta.url).href,
+    alt: "An applicant checks his clothes and documents before an interview.",
+  },
+  'B3L13-R01': {
+    url: new URL('../assets/images/readings/b3l13-r01-scene.webp', import.meta.url).href,
+    alt: "Mingzhe shows Tomoko a tablet with its screen facing them in a library.",
+  },
+  'B3L13-R02': {
+    url: new URL('../assets/images/readings/b3l13-r02-scene.webp', import.meta.url).href,
+    alt: "A woman joins a video meeting from home during rainy weather.",
+  },
+  'B3L14-R01': {
+    url: new URL('../assets/images/readings/b3l14-r01-scene.webp', import.meta.url).href,
+    alt: "Jiahao shows Shawn a handmade cloth wallet from his girlfriend.",
+  },
+  'B3L14-R02': {
+    url: new URL('../assets/images/readings/b3l14-r02-scene.webp', import.meta.url).href,
+    alt: "A couple exchange a small handmade gift beside the river.",
+  },
+  'B3L15-R01': {
+    url: new URL('../assets/images/readings/b3l15-r01-scene.webp', import.meta.url).href,
+    alt: "Mingzhe and Shawn plan a visit to historic sites using a notebook.",
+  },
+  'B3L15-R02': {
+    url: new URL('../assets/images/readings/b3l15-r02-scene.webp', import.meta.url).href,
+    alt: "Two conservation workers care for a carved relief on a historic wall.",
+  },
+  'B3L16-R01': {
+    url: new URL('../assets/images/readings/b3l16-r01-scene.webp', import.meta.url).href,
+    alt: "Mary and Dongxian choose corn and noodles at a supermarket.",
+  },
+  'B3L16-R02': {
+    url: new URL('../assets/images/readings/b3l16-r02-scene.webp', import.meta.url).href,
+    alt: "Chef Xie places a fresh meal in a community refrigerator.",
+  },
 };
 
 /** Returns the hero illustration for a reading, or null when none is authored. */
