@@ -163,7 +163,6 @@ export function publicAudioUrl(fileName: string): string | null {
   // Card data may contain a complete public URL, including a temporary or
   // signed HTTPS link. Preserve it as-is instead of prefixing the CDN domain.
   if (/^https?:\/\//i.test(fileName)) return fileName;
-  if (/^B2-0[1-8]-[12]-1\.mp3$/.test(fileName)) return `/audio/book2/${encodeURIComponent(fileName)}`;
 
   const encodedPath = fileName.split('/').map(encodeURIComponent).join('/');
   const customCdn = viteEnv('VITE_AUDIO_BASE_URL');
