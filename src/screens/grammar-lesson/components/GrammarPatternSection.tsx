@@ -29,11 +29,11 @@ const EDGE_SHADOW_STOPS = [
 ].map(([alpha, at]) => `color-mix(in srgb, var(--color-ui-scrim) ${alpha}%, transparent) ${at}%`).join(', ');
 
 /**
- * A header title can mix English and Chinese (`Double 了`, `比 + B`). Chinese
- * runs follow the learner's character-font choice (sans / kai / rounded) just
- * like the table cells, while Latin runs stay in the UI face.
+ * Text that mixes English and Chinese (`Double 了`, `不管 + question`). Chinese
+ * runs follow the learner's character-font choice (sans / kai / rounded), while
+ * Latin runs stay in the UI face and can take their own quieter style.
  */
-function HeaderTitle({ text }: { text: string }) {
+function MixedRuns({ text, latinClassName }: { text: string; latinClassName?: string }) {
   const runs: Array<{ hanzi: boolean; text: string }> = [];
   for (const char of text) {
     const hanzi = isHanziChar(char);
@@ -45,11 +45,16 @@ function HeaderTitle({ text }: { text: string }) {
   return (
     <>
       {runs.map((run, index) =>
-        run.hanzi ? <span key={index} className="font-chinese">{run.text}</span> : <Fragment key={index}>{run.text}</Fragment>
+        run.hanzi
+          ? <span key={index} className="font-chinese">{run.text}</span>
+          : latinClassName ? <span key={index} className={latinClassName}>{run.text}</span> : <Fragment key={index}>{run.text}</Fragment>
       )}
     </>
   );
 }
+
+/** Slot labels (S, Vs, question, result) are placeholders, not words: they read quieter than the Chinese around them. */
+const hasSlotLabel = (group: GrammarWordToken[]) => group.some((token) => /[A-Za-z]/.test(token.traditional));
 
 /** A short phrase (臺灣人。) stays on one line, so a phone never strands its last word; longer cells may wrap. */
 const SHORT_CELL_HANZI = 3;
@@ -198,7 +203,7 @@ export function GrammarPatternSection({
                         className={cn('ui-eyebrow block text-brand-on-band [&_.font-chinese]:text-base', wide && 'whitespace-nowrap')}
                         title={detail ? `${columnTitle} · ${detail}` : columnTitle}
                       >
-                        <HeaderTitle text={columnTitle} />
+                        <MixedRuns text={columnTitle} />
                       </span>
                     </th>
                   );
@@ -246,6 +251,16 @@ export function GrammarPatternSection({
                           >
                             {isEmpty ? (
                               <span className="text-xs font-bold text-ui-muted/30 select-none" aria-hidden="true">—</span>
+                            ) : hasSlotLabel(group) ? (
+                              <span className="font-chinese text-2xl font-bold text-ui-ink-strong">
+                                {group.map((token) => (
+                                  <MixedRuns
+                                    key={token.id}
+                                    text={(characterPreference === 'simplified' && token.simplified) || token.traditional}
+                                    latinClassName="font-sans text-base font-semibold text-ui-muted-strong"
+                                  />
+                                ))}
+                              </span>
                             ) : (
                               <InteractiveGrammarSentence
                                 words={[...group]}

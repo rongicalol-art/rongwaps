@@ -25,9 +25,9 @@
         "audioReference": "13-1",
         "pattern": "不管 + question/condition，(subject) + 都 + unchanged result",
         "patternColumns": [
-          "Condition",
+          "Choices",
           "都",
-          "Result"
+          "Outcome"
         ],
         "patternRows": [
           {
@@ -36,8 +36,8 @@
               [
                 {
                   "id": "b2l13-g01-p293-r1-c1",
-                  "traditional": "不管 + question",
-                  "simplified": "不管 + question",
+                  "traditional": "不管 + any choice",
+                  "simplified": "不管 + any choice",
                   "pinyin": "bùguǎn",
                   "meaning": "No matter what condition"
                 }
@@ -54,8 +54,8 @@
               [
                 {
                   "id": "b2l13-g01-p293-r1-c3",
-                  "traditional": "unchanged result",
-                  "simplified": "unchanged result",
+                  "traditional": "what stays the same",
+                  "simplified": "what stays the same",
                   "pinyin": "",
                   "meaning": "result stays true"
                 }
@@ -502,9 +502,9 @@
         "audioReference": "13-1",
         "pattern": "original action/comment，不如 + better suggestion (+ explanation)",
         "patternColumns": [
-          "Original",
+          "Option",
           "不如",
-          "Suggestion"
+          "Better"
         ],
         "patternRows": [
           {
@@ -513,8 +513,8 @@
               [
                 {
                   "id": "b2l13-g02-p294-r1-c1",
-                  "traditional": "comment/action",
-                  "simplified": "comment/action",
+                  "traditional": "one option",
+                  "simplified": "one option",
                   "pinyin": "",
                   "meaning": "first option or reason"
                 }
@@ -531,8 +531,8 @@
               [
                 {
                   "id": "b2l13-g02-p294-r1-c3",
-                  "traditional": "better option",
-                  "simplified": "better option",
+                  "traditional": "a better option",
+                  "simplified": "a better option",
                   "pinyin": "",
                   "meaning": "suggestion"
                 }
@@ -2202,9 +2202,9 @@
         "audioReference": "13-3",
         "pattern": "差（一）點兒 + verb phrase (+ 就 + result)",
         "patternColumns": [
-          "Near miss",
+          "Almost",
           "Action",
-          "Result"
+          "Outcome"
         ],
         "patternRows": [
           {
@@ -2222,8 +2222,8 @@
               [
                 {
                   "id": "b2l13-g05-p302-r1-c2",
-                  "traditional": "verb or verb phrase",
-                  "simplified": "verb or verb phrase",
+                  "traditional": "action",
+                  "simplified": "action",
                   "pinyin": "",
                   "meaning": "what nearly happened"
                 }
@@ -2231,8 +2231,8 @@
               [
                 {
                   "id": "b2l13-g05-p302-r1-c3",
-                  "traditional": "（就）+ result",
-                  "simplified": "（就）+ result",
+                  "traditional": "（就）+ what would have happened",
+                  "simplified": "（就）+ what would have happened",
                   "pinyin": "(jiù)",
                   "meaning": "unwanted outcome"
                 }

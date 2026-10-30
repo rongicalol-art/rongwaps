@@ -519,9 +519,9 @@
         "audioReference": "16-1",
         "pattern": "得看／要看 + condition",
         "patternColumns": [
-          "Phrase",
-          "After 看",
-          "Decision"
+          "Depends",
+          "Factor",
+          "Meaning"
         ],
         "patternRows": [
           {
@@ -539,8 +539,8 @@
               [
                 {
                   "id": "b2l16-g02-p362-r1-c2",
-                  "traditional": "question word / A-not-A / opposites",
-                  "simplified": "question word / A-not-A / opposites",
+                  "traditional": "什麼 / A不A / 高低",
+                  "simplified": "什么 / A不A / 高低",
                   "pinyin": "",
                   "meaning": "possible condition forms"
                 }
@@ -548,8 +548,8 @@
               [
                 {
                   "id": "b2l16-g02-p362-r1-c3",
-                  "traditional": "depends on the condition",
-                  "simplified": "depends on the condition",
+                  "traditional": "the answer changes with it",
+                  "simplified": "the answer changes with it",
                   "pinyin": "",
                   "meaning": "resulting choice"
                 }
@@ -987,9 +987,9 @@
         "audioReference": "16-1",
         "pattern": "像 + 2–3 examples + 什麼的",
         "patternColumns": [
-          "Examples",
           "Like",
-          "Open list"
+          "Examples",
+          "Etc."
         ],
         "patternRows": [
           {
@@ -997,20 +997,20 @@
             "columns": [
               [
                 {
-                  "id": "b2l16-g03-p363-r1-c1",
-                  "traditional": "2–3 items",
-                  "simplified": "2–3 items",
-                  "pinyin": "",
-                  "meaning": "examples"
-                }
-              ],
-              [
-                {
                   "id": "b2l16-g03-p363-r1-c2",
                   "traditional": "像",
                   "simplified": "像",
                   "pinyin": "xiàng",
                   "meaning": "such as"
+                }
+              ],
+              [
+                {
+                  "id": "b2l16-g03-p363-r1-c1",
+                  "traditional": "2–3 examples",
+                  "simplified": "2–3 examples",
+                  "pinyin": "",
+                  "meaning": "examples"
                 }
               ],
               [
@@ -2171,9 +2171,9 @@
         "audioReference": "16-3",
         "pattern": "只有 + necessary condition，才 + result",
         "patternColumns": [
-          "Condition",
+          "Only if…",
           "才",
-          "Result"
+          "Then…"
         ],
         "patternRows": [
           {
@@ -2182,8 +2182,8 @@
               [
                 {
                   "id": "b2l16-g06-p371-r1-c1",
-                  "traditional": "只有 + condition",
-                  "simplified": "只有 + condition",
+                  "traditional": "只有 + the one requirement",
+                  "simplified": "只有 + the one requirement",
                   "pinyin": "zhǐyǒu",
                   "meaning": "necessary condition"
                 }
@@ -2200,8 +2200,8 @@
               [
                 {
                   "id": "b2l16-g06-p371-r1-c3",
-                  "traditional": "result",
-                  "simplified": "result",
+                  "traditional": "it can happen",
+                  "simplified": "it can happen",
                   "pinyin": "",
                   "meaning": "achievable outcome"
                 }

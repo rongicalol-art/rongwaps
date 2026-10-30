@@ -1254,8 +1254,8 @@
         "sourceExplanationEnglish": "“到底” is an adverb which is used in disjunctive questions except for those with final “嗎”, e.g., “到底要不要？” and “到底去不去？” It shows the emotion that the speaker is eager to know the answer. It can be placed before or after the Subject, but when the Subject is a question word, “到底” can only be placed in front of the Subject and used as an adverbial, e.g., “到底是誰偷了我的車？”",
         "pattern": "Subject + 到底 + question; 到底 + question word + clause",
         "patternColumns": [
-          "Subject",
-          "Adverb",
+          "Who",
+          "到底",
           "Question"
         ],
         "patternRows": [
@@ -1265,8 +1265,8 @@
               [
                 {
                   "id": "b2l10-g04-p233-r1-c1",
-                  "traditional": "Subject",
-                  "simplified": "Subject",
+                  "traditional": "someone",
+                  "simplified": "someone",
                   "pinyin": "",
                   "meaning": "Subject"
                 }
@@ -1283,8 +1283,8 @@
               [
                 {
                   "id": "b2l10-g04-p233-r1-c3",
-                  "traditional": "Question",
-                  "simplified": "Question",
+                  "traditional": "a question",
+                  "simplified": "a question",
                   "pinyin": "",
                   "meaning": "question"
                 }
@@ -4827,9 +4827,9 @@
         "sourceExplanationEnglish": "The pattern “對 NP 來說” is used to show someone’s opinion or attitude toward a specific event.",
         "pattern": "對 + NP + 來說，comment",
         "patternColumns": [
-          "Viewpoint",
+          "Who",
           "來說",
-          "Comment"
+          "Opinion"
         ],
         "patternRows": [
           {
@@ -4838,8 +4838,8 @@
               [
                 {
                   "id": "b2l10-g01-p239-r1-c1",
-                  "traditional": "對 + NP",
-                  "simplified": "對 + NP",
+                  "traditional": "對 + person",
+                  "simplified": "對 + person",
                   "pinyin": "duì",
                   "meaning": "toward + noun phrase"
                 }
@@ -4856,8 +4856,8 @@
               [
                 {
                   "id": "b2l10-g01-p239-r1-c3",
-                  "traditional": "Comment",
-                  "simplified": "Comment",
+                  "traditional": "what it is like for them",
+                  "simplified": "what it is like for them",
                   "pinyin": "",
                   "meaning": "opinion or attitude"
                 }
@@ -5391,9 +5391,9 @@
         "sourceExplanationEnglish": "In Chinese, “的話” has the same function as “如果” and “要是” to form conditional sentences. However, “如果” and “要是” should be placed at the beginning of a sentence while “的話” should be placed at the end of the first clause. In some cases, using “要是” gives a stronger or even threatening tone than using “如果”. Both “如果” and “要是” can collocate with “的話”, and either can be left out. “的話” is a less formal expression.",
         "pattern": "(如果／要是) + condition + (的話)，result",
         "patternColumns": [
-          "Condition",
+          "If…",
           "的話",
-          "Result"
+          "Then…"
         ],
         "patternRows": [
           {
@@ -5402,8 +5402,8 @@
               [
                 {
                   "id": "b2l10-g02-p240-r1-c1",
-                  "traditional": "(如果／要是) + clause",
-                  "simplified": "(如果／要是) + clause",
+                  "traditional": "(如果／要是) + situation",
+                  "simplified": "(如果／要是) + situation",
                   "pinyin": "rú guǒ / yào shì",
                   "meaning": "if / supposing + condition"
                 }
@@ -5420,8 +5420,8 @@
               [
                 {
                   "id": "b2l10-g02-p240-r1-c3",
-                  "traditional": "Result",
-                  "simplified": "Result",
+                  "traditional": "what happens",
+                  "simplified": "what happens",
                   "pinyin": "",
                   "meaning": "result"
                 }
@@ -5743,8 +5743,8 @@
         "sourceExplanationEnglish": "This pattern, in which “對” is followed by someone or something, indicates the Subject, often a thing, has influence on someone or something.",
         "pattern": "Subject + 對 + NP + 有／沒（有） + 幫助／影響／好處",
         "patternColumns": [
-          "Subject",
-          "對 + NP",
+          "Who",
+          "Toward",
           "Effect"
         ],
         "patternRows": [
@@ -5754,8 +5754,8 @@
               [
                 {
                   "id": "b2l10-g03-p241-r1-c1",
-                  "traditional": "Subject",
-                  "simplified": "Subject",
+                  "traditional": "something",
+                  "simplified": "something",
                   "pinyin": "",
                   "meaning": "Subject"
                 }
