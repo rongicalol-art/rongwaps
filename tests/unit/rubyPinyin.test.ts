@@ -2,6 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { alignRubyPinyin, getPhraseChunks, getWordChunks, splitPinyinWordToSyllables } from '../../src/utils/pinyin/rubyPinyin.js';
 
+test('printed Latin pinyin does not shift the following Chinese readings', () => {
+  const items = alignRubyPinyin('都唸 yú，有剩下。', 'dōu niàn yú, yǒu shèngxià.');
+  assert.equal(items.find((item) => item.char === 'yú')?.pinyin, 'yú');
+  assert.equal(items.find((item) => item.char === '有')?.pinyin, 'yǒu');
+  assert.equal(items.find((item) => item.char === '剩')?.pinyin, 'shèng');
+  assert.equal(items.find((item) => item.char === '下')?.pinyin, 'xià');
+});
+
 test('splitPinyinWordToSyllables splits compound words', () => {
   assert.deepEqual(splitPinyinWordToSyllables('piàoliàng'), ['piào', 'liàng']);
   assert.deepEqual(splitPinyinWordToSyllables('tóngxué'), ['tóng', 'xué']);

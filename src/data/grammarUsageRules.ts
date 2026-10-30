@@ -827,6 +827,91 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
     inOrder(['因為', '關係'], 8),
   ]),
 
+  // Book 2 Lesson 9 — 你怕考試嗎？
+  'B2L09-G01-P208': detected('negative statement + sentence-final 嗎', [
+    inOrder(['不', '是', '嗎'], 3),
+  ]),
+  'B2L09-G02-P209': detected('快／慢（一）點兒 + action', [
+    inOrder(['快', '點兒'], 1),
+  ]),
+  'B2L09-G03-P209': detected('verb + 到 + endpoint', [
+    inOrder(['考', '到'], 1),
+  ]),
+  'B2L09-G04-P211': detected('negative + noncommittal question word', [
+    inOrder(['沒', '修', '多少'], 1),
+  ]),
+  'B2L09-G05-P212': detected('怎麼這麼 + state verb', [
+    inOrder(['怎麼', '這麼'], 1),
+  ]),
+  'B2L09-G06-P212': detected('potential complement 得下／不下', [
+    inOrder(['吃', '不', '下'], 1),
+  ]),
+  'B2L09-G01-P218': detected('state-verb reduplication with 的／地', [
+    // The reading uses the complement form 說得清清楚楚 (without optional 的).
+    inOrder(['得', '清清楚楚'], 1),
+  ]),
+
+  // Book 2 Lesson 10 — 下課後一起去健身吧！
+  'B2L10-G01-P231': detected('不但……而且……', [inOrder(['不但', '而且'], 8)]),
+  'B2L10-G02-P232': detected('Vs + 死了', [inOrder(['痛', '死', '了'], 1)]),
+  'B2L10-G03-P232': detected('越……越……', [inOrder(['越', '做', '越'], 1)]),
+  'B2L10-G04-P233': detected('到底', [inOrder(['到底', '要', '不', '要'], 1)]),
+  'B2L10-G01-P239': detected('對……來說', [inOrder(['對', '來', '說'], 8)]),
+  'B2L10-G02-P240': detected('condition + 的話', [inOrder(['要是', '的', '話'], 20)]),
+  'B2L10-G03-P241': detected('對……有幫助', [inOrder(['對', '有', '幫助'], 8)]),
+
+  // Book 2 Lesson 11 — 你想參加哪一個社團？
+  'B2L11-G01-P250': detected('place + V了 + noun', [inOrder(['擺', '了', '攤子'], 6)]),
+  'B2L11-G02-P252': detected('對……感興趣', [inOrder(['對', '感', '興趣'], 8)]),
+  'B2L11-G03-P252': detected('V不出來', [inOrder(['看', '不', '出來'], 1)]),
+  'B2L11-G04-P253': detected('嘛', [inOrder(['社', '嘛'], 1)]),
+  'B2L11-G05-P254': detected('同一 + measure word', [inOrder(['同', '一', '個'], 1)]),
+  'B2L11-G06-P260': detected('examples + 等', [inOrder(['住院', '出院', '等'], 2)]),
+  'B2L11-G07-P260': detected('從……中', [inOrder(['從', '服務', '中'], 1), inOrder(['從', '課本', '中'], 1)]),
+
+  // Book 2 Lesson 12 — 小職員？大老闆？
+  'B2L12-G01-P271': detected('除了……都……', [inOrder(['除了', '翻譯', '都'], 12)]),
+  'B2L12-G02-P272': detected('不像……那麼', [inOrder(['不', '像', '那麼'], 8)]),
+  'B2L12-G03-P273': detected('從……起', [inOrder(['從', '起'], 8)]),
+  'B2L12-G04-P273': detected('向 + person + verb', [inOrder(['向', '他', '學習'], 1)]),
+  'B2L12-G05-P274': detected('難怪', [inOrder(['難怪'])]),
+  'B2L12-G06-P275': detected('V不了', [inOrder(['做', '不', '了'], 1)]),
+  'B2L12-G07-P282': detected('V個 + noun', [inOrder(['喝', '個', '茶'], 1), inOrder(['聽', '個', '音樂'], 1)]),
+  'B2L12-G08-P283': detected('N + 來', [inOrder(['自己', '來'], 1)]),
+
+  // Book 2 Lesson 13 — 我要買筆電
+  'B2L13-G01-P293': detected('不管……都……', [inOrder(['不管', '都'], 8)]),
+  'B2L13-G02-P294': detected('不如', [inOrder(['不如', '買'], 1)]),
+  'B2L13-G03-P294': detected('Vs了（一）點兒', [inOrder(['貴', '了', '一點兒'], 1)]),
+  'B2L13-G04-P301': detected('比起來', [inOrder(['跟', '平板', '比起來'], 1)]),
+  'B2L13-G05-P302': detected('差一點兒就', [inOrder(['差', '一點兒', '就'], 1)]),
+  'B2L13-G06-P303': detected('白 V', [inOrder(['沒', '白跑'], 1)]),
+
+  // Book 2 Lesson 14 — 餐桌上的魚，年年有餘
+  'B2L14-G01-P316': detected('想起來', [inOrder(['想起來', '了'], 1)]),
+  'B2L14-G02-P317': detected('從來沒', [inOrder(['從來', '沒'], 1)]),
+  'B2L14-G03-P317': detected('examples + 等等', [inOrder(['年糕', '發糕', '蘿蔔糕', '等等'], 1)]),
+  'B2L14-G04-P325': { undetectable: 'The reading uses 當天, not the 當……就…… frame.' },
+  'B2L14-G05-P325': detected('讓 + agent + 給 + V了', [inOrder(['讓', '怪獸', '給', '吃', '了'], 1)]),
+  'B2L14-G06-P327': detected('無所謂', [inOrder(['無所謂'])]),
+  'B2L14-G07-P328': detected('V走', [inOrder(['趕', '走'], 1), inOrder(['嚇', '走'], 1)]),
+  'B2L14-G08-P329': detected('要不是', [inOrder(['要', '不', '是'], 1)]),
+
+  // Book 2 Lesson 15 — 孔子不知道的事
+  'B2L15-G01-P341': detected('可 + state verb', [inOrder(['可', '有', '興趣'], 1)]),
+  'B2L15-G02-P342': detected('V + 一 + measure word', [inOrder(['看', '我', '一', '眼'], 1)]),
+  'B2L15-G03-P343': detected('V下來', [inOrder(['記', '下來'], 1)]),
+  'B2L15-G04-P343': detected('說 V 就 V', [inOrder(['說', '走', '就', '走'], 1)]),
+  'B2L15-G05-P351': detected('誰知道', [inOrder(['誰', '知道'], 1)]),
+
+  // Book 2 Lesson 16 — 世界各地的朋友
+  'B2L16-G01-P361': detected('Vs得很', [inOrder(['臭', '得', '很'], 1)]),
+  'B2L16-G02-P362': detected('得看', [inOrder(['得', '看'], 1)]),
+  'B2L16-G03-P363': detected('像……什麼的', [inOrder(['像', '唱歌', '什麼', '的'], 4)]),
+  'B2L16-G04-P364': detected('V來V去', [inOrder(['走', '來', '走', '去'], 1)]),
+  'B2L16-G05-P370': detected('比不上', [inOrder(['比', '不', '上'], 1)]),
+  'B2L16-G06-P371': detected('只有……才……', [inOrder(['只有', '才'], 10)]),
+
   // Book 3 Lesson 15 — 去淡水參觀古蹟
   'B3L15-G01-P383': detected('簡直', [inOrder(['簡直'])]),
   'B3L15-G02-P384': detected('Vs得沒話說', [inOrder(['得沒話說'])]),

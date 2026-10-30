@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development tsx server/index.ts",
+    "dev:book2-audio": "VITE_BOOK2_AUDIO_LOCAL=true npm run dev",
     "fonts:split": "python3 scripts/fonts/split-chinese-fonts.py",
     "server": "tsx server/index.ts",
     "build:server": "esbuild server=server/index.ts dictionary.worker=server/dictionary.worker.ts --platform=node --bundle --outdir=dist-server --entry-names=[name] --format=esm --packages=external --external:express --external:@supabase/supabase-js --external:dotenv --define:process.env.NODE_ENV='\"production\"'",
@@ -26,6 +27,7 @@
     "vocab:simple:lint": "tsx scripts/content/lintSimpleDefinitions.ts",
     "vocab:examples": "tsx scripts/content/applyVocabExamples.ts",
     "audio:book3:vocabulary:download": "node scripts/audio/downloadBook3VocabularyTracks.mjs",
+    "audio:book2:download": "node scripts/audio/downloadBook2Tracks.mjs",
     "audio:vocabulary-examples:align": "output/align-venv/bin/python scripts/audio/alignVocabularyExampleAudio.py",
     "audio:sync:r2": "tsx scripts/audio/syncAudioToR2.ts",
     "font:huninn:vendor": "tsx scripts/assets/vendorHuninn.ts",
@@ -39,6 +41,7 @@
     "decomposition:pack:publish": "tsx scripts/character-decomposition/promoteDecompositionRuntimePack.ts --publish",
     "decomposition:runtime:measure": "tsx scripts/character-decomposition/measureDecompositionRuntime.ts",
     "book-pages:export": "tsx scripts/content/exportBookPages.ts",
+    "book-pages:export:2": "tsx scripts/content/exportBookPages.ts --book=2",
     "book-pages:recompress": "tsx scripts/content/recompressBookPages.ts",
     "breakdowns:patch": "tsx scripts/content/patchBreakdowns.ts",
     "dictionary:packs": "tsx scripts/dictionary/exportDictionaryPacks.ts",

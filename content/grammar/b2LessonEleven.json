@@ -1,0 +1,1914 @@
+{
+  "BOOK2_LESSON_ELEVEN_PART_ONE": {
+    "id": "B2L11-P01-D01",
+    "bookId": 2,
+    "lessonId": 11,
+    "partId": 1,
+    "title": "Grammar 1–5 · Which Club Would You Like to Join?",
+    "grammarPages": [
+      {
+        "id": "B2L11-G01-P250",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 1,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 1,
+        "titleTraditional": "PW + V 了 + N / PW + V 著 + N",
+        "titleEnglish": "Existential Sentences with Posture Verbs",
+        "learnerPromise": "Say what exists in a place and whether it is standing, sitting, or arranged there.",
+        "printedPages": [
+          250,
+          251
+        ],
+        "bookPage": 250,
+        "bookPageAvailable": false,
+        "audioReference": "11-1",
+        "explanation": "“PW+V 了+N /PW+V 著+N” indicates something/ some things exist(s) in a certain place. The verbs used in this pattern can be posture verb and non-posture verb. Posture verbs are used to describe the posture of a human or an animal existing in that place, such as “坐”, “站”, “躺”, “蹲”, etc. Non-posture verbs are used to describe the manner or action some objects are placed, such as “放”, “貼”, “掛”, “停”, “寫”, “畫”, “拿”, etc.",
+        "explanationEnglish": "“PW+V 了+N /PW+V 著+N” indicates something/ some things exist(s) in a certain place. The verbs used in this pattern can be posture verb and non-posture verb. Posture verbs are used to describe the posture of a human or an animal existing in that place, such as “坐”, “站”, “躺”, “蹲”, etc. Non-posture verbs are used to describe the manner or action some objects are placed, such as “放”, “貼”, “掛”, “停”, “寫”, “畫”, “拿”, etc.",
+        "sourceExplanationEnglish": "“PW+V 了+N /PW+V 著+N” indicates something/ some things exist(s) in a certain place. The verbs used in this pattern can be posture verb and non-posture verb. Posture verbs are used to describe the posture of a human or an animal existing in that place, such as “坐”, “站”, “躺”, “蹲”, etc. Non-posture verbs are used to describe the manner or action some objects are placed, such as “放”, “貼”, “掛”, “停”, “寫”, “畫”, “拿”, etc.",
+        "pattern": "Place word + V 了 + N / Place word + V 著 + N",
+        "patternColumns": [
+          "Place word",
+          "Verb + 了 / 著",
+          "Noun"
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g1-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "社區的大樓前面站了很多人。",
+              "simplified": "社区的大楼前面站了很多人。",
+              "english": "There are many people standing in front of the apartment building in the community.",
+              "pinyin": "Shèqū de dàlóu qiánmiàn zhàn le hěn duō rén.",
+              "words": [
+                {
+                  "traditional": "社區",
+                  "simplified": "社区",
+                  "pinyin": "shèqū",
+                  "meaning": "community",
+                  "id": "b2l11-g1-ex1-w1"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "possessive particle",
+                  "id": "b2l11-g1-ex1-w2"
+                },
+                {
+                  "traditional": "大樓",
+                  "simplified": "大楼",
+                  "pinyin": "dàlóu",
+                  "meaning": "apartment building",
+                  "id": "b2l11-g1-ex1-w3"
+                },
+                {
+                  "traditional": "前面",
+                  "simplified": "前面",
+                  "pinyin": "qiánmiàn",
+                  "meaning": "in front",
+                  "id": "b2l11-g1-ex1-w4"
+                },
+                {
+                  "traditional": "站了",
+                  "simplified": "站了",
+                  "pinyin": "zhàn le",
+                  "meaning": "stood; are standing",
+                  "id": "b2l11-g1-ex1-w5"
+                },
+                {
+                  "traditional": "很多人",
+                  "simplified": "很多人",
+                  "pinyin": "hěn duō rén",
+                  "meaning": "many people",
+                  "suffix": "。",
+                  "id": "b2l11-g1-ex1-w6"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g1-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "冰箱裡面放了媽媽買的花蓮名產。",
+              "simplified": "冰箱里面放了妈妈买的花莲名产。",
+              "english": "There are Hualien specialties that Mom bought in the refrigerator.",
+              "pinyin": "Bīngxiāng lǐmiàn fàng le māma mǎi de Huālián míngchǎn.",
+              "words": [
+                {
+                  "traditional": "冰箱",
+                  "simplified": "冰箱",
+                  "pinyin": "bīngxiāng",
+                  "meaning": "refrigerator",
+                  "id": "b2l11-g1-ex2-w1"
+                },
+                {
+                  "traditional": "裡面",
+                  "simplified": "里面",
+                  "pinyin": "lǐmiàn",
+                  "meaning": "inside",
+                  "id": "b2l11-g1-ex2-w2"
+                },
+                {
+                  "traditional": "放了",
+                  "simplified": "放了",
+                  "pinyin": "fàng le",
+                  "meaning": "put; placed",
+                  "id": "b2l11-g1-ex2-w3"
+                },
+                {
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mother",
+                  "id": "b2l11-g1-ex2-w4"
+                },
+                {
+                  "traditional": "買的",
+                  "simplified": "买的",
+                  "pinyin": "mǎi de",
+                  "meaning": "bought",
+                  "id": "b2l11-g1-ex2-w5"
+                },
+                {
+                  "traditional": "花蓮名產",
+                  "simplified": "花莲名产",
+                  "pinyin": "Huālián míngchǎn",
+                  "meaning": "Hualien specialties",
+                  "suffix": "。",
+                  "id": "b2l11-g1-ex2-w6"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g1-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "便利商店門口貼著這次活動的海報。",
+              "simplified": "便利商店门口贴着这次活动的海报。",
+              "english": "A poster for this event is posted at the convenience store entrance.",
+              "pinyin": "Biànlì shāngdiàn ménkǒu tiē zhe zhè cì huódòng de hǎibào.",
+              "words": [
+                {
+                  "traditional": "便利商店",
+                  "simplified": "便利商店",
+                  "pinyin": "biànlì shāngdiàn",
+                  "meaning": "convenience store",
+                  "id": "b2l11-g1-ex3-w1"
+                },
+                {
+                  "traditional": "門口",
+                  "simplified": "门口",
+                  "pinyin": "ménkǒu",
+                  "meaning": "entrance",
+                  "id": "b2l11-g1-ex3-w2"
+                },
+                {
+                  "traditional": "貼著",
+                  "simplified": "贴着",
+                  "pinyin": "tiē zhe",
+                  "meaning": "is posted",
+                  "id": "b2l11-g1-ex3-w3"
+                },
+                {
+                  "traditional": "這次",
+                  "simplified": "这次",
+                  "pinyin": "zhè cì",
+                  "meaning": "this time",
+                  "id": "b2l11-g1-ex3-w4"
+                },
+                {
+                  "traditional": "活動",
+                  "simplified": "活动",
+                  "pinyin": "huódòng",
+                  "meaning": "event",
+                  "id": "b2l11-g1-ex3-w5"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "possessive particle",
+                  "id": "b2l11-g1-ex3-w6"
+                },
+                {
+                  "traditional": "海報",
+                  "simplified": "海报",
+                  "pinyin": "hǎibào",
+                  "meaning": "poster",
+                  "suffix": "。",
+                  "id": "b2l11-g1-ex3-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g1-ex4",
+            "number": 4,
+            "text": {
+              "traditional": "朋友寄來的明信片上面寫著他旅遊的心情。",
+              "simplified": "朋友寄来的明信片上面写着他旅游的心情。",
+              "english": "The postcard my friend sent describes how he felt about the trip.",
+              "pinyin": "Péngyou jì lái de míngxìnpiàn shàngmiàn xiě zhe tā lǚyóu de xīnqíng.",
+              "words": [
+                {
+                  "traditional": "朋友",
+                  "simplified": "朋友",
+                  "pinyin": "péngyou",
+                  "meaning": "friend",
+                  "id": "b2l11-g1-ex4-w1"
+                },
+                {
+                  "traditional": "寄來的",
+                  "simplified": "寄来的",
+                  "pinyin": "jì lái de",
+                  "meaning": "sent here",
+                  "id": "b2l11-g1-ex4-w2"
+                },
+                {
+                  "traditional": "明信片",
+                  "simplified": "明信片",
+                  "pinyin": "míngxìnpiàn",
+                  "meaning": "postcard",
+                  "id": "b2l11-g1-ex4-w3"
+                },
+                {
+                  "traditional": "上面",
+                  "simplified": "上面",
+                  "pinyin": "shàngmiàn",
+                  "meaning": "on it",
+                  "id": "b2l11-g1-ex4-w4"
+                },
+                {
+                  "traditional": "寫著",
+                  "simplified": "写着",
+                  "pinyin": "xiě zhe",
+                  "meaning": "is written",
+                  "id": "b2l11-g1-ex4-w5"
+                },
+                {
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; his",
+                  "id": "b2l11-g1-ex4-w6"
+                },
+                {
+                  "traditional": "旅遊",
+                  "simplified": "旅游",
+                  "pinyin": "lǚyóu",
+                  "meaning": "travel",
+                  "id": "b2l11-g1-ex4-w7"
+                },
+                {
+                  "traditional": "的心情",
+                  "simplified": "的心情",
+                  "pinyin": "de xīnqíng",
+                  "meaning": "feelings",
+                  "suffix": "。",
+                  "id": "b2l11-g1-ex4-w8"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Describe the pictures",
+        "exercisePreview": "Use 了 and 著 to say what is in each picture.",
+        "exerciseInstruction": "請用「PW+V 了+N / PW+V 著+N」說說這張圖片有什麼。",
+        "questions": []
+      },
+      {
+        "id": "B2L11-G02-P252",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 1,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 2,
+        "titleTraditional": "對……（不）感興趣",
+        "titleEnglish": "To Be Interested in…",
+        "learnerPromise": "Say what someone is or is not interested in.",
+        "printedPages": [
+          252
+        ],
+        "bookPage": 252,
+        "bookPageAvailable": false,
+        "audioReference": "11-1",
+        "explanation": "“感興趣” is used to show the subject’s interests and willingness to have further acquaintance with something.",
+        "explanationEnglish": "“感興趣” is used to show the subject’s interests and willingness to have further acquaintance with something.",
+        "sourceExplanationEnglish": "“感興趣” is used to show the subject’s interests and willingness to have further acquaintance with something.",
+        "pattern": "Subject + 對 + Noun / Verb phrase +（不）感興趣",
+        "patternColumns": [
+          "Subject",
+          "對 + topic",
+          "（不）感興趣"
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g2-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "白小姐很愛化妝，對現在最流行的化妝品很感興趣。",
+              "simplified": "白小姐很爱化妆，对现在最流行的化妆品很感兴趣。",
+              "english": "Miss Bai loves putting on makeup and is very interested in the most fashionable cosmetics.",
+              "pinyin": "Bái xiǎojiě hěn ài huàzhuāng, duì xiànzài zuì liúxíng de huàzhuāngpǐn hěn gǎn xìngqù.",
+              "words": [
+                {
+                  "traditional": "白小姐",
+                  "simplified": "白小姐",
+                  "pinyin": "Bái xiǎojiě",
+                  "meaning": "Miss Bai",
+                  "id": "b2l11-g2-ex1-w1"
+                },
+                {
+                  "traditional": "很愛",
+                  "simplified": "很爱",
+                  "pinyin": "hěn ài",
+                  "meaning": "really likes",
+                  "id": "b2l11-g2-ex1-w2"
+                },
+                {
+                  "traditional": "化妝",
+                  "simplified": "化妆",
+                  "pinyin": "huàzhuāng",
+                  "meaning": "put on makeup",
+                  "suffix": "，",
+                  "id": "b2l11-g2-ex1-w3"
+                },
+                {
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "meaning": "toward; about",
+                  "id": "b2l11-g2-ex1-w4"
+                },
+                {
+                  "traditional": "現在",
+                  "simplified": "现在",
+                  "pinyin": "xiànzài",
+                  "meaning": "now",
+                  "id": "b2l11-g2-ex1-w5"
+                },
+                {
+                  "traditional": "最流行的",
+                  "simplified": "最流行的",
+                  "pinyin": "zuì liúxíng de",
+                  "meaning": "most fashionable",
+                  "id": "b2l11-g2-ex1-w6"
+                },
+                {
+                  "traditional": "化妝品",
+                  "simplified": "化妆品",
+                  "pinyin": "huàzhuāngpǐn",
+                  "meaning": "cosmetics",
+                  "id": "b2l11-g2-ex1-w7"
+                },
+                {
+                  "traditional": "很感興趣",
+                  "simplified": "很感兴趣",
+                  "pinyin": "hěn gǎn xìngqù",
+                  "meaning": "be very interested",
+                  "suffix": "。",
+                  "id": "b2l11-g2-ex1-w8"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g2-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我喜歡幫助別人，所以對去醫院服務的事非常感興趣。",
+              "simplified": "我喜欢帮助别人，所以对去医院服务的事非常感兴趣。",
+              "english": "I like helping other people, so I am very interested in volunteering at hospitals.",
+              "pinyin": "Wǒ xǐhuan bāngzhù biérén, suǒyǐ duì qù yīyuàn fúwù de shì fēicháng gǎn xìngqù.",
+              "words": [
+                {
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "id": "b2l11-g2-ex2-w1"
+                },
+                {
+                  "traditional": "喜歡",
+                  "simplified": "喜欢",
+                  "pinyin": "xǐhuan",
+                  "meaning": "like",
+                  "id": "b2l11-g2-ex2-w2"
+                },
+                {
+                  "traditional": "幫助別人",
+                  "simplified": "帮助别人",
+                  "pinyin": "bāngzhù biérén",
+                  "meaning": "help other people",
+                  "id": "b2l11-g2-ex2-w3",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "meaning": "so",
+                  "id": "b2l11-g2-ex2-w4"
+                },
+                {
+                  "traditional": "對",
+                  "simplified": "对",
+                  "pinyin": "duì",
+                  "meaning": "about",
+                  "id": "b2l11-g2-ex2-w5"
+                },
+                {
+                  "traditional": "去醫院服務的事",
+                  "simplified": "去医院服务的事",
+                  "pinyin": "qù yīyuàn fúwù de shì",
+                  "meaning": "hospital service",
+                  "id": "b2l11-g2-ex2-w6"
+                },
+                {
+                  "traditional": "非常感興趣",
+                  "simplified": "非常感兴趣",
+                  "pinyin": "fēicháng gǎn xìngqù",
+                  "meaning": "be very interested",
+                  "suffix": "。",
+                  "id": "b2l11-g2-ex2-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g2-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "林先生很喜歡張小姐，可是張小姐對他一點兒都不感興趣。",
+              "simplified": "林先生很喜欢张小姐，可是张小姐对他一点儿都不感兴趣。",
+              "english": "Mr. Lin really likes Miss Zhang, but Miss Zhang is not interested in him at all.",
+              "pinyin": "Lín xiānsheng hěn xǐhuan Zhāng xiǎojiě, kěshì Zhāng xiǎojiě duì tā yìdiǎnr dōu bù gǎn xìngqù.",
+              "words": [
+                {
+                  "traditional": "林先生",
+                  "simplified": "林先生",
+                  "pinyin": "Lín xiānsheng",
+                  "meaning": "Mr. Lin",
+                  "id": "b2l11-g2-ex3-w1"
+                },
+                {
+                  "traditional": "很喜歡",
+                  "simplified": "很喜欢",
+                  "pinyin": "hěn xǐhuan",
+                  "meaning": "really likes",
+                  "id": "b2l11-g2-ex3-w2"
+                },
+                {
+                  "traditional": "張小姐",
+                  "simplified": "张小姐",
+                  "pinyin": "Zhāng xiǎojiě",
+                  "meaning": "Miss Zhang",
+                  "suffix": "，",
+                  "id": "b2l11-g2-ex3-w3"
+                },
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "meaning": "but",
+                  "id": "b2l11-g2-ex3-w4"
+                },
+                {
+                  "traditional": "張小姐",
+                  "simplified": "张小姐",
+                  "pinyin": "Zhāng xiǎojiě",
+                  "meaning": "Miss Zhang",
+                  "id": "b2l11-g2-ex3-w5"
+                },
+                {
+                  "traditional": "對他",
+                  "simplified": "对他",
+                  "pinyin": "duì tā",
+                  "meaning": "in him",
+                  "id": "b2l11-g2-ex3-w6"
+                },
+                {
+                  "traditional": "一點兒都不感興趣",
+                  "simplified": "一点儿都不感兴趣",
+                  "pinyin": "yìdiǎnr dōu bù gǎn xìngqù",
+                  "meaning": "not interested at all",
+                  "suffix": "。",
+                  "id": "b2l11-g2-ex3-w7"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Answer the questions",
+        "exercisePreview": "Say whether you are interested in each activity and why.",
+        "exerciseInstruction": "你對下面這些事感興趣嗎？為什麼？請用「對……感興趣」或「對……不感興趣」回答。",
+        "questions": []
+      },
+      {
+        "id": "B2L11-G03-P252",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 1,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 3,
+        "titleTraditional": "V 出來：V 出來了／沒 V 出來／V 得出來／V 不出來",
+        "titleEnglish": "To Figure Out",
+        "learnerPromise": "Use a sensory verb to tell whether you can recognize something, or 想出來 to come up with an idea.",
+        "printedPages": [
+          252,
+          253
+        ],
+        "bookPage": 252,
+        "bookPageAvailable": false,
+        "audioReference": "11-1",
+        "explanation": "The pattern “V 出來”, when V is a sensory verb, such as “看”, “聽”, “吃”, “喝”, means to make out by seeing, hearing, eating and drinking, etc. It suggests whether one can realize or distinguish something by performing a certain sensory action. When the verb is “想” or executive verb, this pattern indicates a development from nothing. “想出來” means to come up with (an idea).",
+        "explanationEnglish": "The pattern “V 出來”, when V is a sensory verb, such as “看”, “聽”, “吃”, “喝”, means to make out by seeing, hearing, eating and drinking, etc. It suggests whether one can realize or distinguish something by performing a certain sensory action. When the verb is “想” or executive verb, this pattern indicates a development from nothing. “想出來” means to come up with (an idea).",
+        "sourceExplanationEnglish": "The pattern “V 出來”, when V is a sensory verb, such as “看”, “聽”, “吃”, “喝”, means to make out by seeing, hearing, eating and drinking, etc. It suggests whether one can realize or distinguish something by performing a certain sensory action. When the verb is “想” or executive verb, this pattern indicates a development from nothing. “想出來” means to come up with (an idea).",
+        "pattern": "V + 出來（了）／沒 + V + 出來／V + 得出來／V + 不出來",
+        "patternColumns": [
+          "Verb",
+          "出來",
+          "Aspect / potential"
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g3-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "到底是誰打電話給我的？他的聲音，你聽不出來嗎？",
+              "simplified": "到底是谁打电话给我的？他的声音，你听不出来吗？",
+              "english": "Who on earth called me? Can’t you recognize his voice?",
+              "pinyin": "Dàodǐ shì shéi dǎ diànhuà gěi wǒ de? Tā de shēngyīn, nǐ tīng bù chūlái ma?",
+              "words": [
+                {
+                  "traditional": "到底",
+                  "simplified": "到底",
+                  "pinyin": "dàodǐ",
+                  "meaning": "on earth",
+                  "id": "b2l11-g3-ex1-w1"
+                },
+                {
+                  "traditional": "是誰",
+                  "simplified": "是谁",
+                  "pinyin": "shì shéi",
+                  "meaning": "who is it",
+                  "id": "b2l11-g3-ex1-w2"
+                },
+                {
+                  "traditional": "打電話給我",
+                  "simplified": "打电话给我",
+                  "pinyin": "dǎ diànhuà gěi wǒ",
+                  "meaning": "called me",
+                  "id": "b2l11-g3-ex1-w3"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "sentence-final particle",
+                  "suffix": "？",
+                  "id": "b2l11-g3-ex1-w4"
+                },
+                {
+                  "traditional": "他的聲音",
+                  "simplified": "他的声音",
+                  "pinyin": "tā de shēngyīn",
+                  "meaning": "his voice",
+                  "suffix": "，",
+                  "id": "b2l11-g3-ex1-w5"
+                },
+                {
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "id": "b2l11-g3-ex1-w6"
+                },
+                {
+                  "traditional": "聽不出來",
+                  "simplified": "听不出来",
+                  "pinyin": "tīng bù chūlái",
+                  "meaning": "cannot recognize by hearing",
+                  "id": "b2l11-g3-ex1-w7"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "question particle",
+                  "suffix": "？",
+                  "id": "b2l11-g3-ex1-w8"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g3-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "他上班又遲到了，讓老闆很生氣，大家都看得出來。",
+              "simplified": "他上班又迟到了，让老板很生气，大家都看得出来。",
+              "english": "He was late to work again, which made the boss very angry. Everyone could tell.",
+              "pinyin": "Tā shàngbān yòu chídào le, ràng lǎobǎn hěn shēngqì, dàjiā dōu kàn de chūlái.",
+              "words": [
+                {
+                  "traditional": "他上班",
+                  "simplified": "他上班",
+                  "pinyin": "tā shàngbān",
+                  "meaning": "he went to work",
+                  "id": "b2l11-g3-ex2-w1"
+                },
+                {
+                  "traditional": "又遲到了",
+                  "simplified": "又迟到了",
+                  "pinyin": "yòu chídào le",
+                  "meaning": "was late again",
+                  "suffix": "，",
+                  "id": "b2l11-g3-ex2-w2"
+                },
+                {
+                  "traditional": "讓",
+                  "simplified": "让",
+                  "pinyin": "ràng",
+                  "meaning": "made",
+                  "id": "b2l11-g3-ex2-w3"
+                },
+                {
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "lǎobǎn",
+                  "meaning": "boss",
+                  "id": "b2l11-g3-ex2-w4"
+                },
+                {
+                  "traditional": "很生氣",
+                  "simplified": "很生气",
+                  "pinyin": "hěn shēngqì",
+                  "meaning": "very angry",
+                  "suffix": "，",
+                  "id": "b2l11-g3-ex2-w5"
+                },
+                {
+                  "traditional": "大家都",
+                  "simplified": "大家都",
+                  "pinyin": "dàjiā dōu",
+                  "meaning": "everyone",
+                  "id": "b2l11-g3-ex2-w6"
+                },
+                {
+                  "traditional": "看得出來",
+                  "simplified": "看得出来",
+                  "pinyin": "kàn de chūlái",
+                  "meaning": "can tell by seeing",
+                  "suffix": "。",
+                  "id": "b2l11-g3-ex2-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g3-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "A：這是什麼茶，你們喝得出來喝不出來？B：我一喝就喝出來了！這是紅茶。C：真厲害！我還是喝不出來。",
+              "simplified": "A：这是什么茶，你们喝得出来喝不出来？B：我一喝就喝出来了！这是红茶。C：真厉害！我还是喝不出来。",
+              "english": "A: What kind of tea is this? Can you tell by tasting it? B: I could tell as soon as I drank it! It is black tea. C: Amazing! I still can’t tell.",
+              "pinyin": "A: Zhè shì shénme chá, nǐmen hē de chūlái hē bu chūlái? B: Wǒ yì hē jiù hē chūlái le! Zhè shì hóngchá. C: Zhēn lìhài! Wǒ háishi hē bu chūlái.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l11-g3-ex3-w1"
+                },
+                {
+                  "traditional": "這是什麼茶",
+                  "simplified": "这是什么茶",
+                  "pinyin": "zhè shì shénme chá",
+                  "meaning": "what tea this is",
+                  "suffix": "，",
+                  "id": "b2l11-g3-ex3-w2"
+                },
+                {
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you (plural)",
+                  "id": "b2l11-g3-ex3-w3"
+                },
+                {
+                  "traditional": "喝得出來喝不出來",
+                  "simplified": "喝得出来喝不出来",
+                  "pinyin": "hē de chūlái hē bu chūlái",
+                  "meaning": "can or cannot tell by tasting",
+                  "suffix": "？",
+                  "id": "b2l11-g3-ex3-w4"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l11-g3-ex3-w5"
+                },
+                {
+                  "traditional": "我一喝就喝出來了",
+                  "simplified": "我一喝就喝出来了",
+                  "pinyin": "wǒ yì hē jiù hē chūlái le",
+                  "meaning": "I recognized it as soon as I tasted it",
+                  "suffix": "！",
+                  "id": "b2l11-g3-ex3-w6"
+                },
+                {
+                  "traditional": "這是紅茶",
+                  "simplified": "这是红茶",
+                  "pinyin": "zhè shì hóngchá",
+                  "meaning": "this is black tea",
+                  "suffix": "。",
+                  "id": "b2l11-g3-ex3-w7"
+                },
+                {
+                  "traditional": "C：",
+                  "simplified": "C：",
+                  "pinyin": "C",
+                  "meaning": "speaker C",
+                  "id": "b2l11-g3-ex3-w8"
+                },
+                {
+                  "traditional": "真厲害",
+                  "simplified": "真厉害",
+                  "pinyin": "zhēn lìhài",
+                  "meaning": "really amazing",
+                  "suffix": "！",
+                  "id": "b2l11-g3-ex3-w9"
+                },
+                {
+                  "traditional": "我還是喝不出來",
+                  "simplified": "我还是喝不出来",
+                  "pinyin": "wǒ háishi hē bu chūlái",
+                  "meaning": "I still cannot tell by tasting",
+                  "suffix": "。",
+                  "id": "b2l11-g3-ex3-w10"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g3-ex4",
+            "number": 4,
+            "text": {
+              "traditional": "這句義大利文的中文翻譯很難，我想了很久，才想出來怎麼翻譯。",
+              "simplified": "这句意大利文的中文翻译很难，我想了很久，才想出来怎么翻译。",
+              "english": "The Chinese translation of this Italian sentence is difficult. I thought for a long time before figuring out how to translate it.",
+              "pinyin": "Zhè jù Yìdàlìwén de Zhōngwén fānyì hěn nán, wǒ xiǎng le hěn jiǔ, cái xiǎng chūlái zěnme fānyì.",
+              "words": [
+                {
+                  "traditional": "這句",
+                  "simplified": "这句",
+                  "pinyin": "zhè jù",
+                  "meaning": "this sentence",
+                  "id": "b2l11-g3-ex4-w1"
+                },
+                {
+                  "traditional": "義大利文",
+                  "simplified": "意大利文",
+                  "pinyin": "Yìdàlìwén",
+                  "meaning": "Italian",
+                  "id": "b2l11-g3-ex4-w2"
+                },
+                {
+                  "traditional": "的中文翻譯",
+                  "simplified": "的中文翻译",
+                  "pinyin": "de Zhōngwén fānyì",
+                  "meaning": "Chinese translation",
+                  "id": "b2l11-g3-ex4-w3"
+                },
+                {
+                  "traditional": "很難",
+                  "simplified": "很难",
+                  "pinyin": "hěn nán",
+                  "meaning": "very difficult",
+                  "suffix": "，",
+                  "id": "b2l11-g3-ex4-w4"
+                },
+                {
+                  "traditional": "我想了很久",
+                  "simplified": "我想了很久",
+                  "pinyin": "wǒ xiǎng le hěn jiǔ",
+                  "meaning": "I thought for a long time",
+                  "suffix": "，",
+                  "id": "b2l11-g3-ex4-w5"
+                },
+                {
+                  "traditional": "才想出來",
+                  "simplified": "才想出来",
+                  "pinyin": "cái xiǎng chūlái",
+                  "meaning": "only then figured out",
+                  "id": "b2l11-g3-ex4-w6"
+                },
+                {
+                  "traditional": "怎麼翻譯",
+                  "simplified": "怎么翻译",
+                  "pinyin": "zěnme fānyì",
+                  "meaning": "how to translate",
+                  "suffix": "。",
+                  "id": "b2l11-g3-ex4-w7"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the conversations",
+        "exercisePreview": "Use V 出來 to answer each prompt.",
+        "exerciseInstruction": "Complete each conversation using V 出來.",
+        "questions": []
+      },
+      {
+        "id": "B2L11-G04-P253",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 1,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 4,
+        "titleTraditional": "嘛",
+        "titleEnglish": "Topic Marking Particle 嘛",
+        "learnerPromise": "Pause on a topic while deciding what to say next.",
+        "printedPages": [
+          253,
+          254
+        ],
+        "bookPage": 253,
+        "bookPageAvailable": false,
+        "audioReference": "11-1",
+        "explanation": "“嘛” is used to take a pause in a sentence when the speaker is thinking about what to say next about the topic mentioned.",
+        "explanationEnglish": "“嘛” is used to take a pause in a sentence when the speaker is thinking about what to say next about the topic mentioned.",
+        "sourceExplanationEnglish": "“嘛” is used to take a pause in a sentence when the speaker is thinking about what to say next about the topic mentioned.",
+        "pattern": "Topic + 嘛…… + comment",
+        "patternColumns": [
+          "Topic",
+          "嘛……",
+          "Comment"
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g4-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "A：你喜歡看什麼電視節目？影集還是連續劇？B：我喜歡看影集，連續劇嘛……我真的不感興趣。",
+              "simplified": "A：你喜欢看什么电视节目？影集还是连续剧？B：我喜欢看影集，连续剧嘛……我真的不感兴趣。",
+              "english": "A: What TV shows do you like to watch, series or dramas? B: I like watching series. As for dramas…I’m really not interested.",
+              "pinyin": "A: Nǐ xǐhuan kàn shénme diànshì jiémù? Yǐngjí háishi liánxùjù? B: Wǒ xǐhuan kàn yǐngjí, liánxùjù ma…… wǒ zhēn de bù gǎn xìngqù.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l11-g4-ex1-w1"
+                },
+                {
+                  "traditional": "你喜歡看什麼電視節目",
+                  "simplified": "你喜欢看什么电视节目",
+                  "pinyin": "nǐ xǐhuan kàn shénme diànshì jiémù",
+                  "meaning": "what TV shows do you like",
+                  "suffix": "？",
+                  "id": "b2l11-g4-ex1-w2"
+                },
+                {
+                  "traditional": "影集還是連續劇",
+                  "simplified": "影集还是连续剧",
+                  "pinyin": "yǐngjí háishi liánxùjù",
+                  "meaning": "series or dramas",
+                  "suffix": "？",
+                  "id": "b2l11-g4-ex1-w3"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l11-g4-ex1-w4"
+                },
+                {
+                  "traditional": "我喜歡看影集",
+                  "simplified": "我喜欢看影集",
+                  "pinyin": "wǒ xǐhuan kàn yǐngjí",
+                  "meaning": "I like watching series",
+                  "suffix": "，",
+                  "id": "b2l11-g4-ex1-w5"
+                },
+                {
+                  "traditional": "連續劇嘛",
+                  "simplified": "连续剧嘛",
+                  "pinyin": "liánxùjù ma",
+                  "meaning": "as for dramas",
+                  "id": "b2l11-g4-ex1-w6",
+                  "suffix": "……"
+                },
+                {
+                  "traditional": "我真的不感興趣",
+                  "simplified": "我真的不感兴趣",
+                  "pinyin": "wǒ zhēn de bù gǎn xìngqù",
+                  "meaning": "I’m really not interested",
+                  "suffix": "。",
+                  "id": "b2l11-g4-ex1-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g4-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "A：要不要一起去夜市？我想試試臭豆腐。B：我也想去夜市，可是臭豆腐嘛……你自己吃就好。",
+              "simplified": "A：要不要一起去夜市？我想试试臭豆腐。B：我也想去夜市，可是臭豆腐嘛……你自己吃就好。",
+              "english": "A: Want to go to the night market together? I want to try stinky tofu. B: I want to go too, but as for stinky tofu…you can eat that yourself.",
+              "pinyin": "A: Yào bu yào yìqǐ qù yèshì? Wǒ xiǎng shìshi chòudòufu. B: Wǒ yě xiǎng qù yèshì, kěshì chòudòufu ma…… nǐ zìjǐ chī jiù hǎo.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l11-g4-ex2-w1"
+                },
+                {
+                  "traditional": "要不要一起去夜市",
+                  "simplified": "要不要一起去夜市",
+                  "pinyin": "yào bu yào yìqǐ qù yèshì",
+                  "meaning": "want to go to the night market together?",
+                  "suffix": "？",
+                  "id": "b2l11-g4-ex2-w2"
+                },
+                {
+                  "traditional": "我想試試臭豆腐",
+                  "simplified": "我想试试臭豆腐",
+                  "pinyin": "wǒ xiǎng shìshi chòudòufu",
+                  "meaning": "I want to try stinky tofu",
+                  "suffix": "。",
+                  "id": "b2l11-g4-ex2-w3"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l11-g4-ex2-w4"
+                },
+                {
+                  "traditional": "我也想去夜市",
+                  "simplified": "我也想去夜市",
+                  "pinyin": "wǒ yě xiǎng qù yèshì",
+                  "meaning": "I also want to go to the night market",
+                  "suffix": "，",
+                  "id": "b2l11-g4-ex2-w5"
+                },
+                {
+                  "traditional": "可是臭豆腐嘛",
+                  "simplified": "可是臭豆腐嘛",
+                  "pinyin": "kěshì chòudòufu ma",
+                  "meaning": "but as for stinky tofu",
+                  "id": "b2l11-g4-ex2-w6",
+                  "suffix": "……"
+                },
+                {
+                  "traditional": "你自己吃就好",
+                  "simplified": "你自己吃就好",
+                  "pinyin": "nǐ zìjǐ chī jiù hǎo",
+                  "meaning": "you can eat it yourself",
+                  "suffix": "。",
+                  "id": "b2l11-g4-ex2-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g4-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "A：美國歷史這門課的考試，你考得怎麼樣？B：筆試考得不錯，口試嘛……我聽不懂問題，所以說得不好。",
+              "simplified": "A：美国历史这门课的考试，你考得怎么样？B：笔试考得不错，口试嘛……我听不懂问题，所以说得不好。",
+              "english": "A: How did you do on the exam for American history? B: I did well on the written test. As for the oral test…I didn’t understand the questions, so I didn’t speak well.",
+              "pinyin": "A: Měiguó lìshǐ zhè mén kè de kǎoshì, nǐ kǎo de zěnmeyàng? B: Bǐshì kǎo de búcuò, kǒushì ma…… wǒ tīng bù dǒng wèntí, suǒyǐ shuō de bù hǎo.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l11-g4-ex3-w1"
+                },
+                {
+                  "traditional": "美國歷史這門課的考試",
+                  "simplified": "美国历史这门课的考试",
+                  "pinyin": "Měiguó lìshǐ zhè mén kè de kǎoshì",
+                  "meaning": "the exam for American history",
+                  "suffix": "，",
+                  "id": "b2l11-g4-ex3-w2"
+                },
+                {
+                  "traditional": "你考得怎麼樣",
+                  "simplified": "你考得怎么样",
+                  "pinyin": "nǐ kǎo de zěnmeyàng",
+                  "meaning": "how did you do",
+                  "suffix": "？",
+                  "id": "b2l11-g4-ex3-w3"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l11-g4-ex3-w4"
+                },
+                {
+                  "traditional": "筆試考得不錯",
+                  "simplified": "笔试考得不错",
+                  "pinyin": "bǐshì kǎo de búcuò",
+                  "meaning": "did well on the written test",
+                  "suffix": "，",
+                  "id": "b2l11-g4-ex3-w5"
+                },
+                {
+                  "traditional": "口試嘛",
+                  "simplified": "口试嘛",
+                  "pinyin": "kǒushì ma",
+                  "meaning": "as for the oral test",
+                  "id": "b2l11-g4-ex3-w6",
+                  "suffix": "……"
+                },
+                {
+                  "traditional": "我聽不懂問題",
+                  "simplified": "我听不懂问题",
+                  "pinyin": "wǒ tīng bù dǒng wèntí",
+                  "meaning": "I could not understand the questions",
+                  "suffix": "，",
+                  "id": "b2l11-g4-ex3-w7"
+                },
+                {
+                  "traditional": "所以說得不好",
+                  "simplified": "所以说得不好",
+                  "pinyin": "suǒyǐ shuō de bù hǎo",
+                  "meaning": "so did not speak well",
+                  "suffix": "。",
+                  "id": "b2l11-g4-ex3-w8"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the conversations",
+        "exercisePreview": "Use 嘛 to pause on the topic before adding your comment.",
+        "exerciseInstruction": "Use 嘛 to pause on each topic before continuing.",
+        "questions": []
+      },
+      {
+        "id": "B2L11-G05-P254",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 1,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 5,
+        "titleTraditional": "同 + 一 + M（+ N）",
+        "titleEnglish": "The Same + Noun",
+        "learnerPromise": "Say that two people or things share the same item, time, place, or situation.",
+        "printedPages": [
+          254
+        ],
+        "bookPage": 254,
+        "bookPageAvailable": false,
+        "audioReference": "11-1",
+        "explanation": "The pattern “同+一+M” is used to describe different subjects having the same situation, and this situation can be the same object, time and location, etc.",
+        "explanationEnglish": "The pattern “同+一+M” is used to describe different subjects having the same situation, and this situation can be the same object, time and location, etc.",
+        "sourceExplanationEnglish": "The pattern “同+一+M” is used to describe different subjects having the same situation, and this situation can be the same object, time and location, etc.",
+        "pattern": "同 + 一 + Measure word（+ Noun）",
+        "patternColumns": [
+          "同",
+          "一 + measure word",
+          "Noun"
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g5-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "我跟妹妹都喜歡喝同一種飲料。",
+              "simplified": "我跟妹妹都喜欢喝同一种饮料。",
+              "english": "My younger sister and I both like drinking the same kind of beverage.",
+              "pinyin": "Wǒ gēn mèimei dōu xǐhuan hē tóng yì zhǒng yǐnliào.",
+              "words": [
+                {
+                  "traditional": "我跟妹妹",
+                  "simplified": "我跟妹妹",
+                  "pinyin": "wǒ gēn mèimei",
+                  "meaning": "my younger sister and I",
+                  "id": "b2l11-g5-ex1-w1"
+                },
+                {
+                  "traditional": "都喜歡喝",
+                  "simplified": "都喜欢喝",
+                  "pinyin": "dōu xǐhuan hē",
+                  "meaning": "both like drinking",
+                  "id": "b2l11-g5-ex1-w2"
+                },
+                {
+                  "traditional": "同一種飲料",
+                  "simplified": "同一种饮料",
+                  "pinyin": "tóng yì zhǒng yǐnliào",
+                  "meaning": "the same kind of beverage",
+                  "suffix": "。",
+                  "id": "b2l11-g5-ex1-w3"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g5-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "他們兩個人是鄰居，住在同一棟公寓。",
+              "simplified": "他们两个人是邻居，住在同一栋公寓。",
+              "english": "The two of them are neighbors and live in the same apartment building.",
+              "pinyin": "Tāmen liǎng ge rén shì línjū, zhù zài tóng yí dòng gōngyù.",
+              "words": [
+                {
+                  "traditional": "他們兩個人",
+                  "simplified": "他们两个人",
+                  "pinyin": "tāmen liǎng ge rén",
+                  "meaning": "the two of them",
+                  "id": "b2l11-g5-ex2-w1"
+                },
+                {
+                  "traditional": "是鄰居",
+                  "simplified": "是邻居",
+                  "pinyin": "shì línjū",
+                  "meaning": "are neighbors",
+                  "suffix": "，",
+                  "id": "b2l11-g5-ex2-w2"
+                },
+                {
+                  "traditional": "住在",
+                  "simplified": "住在",
+                  "pinyin": "zhù zài",
+                  "meaning": "live in",
+                  "id": "b2l11-g5-ex2-w3"
+                },
+                {
+                  "traditional": "同一棟公寓",
+                  "simplified": "同一栋公寓",
+                  "pinyin": "tóng yí dòng gōngyù",
+                  "meaning": "the same apartment building",
+                  "suffix": "。",
+                  "id": "b2l11-g5-ex2-w4"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g5-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "這個學期，我弟弟跟山本良介在同一班上英文會話課。",
+              "simplified": "这个学期，我弟弟跟山本良介在同一班上英文会话课。",
+              "english": "This semester, my younger brother and Yamamoto Ryosuke are in the same English conversation class.",
+              "pinyin": "Zhège xuéqī, wǒ dìdi gēn Shānběn Liángjiè zài tóng yì bān shàng Yīngwén huìhuà kè.",
+              "words": [
+                {
+                  "traditional": "這個學期",
+                  "simplified": "这个学期",
+                  "pinyin": "zhège xuéqī",
+                  "meaning": "this semester",
+                  "suffix": "，",
+                  "id": "b2l11-g5-ex3-w1"
+                },
+                {
+                  "traditional": "我弟弟",
+                  "simplified": "我弟弟",
+                  "pinyin": "wǒ dìdi",
+                  "meaning": "my younger brother",
+                  "id": "b2l11-g5-ex3-w2"
+                },
+                {
+                  "traditional": "跟山本良介",
+                  "simplified": "跟山本良介",
+                  "pinyin": "gēn Shānběn Liángjiè",
+                  "meaning": "and Yamamoto Ryosuke",
+                  "id": "b2l11-g5-ex3-w3"
+                },
+                {
+                  "traditional": "在同一班",
+                  "simplified": "在同一班",
+                  "pinyin": "zài tóng yì bān",
+                  "meaning": "in the same class",
+                  "id": "b2l11-g5-ex3-w4"
+                },
+                {
+                  "traditional": "上英文會話課",
+                  "simplified": "上英文会话课",
+                  "pinyin": "shàng Yīngwén huìhuà kè",
+                  "meaning": "take English conversation class",
+                  "suffix": "。",
+                  "id": "b2l11-g5-ex3-w5"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Rewrite the sentences",
+        "exercisePreview": "Rewrite each sentence with 同 + 一 + M (+ N).",
+        "exerciseInstruction": "改寫句子。Rewrite the sentences with 同+一+M (+N).",
+        "questions": []
+      }
+    ],
+    "dialogue": {
+      "id": "B2L11-D01",
+      "title": "你想參加哪一個社團？",
+      "setting": "校園裡 · On campus",
+      "printedPages": [
+        244,
+        245
+      ],
+      "audioReference": "11-1-1",
+      "grammarFocus": [
+        "PW + V 了 + N / PW + V 著 + N",
+        "對……（不）感興趣",
+        "V 出來",
+        "嘛",
+        "同 + 一 + M（+ N）"
+      ],
+      "lines": [
+        {
+          "id": "b2l11d1-l1",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "（以凡跟良介在校園裡）",
+            "simplified": "（以凡跟良介在校园里）",
+            "pinyin": "（Yǐfán gēn Liángjiè zài xiàoyuán lǐ）",
+            "english": "(Yifan and Ryosuke are on campus.)"
+          }
+        },
+        {
+          "id": "b2l11d1-l2",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "最近校園裡擺了很多攤子，攤子前面站了不少學生，他們在做什麼啊？",
+            "simplified": "最近校园里摆了很多摊子，摊子前面站了不少学生，他们在做什么啊？",
+            "pinyin": "Zuìjìn xiàoyuán lǐ bǎi le hěn duō tānzi, tānzi qiánmiàn zhàn le bù shǎo xuéshēng, tāmen zài zuò shénme a?",
+            "english": "Recently, many stalls have been set up on campus. In front of the stalls stand a lot of students. What are they doing?"
+          }
+        },
+        {
+          "id": "b2l11d1-l3",
+          "speaker": "良介",
+          "text": {
+            "traditional": "每個學期開學的時候，學生社團的社員都會給新生介紹自己的社團，讓新生知道他們有什麼活動。",
+            "simplified": "每个学期开学的时候，学生社团的社员都会给新生介绍自己的社团，让新生知道他们有什么活动。",
+            "pinyin": "Měi ge xuéqī kāixué de shíhou, xuéshēng shètuán de shèyuán dōu huì gěi xīnshēng jièshào zìjǐ de shètuán, ràng xīnshēng zhīdào tāmen yǒu shénme huódòng.",
+            "english": "At the beginning of every semester, members of each student club introduce their clubs to new students, and let new students know what activities their clubs have."
+          }
+        },
+        {
+          "id": "b2l11d1-l4",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "聽起來很有意思，我們過去看看吧！",
+            "simplified": "听起来很有意思，我们过去看看吧！",
+            "pinyin": "Tīngqǐlái hěn yǒu yìsi, wǒmen guòqù kànkan ba!",
+            "english": "Sounds very interesting. Let’s go take a look!"
+          }
+        },
+        {
+          "id": "b2l11d1-l5",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "（兩個人把攤子都看了一遍以後）",
+            "simplified": "（两个人把摊子都看了一遍以后）",
+            "pinyin": "（Liǎng ge rén bǎ tānzi dōu kàn le yí biàn yǐhòu）",
+            "english": "(After taking a look at each of the stalls once.)"
+          }
+        },
+        {
+          "id": "b2l11d1-l6",
+          "speaker": "良介",
+          "text": {
+            "traditional": "這麼多社團，我不知道怎麼選擇。",
+            "simplified": "这么多社团，我不知道怎么选择。",
+            "pinyin": "Zhème duō shètuán, wǒ bù zhīdào zěnme xuǎnzé.",
+            "english": "There are so many student clubs. I don’t know how to choose."
+          }
+        },
+        {
+          "id": "b2l11d1-l7",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "對啊！每個社團看起來都很吸引人，真的很難立刻決定。除了鋼琴社，我也想參加書法社和中國功夫社。",
+            "simplified": "对啊！每个社团看起来都很吸引人，真的很难立刻决定。除了钢琴社，我也想参加书法社和中国功夫社。",
+            "pinyin": "Duì a! Měi ge shètuán kànqǐlái dōu hěn xīyǐn rén, zhēn de hěn nán lìkè juédìng. Chúle gāngqín shè, wǒ yě xiǎng cānjiā shūfǎ shè hé Zhōngguó gōngfu shè.",
+            "english": "Yes! Every club looks very attractive, and it’s really hard to decide right away. Besides the piano club, I also want to participate in the calligraphy and Chinese Kungfu clubs."
+          }
+        },
+        {
+          "id": "b2l11d1-l8",
+          "speaker": "良介",
+          "text": {
+            "traditional": "看不出來你對中華文化這麼感興趣！",
+            "simplified": "看不出来你对中华文化这么感兴趣！",
+            "pinyin": "Kàn bu chūlái nǐ duì Zhōnghuá wénhuà zhème gǎn xìngqù!",
+            "english": "I can’t tell that you are so interested in Chinese culture!"
+          }
+        },
+        {
+          "id": "b2l11d1-l9",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "我覺得中國書法是一種藝術。參加書法社可以讓我認識更多漢字。",
+            "simplified": "我觉得中国书法是一种艺术。参加书法社可以让我认识更多汉字。",
+            "pinyin": "Wǒ juéde Zhōngguó shūfǎ shì yì zhǒng yìshù. Cānjiā shūfǎ shè kěyǐ ràng wǒ rènshi gèng duō Hànzì.",
+            "english": "I think that Chinese calligraphy is a kind of art. Joining the calligraphy club allows me to learn more Chinese characters."
+          }
+        },
+        {
+          "id": "b2l11d1-l10",
+          "speaker": "良介",
+          "text": {
+            "traditional": "那中國功夫社呢？",
+            "simplified": "那中国功夫社呢？",
+            "pinyin": "Nà Zhōngguó gōngfu shè ne?",
+            "english": "What about Chinese Kungfu club then?"
+          }
+        },
+        {
+          "id": "b2l11d1-l11",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "中國功夫社嘛……我覺得中國功夫好厲害，如果學會了就可以保護自己，讓自己變得更勇敢。你呢？",
+            "simplified": "中国功夫社嘛……我觉得中国功夫好厉害，如果学会了就可以保护自己，让自己变得更勇敢。你呢？",
+            "pinyin": "Zhōngguó gōngfu shè ma… Wǒ juéde Zhōngguó gōngfu hǎo lìhai, rúguǒ xuéhuì le jiù kěyǐ bǎohù zìjǐ, ràng zìjǐ biàn de gèng yǒnggǎn. Nǐ ne?",
+            "english": "Chinese Kungfu club… I think Chinese Kungfu is amazing. If I learn it, I can protect myself and become braver. And you?"
+          }
+        },
+        {
+          "id": "b2l11d1-l12",
+          "speaker": "良介",
+          "text": {
+            "traditional": "我想參加吉他社或是愛心服務社。",
+            "simplified": "我想参加吉他社或是爱心服务社。",
+            "pinyin": "Wǒ xiǎng cānjiā jítā shè huòshì àixīn fúwù shè.",
+            "english": "I want to join the guitar club or the charity service club."
+          }
+        },
+        {
+          "id": "b2l11d1-l13",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "這兩個社團非常不一樣，你為什麼都有興趣？",
+            "simplified": "这两个社团非常不一样，你为什么都有兴趣？",
+            "pinyin": "Zhè liǎng ge shètuán fēicháng bù yíyàng, nǐ wèishénme dōu yǒu xìngqù?",
+            "english": "These two clubs are very different. Why are you interested in both of them?"
+          }
+        },
+        {
+          "id": "b2l11d1-l14",
+          "speaker": "良介",
+          "text": {
+            "traditional": "我以前學過吉他，但是太久沒練習，很多技巧都忘了，我想複習複習。愛心服務社嘛……",
+            "simplified": "我以前学过吉他，但是太久没练习，很多技巧都忘了，我想复习复习。爱心服务社嘛……",
+            "pinyin": "Wǒ yǐqián xué guo jítā, dànshì tài jiǔ méi liànxí, hěn duō jìqiǎo dōu wàng le, wǒ xiǎng fùxí fùxí. Àixīn fúwù shè ma…",
+            "english": "I used to learn how to play the guitar, but I haven’t practiced it for too long. I’ve already forgotten a lot of skills, so I want to review them a bit. As for the charity service club…"
+          }
+        },
+        {
+          "id": "b2l11d1-l15",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "我知道，你想幫助需要幫助的人。",
+            "simplified": "我知道，你想帮助需要帮助的人。",
+            "pinyin": "Wǒ zhīdào, nǐ xiǎng bāngzhù xūyào bāngzhù de rén.",
+            "english": "I know! You want to help the people in need."
+          }
+        },
+        {
+          "id": "b2l11d1-l16",
+          "speaker": "良介",
+          "text": {
+            "traditional": "沒錯，我們都生活在同一個地球上，本來就應該互相幫助。",
+            "simplified": "没错，我们都生活在同一个地球上，本来就应该互相帮助。",
+            "pinyin": "Méi cuò, wǒmen dōu shēnghuó zài tóng yí ge dìqiú shàng, běnlái jiù yīnggāi hùxiāng bāngzhù.",
+            "english": "Right. We all live on the same planet Earth. Of course we should help each other."
+          }
+        },
+        {
+          "id": "b2l11d1-l17",
+          "speaker": "以凡",
+          "text": {
+            "traditional": "沒想到你想得這麼多！那麼要跟誰談戀愛，你想好了沒有？",
+            "simplified": "没想到你想得这么多！那么要跟谁谈恋爱，你想好了没有？",
+            "pinyin": "Méi xiǎngdào nǐ xiǎng de zhème duō! Nàme yào gēn shéi tán liàn’ài, nǐ xiǎng hǎo le méiyǒu?",
+            "english": "I didn't expect that you think this much! Then have you decided who you're to be in love with?"
+          }
+        },
+        {
+          "id": "b2l11d1-l18",
+          "speaker": "良介",
+          "text": {
+            "traditional": "你別開玩笑了！",
+            "simplified": "你别开玩笑了！",
+            "pinyin": "Nǐ bié kāi wánxiào le!",
+            "english": "Don't be kidding me!"
+          }
+        }
+      ]
+    },
+    "completionTitle": "Part 1 complete",
+    "completionDescription": "You’ve finished the Lesson 11 grammar pages.",
+    "nextBookLabel": "Lesson 11 · Part 2"
+  },
+  "BOOK2_LESSON_ELEVEN_PART_TWO": {
+    "id": "B2L11-P02-R01",
+    "bookId": 2,
+    "lessonId": 11,
+    "partId": 2,
+    "title": "Grammar 6–7 · The Influence of Club Activities on Yamamoto Ryosuke",
+    "grammarPages": [
+      {
+        "id": "B2L11-G06-P260",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 2,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 6,
+        "titleTraditional": "例子 + 等",
+        "titleEnglish": "Enumeration Particle 等, Etc.",
+        "learnerPromise": "Use 等 to show a category total or that a list has more examples.",
+        "printedPages": [
+          260
+        ],
+        "bookPage": 260,
+        "bookPageAvailable": false,
+        "audioReference": "11-3",
+        "explanation": "In Chinese, the word “等” has two functions. Firstly, it can be placed before a number that marks the total of items mentioned, or before a word that is the hypernym (category) for the items mentioned. On the other hand, it can be used at the end of a list to show there are still a lot of examples of the same kind.",
+        "explanationEnglish": "In Chinese, the word “等” has two functions. Firstly, it can be placed before a number that marks the total of items mentioned, or before a word that is the hypernym (category) for the items mentioned. On the other hand, it can be used at the end of a list to show there are still a lot of examples of the same kind.",
+        "sourceExplanationEnglish": "In Chinese, the word “等” has two functions. Firstly, it can be placed before a number that marks the total of items mentioned, or before a word that is the hypernym (category) for the items mentioned. On the other hand, it can be used at the end of a list to show there are still a lot of examples of the same kind.",
+        "pattern": "Examples + 等 +（total / category / etc.）",
+        "patternColumns": [
+          "Examples",
+          "等",
+          "Total / category / etc."
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g6-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "請在這裡寫下你的姓名、國家、出生日期等資料。",
+              "simplified": "请在这里写下你的姓名、国家、出生日期等资料。",
+              "english": "Please write your name, country, date of birth, and other information here.",
+              "pinyin": "Qǐng zài zhèlǐ xiě xià nǐ de xìngmíng, guójiā, chūshēng rìqī děng zīliào.",
+              "words": [
+                {
+                  "traditional": "請在這裡",
+                  "simplified": "请在这里",
+                  "pinyin": "qǐng zài zhèlǐ",
+                  "meaning": "please here",
+                  "id": "b2l11-g6-ex1-w1"
+                },
+                {
+                  "traditional": "寫下",
+                  "simplified": "写下",
+                  "pinyin": "xiě xià",
+                  "meaning": "write down",
+                  "id": "b2l11-g6-ex1-w2"
+                },
+                {
+                  "traditional": "你的姓名",
+                  "simplified": "你的姓名",
+                  "pinyin": "nǐ de xìngmíng",
+                  "meaning": "your name",
+                  "suffix": "、",
+                  "id": "b2l11-g6-ex1-w3"
+                },
+                {
+                  "traditional": "國家",
+                  "simplified": "国家",
+                  "pinyin": "guójiā",
+                  "meaning": "country",
+                  "suffix": "、",
+                  "id": "b2l11-g6-ex1-w4"
+                },
+                {
+                  "traditional": "出生日期",
+                  "simplified": "出生日期",
+                  "pinyin": "chūshēng rìqī",
+                  "meaning": "date of birth",
+                  "id": "b2l11-g6-ex1-w5"
+                },
+                {
+                  "traditional": "等資料",
+                  "simplified": "等资料",
+                  "pinyin": "děng zīliào",
+                  "meaning": "and other information",
+                  "suffix": "。",
+                  "id": "b2l11-g6-ex1-w6"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g6-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我哥哥喜愛旅遊，他去過日本、英國、法國等三個國家。",
+              "simplified": "我哥哥喜爱旅游，他去过日本、英国、法国等三个国家。",
+              "english": "My older brother loves traveling. He has visited three countries: Japan, the UK, and France.",
+              "pinyin": "Wǒ gēge xǐ ài lǚyóu, tā qù guo Rìběn, Yīngguó, Fǎguó děng sān ge guójiā.",
+              "words": [
+                {
+                  "traditional": "我哥哥",
+                  "simplified": "我哥哥",
+                  "pinyin": "wǒ gēge",
+                  "meaning": "my older brother",
+                  "id": "b2l11-g6-ex2-w1"
+                },
+                {
+                  "traditional": "喜愛旅遊",
+                  "simplified": "喜爱旅游",
+                  "pinyin": "xǐ ài lǚyóu",
+                  "meaning": "loves traveling",
+                  "suffix": "，",
+                  "id": "b2l11-g6-ex2-w2"
+                },
+                {
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "id": "b2l11-g6-ex2-w3"
+                },
+                {
+                  "traditional": "去過",
+                  "simplified": "去过",
+                  "pinyin": "qù guo",
+                  "meaning": "has visited",
+                  "id": "b2l11-g6-ex2-w4"
+                },
+                {
+                  "traditional": "日本",
+                  "simplified": "日本",
+                  "pinyin": "Rìběn",
+                  "meaning": "Japan",
+                  "suffix": "、",
+                  "id": "b2l11-g6-ex2-w5"
+                },
+                {
+                  "traditional": "英國",
+                  "simplified": "英国",
+                  "pinyin": "Yīngguó",
+                  "meaning": "the UK",
+                  "suffix": "、",
+                  "id": "b2l11-g6-ex2-w6"
+                },
+                {
+                  "traditional": "法國",
+                  "simplified": "法国",
+                  "pinyin": "Fǎguó",
+                  "meaning": "France",
+                  "id": "b2l11-g6-ex2-w7"
+                },
+                {
+                  "traditional": "等三個國家",
+                  "simplified": "等三个国家",
+                  "pinyin": "děng sān ge guójiā",
+                  "meaning": "three countries in all",
+                  "suffix": "。",
+                  "id": "b2l11-g6-ex2-w8"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g6-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "學校的社團像鋼琴社、吉他社、書法社等，都有很多社員。",
+              "simplified": "学校的社团像钢琴社、吉他社、书法社等，都有很多社员。",
+              "english": "The school’s clubs, such as the piano, guitar, and calligraphy clubs, all have many members.",
+              "pinyin": "Xuéxiào de shètuán xiàng gāngqín shè, jítā shè, shūfǎ shè děng, dōu yǒu hěn duō shèyuán.",
+              "words": [
+                {
+                  "traditional": "學校的社團",
+                  "simplified": "学校的社团",
+                  "pinyin": "xuéxiào de shètuán",
+                  "meaning": "school clubs",
+                  "id": "b2l11-g6-ex3-w1"
+                },
+                {
+                  "traditional": "像",
+                  "simplified": "像",
+                  "pinyin": "xiàng",
+                  "meaning": "such as",
+                  "id": "b2l11-g6-ex3-w2"
+                },
+                {
+                  "traditional": "鋼琴社",
+                  "simplified": "钢琴社",
+                  "pinyin": "gāngqín shè",
+                  "meaning": "piano club",
+                  "suffix": "、",
+                  "id": "b2l11-g6-ex3-w3"
+                },
+                {
+                  "traditional": "吉他社",
+                  "simplified": "吉他社",
+                  "pinyin": "jítā shè",
+                  "meaning": "guitar club",
+                  "suffix": "、",
+                  "id": "b2l11-g6-ex3-w4"
+                },
+                {
+                  "traditional": "書法社",
+                  "simplified": "书法社",
+                  "pinyin": "shūfǎ shè",
+                  "meaning": "calligraphy club",
+                  "id": "b2l11-g6-ex3-w5"
+                },
+                {
+                  "traditional": "等",
+                  "simplified": "等",
+                  "pinyin": "děng",
+                  "meaning": "and others",
+                  "suffix": "，",
+                  "id": "b2l11-g6-ex3-w6"
+                },
+                {
+                  "traditional": "都有很多社員",
+                  "simplified": "都有很多社员",
+                  "pinyin": "dōu yǒu hěn duō shèyuán",
+                  "meaning": "all have many members",
+                  "suffix": "。",
+                  "id": "b2l11-g6-ex3-w7"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the conversations",
+        "exercisePreview": "List examples using 等.",
+        "exerciseInstruction": "（三題對話，使用「等」列舉事物。）",
+        "questions": []
+      },
+      {
+        "id": "B2L11-G07-P260",
+        "bookId": 2,
+        "lessonId": 11,
+        "partId": 2,
+        "lessonTitle": "你想參加哪一個社團？",
+        "lessonTitleEnglish": "Which Club Would You Like to Join?",
+        "grammarNumber": 7,
+        "titleTraditional": "從……中",
+        "titleEnglish": "From… / From Within…",
+        "learnerPromise": "Use 從……中 to say what someone learns, handles, or gains from an experience or source.",
+        "printedPages": [
+          260,
+          261
+        ],
+        "bookPage": 260,
+        "bookPageAvailable": false,
+        "audioReference": "11-3",
+        "explanation": "In this pattern, “中” means “inside” instead of “middle”. The pattern “從……中” indicates someone learns about a situation, deals with something, or gets benefits from something.",
+        "explanationEnglish": "In this pattern, “中” means “inside” instead of “middle”. The pattern “從……中” indicates someone learns about a situation, deals with something, or gets benefits from something.",
+        "sourceExplanationEnglish": "In this pattern, “中” means “inside” instead of “middle”. The pattern “從……中” indicates someone learns about a situation, deals with something, or gets benefits from something.",
+        "pattern": "從 + source + 中 + result",
+        "patternColumns": [
+          "從",
+          "Source + 中",
+          "Result"
+        ],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l11-g7-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "醫生從檢查報告中了解病人的情況。",
+              "simplified": "医生从检查报告中了解病人的情况。",
+              "english": "The doctor learns about the patient’s condition from the examination report.",
+              "pinyin": "Yīshēng cóng jiǎnchá bàogào zhōng liǎojiě bìngrén de qíngkuàng.",
+              "words": [
+                {
+                  "traditional": "醫生",
+                  "simplified": "医生",
+                  "pinyin": "yīshēng",
+                  "meaning": "doctor",
+                  "id": "b2l11-g7-ex1-w1"
+                },
+                {
+                  "traditional": "從",
+                  "simplified": "从",
+                  "pinyin": "cóng",
+                  "meaning": "from",
+                  "id": "b2l11-g7-ex1-w2"
+                },
+                {
+                  "traditional": "檢查報告中",
+                  "simplified": "检查报告中",
+                  "pinyin": "jiǎnchá bàogào zhōng",
+                  "meaning": "in the examination report",
+                  "id": "b2l11-g7-ex1-w3"
+                },
+                {
+                  "traditional": "了解",
+                  "simplified": "了解",
+                  "pinyin": "liǎojiě",
+                  "meaning": "understand; learn about",
+                  "id": "b2l11-g7-ex1-w4"
+                },
+                {
+                  "traditional": "病人的情況",
+                  "simplified": "病人的情况",
+                  "pinyin": "bìngrén de qíngkuàng",
+                  "meaning": "the patient’s condition",
+                  "suffix": "。",
+                  "id": "b2l11-g7-ex1-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g7-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "我們可以從生活中得到不少寶貴的經驗。",
+              "simplified": "我们可以从生活中得到不少宝贵的经验。",
+              "english": "We can gain many valuable experiences from life.",
+              "pinyin": "Wǒmen kěyǐ cóng shēnghuó zhōng dédào bù shǎo bǎoguì de jīngyàn.",
+              "words": [
+                {
+                  "traditional": "我們可以",
+                  "simplified": "我们可以",
+                  "pinyin": "wǒmen kěyǐ",
+                  "meaning": "we can",
+                  "id": "b2l11-g7-ex2-w1"
+                },
+                {
+                  "traditional": "從生活中",
+                  "simplified": "从生活中",
+                  "pinyin": "cóng shēnghuó zhōng",
+                  "meaning": "from life",
+                  "id": "b2l11-g7-ex2-w2"
+                },
+                {
+                  "traditional": "得到",
+                  "simplified": "得到",
+                  "pinyin": "dédào",
+                  "meaning": "obtain",
+                  "id": "b2l11-g7-ex2-w3"
+                },
+                {
+                  "traditional": "不少",
+                  "simplified": "不少",
+                  "pinyin": "bù shǎo",
+                  "meaning": "many",
+                  "id": "b2l11-g7-ex2-w4"
+                },
+                {
+                  "traditional": "寶貴的經驗",
+                  "simplified": "宝贵的经验",
+                  "pinyin": "bǎoguì de jīngyàn",
+                  "meaning": "valuable experience",
+                  "suffix": "。",
+                  "id": "b2l11-g7-ex2-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l11-g7-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "從他說的這些話中，我聽不出來他是高興還是難過。",
+              "simplified": "从他说的这些话中，我听不出来他是高兴还是难过。",
+              "english": "From what he said, I can’t tell whether he is happy or sad.",
+              "pinyin": "Cóng tā shuō de zhèxiē huà zhōng, wǒ tīng bù chūlái tā shì gāoxìng háishi nánguò.",
+              "words": [
+                {
+                  "traditional": "從",
+                  "simplified": "从",
+                  "pinyin": "cóng",
+                  "meaning": "from",
+                  "id": "b2l11-g7-ex3-w1"
+                },
+                {
+                  "traditional": "他說的這些話中",
+                  "simplified": "他说的这些话中",
+                  "pinyin": "tā shuō de zhèxiē huà zhōng",
+                  "meaning": "in these words he said",
+                  "suffix": "，",
+                  "id": "b2l11-g7-ex3-w2"
+                },
+                {
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "id": "b2l11-g7-ex3-w3"
+                },
+                {
+                  "traditional": "聽不出來",
+                  "simplified": "听不出来",
+                  "pinyin": "tīng bù chūlái",
+                  "meaning": "cannot tell by listening",
+                  "id": "b2l11-g7-ex3-w4"
+                },
+                {
+                  "traditional": "他是",
+                  "simplified": "他是",
+                  "pinyin": "tā shì",
+                  "meaning": "whether he is",
+                  "id": "b2l11-g7-ex3-w5"
+                },
+                {
+                  "traditional": "高興還是難過",
+                  "simplified": "高兴还是难过",
+                  "pinyin": "gāoxìng háishi nánguò",
+                  "meaning": "happy or sad",
+                  "suffix": "。",
+                  "id": "b2l11-g7-ex3-w6"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Rewrite the sentences",
+        "exercisePreview": "Rewrite each sentence with 從……中.",
+        "exerciseInstruction": "改寫句子。Rewrite the sentences with 從……中.",
+        "questions": []
+      }
+    ],
+    "dialogue": {
+      "id": "B2L11-D02",
+      "title": "社團活動對山本良介的影響",
+      "setting": "短文 · Reading",
+      "printedPages": [
+        255,
+        256
+      ],
+      "audioReference": "11-2-1",
+      "grammarFocus": [
+        "例子 + 等",
+        "從……中"
+      ],
+      "lines": [
+        {
+          "id": "b2l11d2-l1",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "山本良介來台灣以後，參加了愛心服務社。社團每個月都會安排兩次活動，利用週末到一些地方去服務。",
+            "simplified": "山本良介来台湾以后，参加了爱心服务社。社团每个月都会安排两次活动，利用周末到一些地方去服务。",
+            "pinyin": "Shānběn Liángjiè lái Táiwān yǐhòu, cānjiā le àixīn fúwù shè. Shètuán měi ge yuè dōu huì ānpái liǎng cì huódòng, lìyòng zhōumò dào yìxiē dìfāng qù fúwù.",
+            "english": "After coming to Taiwan, Yamamoto Ryosuke joined the charity service club. Every month, the club organizes two events and uses the time on weekends to go to some places to help people."
+          }
+        },
+        {
+          "id": "b2l11d2-l2",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "社員們會到安養院去幫老人打掃環境、擦窗戶、洗廁所、刷馬桶，然後再陪他們聊聊天。他們也會到育幼院去照顧孩子，教比較小的孩子刷牙、穿衣服，陪比較大的孩子讀書、做功課。有時候也給他們上美術課，或是帶他們到外邊運動。上過護理課的社員，就可以到醫院去陪病人檢查身體，幫他們處理掛號、住院、出院等問題，或是到病房關心病人和他們的家人。這些經驗讓良介有不少收穫。",
+            "simplified": "社员们会到安养院去帮老人打扫环境、擦窗户、洗厕所、刷马桶，然后再陪他们聊聊天。他们也会到育幼院去照顾孩子，教比较小的孩子刷牙、穿衣服，陪比较大的孩子读书、做功课。有时候也给他们上美术课，或是带他们到外边运动。上过护理课的社员，就可以到医院去陪病人检查身体，帮他们处理挂号、住院、出院等问题，或是到病房关心病人和他们的家人。这些经验让良介有不少收获。",
+            "pinyin": "Shèyuánmen huì dào ānyǎngyuàn qù bāng lǎorén dǎsǎo huánjìng, cā chuānghu, xǐ cèsuǒ, shuā mǎtǒng, ránhòu zài péi tāmen liáo liáo tiān. Tāmen yě huì dào yùyòuyuàn qù zhàogù háizi, jiāo bǐjiào xiǎo de háizi shuāyá, chuān yīfu, péi bǐjiào dà de háizi dúshū, zuò gōngkè. Yǒushíhou yě gěi tāmen shàng měishù kè, huòshì dài tāmen dào wàibiān yùndòng. Shàng guo hùlǐ kè de shèyuán, jiù kěyǐ dào yīyuàn qù péi bìngrén jiǎnchá shēntǐ, bāng tāmen chǔlǐ guàhào, zhùyuàn, chūyuàn děng wèntí, huòshì dào bìngfáng guānxīn bìngrén hé tāmen de jiārén. Zhèxiē jīngyàn ràng Liángjiè yǒu bù shǎo shōuhuò.",
+            "english": "Members of the club would go to elderly nursing homes to help the elderly clean up the environment, wipe windows, wash the bathrooms, brush the toilets, and then chat with them. They would also go to children’s homes to look after the children. They teach the younger children how to brush their teeth or put on their clothes, and accompany the older children in studying or doing homework. Sometimes they organize fine art lessons for them, or take them outside to exercise. Furthermore, members who have attended nursing courses can go to hospitals to accompany patients in medical examinations and help them handle issues such as registration, hospitalization and discharge, or go into wards to show concern for patients and their relatives. These experiences benefit Ryosuke a lot."
+          }
+        },
+        {
+          "id": "b2l11d2-l3",
+          "speaker": "旁白",
+          "text": {
+            "traditional": "以前良介每天只知道念書，對很多事情都不感興趣，常去的地方只有學校、書店或是圖書館。因為他極重視考試的成績，對他來說，只要成績好，就代表會有一個美好的未來。不過，參加了幾次愛心服務以後，他發現自己成長了不少。從服務中得到的經驗，好像比從課本中學到的更寶貴呢！所以良介告訴自己，畢業以後，他還要繼續做這個極有意義的工作。",
+            "simplified": "以前良介每天只知道念书，对很多事情都不感兴趣，常去的地方只有学校、书店或是图书馆。因为他极重视考试的成绩，对他来说，只要成绩好，就代表会有一个美好的未来。不过，参加了几次爱心服务以后，他发现自己成长了不少。从服务中得到的经验，好像比从课本中学到的更宝贵呢！所以良介告诉自己，毕业以后，他还要继续做这个极有意义的工作。",
+            "pinyin": "Yǐqián Liángjiè měitiān zhǐ zhīdào niànshū, duì hěn duō shìqing dōu bù gǎn xìngqù, cháng qù de dìfāng zhǐ yǒu xuéxiào, shūdiàn huòshì túshūguǎn. Yīnwèi tā jí zhòngshì kǎoshì de chéngjì, duì tā lái shuō, zhǐyào chéngjì hǎo, jiù dàibiǎo huì yǒu yí ge měihǎo de wèilái. Búguò, cānjiā le jǐ cì àixīn fúwù yǐhòu, tā fāxiàn zìjǐ chéngzhǎng le bù shǎo. Cóng fúwù zhōng dédào de jīngyàn, hǎoxiàng bǐ cóng kèběn zhōng xuédào de gèng bǎoguì ne! Suǒyǐ Liángjiè gàosu zìjǐ, bìyè yǐhòu, tā hái yào jìxù zuò zhège jí yǒu yìyì de gōngzuò.",
+            "english": "Before, what Ryosuke did was just studying every day. He wasn’t interested in many things. The places where he went often were only the school, bookstores and libraries. He paid very great attention to the scores of exams. For him, he thought that grades mean everything. As long as the grades are good, it means a bright future. However, after participating in charity service several times, he realized he grew a lot. The experience he gained through service seems to be more valuable than what he learned from textbooks! So Ryosuke tells himself: After graduation, he will continue to do this extremely meaningful work."
+          }
+        }
+      ]
+    },
+    "completionTitle": "Lesson 11 complete",
+    "completionDescription": "You’ve finished Lesson 11.",
+    "nextBookLabel": "Lesson 12"
+  }
+}

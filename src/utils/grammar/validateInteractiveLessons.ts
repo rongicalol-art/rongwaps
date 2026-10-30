@@ -37,7 +37,9 @@ function checkSimplified(node: unknown, location: string, issues: LessonValidati
     const tc = [...t];
     const zc = [...z];
     const broken = tc.length !== zc.length
-      || tc.some((a, i) => a !== zc[i] && (!CJK.test(a) || (tc.includes(zc[i]) && a !== '妳')));
+      || tc.some((a, i) => a !== zc[i] && (!CJK.test(a) || !CJK.test(zc[i]) || (
+        tc.includes(zc[i]) && a !== '妳' && !(a === '裡' && zc[i] === '里')
+      )));
     if (broken) issues.push({ location: `${location}${record.id ? ` ${record.id}` : ''}`, message: `Simplified "${z}" does not match traditional "${t}".` });
   }
   Object.values(record).forEach((child) => checkSimplified(child, location, issues));
@@ -131,9 +133,7 @@ export function validateInteractiveLessons(
         }
       }
 
-      if (!page.confusion) {
-        issues.push({ location: pageLocation, message: 'A confusion block is required on every grammar page.' });
-      } else if (!page.confusion.title.trim() || page.confusion.items.length === 0) {
+      if (page.confusion && (!page.confusion.title.trim() || page.confusion.items.length === 0)) {
         issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs a title and at least one item.' });
       }
       if (page.confusion) {

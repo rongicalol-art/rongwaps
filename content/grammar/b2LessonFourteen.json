@@ -1,0 +1,2647 @@
+{
+  "BOOK2_LESSON_FOURTEEN_PART_ONE": {
+    "id": "B2L14-P01-D01",
+    "bookId": 2,
+    "lessonId": 14,
+    "partId": 1,
+    "title": "Grammar 1–3 · Fish on the Dish, Abundance Year after Year",
+    "grammarPages": [
+      {
+        "id": "B2L14-G01-P316",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 1,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 1,
+        "titleTraditional": "想起來：想起來了／沒想起來／想得起來／想不起來",
+        "titleEnglish": "Now Remember / Can or Can’t Remember",
+        "learnerPromise": "Recall something you nearly forgot.",
+        "printedPages": [
+          316
+        ],
+        "bookPage": 316,
+        "bookPageAvailable": false,
+        "audioReference": "14-1",
+        "explanation": "“想起來” is used when someone suddenly remembers something that is almost forgotten or recalls something with great effort. “想得起來／想不起來” indicates whether or not someone can remember something almost forgotten or happened a long time ago.",
+        "explanationEnglish": "“想起來” is used when someone suddenly remembers something that is almost forgotten or recalls something with great effort. “想得起來／想不起來” indicates whether or not someone can remember something almost forgotten or happened a long time ago.",
+        "sourceExplanationEnglish": "“想起來” is used when someone suddenly remembers something that is almost forgotten or recalls something with great effort. “想得起來／想不起來” indicates whether or not someone can remember something almost forgotten or happened a long time ago.",
+        "pattern": "想起來了／沒想起來／想得起來／想不起來",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g01-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "太太：你怎麼看起來這麼緊張啊？先生：我忽然想起來今天要開會，我得快點兒去公司！",
+              "simplified": "太太：你怎么看起来这么紧张啊？先生：我忽然想起来今天要开会，我得快点儿去公司！",
+              "pinyin": "Tàitai: Nǐ zěnme kànqǐlái zhème jǐnzhāng a? Xiānsheng: Wǒ hūrán xiǎng qǐlái jīntiān yào kāihuì, wǒ děi kuài diǎnr qù gōngsī!",
+              "english": "Wife: Why do you look so nervous? Husband: I suddenly remembered that I have a meeting today. I have to hurry to the office!",
+              "words": [
+                {
+                  "traditional": "太太",
+                  "simplified": "太太",
+                  "pinyin": "Tàitai",
+                  "meaning": "太太 (speaker)",
+                  "id": "b2l14-g01-ex1-w1",
+                  "suffix": "："
+                },
+                {
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "id": "b2l14-g01-ex1-w2"
+                },
+                {
+                  "traditional": "怎麼",
+                  "simplified": "怎么",
+                  "pinyin": "zěnme",
+                  "meaning": "why",
+                  "id": "b2l14-g01-ex1-w3"
+                },
+                {
+                  "traditional": "看起來",
+                  "simplified": "看起来",
+                  "pinyin": "kànqǐlái",
+                  "meaning": "look",
+                  "id": "b2l14-g01-ex1-w4"
+                },
+                {
+                  "traditional": "這麼",
+                  "simplified": "这么",
+                  "pinyin": "zhème",
+                  "meaning": "so",
+                  "id": "b2l14-g01-ex1-w5"
+                },
+                {
+                  "traditional": "緊張",
+                  "simplified": "紧张",
+                  "pinyin": "jǐnzhāng",
+                  "meaning": "nervous",
+                  "id": "b2l14-g01-ex1-w6"
+                },
+                {
+                  "traditional": "啊",
+                  "simplified": "啊",
+                  "pinyin": "a",
+                  "meaning": "sentence particle",
+                  "suffix": "？",
+                  "id": "b2l14-g01-ex1-w7"
+                },
+                {
+                  "traditional": "先生",
+                  "simplified": "先生",
+                  "pinyin": "Xiānsheng",
+                  "meaning": "先生 (speaker)",
+                  "id": "b2l14-g01-ex1-w8",
+                  "suffix": "："
+                },
+                {
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "id": "b2l14-g01-ex1-w9"
+                },
+                {
+                  "traditional": "忽然",
+                  "simplified": "忽然",
+                  "pinyin": "hūrán",
+                  "meaning": "suddenly",
+                  "id": "b2l14-g01-ex1-w10"
+                },
+                {
+                  "traditional": "想起來",
+                  "simplified": "想起来",
+                  "pinyin": "xiǎng qǐlái",
+                  "meaning": "remembered",
+                  "id": "b2l14-g01-ex1-w11"
+                },
+                {
+                  "traditional": "今天",
+                  "simplified": "今天",
+                  "pinyin": "jīntiān",
+                  "meaning": "today",
+                  "id": "b2l14-g01-ex1-w12"
+                },
+                {
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "yào",
+                  "meaning": "will",
+                  "id": "b2l14-g01-ex1-w13"
+                },
+                {
+                  "traditional": "開會",
+                  "simplified": "开会",
+                  "pinyin": "kāihuì",
+                  "meaning": "have a meeting",
+                  "suffix": "，",
+                  "id": "b2l14-g01-ex1-w14"
+                },
+                {
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "id": "b2l14-g01-ex1-w15"
+                },
+                {
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "děi",
+                  "meaning": "have to",
+                  "id": "b2l14-g01-ex1-w16"
+                },
+                {
+                  "traditional": "快點兒",
+                  "simplified": "快点儿",
+                  "pinyin": "kuài diǎnr",
+                  "meaning": "quickly",
+                  "id": "b2l14-g01-ex1-w17"
+                },
+                {
+                  "traditional": "去公司",
+                  "simplified": "去公司",
+                  "pinyin": "qù gōngsī",
+                  "meaning": "go to the office",
+                  "suffix": "！",
+                  "id": "b2l14-g01-ex1-w18"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g01-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "A：你記得我們上次去的 KTV 在哪裡嗎？B：我想想……想起來了！就在捷運龍山寺站的附近。",
+              "simplified": "A：你记得我们上次去的 KTV 在哪里吗？B：我想想……想起来了！就在捷运龙山寺站的附近。",
+              "pinyin": "A: Nǐ jìde wǒmen shàngcì qù de KTV zài nǎlǐ ma? B: Wǒ xiǎngxiang…… xiǎng qǐlái le! Jiù zài Jiéyùn Lóngshānsì Zhàn de fùjìn.",
+              "english": "A: Do you remember where the KTV we went to last time is? B: Let me think… I remember now! It’s right near Longshan Temple MRT Station.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w1"
+                },
+                {
+                  "traditional": "你記得",
+                  "simplified": "你记得",
+                  "pinyin": "nǐ jìde",
+                  "meaning": "do you remember",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w2"
+                },
+                {
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w3"
+                },
+                {
+                  "traditional": "上次",
+                  "simplified": "上次",
+                  "pinyin": "shàngcì",
+                  "meaning": "last time",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w4"
+                },
+                {
+                  "traditional": "去的",
+                  "simplified": "去的",
+                  "pinyin": "qù de",
+                  "meaning": "went to",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w5"
+                },
+                {
+                  "traditional": " KTV ",
+                  "simplified": " KTV ",
+                  "pinyin": "KTV",
+                  "meaning": "KTV",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w6"
+                },
+                {
+                  "traditional": "在哪裡",
+                  "simplified": "在哪里",
+                  "pinyin": "zài nǎlǐ",
+                  "meaning": "where",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w7"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "question particle",
+                  "suffix": "？",
+                  "id": "b2l14-g01-ex2-w8"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w9"
+                },
+                {
+                  "traditional": "我想想",
+                  "simplified": "我想想",
+                  "pinyin": "wǒ xiǎngxiang",
+                  "meaning": "let me think",
+                  "suffix": "……",
+                  "id": "b2l14-g01-ex2-w10"
+                },
+                {
+                  "traditional": "想起來了",
+                  "simplified": "想起来了",
+                  "pinyin": "xiǎng qǐlái le",
+                  "meaning": "remembered",
+                  "suffix": "！",
+                  "id": "b2l14-g01-ex2-w11"
+                },
+                {
+                  "traditional": "就在",
+                  "simplified": "就在",
+                  "pinyin": "jiù zài",
+                  "meaning": "right at",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w12"
+                },
+                {
+                  "traditional": "捷運龍山寺站",
+                  "simplified": "捷运龙山寺站",
+                  "pinyin": "Jiéyùn Lóngshānsì Zhàn",
+                  "meaning": "Longshan Temple MRT station",
+                  "suffix": "",
+                  "id": "b2l14-g01-ex2-w13"
+                },
+                {
+                  "traditional": "的附近",
+                  "simplified": "的附近",
+                  "pinyin": "de fùjìn",
+                  "meaning": "nearby",
+                  "suffix": "。",
+                  "id": "b2l14-g01-ex2-w14"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g01-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "A：我是你的小學同學，你還記得我的名字嗎？B：你叫……對不起，我想不起來了。",
+              "simplified": "A：我是你的小学同学，你还记得我的名字吗？B：你叫……对不起，我想不起来了。",
+              "pinyin": "A: Wǒ shì nǐ de xiǎoxué tóngxué, nǐ hái jìde wǒ de míngzi ma? B: Nǐ jiào…… duìbuqǐ, wǒ xiǎng bù qǐlái le.",
+              "english": "A: I am your elementary school classmate. Do you still remember my name? B: Your name is… Sorry, I can’t remember.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l14-g01-ex3-w1"
+                },
+                {
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "id": "b2l14-g01-ex3-w2"
+                },
+                {
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "meaning": "am",
+                  "id": "b2l14-g01-ex3-w3"
+                },
+                {
+                  "traditional": "你的小學同學",
+                  "simplified": "你的小学同学",
+                  "pinyin": "nǐ de xiǎoxué tóngxué",
+                  "meaning": "your elementary school classmate",
+                  "suffix": "，",
+                  "id": "b2l14-g01-ex3-w4"
+                },
+                {
+                  "traditional": "你還記得",
+                  "simplified": "你还记得",
+                  "pinyin": "nǐ hái jìde",
+                  "meaning": "do you still remember",
+                  "id": "b2l14-g01-ex3-w5"
+                },
+                {
+                  "traditional": "我的名字",
+                  "simplified": "我的名字",
+                  "pinyin": "wǒ de míngzi",
+                  "meaning": "my name",
+                  "id": "b2l14-g01-ex3-w6"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "yes-no question particle",
+                  "suffix": "？",
+                  "id": "b2l14-g01-ex3-w7"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l14-g01-ex3-w8"
+                },
+                {
+                  "traditional": "你叫",
+                  "simplified": "你叫",
+                  "pinyin": "nǐ jiào",
+                  "meaning": "your name is",
+                  "suffix": "……",
+                  "id": "b2l14-g01-ex3-w9"
+                },
+                {
+                  "traditional": "對不起",
+                  "simplified": "对不起",
+                  "pinyin": "duìbuqǐ",
+                  "meaning": "sorry",
+                  "suffix": "，",
+                  "id": "b2l14-g01-ex3-w10"
+                },
+                {
+                  "traditional": "我想不起來了",
+                  "simplified": "我想不起来了",
+                  "pinyin": "wǒ xiǎng bù qǐlái le",
+                  "meaning": "I can’t remember",
+                  "suffix": "。",
+                  "id": "b2l14-g01-ex3-w11"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g01-ex4",
+            "number": 4,
+            "text": {
+              "traditional": "A：你小時候第一次看的卡通是什麼，你想得起來嗎？B：那麼久以前的事，我怎麼想得起來！",
+              "simplified": "A：你小时候第一次看的卡通是什么，你想得起来吗？B：那么久以前的事，我怎么想得起来！",
+              "pinyin": "A: Nǐ xiǎoshíhou dì yī cì kàn de kǎtōng shì shénme, nǐ xiǎng de qǐlái ma? B: Nàme jiǔ yǐqián de shì, wǒ zěnme xiǎng de qǐlái!",
+              "english": "A: What was the first cartoon you watched as a child? Can you remember? B: How could I remember something from so long ago!",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l14-g01-ex4-w1"
+                },
+                {
+                  "traditional": "你小時候",
+                  "simplified": "你小时候",
+                  "pinyin": "nǐ xiǎoshíhou",
+                  "meaning": "when you were little",
+                  "id": "b2l14-g01-ex4-w2"
+                },
+                {
+                  "traditional": "第一次",
+                  "simplified": "第一次",
+                  "pinyin": "dì yī cì",
+                  "meaning": "the first time",
+                  "id": "b2l14-g01-ex4-w3"
+                },
+                {
+                  "traditional": "看的卡通",
+                  "simplified": "看的卡通",
+                  "pinyin": "kàn de kǎtōng",
+                  "meaning": "cartoon you watched",
+                  "id": "b2l14-g01-ex4-w4"
+                },
+                {
+                  "traditional": "是什麼",
+                  "simplified": "是什么",
+                  "pinyin": "shì shénme",
+                  "meaning": "what is it",
+                  "suffix": "，",
+                  "id": "b2l14-g01-ex4-w5"
+                },
+                {
+                  "traditional": "你想得起來",
+                  "simplified": "你想得起来",
+                  "pinyin": "nǐ xiǎng de qǐlái",
+                  "meaning": "can you remember",
+                  "id": "b2l14-g01-ex4-w6"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "yes-no question particle",
+                  "suffix": "？",
+                  "id": "b2l14-g01-ex4-w7"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l14-g01-ex4-w8"
+                },
+                {
+                  "traditional": "那麼久以前的事",
+                  "simplified": "那么久以前的事",
+                  "pinyin": "nàme jiǔ yǐqián de shì",
+                  "meaning": "something from so long ago",
+                  "suffix": "，",
+                  "id": "b2l14-g01-ex4-w9"
+                },
+                {
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "id": "b2l14-g01-ex4-w10"
+                },
+                {
+                  "traditional": "怎麼想得起來",
+                  "simplified": "怎么想得起来",
+                  "pinyin": "zěnme xiǎng de qǐlái",
+                  "meaning": "how could I remember",
+                  "suffix": "！",
+                  "id": "b2l14-g01-ex4-w11"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Use 想起來 to complete the four prompts.",
+        "exerciseInstruction": "Complete the sentences with a suitable 想起來 form.",
+        "questions": []
+      },
+      {
+        "id": "B2L14-G02-P317",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 1,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 2,
+        "titleTraditional": "從來＋沒／不",
+        "titleEnglish": "Have Never / Never",
+        "learnerPromise": "Use 從來 with 沒 for an experience that has never happened, or 不 for something never done.",
+        "printedPages": [
+          317
+        ],
+        "bookPage": 317,
+        "bookPageAvailable": false,
+        "audioReference": "14-1",
+        "explanation": "This pattern expresses that someone has never done something, or never does something.",
+        "explanationEnglish": "This pattern expresses that someone has never done something, or never does something.",
+        "sourceExplanationEnglish": "This pattern expresses that someone has never done something, or never does something.",
+        "pattern": "從來 + 沒／不 + V",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g02-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "A：這個週末我們一起去 KTV 唱歌，怎麼樣？B：太好了！我從來沒去過 KTV，一定很好玩。",
+              "simplified": "A：这个周末我们一起去 KTV 唱歌，怎么样？B：太好了！我从来没去过 KTV，一定很好玩。",
+              "pinyin": "A: Zhège zhōumò wǒmen yìqǐ qù KTV chànggē, zěnmeyàng? B: Tài hǎo le! Wǒ cónglái méi qùguo KTV, yídìng hěn hǎowán.",
+              "english": "A: How about going to KTV to sing together this weekend? B: Great! I’ve never been to KTV; it must be fun.",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w1"
+                },
+                {
+                  "traditional": "這個週末",
+                  "simplified": "这个周末",
+                  "pinyin": "zhège zhōumò",
+                  "meaning": "this weekend",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w2"
+                },
+                {
+                  "traditional": "我們一起",
+                  "simplified": "我们一起",
+                  "pinyin": "wǒmen yìqǐ",
+                  "meaning": "together",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w3"
+                },
+                {
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": "go",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w4"
+                },
+                {
+                  "traditional": " KTV ",
+                  "simplified": " KTV ",
+                  "pinyin": "KTV",
+                  "meaning": "KTV",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w5"
+                },
+                {
+                  "traditional": "唱歌",
+                  "simplified": "唱歌",
+                  "pinyin": "chànggē",
+                  "meaning": "sing",
+                  "suffix": "，",
+                  "id": "b2l14-g02-ex1-w6"
+                },
+                {
+                  "traditional": "怎麼樣",
+                  "simplified": "怎么样",
+                  "pinyin": "zěnmeyàng",
+                  "meaning": "how about it",
+                  "suffix": "？",
+                  "id": "b2l14-g02-ex1-w7"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w8"
+                },
+                {
+                  "traditional": "太好了",
+                  "simplified": "太好了",
+                  "pinyin": "tài hǎo le",
+                  "meaning": "great",
+                  "suffix": "！",
+                  "id": "b2l14-g02-ex1-w9"
+                },
+                {
+                  "traditional": "我從來沒去過",
+                  "simplified": "我从来没去过",
+                  "pinyin": "wǒ cónglái méi qùguo",
+                  "meaning": "I have never been to",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w10"
+                },
+                {
+                  "traditional": " KTV",
+                  "simplified": " KTV",
+                  "pinyin": "KTV",
+                  "meaning": "KTV",
+                  "suffix": "，",
+                  "id": "b2l14-g02-ex1-w11"
+                },
+                {
+                  "traditional": "一定",
+                  "simplified": "一定",
+                  "pinyin": "yídìng",
+                  "meaning": "certainly",
+                  "suffix": "",
+                  "id": "b2l14-g02-ex1-w12"
+                },
+                {
+                  "traditional": "很好玩",
+                  "simplified": "很好玩",
+                  "pinyin": "hěn hǎowán",
+                  "meaning": "very fun",
+                  "suffix": "。",
+                  "id": "b2l14-g02-ex1-w13"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g02-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "A：下班以後，我們找老王一起去健身吧！B：不用找他了，他從來不運動！",
+              "simplified": "A：下班以后，我们找老王一起去健身吧！B：不用找他了，他从来不运动！",
+              "pinyin": "A: Xiàbān yǐhòu, wǒmen zhǎo Lǎo Wáng yìqǐ qù jiànshēn ba! B: Bú yòng zhǎo tā le, tā cónglái bú yùndòng!",
+              "english": "A: Let’s ask Lao Wang to work out with us after work! B: There’s no need; he never exercises!",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l14-g02-ex2-w1"
+                },
+                {
+                  "traditional": "下班以後",
+                  "simplified": "下班以后",
+                  "pinyin": "xiàbān yǐhòu",
+                  "meaning": "after work",
+                  "id": "b2l14-g02-ex2-w2",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "我們找老王",
+                  "simplified": "我们找老王",
+                  "pinyin": "wǒmen zhǎo Lǎo Wáng",
+                  "meaning": "let’s find Lao Wang",
+                  "id": "b2l14-g02-ex2-w3"
+                },
+                {
+                  "traditional": "一起去健身",
+                  "simplified": "一起去健身",
+                  "pinyin": "yìqǐ qù jiànshēn",
+                  "meaning": "work out together",
+                  "id": "b2l14-g02-ex2-w4"
+                },
+                {
+                  "traditional": "吧",
+                  "simplified": "吧",
+                  "pinyin": "ba",
+                  "meaning": "suggestion particle",
+                  "suffix": "！",
+                  "id": "b2l14-g02-ex2-w5"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l14-g02-ex2-w6"
+                },
+                {
+                  "traditional": "不用找他了",
+                  "simplified": "不用找他了",
+                  "pinyin": "bú yòng zhǎo tā le",
+                  "meaning": "no need to find him",
+                  "suffix": "，",
+                  "id": "b2l14-g02-ex2-w7"
+                },
+                {
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "id": "b2l14-g02-ex2-w8"
+                },
+                {
+                  "traditional": "從來不運動",
+                  "simplified": "从来不运动",
+                  "pinyin": "cónglái bú yùndòng",
+                  "meaning": "never exercises",
+                  "suffix": "！",
+                  "id": "b2l14-g02-ex2-w9"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g02-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "A：我從來沒去過阿里山，聽說那裡的日出很美，是真的嗎？B：阿里山的日出是很美，夜裡看星星也不錯喔！",
+              "simplified": "A：我从来没去过阿里山，听说那里的日出很美，是真的吗？B：阿里山的日出是很美，夜里看星星也不错喔！",
+              "pinyin": "A: Wǒ cónglái méi qù guo Ālǐshān, tīngshuō nàlǐ de rìchū hěn měi, shì zhēn de ma? B: Ālǐshān de rìchū shì hěn měi, yèli kàn xīngxing yě búcuò o!",
+              "english": "A: I’ve never been to Alishan. I heard the sunrise there is beautiful. Is that true? B: The sunrise at Alishan is beautiful, and stargazing at night is nice too!",
+              "words": [
+                {
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A",
+                  "meaning": "speaker A",
+                  "id": "b2l14-g02-ex3-w1"
+                },
+                {
+                  "traditional": "我從來沒去過",
+                  "simplified": "我从来没去过",
+                  "pinyin": "wǒ cónglái méi qù guo",
+                  "meaning": "I have never been to",
+                  "id": "b2l14-g02-ex3-w2"
+                },
+                {
+                  "traditional": "阿里山",
+                  "simplified": "阿里山",
+                  "pinyin": "Ālǐshān",
+                  "meaning": "Alishan",
+                  "suffix": "，",
+                  "id": "b2l14-g02-ex3-w3"
+                },
+                {
+                  "traditional": "聽說",
+                  "simplified": "听说",
+                  "pinyin": "tīngshuō",
+                  "meaning": "I heard",
+                  "id": "b2l14-g02-ex3-w4"
+                },
+                {
+                  "traditional": "那裡的日出",
+                  "simplified": "那里的日出",
+                  "pinyin": "nàlǐ de rìchū",
+                  "meaning": "the sunrise there",
+                  "id": "b2l14-g02-ex3-w5"
+                },
+                {
+                  "traditional": "很美",
+                  "simplified": "很美",
+                  "pinyin": "hěn měi",
+                  "meaning": "is beautiful",
+                  "suffix": "，",
+                  "id": "b2l14-g02-ex3-w6"
+                },
+                {
+                  "traditional": "是",
+                  "simplified": "是",
+                  "pinyin": "shì",
+                  "meaning": "be",
+                  "id": "b2l14-g02-ex3-w7"
+                },
+                {
+                  "traditional": "真",
+                  "simplified": "真",
+                  "pinyin": "zhēn",
+                  "meaning": "true",
+                  "id": "b2l14-g02-ex3-w8"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "particle",
+                  "id": "b2l14-g02-ex3-w9"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "question particle",
+                  "suffix": "？",
+                  "id": "b2l14-g02-ex3-w10"
+                },
+                {
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B",
+                  "meaning": "speaker B",
+                  "id": "b2l14-g02-ex3-w11"
+                },
+                {
+                  "traditional": "阿里山的日出",
+                  "simplified": "阿里山的日出",
+                  "pinyin": "Ālǐshān de rìchū",
+                  "meaning": "the sunrise at Alishan",
+                  "id": "b2l14-g02-ex3-w12"
+                },
+                {
+                  "traditional": "是很美",
+                  "simplified": "是很美",
+                  "pinyin": "shì hěn měi",
+                  "meaning": "is indeed beautiful",
+                  "suffix": "，",
+                  "id": "b2l14-g02-ex3-w13"
+                },
+                {
+                  "traditional": "夜裡",
+                  "simplified": "夜里",
+                  "pinyin": "yèli",
+                  "meaning": "at night",
+                  "id": "b2l14-g02-ex3-w14"
+                },
+                {
+                  "traditional": "看星星",
+                  "simplified": "看星星",
+                  "pinyin": "kàn xīngxing",
+                  "meaning": "look at the stars",
+                  "id": "b2l14-g02-ex3-w15"
+                },
+                {
+                  "traditional": "也不錯",
+                  "simplified": "也不错",
+                  "pinyin": "yě búcuò",
+                  "meaning": "is also nice",
+                  "id": "b2l14-g02-ex3-w16"
+                },
+                {
+                  "traditional": "喔",
+                  "simplified": "喔",
+                  "pinyin": "o",
+                  "meaning": "sentence-final particle",
+                  "suffix": "！",
+                  "id": "b2l14-g02-ex3-w17"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete the dialogues with 從來＋沒／不.",
+        "exerciseInstruction": "Complete the dialogues.",
+        "questions": []
+      },
+      {
+        "id": "B2L14-G03-P317",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 1,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 3,
+        "titleTraditional": "例子＋等等",
+        "titleEnglish": "Examples… and So On",
+        "learnerPromise": "Add 等等 after a list when more examples of the same kind are left unlisted.",
+        "printedPages": [
+          317
+        ],
+        "bookPage": 317,
+        "bookPageAvailable": false,
+        "audioReference": "14-1",
+        "explanation": "Similar to “等”, “等等” is used to show there are still more items of the same kind that are not entirely listed. Normally, “等等” should not be placed after proper nouns.",
+        "explanationEnglish": "Similar to “等”, “等等” is used to show there are still more items of the same kind that are not entirely listed. Normally, “等等” should not be placed after proper nouns.",
+        "sourceExplanationEnglish": "Similar to “等”, “等等” is used to show there are still more items of the same kind that are not entirely listed. Normally, “等等” should not be placed after proper nouns.",
+        "pattern": "Examples + 等等",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g03-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "便利商店的貼紙，可以換尺、牙刷、卡通娃娃等等。",
+              "simplified": "便利商店的贴纸，可以换尺、牙刷、卡通娃娃等等。",
+              "pinyin": "Biànlì shāngdiàn de tiēzhǐ, kěyǐ huàn chǐ, yáshuā, kǎtōng wáwa děngděng.",
+              "english": "Convenience store stickers can be exchanged for rulers, toothbrushes, cartoon dolls, and so on.",
+              "words": [
+                {
+                  "traditional": "便利商店的貼紙",
+                  "simplified": "便利商店的贴纸",
+                  "pinyin": "biànlì shāngdiàn de tiēzhǐ",
+                  "meaning": "convenience store stickers",
+                  "id": "b2l14-g03-ex1-w1",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "可以換",
+                  "simplified": "可以换",
+                  "pinyin": "kěyǐ huàn",
+                  "meaning": "can be exchanged for",
+                  "id": "b2l14-g03-ex1-w2"
+                },
+                {
+                  "traditional": "尺",
+                  "simplified": "尺",
+                  "pinyin": "chǐ",
+                  "meaning": "ruler",
+                  "suffix": "、",
+                  "id": "b2l14-g03-ex1-w3"
+                },
+                {
+                  "traditional": "牙刷",
+                  "simplified": "牙刷",
+                  "pinyin": "yáshuā",
+                  "meaning": "toothbrush",
+                  "suffix": "、",
+                  "id": "b2l14-g03-ex1-w4"
+                },
+                {
+                  "traditional": "卡通娃娃",
+                  "simplified": "卡通娃娃",
+                  "pinyin": "kǎtōng wáwa",
+                  "meaning": "cartoon doll",
+                  "id": "b2l14-g03-ex1-w5"
+                },
+                {
+                  "traditional": "等等",
+                  "simplified": "等等",
+                  "pinyin": "děngděng",
+                  "meaning": "and so on",
+                  "suffix": "。",
+                  "id": "b2l14-g03-ex1-w6"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g03-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "為了身體健康，薯條、漢堡、餅乾等等，最好少吃。",
+              "simplified": "为了身体健康，薯条、汉堡、饼干等等，最好少吃。",
+              "pinyin": "Wèile shēntǐ jiànkāng, shǔtiáo, hànbǎo, bǐnggān děngděng, zuìhǎo shǎo chī.",
+              "english": "For good health, it’s best to eat fewer french fries, hamburgers, cookies, and similar foods.",
+              "words": [
+                {
+                  "traditional": "為了身體健康",
+                  "simplified": "为了身体健康",
+                  "pinyin": "wèile shēntǐ jiànkāng",
+                  "meaning": "for good health",
+                  "id": "b2l14-g03-ex2-w1",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "薯條",
+                  "simplified": "薯条",
+                  "pinyin": "shǔtiáo",
+                  "meaning": "french fries",
+                  "suffix": "、",
+                  "id": "b2l14-g03-ex2-w2"
+                },
+                {
+                  "traditional": "漢堡",
+                  "simplified": "汉堡",
+                  "pinyin": "hànbǎo",
+                  "meaning": "hamburger",
+                  "suffix": "、",
+                  "id": "b2l14-g03-ex2-w3"
+                },
+                {
+                  "traditional": "餅乾",
+                  "simplified": "饼干",
+                  "pinyin": "bǐnggān",
+                  "meaning": "cookie",
+                  "id": "b2l14-g03-ex2-w4"
+                },
+                {
+                  "traditional": "等等",
+                  "simplified": "等等",
+                  "pinyin": "děngděng",
+                  "meaning": "and so on",
+                  "suffix": "，",
+                  "id": "b2l14-g03-ex2-w5"
+                },
+                {
+                  "traditional": "最好少吃",
+                  "simplified": "最好少吃",
+                  "pinyin": "zuìhǎo shǎo chī",
+                  "meaning": "it is best to eat less",
+                  "suffix": "。",
+                  "id": "b2l14-g03-ex2-w6"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g03-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "去鄉下爺爺奶奶家的時候，我會幫他們種花、剪草等等。",
+              "simplified": "去乡下爷爷奶奶家的时候，我会帮他们种花、剪草等等。",
+              "pinyin": "Qù xiāngxià yéye nǎinai jiā de shíhou, wǒ huì bāng tāmen zhòng huā, jiǎn cǎo děngděng.",
+              "english": "When I go to my grandparents’ home in the countryside, I help them plant flowers, cut grass, and so on.",
+              "words": [
+                {
+                  "traditional": "去鄉下",
+                  "simplified": "去乡下",
+                  "pinyin": "qù xiāngxià",
+                  "meaning": "go to the countryside",
+                  "id": "b2l14-g03-ex3-w1"
+                },
+                {
+                  "traditional": "爺爺奶奶家的時候",
+                  "simplified": "爷爷奶奶家的时候",
+                  "pinyin": "yéye nǎinai jiā de shíhou",
+                  "meaning": "when at grandparents’ home",
+                  "id": "b2l14-g03-ex3-w2",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "我會幫他們",
+                  "simplified": "我会帮他们",
+                  "pinyin": "wǒ huì bāng tāmen",
+                  "meaning": "I help them",
+                  "id": "b2l14-g03-ex3-w3"
+                },
+                {
+                  "traditional": "種花",
+                  "simplified": "种花",
+                  "pinyin": "zhòng huā",
+                  "meaning": "plant flowers",
+                  "suffix": "、",
+                  "id": "b2l14-g03-ex3-w4"
+                },
+                {
+                  "traditional": "剪草",
+                  "simplified": "剪草",
+                  "pinyin": "jiǎn cǎo",
+                  "meaning": "cut grass",
+                  "id": "b2l14-g03-ex3-w5"
+                },
+                {
+                  "traditional": "等等",
+                  "simplified": "等等",
+                  "pinyin": "děngděng",
+                  "meaning": "and so on",
+                  "suffix": "。",
+                  "id": "b2l14-g03-ex3-w6"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete the dialogues with 等等.",
+        "exerciseInstruction": "Complete the dialogues with 等等.",
+        "questions": []
+      }
+    ],
+    "dialogue": {
+      "id": "B2L14-D01",
+      "title": "年年有「魚」",
+      "setting": "在學校餐廳 · In the school canteen",
+      "printedPages": [
+        306,
+        307,
+        308
+      ],
+      "audioReference": "14-1-1",
+      "grammarFocus": [
+        "想起來：想起來了／沒想起來／想得起來／想不起來",
+        "從來＋沒／不",
+        "例子＋等等"
+      ],
+      "lines": [
+        {
+          "id": "b2l14d1-l1",
+          "speaker": "旁白",
+          "traditional": "（在學校餐廳）",
+          "simplified": "（在学校餐厅）",
+          "pinyin": "（Zài xuéxiào cāntīng）",
+          "english": "(In the school canteen.)"
+        },
+        {
+          "id": "b2l14d1-l2",
+          "speaker": "可欣",
+          "traditional": "老師對報告的要求真多，所以我的期末報告修改了好幾次，還好最後都完成了，可以開心地放寒假了！",
+          "simplified": "老师对报告的要求真多，所以我的期末报告修改了好几次，还好最后都完成了，可以开心地放寒假了！",
+          "pinyin": "Lǎoshī duì bàogào de yāoqiú zhēn duō, suǒyǐ wǒ de qímò bàogào xiūgǎi le hǎo jǐ cì, hái hǎo zuìhòu dōu wánchéng le, kěyǐ kāixīn de fàng hánjià le!",
+          "english": "The teacher had many requirements for our reports, so I revised my final report many times. Fortunately, I’ve got everything done at last. I can happily enjoy the winter vacation!"
+        },
+        {
+          "id": "b2l14d1-l3",
+          "speaker": "美心",
+          "traditional": "是啊！我一回去就要幫媽媽打掃，準備過年。",
+          "simplified": "是啊！我一回去就要帮妈妈打扫，准备过年。",
+          "pinyin": "Shì a! Wǒ yì huíqù jiù yào bāng māma dǎsǎo, zhǔnbèi guònián.",
+          "english": "Right! As soon as I go back home, I will help my mom do the cleaning and prepare for the coming New Year."
+        },
+        {
+          "id": "b2l14d1-l4",
+          "speaker": "以凡",
+          "traditional": "過年？我想起來了，是不是中國新年？",
+          "simplified": "过年？我想起来了，是不是中国新年？",
+          "pinyin": "Guònián? Wǒ xiǎngqǐlái le, shì bú shì Zhōngguó xīnnián?",
+          "english": "New Year? I remember! Is it the Chinese New Year?"
+        },
+        {
+          "id": "b2l14d1-l5",
+          "speaker": "可欣",
+          "traditional": "對，就是中國新年，也叫春節。義大利人不過年嗎？",
+          "simplified": "对，就是中国新年，也叫春节。意大利人不过年吗？",
+          "pinyin": "Duì, jiù shì Zhōngguó xīnnián, yě jiào Chūnjié. Yìdàlì rén bú guònián ma?",
+          "english": "Yes, it is exactly the Chinese New Year, also called the Spring Festival. Don’t the Italians celebrate the New Year?"
+        },
+        {
+          "id": "b2l14d1-l6",
+          "speaker": "以凡",
+          "traditional": "我們過的是一月一號的新年。十二月三十一號跨年那天，熱鬧極了。",
+          "simplified": "我们过的是一月一号的新年。十二月三十一号跨年那天，热闹极了。",
+          "pinyin": "Wǒmen guò de shì yī yuè yī hào de xīnnián. Shí’èr yuè sānshíyī hào kuànián nà tiān, rènào jí le.",
+          "english": "We celebrate it on January 1st. On December 31st, New Year’s Eve, it is extremely lively."
+        },
+        {
+          "id": "b2l14d1-l7",
+          "speaker": "美心",
+          "traditional": "原來是這樣。不過，你知道中國人是怎麼過年的嗎？",
+          "simplified": "原来是这样。不过，你知道中国人是怎么过年的吗？",
+          "pinyin": "Yuánlái shì zhèyàng. Búguò, nǐ zhīdào Zhōngguó rén shì zěnme guònián de ma?",
+          "english": "Oh, I see. But do you know how Chinese people celebrate the New Year?"
+        },
+        {
+          "id": "b2l14d1-l8",
+          "speaker": "以凡",
+          "traditional": "從來沒聽過……妳們給我介紹一下吧！",
+          "simplified": "从来没听过……妳们给我介绍一下吧！",
+          "pinyin": "Cónglái méi tīng guo… Nǐmen gěi wǒ jièshào yíxià ba!",
+          "english": "I’ve never heard about it... Please give me a short introduction!"
+        },
+        {
+          "id": "b2l14d1-l9",
+          "speaker": "可欣",
+          "traditional": "春節的前一天是「除夕」，除夕前幾天，得把房子打掃乾淨……",
+          "simplified": "春节的前一天是「除夕」，除夕前几天，得把房子打扫干净……",
+          "pinyin": "Chūnjié de qián yì tiān shì “chúxī”, chúxī qián jǐ tiān, děi bǎ fángzi dǎsǎo gānjìng…",
+          "english": "The day before the Spring Festival is Chinese New Year’s Eve. A few days before the Chinese New Year’s Eve, we need to clean up the house…"
+        },
+        {
+          "id": "b2l14d1-l10",
+          "speaker": "美心",
+          "traditional": "（美心接著說）除夕那天下午，我們回到爺爺、奶奶家以後，要先拜拜；等拜完了祖先，家人就聚在一起吃「年夜飯」。",
+          "simplified": "（美心接着说）除夕那天下午，我们回到爷爷、奶奶家以后，要先拜拜；等拜完了祖先，家人就聚在一起吃「年夜饭」。",
+          "pinyin": "（Měixīn jiēzhe shuō）Chúxī nà tiān xiàwǔ, wǒmen huí dào yéye, nǎinai jiā yǐhòu, yào xiān bàibài; děng bài wán le zǔxiān, jiārén jiù jù zài yìqǐ chī “niányèfàn”.",
+          "english": "(Continues to speak.) On the afternoon of Chinese New Year’s Eve, after we return to grandpa and grandma’s house, we worship together first. After worshiping the ancestors, the whole family gathers to eat “family reunion dinner” together."
+        },
+        {
+          "id": "b2l14d1-l11",
+          "speaker": "以凡",
+          "traditional": "年夜飯跟平常吃的飯不一樣嗎？",
+          "simplified": "年夜饭跟平常吃的饭不一样吗？",
+          "pinyin": "Niányèfàn gēn píngcháng chī de fàn bù yíyàng ma?",
+          "english": "Is the family reunion dinner different from usual food?"
+        },
+        {
+          "id": "b2l14d1-l12",
+          "speaker": "可欣",
+          "traditional": "年夜飯特別豐富喔！我媽媽會炸年糕、煮水餃、炒米粉，還會煎一條好吃的魚，可是不能吃完。",
+          "simplified": "年夜饭特别丰富喔！我妈妈会炸年糕、煮水饺、炒米粉，还会煎一条好吃的鱼，可是不能吃完。",
+          "pinyin": "Niányèfàn tèbié fēngfù o! Wǒ māma huì zhá niángāo, zhǔ shuǐjiǎo, chǎo mǐfěn, hái huì jiān yì tiáo hǎochī de yú, kěshì bù néng chī wán.",
+          "english": "The family reunion dinner is particularly abundant! My mom will make deep-fried glutinous rice cake, boiled dumplings, and fried rice noodles along with a delicious fried fish. However, we can’t eat up the whole fish."
+        },
+        {
+          "id": "b2l14d1-l13",
+          "speaker": "以凡",
+          "traditional": "為什麼不能吃完？",
+          "simplified": "为什么不能吃完？",
+          "pinyin": "Wèishénme bù néng chī wán?",
+          "english": "Why can’t you eat it up?"
+        },
+        {
+          "id": "b2l14d1-l14",
+          "speaker": "可欣",
+          "traditional": "因為要「年年有餘」，「餘」跟「魚」都唸 yú，有「剩下」的意思。如果年夜飯有剩下的魚，新的一年就會有很多食物。",
+          "simplified": "因为要「年年有余」，「余」跟「鱼」都念 yú，有「剩下」的意思。如果年夜饭有剩下的鱼，新的一年就会有很多食物。",
+          "pinyin": "Yīnwèi yào “niánnián yǒuyú”, “yú” gēn “yú” dōu niàn yú, yǒu “shèngxià” de yìsi. Rúguǒ niányèfàn yǒu shèngxià de yú, xīn de yì nián jiù huì yǒu hěn duō shíwù.",
+          "english": "Because we hope to have a prosperous new year! Both “餘” and “魚” are both pronounced as yú. It means “surplus”. If there’s some fish left during the dinner, we’ll have plenty of food in the coming new year!"
+        },
+        {
+          "id": "b2l14d1-l15",
+          "speaker": "美心",
+          "traditional": "除了魚，像年糕、發糕、蘿蔔糕等等，也是過年會吃的食物。",
+          "simplified": "除了鱼，像年糕、发糕、萝卜糕等等，也是过年会吃的食物。",
+          "pinyin": "Chúle yú, xiàng niángāo, fāgāo, luóbogāo děngděng, yě shì guònián huì chī de shíwù.",
+          "english": "Apart from fish, things like glutinous rice cakes, sponge cakes, radish cakes, and so on are also eaten during the Chinese New Year."
+        },
+        {
+          "id": "b2l14d1-l16",
+          "speaker": "以凡",
+          "traditional": "這些東西也有特別的意思嗎？",
+          "simplified": "这些东西也有特别的意思吗？",
+          "pinyin": "Zhèxiē dōngxi yě yǒu tèbié de yìsi ma?",
+          "english": "Do these things have special meanings, too?"
+        },
+        {
+          "id": "b2l14d1-l17",
+          "speaker": "美心",
+          "traditional": "有啊！年糕代表「年年高升」、發糕是「發財」的意思；吃了蘿蔔糕就會很幸運喔！",
+          "simplified": "有啊！年糕代表「年年高升」、发糕是「发财」的意思；吃了萝卜糕就会很幸运喔！",
+          "pinyin": "Yǒu a! Niángāo dàibiǎo “niánnián gāoshēng”, fāgāo shì “fācái” de yìsi; chī le luóbogāo jiù huì hěn xìngyùn o!",
+          "english": "They do! Glutinous rice cake represents getting promoted year by year, sponge cake means making a fortune, and you will be lucky when you eat the radish cake!"
+        },
+        {
+          "id": "b2l14d1-l18",
+          "speaker": "可欣",
+          "traditional": "還要準備「平平安安」的蘋果跟「大吉大利」的橘子。",
+          "simplified": "还要准备「平平安安」的苹果跟「大吉大利」的橘子。",
+          "pinyin": "Hái yào zhǔnbèi “píngpíng ān’ān” de píngguǒ gēn “dàjídàlì” de júzi.",
+          "english": "Also, we still have apples symbolizing peace, and tangerines symbolizing great fortune and great favor."
+        },
+        {
+          "id": "b2l14d1-l19",
+          "speaker": "以凡",
+          "traditional": "我了解了，真是又特別又豐富的大餐！",
+          "simplified": "我了解了，真是又特别又丰富的大餐！",
+          "pinyin": "Wǒ liǎojiě le, zhēn shì yòu tèbié yòu fēngfù de dàcān!",
+          "english": "I get it. It is really a special and abundant meal!"
+        },
+        {
+          "id": "b2l14d1-l20",
+          "speaker": "美心",
+          "traditional": "如果你跟我去爺爺奶奶家過年，今年的除夕就更加熱鬧了！",
+          "simplified": "如果你跟我去爷爷奶奶家过年，今年的除夕就更加热闹了！",
+          "pinyin": "Rúguǒ nǐ gēn wǒ qù yéye nǎinai jiā guònián, jīnnián de chúxī jiù gèngjiā rènào le!",
+          "english": "If you go to my grandparents’ house with me, this Chinese New Year’s Eve will be even more lively!"
+        },
+        {
+          "id": "b2l14d1-l21",
+          "speaker": "旁白",
+          "traditional": "（這個時候，以凡的手機響了，是媽媽寄給他的一封電子郵件，他看完以後很難過。）",
+          "simplified": "（这个时候，以凡的手机响了，是妈妈寄给他的一封电子邮件，他看完以后很难过。）",
+          "pinyin": "（Zhège shíhou, Yǐfán de shǒujī xiǎng le, shì māma jì gěi tā de yì fēng diànzǐ yóujiàn, tā kàn wán yǐhòu hěn nánguò）",
+          "english": "(At that moment Yifan’s cellphone rang. It was his mom sending him an email. He was very sad after reading it.)"
+        },
+        {
+          "id": "b2l14d1-l22",
+          "speaker": "以凡",
+          "traditional": "我媽媽說，她訂不到機票，寒假不能來看我了。",
+          "simplified": "我妈妈说，她订不到机票，寒假不能来看我了。",
+          "pinyin": "Wǒ māma shuō, tā dìng bu dào jīpiào, hánjià bù néng lái kàn wǒ le.",
+          "english": "My mom said that she couldn’t book the ticket so that she couldn’t come to see me during winter vacation."
+        },
+        {
+          "id": "b2l14d1-l23",
+          "speaker": "可欣",
+          "traditional": "沒關係，等過完年，我帶你去找我舅舅、舅媽，他們很親切，而且舅媽會做義大利麵，你可以吃吃看。",
+          "simplified": "没关系，等过完年，我带你去找我舅舅、舅妈，他们很亲切，而且舅妈会做意大利面，你可以吃吃看。",
+          "pinyin": "Méi guānxi, děng guò wánnián, wǒ dài nǐ qù zhǎo wǒ jiùjiu, jiùmā, tāmen hěn qīnqiè, érqiě jiùmā huì zuò Yìdàlìmiàn, nǐ kěyǐ chīchi kàn.",
+          "english": "It’s ok. After the Chinese New Year, I’ll take you to visit my uncle and aunt. They are very kind to people. Besides, my aunt can make pasta. You can try it."
+        },
+        {
+          "id": "b2l14d1-l24",
+          "speaker": "以凡",
+          "traditional": "（心裡感覺相當溫暖）好啊！太感謝妳了！",
+          "simplified": "（心里感觉相当温暖）好啊！太感谢妳了！",
+          "pinyin": "（Xīnlǐ gǎnjué xiāngdāng wēnnuǎn）Hǎo a! Tài gǎnxiè nǐ le!",
+          "english": "(Feels quite warm inside.) Alright! Thank you so much!"
+        },
+        {
+          "id": "b2l14d1-l25",
+          "speaker": "美心",
+          "traditional": "對了！元宵節那天，我可以帶你去看燈會，有的燈籠上面還畫了十二生肖。",
+          "simplified": "对了！元宵节那天，我可以带你去看灯会，有的灯笼上面还画了十二生肖。",
+          "pinyin": "Duì le! Yuánxiāojié nà tiān, wǒ kěyǐ dài nǐ qù kàn dēnghuì, yǒu de dēnglóng shàngmiàn hái huà le shí’èr shēngxiào.",
+          "english": "Oh! On Lantern Festival, I can take you to the lantern show. There are also zodiac paintings on some of the lanterns."
+        },
+        {
+          "id": "b2l14d1-l26",
+          "speaker": "以凡",
+          "traditional": "十二生肖？",
+          "simplified": "十二生肖？",
+          "pinyin": "Shí’èr shēngxiào?",
+          "english": "Zodiac?"
+        },
+        {
+          "id": "b2l14d1-l27",
+          "speaker": "可欣",
+          "traditional": "對啊！就是鼠、牛、虎、兔、龍、蛇、馬、羊、猴、雞、狗、豬。",
+          "simplified": "对啊！就是鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪。",
+          "pinyin": "Duì a! Jiù shì shǔ, niú, hǔ, tù, lóng, shé, mǎ, yáng, hóu, jī, gǒu, zhū.",
+          "english": "Right! It is the mouse, the cow, the tiger, the rabbit, the dragon, the snake, the horse, the sheep, the monkey, the chicken, the dog, and the pig."
+        },
+        {
+          "id": "b2l14d1-l28",
+          "speaker": "以凡",
+          "traditional": "妳說了這麼多動物，怎麼沒有貓呢？",
+          "simplified": "妳说了这么多动物，怎么没有猫呢？",
+          "pinyin": "Nǐ shuō le zhème duō dòngwù, zěnme méiyǒu māo ne?",
+          "english": "You mentioned so many animals. Why are there no cats?"
+        },
+        {
+          "id": "b2l14d1-l29",
+          "speaker": "美心",
+          "traditional": "有空我們再告訴你十二生肖的故事。你不知道我是屬虎的吧？",
+          "simplified": "有空我们再告诉你十二生肖的故事。你不知道我是属虎的吧？",
+          "pinyin": "Yǒu kòng wǒmen zài gàosu nǐ shí’èr shēngxiào de gùshi. Nǐ bù zhīdào wǒ shì shǔ hǔ de ba?",
+          "english": "When we have time, we will tell you the story of the zodiac. You don’t know that I was born in the year of the tiger?"
+        },
+        {
+          "id": "b2l14d1-l30",
+          "speaker": "以凡",
+          "traditional": "是嗎？難怪妳那麼愛生氣！",
+          "simplified": "是吗？难怪妳那么爱生气！",
+          "pinyin": "Shì ma? Nánguài nǐ nàme ài shēngqì!",
+          "english": "Were you? No wonder you enjoy getting angry so much!"
+        },
+        {
+          "id": "b2l14d1-l31",
+          "speaker": "大家",
+          "traditional": "哈哈哈……",
+          "simplified": "哈哈哈……",
+          "pinyin": "Hāhāhā…",
+          "english": "Hahaha..."
+        }
+      ]
+    },
+    "completionTitle": "Part 1 complete",
+    "completionDescription": "You’ve finished Part 1 of Lesson 14.",
+    "nextBookLabel": "Lesson 14 · Part 2"
+  },
+  "BOOK2_LESSON_FOURTEEN_PART_TWO": {
+    "id": "B2L14-P02-R01",
+    "bookId": 2,
+    "lessonId": 14,
+    "partId": 2,
+    "title": "Grammar 4–8 · Here Comes the “Nian”",
+    "grammarPages": [
+      {
+        "id": "B2L14-G04-P325",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 4,
+        "titleTraditional": "當……，就……",
+        "titleEnglish": "When… Then…",
+        "learnerPromise": "Link a situation with the result that follows right away.",
+        "printedPages": [
+          325
+        ],
+        "bookPage": 325,
+        "bookPageAvailable": false,
+        "audioReference": "14-3",
+        "explanation": "This pattern indicates when a situation occurs, another situation ensues right away. In this pattern, “當” is often followed by “……的時候”.",
+        "explanationEnglish": "This pattern indicates when a situation occurs, another situation ensues right away. In this pattern, “當” is often followed by “……的時候”.",
+        "sourceExplanationEnglish": "This pattern indicates when a situation occurs, another situation ensues right away. In this pattern, “當” is often followed by “……的時候”.",
+        "pattern": "當 + situation，（的時候）+ 就 + result",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g04-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "當警察一出現，小偷就趕快跑了。",
+              "simplified": "当警察一出现，小偷就赶快跑了。",
+              "pinyin": "Dāng jǐngchá yì chūxiàn, xiǎotōu jiù gǎnkuài pǎo le.",
+              "english": "When the police appeared, the thief quickly ran away.",
+              "words": [
+                {
+                  "traditional": "當",
+                  "simplified": "当",
+                  "pinyin": "dāng",
+                  "meaning": "when",
+                  "id": "b2l14-g04-ex1-w1"
+                },
+                {
+                  "traditional": "警察",
+                  "simplified": "警察",
+                  "pinyin": "jǐngchá",
+                  "meaning": "police",
+                  "id": "b2l14-g04-ex1-w2"
+                },
+                {
+                  "traditional": "一出現",
+                  "simplified": "一出现",
+                  "pinyin": "yì chūxiàn",
+                  "meaning": "as soon as appeared",
+                  "suffix": "，",
+                  "id": "b2l14-g04-ex1-w3"
+                },
+                {
+                  "traditional": "小偷",
+                  "simplified": "小偷",
+                  "pinyin": "xiǎotōu",
+                  "meaning": "thief",
+                  "id": "b2l14-g04-ex1-w4"
+                },
+                {
+                  "traditional": "就趕快跑了",
+                  "simplified": "就赶快跑了",
+                  "pinyin": "jiù gǎnkuài pǎo le",
+                  "meaning": "then quickly ran",
+                  "suffix": "。",
+                  "id": "b2l14-g04-ex1-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g04-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "當你覺得難過、生氣的時候，就應該去操場運動一下。",
+              "simplified": "当你觉得难过、生气的时候，就应该去操场运动一下。",
+              "pinyin": "Dāng nǐ juéde nánguò, shēngqì de shíhou, jiù yīnggāi qù cāochǎng yùndòng yíxià.",
+              "english": "When you feel sad or angry, you should go exercise on the sports field.",
+              "words": [
+                {
+                  "traditional": "當",
+                  "simplified": "当",
+                  "pinyin": "dāng",
+                  "meaning": "when",
+                  "id": "b2l14-g04-ex2-w1"
+                },
+                {
+                  "traditional": "你覺得",
+                  "simplified": "你觉得",
+                  "pinyin": "nǐ juéde",
+                  "meaning": "you feel",
+                  "id": "b2l14-g04-ex2-w2"
+                },
+                {
+                  "traditional": "難過",
+                  "simplified": "难过",
+                  "pinyin": "nánguò",
+                  "meaning": "sad",
+                  "suffix": "、",
+                  "id": "b2l14-g04-ex2-w3"
+                },
+                {
+                  "traditional": "生氣的時候",
+                  "simplified": "生气的时候",
+                  "pinyin": "shēngqì de shíhou",
+                  "meaning": "when angry",
+                  "id": "b2l14-g04-ex2-w4",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "就應該",
+                  "simplified": "就应该",
+                  "pinyin": "jiù yīnggāi",
+                  "meaning": "then should",
+                  "id": "b2l14-g04-ex2-w5"
+                },
+                {
+                  "traditional": "去操場",
+                  "simplified": "去操场",
+                  "pinyin": "qù cāochǎng",
+                  "meaning": "go to the sports field",
+                  "id": "b2l14-g04-ex2-w6"
+                },
+                {
+                  "traditional": "運動一下",
+                  "simplified": "运动一下",
+                  "pinyin": "yùndòng yíxià",
+                  "meaning": "exercise a little",
+                  "suffix": "。",
+                  "id": "b2l14-g04-ex2-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g04-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "當莫以凡第一天參加功夫社的時候，就愛上了中國功夫。",
+              "simplified": "当莫以凡第一天参加功夫社的时候，就爱上了中国功夫。",
+              "pinyin": "Dāng Mò Yǐfán dì yī tiān cānjiā gōngfu shè de shíhou, jiù ài shàng le Zhōngguó gōngfu.",
+              "english": "When Mo Yifan joined the kungfu club on his first day, he fell in love with Chinese kungfu.",
+              "words": [
+                {
+                  "traditional": "當",
+                  "simplified": "当",
+                  "pinyin": "dāng",
+                  "meaning": "when",
+                  "id": "b2l14-g04-ex3-w1"
+                },
+                {
+                  "traditional": "莫以凡",
+                  "simplified": "莫以凡",
+                  "pinyin": "Mò Yǐfán",
+                  "meaning": "Mo Yifan",
+                  "id": "b2l14-g04-ex3-w2"
+                },
+                {
+                  "traditional": "第一天",
+                  "simplified": "第一天",
+                  "pinyin": "dì yī tiān",
+                  "meaning": "first day",
+                  "id": "b2l14-g04-ex3-w3"
+                },
+                {
+                  "traditional": "參加功夫社的時候",
+                  "simplified": "参加功夫社的时候",
+                  "pinyin": "cānjiā gōngfu shè de shíhou",
+                  "meaning": "when joining the kungfu club",
+                  "suffix": "，",
+                  "id": "b2l14-g04-ex3-w4"
+                },
+                {
+                  "traditional": "就愛上了",
+                  "simplified": "就爱上了",
+                  "pinyin": "jiù ài shàng le",
+                  "meaning": "then fell in love with",
+                  "id": "b2l14-g04-ex3-w5"
+                },
+                {
+                  "traditional": "中國功夫",
+                  "simplified": "中国功夫",
+                  "pinyin": "Zhōngguó gōngfu",
+                  "meaning": "Chinese kungfu",
+                  "suffix": "。",
+                  "id": "b2l14-g04-ex3-w6"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete the dialogues with 當……，就…….",
+        "exerciseInstruction": "Answer each question with 當……，就…….",
+        "questions": []
+      },
+      {
+        "id": "B2L14-G05-P325",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 5,
+        "titleTraditional": "S＋讓＋NP（＋給）＋V了",
+        "titleEnglish": "The Usages of 讓",
+        "learnerPromise": "Use 讓 as a passive marker or as a verb meaning cause, allow, or let.",
+        "printedPages": [
+          325,
+          326
+        ],
+        "bookPage": 325,
+        "bookPageAvailable": false,
+        "audioReference": "14-3",
+        "explanation": "",
+        "explanationEnglish": "",
+        "sourceExplanationEnglish": "",
+        "pattern": "S + 讓 + NP（+ 給）+ V了",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g05-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "李先生剛買的照相機讓同事（給）弄壞了。",
+              "simplified": "李先生刚买的照相机让同事（给）弄坏了。",
+              "pinyin": "Lǐ xiānsheng gāng mǎi de zhàoxiàngjī ràng tóngshì (gěi) nòng huài le.",
+              "english": "The camera Mr. Li just bought was broken by a coworker.",
+              "words": [
+                {
+                  "traditional": "李先生",
+                  "simplified": "李先生",
+                  "pinyin": "Lǐ xiānsheng",
+                  "meaning": "Mr. Li",
+                  "id": "b2l14-g05-ex1-w1"
+                },
+                {
+                  "traditional": "剛買的照相機",
+                  "simplified": "刚买的照相机",
+                  "pinyin": "gāng mǎi de zhàoxiàngjī",
+                  "meaning": "camera just bought",
+                  "id": "b2l14-g05-ex1-w2"
+                },
+                {
+                  "traditional": "讓同事",
+                  "simplified": "让同事",
+                  "pinyin": "ràng tóngshì",
+                  "meaning": "by a coworker",
+                  "id": "b2l14-g05-ex1-w3"
+                },
+                {
+                  "traditional": "（給）",
+                  "simplified": "（给）",
+                  "pinyin": "gěi",
+                  "meaning": "optional marker",
+                  "id": "b2l14-g05-ex1-w4"
+                },
+                {
+                  "traditional": "弄壞了",
+                  "simplified": "弄坏了",
+                  "pinyin": "nòng huài le",
+                  "meaning": "was broken",
+                  "suffix": "。",
+                  "id": "b2l14-g05-ex1-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g05-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "每次跟朋友去 KTV 唱歌，都讓他非常開心。",
+              "simplified": "每次跟朋友去 KTV 唱歌，都让他非常开心。",
+              "pinyin": "Měicì gēn péngyou qù KTV chànggē, dōu ràng tā fēicháng kāixīn.",
+              "english": "Every time he goes to KTV to sing with friends, it makes him very happy.",
+              "words": [
+                {
+                  "traditional": "每次",
+                  "simplified": "每次",
+                  "pinyin": "měicì",
+                  "meaning": "every time",
+                  "suffix": "",
+                  "id": "b2l14-g05-ex2-w1"
+                },
+                {
+                  "traditional": "跟朋友",
+                  "simplified": "跟朋友",
+                  "pinyin": "gēn péngyou",
+                  "meaning": "with friends",
+                  "suffix": "",
+                  "id": "b2l14-g05-ex2-w2"
+                },
+                {
+                  "traditional": "去",
+                  "simplified": "去",
+                  "pinyin": "qù",
+                  "meaning": "go",
+                  "suffix": "",
+                  "id": "b2l14-g05-ex2-w3"
+                },
+                {
+                  "traditional": " KTV ",
+                  "simplified": " KTV ",
+                  "pinyin": "KTV",
+                  "meaning": "KTV",
+                  "suffix": "",
+                  "id": "b2l14-g05-ex2-w4"
+                },
+                {
+                  "traditional": "唱歌",
+                  "simplified": "唱歌",
+                  "pinyin": "chànggē",
+                  "meaning": "sing",
+                  "suffix": "，",
+                  "id": "b2l14-g05-ex2-w5"
+                },
+                {
+                  "traditional": "都讓他",
+                  "simplified": "都让他",
+                  "pinyin": "dōu ràng tā",
+                  "meaning": "make him",
+                  "suffix": "",
+                  "id": "b2l14-g05-ex2-w6"
+                },
+                {
+                  "traditional": "非常開心",
+                  "simplified": "非常开心",
+                  "pinyin": "fēicháng kāixīn",
+                  "meaning": "very happy",
+                  "suffix": "。",
+                  "id": "b2l14-g05-ex2-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g05-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "我不舒服，老師讓我早一點兒回家休息。",
+              "simplified": "我不舒服，老师让我早一点儿回家休息。",
+              "pinyin": "Wǒ bù shūfu, lǎoshī ràng wǒ zǎo yìdiǎnr huí jiā xiūxi.",
+              "english": "I didn’t feel well, so the teacher let me go home early to rest.",
+              "words": [
+                {
+                  "traditional": "我不舒服",
+                  "simplified": "我不舒服",
+                  "pinyin": "wǒ bù shūfu",
+                  "meaning": "I feel unwell",
+                  "suffix": "，",
+                  "id": "b2l14-g05-ex3-w1"
+                },
+                {
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher",
+                  "id": "b2l14-g05-ex3-w2"
+                },
+                {
+                  "traditional": "讓我",
+                  "simplified": "让我",
+                  "pinyin": "ràng wǒ",
+                  "meaning": "let me",
+                  "id": "b2l14-g05-ex3-w3"
+                },
+                {
+                  "traditional": "早一點兒",
+                  "simplified": "早一点儿",
+                  "pinyin": "zǎo yìdiǎnr",
+                  "meaning": "a little earlier",
+                  "id": "b2l14-g05-ex3-w4"
+                },
+                {
+                  "traditional": "回家休息",
+                  "simplified": "回家休息",
+                  "pinyin": "huí jiā xiūxi",
+                  "meaning": "go home and rest",
+                  "suffix": "。",
+                  "id": "b2l14-g05-ex3-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g05-ex4",
+            "number": 4,
+            "text": {
+              "traditional": "媽媽讓孩子把臥室打掃好了以後，才能玩遊戲。",
+              "simplified": "妈妈让孩子把卧室打扫好了以后，才能玩游戏。",
+              "pinyin": "Māma ràng háizi bǎ wòshì dǎsǎo hǎo le yǐhòu, cái néng wán yóuxì.",
+              "english": "Mom told the child to finish cleaning the bedroom before playing games.",
+              "words": [
+                {
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mother",
+                  "id": "b2l14-g05-ex4-w1"
+                },
+                {
+                  "traditional": "讓孩子",
+                  "simplified": "让孩子",
+                  "pinyin": "ràng háizi",
+                  "meaning": "told the child to",
+                  "id": "b2l14-g05-ex4-w2"
+                },
+                {
+                  "traditional": "把臥室",
+                  "simplified": "把卧室",
+                  "pinyin": "bǎ wòshì",
+                  "meaning": "the bedroom",
+                  "id": "b2l14-g05-ex4-w3"
+                },
+                {
+                  "traditional": "打掃好了",
+                  "simplified": "打扫好了",
+                  "pinyin": "dǎsǎo hǎo le",
+                  "meaning": "finish cleaning",
+                  "id": "b2l14-g05-ex4-w4"
+                },
+                {
+                  "traditional": "以後",
+                  "simplified": "以后",
+                  "pinyin": "yǐhòu",
+                  "meaning": "after that",
+                  "id": "b2l14-g05-ex4-w5",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "才能",
+                  "simplified": "才能",
+                  "pinyin": "cái néng",
+                  "meaning": "only then can",
+                  "id": "b2l14-g05-ex4-w6"
+                },
+                {
+                  "traditional": "玩遊戲",
+                  "simplified": "玩游戏",
+                  "pinyin": "wán yóuxì",
+                  "meaning": "play games",
+                  "suffix": "。",
+                  "id": "b2l14-g05-ex4-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g05-ex5",
+            "number": 5,
+            "text": {
+              "traditional": "老闆讓我留下來把筆電修好，才讓我下班。這件事讓我很生氣。",
+              "simplified": "老板让我留下来把笔电修好，才让我下班。这件事让我很生气。",
+              "pinyin": "Lǎobǎn ràng wǒ liú xiàlái bǎ bǐdiàn xiū hǎo, cái ràng wǒ xiàbān. Zhè jiàn shì ràng wǒ hěn shēngqì.",
+              "english": "The boss made me stay and fix the laptop before letting me leave work. This made me very angry.",
+              "words": [
+                {
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "lǎobǎn",
+                  "meaning": "boss",
+                  "id": "b2l14-g05-ex5-w1"
+                },
+                {
+                  "traditional": "讓我留下來",
+                  "simplified": "让我留下来",
+                  "pinyin": "ràng wǒ liú xiàlái",
+                  "meaning": "made me stay",
+                  "id": "b2l14-g05-ex5-w2"
+                },
+                {
+                  "traditional": "把筆電修好",
+                  "simplified": "把笔电修好",
+                  "pinyin": "bǎ bǐdiàn xiū hǎo",
+                  "meaning": "fix the laptop",
+                  "suffix": "，",
+                  "id": "b2l14-g05-ex5-w3"
+                },
+                {
+                  "traditional": "才讓我下班",
+                  "simplified": "才让我下班",
+                  "pinyin": "cái ràng wǒ xiàbān",
+                  "meaning": "only then let me leave work",
+                  "suffix": "。",
+                  "id": "b2l14-g05-ex5-w4"
+                },
+                {
+                  "traditional": "這件事",
+                  "simplified": "这件事",
+                  "pinyin": "zhè jiàn shì",
+                  "meaning": "this matter",
+                  "id": "b2l14-g05-ex5-w5"
+                },
+                {
+                  "traditional": "讓我很生氣",
+                  "simplified": "让我很生气",
+                  "pinyin": "ràng wǒ hěn shēngqì",
+                  "meaning": "made me very angry",
+                  "suffix": "。",
+                  "id": "b2l14-g05-ex5-w6"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete the sentences with 讓.",
+        "exerciseInstruction": "Complete the sentences with 讓.",
+        "questions": [],
+        "subsections": [
+          {
+            "id": "b2l14-g05-sec1",
+            "sectionNumber": 1,
+            "title": "Used as Preposition",
+            "explanation": "This pattern functions as the passive voice expression. The usage of “讓” here is similar to “被”; however, the Agent after “被” can be omitted while after “讓” cannot be.",
+            "pattern": "S + 讓 + NP（+ 給）+ V了",
+            "patternColumns": [
+              "Subject",
+              "讓 + Agent",
+              "Verb + 了"
+            ],
+            "patternRows": [],
+            "exampleIds": [
+              "b2l14-g05-ex1"
+            ]
+          },
+          {
+            "id": "b2l14-g05-sec2",
+            "sectionNumber": 2,
+            "title": "Used as Verb",
+            "explanation": "(1) to make someone ..., to cause something to happen\n(2) to allow, to permit someone to do something\n(3) to let someone do something or to have someone do something: This usage of imperative “讓” is more polite and euphemistic.",
+            "patternRows": [],
+            "exampleIds": [
+              "b2l14-g05-ex2",
+              "b2l14-g05-ex3",
+              "b2l14-g05-ex4",
+              "b2l14-g05-ex5"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B2L14-G06-P327",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 6,
+        "titleTraditional": "無所謂",
+        "titleEnglish": "It Doesn’t Matter",
+        "learnerPromise": "Say that a choice or situation does not matter to someone.",
+        "printedPages": [
+          327
+        ],
+        "bookPage": 327,
+        "bookPageAvailable": false,
+        "audioReference": "14-3",
+        "explanation": "This pattern is often placed after the things the speaker feels indifferent to or does not care about. It can also be used independently.",
+        "explanationEnglish": "This pattern is often placed after the things the speaker feels indifferent to or does not care about. It can also be used independently.",
+        "sourceExplanationEnglish": "This pattern is often placed after the things the speaker feels indifferent to or does not care about. It can also be used independently.",
+        "pattern": "(Thing) + 無所謂",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g06-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "父母覺得孩子胖或是瘦都無所謂，只要健康就好了。",
+              "simplified": "父母觉得孩子胖或是瘦都无所谓，只要健康就好了。",
+              "pinyin": "Fùmǔ juéde háizi pàng huòshì shòu dōu wúsuǒwèi, zhǐyào jiànkāng jiù hǎo le.",
+              "english": "The parents don’t mind whether their child is fat or thin, as long as the child is healthy.",
+              "words": [
+                {
+                  "traditional": "父母覺得",
+                  "simplified": "父母觉得",
+                  "pinyin": "fùmǔ juéde",
+                  "meaning": "the parents think",
+                  "id": "b2l14-g06-ex1-w1"
+                },
+                {
+                  "traditional": "孩子",
+                  "simplified": "孩子",
+                  "pinyin": "háizi",
+                  "meaning": "child",
+                  "id": "b2l14-g06-ex1-w2"
+                },
+                {
+                  "traditional": "胖或是瘦",
+                  "simplified": "胖或是瘦",
+                  "pinyin": "pàng huòshì shòu",
+                  "meaning": "fat or thin",
+                  "id": "b2l14-g06-ex1-w3"
+                },
+                {
+                  "traditional": "都無所謂",
+                  "simplified": "都无所谓",
+                  "pinyin": "dōu wúsuǒwèi",
+                  "meaning": "doesn’t matter",
+                  "suffix": "，",
+                  "id": "b2l14-g06-ex1-w4"
+                },
+                {
+                  "traditional": "只要健康",
+                  "simplified": "只要健康",
+                  "pinyin": "zhǐyào jiànkāng",
+                  "meaning": "as long as healthy",
+                  "id": "b2l14-g06-ex1-w5"
+                },
+                {
+                  "traditional": "就好了",
+                  "simplified": "就好了",
+                  "pinyin": "jiù hǎo le",
+                  "meaning": "that is enough",
+                  "suffix": "。",
+                  "id": "b2l14-g06-ex1-w6"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g06-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "太太：這個週末我們要去哪裡玩？先生：妳決定吧！我無所謂。",
+              "simplified": "太太：这个周末我们要去哪里玩？先生：妳决定吧！我无所谓。",
+              "pinyin": "Tàitai: Zhège zhōumò wǒmen yào qù nǎlǐ wán? Xiānsheng: Nǐ juédìng ba! Wǒ wúsuǒwèi.",
+              "english": "Wife: Where should we go this weekend? Husband: You decide! I don’t mind.",
+              "words": [
+                {
+                  "traditional": "太太",
+                  "simplified": "太太",
+                  "pinyin": "Tàitai",
+                  "meaning": "太太 (speaker)",
+                  "id": "b2l14-g06-ex2-w1",
+                  "suffix": "："
+                },
+                {
+                  "traditional": "這個週末",
+                  "simplified": "这个周末",
+                  "pinyin": "zhège zhōumò",
+                  "meaning": "this weekend",
+                  "id": "b2l14-g06-ex2-w2"
+                },
+                {
+                  "traditional": "我們要",
+                  "simplified": "我们要",
+                  "pinyin": "wǒmen yào",
+                  "meaning": "should we",
+                  "id": "b2l14-g06-ex2-w3"
+                },
+                {
+                  "traditional": "去哪裡玩",
+                  "simplified": "去哪里玩",
+                  "pinyin": "qù nǎlǐ wán",
+                  "meaning": "go have fun",
+                  "suffix": "？",
+                  "id": "b2l14-g06-ex2-w4"
+                },
+                {
+                  "traditional": "先生",
+                  "simplified": "先生",
+                  "pinyin": "Xiānsheng",
+                  "meaning": "先生 (speaker)",
+                  "id": "b2l14-g06-ex2-w5",
+                  "suffix": "："
+                },
+                {
+                  "traditional": "妳決定吧",
+                  "simplified": "妳决定吧",
+                  "pinyin": "nǐ juédìng ba",
+                  "meaning": "you decide",
+                  "suffix": "！",
+                  "id": "b2l14-g06-ex2-w6"
+                },
+                {
+                  "traditional": "我無所謂",
+                  "simplified": "我无所谓",
+                  "pinyin": "wǒ wúsuǒwèi",
+                  "meaning": "I don’t mind",
+                  "suffix": "。",
+                  "id": "b2l14-g06-ex2-w7"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g06-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "老闆：歡迎你來我的餐廳打工，可是錢不多，你願意嗎？學生：錢多不多無所謂，只要能得到寶貴的經驗就好了。",
+              "simplified": "老板：欢迎你来我的餐厅打工，可是钱不多，你愿意吗？学生：钱多不多无所谓，只要能得到宝贵的经验就好了。",
+              "pinyin": "Lǎobǎn: Huānyíng nǐ lái wǒ de cāntīng dǎgōng, kěshì qián bù duō, nǐ yuànyì ma? Xuésheng: Qián duō bu duō wúsuǒwèi, zhǐyào néng dédào bǎoguì de jīngyàn jiù hǎo le.",
+              "english": "Boss: Welcome to work at my restaurant, but the pay is low. Are you willing? Student: Whether the pay is high or low doesn’t matter, as long as I can gain valuable experience.",
+              "words": [
+                {
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "Lǎobǎn",
+                  "meaning": "老闆 (speaker)",
+                  "id": "b2l14-g06-ex3-w1",
+                  "suffix": "："
+                },
+                {
+                  "traditional": "歡迎你",
+                  "simplified": "欢迎你",
+                  "pinyin": "huānyíng nǐ",
+                  "meaning": "welcome you",
+                  "id": "b2l14-g06-ex3-w2"
+                },
+                {
+                  "traditional": "來我的餐廳打工",
+                  "simplified": "来我的餐厅打工",
+                  "pinyin": "lái wǒ de cāntīng dǎgōng",
+                  "meaning": "work at my restaurant",
+                  "suffix": "，",
+                  "id": "b2l14-g06-ex3-w3"
+                },
+                {
+                  "traditional": "可是",
+                  "simplified": "可是",
+                  "pinyin": "kěshì",
+                  "meaning": "but",
+                  "id": "b2l14-g06-ex3-w4"
+                },
+                {
+                  "traditional": "錢不多",
+                  "simplified": "钱不多",
+                  "pinyin": "qián bù duō",
+                  "meaning": "the pay is not much",
+                  "id": "b2l14-g06-ex3-w5",
+                  "suffix": "，"
+                },
+                {
+                  "traditional": "你願意嗎",
+                  "simplified": "你愿意吗",
+                  "pinyin": "nǐ yuànyì ma",
+                  "meaning": "are you willing",
+                  "suffix": "？",
+                  "id": "b2l14-g06-ex3-w6"
+                },
+                {
+                  "traditional": "學生",
+                  "simplified": "学生",
+                  "pinyin": "Xuésheng",
+                  "meaning": "學生 (speaker)",
+                  "id": "b2l14-g06-ex3-w7",
+                  "suffix": "："
+                },
+                {
+                  "traditional": "錢多不多",
+                  "simplified": "钱多不多",
+                  "pinyin": "qián duō bu duō",
+                  "meaning": "whether the pay is high or low",
+                  "id": "b2l14-g06-ex3-w8"
+                },
+                {
+                  "traditional": "無所謂",
+                  "simplified": "无所谓",
+                  "pinyin": "wúsuǒwèi",
+                  "meaning": "doesn’t matter",
+                  "suffix": "，",
+                  "id": "b2l14-g06-ex3-w9"
+                },
+                {
+                  "traditional": "只要能得到",
+                  "simplified": "只要能得到",
+                  "pinyin": "zhǐyào néng dédào",
+                  "meaning": "as long as I can gain",
+                  "id": "b2l14-g06-ex3-w10"
+                },
+                {
+                  "traditional": "寶貴的經驗",
+                  "simplified": "宝贵的经验",
+                  "pinyin": "bǎoguì de jīngyàn",
+                  "meaning": "valuable experience",
+                  "id": "b2l14-g06-ex3-w11"
+                },
+                {
+                  "traditional": "就好了",
+                  "simplified": "就好了",
+                  "pinyin": "jiù hǎo le",
+                  "meaning": "that is enough",
+                  "suffix": "。",
+                  "id": "b2l14-g06-ex3-w12"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete each response with 無所謂.",
+        "exerciseInstruction": "Complete the dialogues.",
+        "questions": []
+      },
+      {
+        "id": "B2L14-G07-P328",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 7,
+        "titleTraditional": "V走：V走了／沒V走／V得走／V不走",
+        "titleEnglish": "V Away",
+        "learnerPromise": "Use 走 after a verb to show that something leaves or disappears, or that an action can or cannot make it leave.",
+        "printedPages": [
+          328
+        ],
+        "bookPage": 328,
+        "bookPageAvailable": false,
+        "audioReference": "14-3",
+        "explanation": "In this pattern, V can be action verbs, such as “搬（move）”, “拿（take）”, “帶（bring）”, “跑（run）”, “趕（drive）”, “嚇（scare）”, etc. “走” means “to go” or “to leave”. The “走” after the verb, used as post verb complement, means to leave or to disappear.",
+        "explanationEnglish": "In this pattern, V can be action verbs, such as “搬（move）”, “拿（take）”, “帶（bring）”, “跑（run）”, “趕（drive）”, “嚇（scare）”, etc. “走” means “to go” or “to leave”. The “走” after the verb, used as post verb complement, means to leave or to disappear.",
+        "sourceExplanationEnglish": "In this pattern, V can be action verbs, such as “搬（move）”, “拿（take）”, “帶（bring）”, “跑（run）”, “趕（drive）”, “嚇（scare）”, etc. “走” means “to go” or “to leave”. The “走” after the verb, used as post verb complement, means to leave or to disappear.",
+        "pattern": "V + 走了／沒 + V + 走／V + 得走／V + 不走",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g07-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "你們說話的聲音太大了，把孩子們都嚇走了。",
+              "simplified": "你们说话的声音太大了，把孩子们都吓走了。",
+              "pinyin": "Nǐmen shuōhuà de shēngyīn tài dà le, bǎ háizimen dōu xià zǒu le.",
+              "english": "Your voices were so loud that you scared the children away.",
+              "words": [
+                {
+                  "traditional": "你們說話的聲音",
+                  "simplified": "你们说话的声音",
+                  "pinyin": "nǐmen shuōhuà de shēngyīn",
+                  "meaning": "your speaking voices",
+                  "id": "b2l14-g07-ex1-w1"
+                },
+                {
+                  "traditional": "太大了",
+                  "simplified": "太大了",
+                  "pinyin": "tài dà le",
+                  "meaning": "were too loud",
+                  "suffix": "，",
+                  "id": "b2l14-g07-ex1-w2"
+                },
+                {
+                  "traditional": "把孩子們",
+                  "simplified": "把孩子们",
+                  "pinyin": "bǎ háizimen",
+                  "meaning": "the children",
+                  "id": "b2l14-g07-ex1-w3"
+                },
+                {
+                  "traditional": "都嚇走了",
+                  "simplified": "都吓走了",
+                  "pinyin": "dōu xià zǒu le",
+                  "meaning": "all scared away",
+                  "suffix": "。",
+                  "id": "b2l14-g07-ex1-w4"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g07-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "良介已經不住在宿舍了，他上個學期末就搬走了。",
+              "simplified": "良介已经不住在宿舍了，他上个学期末就搬走了。",
+              "pinyin": "Liángjiè yǐjīng bú zhù zài sùshè le, tā shàng ge xuéqī mò jiù bān zǒu le.",
+              "english": "Ryosuke no longer lives in the dorm; he moved out at the end of last semester.",
+              "words": [
+                {
+                  "traditional": "良介",
+                  "simplified": "良介",
+                  "pinyin": "Liángjiè",
+                  "meaning": "Ryosuke",
+                  "id": "b2l14-g07-ex2-w1"
+                },
+                {
+                  "traditional": "已經不住在宿舍了",
+                  "simplified": "已经不住在宿舍了",
+                  "pinyin": "yǐjīng bú zhù zài sùshè le",
+                  "meaning": "no longer lives in the dorm",
+                  "suffix": "，",
+                  "id": "b2l14-g07-ex2-w2"
+                },
+                {
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "id": "b2l14-g07-ex2-w3"
+                },
+                {
+                  "traditional": "上個學期末",
+                  "simplified": "上个学期末",
+                  "pinyin": "shàng ge xuéqī mò",
+                  "meaning": "at the end of last semester",
+                  "id": "b2l14-g07-ex2-w4"
+                },
+                {
+                  "traditional": "就搬走了",
+                  "simplified": "就搬走了",
+                  "pinyin": "jiù bān zǒu le",
+                  "meaning": "moved out then",
+                  "suffix": "。",
+                  "id": "b2l14-g07-ex2-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g07-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "這些小說是她要送給同學的，所以回國的時候沒帶走。",
+              "simplified": "这些小说是她要送给同学的，所以回国的时候没带走。",
+              "pinyin": "Zhèxiē xiǎoshuō shì tā yào sòng gěi tóngxué de, suǒyǐ huíguó de shíhou méi dài zǒu.",
+              "english": "These novels are for her classmates, so she didn’t take them with her when she returned home.",
+              "words": [
+                {
+                  "traditional": "這些小說",
+                  "simplified": "这些小说",
+                  "pinyin": "zhèxiē xiǎoshuō",
+                  "meaning": "these novels",
+                  "id": "b2l14-g07-ex3-w1"
+                },
+                {
+                  "traditional": "是她要送給同學的",
+                  "simplified": "是她要送给同学的",
+                  "pinyin": "shì tā yào sòng gěi tóngxué de",
+                  "meaning": "are what she plans to give her classmates",
+                  "suffix": "，",
+                  "id": "b2l14-g07-ex3-w2"
+                },
+                {
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "meaning": "so",
+                  "id": "b2l14-g07-ex3-w3"
+                },
+                {
+                  "traditional": "回國的時候",
+                  "simplified": "回国的时候",
+                  "pinyin": "huíguó de shíhou",
+                  "meaning": "when returning home",
+                  "id": "b2l14-g07-ex3-w4"
+                },
+                {
+                  "traditional": "沒帶走",
+                  "simplified": "没带走",
+                  "pinyin": "méi dài zǒu",
+                  "meaning": "did not take away",
+                  "suffix": "。",
+                  "id": "b2l14-g07-ex3-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g07-ex4",
+            "number": 4,
+            "text": {
+              "traditional": "把錢存在銀行很安全，誰偷得走呢？",
+              "simplified": "把钱存在银行很安全，谁偷得走呢？",
+              "pinyin": "Bǎ qián cún zài yínháng hěn ānquán, shéi tōu de zǒu ne?",
+              "english": "It’s safe to keep money in the bank. Who could steal it?",
+              "words": [
+                {
+                  "traditional": "把錢存在銀行",
+                  "simplified": "把钱存在银行",
+                  "pinyin": "bǎ qián cún zài yínháng",
+                  "meaning": "keep money in the bank",
+                  "id": "b2l14-g07-ex4-w1"
+                },
+                {
+                  "traditional": "很安全",
+                  "simplified": "很安全",
+                  "pinyin": "hěn ānquán",
+                  "meaning": "is very safe",
+                  "suffix": "，",
+                  "id": "b2l14-g07-ex4-w2"
+                },
+                {
+                  "traditional": "誰",
+                  "simplified": "谁",
+                  "pinyin": "shéi",
+                  "meaning": "who",
+                  "id": "b2l14-g07-ex4-w3"
+                },
+                {
+                  "traditional": "偷得走",
+                  "simplified": "偷得走",
+                  "pinyin": "tōu de zǒu",
+                  "meaning": "could steal away",
+                  "id": "b2l14-g07-ex4-w4"
+                },
+                {
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "question particle",
+                  "suffix": "？",
+                  "id": "b2l14-g07-ex4-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g07-ex5",
+            "number": 5,
+            "text": {
+              "traditional": "有一隻蟲子飛進我的房間裡，怎麼趕都趕不走。",
+              "simplified": "有一只虫子飞进我的房间里，怎么赶都赶不走。",
+              "pinyin": "Yǒu yì zhī chóngzi fēi jìn wǒ de fángjiān lǐ, zěnme gǎn dōu gǎn bù zǒu.",
+              "english": "A bug flew into my room, and no matter how I shoo it, I can’t get it to leave.",
+              "words": [
+                {
+                  "traditional": "有一隻蟲子",
+                  "simplified": "有一只虫子",
+                  "pinyin": "yǒu yì zhī chóngzi",
+                  "meaning": "there is a bug",
+                  "id": "b2l14-g07-ex5-w1"
+                },
+                {
+                  "traditional": "飛進我的房間裡",
+                  "simplified": "飞进我的房间里",
+                  "pinyin": "fēi jìn wǒ de fángjiān lǐ",
+                  "meaning": "flew into my room",
+                  "suffix": "，",
+                  "id": "b2l14-g07-ex5-w2"
+                },
+                {
+                  "traditional": "怎麼趕",
+                  "simplified": "怎么赶",
+                  "pinyin": "zěnme gǎn",
+                  "meaning": "no matter how I shoo it",
+                  "id": "b2l14-g07-ex5-w3"
+                },
+                {
+                  "traditional": "都趕不走",
+                  "simplified": "都赶不走",
+                  "pinyin": "dōu gǎn bù zǒu",
+                  "meaning": "still cannot drive away",
+                  "suffix": "。",
+                  "id": "b2l14-g07-ex5-w4"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete the conversations with V走.",
+        "exerciseInstruction": "Complete the conversations with V走.",
+        "questions": []
+      },
+      {
+        "id": "B2L14-G08-P329",
+        "bookId": 2,
+        "lessonId": 14,
+        "partId": 2,
+        "lessonTitle": "年年有「魚」",
+        "lessonTitleEnglish": "Fish on the Dish, Abundance Year after Year",
+        "grammarNumber": 8,
+        "titleTraditional": "要不是",
+        "titleEnglish": "If It Were Not for…",
+        "learnerPromise": "Name an accomplished fact that prevented a different situation from happening.",
+        "printedPages": [
+          329
+        ],
+        "bookPage": 329,
+        "bookPageAvailable": false,
+        "audioReference": "14-3",
+        "explanation": "“要不是” is followed by an accomplished fact. Without the fact, a following situation would occur. That is, the following situation did not really occur.",
+        "explanationEnglish": "“要不是” is followed by an accomplished fact. Without the fact, a following situation would occur. That is, the following situation did not really occur.",
+        "sourceExplanationEnglish": "“要不是” is followed by an accomplished fact. Without the fact, a following situation would occur. That is, the following situation did not really occur.",
+        "pattern": "要不是 + accomplished fact，result that would otherwise occur",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "id": "b2l14-g08-ex1",
+            "number": 1,
+            "text": {
+              "traditional": "要不是春假去了阿里山，我就看不到那麼美麗的日出了。",
+              "simplified": "要不是春假去了阿里山，我就看不到那么美丽的日出了。",
+              "pinyin": "Yàobúshì chūnjià qù le Ālǐshān, wǒ jiù kàn bú dào nàme měilì de rìchū le.",
+              "english": "If I hadn’t gone to Alishan during spring break, I wouldn’t have seen such a beautiful sunrise.",
+              "words": [
+                {
+                  "traditional": "要不是",
+                  "simplified": "要不是",
+                  "pinyin": "yàobúshì",
+                  "meaning": "if it were not for",
+                  "id": "b2l14-g08-ex1-w1"
+                },
+                {
+                  "traditional": "春假去了阿里山",
+                  "simplified": "春假去了阿里山",
+                  "pinyin": "chūnjià qù le Ālǐshān",
+                  "meaning": "went to Alishan during spring break",
+                  "suffix": "，",
+                  "id": "b2l14-g08-ex1-w2"
+                },
+                {
+                  "traditional": "我就看不到",
+                  "simplified": "我就看不到",
+                  "pinyin": "wǒ jiù kàn bú dào",
+                  "meaning": "I would not see",
+                  "id": "b2l14-g08-ex1-w3"
+                },
+                {
+                  "traditional": "那麼美麗的日出了",
+                  "simplified": "那么美丽的日出了",
+                  "pinyin": "nàme měilì de rìchū le",
+                  "meaning": "such a beautiful sunrise",
+                  "suffix": "。",
+                  "id": "b2l14-g08-ex1-w4"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g08-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "要不是去同學家過年，莫以凡一個人在宿舍一定會很無聊的。",
+              "simplified": "要不是去同学家过年，莫以凡一个人在宿舍一定会很无聊的。",
+              "pinyin": "Yàobúshì qù tóngxué jiā guònián, Mò Yǐfán yí ge rén zài sùshè yídìng huì hěn wúliáo de.",
+              "english": "If he hadn’t gone to a classmate’s home for New Year, Mo Yifan would have been very bored alone in the dorm.",
+              "words": [
+                {
+                  "traditional": "要不是",
+                  "simplified": "要不是",
+                  "pinyin": "yàobúshì",
+                  "meaning": "if it were not for",
+                  "id": "b2l14-g08-ex2-w1"
+                },
+                {
+                  "traditional": "去同學家過年",
+                  "simplified": "去同学家过年",
+                  "pinyin": "qù tóngxué jiā guònián",
+                  "meaning": "celebrating New Year at a classmate’s home",
+                  "suffix": "，",
+                  "id": "b2l14-g08-ex2-w2"
+                },
+                {
+                  "traditional": "莫以凡",
+                  "simplified": "莫以凡",
+                  "pinyin": "Mò Yǐfán",
+                  "meaning": "Mo Yifan",
+                  "id": "b2l14-g08-ex2-w3"
+                },
+                {
+                  "traditional": "一個人在宿舍",
+                  "simplified": "一个人在宿舍",
+                  "pinyin": "yí ge rén zài sùshè",
+                  "meaning": "alone in the dorm",
+                  "id": "b2l14-g08-ex2-w4"
+                },
+                {
+                  "traditional": "一定會很無聊的",
+                  "simplified": "一定会很无聊的",
+                  "pinyin": "yídìng huì hěn wúliáo de",
+                  "meaning": "would certainly be very bored",
+                  "suffix": "。",
+                  "id": "b2l14-g08-ex2-w5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2l14-g08-ex3",
+            "number": 3,
+            "text": {
+              "traditional": "要不是住過民宿，我就不知道有些民宿比飯店更舒服呢！",
+              "simplified": "要不是住过民宿，我就不知道有些民宿比饭店更舒服呢！",
+              "pinyin": "Yàobúshì zhù guo mínsù, wǒ jiù bù zhīdào yǒuxiē mínsù bǐ fàndiàn gèng shūfu ne!",
+              "english": "If I hadn’t stayed at a homestay, I wouldn’t know that some homestays are more comfortable than hotels!",
+              "words": [
+                {
+                  "traditional": "要不是",
+                  "simplified": "要不是",
+                  "pinyin": "yàobúshì",
+                  "meaning": "if it were not for",
+                  "id": "b2l14-g08-ex3-w1"
+                },
+                {
+                  "traditional": "住過民宿",
+                  "simplified": "住过民宿",
+                  "pinyin": "zhù guo mínsù",
+                  "meaning": "stayed at a homestay",
+                  "suffix": "，",
+                  "id": "b2l14-g08-ex3-w2"
+                },
+                {
+                  "traditional": "我就不知道",
+                  "simplified": "我就不知道",
+                  "pinyin": "wǒ jiù bù zhīdào",
+                  "meaning": "I would not know",
+                  "id": "b2l14-g08-ex3-w3"
+                },
+                {
+                  "traditional": "有些民宿",
+                  "simplified": "有些民宿",
+                  "pinyin": "yǒuxiē mínsù",
+                  "meaning": "some homestays",
+                  "id": "b2l14-g08-ex3-w4"
+                },
+                {
+                  "traditional": "比飯店更舒服",
+                  "simplified": "比饭店更舒服",
+                  "pinyin": "bǐ fàndiàn gèng shūfu",
+                  "meaning": "more comfortable than hotels",
+                  "id": "b2l14-g08-ex3-w5"
+                },
+                {
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "sentence-final particle",
+                  "suffix": "！",
+                  "id": "b2l14-g08-ex3-w6"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Practice",
+        "exercisePreview": "Complete the dialogues with 要不是.",
+        "exerciseInstruction": "Complete the dialogues with 要不是.",
+        "questions": []
+      }
+    ],
+    "dialogue": {
+      "id": "B2L14-D02",
+      "title": "「年」來了！",
+      "setting": "短文 · Reading",
+      "printedPages": [
+        319,
+        320
+      ],
+      "audioReference": "14-2-1",
+      "grammarFocus": [
+        "當……，就……",
+        "S＋讓＋NP（＋給）＋V了",
+        "無所謂",
+        "V走：V走了／沒V走／V得走／V不走",
+        "要不是"
+      ],
+      "lines": [
+        {
+          "id": "b2l14d2-l1",
+          "speaker": "旁白",
+          "traditional": "從前，有一隻住在海裡的怪獸，名字叫「年」。從一月到十二月，「年」都在睡覺，什麼東西都不吃。到了除夕，當天一黑，「年」就會出來找東西吃。雞、鴨、人等動物，「年」都吃，讓大家非常害怕，不能好好地過日子，只好帶著一些食物，趕快跑到山上去。",
+          "simplified": "从前，有一只住在海里的怪兽，名字叫「年」。从一月到十二月，「年」都在睡觉，什么东西都不吃。到了除夕，当天一黑，「年」就会出来找东西吃。鸡、鸭、人等动物，「年」都吃，让大家非常害怕，不能好好地过日子，只好带着一些食物，赶快跑到山上去。",
+          "pinyin": "Cóngqián, yǒu yì zhī zhù zài hǎilǐ de guàishòu, míngzi jiào “Nián”. Cóng yī yuè dào shí’èr yuè, “Nián” dōu zài shuìjiào, shénme dōngxi dōu bù chī. Dào le chúxī, dàngtiān yì hēi, “Nián” jiù huì chūlái zhǎo dōngxi chī. Jī, yā, rén děng dòngwù, “Nián” dōu chī, ràng dàjiā fēicháng hàipà, bù néng hǎohǎo de guò rìzi, zhǐhǎo dài zhe yìxiē shíwù, gǎnkuài pǎo dào shān shàng qù.",
+          "english": "Once upon a time, there was a monster living in the sea. It was called “Nian”. Nian slept all the time from January to December without eating anything. On the Chinese New Year’s Eve, as soon as the sky went dark, Nian went out to search for food. Nian ate animals, such as chickens, ducks, people, and so on. This made everyone very frightened and unable to live a normal life. They had no choice but to take some food and rush to the mountains."
+        },
+        {
+          "id": "b2l14d2-l2",
+          "speaker": "旁白",
+          "traditional": "有一年除夕，一個老太太和她先生不願意離開家。他們家很窮，只有一點米，什麼食物都沒有。而且老太太覺得他們家只有兩口人，年紀都大了，讓怪獸給吃了也無所謂。",
+          "simplified": "有一年除夕，一个老太太和她先生不愿意离开家。他们家很穷，只有一点米，什么食物都没有。而且老太太觉得他们家只有两口人，年纪都大了，让怪兽给吃了也无所谓。",
+          "pinyin": "Yǒu yì nián chúxī, yí ge lǎotàitai hé tā xiānsheng bú yuànyì líkāi jiā. Tāmen jiā hěn qióng, zhǐ yǒu yìdiǎn mǐ, shénme shíwù dōu méiyǒu. Érqiě lǎotàitai juéde tāmen jiā zhǐ yǒu liǎng kǒu rén, niánjì dōu dà le, ràng guàishòu gěi chī le yě wúsuǒwèi.",
+          "english": "On one Chinese New Year’s Eve, an old lady and her husband didn’t want to leave their home. They were very poor. They had no food except for a little rice. Furthermore, the old lady thought there were only two people in the family, and both were in old age, so they did not care if they were eaten."
+        },
+        {
+          "id": "b2l14d2-l3",
+          "speaker": "旁白",
+          "traditional": "那天下午，老太太的家門口忽然出現了一個老人，他請老太太分一點東西給他吃。老太太覺得他很可憐，就煮了一點兒飯請他吃。老人一邊吃，一邊跟老太太說：「妳不用怕『年』，只要準備幾張紅紙、一些竹子，就可以把『年』趕走了。」",
+          "simplified": "那天下午，老太太的家门口忽然出现了一个老人，他请老太太分一点东西给他吃。老太太觉得他很可怜，就煮了一点儿饭请他吃。老人一边吃，一边跟老太太说：「妳不用怕『年』，只要准备几张红纸、一些竹子，就可以把『年』赶走了。」",
+          "pinyin": "Nà tiān xiàwǔ, lǎotàitai de jiāménkǒu hūrán chūxiàn le yí ge lǎorén, tā qǐng lǎotàitai fēn yìdiǎn dōngxi gěi tā chī. Lǎotàitai juéde tā hěn kělián, jiù zhǔ le yìdiǎnr fàn qǐng tā chī. Lǎorén yìbiān chī, yìbiān gēn lǎotàitai shuō: “Nǐ búyòng pà ‘Nián’, zhǐyào zhǔnbèi jǐ zhāng hóngzhǐ, yìxiē zhúzi, jiù kěyǐ bǎ ‘Nián’ gǎn zǒu le.”",
+          "english": "That afternoon, an old man appeared suddenly in front of their house door. He asked the old lady to give him something to eat. The old lady thought he was very pitiful, so she cooked a little rice for him. While the old man was eating, he said: “You don’t need to be afraid of Nian. As long as you prepare a few sheets of red paper and some bamboo, you can drive it away.”"
+        },
+        {
+          "id": "b2l14d2-l4",
+          "speaker": "旁白",
+          "traditional": "天剛黑，「年」就真的來了。「年」看見了門上的紅紙、地上燒竹子的火，又聽見燒竹子的時候大大的聲音，就嚇得跑走了。原來，「年」怕的就是：紅色、亮亮的東西和很大的聲音。",
+          "simplified": "天刚黑，「年」就真的来了。「年」看见了门上红纸、地上烧竹子的火，又听见烧竹子的时候大大的声音，就吓得跑走了。原来，「年」怕的就是：红色、亮亮的东西和很大的声音。",
+          "pinyin": "Tiān gāng hēi, “Nián” jiù zhēn de lái le. “Nián” kànjiàn le mén shàng de hóngzhǐ, dì shàng shāo zhúzi de huǒ, yòu tīngjiàn shāo zhúzi de shíhou dàdà de shēngyīn, jiù xià de pǎo zǒu le. Yuánlái, “Nián” pà de jiù shì: hóngsè, liàngliàng de dōngxi hé hěn dà de shēngyīn.",
+          "english": "When the sky just got dark, Nian did come. As soon as Nian saw the red paper at the door, a fire that burned bamboo on the ground, and heard the loud sound made by the burning bamboo, it became so scared that it ran away. It turned out that Nian was afraid of red, bright things and loud sounds."
+        },
+        {
+          "id": "b2l14d2-l5",
+          "speaker": "旁白",
+          "traditional": "第二天，大家從山上回來時，發現老太太和她先生沒被「年」吃了，都覺得很奇怪。老太太說，要不是老人告訴她把「年」嚇走的方法，他們就被吃了。",
+          "simplified": "第二天，大家从山上回来时，发现老太太和她先生没被「年」吃了，都觉得很奇怪。老太太说，要不是老人告诉她把「年」吓走的方法，他们就被吃了。",
+          "pinyin": "Dì èr tiān, dàjiā cóng shān shàng huílái shí, fāxiàn lǎotàitai hé tā xiānsheng méi bèi “Nián” chī le, dōu juéde hěn qíguài. Lǎotàitai shuō, yào bú shì lǎorén gàosu tā bǎ “Nián” xià zǒu de fāngfǎ, tāmen jiù bèi chī le.",
+          "english": "The next day, everybody came back from the mountains and found it strange that the old lady and her husband were not eaten by Nian. The old lady said that if the old man hadn’t told her how to scare Nian away, they would have been eaten."
+        },
+        {
+          "id": "b2l14d2-l6",
+          "speaker": "旁白",
+          "traditional": "從那個時候起，每年的除夕，大家都會在門口貼紅紙、燒竹子。這就是為什麼中國人在過年的時候，要貼春聯、放鞭炮了。",
+          "simplified": "从那个时候起，每年的除夕，大家都会在门口贴红纸、烧竹子。这就是为什么中国人在过年的时候，要贴春联、放鞭炮了。",
+          "pinyin": "Cóng nà ge shíhou qǐ, měi nián de chúxī, dàjiā dōu huì zài ménkǒu tiē hóngzhǐ, shāo zhúzi. Zhè jiù shì wèishénme Zhōngguó rén zài guònián de shíhou, yào tiē chūnlián, fàng biānpào le.",
+          "english": "From then on, every Chinese New Year’s Eve, everyone pastes red paper on their door and burns bamboo. This is also the very reason why the Chinese paste spring couplets and set off firecrackers during the Chinese New Year."
+        }
+      ]
+    },
+    "completionTitle": "Lesson 14 complete",
+    "completionDescription": "You’ve finished Lesson 14.",
+    "nextBookLabel": "Lesson 15"
+  }
+}

@@ -37,7 +37,7 @@
             "text": {
               "traditional": "在那家店訂飲料，滿十杯就可以替客人送過去。",
               "english": "At that shop, they can deliver an order to the customer once it reaches ten cups.",
-              "pinyin": "zài nà jiā diàn dìng yǐn liào mǎn shí bēi jiù kě yǐ tì kèrén sòng guòqù",
+              "pinyin": "Zài nà jiā diàn dìng yǐnliào, mǎn shí bēi jiù kěyǐ tì kèrén sòng guòqù.",
               "words": [
                 {
                   "traditional": "在",
@@ -77,7 +77,7 @@
                 {
                   "traditional": "飲料",
                   "simplified": "饮料",
-                  "pinyin": "yǐn liào",
+                  "pinyin": "yǐnliào",
                   "meaning": "drink; beverage",
                   "suffix": "，",
                   "id": "b2l08g1-ex1-w6"
@@ -113,7 +113,7 @@
                 {
                   "traditional": "可以",
                   "simplified": "可以",
-                  "pinyin": "kě yǐ",
+                  "pinyin": "kěyǐ",
                   "meaning": "can; may",
                   "id": "b2l08g1-ex1-w11"
                 },
@@ -146,7 +146,8 @@
                   "suffix": "。",
                   "id": "b2l08g1-ex1-w15"
                 }
-              ]
+              ],
+              "simplified": "在那家店订饮料，满十杯就可以替客人送过去。"
             }
           },
           {
@@ -155,7 +156,7 @@
             "text": {
               "traditional": "在這家商店，買東西滿兩千塊（錢），就送一盒巧克力。",
               "english": "At this store, if you spend two thousand dollars, they will give you a box of chocolates.",
-              "pinyin": "zài zhè jiā shāng diàn mǎi dōng xi mǎn liǎng qiān kuài qián jiù sòng yì hé qiǎo kè lì",
+              "pinyin": "Zài zhè jiā shāngdiàn, mǎi dōng xi mǎn liǎng qiān kuài (qián), jiù sòng yì hé qiǎokèlì.",
               "words": [
                 {
                   "traditional": "在",
@@ -181,7 +182,7 @@
                 {
                   "traditional": "商店",
                   "simplified": "商店",
-                  "pinyin": "shāng diàn",
+                  "pinyin": "shāngdiàn",
                   "meaning": "store; shop",
                   "suffix": "，",
                   "id": "b2l08g1-ex2-w4"
@@ -261,12 +262,13 @@
                 {
                   "traditional": "巧克力",
                   "simplified": "巧克力",
-                  "pinyin": "qiǎo kè lì",
+                  "pinyin": "qiǎokèlì",
                   "meaning": "chocolate",
                   "suffix": "。",
                   "id": "b2l08g1-ex2-w15"
                 }
-              ]
+              ],
+              "simplified": "在这家商店，买东西满两千块（钱），就送一盒巧克力。"
             }
           },
           {
@@ -275,7 +277,7 @@
             "text": {
               "traditional": "在台灣，便利商店不可以把酒賣給沒滿十八歲的人。",
               "english": "In Taiwan, convenience stores may not sell alcohol to anyone under eighteen.",
-              "pinyin": "zài Táiwān biànlì shāngdiàn bù kěyǐ bǎ jiǔ mài gěi méi mǎn shíbā suì de rén",
+              "pinyin": "Zài Táiwān, biànlì shāngdiàn bù kěyǐ bǎ jiǔ mài gěi méi mǎn shíbā suì de rén.",
               "words": [
                 {
                   "traditional": "在",
@@ -377,7 +379,8 @@
                   "id": "b2l8g1-ex3-audit-14",
                   "suffix": "。"
                 }
-              ]
+              ],
+              "simplified": "在台湾，便利商店不可以把酒卖给没满十八岁的人。"
             }
           }
         ],
@@ -661,7 +664,7 @@
             "text": {
               "traditional": "我最近很忙，連睡覺的時間都沒有。",
               "english": "I have been very busy lately; I do not even have time to sleep.",
-              "pinyin": "wǒ zuì jìn hěn máng lián shuìjiào de shí jiān dōu méi yǒu",
+              "pinyin": "Wǒ zuìjìn hěn máng, lián shuìjiào de shíjiān dōu méiyǒu.",
               "words": [
                 {
                   "traditional": "我",
@@ -673,7 +676,7 @@
                 {
                   "traditional": "最近",
                   "simplified": "最近",
-                  "pinyin": "zuì jìn",
+                  "pinyin": "zuìjìn",
                   "meaning": "lately; recently",
                   "id": "b2l08g2-ex1-w2"
                 },
@@ -716,7 +719,7 @@
                 {
                   "traditional": "時間",
                   "simplified": "时间",
-                  "pinyin": "shí jiān",
+                  "pinyin": "shíjiān",
                   "meaning": "time",
                   "id": "b2l08g2-ex1-w8"
                 },
@@ -730,12 +733,13 @@
                 {
                   "traditional": "沒有",
                   "simplified": "没有",
-                  "pinyin": "méi yǒu",
+                  "pinyin": "méiyǒu",
                   "meaning": "not have; there is no",
                   "suffix": "。",
                   "id": "b2l08g2-ex1-w10"
                 }
-              ]
+              ],
+              "simplified": "我最近很忙，连睡觉的时间都没有。"
             }
           },
           {
@@ -744,7 +748,7 @@
             "text": {
               "traditional": "他做的東西真不好吃，連他家的狗都不吃。",
               "english": "The food he makes is really bad; even his dog will not eat it.",
-              "pinyin": "tā zuò de dōngxi zhēn bù hǎochī lián tā jiā de gǒu dōu bù chī",
+              "pinyin": "Tā zuò de dōngxi zhēn bù hǎochī, lián tā jiā de gǒu dōu bù chī.",
               "words": [
                 {
                   "traditional": "他",
@@ -846,7 +850,8 @@
                   "id": "b2l8g2-ex2-audit-14",
                   "suffix": "。"
                 }
-              ]
+              ],
+              "simplified": "他做的东西真不好吃，连他家的狗都不吃。"
             }
           },
           {
@@ -855,7 +860,7 @@
             "text": {
               "traditional": "那家民宿很便宜，不但有免費的網路，連早餐、午餐也可以吃到飽。",
               "english": "That B&B is inexpensive. Not only does it have free internet; even breakfast and lunch are all-you-can-eat.",
-              "pinyin": "nà jiā mínsù hěn pián yi búdàn yǒu miǎnfèi de wǎng lù lián zǎo cān wǔ cān yě kě yǐ chīdàobǎo",
+              "pinyin": "Nà jiā mínsù hěn piányi, búdàn yǒu miǎnfèi de wǎnglù, lián zǎocān, wǔcān yě kěyǐ chīdàobǎo.",
               "words": [
                 {
                   "traditional": "那",
@@ -888,7 +893,7 @@
                 {
                   "traditional": "便宜",
                   "simplified": "便宜",
-                  "pinyin": "pián yi",
+                  "pinyin": "piányi",
                   "meaning": "inexpensive",
                   "suffix": "，",
                   "id": "b2l08g2-ex3-w5"
@@ -924,7 +929,7 @@
                 {
                   "traditional": "網路",
                   "simplified": "网路",
-                  "pinyin": "wǎng lù",
+                  "pinyin": "wǎnglù",
                   "meaning": "internet",
                   "suffix": "，",
                   "id": "b2l08g2-ex3-w10"
@@ -939,7 +944,7 @@
                 {
                   "traditional": "早餐",
                   "simplified": "早餐",
-                  "pinyin": "zǎo cān",
+                  "pinyin": "zǎocān",
                   "meaning": "breakfast",
                   "suffix": "、",
                   "id": "b2l08g2-ex3-w12"
@@ -947,7 +952,7 @@
                 {
                   "traditional": "午餐",
                   "simplified": "午餐",
-                  "pinyin": "wǔ cān",
+                  "pinyin": "wǔcān",
                   "meaning": "lunch",
                   "id": "b2l08g2-ex3-w13"
                 },
@@ -961,7 +966,7 @@
                 {
                   "traditional": "可以",
                   "simplified": "可以",
-                  "pinyin": "kě yǐ",
+                  "pinyin": "kěyǐ",
                   "meaning": "can; may",
                   "id": "b2l08g2-ex3-w15"
                 },
@@ -973,7 +978,8 @@
                   "suffix": "。",
                   "id": "b2l08g2-ex3-w16"
                 }
-              ]
+              ],
+              "simplified": "那家民宿很便宜，不但有免费的网路，连早餐、午餐也可以吃到饱。"
             }
           },
           {
@@ -982,7 +988,7 @@
             "text": {
               "traditional": "這個孩子真討厭念書，連媽媽打他，他都不怕。",
               "english": "This child really hates studying; even when his mother hits him, he is not afraid.",
-              "pinyin": "zhè ge hái zi zhēn tǎoyàn niànshū lián mā ma dǎ tā tā dōu bú pà",
+              "pinyin": "Zhè ge háizi zhēn tǎoyàn niànshū, lián māma dǎ tā, tā dōu bú pà.",
               "words": [
                 {
                   "traditional": "這個",
@@ -994,7 +1000,7 @@
                 {
                   "traditional": "孩子",
                   "simplified": "孩子",
-                  "pinyin": "hái zi",
+                  "pinyin": "háizi",
                   "meaning": "child",
                   "id": "b2l08g2-ex4-w2"
                 },
@@ -1030,7 +1036,7 @@
                 {
                   "traditional": "媽媽",
                   "simplified": "妈妈",
-                  "pinyin": "mā ma",
+                  "pinyin": "māma",
                   "meaning": "mother; mom",
                   "id": "b2l08g2-ex4-w7"
                 },
@@ -1071,7 +1077,8 @@
                   "suffix": "。",
                   "id": "b2l08g2-ex4-w12"
                 }
-              ]
+              ],
+              "simplified": "这个孩子真讨厌念书，连妈妈打他，他都不怕。"
             }
           },
           {
@@ -1080,7 +1087,7 @@
             "text": {
               "traditional": "他沒學過中文，連一句中文都不會說。",
               "english": "He has never studied Chinese; he cannot even say one sentence in Chinese.",
-              "pinyin": "tā méi xué guò Zhōngwén lián yí jù Zhōngwén dōu bú huì shuō",
+              "pinyin": "Tā méi xué guò Zhōngwén, lián yíjù Zhōngwén dōu bú huì shuō.",
               "words": [
                 {
                   "traditional": "他",
@@ -1128,7 +1135,7 @@
                 {
                   "traditional": "一句",
                   "simplified": "一句",
-                  "pinyin": "yí jù",
+                  "pinyin": "yíjù",
                   "meaning": "one sentence",
                   "id": "b2l8g2-ex5-audit-7"
                 },
@@ -1161,7 +1168,8 @@
                   "id": "b2l8g2-ex5-audit-11",
                   "suffix": "。"
                 }
-              ]
+              ],
+              "simplified": "他没学过中文，连一句中文都不会说。"
             }
           },
           {
@@ -1170,7 +1178,7 @@
             "text": {
               "traditional": "他的錢都花光了，連一顆糖也買不起。",
               "english": "He spent all his money and cannot even afford one piece of candy.",
-              "pinyin": "tā de qián dōu huā guāng le lián yì kē táng yě mǎi bu qǐ",
+              "pinyin": "Tā de qián dōu huāguāng le, lián yì kē táng yě mǎi bu qǐ.",
               "words": [
                 {
                   "traditional": "他",
@@ -1203,7 +1211,7 @@
                 {
                   "traditional": "花光",
                   "simplified": "花光",
-                  "pinyin": "huā guāng",
+                  "pinyin": "huāguāng",
                   "meaning": "to spend all",
                   "id": "b2l08g2-ex6-w5"
                 },
@@ -1233,7 +1241,7 @@
                   "traditional": "顆",
                   "simplified": "颗",
                   "pinyin": "kē",
-                  "meaning": "classifier for small spheres, pearls, corn grains, teeth, hearts, satellites etc",
+                  "meaning": "measure word for small round things",
                   "id": "b2l08g2-ex6-w9"
                 },
                 {
@@ -1258,7 +1266,8 @@
                   "suffix": "。",
                   "id": "b2l08g2-ex6-w12"
                 }
-              ]
+              ],
+              "simplified": "他的钱都花光了，连一颗糖也买不起。"
             }
           },
           {
@@ -1267,19 +1276,19 @@
             "text": {
               "traditional": "張先生剛來台灣的時候，連一個朋友都沒有。",
               "english": "When Mr. Zhang first came to Taiwan, he did not have a single friend.",
-              "pinyin": "zhāng xiān sheng gāng lái Táiwān de shíhou lián yí ge péng you dōu méi yǒu",
+              "pinyin": "Zhāng xiānsheng gāng lái Táiwān de shíhou, lián yí ge péngyou dōu méiyǒu.",
               "words": [
                 {
                   "traditional": "張",
                   "simplified": "张",
-                  "pinyin": "zhāng",
-                  "meaning": "Mr. (surname Zhang)",
+                  "pinyin": "Zhāng",
+                  "meaning": "Zhang (surname)",
                   "id": "b2l08g2-ex7-w1"
                 },
                 {
                   "traditional": "先生",
                   "simplified": "先生",
-                  "pinyin": "xiān sheng",
+                  "pinyin": "xiānsheng",
                   "meaning": "Mr.",
                   "id": "b2l08g2-ex7-w2"
                 },
@@ -1336,7 +1345,7 @@
                 {
                   "traditional": "朋友",
                   "simplified": "朋友",
-                  "pinyin": "péng you",
+                  "pinyin": "péngyou",
                   "meaning": "friend",
                   "id": "b2l08g2-ex7-w10"
                 },
@@ -1350,12 +1359,13 @@
                 {
                   "traditional": "沒有",
                   "simplified": "没有",
-                  "pinyin": "méi yǒu",
+                  "pinyin": "méiyǒu",
                   "meaning": "not have; there is no",
                   "suffix": "。",
                   "id": "b2l08g2-ex7-w12"
                 }
-              ]
+              ],
+              "simplified": "张先生刚来台湾的时候，连一个朋友都没有。"
             }
           }
         ],
@@ -1648,7 +1658,7 @@
             "text": {
               "traditional": "我想住在像藍小姐家那樣安全的社區。",
               "english": "I want to live in a community as safe as Ms. Lan’s home.",
-              "pinyin": "wǒ xiǎng zhù zài xiàng lán xiǎo jie jiā nàyàng ānquán de shèqū",
+              "pinyin": "Wǒ xiǎng zhù zài xiàng Lán xiǎojie jiā nàyàng ānquán de shèqū.",
               "words": [
                 {
                   "traditional": "我",
@@ -1688,14 +1698,14 @@
                 {
                   "traditional": "藍",
                   "simplified": "蓝",
-                  "pinyin": "lán",
-                  "meaning": "surname Lan",
+                  "pinyin": "Lán",
+                  "meaning": "Lan (surname)",
                   "id": "b2l08g3-ex1-w6"
                 },
                 {
                   "traditional": "小姐",
                   "simplified": "小姐",
-                  "pinyin": "xiǎo jie",
+                  "pinyin": "xiǎojie",
                   "meaning": "Ms.; Miss",
                   "id": "b2l08g3-ex1-w7"
                 },
@@ -1735,7 +1745,8 @@
                   "suffix": "。",
                   "id": "b2l08g3-ex1-w12"
                 }
-              ]
+              ],
+              "simplified": "我想住在像蓝小姐家那样安全的社区。"
             }
           },
           {
@@ -1744,7 +1755,7 @@
             "text": {
               "traditional": "很多外國遊客喜歡去像夜市那樣熱鬧的地方玩。",
               "english": "Many foreign tourists like going to lively places such as night markets.",
-              "pinyin": "hěn duō wài guó yóukè xǐ huan qù xiàng yè shì nàyàng rè nao de dì fāng wán",
+              "pinyin": "Hěn duō wàiguó yóukè xǐhuan qù xiàng yèshì nàyàng rènao de dìfang wán.",
               "words": [
                 {
                   "traditional": "很",
@@ -1763,7 +1774,7 @@
                 {
                   "traditional": "外國",
                   "simplified": "外国",
-                  "pinyin": "wài guó",
+                  "pinyin": "wàiguó",
                   "meaning": "foreign",
                   "id": "b2l08g3-ex2-w3"
                 },
@@ -1777,7 +1788,7 @@
                 {
                   "traditional": "喜歡",
                   "simplified": "喜欢",
-                  "pinyin": "xǐ huan",
+                  "pinyin": "xǐhuan",
                   "meaning": "to like",
                   "id": "b2l08g3-ex2-w5"
                 },
@@ -1798,7 +1809,7 @@
                 {
                   "traditional": "夜市",
                   "simplified": "夜市",
-                  "pinyin": "yè shì",
+                  "pinyin": "yèshì",
                   "meaning": "night market",
                   "id": "b2l08g3-ex2-w8"
                 },
@@ -1812,7 +1823,7 @@
                 {
                   "traditional": "熱鬧",
                   "simplified": "热闹",
-                  "pinyin": "rè nao",
+                  "pinyin": "rènao",
                   "meaning": "lively; bustling",
                   "id": "b2l08g3-ex2-w10"
                 },
@@ -1826,7 +1837,7 @@
                 {
                   "traditional": "地方",
                   "simplified": "地方",
-                  "pinyin": "dì fāng",
+                  "pinyin": "dìfang",
                   "meaning": "place",
                   "id": "b2l08g3-ex2-w12"
                 },
@@ -1838,7 +1849,8 @@
                   "suffix": "。",
                   "id": "b2l08g3-ex2-w13"
                 }
-              ]
+              ],
+              "simplified": "很多外国游客喜欢去像夜市那样热闹的地方玩。"
             }
           },
           {
@@ -1847,7 +1859,7 @@
             "text": {
               "traditional": "像洗碗筷這樣的家事，父母可以讓小孩自己做。",
               "english": "Parents can let children do household chores on their own, such as washing dishes and chopsticks.",
-              "pinyin": "xiàng xǐ wǎn kuài zhèyàng de jiāshì fù mǔ kě yǐ ràng xiǎo hái zì jǐ zuò",
+              "pinyin": "Xiàng xǐwǎn kuài zhèyàng de jiāshì, fùmǔ kěyǐ ràng xiǎohái zìjǐ zuò.",
               "words": [
                 {
                   "traditional": "像",
@@ -1859,7 +1871,7 @@
                 {
                   "traditional": "洗碗",
                   "simplified": "洗碗",
-                  "pinyin": "xǐ wǎn",
+                  "pinyin": "xǐwǎn",
                   "meaning": "to wash dishes",
                   "id": "b2l08g3-ex3-w2"
                 },
@@ -1895,14 +1907,14 @@
                 {
                   "traditional": "父母",
                   "simplified": "父母",
-                  "pinyin": "fù mǔ",
+                  "pinyin": "fùmǔ",
                   "meaning": "parents",
                   "id": "b2l08g3-ex3-w7"
                 },
                 {
                   "traditional": "可以",
                   "simplified": "可以",
-                  "pinyin": "kě yǐ",
+                  "pinyin": "kěyǐ",
                   "meaning": "can; may",
                   "id": "b2l08g3-ex3-w8"
                 },
@@ -1916,14 +1928,14 @@
                 {
                   "traditional": "小孩",
                   "simplified": "小孩",
-                  "pinyin": "xiǎo hái",
+                  "pinyin": "xiǎohái",
                   "meaning": "child",
                   "id": "b2l08g3-ex3-w10"
                 },
                 {
                   "traditional": "自己",
                   "simplified": "自己",
-                  "pinyin": "zì jǐ",
+                  "pinyin": "zìjǐ",
                   "meaning": "oneself",
                   "id": "b2l08g3-ex3-w11"
                 },
@@ -1935,7 +1947,8 @@
                   "suffix": "。",
                   "id": "b2l08g3-ex3-w12"
                 }
-              ]
+              ],
+              "simplified": "像洗碗筷这样的家事，父母可以让小孩自己做。"
             }
           }
         ],
@@ -1997,7 +2010,7 @@
                     "traditional": "藍",
                     "simplified": "蓝",
                     "pinyin": "lán",
-                    "meaning": "surname Lan",
+                    "meaning": "Lan (surname)",
                     "id": "b2l08g3-cf1-w6"
                   },
                   {
@@ -2182,12 +2195,12 @@
             "text": {
               "traditional": "因為訂不到去花蓮的火車票，我們只好坐飛機去。",
               "english": "Because we could not get a train ticket to Hualien, we had no choice but to fly there.",
-              "pinyin": "yīn wèi dìng bú dào qù Huā lián de huǒ chē piào wǒ men zhǐhǎo zuò fēi jī qù",
+              "pinyin": "Yīnwèi dìng bú dào qù Huālián de huǒchēpiào, wǒmen zhǐhǎo zuò fēijī qù.",
               "words": [
                 {
                   "traditional": "因為",
                   "simplified": "因为",
-                  "pinyin": "yīn wèi",
+                  "pinyin": "yīnwèi",
                   "meaning": "because",
                   "id": "b2l08g4-ex1-w1"
                 },
@@ -2215,7 +2228,7 @@
                 {
                   "traditional": "花蓮",
                   "simplified": "花莲",
-                  "pinyin": "Huā lián",
+                  "pinyin": "Huālián",
                   "meaning": "Hualien",
                   "id": "b2l08g4-ex1-w5"
                 },
@@ -2229,7 +2242,7 @@
                 {
                   "traditional": "火車票",
                   "simplified": "火车票",
-                  "pinyin": "huǒ chē piào",
+                  "pinyin": "huǒchēpiào",
                   "meaning": "train ticket",
                   "suffix": "，",
                   "id": "b2l08g4-ex1-w7"
@@ -2237,7 +2250,7 @@
                 {
                   "traditional": "我們",
                   "simplified": "我们",
-                  "pinyin": "wǒ men",
+                  "pinyin": "wǒmen",
                   "meaning": "we; us",
                   "id": "b2l08g4-ex1-w8"
                 },
@@ -2258,7 +2271,7 @@
                 {
                   "traditional": "飛機",
                   "simplified": "飞机",
-                  "pinyin": "fēi jī",
+                  "pinyin": "fēijī",
                   "meaning": "airplane",
                   "id": "b2l08g4-ex1-w11"
                 },
@@ -2270,7 +2283,8 @@
                   "suffix": "。",
                   "id": "b2l08g4-ex1-w12"
                 }
-              ]
+              ],
+              "simplified": "因为订不到去花莲的火车票，我们只好坐飞机去。"
             }
           },
           {
@@ -2279,12 +2293,12 @@
             "text": {
               "traditional": "妹妹想跟同學去看電影，可是明天有考試，只好在家看書。",
               "english": "My younger sister wants to go to a movie with her classmates, but she has an exam tomorrow, so she has no choice but to stay home and study.",
-              "pinyin": "mèi mei xiǎng gēn tóng xué qù kàn diàn yǐng kě shì míng tiān yǒu kǎo shì zhǐhǎo zài jiā kàn shū",
+              "pinyin": "Mèimei xiǎng gēn tóngxué qù kàn diànyǐng, kěshì míngtiān yǒu kǎoshì, zhǐhǎo zài jiā kànshū.",
               "words": [
                 {
                   "traditional": "妹妹",
                   "simplified": "妹妹",
-                  "pinyin": "mèi mei",
+                  "pinyin": "mèimei",
                   "meaning": "younger sister",
                   "id": "b2l08g4-ex2-w1"
                 },
@@ -2305,7 +2319,7 @@
                 {
                   "traditional": "同學",
                   "simplified": "同学",
-                  "pinyin": "tóng xué",
+                  "pinyin": "tóngxué",
                   "meaning": "classmate",
                   "id": "b2l08g4-ex2-w4"
                 },
@@ -2326,7 +2340,7 @@
                 {
                   "traditional": "電影",
                   "simplified": "电影",
-                  "pinyin": "diàn yǐng",
+                  "pinyin": "diànyǐng",
                   "meaning": "movie; film",
                   "suffix": "，",
                   "id": "b2l08g4-ex2-w7"
@@ -2334,14 +2348,14 @@
                 {
                   "traditional": "可是",
                   "simplified": "可是",
-                  "pinyin": "kě shì",
+                  "pinyin": "kěshì",
                   "meaning": "but",
                   "id": "b2l08g4-ex2-w8"
                 },
                 {
                   "traditional": "明天",
                   "simplified": "明天",
-                  "pinyin": "míng tiān",
+                  "pinyin": "míngtiān",
                   "meaning": "tomorrow",
                   "id": "b2l08g4-ex2-w9"
                 },
@@ -2355,7 +2369,7 @@
                 {
                   "traditional": "考試",
                   "simplified": "考试",
-                  "pinyin": "kǎo shì",
+                  "pinyin": "kǎoshì",
                   "meaning": "exam",
                   "suffix": "，",
                   "id": "b2l08g4-ex2-w11"
@@ -2377,12 +2391,13 @@
                 {
                   "traditional": "看書",
                   "simplified": "看书",
-                  "pinyin": "kàn shū",
+                  "pinyin": "kànshū",
                   "meaning": "to read",
                   "suffix": "。",
                   "id": "b2l08g4-ex2-w14"
                 }
-              ]
+              ],
+              "simplified": "妹妹想跟同学去看电影，可是明天有考试，只好在家看书。"
             }
           },
           {
@@ -2391,7 +2406,7 @@
             "text": {
               "traditional": "這個月我買了太多衣服，現在錢包裡只剩下三百塊錢，只好每天吃麵包了。",
               "english": "I bought too many clothes this month. I have only three hundred dollars left in my wallet, so I have no choice but to eat bread every day.",
-              "pinyin": "zhè ge yuè wǒ mǎi le tài duō yī fu xiàn zài qián bāo lǐ zhǐ shèngxià sān bǎi kuài qián zhǐhǎo měi tiān chī miàn bāo le",
+              "pinyin": "Zhè ge yuè wǒ mǎi le tài duō yīfu, xiànzài qiánbāo lǐ zhǐ shèngxià sān bǎi kuài qián, zhǐhǎo měitiān chī miànbāo le.",
               "words": [
                 {
                   "traditional": "這個",
@@ -2445,7 +2460,7 @@
                 {
                   "traditional": "衣服",
                   "simplified": "衣服",
-                  "pinyin": "yī fu",
+                  "pinyin": "yīfu",
                   "meaning": "clothes",
                   "suffix": "，",
                   "id": "b2l08g4-ex3-w8"
@@ -2453,14 +2468,14 @@
                 {
                   "traditional": "現在",
                   "simplified": "现在",
-                  "pinyin": "xiàn zài",
+                  "pinyin": "xiànzài",
                   "meaning": "now",
                   "id": "b2l08g4-ex3-w9"
                 },
                 {
                   "traditional": "錢包",
                   "simplified": "钱包",
-                  "pinyin": "qián bāo",
+                  "pinyin": "qiánbāo",
                   "meaning": "wallet",
                   "id": "b2l08g4-ex3-w10"
                 },
@@ -2524,7 +2539,7 @@
                 {
                   "traditional": "每天",
                   "simplified": "每天",
-                  "pinyin": "měi tiān",
+                  "pinyin": "měitiān",
                   "meaning": "every day",
                   "id": "b2l08g4-ex3-w19"
                 },
@@ -2538,7 +2553,7 @@
                 {
                   "traditional": "麵包",
                   "simplified": "面包",
-                  "pinyin": "miàn bāo",
+                  "pinyin": "miànbāo",
                   "meaning": "bread",
                   "id": "b2l08g4-ex3-w21"
                 },
@@ -2550,7 +2565,8 @@
                   "suffix": "。",
                   "id": "b2l08g4-ex3-w22"
                 }
-              ]
+              ],
+              "simplified": "这个月我买了太多衣服，现在钱包里只剩下三百块钱，只好每天吃面包了。"
             }
           }
         ],
@@ -2813,7 +2829,7 @@
             "text": {
               "traditional": "為了明天的約會，李小姐今天晚上要好好地保養。",
               "english": "To get ready for her date tomorrow, Ms. Li is going to take good care of her skin tonight.",
-              "pinyin": "wèile míngtiān de yuēhuì Lǐ xiǎojiě jīntiān wǎnshang yào hǎohǎo de bǎoyǎng",
+              "pinyin": "Wèile míngtiān de yuēhuì, Lǐ xiǎojiě jīntiān wǎnshang yào hǎohǎo de bǎoyǎng.",
               "words": [
                 {
                   "traditional": "為了",
@@ -2894,7 +2910,8 @@
                   "id": "b2l8g5-ex1-audit-11",
                   "suffix": "。"
                 }
-              ]
+              ],
+              "simplified": "为了明天的约会，李小姐今天晚上要好好地保养。"
             }
           },
           {
@@ -2903,7 +2920,7 @@
             "text": {
               "traditional": "為了把英文學好，我決定下個學期去英國留學。",
               "english": "In order to learn English well, I decided to study in the United Kingdom next semester.",
-              "pinyin": "wèile bǎ Yīng wén xué hǎo wǒ jué dìng xià ge xué qī qù Yīng guó liúxué",
+              "pinyin": "Wèile bǎ Yīngwén xuéhǎo, wǒ juédìng xià ge xuéqī qù Yīngguó liúxué.",
               "words": [
                 {
                   "traditional": "為了",
@@ -2922,14 +2939,14 @@
                 {
                   "traditional": "英文",
                   "simplified": "英文",
-                  "pinyin": "Yīng wén",
+                  "pinyin": "Yīngwén",
                   "meaning": "English language",
                   "id": "b2l08g5-ex2-w3"
                 },
                 {
                   "traditional": "學好",
                   "simplified": "学好",
-                  "pinyin": "xué hǎo",
+                  "pinyin": "xuéhǎo",
                   "meaning": "to learn well",
                   "suffix": "，",
                   "id": "b2l08g5-ex2-w4"
@@ -2944,7 +2961,7 @@
                 {
                   "traditional": "決定",
                   "simplified": "决定",
-                  "pinyin": "jué dìng",
+                  "pinyin": "juédìng",
                   "meaning": "to decide",
                   "id": "b2l08g5-ex2-w6"
                 },
@@ -2958,7 +2975,7 @@
                 {
                   "traditional": "學期",
                   "simplified": "学期",
-                  "pinyin": "xué qī",
+                  "pinyin": "xuéqī",
                   "meaning": "term",
                   "id": "b2l08g5-ex2-w8"
                 },
@@ -2972,7 +2989,7 @@
                 {
                   "traditional": "英國",
                   "simplified": "英国",
-                  "pinyin": "Yīng guó",
+                  "pinyin": "Yīngguó",
                   "meaning": "United Kingdom",
                   "id": "b2l08g5-ex2-w10"
                 },
@@ -2984,7 +3001,8 @@
                   "suffix": "。",
                   "id": "b2l08g5-ex2-w11"
                 }
-              ]
+              ],
+              "simplified": "为了把英文学好，我决定下个学期去英国留学。"
             }
           },
           {
@@ -2993,7 +3011,7 @@
             "text": {
               "traditional": "為了租到比較便宜的公寓，阮先生已經找了好幾個地方了。",
               "english": "To rent a less expensive apartment, Mr. Ruan has already looked at several places.",
-              "pinyin": "wèile zū dào bǐ jiào pián yi de gōngyù ruǎn xiān sheng yǐ jīng zhǎo le hǎojǐ ge dì fāng le",
+              "pinyin": "Wèile zū dào bǐjiào piányi de gōngyù, Ruǎn xiānsheng yǐjīng zhǎo le hǎojǐ ge dìfang le.",
               "words": [
                 {
                   "traditional": "為了",
@@ -3019,14 +3037,14 @@
                 {
                   "traditional": "比較",
                   "simplified": "比较",
-                  "pinyin": "bǐ jiào",
+                  "pinyin": "bǐjiào",
                   "meaning": "relatively; comparatively",
                   "id": "b2l08g5-ex3-w4"
                 },
                 {
                   "traditional": "便宜",
                   "simplified": "便宜",
-                  "pinyin": "pián yi",
+                  "pinyin": "piányi",
                   "meaning": "inexpensive",
                   "id": "b2l08g5-ex3-w5"
                 },
@@ -3048,21 +3066,21 @@
                 {
                   "traditional": "阮",
                   "simplified": "阮",
-                  "pinyin": "ruǎn",
+                  "pinyin": "Ruǎn",
                   "meaning": "Ruan (surname)",
                   "id": "b2l08g5-ex3-w8"
                 },
                 {
                   "traditional": "先生",
                   "simplified": "先生",
-                  "pinyin": "xiān sheng",
+                  "pinyin": "xiānsheng",
                   "meaning": "Mr.",
                   "id": "b2l08g5-ex3-w9"
                 },
                 {
                   "traditional": "已經",
                   "simplified": "已经",
-                  "pinyin": "yǐ jīng",
+                  "pinyin": "yǐjīng",
                   "meaning": "already",
                   "id": "b2l08g5-ex3-w10"
                 },
@@ -3097,7 +3115,7 @@
                 {
                   "traditional": "地方",
                   "simplified": "地方",
-                  "pinyin": "dì fāng",
+                  "pinyin": "dìfang",
                   "meaning": "place",
                   "id": "b2l08g5-ex3-w15"
                 },
@@ -3109,7 +3127,8 @@
                   "suffix": "。",
                   "id": "b2l08g5-ex3-w16"
                 }
-              ]
+              ],
+              "simplified": "为了租到比较便宜的公寓，阮先生已经找了好几个地方了。"
             }
           }
         ],
@@ -3335,7 +3354,7 @@
           "speaker": "旁白",
           "traditional": "（美心跟以凡在教室裡）",
           "simplified": "（美心跟以凡在教室里）",
-          "pinyin": "",
+          "pinyin": "（Měixīn gēn Yǐfán zài jiàoshì lǐ）",
           "english": "(Meixin and Yifan are in the classroom.)"
         },
         {
@@ -3343,7 +3362,7 @@
           "speaker": "美心",
           "traditional": "以凡，你貼在豆漿盒子上的那張貼紙，可以給我嗎？",
           "simplified": "以凡，你贴在豆浆盒子上的那张贴纸，可以给我吗？",
-          "pinyin": "",
+          "pinyin": "Yǐfán, nǐ tiē zài dòujiāng hézi shàng de nà zhāng tiēzhǐ, kěyǐ gěi wǒ ma?",
           "english": "Yifan, can you give me the sticker that you pasted on the soy milk carton?"
         },
         {
@@ -3351,7 +3370,7 @@
           "speaker": "以凡",
           "traditional": "妳說的貼紙是便利商店店員給我的這張嗎？",
           "simplified": "妳说的贴纸是便利商店店员给我的这张吗？",
-          "pinyin": "",
+          "pinyin": "Nǐ shuō de tiēzhǐ shì biànlì shāngdiàn diànyuán gěi wǒ de zhè zhāng ma?",
           "english": "Are you talking about the one that the clerk of the convenience store gave me?"
         },
         {
@@ -3359,7 +3378,7 @@
           "speaker": "美心",
           "traditional": "是啊！我只差一張，就能換一個史努比（Snoopy）娃娃了！",
           "simplified": "是啊！我只差一张，就能换一个史努比（Snoopy）娃娃了！",
-          "pinyin": "",
+          "pinyin": "Shì a! Wǒ zhǐ chà yì zhāng, jiù néng huàn yí ge Shǐnǔbǐ (Snoopy) wáwa le!",
           "english": "Yes! I only need one more to be able to exchange for a Snoopy doll."
         },
         {
@@ -3367,7 +3386,7 @@
           "speaker": "以凡",
           "traditional": "給妳吧！我覺得它很可愛，才把它貼在盒子上，其實我不知道店員為什麼給我貼紙。",
           "simplified": "给妳吧！我觉得它很可爱，才把它贴在盒子上，其实我不知道店员为什么给我贴纸。",
-          "pinyin": "",
+          "pinyin": "Gěi nǐ ba! Wǒ juéde tā hěn kě’ài, cái bǎ tā tiē zài hézi shàng, qíshí wǒ bù zhīdào diànyuán wèishénme gěi wǒ tiēzhǐ.",
           "english": "Here you are! I put it on the soy milk carton only because I think it's cute. Actually, I don't know why the clerk gave me this sticker."
         },
         {
@@ -3375,7 +3394,7 @@
           "speaker": "美心",
           "traditional": "這是便利商店的活動，買東西只要滿八十元，就會有一張貼紙，四十張貼紙就可以換一個娃娃，而且不用錢。",
           "simplified": "这是便利商店的活动，买东西只要满八十元，就会有一张贴纸，四十张贴纸就可以换一个娃娃，而且不用钱。",
-          "pinyin": "",
+          "pinyin": "Zhè shì biànlì shāngdiàn de huódòng, mǎi dōngxi zhǐyào mǎn bāshí yuán, jiù huì yǒu yì zhāng tiēzhǐ, sìshí zhāng tiēzhǐ jiù kěyǐ huàn yí ge wáwa, érqiě búyòng qián.",
           "english": "It's a sales promotion of convenience stores. As long as the price of the products you buy exceeds $80, you can get one sticker, 40 stickers can be exchanged for a doll for free."
         },
         {
@@ -3383,7 +3402,7 @@
           "speaker": "以凡",
           "traditional": "免費？真的連一塊錢都不用付，就可以得到像史努比那樣的娃娃嗎？",
           "simplified": "免费？真的连一块钱都不用付，就可以得到像史努比那样的娃娃吗？",
-          "pinyin": "",
+          "pinyin": "Miǎnfèi? Zhēn de lián yí kuài qián dōu búyòng fù, jiù kěyǐ dédào xiàng Shǐnǔbǐ nàyàng de wáwa ma?",
           "english": "For free? You really don't have to pay even one dollar to get a doll like Snoopy?"
         },
         {
@@ -3391,7 +3410,7 @@
           "speaker": "美心",
           "traditional": "當然是真的。下次你去便利商店，看看門口貼的海報就知道了。這次送的娃娃非常可愛，我擔心很快就換完了！",
           "simplified": "当然是真的。下次你去便利商店，看看门口贴的海报就知道了。这次送的娃娃非常可爱，我担心很快就换完了！",
-          "pinyin": "",
+          "pinyin": "Dāngrán shì zhēn de. Xià cì nǐ qù biànlì shāngdiàn, kànkan ménkǒu tiē de hǎibào jiù zhīdào le. Zhè cì sòng de wáwa fēicháng kě’ài, wǒ dānxīn hěn kuài jiù huàn wán le!",
           "english": "Of course it's true! Next time when you go to a convenience store, just take a look at the poster on the door and you'll know. This time the dolls given are very cute. I am afraid their stocks will run out soon!"
         },
         {
@@ -3399,7 +3418,7 @@
           "speaker": "以凡",
           "traditional": "這次？妳的意思是像這樣的活動不只一次嗎？為什麼便利商店要辦這樣的活動呢？",
           "simplified": "这次？妳的意思是像这样的活动不只一次吗？为什么便利商店要办这样的活动呢？",
-          "pinyin": "",
+          "pinyin": "Zhè cì? Nǐ de yìsi shì xiàng zhèyàng de huódòng bù zhǐ yí cì ma? Wèishénme biànlì shāngdiàn yào bàn zhèyàng de huódòng ne?",
           "english": "This time? You mean this kind of sales promotion event can take place more than once? Why do convenience stores organize such sales promotion event?"
         },
         {
@@ -3407,7 +3426,7 @@
           "speaker": "美心",
           "traditional": "因為很多人容易被可愛的小東西吸引，所以商人就利用這種心理，做了像尺、牙刷、杯子、盤子這樣的小禮物，上面都有可愛的卡通人物，讓大家常常想去買東西。",
           "simplified": "因为很多人容易被可爱的小东西吸引，所以商人就利用这种心理，做了像尺、牙刷、杯子、盘子这样的小礼物，上面都有可爱的卡通人物，让大家常常想去买东西。",
-          "pinyin": "",
+          "pinyin": "Yīnwèi hěn duō rén róngyì bèi kě’ài de xiǎo dōngxi xīyǐn, suǒyǐ shāngrén jiù lìyòng zhè zhǒng xīnlǐ, zuò le xiàng chǐ, yáshuā, bēizi, pánzi zhèyàng de xiǎo lǐwù, shàngmiàn dōu yǒu kě’ài de kǎtōng rénwù, ràng dàjiā chángcháng xiǎng qù mǎi dōngxi.",
           "english": "Many people are easily attracted by little, cute things, so businessmen take advantage of this psychological fact. They make small gifts such as rulers, toothbrushes, mugs, plates, and so on. They are all printed with cute cartoon characters, making everyone want to buy things more often."
         },
         {
@@ -3415,7 +3434,7 @@
           "speaker": "以凡",
           "traditional": "那麼，有些人想要快點兒得到喜愛的小禮物，只好多花錢買一些不需要的東西吧？",
           "simplified": "那么，有些人想要快点儿得到喜爱的小礼物，只好多花钱买一些不需要的东西吧？",
-          "pinyin": "",
+          "pinyin": "Nàme, yǒuxiē rén xiǎngyào kuài diǎnr dédào xǐ’ài de xiǎo lǐwù, zhǐhǎo duō huāqián mǎi yìxiē bù xūyào de dōngxi ba?",
           "english": "In that case, some people want to get the gifts they love faster, so they spend more money on unnecessary things, right?"
         },
         {
@@ -3423,7 +3442,7 @@
           "speaker": "美心",
           "traditional": "你說對了！一開始是商人為了吸引顧客，才想出這個辦法的。沒想到小禮物太有吸引力了，後來就變成台灣便利商店的文化了。",
           "simplified": "你说对了！一开始是商人为了吸引顾客，才想出这个办法的。没想到小礼物太有吸引力了，后来就变成台湾便利商店的文化了。",
-          "pinyin": "",
+          "pinyin": "Nǐ shuō duì le! Yìkāishǐ shì shāngrén wèile xīyǐn gùkè, cái xiǎng chū zhège bànfǎ de. Méi xiǎngdào xiǎo lǐwù tài yǒu xīyǐnlì le, hòulái jiù biànchéng Táiwān biànlì shāngdiàn de wénhuà le.",
           "english": "You are right! At first, the businessmen came up with this idea in order to attract customers. They didn't expect those little gifts to be that attractive. Later, they have become a part of the culture of Taiwanese convenience stores."
         },
         {
@@ -3431,7 +3450,7 @@
           "speaker": "以凡",
           "traditional": "台灣所有便利商店都有這樣的活動嗎？",
           "simplified": "台湾所有便利商店都有这样的活动吗？",
-          "pinyin": "",
+          "pinyin": "Táiwān suǒyǒu biànlì shāngdiàn dōu yǒu zhèyàng de huódòng ma?",
           "english": "Do all convenience stores in Taiwan have this kind of sales promotion event?"
         },
         {
@@ -3439,7 +3458,7 @@
           "speaker": "美心",
           "traditional": "差不多都有。這類活動對生意的影響很大，只要有「拿貼紙、送禮物」的活動，就會增加不少顧客。",
           "simplified": "差不多都有。这类活动对生意的影响很大，只要有「拿贴纸、送礼物」的活动，就会增加不少顾客。",
-          "pinyin": "",
+          "pinyin": "Chàbuduō dōu yǒu. Zhè lèi huódòng duì shēngyì de yǐngxiǎng hěn dà, zhǐyào yǒu “ná tiēzhǐ, sòng lǐwù” de huódòng, jiù huì zēngjiā bùshǎo gùkè.",
           "english": "Almost all of them. This kind of event has a great impact on business. As long as you organize a \"Collect the Stickers, Receive the Gifts\" type of event, the number of customers will increase a lot."
         },
         {
@@ -3447,7 +3466,7 @@
           "speaker": "以凡",
           "traditional": "聽起來真有趣！以後我也要注意可以換什麼小禮物，這會是我在台灣生活的紀念。",
           "simplified": "听起来真有趣！以后我也要注意可以换什么小礼物，这会是我在台湾生活的纪念。",
-          "pinyin": "",
+          "pinyin": "Tīngqǐlái zhēn yǒuqù! Yǐhòu wǒ yě yào zhùyì kěyǐ huàn shénme xiǎo lǐwù, zhè huì shì wǒ zài Táiwān shēnghuó de jìniàn.",
           "english": "Sounds really interesting! Later I'll also pay attention to what little gifts I can get. It can be a souvenir of my life in Taiwan."
         },
         {
@@ -3455,7 +3474,7 @@
           "speaker": "美心",
           "traditional": "沒錯。不過，現在請你把貼紙給我，讓我去換史努比吧！",
           "simplified": "没错。不过，现在请你把贴纸给我，让我去换史努比吧！",
-          "pinyin": "",
+          "pinyin": "Méi cuò. Búguò, xiànzài qǐng nǐ bǎ tiēzhǐ gěi wǒ, ràng wǒ qù huàn Shǐnǔbǐ ba!",
           "english": "Right. But now please give me the sticker and let me exchange them for Snoopy!"
         }
       ]
@@ -3497,14 +3516,14 @@
             "id": "b2l8g6-ex1",
             "number": 1,
             "text": {
-              "traditional": "天氣冷了，快把外套穿上吧！ (A)",
-              "english": "It is cold; quickly put on your coat! (A)",
-              "pinyin": "tiān qì lěng le kuài bǎ wàitào chuān shàng ba",
+              "traditional": "天氣冷了，快把外套穿上吧！",
+              "english": "It is cold; quickly put on your coat!",
+              "pinyin": "Tiānqì lěng le, kuài bǎ wàitào chuānshàng ba!",
               "words": [
                 {
                   "traditional": "天氣",
                   "simplified": "天气",
-                  "pinyin": "tiān qì",
+                  "pinyin": "tiānqì",
                   "meaning": "weather",
                   "id": "b2l08g6-ex1-w1"
                 },
@@ -3547,7 +3566,7 @@
                 {
                   "traditional": "穿上",
                   "simplified": "穿上",
-                  "pinyin": "chuān shàng",
+                  "pinyin": "chuānshàng",
                   "meaning": "to put on (clothing)",
                   "id": "b2l08g6-ex1-w7"
                 },
@@ -3559,16 +3578,17 @@
                   "suffix": "！",
                   "id": "b2l08g6-ex1-w8"
                 }
-              ]
+              ],
+              "simplified": "天气冷了，快把外套穿上吧！"
             }
           },
           {
             "id": "b2l8g6-ex2",
             "number": 2,
             "text": {
-              "traditional": "便利商店的門貼上了「買咖啡送貼紙」的海報。 (A)",
-              "english": "The convenience store put a “Buy coffee, get a sticker” poster on its door. (A)",
-              "pinyin": "biànlì shāngdiàn de mén tiē shàng le mǎi kā fēi sòng tiēzhǐ de hǎibào",
+              "traditional": "便利商店的門貼上了「買咖啡送貼紙」的海報。",
+              "english": "The convenience store put a “Buy coffee, get a sticker” poster on its door.",
+              "pinyin": "Biànlì shāngdiàn de mén tiē shàng le “Mǎi kāfēi sòng tiēzhǐ” de hǎibào.",
               "words": [
                 {
                   "traditional": "便利商店",
@@ -3623,7 +3643,7 @@
                 {
                   "traditional": "咖啡",
                   "simplified": "咖啡",
-                  "pinyin": "kā fēi",
+                  "pinyin": "kāfēi",
                   "meaning": "coffee",
                   "id": "b2l08g6-ex2-w8"
                 },
@@ -3657,16 +3677,17 @@
                   "suffix": "。",
                   "id": "b2l08g6-ex2-w12"
                 }
-              ]
+              ],
+              "simplified": "便利商店的门贴上了「买咖啡送贴纸」的海报。"
             }
           },
           {
             "id": "b2l8g6-ex3",
             "number": 3,
             "text": {
-              "traditional": "我要早點兒出門，才趕得上公車。 (B)",
-              "english": "I need to leave early so I can catch the bus. (B)",
-              "pinyin": "wǒ yào zǎo diǎnr chūmén cái gǎn de shàng gōng chē",
+              "traditional": "我要早點兒出門，才趕得上公車。",
+              "english": "I need to leave early so I can catch the bus.",
+              "pinyin": "Wǒ yào zǎo diǎnr chūmén, cái gǎn de shàng gōngchē.",
               "words": [
                 {
                   "traditional": "我",
@@ -3728,26 +3749,27 @@
                 {
                   "traditional": "公車",
                   "simplified": "公车",
-                  "pinyin": "gōng chē",
+                  "pinyin": "gōngchē",
                   "meaning": "bus",
                   "suffix": "。",
                   "id": "b2l08g6-ex3-w9"
                 }
-              ]
+              ],
+              "simplified": "我要早点儿出门，才赶得上公车。"
             }
           },
           {
             "id": "b2l8g6-ex4",
             "number": 4,
             "text": {
-              "traditional": "爸爸走得太快，我跟不上。 (B)",
-              "english": "Dad walks too fast; I cannot keep up with him. (B)",
-              "pinyin": "bà ba zǒu de tài kuài wǒ gēn bu shàng",
+              "traditional": "爸爸走得太快，我跟不上。",
+              "english": "Dad walks too fast; I cannot keep up with him.",
+              "pinyin": "Bàba zǒu de tài kuài, wǒ gēn bu shàng.",
               "words": [
                 {
                   "traditional": "爸爸",
                   "simplified": "爸爸",
-                  "pinyin": "bà ba",
+                  "pinyin": "bàba",
                   "meaning": "father; dad",
                   "id": "b2l08g6-ex4-w1"
                 },
@@ -3795,16 +3817,17 @@
                   "suffix": "。",
                   "id": "b2l08g6-ex4-w7"
                 }
-              ]
+              ],
+              "simplified": "爸爸走得太快，我跟不上。"
             }
           },
           {
             "id": "b2l8g6-ex5",
             "number": 5,
             "text": {
-              "traditional": "莫以凡一到台灣就喜歡上了台灣文化。 (C)",
-              "english": "As soon as Mo Yifan arrived in Taiwan, they fell in love with Taiwanese culture. (C)",
-              "pinyin": "Mò Yǐfán yí dào Táiwān jiù xǐhuan shàng le Táiwān wénhuà",
+              "traditional": "莫以凡一到台灣就喜歡上了台灣文化。",
+              "english": "As soon as Mo Yifan arrived in Taiwan, they fell in love with Taiwanese culture.",
+              "pinyin": "Mò Yǐfán yí dào Táiwān jiù xǐhuan shàng le Táiwān wénhuà.",
               "words": [
                 {
                   "traditional": "莫以凡",
@@ -3877,16 +3900,17 @@
                   "id": "b2l8g6-ex5-audit-12",
                   "suffix": "。"
                 }
-              ]
+              ],
+              "simplified": "莫以凡一到台湾就喜欢上了台湾文化。"
             }
           },
           {
             "id": "b2l8g6-ex6",
             "number": 6,
             "text": {
-              "traditional": "那瓶香水很便宜，味道也不好，李小姐一定看不上。 (C)",
-              "english": "That bottle of perfume is cheap and smells bad, so Ms. Li definitely will not want it. (C)",
-              "pinyin": "nà píng xiāngshuǐ hěn pián yi wèidào yě bù hǎo lǐ xiǎo jie yídìng kàn bù shàng",
+              "traditional": "那瓶香水很便宜，味道也不好，李小姐一定看不上。",
+              "english": "That bottle of perfume is cheap and smells bad, so Ms. Li definitely will not want it.",
+              "pinyin": "Nà píng xiāngshuǐ hěn piányi, wèidào yě bù hǎo, Lǐ xiǎojie yídìng kàn bù shàng.",
               "words": [
                 {
                   "traditional": "那",
@@ -3919,7 +3943,7 @@
                 {
                   "traditional": "便宜",
                   "simplified": "便宜",
-                  "pinyin": "pián yi",
+                  "pinyin": "piányi",
                   "meaning": "inexpensive",
                   "suffix": "，",
                   "id": "b2l08g6-ex6-w5"
@@ -3949,14 +3973,14 @@
                 {
                   "traditional": "李",
                   "simplified": "李",
-                  "pinyin": "lǐ",
-                  "meaning": "surname Li",
+                  "pinyin": "Lǐ",
+                  "meaning": "Li (surname)",
                   "id": "b2l08g6-ex6-w9"
                 },
                 {
                   "traditional": "小姐",
                   "simplified": "小姐",
-                  "pinyin": "xiǎo jie",
+                  "pinyin": "xiǎojie",
                   "meaning": "Ms.; Miss",
                   "id": "b2l08g6-ex6-w10"
                 },
@@ -3989,7 +4013,8 @@
                   "suffix": "。",
                   "id": "b2l08g6-ex6-w14"
                 }
-              ]
+              ],
+              "simplified": "那瓶香水很便宜，味道也不好，李小姐一定看不上。"
             }
           }
         ],
@@ -4188,19 +4213,19 @@
             "text": {
               "traditional": "因為工作的關係，他決定搬到公司附近去住。",
               "english": "Because of work, he decided to move closer to his company.",
-              "pinyin": "yīn wèi gōng zuò de guānxì tā jué dìng bān dào gōng sī fù jìn qù zhù",
+              "pinyin": "Yīnwèi gōngzuò de guānxì, tā juédìng bān dào gōngsī fùjìn qù zhù.",
               "words": [
                 {
                   "traditional": "因為",
                   "simplified": "因为",
-                  "pinyin": "yīn wèi",
+                  "pinyin": "yīnwèi",
                   "meaning": "because",
                   "id": "b2l08g7-ex1-w1"
                 },
                 {
                   "traditional": "工作",
                   "simplified": "工作",
-                  "pinyin": "gōng zuò",
+                  "pinyin": "gōngzuò",
                   "meaning": "work",
                   "id": "b2l08g7-ex1-w2"
                 },
@@ -4229,7 +4254,7 @@
                 {
                   "traditional": "決定",
                   "simplified": "决定",
-                  "pinyin": "jué dìng",
+                  "pinyin": "juédìng",
                   "meaning": "to decide",
                   "id": "b2l08g7-ex1-w6"
                 },
@@ -4250,14 +4275,14 @@
                 {
                   "traditional": "公司",
                   "simplified": "公司",
-                  "pinyin": "gōng sī",
+                  "pinyin": "gōngsī",
                   "meaning": "company",
                   "id": "b2l08g7-ex1-w9"
                 },
                 {
                   "traditional": "附近",
                   "simplified": "附近",
-                  "pinyin": "fù jìn",
+                  "pinyin": "fùjìn",
                   "meaning": "nearby",
                   "id": "b2l08g7-ex1-w10"
                 },
@@ -4276,7 +4301,8 @@
                   "suffix": "。",
                   "id": "b2l08g7-ex1-w12"
                 }
-              ]
+              ],
+              "simplified": "因为工作的关系，他决定搬到公司附近去住。"
             }
           },
           {
@@ -4285,12 +4311,12 @@
             "text": {
               "traditional": "因為放春假的關係，去高雄的高鐵票都賣光了。",
               "english": "Because of spring break, all the high-speed rail tickets to Kaohsiung sold out.",
-              "pinyin": "yīn wèi fàng chūnjià de guānxì qù Gāo xióng de gāo tiě piào dōu mài guāng le",
+              "pinyin": "Yīnwèi fàng chūnjià de guānxì, qù Gāoxióng de gāotiě piào dōu mài guāng le.",
               "words": [
                 {
                   "traditional": "因為",
                   "simplified": "因为",
-                  "pinyin": "yīn wèi",
+                  "pinyin": "yīnwèi",
                   "meaning": "because",
                   "id": "b2l08g7-ex2-w1"
                 },
@@ -4333,7 +4359,7 @@
                 {
                   "traditional": "高雄",
                   "simplified": "高雄",
-                  "pinyin": "Gāo xióng",
+                  "pinyin": "Gāoxióng",
                   "meaning": "Kaohsiung",
                   "id": "b2l08g7-ex2-w7"
                 },
@@ -4347,7 +4373,7 @@
                 {
                   "traditional": "高鐵",
                   "simplified": "高铁",
-                  "pinyin": "gāo tiě",
+                  "pinyin": "gāotiě",
                   "meaning": "high speed rail",
                   "id": "b2l08g7-ex2-w9"
                 },
@@ -4373,7 +4399,8 @@
                   "suffix": "。",
                   "id": "b2l08g7-ex2-w12"
                 }
-              ]
+              ],
+              "simplified": "因为放春假的关系，去高雄的高铁票都卖光了。"
             }
           },
           {
@@ -4382,12 +4409,12 @@
             "text": {
               "traditional": "因為沒時間化妝的關係，金小姐不想去參加舞會。",
               "english": "Because she has no time to put on makeup, Ms. Jin does not want to go to the dance.",
-              "pinyin": "yīn wèi méi shí jiān huàzhuāng de guānxì jīn xiǎo jie bù xiǎng qù cān jiā wǔhuì",
+              "pinyin": "Yīnwèi méi shíjiān huàzhuāng de guānxì, Jīn xiǎojie bù xiǎng qù cānjiā wǔhuì.",
               "words": [
                 {
                   "traditional": "因為",
                   "simplified": "因为",
-                  "pinyin": "yīn wèi",
+                  "pinyin": "yīnwèi",
                   "meaning": "because",
                   "id": "b2l08g7-ex3-w1"
                 },
@@ -4401,7 +4428,7 @@
                 {
                   "traditional": "時間",
                   "simplified": "时间",
-                  "pinyin": "shí jiān",
+                  "pinyin": "shíjiān",
                   "meaning": "time",
                   "id": "b2l08g7-ex3-w3"
                 },
@@ -4430,14 +4457,14 @@
                 {
                   "traditional": "金",
                   "simplified": "金",
-                  "pinyin": "jīn",
+                  "pinyin": "Jīn",
                   "meaning": "Jin (surname)",
                   "id": "b2l08g7-ex3-w7"
                 },
                 {
                   "traditional": "小姐",
                   "simplified": "小姐",
-                  "pinyin": "xiǎo jie",
+                  "pinyin": "xiǎojie",
                   "meaning": "Ms.; Miss",
                   "id": "b2l08g7-ex3-w8"
                 },
@@ -4458,7 +4485,7 @@
                 {
                   "traditional": "參加",
                   "simplified": "参加",
-                  "pinyin": "cān jiā",
+                  "pinyin": "cānjiā",
                   "meaning": "to attend; to participate in",
                   "id": "b2l08g7-ex3-w11"
                 },
@@ -4470,7 +4497,8 @@
                   "suffix": "。",
                   "id": "b2l08g7-ex3-w12"
                 }
-              ]
+              ],
+              "simplified": "因为没时间化妆的关系，金小姐不想去参加舞会。"
             }
           },
           {
@@ -4479,7 +4507,7 @@
             "text": {
               "traditional": "她到韓國留學是因為男朋友的關係。",
               "english": "She went to study in Korea because of her boyfriend.",
-              "pinyin": "tā dào Hán guó liúxué shì yīn wèi nán péng you de guānxì",
+              "pinyin": "Tā dào Hánguó liúxué shì yīnwèi nánpéngyou de guānxì.",
               "words": [
                 {
                   "traditional": "她",
@@ -4498,7 +4526,7 @@
                 {
                   "traditional": "韓國",
                   "simplified": "韩国",
-                  "pinyin": "Hán guó",
+                  "pinyin": "Hánguó",
                   "meaning": "Korea",
                   "id": "b2l08g7-ex4-w3"
                 },
@@ -4519,14 +4547,14 @@
                 {
                   "traditional": "因為",
                   "simplified": "因为",
-                  "pinyin": "yīn wèi",
+                  "pinyin": "yīnwèi",
                   "meaning": "because",
                   "id": "b2l08g7-ex4-w6"
                 },
                 {
                   "traditional": "男朋友",
                   "simplified": "男朋友",
-                  "pinyin": "nán péng you",
+                  "pinyin": "nánpéngyou",
                   "meaning": "boyfriend",
                   "id": "b2l08g7-ex4-w7"
                 },
@@ -4545,7 +4573,8 @@
                   "suffix": "。",
                   "id": "b2l08g7-ex4-w9"
                 }
-              ]
+              ],
+              "simplified": "她到韩国留学是因为男朋友的关系。"
             }
           }
         ],
@@ -4782,7 +4811,7 @@
           "speaker": "旁白",
           "traditional": "陳可欣發現她的同學方靜文最近變了，不但上課的時候打瞌睡，連作業也不寫。可欣以為靜文發生了什麼事，下課以後就找她聊聊。原來她最近愛上了韓國連續劇，每天都花很多時間看，有時候還為了看韓劇不睡覺，當然就沒時間寫作業了。",
           "simplified": "陈可欣发现她的同学方静文最近变了，不但上课的时候打瞌睡，连作业也不写。可欣以为静文发生了什么事，下课以后就找她聊聊。原来她最近爱上了韩国连续剧，每天都花很多时间看，有时候还为了看韩剧不睡觉，当然就没时间写作业了。",
-          "pinyin": "",
+          "pinyin": "Chén Kěxīn fāxiàn tā de tóngxué Fāng Jìngwén zuìjìn biàn le, búdàn shàngkè de shíhou dǎ kēshuì, lián zuòyè yě bù xiě. Kěxīn yǐwéi Jìngwén fāshēng le shénme shì, xiàkè yǐhòu jiù zhǎo tā liáoliao. Yuánlái tā zuìjìn àishàng le Hánguó liánxùjù, měitiān dōu huā hěn duō shíjiān kàn, yǒushíhou hái wèile kàn Hánjù bú shuìjiào, dāngrán jiù méi shíjiān xiě zuòyè le.",
           "english": "Chen Kexin found out that her classmate, Fang Jingwen, has recently changed. Not only does she doze off during classes, but she doesn't even do her homework. Kexin thought something had happened to Jingwen, so she went to her after classes to chat. It turned out that she has recently been in love with Korean drama series. She spends a lot of time watching them every day, and sometimes she doesn't even sleep watching Korean dramas. Of course she had no time to do her homework."
         },
         {
@@ -4790,7 +4819,7 @@
           "speaker": "旁白",
           "traditional": "因為韓劇的關係，靜文常去韓式餐廳吃飯，也常上網看韓國最流行的服裝，還買了很多像帽子、毛衣、裙子、化妝品這樣的商品。連韓國小姐化妝的樣子跟保養的方法，她都學會了。她還計畫後年到韓國去遊學，因為這樣不但可以學韓國話，也可以去連續劇裡的那些地方看看。",
           "simplified": "因为韩剧的关系，静文常去韩式餐厅吃饭，也常上网看韩国最流行的服装，还买了很多像帽子、毛衣、裙子、化妆品这样的商品。连韩国小姐化妆的样子跟保养的方法，她都学会了。她还计划后年到韩国去游学，因为这样不但可以学韩国话，也可以去连续剧里的那些地方看看。",
-          "pinyin": "",
+          "pinyin": "Yīnwèi Hánjù de guānxì, Jìngwén cháng qù Hánshì cāntīng chīfàn, yě cháng shàngwǎng kàn Hánguó zuì liúxíng de fúzhuāng, hái mǎi le hěn duō xiàng màozi, máoyī, qúnzi, huàzhuāngpǐn zhèyàng de shāngpǐn. Lián Hánguó xiǎojiě huàzhuāng de yàngzi gēn bǎoyǎng de fāngfǎ, tā dōu xuéhuì le. Tā hái jìhuà hòunián dào Hánguó qù yóuxué, yīnwèi zhèyàng búdàn kěyǐ xué Hánguóhuà, yě kěyǐ qù liánxùjù lǐ de nàxiē dìfang kànkan.",
           "english": "Because of the Korean drama series, Jingwen often dines out in Korean restaurants. She also often looks at the most popular Korean clothing on the Internet. Besides, she bought many commodities such as hats, sweaters, skirts and cosmetics. She has even learned the make-up style and skincare routine of Korean women. She also plans to go to Korea for a study tour the year after next year. This way she can not only learn Korean, but also go take a look at the places shown in the drama series."
         },
         {
@@ -4798,7 +4827,7 @@
           "speaker": "旁白",
           "traditional": "其實，很多台灣人為了跟上流行，除了看韓劇，還會看日劇或是美國影集。去 KTV 唱日文歌、去美國餐廳吃飯，也都是很平常的活動。可欣想，原來流行會讓人的生活方式有這麼大的改變！現在有「韓流」，以後會有什麼呢？",
           "simplified": "其实，很多台湾人为了跟上流行，除了看韩剧，还会看日剧或是美国影集。去 KTV 唱日文歌、去美国餐厅吃饭，也都是很平常的活动。可欣想，原来流行会让人的生活方式有这么大的改变！现在有「韩流」，以后会有什么呢？",
-          "pinyin": "",
+          "pinyin": "Qíshí, hěn duō Táiwān rén wèile gēnshàng liúxíng, chúle kàn Hánjù, hái huì kàn Rìjù huòshì Měiguó yǐngjí. Qù KTV chàng Rìwén gē, qù Měiguó cāntīng chīfàn, yě dōu shì hěn píngcháng de huódòng. Kěxīn xiǎng, yuánlái liúxíng huì ràng rén de shēnghuó fāngshì yǒu zhème dà de gǎibiàn! Xiànzài yǒu “Hánliú”, yǐhòu huì yǒu shénme ne?",
           "english": "In fact, many people also watch Japanese dramas or American TV series in order to keep up with the trends. Going to karaoke bars to sing Japanese songs or eating at American restaurants are both very common activities. Kexin thought: “So fashion really can change people's lives that much! Now we have the Korean wave, and then what will come next?”"
         }
       ]

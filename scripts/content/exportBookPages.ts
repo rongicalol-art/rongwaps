@@ -12,8 +12,9 @@ import { BOOK_PAGE_QUALITY, BOOK_PAGE_WIDTH } from './bookPageSettings';
 import type { InteractiveGrammarPart } from '../../src/types/models';
 
 const PROJECT_ROOT = resolve(import.meta.dirname, '..', '..');
-const SOURCE_DIRECTORY = join(PROJECT_ROOT, 'output/pdf/modern_chinese_1_lessons');
-const OUTPUT_DIRECTORY = join(PROJECT_ROOT, 'public/data/book-pages/modern-chinese-1');
+const BOOK_ID = process.argv.includes('--book=2') ? 2 : 1;
+const SOURCE_DIRECTORY = join(PROJECT_ROOT, BOOK_ID === 2 ? 'materials/book2' : 'output/pdf/modern_chinese_1_lessons');
+const OUTPUT_DIRECTORY = join(PROJECT_ROOT, `public/data/book-pages/modern-chinese-${BOOK_ID}`);
 const PRINTED_PAGE_OFFSET = 32;
 
 const LESSON_PDFS: Record<number, string> = {
@@ -44,10 +45,10 @@ function pageFilename(page: number) {
   return `page-${String(page).padStart(3, '0')}.webp`;
 }
 
-const grammarPack = JSON.parse(readFileSync(join(PROJECT_ROOT, 'public/data/grammar/book-1.json'), 'utf8')) as { items: InteractiveGrammarPart[] };
+const grammarPack = JSON.parse(readFileSync(join(PROJECT_ROOT, `public/data/grammar/book-${BOOK_ID}.json`), 'utf8')) as { items: InteractiveGrammarPart[] };
 const pagesByLesson = new Map<number, Set<number>>();
 for (const part of grammarPack.items) {
-  if (part.bookId !== 1) continue;
+  if (part.bookId !== BOOK_ID) continue;
   const lessonPages = pagesByLesson.get(part.lessonId) ?? new Set<number>();
   for (const grammarPage of part.grammarPages) {
     grammarPage.printedPages.forEach((page) => lessonPages.add(page));
@@ -62,13 +63,13 @@ const exportedPages: number[] = [];
 try {
   for (const [lessonId, pages] of [...pagesByLesson.entries()].sort(([a], [b]) => a - b)) {
     if (pages.size === 0) continue; // lesson has grammar but no digitized printed pages yet
-    const pdfName = LESSON_PDFS[lessonId];
+    const pdfName = BOOK_ID === 2 ? 'Modern_Chinese_Book_2.pdf' : LESSON_PDFS[lessonId];
     if (!pdfName) throw new Error(`No source PDF configured for Lesson ${lessonId}`);
     const pdfPath = join(SOURCE_DIRECTORY, pdfName);
-    const firstSourcePage = sourceStartPage(pdfPath);
+    const firstSourcePage = BOOK_ID === 2 ? 0 : sourceStartPage(pdfPath);
 
     for (const printedPage of [...pages].sort((a, b) => a - b)) {
-      const pdfPage = printedPage - (firstSourcePage + PRINTED_PAGE_OFFSET) + 1;
+      const pdfPage = BOOK_ID === 2 ? printedPage + 1 : printedPage - (firstSourcePage + PRINTED_PAGE_OFFSET) + 1;
       if (pdfPage < 1) {
         throw new Error(`Printed page ${printedPage} does not map into ${pdfName}`);
       }
@@ -103,8 +104,8 @@ try {
   writeFileSync(
     join(OUTPUT_DIRECTORY, 'manifest.json'),
     `${JSON.stringify({
-      bookId: 1,
-      source: 'Modern Chinese 1 lesson PDFs',
+      bookId: BOOK_ID,
+      source: BOOK_ID === 2 ? 'Modern Chinese 2 PDF (PDF page = printed page + 1)' : 'Modern Chinese 1 lesson PDFs',
       pages: exportedPages.sort((a, b) => a - b),
     }, null, 2)}\n`,
   );

@@ -38,6 +38,15 @@ export function alignRubyPinyin(text: string, pinyinStr: string): RubyItem[] {
         pinyin: undefined,
         isPunctuation: false,
       });
+    } else if (/\p{Script=Latin}/u.test(char)) {
+      // Printed romanized words (for example yú) occupy one reading slot.
+      let word = '';
+      while (i < text.length && /[\p{Script=Latin}\p{M}]/u.test(text[i])) {
+        word += text[i];
+        i++;
+      }
+      items.push({ char: word, pinyin: syllables[sylIndex], isPunctuation: false });
+      sylIndex++;
     } else {
       const pinyin = sylIndex < syllables.length ? syllables[sylIndex] : undefined;
       sylIndex++;
@@ -54,9 +63,8 @@ export function alignRubyPinyin(text: string, pinyinStr: string): RubyItem[] {
 }
 
 /**
- * rubyItems partition the line text: every non-digit character is its own
- * item, while a run of digits is a single item whose `char` holds the whole
- * run. So an item's array index is NOT its character offset once a digit run
+ * rubyItems partition the line text: digit and Latin runs are single items.
+ * So an item's array index is NOT its character offset once a multi-character run
  * appears (e.g. "台北101大樓" groups "101" into one item and the rest of the
  * array shifts by two). Alignment words are indexed by character offset into
  * the authored text, so slices must be computed from each item's character
