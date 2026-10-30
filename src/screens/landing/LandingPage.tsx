@@ -56,7 +56,7 @@ export function LandingPage() {
 
           <section aria-label="Every lesson is its own story" className="mt-10 lg:mt-4">
             <div className="relative">
-              <img src={nianArtSmall} srcSet={`${nianArtSmall} 960w, ${nianArt} 1672w`} sizes="(min-width: 1024px) 1240px, 100vw" width={1672} height={941} alt="The Nian monster flees a red doorway as firecrackers burst" className="aspect-video w-full rounded-feature object-cover lg:rounded-modal" />
+              <img src={nianArtSmall} srcSet={`${nianArtSmall} 960w, ${nianArt} 1672w`} sizes="(min-width: 1024px) 1240px, 100vw" fetchPriority="high" width={1672} height={941} alt="The Nian monster flees a red doorway as firecrackers burst" className="aspect-video w-full rounded-feature object-cover lg:rounded-modal" />
               <NianLessonPhone className="absolute -bottom-18 -right-10 hidden w-60 lg:block" />
             </div>
             <p className="mt-4 flex flex-wrap items-baseline gap-x-3">

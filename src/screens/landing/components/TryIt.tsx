@@ -1,8 +1,9 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { PlayfulNavIcon } from '../../../lib/widgets';
 import { PracticeChoiceButton } from '../../../features/practice';
 import { DEMOS, type DemoId } from '../landingContent';
-import { CardsDemo } from '../demos/CardsDemo';
+// Every demo loads only once the panel nears the viewport, so first paint skips their code.
+const CardsDemo = lazy(() => import('../demos/CardsDemo').then((m) => ({ default: m.CardsDemo })));
 const QuizDemo = lazy(() => import('../demos/QuizDemo').then((m) => ({ default: m.QuizDemo })));
 const TonesDemo = lazy(() => import('../demos/TonesDemo').then((m) => ({ default: m.TonesDemo })));
 const DictionaryDemo = lazy(() => import('../demos/DictionaryDemo').then((m) => ({ default: m.DictionaryDemo })));
@@ -19,6 +20,19 @@ export function TryIt() {
   const [active, setActive] = useState<DemoId>('cards');
   const demo = DEMOS.find((d) => d.id === active) ?? DEMOS[0];
   const View = DEMO_VIEW[active];
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel || typeof IntersectionObserver === 'undefined') return setNear(true);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      setNear(true);
+      observer.disconnect();
+    }, { rootMargin: '600px 0px' });
+    observer.observe(panel);
+    return () => observer.disconnect();
+  }, []);
   return (
     <div>
       <div role="tablist" aria-label="Study modes" className="-mx-5 mt-6 flex gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] lg:mx-0 lg:flex-wrap lg:justify-center lg:px-0">
@@ -33,9 +47,9 @@ export function TryIt() {
       </div>
       <div className="relative mx-auto mt-4 max-w-3xl rounded-modal border-[8px] border-ui-ink-strong bg-ui-ink-strong lg:mt-6 lg:border-[12px]">
         <span aria-hidden="true" className="absolute left-1/2 top-[-5px] size-1.5 -translate-x-1/2 rounded-full bg-ui-muted lg:top-[-7px]" />
-        <div role="tabpanel" aria-label={demo.title} className="relative flex min-h-[28rem] flex-col items-center justify-center overflow-hidden rounded-feature bg-ui-practice-canvas px-4 py-8 lg:min-h-[32rem] lg:px-10 lg:py-10">
+        <div ref={panelRef} role="tabpanel" aria-label={demo.title} className="relative flex min-h-[28rem] flex-col items-center justify-center overflow-hidden rounded-feature bg-ui-practice-canvas px-4 py-8 lg:min-h-[32rem] lg:px-10 lg:py-10">
           <Suspense fallback={<div />}>
-            <View key={active} />
+            {near && <View key={active} />}
           </Suspense>
         </div>
       </div>
