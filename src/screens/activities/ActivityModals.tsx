@@ -146,7 +146,7 @@ export function ActivityModals({
   const insetClassName = hasDock ? dockLayout.insetClassName : '';
   // The bottom dock publishes its measured height as `--dock-inset` on this body; the screens sit above it, so they centre in the free area.
   const bodyRef = useRef<HTMLDivElement>(null);
-  const reservesDock = hasDock && !dockLayout.isVertical;
+  const reservesDock = hasDock && !dockLayout.isVertical && resolvedActivity !== 'writing';
   useLayoutEffect(() => {
     if (!reservesDock) bodyRef.current?.style.removeProperty('--dock-inset');
   }, [reservesDock]);
@@ -251,7 +251,7 @@ export function ActivityModals({
                   insetClassName={edgeInsetClassName}
                 />
 
-                <div className={cn('absolute inset-x-0 top-0 bottom-[var(--dock-inset,0px)]', reservesDock && 'border-b-2 border-ui-divider')}>
+                <div className="absolute inset-x-0 top-0 bottom-[var(--dock-inset,0px)]">
                 <ActivityScreens
                   activeActivity={activeActivity}
                   activeBookId={activeBookId}
@@ -287,7 +287,7 @@ export function ActivityModals({
                       value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
                       quizMode={activeQuizMode}
                       layout={dockLayout}
-                      insetRef={bodyRef}
+                      insetRef={reservesDock ? bodyRef : undefined}
                       autoHide={dockAutoHide}
                       onSelectQuizMode={(mode) => {
                         setActiveQuizMode(mode);
