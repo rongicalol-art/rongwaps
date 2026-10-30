@@ -68,7 +68,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     moveTo(index);
   }, [currentIndex, moveTo, stopAudio]);
 
-  /** Ends the round wherever the feed is (the feed's Finish, ↓ on the last card). */
+  /** Ends the round wherever the feed is (↓ on the last card). */
   const finish = useCallback(() => {
     stopAudio();
     moveTo(deck.length - 1);
@@ -108,7 +108,7 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
     else setFlowStatus('playing');
   }, [pauseFlow]);
 
-  /** Flow (header menu): open the card, play it (English and repeat pause per settings), move on; the last one finishes. */
+  /** Flow (header menu): open the card, play it (English and repeat pause per settings), move on; after the last one it loops to the first. */
   useEffect(() => {
     if (flowStatus !== 'playing' || !current || completed) return;
     let cancelled = false;
@@ -128,10 +128,11 @@ export function useSentenceSession(sentences: LessonSentence[], sessionKey: stri
       if (isCancelled()) return;
       await wait(flowBackDelayMs);
       if (isCancelled()) return;
-      if (advanceOrComplete() === 'completed') setFlowStatus('finished');
+      if (currentIndex + 1 < deck.length) advanceOrComplete();
+      else moveTo(0);
     })();
     return () => { cancelled = true; };
-  }, [advanceOrComplete, characterPreference, completed, current, flowBackDelayMs, flowRepeatPause, flowSpeakTranslation, flowStatus]);
+  }, [advanceOrComplete, characterPreference, completed, current, currentIndex, deck.length, flowBackDelayMs, flowRepeatPause, flowSpeakTranslation, flowStatus, moveTo]);
 
   const toggleHard = useCallback((id: string) => {
     setHardIds((ids) => {

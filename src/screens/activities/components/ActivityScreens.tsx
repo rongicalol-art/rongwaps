@@ -103,7 +103,6 @@ export function ActivityScreens({
             isIndependentStudy={isIndependentStudy}
             onClose={onClose}
             onContinue={onContinue}
-            continueLabel={continueLabel}
             onStartQuiz={onStartQuiz}
             quizFirstId={quizFirstId}
             sessionDeck={sessionDeck}

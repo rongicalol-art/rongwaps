@@ -87,6 +87,12 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     session.advanceOrComplete();
   }, [currentIndex, session]);
 
+  /** Flow loops: back to the first card of the round without ending it. */
+  const goToStart = useCallback(() => {
+    setIsFlipped(false);
+    session.moveTo(0);
+  }, [session]);
+
   const handleNext = useCallback((level: number) => {
     const cardToRate = activeCards[currentIndex] ?? currentCard;
     if (!cardToRate) return;
@@ -132,6 +138,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     setActiveBreakdown,
     handleNavigate,
     handleNext,
+    goToStart,
     resetAll,
     restartSession: session.resetAll,
     practiceCards: session.practiceCards,

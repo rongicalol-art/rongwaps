@@ -28,8 +28,8 @@ interface UseFlashcardFlowProps {
   isReviewPass?: boolean;
   /** Deck finished: the header keeps only its close button. */
   isDeckDone?: boolean;
-  onContinue?: () => void;
-  continueLabel?: string;
+  /** Flow loops: at the last card it returns here instead of ending. */
+  goToStart: () => void;
 }
 
 export function useFlashcardFlow({
@@ -50,8 +50,7 @@ export function useFlashcardFlow({
   completed,
   isReviewPass = false,
   isDeckDone = false,
-  onContinue,
-  continueLabel,
+  goToStart,
 }: UseFlashcardFlowProps) {
   const setSwipeFeedback = useAppStore((state) => state.setSwipeFeedback);
   const feedbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -89,31 +88,13 @@ export function useFlashcardFlow({
   const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const manualRevealAudioRef = useRef(false);
 
-  const handleFinishSetInFlow = useCallback(() => {
-    if (onContinue) {
-      if (continueLabel) {
-        const cleaned = continueLabel.replace(/^Continue\s*\(?/, '').replace(/\)?$/, '').trim();
-        if (cleaned) {
-          setSwipeFeedback({ text: cleaned, type: 'learned' });
-          setTimeout(() => setSwipeFeedback(null), 800);
-        }
-      }
-      onContinue();
-    } else {
-      setSwipeFeedback({ text: 'Replaying Deck', type: 'learned' });
-      setTimeout(() => setSwipeFeedback(null), 800);
-      resetAll();
-    }
-  }, [continueLabel, onContinue, resetAll, setSwipeFeedback]);
-
   const { flowStatus, pauseFlow, stopFlow, toggleFlow } = useCardFlow({
     currentCard: currentCard ?? undefined,
     currentIndex,
     totalCount: cards.length,
     setIsFlipped,
     onAdvance: () => handleNavigate(1),
-    onReplay: resetAll,
-    onFinishSet: handleFinishSetInFlow,
+    onReplay: goToStart,
   });
 
   // Only a flow that is playing owns the audio. Idle, paused or finished: a flip plays the card itself.

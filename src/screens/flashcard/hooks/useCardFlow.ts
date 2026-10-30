@@ -13,8 +13,8 @@ interface UseCardFlowOptions {
   totalCount: number;
   setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>;
   onAdvance: () => void;
+  /** Called after the last card: flow goes back to the first and keeps playing. */
   onReplay: () => void;
-  onFinishSet?: () => void;
 }
 
 export function useCardFlow({
@@ -24,7 +24,6 @@ export function useCardFlow({
   setIsFlipped,
   onAdvance,
   onReplay,
-  onFinishSet,
 }: UseCardFlowOptions) {
   const [flowStatus, setFlowStatus] = useState<PracticeFlowStatus>('idle');
   const [flowStep, setFlowStep] = useState(0);
@@ -40,12 +39,10 @@ export function useCardFlow({
   const characterPreference = useAppStore((state) => state.characterPreference);
   const onAdvanceRef = useRef(onAdvance);
   const onReplayRef = useRef(onReplay);
-  const onFinishSetRef = useRef(onFinishSet);
   const setIsFlippedRef = useRef(setIsFlipped);
 
   onAdvanceRef.current = onAdvance;
   onReplayRef.current = onReplay;
-  onFinishSetRef.current = onFinishSet;
   setIsFlippedRef.current = setIsFlipped;
 
   // Pauses the flow state only; the clip already ringing is left to finish.
@@ -135,16 +132,11 @@ export function useCardFlow({
         onAdvanceRef.current();
         setFlowStep((s) => s + 1);
       } else {
-        // Continuous flow mode: do not stop when finishing a set!
-        // Smoothly flip card back to front and transition to next part or loop back to card 0.
+        // Flow never ends by itself: flip back to the front and loop to the first card.
         setIsFlippedRef.current(false);
         await wait(320);
         if (isCancelled()) return;
-        if (onFinishSetRef.current) {
-          onFinishSetRef.current();
-        } else {
-          onReplayRef.current();
-        }
+        onReplayRef.current();
         setFlowStep((s) => s + 1);
       }
     };

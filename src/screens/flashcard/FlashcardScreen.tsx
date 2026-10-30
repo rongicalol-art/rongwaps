@@ -29,7 +29,6 @@ interface FlashcardScreenProps {
   isIndependentStudy?: boolean;
   onClose?: () => void;
   onContinue?: () => void;
-  continueLabel?: string;
   /** Quizzes the same words; offered at the end of a round. `types` is the Cards done pick ([] = Mixed). */
   onStartQuiz?: (types: QuizTypeId[], stats: SessionStats) => void;
   /** Cards done shows this word first in its sheet. */
@@ -56,7 +55,6 @@ export function FlashcardScreen({
   isIndependentStudy = false,
   onClose,
   onContinue,
-  continueLabel,
   onStartQuiz,
   quizFirstId,
   sessionDeck,
@@ -85,6 +83,7 @@ export function FlashcardScreen({
     setActiveBreakdown,
     handleNavigate,
     handleNext,
+    goToStart,
     resetAll: resetDeck,
     restartSession: restartDeckSession,
     practiceCards,
@@ -211,8 +210,7 @@ export function FlashcardScreen({
     completed,
     isReviewPass,
     isDeckDone,
-    onContinue,
-    continueLabel,
+    goToStart,
   });
 
   const handleCardTap = useCallback(() => {
