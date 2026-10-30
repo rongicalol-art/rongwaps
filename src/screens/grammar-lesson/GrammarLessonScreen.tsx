@@ -13,6 +13,7 @@ import { GrammarContinueFooter } from './components/GrammarContinueFooter';
 import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
 import { useGrammarLessonPage } from './hooks/useGrammarLessonPage';
 import { useGrammarFooterVisibility } from './hooks/useGrammarFooterVisibility';
+import { isHanziChar } from '../../utils/characters/hanzi';
 import { useGrammarLessonKeyboardNavigation } from './hooks/useGrammarLessonKeyboardNavigation';
 
 // Window shell (this module) stays eager so the lesson opens instantly with
@@ -106,6 +107,7 @@ export function GrammarLessonScreen({
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const [showPinyin, setShowPinyin] = useState(false);
   const [showTranslation, setShowTranslation] = useState(true);
+  const [chineseExplanation, setChineseExplanation] = useState(false);
 
   const closeLesson = useCallback(() => {
     audioService.stop();
@@ -195,6 +197,8 @@ export function GrammarLessonScreen({
               bookPageLabel={bookPageLabel}
               onOpenBookPage={() => setIsBookOpen(true)}
               bookPageButtonRef={bookPageButtonRef}
+              chineseExplanation={chineseExplanation}
+              onToggleChineseExplanation={hasChineseExplanation(page) ? () => setChineseExplanation((prev) => !prev) : undefined}
             />
 
             <Suspense fallback={null}>
@@ -233,6 +237,7 @@ export function GrammarLessonScreen({
                           showPinyin={showPinyin}
                           showTranslation={showTranslation}
                           onOpenWord={setDictionaryWord}
+                          chineseExplanation={chineseExplanation && hasChineseExplanation(page)}
                         />
                       )}
                     </motion.div>
@@ -267,4 +272,11 @@ export function GrammarLessonScreen({
       )}
     </WorkspaceWindow>
   );
+}
+
+/** The 中文 switch only makes sense when the page has both an English explanation and a real Chinese one (mostly hanzi). */
+function hasChineseExplanation(page: { explanation: string; explanationEnglish?: string }) {
+  if (!page.explanationEnglish) return false;
+  const hanzi = [...page.explanation].filter(isHanziChar).length;
+  return hanzi > 0 && hanzi >= page.explanation.replace(/\s/g, '').length * 0.5;
 }

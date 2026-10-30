@@ -10,6 +10,9 @@ interface GrammarReadingAidsProps {
   onToggleTranslation: () => void;
   bookPageLabel?: string | null;
   onOpenBookPage?: () => void;
+  chineseExplanation?: boolean;
+  /** Absent when the point has no English explanation to switch from. */
+  onToggleChineseExplanation?: () => void;
 }
 
 export function GrammarReadingAids({
@@ -21,11 +24,16 @@ export function GrammarReadingAids({
   onToggleTranslation,
   bookPageLabel,
   onOpenBookPage,
+  chineseExplanation = false,
+  onToggleChineseExplanation,
 }: GrammarReadingAidsProps) {
   return (
     <div role="menu" aria-label="Lesson options" className="flex flex-col gap-1.5 text-left">
       <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} tinted />
       <SwitchRow label="Translation" checked={showTranslation} onToggle={onToggleTranslation} tinted />
+      {onToggleChineseExplanation && (
+        <SwitchRow label="中文 explanation" checked={chineseExplanation} onToggle={onToggleChineseExplanation} tinted />
+      )}
       <div className="my-1 flex flex-col gap-2">
         <SegmentedControl<CharacterFont>
           value={characterFont}

@@ -22,6 +22,8 @@ interface GrammarLessonHeaderProps {
   bookPageLabel?: string | null;
   onOpenBookPage?: () => void;
   bookPageButtonRef?: RefObject<HTMLButtonElement | null>;
+  chineseExplanation?: boolean;
+  onToggleChineseExplanation?: () => void;
 }
 
 export function GrammarLessonHeader({
@@ -38,6 +40,8 @@ export function GrammarLessonHeader({
   bookPageLabel = null,
   onOpenBookPage,
   bookPageButtonRef,
+  chineseExplanation,
+  onToggleChineseExplanation,
 }: GrammarLessonHeaderProps) {
   const [isAidsOpen, setIsAidsOpen] = useState(false);
   const aidsRef = useRef<HTMLDivElement>(null);
@@ -101,6 +105,8 @@ export function GrammarLessonHeader({
                       showTranslation={showTranslation}
                       onTogglePinyin={onTogglePinyin}
                       onToggleTranslation={onToggleTranslation}
+                      chineseExplanation={chineseExplanation}
+                      onToggleChineseExplanation={onToggleChineseExplanation}
                     />
                   </motion.div>
                 )}

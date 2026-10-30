@@ -641,9 +641,9 @@
             "id": "b2l09-g03-p209-ex2",
             "number": 2,
             "text": {
-              "traditional": "已經八點了，你快（一）點兒起床，要不然上班會遲到！",
+              "traditional": "已經八點了，你快（一）點兒起床，要不然上班會遲到的！",
               "english": "It’s already eight. Get up quickly, or you’ll be late for work!",
-              "simplified": "已经八点了，你快（一）点儿起床，要不然上班会迟到！",
+              "simplified": "已经八点了，你快（一）点儿起床，要不然上班会迟到的！",
               "words": [
                 {
                   "id": "b2l09-g03-p209-ex2-w1",
@@ -733,9 +733,16 @@
                   "pinyin": "chídào",
                   "meaning": "be late",
                   "suffix": "！"
+                },
+                {
+                  "id": "b2l09-g03-p209-ex2-de",
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "meaning": "(particle: affirms what will happen)"
                 }
               ],
-              "pinyin": "Yǐjīng bā diǎn le, nǐ kuài (yì) diǎnr qǐchuáng, yàobùrán shàngbān huì chídào!"
+              "pinyin": "Yǐjīng bā diǎn le, nǐ kuài (yì) diǎnr qǐchuáng, yàobùrán shàngbān huì chídào de!"
             }
           },
           {
@@ -1327,7 +1334,7 @@
             "number": 6,
             "text": {
               "traditional": "A：你昨天寫作業寫到幾點？B：寫到半夜兩點才寫完。",
-              "english": "A: Until what time did you do your homework yesterday? B: I worked until two a.m. and only then finished.",
+              "english": "A: Until what time did you do your homework yesterday? B: I did my homework until two a.m. and only then finished.",
               "simplified": "A：你昨天写作业写到几点？B：写到半夜两点才写完。",
               "words": [
                 {

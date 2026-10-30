@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammar/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
-import { SegmentedControl } from '../../../lib/widgets';
 import { GrammarExamplesSection } from './GrammarExamplesSection';
 
 import { GrammarFocusText } from './GrammarFocusText';
@@ -15,6 +13,8 @@ interface GrammarStudyPageProps {
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
   hideHeader?: boolean;
+  /** Show the book's Chinese explanation instead of the English one (chosen in the lesson menu). */
+  chineseExplanation?: boolean;
 }
 
 export function GrammarStudyPage({
@@ -24,10 +24,9 @@ export function GrammarStudyPage({
   showTranslation,
   onOpenWord,
   hideHeader = false,
+  chineseExplanation = false,
 }: GrammarStudyPageProps) {
-  const [language, setLanguage] = useState({ pageId: page.id, chinese: false });
-  if (language.pageId !== page.id) setLanguage({ pageId: page.id, chinese: false });
-  const chinese = language.pageId === page.id && language.chinese;
+  const chinese = chineseExplanation;
   const teachingTokens = getGrammarTeachingTokens(page);
   const hasSubsections = Boolean(page.subsections && page.subsections.length > 0);
   // Examples the book prints under a table row show there, not again in the list.
@@ -58,15 +57,6 @@ export function GrammarStudyPage({
               onOpenWord={onOpenWord}
             />
           </p>
-          {page.explanationEnglish && (
-            <SegmentedControl
-              ariaLabel="Explanation language"
-              className="w-44"
-              value={chinese ? 'zh' : 'en'}
-              onChange={(next) => setLanguage({ pageId: page.id, chinese: next === 'zh' })}
-              options={[{ value: 'en', label: 'English' }, { value: 'zh', label: '中文' }]}
-            />
-          )}
         </header>
       )}
 
