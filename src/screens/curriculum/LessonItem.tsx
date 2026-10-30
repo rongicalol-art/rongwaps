@@ -10,7 +10,7 @@ const LONG_PRESS_SLOP_PX = 8;
 
 interface LessonItemProps {
   lesson: CourseLessonProgress;
-  onOpen: (id: number) => void;
+  onOpen: (id: number, event?: React.MouseEvent) => void;
   /** Artwork override (the Introduction has its own); defaults to the lesson's landscape. */
   art?: string;
   /** `art` is a lesson picture: fill the tile with rounded corners instead of insetting an icon. */
@@ -22,7 +22,7 @@ interface LessonItemProps {
   isSelected?: boolean;
   isPrevSelected?: boolean;
   isNextSelected?: boolean;
-  onToggle?: (id: number) => void;
+  onToggle?: (id: number, event?: React.MouseEvent) => void;
   /** Who's studying this lesson now (study together); sits at the tile's right edge. */
   faces?: ReactNode;
 }
@@ -57,8 +57,6 @@ function LessonItemBase({
   const safetyTimer = useRef<number | null>(null);
   const pressOrigin = useRef<{ x: number; y: number } | null>(null);
   const longPressed = useRef(false);
-  const imageLoaded = useRef(false);
-  const openWhenLoaded = useRef(false);
   const cancelPress = () => {
     if (pressTimer.current !== null) window.clearTimeout(pressTimer.current);
     pressTimer.current = null;
@@ -89,7 +87,10 @@ function LessonItemBase({
     if (!origin || pressTimer.current === null) return;
     if (Math.hypot(event.clientX - origin.x, event.clientY - origin.y) > LONG_PRESS_SLOP_PX) cancelPress();
   };
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent) => {
+    if (event.shiftKey) {
+      event.preventDefault();
+    }
     // The release that ends a long press must not also open the lesson.
     if (isLocked) {
       navigator.vibrate?.(8);
@@ -101,9 +102,8 @@ function LessonItemBase({
       clearSafetyTimer();
       return;
     }
-    if (isSelecting && onToggle) onToggle(lesson.id);
-    else if (imageLoaded.current) onOpen(lesson.id);
-    else openWhenLoaded.current = true;
+    if (isSelecting && onToggle) onToggle(lesson.id, event);
+    else onOpen(lesson.id, event);
   };
 
   return (
@@ -146,14 +146,6 @@ function LessonItemBase({
             src={art ?? LESSON_LANDSCAPE_ART[lesson.id]}
             alt=""
             draggable={false}
-            onLoad={() => {
-              imageLoaded.current = true;
-              if (openWhenLoaded.current) {
-                openWhenLoaded.current = false;
-                onOpen(lesson.id);
-              }
-            }}
-            onError={() => { openWhenLoaded.current = false; }}
             className={cn(
               'h-full w-full transition-[filter,opacity] duration-200 ease-out motion-reduce:transition-none',
               isPhoto ? 'rounded-compact object-cover' : 'object-contain p-1',
