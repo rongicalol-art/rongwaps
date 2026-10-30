@@ -18,6 +18,7 @@ function shellActions() {
       startPathPractice: () => {},
       openReader: () => { events.push('open-reader'); },
       openReaderForPart: (...target) => { events.push(['open-part-reader', ...target]); },
+      openReaderForLessons: () => {},
       closeReader: () => {},
       openGrammarParts: (partIds) => { events.push(['grammar-open', partIds]); },
       setActiveGrammarPartId: (partId) => { events.push(['grammar-close', partId]); },

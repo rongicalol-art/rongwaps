@@ -2,12 +2,12 @@ import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { motion, useIsPresent, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
 import { shouldShowWordHook } from '../../../features/character-memory-hooks';
-import { AppIcon } from '../../../lib/widgets';
+import { AppIcon, DropdownMenu, DropdownMenuItem, IconActionButton } from '../../../lib/widgets';
 import type { RankedExample } from '../../../utils/vocabulary/courseExamples';
 import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
-import { FavoriteButton } from '../../../features/library';
+import { useIsWordSaved } from '../../../features/library';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardSwipe } from '../hooks/useCardSwipe';
 import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
@@ -128,6 +128,9 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     }
   }, [showHook]);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isSaved } = useIsWordSaved(card.front, card.traditional, card.simplified);
+
   const handleToggleHook = () => {
     if (backScrollRef.current) backScrollRef.current.scrollTop = 0;
     if (onToggleHook) {
@@ -160,64 +163,73 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [isInteractive]);
 
+  // One quiet menu replaces the icon row: it sits top-right and the question side stays clean.
   const renderCardActions = () => {
     const hasHook = showWordHookChip && Boolean(wordHook);
+    const canWrite = Boolean(onOpenWriting) && Array.from(card.front).some(isHanziChar);
+    const run = (action: () => void) => () => {
+      setIsMenuOpen(false);
+      if (!isDragging) action();
+    };
     return (
       <div
-        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-2 transition-opacity duration-150 group-has-[[data-fc-word]:hover]/back:opacity-0 group-has-[[data-fc-word]:hover]/back:pointer-events-none"
+        className="rw-rise rw-rise-1 absolute right-3 top-3 z-20 transition-opacity duration-150 group-has-[[data-fc-word]:hover]/back:opacity-0 group-has-[[data-fc-word]:hover]/back:pointer-events-none"
         onPointerDown={(event) => event.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
-        {hasHook && (
-          <button
-            type="button"
-            aria-label={isHookOpen ? `Hide memory hook for ${card.front}` : `Open memory hook for ${card.front}`}
-            aria-expanded={isHookOpen}
-            onClick={(event) => {
-              event.stopPropagation();
-              if (isDragging) return;
-              handleToggleHook();
-            }}
-            className={cn(
-              'flex h-10 w-10 items-center justify-center rounded-compact focus-ring hover:bg-ui-hover active:scale-95',
-              isHookOpen ? 'text-feedback-warning hover:text-feedback-warning-text' : 'text-ui-muted',
-            )}
+        <DropdownMenu
+          label="Card actions"
+          open={isMenuOpen}
+          onOpenChange={setIsMenuOpen}
+          align="end"
+          widthClassName="w-52"
+          renderTrigger={(triggerProps) => (
+            <IconActionButton
+              {...triggerProps}
+              size="lg"
+              label="Card actions"
+              className={cn('text-ui-muted', isMenuOpen && 'bg-ui-hover')}
+              icon={(
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">
+                  <circle cx="11" cy="4.5" r="2.2" />
+                  <circle cx="11" cy="11" r="2.2" />
+                  <circle cx="11" cy="17.5" r="2.2" />
+                </svg>
+              )}
+            />
+          )}
+        >
+          {hasHook && (
+            <DropdownMenuItem
+              icon={<AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={19} />}
+              active={isHookOpen}
+              onClick={run(handleToggleHook)}
+            >
+              Memory hook
+            </DropdownMenuItem>
+          )}
+          {canWrite && (
+            <DropdownMenuItem icon={<AppIcon name="writingOutline" size={19} />} onClick={run(() => onOpenWriting?.())}>
+              Write
+            </DropdownMenuItem>
+          )}
+          <DropdownMenuItem icon={<AppIcon name="copy" size={19} />} onClick={run(copyCard)}>
+            Copy
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            icon={<AppIcon name={isSaved ? 'bookmarkFilled' : 'bookmark'} size={19} />}
+            active={isSaved}
+            onClick={run(() => useAppStore.getState().setSaveWordTarget({
+              word: card.front,
+              traditional: card.traditional || card.front,
+              simplified: card.simplified || card.front,
+              pinyin: card.pinyin,
+              definitions: card.back,
+            }))}
           >
-            {/* Same outline-to-filled language as the bookmark beside it. */}
-            <AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={22} />
-          </button>
-        )}
-        <button
-          type="button"
-          aria-label={`Copy ${card.front}`}
-          onClick={(event) => {
-            event.stopPropagation();
-            if (!isDragging) copyCard();
-          }}
-          className="flex h-10 w-10 items-center justify-center rounded-compact text-ui-muted focus-ring hover:bg-ui-hover active:scale-95"
-        >
-          <AppIcon name="copy" size={22} />
-        </button>
-        {onOpenWriting && Array.from(card.front).some(isHanziChar) && <button
-          type="button"
-          aria-label={`Write ${card.front}`}
-          onClick={(event) => {
-            event.stopPropagation();
-            if (!isDragging) onOpenWriting();
-          }}
-          className="flex h-10 w-10 items-center justify-center rounded-compact text-ui-muted focus-ring hover:bg-ui-hover active:scale-95"
-        >
-          <AppIcon name="writingOutline" size={22} />
-        </button>}
-        <FavoriteButton
-          word={card.front}
-          traditional={card.traditional}
-          simplified={card.simplified}
-          pinyin={card.pinyin}
-          definitions={card.back}
-          size="lg"
-          variant="ghost"
-          className="h-10 w-10 rounded-compact text-ui-muted hover:bg-ui-hover hover:text-ui-muted active:scale-95"
-        />
+            {isSaved ? 'Saved' : 'Save'}
+          </DropdownMenuItem>
+        </DropdownMenu>
       </div>
     );
   };

@@ -3,7 +3,7 @@ import { useAuth } from '../../hooks/useAuth';
 import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
 import { getSelectedLessonIds } from '../../utils/lesson/lessonPartSelection';
-import { resolveActiveReadingIndex, findReadingIndexForPart, findReadingIndicesForParts } from '../../utils/lesson/readingContext';
+import { resolveActiveReadingIndex, findReadingIndexForPart, findReadingIndicesForParts, findReadingIndicesForLessons } from '../../utils/lesson/readingContext';
 import { isLessonLocked } from '../../data/books';
 import { fetchReadingsPack, fetchDialogueAlignmentPack } from '../../services/contentPacks';
 import { warmChineseFont } from '../../utils/browser/fontWarmup';
@@ -88,6 +88,10 @@ export function useReaderLauncher({
       : findReadingIndexForPart(loaded, bookId, lessonId, partId))
   ), [openReading]);
 
+  const openReaderForLessons = useCallback((bookId: number, lessonIds: number[]) => (
+    openReading(bookId, (loaded) => findReadingIndicesForLessons(loaded, bookId, lessonIds))
+  ), [openReading]);
+
   const closeReader = useCallback(() => {
     generation.current++;
     retryRef.current = null;
@@ -132,6 +136,7 @@ export function useReaderLauncher({
     retry: () => { void retryRef.current?.(); },
     openReader,
     openReaderForPart,
+    openReaderForLessons,
     closeReader,
     navigateReader,
   };

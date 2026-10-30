@@ -7,7 +7,6 @@ import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useAppStore } from '../../store/useAppStore';
-import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { numberToToneMarks } from '../../utils/pinyin/pinyin';
 import { usePinyin } from './hooks/usePinyin';
@@ -50,16 +49,10 @@ export function PinyinScreen({
   const inputRef = useRef<HTMLInputElement>(null);
   const promptChars = useMemo(() => Array.from(currentCard?.front ?? ''), [currentCard?.front]);
   const promptClassName = pinyinPromptSize(promptChars.length);
-  const partSegments = useMemo(
-    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
-    [isLibraryDeck, isReviewDeck, playlist],
-  );
-
   usePracticeHeaderRegistration({
     currentIndex: progressInfo.displayIndex,
     totalCount: progressInfo.totalCount,
     showLightbulb: false,
-    partSegments,
     isRetry: progressInfo.isRetry,
     cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,

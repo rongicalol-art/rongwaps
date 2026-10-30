@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete, PracticeFormatMenu } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
@@ -9,7 +9,6 @@ import { ListeningOptions } from './ListeningOptions';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useAppStore, type ListeningChoiceType } from '../../store/useAppStore';
-import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 import { getCardChoiceTarget } from '../../utils/vocabulary/meaningChoices';
 
@@ -27,7 +26,6 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const {
     screenState,
-    playlist,
     currentCard,
     options,
     isPlaying,
@@ -67,16 +65,10 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
     pinyin: 'Select the pinyin',
   };
 
-  const partSegments = useMemo(
-    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
-    [isLibraryDeck, isReviewDeck, playlist],
-  );
-
   usePracticeHeaderRegistration({
     currentIndex: progressInfo.displayIndex,
     totalCount: progressInfo.totalCount,
     showLightbulb: false,
-    partSegments,
     isRetry: progressInfo.isRetry,
     cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,

@@ -194,6 +194,8 @@ export interface DropdownMenuItemProps extends Omit<React.ButtonHTMLAttributes<H
   label?: React.ReactNode;
   /** Rows keep a minimum 52px hit target. */
   rowClassName?: string;
+  /** Keyboard hint on the right edge; fine pointers only, never on touch. */
+  shortcut?: string;
   children?: React.ReactNode;
 }
 
@@ -203,6 +205,7 @@ export function DropdownMenuItem({
   active,
   label,
   rowClassName,
+  shortcut,
   className,
   children,
   ...props
@@ -225,6 +228,11 @@ export function DropdownMenuItem({
     >
       {icon && <span className={cn('shrink-0 text-[21px]', active && 'text-brand-primary-text', iconClassName)}>{icon}</span>}
       <span className="min-w-0 flex-1 truncate">{children ?? label}</span>
+      {shortcut && (
+        <kbd className="ml-2 hidden min-h-5 min-w-5 shrink-0 items-center justify-center rounded-xs border-2 border-ui-border px-1 text-center text-[10px] font-extrabold leading-4 text-ui-muted pointer-fine:inline-flex">
+          {shortcut}
+        </kbd>
+      )}
     </button>
   );
 }

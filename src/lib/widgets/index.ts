@@ -45,7 +45,6 @@ export * from './CircularProgress';
 export * from './CustomProgressBar';
 export * from './LoadingScreen';
 export * from './LottiePlayer';
-export * from './part-progress';
 export * from './Skeleton';
 
 // Generic headers and workspace shells

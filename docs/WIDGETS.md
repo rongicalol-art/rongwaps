@@ -70,10 +70,6 @@
 | EmptyState | `EmptyState.tsx` | Icon badge + headline + copy + optional action; `compact` for drawers. |
 | CircularProgress | `CircularProgress.tsx` | SVG ring; clamped `value`. |
 | CustomProgressBar | `CustomProgressBar.tsx` | Rounded bar; `progress`, `accentClassName`. |
-| PracticePartProgressRail | `part-progress/PracticePartProgressRail.tsx` | Default segmented part rail (`segments`, `currentIndex`, `totalCount`). |
-| StudyPartProgressRail | `part-progress/StudyPartProgressRail.tsx` | Study variant of the rail. |
-| SelectablePartProgressRail | `part-progress/SelectablePartProgressRail.tsx` | Clickable-segment variant. |
-| StudyPartButton | `part-progress/StudyPartButton.tsx` | Segment button used by the study rails. |
 | LoadingScreen | `LoadingScreen.tsx` | Shared loader: `fullScreen`, `inline`, `tone` (`canvas`/`practice`) match the surface being prepared. Windows use `useOpenPhase` (150ms hold; ready content appears immediately). Shows a light CSS indicator first; the branded player loads only after 200ms on capable devices. Low-core, low-memory and reduced-motion devices keep the light indicator. |
 | LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`/`preloadAnimation`). Pauses outside the viewport or in a hidden tab, respects reduced motion, and renders authored frames without subframe interpolation. Course art plays once when selected; loading indicators may loop. |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |

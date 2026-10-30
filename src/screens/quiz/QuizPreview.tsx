@@ -217,7 +217,7 @@ const QuizReviewPreview: React.FC = () => {
   return createPortal(
     <div className="fixed inset-0 z-[2000] flex flex-col bg-ui-practice-canvas">
       <div className="absolute inset-x-0 top-0 z-40"><ScreenHeader progress={review ? 50 : 100} currentIndex={review ? 0 : 7} totalCount={review ? 2 : 8} variant="window" tone="practice" onClose={() => setOpen(false)} /></div>
-      <QuizShell activeBookId={1} sessionKey="preview-review" onEnd={noop} mode="quiz-choices" title={review ? 'Select the character' : 'Select the meaning'} wide
+      <QuizShell activeBookId={1} onEnd={noop} mode="quiz-choices" title={review ? 'Select the character' : 'Select the meaning'} wide
         status={review ? 'idle' : 'wrong'} correctAnswer={card.back} isCheckDisabled={false} landsReviewGhost
         session={{ activeCards: review ? [TEACHER, PRETTY] : WORDS, currentIndex: review ? 0 : 7, currentCard: card,
           completed: phase === 'complete', handleCheck: () => setPhase('complete'), resumedReview: false,

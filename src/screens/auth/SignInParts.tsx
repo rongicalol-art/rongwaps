@@ -20,7 +20,7 @@ export function GoogleSignInButton({ onClick, busy, label = 'Sign in with Google
         loading={busy}
         loadingLabel="Opening Google"
         className="normal-case tracking-normal"
-        frontClassName="pl-14 pr-6"
+        frontClassName={busy ? 'px-6' : 'pl-14 pr-6'}
       >
         <span aria-hidden="true" className="absolute left-3 flex size-9 items-center justify-center rounded-xs bg-ui-surface">
           <GoogleMark />

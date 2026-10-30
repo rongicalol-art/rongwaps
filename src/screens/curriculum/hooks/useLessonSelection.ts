@@ -13,6 +13,12 @@ interface UseLessonSelectionOptions {
   ) => void;
 }
 
+const clearedBooks = new Set<number>();
+
+export function resetClearedBooksForTesting() {
+  clearedBooks.clear();
+}
+
 /**
  * Multi-lesson select mode, persisted in the same per-book deck selection the
  * practice screens use. Long-pressing a lesson enters it with that lesson
@@ -30,6 +36,7 @@ export function useLessonSelection({
   const selectedIds = useMemo(() => {
     const saved = getSelectedLessonIds(selectedLessonParts, activeBookId);
     if (saved.length > 0) return saved;
+    if (clearedBooks.has(activeBookId)) return [];
     return typeof defaultId === 'number' ? [defaultId] : [];
   }, [activeBookId, defaultId, selectedLessonParts]);
 
@@ -37,6 +44,11 @@ export function useLessonSelection({
   const isMultiSelecting = selectedIds.length > 1;
 
   const write = useCallback((ids: number[]) => {
+    if (ids.length === 0) {
+      clearedBooks.add(activeBookId);
+    } else {
+      clearedBooks.delete(activeBookId);
+    }
     setSelectedLessonParts((current) => (
       setBookLessonSelection(current, activeBookId, ids, availablePartsByLesson)
     ));
@@ -44,15 +56,16 @@ export function useLessonSelection({
 
   const enter = useCallback((id: number) => write([id]), [write]);
   const exit = useCallback(() => {
+    clearedBooks.delete(activeBookId);
     write(typeof defaultId === 'number' ? [defaultId] : []);
-  }, [defaultId, write]);
+  }, [activeBookId, defaultId, write]);
 
   const toggle = useCallback((id: number) => {
     const next = selectedIds.includes(id)
       ? selectedIds.filter((value) => value !== id)
       : [...selectedIds, id];
-    write(next.length > 0 ? next : typeof defaultId === 'number' ? [defaultId] : []);
-  }, [defaultId, selectedIds, write]);
+    write(next);
+  }, [selectedIds, write]);
 
-  return { selectedIds, isSelecting, isMultiSelecting, enter, exit, toggle };
+  return { selectedIds, isSelecting, isMultiSelecting, enter, exit, toggle, write };
 }

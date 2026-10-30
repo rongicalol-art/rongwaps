@@ -18,7 +18,6 @@ export interface UseFlashcardKeyboardShortcutsOptions {
   setIsFlipped: (value: boolean | ((prev: boolean) => boolean)) => void;
   onManualRevealAudio: () => void;
   onToggleHint?: () => void;
-  onToggleFlow: () => void;
   onPlayExample: () => void;
 }
 
@@ -38,7 +37,6 @@ export function useFlashcardKeyboardShortcuts({
   setIsFlipped,
   onManualRevealAudio,
   onToggleHint,
-  onToggleFlow,
   onPlayExample,
 }: UseFlashcardKeyboardShortcutsOptions) {
   const currentIndexRef = useRef(currentIndex);
@@ -77,9 +75,7 @@ export function useFlashcardKeyboardShortcuts({
       const card = currentCardRef.current;
       const reviewDeck = isReviewDeckRef.current;
 
-      if (e.key.toLowerCase() === 'f') {
-        if (card) { e.preventDefault(); onToggleFlow(); }
-      } else if (e.key.toLowerCase() === 'e') {
+      if (e.key.toLowerCase() === 'e') {
         if (card) { e.preventDefault(); onPlayExample(); }
       } else if (e.key === 'ArrowLeft') {
         if (idx > 0) triggerNav(-1);
@@ -116,8 +112,7 @@ export function useFlashcardKeyboardShortcuts({
     activeBreakdown,
     autoPlayAudio,
     onManualRevealAudio,
-    onToggleFlow,
-    onPlayExample,
+      onPlayExample,
     pauseFlow,
     setIsFlipped,
     triggerKeyboardRate,

@@ -9,10 +9,10 @@ interface StarterLessonProps {
   starterLesson: CourseLessonProgress;
   activeBook: CourseBook;
   /** Tap on a lesson (picks it; Start opens it). */
-  onOpen: (id: number) => void;
+  onOpen: (id: number, event?: React.MouseEvent) => void;
   isSelecting?: boolean;
   isSelected?: boolean;
-  onToggle?: (id: number) => void;
+  onToggle?: (id: number, event?: React.MouseEvent) => void;
   faces?: React.ReactNode;
   onLongPress?: (id: number) => void;
 }

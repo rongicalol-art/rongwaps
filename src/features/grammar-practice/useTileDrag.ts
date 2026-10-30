@@ -77,7 +77,7 @@ export function useTileDrag({ disabled, onDrop }: UseTileDragOptions) {
       cleanup.current?.();
       if (!active) return;
       suppressClick.current = true;
-      setTimeout(() => { suppressClick.current = false; }, 0);
+      setTimeout(() => { suppressClick.current = false; }, 400);
       if (over && !cancelled) {
         setDrag(null);
         onDropRef.current(source, over);
@@ -107,6 +107,7 @@ export function useTileDrag({ disabled, onDrop }: UseTileDragOptions) {
     onPointerDown: (event: ReactPointerEvent<HTMLElement>) => start(source, text, event),
     onClickCapture: (event: { stopPropagation: () => void; preventDefault: () => void }) => {
       if (!suppressClick.current) return;
+      suppressClick.current = false;
       event.stopPropagation();
       event.preventDefault();
     },

@@ -7,7 +7,6 @@ import {
   reconcilePartSelectionsForBook,
   setBookLessonSelection,
 } from '../../src/utils/lesson/lessonPartSelection';
-import { buildPracticePartSegments } from '../../src/utils/lesson/practicePartSegments';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../../src/utils/srs/sessionProgress';
 import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 
@@ -102,47 +101,3 @@ test('a new practice part starts at its own saved position instead of the previo
   assert.equal(getSessionStartIndex({ 'shared_deck_1_1:2': 4 }, 'shared_deck_1_1:2', 12), 4);
   assert.equal(getSessionStartIndex({ 'shared_deck_1_1:2': 12 }, 'shared_deck_1_1:2', 12), 0);
 });
-
-test('buildPracticePartSegments returns empty for review or multi-lesson decks to prevent progress bar fragmentation', () => {
-  const reviewCards = [
-    { id: '1', bookId: 1, lessonId: 1, partId: 1, front: '一', back: 'one' },
-    { id: '2', bookId: 1, lessonId: 2, partId: 2, front: '二', back: 'two' },
-    { id: '3', bookId: 1, lessonId: 1, partId: 1, front: '三', back: 'three' },
-  ];
-  assert.deepEqual(buildPracticePartSegments(reviewCards), []);
-});
-
-test('buildPracticePartSegments returns clean sequential segments for single lesson cards', () => {
-  const lessonCards = [
-    { id: '1', bookId: 1, lessonId: 1, partId: 1, front: '一', back: 'one' },
-    { id: '2', bookId: 1, lessonId: 1, partId: 1, front: '二', back: 'two' },
-    { id: '3', bookId: 1, lessonId: 1, partId: 2, front: '三', back: 'three' },
-  ];
-  assert.deepEqual(buildPracticePartSegments(lessonCards), [
-    { partId: 1, label: 'Part 1', cardCount: 2, startIndex: 0 },
-    { partId: 2, label: 'Part 2', cardCount: 1, startIndex: 2 },
-  ]);
-});
-
-test('buildPracticePartSegments returns proportional segments for shuffled or interleaved parts', () => {
-  const interleavedCards = [
-    { id: '1', bookId: 1, lessonId: 1, partId: 1, front: '一', back: 'one' },
-    { id: '2', bookId: 1, lessonId: 1, partId: 2, front: '二', back: 'two' },
-    { id: '3', bookId: 1, lessonId: 1, partId: 1, front: '三', back: 'three' },
-  ];
-  assert.deepEqual(buildPracticePartSegments(interleavedCards), [
-    { partId: 1, label: 'Part 1', cardCount: 2, startIndex: 0 },
-    { partId: 2, label: 'Part 2', cardCount: 1, startIndex: 2 },
-  ]);
-});
-
-test('buildPracticePartSegments returns segment for single-part selection so rail buttons render', () => {
-  const singlePartCards = [
-    { id: '1', bookId: 1, lessonId: 1, partId: 1, front: '一', back: 'one' },
-    { id: '2', bookId: 1, lessonId: 1, partId: 1, front: '二', back: 'two' },
-  ];
-  assert.deepEqual(buildPracticePartSegments(singlePartCards), [
-    { partId: 1, label: 'Part 1', cardCount: 2, startIndex: 0 },
-  ]);
-});
-

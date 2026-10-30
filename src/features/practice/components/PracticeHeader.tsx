@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   AppIcon,
   DropdownMenu,
@@ -74,10 +74,40 @@ export function PracticeHeader({
   };
 
   const racing = useRaceFill();
+  const hasSessionControls = !racing && Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
+
+  const toggleSimpleDefinitions = () => {
+    const next = !simpleDefinitions;
+    updatePracticePreferences({ simpleDefinitions: next });
+    showFeedbackToast(next ? 'Simple definitions on' : 'Full definitions on');
+  };
+
+  // Menu shortcuts: the header owns them so every practice screen gets the same keys.
+  const shortcutsRef = useRef({ onShuffleClick, onFlowClick, restart, toggleSimpleDefinitions, openSettings, onRestartClick });
+  shortcutsRef.current = { onShuffleClick, onFlowClick, restart, toggleSimpleDefinitions, openSettings, onRestartClick };
+  useEffect(() => {
+    if (!hasSessionControls) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || e.repeat || e.isComposing || e.metaKey || e.ctrlKey || e.altKey) return;
+      const target = e.target instanceof HTMLElement ? e.target : document.activeElement;
+      if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"], [role="menu"], [role="dialog"]:not(#global-activity-modal)')) return;
+      const actions = shortcutsRef.current;
+      const key = e.key.toLowerCase();
+      if (key === 's' && actions.onShuffleClick) actions.onShuffleClick();
+      else if (key === 'f' && actions.onFlowClick) actions.onFlowClick();
+      else if (key === 'r' && actions.onRestartClick) actions.restart();
+      else if (key === 'd') actions.toggleSimpleDefinitions();
+      else if (key === ',') actions.openSettings();
+      else return;
+      e.preventDefault();
+      setIsMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [hasSessionControls]);
   const iconColor = quietControls ? undefined : activeBook.accentHex;
   const iconClassName = quietControls ? 'text-ui-muted' : activeBook.accent;
   const isFlowActive = flowStatus === 'playing';
-  const hasSessionControls = !racing && Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
   const raceStatus = useAppStore(state => state.raceStatus);
   const flowLabel = isFlowActive ? 'Flow' : flowStatus === 'paused' ? 'Resume' : 'Flow';
 
@@ -90,7 +120,6 @@ export function PracticeHeader({
         {...props}
         currentIndex={currentIndex}
         totalCount={totalCount}
-        progressSize="compact"
         closeIconColor={iconColor}
         closeIconClassName={iconClassName}
         progressOverlay={racing ? <RaceBar /> : undefined}
@@ -129,6 +158,7 @@ export function PracticeHeader({
                 <DropdownMenuItem
                   icon={<AppIcon name="shuffle" size={19} />}
                   active={Boolean(isShuffled)}
+                  shortcut="S"
                   onClick={() => {
                     setIsMenuOpen(false);
                     onShuffleClick?.();
@@ -140,6 +170,7 @@ export function PracticeHeader({
                   <DropdownMenuItem
                     icon={<AppIcon name={isFlowActive ? "pause" : "flow"} size={19} />}
                     active={isFlowActive}
+                    shortcut="F"
                     onClick={() => {
                       onFlowClick?.();
                       if (flowStatus === 'playing') setIsMenuOpen(false);
@@ -151,6 +182,7 @@ export function PracticeHeader({
                 {onRestartClick && (
                   <DropdownMenuItem
                     icon={<AppIcon name="restart" size={19} />}
+                    shortcut="R"
                     onClick={() => {
                       setIsMenuOpen(false);
                       restart();
@@ -162,10 +194,9 @@ export function PracticeHeader({
                 <DropdownMenuItem
                   icon={<AppIcon name="sparkles" size={19} />}
                   active={Boolean(simpleDefinitions)}
+                  shortcut="D"
                   onClick={() => {
-                    const next = !simpleDefinitions;
-                    updatePracticePreferences({ simpleDefinitions: next });
-                    showFeedbackToast(next ? 'Simple definitions on' : 'Full definitions on');
+                    toggleSimpleDefinitions();
                     setIsMenuOpen(false);
                   }}
                 >
@@ -173,6 +204,7 @@ export function PracticeHeader({
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   icon={<AppIcon name="gear" size={19} />}
+                  shortcut=","
                   onClick={openSettings}
                 >
                   Study settings

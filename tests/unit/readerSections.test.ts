@@ -20,9 +20,9 @@ function section(grouped: boolean, first: boolean) {
 }
 
 test('combined reading sections label each part and divide only between parts', () => {
-  assert.match(section(true, true), /<h2[^>]*>Part 2<\/h2>/);
+  assert.match(section(true, true), /<h2[^>]*>Lesson 1 · Part 2<\/h2>/);
   assert.doesNotMatch(section(true, true), /<hr/);
   assert.match(section(true, false), /<hr[^>]*border-ui-border/);
-  assert.match(section(true, false), /aria-label="Play Part 2"/);
+  assert.match(section(true, false), /aria-label="Play Lesson 1, Part 2"/);
   assert.doesNotMatch(section(false, true), /<hr|<h2/);
 });

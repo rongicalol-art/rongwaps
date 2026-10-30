@@ -1,5 +1,4 @@
 import type {
-  PartSegment,
   PracticeHeaderActions,
 } from '../../types/models';
 
@@ -50,7 +49,6 @@ export interface UiState {
     currentIndex: number;
     totalCount: number;
     showLightbulb: boolean;
-    partSegments: PartSegment[];
     isRetry?: boolean;
     cleanupPhase?: { currentIndex: number; totalCount: number } | null;
   };
@@ -106,7 +104,7 @@ export function createUiSlice(set: SetState): UiState {
     setSearchQuery: (query) => set({ searchQuery: query }),
     librarySearchQuery: '',
     setLibrarySearchQuery: (query) => set({ librarySearchQuery: query }),
-    practiceHeader: { progress: 0, currentIndex: 0, totalCount: 0, showLightbulb: false, partSegments: [] },
+    practiceHeader: { progress: 0, currentIndex: 0, totalCount: 0, showLightbulb: false },
     setPracticeHeader: (headerState) => set((state) => ({
       practiceHeader: { ...state.practiceHeader, ...headerState },
     })),

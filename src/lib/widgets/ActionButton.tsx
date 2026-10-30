@@ -1,5 +1,6 @@
 import { forwardRef, type ComponentProps, type CSSProperties } from 'react';
 import { cn } from '../../utils/cn';
+import { SpeakerIcon } from './SpeakerIcon';
 
 export type ActionButtonVariant = 'primary' | 'secondary' | 'quiet' | 'danger' | 'success' | 'warning';
 export type ActionButtonSize = 'sm' | 'md' | 'lg';
@@ -96,10 +97,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
 
   const content = loading ? (
     <>
-      <span
-        aria-hidden="true"
-        className="h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent"
-      />
+      <SpeakerIcon status="playing" size={16} />
       <span>{loadingLabel}</span>
     </>
   ) : children;
@@ -156,7 +154,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
         className={cn(
           'absolute inset-x-0 bottom-0 rounded-[inherit]',
           sizeSpec.depthOffset,
-          isDisabled
+          disabled
             ? '!bg-brand-disabled-edge'
             : edgeVariantClasses[variant],
         )}
@@ -170,10 +168,10 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
           sizeSpec.marginClass,
           sizeSpec.innerPadding,
           className,
-          isDisabled
+          disabled
             ? '!bg-brand-disabled !border-none !text-white !shadow-none cursor-not-allowed pointer-events-none'
             : cn(
-                sizeSpec.translateClass,
+                !loading && sizeSpec.translateClass,
                 surfaceVariantClasses[variant],
                 frontClassName,
               ),

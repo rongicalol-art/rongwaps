@@ -118,7 +118,6 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, sessionKey, ...she
   return (
     <QuizShell
       {...shell}
-      sessionKey={sessionKey}
       session={session}
       mode="quiz-choices"
       title={CHOICE_TITLES[quizChoiceType]}

@@ -1,5 +1,5 @@
 import { useCallback, useLayoutEffect, useRef } from 'react';
-import type { PartSegment, PracticeHeaderActions } from '../types/models';
+import type { PracticeHeaderActions } from '../types/models';
 import { useAppStore } from '../store/useAppStore';
 import { currentItemProgress } from '../utils/srs/progress';
 
@@ -7,7 +7,6 @@ interface PracticeHeaderRegistration extends PracticeHeaderActions {
   currentIndex: number;
   totalCount: number;
   showLightbulb: boolean;
-  partSegments?: PartSegment[];
   isRetry?: boolean;
   cleanupPhase?: { currentIndex: number; totalCount: number } | null;
   /** Close button only: no progress bar, counter or session controls (completion screens). */
@@ -18,7 +17,6 @@ export function usePracticeHeaderRegistration({
   currentIndex,
   totalCount,
   showLightbulb,
-  partSegments = [],
   isRetry,
   cleanupPhase,
   minimal = false,
@@ -48,11 +46,10 @@ export function usePracticeHeaderRegistration({
       currentIndex: minimal ? 0 : currentIndex,
       totalCount: minimal ? 0 : totalCount,
       showLightbulb,
-      partSegments,
       isRetry,
       cleanupPhase,
     });
-  }, [cleanupPhase, currentIndex, isRetry, minimal, partSegments, setPracticeHeader, showLightbulb, totalCount]);
+  }, [cleanupPhase, currentIndex, isRetry, minimal, setPracticeHeader, showLightbulb, totalCount]);
 
   useLayoutEffect(() => {
     setPracticeHeaderActions({

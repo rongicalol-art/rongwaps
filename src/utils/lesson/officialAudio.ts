@@ -7,8 +7,9 @@
  * behind VITE_AUDIO_BASE_URL, so they stream through the existing durable-cache →
  * public URL chain and degrade to TTS like any other audio file.
  *
- * Book 2 lessons 1–8 use locally served dialogue and reading tracks. Book 4
- * falls back to TTS until official audio is available.
+ * Book 2 lessons 1–8 use hosted tracks. Local DEV playback, including lessons
+ * 1–16, requires VITE_BOOK2_AUDIO_LOCAL=true. Book 4 falls back to TTS until
+ * official audio is available.
  */
 
 /** Master switch: set false to disable all official book audio playback. */
@@ -17,9 +18,14 @@ export const OFFICIAL_BOOK_AUDIO_ENABLED = true;
 /** `LL-P-T` where LL is 1–2 digits, P and T are 1–3. */
 const OFFICIAL_AUDIO_REFERENCE_PATTERN = /^(\d{1,2})-([1-3])-([1-3])$/;
 
+function shouldUseLocalBook2Audio(): boolean {
+  const env = (import.meta as ImportMeta & { env?: { DEV?: boolean; VITE_BOOK2_AUDIO_LOCAL?: string } }).env;
+  return env?.DEV === true && env.VITE_BOOK2_AUDIO_LOCAL === 'true';
+}
+
 /**
  * Resolve an `audioReference` to the official audio file name for a book, or
- * null when no official track is hosted for it. Pure and deterministic so
+ * null when no official track is available for it. Pure and deterministic so
  * callers (and tests) can rely on it.
  */
 export function officialAudioFileName(
@@ -31,6 +37,9 @@ export function officialAudioFileName(
   const match = OFFICIAL_AUDIO_REFERENCE_PATTERN.exec(audioReference.trim());
   if (!match) return null;
   const [, lesson, part, track] = match;
-  if (bookId === 2 && (Number(lesson) < 1 || Number(lesson) > 8 || !['1', '2'].includes(part) || track !== '1')) return null;
+  if (bookId === 2) {
+    const maxLesson = shouldUseLocalBook2Audio() ? 16 : 8;
+    if (Number(lesson) < 1 || Number(lesson) > maxLesson || !['1', '2'].includes(part) || track !== '1') return null;
+  }
   return `B${bookId}-${lesson.padStart(2, '0')}-${part}-${track}.mp3`;
 }

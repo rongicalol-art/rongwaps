@@ -3,8 +3,6 @@ import { motion, useReducedMotion, useSpring, useTransform } from 'motion/react'
 import { cn } from '../../utils/cn';
 import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
-import { StudyPartProgressRail } from './part-progress';
-import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
 import { visibleProgressScale } from '../../utils/srs/progress';
 
 /**
@@ -57,12 +55,8 @@ export interface ScreenHeaderProps {
   totalCount?: number;
   isRetry?: boolean;
   cleanupPhase?: { currentIndex: number; totalCount: number } | null;
-  partSegments?: PartSegment[];
   /** Drawn over the progress rail (a quiz race's other players). */
   progressOverlay?: React.ReactNode;
-  studyParts?: CourseLessonPartProgress[];
-  onSelectStudyPart?: (partId: number) => void;
-  onToggleStudyPart?: (partId: number) => void;
   onClose?: () => void;
   onBack?: () => void;
   rightAction?: React.ReactNode;
@@ -72,7 +66,6 @@ export interface ScreenHeaderProps {
   accentBgClassName?: string;
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'none';
-  progressSize?: 'default' | 'compact';
   controlSize?: 'sm' | 'md' | 'lg';
   /**
    * Chrome treatment. Defaults to `bar`, which is the header's own surface
@@ -97,11 +90,7 @@ export function ScreenHeader({
   totalCount, 
   isRetry = false,
   cleanupPhase = null,
-  partSegments = [],
   progressOverlay,
-  studyParts = [],
-  onSelectStudyPart,
-  onToggleStudyPart,
   onClose, 
   onBack, 
   rightAction,
@@ -110,7 +99,6 @@ export function ScreenHeader({
   accentBgClassName = "bg-brand-primary",
   className = "",
   maxWidth = 'none',
-  progressSize = 'default',
   controlSize = 'lg',
   variant = 'bar',
   tone = 'canvas',
@@ -129,11 +117,10 @@ export function ScreenHeader({
     '4xl': 'max-w-4xl',
     none: 'max-w-none',
   };
-  const usesStudyPartRail = studyParts.length > 1 && onSelectStudyPart !== undefined && onToggleStudyPart !== undefined && partSegments.length > 0;
   const progressRailRef = useRef<HTMLDivElement>(null);
   const [progressRailWidth, setProgressRailWidth] = useState(0);
   const reduceMotion = useReducedMotion();
-  const hasAnimatedProgress = progress !== undefined && !usesStudyPartRail;
+  const hasAnimatedProgress = progress !== undefined;
   useEffect(() => {
     const rail = progressRailRef.current;
     if (!hasAnimatedProgress || !rail) return;
@@ -144,8 +131,6 @@ export function ScreenHeader({
     return () => observer.disconnect();
   }, [hasAnimatedProgress]);
   const hasCenteredContent = progress === undefined && !eyebrow && (centerContent !== undefined || Boolean(title));
-  const effectiveTotalCount = cleanupPhase ? cleanupPhase.totalCount : totalCount;
-  const effectiveCurrentIndex = cleanupPhase ? cleanupPhase.currentIndex : currentIndex;
   const progressScale = visibleProgressScale(progress ?? 0, progressRailWidth);
   // Slide a full-size pill behind the track's mask: its round end never gets squashed.
   const progressLength = useSpring(progressScale * progressRailWidth, { stiffness: 280, damping: 32, mass: 0.7 });
@@ -208,19 +193,6 @@ export function ScreenHeader({
         <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
           {progress !== undefined ? (
             <div className={cn('relative w-full flex items-center justify-center gap-3', progressOverlay && 'min-h-16')}>
-              {usesStudyPartRail ? (
-                <StudyPartProgressRail
-                  parts={studyParts}
-                  onSelectPart={onSelectStudyPart}
-                  onTogglePart={onToggleStudyPart}
-                  segments={partSegments}
-                  currentIndex={effectiveCurrentIndex ?? currentIndex ?? 0}
-                  totalCount={effectiveTotalCount ?? totalCount ?? 0}
-                  isRetry={isRetry || Boolean(cleanupPhase)}
-                  density={progressSize === 'compact' ? 'compact' : 'default'}
-                  className="w-full"
-                />
-              ) : (
                 <div
                   className={cn('relative w-full', onProgressSeek && 'cursor-pointer touch-none py-1.5')}
                   {...(onProgressSeek && {
@@ -263,7 +235,6 @@ export function ScreenHeader({
                   )}
                 </div>
                 </div>
-              )}
               {showPercentage && (
                 <span className="shrink-0 text-xs font-extrabold text-ui-muted tabular-nums sm:text-sm">
                   {Math.round(progress)}%
@@ -286,9 +257,8 @@ export function ScreenHeader({
       )}
 
       <div className={cn("relative z-20 flex shrink-0 items-center gap-2", controlMetrics.containerHeightClassName)}>
-        {!usesStudyPartRail && (
-          cleanupPhase ? (
-            <span data-practice-counter className="text-base font-black tabular-nums tracking-wide text-brand-primary-deep">
+        {cleanupPhase ? (
+            <span data-practice-counter className="whitespace-nowrap text-base font-black tabular-nums tracking-wide text-brand-primary-deep">
               {cleanupPhase.currentIndex + 1} / {cleanupPhase.totalCount}
             </span>
           ) : isRetry ? (
@@ -297,12 +267,11 @@ export function ScreenHeader({
             </span>
           ) : (
             (currentIndex !== undefined && totalCount !== undefined && totalCount > 0) && (
-              <span data-practice-counter className="text-base font-black tabular-nums tracking-wide text-ui-muted-strong">
+              <span data-practice-counter className="whitespace-nowrap text-base font-black tabular-nums tracking-wide text-ui-muted-strong">
                 {currentIndex + 1} / {totalCount}
               </span>
             )
-          )
-        )}
+          )}
         {rightAction !== undefined ? (
           rightAction
         ) : (

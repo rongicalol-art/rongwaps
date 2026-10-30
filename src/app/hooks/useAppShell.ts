@@ -57,6 +57,7 @@ export function useAppShell() {
     startPathPractice: navigation.startPathPractice,
     openReader: reader.openReader,
     openReaderForPart: reader.openReaderForPart,
+    openReaderForLessons: reader.openReaderForLessons,
     closeReader: reader.closeReader,
     openGrammarParts: grammar.openGrammarParts,
     setActiveGrammarPartId: grammar.setActiveGrammarPartId,
@@ -189,6 +190,7 @@ export function useAppShell() {
       onStartPathPractice: actions.handleStartPathPractice,
       onOpenReading: actions.handleOpenReading,
       onOpenReadingPart: actions.handleProceedToReading,
+      onOpenLessonReadings: actions.handleOpenLessonReadings,
       resumeLaunch: navigation.resumeLaunch,
     },
     settings: {

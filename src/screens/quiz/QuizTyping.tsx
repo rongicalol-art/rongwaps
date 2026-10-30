@@ -109,7 +109,6 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
   return (
     <QuizShell
       {...shell}
-      sessionKey={sessionKey}
       session={session}
       mode="quiz-typing"
       title="Type the pinyin"

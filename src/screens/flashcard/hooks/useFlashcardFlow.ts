@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardFlow } from './useCardFlow';
 import { usePracticeHeaderRegistration } from '../../../hooks/usePracticeHeaderRegistration';
-import { buildPracticePartSegments } from '../../../utils/lesson/practicePartSegments';
 import type { Flashcard } from '../../../data/flashcards';
 
 import type { CardSessionProgressInfo } from '../../../utils/srs/mistakeQueue';
@@ -20,12 +19,8 @@ interface UseFlashcardFlowProps {
   resetAll: () => void;
   isShuffled: boolean;
   toggleShuffle: () => void;
-  isReviewDeck: boolean;
-  isLibraryDeck: boolean;
   activeBreakdown: unknown;
   completed: boolean;
-  /** Missed cards coming back: the header shows its plain amber counter, not the part rail. */
-  isReviewPass?: boolean;
   /** Deck finished: the header keeps only its close button. */
   isDeckDone?: boolean;
   /** Flow loops: at the last card it returns here instead of ending. */
@@ -44,11 +39,8 @@ export function useFlashcardFlow({
   resetAll,
   isShuffled,
   toggleShuffle,
-  isReviewDeck,
-  isLibraryDeck,
   activeBreakdown,
   completed,
-  isReviewPass = false,
   isDeckDone = false,
   goToStart,
 }: UseFlashcardFlowProps) {
@@ -118,11 +110,6 @@ export function useFlashcardFlow({
     useAppStore.getState().showFeedbackToast('Restarted');
   }, [resetAll, stopFlow]);
 
-  const partSegments = useMemo(
-    () => (isReviewDeck || isLibraryDeck || isReviewPass ? [] : buildPracticePartSegments(cards)),
-    [cards, isLibraryDeck, isReviewDeck, isReviewPass]
-  );
-
   const headerCurrentIndex = progressInfo?.displayIndex ?? currentIndex;
   const headerTotalCount = progressInfo?.totalCount ?? cards.length;
 
@@ -130,7 +117,6 @@ export function useFlashcardFlow({
     currentIndex: headerCurrentIndex,
     totalCount: headerTotalCount,
     showLightbulb: false,
-    partSegments,
     isRetry: progressInfo?.isRetry,
     cleanupPhase: progressInfo?.cleanupPhase,
     minimal: isDeckDone,

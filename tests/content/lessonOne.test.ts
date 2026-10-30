@@ -6,7 +6,6 @@ import {
   findCanonicalTile,
 } from '../../src/utils/grammar/grammarExercise';
 import {
-  buildGrammarPartSegments,
   combineGrammarParts,
   completedGrammarPartNumbers,
   continueGrammarLesson,
@@ -106,16 +105,6 @@ test('A source part completes only when every one of its grammar pages is done',
   assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, lessonOnePages.map((page) => page.id)), [1, 2]);
   assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, second.grammarPages.map((page) => page.id)), [2]);
   assert.deepEqual(completedGrammarPartNumbers(lessonOnePages, []), []);
-});
-
-test('Grammar part builds one progress segment per grammar point', () => {
-  const segments = buildGrammarPartSegments(LESSON_ONE_PART_ONE);
-  assert.equal(segments.length, LESSON_ONE_PART_ONE.grammarPages.length);
-  segments.forEach((segment, index) => {
-    assert.equal(segment.cardCount, 1);
-    assert.equal(segment.startIndex, index);
-    assert.equal(segment.partId, index + 1);
-  });
 });
 
 test('Persisted progress remains duplicate-safe and exposes path states', () => {

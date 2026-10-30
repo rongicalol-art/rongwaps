@@ -17,6 +17,7 @@ import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
 import { usePracticeDataReady } from './hooks/usePracticeDataReady';
+import { useStudyMaterials } from './hooks/useStudyMaterials';
 import type { Flashcard } from '../../data/flashcards';
 
 interface ActivityModalsProps {
@@ -31,11 +32,13 @@ interface ActivityModalsProps {
    * shell's overlays are not activity state and do not belong in the store.
    */
   isShellOverlayOpen: boolean;
-  onOpenGrammarPart?: (partId: string, pageId?: string) => void;
-  onOpenReading?: () => void;
+  onOpenGrammarPart?: (partId: string | string[], pageId?: string) => void;
+  onOpenLessonReadings?: (lessonIds: number[]) => void;
   /** False when the lazy-load fallback window was already on screen, so the modal skips its own fade. */
   animateIn?: boolean;
 }
+
+const NO_LESSONS: number[] = [];
 
 export function ActivityModals({
   activeActivity,
@@ -45,6 +48,7 @@ export function ActivityModals({
   isLibraryMode = false,
   isShellOverlayOpen,
   onOpenGrammarPart,
+  onOpenLessonReadings,
   animateIn = true,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
@@ -106,6 +110,14 @@ export function ActivityModals({
   // Lesson-part practice hides the mode dock; Writing keeps it for its controls.
   const isLessonPartFocused = practiceContext === 'lesson' && selectedLessons.length === 1 && !isReviewSession && !effectiveLibraryMode;
   const isIndependentStudy = selectedLessons.length > 1 && !isReviewSession && !effectiveLibraryMode;
+  // The dock's book opens the session's grammar and readings; review, library and race decks have no lessons of their own.
+  const hasLessonMaterials = !race && !isReviewSession && !effectiveLibraryMode;
+  const studyItems = useStudyMaterials({
+    bookId: activeBookId,
+    lessonIds: hasLessonMaterials ? selectedLessons : NO_LESSONS,
+    onOpenGrammarPart,
+    onOpenLessonReadings,
+  });
   const hasDock = !race && (isLessonPartFocused
     ? resolvedActivity === 'writing'
     : isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz'));
@@ -169,9 +181,6 @@ export function ActivityModals({
 
 
   const {
-    visibleStudyParts,
-    selectStudyPart,
-    toggleStudyPart,
     onPartContinue,
     partContinueLabel,
   } = useActivityStudyParts({
@@ -242,10 +251,6 @@ export function ActivityModals({
                   isOverlayOpen={isOverlayOpen}
                   accentBgClassName={activeBook.accentBg}
                   activeBookId={activeBookId}
-                  studyParts={visibleStudyParts}
-                  isLessonPartFocused={isLessonPartFocused}
-                  onSelectStudyPart={selectStudyPart}
-                  onToggleStudyPart={toggleStudyPart}
                   onClose={handleClose}
                   onWritingClose={handleWritingClose}
                   insetClassName={edgeInsetClassName}
@@ -289,6 +294,7 @@ export function ActivityModals({
                       layout={dockLayout}
                       insetRef={reservesDock ? bodyRef : undefined}
                       autoHide={dockAutoHide}
+                      studyItems={studyItems}
                       onSelectQuizMode={(mode) => {
                         setActiveQuizMode(mode);
                         setActiveActivity('quiz');

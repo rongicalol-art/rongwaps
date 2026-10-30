@@ -1,11 +1,10 @@
-import { useCallback, useMemo, useState, type MouseEvent } from 'react';
+import { useCallback, useState, type MouseEvent } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { ActionButton, EmptyState, PlayfulNavIcon, ScreenLayout } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
-import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { useTones } from './hooks/useTones';
 import { ToneStrip } from './components/ToneStrip';
 
@@ -34,15 +33,10 @@ export function ToneScreen({
   const showPinyin = useAppStore((state) => state.showPinyin);
   const [breakdown, setBreakdown] = useState<string | null>(null);
 
-  const partSegments = useMemo(
-    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
-    [isLibraryDeck, isReviewDeck, playlist],
-  );
   usePracticeHeaderRegistration({
     currentIndex: progressInfo.displayIndex,
     totalCount: progressInfo.totalCount,
     showLightbulb: false,
-    partSegments,
     isRetry: progressInfo.isRetry,
     cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: tones.toggleShuffle,

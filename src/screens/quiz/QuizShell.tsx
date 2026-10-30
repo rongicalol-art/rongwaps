@@ -10,7 +10,6 @@ import { useRaceReporter } from '../../features/social';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
-import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { ReviewDealIntro } from '../flashcard';
 import { fadeOutGhost, landQuizLaunch, riseIn, type QuizHandoff } from './quizShuffle';
@@ -86,7 +85,7 @@ export const QuizHanziPrompt: React.FC<{ front: string; onOpenBreakdown: (index:
   );
 };
 
-interface QuizShellProps extends Omit<QuizModeProps, 'cards'> {
+interface QuizShellProps extends Omit<QuizModeProps, 'cards' | 'sessionKey'> {
   session: QuizSession;
   mode: 'quiz-choices' | 'quiz-typing';
   title: string;
@@ -125,7 +124,7 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards'> {
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
   session, mode, title, wide, preparation, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
-  activeBookId, sessionKey, onEnd, onContinue, sessionStats,
+  activeBookId, onEnd, onContinue, sessionStats,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
@@ -153,12 +152,6 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     advanceWrong: false,
     blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || (mode !== 'quiz-typing' && answerAudioPlaying),
   });
-  const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
-  const partSegments = useMemo(
-    () => (isNonCurriculum ? [] : buildPracticePartSegments(activeCards)),
-    [activeCards, isNonCurriculum],
-  );
-
   // Missed words come back together as a review round after the pass (the intro between), until a pass has no misses.
   const [reviewPass, setReviewPass] = useState(0);
   const [introActive, setIntroActive] = useState(false);
@@ -218,7 +211,6 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     currentIndex: progress.displayIndex,
     totalCount: progress.totalCount,
     showLightbulb: false,
-    partSegments,
     cleanupPhase: progress.cleanupPhase,
     // The deck is fixed while the review intro plays.
     onShuffleClick: () => { if (!introActive) toggleShuffle(); },

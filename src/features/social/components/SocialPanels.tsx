@@ -132,7 +132,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
           {!selected && rooms.map(room => <div key={room.code} className="flex items-center gap-3 border-b-2 border-ui-divider py-4 last:border-b-0">
             <AvatarStack people={room.players.map(player => ({ name: player.name, color: socialColor(player.color), src: player.image }))} size="sm" />
             <span className="min-w-0 flex-1"><span className="block truncate text-base font-black text-ui-ink-strong">{room.host}’s room</span><span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span></span>
-            <ActionButton size="sm" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
+            <ActionButton size="sm" loading={pending} loadingLabel="Join" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
           </div>)}
           {selected ? <VisitProfile key={selected.u} person={selected} lesson={lesson} online={classmates.some(person => person.u === selected.u)} />
           : classmates.length === 0 ? <EmptyNote>Nobody else is online.</EmptyNote> : <>
@@ -215,7 +215,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
               <span className="block text-base font-black text-ui-ink-strong">Rejoin last room</span>
               <span className="block text-sm font-bold text-ui-muted">Room code {recentRoom}</span>
             </span>
-            <ActionButton size="sm" disabled={pending} onClick={() => { void joinRace(identity, recentRoom); }}>Rejoin</ActionButton>
+            <ActionButton size="sm" loading={pending} loadingLabel="Rejoin" onClick={() => { void joinRace(identity, recentRoom); }}>Rejoin</ActionButton>
           </div>}
           {openRooms.length === 0
             ? <EmptyNote>{recentRoom ? 'No other open rooms right now.' : 'No open rooms right now.'}</EmptyNote>
@@ -227,7 +227,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
                   <span className="block truncate text-sm font-bold text-ui-muted">{describeSelection(room.selection)}</span>
                 </span>
                 <span className="text-xs font-black tabular-nums text-ui-muted-strong">{room.players.length}/4</span>
-                <ActionButton size="sm" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
+                <ActionButton size="sm" loading={pending} loadingLabel="Join" onClick={() => { void joinRace(identity, room.code); }}>Join</ActionButton>
               </div>
             ))}
         </> : classmates.length === 0 ? <EmptyNote>Nobody else is online.</EmptyNote> : <>

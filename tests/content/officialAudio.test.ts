@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { build } from 'esbuild';
 
 import {
   OFFICIAL_BOOK_AUDIO_ENABLED,
@@ -26,11 +27,40 @@ test('pads single-digit lessons to two digits', () => {
   assert.equal(officialAudioFileName(3, '5-1-1'), 'B3-05-1-1.mp3');
 });
 
-test('returns null for books without hosted official audio', () => {
-  assert.equal(officialAudioFileName(2, '01-1-1'), 'B2-01-1-1.mp3');
-  assert.equal(officialAudioFileName(2, '09-1-1'), null);
-  assert.equal(officialAudioFileName(2, '01-1-2'), null);
+test('production Book 2 resolution stays limited to hosted lessons 1–8', async () => {
+  const result = await build({ entryPoints: ['src/utils/lesson/officialAudio.ts'], bundle: true,
+    format: 'esm', platform: 'node', write: false,
+    define: { 'import.meta.env': JSON.stringify({ DEV: false, VITE_BOOK2_AUDIO_LOCAL: 'true' }) } });
+  const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/utils/lesson/officialAudio');
+  assert.equal(api.officialAudioFileName(2, '01-1-1'), 'B2-01-1-1.mp3');
+  assert.equal(api.officialAudioFileName(2, '08-2-1'), 'B2-08-2-1.mp3');
+  assert.equal(api.officialAudioFileName(2, '09-1-1'), null);
+  assert.equal(api.officialAudioFileName(2, '01-1-2'), null);
   assert.equal(officialAudioFileName(4, '01-1-1'), null);
+});
+
+test('default DEV Book 2 resolution stays limited to hosted lessons 1–8', async () => {
+  const result = await build({ entryPoints: ['src/utils/lesson/officialAudio.ts'], bundle: true,
+    format: 'esm', platform: 'node', write: false,
+    define: { 'import.meta.env': JSON.stringify({ DEV: true }) } });
+  const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/utils/lesson/officialAudio');
+  assert.equal(api.officialAudioFileName(2, '08-2-1'), 'B2-08-2-1.mp3');
+  assert.equal(api.officialAudioFileName(2, '09-1-1'), null);
+});
+
+test('opt-in DEV Book 2 resolution covers lessons 1–16 for dialogue and reading tracks', async () => {
+  const result = await build({ entryPoints: ['src/utils/lesson/officialAudio.ts'], bundle: true,
+    format: 'esm', platform: 'node', write: false,
+    define: { 'import.meta.env': JSON.stringify({ DEV: true, VITE_BOOK2_AUDIO_LOCAL: 'true' }) } });
+  const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/utils/lesson/officialAudio');
+  for (let lesson = 1; lesson <= 16; lesson += 1) {
+    const id = String(lesson).padStart(2, '0');
+    assert.equal(api.officialAudioFileName(2, `${id}-1-1`), `B2-${id}-1-1.mp3`);
+    assert.equal(api.officialAudioFileName(2, `${id}-2-1`), `B2-${id}-2-1.mp3`);
+  }
+  assert.equal(api.officialAudioFileName(2, '17-1-1'), null);
+  assert.equal(api.officialAudioFileName(2, '01-3-1'), null);
+  assert.equal(api.officialAudioFileName(2, '01-1-2'), null);
 });
 
 test('returns null for malformed or empty audio references', () => {

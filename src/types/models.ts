@@ -28,13 +28,6 @@ export type CourseLessonState = 'current' | 'completed' | 'available' | 'locked'
 export type LessonPartSelection = 'all' | number[];
 export type LessonPartSelectionMap = Record<string, LessonPartSelection>;
 
-export interface PartSegment {
-  partId: number;
-  label: string;
-  cardCount: number;
-  startIndex: number;
-}
-
 export interface CourseLessonPartProgress {
   id: number;
   wordCount: number;

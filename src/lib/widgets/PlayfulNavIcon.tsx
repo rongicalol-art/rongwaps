@@ -3,7 +3,7 @@ import { cn } from '../../utils/cn';
 
 export type PlayfulNavIconName =
   | 'learn' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
-  | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
+  | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'tones' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'studyBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
   | 'meaning' | 'characters' | 'trueFalse' | 'build' | 'tonesPractice' | 'challenge';
 
 interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -30,6 +30,7 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   curriculum: new URL('../../assets/icons/flat/book.svg?no-inline', import.meta.url).href,
   grammar: new URL('../../assets/icons/flat/light-bulb.svg?no-inline', import.meta.url).href,
   grammarBook: new URL('../../assets/icons/flat/book-bookmark.svg?no-inline', import.meta.url).href,
+  studyBook: new URL('../../assets/icons/flat/book-gold.svg?no-inline', import.meta.url).href,
   hint: new URL('../../assets/icons/flat/light-bulb.svg?no-inline', import.meta.url).href,
   reading: new URL('../../assets/icons/flat/post-it.svg?no-inline', import.meta.url).href,
   reference: new URL('../../assets/icons/flat/book.svg?no-inline', import.meta.url).href,

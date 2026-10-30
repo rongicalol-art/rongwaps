@@ -20,6 +20,7 @@ test('all verified Book 1 recordings use quieter public copies and a fresh offli
     assert.ok(entry.after.lufs === null || entry.after.lufs <= -16.35);
   }
   for (const file of ['B3-01-1-1.mp3', 'modernchinese-B2L01-1-01.mp3',
+    'B2-16-2-1.mp3',
     'vocabulary-trimmed/v1/B3L01-1-01-aabbccddeeff.mp3', 'pronunciation/character.mp3']) {
     assert.equal(api.publicAudioUrl(file), `https://audio.test/${file}`);
   }
@@ -47,4 +48,32 @@ test('installations without the R2 CDN retain their original storage paths', asy
   const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/services/audio/audioCache');
   assert.equal(api.publicAudioUrl('B1-01-1-1.mp3'),
     'https://storage.test/storage/v1/object/public/vocabulary-audio/B1-01-1-1.mp3');
+});
+
+test('default DEV Book 2 tracks retain CDN URLs until local playback is opted into', async () => {
+  const result = await build({ entryPoints: ['src/services/audio/audioCache.ts'], bundle: true,
+    format: 'esm', platform: 'node', write: false,
+    define: { 'import.meta.env': JSON.stringify({ DEV: true, VITE_AUDIO_BASE_URL: 'https://audio.test' }) } });
+  const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/services/audio/audioCache');
+  assert.equal(api.publicAudioUrl('B2-01-1-1.mp3'), 'https://audio.test/B2-01-1-1.mp3');
+  assert.equal(api.publicAudioUrl('B2-16-2-1.mp3'), 'https://audio.test/B2-16-2-1.mp3');
+  assert.equal(api.publicAudioUrl('B2-17-1-1.mp3'), 'https://audio.test/B2-17-1-1.mp3');
+});
+
+test('opt-in DEV Book 2 tracks resolve to locally provisioned public assets', async () => {
+  const result = await build({ entryPoints: ['src/services/audio/audioCache.ts'], bundle: true,
+    format: 'esm', platform: 'node', write: false,
+    define: { 'import.meta.env': JSON.stringify({ DEV: true, VITE_BOOK2_AUDIO_LOCAL: 'true', VITE_AUDIO_BASE_URL: 'https://audio.test' }) } });
+  const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/services/audio/audioCache');
+  assert.equal(api.publicAudioUrl('B2-01-1-1.mp3'), 'http://localhost/audio/book2/B2-01-1-1.mp3');
+  assert.equal(api.publicAudioUrl('B2-16-2-1.mp3'), 'http://localhost/audio/book2/B2-16-2-1.mp3');
+  assert.equal(api.publicAudioUrl('B2-17-1-1.mp3'), 'https://audio.test/B2-17-1-1.mp3');
+});
+
+test('production ignores the local Book 2 opt-in and retains the CDN URL', async () => {
+  const result = await build({ entryPoints: ['src/services/audio/audioCache.ts'], bundle: true,
+    format: 'esm', platform: 'node', write: false,
+    define: { 'import.meta.env': JSON.stringify({ DEV: false, VITE_BOOK2_AUDIO_LOCAL: 'true', VITE_AUDIO_BASE_URL: 'https://audio.test' }) } });
+  const api = await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`) as typeof import('../../src/services/audio/audioCache');
+  assert.equal(api.publicAudioUrl('B2-01-1-1.mp3'), 'https://audio.test/B2-01-1-1.mp3');
 });

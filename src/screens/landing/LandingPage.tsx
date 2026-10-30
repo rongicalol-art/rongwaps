@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { ActionButton, BrandWordmark } from '../../lib/widgets';
 import { LEGAL_ROUTES } from '../../app/routes';
@@ -26,10 +26,14 @@ export function LandingPage() {
   usePageMeta({ ...LANDING_META, path: '/' });
   useEffect(dismissPrerender, []);
   const start = () => void signIn();
+  const [scrolled, setScrolled] = useState(false);
 
   return (
-    <div className="h-[100dvh] w-full overflow-y-auto bg-ui-canvas font-sans text-ui-ink">
-      <header className="sticky top-0 z-40 border-b border-ui-divider bg-ui-canvas">
+    <div
+      className="h-[100dvh] w-full overflow-y-auto bg-ui-canvas font-sans text-ui-ink"
+      onScroll={(e) => setScrolled(e.currentTarget.scrollTop > 120)}
+    >
+      <header className={`sticky top-0 z-40 border-b-2 bg-ui-canvas transition-colors duration-200 ${scrolled ? 'border-ui-divider' : 'border-transparent'}`}>
         <div className="mx-auto flex w-full max-w-[90rem] items-center gap-3 px-5 py-3 lg:px-26">
           <BrandWordmark className="mr-auto" />
           <Link to={LEGAL_ROUTES.about} className="hidden rounded-xs px-2 py-1 text-sm font-extrabold text-ui-muted-strong hover:text-ui-ink focus-ring-inline lg:block">About</Link>
@@ -39,22 +43,22 @@ export function LandingPage() {
       <div className="mx-auto w-full max-w-[90rem] px-5 lg:px-26">
 
         <main>
-          <section className="flex flex-col items-center text-center lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-12 lg:text-left">
+          <section className="flex flex-col items-center pt-8 text-center lg:flex-row-reverse lg:pt-16 lg:items-center lg:justify-between lg:gap-12 lg:text-left">
             <DeskScene leaving={isSigningIn} className="size-60 shrink-0 lg:size-120" />
             <div className="flex max-w-2xl flex-col items-center lg:items-start">
               <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-ui-ink-strong text-balance lg:text-7xl">
                 Practice <span className="whitespace-nowrap font-chinese text-brand-primary-text">時代華語</span> one lesson at a time
               </h1>
-              <p className="mt-4 text-lg font-bold text-ui-muted-strong text-balance lg:text-xl">
+              <p className="mt-8 text-lg font-bold leading-relaxed text-ui-muted-strong lg:mt-10 text-balance lg:text-xl">
                 Flashcards, quizzes and grammar for every lesson of the Taiwan textbook.
               </p>
-              <GoogleSignInButton onClick={start} busy={isBusy} className="mt-6 lg:mt-8" />
+              <GoogleSignInButton onClick={start} busy={isBusy} className="mt-10 lg:mt-14" />
               {error && <p role="alert" className="mt-3 rounded-sm bg-feedback-danger-surface px-3.5 py-2.5 text-sm font-bold text-feedback-danger-text">{error}</p>}
-              <SignInConsent className="mt-4" />
+              <SignInConsent className="mt-6 lg:mt-8" />
             </div>
           </section>
 
-          <section aria-label="Every lesson is its own story" className="mt-10 lg:mt-4">
+          <section aria-label="Every lesson is its own story" className="mt-10 lg:mt-6">
             <div className="relative">
               <img src={nianArtSmall} srcSet={`${nianArtSmall} 960w, ${nianArt} 1672w`} sizes="(min-width: 1024px) 1240px, 100vw" fetchPriority="high" width={1672} height={941} alt="The Nian monster flees a red doorway as firecrackers burst" className="aspect-video w-full rounded-feature object-cover lg:rounded-modal" />
               <NianLessonPhone className="absolute -bottom-18 -right-10 hidden w-60 lg:block" />

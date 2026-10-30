@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { resolveActiveReadingIndex, findReadingIndexForPart, findReadingIndicesForParts } from '../../src/utils/lesson/readingContext';
+import { resolveActiveReadingIndex, findReadingIndexForPart, findReadingIndicesForParts, findReadingIndicesForLessons } from '../../src/utils/lesson/readingContext';
 import type { ReadingRecord } from '../../src/types/models';
 
 const mockReadings: ReadingRecord[] = [
@@ -197,4 +197,11 @@ test('missing selected readings never substitute an unselected part', () => {
   assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [1, 3]), [0]);
   assert.deepEqual(findReadingIndicesForParts(mockReadings, 1, 1, [3]), []);
   assert.deepEqual(findReadingIndicesForParts(mockReadings, 9, 1, [1, 2]), []);
+});
+
+test('selected lessons combine into one reading run in course order', () => {
+  const lessonsOf = (indices: number[]) => indices.map((index) => `${mockReadings[index].lessonId}-${mockReadings[index].dialogueNumber}`);
+  assert.deepEqual(lessonsOf(findReadingIndicesForLessons(mockReadings, 1, [1])), ['1-1', '1-2']);
+  assert.deepEqual(findReadingIndicesForLessons(mockReadings, 9, [1]), []);
+  assert.deepEqual(findReadingIndicesForLessons(mockReadings, 1, [99]), []);
 });

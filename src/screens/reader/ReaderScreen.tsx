@@ -173,6 +173,7 @@ export function ReaderScreen({
           <div className="absolute top-0 left-0 right-0 z-30 pointer-events-auto">
             <ReaderHeader
               partNumber={sessionIndices.length > 1 ? reading.dialogueNumber : undefined}
+              lessonNumber={reading.lessonId}
               textSize={textSize}
               onTextSizeChange={setTextSize}
               characterFont={characterFont}

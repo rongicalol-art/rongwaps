@@ -54,6 +54,7 @@ function LessonItemBase({
 
   const [shake, setShake] = useState(0);
   const pressTimer = useRef<number | null>(null);
+  const safetyTimer = useRef<number | null>(null);
   const pressOrigin = useRef<{ x: number; y: number } | null>(null);
   const longPressed = useRef(false);
   const imageLoaded = useRef(false);
@@ -62,9 +63,14 @@ function LessonItemBase({
     if (pressTimer.current !== null) window.clearTimeout(pressTimer.current);
     pressTimer.current = null;
   };
+  const clearSafetyTimer = () => {
+    if (safetyTimer.current !== null) window.clearTimeout(safetyTimer.current);
+    safetyTimer.current = null;
+  };
 
   const handlePointerDown = (event: React.PointerEvent) => {
     longPressed.current = false;
+    clearSafetyTimer();
     if (isLocked || isSelecting || !onLongPress) return;
     pressOrigin.current = { x: event.clientX, y: event.clientY };
     pressTimer.current = window.setTimeout(() => {
@@ -72,6 +78,10 @@ function LessonItemBase({
       pressTimer.current = null;
       navigator.vibrate?.(12);
       onLongPress(lesson.id);
+      safetyTimer.current = window.setTimeout(() => {
+        longPressed.current = false;
+        safetyTimer.current = null;
+      }, 800);
     }, LONG_PRESS_MS);
   };
   const handlePointerMove = (event: React.PointerEvent) => {
@@ -88,6 +98,7 @@ function LessonItemBase({
     }
     if (longPressed.current) {
       longPressed.current = false;
+      clearSafetyTimer();
       return;
     }
     if (isSelecting && onToggle) onToggle(lesson.id);
@@ -127,7 +138,7 @@ function LessonItemBase({
         onContextMenu={(event) => onLongPress && event.preventDefault()}
         aria-pressed={isSelecting ? isSelected : undefined}
         aria-label={`${englishTitle === lesson.label ? englishTitle : `${lesson.label}: ${englishTitle}`}${isLocked ? ' (locked)' : ''}`}
-        style={{ WebkitTouchCallout: 'none' }}
+        style={{ WebkitTouchCallout: 'none', touchAction: 'manipulation' }}
         className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent"
       >
         <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-compact bg-ui-surface">

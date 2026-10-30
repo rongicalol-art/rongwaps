@@ -117,15 +117,27 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     setSelectedLessonParts,
   });
 
-  const handleLessonClick = useCallback((lessonId: number) => {
-    if (selection.isMultiSelecting) {
+  const handleLessonClick = useCallback(
+    (lessonId: number, event?: React.MouseEvent) => {
+      if (event?.shiftKey || event?.metaKey) {
+        selection.toggle(lessonId);
+        return;
+      }
+      if (selection.selectedIds.includes(lessonId)) {
+        selection.toggle(lessonId);
+      } else {
+        selection.enter(lessonId);
+      }
+    },
+    [selection],
+  );
+
+  const handleLongPress = useCallback(
+    (lessonId: number) => {
       selection.toggle(lessonId);
-    } else if (selection.selectedIds.includes(lessonId)) {
-      handleOpenLesson(lessonId);
-    } else {
-      selection.enter(lessonId);
-    }
-  }, [handleOpenLesson, selection]);
+    },
+    [selection],
+  );
 
   const handleStartSelection = useCallback(() => {
     const ids = selection.selectedIds;
@@ -148,25 +160,18 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     regularLessons.slice(midIndex),
   ];
 
-  // Scroll the current lesson into view once per book, when its card mounts.
-  const scrolledBookRef = useRef<number | null>(null);
-  const currentLessonRef = useCallback((node: HTMLDivElement | null) => {
-    if (!node || scrolledBookRef.current === activeBookId) return;
-    scrolledBookRef.current = activeBookId;
-    if (node.getBoundingClientRect().bottom > window.innerHeight) {
-      node.scrollIntoView({ block: 'center', behavior: 'instant' });
-    }
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [activeBookId]);
-  const refIfCurrent = (lesson: { state: string }) => (lesson.state === 'current' ? currentLessonRef : undefined);
 
   const isPicked = (lesson?: { id: number }) => Boolean(lesson && selection.selectedIds.includes(lesson.id));
   const renderLessonList = (lessons: typeof regularLessons) => lessons.map((lesson, index) => (
-    <div key={lesson.id} ref={refIfCurrent(lesson)}>
+    <div key={lesson.id}>
       <LessonItem
         lesson={lesson}
         onOpen={handleLessonClick}
-        onLongPress={selection.toggle}
-        onToggle={selection.toggle}
+        onLongPress={handleLongPress}
+        onToggle={handleLessonClick}
         isSelecting={selection.isMultiSelecting}
         isSelected={isPicked(lesson)}
         isPrevSelected={isPicked(lessons[index - 1])}
@@ -223,14 +228,14 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                 className="flex w-full flex-col items-center"
               >
                 {starterLesson && (
-                  <div className="w-full max-w-[400px]" ref={refIfCurrent(starterLesson)}>
+                  <div className="w-full max-w-[400px]">
                     <StarterLesson
                       starterLesson={starterLesson}
                       faces={<LessonFaces lesson={lessonKey(activeBookId, starterLesson.id)} />}
                       activeBook={activeBook}
                       onOpen={handleLessonClick}
-                      onLongPress={selection.toggle}
-                      onToggle={selection.toggle}
+                      onLongPress={handleLongPress}
+                      onToggle={handleLessonClick}
                       isSelecting={selection.isMultiSelecting}
                       isSelected={isPicked(starterLesson)}
                     />

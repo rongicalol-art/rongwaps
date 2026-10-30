@@ -2,8 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { useLessonSelection } from '../../src/screens/curriculum/hooks/useLessonSelection';
+import { resetClearedBooksForTesting, useLessonSelection } from '../../src/screens/curriculum/hooks/useLessonSelection';
 import type { LessonPartSelectionMap } from '../../src/types/models';
+
+test.beforeEach(() => {
+  resetClearedBooksForTesting();
+});
 
 const PARTS_BY_LESSON: Record<number, number[]> = {
   1: [1, 2, 3],
@@ -72,4 +76,31 @@ test('cancelling returns to the book default lesson', () => {
     '2:7': [1],
     '1:1': [1, 2, 3],
   });
+});
+
+test('toggling includes and excludes lessons in multi-select', () => {
+  const h = harness({ '1:1': [1, 2, 3] }, 1, 1);
+  h.render().toggle(2);
+  assert.deepEqual(h.map(), {
+    '1:1': [1, 2, 3],
+    '1:2': [1, 2],
+  });
+
+  h.render().toggle(4);
+  assert.deepEqual(h.map(), {
+    '1:1': [1, 2, 3],
+    '1:2': [1, 2],
+    '1:4': [1],
+  });
+});
+
+test('toggling off the only selected lesson clears selection and hides dock count', () => {
+  const h = harness({ '1:2': [1] }, 1, 1);
+  assert.deepEqual(h.render().selectedIds, [2]);
+  assert.equal(h.render().isSelecting, true);
+
+  h.render().toggle(2);
+  assert.deepEqual(h.map(), {});
+  assert.deepEqual(h.render().selectedIds, []);
+  assert.equal(h.render().isSelecting, false);
 });

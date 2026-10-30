@@ -25,7 +25,7 @@ Profile, flashcard, and curriculum components that have one clear owner live in 
 
 `src/features/<domain>/` is reserved for domain UI genuinely reused by multiple screens, such as character breakdown, dictionary, flashcard, or practice session presentation. The current practice package owns settings, practice headers, answer feedback, choice rows, and completion states. The `flashcards` package owns the reusable card answer face, its example-sentence stream, and the review-card geometry, shared by the flashcard study screen and the writing activity. Each domain package exposes only the API needed by other modules through its `index.ts`; consumers must not reach into another feature's internal folders.
 
-The shared library now contains only generic presentation. App-shell components live in `src/app/`, cross-screen domain UI lives in `src/features/<domain>/`, and screen-specific presentation stays beside its owning screen. The public widget API is the barrel in `src/lib/widgets/index.ts`; internal helpers such as the part-progress rail remain private to the shared component that composes them.
+The shared library now contains only generic presentation. App-shell components live in `src/app/`, cross-screen domain UI lives in `src/features/<domain>/`, and screen-specific presentation stays beside its owning screen. The public widget API is the barrel in `src/lib/widgets/index.ts`.
 
 ## Dependency direction
 

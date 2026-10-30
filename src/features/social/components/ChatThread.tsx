@@ -45,6 +45,7 @@ export function PartyChatThread() {
 
 function MessageThread({ chat, ready, candidates, party = false, send, report }: { chat: ChatMessage[] | null; ready: boolean; candidates: Person[]; party?: boolean; send: (text: string, mentions: string[]) => boolean; report: (id: number) => void }) {
   const me = useAppStore((state) => state.socialMe);
+  const racePending = useAppStore((state) => state.racePending);
   const identity = useSocialIdentity();
   const target = useAppStore(state => state.socialMentionTarget);
   const [open, setOpen] = useState<number | null>(null);
@@ -171,7 +172,7 @@ function MessageThread({ chat, ready, candidates, party = false, send, report }:
                   <span className="block truncate text-sm font-extrabold text-ui-ink-strong">{describeSelection(group.room.r!.selection)}</span>
                 </span>
                 {group.room.u !== me && group.room.r!.joinable && (
-                  <ActionButton size="sm" variant="primary" onClick={() => { void joinRace(identity, group.room.r!.code); }}>Join</ActionButton>
+                  <ActionButton size="sm" variant="primary" loading={racePending} loadingLabel="Join" onClick={() => { void joinRace(identity, group.room.r!.code); }}>Join</ActionButton>
                 )}
               </div>
             ) : (

@@ -47,6 +47,7 @@ function PartTabItem({ part, index, isSelected, onSelect, onToggle, pulse }: Par
       aria-label={`Part ${index + 1}${isSelected ? ', selected' : ''}. Tap to select; hold to include.`}
       title={`Part ${index + 1} · tap to select · hold (or Shift-click) to include`}
       {...pressHandlers}
+      style={{ WebkitTouchCallout: 'none', touchAction: 'manipulation' }}
       className={cn(
         '-mb-0.5 flex items-center justify-center gap-1.5 whitespace-nowrap border-b-[3px] pb-2.5 pt-3 text-[15px] font-black outline-none focus-ring-inline cursor-pointer select-none',
         'flex-1 lg:flex-none lg:px-0 lg:pr-7 lg:text-base',

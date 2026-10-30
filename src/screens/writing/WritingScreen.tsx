@@ -12,7 +12,6 @@ import { getCardWidth, useFlashcardExtras } from '../../features/flashcards';
 import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
-import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 
 interface WritingScreenProps {
   activeBookId: number;
@@ -59,16 +58,10 @@ export function WritingScreen({
   const { extras, isLoading: areExamplesLoading } = useFlashcardExtras(currentCard);
   const curriculumExamples = extras.examples;
 
-  const partSegments = React.useMemo(
-    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
-    [isLibraryDeck, isReviewDeck, playlist]
-  );
-
   usePracticeHeaderRegistration({
     currentIndex: progressInfo.displayIndex,
     totalCount: progressInfo.totalCount,
     showLightbulb: false,
-    partSegments,
     isRetry: progressInfo.isRetry,
     cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,

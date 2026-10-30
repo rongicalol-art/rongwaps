@@ -92,6 +92,17 @@ export function findReadingIndicesForParts(
   });
 }
 
+/** Every reading of the given lessons, in lesson then dialogue order: one combined run. */
+export function findReadingIndicesForLessons(
+  readings: ReadingRecord[], bookId: number, lessonIds: number[],
+): number[] {
+  const lessons = new Set(lessonIds);
+  return readings
+    .flatMap((reading, index) => (reading.bookId === bookId && lessons.has(reading.lessonId) ? [{ reading, index }] : []))
+    .sort((a, b) => a.reading.lessonId - b.reading.lessonId || a.reading.dialogueNumber - b.reading.dialogueNumber)
+    .map(({ index }) => index);
+}
+
 /** The course part whose printed dialogue is this reading. */
 export function findGrammarPartForReading(
   reading: ReadingRecord,

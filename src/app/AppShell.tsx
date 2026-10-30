@@ -82,7 +82,7 @@ export default function AppShell() {
           isLibraryMode: nav.activeTab === 'library',
           isShellOverlayOpen: overlays.isOverlayActive,
           onOpenGrammarPart: grammar.onOpenPart,
-          onOpenReading: activity.onOpenReading,
+          onOpenLessonReadings: activity.onOpenLessonReadings,
         }}
         routes={{
           activeTab: nav.activeTab,

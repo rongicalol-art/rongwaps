@@ -192,7 +192,7 @@ export function FlashcardScreen({
     [cards.length, currentIndex, dealStarted, finishedPassSize, introActive, isDeckDone, isReviewPass, progressInfo],
   );
 
-  const { wrappedHandleNext, pauseFlow, toggleFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
+  const { wrappedHandleNext, pauseFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
     cards,
     currentCard,
     currentIndex,
@@ -204,11 +204,8 @@ export function FlashcardScreen({
     resetAll,
     isShuffled,
     toggleShuffle,
-    isReviewDeck,
-    isLibraryDeck,
     activeBreakdown,
     completed,
-    isReviewPass,
     isDeckDone,
     goToStart,
   });
@@ -267,7 +264,6 @@ export function FlashcardScreen({
     setIsFlipped,
     onManualRevealAudio: triggerManualReveal,
     onToggleHint: handleToggleHook,
-    onToggleFlow: toggleFlow,
     onPlayExample: handlePlayExample,
   });
 

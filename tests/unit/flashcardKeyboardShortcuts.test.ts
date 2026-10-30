@@ -3,7 +3,7 @@ import test from 'node:test';
 import { build } from 'esbuild';
 
 // Exercise the real listener with controlled focus and callbacks; no study progress is recorded.
-test('F toggles Flow and E plays an example, with typing, modifiers and inactive screens protected', async t => {
+test('E plays an example, with typing, modifiers and inactive screens protected', async t => {
   let cleanup = () => {};
   const bundle = await build({ entryPoints: ['src/screens/flashcard/hooks/useFlashcardKeyboardShortcuts.ts'], bundle: true, platform: 'node', format: 'esm', write: false,
     plugins: [{ name: 'shortcut-effects', setup(plugin) {
@@ -31,7 +31,7 @@ test('F toggles Flow and E plays an example, with typing, modifiers and inactive
     isReviewDeck: false, autoPlayAudio: false, pauseFlow: () => calls.push('pause'),
     triggerNav: () => calls.push('navigate'), triggerKeyboardRate: () => calls.push('rate'),
     setIsFlipped: () => calls.push('flip'), onManualRevealAudio: () => {},
-    onToggleFlow: () => calls.push('flow'), onPlayExample: () => calls.push('example'),
+    onPlayExample: () => calls.push('example'),
   };
   const press = (key: string, flags = {}) => {
     const event = Object.assign(new Event('keydown', { cancelable: true }), { key, ...flags });
@@ -39,28 +39,26 @@ test('F toggles Flow and E plays an example, with typing, modifiers and inactive
     return event.defaultPrevented;
   };
   hook(options);
-  assert.equal(press('f'), true);
-  assert.equal(press('F'), true);
   assert.equal(press('e'), true);
   assert.equal(press('E'), true);
-  assert.deepEqual(calls, ['flow', 'flow', 'example', 'example']);
+  assert.deepEqual(calls, ['example', 'example']);
   calls.length = 0;
   for (const flags of [{ repeat: true }, { ctrlKey: true }, { metaKey: true }, { altKey: true }, { isComposing: true }]) {
-    press('f', flags); press('e', flags);
+    press('e', flags);
   }
   focus.editable = true;
-  press('f'); press('e');
+  press('e');
   focus.editable = false;
   dialog = true;
-  press('f'); press('e');
+  press('e');
   dialog = false;
   assert.deepEqual(calls, []);
   for (const override of [{ completed: true }, { isIntroActive: true }, { activeBreakdown: '字' }, { currentCard: null }]) {
     cleanup(); hook({ ...options, ...override });
-    press('f'); press('e');
+    press('e');
   }
   assert.deepEqual(calls, []);
   cleanup();
-  press('f'); press('e');
+  press('e');
   assert.deepEqual(calls, [], 'unmount removes the listener');
 });

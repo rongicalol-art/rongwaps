@@ -30,11 +30,8 @@ export interface VisibleStudyPart extends CourseLessonPartProgress {
 
 export interface UseActivityStudyPartsResult {
   studyLessonParts: CourseLessonPartProgress[];
-  visibleStudyParts: VisibleStudyPart[];
   selectedStudyPartIds: number[];
   practiceGrammarPart: GrammarManifestPart | undefined;
-  selectStudyPart: (partId: number) => void;
-  toggleStudyPart: (partId: number) => void;
   onPartContinue: (() => void) | undefined;
   partContinueLabel: string;
 }
@@ -163,35 +160,6 @@ export function useActivityStudyParts({
     [setSelectedLessonParts, studySelectionKey, visibleStudyParts],
   );
 
-  const toggleStudyPart = useCallback(
-    (partId: number) => {
-      if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
-
-      const availablePartIds = visibleStudyParts.map((part) => part.id);
-      const currentSelection = selectedLessonParts[studySelectionKey];
-      const currentPartIds =
-        currentSelection === 'all'
-          ? availablePartIds
-          : currentSelection ?? [availablePartIds[0]];
-      const toggledPartIds = currentPartIds.includes(partId)
-        ? currentPartIds.filter((id) => id !== partId)
-        : [...currentPartIds, partId];
-      if (toggledPartIds.length === 0) return;
-
-      applyPartSelection(toggledPartIds);
-    },
-    [applyPartSelection, selectedLessonParts, studyLessonId, studySelectionKey, visibleStudyParts],
-  );
-
-  const selectStudyPart = useCallback(
-    (partId: number) => {
-      if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
-
-      applyPartSelection([partId]);
-    },
-    [applyPartSelection, studyLessonId, studySelectionKey, visibleStudyParts],
-  );
-
   const isMultiPart = !isLibraryMode && !isReviewMode && visibleStudyParts.length >= 2;
 
   const nextStudyPartId = useMemo(() => {
@@ -230,11 +198,8 @@ export function useActivityStudyParts({
 
   return {
     studyLessonParts,
-    visibleStudyParts,
     selectedStudyPartIds,
     practiceGrammarPart,
-    selectStudyPart,
-    toggleStudyPart,
     onPartContinue,
     partContinueLabel,
   };

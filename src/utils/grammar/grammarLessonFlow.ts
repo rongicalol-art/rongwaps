@@ -1,15 +1,5 @@
-import type { InteractiveGrammarPage, InteractiveGrammarPart, PartSegment } from '../../types/models';
+import type { InteractiveGrammarPage, InteractiveGrammarPart } from '../../types/models';
 import { formatPartSelection } from '../lesson/lessonPartSelection';
-
-/** One reading step per grammar point. Exercises remain authored for later. */
-export function buildGrammarPartSegments(part: InteractiveGrammarPart): PartSegment[] {
-  return part.grammarPages.map((grammarPage, index) => ({
-    partId: index + 1,
-    label: `Grammar ${grammarPage.grammarNumber}`,
-    cardCount: 1,
-    startIndex: index,
-  }));
-}
 
 /**
  * One continuous run for a multi-part grammar launch: every selected part's

@@ -61,13 +61,13 @@ export function ReaderSection({ reading, index, grouped, first, onPlay, onOpenGr
       onPlayLine={playLineOnly} onOpenGrammar={onOpenGrammar} onLocateWord={locateWord} />,
   };
   return (
-    <section ref={rootRef} aria-label={`Part ${reading.dialogueNumber}`} data-reading-id={reading.id}>
+    <section ref={rootRef} aria-label={`Lesson ${reading.lessonId}, Part ${reading.dialogueNumber}`} data-reading-id={reading.id}>
       {grouped && (
         <div className="mx-auto max-w-4xl px-4 sm:px-8">
           {!first && <hr className="mb-8 border-t-2 border-ui-border" />}
           <div className="flex items-center justify-between gap-4">
-            <h2 className="text-lg font-black text-ui-muted-strong">Part {reading.dialogueNumber}</h2>
-            <IconActionButton variant="quiet" label={`Play Part ${reading.dialogueNumber}`} icon={<AppIcon name="audio" size={20} />} onClick={() => playLine(0)} />
+            <h2 className="text-lg font-black text-ui-muted-strong">Lesson {reading.lessonId} · Part {reading.dialogueNumber}</h2>
+            <IconActionButton variant="quiet" label={`Play Lesson ${reading.lessonId}, Part ${reading.dialogueNumber}`} icon={<AppIcon name="audio" size={20} />} onClick={() => playLine(0)} />
           </div>
         </div>
       )}

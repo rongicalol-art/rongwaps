@@ -45,8 +45,7 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
               className={`pointer-events-auto min-h-14 btn-touch-primary ${accentBgClassName}`}
             >
               <AppIcon name="play" size={20} />
-              <span>Start</span>
-              {count > 1 && <span className="font-bold opacity-80">· {count} lessons</span>}
+              <span className="whitespace-nowrap">Start{count > 1 && <span className="opacity-80"> · {count}</span>}</span>
             </ActionButton>
           </div>
         </motion.div>

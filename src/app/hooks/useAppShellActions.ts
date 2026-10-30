@@ -10,6 +10,7 @@ interface UseAppShellActionsOptions {
   startPathPractice: () => void;
   openReader: (bookId: number) => Promise<void> | void;
   openReaderForPart: (bookId: number, lessonId: number, partId: number | number[]) => Promise<void> | void;
+  openReaderForLessons: (bookId: number, lessonIds: number[]) => Promise<void> | void;
   closeReader: () => void;
   openGrammarParts: (partIds: string[]) => void;
   setActiveGrammarPartId: (partId: string | null) => void;
@@ -38,6 +39,7 @@ export function useAppShellActions({
   startPathPractice,
   openReader,
   openReaderForPart,
+  openReaderForLessons,
   closeReader,
   openGrammarParts,
   setActiveGrammarPartId,
@@ -68,6 +70,11 @@ export function useAppShellActions({
     collapseNav();
     void openReader(activeBookId);
   }, [collapseNav, openReader, activeBookId]);
+
+  const handleOpenLessonReadings = useCallback((lessonIds: number[]) => {
+    collapseNav();
+    void openReaderForLessons(activeBookId, lessonIds);
+  }, [collapseNav, openReaderForLessons, activeBookId]);
 
   const handleOpenGrammarPart = useCallback((partId: string | string[], pageId?: string | null, onComplete?: () => void) => {
     const requested = Array.isArray(partId) ? partId : partId.split(',');
@@ -124,6 +131,7 @@ export function useAppShellActions({
     handleStartPartPractice,
     handleStartPathPractice,
     handleOpenReading,
+    handleOpenLessonReadings,
     handleOpenGrammarPart,
     handleCloseGrammar,
     handleCloseReader,

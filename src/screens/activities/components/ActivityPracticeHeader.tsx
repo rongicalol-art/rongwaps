@@ -1,7 +1,7 @@
 import { useShallow } from 'zustand/react/shallow';
 import { PracticeHeader } from '../../../features/practice';
 import { useAppStore, selectPracticePreferences } from '../../../store/useAppStore';
-import type { ActivityType, CourseLessonPartProgress } from '../../../types/models';
+import type { ActivityType } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { useReviewTone } from '../../../hooks/useReviewTone';
 
@@ -10,10 +10,6 @@ interface ActivityPracticeHeaderProps {
   activeActivity: ActivityType;
   isOverlayOpen: boolean;
   accentBgClassName: string;
-  studyParts: CourseLessonPartProgress[];
-  isLessonPartFocused?: boolean;
-  onSelectStudyPart: (partId: number) => void;
-  onToggleStudyPart: (partId: number) => void;
   onClose: () => void;
   onWritingClose: () => void;
   activeBookId?: number;
@@ -26,10 +22,6 @@ export function ActivityPracticeHeader({
   activeActivity,
   isOverlayOpen,
   accentBgClassName,
-  studyParts,
-  isLessonPartFocused = false,
-  onSelectStudyPart,
-  onToggleStudyPart,
   onClose,
   onWritingClose,
   activeBookId,
@@ -44,10 +36,6 @@ export function ActivityPracticeHeader({
 
   if (activeActivity === 'create-card') return null;
 
-  // Lesson-part practice stays on one part; independent study can switch parts mid-round.
-  const isFlashcards = resolvedActivity === 'flashcards';
-  const isPartFocused = isLessonPartFocused || isFlashcards || resolvedActivity === 'quiz';
-
   return (
     <div className={cn('absolute top-0 left-0 right-0 z-activity-header', isOverlayOpen && 'invisible', insetClassName)}>
       <PracticeHeader
@@ -60,10 +48,6 @@ export function ActivityPracticeHeader({
         totalCount={practiceHeader.totalCount}
         isRetry={practiceHeader.isRetry}
         cleanupPhase={practiceHeader.cleanupPhase}
-        partSegments={practiceHeader.partSegments}
-        studyParts={isPartFocused ? [] : studyParts}
-        onSelectStudyPart={onSelectStudyPart}
-        onToggleStudyPart={onToggleStudyPart}
         accentBgClassName={accentBgClassName}
         activeBookId={activeBookId}
         onSettingsClick={practiceHeaderActions.onSettingsClick}
@@ -73,7 +57,7 @@ export function ActivityPracticeHeader({
         isShuffled={practiceHeaderActions.isShuffled}
         flowStatus={practiceHeaderActions.flowStatus}
         showFlow={Boolean(practiceHeaderActions.onFlowClick)}
-        quietControls={isFlashcards}
+        quietControls={resolvedActivity === 'flashcards'}
         settings={{
           preferences: practicePreferences,
           onPreferencesChange: updatePracticePreferences,

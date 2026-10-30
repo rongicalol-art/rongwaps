@@ -21,6 +21,7 @@ const noticeCard = (panelOpen: boolean) => `${dock(panelOpen)} flex w-fit max-w-
 /** A challenge drops in from the top (like a chess.com challenge): Join enters the host's room. */
 export function InviteToast() {
   const invite = useAppStore((state) => state.socialInvite);
+  const pending = useAppStore((state) => state.racePending);
   const setSocial = useAppStore((state) => state.setSocial);
   const identity = useSocialIdentity();
   const panelOpen = useAppStore((state) => state.socialPanel !== null);
@@ -63,7 +64,7 @@ export function InviteToast() {
           </span>
           <div className="flex gap-2.5">
             <ActionButton variant="secondary" size="md" fullWidth onClick={() => setSocial({ socialInvite: null })}>Decline</ActionButton>
-            <ActionButton variant="primary" size="md" fullWidth onClick={() => { void joinRace(identity, invite.room.code); }}>Join</ActionButton>
+            <ActionButton variant="primary" size="md" fullWidth loading={pending} loadingLabel="Joining" onClick={() => { void joinRace(identity, invite.room.code); }}>Join</ActionButton>
           </div>
         </motion.div>
       )}

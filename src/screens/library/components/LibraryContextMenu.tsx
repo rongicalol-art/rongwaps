@@ -42,6 +42,7 @@ export function useMenuTrigger(onOpen: (point: MenuPoint) => void, disabled = fa
       timer.current = setTimeout(() => {
         fired.current = true;
         if (start.current) onOpen(start.current);
+        setTimeout(() => { fired.current = false; }, 800);
       }, LONG_PRESS_MS);
     },
     onTouchMove: (event: React.TouchEvent) => {

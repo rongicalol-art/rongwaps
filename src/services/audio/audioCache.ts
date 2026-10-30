@@ -164,6 +164,12 @@ export function publicAudioUrl(fileName: string): string | null {
   // signed HTTPS link. Preserve it as-is instead of prefixing the CDN domain.
   if (/^https?:\/\//i.test(fileName)) return fileName;
 
+  const env = (import.meta as ImportMeta & { env?: { DEV?: boolean; VITE_BOOK2_AUDIO_LOCAL?: string } }).env;
+  if (env?.DEV === true && env.VITE_BOOK2_AUDIO_LOCAL === 'true'
+    && /^B2-(?:0[1-9]|1[0-6])-[12]-1\.mp3$/.test(fileName)) {
+    return resolveRequestUrl(`/audio/book2/${encodeURIComponent(fileName)}`);
+  }
+
   const encodedPath = fileName.split('/').map(encodeURIComponent).join('/');
   const customCdn = viteEnv('VITE_AUDIO_BASE_URL');
   if (customCdn && /^https?:\/\//.test(customCdn)) {

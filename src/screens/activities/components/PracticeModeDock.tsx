@@ -8,6 +8,8 @@ import type { QuizMode } from '../../../types/models';
 import { DockSubMenu, type DockSubMenuOption } from './DockSubMenu';
 import { DOCK_SWAP, PracticeDockSlotOutlet, usePracticeDockSlot } from '../../../features/practice';
 import type { PracticeDockLayout } from './practiceDockLayout';
+import { PracticeStudyAction } from './PracticeStudyAction';
+import type { StudyMaterialItem } from '../hooks/useStudyMaterials';
 
 export const PRACTICE_ACTIVITIES = [
   { id: 'flashcards', label: 'Flashcards', icon: 'flashcards' },
@@ -42,7 +44,7 @@ const PRACTICE_HUB_OPTIONS: ReadonlyArray<DockSubMenuOption<PracticeHubOptionId>
 ];
 
 /** The single anchored sub-menu the dock can have open at a time. */
-type DockMenu = 'quiz' | 'practiceHub';
+type DockMenu = 'quiz' | 'practiceHub' | 'study';
 
 export interface PracticeModeDockProps {
   onChange: (activity: PracticeActivityId) => void;
@@ -55,6 +57,8 @@ export interface PracticeModeDockProps {
   insetRef?: RefObject<HTMLElement | null>;
   /** Fade the dock when idle. */
   autoHide?: boolean;
+  /** Grammar and Reading runs over the session's lessons; the book button shows when there are any. */
+  studyItems?: StudyMaterialItem[];
 }
 
 const QUIZ_MODES: ReadonlyArray<DockSubMenuOption<QuizMode>> = [
@@ -71,6 +75,7 @@ export function PracticeModeDock({
   layout,
   insetRef,
   autoHide = false,
+  studyItems = [],
 }: PracticeModeDockProps) {
   const { isVertical, side } = layout;
   const dockSlot = usePracticeDockSlot();
@@ -251,6 +256,16 @@ export function PracticeModeDock({
                 }}
               />
             </div>
+            {studyItems.length > 0 && (
+              <PracticeStudyAction
+                isOpen={openMenu === 'study'}
+                onToggle={() => setOpenMenu((current) => (current === 'study' ? null : 'study'))}
+                onClose={() => setOpenMenu(null)}
+                items={studyItems}
+                side={side}
+                className="order-first"
+              />
+            )}
           </motion.div>
         )}
         </AnimatePresence>

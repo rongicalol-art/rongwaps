@@ -103,7 +103,6 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   return (
     <QuizShell
       {...shell}
-      sessionKey={sessionKey}
       session={session}
       mode="quiz-choices"
       title={beatTitle}

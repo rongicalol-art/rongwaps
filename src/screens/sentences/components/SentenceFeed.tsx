@@ -62,7 +62,9 @@ const SentenceCard = memo(function SentenceCard({
   const highlighted = useMemo(() => highlightMask(text, highlightTerms), [text, highlightTerms]);
   /** Every character has its own syllable: an open card stacks pinyin over each one. */
   const isAligned = Boolean(syllables);
-  const stacked = open && isAligned;
+  // Hidden pinyin still peeks on a long press.
+  const hidePinyin = useAppStore((state) => state.hideExamplePinyin);
+  const stacked = open && isAligned && !hidePinyin;
   const [peek, setPeek] = useState<number | null>(null);
   const peekTimerRef = useRef<number | null>(null);
   /** A press that peeked must not also count as a tap when it lifts. */
@@ -176,7 +178,7 @@ const SentenceCard = memo(function SentenceCard({
             className="overflow-hidden"
           >
             <div className="mt-3 border-t-2 border-ui-divider pt-3">
-              {record.pinyin && !isAligned && (
+              {!hidePinyin && record.pinyin && !isAligned && (
                 <p className="mb-1 text-base font-medium leading-snug text-ui-ink sm:text-lg">{numberToToneMarks(record.pinyin)}</p>
               )}
               <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between sm:gap-3">

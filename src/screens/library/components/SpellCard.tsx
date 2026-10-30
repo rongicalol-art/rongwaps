@@ -41,6 +41,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, onMenu, index, selec
   return (
     <motion.div
       {...menuTrigger}
+      style={{ WebkitTouchCallout: 'none' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

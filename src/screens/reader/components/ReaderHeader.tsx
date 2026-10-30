@@ -6,6 +6,8 @@ import { GlobalPresenceButton } from '../../../features/social';
 
 interface ReaderHeaderProps {
   partNumber?: number;
+  /** Shown before the part: a combined run can span several lessons. */
+  lessonNumber?: number;
   textSize: ReaderTextSize;
   onTextSizeChange: (size: ReaderTextSize) => void;
   characterFont?: CharacterFont;
@@ -92,6 +94,7 @@ export function getReaderHeaderTitles(
 
 export function ReaderHeader({
   partNumber,
+  lessonNumber,
   textSize,
   onTextSizeChange,
   characterFont,
@@ -112,6 +115,7 @@ export function ReaderHeader({
   onClose,
 }: ReaderHeaderProps) {
   // Reading Mode keeps playback, classmates and reader settings in the header.
+  const partLabel = partNumber === undefined ? undefined : `${lessonNumber !== undefined ? `Lesson ${lessonNumber} · ` : ''}Part ${partNumber}`;
   return (
     <ScreenHeader
       variant="frosted"
@@ -127,13 +131,13 @@ export function ReaderHeader({
           <IconActionButton
             size="lg"
             variant="primary"
-            label={`${playing ? 'Pause' : 'Play'} ${partNumber !== undefined ? `Part ${partNumber}` : 'dialogue'}`}
-            title={`${playing ? 'Pause' : 'Play'}${partNumber !== undefined ? ` Part ${partNumber}` : ''} (Space)`}
+            label={`${playing ? 'Pause' : 'Play'} ${partLabel ?? 'dialogue'}`}
+            title={`${playing ? 'Pause' : 'Play'}${partLabel ? ` ${partLabel}` : ''} (Space)`}
             icon={<AppIcon name={playing ? 'pause' : 'play'} size={22} />}
             onClick={onTogglePlay}
             className="ml-1 [--depth-sm:4px]"
           />
-          {partNumber !== undefined && <span aria-live="polite" className="ml-2 whitespace-nowrap text-sm font-black text-ui-muted-strong">Part {partNumber}</span>}
+          {partLabel && <span aria-live="polite" className="ml-2 whitespace-nowrap text-sm font-black text-ui-muted-strong">{partLabel}</span>}
         </>
       }
       rightAction={
