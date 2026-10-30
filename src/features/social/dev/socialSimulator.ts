@@ -1,5 +1,5 @@
 /**
- * DEV only: 50 fake classmates for trying study together without the games Worker.
+ * DEV only: 65 fake classmates, spread across Book 1 (Intro + L1–16) and Book 2 (L1–16), for trying study together without the games Worker.
  * They move between lessons, chat, cheer, invite you, open rooms and race you. Frames go through the real
  * Lobby/room code paths (`deliver`, `onState`); nothing reaches a server or your study progress.
  */
@@ -12,10 +12,12 @@ import { setRaceTransport } from '../raceController';
 
 const NAMES = ['Mei', 'Jun', 'Ana', 'Kai', 'Lin', 'Wei', 'Sara', 'Leo', 'Yuki', 'Minh', 'Hana', 'Tomas', 'Ines', 'Arjun', 'Nadia', 'Ken', 'Lucas',
   'Emma', 'Hao', 'Ivy', 'Omar', 'Zoe', 'Ryo', 'Ming', 'Priya', 'Daniel', 'Chloe', 'Mateo', 'Sofia', 'Yen', 'Aiko', 'Ben', 'Lily', 'Noah', 'Mia',
-  'Ethan', 'Grace', 'Sam', 'Tina', 'Jay', 'Rosa', 'Felix', 'Nina', 'Vic', 'Elle', 'Tao', 'Kim', 'Iris', 'Max', 'Pia'];
+  'Ethan', 'Grace', 'Sam', 'Tina', 'Jay', 'Rosa', 'Felix', 'Nina', 'Vic', 'Elle', 'Tao', 'Kim', 'Iris', 'Max', 'Pia',
+  'Zara', 'Jin', 'Luca', 'Maya', 'Raj', 'Elsa', 'Bo', 'Dara', 'Finn', 'Gia', 'Hugo', 'Isla', 'Joon', 'Kira', 'Milo'];
 const COLORS: SocialColor[] = ['honey', 'jade', 'plum', 'blue', 'ink'];
 const FAKE_AVATAR = (index: number): string => `https://i.pravatar.cc/150?img=${(index % 70) + 1}`;
-const LESSONS = [100, 101, 101, 101, 102, 102, 103, 103, 104, 105, 106, 107, 108, 201];
+/** Lesson keys are `book * 100 + lesson`: Book 1 has the Introduction (100) and lessons 1–16, Book 2 has 1–16. */
+const LESSONS = [...Array.from({ length: 17 }, (_, index) => 100 + index), ...Array.from({ length: 16 }, (_, index) => 201 + index)];
 const ACTIVITIES: Activity[] = ['lesson', 'cards', 'cards', 'quiz', 'reading', 'grammar', 'writing'];
 const LINES = ['第五個字怎麼念？', '老師是 lǎoshī 嗎？', '我也常常念錯 😅', '加油！', '好棒！', '這課好難', '「漂亮」怎麼寫？', '誰要一起考試？',
   'Anyone want to race?', '我剛學完第一部分', '謝謝！', '你好！我是新同學', '這個字是什麼意思？', 'I keep mixing up 他 and 她', '明天有考試嗎？',
@@ -117,7 +119,8 @@ function someoneIn(lesson: number): Person {
 }
 
 function simRoom(host: Person, lesson: number | null): RaceRoomSummary {
-  const id = lesson !== null && Math.floor(lesson / 100) === 1 ? lesson % 100 : 1;
+  const book = lesson !== null && lesson >= 200 ? 2 : 1;
+  const id = lesson !== null ? lesson % 100 : 1;
   const players = [host, ...users.filter((user) => user !== host).slice(0, Math.floor(between(0, 2.99)))];
   return {
     code: Array.from({ length: 6 }, () => pick('ABCDEFGHJKLMNPQRSTUVWXYZ23456789'.split(''))).join(''),
@@ -125,7 +128,7 @@ function simRoom(host: Person, lesson: number | null): RaceRoomSummary {
     hostColor: host.c,
     hostImage: host.i,
     players: players.map((player) => ({ name: player.n, color: player.c, image: player.i })),
-    selection: { book: 1, lessons: { [id]: id === 0 ? [1] : [1, 2, 3] }, types: [] },
+    selection: { book, lessons: { [id]: id === 0 ? [1] : [1, 2, 3] }, types: [] },
     open: true,
     joinable: true,
   };
@@ -260,8 +263,8 @@ const connectSim: typeof connectRace = async (_identity, target, handlers) => {
 export function startSimulator() {
   if (running) return;
   running = true;
-  users = NAMES.map((name, index) => ({ u: `sim-${index}`, n: name, c: COLORS[index % COLORS.length], l: pick(LESSONS), a: pick(ACTIVITIES), i: FAKE_AVATAR(index) }));
-  rooms = [simRoom(users[3], 104), simRoom(users[7], 102), simRoom(users[12], 101)];
+  users = NAMES.map((name, index) => ({ u: `sim-${index}`, n: name, c: COLORS[index % COLORS.length], l: LESSONS[index % LESSONS.length], a: pick(ACTIVITIES), i: FAKE_AVATAR(index) }));
+  rooms = [simRoom(users[3], 104), simRoom(users[7], 205), simRoom(users[12], 109)];
   setRaceTransport(connectSim);
   setLobbyTransport({ send: handle, close: () => {} });
   deliver({ t: 'me', u: ME });
