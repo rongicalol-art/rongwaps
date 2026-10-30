@@ -41,23 +41,22 @@ export function buildLessonSentences(records: readonly CourseExampleRecord[], pa
 }
 
 /**
- * Course-example records (Book 1); a book without any (Book 3) is built from its dialogue lines and
- * its words' own examples instead.
+ * Course-example records can cover only some lessons. Always include the selected words' own
+ * examples; books without course records also need their dialogue lines built from readings.
  */
-async function loadSentenceRecords(cards: readonly Flashcard[]): Promise<CourseExampleRecord[]> {
+export async function loadSentenceRecords(cards: readonly Flashcard[]): Promise<CourseExampleRecord[]> {
   const records = await fetchCourseExampleRecords();
+  const extras = await Promise.all(cards.map((card) => fetchPackedFlashcardExtras(card)));
   const covered = new Set(records.map((record) => record.bookId));
   const otherBooks = [...new Set(cards.map((card) => card.bookId))].filter((bookId) => !covered.has(bookId));
   const built = await Promise.all(otherBooks.map(async (bookId) => {
-    const bookCards = cards.filter((card) => card.bookId === bookId);
-    const [readings, alignments, extras] = await Promise.all([
+    const [readings, alignments] = await Promise.all([
       fetchReadingsPack(bookId),
       fetchDialogueAlignmentPack(bookId),
-      Promise.all(bookCards.map((card) => fetchPackedFlashcardExtras(card))),
     ]);
-    return [...readingSentenceRecords(readings ?? [], alignments), ...exampleSentenceRecords(bookCards, extras)];
+    return readingSentenceRecords(readings ?? [], alignments);
   }));
-  return [...records, ...built.flat()];
+  return [...records, ...built.flat(), ...exampleSentenceRecords(cards, extras)];
 }
 
 /**
