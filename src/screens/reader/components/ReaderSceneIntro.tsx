@@ -1,11 +1,14 @@
 import { getReadingIllustration } from '../../../data/readingIllustrations';
 import type { ReadingRecord } from '../../../types/models';
 
-/** Dialogue number as the title ("Dialogue 2") and the book's setting as the subtitle ("在教室"). */
+/** Show the English title and its Chinese counterpart for Book 2 readings. */
 function getSceneTitles(reading: ReadingRecord): { title?: string; subtitle?: string } {
+  const titleParts = reading.title.split(' · ');
   return {
-    title: reading.title.split(' · ').at(-1),
-    subtitle: reading.setting.split(' · ')[0],
+    title: titleParts.at(-1),
+    subtitle: reading.bookId === 2 && titleParts.length >= 3
+      ? titleParts[1]
+      : reading.setting.split(' · ')[0],
   };
 }
 
