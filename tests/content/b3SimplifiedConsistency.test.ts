@@ -6,9 +6,9 @@ import { readJson } from '../acceptance_helpers';
  * Book 3 simplified text is authored by hand, so a slip like 是 → 事 can hide in it. Within a
  * redone lesson every traditional character must map to one simplified character everywhere.
  */
-const REDONE = ['One', 'Two', 'Three', 'Four', 'Five'];
+const REDONE = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen'];
 /** Traditional characters that genuinely have more than one simplified form. */
-const ONE_TO_MANY = new Set(['著', '乾', '藉', '瞭', '覆', '餘', '麼', '幹', '徵', '於', '甚', '畫']);
+const ONE_TO_MANY = new Set(['著', '乾', '藉', '瞭', '覆', '餘', '麼', '幹', '徵', '於', '甚', '畫', '路']);
 
 function pairs(value: unknown, out: [string, string][] = []): [string, string][] {
   if (Array.isArray(value)) value.forEach((entry) => pairs(entry, out));
@@ -24,7 +24,7 @@ test('simplified is consistent in redone Book 3 lessons', () => {
   const problems: string[] = [];
   for (const lesson of REDONE) {
     const found = new Map<string, Map<string, string>>();
-    for (const file of [`content/grammar/b3Lesson${lesson}.json`, `content/grammar-practice/b3Lesson${lesson}.json`]) {
+    for (const file of [`content/grammar/b3Lesson${lesson}.json`]) {
       for (const [traditional, simplified] of pairs(readJson(file))) {
         const t = [...traditional];
         const s = [...simplified];

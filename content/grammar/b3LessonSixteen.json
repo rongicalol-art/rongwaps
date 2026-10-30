@@ -38,7 +38,7 @@
           "id": "b3l16d1-l3",
           "speaker": "瑪莉",
           "traditional": "你說的沒錯，還能吃的食物就不該被當作垃圾丟掉。有一些地區十分缺乏食物，價格甚至比金子還貴，這個問題到現在還無法解決。",
-          "simplified": "你说得没错，还能吃的食物就不该被当作垃圾丢掉。有一些地区十分缺乏食物，价格甚至比金子还贵，这个问题到现在还无法解决。",
+          "simplified": "你说的没错，还能吃的食物就不该被当作垃圾丢掉。有一些地区十分缺乏食物，价格甚至比金子还贵，这个问题到现在还无法解决。",
           "pinyin": "Nǐ shuō de méicuò, hái néng chī de shíwù jiù bù gāi bèi dàngzuò lājī diūdiào. Yǒu yìxiē dìqū shífēn quēfá shíwù, jiàgé shènzhì bǐ jīnzi hái guì, zhè ge wèntí dào xiànzài hái wúfǎ jiějué.",
           "english": "You are so right; food that is still edible shouldn't be discarded as trash. Some regions suffer extreme food shortages where food prices are even dearer than gold, and this problem remains unresolved to this day."
         },
@@ -125,21 +125,27 @@
         "lessonTitle": "愛惜食物，從你我做起",
         "lessonTitleEnglish": "Cherishing Food Starts with You and Me",
         "grammarNumber": 1,
-        "bookPage": 404,
-        "bookPageAvailable": true,
-        "printedPages": [
-          404,
-          405
-        ],
-        "audioReference": "16-1-1",
-        "titleTraditional": "當作 / 當做",
-        "titleSimplified": "当作 / 当做",
         "titleEnglish": "To Regard As / To Treat As",
         "learnerPromise": "Use 當作 to state how an object, person, or situation is regarded or treated as something else.",
-        "explanation": "「當作」是狀態動詞，有兩種用法：(1) 把前後描述的對象或事情認定是相同的，如「把公司當作自己的家」；(2) 表示對前後描述對象或事情的判斷，如「常被人當作是學生」。",
-        "pattern": "Subject + 把/被 + Object + 當作 + Complement/Role",
+        "bookPage": 404,
+        "bookPageAvailable": true,
+        "audioReference": "16-1-1",
+        "titleTraditional": "當作/當做",
+        "printedPages": [
+          404,
+          405,
+          406
+        ],
+        "explanation": "「當作」是狀態動詞，有兩種用法：(1) 把前後描述的對象或事情認定是相同的。例如：「他常常加班，已經把公司當作自己的家了。」、「老師常把我們當作是自己的孩子，非常關心我們。」、「我很討厭小方，就算他從我旁邊經過，我也當作沒看見。」(2) 表示對前後描述對象或事情的判斷。例如：「張阿姨已經四十多歲了，看起來卻很年輕，常被人當作是學生。」、「我把這次的感冒當作是一般的感冒，所以沒去看醫生。」",
+        "focusTerms": [
+          "當作",
+          "當做"
+        ],
+        "pattern": "Subject + 把/被 + Object + 當作 + Role",
         "patternColumns": [
           "Subject",
+          "Marker",
+          "Object",
           "當作",
           "Role"
         ],
@@ -149,29 +155,46 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g1-r1-c1",
+                  "id": "b3l16g1-r1-c1-w1",
                   "traditional": "還能吃的食物",
                   "simplified": "还能吃的食物",
                   "pinyin": "hái néng chī de shíwù",
-                  "meaning": "edible food"
+                  "meaning": "food that can still be eaten"
                 }
               ],
               [
                 {
-                  "id": "b3l16g1-r1-c2",
-                  "traditional": "不該被當作",
-                  "simplified": "不该被当作",
-                  "pinyin": "bù gāi bèi dàngzuò",
-                  "meaning": "should not be treated as"
+                  "id": "b3l16g1-r1-c2-w1",
+                  "traditional": "就不該被",
+                  "simplified": "就不该被",
+                  "pinyin": "jiù bù gāi bèi",
+                  "meaning": "should not be"
+                }
+              ],
+              [],
+              [
+                {
+                  "id": "b3l16g1-r1-c4-w1",
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dàngzuò",
+                  "meaning": "regard as"
                 }
               ],
               [
                 {
-                  "id": "b3l16g1-r1-c3",
-                  "traditional": "垃圾丟掉",
-                  "simplified": "垃圾丢掉",
-                  "pinyin": "lājī diūdiào",
-                  "meaning": "trash to discard"
+                  "id": "b3l16g1-r1-c5-w1",
+                  "traditional": "垃圾",
+                  "simplified": "垃圾",
+                  "pinyin": "lājī",
+                  "meaning": "garbage"
+                },
+                {
+                  "id": "b3l16g1-r1-c5-w2",
+                  "traditional": "丟掉",
+                  "simplified": "丢掉",
+                  "pinyin": "diū diào",
+                  "meaning": "throw away"
                 }
               ]
             ]
@@ -181,29 +204,97 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g1-r2-c1",
-                  "traditional": "他常加班",
-                  "simplified": "他常加班",
-                  "pinyin": "tā cháng jiābān",
-                  "meaning": "he often works overtime"
+                  "id": "b3l16g1-r2-c1-w1",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
                 }
               ],
               [
                 {
-                  "id": "b3l16g1-r2-c2",
-                  "traditional": "把公司當作",
-                  "simplified": "把公司当作",
-                  "pinyin": "bǎ gōngsī dàngzuò",
-                  "meaning": "treats company as"
+                  "id": "b3l16g1-r2-c2-w1",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
                 }
               ],
               [
                 {
-                  "id": "b3l16g1-r2-c3",
-                  "traditional": "自己的家",
-                  "simplified": "自己的家",
-                  "pinyin": "zìjǐ de jiā",
-                  "meaning": "his own home"
+                  "id": "b3l16g1-r2-c3-w1",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g1-r2-c4-w1",
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dàngzuò",
+                  "meaning": "regard as"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g1-r2-c5-w1",
+                  "traditional": "都懂了",
+                  "simplified": "都懂了",
+                  "pinyin": "dōu dǒng le",
+                  "meaning": "all understood"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l16g1-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l16g1-r3-c1-w1",
+                  "traditional": "弟弟",
+                  "simplified": "弟弟",
+                  "pinyin": "dìdi",
+                  "meaning": "younger brother"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g1-r3-c2-w1",
+                  "traditional": "把",
+                  "simplified": "把",
+                  "pinyin": "bǎ",
+                  "meaning": "marks the object before the verb"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g1-r3-c3-w1",
+                  "traditional": "水果酒",
+                  "simplified": "水果酒",
+                  "pinyin": "shuǐguǒjiǔ",
+                  "meaning": "fruit wine"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g1-r3-c4-w1",
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dàngzuò",
+                  "meaning": "regard as"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g1-r3-c5-w1",
+                  "traditional": "果汁",
+                  "simplified": "果汁",
+                  "pinyin": "guǒzhī",
+                  "meaning": "juice"
                 }
               ]
             ]
@@ -211,108 +302,198 @@
         ],
         "examples": [
           {
-            "id": "b3l16g1-ex1",
+            "id": "B3L16-G01-P404-ex1",
             "number": 1,
             "text": {
               "traditional": "你說的沒錯，還能吃的食物就不該被當作垃圾丟掉。",
-              "simplified": "你说得没错，还能吃的食物就不该被当作垃圾丢掉。",
-              "pinyin": "Nǐ shuō de méicuò, hái néng chī de shíwù jiù bù gāi bèi dàngzuò lājī diūdiào.",
-              "english": "You're right; food that is still edible shouldn't be discarded as trash.",
+              "simplified": "你说的没错，还能吃的食物就不该被当作垃圾丢掉。",
+              "pinyin": "nǐ shuō de méi cuò, hái néng chī de shíwù jiù bù gāi bèi dàngzuò lājī diū diào.",
+              "english": "You're right; food that can still be eaten should not be treated as garbage and thrown away.",
               "words": [
                 {
-                  "id": "b3l16g1-ex1-w1",
-                  "traditional": "還能吃的食物",
-                  "simplified": "还能吃的食物",
-                  "pinyin": "hái néng chī de shíwù",
-                  "meaning": "edible food",
+                  "id": "B3L16-G01-P404-ex1-w1",
+                  "traditional": "你說的",
+                  "simplified": "你说的",
+                  "pinyin": "nǐ shuō de",
+                  "meaning": "what you said"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex1-w2",
+                  "traditional": "沒錯",
+                  "simplified": "没错",
+                  "pinyin": "méi cuò",
+                  "meaning": "right, correct",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g1-ex1-w2",
-                  "traditional": "不該被當作",
-                  "simplified": "不该被当作",
-                  "pinyin": "bù gāi bèi dàngzuò",
-                  "meaning": "should not be treated as",
-                  "suffix": ""
+                  "id": "B3L16-G01-P404-ex1-w3",
+                  "traditional": "還能吃的食物",
+                  "simplified": "还能吃的食物",
+                  "pinyin": "hái néng chī de shíwù",
+                  "meaning": "food that can still be eaten"
                 },
                 {
-                  "id": "b3l16g1-ex1-w3",
-                  "traditional": "垃圾丟掉",
-                  "simplified": "垃圾丢掉",
-                  "pinyin": "lājī diūdiào",
-                  "meaning": "trash to throw away",
+                  "id": "B3L16-G01-P404-ex1-w4",
+                  "traditional": "就不該被",
+                  "simplified": "就不该被",
+                  "pinyin": "jiù bù gāi bèi",
+                  "meaning": "should not be"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex1-w5",
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dàngzuò",
+                  "meaning": "regard as"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex1-w6",
+                  "traditional": "垃圾",
+                  "simplified": "垃圾",
+                  "pinyin": "lājī",
+                  "meaning": "garbage"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex1-w7",
+                  "traditional": "丟掉",
+                  "simplified": "丢掉",
+                  "pinyin": "diū diào",
+                  "meaning": "throw away",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
-            "id": "b3l16g1-ex2",
+            "id": "B3L16-G01-P404-ex2",
             "number": 2,
             "text": {
               "traditional": "如果沒人舉手問問題，老師就當作你們都懂了。",
               "simplified": "如果没人举手问问题，老师就当作你们都懂了。",
-              "pinyin": "Rúguǒ méi rén jǔshǒu wèn wèntí, lǎoshī jiù dàngzuò nǐmen dōu dǒng le.",
-              "english": "If no one raises a hand to ask questions, the teacher will assume you all understand.",
+              "pinyin": "rúguǒ méi rén jǔshǒu wèn wèntí, lǎoshī jiù dàngzuò nǐmen dōu dǒng le.",
+              "english": "If nobody raises a hand to ask questions, the teacher takes it that you all understand.",
               "words": [
                 {
-                  "id": "b3l16g1-ex2-w1",
-                  "traditional": "沒人問問題",
-                  "simplified": "没人问问题",
-                  "pinyin": "méi rén wèn wèntí",
-                  "meaning": "no one asks questions",
+                  "id": "B3L16-G01-P404-ex2-w1",
+                  "traditional": "如果",
+                  "simplified": "如果",
+                  "pinyin": "rúguǒ",
+                  "meaning": "if"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex2-w2",
+                  "traditional": "沒人舉手問問題",
+                  "simplified": "没人举手问问题",
+                  "pinyin": "méi rén jǔshǒu wèn wèntí",
+                  "meaning": "nobody raises a hand to ask",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g1-ex2-w2",
-                  "traditional": "就當作",
-                  "simplified": "就当作",
-                  "pinyin": "jiù dàngzuò",
-                  "meaning": "just assume as",
-                  "suffix": ""
+                  "id": "B3L16-G01-P404-ex2-w3",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
                 },
                 {
-                  "id": "b3l16g1-ex2-w3",
-                  "traditional": "你們都懂了",
-                  "simplified": "你们都懂了",
-                  "pinyin": "nǐmen dōu dǒng le",
-                  "meaning": "you all understood",
+                  "id": "B3L16-G01-P404-ex2-w4",
+                  "traditional": "就",
+                  "simplified": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex2-w5",
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dàngzuò",
+                  "meaning": "regard as"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex2-w6",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex2-w7",
+                  "traditional": "都懂了",
+                  "simplified": "都懂了",
+                  "pinyin": "dōu dǒng le",
+                  "meaning": "all understood",
                   "suffix": "。"
                 }
               ]
             }
           },
           {
-            "id": "b3l16g1-ex3",
+            "id": "B3L16-G01-P404-ex3",
             "number": 3,
             "text": {
-              "traditional": "弟弟太渴了，把冰箱裡的水果酒當作果汁喝了。",
-              "simplified": "弟弟太渴了，把冰箱里的水果酒当作果汁喝了。",
-              "pinyin": "Dìdi tài kě le, bǎ bīngxiāng lǐ de shuǐguǒjiǔ dàngzuò guǒzhī hē le.",
-              "english": "Younger brother was too thirsty and drank the cider from the fridge mistaking it for juice.",
+              "traditional": "弟弟運動後口很渴，把冰箱裡的水果酒當作果汁喝了，真糊塗。",
+              "simplified": "弟弟运动后口很渴，把冰箱里的水果酒当作果汁喝了，真糊涂。",
+              "pinyin": "dìdi yùndòng hòu kǒu hěn kě, bǎ bīngxiāng lǐ de shuǐguǒjiǔ dàngzuò guǒzhī hē le, zhēn hútu.",
+              "english": "After exercising the younger brother was very thirsty and drank the fruit wine from the fridge as if it were juice; how muddled.",
               "words": [
                 {
-                  "id": "b3l16g1-ex3-w1",
-                  "traditional": "弟弟把水果酒",
-                  "simplified": "弟弟把水果酒",
-                  "pinyin": "dìdi bǎ shuǐguǒjiǔ",
-                  "meaning": "younger brother took cider",
-                  "suffix": ""
+                  "id": "B3L16-G01-P404-ex3-w1",
+                  "traditional": "弟弟",
+                  "simplified": "弟弟",
+                  "pinyin": "dìdi",
+                  "meaning": "younger brother"
                 },
                 {
-                  "id": "b3l16g1-ex3-w2",
-                  "traditional": "當作果汁",
-                  "simplified": "当作果汁",
-                  "pinyin": "dàngzuò guǒzhī",
-                  "meaning": "as fruit juice",
-                  "suffix": ""
+                  "id": "B3L16-G01-P404-ex3-w2",
+                  "traditional": "運動後",
+                  "simplified": "运动后",
+                  "pinyin": "yùndòng hòu",
+                  "meaning": "after exercising"
                 },
                 {
-                  "id": "b3l16g1-ex3-w3",
+                  "id": "B3L16-G01-P404-ex3-w3",
+                  "traditional": "口很渴",
+                  "simplified": "口很渴",
+                  "pinyin": "kǒu hěn kě",
+                  "meaning": "very thirsty",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex3-w4",
+                  "traditional": "把冰箱裡的水果酒",
+                  "simplified": "把冰箱里的水果酒",
+                  "pinyin": "bǎ bīngxiāng lǐ de shuǐguǒjiǔ",
+                  "meaning": "the fruit wine in the fridge (object)"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex3-w5",
+                  "traditional": "當作",
+                  "simplified": "当作",
+                  "pinyin": "dàngzuò",
+                  "meaning": "regard as"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex3-w6",
+                  "traditional": "果汁",
+                  "simplified": "果汁",
+                  "pinyin": "guǒzhī",
+                  "meaning": "juice"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex3-w7",
                   "traditional": "喝了",
                   "simplified": "喝了",
                   "pinyin": "hē le",
                   "meaning": "drank",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G01-P404-ex3-w8",
+                  "traditional": "真糊塗",
+                  "simplified": "真糊涂",
+                  "pinyin": "zhēn hútu",
+                  "meaning": "really muddled",
                   "suffix": "。"
                 }
               ]
@@ -433,7 +614,9 @@
             "correctFeedback": "太棒了！「當作」表示將尚能食用的食物視為、認定為垃圾丟棄。",
             "repairFeedback": "請注意詞彙語義：表示將某物認定或視為另一事物，應使用「當作」。"
           }
-        ]
+        ],
+        "explanationEnglish": "當作/當做 is a verb used in two ways: (1) Think of the objects described before and after as being taken for the same. For example, “他常常加班，已經把公司當作自己的家了。” “老師常把我們當作自己的孩子，非常關心我們。” “我很討厭小方，就算他從我旁邊經過，我也當作沒看見。” (2) 當作/當做 represents the judgment of the speaker on things. For examples, “張阿姨已經四十多歲了，看起來卻很年輕，常被人當作是學生。” “我很討厭小方，就算他從我旁邊經過，我也當作沒看見。”“我把這次的感冒當作是一般的感冒，所以沒去看醫生。”",
+        "patternAccentColumn": 3
       },
       {
         "id": "B3L16-G02-P406",
@@ -443,23 +626,25 @@
         "lessonTitle": "愛惜食物，從你我做起",
         "lessonTitleEnglish": "Cherishing Food Starts with You and Me",
         "grammarNumber": 2,
+        "titleEnglish": "At Least",
+        "learnerPromise": "Use 至少 to specify a minimum baseline, quantity, or prerequisite action.",
         "bookPage": 406,
         "bookPageAvailable": true,
+        "audioReference": "16-1-2",
+        "titleTraditional": "至少",
         "printedPages": [
           406,
           407
         ],
-        "audioReference": "16-1-2",
-        "titleTraditional": "至少",
-        "titleSimplified": "至少",
-        "titleEnglish": "At Least",
-        "learnerPromise": "Use 至少 to specify a minimum baseline, quantity, or prerequisite action.",
-        "explanation": "「至少」當作副詞，後面接數量詞或短句，用來表示最低範圍或程度，指出即便整體情況不盡完美，最基本的底線或首要步驟是什麼。",
-        "pattern": "Subject + 至少 + Verb / Quantity / Clause",
+        "explanation": "「至少」當作副詞，後面接數量詞或短句，用來表示最低範圍或程度。",
+        "focusTerms": [
+          "至少"
+        ],
+        "pattern": "至少 + Quantity / Clause",
         "patternColumns": [
-          "Subject",
-          "至少",
-          "Baseline"
+          "Marker",
+          "Quantity",
+          "Clause"
         ],
         "patternRows": [
           {
@@ -467,29 +652,28 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g2-r1-c1",
-                  "traditional": "臺灣雖然地小",
-                  "simplified": "台湾虽然地小",
-                  "pinyin": "Táiwān suīrán dì xiǎo",
-                  "meaning": "Taiwan is small"
-                }
-              ],
-              [
-                {
-                  "id": "b3l16g2-r1-c2",
+                  "id": "b3l16g2-r1-c1-w1",
                   "traditional": "至少",
                   "simplified": "至少",
                   "pinyin": "zhìshǎo",
                   "meaning": "at least"
                 }
               ],
+              [],
               [
                 {
-                  "id": "b3l16g2-r1-c3",
-                  "traditional": "不必擔心缺食物",
-                  "simplified": "不必担心缺食物",
-                  "pinyin": "búbì dānxīn quē shíwù",
-                  "meaning": "no need to worry about food shortage"
+                  "id": "b3l16g2-r1-c3-w1",
+                  "traditional": "不必擔心",
+                  "simplified": "不必担心",
+                  "pinyin": "bú bì dānxīn",
+                  "meaning": "need not worry"
+                },
+                {
+                  "id": "b3l16g2-r1-c3-w2",
+                  "traditional": "食物不夠",
+                  "simplified": "食物不够",
+                  "pinyin": "shíwù bú gòu",
+                  "meaning": "not enough food"
                 }
               ]
             ]
@@ -499,16 +683,7 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g2-r2-c1",
-                  "traditional": "他傷得很重",
-                  "simplified": "他伤得很重",
-                  "pinyin": "tā shāng de hěn zhòng",
-                  "meaning": "he is badly hurt"
-                }
-              ],
-              [
-                {
-                  "id": "b3l16g2-r2-c2",
+                  "id": "b3l16g2-r2-c1-w1",
                   "traditional": "至少",
                   "simplified": "至少",
                   "pinyin": "zhìshǎo",
@@ -517,11 +692,51 @@
               ],
               [
                 {
-                  "id": "b3l16g2-r2-c3",
-                  "traditional": "兩個月才能好",
-                  "simplified": "两个月才能好",
-                  "pinyin": "liǎng ge yuè cái néng hǎo",
-                  "meaning": "two months to recover"
+                  "id": "b3l16g2-r2-c2-w1",
+                  "traditional": "兩個月",
+                  "simplified": "两个月",
+                  "pinyin": "liǎng ge yuè",
+                  "meaning": "two months"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g2-r2-c3-w1",
+                  "traditional": "才能完全恢復",
+                  "simplified": "才能完全恢复",
+                  "pinyin": "cái néng wánquán huīfù",
+                  "meaning": "only then fully recover"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l16g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l16g2-r3-c1-w1",
+                  "traditional": "至少",
+                  "simplified": "至少",
+                  "pinyin": "zhìshǎo",
+                  "meaning": "at least"
+                }
+              ],
+              [],
+              [
+                {
+                  "id": "b3l16g2-r3-c3-w1",
+                  "traditional": "得先聽聽",
+                  "simplified": "得先听听",
+                  "pinyin": "děi xiān tīngting",
+                  "meaning": "should first listen"
+                },
+                {
+                  "id": "b3l16g2-r3-c3-w2",
+                  "traditional": "其他人的意見",
+                  "simplified": "其他人的意见",
+                  "pinyin": "qítā rén de yìjiàn",
+                  "meaning": "others' opinions"
                 }
               ]
             ]
@@ -529,16 +744,24 @@
         ],
         "examples": [
           {
-            "id": "b3l16g2-ex1",
+            "id": "B3L16-G02-P406-ex1",
             "number": 1,
             "text": {
-              "traditional": "臺灣雖然生活空間不大，但至少不必擔心食物不夠。",
-              "simplified": "台湾虽然生活空间不大，但至少不必担心食物不够。",
-              "pinyin": "Táiwān suīrán shēnghuó kōngjiān bú dà, dàn zhìshǎo búbì dānxīn shíwù bú gòu.",
-              "english": "Although living space in Taiwan is tight, at least we do not worry about food shortage.",
+              "traditional": "臺灣雖然面積小，生活空間不大，但至少不必擔心食物不夠，實在太幸福了。",
+              "simplified": "台湾虽然面积小，生活空间不大，但至少不必担心食物不够，实在太幸福了。",
+              "pinyin": "Táiwān suīrán miànjī xiǎo, shēnghuó kōngjiān bú dà, dàn zhìshǎo bú bì dānxīn shíwù bú gòu, shízài tài xìngfú le.",
+              "english": "Taiwan is small and living space is limited, but at least we need not worry about food shortages; we are truly fortunate.",
               "words": [
                 {
-                  "id": "b3l16g2-ex1-w1",
+                  "id": "B3L16-G02-P406-ex1-w1",
+                  "traditional": "臺灣雖然面積小",
+                  "simplified": "台湾虽然面积小",
+                  "pinyin": "Táiwān suīrán miànjī xiǎo",
+                  "meaning": "Taiwan is small in area, though",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex1-w2",
                   "traditional": "生活空間不大",
                   "simplified": "生活空间不大",
                   "pinyin": "shēnghuó kōngjiān bú dà",
@@ -546,91 +769,181 @@
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g2-ex1-w2",
-                  "traditional": "但至少",
-                  "simplified": "但至少",
-                  "pinyin": "dàn zhìshǎo",
-                  "meaning": "but at least",
-                  "suffix": ""
+                  "id": "B3L16-G02-P406-ex1-w3",
+                  "traditional": "但",
+                  "simplified": "但",
+                  "pinyin": "dàn",
+                  "meaning": "but"
                 },
                 {
-                  "id": "b3l16g2-ex1-w3",
-                  "traditional": "不必擔心食物不夠",
-                  "simplified": "不必担心食物不够",
-                  "pinyin": "búbì dānxīn shíwù bú gòu",
-                  "meaning": "need not fear food shortage",
-                  "suffix": "。"
-                }
-              ]
-            }
-          },
-          {
-            "id": "b3l16g2-ex2",
-            "number": 2,
-            "text": {
-              "traditional": "這次車禍他受傷很重，至少兩個月才能完全恢復。",
-              "simplified": "这次车祸他受伤很重，至少两个月才能完全恢复。",
-              "pinyin": "Zhè cì chēhuò tā shòushāng hěn zhòng, zhìshǎo liǎng ge yuè cái néng wánquán huīfù.",
-              "english": "He was severely injured in that crash; it will take at least two months to fully recover.",
-              "words": [
+                  "id": "B3L16-G02-P406-ex1-w4",
+                  "traditional": "至少",
+                  "simplified": "至少",
+                  "pinyin": "zhìshǎo",
+                  "meaning": "at least"
+                },
                 {
-                  "id": "b3l16g2-ex2-w1",
-                  "traditional": "他受傷很重",
-                  "simplified": "他受伤很重",
-                  "pinyin": "tā shòushāng hěn zhòng",
-                  "meaning": "he was severely injured",
+                  "id": "B3L16-G02-P406-ex1-w5",
+                  "traditional": "不必擔心",
+                  "simplified": "不必担心",
+                  "pinyin": "bú bì dānxīn",
+                  "meaning": "need not worry"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex1-w6",
+                  "traditional": "食物不夠",
+                  "simplified": "食物不够",
+                  "pinyin": "shíwù bú gòu",
+                  "meaning": "not enough food",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g2-ex2-w2",
-                  "traditional": "至少兩個月",
-                  "simplified": "至少两个月",
-                  "pinyin": "zhìshǎo liǎng ge yuè",
-                  "meaning": "at least two months",
-                  "suffix": ""
+                  "id": "B3L16-G02-P406-ex1-w7",
+                  "traditional": "實在太幸福了",
+                  "simplified": "实在太幸福了",
+                  "pinyin": "shízài tài xìngfú le",
+                  "meaning": "truly so fortunate",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "fromDialogue": true
+          },
+          {
+            "id": "B3L16-G02-P406-ex2",
+            "number": 2,
+            "text": {
+              "traditional": "這次的車禍，他受了很嚴重的傷，至少兩個月才能完全恢復。",
+              "simplified": "这次的车祸，他受了很严重的伤，至少两个月才能完全恢复。",
+              "pinyin": "zhè cì de chēhuò, tā shòu le hěn yánzhòng de shāng, zhìshǎo liǎng ge yuè cái néng wánquán huīfù.",
+              "english": "He was badly hurt in this car accident and needs at least two months to fully recover.",
+              "words": [
+                {
+                  "id": "B3L16-G02-P406-ex2-w1",
+                  "traditional": "這次的車禍",
+                  "simplified": "这次的车祸",
+                  "pinyin": "zhè cì de chēhuò",
+                  "meaning": "this car accident",
+                  "suffix": "，"
                 },
                 {
-                  "id": "b3l16g2-ex2-w3",
+                  "id": "B3L16-G02-P406-ex2-w2",
+                  "traditional": "他受了很嚴重的傷",
+                  "simplified": "他受了很严重的伤",
+                  "pinyin": "tā shòu le hěn yánzhòng de shāng",
+                  "meaning": "he was badly hurt",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex2-w3",
+                  "traditional": "至少",
+                  "simplified": "至少",
+                  "pinyin": "zhìshǎo",
+                  "meaning": "at least"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex2-w4",
+                  "traditional": "兩個月",
+                  "simplified": "两个月",
+                  "pinyin": "liǎng ge yuè",
+                  "meaning": "two months"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex2-w5",
                   "traditional": "才能完全恢復",
                   "simplified": "才能完全恢复",
                   "pinyin": "cái néng wánquán huīfù",
-                  "meaning": "to fully recover",
+                  "meaning": "only then fully recover",
                   "suffix": "。"
                 }
               ]
             }
           },
           {
-            "id": "b3l16g2-ex3",
+            "id": "B3L16-G02-P406-ex3",
             "number": 3,
             "text": {
-              "traditional": "你太急了吧！至少得先聽聽其他人的意見。",
-              "simplified": "你太急了吧！至少得先听听其他人的意见。",
-              "pinyin": "Nǐ tài jí le ba! Zhìshǎo děi xiān tīngting qítā rén de yìjiàn.",
-              "english": "You're too hasty! At least listen to others' advice first.",
+              "traditional": "小英：昨天看了介紹中美洲的旅遊節目，很吸引人，我打算下個月就去當個背包客。\n小華：你太急了吧！至少得先聽聽其他人的意見，再看自己適合不適合。",
+              "simplified": "小英：昨天看了介绍中美洲的旅游节目，很吸引人，我打算下个月就去当个背包客。\n小华：你太急了吧！至少得先听听其他人的意见，再看自己适合不适合。",
+              "pinyin": "Xiǎo Yīng: zuótiān kàn le jièshào Zhōngměizhōu de lǚyóu jiémù, hěn xīyǐn rén, wǒ dǎsuàn xià ge yuè jiù qù dāng ge bēibāokè.\n Xiǎo Huá: nǐ tài jí le ba! zhìshǎo děi xiān tīngting qítā rén de yìjiàn, zài kàn zìjǐ shìhé bú shìhé.",
+              "english": "Xiao Ying: I watched a show about Central America yesterday; it was very appealing, so I plan to become a backpacker next month. Xiao Hua: You're too hasty! You should at least first hear others' opinions, then see whether it suits you.",
               "words": [
                 {
-                  "id": "b3l16g2-ex3-w1",
+                  "id": "B3L16-G02-P406-ex3-w1",
+                  "traditional": "小英",
+                  "simplified": "小英",
+                  "pinyin": "Xiǎo Yīng",
+                  "meaning": "Xiao Ying",
+                  "suffix": "："
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w2",
+                  "traditional": "昨天看了介紹中美洲的旅遊節目",
+                  "simplified": "昨天看了介绍中美洲的旅游节目",
+                  "pinyin": "zuótiān kàn le jièshào Zhōngměizhōu de lǚyóu jiémù",
+                  "meaning": "watched a travel show on Central America yesterday",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w3",
+                  "traditional": "很吸引人",
+                  "simplified": "很吸引人",
+                  "pinyin": "hěn xīyǐn rén",
+                  "meaning": "very appealing",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w4",
+                  "traditional": "我打算下個月就去當個背包客",
+                  "simplified": "我打算下个月就去当个背包客",
+                  "pinyin": "wǒ dǎsuàn xià ge yuè jiù qù dāng ge bēibāokè",
+                  "meaning": "I plan to become a backpacker next month",
+                  "suffix": "。\n"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w5",
+                  "traditional": "小華",
+                  "simplified": "小华",
+                  "pinyin": "Xiǎo Huá",
+                  "meaning": "Xiao Hua",
+                  "suffix": "："
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w6",
                   "traditional": "你太急了吧",
                   "simplified": "你太急了吧",
                   "pinyin": "nǐ tài jí le ba",
-                  "meaning": "you are too hasty",
+                  "meaning": "you're too hasty",
                   "suffix": "！"
                 },
                 {
-                  "id": "b3l16g2-ex3-w2",
-                  "traditional": "至少得先聽聽",
-                  "simplified": "至少得先听听",
-                  "pinyin": "zhìshǎo děi xiān tīngting",
-                  "meaning": "at least must listen first",
-                  "suffix": ""
+                  "id": "B3L16-G02-P406-ex3-w7",
+                  "traditional": "至少",
+                  "simplified": "至少",
+                  "pinyin": "zhìshǎo",
+                  "meaning": "at least"
                 },
                 {
-                  "id": "b3l16g2-ex3-w3",
+                  "id": "B3L16-G02-P406-ex3-w8",
+                  "traditional": "得先聽聽",
+                  "simplified": "得先听听",
+                  "pinyin": "děi xiān tīngting",
+                  "meaning": "should first listen"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w9",
                   "traditional": "其他人的意見",
                   "simplified": "其他人的意见",
                   "pinyin": "qítā rén de yìjiàn",
-                  "meaning": "opinions of others",
+                  "meaning": "others' opinions",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G02-P406-ex3-w10",
+                  "traditional": "再看自己適合不適合",
+                  "simplified": "再看自己适合不适合",
+                  "pinyin": "zài kàn zìjǐ shìhé bú shìhé",
+                  "meaning": "then see whether it suits you",
                   "suffix": "。"
                 }
               ]
@@ -751,7 +1064,9 @@
             "correctFeedback": "太棒了！「至少」表示退一步說的最低限度或基準。",
             "repairFeedback": "請注意底線表達：用「至少」引出最基本的保證或要求。"
           }
-        ]
+        ],
+        "explanationEnglish": "至少 is used as an adverb, followed by a quantifier or a short sentence to indicate the lowest range or degree.",
+        "patternAccentColumn": 0
       }
     ]
   },
@@ -826,20 +1141,25 @@
         "lessonTitle": "愛惜食物，從你我做起",
         "lessonTitleEnglish": "Cherishing Food Starts with You and Me",
         "grammarNumber": 3,
-        "bookPage": 413,
-        "bookPageAvailable": true,
-        "printedPages": [
-          413,
-          414
-        ],
-        "audioReference": "16-2-1",
-        "titleTraditional": "由於……(因此)……",
-        "titleSimplified": "由于……(因此)……",
         "titleEnglish": "Owing To ..., Therefore ...",
         "learnerPromise": "Use 由於 to state formal causes or grounds, pairing with 因此 to describe the resulting consequence.",
-        "explanation": "「由於」的後面表示原因或理由，「因此」的後面表示結果。比「因為……所以……」更正式。「由於」多放在前句句首，若要放在後句要寫成「……，是由於……」。",
-        "pattern": "由於 + Cause，(因此) + Result",
+        "bookPage": 413,
+        "bookPageAvailable": true,
+        "audioReference": "16-2-1",
+        "titleTraditional": "由於……，（因此）……",
+        "printedPages": [
+          413,
+          414,
+          415
+        ],
+        "explanation": "「由於」的後面表示原因或理由，「因此」的後面表示結果。比「因為……，所以……」的用法正式。「因為」可以放在前句或後句的句首；「由於」多放在前句的句首，若要放在後句要寫「……，是由於……」。例如：這座城市的空氣品質越來越差，是由於工廠越來越多。",
+        "focusTerms": [
+          "由於",
+          "因此"
+        ],
+        "pattern": "由於 + Cause，（因此）+ Result",
         "patternColumns": [
+          "由於",
           "Cause",
           "因此",
           "Result"
@@ -850,16 +1170,39 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g3-r1-c1",
-                  "traditional": "由於新菜無法吸引顧客",
-                  "simplified": "由于新菜无法吸引顾客",
-                  "pinyin": "yóuyú xīn cài wúfǎ xīyǐn gùkè",
-                  "meaning": "owing to new dishes failing to attract guests"
+                  "id": "b3l16g3-r1-c1-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
                 }
               ],
               [
                 {
-                  "id": "b3l16g3-r1-c2",
+                  "id": "b3l16g3-r1-c2-w1",
+                  "traditional": "新菜仍然",
+                  "simplified": "新菜仍然",
+                  "pinyin": "xīncài réngrán",
+                  "meaning": "new dishes still"
+                },
+                {
+                  "id": "b3l16g3-r1-c2-w2",
+                  "traditional": "無法吸引",
+                  "simplified": "无法吸引",
+                  "pinyin": "wúfǎ xīyǐn",
+                  "meaning": "fail to attract"
+                },
+                {
+                  "id": "b3l16g3-r1-c2-w3",
+                  "traditional": "更多顧客上門",
+                  "simplified": "更多顾客上门",
+                  "pinyin": "gèng duō gùkè shàngmén",
+                  "meaning": "more customers come in"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g3-r1-c3-w1",
                   "traditional": "因此",
                   "simplified": "因此",
                   "pinyin": "yīncǐ",
@@ -868,11 +1211,32 @@
               ],
               [
                 {
-                  "id": "b3l16g3-r1-c3",
-                  "traditional": "每天有食物被丟進垃圾箱",
-                  "simplified": "每天有食物被丢进垃圾箱",
-                  "pinyin": "měitiān yǒu shíwù bèi diū jìn lājīxiāng",
-                  "meaning": "food is thrown away daily"
+                  "id": "b3l16g3-r1-c4-w1",
+                  "traditional": "每天總是有",
+                  "simplified": "每天总是有",
+                  "pinyin": "měitiān zǒngshì yǒu",
+                  "meaning": "there is always every day"
+                },
+                {
+                  "id": "b3l16g3-r1-c4-w2",
+                  "traditional": "一些還能吃的",
+                  "simplified": "一些还能吃的",
+                  "pinyin": "yìxiē hái néng chī de",
+                  "meaning": "some still-edible"
+                },
+                {
+                  "id": "b3l16g3-r1-c4-w3",
+                  "traditional": "食物被丟進",
+                  "simplified": "食物被丢进",
+                  "pinyin": "shíwù bèi diūjìn",
+                  "meaning": "food is thrown into"
+                },
+                {
+                  "id": "b3l16g3-r1-c4-w4",
+                  "traditional": "垃圾箱",
+                  "simplified": "垃圾箱",
+                  "pinyin": "lājīxiāng",
+                  "meaning": "trash bin"
                 }
               ]
             ]
@@ -882,29 +1246,142 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g3-r2-c1",
-                  "traditional": "由於都市規劃不理想",
-                  "simplified": "由于都市规划不理想",
-                  "pinyin": "yóuyú dūshì guīhuà bù lǐxiǎng",
-                  "meaning": "due to flawed urban planning"
+                  "id": "b3l16g3-r2-c1-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
                 }
               ],
               [
                 {
-                  "id": "b3l16g3-r2-c2",
-                  "traditional": "因此",
-                  "simplified": "因此",
-                  "pinyin": "yīncǐ",
-                  "meaning": "therefore"
+                  "id": "b3l16g3-r2-c2-w1",
+                  "traditional": "這個都市",
+                  "simplified": "这个都市",
+                  "pinyin": "zhège dūshì",
+                  "meaning": "this city"
+                },
+                {
+                  "id": "b3l16g3-r2-c2-w2",
+                  "traditional": "規劃得不理想",
+                  "simplified": "规划得不理想",
+                  "pinyin": "guīhuà de bù lǐxiǎng",
+                  "meaning": "is poorly planned"
                 }
               ],
               [
                 {
-                  "id": "b3l16g3-r2-c3",
-                  "traditional": "交通變得又擠又亂",
-                  "simplified": "交通变得又挤又乱",
-                  "pinyin": "jiāotōng biàn de yòu jǐ yòu luàn",
-                  "meaning": "traffic turned congested and chaotic"
+                  "id": "b3l16g3-r2-c3-w1",
+                  "traditional": "（因此）",
+                  "simplified": "（因此）",
+                  "pinyin": "(yīncǐ)",
+                  "meaning": "therefore (optional)"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g3-r2-c4-w1",
+                  "traditional": "商業活動",
+                  "simplified": "商业活动",
+                  "pinyin": "shāngyè huódòng",
+                  "meaning": "business activity"
+                },
+                {
+                  "id": "b3l16g3-r2-c4-w2",
+                  "traditional": "增加後",
+                  "simplified": "增加后",
+                  "pinyin": "zēngjiā hòu",
+                  "meaning": "after increasing"
+                },
+                {
+                  "id": "b3l16g3-r2-c4-w3",
+                  "traditional": "交通就變得",
+                  "simplified": "交通就变得",
+                  "pinyin": "jiāotōng jiù biàn de",
+                  "meaning": "traffic becomes"
+                },
+                {
+                  "id": "b3l16g3-r2-c4-w4",
+                  "traditional": "又擠又亂",
+                  "simplified": "又挤又乱",
+                  "pinyin": "yòu jǐ yòu luàn",
+                  "meaning": "crowded and chaotic"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l16g3-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l16g3-r3-c1-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g3-r3-c2-w1",
+                  "traditional": "人口不斷增加",
+                  "simplified": "人口不断增加",
+                  "pinyin": "rénkǒu búduàn zēngjiā",
+                  "meaning": "population keeps growing"
+                },
+                {
+                  "id": "b3l16g3-r3-c2-w2",
+                  "traditional": "居住土地的",
+                  "simplified": "居住土地的",
+                  "pinyin": "jūzhù tǔdì de",
+                  "meaning": "of residential land"
+                },
+                {
+                  "id": "b3l16g3-r3-c2-w3",
+                  "traditional": "需求也",
+                  "simplified": "需求也",
+                  "pinyin": "xūqiú yě",
+                  "meaning": "demand also"
+                },
+                {
+                  "id": "b3l16g3-r3-c2-w4",
+                  "traditional": "越來越大",
+                  "simplified": "越来越大",
+                  "pinyin": "yuè lái yuè dà",
+                  "meaning": "bigger and bigger"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g3-r3-c3-w1",
+                  "traditional": "（因此）",
+                  "simplified": "（因此）",
+                  "pinyin": "(yīncǐ)",
+                  "meaning": "therefore (optional)"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g3-r3-c4-w1",
+                  "traditional": "農業生產",
+                  "simplified": "农业生产",
+                  "pinyin": "nóngyè shēngchǎn",
+                  "meaning": "agricultural production"
+                },
+                {
+                  "id": "b3l16g3-r3-c4-w2",
+                  "traditional": "的土地",
+                  "simplified": "的土地",
+                  "pinyin": "de tǔdì",
+                  "meaning": "land"
+                },
+                {
+                  "id": "b3l16g3-r3-c4-w3",
+                  "traditional": "就變少了",
+                  "simplified": "就变少了",
+                  "pinyin": "jiù biàn shǎo le",
+                  "meaning": "then becomes less"
                 }
               ]
             ]
@@ -912,108 +1389,227 @@
         ],
         "examples": [
           {
-            "id": "b3l16g3-ex1",
+            "id": "B3L16-G03-P413-ex1",
             "number": 1,
             "text": {
-              "traditional": "由於新菜無法吸引顧客，因此每天都有食物被丟進垃圾箱。",
-              "simplified": "由于新菜无法吸引顾客，因此每天都有食物被丢进垃圾箱。",
-              "pinyin": "Yóuyú xīn cài wúfǎ xīyǐn gùkè, yīncǐ měitiān dōu yǒu shíwù bèi diū jìn lājīxiāng.",
-              "english": "Owing to new dishes failing to attract customers, food was discarded daily.",
+              "traditional": "由於新菜仍然無法吸引更多顧客上門，因此每天總是有一些還能吃的食物被丟進垃圾箱。",
+              "simplified": "由于新菜仍然无法吸引更多顾客上门，因此每天总是有一些还能吃的食物被丢进垃圾箱。",
+              "pinyin": "yóuyú xīncài réngrán wúfǎ xīyǐn gèng duō gùkè shàngmén, yīncǐ měitiān zǒngshì yǒu yìxiē hái néng chī de shíwù bèi diūjìn lājīxiāng.",
+              "english": "Because new dishes still fail to attract more customers, some edible food ends up in the trash every day.",
               "words": [
                 {
-                  "id": "b3l16g3-ex1-w1",
-                  "traditional": "由於新菜無法吸引顧客",
-                  "simplified": "由于新菜无法吸引顾客",
-                  "pinyin": "yóuyú xīn cài wúfǎ xīyǐn gùkè",
-                  "meaning": "due to new dishes failing to attract guests",
+                  "id": "B3L16-G03-P413-ex1-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex1-w2",
+                  "traditional": "新菜仍然",
+                  "simplified": "新菜仍然",
+                  "pinyin": "xīncài réngrán",
+                  "meaning": "new dishes still"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex1-w3",
+                  "traditional": "無法吸引",
+                  "simplified": "无法吸引",
+                  "pinyin": "wúfǎ xīyǐn",
+                  "meaning": "fail to attract"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex1-w4",
+                  "traditional": "更多顧客上門",
+                  "simplified": "更多顾客上门",
+                  "pinyin": "gèng duō gùkè shàngmén",
+                  "meaning": "more customers come in",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g3-ex1-w2",
-                  "traditional": "因此每天都有食物",
-                  "simplified": "因此每天都有食物",
-                  "pinyin": "yīncǐ měitiān dōu yǒu shíwù",
-                  "meaning": "therefore every day food",
-                  "suffix": ""
+                  "id": "B3L16-G03-P413-ex1-w5",
+                  "traditional": "因此",
+                  "simplified": "因此",
+                  "pinyin": "yīncǐ",
+                  "meaning": "therefore"
                 },
                 {
-                  "id": "b3l16g3-ex1-w3",
-                  "traditional": "被丟進垃圾箱",
-                  "simplified": "被丢进垃圾箱",
-                  "pinyin": "bèi diū jìn lājīxiāng",
-                  "meaning": "is thrown into garbage bin",
+                  "id": "B3L16-G03-P413-ex1-w6",
+                  "traditional": "每天總是有",
+                  "simplified": "每天总是有",
+                  "pinyin": "měitiān zǒngshì yǒu",
+                  "meaning": "there is always every day"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex1-w7",
+                  "traditional": "一些還能吃的",
+                  "simplified": "一些还能吃的",
+                  "pinyin": "yìxiē hái néng chī de",
+                  "meaning": "some still-edible"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex1-w8",
+                  "traditional": "食物被丟進",
+                  "simplified": "食物被丢进",
+                  "pinyin": "shíwù bèi diūjìn",
+                  "meaning": "food is thrown into"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex1-w9",
+                  "traditional": "垃圾箱",
+                  "simplified": "垃圾箱",
+                  "pinyin": "lājīxiāng",
+                  "meaning": "trash bin",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
-            "id": "b3l16g3-ex2",
+            "id": "B3L16-G03-P413-ex2",
             "number": 2,
             "text": {
-              "traditional": "由於都市規劃不理想，商業活動增加後，交通就變亂了。",
-              "simplified": "由于都市规划不理想，商业活动增加后，交通就变乱了。",
-              "pinyin": "Yóuyú dūshì guīhuà bù lǐxiǎng, shāngyè huódòng zēngjiā hòu, jiāotōng jiù biàn luàn le.",
-              "english": "Because city planning was flawed, after commerce surged, traffic became chaotic.",
+              "traditional": "由於這個都市規劃得不理想，（因此）商業活動增加後，交通就變得又擠又亂。",
+              "simplified": "由于这个都市规划得不理想，（因此）商业活动增加后，交通就变得又挤又乱。",
+              "pinyin": "yóuyú zhège dūshì guīhuà de bù lǐxiǎng, (yīncǐ) shāngyè huódòng zēngjiā hòu, jiāotōng jiù biàn de yòu jǐ yòu luàn.",
+              "english": "Because the city was poorly planned, after business activity increased, traffic became crowded and chaotic.",
               "words": [
                 {
-                  "id": "b3l16g3-ex2-w1",
-                  "traditional": "由於都市規劃不理想",
-                  "simplified": "由于都市规划不理想",
-                  "pinyin": "yóuyú dūshì guīhuà bù lǐxiǎng",
-                  "meaning": "due to poor urban planning",
+                  "id": "B3L16-G03-P413-ex2-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex2-w2",
+                  "traditional": "這個都市",
+                  "simplified": "这个都市",
+                  "pinyin": "zhège dūshì",
+                  "meaning": "this city"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex2-w3",
+                  "traditional": "規劃得不理想",
+                  "simplified": "规划得不理想",
+                  "pinyin": "guīhuà de bù lǐxiǎng",
+                  "meaning": "is poorly planned",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g3-ex2-w2",
-                  "traditional": "商業活動增加後",
-                  "simplified": "商业活动增加后",
-                  "pinyin": "shāngyè huódòng zēngjiā hòu",
-                  "meaning": "after business increased",
+                  "id": "B3L16-G03-P413-ex2-w4",
+                  "traditional": "（因此）",
+                  "simplified": "（因此）",
+                  "pinyin": "(yīncǐ)",
+                  "meaning": "therefore (optional)"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex2-w5",
+                  "traditional": "商業活動",
+                  "simplified": "商业活动",
+                  "pinyin": "shāngyè huódòng",
+                  "meaning": "business activity"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex2-w6",
+                  "traditional": "增加後",
+                  "simplified": "增加后",
+                  "pinyin": "zēngjiā hòu",
+                  "meaning": "after increasing",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g3-ex2-w3",
-                  "traditional": "交通就變亂了",
-                  "simplified": "交通就变乱了",
-                  "pinyin": "jiāotōng jiù biàn luàn le",
-                  "meaning": "traffic became chaotic",
+                  "id": "B3L16-G03-P413-ex2-w7",
+                  "traditional": "交通就變得",
+                  "simplified": "交通就变得",
+                  "pinyin": "jiāotōng jiù biàn de",
+                  "meaning": "traffic becomes"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex2-w8",
+                  "traditional": "又擠又亂",
+                  "simplified": "又挤又乱",
+                  "pinyin": "yòu jǐ yòu luàn",
+                  "meaning": "crowded and chaotic",
                   "suffix": "。"
                 }
               ]
             }
           },
           {
-            "id": "b3l16g3-ex3",
+            "id": "B3L16-G03-P413-ex3",
             "number": 3,
             "text": {
-              "traditional": "由於人口不斷增加，農業生產的土地就變少了。",
-              "simplified": "由于人口不断增加，农业生产的土地就变少了。",
-              "pinyin": "Yóuyú rénkǒu búduàn zēngjiā, nóngyè shēngchǎn de tǔdì jiù biàn shǎo le.",
-              "english": "Owing to continual population expansion, agricultural land dwindled.",
+              "traditional": "由於人口不斷增加，居住土地的需求也越來越大，（因此）農業生產的土地就變少了。",
+              "simplified": "由于人口不断增加，居住土地的需求也越来越大，（因此）农业生产的土地就变少了。",
+              "pinyin": "yóuyú rénkǒu búduàn zēngjiā, jūzhù tǔdì de xūqiú yě yuè lái yuè dà, (yīncǐ) nóngyè shēngchǎn de tǔdì jiù biàn shǎo le.",
+              "english": "Because the population keeps growing and the demand for residential land keeps rising, farmland becomes less.",
               "words": [
                 {
-                  "id": "b3l16g3-ex3-w1",
-                  "traditional": "由於人口不斷增加",
-                  "simplified": "由于人口不断增加",
-                  "pinyin": "yóuyú rénkǒu búduàn zēngjiā",
-                  "meaning": "owing to growing population",
+                  "id": "B3L16-G03-P413-ex3-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex3-w2",
+                  "traditional": "人口不斷增加",
+                  "simplified": "人口不断增加",
+                  "pinyin": "rénkǒu búduàn zēngjiā",
+                  "meaning": "population keeps growing",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g3-ex3-w2",
-                  "traditional": "農業生產的土地",
-                  "simplified": "农业生产的土地",
-                  "pinyin": "nóngyè shēngchǎn de tǔdì",
-                  "meaning": "farming land",
-                  "suffix": ""
+                  "id": "B3L16-G03-P413-ex3-w3",
+                  "traditional": "居住土地的",
+                  "simplified": "居住土地的",
+                  "pinyin": "jūzhù tǔdì de",
+                  "meaning": "of residential land"
                 },
                 {
-                  "id": "b3l16g3-ex3-w3",
+                  "id": "B3L16-G03-P413-ex3-w4",
+                  "traditional": "需求也",
+                  "simplified": "需求也",
+                  "pinyin": "xūqiú yě",
+                  "meaning": "demand also"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex3-w5",
+                  "traditional": "越來越大",
+                  "simplified": "越来越大",
+                  "pinyin": "yuè lái yuè dà",
+                  "meaning": "bigger and bigger",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex3-w6",
+                  "traditional": "（因此）",
+                  "simplified": "（因此）",
+                  "pinyin": "(yīncǐ)",
+                  "meaning": "therefore (optional)"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex3-w7",
+                  "traditional": "農業生產",
+                  "simplified": "农业生产",
+                  "pinyin": "nóngyè shēngchǎn",
+                  "meaning": "agricultural production"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex3-w8",
+                  "traditional": "的土地",
+                  "simplified": "的土地",
+                  "pinyin": "de tǔdì",
+                  "meaning": "land"
+                },
+                {
+                  "id": "B3L16-G03-P413-ex3-w9",
                   "traditional": "就變少了",
                   "simplified": "就变少了",
                   "pinyin": "jiù biàn shǎo le",
-                  "meaning": "has diminished",
+                  "meaning": "then becomes less",
                   "suffix": "。"
                 }
               ]
@@ -1134,7 +1730,9 @@
             "correctFeedback": "太棒了！「由於」正式陳述理由或原因，與後文「因此」相互呼應。",
             "repairFeedback": "請注意因果關係：表示「由於……因此……」應選用「由於」。"
           }
-        ]
+        ],
+        "explanationEnglish": "The statement after 由於 indicates the cause or reason, and the the statement after 因此 indicates the result. Such expressions are more formal than “因為……，所以……”. 因為 can be placed at the beginning of the preceding or following sentence; 由於 is usually placed at the beginning of the preceding sentence. If it is placed at the end, then the sentence should be written as “……，是由於……”. For example, 這座城市的空氣品質越來越差，是由於工廠越來越多。",
+        "patternAccentColumn": 0
       },
       {
         "id": "B3L16-G04-P415",
@@ -1144,19 +1742,21 @@
         "lessonTitle": "愛惜食物，從你我做起",
         "lessonTitleEnglish": "Cherishing Food Starts with You and Me",
         "grammarNumber": 4,
+        "titleEnglish": "To Cause / To Make",
+        "learnerPromise": "Use 使得 in formal contexts to express that an actual situation or event caused a specific outcome.",
         "bookPage": 415,
         "bookPageAvailable": true,
+        "audioReference": "16-2-2",
+        "titleTraditional": "使得",
         "printedPages": [
           415,
           416
         ],
-        "audioReference": "16-2-2",
-        "titleTraditional": "使得",
-        "titleSimplified": "使得",
-        "titleEnglish": "To Cause / To Make",
-        "learnerPromise": "Use 使得 in formal contexts to express that an actual situation or event caused a specific outcome.",
-        "explanation": "「使得」是及物狀態動詞 (Vst)。前句是導致某個事件發生的原因，後句是導致的結果，比「使」更正式。已發生的事實常用「使得」，假設的情況常用「使」。",
-        "pattern": "Cause Clause + 使得 + Object + Result / State",
+        "explanation": "「使得」是及物狀態動詞（Vst）。「使得」的前句是導致某個事件發生的原因，後句是前句導致或引起的結果，與「使（V）」的用法相似，但「使得」的用法較正式。已發生的事實常用「使得」；假設的情況常用「使」。例如：「由於這次強烈颱風帶來了大風大雨，使得很多地區都淹水了。」、「古代寺廟如能好好保留下來，就能使民眾更了解宗教的歷史意義。」",
+        "focusTerms": [
+          "使得"
+        ],
+        "pattern": "Cause + 使得 + Result",
         "patternColumns": [
           "Cause",
           "使得",
@@ -1168,29 +1768,36 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g4-r1-c1",
+                  "id": "b3l16g4-r1-c1-w1",
                   "traditional": "每次想到這點",
                   "simplified": "每次想到这点",
                   "pinyin": "měi cì xiǎngdào zhè diǎn",
-                  "meaning": "every time thinking of this"
+                  "meaning": "each time thinking of this"
+                },
+                {
+                  "id": "b3l16g4-r1-c1-w2",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all; even"
                 }
               ],
               [
                 {
-                  "id": "b3l16g4-r1-c2",
-                  "traditional": "都使得他",
-                  "simplified": "都使得他",
-                  "pinyin": "dōu shǐde tā",
-                  "meaning": "all causes him"
+                  "id": "b3l16g4-r1-c2-w1",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
                 }
               ],
               [
                 {
-                  "id": "b3l16g4-r1-c3",
-                  "traditional": "夜裡睡不好",
-                  "simplified": "夜里睡不好",
-                  "pinyin": "yèlǐ shuì bù hǎo",
-                  "meaning": "to sleep poorly at night"
+                  "id": "b3l16g4-r1-c3-w1",
+                  "traditional": "他夜裡睡不好",
+                  "simplified": "他夜里睡不好",
+                  "pinyin": "tā yèlǐ shuì bu hǎo",
+                  "meaning": "he sleeps badly at night"
                 }
               ]
             ]
@@ -1200,29 +1807,96 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g4-r2-c1",
-                  "traditional": "大地震規模很大",
-                  "simplified": "大地震规模很大",
-                  "pinyin": "dà dìzhèn guīmó hěn dà",
-                  "meaning": "earthquake scale was huge"
+                  "id": "b3l16g4-r2-c1-w1",
+                  "traditional": "九二一大地震",
+                  "simplified": "九二一大地震",
+                  "pinyin": "Jiǔ'èryī dà dìzhèn",
+                  "meaning": "the 921 Earthquake"
+                },
+                {
+                  "id": "b3l16g4-r2-c1-w2",
+                  "traditional": "的規模很大",
+                  "simplified": "的规模很大",
+                  "pinyin": "de guīmó hěn dà",
+                  "meaning": "its scale is very large"
                 }
               ],
               [
                 {
-                  "id": "b3l16g4-r2-c2",
-                  "traditional": "使得許多房屋",
-                  "simplified": "使得许多房屋",
-                  "pinyin": "shǐde xǔduō fángwū",
-                  "meaning": "causing many houses"
+                  "id": "b3l16g4-r2-c2-w1",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
                 }
               ],
               [
                 {
-                  "id": "b3l16g4-r2-c3",
-                  "traditional": "都倒塌了",
-                  "simplified": "都倒塌了",
-                  "pinyin": "dōu dǎotā le",
-                  "meaning": "to collapse"
+                  "id": "b3l16g4-r2-c3-w1",
+                  "traditional": "許多房屋",
+                  "simplified": "许多房屋",
+                  "pinyin": "xǔduō fángwū",
+                  "meaning": "many houses"
+                },
+                {
+                  "id": "b3l16g4-r2-c3-w2",
+                  "traditional": "跟馬路都塌了",
+                  "simplified": "跟马路都塌了",
+                  "pinyin": "gēn mǎlù dōu tā le",
+                  "meaning": "and roads all collapsed"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l16g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l16g4-r3-c1-w1",
+                  "traditional": "紅毛城古蹟",
+                  "simplified": "红毛城古迹",
+                  "pinyin": "Hóngmáochéng gǔjì",
+                  "meaning": "Fort San Domingo heritage site"
+                },
+                {
+                  "id": "b3l16g4-r3-c1-w2",
+                  "traditional": "維持得很好",
+                  "simplified": "维持得很好",
+                  "pinyin": "wéichí de hěn hǎo",
+                  "meaning": "is well maintained"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g4-r3-c2-w1",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g4-r3-c3-w1",
+                  "traditional": "參觀的民眾",
+                  "simplified": "参观的民众",
+                  "pinyin": "cānguān de mínzhòng",
+                  "meaning": "visitors"
+                },
+                {
+                  "id": "b3l16g4-r3-c3-w2",
+                  "traditional": "一年比一年",
+                  "simplified": "一年比一年",
+                  "pinyin": "yì nián bǐ yì nián",
+                  "meaning": "year by year"
+                },
+                {
+                  "id": "b3l16g4-r3-c3-w3",
+                  "traditional": "多了",
+                  "simplified": "多了",
+                  "pinyin": "duō le",
+                  "meaning": "more"
                 }
               ]
             ]
@@ -1230,108 +1904,155 @@
         ],
         "examples": [
           {
-            "id": "b3l16g4-ex1",
+            "id": "B3L16-G04-P415-ex1",
             "number": 1,
             "text": {
-              "traditional": "每次想到這點，都使得他夜裡睡不好。",
-              "simplified": "每次想到这点，都使得他夜里睡不好。",
-              "pinyin": "Měi cì xiǎngdào zhè diǎn, dōu shǐde tā yèlǐ shuì bù hǎo.",
-              "english": "Every time he thought of this, it made him unable to sleep well at night.",
+              "traditional": "……每次想到這點都使得他夜裡睡不好。",
+              "simplified": "……每次想到这点都使得他夜里睡不好。",
+              "pinyin": "…… měi cì xiǎngdào zhè diǎn dōu shǐde tā yèlǐ shuì bu hǎo.",
+              "english": "Each time he thought of this, it kept him from sleeping well at night.",
               "words": [
                 {
-                  "id": "b3l16g4-ex1-w1",
+                  "id": "B3L16-G04-P415-ex1-w1",
                   "traditional": "每次想到這點",
                   "simplified": "每次想到这点",
                   "pinyin": "měi cì xiǎngdào zhè diǎn",
-                  "meaning": "every time thinking of this",
-                  "suffix": "，"
+                  "meaning": "each time thinking of this",
+                  "prefix": "……"
                 },
                 {
-                  "id": "b3l16g4-ex1-w2",
-                  "traditional": "都使得他",
-                  "simplified": "都使得他",
-                  "pinyin": "dōu shǐde tā",
-                  "meaning": "all made him",
-                  "suffix": ""
+                  "id": "B3L16-G04-P415-ex1-w2",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all; even"
                 },
                 {
-                  "id": "b3l16g4-ex1-w3",
-                  "traditional": "夜裡睡不好",
-                  "simplified": "夜里睡不好",
-                  "pinyin": "yèlǐ shuì bù hǎo",
-                  "meaning": "unable to sleep at night",
+                  "id": "B3L16-G04-P415-ex1-w3",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex1-w4",
+                  "traditional": "他夜裡睡不好",
+                  "simplified": "他夜里睡不好",
+                  "pinyin": "tā yèlǐ shuì bu hǎo",
+                  "meaning": "he sleeps badly at night",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
-            "id": "b3l16g4-ex2",
+            "id": "B3L16-G04-P415-ex2",
             "number": 2,
             "text": {
-              "traditional": "九二一大地震的規模很大，使得許多房屋都塌了。",
-              "simplified": "九二一大地震的规模很大，使得许多房屋都塌了。",
-              "pinyin": "Jiǔ-èr-yī dà dìzhèn de guīmó hěn dà, shǐde xǔduō fángwū dōu tā le.",
-              "english": "The scale of the 921 earthquake was massive, causing many houses to collapse.",
+              "traditional": "九二一大地震的規模很大，使得許多房屋跟馬路都塌了。",
+              "simplified": "九二一大地震的规模很大，使得许多房屋跟马路都塌了。",
+              "pinyin": "Jiǔ'èryī dà dìzhèn de guīmó hěn dà, shǐde xǔduō fángwū gēn mǎlù dōu tā le.",
+              "english": "The 921 Earthquake was very large, so many houses and roads collapsed.",
               "words": [
                 {
-                  "id": "b3l16g4-ex2-w1",
-                  "traditional": "大地震的規模很大",
-                  "simplified": "大地震的规模很大",
-                  "pinyin": "dà dìzhèn de guīmó hěn dà",
-                  "meaning": "earthquake scale was massive",
+                  "id": "B3L16-G04-P415-ex2-w1",
+                  "traditional": "九二一大地震",
+                  "simplified": "九二一大地震",
+                  "pinyin": "Jiǔ'èryī dà dìzhèn",
+                  "meaning": "the 921 Earthquake"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex2-w2",
+                  "traditional": "的規模很大",
+                  "simplified": "的规模很大",
+                  "pinyin": "de guīmó hěn dà",
+                  "meaning": "its scale is very large",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g4-ex2-w2",
-                  "traditional": "使得許多房屋",
-                  "simplified": "使得许多房屋",
-                  "pinyin": "shǐde xǔduō fángwū",
-                  "meaning": "causing many houses",
-                  "suffix": ""
+                  "id": "B3L16-G04-P415-ex2-w3",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
                 },
                 {
-                  "id": "b3l16g4-ex2-w3",
-                  "traditional": "都塌了",
-                  "simplified": "都塌了",
-                  "pinyin": "dōu tā le",
-                  "meaning": "all collapsed",
+                  "id": "B3L16-G04-P415-ex2-w4",
+                  "traditional": "許多房屋",
+                  "simplified": "许多房屋",
+                  "pinyin": "xǔduō fángwū",
+                  "meaning": "many houses"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex2-w5",
+                  "traditional": "跟馬路都塌了",
+                  "simplified": "跟马路都塌了",
+                  "pinyin": "gēn mǎlù dōu tā le",
+                  "meaning": "and roads all collapsed",
                   "suffix": "。"
                 }
               ]
             }
           },
           {
-            "id": "b3l16g4-ex3",
+            "id": "B3L16-G04-P415-ex3",
             "number": 3,
             "text": {
-              "traditional": "紅毛城古蹟維護得很好，使得參觀民眾一年比一年多。",
-              "simplified": "红毛城古迹维护得很好，使得参观民众一年比一年多。",
-              "pinyin": "Hóngmáochéng gǔjī wéihù de hěn hǎo, shǐde cānguān mínzhòng yì nián bǐ yì nián duō.",
-              "english": "Fort San Domingo is well kept, causing visitors to increase year after year.",
+              "traditional": "由於紅毛城古蹟維持得很好，使得參觀的民眾一年比一年多了。",
+              "simplified": "由于红毛城古迹维持得很好，使得参观的民众一年比一年多了。",
+              "pinyin": "yóuyú Hóngmáochéng gǔjì wéichí de hěn hǎo, shǐde cānguān de mínzhòng yì nián bǐ yì nián duō le.",
+              "english": "Because Fort San Domingo is so well maintained, the number of visitors grows year by year.",
               "words": [
                 {
-                  "id": "b3l16g4-ex3-w1",
-                  "traditional": "古蹟維護得很好",
-                  "simplified": "古迹维护得很好",
-                  "pinyin": "gǔjī wéihù de hěn hǎo",
-                  "meaning": "heritage site well maintained",
+                  "id": "B3L16-G04-P415-ex3-w1",
+                  "traditional": "由於",
+                  "simplified": "由于",
+                  "pinyin": "yóuyú",
+                  "meaning": "because of"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex3-w2",
+                  "traditional": "紅毛城古蹟",
+                  "simplified": "红毛城古迹",
+                  "pinyin": "Hóngmáochéng gǔjì",
+                  "meaning": "Fort San Domingo heritage site"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex3-w3",
+                  "traditional": "維持得很好",
+                  "simplified": "维持得很好",
+                  "pinyin": "wéichí de hěn hǎo",
+                  "meaning": "is well maintained",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g4-ex3-w2",
-                  "traditional": "使得參觀民眾",
-                  "simplified": "使得参观民众",
-                  "pinyin": "shǐde cānguān mínzhòng",
-                  "meaning": "causing visitors",
-                  "suffix": ""
+                  "id": "B3L16-G04-P415-ex3-w4",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
                 },
                 {
-                  "id": "b3l16g4-ex3-w3",
-                  "traditional": "一年比一年多",
-                  "simplified": "一年比一年多",
-                  "pinyin": "yì nián bǐ yì nián duō",
-                  "meaning": "more year by year",
+                  "id": "B3L16-G04-P415-ex3-w5",
+                  "traditional": "參觀的民眾",
+                  "simplified": "参观的民众",
+                  "pinyin": "cānguān de mínzhòng",
+                  "meaning": "visitors"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex3-w6",
+                  "traditional": "一年比一年",
+                  "simplified": "一年比一年",
+                  "pinyin": "yì nián bǐ yì nián",
+                  "meaning": "year by year"
+                },
+                {
+                  "id": "B3L16-G04-P415-ex3-w7",
+                  "traditional": "多了",
+                  "simplified": "多了",
+                  "pinyin": "duō le",
+                  "meaning": "more",
                   "suffix": "。"
                 }
               ]
@@ -1452,7 +2173,9 @@
             "correctFeedback": "太棒了！「使得」正式連接原因與既成事實的結果。",
             "repairFeedback": "請注意致使結構：導致特定事實狀態，應使用「使得」。"
           }
-        ]
+        ],
+        "explanationEnglish": "使得 is a transitive verb (Vst). The first use of 使得 is the cause of an event, and the following usage is the result of the preceding sentence. This is similar to the usage of 使(V), but the usage of 使得 is more formal. The facts that have occurred are often used with 使得, while the hypothetical situations are often used with 使. For example, 由於這次強烈颱風帶來了大風大雨，使得很多地區都淹水了。Or 古代寺廟如能好好保留下來，就能使民眾更了解宗教的歷史意義。",
+        "patternAccentColumn": 1
       },
       {
         "id": "B3L16-G05-P417",
@@ -1462,21 +2185,23 @@
         "lessonTitle": "愛惜食物，從你我做起",
         "lessonTitleEnglish": "Cherishing Food Starts with You and Me",
         "grammarNumber": 5,
+        "titleEnglish": "Thereupon / Hence",
+        "learnerPromise": "Use 於是 to introduce an action consciously taken in direct response to a preceding situation.",
         "bookPage": 417,
         "bookPageAvailable": true,
+        "audioReference": "16-2-3",
+        "titleTraditional": "於是",
         "printedPages": [
           417,
           418
         ],
-        "audioReference": "16-2-3",
-        "titleTraditional": "於是",
-        "titleSimplified": "于是",
-        "titleEnglish": "Thereupon / Hence",
-        "learnerPromise": "Use 於是 to introduce an action consciously taken in direct response to a preceding situation.",
-        "explanation": "「於是」是連詞，連接前後兩個句子，後句是因為前句的情況而採取的行動。注意自然現象不可使用「於是」（如不可說「天很黑，於是下雨了」）。",
-        "pattern": "Preceding Situation + 於是 + Action Taken",
+        "explanation": "「於是」是連詞，連接前後兩個句子，後句是因為前句的情況而採取的行動。但自然現象不可使用「於是」，例如：「*天很黑，於是下雨了。」、「*強烈颱風來了，於是很多地區淹水了。」",
+        "focusTerms": [
+          "於是"
+        ],
+        "pattern": "Cause，於是 + Action",
         "patternColumns": [
-          "Situation",
+          "Cause",
           "於是",
           "Action"
         ],
@@ -1486,29 +2211,57 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g5-r1-c1",
+                  "id": "b3l16g5-r1-c1-w1",
+                  "traditional": "每次想到這點",
+                  "simplified": "每次想到这点",
+                  "pinyin": "měi cì xiǎngdào zhè diǎn",
+                  "meaning": "each time thinking of this"
+                },
+                {
+                  "id": "b3l16g5-r1-c1-w2",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all; even"
+                },
+                {
+                  "id": "b3l16g5-r1-c1-w3",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
+                },
+                {
+                  "id": "b3l16g5-r1-c1-w4",
                   "traditional": "他夜裡睡不好",
                   "simplified": "他夜里睡不好",
-                  "pinyin": "tā yèlǐ shuì bù hǎo",
-                  "meaning": "he slept poorly at night"
+                  "pinyin": "tā yèlǐ shuì bu hǎo",
+                  "meaning": "he sleeps badly at night"
                 }
               ],
               [
                 {
-                  "id": "b3l16g5-r1-c2",
+                  "id": "b3l16g5-r1-c2-w1",
                   "traditional": "於是",
                   "simplified": "于是",
                   "pinyin": "yúshì",
-                  "meaning": "thereupon"
+                  "meaning": "so; thereupon"
                 }
               ],
               [
                 {
-                  "id": "b3l16g5-r1-c3",
-                  "traditional": "在門外放了冰箱",
-                  "simplified": "在门外放了冰箱",
-                  "pinyin": "zài ménwài fàng le bīngxiāng",
-                  "meaning": "placed fridge outside"
+                  "id": "b3l16g5-r1-c3-w1",
+                  "traditional": "他在餐廳門外",
+                  "simplified": "他在餐厅门外",
+                  "pinyin": "tā zài cāntīng ménwài",
+                  "meaning": "he, outside the restaurant"
+                },
+                {
+                  "id": "b3l16g5-r1-c3-w2",
+                  "traditional": "放了一台冰箱",
+                  "simplified": "放了一台冰箱",
+                  "pinyin": "fàng le yì tái bīngxiāng",
+                  "meaning": "put out a fridge"
                 }
               ]
             ]
@@ -1518,28 +2271,130 @@
             "columns": [
               [
                 {
-                  "id": "b3l16g5-r2-c1",
-                  "traditional": "沒得到相對肯定",
-                  "simplified": "没得到相对肯定",
-                  "pinyin": "méi dédào xiāngduì kěndìng",
-                  "meaning": "not receiving fair recognition"
+                  "id": "b3l16g5-r2-c1-w1",
+                  "traditional": "現代人",
+                  "simplified": "现代人",
+                  "pinyin": "xiàndàirén",
+                  "meaning": "modern people"
+                },
+                {
+                  "id": "b3l16g5-r2-c1-w2",
+                  "traditional": "為了擁有",
+                  "simplified": "为了拥有",
+                  "pinyin": "wèile yǒngyǒu",
+                  "meaning": "in order to have"
+                },
+                {
+                  "id": "b3l16g5-r2-c1-w3",
+                  "traditional": "更舒適的生活",
+                  "simplified": "更舒适的生活",
+                  "pinyin": "gèng shūshì de shēnghuó",
+                  "meaning": "more comfortable life"
                 }
               ],
               [
                 {
-                  "id": "b3l16g5-r2-c2",
+                  "id": "b3l16g5-r2-c2-w1",
                   "traditional": "於是",
                   "simplified": "于是",
                   "pinyin": "yúshì",
-                  "meaning": "thereupon"
+                  "meaning": "so; thereupon"
                 }
               ],
               [
                 {
-                  "id": "b3l16g5-r2-c3",
-                  "traditional": "決定換一份工作",
-                  "simplified": "决定换一份工作",
-                  "pinyin": "juédìng huàn yí fèn gōngzuò",
+                  "id": "b3l16g5-r2-c3-w1",
+                  "traditional": "發明了許多",
+                  "simplified": "发明了许多",
+                  "pinyin": "fāmíng le xǔduō",
+                  "meaning": "invented many"
+                },
+                {
+                  "id": "b3l16g5-r2-c3-w2",
+                  "traditional": "既好用",
+                  "simplified": "既好用",
+                  "pinyin": "jì hǎoyòng",
+                  "meaning": "both useful"
+                },
+                {
+                  "id": "b3l16g5-r2-c3-w3",
+                  "traditional": "功能又多的",
+                  "simplified": "功能又多的",
+                  "pinyin": "gōngnéng yòu duō de",
+                  "meaning": "with many functions"
+                },
+                {
+                  "id": "b3l16g5-r2-c3-w4",
+                  "traditional": "生活用品",
+                  "simplified": "生活用品",
+                  "pinyin": "shēnghuó yòngpǐn",
+                  "meaning": "daily goods"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l16g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l16g5-r3-c1-w1",
+                  "traditional": "戴先生",
+                  "simplified": "戴先生",
+                  "pinyin": "Dài xiānsheng",
+                  "meaning": "Mr. Dai"
+                },
+                {
+                  "id": "b3l16g5-r3-c1-w2",
+                  "traditional": "為公司付出",
+                  "simplified": "为公司付出",
+                  "pinyin": "wèi gōngsī fùchū",
+                  "meaning": "contributed to the company"
+                },
+                {
+                  "id": "b3l16g5-r3-c1-w3",
+                  "traditional": "很多",
+                  "simplified": "很多",
+                  "pinyin": "hěn duō",
+                  "meaning": "a lot"
+                },
+                {
+                  "id": "b3l16g5-r3-c1-w4",
+                  "traditional": "卻沒得到",
+                  "simplified": "却没得到",
+                  "pinyin": "què méi dédào",
+                  "meaning": "yet did not get"
+                },
+                {
+                  "id": "b3l16g5-r3-c1-w5",
+                  "traditional": "相對的肯定",
+                  "simplified": "相对的肯定",
+                  "pinyin": "xiāngduì de kǎndìng",
+                  "meaning": "relative recognition"
+                },
+                {
+                  "id": "b3l16g5-r3-c1-w6",
+                  "traditional": "與合理的薪水",
+                  "simplified": "与合理的薪水",
+                  "pinyin": "yǔ hélǐ de xīnshui",
+                  "meaning": "and a fair salary"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g5-r3-c2-w1",
+                  "traditional": "於是",
+                  "simplified": "于是",
+                  "pinyin": "yúshì",
+                  "meaning": "so; thereupon"
+                }
+              ],
+              [
+                {
+                  "id": "b3l16g5-r3-c3-w1",
+                  "traditional": "決定換工作",
+                  "simplified": "决定换工作",
+                  "pinyin": "juédìng huàn gōngzuò",
                   "meaning": "decided to change jobs"
                 }
               ]
@@ -1548,108 +2403,207 @@
         ],
         "examples": [
           {
-            "id": "b3l16g5-ex1",
+            "id": "B3L16-G05-P417-ex1",
             "number": 1,
             "text": {
-              "traditional": "這點使得他睡不好，於是他放了一台愛心冰箱。",
-              "simplified": "这点使得他睡不好，于是他放了一台爱心冰箱。",
-              "pinyin": "Zhè diǎn shǐde tā shuì bù hǎo, yúshì tā fàng le yì tái àixīn bīngxiāng.",
-              "english": "This troubled his sleep; thereupon he placed a community fridge outside.",
+              "traditional": "每次想到這點都使得他夜裡睡不好。於是，他在餐廳門外放了一台冰箱……",
+              "simplified": "每次想到这点都使得他夜里睡不好。于是，他在餐厅门外放了一台冰箱……",
+              "pinyin": "měi cì xiǎngdào zhè diǎn dōu shǐde tā yèlǐ shuì bu hǎo. yúshì, tā zài cāntīng ménwài fàng le yì tái bīngxiāng……",
+              "english": "Each time he thought of this, he could not sleep well at night. So he put a fridge outside the restaurant……",
               "words": [
                 {
-                  "id": "b3l16g5-ex1-w1",
-                  "traditional": "這點使他睡不好",
-                  "simplified": "这点使他睡不好",
-                  "pinyin": "zhè diǎn shǐ tā shuì bù hǎo",
-                  "meaning": "this troubled his sleep",
+                  "id": "B3L16-G05-P417-ex1-w1",
+                  "traditional": "每次想到這點",
+                  "simplified": "每次想到这点",
+                  "pinyin": "měi cì xiǎngdào zhè diǎn",
+                  "meaning": "each time thinking of this"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex1-w2",
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all; even"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex1-w3",
+                  "traditional": "使得",
+                  "simplified": "使得",
+                  "pinyin": "shǐde",
+                  "meaning": "cause to; so that"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex1-w4",
+                  "traditional": "他夜裡睡不好",
+                  "simplified": "他夜里睡不好",
+                  "pinyin": "tā yèlǐ shuì bu hǎo",
+                  "meaning": "he sleeps badly at night",
+                  "suffix": "。"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex1-w5",
+                  "traditional": "於是",
+                  "simplified": "于是",
+                  "pinyin": "yúshì",
+                  "meaning": "so; thereupon",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g5-ex1-w2",
-                  "traditional": "於是他放了一台",
-                  "simplified": "于是他放了一台",
-                  "pinyin": "yúshì tā fàng le yì tái",
-                  "meaning": "thereupon he placed one",
-                  "suffix": ""
+                  "id": "B3L16-G05-P417-ex1-w6",
+                  "traditional": "他在餐廳門外",
+                  "simplified": "他在餐厅门外",
+                  "pinyin": "tā zài cāntīng ménwài",
+                  "meaning": "he, outside the restaurant"
                 },
                 {
-                  "id": "b3l16g5-ex1-w3",
-                  "traditional": "愛心冰箱",
-                  "simplified": "爱心冰箱",
-                  "pinyin": "àixīn bīngxiāng",
-                  "meaning": "charity fridge",
-                  "suffix": "。"
+                  "id": "B3L16-G05-P417-ex1-w7",
+                  "traditional": "放了一台冰箱",
+                  "simplified": "放了一台冰箱",
+                  "pinyin": "fàng le yì tái bīngxiāng",
+                  "meaning": "put out a fridge",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
-            "id": "b3l16g5-ex2",
+            "id": "B3L16-G05-P417-ex2",
             "number": 2,
             "text": {
-              "traditional": "為了擁有舒適的生活，於是發明了許多實用商品。",
-              "simplified": "为了拥有舒适的生活，于是发明了许多实用商品。",
-              "pinyin": "Wèile yǒngyǒu shūshì de shēnghuó, yúshì fāmíng le xǔduō shíyòng shāngpǐn.",
-              "english": "To have comfortable lives, people thereupon invented many useful goods.",
+              "traditional": "現代人為了擁有更舒適的生活，於是發明了許多既好用、功能又多的生活用品。",
+              "simplified": "现代人为了拥有更舒适的生活，于是发明了许多既好用、功能又多的生活用品。",
+              "pinyin": "xiàndàirén wèile yǒngyǒu gèng shūshì de shēnghuó, yúshì fāmíng le xǔduō jì hǎoyòng, gōngnéng yòu duō de shēnghuó yòngpǐn.",
+              "english": "In order to have more comfortable lives, modern people invented many useful, multi-function daily goods.",
               "words": [
                 {
-                  "id": "b3l16g5-ex2-w1",
-                  "traditional": "為擁有舒適生活",
-                  "simplified": "为拥有舒适生活",
-                  "pinyin": "wèi yǒngyǒu shūshì shēnghuó",
-                  "meaning": "for comfortable life",
+                  "id": "B3L16-G05-P417-ex2-w1",
+                  "traditional": "現代人",
+                  "simplified": "现代人",
+                  "pinyin": "xiàndàirén",
+                  "meaning": "modern people"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex2-w2",
+                  "traditional": "為了擁有",
+                  "simplified": "为了拥有",
+                  "pinyin": "wèile yǒngyǒu",
+                  "meaning": "in order to have"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex2-w3",
+                  "traditional": "更舒適的生活",
+                  "simplified": "更舒适的生活",
+                  "pinyin": "gèng shūshì de shēnghuó",
+                  "meaning": "more comfortable life",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g5-ex2-w2",
-                  "traditional": "於是發明了",
-                  "simplified": "于是发明了",
-                  "pinyin": "yúshì fāmíng le",
-                  "meaning": "thereupon invented",
-                  "suffix": ""
+                  "id": "B3L16-G05-P417-ex2-w4",
+                  "traditional": "於是",
+                  "simplified": "于是",
+                  "pinyin": "yúshì",
+                  "meaning": "so; thereupon"
                 },
                 {
-                  "id": "b3l16g5-ex2-w3",
-                  "traditional": "許多實用商品",
-                  "simplified": "许多实用商品",
-                  "pinyin": "xǔduō shíyòng shāngpǐn",
-                  "meaning": "many practical goods",
+                  "id": "B3L16-G05-P417-ex2-w5",
+                  "traditional": "發明了許多",
+                  "simplified": "发明了许多",
+                  "pinyin": "fāmíng le xǔduō",
+                  "meaning": "invented many"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex2-w6",
+                  "traditional": "既好用",
+                  "simplified": "既好用",
+                  "pinyin": "jì hǎoyòng",
+                  "meaning": "both useful",
+                  "suffix": "、"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex2-w7",
+                  "traditional": "功能又多的",
+                  "simplified": "功能又多的",
+                  "pinyin": "gōngnéng yòu duō de",
+                  "meaning": "with many functions"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex2-w8",
+                  "traditional": "生活用品",
+                  "simplified": "生活用品",
+                  "pinyin": "shēnghuó yòngpǐn",
+                  "meaning": "daily goods",
                   "suffix": "。"
                 }
               ]
             }
           },
           {
-            "id": "b3l16g5-ex3",
+            "id": "B3L16-G05-P417-ex3",
             "number": 3,
             "text": {
-              "traditional": "戴先生沒得到相對肯定，於是決定換新工作。",
-              "simplified": "戴先生没得到相对肯定，于是决定换新工作。",
-              "pinyin": "Dài xiānsheng méi dédào xiāngduì kěndìng, yúshì juédìng huàn xīn gōngzuò.",
-              "english": "Mr. Dai received no fair recognition, thereupon resolving to switch jobs.",
+              "traditional": "戴先生為公司付出很多，卻沒得到相對的肯定與合理的薪水，於是決定換工作。",
+              "simplified": "戴先生为公司付出很多，却没得到相对的肯定与合理的薪水，于是决定换工作。",
+              "pinyin": "Dài xiānsheng wèi gōngsī fùchū hěn duō, què méi dédào xiāngduì de kǎndìng yǔ hélǐ de xīnshui, yúshì juédìng huàn gōngzuò.",
+              "english": "Mr. Dai contributed a great deal to the company but received no fair recognition or salary, so he decided to change jobs.",
               "words": [
                 {
-                  "id": "b3l16g5-ex3-w1",
-                  "traditional": "沒得到相對肯定",
-                  "simplified": "没得到相对肯定",
-                  "pinyin": "méi dédào xiāngduì kěndìng",
-                  "meaning": "not getting fair recognition",
+                  "id": "B3L16-G05-P417-ex3-w1",
+                  "traditional": "戴先生",
+                  "simplified": "戴先生",
+                  "pinyin": "Dài xiānsheng",
+                  "meaning": "Mr. Dai"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex3-w2",
+                  "traditional": "為公司付出",
+                  "simplified": "为公司付出",
+                  "pinyin": "wèi gōngsī fùchū",
+                  "meaning": "contributed to the company"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex3-w3",
+                  "traditional": "很多",
+                  "simplified": "很多",
+                  "pinyin": "hěn duō",
+                  "meaning": "a lot",
                   "suffix": "，"
                 },
                 {
-                  "id": "b3l16g5-ex3-w2",
-                  "traditional": "於是決定",
-                  "simplified": "于是决定",
-                  "pinyin": "yúshì juédìng",
-                  "meaning": "thereupon decided",
-                  "suffix": ""
+                  "id": "B3L16-G05-P417-ex3-w4",
+                  "traditional": "卻沒得到",
+                  "simplified": "却没得到",
+                  "pinyin": "què méi dédào",
+                  "meaning": "yet did not get"
                 },
                 {
-                  "id": "b3l16g5-ex3-w3",
-                  "traditional": "換新工作",
-                  "simplified": "换新工作",
-                  "pinyin": "huàn xīn gōngzuò",
-                  "meaning": "to change jobs",
+                  "id": "B3L16-G05-P417-ex3-w5",
+                  "traditional": "相對的肯定",
+                  "simplified": "相对的肯定",
+                  "pinyin": "xiāngduì de kǎndìng",
+                  "meaning": "relative recognition"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex3-w6",
+                  "traditional": "與合理的薪水",
+                  "simplified": "与合理的薪水",
+                  "pinyin": "yǔ hélǐ de xīnshui",
+                  "meaning": "and a fair salary",
+                  "suffix": "，"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex3-w7",
+                  "traditional": "於是",
+                  "simplified": "于是",
+                  "pinyin": "yúshì",
+                  "meaning": "so; thereupon"
+                },
+                {
+                  "id": "B3L16-G05-P417-ex3-w8",
+                  "traditional": "決定換工作",
+                  "simplified": "决定换工作",
+                  "pinyin": "juédìng huàn gōngzuò",
+                  "meaning": "decided to change jobs",
                   "suffix": "。"
                 }
               ]
@@ -1770,7 +2724,9 @@
             "correctFeedback": "太棒了！「於是」連接前後情境，引出因應前句情況所採取的具體行動。",
             "repairFeedback": "請注意接續行動：描述因前句狀況而採取的下一步作為，應使用「於是」。"
           }
-        ]
+        ],
+        "explanationEnglish": "於是 is a conjunction that connects the two sentences, with the latter sentence describing the action taken because of the situation in the previous sentence. However, 於是 cannot be used for natural phenomena. For example, *天很黑，於是下雨了。Or *強烈颱風來了，於是很多地區淹水了。",
+        "patternAccentColumn": 1
       }
     ]
   }
