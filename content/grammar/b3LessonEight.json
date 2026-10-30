@@ -1,5 +1,185 @@
 {
-  "BOOK3_LESSON_EIGHT_PART_ONE": {
+  "LESSON_EIGHT_DIALOGUE_ONE": [
+    {
+      "id": "b3l8d1-l1",
+      "speaker": "東賢",
+      "traditional": "朋子，妳最近穿衣服的風格跟以前很不一樣，名牌衣服怎麼不穿了呢？",
+      "simplified": "朋子，妳最近穿衣服的风格跟以前很不一样，名牌衣服怎么不穿了呢？",
+      "pinyin": "Péngzǐ, nǐ zuìjìn chuān yīfú de fēnggé gēn yǐqián hěn bù yíyàng, míngpái yīfú zěnme bù chuān le ne?",
+      "english": "Tomoko, your clothing style lately is very different from before. How come you don't wear brand-name clothes anymore?"
+    },
+    {
+      "id": "b3l8d1-l2",
+      "speaker": "朋子",
+      "traditional": "我想改變別人對我的看法。以前，我的穿著容易讓人產生誤會，以為我是個不好相處的人。",
+      "simplified": "我想改变别人对我的看法。以前，我的穿着容易让人产生误会，以为我是个不好相处的人。",
+      "pinyin": "Wǒ xiǎng gǎibiàn biérén duì wǒ de kànfǎ. Yǐqián, wǒ de chuānzhuó róngyì ràng rén chǎnshēng wùhuì, yǐwéi wǒ shì ge bù hǎo xiāngchǔ de rén.",
+      "english": "I want to change what people think of me. In the past, my dressing easily gave people misunderstandings, assuming I was hard to get along with."
+    },
+    {
+      "id": "b3l8d1-l3",
+      "speaker": "東賢",
+      "traditional": "說真的，剛認識妳的時候，妳從頭到腳都是名牌，總是覺得我們有一段距離。",
+      "simplified": "说真的，刚认识妳的时候，妳从头到脚都是名牌，总是觉得我们有一段距离。",
+      "pinyin": "Shuō zhēn de, gāng rènshì nǐ de shíhòu, nǐ cóng tóu dào jiǎo dōushì míngpái, zǒngshì juéde wǒmen yǒu yí duàn jùlí.",
+      "english": "Honestly, when I first met you, you wore designer labels from head to toe, and I always felt a distance between us."
+    },
+    {
+      "id": "b3l8d1-l4",
+      "speaker": "朋子",
+      "traditional": "唉！不用說也知道你會這麼想。其實這跟我爸媽有關，他們對穿衣服很講究，也覺得穿名牌才有品味，所以影響了我對穿著的看法。",
+      "simplified": "唉！不用说也知道你会这么想。其实这跟我爸妈有关，他们对穿衣服很讲究，也觉得穿名牌才有品味，所以影响了我对穿着的看法。",
+      "pinyin": "Ài! Búyòng shuō yě zhīdào nǐ huì zhème xiǎng. Qíshí zhè gēn wǒ bàmā yǒuguān, tāmen duì chuān yīfú hěn jiǎngjiù, yě juéde chuān míngpái cái yǒu pǐnwèi, suǒyǐ yǐngxiǎng le wǒ duì chuānzhuó de kànfǎ.",
+      "english": "Sigh! It goes without saying you'd think that. Actually this has to do with my parents; they are very particular about clothing and feel only designer clothes have taste, so that influenced my view on dressing."
+    },
+    {
+      "id": "b3l8d1-l5",
+      "speaker": "東賢",
+      "traditional": "妳爸媽的朋友，不是大老闆就是政治人物，有這樣的想法很自然啊！合適的穿著對他們很重要，名牌衣服才能表現出他們的地位。",
+      "simplified": "妳爸妈的朋友，不是大老板就是政治人物，有这样的想法很自然啊！合适的穿着对他们很重要，名牌衣服才能表现出他们的地位。",
+      "pinyin": "Nǐ bàmā de péngyǒu, búshì dà lǎobǎn jiùshì zhèngzhì rénwù, yǒu zhèyàng de xiǎngfǎ hěn zìrán a! Héshì de chuānzhuó duì tāmen hěn zhòngyào, míngpái yīfú cái néng biǎoxiàn chū tāmen de dìwèi.",
+      "english": "Your parents' friends are either big bosses or political figures, so having that mindset is quite natural! Appropriate attire is very important for them; designer clothing expresses their status."
+    },
+    {
+      "id": "b3l8d1-l6",
+      "speaker": "朋子",
+      "traditional": "你說的沒錯，可是我還是不希望大家把我看成只愛買名牌的人。",
+      "simplified": "你说的没错，可是我还是不希望大家把我看成只爱买名牌的人。",
+      "pinyin": "Nǐ shuō de méicuò, kěshì wǒ háishì bù xīwàng dàjiā bǎ wǒ kànchéng zhǐ ài mǎi míngpái de rén.",
+      "english": "What you said is true, but I still don't want everyone to look at me as someone who only cares about buying luxury brands."
+    },
+    {
+      "id": "b3l8d1-l7",
+      "speaker": "東賢",
+      "traditional": "跟以前比起來，妳現在的穿著更能表現出個人的特色。",
+      "simplified": "跟以前比起来，妳现在的穿着更能表现出个人的特色。",
+      "pinyin": "Gēn yǐqián bǐ qǐlái, nǐ xiànzài de chuānzhuó gèng néng biǎoxiàn chū gèrén de tèsè.",
+      "english": "Compared to before, your dressing now expresses your personal character much better."
+    },
+    {
+      "id": "b3l8d1-l8",
+      "speaker": "朋子",
+      "traditional": "以前我和朋友聊天的話題，常常是哪些服裝很流行，哪個名牌又請了大明星拍廣告什麼的，現在我只想穿得舒適，又有屬於自己的風格，是不是名牌真的無所謂。",
+      "simplified": "以前我和朋友聊天的话题，常常是哪些服装很流行，哪个名牌又请了大明星拍广告什么的，现在我只想穿得舒适，又有属于自己的风格，是不是名牌真的无所谓。",
+      "pinyin": "Yǐqián wǒ hé péngyǒu liáotiān de huàtí, chángcháng shì nǎxiē fúzhuāng hěn liúxíng, nǎge míngpái yòu qǐng le dà míngxīng pāi guǎnggào shénmede, xiànzài wǒ zhǐ xiǎng chuān de shūshì, yòu yǒu shǔyú zìjǐ de fēnggé, shì bú shì míngpái zhēn de wúsuǒwèi.",
+      "english": "In the past, topics when chatting with friends were often about which clothes were trendy, or which brand hired a celebrity for an ad. Now I just want to dress comfortably and have my own style; whether it's a name brand really doesn't matter."
+    },
+    {
+      "id": "b3l8d1-l9",
+      "speaker": "東賢",
+      "traditional": "一般來說，明星的穿著都會吸引大家注意，所以服裝公司才會花大錢請明星拍廣告，這是正常的商業作法。其實多了解一些流行的現象也沒什麼不好。",
+      "simplified": "一般来说，明星的穿着都会吸引大家注意，所以服装公司才会花大钱请明星拍广告，这是正常的商业作法。其实多了解一些流行的现象也没什么不好。",
+      "pinyin": "Yìbān láishuō, míngxīng de chuānzhuó dōu huì xīyǐn dàjiā zhùyì, suǒyǐ fúzhuāng gōngsī cái huì huā dà qián qǐng míngxīng pāi guǎnggào, zhè shì zhèngcháng de shāngyè zuòfǎ. Qíshí duō liǎojiě yìxiē liúxíng de xiànxiàng yě méi shénme bù hǎo.",
+      "english": "Generally speaking, celebrities' attire draws attention, so apparel companies spend big money to hire stars for commercials; that's a normal commercial practice. Actually, understanding fashion trends isn't a bad thing either."
+    },
+    {
+      "id": "b3l8d1-l10",
+      "speaker": "朋子",
+      "traditional": "嗯，問題是流行的穿著不一定就有品味，再英俊、再漂亮的人也應該找到自己的風格。",
+      "simplified": "嗯，问题是流行的穿着不一定就有品味，再英俊、再漂亮的人也应该找到自己的风格。",
+      "pinyin": "Èn, wèntí shì liúxíng de chuānzhuó bù yídìng jiù yǒu pǐnwèi, zài yīngjùn, zài piàoliang de rén yě yīnggāi zhǎodào zìjǐ de fēnggé.",
+      "english": "Mm, the issue is that trendy dressing doesn't necessarily have good taste. No matter how handsome or pretty someone is, they should still find their own style."
+    },
+    {
+      "id": "b3l8d1-l11",
+      "speaker": "東賢",
+      "traditional": "我同意妳的說法。想穿出自己的風格，可以多看看專櫃跟雜誌上流行的服裝，想像穿在自己身上的樣子。過些時間，就能抓到感覺了。",
+      "simplified": "我同意妳的说法。想穿出自己的风格，可以多看看专柜跟杂志上流行的服装，想像穿在自己身上的样子。过些时间，就能抓到感觉了。",
+      "pinyin": "Wǒ tóngyì nǐ de shuōfǎ. Xiǎng chuān chū zìjǐ de fēnggé, kěyǐ duō kànkan zhuānguì gēn zázhì shàng liúxíng de fúzhuāng, xiǎngxiàng chuān zài zìjǐ shēnshang de yàngzi. Guò xiē shíjiān, jiù néng zhuādào gǎnjué le.",
+      "english": "I agree with what you said. If you want to dress with personal style, browse department counters and fashion magazines, and imagine what looks good on you. In time, you'll catch the feeling."
+    },
+    {
+      "id": "b3l8d1-l12",
+      "speaker": "朋子",
+      "traditional": "不過也不能只跟著流行，一定要有自己的想法。我有幾個朋友跟我剛好相反，他們不僅天天穿名牌，也常上街買衣服，什麼流行就買什麼，好像花多少錢都沒有限制。",
+      "simplified": "不过也不能只跟着流行，一定要有自己的想法。我有几个朋友跟我刚好相反，他们不仅天天穿名牌，也常上街买衣服，什么流行就买什么，好像花多少钱都没有限制。",
+      "pinyin": "Búguò yě bù néng zhǐ gēnzhe liúxíng, yídìng yào yǒu zìjǐ de xiǎngfǎ. Wǒ yǒu jǐ ge péngyǒu gēn wǒ gānghǎo xiāngfǎn, tāmen bùjǐn tiāntiān chuān míngpái, yě cháng shàngjiē mǎi yīfú, shénme liúxíng jiù mǎi shénme, hǎoxiàng huā duōshao qián dōu méiyǒu xiànzhì.",
+      "english": "Still, one shouldn't just follow trends; you must have your own perspective. I have a few friends who are the exact opposite of me: not only do they wear designer clothes every day, but they often go shopping, buying whatever is trendy, as if there is no spending limit."
+    },
+    {
+      "id": "b3l8d1-l13",
+      "speaker": "東賢",
+      "traditional": "難怪大家都說女孩子的櫃子裡永遠少一件衣服。",
+      "simplified": "难怪大家都说女孩子的柜子里永远少一件衣服。",
+      "pinyin": "Nánguài dàjiā dōu shuō nǚhái zǐ de guìzi lǐ yǒngyuǎn shǎo yí jiàn yīfú.",
+      "english": "No wonder everyone says a woman's wardrobe is always missing one piece of clothing."
+    },
+    {
+      "id": "b3l8d1-l14",
+      "speaker": "朋子",
+      "traditional": "我可不是喔！以前，一有新商品我就去買；現在，我了解自己真正的需要是什麼，絕對不會亂買了。",
+      "simplified": "我可不是喔！以前，一有新商品我就去买；现在，我了解自己真正的需要是什么，绝对不会乱买了。",
+      "pinyin": "Wǒ kě bú shì ō! Yǐqián, yì yǒu xīn shāngpǐn wǒ jiù qù mǎi; xiànzài, wǒ liǎojiě zìjǐ zhēnzhèng de xūyào shì shénme, juéduì bú huì luàn mǎi le.",
+      "english": "Not me, though! In the past, as soon as a new product came out I went to buy it; now, I understand what my real needs are, and I definitely won't buy recklessly."
+    },
+    {
+      "id": "b3l8d1-l15",
+      "speaker": "東賢",
+      "traditional": "其實穿衣服也是個學問。名牌衣服，有的人穿起來好看，有的人穿起來可能很醜呢！",
+      "simplified": "其实穿衣服也是个学问。名牌衣服，有的人穿起来好看，有的人穿起来可能很丑呢！",
+      "pinyin": "Qíshí chuān yīfú yě shì ge xuéwèn. Míngpái yīfú, yǒu de rén chuān qǐlái hǎokàn, yǒu de rén chuān qǐlái kěnéng hěn chǒu ne!",
+      "english": "Actually, dressing well is a skill in itself. Brand-name clothes look great on some people, but on others they can look quite ugly!"
+    },
+    {
+      "id": "b3l8d1-l16",
+      "speaker": "朋子",
+      "traditional": "沒錯。對我來說，只要穿得慣、穿得自在，把自己當衣服的主人，這樣就能對自己更有信心了。",
+      "simplified": "没错。对我来说，只要穿得惯、穿得自在，把自己当衣服的主人，这样就能对自己更有信心了。",
+      "pinyin": "Méicuò. Duì wǒ láishuō, zhǐyào chuān de guàn, chuān de zìzài, bǎ zìjǐ dāng yīfú de zhǔrén, zhèyàng jiù néng duì zìjǐ gèng yǒu xìnxīn le.",
+      "english": "Exactly. To me, as long as I feel accustomed and at ease wearing them, treating myself as the master of the clothes, that's how I gain more self-confidence."
+    },
+    {
+      "id": "b3l8d1-l17",
+      "speaker": "東賢",
+      "traditional": "妳本來條件就好，加上穿著又變得這麼有品味，難怪越來越有魅力了。",
+      "simplified": "妳本来条件就好，加上穿着又变得这么有品味，难怪越来越有魅力了。",
+      "pinyin": "Nǐ běnlái tiáojiàn jiù hǎo, jiāshàng chuānzhuó yòu biànde zhème yǒu pǐnwèi, nánguài yuèláiyuè yǒu mèilì le.",
+      "english": "You naturally have great qualities, and now that your attire has become so tasteful, no wonder you're growing more charming by the day."
+    },
+    {
+      "id": "b3l8d1-l18",
+      "speaker": "朋子",
+      "traditional": "別開玩笑了，你的品味比我更好呢！",
+      "simplified": "别开玩笑了，你的品味比我更好呢！",
+      "pinyin": "Bié kāi wánxiào le, nǐ de pǐnwèi bǐ wǒ gèng hǎo ne!",
+      "english": "Stop joking, your taste is even better than mine!"
+    }
+  ],
+  "LESSON_EIGHT_DIALOGUE_TWO": [
+    {
+      "id": "b3l8d2-l1",
+      "speaker": "旁白",
+      "traditional": "東賢以前是模特兒，他曾經和一家服裝公司合作，為推銷新產品拍廣告。廣告播出以後，商品賣得非常好。但是，過不了多久，就有樣式更新、更吸引人的服裝出來了。這種「快時尚」的現象，對民眾的生活產生了很大的影響。",
+      "simplified": "东贤以前是模特儿，他曾经和一家服装公司合作，为推销新产品拍广告。广告播出以后，商品卖得非常好。但是，过不了多久，就有样式更新、更吸引人的服装出来了。这种「快时尚」的现象，对民众的生活产生了很大的影响。",
+      "pinyin": "Dōngxián yǐqián shì mótèr, tā céngjīng hé yì jiā fúzhuāng gōngsī hézuò, wèi tuīxiāo xīn chǎnpǐn pāi guǎnggào. Guǎnggào bōchū yǐhòu, shāngpǐn mài de fēicháng hǎo. Dànshì, guò bù liǎo duōjiǔ, jiù yǒu yàngshì gèng xīn, gèng xīyǐn rén de fúzhuāng chūlái le. Zhè zhǒng \"kuàishíshàng\" de xiànxiàng, duì mínzhòng de shēnghuó chǎnshēng le hěn dà de yǐngxiǎng.",
+      "english": "Dongxian was formerly a model; he once collaborated with an apparel firm to film commercials for new product promotions. After the commercial aired, products sold extremely well. However, before long, newer and more attractive styles came out. This phenomenon of fast fashion has profoundly impacted everyday life."
+    },
+    {
+      "id": "b3l8d2-l2",
+      "speaker": "旁白",
+      "traditional": "所謂「快時尚」，意思是服裝公司掌握最新流行的方向，很快把服裝設計、生產出來，讓顧客能趕上流行，也能擁有平價的時尚商品。不過，流行的變化速度太快，越來越多新衣服還沒穿就被丟掉，讓人們不能不思考這樣的時尚有沒有意義。",
+      "simplified": "所谓「快时尚」，意思是服装公司掌握最新流行的方向，很快把服装设计、生产出来，让顾客能赶上流行，也能拥有平价的时尚商品。不过，流行的变化速度太快，越来越多新衣服还没穿就被丢掉，让人们不能不思考这样的时尚有没有意义。",
+      "pinyin": "Suǒwèi \"kuàishíshàng\", yìsi shì fúzhuāng gōngsī zhǎngwò zuìxīn liúxíng de fāngxiàng, hěn kuài bǎ fúzhuāng shèjì, shēngchǎn chūlái, ràng gùkè néng gǎnshàng liúxíng, yě néng yǒngyǒu píngjià de shíshàng shāngpǐn. Búguò, liúxíng de biànhuà sùdù tài kuài, yuèláiyuè duō xīn yīfú hái méi chuān jiù bèi diūdiào, ràng rénmen bù néng bù sīkǎo zhèyàng de shíshàng yǒu méiyǒu yìyì.",
+      "english": "The so-called fast fashion means apparel companies capture the latest fashion trends and quickly design and manufacture clothes, allowing customers to catch up with trends while owning affordable fashion items. However, fashion trends change so quickly that more and more new clothes are thrown out before being worn, forcing people to reconsider if such fashion holds real meaning."
+    },
+    {
+      "id": "b3l8d2-l3",
+      "speaker": "旁白",
+      "traditional": "因為工作的需求，東賢的衣櫃裡掛著各式各樣的「快時尚」服裝。平時他不覺得有什麼問題，等到搬家時，才發現衣服這麼多，處理起來真的很麻煩。有的連一次也沒穿過，可是已經不流行了，到底要留下來、送人還是丟掉，讓東賢相當頭痛。他不得不承認，「快時尚」也是有壞處的。",
+      "simplified": "因为工作的需求，东贤的衣柜里挂着各式各样的「快时尚」服装。平时他不觉得有什么问题，等到搬家时，才发现衣服这么多，处理起来真的很麻烦。有的连一次也没穿过，可是已经不流行了，到底要留下来、送人还是丢掉，让东贤相当头痛。他不得不承认，「快时尚」也是有坏处的。",
+      "pinyin": "Yīnwèi gōngzuò de xūqiú, Dōngxián de yīguì lǐ guàzhe gèshì gèyàng de \"kuàishíshàng\" fúzhuāng. Píngshí tā bù juéde yǒu shénme wèntí, děng dào bānjiā shí, cái fāxiàn yīfú zhème duō, chǔlǐ qǐlái zhēn de hěn máfan. Yǒude lián yí cì yě méi chuān guo, kěshì yǐjīng bù liúxíng le, dàodǐ yào liú xiàlái, sòng rén háishì diūdiào, ràng Dōngxián xiāngdāng tóutòng. Tā bùdébù chéngrèn, \"kuàishíshàng\" yě shì yǒu huàichù de.",
+      "english": "Due to job needs, Dongxian's closet was hung with all kinds of fast-fashion garments. Ordinarily he felt no issue, but when moving, he realized there were so many clothes and sorting them out was genuinely troublesome. Some hadn't even been worn once, yet were already out of style; whether to keep, gift, or toss them gave Dongxian a huge headache. He had to admit that fast fashion also brings harms."
+    },
+    {
+      "id": "b3l8d2-l4",
+      "speaker": "旁白",
+      "traditional": "過去，東賢對穿著不太有自信，也很擔心跟不上流行，所以才不斷地追求時尚。現在，他比較冷靜了，他要當衣服的主人，不再為了趕流行亂買衣服。況且把舊衣服修改一下，也能使自己穿得很有個性、很有品味，所以在東賢心中，沒有什麼是非買不可的。畢竟「快時尚」只是一時的流行，長得再帥、再漂亮的人，也應該找出屬於自己最合適的穿著，這樣才是正確的選擇。",
+      "simplified": "过去，东贤对穿着不太有自信，也很担心跟不上流行，所以才不断地追求时尚。现在，他比较冷静了，他要当衣服的主人，不再为了赶流行乱买衣服。况且把旧衣服修改一下，也能使自己穿得很有个性、很有品味，所以在东贤心中，没有什么是非买不可的。毕竟「快时尚」只是一时的流行，长得再帅、再漂亮的人，也应该找出属于自己最合适的穿着，这样才是正确的选择。",
+      "pinyin": "Guòqù, Dōngxián duì chuānzhuó bú tài yǒu zìxìn, yě hěn dānxīn gēnbushàng liúxíng, suǒyǐ cái búduàn de zhuīqiú shíshàng. Xiànzài, tā bǐjiào lěngjìng le, tā yào dāng yīfú de zhǔrén, bú zài wèile gǎn liúxíng luàn mǎi yīfú. Kuàngqiě bǎ jiù yīfú xiūgǎi yíxià, yě néng shǐ zìjǐ chuān de hěn gèxìng, hěn yǒu pǐnwèi, suǒyǐ zài Dōngxián xīnzhōng, méiyǒu shénme shì fēi mǎi bù kě de. Bìjìng \"kuàishíshàng\" zhǐ shì yìshí de liúxíng, zhǎng de zài shuài, zài piàoliang de rén, yě yīnggāi zhǎochū shǔyú zìjǐ zuì héshì de chuānzhuó, zhèyàng cái shì zhèngquè de xuǎnzé.",
+      "english": "In the past, Dongxian lacked confidence in dressing and constantly feared falling behind trends, which drove him to chase fashion non-stop. Now he has calmed down; he wants to be the master of clothes and no longer buys thoughtlessly to chase fads. Moreover, modifying old clothes can also allow one to dress with distinction and taste, so in his mind, nothing is an absolute must-buy. After all, fast fashion is merely a temporary fad; no matter how handsome or pretty one is, finding the attire that truly suits oneself is the right choice."
+    }
+  ],
+  "LESSON_EIGHT_PART_ONE": {
     "id": "B3L08-P01-D01",
     "bookId": 3,
     "lessonId": 8,
@@ -24,7 +204,7 @@
           "id": "b3l8d1-l1",
           "speaker": "東賢",
           "traditional": "朋子，妳最近穿衣服的風格跟以前很不一樣，名牌衣服怎麼不穿了呢？",
-          "simplified": "朋子，你最近穿衣服的风格跟以前很不一样，名牌衣服怎么不穿了呢？",
+          "simplified": "朋子，妳最近穿衣服的风格跟以前很不一样，名牌衣服怎么不穿了呢？",
           "pinyin": "Péngzǐ, nǐ zuìjìn chuān yīfú de fēnggé gēn yǐqián hěn bù yíyàng, míngpái yīfú zěnme bù chuān le ne?",
           "english": "Tomoko, your clothing style lately is very different from before. How come you don't wear brand-name clothes anymore?"
         },
@@ -40,7 +220,7 @@
           "id": "b3l8d1-l3",
           "speaker": "東賢",
           "traditional": "說真的，剛認識妳的時候，妳從頭到腳都是名牌，總是覺得我們有一段距離。",
-          "simplified": "说真的，刚认识你的时候，你从头到脚都是名牌，总是觉得我们有一段距离。",
+          "simplified": "说真的，刚认识妳的时候，妳从头到脚都是名牌，总是觉得我们有一段距离。",
           "pinyin": "Shuō zhēn de, gāng rènshì nǐ de shíhòu, nǐ cóng tóu dào jiǎo dōushì míngpái, zǒngshì juéde wǒmen yǒu yí duàn jùlí.",
           "english": "Honestly, when I first met you, you wore designer labels from head to toe, and I always felt a distance between us."
         },
@@ -56,7 +236,7 @@
           "id": "b3l8d1-l5",
           "speaker": "東賢",
           "traditional": "妳爸媽的朋友，不是大老闆就是政治人物，有這樣的想法很自然啊！合適的穿著對他們很重要，名牌衣服才能表現出他們的地位。",
-          "simplified": "你爸妈的朋友，不是大老板就是政治人物，有这样的想法很自然啊！合适的人穿着对他们很重要，名牌衣服才能表现出他们的地位。",
+          "simplified": "妳爸妈的朋友，不是大老板就是政治人物，有这样的想法很自然啊！合适的穿着对他们很重要，名牌衣服才能表现出他们的地位。",
           "pinyin": "Nǐ bàmā de péngyǒu, búshì dà lǎobǎn jiùshì zhèngzhì rénwù, yǒu zhèyàng de xiǎngfǎ hěn zìrán a! Héshì de chuānzhuó duì tāmen hěn zhòngyào, míngpái yīfú cái néng biǎoxiàn chū tāmen de dìwèi.",
           "english": "Your parents' friends are either big bosses or political figures, so having that mindset is quite natural! Appropriate attire is very important for them; designer clothing expresses their status."
         },
@@ -64,7 +244,7 @@
           "id": "b3l8d1-l6",
           "speaker": "朋子",
           "traditional": "你說的沒錯，可是我還是不希望大家把我看成只愛買名牌的人。",
-          "simplified": "你说得没错，可是我还是不希望大家把我看成只爱买名牌的人。",
+          "simplified": "你说的没错，可是我还是不希望大家把我看成只爱买名牌的人。",
           "pinyin": "Nǐ shuō de méicuò, kěshì wǒ háishì bù xīwàng dàjiā bǎ wǒ kànchéng zhǐ ài mǎi míngpái de rén.",
           "english": "What you said is true, but I still don't want everyone to look at me as someone who only cares about buying luxury brands."
         },
@@ -72,7 +252,7 @@
           "id": "b3l8d1-l7",
           "speaker": "東賢",
           "traditional": "跟以前比起來，妳現在的穿著更能表現出個人的特色。",
-          "simplified": "跟以前比起来，你现在的穿着更能表现出个人的特色。",
+          "simplified": "跟以前比起来，妳现在的穿着更能表现出个人的特色。",
           "pinyin": "Gēn yǐqián bǐ qǐlái, nǐ xiànzài de chuānzhuó gèng néng biǎoxiàn chū gèrén de tèsè.",
           "english": "Compared to before, your dressing now expresses your personal character much better."
         },
@@ -104,7 +284,7 @@
           "id": "b3l8d1-l11",
           "speaker": "東賢",
           "traditional": "我同意妳的說法。想穿出自己的風格，可以多看看專櫃跟雜誌上流行的服裝，想像穿在自己身上的樣子。過些時間，就能抓到感覺了。",
-          "simplified": "我同意你的说法。想穿出自己的风格，可以多看看专柜跟杂志上流行的服装，想象穿在自己身上的样子。过些时间，就能抓到感觉了。",
+          "simplified": "我同意妳的说法。想穿出自己的风格，可以多看看专柜跟杂志上流行的服装，想像穿在自己身上的样子。过些时间，就能抓到感觉了。",
           "pinyin": "Wǒ tóngyì nǐ de shuōfǎ. Xiǎng chuān chū zìjǐ de fēnggé, kěyǐ duō kànkan zhuānguì gēn zázhì shàng liúxíng de fúzhuāng, xiǎngxiàng chuān zài zìjǐ shēnshang de yàngzi. Guò xiē shíjiān, jiù néng zhuādào gǎnjué le.",
           "english": "I agree with what you said. If you want to dress with personal style, browse department counters and fashion magazines, and imagine what looks good on you. In time, you'll catch the feeling."
         },
@@ -152,7 +332,7 @@
           "id": "b3l8d1-l17",
           "speaker": "東賢",
           "traditional": "妳本來條件就好，加上穿著又變得這麼有品味，難怪越來越有魅力了。",
-          "simplified": "你本来条件就好，加上穿着又变得这么有品味，难怪越来越有魅力了。",
+          "simplified": "妳本来条件就好，加上穿着又变得这么有品味，难怪越来越有魅力了。",
           "pinyin": "Nǐ běnlái tiáojiàn jiù hǎo, jiāshàng chuānzhuó yòu biànde zhème yǒu pǐnwèi, nánguài yuèláiyuè yǒu mèilì le.",
           "english": "You naturally have great qualities, and now that your attire has become so tasteful, no wonder you're growing more charming by the day."
         },
@@ -185,12 +365,13 @@
         "bookPage": 210,
         "bookPageAvailable": true,
         "audioReference": "08-1-1",
-        "explanation": "「成」有「成為」、「變成」的意思。表示某人經由某個動作，讓 NP1 成為或變成 NP2。如果動詞是「看、聽、說、寫、念」，有時有「弄錯了」的意思。",
+        "explanation": "「成」有「成為」、「變成」的意思。表示某人經由某個動作，讓 NP₁ 成為或變成 NP₂。如果動詞是「看、聽、說、寫、念」，有時有「弄錯了」的意思。",
         "focusTerms": [
           "把",
           "成",
           "寫成",
           "翻成",
+          "拍成",
           "看成",
           "修改成"
         ],
@@ -205,11 +386,11 @@
         ],
         "patternRows": [
           {
-            "id": "b3l8g1-r1",
+            "id": "b3l8g01-r1",
             "columns": [
               [
                 {
-                  "id": "b3l8g1-r1-c1-w1",
+                  "id": "b3l8g01-r1-c1-w1",
                   "traditional": "大家",
                   "simplified": "大家",
                   "pinyin": "dàjiā",
@@ -218,7 +399,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r1-c2-w1",
+                  "id": "b3l8g01-r1-c2-w1",
                   "traditional": "把",
                   "simplified": "把",
                   "pinyin": "bǎ",
@@ -227,7 +408,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r1-c3-w1",
+                  "id": "b3l8g01-r1-c3-w1",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
@@ -236,16 +417,16 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r1-c4-w1",
+                  "id": "b3l8g01-r1-c4-w1",
                   "traditional": "看",
                   "simplified": "看",
                   "pinyin": "kàn",
-                  "meaning": "view"
+                  "meaning": "see"
                 }
               ],
               [
                 {
-                  "id": "b3l8g1-r1-c5-w1",
+                  "id": "b3l8g01-r1-c5-w1",
                   "traditional": "成",
                   "simplified": "成",
                   "pinyin": "chéng",
@@ -254,21 +435,21 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r1-c6-w1",
-                  "traditional": "只愛買名牌的人",
-                  "simplified": "只爱买名牌的人",
-                  "pinyin": "zhǐ ài mǎi míngpái de rén",
-                  "meaning": "brand buyer"
+                  "id": "b3l8g01-r1-c6-w1",
+                  "traditional": "愛買名牌的人",
+                  "simplified": "爱买名牌的人",
+                  "pinyin": "ài mǎi míngpái de rén",
+                  "meaning": "luxury buyers"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g1-r2",
+            "id": "b3l8g01-r2",
             "columns": [
               [
                 {
-                  "id": "b3l8g1-r2-c1-w1",
+                  "id": "b3l8g01-r2-c1-w1",
                   "traditional": "有人",
                   "simplified": "有人",
                   "pinyin": "yǒurén",
@@ -277,7 +458,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r2-c2-w1",
+                  "id": "b3l8g01-r2-c2-w1",
                   "traditional": "把",
                   "simplified": "把",
                   "pinyin": "bǎ",
@@ -286,7 +467,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r2-c3-w1",
+                  "id": "b3l8g01-r2-c3-w1",
                   "traditional": "它",
                   "simplified": "它",
                   "pinyin": "tā",
@@ -295,7 +476,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r2-c4-w1",
+                  "id": "b3l8g01-r2-c4-w1",
                   "traditional": "翻",
                   "simplified": "翻",
                   "pinyin": "fān",
@@ -304,7 +485,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r2-c5-w1",
+                  "id": "b3l8g01-r2-c5-w1",
                   "traditional": "成",
                   "simplified": "成",
                   "pinyin": "chéng",
@@ -313,7 +494,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r2-c6-w1",
+                  "id": "b3l8g01-r2-c6-w1",
                   "traditional": "二十種語言",
                   "simplified": "二十种语言",
                   "pinyin": "èrshí zhǒng yǔyán",
@@ -323,11 +504,11 @@
             ]
           },
           {
-            "id": "b3l8g1-r3",
+            "id": "b3l8g01-r3",
             "columns": [
               [
                 {
-                  "id": "b3l8g1-r3-c1-w1",
+                  "id": "b3l8g01-r3-c1-w1",
                   "traditional": "阿姨",
                   "simplified": "阿姨",
                   "pinyin": "āyí",
@@ -336,7 +517,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r3-c2-w1",
+                  "id": "b3l8g01-r3-c2-w1",
                   "traditional": "把",
                   "simplified": "把",
                   "pinyin": "bǎ",
@@ -345,7 +526,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r3-c3-w1",
+                  "id": "b3l8g01-r3-c3-w1",
                   "traditional": "舊衣服",
                   "simplified": "旧衣服",
                   "pinyin": "jiù yīfú",
@@ -354,16 +535,16 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r3-c4-w1",
+                  "id": "b3l8g01-r3-c4-w1",
                   "traditional": "修改",
                   "simplified": "修改",
                   "pinyin": "xiūgǎi",
-                  "meaning": "modify"
+                  "meaning": "remodel"
                 }
               ],
               [
                 {
-                  "id": "b3l8g1-r3-c5-w1",
+                  "id": "b3l8g01-r3-c5-w1",
                   "traditional": "成",
                   "simplified": "成",
                   "pinyin": "chéng",
@@ -372,7 +553,7 @@
               ],
               [
                 {
-                  "id": "b3l8g1-r3-c6-w1",
+                  "id": "b3l8g01-r3-c6-w1",
                   "traditional": "流行的帽子",
                   "simplified": "流行的帽子",
                   "pinyin": "liúxíng de màozi",
@@ -422,30 +603,32 @@
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l8g1-ex2",
             "number": 2,
             "text": {
-              "traditional": "那本小說十年前就有人把它翻成了二十種語言，而且還拍成了電影。",
-              "simplified": "那本小说十年前就有人把它翻成了二十种语言，而且还拍成了电影。",
-              "pinyin": "Nà běn xiǎoshuō shí nián qián jiù yǒurén bǎ tā fānchéng le èrshí zhǒng yǔyán, érqiě hái pāichéng le diànyǐng.",
-              "english": "That novel had already been translated into twenty languages ten years ago, and was even made into a movie.",
+              "traditional": "那本有名的英國小說，十年前就有人把它翻成了二十種語言，而且還拍成了電影。",
+              "simplified": "那本有名的英国小说，十年前就有人把它翻成了二十种语言，而且还拍成了电影。",
+              "pinyin": "Nà běn yǒumíng de Yīngguó xiǎoshuō, shí nián qián jiù yǒurén bǎ tā fānchéng le èrshí zhǒng yǔyán, érqiě hái pāichéng le diànyǐng.",
+              "english": "That famous English novel had been translated into twenty languages ten years ago, and was even made into a movie.",
               "words": [
                 {
                   "id": "b3l8g1-ex2-w1",
-                  "traditional": "那本小說",
-                  "simplified": "那本小说",
-                  "pinyin": "nà běn xiǎoshuō",
-                  "meaning": "that novel"
+                  "traditional": "那本有名的英國小說",
+                  "simplified": "那本有名的英国小说",
+                  "pinyin": "nà běn yǒumíng de Yīngguó xiǎoshuō",
+                  "meaning": "that famous English novel",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l8g1-ex2-w2",
                   "traditional": "十年前就有人",
                   "simplified": "十年前就有人",
                   "pinyin": "shí nián qián jiù yǒurén",
-                  "meaning": "someone 10 yrs ago"
+                  "meaning": "someone ten years ago"
                 },
                 {
                   "id": "b3l8g1-ex2-w3",
@@ -459,7 +642,7 @@
                   "traditional": "二十種語言",
                   "simplified": "二十种语言",
                   "pinyin": "èrshí zhǒng yǔyán",
-                  "meaning": "20 languages",
+                  "meaning": "twenty languages",
                   "suffix": "，"
                 },
                 {
@@ -467,7 +650,7 @@
                   "traditional": "而且還拍成了電影",
                   "simplified": "而且还拍成了电影",
                   "pinyin": "érqiě hái pāichéng le diànyǐng",
-                  "meaning": "also made into film",
+                  "meaning": "and even filmed as a movie",
                   "suffix": "。"
                 }
               ]
@@ -477,10 +660,10 @@
             "id": "b3l8g1-ex3",
             "number": 3,
             "text": {
-              "traditional": "阿姨把穿不下的舊衣服修改成非常流行的帽子和袋子。",
-              "simplified": "阿姨把穿不下的旧衣服修改成非常流行的帽子和袋子。",
-              "pinyin": "Āyí bǎ chuānbúxià de jiù yīfú xiūgǎichéng fēicháng liúxíng de màozi hé dàizi.",
-              "english": "Auntie remodeled old clothes she could no longer fit into trendy hats and bags.",
+              "traditional": "阿姨把穿不下的舊衣服，修改成非常流行的帽子和袋子。",
+              "simplified": "阿姨把穿不下的旧衣服，修改成非常流行的帽子和袋子。",
+              "pinyin": "Āyí bǎ chuānbúxià de jiù yīfú, xiūgǎichéng fēicháng liúxíng de màozi hé dàizi.",
+              "english": "Auntie remodeled old clothes that no longer fit into very trendy hats and bags.",
               "words": [
                 {
                   "id": "b3l8g1-ex3-w1",
@@ -494,7 +677,8 @@
                   "traditional": "穿不下的舊衣服",
                   "simplified": "穿不下的旧衣服",
                   "pinyin": "chuānbúxià de jiù yīfú",
-                  "meaning": "ill-fitting old clothes"
+                  "meaning": "old clothes that no longer fit",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l8g1-ex3-w3",
@@ -508,7 +692,7 @@
                   "traditional": "非常流行的帽子和袋子",
                   "simplified": "非常流行的帽子和袋子",
                   "pinyin": "fēicháng liúxíng de màozi hé dàizi",
-                  "meaning": "fashionable hats and bags",
+                  "meaning": "very trendy hats and bags",
                   "suffix": "。"
                 }
               ]
@@ -560,7 +744,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "我打算把旅行的经验写成一本书。"
             },
             {
               "id": "b3l8g1-cf2",
@@ -597,7 +782,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "我也常把「白」看成「自」。"
             }
           ]
         },
@@ -609,39 +795,41 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "抱歉，我剛才"
+                "traditional": "抱歉，我剛才",
+                "simplified": "抱歉，我刚才"
               },
               {
                 "type": "blank",
                 "id": "b3l8g1-q1-b1",
                 "answer": "把妳看成",
-                "answerSimplified": "把你看成",
+                "answerSimplified": "把妳看成",
                 "hint": "mistook you for"
               },
               {
                 "type": "text",
-                "traditional": "我姊姊了。"
+                "traditional": "我姊姊了。",
+                "simplified": "我姊姊了。"
               }
             ],
             "tiles": [
               {
                 "id": "b3l8g1-q1-t1",
                 "traditional": "把妳看成",
-                "simplified": "把你看成",
+                "simplified": "把妳看成",
                 "pinyin": "bǎ nǐ kànchéng",
                 "meaning": "mistook you for"
               },
               {
                 "id": "b3l8g1-q1-t2",
                 "traditional": "把妳看到",
-                "simplified": "把你看到",
+                "simplified": "把妳看到",
                 "pinyin": "bǎ nǐ kàndào",
                 "meaning": "saw you"
               },
               {
                 "id": "b3l8g1-q1-t3",
                 "traditional": "看成妳把",
-                "simplified": "看成你把",
+                "simplified": "看成妳把",
                 "pinyin": "kànchéng nǐ bǎ",
                 "meaning": "misordered"
               }
@@ -649,7 +837,10 @@
             "correctFeedback": "把...看成... expresses visually confusing someone for another.",
             "repairFeedback": "Use 把...看成... to express mistaking one person for another."
           }
-        ]
+        ],
+        "explanationEnglish": "成 has the meaning of \"becoming\" and \"changing to\". It means that someone makes NP₁ or becomes NP₂ through a certain action. If the verb is 看, 聽, 說, 寫, 念, sometimes 成 means \"to get something wrong\".",
+        "patternAccentColumn": 4,
+        "titleSimplified": "S 把 NP1 + V 成 NP2"
       },
       {
         "id": "B3L08-G02-P211",
@@ -669,14 +860,17 @@
         "bookPage": 211,
         "bookPageAvailable": true,
         "audioReference": "08-1-1",
-        "explanation": "「再……，也/都……」使用在假設的情況，有「就算……，也……」的意思。「再」後面的句子是把情況說到最高或最低、最好或最壞的程度，而「也」或「都」後面的結果、決定或是想法不會改變；有時候表示說話的人覺得應該而且值得這樣做。",
+        "explanation": "「再……，也/都……」使用在假設的情況，有「就算……，也……」的意思（這個語法在本冊第一課）。「再」後面的句子是把情況說到最高或最低、最好或最壞的程度，而「也」或「都」後面的結果、決定或是想法不會改變；有時候表示說話的人覺得應該而且值得這樣做。例如：「再有錢也不可以亂買東西」、「再貴我都要買」、「再辛苦也要忍耐」。",
         "focusTerms": [
           "再",
           "也",
           "都",
           "再英俊",
           "再忙",
-          "再討厭"
+          "再討厭",
+          "再有錢也",
+          "再貴我都",
+          "再辛苦也"
         ],
         "pattern": "(Subject) + 再 + Stative Verb / Condition + 也/都 + Consequence",
         "patternColumns": [
@@ -688,11 +882,11 @@
         ],
         "patternRows": [
           {
-            "id": "b3l8g2-r1",
+            "id": "b3l8g02-r1",
             "columns": [
               [
                 {
-                  "id": "b3l8g2-r1-c1-w1",
+                  "id": "b3l8g02-r1-c1-w1",
                   "traditional": "人",
                   "simplified": "人",
                   "pinyin": "rén",
@@ -701,16 +895,16 @@
               ],
               [
                 {
-                  "id": "b3l8g2-r1-c2-w1",
+                  "id": "b3l8g02-r1-c2-w1",
                   "traditional": "再",
                   "simplified": "再",
                   "pinyin": "zài",
-                  "meaning": "no matter how"
+                  "meaning": "even"
                 }
               ],
               [
                 {
-                  "id": "b3l8g2-r1-c3-w1",
+                  "id": "b3l8g02-r1-c3-w1",
                   "traditional": "漂亮",
                   "simplified": "漂亮",
                   "pinyin": "piàoliang",
@@ -719,7 +913,7 @@
               ],
               [
                 {
-                  "id": "b3l8g2-r1-c4-w1",
+                  "id": "b3l8g02-r1-c4-w1",
                   "traditional": "也",
                   "simplified": "也",
                   "pinyin": "yě",
@@ -728,21 +922,21 @@
               ],
               [
                 {
-                  "id": "b3l8g2-r1-c5-w1",
-                  "traditional": "該找到風格",
-                  "simplified": "该找到风格",
-                  "pinyin": "gāi zhǎodào fēnggé",
-                  "meaning": "should find style"
+                  "id": "b3l8g02-r1-c5-w1",
+                  "traditional": "應該找到自己的風格",
+                  "simplified": "应该找到自己的风格",
+                  "pinyin": "yīnggāi zhǎodào zìjǐ de fēnggé",
+                  "meaning": "should find their own style"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g2-r2",
+            "id": "b3l8g02-r2",
             "columns": [
               [
                 {
-                  "id": "b3l8g2-r2-c1-w1",
+                  "id": "b3l8g02-r2-c1-w1",
                   "traditional": "父母",
                   "simplified": "父母",
                   "pinyin": "fùmǔ",
@@ -751,16 +945,16 @@
               ],
               [
                 {
-                  "id": "b3l8g2-r2-c2-w1",
+                  "id": "b3l8g02-r2-c2-w1",
                   "traditional": "再",
                   "simplified": "再",
                   "pinyin": "zài",
-                  "meaning": "no matter how"
+                  "meaning": "even"
                 }
               ],
               [
                 {
-                  "id": "b3l8g2-r2-c3-w1",
+                  "id": "b3l8g02-r2-c3-w1",
                   "traditional": "忙",
                   "simplified": "忙",
                   "pinyin": "máng",
@@ -769,57 +963,49 @@
               ],
               [
                 {
-                  "id": "b3l8g2-r2-c4-w1",
+                  "id": "b3l8g02-r2-c4-w1",
                   "traditional": "都",
                   "simplified": "都",
                   "pinyin": "dōu",
-                  "meaning": "all / still"
+                  "meaning": "still"
                 }
               ],
               [
                 {
-                  "id": "b3l8g2-r2-c5-w1",
-                  "traditional": "該陪陪孩子",
-                  "simplified": "该陪陪孩子",
-                  "pinyin": "gāi péipei háizi",
-                  "meaning": "should join kids"
+                  "id": "b3l8g02-r2-c5-w1",
+                  "traditional": "應該陪陪他們",
+                  "simplified": "应该陪陪他们",
+                  "pinyin": "yīnggāi péipei tāmen",
+                  "meaning": "should keep them company"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g2-r3",
+            "id": "b3l8g02-r3",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g2-r3-c1-w1",
-                  "traditional": "工作",
-                  "simplified": "工作",
-                  "pinyin": "gōngzuò",
-                  "meaning": "work"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g2-r3-c2-w1",
+                  "id": "b3l8g02-r3-c2-w1",
                   "traditional": "再",
                   "simplified": "再",
                   "pinyin": "zài",
-                  "meaning": "no matter how"
+                  "meaning": "even"
                 }
               ],
               [
                 {
-                  "id": "b3l8g2-r3-c3-w1",
-                  "traditional": "討厭",
-                  "simplified": "讨厌",
-                  "pinyin": "tǎoyàn",
-                  "meaning": "disliked"
+                  "id": "b3l8g02-r3-c3-w1",
+                  "traditional": "討厭的工作",
+                  "simplified": "讨厌的工作",
+                  "pinyin": "tǎoyàn de gōngzuò",
+                  "meaning": "hated job"
                 }
               ],
               [
                 {
-                  "id": "b3l8g2-r3-c4-w1",
+                  "id": "b3l8g02-r3-c4-w1",
                   "traditional": "也",
                   "simplified": "也",
                   "pinyin": "yě",
@@ -828,11 +1014,11 @@
               ],
               [
                 {
-                  "id": "b3l8g2-r3-c5-w1",
+                  "id": "b3l8g02-r3-c5-w1",
                   "traditional": "得忍耐",
                   "simplified": "得忍耐",
                   "pinyin": "děi rěnnài",
-                  "meaning": "must endure"
+                  "meaning": "have to endure"
                 }
               ]
             ]
@@ -850,28 +1036,22 @@
               "words": [
                 {
                   "id": "b3l8g2-ex1-w1",
-                  "traditional": "再英俊再漂亮的人",
-                  "simplified": "再英俊再漂亮的人",
-                  "pinyin": "zài yīngjùn zài piàoliang de rén",
-                  "meaning": "no matter how good-looking"
+                  "traditional": "再英俊、再漂亮的人",
+                  "simplified": "再英俊、再漂亮的人",
+                  "pinyin": "zài yīngjùn, zài piàoliang de rén",
+                  "meaning": "no matter how handsome or pretty the person"
                 },
                 {
                   "id": "b3l8g2-ex1-w2",
-                  "traditional": "也應該",
-                  "simplified": "也应该",
-                  "pinyin": "yě yīnggāi",
-                  "meaning": "still should"
-                },
-                {
-                  "id": "b3l8g2-ex1-w3",
-                  "traditional": "找到自己的風格",
-                  "simplified": "找到自己的风格",
-                  "pinyin": "zhǎodào zìjǐ de fēnggé",
-                  "meaning": "find own style",
+                  "traditional": "也應該找到自己的風格",
+                  "simplified": "也应该找到自己的风格",
+                  "pinyin": "yě yīnggāi zhǎodào zìjǐ de fēnggé",
+                  "meaning": "should still find their own style",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l8g2-ex2",
@@ -887,29 +1067,23 @@
                   "traditional": "孩子需要父母照顧",
                   "simplified": "孩子需要父母照顾",
                   "pinyin": "háizi xūyào fùmǔ zhàogù",
-                  "meaning": "kids need care",
+                  "meaning": "children need parents' care,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g2-ex2-w2",
-                  "traditional": "父母再忙",
-                  "simplified": "父母再忙",
-                  "pinyin": "fùmǔ zài máng",
-                  "meaning": "parents however busy"
+                  "traditional": "父母再忙都應該陪陪他們",
+                  "simplified": "父母再忙都应该陪陪他们",
+                  "pinyin": "fùmǔ zài máng dōu yīnggāi péipei tāmen",
+                  "meaning": "however busy parents are, they should spend time with them,",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l8g2-ex2-w3",
-                  "traditional": "都應該陪陪他們",
-                  "simplified": "都应该陪陪他们",
-                  "pinyin": "dōu yīnggāi péipei tāmen",
-                  "meaning": "should accompany them"
-                },
-                {
-                  "id": "b3l8g2-ex2-w4",
                   "traditional": "了解他們的想法",
                   "simplified": "了解他们的想法",
                   "pinyin": "liǎojiě tāmen de xiǎngfǎ",
-                  "meaning": "understand their thoughts",
+                  "meaning": "and understand what they think.",
                   "suffix": "。"
                 }
               ]
@@ -998,7 +1172,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "这是你做的，再甜我也要吃。"
             },
             {
               "id": "b3l8g2-cf2",
@@ -1035,7 +1210,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "汉字再难写也得练习。"
             }
           ]
         },
@@ -1047,7 +1223,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "今天有大考，我"
+                "traditional": "今天有大考，我",
+                "simplified": "今天有大考，我"
               },
               {
                 "type": "blank",
@@ -1058,7 +1235,8 @@
               },
               {
                 "type": "text",
-                "traditional": "去學校。"
+                "traditional": "去學校。",
+                "simplified": "去学校。"
               }
             ],
             "tiles": [
@@ -1087,7 +1265,10 @@
             "correctFeedback": "再……也 expresses that even at the extreme limit of feeling unwell, the obligation stands.",
             "repairFeedback": "Use 再 + Adjective + 也 to express concessive extreme condition."
           }
-        ]
+        ],
+        "explanationEnglish": "再……也/都…… is used in a hypothetical situation, with a similar meaning to 就算……，也…… (this grammar is found in the first lesson of this volume). The sentence after 再 refers to the best or worst of a situation, and the result, decision or idea behind 也 or 都 will not change. Sometimes it means that the speaker thinks something should be done and is worth doing. For example, 再有錢也不可以亂買東西, 再貴我都要買, 再辛苦也要忍耐.",
+        "patternAccentColumn": 1,
+        "titleSimplified": "再……，也/都……"
       },
       {
         "id": "B3L08-G03-P213",
@@ -1107,13 +1288,13 @@
         "bookPage": 213,
         "bookPageAvailable": true,
         "audioReference": "08-1-1",
-        "explanation": "「動詞＋慣」的「慣」有習慣的意思，是結果補語，表示前面動作的結果。如果「慣」的前面加上「得/不」，表示前面的動作能或不能習慣。",
+        "explanation": "「動詞＋慣」的「慣」有習慣的意思，是結果補語，表示前面動作的結果。例如：他用慣了筷子，連吃西餐也用筷子。如果「慣」的前面加上「得/不」，表示前面的動作能或不能習慣，例如：「這個房間很小，你住得慣嗎？」「我吃不慣別人做的菜，每天都自己做。」",
         "focusTerms": [
           "V慣",
           "穿得慣",
           "吃不慣",
           "睡慣了",
-          "住不慣"
+          "住得慣"
         ],
         "pattern": "Subject + Verb + (得/不) + 慣 (+ Object)",
         "patternColumns": [
@@ -1124,20 +1305,12 @@
         ],
         "patternRows": [
           {
-            "id": "b3l8g3-r1",
+            "id": "b3l8g03-r1",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g3-r1-c1-w1",
-                  "traditional": "我",
-                  "simplified": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g3-r1-c2-w1",
+                  "id": "b3l8g03-r1-c2-w1",
                   "traditional": "穿",
                   "simplified": "穿",
                   "pinyin": "chuān",
@@ -1146,39 +1319,31 @@
               ],
               [
                 {
-                  "id": "b3l8g3-r1-c3-w1",
+                  "id": "b3l8g03-r1-c3-w1",
                   "traditional": "得慣",
                   "simplified": "得惯",
-                  "pinyin": "deguàn",
-                  "meaning": "accustomed"
+                  "pinyin": "de guàn",
+                  "meaning": "can get used to"
                 }
               ],
-              [
-                {
-                  "id": "b3l8g3-r1-c4-w1",
-                  "traditional": "平價衣服",
-                  "simplified": "平价衣服",
-                  "pinyin": "píngjià yīfú",
-                  "meaning": "affordable clothes"
-                }
-              ]
+              []
             ]
           },
           {
-            "id": "b3l8g3-r2",
+            "id": "b3l8g03-r2",
             "columns": [
               [
                 {
-                  "id": "b3l8g3-r2-c1-w1",
-                  "traditional": "客人",
-                  "simplified": "客人",
-                  "pinyin": "kèrén",
-                  "meaning": "guest"
+                  "id": "b3l8g03-r2-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
                 }
               ],
               [
                 {
-                  "id": "b3l8g3-r2-c2-w1",
+                  "id": "b3l8g03-r2-c2-w1",
                   "traditional": "吃",
                   "simplified": "吃",
                   "pinyin": "chī",
@@ -1187,39 +1352,31 @@
               ],
               [
                 {
-                  "id": "b3l8g3-r2-c3-w1",
+                  "id": "b3l8g03-r2-c3-w1",
                   "traditional": "不慣",
                   "simplified": "不惯",
-                  "pinyin": "búguàn",
-                  "meaning": "not accustomed"
+                  "pinyin": "bú guàn",
+                  "meaning": "can't get used to"
                 }
               ],
-              [
-                {
-                  "id": "b3l8g3-r2-c4-w1",
-                  "traditional": "很鹹的菜",
-                  "simplified": "很咸的菜",
-                  "pinyin": "hěn xián de cài",
-                  "meaning": "salty food"
-                }
-              ]
+              []
             ]
           },
           {
-            "id": "b3l8g3-r3",
+            "id": "b3l8g03-r3",
             "columns": [
               [
                 {
-                  "id": "b3l8g3-r3-c1-w1",
-                  "traditional": "他",
-                  "simplified": "他",
-                  "pinyin": "tā",
-                  "meaning": "he"
+                  "id": "b3l8g03-r3-c1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
                 }
               ],
               [
                 {
-                  "id": "b3l8g3-r3-c2-w1",
+                  "id": "b3l8g03-r3-c2-w1",
                   "traditional": "睡",
                   "simplified": "睡",
                   "pinyin": "shuì",
@@ -1228,20 +1385,20 @@
               ],
               [
                 {
-                  "id": "b3l8g3-r3-c3-w1",
+                  "id": "b3l8g03-r3-c3-w1",
                   "traditional": "慣了",
                   "simplified": "惯了",
                   "pinyin": "guàn le",
-                  "meaning": "used to"
+                  "meaning": "am used to"
                 }
               ],
               [
                 {
-                  "id": "b3l8g3-r3-c4-w1",
+                  "id": "b3l8g03-r3-c4-w1",
                   "traditional": "家裡的床",
                   "simplified": "家里的床",
-                  "pinyin": "jiā lǐ de chuáng",
-                  "meaning": "bed at home"
+                  "pinyin": "jiālǐ de chuáng",
+                  "meaning": "my own bed"
                 }
               ]
             ]
@@ -1252,25 +1409,25 @@
             "id": "b3l8g3-ex1",
             "number": 1,
             "text": {
-              "traditional": "對我來說，只要穿得慣、穿得自在，把自己當衣服的主人，這樣就能對自己更有信心了。",
-              "simplified": "对我来说，只要穿得惯、穿得自在，把自己当衣服的主人，这样就能对自己更有信心了。",
-              "pinyin": "Duì wǒ láishuō, zhǐyào chuān de guàn, chuān de zìzài, bǎ zìjǐ dāng yīfú de zhǔrén, zhèyàng jiù néng duì zìjǐ gèng yǒu xìnxīn le.",
-              "english": "To me, as long as I feel accustomed and comfortable wearing them, making myself the master of the clothes, that's how I gain more self-confidence.",
+              "traditional": "對我來說，只要穿得慣、穿得自在，把自己當衣服的主人",
+              "simplified": "对我来说，只要穿得惯、穿得自在，把自己当衣服的主人",
+              "pinyin": "Duì wǒ lái shuō, zhǐyào chuān de guàn, chuān de zìzài, bǎ zìjǐ dāng yīfú de zhǔrén.",
+              "english": "For me, as long as I can get used to what I wear and feel at ease, I make myself the master of my clothes.",
               "words": [
                 {
                   "id": "b3l8g3-ex1-w1",
                   "traditional": "對我來說",
                   "simplified": "对我来说",
-                  "pinyin": "duì wǒ láishuō",
-                  "meaning": "to me",
+                  "pinyin": "duì wǒ lái shuō",
+                  "meaning": "for me",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g3-ex1-w2",
-                  "traditional": "只要穿得慣穿得自在",
-                  "simplified": "只要穿得惯穿得自在",
-                  "pinyin": "zhǐyào chuān de guàn chuān de zìzài",
-                  "meaning": "used to wear comfortably",
+                  "traditional": "只要穿得慣、穿得自在",
+                  "simplified": "只要穿得惯、穿得自在",
+                  "pinyin": "zhǐyào chuān de guàn, chuān de zìzài",
+                  "meaning": "as long as I can get used to wearing it and feel at ease,",
                   "suffix": "，"
                 },
                 {
@@ -1278,19 +1435,11 @@
                   "traditional": "把自己當衣服的主人",
                   "simplified": "把自己当衣服的主人",
                   "pinyin": "bǎ zìjǐ dāng yīfú de zhǔrén",
-                  "meaning": "master of clothes",
-                  "suffix": "，"
-                },
-                {
-                  "id": "b3l8g3-ex1-w4",
-                  "traditional": "就能對自己更有信心",
-                  "simplified": "就能对自己更有信心",
-                  "pinyin": "jiù néng duì zìjǐ gèng yǒu xìnxīn",
-                  "meaning": "more confidence",
-                  "suffix": "。"
+                  "meaning": "I make myself the master of my clothes"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l8g3-ex2",
@@ -1339,39 +1488,49 @@
             "id": "b3l8g3-ex3",
             "number": 3,
             "text": {
-              "traditional": "我睡慣了家裡的床，旅館的床睡不慣。",
-              "simplified": "我睡惯了家里的床，旅馆的床睡不惯。",
-              "pinyin": "Wǒ shuìguàn le jiā lǐ de chuáng, lǚguǎn de chuáng shuìbúguàn.",
-              "english": "I am used to sleeping in my bed at home; I can't get used to sleeping on hotel beds.",
+              "traditional": "A：老闆要你去英國出差，還可以順便旅遊，為什麼你不太想去？\nB：我睡慣了家裡的床，旅館的睡不慣。",
+              "simplified": "A：老板要你去英国出差，还可以顺便旅游，为什么你不太想去？\nB：我睡惯了家里的床，旅馆的睡不惯。",
+              "pinyin": "A: Lǎobǎn yào nǐ qù Yīngguó chūchāi, hái kěyǐ shùnbiàn lǚyóu, wèishénme nǐ bú tài xiǎng qù? B: Wǒ shuì guàn le jiālǐ de chuáng, lǚguǎn de shuì bú guàn.",
+              "english": "A: The boss wants you to go to England, and you could travel there too, so why don't you want to go? B: I'm used to sleeping in my own bed; I can't get used to sleeping in a hotel.",
               "words": [
                 {
                   "id": "b3l8g3-ex3-w1",
-                  "traditional": "我睡慣了",
-                  "simplified": "我睡惯了",
-                  "pinyin": "wǒ shuìguàn le",
-                  "meaning": "I am used to sleeping in"
+                  "traditional": "A：老闆要你去英國出差",
+                  "simplified": "A：老板要你去英国出差",
+                  "pinyin": "Lǎobǎn yào nǐ qù Yīngguó chūchāi",
+                  "meaning": "the boss asks you to go to England",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l8g3-ex3-w2",
-                  "traditional": "家裡的床",
-                  "simplified": "家里的床",
-                  "pinyin": "jiā lǐ de chuáng",
-                  "meaning": "bed at home",
+                  "traditional": "還可以順便旅遊",
+                  "simplified": "还可以顺便旅游",
+                  "pinyin": "hái kěyǐ shùnbiàn lǚyóu",
+                  "meaning": "and you can travel on the side",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g3-ex3-w3",
-                  "traditional": "旅館的床",
-                  "simplified": "旅馆的床",
-                  "pinyin": "lǚguǎn de chuáng",
-                  "meaning": "hotel bed"
+                  "traditional": "為什麼你不太想去",
+                  "simplified": "为什么你不太想去",
+                  "pinyin": "wèishénme nǐ bú tài xiǎng qù",
+                  "meaning": "why don't you want to go?",
+                  "suffix": "？\n"
                 },
                 {
                   "id": "b3l8g3-ex3-w4",
-                  "traditional": "睡不慣",
-                  "simplified": "睡不惯",
-                  "pinyin": "shuìbúguàn",
-                  "meaning": "can't get used to sleeping",
+                  "traditional": "B：我睡慣了家裡的床",
+                  "simplified": "B：我睡惯了家里的床",
+                  "pinyin": "wǒ shuì guàn le jiālǐ de chuáng",
+                  "meaning": "I am used to sleeping in my own bed",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g3-ex3-w5",
+                  "traditional": "旅館的睡不慣",
+                  "simplified": "旅馆的睡不惯",
+                  "pinyin": "lǚguǎn de shuì bú guàn",
+                  "meaning": "I can't get used to sleeping in a hotel",
                   "suffix": "。"
                 }
               ]
@@ -1410,7 +1569,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "那种独特的味道，我吃不惯。"
             },
             {
               "id": "b3l8g3-cf2",
@@ -1441,7 +1601,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "这里太吵了，我住不惯。"
             }
           ]
         },
@@ -1453,7 +1614,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "這部車的方向盤怪怪的，我"
+                "traditional": "這部車的方向盤怪怪的，我",
+                "simplified": "这部车的方向盘怪怪的，我"
               },
               {
                 "type": "blank",
@@ -1464,7 +1626,8 @@
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "。",
+                "simplified": "。"
               }
             ],
             "tiles": [
@@ -1493,11 +1656,14 @@
             "correctFeedback": "開不慣 denotes negative potential result: unable to get used to driving.",
             "repairFeedback": "Use Verb + 不慣 to express inability to get accustomed to an action."
           }
-        ]
+        ],
+        "explanationEnglish": "The 慣 of \"verb + 慣\" has the meaning of habit. It is the complement of the result, indicating the result of the previous action. For example, 他用慣了筷子，連吃西餐也用筷子。(He is used to eating with chopsticks, and even uses chopsticks to eat western food). If 慣 is added in front of 得/不, it means that the previous action can or cannot be gotten used to. For example, 這個房間很小，你住得慣嗎？(This room is very small, are you accustomed to living here?) 我吃不慣別人做的菜，每天都自己做。(I'm not used to food prepared by others, so I make it myself every day.)",
+        "patternAccentColumn": 2,
+        "titleSimplified": "V惯"
       }
     ]
   },
-  "BOOK3_LESSON_EIGHT_PART_TWO": {
+  "LESSON_EIGHT_PART_TWO": {
     "id": "B3L08-P02-D02",
     "bookId": 3,
     "lessonId": 8,
@@ -1545,7 +1711,7 @@
           "id": "b3l8d2-l4",
           "speaker": "旁白",
           "traditional": "過去，東賢對穿著不太有自信，也很擔心跟不上流行，所以才不斷地追求時尚。現在，他比較冷靜了，他要當衣服的主人，不再為了趕流行亂買衣服。況且把舊衣服修改一下，也能使自己穿得很有個性、很有品味，所以在東賢心中，沒有什麼是非買不可的。畢竟「快時尚」只是一時的流行，長得再帥、再漂亮的人，也應該找出屬於自己最合適的穿著，這樣才是正確的選擇。",
-          "simplified": "过去，东贤对穿着不太有自信，也很担心跟不上流行，所以才不断地追求时尚。现在，他比较冷静了，他要当衣服的主人，不再为了赶流行乱买衣服。况且把旧衣服修改一下，也能使自己穿得很有个性、很有品味，所以在东贤心中，没有什么是非买不可的。毕竟「快时尚」只是一时的流行，长得再帅、再漂亮的人，也应该找出属于自己最合适的人穿着，这样才是正确的选择。",
+          "simplified": "过去，东贤对穿着不太有自信，也很担心跟不上流行，所以才不断地追求时尚。现在，他比较冷静了，他要当衣服的主人，不再为了赶流行乱买衣服。况且把旧衣服修改一下，也能使自己穿得很有个性、很有品味，所以在东贤心中，没有什么是非买不可的。毕竟「快时尚」只是一时的流行，长得再帅、再漂亮的人，也应该找出属于自己最合适的穿着，这样才是正确的选择。",
           "pinyin": "Guòqù, Dōngxián duì chuānzhuó bú tài yǒu zìxìn, yě hěn dānxīn gēnbushàng liúxíng, suǒyǐ cái búduàn de zhuīqiú shíshàng. Xiànzài, tā bǐjiào lěngjìng le, tā yào dāng yīfú de zhǔrén, bú zài wèile gǎn liúxíng luàn mǎi yīfú. Kuàngqiě bǎ jiù yīfú xiūgǎi yíxià, yě néng shǐ zìjǐ chuān de hěn gèxìng, hěn yǒu pǐnwèi, suǒyǐ zài Dōngxián xīnzhōng, méiyǒu shénme shì fēi mǎi bù kě de. Bìjìng \"kuàishíshàng\" zhǐ shì yìshí de liúxíng, zhǎng de zài shuài, zài piàoliang de rén, yě yīnggāi zhǎochū shǔyú zìjǐ zuì héshì de chuānzhuó, zhèyàng cái shì zhèngquè de xuǎnzé.",
           "english": "In the past, Dongxian lacked confidence in dressing and constantly feared falling behind trends, which drove him to chase fashion non-stop. Now he has calmed down; he wants to be the master of clothes and no longer buys thoughtlessly to chase fads. Moreover, modifying old clothes can also allow one to dress with distinction and taste, so in his mind, nothing is an absolute must-buy. After all, fast fashion is merely a temporary fad; no matter how handsome or pretty one is, finding the attire that truly suits oneself is the right choice."
         }
@@ -1581,107 +1747,50 @@
         "patternColumns": [
           "Point",
           "況且",
-          "Addition",
-          "Reason"
+          "Also",
+          "Addition"
         ],
         "patternRows": [
           {
-            "id": "b3l8g4-r1",
+            "id": "b3l8g04-r1",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g4-r1-c1-w1",
-                  "traditional": "不再亂買衣服",
-                  "simplified": "不再乱买衣服",
-                  "pinyin": "búzài luàn mǎi yīfú",
-                  "meaning": "stop reckless buying"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g4-r1-c2-w1",
+                  "id": "b3l8g04-r1-c2-w1",
                   "traditional": "況且",
                   "simplified": "况且",
                   "pinyin": "kuàngqiě",
-                  "meaning": "moreover"
+                  "meaning": "besides"
                 }
               ],
+              [],
               [
                 {
-                  "id": "b3l8g4-r1-c3-w1",
-                  "traditional": "修改舊衣服",
-                  "simplified": "修改旧衣服",
-                  "pinyin": "xiūgǎi jiù yīfú",
-                  "meaning": "modifying old clothes"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g4-r1-c4-w1",
-                  "traditional": "也能很有品味",
-                  "simplified": "也能很有品味",
-                  "pinyin": "yě néng hěn yǒu pǐnwèi",
-                  "meaning": "can also be tasteful"
+                  "id": "b3l8g04-r1-c4-w1",
+                  "traditional": "把舊衣服修改一下",
+                  "simplified": "把旧衣服修改一下",
+                  "pinyin": "bǎ jiù yīfú xiūgǎi yíxià",
+                  "meaning": "remodel old clothes a bit"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g4-r2",
+            "id": "b3l8g04-r2",
             "columns": [
               [
                 {
-                  "id": "b3l8g4-r2-c1-w1",
-                  "traditional": "我沒有興趣",
-                  "simplified": "我没有兴趣",
-                  "pinyin": "wǒ méiyǒu xìngqù",
-                  "meaning": "I have no interest"
+                  "id": "b3l8g04-r2-c1-w1",
+                  "traditional": "我沒興趣",
+                  "simplified": "我没兴趣",
+                  "pinyin": "wǒ méi xìngqù",
+                  "meaning": "not interested"
                 }
               ],
               [
                 {
-                  "id": "b3l8g4-r2-c2-w1",
-                  "traditional": "況且",
-                  "simplified": "况且",
-                  "pinyin": "kuàngqiě",
-                  "meaning": "furthermore"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g4-r2-c3-w1",
-                  "traditional": "我還有",
-                  "simplified": "我还有",
-                  "pinyin": "wǒ hái yǒu",
-                  "meaning": "I still have"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g4-r2-c4-w1",
-                  "traditional": "自己的夢想",
-                  "simplified": "自己的梦想",
-                  "pinyin": "zìjǐ de mèngxiǎng",
-                  "meaning": "my own dream"
-                }
-              ]
-            ]
-          },
-          {
-            "id": "b3l8g4-r3",
-            "columns": [
-              [
-                {
-                  "id": "b3l8g4-r3-c1-w1",
-                  "traditional": "他是學電影的",
-                  "simplified": "他是学电影的",
-                  "pinyin": "tā shì xué diànyǐng de",
-                  "meaning": "studied film"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g4-r3-c2-w1",
+                  "id": "b3l8g04-r2-c2-w1",
                   "traditional": "況且",
                   "simplified": "况且",
                   "pinyin": "kuàngqiě",
@@ -1690,20 +1799,61 @@
               ],
               [
                 {
-                  "id": "b3l8g4-r3-c3-w1",
-                  "traditional": "也寫過",
-                  "simplified": "也写过",
-                  "pinyin": "yě xiě guo",
-                  "meaning": "has also written"
+                  "id": "b3l8g04-r2-c3-w1",
+                  "traditional": "還",
+                  "simplified": "还",
+                  "pinyin": "hái",
+                  "meaning": "also"
                 }
               ],
               [
                 {
-                  "id": "b3l8g4-r3-c4-w1",
-                  "traditional": "很多優秀劇本",
-                  "simplified": "很多优秀剧本",
-                  "pinyin": "hěn duō yōuxiù jùběn",
-                  "meaning": "many great scripts"
+                  "id": "b3l8g04-r2-c4-w1",
+                  "traditional": "有自己的夢想",
+                  "simplified": "有自己的梦想",
+                  "pinyin": "yǒu zìjǐ de mèngxiǎng",
+                  "meaning": "have my own dreams"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l8g04-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l8g04-r3-c1-w1",
+                  "traditional": "學電影藝術的",
+                  "simplified": "学电影艺术的",
+                  "pinyin": "xué diànyǐng yìshù de",
+                  "meaning": "studied film art"
+                }
+              ],
+              [
+                {
+                  "id": "b3l8g04-r3-c2-w1",
+                  "traditional": "況且",
+                  "simplified": "况且",
+                  "pinyin": "kuàngqiě",
+                  "meaning": "besides"
+                }
+              ],
+              [
+                {
+                  "id": "b3l8g04-r3-c3-w1",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": "also"
+                }
+              ],
+              [
+                {
+                  "id": "b3l8g04-r3-c4-w1",
+                  "traditional": "寫過劇本",
+                  "simplified": "写过剧本",
+                  "pinyin": "xiěguo jùběn",
+                  "meaning": "wrote scripts"
                 }
               ]
             ]
@@ -1714,17 +1864,17 @@
             "id": "b3l8g4-ex1",
             "number": 1,
             "text": {
-              "traditional": "現在他不再為了趕流行亂買衣服。況且把舊衣服修改一下，也能使自己穿得很有個性、很有品味。",
-              "simplified": "现在他不再为了赶流行乱买衣服。况且把旧衣服修改一下，也能使自己穿得很有个性、很有品味。",
-              "pinyin": "Xiànzài tā bú zài wèile gǎn liúxíng luàn mǎi yīfú. Kuàngqiě bǎ jiù yīfú xiūgǎi yíxià, yě néng shǐ zìjǐ chuān de hěn gèxìng, hěn yǒu pǐnwèi.",
-              "english": "Now he no longer buys recklessly to chase fads. Moreover, modifying old clothes can also let him dress with character and taste.",
+              "traditional": "不再為了趕流行亂買衣服。況且把舊衣服修改一下",
+              "simplified": "不再为了赶流行乱买衣服。况且把旧衣服修改一下",
+              "pinyin": "Bú zài wèile gǎn liúxíng luàn mǎi yīfú. Kuàngqiě bǎ jiù yīfú xiūgǎi yíxià.",
+              "english": "No longer buying clothes randomly just to chase trends. Besides, remodeling old clothes a bit...",
               "words": [
                 {
                   "id": "b3l8g4-ex1-w1",
-                  "traditional": "現在他不再亂買衣服",
-                  "simplified": "现在他不再乱买衣服",
-                  "pinyin": "xiànzài tā bú zài luàn mǎi yīfú",
-                  "meaning": "no longer buys recklessly",
+                  "traditional": "不再為了趕流行亂買衣服",
+                  "simplified": "不再为了赶流行乱买衣服",
+                  "pinyin": "bú zài wèile gǎn liúxíng luàn mǎi yīfú",
+                  "meaning": "no longer buy clothes randomly to chase trends.",
                   "suffix": "。"
                 },
                 {
@@ -1732,19 +1882,11 @@
                   "traditional": "況且把舊衣服修改一下",
                   "simplified": "况且把旧衣服修改一下",
                   "pinyin": "kuàngqiě bǎ jiù yīfú xiūgǎi yíxià",
-                  "meaning": "moreover modifying old clothes",
-                  "suffix": "，"
-                },
-                {
-                  "id": "b3l8g4-ex1-w3",
-                  "traditional": "也能很有品味",
-                  "simplified": "也能很有品味",
-                  "pinyin": "yě néng hěn yǒu pǐnwèi",
-                  "meaning": "can also be tasteful",
-                  "suffix": "。"
+                  "meaning": "Besides, remodel old clothes a bit"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l8g4-ex2",
@@ -1757,10 +1899,10 @@
               "words": [
                 {
                   "id": "b3l8g4-ex2-w1",
-                  "traditional": "爸爸要我管理公司",
-                  "simplified": "爸爸要我管理公司",
-                  "pinyin": "bàba yào wǒ guǎnlǐ gōngsī",
-                  "meaning": "dad wants me to manage firm",
+                  "traditional": "爸爸要我將來管理他的公司",
+                  "simplified": "爸爸要我将来管理他的公司",
+                  "pinyin": "bàba yào wǒ jiānglái guǎnlǐ tā de gōngsī",
+                  "meaning": "Dad wants me to run his company one day,",
                   "suffix": "，"
                 },
                 {
@@ -1768,15 +1910,15 @@
                   "traditional": "可是我沒興趣",
                   "simplified": "可是我没兴趣",
                   "pinyin": "kěshì wǒ méi xìngqù",
-                  "meaning": "but I have no interest",
+                  "meaning": "but I'm not interested,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g4-ex2-w3",
-                  "traditional": "況且我還有夢想",
-                  "simplified": "况且我还有梦想",
-                  "pinyin": "kuàngqiě wǒ hái yǒu mèngxiǎng",
-                  "meaning": "moreover I have dream",
+                  "traditional": "況且我還有自己的夢想",
+                  "simplified": "况且我还有自己的梦想",
+                  "pinyin": "kuàngqiě wǒ hái yǒu zìjǐ de mèngxiǎng",
+                  "meaning": "besides I still have my own dreams,",
                   "suffix": "，"
                 },
                 {
@@ -1784,7 +1926,7 @@
                   "traditional": "所以不想去",
                   "simplified": "所以不想去",
                   "pinyin": "suǒyǐ bù xiǎng qù",
-                  "meaning": "so don't want to go",
+                  "meaning": "so I don't want to go.",
                   "suffix": "。"
                 }
               ]
@@ -1794,33 +1936,49 @@
             "id": "b3l8g4-ex3",
             "number": 3,
             "text": {
-              "traditional": "你是學電影藝術的，況且也寫過劇本、當過演員，可以嘗試一下。",
-              "simplified": "你是学电影艺术的，况且也写过剧本、当过演员，可以尝试一下。",
-              "pinyin": "Nǐ shì xué diànyǐng yìshù de, kuàngqiě yě xiě guo jùběn, dāng guo yǎnyuán, kěyǐ chángshì yíxià.",
-              "english": "You studied film arts, and moreover you've written scripts and acted; you can give it a try.",
+              "traditional": "兒子：我畢業後想當導演，拍出好電影來讓大家欣賞。\n爸爸：你是學電影藝術的，況且也寫過劇本、當過演員，可以嘗試一下。",
+              "simplified": "儿子：我毕业后想当导演，拍出好电影来让大家欣赏。\n爸爸：你是学电影艺术的，况且也写过剧本、当过演员，可以尝试一下。",
+              "pinyin": "Érzi: Wǒ bìyè hòu xiǎng dāng dǎoyǎn, pāi chū hǎo diànyǐng lái ràng dàjiā xīnshǎng. Bàba: Nǐ shì xué diànyǐng yìshù de, kuàngqiě yě xiěguo jùběn, dāngguo yǎnyuán, kěyǐ chángshì yíxià.",
+              "english": "Son: After graduating I want to be a director and make good films for everyone to enjoy. Dad: You studied film art; besides, you have written scripts and acted, so you could give it a try.",
               "words": [
                 {
                   "id": "b3l8g4-ex3-w1",
-                  "traditional": "你是學電影藝術的",
-                  "simplified": "你是学电影艺术的",
-                  "pinyin": "nǐ shì xué diànyǐng yìshù de",
-                  "meaning": "you studied film",
+                  "traditional": "兒子：我畢業後想當導演",
+                  "simplified": "儿子：我毕业后想当导演",
+                  "pinyin": "érzi: wǒ bìyè hòu xiǎng dāng dǎoyǎn",
+                  "meaning": "son: after graduating I want to be a director,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g4-ex3-w2",
-                  "traditional": "況且也寫過劇本",
-                  "simplified": "况且也写过剧本",
-                  "pinyin": "kuàngqiě yě xiě guo jùběn",
-                  "meaning": "moreover wrote scripts",
-                  "suffix": "，"
+                  "traditional": "拍出好電影來讓大家欣賞",
+                  "simplified": "拍出好电影来让大家欣赏",
+                  "pinyin": "pāi chū hǎo diànyǐng lái ràng dàjiā xīnshǎng",
+                  "meaning": "make good films for everyone to enjoy.",
+                  "suffix": "。\n"
                 },
                 {
                   "id": "b3l8g4-ex3-w3",
+                  "traditional": "爸爸：你是學電影藝術的",
+                  "simplified": "爸爸：你是学电影艺术的",
+                  "pinyin": "bàba: nǐ shì xué diànyǐng yìshù de",
+                  "meaning": "dad: you studied film art,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g4-ex3-w4",
+                  "traditional": "況且也寫過劇本、當過演員",
+                  "simplified": "况且也写过剧本、当过演员",
+                  "pinyin": "kuàngqiě yě xiěguo jùběn, dāngguo yǎnyuán",
+                  "meaning": "besides, you have written scripts and been an actor,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g4-ex3-w5",
                   "traditional": "可以嘗試一下",
                   "simplified": "可以尝试一下",
                   "pinyin": "kěyǐ chángshì yíxià",
-                  "meaning": "can give it a try",
+                  "meaning": "you could give it a try.",
                   "suffix": "。"
                 }
               ]
@@ -1866,7 +2024,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "国外我不熟悉，况且孩子还小。"
             },
             {
               "id": "b3l8g4-cf2",
@@ -1904,7 +2063,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "我自己赚钱，况且名牌能穿很久。"
             }
           ]
         },
@@ -1916,7 +2076,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他沒什麼耐心，"
+                "traditional": "他沒什麼耐心，",
+                "simplified": "他没什么耐心，"
               },
               {
                 "type": "blank",
@@ -1927,7 +2088,8 @@
               },
               {
                 "type": "text",
-                "traditional": "，很難合作。"
+                "traditional": "，很難合作。",
+                "simplified": "，很难合作。"
               }
             ],
             "tiles": [
@@ -1956,7 +2118,10 @@
             "correctFeedback": "況且 adds a compounding supplementary flaw onto his lack of patience.",
             "repairFeedback": "Use 況且 to layer an additional confirming reason."
           }
-        ]
+        ],
+        "explanationEnglish": "況且 is used as a conjunction to indicate a more advanced tone, to supplement the explanation and make the reasoning more complete. Often used in conjunction with 也, 還, 又.",
+        "patternAccentColumn": 1,
+        "titleSimplified": "况且"
       },
       {
         "id": "B3L08-G05-P221",
@@ -1993,20 +2158,12 @@
         ],
         "patternRows": [
           {
-            "id": "b3l8g5-r1",
+            "id": "b3l8g05-r1",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g5-r1-c1-w1",
-                  "traditional": "東西",
-                  "simplified": "东西",
-                  "pinyin": "dōngxi",
-                  "meaning": "item"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g5-r1-c2-w1",
+                  "id": "b3l8g05-r1-c2-w1",
                   "traditional": "非",
                   "simplified": "非",
                   "pinyin": "fēi",
@@ -2015,7 +2172,7 @@
               ],
               [
                 {
-                  "id": "b3l8g5-r1-c3-w1",
+                  "id": "b3l8g05-r1-c3-w1",
                   "traditional": "買",
                   "simplified": "买",
                   "pinyin": "mǎi",
@@ -2024,30 +2181,30 @@
               ],
               [
                 {
-                  "id": "b3l8g5-r1-c4-w1",
+                  "id": "b3l8g05-r1-c4-w1",
                   "traditional": "不可",
                   "simplified": "不可",
-                  "pinyin": "bùkě",
-                  "meaning": "cannot not"
+                  "pinyin": "bù kě",
+                  "meaning": "must"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g5-r2",
+            "id": "b3l8g05-r2",
             "columns": [
               [
                 {
-                  "id": "b3l8g5-r2-c1-w1",
-                  "traditional": "流血",
-                  "simplified": "流血",
-                  "pinyin": "liúxuè",
-                  "meaning": "bleeding"
+                  "id": "b3l8g05-r2-c1-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
                 }
               ],
               [
                 {
-                  "id": "b3l8g5-r2-c2-w1",
+                  "id": "b3l8g05-r2-c2-w1",
                   "traditional": "非",
                   "simplified": "非",
                   "pinyin": "fēi",
@@ -2056,39 +2213,39 @@
               ],
               [
                 {
-                  "id": "b3l8g5-r2-c3-w1",
-                  "traditional": "看醫生",
-                  "simplified": "看医生",
-                  "pinyin": "kàn yīshēng",
-                  "meaning": "see doctor"
+                  "id": "b3l8g05-r2-c3-w1",
+                  "traditional": "去看醫生",
+                  "simplified": "去看医生",
+                  "pinyin": "qù kàn yīshēng",
+                  "meaning": "see a doctor"
                 }
               ],
               [
                 {
-                  "id": "b3l8g5-r2-c4-w1",
+                  "id": "b3l8g05-r2-c4-w1",
                   "traditional": "不可",
                   "simplified": "不可",
-                  "pinyin": "bùkě",
-                  "meaning": "cannot not"
+                  "pinyin": "bù kě",
+                  "meaning": "must"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g5-r3",
+            "id": "b3l8g05-r3",
             "columns": [
               [
                 {
-                  "id": "b3l8g5-r3-c1-w1",
-                  "traditional": "衣服髒了",
-                  "simplified": "衣服脏了",
-                  "pinyin": "yīfú zāng le",
-                  "meaning": "clothes dirtied"
+                  "id": "b3l8g05-r3-c1-w1",
+                  "traditional": "舅舅",
+                  "simplified": "舅舅",
+                  "pinyin": "jiùjiu",
+                  "meaning": "uncle"
                 }
               ],
               [
                 {
-                  "id": "b3l8g5-r3-c2-w1",
+                  "id": "b3l8g05-r3-c2-w1",
                   "traditional": "非",
                   "simplified": "非",
                   "pinyin": "fēi",
@@ -2097,20 +2254,20 @@
               ],
               [
                 {
-                  "id": "b3l8g5-r3-c3-w1",
-                  "traditional": "送洗",
-                  "simplified": "送洗",
-                  "pinyin": "sòngxǐ",
-                  "meaning": "dry clean"
+                  "id": "b3l8g05-r3-c3-w1",
+                  "traditional": "立刻送洗",
+                  "simplified": "立刻送洗",
+                  "pinyin": "lìkè sòngxǐ",
+                  "meaning": "clean right away"
                 }
               ],
               [
                 {
-                  "id": "b3l8g5-r3-c4-w1",
+                  "id": "b3l8g05-r3-c4-w1",
                   "traditional": "不可",
                   "simplified": "不可",
-                  "pinyin": "bùkě",
-                  "meaning": "cannot not"
+                  "pinyin": "bù kě",
+                  "meaning": "must"
                 }
               ]
             ]
@@ -2124,33 +2281,27 @@
               "traditional": "在東賢心中，沒有什麼是非買不可的。",
               "simplified": "在东贤心中，没有什么是非买不可的。",
               "pinyin": "Zài Dōngxián xīnzhōng, méiyǒu shénme shì fēi mǎi bù kě de.",
-              "english": "In Dongxian's heart, there is nothing that is an absolute must-buy.",
+              "english": "In Dongxian's mind, there is nothing he absolutely must buy.",
               "words": [
                 {
                   "id": "b3l8g5-ex1-w1",
                   "traditional": "在東賢心中",
                   "simplified": "在东贤心中",
                   "pinyin": "zài Dōngxián xīnzhōng",
-                  "meaning": "in Dongxian's heart",
+                  "meaning": "in Dongxian's mind,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g5-ex1-w2",
-                  "traditional": "沒有什麼是",
-                  "simplified": "没有什么事",
-                  "pinyin": "méiyǒu shénme shì",
-                  "meaning": "nothing is"
-                },
-                {
-                  "id": "b3l8g5-ex1-w3",
-                  "traditional": "非買不可的",
-                  "simplified": "非买不可的",
-                  "pinyin": "fēi mǎi bù kě de",
-                  "meaning": "must-buy",
+                  "traditional": "沒有什麼是非買不可的",
+                  "simplified": "没有什么是非买不可的",
+                  "pinyin": "méiyǒu shénme shì fēi mǎi bù kě de",
+                  "meaning": "there is nothing he absolutely must buy.",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l8g5-ex2",
@@ -2166,31 +2317,31 @@
                   "traditional": "他在衝浪時",
                   "simplified": "他在冲浪时",
                   "pinyin": "tā zài chōnglàng shí",
-                  "meaning": "while surfing",
+                  "meaning": "while he was surfing,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g5-ex2-w2",
-                  "traditional": "牙齒被打到了",
-                  "simplified": "牙齿被打到了",
-                  "pinyin": "yáchǐ bèi dǎdào le",
-                  "meaning": "teeth hit",
+                  "traditional": "牙齒被衝浪板打到了",
+                  "simplified": "牙齿被冲浪板打到了",
+                  "pinyin": "yáchǐ bèi chōnglàngbǎn dǎ dào le",
+                  "meaning": "his teeth were hit by the surfboard,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g5-ex2-w3",
                   "traditional": "血流個不停",
                   "simplified": "血流个不停",
-                  "pinyin": "xuè liú ge bùtíng",
-                  "meaning": "bleeding non-stop",
+                  "pinyin": "xuèliú gè bù tíng",
+                  "meaning": "the blood kept flowing,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g5-ex2-w4",
                   "traditional": "非去看醫生不可",
                   "simplified": "非去看医生不可",
-                  "pinyin": "fēi qù kàn yīshēng bùkě",
-                  "meaning": "must see doctor",
+                  "pinyin": "fēi qù kàn yīshēng bù kě",
+                  "meaning": "he must go to see a doctor.",
                   "suffix": "。"
                 }
               ]
@@ -2200,25 +2351,32 @@
             "id": "b3l8g5-ex3",
             "number": 3,
             "text": {
-              "traditional": "小張不小心把明天結婚要穿的禮服弄髒了，非立刻送洗不可。",
-              "simplified": "小张不小心把明天结婚要穿的礼服弄脏了，非立刻送洗不可。",
-              "pinyin": "Xiǎozhāng bù xiǎoxīn bǎ míngtiān jiéhūn yào chuān de lǐfú nòngzāng le, fēi lìkè sòngxǐ bùkě.",
-              "english": "Xiao Zhang accidentally stained the wedding dress for tomorrow; it absolutely had to be sent for dry cleaning immediately.",
+              "traditional": "舅舅不小心把明天結婚要穿的衣服弄髒了，非立刻送洗不可。",
+              "simplified": "舅舅不小心把明天结婚要穿的衣服弄脏了，非立刻送洗不可。",
+              "pinyin": "Jiùjiu bù xiǎoxīn bǎ míngtiān jiéhūn yào chuān de yīfú nòng zāng le, fēi lìkè sòngxǐ bù kě.",
+              "english": "Uncle carelessly got the clothes he was going to wear to a wedding tomorrow dirty, so they must be sent for cleaning right away.",
               "words": [
                 {
                   "id": "b3l8g5-ex3-w1",
-                  "traditional": "小張不小心把禮服弄髒了",
-                  "simplified": "小张不小心把礼服弄脏了",
-                  "pinyin": "Xiǎozhāng bù xiǎoxīn bǎ lǐfú nòngzāng le",
-                  "meaning": "stained the dress",
-                  "suffix": "，"
+                  "traditional": "舅舅不小心",
+                  "simplified": "舅舅不小心",
+                  "pinyin": "jiùjiu bù xiǎoxīn",
+                  "meaning": "uncle carelessly"
                 },
                 {
                   "id": "b3l8g5-ex3-w2",
+                  "traditional": "把明天結婚要穿的衣服弄髒了",
+                  "simplified": "把明天结婚要穿的衣服弄脏了",
+                  "pinyin": "bǎ míngtiān jiéhūn yào chuān de yīfú nòng zāng le",
+                  "meaning": "got the clothes he will wear to a wedding tomorrow dirty,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g5-ex3-w3",
                   "traditional": "非立刻送洗不可",
                   "simplified": "非立刻送洗不可",
-                  "pinyin": "fēi lìkè sòngxǐ bùkě",
-                  "meaning": "must dry-clean now",
+                  "pinyin": "fēi lìkè sòngxǐ bù kě",
+                  "meaning": "they must be sent for cleaning right away.",
                   "suffix": "。"
                 }
               ]
@@ -2256,7 +2414,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "那你非向他道歉不可。"
             },
             {
               "id": "b3l8g5-cf2",
@@ -2287,7 +2446,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "来台湾旅行，你非去台北101不可。"
             }
           ]
         },
@@ -2299,7 +2459,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你弄壞了哥哥的車，"
+                "traditional": "你弄壞了哥哥的車，",
+                "simplified": "你弄坏了哥哥的车，"
               },
               {
                 "type": "blank",
@@ -2310,7 +2471,8 @@
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "。",
+                "simplified": "。"
               }
             ],
             "tiles": [
@@ -2339,7 +2501,10 @@
             "correctFeedback": "非 must stand before the whole prepositional phrase 向他道歉.",
             "repairFeedback": "Pattern: 非 + Action Phrase + 不可."
           }
-        ]
+        ],
+        "explanationEnglish": "非 means 不, so 非……不可 means that something must be done, and there is no other choice. 非 is followed with a verb or verb phrase.",
+        "patternAccentColumn": 1,
+        "titleSimplified": "非……不可"
       },
       {
         "id": "B3L08-G06-P222",
@@ -2359,7 +2524,7 @@
         "bookPage": 222,
         "bookPageAvailable": true,
         "audioReference": "08-2-1",
-        "explanation": "「畢竟」後面的句子是經過思考分析後的結論，用來說明事情的關鍵，目的是提醒或說服對方。",
+        "explanation": "「畢竟」後面的句子是經過思考分析後的結論，用來說明事情的關鍵，目的是提醒或說服對方。例如：雖然中文不太好學，不過，那畢竟是我自己的選擇。",
         "focusTerms": [
           "畢竟",
           "畢竟只是",
@@ -2368,27 +2533,19 @@
         ],
         "pattern": "Statement，(不過) + 畢竟 + Core Reality",
         "patternColumns": [
-          "Point",
+          "Statement",
           "畢竟",
           "Fact",
           "Result"
         ],
         "patternRows": [
           {
-            "id": "b3l8g6-r1",
+            "id": "b3l8g06-r1",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g6-r1-c1-w1",
-                  "traditional": "別太在意",
-                  "simplified": "别太在意",
-                  "pinyin": "bié tài zàiyì",
-                  "meaning": "don't care too much"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g6-r1-c2-w1",
+                  "id": "b3l8g06-r1-c2-w1",
                   "traditional": "畢竟",
                   "simplified": "毕竟",
                   "pinyin": "bìjìng",
@@ -2397,39 +2554,31 @@
               ],
               [
                 {
-                  "id": "b3l8g6-r1-c3-w1",
+                  "id": "b3l8g06-r1-c3-w1",
                   "traditional": "快時尚",
                   "simplified": "快时尚",
-                  "pinyin": "kuàishíshàng",
+                  "pinyin": "kuài shíshàng",
                   "meaning": "fast fashion"
                 }
               ],
               [
                 {
-                  "id": "b3l8g6-r1-c4-w1",
-                  "traditional": "只是一時流行",
-                  "simplified": "只是一时流行",
-                  "pinyin": "zhǐ shì yìshí liúxíng",
-                  "meaning": "temporary trend"
+                  "id": "b3l8g06-r1-c4-w1",
+                  "traditional": "只是一時的流行",
+                  "simplified": "只是一时的流行",
+                  "pinyin": "zhǐshì yìshí de liúxíng",
+                  "meaning": "just a passing trend"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g6-r2",
+            "id": "b3l8g06-r2",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g6-r2-c1-w1",
-                  "traditional": "別要求太高",
-                  "simplified": "别要求太高",
-                  "pinyin": "bié yāoqiú tài gāo",
-                  "meaning": "don't demand too much"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g6-r2-c2-w1",
+                  "id": "b3l8g06-r2-c2-w1",
                   "traditional": "畢竟",
                   "simplified": "毕竟",
                   "pinyin": "bìjìng",
@@ -2438,39 +2587,31 @@
               ],
               [
                 {
-                  "id": "b3l8g6-r2-c3-w1",
-                  "traditional": "孩子",
-                  "simplified": "孩子",
-                  "pinyin": "háizi",
-                  "meaning": "child"
+                  "id": "b3l8g06-r2-c3-w1",
+                  "traditional": "她",
+                  "simplified": "她",
+                  "pinyin": "tā",
+                  "meaning": "she"
                 }
               ],
               [
                 {
-                  "id": "b3l8g6-r2-c4-w1",
-                  "traditional": "年紀還很小",
-                  "simplified": "年纪还很小",
-                  "pinyin": "niánjì hái hěn xiǎo",
-                  "meaning": "still young"
+                  "id": "b3l8g06-r2-c4-w1",
+                  "traditional": "才三歲",
+                  "simplified": "才三岁",
+                  "pinyin": "cái sān suì",
+                  "meaning": "only three"
                 }
               ]
             ]
           },
           {
-            "id": "b3l8g6-r3",
+            "id": "b3l8g06-r3",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l8g6-r3-c1-w1",
-                  "traditional": "最好別加班",
-                  "simplified": "最好别加班",
-                  "pinyin": "zuìhǎo bié jiābān",
-                  "meaning": "better not overtime"
-                }
-              ],
-              [
-                {
-                  "id": "b3l8g6-r3-c2-w1",
+                  "id": "b3l8g06-r3-c2-w1",
                   "traditional": "畢竟",
                   "simplified": "毕竟",
                   "pinyin": "bìjìng",
@@ -2479,16 +2620,16 @@
               ],
               [
                 {
-                  "id": "b3l8g6-r3-c3-w1",
+                  "id": "b3l8g06-r3-c3-w1",
                   "traditional": "人",
                   "simplified": "人",
                   "pinyin": "rén",
-                  "meaning": "humans"
+                  "meaning": "people"
                 }
               ],
               [
                 {
-                  "id": "b3l8g6-r3-c4-w1",
+                  "id": "b3l8g06-r3-c4-w1",
                   "traditional": "不是機器",
                   "simplified": "不是机器",
                   "pinyin": "bú shì jīqì",
@@ -2503,36 +2644,29 @@
             "id": "b3l8g6-ex1",
             "number": 1,
             "text": {
-              "traditional": "在東賢心中，沒有什麼是非買不可的。畢竟「快時尚」只是一時的流行。",
-              "simplified": "在东贤心中，没有什么是非买不可的。毕竟「快时尚」只是一时的流行。",
-              "pinyin": "Zài Dōngxián xīnzhōng, méiyǒu shénme shì fēi mǎi bù kě de. Bìjìng \"kuàishíshàng\" zhǐ shì yìshí de liúxíng.",
-              "english": "In Dongxian's heart, nothing is an absolute must-buy. After all, fast fashion is merely a temporary fad.",
+              "traditional": "沒有什麼是非買不可的。畢竟「快時尚」只是一時的流行",
+              "simplified": "没有什么是非买不可的。毕竟「快时尚」只是一时的流行",
+              "pinyin": "Méiyǒu shénme shì fēi mǎi bù kě de. Bìjìng kuài shíshàng zhǐshì yìshí de liúxíng.",
+              "english": "There is nothing he absolutely must buy. After all, fast fashion is only a passing trend.",
               "words": [
                 {
                   "id": "b3l8g6-ex1-w1",
                   "traditional": "沒有什麼是非買不可的",
                   "simplified": "没有什么是非买不可的",
                   "pinyin": "méiyǒu shénme shì fēi mǎi bù kě de",
-                  "meaning": "nothing is must-buy",
+                  "meaning": "there is nothing he absolutely must buy.",
                   "suffix": "。"
                 },
                 {
                   "id": "b3l8g6-ex1-w2",
-                  "traditional": "畢竟快時尚",
-                  "simplified": "毕竟快时尚",
-                  "pinyin": "bìjìng kuàishíshàng",
-                  "meaning": "after all fast fashion"
-                },
-                {
-                  "id": "b3l8g6-ex1-w3",
-                  "traditional": "只是一時的流行",
-                  "simplified": "只是一时的流行",
-                  "pinyin": "zhǐ shì yìshí de liúxíng",
-                  "meaning": "only temporary fad",
-                  "suffix": "。"
+                  "traditional": "畢竟「快時尚」只是一時的流行",
+                  "simplified": "毕竟「快时尚」只是一时的流行",
+                  "pinyin": "bìjìng kuài shíshàng zhǐshì yìshí de liúxíng",
+                  "meaning": "after all, fast fashion is only a passing trend"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l8g6-ex2",
@@ -2545,18 +2679,34 @@
               "words": [
                 {
                   "id": "b3l8g6-ex2-w1",
-                  "traditional": "對她的要求太高了",
-                  "simplified": "对她的要求太高了",
-                  "pinyin": "duì tā de yāoqiú tài gāo le",
-                  "meaning": "demands too high",
+                  "traditional": "你要女兒學鋼琴",
+                  "simplified": "你要女儿学钢琴",
+                  "pinyin": "nǐ yào nǚ'ér xué gāngqín",
+                  "meaning": "you make your daughter learn piano,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g6-ex2-w2",
+                  "traditional": "又要學跳舞",
+                  "simplified": "又要学跳舞",
+                  "pinyin": "yòu yào xué tiàowǔ",
+                  "meaning": "and also dance,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g6-ex2-w3",
+                  "traditional": "對她的要求太高了",
+                  "simplified": "对她的要求太高了",
+                  "pinyin": "duì tā de yāoqiú tài gāo le",
+                  "meaning": "your demands on her are too high,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g6-ex2-w4",
                   "traditional": "畢竟她才三歲",
                   "simplified": "毕竟她才三岁",
                   "pinyin": "bìjìng tā cái sān suì",
-                  "meaning": "after all only 3 yrs old",
+                  "meaning": "after all she is only three.",
                   "suffix": "。"
                 }
               ]
@@ -2566,33 +2716,57 @@
             "id": "b3l8g6-ex3",
             "number": 3,
             "text": {
-              "traditional": "你最好別再加班了，畢竟人不是機器，要是忙得沒時間休息一定會生病的。",
-              "simplified": "你最好别再加班了，毕竟人不是机器，要是忙得没时间休息一定会生病的。",
-              "pinyin": "Nǐ zuìhǎo bié zài jiābān le, bìjìng rén bú shì jīqì, yàoshi máng de méi shíjiān xiūxí yídìng huì shēngbìng de.",
-              "english": "You'd better not work overtime anymore; after all, humans aren't machines, and if you are too busy to rest you'll definitely fall sick.",
+              "traditional": "先生：這個星期很忙，週末也得加班，沒辦法陪妳去逛街了。\n太太：你最好別再加班了，畢竟人不是機器，要是忙得沒時間休息一定會生病的。",
+              "simplified": "先生：这个星期很忙，周末也得加班，没办法陪妳去逛街了。\n太太：你最好别再加班了，毕竟人不是机器，要是忙得没时间休息一定会生病的。",
+              "pinyin": "Xiānsheng: Zhège xīngqī hěn máng, zhōumò yě děi jiābān, méi bànfǎ péi nǐ qù guàngjiē le. Tàitai: Nǐ zuì hǎo bié zài jiābān le, bìjìng rén bú shì jīqì, yàoshi máng de méi shíjiān xiūxi yídìng huì shēngbìng de.",
+              "english": "Husband: This week is very busy, I have to work overtime on the weekend too, so I can't go shopping with you. Wife: You'd better stop working overtime; after all, people aren't machines, and if you're too busy to rest you'll surely get sick.",
               "words": [
                 {
                   "id": "b3l8g6-ex3-w1",
-                  "traditional": "你最好別再加班了",
-                  "simplified": "你最好别再加班了",
-                  "pinyin": "nǐ zuìhǎo bié zài jiābān le",
-                  "meaning": "better not work overtime",
+                  "traditional": "先生：這個星期很忙",
+                  "simplified": "先生：这个星期很忙",
+                  "pinyin": "xiānsheng: zhège xīngqī hěn máng",
+                  "meaning": "husband: this week is very busy,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g6-ex3-w2",
-                  "traditional": "畢竟人不是機器",
-                  "simplified": "毕竟人不是机器",
-                  "pinyin": "bìjìng rén bú shì jīqì",
-                  "meaning": "after all humans aren't machines",
+                  "traditional": "週末也得加班",
+                  "simplified": "周末也得加班",
+                  "pinyin": "zhōumò yě děi jiābān",
+                  "meaning": "I have to work overtime on the weekend too,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l8g6-ex3-w3",
-                  "traditional": "沒時間休息一定會生病",
-                  "simplified": "没时间休息一定会生病",
-                  "pinyin": "méi shíjiān xiūxí yídìng huì shēngbìng",
-                  "meaning": "will surely get sick",
+                  "traditional": "沒辦法陪妳去逛街了",
+                  "simplified": "没办法陪妳去逛街了",
+                  "pinyin": "méi bànfǎ péi nǐ qù guàngjiē le",
+                  "meaning": "so I cannot go shopping with you.",
+                  "suffix": "。\n"
+                },
+                {
+                  "id": "b3l8g6-ex3-w4",
+                  "traditional": "太太：你最好別再加班了",
+                  "simplified": "太太：你最好别再加班了",
+                  "pinyin": "tàitai: nǐ zuì hǎo bié zài jiābān le",
+                  "meaning": "wife: you'd better stop working overtime,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g6-ex3-w5",
+                  "traditional": "畢竟人不是機器",
+                  "simplified": "毕竟人不是机器",
+                  "pinyin": "bìjìng rén bú shì jīqì",
+                  "meaning": "after all people are not machines,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l8g6-ex3-w6",
+                  "traditional": "要是忙得沒時間休息一定會生病的",
+                  "simplified": "要是忙得没时间休息一定会生病的",
+                  "pinyin": "yàoshi máng de méi shíjiān xiūxi yídìng huì shēngbìng de",
+                  "meaning": "if you are too busy to rest you will surely get sick.",
                   "suffix": "。"
                 }
               ]
@@ -2631,7 +2805,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "你最好别再加班了，毕竟人不是机器。"
             },
             {
               "id": "b3l8g6-cf2",
@@ -2662,7 +2837,8 @@
                     "suffix": "。"
                   }
                 ]
-              }
+              },
+              "answerSimplified": "这很正常，毕竟谁都不想吃亏。"
             }
           ]
         },
@@ -2674,7 +2850,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "客人常講價很正常，"
+                "traditional": "客人常講價很正常，",
+                "simplified": "客人常讲价很正常，"
               },
               {
                 "type": "blank",
@@ -2685,7 +2862,8 @@
               },
               {
                 "type": "text",
-                "traditional": "吃虧。"
+                "traditional": "吃虧。",
+                "simplified": "吃亏。"
               }
             ],
             "tiles": [
@@ -2714,7 +2892,10 @@
             "correctFeedback": "畢竟 brings up the fundamental reality that explains human behavior.",
             "repairFeedback": "Use 畢竟 to appeal to an overarching truth or reality."
           }
-        ]
+        ],
+        "explanationEnglish": "The sentence after 畢竟 is the conclusion after thinking and analysis, used to explain the key point of the matter, and the purpose is to remind or convince the other party. For example, 雖然中文不太好學，不過，那畢竟是我自己的選擇。(Although Chinese is not easy to learn, it is my own choice after all.)",
+        "patternAccentColumn": 1,
+        "titleSimplified": "毕竟"
       }
     ]
   }
