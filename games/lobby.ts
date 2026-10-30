@@ -133,7 +133,7 @@ export class Lobby extends DurableObject<Env> {
       att.cheer = now; socket.serializeAttachment(att);
       const frame = JSON.stringify({ t: 'cheer', from: this.person(att), p: message.p } satisfies LobbyServerMessage);
       const to = new Set(message.to);
-      for (const target of this.sockets()) if (to.has((target.deserializeAttachment() as Att).u)) this.send(target, frame);
+      for (const target of this.sockets()) if (this.reachable(target, to)) this.send(target, frame);
     } else if (message.t === 'invite') {
       att.inv = att.inv.filter(time => now - time < 60_000);
       if (att.inv.length >= 10) return;
@@ -144,7 +144,7 @@ export class Lobby extends DurableObject<Env> {
       const frame = JSON.stringify({ t: 'invite', from: this.person(att), room } satisfies LobbyServerMessage);
       const to = new Set(message.to);
       let delivered = 0;
-      for (const target of this.sockets()) if (to.has((target.deserializeAttachment() as Att).u) && target !== socket) { this.send(target, frame); delivered++; }
+      for (const target of this.sockets()) if (target !== socket && this.reachable(target, to)) { this.send(target, frame); delivered++; }
       if (!delivered) this.send(socket, { t: 'error', message: 'Those classmates are offline. Share your room link instead.' });
     } else if (message.t === 'mention-open') {
       const row = this.ctx.storage.sql.exec<{ data: string; read: number }>('SELECT data,read FROM mentions WHERE uid=? AND key=? AND ts>=?', att.u, message.key, now - CHAT_TTL_MS).toArray()[0];
@@ -178,6 +178,12 @@ export class Lobby extends DurableObject<Env> {
         if (other.u === to && other.show && target !== socket) this.send(target, frame);
       }
     }
+  }
+
+  /** Cheers and invites reach only people who are visibly online; hidden people count as offline. */
+  private reachable(target: WebSocket, to: Set<string>) {
+    const other = target.deserializeAttachment() as Att;
+    return other.show && to.has(other.u);
   }
 
   private post(att: Pick<Att, 'u' | 'n' | 'c' | 'i'>, lesson: number, text: string, room: string | null, recipients: string[] = []) {

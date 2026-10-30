@@ -150,6 +150,9 @@ try {
   await until(() => last(alice, 'cheer')?.p === 1);
   send(bob, { t: 'here', l: 101, a: 'lesson', show: false });
   await until(() => last(alice, 'counts')?.v['101']?.n === 1);
+  send(alice, { t: 'cheer', to: ['bob'], p: 2 });
+  await delay(150);
+  assert.ok(!bob.frames.some(frame => frame.t === 'cheer'), 'hidden users get no cheers');
 
   // Hidden users cannot be pinged by forged IDs until they participate in this channel.
   await delay(1100);
@@ -202,6 +205,11 @@ try {
   await until(() => last(bob, 'rooms')?.v.some(room => room.code === created.code));
   send(bob, { t: 'sub', online: false, chat: 101 });
   await until(() => [...bob.frames].some(frame => frame.t === 'msg' && frame.m.r?.code === created.code));
+  send(alice, { t: 'invite', to: ['bob'], code: created.code });
+  await until(() => last(alice, 'error')?.message.includes('offline'));
+  assert.ok(!last(bob, 'invite'), 'hidden users get no invites and look offline');
+  send(bob, { t: 'here', l: 101, a: 'lesson', show: true });
+  await until(() => last(alice, 'counts')?.v['101']?.n === 2);
   send(alice, { t: 'invite', to: ['bob'], code: created.code });
   await until(() => last(bob, 'invite')?.room.code === created.code);
   const guest = await open(`/rooms/${created.code}/socket`, 'quiz-race', (await post(`/rooms/${created.code}`, 'bob')).ticket);
@@ -326,6 +334,7 @@ try {
   bob = await open('/lobby/socket', 'lobby', (await post('/lobby', 'bob')).ticket);
   await until(() => last(bob, 'mentions'));
   assert.equal(last(bob, 'mentions').v.find(item => item.room === created.code)?.message.t, '', 'closed rooms redact private previews on replay');
+  send(bob, { t: 'here', l: 101, a: 'lesson', show: true });
   send(bob, { t: 'mention-open', key: partyNotice.key });
   await until(() => last(bob, 'mention-open')?.key === partyNotice.key);
   assert.equal(last(bob, 'mention-open').v, null, 'closed rooms cannot reopen a private snapshot');

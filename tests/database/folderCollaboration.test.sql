@@ -123,8 +123,16 @@ select public.join_folder('collabtest01');
 set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
 select public.remove_folder_member('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000003');
 select pg_temp.check_collab((select count(*) from public.folder_members) = 2, 'owner removes viewer');
+select pg_temp.check_collab((select invite_code <> 'collabtest01' from public.user_folders), 'removal rotates the invite');
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000003';
+do $$ begin
+  begin perform public.join_folder('collabtest01'); raise exception 'removed viewer rejoined with old invite';
+  exception when raise_exception then if sqlerrm <> 'Invite link is no longer valid' then raise; end if; end;
+end $$;
+set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000001';
 select public.remove_folder_member('f1000000-0000-0000-0000-000000000001','f0000000-0000-0000-0000-000000000002');
 select pg_temp.check_collab((select count(*) from public.folder_members) = 1, 'owner removes editor');
+select invite_code as invite from public.user_folders \gset
 set local request.jwt.claim.sub = 'f0000000-0000-0000-0000-000000000002';
 select pg_temp.check_collab((select count(*) from public.user_flashcards) = 0, 'removed creator cannot read shared cards');
 select pg_temp.check_collab(jsonb_array_length(public.export_my_data()->'flashcards') = 0, 'export cannot bypass revoked folder access');
@@ -148,7 +156,7 @@ do $$ begin
   exception when raise_exception then if sqlerrm <> 'A folder can have at most 20 members' then raise; end if; end;
 end $$;
 set local role authenticated;
-select public.join_folder('collabtest01');
+select public.join_folder(:'invite');
 select pg_temp.check_collab((select count(*) from public.folder_members) = 20, 'rejoin full folder is idempotent');
 insert into public.user_flashcards(id,user_id,folder_id,simplified,translation,created_at)
   select md5('collab-card-cap-' || n)::uuid,auth.uid(),'f1000000-0000-0000-0000-000000000001','測','cap fixture',n
