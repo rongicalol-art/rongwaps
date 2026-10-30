@@ -26,7 +26,7 @@ type CourseBook = BookMeta & {
   buttonEdge: string;
 };
 
-/** Beta: all four books are open, Lessons 1-16 (Book 1 also its Introduction). */
+/** Beta: Books 1-3 are open, Book 4 is locked, Lessons 1-16 (Book 1 also its Introduction). */
 import { BETA_LAST_LESSON } from '../../shared/courseAccess';
 export { BETA_LAST_LESSON } from '../../shared/courseAccess';
 
@@ -55,7 +55,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: 'unlocked' },
   ),
   buildBook(
-    { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: 'unlocked' },
+    { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: 'locked' },
   ),
 ];
 
@@ -145,7 +145,7 @@ export const LOCKED_BOOK_LESSON_TITLES: Record<number, string[]> = {
 export function isLessonLocked(bookId: number, lessonId: number, hasFullCourseAccess = false): boolean {
   if (hasFullCourseAccess) return false;
   if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
-  // Books 2–4 are open while still being authored (Books 2 and 4 have vocabulary only).
-  if (bookId >= 2 && bookId <= 4) return lessonId > 16;
+  // Books 2–3 are open while still being authored (Books 2 and 4 have vocabulary only).
+  if (bookId >= 2 && bookId <= 3) return lessonId > 16;
   return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
 }

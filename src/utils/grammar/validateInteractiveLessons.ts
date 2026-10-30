@@ -82,7 +82,7 @@ export function validateInteractiveLessons(
       // table plus the number lab; the printed book prints no numbered
       // examples there, so example cards would only duplicate the table.
       const teachesWithReferenceTable = Boolean(page.numberLab);
-      if ((page.examples.length === 0 && !teachesWithReferenceTable) || page.questions.length === 0) {
+      if ((page.examples.length === 0 && !teachesWithReferenceTable) || (part.bookId !== 2 && page.questions.length === 0)) {
         issues.push({ location: pageLocation, message: 'Examples and practice questions are required.' });
       }
       if (page.exerciseType === 'unscramble' && !page.unscrambleExercise) {
@@ -300,8 +300,7 @@ export function validateInteractiveLessons(
   });
   const presentBookIds = new Set(parts.map((part) => part.bookId));
   Object.keys(GRAMMAR_USAGE_RULES).forEach((pageId) => {
-    const isB3 = pageId.startsWith('B3');
-    const pageBookId = isB3 ? 3 : 1;
+    const pageBookId = Number(/^B([123])/.exec(pageId)?.[1] ?? 1);
     if (!presentBookIds.has(pageBookId)) return;
     const known = parts.some((part) =>
       part.grammarPages.some((page) => page.id === pageId),

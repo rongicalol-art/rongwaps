@@ -181,6 +181,8 @@ export default defineConfig(() => {
     build: {
       outDir: 'dist',
       emptyOutDir: true,
+      // scripts/build/prerender.ts maps source asset paths to their hashed files with it.
+      manifest: true,
       rollupOptions: {
         output: {
           manualChunks(id) {

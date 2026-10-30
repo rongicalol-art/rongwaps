@@ -17,6 +17,7 @@ export function BrandWordmark({
 
   return (
     <div
+      role="img"
       aria-label={name}
       className={cn('flex min-w-0 items-center gap-2.5', collapsed && 'justify-center', className)}
       {...props}

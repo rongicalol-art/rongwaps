@@ -5,7 +5,7 @@ import { LEGAL_CONTACT_EMAIL } from './legalMeta';
 
 export function LegalSection({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="flex flex-col gap-3">
+    <section className="flex scroll-mt-24 flex-col gap-3">
       <h2 className="text-lg font-extrabold tracking-tight text-ui-ink-strong sm:text-xl">{title}</h2>
       {children}
     </section>
@@ -29,7 +29,7 @@ export function LegalList({ items }: { items: ReactNode[] }) {
 /** Traditional Chinese summary at the top of a legal page; the English text below controls. */
 export function LegalSummary({ points }: { points: string[] }) {
   return (
-    <section lang="zh-Hant" aria-label="中文摘要" className="flex flex-col gap-2 rounded-lg bg-ui-surface px-4 py-4 sm:px-5">
+    <section lang="zh-Hant" aria-label="中文摘要" className="flex scroll-mt-24 flex-col gap-2 rounded-lg bg-ui-surface px-4 py-4 sm:px-5">
       <h2 className="text-base font-extrabold text-ui-ink-strong">中文摘要</h2>
       <ul className="flex list-disc flex-col gap-1.5 pl-5 text-base font-semibold leading-relaxed text-ui-ink marker:text-ui-muted">
         {points.map((point) => (

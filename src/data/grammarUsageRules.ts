@@ -80,6 +80,47 @@ const TIME_ALT = TIME_UNITS.join('|');
 /** Numbers, 個, 多 … that may sit between 了 and its duration (三個小時, 半年). */
 const DURATION_PREFIX = `(?:(?:${NUMBER_ALT}|個|多|半)${SEP}?)*`;
 
+/** Book 2 Lesson 3: the motion verbs its directional patterns list. */
+const MOTION_VERBS = ['走', '跑', '帶', '放', '拿', '搬', '站'];
+/** Book 2 Lesson 3: directional verb + 來／去 compounds. 起來 is left out of
+ *  G01: on its own it is the judgemental 起來 of G06, and the book treats
+ *  站起來 as a motion verb + direction (G02). */
+const DIRECTIONAL_COMPLEMENTS = [
+  '上來', '上去', '下來', '下去', '進來', '進去',
+  '出來', '出去', '回來', '回去', '過來', '過去',
+];
+const MOTION_ALT = MOTION_VERBS.join('|');
+const DIRECTION_ALT = [...DIRECTIONAL_COMPLEMENTS, '起來'].join('|');
+
+/** Book 2 Lesson 6: the verbs its V好 result-complement page pairs with 好. */
+const L06_HAO_VERBS = [
+  '點', '學', '做', '寫', '吃', '喝', '唱', '買', '賣', '收', '洗', '煮', '修',
+  '準備', '複習', '練習', '打掃', '排', '考', '教', '弄', '說', '講', '開', '關',
+  '放', '掛', '貼', '穿', '戴', '整理',
+];
+const L06_HAO_ALT = L06_HAO_VERBS.join('|');
+/** Book 2 Lesson 6: the verbs its V錯 page pairs with 錯. */
+const L06_CUO_VERBS = [
+  '聽', '看', '說', '寫', '做', '吃', '喝', '買', '賣', '唱', '弄', '拿', '放',
+  '記', '想', '算', '念', '讀', '打', '開', '關', '走', '坐', '選', '點',
+];
+const L06_CUO_ALT = L06_CUO_VERBS.join('|');
+/** Book 2 Lesson 6: question words its QW……就……QW page lists. */
+const L06_QW_ALT = `什${SEP}?麼|誰|哪裡|哪兒|怎麼|多少|幾|哪`;
+
+/** Book 2 Lesson 7: measure words its 一 + M + 都／也 + Neg page uses. */
+const L07_MEASURE_WORDS = [
+  '個', '班', '毛', '塊', '家', '位', '張', '件', '種', '隻', '條', '本',
+  '杯', '瓶', '點', '歲', '次', '遍', '趟', '句', '分', '層',
+];
+const L07_MEASURE_ALT = L07_MEASURE_WORDS.join('|');
+/** Book 2 Lesson 7: the verbs its V光 page pairs with 光. */
+const L07_GUANG_VERBS = [
+  '吃', '用', '賣', '走', '喝', '買', '花', '拿', '送', '丟', '脫', '洗',
+  '掃', '收', '看', '玩', '打', '開',
+];
+const L07_GUANG_ALT = L07_GUANG_VERBS.join('|');
+
 export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   // Lesson 1 — 新同學
   'B1L01-G01-P38': detected('叫／姓／是 introduce a name or identity', [
@@ -509,6 +550,282 @@ export const GRAMMAR_USAGE_RULES: GrammarUsageRules = {
   'B3L14-G03-P363': detected('幸虧……要不然……', [inOrder(['幸虧', '要不然'], 12), inOrder(['幸虧'])]),
   'B3L14-G04-P369': detected('根據', [inOrder(['根據'])]),
   'B3L14-G05-P371': detected('按照 / 按 / 照 NP + V', [inOrder(['按照']), inOrder(['就按']), inOrder(['照說明書'])]),
+
+  // Book 2 Lesson 1 — 認識新朋友
+  'B2L01-G01-P30': detected('V一下', [inOrder(['一下'])]),
+  'B2L01-G02-P31': detected('最好 + VP', [inOrder(['最好'])]),
+  'B2L01-G03-P32': detected('不但……也……', [inOrder(['不但', '也'], 8)]),
+  'B2L01-G04-P32': detected('V完', [tokenEndsWith(['完'], ['完全', '完成', '完整'])]),
+  'B2L01-G05-P38': detected('V在', [inOrder(['住', '在'], 1), inOrder(['放', '在'], 1), inOrder(['站', '在'], 1), inOrder(['寫', '在'], 1)]),
+  'B2L01-G06-P38': detected('V給', [inOrder(['送', '給'], 1), inOrder(['賣', '給'], 1), inOrder(['寄', '給'], 1), inOrder(['打', '給'], 1), inOrder(['拿', '給'], 1), inOrder(['帶', '給'], 1), inOrder(['寫', '給'], 1), inOrder(['說', '給'], 1)]),
+  'B2L01-G07-P39': detected('（一）邊……（一）邊……', [inOrder(['一邊', '一邊'], 6)]),
+  'B2L01-G08-P40': detected('雖然……可是……', [inOrder(['雖然', '可是'], 12)]),
+  'B2L01-G09-P41': detected('句末呢', [sentenceFinal(['呢'], { notAfter: ['後來'] })]),
+
+  // Book 2 Lesson 2 — 我得做家事
+  'B2L02-G01-P51': detected('Subject + 把 + N + V + 了', [
+    regex(`(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}[^${SEP}]+${SEP}了`),
+  ]),
+  'B2L02-G02-P51': detected('Subject + 把 + N + V + 完', [
+    regex(`(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}[^${SEP}]+${SEP}完`),
+  ]),
+  'B2L02-G03-P52': detected('Subject + 把 + N + V一V', [
+    regex(`(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}([^${SEP}]+)${SEP}一${SEP}\\1`),
+  ]),
+  'B2L02-G04-P53': detected('Subject + 把 + N + V給 + Receiver', [
+    regex(
+      `(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:送|賣|拿|寄|遞|借|交|帶|打|寫|說|還)${SEP}給`,
+    ),
+  ]),
+  'B2L02-G05-P54': detected('（有）多 + Vs', [
+    regex(
+      `(?:^|${SEP})(?<!很${SEP})(?<!不${SEP})(?<!太${SEP})(?<!沒有${SEP})(?:有${SEP})?多${SEP}(?:大|長|高|遠|重|髒|舊|新|貴|便宜|快|慢|早|晚|久|深|寬|厚|熱|冷|難|忙|累|近)`,
+    ),
+  ]),
+  'B2L02-G06-P54': detected('Time duration + 沒／不 + V', [
+    regex(
+      `(?:^|${SEP})${DURATION_PREFIX}(?:${TIME_ALT})${SEP}(?:沒|不)${SEP}(?!關係|問題|事了)[^${SEP}]+`,
+    ),
+  ]),
+  'B2L02-G07-P55': detected('Question word + 都／也 + VP', [
+    regex(
+      `(?:^|${SEP})(?:什麼|哪裡|哪兒|誰|怎麼|哪|多少|幾)(?:${SEP}(?!我|你|妳|他|她|我們|你們|他們|大家|時候|時間)[^${SEP}]+){0,3}${SEP}(?:都|也)`,
+    ),
+  ]),
+  'B2L02-G08-P56': detected('又 + VP', [inOrder(['又'])]),
+  'B2L02-G09-P56': detected('Time + 才 + VP', [
+    regex(
+      `(?:^|${SEP})(?:昨天|今天|明天|前天|後天|早上|上午|中午|下午|晚上|每天|的${SEP}時候|(?:這個|上個|下個|每個)?(?:星期|禮拜)[一二三四五六日天]?|[0-9一二兩三四五六七八九十]+${SEP}(?:點|月|號|日))(?:${SEP}[^${SEP}]+){0,3}${SEP}才`,
+    ),
+  ]),
+  'B2L02-G10-P62': detected('Subject + 把 + N + V在／到 + Place', [
+    regex(
+      `(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:丟|放|拿|寫|寄|擺|掛|停|踢|送|帶|搬|倒|藏|收|排|貼)${SEP}(?:在|到)`,
+    ),
+  ]),
+  'B2L02-G11-P63': detected('Condition + 才 + Result', [
+    regex(
+      `(?:^|${SEP})(?:因為|為了|要是|如果|以後|的話|最好|得|要)(?:${SEP}[^${SEP}]+){0,12}${SEP}才`,
+    ),
+  ]),
+
+  // Book 2 Lesson 3 — 我要租房子
+  'B2L03-G01-P75': detected('Directional verb + 來／去', [
+    ...DIRECTIONAL_COMPLEMENTS.map((token) =>
+      inOrder([token], 1, {
+        notAfter: [...MOTION_VERBS, ...(token === '過去' ? ['在'] : [])],
+        notBefore: token === '過去' ? ['的'] : [],
+      }),
+    ),
+  ]),
+  'B2L03-G02-P77': detected('Motion verb + directional verb + 來／去', [
+    regex(
+      `(?:^|${SEP})(?:${MOTION_ALT})(?:${SEP})?(?:${DIRECTION_ALT})(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L03-G03-P78': detected('Motion verb + directional verb + place + 來／去', [
+    regex(
+      `(?:^|${SEP})(?:${MOTION_ALT})(?:${SEP})?(?:進|出|回|上|下|過)(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:來|去)(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L03-G04-P79': detected('Subject + 把 + Object + motion verb + directional verb + 來／去', [
+    regex(
+      `(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}(?:${MOTION_ALT})(?:${SEP})?(?:${DIRECTION_ALT})(?=${SEP}|$)`,
+    ),
+    regex(
+      `(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}(?:${MOTION_ALT})(?:${SEP}(?:進|出|回|上|下|過))(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:來|去)(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L03-G05-P79': detected('XY + XY (two-syllable verb reduplication)', [
+    regex(
+      `(?:^|${SEP})(?!爸爸|媽媽|哥哥|弟弟|姐姐|妹妹|星星|常常|剛剛|慢慢|天天|種種)([\\u3400-\\u9fff]{2})${SEP}\\1(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L03-G06-P80': detected('V起來 + comment', [
+    regex(`(?:^|${SEP})(?:看|聽|吃|喝|穿|用|玩|學|讀|做)起來(?=${SEP}|$)`),
+    regex(`(?:^|${SEP})(?:看|聽|吃|喝|穿|用|玩|學|讀|做)${SEP}起來(?=${SEP}|$)`),
+  ]),
+  'B2L03-G07-P81': detected('替 + person + action', [inOrder(['替'])]),
+  'B2L03-G08-P86': detected('除了……，還……', [
+    inOrder(['除了', '還'], 15, { notBefore: ['是'] }),
+  ]),
+  'B2L03-G09-P87': detected('Subject + 把 + Object + Verb得 + Adv + Vs', [
+    regex(
+      `(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}[^${SEP}]+${SEP}得(?:${SEP})?(?:很|真|太|非常|更|那麼|這麼|不)`,
+    ),
+    regex(
+      `(?:^|${SEP})把(?:${SEP}[^${SEP}]+){1,4}${SEP}[^${SEP}]+得(?:${SEP})?(?:很|真|太|非常|更|那麼|這麼|不)`,
+    ),
+  ]),
+
+  // Book 2 Lesson 4 — 逛夜市真有趣
+  'B2L04-G01-P99': detected('Thing + 就 + 在／是 + place or person', [
+    inOrder(['就在']),
+    inOrder(['就', '在'], 1),
+    inOrder(['就是']),
+    inOrder(['就', '是'], 1),
+  ]),
+  'B2L04-G02-P100': detected('V到／V得到了／V得到／V不到', [
+    regex(
+      `(?:^|${SEP})(?:想|看|買|吃|找|租|走|拿|聽|收|遇|碰)(?:${SEP}(?:得|不))?${SEP}?(?:得|不)?到(?:了)?(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L04-G03-P101': detected('V懂／V得懂／V不懂', [
+    regex(
+      `(?:^|${SEP})(?:聽|看)(?:${SEP}(?:得|不))?${SEP}?(?:得|不)?懂(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L04-G04-P108': detected('Vs得不得了／Vs極了', [
+    inOrder(['得不得了']),
+    inOrder(['得', '不得了'], 1),
+    inOrder(['極了']),
+    inOrder(['極', '了'], 1),
+  ]),
+  'B2L04-G05-P110': detected('越來越……', [inOrder(['越來越'])]),
+  'B2L04-G06-P111': detected('V得起／V不起', [
+    regex(
+      `(?:^|${SEP})(?:吃|買|看|喝|住|用|玩|付|租)(?:${SEP}(?:得|不))?${SEP}?(?:得|不)?起(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L04-G07-P112': detected('V飽／V得飽／V不飽', [
+    regex(
+      `(?:^|${SEP})(?:吃|睡)(?:${SEP}(?:得|不))?${SEP}?(?:得|不)?飽(?=${SEP}|$)`,
+    ),
+  ]),
+  'B2L04-G08-P113': detected('對……有／沒（有）興趣', [
+    regex(
+      `(?:^|${SEP})對(?!${SEP}了)(?:${SEP}[^${SEP}]+){1,8}${SEP}(?:很${SEP})?(?:沒有|有|沒)(?:${SEP}(?:一點兒|一點|有些))?${SEP}?興趣(?=${SEP}|$)`,
+    ),
+  ]),
+
+  // Book 2 Lesson 5 — 歡迎到我家來玩
+  'B2L05-G01-P122': detected('N₁（+Neg）+被（+N₂）+V+C', [
+    regex(
+      `(?:^|${SEP})被(?:${SEP}[^${SEP}]+){0,3}${SEP}[^${SEP}]+${SEP}了(?:${SEP}|$)`,
+    ),
+    regex(`(?:^|${SEP})(?:沒|沒有|不會|不)${SEP}被`),
+  ]),
+  'B2L05-G02-P123': detected('S₁+V著V著，（S₂）+就……了', [
+    regex(
+      `(?:^|${SEP})([^${SEP}]*著)${SEP}\\1(?:${SEP}[^${SEP}]+){0,3}${SEP}就`,
+    ),
+  ]),
+  'B2L05-G03-P124': detected('只要……就……', [inOrder(['只要', '就'], 8)]),
+  'B2L05-G04-P124': detected('有時候……，有時候……', [
+    regex(
+      `(?:^|${SEP})(?:有${SEP}時候|有時候)(?:${SEP}[^${SEP}]+){0,10}${SEP}(?:有${SEP}時候|有時候)`,
+    ),
+  ]),
+  'B2L05-G05-P130': detected('Vs起來／V起（O）來', [
+    regex(`(?:^|${SEP})[^${SEP}]+${SEP}起來(?:${SEP}|$)`),
+    regex(`(?:^|${SEP})[^${SEP}]+起來(?:${SEP}|$)`),
+    regex(
+      `(?:^|${SEP})[^${SEP}]+${SEP}起(?:${SEP}[^${SEP}]+){0,2}${SEP}來(?:${SEP}|$)`,
+    ),
+  ]),
+  'B2L05-G06-P130': detected('還好……，要不然……', [inOrder(['還好', '要不然'], 12)]),
+  'B2L05-G07-P131': detected('每+Nu+M₁（+就）+V+Nu+M₂（+N）', [
+    regex(
+      `(?:^|${SEP})每${SEP}(?:[0-9]+|[一二兩三四五六七八九十百千萬半幾]+)(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:就${SEP})?[^${SEP}]+${SEP}(?:[0-9]+|[一二兩三四五六七八九十半幾]+)(?:${SEP}[^${SEP}]+){0,2}${SEP}(?:次|遍|趟|班|回|場|期)`,
+    ),
+  ]),
+  'B2L05-G08-P132': detected('A像B一樣（+Vs）', [inOrder(['像', '一樣'], 6)]),
+
+  // Book 2 Lesson 6 — 我們去KTV唱歌吧！
+  'B2L06-G01-P143': detected('V好了／沒V好／V得/不 + 好', [
+    regex(`(?:^|${SEP})(?:${L06_HAO_ALT})${SEP}好${SEP}了(?=${SEP}|$)`),
+    regex(`(?:^|${SEP})(?:${L06_HAO_ALT})${SEP}(?:得|不)${SEP}好(?:${SEP}了)?$`),
+    regex(
+      `(?:^|${SEP})(?:沒|沒有)(?:${SEP}[^${SEP}]+){0,4}${SEP}(?:${L06_HAO_ALT})${SEP}好`,
+    ),
+  ]),
+  'B2L06-G02-P144': detected('V錯了／沒V錯', [
+    regex(
+      `(?:^|${SEP})(?:${L06_CUO_ALT})(?:[^${SEP}]*錯|${SEP}錯)(?:${SEP}?了)?`,
+    ),
+  ]),
+  'B2L06-G03-P145': detected('V會了／沒V會／V得/不會', [
+    regex(`(?:^|${SEP})(?:學|教)(?:${SEP}(?:得|不))?${SEP}?會(?:了)?(?=${SEP}|$)`),
+  ]),
+  'B2L06-G04-P145': detected('QW……就……QW', [
+    regex(
+      `(?:^|${SEP})(?:${L06_QW_ALT})(?:${SEP}[^${SEP}]+){0,4}${SEP}就[^${SEP}]*(?:${SEP}[^${SEP}]+){0,2}${SEP}(?:${L06_QW_ALT})(?=${SEP}|$)`,
+    ),
+    regex(
+      `(?:^|${SEP})(?:${L06_QW_ALT})(?:${SEP}[^${SEP}]+){0,4}${SEP}(?:${L06_QW_ALT})(?:${SEP}[^${SEP}]+){0,2}${SEP}就`,
+    ),
+  ]),
+  'B2L06-G05-P146': detected('一定／很快／不會 + 會……的', [
+    regex(
+      `(?:^|${SEP})(?:一定|當然|應該)(?:${SEP}[^${SEP}]+){0,2}${SEP}會(?:${SEP}[^${SEP}]+){0,5}${SEP}的(?:${SEP}|$)`,
+    ),
+    regex(
+      `(?:^|${SEP})很${SEP}?快(?:${SEP}[^${SEP}]+){0,2}${SEP}會(?:${SEP}[^${SEP}]+){0,5}${SEP}的(?:${SEP}|$)`,
+    ),
+    regex(`(?:^|${SEP})不${SEP}?會(?:${SEP}[^${SEP}]+){1,4}${SEP}的(?:${SEP}|$)`),
+  ]),
+  'B2L06-G06-P147': detected('等……，就……', [inOrder(['等', '就'], 8)]),
+  'B2L06-G07-P153': detected('才 + Number (fewer than expected)', [
+    regex(`(?:^|${SEP})才(?:${SEP}[^${SEP}]+){0,3}${SEP}(?:[0-9]+|[一二兩三四五六七八九十百千萬半幾])`),
+    regex(
+      `(?:^|${SEP})個${SEP}[^${SEP}]*才${SEP}(?:[0-9]+|[一二兩三四五六七八九十百千萬半幾])`,
+    ),
+  ]),
+  'B2L06-G08-P154': detected('讓 + B + Feeling', [inOrder(['讓'])]),
+
+  // Book 2 Lesson 7 — 坐火車到花蓮去旅行
+  'B2L07-G01-P165': detected('不但……，還……', [inOrder(['不但', '還'], 12)]),
+  'B2L07-G02-P166': detected('一 + M（+N）+ 都／也 + Neg + V', [
+    regex(
+      `(?:^|${SEP})一${SEP}(?:${L07_MEASURE_ALT})(?:${SEP}[^${SEP}]+){0,2}${SEP}(?:都|也)${SEP}(?:沒有|不|沒)`,
+    ),
+  ]),
+  'B2L07-G03-P166': detected('讓 + Person + V（客氣地）', [
+    regex(
+      `(?:^|${SEP})讓(?:${SEP}[^${SEP}]+){1,3}${SEP}(?:請客|請|帶|送|等|去|來|吃|喝|看|坐|選|訂|說|買|休息|上班|回家|進來|出去|走|做|寫|讀|唱|玩|參加|打|用|開|關|放|拿|教|幫)`,
+    ),
+  ]),
+  'B2L07-G04-P167': detected('是 +（Adv）+ Vs', [
+    regex(
+      `(?:^|${SEP})是${SEP}(?:比較|有點兒|有點|有一點兒|有一點|很|真|太|更|非常|這麼|那麼)${SEP}(?:危險|安全|貴|便宜|難|難寫|難買|容易|忙|累|漂亮|好看|好吃|好玩|舒服|冷|熱|快|慢|遠|近|新|舊|大|小|高|矮|長|短|多|少|好|對|錯|無聊|有趣|開心|高興)`,
+    ),
+    regex(
+      `(?:^|${SEP})是${SEP}(?:危險|安全|貴|便宜|難|容易|忙|累|漂亮|好看|好吃|好玩|舒服|冷|熱|快|慢|遠|近|無聊|有趣|開心|高興)(?=${SEP}(?:的|了|多了|極了)?(?:${SEP}|$))`,
+    ),
+  ]),
+  'B2L07-G05-P168': detected('V光（了）', [
+    regex(`(?:^|${SEP})(?:${L07_GUANG_ALT})${SEP}?光(?:${SEP}?了)?(?=${SEP}|$)`),
+  ]),
+  'B2L07-G06-P169': detected('一點兒 + 都／也 + Neg + Vs', [
+    regex(`(?:^|${SEP})(?:一點兒|一點)${SEP}(?:都|也)${SEP}(?:沒有|不|沒)`),
+  ]),
+  'B2L07-G07-P176': detected('剛……（，）就……', [inOrder(['剛', '就'], 8)]),
+  'B2L07-G08-P176': detected('趁（著）', [
+    regex(`(?:^|${SEP})趁(?:著)?${SEP}[^${SEP}]+`),
+  ]),
+
+  // Book 2 Lesson 8 — 請給我貼紙，我要換史努比！
+  'B2L08-G01-P188': detected('滿 + number + measure word (+ noun)', [
+    inOrder(['滿'], 1, { notAfter: ['客'] }),
+  ]),
+  'B2L08-G02-P188': detected('連 + focus + 都／也', [
+    // The reader segments 都不／也不 as one token, so matching the standalone
+    // 連 token avoids missing those common variants while excluding 連續劇.
+    inOrder(['連']),
+  ]),
+  'B2L08-G03-P189': detected('像 + example + 這樣／那樣 + 的 + noun', [
+    inOrder(['像', '這樣'], 12),
+    inOrder(['像', '那樣'], 12),
+  ]),
+  'B2L08-G04-P190': detected('只好 + action', [inOrder(['只好'])]),
+  'B2L08-G05-P191': detected('為了 + purpose', [inOrder(['為了'])]),
+  'B2L08-G06-P197': detected('V + 上 result complement', [
+    inOrder(['愛上']),
+  ]),
+  'B2L08-G07-P198': detected('因為 + noun / phrase + 的關係', [
+    // In 因為韓劇的關係, 韓劇的 is a single reading token.
+    inOrder(['因為', '關係'], 8),
+  ]),
 
   // Book 3 Lesson 15 — 去淡水參觀古蹟
   'B3L15-G01-P383': detected('簡直', [inOrder(['簡直'])]),

@@ -18,6 +18,16 @@
         }
       } catch (e) {}
     </script>
+    <!-- Prerendered public pages (scripts/build/prerender.ts) show #prerender to signed-out
+         visitors until the app renders; signed-in visitors never see it. -->
+    <style>#prerender{display:none}html.prerendered #prerender{display:block}html.prerendered #prerender~#root{display:none}</style>
+    <script>
+      try {
+        if (!Object.keys(localStorage).some(function (k) { return /^sb-.+-auth-token$/.test(k); })) {
+          document.documentElement.classList.add('prerendered');
+        }
+      } catch (e) {}
+    </script>
 
     <!-- Primary Meta Tags -->
     <title>Ron's Mandarin · Modern Chinese 時代華語</title>

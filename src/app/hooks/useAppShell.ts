@@ -140,8 +140,8 @@ export function useAppShell() {
 
   return {
     isLoading,
-    // Dev: skip the sign-in gate so local previews work signed out (cloud sync stays off).
-    isSignedOut: !currentUser && !import.meta.env.DEV,
+    // Dev: skip the sign-in gate so local previews work signed out (cloud sync stays off); `?landing` previews the landing page.
+    isSignedOut: !currentUser && (!import.meta.env.DEV || window.location.search.includes('landing')),
     nav: {
       activeTab: navigation.activeTab,
       activeBookId: shellState.activeBookId,

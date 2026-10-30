@@ -78,7 +78,9 @@ async function exportDialogueAlignment(bookId: number) {
   const sourcePath = bookId === 1
     ? SOURCE_ALIGNMENT_PATH
     : resolve(ROOT, `content/dialogueAlignment-book${bookId}.json`);
-  const raw = await readFile(sourcePath, 'utf8');
+  const raw = bookId === 2
+    ? await readFile(sourcePath, 'utf8').catch(() => '{}')
+    : await readFile(sourcePath, 'utf8');
   const alignmentMap = JSON.parse(raw) as Record<string, unknown>;
 
   const filteredMap: Record<string, unknown> = {};
@@ -158,7 +160,7 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
     }
   }
   parts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
-  await attachGrammarPractice(parts, bookId);
+  if (bookId !== 2) await attachGrammarPractice(parts, bookId);
   await attachSentenceAudio(parts);
   return parts;
 }
@@ -233,11 +235,12 @@ async function attachReadingAudio(bookId: number, readings: ReadingRecord[]) {
   const studio = JSON.parse(await readFile(resolve(ROOT, 'content/audio/grammar_studio_audio.json'), 'utf8').catch(() => '{}')) as Record<string, { file: string }>;
   const index = JSON.parse(await readFile(resolve(ROOT, `content/audio/audio_index_book${bookId}.json`), 'utf8').catch(() => '{}')) as {
     dialogueTracks?: Array<{ file: string }>;
+    readingTracks?: Array<{ file: string }>;
   };
   const alignment = JSON.parse(await readFile(resolve(ROOT, `content/dialogueAlignment-book${bookId}.json`), 'utf8').catch(() => '{}')) as Record<string, {
     audioFile: string; lines: AlignedLineSource[];
   }>;
-  const trackFiles = new Set((index.dialogueTracks ?? []).map((track) => track.file));
+  const trackFiles = new Set([...(index.dialogueTracks ?? []), ...(index.readingTracks ?? [])].map((track) => track.file));
   const han = (text: string) => [...text].filter((char) => /\p{Script=Han}/u.test(char)).join('');
   for (const reading of readings) {
     const aligned = alignment[reading.id];
@@ -256,7 +259,7 @@ async function attachReadingAudio(bookId: number, readings: ReadingRecord[]) {
 
 async function main() {
   console.log('Exporting authored content to public/data packs...');
-  for (const bookId of [1, 3]) {
+  for (const bookId of [1, 2, 3]) {
     const readings = await loadSourceReadings(bookId);
     if (bookId !== 1) await attachReadingAudio(bookId, readings);
     const grammarParts = await loadSourceGrammarParts(bookId);

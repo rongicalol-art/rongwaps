@@ -30,6 +30,11 @@ export interface FeedbackBottomBarProps {
     buttonEdge: string;
     accentHex: string;
   };
+  /**
+   * When mounted inside an embedded or narrow container (e.g. landing preview frame),
+   * keep the stacked result/action card rather than expanding to the wide single-row desktop layout.
+   */
+  layout?: 'auto' | 'stacked';
 }
 
 export function FeedbackBottomBar({ 
@@ -47,7 +52,8 @@ export function FeedbackBottomBar({
   keyboardShortcutDisabled = false,
   onSkip,
   onBreakdown,
-  onRetry
+  onRetry,
+  layout = 'auto',
 }: FeedbackBottomBarProps) {
   
   const reduceMotion = useReducedMotion();
@@ -146,7 +152,7 @@ export function FeedbackBottomBar({
                 // Desktop: floating rounded tactile island card
                 'md:pointer-events-auto md:max-w-xl md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:border-ui-border md:bg-ui-surface md:p-6',
                 // Wide screens: one compact row (result + answer, then the action) instead of a tall card
-                isChecked && 'lg:max-w-3xl lg:flex-row lg:items-center lg:gap-6 lg:py-4 lg:pl-6 lg:pr-4',
+                isChecked && layout !== 'stacked' && 'lg:max-w-3xl lg:flex-row lg:items-center lg:gap-6 lg:py-4 lg:pl-6 lg:pr-4',
               )}
             >
               {isChecked && (
@@ -155,7 +161,10 @@ export function FeedbackBottomBar({
                   animate={{ opacity: 1, height: 'auto', scale: 1 }}
                   exit={{ opacity: 0, height: 0, scale: 0.95 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                  className="flex w-full flex-col px-2 origin-bottom md:px-0 lg:min-w-0 lg:flex-1 lg:flex-row lg:items-center lg:gap-5"
+                  className={cn(
+                    'flex w-full flex-col px-2 origin-bottom md:px-0',
+                    layout !== 'stacked' && 'lg:min-w-0 lg:flex-1 lg:flex-row lg:items-center lg:gap-5',
+                  )}
                 >
                   <div className={`flex shrink-0 items-center gap-2 text-[18px] font-extrabold sm:text-[20px] ${isCorrect ? 'text-feedback-success-text' : 'text-feedback-danger-text'}`}>
                     <motion.span
@@ -176,7 +185,10 @@ export function FeedbackBottomBar({
                       disabled={!onBreakdown}
                       aria-label={`Open breakdown and memory hook for ${word.hanzi}`}
                       title={onBreakdown ? 'Breakdown and memory hook' : undefined}
-                      className="-mx-2 mt-2 flex items-center gap-3.5 rounded-control px-2 py-1.5 text-left transition-colors enabled:hover:bg-ui-hover focus-ring lg:mx-0 lg:mt-0 lg:min-w-0 lg:flex-1 lg:rounded-none lg:border-l-2 lg:border-ui-divider lg:py-0 lg:pl-5 lg:enabled:hover:bg-transparent"
+                      className={cn(
+                        '-mx-2 mt-2 flex items-center gap-3.5 rounded-control px-2 py-1.5 text-left transition-colors enabled:hover:bg-ui-hover focus-ring',
+                        layout !== 'stacked' && 'lg:mx-0 lg:mt-0 lg:min-w-0 lg:flex-1 lg:rounded-none lg:border-l-2 lg:border-ui-divider lg:py-0 lg:pl-5 lg:enabled:hover:bg-transparent',
+                      )}
                     >
                       <span className="font-chinese text-3xl font-bold leading-none text-ui-ink-strong sm:text-4xl">{word.hanzi}</span>
                       <span className="flex min-w-0 flex-1 flex-col">
@@ -186,7 +198,7 @@ export function FeedbackBottomBar({
                     </button>
                   ) : !isCorrect && correctAnswer && (
                     // The answer sits on a tile like the app's cards: the thing to remember.
-                    <div className="mt-2 flex flex-col gap-0.5 lg:mt-0 lg:min-w-0 lg:flex-1">
+                    <div className={cn('mt-2 flex flex-col gap-0.5', layout !== 'stacked' && 'lg:mt-0 lg:min-w-0 lg:flex-1')}>
                       <div className="text-lg font-extrabold leading-snug text-ui-ink-strong">{correctAnswer}</div>
                       {pinyin && <div className="text-base font-bold text-ui-muted-strong">{numberToToneMarks(pinyin)}</div>}
                     </div>
@@ -196,7 +208,7 @@ export function FeedbackBottomBar({
 
 
               {(showSkipAction || showContinueAction || showCheckAction || showRetryAction) && (
-                <div className={cn('flex w-full items-center gap-3', isChecked && 'lg:w-72 lg:shrink-0')}>
+                <div className={cn('flex w-full items-center gap-3', isChecked && layout !== 'stacked' && 'lg:w-72 lg:shrink-0')}>
                 {showSkipAction ? (
                   <ActionButton
                     onClick={onSkip}

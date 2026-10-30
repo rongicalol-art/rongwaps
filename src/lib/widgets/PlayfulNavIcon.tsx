@@ -37,7 +37,7 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   review: new URL('../../assets/icons/flat/dashboard.svg?no-inline', import.meta.url).href,
   settings: new URL('../../assets/icons/flat/cog.svg?no-inline', import.meta.url).href,
   meaning: new URL('../../assets/icons/flat/tag.svg?no-inline', import.meta.url).href,
-  characters: new URL('../../assets/icons/flat/stamp.svg?no-inline', import.meta.url).href,
+  characters: new URL('../../assets/icons/flat/profile-characters.svg?no-inline', import.meta.url).href,
   trueFalse: new URL('../../assets/icons/flat/sign-check.svg?no-inline', import.meta.url).href,
   build: new URL('../../assets/icons/flat/brick.svg?no-inline', import.meta.url).href,
 };

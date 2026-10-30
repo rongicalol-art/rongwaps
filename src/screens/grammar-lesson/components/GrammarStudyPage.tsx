@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammar/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
+import { SegmentedControl } from '../../../lib/widgets';
 import { GrammarExamplesSection } from './GrammarExamplesSection';
 
 import { GrammarFocusText } from './GrammarFocusText';
@@ -58,9 +59,13 @@ export function GrammarStudyPage({
             />
           </p>
           {page.explanationEnglish && (
-            <button type="button" className="text-sm font-extrabold text-brand-primary-text focus-ring-inline" aria-expanded={chinese} onClick={() => setLanguage({ pageId: page.id, chinese: !chinese })}>
-              {chinese ? 'Show in English' : 'Show in Chinese'}
-            </button>
+            <SegmentedControl
+              ariaLabel="Explanation language"
+              className="w-44"
+              value={chinese ? 'zh' : 'en'}
+              onChange={(next) => setLanguage({ pageId: page.id, chinese: next === 'zh' })}
+              options={[{ value: 'en', label: 'English' }, { value: 'zh', label: '中文' }]}
+            />
           )}
         </header>
       )}

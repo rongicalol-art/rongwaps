@@ -6,7 +6,7 @@ const SUMMARY = [
   'Ron\'s Mandarin 是配合《時代華語》課本使用的學習 App，由學習中文的 Ron 個人開發。',
   '提供間隔重複字卡、字形拆解與記憶法、寫字、聽力、閱讀與語法練習。',
   '使用正體字與台灣發音，程度對應 TOCFL（華語文能力測驗）。',
-  '目前僅開放樹德科技大學學生測試第一冊第 1 至 8 課，免費使用。',
+  '目前開放樹德科技大學學生測試第一至三冊，免費使用。',
 ];
 
 export function AboutContent() {
@@ -60,9 +60,9 @@ export function AboutContent() {
 
       <LegalSection title="Beta">
         <LegalParagraph>
-          The beta is open to Shu-Te University students who sign in with their school Google account. Book 1,
-          Lessons 1 to 8 are available now; later lessons and Books 2 to 4 will open as they are ready. Things
-          may change or break, and your feedback decides what gets built next.
+          The beta is open to Shu-Te University students who sign in with their school Google account. Books 1
+          to 3 are available now; Book 4 will open when it is ready. Things may change or break, and your
+          feedback decides what gets built next.
         </LegalParagraph>
       </LegalSection>
 

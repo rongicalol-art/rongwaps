@@ -10,7 +10,9 @@ Run: output/venv/bin/python scripts/audio/align_mms.py [--book 3] [READING_ID ..
 Writes: content/dialogueAlignment.json, output/mms_alignment_report.json
   (--book 3: content/dialogueAlignment-book3.json from content/readings/book-3.json against the
    untrimmed official tracks in output/official-audio/book3/, which
-   `node scripts/audio/downloadBook3VocabularyTracks.mjs --dialogue` downloads)
+   `node scripts/audio/downloadBook3VocabularyTracks.mjs --dialogue` downloads;
+   --book 2: content/dialogueAlignment-book2.json against the indexed official tracks in
+   output/official-audio/book2/originals/)
 """
 import json
 import re
@@ -34,6 +36,26 @@ if BOOK == 1:
     AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book1'
     OUT_FILE = ROOT / 'content' / 'dialogueAlignment.json'
     REPORT = ROOT / 'output' / 'mms_alignment_report.json'
+elif BOOK == 2:
+    source_readings = json.loads((ROOT / 'content' / 'readings' / 'book-2.json').read_text())
+    audio_index = json.loads((ROOT / 'content' / 'audio' / 'audio_index_book2.json').read_text())
+    dialogue_files = {track['file'][:5]: track['file'] for track in audio_index['dialogueTracks']}
+    reading_files = {track['file'][:5]: track['file'] for track in audio_index['readingTracks']}
+    READINGS = []
+    for reading in source_readings:
+        lesson = f"{reading['lessonId']:02d}"
+        file_map = dialogue_files if reading['dialogueNumber'] == 1 else reading_files
+        audio_file = file_map.get(f'B2-{lesson}')
+        if not audio_file:
+            raise ValueError(f"No indexed Book 2 audio file for {reading['id']}.")
+        READINGS.append({
+            'id': reading['id'], 'audioFile': audio_file,
+            'lessonId': reading['lessonId'], 'dialogueNumber': reading['dialogueNumber'],
+            'lines': reading['paragraphs'],
+        })
+    AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book2' / 'originals'
+    OUT_FILE = ROOT / 'content' / 'dialogueAlignment-book2.json'
+    REPORT = ROOT / 'output' / 'mms_alignment_report_book2.json'
 else:
     # Authored readings: dialogue N of lesson LL plays the official track B{book}-LL-N-1.mp3.
     READINGS = [{

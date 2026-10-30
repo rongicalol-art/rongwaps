@@ -21,9 +21,9 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
           animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           transition={reduceMotion ? { duration: 0.1 } : { duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10"
+          className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-16"
         >
-          <div className="mx-auto flex w-full max-w-2xl items-center gap-3 px-4 md:px-6">
+          <div className="mx-auto flex w-full max-w-md items-center gap-3 px-4 md:px-6">
             {count > 1 && (
             <ActionButton
               variant="secondary"

@@ -3,7 +3,7 @@ import { Route, Routes, useLocation, useNavigate, useParams } from 'react-router
 import { LoadingScreen } from './lib/widgets/LoadingScreen';
 import { useAuth } from './hooks/useAuth';
 import { legalPageFromPathname } from './app/routes';
-import { SignInWindow } from './screens/auth';
+import { LazyLandingPage } from './screens/landing/LazyLandingPage';
 import { takeFolderReturn } from './utils/browser/shareLink';
 
 const AppShell = lazy(() => import('./app/AppShell'));
@@ -45,6 +45,6 @@ function RegularApp({ pathname }: { pathname: string }) {
 function AuthenticatedWorkspace() {
   const { currentUser, isLoading } = useAuth();
   if (isLoading) return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen />;
-  if (!currentUser && !import.meta.env.DEV) return <SignInWindow />;
+  if (!currentUser && !import.meta.env.DEV) return <LazyLandingPage />;
   return <AppShell />;
 }

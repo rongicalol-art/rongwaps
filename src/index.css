@@ -109,7 +109,7 @@
   --color-ui-surface-hover: #f8f7f5;
   --color-ui-ink-strong: #34312d;
   --color-ui-ink: #4a4743;
-  --color-ui-muted-strong: #777777;
+  --color-ui-muted-strong: #6e6e6e;
   --color-ui-muted: #8f8b86;
   --color-ui-border: #cbc8c3;
   --color-ui-divider: #dedbd6;
@@ -174,6 +174,11 @@
   --color-tone-3: #047857;
   --color-tone-4: #2c6385;
   --color-tone-5: #737373;
+  /* Each book's accent at any scope (the brand-* family follows only the active book). */
+  --color-book-1: #3a7ca5; --color-book-1-edge: #2c6385; --color-book-1-soft: #f2f6f8;
+  --color-book-2: #d4793a; --color-book-2-edge: #b05f27; --color-book-2-soft: #fbf5ef;
+  --color-book-3: #a0522d; --color-book-3-edge: #8b4513; --color-book-3-soft: #fbf7f3;
+  --color-book-4: #4f9f2a; --color-book-4-edge: #3f8420; --color-book-4-soft: #f6faf3;
 
   --color-palette-purple: #b58ad6;
   --color-palette-purple-edge: #9568b8;
@@ -659,7 +664,7 @@ body {
 @property --color-ui-practice-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
 @property --color-ui-ink-strong { syntax: '<color>'; inherits: true; initial-value: #34312d; }
 @property --color-ui-ink { syntax: '<color>'; inherits: true; initial-value: #4a4743; }
-@property --color-ui-muted-strong { syntax: '<color>'; inherits: true; initial-value: #777777; }
+@property --color-ui-muted-strong { syntax: '<color>'; inherits: true; initial-value: #6e6e6e; }
 @property --color-ui-muted { syntax: '<color>'; inherits: true; initial-value: #8f8b86; }
 @property --color-ui-border { syntax: '<color>'; inherits: true; initial-value: #cbc8c3; }
 @property --color-ui-divider { syntax: '<color>'; inherits: true; initial-value: #dedbd6; }
@@ -720,7 +725,7 @@ body {
   --color-brand-primary-wash: #f7e8d8;
   --color-ui-ink-strong: #3a302a;
   --color-ui-ink: #54483f;
-  --color-ui-muted-strong: #7d7268;
+  --color-ui-muted-strong: #776c63;
   --color-ui-muted: #968b80;
   --color-ui-border: #d1c7bb;
   --color-ui-divider: #e3dacf;
@@ -735,7 +740,7 @@ body {
   --color-brand-primary-wash: #f6ede5;
   --color-ui-ink-strong: #37302b;
   --color-ui-ink: #4f4640;
-  --color-ui-muted-strong: #7a7068;
+  --color-ui-muted-strong: #766c64;
   --color-ui-muted: #93887f;
   --color-ui-border: #cfc5bc;
   --color-ui-divider: #e0d8d0;
@@ -750,7 +755,7 @@ body {
   --color-brand-primary-wash: #edf9e2;
   --color-ui-ink-strong: #2f352c;
   --color-ui-ink: #454b41;
-  --color-ui-muted-strong: #70776b;
+  --color-ui-muted-strong: #6a7065;
   --color-ui-muted: #8a9185;
   --color-ui-border: #c6cdc0;
   --color-ui-divider: #dbe0d6;
@@ -817,6 +822,10 @@ body {
   --color-tone-3: #4cc59a;
   --color-tone-4: #7fb3d6;
   --color-tone-5: #a8a29b;
+  --color-book-1: #4b8bb9; --color-book-1-edge: #3a6f94; --color-book-1-soft: #282b2c;
+  --color-book-2: #c8743c; --color-book-2-edge: #9e5a2c; --color-book-2-soft: #2a221c;
+  --color-book-3: #b4683f; --color-book-3-edge: #8c4f2e; --color-book-3-soft: #2a221d;
+  --color-book-4: #4f9a36; --color-book-4-edge: #3d7a28; --color-book-4-soft: #212a1d;
 
   --color-palette-purple: #9b72c2;
   --color-palette-purple-edge: #7a559e;
@@ -889,7 +898,7 @@ body {
   --color-ui-practice-canvas: #f4efe6;
   --color-ui-ink-strong: #4f3d18;
   --color-ui-ink: #6b5222;
-  --color-ui-muted-strong: #85703f;
+  --color-ui-muted-strong: #7e6a3c;
   --color-ui-muted: #9a8556;
   --color-ui-border: #d6c28a;
   --color-ui-divider: #e2d1a4;

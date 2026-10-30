@@ -99,6 +99,7 @@ function grammarLabel(pageIds: string[]): string {
 /** Dialogues use authored titles; readings use the book's reading title. */
 function partTitle(bookId: number, lessonId: number, part: number, reading: ReadingRecord | undefined): string {
   if (!reading) return '';
+  if (bookId === 2) return reading.title.replace(/^(?:對話|短文) · /, '');
   return LESSON_PART_TITLES[`${bookId}-${lessonId}-${part}`] ?? (reading.title.startsWith('短文') ? reading.title.replace(/^短文 · /, '') : reading.setting ?? '');
 }
 
@@ -176,8 +177,16 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
     const url = getReadingIllustration(reading.id)?.url;
     return url ? [[reading.dialogueNumber, url]] : [];
   })) as Record<number, string>;
+  if (bookId === 2 && lesson.id > 0) {
+    for (const part of parts) {
+      const id = `B2L${String(lesson.id).padStart(2, '0')}-R${String(part.id).padStart(2, '0')}`;
+      const url = getReadingIllustration(id)?.url;
+      if (url && !illustrationsByPart[part.id]) illustrationsByPart[part.id] = url;
+    }
+  }
   const lastReading = lessonReadings[lessonReadings.length - 1];
-  const illustration = lastReading ? getReadingIllustration(lastReading.id)?.url : undefined;
+  const illustration = (lastReading ? getReadingIllustration(lastReading.id)?.url : undefined)
+    ?? illustrationsByPart[parts[0]?.id];
   const fallback = lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id];
   const fallbackImageSrc = readings === null
     ? null

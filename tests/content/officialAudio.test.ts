@@ -27,7 +27,9 @@ test('pads single-digit lessons to two digits', () => {
 });
 
 test('returns null for books without hosted official audio', () => {
-  assert.equal(officialAudioFileName(2, '01-1-1'), null);
+  assert.equal(officialAudioFileName(2, '01-1-1'), 'B2-01-1-1.mp3');
+  assert.equal(officialAudioFileName(2, '09-1-1'), null);
+  assert.equal(officialAudioFileName(2, '01-1-2'), null);
   assert.equal(officialAudioFileName(4, '01-1-1'), null);
 });
 

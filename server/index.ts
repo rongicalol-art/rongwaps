@@ -1,7 +1,7 @@
 import { lookupDictionary, searchDictionary, lookupCourseCards, lookupExamples } from './dictionary.js';
 import { gameConfiguration } from './games.js';
 import { submitFeedback } from './feedback.js';
-import { statSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import express from "express";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
@@ -300,6 +300,8 @@ async function bootstrap() {
         }
       },
     }));
+    // Public pages prerendered at build time (scripts/build/prerender.ts) get their own HTML.
+    const prerenderedPages = new Set(["/about", "/sources", "/privacy", "/terms"]);
     // Only extensionless navigation gets the SPA shell; missing files 404.
     app.get("*", (req: express.Request, res: express.Response) => {
       if (req.path.startsWith("/data/") || path.extname(req.path)) {
@@ -307,7 +309,9 @@ async function bootstrap() {
         return;
       }
       res.setHeader("Cache-Control", "no-cache");
-      res.sendFile(path.join(distPath, "index.html"));
+      const page = req.path.replace(/\/+$/, "");
+      const prerendered = prerenderedPages.has(page) ? path.join(distPath, `${page}.html`) : null;
+      res.sendFile(prerendered && existsSync(prerendered) ? prerendered : path.join(distPath, "index.html"));
     });
   }
 

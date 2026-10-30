@@ -53,9 +53,9 @@ function subscribe(callback: () => void) {
 }
 
 export function useAuth() {
-  const currentUser = useSyncExternalStore(subscribe, () => globalUser);
-  const hasFullCourseAccess = useSyncExternalStore(subscribe, () => globalHasFullCourseAccess);
-  const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading);
+  const currentUser = useSyncExternalStore(subscribe, () => globalUser, () => globalUser);
+  const hasFullCourseAccess = useSyncExternalStore(subscribe, () => globalHasFullCourseAccess, () => globalHasFullCourseAccess);
+  const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading, () => globalIsLoading);
   const [isAuthActionLoading, setIsAuthActionLoading] = useState(false);
 
   const loginWithGoogle = useCallback(async () => {

@@ -7,8 +7,8 @@
  * behind VITE_AUDIO_BASE_URL, so they stream through the existing durable-cache →
  * public URL chain and degrade to TTS like any other audio file.
  *
- * Books 2 and 4 official audio is not hosted yet; `officialAudioFileName` returns
- * null for them so callers fall back to TTS automatically.
+ * Book 2 lessons 1–8 use locally served dialogue and reading tracks. Book 4
+ * falls back to TTS until official audio is available.
  */
 
 /** Master switch: set false to disable all official book audio playback. */
@@ -27,9 +27,10 @@ export function officialAudioFileName(
   audioReference: string,
 ): string | null {
   if (!OFFICIAL_BOOK_AUDIO_ENABLED) return null;
-  if (bookId !== 1 && bookId !== 3) return null; // Only Books 1 and 3 official audio are hosted.
+  if (bookId !== 1 && bookId !== 2 && bookId !== 3) return null;
   const match = OFFICIAL_AUDIO_REFERENCE_PATTERN.exec(audioReference.trim());
   if (!match) return null;
   const [, lesson, part, track] = match;
+  if (bookId === 2 && (Number(lesson) < 1 || Number(lesson) > 8 || !['1', '2'].includes(part) || track !== '1')) return null;
   return `B${bookId}-${lesson.padStart(2, '0')}-${part}-${track}.mp3`;
 }

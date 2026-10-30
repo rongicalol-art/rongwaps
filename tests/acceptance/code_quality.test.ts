@@ -149,7 +149,7 @@ test('Code Quality Acceptance: components colour only through theme tokens (ligh
   const allowed = new Set([
     'src/screens/curriculum/lesson-window/ModeIcon.tsx',
     'src/screens/flashcard/components/QuizTypeIcon.tsx',
-    'src/screens/auth/SignInWindow.tsx',
+    'src/screens/auth/SignInParts.tsx',
     'src/features/practice/components/lesson-complete/ConfettiBurst.tsx',
     'src/lib/widgets/FolderSvg.tsx',
     'src/screens/library/components/FolderItem.tsx',

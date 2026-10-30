@@ -1,0 +1,2353 @@
+{
+  "BOOK2_LESSON_SEVEN_PART_ONE": {
+    "id": "B2L07-P01-D01",
+    "bookId": 2,
+    "lessonId": 7,
+    "partId": 1,
+    "title": "Grammar 1–6 · Traveling to Hualien by Train",
+    "dialogue": {
+      "id": "B2L07-D01",
+      "title": "坐火車到花蓮去旅行",
+      "audioReference": "07-1-1",
+      "printedPages": [
+        157,
+        159
+      ],
+      "grammarFocus": [
+        "不但……，還……",
+        "一 + M（+N）+ 都／也 + Neg（+Vaux）+ V",
+        "讓（客氣地）",
+        "是……（+Adv）+ Vs",
+        "V光（了）",
+        "一點兒 + 都／也 + Neg + Vs"
+      ],
+      "lines": [
+        {
+          "id": "b2l07d1-l1",
+          "speaker": "旁白",
+          "traditional": "（在教室）",
+          "simplified": "（在教室）",
+          "pinyin": "（Zài jiàoshì）",
+          "english": "(In a classroom.)"
+        },
+        {
+          "id": "b2l07d1-l2",
+          "speaker": "良介",
+          "traditional": "還有一個星期就要放假了，我打算到花蓮去旅行，好好看看台灣東部的風景。",
+          "simplified": "还有一个星期就要放假了，我打算到花莲去旅行，好好看看台湾东部的风景。",
+          "pinyin": "Hái yǒu yí ge xīngqī jiù yào fàngjià le, wǒ dǎsuàn dào Huālián qù lǚxíng, hǎohǎo kànkan Táiwān dōngbù de fēngjǐng.",
+          "english": "There's only one week until the holidays. I'm planning to go to Hualien and take a good look at the scenery of eastern Taiwan."
+        },
+        {
+          "id": "b2l07d1-l3",
+          "speaker": "可欣",
+          "traditional": "前年我去花蓮玩，住在朋友的民宿，他不但請我吃飯，還送給我好幾包當地的名產跟風景明信片呢！",
+          "simplified": "前年我去花莲玩，住在朋友的民宿，他不但请我吃饭，还送给我好几包当地的名产跟风景明信片呢！",
+          "pinyin": "Qiánnián wǒ qù Huālián wán, zhù zài péngyou de mínsù, tā búdàn qǐng wǒ chīfàn, hái sòng gěi wǒ hǎojǐ bāo dāngdì de míngchǎn gēn fēngjǐng míngxìnpiàn ne!",
+          "english": "I went to Hualien two years ago and stayed at a friend's B&B. He not only treated me to a meal but also gave me several bags of local specialties and scenic postcards!"
+        },
+        {
+          "id": "b2l07d1-l4",
+          "speaker": "良介",
+          "traditional": "真好！你可以幫我訂那家民宿嗎？",
+          "simplified": "真好！你可以帮我订那家民宿吗？",
+          "pinyin": "Zhēn hǎo! Nǐ kěyǐ bāng wǒ dìng nà jiā mínsù ma?",
+          "english": "That's great! Can you help me book that B&B?"
+        },
+        {
+          "id": "b2l07d1-l5",
+          "speaker": "可欣",
+          "traditional": "可以啊！他的民宿有游泳池，也有免費的無線網路，最棒的是，從房間往外看，還可以看到美麗的大海，你一定會喜歡的。",
+          "simplified": "可以啊！他的民宿有游泳池，也有免费的无线网路，最棒的是，从房间往外看，还可以看到美丽的大海，你一定会喜欢的。",
+          "pinyin": "Kěyǐ a! Tā de mínsù yǒu yóuyǒngchí, yě yǒu miǎnfèi de wúxiàn wǎnglù, zuì bàng de shì, cóng fángjiān wǎng wài kàn, hái kěyǐ kàndào měilì de dàhǎi, nǐ yídìng huì xǐhuan de.",
+          "english": "Sure! His B&B has a swimming pool and free Wi-Fi. The best part is that you can see the beautiful ocean from the room. You'll definitely like it."
+        },
+        {
+          "id": "b2l07d1-l6",
+          "speaker": "良介",
+          "traditional": "住一個晚上要多少錢？要是太貴，我就住不起了。",
+          "simplified": "住一个晚上要多少钱？要是太贵，我就住不起了。",
+          "pinyin": "Zhù yí ge wǎnshang yào duōshao qián? Yàoshi tài guì, wǒ jiù zhù bu qǐ le.",
+          "english": "How much is it for one night? If it's too expensive, I won't be able to afford it."
+        },
+        {
+          "id": "b2l07d1-l7",
+          "speaker": "可欣",
+          "traditional": "別擔心，我會跟他說你是學生，請他算便宜一點兒。",
+          "simplified": "别担心，我会跟他说你是学生，请他算便宜一点儿。",
+          "pinyin": "Bié dānxīn, wǒ huì gēn tā shuō nǐ shì xuésheng, qǐng tā suàn piányi yìdiǎnr.",
+          "english": "Don't worry. I'll tell him you're a student and ask him to make it a little cheaper."
+        },
+        {
+          "id": "b2l07d1-l8",
+          "speaker": "旁白",
+          "traditional": "（良介拿出一塊錢來）",
+          "simplified": "（良介拿出一块钱来）",
+          "pinyin": "（Liángjiè ná chū yí kuài qián lái）",
+          "english": "(Ryosuke takes out one dollar.)"
+        },
+        {
+          "id": "b2l07d1-l9",
+          "speaker": "良介",
+          "traditional": "（笑著說）你看！我只剩下一塊錢，沒錢吃飯了。",
+          "simplified": "（笑着说）你看！我只剩下一块钱，没钱吃饭了。",
+          "pinyin": "（Xiàozhe shuō）Nǐ kàn! Wǒ zhǐ shèngxià yí kuài qián, méi qián chīfàn le.",
+          "english": "(Laughing.) Look! I only have one dollar left. I have no money for food."
+        },
+        {
+          "id": "b2l07d1-l10",
+          "speaker": "可欣",
+          "traditional": "你比我好，我今天出門時忘了帶錢包，現在一毛錢都沒有，我們中午讓美心請客吧。",
+          "simplified": "你比我好，我今天出门时忘了带钱包，现在一毛钱都没有，我们中午让美心请客吧。",
+          "pinyin": "Nǐ bǐ wǒ hǎo, wǒ jīntiān chūmén shí wàng le dài qiánbāo, xiànzài yì máo qián dōu méiyǒu, wǒmen zhōngwǔ ràng Měixīn qǐngkè ba.",
+          "english": "You're better off than me. I forgot my wallet when I left home today, and now I don't have a single cent. Let's have Meixin treat us to lunch."
+        },
+        {
+          "id": "b2l07d1-l11",
+          "speaker": "旁白",
+          "traditional": "（兩人哈哈大笑。這時候，美心剛好從外面走進來）",
+          "simplified": "（两人哈哈大笑。这时候，美心刚好从外面走进来）",
+          "pinyin": "（Liǎng rén hāhā dàxiào. Zhè shíhou, Měixīn gānghǎo cóng wàimiàn zǒu jìnlái）",
+          "english": "(Both of them laugh out loud. Just then, Meixin walks in from outside.)"
+        },
+        {
+          "id": "b2l07d1-l12",
+          "speaker": "美心",
+          "traditional": "你們在聊什麼？聊得這麼開心？",
+          "simplified": "你们在聊什么？聊得这么开心？",
+          "pinyin": "Nǐmen zài liáo shénme? Liáo de zhème kāixīn?",
+          "english": "What are you talking about? What's so funny?"
+        },
+        {
+          "id": "b2l07d1-l13",
+          "speaker": "良介",
+          "traditional": "我們正在聊去花蓮旅行的事，可欣要幫我訂民宿。",
+          "simplified": "我们正在聊去花莲旅行的事，可欣要帮我订民宿。",
+          "pinyin": "Wǒmen zhèngzài liáo qù Huālián lǚxíng de shì, Kěxīn yào bāng wǒ dìng mínsù.",
+          "english": "We're talking about traveling to Hualien. Kexin is going to help me book a B&B."
+        },
+        {
+          "id": "b2l07d1-l14",
+          "speaker": "美心",
+          "traditional": "住民宿不錯，你要怎麼去呢？",
+          "simplified": "住民宿不错，你要怎么去呢？",
+          "pinyin": "Zhù mínsù búcuò, nǐ yào zěnme qù ne?",
+          "english": "Staying at a B&B is nice. How are you going to get there?"
+        },
+        {
+          "id": "b2l07d1-l15",
+          "speaker": "良介",
+          "traditional": "我還沒決定。聽說蘇花公路有一點兒危險，下大雨的時候，山上的大石頭可能會掉下來。",
+          "simplified": "我还没决定。听说苏花公路有一点儿危险，下大雨的时候，山上的大石头可能会掉下来。",
+          "pinyin": "Wǒ hái méi juédìng. Tīngshuō Sūhuā Gōnglù yǒu yìdiǎnr wēixiǎn, xià dàyǔ de shíhou, shān shàng de dà shítou kěnéng huì diào xiàlái.",
+          "english": "I haven't decided yet. I heard the Suhua Highway is a little dangerous. When it rains heavily, rocks from the mountain may fall."
+        },
+        {
+          "id": "b2l07d1-l16",
+          "speaker": "美心",
+          "traditional": "蘇花公路是比較危險，搭火車去比較安全，可是假日的票很難買，一下子就賣光了，你最好趕快上網訂票。",
+          "simplified": "苏花公路是比较危险，搭火车去比较安全，可是假日的票很难买，一下子就卖光了，你最好赶快上网订票。",
+          "pinyin": "Sūhuā Gōnglù shì bǐjiào wēixiǎn, dā huǒchē qù bǐjiào ānquán, kěshì jiàrì de piào hěn nán mǎi, yíxiàzi jiù mài guāng le, nǐ zuìhǎo gǎnkuài shàngwǎng dìngpiào.",
+          "english": "The Suhua Highway is more dangerous. Taking the train is safer, but holiday tickets are hard to buy—they sell out in no time. You'd better book online soon."
+        },
+        {
+          "id": "b2l07d1-l17",
+          "speaker": "良介",
+          "traditional": "我上過台灣鐵路局的網站，可是看不懂網頁，覺得訂票很難。",
+          "simplified": "我上过台湾铁路局的网站，可是看不懂网页，觉得订票很难。",
+          "pinyin": "Wǒ shàng guò Táiwān Tiělùjú de wǎngzhàn, kěshì kàn bu dǒng wǎngyè, juéde dìngpiào hěn nán.",
+          "english": "I've been on the Taiwan Railways website, but I can't understand the web pages. I find booking tickets difficult."
+        },
+        {
+          "id": "b2l07d1-l18",
+          "speaker": "美心",
+          "traditional": "在台灣，上網訂票、訂位一點兒都不難，我現在就幫你訂。（用手機上台鐵的網站）你要訂什麼時候的？",
+          "simplified": "在台湾，上网订票、订位一点儿都不难，我现在就帮你订。（用手机上台铁的网站）你要订什么时候的？",
+          "pinyin": "Zài Táiwān, shàngwǎng dìngpiào, dìngwèi yìdiǎnr dōu bù nán, wǒ xiànzài jiù bāng nǐ dìng. （Yòng shǒujī shàng Táitiě de wǎngzhàn）Nǐ yào dìng shénme shíhou de?",
+          "english": "In Taiwan, booking tickets and seats online is not difficult at all. I'll help you book right now. (She goes to the Taiwan Railways website on her phone.) When do you want to book it for?"
+        },
+        {
+          "id": "b2l07d1-l19",
+          "speaker": "良介",
+          "traditional": "大概六月底。火車票貴不貴？",
+          "simplified": "大概六月底。火车票贵不贵？",
+          "pinyin": "Dàgài liùyuè dǐ. Huǒchē piào guì bu guì?",
+          "english": "Around the end of June. Are train tickets expensive?"
+        },
+        {
+          "id": "b2l07d1-l20",
+          "speaker": "美心",
+          "traditional": "太魯閣號比較貴，可是只停幾個站，兩個多鐘頭就到花蓮了。",
+          "simplified": "太鲁阁号比较贵，可是只停几个站，两个多钟头就到花莲了。",
+          "pinyin": "Tàilǔgé Hào bǐjiào guì, kěshì zhǐ tíng jǐ ge zhàn, liǎng ge duō zhōngtóu jiù dào Huālián le.",
+          "english": "The Taroko Express is more expensive, but it only stops at a few stations. It takes a little over two hours to get to Hualien."
+        },
+        {
+          "id": "b2l07d1-l21",
+          "speaker": "良介",
+          "traditional": "貴一點兒沒關係，要是訂得到第一班太魯閣號，早上從台北出發，中午就可以去太魯閣國家公園爬山了。",
+          "simplified": "贵一点儿没关系，要是订得到第一班太鲁阁号，早上从台北出发，中午就可以去太鲁阁国家公园爬山了。",
+          "pinyin": "Guì yìdiǎnr méi guānxi, yàoshi dìng de dào dì yī bān Tàilǔgé Hào, zǎoshang cóng Táiběi chūfā, zhōngwǔ jiù kěyǐ qù Tàilǔgé guójiā gōngyuán páshān le.",
+          "english": "A little more expensive is fine. If I can book the first Taroko Express and leave Taipei in the morning, I can go hiking in Taroko National Park at noon."
+        },
+        {
+          "id": "b2l07d1-l22",
+          "speaker": "可欣",
+          "traditional": "我前年就是搭太魯閣號去的，真的又快又方便！",
+          "simplified": "我前年就是搭太鲁阁号去的，真的又快又方便！",
+          "pinyin": "Wǒ qiánnián jiùshì dā Tàilǔgé Hào qù de, zhēn de yòu kuài yòu fāngbiàn!",
+          "english": "I took the Taroko Express two years ago. It's really fast and convenient!"
+        },
+        {
+          "id": "b2l07d1-l23",
+          "speaker": "良介",
+          "traditional": "不好意思，我想坐在窗戶旁邊，可以自己選座位嗎？",
+          "simplified": "不好意思，我想坐在窗户旁边，可以自己选座位吗？",
+          "pinyin": "Bù hǎoyìsi, wǒ xiǎng zuò zài chuānghu pángbiān, kěyǐ zìjǐ xuǎn zuòwèi ma?",
+          "english": "Excuse me. I'd like to sit by the window. Can I choose the seat myself?"
+        },
+        {
+          "id": "b2l07d1-l24",
+          "speaker": "美心",
+          "traditional": "沒辦法，位子都是電腦選的。（看著網頁）訂好了！你把訂票號碼記下來，這個日期以前去便利商店付錢，就可以拿到票了。",
+          "simplified": "没办法，位子都是电脑选的。（看着网页）订好了！你把订票号码记下来，这个日期以前去便利商店付钱，就可以拿到票了。",
+          "pinyin": "Méi bànfǎ, wèizi dōu shì diànnǎo xuǎn de. （Kànzhe wǎngyè）Dìng hǎo le! Nǐ bǎ dìngpiào hàomǎ jì xiàlái, zhège rìqī yǐqián qù biànlì shāngdiàn fù qián, jiù kěyǐ ná dào piào le.",
+          "english": "No way. The seats are all chosen by the computer. (She looks at the web page.) Booked! Write down the booking number. Pay at a convenience store before this date, and you can get the ticket."
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 1,
+        "grammarNumber": 1,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G01-P165",
+        "bookPage": 165,
+        "bookPageAvailable": false,
+        "printedPages": [
+          165
+        ],
+        "audioReference": "07-1",
+        "titleTraditional": "不但……，還……",
+        "titleSimplified": "不但……，还……",
+        "titleEnglish": "不但…，還…: not only… but also…",
+        "learnerPromise": "Add a second, more important point with 不但…，還….",
+        "explanation": "「不但」引出第一項，「還」引出受到更強調的另一項。兩個分句的主語一致；第二分句可省略重複的主語。",
+        "pattern": "Subject + 不但 + Clause 1，還 + Clause 2",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g1-ex1",
+            "text": {
+              "traditional": "我去夜市，不但要吃雞排，還要吃蚵仔煎。",
+              "simplified": "我去夜市，不但要吃鸡排，还要吃蚵仔煎。",
+              "pinyin": "Wǒ qù yèshì, búdàn yào chī jīpái, hái yào chī ézǐjiān.",
+              "english": "I'm going to the night market. I not only want to eat chicken fillet but also oyster omelet.",
+              "words": [
+                {
+                  "id": "b2l07g1-ex1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex1-w2",
+                  "traditional": "去夜市",
+                  "simplified": "去夜市",
+                  "pinyin": "qù yèshì",
+                  "meaning": "go to the night market",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g1-ex1-w3",
+                  "traditional": "不但",
+                  "simplified": "不但",
+                  "pinyin": "búdàn",
+                  "meaning": "not only",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex1-w4",
+                  "traditional": "要吃雞排",
+                  "simplified": "要吃鸡排",
+                  "pinyin": "yào chī jīpái",
+                  "meaning": "want to eat chicken fillet",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g1-ex1-w5",
+                  "traditional": "還要吃蚵仔煎",
+                  "simplified": "还要吃蚵仔煎",
+                  "pinyin": "hái yào chī ézǐjiān",
+                  "meaning": "also want to eat oyster omelet",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g1-ex2",
+            "text": {
+              "traditional": "那個印尼學生不但會說中文，還會寫很多中國字。",
+              "simplified": "那个印尼学生不但会说中文，还会写很多中国字。",
+              "pinyin": "Nà ge Yìnní xuésheng búdàn huì shuō Zhōngwén, hái huì xiě hěn duō Zhōngguó zì.",
+              "english": "That Indonesian student can not only speak Chinese but also write many Chinese characters.",
+              "words": [
+                {
+                  "id": "b2l07g1-ex2-w1",
+                  "traditional": "那個印尼學生",
+                  "simplified": "那个印尼学生",
+                  "pinyin": "nà ge Yìnní xuésheng",
+                  "meaning": "that Indonesian student",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex2-w2",
+                  "traditional": "不但",
+                  "simplified": "不但",
+                  "pinyin": "búdàn",
+                  "meaning": "not only",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex2-w3",
+                  "traditional": "會說中文",
+                  "simplified": "会说中文",
+                  "pinyin": "huì shuō Zhōngwén",
+                  "meaning": "can speak Chinese",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g1-ex2-w4",
+                  "traditional": "還會寫",
+                  "simplified": "还会写",
+                  "pinyin": "hái huì xiě",
+                  "meaning": "can also write",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex2-w5",
+                  "traditional": "很多中國字",
+                  "simplified": "很多中国字",
+                  "pinyin": "hěn duō Zhōngguó zì",
+                  "meaning": "many Chinese characters",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g1-ex3",
+            "text": {
+              "traditional": "這家民宿不但有免費的無線網路，還有游泳池呢！",
+              "simplified": "这家民宿不但有免费的无线网路，还有游泳池呢！",
+              "pinyin": "Zhè jiā mínsù búdàn yǒu miǎnfèi de wúxiàn wǎnglù, hái yǒu yóuyǒngchí ne!",
+              "english": "This B&B not only has free Wi-Fi but also a swimming pool!",
+              "words": [
+                {
+                  "id": "b2l07g1-ex3-w1",
+                  "traditional": "這家民宿",
+                  "simplified": "这家民宿",
+                  "pinyin": "zhè jiā mínsù",
+                  "meaning": "this B&B",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex3-w2",
+                  "traditional": "不但有",
+                  "simplified": "不但有",
+                  "pinyin": "búdàn yǒu",
+                  "meaning": "not only has",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex3-w3",
+                  "traditional": "免費的無線網路",
+                  "simplified": "免费的无线网路",
+                  "pinyin": "miǎnfèi de wúxiàn wǎnglù",
+                  "meaning": "free Wi-Fi",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g1-ex3-w4",
+                  "traditional": "還有",
+                  "simplified": "还有",
+                  "pinyin": "hái yǒu",
+                  "meaning": "also has",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex3-w5",
+                  "traditional": "游泳池",
+                  "simplified": "游泳池",
+                  "pinyin": "yóuyǒngchí",
+                  "meaning": "a swimming pool",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g1-ex3-w6",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "(emphasis)",
+                  "suffix": "！"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "「不但」後面可以接「但是」嗎？",
+              "answer": "不行。這個句型後面用「還」或「也」來說第二件事，不用轉折的「但是」。",
+              "wrongTraditional": "這家民宿不但有免費的無線網路，但是有游泳池。",
+              "wrongSimplified": "这家民宿不但有免费的无线网路，但是有游泳池。",
+              "id": "b2l07g1-cf1",
+              "right": {
+                "traditional": "這家民宿不但有免費的無線網路，還有游泳池呢！",
+                "simplified": "这家民宿不但有免费的无线网路，还有游泳池呢！",
+                "pinyin": "Zhè jiā mínsù búdàn yǒu miǎnfèi de wúxiàn wǎnglù, hái yǒu yóuyǒngchí ne!",
+                "english": "This B&B not only has free Wi-Fi but also a swimming pool.",
+                "words": [
+                  {
+                    "id": "b2l07g1-cf1-w1",
+                    "traditional": "這家民宿不但有免費的無線網路，還有游泳池呢！",
+                    "simplified": "这家民宿不但有免费的无线网路，还有游泳池呢！",
+                    "pinyin": "Zhè jiā mínsù búdàn yǒu miǎnfèi de wúxiàn wǎnglù, hái yǒu yóuyǒngchí ne!",
+                    "meaning": "This B&B not only has free Wi-Fi but also a swimming pool.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "兩個句子的主語不一樣，還可以用「不但……，還……」嗎？",
+              "answer": "不可以。主語不一樣時，第二句用「也」，不要用「還」再接一個新主語。",
+              "wrongTraditional": "不但我喜歡吃雞排，可欣還喜歡吃蚵仔煎。",
+              "wrongSimplified": "不但我喜欢吃鸡排，可欣还喜欢吃蚵仔煎。",
+              "id": "b2l07g1-cf2",
+              "right": {
+                "traditional": "我喜歡吃雞排，可欣也喜歡吃蚵仔煎。",
+                "simplified": "我喜欢吃鸡排，可欣也喜欢吃蚵仔煎。",
+                "pinyin": "Wǒ xǐhuan chī jīpái, Kěxīn yě xǐhuan chī ézǐjiān.",
+                "english": "I like chicken fillet, and Kexin also likes oyster omelet.",
+                "words": [
+                  {
+                    "id": "b2l07g1-cf2-w1",
+                    "traditional": "我喜歡吃雞排，可欣也喜歡吃蚵仔煎。",
+                    "simplified": "我喜欢吃鸡排，可欣也喜欢吃蚵仔煎。",
+                    "pinyin": "Wǒ xǐhuan chī jīpái, Kěxīn yě xǐhuan chī ézǐjiān.",
+                    "meaning": "I like chicken fillet, and Kexin also likes oyster omelet.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "不但 introduces one fact, and 還 adds another fact for extra emphasis. The two clauses normally have the same subject; the second subject can be omitted when it is the same as the first.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "In addition to the situation after “不但”, the speaker lays more stress on the situation after “還”. In this pattern, the first subject should be consistent with the second one."
+      },
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 1,
+        "grammarNumber": 2,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G02-P166",
+        "bookPage": 166,
+        "bookPageAvailable": false,
+        "printedPages": [
+          166
+        ],
+        "audioReference": "07-1",
+        "titleTraditional": "一 + M（+N）+ 都／也 + Neg（+Vaux）+ V",
+        "titleSimplified": "一 + M（+N）+ 都／也 + Neg（+Vaux）+ V",
+        "titleEnglish": "一 + Measure word + 都/也 + not: not even one",
+        "learnerPromise": "Emphasize that there is not even one of something.",
+        "explanation": "「一」加量詞，後面用「都」或「也」加否定，表示「一個也沒有」或「一點也不」，常常有誇張、意外的感覺。否定詞後面可以接「願意」這類助動詞。",
+        "pattern": "一 + Measure word (+ Noun) + 都／也 + 不／沒 + Verb",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g2-ex1",
+            "text": {
+              "traditional": "我等了一個小時，一班公車都沒來。",
+              "simplified": "我等了一个小时，一班公车都没来。",
+              "pinyin": "Wǒ děng le yí ge xiǎoshí, yì bān gōngchē dōu méi lái.",
+              "english": "I waited for an hour, but not a single bus came.",
+              "words": [
+                {
+                  "id": "b2l07g2-ex1-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex1-w2",
+                  "traditional": "等了一個小時",
+                  "simplified": "等了一个小时",
+                  "pinyin": "děng le yí ge xiǎoshí",
+                  "meaning": "waited for an hour",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g2-ex1-w3",
+                  "traditional": "一班公車",
+                  "simplified": "一班公车",
+                  "pinyin": "yì bān gōngchē",
+                  "meaning": "even one bus",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex1-w4",
+                  "traditional": "都沒來",
+                  "simplified": "都没来",
+                  "pinyin": "dōu méi lái",
+                  "meaning": "did not come",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g2-ex2",
+            "text": {
+              "traditional": "我忘了帶錢包，現在一毛（錢）都沒有。",
+              "simplified": "我忘了带钱包，现在一毛（钱）都没有。",
+              "pinyin": "Wǒ wàng le dài qiánbāo, xiànzài yì máo (qián) dōu méiyǒu.",
+              "english": "I forgot my wallet. Now I don't have even a dime.",
+              "words": [
+                {
+                  "id": "b2l07g2-ex2-w1",
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex2-w2",
+                  "traditional": "忘了帶錢包",
+                  "simplified": "忘了带钱包",
+                  "pinyin": "wàng le dài qiánbāo",
+                  "meaning": "forgot to bring my wallet",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g2-ex2-w3",
+                  "traditional": "現在",
+                  "simplified": "现在",
+                  "pinyin": "xiànzài",
+                  "meaning": "now",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex2-w4",
+                  "traditional": "一毛（錢）",
+                  "simplified": "一毛（钱）",
+                  "pinyin": "yì máo (qián)",
+                  "meaning": "even one dime",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex2-w5",
+                  "traditional": "都沒有",
+                  "simplified": "都没有",
+                  "pinyin": "dōu méiyǒu",
+                  "meaning": "don't have",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g2-ex3",
+            "text": {
+              "traditional": "這裡一家醫院也沒有，要是生病了就很麻煩。",
+              "simplified": "这里一家医院也没有，要是生病了就很麻烦。",
+              "pinyin": "Zhèlǐ yì jiā yīyuàn yě méiyǒu, yàoshi shēngbìng le jiù hěn máfan.",
+              "english": "There isn't even one hospital here. If you get sick, it will be a lot of trouble.",
+              "words": [
+                {
+                  "id": "b2l07g2-ex3-w1",
+                  "traditional": "這裡",
+                  "simplified": "这里",
+                  "pinyin": "zhèlǐ",
+                  "meaning": "here",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex3-w2",
+                  "traditional": "一家醫院",
+                  "simplified": "一家医院",
+                  "pinyin": "yì jiā yīyuàn",
+                  "meaning": "even one hospital",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex3-w3",
+                  "traditional": "也沒有",
+                  "simplified": "也没有",
+                  "pinyin": "yě méiyǒu",
+                  "meaning": "there isn't",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g2-ex3-w4",
+                  "traditional": "要是",
+                  "simplified": "要是",
+                  "pinyin": "yàoshi",
+                  "meaning": "if",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex3-w5",
+                  "traditional": "生病了",
+                  "simplified": "生病了",
+                  "pinyin": "shēngbìng le",
+                  "meaning": "get sick",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex3-w6",
+                  "traditional": "就很麻煩",
+                  "simplified": "就很麻烦",
+                  "pinyin": "jiù hěn máfan",
+                  "meaning": "it will be a lot of trouble",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 4,
+            "id": "b2l07g2-ex4",
+            "text": {
+              "traditional": "那個學生不愛上課，一個字都不願意寫，所以老師很生氣。",
+              "simplified": "那个学生不爱上课，一个字都不愿意写，所以老师很生气。",
+              "pinyin": "Nà ge xuésheng bú ài shàngkè, yí ge zì dōu bú yuànyì xiě, suǒyǐ lǎoshī hěn shēngqì.",
+              "english": "That student doesn't like going to class and isn't willing to write even one character, so the teacher is very angry.",
+              "words": [
+                {
+                  "id": "b2l07g2-ex4-w1",
+                  "traditional": "那個學生",
+                  "simplified": "那个学生",
+                  "pinyin": "nà ge xuésheng",
+                  "meaning": "that student",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex4-w2",
+                  "traditional": "不愛上課",
+                  "simplified": "不爱上课",
+                  "pinyin": "bú ài shàngkè",
+                  "meaning": "doesn't like going to class",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g2-ex4-w3",
+                  "traditional": "一個字",
+                  "simplified": "一个字",
+                  "pinyin": "yí ge zì",
+                  "meaning": "even one character",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex4-w4",
+                  "traditional": "都不願意寫",
+                  "simplified": "都不愿意写",
+                  "pinyin": "dōu bú yuànyì xiě",
+                  "meaning": "is not willing to write",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g2-ex4-w5",
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "meaning": "so",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g2-ex4-w6",
+                  "traditional": "老師很生氣",
+                  "simplified": "老师很生气",
+                  "pinyin": "lǎoshī hěn shēngqì",
+                  "meaning": "the teacher is very angry",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "「一」後面的量詞可以省掉嗎？",
+              "answer": "不行。「一」後面要有量詞，例如「一班公車」「一個字」。",
+              "wrongTraditional": "我等了一個小時，一公車都沒來。",
+              "wrongSimplified": "我等了一个小时，一公车都没来。",
+              "id": "b2l07g2-cf1",
+              "right": {
+                "traditional": "我等了一個小時，一班公車都沒來。",
+                "simplified": "我等了一个小时，一班公车都没来。",
+                "pinyin": "Wǒ děng le yí ge xiǎoshí, yì bān gōngchē dōu méi lái.",
+                "english": "I waited for an hour, but not a single bus came.",
+                "words": [
+                  {
+                    "id": "b2l07g2-cf1-w1",
+                    "traditional": "我等了一個小時，一班公車都沒來。",
+                    "simplified": "我等了一个小时，一班公车都没来。",
+                    "pinyin": "Wǒ děng le yí ge xiǎoshí, yì bān gōngchē dōu méi lái.",
+                    "meaning": "I waited for an hour, but not a single bus came.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "「願意」前面用「不」還是「沒」？",
+              "answer": "用「不」。這裡說意願，不用「沒」。",
+              "wrongTraditional": "那個學生不愛上課，一個字都沒願意寫。",
+              "wrongSimplified": "那个学生不爱上课，一个字都没愿意写。",
+              "id": "b2l07g2-cf2",
+              "right": {
+                "traditional": "那個學生不愛上課，一個字都不願意寫。",
+                "simplified": "那个学生不爱上课，一个字都不愿意写。",
+                "pinyin": "Nà ge xuésheng bú ài shàngkè, yí ge zì dōu bú yuànyì xiě.",
+                "english": "That student doesn't like going to class and isn't willing to write even one character.",
+                "words": [
+                  {
+                    "id": "b2l07g2-cf2-w1",
+                    "traditional": "那個學生不愛上課，一個字都不願意寫。",
+                    "simplified": "那个学生不爱上课，一个字都不愿意写。",
+                    "pinyin": "Nà ge xuésheng bú ài shàngkè, yí ge zì dōu bú yuànyì xiě.",
+                    "meaning": "That student doesn't like going to class and isn't willing to write even one character.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "一 + measure word (+ noun) + 都／也 + 不／沒 + verb means “not even one” or “none at all.” It often emphasizes a surprising or extreme situation. The negative verb phrase can also include a helping verb such as 願意.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "The pattern “一 M 都/也不（沒）” indicates “there is not any...” or “don't want any...”, and shows a strange and unexpected situation with a bit of exaggeration."
+      },
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 1,
+        "grammarNumber": 3,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G03-P166",
+        "bookPage": 166,
+        "bookPageAvailable": false,
+        "printedPages": [
+          166,
+          167
+        ],
+        "audioReference": "07-1",
+        "titleTraditional": "讓（客氣地）",
+        "titleSimplified": "让（客气地）",
+        "titleEnglish": "讓: to make, to let; to allow, to permit (politely)",
+        "learnerPromise": "Politely say that someone lets or allows another person to do something.",
+        "explanation": "「讓」有不同用法：可以表示「使、讓」的結果（L6），也可以客氣地表示「讓某人做某事」或「允許某人做某事」。這裡的「讓」比「叫」「要」客氣，不是命令。",
+        "pattern": "Subject + 讓 + Person + Verb (+ Object)",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g3-ex1",
+            "text": {
+              "traditional": "他上班常遲到，工作也做不好，所以老闆讓/叫/要他明天別來上班了。",
+              "simplified": "他上班常迟到，工作也做不好，所以老板让/叫/要他明天别来上班了。",
+              "pinyin": "Tā shàngbān cháng chídào, gōngzuò yě zuò bu hǎo, suǒyǐ lǎobǎn ràng/jiào/yào tā míngtiān bié lái shàngbān le.",
+              "english": "He is often late for work and doesn't do his work well, so the boss told him not to come to work tomorrow.",
+              "words": [
+                {
+                  "id": "b2l07g3-ex1-w1",
+                  "traditional": "他上班常遲到",
+                  "simplified": "他上班常迟到",
+                  "pinyin": "tā shàngbān cháng chídào",
+                  "meaning": "he is often late for work",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex1-w2",
+                  "traditional": "工作也做不好",
+                  "simplified": "工作也做不好",
+                  "pinyin": "gōngzuò yě zuò bu hǎo",
+                  "meaning": "and doesn't do his work well",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex1-w3",
+                  "traditional": "所以",
+                  "simplified": "所以",
+                  "pinyin": "suǒyǐ",
+                  "meaning": "so",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex1-w4",
+                  "traditional": "老闆",
+                  "simplified": "老板",
+                  "pinyin": "lǎobǎn",
+                  "meaning": "the boss",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex1-w5",
+                  "traditional": "讓/叫/要",
+                  "simplified": "让/叫/要",
+                  "pinyin": "ràng/jiào/yào",
+                  "meaning": "lets / tells / asks",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex1-w6",
+                  "traditional": "他明天別來上班了",
+                  "simplified": "他明天别来上班了",
+                  "pinyin": "tā míngtiān bié lái shàngbān le",
+                  "meaning": "that he not come to work tomorrow",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g3-ex2",
+            "text": {
+              "traditional": "陳小姐讓/叫/要男朋友在樓下等一下，因為她還沒選好要穿哪件衣服。",
+              "simplified": "陈小姐让/叫/要男朋友在楼下等一下，因为她还没选好要穿哪件衣服。",
+              "pinyin": "Chén xiǎojiě ràng/jiào/yào nánpéngyou zài lóuxià děng yíxià, yīnwèi tā hái méi xuǎn hǎo yào chuān nǎ jiàn yīfu.",
+              "english": "Miss Chen asked her boyfriend to wait downstairs because she still hasn't chosen what to wear.",
+              "words": [
+                {
+                  "id": "b2l07g3-ex2-w1",
+                  "traditional": "陳小姐",
+                  "simplified": "陈小姐",
+                  "pinyin": "Chén xiǎojiě",
+                  "meaning": "Miss Chen",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex2-w2",
+                  "traditional": "讓/叫/要",
+                  "simplified": "让/叫/要",
+                  "pinyin": "ràng/jiào/yào",
+                  "meaning": "lets / tells / asks",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex2-w3",
+                  "traditional": "男朋友",
+                  "simplified": "男朋友",
+                  "pinyin": "nánpéngyou",
+                  "meaning": "her boyfriend",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex2-w4",
+                  "traditional": "在樓下等一下",
+                  "simplified": "在楼下等一下",
+                  "pinyin": "zài lóuxià děng yíxià",
+                  "meaning": "wait downstairs",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex2-w5",
+                  "traditional": "因為",
+                  "simplified": "因为",
+                  "pinyin": "yīnwèi",
+                  "meaning": "because",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex2-w6",
+                  "traditional": "她還沒選好",
+                  "simplified": "她还没选好",
+                  "pinyin": "tā hái méi xuǎn hǎo",
+                  "meaning": "she still hasn't chosen",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex2-w7",
+                  "traditional": "要穿哪件衣服",
+                  "simplified": "要穿哪件衣服",
+                  "pinyin": "yào chuān nǎ jiàn yīfu",
+                  "meaning": "which clothes to wear",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g3-ex3",
+            "text": {
+              "traditional": "A：今天我忘了帶錢，讓你請吃午餐，可以嗎？B：沒問題，你想吃什麼？我讓餐廳老闆送過來。",
+              "simplified": "A：今天我忘了带钱，让你请吃午餐，可以吗？B：没问题，你想吃什么？我让餐厅老板送过来。",
+              "pinyin": "A: Jīntiān wǒ wàng le dài qián, ràng nǐ qǐng chī wǔcān, kěyǐ ma? B: Méi wèntí, nǐ xiǎng chī shénme? Wǒ ràng cāntīng lǎobǎn sòng guòlái.",
+              "english": "A: I forgot to bring money today. Can I let you treat me to lunch? B: No problem. What do you want to eat? I'll have the restaurant owner deliver it.",
+              "words": [
+                {
+                  "id": "b2l07g3-ex3-w1",
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A:",
+                  "meaning": "Speaker A",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex3-w2",
+                  "traditional": "今天我忘了帶錢",
+                  "simplified": "今天我忘了带钱",
+                  "pinyin": "jīntiān wǒ wàng le dài qián",
+                  "meaning": "I forgot to bring money today",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex3-w3",
+                  "traditional": "讓你請吃午餐",
+                  "simplified": "让你请吃午餐",
+                  "pinyin": "ràng nǐ qǐng chī wǔcān",
+                  "meaning": "let you treat me to lunch",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex3-w4",
+                  "traditional": "可以嗎",
+                  "simplified": "可以吗",
+                  "pinyin": "kěyǐ ma",
+                  "meaning": "is that okay",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b2l07g3-ex3-w5",
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B:",
+                  "meaning": "Speaker B",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex3-w6",
+                  "traditional": "沒問題",
+                  "simplified": "没问题",
+                  "pinyin": "méi wèntí",
+                  "meaning": "no problem",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex3-w7",
+                  "traditional": "你想吃什麼",
+                  "simplified": "你想吃什么",
+                  "pinyin": "nǐ xiǎng chī shénme",
+                  "meaning": "what do you want to eat",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b2l07g3-ex3-w8",
+                  "traditional": "我讓餐廳老闆",
+                  "simplified": "我让餐厅老板",
+                  "pinyin": "wǒ ràng cāntīng lǎobǎn",
+                  "meaning": "I'll have the restaurant owner",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex3-w9",
+                  "traditional": "送過來",
+                  "simplified": "送过来",
+                  "pinyin": "sòng guòlái",
+                  "meaning": "send it over",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 4,
+            "id": "b2l07g3-ex4",
+            "text": {
+              "traditional": "客人：這些菜吃不完，可不可以讓我帶回家？老闆：不可以喔！帶回去就不新鮮了。",
+              "simplified": "客人：这些菜吃不完，可不可以让我带回家？老板：不可以喔！带回去就不新鲜了。",
+              "pinyin": "Kèrén: Zhèxiē cài chī bu wán, kě bu kěyǐ ràng wǒ dài huí jiā? Lǎobǎn: Bù kěyǐ o! Dài huíqù jiù bù xīnxiān le.",
+              "english": "Guest: We can't finish these dishes. Can you let me take them home? Owner: No. They won't be fresh if you take them home.",
+              "words": [
+                {
+                  "id": "b2l07g3-ex4-w1",
+                  "traditional": "客人：",
+                  "simplified": "客人：",
+                  "pinyin": "Kèrén:",
+                  "meaning": "Guest:",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex4-w2",
+                  "traditional": "這些菜吃不完",
+                  "simplified": "这些菜吃不完",
+                  "pinyin": "zhèxiē cài chī bu wán",
+                  "meaning": "we can't finish these dishes",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g3-ex4-w3",
+                  "traditional": "可不可以讓我",
+                  "simplified": "可不可以让我",
+                  "pinyin": "kě bu kěyǐ ràng wǒ",
+                  "meaning": "can you let me",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex4-w4",
+                  "traditional": "帶回家",
+                  "simplified": "带回家",
+                  "pinyin": "dài huí jiā",
+                  "meaning": "take them home",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b2l07g3-ex4-w5",
+                  "traditional": "老闆：",
+                  "simplified": "老板：",
+                  "pinyin": "Lǎobǎn:",
+                  "meaning": "Owner:",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex4-w6",
+                  "traditional": "不可以喔",
+                  "simplified": "不可以喔",
+                  "pinyin": "bù kěyǐ o",
+                  "meaning": "No.",
+                  "suffix": "！"
+                },
+                {
+                  "id": "b2l07g3-ex4-w7",
+                  "traditional": "帶回去",
+                  "simplified": "带回去",
+                  "pinyin": "dài huíqù",
+                  "meaning": "if you take them home",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g3-ex4-w8",
+                  "traditional": "就不新鮮了",
+                  "simplified": "就不新鲜了",
+                  "pinyin": "jiù bù xīnxiān le",
+                  "meaning": "they won't be fresh",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "「讓」後面接人，還是接事情？",
+              "answer": "接人，再說請他做的事：「讓 + 人 + 動作」。",
+              "wrongTraditional": "我對餐廳老闆送過來。",
+              "wrongSimplified": "我对餐厅老板送过来。",
+              "id": "b2l07g3-cf1",
+              "right": {
+                "traditional": "我讓餐廳老闆送過來。",
+                "simplified": "我让餐厅老板送过来。",
+                "pinyin": "Wǒ ràng cāntīng lǎobǎn sòng guòlái.",
+                "english": "I'll have the restaurant owner deliver it.",
+                "words": [
+                  {
+                    "id": "b2l07g3-cf1-w1",
+                    "traditional": "我讓餐廳老闆送過來。",
+                    "simplified": "我让餐厅老板送过来。",
+                    "pinyin": "Wǒ ràng cāntīng lǎobǎn sòng guòlái.",
+                    "meaning": "I'll have the restaurant owner deliver it.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "「讓」後面可以直接加「了」嗎？",
+              "answer": "不行。「了」放在句尾或動詞後面，不放在「讓」後面。",
+              "wrongTraditional": "老闆讓了我回家休息。",
+              "wrongSimplified": "老板让了我回家休息。",
+              "id": "b2l07g3-cf2",
+              "right": {
+                "traditional": "老闆讓我回家休息。",
+                "simplified": "老板让我回家休息。",
+                "pinyin": "Lǎobǎn ràng wǒ huí jiā xiūxi.",
+                "english": "The boss let me go home and rest.",
+                "words": [
+                  {
+                    "id": "b2l07g3-cf2-w1",
+                    "traditional": "老闆讓我回家休息。",
+                    "simplified": "老板让我回家休息。",
+                    "pinyin": "Lǎobǎn ràng wǒ huí jiā xiūxi.",
+                    "meaning": "The boss let me go home and rest.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "讓 + person + verb can mean “let” or “allow” someone to do something. It can also be a polite way to ask or tell someone to do it; compared with 叫 or 要, 讓 sounds less like a direct order. Elsewhere in the book, 讓 can mean “make” someone feel or become a certain way.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "（1）This “讓” functions as a verb. There are different usages of 讓, such as “to make” and “to let”, ie: “有的 KTV 還有好玩的樂器，讓客人唱得更開心。（to make）（L6）” and the dialogue in this lesson, “讓美心請客吧。”（to let）. The “讓 (to let)” is more polite than “叫” or “要”, ie: “老師叫你去辦公室找他” is an order while “老師讓你去辦公室找他” is a polite expression.\n\n（2）“讓” also indicates to permit and to allow somebody to do something, ie: “父母讓我一個人在學校附近租房子。” and “我不舒服，老闆讓我回家休息。”"
+      },
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 1,
+        "grammarNumber": 4,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G04-P167",
+        "bookPage": 167,
+        "bookPageAvailable": false,
+        "printedPages": [
+          167,
+          168
+        ],
+        "audioReference": "07-1",
+        "titleTraditional": "是……（+Adv）+ Vs",
+        "titleSimplified": "是……（+Adv）+ Vs",
+        "titleEnglish": "是 + Adjective: indeed, it is true",
+        "learnerPromise": "Emphasize that something really is a certain way.",
+        "explanation": "「美、漂亮、年輕」等狀態動詞（Vs）本身不需要「是」。說話者要確認或強調程度時，可以在Vs前加「是」；中間可加程度副詞。",
+        "pattern": "Subject + 是 + (Adverb) + Adjective",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g4-ex1",
+            "text": {
+              "traditional": "A：我覺得王小姐比以前漂亮了。B：她是比以前漂亮多了。",
+              "simplified": "A：我觉得王小姐比以前漂亮了。B：她是比以前漂亮多了。",
+              "pinyin": "A: Wǒ juéde Wáng xiǎojiě bǐ yǐqián piàoliang le. B: Tā shì bǐ yǐqián piàoliang duō le.",
+              "english": "A: I think Miss Wang is prettier than before. B: She is indeed much prettier than before.",
+              "words": [
+                {
+                  "id": "b2l07g4-ex1-w1",
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A:",
+                  "meaning": "Speaker A",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex1-w2",
+                  "traditional": "我覺得",
+                  "simplified": "我觉得",
+                  "pinyin": "wǒ juéde",
+                  "meaning": "I think",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex1-w3",
+                  "traditional": "王小姐比以前漂亮了",
+                  "simplified": "王小姐比以前漂亮了",
+                  "pinyin": "Wáng xiǎojiě bǐ yǐqián piàoliang le",
+                  "meaning": "Miss Wang is prettier than before",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b2l07g4-ex1-w4",
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B:",
+                  "meaning": "Speaker B",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex1-w5",
+                  "traditional": "她是比以前漂亮多了",
+                  "simplified": "她是比以前漂亮多了",
+                  "pinyin": "tā shì bǐ yǐqián piàoliang duō le",
+                  "meaning": "she is indeed much prettier than before",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g4-ex2",
+            "text": {
+              "traditional": "A：外國人都覺得中國字很難寫，你覺得呢？B：是有點兒難寫，可是多練習幾次就好了。",
+              "simplified": "A：外国人都觉得中国字很难写，你觉得呢？B：是有点儿难写，可是多练习几次就好了。",
+              "pinyin": "A: Wàiguórén dōu juéde Zhōngguó zì hěn nán xiě, nǐ juéde ne? B: Shì yǒudiǎnr nán xiě, kěshì duō liànxí jǐ cì jiù hǎo le.",
+              "english": "A: Foreigners all think Chinese characters are hard to write. What do you think? B: They are indeed a little hard to write, but they'll be fine after a few more times of practice.",
+              "words": [
+                {
+                  "id": "b2l07g4-ex2-w1",
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A:",
+                  "meaning": "Speaker A",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex2-w2",
+                  "traditional": "外國人都覺得",
+                  "simplified": "外国人都觉得",
+                  "pinyin": "wàiguórén dōu juéde",
+                  "meaning": "foreigners all think",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex2-w3",
+                  "traditional": "中國字很難寫",
+                  "simplified": "中国字很难写",
+                  "pinyin": "Zhōngguó zì hěn nán xiě",
+                  "meaning": "Chinese characters are hard to write",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g4-ex2-w4",
+                  "traditional": "你覺得呢",
+                  "simplified": "你觉得呢",
+                  "pinyin": "nǐ juéde ne",
+                  "meaning": "what do you think",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b2l07g4-ex2-w5",
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B:",
+                  "meaning": "Speaker B",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex2-w6",
+                  "traditional": "是有點兒難寫",
+                  "simplified": "是有点儿难写",
+                  "pinyin": "shì yǒudiǎnr nán xiě",
+                  "meaning": "they are indeed a little hard to write",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g4-ex2-w7",
+                  "traditional": "可是多練習幾次",
+                  "simplified": "可是多练习几次",
+                  "pinyin": "kěshì duō liànxí jǐ cì",
+                  "meaning": "but after practicing a few more times",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex2-w8",
+                  "traditional": "就好了",
+                  "simplified": "就好了",
+                  "pinyin": "jiù hǎo le",
+                  "meaning": "it will be fine",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g4-ex3",
+            "text": {
+              "traditional": "良介：聽說蘇花公路的風景很美，是真的嗎？美心：是真的，可是下大雨的時候，那條路比較危險。",
+              "simplified": "良介：听说苏花公路的风景很美，是真的吗？美心：是真的，可是下大雨的时候，那条路比较危险。",
+              "pinyin": "Liángjiè: Tīngshuō Sūhuā Gōnglù de fēngjǐng hěn měi, shì zhēn de ma? Měixīn: Shì zhēn de, kěshì xià dàyǔ de shíhou, nà tiáo lù bǐjiào wēixiǎn.",
+              "english": "Ryosuke: I heard the scenery on the Suhua Highway is beautiful. Is that true? Meixin: It is true, but that road is rather dangerous when it rains heavily.",
+              "words": [
+                {
+                  "id": "b2l07g4-ex3-w1",
+                  "traditional": "良介：",
+                  "simplified": "良介：",
+                  "pinyin": "Liángjiè:",
+                  "meaning": "Ryosuke:",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex3-w2",
+                  "traditional": "聽說",
+                  "simplified": "听说",
+                  "pinyin": "tīngshuō",
+                  "meaning": "I heard",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex3-w3",
+                  "traditional": "蘇花公路的風景很美",
+                  "simplified": "苏花公路的风景很美",
+                  "pinyin": "Sūhuā Gōnglù de fēngjǐng hěn měi",
+                  "meaning": "the scenery on the Suhua Highway is beautiful",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g4-ex3-w4",
+                  "traditional": "是真的嗎",
+                  "simplified": "是真的吗",
+                  "pinyin": "shì zhēn de ma",
+                  "meaning": "is that true",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b2l07g4-ex3-w5",
+                  "traditional": "美心：",
+                  "simplified": "美心：",
+                  "pinyin": "Měixīn:",
+                  "meaning": "Meixin:",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g4-ex3-w6",
+                  "traditional": "是真的",
+                  "simplified": "是真的",
+                  "pinyin": "shì zhēn de",
+                  "meaning": "it is true",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g4-ex3-w7",
+                  "traditional": "可是下大雨的時候",
+                  "simplified": "可是下大雨的时候",
+                  "pinyin": "kěshì xià dàyǔ de shíhou",
+                  "meaning": "but when it rains heavily",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g4-ex3-w8",
+                  "traditional": "那條路比較危險",
+                  "simplified": "那条路比较危险",
+                  "pinyin": "nà tiáo lù bǐjiào wēixiǎn",
+                  "meaning": "that road is rather dangerous",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "每個形容詞前面都要加「是」嗎？",
+              "answer": "不用。平常說「她很漂亮」；想強調時才說「她是比以前漂亮多了」。",
+              "wrongTraditional": "我覺得她是漂亮。",
+              "wrongSimplified": "我觉得她是漂亮。",
+              "id": "b2l07g4-cf1",
+              "right": {
+                "traditional": "我覺得她很漂亮。",
+                "simplified": "我觉得她很漂亮。",
+                "pinyin": "Wǒ juéde tā hěn piàoliang.",
+                "english": "I think she is pretty.",
+                "words": [
+                  {
+                    "id": "b2l07g4-cf1-w1",
+                    "traditional": "我覺得她很漂亮。",
+                    "simplified": "我觉得她很漂亮。",
+                    "pinyin": "Wǒ juéde tā hěn piàoliang.",
+                    "meaning": "I think she is pretty.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "「是」要放在主語前面還是後面？",
+              "answer": "放在主語後面：「王小姐是比以前漂亮多了」。",
+              "wrongTraditional": "是王小姐比以前漂亮多了。",
+              "wrongSimplified": "是王小姐比以前漂亮多了。",
+              "id": "b2l07g4-cf2",
+              "right": {
+                "traditional": "王小姐是比以前漂亮多了。",
+                "simplified": "王小姐是比以前漂亮多了。",
+                "pinyin": "Wáng xiǎojiě shì bǐ yǐqián piàoliang duō le.",
+                "english": "Miss Wang is indeed much prettier than before.",
+                "words": [
+                  {
+                    "id": "b2l07g4-cf2-w1",
+                    "traditional": "王小姐是比以前漂亮多了。",
+                    "simplified": "王小姐是比以前漂亮多了。",
+                    "pinyin": "Wáng xiǎojiě shì bǐ yǐqián piàoliang duō le.",
+                    "meaning": "Miss Wang is indeed much prettier than before.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "Adjectives such as 美 and 漂亮 can describe someone or something without 是. Add 是 before the adjective when confirming or emphasizing the degree; a degree word can come between 是 and the adjective.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "In Chinese, intransitive state verbs, such as “美”, “漂亮”, “年輕”, etc., do not have to come after “是”. However, “是” can be added when the speaker wants to confirm or emphasize the degree of Vs."
+      },
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 1,
+        "grammarNumber": 5,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G05-P168",
+        "bookPage": 168,
+        "bookPageAvailable": false,
+        "printedPages": [
+          168
+        ],
+        "audioReference": "07-1",
+        "titleTraditional": "V光（了）",
+        "titleSimplified": "V光（了）",
+        "titleEnglish": "V光: used up, all gone",
+        "learnerPromise": "Say that something has been completely used up or eaten.",
+        "explanation": "「光」放在動詞後面，表示東西用完、吃光或走光，一點也不剩。常和「把」一起用；不高興、可惜的感覺也可能在裡面。",
+        "pattern": "Subject + (把 + Object) + Verb + 光 + 了",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g5-ex1",
+            "text": {
+              "traditional": "弟弟把我的巧克力都吃光了，讓我很生氣。",
+              "simplified": "弟弟把我的巧克力都吃光了，让我很生气。",
+              "pinyin": "Dìdi bǎ wǒ de qiǎokèlì dōu chī guāng le, ràng wǒ hěn shēngqì.",
+              "english": "My younger brother ate all my chocolate, which made me very angry.",
+              "words": [
+                {
+                  "id": "b2l07g5-ex1-w1",
+                  "traditional": "弟弟",
+                  "simplified": "弟弟",
+                  "pinyin": "dìdi",
+                  "meaning": "my younger brother",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex1-w2",
+                  "traditional": "把我的巧克力",
+                  "simplified": "把我的巧克力",
+                  "pinyin": "bǎ wǒ de qiǎokèlì",
+                  "meaning": "my chocolate",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex1-w3",
+                  "traditional": "都吃光了",
+                  "simplified": "都吃光了",
+                  "pinyin": "dōu chī guāng le",
+                  "meaning": "ate it all up",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g5-ex1-w4",
+                  "traditional": "讓我",
+                  "simplified": "让我",
+                  "pinyin": "ràng wǒ",
+                  "meaning": "made me",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex1-w5",
+                  "traditional": "很生氣",
+                  "simplified": "很生气",
+                  "pinyin": "hěn shēngqì",
+                  "meaning": "very angry",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g5-ex2",
+            "text": {
+              "traditional": "時間很晚了，咖啡館的客人差不多都走光了。",
+              "simplified": "时间很晚了，咖啡馆的客人差不多都走光了。",
+              "pinyin": "Shíjiān hěn wǎn le, kāfēiguǎn de kèrén chàbuduō dōu zǒu guāng le.",
+              "english": "It was very late, and almost all the customers in the café had left.",
+              "words": [
+                {
+                  "id": "b2l07g5-ex2-w1",
+                  "traditional": "時間很晚了",
+                  "simplified": "时间很晚了",
+                  "pinyin": "shíjiān hěn wǎn le",
+                  "meaning": "it was very late",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g5-ex2-w2",
+                  "traditional": "咖啡館的客人",
+                  "simplified": "咖啡馆的客人",
+                  "pinyin": "kāfēiguǎn de kèrén",
+                  "meaning": "the customers at the café",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex2-w3",
+                  "traditional": "差不多",
+                  "simplified": "差不多",
+                  "pinyin": "chàbuduō",
+                  "meaning": "almost",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex2-w4",
+                  "traditional": "都走光了",
+                  "simplified": "都走光了",
+                  "pinyin": "dōu zǒu guāng le",
+                  "meaning": "had all left",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g5-ex3",
+            "text": {
+              "traditional": "要是你一下子就把獎學金用光，下個月就沒錢付房租了。",
+              "simplified": "要是你一下子就把奖学金用光，下个月就没钱付房租了。",
+              "pinyin": "Yàoshi nǐ yíxiàzi jiù bǎ jiǎngxuéjīn yòng guāng, xià ge yuè jiù méi qián fù fángzū le.",
+              "english": "If you use up your scholarship all at once, you won't have money to pay rent next month.",
+              "words": [
+                {
+                  "id": "b2l07g5-ex3-w1",
+                  "traditional": "要是",
+                  "simplified": "要是",
+                  "pinyin": "yàoshi",
+                  "meaning": "if",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex3-w2",
+                  "traditional": "你一下子",
+                  "simplified": "你一下子",
+                  "pinyin": "nǐ yíxiàzi",
+                  "meaning": "you all at once",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex3-w3",
+                  "traditional": "就把獎學金用光",
+                  "simplified": "就把奖学金用光",
+                  "pinyin": "jiù bǎ jiǎngxuéjīn yòng guāng",
+                  "meaning": "use up your scholarship",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g5-ex3-w4",
+                  "traditional": "下個月",
+                  "simplified": "下个月",
+                  "pinyin": "xià ge yuè",
+                  "meaning": "next month",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g5-ex3-w5",
+                  "traditional": "就沒錢付房租了",
+                  "simplified": "就没钱付房租了",
+                  "pinyin": "jiù méi qián fù fángzū le",
+                  "meaning": "you won't have money to pay rent",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "「光」要放在動詞前面還是後面？",
+              "answer": "放在動詞後面，說結果一點也不剩。",
+              "wrongTraditional": "弟弟把我的巧克力都光吃了。",
+              "wrongSimplified": "弟弟把我的巧克力都光吃了。",
+              "id": "b2l07g5-cf1",
+              "right": {
+                "traditional": "弟弟把我的巧克力都吃光了。",
+                "simplified": "弟弟把我的巧克力都吃光了。",
+                "pinyin": "Dìdi bǎ wǒ de qiǎokèlì dōu chī guāng le.",
+                "english": "My younger brother ate all my chocolate.",
+                "words": [
+                  {
+                    "id": "b2l07g5-cf1-w1",
+                    "traditional": "弟弟把我的巧克力都吃光了。",
+                    "simplified": "弟弟把我的巧克力都吃光了。",
+                    "pinyin": "Dìdi bǎ wǒ de qiǎokèlì dōu chī guāng le.",
+                    "meaning": "My younger brother ate all my chocolate.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "功課可以用「V光」嗎？",
+              "answer": "不行。「寫光」不自然；功課是「寫完」，不是用完。",
+              "wrongTraditional": "我把功課寫光了。",
+              "wrongSimplified": "我把功课写光了。",
+              "id": "b2l07g5-cf2",
+              "right": {
+                "traditional": "我把功課寫完了。",
+                "simplified": "我把功课写完了。",
+                "pinyin": "Wǒ bǎ gōngkè xiě wán le.",
+                "english": "I finished my homework.",
+                "words": [
+                  {
+                    "id": "b2l07g5-cf2-w1",
+                    "traditional": "我把功課寫完了。",
+                    "simplified": "我把功课写完了。",
+                    "pinyin": "Wǒ bǎ gōngkè xiě wán le.",
+                    "meaning": "I finished my homework.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "光 after a verb means that something has been used, eaten, or otherwise depleted until none is left. It often appears with 把 and 了. Depending on the situation, it can also suggest regret or disappointment.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "The “光” here serves as a verb complement denoting “running out” or “nothing left”, and sometimes it suggests a sense of regret and disappointment. It often collocates with “把”, ie: “把錢用光了” and “弟弟把糖吃光了”; however, “我把功課寫光了” is unacceptable."
+      },
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 1,
+        "grammarNumber": 6,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G06-P169",
+        "bookPage": 169,
+        "bookPageAvailable": false,
+        "printedPages": [
+          169
+        ],
+        "audioReference": "07-1",
+        "titleTraditional": "一點兒 + 都／也 + Neg + Vs",
+        "titleSimplified": "一点儿 + 都／也 + Neg + Vs",
+        "titleEnglish": "一點兒都/也不: not at all",
+        "learnerPromise": "Say strongly that something is not at all a certain way.",
+        "explanation": "「一點兒＋都／也＋不」加在動詞或狀態動詞前，強烈否定某種情況，表示「完全不……」。",
+        "pattern": "Subject + 一點兒 + 都／也 + 不／沒 + Adjective／Verb",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g6-ex1",
+            "text": {
+              "traditional": "這杯珍珠奶茶是無糖的，一點兒都不甜。",
+              "simplified": "这杯珍珠奶茶是无糖的，一点儿都不甜。",
+              "pinyin": "Zhè bēi zhēnzhū nǎichá shì wútáng de, yìdiǎnr dōu bù tián.",
+              "english": "This cup of bubble tea is sugar-free; it's not sweet at all.",
+              "words": [
+                {
+                  "id": "b2l07g6-ex1-w1",
+                  "traditional": "這杯珍珠奶茶",
+                  "simplified": "这杯珍珠奶茶",
+                  "pinyin": "zhè bēi zhēnzhū nǎichá",
+                  "meaning": "this cup of bubble tea",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g6-ex1-w2",
+                  "traditional": "是無糖的",
+                  "simplified": "是无糖的",
+                  "pinyin": "shì wútáng de",
+                  "meaning": "is sugar-free",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g6-ex1-w3",
+                  "traditional": "一點兒都不甜",
+                  "simplified": "一点儿都不甜",
+                  "pinyin": "yìdiǎnr dōu bù tián",
+                  "meaning": "is not sweet at all",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g6-ex2",
+            "text": {
+              "traditional": "網路訂票一點兒也不難，你可以自己上網試試看。",
+              "simplified": "网路订票一点儿也不难，你可以自己上网试试看。",
+              "pinyin": "Wǎnglù dìngpiào yìdiǎnr yě bù nán, nǐ kěyǐ zìjǐ shàngwǎng shìshi kàn.",
+              "english": "Booking tickets online is not difficult at all. You can go online and try it yourself.",
+              "words": [
+                {
+                  "id": "b2l07g6-ex2-w1",
+                  "traditional": "網路訂票",
+                  "simplified": "网路订票",
+                  "pinyin": "wǎnglù dìngpiào",
+                  "meaning": "booking tickets online",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g6-ex2-w2",
+                  "traditional": "一點兒也不難",
+                  "simplified": "一点儿也不难",
+                  "pinyin": "yìdiǎnr yě bù nán",
+                  "meaning": "is not difficult at all",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g6-ex2-w3",
+                  "traditional": "你可以自己上網",
+                  "simplified": "你可以自己上网",
+                  "pinyin": "nǐ kěyǐ zìjǐ shàngwǎng",
+                  "meaning": "you can go online yourself",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g6-ex2-w4",
+                  "traditional": "試試看",
+                  "simplified": "试试看",
+                  "pinyin": "shìshi kàn",
+                  "meaning": "and try it",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g6-ex3",
+            "text": {
+              "traditional": "我跟他一點兒都不熟，為什麼要一起去KTV唱歌呢？",
+              "simplified": "我跟他一点儿都不熟，为什么要一起去KTV唱歌呢？",
+              "pinyin": "Wǒ gēn tā yìdiǎnr dōu bù shú, wèishénme yào yìqǐ qù KTV chànggē ne?",
+              "english": "He and I are not close at all. Why would we go to KTV and sing together?",
+              "words": [
+                {
+                  "id": "b2l07g6-ex3-w1",
+                  "traditional": "我跟他",
+                  "simplified": "我跟他",
+                  "pinyin": "wǒ gēn tā",
+                  "meaning": "he and I",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g6-ex3-w2",
+                  "traditional": "一點兒都不熟",
+                  "simplified": "一点儿都不熟",
+                  "pinyin": "yìdiǎnr dōu bù shú",
+                  "meaning": "are not at all close",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g6-ex3-w3",
+                  "traditional": "為什麼要",
+                  "simplified": "为什么要",
+                  "pinyin": "wèishénme yào",
+                  "meaning": "why would we",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g6-ex3-w4",
+                  "traditional": "一起去KTV唱歌",
+                  "simplified": "一起去KTV唱歌",
+                  "pinyin": "yìqǐ qù KTV chànggē",
+                  "meaning": "go to KTV and sing together",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g6-ex3-w5",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "(question)",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "「一點兒」可以放在否定詞後面嗎？",
+              "answer": "不行。要說「一點兒都不甜」，不是「都不甜一點兒」。",
+              "wrongTraditional": "這杯珍珠奶茶是無糖的，都不甜一點兒。",
+              "wrongSimplified": "这杯珍珠奶茶是无糖的，都不甜一点儿。",
+              "id": "b2l07g6-cf1",
+              "right": {
+                "traditional": "這杯珍珠奶茶是無糖的，一點兒都不甜。",
+                "simplified": "这杯珍珠奶茶是无糖的，一点儿都不甜。",
+                "pinyin": "Zhè bēi zhēnzhū nǎichá shì wútáng de, yìdiǎnr dōu bù tián.",
+                "english": "This cup of bubble tea is sugar-free; it's not sweet at all.",
+                "words": [
+                  {
+                    "id": "b2l07g6-cf1-w1",
+                    "traditional": "這杯珍珠奶茶是無糖的，一點兒都不甜。",
+                    "simplified": "这杯珍珠奶茶是无糖的，一点儿都不甜。",
+                    "pinyin": "Zhè bēi zhēnzhū nǎichá shì wútáng de, yìdiǎnr dōu bù tián.",
+                    "meaning": "This cup of bubble tea is sugar-free; it's not sweet at all.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "「有一點兒」和「一點兒都」一樣嗎？",
+              "answer": "不一樣。「有一點兒」是「稍微」；「一點兒都」加否定是「完全不」。",
+              "wrongTraditional": "網路訂票有一點兒不難。",
+              "wrongSimplified": "网路订票有一点儿不难。",
+              "id": "b2l07g6-cf2",
+              "right": {
+                "traditional": "網路訂票一點兒也不難。",
+                "simplified": "网路订票一点儿也不难。",
+                "pinyin": "Wǎnglù dìngpiào yìdiǎnr yě bù nán.",
+                "english": "Booking tickets online is not difficult at all.",
+                "words": [
+                  {
+                    "id": "b2l07g6-cf2-w1",
+                    "traditional": "網路訂票一點兒也不難。",
+                    "simplified": "网路订票一点儿也不难。",
+                    "pinyin": "Wǎnglù dìngpiào yìdiǎnr yě bù nán.",
+                    "meaning": "Booking tickets online is not difficult at all.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "一點兒 + 都／也 + 不／沒 + verb or adjective makes a strong negative: the subject is not in that state or does not do that action at all.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "The expression “一點兒都/也不” shows strong negation, often followed by verbs or state verbs to emphasize the subject is not in a certain status at all."
+      }
+    ]
+  },
+  "BOOK2_LESSON_SEVEN_PART_TWO": {
+    "id": "B2L07-P02-D02",
+    "bookId": 2,
+    "lessonId": 7,
+    "partId": 2,
+    "title": "Grammar 7–8 · Online Ticket Booking",
+    "dialogue": {
+      "id": "B2L07-D02",
+      "title": "短文 · 網路訂票",
+      "audioReference": "07-2-1",
+      "printedPages": [
+        170,
+        171
+      ],
+      "grammarFocus": [
+        "剛……（，）就……",
+        "趁（著）"
+      ],
+      "lines": [
+        {
+          "id": "b2l07d2-l1",
+          "speaker": "旁白",
+          "traditional": "我跟室友計畫春假去阿里山森林遊樂區走走。那時候草綠了、花開了，天氣也暖和了。不必帶太多行李，也不需要穿大衣，只要穿一雙好走的鞋子，再帶一件外套、雨衣、幾雙襪子跟幾件內衣褲就夠了。",
+          "simplified": "我跟室友计划春假去阿里山森林游乐区走走。那时候草绿了、花开了，天气也暖和了。不必带太多行李，也不需要穿大衣，只要穿一双好走的鞋子，再带一件外套、雨衣、几双袜子跟几件内衣裤就够了。",
+          "pinyin": "Wǒ gēn shìyǒu jìhuà chūnjià qù Ālǐ Shān sēnlín yóulè qū zǒuzǒu. Nà shíhou cǎo lǜ le, huā kāi le, tiānqì yě nuǎnhuo le. Búbì dài tài duō xínglǐ, yě bù xūyào chuān dàyī, zhǐyào chuān yì shuāng hǎo zǒu de xiézi, zài dài yí jiàn wàitào, yǔyī, jǐ shuāng wàzi gēn jǐ jiàn nèiyīkù jiù gòu le.",
+          "english": "My roommate and I are planning to walk around the Alishan Forest Recreation Area during spring break. At that time, the grass is green, the flowers are blooming, and the weather is warm. We don't need to bring much luggage or wear a coat. We just need a pair of comfortable walking shoes, a jacket, a raincoat, a few pairs of socks, and some underwear."
+        },
+        {
+          "id": "b2l07d2-l2",
+          "speaker": "旁白",
+          "traditional": "本來我想參加阿里山的團體旅遊，這樣就不必自己上網訂票、訂旅館，可是室友覺得自己去比較自由，也不趕時間，所以我們決定第一天搭台鐵到嘉義，再從嘉義搭小火車上阿里山，當天晚上就可以在山上散步、看星星了。沒想到剛上台鐵的網站，就發現春假第一天的票都賣光了。原來除了去國外旅行，想留在國內玩的人也不少。",
+          "simplified": "本来我想参加阿里山的团体旅游，这样就不必自己上网订票、订旅馆，可是室友觉得自己去比较自由，也不赶时间，所以我们决定第一天搭台铁到嘉义，再从嘉义搭小火车上阿里山，当天晚上就可以在山上散步、看星星了。没想到刚上台铁的网站，就发现春假第一天的票都卖光了。原来除了去国外旅行，想留在国内玩的人也不少。",
+          "pinyin": "Běnlái wǒ xiǎng cānjiā Ālǐ Shān de tuántǐ lǚyóu, zhèyàng jiù búbì zìjǐ shàngwǎng dìngpiào, dìng lǚguǎn, kěshì shìyǒu juéde zìjǐ qù bǐjiào zìyóu, yě bù gǎn shíjiān, suǒyǐ wǒmen juédìng dì yī tiān dā Táitiě dào Jiāyì, zài cóng Jiāyì dā xiǎo huǒchē shàng Ālǐ Shān, dāngtiān wǎnshang jiù kěyǐ zài shān shàng sànbù, kàn xīngxing le. Méi xiǎngdào gāng shàng Táitiě de wǎngzhàn, jiù fāxiàn chūnjià dì yī tiān de piào dōu mài guāng le. Yuánlái chúle qù guówài lǚxíng, xiǎng liú zài guónèi wán de rén yě bùshǎo.",
+          "english": "At first I wanted to join a group tour to Alishan so I wouldn't have to book tickets and a hotel online myself. But my roommate thought going on our own would be more free and we wouldn't be rushed, so we decided to take the Taiwan Railways to Chiayi on the first day, then take the small train from Chiayi up to Alishan. That evening we could take a walk in the mountains and look at the stars. Unexpectedly, as soon as I went to the Taiwan Railways website, I found that all the tickets for the first day of spring break were sold out. It turns out that besides traveling abroad, many people also want to stay in Taiwan for fun."
+        },
+        {
+          "id": "b2l07d2-l3",
+          "speaker": "旁白",
+          "traditional": "後來我上高鐵的網站，很幸運訂到了兩張台北到嘉義的車票，馬上用信用卡付了錢，這樣就放心了。雖然高鐵票比較貴，可是又快又舒服，而且第一天晚上住在嘉義市也不錯，因為當地的雞肉飯很有名，剛好趁這個機會去吃吃看。我正在想像一邊吃雞肉飯，一邊喝啤酒的樣子，室友忽然大叫，「成功了！阿里山小火車的票訂到了！」",
+          "simplified": "后来我上高铁的网站，很幸运订到了两张台北到嘉义的车票，马上用信用卡付了钱，这样就放心了。虽然高铁票比较贵，可是又快又舒服，而且第一天晚上住在嘉义市也不错，因为当地的鸡肉饭很有名，刚好趁这个机会去吃吃看。我正在想象一边吃鸡肉饭，一边喝啤酒的样子，室友忽然大叫，「成功了！阿里山小火车的票订到了！」",
+          "pinyin": "Hòulái wǒ shàng gāotiě de wǎngzhàn, hěn xìngyùn dìng dào le liǎng zhāng Táiběi dào Jiāyì de chēpiào, mǎshàng yòng xìnyòngkǎ fù le qián, zhèyàng jiù fàngxīn le. Suīrán gāotiě piào bǐjiào guì, kěshì yòu kuài yòu shūfu, érqiě dì yī tiān wǎnshang zhù zài Jiāyì Shì yě búcuò, yīnwèi dāngdì de jīròufàn hěn yǒumíng, gānghǎo chèn zhège jīhuì qù chīchi kàn. Wǒ zhèngzài xiǎngxiàng yìbiān chī jīròufàn, yìbiān hē píjiǔ de yàngzi, shìyǒu hūrán dàjiào, 「Chénggōng le! Ālǐ Shān xiǎo huǒchē de piào dìng dào le!」",
+          "english": "Later I went to the high-speed rail website and was lucky enough to book two tickets from Taipei to Chiayi. I immediately paid with a credit card, and then I felt relieved. Although the high-speed rail tickets are more expensive, it's fast and comfortable, and staying in Chiayi City the first night is also nice because the local chicken rice is famous. It's a good chance to try it. I was imagining eating chicken rice and drinking beer at the same time when my roommate suddenly shouted, \"Success! I booked the Alishan Forest Railway tickets!\""
+        },
+        {
+          "id": "b2l07d2-l4",
+          "speaker": "旁白",
+          "traditional": "我們能利用網路做好多事情，除了訂車票、機票、餐廳，還能買到各式各樣、又便宜又流行的衣服。有網路真好！",
+          "simplified": "我们能利用网路做好多事情，除了订车票、机票、餐厅，还能买到各式各样、又便宜又流行的衣服。有网路真好！",
+          "pinyin": "Wǒmen néng lìyòng wǎnglù zuò hǎo duō shìqing, chúle dìng chēpiào, jīpiào, cāntīng, hái néng mǎi dào gèshìgèyàng, yòu piányi yòu liúxíng de yīfu. Yǒu wǎnglù zhēn hǎo!",
+          "english": "We can use the Internet to do many things. Besides booking train tickets, plane tickets, and restaurants, we can also buy all kinds of cheap and fashionable clothes. It's really great to have the Internet!"
+        }
+      ]
+    },
+    "grammarPages": [
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 2,
+        "grammarNumber": 7,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G07-P176",
+        "bookPage": 176,
+        "bookPageAvailable": false,
+        "printedPages": [
+          176
+        ],
+        "audioReference": "07-3",
+        "titleTraditional": "剛……（，）就……",
+        "titleSimplified": "刚……（，）就……",
+        "titleEnglish": "剛…就…: as soon as",
+        "learnerPromise": "Say that one thing happened right after another.",
+        "explanation": "「剛」後面說第一件事，「就」後面說馬上發生的第二件事，強調兩件事很近。兩個句子的主語不同時，第二句的主語要放在「就」前面。",
+        "pattern": "Subject + 剛 + Verb₁，(+ Subject₂) + 就 + Verb₂",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g7-ex1",
+            "text": {
+              "traditional": "那個蛋糕剛烤好就被孩子吃光了。",
+              "simplified": "那个蛋糕刚烤好就被孩子吃光了。",
+              "pinyin": "Nà ge dàngāo gāng kǎo hǎo jiù bèi háizi chī guāng le.",
+              "english": "That cake was eaten up by the children as soon as it was baked.",
+              "words": [
+                {
+                  "id": "b2l07g7-ex1-w1",
+                  "traditional": "那個蛋糕",
+                  "simplified": "那个蛋糕",
+                  "pinyin": "nà ge dàngāo",
+                  "meaning": "that cake",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex1-w2",
+                  "traditional": "剛烤好",
+                  "simplified": "刚烤好",
+                  "pinyin": "gāng kǎo hǎo",
+                  "meaning": "was just baked",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex1-w3",
+                  "traditional": "就被孩子吃光了",
+                  "simplified": "就被孩子吃光了",
+                  "pinyin": "jiù bèi háizi chī guāng le",
+                  "meaning": "and was eaten up by the children",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g7-ex2",
+            "text": {
+              "traditional": "他剛搬進宿舍，無線網路就壞了。",
+              "simplified": "他刚搬进宿舍，无线网路就坏了。",
+              "pinyin": "Tā gāng bān jìn sùshè, wúxiàn wǎnglù jiù huài le.",
+              "english": "The Wi-Fi broke right after he moved into the dorm.",
+              "words": [
+                {
+                  "id": "b2l07g7-ex2-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex2-w2",
+                  "traditional": "剛搬進宿舍",
+                  "simplified": "刚搬进宿舍",
+                  "pinyin": "gāng bān jìn sùshè",
+                  "meaning": "just moved into the dorm",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g7-ex2-w3",
+                  "traditional": "無線網路",
+                  "simplified": "无线网路",
+                  "pinyin": "wúxiàn wǎnglù",
+                  "meaning": "the Wi-Fi",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex2-w4",
+                  "traditional": "就壞了",
+                  "simplified": "就坏了",
+                  "pinyin": "jiù huài le",
+                  "meaning": "broke right away",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g7-ex3",
+            "text": {
+              "traditional": "他剛畢業就找到了一份好工作，真是太幸運了！",
+              "simplified": "他刚毕业就找到了一份好工作，真是太幸运了！",
+              "pinyin": "Tā gāng bìyè jiù zhǎodào le yí fèn hǎo gōngzuò, zhēn shì tài xìngyùn le!",
+              "english": "He found a good job right after graduating. He is really so lucky!",
+              "words": [
+                {
+                  "id": "b2l07g7-ex3-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex3-w2",
+                  "traditional": "剛畢業",
+                  "simplified": "刚毕业",
+                  "pinyin": "gāng bìyè",
+                  "meaning": "just graduated",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex3-w3",
+                  "traditional": "就找到了一份好工作",
+                  "simplified": "就找到了一份好工作",
+                  "pinyin": "jiù zhǎodào le yí fèn hǎo gōngzuò",
+                  "meaning": "found a good job right away",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g7-ex3-w4",
+                  "traditional": "真是",
+                  "simplified": "真是",
+                  "pinyin": "zhēn shì",
+                  "meaning": "really",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g7-ex3-w5",
+                  "traditional": "太幸運了",
+                  "simplified": "太幸运了",
+                  "pinyin": "tài xìngyùn le",
+                  "meaning": "so lucky",
+                  "suffix": "！"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "兩個句子的主語不同時，「就」要放在哪裡？",
+              "answer": "放在第二個主語後面。",
+              "wrongTraditional": "他剛搬進宿舍，就無線網路壞了。",
+              "wrongSimplified": "他刚搬进宿舍，就无线网路坏了。",
+              "id": "b2l07g7-cf1",
+              "right": {
+                "traditional": "他剛搬進宿舍，無線網路就壞了。",
+                "simplified": "他刚搬进宿舍，无线网路就坏了。",
+                "pinyin": "Tā gāng bān jìn sùshè, wúxiàn wǎnglù jiù huài le.",
+                "english": "The Wi-Fi broke right after he moved into the dorm.",
+                "words": [
+                  {
+                    "id": "b2l07g7-cf1-w1",
+                    "traditional": "他剛搬進宿舍，無線網路就壞了。",
+                    "simplified": "他刚搬进宿舍，无线网路就坏了。",
+                    "pinyin": "Tā gāng bān jìn sùshè, wúxiàn wǎnglù jiù huài le.",
+                    "meaning": "The Wi-Fi broke right after he moved into the dorm.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "「剛」後面可以加「了」嗎？",
+              "answer": "不行。這個句型說「剛 + 動作」，後面直接接「就」。",
+              "wrongTraditional": "他剛畢業了，就找到了一份好工作。",
+              "wrongSimplified": "他刚毕业了，就找到了一份好工作。",
+              "id": "b2l07g7-cf2",
+              "right": {
+                "traditional": "他剛畢業就找到了一份好工作。",
+                "simplified": "他刚毕业就找到了一份好工作。",
+                "pinyin": "Tā gāng bìyè jiù zhǎodào le yí fèn hǎo gōngzuò.",
+                "english": "He found a good job right after graduating.",
+                "words": [
+                  {
+                    "id": "b2l07g7-cf2-w1",
+                    "traditional": "他剛畢業就找到了一份好工作。",
+                    "simplified": "他刚毕业就找到了一份好工作。",
+                    "pinyin": "Tā gāng bìyè jiù zhǎodào le yí fèn hǎo gōngzuò.",
+                    "meaning": "He found a good job right after graduating.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "剛 + first action, + 就 + second action says the second event happened as soon as the first happened. If the clauses have different subjects, put the second subject before 就.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "This pattern indicates when the situation after “剛” happens, another situation or action occurs right away. It emphasizes the close connection between two situations or actions. If the two clauses has different subjects, the subject of the latter clause should be placed before “就”."
+      },
+      {
+        "bookId": 2,
+        "lessonId": 7,
+        "partId": 2,
+        "grammarNumber": 8,
+        "lessonTitle": "坐火車到花蓮去旅行",
+        "lessonTitleEnglish": "Traveling to Hualien by Train",
+        "id": "B2L07-G08-P176",
+        "bookPage": 176,
+        "bookPageAvailable": false,
+        "printedPages": [
+          176,
+          177
+        ],
+        "audioReference": "07-3",
+        "titleTraditional": "趁（著）",
+        "titleSimplified": "趁（着）",
+        "titleEnglish": "趁（著）: take advantage of",
+        "learnerPromise": "Say that someone uses a good chance or time to do something.",
+        "explanation": "「趁」後面接機會、時間或好天氣，說利用這個機會做對自己有利的事；後面可以接名詞、動詞短語或狀態動詞。「著」可以加，也可以不加。",
+        "pattern": "Subject + 趁（著）+ Chance／Time + Verb Phrase",
+        "patternColumns": [],
+        "patternRows": [],
+        "examples": [
+          {
+            "number": 1,
+            "id": "b2l07g8-ex1",
+            "text": {
+              "traditional": "媽媽趁（著）好天氣，把髒衣服都洗了。",
+              "simplified": "妈妈趁（着）好天气，把脏衣服都洗了。",
+              "pinyin": "Māma chèn (zhe) hǎo tiānqì, bǎ zāng yīfu dōu xǐ le.",
+              "english": "Mom took advantage of the good weather and washed all the dirty clothes.",
+              "words": [
+                {
+                  "id": "b2l07g8-ex1-w1",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "Mom",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g8-ex1-w2",
+                  "traditional": "趁（著）好天氣",
+                  "simplified": "趁（着）好天气",
+                  "pinyin": "chèn (zhe) hǎo tiānqì",
+                  "meaning": "taking advantage of the good weather",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g8-ex1-w3",
+                  "traditional": "把髒衣服",
+                  "simplified": "把脏衣服",
+                  "pinyin": "bǎ zāng yīfu",
+                  "meaning": "the dirty clothes",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g8-ex1-w4",
+                  "traditional": "都洗了",
+                  "simplified": "都洗了",
+                  "pinyin": "dōu xǐ le",
+                  "meaning": "washed them all",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 2,
+            "id": "b2l07g8-ex2",
+            "text": {
+              "traditional": "張先生趁著到花蓮旅行時，買了一些當地的名產。",
+              "simplified": "张先生趁着到花莲旅行时，买了一些当地的名产。",
+              "pinyin": "Zhāng xiānsheng chènzhe dào Huālián lǚxíng shí, mǎi le yìxiē dāngdì de míngchǎn.",
+              "english": "Mr. Zhang bought some local specialties while traveling to Hualien.",
+              "words": [
+                {
+                  "id": "b2l07g8-ex2-w1",
+                  "traditional": "張先生",
+                  "simplified": "张先生",
+                  "pinyin": "Zhāng xiānsheng",
+                  "meaning": "Mr. Zhang",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g8-ex2-w2",
+                  "traditional": "趁著到花蓮旅行時",
+                  "simplified": "趁着到花莲旅行时",
+                  "pinyin": "chènzhe dào Huālián lǚxíng shí",
+                  "meaning": "while traveling to Hualien",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g8-ex2-w3",
+                  "traditional": "買了一些",
+                  "simplified": "买了一些",
+                  "pinyin": "mǎi le yìxiē",
+                  "meaning": "bought some",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g8-ex2-w4",
+                  "traditional": "當地的名產",
+                  "simplified": "当地的名产",
+                  "pinyin": "dāngdì de míngchǎn",
+                  "meaning": "local specialties",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "number": 3,
+            "id": "b2l07g8-ex3",
+            "text": {
+              "traditional": "他趁著去法國留學的時候，參觀了有名的博物館。",
+              "simplified": "他趁着去法国留学的时候，参观了有名的博物馆。",
+              "pinyin": "Tā chènzhe qù Fǎguó liúxué de shíhou, cānguān le yǒumíng de bówùguǎn.",
+              "english": "He visited a famous museum while studying in France.",
+              "words": [
+                {
+                  "id": "b2l07g8-ex3-w1",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g8-ex3-w2",
+                  "traditional": "趁著去法國留學的時候",
+                  "simplified": "趁着去法国留学的时候",
+                  "pinyin": "chènzhe qù Fǎguó liúxué de shíhou",
+                  "meaning": "while studying in France",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b2l07g8-ex3-w3",
+                  "traditional": "參觀了",
+                  "simplified": "参观了",
+                  "pinyin": "cānguān le",
+                  "meaning": "visited",
+                  "suffix": ""
+                },
+                {
+                  "id": "b2l07g8-ex3-w4",
+                  "traditional": "有名的博物館",
+                  "simplified": "有名的博物馆",
+                  "pinyin": "yǒumíng de bówùguǎn",
+                  "meaning": "a famous museum",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "question": "「趁」和「因為」一樣嗎？",
+              "answer": "不一樣。「趁」是利用機會；「因為」是說原因。",
+              "wrongTraditional": "張先生因為到花蓮旅行時，買了一些當地的名產。",
+              "wrongSimplified": "张先生因为到花莲旅行时，买了一些当地的名产。",
+              "id": "b2l07g8-cf1",
+              "right": {
+                "traditional": "張先生趁著到花蓮旅行時，買了一些當地的名產。",
+                "simplified": "张先生趁着到花莲旅行时，买了一些当地的名产。",
+                "pinyin": "Zhāng xiānsheng chènzhe dào Huālián lǚxíng shí, mǎi le yìxiē dāngdì de míngchǎn.",
+                "english": "Mr. Zhang bought some local specialties while traveling to Hualien.",
+                "words": [
+                  {
+                    "id": "b2l07g8-cf1-w1",
+                    "traditional": "張先生趁著到花蓮旅行時，買了一些當地的名產。",
+                    "simplified": "张先生趁着到花莲旅行时，买了一些当地的名产。",
+                    "pinyin": "Zhāng xiānsheng chènzhe dào Huālián lǚxíng shí, mǎi le yìxiē dāngdì de míngchǎn.",
+                    "meaning": "Mr. Zhang bought some local specialties while traveling to Hualien.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            },
+            {
+              "question": "「趁」後面可以加「了」嗎？",
+              "answer": "不行。要說「趁著」或「趁」，不是「趁了」。",
+              "wrongTraditional": "他趁了去法國留學的時候，參觀了有名的博物館。",
+              "wrongSimplified": "他趁了去法国留学的时候，参观了有名的博物馆。",
+              "id": "b2l07g8-cf2",
+              "right": {
+                "traditional": "他趁著去法國留學的時候，參觀了有名的博物館。",
+                "simplified": "他趁着去法国留学的时候，参观了有名的博物馆。",
+                "pinyin": "Tā chènzhe qù Fǎguó liúxué de shíhou, cānguān le yǒumíng de bówùguǎn.",
+                "english": "He visited a famous museum while studying in France.",
+                "words": [
+                  {
+                    "id": "b2l07g8-cf2-w1",
+                    "traditional": "他趁著去法國留學的時候，參觀了有名的博物館。",
+                    "simplified": "他趁着去法国留学的时候，参观了有名的博物馆。",
+                    "pinyin": "Tā chènzhe qù Fǎguó liúxué de shíhou, cānguān le yǒumíng de bówùguǎn.",
+                    "meaning": "He visited a famous museum while studying in France.",
+                    "suffix": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "questions": [],
+        "explanationEnglish": "趁（著）introduces an opportunity, time, or favorable condition that someone uses to do something useful. It can be followed by a noun, a verb phrase, or a state verb. 著 is optional.",
+        "exerciseTitle": "",
+        "exercisePreview": "",
+        "exerciseInstruction": "",
+        "sourceExplanationEnglish": "The expression “趁著” means taking advantage of a certain chance or time to do something beneficial to oneself. “趁” can be followed by nouns, verb phrases, and intransitive state verbs, etc."
+      }
+    ]
+  }
+}

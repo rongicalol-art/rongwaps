@@ -6,7 +6,8 @@ import { LegalUpdateNotice } from './components/LegalUpdateNotice';
 import { PwaUpdatePrompt } from './components/PwaUpdatePrompt';
 import { ResumeLaunch } from '../features/practice';
 import { useAppShell } from './hooks/useAppShell';
-import { SignInWindow } from '../screens/auth';
+import { LazyLandingPage } from '../screens/landing/LazyLandingPage';
+import { dismissPrerender } from '../utils/browser/prerender';
 import { registerShellServices } from './registerShellServices';
 
 registerShellServices();
@@ -30,6 +31,7 @@ export default function AppShell() {
   const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   const ready = !isLoading && !isSignedOut;
+  useEffect(() => { if (ready) dismissPrerender(); }, [ready]);
   const [socialReady, setSocialReady] = useState(false);
   useEffect(() => {
     if (!ready) return;
@@ -46,10 +48,13 @@ export default function AppShell() {
     return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen tone="canvas" />;
   }
 
-  // Accounts are required: signed out, the only thing on screen is the
-  // (non-dismissable) sign-in window.
+  // Accounts are required: signed out, the only thing on screen is the landing page with sign-in.
   if (isSignedOut) {
-    return <SignInWindow />;
+    return (
+      <Suspense fallback={<LoadingScreen message="Loading Ron's Mandarin…" fullScreen tone="canvas" />}>
+        <LazyLandingPage />
+      </Suspense>
+    );
   }
 
   return (

@@ -1,0 +1,2865 @@
+{
+  "schemaVersion": 1,
+  "bookId": 2,
+  "count": 16,
+  "items": [
+    {
+      "id": "B2L01-R01",
+      "bookId": 2,
+      "lessonId": 1,
+      "dialogueNumber": 1,
+      "title": "對話 · 認識新朋友 · Meeting New Friends",
+      "titlePinyin": "Rènshi Xīn Péngyǒu",
+      "titleEnglish": "Meeting New Friends",
+      "printedPages": [
+        24,
+        25
+      ],
+      "audioReference": "01-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l01d1-l1",
+          "speaker": "旁白",
+          "traditional": "（美心跟良介在學校）",
+          "simplified": "（美心跟良介在学校）",
+          "pinyin": "（Měixīn gēn Liángjiè zài xuéxiào）",
+          "english": "(Meixin and Ryosuke are at school.)"
+        },
+        {
+          "id": "b2l01d1-l2",
+          "speaker": "美心",
+          "traditional": "你怎麼了？為什麼不去吃午飯？",
+          "simplified": "你怎么了？为什么不去吃午饭？",
+          "pinyin": "Nǐ zěnme le? Wèishénme bú qù chī wǔfàn?",
+          "english": "What's wrong? Why aren't you going to eat lunch?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 22.14,
+            "end": 25.92
+          }
+        },
+        {
+          "id": "b2l01d1-l3",
+          "speaker": "良介",
+          "traditional": "今天早上起來的時候，覺得背很疼，我想休息一下。",
+          "simplified": "今天早上起来的时候，觉得背很疼，我想休息一下。",
+          "pinyin": "Jīntiān zǎoshang qǐlái de shíhou, juéde bèi hěn téng, wǒ xiǎng xiūxi yíxià.",
+          "english": "When I got up this morning, my back hurt a lot. I want to rest for a while.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 27.42,
+            "end": 34.05
+          }
+        },
+        {
+          "id": "b2l01d1-l4",
+          "speaker": "美心",
+          "traditional": "要是明天還是很疼，最好去看醫生或是去藥房買藥。",
+          "simplified": "要是明天还是很疼，最好去看医生或是去药房买药。",
+          "pinyin": "Yàoshi míngtiān háishì hěn téng, zuìhǎo qù kàn yīshēng huòshì qù yàofáng mǎi yào.",
+          "english": "If it still hurts tomorrow, you'd better see a doctor or buy medicine at the pharmacy.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 35.29,
+            "end": 42.31
+          }
+        },
+        {
+          "id": "b2l01d1-l5",
+          "speaker": "良介",
+          "traditional": "謝謝妳。對了！我最近在網路上認識了一個女生，她不但很溫柔，也很客氣。我每天都給她打電話，我們聊得很愉快。",
+          "simplified": "谢谢妳。对了！我最近在网路上认识了一个女生，她不但很温柔，也很客气。我每天都给她打电话，我们聊得很愉快。",
+          "pinyin": "Xièxie nǐ. Duì le! Wǒ zuìjìn zài wǎnglù shàng rènshi le yí ge nǚshēng, tā búdàn hěn wēnróu, yě hěn kèqi. Wǒ měi tiān dōu gěi tā dǎ diànhuà, wǒmen liáo de hěn yúkuài.",
+          "english": "Thank you. By the way, I recently met a girl online. She is not only gentle but also polite. I call her every day, and we have pleasant chats.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 43.39,
+            "end": 60.12
+          }
+        },
+        {
+          "id": "b2l01d1-l6",
+          "speaker": "美心",
+          "traditional": "你們認識多久了？",
+          "simplified": "你们认识多久了？",
+          "pinyin": "Nǐmen rènshi duō jiǔ le?",
+          "english": "How long have you known each other?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 61.23,
+            "end": 63.01
+          }
+        },
+        {
+          "id": "b2l01d1-l7",
+          "speaker": "良介",
+          "traditional": "差不多一個月了。",
+          "simplified": "差不多一个月了。",
+          "pinyin": "Chàbuduō yí ge yuè le.",
+          "english": "About a month.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 64.01,
+            "end": 65.73
+          }
+        },
+        {
+          "id": "b2l01d1-l8",
+          "speaker": "美心",
+          "traditional": "見過面了嗎？",
+          "simplified": "见过面了吗？",
+          "pinyin": "Jiàn guò miàn le ma?",
+          "english": "Have you met in person?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 66.57,
+            "end": 67.77
+          }
+        },
+        {
+          "id": "b2l01d1-l9",
+          "speaker": "良介",
+          "traditional": "還沒，她說她不好意思跟我見面，所以我不知道怎麼辦。",
+          "simplified": "还没，她说她不好意思跟我见面，所以我不知道怎么办。",
+          "pinyin": "Hái méi, tā shuō tā bù hǎoyìsi gēn wǒ jiànmiàn, suǒyǐ wǒ bù zhīdào zěnme bàn.",
+          "english": "Not yet. She says she feels embarrassed to meet me, so I don't know what to do.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 68.45,
+            "end": 76.32
+          }
+        },
+        {
+          "id": "b2l01d1-l10",
+          "speaker": "美心",
+          "traditional": "也許她覺得一個人跟你見面不安全。這個禮拜六學校有舞會，你要不要請她跟她朋友一起來參加？",
+          "simplified": "也许她觉得一个人跟你见面不安全。这个礼拜六学校有舞会，你要不要请她跟她朋友一起来参加？",
+          "pinyin": "Yěxǔ tā juéde yí ge rén gēn nǐ jiànmiàn bù ānquán. Zhège lǐbàiliù xuéxiào yǒu wǔhuì, nǐ yào bu yào qǐng tā gēn tā péngyou yìqǐ lái cānjiā?",
+          "english": "Perhaps she doesn't feel safe meeting you alone. There is a dance party at school this Saturday. Would you like to invite her and her friends to come?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 77.36,
+            "end": 90.31
+          }
+        },
+        {
+          "id": "b2l01d1-l11",
+          "speaker": "良介",
+          "traditional": "這個辦法不錯，妳以前也有這樣的經驗嗎？",
+          "simplified": "这个办法不错，妳以前也有这样的经验吗？",
+          "pinyin": "Zhège bànfǎ búcuò, nǐ yǐqián yě yǒu zhèyàng de jīngyàn ma?",
+          "english": "That's a good idea. Have you had an experience like that before?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 91.51,
+            "end": 96.65
+          }
+        },
+        {
+          "id": "b2l01d1-l12",
+          "speaker": "美心",
+          "traditional": "當然有啊！以前有一個男生要跟我約會，我也很害怕，不敢自己跟他見面。",
+          "simplified": "当然有啊！以前有一个男生要跟我约会，我也很害怕，不敢自己跟他见面。",
+          "pinyin": "Dāngrán yǒu a! Yǐqián yǒu yí ge nánshēng yào gēn wǒ yuēhuì, wǒ yě hěn hàipà, bù gǎn zìjǐ gēn tā jiànmiàn.",
+          "english": "Of course I have! Once a boy wanted to go on a date with me. I was scared too and didn't dare meet him by myself.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 97.65,
+            "end": 107.1
+          }
+        },
+        {
+          "id": "b2l01d1-l13",
+          "speaker": "良介",
+          "traditional": "後來呢？",
+          "simplified": "后来呢？",
+          "pinyin": "Hòulái ne?",
+          "english": "And then?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 108.3,
+            "end": 109.12
+          }
+        },
+        {
+          "id": "b2l01d1-l14",
+          "speaker": "美心",
+          "traditional": "那個時候我剛好要跟同學去動物園玩，我就約他一起去。那天大家在動物園裡看看動物、開開玩笑，後來我就敢一個人跟他約會了。",
+          "simplified": "那个时候我刚好要跟同学去动物园玩，我就约他一起去。那天大家在动物园里看看动物、开开玩笑，后来我就敢一个人跟他约会了。",
+          "pinyin": "Nàge shíhou wǒ gānghǎo yào gēn tóngxué qù dòngwùyuán wán, wǒ jiù yuē tā yìqǐ qù. Nà tiān dàjiā zài dòngwùyuán lǐ kànkan dòngwù, kāikai wánxiào, hòulái wǒ jiù gǎn yí ge rén gēn tā yuēhuì le.",
+          "english": "At that time I happened to be going to the zoo with classmates, so I asked him to come along. That day we looked at the animals and joked around at the zoo, and after that I dared to go on a date with him alone.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 110.26,
+            "end": 127.97
+          }
+        },
+        {
+          "id": "b2l01d1-l15",
+          "speaker": "良介",
+          "traditional": "聽妳說完了以後，我想我知道應該怎麼做了。",
+          "simplified": "听妳说完了以后，我想我知道应该怎么做了。",
+          "pinyin": "Tīng nǐ shuō wán le yǐhòu, wǒ xiǎng wǒ zhīdào yīnggāi zěnme zuò le.",
+          "english": "After hearing you out, I think I know what I should do.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 128.86,
+            "end": 134.12
+          }
+        },
+        {
+          "id": "b2l01d1-l16",
+          "speaker": "美心",
+          "traditional": "現在你的背好一點兒了嗎？",
+          "simplified": "现在你的背好一点儿了吗？",
+          "pinyin": "Xiànzài nǐ de bèi hǎo yìdiǎnr le ma?",
+          "english": "Is your back a little better now?"
+        },
+        {
+          "id": "b2l01d1-l17",
+          "speaker": "良介",
+          "traditional": "（摸摸自己的背）好像不疼了。",
+          "simplified": "（摸摸自己的背）好像不疼了。",
+          "pinyin": "（Mōmo zìjǐ de bèi）hǎoxiàng bù téng le.",
+          "english": "(Touches his own back.) It seems it doesn't hurt anymore.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-1-1.mp3",
+            "start": 139.5,
+            "end": 140.7
+          }
+        },
+        {
+          "id": "b2l01d1-l18",
+          "speaker": "旁白",
+          "traditional": "（兩人都笑了）",
+          "simplified": "（两人都笑了）",
+          "pinyin": "（Liǎng rén dōu xiào le）",
+          "english": "(Both of them laugh.)"
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L01-R02",
+      "bookId": 2,
+      "lessonId": 1,
+      "dialogueNumber": 2,
+      "title": "短文 · 第一次見面 · The First Time They Met",
+      "titlePinyin": "Duǎnwén · Dì Yī Cì Jiànmiàn",
+      "titleEnglish": "Reading · The First Time They Met",
+      "printedPages": [
+        33,
+        34
+      ],
+      "audioReference": "01-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "山本良介本來是一個害羞的日本學生，來台灣以後，他住在學校的宿舍，認識了很多朋友，常常跟他們去吃飯、打球。放假的時候，朋友帶他去參觀博物館、看表演，所以他覺得在台灣的生活很快樂，也好像不那麼害羞了。",
+          "simplified": "山本良介本来是一个害羞的日本学生，来台湾以后，他住在学校的宿舍，认识了很多朋友，常常跟他们去吃饭、打球。放假的时候，朋友带他去参观博物馆、看表演，所以他觉得在台湾的生活很快乐，也好像不那么害羞了。",
+          "pinyin": "Shānběn Liángjiè běnlái shì yí ge hàixiū de Rìběn xuésheng, lái Táiwān yǐhòu, tā zhù zài xuéxiào de sùshè, rènshi le hěn duō péngyou, chángcháng gēn tāmen qù chīfàn, dǎqiú. Fàngjià de shíhou, péngyou dài tā qù cānguān bówùguǎn, kàn biǎoyǎn, suǒyǐ tā juéde zài Táiwān de shēnghuó hěn kuàilè, yě hǎoxiàng bú nàme hàixiū le.",
+          "english": "Ryosuke Yamamoto was originally a shy Japanese student. After coming to Taiwan, he lived in the school dormitory, met many friends, and often went out to eat and play ball with them. During holidays, his friends took him to visit museums and watch performances, so he felt that life in Taiwan was very happy, and he seemed to become less shy.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-2-1.mp3",
+            "start": 6.62,
+            "end": 39.79
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "有一天，他在網路上認識了一個女生，她是台灣的大學生。因為她覺得跟不熟的男生約會很危險，所以一直不敢跟良介見面。後來良介寄給她一張卡片，請她跟她的朋友來學校參加舞會。不久，他們就在學校見面了。他們見面的時候，良介的心跳得很快。",
+          "simplified": "有一天，他在网路上认识了一个女生，她是台湾的大学生。因为她觉得跟不熟的男生约会很危险，所以一直不敢跟良介见面。后来良介寄给她一张卡片，请她跟她的朋友来学校参加舞会。不久，他们就在学校见面了。他们见面的时候，良介的心跳得很快。",
+          "pinyin": "Yǒu yì tiān, tā zài wǎnglù shàng rènshi le yí ge nǚshēng, tā shì Táiwān de dàxuéshēng. Yīnwèi tā juéde gēn bù shóu de nánshēng yuēhuì hěn wēixiǎn, suǒyǐ yìzhí bù gǎn gēn Liángjiè jiànmiàn. Hòulái Liángjiè jì gěi tā yì zhāng kǎpiàn, qǐng tā gēn tā de péngyou lái xuéxiào cānjiā wǔhuì. Bùjiǔ, tāmen jiù zài xuéxiào jiànmiàn le. Tāmen jiànmiàn de shíhou, Liángjiè de xīn tiào de hěn kuài.",
+          "english": "One day he met a girl online; she was a Taiwanese university student. Because she thought dating a man she did not know well was dangerous, she had never dared meet Ryosuke. Later Ryosuke sent her a card and invited her and her friends to a dance party at school. Soon afterward, they met at school. When they met, Ryosuke's heart beat very fast.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-2-1.mp3",
+            "start": 40.91,
+            "end": 79.68
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "那天，他們一邊跳舞，一邊聊天，兩個人都很開心。良介覺得那個女生不但很漂亮，個性也很好，很想趕快再跟她約會。舞會結束以後，他們在學校裡散步，良介不好意思拉她的手，只跟她說，能認識她真的很幸運，希望以後有機會再跟她見面。",
+          "simplified": "那天，他们一边跳舞，一边聊天，两个人都很开心。良介觉得那个女生不但很漂亮，个性也很好，很想赶快再跟她约会。舞会结束以后，他们在学校里散步，良介不好意思拉她的手，只跟她说，能认识她真的很幸运，希望以后有机会再跟她见面。",
+          "pinyin": "Nà tiān, tāmen yìbiān tiàowǔ, yìbiān liáotiān, liǎng ge rén dōu hěn kāixīn. Liángjiè juéde nàge nǚshēng búdàn hěn piàoliang, gèxìng yě hěn hǎo, hěn xiǎng gǎnkuài zài gēn tā yuēhuì. Wǔhuì jiéshù yǐhòu, tāmen zài xuéxiào lǐ sànbù, Liángjiè bù hǎoyìsi lā tā de shǒu, zhǐ gēn tā shuō, néng rènshi tā zhēn de hěn xìngyùn, xīwàng yǐhòu yǒu jīhuì zài gēn tā jiànmiàn.",
+          "english": "That day they danced and chatted at the same time, and both were very happy. Ryosuke thought the girl was not only beautiful but also had a great personality, and he wanted to go on another date with her soon. After the dance ended, they took a walk around the school. Ryosuke was too embarrassed to hold her hand, and only told her that he was truly lucky to meet her and hoped to see her again.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-2-1.mp3",
+            "start": 80.92,
+            "end": 118.25
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "那個女生覺得雖然良介是外國人，中文也說得不太好，可是他們的興趣一樣，都喜歡看書、運動，而且跟他在一起很安全、很有意思。現在他們不但常常上網聊天，也會一起去打籃球、騎腳踏車呢！",
+          "simplified": "那个女生觉得虽然良介是外国人，中文也说得不太好，可是他们的兴趣一样，都喜欢看书、运动，而且跟他在一起很安全、很有意思。现在他们不但常常上网聊天，也会一起去打篮球、骑脚踏车呢！",
+          "pinyin": "Nàge nǚshēng juéde suīrán Liángjiè shì wàiguórén, Zhōngwén yě shuō de bú tài hǎo, kěshì tāmen de xìngqù yíyàng, dōu xǐhuan kànshū, yùndòng, érqiě gēn tā zài yìqǐ hěn ānquán, hěn yǒu yìsi. Xiànzài tāmen búdàn chángcháng shàngwǎng liáotiān, yě huì yìqǐ qù dǎ lánqiú, qí jiǎotàchē ne!",
+          "english": "The girl felt that although Ryosuke was a foreigner and did not speak Chinese very well, they had the same interests—they both liked reading and sports—and she felt safe and found being with him interesting. Now they not only chat online often, but also play basketball and ride bicycles together.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-01-2-1.mp3",
+            "start": 119.37,
+            "end": 148.91
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L02-R01",
+      "bookId": 2,
+      "lessonId": 2,
+      "dialogueNumber": 1,
+      "title": "對話 · 我得做家事 · I Have to Do Housework",
+      "titlePinyin": "Wǒ Děi Zuò Jiāshì",
+      "titleEnglish": "I Have to Do Housework",
+      "printedPages": [
+        44,
+        45
+      ],
+      "audioReference": "02-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l02d1-l1",
+          "speaker": "良介",
+          "traditional": "今天是開學的第一天，功課不多，我們一起去看球賽或是電影吧！",
+          "simplified": "今天是开学的第一天，功课不多，我们一起去看球赛或是电影吧！",
+          "pinyin": "Jīntiān shì kāixué de dì yī tiān, gōngkè bù duō, wǒmen yìqǐ qù kàn qiúsài huòshì diànyǐng ba!",
+          "english": "Today is the first day of school. We don't have much homework. Let's go watch a ball game or movie together!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 21.8,
+            "end": 31.66
+          }
+        },
+        {
+          "id": "b2l02d1-l2",
+          "speaker": "同學",
+          "traditional": "我不能去。我得先去我父母的餐廳幫忙，把桌子擦了，再把碗筷、刀叉洗一洗。",
+          "simplified": "我不能去。我得先去我父母的餐厅帮忙，把桌子擦了，再把碗筷、刀叉洗一洗。",
+          "pinyin": "Wǒ bù néng qù. Wǒ děi xiān qù wǒ fùmǔ de cāntīng bāngmáng, bǎ zhuōzi cā le, zài bǎ wǎnkuài, dāochā xǐ yī xǐ.",
+          "english": "I can't go. I have to go to my parents' restaurant to help them wipe the tables first, and then wash the bowls, chopsticks, knives and forks.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 32.54,
+            "end": 42.89
+          }
+        },
+        {
+          "id": "b2l02d1-l3",
+          "speaker": "良介",
+          "traditional": "做那些事情要多久？",
+          "simplified": "做那些事情要多久？",
+          "pinyin": "Zuò nàxiē shìqing yào duōjiǔ?",
+          "english": "How long will it take to do those things?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 44.25,
+            "end": 46.67
+          }
+        },
+        {
+          "id": "b2l02d1-l4",
+          "speaker": "同學",
+          "traditional": "客人多的時候差不多要兩個小時。",
+          "simplified": "客人多的时候差不多要两个小时。",
+          "pinyin": "Kèrén duō de shíhou chàbuduō yào liǎng ge xiǎoshí.",
+          "english": "It takes about two hours when there are a lot of customers.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 47.45,
+            "end": 51.38
+          }
+        },
+        {
+          "id": "b2l02d1-l5",
+          "speaker": "良介",
+          "traditional": "要那麼久啊？",
+          "simplified": "要那么久啊？",
+          "pinyin": "Yào nàme jiǔ a?",
+          "english": "It takes that long?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 52.48,
+            "end": 53.78
+          }
+        },
+        {
+          "id": "b2l02d1-l6",
+          "speaker": "同學",
+          "traditional": "對啊，因為碗筷洗完了還得擦乾。有時候客人丟了東西，非常著急，我就得幫他們找一找，把東西拿給他們。",
+          "simplified": "对啊，因为碗筷洗完了还得擦干。有时候客人丢了东西，非常着急，我就得帮他们找一找，把东西拿给他们。",
+          "pinyin": "Duì a, yīnwèi wǎnkuài xǐ wán le hái děi cāgān. Yǒu shíhou kèrén diū le dōngxi, fēicháng zhāojí, wǒ jiù děi bāng tāmen zhǎo yī zhǎo, bǎ dōngxi ná gěi tāmen.",
+          "english": "Yes, because I have to wipe them dry after washing them. Sometimes when customers lose something and they are very anxious, I have to help them look for it and give it to them.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 54.42,
+            "end": 68.41
+          }
+        },
+        {
+          "id": "b2l02d1-l7",
+          "speaker": "良介",
+          "traditional": "那些事情做完以後，你就有空去看球賽了，對吧？",
+          "simplified": "那些事情做完以后，你就有空去看球赛了，对吧？",
+          "pinyin": "Nàxiē shìqing zuò wán yǐhòu, nǐ jiù yǒukòng qù kàn qiúsài le, duì ba?",
+          "english": "After those things are finished, you're free to go watch a ball game, right?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 69.29,
+            "end": 75.59
+          }
+        },
+        {
+          "id": "b2l02d1-l8",
+          "speaker": "同學",
+          "traditional": "不，我得趕快回家。媽媽說我的房間太髒了，叫我今天一定要打掃。",
+          "simplified": "不，我得赶快回家。妈妈说我的房间太脏了，叫我今天一定要打扫。",
+          "pinyin": "Bù, wǒ děi gǎnkuài huí jiā. Māma shuō wǒ de fángjiān tài zāng le, jiào wǒ jīntiān yídìng yào dǎsǎo.",
+          "english": "No, I need to hurry home. My mom said that my room is too dirty, and I must do the cleaning today.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 76.4,
+            "end": 85.92
+          }
+        },
+        {
+          "id": "b2l02d1-l9",
+          "speaker": "良介",
+          "traditional": "你的房間有多髒啊？晚一點兒再打掃，應該沒關係吧？",
+          "simplified": "你的房间有多脏啊？晚一点儿再打扫，应该没关系吧？",
+          "pinyin": "Nǐ de fángjiān yǒu duō zāng a? Wǎn yìdiǎnr zài dǎsǎo, yīnggāi méiguānxi ba?",
+          "english": "How dirty is your room? It should be ok if you clean it later, isn't it?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 86.86,
+            "end": 93.79
+          }
+        },
+        {
+          "id": "b2l02d1-l10",
+          "speaker": "同學",
+          "traditional": "我已經三個月沒掃地了。",
+          "simplified": "我已经三个月没扫地了。",
+          "pinyin": "Wǒ yǐjīng sān ge yuè méi sǎodì le.",
+          "english": "I haven't swept the floor for three months.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 94.41,
+            "end": 97.01
+          }
+        },
+        {
+          "id": "b2l02d1-l11",
+          "speaker": "良介",
+          "traditional": "太久了吧！暑假那麼長，你什麼事都沒做嗎？",
+          "simplified": "太久了吧！暑假那么长，你什么事都没做吗？",
+          "pinyin": "Tài jiǔ le ba! Shǔjià nàme cháng, nǐ shénme shì dōu méi zuò ma?",
+          "english": "It's too long! The summer vacation was so long. Didn't you do anything?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 98.15,
+            "end": 104.28
+          }
+        },
+        {
+          "id": "b2l02d1-l12",
+          "speaker": "同學",
+          "traditional": "我先去日本玩了十天，回台灣以後，又跟朋友去南部玩了兩個星期。",
+          "simplified": "我先去日本玩了十天，回台湾以后，又跟朋友去南部玩了两个星期。",
+          "pinyin": "Wǒ xiān qù Rìběn wán le shí tiān, huí Táiwān yǐhòu, yòu gēn péngyou qù nánbù wán le liǎng ge xīngqí.",
+          "english": "I went on a trip to Japan for ten days first. After coming back to Taiwan, I went traveling with my friends in southern Taiwan for two weeks.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 104.94,
+            "end": 112.84
+          }
+        },
+        {
+          "id": "b2l02d1-l13",
+          "speaker": "良介",
+          "traditional": "你玩了這麼多天，功課做了沒有？",
+          "simplified": "你玩了这么多天，功课做了没有？",
+          "pinyin": "Nǐ wán le zhème duō tiān, gōngkè zuò le méiyǒu?",
+          "english": "You went on a trip for so many days. Did you do your homework?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 113.78,
+            "end": 117.79
+          }
+        },
+        {
+          "id": "b2l02d1-l14",
+          "speaker": "同學",
+          "traditional": "暑假快結束的時候，我才看完老師要我們看的書，當然就沒時間打掃了。",
+          "simplified": "暑假快结束的时候，我才看完老师要我们看的书，当然就没时间打扫了。",
+          "pinyin": "Shǔjià kuài jiéshù de shíhou, wǒ cái kàn wán lǎoshī yào wǒmen kàn de shū, dāngrán jiù méi shíjiān dǎsǎo le.",
+          "english": "When the summer vacation was about to end, I just finished reading the book the teacher had asked us to read. Of course I didn't have time to do the cleaning.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 118.53,
+            "end": 126.97
+          }
+        },
+        {
+          "id": "b2l02d1-l15",
+          "speaker": "良介",
+          "traditional": "可是如果房間太亂，我會覺得不舒服，也沒辦法念書。",
+          "simplified": "可是如果房间太乱，我会觉得不舒服，也没办法念书。",
+          "pinyin": "Kěshì rúguǒ fángjiān tài luàn, wǒ huì juéde bù shūfu, yě méi bànfǎ niànshū.",
+          "english": "But if my room is too messy, I will not only feel uncomfortable but also find myself unable to study.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 128.09,
+            "end": 135.46
+          }
+        },
+        {
+          "id": "b2l02d1-l16",
+          "speaker": "同學",
+          "traditional": "對了，我家裡有一些中文小說，我覺得把那些書都丟了很可惜，送給你好嗎？",
+          "simplified": "对了，我家里有一些中文小说，我觉得把那些书都丢了很可惜，送给你好吗？",
+          "pinyin": "Duì le, wǒ jiā lǐ yǒu yìxiē Zhōngwén xiǎoshuō, wǒ juéde bǎ nàxiē shū dōu diū le hěn kěxí, sòng gěi nǐ hǎo ma?",
+          "english": "By the way, there are some Chinese novels in my house. I think it is a pity to throw them away. Can I give them to you?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 136.6,
+            "end": 146.51
+          }
+        },
+        {
+          "id": "b2l02d1-l17",
+          "speaker": "良介",
+          "traditional": "好啊！那些書對我學中文很有用。我先回宿舍把功課寫完，就去你家拿。",
+          "simplified": "好啊！那些书对我学中文很有用。我先回宿舍把功课写完，就去你家拿。",
+          "pinyin": "Hǎo a! Nàxiē shū duì wǒ xué Zhōngwén hěn yǒuyòng. Wǒ xiān huí sùshè bǎ gōngkè xiě wán, jiù qù nǐ jiā ná.",
+          "english": "Sure! Those books are very useful and can help me learn Chinese. I will get them from your house after I go back to the dormitory to finish my homework.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 147.13,
+            "end": 157.53
+          }
+        },
+        {
+          "id": "b2l02d1-l18",
+          "speaker": "同學",
+          "traditional": "太好了！這樣你就可以跟我一起打掃了。",
+          "simplified": "太好了！这样你就可以跟我一起打扫了。",
+          "pinyin": "Tài hǎo le! Zhèyàng nǐ jiù kěyǐ gēn wǒ yìqǐ dǎsǎo le.",
+          "english": "That's great! Then you can do some cleaning with me.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-1-1.mp3",
+            "start": 158.22,
+            "end": 163.06
+          }
+        },
+        {
+          "id": "b2l02d1-l19",
+          "speaker": "良介",
+          "traditional": "哈哈哈！",
+          "simplified": "哈哈哈！",
+          "pinyin": "Hāhāhā!",
+          "english": "Hahaha!"
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L02-R02",
+      "bookId": 2,
+      "lessonId": 2,
+      "dialogueNumber": 2,
+      "title": "短文 · 我要住在乾淨的地方 · I Want to Live in a Clean Place",
+      "titlePinyin": "Duǎnwén · Wǒ Yào Zhù Zài Gānjìng de Dìfāng",
+      "titleEnglish": "Reading · I Want to Live in a Clean Place",
+      "printedPages": [
+        57,
+        58
+      ],
+      "audioReference": "02-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "山本良介今天早上出門的時候，看見房間門口有一個袋子。他把袋子打開，發現裡面都是垃圾。下樓的時候，樓梯上也有垃圾。他想：「是誰把垃圾丟在這裡的？好髒啊！」他知道應該先把垃圾丟到垃圾桶，再去上課，可是他很急，不想在開學的第一天就遲到，所以什麼都沒做就去上課了。",
+          "simplified": "山本良介今天早上出门的时候，看见房间门口有一个袋子。他把袋子打开，发现里面都是垃圾。下楼的时候，楼梯上也有垃圾。他想：「是谁把垃圾丢在这里的？好脏啊！」他知道应该先把垃圾丢到垃圾桶，再去上课，可是他很急，不想在开学的第一天就迟到，所以什么都没做就去上课了。",
+          "pinyin": "Shānběn Liángjiè jīntiān zǎoshang chūmén de shíhou, kànjiàn fángjiān ménkǒu yǒu yí ge dàizi. Tā bǎ dàizi dǎkāi, fāxiàn lǐmiàn dōu shì lèsè. Xià lóu de shíhou, lóutī shàng yě yǒu lèsè. Tā xiǎng: 「Shì shéi bǎ lèsè diū zài zhèlǐ de? Hǎo zāng a!」 Tā zhīdào yīnggāi xiān bǎ lèsè diū dào lèsè tǒng, zài qù shàngkè, kěshì tā hěn jí, bù xiǎng zài kāixué de dì yī tiān jiù chídào, suǒyǐ shénme dōu méi zuò jiù qù shàngkè le.",
+          "english": "When Yamamoto Ryosuke went out this morning, he saw a bag at the door of his dorm room. He opened the bag and found that there was nothing but garbage in it. When he went downstairs, there was also garbage on the stairs. \"Who dumped the garbage here? It's so dirty!\" he thought. He knew that he should have thrown the garbage to the trash can before attending class, but he was in a hurry because he did not want to be late on the first day of school. Therefore, he went to class without doing anything.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-2-1.mp3",
+            "start": 6.4,
+            "end": 48.15
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "中午良介回去的時候，覺得宿舍裡的空氣很不好。因為垃圾的味道很臭，而且到處都有小蟲子在飛，他就趕快把全部的垃圾都丟了。良介記得小時候媽媽告訴過他，吃完飯以後要洗碗、倒垃圾。星期六起床以後，不但要打掃房間，也得把髒衣服洗一洗。這些家事做完了以後，住在房子裡的每一個人才會覺得舒服。要是客人或是鄰居要來，也不用擔心家裡太髒。",
+          "simplified": "中午良介回去的时候，觉得宿舍里的空气很不好。因为垃圾的味道很臭，而且到处都有小虫子在飞，他就赶快把全部的垃圾都丢了。良介记得小时候妈妈告诉过他，吃完饭以后要洗碗、倒垃圾。星期六起床以后，不但要打扫房间，也得把脏衣服洗一洗。这些家事做完了以后，住在房子里的每一个人才会觉得舒服。要是客人或是邻居要来，也不用担心家里太脏。",
+          "pinyin": "Zhōngwǔ Liángjiè huíqù de shíhou, juéde sùshè lǐ de kōngqì hěn bù hǎo. Yīnwèi lèsè de wèidào hěn chòu, érqiě dàochù dōu yǒu xiǎo chóngzi zài fēi, tā jiù gǎnkuài bǎ quánbù de lèsè dōu diū le. Liángjiè jìde xiǎoshíhou māma gàosu guò tā, chī wán fàn yǐhòu yào xǐ wǎn, dào lèsè. Xīngqíliù qǐchuáng yǐhòu, búdàn yào dǎsǎo fángjiān, yě děi bǎ zāng yīfu xǐ yī xǐ. Zhèxiē jiāshì zuò wán le yǐhòu, zhù zài fángzi lǐ de měi yí ge rén cái huì juéde shūfu. Yàoshi kèrén huòshì línjū yào lái, yě búyòng dānxīn jiā lǐ tài zāng.",
+          "english": "At noon, when Ryosuke went back to the dormitory, he felt that the air in the dormitory was not good. The smell of the garbage was stinky, and there were insects flying everywhere, so he immediately threw all the garbage away. Ryosuke remembered that when he was a child, his mother had told him to wash the dishes and take out the garbage after finishing a meal. After getting up on Saturday, he not only had to clean his room but also had to wash the dirty clothes. After this housework was done, everyone living in the house would feel comfortable. If a guest or a neighbor came to visit, there was no need to worry that the house was too dirty, either.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-2-1.mp3",
+            "start": 49.14,
+            "end": 95.97
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "晚上良介吃完飯，回宿舍的時候，他看見牆上寫著「不要亂丟垃圾」，可是地上還是有一些垃圾。他想，要是每個人都覺得打掃是別人的事，不久以後，這個地方就會又髒又亂，沒有人想住了。",
+          "simplified": "晚上良介吃完饭，回宿舍的时候，他看见墙上写着「不要乱丢垃圾」，可是地上还是有一些垃圾。他想，要是每个人都觉得打扫是别人的事，不久以后，这个地方就会又脏又乱，没有人想住了。",
+          "pinyin": "Wǎnshang Liángjiè chī wán fàn, huí sùshè de shíhou, tā kànjiàn qiáng shàng xiězhe 「Búyào luàn diū lèsè」, kěshì dìshàng háishì yǒu yìxiē lèsè. Tā xiǎng, yàoshi měi ge rén dōu juéde dǎsǎo shì biérén de shì, bùjiǔ yǐhòu, zhège dìfāng jiù huì yòu zāng yòu luàn, méiyǒu rén xiǎng zhù le.",
+          "english": "After eating in the evening, Ryosuke went back to the dormitory. He saw \"No Littering\" written on the wall. However, there was still some garbage on the ground. He thought that if everyone considers cleaning to be other people's business, this place would be dirty and messy soon after, and nobody wants to live in.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-02-2-1.mp3",
+            "start": 97.39,
+            "end": 121.65
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L03-R01",
+      "bookId": 2,
+      "lessonId": 3,
+      "dialogueNumber": 1,
+      "title": "對話 · 我要租房子 · I Want to Rent a House",
+      "titlePinyin": "Wǒ Yào Zū Fángzi",
+      "titleEnglish": "I Want to Rent a House",
+      "printedPages": [
+        66,
+        68
+      ],
+      "audioReference": "03-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l03d1-l1",
+          "speaker": "旁白",
+          "traditional": "（良介去看房子，他和可欣到了公寓的門口，房東王太太剛好出來了。）",
+          "simplified": "（良介去看房子，他和可欣到了公寓的门口，房东王太太刚好出来了。）",
+          "pinyin": "（Liángjiè qù kàn fángzi, tā hé Kěxīn dào le gōngyù de ménkǒu, fángdōng Wáng tàitai gānghǎo chūlái le.）",
+          "english": "(Ryosuke goes to view an apartment. When he and Kexin arrive at the entrance of the building, the landlady, Mrs. Wang, happens to come out.)"
+        },
+        {
+          "id": "b2l03d1-l2",
+          "speaker": "可欣",
+          "traditional": "王太太，您好。我是陳可欣。這位是我的朋友山本良介，我陪他來看房子。",
+          "simplified": "王太太，您好。我是陈可欣。这位是我的朋友山本良介，我陪他来看房子。",
+          "pinyin": "Wáng tàitai, nín hǎo. Wǒ shì Chén Kěxīn. Zhè wèi shì wǒ de péngyou Shānběn Liángjiè, wǒ péi tā lái kàn fángzi.",
+          "english": "Mrs. Wang, hello. I'm Kexin Chen. This is my friend Ryosuke Yamamoto. I'm accompanying him to look at the apartment.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 21.66,
+            "end": 30.86
+          }
+        },
+        {
+          "id": "b2l03d1-l3",
+          "speaker": "王太太",
+          "traditional": "你們好！這棟公寓一共有六層，我要出租的房子在四樓，我們一起上去看看吧！",
+          "simplified": "你们好！这栋公寓一共有六层，我要出租的房子在四楼，我们一起上去看看吧！",
+          "pinyin": "Nǐmen hǎo! Zhè dòng gōngyù yígòng yǒu liù céng, wǒ yào chūzū de fángzi zài sì lóu, wǒmen yìqǐ shàngqù kànkan ba!",
+          "english": "Hello! This apartment building has six floors in total. The apartment I want to rent out is on the fourth floor. Let's go up and take a look!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 31.62,
+            "end": 41.39
+          }
+        },
+        {
+          "id": "b2l03d1-l4",
+          "speaker": "可欣",
+          "traditional": "好的。對了，請問有家具嗎？",
+          "simplified": "好的。对了，请问有家具吗？",
+          "pinyin": "Hǎo de. Duì le, qǐngwèn yǒu jiājù ma?",
+          "english": "OK. By the way, may I ask if there is furniture?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 42.83,
+            "end": 46.13
+          }
+        },
+        {
+          "id": "b2l03d1-l5",
+          "speaker": "王太太",
+          "traditional": "有。臥室有床、書桌、椅子、沙發，還有一個大衣櫃，可以掛很多衣服，而且冰箱、洗衣機都是新的。",
+          "simplified": "有。卧室有床、书桌、椅子、沙发，还有一个大衣柜，可以挂很多衣服，而且冰箱、洗衣机都是新的。",
+          "pinyin": "Yǒu. Wòshì yǒu chuáng, shūzhuō, yǐzi, shāfā, hái yǒu yí ge dà yīguì, kěyǐ guà hěn duō yīfu, érqiě bīngxiāng, xǐyījī dōu shì xīn de.",
+          "english": "Yes. The bedroom has a bed, a desk, a chair and a sofa, and there is also a large closet for hanging many clothes. The refrigerator and washing machine are both new.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 47.58,
+            "end": 62.31
+          }
+        },
+        {
+          "id": "b2l03d1-l6",
+          "speaker": "旁白",
+          "traditional": "（三人到了四樓）",
+          "simplified": "（三人到了四楼）",
+          "pinyin": "（Sān rén dào le sì lóu.）",
+          "english": "(The three of them reach the fourth floor.)"
+        },
+        {
+          "id": "b2l03d1-l7",
+          "speaker": "王太太",
+          "traditional": "請進！我給你們介紹介紹。這是客廳，右邊是廚房，臥室和浴室在那邊。",
+          "simplified": "请进！我给你们介绍介绍。这是客厅，右边是厨房，卧室和浴室在那边。",
+          "pinyin": "Qǐng jìn! Wǒ gěi nǐmen jièshào jièshào. Zhè shì kètīng, yòubiān shì chúfáng, wòshì hé yùshì zài nàbiān.",
+          "english": "Please come in! Let me show you around. This is the living room; the kitchen is on the right; the bedroom and bathroom are over there.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 64.27,
+            "end": 73.72
+          }
+        },
+        {
+          "id": "b2l03d1-l8",
+          "speaker": "良介",
+          "traditional": "房間看起來很好！請問附近有超級市場嗎？",
+          "simplified": "房间看起来很好！请问附近有超级市场吗？",
+          "pinyin": "Fángjiān kànqǐlái hěn hǎo! Qǐngwèn fùjìn yǒu chāojí shìchǎng ma?",
+          "english": "The room looks great! May I ask if there is a supermarket nearby?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 75.1,
+            "end": 81.14
+          }
+        },
+        {
+          "id": "b2l03d1-l9",
+          "speaker": "王太太",
+          "traditional": "有啊！從這裡出去，走五分鐘就有超市和便利商店了。",
+          "simplified": "有啊！从这里出去，走五分钟就有超市和便利商店了。",
+          "pinyin": "Yǒu a! Cóng zhèlǐ chūqù, zǒu wǔ fēnzhōng jiù yǒu chāoshì hé biànlì shāngdiàn le.",
+          "english": "Yes! Go out from here, and a five-minute walk brings you to a supermarket and a convenience store.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 81.88,
+            "end": 88.57
+          }
+        },
+        {
+          "id": "b2l03d1-l10",
+          "speaker": "良介",
+          "traditional": "這裡有網路嗎？",
+          "simplified": "这里有网路吗？",
+          "pinyin": "Zhèlǐ yǒu wǎnglù ma?",
+          "english": "Is there internet here?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 89.69,
+            "end": 91.49
+          }
+        },
+        {
+          "id": "b2l03d1-l11",
+          "speaker": "王太太",
+          "traditional": "沒有，我可以替你裝網路，可是每個月的費用要自己付。",
+          "simplified": "没有，我可以替你装网路，可是每个月的费用要自己付。",
+          "pinyin": "Méiyǒu, wǒ kěyǐ tì nǐ zhuāng wǎnglù, kěshì měi ge yuè de fèiyòng yào zìjǐ fù.",
+          "english": "No. I can set up the internet for you, but you have to pay the monthly fee yourself.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 92.15,
+            "end": 98.81
+          }
+        },
+        {
+          "id": "b2l03d1-l12",
+          "speaker": "良介",
+          "traditional": "聽起來不錯。請問房租一個月多少錢？",
+          "simplified": "听起来不错。请问房租一个月多少钱？",
+          "pinyin": "Tīngqǐlái búcuò. Qǐngwèn fángzū yí ge yuè duōshao qián?",
+          "english": "That sounds good. May I ask how much the rent is per month?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 99.61,
+            "end": 105.24
+          }
+        },
+        {
+          "id": "b2l03d1-l13",
+          "speaker": "王太太",
+          "traditional": "一個月一萬五千塊，不包括水費、電費，還要兩個月的押金。",
+          "simplified": "一个月一万五千块，不包括水费、电费，还要两个月的押金。",
+          "pinyin": "Yí ge yuè yí wàn wǔqiān kuài, bù bāokuò shuǐfèi, diànfèi, hái yào liǎng ge yuè de yājīn.",
+          "english": "It's $15,000 a month, not including water and electricity, and a two-month deposit is also required.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 106.26,
+            "end": 113.61
+          }
+        },
+        {
+          "id": "b2l03d1-l14",
+          "speaker": "良介",
+          "traditional": "好，我先跟我朋友討論一下，請您等一會兒。",
+          "simplified": "好，我先跟我朋友讨论一下，请您等一会儿。",
+          "pinyin": "Hǎo, wǒ xiān gēn wǒ péngyou tǎolùn yíxià, qǐng nín děng yìhuǐr.",
+          "english": "OK. Let me discuss it with my friend first. Please wait a moment.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 114.87,
+            "end": 120.77
+          }
+        },
+        {
+          "id": "b2l03d1-l15",
+          "speaker": "可欣",
+          "traditional": "你覺得這裡怎麼樣？",
+          "simplified": "你觉得这里怎么样？",
+          "pinyin": "Nǐ juéde zhèlǐ zěnmeyàng?",
+          "english": "What do you think of this place?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 122.31,
+            "end": 124.11
+          }
+        },
+        {
+          "id": "b2l03d1-l16",
+          "speaker": "良介",
+          "traditional": "這邊的環境不錯，可是付了房租以後，我的獎學金就只剩一萬塊了。",
+          "simplified": "这边的环境不错，可是付了房租以后，我的奖学金就只剩一万块了。",
+          "pinyin": "Zhèbiān de huánjìng búcuò, kěshì fù le fángzū yǐhòu, wǒ de jiǎngxuéjīn jiù zhǐ shèng yí wàn kuài le.",
+          "english": "The environment here is nice, but after paying the rent, I'll have only $10,000 of my scholarship left.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 125.09,
+            "end": 133.9
+          }
+        },
+        {
+          "id": "b2l03d1-l17",
+          "speaker": "可欣",
+          "traditional": "這樣的房子都不便宜。你問問王太太，房租能不能便宜一點兒。",
+          "simplified": "这样的房子都不便宜。你问问王太太，房租能不能便宜一点儿。",
+          "pinyin": "Zhèyàng de fángzi dōu bù piányi. Nǐ wènwen Wáng tàitai, fángzū néng bu néng piányi yìdiǎnr.",
+          "english": "Apartments like this are all expensive. Ask Mrs. Wang if the rent can be a little cheaper.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 134.9,
+            "end": 141.91
+          }
+        },
+        {
+          "id": "b2l03d1-l18",
+          "speaker": "良介",
+          "traditional": "王太太，這個公寓我很滿意，可是房租有一點兒貴，可以便宜一點兒嗎？",
+          "simplified": "王太太，这个公寓我很满意，可是房租有一点儿贵，可以便宜一点儿吗？",
+          "pinyin": "Wáng tàitai, zhège gōngyù wǒ hěn mǎnyì, kěshì fángzū yǒu yìdiǎnr guì, kěyǐ piányi yìdiǎnr ma?",
+          "english": "Mrs. Wang, I'm very satisfied with this apartment, but the rent is a little expensive. Can it be a little cheaper?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 142.89,
+            "end": 151.93
+          }
+        },
+        {
+          "id": "b2l03d1-l19",
+          "speaker": "王太太",
+          "traditional": "我想想……你是留學生吧？我兒子也去法國留學了，我知道外國人找房子不太容易。",
+          "simplified": "我想想……你是留学生吧？我儿子也去法国留学了，我知道外国人找房子不太容易。",
+          "pinyin": "Wǒ xiǎngxiang…… Nǐ shì liúxuéshēng ba? Wǒ érzi yě qù Fǎguó liúxué le, wǒ zhīdào wàiguórén zhǎo fángzi bú tài róngyì.",
+          "english": "Let me think... You're an international student, right? My son also went to study in France. I know it's not easy for foreigners to find an apartment.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 153.48,
+            "end": 164.18
+          }
+        },
+        {
+          "id": "b2l03d1-l20",
+          "speaker": "良介",
+          "traditional": "對啊！我看了好幾個地方，有的環境很好，可是房租太貴；有些房東一看我是外國人，就不願意租給我了。",
+          "simplified": "对啊！我看了好几个地方，有的环境很好，可是房租太贵；有些房东一看我是外国人，就不愿意租给我了。",
+          "pinyin": "Duì a! Wǒ kàn le hǎo jǐ ge dìfāng, yǒude huánjìng hěn hǎo, kěshì fángzū tài guì; yǒuxiē fángdōng yí kàn wǒ shì wàiguórén, jiù bú yuànyì zū gěi wǒ le.",
+          "english": "That's right! I've looked at several places. Some have a nice environment but the rent is too high; some landlords, as soon as they see that I'm a foreigner, are unwilling to rent to me.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 165.12,
+            "end": 179.84
+          }
+        },
+        {
+          "id": "b2l03d1-l21",
+          "speaker": "王太太",
+          "traditional": "好吧！你那麼喜歡，那就一個月一萬兩千塊。",
+          "simplified": "好吧！你那么喜欢，那就一个月一万两千块。",
+          "pinyin": "Hǎo ba! Nǐ nàme xǐhuan, nà jiù yí ge yuè yí wàn liǎngqiān kuài.",
+          "english": "All right! Since you like it so much, I'll make it $12,000 a month.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 180.68,
+            "end": 185.54
+          }
+        },
+        {
+          "id": "b2l03d1-l22",
+          "speaker": "良介",
+          "traditional": "太好了！謝謝您，我決定租半年。下個星期一可以簽約嗎？",
+          "simplified": "太好了！谢谢您，我决定租半年。下个星期一可以签约吗？",
+          "pinyin": "Tài hǎo le! Xièxie nín, wǒ juédìng zū bàn nián. Xià ge xīngqíyī kěyǐ qiānyuē ma?",
+          "english": "Great! Thank you. I've decided to rent it for half a year. Can we sign the lease next Monday?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 186.4,
+            "end": 194.77
+          }
+        },
+        {
+          "id": "b2l03d1-l23",
+          "speaker": "王太太",
+          "traditional": "可以，你過來簽約的時候請帶護照、房租和兩個月的押金。簽約以後會給你鑰匙，你就可以搬進來了。",
+          "simplified": "可以，你过来签约的时候请带护照、房租和两个月的押金。签约以后会给你钥匙，你就可以搬进来了。",
+          "pinyin": "Kěyǐ, nǐ guòlái qiānyuē de shíhou qǐng dài hùzhào, fángzū hé liǎng ge yuè de yājīn. Qiānyuē yǐhòu huì gěi nǐ yàoshi, nǐ jiù kěyǐ bān jìnlái le.",
+          "english": "Yes. When you come to sign the lease, please bring your passport, the rent and a two-month deposit. After you sign, I'll give you the keys and you can move in.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-1-1.mp3",
+            "start": 195.61,
+            "end": 207.38
+          }
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L03-R02",
+      "bookId": 2,
+      "lessonId": 3,
+      "dialogueNumber": 2,
+      "title": "短文 · 租房子不容易 · Renting a House Is Not Easy",
+      "titlePinyin": "Duǎnwén · Zū Fángzi Bù Róngyì",
+      "titleEnglish": "Reading · Renting a House Is Not Easy",
+      "printedPages": [
+        82,
+        84
+      ],
+      "audioReference": "03-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "山本良介來台灣以後，一直住在學校的宿舍，可是他下個學期不想住了，因為室友很晚才睡覺，總是在半夜開著燈打電腦，聲音很吵。除了生活習慣很不一樣，良介的室友還常常把房間弄得很髒，所以他決定到學校外面去租房子。",
+          "simplified": "山本良介来台湾以后，一直住在学校的宿舍，可是他下个学期不想住了，因为室友很晚才睡觉，总是在半夜开着灯打电脑，声音很吵。除了生活习惯很不一样，良介的室友还常常把房间弄得很脏，所以他决定到学校外面去租房子。",
+          "pinyin": "Shānběn Liángjiè lái Táiwān yǐhòu, yìzhí zhù zài xuéxiào de sùshè, kěshì tā xià ge xuéqī bù xiǎng zhù le, yīnwèi shìyǒu hěn wǎn cái shuìjiào, zǒngshì zài bànyè kāizhe dēng dǎ diànnǎo, shēngyīn hěn chǎo. Chúle shēnghuó xíguàn hěn bù yíyàng, Liángjiè de shìyǒu hái chángcháng bǎ fángjiān nòng de hěn zāng, suǒyǐ tā juédìng dào xuéxiào wàimiàn qù zū fángzi.",
+          "english": "After Yamamoto Ryosuke came to Taiwan, he has always been living in the school dormitory, but he doesn't want to live there next semester. That was because his roommate slept late, always used the computer with the light on at midnight, and made a lot of noise. In addition to different living habits, Ryosuke's roommate often made their room dirty, so he decided to rent a house off-campus.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-2-1.mp3",
+            "start": 6.22,
+            "end": 42.41
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "良介本來覺得找房子不難，沒想到不太順利。他上租屋網站找了很多資料，可是看了好幾個地方都不滿意。有的房東一看他是外國人，就不太願意租給他。陳可欣知道他的問題以後，就決定陪他去找房子、看房子。",
+          "simplified": "良介本来觉得找房子不难，没想到不太顺利。他上租屋网站找了很多资料，可是看了好几个地方都不满意。有的房东一看他是外国人，就不太愿意租给他。陈可欣知道他的问题以后，就决定陪他去找房子、看房子。",
+          "pinyin": "Liángjiè běnlái juéde zhǎo fángzi bù nán, méi xiǎngdào bú tài shùnlì. Tā shàng zūwū wǎngzhàn zhǎo le hěn duō zīliào, kěshì kàn le hǎo jǐ ge dìfāng dōu bù mǎnyì. Yǒude fángdōng yí kàn tā shì wàiguórén, jiù bú tài yuànyì zū gěi tā. Chén Kěxīn zhīdào tā de wèntí yǐhòu, jiù juédìng péi tā qù zhǎo fángzi, kàn fángzi.",
+          "english": "Ryosuke supposed that finding a house was not difficult. He never thought that it would not go smoothly. He searched for a lot of information on house rental websites. However, after he viewed several places, he still was not satisfied. Some landlords were unwilling to rent out their houses to him just because he was a foreigner. After knowing his problem, Chen Kexin decided to accompany him to find and view houses.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-2-1.mp3",
+            "start": 44.05,
+            "end": 77.94
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "良介聽說王太太的公寓要出租，就找可欣一起去看看。那個公寓附近的環境不錯，離學校也不太遠。雖然良介很想租，但是付了房租以後，獎學金就只剩下一萬塊錢了。他問王太太，房租可不可以便宜一點兒。因為王太太的兒子在法國留學，她知道一個人在國外生活不容易。她想了想，決定只收良介一萬兩千元的房租，良介很高興可以搬家了。",
+          "simplified": "良介听说王太太的公寓要出租，就找可欣一起去看看。那个公寓附近的环境不错，离学校也不太远。虽然良介很想租，但是付了房租以后，奖学金就只剩下一万块钱了。他问王太太，房租可不可以便宜一点儿。因为王太太的儿子在法国留学，她知道一个人在国外生活不容易。她想了想，决定只收良介一万两千元的房租，良介很高兴可以搬家了。",
+          "pinyin": "Liángjiè tīngshuō Wáng tàitai de gōngyù yào chūzū, jiù zhǎo Kěxīn yìqǐ qù kànkan. Nàge gōngyù fùjìn de huánjìng búcuò, lí xuéxiào yě bú tài yuǎn. Suīrán Liángjiè hěn xiǎng zū, dànshì fù le fángzū yǐhòu, jiǎngxuéjīn jiù zhǐ shèngxià yí wàn kuài qián le. Tā wèn Wáng tàitai, fángzū kě bu kěyǐ piányi yìdiǎnr. Yīnwèi Wáng tàitai de érzi zài Fǎguó liúxué, tā zhīdào yí ge rén zài guówài shēnghuó bù róngyì. Tā xiǎng le xiǎng, juédìng zhǐ shōu Liángjiè yí wàn liǎngqiān yuán de fángzū, Liángjiè hěn gāoxìng kěyǐ bānjiā le.",
+          "english": "As soon as Ryosuke heard Mrs. Wang's apartment was for rent, he went with Kexin to have a look. The surroundings of the apartment were not bad and it was not too far away from the school. Although Ryosuke would like to rent it, he would have only $10,000 of his scholarship left after paying the rent. He asked Mrs. Wang whether the rent could be cheaper. Because Mrs. Wang's son has been studying in France, she knew that it was not easy to live abroad alone. After thinking it over, she decided to charge Ryosuke a rent of only $12,000. Ryosuke was happy that he could move.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-03-2-1.mp3",
+            "start": 79.5,
+            "end": 135.18
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L04-R01",
+      "bookId": 2,
+      "lessonId": 4,
+      "dialogueNumber": 1,
+      "title": "對話 · 逛夜市真有趣 · It’s Fun to Go to the Night Market",
+      "titlePinyin": "Guàng Yèshì Zhēn Yǒuqù",
+      "titleEnglish": "It’s Fun to Go to the Night Market",
+      "printedPages": [
+        91,
+        93
+      ],
+      "audioReference": "04-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l04d1-l1",
+          "speaker": "旁白",
+          "traditional": "（可欣約美心一起去逛夜市）",
+          "simplified": "（可欣约美心一起去逛夜市）",
+          "pinyin": "（Kěxīn yuē Měixīn yìqǐ qù guàng yèshì）",
+          "english": "(Kexin invites Meixin to go to the night market together.)"
+        },
+        {
+          "id": "b2l04d1-l2",
+          "speaker": "美心",
+          "traditional": "妳平常不愛逛夜市，今天怎麼忽然想去啊？",
+          "simplified": "你平常不爱逛夜市，今天怎么忽然想去啊？",
+          "pinyin": "Nǐ píngcháng bú ài guàng yèshì, jīntiān zěnme hūrán xiǎng qù a?",
+          "english": "You don't usually like to go to night markets. Why do you suddenly want to go today?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 22.26,
+            "end": 27.26
+          }
+        },
+        {
+          "id": "b2l04d1-l3",
+          "speaker": "可欣",
+          "traditional": "因為良介說他跟朋友都想到夜市看看，請我給他們介紹介紹台灣的小吃。",
+          "simplified": "因为良介说他跟朋友都想到夜市看看，请我给他们介绍介绍台湾的小吃。",
+          "pinyin": "Yīnwèi Liángjiè shuō tā gēn péngyou dōu xiǎng dào yèshì kànkan, qǐng wǒ gěi tāmen jièshào jièshào Táiwān de xiǎochī.",
+          "english": "Because Ryosuke said that he and his friend both wanted to look around the night market, and asked me to introduce some Taiwanese snacks to them.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 28.42,
+            "end": 35.87
+          }
+        },
+        {
+          "id": "b2l04d1-l4",
+          "speaker": "美心",
+          "traditional": "你們在哪裡見面呢？",
+          "simplified": "你们在哪里见面呢？",
+          "pinyin": "Nǐmen zài nǎlǐ jiànmiàn ne?",
+          "english": "Where will you meet?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 37.13,
+            "end": 39.29
+          }
+        },
+        {
+          "id": "b2l04d1-l5",
+          "speaker": "可欣",
+          "traditional": "在捷運站二號出口。他們應該快到了。",
+          "simplified": "在捷运站二号出口。他们应该快到了。",
+          "pinyin": "Zài jiéyùnzhàn èr hào chūkǒu. Tāmen yīnggāi kuài dào le.",
+          "english": "At Exit 2 of the MRT station. They should be arriving soon.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 40.53,
+            "end": 44.81
+          }
+        },
+        {
+          "id": "b2l04d1-l6",
+          "speaker": "旁白",
+          "traditional": "（可欣跟美心到了捷運站二號出口）",
+          "simplified": "（可欣跟美心到了捷运站二号出口）",
+          "pinyin": "（Kěxīn gēn Měixīn dào le jiéyùnzhàn èr hào chūkǒu）",
+          "english": "(Kexin and Meixin arrive at Exit 2 of the MRT station.)"
+        },
+        {
+          "id": "b2l04d1-l7",
+          "speaker": "良介",
+          "traditional": "不好意思，妳們等了很久了嗎？",
+          "simplified": "不好意思，你们等了很久了吗？",
+          "pinyin": "Bù hǎoyìsi, nǐmen děng le hěn jiǔ le ma?",
+          "english": "Sorry! Have you been waiting for a long time?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 46.49,
+            "end": 49.92
+          }
+        },
+        {
+          "id": "b2l04d1-l8",
+          "speaker": "可欣",
+          "traditional": "我們也剛到。良介，給我們介紹一下你的朋友吧！",
+          "simplified": "我们也刚到。良介，给我们介绍一下你的朋友吧！",
+          "pinyin": "Wǒmen yě gāng dào. Liángjiè, gěi wǒmen jièshào yíxià nǐ de péngyou ba!",
+          "english": "We just arrived, too. Ryosuke, introduce your friend to us!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 51.04,
+            "end": 56.14
+          }
+        },
+        {
+          "id": "b2l04d1-l9",
+          "speaker": "良介",
+          "traditional": "他是我的好朋友龍介，這幾天到台灣來旅行。",
+          "simplified": "他是我的好朋友龙介，这几天到台湾来旅行。",
+          "pinyin": "Tā shì wǒ de hǎo péngyou Lóngjiè, zhè jǐ tiān dào Táiwān lái lǚxíng.",
+          "english": "He is my good friend Ryusuke. He is traveling in Taiwan these days.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 57.26,
+            "end": 62.99
+          }
+        },
+        {
+          "id": "b2l04d1-l10",
+          "speaker": "龍介",
+          "traditional": "妳們好，我叫九十九龍介。",
+          "simplified": "你们好，我叫九十九龙介。",
+          "pinyin": "Nǐmen hǎo, wǒ jiào Jiǔshíjiǔ Lóngjiè.",
+          "english": "Hello! I'm Ryusuke Tsukumo.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 64.93,
+            "end": 68.01
+          }
+        },
+        {
+          "id": "b2l04d1-l11",
+          "speaker": "可欣",
+          "traditional": "你好，我是陳可欣，良介的大學同學。她是我室友王美心。",
+          "simplified": "你好，我是陈可欣，良介的大学同学。她是我室友王美心。",
+          "pinyin": "Nǐ hǎo, wǒ shì Chén Kěxīn, Liángjiè de dàxué tóngxué. Tā shì wǒ shìyǒu Wáng Měixīn.",
+          "english": "Hello! I'm Kexin Chen, Ryosuke's university classmate. She is my roommate Meixin Wang.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 68.81,
+            "end": 75.94
+          }
+        },
+        {
+          "id": "b2l04d1-l12",
+          "speaker": "美心",
+          "traditional": "很高興認識你。你的姓真特別！",
+          "simplified": "很高兴认识你。你的姓真特别！",
+          "pinyin": "Hěn gāoxìng rènshi nǐ. Nǐ de xìng zhēn tèbié!",
+          "english": "Nice to meet you! Your surname is so special!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 77.02,
+            "end": 80.54
+          }
+        },
+        {
+          "id": "b2l04d1-l13",
+          "speaker": "龍介",
+          "traditional": "是啊！姓九十九的日本人很少。我一直想來夜市逛逛，今天請妳們帶我去吃好吃的台灣小吃。",
+          "simplified": "是啊！姓九十九的日本人很少。我一直想来夜市逛逛，今天请你们带我去吃好吃的台湾小吃。",
+          "pinyin": "Shì a! Xìng Jiǔshíjiǔ de Rìběnrén hěn shǎo. Wǒ yìzhí xiǎng lái yèshì guàngguang, jīntiān qǐng nǐmen dài wǒ qù chī hǎochī de Táiwān xiǎochī.",
+          "english": "Yes! Few Japanese people have this surname. I have always wanted to walk around a night market. Please take me to eat delicious Taiwanese snacks today.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 81.88,
+            "end": 92.45
+          }
+        },
+        {
+          "id": "b2l04d1-l14",
+          "speaker": "可欣",
+          "traditional": "沒問題，夜市就在前面。",
+          "simplified": "没问题，夜市就在前面。",
+          "pinyin": "Méi wèntí, yèshì jiù zài qiánmiàn.",
+          "english": "No problem. The night market is right ahead.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 93.61,
+            "end": 96.57
+          }
+        },
+        {
+          "id": "b2l04d1-l15",
+          "speaker": "良介",
+          "traditional": "我聽說台灣的夜市很有意思，有各種小吃跟點心，買東西還可以殺價呢！",
+          "simplified": "我听说台湾的夜市很有意思，有各种小吃跟点心，买东西还可以杀价呢！",
+          "pinyin": "Wǒ tīngshuō Táiwān de yèshì hěn yǒu yìsi, yǒu gè zhǒng xiǎochī gēn diǎnxīn, mǎi dōngxi hái kěyǐ shājià ne!",
+          "english": "I heard that Taiwanese night markets are very interesting. They have all kinds of snacks and treats, and you can even bargain when you buy things!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 97.91,
+            "end": 107.74
+          }
+        },
+        {
+          "id": "b2l04d1-l16",
+          "speaker": "可欣",
+          "traditional": "沒錯，有時候我在夜市買衣服也會殺價。對了！等一下你會看到一些招牌上有英文、日文，就是希望外國遊客也看得懂。",
+          "simplified": "没错，有时候我在夜市买衣服也会杀价。对了！等一下你会看到一些招牌上有英文、日文，就是希望外国游客也看得懂。",
+          "pinyin": "Méicuò, yǒu shíhou wǒ zài yèshì mǎi yīfu yě huì shājià. Duì le! Děng yíxià nǐ huì kàndào yìxiē zhāopái shàng yǒu Yīngwén, Rìwén, jiùshì xīwàng wàiguó yóukè yě kàn de dǒng.",
+          "english": "That's right. Sometimes I bargain when I buy clothes at the night market too. By the way! Later you'll see English and Japanese on some signboards; that's to help foreign tourists understand them.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 109.22,
+            "end": 124.11
+          }
+        },
+        {
+          "id": "b2l04d1-l17",
+          "speaker": "美心",
+          "traditional": "這裡有臭豆腐、炸雞排、蚵仔煎……，這些小吃都很好吃。當然，還有有名的珍珠奶茶。",
+          "simplified": "这里有臭豆腐、炸鸡排、蚵仔煎……，这些小吃都很好吃。当然，还有有名的珍珠奶茶。",
+          "pinyin": "Zhèlǐ yǒu chòu dòufǔ, zhá jīpái, ézǐjiān……, zhèxiē xiǎochī dōu hěn hǎochī. Dāngrán, hái yǒu yǒumíng de zhēnzhū nǎichá.",
+          "english": "There is stinky tofu, fried chicken cutlet, oyster omelet... These snacks are all delicious. Of course, there is also the famous pearl milk tea.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 125.39,
+            "end": 139.02
+          }
+        },
+        {
+          "id": "b2l04d1-l18",
+          "speaker": "龍介",
+          "traditional": "聽說這裡的珍珠奶茶喝起來又香又甜，可是我不習慣喝太甜的飲料。",
+          "simplified": "听说这里的珍珠奶茶喝起来又香又甜，可是我不习惯喝太甜的饮料。",
+          "pinyin": "Tīngshuō zhèlǐ de zhēnzhū nǎichá hē qǐlái yòu xiāng yòu tián, kěshì wǒ bù xíguàn hē tài tián de yǐnliào.",
+          "english": "I heard that the pearl milk tea here tastes fragrant and sweet, but I am not used to drinks that are too sweet.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 140.92,
+            "end": 149.59
+          }
+        },
+        {
+          "id": "b2l04d1-l19",
+          "speaker": "可欣",
+          "traditional": "在台灣，你可以請他們少放一點兒糖，或是選無糖的、半糖的，也可以決定加多少冰塊。",
+          "simplified": "在台湾，你可以请他们少放一点儿糖，或是选无糖的、半糖的，也可以决定加多少冰块。",
+          "pinyin": "Zài Táiwān, nǐ kěyǐ qǐng tāmen shǎo fàng yìdiǎnr táng, huòshì xuǎn wútáng de, bàntáng de, yě kěyǐ juédìng jiā duōshǎo bīngkuài.",
+          "english": "In Taiwan, you can ask them to put in less sugar, or choose sugar-free or half-sugar, and you can also decide how much ice to add.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 151.09,
+            "end": 161.08
+          }
+        },
+        {
+          "id": "b2l04d1-l20",
+          "speaker": "龍介",
+          "traditional": "太好了！妳們還推薦我們吃什麼？",
+          "simplified": "太好了！你们还推荐我们吃什么？",
+          "pinyin": "Tài hǎo le! Nǐmen hái tuījiàn wǒmen chī shénme?",
+          "english": "That's great! What else do you recommend we eat?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 162,
+            "end": 166.06
+          }
+        },
+        {
+          "id": "b2l04d1-l21",
+          "speaker": "美心",
+          "traditional": "要是你們想吃特別的，我就推薦你們吃臭豆腐，辣的更好吃。（美心買了一份臭豆腐）你們聞，這就是臭豆腐的味道，臭不臭？",
+          "simplified": "要是你们想吃特别的，我就推荐你们吃臭豆腐，辣的更好吃。（美心买了一份臭豆腐）你们闻，这就是臭豆腐的味道，臭不臭？",
+          "pinyin": "Yàoshi nǐmen xiǎng chī tèbié de, wǒ jiù tuījiàn nǐmen chī chòu dòufǔ, là de gèng hǎochī. （Měixīn mǎi le yí fèn chòu dòufǔ）Nǐmen wén, zhè jiùshì chòu dòufǔ de wèidào, chòu bu chòu?",
+          "english": "If you want to eat something special, I recommend stinky tofu. The spicy one is even more delicious. (Meixin buys a serving of stinky tofu.) Smell it! This is the smell of stinky tofu. Is it stinky?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 168.04,
+            "end": 181.05
+          }
+        },
+        {
+          "id": "b2l04d1-l22",
+          "speaker": "旁白",
+          "traditional": "（良介、龍介聞了一下）",
+          "simplified": "（良介、龙介闻了一下）",
+          "pinyin": "（Liángjiè, Lóngjiè wén le yíxià）",
+          "english": "(Ryosuke and Ryusuke take a sniff.)"
+        },
+        {
+          "id": "b2l04d1-l23",
+          "speaker": "龍介",
+          "traditional": "這種味道我不討厭。其實我什麼小吃都想試試，特別是炸雞排，聽說又大又好吃。",
+          "simplified": "这种味道我不讨厌。其实我什么小吃都想试试，特别是炸鸡排，听说又大又好吃。",
+          "pinyin": "Zhè zhǒng wèidào wǒ bù tǎoyàn. Qíshí wǒ shénme xiǎochī dōu xiǎng shìshi, tèbié shì zhá jīpái, tīngshuō yòu dà yòu hǎochī.",
+          "english": "I don't dislike this smell. Actually, I want to try every snack, especially the fried chicken cutlet. I heard it's big and delicious.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 182.09,
+            "end": 193.5
+          }
+        },
+        {
+          "id": "b2l04d1-l24",
+          "speaker": "良介",
+          "traditional": "我不敢吃臭豆腐，可是很想吃雞排。",
+          "simplified": "我不敢吃臭豆腐，可是很想吃鸡排。",
+          "pinyin": "Wǒ bù gǎn chī chòu dòufǔ, kěshì hěn xiǎng chī jīpái.",
+          "english": "I don't dare eat stinky tofu, but I really want to eat the chicken cutlet.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 194.78,
+            "end": 199.71
+          }
+        },
+        {
+          "id": "b2l04d1-l25",
+          "speaker": "可欣",
+          "traditional": "好，那麼我們先去買雞排，我再帶你們去喝非常好喝的香蕉牛奶。",
+          "simplified": "好，那么我们先去买鸡排，我再带你们去喝非常好喝的香蕉牛奶。",
+          "pinyin": "Hǎo, nàme wǒmen xiān qù mǎi jīpái, wǒ zài dài nǐmen qù hē fēicháng hǎohē de xiāngjiāo niúnǎi.",
+          "english": "OK, then let's go buy the chicken cutlet first, and then I'll take you to drink some delicious banana milk.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-1-1.mp3",
+            "start": 200.57,
+            "end": 208.75
+          }
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L04-R02",
+      "bookId": 2,
+      "lessonId": 4,
+      "dialogueNumber": 2,
+      "title": "短文 · 台灣的夜市文化 · The Night Market Culture in Taiwan",
+      "titlePinyin": "Duǎnwén · Táiwān de Yèshì Wénhuà",
+      "titleEnglish": "Reading · The Night Market Culture in Taiwan",
+      "printedPages": [
+        102,
+        103
+      ],
+      "audioReference": "04-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "除了百貨公司，夜市也是台灣人常去的地方。那裡有各種好吃的小吃、好喝的飲料和好玩的遊戲。一般的夜市大概從晚上六點開始，到半夜才結束。很多台灣人喜歡去夜市吃喝玩樂，所以夜市總是很熱鬧，到了週末晚上更是擠得不得了。",
+          "simplified": "除了百货公司，夜市也是台湾人常去的地方。那里有各种好吃的小吃、好喝的饮料和好玩的游戏。一般的夜市大概从晚上六点开始，到半夜才结束。很多台湾人喜欢去夜市吃喝玩乐，所以夜市总是很热闹，到了周末晚上更是挤得不得了。",
+          "pinyin": "Chúle bǎihuò gōngsī, yèshì yě shì Táiwān rén cháng qù de dìfāng. Nàlǐ yǒu gè zhǒng hǎochī de xiǎochī, hǎohē de yǐnliào hé hǎowán de yóuxì. Yìbān de yèshì dàgài cóng wǎnshang liù diǎn kāishǐ, dào bànyè cái jiéshù. Hěn duō Táiwān rén xǐhuan qù yèshì chīhēwánlè, suǒyǐ yèshì zǒngshì hěn rènao, dào le zhōumò wǎnshang gèng shì jǐ de bùdéliǎo.",
+          "english": "Besides department stores, night markets are also places Taiwanese people often go. There are all kinds of delicious snacks, tasty drinks and fun games. An ordinary night market opens at about six in the evening and closes at midnight. Many Taiwanese people like to eat, drink and have fun at night markets, so they are always lively—and even more packed on weekend nights.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-2-1.mp3",
+            "start": 6.12,
+            "end": 38.81
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "這幾年，來台灣旅遊的外國人越來越多了。他們去夜市可以一邊逛街，一邊吃小吃，還能了解台灣的夜市文化。很多小吃的做法簡單，價錢也便宜，誰都吃得起。台灣最常見的小吃除了臭豆腐、蚵仔煎，還有鹹酥雞、滷肉飯、烤魷魚。天氣熱的時候，排隊買豆花、芒果冰、西瓜汁的人很多，生意好極了！逛夜市的時候，不但吃得飽，也買得到流行的衣服，你一定不會覺得無聊。最有意思的是，買東西的時候，你可以跟老闆講價，也許能便宜一點兒。",
+          "simplified": "这几年，来台湾旅游的外国人越来越多了。他们去夜市可以一边逛街，一边吃小吃，还能了解台湾的夜市文化。很多小吃的做法简单，价钱也便宜，谁都吃得起。台湾最常见的小吃除了臭豆腐、蚵仔煎，还有咸酥鸡、卤肉饭、烤鱿鱼。天气热的时候，排队买豆花、芒果冰、西瓜汁的人很多，生意好极了！逛夜市的时候，不但吃得饱，也买得到流行的衣服，你一定不会觉得无聊。最有意思的是，买东西的时候，你可以跟老板讲价，也许能便宜一点儿。",
+          "pinyin": "Zhè jǐ nián, lái Táiwān lǚyóu de wàiguórén yuèláiyuè duō le. Tāmen qù yèshì kěyǐ yìbiān guàngjiē, yìbiān chī xiǎochī, hái néng liǎojiě Táiwān de yèshì wénhuà. Hěn duō xiǎochī de zuòfǎ jiǎndān, jiàqián yě piányi, shéi dōu chī de qǐ. Táiwān zuì chángjiàn de xiǎochī chúle chòu dòufǔ, ézǐjiān, hái yǒu xiánsūjī, lǔròu fàn, kǎo yóuyú. Tiānqì rè de shíhou, páiduì mǎi dòuhuā, mángguǒ bīng, xīguā zhī de rén hěn duō, shēngyì hǎo jí le! Guàng yèshì de shíhou, búdàn chī de bǎo, yě mǎi de dào liúxíng de yīfu, nǐ yídìng bú huì juéde wúliáo. Zuì yǒu yìsi de shì, mǎi dōngxi de shíhou, nǐ kěyǐ gēn lǎobǎn jiǎngjià, yěxǔ néng piányi yìdiǎnr.",
+          "english": "In recent years, more and more foreigners have come to Taiwan to travel. At night markets they can shop, eat snacks, and learn about Taiwan's night market culture. Many snacks are simple to make and cheap; anyone can afford them. Besides stinky tofu and oyster omelet, the most common Taiwanese snacks also include popcorn chicken, braised pork on rice and grilled squid. When the weather is hot, many people line up to buy tofu pudding, mango ice and watermelon juice—business is great! When you walk around a night market, you can not only eat your fill but also buy trendy clothes, so you will definitely not feel bored. Most interestingly, when you buy things you can bargain with the vendor; perhaps you can get a lower price.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-2-1.mp3",
+            "start": 40.11,
+            "end": 104.87
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "在台灣，很多寺廟附近都有夜市，比如說：台北的龍山寺旁邊有華西街夜市。對龍山寺有興趣的外國遊客，常常先去廟裡參觀，再去夜市逛逛。這樣的旅行除了能了解寺廟文化，還吃得到有名的小吃，真的太值得了！",
+          "simplified": "在台湾，很多寺庙附近都有夜市，比如说：台北的龙山寺旁边有华西街夜市。对龙山寺有兴趣的外国游客，常常先去庙里参观，再去夜市逛逛。这样的旅行除了能了解寺庙文化，还吃得到有名的小吃，真的太值得了！",
+          "pinyin": "Zài Táiwān, hěn duō sìmiào fùjìn dōu yǒu yèshì, bǐrú shuō: Táiběi de Lóngshān sì pángbiān yǒu Huáxī Jiē yèshì. Duì Lóngshān sì yǒu xìngqù de wàiguó yóukè, chángcháng xiān qù miào lǐ cānguān, zài qù yèshì guàngguang. Zhèyàng de lǚxíng chúle néng liǎojiě sìmiào wénhuà, hái chī de dào yǒumíng de xiǎochī, zhēn de tài zhídé le!",
+          "english": "In Taiwan, many temples have night markets nearby. For example, Huaxi Street Night Market is next to Longshan Temple in Taipei. Foreign tourists who are interested in Longshan Temple often visit the temple first and then walk around the night market. On a trip like this, besides learning about temple culture, you can also eat famous snacks—it is really worth it!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-04-2-1.mp3",
+            "start": 106.17,
+            "end": 134.27
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L05-R01",
+      "bookId": 2,
+      "lessonId": 5,
+      "dialogueNumber": 1,
+      "title": "對話 · 歡迎到我家來玩 · Welcome to My House",
+      "titlePinyin": "Huānyíng Dào Wǒ Jiā Lái Wán",
+      "titleEnglish": "Welcome to My House",
+      "printedPages": [
+        116,
+        119
+      ],
+      "audioReference": "05-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l05d1-l1",
+          "speaker": "旁白",
+          "traditional": "（明生在他住的社區等可欣和美心）",
+          "simplified": "（明生在他住的社区等可欣和美心）",
+          "pinyin": "（Míngshēng zài tā zhù de shèqū děng Kěxīn hé Měixīn）",
+          "english": "(Mingsheng is waiting for Kexin and Meixin in the apartment complex he lives in.)"
+        },
+        {
+          "id": "b2l05d1-l2",
+          "speaker": "明生",
+          "traditional": "歡迎你們來，我就住在這個社區的A棟七樓。",
+          "simplified": "欢迎你们来，我就住在这个社区的A栋七楼。",
+          "pinyin": "Huānyíng nǐmen lái, wǒ jiù zhù zài zhège shèqū de A dòng qī lóu.",
+          "english": "Welcome! I just live on the seventh floor of Building A in this apartment complex.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 22.16,
+            "end": 26.62
+          }
+        },
+        {
+          "id": "b2l05d1-l3",
+          "speaker": "美心",
+          "traditional": "這個社區好大啊！比我住的大多了。",
+          "simplified": "这个社区好大啊！比我住的大多了。",
+          "pinyin": "Zhège shèqū hǎo dà a! Bǐ wǒ zhù de dà duō le.",
+          "english": "This complex is huge! It’s much bigger than the one I live in.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 27.8,
+            "end": 32.08
+          }
+        },
+        {
+          "id": "b2l05d1-l4",
+          "speaker": "明生",
+          "traditional": "這個社區又大又舒服，可是上個月有一輛汽車被小偷偷了，因為警察來幫忙，所以很快就找到汽車了。現在白天、晚上都有人負責社區的安全。",
+          "simplified": "这个社区又大又舒服，可是上个月有一辆汽车被小偷偷了，因为警察来帮忙，所以很快就找到汽车了。现在白天、晚上都有人负责社区的安全。",
+          "pinyin": "Zhège shèqū yòu dà yòu shūfu, kěshì shàng ge yuè yǒu yí liàng qìchē bèi xiǎotōu tōu le, yīnwèi jǐngchá lái bāngmáng, suǒyǐ hěn kuài jiù zhǎodào qìchē le. Xiànzài báitiān, wǎnshàng dōu yǒu rén fùzé shèqū de ānquán.",
+          "english": "This complex building is both big and comfortable. But last month a car was stolen by a thief, and the police came to help, so they found the car quickly. Now day and night there’s someone responsible for the safety of the community.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 33.17,
+            "end": 54.38
+          }
+        },
+        {
+          "id": "b2l05d1-l5",
+          "speaker": "美心",
+          "traditional": "社區安全真的很重要。對了，我在大門那邊看到一大片草地，你們會在那裡辦活動嗎？",
+          "simplified": "社区安全真的很重要。对了，我在大门那边看到一大片草地，你们会在那里办活动吗？",
+          "pinyin": "Shèqū ānquán zhēn de hěn zhòngyào. Duì le, wǒ zài dàmén nàbiān kàndào yí dà piàn cǎodì, nǐmen huì zài nàlǐ bàn huódòng ma?",
+          "english": "The safety of the community is really important. By the way, I saw a large lawn near the main gate. Do you hold activities there?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 55.82,
+            "end": 66.33
+          }
+        },
+        {
+          "id": "b2l05d1-l6",
+          "speaker": "明生",
+          "traditional": "會啊！晴天的時候，我們會在那裡曬太陽、踢足球；有時候也會在那裡野餐、露營，好玩得不得了。",
+          "simplified": "会啊！晴天的时候，我们会在那里晒太阳、踢足球；有时候也会在那里野餐、露营，好玩得不得了。",
+          "pinyin": "Huì a! Qíngtiān de shíhou, wǒmen huì zài nàlǐ shài tàiyáng, tī zúqiú; yǒu shíhou yě huì zài nàlǐ yěcān, lùyíng, hǎowán de bùdéliǎo.",
+          "english": "Yes! On sunny days, we sunbathe and play soccer, and sometimes we have a picnic and camp there. It’s great fun.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 67.61,
+            "end": 80.08
+          }
+        },
+        {
+          "id": "b2l05d1-l7",
+          "speaker": "美心",
+          "traditional": "真的嗎？我很喜歡露營，以後我也可以來這裡露營嗎？",
+          "simplified": "真的吗？我很喜欢露营，以后我也可以来这里露营吗？",
+          "pinyin": "Zhēn de ma? Wǒ hěn xǐhuan lùyíng, yǐhòu wǒ yě kěyǐ lái zhèlǐ lùyíng ma?",
+          "english": "Really? I like camping very much. May I come here to camp in the future, too?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 81.44,
+            "end": 88.05
+          }
+        },
+        {
+          "id": "b2l05d1-l8",
+          "speaker": "明生",
+          "traditional": "可以啊！上個週末我跟可欣就在那裡露營。晚上沒有雲的時候，躺在草地上聊天、看星星，感覺好輕鬆，我們聊著聊著就睡著了。",
+          "simplified": "可以啊！上个周末我跟可欣就在那里露营。晚上没有云的时候，躺在草地上聊天、看星星，感觉好轻松，我们聊着聊着就睡着了。",
+          "pinyin": "Kěyǐ a! Shàng ge zhōumò wǒ gēn Kěxīn jiù zài nàlǐ lùyíng. Wǎnshàng méiyǒu yún de shíhou, tǎng zài cǎodì shàng liáotiān, kàn xīngxīng, gǎnjué hǎo qīngsōng, wǒmen liáozhe liáozhe jiù shuìzháo le.",
+          "english": "Sure! I was camping there with Kexin last weekend. In the evening, when there were no clouds, we were lying on the lawn chatting, watching stars, and feeling relaxed; we fell asleep while chatting.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 88.97,
+            "end": 106.82
+          }
+        },
+        {
+          "id": "b2l05d1-l9",
+          "speaker": "可欣",
+          "traditional": "我想住在這裡的人，早上看到陽光、聞到花香，再聽到幾隻鳥在唱歌，應該就不想去上班了。",
+          "simplified": "我想住在这里的人，早上看到阳光、闻到花香，再听到几只鸟在唱歌，应该就不想去上班了。",
+          "pinyin": "Wǒ xiǎng zhù zài zhèlǐ de rén, zǎoshàng kàndào yángguāng, wéndào huāxiāng, zài tīngdào jǐ zhī niǎo zài chànggē, yīnggāi jiù bù xiǎng qù shàngbān le.",
+          "english": "I think people who live here, having seen the sunlight and smelled the aroma of flowers in the morning, and then heard a few birds singing, shouldn’t want to go to work.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 108.02,
+            "end": 119.59
+          }
+        },
+        {
+          "id": "b2l05d1-l10",
+          "speaker": "美心",
+          "traditional": "聽妳這麼說，我也好想搬來這裡住。",
+          "simplified": "听妳这么说，我也好想搬来这里住。",
+          "pinyin": "Tīng nǐ zhème shuō, wǒ yě hǎo xiǎng bān lái zhèlǐ zhù.",
+          "english": "As I hear you say so, I really want to move here too!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 120.85,
+            "end": 124.47
+          }
+        },
+        {
+          "id": "b2l05d1-l11",
+          "speaker": "明生",
+          "traditional": "歡迎，歡迎。這裡環境很好，還有兩座球場和游泳池。有一個校友也住在這個社區，我常跟他一起打網球呢！",
+          "simplified": "欢迎，欢迎。这里环境很好，还有两座球场和游泳池。有一个校友也住在这个社区，我常跟他一起打网球呢！",
+          "pinyin": "Huānyíng, huānyíng. Zhèlǐ huánjìng hěn hǎo, hái yǒu liǎng zuò qiúchǎng hé yóuyǒngchí. Yǒu yí ge xiàoyǒu yě zhù zài zhège shèqū, wǒ cháng gēn tā yìqǐ dǎ wǎngqiú ne!",
+          "english": "Welcome, welcome. The environment here is good, and there are also two playgrounds and a swimming pool. There’s an alumnus that lives in this community, too. I often play tennis with him!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 125.6,
+            "end": 139.35
+          }
+        },
+        {
+          "id": "b2l05d1-l12",
+          "speaker": "美心",
+          "traditional": "我也會打網球，可是打得不好。",
+          "simplified": "我也会打网球，可是打得不好。",
+          "pinyin": "Wǒ yě huì dǎ wǎngqiú, kěshì dǎ de bù hǎo.",
+          "english": "I also can play tennis, but I don’t play well.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 140.37,
+            "end": 144.31
+          }
+        },
+        {
+          "id": "b2l05d1-l13",
+          "speaker": "可欣",
+          "traditional": "打得不好沒關係，只要有機會運動就好了。",
+          "simplified": "打得不好没关系，只要有机会运动就好了。",
+          "pinyin": "Dǎ de bù hǎo méiguānxi, zhǐyào yǒu jīhuì yùndòng jiù hǎo le.",
+          "english": "It doesn’t matter if you don’t play well. As long as you can have opportunity to exercise, it’s fine.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 145.31,
+            "end": 149.95
+          }
+        },
+        {
+          "id": "b2l05d1-l14",
+          "speaker": "明生",
+          "traditional": "對啊！我平常下班回來，有時候去游泳，有時候去打球，所以身體越來越健康了。",
+          "simplified": "对啊！我平常下班回来，有时候去游泳，有时候去打球，所以身体越来越健康了。",
+          "pinyin": "Duì a! Wǒ píngcháng xiàbān huílái, yǒu shíhou qù yóuyǒng, yǒu shíhou qù dǎqiú, suǒyǐ shēntǐ yuèláiyuè jiànkāng le.",
+          "english": "Right! When I come back from work, sometimes I go swimming, and sometimes I play sports, so my body is getting healthier and healthier.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 150.97,
+            "end": 161.18
+          }
+        },
+        {
+          "id": "b2l05d1-l15",
+          "speaker": "可欣",
+          "traditional": "聊了這麼久，我有一點兒餓了。",
+          "simplified": "聊了这么久，我有一点儿饿了。",
+          "pinyin": "Liáo le zhème jiǔ, wǒ yǒu yìdiǎnr è le.",
+          "english": "We’ve been chatting for so long. I am a bit hungry.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 162.24,
+            "end": 164.7
+          }
+        },
+        {
+          "id": "b2l05d1-l16",
+          "speaker": "明生",
+          "traditional": "那今天我請客，請你們去附近的餐廳吃牛排。從這裡往前走，看到紅綠燈，往右轉就到了。",
+          "simplified": "那今天我请客，请你们去附近的餐厅吃牛排。从这里往前走，看到红绿灯，往右转就到了。",
+          "pinyin": "Nà jīntiān wǒ qǐngkè, qǐng nǐmen qù fùjìn de cāntīng chī niúpái. Cóng zhèlǐ wǎng qián zǒu, kàndào hónglǜdēng, wǎng yòu zhuǎn jiù dào le.",
+          "english": "It’s my treat today. I treat you to the nearby restaurant to eat steak. Go forward from here, see the traffic light, turn right and you will be there.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-1-1.mp3",
+            "start": 165.75,
+            "end": 177.69
+          }
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L05-R02",
+      "bookId": 2,
+      "lessonId": 5,
+      "dialogueNumber": 2,
+      "title": "短文 · 幸福社區 · Happy Community",
+      "titlePinyin": "Duǎnwén · Xìngfú Shèqū",
+      "titleEnglish": "Reading · Happy Community",
+      "printedPages": [
+        125,
+        128
+      ],
+      "audioReference": "05-2-1",
+      "paragraphs": [
+        {
+          "id": "b2l05d2-l1",
+          "speaker": "旁白",
+          "traditional": "我住的地方叫「幸福社區」，這個社區在台北市的郊區，我跟妹妹都是在這裡長大的。雖然社區很大，環境很好，可是因為在山上，走起路來很辛苦，所以每次出門，都得搭社區的小巴士。還好巴士每十五分鐘就有一班，要不然就會很麻煩。",
+          "simplified": "我住的地方叫「幸福社区」，这个社区在台北市的郊区，我跟妹妹都是在这里长大的。虽然社区很大，环境很好，可是因为在山上，走起路来很辛苦，所以每次出门，都得搭社区的小巴士。还好巴士每十五分钟就有一班，要不然就会很麻烦。",
+          "pinyin": "Wǒ zhù de dìfāng jiào 「Xìngfú Shèqū」, zhège shèqū zài Táiběi Shì de jiāoqū, wǒ gēn mèimei dōu shì zài zhèlǐ zhǎngdà de. Suīrán shèqū hěn dà, huánjìng hěn hǎo, kěshì yīnwèi zài shān shàng, zǒu qǐ lù lái hěn xīnkǔ, suǒyǐ měi cì chūmén, dōu děi dā shèqū de xiǎo bāshì. Háihǎo bāshì měi shíwǔ fēnzhōng jiù yǒu yì bān, yàobùrán jiù huì hěn máfán.",
+          "english": "The place where I live is called “Happy Community”. This community is in the suburbs of Taipei City. My younger sister and I grew up here. Although the community is very big and the environment is very good, it is located in the mountains, and we have a hard time walking along the road. Therefore, every time we go out, we have to take the community’s minibus. Fortunately, the bus comes every fifteen minutes; otherwise it would be very troublesome.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-2-1.mp3",
+            "start": 5.56,
+            "end": 42.73
+          }
+        },
+        {
+          "id": "b2l05d2-l2",
+          "speaker": "旁白",
+          "traditional": "幸福社區很安全，如果有客人來，都得經過大門口，門口的安全人員覺得沒有問題了，才可以進來。這個社區也有很大的草地、漂亮的花園和新鮮的空氣。客人到了這裡，就像到了公園一樣輕鬆。花園旁邊有一家書店跟二十四小時的超級市場，超市的停車場可以停很多車，停多久都不需要付停車費。",
+          "simplified": "幸福社区很安全，如果有客人来，都得经过大门口，门口的安全人员觉得没有问题了，才可以进来。这个社区也有很大的草地、漂亮的花园和新鲜的空气。客人到了这里，就像到了公园一样轻松。花园旁边有一家书店跟二十四小时的超级市场，超市的停车场可以停很多车，停多久都不需要付停车费。",
+          "pinyin": "Xìngfú shèqū hěn ānquán, rúguǒ yǒu kèrén lái, dōu děi jīngguò dàménkǒu, ménkǒu de ānquán rényuán juéde méiyǒu wèntí le, cái kěyǐ jìnlái. Zhège shèqū yě yǒu hěn dà de cǎodì, piàoliang de huāyuán hé xīnxiān de kōngqì. Kèrén dào le zhèlǐ, jiù xiàng dào le gōngyuán yíyàng qīngsōng. Huāyuán pángbiān yǒu yì jiā shūdiàn gēn èrshísì xiǎoshí de chāojí shìchǎng, chāoshì de tíngchēchǎng kěyǐ tíng hěn duō chē, tíng duō jiǔ dōu bù xūyào fù tíngchēfèi.",
+          "english": "Happy Community is very safe. If there are guests coming in, they must pass through the main gate. Only if the security guard at the gate thinks there is no problem can they get in. This community also has a big lawn, a beautiful garden, and fresh air. When guests come here, it is just like they come to a park, they feel relaxed. Next to the garden there is a bookstore and a 24-hour supermarket. The parking lot of the supermarket can accommodate a lot of cars. No matter how long you park, you don’t need to pay the parking fee.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-2-1.mp3",
+            "start": 44.59,
+            "end": 91.12
+          }
+        },
+        {
+          "id": "b2l05d2-l3",
+          "speaker": "旁白",
+          "traditional": "每年的中秋節，社區的人都會坐在草地上，一邊看著又大又圓的月亮，一邊吃著又香又甜的月餅，開心極了！我覺得住在這裡真是太幸福了，你想不想搬來當我的鄰居呢？",
+          "simplified": "每年的中秋节，社区的人都会坐在草地上，一边看着又大又圆的月亮，一边吃着又香又甜的月饼，开心极了！我觉得住在这里真是太幸福了，你想不想搬来当我的邻居呢？",
+          "pinyin": "Měi nián de Zhōngqiū jié, shèqū de rén dōu huì zuò zài cǎodì shàng, yìbiān kànzhe yòu dà yòu yuán de yuèliàng, yìbiān chīzhe yòu xiāng yòu tián de yuèbǐng, kāixīn jí le! Wǒ juéde zhù zài zhèlǐ zhēnshi tài xìngfú le, nǐ xiǎng bu xiǎng bān lái dāng wǒ de línjū ne?",
+          "english": "On Mid-Autumn Festival every year, people living in the community would sit on the lawn watching the big and round moon and eating fragrant and sweet moon cakes with great joy! I am really happy to live here. Do you want to move here and become my neighbor?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-05-2-1.mp3",
+            "start": 92.6,
+            "end": 117.14
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L06-R01",
+      "bookId": 2,
+      "lessonId": 6,
+      "dialogueNumber": 1,
+      "title": "對話 · 我們去KTV唱歌吧！ · Let’s Go to KTV to Sing!",
+      "titlePinyin": "Wǒmen Qù KTV Chànggē Ba!",
+      "titleEnglish": "Let’s Go to KTV to Sing!",
+      "printedPages": [
+        135,
+        136
+      ],
+      "audioReference": "06-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l06d1-l1",
+          "speaker": "美心",
+          "traditional": "下星期六是可欣的生日，我們要怎麼慶祝呢？",
+          "simplified": "下星期六是可欣的生日，我们要怎么庆祝呢？",
+          "pinyin": "Xià xīngqīliù shì Kěxīn de shēngrì, wǒmen yào zěnme qìngzhù ne?",
+          "english": "Next Saturday is Kexin's birthday. How are we going to celebrate it?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 22.62,
+            "end": 27.84
+          }
+        },
+        {
+          "id": "b2l06d1-l2",
+          "speaker": "明生",
+          "traditional": "她愛唱歌，去KTV幫她過生日，好不好？",
+          "simplified": "她爱唱歌，去KTV帮她过生日，好不好？",
+          "pinyin": "Tā ài chànggē, qù KTV bāng tā guò shēngrì, hǎo bu hǎo?",
+          "english": "She loves singing. Let's go to a KTV bar and celebrate her birthday there, OK?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 28.72,
+            "end": 33.28
+          }
+        },
+        {
+          "id": "b2l06d1-l3",
+          "speaker": "良介",
+          "traditional": "太好了！我很想看看台灣的KTV，聽說跟日本的有點兒不同。",
+          "simplified": "太好了！我很想看看台湾的KTV，听说跟日本的有点儿不同。",
+          "pinyin": "Tài hǎo le! Wǒ hěn xiǎng kànkan Táiwān de KTV, tīngshuō gēn Rìběn de yǒudiǎnr bùtóng.",
+          "english": "Great! I want to see the KTV in Taiwan. I heard it's a little bit different than in Japan.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 34.25,
+            "end": 42.61
+          }
+        },
+        {
+          "id": "b2l06d1-l4",
+          "speaker": "明生",
+          "traditional": "我覺得都差不多，可是很多台灣的KTV可以吃到飽。",
+          "simplified": "我觉得都差不多，可是很多台湾的KTV可以吃到饱。",
+          "pinyin": "Wǒ juéde dōu chàbùduō, kěshì hěn duō Táiwān de KTV kěyǐ chīdàobǎo.",
+          "english": "I think there's no big difference. But in many Taiwanese KTV bars, you can eat as much as you want.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 43.89,
+            "end": 50.26
+          }
+        },
+        {
+          "id": "b2l06d1-l5",
+          "speaker": "良介",
+          "traditional": "真的嗎？我沒聽過日本有吃到飽的KTV，不過，我去KTV的目的不是吃東西，是唱歌。",
+          "simplified": "真的吗？我没听过日本有吃到饱的KTV，不过，我去KTV的目的不是吃东西，是唱歌。",
+          "pinyin": "Zhēn de ma? Wǒ méi tīngguò Rìběn yǒu chīdàobǎo de KTV, búguò, wǒ qù KTV de mùdì bú shì chī dōngxi, shì chànggē.",
+          "english": "Really? I haven't heard about any all-you-can-eat KTV bar in Japan. But the purpose I go to the KTV is to sing, not to eat.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 51.58,
+            "end": 62.65
+          }
+        },
+        {
+          "id": "b2l06d1-l6",
+          "speaker": "美心",
+          "traditional": "我聽說，日本人跟朋友去KTV的時候，每個人一次只能點一首歌，點好了就換下一個人，是真的嗎？",
+          "simplified": "我听说，日本人跟朋友去KTV的时候，每个人一次只能点一首歌，点好了就换下一个人，是真的吗？",
+          "pinyin": "Wǒ tīngshuō, Rìběnrén gēn péngyou qù KTV de shíhou, měi ge rén yí cì zhǐ néng diǎn yì shǒu gē, diǎn hǎo le jiù huàn xià yí ge rén, shì zhēn de ma?",
+          "english": "I heard that when the Japanese go to KTV bars with friends, one person can order only one song each time. After ordering the song, it is another one's turn. Is that right?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 63.85,
+            "end": 77.12
+          }
+        },
+        {
+          "id": "b2l06d1-l7",
+          "speaker": "良介",
+          "traditional": "沒錯，跟台灣不一樣嗎？",
+          "simplified": "没错，跟台湾不一样吗？",
+          "pinyin": "Méi cuò, gēn Táiwān bù yíyàng ma?",
+          "english": "That's right! Is it different from Taiwan?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 78.24,
+            "end": 81.54
+          }
+        },
+        {
+          "id": "b2l06d1-l8",
+          "speaker": "美心",
+          "traditional": "我們喜歡大家合唱，這樣比較熱鬧，唱錯了也沒關係。",
+          "simplified": "我们喜欢大家合唱，这样比较热闹，唱错了也没关系。",
+          "pinyin": "Wǒmen xǐhuan dàjiā héchàng, zhèyàng bǐjiào rènao, chàng cuò le yě méi guānxi.",
+          "english": "We like singing altogether. It's more lively that way and it doesn't matter if you sing it wrong.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 82.72,
+            "end": 89.47
+          }
+        },
+        {
+          "id": "b2l06d1-l9",
+          "speaker": "明生",
+          "traditional": "有一次我們在KTV唱歌，隔壁的人唱得好開心，又唱又跳，感覺地板都動起來了。",
+          "simplified": "有一次我们在KTV唱歌，隔壁的人唱得好开心，又唱又跳，感觉地板都动起来了。",
+          "pinyin": "Yǒu yí cì wǒmen zài KTV chànggē, gébì de rén chàng de hěn kāixīn, yòu chàng yòu tiào, gǎnjué dìbǎn dōu dòng qǐlái le.",
+          "english": "Once while we were singing in a KTV bar, the people next door were singing so happily. They were both singing and dancing. It felt like the floor was starting to move.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 90.69,
+            "end": 101.08
+          }
+        },
+        {
+          "id": "b2l06d1-l10",
+          "speaker": "良介",
+          "traditional": "聽美心說你很會唱歌，可以教我唱中文歌嗎？",
+          "simplified": "听美心说你很会唱歌，可以教我唱中文歌吗？",
+          "pinyin": "Tīng Měixīn shuō nǐ hěn huì chànggē, kěyǐ jiāo wǒ chàng Zhōngwén gē ma?",
+          "english": "I heard from Meixin that you sing very well. Can you teach me how to sing Chinese songs?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 102.24,
+            "end": 108.44
+          }
+        },
+        {
+          "id": "b2l06d1-l11",
+          "speaker": "明生",
+          "traditional": "沒問題，我先教你唱簡單的，你一定很快就學會了。",
+          "simplified": "没问题，我先教你唱简单的，你一定很快就学会了。",
+          "pinyin": "Méi wèntí, wǒ xiān jiāo nǐ chàng jiǎndān de, nǐ yídìng hěn kuài jiù xuéhuì le.",
+          "english": "No problem. I'll teach you to sing the simple ones first. You'll learn it very fast for sure.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 109.82,
+            "end": 116.35
+          }
+        },
+        {
+          "id": "b2l06d1-l12",
+          "speaker": "美心",
+          "traditional": "台灣的KTV也有很多日文歌曲，你可以選幾首拿手的，在可欣生日那天，唱給大家聽。",
+          "simplified": "台湾的KTV也有很多日文歌曲，你可以选几首拿手的，在可欣生日那天，唱给大家听。",
+          "pinyin": "Táiwān de KTV yě yǒu hěn duō Rìwén gēqǔ, nǐ kěyǐ xuǎn jǐ shǒu náshǒu de, zài Kěxīn shēngrì nà tiān, chàng gěi dàjiā tīng.",
+          "english": "Taiwanese KTV bars have many Japanese songs, too. You can choose a few songs that you mastered and sing them for everyone on Kexin's birthday.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 117.55,
+            "end": 128.7
+          }
+        },
+        {
+          "id": "b2l06d1-l13",
+          "speaker": "良介",
+          "traditional": "可是我很容易緊張，要是唱不好怎麼辦？",
+          "simplified": "可是我很容易紧张，要是唱不好怎么办？",
+          "pinyin": "Kěshì wǒ hěn róngyì jǐnzhāng, yàoshi chàng bu hǎo zěnme bàn?",
+          "english": "But I get nervous very easily. What shall I do if I don't sing well?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 129.54,
+            "end": 134.98
+          }
+        },
+        {
+          "id": "b2l06d1-l14",
+          "speaker": "美心",
+          "traditional": "沒關係。我每次去KTV，總是把自己當歌星，想像那是我的演唱會，想唱什麼就唱什麼，自己開心最重要。",
+          "simplified": "没关系。我每次去KTV，总是把自己当歌星，想象那是我的演唱会，想唱什么就唱什么，自己开心最重要。",
+          "pinyin": "Méi guānxi. Wǒ měi cì qù KTV, zǒngshì bǎ zìjǐ dāng gēxīng, xiǎngxiàng nà shì wǒ de yǎnchànghuì, xiǎng chàng shénme jiù chàng shénme, zìjǐ kāixīn zuì zhòngyào.",
+          "english": "It doesn't matter. Every time I go to a KTV bar, I always act like a singer and imagine that was my concert. I sing what I want to sing. My own happiness is the most important.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 135.72,
+            "end": 151.47
+          }
+        },
+        {
+          "id": "b2l06d1-l15",
+          "speaker": "明生",
+          "traditional": "我看過一個日本的電視節目，在KTV唱歌的時候，用機器給唱歌的人打分數，這樣就可以知道自己唱得怎麼樣。",
+          "simplified": "我看过一个日本的电视节目，在KTV唱歌的时候，用机器给唱歌的人打分数，这样就可以知道自己唱得怎么样。",
+          "pinyin": "Wǒ kànguò yí ge Rìběn de diànshì jiémù, zài KTV chànggē de shíhou, yòng jīqì gěi chànggē de rén dǎ fēnshù, zhèyàng jiù kěyǐ zhīdào zìjǐ chàng de zěnmeyàng.",
+          "english": "I've seen a Japanese TV show. While people were singing in a KTV bar, they used a machine to score the singing. In that way they could find out how well they sang.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 152.53,
+            "end": 165.56
+          }
+        },
+        {
+          "id": "b2l06d1-l16",
+          "speaker": "美心",
+          "traditional": "聽起來好像是考試，好可怕！",
+          "simplified": "听起来好像是考试，好可怕！",
+          "pinyin": "Tīng qǐlái hǎoxiàng shì kǎoshì, hǎo kěpà!",
+          "english": "It sounds like an exam. So scary!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 166.73,
+            "end": 170.63
+          }
+        },
+        {
+          "id": "b2l06d1-l17",
+          "speaker": "良介",
+          "traditional": "那種機器常常弄錯，有時候我覺得唱得不差，可是分數很低。",
+          "simplified": "那种机器常常弄错，有时候我觉得唱得不差，可是分数很低。",
+          "pinyin": "Nà zhǒng jīqì chángcháng nòngcuò, yǒu shíhou wǒ juéde chàng de bù chà, kěshì fēnshù hěn dī.",
+          "english": "That kind of machine often goes wrong. Sometimes I think my singing is not bad, but the score is very low.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 171.63,
+            "end": 179.98
+          }
+        },
+        {
+          "id": "b2l06d1-l18",
+          "speaker": "美心、明生",
+          "traditional": "哈哈哈！",
+          "simplified": "哈哈哈！",
+          "pinyin": "Hāhāhā!",
+          "english": "Hahaha! (laughing)"
+        },
+        {
+          "id": "b2l06d1-l19",
+          "speaker": "明生",
+          "traditional": "我們去KTV那天，我教你一些唱歌的方法吧！",
+          "simplified": "我们去KTV那天，我教你一些唱歌的方法吧！",
+          "pinyin": "Wǒmen qù KTV nà tiān, wǒ jiāo nǐ yìxiē chànggē de fāngfǎ ba!",
+          "english": "Let me teach you some singing methods on the day we go to a KTV bar.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 183.2,
+            "end": 188.4
+          }
+        },
+        {
+          "id": "b2l06d1-l20",
+          "speaker": "良介",
+          "traditional": "（興奮地說）太棒了！我一定會好好練習的，這樣就不怕機器給我打分數了。",
+          "simplified": "（兴奋地说）太棒了！我一定会好好练习的，这样就不怕机器给我打分数了。",
+          "pinyin": "(Xīngfèn de shuō) Tài bàng le! Wǒ yídìng huì hǎohǎo liànxí de, zhèyàng jiù bú pà jīqì gěi wǒ dǎ fēnshù le.",
+          "english": "(says excitedly) Awesome! I will definitely practice well, so I am not afraid of the machine giving me a score.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 189.4,
+            "end": 196.71
+          }
+        },
+        {
+          "id": "b2l06d1-l21",
+          "speaker": "美心",
+          "traditional": "對了，我們要買什麼禮物送給可欣呢？",
+          "simplified": "对了，我们要买什么礼物送给可欣呢？",
+          "pinyin": "Duì le, wǒmen yào mǎi shénme lǐwù sòng gěi Kěxīn ne?",
+          "english": "By the way, what gifts are we going to give Kexin?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 197.45,
+            "end": 201.57
+          }
+        },
+        {
+          "id": "b2l06d1-l22",
+          "speaker": "旁白",
+          "traditional": "（大家想一想）",
+          "simplified": "（大家想一想）",
+          "pinyin": "(Dàjiā xiǎng yi xiǎng)",
+          "english": "(Everyone was thinking...)"
+        },
+        {
+          "id": "b2l06d1-l23",
+          "speaker": "美心",
+          "traditional": "我想到了！可欣很喜歡香水，我們送她一瓶香水吧。",
+          "simplified": "我想到了！可欣很喜欢香水，我们送她一瓶香水吧。",
+          "pinyin": "Wǒ xiǎngdào le! Kěxīn hěn xǐhuan xiāngshuǐ, wǒmen sòng tā yì píng xiāngshuǐ ba.",
+          "english": "I have an idea! Kexin likes perfume. Let's give her a bottle of perfume.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 203.31,
+            "end": 210.52
+          }
+        },
+        {
+          "id": "b2l06d1-l24",
+          "speaker": "明生",
+          "traditional": "我還要送她巧克力跟一大束紅玫瑰，九十九朵喔！",
+          "simplified": "我还要送她巧克力跟一大束红玫瑰，九十九朵喔！",
+          "pinyin": "Wǒ hái yào sòng tā qiǎokèlì gēn yí dà shù hóng méigui, jiǔshíjiǔ duǒ o!",
+          "english": "I also want to send her chocolate and a big bunch of red roses, with ninety-nine flowers!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 211.82,
+            "end": 217.96
+          }
+        },
+        {
+          "id": "b2l06d1-l25",
+          "speaker": "良介",
+          "traditional": "別忘了買蛋糕跟幾罐啤酒喔！",
+          "simplified": "别忘了买蛋糕跟几罐啤酒喔！",
+          "pinyin": "Bié wàng le mǎi dàngāo gēn jǐ guàn píjiǔ o!",
+          "english": "Don't forget to buy a cake and a few cans of beer!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 219.08,
+            "end": 222.05
+          }
+        },
+        {
+          "id": "b2l06d1-l26",
+          "speaker": "明生",
+          "traditional": "那麼等可欣下課以後，我就告訴她這個好消息。",
+          "simplified": "那么等可欣下课以后，我就告诉她这个好消息。",
+          "pinyin": "Nàme děng Kěxīn xiàkè yǐhòu, wǒ jiù gàosu tā zhège hǎo xiāoxí.",
+          "english": "Well, when Kexin finishes her classes, I'll tell her this piece of good news.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-1-1.mp3",
+            "start": 223.33,
+            "end": 228.83
+          }
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L06-R02",
+      "bookId": 2,
+      "lessonId": 6,
+      "dialogueNumber": 2,
+      "title": "短文 · 台灣的KTV · Taiwanese KTV Bars",
+      "titlePinyin": "Duǎnwén · Táiwān de KTV",
+      "titleEnglish": "Reading · Taiwanese KTV Bars",
+      "printedPages": [
+        148,
+        149
+      ],
+      "audioReference": "06-2-1",
+      "paragraphs": [
+        {
+          "id": "b2l06d2-l1",
+          "speaker": "旁白",
+          "traditional": "在台灣，KTV是一個吃喝玩樂的好地方。很多人會到KTV過生日、辦活動；不少學生一考完試就去KTV唱歌、吃東西，讓自己輕鬆一下。有人家裡有卡拉OK的機器，不但想唱的時候隨時都能唱，也可以請朋友、鄰居一起來唱。",
+          "simplified": "在台湾，KTV是一个吃喝玩乐的好地方。很多人会到KTV过生日、办活动；不少学生一考完试就去KTV唱歌、吃东西，让自己轻松一下。有人家里有卡拉OK的机器，不但想唱的时候随时都能唱，也可以请朋友、邻居一起来唱。",
+          "pinyin": "Zài Táiwān, KTV shì yí ge chī hē wán lè de hǎo dìfāng. Hěn duō rén huì dào KTV guò shēngrì, bàn huódòng; bùshǎo xuésheng yì kǎo wán shì jiù qù KTV chànggē, chī dōngxi, ràng zìjǐ qīngsōng yíxià. Yǒu rén jiā lǐ yǒu kǎlā OK de jīqì, búdàn xiǎng chàng de shíhou suíshí dōu néng chàng, yě kěyǐ qǐng péngyou, línjū yìqǐ lái chàng.",
+          "english": "In Taiwan, KTV is a good place to eat, drink, and have fun. Many people will go to KTV bars to sing when they celebrate birthdays or organize activities. Many students go to KTV bars to sing, eat, and relax themselves right after exams. Some people also have karaoke sets at home. They can not only sing whenever they want but also invite their friends and neighbors to sing together.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-2-1.mp3",
+            "start": 7.21,
+            "end": 36.83
+          }
+        },
+        {
+          "id": "b2l06d2-l2",
+          "speaker": "旁白",
+          "traditional": "台灣的KTV是二十四小時的，你想什麼時候去唱歌都可以。不同的時間，價錢也不同，早上六點到中午十二點前最便宜，一個人才兩百多塊錢。週末、假日比平日貴得多，還常常客滿，所以很多大學生利用沒課時去KTV，不但省錢，也不需要排隊。",
+          "simplified": "台湾的KTV是二十四小时的，你想什么时候去唱歌都可以。不同的时间，价钱也不同，早上六点到中午十二点前最便宜，一个人才两百多块钱。周末、假日比平日贵得多，还常常客满，所以很多大学生利用没课时去KTV，不但省钱，也不需要排队。",
+          "pinyin": "Táiwān de KTV shì èrshísì xiǎoshí de, nǐ xiǎng shénme shíhou qù chànggē dōu kěyǐ. Bùtóng de shíjiān, jiàqián yě bùtóng, zǎoshang liù diǎn dào zhōngwǔ shí'èr diǎn qián zuì piányi, yí ge rén cái liǎngbǎi duō kuài qián. Zhōumò, jiàrì bǐ píngrì guì de duō, hái chángcháng kèmǎn, suǒyǐ hěn duō dàxuéshēng lìyòng méi kè shí qù KTV, búdàn shěng qián, yě bù xūyào páiduì.",
+          "english": "The KTV bars in Taiwan are open 24 hours a day. You can go there and sing whenever you want. The price is different for different times. From 6 am to 12:00 noon is the cheapest, only a bit over $200 for a person. Though weekends and holidays are much more expensive than weekdays, the bars are often full. Therefore, many university students use the time when they have no classes to go to KTV bars. Not only can they save money, but they also don't need to line up.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-2-1.mp3",
+            "start": 37.93,
+            "end": 72.89
+          }
+        },
+        {
+          "id": "b2l06d2-l3",
+          "speaker": "旁白",
+          "traditional": "台灣的KTV還有一個特色，就是有各式各樣的食物和飲料。只要你多付一點兒錢，就可以吃到飽，不必擔心唱著唱著就餓了。有的KTV還有好玩的樂器，讓客人唱得更開心。其實，也有人生氣或是傷心的時候，會自己一個人去KTV，一邊唱、一邊哭，等唱完以後，心情就好多了。",
+          "simplified": "台湾的KTV还有一个特色，就是有各式各样的食物和饮料。只要你多付一点儿钱，就可以吃到饱，不必担心唱着唱着就饿了。有的KTV还有好玩的乐器，让客人唱得更开心。其实，也有人生气或是伤心的时候，会自己一个人去KTV，一边唱、一边哭，等唱完以后，心情就好多了。",
+          "pinyin": "Táiwān de KTV hái yǒu yí ge tèsè, jiùshì yǒu gèshìgèyàng de shíwù hé yǐnliào. Zhǐyào nǐ duō fù yìdiǎnr qián, jiù kěyǐ chīdàobǎo, búbì dānxīn chàngzhe chàngzhe jiù è le. Yǒu de KTV hái yǒu hǎowán de yuèqì, ràng kèrén chàng de gèng kāixīn. Qíshí, yě yǒu rén shēngqì huòshì shāngxīn de shíhou, huì zìjǐ yí ge rén qù KTV, yìbiān chàng, yìbiān kū, děng chàng wán yǐhòu, xīnqíng jiù hǎo duō le.",
+          "english": "Taiwanese KTV bars have another special feature—that is, a wide range of food and beverages. As long as you pay a little more, you can eat as much as you want. You do not have to worry that you'll get hungry while singing. Some KTV bars also have funny musical instruments, so that the guests can enjoy their singing more. Actually, there are also some people who go alone to a KTV bar when they are angry or sad. They cry while singing. When they finish singing, their moods become much better.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-2-1.mp3",
+            "start": 74.15,
+            "end": 113.42
+          }
+        },
+        {
+          "id": "b2l06d2-l4",
+          "speaker": "旁白",
+          "traditional": "要是你想慶祝生日，去KTV跟大家合唱，一定會很開心的；如果心情不好，去KTV自己一個人唱歌，也能把不愉快的事情忘了，所以去KTV真是一個不錯的選擇。",
+          "simplified": "要是你想庆祝生日，去KTV跟大家合唱，一定会很开心的；如果心情不好，去KTV自己一个人唱歌，也能把不愉快的事情忘了，所以去KTV真是一个不错的选择。",
+          "pinyin": "Yàoshi nǐ xiǎng qìngzhù shēngrì, qù KTV gēn dàjiā héchàng, yídìng huì hěn kāixīn de; rúguǒ xīnqíng bù hǎo, qù KTV zìjǐ yí ge rén chànggē, yě néng bǎ bù yúkuài de shìqing wàng le, suǒyǐ qù KTV zhēn shì yí ge búcuò de xuǎnzé.",
+          "english": "If you want to celebrate your birthday, go to KTV bars to sing with people, you must be very happy; if you are in a bad mood, go to KTV bars to sing on your own, you can also forget the unpleasant things. So going to KTV bars is really a good choice.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-06-2-1.mp3",
+            "start": 114.66,
+            "end": 136.22
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L07-R01",
+      "bookId": 2,
+      "lessonId": 7,
+      "dialogueNumber": 1,
+      "title": "對話 · 坐火車到花蓮去旅行 · Traveling to Hualien by Train",
+      "titlePinyin": "Zuò Huǒchē Dào Huālián Qù Lǚxíng",
+      "titleEnglish": "Traveling to Hualien by Train",
+      "printedPages": [
+        157,
+        159
+      ],
+      "audioReference": "07-1-1",
+      "paragraphs": [
+        {
+          "id": "b2l07d1-l1",
+          "speaker": "旁白",
+          "traditional": "（在教室）",
+          "simplified": "（在教室）",
+          "pinyin": "（Zài jiàoshì）",
+          "english": "(In a classroom.)"
+        },
+        {
+          "id": "b2l07d1-l2",
+          "speaker": "良介",
+          "traditional": "還有一個星期就要放假了，我打算到花蓮去旅行，好好看看台灣東部的風景。",
+          "simplified": "还有一个星期就要放假了，我打算到花莲去旅行，好好看看台湾东部的风景。",
+          "pinyin": "Hái yǒu yí ge xīngqī jiù yào fàngjià le, wǒ dǎsuàn dào Huālián qù lǚxíng, hǎohǎo kànkan Táiwān dōngbù de fēngjǐng.",
+          "english": "There's only one week until the holidays. I'm planning to go to Hualien and take a good look at the scenery of eastern Taiwan.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 23.1,
+            "end": 32.98
+          }
+        },
+        {
+          "id": "b2l07d1-l3",
+          "speaker": "可欣",
+          "traditional": "前年我去花蓮玩，住在朋友的民宿，他不但請我吃飯，還送給我好幾包當地的名產跟風景明信片呢！",
+          "simplified": "前年我去花莲玩，住在朋友的民宿，他不但请我吃饭，还送给我好几包当地的名产跟风景明信片呢！",
+          "pinyin": "Qiánnián wǒ qù Huālián wán, zhù zài péngyou de mínsù, tā búdàn qǐng wǒ chīfàn, hái sòng gěi wǒ hǎojǐ bāo dāngdì de míngchǎn gēn fēngjǐng míngxìnpiàn ne!",
+          "english": "I went to Hualien two years ago and stayed at a friend's B&B. He not only treated me to a meal but also gave me several bags of local specialties and scenic postcards!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 34.09,
+            "end": 45.47
+          }
+        },
+        {
+          "id": "b2l07d1-l4",
+          "speaker": "良介",
+          "traditional": "真好！你可以幫我訂那家民宿嗎？",
+          "simplified": "真好！你可以帮我订那家民宿吗？",
+          "pinyin": "Zhēn hǎo! Nǐ kěyǐ bāng wǒ dìng nà jiā mínsù ma?",
+          "english": "That's great! Can you help me book that B&B?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 46.35,
+            "end": 50.38
+          }
+        },
+        {
+          "id": "b2l07d1-l5",
+          "speaker": "可欣",
+          "traditional": "可以啊！他的民宿有游泳池，也有免費的無線網路，最棒的是，從房間往外看，還可以看到美麗的大海，你一定會喜歡的。",
+          "simplified": "可以啊！他的民宿有游泳池，也有免费的无线网路，最棒的是，从房间往外看，还可以看到美丽的大海，你一定会喜欢的。",
+          "pinyin": "Kěyǐ a! Tā de mínsù yǒu yóuyǒngchí, yě yǒu miǎnfèi de wúxiàn wǎnglù, zuì bàng de shì, cóng fángjiān wǎng wài kàn, hái kěyǐ kàndào měilì de dàhǎi, nǐ yídìng huì xǐhuan de.",
+          "english": "Sure! His B&B has a swimming pool and free Wi-Fi. The best part is that you can see the beautiful ocean from the room. You'll definitely like it.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 51.5,
+            "end": 64.51
+          }
+        },
+        {
+          "id": "b2l07d1-l6",
+          "speaker": "良介",
+          "traditional": "住一個晚上要多少錢？要是太貴，我就住不起了。",
+          "simplified": "住一个晚上要多少钱？要是太贵，我就住不起了。",
+          "pinyin": "Zhù yí ge wǎnshang yào duōshao qián? Yàoshi tài guì, wǒ jiù zhù bu qǐ le.",
+          "english": "How much is it for one night? If it's too expensive, I won't be able to afford it.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 65.33,
+            "end": 71.85
+          }
+        },
+        {
+          "id": "b2l07d1-l7",
+          "speaker": "可欣",
+          "traditional": "別擔心，我會跟他說你是學生，請他算便宜一點兒。",
+          "simplified": "别担心，我会跟他说你是学生，请他算便宜一点儿。",
+          "pinyin": "Bié dānxīn, wǒ huì gēn tā shuō nǐ shì xuésheng, qǐng tā suàn piányi yìdiǎnr.",
+          "english": "Don't worry. I'll tell him you're a student and ask him to make it a little cheaper.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 73.18,
+            "end": 78.28
+          }
+        },
+        {
+          "id": "b2l07d1-l8",
+          "speaker": "旁白",
+          "traditional": "（良介拿出一塊錢來）",
+          "simplified": "（良介拿出一块钱来）",
+          "pinyin": "（Liángjiè ná chū yí kuài qián lái）",
+          "english": "(Ryosuke takes out one dollar.)"
+        },
+        {
+          "id": "b2l07d1-l9",
+          "speaker": "良介",
+          "traditional": "（笑著說）你看！我只剩下一塊錢，沒錢吃飯了。",
+          "simplified": "（笑着说）你看！我只剩下一块钱，没钱吃饭了。",
+          "pinyin": "（Xiàozhe shuō）Nǐ kàn! Wǒ zhǐ shèngxià yí kuài qián, méi qián chīfàn le.",
+          "english": "(Laughing.) Look! I only have one dollar left. I have no money for food.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 79.36,
+            "end": 84.08
+          }
+        },
+        {
+          "id": "b2l07d1-l10",
+          "speaker": "可欣",
+          "traditional": "你比我好，我今天出門時忘了帶錢包，現在一毛錢都沒有，我們中午讓美心請客吧。",
+          "simplified": "你比我好，我今天出门时忘了带钱包，现在一毛钱都没有，我们中午让美心请客吧。",
+          "pinyin": "Nǐ bǐ wǒ hǎo, wǒ jīntiān chūmén shí wàng le dài qiánbāo, xiànzài yì máo qián dōu méiyǒu, wǒmen zhōngwǔ ràng Měixīn qǐngkè ba.",
+          "english": "You're better off than me. I forgot my wallet when I left home today, and now I don't have a single cent. Let's have Meixin treat us to lunch.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 85.04,
+            "end": 93.99
+          }
+        },
+        {
+          "id": "b2l07d1-l11",
+          "speaker": "旁白",
+          "traditional": "（兩人哈哈大笑。這時候，美心剛好從外面走進來）",
+          "simplified": "（两人哈哈大笑。这时候，美心刚好从外面走进来）",
+          "pinyin": "（Liǎng rén hāhā dàxiào. Zhè shíhou, Měixīn gānghǎo cóng wàimiàn zǒu jìnlái）",
+          "english": "(Both of them laugh out loud. Just then, Meixin walks in from outside.)"
+        },
+        {
+          "id": "b2l07d1-l12",
+          "speaker": "美心",
+          "traditional": "你們在聊什麼？聊得這麼開心？",
+          "simplified": "你们在聊什么？聊得这么开心？",
+          "pinyin": "Nǐmen zài liáo shénme? Liáo de zhème kāixīn?",
+          "english": "What are you talking about? What's so funny?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 95.43,
+            "end": 98.49
+          }
+        },
+        {
+          "id": "b2l07d1-l13",
+          "speaker": "良介",
+          "traditional": "我們正在聊去花蓮旅行的事，可欣要幫我訂民宿。",
+          "simplified": "我们正在聊去花莲旅行的事，可欣要帮我订民宿。",
+          "pinyin": "Wǒmen zhèngzài liáo qù Huālián lǚxíng de shì, Kěxīn yào bāng wǒ dìng mínsù.",
+          "english": "We're talking about traveling to Hualien. Kexin is going to help me book a B&B.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 99.64,
+            "end": 105.92
+          }
+        },
+        {
+          "id": "b2l07d1-l14",
+          "speaker": "美心",
+          "traditional": "住民宿不錯，你要怎麼去呢？",
+          "simplified": "住民宿不错，你要怎么去呢？",
+          "pinyin": "Zhù mínsù búcuò, nǐ yào zěnme qù ne?",
+          "english": "Staying at a B&B is nice. How are you going to get there?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 107.26,
+            "end": 110.62
+          }
+        },
+        {
+          "id": "b2l07d1-l15",
+          "speaker": "良介",
+          "traditional": "我還沒決定。聽說蘇花公路有一點兒危險，下大雨的時候，山上的大石頭可能會掉下來。",
+          "simplified": "我还没决定。听说苏花公路有一点儿危险，下大雨的时候，山上的大石头可能会掉下来。",
+          "pinyin": "Wǒ hái méi juédìng. Tīngshuō Sūhuā Gōnglù yǒu yìdiǎnr wēixiǎn, xià dàyǔ de shíhou, shān shàng de dà shítou kěnéng huì diào xiàlái.",
+          "english": "I haven't decided yet. I heard the Suhua Highway is a little dangerous. When it rains heavily, rocks from the mountain may fall.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 111.76,
+            "end": 123.91
+          }
+        },
+        {
+          "id": "b2l07d1-l16",
+          "speaker": "美心",
+          "traditional": "蘇花公路是比較危險，搭火車去比較安全，可是假日的票很難買，一下子就賣光了，你最好趕快上網訂票。",
+          "simplified": "苏花公路是比较危险，搭火车去比较安全，可是假日的票很难买，一下子就卖光了，你最好赶快上网订票。",
+          "pinyin": "Sūhuā Gōnglù shì bǐjiào wēixiǎn, dā huǒchē qù bǐjiào ānquán, kěshì jiàrì de piào hěn nán mǎi, yíxiàzi jiù mài guāng le, nǐ zuìhǎo gǎnkuài shàngwǎng dìngpiào.",
+          "english": "The Suhua Highway is more dangerous. Taking the train is safer, but holiday tickets are hard to buy—they sell out in no time. You'd better book online soon.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 124.91,
+            "end": 138.88
+          }
+        },
+        {
+          "id": "b2l07d1-l17",
+          "speaker": "良介",
+          "traditional": "我上過台灣鐵路局的網站，可是看不懂網頁，覺得訂票很難。",
+          "simplified": "我上过台湾铁路局的网站，可是看不懂网页，觉得订票很难。",
+          "pinyin": "Wǒ shàng guò Táiwān Tiělùjú de wǎngzhàn, kěshì kàn bu dǒng wǎngyè, juéde dìngpiào hěn nán.",
+          "english": "I've been on the Taiwan Railways website, but I can't understand the web pages. I find booking tickets difficult.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 140.03,
+            "end": 148.39
+          }
+        },
+        {
+          "id": "b2l07d1-l18",
+          "speaker": "美心",
+          "traditional": "在台灣，上網訂票、訂位一點兒都不難，我現在就幫你訂。（用手機上台鐵的網站）你要訂什麼時候的？",
+          "simplified": "在台湾，上网订票、订位一点儿都不难，我现在就帮你订。（用手机上台铁的网站）你要订什么时候的？",
+          "pinyin": "Zài Táiwān, shàngwǎng dìngpiào, dìngwèi yìdiǎnr dōu bù nán, wǒ xiànzài jiù bāng nǐ dìng. （Yòng shǒujī shàng Táitiě de wǎngzhàn）Nǐ yào dìng shénme shíhou de?",
+          "english": "In Taiwan, booking tickets and seats online is not difficult at all. I'll help you book right now. (She goes to the Taiwan Railways website on her phone.) When do you want to book it for?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 149.87,
+            "end": 159.5
+          }
+        },
+        {
+          "id": "b2l07d1-l19",
+          "speaker": "良介",
+          "traditional": "大概六月底。火車票貴不貴？",
+          "simplified": "大概六月底。火车票贵不贵？",
+          "pinyin": "Dàgài liùyuè dǐ. Huǒchē piào guì bu guì?",
+          "english": "Around the end of June. Are train tickets expensive?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 160.56,
+            "end": 164.6
+          }
+        },
+        {
+          "id": "b2l07d1-l20",
+          "speaker": "美心",
+          "traditional": "太魯閣號比較貴，可是只停幾個站，兩個多鐘頭就到花蓮了。",
+          "simplified": "太鲁阁号比较贵，可是只停几个站，两个多钟头就到花莲了。",
+          "pinyin": "Tàilǔgé Hào bǐjiào guì, kěshì zhǐ tíng jǐ ge zhàn, liǎng ge duō zhōngtóu jiù dào Huālián le.",
+          "english": "The Taroko Express is more expensive, but it only stops at a few stations. It takes a little over two hours to get to Hualien.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 165.87,
+            "end": 173.45
+          }
+        },
+        {
+          "id": "b2l07d1-l21",
+          "speaker": "良介",
+          "traditional": "貴一點兒沒關係，要是訂得到第一班太魯閣號，早上從台北出發，中午就可以去太魯閣國家公園爬山了。",
+          "simplified": "贵一点儿没关系，要是订得到第一班太鲁阁号，早上从台北出发，中午就可以去太鲁阁国家公园爬山了。",
+          "pinyin": "Guì yìdiǎnr méi guānxi, yàoshi dìng de dào dì yī bān Tàilǔgé Hào, zǎoshang cóng Táiběi chūfā, zhōngwǔ jiù kěyǐ qù Tàilǔgé guójiā gōngyuán páshān le.",
+          "english": "A little more expensive is fine. If I can book the first Taroko Express and leave Taipei in the morning, I can go hiking in Taroko National Park at noon.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 174.39,
+            "end": 187.34
+          }
+        },
+        {
+          "id": "b2l07d1-l22",
+          "speaker": "可欣",
+          "traditional": "我前年就是搭太魯閣號去的，真的又快又方便！",
+          "simplified": "我前年就是搭太鲁阁号去的，真的又快又方便！",
+          "pinyin": "Wǒ qiánnián jiùshì dā Tàilǔgé Hào qù de, zhēn de yòu kuài yòu fāngbiàn!",
+          "english": "I took the Taroko Express two years ago. It's really fast and convenient!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 188.64,
+            "end": 193.99
+          }
+        },
+        {
+          "id": "b2l07d1-l23",
+          "speaker": "良介",
+          "traditional": "不好意思，我想坐在窗戶旁邊，可以自己選座位嗎？",
+          "simplified": "不好意思，我想坐在窗户旁边，可以自己选座位吗？",
+          "pinyin": "Bù hǎoyìsi, wǒ xiǎng zuò zài chuānghu pángbiān, kěyǐ zìjǐ xuǎn zuòwèi ma?",
+          "english": "Excuse me. I'd like to sit by the window. Can I choose the seat myself?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 195.19,
+            "end": 201.87
+          }
+        },
+        {
+          "id": "b2l07d1-l24",
+          "speaker": "美心",
+          "traditional": "沒辦法，位子都是電腦選的。（看著網頁）訂好了！你把訂票號碼記下來，這個日期以前去便利商店付錢，就可以拿到票了。",
+          "simplified": "没办法，位子都是电脑选的。（看着网页）订好了！你把订票号码记下来，这个日期以前去便利商店付钱，就可以拿到票了。",
+          "pinyin": "Méi bànfǎ, wèizi dōu shì diànnǎo xuǎn de. （Kànzhe wǎngyè）Dìng hǎo le! Nǐ bǎ dìngpiào hàomǎ jì xiàlái, zhège rìqī yǐqián qù biànlì shāngdiàn fù qián, jiù kěyǐ ná dào piào le.",
+          "english": "No way. The seats are all chosen by the computer. (She looks at the web page.) Booked! Write down the booking number. Pay at a convenience store before this date, and you can get the ticket.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-1-1.mp3",
+            "start": 203.11,
+            "end": 217.16
+          }
+        }
+      ],
+      "setting": ""
+    },
+    {
+      "id": "B2L07-R02",
+      "bookId": 2,
+      "lessonId": 7,
+      "dialogueNumber": 2,
+      "title": "短文 · 網路訂票 · Online Ticket Booking",
+      "titlePinyin": "Duǎnwén · Wǎnglù Dìngpiào",
+      "titleEnglish": "Reading · Online Ticket Booking",
+      "printedPages": [
+        170,
+        171
+      ],
+      "audioReference": "07-2-1",
+      "paragraphs": [
+        {
+          "id": "b2l07d2-l1",
+          "speaker": "旁白",
+          "traditional": "我跟室友計畫春假去阿里山森林遊樂區走走。那時候草綠了、花開了，天氣也暖和了。不必帶太多行李，也不需要穿大衣，只要穿一雙好走的鞋子，再帶一件外套、雨衣、幾雙襪子跟幾件內衣褲就夠了。",
+          "simplified": "我跟室友计划春假去阿里山森林游乐区走走。那时候草绿了、花开了，天气也暖和了。不必带太多行李，也不需要穿大衣，只要穿一双好走的鞋子，再带一件外套、雨衣、几双袜子跟几件内衣裤就够了。",
+          "pinyin": "Wǒ gēn shìyǒu jìhuà chūnjià qù Ālǐ Shān sēnlín yóulè qū zǒuzǒu. Nà shíhou cǎo lǜ le, huā kāi le, tiānqì yě nuǎnhuo le. Búbì dài tài duō xínglǐ, yě bù xūyào chuān dàyī, zhǐyào chuān yì shuāng hǎo zǒu de xiézi, zài dài yí jiàn wàitào, yǔyī, jǐ shuāng wàzi gēn jǐ jiàn nèiyīkù jiù gòu le.",
+          "english": "My roommate and I are planning to walk around the Alishan Forest Recreation Area during spring break. At that time, the grass is green, the flowers are blooming, and the weather is warm. We don't need to bring much luggage or wear a coat. We just need a pair of comfortable walking shoes, a jacket, a raincoat, a few pairs of socks, and some underwear.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-2-1.mp3",
+            "start": 5.2,
+            "end": 36.12
+          }
+        },
+        {
+          "id": "b2l07d2-l2",
+          "speaker": "旁白",
+          "traditional": "本來我想參加阿里山的團體旅遊，這樣就不必自己上網訂票、訂旅館，可是室友覺得自己去比較自由，也不趕時間，所以我們決定第一天搭台鐵到嘉義，再從嘉義搭小火車上阿里山，當天晚上就可以在山上散步、看星星了。沒想到剛上台鐵的網站，就發現春假第一天的票都賣光了。原來除了去國外旅行，想留在國內玩的人也不少。",
+          "simplified": "本来我想参加阿里山的团体旅游，这样就不必自己上网订票、订旅馆，可是室友觉得自己去比较自由，也不赶时间，所以我们决定第一天搭台铁到嘉义，再从嘉义搭小火车上阿里山，当天晚上就可以在山上散步、看星星了。没想到刚上台铁的网站，就发现春假第一天的票都卖光了。原来除了去国外旅行，想留在国内玩的人也不少。",
+          "pinyin": "Běnlái wǒ xiǎng cānjiā Ālǐ Shān de tuántǐ lǚyóu, zhèyàng jiù búbì zìjǐ shàngwǎng dìngpiào, dìng lǚguǎn, kěshì shìyǒu juéde zìjǐ qù bǐjiào zìyóu, yě bù gǎn shíjiān, suǒyǐ wǒmen juédìng dì yī tiān dā Táitiě dào Jiāyì, zài cóng Jiāyì dā xiǎo huǒchē shàng Ālǐ Shān, dāngtiān wǎnshang jiù kěyǐ zài shān shàng sànbù, kàn xīngxing le. Méi xiǎngdào gāng shàng Táitiě de wǎngzhàn, jiù fāxiàn chūnjià dì yī tiān de piào dōu mài guāng le. Yuánlái chúle qù guówài lǚxíng, xiǎng liú zài guónèi wán de rén yě bùshǎo.",
+          "english": "At first I wanted to join a group tour to Alishan so I wouldn't have to book tickets and a hotel online myself. But my roommate thought going on our own would be more free and we wouldn't be rushed, so we decided to take the Taiwan Railways to Chiayi on the first day, then take the small train from Chiayi up to Alishan. That evening we could take a walk in the mountains and look at the stars. Unexpectedly, as soon as I went to the Taiwan Railways website, I found that all the tickets for the first day of spring break were sold out. It turns out that besides traveling abroad, many people also want to stay in Taiwan for fun.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-2-1.mp3",
+            "start": 37.25,
+            "end": 88.98
+          }
+        },
+        {
+          "id": "b2l07d2-l3",
+          "speaker": "旁白",
+          "traditional": "後來我上高鐵的網站，很幸運訂到了兩張台北到嘉義的車票，馬上用信用卡付了錢，這樣就放心了。雖然高鐵票比較貴，可是又快又舒服，而且第一天晚上住在嘉義市也不錯，因為當地的雞肉飯很有名，剛好趁這個機會去吃吃看。我正在想像一邊吃雞肉飯，一邊喝啤酒的樣子，室友忽然大叫，「成功了！阿里山小火車的票訂到了！」",
+          "simplified": "后来我上高铁的网站，很幸运订到了两张台北到嘉义的车票，马上用信用卡付了钱，这样就放心了。虽然高铁票比较贵，可是又快又舒服，而且第一天晚上住在嘉义市也不错，因为当地的鸡肉饭很有名，刚好趁这个机会去吃吃看。我正在想象一边吃鸡肉饭，一边喝啤酒的样子，室友忽然大叫，「成功了！阿里山小火车的票订到了！」",
+          "pinyin": "Hòulái wǒ shàng gāotiě de wǎngzhàn, hěn xìngyùn dìng dào le liǎng zhāng Táiběi dào Jiāyì de chēpiào, mǎshàng yòng xìnyòngkǎ fù le qián, zhèyàng jiù fàngxīn le. Suīrán gāotiě piào bǐjiào guì, kěshì yòu kuài yòu shūfu, érqiě dì yī tiān wǎnshang zhù zài Jiāyì Shì yě búcuò, yīnwèi dāngdì de jīròufàn hěn yǒumíng, gānghǎo chèn zhège jīhuì qù chīchi kàn. Wǒ zhèngzài xiǎngxiàng yìbiān chī jīròufàn, yìbiān hē píjiǔ de yàngzi, shìyǒu hūrán dàjiào, 「Chénggōng le! Ālǐ Shān xiǎo huǒchē de piào dìng dào le!」",
+          "english": "Later I went to the high-speed rail website and was lucky enough to book two tickets from Taipei to Chiayi. I immediately paid with a credit card, and then I felt relieved. Although the high-speed rail tickets are more expensive, it's fast and comfortable, and staying in Chiayi City the first night is also nice because the local chicken rice is famous. It's a good chance to try it. I was imagining eating chicken rice and drinking beer at the same time when my roommate suddenly shouted, \"Success! I booked the Alishan Forest Railway tickets!\"",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-2-1.mp3",
+            "start": 90.46,
+            "end": 140.56
+          }
+        },
+        {
+          "id": "b2l07d2-l4",
+          "speaker": "旁白",
+          "traditional": "我們能利用網路做好多事情，除了訂車票、機票、餐廳，還能買到各式各樣、又便宜又流行的衣服。有網路真好！",
+          "simplified": "我们能利用网路做好多事情，除了订车票、机票、餐厅，还能买到各式各样、又便宜又流行的衣服。有网路真好！",
+          "pinyin": "Wǒmen néng lìyòng wǎnglù zuò hǎo duō shìqing, chúle dìng chēpiào, jīpiào, cāntīng, hái néng mǎi dào gèshìgèyàng, yòu piányi yòu liúxíng de yīfu. Yǒu wǎnglù zhēn hǎo!",
+          "english": "We can use the Internet to do many things. Besides booking train tickets, plane tickets, and restaurants, we can also buy all kinds of cheap and fashionable clothes. It's really great to have the Internet!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-07-2-1.mp3",
+            "start": 141.78,
+            "end": 158.85
+          }
+        }
+      ],
+      "setting": "短文 · Reading"
+    },
+    {
+      "id": "B2L08-R01",
+      "bookId": 2,
+      "lessonId": 8,
+      "dialogueNumber": 1,
+      "title": "對話 · 請給我貼紙，我要換史努比！ · Give Me the Stickers, please. I Want to Exchange Them for Snoopy!",
+      "titleEnglish": "Give Me the Stickers, please. I Want to Exchange Them for Snoopy!",
+      "setting": "在教室裡 · In the classroom",
+      "printedPages": [
+        180,
+        182
+      ],
+      "audioReference": "08-1-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "（美心跟以凡在教室裡）",
+          "simplified": "（美心跟以凡在教室里）",
+          "pinyin": "（Měixīn gēn Yǐfán zài jiàoshì lǐ）",
+          "english": "(Meixin and Yifan are in the classroom.)"
+        },
+        {
+          "speaker": "美心",
+          "traditional": "以凡，你貼在豆漿盒子上的那張貼紙，可以給我嗎？",
+          "simplified": "以凡，你贴在豆浆盒子上的那张贴纸，可以给我吗？",
+          "pinyin": "Yǐfán, nǐ tiē zài dòujiāng hézi shàng de nà zhāng tiēzhǐ, kěyǐ gěi wǒ ma?",
+          "english": "Yifan, can you give me the sticker that you pasted on the soy milk carton?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 23.12,
+            "end": 28.68
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "妳說的貼紙是便利商店店員給我的這張嗎？",
+          "simplified": "妳说的贴纸是便利商店店员给我的这张吗？",
+          "pinyin": "Nǐ shuō de tiēzhǐ shì biànlì shāngdiàn diànyuán gěi wǒ de zhè zhāng ma?",
+          "english": "Are you talking about the one that the clerk of the convenience store gave me?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 29.5,
+            "end": 33.99
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "是啊！我只差一張，就能換一個史努比（Snoopy）娃娃了！",
+          "simplified": "是啊！我只差一张，就能换一个史努比（Snoopy）娃娃了！",
+          "pinyin": "Shì a! Wǒ zhǐ chà yì zhāng, jiù néng huàn yí ge Shǐnǔbǐ (Snoopy) wáwa le!",
+          "english": "Yes! I only need one more to be able to exchange for a Snoopy doll.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 34.99,
+            "end": 39.55
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "給妳吧！我覺得它很可愛，才把它貼在盒子上，其實我不知道店員為什麼給我貼紙。",
+          "simplified": "给妳吧！我觉得它很可爱，才把它贴在盒子上，其实我不知道店员为什么给我贴纸。",
+          "pinyin": "Gěi nǐ ba! Wǒ juéde tā hěn kě’ài, cái bǎ tā tiē zài hézi shàng, qíshí wǒ bù zhīdào diànyuán wèishénme gěi wǒ tiēzhǐ.",
+          "english": "Here you are! I put it on the soy milk carton only because I think it's cute. Actually, I don't know why the clerk gave me this sticker.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 40.45,
+            "end": 50.76
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "這是便利商店的活動，買東西只要滿八十元，就會有一張貼紙，四十張貼紙就可以換一個娃娃，而且不用錢。",
+          "simplified": "这是便利商店的活动，买东西只要满八十元，就会有一张贴纸，四十张贴纸就可以换一个娃娃，而且不用钱。",
+          "pinyin": "Zhè shì biànlì shāngdiàn de huódòng, mǎi dōngxi zhǐyào mǎn bāshí yuán, jiù huì yǒu yì zhāng tiēzhǐ, sìshí zhāng tiēzhǐ jiù kěyǐ huàn yí ge wáwa, érqiě búyòng qián.",
+          "english": "It's a sales promotion of convenience stores. As long as the price of the products you buy exceeds $80, you can get one sticker, 40 stickers can be exchanged for a doll for free.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 52.08,
+            "end": 64.73
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "免費？真的連一塊錢都不用付，就可以得到像史努比那樣的娃娃嗎？",
+          "simplified": "免费？真的连一块钱都不用付，就可以得到像史努比那样的娃娃吗？",
+          "pinyin": "Miǎnfèi? Zhēn de lián yí kuài qián dōu búyòng fù, jiù kěyǐ dédào xiàng Shǐnǔbǐ nàyàng de wáwa ma?",
+          "english": "For free? You really don't have to pay even one dollar to get a doll like Snoopy?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 65.55,
+            "end": 72.64
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "當然是真的。下次你去便利商店，看看門口貼的海報就知道了。這次送的娃娃非常可愛，我擔心很快就換完了！",
+          "simplified": "当然是真的。下次你去便利商店，看看门口贴的海报就知道了。这次送的娃娃非常可爱，我担心很快就换完了！",
+          "pinyin": "Dāngrán shì zhēn de. Xià cì nǐ qù biànlì shāngdiàn, kànkan ménkǒu tiē de hǎibào jiù zhīdào le. Zhè cì sòng de wáwa fēicháng kě’ài, wǒ dānxīn hěn kuài jiù huàn wán le!",
+          "english": "Of course it's true! Next time when you go to a convenience store, just take a look at the poster on the door and you'll know. This time the dolls given are very cute. I am afraid their stocks will run out soon!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 73.44,
+            "end": 86.71
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "這次？妳的意思是像這樣的活動不只一次嗎？為什麼便利商店要辦這樣的活動呢？",
+          "simplified": "这次？妳的意思是像这样的活动不只一次吗？为什么便利商店要办这样的活动呢？",
+          "pinyin": "Zhè cì? Nǐ de yìsi shì xiàng zhèyàng de huódòng bù zhǐ yí cì ma? Wèishénme biànlì shāngdiàn yào bàn zhèyàng de huódòng ne?",
+          "english": "This time? You mean this kind of sales promotion event can take place more than once? Why do convenience stores organize such sales promotion event?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 87.93,
+            "end": 96.77
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "因為很多人容易被可愛的小東西吸引，所以商人就利用這種心理，做了像尺、牙刷、杯子、盤子這樣的小禮物，上面都有可愛的卡通人物，讓大家常常想去買東西。",
+          "simplified": "因为很多人容易被可爱的小东西吸引，所以商人就利用这种心理，做了像尺、牙刷、杯子、盘子这样的小礼物，上面都有可爱的卡通人物，让大家常常想去买东西。",
+          "pinyin": "Yīnwèi hěn duō rén róngyì bèi kě’ài de xiǎo dōngxi xīyǐn, suǒyǐ shāngrén jiù lìyòng zhè zhǒng xīnlǐ, zuò le xiàng chǐ, yáshuā, bēizi, pánzi zhèyàng de xiǎo lǐwù, shàngmiàn dōu yǒu kě’ài de kǎtōng rénwù, ràng dàjiā chángcháng xiǎng qù mǎi dōngxi.",
+          "english": "Many people are easily attracted by little, cute things, so businessmen take advantage of this psychological fact. They make small gifts such as rulers, toothbrushes, mugs, plates, and so on. They are all printed with cute cartoon characters, making everyone want to buy things more often.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 97.55,
+            "end": 118.05
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "那麼，有些人想要快點兒得到喜愛的小禮物，只好多花錢買一些不需要的東西吧？",
+          "simplified": "那么，有些人想要快点儿得到喜爱的小礼物，只好多花钱买一些不需要的东西吧？",
+          "pinyin": "Nàme, yǒuxiē rén xiǎngyào kuài diǎnr dédào xǐ’ài de xiǎo lǐwù, zhǐhǎo duō huāqián mǎi yìxiē bù xūyào de dōngxi ba?",
+          "english": "In that case, some people want to get the gifts they love faster, so they spend more money on unnecessary things, right?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 118.77,
+            "end": 127.28
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "你說對了！一開始是商人為了吸引顧客，才想出這個辦法的。沒想到小禮物太有吸引力了，後來就變成台灣便利商店的文化了。",
+          "simplified": "你说对了！一开始是商人为了吸引顾客，才想出这个办法的。没想到小礼物太有吸引力了，后来就变成台湾便利商店的文化了。",
+          "pinyin": "Nǐ shuō duì le! Yìkāishǐ shì shāngrén wèile xīyǐn gùkè, cái xiǎng chū zhège bànfǎ de. Méi xiǎngdào xiǎo lǐwù tài yǒu xīyǐnlì le, hòulái jiù biànchéng Táiwān biànlì shāngdiàn de wénhuà le.",
+          "english": "You are right! At first, the businessmen came up with this idea in order to attract customers. They didn't expect those little gifts to be that attractive. Later, they have become a part of the culture of Taiwanese convenience stores.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 128.16,
+            "end": 143.93
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "台灣所有便利商店都有這樣的活動嗎？",
+          "simplified": "台湾所有便利商店都有这样的活动吗？",
+          "pinyin": "Táiwān suǒyǒu biànlì shāngdiàn dōu yǒu zhèyàng de huódòng ma?",
+          "english": "Do all convenience stores in Taiwan have this kind of sales promotion event?",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 144.85,
+            "end": 148.97
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "差不多都有。這類活動對生意的影響很大，只要有「拿貼紙、送禮物」的活動，就會增加不少顧客。",
+          "simplified": "差不多都有。这类活动对生意的影响很大，只要有「拿贴纸、送礼物」的活动，就会增加不少顾客。",
+          "pinyin": "Chàbuduō dōu yǒu. Zhè lèi huódòng duì shēngyì de yǐngxiǎng hěn dà, zhǐyào yǒu “ná tiēzhǐ, sòng lǐwù” de huódòng, jiù huì zēngjiā bùshǎo gùkè.",
+          "english": "Almost all of them. This kind of event has a great impact on business. As long as you organize a \"Collect the Stickers, Receive the Gifts\" type of event, the number of customers will increase a lot.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 149.73,
+            "end": 161.02
+          }
+        },
+        {
+          "speaker": "以凡",
+          "traditional": "聽起來真有趣！以後我也要注意可以換什麼小禮物，這會是我在台灣生活的紀念。",
+          "simplified": "听起来真有趣！以后我也要注意可以换什么小礼物，这会是我在台湾生活的纪念。",
+          "pinyin": "Tīngqǐlái zhēn yǒuqù! Yǐhòu wǒ yě yào zhùyì kěyǐ huàn shénme xiǎo lǐwù, zhè huì shì wǒ zài Táiwān shēnghuó de jìniàn.",
+          "english": "Sounds really interesting! Later I'll also pay attention to what little gifts I can get. It can be a souvenir of my life in Taiwan.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 161.86,
+            "end": 170.69
+          }
+        },
+        {
+          "speaker": "美心",
+          "traditional": "沒錯。不過，現在請你把貼紙給我，讓我去換史努比吧！",
+          "simplified": "没错。不过，现在请你把贴纸给我，让我去换史努比吧！",
+          "pinyin": "Méi cuò. Búguò, xiànzài qǐng nǐ bǎ tiēzhǐ gěi wǒ, ràng wǒ qù huàn Shǐnǔbǐ ba!",
+          "english": "Right. But now please give me the sticker and let me exchange them for Snoopy!",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-1-1.mp3",
+            "start": 171.59,
+            "end": 178.18
+          }
+        }
+      ]
+    },
+    {
+      "id": "B2L08-R02",
+      "bookId": 2,
+      "lessonId": 8,
+      "dialogueNumber": 2,
+      "title": "短文 · 「韓流」來了 · The Korean Wave Has Come",
+      "titleEnglish": "Reading · The Korean Wave Has Come",
+      "setting": "短文 · Reading",
+      "printedPages": [
+        191,
+        192
+      ],
+      "audioReference": "08-2-1",
+      "paragraphs": [
+        {
+          "speaker": "旁白",
+          "traditional": "陳可欣發現她的同學方靜文最近變了，不但上課的時候打瞌睡，連作業也不寫。可欣以為靜文發生了什麼事，下課以後就找她聊聊。原來她最近愛上了韓國連續劇，每天都花很多時間看，有時候還為了看韓劇不睡覺，當然就沒時間寫作業了。",
+          "simplified": "陈可欣发现她的同学方静文最近变了，不但上课的时候打瞌睡，连作业也不写。可欣以为静文发生了什么事，下课以后就找她聊聊。原来她最近爱上了韩国连续剧，每天都花很多时间看，有时候还为了看韩剧不睡觉，当然就没时间写作业了。",
+          "pinyin": "Chén Kěxīn fāxiàn tā de tóngxué Fāng Jìngwén zuìjìn biàn le, búdàn shàngkè de shíhou dǎ kēshuì, lián zuòyè yě bù xiě. Kěxīn yǐwéi Jìngwén fāshēng le shénme shì, xiàkè yǐhòu jiù zhǎo tā liáoliao. Yuánlái tā zuìjìn àishàng le Hánguó liánxùjù, měitiān dōu huā hěn duō shíjiān kàn, yǒushíhou hái wèile kàn Hánjù bú shuìjiào, dāngrán jiù méi shíjiān xiě zuòyè le.",
+          "english": "Chen Kexin found out that her classmate, Fang Jingwen, has recently changed. Not only does she doze off during classes, but she doesn't even do her homework. Kexin thought something had happened to Jingwen, so she went to her after classes to chat. It turned out that she has recently been in love with Korean drama series. She spends a lot of time watching them every day, and sometimes she doesn't even sleep watching Korean dramas. Of course she had no time to do her homework.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-2-1.mp3",
+            "start": 4.98,
+            "end": 37.47
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "因為韓劇的關係，靜文常去韓式餐廳吃飯，也常上網看韓國最流行的服裝，還買了很多像帽子、毛衣、裙子、化妝品這樣的商品。連韓國小姐化妝的樣子跟保養的方法，她都學會了。她還計畫後年到韓國去遊學，因為這樣不但可以學韓國話，也可以去連續劇裡的那些地方看看。",
+          "simplified": "因为韩剧的关系，静文常去韩式餐厅吃饭，也常上网看韩国最流行的服装，还买了很多像帽子、毛衣、裙子、化妆品这样的商品。连韩国小姐化妆的样子跟保养的方法，她都学会了。她还计划后年到韩国去游学，因为这样不但可以学韩国话，也可以去连续剧里的那些地方看看。",
+          "pinyin": "Yīnwèi Hánjù de guānxì, Jìngwén cháng qù Hánshì cāntīng chīfàn, yě cháng shàngwǎng kàn Hánguó zuì liúxíng de fúzhuāng, hái mǎi le hěn duō xiàng màozi, máoyī, qúnzi, huàzhuāngpǐn zhèyàng de shāngpǐn. Lián Hánguó xiǎojiě huàzhuāng de yàngzi gēn bǎoyǎng de fāngfǎ, tā dōu xuéhuì le. Tā hái jìhuà hòunián dào Hánguó qù yóuxué, yīnwèi zhèyàng búdàn kěyǐ xué Hánguóhuà, yě kěyǐ qù liánxùjù lǐ de nàxiē dìfang kànkan.",
+          "english": "Because of the Korean drama series, Jingwen often dines out in Korean restaurants. She also often looks at the most popular Korean clothing on the Internet. Besides, she bought many commodities such as hats, sweaters, skirts and cosmetics. She has even learned the make-up style and skincare routine of Korean women. She also plans to go to Korea for a study tour the year after next year. This way she can not only learn Korean, but also go take a look at the places shown in the drama series.",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-2-1.mp3",
+            "start": 38.69,
+            "end": 75.52
+          }
+        },
+        {
+          "speaker": "旁白",
+          "traditional": "其實，很多台灣人為了跟上流行，除了看韓劇，還會看日劇或是美國影集。去 KTV 唱日文歌、去美國餐廳吃飯，也都是很平常的活動。可欣想，原來流行會讓人的生活方式有這麼大的改變！現在有「韓流」，以後會有什麼呢？",
+          "simplified": "其实，很多台湾人为了跟上流行，除了看韩剧，还会看日剧或是美国影集。去 KTV 唱日文歌、去美国餐厅吃饭，也都是很平常的活动。可欣想，原来流行会让人的生活方式有这么大的改变！现在有「韩流」，以后会有什么呢？",
+          "pinyin": "Qíshí, hěn duō Táiwān rén wèile gēnshàng liúxíng, chúle kàn Hánjù, hái huì kàn Rìjù huòshì Měiguó yǐngjí. Qù KTV chàng Rìwén gē, qù Měiguó cāntīng chīfàn, yě dōu shì hěn píngcháng de huódòng. Kěxīn xiǎng, yuánlái liúxíng huì ràng rén de shēnghuó fāngshì yǒu zhème dà de gǎibiàn! Xiànzài yǒu “Hánliú”, yǐhòu huì yǒu shénme ne?",
+          "english": "In fact, many people also watch Japanese dramas or American TV series in order to keep up with the trends. Going to karaoke bars to sing Japanese songs or eating at American restaurants are both very common activities. Kexin thought: “So fashion really can change people's lives that much! Now we have the Korean wave, and then what will come next?”",
+          "audio": {
+            "voice": "book",
+            "file": "B2-08-2-1.mp3",
+            "start": 77.02,
+            "end": 106.6
+          }
+        }
+      ]
+    }
+  ]
+}

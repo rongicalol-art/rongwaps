@@ -540,6 +540,354 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
     ]
   },
   {
+    "id": "B2L01-P01-D01",
+    "bookId": 2,
+    "lessonId": 1,
+    "partId": 1,
+    "title": "Grammar 1–4 · Meeting New Friends",
+    "grammarPages": [
+      {
+        "id": "B2L01-G01-P30"
+      },
+      {
+        "id": "B2L01-G02-P31"
+      },
+      {
+        "id": "B2L01-G03-P32"
+      },
+      {
+        "id": "B2L01-G04-P32"
+      }
+    ]
+  },
+  {
+    "id": "B2L01-P02-D02",
+    "bookId": 2,
+    "lessonId": 1,
+    "partId": 2,
+    "title": "Grammar 5–9 · The First Time They Met",
+    "grammarPages": [
+      {
+        "id": "B2L01-G05-P38"
+      },
+      {
+        "id": "B2L01-G06-P38"
+      },
+      {
+        "id": "B2L01-G07-P39"
+      },
+      {
+        "id": "B2L01-G08-P40"
+      },
+      {
+        "id": "B2L01-G09-P41"
+      }
+    ]
+  },
+  {
+    "id": "B2L02-P01-D01",
+    "bookId": 2,
+    "lessonId": 2,
+    "partId": 1,
+    "title": "Grammar 1–9 · I Have to Do Housework",
+    "grammarPages": [
+      {
+        "id": "B2L02-G01-P51"
+      },
+      {
+        "id": "B2L02-G02-P51"
+      },
+      {
+        "id": "B2L02-G03-P52"
+      },
+      {
+        "id": "B2L02-G04-P53"
+      },
+      {
+        "id": "B2L02-G05-P54"
+      },
+      {
+        "id": "B2L02-G06-P54"
+      },
+      {
+        "id": "B2L02-G07-P55"
+      },
+      {
+        "id": "B2L02-G08-P56"
+      },
+      {
+        "id": "B2L02-G09-P56"
+      }
+    ]
+  },
+  {
+    "id": "B2L02-P02-D02",
+    "bookId": 2,
+    "lessonId": 2,
+    "partId": 2,
+    "title": "Grammar 10–11 · I Want to Live in a Clean Place",
+    "grammarPages": [
+      {
+        "id": "B2L02-G10-P62"
+      },
+      {
+        "id": "B2L02-G11-P63"
+      }
+    ]
+  },
+  {
+    "id": "B2L03-P01-D01",
+    "bookId": 2,
+    "lessonId": 3,
+    "partId": 1,
+    "title": "Grammar 1–7 · I Want to Rent a House",
+    "grammarPages": [
+      {
+        "id": "B2L03-G01-P75"
+      },
+      {
+        "id": "B2L03-G02-P77"
+      },
+      {
+        "id": "B2L03-G03-P78"
+      },
+      {
+        "id": "B2L03-G04-P79"
+      },
+      {
+        "id": "B2L03-G05-P79"
+      },
+      {
+        "id": "B2L03-G06-P80"
+      },
+      {
+        "id": "B2L03-G07-P81"
+      }
+    ]
+  },
+  {
+    "id": "B2L03-P02-D02",
+    "bookId": 2,
+    "lessonId": 3,
+    "partId": 2,
+    "title": "Grammar 8–9 · Renting a House Is Not Easy",
+    "grammarPages": [
+      {
+        "id": "B2L03-G08-P86"
+      },
+      {
+        "id": "B2L03-G09-P87"
+      }
+    ]
+  },
+  {
+    "id": "B2L04-P01-D01",
+    "bookId": 2,
+    "lessonId": 4,
+    "partId": 1,
+    "title": "Grammar 1–3 · It’s Fun to Go to the Night Market",
+    "grammarPages": [
+      {
+        "id": "B2L04-G01-P99"
+      },
+      {
+        "id": "B2L04-G02-P100"
+      },
+      {
+        "id": "B2L04-G03-P101"
+      }
+    ]
+  },
+  {
+    "id": "B2L04-P02-D02",
+    "bookId": 2,
+    "lessonId": 4,
+    "partId": 2,
+    "title": "Grammar 4–8 · The Night Market Culture in Taiwan",
+    "grammarPages": [
+      {
+        "id": "B2L04-G04-P108"
+      },
+      {
+        "id": "B2L04-G05-P110"
+      },
+      {
+        "id": "B2L04-G06-P111"
+      },
+      {
+        "id": "B2L04-G07-P112"
+      },
+      {
+        "id": "B2L04-G08-P113"
+      }
+    ]
+  },
+  {
+    "id": "B2L05-P01-D01",
+    "bookId": 2,
+    "lessonId": 5,
+    "partId": 1,
+    "title": "Grammar 1–4 · Welcome to My House",
+    "grammarPages": [
+      {
+        "id": "B2L05-G01-P122"
+      },
+      {
+        "id": "B2L05-G02-P123"
+      },
+      {
+        "id": "B2L05-G03-P124"
+      },
+      {
+        "id": "B2L05-G04-P124"
+      }
+    ]
+  },
+  {
+    "id": "B2L05-P02-D02",
+    "bookId": 2,
+    "lessonId": 5,
+    "partId": 2,
+    "title": "Grammar 5–8 · Happy Community",
+    "grammarPages": [
+      {
+        "id": "B2L05-G05-P130"
+      },
+      {
+        "id": "B2L05-G06-P130"
+      },
+      {
+        "id": "B2L05-G07-P131"
+      },
+      {
+        "id": "B2L05-G08-P132"
+      }
+    ]
+  },
+  {
+    "id": "B2L06-P01-D01",
+    "bookId": 2,
+    "lessonId": 6,
+    "partId": 1,
+    "title": "Grammar 1–6 · Let’s Go to KTV to Sing!",
+    "grammarPages": [
+      {
+        "id": "B2L06-G01-P143"
+      },
+      {
+        "id": "B2L06-G02-P144"
+      },
+      {
+        "id": "B2L06-G03-P145"
+      },
+      {
+        "id": "B2L06-G04-P145"
+      },
+      {
+        "id": "B2L06-G05-P146"
+      },
+      {
+        "id": "B2L06-G06-P147"
+      }
+    ]
+  },
+  {
+    "id": "B2L06-P02-D02",
+    "bookId": 2,
+    "lessonId": 6,
+    "partId": 2,
+    "title": "Grammar 7–8 · Taiwanese KTV Bars",
+    "grammarPages": [
+      {
+        "id": "B2L06-G07-P153"
+      },
+      {
+        "id": "B2L06-G08-P154"
+      }
+    ]
+  },
+  {
+    "id": "B2L07-P01-D01",
+    "bookId": 2,
+    "lessonId": 7,
+    "partId": 1,
+    "title": "Grammar 1–6 · Traveling to Hualien by Train",
+    "grammarPages": [
+      {
+        "id": "B2L07-G01-P165"
+      },
+      {
+        "id": "B2L07-G02-P166"
+      },
+      {
+        "id": "B2L07-G03-P166"
+      },
+      {
+        "id": "B2L07-G04-P167"
+      },
+      {
+        "id": "B2L07-G05-P168"
+      },
+      {
+        "id": "B2L07-G06-P169"
+      }
+    ]
+  },
+  {
+    "id": "B2L07-P02-D02",
+    "bookId": 2,
+    "lessonId": 7,
+    "partId": 2,
+    "title": "Grammar 7–8 · Online Ticket Booking",
+    "grammarPages": [
+      {
+        "id": "B2L07-G07-P176"
+      },
+      {
+        "id": "B2L07-G08-P176"
+      }
+    ]
+  },
+  {
+    "id": "B2L08-P01-D01",
+    "bookId": 2,
+    "lessonId": 8,
+    "partId": 1,
+    "title": "Grammar 1–5 · Give Me the Stickers, please. I Want to Exchange Them for Snoopy!",
+    "grammarPages": [
+      {
+        "id": "B2L08-G01-P188"
+      },
+      {
+        "id": "B2L08-G02-P188"
+      },
+      {
+        "id": "B2L08-G03-P189"
+      },
+      {
+        "id": "B2L08-G04-P190"
+      },
+      {
+        "id": "B2L08-G05-P191"
+      }
+    ]
+  },
+  {
+    "id": "B2L08-P02-D02",
+    "bookId": 2,
+    "lessonId": 8,
+    "partId": 2,
+    "title": "Grammar 6–7 · Give Me the Stickers, please. I Want to Exchange Them for Snoopy!",
+    "grammarPages": [
+      {
+        "id": "B2L08-G06-P197"
+      },
+      {
+        "id": "B2L08-G07-P198"
+      }
+    ]
+  },
+  {
     "id": "B3L01-P01-D01",
     "bookId": 3,
     "lessonId": 1,

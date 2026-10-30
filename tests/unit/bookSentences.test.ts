@@ -26,8 +26,8 @@ test('a dialogue line plays the hosted book track first, its studio recording ot
   assert.deepEqual(hostedBook1.audio, { voice: 'book', file: 'B1-01-2-1.mp3', start: 1, end: 2.5 });
   const [hostedBook3] = readingSentenceRecords([reading(3, 'B3L01-R02')], alignment('B3L01-R02'));
   assert.deepEqual(hostedBook3.audio, { voice: 'book', file: 'B3-01-2-1.mp3', start: 1, end: 2.5 });
-  const [notHosted] = readingSentenceRecords([reading(2, 'B2L01-R02')], alignment('B2L01-R02'));
-  assert.deepEqual(notHosted.audio, { voice: 'studio', file: 'studio.mp3' });
+  const [hostedBook2] = readingSentenceRecords([reading(2, 'B2L01-R02')], alignment('B2L01-R02'));
+  assert.deepEqual(hostedBook2.audio, { voice: 'book', file: 'B2-01-2-1.mp3', start: 1, end: 2.5 });
 });
 
 test('only a word\'s own examples become sentences', () => {

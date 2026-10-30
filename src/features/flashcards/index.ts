@@ -11,3 +11,4 @@ export {
   preloadFlashcardContent,
   useFlashcardExtras,
 } from './content/flashcardContent';
+export { TonePinyin, TONE_TEXT_CLASS } from './components/TonePinyin';

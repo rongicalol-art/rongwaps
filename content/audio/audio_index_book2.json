@@ -1,0 +1,27 @@
+{
+  "book": 2,
+  "source": "Official 時代華語 Book 2 audio from the publisher's Google Drive folder",
+  "officialFolder": "https://drive.google.com/drive/folders/1z4fENHojzv452Yuj7cEXtR8doCsWc7cH",
+  "streamUrlPattern": "https://drive.usercontent.google.com/download?id={FILE_ID}&export=download",
+  "naming": "B2-LL-P-T.mp3 (LL=lesson, P=part, T=track)",
+  "dialogueTracks": [
+    { "file": "B2-01-1-1.mp3", "id": "1DW_8KjNeu9d2i2lSJqJfYYX_smdGPzzN" },
+    { "file": "B2-02-1-1.mp3", "id": "1e7XsmgCtBfuMDhjPK9NXJBb8uv2vPBts" },
+    { "file": "B2-03-1-1.mp3", "id": "1AWJyc9GUrQ9ww-Rq2RqduzYrSE68fGPl" },
+    { "file": "B2-04-1-1.mp3", "id": "1S0nA-O2GA5RPodL5Ww4l7b4rBZUhnVAn" },
+    { "file": "B2-05-1-1.mp3", "id": "1tvHNHgPwkwZcAB8ZjffKfPCx71QMPxGw" },
+    { "file": "B2-06-1-1.mp3", "id": "1J1Xb4JJqW-tvPYLLd0I1kFnPrMUZY4iX" },
+    { "file": "B2-07-1-1.mp3", "id": "1bBj7MjUXJneCwKPAlMOzWXPNxHiL5Sd-" },
+    { "file": "B2-08-1-1.mp3", "id": "14SM716zcbmPwhkgDIVOigyaqM4Z-nr6t" }
+  ],
+  "readingTracks": [
+    { "file": "B2-01-2-1.mp3", "id": "1NQTBjEW_J4LeJefXrAniYBZ00c-b-iqq" },
+    { "file": "B2-02-2-1.mp3", "id": "1nS1_rsa621G9lX1rHcSFNR505j0RelDY" },
+    { "file": "B2-03-2-1.mp3", "id": "1d2LxuQfD7C11Ya1nD1fYfryIrEv-kKj6" },
+    { "file": "B2-04-2-1.mp3", "id": "1IYVn9crW4DeGg6QL_vVTpJNmfT9pafIH" },
+    { "file": "B2-05-2-1.mp3", "id": "1bzHDCxpjMjvLpZeQLNoMZVYPyQ5oxxPg" },
+    { "file": "B2-06-2-1.mp3", "id": "1G2B21gPifJL9FDY4V-bOtETGqND9op9H" },
+    { "file": "B2-07-2-1.mp3", "id": "1b3g2-KCpfYsRydf3G1v-mXKPnB4nc6WJ" },
+    { "file": "B2-08-2-1.mp3", "id": "19SwUS9vvTYOrzHfQdDxkd_NMLNTb_aup" }
+  ]
+}

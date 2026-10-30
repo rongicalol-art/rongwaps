@@ -106,19 +106,27 @@ export function LessonActions({
   return (
     <div className={cn('flex items-center gap-3', className)}>
       {onOpenPracticeHub && (
-        <ActionButton
-          variant="secondary"
-          size="lg"
-          edgeColor="var(--color-ui-border)"
-          aria-label="Practice hub"
-          aria-haspopup="dialog"
-          aria-expanded={isPracticeHubOpen}
-          onClick={onOpenPracticeHub}
-          style={{ flexShrink: 0 }}
-          className="w-13 min-w-13 aspect-square shrink-0 !px-0 justify-center !border-ui-border !text-ui-muted-strong"
-        >
-          <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
-        </ActionButton>
+        <div className="group relative shrink-0">
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            edgeColor="var(--color-feedback-warning-edge)"
+            aria-label="Practice hub"
+            aria-haspopup="dialog"
+            aria-expanded={isPracticeHubOpen}
+            onClick={onOpenPracticeHub}
+            style={{ flexShrink: 0 }}
+            className="w-13 min-w-13 aspect-square shrink-0 !px-0 justify-center !border-feedback-warning-edge"
+          >
+            <PlayfulNavIcon name="practiceHub" className="h-7 w-7" />
+          </ActionButton>
+          <span
+            role="tooltip"
+            className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-3 hidden -translate-x-1/2 items-center whitespace-nowrap rounded-control border-b-2 border-ui-border bg-ui-surface px-3 py-1.5 text-xs font-black uppercase tracking-wider text-ui-ink-strong shadow-md group-hover:flex"
+          >
+            Practice hub
+          </span>
+        </div>
       )}
       <ActionButton
         size="lg"
