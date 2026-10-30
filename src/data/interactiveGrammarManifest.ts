@@ -888,6 +888,312 @@ export const INTERACTIVE_GRAMMAR_MANIFEST: GrammarManifestPart[] = [
     ]
   },
   {
+    "id": "B2L09-P01-D01",
+    "bookId": 2,
+    "lessonId": 9,
+    "partId": 1,
+    "title": "Grammar 1–6 · Are You Afraid of Taking Exams?",
+    "grammarPages": [
+      {
+        "id": "B2L09-G01-P208"
+      },
+      {
+        "id": "B2L09-G02-P209"
+      },
+      {
+        "id": "B2L09-G03-P209"
+      },
+      {
+        "id": "B2L09-G04-P211"
+      },
+      {
+        "id": "B2L09-G05-P212"
+      },
+      {
+        "id": "B2L09-G06-P212"
+      }
+    ]
+  },
+  {
+    "id": "B2L09-P02-D02",
+    "bookId": 2,
+    "lessonId": 9,
+    "partId": 2,
+    "title": "Grammar 7 · Ryosuke Yamamoto’s Life of Studying Abroad",
+    "grammarPages": [
+      {
+        "id": "B2L09-G01-P218"
+      }
+    ]
+  },
+  {
+    "id": "B2L10-P01-D01",
+    "bookId": 2,
+    "lessonId": 10,
+    "partId": 1,
+    "title": "Grammar 1–4 · Let’s Go Work Out after Class!",
+    "grammarPages": [
+      {
+        "id": "B2L10-G01-P231"
+      },
+      {
+        "id": "B2L10-G02-P232"
+      },
+      {
+        "id": "B2L10-G03-P232"
+      },
+      {
+        "id": "B2L10-G04-P233"
+      }
+    ]
+  },
+  {
+    "id": "B2L10-P02-D02",
+    "bookId": 2,
+    "lessonId": 10,
+    "partId": 2,
+    "title": "Grammar 1–3 · The Numerous Benefits of Sports",
+    "grammarPages": [
+      {
+        "id": "B2L10-G01-P239"
+      },
+      {
+        "id": "B2L10-G02-P240"
+      },
+      {
+        "id": "B2L10-G03-P241"
+      }
+    ]
+  },
+  {
+    "id": "B2L11-P01-D01",
+    "bookId": 2,
+    "lessonId": 11,
+    "partId": 1,
+    "title": "Grammar 1–5 · Which Club Would You Like to Join?",
+    "grammarPages": [
+      {
+        "id": "B2L11-G01-P250"
+      },
+      {
+        "id": "B2L11-G02-P252"
+      },
+      {
+        "id": "B2L11-G03-P252"
+      },
+      {
+        "id": "B2L11-G04-P253"
+      },
+      {
+        "id": "B2L11-G05-P254"
+      }
+    ]
+  },
+  {
+    "id": "B2L11-P02-D02",
+    "bookId": 2,
+    "lessonId": 11,
+    "partId": 2,
+    "title": "Grammar 6–7 · The Influence of Club Activities on Yamamoto Ryosuke",
+    "grammarPages": [
+      {
+        "id": "B2L11-G06-P260"
+      },
+      {
+        "id": "B2L11-G07-P260"
+      }
+    ]
+  },
+  {
+    "id": "B2L12-P01-D01",
+    "bookId": 2,
+    "lessonId": 12,
+    "partId": 1,
+    "title": "Grammar 1–6 · A Small Clerk? A Big Boss?",
+    "grammarPages": [
+      {
+        "id": "B2L12-G01-P271"
+      },
+      {
+        "id": "B2L12-G02-P272"
+      },
+      {
+        "id": "B2L12-G03-P273"
+      },
+      {
+        "id": "B2L12-G04-P273"
+      },
+      {
+        "id": "B2L12-G05-P274"
+      },
+      {
+        "id": "B2L12-G06-P275"
+      }
+    ]
+  },
+  {
+    "id": "B2L12-P02-D02",
+    "bookId": 2,
+    "lessonId": 12,
+    "partId": 2,
+    "title": "Grammar 7–8 · A Small Clerk? A Big Boss?",
+    "grammarPages": [
+      {
+        "id": "B2L12-G07-P282"
+      },
+      {
+        "id": "B2L12-G08-P283"
+      }
+    ]
+  },
+  {
+    "id": "B2L13-P01-D01",
+    "bookId": 2,
+    "lessonId": 13,
+    "partId": 1,
+    "title": "Grammar 1–3 · I Want to Buy a Laptop",
+    "grammarPages": [
+      {
+        "id": "B2L13-G01-P293"
+      },
+      {
+        "id": "B2L13-G02-P294"
+      },
+      {
+        "id": "B2L13-G03-P294"
+      }
+    ]
+  },
+  {
+    "id": "B2L13-P02-D02",
+    "bookId": 2,
+    "lessonId": 13,
+    "partId": 2,
+    "title": "Grammar 4–6 · I Want to Buy a Laptop",
+    "grammarPages": [
+      {
+        "id": "B2L13-G04-P301"
+      },
+      {
+        "id": "B2L13-G05-P302"
+      },
+      {
+        "id": "B2L13-G06-P303"
+      }
+    ]
+  },
+  {
+    "id": "B2L14-P01-D01",
+    "bookId": 2,
+    "lessonId": 14,
+    "partId": 1,
+    "title": "Grammar 1–3 · Fish on the Dish, Abundance Year after Year",
+    "grammarPages": [
+      {
+        "id": "B2L14-G01-P316"
+      },
+      {
+        "id": "B2L14-G02-P317"
+      },
+      {
+        "id": "B2L14-G03-P317"
+      }
+    ]
+  },
+  {
+    "id": "B2L14-P02-D02",
+    "bookId": 2,
+    "lessonId": 14,
+    "partId": 2,
+    "title": "Grammar 4–8 · Here Comes the “Nian”",
+    "grammarPages": [
+      {
+        "id": "B2L14-G04-P325"
+      },
+      {
+        "id": "B2L14-G05-P325"
+      },
+      {
+        "id": "B2L14-G06-P327"
+      },
+      {
+        "id": "B2L14-G07-P328"
+      },
+      {
+        "id": "B2L14-G08-P329"
+      }
+    ]
+  },
+  {
+    "id": "B2L15-P01-D01",
+    "bookId": 2,
+    "lessonId": 15,
+    "partId": 1,
+    "title": "Grammar 1–4 · The Thing that Confucius Did Not Know",
+    "grammarPages": [
+      {
+        "id": "B2L15-G01-P341"
+      },
+      {
+        "id": "B2L15-G02-P342"
+      },
+      {
+        "id": "B2L15-G03-P343"
+      },
+      {
+        "id": "B2L15-G04-P343"
+      }
+    ]
+  },
+  {
+    "id": "B2L15-P02-D02",
+    "bookId": 2,
+    "lessonId": 15,
+    "partId": 2,
+    "title": "Grammar 5 · The Thing that Confucius Did Not Know",
+    "grammarPages": [
+      {
+        "id": "B2L15-G05-P351"
+      }
+    ]
+  },
+  {
+    "id": "B2L16-P01-D01",
+    "bookId": 2,
+    "lessonId": 16,
+    "partId": 1,
+    "title": "Grammar 1–4 · Friends from All Over the World",
+    "grammarPages": [
+      {
+        "id": "B2L16-G01-P361"
+      },
+      {
+        "id": "B2L16-G02-P362"
+      },
+      {
+        "id": "B2L16-G03-P363"
+      },
+      {
+        "id": "B2L16-G04-P364"
+      }
+    ]
+  },
+  {
+    "id": "B2L16-P02-D02",
+    "bookId": 2,
+    "lessonId": 16,
+    "partId": 2,
+    "title": "Grammar 5–6 · Friends from All Over the World",
+    "grammarPages": [
+      {
+        "id": "B2L16-G05-P370"
+      },
+      {
+        "id": "B2L16-G06-P371"
+      }
+    ]
+  },
+  {
     "id": "B3L01-P01-D01",
     "bookId": 3,
     "lessonId": 1,

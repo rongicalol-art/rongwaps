@@ -1,6 +1,6 @@
 {
   "BOOK2_LESSON_TEN_PART_ONE": {
-    "id": "B2L10-P01",
+    "id": "B2L10-P01-D01",
     "bookId": 2,
     "lessonId": 10,
     "partId": 1,
@@ -1615,7 +1615,7 @@
       }
     ],
     "dialogue": {
-      "id": "B2L10-P01-D01",
+      "id": "B2L10-D01",
       "title": "下課後一起去健身吧！",
       "setting": "對話 · Dialogue",
       "printedPages": [
@@ -4799,7 +4799,7 @@
     "nextBookLabel": "Part 2"
   },
   "BOOK2_LESSON_TEN_PART_TWO": {
-    "id": "B2L10-P02",
+    "id": "B2L10-P02-D02",
     "bookId": 2,
     "lessonId": 10,
     "partId": 2,
@@ -6064,7 +6064,7 @@
       }
     ],
     "dialogue": {
-      "id": "B2L10-P02-R01",
+      "id": "B2L10-D02",
       "title": "運動好處多",
       "setting": "短文 · Reading",
       "printedPages": [
