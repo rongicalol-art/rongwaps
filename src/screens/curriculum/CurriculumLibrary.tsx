@@ -117,23 +117,43 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     setSelectedLessonParts,
   });
 
+  const anchorLessonIdRef = useRef<number | null>(null);
+  useEffect(() => {
+    anchorLessonIdRef.current = null;
+  }, [activeBookId]);
+
+  const selectableLessonIds = useMemo(
+    () => progress.lessons.filter((lesson) => lesson.state !== 'locked').map((lesson) => lesson.id),
+    [progress.lessons],
+  );
+
   const handleLessonClick = useCallback(
     (lessonId: number, event?: React.MouseEvent) => {
-      if (event?.shiftKey || event?.metaKey) {
-        selection.toggle(lessonId);
-        return;
+      if (event?.shiftKey) {
+        const anchor = anchorLessonIdRef.current ?? selection.selectedIds[0] ?? lessonId;
+        anchorLessonIdRef.current = anchor;
+        const fromIdx = selectableLessonIds.indexOf(anchor);
+        const toIdx = selectableLessonIds.indexOf(lessonId);
+        if (fromIdx !== -1 && toIdx !== -1) {
+          const start = Math.min(fromIdx, toIdx);
+          const end = Math.max(fromIdx, toIdx);
+          selection.write(selectableLessonIds.slice(start, end + 1));
+          return;
+        }
       }
+      anchorLessonIdRef.current = lessonId;
       if (selection.selectedIds.includes(lessonId)) {
         selection.toggle(lessonId);
       } else {
         selection.enter(lessonId);
       }
     },
-    [selection],
+    [selectableLessonIds, selection],
   );
 
   const handleLongPress = useCallback(
     (lessonId: number) => {
+      anchorLessonIdRef.current = lessonId;
       selection.toggle(lessonId);
     },
     [selection],
