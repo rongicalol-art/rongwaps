@@ -94,3 +94,10 @@ test('sentenceLookup: batch validation preserves alternate dictionary readings',
   assert.equal(result?.pinyin, 'háng');
   assert.ok(result?.definitions.some(definition => /row|profession|line|trade/i.test(definition)));
 });
+
+test('sentenceLookup: resolves modal particle reading for 啊 a', async () => {
+  await validateSentenceWords(['啊']);
+  const result = await lookupSentenceWord('啊', 'traditional', { pinyin: 'a' });
+  assert.equal(result?.pinyin, 'a');
+  assert.ok(result?.definitions.some(definition => /modal particle/i.test(definition)));
+});

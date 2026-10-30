@@ -41,6 +41,7 @@
     "book-pages:recompress": "tsx scripts/content/recompressBookPages.ts",
     "breakdowns:patch": "tsx scripts/content/patchBreakdowns.ts",
     "dictionary:packs": "tsx scripts/dictionary/exportDictionaryPacks.ts",
+    "dictionary:split": "tsx scripts/dictionary/splitDictionaryReadings.ts",
     "dictionary:search:build": "tsx scripts/dictionary/buildSearchIndex.ts",
     "dictionary:restore": "tsx scripts/dictionary/restoreDictionaryFromPacks.ts",
     "dictionary:frequency:build": "output/venv/bin/python scripts/dictionary/buildDictionaryFrequency.py",
