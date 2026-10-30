@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router';
 import { ActionButton, BrandWordmark } from '../../lib/widgets';
 import { LEGAL_ROUTES } from '../../app/routes';
+import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { usePageMeta } from '../../hooks/usePageMeta';
 import { dismissPrerender } from '../../utils/browser/prerender';
 import { DeskScene, GoogleSignInButton, SignInConsent, useGoogleSignIn } from '../auth';
@@ -21,14 +22,15 @@ const SECTION_TITLE = 'text-center text-3xl font-black tracking-tight text-ui-in
  */
 export function LandingPage() {
   const { signIn, error, isBusy, isSigningIn } = useGoogleSignIn();
+  useCharacterFont();
   usePageMeta({ ...LANDING_META, path: '/' });
   useEffect(dismissPrerender, []);
   const start = () => void signIn();
 
   return (
     <div className="h-[100dvh] w-full overflow-y-auto bg-ui-canvas font-sans text-ui-ink">
-      <header className="sticky top-0 z-40 bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent backdrop-blur-[2px]">
-        <div className="mx-auto flex w-full max-w-[90rem] items-center gap-3 px-5 pb-4 pt-4 lg:px-26">
+      <header className="sticky top-0 z-40 border-b border-ui-divider bg-ui-canvas">
+        <div className="mx-auto flex w-full max-w-[90rem] items-center gap-3 px-5 py-3 lg:px-26">
           <BrandWordmark className="mr-auto" />
           <Link to={LEGAL_ROUTES.about} className="hidden rounded-xs px-2 py-1 text-sm font-extrabold text-ui-muted-strong hover:text-ui-ink focus-ring-inline lg:block">About</Link>
           <ActionButton variant="secondary" size="sm" onClick={start} className="normal-case tracking-normal text-sm px-3.5">Sign in</ActionButton>

@@ -114,7 +114,7 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   showTranslation: true,
   simpleDefinitions: false,
   hideExamplePinyin: true,
-  characterFont: 'huninn',
+  characterFont: 'kai',
   appearance: 'light',
   quizFormat: 'mixed',
   quizQuestionType: 'hanzi',

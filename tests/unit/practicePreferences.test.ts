@@ -39,16 +39,10 @@ test('hideExamplePinyin toggles through updatePreferences', () => {
   );
 });
 
-test('character font defaults to rounded (huninn) and accepts the kai option', () => {
+test('character font defaults to kai and accepts the rounded (huninn) option', () => {
   const { updatePreferences } = useAppStore.getState();
 
-  assert.equal(DEFAULT_PREFERENCES.characterFont, 'huninn');
-  assert.equal(
-    selectPracticePreferences(useAppStore.getState()).characterFont,
-    'huninn',
-  );
-
-  updatePreferences({ characterFont: 'kai' });
+  assert.equal(DEFAULT_PREFERENCES.characterFont, 'kai');
   assert.equal(
     selectPracticePreferences(useAppStore.getState()).characterFont,
     'kai',
@@ -58,5 +52,11 @@ test('character font defaults to rounded (huninn) and accepts the kai option', (
   assert.equal(
     selectPracticePreferences(useAppStore.getState()).characterFont,
     'huninn',
+  );
+
+  updatePreferences({ characterFont: 'kai' });
+  assert.equal(
+    selectPracticePreferences(useAppStore.getState()).characterFont,
+    'kai',
   );
 });
