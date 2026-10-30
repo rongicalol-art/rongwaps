@@ -1,21 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <!-- Full-bleed gold background (maskable-safe) -->
-  <rect width="512" height="512" fill="#ffc800"/>
-  <!-- Blue speech-bubble seal saying 文, with a tactile bottom edge -->
-  <g transform="translate(250 246) rotate(-3.4)">
-    <g fill="#117cad" transform="translate(0 24)">
-      <rect x="-148" y="-136" width="296" height="264" rx="64"/>
-      <path d="M-88 120 L-114 196 L-8 120 Z"/>
-    </g>
-    <g fill="#1cb0f6">
-      <rect x="-148" y="-136" width="296" height="264" rx="64"/>
-      <path d="M-88 120 L-114 196 L-8 120 Z"/>
-    </g>
-    <text x="0" y="-2" dominant-baseline="middle" font-family="LXGW WenKai TC, Kaiti TC, Kaiti SC, STKaiti, BiauKai, DFKai-SB, KaiTi, serif" font-size="186" font-weight="700" fill="#fff6dc" text-anchor="middle">文</text>
-  </g>
-  <!-- Orange rising tone mark (wén, 2nd tone) -->
-  <g transform="translate(352 120) rotate(-43)">
-    <rect x="-46" y="-6" width="92" height="30" rx="15" fill="#e58700"/>
-    <rect x="-46" y="-15" width="92" height="30" rx="15" fill="#ff9600"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+<g transform="translate(0 -3)">
+<path d="M30 12 H90 Q108 12 108 30 V70 Q108 88 90 88 H58 Q50 88 44 94 L32 106 Q28 110 28 104 V88 Q12 86 12 70 V30 Q12 12 30 12 Z" fill="#c99410" transform="translate(0 6)"/>
+<path d="M30 12 H90 Q108 12 108 30 V70 Q108 88 90 88 H58 Q50 88 44 94 L32 106 Q28 110 28 104 V88 Q12 86 12 70 V30 Q12 12 30 12 Z" fill="#f2b821"/>
+<g fill="#fff" transform="translate(60 50) scale(0.76) translate(-62 -51)">
+<path d="M54 17 Q63 14 67 25 Q68.5 32.5 62 32.5 Q57.5 27 54 17 Z"/>
+<path d="M30 42 Q30 37 38 37 L80 34 Q86 33 89 35.5 Q92 38 89 40 L84 41 L38 44.5 Q30 46 30 42 Z"/>
+<path d="M68 45 Q77 42 79 47 Q74 70 39 85 Q32 88 32 82.5 Q59 68 68 45 Z"/>
+<path d="M45 48 Q50 44 54 48.5 Q64 66 86 70 Q95 71.5 93 78 Q90 82.5 81 80.5 Q55 74 45 48 Z"/>
+</g>
+</g>
 </svg>

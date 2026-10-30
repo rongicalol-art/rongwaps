@@ -105,7 +105,7 @@ export function LandingPage() {
           </section>
         </main>
 
-        <footer className="mt-16 flex flex-col gap-3 border-t border-ui-divider py-6 text-sm font-bold text-ui-muted lg:mt-30 lg:flex-row lg:justify-between">
+        <footer className="mt-16 flex flex-col gap-3 border-t border-ui-divider py-6 text-sm font-bold text-ui-muted-strong lg:mt-30 lg:flex-row lg:justify-between">
           <span>Independent project. Not affiliated with Tamkang University or Cheng Chung Book Co.</span>
           <nav className="flex flex-wrap gap-4">
             {([['About', LEGAL_ROUTES.about], ['Sources', LEGAL_ROUTES.sources], ['Terms', LEGAL_ROUTES.terms], ['Privacy', LEGAL_ROUTES.privacy]] as const).map(([label, to]) => (

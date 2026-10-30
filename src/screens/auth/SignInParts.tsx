@@ -34,7 +34,7 @@ export function GoogleSignInButton({ onClick, busy, label = 'Sign in with Google
 /** The consent line under a sign-in action. */
 export function SignInConsent({ className }: { className?: string }) {
   return (
-    <p className={cn('text-sm font-bold text-ui-muted lg:text-base', className)}>
+    <p className={cn('text-sm font-bold text-ui-muted-strong lg:text-base', className)}>
       By continuing you agree to the{' '}
       <Link to={LEGAL_ROUTES.terms} className="rounded-xs font-extrabold text-brand-primary-text hover:underline focus-ring-inline">Terms</Link>
       {' '}and{' '}

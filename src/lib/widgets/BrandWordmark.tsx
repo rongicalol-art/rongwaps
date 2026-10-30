@@ -22,14 +22,7 @@ export function BrandWordmark({
       className={cn('flex min-w-0 items-center gap-2.5', collapsed && 'justify-center', className)}
       {...props}
     >
-      <span
-        aria-hidden="true"
-        className="relative flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-sm border-b-[length:var(--depth-sm)] border-feedback-warning-edge bg-feedback-warning"
-      >
-        <span className="font-chinese translate-y-px text-[23px] font-bold leading-none text-feedback-on-warning">
-          文
-        </span>
-      </span>
+      <img src="/icons/icon.svg" alt="" aria-hidden="true" width={40} height={40} className="size-10 shrink-0" />
 
       {!collapsed && (
         <span aria-hidden="true" className="min-w-0 text-[19px] font-black leading-none">

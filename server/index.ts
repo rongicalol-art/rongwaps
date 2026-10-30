@@ -302,6 +302,7 @@ async function bootstrap() {
     }));
     // Public pages prerendered at build time (scripts/build/prerender.ts) get their own HTML.
     const prerenderedPages = new Set(["/about", "/sources", "/privacy", "/terms"]);
+    const knownRoutes = new Set(["", "path", "search", "library", "profile", "join", "about", "sources", "privacy", "terms"]);
     // Only extensionless navigation gets the SPA shell; missing files 404.
     app.get("*", (req: express.Request, res: express.Response) => {
       if (req.path.startsWith("/data/") || path.extname(req.path)) {
@@ -310,6 +311,8 @@ async function bootstrap() {
       }
       res.setHeader("Cache-Control", "no-cache");
       const page = req.path.replace(/\/+$/, "");
+      // Unknown paths still get the shell (it shows the landing or app) but answer 404 so search engines drop them.
+      if (!knownRoutes.has(page.split("/")[1] ?? "")) res.status(404).setHeader("X-Robots-Tag", "noindex");
       const prerendered = prerenderedPages.has(page) ? path.join(distPath, `${page}.html`) : null;
       res.sendFile(prerendered && existsSync(prerendered) ? prerendered : path.join(distPath, "index.html"));
     });

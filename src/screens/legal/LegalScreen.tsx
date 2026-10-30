@@ -13,7 +13,7 @@ import { TermsContent } from './TermsContent';
 
 /** `dated`: binding documents show their effective date. */
 const PAGES: Record<LegalPage, { title: string; description: string; Content: () => React.JSX.Element; dated?: boolean }> = {
-  about: { title: "About Ron's Mandarin", description: "Who makes Ron's Mandarin, what it teaches, and how it follows the 時代華語 Modern Chinese textbooks.", Content: AboutContent },
+  about: { title: 'About', description: "Who makes Ron's Mandarin, what it teaches, and how it follows the 時代華語 Modern Chinese textbooks.", Content: AboutContent },
   sources: { title: 'Sources & Licenses', description: "The dictionaries, fonts, audio and other sources Ron's Mandarin is built on, with their licenses.", Content: SourcesContent },
   privacy: { title: 'Privacy Policy', description: "What Ron's Mandarin stores, why, and how to download or delete your data.", Content: PrivacyPolicyContent, dated: true },
   terms: { title: 'Terms of Service', description: "The terms for using Ron's Mandarin.", Content: TermsContent, dated: true },
