@@ -235,7 +235,7 @@ export function ActivityModals({
                 data-dock-bottom={reservesDock ? '' : undefined}
                 className={cn('relative flex flex-1 flex-col overflow-hidden', hadLoader.current && 'animate-in fade-in duration-200', insetClassName)}
               >
-              <PracticeDockSlotProvider isVertical={dockLayout.isVertical}>
+              <PracticeDockSlotProvider isVertical={dockLayout.isVertical} laneRef={reservesDock ? bodyRef : undefined}>
                 <ActivityPracticeHeader
                   resolvedActivity={resolvedActivity}
                   activeActivity={activeActivity}

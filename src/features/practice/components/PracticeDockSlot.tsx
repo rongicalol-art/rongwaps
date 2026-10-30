@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useContext, useMemo, useState, type ReactNode, type RefObject } from 'react';
 
 interface PracticeDockSlotValue {
   /** DOM node inside the practice dock where the active mode's own controls render. */
@@ -9,6 +9,11 @@ interface PracticeDockSlotValue {
   /** True while slotted controls stand in for the dock's mode switcher. */
   exclusive: boolean;
   setExclusive: (exclusive: boolean) => void;
+  /** The full-height practice body the dock sits in; a screen's bottom bar renders here so it can share the dock's lane. */
+  laneRef?: RefObject<HTMLElement | null>;
+  /** True while a screen's result bar holds the dock's lane; the dock steps aside. */
+  yielded: boolean;
+  setYielded: (yielded: boolean) => void;
 }
 
 /** The dock's mode switcher and a mode's own controls swap with a short fade: no travel, no waiting for the other to leave. */
@@ -27,10 +32,18 @@ const PracticeDockSlotContext = createContext<PracticeDockSlotValue | null>(null
  * (`exclusive`) so its controls replace the mode switcher. The dock renders
  * `PracticeDockSlotOutlet`; the mode portals its controls into the slot.
  */
-export function PracticeDockSlotProvider({ isVertical, children }: { isVertical: boolean; children: ReactNode }) {
+export function PracticeDockSlotProvider({ isVertical, laneRef, children }: {
+  isVertical: boolean;
+  laneRef?: RefObject<HTMLElement | null>;
+  children: ReactNode;
+}) {
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   const [exclusive, setExclusive] = useState(false);
-  const value = useMemo(() => ({ slot, setSlot, isVertical, exclusive, setExclusive }), [slot, isVertical, exclusive]);
+  const [yielded, setYielded] = useState(false);
+  const value = useMemo(
+    () => ({ slot, setSlot, isVertical, laneRef, exclusive, setExclusive, yielded, setYielded }),
+    [slot, isVertical, laneRef, exclusive, yielded],
+  );
   return <PracticeDockSlotContext.Provider value={value}>{children}</PracticeDockSlotContext.Provider>;
 }
 

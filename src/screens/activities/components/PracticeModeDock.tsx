@@ -73,7 +73,8 @@ export function PracticeModeDock({
   autoHide = false,
 }: PracticeModeDockProps) {
   const { isVertical, side } = layout;
-  const showModes = !usePracticeDockSlot()?.exclusive;
+  const dockSlot = usePracticeDockSlot();
+  const showModes = !dockSlot?.exclusive;
   const reduceMotion = useReducedMotion();
   const swapY = reduceMotion ? 0 : DOCK_SWAP.distance;
   const [openMenu, setOpenMenu] = useState<DockMenu | null>(null);
@@ -131,7 +132,7 @@ export function PracticeModeDock({
   });
 
   return (
-    <FloatingDock.Root visible={visible} className={layout.rootClassName}>
+    <FloatingDock.Root visible={visible && !dockSlot?.yielded} className={layout.rootClassName}>
       <div
         ref={dockRef}
         {...dockProps}

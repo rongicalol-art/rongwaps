@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
 import { ActionButton, AppIcon, IconActionButton, KeyChip } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { usePracticeDockSlot } from './PracticeDockSlot';
 
 export interface FeedbackBottomBarProps {
   status: 'idle' | 'correct' | 'wrong';
@@ -77,6 +79,17 @@ export function FeedbackBottomBar({
   const shouldShowCheckedBar = isChecked && !hideWhenAutoAdvance;
   const isInteractionActive = shouldShowCheckedBar || shouldShowIdleBar;
   const setIsInteractionActive = useAppStore(state => state.setIsInteractionActive);
+  // Under a bottom dock the screens stop above it, so the bar renders in the dock's full-height body:
+  // above the dock while waiting, and in the dock's own lane (the dock steps aside) once a result shows.
+  const dockSlot = usePracticeDockSlot();
+  const setDockYielded = dockSlot?.setYielded;
+  const lane = dockSlot?.laneRef?.current ?? null;
+  const takesDockLane = shouldShowCheckedBar && lane !== null;
+  // The dock returns once the bar has slid out (onExitComplete), so the two never overlap.
+  useEffect(() => {
+    if (takesDockLane) setDockYielded?.(true);
+  }, [setDockYielded, takesDockLane]);
+  useEffect(() => () => setDockYielded?.(false), [setDockYielded]);
 
   // Sync interaction state to hide mode dock when we are interacting
   useEffect(() => {
@@ -131,7 +144,8 @@ export function FeedbackBottomBar({
       <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {feedbackAnnouncement}
       </p>
-      <AnimatePresence>
+      {portalTo(lane, (
+      <AnimatePresence onExitComplete={() => setDockYielded?.(false)}>
         {isInteractionActive && (
           <motion.div 
             initial={{ y: '100%' }}
@@ -139,7 +153,8 @@ export function FeedbackBottomBar({
             exit={{ y: '100%' }}
             transition={{ type: "spring", stiffness: 350, damping: 28, mass: 1 }}
             className={cn(
-              'absolute bottom-0 left-0 right-0 z-40 transition-colors',
+              'absolute left-0 right-0 z-40 transition-colors',
+              lane && !takesDockLane ? 'bottom-[var(--dock-inset,0px)]' : 'bottom-0',
               // Mobile: edge-to-edge docked sheet
               'border-t-2 border-ui-border bg-ui-surface pb-sheet-safe',
               // Desktop: transparent outer wrapper so inner card floats cleanly above the bottom canvas
@@ -281,6 +296,11 @@ export function FeedbackBottomBar({
           </motion.div>
         )}
       </AnimatePresence>
+      ))}
     </>
   );
+}
+
+function portalTo(host: HTMLElement | null, node: React.ReactNode) {
+  return host ? createPortal(node, host) : node;
 }
