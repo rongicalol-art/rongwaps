@@ -6,6 +6,8 @@
 export const LANDING_META = {
   title: "Ron's Mandarin · 時代華語 Modern Chinese Flashcards",
   description: 'Free traditional Chinese flashcards, quizzes, stories and grammar for the Taiwan textbook 時代華語 Modern Chinese. TOCFL A1 to B2, one lesson at a time.',
+  /** Shorter text for link-preview cards, which cut off around 125 characters. */
+  socialDescription: 'Free flashcards and learning material for the 時代華語 Modern Chinese textbook, TOCFL A1 to B2.',
 };
 
 export type DemoId = 'cards' | 'quiz' | 'tones' | 'dictionary' | 'grammar' | 'party' | 'characters';

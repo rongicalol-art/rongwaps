@@ -7,6 +7,8 @@ export interface PageMeta {
   /** Full document title. */
   title: string;
   description: string;
+  /** Shorter text for `og:`/`twitter:` cards; defaults to `description`. */
+  socialDescription?: string;
   /** Path of the page, e.g. `/about`. */
   path: string;
 }
@@ -26,17 +28,17 @@ function setMeta(attribute: 'name' | 'property', key: string, value: string) {
  * (scripts/build/prerender.ts) ships the same tags; this keeps them right after client
  * navigation between public pages.
  */
-export function usePageMeta({ title, description, path }: PageMeta) {
+export function usePageMeta({ title, description, socialDescription = description, path }: PageMeta) {
   useEffect(() => {
     const url = `${SITE_ORIGIN}${path}`;
     document.title = title;
     setMeta('name', 'description', description);
     setMeta('property', 'og:title', title);
-    setMeta('property', 'og:description', description);
+    setMeta('property', 'og:description', socialDescription);
     setMeta('property', 'og:url', url);
     setMeta('name', 'twitter:title', title);
-    setMeta('name', 'twitter:description', description);
+    setMeta('name', 'twitter:description', socialDescription);
     const canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonical) canonical.href = url;
-  }, [title, description, path]);
+  }, [title, description, socialDescription, path]);
 }

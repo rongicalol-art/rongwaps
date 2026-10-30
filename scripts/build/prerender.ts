@@ -39,14 +39,15 @@ function pageHtml(template: string, page: PrerenderedPage): string {
   const url = `${SITE_ORIGIN}${page.path}`;
   const title = escapeAttr(page.title);
   const description = escapeAttr(page.description);
+  const socialDescription = escapeAttr(page.socialDescription ?? page.description);
   let html = template;
   html = setTag(html, /<title>[^<]*<\/title>/, `<title>${escapeText(page.title)}</title>`);
   html = setTag(html, /<meta name="title" content="[^"]*"\s*\/?>/, `<meta name="title" content="${title}" />`);
   html = setTag(html, /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${description}" />`);
   html = setTag(html, /<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${title}" />`);
-  html = setTag(html, /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${description}" />`);
+  html = setTag(html, /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${socialDescription}" />`);
   html = setTag(html, /<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${title}" />`);
-  html = setTag(html, /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${description}" />`);
+  html = setTag(html, /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${socialDescription}" />`);
   html = setTag(html, /<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`);
   html = setTag(html, /<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`);
   if (page.jsonLd) {

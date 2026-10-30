@@ -14,6 +14,7 @@ export interface PrerenderedPage {
   path: string;
   title: string;
   description: string;
+  socialDescription?: string;
   html: string;
   /** Extra JSON-LD for the page, if any. */
   jsonLd?: object;
