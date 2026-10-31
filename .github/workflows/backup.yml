@@ -1,0 +1,100 @@
+name: Backup
+
+# Nightly read-only backup of the production database (Supabase Free has none).
+# Every run proves its own dump restores completely before keeping it, then
+# stores it encrypted to the owner's age key in a private R2 bucket.
+# Only the public key is here: GitHub can write backups but never read them.
+# Restore steps: docs/RELEASING.md → Restore data.
+on:
+  schedule:
+    - cron: '30 18 * * *' # 02:30 Taiwan, the quietest hour
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Why (e.g. before migration 20261105120000). Kept 90 days under manual/.'
+        required: true
+        default: manual
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.BACKUP_R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
+      # R2 rejects the newer default checksum headers of recent AWS CLIs.
+      AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+      AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+      R2_ENDPOINT: https://${{ vars.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+      BUCKET: ${{ vars.BACKUP_BUCKET }}
+      SENTRY_CRON_URL: ${{ vars.SENTRY_BACKUP_CRON_URL }}
+    steps:
+      - name: Tell Sentry the backup started
+        if: env.SENTRY_CRON_URL != ''
+        run: curl -fsS -m 10 "$SENTRY_CRON_URL?status=in_progress" > /dev/null || true
+
+      - uses: actions/checkout@v4
+
+      - name: Install PostgreSQL 17 client and age
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client-17 age > /dev/null
+          echo /usr/lib/postgresql/17/bin >> "$GITHUB_PATH"
+
+      - name: Dump (read-only, one consistent snapshot)
+        env:
+          DATABASE_URL: ${{ secrets.BACKUP_DATABASE_URL }}
+        run: scripts/release/backup/dump.sh "$RUNNER_TEMP/backup"
+
+      - name: Prove the dump restores completely
+        run: scripts/release/backup/restore-check.sh "$RUNNER_TEMP/backup" "$RUNNER_TEMP/evidence.json"
+
+      - name: Encrypt, upload and verify the stored copy
+        env:
+          RECIPIENT: ${{ vars.BACKUP_AGE_RECIPIENT }}
+          REASON: ${{ inputs.reason }}
+        run: |
+          set -euo pipefail
+          stamp=$(date -u +%Y-%m-%dT%H%MZ)
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            slug=$(printf '%s' "$REASON" | tr -cs 'A-Za-z0-9._-' '-' | cut -c1-60)
+            key="manual/$stamp-$slug.tar.age"
+          else
+            key="daily/$stamp.tar.age"
+          fi
+          file="$RUNNER_TEMP/backup.tar.age"
+          rm -f "$RUNNER_TEMP/backup/restored-metadata.json"
+          tar -C "$RUNNER_TEMP/backup" -cf - . | age -r "$RECIPIENT" > "$file"
+          rm -rf "$RUNNER_TEMP/backup"
+          sum=$(sha256sum "$file" | cut -d' ' -f1)
+          s3() { aws s3 --endpoint-url "$R2_ENDPOINT" --only-show-errors "$@"; }
+          s3 cp "$file" "s3://$BUCKET/$key" --metadata "sha256=$sum"
+          s3 cp "$RUNNER_TEMP/evidence.json" "s3://$BUCKET/$key.evidence.json"
+          if [ "$GITHUB_EVENT_NAME" = schedule ] && [ "$(date -u +%d)" = 01 ]; then
+            s3 cp "s3://$BUCKET/$key" "s3://$BUCKET/monthly/$stamp.tar.age"
+          fi
+          s3 cp "s3://$BUCKET/$key" "$RUNNER_TEMP/check.tar.age"
+          [ "$(sha256sum "$RUNNER_TEMP/check.tar.age" | cut -d' ' -f1)" = "$sum" ]
+          head -c 64 "$RUNNER_TEMP/check.tar.age" | grep -q 'age-encryption.org/v1'
+          printf '%s\n' "$key" | s3 cp - "s3://$BUCKET/LATEST"
+          {
+            echo "### Backup stored"
+            echo "- \`$key\` ($(du -h "$file" | cut -f1), sha256 \`${sum:0:12}…\`)"
+            python3 -c "import json;e=json.load(open('$RUNNER_TEMP/evidence.json'));print(f\"- restore proven: {e['tables']} tables, {e['rows']} rows, {e['policies']} policies, {e['migrations']} migrations in {e['restore_seconds']}s\")"
+          } >> "$GITHUB_STEP_SUMMARY"
+          rm -f "$file" "$RUNNER_TEMP/check.tar.age"
+
+      - name: Tell Sentry the result
+        if: always() && env.SENTRY_CRON_URL != ''
+        run: curl -fsS -m 10 "$SENTRY_CRON_URL?status=${{ job.status == 'success' && 'ok' || 'error' }}" > /dev/null || true
