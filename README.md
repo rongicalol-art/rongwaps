@@ -96,7 +96,4 @@ rongwaps/
 
 ## 🏗️ Deployment
 
-The application is deployed on **Render** (linked to the `main` branch) and connects to a production **Supabase** instance.
-
-- Deployment configuration is defined in `render.yaml`.
-- Production bundle is built using `npm run build`.
+`main` deploys to staging and `production` to https://ronsmandarin.com, through pull requests, CI checks, browser journeys and an automatic post-release check with rollback. See [docs/RELEASING.md](docs/RELEASING.md).
