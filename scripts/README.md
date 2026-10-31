@@ -13,6 +13,7 @@ None of this code ships to learners. Run via the matching `npm run …` alias or
 | `fonts/` | `split-chinese-fonts.py` (`npm run fonts:split`): slices `content/fonts/*.woff2` into unicode-range woff2 under `public/fonts/<family>/` + `src/styles/fonts.generated.css`; rerun after content changes |
 | `memory-hooks/` | hook-generation pipeline (finished experiments in `archive/`); `phonetic/`, `jev/` hold sound-hook and Jev tooling |
 | `dev/` | one-off helpers (`listTables.mjs`, `ui_sweep.py`) |
+| `release/` | release safety used by CI and git hooks: `secretScan.ts`, `checkMigrations.ts` (see `docs/RELEASING.md`) |
 | `lib/` | shared script helpers |
 
 Secrets: `scripts/.config.json` and `.env*` are never read by agents or committed.

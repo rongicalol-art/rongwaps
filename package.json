@@ -7,6 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
     "dev": "NODE_ENV=development tsx server/index.ts",
     "dev:book2-audio": "VITE_BOOK2_AUDIO_LOCAL=true npm run dev",
     "fonts:split": "python3 scripts/fonts/split-chinese-fonts.py",
@@ -77,7 +78,8 @@
     "games:types": "wrangler types games/worker-configuration.d.ts --config games/wrangler.jsonc",
     "games:check": "npm run games:types && tsc --project games/tsconfig.json && wrangler deploy --dry-run --config games/wrangler.jsonc",
     "games:test": "node tests/games/runtime.mjs",
-    "games:deploy": "wrangler deploy --config games/wrangler.jsonc"
+    "games:deploy": "wrangler deploy --config games/wrangler.jsonc",
+    "release:check-migrations": "tsx scripts/release/checkMigrations.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",
