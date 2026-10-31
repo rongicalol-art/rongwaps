@@ -72,7 +72,8 @@ jobs:
           REASON: ${{ inputs.reason }}
         run: |
           set -euo pipefail
-          stamp=$(date -u +%Y-%m-%dT%H%MZ)
+          # Seconds plus the run id: two backups can never share a key.
+          stamp="$(date -u +%Y-%m-%dT%H%M%SZ)-r$GITHUB_RUN_ID"
           if [ -n "$REASON" ]; then
             slug=$(printf '%s' "$REASON" | tr -cs 'A-Za-z0-9._-' '-' | cut -c1-60)
             key="manual/$stamp-$slug.tar.age"
