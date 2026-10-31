@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { audioService } from '../../../services/audioService';
+import { recordedOnly } from '../../../services/audio/recordingFile';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardFlow } from './useCardFlow';
 import { usePracticeHeaderRegistration } from '../../../hooks/usePracticeHeaderRegistration';
@@ -97,7 +98,7 @@ export function useFlashcardFlow({
     if (flowStatusRef.current === 'playing' || !isFlipped || !currentCard) return;
     if (!autoPlayAudio && !manualRevealAudioRef.current) return;
     manualRevealAudioRef.current = false;
-    audioService.playCard(currentCard, pronunciationRate, { overlap: true });
+    audioService.playCard(currentCard, pronunciationRate, { overlap: true, ...recordedOnly(currentCard) });
   }, [autoPlayAudio, currentCard, isFlipped, pronunciationRate]);
 
   useEffect(() => {

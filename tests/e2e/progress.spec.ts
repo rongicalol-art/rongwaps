@@ -72,3 +72,19 @@ test('a finished grammar page is saved to the account', async ({ browser }) => {
   expect(grammarProgress(learner).startedPartIds).toContain('B1L01-P01-D01');
   await device.close();
 });
+
+test('flashcards still open when recordings fail to download', async ({ browser }) => {
+  const device = await deviceFor(browser, await signIn(await createLearner({ school: true })));
+  // The audio server is down: every recording request fails.
+  await device.route(/\.(?:mp3|m4a|opus)(?:\?|$)/, (route) => route.fulfill({ status: 503, body: '' }));
+  const page = await device.newPage();
+  await openLessonOne(page);
+  await page.getByRole('dialog', { name: /^Lesson 1:/ }).getByRole('button', { name: 'Start', exact: true }).click();
+  const practice = page.getByRole('dialog', { name: 'Flashcards practice' });
+  await expect(practice.getByText(/^1 \/ \d+$/)).toBeVisible();
+  await expect(page.getByText('Study couldn’t load')).toHaveCount(0);
+  await practice.getByRole('button', { name: 'Flip card' }).click();
+  await expect(practice.getByRole('button', { name: 'Got it', exact: true })).toBeVisible();
+  await device.close();
+});
+
