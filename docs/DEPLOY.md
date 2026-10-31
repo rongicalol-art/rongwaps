@@ -78,6 +78,14 @@ The checks ran on local Node 26; the deployment configuration requests Node 22. 
 - Start: `npm start`
 - Node version: `.nvmrc`
 
+## Release and rollback
+
+- Release: PR to `main` → CI `verify` green → try it on staging → merge → Render **Manual Deploy** of that commit. Apply any new migration first (staging, then production) and keep it backward compatible with the live client.
+- After deploy: `curl --fail https://ronsmandarin.com/healthz` returns `{"ok":true}`, then the smoke test below.
+- App rollback: Render → Deploys → pick the last good deploy → Rollback. It restores app code only, not the database; old installed PWAs update on their next prompt.
+- Data incident: don't ask learners to clear site data (unsynced work lives there). Preserve evidence, then restore from backup into an isolated project before touching production.
+- Baseline tag: `prod-baseline-2026-10-31` → `4daa0d4c` (local).
+
 ## Beta content trim and login gate
 
 - Full course packs and scans are bundled in `dist/data` so accounts with full-course grants can access all books and lessons, while the client and database gate non-granted accounts. `scripts/build/trimBetaContent.ts` can still be run manually if an asset-trimmed beta bundle is specifically desired.

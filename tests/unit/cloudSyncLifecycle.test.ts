@@ -317,3 +317,25 @@ test('sync refuses to acquire credentials for a different or signed-out account'
   session = { user: { id: 'A' }, access_token: 'A-token' };
   assert.equal(await transport.getSyncAuthorization('A'), 'Bearer A-token');
 });
+
+test('grammar completion from another device merges in, and a reset elsewhere clears stale local completion', async t => {
+  const f = fixture(t);
+  const { useCloudSyncFetch } = await loadHook<typeof import('../../src/hooks/useCloudSyncFetch')>('useCloudSyncFetch');
+  f.store.setState({ completedPageIds: ['local-page'], completedPartIds: ['local-part'], startedPartIds: [] });
+  f.service.getSyncState = async () => ({
+    ...cloud(), settings: { grammarProgress: { completedPageIds: ['other-device-page'], startedPartIds: ['p2'] } },
+  });
+  assert.equal(await useCloudSyncFetch({ currentUser: user('A'), ...refs() }).fetchFromCloud(), true);
+  assert.deepEqual(f.store.getState().completedPageIds, ['local-page', 'other-device-page']);
+  assert.deepEqual(f.store.getState().completedPartIds, ['local-part']);
+  assert.deepEqual(f.store.getState().startedPartIds, ['p2']);
+
+  f.store.getState().setProgressResetSeen('A', '2026-10-01T00:00:00Z');
+  f.service.getSyncState = async () => ({
+    ...cloud(), progressResetAt: '2026-10-30T00:00:00Z',
+    settings: { grammarProgress: { completedPageIds: ['after-reset-page'] } },
+  });
+  assert.equal(await useCloudSyncFetch({ currentUser: user('A'), ...refs() }).fetchFromCloud(), true);
+  assert.deepEqual(f.store.getState().completedPageIds, ['after-reset-page']);
+  assert.deepEqual(f.store.getState().completedPartIds, []);
+});

@@ -23,6 +23,20 @@ test('local Google sign-in returns to the current origin', () => {
   );
 });
 
+test('a staging production build keeps Google sign-in on its configured app', () => {
+  assert.equal(
+    getOAuthRedirectUrl('https://untrusted.example', true, 'https://ronsmandarin-staging.onrender.com/'),
+    'https://ronsmandarin-staging.onrender.com/',
+  );
+  assert.equal(
+    getOAuthRedirectUrl('http://localhost:3000', false, 'https://ronsmandarin-staging.onrender.com/'),
+    'http://localhost:3000/',
+  );
+  for (const url of ['http://staging.example/', 'https://user:password@staging.example/']) {
+    assert.throws(() => getOAuthRedirectUrl('https://staging.example', true, url), /HTTPS app address/);
+  }
+});
+
 test('callback without an auth error does not show an error', () => {
   assert.equal(getOAuthCallbackErrorMessage('?code=abc', ''), null);
 });

@@ -86,11 +86,13 @@ export function useWorkspaceRouting({
       store.setIsReviewMode(false);
       store.setActiveReviewSessionCards(null);
       store.setIsSearchOpen(false);
+      // Off any tab route (not-found, join invite) the current tab still has to be navigated to.
+      if (!routeTab && location.pathname !== '/') navigate(TAB_ROUTES[tab]);
     } else {
       navigate(TAB_ROUTES[tab]);
     }
     if (!isDesktop()) setIsNavOpen(false);
-  }, [isFocusMode, collapseNav, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, navigate, isDesktop, setIsNavOpen]);
+  }, [isFocusMode, collapseNav, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, navigate, isDesktop, setIsNavOpen, routeTab, location.pathname]);
 
   const handleNavToggle = useCallback(() => {
     if (isDesktopOrTablet) {

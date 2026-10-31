@@ -22,6 +22,7 @@ import { create } from 'zustand';
 import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
 import { debugLogger } from '../utils/debug/debugLogger';
+import { reportStorageFailure } from '../services/errorReporting';
 import { migrateLegacyLessonSelection } from '../utils/lesson/lessonPartSelection';
 import { migrateLegacyStores } from '../utils/sync/legacyStoreMigration';
 import {
@@ -153,9 +154,22 @@ function flushPendingPersist(): void {
 
   if (typeof indexedDB === 'undefined') return;
   pendingWriteLastValue = pending.value;
-  void set(pending.name, pending.value).catch(() => {
-    // Cache writes are optional and must never block the store.
-  });
+  // Never blocks the store, but never fails silently: the learner is told their
+  // progress lives only in memory (localSaveFailed) until a write lands again.
+  void Promise.resolve()
+    .then(() => set(pending.name, pending.value))
+    .then(() => setLocalSaveFailed(false), (error: unknown) => {
+      // Forget the failed value so the next store change retries the write.
+      if (pendingWriteLastValue === pending.value) pendingWriteLastValue = null;
+      debugLogger.error('Sync', 'IndexedDB write failed; progress is only in memory', error);
+      reportStorageFailure(error);
+      setLocalSaveFailed(true);
+    });
+}
+
+function setLocalSaveFailed(failed: boolean): void {
+  // Only on change: an unchanged flag must not trigger another persist cycle.
+  if (useAppStore.getState().localSaveFailed !== failed) useAppStore.setState({ localSaveFailed: failed });
 }
 
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {

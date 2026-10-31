@@ -66,7 +66,7 @@
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
 | AlertBanner | `AlertBanner.tsx` | `variant` danger/warning/info/success; `title`, `onDismiss`, action slot. |
-| TopToast | `TopToast.tsx` | Notice card that drops in at the top (top-right from `md`), same card and spring as the quiz-invite toast: `icon`, `title`, `message`, quiet dismiss plus one primary action; `open` drives enter/exit; `inline` for DEV previews. Used by the legal-update and new-version notices. |
+| TopToast | `TopToast.tsx` | Notice card that drops in at the top (top-right from `md`), same card and spring as the quiz-invite toast: `icon`, `title`, `message`, quiet dismiss plus an optional primary action; `open` drives enter/exit; `inline` for DEV previews. Used by the legal-update, new-version and can't-save-on-this-device notices. |
 | EmptyState | `EmptyState.tsx` | Icon badge + headline + copy + optional action; `compact` for drawers. |
 | CircularProgress | `CircularProgress.tsx` | SVG ring; clamped `value`. |
 | CustomProgressBar | `CustomProgressBar.tsx` | Rounded bar; `progress`, `accentClassName`. |

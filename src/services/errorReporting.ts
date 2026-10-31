@@ -48,3 +48,13 @@ export function reportAudioFailure(error: unknown, tags: Record<string, string>)
   const message = error instanceof Error ? error.message.slice(0, 160) : '';
   void sentryClient.then((Sentry) => Sentry?.captureMessage(`Audio failed: ${key}`, { level: 'warning', tags: { ...tags, errorName: name }, contexts: { audio: { message } } }));
 }
+
+let reportedStorageFailure = false;
+
+/** One anonymous note per session when progress could not be written to the device (error name only, no learner data). */
+export function reportStorageFailure(error: unknown) {
+  if (!sentryClient || reportedStorageFailure) return;
+  reportedStorageFailure = true;
+  const name = error instanceof Error ? error.name : 'Unknown';
+  void sentryClient.then((Sentry) => Sentry?.captureMessage(`Local save failed: ${name}`, { level: 'warning', tags: { errorName: name } }));
+}

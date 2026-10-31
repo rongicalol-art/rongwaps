@@ -3,7 +3,7 @@ import test from 'node:test';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { buildStudyPacks } from '../../scripts/performance/studyPacks';
-import { closeDictionary } from '../../server/dictionary';
+import { closeDictionary, lookupDictionary } from '../../server/dictionary';
 
 process.env.NODE_ENV = 'test';
 const { app } = await import('../../server/index');
@@ -33,6 +33,15 @@ test('dictionary API authenticates, bounds requests, serves small results and ke
   });
   const headers = { Authorization: 'Bearer dictionary-fixture', 'Content-Type': 'application/json' };
   try {
+    const health = await fetch(base + '/healthz');
+    assert.equal(health.headers.get('x-robots-tag'), null);
+    process.env.APP_ENV = 'staging';
+    try {
+      const stagingHealth = await fetch(base + '/healthz');
+      assert.equal(stagingHealth.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
+    } finally {
+      delete process.env.APP_ENV;
+    }
     assert.equal((await fetch(base + '/api/dictionary/search?q=teacher')).status, 401);
     access = false;
     assert.equal((await fetch(base + '/api/dictionary/search?q=teacher', { headers })).status, 403);
@@ -63,6 +72,12 @@ test('dictionary API authenticates, bounds requests, serves small results and ke
     }
     const examples = await fetch(base + '/api/dictionary/examples?word=' + encodeURIComponent('同學'), { headers });
     assert.equal(examples.status, 200); assert.ok((await examples.json() as unknown[]).length);
+    // Worker coverage belongs after this fixture prepares the generated packs.
+    // Another test file must not depend on this one's cache or race its writes.
+    const batches = Array.from({ length: 15 }, (_, i) =>
+      Array.from({ length: 30 }, (_, j) => String.fromCodePoint(0x4e00 + i * 30 + j)),
+    );
+    assert.equal((await Promise.all(batches.map(batch => lookupDictionary(batch)))).length, 15);
     console.log(JSON.stringify({ coldDictionaryMs: Math.round(coldMs), warmDictionaryMs: Math.round(warmMs), searchResponseBytes: Buffer.byteLength(bytes) }));
   } finally {
     closeDictionary();

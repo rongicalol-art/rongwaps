@@ -13,6 +13,7 @@ import {
   mergePulledSrsData,
 } from '../utils/sync/cloudSyncQueue';
 import {
+  mergeGrammarProgress,
   resolveCloudMetadataPatch,
   resolveGuestFolderMigration,
 } from '../utils/sync/cloudMetadata';
@@ -89,6 +90,7 @@ export function useCloudSyncFetch({
         });
       if (epoch?.wiped) {
         setSrsDataAndLearnedCards(epoch.srsData, epoch.learnedCards);
+        useAppStore.getState().resetGrammarProgress();
         // Nothing local is known to be on the server any more.
         setSyncCheckpoint({ userId: currentUser.id, cursor: null, srs: {} });
         // An incremental pull omits rows older than the cursor, which the wipe
@@ -139,6 +141,9 @@ export function useCloudSyncFetch({
         );
         baselineAfterPull = baseline;
       }
+
+      const grammarPatch = mergeGrammarProgress(cloudData.settings, useAppStore.getState());
+      if (Object.keys(grammarPatch).length > 0) useAppStore.setState(grammarPatch);
 
       useAppStore.getState().mergeReviewHistory(
         cloudData.reviewEvents,

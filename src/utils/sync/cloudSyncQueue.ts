@@ -12,6 +12,9 @@ export interface CloudSyncFingerprintState extends Partial<ProfileSettings> {
   characterPreference: string;
   selectedLessons: number[];
   selectedBooks: number[];
+  startedPartIds?: string[];
+  completedPageIds?: string[];
+  completedPartIds?: string[];
 }
 
 interface FingerprintedSnapshot<T> {
@@ -38,6 +41,7 @@ export function createCloudSyncFingerprint(
     state.selectedLessons,
     state.selectedBooks,
     state.displayName, state.avatarColor, state.coverPreset, state.avatarPath, state.coverPath,
+    state.startedPartIds ?? [], state.completedPageIds ?? [], state.completedPartIds ?? [],
   ]);
 }
 
