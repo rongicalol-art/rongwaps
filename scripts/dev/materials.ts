@@ -8,10 +8,12 @@
  *   npx tsx scripts/dev/materials.ts pull <prefix>   bucket → materials/, e.g. book3/L07
  *   npx tsx scripts/dev/materials.ts list [prefix]
  *
- * Env: MATERIALS_R2_ACCOUNT_ID, MATERIALS_R2_ACCESS_KEY_ID,
- * MATERIALS_R2_SECRET_ACCESS_KEY, optional MATERIALS_BUCKET (rongwaps-materials).
- * Cloud sessions get a read-only token; push needs a read-write one.
+ * Env (from the environment or .env): MATERIALS_R2_ACCOUNT_ID,
+ * MATERIALS_R2_ACCESS_KEY_ID, MATERIALS_R2_SECRET_ACCESS_KEY, optional
+ * MATERIALS_BUCKET (rongwaps-materials). Cloud sessions get a read-only token
+ * in their environment settings; the Mac's .env holds a read-write one.
  */
+import 'dotenv/config';
 import { GetObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { createHash } from 'node:crypto';
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
