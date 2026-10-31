@@ -22,8 +22,9 @@
     "clean": "rm -rf dist dist-server",
     "clean:local": "rm -rf output dist dist-server .audit .vite",
     "typecheck": "node --stack-size=6000 node_modules/typescript/lib/tsc.js --noEmit",
-    "lint": "eslint src shared tests server scripts games vite.config.ts --max-warnings=0",
+    "lint": "eslint src shared tests server scripts games vite.config.ts playwright.config.ts --max-warnings=0",
     "test": "ACCEPTANCE_STRICT=true tsx --test tests/*.test.ts tests/unit/*.test.ts tests/content/*.test.ts tests/pipeline/*.test.ts",
+    "test:e2e": "playwright test",
     "content:export": "tsx scripts/content/exportAuthoredContent.ts",
     "content:validate": "tsx scripts/content/validateLessons.ts",
     "vocab:simple": "tsx scripts/content/applySimpleDefinitions.ts",
@@ -108,6 +109,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.64.1",
     "@sentry/cli": "3.8.2",
     "@tailwindcss/vite": "^4.1.14",
     "@types/compression": "^1.8.1",
