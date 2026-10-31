@@ -73,7 +73,7 @@ Vocabulary packs reference verified, hash-named copies under `vocabulary-trimmed
 | --- | --- |
 | `PORT` | Listen port (default `3000`). |
 | `NODE_ENV` | `production` serves `dist/`; anything else mounts the Vite dev middleware. |
-| `SENTRY_DSN` | Optional server-side error reporting; disabled when unset. |
+| `SENTRY_DSN` | Optional server-side error reporting DSN. When unset the server uses the browser's public `VITE_SENTRY_DSN` (same project); reporting is off only when both are unset, outside production, or on staging (`APP_ENV=staging`). |
 
 Supabase credentials are read by the server-owned client in `server/supabase.ts`; the server never
 imports browser application code.
