@@ -1,0 +1,4 @@
+#!/bin/sh
+# Stops a commit that contains a credential, before it can leave this machine.
+# Uses the same patterns as the CI test (scripts/release/secretScan.ts).
+exec npx --no-install tsx scripts/release/secretScan.ts --staged

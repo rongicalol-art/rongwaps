@@ -1,0 +1,19 @@
+#!/bin/sh
+# Blocks direct pushes to the branches that deploy: main (staging) and
+# production (live site). Changes reach them only through pull requests, so CI
+# runs first. GitHub cannot enforce this on a free private repo, so this hook
+# (plus the Claude and Codex guards) does.
+#
+# Owner-only emergency override, typed by hand: ALLOW_PROTECTED_PUSH=1 git push ...
+[ "$ALLOW_PROTECTED_PUSH" = "1" ] && exit 0
+
+status=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/production)
+      echo "pre-push: refusing to push to ${remote_ref#refs/heads/}. Open a pull request instead (see docs/RELEASING.md)." >&2
+      status=1
+      ;;
+  esac
+done
+exit $status
