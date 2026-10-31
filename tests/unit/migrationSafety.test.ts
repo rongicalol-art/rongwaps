@@ -35,6 +35,13 @@ test('destructive statements fail without a contract declaration', () => {
   assert.equal(problems.length, 8, problems.join('\n'));
 });
 
+test('destructive statements are caught in DO blocks and short forms', () => {
+  assert.equal(checkNewMigration(NEW, 'do $$ begin delete from public.events; end $$;', LATEST).length, 1);
+  assert.equal(checkNewMigration(NEW, 'alter table public.cards drop hint;', LATEST).length, 1);
+  assert.equal(checkNewMigration(NEW, 'alter table public.cards alter column hint set not null;', LATEST).length, 1);
+  assert.deepEqual(checkNewMigration(NEW, 'alter table public.cards drop constraint old_check, add constraint new_check check (true);\nalter table public.cards alter column hint drop default;', LATEST), []);
+});
+
 test('a declared contract step passes', () => {
   assert.deepEqual(checkNewMigration(NEW, '-- migration-safety: contract client 2026.11 stopped calling old_rpc\ndrop function public.old_rpc(jsonb);', LATEST), []);
 });

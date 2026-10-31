@@ -17,7 +17,7 @@ const MAX_BYTES = 5_000_000;
 const PATTERNS: Array<[string, RegExp]> = [
   ['Supabase secret key', /\bsb_secret_[A-Za-z0-9_-]{20,}/],
   ['Supabase access token', /\bsbp_(?:oauth_|v0_)?[a-f0-9]{40}\b/],
-  ['private key', /-----BEGIN (?:RSA |EC |OPENSSH |PGP )?PRIVATE KEY(?: BLOCK)?-----/],
+  ['private key', /-----BEGIN (?:RSA |EC |DSA |OPENSSH |PGP |ENCRYPTED )?PRIVATE KEY(?: BLOCK)?-----/],
   ['age secret key', /\bAGE-SECRET-KEY-1[0-9A-Z]{50,}/],
   ['GitHub token', /\b(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{50,})/],
   ['Sentry auth token', /\bsntry[su]_[A-Za-z0-9_=+/-]{40,}/],

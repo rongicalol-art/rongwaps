@@ -23,18 +23,23 @@ const CONTRACT_MARKER = /^\s*--\s*migration-safety:\s*contract\s+\S.{10,}$/im;
 
 const DESTRUCTIVE: Array<[string, RegExp]> = [
   ['drops a table, view, schema or type', /\bdrop\s+(?:table|view|materialized\s+view|schema|type|sequence|extension)\b/i],
-  ['drops a column', /\bdrop\s+column\b/i],
+  ['drops a column', /\bdrop\s+column\b|\balter\s+table\b[^;]*\bdrop\s+(?!column\b|constraint\b|default\b|not\s+null\b|identity\b|expression\b)(?:if\s+exists\s+)?"?[a-z_][a-z0-9_]*"?\s*(?:cascade\b|restrict\b)?\s*(?:,|;|$)/im],
   ['drops a function the previous client may call', /\bdrop\s+function\b/i],
   ['renames a table or column', /\balter\s+table\b[^;]*\brename\b/i],
   ['changes a column type', /\balter\s+column\s+\S+\s+(?:set\s+data\s+)?type\b/i],
-  ['truncates a table', /(?:^|;)\s*truncate\b/im],
-  ['deletes rows', /(?:^|;)\s*delete\s+from\b/im],
+  ['truncates a table', /(?:^|;|\b(?:begin|then|else|loop)\b)\s*truncate\b/im],
+  ['deletes rows', /(?:^|;|\b(?:begin|then|else|loop)\b)\s*delete\s+from\b/im],
+  ['makes an existing column NOT NULL (fails on existing nulls; old clients may still write null)', /\balter\s+column\s+\S+\s+set\s+not\s+null\b/i],
   ['adds a NOT NULL column without a default (old clients cannot insert)', /\badd\s+column\b(?![^;,]*\bdefault\b)[^;,]*\bnot\s+null\b/i],
 ];
 
-/** Removes comments and dollar-quoted bodies (function code runs later, not at migration time). */
+/**
+ * The SQL that runs while migrating: comments and strings removed, function
+ * bodies removed (they run later), but DO-block bodies kept (they run now).
+ */
 function executableSql(sql: string): string {
   return sql
+    .replace(/\bdo\s+(\$[A-Za-z_]*\$)([\s\S]*?)\1/gi, ' ; $2 ; ')
     .replace(/\$([A-Za-z_]*)\$[\s\S]*?\$\1\$/g, ' ')
     .replace(/\/\*[\s\S]*?\*\//g, ' ')
     .replace(/--[^\n]*/g, ' ')
@@ -72,6 +77,7 @@ function run(baseRef: string): number {
   const existing = git(['ls-tree', '--name-only', base, `${DIR}/`]).split('\n').filter((path) => path.endsWith('.sql')).map((path) => basename(path));
   const latest = existing.map(versionOf).sort().at(-1) ?? '';
   const changes = git(['diff', '--name-status', '--no-renames', base, 'HEAD', '--', DIR]).split('\n').filter(Boolean);
+  const added = new Set<string>();
   let failures = 0;
   const fail = (path: string, message: string) => {
     failures += 1;
@@ -84,6 +90,9 @@ function run(baseRef: string): number {
       fail(path, 'Applied migrations are immutable: add a new migration instead of editing or deleting this one.');
       continue;
     }
+    const version = versionOf(basename(path));
+    if (added.has(version)) fail(path, `another new migration already uses version ${version}`);
+    added.add(version);
     for (const problem of checkNewMigration(basename(path), readFileSync(path, 'utf8'), latest)) fail(path, problem);
   }
   console.log(failures ? `Migration safety: ${failures} problem(s).` : `Migration safety: ${changes.length} change(s) checked, OK.`);
