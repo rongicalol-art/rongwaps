@@ -165,3 +165,42 @@ The 2026-10-22 five-run local benchmark on 1,000 authored cards reduced median r
 Practice opening also waits for examples, word lookups, the course vocabulary map, the search worker and the first four recordings; the current recording's decoder primes before reveal. Lessons up to 128 cards prepare together; bulk decks prepare the first 128 and use the existing rolling card preload afterward. Only four example/shard loads run concurrently per batch. Active study pins its dictionary and extras shards; close releases them to the normal idle cache limits. The search index survives the study session, then expires after ten visible idle minutes or one hidden idle minute. Protected content remains memory-only.
 
 Check cancellation, a failed preparation followed by retry, a warm reopen and a dictionary return after more than one minute. Exact dictionary matches must appear while the full index is still downloading; a ready index must also display results without waiting for a slower exact shard. Course annotations enrich results afterward. Examples and related words have independent loading states. Generated course-word examples must not load the whole course-example corpus again. Test these paths with service fixtures or DEV previews, without rating a real card.
+
+## Staging release checks
+
+Staging uses the Free Supabase project `zpljyjcbqkrelpdzvmqz` and the separate
+`rons-mandarin-games-staging` Worker, configured in `games/wrangler.staging.jsonc`.
+Its app address is `https://ronsmandarin-staging.onrender.com`.
+Use synthetic accounts and progress only. Never restore a production backup here.
+
+The Render staging service uses manual deployments, `/healthz`, Node 22,
+`npm ci --include=dev && npm run build`, and `npm run start`. Its variables are
+`APP_ENV=staging`, `NODE_ENV=production`, `NODE_VERSION=22`, `TRUST_PROXY=1`,
+`VITE_SUPABASE_URL=https://zpljyjcbqkrelpdzvmqz.supabase.co`, the **staging publishable**
+key in `VITE_SUPABASE_ANON_KEY`,
+`VITE_AUTH_REDIRECT_URL=https://ronsmandarin-staging.onrender.com/`,
+`GAMES_SERVER_URL=https://rons-mandarin-games-staging.ronm222007.workers.dev`, and
+`VITE_AUDIO_BASE_URL=https://audio.ronsmandarin.com` for public audio reads.
+It receives no production write keys, SMTP credentials or monitoring DSNs.
+Staging responses include `X-Robots-Tag: noindex, nofollow, noarchive`.
+
+Google OAuth needs a separate staging client with callback
+`https://zpljyjcbqkrelpdzvmqz.supabase.co/auth/v1/callback`. Until that client is
+configured, signup is disabled. Email, phone and anonymous login are disabled;
+the normal school access hooks remain enabled. Do not bypass them for testing.
+The staging inactive-account cron job is disabled independently of production.
+
+Keep the checkout's production Supabase link intact. Staging CLI operations use
+a separate restricted working directory and must assert the staging project ref
+before `supabase db push`. Apply migrations there first; never use a production
+database URL or production backup to seed staging.
+
+Before promotion, verify sign-in returns to staging, one learning session syncs
+after reload and on a second browser, another account cannot read that progress,
+signed-out data requests return 401, and the games Worker rejects the production
+origin. Record the tested commit and demonstrate an app rollback to the previous
+staging artifact without resetting the database. A green build alone does not
+complete these checks. Production release still needs the owner's approval.
+
+Render Free services share workspace hours and build minutes. Let staging idle
+between tests; do not add a keepalive monitor. Check usage before a test batch.
