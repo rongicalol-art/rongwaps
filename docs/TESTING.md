@@ -14,6 +14,18 @@ Runner: Node native test runner (`node:test` + `node:assert/strict`) via `tsx`. 
 
 Without `ACCEPTANCE_STRICT=true`, acceptance tests for unfinished criteria skip with a message; `npm test` always enforces them.
 
+## Browser journeys (Playwright)
+
+`tests/e2e/*.spec.ts` drive the production build in Chrome (desktop) and Safari's engine (phone) against a throwaway local Supabase stack: every migration, the real school gate and RLS, fake learners only (`tests/e2e/support/stack.ts` refuses any non-local URL). Covered: school sign-in and outsider refusal, account isolation through the public API, vocabulary reviews saving through an offline gap and appearing on a second device, grammar completion syncing. Recordings are served from a silent local clip.
+
+```sh
+supabase start
+VITE_SUPABASE_URL=http://127.0.0.1:54321 VITE_SUPABASE_ANON_KEY=<from supabase status> npm run build
+npm run test:e2e
+```
+
+CI runs them on every push to `production` (Deploy waits for them), nightly on `main`, and on PRs touching saving, sign-in, the server or the database. A scratch stack works too: `E2E_SUPABASE_WORKDIR=<dir> E2E_SUPABASE_PROJECT=<project_id>`.
+
 ## Layout
 
 ```

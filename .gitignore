@@ -54,3 +54,7 @@ graphify-out/
 exercise-screenshots/
 outputs/
 public/audio/
+
+# Playwright journeys (tests/e2e)
+test-results/
+playwright-report/

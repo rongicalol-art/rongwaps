@@ -34,6 +34,7 @@
     "scripts",
     "tests",
     "vite.config.ts",
+    "playwright.config.ts",
     "shared"
   ]
 }
