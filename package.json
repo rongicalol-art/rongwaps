@@ -75,7 +75,7 @@
     "perf:check": "tsx scripts/performance/checkBudget.ts",
     "games:dev": "wrangler dev --config games/wrangler.jsonc",
     "games:types": "wrangler types games/worker-configuration.d.ts --config games/wrangler.jsonc",
-    "games:check": "tsc --project games/tsconfig.json && wrangler deploy --dry-run --config games/wrangler.jsonc",
+    "games:check": "npm run games:types && tsc --project games/tsconfig.json && wrangler deploy --dry-run --config games/wrangler.jsonc",
     "games:test": "node tests/games/runtime.mjs",
     "games:deploy": "wrangler deploy --config games/wrangler.jsonc"
   },
