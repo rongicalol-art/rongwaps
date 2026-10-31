@@ -14,6 +14,25 @@ test('shuffleItems keeps every card and never returns the original order', () =>
   }
 });
 
+test('shuffleItems never shows the original order when equal-looking items repeat', () => {
+  const tiles = ['他', '又', '高', '又', '帥', '很'].map((text) => ({ text }));
+  const looksSame = (a: { text: string }, b: { text: string }) => a.text === b.text;
+  const original = tiles.map((tile) => tile.text).join('');
+  const realRandom = Math.random;
+  try {
+    // A shuffle that only swaps the two 又 tiles (positions 1 and 3), the case that used to slip through.
+    const swapOnlyRepeats = [5, 4, 1, 2, 1].map((target, step) => (target + 0.5) / (6 - step));
+    let call = 0;
+    Math.random = () => swapOnlyRepeats[call++ % swapOnlyRepeats.length];
+    assert.equal(shuffleItems(tiles).map((tile) => tile.text).join(''), original, 'identity alone misses it');
+    call = 0;
+    assert.notEqual(shuffleItems(tiles, looksSame).map((tile) => tile.text).join(''), original);
+  } finally {
+    Math.random = realRandom;
+  }
+  for (let run = 0; run < 200; run += 1) assert.notEqual(shuffleItems(tiles, looksSame).map((tile) => tile.text).join(''), original);
+});
+
 test('restoreCardOrder rebuilds the saved shuffled order', () => {
   const result = restoreCardOrder(deck, ['c', 'a', 'd', 'b']);
   assert.deepEqual(result?.map((c) => c.id), ['c', 'a', 'd', 'b']);
