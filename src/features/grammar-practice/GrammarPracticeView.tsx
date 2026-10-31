@@ -46,8 +46,9 @@ export function GrammarPracticeView({
   const claimTray = useCallback((element: HTMLDivElement | null) => { if (element) setTrayHost(element); }, []);
   const checkRef = useRef<(() => void) | null>(null);
   const source = practice.items[index];
-  // Mix once on entry, not on each pick or retry. Every occurrence keeps its own identity.
-  const item = useMemo(() => 'tiles' in source ? { ...source, tiles: shuffleItems(source.tiles) } : source, [source]);
+  // Mix once on entry, not on each pick or retry. Every occurrence keeps its own identity,
+  // and the bank never shows the authored order (repeated words compared by what they show).
+  const item = useMemo(() => 'tiles' in source ? { ...source, tiles: shuffleItems(source.tiles, (a, b) => a.traditional === b.traditional) } : source, [source]);
   const Exercise = PRACTICE_EXERCISES[item.kind] as ComponentType<PracticeExerciseProps>;
   const needsInstruction = item.kind === 'reply-pick' || item.kind === 'match-pairs' || (item.kind === 'slot-build' && item.gaps);
   const title = item.quiet && !needsInstruction ? null : item.prompt ?? practice.title;
