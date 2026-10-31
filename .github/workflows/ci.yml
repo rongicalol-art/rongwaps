@@ -57,3 +57,36 @@ jobs:
           VITE_SUPABASE_ANON_KEY: placeholder-anon-key
       - name: Size budgets
         run: npm run perf:check
+
+  # A migration that would break restores must fail its PR, not the night it matters.
+  backup-selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Only when migrations or backup tooling change
+        id: changed
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = pull_request ]; then
+            git fetch --no-tags --depth=1 origin "$GITHUB_BASE_REF"
+            base="origin/$GITHUB_BASE_REF"
+          else
+            base=HEAD~1
+          fi
+          if git diff --quiet "$base" HEAD -- supabase/ scripts/release/backup/ .github/workflows/backup.yml; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: supabase/setup-cli@v3
+        if: steps.changed.outputs.run == 'true'
+        with:
+          version: 2.106.0
+      - name: Local Supabase with every migration
+        if: steps.changed.outputs.run == 'true'
+        run: supabase start -x studio,imgproxy,realtime,edge-runtime,logflare,vector,supavisor,mailpit,postgres-meta
+      - name: Dump and restore synthetic learners
+        if: steps.changed.outputs.run == 'true'
+        run: scripts/release/backup/selftest.sh supabase_db_rongwaps
