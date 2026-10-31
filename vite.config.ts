@@ -98,14 +98,18 @@ const pwaPlugin = VitePWA({
   // Reuse the existing hand-written public/manifest.json; do not generate a
   // second manifest from the plugin.
   manifest: false,
-  // 'prompt': a new service worker waits until the user taps Refresh
-  // (src/app/components/PwaUpdatePrompt.tsx) instead of swapping mid-session.
+  // 'prompt' (no auto-reload), but the new worker activates at once
+  // (skipWaiting below): open pages keep running and pick up the new build on
+  // their next load. A waiting worker could strand signed-out visitors, who
+  // never see PwaUpdatePrompt, on a stale build (e.g. after a key rotation).
   registerType: 'prompt',
   // Registration goes through virtual:pwa-register/react (single path).
   injectRegister: false,
   strategies: 'generateSW',
   devOptions: { enabled: false },
   workbox: {
+    skipWaiting: true,
+    clientsClaim: true,
     // Precache only the app shell. Large authored data packs (public/data,
     // public/videos) already load offline through IndexedDB
     // (staticContentService) and the audio Cache Storage, and must not be

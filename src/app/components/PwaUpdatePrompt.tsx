@@ -3,8 +3,9 @@ import { useRegisterSW } from 'virtual:pwa-register/react';
 import { TopToast } from '../../lib/widgets';
 
 /**
- * Single service-worker registration point. A new version waits until the user
- * accepts it, so the app is never swapped silently mid-session.
+ * Single service-worker registration point. New workers activate immediately
+ * (vite.config.ts skipWaiting) and apply on the next load; this toast covers
+ * the rare case where one still waits.
  */
 export function PwaUpdatePrompt() {
   const registration = useRef<ServiceWorkerRegistration | undefined>(undefined);
