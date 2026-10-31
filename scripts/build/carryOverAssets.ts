@@ -55,11 +55,13 @@ export async function carryOver(dist: string, origin: string | undefined, now = 
       const names = Object.keys(wanted);
       for (let index = 0; index < names.length; index += 8) {
         await Promise.all(names.slice(index, index + 8).map(async (name) => {
-          if (bytes > MAX_CARRIED_BYTES) return;
+          if (bytes >= MAX_CARRIED_BYTES) return;
           try {
             const asset = await fetchWithTimeout(`${origin.replace(/\/+$/, '')}/assets/${name}`, 30_000);
             if (!asset.ok) return;
             const body = Buffer.from(await asset.arrayBuffer());
+            // Checked and counted with no await in between, so parallel downloads never overshoot.
+            if (bytes + body.length > MAX_CARRIED_BYTES) return;
             writeFileSync(path.join(assetsDir, name), body);
             manifest.assets[name] = wanted[name];
             carried += 1;
