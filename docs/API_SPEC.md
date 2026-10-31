@@ -53,7 +53,7 @@ headers.
 
 - **Method**: `GET`
 - **Path**: `/healthz`
-- **Response**: `200 OK` with `{ "ok": true }`.
+- **Response**: `200 OK`, `Cache-Control: no-store`, with `{ "ok": true, "commit": "<deployed git SHA or null>", "env": "production" | "staging" | "development" }`. Release checks wait for `commit` to match the release.
 
 ### Protected lesson content
 

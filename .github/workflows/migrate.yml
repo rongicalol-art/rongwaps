@@ -1,0 +1,66 @@
+name: Migrate production
+
+# Owner-run (Actions → Migrate production → Run workflow), before merging a
+# Release PR that contains new migrations. Staging gets them automatically on
+# every merge to main (deploy.yml), so they are tried there first.
+# Order: fresh proven backup → dry run → apply → verify. The previous client
+# must keep working (expand → migrate → contract; CI enforces it).
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Commit or branch whose migrations to apply (normally main)'
+        required: true
+        default: main
+      confirm:
+        description: 'Type "production" to apply to the live database'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: migrate-production
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    if: inputs.confirm == 'production'
+    uses: ./.github/workflows/backup.yml
+    with:
+      reason: pre-migration-${{ inputs.ref }}
+    secrets: inherit
+
+  migrate:
+    needs: backup
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: supabase/setup-cli@v3
+        with:
+          version: 2.106.0
+      - name: Migration safety against what is live
+        run: |
+          git fetch --no-tags origin production
+          node scripts/release/checkMigrations.ts origin/production
+      - name: Dry run (what will change)
+        run: supabase db push --db-url "$DATABASE_URL" --dry-run | tee "$RUNNER_TEMP/plan.txt"
+      - name: Apply
+        run: supabase db push --db-url "$DATABASE_URL" --yes
+      - name: Verify every migration is recorded
+        run: |
+          applied=$(psql "$DATABASE_URL" --no-psqlrc -At -c 'select version from supabase_migrations.schema_migrations')
+          for file in supabase/migrations/*.sql; do
+            version=$(basename "$file" | cut -d_ -f1)
+            grep -qx "$version" <<< "$applied" || { echo "::error::$file is not applied"; exit 1; }
+          done
+          { echo "### Production migrations applied"; echo '```'; cat "$RUNNER_TEMP/plan.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
