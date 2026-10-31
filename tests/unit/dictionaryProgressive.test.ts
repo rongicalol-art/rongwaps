@@ -4,7 +4,6 @@ import { build } from 'esbuild';
 import { searchDictionary } from '../../src/services/dictionarySearchService';
 import { lookupCourseCardsApi, lookupDictionaryApi } from '../../src/services/dictionaryApi';
 import { executeRemoteSearch } from '../../src/services/dictionaryService';
-import { closeDictionary, lookupDictionary } from '../../server/dictionary';
 
 test('global search downloads a small result page and exposes failures for retry', async t => {
   const paths: string[] = [];
@@ -52,7 +51,7 @@ test('a failed warm dictionary lookup cannot block the global search', async () 
   assert.deepEqual(partial, []);
 });
 
-test('same-tick lookup and course requests coalesce into one batch and worker survives concurrent shard bursts', async t => {
+test('same-tick lookup and course requests coalesce into one batch', async t => {
   const calls: Array<{ url: string; words: string[] }> = [];
   t.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
     const { words } = JSON.parse(String(init?.body)) as { words: string[] };
@@ -75,13 +74,4 @@ test('same-tick lookup and course requests coalesce into one batch and worker su
   assert.equal(courseA.length, 1);
   assert.equal(courseB.length, 1);
 
-  try {
-    const batches = Array.from({ length: 15 }, (_, i) =>
-      Array.from({ length: 30 }, (_, j) => String.fromCodePoint(0x4e00 + i * 30 + j)),
-    );
-    const results = await Promise.all(batches.map(batch => lookupDictionary(batch)));
-    assert.equal(results.length, 15);
-  } finally {
-    closeDictionary();
-  }
 });

@@ -5,8 +5,17 @@ import { type Session, type User } from '@supabase/supabase-js';
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
 const productionAuthRedirectUrl = 'https://ronsmandarin.com/';
 
-export function getOAuthRedirectUrl(origin: string, isProduction: boolean): string {
-  return isProduction ? productionAuthRedirectUrl : new URL('/', origin).toString();
+export function getOAuthRedirectUrl(
+  origin: string,
+  isProduction: boolean,
+  configuredUrl: string | undefined = import.meta.env?.VITE_AUTH_REDIRECT_URL,
+): string {
+  if (!isProduction) return new URL('/', origin).toString();
+  const redirect = new URL(configuredUrl || productionAuthRedirectUrl);
+  if (redirect.protocol !== 'https:' || redirect.username || redirect.password) {
+    throw new Error('VITE_AUTH_REDIRECT_URL must be an HTTPS app address.');
+  }
+  return new URL('/', redirect).toString();
 }
 
 export function getOAuthCallbackErrorMessage(search: string, hash: string): string | null {
@@ -33,7 +42,7 @@ export function getOAuthCallbackErrorMessage(search: string, hash: string): stri
     return 'Google sign-in was cancelled. Try again when you’re ready.';
   }
   if (/redirect|allow.?list|not allowed/.test(details)) {
-    return 'Supabase blocked this return address. Add https://ronsmandarin.com/ to Authentication → URL Configuration → Redirect URLs.';
+    return `Supabase blocked this return address. Add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`;
   }
   if (/provider|google/.test(details)) {
     return 'Google sign-in is not enabled for this Supabase project. Check Authentication → Sign In / Providers.';
@@ -51,7 +60,7 @@ export function getOAuthLoginErrorMessage(error: unknown): string {
     return 'Sign-in is not configured. Check that VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set for this build.';
   }
   if (/redirect|allow.?list|not allowed/.test(message)) {
-    return 'Supabase blocked this return address. Add https://ronsmandarin.com/ to Authentication → URL Configuration → Redirect URLs.';
+    return `Supabase blocked this return address. Add ${getOAuthRedirectUrl(productionAuthRedirectUrl, true)} to Authentication → URL Configuration → Redirect URLs.`;
   }
   if (/provider|google/.test(message)) {
     return 'Google sign-in is not enabled for this Supabase project. Check Authentication → Sign In / Providers.';

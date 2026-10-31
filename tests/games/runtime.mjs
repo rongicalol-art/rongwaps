@@ -513,6 +513,7 @@ try {
   }
   const quota=await mf.dispatchFetch('https://games.test/rooms',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+await token('quota-user'),'Content-Type':'application/json'},body:JSON.stringify({name:'Quota',selection:{lessons:{1:[1]},types:[]}})});
   assert.equal(quota.status,429);
+  assert.equal((await quota.json()).error,'Room limit reached. Try again in an hour.');
 
   // The prior game used the same binding: incompatible persisted rooms expire safely after upgrade.
   await control('/__test/room/ZZZZZZ/alarm');
@@ -520,6 +521,11 @@ try {
   await legacySql.exec('INSERT INTO state VALUES (1,?)',JSON.stringify({code:'ZZZZZZ',players:[],phase:'playing',expiresAt:Date.now()+60000}));
   const legacyJoin = await mf.dispatchFetch('https://games.test/rooms/ZZZZZZ',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+await token('legacy-guest'),'Content-Type':'application/json'},body:JSON.stringify({name:'Guest'})});
   assert.equal(legacyJoin.status,400);
+  assert.equal((await legacyJoin.json()).error,'Room not found. Check the code.');
+  // Only known join errors reach the client; anything else gets the generic message.
+  const malformed = await mf.dispatchFetch('https://games.test/rooms/ZZZZZZ',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+await token('legacy-guest'),'Content-Type':'application/json'},body:'[]'});
+  assert.equal(malformed.status,400);
+  assert.equal((await malformed.json()).error,'Could not join. Check the code and your connection.');
   await control('/__test/room/ZZZZZZ/alarm');
   assert.equal((await legacySql.exec('SELECT * FROM state')).length,0);
 

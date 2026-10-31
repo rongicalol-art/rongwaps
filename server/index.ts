@@ -53,6 +53,7 @@ app.use((_req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   res.setHeader("X-Frame-Options", "DENY");
+  if (process.env.APP_ENV === 'staging') res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
   if (isProd) res.setHeader("Strict-Transport-Security", "max-age=31536000");
   next();
 });

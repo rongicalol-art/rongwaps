@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -17,6 +20,9 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      - run: npm run games:check
+      - run: npx --no-install wrangler deploy --dry-run --config games/wrangler.staging.jsonc
+      - run: npm run games:test
       - run: npm test
       - run: npm run jev:lint
       - run: npm run build

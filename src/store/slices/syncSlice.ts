@@ -22,6 +22,13 @@ export interface SyncState {
   setSyncError: (error: string | null) => void;
   syncCheckpoint: SyncCheckpoint | null;
   setSyncCheckpoint: (checkpoint: SyncCheckpoint | null) => void;
+  /**
+   * The last write of this store to the device (IndexedDB) failed: private
+   * mode, storage full or evicted. Progress lives only in memory until a
+   * write succeeds again. Runtime-only and device-scoped: never persisted and
+   * not reset on account switch. Owned by `useAppStore`'s persist writer.
+   */
+  localSaveFailed: boolean;
 }
 
 /** Cloud-sync status values, for consumers that render the sync surface. */
@@ -39,6 +46,7 @@ export function createSyncSlice(set: SetState): SyncState {
     setSyncError: (error) => set({ syncError: error }),
     syncCheckpoint: null,
     setSyncCheckpoint: (checkpoint) => set({ syncCheckpoint: checkpoint }),
+    localSaveFailed: false,
   };
 }
 
