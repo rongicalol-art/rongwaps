@@ -22,7 +22,7 @@ State lives in `.audit/cleanup-loop/` (gitignored scratch, the loop's memory bet
 
 1. If the owner said "done"/"stop": write the final summary to `REPORT.md` (see §6), stop the loop (`ScheduleWakeup` with `stop: true`), reply in ≤5 lines.
 2. `git status --short` and `git branch --show-current`.
-   - **First iteration** (no `LEDGER.md`): working tree must be clean. If dirty → write "Commit or stash your current work, then rerun `/loop /cleanup-loop`" to `REPORT.md`, stop the loop. If clean → `git checkout -b chore/cleanup-loop-<YYYY-MM-DD>`, create `LEDGER.md` + `REPORT.md` from the templates in §7, record the baseline LOC, then **copy every `- [ ]` item from [PLAN.md](PLAN.md) into the Backlog in the same order** (keep the W-ids). Do not run audits yet.
+   - **First iteration** (no `LEDGER.md`): working tree must be clean. If dirty → write "Commit or stash your current work, then rerun `/loop /cleanup-loop`" to `REPORT.md`, stop the loop. If clean → work in your own worktree (Claude Code: `EnterWorktree`; never switch the shared folder's branch) on a new branch `chore/cleanup-loop-<YYYY-MM-DD>` from `origin/main`, create `LEDGER.md` + `REPORT.md` from the templates in §7, record the baseline LOC, then **copy every `- [ ]` item from [PLAN.md](PLAN.md) into the Backlog in the same order** (keep the W-ids). Do not run audits yet.
    - **Later iterations**: must be on the `chore/cleanup-loop-*` branch. If the tree is dirty from a previous failed iteration → `git stash push -m "cleanup-loop abandoned"`, log it under Skipped, continue.
 3. Read `LEDGER.md`. Only once every PLAN.md item is done/skipped: if the backlog has < 3 open items, run the next audit pass in rotation (§2) before picking.
 
@@ -103,7 +103,7 @@ UI changes: also screenshot the affected screen at 390×844 and 1440×1000 and c
 
 ## 5. Commit + log
 
-- `git add` only the files this iteration touched. Commit: `refactor(<area>): <what>` / `fix(ui): <what>` / `chore(arch): <what>`; body = one line why. End with the attribution line the harness provides. Never push, never amend, never rebase.
+- `git add` only the files this iteration touched. Commit: `refactor(<area>): <what>` / `fix(ui): <what>` / `chore(arch): <what>`; body = one line why. End with the attribution line the harness provides. Push the branch after each commit (never `main`); never amend, never rebase. On "done", open one PR for the branch (the owner merges).
 - Update `LEDGER.md`: tick the item, append to Done with the commit short-SHA.
 - Append one line to `REPORT.md`: `- <sha> -N: <what> (<files>)`.
 - Update the LOC counter in LEDGER (`now: X · removed so far: Y`). Reply to the owner in ≤3 lines: item, `-N lines`, verify result, total removed so far. Then schedule the next iteration: `ScheduleWakeup` with `delaySeconds: 60`, `noop: false`, `prompt: "/cleanup-loop"`, a specific `reason`.
