@@ -17,12 +17,17 @@ const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 // The production bundle is built with NODE_ENV defined to "production".
 const isProd = process.env.NODE_ENV === "production";
-const errorMonitoringEnabled = isProd && Boolean(process.env.SENTRY_DSN);
+// One Sentry project serves both sides; the browser DSN is public by design.
+// Staging never reports (it has no DSN, and APP_ENV guards against copying one).
+const sentryDsn = process.env.SENTRY_DSN || process.env.VITE_SENTRY_DSN;
+const errorMonitoringEnabled = isProd && Boolean(sentryDsn) && process.env.APP_ENV !== "staging";
 
 if (errorMonitoringEnabled) {
   Sentry.init({
-    dsn: process.env.SENTRY_DSN,
+    dsn: sentryDsn,
     environment: "production",
+    release: process.env.RENDER_GIT_COMMIT,
+    initialScope: { tags: { runtime: "server" } },
     tracesSampleRate: 0,
     beforeBreadcrumb: () => null,
     beforeSend(event) {

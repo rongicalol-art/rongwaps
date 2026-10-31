@@ -109,6 +109,8 @@ Server (secret): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R
 
 Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see real IPs).
 
+Error tracking: the server reports to the same Sentry project as the browser (`SENTRY_DSN`, falling back to `VITE_SENTRY_DSN`; never on staging), tagged with the release (`RENDER_GIT_COMMIT`). Build-time secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (production only) upload hidden source maps for readable stack traces; `scripts/build/uploadSourceMaps.ts` then deletes every map from `dist`.
+
 `TYPESAFE_API_KEY` is used only by local/CI Jev content-review tools, not the deployed app server. Azure Speech credentials are not used. Remove obsolete `TYPESAFE_API_KEY`, `JEV_DAILY_LIMIT`, `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` settings from existing web-service environments; removing them from the Blueprint does not confirm deletion from an existing service.
 
 ## Supabase dashboard
