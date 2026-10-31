@@ -14,6 +14,12 @@ on:
         description: 'Why (e.g. before migration 20261105120000). Kept 90 days under manual/.'
         required: true
         default: manual
+  # migrate.yml calls this first, so every production migration has a fresh, proven backup.
+  workflow_call:
+    inputs:
+      reason:
+        type: string
+        required: true
 
 permissions:
   contents: read
@@ -54,7 +60,7 @@ jobs:
 
       - name: Dump (read-only, one consistent snapshot)
         env:
-          DATABASE_URL: ${{ secrets.BACKUP_DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
         run: scripts/release/backup/dump.sh "$RUNNER_TEMP/backup"
 
       - name: Prove the dump restores completely
@@ -67,7 +73,7 @@ jobs:
         run: |
           set -euo pipefail
           stamp=$(date -u +%Y-%m-%dT%H%MZ)
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+          if [ -n "$REASON" ]; then
             slug=$(printf '%s' "$REASON" | tr -cs 'A-Za-z0-9._-' '-' | cut -c1-60)
             key="manual/$stamp-$slug.tar.age"
           else
