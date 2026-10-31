@@ -10,6 +10,7 @@
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
     "dev": "NODE_ENV=development tsx server/index.ts",
     "dev:book2-audio": "VITE_BOOK2_AUDIO_LOCAL=true npm run dev",
+    "materials": "tsx scripts/dev/materials.ts",
     "fonts:split": "python3 scripts/fonts/split-chinese-fonts.py",
     "server": "tsx server/index.ts",
     "build:server": "esbuild server=server/index.ts dictionary.worker=server/dictionary.worker.ts --platform=node --bundle --outdir=dist-server --entry-names=[name] --format=esm --packages=external --external:express --external:@supabase/supabase-js --external:dotenv --define:process.env.NODE_ENV='\"production\"'",
