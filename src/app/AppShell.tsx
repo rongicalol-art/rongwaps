@@ -3,6 +3,7 @@ import { LoadingScreen } from '../lib/widgets';
 import { AppWorkspace } from './components/AppWorkspace';
 import { AppOverlays } from './components/AppOverlays';
 import { LegalUpdateNotice } from './components/LegalUpdateNotice';
+import { LocalSaveNotice } from './components/LocalSaveNotice';
 import { PwaUpdatePrompt } from './components/PwaUpdatePrompt';
 import { ResumeLaunch } from '../features/practice';
 import { useAppShell } from './hooks/useAppShell';
@@ -139,6 +140,7 @@ export default function AppShell() {
 
       <PwaUpdatePrompt />
       <LegalUpdateNotice />
+      <LocalSaveNotice />
     </>
   );
 }

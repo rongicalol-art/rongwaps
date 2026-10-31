@@ -11,9 +11,9 @@ export interface TopToastProps {
   /** Quiet button on the left. */
   dismissLabel?: string;
   onDismiss: () => void;
-  /** The one primary action. */
-  actionLabel: string;
-  onAction: () => void;
+  /** The one primary action; omit for a notice that only needs dismissing. */
+  actionLabel?: string;
+  onAction?: () => void;
   /** Flow in place instead of floating at the top (DEV previews). */
   inline?: boolean;
 }
@@ -51,7 +51,7 @@ export function TopToast({ open, title, message, icon = 'bell', dismissLabel = '
           </div>
           <div className="flex gap-2.5">
             <ActionButton variant="secondary" size="md" fullWidth onClick={onDismiss}>{dismissLabel}</ActionButton>
-            <ActionButton variant="primary" size="md" fullWidth onClick={onAction}>{actionLabel}</ActionButton>
+            {actionLabel && <ActionButton variant="primary" size="md" fullWidth onClick={onAction}>{actionLabel}</ActionButton>}
           </div>
         </motion.div>
       )}

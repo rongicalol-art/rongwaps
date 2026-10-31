@@ -15,7 +15,7 @@ Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/
 ## Session context and execution
 
 - **Owner taste and working style: read `.claude/OWNER_PREFERENCES.md` before any UI, design, motion or copy work.** It is the full, tool-neutral brief (any AI).
-- **One folder, one branch.** Work only in `~/Projects/rongwaps` on `main` (Claude and Codex both). No separate worktrees or side branches unless the owner asks. Commit locally after finished tasks. Push or deploy only when the owner explicitly asks; batch releases to avoid repeated app updates interrupting learners.
+- **One folder.** Work only in `~/Projects/rongwaps` (Claude and Codex both); no extra worktrees unless the owner asks. GitHub `main` is protected (PR + passing `verify` check), so a release goes branch → PR → merge → manual Render deploy (auto-deploy is off). Push, merge, deploy, or run production SQL/settings only when the owner explicitly asks; batch releases to avoid repeated app updates interrupting learners. Test risky changes on staging first (`docs/TESTING.md` → Staging); never point staging at production.
 - Work inline. Do not spawn subagents unless the owner explicitly asks.
 - Skills: `.claude/skills/` is the source of truth. Codex reads mirrored copies in `.agents/skills/` (local, gitignored, may lag); when they differ, the `.claude/` version wins. `.agents/portable-memory.md` is optional local context: verify its claims against current code.
 - Design/motion: plan, then a clickable prototype, then the owner's pick, then build (see the UI director skill).
@@ -42,6 +42,7 @@ Use the `verify-change` skill.
 - **Ponytail ladder (stop at first rung):** (1) Does it need to exist? (YAGNI) → (2) Already in repo? (`src/lib/widgets/`, `src/utils/`, tokens) → (3) Stdlib / native platform / CSS over JS → (4) Existing dep → (5) Minimum code. Deletion over addition; no unrequested abstractions or "for later" scaffolding; name the duplication before adding an abstraction.
 - **Root-cause fixes only:** Before fixing a bug, grep all callers of the function you touch. Fix once at the shared root, never patch a single caller's symptom.
 - `scripts/` is dev-only: never imported by `src/` or `server/`. DB migrations live in `supabase/migrations/`, applied with `supabase db push`.
+- **Data-safe migrations:** expand → migrate → contract across separate releases; apply the migration before the client that needs it, and never drop/rename what the previous client still uses. Staging first.
 
 ## Architecture (binding)
 

@@ -21,6 +21,19 @@ async function body(request: Request): Promise<Record<string, unknown>> {
   return value as Record<string, unknown>;
 }
 
+/** Readable errors thrown on the create/join path (room.ts, shared/quizRace.ts); anything else stays server-side. */
+const ROOM_LIMIT_ERROR = 'Room limit reached. Try again in an hour.';
+const JOIN_ERRORS = new Set([
+  ROOM_LIMIT_ERROR,
+  'Room not found. Check the code.',
+  'This room has expired.',
+  'The host removed you from this room.',
+  'This round is already underway. Rejoin after the room is ready for another round.',
+  'This race has already started.',
+  'This room is full.',
+  'Pick at least one lesson part.',
+]);
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -69,8 +82,9 @@ export default {
       if (!match || !ROOM_CODE.test(match[1])) return reply({ error: 'Invalid room code.' }, 400);
       return reply({ code: match[1], userId, ...await env.ROOMS.getByName(match[1]).enter(userId, name, color, image, expiresAt) });
     } catch (error) {
-      const message = error instanceof Error && /room|lesson|full|started|expired/i.test(error.message) ? error.message : 'Could not join. Check the code and your connection.';
-      return reply({ error: message }, /limit reached/i.test(message) ? 429 : 400);
+      const message = error instanceof Error && JOIN_ERRORS.has(error.message) ? error.message : null;
+      if (!message) console.error('games: join failed', error);
+      return reply({ error: message ?? 'Could not join. Check the code and your connection.' }, message === ROOM_LIMIT_ERROR ? 429 : 400);
     }
   },
 } satisfies ExportedHandler<Env>;

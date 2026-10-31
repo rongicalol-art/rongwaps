@@ -2,6 +2,8 @@ services:
   - type: web
     name: rongwaps
     env: node
+    # Releases are manual (matches the dashboard): merge, then deploy that SHA.
+    autoDeployTrigger: 'off'
     buildCommand: npm ci --include=dev && npm run build
     startCommand: node dist-server/server.js
     envVars:

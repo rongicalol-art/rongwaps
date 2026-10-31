@@ -6,6 +6,7 @@ import {
   hasMetadataChanged,
 } from '../../src/utils/sync/cloudSyncTransforms';
 import type { SRSData } from '../../src/utils/srs/srsEngine';
+import { mergeGrammarProgress } from '../../src/utils/sync/cloudMetadata';
 
 const baseCard: SRSData = {
   cardId: 'card1',
@@ -49,6 +50,7 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
     characterPreference: 'traditional' as const,
     selectedLessonParts: { '1:1': [1] },
     selectedBooks: [1],
+    startedPartIds: [] as string[], completedPageIds: [] as string[], completedPartIds: [] as string[],
   };
 
   const payload = buildMetadataPayload(storeState);
@@ -67,6 +69,7 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
     characterPreference: 'traditional',
     selectedLessons: [1],
     selectedBooks: [1],
+    grammarProgress: { startedPartIds: [], completedPageIds: [], completedPartIds: [] },
   };
 
   assert.equal(hasMetadataChanged(syncedSettings, payload), false);
@@ -76,7 +79,7 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
 });
 
 test('profile-only changes are included in synced metadata', () => {
-  const source = { favorites: [], activeBookId: 1, characterPreference: 'traditional' as const, selectedLessonParts: {}, selectedBooks: [] };
+  const source = { favorites: [], activeBookId: 1, characterPreference: 'traditional' as const, selectedLessonParts: {}, selectedBooks: [], startedPartIds: [] as string[], completedPageIds: [] as string[], completedPartIds: [] as string[] };
   const defaults = buildMetadataPayload(source);
   const changed = buildMetadataPayload({ ...source, displayName: 'Ron', avatarColor: 'plum', coverPreset: 'jade', avatarPath: 'uid/avatar.webp', coverPath: 'uid/cover.webp' });
   assert.equal(changed.displayName, 'Ron');
@@ -86,4 +89,22 @@ test('profile-only changes are included in synced metadata', () => {
   assert.equal(changed.coverPath, 'uid/cover.webp');
   assert.equal(hasMetadataChanged(defaults, changed), true);
   assert.equal(hasMetadataChanged(changed, changed), false);
+});
+
+test('grammar completion syncs in settings and merges as a union', () => {
+  const source = {
+    favorites: [], activeBookId: 1, characterPreference: 'traditional' as const, selectedLessonParts: {}, selectedBooks: [],
+    startedPartIds: ['p1'], completedPageIds: ['page-a'], completedPartIds: [] as string[],
+  };
+  const payload = buildMetadataPayload(source);
+  assert.deepEqual(payload.grammarProgress, { startedPartIds: ['p1'], completedPageIds: ['page-a'], completedPartIds: [] });
+  // A row saved before grammar synced counts as a change, so the device uploads it.
+  assert.equal(hasMetadataChanged({ ...payload, grammarProgress: undefined }, payload), true);
+  assert.equal(hasMetadataChanged({ ...payload, grammarProgress: { ...payload.grammarProgress, completedPageIds: ['page-b'] } }, payload), true);
+
+  const cloud = { grammarProgress: { startedPartIds: ['p1', 'p2'], completedPageIds: ['page-b', 'page-a', 'page-b'], completedPartIds: 'bad' } };
+  assert.deepEqual(mergeGrammarProgress(cloud, source), { startedPartIds: ['p1', 'p2'], completedPageIds: ['page-a', 'page-b'] });
+  // Nothing new in the cloud (or no grammar key at all) leaves local untouched.
+  assert.deepEqual(mergeGrammarProgress({ grammarProgress: { completedPageIds: ['page-a'] } }, source), {});
+  assert.deepEqual(mergeGrammarProgress({}, source), {});
 });

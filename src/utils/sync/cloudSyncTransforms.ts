@@ -1,4 +1,5 @@
 import { normalizeProfileSettings, PROFILE_PERSISTED_KEYS, type ProfileSettings } from '../../store/slices/profileSlice';
+import { GRAMMAR_PROGRESS_PERSISTED_KEYS, type GrammarProgressState } from '../../store/slices/grammarProgressSlice';
 /**
  * Pure transformations and payload builders for cloud synchronization.
  *
@@ -43,12 +44,16 @@ export function computeSrsDelta(
  * not synced: it changed on every tap/swipe, forcing a settings write per
  * session step. Old rows may still carry those keys; they are ignored on read.
  */
+/** Grammar completion; synced inside the settings blob (see mergeGrammarProgress). */
+export type GrammarProgress = Pick<GrammarProgressState, (typeof GRAMMAR_PROGRESS_PERSISTED_KEYS)[number]>;
+
 export type CloudMetadataPayload = ProfileSettings & {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
   selectedLessons: number[];
   selectedBooks: number[];
+  grammarProgress: GrammarProgress;
 };
 
 const METADATA_KEYS = [
@@ -58,9 +63,10 @@ const METADATA_KEYS = [
   'characterPreference',
   'selectedLessons',
   'selectedBooks',
+  'grammarProgress',
 ] as const satisfies readonly (keyof CloudMetadataPayload)[];
 
-export function buildMetadataPayload(store: Partial<ProfileSettings> & {
+export function buildMetadataPayload(store: Partial<ProfileSettings> & GrammarProgress & {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
@@ -74,6 +80,11 @@ export function buildMetadataPayload(store: Partial<ProfileSettings> & {
     characterPreference: store.characterPreference,
     selectedLessons: getSelectedLessonIds(store.selectedLessonParts, store.activeBookId),
     selectedBooks: store.selectedBooks,
+    grammarProgress: {
+      startedPartIds: store.startedPartIds,
+      completedPageIds: store.completedPageIds,
+      completedPartIds: store.completedPartIds,
+    },
   };
 }
 
@@ -110,4 +121,5 @@ export const AUTO_SAVE_TRIGGER_SLICES = [
   'selectedLessonParts',
   'srsData',
   'pendingReviewEvents',
+  ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
 ] as const satisfies readonly (keyof AppStoreData)[];

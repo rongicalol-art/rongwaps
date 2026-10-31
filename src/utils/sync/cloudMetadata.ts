@@ -1,6 +1,8 @@
 import { normalizeProfileSettings, PROFILE_PERSISTED_KEYS, type ProfileSettings } from '../../store/slices/profileSlice';
 import type { LessonPartSelectionMap } from '../../types/models';
 import { lessonsToPartSelection } from '../lesson/lessonPartSelection';
+import { GRAMMAR_PROGRESS_PERSISTED_KEYS } from '../../store/slices/grammarProgressSlice';
+import type { GrammarProgress } from './cloudSyncTransforms';
 
 /**
  * Owner of the "apply pulled cloud metadata to local state" rules.
@@ -103,6 +105,28 @@ export function resolveCloudMetadataPatch(
     patch.selectedBooks = selectedBooks ?? [];
   }
 
+  return patch;
+}
+
+/**
+ * Grammar completion only grows (a full reset clears it via the reset epoch),
+ * so it merges as a union on every pull, whichever side is newer: no device
+ * loses completion that another device, or a save it never saw, recorded.
+ * Returns only the keys that gain ids.
+ */
+export function mergeGrammarProgress(
+  metadata: Record<string, unknown>,
+  local: GrammarProgress,
+): Partial<GrammarProgress> {
+  const cloud = metadata.grammarProgress && typeof metadata.grammarProgress === 'object'
+    ? metadata.grammarProgress as Record<string, unknown>
+    : {};
+  const patch: Partial<GrammarProgress> = {};
+  for (const key of GRAMMAR_PROGRESS_PERSISTED_KEYS) {
+    const known = new Set(local[key]);
+    const added = (stringArray(cloud[key]) ?? []).filter((id) => !known.has(id));
+    if (added.length > 0) patch[key] = [...local[key], ...new Set(added)];
+  }
   return patch;
 }
 

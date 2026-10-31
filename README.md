@@ -50,14 +50,14 @@ OPENROUTER_API_KEY=your_openrouter_key
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js 22 (see `.nvmrc`)
 - npm
 
 ### Installation
 
 1. Clone the repository and install dependencies:
    ```bash
-   npm install
+   npm ci
    ```
 
 2. Run the application in development mode:
