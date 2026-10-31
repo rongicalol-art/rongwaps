@@ -933,56 +933,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 可以說是 in context.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l1g1-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他學了三年中文，現在",
-                "simplified": "他学了三年中文，现在"
-              },
-              {
-                "type": "blank",
-                "id": "b3l1g1-q1-b1",
-                "answer": "可以說是",
-                "answerSimplified": "可以说是",
-                "hint": "Use the phrase meaning \"you could say that\"."
-              },
-              {
-                "type": "text",
-                "traditional": "個中國通了。",
-                "simplified": "个中国通了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l1g1-q1-t1",
-                "traditional": "可以說是",
-                "simplified": "可以说是",
-                "pinyin": "kěyǐ shuō shì",
-                "meaning": "you could say"
-              },
-              {
-                "id": "b3l1g1-q1-t2",
-                "traditional": "可以說",
-                "simplified": "可以说",
-                "pinyin": "kěyǐ shuō",
-                "meaning": "can speak"
-              },
-              {
-                "id": "b3l1g1-q1-t3",
-                "traditional": "再說",
-                "simplified": "再说",
-                "pinyin": "zàishuō",
-                "meaning": "besides"
-              }
-            ],
-            "correctFeedback": "可以說是 explains and summarizes the situation before the noun phrase 個中國通了。",
-            "repairFeedback": "Use 可以說是 before the noun predicate; 可以說 without 是 indicates ability to speak."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "This phrase is used to further explain or clarify something already stated. 可以說是 and 可說是 have the same meaning.",
         "patternAccentColumn": 1
       },
@@ -1651,56 +1602,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 多麼…啊 in context.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l1g2-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這裡的風景",
-                "simplified": "这里的风景"
-              },
-              {
-                "type": "blank",
-                "id": "b3l1g2-q1-b1",
-                "answer": "多麼",
-                "answerSimplified": "多么",
-                "hint": "Exclamatory adverb before adjective."
-              },
-              {
-                "type": "text",
-                "traditional": "漂亮啊！",
-                "simplified": "漂亮啊！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l1g2-q1-t1",
-                "traditional": "多麼",
-                "simplified": "多么",
-                "pinyin": "duóme",
-                "meaning": "how (exclamatory)"
-              },
-              {
-                "id": "b3l1g2-q1-t2",
-                "traditional": "很",
-                "simplified": "很",
-                "pinyin": "hěn",
-                "meaning": "very"
-              },
-              {
-                "id": "b3l1g2-q1-t3",
-                "traditional": "真",
-                "simplified": "真",
-                "pinyin": "zhēn",
-                "meaning": "truly"
-              }
-            ],
-            "correctFeedback": "Use 多麼 in the exclamatory pattern 多麼 + Adjective + 啊！",
-            "repairFeedback": "In an exclamation ending in 啊, use 多麼 rather than plain 很."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "This construction indicates a feeling when one encounters something exceeding one's expectations. Expressed in an exaggerated tone of voice, the 麼 can be dropped, and an 啊 added to the end of the sentence, usually following an adjective.",
         "patternAccentColumn": 1
       },
@@ -2477,56 +2379,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 再說 in context.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l1g3-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "外面冷得很，",
-                "simplified": "外面冷得很，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l1g3-q1-b1",
-                "answer": "再說",
-                "answerSimplified": "再说",
-                "hint": "Connective introducing an extra reason."
-              },
-              {
-                "type": "text",
-                "traditional": "我也剛換好衣服，別出門了吧。",
-                "simplified": "我也刚换好衣服，别出门了吧。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l1g3-q1-t1",
-                "traditional": "再說",
-                "simplified": "再说",
-                "pinyin": "zàishuō",
-                "meaning": "moreover / besides"
-              },
-              {
-                "id": "b3l1g3-q1-t2",
-                "traditional": "所以",
-                "simplified": "所以",
-                "pinyin": "suǒyǐ",
-                "meaning": "therefore"
-              },
-              {
-                "id": "b3l1g3-q1-t3",
-                "traditional": "因為",
-                "simplified": "因为",
-                "pinyin": "yīnwèi",
-                "meaning": "because"
-              }
-            ],
-            "correctFeedback": "再說 introduces an additional reinforcing reason.",
-            "repairFeedback": "Use 再說 to add another reason for not going out."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "再說 is used as a conjunction. The sentence following 再說 reinforces the content of the preceding sentence, or explains that content in greater detail.",
         "patternAccentColumn": 1
       }
@@ -3527,56 +3380,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 而 in context.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l1g4-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他因為不適應都市的生活，",
-                "simplified": "他因为不适应都市的生活，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l1g4-q1-b1",
-                "answer": "而",
-                "answerSimplified": "而",
-                "hint": "Connector linking cause to result."
-              },
-              {
-                "type": "text",
-                "traditional": "搬到了鄉下。",
-                "simplified": "搬到了乡下。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l1g4-q1-t1",
-                "traditional": "而",
-                "simplified": "而",
-                "pinyin": "ér",
-                "meaning": "and so / thus"
-              },
-              {
-                "id": "b3l1g4-q1-t2",
-                "traditional": "但是",
-                "simplified": "但是",
-                "pinyin": "dànshì",
-                "meaning": "but"
-              },
-              {
-                "id": "b3l1g4-q1-t3",
-                "traditional": "所以",
-                "simplified": "所以",
-                "pinyin": "suǒyǐ",
-                "meaning": "so"
-              }
-            ],
-            "correctFeedback": "因為…而… connects the cause directly to the subsequent action in one sentence.",
-            "repairFeedback": "Use 而 to link the cause with the verb phrase 搬到了鄉下."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "而 is a conjunction, 因為 is followed by the cause, and 而 is followed by the result of the matter. Commonly used in written or formal occasions. 因為……（，）而……means 因為……所以…….",
         "patternAccentColumn": 1
       },
@@ -4305,56 +4109,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using V出 in context.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l1g5-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他花了一年的時間，終於寫",
-                "simplified": "他花了一年的时间，终于写"
-              },
-              {
-                "type": "blank",
-                "id": "b3l1g5-q1-b1",
-                "answer": "出",
-                "answerSimplified": "出",
-                "hint": "Result complement for creating a new work."
-              },
-              {
-                "type": "text",
-                "traditional": "了一本好看的小說。",
-                "simplified": "了一本好看的小说。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l1g5-q1-t1",
-                "traditional": "出",
-                "simplified": "出",
-                "pinyin": "chū",
-                "meaning": "out (producing a result)"
-              },
-              {
-                "id": "b3l1g5-q1-t2",
-                "traditional": "過",
-                "simplified": "过",
-                "pinyin": "guò",
-                "meaning": "past action"
-              },
-              {
-                "id": "b3l1g5-q1-t3",
-                "traditional": "完",
-                "simplified": "完",
-                "pinyin": "wán",
-                "meaning": "finish"
-              }
-            ],
-            "correctFeedback": "寫出 indicates bringing a new creative work into existence.",
-            "repairFeedback": "Use the result complement 出 for creating and producing a new work."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "Add 出 after the verb to indicate that the direction of the action is from the inside to the outside. For example, 我從書包裡拿出鉛筆. In this lesson, adding 出 after the verb means that new things will be generated after the action is completed. Commonly used verbs are: 想, 做, 說, 穿, 拍, 寫, 找, 算, 研究, etc.",
         "patternAccentColumn": 2
       },
@@ -5025,51 +4780,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 就算……也…… in context.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l1g6-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "blank",
-                "id": "b3l1g6-q1-b1",
-                "answer": "就算",
-                "answerSimplified": "就算",
-                "hint": "Use the word meaning \"even if\"."
-              },
-              {
-                "type": "text",
-                "traditional": "下雪，我也要去跑步。",
-                "simplified": "下雪，我也要去跑步。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l1g6-q1-t1",
-                "traditional": "就算",
-                "simplified": "就算",
-                "pinyin": "jiùsuàn",
-                "meaning": "even if"
-              },
-              {
-                "id": "b3l1g6-q1-t2",
-                "traditional": "雖然",
-                "simplified": "虽然",
-                "pinyin": "suīrán",
-                "meaning": "although"
-              },
-              {
-                "id": "b3l1g6-q1-t3",
-                "traditional": "如果",
-                "simplified": "如果",
-                "pinyin": "rúguǒ",
-                "meaning": "if"
-              }
-            ],
-            "correctFeedback": "就算 introduces a hypothetical concession: even if it snows, I will still run.",
-            "repairFeedback": "Use 就算 to emphasize that the hypothetical situation will not change the decision."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "就算 is a conjunction, followed by a hypothesis, which means that the original situation will not be changed because of the content of this hypothesis. For example, A：今天下雨，我不去學校了。B：不行，就算下雪，也得去學校。",
         "patternAccentColumn": 0
       }

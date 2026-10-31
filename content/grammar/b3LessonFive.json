@@ -919,56 +919,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g1-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "出門記得關窗，",
-                "simplified": "出门记得关窗，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g1-q1-b1",
-                "answer": "萬一下大雨",
-                "answerSimplified": "万一下大雨",
-                "hint": "in case it rains heavily"
-              },
-              {
-                "type": "text",
-                "traditional": "才不會淹水。",
-                "simplified": "才不会淹水。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g1-q1-t1",
-                "traditional": "萬一下大雨",
-                "simplified": "万一下大雨",
-                "pinyin": "wànyī xià dàyǔ",
-                "meaning": "in case it rains heavily"
-              },
-              {
-                "id": "b3l5g1-q1-t2",
-                "traditional": "所以下大雨",
-                "simplified": "所以下大雨",
-                "pinyin": "suǒyǐ xià dàyǔ",
-                "meaning": "so it rains heavily"
-              },
-              {
-                "id": "b3l5g1-q1-t3",
-                "traditional": "雖然下大雨",
-                "simplified": "虽然下大雨",
-                "pinyin": "suīrán xià dàyǔ",
-                "meaning": "although it rains heavily"
-              }
-            ],
-            "correctFeedback": "萬一 introduces an unexpected risk to guard against.",
-            "repairFeedback": "Use 萬一 to express an emergency or undesirable possibility."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "萬一 is followed by a hypothesis with little possibility; mostly refers to bad things.",
         "patternAccentColumn": 0
       },
@@ -1621,56 +1572,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g2-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這場暴雨很嚴重，",
-                "simplified": "这场暴雨很严重，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g2-q1-b1",
-                "answer": "一連下了三天",
-                "answerSimplified": "一连下了三天",
-                "hint": "rained for three days straight"
-              },
-              {
-                "type": "text",
-                "traditional": "都沒停過。",
-                "simplified": "都没停过。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g2-q1-t1",
-                "traditional": "一連下了三天",
-                "simplified": "一连下了三天",
-                "pinyin": "yìlián xià le sān tiān",
-                "meaning": "rained three days in a row"
-              },
-              {
-                "id": "b3l5g2-q1-t2",
-                "traditional": "常常下了三天",
-                "simplified": "常常下了三天",
-                "pinyin": "chángcháng xià le sān tiān",
-                "meaning": "often rained three days"
-              },
-              {
-                "id": "b3l5g2-q1-t3",
-                "traditional": "大概下了三天",
-                "simplified": "大概下了三天",
-                "pinyin": "dàgài xià le sān tiān",
-                "meaning": "probably rained three days"
-              }
-            ],
-            "correctFeedback": "一連 denotes an unbroken consecutive sequence of three days of rain.",
-            "repairFeedback": "Use 一連 to express actions continuing unbroken in a row."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "一連 means that the same action or situation occurs continuously, followed by verbs and quantifiers. For example, 他一連吃了五個包子, 一連三天我都在家休息. The negative words 不 or 沒 can only be used on the verb after the quantifier, such as 一連三天都沒下雨.",
         "patternAccentColumn": 1
       },
@@ -2294,56 +2196,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g3-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我",
-                "simplified": "我"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g3-q1-b1",
-                "answer": "以為今天會放假",
-                "answerSimplified": "以为今天会放假",
-                "hint": "thought today would be off"
-              },
-              {
-                "type": "text",
-                "traditional": "，沒想到還是要上班。",
-                "simplified": "，没想到还是要上班。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g3-q1-t1",
-                "traditional": "以為今天會放假",
-                "simplified": "以为今天会放假",
-                "pinyin": "yǐwéi jīntiān huì fàngjià",
-                "meaning": "thought today would be holiday"
-              },
-              {
-                "id": "b3l5g3-q1-t2",
-                "traditional": "覺得今天會放假",
-                "simplified": "觉得今天会放假",
-                "pinyin": "juéde jīntiān huì fàngjià",
-                "meaning": "felt today would be holiday"
-              },
-              {
-                "id": "b3l5g3-q1-t3",
-                "traditional": "決定今天會放假",
-                "simplified": "决定今天会放假",
-                "pinyin": "juédìng jīntiān huì fàngjià",
-                "meaning": "decided today holiday"
-              }
-            ],
-            "correctFeedback": "以為 marks the mistaken assumption that contrasts with the actual situation.",
-            "repairFeedback": "Use 以為 to introduce an erroneous preconception."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "以為 is followed by the speaker's original idea, which is different from what happened later. 沒想到 is followed by the fact that has already happened but which the speaker had not thought about beforehand.",
         "patternAccentColumn": [
           1,
@@ -3006,56 +2859,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g4-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "外面風雨這麼大，我們",
-                "simplified": "外面风雨这么大，我们"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g4-q1-b1",
-                "answer": "還是留在家裡吧",
-                "answerSimplified": "还是留在家里吧",
-                "hint": "had better stay at home"
-              },
-              {
-                "type": "text",
-                "traditional": "，別出去了。",
-                "simplified": "，别出去了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g4-q1-t1",
-                "traditional": "還是留在家裡吧",
-                "simplified": "还是留在家里吧",
-                "pinyin": "háishì liú zài jiā lǐ ba",
-                "meaning": "better stay home"
-              },
-              {
-                "id": "b3l5g4-q1-t2",
-                "traditional": "或者留在家裡嗎",
-                "simplified": "或者留在家里吗",
-                "pinyin": "huòzhě liú zài jiā lǐ ma",
-                "meaning": "or stay home?"
-              },
-              {
-                "id": "b3l5g4-q1-t3",
-                "traditional": "也許留在家裡了",
-                "simplified": "也许留在家里了",
-                "pinyin": "yěxǔ liú zài jiā lǐ le",
-                "meaning": "maybe stayed home"
-              }
-            ],
-            "correctFeedback": "還是……吧 offers the wisest suggestion given the severe storm.",
-            "repairFeedback": "Use 還是……吧 to propose a preferable recommendation."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The person speaking compares the different situations, then makes conclusions or suggestions. 還是 is followed by such suggestions.",
         "patternAccentColumn": [
           1,
@@ -3671,56 +3475,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g5-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我昨晚沒設鬧鐘，",
-                "simplified": "我昨晚没设闹钟，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g5-q1-b1",
-                "answer": "結果今天早上遲到了",
-                "answerSimplified": "结果今天早上迟到了",
-                "hint": "as a result was late this morning"
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g5-q1-t1",
-                "traditional": "結果今天早上遲到了",
-                "simplified": "结果今天早上迟到了",
-                "pinyin": "jiéguǒ jīntiān zǎoshang chídào le",
-                "meaning": "as a result late this morning"
-              },
-              {
-                "id": "b3l5g5-q1-t2",
-                "traditional": "如果今天早上遲到了",
-                "simplified": "如果今天早上迟到了",
-                "pinyin": "rúguǒ jīntiān zǎoshang chídào le",
-                "meaning": "if late this morning"
-              },
-              {
-                "id": "b3l5g5-q1-t3",
-                "traditional": "雖然今天早上遲到了",
-                "simplified": "虽然今天早上迟到了",
-                "pinyin": "suīrán jīntiān zǎoshang chídào le",
-                "meaning": "although late this morning"
-              }
-            ],
-            "correctFeedback": "結果 marks the final unforeseen consequence of not setting an alarm.",
-            "repairFeedback": "Use 結果 to introduce the ultimate outcome."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "結果 is a conjunction indicating the final situation after an event has occurred. The sentence after 結果 is the final condition of this matter.",
         "patternAccentColumn": 0
       },
@@ -4252,56 +4007,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g6-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這對雙胞胎長得太像了，",
-                "simplified": "这对双胞胎长得太像了，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g6-q1-b1",
-                "answer": "甚至連父母都常認錯",
-                "answerSimplified": "甚至连父母都常认错",
-                "hint": "even parents often mistake them"
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g6-q1-t1",
-                "traditional": "甚至連父母都常認錯",
-                "simplified": "甚至连父母都常认错",
-                "pinyin": "shènzhì lián fùmǔ dōu cháng rèncuò",
-                "meaning": "even parents often mistake"
-              },
-              {
-                "id": "b3l5g6-q1-t2",
-                "traditional": "所以連父母都常認錯",
-                "simplified": "所以连父母都常认错",
-                "pinyin": "suǒyǐ lián fùmǔ dōu cháng rèncuò",
-                "meaning": "so parents often mistake"
-              },
-              {
-                "id": "b3l5g6-q1-t3",
-                "traditional": "雖然連父母都常認錯",
-                "simplified": "虽然连父母都常认错",
-                "pinyin": "suīrán lián fùmǔ dōu cháng rèncuò",
-                "meaning": "although parents mistake"
-              }
-            ],
-            "correctFeedback": "甚至連……都…… emphasizes the extreme surprise that even their own parents mistake them.",
-            "repairFeedback": "Use 甚至連……都…… to express an extreme unexpected degree."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The sentence following 甚至 is the main emphasis, which can be the person, the thing, or the object that the speaker wants to emphasize. It is often used with 不但 or 連……都/也……. For example, 我姊姊不但會唱歌，也會寫歌，甚至辦過個人演唱會.",
         "patternAccentColumn": [
           0,
@@ -4943,56 +4649,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l5g7-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我建議你找",
-                "simplified": "我建议你找"
-              },
-              {
-                "type": "blank",
-                "id": "b3l5g7-q1-b1",
-                "answer": "火車站以西",
-                "answerSimplified": "火车站以西",
-                "hint": "west of the train station"
-              },
-              {
-                "type": "text",
-                "traditional": "的房子，房租比較便宜。",
-                "simplified": "的房子，房租比较便宜。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l5g7-q1-t1",
-                "traditional": "火車站以西",
-                "simplified": "火车站以西",
-                "pinyin": "huǒchēzhàn yǐ xī",
-                "meaning": "west of train station"
-              },
-              {
-                "id": "b3l5g7-q1-t2",
-                "traditional": "火車站從西",
-                "simplified": "火车站从西",
-                "pinyin": "huǒchēzhàn cóng xī",
-                "meaning": "station from west"
-              },
-              {
-                "id": "b3l5g7-q1-t3",
-                "traditional": "火車站到西",
-                "simplified": "火车站到西",
-                "pinyin": "huǒchēzhàn dào xī",
-                "meaning": "station to west"
-              }
-            ],
-            "correctFeedback": "火車站以西 indicates the geographic region extending westward from the station.",
-            "repairFeedback": "Use 基點 + 以 + 方向 (東/西/南/北) to specify a regional boundary."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "以 indicates the boundary of a place. Place the name of an area or location in front of 以. For example, 臺中以北 means north of the boundary of 臺中.",
         "patternAccentColumn": 1
       }

@@ -152,7 +152,7 @@
           "id": "b3l11d1-l17",
           "speaker": "朋子",
           "traditional": "你說的對。網路交友還是可靠的，也能認識不少興趣相同的朋友。像你建立的健身社團網站，裡面有很多訊息，包括健身的影片、舉行活動的日期和地點等等，都很有用、很吸引人。",
-          "simplified": "你说得对。网络交友还是可靠的，也能认识不少兴趣相同的朋友。像你建立的健身社团网站，里面有很多讯息，包括健身的影片、举行活动的日期和地点等等，都很有用、很吸引人。",
+          "simplified": "你说的对。网络交友还是可靠的，也能认识不少兴趣相同的朋友。像你建立的健身社团网站，里面有很多讯息，包括健身的影片、举行活动的日期和地点等等，都很有用、很吸引人。",
           "pinyin": "Nǐ shuō de duì. Wǎnglù jiāoyǒu háishì kěkào de, yě néng rènshì bùshǎo xìngqù xiāngtóng de péngyǒu. Xiàng nǐ jiànlì de jiànshēn shètuán wǎngzhàn, lǐmiàn yǒu hěn duō xùnxí, bāokuò jiànshēn de yǐngpiàn, jǔxíng huódòng de rìqí hé dìdiǎn děngděng, dōu hěn yǒuyòng, hěn xīyǐn rén.",
           "english": "You're right. Making friends online can still be reliable, helping us meet friends with shared interests. For instance, the fitness club site you built contains rich content—workout videos, event dates, locations—all very useful and engaging."
         },
@@ -185,12 +185,11 @@
         "bookPage": 289,
         "bookPageAvailable": true,
         "audioReference": "11-1-1",
-        "explanation": "表示經過某人、事物或某種行為，達到某種目的或結果。常用於：透過網路、透過朋友介紹、透過社群網站。",
+        "explanation": "表示經過某人、事物或某種行為，達到某種目的或結果。",
         "focusTerms": [
-          "透過",
-          "經過"
+          "透過"
         ],
-        "pattern": "Subject + 透過 + Medium / Intermediary + Predicate",
+        "pattern": "Subject + 透過 + Medium + Action",
         "patternColumns": [
           "Subject",
           "透過",
@@ -203,38 +202,47 @@
             "columns": [
               [
                 {
+                  "traditional": "有個博士",
+                  "simplified": "有个博士",
+                  "pinyin": "yǒu ge bóshì",
                   "id": "b3l11g1-r1-c1-w1",
-                  "traditional": "博士",
-                  "simplified": "博士",
-                  "pinyin": "bóshì",
-                  "meaning": "doctor"
+                  "meaning": "a PhD"
                 }
               ],
               [
                 {
-                  "id": "b3l11g1-r1-c2-w1",
                   "traditional": "透過",
                   "simplified": "透过",
                   "pinyin": "tòuguò",
-                  "meaning": "via"
+                  "id": "b3l11g1-r1-c2-w1",
+                  "meaning": "through"
                 }
               ],
               [
                 {
-                  "id": "b3l11g1-r1-c3-w1",
                   "traditional": "社群網站",
                   "simplified": "社群网站",
                   "pinyin": "shèqún wǎngzhàn",
-                  "meaning": "social site"
+                  "id": "b3l11g1-r1-c3-w1",
+                  "meaning": "social networking site"
                 }
               ],
               [
                 {
+                  "traditional": "認識了",
+                  "simplified": "认识了",
+                  "pinyin": "rènshì le",
                   "id": "b3l11g1-r1-c4-w1",
-                  "traditional": "認識網友",
-                  "simplified": "认识网友",
-                  "pinyin": "rènshì wǎngyǒu",
-                  "meaning": "met netizen"
+                  "meaning": "met"
+                }
+              ],
+              [
+                {
+                  "traditional": "一個女網友",
+                  "simplified": "一个女网友",
+                  "pinyin": "yí ge nǚ wǎngyǒu",
+                  "id": "b3l11g1-r1-c5-w1",
+                  "meaning": "a female netizen"
                 }
               ]
             ]
@@ -244,38 +252,38 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g1-r2-c1-w1",
                   "traditional": "人們",
                   "simplified": "人们",
                   "pinyin": "rénmen",
+                  "id": "b3l11g1-r2-c1-w1",
                   "meaning": "people"
                 }
               ],
               [
                 {
-                  "id": "b3l11g1-r2-c2-w1",
                   "traditional": "透過",
                   "simplified": "透过",
                   "pinyin": "tòuguò",
-                  "meaning": "via"
+                  "id": "b3l11g1-r2-c2-w1",
+                  "meaning": "through"
                 }
               ],
               [
                 {
-                  "id": "b3l11g1-r2-c3-w1",
                   "traditional": "眼睛",
                   "simplified": "眼睛",
-                  "pinyin": "yǎnjīng",
+                  "pinyin": "yǎnjing",
+                  "id": "b3l11g1-r2-c3-w1",
                   "meaning": "eyes"
                 }
               ],
               [
                 {
+                  "traditional": "確認實際的情況",
+                  "simplified": "确认实际的情况",
+                  "pinyin": "quèrèn shíjì de qíngkuàng",
                   "id": "b3l11g1-r2-c4-w1",
-                  "traditional": "確認情況",
-                  "simplified": "确认情况",
-                  "pinyin": "quèrèn qíngkuàng",
-                  "meaning": "verify reality"
+                  "meaning": "confirm the actual situation"
                 }
               ]
             ]
@@ -285,38 +293,47 @@
             "columns": [
               [
                 {
+                  "traditional": "康教授",
+                  "simplified": "康教授",
+                  "pinyin": "Kāng jiàoshòu",
                   "id": "b3l11g1-r3-c1-w1",
-                  "traditional": "學生",
-                  "simplified": "学生",
-                  "pinyin": "xuéshēng",
-                  "meaning": "students"
+                  "meaning": "Professor Kang"
                 }
               ],
               [
                 {
-                  "id": "b3l11g1-r3-c2-w1",
                   "traditional": "透過",
                   "simplified": "透过",
                   "pinyin": "tòuguò",
-                  "meaning": "via"
+                  "id": "b3l11g1-r3-c2-w1",
+                  "meaning": "through"
                 }
               ],
               [
                 {
+                  "traditional": "團體活動的方式",
+                  "simplified": "团体活动的方式",
+                  "pinyin": "tuántǐ huódòng de fāngshì",
                   "id": "b3l11g1-r3-c3-w1",
-                  "traditional": "團體活動",
-                  "simplified": "团体活动",
-                  "pinyin": "tuántǐ huódòng",
-                  "meaning": "group work"
+                  "meaning": "way of group activities"
                 }
               ],
               [
                 {
+                  "traditional": "能讓學生學習到",
+                  "simplified": "能让学生学习到",
+                  "pinyin": "néng ràng xuésheng xuéxí dào",
                   "id": "b3l11g1-r3-c4-w1",
-                  "traditional": "學習溝通",
-                  "simplified": "学习沟通",
-                  "pinyin": "xuéxí gōutōng",
-                  "meaning": "learn communication"
+                  "meaning": "can let students learn"
+                }
+              ],
+              [
+                {
+                  "traditional": "溝通的技巧",
+                  "simplified": "沟通的技巧",
+                  "pinyin": "gōutōng de jìqiǎo",
+                  "id": "b3l11g1-r3-c5-w1",
+                  "meaning": "communication skills"
                 }
               ]
             ]
@@ -327,37 +344,52 @@
             "id": "b3l11g1-ex1",
             "number": 1,
             "text": {
-              "traditional": "有個博士透過社群網站，認識了一個女網友，給了她很多錢以後，才知道被騙了。",
-              "simplified": "有个博士透过社群网站，认识了一个女网友，给了她很多钱以后，才知道被骗了。",
-              "pinyin": "Yǒu ge bóshì tòuguò shèqún wǎngzhàn, rènshì le yí ge nǚ wǎngyǒu, gěi le tā hěn duō qián yǐhòu, cái zhīdào bèi piàn le.",
-              "english": "A PhD met a female netizen via social media and only realized he was scammed after giving her large sums.",
+              "traditional": "……有個博士透過社群網站，認識了一個女網友……",
+              "simplified": "……有个博士透过社群网站，认识了一个女网友……",
+              "pinyin": "…Yǒu ge bóshì tòuguò shèqún wǎngzhàn, rènshì le yí ge nǚ wǎngyǒu…",
+              "english": "…A PhD met a female netizen through a social networking site…",
               "words": [
                 {
                   "id": "b3l11g1-ex1-w1",
-                  "traditional": "透過社群網站",
-                  "simplified": "透过社群网站",
-                  "pinyin": "tòuguò shèqún wǎngzhàn",
-                  "meaning": "via social site",
-                  "suffix": "，"
+                  "traditional": "有個博士",
+                  "simplified": "有个博士",
+                  "pinyin": "yǒu ge bóshì",
+                  "meaning": "a PhD",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l11g1-ex1-w2",
-                  "traditional": "認識了女網友",
-                  "simplified": "认识了女网友",
-                  "pinyin": "rènshì le nǚ wǎngyǒu",
-                  "meaning": "met female netizen",
-                  "suffix": "，"
+                  "traditional": "透過",
+                  "simplified": "透过",
+                  "pinyin": "tòuguò",
+                  "meaning": "through"
                 },
                 {
                   "id": "b3l11g1-ex1-w3",
-                  "traditional": "才知道被騙了",
-                  "simplified": "才知道被骗了",
-                  "pinyin": "cái zhīdào bèi piàn le",
-                  "meaning": "knew he was duped",
-                  "suffix": "。"
+                  "traditional": "社群網站",
+                  "simplified": "社群网站",
+                  "pinyin": "shèqún wǎngzhàn",
+                  "meaning": "social networking site",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g1-ex1-w4",
+                  "traditional": "認識了",
+                  "simplified": "认识了",
+                  "pinyin": "rènshì le",
+                  "meaning": "met"
+                },
+                {
+                  "id": "b3l11g1-ex1-w5",
+                  "traditional": "一個女網友",
+                  "simplified": "一个女网友",
+                  "pinyin": "yí ge nǚ wǎngyǒu",
+                  "meaning": "a female netizen",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l11g1-ex2",
@@ -365,30 +397,65 @@
             "text": {
               "traditional": "人們習慣透過眼睛確認實際的情況，總是認為眼睛看到的就是對的。",
               "simplified": "人们习惯透过眼睛确认实际的情况，总是认为眼睛看到的就是对的。",
-              "pinyin": "Rénmen xíguàn tòuguò yǎnjīng quèrèn shíjì de qíngkuàng, zǒngshì rènwéi yǎnjīng kàndào de jiù shì duì de.",
-              "english": "People are accustomed to verifying reality through their eyes, always assuming seeing is truth.",
+              "pinyin": "Rénmen xíguàn tòuguò yǎnjing quèrèn shíjì de qíngkuàng, zǒngshì rènwéi yǎnjing kàndào de jiùshì duì de.",
+              "english": "People are used to confirming actual situations through their eyes, always thinking that what the eyes see is right.",
               "words": [
                 {
                   "id": "b3l11g1-ex2-w1",
-                  "traditional": "透過眼睛",
-                  "simplified": "透过眼睛",
-                  "pinyin": "tòuguò yǎnjīng",
-                  "meaning": "through eyes"
+                  "traditional": "人們",
+                  "simplified": "人们",
+                  "pinyin": "rénmen",
+                  "meaning": "people"
                 },
                 {
                   "id": "b3l11g1-ex2-w2",
-                  "traditional": "確認實際情況",
-                  "simplified": "确认实际情况",
-                  "pinyin": "quèrèn shíjì qíngkuàng",
-                  "meaning": "confirm actual conditions",
-                  "suffix": "，"
+                  "traditional": "習慣",
+                  "simplified": "习惯",
+                  "pinyin": "xíguàn",
+                  "meaning": "are used to"
                 },
                 {
                   "id": "b3l11g1-ex2-w3",
-                  "traditional": "認為看到是對的",
-                  "simplified": "认为看到是对的",
-                  "pinyin": "rènwéi kàndào shì duì de",
-                  "meaning": "deem what's seen correct",
+                  "traditional": "透過",
+                  "simplified": "透过",
+                  "pinyin": "tòuguò",
+                  "meaning": "through"
+                },
+                {
+                  "id": "b3l11g1-ex2-w4",
+                  "traditional": "眼睛",
+                  "simplified": "眼睛",
+                  "pinyin": "yǎnjing",
+                  "meaning": "eyes"
+                },
+                {
+                  "id": "b3l11g1-ex2-w5",
+                  "traditional": "確認實際的情況",
+                  "simplified": "确认实际的情况",
+                  "pinyin": "quèrèn shíjì de qíngkuàng",
+                  "meaning": "confirm the actual situation",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g1-ex2-w6",
+                  "traditional": "總是認為",
+                  "simplified": "总是认为",
+                  "pinyin": "zǒngshì rènwéi",
+                  "meaning": "always think"
+                },
+                {
+                  "id": "b3l11g1-ex2-w7",
+                  "traditional": "眼睛看到的",
+                  "simplified": "眼睛看到的",
+                  "pinyin": "yǎnjing kàndào de",
+                  "meaning": "what the eyes see"
+                },
+                {
+                  "id": "b3l11g1-ex2-w8",
+                  "traditional": "就是對的",
+                  "simplified": "就是对的",
+                  "pinyin": "jiùshì duì de",
+                  "meaning": "is right",
                   "suffix": "。"
                 }
               ]
@@ -400,23 +467,51 @@
             "text": {
               "traditional": "康教授認為透過團體活動的方式，能讓學生學習到溝通的技巧。",
               "simplified": "康教授认为透过团体活动的方式，能让学生学习到沟通的技巧。",
-              "pinyin": "Kāng jiàoshòu rènwéi tòuguò tuántǐ huódòng de fāngshì, néng ràng xuéshēng xuéxí dào gōutōng de jìqiǎo.",
-              "english": "Professor Kang believes that through group activities students can acquire communication skills.",
+              "pinyin": "Kāng jiàoshòu rènwéi tòuguò tuántǐ huódòng de fāngshì, néng ràng xuésheng xuéxí dào gōutōng de jìqiǎo.",
+              "english": "Professor Kang believes that through group activities, students can learn communication skills.",
               "words": [
                 {
                   "id": "b3l11g1-ex3-w1",
-                  "traditional": "透過團體活動",
-                  "simplified": "透过团体活动",
-                  "pinyin": "tòuguò tuántǐ huódòng",
-                  "meaning": "through group activity",
-                  "suffix": "，"
+                  "traditional": "康教授",
+                  "simplified": "康教授",
+                  "pinyin": "Kāng jiàoshòu",
+                  "meaning": "Professor Kang"
                 },
                 {
                   "id": "b3l11g1-ex3-w2",
-                  "traditional": "學習溝通技巧",
-                  "simplified": "学习沟通技巧",
-                  "pinyin": "xuéxí gōutōng jìqiǎo",
-                  "meaning": "learn communication skills",
+                  "traditional": "認為",
+                  "simplified": "认为",
+                  "pinyin": "rènwéi",
+                  "meaning": "believes"
+                },
+                {
+                  "id": "b3l11g1-ex3-w3",
+                  "traditional": "透過",
+                  "simplified": "透过",
+                  "pinyin": "tòuguò",
+                  "meaning": "through"
+                },
+                {
+                  "id": "b3l11g1-ex3-w4",
+                  "traditional": "團體活動的方式",
+                  "simplified": "团体活动的方式",
+                  "pinyin": "tuántǐ huódòng de fāngshì",
+                  "meaning": "way of group activities",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g1-ex3-w5",
+                  "traditional": "能讓學生學習到",
+                  "simplified": "能让学生学习到",
+                  "pinyin": "néng ràng xuésheng xuéxí dào",
+                  "meaning": "can let students learn"
+                },
+                {
+                  "id": "b3l11g1-ex3-w6",
+                  "traditional": "溝通的技巧",
+                  "simplified": "沟通的技巧",
+                  "pinyin": "gōutōng de jìqiǎo",
+                  "meaning": "communication skills",
                   "suffix": "。"
                 }
               ]
@@ -490,55 +585,9 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g1-q1",
-            "type": "choice",
-            "prompt": "Explain how you broadened your social circle:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我們常常"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g1-q1-b1",
-                "answer": "透過網路社團",
-                "answerSimplified": "透过网络社团",
-                "hint": "via online clubs"
-              },
-              {
-                "type": "text",
-                "traditional": "認識新朋友。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g1-q1-t1",
-                "traditional": "透過網路社團",
-                "simplified": "透过网络社团",
-                "pinyin": "tòuguò wǎnglù shètuán",
-                "meaning": "via online clubs"
-              },
-              {
-                "id": "b3l11g1-q1-t2",
-                "traditional": "通過網路社團",
-                "simplified": "通过网络社团",
-                "pinyin": "tōngguò wǎnglù shètuán",
-                "meaning": "passing through"
-              },
-              {
-                "id": "b3l11g1-q1-t3",
-                "traditional": "因為網路社團",
-                "simplified": "因为网络社团",
-                "pinyin": "yīnwèi wǎnglù shètuán",
-                "meaning": "because of online clubs"
-              }
-            ],
-            "correctFeedback": "透過 marks the medium or channel through which an objective is achieved.",
-            "repairFeedback": "Use 透過 + Medium to express connecting via online channels."
-          }
-        ]
+        "questions": [],
+        "explanationEnglish": "透過 represents a person, thing, or behavior by which a certain result is achieved.",
+        "patternAccentColumn": 1
       },
       {
         "id": "B3L11-G02-P291",
@@ -552,23 +601,22 @@
         "titleEnglish": "Above / Below with 以上 / 以下",
         "learnerPromise": "Specify quantities, age thresholds, or price boundaries with 以上 ('and above') and 以下 ('and below').",
         "printedPages": [
-          291,
-          292
+          290,
+          291
         ],
-        "bookPage": 291,
+        "bookPage": 290,
         "bookPageAvailable": true,
         "audioReference": "11-1-1",
-        "explanation": "「以上 / 以下」表示在某個數量或範圍之內、之上或之下。包含該數字本身。",
+        "explanation": "「以上」表示「超過」或「高於」某一點，同時也包含「某一點」，例如：「六十分以上及格」包括「六十分」。「以下」表示「低於」或「未達到」某一點。「以」與方位詞一起使用時，例如：以內、以外、以北、以南等，表示在某個一定的範圍。",
         "focusTerms": [
           "以上",
           "以下"
         ],
-        "pattern": "Numeral + Measure / Noun + 以上 / 以下",
+        "pattern": "Number + 以上/以下 + Result",
         "patternColumns": [
-          "Numeral",
-          "Unit",
-          "Boundary",
-          "Condition"
+          "Number",
+          "以上/以下",
+          "Result"
         ],
         "patternRows": [
           {
@@ -576,29 +624,29 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g2-r1-c1-w1",
                   "traditional": "兩萬塊",
                   "simplified": "两万块",
                   "pinyin": "liǎng wàn kuài",
-                  "meaning": "20,000 NTD"
+                  "id": "b3l11g2-r1-c1-w1",
+                  "meaning": "20,000"
                 }
               ],
               [
                 {
-                  "id": "b3l11g2-r1-c2-w1",
                   "traditional": "以下",
                   "simplified": "以下",
                   "pinyin": "yǐxià",
-                  "meaning": "below"
+                  "id": "b3l11g2-r1-c2-w1",
+                  "meaning": "or less"
                 }
               ],
               [
                 {
+                  "traditional": "我可能願意借",
+                  "simplified": "我可能愿意借",
+                  "pinyin": "wǒ kěnéng yuànyì jiè",
                   "id": "b3l11g2-r1-c3-w1",
-                  "traditional": "我願意借",
-                  "simplified": "我愿意借",
-                  "pinyin": "wǒ yuànyì jiè",
-                  "meaning": "willing to lend"
+                  "meaning": "I might be willing to lend"
                 }
               ]
             ]
@@ -608,29 +656,29 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g2-r2-c1-w1",
                   "traditional": "八十分",
                   "simplified": "八十分",
                   "pinyin": "bāshí fēn",
+                  "id": "b3l11g2-r2-c1-w1",
                   "meaning": "80 points"
                 }
               ],
               [
                 {
-                  "id": "b3l11g2-r2-c2-w1",
                   "traditional": "以上",
                   "simplified": "以上",
                   "pinyin": "yǐshàng",
-                  "meaning": "above"
+                  "id": "b3l11g2-r2-c2-w1",
+                  "meaning": "or above"
                 }
               ],
               [
                 {
+                  "traditional": "才能得到獎學金",
+                  "simplified": "才能得到奖学金",
+                  "pinyin": "cái néng dédào jiǎngxuéjīn",
                   "id": "b3l11g2-r2-c3-w1",
-                  "traditional": "能得獎學金",
-                  "simplified": "能得奖学金",
-                  "pinyin": "néng dé jiǎngxuéjīn",
-                  "meaning": "gets scholarship"
+                  "meaning": "can get a scholarship"
                 }
               ]
             ]
@@ -640,29 +688,29 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g2-r3-c1-w1",
                   "traditional": "一千元",
                   "simplified": "一千元",
                   "pinyin": "yìqiān yuán",
-                  "meaning": "1,000 NTD"
+                  "id": "b3l11g2-r3-c1-w1",
+                  "meaning": "1,000 dollars"
                 }
               ],
               [
                 {
-                  "id": "b3l11g2-r3-c2-w1",
                   "traditional": "以上",
                   "simplified": "以上",
                   "pinyin": "yǐshàng",
-                  "meaning": "above"
+                  "id": "b3l11g2-r3-c2-w1",
+                  "meaning": "or above"
                 }
               ],
               [
                 {
+                  "traditional": "就可以免費把商品送到家",
+                  "simplified": "就可以免费把商品送到家",
+                  "pinyin": "jiù kěyǐ miǎnfèi bǎ shāngpǐn sòngdào jiā",
                   "id": "b3l11g2-r3-c3-w1",
-                  "traditional": "免費送達",
-                  "simplified": "免费送达",
-                  "pinyin": "miǎnfèi sòngdá",
-                  "meaning": "free delivery"
+                  "meaning": "can deliver free"
                 }
               ]
             ]
@@ -676,34 +724,56 @@
               "traditional": "如果是兩萬塊以下，我可能願意借，十萬塊就太多了。",
               "simplified": "如果是两万块以下，我可能愿意借，十万块就太多了。",
               "pinyin": "Rúguǒ shì liǎng wàn kuài yǐxià, wǒ kěnéng yuànyì jiè, shí wàn kuài jiù tài duō le.",
-              "english": "If it were under 20,000 NTD, I might be willing to lend it; 100,000 is simply too much.",
+              "english": "If it is under 20,000, I might be willing to lend it; 100,000 would be too much.",
               "words": [
                 {
                   "id": "b3l11g2-ex1-w1",
-                  "traditional": "兩萬塊以下",
-                  "simplified": "两万块以下",
-                  "pinyin": "liǎng wàn kuài yǐxià",
-                  "meaning": "under 20k",
-                  "suffix": "，"
+                  "traditional": "如果是",
+                  "simplified": "如果是",
+                  "pinyin": "rúguǒ shì",
+                  "meaning": "if"
                 },
                 {
                   "id": "b3l11g2-ex1-w2",
-                  "traditional": "我願意借",
-                  "simplified": "我愿意借",
-                  "pinyin": "wǒ yuànyì jiè",
-                  "meaning": "willing to lend",
-                  "suffix": "，"
+                  "traditional": "兩萬塊",
+                  "simplified": "两万块",
+                  "pinyin": "liǎng wàn kuài",
+                  "meaning": "20,000"
                 },
                 {
                   "id": "b3l11g2-ex1-w3",
-                  "traditional": "十萬塊太多了",
-                  "simplified": "十万块太多了",
-                  "pinyin": "shí wàn kuài tài duō le",
-                  "meaning": "100k too much",
+                  "traditional": "以下",
+                  "simplified": "以下",
+                  "pinyin": "yǐxià",
+                  "meaning": "or less",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g2-ex1-w4",
+                  "traditional": "我可能願意借",
+                  "simplified": "我可能愿意借",
+                  "pinyin": "wǒ kěnéng yuànyì jiè",
+                  "meaning": "I might be willing to lend",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g2-ex1-w5",
+                  "traditional": "十萬塊",
+                  "simplified": "十万块",
+                  "pinyin": "shí wàn kuài",
+                  "meaning": "100,000"
+                },
+                {
+                  "id": "b3l11g2-ex1-w6",
+                  "traditional": "就太多了",
+                  "simplified": "就太多了",
+                  "pinyin": "jiù tài duō le",
+                  "meaning": "would be too much",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l11g2-ex2",
@@ -711,23 +781,66 @@
             "text": {
               "traditional": "教授說成績八十分以上的學生才能得到獎學金，我剛好八十分，太好了。",
               "simplified": "教授说成绩八十分以上的学生才能得到奖学金，我刚好八十分，太好了。",
-              "pinyin": "Jiàoshòu shuō chéngjī bāshí fēn yǐshàng de xuéshēng cái néng dédào jiǎngxuéjīn, wǒ gānghǎo bāshí fēn, tài hǎo le.",
-              "english": "The professor said students scoring eighty or above can receive scholarships; I scored exactly eighty, wonderful.",
+              "pinyin": "Jiàoshòu shuō chéngjī bāshí fēn yǐshàng de xuésheng cái néng dédào jiǎngxuéjīn, wǒ gānghǎo bāshí fēn, tài hǎo le.",
+              "english": "The professor said only students with grades of 80 or above can get the scholarship; I have exactly 80, so that is great.",
               "words": [
                 {
                   "id": "b3l11g2-ex2-w1",
-                  "traditional": "八十分以上",
-                  "simplified": "八十分以上",
-                  "pinyin": "bāshí fēn yǐshàng",
-                  "meaning": "80 points and above",
-                  "suffix": "，"
+                  "traditional": "教授說",
+                  "simplified": "教授说",
+                  "pinyin": "jiàoshòu shuō",
+                  "meaning": "the professor says"
                 },
                 {
                   "id": "b3l11g2-ex2-w2",
-                  "traditional": "才能得獎學金",
-                  "simplified": "才能得奖学金",
-                  "pinyin": "cái néng dé jiǎngxuéjīn",
-                  "meaning": "can get scholarship",
+                  "traditional": "成績",
+                  "simplified": "成绩",
+                  "pinyin": "chéngjī",
+                  "meaning": "grades"
+                },
+                {
+                  "id": "b3l11g2-ex2-w3",
+                  "traditional": "八十分",
+                  "simplified": "八十分",
+                  "pinyin": "bāshí fēn",
+                  "meaning": "80 points"
+                },
+                {
+                  "id": "b3l11g2-ex2-w4",
+                  "traditional": "以上",
+                  "simplified": "以上",
+                  "pinyin": "yǐshàng",
+                  "meaning": "or above"
+                },
+                {
+                  "id": "b3l11g2-ex2-w5",
+                  "traditional": "的學生",
+                  "simplified": "的学生",
+                  "pinyin": "de xuésheng",
+                  "meaning": "students"
+                },
+                {
+                  "id": "b3l11g2-ex2-w6",
+                  "traditional": "才能得到獎學金",
+                  "simplified": "才能得到奖学金",
+                  "pinyin": "cái néng dédào jiǎngxuéjīn",
+                  "meaning": "can get a scholarship",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g2-ex2-w7",
+                  "traditional": "我剛好八十分",
+                  "simplified": "我刚好八十分",
+                  "pinyin": "wǒ gānghǎo bāshí fēn",
+                  "meaning": "I have exactly 80",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g2-ex2-w8",
+                  "traditional": "太好了",
+                  "simplified": "太好了",
+                  "pinyin": "tài hǎo le",
+                  "meaning": "great",
                   "suffix": "。"
                 }
               ]
@@ -739,23 +852,52 @@
             "text": {
               "traditional": "那家網路商店為了吸引客人，只要購物一千元以上，就可以免費把商品送到家。",
               "simplified": "那家网络商店为了吸引客人，只要购物一千元以上，就可以免费把商品送到家。",
-              "pinyin": "Nà jiā wǎnglù shāngdiàn wèile xīyǐn kèrén, zhǐyào gòuwù yìqiān yuán yǐshàng, jiù kěyǐ miǎnfèi bǎ shāngpǐn sòng dào jiā.",
-              "english": "To attract shoppers, that online store offers free home delivery on orders of 1,000 NTD and above.",
+              "pinyin": "Nà jiā wǎnglù shāngdiàn wèile xīyǐn kèrén, zhǐyào gòuwù yìqiān yuán yǐshàng, jiù kěyǐ miǎnfèi bǎ shāngpǐn sòngdào jiā.",
+              "english": "To attract customers, that online store delivers goods home for free if you spend 1,000 or more.",
               "words": [
                 {
                   "id": "b3l11g2-ex3-w1",
-                  "traditional": "購物一千元以上",
-                  "simplified": "购物一千元以上",
-                  "pinyin": "gòuwù yìqiān yuán yǐshàng",
-                  "meaning": "purchases over 1,000",
-                  "suffix": "，"
+                  "traditional": "那家網路商店",
+                  "simplified": "那家网络商店",
+                  "pinyin": "nà jiā wǎnglù shāngdiàn",
+                  "meaning": "that online store"
                 },
                 {
                   "id": "b3l11g2-ex3-w2",
-                  "traditional": "免費送商品到家",
-                  "simplified": "免费送商品到家",
-                  "pinyin": "miǎnfèi sòng shāngpǐn dào jiā",
-                  "meaning": "free delivery home",
+                  "traditional": "為了吸引客人",
+                  "simplified": "为了吸引客人",
+                  "pinyin": "wèile xīyǐn kèrén",
+                  "meaning": "to attract customers",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g2-ex3-w3",
+                  "traditional": "只要購物",
+                  "simplified": "只要购物",
+                  "pinyin": "zhǐyào gòuwù",
+                  "meaning": "as long as one shops"
+                },
+                {
+                  "id": "b3l11g2-ex3-w4",
+                  "traditional": "一千元",
+                  "simplified": "一千元",
+                  "pinyin": "yìqiān yuán",
+                  "meaning": "1,000 dollars"
+                },
+                {
+                  "id": "b3l11g2-ex3-w5",
+                  "traditional": "以上",
+                  "simplified": "以上",
+                  "pinyin": "yǐshàng",
+                  "meaning": "or more",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g2-ex3-w6",
+                  "traditional": "就可以免費把商品送到家",
+                  "simplified": "就可以免费把商品送到家",
+                  "pinyin": "jiù kěyǐ miǎnfèi bǎ shāngpǐn sòngdào jiā",
+                  "meaning": "can deliver free",
                   "suffix": "。"
                 }
               ]
@@ -829,55 +971,9 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g2-q1",
-            "type": "choice",
-            "prompt": "State promotional store discount terms:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "最近百貨公司"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g2-q1-b1",
-                "answer": "買三千元以上",
-                "answerSimplified": "买三千元以上",
-                "hint": "buy 3,000 or more"
-              },
-              {
-                "type": "text",
-                "traditional": "，就可以打九折。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g2-q1-t1",
-                "traditional": "買三千元以上",
-                "simplified": "买三千元以上",
-                "pinyin": "mǎi sānqiān yuán yǐshàng",
-                "meaning": "buy 3k and up"
-              },
-              {
-                "id": "b3l11g2-q1-t2",
-                "traditional": "買三千元以下",
-                "simplified": "买三千元以下",
-                "pinyin": "mǎi sānqiān yuán yǐxià",
-                "meaning": "buy 3k and down"
-              },
-              {
-                "id": "b3l11g2-q1-t3",
-                "traditional": "買三千元以內",
-                "simplified": "买三千元以内",
-                "pinyin": "mǎi sānqiān yuán yǐnèi",
-                "meaning": "buy within 3k"
-              }
-            ],
-            "correctFeedback": "以上 specifies amounts at or surpassing the boundary value.",
-            "repairFeedback": "Pattern: Amount + 以上 (e.g. 三千元以上)."
-          }
-        ]
+        "questions": [],
+        "explanationEnglish": "以上 means 超過(exceed) or 高於(be higher than) a certain point, and also includes 某一點(a certain point). For example, 六十分以上及格(grades above 60 points are considered passing) also includes 60 points. 以下 means 低於(below) or 未達到(not to have reached) a certain point. When 以 is used together with a position word, for example, 以內, 以外, 以北 or 以南, it means something within a certain range.",
+        "patternAccentColumn": 1
       },
       {
         "id": "B3L11-G03-P292",
@@ -897,16 +993,16 @@
         "bookPage": 292,
         "bookPageAvailable": true,
         "audioReference": "11-1-1",
-        "explanation": "「看得起、看不起」表示對人的重視程度。「看得起」表示認為對方很重要、值得尊重；「看不起」有輕視對方的意思。",
+        "explanation": "「看得起、看不起」表示對人的重視程度。「看得起」表示認為對方很重要；「看不起」有輕視對方的意思。第二冊第四課的語法「V 得起/V 不起」表示一個人的經濟能力能否負擔。",
         "focusTerms": [
           "看得起",
           "看不起"
         ],
-        "pattern": "Subject + 看得起 / 看不起 + Object",
+        "pattern": "Subject + 看得起/看不起 + Person",
         "patternColumns": [
           "Subject",
           "Verb",
-          "Object"
+          "Person"
         ],
         "patternRows": [
           {
@@ -914,29 +1010,29 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g3-r1-c1-w1",
                   "traditional": "我",
                   "simplified": "我",
                   "pinyin": "wǒ",
+                  "id": "b3l11g3-r1-c1-w1",
                   "meaning": "I"
                 }
               ],
               [
                 {
-                  "id": "b3l11g3-r1-c2-w1",
                   "traditional": "看不起",
                   "simplified": "看不起",
-                  "pinyin": "kànbùqǐ",
-                  "meaning": "despise"
+                  "pinyin": "kànbuqǐ",
+                  "id": "b3l11g3-r1-c2-w1",
+                  "meaning": "look down on"
                 }
               ],
               [
                 {
+                  "traditional": "這種人",
+                  "simplified": "这种人",
+                  "pinyin": "zhè zhǒng rén",
                   "id": "b3l11g3-r1-c3-w1",
-                  "traditional": "騙人的傢伙",
-                  "simplified": "骗人的家伙",
-                  "pinyin": "piànrén de jiāhuo",
-                  "meaning": "scammers"
+                  "meaning": "this kind of person"
                 }
               ]
             ]
@@ -946,29 +1042,29 @@
             "columns": [
               [
                 {
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
                   "id": "b3l11g3-r2-c1-w1",
-                  "traditional": "大家",
-                  "simplified": "大家",
-                  "pinyin": "dàjiā",
-                  "meaning": "everyone"
+                  "meaning": "you"
                 }
               ],
               [
                 {
+                  "traditional": "看不起",
+                  "simplified": "看不起",
+                  "pinyin": "kànbuqǐ",
                   "id": "b3l11g3-r2-c2-w1",
-                  "traditional": "看得起",
-                  "simplified": "看得起",
-                  "pinyin": "kàndeqǐ",
-                  "meaning": "respects"
+                  "meaning": "look down on"
                 }
               ],
               [
                 {
+                  "traditional": "窮人",
+                  "simplified": "穷人",
+                  "pinyin": "qióngrén",
                   "id": "b3l11g3-r2-c3-w1",
-                  "traditional": "認真的人",
-                  "simplified": "认真的人",
-                  "pinyin": "rènzhēn de rén",
-                  "meaning": "hardworking people"
+                  "meaning": "the poor"
                 }
               ]
             ]
@@ -978,29 +1074,29 @@
             "columns": [
               [
                 {
+                  "traditional": "主管",
+                  "simplified": "主管",
+                  "pinyin": "zhǔguǎn",
                   "id": "b3l11g3-r3-c1-w1",
-                  "traditional": "謝謝你",
-                  "simplified": "谢谢你",
-                  "pinyin": "xièxie nǐ",
-                  "meaning": "thank you"
+                  "meaning": "supervisor"
                 }
               ],
               [
                 {
-                  "id": "b3l11g3-r3-c2-w1",
                   "traditional": "看得起",
                   "simplified": "看得起",
                   "pinyin": "kàndeqǐ",
+                  "id": "b3l11g3-r3-c2-w1",
                   "meaning": "think highly of"
                 }
               ],
               [
                 {
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
                   "id": "b3l11g3-r3-c3-w1",
-                  "traditional": "我",
-                  "simplified": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "me"
+                  "meaning": "you"
                 }
               ]
             ]
@@ -1011,53 +1107,111 @@
             "id": "b3l11g3-ex1",
             "number": 1,
             "text": {
-              "traditional": "雖然我也看不起這種人，但網路交友的方式還是不錯的。",
-              "simplified": "虽然我也看不起这种人，但网络交友的方式还是不错的。",
-              "pinyin": "Suīrán wǒ yě kànbùqǐ zhè zhǒng rén, dàn wǎnglù jiāoyǒu de fāngshì háishì búcuò de.",
-              "english": "Although I also despise this sort of person, online socializing remains a fine method.",
+              "traditional": "雖然我也看不起這種人，但網路交友的方式還是不錯的……",
+              "simplified": "虽然我也看不起这种人，但网络交友的方式还是不错的……",
+              "pinyin": "Suīrán wǒ yě kànbuqǐ zhè zhǒng rén, dàn wǎnglù jiāoyǒu de fāngshì háishì búcuò de……",
+              "english": "Although I also look down on this kind of person, making friends online is still pretty good……",
               "words": [
                 {
                   "id": "b3l11g3-ex1-w1",
-                  "traditional": "看不起這種人",
-                  "simplified": "看不起这种人",
-                  "pinyin": "kànbùqǐ zhè zhǒng rén",
-                  "meaning": "look down on such people",
-                  "suffix": "，"
+                  "traditional": "雖然",
+                  "simplified": "虽然",
+                  "pinyin": "suīrán",
+                  "meaning": "although"
                 },
                 {
                   "id": "b3l11g3-ex1-w2",
-                  "traditional": "交友方式還是不錯",
-                  "simplified": "交友方式还是不错",
-                  "pinyin": "jiāoyǒu fāngshì háishì búcuò",
-                  "meaning": "dating method still fine",
-                  "suffix": "。"
+                  "traditional": "我",
+                  "simplified": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I"
+                },
+                {
+                  "id": "b3l11g3-ex1-w3",
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "meaning": "also"
+                },
+                {
+                  "id": "b3l11g3-ex1-w4",
+                  "traditional": "看不起",
+                  "simplified": "看不起",
+                  "pinyin": "kànbuqǐ",
+                  "meaning": "look down on"
+                },
+                {
+                  "id": "b3l11g3-ex1-w5",
+                  "traditional": "這種人",
+                  "simplified": "这种人",
+                  "pinyin": "zhè zhǒng rén",
+                  "meaning": "this kind of person",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g3-ex1-w6",
+                  "traditional": "但網路交友的方式還是不錯的",
+                  "simplified": "但网络交友的方式还是不错的",
+                  "pinyin": "dàn wǎnglù jiāoyǒu de fāngshì háishì búcuò de",
+                  "meaning": "making friends online is still pretty good",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l11g3-ex2",
             "number": 2,
             "text": {
-              "traditional": "只要你努力工作、對人客氣，就算沒有高學歷，別人也會看得起你。",
-              "simplified": "只要你努力工作、对人客气，就算没有高学历，别人也会看得起你。",
-              "pinyin": "Zhǐyào nǐ nǔlì gōngzuò, duì rén kèqì, jiùsuàn méiyǒu gāo xuélì, biérén yě huì kàndeqǐ nǐ.",
-              "english": "As long as you work diligently and treat others politely, people will respect you even without higher degrees.",
+              "traditional": "你不可以看不起窮人，因為我們每個人都是一樣的，不能以地位、成就的高低來決定對人的態度。",
+              "simplified": "你不可以看不起穷人，因为我们每个人都是一样的，不能以地位、成就的高低来决定对人的态度。",
+              "pinyin": "Nǐ bù kěyǐ kànbuqǐ qióngrén, yīnwèi wǒmen měi ge rén dōu shì yíyàng de, bù néng yǐ dìwèi, chéngjiù de gāodī lái juédìng duì rén de tàidu.",
+              "english": "You must not look down on the poor, because everyone of us is the same; one cannot decide how to treat people by status or achievement.",
               "words": [
                 {
                   "id": "b3l11g3-ex2-w1",
-                  "traditional": "努力工作對人客氣",
-                  "simplified": "努力工作对人客气",
-                  "pinyin": "nǔlì gōngzuò duì rén kèqì",
-                  "meaning": "work hard polite to people",
-                  "suffix": "，"
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
                 },
                 {
                   "id": "b3l11g3-ex2-w2",
-                  "traditional": "別人也會看得起你",
-                  "simplified": "别人也会看得起你",
-                  "pinyin": "biérén yě huì kàndeqǐ nǐ",
-                  "meaning": "others will respect you",
+                  "traditional": "不可以",
+                  "simplified": "不可以",
+                  "pinyin": "bù kěyǐ",
+                  "meaning": "must not"
+                },
+                {
+                  "id": "b3l11g3-ex2-w3",
+                  "traditional": "看不起",
+                  "simplified": "看不起",
+                  "pinyin": "kànbuqǐ",
+                  "meaning": "look down on"
+                },
+                {
+                  "id": "b3l11g3-ex2-w4",
+                  "traditional": "窮人",
+                  "simplified": "穷人",
+                  "pinyin": "qióngrén",
+                  "meaning": "the poor",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g3-ex2-w5",
+                  "traditional": "因為我們每個人都是一樣的",
+                  "simplified": "因为我们每个人都是一样的",
+                  "pinyin": "yīnwèi wǒmen měi ge rén dōu shì yíyàng de",
+                  "meaning": "because everyone is the same",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g3-ex2-w6",
+                  "traditional": "不能以地位、成就的高低來決定對人的態度",
+                  "simplified": "不能以地位、成就的高低来决定对人的态度",
+                  "pinyin": "bù néng yǐ dìwèi chéngjiù de gāodī lái juédìng duì rén de tàidu",
+                  "meaning": "cannot decide one's attitude by status and achievement",
                   "suffix": "。"
                 }
               ]
@@ -1067,25 +1221,47 @@
             "id": "b3l11g3-ex3",
             "number": 3,
             "text": {
-              "traditional": "有些人自己沒本事，卻常常看不起別人，真教人受不了。",
-              "simplified": "有些人自己没本事，却常常看不起别人，真教人受不了。",
-              "pinyin": "Yǒuxiē rén zìjǐ méi běnshì, què chángcháng kànbùqǐ biérén, zhēn jiāo rén shòubùliǎo.",
-              "english": "Some people lack capability themselves yet constantly look down on others; it's truly intolerable.",
+              "traditional": "主管看得起你，才把管理工廠工人的工作交給你，你要把握這個機會好好地表現。",
+              "simplified": "主管看得起你，才把管理工厂工人的工作交给你，你要把握这个机会好好地表现。",
+              "pinyin": "Zhǔguǎn kàndeqǐ nǐ, cái bǎ guǎnlǐ gōngchǎng gōngrén de gōngzuò jiāo gěi nǐ, nǐ yào bǎwò zhè ge jīhuì hǎohǎo de biǎoxiàn.",
+              "english": "The supervisor thinks highly of you, which is why he gave you the job of managing factory workers; you should seize this chance and do well.",
               "words": [
                 {
                   "id": "b3l11g3-ex3-w1",
-                  "traditional": "自己沒本事",
-                  "simplified": "自己没本事",
-                  "pinyin": "zìjǐ méi běnshì",
-                  "meaning": "lacks ability oneself",
-                  "suffix": "，"
+                  "traditional": "主管",
+                  "simplified": "主管",
+                  "pinyin": "zhǔguǎn",
+                  "meaning": "supervisor"
                 },
                 {
                   "id": "b3l11g3-ex3-w2",
-                  "traditional": "常常看不起別人",
-                  "simplified": "常常看不起别人",
-                  "pinyin": "chángcháng kànbùqǐ biérén",
-                  "meaning": "often despises others",
+                  "traditional": "看得起",
+                  "simplified": "看得起",
+                  "pinyin": "kàndeqǐ",
+                  "meaning": "think highly of"
+                },
+                {
+                  "id": "b3l11g3-ex3-w3",
+                  "traditional": "你",
+                  "simplified": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g3-ex3-w4",
+                  "traditional": "才把管理工廠工人的工作交給你",
+                  "simplified": "才把管理工厂工人的工作交给你",
+                  "pinyin": "cái bǎ guǎnlǐ gōngchǎng gōngrén de gōngzuò jiāo gěi nǐ",
+                  "meaning": "only then gave you the job of managing factory workers",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g3-ex3-w5",
+                  "traditional": "你要把握這個機會好好地表現",
+                  "simplified": "你要把握这个机会好好地表现",
+                  "pinyin": "nǐ yào bǎwò zhè ge jīhuì hǎohǎo de biǎoxiàn",
+                  "meaning": "you should seize this chance and do well",
                   "suffix": "。"
                 }
               ]
@@ -1159,55 +1335,9 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g3-q1",
-            "type": "choice",
-            "prompt": "Praise people who work hard regardless of family background:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "只要肯努力，大家都會"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g3-q1-b1",
-                "answer": "看得起你",
-                "answerSimplified": "看得起你",
-                "hint": "respect you"
-              },
-              {
-                "type": "text",
-                "traditional": "的。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g3-q1-t1",
-                "traditional": "看得起你",
-                "simplified": "看得起你",
-                "pinyin": "kàndeqǐ nǐ",
-                "meaning": "respect you"
-              },
-              {
-                "id": "b3l11g3-q1-t2",
-                "traditional": "看不起你",
-                "simplified": "看不起你",
-                "pinyin": "kànbùqǐ nǐ",
-                "meaning": "despise you"
-              },
-              {
-                "id": "b3l11g3-q1-t3",
-                "traditional": "看重得你",
-                "simplified": "看重得你",
-                "pinyin": "kànzhòngde nǐ",
-                "meaning": "ungrammatical"
-              }
-            ],
-            "correctFeedback": "看得起 means holding someone in high regard or respect.",
-            "repairFeedback": "Use 看得起 for respecting and esteeming someone."
-          }
-        ]
+        "questions": [],
+        "explanationEnglish": "看得起, 看不起 indicates the level of respect shown to the other person. 看得起 means to consider the other party important; 看不起 means to look down on or to despise the other person. The grammar V 得起/V 不起, in the fourth lesson of Book 2, indicates whether a person can or can not afford something.",
+        "patternAccentColumn": 1
       }
     ]
   },
@@ -1235,7 +1365,7 @@
           "id": "b3l11d2-l1",
           "speaker": "旁白",
           "traditional": "自從無線網路出現的那天起，現代人的生活似乎就離不開網路了。網路科技的進步，不但改變了從前的生活方式，甚至連人與人之間的關係，也產生了極大的變化。住在不同地區的人，可以透過網路互相交流，這一點是我們祖父母那個年代的人很難想像的。",
-          "simplified": "自从无线网络出现的那天起，现代人的生活似乎就离不开网络了。网络科技的进步，不但改变了从前的生活方式，甚至连人与人之间的关系，也产生了极大的变化。住在不同地区的人，可以透过网络互相交流，这一点是我们祖父母那个年代的人很难想象的。",
+          "simplified": "自从无线网络出现的那天起，现代人的生活似乎就离不开网络了。网络科技的进步，不但改变了从前的生活方式，甚至连人与人之间的关系，也产生了极大的变化。住在不同地区的人，可以透过网络互相交流，这一点是我们祖父母那个年代的人很难想像的。",
           "pinyin": "Zìcóng wúxiàn wǎnglù chūxiàn de nà tiān qǐ, xiàndài rén de shēnghuó sìhū jiù líbùkāi wǎnglù le. Wǎnglù kējì de jìnbù, búdàn gǎibiàn le cóngqián de shēnghuó fāngshì, shènzhì lián rén yǔ rén zhījiān de guānxì, yě chǎnshēng le jídà de biànhuà. Zhù zài bùtóng dìqū de rén, kěyǐ tòuguò wǎnglù hùxiāng jiāoliú, zhè yì diǎn shì wǒmen zǔfùmǔ nà ge niándài de rén hěn nán xiǎngxiàng de.",
           "english": "Ever since wireless internet emerged, modern life seems inseparable from the web. Technological advances not only altered former lifestyles, but profoundly transformed relationships between people. Individuals residing in diverse regions can connect online—something hard to fathom for our grandparents' generation."
         },
@@ -1279,23 +1409,21 @@
         "learnerPromise": "Highlight an unexpected, contrary result or reality using the adverb 卻 ('yet / however').",
         "printedPages": [
           299,
-          300
+          300,
+          301
         ],
         "bookPage": 299,
         "bookPageAvailable": true,
         "audioReference": "11-2-1",
-        "explanation": "「卻」作副詞，表示和事實或期望相反，放在主語後面、動詞前面，用來表示轉折。",
+        "explanation": "「卻」作副詞，表示和事實或期望相反，放在主語後面、動詞前面，用來表示轉折。例如：他跟我約好在學校見面，等了半天，他卻沒來。",
         "focusTerms": [
-          "卻",
-          "然而",
-          "但是"
+          "卻"
         ],
-        "pattern": "Premise, + Subject + 卻 + Contrary Action / State",
+        "pattern": "Subject + 卻 + Predicate",
         "patternColumns": [
-          "Premise",
           "Subject",
           "卻",
-          "Contrast"
+          "Predicate"
         ],
         "patternRows": [
           {
@@ -1303,38 +1431,29 @@
             "columns": [
               [
                 {
+                  "traditional": "某人",
+                  "simplified": "某人",
+                  "pinyin": "mǒu rén",
                   "id": "b3l11g4-r1-c1-w1",
-                  "traditional": "已經五十歲",
-                  "simplified": "已经五十岁",
-                  "pinyin": "yǐjīng wǔshí suì",
-                  "meaning": "already 50"
+                  "meaning": "someone"
                 }
               ],
               [
                 {
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
                   "id": "b3l11g4-r1-c2-w1",
-                  "traditional": "他",
-                  "simplified": "他",
-                  "pinyin": "tā",
-                  "meaning": "he"
+                  "meaning": "yet"
                 }
               ],
               [
                 {
+                  "traditional": "說自己才二十歲",
+                  "simplified": "说自己才二十岁",
+                  "pinyin": "shuō zìjǐ cái èrshí suì",
                   "id": "b3l11g4-r1-c3-w1",
-                  "traditional": "卻說",
-                  "simplified": "却说",
-                  "pinyin": "què shuō",
-                  "meaning": "yet says"
-                }
-              ],
-              [
-                {
-                  "id": "b3l11g4-r1-c4-w1",
-                  "traditional": "才二十歲",
-                  "simplified": "才二十岁",
-                  "pinyin": "cái èrshí suì",
-                  "meaning": "only twenty"
+                  "meaning": "claims to be only twenty"
                 }
               ]
             ]
@@ -1344,38 +1463,29 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g4-r2-c1-w1",
-                  "traditional": "見面時",
-                  "simplified": "见面时",
-                  "pinyin": "jiànmiàn shí",
-                  "meaning": "when meeting"
-                }
-              ],
-              [
-                {
-                  "id": "b3l11g4-r2-c2-w1",
                   "traditional": "我們",
                   "simplified": "我们",
                   "pinyin": "wǒmen",
+                  "id": "b3l11g4-r2-c1-w1",
                   "meaning": "we"
                 }
               ],
               [
                 {
-                  "id": "b3l11g4-r2-c3-w1",
-                  "traditional": "卻聊不到",
-                  "simplified": "却聊不到",
-                  "pinyin": "què liáobúdào",
-                  "meaning": "yet barely spoke"
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "id": "b3l11g4-r2-c2-w1",
+                  "meaning": "yet"
                 }
               ],
               [
                 {
-                  "id": "b3l11g4-r2-c4-w1",
-                  "traditional": "幾句話",
-                  "simplified": "几句话",
-                  "pinyin": "jǐ jù huà",
-                  "meaning": "few sentences"
+                  "traditional": "聊不到幾句話",
+                  "simplified": "聊不到几句话",
+                  "pinyin": "liáobudào jǐ jù huà",
+                  "id": "b3l11g4-r2-c3-w1",
+                  "meaning": "can barely chat a few sentences"
                 }
               ]
             ]
@@ -1385,38 +1495,29 @@
             "columns": [
               [
                 {
-                  "id": "b3l11g4-r3-c1-w1",
-                  "traditional": "以為他緊張",
-                  "simplified": "以为他紧张",
-                  "pinyin": "yǐwéi tā jǐnzhāng",
-                  "meaning": "thought him nervous"
-                }
-              ],
-              [
-                {
-                  "id": "b3l11g4-r3-c2-w1",
                   "traditional": "他",
                   "simplified": "他",
                   "pinyin": "tā",
+                  "id": "b3l11g4-r3-c1-w1",
                   "meaning": "he"
                 }
               ],
               [
                 {
-                  "id": "b3l11g4-r3-c3-w1",
-                  "traditional": "卻非常",
-                  "simplified": "却非常",
-                  "pinyin": "què fēicháng",
-                  "meaning": "yet very"
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "id": "b3l11g4-r3-c2-w1",
+                  "meaning": "yet"
                 }
               ],
               [
                 {
-                  "id": "b3l11g4-r3-c4-w1",
-                  "traditional": "冷靜",
-                  "simplified": "冷静",
-                  "pinyin": "lěngjìng",
-                  "meaning": "calm"
+                  "traditional": "很冷靜",
+                  "simplified": "很冷静",
+                  "pinyin": "hěn lěngjìng",
+                  "id": "b3l11g4-r3-c3-w1",
+                  "meaning": "very calm"
                 }
               ]
             ]
@@ -1427,29 +1528,51 @@
             "id": "b3l11g4-ex1",
             "number": 1,
             "text": {
-              "traditional": "某人已經五十歲了，在網路上卻說自己才二十歲，甚至拿別人的照片當大頭照。",
-              "simplified": "某人已经五十岁了，在网络上却说自己才二十岁，甚至拿别人的照片当大头照。",
-              "pinyin": "Mǒu rén yǐjīng wǔshí suì le, zài wǎnglù shàng què shuō zìjǐ cái èrshí suì, shènzhì ná biérén de zhàopiàn dāng dàtóuzhào.",
-              "english": "Someone is already fifty, yet claims online to be only twenty, even using another's photo as an avatar.",
+              "traditional": "某人已經五十歲了，在網路上卻說自己才二十歲……",
+              "simplified": "某人已经五十岁了，在网络上却说自己才二十岁……",
+              "pinyin": "Mǒu rén yǐjīng wǔshí suì le, zài wǎnglù shàng què shuō zìjǐ cái èrshí suì……",
+              "english": "Someone is already fifty years old, yet online he claims to be only twenty……",
               "words": [
                 {
                   "id": "b3l11g4-ex1-w1",
-                  "traditional": "已經五十歲了",
-                  "simplified": "已经五十岁了",
-                  "pinyin": "yǐjīng wǔshí suì le",
-                  "meaning": "already fifty years old",
-                  "suffix": "，"
+                  "traditional": "某人",
+                  "simplified": "某人",
+                  "pinyin": "mǒu rén",
+                  "meaning": "someone"
                 },
                 {
                   "id": "b3l11g4-ex1-w2",
-                  "traditional": "在網路上卻說才二十",
-                  "simplified": "在网络上却说才二十",
-                  "pinyin": "zài wǎnglù shàng què shuō cái èrshí",
-                  "meaning": "yet says only twenty online",
-                  "suffix": "。"
+                  "traditional": "已經五十歲了",
+                  "simplified": "已经五十岁了",
+                  "pinyin": "yǐjīng wǔshí suì le",
+                  "meaning": "is already fifty",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g4-ex1-w3",
+                  "traditional": "在網路上",
+                  "simplified": "在网络上",
+                  "pinyin": "zài wǎnglù shàng",
+                  "meaning": "online"
+                },
+                {
+                  "id": "b3l11g4-ex1-w4",
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "meaning": "yet"
+                },
+                {
+                  "id": "b3l11g4-ex1-w5",
+                  "traditional": "說自己才二十歲",
+                  "simplified": "说自己才二十岁",
+                  "pinyin": "shuō zìjǐ cái èrshí suì",
+                  "meaning": "claims to be only twenty",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l11g4-ex2",
@@ -1457,23 +1580,53 @@
             "text": {
               "traditional": "小馬是我的網友，我對他不陌生，可是面對面接觸時，我們卻聊不到幾句話。",
               "simplified": "小马是我的网友，我对他不陌生，可是面对面接触时，我们却聊不到几句话。",
-              "pinyin": "Xiǎo Mǎ shì wǒ de wǎngyǒu, wǒ duì tā bù mòshēng, kěshì miànduìmiàn jiēchù shí, wǒmen què liáobúdào jǐ jù huà.",
-              "english": "Xiao Ma is my netizen friend and familiar to me, but when meeting face to face we could barely exchange words.",
+              "pinyin": "Xiǎo Mǎ shì wǒ de wǎngyǒu, wǒ duì tā bú mòshēng, kěshì miànduìmiàn jiēchù shí, wǒmen què liáobudào jǐ jù huà.",
+              "english": "Xiao Ma is my online friend and I am not unfamiliar with him, but when we meet face to face, we can barely chat a few sentences.",
               "words": [
                 {
                   "id": "b3l11g4-ex2-w1",
-                  "traditional": "對他不陌生",
-                  "simplified": "对他不陌生",
-                  "pinyin": "duì tā bù mòshēng",
-                  "meaning": "not unfamiliar with him",
+                  "traditional": "小馬是我的網友",
+                  "simplified": "小马是我的网友",
+                  "pinyin": "xiǎo Mǎ shì wǒ de wǎngyǒu",
+                  "meaning": "Xiao Ma is my online friend",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l11g4-ex2-w2",
-                  "traditional": "見面時卻聊不到幾句",
-                  "simplified": "见面时却聊不到几句",
-                  "pinyin": "jiànmiàn shí què liáobúdào jǐ jù",
-                  "meaning": "yet barely spoke when meeting",
+                  "traditional": "我對他不陌生",
+                  "simplified": "我对他不陌生",
+                  "pinyin": "wǒ duì tā bú mòshēng",
+                  "meaning": "I am not unfamiliar with him",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g4-ex2-w3",
+                  "traditional": "可是面對面接觸時",
+                  "simplified": "可是面对面接触时",
+                  "pinyin": "kěshì miànduìmiàn jiēchù shí",
+                  "meaning": "but when we meet face to face",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g4-ex2-w4",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "b3l11g4-ex2-w5",
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "meaning": "yet"
+                },
+                {
+                  "id": "b3l11g4-ex2-w6",
+                  "traditional": "聊不到幾句話",
+                  "simplified": "聊不到几句话",
+                  "pinyin": "liáobudào jǐ jù huà",
+                  "meaning": "can barely chat a few sentences",
                   "suffix": "。"
                 }
               ]
@@ -1483,25 +1636,62 @@
             "id": "b3l11g4-ex3",
             "number": 3,
             "text": {
-              "traditional": "警察通知我室友，他家人發生了車禍，我以為他會很緊張，沒想到卻很冷靜。",
-              "simplified": "警察通知我室友，他家人发生了车祸，我以为他会很紧张，没想到却很冷静。",
-              "pinyin": "Jǐngchá tōngzhī wǒ shìyǒu, tā jiārén fāshēng le chēhuò, wǒ yǐwéi tā huì hěn jǐnzhāng, méi xiǎngdào què hěn lěngjìng.",
-              "english": "Police notified my roommate of his family's car accident; I thought he'd panic, but unexpectedly he remained calm.",
+              "traditional": "警察通知我室友，他家人發生了車禍，我以為他會很緊張，沒想到他卻很冷靜。",
+              "simplified": "警察通知我室友，他家人发生了车祸，我以为他会很紧张，没想到他却很冷静。",
+              "pinyin": "Jǐngchá tōngzhī wǒ shìyǒu, tā jiārén fāshēng le chēhuò, wǒ yǐwéi tā huì hěn jǐnzhāng, méi xiǎngdào tā què hěn lěngjìng.",
+              "english": "The police informed my roommate that his family had a car accident; I thought he would be very nervous, but to my surprise he was very calm.",
               "words": [
                 {
                   "id": "b3l11g4-ex3-w1",
-                  "traditional": "以為他會很緊張",
-                  "simplified": "以为他会很紧张",
-                  "pinyin": "yǐwéi tā huì hěn jǐnzhāng",
-                  "meaning": "thought he'd be nervous",
+                  "traditional": "警察通知我室友",
+                  "simplified": "警察通知我室友",
+                  "pinyin": "jǐngchá tōngzhī wǒ shìyǒu",
+                  "meaning": "police informed my roommate",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l11g4-ex3-w2",
-                  "traditional": "沒想到卻很冷靜",
-                  "simplified": "没想到却很冷静",
-                  "pinyin": "méi xiǎngdào què hěn lěngjìng",
-                  "meaning": "yet calm unexpectedly",
+                  "traditional": "他家人發生了車禍",
+                  "simplified": "他家人发生了车祸",
+                  "pinyin": "tā jiārén fāshēng le chēhuò",
+                  "meaning": "his family had a car accident",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g4-ex3-w3",
+                  "traditional": "我以為他會很緊張",
+                  "simplified": "我以为他会很紧张",
+                  "pinyin": "wǒ yǐwéi tā huì hěn jǐnzhāng",
+                  "meaning": "I thought he would be very nervous",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g4-ex3-w4",
+                  "traditional": "沒想到",
+                  "simplified": "没想到",
+                  "pinyin": "méi xiǎngdào",
+                  "meaning": "to my surprise"
+                },
+                {
+                  "id": "b3l11g4-ex3-w5",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "b3l11g4-ex3-w6",
+                  "traditional": "卻",
+                  "simplified": "却",
+                  "pinyin": "què",
+                  "meaning": "yet"
+                },
+                {
+                  "id": "b3l11g4-ex3-w7",
+                  "traditional": "很冷靜",
+                  "simplified": "很冷静",
+                  "pinyin": "hěn lěngjìng",
+                  "meaning": "very calm",
                   "suffix": "。"
                 }
               ]
@@ -1575,55 +1765,9 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g4-q1",
-            "type": "choice",
-            "prompt": "Describe an agreed rendezvous where the other person stood you up:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他跟我約好在學校見面，等了半天，他"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g4-q1-b1",
-                "answer": "卻沒有出現",
-                "answerSimplified": "却没有出现",
-                "hint": "yet didn't appear"
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g4-q1-t1",
-                "traditional": "卻沒有出現",
-                "simplified": "却没有出现",
-                "pinyin": "què méiyǒu chūxiàn",
-                "meaning": "yet didn't appear"
-              },
-              {
-                "id": "b3l11g4-q1-t2",
-                "traditional": "就沒有出現",
-                "simplified": "就没有出现",
-                "pinyin": "jiù méiyǒu chūxiàn",
-                "meaning": "then didn't appear"
-              },
-              {
-                "id": "b3l11g4-q1-t3",
-                "traditional": "才沒有出現",
-                "simplified": "才没有出现",
-                "pinyin": "cái méiyǒu chūxiàn",
-                "meaning": "only didn't appear"
-              }
-            ],
-            "correctFeedback": "卻 sits between the subject and verb to indicate an outcome contrary to expectations.",
-            "repairFeedback": "Pattern: Subject + 卻 + Contrary Verb."
-          }
-        ]
+        "questions": [],
+        "explanationEnglish": "卻 is an adverb, indicating things contrary to fact or expectation. It is often placed after the subject of the sentence or in front of the verb to indicate a transition. For example, 他跟我約好在學校見面，等了半天，他卻沒來。",
+        "patternAccentColumn": 1
       },
       {
         "id": "B3L11-G05-P301",
@@ -1643,12 +1787,12 @@
         "bookPage": 301,
         "bookPageAvailable": true,
         "audioReference": "11-2-1",
-        "explanation": "「對得起」表示沒做不好或不應該的事，沒讓對方失望、生氣、丟臉。「對不起」的意思跟「對得起」相反。「對得起/對不起」後面可接對象，如：對得起父母、對得起老闆、對不起良心、對不起社會。",
+        "explanation": "「對得起」表示沒做不好或不應該的事，沒讓對方失望、生氣、丟臉。「對不起」的意思跟「對得起」相反。「對得起/對不起」後面可接事情的對象，例如：對得起老闆、對得起自己、對不起朋友、對不起社會。",
         "focusTerms": [
           "對得起",
           "對不起"
         ],
-        "pattern": "Subject + 對得起 / 對不起 + Object",
+        "pattern": "Subject + 對得起/對不起 + Object",
         "patternColumns": [
           "Subject",
           "Verb",
@@ -1660,29 +1804,29 @@
             "columns": [
               [
                 {
+                  "traditional": "那些騙子",
+                  "simplified": "那些骗子",
+                  "pinyin": "nàxiē piànzi",
                   "id": "b3l11g5-r1-c1-w1",
-                  "traditional": "騙子",
-                  "simplified": "骗子",
-                  "pinyin": "piànzi",
-                  "meaning": "scammers"
+                  "meaning": "those scammers"
                 }
               ],
               [
                 {
-                  "id": "b3l11g5-r1-c2-w1",
                   "traditional": "對不起",
                   "simplified": "对不起",
-                  "pinyin": "duìbùqǐ",
+                  "pinyin": "duìbuqǐ",
+                  "id": "b3l11g5-r1-c2-w1",
                   "meaning": "let down"
                 }
               ],
               [
                 {
+                  "traditional": "社會",
+                  "simplified": "社会",
+                  "pinyin": "shèhuì",
                   "id": "b3l11g5-r1-c3-w1",
-                  "traditional": "整個社會",
-                  "simplified": "整个社会",
-                  "pinyin": "zhěnggè shèhuì",
-                  "meaning": "entire society"
+                  "meaning": "society"
                 }
               ]
             ]
@@ -1692,29 +1836,29 @@
             "columns": [
               [
                 {
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
                   "id": "b3l11g5-r2-c1-w1",
-                  "traditional": "不好好讀書",
-                  "simplified": "不好好读书",
-                  "pinyin": "bù hǎohǎo dúshū",
-                  "meaning": "not studying hard"
+                  "meaning": "he"
                 }
               ],
               [
                 {
+                  "traditional": "對得起",
+                  "simplified": "对得起",
+                  "pinyin": "duìdeqǐ",
                   "id": "b3l11g5-r2-c2-w1",
-                  "traditional": "怎麼對得起",
-                  "simplified": "怎么对得起",
-                  "pinyin": "zěnme duìdeqǐ",
-                  "meaning": "how live up to"
+                  "meaning": "face"
                 }
               ],
               [
                 {
+                  "traditional": "父母",
+                  "simplified": "父母",
+                  "pinyin": "fùmǔ",
                   "id": "b3l11g5-r2-c3-w1",
-                  "traditional": "辛苦的父母",
-                  "simplified": "辛苦的父母",
-                  "pinyin": "xīnkǔ de fùmǔ",
-                  "meaning": "hardworking parents"
+                  "meaning": "parents"
                 }
               ]
             ]
@@ -1724,29 +1868,29 @@
             "columns": [
               [
                 {
+                  "traditional": "小陸",
+                  "simplified": "小陆",
+                  "pinyin": "Xiǎo Lù",
                   "id": "b3l11g5-r3-c1-w1",
-                  "traditional": "背叛朋友",
-                  "simplified": "背叛朋友",
-                  "pinyin": "bèipàn péngyǒu",
-                  "meaning": "betraying friends"
+                  "meaning": "Xiao Lu"
                 }
               ],
               [
                 {
+                  "traditional": "對不起",
+                  "simplified": "对不起",
+                  "pinyin": "duìbuqǐ",
                   "id": "b3l11g5-r3-c2-w1",
-                  "traditional": "真對不起",
-                  "simplified": "真对不起",
-                  "pinyin": "zhēn duìbùqǐ",
-                  "meaning": "truly violates"
+                  "meaning": "let down"
                 }
               ],
               [
                 {
+                  "traditional": "太太",
+                  "simplified": "太太",
+                  "pinyin": "tàitai",
                   "id": "b3l11g5-r3-c3-w1",
-                  "traditional": "自己的良心",
-                  "simplified": "自己的良心",
-                  "pinyin": "zìjǐ de liángxīn",
-                  "meaning": "own conscience"
+                  "meaning": "wife"
                 }
               ]
             ]
@@ -1757,29 +1901,52 @@
             "id": "b3l11g5-ex1",
             "number": 1,
             "text": {
-              "traditional": "那些騙子不僅可惡，還對不起社會。",
-              "simplified": "那些骗子不仅可恶，还对不起社会。",
-              "pinyin": "Nàxiē piànzi bùjǐn kěwù, hái duìbùqǐ shèhuì.",
-              "english": "Those scammers are not only repulsive, but they also fail society.",
+              "traditional": "……那些騙子不僅可惡，還對不起社會。",
+              "simplified": "……那些骗子不仅可恶，还对不起社会。",
+              "pinyin": "…Nàxiē piànzi bùjǐn kěwù, hái duìbuqǐ shèhuì.",
+              "english": "…Those scammers are not only despicable; they also let society down.",
               "words": [
                 {
                   "id": "b3l11g5-ex1-w1",
-                  "traditional": "騙子不僅可惡",
-                  "simplified": "骗子不仅可恶",
-                  "pinyin": "piànzi bùjǐn kěwù",
-                  "meaning": "scammers not only hateful",
-                  "suffix": "，"
+                  "traditional": "那些騙子",
+                  "simplified": "那些骗子",
+                  "pinyin": "nàxiē piànzi",
+                  "meaning": "those scammers",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l11g5-ex1-w2",
-                  "traditional": "還對不起社會",
-                  "simplified": "还对不起社会",
-                  "pinyin": "hái duìbùqǐ shèhuì",
-                  "meaning": "also fail society",
+                  "traditional": "不僅可惡",
+                  "simplified": "不仅可恶",
+                  "pinyin": "bùjǐn kěwù",
+                  "meaning": "not only despicable",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g5-ex1-w3",
+                  "traditional": "還",
+                  "simplified": "还",
+                  "pinyin": "hái",
+                  "meaning": "also"
+                },
+                {
+                  "id": "b3l11g5-ex1-w4",
+                  "traditional": "對不起",
+                  "simplified": "对不起",
+                  "pinyin": "duìbuqǐ",
+                  "meaning": "let down"
+                },
+                {
+                  "id": "b3l11g5-ex1-w5",
+                  "traditional": "社會",
+                  "simplified": "社会",
+                  "pinyin": "shèhuì",
+                  "meaning": "society",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l11g5-ex2",
@@ -1787,23 +1954,66 @@
             "text": {
               "traditional": "李大華覺得父母工作很辛苦，要是他不好好讀書，怎麼對得起父母呢？",
               "simplified": "李大华觉得父母工作很辛苦，要是他不好好读书，怎么对得起父母呢？",
-              "pinyin": "Lǐ Dàhuá juéde fùmǔ gōngzuò hěn xīnkǔ, yàoshì tā bù hǎohǎo dúshū, zěnme duìdeqǐ fùmǔ ne?",
-              "english": "Li Dahua feels his parents toil so hard; if he doesn't study diligently, how could he live up to them?",
+              "pinyin": "Lǐ Dàhuá juéde fùmǔ gōngzuò hěn xīnkǔ, yàoshi tā bù hǎohǎo dúshū, zěnme duìdeqǐ fùmǔ ne?",
+              "english": "Li Dahua feels his parents work very hard; if he does not study well, how could he face his parents?",
               "words": [
                 {
                   "id": "b3l11g5-ex2-w1",
-                  "traditional": "父母工作辛苦",
-                  "simplified": "父母工作辛苦",
-                  "pinyin": "fùmǔ gōngzuò xīnkǔ",
-                  "meaning": "parents work hard",
+                  "traditional": "李大華覺得父母工作很辛苦",
+                  "simplified": "李大华觉得父母工作很辛苦",
+                  "pinyin": "Lǐ Dàhuá juéde fùmǔ gōngzuò hěn xīnkǔ",
+                  "meaning": "Li Dahua feels his parents work hard",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l11g5-ex2-w2",
-                  "traditional": "不念書怎麼對得起父母",
-                  "simplified": "不念书怎么对得起父母",
-                  "pinyin": "bù niànshū zěnme duìdeqǐ fùmǔ",
-                  "meaning": "not studying how live up to parents",
+                  "traditional": "要是",
+                  "simplified": "要是",
+                  "pinyin": "yàoshi",
+                  "meaning": "if"
+                },
+                {
+                  "id": "b3l11g5-ex2-w3",
+                  "traditional": "他",
+                  "simplified": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "b3l11g5-ex2-w4",
+                  "traditional": "不好好讀書",
+                  "simplified": "不好好读书",
+                  "pinyin": "bù hǎohǎo dúshū",
+                  "meaning": "does not study well",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g5-ex2-w5",
+                  "traditional": "怎麼",
+                  "simplified": "怎么",
+                  "pinyin": "zěnme",
+                  "meaning": "how"
+                },
+                {
+                  "id": "b3l11g5-ex2-w6",
+                  "traditional": "對得起",
+                  "simplified": "对得起",
+                  "pinyin": "duìdeqǐ",
+                  "meaning": "face"
+                },
+                {
+                  "id": "b3l11g5-ex2-w7",
+                  "traditional": "父母",
+                  "simplified": "父母",
+                  "pinyin": "fùmǔ",
+                  "meaning": "parents"
+                },
+                {
+                  "id": "b3l11g5-ex2-w8",
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "meaning": "",
                   "suffix": "？"
                 }
               ]
@@ -1813,25 +2023,54 @@
             "id": "b3l11g5-ex3",
             "number": 3,
             "text": {
-              "traditional": "小陸常利用出差的機會去夜店跟漂亮小姐約會，卻一點都不覺得對不起太太。",
-              "simplified": "小陆常利用出差的机会去夜店跟漂亮小姐约会，却一点都不觉得对不起太太。",
-              "pinyin": "Xiǎo Lù cháng lìyòng chūchāi de jīhuì qù yèdiàn gēn piàoliang xiǎojiě yuēhuì, què yìdiǎn dōu bù juéde duìbùqǐ tàitai.",
-              "english": "Xiao Lu often used business trips to date women at clubs, yet felt zero remorse toward his wife.",
+              "traditional": "小陸常利用出差的機會，去夜店跟漂亮小姐約會，卻一點都不覺得對不起太太。",
+              "simplified": "小陆常利用出差的机会，去夜店跟漂亮小姐约会，却一点都不觉得对不起太太。",
+              "pinyin": "Xiǎo Lù cháng lìyòng chūchāi de jīhuì, qù yèdiàn gēn piàoliang xiǎojiě yuēhuì, què yìdiǎn dōu bù juéde duìbuqǐ tàitai.",
+              "english": "Xiao Lu often uses business trips to go to nightclubs and date pretty women, yet he does not feel bad at all toward his wife.",
               "words": [
                 {
                   "id": "b3l11g5-ex3-w1",
-                  "traditional": "出差時跟別人約會",
-                  "simplified": "出差时跟别人约会",
-                  "pinyin": "chūchāi shí gēn biérén yuēhuì",
-                  "meaning": "dates others during trips",
-                  "suffix": "，"
+                  "traditional": "小陸",
+                  "simplified": "小陆",
+                  "pinyin": "Xiǎo Lù",
+                  "meaning": "Xiao Lu"
                 },
                 {
                   "id": "b3l11g5-ex3-w2",
-                  "traditional": "卻不覺得對不起太太",
-                  "simplified": "却不觉得对不起太太",
-                  "pinyin": "què bù juéde duìbùqǐ tàitai",
-                  "meaning": "yet feels no remorse to wife",
+                  "traditional": "常利用出差的機會",
+                  "simplified": "常利用出差的机会",
+                  "pinyin": "cháng lìyòng chūchāi de jīhuì",
+                  "meaning": "often uses business trips",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g5-ex3-w3",
+                  "traditional": "去夜店跟漂亮小姐約會",
+                  "simplified": "去夜店跟漂亮小姐约会",
+                  "pinyin": "qù yèdiàn gēn piàoliang xiǎojiě yuēhuì",
+                  "meaning": "goes to nightclubs to date pretty women",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g5-ex3-w4",
+                  "traditional": "卻一點都不覺得",
+                  "simplified": "却一点都不觉得",
+                  "pinyin": "què yìdiǎn dōu bù juéde",
+                  "meaning": "yet does not feel at all"
+                },
+                {
+                  "id": "b3l11g5-ex3-w5",
+                  "traditional": "對不起",
+                  "simplified": "对不起",
+                  "pinyin": "duìbuqǐ",
+                  "meaning": "sorry to"
+                },
+                {
+                  "id": "b3l11g5-ex3-w6",
+                  "traditional": "太太",
+                  "simplified": "太太",
+                  "pinyin": "tàitai",
+                  "meaning": "wife",
                   "suffix": "。"
                 }
               ]
@@ -1905,55 +2144,9 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g5-q1",
-            "type": "choice",
-            "prompt": "Warn against ruining health with endless overtime:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "要是把身體弄壞了，你怎麼"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g5-q1-b1",
-                "answer": "對得起自己",
-                "answerSimplified": "对得起自己",
-                "hint": "live up to yourself"
-              },
-              {
-                "type": "text",
-                "traditional": "呢？"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g5-q1-t1",
-                "traditional": "對得起自己",
-                "simplified": "对得起自己",
-                "pinyin": "duìdeqǐ zìjǐ",
-                "meaning": "face yourself"
-              },
-              {
-                "id": "b3l11g5-q1-t2",
-                "traditional": "對不起自己",
-                "simplified": "对不起自己",
-                "pinyin": "duìbùqǐ zìjǐ",
-                "meaning": "let yourself down"
-              },
-              {
-                "id": "b3l11g5-q1-t3",
-                "traditional": "看得起自己",
-                "simplified": "看得起自己",
-                "pinyin": "kàndeqǐ zìjǐ",
-                "meaning": "esteem yourself"
-              }
-            ],
-            "correctFeedback": "怎麼對得起……呢？ is a rhetorical rebuke questioning how one could violate duties.",
-            "repairFeedback": "Pattern: 怎麼對得起 + Object + 呢？"
-          }
-        ]
+        "questions": [],
+        "explanationEnglish": "對得起 means not doing something that should not be done; not letting the other party down, be angry, or embarrassed. On the contrary, 對不起 means being embarrassed or sorry for disappointing the other person. 對得起/對不起 can be followed by the object. For example, 對得起老闆, 對得起自己, 對不起朋友, 對不起社會.",
+        "patternAccentColumn": 1
       },
       {
         "id": "B3L11-G06-P302",
@@ -1975,15 +2168,13 @@
         "audioReference": "11-2-1",
         "explanation": "「至於」當句子之間的轉折語，引出另一個與原來主題相關的話題或觀點。",
         "focusTerms": [
-          "至於",
-          "說到"
+          "至於"
         ],
-        "pattern": "Primary Statement，至於 + Secondary Related Topic + Predicate",
+        "pattern": "Claim，至於 + Topic + Comment",
         "patternColumns": [
-          "Statement",
+          "Claim",
           "至於",
-          "Topic",
-          "Assessment"
+          "Topic"
         ],
         "patternRows": [
           {
@@ -1991,38 +2182,29 @@
             "columns": [
               [
                 {
+                  "traditional": "網路只是提供一種更便利的交友方式給大家",
+                  "simplified": "网络只是提供一种更便利的交友方式给大家",
+                  "pinyin": "wǎnglù zhǐshì tígōng yì zhǒng gèng biànlì de jiāoyǒu fāngshì gěi dàjiā",
                   "id": "b3l11g6-r1-c1-w1",
-                  "traditional": "網路很便利",
-                  "simplified": "网络很便利",
-                  "pinyin": "wǎnglù hěn biànlì",
-                  "meaning": "net is convenient"
+                  "meaning": "the internet just offers a more convenient way to make friends"
                 }
               ],
               [
                 {
-                  "id": "b3l11g6-r1-c2-w1",
                   "traditional": "至於",
                   "simplified": "至于",
                   "pinyin": "zhìyú",
+                  "id": "b3l11g6-r1-c2-w1",
                   "meaning": "as for"
                 }
               ],
               [
                 {
+                  "traditional": "要不要以網路交友",
+                  "simplified": "要不要以网络交友",
+                  "pinyin": "yào bu yào yǐ wǎnglù jiāoyǒu",
                   "id": "b3l11g6-r1-c3-w1",
-                  "traditional": "要不要交友",
-                  "simplified": "要不要交友",
-                  "pinyin": "yào bú yào jiāoyǒu",
-                  "meaning": "whether to make friends"
-                }
-              ],
-              [
-                {
-                  "id": "b3l11g6-r1-c4-w1",
-                  "traditional": "看個人智慧",
-                  "simplified": "看个人智慧",
-                  "pinyin": "kàn gèrén zhìhuì",
-                  "meaning": "depends on wisdom"
+                  "meaning": "whether to make friends online"
                 }
               ]
             ]
@@ -2032,38 +2214,29 @@
             "columns": [
               [
                 {
+                  "traditional": "那對情侶有結婚的打算",
+                  "simplified": "那对情侣有结婚的打算",
+                  "pinyin": "nà duì qínglǚ yǒu jiéhūn de dǎsuàn",
                   "id": "b3l11g6-r2-c1-w1",
-                  "traditional": "打算結婚",
-                  "simplified": "打算结婚",
-                  "pinyin": "dǎsuàn jiéhūn",
-                  "meaning": "plan to marry"
+                  "meaning": "that couple plans to get married"
                 }
               ],
               [
                 {
-                  "id": "b3l11g6-r2-c2-w1",
                   "traditional": "至於",
                   "simplified": "至于",
                   "pinyin": "zhìyú",
+                  "id": "b3l11g6-r2-c2-w1",
                   "meaning": "as for"
                 }
               ],
               [
                 {
+                  "traditional": "什麼時候舉行婚禮",
+                  "simplified": "什么时候举行婚礼",
+                  "pinyin": "shénme shíhou jǔxíng hūnlǐ",
                   "id": "b3l11g6-r2-c3-w1",
-                  "traditional": "何時辦婚禮",
-                  "simplified": "何时办婚礼",
-                  "pinyin": "héshí bàn hūnlǐ",
-                  "meaning": "when wedding is"
-                }
-              ],
-              [
-                {
-                  "id": "b3l11g6-r2-c4-w1",
-                  "traditional": "還要再問家長",
-                  "simplified": "还要再问家长",
-                  "pinyin": "hái yào zài wèn jiāzhǎng",
-                  "meaning": "must ask parents"
+                  "meaning": "when to hold the wedding"
                 }
               ]
             ]
@@ -2073,38 +2246,29 @@
             "columns": [
               [
                 {
+                  "traditional": "我只知道教育制度的改善計畫是夏教授帶領的",
+                  "simplified": "我只知道教育制度的改善计划是夏教授带领的",
+                  "pinyin": "wǒ zhǐ zhīdào jiàoyù zhìdù de gǎishàn jìhuà shì Xià jiàoshòu dàilǐng de",
                   "id": "b3l11g6-r3-c1-w1",
-                  "traditional": "了解這項計畫",
-                  "simplified": "了解这项计划",
-                  "pinyin": "liǎojiě zhè xiàng jìhuà",
-                  "meaning": "know about plan"
+                  "meaning": "I only know Professor Xia leads the education-reform plan"
                 }
               ],
               [
                 {
-                  "id": "b3l11g6-r3-c2-w1",
                   "traditional": "至於",
                   "simplified": "至于",
                   "pinyin": "zhìyú",
+                  "id": "b3l11g6-r3-c2-w1",
                   "meaning": "as for"
                 }
               ],
               [
                 {
-                  "id": "b3l11g6-r3-c3-w1",
                   "traditional": "詳細內容",
                   "simplified": "详细内容",
                   "pinyin": "xiángxì nèiróng",
-                  "meaning": "detailed content"
-                }
-              ],
-              [
-                {
-                  "id": "b3l11g6-r3-c4-w1",
-                  "traditional": "問教授本人",
-                  "simplified": "问教授本人",
-                  "pinyin": "wèn jiàoshòu běnrén",
-                  "meaning": "ask professor himself"
+                  "id": "b3l11g6-r3-c3-w1",
+                  "meaning": "the details"
                 }
               ]
             ]
@@ -2115,37 +2279,37 @@
             "id": "b3l11g6-ex1",
             "number": 1,
             "text": {
-              "traditional": "網路只是提供一種更便利的交友方式給大家，至於要不要以網路交友，就得看個人的智慧了。",
-              "simplified": "网络只是提供一种更便利的交友方式给大家，至于要不要以网络交友，就得看个人的智慧了。",
-              "pinyin": "Wǎnglù zhǐshì tígōng yì zhǒng gèng biànlì de jiāoyǒu fāngshì gěi dàjiā, zhìyú yào bú yào yǐ wǎnglù jiāoyǒu, jiù děi kàn gèrén de zhìhuì le.",
-              "english": "The web merely offers convenient social channels; as for whether to use online dating, that depends on personal wisdom.",
+              "traditional": "網路只是提供一種更便利的交友方式給大家，至於要不要以網路交友……",
+              "simplified": "网络只是提供一种更便利的交友方式给大家，至于要不要以网络交友……",
+              "pinyin": "Wǎnglù zhǐshì tígōng yì zhǒng gèng biànlì de jiāoyǒu fāngshì gěi dàjiā, zhìyú yào bu yào yǐ wǎnglù jiāoyǒu……",
+              "english": "The internet just offers everyone a more convenient way to make friends; as for whether to make friends online……",
               "words": [
                 {
                   "id": "b3l11g6-ex1-w1",
-                  "traditional": "提供便利交友方式",
-                  "simplified": "提供便利交友方式",
-                  "pinyin": "tígōng biànlì jiāoyǒu fāngshì",
-                  "meaning": "offers convenient social way",
+                  "traditional": "網路只是提供一種更便利的交友方式給大家",
+                  "simplified": "网络只是提供一种更便利的交友方式给大家",
+                  "pinyin": "wǎnglù zhǐshì tígōng yì zhǒng gèng biànlì de jiāoyǒu fāngshì gěi dàjiā",
+                  "meaning": "the internet just offers a more convenient way to make friends",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l11g6-ex1-w2",
-                  "traditional": "至於要不要交友",
-                  "simplified": "至于要不要交友",
-                  "pinyin": "zhìyú yào bú yào jiāoyǒu",
-                  "meaning": "as for whether to make friends",
-                  "suffix": "，"
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "meaning": "as for"
                 },
                 {
                   "id": "b3l11g6-ex1-w3",
-                  "traditional": "看個人智慧",
-                  "simplified": "看个人智慧",
-                  "pinyin": "kàn gèrén zhìhuì",
-                  "meaning": "depends on wisdom",
-                  "suffix": "。"
+                  "traditional": "要不要以網路交友",
+                  "simplified": "要不要以网络交友",
+                  "pinyin": "yào bu yào yǐ wǎnglù jiāoyǒu",
+                  "meaning": "whether to make friends online",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l11g6-ex2",
@@ -2154,30 +2318,37 @@
               "traditional": "那對情侶有結婚的打算，至於什麼時候舉行婚禮，還要問家長的意見。",
               "simplified": "那对情侣有结婚的打算，至于什么时候举行婚礼，还要问家长的意见。",
               "pinyin": "Nà duì qínglǚ yǒu jiéhūn de dǎsuàn, zhìyú shénme shíhou jǔxíng hūnlǐ, hái yào wèn jiāzhǎng de yìjiàn.",
-              "english": "That couple intends to wed; as to when the ceremony will take place, they still need to consult parents.",
+              "english": "That couple plans to get married; as for when to hold the wedding, they still need to ask the parents for their opinion.",
               "words": [
                 {
                   "id": "b3l11g6-ex2-w1",
-                  "traditional": "有結婚打算",
-                  "simplified": "有结婚打算",
-                  "pinyin": "yǒu jiéhūn dǎsuàn",
-                  "meaning": "plans to marry",
+                  "traditional": "那對情侶有結婚的打算",
+                  "simplified": "那对情侣有结婚的打算",
+                  "pinyin": "nà duì qínglǚ yǒu jiéhūn de dǎsuàn",
+                  "meaning": "that couple plans to get married",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l11g6-ex2-w2",
-                  "traditional": "至於何時辦婚禮",
-                  "simplified": "至于何时办婚礼",
-                  "pinyin": "zhìyú héshí bàn hūnlǐ",
-                  "meaning": "as for when wedding is",
-                  "suffix": "，"
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "meaning": "as for"
                 },
                 {
                   "id": "b3l11g6-ex2-w3",
-                  "traditional": "問家長意見",
-                  "simplified": "问家长意见",
-                  "pinyin": "wèn jiāzhǎng yìjiàn",
-                  "meaning": "ask parents' opinion",
+                  "traditional": "什麼時候舉行婚禮",
+                  "simplified": "什么时候举行婚礼",
+                  "pinyin": "shénme shíhou jǔxíng hūnlǐ",
+                  "meaning": "when to hold the wedding",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l11g6-ex2-w4",
+                  "traditional": "還要問家長的意見",
+                  "simplified": "还要问家长的意见",
+                  "pinyin": "hái yào wèn jiāzhǎng de yìjiàn",
+                  "meaning": "still need to ask the parents' opinion",
                   "suffix": "。"
                 }
               ]
@@ -2190,30 +2361,36 @@
               "traditional": "我只知道教育制度的改善計畫是夏教授帶領的，至於詳細內容就得問他本人了。",
               "simplified": "我只知道教育制度的改善计划是夏教授带领的，至于详细内容就得问他本人了。",
               "pinyin": "Wǒ zhǐ zhīdào jiàoyù zhìdù de gǎishàn jìhuà shì Xià jiàoshòu dàilǐng de, zhìyú xiángxì nèiróng jiù děi wèn tā běnrén le.",
-              "english": "I only know Professor Xia leads the education reform initiative; as for details, you will have to ask him directly.",
+              "english": "I only know that Professor Xia leads the plan to improve the education system; as for the details, you have to ask him yourself.",
               "words": [
                 {
                   "id": "b3l11g6-ex3-w1",
-                  "traditional": "教授帶領計畫",
-                  "simplified": "教授带领计划",
-                  "pinyin": "jiàoshòu dàilǐng jìhuà",
-                  "meaning": "professor leads project",
+                  "traditional": "我只知道教育制度的改善計畫是夏教授帶領的",
+                  "simplified": "我只知道教育制度的改善计划是夏教授带领的",
+                  "pinyin": "wǒ zhǐ zhīdào jiàoyù zhìdù de gǎishàn jìhuà shì Xià jiàoshòu dàilǐng de",
+                  "meaning": "I only know Professor Xia leads the education-reform plan",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l11g6-ex3-w2",
-                  "traditional": "至於詳細內容",
-                  "simplified": "至于详细内容",
-                  "pinyin": "zhìyú xiángxì nèiróng",
-                  "meaning": "as for detailed contents",
-                  "suffix": "，"
+                  "traditional": "至於",
+                  "simplified": "至于",
+                  "pinyin": "zhìyú",
+                  "meaning": "as for"
                 },
                 {
                   "id": "b3l11g6-ex3-w3",
-                  "traditional": "得問他本人",
-                  "simplified": "得问他本人",
-                  "pinyin": "děi wèn tā běnrén",
-                  "meaning": "must ask him personally",
+                  "traditional": "詳細內容",
+                  "simplified": "详细内容",
+                  "pinyin": "xiángxì nèiróng",
+                  "meaning": "the details"
+                },
+                {
+                  "id": "b3l11g6-ex3-w4",
+                  "traditional": "就得問他本人了",
+                  "simplified": "就得问他本人了",
+                  "pinyin": "jiù děi wèn tā běnrén le",
+                  "meaning": "you have to ask him yourself",
                   "suffix": "。"
                 }
               ]
@@ -2303,55 +2480,9 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g6-q1",
-            "type": "choice",
-            "prompt": "State your travel arrangement responsibilities while deferring hotel bookings:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我只負責安排行程，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g6-q1-b1",
-                "answer": "至於機票和旅館",
-                "answerSimplified": "至于机票和旅馆",
-                "hint": "as for flights and hotel"
-              },
-              {
-                "type": "text",
-                "traditional": "，要問小李。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g6-q1-t1",
-                "traditional": "至於機票和旅館",
-                "simplified": "至于机票和旅馆",
-                "pinyin": "zhìyú jīpiào hé lǚguǎn",
-                "meaning": "as for tickets and hotel"
-              },
-              {
-                "id": "b3l11g6-q1-t2",
-                "traditional": "關於機票和旅館",
-                "simplified": "关于机票和旅馆",
-                "pinyin": "guānyú jīpiào hé lǚguǎn",
-                "meaning": "regarding tickets and hotel"
-              },
-              {
-                "id": "b3l11g6-q1-t3",
-                "traditional": "雖然機票和旅館",
-                "simplified": "虽然机票和旅馆",
-                "pinyin": "suīrán jīpiào hé lǚguǎn",
-                "meaning": "although tickets and hotel"
-              }
-            ],
-            "correctFeedback": "至於 introduces an associated secondary topic or deferred detail.",
-            "repairFeedback": "Pattern: Statement, + 至於 + Topic."
-          }
-        ]
+        "questions": [],
+        "explanationEnglish": "至於 is used as a turning point or pivot between sentences. What is said after 至於 is related to the previous topic or viewpoint.",
+        "patternAccentColumn": 1
       }
     ]
   }

@@ -30,7 +30,7 @@
           "id": "b3l15d1-l2",
           "speaker": "尚恩",
           "traditional": "你說的紅毛城就是淡水那座著名的古蹟吧，我知道紅毛城是一棟古老的房子，它有什麼特色嗎？",
-          "simplified": "你说得红毛城就是淡水那座著名的古迹吧，我知道红毛城是一栋古老的房子，它有什么特色吗？",
+          "simplified": "你说的红毛城就是淡水那座著名的古迹吧，我知道红毛城是一栋古老的房子，它有什么特色吗？",
           "pinyin": "Nǐ shuō de Hóngmáochéng jiùshì Dànshuǐ nà zuò zhùmíng de gǔjī ba, wǒ zhīdào Hóngmáochéng shì yí dòng gǔlǎo de fángzi, tā yǒu shénme tèsè ma?",
           "english": "The Fort San Domingo you mentioned is that famous historic site in Tamsui, right? I know it's an old building, does it have any special features?"
         },
@@ -196,24 +196,32 @@
           384
         ],
         "audioReference": "15-1-1",
-        "titleTraditional": "簡直",
-        "titleSimplified": "简直",
         "titleEnglish": "Simply / Virtually / Practically",
         "learnerPromise": "Use vivid, hyperbolic emphasis to characterize extreme degrees or lifelike qualities.",
+        "titleTraditional": "簡直",
+        "titleSimplified": "简直",
         "explanation": "「簡直」是副詞，後面可連接「像、就像、是、就是」等。表示說話者用較誇張、生動的方式，來形容差不多達到某個情況或程度。",
-        "pattern": "Subject + 簡直 + (就 / 像 / 是) + Exaggerated Predicate",
+        "explanationEnglish": "簡直 is an adverb, which can be followed by 像, 就像, 是, 就是, etc. It means that the speaker uses a more exaggerated and vivid way to describe a certain situation.",
+        "focusTerms": [
+          "簡直",
+          "簡直像",
+          "簡直就像",
+          "簡直是"
+        ],
+        "pattern": "Subject + 簡直 + Comparison",
         "patternColumns": [
           "Subject",
           "簡直",
-          "Exaggeration"
+          "Comparison"
         ],
+        "patternAccentColumn": 1,
         "patternRows": [
           {
             "id": "b3l15g1-r1",
             "columns": [
               [
                 {
-                  "id": "b3l15g1-r1-c1",
+                  "id": "b3l15g1-r1-c1-w1",
                   "traditional": "那幾條龍",
                   "simplified": "那几条龙",
                   "pinyin": "nà jǐ tiáo lóng",
@@ -222,20 +230,20 @@
               ],
               [
                 {
-                  "id": "b3l15g1-r1-c2",
+                  "id": "b3l15g1-r1-c2-w1",
                   "traditional": "簡直",
                   "simplified": "简直",
                   "pinyin": "jiǎnzhí",
-                  "meaning": "simply"
+                  "meaning": "simply / virtually"
                 }
               ],
               [
                 {
-                  "id": "b3l15g1-r1-c3",
+                  "id": "b3l15g1-r1-c3-w1",
                   "traditional": "快飛起來了",
                   "simplified": "快飞起来了",
-                  "pinyin": "kuài fēi qǐlái le",
-                  "meaning": "about to take flight"
+                  "pinyin": "kuài fēi qǐlai le",
+                  "meaning": "about to fly up"
                 }
               ]
             ]
@@ -243,31 +251,47 @@
           {
             "id": "b3l15g1-r2",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l15g1-r2-c1",
-                  "traditional": "方小姐皮膚很好",
-                  "simplified": "方小姐皮肤很好",
-                  "pinyin": "Fāng xiǎojiě pífū hěn hǎo",
-                  "meaning": "Miss Fang's skin is great"
-                }
-              ],
-              [
-                {
-                  "id": "b3l15g1-r2-c2",
+                  "id": "b3l15g1-r2-c2-w1",
                   "traditional": "簡直",
                   "simplified": "简直",
                   "pinyin": "jiǎnzhí",
-                  "meaning": "simply"
+                  "meaning": "simply / virtually"
                 }
               ],
               [
                 {
-                  "id": "b3l15g1-r2-c3",
+                  "id": "b3l15g1-r2-c3-w1",
                   "traditional": "像個仙女一樣",
                   "simplified": "像个仙女一样",
                   "pinyin": "xiàng ge xiānnǚ yíyàng",
-                  "meaning": "just like a fairy maiden"
+                  "meaning": "like a fairy"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l15g1-r3",
+            "columns": [
+              [],
+              [
+                {
+                  "id": "b3l15g1-r3-c2-w1",
+                  "traditional": "簡直",
+                  "simplified": "简直",
+                  "pinyin": "jiǎnzhí",
+                  "meaning": "simply / virtually"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g1-r3-c3-w1",
+                  "traditional": "就像機器一樣",
+                  "simplified": "就像机器一样",
+                  "pinyin": "jiù xiàng jīqì yíyàng",
+                  "meaning": "just like a machine"
                 }
               ]
             ]
@@ -278,37 +302,51 @@
             "id": "b3l15g1-ex1",
             "number": 1,
             "text": {
-              "traditional": "看過的人都說那幾條龍簡直快飛起來了。",
-              "simplified": "看过的人都说那几条龙简直快飞起来了。",
-              "pinyin": "Kànguò de rén dōu shuō nà jǐ tiáo lóng jiǎnzhí kuài fēi qǐlái le.",
-              "english": "Everyone who saw them said those dragons practically looked ready to take flight.",
+              "traditional": "……看過的人都說那幾條龍簡直快飛起來了……",
+              "simplified": "……看过的人都说那几条龙简直快飞起来了……",
+              "pinyin": "…… Kànguò de rén dōu shuō nà jǐ tiáo lóng jiǎnzhí kuài fēi qǐlái le……",
+              "english": "…Everyone who saw them said those dragons practically looked ready to take flight…",
               "words": [
                 {
                   "id": "b3l15g1-ex1-w1",
-                  "traditional": "那幾條龍",
-                  "simplified": "那几条龙",
-                  "pinyin": "nà jǐ tiáo lóng",
-                  "meaning": "those dragons",
-                  "suffix": ""
+                  "traditional": "看過的人",
+                  "simplified": "看过的人",
+                  "pinyin": "kàn guò de rén",
+                  "meaning": "people who saw them",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l15g1-ex1-w2",
-                  "traditional": "簡直",
-                  "simplified": "简直",
-                  "pinyin": "jiǎnzhí",
-                  "meaning": "simply / virtually",
-                  "suffix": ""
+                  "traditional": "都說",
+                  "simplified": "都说",
+                  "pinyin": "dōu shuō",
+                  "meaning": "all said"
                 },
                 {
                   "id": "b3l15g1-ex1-w3",
+                  "traditional": "那幾條龍",
+                  "simplified": "那几条龙",
+                  "pinyin": "nà jǐ tiáo lóng",
+                  "meaning": "those dragons"
+                },
+                {
+                  "id": "b3l15g1-ex1-w4",
+                  "traditional": "簡直",
+                  "simplified": "简直",
+                  "pinyin": "jiǎnzhí",
+                  "meaning": "simply / virtually"
+                },
+                {
+                  "id": "b3l15g1-ex1-w5",
                   "traditional": "快飛起來了",
                   "simplified": "快飞起来了",
-                  "pinyin": "kuài fēi qǐlái le",
-                  "meaning": "about to fly",
-                  "suffix": "。"
+                  "pinyin": "kuài fēi qǐlai le",
+                  "meaning": "about to fly up…",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l15g1-ex2",
@@ -321,26 +359,40 @@
               "words": [
                 {
                   "id": "b3l15g1-ex2-w1",
-                  "traditional": "長得很漂亮",
-                  "simplified": "长得很漂亮",
-                  "pinyin": "zhǎng de hěn piàoliang",
-                  "meaning": "looks very pretty",
-                  "suffix": "，"
+                  "traditional": "方小姐",
+                  "simplified": "方小姐",
+                  "pinyin": "Fāng xiǎojiě",
+                  "meaning": "Miss Fang"
                 },
                 {
                   "id": "b3l15g1-ex2-w2",
-                  "traditional": "簡直像",
-                  "simplified": "简直像",
-                  "pinyin": "jiǎnzhí xiàng",
-                  "meaning": "simply like",
-                  "suffix": ""
+                  "traditional": "長得很漂亮",
+                  "simplified": "长得很漂亮",
+                  "pinyin": "zhǎng de hěn piàoliang",
+                  "meaning": "looks very pretty,",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l15g1-ex2-w3",
-                  "traditional": "仙女一樣",
-                  "simplified": "仙女一样",
-                  "pinyin": "xiānnǚ yíyàng",
-                  "meaning": "like a fairy",
+                  "traditional": "皮膚也很好",
+                  "simplified": "皮肤也很好",
+                  "pinyin": "pífū yě hěn hǎo",
+                  "meaning": "her skin is also very good,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g1-ex2-w4",
+                  "traditional": "簡直",
+                  "simplified": "简直",
+                  "pinyin": "jiǎnzhí",
+                  "meaning": "simply / virtually"
+                },
+                {
+                  "id": "b3l15g1-ex2-w5",
+                  "traditional": "像個仙女一樣",
+                  "simplified": "像个仙女一样",
+                  "pinyin": "xiàng ge xiānnǚ yíyàng",
+                  "meaning": "like a fairy.",
                   "suffix": "。"
                 }
               ]
@@ -357,34 +409,41 @@
               "words": [
                 {
                   "id": "b3l15g1-ex3-w1",
-                  "traditional": "又快又好",
-                  "simplified": "又快又好",
-                  "pinyin": "yòu kuài yòu hǎo",
-                  "meaning": "both fast and good",
+                  "traditional": "在工作上",
+                  "simplified": "在工作上",
+                  "pinyin": "zài gōngzuò shàng",
+                  "meaning": "at work,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l15g1-ex3-w2",
-                  "traditional": "沒犯過錯",
-                  "simplified": "没犯过错",
-                  "pinyin": "méi fànguò cuò",
-                  "meaning": "never made mistake",
-                  "suffix": "，"
+                  "traditional": "畢經理",
+                  "simplified": "毕经理",
+                  "pinyin": "Bì jīnglǐ",
+                  "meaning": "Manager Bi"
                 },
                 {
                   "id": "b3l15g1-ex3-w3",
-                  "traditional": "簡直就像",
-                  "simplified": "简直就像",
-                  "pinyin": "jiǎnzhí jiù xiàng",
-                  "meaning": "practically just like",
-                  "suffix": ""
+                  "traditional": "總是做得又快又好",
+                  "simplified": "总是做得又快又好",
+                  "pinyin": "zǒngshì zuò de yòu kuài yòu hǎo",
+                  "meaning": "always does things both fast and well,",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l15g1-ex3-w4",
-                  "traditional": "機器一樣",
-                  "simplified": "机器一样",
-                  "pinyin": "jīqì yíyàng",
-                  "meaning": "like a machine",
+                  "traditional": "也從來沒犯過什麼錯",
+                  "simplified": "也从来没犯过什么错",
+                  "pinyin": "yě cónglái méi fànguo shénme cuò",
+                  "meaning": "and has never made any mistakes,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g1-ex3-w5",
+                  "traditional": "簡直就像機器一樣",
+                  "simplified": "简直就像机器一样",
+                  "pinyin": "jiǎnzhí jiù xiàng jīqì yíyàng",
+                  "meaning": "simply like a machine.",
                   "suffix": "。"
                 }
               ]
@@ -440,44 +499,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l15g1-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "那座廟裡的石龍刻得十分生動，看過的人都說"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "快飛起來了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "簡直"
-              },
-              {
-                "id": "t2",
-                "text": "總之"
-              },
-              {
-                "id": "t3",
-                "text": "幸虧"
-              },
-              {
-                "id": "t4",
-                "text": "何況"
-              }
-            ],
-            "correctFeedback": "太棒了！「簡直」用於誇張、生動地形容藝術雕刻幾近飛騰的逼真神韻。",
-            "repairFeedback": "請注意生動誇張的修辭：形容神韻栩栩如生幾同真實，應使用「簡直」。"
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L15-G02-P384",
@@ -491,36 +513,35 @@
         "bookPageAvailable": true,
         "printedPages": [
           384,
-          386
+          385
         ],
         "audioReference": "15-1-2",
-        "titleTraditional": "Vs得沒話說",
-        "titleSimplified": "Vs得没话说",
         "titleEnglish": "Beyond words / Superlatively great",
         "learnerPromise": "Praise superlative quality, speed, beauty, or conduct that leaves zero room for critique.",
-        "explanation": "這個語法表示說話者對某件事情、某個情況，找不出更合適、更好的語詞來形容或說明。多用於正面極致語氣。",
-        "pattern": "Subject + Stative Verb + 得沒話說",
-        "patternColumns": [
-          "Subject",
-          "Vs",
-          "得沒話說"
+        "titleTraditional": "Vs得沒話說",
+        "titleSimplified": "Vs得没话说",
+        "explanation": "這個語法表示說話者對某件事情、某個情況，找不出更合適、更好的語詞來形容或說明。多用於正面語氣。",
+        "explanationEnglish": "This grammar means that the speaker cannot find a better, more suitable word to describe or explain some thing or a situation. Mostly used in a positive tone.",
+        "focusTerms": [
+          "得沒話說",
+          "美得沒話說",
+          "快得沒話說",
+          "優秀得沒話說"
         ],
+        "pattern": "Vs + 得 + 沒話說",
+        "patternColumns": [
+          "Vs",
+          "得",
+          "沒話說"
+        ],
+        "patternAccentColumn": 2,
         "patternRows": [
           {
             "id": "b3l15g2-r1",
             "columns": [
               [
                 {
-                  "id": "b3l15g2-r1-c1",
-                  "traditional": "淡水碼頭的夕陽",
-                  "simplified": "淡水码头的夕阳",
-                  "pinyin": "Dànshuǐ mǎtóu de xīyáng",
-                  "meaning": "Tamsui pier sunset"
-                }
-              ],
-              [
-                {
-                  "id": "b3l15g2-r1-c2",
+                  "id": "b3l15g2-r1-c1-w1",
                   "traditional": "美",
                   "simplified": "美",
                   "pinyin": "měi",
@@ -529,11 +550,20 @@
               ],
               [
                 {
-                  "id": "b3l15g2-r1-c3",
-                  "traditional": "得沒話說",
-                  "simplified": "得没话说",
-                  "pinyin": "de méi huà shuō",
-                  "meaning": "beyond words"
+                  "id": "b3l15g2-r1-c2-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": "complement marker"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g2-r1-c3-w1",
+                  "traditional": "沒話說",
+                  "simplified": "没话说",
+                  "pinyin": "méi huà shuō",
+                  "meaning": "nothing more to say"
                 }
               ]
             ]
@@ -543,16 +573,7 @@
             "columns": [
               [
                 {
-                  "id": "b3l15g2-r2-c1",
-                  "traditional": "電腦處理速度",
-                  "simplified": "电脑处理速度",
-                  "pinyin": "diànnǎo chǔlǐ sùdù",
-                  "meaning": "computer speed"
-                }
-              ],
-              [
-                {
-                  "id": "b3l15g2-r2-c2",
+                  "id": "b3l15g2-r2-c1-w1",
                   "traditional": "快",
                   "simplified": "快",
                   "pinyin": "kuài",
@@ -561,11 +582,52 @@
               ],
               [
                 {
-                  "id": "b3l15g2-r2-c3",
-                  "traditional": "得沒話說",
-                  "simplified": "得没话说",
-                  "pinyin": "de méi huà shuō",
-                  "meaning": "beyond words"
+                  "id": "b3l15g2-r2-c2-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": "complement marker"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g2-r2-c3-w1",
+                  "traditional": "沒話說",
+                  "simplified": "没话说",
+                  "pinyin": "méi huà shuō",
+                  "meaning": "nothing more to say"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l15g2-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l15g2-r3-c1-w1",
+                  "traditional": "優秀",
+                  "simplified": "优秀",
+                  "pinyin": "yōuxiù",
+                  "meaning": "excellent"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g2-r3-c2-w1",
+                  "traditional": "得",
+                  "simplified": "得",
+                  "pinyin": "de",
+                  "meaning": "complement marker"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g2-r3-c3-w1",
+                  "traditional": "沒話說",
+                  "simplified": "没话说",
+                  "pinyin": "méi huà shuō",
+                  "meaning": "nothing more to say"
                 }
               ]
             ]
@@ -576,29 +638,44 @@
             "id": "b3l15g2-ex1",
             "number": 1,
             "text": {
-              "traditional": "大家都說那裡的夕陽美得沒話說呢！",
-              "simplified": "大家都说那里的夕阳美得没话说呢！",
+              "traditional": "……大家都說那裡的夕陽美得沒話說呢！",
+              "simplified": "……大家都说那里的夕阳美得没话说呢！",
               "pinyin": "Dàjiā dōu shuō nàlǐ de xīyáng měi de méi huà shuō ne!",
               "english": "Everyone says the sunset there is incomparably gorgeous!",
               "words": [
                 {
                   "id": "b3l15g2-ex1-w1",
-                  "traditional": "那裡的夕陽",
-                  "simplified": "那里的夕阳",
-                  "pinyin": "nàlǐ de xīyáng",
-                  "meaning": "sunset there",
-                  "suffix": ""
+                  "traditional": "大家",
+                  "simplified": "大家",
+                  "pinyin": "…… dàjiā",
+                  "meaning": "everyone",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l15g2-ex1-w2",
-                  "traditional": "美得沒話說",
-                  "simplified": "美得没话说",
-                  "pinyin": "měi de méi huà shuō",
-                  "meaning": "gorgeous beyond words",
+                  "traditional": "都說",
+                  "simplified": "都说",
+                  "pinyin": "dōu shuō",
+                  "meaning": "all say"
+                },
+                {
+                  "id": "b3l15g2-ex1-w3",
+                  "traditional": "那裡的夕陽",
+                  "simplified": "那里的夕阳",
+                  "pinyin": "nàlǐ de xīyáng",
+                  "meaning": "the sunset there"
+                },
+                {
+                  "id": "b3l15g2-ex1-w4",
+                  "traditional": "美得沒話說呢",
+                  "simplified": "美得没话说呢",
+                  "pinyin": "měi de méi huà shuō ne!",
+                  "meaning": "is beautiful beyond words!",
                   "suffix": "！"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l15g2-ex2",
@@ -611,26 +688,46 @@
               "words": [
                 {
                   "id": "b3l15g2-ex2-w1",
-                  "traditional": "處理速度",
-                  "simplified": "处理速度",
-                  "pinyin": "chǔlǐ sùdù",
-                  "meaning": "processing speed",
-                  "suffix": ""
+                  "traditional": "這台電腦",
+                  "simplified": "这台电脑",
+                  "pinyin": "zhè tái diànnǎo",
+                  "meaning": "this computer"
                 },
                 {
                   "id": "b3l15g2-ex2-w2",
-                  "traditional": "快得沒話說",
-                  "simplified": "快得没话说",
-                  "pinyin": "kuài de méi huà shuō",
-                  "meaning": "incomparably fast",
-                  "suffix": "，"
+                  "traditional": "處理資料的速度",
+                  "simplified": "处理资料的速度",
+                  "pinyin": "chǔlǐ zīliào de sùdù",
+                  "meaning": "speed of processing data"
                 },
                 {
                   "id": "b3l15g2-ex2-w3",
-                  "traditional": "上傳下載",
-                  "simplified": "上传下载",
-                  "pinyin": "shàngchuán xiàzài",
-                  "meaning": "upload and download",
+                  "traditional": "快得沒話說",
+                  "simplified": "快得没话说",
+                  "pinyin": "kuài de méi huà shuō",
+                  "meaning": "is fast beyond words,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g2-ex2-w4",
+                  "traditional": "上傳和下載影片",
+                  "simplified": "上传和下载影片",
+                  "pinyin": "shàngchuán hé xiàzài yǐngpiàn",
+                  "meaning": "uploading and downloading videos"
+                },
+                {
+                  "id": "b3l15g2-ex2-w5",
+                  "traditional": "只要幾秒",
+                  "simplified": "只要几秒",
+                  "pinyin": "zhǐyào jǐ miǎo",
+                  "meaning": "only a few seconds"
+                },
+                {
+                  "id": "b3l15g2-ex2-w6",
+                  "traditional": "就完成了",
+                  "simplified": "就完成了",
+                  "pinyin": "jiù wánchéng le",
+                  "meaning": "then done.",
                   "suffix": "。"
                 }
               ]
@@ -640,33 +737,63 @@
             "id": "b3l15g2-ex3",
             "number": 3,
             "text": {
-              "traditional": "方同學不僅用功讀書、尊敬老師，假日還去育幼院服務，簡直是優秀得沒話說。",
-              "simplified": "方同学不仅用功读书、尊敬老师，假日还去育幼院服务，简直是优秀得没话说。",
-              "pinyin": "Fāng tóngxué bùjǐn yònggōng dúshū, zūnjìng lǎoshī, jiàrì hái qù yùyòuyuàn fúwù, jiǎnzhí shì yōuxiù de méi huà shuō.",
-              "english": "Classmate Fang not only studies hard and respects instructors, but even volunteers at the orphanage on holidays; he is practically exemplary beyond reproach.",
+              "traditional": "方同學不僅用功讀書、尊敬老師、關心同學，假日還去育幼院服務，簡直是優秀得沒話說。",
+              "simplified": "方同学不仅用功读书、尊敬老师、关心同学，假日还去育幼院服务，简直是优秀得没话说。",
+              "pinyin": "Fāng tóngxué bùjǐn yònggōng dúshū, zūnjìng lǎoshī, guānxīn tóngxué, jiàrì hái qù yùyòuyuàn fúwù, jiǎnzhí shì yōuxiù de méi huà shuō.",
+              "english": "Classmate Fang not only studies diligently, respects teachers, and cares for classmates; on holidays also volunteers at a children's home, truly outstanding beyond words.",
               "words": [
                 {
                   "id": "b3l15g2-ex3-w1",
-                  "traditional": "用功讀書",
-                  "simplified": "用功读书",
-                  "pinyin": "yònggōng dúshū",
-                  "meaning": "study diligently",
-                  "suffix": "，"
+                  "traditional": "方同學",
+                  "simplified": "方同学",
+                  "pinyin": "Fāng tóngxué",
+                  "meaning": "Classmate Fang"
                 },
                 {
                   "id": "b3l15g2-ex3-w2",
-                  "traditional": "育幼院服務",
-                  "simplified": "育幼院服务",
-                  "pinyin": "yùyòuyuàn fúwù",
-                  "meaning": "orphanage service",
-                  "suffix": "，"
+                  "traditional": "不僅",
+                  "simplified": "不仅",
+                  "pinyin": "bùjǐn",
+                  "meaning": "not only"
                 },
                 {
                   "id": "b3l15g2-ex3-w3",
-                  "traditional": "優秀得沒話說",
-                  "simplified": "优秀得没话说",
-                  "pinyin": "yōuxiù de méi huà shuō",
-                  "meaning": "superlatively outstanding",
+                  "traditional": "用功讀書",
+                  "simplified": "用功读书",
+                  "pinyin": "yònggōng dúshū",
+                  "meaning": "study diligently,",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b3l15g2-ex3-w4",
+                  "traditional": "尊敬老師",
+                  "simplified": "尊敬老师",
+                  "pinyin": "zūnjìng lǎoshī",
+                  "meaning": "respect teachers,",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b3l15g2-ex3-w5",
+                  "traditional": "關心同學",
+                  "simplified": "关心同学",
+                  "pinyin": "guānxīn tóngxué",
+                  "meaning": "care for classmates,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g2-ex3-w6",
+                  "traditional": "假日還去育幼院服務",
+                  "simplified": "假日还去育幼院服务",
+                  "pinyin": "jiàrì hái qù yùyòuyuàn fúwù",
+                  "meaning": "on holidays also volunteer at a children's home,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g2-ex3-w7",
+                  "traditional": "簡直是優秀得沒話說",
+                  "simplified": "简直是优秀得没话说",
+                  "pinyin": "jiǎnzhí shì yōuxiù de méi huà shuō",
+                  "meaning": "simply outstanding beyond words.",
                   "suffix": "。"
                 }
               ]
@@ -722,44 +849,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l15g2-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "大家都說淡水碼頭的夕陽"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "呢！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "美得沒話說"
-              },
-              {
-                "id": "t2",
-                "text": "美得受不了"
-              },
-              {
-                "id": "t3",
-                "text": "美麗極得"
-              },
-              {
-                "id": "t4",
-                "text": "看不下去"
-              }
-            ],
-            "correctFeedback": "太棒了！「美得沒話說」表示美麗至極，找不出更讚美的詞句來形容。",
-            "repairFeedback": "請注意極致讚美補語：形容風景無可挑剔的絕美，應使用「美得沒話說」。"
-          }
-        ]
+        "questions": []
       }
     ]
   },
@@ -841,46 +931,45 @@
           393
         ],
         "audioReference": "15-2-1",
-        "titleTraditional": "同時",
-        "titleSimplified": "同时",
         "titleEnglish": "At the same time / Concurrently / Furthermore",
         "learnerPromise": "Connect two concurrent actions, events, or dual identities in coordinate clauses.",
-        "explanation": "「同時」當名詞或副詞使用時，表示動作、事件在相同的時間或時段發生。在複句中的功能是連詞，連接兩個對等的句子，表示進一層的關係。",
-        "pattern": "Clause 1, + 同時 + (也) + Clause 2",
-        "patternColumns": [
-          "Clause 1",
+        "titleTraditional": "同時",
+        "titleSimplified": "同时",
+        "explanation": "「同時」當名詞或副詞使用時，如例句 1、2，表示動作、事件在相同的時間或時段發生。在複句中的功能是連詞，連接兩個對等的句子，表示進一層的關係，如例句 3。",
+        "explanationEnglish": "When 同時 is used as a noun or adverb, such as example sentences 1 and 2, it means that actions and events occur at the same time. The function in a complex sentence is as a conjunction which connects two equivalent sentences to indicate a further relationship, such as in example sentence 3.",
+        "focusTerms": [
           "同時",
-          "Clause 2"
+          "同時也",
+          "同時完成"
         ],
+        "pattern": "Clause，同時 + Clause",
+        "patternColumns": [
+          "Subject",
+          "同時",
+          "Predicate"
+        ],
+        "patternAccentColumn": 1,
         "patternRows": [
           {
             "id": "b3l15g3-r1",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l15g3-r1-c1",
-                  "traditional": "人類每天在記錄歷史",
-                  "simplified": "人类每天在记录历史",
-                  "pinyin": "rénlèi měitiān zài jìlù lìshǐ",
-                  "meaning": "humans record history daily"
-                }
-              ],
-              [
-                {
-                  "id": "b3l15g3-r1-c2",
+                  "id": "b3l15g3-r1-c2-w1",
                   "traditional": "同時",
                   "simplified": "同时",
                   "pinyin": "tóngshí",
-                  "meaning": "simultaneously"
+                  "meaning": "at the same time"
                 }
               ],
               [
                 {
-                  "id": "b3l15g3-r1-c3",
+                  "id": "b3l15g3-r1-c3-w1",
                   "traditional": "也在創造歷史",
                   "simplified": "也在创造历史",
                   "pinyin": "yě zài chuàngzào lìshǐ",
-                  "meaning": "also create history"
+                  "meaning": "also creating history"
                 }
               ]
             ]
@@ -890,29 +979,53 @@
             "columns": [
               [
                 {
-                  "id": "b3l15g3-r2-c1",
-                  "traditional": "孔子是哲學代表人物",
-                  "simplified": "孔子是哲学代表人物",
-                  "pinyin": "Kǒngzǐ shì zhéxué dàibiǎo rénwù",
-                  "meaning": "Confucius represents philosophy"
+                  "id": "b3l15g3-r2-c1-w1",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
                 }
               ],
               [
                 {
-                  "id": "b3l15g3-r2-c2",
+                  "id": "b3l15g3-r2-c2-w1",
                   "traditional": "同時",
                   "simplified": "同时",
                   "pinyin": "tóngshí",
-                  "meaning": "furthermore"
+                  "meaning": "at the same time"
                 }
               ],
               [
                 {
-                  "id": "b3l15g3-r2-c3",
-                  "traditional": "也是最受尊敬的老師",
-                  "simplified": "也是最受尊敬的老师",
-                  "pinyin": "yě shì zuì shòu zūnjìng de lǎoshī",
-                  "meaning": "also most revered teacher"
+                  "id": "b3l15g3-r2-c3-w1",
+                  "traditional": "完成了",
+                  "simplified": "完成了",
+                  "pinyin": "wánchéng le",
+                  "meaning": "finished"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l15g3-r3",
+            "columns": [
+              [],
+              [
+                {
+                  "id": "b3l15g3-r3-c2-w1",
+                  "traditional": "同時",
+                  "simplified": "同时",
+                  "pinyin": "tóngshí",
+                  "meaning": "at the same time"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g3-r3-c3-w1",
+                  "traditional": "也是華人最尊敬的老師",
+                  "simplified": "也是华人最尊敬的老师",
+                  "pinyin": "yě shì Huárén zuì zūnjìng de lǎoshī",
+                  "meaning": "also the most respected teacher among Chinese people"
                 }
               ]
             ]
@@ -930,30 +1043,37 @@
               "words": [
                 {
                   "id": "b3l15g3-ex1-w1",
-                  "traditional": "記錄歷史",
-                  "simplified": "记录历史",
-                  "pinyin": "jìlù lìshǐ",
-                  "meaning": "record history",
-                  "suffix": "，"
+                  "traditional": "人類每天",
+                  "simplified": "人类每天",
+                  "pinyin": "rénlèi měitiān",
+                  "meaning": "humans every day"
                 },
                 {
                   "id": "b3l15g3-ex1-w2",
-                  "traditional": "同時也在",
-                  "simplified": "同时也在",
-                  "pinyin": "tóngshí yě zài",
-                  "meaning": "at the same time also",
-                  "suffix": ""
+                  "traditional": "都在記錄歷史",
+                  "simplified": "都在记录历史",
+                  "pinyin": "dōu zài jìlù lìshǐ",
+                  "meaning": "are recording history,",
+                  "suffix": "，"
                 },
                 {
                   "id": "b3l15g3-ex1-w3",
-                  "traditional": "創造歷史",
-                  "simplified": "创造历史",
-                  "pinyin": "chuàngzào lìshǐ",
-                  "meaning": "create history",
+                  "traditional": "同時",
+                  "simplified": "同时",
+                  "pinyin": "tóngshí",
+                  "meaning": "at the same time"
+                },
+                {
+                  "id": "b3l15g3-ex1-w4",
+                  "traditional": "也在創造歷史",
+                  "simplified": "也在创造历史",
+                  "pinyin": "yě zài chuàngzào lìshǐ",
+                  "meaning": "are also creating history.",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l15g3-ex2",
@@ -966,19 +1086,47 @@
               "words": [
                 {
                   "id": "b3l15g3-ex2-w1",
-                  "traditional": "打掃乾淨",
-                  "simplified": "打扫干净",
-                  "pinyin": "dǎsǎo gānjìng",
-                  "meaning": "clean up",
-                  "suffix": "，"
+                  "traditional": "我和姊姊",
+                  "simplified": "我和姐姐",
+                  "pinyin": "wǒ hé jiějie",
+                  "meaning": "my older sister and I"
                 },
                 {
                   "id": "b3l15g3-ex2-w2",
-                  "traditional": "同時完成",
-                  "simplified": "同时完成",
-                  "pinyin": "tóngshí wánchéng",
-                  "meaning": "finish simultaneously",
-                  "suffix": "了。"
+                  "traditional": "比賽看誰先把房間打掃乾淨",
+                  "simplified": "比赛看谁先把房间打扫干净",
+                  "pinyin": "bǐsài kàn shéi xiān bǎ fángjiān dǎsǎo gānjìng",
+                  "meaning": "had a contest to see who would clean the room first,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g3-ex2-w3",
+                  "traditional": "沒想到",
+                  "simplified": "没想到",
+                  "pinyin": "méi xiǎngdào",
+                  "meaning": "didn't expect that"
+                },
+                {
+                  "id": "b3l15g3-ex2-w4",
+                  "traditional": "最後我們",
+                  "simplified": "最后我们",
+                  "pinyin": "zuìhòu wǒmen",
+                  "meaning": "in the end we"
+                },
+                {
+                  "id": "b3l15g3-ex2-w5",
+                  "traditional": "同時",
+                  "simplified": "同时",
+                  "pinyin": "tóngshí",
+                  "meaning": "at the same time"
+                },
+                {
+                  "id": "b3l15g3-ex2-w6",
+                  "traditional": "完成了",
+                  "simplified": "完成了",
+                  "pinyin": "wánchéng le",
+                  "meaning": "finished.",
+                  "suffix": "。"
                 }
               ]
             }
@@ -994,26 +1142,40 @@
               "words": [
                 {
                   "id": "b3l15g3-ex3-w1",
-                  "traditional": "代表人物",
-                  "simplified": "代表人物",
-                  "pinyin": "dàibiǎo rénwù",
-                  "meaning": "representative figure",
+                  "traditional": "在中國歷史上",
+                  "simplified": "在中国历史上",
+                  "pinyin": "zài Zhōngguó lìshǐ shàng",
+                  "meaning": "in Chinese history,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l15g3-ex3-w2",
-                  "traditional": "同時也是",
-                  "simplified": "同时也是",
-                  "pinyin": "tóngshí yě shì",
-                  "meaning": "at the same time also is",
-                  "suffix": ""
+                  "traditional": "孔子",
+                  "simplified": "孔子",
+                  "pinyin": "Kǒngzǐ",
+                  "meaning": "Confucius"
                 },
                 {
                   "id": "b3l15g3-ex3-w3",
-                  "traditional": "最尊敬的老師",
-                  "simplified": "最尊敬的老师",
-                  "pinyin": "zuì zūnjìng de lǎoshī",
-                  "meaning": "most revered teacher",
+                  "traditional": "是哲學方面的代表人物",
+                  "simplified": "是哲学方面的代表人物",
+                  "pinyin": "shì zhéxué fāngmiàn de dàibiǎo rénwù",
+                  "meaning": "is a representative figure in philosophy,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g3-ex3-w4",
+                  "traditional": "同時",
+                  "simplified": "同时",
+                  "pinyin": "tóngshí",
+                  "meaning": "at the same time"
+                },
+                {
+                  "id": "b3l15g3-ex3-w5",
+                  "traditional": "也是華人最尊敬的老師",
+                  "simplified": "也是华人最尊敬的老师",
+                  "pinyin": "yě shì Huárén zuì zūnjìng de lǎoshī",
+                  "meaning": "is also the most respected teacher among Chinese.",
                   "suffix": "。"
                 }
               ]
@@ -1069,44 +1231,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l15g3-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "人類每天都在記錄歷史，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "也在創造歷史。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "同時"
-              },
-              {
-                "id": "t2",
-                "text": "難怪"
-              },
-              {
-                "id": "t3",
-                "text": "往往"
-              },
-              {
-                "id": "t4",
-                "text": "甚至"
-              }
-            ],
-            "correctFeedback": "太棒了！「同時」用於連接同時間進行的兩種重大使命與歷史進程。",
-            "repairFeedback": "請注意平行並存的關係：記錄歷史與創造歷史兩者並進，應填入「同時」。"
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L15-G04-P393",
@@ -1120,36 +1245,44 @@
         "bookPageAvailable": true,
         "printedPages": [
           393,
-          395
+          394
         ],
         "audioReference": "15-2-2",
-        "titleTraditional": "及",
-        "titleSimplified": "及",
         "titleEnglish": "And / As well as (formal conjunction)",
         "learnerPromise": "Connect coordinate nouns or noun phrases in formal and written Chinese.",
-        "explanation": "「及」是連詞，意思和「和」、「跟」一樣，不過用法較正式，多用於書面。「及」的前後常是名詞、名詞短語。如果用來連接三個以上的名詞或名詞短語，「及」則用在最後兩個之間。",
-        "pattern": "Noun 1, + (Noun 2) + 及 + Noun 3",
-        "patternColumns": [
-          "Noun 1",
+        "titleTraditional": "……及……",
+        "titleSimplified": "……及……",
+        "explanation": "「及」是連詞，意思和「和」、「跟」一樣，不過用法較正式，多用於書面。「及」的前後常是名詞、名詞短語，例如：中文及法文；培養好的習慣及生活作息。如果用來連接三個以上的名詞或名詞短語，「及」則用在最後兩個之間，例如：英國、美國及德國。",
+        "explanationEnglish": "及 is a conjunction, meaning the same as 和 and 跟, but 及 is more formal and used mostly in writing. 及 is often preceded by, or followed by, nouns and noun phrases such as 中文及法文; 培養好的習慣及生活作息. If used to connect more than three nouns or noun phrases, 及 is used between the last two. For example, 英國、美國及德國.",
+        "focusTerms": [
           "及",
-          "Noun 2"
+          "……及……"
         ],
+        "pattern": "Noun + 及 + Noun",
+        "patternColumns": [
+          "Lead-in",
+          "Noun",
+          "及",
+          "Noun"
+        ],
+        "patternAccentColumn": 2,
         "patternRows": [
           {
             "id": "b3l15g4-r1",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l15g4-r1-c1",
+                  "id": "b3l15g4-r1-c2-w1",
                   "traditional": "歷史意義",
                   "simplified": "历史意义",
                   "pinyin": "lìshǐ yìyì",
-                  "meaning": "historical meaning"
+                  "meaning": "historical significance"
                 }
               ],
               [
                 {
-                  "id": "b3l15g4-r1-c2",
+                  "id": "b3l15g4-r1-c3-w1",
                   "traditional": "及",
                   "simplified": "及",
                   "pinyin": "jí",
@@ -1158,7 +1291,7 @@
               ],
               [
                 {
-                  "id": "b3l15g4-r1-c3",
+                  "id": "b3l15g4-r1-c4-w1",
                   "traditional": "紀念價值",
                   "simplified": "纪念价值",
                   "pinyin": "jìniàn jiàzhí",
@@ -1170,18 +1303,19 @@
           {
             "id": "b3l15g4-r2",
             "columns": [
+              [],
               [
                 {
-                  "id": "b3l15g4-r2-c1",
-                  "traditional": "手機、筆電",
-                  "simplified": "手机、笔电",
-                  "pinyin": "shǒujī, bǐdiàn",
+                  "id": "b3l15g4-r2-c2-w1",
+                  "traditional": "手機筆電",
+                  "simplified": "手机笔电",
+                  "pinyin": "shǒujī bǐdiàn",
                   "meaning": "phones and laptops"
                 }
               ],
               [
                 {
-                  "id": "b3l15g4-r2-c2",
+                  "id": "b3l15g4-r2-c3-w1",
                   "traditional": "及",
                   "simplified": "及",
                   "pinyin": "jí",
@@ -1190,11 +1324,52 @@
               ],
               [
                 {
-                  "id": "b3l15g4-r2-c3",
-                  "traditional": "平板電腦",
-                  "simplified": "平板电脑",
-                  "pinyin": "píngbǎn diànnǎo",
-                  "meaning": "tablets"
+                  "id": "b3l15g4-r2-c4-w1",
+                  "traditional": "平板",
+                  "simplified": "平板",
+                  "pinyin": "píngbǎn",
+                  "meaning": "tablet"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l15g4-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l15g4-r3-c1-w1",
+                  "traditional": "提高",
+                  "simplified": "提高",
+                  "pinyin": "tígāo",
+                  "meaning": "raise"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g4-r3-c2-w1",
+                  "traditional": "產品的品質",
+                  "simplified": "产品的品质",
+                  "pinyin": "chǎnpǐn de pǐnzhì",
+                  "meaning": "product quality"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g4-r3-c3-w1",
+                  "traditional": "及",
+                  "simplified": "及",
+                  "pinyin": "jí",
+                  "meaning": "and"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g4-r3-c4-w1",
+                  "traditional": "更好的服務",
+                  "simplified": "更好的服务",
+                  "pinyin": "gèng hǎo de fúwù",
+                  "meaning": "better service"
                 }
               ]
             ]
@@ -1205,37 +1380,52 @@
             "id": "b3l15g4-ex1",
             "number": 1,
             "text": {
-              "traditional": "只要它具有歷史意義及紀念價值，就該被重視和保留。",
-              "simplified": "只要它具有历史意义及纪念价值，就该被重视和保留。",
+              "traditional": "……只要它具有歷史意義及紀念價值，就該被重視和保留。",
+              "simplified": "……只要它具有历史意义及纪念价值，就该被重视和保留。",
               "pinyin": "Zhǐyào tā jùyǒu lìshǐ yìyì jí jìniàn jiàzhí, jiù gāi bèi zhòngshì hé bǎoliú.",
               "english": "As long as it possesses historical meaning and commemorative worth, it deserves esteem and conservation.",
               "words": [
                 {
                   "id": "b3l15g4-ex1-w1",
-                  "traditional": "歷史意義",
-                  "simplified": "历史意义",
-                  "pinyin": "lìshǐ yìyì",
-                  "meaning": "historical meaning",
-                  "suffix": ""
+                  "traditional": "只要它具有",
+                  "simplified": "只要它具有",
+                  "pinyin": "…… zhǐyào tā jùyǒu",
+                  "meaning": "as long as it has",
+                  "prefix": "……"
                 },
                 {
                   "id": "b3l15g4-ex1-w2",
-                  "traditional": "及紀念價值",
-                  "simplified": "及纪念价值",
-                  "pinyin": "jí jìniàn jiàzhí",
-                  "meaning": "and commemorative value",
-                  "suffix": "，"
+                  "traditional": "歷史意義",
+                  "simplified": "历史意义",
+                  "pinyin": "lìshǐ yìyì",
+                  "meaning": "historical significance"
                 },
                 {
                   "id": "b3l15g4-ex1-w3",
-                  "traditional": "重視保留",
-                  "simplified": "重视保留",
-                  "pinyin": "zhòngshì bǎoliú",
-                  "meaning": "value and preserve",
+                  "traditional": "及",
+                  "simplified": "及",
+                  "pinyin": "jí",
+                  "meaning": "and"
+                },
+                {
+                  "id": "b3l15g4-ex1-w4",
+                  "traditional": "紀念價值",
+                  "simplified": "纪念价值",
+                  "pinyin": "jìniàn jiàzhí",
+                  "meaning": "commemorative value,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g4-ex1-w5",
+                  "traditional": "就該被重視和保留",
+                  "simplified": "就该被重视和保留",
+                  "pinyin": "jiù gāi bèi zhòngshì hé bǎoliú",
+                  "meaning": "should be valued and preserved.",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l15g4-ex2",
@@ -1248,26 +1438,39 @@
               "words": [
                 {
                   "id": "b3l15g4-ex2-w1",
-                  "traditional": "手機筆電",
-                  "simplified": "手机笔电",
-                  "pinyin": "shǒujī bǐdiàn",
-                  "meaning": "phones and laptops",
-                  "suffix": ""
+                  "traditional": "手機",
+                  "simplified": "手机",
+                  "pinyin": "shǒujī",
+                  "meaning": "cell phones,",
+                  "suffix": "、"
                 },
                 {
                   "id": "b3l15g4-ex2-w2",
-                  "traditional": "及平板",
-                  "simplified": "及平板",
-                  "pinyin": "jí píngbǎn",
-                  "meaning": "and tablets",
-                  "suffix": ""
+                  "traditional": "筆電",
+                  "simplified": "笔电",
+                  "pinyin": "bǐdiàn",
+                  "meaning": "laptops"
                 },
                 {
                   "id": "b3l15g4-ex2-w3",
-                  "traditional": "常用產品",
-                  "simplified": "常用产品",
-                  "pinyin": "chángyòng chǎnpǐn",
-                  "meaning": "commonly used products",
+                  "traditional": "及",
+                  "simplified": "及",
+                  "pinyin": "jí",
+                  "meaning": "and"
+                },
+                {
+                  "id": "b3l15g4-ex2-w4",
+                  "traditional": "平板",
+                  "simplified": "平板",
+                  "pinyin": "píngbǎn",
+                  "meaning": "tablets"
+                },
+                {
+                  "id": "b3l15g4-ex2-w5",
+                  "traditional": "都是現代人常用的3C產品",
+                  "simplified": "都是现代人常用的3C产品",
+                  "pinyin": "dōu shì xiàndài rén chángyòng de 3C chǎnpǐn",
+                  "meaning": "are 3C products commonly used by modern people.",
                   "suffix": "。"
                 }
               ]
@@ -1284,18 +1487,38 @@
               "words": [
                 {
                   "id": "b3l15g4-ex3-w1",
-                  "traditional": "產品品質",
-                  "simplified": "产品品质",
-                  "pinyin": "chǎnpǐn pǐnzhí",
-                  "meaning": "product quality",
-                  "suffix": ""
+                  "traditional": "老闆希望公司",
+                  "simplified": "老板希望公司",
+                  "pinyin": "lǎobǎn xīwàng gōngsī",
+                  "meaning": "the boss hopes the company"
                 },
                 {
                   "id": "b3l15g4-ex3-w2",
-                  "traditional": "及更好服務",
-                  "simplified": "及更好服务",
-                  "pinyin": "jí gèng hǎo fúwù",
-                  "meaning": "and better service",
+                  "traditional": "可以提高",
+                  "simplified": "可以提高",
+                  "pinyin": "kěyǐ tígāo",
+                  "meaning": "can raise"
+                },
+                {
+                  "id": "b3l15g4-ex3-w3",
+                  "traditional": "產品的品質",
+                  "simplified": "产品的品质",
+                  "pinyin": "chǎnpǐn de pǐnzhì",
+                  "meaning": "product quality"
+                },
+                {
+                  "id": "b3l15g4-ex3-w4",
+                  "traditional": "及",
+                  "simplified": "及",
+                  "pinyin": "jí",
+                  "meaning": "and"
+                },
+                {
+                  "id": "b3l15g4-ex3-w5",
+                  "traditional": "更好的服務",
+                  "simplified": "更好的服务",
+                  "pinyin": "gèng hǎo de fúwù",
+                  "meaning": "better service.",
                   "suffix": "。"
                 }
               ]
@@ -1351,44 +1574,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l15g4-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "只要古蹟具有歷史意義"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "紀念價值，就該被好好保留。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "及"
-              },
-              {
-                "id": "t2",
-                "text": "卻"
-              },
-              {
-                "id": "t3",
-                "text": "簡直"
-              },
-              {
-                "id": "t4",
-                "text": "只好"
-              }
-            ],
-            "correctFeedback": "太棒了！書面語中並列連接名詞短語「歷史意義」與「紀念價值」，使用連詞「及」。",
-            "repairFeedback": "請注意書面連詞用法：在正式文體中連接兩個名詞詞組，應填入「及」。"
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L15-G05-P395",
@@ -1405,46 +1591,52 @@
           396
         ],
         "audioReference": "15-2-3",
-        "titleTraditional": "總而言之 / 總之",
-        "titleSimplified": "总而言之 / 总之",
         "titleEnglish": "In short / In conclusion / All in all",
         "learnerPromise": "Synthesize multiple previous premises into a concise conclusion or guiding takeaway.",
+        "titleTraditional": "總而言之，……/總之，……",
+        "titleSimplified": "总而言之，……/总之，……",
         "explanation": "「總而言之」也可以簡單說成「總之」。「總而言之」是將前面的內容或情況做個簡單的結論，不用說得太詳細。",
-        "pattern": "Detailed Premises. + 總而言之 / 總之, + Concise Summary / Action",
-        "patternColumns": [
-          "Details",
-          "總之",
-          "Summary"
+        "explanationEnglish": "總而言之 can also be simply referred to as 總之. It is used to make a simple conclusion from the previous content or situation, without needing to go into detail.",
+        "focusTerms": [
+          "總而言之",
+          "總之"
         ],
+        "pattern": "總而言之／總之，……",
+        "patternColumns": [
+          "Opening",
+          "Subject",
+          "Predicate"
+        ],
+        "patternAccentColumn": 0,
         "patternRows": [
           {
             "id": "b3l15g5-r1",
             "columns": [
               [
                 {
-                  "id": "b3l15g5-r1-c1",
-                  "traditional": "古蹟有各種價值",
-                  "simplified": "古迹有各种价值",
-                  "pinyin": "gǔjī yǒu gèzhǒng jiàzhí",
-                  "meaning": "historic relics have values"
-                }
-              ],
-              [
-                {
-                  "id": "b3l15g5-r1-c2",
+                  "id": "b3l15g5-r1-c1-w1",
                   "traditional": "總而言之",
                   "simplified": "总而言之",
-                  "pinyin": "zǒng'éryánzhī",
-                  "meaning": "in a word"
+                  "pinyin": "zǒng ér yán zhī",
+                  "meaning": "in short"
                 }
               ],
               [
                 {
-                  "id": "b3l15g5-r1-c3",
-                  "traditional": "它就像歷史拼圖的一片",
-                  "simplified": "它就像历史拼图的一片",
-                  "pinyin": "tā jiù xiàng lìshǐ pīntú de yí piàn",
-                  "meaning": "it's like a jigsaw piece"
+                  "id": "b3l15g5-r1-c2-w1",
+                  "traditional": "古蹟",
+                  "simplified": "古迹",
+                  "pinyin": "gǔjì",
+                  "meaning": "historic sites"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g5-r1-c3-w1",
+                  "traditional": "就像歷史拼圖中的一片",
+                  "simplified": "就像历史拼图中的一片",
+                  "pinyin": "jiù xiàng lìshǐ pīntú zhōng de yí piàn",
+                  "meaning": "like a piece of a history puzzle"
                 }
               ]
             ]
@@ -1454,29 +1646,61 @@
             "columns": [
               [
                 {
-                  "id": "b3l15g5-r2-c1",
-                  "traditional": "各方面要求都很高",
-                  "simplified": "各方面要求都很高",
-                  "pinyin": "gè fāngmiàn yāoqiú dōu hěn gāo",
-                  "meaning": "high requirements"
+                  "id": "b3l15g5-r2-c1-w1",
+                  "traditional": "總而言之",
+                  "simplified": "总而言之",
+                  "pinyin": "zǒng ér yán zhī",
+                  "meaning": "in short"
                 }
               ],
               [
                 {
-                  "id": "b3l15g5-r2-c2",
+                  "id": "b3l15g5-r2-c2-w1",
+                  "traditional": "大家",
+                  "simplified": "大家",
+                  "pinyin": "dàjiā",
+                  "meaning": "everyone"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g5-r2-c3-w1",
+                  "traditional": "應該要一起解決這個問題",
+                  "simplified": "应该要一起解决这个问题",
+                  "pinyin": "yīnggāi yào yìqǐ jiějué zhège wèntí",
+                  "meaning": "should solve this problem together"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "b3l15g5-r3",
+            "columns": [
+              [
+                {
+                  "id": "b3l15g5-r3-c1-w1",
                   "traditional": "總之",
                   "simplified": "总之",
                   "pinyin": "zǒngzhī",
-                  "meaning": "all in all"
+                  "meaning": "in short"
                 }
               ],
               [
                 {
-                  "id": "b3l15g5-r2-c3",
-                  "traditional": "各方面得一百分才行",
-                  "simplified": "各方面得一百分才行",
-                  "pinyin": "gè fāngmiàn děi yībǎi fēn cái xíng",
-                  "meaning": "needs 100% on everything"
+                  "id": "b3l15g5-r3-c2-w1",
+                  "traditional": "各方面",
+                  "simplified": "各方面",
+                  "pinyin": "gè fāngmiàn",
+                  "meaning": "in every respect"
+                }
+              ],
+              [
+                {
+                  "id": "b3l15g5-r3-c3-w1",
+                  "traditional": "都得一百分才行",
+                  "simplified": "都得一百分才行",
+                  "pinyin": "dōu děi yìbǎi fēn cái xíng",
+                  "meaning": "must all score a hundred"
                 }
               ]
             ]
@@ -1487,37 +1711,44 @@
             "id": "b3l15g5-ex1",
             "number": 1,
             "text": {
-              "traditional": "總而言之，古蹟就像歷史拼圖中的一片，如果能認得這個部分，就能透過它們拼出有意義的歷史故事。",
-              "simplified": "总而言之，古迹就像历史拼图中的一片，如果能认得这个部分，就能透过它们拼出有意义的历史故事。",
-              "pinyin": "Zǒng'éryánzhī, gǔjī jiù xiàng lìshǐ pīntú zhōng de yí piàn, rúguǒ néng rènde zhège bùfèn, jiù néng tòuguò tāmen pīnchū yǒu yìyì de lìshǐ gùshì.",
-              "english": "In short, historic sites are like pieces in history's jigsaw puzzle; if we can recognize them, we can assemble meaningful historical narratives.",
+              "traditional": "總而言之，古蹟就像歷史拼圖中的一片……",
+              "simplified": "总而言之，古迹就像历史拼图中的一片……",
+              "pinyin": "Zǒng ér yán zhī, gǔjì jiù xiàng lìshǐ pīntú zhōng de yí piàn……",
+              "english": "In short, historic sites are like a piece of the history puzzle…",
               "words": [
                 {
                   "id": "b3l15g5-ex1-w1",
                   "traditional": "總而言之",
                   "simplified": "总而言之",
-                  "pinyin": "zǒng'éryánzhī",
-                  "meaning": "in a word / all in all",
+                  "pinyin": "zǒng ér yán zhī",
+                  "meaning": "in short,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l15g5-ex1-w2",
-                  "traditional": "歷史拼圖",
-                  "simplified": "历史拼图",
-                  "pinyin": "lìshǐ pīntú",
-                  "meaning": "history jigsaw",
-                  "suffix": ""
+                  "traditional": "古蹟",
+                  "simplified": "古迹",
+                  "pinyin": "gǔjì",
+                  "meaning": "historic sites"
                 },
                 {
                   "id": "b3l15g5-ex1-w3",
-                  "traditional": "拼出故事",
-                  "simplified": "拼出故事",
-                  "pinyin": "pīnchū gùshì",
-                  "meaning": "piece together story",
-                  "suffix": "。"
+                  "traditional": "就像",
+                  "simplified": "就像",
+                  "pinyin": "jiù xiàng",
+                  "meaning": "are like"
+                },
+                {
+                  "id": "b3l15g5-ex1-w4",
+                  "traditional": "歷史拼圖中的一片",
+                  "simplified": "历史拼图中的一片",
+                  "pinyin": "lìshǐ pīntú zhōng de yí piàn",
+                  "meaning": "a piece of the history puzzle…",
+                  "suffix": "……"
                 }
               ]
-            }
+            },
+            "fromDialogue": true
           },
           {
             "id": "b3l15g5-ex2",
@@ -1530,26 +1761,42 @@
               "words": [
                 {
                   "id": "b3l15g5-ex2-w1",
-                  "traditional": "品質有問題",
-                  "simplified": "品质有问题",
-                  "pinyin": "pǐnzhí yǒu wèntí",
-                  "meaning": "quality issues",
+                  "traditional": "這個產品的品質有問題",
+                  "simplified": "这个产品的品质有问题",
+                  "pinyin": "zhège chǎnpǐn de pǐnzhì yǒu wèntí",
+                  "meaning": "this product's quality is problematic,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l15g5-ex2-w2",
-                  "traditional": "總而言之",
-                  "simplified": "总而言之",
-                  "pinyin": "zǒng'éryánzhī",
-                  "meaning": "in short",
+                  "traditional": "不完全是小張的錯",
+                  "simplified": "不完全是小张的错",
+                  "pinyin": "bù wánquán shì Xiǎo Zhāng de cuò",
+                  "meaning": "not entirely Xiao Zhang's fault,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l15g5-ex2-w3",
-                  "traditional": "一起解決",
-                  "simplified": "一起解决",
-                  "pinyin": "yìqǐ jiějué",
-                  "meaning": "resolve together",
+                  "traditional": "檢查人員也有責任",
+                  "simplified": "检查人员也有责任",
+                  "pinyin": "jiǎnchá rényuán yě yǒu zérèn",
+                  "meaning": "inspectors also bear responsibility.",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l15g5-ex2-w4",
+                  "traditional": "總而言之",
+                  "simplified": "总而言之",
+                  "pinyin": "zǒng ér yán zhī",
+                  "meaning": "in short,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g5-ex2-w5",
+                  "traditional": "大家應該要一起解決這個問題",
+                  "simplified": "大家应该要一起解决这个问题",
+                  "pinyin": "dàjiā yīnggāi yào yìqǐ jiějué zhège wèntí",
+                  "meaning": "everyone should solve this problem together.",
                   "suffix": "。"
                 }
               ]
@@ -1559,33 +1806,95 @@
             "id": "b3l15g5-ex3",
             "number": 3,
             "text": {
-              "traditional": "我理想的結婚對象，得有房子、車子，當然還得長得帥、聰明、體貼等等。總之，各方面都得一百分才行。",
-              "simplified": "我理想的结婚对象，得有房子、车子，当然还得长得帅、聪明、体贴等等。总之，各方面都得一百分才行。",
-              "pinyin": "Wǒ lǐxiǎng de jiéhūn duìxiàng, děi yǒu fángzi, chēzi, dāngrán hái děi zhǎng de shuài, cōngmíng, tǐtiē děngděng. Zǒngzhī, gè fāngmiàn dōu děi yībǎi fēn cái xíng.",
-              "english": "My ideal partner must have a house and car, and naturally must be handsome, intelligent, and thoughtful. In short, they must score a hundred in every category.",
+              "traditional": "A：我理想的結婚對象，得有房子、車子，當然還得長得帥、聰明、體貼等等。總之，各方面都得一百分才行。\nB：你別做夢了。",
+              "simplified": "A：我理想的结婚对象，得有房子、车子，当然还得长得帅、聪明、体贴等等。总之，各方面都得一百分才行。\nB：你别做梦了。",
+              "pinyin": "A: Wǒ lǐxiǎng de jiéhūn duìxiàng, děi yǒu fángzi, chēzi, dāngrán hái děi zhǎng de shuài, cōngmíng, tǐtiē děngděng. Zǒngzhī, gè fāngmiàn dōu děi yìbǎi fēn cái xíng.\nB: Nǐ bié zuò mèng le.",
+              "english": "A: My ideal marriage partner needs a house and a car, and of course must also be handsome, smart, considerate and so on. In short, they must score a hundred in every respect.\nB: You're dreaming.",
               "words": [
                 {
                   "id": "b3l15g5-ex3-w1",
-                  "traditional": "結婚對象",
-                  "simplified": "结婚对象",
-                  "pinyin": "jiéhūn duìxiàng",
-                  "meaning": "marriage partner",
-                  "suffix": "，"
+                  "traditional": "A：",
+                  "simplified": "A：",
+                  "pinyin": "A:",
+                  "meaning": "speaker A"
                 },
                 {
                   "id": "b3l15g5-ex3-w2",
-                  "traditional": "總之",
-                  "simplified": "总之",
-                  "pinyin": "zǒngzhī",
-                  "meaning": "in brief / all in all",
+                  "traditional": "我理想的結婚對象",
+                  "simplified": "我理想的结婚对象",
+                  "pinyin": "wǒ lǐxiǎng de jiéhūn duìxiàng",
+                  "meaning": "my ideal marriage partner,",
                   "suffix": "，"
                 },
                 {
                   "id": "b3l15g5-ex3-w3",
-                  "traditional": "一百分才行",
-                  "simplified": "一百分才行",
-                  "pinyin": "yībǎi fēn cái xíng",
-                  "meaning": "must score 100",
+                  "traditional": "得有房子",
+                  "simplified": "得有房子",
+                  "pinyin": "děi yǒu fángzi",
+                  "meaning": "must have a house,",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b3l15g5-ex3-w4",
+                  "traditional": "車子",
+                  "simplified": "车子",
+                  "pinyin": "chēzi",
+                  "meaning": "a car,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g5-ex3-w5",
+                  "traditional": "當然還得長得帥",
+                  "simplified": "当然还得长得帅",
+                  "pinyin": "dāngrán hái děi zhǎng de shuài",
+                  "meaning": "of course also must be handsome,",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b3l15g5-ex3-w6",
+                  "traditional": "聰明",
+                  "simplified": "聪明",
+                  "pinyin": "cōngmíng",
+                  "meaning": "smart,",
+                  "suffix": "、"
+                },
+                {
+                  "id": "b3l15g5-ex3-w7",
+                  "traditional": "體貼等等",
+                  "simplified": "体贴等等",
+                  "pinyin": "tǐtiē děngděng",
+                  "meaning": "considerate and so on.",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b3l15g5-ex3-w8",
+                  "traditional": "總之",
+                  "simplified": "总之",
+                  "pinyin": "zǒngzhī",
+                  "meaning": "in short,",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b3l15g5-ex3-w9",
+                  "traditional": "各方面都得一百分才行",
+                  "simplified": "各方面都得一百分才行",
+                  "pinyin": "gè fāngmiàn dōu děi yìbǎi fēn cái xíng",
+                  "meaning": "in every respect one must score a hundred.",
+                  "suffix": "。\n"
+                },
+                {
+                  "id": "b3l15g5-ex3-w10",
+                  "traditional": "B：",
+                  "simplified": "B：",
+                  "pinyin": "B:",
+                  "meaning": "speaker B"
+                },
+                {
+                  "id": "b3l15g5-ex3-w11",
+                  "traditional": "你別做夢了",
+                  "simplified": "你别做梦了",
+                  "pinyin": "nǐ bié zuò mèng le",
+                  "meaning": "you're dreaming.",
                   "suffix": "。"
                 }
               ]
@@ -1641,44 +1950,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l15g5-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": ""
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "，古蹟就像歷史拼圖中的一片，記錄了祖先的生活事實。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "總而言之"
-              },
-              {
-                "id": "t2",
-                "text": "難怪"
-              },
-              {
-                "id": "t3",
-                "text": "偏偏"
-              },
-              {
-                "id": "t4",
-                "text": "甚至"
-              }
-            ],
-            "correctFeedback": "太棒了！「總而言之」用於對前文所述的歷史價值與功能進行宏觀概括總結。",
-            "repairFeedback": "請注意總結語氣：對前面的各項論述作概括歸納，應選用「總而言之」。"
-          }
-        ]
+        "questions": []
       }
     ]
   }

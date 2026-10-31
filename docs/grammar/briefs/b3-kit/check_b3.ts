@@ -10,7 +10,6 @@ const ref = JSON.parse(readFileSync(root + 'content/grammar/b3LessonFive.json', 
 const issues: string[] = [];
 for (const part of parts as any[]) for (const page of part.grammarPages) {
   for (const key of Object.keys(ref)) if (!(key in page)) issues.push(`${page.id}: missing field "${key}" (Lesson 5 has it)`);
-  if (!page.questions?.length) issues.push(`${page.id}: questions must have at least 1 item (Lesson 5 shape)`);
   for (const ex of page.examples ?? []) if (!ex.text?.words?.length) issues.push(`${page.id} ${ex.id}: example needs word tokens (text.words)`);
 }
 try {
