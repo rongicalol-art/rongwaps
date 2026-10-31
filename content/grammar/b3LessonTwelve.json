@@ -612,44 +612,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l12g1-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "A: 請問關老師在嗎？我的孩子想當面向他說聲謝謝。 B: 他在，我"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "去叫他。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "這就"
-              },
-              {
-                "id": "t2",
-                "text": "難道"
-              },
-              {
-                "id": "t3",
-                "text": "況且"
-              },
-              {
-                "id": "t4",
-                "text": "畢竟"
-              }
-            ],
-            "correctFeedback": "太棒了！「這就＋動詞」表示說話者現在馬上採取行動。",
-            "repairFeedback": "請確認語境：對方在現場詢問，回答者表示「現在立刻去叫他」，應使用「這就」。"
-          }
-        ],
+        "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
         "lessonId": 12,
@@ -1184,44 +1147,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l12g2-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "我從來沒辦過戶外演唱會，在辦活動"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "，老李的經驗很豐富，我恐怕幫不了你。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "方面"
-              },
-              {
-                "id": "t2",
-                "text": "原則"
-              },
-              {
-                "id": "t3",
-                "text": "立場"
-              },
-              {
-                "id": "t4",
-                "text": "題目"
-              }
-            ],
-            "correctFeedback": "正確！「在＋範圍＋方面」用來說明在某個領域或情形下的狀況。",
-            "repairFeedback": "請注意框架搭配：「在辦活動……」接「方面」，用以界定特定範疇。"
-          }
-        ],
+        "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
         "lessonId": 12,
@@ -1683,44 +1609,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l12g3-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "照我過去的習慣，為了讓資料正確，我"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "會請其他人再檢查一次。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "往往"
-              },
-              {
-                "id": "t2",
-                "text": "難怪"
-              },
-              {
-                "id": "t3",
-                "text": "何況"
-              },
-              {
-                "id": "t4",
-                "text": "索性"
-              }
-            ],
-            "correctFeedback": "沒錯！「往往」表示在特定條件或規律下經常出現的常態情況。",
-            "repairFeedback": "請注意句意：根據過去的習慣和規律，常態性地請人檢查，應用「往往」。"
-          }
-        ],
+        "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
         "lessonId": 12,
@@ -2241,44 +2130,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l12g4-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "我剛到臺灣，不知道有什麼適合外國人的活動。"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "這類的活動，你看旅遊中心的網站就知道了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "有關"
-              },
-              {
-                "id": "t2",
-                "text": "至於"
-              },
-              {
-                "id": "t3",
-                "text": "趁著"
-              },
-              {
-                "id": "t4",
-                "text": "朝著"
-              }
-            ],
-            "correctFeedback": "答對了！「有關」常放在句首，用來引出特定事物或情況進行進一步說明。",
-            "repairFeedback": "請注意語意：句首引出「這類活動」的話題，接續提供說明建議，應使用「有關」。"
-          }
-        ],
+        "questions": [],
         "audioReference": "12-1-1",
         "bookId": 3,
         "lessonId": 12,
@@ -2879,44 +2731,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l12g5-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "我進公司兩年了，好像沒看過老闆生氣。是啊，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "產品出現了嚴重的問題，他也沒怪任何人，脾氣真好。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "儘管"
-              },
-              {
-                "id": "t2",
-                "text": "何妨"
-              },
-              {
-                "id": "t3",
-                "text": "莫非"
-              },
-              {
-                "id": "t4",
-                "text": "索性"
-              }
-            ],
-            "correctFeedback": "太棒了！「儘管」主要用來描述既成事實的讓步，後接相反的結果。",
-            "repairFeedback": "請注意語意關係：前半句說明「產品出現嚴重問題」之事實，後半句為轉折結果，應使用「儘管」。"
-          }
-        ],
+        "questions": [],
         "audioReference": "12-2-1",
         "bookId": 3,
         "lessonId": 12,
@@ -3614,44 +3429,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l12g6-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "這是我的購物習慣，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "買什麼，我都要親自檢查才安心。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "不論"
-              },
-              {
-                "id": "t2",
-                "text": "既然"
-              },
-              {
-                "id": "t3",
-                "text": "除非"
-              },
-              {
-                "id": "t4",
-                "text": "未免"
-              }
-            ],
-            "correctFeedback": "答得很好！「不論……都……」搭配疑問詞「什麼」，表示任何情況下結果都不變。",
-            "repairFeedback": "請注意條件多樣性：後接「買什麼」，後句搭配「都」，表示無條件的通則，應使用「不論」。"
-          }
-        ],
+        "questions": [],
         "audioReference": "12-2-1",
         "bookId": 3,
         "lessonId": 12,

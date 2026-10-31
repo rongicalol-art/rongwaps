@@ -810,44 +810,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l13g1-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "下課了突然下起大雨，大家都沒帶傘，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "我們只能在學校等雨停了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "這下子"
-              },
-              {
-                "id": "t2",
-                "text": "難道"
-              },
-              {
-                "id": "t3",
-                "text": "況且"
-              },
-              {
-                "id": "t4",
-                "text": "畢竟"
-              }
-            ],
-            "correctFeedback": "太棒了！「這下子」用於面對突發情況時當下做出的即時反應與感慨。",
-            "repairFeedback": "請注意突發事件的因果關係：面對突發大雨沒有雨傘的處境，應使用「這下子」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "When talking about a certain event or situation in a conversation, the person speaking expresses his or her own views, or their immediate reaction to a sudden change in the situation.",
         "focusTerms": [
           "這下子"
@@ -1474,44 +1437,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l13g2-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "不同地區的人在網路上開會，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "省時間又方便。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "既"
-              },
-              {
-                "id": "t2",
-                "text": "越"
-              },
-              {
-                "id": "t3",
-                "text": "正"
-              },
-              {
-                "id": "t4",
-                "text": "隨"
-              }
-            ],
-            "correctFeedback": "答對了！「既……又……」表示同時具備兩種同向性質或特點。",
-            "repairFeedback": "請注意句式搭配：後句有「又方便」，前半句應搭配「既省時間」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "既……又…… indicates that the same subject has two states or situations. 既 and 又 are often followed by adjectives, verbs, or verb phrases. Adverbs are not used in front of adjectives, though volitive auxiliary verbs such as 會, 要, 能, 願意, etc. can be added before verbs. The adjectives, verbs or verb phrases following 既 and 又 must both be positive or negative. The level of the state or the situation after 又 is higher than 既. Finally, 既……又……is used more in written language than 又……又…….",
         "focusTerms": [
           "既……又……",
@@ -2119,44 +2045,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l13g3-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "小古已經三個月沒工作了，連房租都付不起，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "出國旅遊了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "更別說"
-              },
-              {
-                "id": "t2",
-                "text": "怪不得"
-              },
-              {
-                "id": "t3",
-                "text": "只不過"
-              },
-              {
-                "id": "t4",
-                "text": "要不然"
-              }
-            ],
-            "correctFeedback": "答得很棒！「更別說」引出顯而易見更不可能成立的極端情況。",
-            "repairFeedback": "請注意邏輯遞進：前半句指出連基本房租都付不起，後續更奢華的出國旅遊自然更不可能，應使用「更別說」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "更別說 means the same as 不必說 or 不需要說. Because the situation after 更別說 is very clear, there is no need to say more.",
         "focusTerms": [
           "更別說",
@@ -2749,44 +2638,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l13g4-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "為了追求自己的理想，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "吃再多苦，我也要堅持到底。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "就是"
-              },
-              {
-                "id": "t2",
-                "text": "何況"
-              },
-              {
-                "id": "t3",
-                "text": "難怪"
-              },
-              {
-                "id": "t4",
-                "text": "好在"
-              }
-            ],
-            "correctFeedback": "非常好！「就是……也……」引導極端讓步條件，表示縱使如此結果也不變。",
-            "repairFeedback": "請注意句意：縱使承受再多辛苦也要堅持，後句搭配「也」，應使用「就是」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "就是 is followed by a hypothetical situation. Even if this situation should occur, the results after 也 will not change.",
         "focusTerms": [
           "就是……也……",
@@ -3437,44 +3289,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l13g5-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "錢老闆每天忙碌，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "要照顧生意，一方面要訓練員工。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "一方面"
-              },
-              {
-                "id": "t2",
-                "text": "一再"
-              },
-              {
-                "id": "t3",
-                "text": "一向"
-              },
-              {
-                "id": "t4",
-                "text": "一共"
-              }
-            ],
-            "correctFeedback": "答得很對！「一方面……，一方面……」平行列舉兩項並行的責任或考量。",
-            "repairFeedback": "請注意並列結構：後句搭配「一方面要訓練員工」，前半句應使用「一方面」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The use of the phrase 一方面……，一方面……can explain the cause, result or purpose of two aspects of a thing, and there is no important difference between the preceding and following sentences.",
         "focusTerms": [
           "一方面……，一方面……",

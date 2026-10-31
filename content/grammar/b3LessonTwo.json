@@ -1045,56 +1045,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g1-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你不知道嗎？老師",
-                "simplified": "你不知道吗？老师"
-              },
-              {
-                "type": "blank",
-                "id": "b3l2g1-q1-b1",
-                "answer": "早就",
-                "answerSimplified": "早就",
-                "hint": "Use the adverb meaning 'long ago'."
-              },
-              {
-                "type": "text",
-                "traditional": "跟我們說過了。",
-                "simplified": "跟我们说过了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g1-q1-t1",
-                "traditional": "早就",
-                "simplified": "早就",
-                "pinyin": "zǎojiù",
-                "meaning": "long since"
-              },
-              {
-                "id": "b3l2g1-q1-t2",
-                "traditional": "剛才",
-                "simplified": "刚才",
-                "pinyin": "gāngcái",
-                "meaning": "just now"
-              },
-              {
-                "id": "b3l2g1-q1-t3",
-                "traditional": "順便",
-                "simplified": "顺便",
-                "pinyin": "shùnbiàn",
-                "meaning": "conveniently"
-              }
-            ],
-            "correctFeedback": "早就 pairs with 過/了 to emphasize that something was told long ago.",
-            "repairFeedback": "Use 早就 to emphasize that the announcement occurred well in advance."
-          }
-        ],
+        "questions": [],
         "bookPage": 50,
         "explanationEnglish": "Using 早就……了 means that the speaker feels \"It's been... It's already been a long time\". For example, 我早就知道他不能來了。Or 蛋糕早就被吃光了。",
         "patternAccentColumn": 1
@@ -2026,56 +1977,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g2-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你去便利商店時，可以",
-                "simplified": "你去便利商店时，可以"
-              },
-              {
-                "type": "blank",
-                "id": "b3l2g2-q1-b1",
-                "answer": "順便",
-                "answerSimplified": "顺便",
-                "hint": "Meaning 'conveniently on the way'."
-              },
-              {
-                "type": "text",
-                "traditional": "幫我買杯咖啡嗎？",
-                "simplified": "帮我买杯咖啡吗？"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g2-q1-t1",
-                "traditional": "順便",
-                "simplified": "顺便",
-                "pinyin": "shùnbiàn",
-                "meaning": "conveniently"
-              },
-              {
-                "id": "b3l2g2-q1-t2",
-                "traditional": "隨便",
-                "simplified": "随便",
-                "pinyin": "suíbiàn",
-                "meaning": "casually"
-              },
-              {
-                "id": "b3l2g2-q1-t3",
-                "traditional": "早就",
-                "simplified": "早就",
-                "pinyin": "zǎojiù",
-                "meaning": "long since"
-              }
-            ],
-            "correctFeedback": "順便 introduces a secondary request done along with the primary trip.",
-            "repairFeedback": "Use 順便 for an action done on the way without extra trouble."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "順便 means that while doing something, do the second action at one's convenience, without taking too much trouble or spending too much time. Generally used to ask someone to do something. For example, 朋友要去郵局寄信，我請他順便買個信封。",
         "patternAccentColumn": 1
       },
@@ -2974,56 +2876,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g3-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "今天天氣變化真快，",
-                "simplified": "今天天气变化真快，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l2g3-q1-b1",
-                "answer": "一會兒",
-                "answerSimplified": "一会儿",
-                "hint": "Adverb for rapidly alternating states."
-              },
-              {
-                "type": "text",
-                "traditional": "出太陽，一會兒下大雨。",
-                "simplified": "出太阳，一会儿下大雨。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g3-q1-t1",
-                "traditional": "一會兒",
-                "simplified": "一会儿",
-                "pinyin": "yìhuǐr",
-                "meaning": "one moment"
-              },
-              {
-                "id": "b3l2g3-q1-t2",
-                "traditional": "順便",
-                "simplified": "顺便",
-                "pinyin": "shùnbiàn",
-                "meaning": "conveniently"
-              },
-              {
-                "id": "b3l2g3-q1-t3",
-                "traditional": "早就",
-                "simplified": "早就",
-                "pinyin": "zǎojiù",
-                "meaning": "long since"
-              }
-            ],
-            "correctFeedback": "一會兒……一會兒…… links contrasting actions alternating rapidly.",
-            "repairFeedback": "Use 一會兒 to pair with the second 一會兒 for rapid alternation."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "一會兒 is an adverb, 一會兒……，一會兒……means that two or more situations occur one after the other or alternately. The person speaking feels that the situation has changed in a short period of time, and the tone has some exaggeration. For example, 這幾天的天氣一會兒冷，一會兒熱，容易讓人感冒。",
         "patternAccentColumn": 1
       },
@@ -3905,56 +3758,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g4-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "排隊要等二十分鐘，太久了，我們去別家吃",
-                "simplified": "排队要等二十分钟，太久了，我们去别家吃"
-              },
-              {
-                "type": "blank",
-                "id": "b3l2g4-q1-b1",
-                "answer": "算了",
-                "answerSimplified": "算了",
-                "hint": "Colloquial phrase for accepting a compromise."
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g4-q1-t1",
-                "traditional": "算了",
-                "simplified": "算了",
-                "pinyin": "suànle",
-                "meaning": "let it pass"
-              },
-              {
-                "id": "b3l2g4-q1-t2",
-                "traditional": "順便",
-                "simplified": "顺便",
-                "pinyin": "shùnbiàn",
-                "meaning": "conveniently"
-              },
-              {
-                "id": "b3l2g4-q1-t3",
-                "traditional": "早就",
-                "simplified": "早就",
-                "pinyin": "zǎojiù",
-                "meaning": "long since"
-              }
-            ],
-            "correctFeedback": "算了 placed after an alternative action indicates a practical compromise.",
-            "repairFeedback": "Use 算了 to drop the long wait and choose another restaurant."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "算了 is used colloquially. The person speaking is dissatisfied with a situation, but does not want to spend time or to make too much effort to deal with or solve it. 算了 can be used alone or at the end of the alternative choice. For example, A：對不起，我下個月很忙，不能跟你去旅行了。B: 算了。Or 我找別人跟我去算了。",
         "patternAccentColumn": 1
       }
@@ -4856,56 +4660,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g5-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "上課了，請大家把課本翻",
-                "simplified": "上课了，请大家把课本翻"
-              },
-              {
-                "type": "blank",
-                "id": "b3l2g5-q1-b1",
-                "answer": "開",
-                "answerSimplified": "开",
-                "hint": "Complement meaning open/apart."
-              },
-              {
-                "type": "text",
-                "traditional": "，翻到第五十頁。",
-                "simplified": "，翻到第五十页。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g5-q1-t1",
-                "traditional": "開",
-                "simplified": "开",
-                "pinyin": "kāi",
-                "meaning": "apart / open"
-              },
-              {
-                "id": "b3l2g5-q1-t2",
-                "traditional": "完",
-                "simplified": "完",
-                "pinyin": "wán",
-                "meaning": "finish"
-              },
-              {
-                "id": "b3l2g5-q1-t3",
-                "traditional": "起",
-                "simplified": "起",
-                "pinyin": "qǐ",
-                "meaning": "upward"
-              }
-            ],
-            "correctFeedback": "翻開 expresses opening a book so pages are parted.",
-            "repairFeedback": "Use 開 as the result complement for opening apart."
-          }
-        ],
+        "questions": [],
         "bookPage": 62,
         "explanationEnglish": "When 開 is used as a result complement, there is a meaning of \"things that are originally together are now separated\". For example, 打\"開\", 拉\"開\". 開 also means \"a person or thing leaves the original condition\". For example, 走\"開\", 離\"開\", 拿\"開\", etc. It is also possible to add possible complements 得 or 不 before the result complement 開. For example, 打\"得\"開, 打\"不\"開, 走\"得\"開, 走\"不\"開, etc.",
         "patternAccentColumn": 3
@@ -5794,51 +5549,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g6-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "blank",
-                "id": "b3l2g6-q1-b1",
-                "answer": "經過",
-                "answerSimplified": "经过",
-                "hint": "Preposition meaning 'after / through a process'."
-              },
-              {
-                "type": "text",
-                "traditional": "這件事，我覺得應該好好把握機會。",
-                "simplified": "这件事，我觉得应该好好把握机会。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g6-q1-t1",
-                "traditional": "經過",
-                "simplified": "经过",
-                "pinyin": "jīngguò",
-                "meaning": "through / after"
-              },
-              {
-                "id": "b3l2g6-q1-t2",
-                "traditional": "通過",
-                "simplified": "通过",
-                "pinyin": "tōngguò",
-                "meaning": "pass through"
-              },
-              {
-                "id": "b3l2g6-q1-t3",
-                "traditional": "要是",
-                "simplified": "要是",
-                "pinyin": "yàoshi",
-                "meaning": "if"
-              }
-            ],
-            "correctFeedback": "經過 introduces the event or experience that led to the realization.",
-            "repairFeedback": "Use 經過 for having experienced a life event."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The 經過 of this lesson is followed by a period of time. For example, 他寫字寫得很慢，經過了兩個小時才把功課寫完。經過 can also show the results of a certain action, e.g. 我的電腦經過李老闆修理，好用多了。",
         "patternAccentColumn": 1
       },
@@ -6718,56 +6429,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Complete the book dialogues and answer the situations.",
         "exerciseInstruction": "Choose the best option to complete the statement.",
-        "questions": [
-          {
-            "id": "b3l2g7-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "教授說這學期的成績主要是",
-                "simplified": "教授说这学期的成绩主要是"
-              },
-              {
-                "type": "blank",
-                "id": "b3l2g7-q1-b1",
-                "answer": "用平常考試的成績",
-                "answerSimplified": "用平常考试的成绩",
-                "hint": "The method/basis used."
-              },
-              {
-                "type": "text",
-                "traditional": "來決定的。",
-                "simplified": "来决定的。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l2g7-q1-t1",
-                "traditional": "用平常考試的成績",
-                "simplified": "用平常考试的成绩",
-                "pinyin": "yòng píngcháng kǎoshì de chéngjì",
-                "meaning": "using regular test scores"
-              },
-              {
-                "id": "b3l2g7-q1-t2",
-                "traditional": "為了平常考試",
-                "simplified": "为了平常考试",
-                "pinyin": "wèile píngcháng kǎoshì",
-                "meaning": "for regular tests"
-              },
-              {
-                "id": "b3l2g7-q1-t3",
-                "traditional": "經過平時成績",
-                "simplified": "经过平时成绩",
-                "pinyin": "jīngguò píngshí chéngjì",
-                "meaning": "after regular scores"
-              }
-            ],
-            "correctFeedback": "用 NP 來 V indicates the concrete method or basis used to decide.",
-            "repairFeedback": "Use 用 NP 来 V to state what the evaluation is based on."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "用 here means \"to use\". 用 NP（來）V means using a certain method or means to do something. The 來 here can be omitted, and the meaning of the sentence does not change. For example, 老師用很多例子來說明語法 and 老師用很多例子說明語法 have the same meaning.",
         "patternAccentColumn": 1
       }

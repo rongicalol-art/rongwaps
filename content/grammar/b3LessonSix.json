@@ -1125,57 +1125,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g1-q1",
-            "type": "choice",
-            "prompt": "Choose the natural completion for polite concession:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "那部新電影好看嗎？",
-                "simplified": "那部新电影好看吗？"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g1-q1-b1",
-                "answer": "好看倒是好看",
-                "answerSimplified": "好看倒是好看",
-                "hint": "it is indeed good, but..."
-              },
-              {
-                "type": "text",
-                "traditional": "，不過時間太長了。",
-                "simplified": "，不过时间太长了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g1-q1-t1",
-                "traditional": "好看倒是好看",
-                "simplified": "好看倒是好看",
-                "pinyin": "hǎokàn dàoshì hǎokàn",
-                "meaning": "good indeed"
-              },
-              {
-                "id": "b3l6g1-q1-t2",
-                "traditional": "好看所以好看",
-                "simplified": "好看所以好看",
-                "pinyin": "hǎokàn suǒyǐ hǎokàn",
-                "meaning": "good so good"
-              },
-              {
-                "id": "b3l6g1-q1-t3",
-                "traditional": "好看因為好看",
-                "simplified": "好看因为好看",
-                "pinyin": "hǎokàn yīnwèi hǎokàn",
-                "meaning": "good because good"
-              }
-            ],
-            "correctFeedback": "好看倒是好看 politely validates that it's good before stating the drawback.",
-            "repairFeedback": "倒是 concedes the quality before the contrast with 不過."
-          }
-        ],
+        "questions": [],
         "bookPage": 155,
         "confusion": {
           "title": "Don't mix these up",
@@ -1967,57 +1917,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g2-q1",
-            "type": "choice",
-            "prompt": "How do you say 'three-fourths' (3/4) in Chinese?",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "班上有",
-                "simplified": "班上有"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g2-q1-b1",
-                "answer": "四分之三",
-                "answerSimplified": "四分之三",
-                "hint": "three-fourths"
-              },
-              {
-                "type": "text",
-                "traditional": "的同學參加了活動。",
-                "simplified": "的同学参加了活动。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g2-q1-t1",
-                "traditional": "四分之三",
-                "simplified": "四分之三",
-                "pinyin": "sì fēn zhī sān",
-                "meaning": "3/4"
-              },
-              {
-                "id": "b3l6g2-q1-t2",
-                "traditional": "三分之四",
-                "simplified": "三分之四",
-                "pinyin": "sān fēn zhī sì",
-                "meaning": "4/3"
-              },
-              {
-                "id": "b3l6g2-q1-t3",
-                "traditional": "四個之三",
-                "simplified": "四个之三",
-                "pinyin": "sì ge zhī sān",
-                "meaning": "three of four"
-              }
-            ],
-            "correctFeedback": "四分之三 puts the whole (4) first, followed by 分之 and the part (3).",
-            "repairFeedback": "Chinese fraction order is denominator first, then 分之, then numerator."
-          }
-        ],
+        "questions": [],
         "bookPage": 157,
         "confusion": {
           "title": "Don't mix these up",
@@ -2681,57 +2581,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g3-q1",
-            "type": "choice",
-            "prompt": "Express relief that something long waited for arrived:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "等了一整天，雨",
-                "simplified": "等了一整天，雨"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g3-q1-b1",
-                "answer": "總算停了",
-                "answerSimplified": "总算停了",
-                "hint": "finally stopped"
-              },
-              {
-                "type": "text",
-                "traditional": "，我們可以出門了。",
-                "simplified": "，我们可以出门了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g3-q1-t1",
-                "traditional": "總算停了",
-                "simplified": "总算停了",
-                "pinyin": "zǒngsuàn tíng le",
-                "meaning": "finally stopped"
-              },
-              {
-                "id": "b3l6g3-q1-t2",
-                "traditional": "總是停了",
-                "simplified": "总是停了",
-                "pinyin": "zǒngshì tíng le",
-                "meaning": "always stopped"
-              },
-              {
-                "id": "b3l6g3-q1-t3",
-                "traditional": "打算停了",
-                "simplified": "打算停了",
-                "pinyin": "dǎsuàn tíng le",
-                "meaning": "planning stopped"
-              }
-            ],
-            "correctFeedback": "總算停了 conveys heartfelt relief after waiting all day.",
-            "repairFeedback": "總算 expresses relief after a long period of waiting."
-          }
-        ],
+        "questions": [],
         "bookPage": 159,
         "confusion": {
           "title": "Don't mix these up",
@@ -3565,57 +3415,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g4-q1",
-            "type": "choice",
-            "prompt": "Select the sentence with a verified fact followed by a recommendation:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "大家都吃飽了，",
-                "simplified": "大家都吃饱了，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g4-q1-b1",
-                "answer": "既然這樣我們就",
-                "answerSimplified": "既然这样我们就",
-                "hint": "since it's so, let's..."
-              },
-              {
-                "type": "text",
-                "traditional": "出發吧。",
-                "simplified": "出发吧。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g4-q1-t1",
-                "traditional": "既然這樣我們就",
-                "simplified": "既然这样我们就",
-                "pinyin": "jìrán zhèyàng wǒmen jiù",
-                "meaning": "since so we then"
-              },
-              {
-                "id": "b3l6g4-q1-t2",
-                "traditional": "要是這樣我們就",
-                "simplified": "要是这样我们就",
-                "pinyin": "yàoshi zhèyàng wǒmen jiù",
-                "meaning": "if so we then"
-              },
-              {
-                "id": "b3l6g4-q1-t3",
-                "traditional": "雖然這樣我們就",
-                "simplified": "虽然这样我们就",
-                "pinyin": "suīrán zhèyàng wǒmen jiù",
-                "meaning": "although so we then"
-              }
-            ],
-            "correctFeedback": "既然 recognizes the existing fact and provides the premise for departing.",
-            "repairFeedback": "既然 pairs with 就 to deduce a proposal from an acknowledged fact."
-          }
-        ],
+        "questions": [],
         "bookPage": 160,
         "confusion": {
           "title": "Don't mix these up",
@@ -4536,57 +4336,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g5-q1",
-            "type": "choice",
-            "prompt": "Select the phrase meaning 'in the boss's eyes':",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "張文華",
-                "simplified": "张文华"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g5-q1-b1",
-                "answer": "在老闆眼中",
-                "answerSimplified": "在老板眼中",
-                "hint": "in the boss's eyes"
-              },
-              {
-                "type": "text",
-                "traditional": "是個好員工。",
-                "simplified": "是个好员工。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g5-q1-t1",
-                "traditional": "在老闆眼中",
-                "simplified": "在老板眼中",
-                "pinyin": "zài lǎobǎn yǎn zhōng",
-                "meaning": "in boss's eyes"
-              },
-              {
-                "id": "b3l6g5-q1-t2",
-                "traditional": "從老闆眼裡",
-                "simplified": "从老板眼里",
-                "pinyin": "cóng lǎobǎn yǎn lǐ",
-                "meaning": "from boss's eyes"
-              },
-              {
-                "id": "b3l6g5-q1-t3",
-                "traditional": "向老闆身上",
-                "simplified": "向老板身上",
-                "pinyin": "xiàng lǎobǎn shēnshàng",
-                "meaning": "toward boss's body"
-              }
-            ],
-            "correctFeedback": "在……眼中 / 中 captures perspective within someone's view.",
-            "repairFeedback": "在 pairs with 中 / 眼中 to mark a perspective or situation."
-          }
-        ],
+        "questions": [],
         "bookPage": 167,
         "confusion": {
           "title": "Don't mix these up",
@@ -5659,57 +5409,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g6-q1",
-            "type": "choice",
-            "prompt": "Choose the term expressing reluctant lack of choice:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "生了這場大病，他",
-                "simplified": "生了这场大病，他"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g6-q1-b1",
-                "answer": "不得不放棄",
-                "answerSimplified": "不得不放弃",
-                "hint": "had no choice but to give up"
-              },
-              {
-                "type": "text",
-                "traditional": "出國留學的計畫。",
-                "simplified": "出国留学的计画。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g6-q1-t1",
-                "traditional": "不得不放棄",
-                "simplified": "不得不放弃",
-                "pinyin": "bùdébù fàngqì",
-                "meaning": "had to give up"
-              },
-              {
-                "id": "b3l6g6-q1-t2",
-                "traditional": "絕不能放棄",
-                "simplified": "绝不能放弃",
-                "pinyin": "jué bùnéng fàngqì",
-                "meaning": "must not give up"
-              },
-              {
-                "id": "b3l6g6-q1-t3",
-                "traditional": "不必再放棄",
-                "simplified": "不必再放弃",
-                "pinyin": "búbì zài fàngqì",
-                "meaning": "no need give up"
-              }
-            ],
-            "correctFeedback": "不得不放棄 accurately conveys the reluctant sacrifice forced by illness.",
-            "repairFeedback": "不得不 expresses helplessness in having to perform an unwanted action."
-          }
-        ],
+        "questions": [],
         "bookPage": 169,
         "confusion": {
           "title": "Don't mix these up",
@@ -6505,57 +6205,7 @@
             }
           }
         ],
-        "questions": [
-          {
-            "id": "b3l6g7-q1",
-            "type": "choice",
-            "prompt": "Select the sentence describing a coincidence just as you were about to call:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "真巧！我",
-                "simplified": "真巧！我"
-              },
-              {
-                "type": "blank",
-                "id": "b3l6g7-q1-b1",
-                "answer": "正想找你",
-                "answerSimplified": "正想找你",
-                "hint": "was just thinking of finding you"
-              },
-              {
-                "type": "text",
-                "traditional": "，你就打來了。",
-                "simplified": "，你就打来了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l6g7-q1-t1",
-                "traditional": "正想找你",
-                "simplified": "正想找你",
-                "pinyin": "zhèng xiǎng zhǎo nǐ",
-                "meaning": "just thinking of finding you"
-              },
-              {
-                "id": "b3l6g7-q1-t2",
-                "traditional": "總算找你",
-                "simplified": "总算找你",
-                "pinyin": "zǒngsuàn zhǎo nǐ",
-                "meaning": "finally finding you"
-              },
-              {
-                "id": "b3l6g7-q1-t3",
-                "traditional": "總是找你",
-                "simplified": "总是找你",
-                "pinyin": "zǒngshì zhǎo nǐ",
-                "meaning": "always finding you"
-              }
-            ],
-            "correctFeedback": "正想找你 denotes the exact coincident moment.",
-            "repairFeedback": "正＋想 expresses coincident timing right as you were about to call."
-          }
-        ],
+        "questions": [],
         "bookPage": 171,
         "confusion": {
           "title": "Don't mix these up",

@@ -710,55 +710,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g1-q1",
-            "type": "choice",
-            "prompt": "Say that one person cannot handle so many tasks:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "要準備的東西太多，我一個人"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g1-q1-b1",
-                "answer": "忙不過來",
-                "answerSimplified": "忙不过来",
-                "hint": "cannot manage alone"
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g1-q1-t1",
-                "traditional": "忙不過來",
-                "simplified": "忙不过来",
-                "pinyin": "mángbúguòlái",
-                "meaning": "cannot cope"
-              },
-              {
-                "id": "b3l9g1-q1-t2",
-                "traditional": "忙得過來",
-                "simplified": "忙得过来",
-                "pinyin": "mángdeguòlái",
-                "meaning": "can cope"
-              },
-              {
-                "id": "b3l9g1-q1-t3",
-                "traditional": "忙得不來",
-                "simplified": "忙得不来",
-                "pinyin": "mángdebùlái",
-                "meaning": "ungrammatical"
-              }
-            ],
-            "correctFeedback": "忙不過來 expresses that the volume of work exceeds one's capacity to handle.",
-            "repairFeedback": "Use 忙不過來 to state that you cannot manage all the tasks."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The 過來 of 動詞＋過來 is a directional complement. For example, 請你把書拿過來。In addition, 過來 has the meaning of returning, or returning to the original state, and primarily indicating a normal or better state. For example, 醒過來, 改過來, 明白過來. On the contrary, 過去 is moving from a normal state to a less ideal one. It is used less frequently than 過來. For example, 暈過去, 昏過去.",
         "patternAccentColumn": 4
       },
@@ -1293,55 +1245,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g2-q1",
-            "type": "choice",
-            "prompt": "Ask someone why they are playing games during an earthquake rather than seeking shelter:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "剛才地震那麼大，你"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g2-q1-b1",
-                "answer": "怎麼不躲一下反而",
-                "answerSimplified": "怎么不躲一下反而",
-                "hint": "why not take shelter instead"
-              },
-              {
-                "type": "text",
-                "traditional": "一直玩遊戲呢？"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g2-q1-t1",
-                "traditional": "怎麼不躲一下反而",
-                "simplified": "怎么不躲一下反而",
-                "pinyin": "zěnme bù duǒ yíxià fǎn'ér",
-                "meaning": "why not shelter instead"
-              },
-              {
-                "id": "b3l9g2-q1-t2",
-                "traditional": "為什麼不躲而且",
-                "simplified": "为什么不躲而且",
-                "pinyin": "wèishénme bù duǒ érqiě",
-                "meaning": "why not and"
-              },
-              {
-                "id": "b3l9g2-q1-t3",
-                "traditional": "躲一下反而怎麼不",
-                "simplified": "躲一下反而怎么不",
-                "pinyin": "duǒ yíxià fǎn'ér zěnme bù",
-                "meaning": "misordered"
-              }
-            ],
-            "correctFeedback": "怎麼不 + Expected Action，反而 + Contrary Action highlights the irrational contrast.",
-            "repairFeedback": "Pattern: 怎麼不 + Expected Action，反而 + Inappropriate Action."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "怎麼不……呢？ has the same meaning as 為什麼不……呢？ indicating that the speaker is questioning a certain situation. The end of the sentence is often followed by 呢. 怎麼不 is followed by what the speaker thinks should be done, but 反而 as a conjunction, is followed by what should not be done or the speaker's doubt.",
         "patternAccentColumn": 1
       },
@@ -1925,55 +1829,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g3-q1",
-            "type": "choice",
-            "prompt": "Describe an obstinate driver blocking the lane:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "那個人"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g3-q1-b1",
-                "answer": "不但不把車開走反而",
-                "answerSimplified": "不但不把车开走反而",
-                "hint": "not only won't move car instead"
-              },
-              {
-                "type": "text",
-                "traditional": "叫我等他。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g3-q1-t1",
-                "traditional": "不但不把車開走反而",
-                "simplified": "不但不把车开走反而",
-                "pinyin": "búdàn bù bǎ chē kāizhǒu fǎn'ér",
-                "meaning": "not only won't move instead"
-              },
-              {
-                "id": "b3l9g3-q1-t2",
-                "traditional": "而且不把車開走就",
-                "simplified": "而且不把车开走就",
-                "pinyin": "érqiě bù bǎ chē kāizhǒu jiù",
-                "meaning": "and won't move then"
-              },
-              {
-                "id": "b3l9g3-q1-t3",
-                "traditional": "反而不把車開走不但",
-                "simplified": "反而不把车开走不但",
-                "pinyin": "fǎn'ér bù bǎ chē kāizhǒu búdàn",
-                "meaning": "inverted"
-              }
-            ],
-            "correctFeedback": "不但不/沒……反而…… contrasts the expected courtesy with an arrogant reversal.",
-            "repairFeedback": "Pattern: 不但不/沒 + Expected Action，反而 + Contrary Action."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "不但不 or 不但沒 is followed by circumstances that are contrary to what the speaker expected; 反而 is followed by an unexpected situation or one the person speaking thinks shouldn't happen. Sometimes 不但 can be omitted. For example, 颱風快來了，他（不但）沒留在家裡，反而去衝浪，真是太危險了。",
         "patternAccentColumn": 1
       },
@@ -2414,55 +2270,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g4-q1",
-            "type": "choice",
-            "prompt": "Strongly refute the rumor that you stayed home due to drinking:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你別亂猜，我"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g4-q1-b1",
-                "answer": "才沒喝酒呢",
-                "answerSimplified": "才没喝酒呢",
-                "hint": "definitely did not drink"
-              },
-              {
-                "type": "text",
-                "traditional": "，是突然發燒了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g4-q1-t1",
-                "traditional": "才沒喝酒呢",
-                "simplified": "才没喝酒呢",
-                "pinyin": "cái méi hējiǔ ne",
-                "meaning": "definitely didn't drink"
-              },
-              {
-                "id": "b3l9g4-q1-t2",
-                "traditional": "剛沒喝酒呢",
-                "simplified": "刚没喝酒呢",
-                "pinyin": "gāng méi hējiǔ ne",
-                "meaning": "just didn't drink"
-              },
-              {
-                "id": "b3l9g4-q1-t3",
-                "traditional": "沒喝酒才呢",
-                "simplified": "没喝酒才呢",
-                "pinyin": "méi hējiǔ cái ne",
-                "meaning": "misplaced cai"
-              }
-            ],
-            "correctFeedback": "才沒……呢 emphatically refutes an untrue assumption.",
-            "repairFeedback": "Pattern: Subject + 才 + 沒/不 + Verb + 呢."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The 才 in this lesson emphasizes what is said after 才. It is often used when refuting something, and the sentence end often uses 呢. For example, 你說那家餐廳的菜好吃，可是我覺得你煮的才好吃呢！Or 小明說我借了他的書，我才沒借呢！",
         "patternAccentColumn": 1
       }
@@ -2952,55 +2760,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g5-q1",
-            "type": "choice",
-            "prompt": "Advise a learner to practice speaking, highlighting local conversation:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "想進步就得多說話，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g5-q1-b1",
-                "answer": "尤其是要多跟",
-                "answerSimplified": "尤其是要多跟",
-                "hint": "especially should with"
-              },
-              {
-                "type": "text",
-                "traditional": "臺灣人聊天。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g5-q1-t1",
-                "traditional": "尤其是要多跟",
-                "simplified": "尤其是要多跟",
-                "pinyin": "yóuqí shì yào duō gēn",
-                "meaning": "especially should with"
-              },
-              {
-                "id": "b3l9g5-q1-t2",
-                "traditional": "特別想要多跟",
-                "simplified": "特别想要多跟",
-                "pinyin": "tèbié xiǎng yào duō gēn",
-                "meaning": "particularly want with"
-              },
-              {
-                "id": "b3l9g5-q1-t3",
-                "traditional": "但是要多跟",
-                "simplified": "但是要多跟",
-                "pinyin": "dànshì yào duō gēn",
-                "meaning": "but should with"
-              }
-            ],
-            "correctFeedback": "尤其是 singles out chatting with locals as the most crucial speaking practice.",
-            "repairFeedback": "Use 尤其是 to highlight the most prominent specific practice."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "尤其 is an adverb similar to 特別, which means that something is more special compared to something else. Usually placed in the following sentence. 尤其+是 has the meaning of emphasis.",
         "patternAccentColumn": 2
       },
@@ -3375,55 +3135,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g6-q1",
-            "type": "choice",
-            "prompt": "Offer your spare laptop to a friend who urgently needs one for an essay:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我有一台舊筆電，你現在"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g6-q1-b1",
-                "answer": "用得著就拿去",
-                "answerSimplified": "用得着就拿去",
-                "hint": "can use it so take it"
-              },
-              {
-                "type": "text",
-                "traditional": "用吧。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g6-q1-t1",
-                "traditional": "用得著就拿去",
-                "simplified": "用得着就拿去",
-                "pinyin": "yòngdezháo jiù ná qù",
-                "meaning": "can use so take"
-              },
-              {
-                "id": "b3l9g6-q1-t2",
-                "traditional": "用不著就拿去",
-                "simplified": "用不着就拿去",
-                "pinyin": "yòngbùzháo jiù ná qù",
-                "meaning": "can't use so take"
-              },
-              {
-                "id": "b3l9g6-q1-t3",
-                "traditional": "用著了就拿去",
-                "simplified": "用着了就拿去",
-                "pinyin": "yòngzháo le jiù ná qù",
-                "meaning": "used so take"
-              }
-            ],
-            "correctFeedback": "用得著 indicates that an object is applicable or useful for the needed task.",
-            "repairFeedback": "Use 用得著 to state that something can be put to good use."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "It expresses a certain action, but one which can not achieve a certain purpose or result. The verb in front of 著(zháo) has a certain purpose, and the action it expresses has to do with “contact or reach”. Commonly used verbs are 拿, 看, 打, 猜, 用, 找, etc. 著 here is to work as a structural complement, indicating the result of the preceding verb. For example, 鑰匙找著了/沒找著.",
         "patternAccentColumn": 2
       },
@@ -3885,55 +3597,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l9g7-q1",
-            "type": "choice",
-            "prompt": "State that reports will replace written exams for finals:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "哲學課教授決定"
-              },
-              {
-                "type": "blank",
-                "id": "b3l9g7-q1-b1",
-                "answer": "以寫報告代替",
-                "answerSimplified": "以写报告代替",
-                "hint": "use reports to replace"
-              },
-              {
-                "type": "text",
-                "traditional": "期末筆試。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l9g7-q1-t1",
-                "traditional": "以寫報告代替",
-                "simplified": "以写报告代替",
-                "pinyin": "yǐ xiě bàogào dàitì",
-                "meaning": "use reports replace"
-              },
-              {
-                "id": "b3l9g7-q1-t2",
-                "traditional": "以筆試代替",
-                "simplified": "以笔试代替",
-                "pinyin": "yǐ bǐshì dàitì",
-                "meaning": "inverted meaning"
-              },
-              {
-                "id": "b3l9g7-q1-t3",
-                "traditional": "代替寫報告以",
-                "simplified": "代替写报告以",
-                "pinyin": "dàitì xiě bàogào yǐ",
-                "meaning": "misordered"
-              }
-            ],
-            "correctFeedback": "以 A 代替 B means using A (writing reports) to replace B (written test).",
-            "repairFeedback": "Pattern: 以 + New Method + 代替 + Old Method."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "以 is similar to 用. 以……代替 means replacing some thing or action.",
         "patternAccentColumn": 1
       }

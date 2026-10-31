@@ -498,55 +498,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g1-q1",
-            "type": "choice",
-            "prompt": "Say that you didn't realize your phone was missing until making a call:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我出門時沒注意，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g1-q1-b1",
-                "answer": "直到要打電話才發現",
-                "answerSimplified": "直到要打电话才发现",
-                "hint": "not until making call"
-              },
-              {
-                "type": "text",
-                "traditional": "沒帶手機。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g1-q1-t1",
-                "traditional": "直到要打電話才發現",
-                "simplified": "直到要打电话才发现",
-                "pinyin": "zhídào yào dǎ diànhuà cái fāxiàn",
-                "meaning": "until calling found"
-              },
-              {
-                "id": "b3l10g1-q1-t2",
-                "traditional": "自從要打電話就發現",
-                "simplified": "自从要打电话就发现",
-                "pinyin": "zìcóng yào dǎ diànhuà jiù fāxiàn",
-                "meaning": "since calling found"
-              },
-              {
-                "id": "b3l10g1-q1-t3",
-                "traditional": "為了要打電話才發現",
-                "simplified": "为了要打电话才发现",
-                "pinyin": "wèile yào dǎ diànhuà cái fāxiàn",
-                "meaning": "in order to found"
-              }
-            ],
-            "correctFeedback": "直到 + Event + 才 + Result expresses delayed occurrence or discovery.",
-            "repairFeedback": "Pattern: 直到 + Event + 才 + Discovery."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "直到……（，）才…… means that what has not occurred will not happen until after a certain point in time. 直到 is followed by time or circumstances. 才 is followed by the result, which means that the speaker felt that the result was later than expected.",
         "patternAccentColumn": 2
       },
@@ -891,55 +843,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g2-q1",
-            "type": "choice",
-            "prompt": "Praise Miss Zhang's fiance while noting he doesn't speak much:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他又聰明又英俊，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g2-q1-b1",
-                "answer": "只不過話比較少",
-                "answerSimplified": "只不过话比较少",
-                "hint": "only he speaks little"
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g2-q1-t1",
-                "traditional": "只不過話比較少",
-                "simplified": "只不过话比较少",
-                "pinyin": "zhǐbúguò huà bǐjiào shǎo",
-                "meaning": "only speaks little"
-              },
-              {
-                "id": "b3l10g2-q1-t2",
-                "traditional": "反而話比較少",
-                "simplified": "反而话比较少",
-                "pinyin": "fǎn'ér huà bǐjiào shǎo",
-                "meaning": "contrarily speaks little"
-              },
-              {
-                "id": "b3l10g2-q1-t3",
-                "traditional": "畢竟話比較少",
-                "simplified": "毕竟话比较少",
-                "pinyin": "bìjìng huà bǐjiào shǎo",
-                "meaning": "after all speaks little"
-              }
-            ],
-            "correctFeedback": "只不過 adds a mild limitation or qualification to a positive statement.",
-            "repairFeedback": "Use 只不過 to soften the praise with a minor drawback."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "只不過 has the same meaning as 只是, which is used to supplement something and let the listener know more about the situation. 只不過 is followed by the supplementary explanation.",
         "patternAccentColumn": 1
       },
@@ -1304,55 +1208,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g3-q1",
-            "type": "choice",
-            "prompt": "Complain about online clothes tearing on first wash:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "洗了一次就破了，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g3-q1-b1",
-                "answer": "害我不敢再穿",
-                "answerSimplified": "害我不敢再穿",
-                "hint": "caused me not dare wear"
-              },
-              {
-                "type": "text",
-                "traditional": "出門了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g3-q1-t1",
-                "traditional": "害我不敢再穿",
-                "simplified": "害我不敢再穿",
-                "pinyin": "hài wǒ bù gǎn zài chuān",
-                "meaning": "caused me not wear"
-              },
-              {
-                "id": "b3l10g3-q1-t2",
-                "traditional": "叫我不敢再穿",
-                "simplified": "叫我不敢再穿",
-                "pinyin": "jiào wǒ bù gǎn zài chuān",
-                "meaning": "called me not wear"
-              },
-              {
-                "id": "b3l10g3-q1-t3",
-                "traditional": "令我不敢再穿",
-                "simplified": "令我不敢再穿",
-                "pinyin": "lìng wǒ bù gǎn zài chuān",
-                "meaning": "made me not wear"
-              }
-            ],
-            "correctFeedback": "害 marks negative causality leading to an undesirable or frustrating outcome.",
-            "repairFeedback": "Use 害 to express adverse consequences caused by poor quality."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "This 害 has the meaning of 讓 or 使, but the tone is stronger. 害 is followed by a negative result.",
         "patternAccentColumn": 1
       }
@@ -1710,55 +1566,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g4-q1",
-            "type": "choice",
-            "prompt": "Tell a friend to walk the entire planned trail with you:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我們難得來一次，就把步道"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g4-q1-b1",
-                "answer": "走到底吧",
-                "answerSimplified": "走到底吧",
-                "hint": "walk to the end"
-              },
-              {
-                "type": "text",
-                "traditional": "！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g4-q1-t1",
-                "traditional": "走到底吧",
-                "simplified": "走到底吧",
-                "pinyin": "zǒudàodǐ ba",
-                "meaning": "walk to end"
-              },
-              {
-                "id": "b3l10g4-q1-t2",
-                "traditional": "到底走吧",
-                "simplified": "到底走吧",
-                "pinyin": "dàodǐ zǒu ba",
-                "meaning": "misordered"
-              },
-              {
-                "id": "b3l10g4-q1-t3",
-                "traditional": "走乾淨吧",
-                "simplified": "走干净吧",
-                "pinyin": "zǒu gānjìng ba",
-                "meaning": "walk cleanly"
-              }
-            ],
-            "correctFeedback": "Verb + 到底 emphasizes carrying an activity through to its final conclusion.",
-            "repairFeedback": "Place 到底 after the verb: 走到底."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "V 到底 emphasizes that something is carried out to the end, persistently and diligently.",
         "patternAccentColumn": 1
       },
@@ -2065,55 +1873,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g5-q1",
-            "type": "choice",
-            "prompt": "Explain that a burger shop succeeded because the owner refined the recipe repeatedly:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "現在成了名店，應該是她"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g5-q1-b1",
-                "answer": "一再調整醬料配方",
-                "answerSimplified": "一再调整酱料配方",
-                "hint": "repeatedly refined recipe"
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g5-q1-t1",
-                "traditional": "一再調整醬料配方",
-                "simplified": "一再调整酱料配方",
-                "pinyin": "yízài tiáozhěng jiàngliào pèifāng",
-                "meaning": "repeatedly refined recipe"
-              },
-              {
-                "id": "b3l10g5-q1-t2",
-                "traditional": "偶爾調整醬料配方",
-                "simplified": "偶尔调整酱料配方",
-                "pinyin": "ǒu'ěr tiáozhěng jiàngliào pèifāng",
-                "meaning": "occasionally refined"
-              },
-              {
-                "id": "b3l10g5-q1-t3",
-                "traditional": "到底調整醬料配方",
-                "simplified": "到底调整酱料配方",
-                "pinyin": "dàodǐ tiáozhěng jiàngliào pèifāng",
-                "meaning": "to the end refined"
-              }
-            ],
-            "correctFeedback": "一再 emphasizes iterating an action time after time.",
-            "repairFeedback": "Use 一再 to express persistent recurring improvements."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "一再 indicates that a certain action has taken place or an event has occurred again and again.",
         "patternAccentColumn": 1
       },
@@ -2423,55 +2183,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g6-q1",
-            "type": "choice",
-            "prompt": "Hypothesize a boy's genuine affection:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "別胡思亂想，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g6-q1-b1",
-                "answer": "假如他真心喜歡妳",
-                "answerSimplified": "假如他真心喜欢你",
-                "hint": "if he genuinely likes you"
-              },
-              {
-                "type": "text",
-                "traditional": "，一定會主動聯絡妳。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g6-q1-t1",
-                "traditional": "假如他真心喜歡妳",
-                "simplified": "假如他真心喜欢你",
-                "pinyin": "jiǎrú tā zhēnxīn xǐhuan nǐ",
-                "meaning": "if he truly likes you"
-              },
-              {
-                "id": "b3l10g6-q1-t2",
-                "traditional": "除非他真心喜歡妳",
-                "simplified": "除非他真心喜欢你",
-                "pinyin": "chúfēi tā zhēnxīn xǐhuan nǐ",
-                "meaning": "unless he likes you"
-              },
-              {
-                "id": "b3l10g6-q1-t3",
-                "traditional": "幸虧他真心喜歡妳",
-                "simplified": "幸亏他真心喜欢你",
-                "pinyin": "xìngkuī tā zhēnxīn xǐhuan nǐ",
-                "meaning": "fortunately he likes you"
-              }
-            ],
-            "correctFeedback": "假如 introduces the hypothetical condition ('if he truly likes you').",
-            "repairFeedback": "Pattern: 假如 + Condition, + Consequence."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "As with 如果 and 要是, 假如 is used to assume a certain condition or situation. The following sentence is often used in conjunction with 就 to indicate the result of a hypothetical condition or situation. 如果 can be used before and after the subject, both written and spoken. 要是 can also be used before and after the subject, but only in spoken Chinese; 假如 is used before the subject in written Chinese.",
         "patternAccentColumn": 0
       },
@@ -2800,55 +2512,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l10g7-q1",
-            "type": "choice",
-            "prompt": "Explain that you practice Kung Fu to protect family:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我從小"
-              },
-              {
-                "type": "blank",
-                "id": "b3l10g7-q1-b1",
-                "answer": "為了保護家人而堅持鍛鍊",
-                "answerSimplified": "为了保护家人而坚持锻炼",
-                "hint": "for family protection strove"
-              },
-              {
-                "type": "text",
-                "traditional": "功夫。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l10g7-q1-t1",
-                "traditional": "為了保護家人而堅持鍛鍊",
-                "simplified": "为了保护家人而坚持锻炼",
-                "pinyin": "wèile bǎohù jiārén ér jiānchí duànliàn",
-                "meaning": "for family protection strove"
-              },
-              {
-                "id": "b3l10g7-q1-t2",
-                "traditional": "因為保護家人而堅持鍛鍊",
-                "simplified": "因为保护家人而坚持锻炼",
-                "pinyin": "yīnwèi bǎohù jiārén ér jiānchí duànliàn",
-                "meaning": "because protected family"
-              },
-              {
-                "id": "b3l10g7-q1-t3",
-                "traditional": "雖然保護家人而堅持鍛鍊",
-                "simplified": "虽然保护家人而坚持锻炼",
-                "pinyin": "suīrán bǎohù jiārén ér jiānchí duànliàn",
-                "meaning": "although protected family"
-              }
-            ],
-            "correctFeedback": "為了 introduces the objective, and 而 introduces the persistent effort.",
-            "repairFeedback": "Pattern: 為了 + Objective + 而 + Action."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The clause following 為了 explains the objective to be achieved. The clause following 而 shows in what manner the objective was achieved.",
         "patternAccentColumn": 0
       }

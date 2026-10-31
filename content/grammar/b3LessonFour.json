@@ -1141,56 +1141,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g1-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你看這件洋裝，",
-                "simplified": "你看这件洋装，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g1-q1-b1",
-                "answer": "好漂亮的衣服啊",
-                "answerSimplified": "好漂亮的衣服啊",
-                "hint": "What beautiful clothes!"
-              },
-              {
-                "type": "text",
-                "traditional": "！",
-                "simplified": "！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g1-q1-t1",
-                "traditional": "好漂亮的衣服啊",
-                "simplified": "好漂亮的衣服啊",
-                "pinyin": "hǎo piàoliang de yīfu a",
-                "meaning": "what beautiful clothes!"
-              },
-              {
-                "id": "b3l4g1-q1-t2",
-                "traditional": "很漂亮衣服啊",
-                "simplified": "很漂亮衣服啊",
-                "pinyin": "hěn piàoliang yīfu a",
-                "meaning": "very pretty clothes"
-              },
-              {
-                "id": "b3l4g1-q1-t3",
-                "traditional": "多漂亮衣服了",
-                "simplified": "多漂亮衣服了",
-                "pinyin": "duō piàoliang yīfu le",
-                "meaning": "how pretty clothes"
-              }
-            ],
-            "correctFeedback": "好 + Vs + 的 + N + 啊 expresses an exclamation admiring the clothing.",
-            "repairFeedback": "Use 好 + Vs + 的 + N + 啊 to make an exclamatory phrase."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "好 Vs 的 N（啊）! is used when the speaker wants to express a strong feeling. For example, 好有趣的表演啊！Or 好苦的咖啡！難怪你不喝。",
         "patternAccentColumn": 0
       },
@@ -1803,56 +1754,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g2-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "那麼多餐廳，我們",
-                "simplified": "那么多餐厅，我们"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g2-q1-b1",
-                "answer": "選來選去，還是",
-                "answerSimplified": "选来选去，还是",
-                "hint": "picked back and forth, still"
-              },
-              {
-                "type": "text",
-                "traditional": "去吃越南菜吧。",
-                "simplified": "去吃越南菜吧。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g2-q1-t1",
-                "traditional": "選來選去，還是",
-                "simplified": "选来选去，还是",
-                "pinyin": "xuǎn lái xuǎn qù, háishì",
-                "meaning": "picked back and forth, still"
-              },
-              {
-                "id": "b3l4g2-q1-t2",
-                "traditional": "選了一選，所以",
-                "simplified": "选了一选，所以",
-                "pinyin": "xuǎn le yì xuǎn, suǒyǐ",
-                "meaning": "chose once, therefore"
-              },
-              {
-                "id": "b3l4g2-q1-t3",
-                "traditional": "一直選選，或者",
-                "simplified": "一直选选，或者",
-                "pinyin": "yìzhí xuǎnxuan, huòzhě",
-                "meaning": "keep choosing, or"
-              }
-            ],
-            "correctFeedback": "選來選去，還是 expresses choosing back and forth before still opting for Vietnamese cuisine.",
-            "repairFeedback": "Use V來V去，還是…… to express deliberation leading back to a choice."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "\"V 來 V 去，還是……\" means that the speaker repeatedly carries out a certain action. After having spent/wasted time, nothing has changed. The statement after 還是 shows the speaker's views, feelings or decisions. For example, 我逛來逛去，還是覺得夜市的東西最便宜。",
         "patternAccentColumn": 1
       },
@@ -2386,56 +2288,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g3-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "經過幾個月的練習，他",
-                "simplified": "经过几个月的练习，他"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g3-q1-b1",
-                "answer": "終於學會做",
-                "answerSimplified": "终于学会做",
-                "hint": "finally learned how to make"
-              },
-              {
-                "type": "text",
-                "traditional": "這道臺灣菜了。",
-                "simplified": "这道台湾菜了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g3-q1-t1",
-                "traditional": "終於學會做",
-                "simplified": "终于学会做",
-                "pinyin": "zhōngyú xuéhuì zuò",
-                "meaning": "finally learned to make"
-              },
-              {
-                "id": "b3l4g3-q1-t2",
-                "traditional": "忽然學會做",
-                "simplified": "忽然学会做",
-                "pinyin": "hūrán xuéhuì zuò",
-                "meaning": "suddenly learned to make"
-              },
-              {
-                "id": "b3l4g3-q1-t3",
-                "traditional": "慢慢學會做",
-                "simplified": "慢慢学会做",
-                "pinyin": "mànman xuéhuì zuò",
-                "meaning": "slowly learned to make"
-              }
-            ],
-            "correctFeedback": "終於 indicates that after months of effort, he finally succeeded.",
-            "repairFeedback": "Use 終於 to mark an achievement after prolonged effort."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "終於 is an adverb. It means that after a long process, it is finally possible to achieve the hope, expectation or desired result. Put the subject in front of 終於, followed by a verb or intransitive state verb (Vs). 了 is put at the end to indicate a change in state.",
         "patternAccentColumn": 1
       }
@@ -2971,56 +2824,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g4-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他遇到問題就",
-                "simplified": "他遇到问题就"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g4-q1-b1",
-                "answer": "問個不停",
-                "answerSimplified": "问个不停",
-                "hint": "asks non-stop"
-              },
-              {
-                "type": "text",
-                "traditional": "，一定要弄清楚。",
-                "simplified": "，一定要弄清楚。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g4-q1-t1",
-                "traditional": "問個不停",
-                "simplified": "问个不停",
-                "pinyin": "wèn ge bùtíng",
-                "meaning": "ask non-stop"
-              },
-              {
-                "id": "b3l4g4-q1-t2",
-                "traditional": "問了一問",
-                "simplified": "问了一问",
-                "pinyin": "wèn le yí wèn",
-                "meaning": "asked once"
-              },
-              {
-                "id": "b3l4g4-q1-t3",
-                "traditional": "不想多問",
-                "simplified": "不想多问",
-                "pinyin": "bù xiǎng duō wèn",
-                "meaning": "doesn't want to ask"
-              }
-            ],
-            "correctFeedback": "問個不停 shows his habit of asking ceaseless questions until he understands.",
-            "repairFeedback": "Use V + 個不停 to convey non-stop activity."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "V 個不停 emphasizes that the same action is repeated continuously in a short period of time. For example, 這幾天雨下個不停。V 個沒完 emphasizes that a certain action takes place without stopping. For example, 昨天剛考完試，今天又考了，每天考試考個沒完。V 個沒完 is usually used when the person speaking feels bad about or impatient with such a situation.",
         "patternAccentColumn": 2
       },
@@ -3558,56 +3362,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g5-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "新同學個子",
-                "simplified": "新同学个子"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g5-q1-b1",
-                "answer": "不高不矮",
-                "answerSimplified": "不高不矮",
-                "hint": "neither tall nor short"
-              },
-              {
-                "type": "text",
-                "traditional": "，跟你差不多。",
-                "simplified": "，跟你差不多。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g5-q1-t1",
-                "traditional": "不高不矮",
-                "simplified": "不高不矮",
-                "pinyin": "bù gāo bù ǎi",
-                "meaning": "neither tall nor short"
-              },
-              {
-                "id": "b3l4g5-q1-t2",
-                "traditional": "不長不短",
-                "simplified": "不长不短",
-                "pinyin": "bù cháng bù duǎn",
-                "meaning": "neither long nor short"
-              },
-              {
-                "id": "b3l4g5-q1-t3",
-                "traditional": "不大不小",
-                "simplified": "不大不小",
-                "pinyin": "bú dà bù xiǎo",
-                "meaning": "neither big nor small"
-              }
-            ],
-            "correctFeedback": "不高不矮 describes a moderate height.",
-            "repairFeedback": "Use 不高不矮 for human height."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "\"不 Vs₁ 不 Vs₂\" illustrates the degree between \"Vs₁\" and \"Vs₂\", indicating that the person speaking feels the situation is moderate, appropriate, and suitable, and the number or degree is just right. Both Vs must be monosyllabic with opposite meanings. The order is 大小, 多少, 高矮, 新舊, 遠近, 快慢, 好壞, 冷熱, etc.",
         "patternAccentColumn": 1
       },
@@ -4174,56 +3929,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g6-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他下班回家後，除了吃飯，",
-                "simplified": "他下班回家后，除了吃饭，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g6-q1-b1",
-                "answer": "就是看電視",
-                "answerSimplified": "就是看电视",
-                "hint": "is just watching TV"
-              },
-              {
-                "type": "text",
-                "traditional": "，沒有別的活動。",
-                "simplified": "，没有别的活动。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g6-q1-t1",
-                "traditional": "就是看電視",
-                "simplified": "就是看电视",
-                "pinyin": "jiùshì kàn diànshì",
-                "meaning": "is just watching TV"
-              },
-              {
-                "id": "b3l4g6-q1-t2",
-                "traditional": "還要看電視",
-                "simplified": "还要看电视",
-                "pinyin": "hái yào kàn diànshì",
-                "meaning": "also wants to watch TV"
-              },
-              {
-                "id": "b3l4g6-q1-t3",
-                "traditional": "也會看電視",
-                "simplified": "也会看电视",
-                "pinyin": "yě huì kàn diànshì",
-                "meaning": "will also watch TV"
-              }
-            ],
-            "correctFeedback": "除了……就是…… indicates that watching TV is the sole remaining activity.",
-            "repairFeedback": "Use 除了……就是…… to express an exclusive remaining action."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "This grammer emphasizes that if the person or thing after 除了 is excluded, there is only the person or thing after 就是. The phrase 以外 can be omitted. For example, 我來臺灣除了學習中文以外，就是工作。Or 他週末除了爬山，就是在家打掃。",
         "patternAccentColumn": 1
       },
@@ -4761,56 +4467,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l4g7-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "家裡只有他們倆，",
-                "simplified": "家里只有他们俩，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l4g7-q1-b1",
-                "answer": "不是哥哥，就是弟弟",
-                "answerSimplified": "不是哥哥，就是弟弟",
-                "hint": "either older brother or younger brother"
-              },
-              {
-                "type": "text",
-                "traditional": "吃了桌上的鬆餅。",
-                "simplified": "吃了桌上的松饼。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l4g7-q1-t1",
-                "traditional": "不是哥哥，就是弟弟",
-                "simplified": "不是哥哥，就是弟弟",
-                "pinyin": "búshì gēge, jiùshì dìdi",
-                "meaning": "either brother or brother"
-              },
-              {
-                "id": "b3l4g7-q1-t2",
-                "traditional": "要是哥哥，或者弟弟",
-                "simplified": "要是哥哥，或者弟弟",
-                "pinyin": "yàoshi gēge, huòzhě dìdi",
-                "meaning": "if brother, or brother"
-              },
-              {
-                "id": "b3l4g7-q1-t3",
-                "traditional": "雖然哥哥，還是弟弟",
-                "simplified": "虽然哥哥，还是弟弟",
-                "pinyin": "suīrán gēge, háishì dìdi",
-                "meaning": "although brother, still"
-              }
-            ],
-            "correctFeedback": "不是……就是…… indicates that one of the two brothers must have eaten it.",
-            "repairFeedback": "Use 不是……就是…… for two mutually exclusive alternative possibilities."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "不是……，就是…… is a compound sentence which means either the person and the thing after 不是 or the person and the thing after 就是 must happen or be established, there are no other conditions or choices. For example, 教室裡的書包不是小美的，就是小麗的。",
         "patternAccentColumn": 1
       }

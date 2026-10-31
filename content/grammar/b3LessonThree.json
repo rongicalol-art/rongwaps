@@ -712,56 +712,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 試+V in context.",
         "exerciseInstruction": "Choose the correct phrase to complete the sentence.",
-        "questions": [
-          {
-            "id": "b3l3g1-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這套沙發賣得相當好。您可以",
-                "simplified": "这套沙发卖得相当好。您可以"
-              },
-              {
-                "type": "blank",
-                "id": "b3l3g1-q1-b1",
-                "answer": "試坐",
-                "answerSimplified": "试坐",
-                "hint": "Try sitting on it"
-              },
-              {
-                "type": "text",
-                "traditional": "，覺得舒服的話再買。",
-                "simplified": "，觉得舒服的话再买。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l3g1-q1-t1",
-                "traditional": "試坐",
-                "simplified": "试坐",
-                "pinyin": "shìzuò",
-                "meaning": "try sitting"
-              },
-              {
-                "id": "b3l3g1-q1-t2",
-                "traditional": "坐坐",
-                "simplified": "坐坐",
-                "pinyin": "zuòzuo",
-                "meaning": "sit a bit"
-              },
-              {
-                "id": "b3l3g1-q1-t3",
-                "traditional": "試買",
-                "simplified": "试买",
-                "pinyin": "shìmǎi",
-                "meaning": "try buying"
-              }
-            ],
-            "correctFeedback": "試坐 indicates testing the sofa by sitting on it prior to buying.",
-            "repairFeedback": "Use 試坐 before deciding to buy the sofa."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "Before deciding to buy a product or to use it, first try to see if you really like it or if it is really suitable. There \"V\" are often monosyllable verbs, such as 吃, 穿, 用, 喝, 開, etc.",
         "patternAccentColumn": [
           1
@@ -1368,56 +1319,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using V掉 in context.",
         "exerciseInstruction": "Choose the correct phrase to complete the sentence.",
-        "questions": [
-          {
-            "id": "b3l3g2-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你那輛車不常開又舊得很，不如",
-                "simplified": "你那辆车不常开又旧得很，不如"
-              },
-              {
-                "type": "blank",
-                "id": "b3l3g2-q1-b1",
-                "answer": "賣掉",
-                "answerSimplified": "卖掉",
-                "hint": "Sell off"
-              },
-              {
-                "type": "text",
-                "traditional": "吧！",
-                "simplified": "吧！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l3g2-q1-t1",
-                "traditional": "賣掉",
-                "simplified": "卖掉",
-                "pinyin": "màidiào",
-                "meaning": "sell off"
-              },
-              {
-                "id": "b3l3g2-q1-t2",
-                "traditional": "賣完",
-                "simplified": "卖完",
-                "pinyin": "màiwán",
-                "meaning": "sold out"
-              },
-              {
-                "id": "b3l3g2-q1-t3",
-                "traditional": "買掉",
-                "simplified": "买掉",
-                "pinyin": "mǎidiào",
-                "meaning": "buy off"
-              }
-            ],
-            "correctFeedback": "賣掉 indicates disposing of an old car by selling it.",
-            "repairFeedback": "Use 賣掉 to express parting with an old car through sale."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The complement 掉 is used after the transitive verb, and it means to remove or produce bad results, such as 吃掉, 扔掉, 賣掉, 拿掉, etc. If the complement 掉 is used after the intransitive verb, it means to leave. For example, 走掉, 飛掉, 跑掉, 壞掉, etc.",
         "patternAccentColumn": [
           2
@@ -2045,56 +1947,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 什麼(N)都……，就是…… in context.",
         "exerciseInstruction": "Choose the correct phrase to complete the sentence.",
-        "questions": [
-          {
-            "id": "b3l3g3-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我覺得這個專櫃什麼都好，",
-                "simplified": "我觉得这个专柜什么都好，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l3g3-q1-b1",
-                "answer": "就是",
-                "answerSimplified": "就是",
-                "hint": "Except"
-              },
-              {
-                "type": "text",
-                "traditional": "價格高了很多。",
-                "simplified": "价格高了很多。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l3g3-q1-t1",
-                "traditional": "就是",
-                "simplified": "就是",
-                "pinyin": "jiùshì",
-                "meaning": "except"
-              },
-              {
-                "id": "b3l3g3-q1-t2",
-                "traditional": "只要",
-                "simplified": "只要",
-                "pinyin": "zhǐyào",
-                "meaning": "as long as"
-              },
-              {
-                "id": "b3l3g3-q1-t3",
-                "traditional": "而且",
-                "simplified": "而且",
-                "pinyin": "érqiě",
-                "meaning": "moreover"
-              }
-            ],
-            "correctFeedback": "就是 highlights the single drawback amidst general satisfaction.",
-            "repairFeedback": "Use 就是 to introduce the exception to 什麼都好."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "什麼（……）都…… means \"all, anything\", for example, 他什麼忙都幫 means \"He will help with anything.\" And 我什麼東西都吃 means \"I will eat anything.\" The statement after 就是 means the only option or different situation. For example, 他什麼茶都喝，就是不喝紅茶。",
         "patternAccentColumn": [
           1,
@@ -2815,56 +2668,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 別再……了 in context.",
         "exerciseInstruction": "Choose the correct phrase to complete the sentence.",
-        "questions": [
-          {
-            "id": "b3l3g4-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "好了，好了，",
-                "simplified": "好了，好了，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l3g4-q1-b1",
-                "answer": "別再買了",
-                "answerSimplified": "别再买了",
-                "hint": "Stop buying"
-              },
-              {
-                "type": "text",
-                "traditional": "，妳還要去看球鞋呢！",
-                "simplified": "，你还要去看球鞋呢！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l3g4-q1-t1",
-                "traditional": "別再買了",
-                "simplified": "别再买了",
-                "pinyin": "bié zài mǎi le",
-                "meaning": "don't buy anymore"
-              },
-              {
-                "id": "b3l3g4-q1-t2",
-                "traditional": "不再買了",
-                "simplified": "不再买了",
-                "pinyin": "búzài mǎi le",
-                "meaning": "no longer buy"
-              },
-              {
-                "id": "b3l3g4-q1-t3",
-                "traditional": "別買了",
-                "simplified": "别买了",
-                "pinyin": "bié mǎi le",
-                "meaning": "don't buy"
-              }
-            ],
-            "correctFeedback": "別再買了 urges a friend to stop buying additional items.",
-            "repairFeedback": "Use 別再買了 to advise someone to halt continuing an activity."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "別再……了 means that the person speaking suggests or reminds the other person not to do something anymore. For example, 別再讓父母擔心了。If the speaker reminds himself or mentions that others are not doing something anymore, use 不再……了. For example, 我不再喝酒了。",
         "patternAccentColumn": [
           1,
@@ -3601,56 +3405,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using 不僅……也/還…… in context.",
         "exerciseInstruction": "Choose the correct phrase to complete the sentence.",
-        "questions": [
-          {
-            "id": "b3l3g5-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "購物時要多看幾家店，",
-                "simplified": "购物时要多看几家店，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l3g5-q1-b1",
-                "answer": "不僅要",
-                "answerSimplified": "不仅要",
-                "hint": "Not only must"
-              },
-              {
-                "type": "text",
-                "traditional": "比價格，還要比品質。",
-                "simplified": "比价格，还要比品质。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l3g5-q1-t1",
-                "traditional": "不僅要",
-                "simplified": "不仅要",
-                "pinyin": "bùjǐn yào",
-                "meaning": "not only must"
-              },
-              {
-                "id": "b3l3g5-q1-t2",
-                "traditional": "只要",
-                "simplified": "只要",
-                "pinyin": "zhǐyào",
-                "meaning": "as long as"
-              },
-              {
-                "id": "b3l3g5-q1-t3",
-                "traditional": "偏偏要",
-                "simplified": "偏偏要",
-                "pinyin": "piānpiān yào",
-                "meaning": "insist on"
-              }
-            ],
-            "correctFeedback": "不僅要 pairs with 還要 to emphasize considering both price and quality.",
-            "repairFeedback": "Use 不僅要 to introduce the first of two parallel requirements."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "不僅 is used as a conjunction connective, which means the same as 不但. It is mostly used in writing. The beginning of the following clauses starts with 還, 也, 而且.",
         "patternAccentColumn": [
           1,
@@ -4223,56 +3978,7 @@
         "exerciseTitle": "Complete the Sentences",
         "exercisePreview": "Practice using NP 一M比一M + Vs (了) in context.",
         "exerciseInstruction": "Choose the correct phrase to complete the sentence.",
-        "questions": [
-          {
-            "id": "b3l3g6-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "換了工作以後，我每天吃得很多，肚子",
-                "simplified": "换了工作以后，我每天吃得很多，肚子"
-              },
-              {
-                "type": "blank",
-                "id": "b3l3g6-q1-b1",
-                "answer": "一天比一天",
-                "answerSimplified": "一天比一天",
-                "hint": "Day by day"
-              },
-              {
-                "type": "text",
-                "traditional": "大了。",
-                "simplified": "大了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l3g6-q1-t1",
-                "traditional": "一天比一天",
-                "simplified": "一天比一天",
-                "pinyin": "yì tiān bǐ yì tiān",
-                "meaning": "day by day"
-              },
-              {
-                "id": "b3l3g6-q1-t2",
-                "traditional": "一天一天",
-                "simplified": "一天一天",
-                "pinyin": "yì tiān yì tiān",
-                "meaning": "one day after another"
-              },
-              {
-                "id": "b3l3g6-q1-t3",
-                "traditional": "一天比",
-                "simplified": "一天比",
-                "pinyin": "yì tiān bǐ",
-                "meaning": "one day compared"
-              }
-            ],
-            "correctFeedback": "一天比一天大了 describes an incremental increase in size day after day.",
-            "repairFeedback": "Use 一天比一天 to describe incremental change across successive days."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "This sentence structure explains that the degree of a thing or situation changes gradually. For example, 天氣一天比一天熱了。",
         "patternAccentColumn": [
           1,

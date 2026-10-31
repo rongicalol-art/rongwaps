@@ -787,57 +787,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l8g1-q1",
-            "type": "choice",
-            "prompt": "Express mistaking someone for your sister:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "抱歉，我剛才",
-                "simplified": "抱歉，我刚才"
-              },
-              {
-                "type": "blank",
-                "id": "b3l8g1-q1-b1",
-                "answer": "把妳看成",
-                "answerSimplified": "把妳看成",
-                "hint": "mistook you for"
-              },
-              {
-                "type": "text",
-                "traditional": "我姊姊了。",
-                "simplified": "我姊姊了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l8g1-q1-t1",
-                "traditional": "把妳看成",
-                "simplified": "把妳看成",
-                "pinyin": "bǎ nǐ kànchéng",
-                "meaning": "mistook you for"
-              },
-              {
-                "id": "b3l8g1-q1-t2",
-                "traditional": "把妳看到",
-                "simplified": "把妳看到",
-                "pinyin": "bǎ nǐ kàndào",
-                "meaning": "saw you"
-              },
-              {
-                "id": "b3l8g1-q1-t3",
-                "traditional": "看成妳把",
-                "simplified": "看成妳把",
-                "pinyin": "kànchéng nǐ bǎ",
-                "meaning": "misordered"
-              }
-            ],
-            "correctFeedback": "把...看成... expresses visually confusing someone for another.",
-            "repairFeedback": "Use 把...看成... to express mistaking one person for another."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "成 has the meaning of \"becoming\" and \"changing to\". It means that someone makes NP₁ or becomes NP₂ through a certain action. If the verb is 看, 聽, 說, 寫, 念, sometimes 成 means \"to get something wrong\".",
         "patternAccentColumn": 4,
         "titleSimplified": "S 把 NP1 + V 成 NP2"
@@ -1215,57 +1165,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l8g2-q1",
-            "type": "choice",
-            "prompt": "Express resolve to take the exam no matter how sick you feel:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "今天有大考，我",
-                "simplified": "今天有大考，我"
-              },
-              {
-                "type": "blank",
-                "id": "b3l8g2-q1-b1",
-                "answer": "再不舒服也得",
-                "answerSimplified": "再不舒服也得",
-                "hint": "no matter how unwell still must"
-              },
-              {
-                "type": "text",
-                "traditional": "去學校。",
-                "simplified": "去学校。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l8g2-q1-t1",
-                "traditional": "再不舒服也得",
-                "simplified": "再不舒服也得",
-                "pinyin": "zài bù shūfu yě děi",
-                "meaning": "however unwell still must"
-              },
-              {
-                "id": "b3l8g2-q1-t2",
-                "traditional": "很不舒服也得",
-                "simplified": "很不舒服也得",
-                "pinyin": "hěn bù shūfu yě děi",
-                "meaning": "very unwell still must"
-              },
-              {
-                "id": "b3l8g2-q1-t3",
-                "traditional": "更不舒服都得",
-                "simplified": "更不舒服都得",
-                "pinyin": "gèng bù shūfu dōu děi",
-                "meaning": "more unwell all must"
-              }
-            ],
-            "correctFeedback": "再……也 expresses that even at the extreme limit of feeling unwell, the obligation stands.",
-            "repairFeedback": "Use 再 + Adjective + 也 to express concessive extreme condition."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "再……也/都…… is used in a hypothetical situation, with a similar meaning to 就算……，也…… (this grammar is found in the first lesson of this volume). The sentence after 再 refers to the best or worst of a situation, and the result, decision or idea behind 也 or 都 will not change. Sometimes it means that the speaker thinks something should be done and is worth doing. For example, 再有錢也不可以亂買東西, 再貴我都要買, 再辛苦也要忍耐.",
         "patternAccentColumn": 1,
         "titleSimplified": "再……，也/都……"
@@ -1606,57 +1506,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l8g3-q1",
-            "type": "choice",
-            "prompt": "Say that you cannot adapt to driving a new car model:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這部車的方向盤怪怪的，我",
-                "simplified": "这部车的方向盘怪怪的，我"
-              },
-              {
-                "type": "blank",
-                "id": "b3l8g3-q1-b1",
-                "answer": "開不慣",
-                "answerSimplified": "开不惯",
-                "hint": "cannot get used to driving"
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l8g3-q1-t1",
-                "traditional": "開不慣",
-                "simplified": "开不惯",
-                "pinyin": "kāibúguàn",
-                "meaning": "can't get used to driving"
-              },
-              {
-                "id": "b3l8g3-q1-t2",
-                "traditional": "開得慣",
-                "simplified": "开得惯",
-                "pinyin": "kāideguàn",
-                "meaning": "used to driving"
-              },
-              {
-                "id": "b3l8g3-q1-t3",
-                "traditional": "開沒慣",
-                "simplified": "开没惯",
-                "pinyin": "kāiméiguàn",
-                "meaning": "ungrammatical"
-              }
-            ],
-            "correctFeedback": "開不慣 denotes negative potential result: unable to get used to driving.",
-            "repairFeedback": "Use Verb + 不慣 to express inability to get accustomed to an action."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The 慣 of \"verb + 慣\" has the meaning of habit. It is the complement of the result, indicating the result of the previous action. For example, 他用慣了筷子，連吃西餐也用筷子。(He is used to eating with chopsticks, and even uses chopsticks to eat western food). If 慣 is added in front of 得/不, it means that the previous action can or cannot be gotten used to. For example, 這個房間很小，你住得慣嗎？(This room is very small, are you accustomed to living here?) 我吃不慣別人做的菜，每天都自己做。(I'm not used to food prepared by others, so I make it myself every day.)",
         "patternAccentColumn": 2,
         "titleSimplified": "V惯"
@@ -2068,57 +1918,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l8g4-q1",
-            "type": "choice",
-            "prompt": "Add a compounding reason why working with a colleague is tough:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他沒什麼耐心，",
-                "simplified": "他没什么耐心，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l8g4-q1-b1",
-                "answer": "況且做事又馬虎",
-                "answerSimplified": "况且做事又马虎",
-                "hint": "and moreover is careless"
-              },
-              {
-                "type": "text",
-                "traditional": "，很難合作。",
-                "simplified": "，很难合作。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l8g4-q1-t1",
-                "traditional": "況且做事又馬虎",
-                "simplified": "况且做事又马虎",
-                "pinyin": "kuàngqiě zuòshì yòu mǎhǔ",
-                "meaning": "moreover careless"
-              },
-              {
-                "id": "b3l8g4-q1-t2",
-                "traditional": "但是做事又馬虎",
-                "simplified": "但是做事又马虎",
-                "pinyin": "dànshì zuòshì yòu mǎhǔ",
-                "meaning": "but careless"
-              },
-              {
-                "id": "b3l8g4-q1-t3",
-                "traditional": "所以做事又馬虎",
-                "simplified": "所以做事又马虎",
-                "pinyin": "suǒyǐ zuòshì yòu mǎhǔ",
-                "meaning": "therefore careless"
-              }
-            ],
-            "correctFeedback": "況且 adds a compounding supplementary flaw onto his lack of patience.",
-            "repairFeedback": "Use 況且 to layer an additional confirming reason."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "況且 is used as a conjunction to indicate a more advanced tone, to supplement the explanation and make the reasoning more complete. Often used in conjunction with 也, 還, 又.",
         "patternAccentColumn": 1,
         "titleSimplified": "况且"
@@ -2451,57 +2251,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l8g5-q1",
-            "type": "choice",
-            "prompt": "Tell your friend an apology is mandatory after damaging a bicycle:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你弄壞了哥哥的車，",
-                "simplified": "你弄坏了哥哥的车，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l8g5-q1-b1",
-                "answer": "非向他道歉不可",
-                "answerSimplified": "非向他道歉不可",
-                "hint": "must apologize to him"
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l8g5-q1-t1",
-                "traditional": "非向他道歉不可",
-                "simplified": "非向他道歉不可",
-                "pinyin": "fēi xiàng tā dàoqiàn bùkě",
-                "meaning": "must apologize to him"
-              },
-              {
-                "id": "b3l8g5-q1-t2",
-                "traditional": "向他非道歉不可",
-                "simplified": "向他非道歉不可",
-                "pinyin": "xiàng tā fēi dàoqiàn bùkě",
-                "meaning": "misplaced fei"
-              },
-              {
-                "id": "b3l8g5-q1-t3",
-                "traditional": "不可向他道歉非",
-                "simplified": "不可向他道歉非",
-                "pinyin": "bùkě xiàng tā dàoqiàn fēi",
-                "meaning": "inverted"
-              }
-            ],
-            "correctFeedback": "非 must stand before the whole prepositional phrase 向他道歉.",
-            "repairFeedback": "Pattern: 非 + Action Phrase + 不可."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "非 means 不, so 非……不可 means that something must be done, and there is no other choice. 非 is followed with a verb or verb phrase.",
         "patternAccentColumn": 1,
         "titleSimplified": "非……不可"
@@ -2842,57 +2592,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l8g6-q1",
-            "type": "choice",
-            "prompt": "Remind someone that customers bargain because no one wants to lose out:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "客人常講價很正常，",
-                "simplified": "客人常讲价很正常，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l8g6-q1-b1",
-                "answer": "畢竟誰都不想",
-                "answerSimplified": "毕竟谁都不想",
-                "hint": "after all no one wants to"
-              },
-              {
-                "type": "text",
-                "traditional": "吃虧。",
-                "simplified": "吃亏。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l8g6-q1-t1",
-                "traditional": "畢竟誰都不想",
-                "simplified": "毕竟谁都不想",
-                "pinyin": "bìjìng shéi dōu bù xiǎng",
-                "meaning": "after all no one wants"
-              },
-              {
-                "id": "b3l8g6-q1-t2",
-                "traditional": "究竟誰都不想",
-                "simplified": "究竟谁都不想",
-                "pinyin": "jiùjìng shéi dōu bù xiǎng",
-                "meaning": "on earth no one wants"
-              },
-              {
-                "id": "b3l8g6-q1-t3",
-                "traditional": "偏偏誰都不想",
-                "simplified": "偏偏谁都不想",
-                "pinyin": "piānpiān shéi dōu bù xiǎng",
-                "meaning": "obstinately no one wants"
-              }
-            ],
-            "correctFeedback": "畢竟 brings up the fundamental reality that explains human behavior.",
-            "repairFeedback": "Use 畢竟 to appeal to an overarching truth or reality."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The sentence after 畢竟 is the conclusion after thinking and analysis, used to explain the key point of the matter, and the purpose is to remind or convince the other party. For example, 雖然中文不太好學，不過，那畢竟是我自己的選擇。(Although Chinese is not easy to learn, it is my own choice after all.)",
         "patternAccentColumn": 1,
         "titleSimplified": "毕竟"

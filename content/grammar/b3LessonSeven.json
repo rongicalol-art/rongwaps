@@ -870,57 +870,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l7g1-q1",
-            "type": "choice",
-            "prompt": "Express surprise at how fast a phone ran out of battery:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這支新手機",
-                "simplified": "这支新手机"
-              },
-              {
-                "type": "blank",
-                "id": "b3l7g1-q1-b1",
-                "answer": "才用了一小時就",
-                "answerSimplified": "才用了一小时就",
-                "hint": "barely used an hour and already"
-              },
-              {
-                "type": "text",
-                "traditional": "沒電了。",
-                "simplified": "没电了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l7g1-q1-t1",
-                "traditional": "才用了一小時就",
-                "simplified": "才用了一小时就",
-                "pinyin": "cái yòng le yì xiǎoshí jiù",
-                "meaning": "barely used 1 hr and then"
-              },
-              {
-                "id": "b3l7g1-q1-t2",
-                "traditional": "總算用一小時就",
-                "simplified": "总算用一小时就",
-                "pinyin": "zǒngsuàn yòng yì xiǎoshí jiù",
-                "meaning": "finally used 1 hr and then"
-              },
-              {
-                "id": "b3l7g1-q1-t3",
-                "traditional": "經常滿一小時就",
-                "simplified": "经常满一小时就",
-                "pinyin": "jīngcháng mǎn yì xiǎoshí jiù",
-                "meaning": "often full 1 hr then"
-              }
-            ],
-            "correctFeedback": "才……就 highlights the unexpectedly short duration before running out of power.",
-            "repairFeedback": "Use 才……就 to emphasize unexpected brevity."
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L07-G02-P186",
@@ -1441,57 +1391,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l7g2-q1",
-            "type": "choice",
-            "prompt": "Introduce a balanced counter-perspective acknowledging the initial point:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "跟團旅遊很輕鬆，",
-                "simplified": "跟团旅游很轻松，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l7g2-q1-b1",
-                "answer": "不過話說回來",
-                "answerSimplified": "不过话说回来",
-                "hint": "then again / on the other hand"
-              },
-              {
-                "type": "text",
-                "traditional": "自由度就少多了。",
-                "simplified": "自由度就少多了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l7g2-q1-t1",
-                "traditional": "不過話說回來",
-                "simplified": "不过话说回来",
-                "pinyin": "búguò huàshuō huílái",
-                "meaning": "then again"
-              },
-              {
-                "id": "b3l7g2-q1-t2",
-                "traditional": "而且話說回來",
-                "simplified": "而且话说回来",
-                "pinyin": "érqiě huàshuō huílái",
-                "meaning": "moreover saying back"
-              },
-              {
-                "id": "b3l7g2-q1-t3",
-                "traditional": "因為話說回來",
-                "simplified": "因为话说回来",
-                "pinyin": "yīnwèi huàshuō huílái",
-                "meaning": "because saying back"
-              }
-            ],
-            "correctFeedback": "不過話說回來 smoothly pivots to the other side of the coin.",
-            "repairFeedback": "話說回來 pairs with adversatives like 不過 to introduce a counter-perspective."
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L07-G03-P187",
@@ -1863,57 +1763,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l7g3-q1",
-            "type": "choice",
-            "prompt": "Draw a conclusion after someone drank espresso late:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你喝了那麼濃的咖啡，",
-                "simplified": "你喝了那么浓的咖啡，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l7g3-q1-b1",
-                "answer": "這麼說你今晚",
-                "answerSimplified": "这么说你今晚",
-                "hint": "that means tonight you"
-              },
-              {
-                "type": "text",
-                "traditional": "肯定睡不著了。",
-                "simplified": "肯定睡不着了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l7g3-q1-t1",
-                "traditional": "這麼說你今晚",
-                "simplified": "这么说你今晚",
-                "pinyin": "zhème shuō nǐ jīnwǎn",
-                "meaning": "that means tonight you"
-              },
-              {
-                "id": "b3l7g3-q1-t2",
-                "traditional": "總算說你今晚",
-                "simplified": "总算说你今晚",
-                "pinyin": "zǒngsuàn shuō nǐ jīnwǎn",
-                "meaning": "finally say tonight you"
-              },
-              {
-                "id": "b3l7g3-q1-t3",
-                "traditional": "雖然說你今晚",
-                "simplified": "虽然说你今晚",
-                "pinyin": "suīrán shuō nǐ jīnwǎn",
-                "meaning": "although say tonight you"
-              }
-            ],
-            "correctFeedback": "這麼說 naturally introduces the logical conclusion based on their coffee intake.",
-            "repairFeedback": "這麼說 begins a deductive inference from the speaker's premise."
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L07-G04-P189",
@@ -2247,57 +2097,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l7g4-q1",
-            "type": "choice",
-            "prompt": "Express that a business deal was successfully finalized:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我們跟大公司的合約，",
-                "simplified": "我们跟大公司的合约，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l7g4-q1-b1",
-                "answer": "今天終於談成了",
-                "answerSimplified": "今天终于谈成了",
-                "hint": "today finally negotiated successfully"
-              },
-              {
-                "type": "text",
-                "traditional": "，老闆要請客！",
-                "simplified": "，老板要请客！"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l7g4-q1-t1",
-                "traditional": "今天終於談成了",
-                "simplified": "今天终于谈成了",
-                "pinyin": "jīntiān zhōngyú tánchéng le",
-                "meaning": "today finally settled"
-              },
-              {
-                "id": "b3l7g4-q1-t2",
-                "traditional": "今天恐怕談不成",
-                "simplified": "今天恐怕谈不成",
-                "pinyin": "jīntiān kǒngpà tán bu chéng",
-                "meaning": "today afraid cannot settle"
-              },
-              {
-                "id": "b3l7g4-q1-t3",
-                "traditional": "今天差點沒談成",
-                "simplified": "今天差点没谈成",
-                "pinyin": "jīntiān chàdiǎn méi tánchéng",
-                "meaning": "today almost not settled"
-              }
-            ],
-            "correctFeedback": "談成了 indicates the negotiations were successfully concluded.",
-            "repairFeedback": "V成 signals successful realization of the action."
-          }
-        ]
+        "questions": []
       }
     ]
   },
@@ -2737,57 +2537,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l7g5-q1",
-            "type": "choice",
-            "prompt": "Introduce a critique framed from the standpoint of product quality:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這家新公司，",
-                "simplified": "这家新公司，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l7g5-q1-b1",
-                "answer": "就產品品質來說",
-                "answerSimplified": "就产品品质来说",
-                "hint": "in terms of product quality"
-              },
-              {
-                "type": "text",
-                "traditional": "還有進步的空間。",
-                "simplified": "还有进步的空间。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l7g5-q1-t1",
-                "traditional": "就產品品質來說",
-                "simplified": "就产品品质来说",
-                "pinyin": "jiù chǎnpǐn pǐnzhì lái shuō",
-                "meaning": "in terms of quality"
-              },
-              {
-                "id": "b3l7g5-q1-t2",
-                "traditional": "對產品品質來說",
-                "simplified": "对产品品质来说",
-                "pinyin": "duì chǎnpǐn pǐnzhì lái shuō",
-                "meaning": "to product quality"
-              },
-              {
-                "id": "b3l7g5-q1-t3",
-                "traditional": "向產品品質來說",
-                "simplified": "向产品品质来说",
-                "pinyin": "xiàng chǎnpǐn pǐnzhì lái shuō",
-                "meaning": "toward product quality"
-              }
-            ],
-            "correctFeedback": "就……來說 evaluates an objective domain or quality.",
-            "repairFeedback": "Use 就……來說 to scope analysis by a specific standard or domain."
-          }
-        ]
+        "questions": []
       },
       {
         "id": "B3L07-G06-P197",
@@ -3097,57 +2847,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l7g6-q1",
-            "type": "choice",
-            "prompt": "Describe intense leg pain after an all-day soccer match:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "踢了一整天球，我的腳",
-                "simplified": "踢了一整天球，我的脚"
-              },
-              {
-                "type": "blank",
-                "id": "b3l7g6-q1-b1",
-                "answer": "痛得走不動了",
-                "answerSimplified": "痛得走不动了",
-                "hint": "hurt so much I couldn't walk"
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l7g6-q1-t1",
-                "traditional": "痛得走不動了",
-                "simplified": "痛得走不动了",
-                "pinyin": "tòng de zǒu bú dòng le",
-                "meaning": "hurt so can't walk"
-              },
-              {
-                "id": "b3l7g6-q1-t2",
-                "traditional": "痛的走不動了",
-                "simplified": "痛的走不动了",
-                "pinyin": "tòng de zǒu bú dòng le",
-                "meaning": "possessive hurt"
-              },
-              {
-                "id": "b3l7g6-q1-t3",
-                "traditional": "痛地走不動了",
-                "simplified": "痛地走不动了",
-                "pinyin": "tòng de zǒu bú dòng le",
-                "meaning": "adverbial hurt"
-              }
-            ],
-            "correctFeedback": "得 links the stative predicate 痛 to the degree complement 走不動了.",
-            "repairFeedback": "Use the complement particle 得 to connect predicate to degree result."
-          }
-        ]
+        "questions": []
       }
     ]
   }

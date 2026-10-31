@@ -679,63 +679,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l14g1-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "你們這個節日背後應該有故事吧？",
-                "simplified": "你们这个节日背后应该有故事吧？"
-              },
-              {
-                "type": "blank",
-                "id": "b3l14g1-q1-b1",
-                "answer": "這就要從",
-                "answerSimplified": "这就要从",
-                "hint": "this is where the story starts"
-              },
-              {
-                "type": "text",
-                "traditional": "牛郎、織女說起了。",
-                "simplified": "牛郎、织女说起了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l14g1-q1-t1",
-                "traditional": "這就要從",
-                "simplified": "这就要从",
-                "pinyin": "zhè jiù yào cóng",
-                "meaning": "this is where it all starts from"
-              },
-              {
-                "id": "b3l14g1-q1-t2",
-                "traditional": "總之",
-                "simplified": "总之",
-                "pinyin": "zǒngzhī",
-                "meaning": "in short"
-              },
-              {
-                "id": "b3l14g1-q1-t3",
-                "traditional": "難怪",
-                "simplified": "难怪",
-                "pinyin": "nánguài",
-                "meaning": "no wonder"
-              },
-              {
-                "id": "b3l14g1-q1-t4",
-                "traditional": "何況",
-                "simplified": "何况",
-                "pinyin": "hékuàng",
-                "meaning": "let alone"
-              }
-            ],
-            "correctFeedback": "Good. 這就要從……說起了 introduces where a story background begins.",
-            "repairFeedback": "Use 這就要從 to start explaining from the origin of the festival."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "In the dialogue in this lesson, （這）就要從……說起了 means that something mentioned by the speaker cannot be easily stated clearly. You must start from a certain angle, part or time to make the listener understand. “Speak” can be replaced with a single-syllable verb such as “see, do, write, find, discuss, speak, chat”, which means to begin that action. If the subject is mentioned in the previous sentence, “this/that” is not necessary.",
         "patternAccentColumn": 1
       },
@@ -1197,63 +1141,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l14g2-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "這部電影太無聊了，我實在",
-                "simplified": "这部电影太无聊了，我实在"
-              },
-              {
-                "type": "blank",
-                "id": "b3l14g2-q1-b1",
-                "answer": "看不下去",
-                "answerSimplified": "看不下去",
-                "hint": "can't keep watching"
-              },
-              {
-                "type": "text",
-                "traditional": "了。",
-                "simplified": "了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l14g2-q1-t1",
-                "traditional": "看不下去",
-                "simplified": "看不下去",
-                "pinyin": "kàn bu xiàqu",
-                "meaning": "cannot keep watching"
-              },
-              {
-                "id": "b3l14g2-q1-t2",
-                "traditional": "看過來",
-                "simplified": "看过来",
-                "pinyin": "kàn guolai",
-                "meaning": "look over here"
-              },
-              {
-                "id": "b3l14g2-q1-t3",
-                "traditional": "看起來",
-                "simplified": "看起来",
-                "pinyin": "kàn qǐlai",
-                "meaning": "look like"
-              },
-              {
-                "id": "b3l14g2-q1-t4",
-                "traditional": "看出來",
-                "simplified": "看出来",
-                "pinyin": "kàn chūlai",
-                "meaning": "make out by looking"
-              }
-            ],
-            "correctFeedback": "Good. 看不下去 means you can no longer keep watching.",
-            "repairFeedback": "Use 看不下去 when you cannot keep watching a film."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "下去 is placed after the verb and used as a complement to indicate that a certain action continues. No object can be added after “V 下去”.",
         "patternAccentColumn": 2
       },
@@ -1699,63 +1587,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l14g3-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "出門時突然下起大雨，",
-                "simplified": "出门时突然下起大雨，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l14g3-q1-b1",
-                "answer": "幸虧",
-                "answerSimplified": "幸亏",
-                "hint": "luckily"
-              },
-              {
-                "type": "text",
-                "traditional": "我帶了傘，要不然衣服全都淋濕了。",
-                "simplified": "我带了伞，要不然衣服全都淋湿了。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l14g3-q1-t1",
-                "traditional": "幸虧",
-                "simplified": "幸亏",
-                "pinyin": "xìngkuī",
-                "meaning": "fortunately"
-              },
-              {
-                "id": "b3l14g3-q1-t2",
-                "traditional": "難怪",
-                "simplified": "难怪",
-                "pinyin": "nánguài",
-                "meaning": "no wonder"
-              },
-              {
-                "id": "b3l14g3-q1-t3",
-                "traditional": "何必",
-                "simplified": "何必",
-                "pinyin": "hébì",
-                "meaning": "why bother"
-              },
-              {
-                "id": "b3l14g3-q1-t4",
-                "traditional": "甚至",
-                "simplified": "甚至",
-                "pinyin": "shènzhì",
-                "meaning": "even"
-              }
-            ],
-            "correctFeedback": "Good. 幸虧 introduces a fortunate event that prevented a bad result.",
-            "repairFeedback": "Use 幸虧 to express that a lucky action avoided a bad outcome."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "幸虧 is an adverb. The statement after 幸虧 describes an event that happened because of luck. If there is no such event, the bad and worrisome situation behind 要不然 will appear.",
         "patternAccentColumn": 0
       }
@@ -2203,58 +2035,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l14g4-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "blank",
-                "id": "b3l14g4-q1-b1",
-                "answer": "根據",
-                "answerSimplified": "根据",
-                "hint": "according to"
-              },
-              {
-                "type": "text",
-                "traditional": "我國的法律規定，十八歲以上才可以喝酒。",
-                "simplified": "我国的法律规定，十八岁以上才可以喝酒。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l14g4-q1-t1",
-                "traditional": "根據",
-                "simplified": "根据",
-                "pinyin": "gēnjù",
-                "meaning": "according to"
-              },
-              {
-                "id": "b3l14g4-q1-t2",
-                "traditional": "儘管",
-                "simplified": "尽管",
-                "pinyin": "jǐnguǎn",
-                "meaning": "although"
-              },
-              {
-                "id": "b3l14g4-q1-t3",
-                "traditional": "至於",
-                "simplified": "至于",
-                "pinyin": "zhìyú",
-                "meaning": "as for"
-              },
-              {
-                "id": "b3l14g4-q1-t4",
-                "traditional": "往往",
-                "simplified": "往往",
-                "pinyin": "wǎngwǎng",
-                "meaning": "often"
-              }
-            ],
-            "correctFeedback": "Good. 根據 introduces the legal basis for a judgment.",
-            "repairFeedback": "Use 根據 to cite a legal rule as the basis for a claim."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "根據 is a preposition, making relevant conclusions based on certain behaviors, research results, stories or materials. After 根據, the words often used together are 報告, 調查, 經驗, 法律, 規定, 情況, 了解 看法, 結果, 說明, etc.",
         "patternAccentColumn": 0
       },
@@ -2668,63 +2449,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l14g5-q1",
-            "number": 1,
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "別擔心，只要",
-                "simplified": "别担心，只要"
-              },
-              {
-                "type": "blank",
-                "id": "b3l14g5-q1-b1",
-                "answer": "按照",
-                "answerSimplified": "按照",
-                "hint": "according to"
-              },
-              {
-                "type": "text",
-                "traditional": "醫生的話去做，應該可以很快出院的。",
-                "simplified": "医生的话去做，应该可以很快出院的。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l14g5-q1-t1",
-                "traditional": "按照",
-                "simplified": "按照",
-                "pinyin": "ànzhào",
-                "meaning": "according to"
-              },
-              {
-                "id": "b3l14g5-q1-t2",
-                "traditional": "幸虧",
-                "simplified": "幸亏",
-                "pinyin": "xìngkuī",
-                "meaning": "fortunately"
-              },
-              {
-                "id": "b3l14g5-q1-t3",
-                "traditional": "這就要從",
-                "simplified": "这就要从",
-                "pinyin": "zhè jiù yào cóng",
-                "meaning": "this is where it all starts from"
-              },
-              {
-                "id": "b3l14g5-q1-t4",
-                "traditional": "難道",
-                "simplified": "难道",
-                "pinyin": "nándào",
-                "meaning": "could it be"
-              }
-            ],
-            "correctFeedback": "Good. 按照 means following the doctor instructions.",
-            "repairFeedback": "Use 按照 when following an instruction, rule or plan."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "按照 is a preposition. It means to do things according to certain methods, requirements, regulations, plans, decisions, and standards. “According to” mainly emphasizes “how to do it”. For example, 咖啡的價錢是按照杯子大小算的，薪水是按照在公司地位的高低決定的. 按照 can only use 按 or 照; 根據 emphasizes “why you say so and do this; why there is such a conclusion”. For example, 根據臺灣的升學制度，想進好大學就得通過大學考試. 根據 can also be used as a noun. For example, 網路上有很多訊息是沒有根據的，不能完全相信。",
         "patternAccentColumn": 0
       }

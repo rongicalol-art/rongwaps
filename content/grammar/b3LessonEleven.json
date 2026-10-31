@@ -585,55 +585,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g1-q1",
-            "type": "choice",
-            "prompt": "Explain how you broadened your social circle:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我們常常"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g1-q1-b1",
-                "answer": "透過網路社團",
-                "answerSimplified": "透过网络社团",
-                "hint": "via online clubs"
-              },
-              {
-                "type": "text",
-                "traditional": "認識新朋友。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g1-q1-t1",
-                "traditional": "透過網路社團",
-                "simplified": "透过网络社团",
-                "pinyin": "tòuguò wǎnglù shètuán",
-                "meaning": "via online clubs"
-              },
-              {
-                "id": "b3l11g1-q1-t2",
-                "traditional": "通過網路社團",
-                "simplified": "通过网络社团",
-                "pinyin": "tōngguò wǎnglù shètuán",
-                "meaning": "passing through"
-              },
-              {
-                "id": "b3l11g1-q1-t3",
-                "traditional": "因為網路社團",
-                "simplified": "因为网络社团",
-                "pinyin": "yīnwèi wǎnglù shètuán",
-                "meaning": "because of online clubs"
-              }
-            ],
-            "correctFeedback": "透過 marks the medium or channel through which an objective is achieved.",
-            "repairFeedback": "Use 透過 + Medium to express connecting via online channels."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "透過 represents a person, thing, or behavior by which a certain result is achieved.",
         "patternAccentColumn": 1
       },
@@ -1019,55 +971,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g2-q1",
-            "type": "choice",
-            "prompt": "State promotional store discount terms:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "最近百貨公司"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g2-q1-b1",
-                "answer": "買三千元以上",
-                "answerSimplified": "买三千元以上",
-                "hint": "buy 3,000 or more"
-              },
-              {
-                "type": "text",
-                "traditional": "，就可以打九折。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g2-q1-t1",
-                "traditional": "買三千元以上",
-                "simplified": "买三千元以上",
-                "pinyin": "mǎi sānqiān yuán yǐshàng",
-                "meaning": "buy 3k and up"
-              },
-              {
-                "id": "b3l11g2-q1-t2",
-                "traditional": "買三千元以下",
-                "simplified": "买三千元以下",
-                "pinyin": "mǎi sānqiān yuán yǐxià",
-                "meaning": "buy 3k and down"
-              },
-              {
-                "id": "b3l11g2-q1-t3",
-                "traditional": "買三千元以內",
-                "simplified": "买三千元以内",
-                "pinyin": "mǎi sānqiān yuán yǐnèi",
-                "meaning": "buy within 3k"
-              }
-            ],
-            "correctFeedback": "以上 specifies amounts at or surpassing the boundary value.",
-            "repairFeedback": "Pattern: Amount + 以上 (e.g. 三千元以上)."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "以上 means 超過(exceed) or 高於(be higher than) a certain point, and also includes 某一點(a certain point). For example, 六十分以上及格(grades above 60 points are considered passing) also includes 60 points. 以下 means 低於(below) or 未達到(not to have reached) a certain point. When 以 is used together with a position word, for example, 以內, 以外, 以北 or 以南, it means something within a certain range.",
         "patternAccentColumn": 1
       },
@@ -1431,55 +1335,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g3-q1",
-            "type": "choice",
-            "prompt": "Praise people who work hard regardless of family background:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "只要肯努力，大家都會"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g3-q1-b1",
-                "answer": "看得起你",
-                "answerSimplified": "看得起你",
-                "hint": "respect you"
-              },
-              {
-                "type": "text",
-                "traditional": "的。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g3-q1-t1",
-                "traditional": "看得起你",
-                "simplified": "看得起你",
-                "pinyin": "kàndeqǐ nǐ",
-                "meaning": "respect you"
-              },
-              {
-                "id": "b3l11g3-q1-t2",
-                "traditional": "看不起你",
-                "simplified": "看不起你",
-                "pinyin": "kànbùqǐ nǐ",
-                "meaning": "despise you"
-              },
-              {
-                "id": "b3l11g3-q1-t3",
-                "traditional": "看重得你",
-                "simplified": "看重得你",
-                "pinyin": "kànzhòngde nǐ",
-                "meaning": "ungrammatical"
-              }
-            ],
-            "correctFeedback": "看得起 means holding someone in high regard or respect.",
-            "repairFeedback": "Use 看得起 for respecting and esteeming someone."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "看得起, 看不起 indicates the level of respect shown to the other person. 看得起 means to consider the other party important; 看不起 means to look down on or to despise the other person. The grammar V 得起/V 不起, in the fourth lesson of Book 2, indicates whether a person can or can not afford something.",
         "patternAccentColumn": 1
       }
@@ -1909,55 +1765,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g4-q1",
-            "type": "choice",
-            "prompt": "Describe an agreed rendezvous where the other person stood you up:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "他跟我約好在學校見面，等了半天，他"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g4-q1-b1",
-                "answer": "卻沒有出現",
-                "answerSimplified": "却没有出现",
-                "hint": "yet didn't appear"
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g4-q1-t1",
-                "traditional": "卻沒有出現",
-                "simplified": "却没有出现",
-                "pinyin": "què méiyǒu chūxiàn",
-                "meaning": "yet didn't appear"
-              },
-              {
-                "id": "b3l11g4-q1-t2",
-                "traditional": "就沒有出現",
-                "simplified": "就没有出现",
-                "pinyin": "jiù méiyǒu chūxiàn",
-                "meaning": "then didn't appear"
-              },
-              {
-                "id": "b3l11g4-q1-t3",
-                "traditional": "才沒有出現",
-                "simplified": "才没有出现",
-                "pinyin": "cái méiyǒu chūxiàn",
-                "meaning": "only didn't appear"
-              }
-            ],
-            "correctFeedback": "卻 sits between the subject and verb to indicate an outcome contrary to expectations.",
-            "repairFeedback": "Pattern: Subject + 卻 + Contrary Verb."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "卻 is an adverb, indicating things contrary to fact or expectation. It is often placed after the subject of the sentence or in front of the verb to indicate a transition. For example, 他跟我約好在學校見面，等了半天，他卻沒來。",
         "patternAccentColumn": 1
       },
@@ -2336,55 +2144,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g5-q1",
-            "type": "choice",
-            "prompt": "Warn against ruining health with endless overtime:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "要是把身體弄壞了，你怎麼"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g5-q1-b1",
-                "answer": "對得起自己",
-                "answerSimplified": "对得起自己",
-                "hint": "live up to yourself"
-              },
-              {
-                "type": "text",
-                "traditional": "呢？"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g5-q1-t1",
-                "traditional": "對得起自己",
-                "simplified": "对得起自己",
-                "pinyin": "duìdeqǐ zìjǐ",
-                "meaning": "face yourself"
-              },
-              {
-                "id": "b3l11g5-q1-t2",
-                "traditional": "對不起自己",
-                "simplified": "对不起自己",
-                "pinyin": "duìbùqǐ zìjǐ",
-                "meaning": "let yourself down"
-              },
-              {
-                "id": "b3l11g5-q1-t3",
-                "traditional": "看得起自己",
-                "simplified": "看得起自己",
-                "pinyin": "kàndeqǐ zìjǐ",
-                "meaning": "esteem yourself"
-              }
-            ],
-            "correctFeedback": "怎麼對得起……呢？ is a rhetorical rebuke questioning how one could violate duties.",
-            "repairFeedback": "Pattern: 怎麼對得起 + Object + 呢？"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "對得起 means not doing something that should not be done; not letting the other party down, be angry, or embarrassed. On the contrary, 對不起 means being embarrassed or sorry for disappointing the other person. 對得起/對不起 can be followed by the object. For example, 對得起老闆, 對得起自己, 對不起朋友, 對不起社會.",
         "patternAccentColumn": 1
       },
@@ -2720,55 +2480,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l11g6-q1",
-            "type": "choice",
-            "prompt": "State your travel arrangement responsibilities while deferring hotel bookings:",
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我只負責安排行程，"
-              },
-              {
-                "type": "blank",
-                "id": "b3l11g6-q1-b1",
-                "answer": "至於機票和旅館",
-                "answerSimplified": "至于机票和旅馆",
-                "hint": "as for flights and hotel"
-              },
-              {
-                "type": "text",
-                "traditional": "，要問小李。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "b3l11g6-q1-t1",
-                "traditional": "至於機票和旅館",
-                "simplified": "至于机票和旅馆",
-                "pinyin": "zhìyú jīpiào hé lǚguǎn",
-                "meaning": "as for tickets and hotel"
-              },
-              {
-                "id": "b3l11g6-q1-t2",
-                "traditional": "關於機票和旅館",
-                "simplified": "关于机票和旅馆",
-                "pinyin": "guānyú jīpiào hé lǚguǎn",
-                "meaning": "regarding tickets and hotel"
-              },
-              {
-                "id": "b3l11g6-q1-t3",
-                "traditional": "雖然機票和旅館",
-                "simplified": "虽然机票和旅馆",
-                "pinyin": "suīrán jīpiào hé lǚguǎn",
-                "meaning": "although tickets and hotel"
-              }
-            ],
-            "correctFeedback": "至於 introduces an associated secondary topic or deferred detail.",
-            "repairFeedback": "Pattern: Statement, + 至於 + Topic."
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "至於 is used as a turning point or pivot between sentences. What is said after 至於 is related to the previous topic or viewpoint.",
         "patternAccentColumn": 1
       }

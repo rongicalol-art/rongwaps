@@ -577,44 +577,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l16g1-q1",
-            "type": "choice",
-            "prompt": "選出最合適的詞語填入空格：",
-            "segments": [
-              {
-                "text": "還能吃的食物，就不該被"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "垃圾丟掉。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "當作"
-              },
-              {
-                "id": "t2",
-                "text": "成為"
-              },
-              {
-                "id": "t3",
-                "text": "至少"
-              },
-              {
-                "id": "t4",
-                "text": "何況"
-              }
-            ],
-            "correctFeedback": "太棒了！「當作」表示將尚能食用的食物視為、認定為垃圾丟棄。",
-            "repairFeedback": "請注意詞彙語義：表示將某物認定或視為另一事物，應使用「當作」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "當作/當做 is a verb used in two ways: (1) Think of the objects described before and after as being taken for the same. For example, “他常常加班，已經把公司當作自己的家了。” “老師常把我們當作自己的孩子，非常關心我們。” “我很討厭小方，就算他從我旁邊經過，我也當作沒看見。” (2) 當作/當做 represents the judgment of the speaker on things. For examples, “張阿姨已經四十多歲了，看起來卻很年輕，常被人當作是學生。” “我很討厭小方，就算他從我旁邊經過，我也當作沒看見。”“我把這次的感冒當作是一般的感冒，所以沒去看醫生。”",
         "patternAccentColumn": 3
       },
@@ -1027,44 +990,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l16g2-q1",
-            "type": "choice",
-            "prompt": "選出表示最低底線或範圍的詞語：",
-            "segments": [
-              {
-                "text": "臺灣雖然土地面積不大，但"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "不必擔心食物不夠。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "至少"
-              },
-              {
-                "id": "t2",
-                "text": "當作"
-              },
-              {
-                "id": "t3",
-                "text": "何況"
-              },
-              {
-                "id": "t4",
-                "text": "難免"
-              }
-            ],
-            "correctFeedback": "太棒了！「至少」表示退一步說的最低限度或基準。",
-            "repairFeedback": "請注意底線表達：用「至少」引出最基本的保證或要求。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "至少 is used as an adverb, followed by a quantifier or a short sentence to indicate the lowest range or degree.",
         "patternAccentColumn": 0
       }
@@ -1693,44 +1619,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l16g3-q1",
-            "type": "choice",
-            "prompt": "選出引導正式原因的連詞：",
-            "segments": [
-              {
-                "text": ""
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "新菜無法吸引顧客，因此每天都有剩菜被丟掉。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "由於"
-              },
-              {
-                "id": "t2",
-                "text": "雖然"
-              },
-              {
-                "id": "t3",
-                "text": "何況"
-              },
-              {
-                "id": "t4",
-                "text": "既然"
-              }
-            ],
-            "correctFeedback": "太棒了！「由於」正式陳述理由或原因，與後文「因此」相互呼應。",
-            "repairFeedback": "請注意因果關係：表示「由於……因此……」應選用「由於」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "The statement after 由於 indicates the cause or reason, and the the statement after 因此 indicates the result. Such expressions are more formal than “因為……，所以……”. 因為 can be placed at the beginning of the preceding or following sentence; 由於 is usually placed at the beginning of the preceding sentence. If it is placed at the end, then the sentence should be written as “……，是由於……”. For example, 這座城市的空氣品質越來越差，是由於工廠越來越多。",
         "patternAccentColumn": 0
       },
@@ -2136,44 +2025,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l16g4-q1",
-            "type": "choice",
-            "prompt": "選出表示導致具體事實結果的及物動詞：",
-            "segments": [
-              {
-                "text": "每次想到食物被丟掉，都"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "他夜裡睡不好。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "使得"
-              },
-              {
-                "id": "t2",
-                "text": "為了"
-              },
-              {
-                "id": "t3",
-                "text": "至少"
-              },
-              {
-                "id": "t4",
-                "text": "總之"
-              }
-            ],
-            "correctFeedback": "太棒了！「使得」正式連接原因與既成事實的結果。",
-            "repairFeedback": "請注意致使結構：導致特定事實狀態，應使用「使得」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "使得 is a transitive verb (Vst). The first use of 使得 is the cause of an event, and the following usage is the result of the preceding sentence. This is similar to the usage of 使(V), but the usage of 使得 is more formal. The facts that have occurred are often used with 使得, while the hypothetical situations are often used with 使. For example, 由於這次強烈颱風帶來了大風大雨，使得很多地區都淹水了。Or 古代寺廟如能好好保留下來，就能使民眾更了解宗教的歷史意義。",
         "patternAccentColumn": 1
       },
@@ -2687,44 +2539,7 @@
             }
           ]
         },
-        "questions": [
-          {
-            "id": "b3l16g5-q1",
-            "type": "choice",
-            "prompt": "選出表示緊接前文情況採取相應行動的連詞：",
-            "segments": [
-              {
-                "text": "最初大家的反應冷淡，"
-              },
-              {
-                "slot": "s1"
-              },
-              {
-                "text": "他開始向客人說明愛心冰箱的理念。"
-              }
-            ],
-            "tiles": [
-              {
-                "id": "t1",
-                "text": "於是"
-              },
-              {
-                "id": "t2",
-                "text": "總之"
-              },
-              {
-                "id": "t3",
-                "text": "既然"
-              },
-              {
-                "id": "t4",
-                "text": "當作"
-              }
-            ],
-            "correctFeedback": "太棒了！「於是」連接前後情境，引出因應前句情況所採取的具體行動。",
-            "repairFeedback": "請注意接續行動：描述因前句狀況而採取的下一步作為，應使用「於是」。"
-          }
-        ],
+        "questions": [],
         "explanationEnglish": "於是 is a conjunction that connects the two sentences, with the latter sentence describing the action taken because of the situation in the previous sentence. However, 於是 cannot be used for natural phenomena. For example, *天很黑，於是下雨了。Or *強烈颱風來了，於是很多地區淹水了。",
         "patternAccentColumn": 1
       }
