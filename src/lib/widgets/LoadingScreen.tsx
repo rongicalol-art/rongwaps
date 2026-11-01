@@ -1,17 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { LottiePlayer, preloadAnimation, preloadLottie } from './LottiePlayer';
-
-// The branded loader animation is 108 KB of JSON; loading it on demand keeps it
-// out of the entry chunk (every route pays for this widget's chunk). Module-level
-// loader keeps a stable identity for LottiePlayer.
-const loadSandyLoadingAnimation = () =>
-  import('../../assets/animations/sandy-loading.json').then((m) => m.default);
-
-/** Warm the loader's animation + player so the first loader ever shown has no swap. Call at idle after boot. */
-export function preloadLoadingScreen(): void {
-  void preloadLottie();
-  void preloadAnimation(loadSandyLoadingAnimation);
-}
+import React from 'react';
+import { SpeakerIcon } from './SpeakerIcon';
 
 interface LoadingScreenProps {
   message?: string;
@@ -25,23 +13,16 @@ interface LoadingScreenProps {
   tone?: 'canvas' | 'practice';
 }
 
+/**
+ * The app's one loading look: the audio bars a loading button shows (`ActionButton loading`),
+ * drawn large, with a short message under them. Plain CSS, so it is the same on every device.
+ */
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({
   message = 'Loading...',
   fullScreen = false,
   inline = false,
   tone = 'canvas',
 }) => {
-  const [animate, setAnimate] = useState(false);
-  const [artReady, setArtReady] = useState(false);
-  useEffect(() => {
-    // A fast cache hit should not download and initialize a 317 kB animation
-    // engine. Small devices keep the inexpensive CSS indicator throughout.
-    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
-    if ((navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) || (memory && memory <= 4)
-      || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const timer = window.setTimeout(() => setAnimate(true), 200);
-    return () => window.clearTimeout(timer);
-  }, []);
   const toneClass = tone === 'practice' ? 'bg-ui-practice-canvas' : 'bg-ui-canvas';
   const containerClass = fullScreen
     ? 'fixed inset-0 z-window w-full h-full'
@@ -56,18 +37,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
       aria-busy="true"
       className={`${containerClass} ${inline ? '' : `${toneClass} `}flex flex-col justify-center items-center overflow-hidden select-none`}
     >
-      <div className="flex animate-in fade-in flex-col items-center justify-center duration-200">
-        <div className="relative flex h-44 w-44 items-center justify-center">
-        {!artReady && <span aria-hidden className="absolute h-10 w-10 animate-spin rounded-full border-4 border-brand-primary-track border-t-brand-primary motion-reduce:animate-none" />}
-        {animate && <LottiePlayer
-          loadAnimationData={loadSandyLoadingAnimation} 
-          width="100%"
-          height="100%"
-          loop={true} 
-          onDOMLoaded={() => setArtReady(true)}
-        />}
-        </div>
-        <p className="mt-2 text-ui-muted-strong font-black tracking-widest text-xs uppercase">
+      <div className="flex animate-in fade-in flex-col items-center justify-center gap-6 duration-200">
+        <SpeakerIcon status="playing" size={56} className="text-brand-primary" />
+        <p className="text-ui-muted-strong font-black tracking-widest text-xs uppercase">
           {message}
         </p>
       </div>

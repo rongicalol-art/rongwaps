@@ -3,8 +3,8 @@ import type { PreloadedModule } from '../utils/browser/preloadAssets';
 
 /** Under this, the next screen is effectively instant: no loading state flashes on the button. */
 const SHOW_LOADING_AFTER_MS = 150;
-/** After this the screen opens anyway and shows its own loader, so the button never feels stuck (owner, 2026-11-01). */
-const GIVE_UP_AFTER_MS = 1500;
+/** After this the screen opens anyway and shows its own loader, so the button never feels stuck (owner: 4 s, 2026-11-01). */
+const GIVE_UP_AFTER_MS = 4000;
 
 /**
  * Press → get the next screen ready → open it. While `prepare` runs, `pendingKey` names what
