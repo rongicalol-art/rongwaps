@@ -6,7 +6,11 @@ import { useOpenPhase } from '../../hooks/useOpenPhase';
 import { useReplacesLoader } from '../hooks/useReplacesLoader';
 import { ActionButton, EmptyState, LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
-const GrammarLessonScreen = lazy(() => import('../../screens/grammar-lesson').then((m) => ({ default: m.GrammarLessonScreen })));
+// The loader stays up until the first study page is ready too, so the lesson never opens half drawn.
+const GrammarLessonScreen = lazy(() => import('../../screens/grammar-lesson').then(async (m) => {
+  await m.prepareGrammarLesson();
+  return { default: m.GrammarLessonScreen };
+}));
 
 type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreenType>;
 

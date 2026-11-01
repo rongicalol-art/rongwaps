@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { LoadingScreen } from '../lib/widgets';
+import { LoadingScreen, preloadPlayfulNavIcons } from '../lib/widgets';
 import { AppWorkspace } from './components/AppWorkspace';
 import { AppOverlays } from './components/AppOverlays';
 import { LegalUpdateNotice } from './components/LegalUpdateNotice';
@@ -36,7 +36,11 @@ export default function AppShell() {
   const [socialReady, setSocialReady] = useState(false);
   useEffect(() => {
     if (!ready) return;
-    const run = () => { setSocialReady(true); void import('./warmBreakdownData').then((m) => m.warmBreakdownData()); };
+    const run = () => {
+      setSocialReady(true);
+      void preloadPlayfulNavIcons();
+      void import('./warmBreakdownData').then((m) => m.warmBreakdownData());
+    };
     if (window.requestIdleCallback) {
       const id = window.requestIdleCallback(run, { timeout: 4000 });
       return () => window.cancelIdleCallback(id);
