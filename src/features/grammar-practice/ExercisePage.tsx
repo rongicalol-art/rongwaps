@@ -177,7 +177,7 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
   return (
     <LayoutGroup id={`exercise-${practice.bookPage}-${practice.title}`}>
       <div className="mx-auto flex w-full max-w-4xl flex-col pb-24">
-        <h1 className="mb-4 px-3 text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:mb-6 sm:px-5 sm:text-3xl">{practice.title}</h1>
+        <h1 className="mb-4 px-3 text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:mb-6 sm:px-5 sm:text-2xl">{practice.title}</h1>
         {shared && (
           <div className="mb-4 max-w-md px-3 sm:mb-6 sm:px-5">
             <PracticeScene
@@ -209,7 +209,10 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
           ))}
         </ol>
         <div ref={endRef} className="flex scroll-mt-[30vh] justify-center pt-10">
-          {finished && <ActionButton size="lg" className="min-w-56" onClick={onComplete}>Continue</ActionButton>}
+          {/* Always a way on: Skip while items are left, Continue once every item is done. */}
+          <ActionButton size="lg" variant={finished ? 'primary' : 'secondary'} className="min-w-56" onClick={onComplete}>
+            {finished ? 'Continue' : 'Skip'}
+          </ActionButton>
         </div>
       </div>
       <TileGhost drag={drag} />
