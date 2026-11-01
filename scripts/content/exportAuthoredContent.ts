@@ -194,7 +194,8 @@ async function attachSentenceAudio(parts: InteractiveGrammarPart[]) {
     }
     if (Array.isArray(record.subject) && Array.isArray(record.grammar) && Array.isArray(record.complement) && !record.exampleId) {
       const row = record as unknown as GrammarPatternRow;
-      const audio = audioFor(getPatternRowGroups(row).flat().map((token) => token.traditional).join(''));
+      // As the row is read (and keyed by the aligner and studio generator): a suffix like 嗎？ is spoken too.
+      const audio = audioFor(getPatternRowGroups(row).flat().map((token) => `${token.prefix ?? ''}${token.traditional}${token.suffix ?? ''}`).join(''));
       if (audio) record.audio = audio;
     }
     Object.values(record).forEach(walk);

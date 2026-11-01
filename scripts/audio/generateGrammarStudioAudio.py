@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
-"""Generate Vivian studio clips for L1-L8 grammar examples and pattern rows.
+"""Generate Vivian studio clips for grammar examples and pattern rows (L1-L8 by default).
 
 Run with the local MLX environment and model cache:
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --limit 2
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --takes 6
   HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --refresh-audio
+  HF_HUB_OFFLINE=1 output/qwen-pilot-venv/bin/python scripts/audio/generateGrammarStudioAudio.py --only lesson --lessons 1-16 --practice --vocab-book 1 --out output/grammar-audio/b1-gaps --delivery-bitrate 48k
+
+`--practice` adds the answer sentences (and accepted alternatives) of every book exercise (content/grammar-practice) on the selected
+pages. `--out` writes a separate batch (manifest, review page, clips) for `publishGrammarStudioAudio.ts
+--manifest`; a batch skips sentences that already have a published studio recording and the takes
+`checkStudioBatch.py` listed in its rejected.json. A take that stops mid-syllable is rendered again
+(other seeds, then with a tail-guard word cut off at the pause); a sentence read too fast on every take
+gets slower-instruction takes. `--delivery-bitrate` publishes a
+smaller copy of every mastered clip.
 
 `--refresh-audio` masters published local takes and regenerates flagged takes or delivery above four Chinese
 characters per second with a naturally slower instruction. It never time-stretches speech.
@@ -17,6 +26,7 @@ writes the steadiest take's seed to studio-picks.json, and the next run uses it.
 """
 import argparse
 import hashlib
+import os
 import html
 import json
 import re
@@ -29,6 +39,10 @@ ROOT = Path(__file__).resolve().parents[2]  # Repository root.
 GRAMMAR_DIR = ROOT / "content/grammar"  # Authored grammar pages.
 TRACK_CLIPS = ROOT / "content/audio/grammar_track_clips.json"  # Grammar-track book clips.
 BOOK_CLIPS = ROOT / "content/audio/grammar_book_clips.json"  # Dialogue-track book clips.
+TRACK_APPROVED = ROOT / "content/audio/grammar_track_approved.json"  # Owner-approved near-miss book clips.
+STUDIO_RECEIPT = ROOT / "content/audio/grammar_studio_audio.json"  # Published studio recordings.
+PRACTICE_DIR = ROOT / "content/grammar-practice"  # Book exercises, keyed by grammar page id.
+VOCAB_EXAMPLES = ROOT / "content/audio/vocabulary_example_audio.json"  # Vocabulary examples and their book clips.
 OUT_DIR = ROOT / "output/grammar-audio"  # Local review artifacts.
 AUDIO_DIR = OUT_DIR / "studio"  # Generated MP3 files.
 MANIFEST_PATH = OUT_DIR / "studio-manifest.json"  # Resumable studio inventory.
@@ -41,7 +55,16 @@ B_VOICE = "Dylan"  # Speaker B of an A/B dialogue (owner's pick by ear, 2026-10-
 LANG_CODE = "Chinese"  # Qwen language code.
 INSTRUCT = "用台灣國語的口音朗讀，像台灣的華語老師在課堂上清楚地示範，語氣溫和自然，語速適中，不要捲舌音太重。"  # Studio delivery.
 SEED = 42  # Primary generation seed.
-RETRY_SEED = 43  # Single retry seed for invalid audio.
+RETRY_SEED = 43  # First retry seed for invalid audio.
+RETRY_SEEDS = (43, 44, 45)  # Retries for invalid audio (short lines often come out rushed).
+# Qwen sometimes stops a sentence mid-syllable. A take whose last speech frame is still this loud
+# (against the clip's typical speech) is cut off and is rendered again.
+ENDING_MAX = 0.4
+# Last resort for a cut-off sentence: the voice says this word after it, so the real last syllable
+# finishes and fades; the clip is cut in the pause before the word (ASR then confirms the cut).
+TAIL_GUARD = "好。"
+TAIL_GUARD_MAX = 0.9  # Seconds the guard word may take after the pause; more means the cut was mid-sentence.
+DELIVERY_BITRATE = None  # Set by --delivery-bitrate: publish a smaller copy of each mastered clip.
 MAX_TOKENS = 512  # Qwen generation limit.
 TURN_SILENCE = 0.6  # Silence between dialogue turns.
 TRIM_PADDING = 0.1  # Silence retained at the outside edges.
@@ -51,6 +74,15 @@ MAX_SECONDS_PER_HAN = 1.2  # Longest accepted clip per Han character.
 MP3_BITRATE = "96k"  # Preserve detail when mastering existing approved MP3s.
 MASTERING = "acompressor=mode=upward:threshold=0.4:ratio=4:attack=5:release=100,volume=1.78,alimiter=limit=0.66:level=0:latency=1"
 SLOW_INSTRUCT = INSTRUCT + " 面向初學者，語速稍慢，像老師耐心示範完整的句子。在詞組和標點之間自然停頓，保持連貫、溫暖的語氣。不要趕著說，不要逐字念，也不要拖長字音。只朗讀提供的文字，不增添、不省略任何字詞。"
+# Last resort for a sentence read too fast on every take: a slower instruction, kept only between
+# SLOWER_MIN_PACE and four characters a second (it can also drag).
+SLOWER_INSTRUCT = SLOW_INSTRUCT + " 這是給剛開始學中文的學生聽的，請放慢語速，每個字都說清楚。"
+SLOWER_MIN_PACE = 2.8
+MAX_PACE = 4.0  # Characters a second; --max-pace raises it for the few sentences no take reads slower.
+# Takes tried in order for a sentence: (seed, style), style "g" = tail guard, "s" = slower instruction.
+# A batch's rejected.json skips any of them by name (attempt_id).
+ATTEMPTS = [(SEED, ""), *((seed, "") for seed in RETRY_SEEDS), (42, "g"), (43, "g"), (44, "g"),
+            (42, "s"), (43, "s"), (44, "s"), (45, "s"), (42, "sg"), (43, "sg")]
 HAN_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\U00020000-\U0002fa1f]")  # Han characters used for keys.
 SPEAKER_RE = re.compile(r"(?<![A-Za-z])([AB])[:：]\s*")  # Textbook A/B speaker labels.
 PAREN_RE = re.compile(r"[()（）]")  # Optional-parenthesis delimiters.
@@ -58,6 +90,17 @@ CLOCK_RE = re.compile(r"[一二兩两三四五六七八九十]+(?=[點点分月�
 DIGITS = {"一": 1, "二": 2, "兩": 2, "两": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}  # Numerals to digits.
 SPELLED_CLOCK = {"十一點多", "十一点多"}  # Keep the owner-selected spoken form of this phrase.
 ALTERNATIVE_RE = re.compile(r"[/／][\u3400-\u9fff]+")  # "號/日": the book's alternative word; read only the first.
+
+
+def set_out_dir(path):
+    """Point every output at a separate batch folder (manifest.json, review.html, numbers.json, studio/)."""
+    global OUT_DIR, AUDIO_DIR, MANIFEST_PATH, REVIEW_PATH, NUMBERS_PATH, PICKS_PATH
+    OUT_DIR = path
+    AUDIO_DIR = path / "studio"
+    MANIFEST_PATH = path / "manifest.json"
+    REVIEW_PATH = path / "review.html"
+    NUMBERS_PATH = path / "numbers.json"
+    PICKS_PATH = path / "picks.json"
 
 
 def han(text):
@@ -142,11 +185,14 @@ def add_target(targets, counts, totals, key, text, user, sort_order, clipped, sy
         target["users"].append(user)
 
 
-def collect_targets(only=None):
-    """Collect uncovered L1-L8 examples and eligible pattern rows in book order.
+def collect_targets(only=None, lessons=(1, 8), practice=False, skip_published=False, vocab_book=None):
+    """Collect uncovered examples and eligible pattern rows of the selected lessons in book order.
 
-    `only` limits the run to grammar files whose names start with one of the given prefixes."""
-    clipped = load_clip_keys(TRACK_CLIPS) | load_clip_keys(BOOK_CLIPS)
+    `only` limits the run to grammar files whose names start with one of the given prefixes;
+    `practice` adds each exercise's answer sentence from the matching content/grammar-practice file."""
+    clipped = load_clip_keys(TRACK_CLIPS) | load_clip_keys(BOOK_CLIPS) | load_clip_keys(TRACK_APPROVED)
+    if skip_published:
+        clipped |= load_clip_keys(STUDIO_RECEIPT)
     targets = {}
     missing = Counter()
     totals = Counter()
@@ -160,10 +206,14 @@ def collect_targets(only=None):
                 continue
             lesson = part.get("lessonId")
             part_number = part.get("partId")
-            if not isinstance(lesson, int) or lesson > 8 or lesson < 1:
+            if not isinstance(lesson, int) or not lessons[0] <= lesson <= lessons[1]:
                 continue
             parts.append((lesson, int(part_number or 0), path.name, part_name, part))
     parts.sort(key=lambda entry: entry[:4])
+    # Exercises are keyed by grammar page id (practice files are per lesson, grammar files may be per part).
+    exercises = {}
+    for path in sorted(PRACTICE_DIR.glob("*.json")) if practice else []:
+        exercises.update(json.loads(path.read_text(encoding="utf-8")))
 
     for lesson, part_number, file_name, part_name, part in parts:
         for page_index, page in enumerate(part.get("grammarPages") or []):
@@ -196,11 +246,38 @@ def collect_targets(only=None):
                     (lesson, part_number, page_index, 1, row_index, file_name, part_name),
                     clipped, row_text(row, "simplified"),
                 )
+        for page_index, page in enumerate(part.get("grammarPages") or [] if practice else []):
+            page_id = str(page.get("id"))
+            for item_index, item in enumerate((exercises.get(page_id) or {}).get("items") or []):
+                # The answer sentence, and every other right answer the item accepts.
+                for sentence in [item.get("result") or {}, *(item.get("alternatives") or [])]:
+                    text = (sentence.get("traditional") or "").strip()
+                    key = han(text)
+                    if not key:
+                        continue
+                    add_target(
+                        targets, missing, totals, key, text,
+                        user_record(page_id, item, "exercise"),
+                        (lesson, part_number, page_index, 2, item_index, file_name, part_name),
+                        clipped, sentence.get("simplified"),
+                    )
+    # Vocabulary examples of this book the book's own recording couldn't be matched to.
+    examples = json.loads(VOCAB_EXAMPLES.read_text(encoding="utf-8"))["examples"] if vocab_book else {}
+    for example_id, example in examples.items():
+        lesson = example.get("lessonId")
+        if example.get("bookId") != vocab_book or example.get("audio") or not lessons[0] <= lesson <= lessons[1]:
+            continue
+        text = example["traditional"].strip()
+        add_target(
+            targets, missing, totals, han(text), text,
+            {"page": example["sourceCardId"], "id": example_id, "kind": "vocab"},
+            (lesson, 99, 0, 3, 0, "", example_id), clipped,
+        )
     ordered = sorted(targets.values(), key=lambda item: item["order"])
     return ordered, missing, totals
 
 
-def recipe_text(key, turns, seed):
+def recipe_text(key, turns, seed, style=""):
     """Serialize every generation choice that can change the generated audio."""
     recipe = {
         "model": MODEL,
@@ -220,14 +297,18 @@ def recipe_text(key, turns, seed):
         "silence_threshold": SILENCE_THRESHOLD,
         "spoken_turns": turns,
     }
+    if "g" in style:
+        recipe["tail_guard"] = TAIL_GUARD
+    if "s" in style:
+        recipe["instruct"] = SLOWER_INSTRUCT
     if len(turns) > 1:  # Only dialogues read B in a second voice; single sentences keep their files.
         recipe["turn_voices"] = [turn_voice(index) for index in range(len(turns))]
     return key + json.dumps(recipe, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
-def output_for(key, turns, seed):
+def output_for(key, turns, seed, style=""):
     """Return the full recipe digest, destination MP3, and recipe sidecar."""
-    digest = hashlib.sha256(recipe_text(key, turns, seed).encode("utf-8")).hexdigest()
+    digest = hashlib.sha256(recipe_text(key, turns, seed, style).encode("utf-8")).hexdigest()
     filename = f"{digest[:12]}.mp3"
     path = AUDIO_DIR / filename
     return digest, path, path.with_suffix(path.suffix + ".recipe.sha256")
@@ -257,14 +338,19 @@ def probe_audio(path):
     return float(data["format"]["duration"]), int(stream["channels"])
 
 
-def cached_entry(target, seed, old_entries):
+def attempt_id(seed, style=""):
+    """Name of one take in rejected.json: the seed plus its style ("g" tail guard, "s" slower)."""
+    return f"{seed}{style}"
+
+
+def cached_entry(target, seed, old_entries, style=""):
     """Prefer refreshed manifest takes; otherwise require an exact recipe hash."""
     previous = old_entries.get(target["key"])
     if previous and previous.get("mastering") == MASTERING and previous.get("text") == target["text"]:
         published = ROOT / previous["local"]
         if published.is_file() and file_sha256(published) == previous.get("sha256"):
             return {**previous, "users": target["users"]}
-    digest, path, sidecar = output_for(target["key"], target["turns"], seed)
+    digest, path, sidecar = output_for(target["key"], target["turns"], seed, style)
     if not path.is_file() or not sidecar.is_file():
         return None
     if sidecar.read_text(encoding="utf-8").strip() != digest:
@@ -279,10 +365,10 @@ def cached_entry(target, seed, old_entries):
                 return None
         except (OSError, KeyError, ValueError, subprocess.CalledProcessError, json.JSONDecodeError):
             return None
-    return build_manifest_entry(target, seed, path, duration)
+    return build_manifest_entry(target, seed, path, duration, style)
 
 
-def build_manifest_entry(target, seed, path, duration):
+def build_manifest_entry(target, seed, path, duration, style=""):
     """Build the requested public manifest shape for one generated key."""
     return {
         "key": target["key"],
@@ -295,10 +381,12 @@ def build_manifest_entry(target, seed, path, duration):
         "sha256": file_sha256(path),
         "model": MODEL,
         "voice": VOICE,
-        "instruct": SLOW_INSTRUCT,
+        "instruct": SLOWER_INSTRUCT if "s" in style else SLOW_INSTRUCT,
         "seed": seed,
         "mastering": MASTERING,
         "quality": measure_quality(path),
+        **({"take": style} if style else {}),
+        **({"tailGuard": TAIL_GUARD} if "g" in style else {}),
     }
 
 
@@ -317,14 +405,39 @@ def turn_voice(index):
     return VOICE if index % 2 == 0 else B_VOICE
 
 
-def synthesize(model, turns, seed, mx, np, instruct=SLOW_INSTRUCT):
+def cut_before_guard(audio, sample_rate, np):
+    """Keep the speech before the pause that precedes the tail-guard word (and 40 ms of that pause)."""
+    size = int(sample_rate * 0.02)
+    frames = np.sqrt((audio[: len(audio) // size * size].reshape(-1, size) ** 2).mean(axis=1))
+    quiet = frames < frames.max() * 0.03
+    pause_start = pause_end = None
+    index = 0
+    while index < len(frames):
+        if not quiet[index]:
+            index += 1
+            continue
+        end = index
+        while end < len(frames) and quiet[end]:
+            end += 1
+        if end - index >= 6 and end < len(frames):  # A pause of 120 ms or more with speech after it.
+            pause_start, pause_end = index, end
+        index = end
+    if pause_start is None:
+        raise ValueError("no pause before the tail-guard word")
+    if (len(frames) - pause_end) * 0.02 > TAIL_GUARD_MAX:
+        raise ValueError("the last pause is inside the sentence, not before the tail-guard word")
+    return audio[: (pause_start + 2) * size]
+
+
+def synthesize(model, turns, seed, mx, np, instruct=SLOW_INSTRUCT, guard=False):
     """Generate each dialogue turn separately (B in its own voice) and join turns with 0.6 s silence."""
     turn_audio = []
     sample_rate = None
     for index, turn in enumerate(turns):
         mx.random.seed(seed)
+        guarded = guard and index == len(turns) - 1
         results = list(model.generate(
-            turn, voice=turn_voice(index), lang_code=LANG_CODE, instruct=instruct,
+            turn + TAIL_GUARD if guarded else turn, voice=turn_voice(index), lang_code=LANG_CODE, instruct=instruct,
             max_tokens=MAX_TOKENS,
         ))
         if not results:
@@ -340,6 +453,8 @@ def synthesize(model, turns, seed, mx, np, instruct=SLOW_INSTRUCT):
             np.asarray(result.audio, dtype=np.float32).reshape(-1)
             for result in results
         ])
+        if guarded:
+            audio = cut_before_guard(trim_to_active(audio, np), this_rate, np)
         turn_audio.append(trim_to_active(audio, np))
 
     gap = np.zeros(round(sample_rate * TURN_SILENCE), dtype=np.float32)
@@ -368,6 +483,63 @@ def validate_duration(audio, sample_rate, key):
             f"= {seconds_per_han:.2f}s per character"
         )
     return duration
+
+
+def ending_ratio(path):
+    """Loudness of a clip's last speech frame against its typical speech frame (cut-off speech stays loud)."""
+    import numpy as np
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(path), "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
+        capture_output=True, check=True,
+    ).stdout
+    audio = np.frombuffer(raw, dtype=np.float32)
+    size = 320  # 20 ms frames.
+    frames = np.sqrt((audio[: len(audio) // size * size].reshape(-1, size) ** 2).mean(axis=1))
+    speech = np.flatnonzero(frames > frames.max() * 0.05)
+    if speech.size < 5:
+        return 1.0
+    typical = np.percentile(frames[speech[0]: speech[-1] + 1], 75)
+    return float(frames[speech[-1]] / typical)
+
+
+def deliver(entry):
+    """Encode the published copy of a mastered clip at DELIVERY_BITRATE (named by its content hash)."""
+    if DELIVERY_BITRATE is None:
+        return entry
+    master = ROOT / entry.get("master", entry["local"])
+    if entry.get("deliveryBitrate") == DELIVERY_BITRATE and (ROOT / entry["local"]).is_file():
+        return entry
+    folder = OUT_DIR / "delivery"
+    folder.mkdir(parents=True, exist_ok=True)
+    temporary = folder / f"{master.stem}.tmp.mp3"
+    gain = 0.0
+    for _ in range(3):
+        subprocess.run([
+            "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(master),
+            "-af", f"volume={gain}dB", "-map_metadata", "-1", "-vn", "-ac", "1", "-ar", "24000",
+            "-codec:a", "libmp3lame", "-b:a", DELIVERY_BITRATE, str(temporary),
+        ], capture_output=True, text=True, check=True)
+        quality = measure_quality(temporary)
+        if quality["truePeakDbfs"] <= -1.0:
+            break
+        gain -= quality["truePeakDbfs"] + 1.3
+    else:
+        raise ValueError(f"Encoded peaks remain unsafe: {master.name}")
+    digest = file_sha256(temporary)
+    destination = folder / f"{digest[:12]}.mp3"
+    temporary.replace(destination)
+    duration, _ = probe_audio(destination)
+    return {
+        **entry,
+        "master": master.relative_to(ROOT).as_posix(),
+        "masterSha256": entry.get("masterSha256", entry["sha256"]),
+        "local": destination.relative_to(ROOT).as_posix(),
+        "file": f"grammar-studio/v1/{destination.name}",
+        "sha256": digest,
+        "duration": round(duration, 3),
+        "deliveryBitrate": DELIVERY_BITRATE,
+        "quality": quality,
+    }
 
 
 def measure_quality(path):
@@ -432,7 +604,7 @@ def write_review(entries):
             f'{user["page"]} · {user["kind"]} {user["id"]}'
             for user in entry["users"]
         )
-        source = f'studio/{Path(entry["local"]).name}'
+        source = os.path.relpath(ROOT / entry["local"], OUT_DIR)
         rows.append(
             "<tr>"
             f"<td>{number}</td>"
@@ -565,10 +737,17 @@ def refresh_audio():
 
 def main():
     """Collect targets, resume cached clips, generate, and write review artifacts."""
+    global DELIVERY_BITRATE, MAX_PACE
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, help="Generate only the first N uncovered keys.")
     parser.add_argument("--takes", type=int, default=0, help="Also render seeds 42..42+N-1 of every key.")
     parser.add_argument("--only", nargs="+", help="Only grammar files starting with these prefixes (e.g. b3LessonOne b3LessonTwo).")
+    parser.add_argument("--lessons", default="1-8", help="Lesson range, e.g. 9-16 (default 1-8).")
+    parser.add_argument("--practice", action="store_true", help="Also voice each book exercise's answer sentence.")
+    parser.add_argument("--vocab-book", type=int, help="Also voice this book's vocabulary examples that have no book clip.")
+    parser.add_argument("--max-pace", type=float, help=f"Fastest accepted delivery in characters a second (default {MAX_PACE}).")
+    parser.add_argument("--delivery-bitrate", help="Publish a copy of each clip at this MP3 bitrate (e.g. 48k).")
+    parser.add_argument("--out", help="Write a separate batch here (skips sentences already published).")
     parser.add_argument("--refresh-audio", action="store_true", help="Regenerate rushed or transcription-flagged clips and master all studio clips.")
     args = parser.parse_args()
     if args.refresh_audio:
@@ -577,9 +756,17 @@ def main():
     if args.limit is not None and args.limit < 0:
         parser.error("--limit must be zero or greater")
 
-    targets, missing, totals = collect_targets(args.only)
+    if args.out:
+        set_out_dir(ROOT / args.out)
+    if args.delivery_bitrate:
+        DELIVERY_BITRATE = args.delivery_bitrate
+    if args.max_pace:
+        MAX_PACE = args.max_pace
+    first, _, last = args.lessons.partition("-")
+    lessons = (int(first), int(last or first))
+    targets, missing, totals = collect_targets(args.only, lessons, args.practice, bool(args.out), args.vocab_book)
     print(
-        f"Uncovered users: {missing['example']} examples, {missing['row']} rows; "
+        f"Uncovered users: {missing['example']} examples, {missing['row']} rows, {missing['exercise']} exercises, {missing['vocab']} vocabulary examples; "
         f"{len(targets)} unique keys ({totals['example']} total examples, {totals['row']} eligible rows).",
         flush=True,
     )
@@ -592,10 +779,22 @@ def main():
     by_key = {}
     failures = []
     picks = json.loads(PICKS_PATH.read_text(encoding="utf-8")) if PICKS_PATH.exists() else {}
+    rejected_path = OUT_DIR / "rejected.json"  # Takes checkStudioBatch.py found cut off or misheard.
+    rejected = json.loads(rejected_path.read_text(encoding="utf-8")) if rejected_path.exists() else {}
+    for key, previous in list(old_entries.items()):
+        if attempt_id(previous.get("seed"), previous.get("take", "g" if previous.get("tailGuard") else "")) in rejected.get(key, []):
+            del old_entries[key]
+    attempts_for = {
+        target["key"]: [
+            attempt for attempt in ATTEMPTS
+            if attempt_id(*attempt) not in rejected.get(target["key"], [])
+        ]
+        for target in targets
+    }
     for target in targets:
-        seeds = [picks[target["key"]]] if target["key"] in picks else []
-        for seed in seeds + [SEED, RETRY_SEED]:
-            entry = cached_entry(target, seed, old_entries)
+        picked = [(picks[target["key"]], "")] if target["key"] in picks else []
+        for seed, style in picked + attempts_for[target["key"]]:
+            entry = cached_entry(target, seed, old_entries, style)
             if entry is not None:
                 by_key[target["key"]] = entry
                 break
@@ -638,43 +837,53 @@ def main():
             print(reason, file=sys.stderr, flush=True)
             break
 
-        first_error = None
-        for seed in (SEED, RETRY_SEED):
-            digest, path, sidecar = output_for(key, target["turns"], seed)
+        errors = []
+        attempts = attempts_for[key]
+        if not attempts:
+            failures.append((key, "every take was rejected"))
+            print(f"failed {key}: every take was rejected", flush=True)
+            continue
+        for seed, style in attempts:
+            digest, path, sidecar = output_for(key, target["turns"], seed, style)
             try:
-                audio, sample_rate = synthesize(model, target["turns"], seed, mx, np)
+                audio, sample_rate = synthesize(
+                    model, target["turns"], seed, mx, np,
+                    instruct=SLOWER_INSTRUCT if "s" in style else SLOW_INSTRUCT, guard="g" in style,
+                )
                 duration = validate_duration(audio, sample_rate, key)
-                if len(han("".join(target["turns"]))) / duration > 4:
-                    raise ValueError("Generated delivery exceeds four Chinese characters per second")
+                pace = len(han("".join(target["turns"]))) / duration
+                if pace > MAX_PACE:
+                    raise ValueError(f"Generated delivery is {pace:.2f} characters per second (over {MAX_PACE})")
+                if "s" in style and pace < SLOWER_MIN_PACE:
+                    raise ValueError(f"Slower take drags ({pace:.2f} characters per second)")
                 encode_mp3(audio, sample_rate, path, sf)
                 encoded_duration, channels = probe_audio(path)
                 if channels != 1:
                     raise ValueError(f"encoded MP3 has {channels} channels")
                 if abs(encoded_duration - duration) > 0.15:
                     raise ValueError(f"encoded duration changed from {duration:.2f}s to {encoded_duration:.2f}s")
+                if ending_ratio(path) > ENDING_MAX:
+                    raise ValueError("speech stops mid-syllable")
                 sidecar.write_text(digest + "\n", encoding="utf-8")
-                entry = build_manifest_entry(target, seed, path, encoded_duration)
+                entry = build_manifest_entry(target, seed, path, encoded_duration, style)
                 by_key[key] = entry
                 generated_keys.add(key)
-                print(f"generated {key}: {encoded_duration:.2f}s (seed {seed})", flush=True)
+                print(f"generated {key}: {encoded_duration:.2f}s (take {attempt_id(seed, style)})", flush=True)
                 break
             except Exception as error:
-                first_error = first_error or error
-                if seed == SEED:
-                    print(f"retry {key} with seed {RETRY_SEED}: {type(error).__name__}: {error}", flush=True)
+                errors.append(f"take {attempt_id(seed, style)}: {type(error).__name__}: {error}")
+                if (seed, style) != attempts[-1]:
+                    print(f"retry {key}: {errors[-1]}", flush=True)
                 else:
-                    reason = f"{type(error).__name__}: {error}"
-                    if first_error is not error:
-                        reason = f"seed 42: {type(first_error).__name__}: {first_error}; seed 43: {reason}"
-                    failures.append((key, reason))
-                    print(f"failed {key}: {reason}", flush=True)
+                    failures.append((key, "; ".join(errors)))
+                    print(f"failed {key}: {'; '.join(errors)}", flush=True)
         write_json(MANIFEST_PATH, [by_key[item["key"]] for item in targets if item["key"] in by_key])
         write_review([by_key[item["key"]] for item in targets if item["key"] in by_key])
 
     if args.takes:
         render_takes(selected, args.takes, model)
 
-    entries = [by_key[item["key"]] for item in targets if item["key"] in by_key]
+    entries = [deliver(by_key[item["key"]]) for item in targets if item["key"] in by_key]
     write_json(MANIFEST_PATH, entries)
     write_review(entries)
     total_duration = sum(float(entry["duration"]) for entry in entries)
