@@ -107,6 +107,26 @@ function settingEnglish(setting: string) {
   return setting.split(' · ')[1] ?? setting;
 }
 
+/** The lesson window's pictures: one per part that has an illustration, and the lesson-wide one. */
+export function lessonPictures(bookId: number, lessonId: number, partIds: number[], lessonReadings: ReadingRecord[]) {
+  const illustrationsByPart = Object.fromEntries(lessonReadings.flatMap((reading) => {
+    const url = getReadingIllustration(reading.id)?.url;
+    return url ? [[reading.dialogueNumber, url]] : [];
+  })) as Record<number, string>;
+  if (bookId === 2 && lessonId > 0) {
+    for (const partId of partIds) {
+      const id = `B2L${String(lessonId).padStart(2, '0')}-R${String(partId).padStart(2, '0')}`;
+      const url = getReadingIllustration(id)?.url;
+      if (url && !illustrationsByPart[partId]) illustrationsByPart[partId] = url;
+    }
+  }
+  const lastReading = lessonReadings[lessonReadings.length - 1];
+  const illustration = (lastReading ? getReadingIllustration(lastReading.id)?.url : undefined)
+    ?? illustrationsByPart[partIds[0]];
+  const fallback = lessonId === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lessonId];
+  return { illustrationsByPart, illustration, fallback };
+}
+
 /** Per-part progress, captions and hero image for one lesson. */
 export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgress) {
   const completedPageIds = useAppStore((state) => state.completedPageIds);
@@ -173,21 +193,7 @@ export function useLessonWindowParts(bookId: number, lesson: CourseLessonProgres
     });
   }, [bookId, completedPageIds, lesson.id, lesson.parts, lessonReadings]);
 
-  const illustrationsByPart = Object.fromEntries(lessonReadings.flatMap((reading) => {
-    const url = getReadingIllustration(reading.id)?.url;
-    return url ? [[reading.dialogueNumber, url]] : [];
-  })) as Record<number, string>;
-  if (bookId === 2 && lesson.id > 0) {
-    for (const part of parts) {
-      const id = `B2L${String(lesson.id).padStart(2, '0')}-R${String(part.id).padStart(2, '0')}`;
-      const url = getReadingIllustration(id)?.url;
-      if (url && !illustrationsByPart[part.id]) illustrationsByPart[part.id] = url;
-    }
-  }
-  const lastReading = lessonReadings[lessonReadings.length - 1];
-  const illustration = (lastReading ? getReadingIllustration(lastReading.id)?.url : undefined)
-    ?? illustrationsByPart[parts[0]?.id];
-  const fallback = lesson.id === 0 ? INTRODUCTION_ART : LESSON_LANDSCAPE_ART[lesson.id];
+  const { illustrationsByPart, illustration, fallback } = lessonPictures(bookId, lesson.id, parts.map((part) => part.id), lessonReadings);
   const fallbackImageSrc = readings === null
     ? null
     : illustration ?? fallback;

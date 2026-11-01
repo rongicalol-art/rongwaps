@@ -6,7 +6,11 @@ import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
 import { useReplacesLoader } from '../hooks/useReplacesLoader';
 import { ActionButton, EmptyState, LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
-const ReaderScreen = lazy(() => import('../../screens/reader').then((m) => ({ default: m.ReaderScreen })));
+// The loader stays up until the reading views are ready too, so the text never pops in under the header.
+const ReaderScreen = lazy(() => import('../../screens/reader').then(async (m) => {
+  await m.prepareReader();
+  return { default: m.ReaderScreen };
+}));
 
 type ReaderScreenProps = React.ComponentProps<typeof ReaderScreenType>;
 

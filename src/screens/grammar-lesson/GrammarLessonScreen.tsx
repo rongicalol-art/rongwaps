@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { audioService } from '../../services/audioService';
@@ -8,7 +8,9 @@ import { cn } from '../../utils/cn';
 import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
 import { isExercisePage } from '../../utils/grammar/grammarPracticeCheck';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
-import { WorkspaceWindow } from '../../lib/widgets';
+import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
+import { usePreloadedModule } from '../../hooks/useReadyAction';
+import { practiceModule, studyPageModule } from './grammarLessonChunks';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
 import { GrammarContinueFooter } from './components/GrammarContinueFooter';
 import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
@@ -17,18 +19,8 @@ import { useGrammarFooterVisibility } from './hooks/useGrammarFooterVisibility';
 import { isHanziChar } from '../../utils/characters/hanzi';
 import { useGrammarLessonKeyboardNavigation } from './hooks/useGrammarLessonKeyboardNavigation';
 
-// Window shell (this module) stays eager so the lesson opens instantly with
-// its canvas + header; the heavy study page streams in under a spinner.
-// Never static-import it here or it joins the main bundle.
-const GrammarStudyPage = lazy(() =>
-  import('./components/GrammarStudyPage').then((m) => ({ default: m.GrammarStudyPage })),
-);
-const GrammarPracticeView = lazy(() =>
-  import('../../features/grammar-practice').then((m) => ({ default: m.GrammarPracticeView })),
-);
-const ExercisePage = lazy(() =>
-  import('../../features/grammar-practice').then((m) => ({ default: m.ExercisePage })),
-);
+// Window shell (this module) stays eager; the study page and the exercise are code-split
+// (grammarLessonChunks) and loaded before they are shown, so neither pops in.
 
 interface GrammarLessonScreenProps {
   part: InteractiveGrammarPart;
@@ -40,9 +32,8 @@ interface GrammarLessonScreenProps {
   animateIn?: boolean;
 }
 
-/** Mounts only once the lazy study page chunk has resolved; the shell uses it
- *  to hide the end-of-page footer (and its scroll probe) while the page
- *  content is still loading. */
+/** Mounts only once the study page code has arrived; the shell uses it to hide
+ *  the end-of-page footer (and its scroll probe) while the page is still loading. */
 function GrammarContentMount({
   onMounted,
   children,
@@ -75,12 +66,14 @@ export function GrammarLessonScreen({
   // Continue footer never floats over the loading state.
   const [contentReady, setContentReady] = useState(false);
   const markContentReady = useCallback(() => setContentReady(true), []);
+  const studyPage = usePreloadedModule(studyPageModule);
 
   const {
     page,
     previousPage,
     isLastPage,
     continueAfterStudy,
+    isPreparingPractice,
     goBackToPreviousGrammar,
     isPracticing,
     practiceInitialIndex,
@@ -97,6 +90,8 @@ export function GrammarLessonScreen({
     onClose,
     onProceedToReading,
   });
+
+  const practice = usePreloadedModule(practiceModule, isPracticing);
 
   const printedPages = page.printedPages;
   const bookPageLabel = (page.bookPageAvailable ?? true) && printedPages.length > 0
@@ -205,7 +200,7 @@ export function GrammarLessonScreen({
               onToggleChineseExplanation={hasChineseExplanation(page) ? () => setChineseExplanation((prev) => !prev) : undefined}
             />
 
-            <Suspense fallback={null}>
+            {!studyPage ? <LoadingScreen inline message="Loading grammar…" /> : (
               <GrammarContentMount onMounted={markContentReady}>
                 <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 pb-32 pt-6 sm:px-6 sm:pb-32 sm:pt-8">
                   <AnimatePresence mode="wait" initial={false} onExitComplete={() => setSettledKey(pageKeyRef.current)}>
@@ -217,10 +212,9 @@ export function GrammarLessonScreen({
                       transition={{ duration: 0.16, ease: 'easeOut' }}
                     >
                       {isPracticing && page.practice ? (
-                        // Its own boundary: loading the exercise never blanks the page behind it.
-                        <Suspense fallback={null}>
-                        {isExercisePage(page.practice) ? (
-                          <ExercisePage
+                        // Practice opens once this has loaded; the loader shows only when loading ran past the wait.
+                        !practice ? <LoadingScreen inline message="Loading exercise…" /> : isExercisePage(page.practice) ? (
+                          <practice.ExercisePage
                             key={`exercise-${page.id}`}
                             practice={page.practice}
                             script={characterPreference}
@@ -231,7 +225,7 @@ export function GrammarLessonScreen({
                             shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
                           />
                         ) : (
-                        <GrammarPracticeView
+                        <practice.GrammarPracticeView
                           key={`practice-${page.id}-${practiceInitialIndex}`}
                           practice={page.practice}
                           script={characterPreference}
@@ -245,10 +239,9 @@ export function GrammarLessonScreen({
                           initialIndex={practiceInitialIndex}
                           shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
                         />
-                        )}
-                        </Suspense>
+                        )
                       ) : (
-                        <GrammarStudyPage
+                        <studyPage.GrammarStudyPage
                           page={page}
                           characterPreference={characterPreference}
                           showPinyin={showPinyin}
@@ -261,7 +254,7 @@ export function GrammarLessonScreen({
                   </AnimatePresence>
                 </div>
               </GrammarContentMount>
-            </Suspense>
+            )}
           </main>
 
 
@@ -271,6 +264,7 @@ export function GrammarLessonScreen({
             previousPage={previousPage}
             isLastPage={isLastPage}
             continueLabel={page.practice ? 'Practice' : undefined}
+            isPreparing={isPreparingPractice}
             onBack={goBackToPreviousGrammar}
             onContinue={continueAfterStudy}
           />

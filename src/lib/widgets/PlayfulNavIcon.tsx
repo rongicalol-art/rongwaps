@@ -1,5 +1,6 @@
 import type { ImgHTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
+import { preloadImages } from '../../utils/browser/preloadAssets';
 
 export type PlayfulNavIconName =
   | 'learn' | 'dictionary' | 'library' | 'profile' | 'favorite' | 'practiceHub' | 'pinyinPractice'
@@ -42,6 +43,11 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   trueFalse: new URL('../../assets/icons/flat/sign-check.svg?no-inline', import.meta.url).href,
   build: new URL('../../assets/icons/flat/brick.svg?no-inline', import.meta.url).href,
 };
+
+/** Loads the icon files ahead (all by default; they are small) so a screen never draws without them. */
+export function preloadPlayfulNavIcons(names: readonly PlayfulNavIconName[] = Object.keys(navIconSrc) as PlayfulNavIconName[]): Promise<void> {
+  return preloadImages(names.map((name) => navIconSrc[name]));
+}
 
 export function PlayfulNavIcon({ name, className, alt = '', ...props }: PlayfulNavIconProps) {
   return (

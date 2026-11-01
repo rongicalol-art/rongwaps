@@ -15,7 +15,7 @@
 
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
-| ActionButton | `ActionButton.tsx` | Text action: `primary` `secondary` `quiet` `danger` `success` `warning`; `sm`/`md`/`lg`, `radius` (`control` default, `feature` for 24px media tiles), `fullWidth`, `loading`, `edgeColor`. One dominant action per surface. Labels default to ALL CAPS (`font-black uppercase tracking-wider`, set by the widget); call sites may opt out with `normal-case tracking-normal` for compact icon+word buttons (e.g. the quiz's Slow button). `secondary` and `quiet` labels take the book accent (`brand-primary-deep`), `quiet` has no box or depth. |
+| ActionButton | `ActionButton.tsx` | Text action: `primary` `secondary` `quiet` `danger` `success` `warning`; `sm`/`md`/`lg`, `radius` (`control` default, `feature` for 24px media tiles), `fullWidth`, `loading`, `edgeColor`. A button that opens a screen pairs `loading` with `useReadyAction` (`src/hooks/`): the screen opens once ready, loading shows after 150 ms, and after 1.5 s it opens anyway with its own loader. One dominant action per surface. Labels default to ALL CAPS (`font-black uppercase tracking-wider`, set by the widget); call sites may opt out with `normal-case tracking-normal` for compact icon+word buttons (e.g. the quiz's Slow button). `secondary` and `quiet` labels take the book accent (`brand-primary-deep`), `quiet` has no box or depth. |
 | IconActionButton | `IconActionButton.tsx` | Icon utility button; `icon` and `label` required (label = accessible name + tooltip). |
 | KeyChip | `KeyChip.tsx` | Keyboard hint hanging after a button label (`Space`, `1`); place inside a `relative` label span; shown only on precise pointers, never touch; `visible={false}` removes it. |
 | EdgeNavButtons | `EdgeNavButtons.tsx` | Invisible left/right tap zones for card/writing screens; `half` or `edge` mode. |
@@ -35,7 +35,7 @@
 | CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
 | VideoBackground | `VideoBackground.tsx` | Static decorative artwork via `posterSrc`; no continuous video decoding. Optional scrim and children. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
-| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. |
+| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`); `challenge` (lightning) for quiz races. `preloadPlayfulNavIcons()` loads the files ahead (at idle after boot, and before the lesson window opens). |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
 | Avatar / AvatarStack | `AvatarStack.tsx` | Initials on a profile avatar colour (`avatarStyle`), optional live dot; `AvatarStack` overlaps up to `max` faces then "+N" and renders nothing when empty. Study together faces (Books tiles, lesson window, practice header, rooms). |
 | ProfileCover | `ProfileCover.tsx` | `coverStyle(preset, image?)` paints a profile cover (uploaded photo, else the preset colour); `ProfileCoverGlyphs` draws the faint character pattern, sized by `className`. Own profile and classmate visits. |
