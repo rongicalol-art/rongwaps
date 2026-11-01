@@ -44,6 +44,12 @@ test('Authored Content Round-Trip: grammar pack deeply equals content/grammar/*.
       page.practice = practice;
     }
   }
+  // Summaries (content/grammar-summaries) ride on their grammar page too.
+  for (const [pageId, summary] of Object.entries(readJson<Record<string, string[]>>('content/grammar-summaries/book-1.json'))) {
+    const page = pages.get(pageId);
+    assert.ok(page, `grammar-summaries/book-1.json: unknown grammar page ${pageId}`);
+    page.summary = summary;
+  }
 
   assert.equal(pack.schemaVersion, 1);
   assert.equal(pack.bookId, 1);

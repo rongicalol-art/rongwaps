@@ -161,6 +161,7 @@ async function loadSourceGrammarParts(bookId: number): Promise<InteractiveGramma
   }
   parts.sort((a, b) => (a.lessonId - b.lessonId) || (a.partId - b.partId));
   if (bookId !== 2) await attachGrammarPractice(parts, bookId);
+  await attachGrammarSummaries(parts, bookId);
   await attachSentenceAudio(parts);
   return parts;
 }
@@ -217,6 +218,18 @@ async function attachGrammarPractice(parts: InteractiveGrammarPart[], bookId: nu
       if (!page) throw new Error(`${file}: no grammar page "${pageId}" in book ${bookId}.`);
       page.practice = practice;
     }
+  }
+}
+
+/** Plain-English summaries live in content/grammar-summaries/book-N.json keyed by grammar page id. */
+async function attachGrammarSummaries(parts: InteractiveGrammarPart[], bookId: number) {
+  const file = resolve(ROOT, `content/grammar-summaries/book-${bookId}.json`);
+  const summaries = JSON.parse(await readFile(file, 'utf8').catch(() => '{}')) as Record<string, string[]>;
+  const pages = new Map(parts.flatMap((part) => part.grammarPages.map((page) => [page.id, page] as const)));
+  for (const [pageId, summary] of Object.entries(summaries)) {
+    const page = pages.get(pageId);
+    if (!page) throw new Error(`grammar-summaries/book-${bookId}.json: no grammar page "${pageId}".`);
+    page.summary = summary;
   }
 }
 

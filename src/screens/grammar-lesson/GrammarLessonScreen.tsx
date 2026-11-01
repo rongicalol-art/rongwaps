@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
-import type { InteractiveGrammarPart } from '../../types/models';
+import type { InteractiveGrammarPage, InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
 import { isExercisePage } from '../../utils/grammar/grammarPracticeCheck';
@@ -12,6 +12,7 @@ import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 import { usePreloadedModule } from '../../hooks/useReadyAction';
 import { practiceModule, studyPageModule } from './grammarLessonChunks';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
+import type { GrammarExplanationView } from './components/GrammarStudyPage';
 import { GrammarContinueFooter } from './components/GrammarContinueFooter';
 import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
 import { useGrammarLessonPage } from './hooks/useGrammarLessonPage';
@@ -106,7 +107,10 @@ export function GrammarLessonScreen({
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const [showPinyin, setShowPinyin] = useState(false);
   const [showTranslation, setShowTranslation] = useState(true);
-  const [chineseExplanation, setChineseExplanation] = useState(false);
+  // The summary opens first; the choice holds across pages and falls back to Full where a page lacks that view.
+  const [explanationChoice, setExplanationChoice] = useState<GrammarExplanationView>('summary');
+  const explanationViews = getExplanationViews(page);
+  const explanationView = explanationViews.includes(explanationChoice) ? explanationChoice : 'full';
 
   const closeLesson = useCallback(() => {
     audioService.stop();
@@ -196,8 +200,9 @@ export function GrammarLessonScreen({
               bookPageLabel={bookPageLabel}
               onOpenBookPage={() => setIsBookOpen(true)}
               bookPageButtonRef={bookPageButtonRef}
-              chineseExplanation={chineseExplanation}
-              onToggleChineseExplanation={hasChineseExplanation(page) ? () => setChineseExplanation((prev) => !prev) : undefined}
+              explanationView={explanationView}
+              explanationViews={explanationViews}
+              onExplanationViewChange={setExplanationChoice}
             />
 
             {!studyPage ? <LoadingScreen inline message="Loading grammar…" /> : (
@@ -247,7 +252,7 @@ export function GrammarLessonScreen({
                           showPinyin={showPinyin}
                           showTranslation={showTranslation}
                           onOpenWord={setDictionaryWord}
-                          chineseExplanation={chineseExplanation && hasChineseExplanation(page)}
+                          explanationView={explanationView}
                         />
                       )}
                     </motion.div>
@@ -285,7 +290,15 @@ export function GrammarLessonScreen({
   );
 }
 
-/** The 中文 switch only makes sense when the page has both an English explanation and a real Chinese one (mostly hanzi). */
+function getExplanationViews(page: InteractiveGrammarPage): GrammarExplanationView[] {
+  return [
+    ...(page.summary?.length ? ['summary' as const] : []),
+    'full' as const,
+    ...(hasChineseExplanation(page) ? ['chinese' as const] : []),
+  ];
+}
+
+/** The 中文 view only makes sense when the page has both an English explanation and a real Chinese one (mostly hanzi). */
 function hasChineseExplanation(page: { explanation: string; explanationEnglish?: string }) {
   if (!page.explanationEnglish) return false;
   const hanzi = [...page.explanation].filter(isHanziChar).length;

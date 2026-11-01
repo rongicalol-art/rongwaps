@@ -27,6 +27,7 @@
           ],
           "audioReference": "01-1-3",
           "explanation": "叫, 姓 and 是 are used as verbs and equate two nouns in a sentence. 姓 comes only before a family name. 叫 comes before a given name or a full name. 是 says what someone is. Put 不 before them to say no.",
+          "explanationEnglish": "叫, 姓 and 是 are used as verbs and equate two nouns in a sentence. 姓 is only used for a family name. But 叫 can be used for either a given name or a full name.",
           "focusTerms": [
             "叫",
             "姓",
@@ -1698,7 +1699,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 姓 and 叫 to give a name, and 是 to say what someone is.",
+            "姓 comes before a family name only. 叫 comes before a given name or a full name.",
+            "To say no, put 不 before the verb."
+          ]
         },
         {
           "id": "B1L01-G02-P39",
@@ -1716,6 +1722,7 @@
           ],
           "audioReference": "01-1-3",
           "explanation": "Put 很 or 不 before adjectives like 漂亮, 可愛, 忙 and 累. These words already carry the meaning of \"is\", so no 是 is needed. 很 can mean \"very\"; 不 means \"not\".",
+          "explanationEnglish": "Adverbs 很 and 不 can be placed before a Vs. In this pattern, a Vs can be regarded as an adjective, but there is no need to add the verb “to be” because it is already embedded in the Intransitive State Verb.",
           "focusTerms": [
             "很",
             "不",
@@ -2663,7 +2670,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 很 or 不 before words like 漂亮 and 忙 to describe someone. 很 can mean very, and 不 means not.",
+            "Don't add 是. These words already carry the meaning of is, so you can't say 她是漂亮."
+          ]
         },
         {
           "id": "B1L01-G03-P40",
@@ -2681,6 +2692,7 @@
           ],
           "audioReference": "01-1-3",
           "explanation": "Add 嗎 at the very end of the statement, without any change in order. Nothing inside the sentence moves. The listener answers yes or no.",
+          "explanationEnglish": "A question can be formed by adding 嗎 at the end of the statement without any change in order. It is close to a yes/no question in English.",
           "focusTerms": [
             "嗎"
           ],
@@ -3692,7 +3704,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Add 嗎 at the very end of a statement to turn it into a yes or no question.",
+            "Nothing else in the sentence moves.",
+            "Don't use 嗎 in the answer. The answer is a plain statement."
+          ]
         }
       ],
       "dialogue": {
@@ -3821,6 +3838,7 @@
           ],
           "audioReference": "01-2-3",
           "explanation": "When a question is already in the air, say the new person or thing, add 呢, and stop. 呢 repeats that question for the new person without saying the sentence again.",
+          "explanationEnglish": "呢 is used at the end of the sentence in an abbreviated way to ask a question from the previous clause.",
           "focusTerms": [
             "呢"
           ],
@@ -5157,7 +5175,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 呢 to ask the same question again about someone or something new, without saying the whole sentence again.",
+            "Say the new person or thing, then 呢, and stop.",
+            "Don't use 嗎 for this. 嗎 starts a brand-new yes or no question."
+          ]
         },
         {
           "id": "B1L01-G05-P45",
@@ -6243,7 +6266,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put the subject first, then the verb, then the object.",
+            "The object is the person or thing the verb affects, and it comes right after the verb with no 是.",
+            "Put 不 right before the verb to say the opposite."
+          ]
         }
       ],
       "dialogue": {
@@ -6368,6 +6396,7 @@
           ],
           "audioReference": "02-1-3",
           "explanation": "Dates and clock times put the number before the unit: 五月十六號, 九點二十分. Weekdays go the opposite way: say 星期 first, then the number: 星期四.",
+          "explanationEnglish": "When expressing a date in Chinese, the month comes before the date. The numbers from 1 to 6 follow 星期 are used to express Monday to Saturday respectively. 幾 is used to ask dates, months and time.",
           "focusTerms": [
             "月",
             "號",
@@ -8002,7 +8031,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "For dates and clock times, put the number before the unit word, like 五月十六號 and 九點二十分.",
+            "For weekdays, say 星期 first and then the number, like 星期四. Numbers 1 to 6 mean Monday to Saturday.",
+            "Big units come first, so the month comes before the day.",
+            "Ask with 幾: 幾點 asks the clock time and 星期幾 asks the weekday."
+          ]
         },
         {
           "id": "B1L02-G02-P55",
@@ -8020,6 +8055,7 @@
           ],
           "audioReference": "02-1-3",
           "explanation": "Put the time before the verb, as in 他八點回家。",
+          "explanationEnglish": "In this pattern, time of event is always precedes the verb.",
           "focusTerms": [
             "今天",
             "幾點",
@@ -9208,7 +9244,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "To say when something happens, put the time word before the verb, as in 他八點回家.",
+            "Don't put the time at the end like in English. You can't say 他回家八點."
+          ]
         },
         {
           "id": "B1L02-G03-P56",
@@ -9226,6 +9266,7 @@
           ],
           "audioReference": "02-1-3",
           "explanation": "有 says what someone has. To say “do not have,” replace 有 with 沒有. Never negate 有 with 不.",
+          "explanationEnglish": "In this pattern, 有 refers to possession or ownership and is always negated with 沒.",
           "focusTerms": [
             "有",
             "沒有",
@@ -10252,7 +10293,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "有 says what someone has.",
+            "To say someone doesn't have something, use 沒有, never 不有."
+          ]
         }
       ],
       "dialogue": {
@@ -11530,7 +11575,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 的 between the owner and the thing that belongs to them, like 我的孩子.",
+            "Use 的 for this, not 是."
+          ]
         },
         {
           "id": "B1L02-G05-P61",
@@ -11548,6 +11597,7 @@
           ],
           "audioReference": "02-2-3",
           "explanation": "Put 要, 喜歡, or 愛 before the next verb: 我要喝茶, 媽媽喜歡喝奶茶.",
+          "explanationEnglish": "Auxiliary verbs (Vaux) always precedes verbs when used in Chinese sentences.",
           "focusTerms": [
             "要",
             "喜歡",
@@ -12762,7 +12812,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 要, 喜歡 or 愛 before the next verb to say what you want or like to do.",
+            "To say you don't like doing it, put 不 before 愛, as in 不愛喝."
+          ]
         },
         {
           "id": "B1L02-G06-P62",
@@ -12780,6 +12834,7 @@
           ],
           "audioReference": "02-2-3",
           "explanation": "Repeat the verb or adjective around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. Leave out 嗎.",
+          "explanationEnglish": "A question can be formed by “positive-negative” way. It is close to yes/no question in English, but 嗎 is never used in this pattern.",
           "focusTerms": [
             "忙不忙",
             "吃不吃",
@@ -14061,7 +14116,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Say the verb or adjective, then 不, then the same word again to ask a question, like 忙不忙.",
+            "With 有, say 有沒有. You can't pair 有 with 不.",
+            "Leave out 嗎, because this form is already a question."
+          ]
         }
       ],
       "dialogue": {
@@ -14188,6 +14248,7 @@
           ],
           "audioReference": "03-1-3",
           "explanation": "Chinese needs a measure word between a number and noun: 個 for general nouns, 本 for books, and 朵 for flowers. Before a measure word, say 兩 for “two,” not 二. 幾 (how many) is always used together with a measure word and is usually used when the amount is less than ten.",
+          "explanationEnglish": "When a noun is modified by a number, a measure word is necessary in order to specify a certain quantity. The number 二 becomes 兩 when there is a measure word used. 幾 (how many) is always used together with a measure word and is usually used when the amount is less than ten.",
           "focusTerms": [
             "個",
             "个",
@@ -15674,7 +15735,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put a measure word between a number and a noun, like 個 for general nouns and 本 for books.",
+            "Before a measure word, say 兩 for two, not 二.",
+            "幾 means how many and always goes with a measure word. It is usually for amounts less than ten."
+          ]
         },
         {
           "id": "B1L03-G02-P74",
@@ -15693,6 +15759,7 @@
           ],
           "audioReference": "03-1-3",
           "explanation": "After 送, say the receiver first and the gift second: 送 + person + gift. Unlike English, Chinese adds no “to” before the receiver.",
+          "explanationEnglish": "送 is followed by two objects. The indirect object is “people”; the other one is direct object. The order is “送 + indirect object + direct object.”",
           "focusTerms": [
             "送"
           ],
@@ -17322,7 +17389,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "After 送, say the person who gets the gift first, then the gift.",
+            "Chinese adds no word like to before the person.",
+            "Use 誰 to ask who gets it. 什麼 asks what the gift is."
+          ]
         }
       ],
       "dialogue": {
@@ -17753,6 +17825,7 @@
           ],
           "audioReference": "03-2-3",
           "explanation": "Start with 這, 那, or 哪, then add the number, measure word, and noun. With one item, 一 is often omitted; with two, use 兩. 這, 那, and 哪 mean “this,” “that,” and “which.” Use 這 when the noun is close and 那 when it is far.",
+          "explanationEnglish": "These three words mean “this” “that” and “which”. It depends on the proximity of the nouns you are referring to. If it is close to you, use 這; if it is far, use 那.\nWhen the number is one, we usually omit it. When the number is two, then change it to “兩”.",
           "focusTerms": [
             "這",
             "这",
@@ -19696,7 +19769,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "To point at a thing, say 這, 那 or 哪, then the number, the measure word and the noun.",
+            "這 means this, for close things. 那 means that, for far things. 哪 asks which: answer with 這 or 那.",
+            "With one item, 一 is often left out. With two, say 兩."
+          ]
         },
         {
           "id": "B1L03-G04-P82",
@@ -19716,6 +19794,7 @@
           ],
           "audioReference": "03-2-3",
           "explanation": "Use 的 to link a describing word to a noun. With short one-syllable words, you can usually skip 的. If the topic is already clear, drop the noun and keep just 的.",
+          "explanationEnglish": "When a Vs modifies a noun, 的 can be used between them.\n(1) 的 is used between a Vs and a noun.\n(2) 的 can be omitted.\nWe often omit 的 when it is used with one-syllable Vs.\n(3) Nouns can be omitted.\nNouns, mentioned previously, can be omitted for subsequent usage to avoid repetition; however, the 的 cannot be omitted.",
           "focusTerms": [
             "的",
             "大的",
@@ -22305,7 +22384,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 的 to link a describing word to a noun, like 漂亮的花.",
+            "Short one-syllable words can usually skip 的, as in 新（的）書.",
+            "If the noun is already clear, you can drop it, but keep 的: 他要買大的."
+          ]
         },
         {
           "id": "B1L03-G05-P84",
@@ -22324,6 +22408,7 @@
           ],
           "audioReference": "03-2-3",
           "explanation": "Name the whole group first, then put 都 before what the group does or is like. 都 looks back and means “both” or “all.”",
+          "explanationEnglish": "都 is an adverb and is always followed by a verb or a Vs in Chinese sentence.",
           "focusTerms": [
             "都"
           ],
@@ -23886,7 +23971,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Name the whole group first, then put 都 before what the group does or is like. 都 means both or all.",
+            "To say none of us wants to, use 都不要. 不要都 doesn't mean that."
+          ]
         }
       ],
       "dialogue": {
@@ -24335,6 +24424,7 @@
           ],
           "audioReference": "04-1-3",
           "explanation": "Move a known topic to the front of the sentence. Pause, then say what happens to it. When naming several items up front, use 都 for \"all of them\".",
+          "explanationEnglish": "An object can be moved to the beginning of a sentence, and it then becomes a topic. A topic is a certain part we would like to emphasize in a sentence.\n(1) Singular Topic\n(2) Plural Topic: When the topic is plural, 都 is used after the topic.",
           "focusTerms": [
             "都"
           ],
@@ -26535,7 +26625,12 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "Move a known thing you want to stress to the front of the sentence, then say what happens to it.",
+            "With several things up front, put 都 after the subject for all of them: 書、筆，我都有.",
+            "Keep the verb after 都."
+          ]
         },
         {
           "id": "B1L04-G02-P97",
@@ -26554,6 +26649,7 @@
           ],
           "audioReference": "04-1-3",
           "explanation": "Put 也 before the verb or adjective. You can add another action or quality for the same subject, or describe a different subject.",
+          "explanationEnglish": "也 is an adverb and is followed by a verb or a Vs.\n(1) When the subjects are the same\n(2) When the subjects are different",
           "focusTerms": [
             "也"
           ],
@@ -28584,7 +28680,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 也 before the verb or adjective to say the same is true again.",
+            "It can be the same subject doing one more thing, or a different subject.",
+            "For a new subject, name it first, then 也, then repeat the verb: 他也買書."
+          ]
         },
         {
           "id": "B1L04-G03-P98",
@@ -30353,7 +30454,12 @@
             "allowWords": [
               "珍珠"
             ]
-          }
+          },
+          "summary": [
+            "Put 太 before a describing word and 了 after it to react strongly, like 太熱了.",
+            "It can mean too, or an excited so or really, depending on the situation.",
+            "As a full reaction, close it with 了. 太熱 alone is not enough."
+          ]
         }
       ],
       "dialogue": {
@@ -33471,7 +33577,12 @@
               "八",
               "九"
             ]
-          }
+          },
+          "summary": [
+            "Build numbers with 十, 百, 千 and 萬. Read the biggest part first, then the rest.",
+            "If a middle place is empty, say 零 once, as in 一百零五. Zeroes at the end are not read.",
+            "In prices and amounts, the last block word is often dropped, so 一百五 is the short way to say 150."
+          ]
         },
         {
           "id": "B1L04-G05-P105",
@@ -33491,6 +33602,7 @@
           ],
           "audioReference": "04-2-3",
           "explanation": "After a round number, 多 means somewhere above it: 一百多 is 101–199. After a unit, it means slightly beyond: 十一點多 is a little after eleven.",
+          "explanationEnglish": "多 can be used to express the number is in excess of a certain amount.\n(1) Nu + 多 + M + N\n(2) Nu + M + 多 + N\nIn this form, 多 indicates a vague amount which is between “one” and “zero”.",
           "focusTerms": [
             "多",
             "一百多",
@@ -36331,7 +36443,12 @@
               "八",
               "九"
             ]
-          }
+          },
+          "summary": [
+            "After a round number, 多 means somewhere above it: 一百多 means 101 to 199.",
+            "After a unit word like 點 or 歲, 多 means a little extra, under one more unit: 十一點多.",
+            "The place matters. 十多個 means more than ten, but 十個多 is only a little more than ten."
+          ]
         }
       ],
       "dialogue": {
@@ -36819,6 +36936,7 @@
           ],
           "audioReference": "05-1-3",
           "explanation": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word.",
+          "explanationEnglish": "In this pattern, 在 always precedes the place word.",
           "focusTerms": [
             "在",
             "不在",
@@ -38489,7 +38607,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 在 to say where something is: the person or thing, then 在 or 不在, then the place.",
+            "Use 在, not 是, to say where you are. You can't say 我是台灣.",
+            "Ask where with 哪裡, not 什麼."
+          ]
         },
         {
           "id": "B1L05-G02-P117",
@@ -38507,6 +38630,7 @@
           ],
           "audioReference": "05-1-3",
           "explanation": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens.",
+          "explanationEnglish": "在+PW precedes an action to express where the action is taking place.",
           "focusTerms": [
             "在"
           ],
@@ -40318,7 +40442,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "To say where an action happens, put 在 and the place right before the action.",
+            "Don't put the place after the verb. You can't say 他看書在圖書館.",
+            "去圖書館看書 means he goes there to read, while 在圖書館看書 says where he reads."
+          ]
         },
         {
           "id": "B1L05-G03-P118",
@@ -40336,6 +40465,7 @@
           ],
           "audioReference": "05-1-3",
           "explanation": "Put 吧 at the end of a sentence to make a suggestion.",
+          "explanationEnglish": "吧 is placed at the end of a sentence, to express the suggestion from the speaker.",
           "focusTerms": [
             "吧"
           ],
@@ -41984,7 +42114,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 吧 at the very end of a sentence to make a suggestion.",
+            "嗎 turns the same words into a yes or no question, so use 吧 to suggest."
+          ]
         }
       ],
       "dialogue": {
@@ -42484,6 +42618,7 @@
           ],
           "audioReference": "05-2-3",
           "explanation": "Put a direction word after a noun to give the direction and location of a place, as in 桌子上面 or 學校旁邊.",
+          "explanationEnglish": "“Noun + Directional Word” is used to denote the direction and the location of a place.",
           "focusTerms": [
             "上面",
             "下面",
@@ -44746,7 +44881,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put a direction word after a noun to say exactly where something is: noun first, then direction, like 桌子上面.",
+            "Use 在 or 不在 before this place word. If there is an action, the place word comes before the verb.",
+            "上面 means on top. For inside a room, use 裡面."
+          ]
         },
         {
           "id": "B1L05-G05-P126",
@@ -44764,6 +44904,7 @@
           ],
           "audioReference": "05-2-3",
           "explanation": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
+          "explanationEnglish": "有 can be placed after a place word to express “there is/are something on a place” and is always negated with 沒.",
           "focusTerms": [
             "有",
             "沒有",
@@ -46612,7 +46753,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "To say what is in a place, say the place first, then 有, then the thing there.",
+            "To say something is not there, use 沒有. You can't say 不有."
+          ]
         }
       ],
       "dialogue": {
@@ -47213,6 +47358,7 @@
           ],
           "audioReference": "06-1-3",
           "explanation": "會 marks a skill you get through learning. Put it before the action: 我會游泳. Negate with 不會: 我不會打棒球.",
+          "explanationEnglish": "會 indicates skills through learning in this pattern.",
           "focusTerms": [
             "會",
             "会",
@@ -48502,7 +48648,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "會 shows a skill you got by learning. Put it before the action: 我會游泳.",
+            "To say you can't, put 不 right before 會: 我不會打棒球."
+          ]
         },
         {
           "id": "B1L06-G02-P136",
@@ -48524,6 +48674,7 @@
           ],
           "audioReference": "06-1-3",
           "explanation": "Use 得 after a verb to describe how well you do it: 跑得很快. If there is an object, repeat the verb (跑步跑得很快) or say the object first (網球打得很好).",
+          "explanationEnglish": "Complement Marker 得 follows a verb and introduces the complement, which expresses the result or state of the action.\n(2) S-V-O as the Topic\n(3) Subject as the Topic\n(4) S 的 O as the Topic",
           "focusTerms": [
             "得",
             "跑得很快",
@@ -52728,7 +52879,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 得 right after a verb, then say how well the action is done.",
+            "With an object, repeat the verb, like 跑步跑得很快, or put the object first. The verb stays next to 得.",
+            "得 is not 的. 得 links an action to how it is done, and 的 shows belonging."
+          ]
         }
       ],
       "dialogue": {
@@ -53278,6 +53434,7 @@
           ],
           "audioReference": "06-2-3",
           "explanation": "Use 有一點兒 (or 有點兒) before a describing word to say it is slightly so — usually for a small problem.",
+          "explanationEnglish": "有（一）點（兒）is used as an adverb to express slightly/a little, modifying the Vs that follows it.",
           "focusTerms": [
             "有一點兒",
             "有一点儿",
@@ -54830,7 +54987,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 有一點兒 or 有點兒 right before a describing word to say a little, usually when it is a small problem.",
+            "Don't add 很 after it. You can't say 有點兒很忙."
+          ]
         },
         {
           "id": "B1L06-G04-P147",
@@ -57203,7 +57364,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 可以 to ask for permission or to suggest a way to solve a problem.",
+            "Ask with 可以 and 嗎, or with 可不可以. Answer with 可以 or 不可以.",
+            "Put 可以 before the verb, and don't add 嗎 after 可不可以."
+          ]
         }
       ],
       "dialogue": {
@@ -57676,6 +57842,7 @@
           ],
           "audioReference": "07-1-3",
           "explanation": "從 means from. 到 means to. Put the place right after it, then end with 來 (come) or 去 (go).",
+          "explanationEnglish": "This sentence pattern is used to convey someone departing from somewhere or going to somewhere.",
           "focusTerms": [
             "從",
             "从",
@@ -59445,7 +59612,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "從 means from and 到 means to. Put where you start after 從 and where you go after 到.",
+            "Use both in one sentence, start first and then the end: 從我家到學校.",
+            "After the place, say 來 (come) or 去 (go).",
+            "Use 來 when the trip ends where the speaker is: 到我家來."
+          ]
         },
         {
           "bookId": 1,
@@ -59463,6 +59636,7 @@
           ],
           "audioReference": "07-1-3",
           "explanation": "Ask with 怎麼 (how). Answer with how you travel, like 坐公車, 騎腳踏車 or 走路, then 來 or 去.",
+          "explanationEnglish": "This pattern expresses how to get around with transportation or on foot.",
           "focusTerms": [
             "怎麼",
             "怎么",
@@ -60729,7 +60903,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Ask how to get somewhere by putting 怎麼 before 去: 你怎麼去.",
+            "To answer, say how you travel, like 坐公車 or 走路, then 來 or 去.",
+            "走路 doesn't take 坐."
+          ]
         },
         {
           "bookId": 1,
@@ -60748,6 +60927,7 @@
           ],
           "audioReference": "07-1-3",
           "explanation": "了 at the end of a sentence means something is new: it was not true before, but it is now.",
+          "explanationEnglish": "When there is a new situation, 了 can be placed at the end of the sentence to express the change.",
           "focusTerms": [
             "了",
             "現在",
@@ -62499,7 +62679,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 了 at the end of a sentence to say something is new: it wasn't true before, but it is now.",
+            "After an adjective, it shows a new state, like 餓了.",
+            "After a verb, it shows something starts or can happen now, like 可以上車了."
+          ]
         }
       ],
       "dialogue": {
@@ -63108,6 +63293,7 @@
           ],
           "audioReference": "07-2-3",
           "explanation": "In Chinese, you can say the activity first, then say what you think about it. Think: activity → your comment.",
+          "explanationEnglish": "Verb-objects can be placed to the beginning of a sentence to serve as a topic.",
           "focusTerms": [
             "方便",
             "太慢"
@@ -64064,7 +64250,12 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "You can say the activity first, then give your comment on it: 坐捷運很方便.",
+            "Keep the activity together before the comment.",
+            "If you list several activities, put 都 before the verb in the comment: 我都喜歡."
+          ]
         },
         {
           "bookId": 1,
@@ -64082,6 +64273,7 @@
           ],
           "audioReference": "07-2-3",
           "explanation": "Put 又 before each of two qualities or actions describing the same subject; do not put nouns directly after 又.",
+          "explanationEnglish": "This double 又 structure is like “both... and...”. It is used to describe two qualities to the subject. However, 又 can not be followed by nouns.",
           "focusTerms": [
             "又",
             "方便",
@@ -65503,7 +65695,12 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 又 before each of two qualities or actions of the same subject, like 又快又方便.",
+            "Say the subject first, then 又 before each quality or action.",
+            "Don't put a noun directly after 又."
+          ]
         }
       ],
       "dialogue": {
@@ -66046,6 +66243,7 @@
           "titleEnglish": "好 / 難 + Verb",
           "learnerPromise": "Say what is pleasant or easy to do.",
           "explanation": "好 or 難 before a perception verb says something is pleasant or unpleasant. Before an action verb, it says something is easy or hard to do.",
+          "explanationEnglish": "(1) Something is good or bad to do (perception verbs).\n(2) Something is easy or difficult to do (action verbs).",
           "pattern": "好 / 難 + verb",
           "patternColumns": [
             "好",
@@ -68517,7 +68715,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 好 or 難 before a verb for taste, looks or sound to say it is pleasant or unpleasant: 好吃.",
+            "Before an action verb, 好 or 難 says the action is easy or hard to do, like 難學.",
+            "Put them before the verb, not after it."
+          ]
         },
         {
           "bookId": 1,
@@ -68536,6 +68739,7 @@
           "titleEnglish": "Cause and Effect",
           "learnerPromise": "Give a reason and its result.",
           "explanation": "因為 introduces the reason; 所以 introduces the result. The reason usually comes first.",
+          "explanationEnglish": "In this pattern, two clauses are connected in one cause-effect sentence. The clause with 因為 usually comes first to state the reason, followed by the other one with 所以 to state the result.",
           "pattern": "因為 + reason, 所以 + result",
           "patternColumns": [
             "Reason",
@@ -70378,7 +70582,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "因為 brings in the reason, and 所以 brings in the result. The reason usually comes first.",
+            "Put 因為 before the reason and 所以 before the result, one in each part.",
+            "Don't put 因為 and 所以 together at the start of the sentence."
+          ]
         }
       ],
       "dialogue": {
@@ -71289,6 +71498,7 @@
           "titleEnglish": "Check a Guess",
           "learnerPromise": "Ask someone to confirm what you think.",
           "explanation": "Put 吧 after a statement when you think it is true and want confirmation.",
+          "explanationEnglish": "This 吧 expresses that the speaker has an assumption, but asks for confirmation.",
           "pattern": "Statement + 吧",
           "patternColumns": [
             "Statement",
@@ -72906,7 +73116,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 吧 at the end of a statement when you think it is true and want the other person to confirm.",
+            "It only checks a guess, so the other person can correct you.",
+            "Don't put 吧 in the middle of the sentence."
+          ]
         },
         {
           "bookId": 1,
@@ -72924,6 +73139,7 @@
           "titleEnglish": "Try and See",
           "learnerPromise": "Try an action and see how it goes.",
           "explanation": "Repeat a one-syllable action verb, then add 看: try the action and see.",
+          "explanationEnglish": "In this pattern, a mono-syllable action verb is reduplicated and a cognitive verb 看 is placed at the end.",
           "pattern": "Subject + V + V + 看",
           "patternColumns": [
             "Subject",
@@ -74409,7 +74625,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Say a one-syllable action verb twice, then add 看, to mean try it and see: 吃吃看.",
+            "Don't put 看 between the two verbs."
+          ]
         },
         {
           "bookId": 1,
@@ -74428,6 +74648,7 @@
           "titleEnglish": "About to Happen",
           "learnerPromise": "Say that something will happen soon.",
           "explanation": "Put 快, 快要 or 要 before the coming action. Always put 了 at the end of the sentence.",
+          "explanationEnglish": "This pattern indicates that the action following 快（要）/要 is about to happen. 了 is always used at the end of the sentence.",
           "pattern": "Subject + 快 / 快要 / 要 + event + 了",
           "patternColumns": [
             "Subject",
@@ -75475,7 +75696,11 @@
             "allowWords": [
               "九"
             ]
-          }
+          },
+          "summary": [
+            "Put 快, 快要 or 要 before an action to say it is about to happen.",
+            "Always end the sentence with 了. Without it, the sentence is wrong."
+          ]
         }
       ],
       "dialogue": {
@@ -76242,6 +76467,7 @@
           ],
           "audioReference": "09-1-3",
           "explanation": "Use 在 right before an action to say it is happening now. The pattern is Subject + 在 + Verb (Object): 他們在打籃球。",
+          "explanationEnglish": "“在 V” indicates the progressive aspect of an action.",
           "focusTerms": [
             "在",
             "他們",
@@ -78264,7 +78490,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 在 right before an action to say it is happening now: 他們在打籃球.",
+            "Don't use 是 for this, and don't put 在 after the action."
+          ]
         },
         {
           "bookId": 1,
@@ -78283,6 +78513,7 @@
           ],
           "audioReference": "09-1-3",
           "explanation": "Use 從 before the start and 到 before the end of a period. The range can be hours, days, months, or years: 從四點到五點半.",
+          "explanationEnglish": "Indicating “from… to…”, 從……到…… can be used for a temporal duration of time.",
           "focusTerms": [
             "從",
             "到",
@@ -80628,7 +80859,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 從 before the start and 到 before the end of a time range, like 從四點到五點半.",
+            "It works for hours, days, months or years.",
+            "Say the start first, and don't leave out 到."
+          ]
         },
         {
           "bookId": 1,
@@ -80647,6 +80883,7 @@
           ],
           "audioReference": "09-1-3",
           "explanation": "Use 先 before the first action and 再 before the next. If one person does both actions, say the person once: 他先打網球，再游泳.",
+          "explanationEnglish": "先……再…… is a pattern used for sequencing events, much like “First…, then…”. If the subjects are the same, then omit the second one.",
           "focusTerms": [
             "先",
             "再",
@@ -83122,7 +83359,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 先 before the first action and 再 before the next one to say what happens in order.",
+            "If one person does both, say the person once: 他先打網球，再游泳.",
+            "With two people, 再 goes after the second subject: 妹妹再唱. And 再 is not 在."
+          ]
         }
       ],
       "dialogue": {
@@ -83748,6 +83990,7 @@
           ],
           "audioReference": "09-2-3",
           "explanation": "能 has three uses in this lesson: physical ability, permission, and possibility due to outside conditions. 不能 is its negative.",
+          "explanationEnglish": "(1) 能 (physical capability)\n(2) 能 (permission)\nWhen indicating permission, 能 could be replaced with 可以. It is commonly used in question forms or negative forms.\n(3) 能 (possibility due to objective factors)\n能 can indicate possibility due to objective factors which are related to the occurrence of particular events, not inherent in the speakers.",
           "focusTerms": [
             "能",
             "不能",
@@ -87281,7 +87524,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "能 has three uses: what your body can do, permission, and what outside conditions allow or block.",
+            "For permission, 可以 can replace 能. Permission sentences are common in questions and negatives.",
+            "Put 能 or 不能 before the verb, not before the subject.",
+            "只 comes before 能: 他只能走."
+          ]
         },
         {
           "bookId": 1,
@@ -87300,6 +87549,7 @@
           ],
           "audioReference": "09-2-3",
           "explanation": "Use 比較 before a quality when the other side is already known from context. For actions, use 得 to join the action to the quality: 跑得比較快.",
+          "explanationEnglish": "比較 is used to express implicit comparison. If both subjects are known from the context, we can just use the “比較 Vs” pattern.",
           "focusTerms": [
             "比較",
             "跑得",
@@ -89602,7 +89852,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 比較 before a quality to mean more, when the other side is already clear from the situation.",
+            "With an action, use 得, and put 比較 before the quality, not before the verb: 跑得比較快.",
+            "Don't add 是. Don't use 很 and 比較 together: choose one word for how much."
+          ]
         }
       ],
       "dialogue": {
@@ -90237,6 +90492,7 @@
           ],
           "audioReference": "10-1-3",
           "explanation": "跟 comes before a person. It can mean “with” (do something together), “to” (speak or ask a person), or “from” (learn or borrow from a person). A helping verb or adverb goes before 跟.",
+          "explanationEnglish": "When 跟 is used as a preposition, it precedes a noun (a person). If a Vaux or an adverb is needed in the sentence, it should precede 跟.\n（1） together with\n（2） to; with\n（3） from",
           "focusTerms": [
             "跟"
           ],
@@ -92249,7 +92505,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "跟 comes before a person. It can mean with, to, or from.",
+            "With means doing something together. To means speaking or asking a person. From means learning or getting something from a person.",
+            "The 跟 phrase comes before the verb. Words like can, want or always go before 跟."
+          ]
         },
         {
           "bookId": 1,
@@ -92269,6 +92530,7 @@
           ],
           "audioReference": "10-1-3",
           "explanation": "Put the whole description before 的, then the person or thing. The noun comes last. 這 or 那 with a number and measure word can point to a specific one.",
+          "explanationEnglish": "This pattern is a phrase with a modifying clause and a noun. 的 is placed between the clause and the noun. The noun is the main part of this pattern and is placed at the end of it.",
           "lessonWorld": {
             "kind": "care",
             "eyebrow": "Care message",
@@ -95295,7 +95557,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put the whole description before 的, then the person or thing last: 感冒的人.",
+            "You always need 的 to join the description and the noun.",
+            "Add 這 or 那 with a number and measure word before the noun to point to a specific one."
+          ]
         },
         {
           "bookId": 1,
@@ -95313,6 +95580,7 @@
           ],
           "audioReference": "10-1-3",
           "explanation": "Put 多 (“more”) or 少 (“less”) directly before an action to give advice.",
+          "explanationEnglish": "This pattern is used to give some suggestions.",
           "lessonWorld": {
             "kind": "care",
             "eyebrow": "Care message",
@@ -96555,7 +96823,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 多 for more or 少 for less directly before an action to give advice, like 多休息.",
+            "They go before the action, never after it.",
+            "They go with actions, not things. Say 多喝水, not 多水."
+          ]
         }
       ],
       "dialogue": {
@@ -97389,6 +97662,7 @@
           ],
           "audioReference": "10-2-3",
           "explanation": "會 before an action can mean “will” — something you expect in the future. A time word makes the future meaning clear.",
+          "explanationEnglish": "會 can be used as a Vaux which means “will”.",
           "lessonWorld": {
             "kind": "care",
             "eyebrow": "Care message",
@@ -98794,7 +99068,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "會 before an action can mean will, something you expect in the future.",
+            "Put the time word before 會, and don't add 了 to the future action: 我明天會來.",
+            "可以 says you are allowed or able. For something you expect to happen, use 會."
+          ]
         },
         {
           "bookId": 1,
@@ -98812,6 +99091,7 @@
           ],
           "audioReference": "10-2-3",
           "explanation": "要是 or 如果 opens the condition. 就 starts the result. If the subject is the same in both parts, the second subject can be left out.",
+          "explanationEnglish": "This pattern is used to connect two clauses. The clause with 要是/如果 comes first to put forward an assumption, followed by the other one with 就 to state the result. If the subjects are the same, the second one can be omitted.",
           "lessonWorld": {
             "kind": "care",
             "eyebrow": "Care message",
@@ -100357,7 +100637,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 要是 or 如果 for the condition and 就 for the result: if this, then that.",
+            "The condition comes first. 就 starts the result and never sits inside the condition.",
+            "If the subject is the same in both parts, you can leave out the second one."
+          ]
         }
       ],
       "dialogue": {
@@ -101099,6 +101384,7 @@
           ],
           "audioReference": "11-1-3",
           "explanation": "Put 了 after the verb or verb-object to show the action is completed. With a quantity, one 了 reports a finished past action; a second 了 at the end says “so far, and maybe more.”",
+          "explanationEnglish": "(1) 了 is placed after verb (object) for indicating a completed action.\n(2) 了 with Quantified Objects\nIn this pattern, there is a quantity before the object.\nA. Single 了 (with quantified objects)\nWhen using single 了, it indicates the action was completed in the past.\nB. Double 了 (with Quantified Objects)\nWhen using double 了, it indicates the action has already been completed so far. It means that the action will probably continue.",
           "lessonWorld": {
             "kind": "chat",
             "eyebrow": "Missing message",
@@ -103748,7 +104034,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 了 after the verb to show the action is completed.",
+            "With an amount, put 了 right after the verb, before the amount: 我喝了兩杯咖啡. This reports a finished past action.",
+            "A second 了 at the end means so far, and more may follow.",
+            "Don't add 了 to a simple past negative. 他沒來了 means he is no longer coming."
+          ]
         },
         {
           "bookId": 1,
@@ -103767,6 +104059,7 @@
           ],
           "audioReference": "11-1-3",
           "explanation": "Use 沒 before a past action to say it did not happen. Use 還沒 when it has not happened yet but probably will. 了 can mark the question, but not the negative answer.",
+          "explanationEnglish": "(1) with negation marker 沒\nA. 沒 is used to negate past actions.\nB. 沒（有）can be at the end of the sentence with 了 for questioning.\n(2) with negation marker 還沒\nIt indicates that the action has not happened but it will probably happen.",
           "lessonWorld": {
             "kind": "chat",
             "eyebrow": "Missing message",
@@ -106539,7 +106832,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 沒 before the verb to say a past action did not happen.",
+            "Put 還沒 before the verb when it has not happened yet but probably will.",
+            "For a simple past action use 沒, not 不. 不 is for the present or for habits.",
+            "Ask about a past action with 了嗎 or 了沒有 at the end, but the negative answer takes no 了."
+          ]
         },
         {
           "bookId": 1,
@@ -106558,6 +106857,7 @@
           ],
           "audioReference": "11-1-3",
           "explanation": "Put 是 before the detail you want to emphasize and 的 at the end. 是 is optional in a positive sentence, but it cannot be left out in a negative sentence.",
+          "explanationEnglish": "是……的 can be used to describe or emphasize when, where, who or how. 是 is optional in a positive sentence, but it cannot be omitted in a negative sentence.",
           "lessonWorld": {
             "kind": "chat",
             "eyebrow": "Recovered clue",
@@ -109196,7 +109496,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use this to stress one detail of something that already happened, such as when, where, who or how.",
+            "Put 是 before that detail and 的 at the end, not 了.",
+            "是 is optional in a positive sentence, but a negative sentence needs it: 他不是開車來的."
+          ]
         }
       ],
       "dialogue": {
@@ -110017,6 +110322,7 @@
           ],
           "audioReference": "11-2-3",
           "explanation": "Use 先 for the first step, 等 for the condition you wait for, and 再 for the step after it. Without 先, 等…再… still means “wait until…, then…”.",
+          "explanationEnglish": "(1) ……，……再…… (not until…)\nThis pattern indicates the action is not taking place at the moment of speaking. It is not going to take place until a certain time.\n(2) 等……，再…… (wait until…)\nThis pattern expresses that before statement 2 takes place, the subject(s) must wait until statement 1 takes place.\n(3) 先……，等……，再…… (first…, wait until…)\n先……，等……，再…… is a pattern used for sequencing events.",
           "lessonWorld": {
             "kind": "chat",
             "eyebrow": "Next message",
@@ -113329,7 +113635,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "先 starts the first step, 等 marks what you wait for, and 再 starts the step after.",
+            "Without 先, 等…再… still means wait until this happens, then do that.",
+            "With a future time word, 再 means the action will happen then, not now: 我們晚上再去.",
+            "再 means then or later. Don't write 在 for it."
+          ]
         },
         {
           "bookId": 1,
@@ -113348,6 +113660,7 @@
           ],
           "audioReference": "11-2-3",
           "explanation": "Put 給 before the person who receives the action: 我給她寫信. A negative or modal word goes before 給.",
+          "explanationEnglish": "When 給 serves as a preposition, it indicates “to” or “for”.",
           "lessonWorld": {
             "kind": "chat",
             "eyebrow": "Outgoing message",
@@ -115304,7 +115617,12 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "給 marks the person who receives the action. Put 給 and that person before the verb: 我給她寫信.",
+            "A negative word, or a word for can or want, goes before 給.",
+            "To say with someone, use 跟, not 給."
+          ]
         }
       ],
       "dialogue": {
@@ -116103,6 +116421,7 @@
           ],
           "audioReference": "12-1-3",
           "explanation": "Put 用 before the tool, language, or method. Say the action after it.",
+          "explanationEnglish": "When 用 serves as a preposition, it indicates “with” or “using”.",
           "lessonWorld": {
             "kind": "career",
             "eyebrow": "Career move",
@@ -117705,7 +118024,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 用 before the tool, language, or method, then say the action: 用中文寫信.",
+            "Keep 用 even when English doesn't say use.",
+            "用 names the tool or language, while 跟 names the person you do it with."
+          ]
         },
         {
           "bookId": 1,
@@ -117727,6 +118051,7 @@
           ],
           "audioReference": "12-1-3",
           "explanation": "以前 means “before” or “in the past”; 以後 means “after” or “in the future.” Use them alone or right after a time or an activity.",
+          "explanationEnglish": "（1） 以前/以後 as simple Time Words\n以前 means “previously/formerly”; 以後 means “after wards/in the future”.\n（2） 以前/以後 Succeeding Time\na. 以前 means before; 以後 means after.\nb. 以前 means ago; 以後 means later, after.\n（3） 以前/以後 as Time Words Succeeding Statements\n以前 means before; 以後 means after.",
           "lessonWorld": {
             "kind": "career",
             "eyebrow": "Career move",
@@ -121018,7 +121343,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "以前 means before or in the past, and 以後 means after or in the future.",
+            "Put them right after a time, a length of time, or an activity, not before it, or the meaning changes.",
+            "After a length of time, 以前 means ago and 以後 means later.",
+            "For a plan for someday, use plain 以後. 半年以後 means six months from now."
+          ]
         },
         {
           "bookId": 1,
@@ -121036,6 +121367,7 @@
           ],
           "audioReference": "12-2-3",
           "explanation": "對 points toward a person or thing. Use it for the person you speak to, for something that is good or bad for a target, and for how someone treats another person.",
+          "explanationEnglish": "When 對 serves as a preposition, it indicates “to” or “for” and usually precedes a noun.\n（1）（speaking） to\n（2） for\n（3） to; treating（a person）",
           "lessonWorld": {
             "kind": "career",
             "eyebrow": "Career move",
@@ -122755,7 +123087,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "對 points to a person or thing: the one spoken to, affected, or treated well or badly.",
+            "The person or thing right after 對 receives the speech, effect or kindness: 同事對我很好 means coworkers are kind to me.",
+            "Use 對, not 跟, to show where an effect lands. 跟 is for doing something together."
+          ]
         }
       ],
       "dialogue": {
@@ -123621,6 +123958,7 @@
           ],
           "audioReference": "12-2-3",
           "explanation": "Put 過 right after a verb for an experience: something you have done before. V過了 relates the finished action closely to now. Use 沒 + verb + 過 for “have not.”",
+          "explanationEnglish": "（1） 過 indicates completion of an action as an experience.\n（2） V過了\nIt refers to the completion of an action relating more closely to the present moment. It implies that the action has been completed and repetition is unnecessary. It is only used in positive or question forms, not in negative forms.",
           "lessonWorld": {
             "kind": "career",
             "eyebrow": "Career move",
@@ -126122,7 +126460,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 過 right after a verb to say you have done it before, at any time in life.",
+            "Use 沒, not 不, to say you have never done it. 不 says you refuse or won't.",
+            "With a word like 上班, 過 goes in the middle: 上過班.",
+            "V過了 shows the action is already done and does not need repeating. Don't use it in negatives."
+          ]
         },
         {
           "bookId": 1,
@@ -126140,6 +126484,7 @@
           ],
           "audioReference": "12-2-3",
           "explanation": "Put the situation or activity before 的時候. Then say what happens in that moment.",
+          "explanationEnglish": "的時候 is used to express “when” succeeding statements.",
           "lessonWorld": {
             "kind": "career",
             "eyebrow": "Career move",
@@ -127383,7 +127728,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put the situation or activity before 的時候, then say what happens at that time.",
+            "Put the whole situation before it, and keep 的: 心情不好的時候.",
+            "的時候 means during the moment, while 以後 means after."
+          ]
         }
       ],
       "dialogue": {
@@ -128411,6 +128761,7 @@
           ],
           "audioReference": "13-1-3",
           "explanation": "Repeat the verb to soften the action: 看看 or 看一看. The 一 is optional and adds a light “have a look” feel.",
+          "explanationEnglish": "Verb reduplication softens the tone of the statement, meaning the action is completed with ease.",
           "lessonWorld": {
             "kind": "route",
             "eyebrow": "Phone journey",
@@ -130902,7 +131253,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Repeat the verb to make an action softer, like have a look: 看看 or 看一看.",
+            "The 一 between the two verbs is optional.",
+            "Don't add 了 after the repeated verb."
+          ]
         },
         {
           "bookId": 1,
@@ -130920,6 +131276,7 @@
           ],
           "audioReference": "13-1-3",
           "explanation": "Use 從 before the starting point and 往 before the direction or endpoint: 從左往右寫.",
+          "explanationEnglish": "This pattern expresses direction of movement. 從 marks the beginning point and 往 marks the end point of the movement.",
           "lessonWorld": {
             "kind": "route",
             "eyebrow": "Phone journey",
@@ -133558,7 +133915,12 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 從 before the starting point and 往 before the direction: 從左往右寫.",
+            "從 comes first, then 往, and both come before the action, not after the verb.",
+            "到 can replace 往 to mark an endpoint."
+          ]
         },
         {
           "bookId": 1,
@@ -133576,6 +133938,7 @@
           ],
           "audioReference": "13-1-3",
           "explanation": "就 can say something happens earlier than expected: 九點開始上班，可是我每天都八點半就到公司了. It can also introduce an easy result: 你往前走，就可以看到那家店了.",
+          "explanationEnglish": "就 indicates that something happens earlier or takes place sooner than expected. 就 also indicates that something is easy to be completed or likely to happen.",
           "lessonWorld": {
             "kind": "route",
             "eyebrow": "Phone journey",
@@ -136002,7 +136365,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "就 after a time word shows something happens earlier than expected.",
+            "就 also introduces an easy result that follows an instruction.",
+            "Put 就 after the time word and before the verb: 我六點就起床了.",
+            "Without 就, the sentence only reports the time."
+          ]
         }
       ],
       "dialogue": {
@@ -136842,6 +137211,7 @@
           ],
           "audioReference": "13-2-3",
           "explanation": "Put 就要 before the event and 了 at the end. A time word usually comes before 就要: 我下個月就要回國了.",
+          "explanationEnglish": "This sentence structure indicates the action after 就（要）is going to happen in a very short time. There's usually a time word before this structure. 就（要）means the action is happening soon; 了 is used at the end of the sentence.",
           "lessonWorld": {
             "kind": "route",
             "eyebrow": "Museum entrance",
@@ -139243,7 +139613,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "就要…了 says something is about to happen soon.",
+            "Put 就要 before the event and 了 at the end. A time word usually goes before 就要: 我下個月就要回國了.",
+            "快要…了 also means about to."
+          ]
         },
         {
           "bookId": 1,
@@ -139263,6 +139638,7 @@
           ],
           "audioReference": "13-2-3",
           "explanation": "Put the duration after the verb. If the verb has an object, repeat the verb before the duration, or use V + duration + 的 + object.",
+          "explanationEnglish": "Time-Duration pattern indicates an action lasts a period of time. In this pattern, the action always precedes Time-Duration.\n(1) Main Verbs without Objects\n(2) Main Verbs with Objects\nA.\nB.",
           "lessonWorld": {
             "kind": "route",
             "eyebrow": "Museum visit",
@@ -143633,7 +144009,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put the length of time after the verb, not before it, to say how long an action lasts.",
+            "If the verb has an object, repeat the verb before the length of time: 睡覺睡七個小時.",
+            "You can also say the verb, the length of time, 的, then the object."
+          ]
         }
       ],
       "dialogue": {
@@ -144750,6 +145131,7 @@
           ],
           "audioReference": "14-1-3",
           "explanation": "Put the duration after the verb + 了. The action is finished and no longer continues.",
+          "explanationEnglish": "This sentence structure indicates that the action had lasted and completed in the past, and no longer continues.",
           "lessonWorld": {
             "kind": "countdown",
             "eyebrow": "Timeline",
@@ -147510,7 +147892,13 @@
               "二",
               "八"
             ]
-          }
+          },
+          "summary": [
+            "Verb + 了 + a length of time says how long a finished action took.",
+            "Use only one 了, right after the verb. A 了 at the very end means still going on.",
+            "With an object, repeat the verb: 上課上了五個小時. Or put the length of time before the object.",
+            "A past time word like 昨天 shows when, but you still need 了 to show it is done."
+          ]
         },
         {
           "bookId": 1,
@@ -147530,6 +147918,7 @@
           ],
           "audioReference": "14-1-3",
           "explanation": "Use 了 after the verb and a second 了 after the duration. The action started in the past and reaches now; it may continue.",
+          "explanationEnglish": "When using double 了, it indicates that the action has lasted so far. This structure indicates that an action continues from the past until now. It means that the action will probably continue.",
           "lessonWorld": {
             "kind": "countdown",
             "eyebrow": "Timeline",
@@ -150317,7 +150706,13 @@
               "雨",
               "跳"
             ]
-          }
+          },
+          "summary": [
+            "Use two 了 to say an action began in the past, reaches now, and may continue.",
+            "Put the first 了 right after the verb and the second at the very end: 住了半年了.",
+            "With an object, repeat the verb before the length of time and keep the final 了.",
+            "With only one 了, the action is finished and not still going on."
+          ]
         }
       ],
       "dialogue": {
@@ -151549,6 +151944,7 @@
           ],
           "audioReference": "14-2-3",
           "explanation": "Put A before 比 and B after it. Add the adjective or result after 比 + B. 多了／得多 stresses a big difference; 一點兒 means a small difference.",
+          "explanationEnglish": "This sentence structure is used to compare the differences between people, things or matters.\nA Vs is needed after 比. The complement can also be an actual quantity and the differences. 得多 and 多了 are used to emphasize that the difference is big; 一點兒 is used to indicate that the difference is not significant.",
           "lessonWorld": {
             "kind": "countdown",
             "eyebrow": "Comparison",
@@ -153969,7 +154365,13 @@
               "豬肉",
               "八"
             ]
-          }
+          },
+          "summary": [
+            "Use 比 to compare two things: A is the one you describe, and B comes after 比.",
+            "Put the describing word at the end, and don't add 很 because 比 already compares.",
+            "多了 or 得多 shows a big difference, 一點兒 a small one. The difference can also be an exact amount.",
+            "To compare how actions are done, put 得 after the verb: 你來得比我早."
+          ]
         }
       ],
       "dialogue": {
@@ -155384,6 +155786,7 @@
           "audioReference": "15-1-3",
           "bookPageAvailable": true,
           "explanation": "Use 跟 between the two things and 一樣 for “the same”. Add 不 before 一樣 for “different”. A describing word can follow 一樣.",
+          "explanationEnglish": "This pattern is used when comparing two or more people, affairs, or things.\nA.\nB.",
           "focusTerms": [
             "跟",
             "一樣",
@@ -157494,7 +157897,13 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 跟 between two things, then 一樣 for the same or 不一樣 for different.",
+            "You need 跟 before the second thing: 越南的生肖跟中國的不一樣.",
+            "Put 不 before 一樣 to say different. 一樣不聰明 is something else: both are not smart.",
+            "With 得, the describing word can follow 一樣. Only one side carries 得."
+          ]
         }
       ],
       "dialogue": {
@@ -157676,6 +158085,7 @@
           "audioReference": "15-2-3",
           "bookPageAvailable": true,
           "explanation": "Put 著 directly after a verb to show that the action or state continues: 她看著窗戶外面. The object follows 著.",
+          "explanationEnglish": "The particle 著 is placed directly after a verb to indicate the continuation of an action or a state.\n(1) “V 著” indicates the continuation of an action.\nA.\nB. “V 著” indicates a request to maintain a certain action.",
           "focusTerms": [
             "著",
             "看",
@@ -159668,7 +160078,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 著 right after a verb to show an action or state continues, then put the object after 著.",
+            "著 shows a continuing state, while 了 shows a completed action.",
+            "V著 can ask someone to keep doing something: 你們看著我."
+          ]
         }
       ],
       "dialogue": {
@@ -159849,6 +160264,7 @@
           "audioReference": "15-1-3",
           "bookPageAvailable": true,
           "explanation": "Use 一 before the first action and 就 before the second: 我一看書，就想睡覺. If the subjects are the same, the second subject is often omitted.",
+          "explanationEnglish": "This pattern is used to indicate “just as soon as…”. If the subjects of these two clauses are the same, then often one subject is omitted.",
           "focusTerms": [
             "一",
             "就",
@@ -161306,7 +161722,13 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use both 一 and 就 to say that as soon as one thing happens, the next follows.",
+            "Put 一 before the first action and 就 before the second: 我一看書，就想睡覺.",
+            "If the second action has its own subject, 就 goes after that subject.",
+            "If the subjects are the same, the second subject is often left out."
+          ]
         }
       ],
       "dialogue": {
@@ -163425,7 +163847,13 @@
                 ]
               }
             ]
-          }
+          },
+          "summary": [
+            "離 means from. It tells how far or close two places are.",
+            "Say the first place, 離, the second place, then a word like 很 and 遠 or 近.",
+            "You can't leave 離 out, because it is the word that names the distance.",
+            "Don't use 從 for distance. 從 tells where a trip starts."
+          ]
         }
       ],
       "dialogue": {
@@ -164892,7 +165320,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "本來 or 原來 says how things were at first, and 後來 says what changed or really happened.",
+            "Use both parts in a change story. 本來 and 原來 mean the same here.",
+            "Put 後來 before the changed part, not at the end: 後來買車了."
+          ]
         },
         {
           "bookId": 1,
@@ -166126,7 +166559,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "更 means even more when you compare two things.",
+            "Use 比 too, and put 更 right before the describing word: 今天比昨天更冷.",
+            "更 doesn't mean the most. Use 最 for the most in a group."
+          ]
         },
         {
           "bookId": 1,
@@ -167175,7 +167613,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Use 就 to say the second action follows right after the first one is finished.",
+            "Put 了 right after the first action and 就 before the next. You can't leave 就 out.",
+            "The next action may also end with 了."
+          ]
         },
         {
           "bookId": 1,
@@ -168191,7 +168634,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "Put 得 right after the verb, then say how the action was done or turned out: 玩得很開心.",
+            "Use 得 after an action verb, and use 的 to describe a noun.",
+            "If the verb has an object, repeat the verb: 放假放得不久. Or put the activity first as the topic."
+          ]
         }
       ],
       "dialogue": {

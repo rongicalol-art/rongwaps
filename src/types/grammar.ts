@@ -305,6 +305,8 @@ export interface InteractiveGrammarPage {
   explanation: string;
   /** The book’s printed English 說明, verbatim. */
   explanationEnglish?: string;
+  /** Plain-English summary of the explanation, 1–4 short lines (content/grammar-summaries/, merged at export). */
+  summary?: string[];
   subsections?: GrammarSubsection[];
   lessonWorld?: GrammarLessonWorld;
   focusTerms?: string[];
