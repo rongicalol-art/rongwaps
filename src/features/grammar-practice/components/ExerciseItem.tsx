@@ -120,7 +120,7 @@ export function ExerciseItem({
       aria-current={answering ? 'step' : undefined}
       onClick={answering ? undefined : onActivate}
       className={cn(
-        'relative grid scroll-mt-[22vh] grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-feature px-3 pb-[18px] pt-4 transition-colors duration-200 motion-reduce:transition-none sm:gap-x-5 sm:px-5 sm:pb-6 sm:pt-5',
+        'relative grid scroll-mt-[22vh] grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3.5 rounded-feature px-3 pb-4.5 pt-4 transition-colors duration-200 motion-reduce:transition-none sm:gap-x-5 sm:px-5 sm:pb-6 sm:pt-5',
         // A hairline between numbered items; the active item's band separates itself, so no line touches it.
         'after:pointer-events-none after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-ui-divider last:after:hidden sm:after:inset-x-5 [&:has(+[aria-current=step])]:after:hidden',
         answering && 'bg-ui-surface after:hidden',

@@ -153,7 +153,7 @@ and [Noul guidance](https://docs.typesafe.ai/primitives/noul).
 
 # Performance regression checks
 
-After a production build, `npm run perf:check` enforces 250 kB main JavaScript, 850 kB initial JavaScript, 270 kB critical CSS (raised from 260 kB in Oct 2026 for dark mode and per-book tones) and 1.3 MB service-worker precache limits. Both quiz and dictionary worker bundles must exist; unopened workers and the animation engine must stay out of the precache. Duplicate precache URLs fail the gate. Review the change rather than raising budgets to hide regressions.
+After a production build, `npm run perf:check` enforces 250 kB main JavaScript, 850 kB initial JavaScript, 275 kB critical CSS (260 → 270 kB in Oct 2026 for dark mode and per-book tones; 275 kB in Nov 2026 for the Book 1 exercise pages) and 1.3 MB service-worker precache limits. Both quiz and dictionary worker bundles must exist; unopened workers and the animation engine must stay out of the precache. Duplicate precache URLs fail the gate. Review the change rather than raising budgets to hide regressions.
 
 The build and dev preflight generate `public/data/flashcard-extras` through `npm run flashcard-extras:export`. These derivative packs preserve the existing whole-course example ranking and normalized memory hooks. Source content stays authoritative. The parity test compares every course card in both scripts and every word hook with live lookup results, checks source versions, and rejects large shards. Do not hand-edit generated packs. Regenerate after vocabulary, course example or memory-hook exports.
 
