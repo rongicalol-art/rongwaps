@@ -20,7 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from align_mms import pinyinize  # noqa: E402
-from generateGrammarStudioAudio import ENDING_MAX, MIN_VOICED_PACE, attempt_id, ending_ratio, voiced_pace  # noqa: E402
+from generateGrammarStudioAudio import ENDING_MAX, MIN_VOICED_PACE, attempt_id, ending_ratio, syllables, voiced_pace  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]  # Repository root.
 ASR_MODEL = "mlx-community/Qwen3-ASR-0.6B-8bit"  # Independent transcription model.
@@ -59,7 +59,8 @@ def main():
         if ratio > ENDING_MAX:
             problems.append(f"ends abruptly ({ratio:.2f})")
         pace = voiced_pace(path, entry["spoken"])
-        if pace < MIN_VOICED_PACE:
+        # Pace says nothing about a one- or two-word answer (十點, 綠茶): only sentences can drag.
+        if syllables(entry["spoken"]) >= 4 and pace < MIN_VOICED_PACE:
             problems.append(f"drags ({pace:.2f} characters per voiced second)")
         quality = {**entry["quality"], "transcript": cached, "asrModel": ASR_MODEL, "endingRatio": round(ratio, 3), "voicedPace": round(pace, 2)}
         if heard != expected and not problems:

@@ -36,6 +36,7 @@ const SCREEN_SLICES = [
   'debug',
   'flashcard',
   'grammar-lesson',
+  'lesson-test',
   'library',
   'listening',
   'profile',

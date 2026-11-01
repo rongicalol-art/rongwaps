@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useLongPress } from '../../../hooks/useLongPress';
+import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { readString, writeString } from '../../../utils/browser/localStorage';
 import type { LessonWindowPart } from './useLessonWindowParts';
@@ -12,8 +13,13 @@ interface PartTabsProps {
   onSelectPart?: (partId: number) => void;
   onTogglePart?: (partId: number) => void;
   onChange?: (index: number) => void;
+  /** The lesson test, as its own tab after the parts (no hold-to-include; a crown once passed). */
+  test?: { selected: boolean; passed: boolean; onSelect: () => void };
   className?: string;
 }
+
+const TAB_CLASS = '-mb-0.5 flex items-center justify-center gap-1.5 whitespace-nowrap border-b-[3px] pb-2.5 pt-3 text-[15px] font-black outline-none focus-ring-inline cursor-pointer select-none flex-1 lg:flex-none lg:px-0 lg:pr-7 lg:text-base';
+const tabState = (selected: boolean) => (selected ? 'border-brand-primary text-ui-ink-strong' : 'border-transparent text-ui-muted hover:text-ui-muted-strong');
 
 interface PartTabItemProps {
   part: LessonWindowPart;
@@ -48,12 +54,7 @@ function PartTabItem({ part, index, isSelected, onSelect, onToggle, pulse }: Par
       title={`Part ${index + 1} · tap to select · hold (or Shift-click) to include`}
       {...pressHandlers}
       style={{ WebkitTouchCallout: 'none', touchAction: 'manipulation' }}
-      className={cn(
-        '-mb-0.5 flex items-center justify-center gap-1.5 whitespace-nowrap border-b-[3px] pb-2.5 pt-3 text-[15px] font-black outline-none focus-ring-inline cursor-pointer select-none',
-        'flex-1 lg:flex-none lg:px-0 lg:pr-7 lg:text-base',
-        isSelected ? 'border-brand-primary text-ui-ink-strong' : 'border-transparent text-ui-muted hover:text-ui-muted-strong',
-        pulse && 'animate-pulse',
-      )}
+      className={cn(TAB_CLASS, tabState(isSelected), pulse && 'animate-pulse')}
     >
       {part.isDone && (
         <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-ui-muted" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Done">
@@ -73,6 +74,7 @@ export function PartTabs({
   onSelectPart,
   onTogglePart,
   onChange,
+  test,
   className,
 }: PartTabsProps) {
   const reduce = useReducedMotion();
@@ -99,7 +101,7 @@ export function PartTabs({
     setAnchor({ left, arrow: center - left });
   }, [hintIndex]);
 
-  if (parts.length < 2) return null;
+  if (parts.length < 2 && !test) return null;
 
   const current = selectedPartIds?.length ? parts.findIndex((p) => p.id === selectedPartIds[0]) : activeIndex;
   const markSwitch = () => {
@@ -114,7 +116,7 @@ export function PartTabs({
     <div ref={wrapRef} className={cn('relative', className)}>
       <div role="tablist" aria-label="Lesson parts" className="flex border-b-2 border-ui-divider">
         {parts.map((part, index) => {
-          const isSelected = selectedPartIds ? selectedPartIds.includes(part.id) : index === activeIndex;
+          const isSelected = !test?.selected && (selectedPartIds ? selectedPartIds.includes(part.id) : index === activeIndex);
           const handleSelect = () => {
             if (onSelectPart) onSelectPart(part.id);
             else onChange?.(index);
@@ -139,6 +141,12 @@ export function PartTabs({
             />
           );
         })}
+        {test && (
+          <button type="button" role="tab" aria-selected={test.selected} onClick={test.onSelect} className={cn(TAB_CLASS, tabState(test.selected))}>
+            {test.passed && <AppIcon name="crown" size={16} className="shrink-0 text-feedback-warning" aria-label="Passed" />}
+            <span>Test</span>
+          </button>
+        )}
       </div>
       <AnimatePresence>
         {hintIndex !== null && anchor && (

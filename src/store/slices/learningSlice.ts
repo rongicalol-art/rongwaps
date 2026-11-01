@@ -6,6 +6,7 @@ import {
   applyCardReview,
   createClearedReviewProgress,
   createEmptySessionProgress,
+  type ReviewOptions,
 } from '../../utils/srs/reviewProgress';
 import type {
   PracticeHeaderActions,
@@ -19,7 +20,7 @@ export interface LearningState {
   srsData: Record<string, SRSData>;
   learnedCards: string[];
   setSrsDataAndLearnedCards: (srs: Record<string, SRSData>, learned: string[]) => void;
-  markCardReviewed: (cardId: string, quality: Quality, context?: ReviewContext) => void;
+  markCardReviewed: (cardId: string, quality: Quality, context?: ReviewContext, options?: ReviewOptions) => void;
   reviewEvents: ReviewEvent[];
   pendingReviewEvents: ReviewEvent[];
   mergeReviewHistory: (events: ReviewEvent[], after?: number) => void;
@@ -127,8 +128,8 @@ export function createLearningSlice(set: SetState): LearningState {
       const uploaded = new Set(ids);
       return { pendingReviewEvents: s.pendingReviewEvents.filter(e => !uploaded.has(e.id)) };
     }),
-    markCardReviewed: (cardId, quality, context) => set((state) => {
-      const result = applyCardReview(state, cardId, quality, context);
+    markCardReviewed: (cardId, quality, context, options) => set((state) => {
+      const result = applyCardReview(state, cardId, quality, context, options);
       const event = result.reviewEvents?.at(-1);
       const isNewEvent = event && !state.reviewEvents.some(e => e.id === event.id);
       const plan = state.dailyReviewPlan;

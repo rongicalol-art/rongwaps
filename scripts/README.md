@@ -9,7 +9,7 @@ None of this code ships to learners. Run via the matching `npm run …` alias or
 | `character-decomposition/` | decomposition runtime packs + measurement |
 | `strokes/` | stroke-order data vendoring + pack build |
 | `audio/` | official audio download/upload/R2 sync, dialogue alignment (Python) |
-| `assets/` | font vendoring, video optimizing |
+| `assets/` | font vendoring, video optimizing, `lesson-test-art/` (Codex picture briefs, `generate.sh`, `cut.py`) |
 | `fonts/` | `split-chinese-fonts.py` (`npm run fonts:split`): slices `content/fonts/*.woff2` into unicode-range woff2 under `public/fonts/<family>/` + `src/styles/fonts.generated.css`; rerun after content changes |
 | `memory-hooks/` | hook-generation pipeline (finished experiments in `archive/`); `phonetic/`, `jev/` hold sound-hook and Jev tooling |
 | `dev/` | one-off helpers (`listTables.mjs`, `ui_sweep.py`) |

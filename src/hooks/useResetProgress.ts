@@ -62,10 +62,13 @@ export function useResetProgress({
       startedPartIds: appState.startedPartIds,
       completedPageIds: appState.completedPageIds,
       completedPartIds: appState.completedPartIds,
+      lessonTests: appState.lessonTests,
+      lessonTestAttempt: appState.lessonTestAttempt,
     };
 
     appState.resetProgress();
     appState.resetGrammarProgress();
+    appState.resetLessonTests();
 
     try {
       if (currentUser) {

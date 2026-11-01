@@ -11,6 +11,8 @@ export interface FeedbackBottomBarProps {
   status: 'idle' | 'correct' | 'wrong';
   correctAnswer?: string;
   pinyin?: string;
+  /** Free-form result content (lesson tests: the sentence, its pinyin and English, and why), shown right or wrong. */
+  detail?: React.ReactNode;
   /** The word just practised: shown on a tile after every answer, right or wrong (replaces `correctAnswer`). */
   word?: { hanzi: string; pinyin?: string; meaning: string; simple?: string };
   onContinue: () => void;
@@ -43,6 +45,7 @@ export function FeedbackBottomBar({
   status, 
   correctAnswer, 
   pinyin,
+  detail,
   word,
   onContinue, 
   continueLoading = false,
@@ -192,7 +195,11 @@ export function FeedbackBottomBar({
                     </motion.span>
                     {isCorrect ? 'Correct' : 'Not quite'}
                   </div>
-                  {word ? (
+                  {detail ? (
+                    <div className={cn('mt-2 flex min-w-0 flex-col gap-0.5', layout !== 'stacked' && 'lg:mt-0 lg:flex-1 lg:border-l-2 lg:border-ui-divider lg:pl-5')}>
+                      {detail}
+                    </div>
+                  ) : word ? (
                     // Tap the word to open its breakdown and memory hook.
                     <button
                       type="button"

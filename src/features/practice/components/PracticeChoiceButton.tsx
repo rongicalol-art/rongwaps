@@ -15,6 +15,8 @@ export function getPracticeChoiceState(isSelected: boolean, isChecked: boolean, 
 interface PracticeChoiceButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Number badge (keyboard shortcut). Omit with `compact` for tiles in a grid. */
   index?: number;
+  /** `letter` shows A/B/C/D (TOCFL answer sheet) instead of 1/2/3; the keyboard keys stay the same. */
+  badge?: 'number' | 'letter';
   /** Centred content, no badge, tighter padding. */
   compact?: boolean;
   children: ReactNode;
@@ -51,6 +53,7 @@ const badgeClasses: Record<PracticeChoiceState, string> = {
 
 export function PracticeChoiceButton({
   index,
+  badge = 'number',
   compact = false,
   children,
   state = 'idle',
@@ -111,7 +114,7 @@ export function PracticeChoiceButton({
             badgeClasses[state],
           )}
         >
-          {index + 1}
+          {badge === 'letter' ? 'ABCDEF'[index] : index + 1}
         </span>
         )}
         <span className={cn('flex-1 text-[19px] font-bold leading-tight', compact ? 'text-center' : 'text-left')}>

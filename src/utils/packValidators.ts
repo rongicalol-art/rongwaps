@@ -43,7 +43,8 @@ export type ContentPackKind =
   | 'dialogue-alignment'
   | 'levels'
   | 'parts'
-  | 'pronunciation';
+  | 'pronunciation'
+  | 'lesson-tests';
 
 const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
 
@@ -121,6 +122,24 @@ export function isValidGrammarPack(pack: unknown, bookId: number, expectedCount:
       typeof part?.id === 'string'
       && part.bookId === bookId
       && Array.isArray(part.grammarPages)
+    ));
+}
+
+/** A book's lesson tests: every lesson keyed and in this book, every slot with at least one version. */
+export function isValidLessonTestPack(pack: unknown, bookId: number, expectedCount: number): boolean {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as { schemaVersion?: number; bookId?: number; count?: number; sounds?: unknown; items?: Array<{ key?: unknown; bookId?: unknown; slots?: Array<{ versions?: unknown[] }> }> };
+  return candidate.schemaVersion === 1
+    && candidate.bookId === bookId
+    && candidate.count === expectedCount
+    && typeof candidate.sounds === 'object' && candidate.sounds !== null
+    && Array.isArray(candidate.items)
+    && candidate.items.length === candidate.count
+    && candidate.items.every((lesson) => (
+      typeof lesson?.key === 'string'
+      && lesson.bookId === bookId
+      && Array.isArray(lesson.slots)
+      && lesson.slots.every((slot) => Array.isArray(slot?.versions) && slot.versions.length > 0)
     ));
 }
 
