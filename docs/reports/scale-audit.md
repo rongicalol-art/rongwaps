@@ -10,6 +10,35 @@ Audit date: 2026-11-01. Scope: presence, chat, party rooms (Cloudflare Worker + 
 4. Party rooms are already one object per room and scale sideways; they only need to stop funnelling listings and mentions through the single Lobby.
 5. Target: shard presence and chat **by lesson**, keep counts in a small index object, serve packs from the edge with the same JWT check the Worker already does, bound and partition review history. Three expand/migrate/contract phases, no downtime, roughly **$150 to $250 a month at 10,000 daily learners**.
 
+## Update 2026-11-01: what shipped, free plan only
+
+The owner asked for every step on free tiers, with technical judgment left to the engineer. This section records what shipped in this pull request and what changed in the plan. Sections (a) to (f) below are the original audit, kept as the record.
+
+Shipped, one commit each, all backward compatible (expand steps):
+
+1. **School access in the sign-in token.** The database's sign-in hook now stamps `school_beta` and `full_course` into each token. App start-up skips two sequential database calls, and Express verifies the token signature locally instead of making two Supabase calls per new token. The database keeps checking identities live on every request (`shared/accessToken.ts`, migration `20261101120000`).
+2. **A Lobby that does work only for the people an event concerns.** It uses an in-memory index rebuilt after each wake. Lesson lists are capped at 30 with exact counts. The Online list is a snapshot of up to 100 people sent when the panel opens, never streamed. Room listings go only to open panels. Trailing flushes run on timers instead of billed alarms, maintenance runs every 5 minutes, and Lobby tickets are rate-limited inside the Lobby. Capacity rose from 250 to 2,000 (`games/lobby.ts`).
+3. **Race rooms write answer counts at most every 10 s.** Phase changes, finishes and membership changes are still written immediately (`games/room.ts`).
+4. **Slim review history.** New events are stored without the unused `before`/`after` card snapshots, and pulls drop them from older rows too (migration `20261101120100`).
+5. **Load budgets in CI.** `npm run games:load` runs 500 synthetic learners with latency and bytes-per-learner budgets.
+
+Measured after the change, with the same local scenario as section (f):
+
+{{AFTER_TABLE}}
+
+{{AFTER_NOTES}}
+
+What changed in the plan, and why:
+
+- **No lesson sharding on the free plan.** On Workers Free every extra object call is a billed request against 100,000 a day, so splitting the Lobby would spend the allowance on internal traffic. One Lobby now handles 2,000 sockets well and stays usable at 5,000. On the free plan the daily allowances run out before throughput becomes the limit. Section (c) remains the design for when the plan is paid.
+- **Lesson content stays on Render.** Serving packs through a Worker counts every pack request against Workers Free's 100,000 requests a day. Lessons would stop loading when that ran out, so step 3 of section (d) waits for a paid plan. With step 1 shipped, Render no longer calls Supabase for most content requests.
+- **Server region is the owner's step.** `render.yaml` sets no region, so the service is probably in Oregon. Moving it to Singapore means creating a new service there, which needs the owner's dashboards and domain settings. Check that Render offers the free instance type in Singapore when creating it.
+- **No deletion of review history.** Deleting it would be irreversible and would change all-time profile stats. Slimming the rows buys room on the free plan's 500 MB database. Check the database size monthly in the Supabase dashboard.
+
+Free-plan ceilings now (Cloudflare and Supabase docs fetched 2026-11-01; per-learner costs estimated from the code, not from billing):
+
+{{FREE_TABLE}}
+
 ## (b) Ranked bottlenecks
 
 Impact columns assume concurrent learners at the stated size (daily actives are 5 to 10 times more). "Effort" is for one engineer with this codebase.
