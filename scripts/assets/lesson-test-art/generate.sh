@@ -9,6 +9,7 @@
 # picture), the rest are the book characters whose looks must be kept. Codex saves the image under
 # ~/.codex/generated_images; this copies the newest one to output/lesson-test-art/<name>.png (a second take
 # becomes <name>-v2.png). Then cut and convert with cut.py. Rules: content/lesson-tests/README.md → Pictures.
+# A brief may start with Kind:/Style:/Characters: lines (which references to pass); they stay out of the prompt.
 set -u
 ROOT=${0:A:h:h:h:h}
 HERE=${0:A:h}
@@ -22,7 +23,7 @@ PROMPT="You are generating ONE illustration for a Mandarin-learning app. Use the
 
 $(cat "$HERE/style.txt")
 
-$(cat "$BRIEF")
+$(grep -v -E '^(Kind|Style|Characters):' "$BRIEF")
 
 Reply with the exact prompt you sent to image_gen."
 MARK="$OUT/logs/$NAME.mark"

@@ -52,10 +52,21 @@ def block_height(draw, lines, fnt, gap):
     return sum((draw.textbbox((0, 0), line, font=fnt)[3] - draw.textbbox((0, 0), line, font=fnt)[1]) + gap for line in lines)
 
 
-def described(size, text, wrap):
+def fitted(draw, text, fnt, limit):
+    """Word-wrap `text` so no line is wider than `limit` pixels."""
+    lines = []
+    for word in text.split():
+        if lines and draw.textbbox((0, 0), f"{lines[-1]} {word}", font=fnt)[2] <= limit:
+            lines[-1] = f"{lines[-1]} {word}"
+        else:
+            lines.append(word)
+    return lines
+
+
+def described(size, text):
     image, draw = card(size)
     label, body = font(round(size[1] * 0.04)), font(round(size[1] * 0.06))
-    lines = textwrap.wrap(text, wrap)
+    lines = fitted(draw, text, body, size[0] * 0.84)
     height = block_height(draw, ["Picture coming"], label, 24) + block_height(draw, lines, body, 14)
     y = (size[1] - height) / 2
     y = centered(draw, ["Picture coming"], size, y, label, MUTED, 24)
@@ -66,7 +77,11 @@ def described(size, text, wrap):
 def writing(size, transcript, alt):
     image, draw = card(size)
     lines = [line for line in transcript.replace("\n", "　").split("　") if line.strip()]
-    body = font(round(size[1] / max(9, len(lines) + 3)))
+    points = round(size[1] / max(9, len(lines) + 3))
+    # Shrink until the widest line fits inside the dashed frame.
+    widest = max(draw.textbbox((0, 0), line, font=font(points))[2] for line in lines)
+    points = min(points, int(points * size[0] * 0.84 / widest))
+    body = font(points)
     note = font(round(size[1] * 0.03))
     height = block_height(draw, lines, body, 18)
     y = (size[1] - height) / 2 - size[1] * 0.03
@@ -105,11 +120,11 @@ def main():
             if target.exists() and name not in pending:
                 continue  # real art
             if kind == "panel":
-                image = described((480, 600), alt, 22)
+                image = described((480, 600), alt)
             elif kind == "realia":
                 image = writing((1280, 960), transcript, alt)
             else:
-                image = described((1280, 720), alt, 44)
+                image = described((1280, 720), alt)
             image.save(target, "WEBP", quality=80, method=6)
             pending[name] = {"lesson": lesson["key"], "kind": kind, "description": alt}
             made += 1
