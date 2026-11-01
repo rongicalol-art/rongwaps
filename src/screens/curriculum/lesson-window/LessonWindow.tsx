@@ -2,7 +2,6 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence } from 'motion/react';
 import { ActionButton, AppIcon, Drawer, PlayfulNavIcon, WorkspaceWindow, type PlayfulNavIconName } from '../../../lib/widgets';
-import { useReadyAction } from '../../../hooks/useReadyAction';
 import { prepareGrammarOpen, prepareReadingOpen } from '../../../app/studyLaunch';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { useModalFocus } from '../../../hooks/useModalFocus';
@@ -123,13 +122,10 @@ function PracticeHubDrawer({
   canQuiz,
   canReadSentences,
   isOpen,
-  opening,
   onClose,
   onSelect,
 }: {
   isOpen: boolean;
-  /** The activity getting ready to open; its row shows the loading state. */
-  opening: HubActivity | null;
   onClose: () => void;
   canQuiz: boolean;
   canReadSentences: boolean;
@@ -162,9 +158,6 @@ function PracticeHubDrawer({
                 size="lg"
                 fullWidth
                 edgeColor="var(--color-ui-border)"
-                loading={opening === activity}
-                loadingLabel={label}
-                disabled={opening !== null && opening !== activity}
                 onClick={() => onSelect(activity)}
                 onPointerEnter={warm}
                 onPointerDown={warm}
@@ -205,8 +198,12 @@ function LessonBody({
   const { parts, illustrationsByPart, fallbackImageSrc, fallbackIsIllustration } = useLessonWindowParts(bookId, lesson);
   const rootRef = useRef<HTMLDivElement>(null);
   const [isPracticeHubOpen, setIsPracticeHubOpen] = useState(false);
-  // Start and the Practice hub rows wait until their screen is ready, showing the loading state meanwhile.
-  const { pendingKey: opening, run: openWhenReady } = useReadyAction<'start' | HubActivity>();
+  // Start and the Practice hub rows open their window at once (it shows the one loader);
+  // getting it ready starts on the same press.
+  const openNow = (prepare: Promise<unknown>, open: () => void) => {
+    void prepare.catch(() => {});
+    open();
+  };
 
   const fallbackPartId = getFirstOpenPartId(parts);
   const selectedPartIds = normalizePartSelection(partIds ?? [], parts.map((part) => part.id))
@@ -251,17 +248,17 @@ function LessonBody({
   });
   const handleStart = () => {
     if (mode === 'vocab') {
-      void openWhenReady(() => preparePracticeLaunch(practiceIntent('flashcards')),
-        () => onStartPractice(lesson.id, practiceTarget, 'flashcards'), 'start');
+      openNow(preparePracticeLaunch(practiceIntent('flashcards')),
+        () => onStartPractice(lesson.id, practiceTarget, 'flashcards'));
     } else if (mode === 'grammar' && activePart.grammar) {
       const grammarIds = selectedParts.length > 1
         ? selectedParts.flatMap((part) => part.grammar ? [part.grammar.manifestId] : [])
         : [activePart.grammar.manifestId];
-      void openWhenReady(() => prepareGrammarOpen(grammarIds),
-        () => onOpenGrammarPart(grammarIds, () => onModeChange(activePart.id, 'reading')), 'start');
+      openNow(prepareGrammarOpen(grammarIds),
+        () => onOpenGrammarPart(grammarIds, () => onModeChange(activePart.id, 'reading')));
     } else {
       const target = { bookId, lessonId: lesson.id, partId: practiceTarget };
-      void openWhenReady(() => prepareReadingOpen(target), () => onOpenReadingPart(target), 'start');
+      openNow(prepareReadingOpen(target), () => onOpenReadingPart(target));
     }
   };
   const swipe = (step: 1 | -1) => {
@@ -285,7 +282,6 @@ function LessonBody({
   const actions = (
     <LessonActions
       onStart={handleStart}
-      isStarting={opening === 'start'}
       onStartIntent={() => {
         if (mode === 'vocab') void prefetchPractice(practiceIntent('flashcards'));
       }}
@@ -298,13 +294,12 @@ function LessonBody({
       canQuiz={activePart.vocab.total > 0}
       canReadSentences={hasSentences}
       isOpen={isPracticeHubOpen}
-      opening={opening === 'start' ? null : opening}
       onClose={() => setIsPracticeHubOpen(false)}
       onSelect={(activity) => {
-        void openWhenReady(() => preparePracticeLaunch(practiceIntent(activity)), () => {
+        openNow(preparePracticeLaunch(practiceIntent(activity)), () => {
           setIsPracticeHubOpen(false);
           onStartPractice(lesson.id, practiceTarget, activity);
-        }, activity);
+        });
       }}
     />
   );
