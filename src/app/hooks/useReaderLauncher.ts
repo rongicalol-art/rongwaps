@@ -7,13 +7,13 @@ import { resolveActiveReadingIndex, findReadingIndexForPart, findReadingIndicesF
 import { isLessonLocked } from '../../data/books';
 import { fetchReadingsPack, fetchDialogueAlignmentPack } from '../../services/contentPacks';
 import { warmChineseFont } from '../../utils/browser/fontWarmup';
+import { readerScreenModule } from '../screenModules';
 
 export async function loadReadings(bookId: number, hasFullCourseAccess = false): Promise<ReadingRecord[]> {
   warmChineseFont();
   const [readings] = await Promise.all([
     fetchReadingsPack(bookId),
-    import('../../screens/reader/components/ReadingCanvas'),
-    import('../../screens/reader/components/ReadingNarrativeView'),
+    readerScreenModule.load(),
   ]);
   void fetchDialogueAlignmentPack(bookId).catch(() => {});
   return (readings ?? []).filter((reading) => !isLessonLocked(reading.bookId, reading.lessonId, hasFullCourseAccess));

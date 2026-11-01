@@ -2,8 +2,9 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import type { InteractiveGrammarPart } from '../../types/models';
 import { warmChineseFont } from '../../utils/browser/fontWarmup';
 import { combineGrammarParts } from '../../utils/grammar/grammarLessonFlow';
+import { grammarScreenModule } from '../screenModules';
 
-/** One pack fetch for the whole run; missing ids are skipped. */
+/** One pack fetch for the whole run (plus the lesson screen's code); missing ids are skipped. */
 export async function loadInteractiveGrammarParts(partIds: string[]): Promise<InteractiveGrammarPart[]> {
   const firstId = partIds[0];
   if (!firstId) return [];
@@ -13,7 +14,7 @@ export async function loadInteractiveGrammarParts(partIds: string[]): Promise<In
   const bookId = match ? Number(match[1]) : 1;
   const [{ fetchGrammarPack }] = await Promise.all([
     import('../../services/contentPacks'),
-    import('../../screens/grammar-lesson/components/GrammarStudyPage'),
+    grammarScreenModule.load(),
   ]);
   const parts = await fetchGrammarPack(bookId);
   const byId = new Map((parts ?? []).map((part) => [part.id, part]));

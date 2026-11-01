@@ -89,6 +89,8 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
 
 interface LessonActionsProps {
   onStart: () => void;
+  /** Start shows its loading state while the chosen mode gets ready. */
+  isStarting?: boolean;
   onStartIntent: () => void;
   onOpenPracticeHub?: () => void;
   isPracticeHubOpen?: boolean;
@@ -98,6 +100,7 @@ interface LessonActionsProps {
 /** Start the selected lesson mode. Quiz lives in Practice hub. */
 export function LessonActions({
   onStart,
+  isStarting = false,
   onStartIntent,
   onOpenPracticeHub,
   isPracticeHubOpen,
@@ -132,6 +135,8 @@ export function LessonActions({
         size="lg"
         fullWidth
         className="whitespace-nowrap text-lg tracking-normal"
+        loading={isStarting}
+        loadingLabel="Start"
         onClick={onStart}
         onPointerEnter={onStartIntent}
         onPointerDown={onStartIntent}
