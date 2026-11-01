@@ -39,7 +39,8 @@ export function GapSentence({ question, order, selected, checked, script, onSele
           {wrong ? <><s className="opacity-60">{filled}</s> {choiceText(choices[question.key], script)}</> : filled || ' '}
         </span>
         {afterMain}
-        {reply.length > 0 && <span className="block text-ui-muted-strong">—— {reply.join('——')}</span>}
+        {/* A reply (authored after ——) is its own line: a dash there read as a second blank. */}
+        {reply.length > 0 && <span className="block text-ui-muted-strong">{reply.join(' ')}</span>}
       </p>
       {/* Words longer than three characters (prices, phrases) stack on phones instead of breaking letter by letter. */}
       <div className={cn('grid w-full gap-3', long ? 'max-w-2xl grid-cols-1 sm:grid-cols-3' : 'max-w-md grid-cols-3')}>
