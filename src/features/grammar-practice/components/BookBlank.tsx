@@ -14,20 +14,20 @@ interface BookBlankProps {
 
 const FILL: Record<BookBlankState, string> = {
   empty: '',
-  next: 'bg-brand-primary-soft shadow-[inset_0_0_0_2.5px_var(--color-brand-primary)]',
-  filled: 'bg-brand-primary-soft text-brand-primary-deep shadow-[inset_0_0_0_2px_var(--color-brand-primary-soft-edge)]',
-  correct: 'bg-feedback-success-surface text-feedback-success-text',
-  wrong: 'bg-feedback-danger-surface text-feedback-danger-text',
-  revealed: 'bg-ui-divider text-ui-ink-strong',
+  next: 'border-brand-primary bg-brand-primary-soft',
+  filled: 'border-brand-primary-soft-edge text-brand-primary-deep',
+  correct: 'border-feedback-success text-feedback-success-text',
+  wrong: 'border-feedback-danger text-feedback-danger-text',
+  revealed: 'border-ui-muted text-ui-ink-strong',
 };
 
-/** A blank on a Book 1 exercise page: a soft box sitting on the text line, holding the word placed in it. */
+/** A blank on a Book 1 exercise page: an underline on the text line, holding the word placed in it. */
 export function BookBlank({ state, quiet, narrow, word }: BookBlankProps) {
-  const fill = state === 'empty' ? (quiet ? 'bg-ui-divider' : 'bg-ui-hover') : FILL[state];
+  const fill = state === 'empty' ? (quiet ? 'border-ui-border' : 'border-ui-muted') : FILL[state];
   return (
     <span
       className={cn(
-        'mx-[0.08em] inline-block h-[1.4em] rounded-xs px-[0.2em] text-center align-baseline leading-[1.4em] sm:rounded-sm',
+        'mx-[0.1em] inline-block h-[1.4em] border-b-[3px] px-[0.15em] text-center align-baseline leading-[1.3em]',
         narrow ? 'min-w-[1.5em]' : 'min-w-[1.7em]',
         fill,
       )}
