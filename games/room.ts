@@ -193,7 +193,9 @@ export class GameRoom extends DurableObject<Env> {
     const pendingListing = listing && this.record<number>(5) !== null;
     const announce = room.open && !room.announced && room.players.length > 0;
     if (announce) room.announced = true;
-    room.revision = (room.revision ?? 0) + 1;
+    // Revisions count written states: answer counts held for a later write share the stored revision, so after an
+    // eviction clients (which ignore lower revisions) never see the room fall behind.
+    if (persist) room.revision = (room.revision ?? 0) + 1;
     this.saveRoom(room, persist);
     this.broadcast(room);
     // Never-public rooms need no Lobby entry; previously public rooms must still publish closure.

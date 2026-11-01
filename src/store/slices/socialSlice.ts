@@ -106,5 +106,15 @@ export const SOCIAL_PERSISTED_KEYS = ['showOnline', 'showProfile', 'socialMuted'
 /** Live state belongs to the signed-in account. */
 export const SOCIAL_ACCOUNT_SWITCH_DEFAULTS = { ...LIVE_DEFAULTS };
 
+/**
+ * Whether the Lobby's current counts include me in `lesson`: I report it while visible, and its list for that
+ * lesson has arrived (the counts in the same flush include me). Lists are capped, so I may not be in them.
+ */
+export function countedIn(state: Pick<SocialState, 'socialHere' | 'socialPeople' | 'socialMe'>, lesson: number | null): boolean {
+  if (lesson === null) return false;
+  return state.socialPeople.some(person => person.u === state.socialMe && person.l === lesson)
+    || (state.socialHere === lesson && state.socialPeople.some(person => person.l === lesson));
+}
+
 /** The lesson key the Lobby uses: book 1 lesson 4 → 104. */
 export const lessonKey = (bookId: number, lessonId: number) => bookId * 100 + lessonId;

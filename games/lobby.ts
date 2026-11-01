@@ -1,5 +1,5 @@
 import { DurableObject } from 'cloudflare:workers';
-import { CHAT_KEEP, CHAT_TTL_MS, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
+import { CHAT_KEEP, CHAT_TTL_MS, ROOM_LIST_CAP, SOCIAL_FRAME_BYTES, nextChatRate, parseLobbyMessage, type ChatRate, type ChatMessage, type LessonCount, type LobbyServerMessage, type Person, type Activity, type MentionNotice } from '../shared/lobby';
 import { socialColor, socialImage, type RaceRoomSummary, type SocialColor } from '../shared/quizRace';
 
 type Att = {
@@ -26,7 +26,6 @@ const PEOPLE_CAP = 30;
 /** The Online list is a snapshot on request, never streamed. */
 const ROSTER_CAP = 100;
 const ROSTER_GAP_MS = 3000;
-const ROOMS_CAP = 20;
 const ROOMS_REUSE_MS = 30_000;
 /** Same allowance the per-account limiter gives HTTP requests; kept here, it costs no extra request. */
 const TICKET_BURST = 30;
@@ -203,10 +202,9 @@ export class Lobby extends DurableObject<Env> {
       this.moveChannel(socket, att, message.chat);
       socket.serializeAttachment(att);
       if (chatChanged && att.ch !== null) this.send(socket, { t: 'history', l: att.ch, v: this.history(att.ch, now) });
-      if (panelOpened) {
-        this.sendRoster(socket, att, now);
-        if (att.v2) this.send(socket, this.roomsFrame(), 'rooms');
-      }
+      if (panelOpened) this.sendRoster(socket, att, now);
+      // Open panels (and older clients, which always follow listings) get the current list at once; deduped.
+      if (att.on || !att.v2) this.send(socket, this.roomsFrame(), 'rooms');
     } else if (message.t === 'roster') {
       this.sendRoster(socket, att, now);
     } else if (message.t === 'say') {
@@ -352,7 +350,7 @@ export class Lobby extends DurableObject<Env> {
   private roomsFrame(): string {
     const now = Date.now();
     if (this.roomsCache && now - this.roomsCache.at < ROOMS_REUSE_MS) return this.roomsCache.frame;
-    const rooms = this.ctx.storage.sql.exec<{ data: string }>("SELECT data FROM rooms WHERE updated>? AND json_extract(data,'$.open')=1 AND json_extract(data,'$.joinable')=1 ORDER BY updated DESC LIMIT ?", now - ROOM_TTL_MS, ROOMS_CAP)
+    const rooms = this.ctx.storage.sql.exec<{ data: string }>("SELECT data FROM rooms WHERE updated>? AND json_extract(data,'$.open')=1 AND json_extract(data,'$.joinable')=1 ORDER BY updated DESC LIMIT ?", now - ROOM_TTL_MS, ROOM_LIST_CAP)
       .toArray().map(row => JSON.parse(row.data) as RaceRoomSummary).filter(room => (room.expiresAt ?? Infinity) > now);
     this.roomsCache = { frame: JSON.stringify({ t: 'rooms', v: rooms } satisfies LobbyServerMessage), at: now };
     return this.roomsCache.frame;
@@ -437,5 +435,5 @@ export class Lobby extends DurableObject<Env> {
     if (socket.readyState === 2) socket.close(1000, 'Closed.');
     this.scheduleFlush();
   }
-  webSocketError(socket: WebSocket) { this.close(socket, 1011, 'Reconnect.'); }
+  webSocketError(socket: WebSocket) { this.close(socket, 1011, 'Reconnect.'); this.scheduleFlush(); }
 }

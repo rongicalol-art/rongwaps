@@ -1,6 +1,6 @@
 import { connectLobby, type Identity } from '../../services/socialService';
 import { useAppStore } from '../../store/useAppStore';
-import type { Activity, LobbyClientMessage, LobbyServerMessage, MentionNotice } from '../../../shared/lobby';
+import { ROOM_LIST_CAP, type Activity, type LobbyClientMessage, type LobbyServerMessage, type MentionNotice } from '../../../shared/lobby';
 
 /**
  * The single Lobby connection. Presence/subscription frames are deduped here and re-sent after a reconnect,
@@ -47,8 +47,10 @@ function receive(message: LobbyServerMessage) {
     case 'online': set({ socialOnline: message.v }); break;
     case 'rooms': {
       const rooms = new Map(message.v.map(room => [room.code, room]));
+      // A full list may leave out older open rooms: only a shorter one proves a missing room closed.
+      const complete = message.v.length < ROOM_LIST_CAP;
       set({ socialRooms: message.v, ...(store.socialChat ? { socialChat: { ...store.socialChat, messages: store.socialChat.messages.map(line => line.r
-        ? { ...line, r: rooms.get(line.r.code) ?? { ...line.r, joinable: false } } : line) } } : {}) });
+        ? { ...line, r: rooms.get(line.r.code) ?? (complete ? { ...line.r, joinable: false } : line.r) } : line) } } : {}) });
       break;
     }
     case 'history': if (message.l === sub.chat) set({ socialChat: { lesson: message.l, messages: message.v } }); break;

@@ -12,6 +12,8 @@ export const GLOBAL_CHAT = 0;
 export const CHAT_KEEP = 50;
 export const CHAT_TTL_MS = 24 * 3_600_000;
 export const SOCIAL_FRAME_BYTES = 4096;
+/** The Lobby lists at most this many open rooms (newest first); a full list may not include every open room. */
+export const ROOM_LIST_CAP = 20;
 
 /** Plain text only; cap visible characters and remove control/bidi spoofing characters. */
 export function chatText(value: unknown): string {

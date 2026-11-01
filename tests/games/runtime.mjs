@@ -121,6 +121,8 @@ async function open(path, protocol, ticket) {
   return client;
 }
 const last = (client, t) => [...client.frames].reverse().find(frame => frame.t === t);
+// A live room keeps its state in memory; after editing its storage directly, restart it the way a wake would.
+const restartRoom = code => mf.unsafeEvictDurableObject('games', 'GameRoom', { name: code, webSockets: 'hibernate' });
 const send = (client, value) => client.socket.send(JSON.stringify(value.type ? { round: client.state?.round ?? 1, ...value } : value));
 
 try {
@@ -376,6 +378,7 @@ try {
   const abandonedState = JSON.parse((await abandonedSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
   abandonedState.players[0].disconnectedAt = Date.now() - 61000;
   await abandonedSql.exec('UPDATE state SET data=? WHERE id=1', JSON.stringify(abandonedState));
+  await restartRoom(abandoned.code);
   await control(`/__test/room/${abandoned.code}/alarm`);
   assert.equal((await abandonedSql.exec('SELECT * FROM state')).length, 0);
 
@@ -422,12 +425,14 @@ try {
   const deadlineState=JSON.parse((await deadlineSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
   deadlineState.deadline=Date.now()-1;
   await deadlineSql.exec('UPDATE state SET data=? WHERE id=1',JSON.stringify(deadlineState));
+  await restartRoom(other.code);
   await control(`/__test/room/${other.code}/alarm`);
   await until(()=>otherHost.state.phase==='review' && switched.state.phase==='review');
   assert.ok(otherHost.state.players.every(p=>p.place===null),'the review window does not invent finishers');
   const reviewState=JSON.parse((await deadlineSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
   reviewState.reviewDeadline=Date.now()-1;
   await deadlineSql.exec('UPDATE state SET data=? WHERE id=1',JSON.stringify(reviewState));
+  await restartRoom(other.code);
   await control(`/__test/room/${other.code}/alarm`);
   await until(()=>otherHost.state.phase==='results' && switched.state.phase==='results');
   assert.ok(otherHost.state.players.every(p=>p.place===null),'timeouts do not invent finishers');
@@ -499,6 +504,7 @@ try {
   const expiredListingState = JSON.parse((await expiredListingSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
   expiredListingState.expiresAt=Date.now()-36*60_000;
   await expiredListingSql.exec('UPDATE state SET data=? WHERE id=1',JSON.stringify(expiredListingState));
+  await restartRoom(expiredListing.code);
   await control('/__test/lobby/main/fail');
   await control(`/__test/room/${expiredListing.code}/alarm`);
   assert.equal((await expiredListingSql.exec('SELECT * FROM state')).length,0,'prolonged outages cannot retain expired rooms/retry alarms forever');
@@ -517,6 +523,7 @@ try {
   const slowState=JSON.parse((await slowSql.exec('SELECT data FROM state WHERE id=1'))[0].data);
   slowState.prepareDeadline=Date.now()-1;
   await slowSql.exec('UPDATE state SET data=? WHERE id=1',JSON.stringify(slowState));
+  await restartRoom(slow.code);
   await control(`/__test/room/${slow.code}/alarm`);
   await until(()=>slowHost.state.phase==='results' && slowGuest.state.players.find(p=>p.id==='slow-guest').left);
   assert.equal(slowHost.state.startedAt,null,'an unready opponent cannot consume race time');
@@ -557,6 +564,37 @@ try {
   assert.equal((await malformed.json()).error,'Could not join. Check the code and your connection.');
   await control('/__test/room/ZZZZZZ/alarm');
   assert.equal((await legacySql.exec('SELECT * FROM state')).length,0);
+
+  // A room restarted mid-race (deploy, eviction) never falls behind the revision its players already saw: answer
+  // counts written later share the stored revision, so clients that ignore lower revisions keep accepting updates.
+  const restarted = await post('/rooms', 'evict-host', { selection: { lessons: { 1: [1] }, types: [] }, open: false });
+  const evictHost = await open(`/rooms/${restarted.code}/socket`, 'quiz-race', restarted.ticket);
+  const evictGuest = await open(`/rooms/${restarted.code}/socket`, 'quiz-race', (await post(`/rooms/${restarted.code}`, 'evict-guest')).ticket);
+  await until(() => evictHost.state?.connected.length === 2);
+  send(evictHost, { type: 'start' });
+  await until(() => evictHost.state.phase === 'preparing');
+  for (const player of [evictHost, evictGuest]) send(player, { type: 'ready', planHash, reviewFlow: 1 });
+  await until(() => evictHost.state.phase === 'race');
+  const guestAnswered = () => evictHost.state.players.find(player => player.id === 'evict-guest').answered;
+  for (let answered = 1; answered <= 3; answered++) {
+    send(evictGuest, { type: 'progress', answered, total: 10, correct: answered, reviewComplete: false });
+    await until(() => guestAnswered() === answered);
+  }
+  const seenRevision = evictHost.state.revision;
+  const restartedSql = await mf.unsafeGetDurableObjectStorage('games', 'GameRoom', { name: restarted.code });
+  const storedData = (await restartedSql.exec('SELECT data FROM state WHERE id=1'))[0].data;
+  assert.equal(JSON.parse(storedData).players.find(player => player.id === 'evict-guest').answered, 0, 'answer counts are held for a later write');
+  // A crash loses the held counts. Locally an evicted instance still finishes its pending write, so let it land,
+  // then put back what storage held and restart again.
+  await restartRoom(restarted.code);
+  await delay(10_500);
+  await restartedSql.exec('UPDATE state SET data=? WHERE id=1', storedData);
+  await restartRoom(restarted.code);
+  send(evictGuest, { type: 'progress', answered: 4, total: 10, correct: 4, reviewComplete: false });
+  await until(() => guestAnswered() === 4);
+  assert.ok(evictHost.state.revision >= seenRevision, `a restarted room keeps its revision (${evictHost.state.revision} < ${seenRevision})`);
+  send(evictHost, { type: 'leave' }); send(evictGuest, { type: 'leave' });
+  await until(() => evictHost.closed !== null && evictGuest.closed !== null);
 
   // Ramp to the configured school crowd; all receive chat and race in independent rooms.
   const started = performance.now();
@@ -663,6 +701,7 @@ try {
   assert.equal(raceUsage.listingCalls, 0, 'scores and completion do not republish unchanged listings');
   clearInterval(keepAlive);
   assert.ok(raceUsage.alarmWrites < userCount * 4, 'answers must not each rewrite the alarm');
+  assert.ok(raceUsage.sqlRowsWritten < userCount * 40 / 4, `answer counts are written at most every 10 s, not per answer (${raceUsage.sqlRowsWritten} rows)`);
   assert.equal(races.flat().filter(player => player.client.closed !== null).length, 0, 'sustained progress must not disconnect players');
   assert.ok(students.every(({client}) => client.closed === null && client.errors.length === 0), 'the lobby remains connected without errors during races');
   assert.ok(races.flat().every(player => player.client.errors.length === 0), 'all race actions succeed');
