@@ -1,13 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { LayoutGroup, useReducedMotion } from 'motion/react';
+import { useReducedMotion } from 'motion/react';
 import { ActionButton, ContextualChineseText } from '../../lib/widgets';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 import type { GrammarPractice, GrammarWordToken, SlotBuildItem } from '../../types/models';
 import { checkSlotBuild, practiceSlots, slotBuildResult, slotBuildSolutions } from '../../utils/grammar/grammarPracticeCheck';
 import { shuffleItems } from '../../utils/srs/sessionOrder';
-import { TileGhost } from './components/TileGhost';
 import { ExerciseItem, type ExerciseItemState } from './components/ExerciseItem';
-import { useTileDrag, type DragSource } from './useTileDrag';
 import { textIn, type PracticeScript } from './practiceTypes';
 import { PracticeScene } from './components/PracticeScene';
 
@@ -26,13 +24,13 @@ export interface ExercisePageProps {
 /** How long a result shows before the page moves on (ms). */
 const PAUSE = { check: 320, correct: 650, retry: 1000, revealed: 1500 } as const;
 
-const fresh = (): ExerciseItemState => ({ placed: {}, byHand: [], status: 'idle', tries: 0, wrong: [] });
+const fresh = (): ExerciseItemState => ({ placed: {}, status: 'idle', tries: 0, wrong: [] });
 const done = (state: ExerciseItemState) => state.status === 'correct' || state.status === 'revealed';
 const sameText = (a: { traditional: string }, b: { traditional: string }) => a.traditional === b.traditional;
 
 /**
  * A Book 1 exercise page: the book's instruction once, then every item in book order on one scroll.
- * The learner drags (or taps) words into the blanks; an item checks itself when it is full.
+ * The learner taps words into the blanks; an item checks itself when it is full.
  * Wrong: the why, wrong words go back, one retry. Wrong again: the answer fills in and the page moves on.
  */
 export function ExercisePage({ practice, script, showPinyin, contextTokens, onOpenWord, onComplete, shortcutsDisabled = false }: ExercisePageProps) {
@@ -58,6 +56,8 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
   const activeRef = useRef(0);
   const activate = useCallback((index: number) => { activeRef.current = index; setActive(index); }, []);
   const nodes = useRef<Array<HTMLElement | null>>([]);
+  // Steady ref callbacks keep the memoised items from re-rendering.
+  const refs = useMemo(() => items.map((_, index) => (node: HTMLElement | null) => { nodes.current[index] = node; }), [items]);
   const endRef = useRef<HTMLDivElement>(null);
   const timers = useRef<number[]>([]);
   useEffect(() => () => timers.current.forEach(window.clearTimeout), []);
@@ -92,7 +92,7 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
         used.add(tile);
         return [slotId, tile];
       }));
-      commit(index, { ...state, status: 'revealed', placed, byHand: [], wrong: [], tries: state.tries + 1, note: verdict.note, sentence: slotBuildResult(item, solution) });
+      commit(index, { ...state, status: 'revealed', placed, wrong: [], tries: state.tries + 1, note: verdict.note, sentence: slotBuildResult(item, solution) });
       later(PAUSE.revealed, () => advance(index));
       return;
     }
@@ -107,18 +107,17 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
         ...latest,
         status: 'idle',
         wrong: [],
-        byHand: [],
         placed: Object.fromEntries(Object.entries(latest.placed).filter(([slotId]) => !back.includes(slotId))),
       });
     });
   }, [advance, commit, items, later]);
 
-  /** Put a word in a blank (the next empty one when tapped); a full item checks itself. */
-  const place = useCallback((index: number, tile: number, slotId?: string, byHand = false) => {
+  /** Put a word in the next empty blank; a full item checks itself. */
+  const place = useCallback((index: number, tile: number) => {
     const slots = practiceSlots(items[index]);
     const state = statesRef.current[index];
     if (!state || state.status !== 'idle') return;
-    const target = slotId ?? slots.find((slot) => state.placed[slot.id] === undefined)?.id;
+    const target = slots.find((slot) => state.placed[slot.id] === undefined)?.id;
     if (!target) return;
     const placed = Object.fromEntries(Object.entries(state.placed).filter(([, other]) => other !== tile));
     placed[target] = tile;
@@ -128,7 +127,6 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
       placed,
       status: full ? 'checking' : 'idle',
       note: undefined,
-      byHand: byHand ? [...state.byHand.filter((other) => other !== tile), tile] : state.byHand.filter((other) => other !== tile),
     });
     if (full) later(PAUSE.check, () => check(index));
   }, [check, commit, items, later]);
@@ -136,38 +134,16 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
   const takeBack = useCallback((index: number, slotId: string) => {
     const state = statesRef.current[index];
     if (state.status !== 'idle') return;
-    const tile = state.placed[slotId];
     const placed = { ...state.placed };
     delete placed[slotId];
-    commit(index, { ...state, placed, byHand: state.byHand.filter((other) => other !== tile) });
+    commit(index, { ...state, placed });
   }, [commit]);
 
-  const handleDrop = useCallback((source: DragSource, dropId: string | null) => {
-    const index = activeRef.current;
-    if (index < 0) return;
-    if (dropId === null) {
-      if (source.kind === 'placed') takeBack(index, source.slotId);
-      return;
-    }
-    const slotId = dropId.slice(dropId.indexOf('|') + 1);
-    if (source.kind === 'bank') {
-      place(index, source.tile, slotId, true);
-      return;
-    }
-    // A placed word dropped on another blank: the two words swap.
-    const state = statesRef.current[index];
-    if (state.status !== 'idle') return;
-    const placed = { ...state.placed };
-    const displaced = placed[slotId];
-    delete placed[source.slotId];
-    if (displaced !== undefined) placed[source.slotId] = displaced;
-    placed[slotId] = source.tile;
-    commit(index, { ...state, placed, byHand: [...state.byHand, source.tile] });
-  }, [commit, place, takeBack]);
+  const select = useCallback((index: number) => {
+    if (!done(statesRef.current[index]) && index !== activeRef.current) activate(index);
+  }, [activate]);
 
   const activeState = active >= 0 ? states[active] : undefined;
-  const { drag, bind } = useTileDrag({ disabled: activeState?.status !== 'idle', onDrop: handleDrop });
-
   const activeItem: SlotBuildItem | undefined = active >= 0 ? items[active] : undefined;
   const bank = activeItem && activeState ? activeItem.tiles.map((_, tile) => tile).filter((tile) => !Object.values(activeState.placed).includes(tile)) : [];
   useNumberKeySelection({ items: bank, onSelect: (tile) => place(active, tile), disabled: shortcutsDisabled || activeState?.status !== 'idle' });
@@ -175,47 +151,42 @@ export function ExercisePage({ practice, script, showPinyin, contextTokens, onOp
   const finished = states.every(done);
 
   return (
-    <LayoutGroup id={`exercise-${practice.bookPage}-${practice.title}`}>
-      <div className="mx-auto flex w-full max-w-4xl flex-col pb-24">
-        <h1 className="mb-4 px-3 text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:mb-6 sm:px-5 sm:text-2xl">{practice.title}</h1>
-        {shared && (
-          <div className="mb-4 max-w-md px-3 sm:mb-6 sm:px-5">
-            <PracticeScene
-              scene={shared}
-              arrived={false}
-              renderChinese={(text) => <ContextualChineseText wordClassName="font-chinese font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
-            />
-          </div>
-        )}
-        <ol className="flex flex-col gap-0.5">
-          {items.map((item, index) => (
-            <ExerciseItem
-              key={item.id}
-              ref={(node) => { nodes.current[index] = node; }}
-              item={item}
-              number={index + 1}
-              state={states[index]}
-              active={index === active}
-              script={script}
-              showPinyin={showPinyin}
-              contextTokens={contextTokens}
-              onOpenWord={onOpenWord}
-              drag={drag}
-              bind={bind}
-              onActivate={() => { if (!done(states[index]) && index !== active) activate(index); }}
-              onPlace={(tile) => place(index, tile)}
-              onTakeBack={(slotId) => takeBack(index, slotId)}
-            />
-          ))}
-        </ol>
-        <div ref={endRef} className="flex scroll-mt-[30vh] justify-center pt-10">
-          {/* Always a way on: Skip while items are left, Continue once every item is done. */}
-          <ActionButton size="lg" variant={finished ? 'primary' : 'secondary'} className="min-w-56" onClick={onComplete}>
-            {finished ? 'Continue' : 'Skip'}
-          </ActionButton>
+    <div className="mx-auto flex w-full max-w-4xl flex-col pb-24">
+      <h1 className="mb-4 px-3 text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:mb-6 sm:px-5 sm:text-2xl">{practice.title}</h1>
+      {shared && (
+        <div className="mb-4 max-w-md px-3 sm:mb-6 sm:px-5">
+          <PracticeScene
+            scene={shared}
+            arrived={false}
+            renderChinese={(text) => <ContextualChineseText wordClassName="font-chinese font-semibold" text={textIn(text, script)} tokens={contextTokens} characterPreference={script} onOpenWord={onOpenWord} />}
+          />
         </div>
+      )}
+      <ol className="flex flex-col gap-0.5">
+        {items.map((item, index) => (
+          <ExerciseItem
+            key={item.id}
+            ref={refs[index]}
+            item={item}
+            index={index}
+            state={states[index]}
+            active={index === active}
+            script={script}
+            showPinyin={showPinyin}
+            contextTokens={contextTokens}
+            onOpenWord={onOpenWord}
+            onActivate={select}
+            onPlace={place}
+            onTakeBack={takeBack}
+          />
+        ))}
+      </ol>
+      <div ref={endRef} className="flex scroll-mt-[30vh] justify-center pt-10">
+        {/* Always a way on: Skip while items are left, Continue once every item is done. */}
+        <ActionButton size="lg" variant={finished ? 'primary' : 'secondary'} className="min-w-56" onClick={onComplete}>
+          {finished ? 'Continue' : 'Skip'}
+        </ActionButton>
       </div>
-      <TileGhost drag={drag} />
-    </LayoutGroup>
+    </div>
   );
 }
