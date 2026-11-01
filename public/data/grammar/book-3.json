@@ -704,7 +704,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "This phrase is used to further explain or clarify something already stated. 可以說是 and 可說是 have the same meaning.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "可以說是 means you could say it is. It explains or sums up what was just said, and 可說是 means the same.",
+            "It does not mean being able to speak. For that, use 可以說 without 是.",
+            "For plain facts like who someone is, use ordinary 是."
+          ]
         },
         {
           "id": "B3L01-G02-P30",
@@ -1389,7 +1394,13 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "This construction indicates a feeling when one encounters something exceeding one's expectations. Expressed in an exaggerated tone of voice, the 麼 can be dropped, and an 啊 added to the end of the sentence, usually following an adjective.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "多麼 ... 啊 shows strong feeling that something is more than expected, in an exaggerated tone.",
+            "麼 can be left out, and 啊 goes at the end of the sentence.",
+            "多麼 goes before an adjective, not directly before a noun.",
+            "It can't ask about price or amount. Use 多少 for that."
+          ]
         },
         {
           "id": "B3L01-G03-P32",
@@ -2170,7 +2181,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "再說 is used as a conjunction. The sentence following 再說 reinforces the content of the preceding sentence, or explains that content in greater detail.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "再說 adds one more reason or a fuller explanation to what was just said.",
+            "Put 再說 at the start of the added sentence, never at the very end.",
+            "To ask someone to say it again, use 請再說一次, not 再說 alone."
+          ]
         }
       ],
       "dialogue": {
@@ -3247,7 +3263,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "而 is a conjunction, 因為 is followed by the cause, and 而 is followed by the result of the matter. Commonly used in written or formal occasions. 因為……（，）而……means 因為……所以…….",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "而 links a cause to its result, mostly in writing or formal speech.",
+            "因為 comes before the reason and 而 before the result, so 因為……而…… means 因為……所以…….",
+            "Don't use 而 between two nouns. Use 和 or 跟 for nouns."
+          ]
         },
         {
           "id": "B3L01-G05-P40",
@@ -3984,7 +4005,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "Add 出 after the verb to indicate that the direction of the action is from the inside to the outside. For example, 我從書包裡拿出鉛筆. In this lesson, adding 出 after the verb means that new things will be generated after the action is completed. Commonly used verbs are: 想, 做, 說, 穿, 拍, 寫, 找, 算, 研究, etc.",
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "Put 出 after a verb to say that the action makes something new appear.",
+            "Common verbs are 想, 做, 說, 寫 and 畫.",
+            "This is not 出 for moving out of a place, which uses 走出來."
+          ]
         },
         {
           "id": "B3L01-G06-P42",
@@ -4655,7 +4681,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "就算 is a conjunction, followed by a hypothesis, which means that the original situation will not be changed because of the content of this hypothesis. For example, A：今天下雨，我不去學校了。B：不行，就算下雪，也得去學校。",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "就算 means even if. The imagined situation after it does not change the facts or the decision.",
+            "Use 也 in the second part, not 但是.",
+            "雖然 starts a real fact, but 就算 starts an imagined condition."
+          ]
         }
       ],
       "dialogue": {
@@ -5630,7 +5661,12 @@
           "questions": [],
           "bookPage": 50,
           "explanationEnglish": "Using 早就……了 means that the speaker feels \"It's been... It's already been a long time\". For example, 我早就知道他不能來了。Or 蛋糕早就被吃光了。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "早就……了 says the speaker feels something happened a long time ago.",
+            "已經 only says it is done. 早就 adds the feeling of long ago.",
+            "Don't use it for something that just happened. Use 剛才 or 剛剛 instead."
+          ]
         },
         {
           "id": "B3L02-G02-P52",
@@ -6569,7 +6605,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "順便 means that while doing something, do the second action at one's convenience, without taking too much trouble or spending too much time. Generally used to ask someone to do something. For example, 朋友要去郵局寄信，我請他順便買個信封。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "順便 means you do a second thing while doing the first, without much extra trouble or time.",
+            "It is often used when asking someone to do a small extra thing.",
+            "Put 順便 right before the second verb. For a special trip, say 特地 or 專門."
+          ]
         },
         {
           "id": "B3L02-G03-P53",
@@ -7476,7 +7517,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "一會兒 is an adverb, 一會兒……，一會兒……means that two or more situations occur one after the other or alternately. The person speaking feels that the situation has changed in a short period of time, and the tone has some exaggeration. For example, 這幾天的天氣一會兒冷，一會兒熱，容易讓人感冒。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "一會兒……，一會兒…… says two or more situations happen one after the other or take turns.",
+            "The speaker feels the change is quick, and the tone is sometimes a little exaggerated.",
+            "Say both parts. For two actions at the same time, use 一邊……一邊……."
+          ]
         },
         {
           "id": "B3L02-G04-P54",
@@ -8362,7 +8408,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "算了 is used colloquially. The person speaking is dissatisfied with a situation, but does not want to spend time or to make too much effort to deal with or solve it. 算了 can be used alone or at the end of the alternative choice. For example, A：對不起，我下個月很忙，不能跟你去旅行了。B: 算了。Or 我找別人跟我去算了。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "算了 is a spoken way to say forget it: you are unhappy but won't spend more time or effort.",
+            "It can be a whole sentence by itself, or come after a different choice, as in 我找別人跟我去算了.",
+            "To say you finished calculating, use 算好了, not 算了."
+          ]
         }
       ],
       "dialogue": {
@@ -9265,7 +9316,12 @@
           "questions": [],
           "bookPage": 62,
           "explanationEnglish": "When 開 is used as a result complement, there is a meaning of \"things that are originally together are now separated\". For example, 打\"開\", 拉\"開\". 開 also means \"a person or thing leaves the original condition\". For example, 走\"開\", 離\"開\", 拿\"開\", etc. It is also possible to add possible complements 得 or 不 before the result complement 開. For example, 打\"得\"開, 打\"不\"開, 走\"得\"開, 走\"不\"開, etc.",
-          "patternAccentColumn": 3
+          "patternAccentColumn": 3,
+          "summary": [
+            "開 after a verb is the result of the action. It means things that were together come apart.",
+            "It can also mean a person or thing leaves where it was. 走不開 means you are too busy to leave.",
+            "Put 得 or 不 between the verb and 開 to say can or can't, as in 打不開."
+          ]
         },
         {
           "id": "B3L02-G06-P64",
@@ -10157,7 +10213,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "The 經過 of this lesson is followed by a period of time. For example, 他寫字寫得很慢，經過了兩個小時才把功課寫完。經過 can also show the results of a certain action, e.g. 我的電腦經過李老闆修理，好用多了。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "經過 can be followed by a stretch of past time, as in 經過了兩個小時.",
+            "It can also be followed by a process that happened, as in 經過李老闆修理.",
+            "The sentence then gives the result. Don't put an adjective right after 經過."
+          ]
         },
         {
           "id": "B3L02-G07-P65",
@@ -11041,7 +11102,12 @@
           "exerciseInstruction": "Choose the best option to complete the statement.",
           "questions": [],
           "explanationEnglish": "用 here means \"to use\". 用 NP（來）V means using a certain method or means to do something. The 來 here can be omitted, and the meaning of the sentence does not change. For example, 老師用很多例子來說明語法 and 老師用很多例子說明語法 have the same meaning.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "用 plus a tool or method says how you do something.",
+            "Put the tool or method first, then the action.",
+            "來 can be left out and the meaning stays the same."
+          ]
         }
       ],
       "dialogue": {
@@ -11721,6 +11787,11 @@
           "explanationEnglish": "Before deciding to buy a product or to use it, first try to see if you really like it or if it is really suitable. There \"V\" are often monosyllable verbs, such as 吃, 穿, 用, 喝, 開, etc.",
           "patternAccentColumn": [
             1
+          ],
+          "summary": [
+            "試 plus a verb means to try it first, before you decide to buy or use something.",
+            "The verb is usually one syllable, such as 吃, 穿, 用, 喝 or 開.",
+            "Use 試 once, as in 試躺. Don't say 試試躺."
           ]
         },
         {
@@ -12328,6 +12399,11 @@
           "explanationEnglish": "The complement 掉 is used after the transitive verb, and it means to remove or produce bad results, such as 吃掉, 扔掉, 賣掉, 拿掉, etc. If the complement 掉 is used after the intransitive verb, it means to leave. For example, 走掉, 飛掉, 跑掉, 壞掉, etc.",
           "patternAccentColumn": [
             2
+          ],
+          "summary": [
+            "掉 after a verb with an object means getting rid of something or a bad result, as in 吃掉.",
+            "After a verb with no object, 掉 means leaving, as in 走掉 and 跑掉.",
+            "完 means finishing. 掉 means throwing away, using up, or a bad result."
           ]
         },
         {
@@ -12958,6 +13034,11 @@
             1,
             2,
             4
+          ],
+          "summary": [
+            "什麼(N)都 means all or any, as in 他什麼忙都幫: he helps with anything.",
+            "就是 then names the only choice or the one different case.",
+            "他什麼茶都喝，就是不喝紅茶 means he drinks any tea except black tea."
           ]
         },
         {
@@ -13679,6 +13760,10 @@
             1,
             2,
             4
+          ],
+          "summary": [
+            "別再……了 is for telling or reminding someone else to stop doing something.",
+            "不再……了 is for your own decision, or for saying that someone no longer does something."
           ]
         }
       ],
@@ -14451,6 +14536,11 @@
           "patternAccentColumn": [
             1,
             4
+          ],
+          "summary": [
+            "不僅 means the same as 不但, and it is mostly used in writing.",
+            "The second part starts with 還, 也 or 而且 to add more.",
+            "Don't use 但是 after 不僅."
           ]
         },
         {
@@ -15033,6 +15123,11 @@
             1,
             2,
             3
+          ],
+          "summary": [
+            "This pattern says a degree changes step by step, as in 一天比一天熱了.",
+            "Put 比 between the two measure words, then the adjective.",
+            "Don't drop 比: 一樣一樣 only shows things one after another, with no comparison."
           ]
         }
       ],
@@ -16080,7 +16175,12 @@
           },
           "questions": [],
           "explanationEnglish": "好 Vs 的 N（啊）! is used when the speaker wants to express a strong feeling. For example, 好有趣的表演啊！Or 好苦的咖啡！難怪你不喝。",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "好 plus an adjective plus 的 plus a noun is a strong exclamation, as in 好有趣的表演啊.",
+            "You must keep 的 between the adjective and the noun.",
+            "Use 好, not 很, to make this exclamation."
+          ]
         },
         {
           "id": "B3L04-G02-P103",
@@ -16693,7 +16793,12 @@
           },
           "questions": [],
           "explanationEnglish": "\"V 來 V 去，還是……\" means that the speaker repeatedly carries out a certain action. After having spent/wasted time, nothing has changed. The statement after 還是 shows the speaker's views, feelings or decisions. For example, 我逛來逛去，還是覺得夜市的東西最便宜。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "V來V去，還是…… says someone did an action again and again, spent time, and nothing changed.",
+            "After 還是, the speaker gives an opinion, a feeling or a decision.",
+            "想來想去 shows long thinking before the answer. 想想 is only a short thought."
+          ]
         },
         {
           "id": "B3L04-G03-P105",
@@ -17227,7 +17332,12 @@
           },
           "questions": [],
           "explanationEnglish": "終於 is an adverb. It means that after a long process, it is finally possible to achieve the hope, expectation or desired result. Put the subject in front of 終於, followed by a verb or intransitive state verb (Vs). 了 is put at the end to indicate a change in state.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "終於 means finally: after a long process, a hoped-for result comes.",
+            "Put it after the subject and before the verb or adjective. Add 了 at the end to show a change.",
+            "終於 shows relief after hard effort or a long wait. 最後 only says what came last."
+          ]
         }
       ]
     },
@@ -17767,7 +17877,12 @@
           },
           "questions": [],
           "explanationEnglish": "V 個不停 emphasizes that the same action is repeated continuously in a short period of time. For example, 這幾天雨下個不停。V 個沒完 emphasizes that a certain action takes place without stopping. For example, 昨天剛考完試，今天又考了，每天考試考個沒完。V 個沒完 is usually used when the person speaking feels bad about or impatient with such a situation.",
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "V個不停 says the same action keeps repeating in a short time, as in 雨下個不停.",
+            "V個沒完 says the action can't or won't stop, and usually the speaker feels annoyed or impatient.",
+            "If the verb has an object, say the verb twice: 開會開個不停."
+          ]
         },
         {
           "id": "B3L04-G05-P114",
@@ -18309,7 +18424,11 @@
           },
           "questions": [],
           "explanationEnglish": "\"不 Vs₁ 不 Vs₂\" illustrates the degree between \"Vs₁\" and \"Vs₂\", indicating that the person speaking feels the situation is moderate, appropriate, and suitable, and the number or degree is just right. Both Vs must be monosyllabic with opposite meanings. The order is 大小, 多少, 高矮, 新舊, 遠近, 快慢, 好壞, 冷熱, etc.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "不Vs1不Vs2 says something is in the middle and just right, as in 不大不小.",
+            "Both words must be one syllable and opposites, such as 多少, 高矮 and 冷熱."
+          ]
         },
         {
           "id": "B3L04-G06-P115",
@@ -18876,7 +18995,12 @@
           },
           "questions": [],
           "explanationEnglish": "This grammer emphasizes that if the person or thing after 除了 is excluded, there is only the person or thing after 就是. The phrase 以外 can be omitted. For example, 我來臺灣除了學習中文以外，就是工作。Or 他週末除了爬山，就是在家打掃。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "除了……就是…… says that if you take away the first thing, only the second is left.",
+            "以外 can be left out.",
+            "除了……也/還…… adds one more thing. 除了……就是…… leaves only one."
+          ]
         },
         {
           "id": "B3L04-G07-P117",
@@ -19418,7 +19542,12 @@
           },
           "questions": [],
           "explanationEnglish": "不是……，就是…… is a compound sentence which means either the person and the thing after 不是 or the person and the thing after 就是 must happen or be established, there are no other conditions or choices. For example, 教室裡的書包不是小美的，就是小麗的。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "不是……，就是…… says it must be one of two things, with no other choice.",
+            "Don't use it when both are true at once.",
+            "除了……就是…… is different: it takes one thing away and says only the other is left."
+          ]
         }
       ]
     },
@@ -20180,7 +20309,12 @@
           },
           "questions": [],
           "explanationEnglish": "萬一 is followed by a hypothesis with little possibility; mostly refers to bad things.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "萬一 is followed by something very unlikely to happen, usually something bad.",
+            "After the 萬一 part, 就 gives the bad result and 才 gives a way to avoid trouble.",
+            "如果 and 要是 work for any normal condition. 萬一 is only for unlikely events."
+          ]
         },
         {
           "id": "B3L05-G02-P130",
@@ -20833,7 +20967,12 @@
           },
           "questions": [],
           "explanationEnglish": "一連 means that the same action or situation occurs continuously, followed by verbs and quantifiers. For example, 他一連吃了五個包子, 一連三天我都在家休息. The negative words 不 or 沒 can only be used on the verb after the quantifier, such as 一連三天都沒下雨.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "一連 says the same action or situation happens again and again without a break.",
+            "It is followed by a verb or a number with a measure word, as in 一連三天.",
+            "Put 不 or 沒 after the number phrase, right before the verb."
+          ]
         },
         {
           "id": "B3L05-G03-P132",
@@ -21460,6 +21599,11 @@
           "patternAccentColumn": [
             1,
             3
+          ],
+          "summary": [
+            "以為 is followed by what the speaker first believed, which was wrong.",
+            "沒想到 is followed by what really happened, which the speaker never expected.",
+            "Use 以為, not 認為 or 覺得, when the first belief turned out wrong."
           ]
         },
         {
@@ -22123,6 +22267,10 @@
           "patternAccentColumn": [
             1,
             4
+          ],
+          "summary": [
+            "After comparing the choices, the speaker gives a conclusion or advice. The advice comes after 還是.",
+            "吧 at the end makes the advice softer, like a friendly suggestion, not a command."
           ]
         }
       ]
@@ -22736,7 +22884,12 @@
           },
           "questions": [],
           "explanationEnglish": "結果 is a conjunction indicating the final situation after an event has occurred. The sentence after 結果 is the final condition of this matter.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "結果 connects an event to the final situation after it.",
+            "所以 gives a logical result. 結果 gives how things finally ended, often not what was hoped.",
+            "結果 can also be a noun that means the outcome, as in 考試的結果."
+          ]
         },
         {
           "id": "B3L05-G06-P143",
@@ -23276,6 +23429,11 @@
             0,
             1,
             3
+          ],
+          "summary": [
+            "甚至 is followed by the person, thing or case the speaker wants to stress.",
+            "It is often used with 不但 or 連……都/也…….",
+            "而且 adds a similar point. 甚至 adds a more extreme case. If you use 連, put it right after 甚至."
           ]
         },
         {
@@ -23914,7 +24072,11 @@
           },
           "questions": [],
           "explanationEnglish": "以 indicates the boundary of a place. Place the name of an area or location in front of 以. For example, 臺中以北 means north of the boundary of 臺中.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "以 marks a boundary. Put a place name before it, then a direction after it.",
+            "臺中以北 means the area north of 臺中. The directions are 以東, 以西, 以南 and 以北."
+          ]
         }
       ]
     },
@@ -25025,7 +25187,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "倒是 agrees with the other person in a polite way, then 可是, 但是 or 不過 gives a different view.",
+            "倒 can be left out, so 是 alone works.",
+            "Put the agreeing part first and 可是 after it. 可能是 only guesses, it doesn't agree."
+          ]
         },
         {
           "id": "B3L06-G02-P157",
@@ -25803,7 +25970,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "X分之Y says a part of a whole, as in 三分之二, which means two out of three.",
+            "The whole comes first, before 分之, and the part comes after it.",
+            "For percent, say 百分之五. Don't leave out 分."
+          ]
         },
         {
           "id": "B3L06-G03-P159",
@@ -26439,7 +26611,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "總算 says something you hoped for finally happened after a wait or hard work.",
+            "It is often used in speech.",
+            "Use it for something that already happened. 總是 means always, not finally."
+          ]
         },
         {
           "id": "B3L06-G04-P160",
@@ -27301,7 +27478,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "既然 starts with a fact that already happened or is sure.",
+            "就 comes in the second part and gives the speaker's opinion, advice or conclusion.",
+            "如果 sets up a maybe, but 既然 starts from a fact."
+          ]
         }
       ]
     },
@@ -28208,7 +28390,11 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "在……中 means in a certain situation or area, as in 在我的生活中.",
+            "Put the noun phrase between 在 and 中. Keep both, and don't use 裡 here."
+          ]
         },
         {
           "id": "B3L06-G06-P169",
@@ -29274,7 +29460,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "不能不 means you must do it, because you should be responsible for it.",
+            "不得不 means you don't want to, but have no choice, so you feel helpless.",
+            "不得不 sounds stronger than 不能不."
+          ]
         },
         {
           "id": "B3L06-G07-P171",
@@ -30077,7 +30268,12 @@
                 }
               }
             ]
-          }
+          },
+          "summary": [
+            "正 means by coincidence: the first thing is just starting or about to start, and a second thing happens then.",
+            "正 is often followed by 要, 想, 打算 or 準備, and 就 starts the second part.",
+            "Use 正要, not 正在, for just about to."
+          ]
         }
       ]
     },
@@ -30952,7 +31148,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "才……就…… shows surprise that a short time or small amount already gives a result, as in 才吃一碗就飽了.",
+            "才 can also mean just now, and the 就 part happens right after it, as in 我才出門就下雨了.",
+            "剛……就…… only says it just happened, without the surprise."
+          ]
         },
         {
           "id": "B3L07-G02-P186",
@@ -31473,7 +31674,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "Use 話說回來 when you don't oppose what the other person said but have a different or better idea.",
+            "It can also bring the talk back to the topic and give your main opinion.",
+            "Put 不過, 可是 or 但是 before it."
+          ]
         },
         {
           "id": "B3L07-G03-P187",
@@ -31845,7 +32051,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "這麼說 means going by what the other person just said.",
+            "The speaker then gives their own guess drawn from it.",
+            "這麼說 starts the reply. 也就是說 is different: it restates the same meaning in other words."
+          ]
         },
         {
           "id": "B3L07-G04-P189",
@@ -32179,7 +32390,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "成 after a verb is the result of the action and means it succeeded or was done.",
+            "V 成 means it was done. 沒 V 成 means it didn't get done, for something that already happened.",
+            "V 得成 and V 不成 say it is possible or not possible to get done."
+          ]
         }
       ]
     },
@@ -32619,7 +32835,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "就……來說 looks at one thing or one area to describe or analyze it, mostly in writing.",
+            "對……來說 gives one person's view. 就……來說 looks at a topic or standard.",
+            "Keep 來說 in the pattern. Don't use 看 in its place."
+          ]
         },
         {
           "id": "B3L07-G06-P197",
@@ -32929,7 +33150,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "得 comes after a verb or adjective, and what follows tells how far the action or state goes.",
+            "What follows 得 can be an exaggerated word or a short sentence.",
+            "Use 得, not 的, for this."
+          ]
         }
       ]
     },
@@ -33544,7 +33770,12 @@
           "questions": [],
           "explanationEnglish": "成 has the meaning of \"becoming\" and \"changing to\". It means that someone makes NP₁ or becomes NP₂ through a certain action. If the verb is 看, 聽, 說, 寫, 念, sometimes 成 means \"to get something wrong\".",
           "patternAccentColumn": 4,
-          "titleSimplified": "S 把 NP1 + V 成 NP2"
+          "titleSimplified": "S 把 NP1 + V 成 NP2",
+          "summary": [
+            "把 plus the first noun, verb, 成 and the second noun says someone turns one thing into another.",
+            "把旅行的經驗寫成一本書 means turning travel experiences into a book.",
+            "After 看, 聽, 說, 寫 or 念, 成 sometimes means you got it wrong, as in 看成."
+          ]
         },
         {
           "id": "B3L08-G02-P211",
@@ -33922,7 +34153,12 @@
           "questions": [],
           "explanationEnglish": "再……也/都…… is used in a hypothetical situation, with a similar meaning to 就算……，也…… (this grammar is found in the first lesson of this volume). The sentence after 再 refers to the best or worst of a situation, and the result, decision or idea behind 也 or 都 will not change. Sometimes it means that the speaker thinks something should be done and is worth doing. For example, 再有錢也不可以亂買東西, 再貴我都要買, 再辛苦也要忍耐.",
           "patternAccentColumn": 1,
-          "titleSimplified": "再……，也/都……"
+          "titleSimplified": "再……，也/都……",
+          "summary": [
+            "再……，也/都…… takes a situation to the extreme, and the result or decision stays the same.",
+            "It means almost the same as 就算……，也……, and the speaker may feel the action is right and worth doing.",
+            "Use 再, not 更 or 又, as in 再辛苦也要忍耐."
+          ]
         },
         {
           "id": "B3L08-G03-P213",
@@ -34263,7 +34499,12 @@
           "questions": [],
           "explanationEnglish": "The 慣 of \"verb + 慣\" has the meaning of habit. It is the complement of the result, indicating the result of the previous action. For example, 他用慣了筷子，連吃西餐也用筷子。(He is used to eating with chopsticks, and even uses chopsticks to eat western food). If 慣 is added in front of 得/不, it means that the previous action can or cannot be gotten used to. For example, 這個房間很小，你住得慣嗎？(This room is very small, are you accustomed to living here?) 我吃不慣別人做的菜，每天都自己做。(I'm not used to food prepared by others, so I make it myself every day.)",
           "patternAccentColumn": 2,
-          "titleSimplified": "V惯"
+          "titleSimplified": "V惯",
+          "summary": [
+            "慣 after a verb means used to it, as the result of doing it.",
+            "Add 得 or 不 to say you can or can't get used to it: 住得慣 and 吃不慣.",
+            "Say 吃不慣, not 吃不習慣了."
+          ]
         }
       ]
     },
@@ -34675,7 +34916,12 @@
           "questions": [],
           "explanationEnglish": "況且 is used as a conjunction to indicate a more advanced tone, to supplement the explanation and make the reasoning more complete. Often used in conjunction with 也, 還, 又.",
           "patternAccentColumn": 1,
-          "titleSimplified": "况且"
+          "titleSimplified": "况且",
+          "summary": [
+            "況且 adds a further reason after the main reason, to make the reasoning fuller.",
+            "It often goes with 也, 還 or 又.",
+            "Put 況且 before the second reason, not the first. Use 況且, not 但是."
+          ]
         },
         {
           "id": "B3L08-G05-P221",
@@ -35008,7 +35254,12 @@
           "questions": [],
           "explanationEnglish": "非 means 不, so 非……不可 means that something must be done, and there is no other choice. 非 is followed with a verb or verb phrase.",
           "patternAccentColumn": 1,
-          "titleSimplified": "非……不可"
+          "titleSimplified": "非……不可",
+          "summary": [
+            "非……不可 means you must do something and have no other choice.",
+            "非 means 不, and a verb or verb phrase comes after it.",
+            "Put 非 before the whole action, as in 非向他道歉不可, and 不可 at the end."
+          ]
         },
         {
           "id": "B3L08-G06-P222",
@@ -35349,7 +35600,12 @@
           "questions": [],
           "explanationEnglish": "The sentence after 畢竟 is the conclusion after thinking and analysis, used to explain the key point of the matter, and the purpose is to remind or convince the other party. For example, 雖然中文不太好學，不過，那畢竟是我自己的選擇。(Although Chinese is not easy to learn, it is my own choice after all.)",
           "patternAccentColumn": 1,
-          "titleSimplified": "毕竟"
+          "titleSimplified": "毕竟",
+          "summary": [
+            "畢竟 is followed by a conclusion after thinking, which gives the key point of the matter.",
+            "The speaker uses it to remind or persuade the other person.",
+            "Put 畢竟 before the key point, not after it. 究竟 doesn't work here."
+          ]
         }
       ]
     },
@@ -36066,7 +36322,12 @@
           },
           "questions": [],
           "explanationEnglish": "The 過來 of 動詞＋過來 is a directional complement. For example, 請你把書拿過來。In addition, 過來 has the meaning of returning, or returning to the original state, and primarily indicating a normal or better state. For example, 醒過來, 改過來, 明白過來. On the contrary, 過去 is moving from a normal state to a less ideal one. It is used less frequently than 過來. For example, 暈過去, 昏過去.",
-          "patternAccentColumn": 4
+          "patternAccentColumn": 4,
+          "summary": [
+            "過來 after a verb can mean coming back to the normal or original state, as in 醒過來.",
+            "過去 is the opposite: from a normal state to a bad one, as in 暈過去. It is used less.",
+            "忙不過來 means there is too much work to handle."
+          ]
         },
         {
           "id": "B3L09-G02-P237",
@@ -36601,7 +36862,12 @@
           },
           "questions": [],
           "explanationEnglish": "怎麼不……呢？ has the same meaning as 為什麼不……呢？ indicating that the speaker is questioning a certain situation. The end of the sentence is often followed by 呢. 怎麼不 is followed by what the speaker thinks should be done, but 反而 as a conjunction, is followed by what should not be done or the speaker's doubt.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "怎麼不……反而……呢 asks why someone didn't do what is expected and did something else instead.",
+            "After 怎麼不, put what the speaker thinks should be done.",
+            "After 反而, put what should not be done, or what the speaker doubts."
+          ]
         },
         {
           "id": "B3L09-G03-P238",
@@ -37185,7 +37451,12 @@
           },
           "questions": [],
           "explanationEnglish": "不但不 or 不但沒 is followed by circumstances that are contrary to what the speaker expected; 反而 is followed by an unexpected situation or one the person speaking thinks shouldn't happen. Sometimes 不但 can be omitted. For example, 颱風快來了，他（不但）沒留在家裡，反而去衝浪，真是太危險了。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "不但不 or 不但沒 is followed by something opposite to what the speaker expected.",
+            "反而 then gives something surprising, or something the speaker thinks should not happen.",
+            "Sometimes 不但 can be left out."
+          ]
         },
         {
           "id": "B3L09-G04-P240",
@@ -37626,7 +37897,12 @@
           },
           "questions": [],
           "explanationEnglish": "The 才 in this lesson emphasizes what is said after 才. It is often used when refuting something, and the sentence end often uses 呢. For example, 你說那家餐廳的菜好吃，可是我覺得你煮的才好吃呢！Or 小明說我借了他的書，我才沒借呢！",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "才 stresses what comes after it, and is often used to argue against what someone said.",
+            "The sentence often ends with 呢.",
+            "Put 才 before what you stress, such as 不 or 沒: 我才不要呢."
+          ]
         }
       ]
     },
@@ -38116,7 +38392,12 @@
           },
           "questions": [],
           "explanationEnglish": "尤其 is an adverb similar to 特別, which means that something is more special compared to something else. Usually placed in the following sentence. 尤其+是 has the meaning of emphasis.",
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "尤其 means especially. It shows one thing is more special than the others.",
+            "It usually goes in the second sentence.",
+            "尤其是 picks out one thing from a group, as in 五門課都很有意思，尤其是英文會話課."
+          ]
         },
         {
           "id": "B3L09-G06-P248",
@@ -38491,7 +38772,12 @@
           },
           "questions": [],
           "explanationEnglish": "It expresses a certain action, but one which can not achieve a certain purpose or result. The verb in front of 著(zháo) has a certain purpose, and the action it expresses has to do with “contact or reach”. Commonly used verbs are 拿, 看, 打, 猜, 用, 找, etc. 著 here is to work as a structural complement, indicating the result of the preceding verb. For example, 鑰匙找著了/沒找著.",
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "著 after a verb says whether the action reached its goal or result, like 找著了.",
+            "The verb must aim at a goal, such as 拿, 看, 打, 猜, 用 or 找.",
+            "Put 得 or 不 before 著 to say you can or can't reach it."
+          ]
         },
         {
           "id": "B3L09-G07-P250",
@@ -38953,7 +39239,11 @@
           },
           "questions": [],
           "explanationEnglish": "以 is similar to 用. 以……代替 means replacing some thing or action.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "以 means 用. 以……代替…… means using one thing or action in place of the original.",
+            "Put the new thing after 以 and the old thing after 代替."
+          ]
         }
       ]
     },
@@ -39458,7 +39748,12 @@
           },
           "questions": [],
           "explanationEnglish": "直到……（，）才…… means that what has not occurred will not happen until after a certain point in time. 直到 is followed by time or circumstances. 才 is followed by the result, which means that the speaker felt that the result was later than expected.",
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "直到……才…… says something that had not happened until a certain time finally happened.",
+            "After 直到 put the time or situation. After 才 put the result.",
+            "才 shows the speaker thinks the result came later than expected."
+          ]
         },
         {
           "id": "B3L10-G02-P263",
@@ -39803,7 +40098,11 @@
           },
           "questions": [],
           "explanationEnglish": "只不過 has the same meaning as 只是, which is used to supplement something and let the listener know more about the situation. 只不過 is followed by the supplementary explanation.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "只不過 adds a note to what was said, so the listener understands the situation better.",
+            "It means 只是. Put the added explanation after it."
+          ]
         },
         {
           "id": "B3L10-G03-P265",
@@ -40168,7 +40467,11 @@
           },
           "questions": [],
           "explanationEnglish": "This 害 has the meaning of 讓 or 使, but the tone is stronger. 害 is followed by a negative result.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "害 is like 讓 or 使 but stronger. It says something causes a bad result for someone.",
+            "Put the cause before 害, then the person affected, then the bad result."
+          ]
         }
       ]
     },
@@ -40526,7 +40829,11 @@
           },
           "questions": [],
           "explanationEnglish": "V 到底 emphasizes that something is carried out to the end, persistently and diligently.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "到底 after a verb stresses carrying something through to the end, with effort.",
+            "Put 到底 after the verb: say 堅持到底, not 到底堅持."
+          ]
         },
         {
           "id": "B3L10-G05-P274",
@@ -40833,7 +41140,11 @@
           },
           "questions": [],
           "explanationEnglish": "一再 indicates that a certain action has taken place or an event has occurred again and again.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "一再 says an action or event happens again and again.",
+            "Put it after the subject and before the verb."
+          ]
         },
         {
           "id": "B3L10-G06-P275",
@@ -41143,7 +41454,12 @@
           },
           "questions": [],
           "explanationEnglish": "As with 如果 and 要是, 假如 is used to assume a certain condition or situation. The following sentence is often used in conjunction with 就 to indicate the result of a hypothetical condition or situation. 如果 can be used before and after the subject, both written and spoken. 要是 can also be used before and after the subject, but only in spoken Chinese; 假如 is used before the subject in written Chinese.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "假如, 如果 and 要是 all set up a condition. The result often follows with 就.",
+            "假如 goes before the subject and is mostly used in writing.",
+            "如果 works in writing or speech. 要是 works only in speech. Both can go before or after the subject."
+          ]
         },
         {
           "id": "B3L10-G07-P276",
@@ -41472,7 +41788,11 @@
           },
           "questions": [],
           "explanationEnglish": "The clause following 為了 explains the objective to be achieved. The clause following 而 shows in what manner the objective was achieved.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "為了……而…… says what someone does to reach a goal.",
+            "The part after 為了 is the goal. The part after 而 is what is done to reach it."
+          ]
         }
       ]
     },
@@ -42064,7 +42384,12 @@
           },
           "questions": [],
           "explanationEnglish": "透過 represents a person, thing, or behavior by which a certain result is achieved.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "透過 says a person, thing or action is the way a result is reached.",
+            "Put what you went through after 透過, then the action.",
+            "Use 透過, not 經過 or 通過, for this meaning."
+          ]
         },
         {
           "id": "B3L11-G02-P291",
@@ -42450,7 +42775,12 @@
           },
           "questions": [],
           "explanationEnglish": "以上 means 超過(exceed) or 高於(be higher than) a certain point, and also includes 某一點(a certain point). For example, 六十分以上及格(grades above 60 points are considered passing) also includes 60 points. 以下 means 低於(below) or 未達到(not to have reached) a certain point. When 以 is used together with a position word, for example, 以內, 以外, 以北 or 以南, it means something within a certain range.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "以上 means more than or higher than a point, and it includes that point. 六十分以上 includes 六十分.",
+            "以下 means lower than a point, or not reaching it.",
+            "以 with a direction word, as in 以內, 以外, 以北 or 以南, marks a range."
+          ]
         },
         {
           "id": "B3L11-G03-P292",
@@ -42814,7 +43144,11 @@
           },
           "questions": [],
           "explanationEnglish": "看得起, 看不起 indicates the level of respect shown to the other person. 看得起 means to consider the other party important; 看不起 means to look down on or to despise the other person. The grammar V 得起/V 不起, in the fourth lesson of Book 2, indicates whether a person can or can not afford something.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "看得起 means you think the other person is important. 看不起 means you look down on them.",
+            "Don't mix it up with V得起 and V不起, which say whether someone can afford something."
+          ]
         }
       ]
     },
@@ -43244,7 +43578,11 @@
           },
           "questions": [],
           "explanationEnglish": "卻 is an adverb, indicating things contrary to fact or expectation. It is often placed after the subject of the sentence or in front of the verb to indicate a transition. For example, 他跟我約好在學校見面，等了半天，他卻沒來。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "卻 shows something is the opposite of the facts or of what was expected, as in 他卻沒來.",
+            "Put it after the subject and before the verb."
+          ]
         },
         {
           "id": "B3L11-G05-P301",
@@ -43623,7 +43961,12 @@
           },
           "questions": [],
           "explanationEnglish": "對得起 means not doing something that should not be done; not letting the other party down, be angry, or embarrassed. On the contrary, 對不起 means being embarrassed or sorry for disappointing the other person. 對得起/對不起 can be followed by the object. For example, 對得起老闆, 對得起自己, 對不起朋友, 對不起社會.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "對得起 means you did nothing wrong, so you didn't disappoint, anger or embarrass the other person.",
+            "對不起 means the opposite.",
+            "Put the person or thing after it, as in 對不起朋友."
+          ]
         },
         {
           "id": "B3L11-G06-P302",
@@ -43959,7 +44302,11 @@
           },
           "questions": [],
           "explanationEnglish": "至於 is used as a turning point or pivot between sentences. What is said after 至於 is related to the previous topic or viewpoint.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "至於 moves to another topic or view that connects to the first topic.",
+            "Put the new topic after 至於, then say what you think about it."
+          ]
         }
       ]
     },
@@ -44590,7 +44937,12 @@
           "focusTerms": [
             "這就"
           ],
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "這就 says you will do something right now, on the spot.",
+            "這 means 現在 and 就 means immediately. Put a verb or verb phrase after it.",
+            "Don't use it for later times: you can't say 明天這就."
+          ]
         },
         {
           "id": "B3L12-G02-P314",
@@ -45129,6 +45481,11 @@
           "patternAccentColumn": [
             0,
             2
+          ],
+          "summary": [
+            "在……方面 names the area you are talking about, and the rest says what is true there.",
+            "Put the area between 在 and 方面. Keep both words.",
+            "對……來說 gives a point of view, not an area. Don't say 對穿著方面."
           ]
         },
         {
@@ -45587,7 +45944,13 @@
           "focusTerms": [
             "往往"
           ],
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "往往 says something tends to happen under certain conditions, as a pattern seen again and again.",
+            "Use it for what has already happened or for general facts, not for plans or personal wishes.",
+            "Always say both characters, and never put 不 before it: no 不往往.",
+            "常常 also means it happens often, but 往往 has more limits."
+          ]
         },
         {
           "id": "B3L12-G04-P318",
@@ -46108,7 +46471,12 @@
           "focusTerms": [
             "有關"
           ],
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "有關 usually starts a sentence to bring up a topic. The next part explains it or gives advice.",
+            "It can also describe a noun: 跟……有關的資料.",
+            "對於 gives the speaker's view of the object, but 有關 only brings up the topic."
+          ]
         }
       ]
     },
@@ -46709,7 +47077,12 @@
           "focusTerms": [
             "儘管"
           ],
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "儘管 means about the same as 雖然. It starts the first part and states a fact.",
+            "The second part often uses 可是, 但是, 還是 or 卻 to show the opposite result.",
+            "儘管 is for facts that already happened. 即使 is for an imagined situation."
+          ]
         },
         {
           "id": "B3L12-G06-P327",
@@ -47412,6 +47785,12 @@
           "patternAccentColumn": [
             0,
             3
+          ],
+          "summary": [
+            "不論……都…… shows that the result stays the same even when the situation changes.",
+            "After 不論 put a question word, a pair of opposites like 大小, or an A not A question.",
+            "After 都 put the result or fact that will surely happen.",
+            "既然……就 is different: it says what naturally follows from something already true."
           ]
         }
       ]
@@ -48232,7 +48611,11 @@
           "focusTerms": [
             "這下子"
           ],
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "這下子 gives the speaker's view of a situation just mentioned, or a reaction to something sudden.",
+            "It stresses the immediate result of what just happened. 現在 only states the time now."
+          ]
         },
         {
           "id": "B3L13-G02-P339",
@@ -48861,7 +49244,13 @@
             "既",
             "又"
           ],
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "既……又…… says the same subject has two states or situations.",
+            "Both must be good or both must be bad.",
+            "Don't put an adverb like 很 before the adjectives.",
+            "The state after 又 is a little stronger, and this pattern is used more in writing than 又……又……."
+          ]
         },
         {
           "id": "B3L13-G03-P341",
@@ -49468,7 +49857,11 @@
             "更別說",
             "更別說……了"
           ],
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "更別說 means there is no need to say it, because the case after it is so clear.",
+            "First give the easier or basic case, often with 連……都, then 更別說 and the harder one."
+          ]
         }
       ]
     },
@@ -50063,7 +50456,12 @@
             "也",
             "就是……，也……"
           ],
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "就是……也…… means even if. The imagined situation after 就是 does not change the result after 也.",
+            "In speech it works like 即使……也…….",
+            "只要……就 is different: it says if A happens, B must follow."
+          ]
         },
         {
           "id": "B3L13-G05-P348",
@@ -50712,7 +51110,12 @@
             "一方面……，一方面……",
             "一方面"
           ],
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "一方面……一方面…… gives two sides of one matter, such as two reasons, results or purposes.",
+            "The two parts are equal. Neither is more important.",
+            "不但……而且…… is different: the second part goes a step further."
+          ]
         }
       ]
     },
@@ -51398,7 +51801,12 @@
           },
           "questions": [],
           "explanationEnglish": "In the dialogue in this lesson, （這）就要從……說起了 means that something mentioned by the speaker cannot be easily stated clearly. You must start from a certain angle, part or time to make the listener understand. “Speak” can be replaced with a single-syllable verb such as “see, do, write, find, discuss, speak, chat”, which means to begin that action. If the subject is mentioned in the previous sentence, “this/that” is not necessary.",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "就要從……說起了 says something is hard to explain simply, so you must start from one angle, part or time.",
+            "Change 說 to a one-syllable verb like 看, 做 or 聊, not a longer one like 說明.",
+            "End with 起了, not 起來. If the topic was already mentioned, leave out 這 or 那."
+          ]
         },
         {
           "id": "B3L14-G02-P362",
@@ -51860,7 +52268,12 @@
           },
           "questions": [],
           "explanationEnglish": "下去 is placed after the verb and used as a complement to indicate that a certain action continues. No object can be added after “V 下去”.",
-          "patternAccentColumn": 2
+          "patternAccentColumn": 2,
+          "summary": [
+            "下去 after a verb shows that an action keeps going.",
+            "No object can come after V下去.",
+            "得 means you can keep going and 不 means you can't, as in 看不下去."
+          ]
         },
         {
           "id": "B3L14-G03-P363",
@@ -52306,7 +52719,11 @@
           },
           "questions": [],
           "explanationEnglish": "幸虧 is an adverb. The statement after 幸虧 describes an event that happened because of luck. If there is no such event, the bad and worrisome situation behind 要不然 will appear.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "幸虧 introduces a lucky event that happened.",
+            "要不然 then gives the bad or worrying result that would have happened without it."
+          ]
         }
       ]
     },
@@ -52754,7 +53171,12 @@
           },
           "questions": [],
           "explanationEnglish": "根據 is a preposition, making relevant conclusions based on certain behaviors, research results, stories or materials. After 根據, the words often used together are 報告, 調查, 經驗, 法律, 規定, 情況, 了解 看法, 結果, 說明, etc.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "根據 means using something as the base for a judgment, action or conclusion.",
+            "After 根據 put a noun phrase for the basis, such as 報告, 調查, 經驗 or 法律.",
+            "根據 gives the reason behind a conclusion. 按照 is about how something is done."
+          ]
         },
         {
           "id": "B3L14-G05-P371",
@@ -53168,7 +53590,12 @@
           },
           "questions": [],
           "explanationEnglish": "按照 is a preposition. It means to do things according to certain methods, requirements, regulations, plans, decisions, and standards. “According to” mainly emphasizes “how to do it”. For example, 咖啡的價錢是按照杯子大小算的，薪水是按照在公司地位的高低決定的. 按照 can only use 按 or 照; 根據 emphasizes “why you say so and do this; why there is such a conclusion”. For example, 根據臺灣的升學制度，想進好大學就得通過大學考試. 根據 can also be used as a noun. For example, 網路上有很多訊息是沒有根據的，不能完全相信。",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "按照 means doing something by a method, rule, plan or standard.",
+            "It stresses how something is done, as in 按照杯子大小算. You can shorten it to 按 or 照.",
+            "根據 stresses why you say or do something, and it can also be a noun."
+          ]
         }
       ]
     },
@@ -53672,7 +54099,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "簡直 describes something in an exaggerated, vivid way, to say it is almost like that.",
+            "It can be followed by 像, 就像, 是 or 就是.",
+            "簡直 is a vivid view from the speaker, not just a degree word like 很 or 非常."
+          ]
         },
         {
           "id": "B3L15-G02-P384",
@@ -54022,7 +54454,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "Put a describing word before 得沒話說 to say you can't find a better word for it.",
+            "It is mostly positive, for praise, not for criticism.",
+            "沒話說 can also stand alone, as in 服務沒話說, to mean nothing to complain about."
+          ]
         }
       ]
     },
@@ -54404,7 +54841,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "同時 as a noun or adverb means actions or events happen at the same time.",
+            "Between two sentences, it joins two equal ones and adds a further point.",
+            "一邊……一邊…… is for one person doing two actions at once. 同時 can also join two roles or further points."
+          ]
         },
         {
           "id": "B3L15-G04-P393",
@@ -54747,7 +55189,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "及 joins nouns and means the same as 和 or 跟, but it is more formal.",
+            "It is mostly for writing. Don't use it to join whole sentences.",
+            "With three or more items, put 及 only between the last two."
+          ]
         },
         {
           "id": "B3L15-G05-P395",
@@ -55123,7 +55570,12 @@
               }
             ]
           },
-          "questions": []
+          "questions": [],
+          "summary": [
+            "總而言之 gives a short conclusion to what came before, without much detail.",
+            "It can be shortened to 總之.",
+            "Don't mix it up with 總算, which means finally, or 總共, which adds up amounts."
+          ]
         }
       ]
     },
@@ -55707,7 +56159,12 @@
           },
           "questions": [],
           "explanationEnglish": "當作/當做 is a verb used in two ways: (1) Think of the objects described before and after as being taken for the same. For example, “他常常加班，已經把公司當作自己的家了。” “老師常把我們當作自己的孩子，非常關心我們。” “我很討厭小方，就算他從我旁邊經過，我也當作沒看見。” (2) 當作/當做 represents the judgment of the speaker on things. For examples, “張阿姨已經四十多歲了，看起來卻很年輕，常被人當作是學生。” “我很討厭小方，就算他從我旁邊經過，我也當作沒看見。”“我把這次的感冒當作是一般的感冒，所以沒去看醫生。”",
-          "patternAccentColumn": 3
+          "patternAccentColumn": 3,
+          "summary": [
+            "當作 means to treat one thing as if it were the same as another.",
+            "It can also show a judgment about something, such as 被人當作是學生.",
+            "With 把, the subject does the treating. With 被, the subject is the one treated that way."
+          ]
         },
         {
           "id": "B3L16-G02-P406",
@@ -56120,7 +56577,12 @@
           },
           "questions": [],
           "explanationEnglish": "至少 is used as an adverb, followed by a quantifier or a short sentence to indicate the lowest range or degree.",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "至少 means at least: it shows the lowest amount or level.",
+            "After 至少 put a quantity or a short sentence.",
+            "It can also name the smallest step that must be done, as in 至少得先聽聽其他人的意見."
+          ]
         }
       ]
     },
@@ -56749,7 +57211,12 @@
           },
           "questions": [],
           "explanationEnglish": "The statement after 由於 indicates the cause or reason, and the the statement after 因此 indicates the result. Such expressions are more formal than “因為……，所以……”. 因為 can be placed at the beginning of the preceding or following sentence; 由於 is usually placed at the beginning of the preceding sentence. If it is placed at the end, then the sentence should be written as “……，是由於……”. For example, 這座城市的空氣品質越來越差，是由於工廠越來越多。",
-          "patternAccentColumn": 0
+          "patternAccentColumn": 0,
+          "summary": [
+            "由於 gives the reason and 因此 gives the result. This is more formal than 因為……，所以…….",
+            "由於 usually starts the first part.",
+            "If the reason comes second, write 是由於, not just 由於."
+          ]
         },
         {
           "id": "B3L16-G04-P415",
@@ -57155,7 +57622,12 @@
           },
           "questions": [],
           "explanationEnglish": "使得 is a transitive verb (Vst). The first use of 使得 is the cause of an event, and the following usage is the result of the preceding sentence. This is similar to the usage of 使(V), but the usage of 使得 is more formal. The facts that have occurred are often used with 使得, while the hypothetical situations are often used with 使. For example, 由於這次強烈颱風帶來了大風大雨，使得很多地區都淹水了。Or 古代寺廟如能好好保留下來，就能使民眾更了解宗教的歷史意義。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "使得 links a cause to the result it brings about.",
+            "It is like 使 but more formal.",
+            "使得 is often used for facts that already happened, and 使 for imagined situations."
+          ]
         },
         {
           "id": "B3L16-G05-P417",
@@ -57669,7 +58141,11 @@
           },
           "questions": [],
           "explanationEnglish": "於是 is a conjunction that connects the two sentences, with the latter sentence describing the action taken because of the situation in the previous sentence. However, 於是 cannot be used for natural phenomena. For example, *天很黑，於是下雨了。Or *強烈颱風來了，於是很多地區淹水了。",
-          "patternAccentColumn": 1
+          "patternAccentColumn": 1,
+          "summary": [
+            "於是 joins two sentences. The second shows an action taken because of the first.",
+            "Don't use it when the second part is a natural event, as in 於是下雨了. Use 所以 instead."
+          ]
         }
       ]
     }

@@ -2,9 +2,13 @@ import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammar/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
 import { GrammarExamplesSection } from './GrammarExamplesSection';
+import { GrammarExplanation } from './GrammarExplanation';
 
 import { GrammarFocusText } from './GrammarFocusText';
 import { GrammarPatternSection } from './GrammarPatternSection';
+
+/** Which explanation the page shows (picked in the lesson menu). */
+export type GrammarExplanationView = 'summary' | 'full' | 'chinese';
 
 interface GrammarStudyPageProps {
   page: InteractiveGrammarPage;
@@ -13,8 +17,8 @@ interface GrammarStudyPageProps {
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
   hideHeader?: boolean;
-  /** Show the book's Chinese explanation instead of the English one (chosen in the lesson menu). */
-  chineseExplanation?: boolean;
+  /** Already resolved for this page: `summary` only when it has one, `chinese` only when it has both languages. */
+  explanationView?: GrammarExplanationView;
 }
 
 export function GrammarStudyPage({
@@ -24,9 +28,11 @@ export function GrammarStudyPage({
   showTranslation,
   onOpenWord,
   hideHeader = false,
-  chineseExplanation = false,
+  explanationView = 'full',
 }: GrammarStudyPageProps) {
-  const chinese = chineseExplanation;
+  const summary = explanationView === 'summary' ? page.summary : undefined;
+  // The summary covers every section, and so does Book 1's printed explanation: their section notes would repeat it.
+  const showSectionNotes = !summary && !(explanationView === 'full' && page.bookId === 1 && page.explanationEnglish);
   const teachingTokens = getGrammarTeachingTokens(page);
   const hasSubsections = Boolean(page.subsections && page.subsections.length > 0);
   // Examples the book prints under a table row show there, not again in the list.
@@ -48,15 +54,29 @@ export function GrammarStudyPage({
               onOpenWord={onOpenWord}
             />
           </h1>
-          <p className="prose-chinese max-w-none text-base font-bold leading-7 text-ui-ink sm:text-lg sm:leading-8">
-            <GrammarFocusText
-              text={page.explanationEnglish && !chinese ? page.explanationEnglish : page.explanation}
+          {summary ? (
+            <ul className="prose-chinese max-w-none list-disc space-y-2 pl-5 text-base font-bold leading-7 text-ui-ink marker:text-brand-primary-text sm:text-lg sm:leading-8">
+              {summary.map((line) => (
+                <li key={line}>
+                  <GrammarFocusText
+                    text={line}
+                    terms={page.focusTerms}
+                    contextTokens={teachingTokens}
+                    characterPreference={characterPreference}
+                    onOpenWord={onOpenWord}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <GrammarExplanation
+              text={page.explanationEnglish && explanationView !== 'chinese' ? page.explanationEnglish : page.explanation}
               terms={page.focusTerms}
               contextTokens={teachingTokens}
               characterPreference={characterPreference}
               onOpenWord={onOpenWord}
             />
-          </p>
+          )}
         </header>
       )}
 
@@ -93,16 +113,15 @@ export function GrammarStudyPage({
                     <span className="text-ui-ink-strong">{section.title}</span>
                   </h2>
 
-                  {section.explanation && (
-                    <p className="prose-chinese mt-4 max-w-none text-base font-bold leading-7 text-ui-ink sm:mt-5 sm:text-lg sm:leading-8">
-                      <GrammarFocusText
-                        text={section.explanation}
-                        terms={page.focusTerms}
-                        contextTokens={teachingTokens}
-                        characterPreference={characterPreference}
-                        onOpenWord={onOpenWord}
-                      />
-                    </p>
+                  {section.explanation && showSectionNotes && (
+                    <GrammarExplanation
+                      className="mt-4 sm:mt-5"
+                      text={section.explanation}
+                      terms={page.focusTerms}
+                      contextTokens={teachingTokens}
+                      characterPreference={characterPreference}
+                      onOpenWord={onOpenWord}
+                    />
                   )}
                 </div>
 

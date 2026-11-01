@@ -16,6 +16,8 @@
     "titleEnglish": "About to Happen",
     "learnerPromise": "Say that something will happen soon.",
     "explanation": "Put 快, 快要 or 要 before the coming action. Always put 了 at the end of the sentence.",
+    "explanationEnglish": "This pattern indicates that the action following 快（要）/要 is about to happen. 了 is always used at the end of the sentence.",
+    "explanationEnglish": "This pattern indicates that the action following 快（要）/要 is about to happen. 了 is always used at the end of the sentence.",
     "pattern": "Subject + 快 / 快要 / 要 + event + 了",
     "patternColumns": [
       "Subject",
@@ -677,6 +679,8 @@
     "titleEnglish": "Try and See",
     "learnerPromise": "Try an action and see how it goes.",
     "explanation": "Repeat a one-syllable action verb, then add 看: try the action and see.",
+    "explanationEnglish": "In this pattern, a mono-syllable action verb is reduplicated and a cognitive verb 看 is placed at the end.",
+    "explanationEnglish": "In this pattern, a mono-syllable action verb is reduplicated and a cognitive verb 看 is placed at the end.",
     "pattern": "Subject + V + V + 看",
     "patternColumns": [
       "Subject",
@@ -1808,6 +1812,8 @@
     "titleEnglish": "好 / 難 + Verb",
     "learnerPromise": "Say what is pleasant or easy to do.",
     "explanation": "好 or 難 before a perception verb says something is pleasant or unpleasant. Before an action verb, it says something is easy or hard to do.",
+    "explanationEnglish": "(1) Something is good or bad to do (perception verbs).\n(2) Something is easy or difficult to do (action verbs).",
+    "explanationEnglish": "(1) Something is good or bad to do (perception verbs).\n(2) Something is easy or difficult to do (action verbs).",
     "pattern": "好 / 難 + verb",
     "patternColumns": [
       "好",
@@ -3648,6 +3654,8 @@
     "titleEnglish": "Check a Guess",
     "learnerPromise": "Ask someone to confirm what you think.",
     "explanation": "Put 吧 after a statement when you think it is true and want confirmation.",
+    "explanationEnglish": "This 吧 expresses that the speaker has an assumption, but asks for confirmation.",
+    "explanationEnglish": "This 吧 expresses that the speaker has an assumption, but asks for confirmation.",
     "pattern": "Statement + 吧",
     "patternColumns": [
       "Statement",
@@ -4875,6 +4883,8 @@
     "titleEnglish": "Cause and Effect",
     "learnerPromise": "Give a reason and its result.",
     "explanation": "因為 introduces the reason; 所以 introduces the result. The reason usually comes first.",
+    "explanationEnglish": "In this pattern, two clauses are connected in one cause-effect sentence. The clause with 因為 usually comes first to state the reason, followed by the other one with 所以 to state the result.",
+    "explanationEnglish": "In this pattern, two clauses are connected in one cause-effect sentence. The clause with 因為 usually comes first to state the reason, followed by the other one with 所以 to state the result.",
     "pattern": "因為 + reason, 所以 + result",
     "patternColumns": [
       "Reason",
@@ -6231,6 +6241,8 @@
         "titleEnglish": "好 / 難 + Verb",
         "learnerPromise": "Say what is pleasant or easy to do.",
         "explanation": "好 or 難 before a perception verb says something is pleasant or unpleasant. Before an action verb, it says something is easy or hard to do.",
+        "explanationEnglish": "(1) Something is good or bad to do (perception verbs).\n(2) Something is easy or difficult to do (action verbs).",
+        "explanationEnglish": "(1) Something is good or bad to do (perception verbs).\n(2) Something is easy or difficult to do (action verbs).",
         "pattern": "好 / 難 + verb",
         "patternColumns": [
           "好",
@@ -8072,6 +8084,8 @@
         "titleEnglish": "Cause and Effect",
         "learnerPromise": "Give a reason and its result.",
         "explanation": "因為 introduces the reason; 所以 introduces the result. The reason usually comes first.",
+        "explanationEnglish": "In this pattern, two clauses are connected in one cause-effect sentence. The clause with 因為 usually comes first to state the reason, followed by the other one with 所以 to state the result.",
+        "explanationEnglish": "In this pattern, two clauses are connected in one cause-effect sentence. The clause with 因為 usually comes first to state the reason, followed by the other one with 所以 to state the result.",
         "pattern": "因為 + reason, 所以 + result",
         "patternColumns": [
           "Reason",
@@ -10301,6 +10315,8 @@
         "titleEnglish": "Check a Guess",
         "learnerPromise": "Ask someone to confirm what you think.",
         "explanation": "Put 吧 after a statement when you think it is true and want confirmation.",
+        "explanationEnglish": "This 吧 expresses that the speaker has an assumption, but asks for confirmation.",
+        "explanationEnglish": "This 吧 expresses that the speaker has an assumption, but asks for confirmation.",
         "pattern": "Statement + 吧",
         "patternColumns": [
           "Statement",
@@ -11527,6 +11543,8 @@
         "titleEnglish": "Try and See",
         "learnerPromise": "Try an action and see how it goes.",
         "explanation": "Repeat a one-syllable action verb, then add 看: try the action and see.",
+        "explanationEnglish": "In this pattern, a mono-syllable action verb is reduplicated and a cognitive verb 看 is placed at the end.",
+        "explanationEnglish": "In this pattern, a mono-syllable action verb is reduplicated and a cognitive verb 看 is placed at the end.",
         "pattern": "Subject + V + V + 看",
         "patternColumns": [
           "Subject",
@@ -12658,6 +12676,8 @@
         "titleEnglish": "About to Happen",
         "learnerPromise": "Say that something will happen soon.",
         "explanation": "Put 快, 快要 or 要 before the coming action. Always put 了 at the end of the sentence.",
+        "explanationEnglish": "This pattern indicates that the action following 快（要）/要 is about to happen. 了 is always used at the end of the sentence.",
+        "explanationEnglish": "This pattern indicates that the action following 快（要）/要 is about to happen. 了 is always used at the end of the sentence.",
         "pattern": "Subject + 快 / 快要 / 要 + event + 了",
         "patternColumns": [
           "Subject",
