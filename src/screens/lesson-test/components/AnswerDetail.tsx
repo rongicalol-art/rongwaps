@@ -33,7 +33,8 @@ export function AnswerDetail({ item, questions, script }: { item: LessonTestItem
     <div className={compact ? 'flex flex-col gap-2' : 'flex flex-col'}>
       {questions.map((question) => {
         const shown = answerText(item, question);
-        const zh = shown ? shown[script] ?? shown.traditional : '';
+        // A reply after —— goes on its own line, as in the question.
+        const zh = (shown ? shown[script] ?? shown.traditional ?? '' : '').replace(/——/g, '\n');
         return compact ? (
           <div key={question.id} className="flex flex-col">
             <p className="leading-snug">
@@ -44,7 +45,7 @@ export function AnswerDetail({ item, questions, script }: { item: LessonTestItem
           </div>
         ) : (
           <div key={question.id} className="flex flex-col gap-0.5">
-            {zh && <span className="font-chinese text-xl leading-snug text-ui-ink-strong">{zh}</span>}
+            {zh && <span className="whitespace-pre-line font-chinese text-xl leading-snug text-ui-ink-strong">{zh}</span>}
             {shown?.pinyin && <span className="text-base font-bold leading-snug text-ui-muted-strong">{shown.pinyin}</span>}
             {shown?.english && <span className="text-base font-bold leading-snug text-ui-muted-strong">{shown.english}</span>}
             <span className="mt-1 text-base font-extrabold leading-snug text-ui-ink-strong">{question.why}</span>
