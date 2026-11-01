@@ -10,6 +10,7 @@ import { BookBlank, type BookBlankState } from './BookBlank';
 import type { DragHandlers } from './InlineBlank';
 import { PracticeScene } from './PracticeScene';
 import { PracticeTileButton } from './PracticeTileButton';
+import { SentencePlayButton } from './SentencePlayButton';
 
 export interface ExerciseItemState {
   /** Slot id → tile index. */
@@ -156,7 +157,10 @@ export function ExerciseItem({
             {state.sentence && (
               <motion.div initial={reduceMotion ? false : { opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, ease: 'easeOut' }}>
                 {showPinyin && <p className="mt-1 text-base font-bold text-ui-muted-strong sm:text-lg">{state.sentence.pinyin}</p>}
-                <p className="mt-1 text-base font-bold leading-snug text-ui-muted-strong sm:text-lg">{state.sentence.english}</p>
+                <div className="mt-1 flex items-start gap-2">
+                  <p className="min-w-0 text-base font-bold leading-snug text-ui-muted-strong sm:text-lg">{state.sentence.english}</p>
+                  <SentencePlayButton sentence={state.sentence} script={script} />
+                </div>
               </motion.div>
             )}
           </div>

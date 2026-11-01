@@ -100,8 +100,8 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
       assert.ok(packed, `${sourceCardId} appears in Book ${bookId} vocabulary pack`);
       const packedExamples = typeof packed.examples === 'string' ? JSON.parse(packed.examples) as Array<{ audio?: SentenceAudio }> : [];
       assert.equal(packedExamples.length, 1, `${sourceCardId} has one packed vocabulary example`);
-      if (!entry.audio && bookId === 3 && entry.lessonId <= 5) {
-        // The book's own recording first; Book 3 L1–5 falls back to our studio recording only without one.
+      if (!entry.audio && (bookId === 1 || (bookId === 3 && entry.lessonId <= 5))) {
+        // The book's own recording first; Book 1 and Book 3 L1–5 fall back to our studio recording only without one.
         assert.notEqual(packedExamples[0].audio?.voice, 'book', `${sourceCardId} has no book clip to pack`);
       } else {
         assert.deepEqual(packedExamples[0].audio, entry.audio || undefined, `${sourceCardId} packed audio matches source manifest`);
@@ -129,8 +129,13 @@ test('Books 1 and 3 have complete example coverage and only verified recorded ra
       `${entry.sourceCardId}:${hanOnly(entry.traditional)}` === key
     ));
     assert.equal(matches.length, 1, `${record.id} has one manifest result`);
-    assert.deepEqual(record.audio, matches[0].audio || undefined, `${record.id} course-pack audio`);
-    if (!matches[0].audio) assert.ok(matches[0].issue, `${record.id} fallback is documented`);
+    if (matches[0].audio) {
+      assert.deepEqual(record.audio, matches[0].audio, `${record.id} course-pack audio`);
+    } else {
+      // No book clip: our studio recording when there is one, else browser speech.
+      assert.ok(matches[0].issue, `${record.id} fallback is documented`);
+      assert.ok(!record.audio || record.audio.voice === 'studio', `${record.id} course-pack fallback`);
+    }
   }
 
   assert.equal(expectedCount, 1344, 'primary vocabulary source corpus size');

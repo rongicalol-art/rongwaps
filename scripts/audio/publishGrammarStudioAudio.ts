@@ -9,6 +9,7 @@
  *
  *   node --import dotenv/config --import tsx scripts/audio/publishGrammarStudioAudio.ts            # check only
  *   node --import dotenv/config --import tsx scripts/audio/publishGrammarStudioAudio.ts --upload   # upload + receipt
+ *   ... --manifest output/grammar-audio/b1-gaps/manifest.json --approved "owner 2026-11-01 (...)" --upload   # add a batch
  *
  * R2 settings come from the environment (R2_ACCOUNT_ID or R2_ENDPOINT, R2_ACCESS_KEY_ID,
  * R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME); they are never printed.
@@ -31,6 +32,9 @@ interface StudioEntry {
   instruct: string;
   seed: number;
   mastering?: string;
+  tailGuard?: string;
+  deliveryBitrate?: string;
+  masterSha256?: string;
   previousSha256?: string;
   previousFile?: string;
   regenerated?: boolean;
@@ -43,7 +47,10 @@ const batchArg = process.argv.indexOf('--manifest');
 const BATCH = batchArg > 0 ? path.resolve(ROOT, process.argv[batchArg + 1]) : undefined;
 const MANIFEST = BATCH ?? path.join(ROOT, 'output/grammar-audio/studio-manifest.json');
 const RECEIPT = path.join(ROOT, 'content/audio/grammar_studio_audio.json');
-const APPROVED = BATCH ? 'owner 2026-10-21 (Book 3 L1–5, go-ahead in chat)' : 'owner 2026-10-19 (delegated regeneration, quality checks and publication)';
+// A batch names its own approval; the Book 3 L1–5 batch (2026-10-21) predates the flag.
+const approvedArg = process.argv.indexOf('--approved');
+const APPROVED = approvedArg > 0 ? process.argv[approvedArg + 1]
+  : BATCH ? 'owner 2026-10-21 (Book 3 L1–5, go-ahead in chat)' : 'owner 2026-10-19 (delegated regeneration, quality checks and publication)';
 const hash = (body: Buffer, algorithm = 'sha256') => createHash(algorithm).update(body).digest('hex');
 
 async function main() {
@@ -71,7 +78,7 @@ async function main() {
       if (hash(body) !== entry.sha256) throw new Error(`Local clip changed since review: ${entry.key}`);
       if (!entry.quality || !Number.isFinite(entry.quality.integratedLufs) || !Number.isFinite(entry.quality.truePeakDbfs)
         || entry.quality.integratedLufs < -17 || entry.quality.integratedLufs > -9 || entry.quality.truePeakDbfs > -1
-        || (!BATCH && !entry.quality.contentChecked)) throw new Error(`Audio quality check incomplete: ${entry.key}`);
+        || ((!BATCH || approvedArg > 0) && !entry.quality.contentChecked)) throw new Error(`Audio quality check incomplete: ${entry.key}`);
       if (client) {
         const options = { abortSignal: AbortSignal.timeout(30_000) };
         const head = () => client.send(new HeadObjectCommand({ Bucket: bucket, Key: entry.file }), options);
@@ -101,7 +108,8 @@ async function main() {
   const published = Object.fromEntries([...entries].sort((a, b) => a.key.localeCompare(b.key)).map((entry) => [entry.key, {
     file: entry.file, sha256: entry.sha256, duration: entry.duration, spoken: entry.spoken,
     model: entry.model, voice: entry.voice, instruct: entry.instruct, seed: entry.seed, approved: APPROVED,
-    mastering: entry.mastering, previousSha256: entry.previousSha256, previousFile: entry.previousFile, regenerated: entry.regenerated,
+    mastering: entry.mastering, tailGuard: entry.tailGuard, deliveryBitrate: entry.deliveryBitrate, masterSha256: entry.masterSha256,
+    previousSha256: entry.previousSha256, previousFile: entry.previousFile, regenerated: entry.regenerated,
     quality: entry.quality,
   }]));
   const receipt = BATCH ? Object.fromEntries(Object.entries({ ...previous, ...published }).sort(([a], [b]) => a.localeCompare(b))) : published;

@@ -29,12 +29,15 @@ test('every studio clip is approved, published under its versioned key, and neve
   assert.deepEqual(problems, []);
 });
 
-test('every L1–L8 grammar example and table row plays a recording', () => {
-  const silent = parts.filter((part) => part.lessonId <= 8).flatMap((part) => part.grammarPages.flatMap((page) => [
+test('every Book 1 grammar example, table row and exercise answer plays a recording', () => {
+  const silent = parts.flatMap((part) => part.grammarPages.flatMap((page) => [
     ...page.examples.filter((example) => !example.text.audio).map((example) => `${page.id} ${example.text.traditional}`),
     ...[...page.patternRows, ...(page.subsections ?? []).flatMap((section) => section.patternRows ?? [])]
       .filter((row) => !row.exampleId && !row.audio)
       .map((row) => `${page.id} row ${getPatternRowGroups(row).flat().map((token) => token.traditional).join('')}`),
+    ...(page.practice?.items ?? []).flatMap((item) => ('result' in item ? [item.result, ...('alternatives' in item ? item.alternatives ?? [] : [])] : []))
+      .filter((sentence) => !sentence.audio)
+      .map((sentence) => `${page.id} exercise ${sentence.traditional}`),
   ]));
   assert.deepEqual(silent, []);
   const used = new Set(parts.flatMap((part) => part.grammarPages.flatMap((page) => page.examples.map((example) => han(example.text.traditional)))));

@@ -4253,7 +4253,11 @@
       "printedPage": 121,
       "sourceOcrId": "B1L05-V18",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "studio",
+        "file": "grammar-studio/v1/efdd37b972af.mp3"
+      }
     },
     {
       "id": "B1L05-2-05-E01",
@@ -5640,7 +5644,11 @@
       "printedPage": 144,
       "sourceOcrId": "B1L06-V36",
       "provenance": "textbook-ocr",
-      "confidence": "high"
+      "confidence": "high",
+      "audio": {
+        "voice": "studio",
+        "file": "grammar-studio/v1/9cda9262367f.mp3"
+      }
     },
     {
       "id": "B1L06-2-18-E01",
