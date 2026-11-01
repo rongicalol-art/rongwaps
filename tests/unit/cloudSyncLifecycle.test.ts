@@ -8,6 +8,7 @@ import type { AppState } from '../../src/store/useAppStore';
 import { createAuthSlice } from '../../src/store/slices/authSlice';
 import { createLearningSlice, LEARNING_ACCOUNT_SWITCH_DEFAULTS } from '../../src/store/slices/learningSlice';
 import { createGrammarProgressSlice } from '../../src/store/slices/grammarProgressSlice';
+import { createLessonTestSlice } from '../../src/store/slices/lessonTestSlice';
 import { createSyncSlice, SYNC_ACCOUNT_SWITCH_DEFAULTS } from '../../src/store/slices/syncSlice';
 import type { userService, UserSyncState } from '../../src/services/userService';
 import { buildMetadataPayload } from '../../src/utils/sync/cloudSyncTransforms';
@@ -26,7 +27,7 @@ function deferred<T>() {
 }
 function fixture(t: TestContext) {
   const store = createStore<AppState>((set) => ({
-    ...createAuthSlice(set), ...createLearningSlice(set), ...createGrammarProgressSlice(set), ...createSyncSlice(set),
+    ...createAuthSlice(set), ...createLearningSlice(set), ...createGrammarProgressSlice(set), ...createLessonTestSlice(set), ...createSyncSlice(set),
     activeBookId: 1, characterPreference: 'traditional', favorites: [], selectedBooks: [], selectedLessonParts: {},
     customFolders: [], foldersSyncedUserId: null, isReviewMode: false, activeReviewSessionCards: null, swipeFeedback: null,
     resetAccountScopedState: () => set({ ...LEARNING_ACCOUNT_SWITCH_DEFAULTS, ...SYNC_ACCOUNT_SWITCH_DEFAULTS, syncStatus: 'idle' }),

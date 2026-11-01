@@ -12,6 +12,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | UI styling & tokens | `DESIGN_TOKENS.md`, `src/index.css` |
 | Grammar lessons | `GRAMMAR_LESSON_TEMPLATE.md`, `DECISIONS.md`, `src/screens/grammar-lesson/` |
 | Grammar book exercises (Practice) | `GRAMMAR_LESSON_TEMPLATE.md` → Book exercises, `content/grammar-practice/`, `src/features/grammar-practice/` |
+| Lesson tests (TOCFL-style end-of-lesson test) | `../content/lesson-tests/README.md`, `src/screens/lesson-test/` |
 | Data model or Supabase RPC | `DATABASE_SCHEMA.md`, `src/services/`, `src/types/database.ts` |
 | Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |
@@ -35,6 +36,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 - `DESIGN_TOKENS.md` — semantic design tokens (radius, tactile depth, shadows, focus rings, colors).
 - `API_SPEC.md` — Express API: protected lesson content, CDN media, retired grading endpoint.
 - `GRAMMAR_LESSON_TEMPLATE.md` — interactive grammar lesson spec and data contracts.
+- `../content/lesson-tests/README.md` — TOCFL-style lesson tests: how a test runs, item kinds, content rules, pictures and audio pipeline.
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.
 - `../content/audio/` — official audio index and manifest (book 1), read by `scripts/audio/` and `tests/content/officialAudio.test.ts`.
 - `TESTING.md` — test commands, acceptance suites, and Jev semantic/content review workflow.
@@ -47,5 +49,5 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 
 ## Generated Artifacts & Scratch Policy
 
-- **Committed packs (`public/data/`)**: `course-examples/`, `decomposition/`, `dictionary/`, `memory-hooks/`, `relations/`, `vocabulary/`, with hash-versioned `manifest.json`. Regenerate via npm scripts; never hand-edit.
+- **Committed packs (`public/data/`)**: `course-examples/`, `decomposition/`, `dictionary/`, `lesson-tests/`, `memory-hooks/`, `relations/`, `vocabulary/`, with hash-versioned `manifest.json`. Regenerate via npm scripts; never hand-edit.
 - **Gitignored scratch**: `output/`, `.audit/`, `materials/`, `.agents/`, `dist/`, `.vite/`. Clean with `npm run clean:local`. Never depend on them in code.

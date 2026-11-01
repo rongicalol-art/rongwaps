@@ -1,0 +1,2304 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l04",
+  "bookId": 1,
+  "lessonId": 4,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "友美",
+    "宜文",
+    "找"
+  ],
+  "slots": [
+    {
+      "id": "hear-drinks",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l04-hear-drinks-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我們要兩碗牛肉麵。",
+              "simplified": "我们要两碗牛肉面。",
+              "pinyin": "Wǒmen yào liǎng wǎn niúròu miàn.",
+              "english": "We'd like two bowls of beef noodles."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-hear-drinks-1-q",
+              "choices": [
+                {
+                  "picture": "b1l04-drinks-1",
+                  "alt": "Two cups of black tea"
+                },
+                {
+                  "picture": "b1l04-drinks-2",
+                  "alt": "Two bowls of beef noodles"
+                },
+                {
+                  "picture": "b1l04-drinks-3",
+                  "alt": "Two bottles of juice"
+                }
+              ],
+              "key": 1,
+              "why": "碗 counts bowls, so 兩碗牛肉麵 is two bowls of beef noodles.",
+              "focus": {
+                "zh": "兩碗牛肉麵",
+                "en": "two bowls of beef noodles"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-02",
+                "B1L04-1-23",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-hear-drinks-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請給我兩瓶果汁。",
+              "simplified": "请给我两瓶果汁。",
+              "pinyin": "Qǐng gěi wǒ liǎng píng guǒzhī.",
+              "english": "Two bottles of juice, please."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-hear-drinks-2-q",
+              "choices": [
+                {
+                  "picture": "b1l04-drinks-1",
+                  "alt": "Two cups of black tea"
+                },
+                {
+                  "picture": "b1l04-drinks-2",
+                  "alt": "Two bowls of beef noodles"
+                },
+                {
+                  "picture": "b1l04-drinks-3",
+                  "alt": "Two bottles of juice"
+                }
+              ],
+              "key": 2,
+              "why": "瓶 counts bottles, so 兩瓶果汁 is two bottles of juice.",
+              "focus": {
+                "zh": "兩瓶果汁",
+                "en": "two bottles of juice"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-13",
+                "B1L04-2-14",
+                "B1L04-2-06",
+                "B1L04-3-06"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-hear-drinks-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我要兩杯紅茶。",
+              "simplified": "我要两杯红茶。",
+              "pinyin": "Wǒ yào liǎng bēi hóngchá.",
+              "english": "I'd like two cups of black tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-hear-drinks-3-q",
+              "choices": [
+                {
+                  "picture": "b1l04-drinks-1",
+                  "alt": "Two cups of black tea"
+                },
+                {
+                  "picture": "b1l04-drinks-2",
+                  "alt": "Two bowls of beef noodles"
+                },
+                {
+                  "picture": "b1l04-drinks-3",
+                  "alt": "Two bottles of juice"
+                }
+              ],
+              "key": 0,
+              "why": "杯 counts cups, so 兩杯紅茶 is two cups of black tea.",
+              "focus": {
+                "zh": "兩杯紅茶",
+                "en": "two cups of black tea"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-03",
+                "B1L04-2-10",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-weather",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l04-hear-weather-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "今天天氣太熱了！",
+              "simplified": "今天天气太热了！",
+              "pinyin": "Jīntiān tiānqì tài rè le!",
+              "english": "The weather is too hot today!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-hear-weather-1-q",
+              "choices": [
+                {
+                  "picture": "b1l04-weather-1",
+                  "alt": "Yiwen fanning herself in the hot sun"
+                },
+                {
+                  "picture": "b1l04-weather-2",
+                  "alt": "Yiwen shivering in a winter coat"
+                },
+                {
+                  "picture": "b1l04-weather-3",
+                  "alt": "Yiwen holding her stomach, thinking of noodles"
+                }
+              ],
+              "key": 0,
+              "why": "太熱了 means too hot.",
+              "focus": {
+                "zh": "太熱了",
+                "en": "too hot"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L02-1-10",
+                "B1L04-1-03",
+                "B1L04-1-14",
+                "B1L04-1-05",
+                "B1L04-1-20"
+              ],
+              "grammarIds": [
+                "B1L04-G03-P98"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-hear-weather-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我很餓，我想吃牛肉麵。",
+              "simplified": "我很饿，我想吃牛肉面。",
+              "pinyin": "Wǒ hěn è, wǒ xiǎng chī niúròu miàn.",
+              "english": "I'm very hungry, I want some beef noodles."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-hear-weather-2-q",
+              "choices": [
+                {
+                  "picture": "b1l04-weather-1",
+                  "alt": "Yiwen fanning herself in the hot sun"
+                },
+                {
+                  "picture": "b1l04-weather-2",
+                  "alt": "Yiwen shivering in a winter coat"
+                },
+                {
+                  "picture": "b1l04-weather-3",
+                  "alt": "Yiwen holding her stomach, thinking of noodles"
+                }
+              ],
+              "key": 2,
+              "why": "餓 means hungry: 很餓 means very hungry.",
+              "focus": {
+                "zh": "很餓",
+                "en": "very hungry"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L01-1-07",
+                "B1L04-1-09",
+                "B1L03-1-03",
+                "B1L04-1-23"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-hear-weather-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "今天好冷啊！",
+              "simplified": "今天好冷啊！",
+              "pinyin": "Jīntiān hǎo lěng a!",
+              "english": "It's so cold today!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-hear-weather-3-q",
+              "choices": [
+                {
+                  "picture": "b1l04-weather-1",
+                  "alt": "Yiwen fanning herself in the hot sun"
+                },
+                {
+                  "picture": "b1l04-weather-2",
+                  "alt": "Yiwen shivering in a winter coat"
+                },
+                {
+                  "picture": "b1l04-weather-3",
+                  "alt": "Yiwen holding her stomach, thinking of noodles"
+                }
+              ],
+              "key": 1,
+              "why": "冷 means cold. 熱 would be hot.",
+              "focus": {
+                "zh": "好冷",
+                "en": "so cold"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-04",
+                "B1L04-1-06",
+                "B1L02-2-06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-coffee",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l04-picture-coffee-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "b1l04-cold-coffee",
+            "alt": "Youmei by a rainy café window in a scarf, holding a hot cup of coffee"
+          },
+          "questions": [
+            {
+              "id": "b1l04-picture-coffee-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "天氣很冷，她喝咖啡。",
+                  "simplified": "天气很冷，她喝咖啡。",
+                  "pinyin": "Tiānqì hěn lěng, tā hē kāfēi.",
+                  "english": "It's cold, and she's drinking coffee."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "天氣很熱，她喝咖啡。",
+                  "simplified": "天气很热，她喝咖啡。",
+                  "pinyin": "Tiānqì hěn rè, tā hē kāfēi.",
+                  "english": "It's hot, and she's drinking coffee."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "天氣很冷，她吃蛋糕。",
+                  "simplified": "天气很冷，她吃蛋糕。",
+                  "pinyin": "Tiānqì hěn lěng, tā chī dàngāo.",
+                  "english": "It's cold, and she's eating cake."
+                }
+              ],
+              "key": 0,
+              "why": "It is a cold, rainy day, and she is holding a cup of coffee, not eating cake.",
+              "focus": {
+                "zh": "天氣很冷",
+                "en": "cold weather"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-03",
+                "B1L04-1-06",
+                "B1L01-3-07",
+                "B1L04-1-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-picture-coffee-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "b1l04-cold-coffee",
+            "alt": "Youmei by a rainy café window in a scarf, holding a hot cup of coffee"
+          },
+          "questions": [
+            {
+              "id": "b1l04-picture-coffee-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她喝一瓶果汁。",
+                  "simplified": "她喝一瓶果汁。",
+                  "pinyin": "Tā hē yì píng guǒzhī.",
+                  "english": "She's drinking a bottle of juice."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她喝一杯咖啡。",
+                  "simplified": "她喝一杯咖啡。",
+                  "pinyin": "Tā hē yì bēi kāfēi.",
+                  "english": "She's drinking a cup of coffee."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她喝兩杯茶。",
+                  "simplified": "她喝两杯茶。",
+                  "pinyin": "Tā hē liǎng bēi chá.",
+                  "english": "She's drinking two cups of tea."
+                }
+              ],
+              "key": 1,
+              "why": "She is holding one cup of coffee: 一杯咖啡.",
+              "focus": {
+                "zh": "一杯咖啡",
+                "en": "a cup of coffee"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-03",
+                "B1L04-1-01"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-shop",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l04-picture-shop-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "b1l04-drink-shop",
+            "alt": "A busy drink shop with many people and shelves full of different drinks"
+          },
+          "questions": [
+            {
+              "id": "b1l04-picture-shop-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這家店賣很多種飲料。",
+                  "simplified": "这家店卖很多种饮料。",
+                  "pinyin": "Zhè jiā diàn mài hěn duō zhǒng yǐnliào.",
+                  "english": "This shop sells many kinds of drinks."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這家店不賣飲料。",
+                  "simplified": "这家店不卖饮料。",
+                  "pinyin": "Zhè jiā diàn bú mài yǐnliào.",
+                  "english": "This shop doesn't sell drinks."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這家店賣很多書。",
+                  "simplified": "这家店卖很多书。",
+                  "pinyin": "Zhè jiā diàn mài hěn duō shū.",
+                  "english": "This shop sells lots of books."
+                }
+              ],
+              "key": 0,
+              "why": "The shelves are full of different drinks: 很多種飲料 means many kinds of drinks.",
+              "focus": {
+                "zh": "很多種飲料",
+                "en": "many kinds of drinks"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-13",
+                "B1L04-3-05",
+                "B1L04-1-22",
+                "B1L03-2-03",
+                "B1L04-1-07"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-picture-shop-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "b1l04-drink-shop",
+            "alt": "A busy drink shop with many people and shelves full of different drinks"
+          },
+          "questions": [
+            {
+              "id": "b1l04-picture-shop-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "這家店人很少。",
+                  "simplified": "这家店人很少。",
+                  "pinyin": "Zhè jiā diàn rén hěn shǎo.",
+                  "english": "There are very few people in this shop."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這家店人很多。",
+                  "simplified": "这家店人很多。",
+                  "pinyin": "Zhè jiā diàn rén hěn duō.",
+                  "english": "There are lots of people in this shop."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "這家店沒有人。",
+                  "simplified": "这家店没有人。",
+                  "pinyin": "Zhè jiā diàn méiyǒu rén.",
+                  "english": "There's nobody in this shop."
+                }
+              ],
+              "key": 1,
+              "why": "The shop is crowded: 人很多 means there are lots of people.",
+              "focus": {
+                "zh": "人很多",
+                "en": "lots of people"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-15",
+                "B1L04-1-16",
+                "B1L00-1-10"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-order",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l04-dialogue-order-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你要喝咖啡還是茶？",
+              "simplified": "你要喝咖啡还是茶？",
+              "pinyin": "Nǐ yào hē kāfēi háishì chá?",
+              "english": "Would you like coffee or tea?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "今天太熱了，咖啡我不喝。我要一杯綠茶。",
+              "simplified": "今天太热了，咖啡我不喝。我要一杯绿茶。",
+              "pinyin": "Jīntiān tài rè le, kāfēi wǒ bù hē. Wǒ yào yì bēi lǜchá.",
+              "english": "It's too hot today. Coffee, I won't have. A cup of green tea, please."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-order-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他要喝什麼？",
+                "simplified": "他要喝什么？",
+                "pinyin": "Tā yào hē shénme?",
+                "english": "What does he want to drink?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "咖啡",
+                  "simplified": "咖啡",
+                  "pinyin": "kāfēi",
+                  "english": "coffee"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "紅茶",
+                  "simplified": "红茶",
+                  "pinyin": "hóngchá",
+                  "english": "black tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "綠茶",
+                  "simplified": "绿茶",
+                  "pinyin": "lǜchá",
+                  "english": "green tea"
+                }
+              ],
+              "key": 2,
+              "why": "咖啡我不喝 puts coffee first and turns it down; then he asks for 一杯綠茶 (a cup of green tea).",
+              "focus": {
+                "zh": "咖啡我不喝",
+                "en": "topic first: coffee, I won't have"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-02",
+                "B1L04-1-01",
+                "B1L04-2-11",
+                "B1L04-1-14"
+              ],
+              "grammarIds": [
+                "B1L04-G01-P95",
+                "B1L04-G03-P98"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-dialogue-order-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "你們要紅茶還是綠茶？",
+              "simplified": "你们要红茶还是绿茶？",
+              "pinyin": "Nǐmen yào hóngchá háishì lǜchá?",
+              "english": "Would you like black tea or green tea?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "紅茶我要一杯，我朋友也要一杯。",
+              "simplified": "红茶我要一杯，我朋友也要一杯。",
+              "pinyin": "Hóngchá wǒ yào yì bēi, wǒ péngyǒu yě yào yì bēi.",
+              "english": "Black tea: I'd like a cup, and my friend would like one too."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-order-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他們要幾杯紅茶？",
+                "simplified": "他们要几杯红茶？",
+                "pinyin": "Tāmen yào jǐ bēi hóngchá?",
+                "english": "How many cups of black tea do they want?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一杯",
+                  "simplified": "一杯",
+                  "pinyin": "yì bēi",
+                  "english": "one cup"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩杯",
+                  "simplified": "两杯",
+                  "pinyin": "liǎng bēi",
+                  "english": "two cups"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三杯",
+                  "simplified": "三杯",
+                  "pinyin": "sān bēi",
+                  "english": "three cups"
+                }
+              ],
+              "key": 1,
+              "why": "紅茶 comes first as the topic: she wants a cup, and her friend 也 (also) wants a cup. That's two cups.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-02",
+                "B1L04-2-10",
+                "B1L04-1-08",
+                "B1L04-2-03"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97",
+                "B1L04-G01-P95"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-pay",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l04-dialogue-pay-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這家店的果汁多少錢？",
+              "simplified": "这家店的果汁多少钱？",
+              "pinyin": "Zhè jiā diàn de guǒzhī duōshǎo qián?",
+              "english": "How much is the juice at this shop?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不貴，一杯五十多塊。",
+              "simplified": "不贵，一杯五十多块。",
+              "pinyin": "Bú guì, yì bēi wǔshí duō kuài.",
+              "english": "It's not expensive, a little over fifty a cup."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-pay-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "一杯果汁多少錢？",
+                "simplified": "一杯果汁多少钱？",
+                "pinyin": "Yì bēi guǒzhī duōshǎo qián?",
+                "english": "How much is a cup of juice?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "五十塊",
+                  "simplified": "五十块",
+                  "pinyin": "wǔshí kuài",
+                  "english": "fifty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "五十多塊",
+                  "simplified": "五十多块",
+                  "pinyin": "wǔshí duō kuài",
+                  "english": "a little over fifty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一百五十塊",
+                  "simplified": "一百五十块",
+                  "pinyin": "yì bǎi wǔshí kuài",
+                  "english": "a hundred and fifty dollars"
+                }
+              ],
+              "key": 1,
+              "why": "五十多 means a little over fifty, not exactly 五十.",
+              "focus": {
+                "zh": "五十多",
+                "en": "a little over fifty"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-16",
+                "B1L04-2-23",
+                "B1L04-3-06",
+                "B1L03-2-13"
+              ],
+              "grammarIds": [
+                "B1L04-G05-P105"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-dialogue-pay-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這家店的牛肉麵貴不貴？",
+              "simplified": "这家店的牛肉面贵不贵？",
+              "pinyin": "Zhè jiā diàn de niúròu miàn guì bu guì?",
+              "english": "Is the beef noodle soup here expensive?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不貴，一碗一百多塊。",
+              "simplified": "不贵，一碗一百多块。",
+              "pinyin": "Bú guì, yì wǎn yì bǎi duō kuài.",
+              "english": "Not expensive, a little over a hundred a bowl."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-pay-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "一碗牛肉麵多少錢？",
+                "simplified": "一碗牛肉面多少钱？",
+                "pinyin": "Yì wǎn niúròu miàn duōshǎo qián?",
+                "english": "How much is a bowl of beef noodles?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一百塊",
+                  "simplified": "一百块",
+                  "pinyin": "yì bǎi kuài",
+                  "english": "a hundred dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一百多塊",
+                  "simplified": "一百多块",
+                  "pinyin": "yì bǎi duō kuài",
+                  "english": "a little over a hundred dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩百多塊",
+                  "simplified": "两百多块",
+                  "pinyin": "liǎng bǎi duō kuài",
+                  "english": "a little over two hundred dollars"
+                }
+              ],
+              "key": 1,
+              "why": "一百多 means a little over a hundred, not exactly 一百.",
+              "focus": {
+                "zh": "一百多",
+                "en": "a little over a hundred"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-23",
+                "B1L04-2-17",
+                "B1L04-1-23",
+                "B1L03-2-13"
+              ],
+              "grammarIds": [
+                "B1L04-G05-P105",
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-time",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l04-dialogue-time-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文，妳明天幾點有課？",
+              "simplified": "宜文，你明天几点有课？",
+              "pinyin": "Yíwén, nǐ míngtiān jǐ diǎn yǒu kè?",
+              "english": "Yiwen, what time is your class tomorrow?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "上午十點有課，我九點去學校。",
+              "simplified": "上午十点有课，我九点去学校。",
+              "pinyin": "Shàngwǔ shí diǎn yǒu kè, wǒ jiǔ diǎn qù xuéxiào.",
+              "english": "My class is at ten in the morning. I'll go to school at nine."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-time-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "宜文明天幾點去學校？",
+                "simplified": "宜文明天几点去学校？",
+                "pinyin": "Yíwén míngtiān jǐ diǎn qù xuéxiào?",
+                "english": "What time is Yiwen going to school tomorrow?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "english": "nine o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十點",
+                  "simplified": "十点",
+                  "pinyin": "shí diǎn",
+                  "english": "ten o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十二點",
+                  "simplified": "十二点",
+                  "pinyin": "shí'èr diǎn",
+                  "english": "twelve o'clock"
+                }
+              ],
+              "key": 0,
+              "why": "Her class is at 十點, but she goes to school at 九點.",
+              "focus": {
+                "zh": "幾點",
+                "en": "telling the time"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-1-06",
+                "B1L02-1-26",
+                "B1L02-1-19"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-dialogue-time-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "中明，你今天中午回家吃午飯嗎？",
+              "simplified": "中明，你今天中午回家吃午饭吗？",
+              "pinyin": "Zhōngmíng, nǐ jīntiān zhōngwǔ huí jiā chī wǔfàn ma?",
+              "english": "Zhongming, are you going home for lunch today?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不回家，我下午一點有課。",
+              "simplified": "不回家，我下午一点有课。",
+              "pinyin": "Bù huí jiā, wǒ xiàwǔ yì diǎn yǒu kè.",
+              "english": "No, I have class at one in the afternoon."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-time-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "中明幾點有課？",
+                "simplified": "中明几点有课？",
+                "pinyin": "Zhōngmíng jǐ diǎn yǒu kè?",
+                "english": "What time is Zhongming's class?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十二點",
+                  "simplified": "十二点",
+                  "pinyin": "shí'èr diǎn",
+                  "english": "twelve o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一點",
+                  "simplified": "一点",
+                  "pinyin": "yì diǎn",
+                  "english": "one o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "兩點",
+                  "simplified": "两点",
+                  "pinyin": "liǎng diǎn",
+                  "english": "two o'clock"
+                }
+              ],
+              "key": 1,
+              "why": "He says 下午一點有課: his class is at one. 中午 (noon) is when he won't go home.",
+              "focus": {
+                "zh": "下午一點",
+                "en": "one in the afternoon"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-21",
+                "B1L02-1-22",
+                "B1L02-3-04",
+                "B1L02-1-25",
+                "B1L02-1-19"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gift",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l04-dialogue-gift-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你想送媽媽什麼生日禮物？",
+              "simplified": "你想送妈妈什么生日礼物？",
+              "pinyin": "Nǐ xiǎng sòng māma shénme shēngrì lǐwù?",
+              "english": "What birthday present do you want to give your mom?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我想送她一些花和一個蛋糕。",
+              "simplified": "我想送她一些花和一个蛋糕。",
+              "pinyin": "Wǒ xiǎng sòng tā yìxiē huā hé yí ge dàngāo.",
+              "english": "I want to give her some flowers and a cake."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-gift-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他想送媽媽什麼？",
+                "simplified": "他想送妈妈什么？",
+                "pinyin": "Tā xiǎng sòng māma shénme?",
+                "english": "What does he want to give his mom?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一本書",
+                  "simplified": "一本书",
+                  "pinyin": "yì běn shū",
+                  "english": "a book"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "花和蛋糕",
+                  "simplified": "花和蛋糕",
+                  "pinyin": "huā hé dàngāo",
+                  "english": "flowers and a cake"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一件衣服",
+                  "simplified": "一件衣服",
+                  "pinyin": "yí jiàn yīfu",
+                  "english": "an item of clothing"
+                }
+              ],
+              "key": 1,
+              "why": "He wants to give her 一些花和一個蛋糕: flowers and a cake.",
+              "focus": {
+                "zh": "送 + 人 + 禮物",
+                "en": "giving someone a gift"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-02",
+                "B1L03-1-12",
+                "B1L03-1-13",
+                "B1L03-1-18"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-dialogue-gift-2",
+          "kind": "dialogue",
+          "answerLine": 3,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "這枝筆多少錢？",
+              "simplified": "这枝笔多少钱？",
+              "pinyin": "Zhè zhī bǐ duōshǎo qián?",
+              "english": "How much is this pen?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "十五塊。",
+              "simplified": "十五块。",
+              "pinyin": "Shíwǔ kuài.",
+              "english": "Fifteen."
+            },
+            {
+              "speaker": "M",
+              "traditional": "那枝呢？",
+              "simplified": "那枝呢？",
+              "pinyin": "Nà zhī ne?",
+              "english": "And that one?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "那枝二十塊。",
+              "simplified": "那枝二十块。",
+              "pinyin": "Nà zhī èrshí kuài.",
+              "english": "That one is twenty."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-dialogue-gift-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "那枝筆多少錢？",
+                "simplified": "那枝笔多少钱？",
+                "pinyin": "Nà zhī bǐ duōshǎo qián?",
+                "english": "How much is that pen?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "十五塊",
+                  "simplified": "十五块",
+                  "pinyin": "shíwǔ kuài",
+                  "english": "fifteen dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "二十塊",
+                  "simplified": "二十块",
+                  "pinyin": "èrshí kuài",
+                  "english": "twenty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三十五塊",
+                  "simplified": "三十五块",
+                  "pinyin": "sānshíwǔ kuài",
+                  "english": "thirty-five dollars"
+                }
+              ],
+              "key": 1,
+              "why": "那枝呢？ asks about that pen, and she answers 二十塊.",
+              "focus": {
+                "zh": "那枝呢",
+                "en": "and that one?"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-02",
+                "B1L03-2-08",
+                "B1L03-2-05",
+                "B1L03-2-09",
+                "B1L01-2-04"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L01-G04-P44"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-price",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l04-read-price-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l04-read-price-1-q",
+              "prompt": {
+                "traditional": "這杯咖啡一百二十塊。",
+                "simplified": "这杯咖啡一百二十块。",
+                "pinyin": "Zhè bēi kāfēi yì bǎi èrshí kuài.",
+                "english": "This cup of coffee is 120."
+              },
+              "choices": [
+                {
+                  "picture": "b1l04-price-1",
+                  "alt": "A cup of coffee with a $120 tag"
+                },
+                {
+                  "picture": "b1l04-price-2",
+                  "alt": "A cup of coffee with a $210 tag"
+                },
+                {
+                  "picture": "b1l04-price-3",
+                  "alt": "A cup of coffee with a $1,200 tag"
+                }
+              ],
+              "key": 0,
+              "why": "一百二十 is 120. 兩百一十 would be 210.",
+              "focus": {
+                "zh": "一百二十",
+                "en": "reading 120"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-17",
+                "B1L03-2-09",
+                "B1L04-1-01"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-read-price-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l04-read-price-2-q",
+              "prompt": {
+                "traditional": "這杯咖啡兩百一十塊，好貴！",
+                "simplified": "这杯咖啡两百一十块，好贵！",
+                "pinyin": "Zhè bēi kāfēi liǎng bǎi yīshí kuài, hǎo guì!",
+                "english": "This cup of coffee is 210. So expensive!"
+              },
+              "choices": [
+                {
+                  "picture": "b1l04-price-1",
+                  "alt": "A cup of coffee with a $120 tag"
+                },
+                {
+                  "picture": "b1l04-price-2",
+                  "alt": "A cup of coffee with a $210 tag"
+                },
+                {
+                  "picture": "b1l04-price-3",
+                  "alt": "A cup of coffee with a $1,200 tag"
+                }
+              ],
+              "key": 1,
+              "why": "兩百一十 is 210: two hundreds and one ten.",
+              "focus": {
+                "zh": "兩百一十",
+                "en": "reading 210"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-17",
+                "B1L03-2-09",
+                "B1L04-1-04",
+                "B1L03-2-13"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-read-price-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l04-read-price-3-q",
+              "prompt": {
+                "traditional": "這杯咖啡一千兩百塊，太貴了！",
+                "simplified": "这杯咖啡一千两百块，太贵了！",
+                "pinyin": "Zhè bēi kāfēi yì qiān liǎng bǎi kuài, tài guì le!",
+                "english": "This cup of coffee is 1,200. Too expensive!"
+              },
+              "choices": [
+                {
+                  "picture": "b1l04-price-1",
+                  "alt": "A cup of coffee with a $120 tag"
+                },
+                {
+                  "picture": "b1l04-price-2",
+                  "alt": "A cup of coffee with a $210 tag"
+                },
+                {
+                  "picture": "b1l04-price-3",
+                  "alt": "A cup of coffee with a $1,200 tag"
+                }
+              ],
+              "key": 2,
+              "why": "一千兩百 is 1,200: one thousand and two hundred.",
+              "focus": {
+                "zh": "一千兩百",
+                "en": "reading 1,200"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-18",
+                "B1L04-2-17",
+                "B1L04-1-14",
+                "B1L03-2-13"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104",
+                "B1L04-G03-P98"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-cafe",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l04-read-cafe-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l04-read-cafe-1-q",
+              "prompt": {
+                "traditional": "中明喝咖啡，友美也喝咖啡。",
+                "simplified": "中明喝咖啡，友美也喝咖啡。",
+                "pinyin": "Zhōngmíng hē kāfēi, Yǒuměi yě hē kāfēi.",
+                "english": "Zhongming drinks coffee, and Youmei drinks coffee too."
+              },
+              "choices": [
+                {
+                  "picture": "b1l04-cafe-1",
+                  "alt": "Zhongming has coffee, Youmei has tea"
+                },
+                {
+                  "picture": "b1l04-cafe-2",
+                  "alt": "Zhongming and Youmei both have coffee"
+                },
+                {
+                  "picture": "b1l04-cafe-3",
+                  "alt": "Zhongming and Youmei both have tea"
+                }
+              ],
+              "key": 1,
+              "why": "也 means also: Youmei drinks coffee too.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-08",
+                "B1L04-1-01",
+                "B1L01-3-07"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-read-cafe-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l04-read-cafe-2-q",
+              "prompt": {
+                "traditional": "中明喝茶，友美也喝茶。",
+                "simplified": "中明喝茶，友美也喝茶。",
+                "pinyin": "Zhōngmíng hē chá, Yǒuměi yě hē chá.",
+                "english": "Zhongming drinks tea, and Youmei drinks tea too."
+              },
+              "choices": [
+                {
+                  "picture": "b1l04-cafe-1",
+                  "alt": "Zhongming has coffee, Youmei has tea"
+                },
+                {
+                  "picture": "b1l04-cafe-2",
+                  "alt": "Zhongming and Youmei both have coffee"
+                },
+                {
+                  "picture": "b1l04-cafe-3",
+                  "alt": "Zhongming and Youmei both have tea"
+                }
+              ],
+              "key": 2,
+              "why": "也 means also: Youmei drinks tea too, so they both have tea.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-08",
+                "B1L01-3-08",
+                "B1L01-3-07"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-read-cafe-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l04-read-cafe-3-q",
+              "prompt": {
+                "traditional": "中明喝咖啡，友美喝茶。",
+                "simplified": "中明喝咖啡，友美喝茶。",
+                "pinyin": "Zhōngmíng hē kāfēi, Yǒuměi hē chá.",
+                "english": "Zhongming drinks coffee, and Youmei drinks tea."
+              },
+              "choices": [
+                {
+                  "picture": "b1l04-cafe-1",
+                  "alt": "Zhongming has coffee, Youmei has tea"
+                },
+                {
+                  "picture": "b1l04-cafe-2",
+                  "alt": "Zhongming and Youmei both have coffee"
+                },
+                {
+                  "picture": "b1l04-cafe-3",
+                  "alt": "Zhongming and Youmei both have tea"
+                }
+              ],
+              "key": 0,
+              "why": "Zhongming has coffee and Youmei has tea: they drink different things.",
+              "focus": {
+                "zh": "喝咖啡、喝茶",
+                "en": "who drinks what"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-01",
+                "B1L01-3-08",
+                "B1L01-3-07"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-menu",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l04-realia-menu-1",
+          "kind": "realia",
+          "picture": "b1l04-menu",
+          "alt": "A noodle shop menu board",
+          "transcript": {
+            "traditional": "台灣牛肉麵　牛肉麵 120元　紅茶 35元　綠茶 35元　咖啡 60元　果汁 55元",
+            "simplified": "台湾牛肉面　牛肉面 120元　红茶 35元　绿茶 35元　咖啡 60元　果汁 55元",
+            "pinyin": "Táiwān Niúròu Miàn: niúròu miàn 120 yuán, hóngchá 35 yuán, lǜchá 35 yuán, kāfēi 60 yuán, guǒzhī 55 yuán",
+            "english": "Taiwan Beef Noodles: beef noodles 120, black tea 35, green tea 35, coffee 60, juice 55"
+          },
+          "questions": [
+            {
+              "id": "b1l04-realia-menu-1-q",
+              "choices": [
+                {
+                  "traditional": "兩杯咖啡和一杯果汁一共一百五十塊。",
+                  "simplified": "两杯咖啡和一杯果汁一共一百五十块。",
+                  "pinyin": "Liǎng bēi kāfēi hé yì bēi guǒzhī yígòng yì bǎi wǔshí kuài.",
+                  "english": "Two coffees and a juice are 150 altogether."
+                },
+                {
+                  "traditional": "一碗牛肉麵和一杯紅茶一共一百五十五塊。",
+                  "simplified": "一碗牛肉面和一杯红茶一共一百五十五块。",
+                  "pinyin": "Yì wǎn niúròu miàn hé yì bēi hóngchá yígòng yì bǎi wǔshíwǔ kuài.",
+                  "english": "A bowl of beef noodles and a black tea are 155 altogether."
+                },
+                {
+                  "traditional": "這家店的果汁最貴，一杯六十塊。",
+                  "simplified": "这家店的果汁最贵，一杯六十块。",
+                  "pinyin": "Zhè jiā diàn de guǒzhī zuì guì, yì bēi liùshí kuài.",
+                  "english": "The juice here is the most expensive, 60 a cup."
+                }
+              ],
+              "key": 1,
+              "why": "120 + 35 = 155. Two coffees and a juice come to 175, and the noodles (120元) cost the most.",
+              "focus": {
+                "zh": "一共",
+                "en": "adding up prices"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-15",
+                "B1L04-2-17",
+                "B1L04-1-21",
+                "B1L03-2-13"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-realia-menu-2",
+          "kind": "realia",
+          "picture": "b1l04-menu",
+          "alt": "A noodle shop menu board",
+          "transcript": {
+            "traditional": "台灣牛肉麵　牛肉麵 120元　紅茶 35元　綠茶 35元　咖啡 60元　果汁 55元",
+            "simplified": "台湾牛肉面　牛肉面 120元　红茶 35元　绿茶 35元　咖啡 60元　果汁 55元",
+            "pinyin": "Táiwān Niúròu Miàn: niúròu miàn 120 yuán, hóngchá 35 yuán, lǜchá 35 yuán, kāfēi 60 yuán, guǒzhī 55 yuán",
+            "english": "Taiwan Beef Noodles: beef noodles 120, black tea 35, green tea 35, coffee 60, juice 55"
+          },
+          "questions": [
+            {
+              "id": "b1l04-realia-menu-2-q",
+              "prompt": {
+                "traditional": "中明點一碗牛肉麵，給小姐兩百塊。小姐找他多少錢？",
+                "simplified": "中明点一碗牛肉面，给小姐两百块。小姐找他多少钱？",
+                "pinyin": "Zhōngmíng diǎn yì wǎn niúròu miàn, gěi xiǎojiě liǎng bǎi kuài. Xiǎojiě zhǎo tā duōshǎo qián?",
+                "english": "Zhongming orders a bowl of beef noodles and gives the woman 200. How much change does she give him?"
+              },
+              "choices": [
+                {
+                  "traditional": "八十塊",
+                  "simplified": "八十块",
+                  "pinyin": "bāshí kuài",
+                  "english": "80 dollars"
+                },
+                {
+                  "traditional": "一百二十塊",
+                  "simplified": "一百二十块",
+                  "pinyin": "yì bǎi èrshí kuài",
+                  "english": "120 dollars"
+                },
+                {
+                  "traditional": "兩百塊",
+                  "simplified": "两百块",
+                  "pinyin": "liǎng bǎi kuài",
+                  "english": "200 dollars"
+                }
+              ],
+              "key": 0,
+              "why": "Beef noodles are 120元, so from 200 the change is 80: 找他八十塊.",
+              "focus": {
+                "zh": "找錢",
+                "en": "giving change"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-21",
+                "B1L04-2-14",
+                "B1L04-2-01",
+                "B1L04-2-17"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-receipt",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l04-realia-receipt-1",
+          "kind": "realia",
+          "picture": "b1l04-receipt",
+          "alt": "A noodle shop receipt",
+          "transcript": {
+            "traditional": "台灣牛肉麵　牛肉麵 2碗 240元　綠茶 1杯 35元　一共 275元",
+            "simplified": "台湾牛肉面　牛肉面 2碗 240元　绿茶 1杯 35元　一共 275元",
+            "pinyin": "Táiwān Niúròu Miàn: niúròu miàn 2 wǎn 240 yuán, lǜchá 1 bēi 35 yuán, yígòng 275 yuán",
+            "english": "Taiwan Beef Noodles: beef noodles, 2 bowls, 240; green tea, 1 cup, 35; total 275"
+          },
+          "questions": [
+            {
+              "id": "b1l04-realia-receipt-1-q",
+              "prompt": {
+                "traditional": "他們要幾碗牛肉麵？",
+                "simplified": "他们要几碗牛肉面？",
+                "pinyin": "Tāmen yào jǐ wǎn niúròu miàn?",
+                "english": "How many bowls of beef noodles do they want?"
+              },
+              "choices": [
+                {
+                  "traditional": "一碗",
+                  "simplified": "一碗",
+                  "pinyin": "yì wǎn",
+                  "english": "one bowl"
+                },
+                {
+                  "traditional": "兩碗",
+                  "simplified": "两碗",
+                  "pinyin": "liǎng wǎn",
+                  "english": "two bowls"
+                },
+                {
+                  "traditional": "三碗",
+                  "simplified": "三碗",
+                  "pinyin": "sān wǎn",
+                  "english": "three bowls"
+                }
+              ],
+              "key": 1,
+              "why": "The receipt says 牛肉麵 2碗: two bowls.",
+              "focus": {
+                "zh": "碗",
+                "en": "bowls"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-02",
+                "B1L04-1-23"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-realia-receipt-2",
+          "kind": "realia",
+          "picture": "b1l04-receipt",
+          "alt": "A noodle shop receipt",
+          "transcript": {
+            "traditional": "台灣牛肉麵　牛肉麵 2碗 240元　綠茶 1杯 35元　一共 275元",
+            "simplified": "台湾牛肉面　牛肉面 2碗 240元　绿茶 1杯 35元　一共 275元",
+            "pinyin": "Táiwān Niúròu Miàn: niúròu miàn 2 wǎn 240 yuán, lǜchá 1 bēi 35 yuán, yígòng 275 yuán",
+            "english": "Taiwan Beef Noodles: beef noodles, 2 bowls, 240; green tea, 1 cup, 35; total 275"
+          },
+          "questions": [
+            {
+              "id": "b1l04-realia-receipt-2-q",
+              "prompt": {
+                "traditional": "一共多少錢？",
+                "simplified": "一共多少钱？",
+                "pinyin": "Yígòng duōshǎo qián?",
+                "english": "How much is it altogether?"
+              },
+              "choices": [
+                {
+                  "traditional": "兩百七十五塊",
+                  "simplified": "两百七十五块",
+                  "pinyin": "liǎng bǎi qīshíwǔ kuài",
+                  "english": "275 dollars"
+                },
+                {
+                  "traditional": "兩百四十塊",
+                  "simplified": "两百四十块",
+                  "pinyin": "liǎng bǎi sìshí kuài",
+                  "english": "240 dollars"
+                },
+                {
+                  "traditional": "兩百五十七塊",
+                  "simplified": "两百五十七块",
+                  "pinyin": "liǎng bǎi wǔshíqī kuài",
+                  "english": "257 dollars"
+                }
+              ],
+              "key": 0,
+              "why": "The last line, 一共 275元, is the total.",
+              "focus": {
+                "zh": "一共",
+                "en": "altogether"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-15",
+                "B1L04-2-16",
+                "B1L04-2-17"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l04-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l04-drink-stand",
+          "alt": "Yiwen orders at a drink stand on a hot day",
+          "questions": [
+            {
+              "id": "b1l04-scene-gap-1-a",
+              "prompt": {
+                "traditional": "天氣太熱了，我好＿＿，我要一杯果汁。",
+                "simplified": "天气太热了，我好＿＿，我要一杯果汁。"
+              },
+              "choices": [
+                {
+                  "traditional": "渴",
+                  "simplified": "渴",
+                  "pinyin": "kě",
+                  "english": "thirsty"
+                },
+                {
+                  "traditional": "餓",
+                  "simplified": "饿",
+                  "pinyin": "è",
+                  "english": "hungry"
+                },
+                {
+                  "traditional": "冷",
+                  "simplified": "冷",
+                  "pinyin": "lěng",
+                  "english": "cold"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "天氣太熱了，我好渴，我要一杯果汁。",
+                "simplified": "天气太热了，我好渴，我要一杯果汁。",
+                "pinyin": "Tiānqì tài rè le, wǒ hǎo kě, wǒ yào yì bēi guǒzhī.",
+                "english": "It's too hot. I'm so thirsty, I'd like a cup of juice."
+              },
+              "why": "Hot weather makes you thirsty, so you order juice: 渴 means thirsty.",
+              "focus": {
+                "zh": "渴",
+                "en": "thirsty"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-10",
+                "B1L04-1-14",
+                "B1L04-1-05"
+              ],
+              "grammarIds": [
+                "B1L04-G03-P98"
+              ]
+            },
+            {
+              "id": "b1l04-scene-gap-1-b",
+              "prompt": {
+                "traditional": "請問您要紅茶＿＿綠茶？——我要綠茶。",
+                "simplified": "请问您要红茶＿＿绿茶？——我要绿茶。"
+              },
+              "choices": [
+                {
+                  "traditional": "還是",
+                  "simplified": "还是",
+                  "pinyin": "háishì",
+                  "english": "or"
+                },
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                },
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "also"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "請問您要紅茶還是綠茶？——我要綠茶。",
+                "simplified": "请问您要红茶还是绿茶？——我要绿茶。",
+                "pinyin": "Qǐngwèn nín yào hóngchá háishì lǜchá? Wǒ yào lǜchá.",
+                "english": "Would you like black tea or green tea? Green tea, please."
+              },
+              "why": "還是 asks someone to choose one. 和 means “and”.",
+              "focus": {
+                "zh": "還是 vs 和",
+                "en": "or vs and"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-02",
+                "B1L03-1-15",
+                "B1L04-2-22"
+              ]
+            },
+            {
+              "id": "b1l04-scene-gap-1-c",
+              "prompt": {
+                "traditional": "這家店的果汁很好喝，牛奶＿＿很好喝。",
+                "simplified": "这家店的果汁很好喝，牛奶＿＿很好喝。"
+              },
+              "choices": [
+                {
+                  "traditional": "也",
+                  "simplified": "也",
+                  "pinyin": "yě",
+                  "english": "also"
+                },
+                {
+                  "traditional": "最",
+                  "simplified": "最",
+                  "pinyin": "zuì",
+                  "english": "most"
+                },
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "這家店的果汁很好喝，牛奶也很好喝。",
+                "simplified": "这家店的果汁很好喝，牛奶也很好喝。",
+                "pinyin": "Zhè jiā diàn de guǒzhī hěn hǎohē, niúnǎi yě hěn hǎohē.",
+                "english": "The juice here is good, and the milk is good too."
+              },
+              "why": "也 means also: the juice is good, and the milk is good too. 最 can't sit in front of 很.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-08",
+                "B1L04-3-07",
+                "B1L04-1-19"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l04-drink-stand",
+          "alt": "Yiwen orders at a drink stand on a hot day",
+          "questions": [
+            {
+              "id": "b1l04-scene-gap-2-a",
+              "prompt": {
+                "traditional": "小姐，請給我兩＿＿紅茶。",
+                "simplified": "小姐，请给我两＿＿红茶。"
+              },
+              "choices": [
+                {
+                  "traditional": "杯",
+                  "simplified": "杯",
+                  "pinyin": "bēi",
+                  "english": "cup of"
+                },
+                {
+                  "traditional": "碗",
+                  "simplified": "碗",
+                  "pinyin": "wǎn",
+                  "english": "bowl of"
+                },
+                {
+                  "traditional": "位",
+                  "simplified": "位",
+                  "pinyin": "wèi",
+                  "english": "(polite measure word for people)"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "小姐，請給我兩杯紅茶。",
+                "simplified": "小姐，请给我两杯红茶。",
+                "pinyin": "Xiǎojiě, qǐng gěi wǒ liǎng bēi hóngchá.",
+                "english": "Miss, two cups of black tea, please."
+              },
+              "why": "杯 counts cups of a drink. 碗 is for bowls, and 位 counts people politely.",
+              "focus": {
+                "zh": "杯",
+                "en": "cups of a drink"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-03",
+                "B1L04-2-10",
+                "B1L04-2-14"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l04-scene-gap-2-b",
+              "prompt": {
+                "traditional": "那家店＿＿很多種茶。",
+                "simplified": "那家店＿＿很多种茶。"
+              },
+              "choices": [
+                {
+                  "traditional": "賣",
+                  "simplified": "卖",
+                  "pinyin": "mài",
+                  "english": "to sell"
+                },
+                {
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "mǎi",
+                  "english": "to buy"
+                },
+                {
+                  "traditional": "喝",
+                  "simplified": "喝",
+                  "pinyin": "hē",
+                  "english": "to drink"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "那家店賣很多種茶。",
+                "simplified": "那家店卖很多种茶。",
+                "pinyin": "Nà jiā diàn mài hěn duō zhǒng chá.",
+                "english": "That shop sells many kinds of tea."
+              },
+              "why": "賣 (mài) is to sell; 買 (mǎi) is to buy. A shop sells tea.",
+              "focus": {
+                "zh": "賣 vs 買",
+                "en": "sell vs buy"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-22",
+                "B1L03-1-01",
+                "B1L03-2-03"
+              ]
+            },
+            {
+              "id": "b1l04-scene-gap-2-c",
+              "prompt": {
+                "traditional": "一杯果汁五十五塊，兩杯一共＿＿塊。",
+                "simplified": "一杯果汁五十五块，两杯一共＿＿块。"
+              },
+              "choices": [
+                {
+                  "traditional": "一百一十",
+                  "simplified": "一百一十",
+                  "pinyin": "yì bǎi yīshí",
+                  "english": "110"
+                },
+                {
+                  "traditional": "一百零五",
+                  "simplified": "一百零五",
+                  "pinyin": "yì bǎi líng wǔ",
+                  "english": "105"
+                },
+                {
+                  "traditional": "一百五十",
+                  "simplified": "一百五十",
+                  "pinyin": "yì bǎi wǔshí",
+                  "english": "150"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "一杯果汁五十五塊，兩杯一共一百一十塊。",
+                "simplified": "一杯果汁五十五块，两杯一共一百一十块。",
+                "pinyin": "Yì bēi guǒzhī wǔshíwǔ kuài, liǎng bēi yígòng yì bǎi yīshí kuài.",
+                "english": "Juice is 55 a cup, so two cups are 110 altogether."
+              },
+              "why": "55 + 55 = 110: 一百一十.",
+              "focus": {
+                "zh": "一百一十",
+                "en": "reading 110"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-15",
+                "B1L04-2-17",
+                "B1L04-3-06"
+              ],
+              "grammarIds": [
+                "B1L04-G04-P104"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l04-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "今天天氣{1}熱了，我很渴。我和宜文去一家飲料店。這家店賣很多{2}飲料：果汁、牛奶、咖啡、茶，{3}很好喝。我要一杯果汁，宜文{4}要一杯果汁。",
+            "simplified": "今天天气{1}热了，我很渴。我和宜文去一家饮料店。这家店卖很多{2}饮料：果汁、牛奶、咖啡、茶，{3}很好喝。我要一杯果汁，宜文{4}要一杯果汁。",
+            "pinyin": "Jīntiān tiānqì tài rè le, wǒ hěn kě. Wǒ hé Yíwén qù yì jiā yǐnliào diàn. Zhè jiā diàn mài hěn duō zhǒng yǐnliào: guǒzhī, niúnǎi, kāfēi, chá, dōu hěn hǎohē. Wǒ yào yì bēi guǒzhī, Yíwén yě yào yì bēi guǒzhī.",
+            "english": "It's too hot today, and I'm thirsty. Yiwen and I go to a drink shop. It sells many kinds of drinks: juice, milk, coffee and tea are all good. I get a cup of juice, and Yiwen gets one too."
+          },
+          "bank": [
+            {
+              "traditional": "也",
+              "simplified": "也",
+              "pinyin": "yě",
+              "english": "also"
+            },
+            {
+              "traditional": "太",
+              "simplified": "太",
+              "pinyin": "tài",
+              "english": "too"
+            },
+            {
+              "traditional": "本",
+              "simplified": "本",
+              "pinyin": "běn",
+              "english": "(measure word for books)"
+            },
+            {
+              "traditional": "都",
+              "simplified": "都",
+              "pinyin": "dōu",
+              "english": "all"
+            },
+            {
+              "traditional": "種",
+              "simplified": "种",
+              "pinyin": "zhǒng",
+              "english": "kind"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-paragraph-1-1",
+              "key": 1,
+              "why": "太 goes with 了 at the end: 太熱了 means too hot.",
+              "focus": {
+                "zh": "太…了",
+                "en": "too …"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-14",
+                "B1L04-1-20",
+                "B1L04-1-05"
+              ],
+              "grammarIds": [
+                "B1L04-G03-P98"
+              ]
+            },
+            {
+              "id": "b1l04-paragraph-1-2",
+              "key": 4,
+              "why": "種 means kind: 很多種飲料 means many kinds of drinks.",
+              "focus": {
+                "zh": "很多種",
+                "en": "many kinds"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-03",
+                "B1L04-1-07"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l04-paragraph-1-3",
+              "key": 3,
+              "why": "都 sums up the whole list: juice, milk, coffee and tea are all good.",
+              "focus": {
+                "zh": "都",
+                "en": "all of them"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-19"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            },
+            {
+              "id": "b1l04-paragraph-1-4",
+              "key": 0,
+              "why": "也 means also: Yiwen gets juice too. 都 needs more than one person.",
+              "focus": {
+                "zh": "也",
+                "en": "also"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-08"
+              ],
+              "grammarIds": [
+                "B1L04-G02-P97"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "星期六，宜文{1}三個朋友去一家餐廳吃飯。那家餐廳的牛肉麵{2}好吃了，也不貴，宜文{3}天都想來吃。他們點四碗牛肉麵和四杯茶。宜文：「小姐，一共{4}錢？」",
+            "simplified": "星期六，宜文{1}三个朋友去一家餐厅吃饭。那家餐厅的牛肉面{2}好吃了，也不贵，宜文{3}天都想来吃。他们点四碗牛肉面和四杯茶。宜文：「小姐，一共{4}钱？」",
+            "pinyin": "Xīngqíliù, Yíwén qǐng sān ge péngyǒu qù yì jiā cāntīng chī fàn. Nà jiā cāntīng de niúròu miàn tài hǎochī le, yě bú guì, Yíwén měi tiān dōu xiǎng lái chī. Tāmen diǎn sì wǎn niúròu miàn hé sì bēi chá. Yíwén: “Xiǎojiě, yígòng duōshǎo qián?”",
+            "english": "On Saturday, Yiwen treats three friends to a meal at a restaurant. Its beef noodles are so good, and not expensive: Yiwen wants to come every day. They order four bowls of beef noodles and four cups of tea. Yiwen: “Miss, how much is it altogether?”"
+          },
+          "bank": [
+            {
+              "traditional": "每",
+              "simplified": "每",
+              "pinyin": "měi",
+              "english": "every"
+            },
+            {
+              "traditional": "幾",
+              "simplified": "几",
+              "pinyin": "jǐ",
+              "english": "how many"
+            },
+            {
+              "traditional": "太",
+              "simplified": "太",
+              "pinyin": "tài",
+              "english": "too"
+            },
+            {
+              "traditional": "多少",
+              "simplified": "多少",
+              "pinyin": "duōshǎo",
+              "english": "how much"
+            },
+            {
+              "traditional": "請",
+              "simplified": "请",
+              "pinyin": "qǐng",
+              "english": "to treat; to invite"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l04-paragraph-2-1",
+              "key": 4,
+              "why": "請 + someone means to treat or invite them: 宜文請三個朋友 means Yiwen treats three friends.",
+              "focus": {
+                "zh": "請",
+                "en": "to treat"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-3-01",
+                "B1L03-1-05"
+              ]
+            },
+            {
+              "id": "b1l04-paragraph-2-2",
+              "key": 2,
+              "why": "太 goes with 了 at the end: 太好吃了 means so delicious.",
+              "focus": {
+                "zh": "太…了",
+                "en": "so …!"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-1-14",
+                "B1L04-1-18",
+                "B1L04-1-20"
+              ],
+              "grammarIds": [
+                "B1L04-G03-P98"
+              ]
+            },
+            {
+              "id": "b1l04-paragraph-2-3",
+              "key": 0,
+              "why": "每天 means every day: 每天都想來 means she wants to come every day.",
+              "focus": {
+                "zh": "每天",
+                "en": "every day"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-3-09",
+                "B1L04-3-10",
+                "B1L03-2-19"
+              ]
+            },
+            {
+              "id": "b1l04-paragraph-2-4",
+              "key": 3,
+              "why": "Ask about money with 多少錢. 幾 is for small counts with a measure word, like 幾杯.",
+              "focus": {
+                "zh": "多少錢",
+                "en": "how much money"
+              },
+              "lesson": 4,
+              "wordIds": [
+                "B1L04-2-16",
+                "B1L04-2-15",
+                "B1L02-1-01"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l04-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n我今天中午很忙，不回家吃午飯。我想去那家牛肉麵店吃麵。他們的牛肉麵很好吃，也不貴，一碗一百多塊。妳要不要一起去？我們十二點去，好嗎？\n中明",
+            "simplified": "友美：\n我今天中午很忙，不回家吃午饭。我想去那家牛肉面店吃面。他们的牛肉面很好吃，也不贵，一碗一百多块。你要不要一起去？我们十二点去，好吗？\n中明",
+            "pinyin": "Yǒuměi: Wǒ jīntiān zhōngwǔ hěn máng, bù huí jiā chī wǔfàn. Wǒ xiǎng qù nà jiā niúròu miàn diàn chī miàn. Tāmen de niúròu miàn hěn hǎochī, yě bú guì, yì wǎn yì bǎi duō kuài. Nǐ yào bu yào yìqǐ qù? Wǒmen shí'èr diǎn qù, hǎo ma? Zhōngmíng",
+            "english": "Youmei: I'm busy at noon today, so I won't go home for lunch. I want to eat at that beef noodle shop. Their noodles are tasty and not expensive, a little over 100 a bowl. Do you want to come? Shall we go at twelve? Zhongming"
+          },
+          "questions": [
+            {
+              "id": "b1l04-reading-note-1-q",
+              "prompt": {
+                "traditional": "中明今天中午要做什麼？",
+                "simplified": "中明今天中午要做什么？",
+                "pinyin": "Zhōngmíng jīntiān zhōngwǔ yào zuò shénme?",
+                "english": "What is Zhongming going to do at noon today?"
+              },
+              "choices": [
+                {
+                  "traditional": "回家吃午飯",
+                  "simplified": "回家吃午饭",
+                  "pinyin": "huí jiā chī wǔfàn",
+                  "english": "go home for lunch"
+                },
+                {
+                  "traditional": "去吃牛肉麵",
+                  "simplified": "去吃牛肉面",
+                  "pinyin": "qù chī niúròu miàn",
+                  "english": "go and eat beef noodles"
+                },
+                {
+                  "traditional": "去學校上課",
+                  "simplified": "去学校上课",
+                  "pinyin": "qù xuéxiào shàngkè",
+                  "english": "go to class at school"
+                }
+              ],
+              "key": 1,
+              "why": "He writes 不回家吃午飯 and 想去那家牛肉麵店吃麵.",
+              "focus": {
+                "zh": "中午",
+                "en": "plans for noon"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-21",
+                "B1L02-3-10",
+                "B1L02-1-22",
+                "B1L02-3-04"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l04-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n明天是我的生日，我想請妳和中明來我家吃蛋糕。晚上七點，好嗎？\n宜文",
+            "simplified": "友美：\n明天是我的生日，我想请你和中明来我家吃蛋糕。晚上七点，好吗？\n宜文",
+            "pinyin": "Yǒuměi: Míngtiān shì wǒ de shēngrì, wǒ xiǎng qǐng nǐ hé Zhōngmíng lái wǒ jiā chī dàngāo. Wǎnshang qī diǎn, hǎo ma? Yíwén",
+            "english": "Youmei: Tomorrow is my birthday. I'd like to invite you and Zhongming to my place for cake. Seven in the evening, OK? Yiwen"
+          },
+          "questions": [
+            {
+              "id": "b1l04-reading-note-2-q",
+              "prompt": {
+                "traditional": "宜文明天要做什麼？",
+                "simplified": "宜文明天要做什么？",
+                "pinyin": "Yíwén míngtiān yào zuò shénme?",
+                "english": "What is Yiwen going to do tomorrow?"
+              },
+              "choices": [
+                {
+                  "traditional": "去友美家",
+                  "simplified": "去友美家",
+                  "pinyin": "qù Yǒuměi jiā",
+                  "english": "go to Youmei's home"
+                },
+                {
+                  "traditional": "請朋友來她家吃蛋糕",
+                  "simplified": "请朋友来她家吃蛋糕",
+                  "pinyin": "qǐng péngyǒu lái tā jiā chī dàngāo",
+                  "english": "have friends over for cake"
+                },
+                {
+                  "traditional": "去買生日禮物",
+                  "simplified": "去买生日礼物",
+                  "pinyin": "qù mǎi shēngrì lǐwù",
+                  "english": "go and buy a birthday present"
+                }
+              ],
+              "key": 1,
+              "why": "She writes 請妳和中明來我家吃蛋糕: she is inviting friends to her home for cake.",
+              "focus": {
+                "zh": "請",
+                "en": "to invite"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-3-01",
+                "B1L02-2-08",
+                "B1L03-1-18",
+                "B1L02-2-05"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

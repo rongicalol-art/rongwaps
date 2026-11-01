@@ -84,6 +84,9 @@ const EXPECTED_PERSISTED_KEYS = [
   'showOnline',
   'showProfile',
   'socialMuted',
+  // Lesson tests (local to this device for now)
+  'lessonTests',
+  'lessonTestAttempt',
 ].sort();
 
 test('persisted key set matches the declared slices contract exactly', () => {
@@ -139,6 +142,8 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'race', 'racePlaying', 'racePending', 'raceStatus', 'socialOnlineTotal', 'socialChat', 'socialCards', 'socialCheer', 'socialCounts', 'socialInvite', 'socialMe', 'socialMentionDraft',
   'socialFaces', 'socialPartyChat', 'socialOnline', 'socialPanel', 'socialPeople', 'socialRooms', 'socialStatus', 'socialUnread', 'socialViewingLesson',
   'socialMentions', 'socialMentionToast', 'socialMentionTarget', 'socialReadingParty',
+  // Lesson test scores and the attempt in progress belong to the signed-in account.
+  'lessonTests', 'lessonTestAttempt',
 ].sort();
 
 test('account-switch defaults match the reset contract exactly', () => {

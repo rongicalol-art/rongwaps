@@ -92,6 +92,12 @@ import {
   selectPracticePreferences,
 } from './slices/practicePreferencesSlice';
 import {
+  createLessonTestSlice,
+  LESSON_TEST_PERSISTED_KEYS,
+  LESSON_TEST_ACCOUNT_SWITCH_DEFAULTS,
+  type LessonTestState,
+} from './slices/lessonTestSlice';
+import {
   createSocialSlice,
   SOCIAL_PERSISTED_KEYS,
   SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
@@ -134,7 +140,8 @@ export type AppStoreData =
   & SyncState
   & GrammarProgressState
   & PracticePreferencesState
-  & SocialState;
+  & SocialState
+  & LessonTestState;
 
 export type AppState = AppStoreData & AppStoreActions;
 
@@ -260,6 +267,7 @@ export const PERSISTED_KEYS = [
   ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
   ...PRACTICE_PREFERENCES_PERSISTED_KEYS,
   ...SOCIAL_PERSISTED_KEYS,
+  ...LESSON_TEST_PERSISTED_KEYS,
 ] as const;
 
 function derivePersistedState(state: AppState): Partial<AppState> {
@@ -301,6 +309,7 @@ const PERSISTED_RECORD_KEYS = [
   'deckExclusions',
   'progressResetSeen',
   'wordConfusions',
+  'lessonTests',
 ] as const;
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {
@@ -320,6 +329,11 @@ function sanitizePersistedState(state: Record<string, unknown>): Record<string, 
       cleaned[key] = {};
     }
   }
+  const attempt = cleaned.lessonTestAttempt as { plan?: { items?: unknown } } | null | undefined;
+  if (attempt !== undefined && attempt !== null && !Array.isArray(attempt?.plan?.items)) {
+    debugLogger.warn('Sync', 'Persisted lesson test attempt was malformed; dropping it.', attempt);
+    cleaned.lessonTestAttempt = null;
+  }
   return cleaned;
 }
 
@@ -334,6 +348,7 @@ export const ACCOUNT_SWITCH_DEFAULTS = {
   ...GRAMMAR_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
   ...PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
   ...SOCIAL_ACCOUNT_SWITCH_DEFAULTS,
+  ...LESSON_TEST_ACCOUNT_SWITCH_DEFAULTS,
 } as Partial<AppState>;
 
 export interface AppStoreActions {
@@ -354,6 +369,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
       ...createGrammarProgressSlice(set),
       ...createPracticePreferencesSlice(set),
       ...createSocialSlice(set),
+      ...createLessonTestSlice(set),
       resetAccountScopedState: () => set({ ...ACCOUNT_SWITCH_DEFAULTS }),
     }),
     {

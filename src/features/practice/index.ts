@@ -6,7 +6,7 @@ export { EmptyReviewState } from './components/EmptyReviewState';
 export { DOCK_SWAP, PracticeDockSlotOutlet, PracticeDockSlotProvider, usePracticeDockSlot } from './components/PracticeDockSlot';
 export { FeedbackBottomBar } from './components/FeedbackBottomBar';
 export { LessonComplete } from './components/LessonComplete';
-export { SessionComplete } from './components/SessionComplete';
+export { SessionComplete, StatTile, loadBird, BIRD_LAST_FRAME, formatTime } from './components/SessionComplete';
 export { ResumeLaunch } from './components/ResumeLaunch';
 export { PracticeChoiceButton, getPracticeChoiceState } from './components/PracticeChoiceButton';
 export { BreakdownExpandPanel } from './components/BreakdownExpandPanel';

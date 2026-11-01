@@ -1,0 +1,413 @@
+{
+  "voices": {
+    "F": "Vivian",
+    "M": "Dylan",
+    "N": "Serena"
+  },
+  "clips": {
+    "Dylan|不回家，我下午一點有課。": {
+      "file": "lesson-test-studio/v1/36bd7ea28ef5.mp3",
+      "sha256": "36bd7ea28ef5a9f3c4ffb5dd549c86947075916c042cd6a5ffe9350d1256906d",
+      "duration": 2.317
+    },
+    "Dylan|不貴，一杯五十多塊。": {
+      "file": "lesson-test-studio/v1/c6f0d55a408c.mp3",
+      "sha256": "c6f0d55a408c86207d6149f2fa1609eefd8ea77e5bba7506cea835a38576ca28",
+      "duration": 2.071
+    },
+    "Dylan|今天太熱了，咖啡我不喝。我要一杯綠茶。": {
+      "file": "lesson-test-studio/v1/f49a0dda001d.mp3",
+      "sha256": "f49a0dda001d170125d6a8bacd07f72ef1d6e94191f47eb87b85f8c29154270f",
+      "duration": 4.154
+    },
+    "Dylan|你們要紅茶還是綠茶？": {
+      "file": "lesson-test-studio/v1/2287d7533655.mp3",
+      "sha256": "2287d7533655dc43e3dba13823a55ba006a29654cb29b6e5285645f921974508",
+      "duration": 2.417
+    },
+    "Dylan|宜文，妳明天幾點有課？": {
+      "file": "lesson-test-studio/v1/eb6458c460d8.mp3",
+      "sha256": "eb6458c460d82d10cabd8fd2651ba4a0600f0a3e197b7e6db83d18c6bfa523a0",
+      "duration": 2.446
+    },
+    "Dylan|我想送她一些花和一個蛋糕。": {
+      "file": "lesson-test-studio/v1/d250716b9367.mp3",
+      "sha256": "d250716b9367c574a5021d9dd94445de9a6c5b28c102a28793a69f7e4b1d3c64",
+      "duration": 3.328
+    },
+    "Dylan|這家店的牛肉麵貴不貴？": {
+      "file": "lesson-test-studio/v1/550337109cc6.mp3",
+      "sha256": "550337109cc686972876151c892f974e6656aef00f478a38fa8a3376a4ab7458",
+      "duration": 2.234
+    },
+    "Dylan|這枝筆多少錢？": {
+      "file": "lesson-test-studio/v1/87cabefc2933.mp3",
+      "sha256": "87cabefc2933766b9ee5930f5e5af2737540f040c930092c69d1150e0abf4635",
+      "duration": 1.515
+    },
+    "Dylan|那枝呢？": {
+      "file": "lesson-test-studio/v1/0a7143a36955.mp3",
+      "sha256": "0a7143a36955df1bfcb9d0c7d2f3043af1f7966cdd896d141d4c828699dca8eb",
+      "duration": 0.855
+    },
+    "Serena|一件衣服": {
+      "file": "lesson-test-studio/v1/ee502de6954b.mp3",
+      "sha256": "ee502de6954b0a72ae625f98c3d7a083c421f5214252bf1596b17ef74a0ce6d0",
+      "duration": 1.591
+    },
+    "Serena|一本書": {
+      "file": "lesson-test-studio/v1/1a52ebbde98e.mp3",
+      "sha256": "1a52ebbde98ebb5d87c95968a7b52b126a0051c89cda6596508d228ca90ba51b",
+      "duration": 1.394
+    },
+    "Serena|一杯": {
+      "file": "lesson-test-studio/v1/321cb6c1b488.mp3",
+      "sha256": "321cb6c1b488dc04b28861293633cfea93d1c80b81cf65f25066afa0d9b59ab7",
+      "duration": 1.046
+    },
+    "Serena|一杯果汁多少錢？": {
+      "file": "lesson-test-studio/v1/2fff4c4fed79.mp3",
+      "sha256": "2fff4c4fed7917f3aa5307022a8cc3e1157c59415936f562434296e2551b7f87",
+      "duration": 2.107
+    },
+    "Serena|一百五十塊": {
+      "file": "lesson-test-studio/v1/d6604ffe7722.mp3",
+      "sha256": "d6604ffe7722337f9700aaf047b37775fa1d5d91eddea58b746d2ba2f6c2a292",
+      "duration": 1.733
+    },
+    "Serena|一百塊": {
+      "file": "lesson-test-studio/v1/96b919f38e25.mp3",
+      "sha256": "96b919f38e256c51a90653cbe676eb680224c20d3164094667ac6481a0db6f49",
+      "duration": 0.905
+    },
+    "Serena|一百多塊": {
+      "file": "lesson-test-studio/v1/1707b3a2904e.mp3",
+      "sha256": "1707b3a2904e0402158aacb2996d032b6cc814a174314751d631e4c4d4381ea8",
+      "duration": 1.622
+    },
+    "Serena|一碗牛肉麵多少錢？": {
+      "file": "lesson-test-studio/v1/25d9724eed4b.mp3",
+      "sha256": "25d9724eed4bfdc4b8aac2cff57c1cee1c8b969083c768d09a4d0d87d59a43dd",
+      "duration": 1.966
+    },
+    "Serena|一點": {
+      "file": "lesson-test-studio/v1/c2f58e2e7e2a.mp3",
+      "sha256": "c2f58e2e7e2af5666ac5330154272e1ec89f6a634b520b7e055ff996a22b0c90",
+      "duration": 0.628
+    },
+    "Serena|三十五塊": {
+      "file": "lesson-test-studio/v1/5a54608962f3.mp3",
+      "sha256": "5a54608962f3564b88ac935ab835b0dc116151ae94112763449de6655ce956de",
+      "duration": 1.573
+    },
+    "Serena|三杯": {
+      "file": "lesson-test-studio/v1/8a1a1e3b77ba.mp3",
+      "sha256": "8a1a1e3b77baab7b9f5b4b25d3ed9adbcecd4d17b91f84d3873a3d80d7244e3d",
+      "duration": 0.814
+    },
+    "Serena|中明幾點有課？": {
+      "file": "lesson-test-studio/v1/3a178a5150bf.mp3",
+      "sha256": "3a178a5150bf610beb89da79c9637a7e05ba9dab8fdd0a16510d61d445cd2210",
+      "duration": 1.5
+    },
+    "Serena|九點": {
+      "file": "lesson-test-studio/v1/f3b64c3d8107.mp3",
+      "sha256": "f3b64c3d8107cad85cb40ca9260166abe9afb39ca31d55c4d8af5c50afa2d1d0",
+      "duration": 0.9
+    },
+    "Serena|二十塊": {
+      "file": "lesson-test-studio/v1/b982fb275e15.mp3",
+      "sha256": "b982fb275e152e5c3e750514090d7939ed23555754711832f9f0e5d39977891f",
+      "duration": 0.88
+    },
+    "Serena|五十塊": {
+      "file": "lesson-test-studio/v1/3441ca161b40.mp3",
+      "sha256": "3441ca161b40bdbf5b6259a78c164bdc1f407a2c73f2351925aae065df7a7c40",
+      "duration": 0.866
+    },
+    "Serena|五十多塊": {
+      "file": "lesson-test-studio/v1/788a3f5aa224.mp3",
+      "sha256": "788a3f5aa224b7d3f5f45a433585f889e76e6046efc73042d9c7470b0b389465",
+      "duration": 1.133
+    },
+    "Serena|他們要幾杯紅茶？": {
+      "file": "lesson-test-studio/v1/10507506d9f4.mp3",
+      "sha256": "10507506d9f4d80f4a3108c27c4aaca7a22657de4941bd832614f8971bea09dd",
+      "duration": 1.847
+    },
+    "Serena|他想送媽媽什麼？": {
+      "file": "lesson-test-studio/v1/406f9bc001b3.mp3",
+      "sha256": "406f9bc001b356cbaf307f5159fa340c7e75da784d9fbf0e11b7f89890332f2c",
+      "duration": 2.585
+    },
+    "Serena|他要喝什麼？": {
+      "file": "lesson-test-studio/v1/9944290e8a5b.mp3",
+      "sha256": "9944290e8a5b08a27f9a0d009e98cb5c153588afa3ecb7d9e0d421a8d78c2d43",
+      "duration": 1.196
+    },
+    "Serena|兩杯": {
+      "file": "lesson-test-studio/v1/844ddbf61e38.mp3",
+      "sha256": "844ddbf61e3891898eadbf8b2d6d21d163339a60ec770b0630f11f8d497c8aa4",
+      "duration": 0.666
+    },
+    "Serena|兩百多塊": {
+      "file": "lesson-test-studio/v1/6ac1ccfe7b16.mp3",
+      "sha256": "6ac1ccfe7b162a4091abaf2e842295574d9dd60b18e2282e741732731a39f1ce",
+      "duration": 1.106
+    },
+    "Serena|兩點": {
+      "file": "lesson-test-studio/v1/10d9df2e726e.mp3",
+      "sha256": "10d9df2e726e17266940bdda99419427be58eb2effb46dd6eef58af8d4753635",
+      "duration": 0.94
+    },
+    "Serena|十二點": {
+      "file": "lesson-test-studio/v1/830e44e5cb86.mp3",
+      "sha256": "830e44e5cb8666bb7cb776fbef73859674aff8e249f9541b609480495a06048a",
+      "duration": 0.974
+    },
+    "Serena|十五塊": {
+      "file": "lesson-test-studio/v1/066749d54b17.mp3",
+      "sha256": "066749d54b17b37c7339324658b36a51b5b4d5403c3954a8543972104ed3055a",
+      "duration": 1.406
+    },
+    "Serena|十點": {
+      "file": "lesson-test-studio/v1/ca16ea2e0b27.mp3",
+      "sha256": "ca16ea2e0b2753c620512a0210031bd9e3e7c0d105e37c2946ac4137e93cc428",
+      "duration": 1.386
+    },
+    "Serena|咖啡": {
+      "file": "lesson-test-studio/v1/dfce746a8f2a.mp3",
+      "sha256": "dfce746a8f2ad6de79a5574de1e76dba7b2b489a54b8cc188fb056e361a5857b",
+      "duration": 1.021
+    },
+    "Serena|天氣很冷，她吃蛋糕。": {
+      "file": "lesson-test-studio/v1/692f5411ff88.mp3",
+      "sha256": "692f5411ff88ed75b32d199b95849481505b47291651090c3e04ff1cde58f39c",
+      "duration": 2.484
+    },
+    "Serena|天氣很冷，她喝咖啡。": {
+      "file": "lesson-test-studio/v1/bc9ef11a2a2d.mp3",
+      "sha256": "bc9ef11a2a2d51eefa5fe58fd48dba7077fc6efc6ddc1cb126c8e3bbbce4f909",
+      "duration": 1.979
+    },
+    "Serena|天氣很熱，她喝咖啡。": {
+      "file": "lesson-test-studio/v1/be68be8cc11a.mp3",
+      "sha256": "be68be8cc11ace07225cc8fcf5424ae18e400222a6f05084fe7dbe3e9daf6315",
+      "duration": 2.491
+    },
+    "Serena|她喝一杯咖啡。": {
+      "file": "lesson-test-studio/v1/b4782c9a410f.mp3",
+      "sha256": "b4782c9a410fd78a7f31ac1a174f0f38c5efe16d3684accaaa515de0b73265d3",
+      "duration": 2.363
+    },
+    "Serena|她喝一瓶果汁。": {
+      "file": "lesson-test-studio/v1/f895372fff30.mp3",
+      "sha256": "f895372fff30febc546250615dfde9f9173820c83bd04dc07667aab96995c829",
+      "duration": 1.56
+    },
+    "Serena|她喝兩杯茶。": {
+      "file": "lesson-test-studio/v1/eadff867ff47.mp3",
+      "sha256": "eadff867ff47b39a87973710c86775812d52f212c44de33669c47b6ad1bfc9f0",
+      "duration": 1.528
+    },
+    "Serena|宜文明天幾點去學校？": {
+      "file": "lesson-test-studio/v1/53e77101a3e9.mp3",
+      "sha256": "53e77101a3e923c06a07a4d44eaee0b50cca0e996b23d358dc1ae225fedbc6d8",
+      "duration": 2.219
+    },
+    "Serena|紅茶": {
+      "file": "lesson-test-studio/v1/13bda7e34da8.mp3",
+      "sha256": "13bda7e34da841b9c64d7d89b7b8a1fae466de258d78b985f4573dc3d773e358",
+      "duration": 0.867
+    },
+    "Serena|綠茶": {
+      "file": "lesson-test-studio/v1/0dbc32ea3fa8.mp3",
+      "sha256": "0dbc32ea3fa86c63129d76c7eb0f1bb2f6666973f904eb7ea791228e6739f335",
+      "duration": 1.005
+    },
+    "Serena|花和蛋糕": {
+      "file": "lesson-test-studio/v1/78ba17bd071d.mp3",
+      "sha256": "78ba17bd071d0a520e0427a437248d6726730247d0a25b52b39ac1cff7e34941",
+      "duration": 1.01
+    },
+    "Serena|這家店不賣飲料。": {
+      "file": "lesson-test-studio/v1/0e5fc6bb87dc.mp3",
+      "sha256": "0e5fc6bb87dc3bab5df19897b52c1188f6df353ed9ebc32cf67301400b756396",
+      "duration": 1.687
+    },
+    "Serena|這家店人很多。": {
+      "file": "lesson-test-studio/v1/e92842a3da6e.mp3",
+      "sha256": "e92842a3da6e61cc8f9c0dcd84646e2764a158866d352ffd3aab10b7000af9a0",
+      "duration": 1.662
+    },
+    "Serena|這家店人很少。": {
+      "file": "lesson-test-studio/v1/cb508cdd6c86.mp3",
+      "sha256": "cb508cdd6c863d83366b385562ac8ed0f2b3aff2e6b00443da6f715142b3c5ff",
+      "duration": 1.526
+    },
+    "Serena|這家店沒有人。": {
+      "file": "lesson-test-studio/v1/44addf3327c5.mp3",
+      "sha256": "44addf3327c51ac1d9c671b64f3a246f5b8565729bb179d89c97f62b8c2017ad",
+      "duration": 1.438
+    },
+    "Serena|這家店賣很多書。": {
+      "file": "lesson-test-studio/v1/668f0027597c.mp3",
+      "sha256": "668f0027597c4d1b1efebc9e6a6728c5c261deaf44ccda2aa14820b6f4f86cbb",
+      "duration": 1.908
+    },
+    "Serena|這家店賣很多種飲料。": {
+      "file": "lesson-test-studio/v1/2c1440cb2d3c.mp3",
+      "sha256": "2c1440cb2d3c65de2c99cbfbe3651d17a6b5634d88ace247c894f87be9470b48",
+      "duration": 2.306
+    },
+    "Serena|那枝筆多少錢？": {
+      "file": "lesson-test-studio/v1/a20f69f8353f.mp3",
+      "sha256": "a20f69f8353fde01fe4a1cea78561812656b450340480317d1ffef5ad9d3d7cd",
+      "duration": 1.693
+    },
+    "Uncle_Fu|不回家，我下午一點有課。": {
+      "file": "lesson-test-studio/v1/9d758a6648d4.mp3",
+      "sha256": "9d758a6648d4170765c7bf653f6f93cda78b44d74f95aa30df792e955f79eb36",
+      "duration": 2.903
+    },
+    "Uncle_Fu|不貴，一杯五十多塊。": {
+      "file": "lesson-test-studio/v1/156a20082e6e.mp3",
+      "sha256": "156a20082e6ed02a11bb0e9ae931257e26d92639885e441c2521619c6b971658",
+      "duration": 2.608
+    },
+    "Uncle_Fu|今天太熱了，咖啡我不喝。我要一杯綠茶。": {
+      "file": "lesson-test-studio/v1/4fc6a6115af0.mp3",
+      "sha256": "4fc6a6115af024138b12998eab469c36aa9c5e0709f314749774e53876c85afa",
+      "duration": 5.086
+    },
+    "Uncle_Fu|你們要紅茶還是綠茶？": {
+      "file": "lesson-test-studio/v1/ef5db80767d3.mp3",
+      "sha256": "ef5db80767d3c3689dfd7173cacd745f900a98cea9a89f6ebf508c2ba9905a4b",
+      "duration": 2.303
+    },
+    "Uncle_Fu|宜文，妳明天幾點有課？": {
+      "file": "lesson-test-studio/v1/031c122f4237.mp3",
+      "sha256": "031c122f42379ab93c8b97cf5f642b2505de6a6c7e4fa94d6f155ddebe49d2da",
+      "duration": 3.472
+    },
+    "Uncle_Fu|我想送她一些花和一個蛋糕。": {
+      "file": "lesson-test-studio/v1/625ea0d02814.mp3",
+      "sha256": "625ea0d028140556f68b52f2fba6509b88ec509b5d4322dba79dd6383b7cb279",
+      "duration": 2.894
+    },
+    "Uncle_Fu|這家店的牛肉麵貴不貴？": {
+      "file": "lesson-test-studio/v1/406026878513.mp3",
+      "sha256": "406026878513aca80cfdfd816c4bc9668d6794f2da93a7c7c4bceced2cf95494",
+      "duration": 2.612
+    },
+    "Uncle_Fu|這枝筆多少錢？": {
+      "file": "lesson-test-studio/v1/e315224c84be.mp3",
+      "sha256": "e315224c84bead2aa10be5d317c6d6f8a476b07c651cd5b1cbe4ec80b3a7fe47",
+      "duration": 2.142
+    },
+    "Uncle_Fu|那枝呢？": {
+      "file": "lesson-test-studio/v1/a185a5863f63.mp3",
+      "sha256": "a185a5863f6383a0e279ae271ac10bf446c9421d13e4400de3476d1ba04c7e4a",
+      "duration": 1.05
+    },
+    "Vivian|上午十點有課，我九點去學校。": {
+      "file": "lesson-test-studio/v1/02ad0b127ad0.mp3",
+      "sha256": "02ad0b127ad00a6fe5b1e4e40057837467a93358c5d2805290e6c94773ac3396",
+      "duration": 2.815
+    },
+    "Vivian|不貴，一碗一百多塊。": {
+      "file": "lesson-test-studio/v1/23367dfaad9b.mp3",
+      "sha256": "23367dfaad9b3fea01b2fdebfcf299157672d454228e28533bba51cd08168779",
+      "duration": 1.928
+    },
+    "Vivian|中明，你今天中午回家吃午飯嗎？": {
+      "file": "lesson-test-studio/v1/1cdc381ed9c5.mp3",
+      "sha256": "1cdc381ed9c5ce06a5f8493c6fe8b879cbd2b76a130944133b652571e2153262",
+      "duration": 3.227
+    },
+    "Vivian|今天天氣太熱了！": {
+      "file": "lesson-test-studio/v1/49f59731629a.mp3",
+      "sha256": "49f59731629adf5c8bebb1d1cc02163260a4ab945be1156871a0b241251edf4e",
+      "duration": 1.798
+    },
+    "Vivian|今天好冷啊！": {
+      "file": "lesson-test-studio/v1/3343fd94b3bd.mp3",
+      "sha256": "3343fd94b3bdbc245dca8a5e3b62f3d1d900289f365ac1c016977a54a8f2a689",
+      "duration": 1.494
+    },
+    "Vivian|你想送媽媽什麼生日禮物？": {
+      "file": "lesson-test-studio/v1/5707cdcb66ab.mp3",
+      "sha256": "5707cdcb66abbd2afd8ac7860e82b069f2c8a7fbe501d4e37d62ce119ce7e122",
+      "duration": 3.269
+    },
+    "Vivian|你要喝咖啡還是茶？": {
+      "file": "lesson-test-studio/v1/a768d0845a25.mp3",
+      "sha256": "a768d0845a25c8008b2a91aca257794fc72f858b90d0bad9e74448506bae9d8e",
+      "duration": 2.086
+    },
+    "Vivian|十五塊。": {
+      "file": "lesson-test-studio/v1/fa05e858efc0.mp3",
+      "sha256": "fa05e858efc019961204321740c7a76c5cc287293a7342ad13fb911f04d089fb",
+      "duration": 1.229
+    },
+    "Vivian|我們要兩碗牛肉麵。": {
+      "file": "lesson-test-studio/v1/a297d5efef0f.mp3",
+      "sha256": "a297d5efef0f22175374befc41a2b0b99d0765787aaaea3946c99b0b0d102337",
+      "duration": 2.231
+    },
+    "Vivian|我很餓，我想吃牛肉麵。": {
+      "file": "lesson-test-studio/v1/5041e04ef47c.mp3",
+      "sha256": "5041e04ef47c3bb38f77212e13cf1446d3b8e79006426a345aca7e7a6458e59b",
+      "duration": 2.635
+    },
+    "Vivian|我要兩杯紅茶。": {
+      "file": "lesson-test-studio/v1/d7fc62a08407.mp3",
+      "sha256": "d7fc62a0840762c521fa0ae0f35a87f0029cf7689ee446a6f3dd418f76a07a03",
+      "duration": 1.542
+    },
+    "Vivian|紅茶我要一杯，我朋友也要一杯。": {
+      "file": "lesson-test-studio/v1/78142228828d.mp3",
+      "sha256": "78142228828db7fccb9630440db1b5e4d0bc2b508002b48e2f8530e4a85937ec",
+      "duration": 3.798
+    },
+    "Vivian|請給我兩瓶果汁。": {
+      "file": "lesson-test-studio/v1/a85275e13c28.mp3",
+      "sha256": "a85275e13c28f8bca0e6bdd5e5900c118bcc7473f8c7ef5d68ab694196d0cdbe",
+      "duration": 1.69
+    },
+    "Vivian|這家店的果汁多少錢？": {
+      "file": "lesson-test-studio/v1/e820700e5cff.mp3",
+      "sha256": "e820700e5cffe7493dca7fa224168b53b5d9157d0dd90f53a67d9a8defd764ea",
+      "duration": 2.335
+    },
+    "Vivian|那枝二十塊。": {
+      "file": "lesson-test-studio/v1/5ecffe0859e1.mp3",
+      "sha256": "5ecffe0859e15aa2df4f6e3ca1e7949de57decd4cb90c2fc8cca08ee29234ea6",
+      "duration": 1.682
+    }
+  },
+  "sounds": {
+    "ding": {
+      "file": "lesson-test-studio/v1/f779e08c9876.mp3",
+      "sha256": "f779e08c98762ebc3018d107fc15989107b60dd12d9cb4660562fccc3cd205c8"
+    },
+    "letters": {
+      "A": {
+        "file": "lesson-test-studio/v1/73fa0ee6a399.mp3",
+        "sha256": "73fa0ee6a3994162f38cf7739d34eaeee0355eb58e12728fdcf76321a242b8f9"
+      },
+      "B": {
+        "file": "lesson-test-studio/v1/4438b587851b.mp3",
+        "sha256": "4438b587851b55a2ec3db2fb21d95b78cbf55d47cb1030310b17846ba783048e"
+      },
+      "C": {
+        "file": "lesson-test-studio/v1/44d73bc95c5e.mp3",
+        "sha256": "44d73bc95c5e5e73f76b51c55f60212ef158a99e3364fdb8f821e7a6610d1426"
+      },
+      "D": {
+        "file": "lesson-test-studio/v1/c6fd130943eb.mp3",
+        "sha256": "c6fd130943ebc0688787bf9722c861e12f0ba24fba7353f1cbbbc2156d1420c1"
+      }
+    }
+  }
+}
