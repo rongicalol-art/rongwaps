@@ -25,6 +25,16 @@ function useOnlineTotal() {
   });
 }
 
+/** Others in a lesson by the exact count (the lists themselves are capped). */
+function useLessonTotal(lesson: number | null) {
+  return useAppStore((state) => lesson === null ? 0 : Math.max(0, (state.socialCounts[lesson]?.n ?? 0) - (state.socialHere === lesson ? 1 : 0)));
+}
+
+/** Lists show the first people; one quiet line says how many more there are. */
+function MoreNote({ count, where }: { count: number; where: string }) {
+  return count > 0 ? <p className="py-2 text-sm font-bold text-ui-muted">{count} more {where}</p> : null;
+}
+
 function useOthers(list: Person[], hideRoom = false) {
   const me = useAppStore((state) => state.socialMe);
   const race = useAppStore(state => state.race);
@@ -80,6 +90,8 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
   const rooms = useAppStore(state => state.socialRooms);
   const [roomMenuOpen, setRoomMenuOpen] = useState(false);
   const { classmates, here, others } = useClassmates(people, online, lesson);
+  const moreHere = Math.max(0, useLessonTotal(lesson) - here.length);
+  const moreOnline = Math.max(0, onlineTotal - classmates.length - moreHere);
   const crowd = classmates.slice(0, 4).map(person => ({ name: person.n, color: person.c, src: person.i }));
   const visit = panel.tab === 'online' ? panel.visit : undefined;
   const selected = visit ? classmates.find(person => person.u === visit.u) ?? visit : null;
@@ -143,6 +155,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
                   {here.map((person) => (
                     <PersonRow key={person.u} person={person} lesson={lesson} onOpen={() => setProfile(person)} action={<ActionButton size="sm" variant="secondary" onClick={() => invite(person)}>Invite</ActionButton>} />
                   ))}
+                  <MoreNote count={moreHere} where="in this lesson" />
                 </>
               ) : (
                 <>
@@ -157,6 +170,7 @@ export function PeoplePanel({ panel }: { panel: Extract<SocialPanel, { kind: 'pe
                 <PersonRow person={person} lesson={lesson} onOpen={() => setProfile(person)} action={<ActionButton size="sm" variant="secondary" onClick={() => invite(person)}>Invite</ActionButton>} />
               </div>
             ))}
+            <MoreNote count={moreOnline} where="online" />
           </>}
         </div>
         {(pending || selected || panel.tab === 'online') && <div className="shrink-0 border-t-2 border-ui-divider pt-4">{pending ? <ActionButton fullWidth size="lg" variant="secondary" onClick={leaveRace}>Cancel connecting</ActionButton> : selected ? inMyRoom(selected) ? <ActionButton fullWidth size="lg" variant="secondary" onClick={() => mention(selected)}><AppIcon name="at" size={20} />Mention</ActionButton> : <div className="flex gap-2.5"><ActionButton size="lg" variant="secondary" aria-label="Mention" onClick={() => mention(selected)}><AppIcon name="at" size={20} /><span className="hidden sm:inline">Mention</span></ActionButton><div className="min-w-0 flex-1"><ActionButton fullWidth size="lg" onClick={() => invite(selected)}>Invite to room</ActionButton></div></div> : <ActionButton fullWidth size="lg" onClick={() => { void createRace(identity, defaultSelection(lesson), true, []); }}>{hasRoom ? 'Back to room' : 'Start a room'}</ActionButton>}</div>}
@@ -181,6 +195,8 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
   const [recentRoom, setRecentRoom] = useState<string | null>(null);
   useEffect(() => { setRecentRoom(getRecentRaceCode(userId)); }, [userId, panel.tab]);
   const { classmates, here, others } = useClassmates(people, online, lesson);
+  const moreHere = Math.max(0, useLessonTotal(lesson) - here.length);
+  const moreOnline = Math.max(0, onlineTotal - classmates.length - moreHere);
   const openRooms = rooms.filter((room) => room.code !== recentRoom);
   const toggle = (id: string) => setPicked((prev) => (prev.includes(id) ? prev.filter((value) => value !== id) : prev.length < seats ? [...prev, id] : prev));
   const heading = (key: number | null) => {
@@ -248,6 +264,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
                     />
                   </button>
                 ))}
+                <MoreNote count={moreHere} where="in this lesson" />
               </>
             ) : (
               <>
@@ -274,6 +291,7 @@ export function ChallengePanel({ panel }: { panel: Extract<SocialPanel, { kind: 
               </button>
             </div>
           ))}
+          <MoreNote count={moreOnline} where="online" />
         </>}
       </div>
       <div className="shrink-0 border-t-2 border-ui-divider pt-4">

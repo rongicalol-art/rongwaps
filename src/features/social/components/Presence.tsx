@@ -21,7 +21,7 @@ export function GlobalPresenceButton() {
 function useLessonOthers(lesson: number | null) {
   const entry = useAppStore((state) => (lesson === null ? undefined : state.socialCounts[lesson]));
   const me = useAppStore((state) => state.socialMe);
-  const mePresent = useAppStore(state => state.socialPeople.some(person => person.u === state.socialMe && person.l === lesson));
+  const mePresent = useAppStore(state => (lesson !== null && state.socialHere === lesson) || state.socialPeople.some(person => person.u === state.socialMe && person.l === lesson));
   return useMemo(() => {
     if (!entry) return { faces: [], total: 0 };
     const others = entry.f.filter((person) => person.u !== me);

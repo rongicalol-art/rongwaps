@@ -10,7 +10,7 @@ let socket: ReturnType<typeof connectLobby> | null = null;
 let identityKey = '';
 let generation = 0;
 let here: Extract<LobbyClientMessage, { t: 'here' }> = { t: 'here', l: null, a: null, show: true };
-let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null };
+let sub: Extract<LobbyClientMessage, { t: 'sub' }> = { t: 'sub', online: false, chat: null, v: 2 };
 const CHAT_CAP = 50;
 const pendingReads = new Set<string>();
 let readOwner: string | null = null;
@@ -164,6 +164,8 @@ export function stopLobby() {
 
 export const lobby = {
   here(l: number | null, a: Activity | null, show: boolean, i?: string) {
+    // The store's copy resets on account switches; keep it equal to what this device reports.
+    if (useAppStore.getState().socialHere !== (show ? l : null)) useAppStore.getState().setSocial({ socialHere: show ? l : null });
     if (here.l === l && here.a === a && here.show === show && here.i === i) return;
     if (here.l !== l) useAppStore.getState().setSocial({ socialPeople: [] });
     here = { t: 'here', l, a, show, i };
@@ -172,9 +174,11 @@ export const lobby = {
   subscribe(online: boolean, chat: number | null) {
     if (sub.online === online && sub.chat === chat) return;
     if (sub.chat !== chat) useAppStore.getState().setSocial({ socialChat: null, socialUnread: false });
-    sub = { t: 'sub', online, chat };
+    sub = { t: 'sub', online, chat, v: 2 };
     send(sub);
   },
+  /** A fresh Online snapshot; opening the panel already brings one. */
+  roster: () => send({ t: 'roster' }),
   say: (l: number, text: string, mentions?: string[]) => send({ t: 'say', l, text, mentions }),
   cheer: (to: string[], p: number) => { if (to.length) send({ t: 'cheer', to, p }); },
   invite: (to: string[], code: string) => to.length > 0 && send({ t: 'invite', to, code }),

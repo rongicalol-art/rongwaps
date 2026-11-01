@@ -46,6 +46,7 @@ export class GameRoom extends BaseRoom {
   runAlarm() { return this.alarm(); }
 }
 export class Lobby extends BaseLobby {
+  capacity = ${userCount};
   runAlarm() { return this.alarm(); }
   async failListings(enabled) { await this.ctx.storage.put('fixture-listing-outage', enabled); }
   async failMentions(enabled) { await this.ctx.storage.put('fixture-mention-outage', enabled); }
@@ -196,6 +197,34 @@ try {
   const oversized = await open('/lobby/socket', 'lobby', (await post('/lobby', 'oversized')).ticket);
   oversized.socket.send(JSON.stringify({ t: 'say', l: 0, text: '字'.repeat(1400) }));
   await until(() => oversized.closed === 1008);
+
+  // Panel-aware clients (v: 2): room listings stream only while the social panel is open; the Online list is a
+  // capped snapshot sent when it opens or on request, never streamed.
+  const quiet = await open('/lobby/socket', 'lobby', (await post('/lobby', 'quiet')).ticket);
+  send(quiet, { t: 'sub', online: false, chat: null, v: 2 });
+  send(quiet, { t: 'here', l: 102, a: 'lesson', show: true });
+  await until(() => last(quiet, 'people')?.v.some(person => person.u === 'quiet'));
+  assert.ok(!last(quiet, 'rooms'), 'a closed panel gets no room listings');
+  assert.ok(!last(quiet, 'online'), 'a closed panel gets no roster');
+  send(quiet, { t: 'sub', online: true, chat: null, v: 2 });
+  await until(() => last(quiet, 'rooms') && last(quiet, 'online'));
+  const roster = last(quiet, 'online').v;
+  assert.equal(roster[0].u, 'quiet', 'people in this lesson come first');
+  assert.ok(roster.some(person => person.u === 'alice') && !roster.some(person => person.u === 'bob'), 'the roster lists visible people only');
+  const rosterFrames = () => quiet.frames.filter(frame => frame.t === 'online').length;
+  const snapshots = rosterFrames();
+  send(alice, { t: 'here', l: 103, a: 'cards', show: true });
+  send(quiet, { t: 'roster' });
+  await until(() => last(quiet, 'counts')?.v['103']?.n === 1);
+  await delay(100);
+  assert.equal(rosterFrames(), snapshots, 'presence changes do not stream the roster, and a request within the gap is ignored');
+  await delay(3000);
+  send(quiet, { t: 'roster' });
+  await until(() => rosterFrames() > snapshots);
+  assert.ok(last(quiet, 'online').v.some(person => person.u === 'alice' && person.l === 103), 'a requested snapshot is fresh');
+  send(alice, { t: 'here', l: 101, a: 'cards', show: true });
+  quiet.socket.close(1000);
+  await until(() => last(alice, 'counts')?.v['102'] === undefined && last(alice, 'counts')?.v['101']?.n === 1);
 
   // Race room: open room is listed and announced, invite reaches Bob, full race to results, rematch.
   const created = await post('/rooms', 'alice', { selection: { lessons: { 1: [1, 2], 99: [1] }, types: ['meaning', 'nope'] }, open: true });
@@ -542,10 +571,14 @@ try {
       send(client, { t: 'sub', online: true, chat: 101 });
       return { id, client };
     })));
-    await until(() => students.every(({client}) => last(client, 'counts')?.n === students.length && last(client, 'online')?.v.length === students.length && last(client, 'people')?.v.length === students.length));
+    await until(() => students.every(({client}) => last(client, 'counts')?.n === students.length && last(client, 'counts')?.v['101']?.n === students.length && last(client, 'people')?.v.length === Math.min(30, students.length)));
     console.log(JSON.stringify({ stage: 'ramp', users: students.length, convergenceMs: Math.round(performance.now() - at) }));
   }
-  assert.ok(students.every(({id, client}) => last(client, 'online').v.some(person => person.u === id && person.i === `https://lh3.googleusercontent.com/${id}`)), 'profile photos stay present in crowd snapshots');
+  await delay(3100);
+  for (const { client } of students.slice(0, 5)) send(client, { t: 'roster' });
+  await until(() => students.slice(0, 5).every(({client}) => last(client, 'online')?.v.length === Math.min(100, students.length)));
+  assert.ok(students.slice(0, 5).every(({client}) => last(client, 'online').v.every(person => person.i === `https://lh3.googleusercontent.com/${person.u}`)), 'profile photos stay present in crowd snapshots');
+  assert.ok(students.every(({client}) => last(client, 'people').v.every(person => person.i === `https://lh3.googleusercontent.com/${person.u}`)), 'lesson people carry profile photos');
   const lobbyMs = Math.round(performance.now() - started);
   const stableCount = students[0].client.frames.filter(f => f.t === 'counts').length;
   await control('/__test/lobby/main/alarm');
@@ -567,10 +600,10 @@ try {
   const chatHistory = last(students[0].client, 'history').v;
   assert.ok(chatHistory.some(message => message.i && message.u.startsWith('load-')), `chat history decorates online senders with their profile photos: ${JSON.stringify(chatHistory.slice(0, 2))}`);
   assert.equal((await lobbySql.exec('SELECT COUNT(*) AS n FROM chat WHERE lesson=101'))[0].n, Math.min(50, previousChatRows + userCount));
-  if (userCount === 250) {
+  {
     const overflow = await post('/lobby', 'overflow');
     const rejected = await mf.dispatchFetch('https://games.test/lobby/socket', { headers: { Origin: origin, Upgrade: 'websocket', 'Sec-WebSocket-Protocol': `lobby, ticket.${overflow.ticket}` } });
-    assert.equal(rejected.status, 503, 'the 251st connection is rejected without disturbing existing users');
+    assert.equal(rejected.status, 503, 'the connection past capacity is rejected without disturbing existing users');
     await rejected.text();
     console.log(JSON.stringify({ stage: 'capacity', admitted: userCount, rejectedStatus: rejected.status }));
   }
@@ -586,7 +619,7 @@ try {
   })));
   const failures = reconnects.filter(result => result.status === 'rejected');
   assert.equal(failures.length, 0, `reconnect failures: ${failures.slice(0, 3).map(result => String(result.reason)).join('; ')}`);
-  await until(() => students.every(({client}) => last(client, 'counts')?.n === userCount && last(client, 'online')?.v.length === userCount));
+  await until(() => students.every(({client}) => last(client, 'counts')?.n === userCount && last(client, 'people')?.v.length === Math.min(30, userCount)));
   console.log(JSON.stringify({ stage: 'reconnect', users: userCount, convergenceMs: Math.round(performance.now() - reconnectAt) }));
   keepAlive = setInterval(() => { for (const {client} of students) if (client.closed === null) client.socket.send('ping'); }, 25_000);
   keepAlive.unref();

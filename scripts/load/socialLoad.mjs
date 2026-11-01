@@ -15,6 +15,7 @@
  * Examples
  *   node scripts/load/socialLoad.mjs --target local --users 100,500,2000,10000
  *   node scripts/load/socialLoad.mjs --target local --users 2000 --lift-cap
+ *   node scripts/load/socialLoad.mjs --target local --users 500 --assert   (CI: fails on errors or a busted budget)
  *   node scripts/load/socialLoad.mjs --target staging --users 100 \
  *     --url https://rons-mandarin-games-staging.ronm222007.workers.dev \
  *     --origin https://ronsmandarin-staging.onrender.com --tokens-file ./tokens.txt
@@ -30,7 +31,7 @@ import { parseArgs } from 'node:util';
 const PRODUCTION_SUPABASE_REF = 'ylpzxpqyfaayavkvhikw';
 const STAGING_SUPABASE_REF = 'zpljyjcbqkrelpdzvmqz';
 const PRODUCTION_HOSTS = ['ronsmandarin.com', 'rons-mandarin-games.ronm222007.workers.dev'];
-const LOBBY_CAP_SOURCE = 'this.sockets().length >= 250';
+const LOBBY_CAP_SOURCE = /export const LOBBY_CAPACITY = \d+;/;
 const PLAN_HASH = 'a'.repeat(64);
 
 const { values: args } = parseArgs({ options: {
@@ -52,7 +53,23 @@ const { values: args } = parseArgs({ options: {
   origin: { type: 'string' },
   'tokens-file': { type: 'string' },
   json: { type: 'string' },
+  assert: { type: 'boolean', default: false },
 } });
+
+/**
+ * CI budgets (--assert), deliberately generous for shared runners: they catch a broken path or a return of
+ * everyone-to-everyone traffic (bytes pushed per learner), not small timing noise. Local reference numbers are in
+ * docs/reports/scale-audit.md.
+ */
+const BUDGETS = {
+  'presence-converge': { max: 8000 },
+  'chat-lesson': { p95: 3000 },
+  'chat-global': { p95: 4000 },
+  'lesson-churn': { p95: 8000 },
+  'race-progress': { p95: 4000 },
+  'race-results': { p95: 4000 },
+  'lobby-health': { bytesInPerUser: 80_000 },
+};
 
 const num = (key, min, max) => {
   const value = Number(args[key]);
@@ -113,12 +130,12 @@ async function localTransport() {
     tokens.set(sub, value);
     return value;
   }
-  // The 250-socket admission cap (games/lobby.ts) is lifted only inside this test bundle, never in app code.
+  // The Lobby's admission cap (LOBBY_CAPACITY in games/lobby.ts) is lifted only inside this test bundle, never in app code.
   const plugins = options.liftCap ? [{ name: 'lift-lobby-cap', setup(builder) {
     builder.onLoad({ filter: /games[\\/]lobby\.ts$/ }, async entry => {
       const source = await readFile(entry.path, 'utf8');
-      if (!source.includes(LOBBY_CAP_SOURCE)) throw new Error('Lobby cap pattern not found; update LOBBY_CAP_SOURCE in scripts/load/socialLoad.mjs');
-      return { contents: source.replace(LOBBY_CAP_SOURCE, 'this.sockets().length >= 1000000'), loader: 'ts' };
+      if (!LOBBY_CAP_SOURCE.test(source)) throw new Error('Lobby cap pattern not found; update LOBBY_CAP_SOURCE in scripts/load/socialLoad.mjs');
+      return { contents: source.replace(LOBBY_CAP_SOURCE, 'export const LOBBY_CAPACITY = 1000000;'), loader: 'ts' };
     });
   } }] : [];
   const bundle = await build({ stdin: { resolveDir: process.cwd(), sourcefile: 'load-entry.ts', contents: "export { default, GameRoom, Lobby } from './games/index';" },
@@ -198,7 +215,8 @@ function attach(ws, client, tally, chat) {
     const entry = tally.get(kind) ?? { frames: 0, bytes: 0 };
     entry.frames += 1; entry.bytes += text.length; tally.set(kind, entry);
     if (kind === 'counts') client.countsN = message.n ?? 0;
-    else if (kind === 'people' && message.l === client.lesson && message.v.some(person => person.u === client.id)) client.peopleSeenAt = performance.now();
+    // Lesson lists are capped, so a move is confirmed by the first list for the new lesson.
+    else if (kind === 'people' && message.l === client.lesson && client.awaitingMove) { client.peopleSeenAt = performance.now(); client.awaitingMove = false; }
     else if (kind === 'msg' && typeof message.m?.t === 'string' && message.m.t.startsWith(chat.marker)) {
       const sentAt = chat.sentAt.get(message.m.t);
       if (sentAt !== undefined) { chat.latencies.push(performance.now() - sentAt); chat.delivered += 1; }
@@ -230,7 +248,7 @@ async function run(transport, users) {
       await Promise.all(Array.from({ length: Math.min(options.batch, users - offset) }, async (_, i) => {
         const index = offset + i;
         const id = transport.userId(index);
-        const client = { index, id, lesson: null, countsN: 0, peopleSeenAt: 0, state: null, stateAt: 0, bytesIn: 0, errors: [], closed: null, ws: null };
+        const client = { index, id, lesson: null, awaitingMove: false, countsN: 0, peopleSeenAt: 0, state: null, stateAt: 0, bytesIn: 0, errors: [], closed: null, ws: null };
         clients[index] = client;
         const t0 = performance.now();
         const ticket = await transport.post('/lobby', id, { name: id.slice(0, 30), color: 'jade' });
@@ -249,12 +267,14 @@ async function run(transport, users) {
     phase('connect-socket', upgradeMs, connectErrors, { connected: live.length, rejected });
     if (live.length < 2) throw new Error('too few connections to continue');
 
-    // 2. Presence: spread over lessons; a share opens the Online list; everyone follows their lesson chat.
+    // 2. Presence: spread over lessons; a share has the social panel open (one Online snapshot, room listings);
+    //    everyone follows their lesson chat. `v: 2` is the current app's panel-aware subscription.
     const t2 = performance.now();
+    const sub = (client, chat) => send(client.ws, { t: 'sub', online: client.index < users * options.onlineShare, chat, v: 2 });
     for (const client of live) {
       client.lesson = 101 + (client.index % options.lessons);
       send(client.ws, { t: 'here', l: client.lesson, a: 'lesson', show: true });
-      send(client.ws, { t: 'sub', online: client.index < users * options.onlineShare, chat: client.lesson });
+      sub(client, client.lesson);
     }
     let convergeError = 0;
     try { await waitUntil(() => live.every(client => client.countsN === live.length), options.timeoutMs, 'presence convergence'); }
@@ -272,7 +292,7 @@ async function run(transport, users) {
 
     // 4. Global chat burst: a share of users follows global chat; each message reaches all of them.
     const globalReaders = live.filter(client => client.index < users * options.globalShare);
-    for (const client of globalReaders) send(client.ws, { t: 'sub', online: client.index < users * options.onlineShare, chat: 0 });
+    for (const client of globalReaders) sub(client, 0);
     await delay(1100); // the per-account chat cooldown from phase 3
     const globalChatters = globalReaders.slice(0, options.chatters);
     chat.sentAt.clear(); chat.latencies.length = 0; chat.delivered = 0;
@@ -280,7 +300,7 @@ async function run(transport, users) {
     let globalError = 0;
     try { await waitUntil(() => chat.delivered >= globalChatters.length * globalReaders.length, options.timeoutMs, 'global chat delivery'); } catch { globalError = 1; }
     phase('chat-global', chat.latencies, globalError, { senders: globalChatters.length, recipientsEach: globalReaders.length, delivered: chat.delivered });
-    for (const client of globalReaders) send(client.ws, { t: 'sub', online: client.index < users * options.onlineShare, chat: client.lesson });
+    for (const client of globalReaders) sub(client, client.lesson);
 
     // 5. Lesson churn: a share of users moves to another lesson within 5 s; each waits to see itself listed there.
     const movers = live.filter(client => client.index % Math.max(1, Math.round(1 / Math.max(options.churn, 0.0001))) === 0).slice(0, Math.ceil(live.length * options.churn));
@@ -288,7 +308,7 @@ async function run(transport, users) {
     const churnStart = performance.now();
     for (const [i, client] of movers.entries()) {
       setTimeout(() => {
-        client.lesson = 101 + ((client.index + 7) % options.lessons); client.peopleSeenAt = 0;
+        client.lesson = 101 + ((client.index + 7) % options.lessons); client.peopleSeenAt = 0; client.awaitingMove = true;
         moveAt.set(client.id, performance.now());
         send(client.ws, { t: 'here', l: client.lesson, a: 'cards', show: true });
       }, (i / Math.max(1, movers.length)) * 5000);
@@ -402,3 +422,14 @@ const out = args.json ?? `output/load/social-${options.target}-${started.toISOSt
 await mkdir(out.slice(0, out.lastIndexOf('/')), { recursive: true });
 await writeFile(out, JSON.stringify({ startedAt: started.toISOString(), options, summary, reports }, null, 2));
 console.log(`report: ${out}`);
+if (args.assert) {
+  const failures = [];
+  for (const report of reports) for (const row of report.phases) {
+    if (row.errors) failures.push(`${report.users} users, ${row.phase}: ${row.errors} error(s)${row.reason ? ` (${row.reason})` : ''}`);
+    for (const [field, limit] of Object.entries(BUDGETS[row.phase] ?? {})) {
+      if (typeof row[field] === 'number' && row[field] > limit) failures.push(`${report.users} users, ${row.phase}: ${field} ${row[field]} > ${limit}`);
+    }
+  }
+  if (failures.length) { console.error(`Load budgets failed:\n- ${failures.join('\n- ')}`); process.exit(1); }
+  console.log('Load budgets: pass');
+}

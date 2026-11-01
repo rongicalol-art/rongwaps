@@ -12,7 +12,9 @@ The Worker runs in Miniflare inside this process with a throwaway signing key an
 node scripts/load/socialLoad.mjs --target local --users 100,250,500 --rooms 200
 ```
 
-`--lift-cap` removes the Lobby's 250-socket admission check **inside the test bundle only** (app code is untouched) to find where one Lobby object actually breaks:
+CI runs `npm run games:load` (500 learners, `--assert`): it fails on any error or a busted budget, including bytes pushed per learner, which catches a return of everyone-to-everyone traffic. Budgets live in `BUDGETS` at the top of the script.
+
+`--lift-cap` removes the Lobby's admission cap (`LOBBY_CAPACITY`, 2,000) **inside the test bundle only** (app code is untouched) to find where one Lobby object actually breaks:
 
 ```bash
 node scripts/load/socialLoad.mjs --target local --users 500,2000,10000 --rooms 300 --timeout 300 --lift-cap
@@ -31,7 +33,7 @@ node scripts/load/socialLoad.mjs --target staging --users 100 \
   --tokens-file ~/staging-tokens.txt
 ```
 
-Guards: both hosts must contain `staging`, production hosts are refused, every token must be issued by the staging Supabase project and none by production, tokens are never printed. The deployed staging Lobby keeps its 250 cap, so expect `socket 503` past 250 users; that is the measurement.
+Guards: both hosts must contain `staging`, production hosts are refused, every token must be issued by the staging Supabase project and none by production, tokens are never printed. The deployed staging Lobby keeps its 2,000 cap, so expect `socket 503` past 2,000 users; that is the measurement. On the Workers Free plan a large staging run spends that day's Durable Object allowance.
 
 ## Options
 
@@ -50,3 +52,4 @@ Guards: both hosts must contain `staging`, production hosts are refused, every t
 | `--timeout` | `120` | seconds before a phase counts as broken |
 | `--skip-rooms` | off | presence and chat only |
 | `--json` | `output/load/…` | report path |
+| `--assert` | off | exit 1 on errors or a busted budget (CI) |

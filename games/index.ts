@@ -2,6 +2,7 @@ import { newRaceRoom, parseSelection, ROOM_CODE, socialColor, socialImage, socia
 import { verifyAccessToken } from '../shared/accessToken';
 import { newSeed } from './room';
 import { SOCIAL_FRAME_BYTES } from '../shared/lobby';
+import { TICKET_LIMIT_ERROR } from './lobby';
 export { GameRoom } from './room';
 export { Lobby } from './lobby';
 
@@ -32,7 +33,9 @@ const JOIN_ERRORS = new Set([
   'This race has already started.',
   'This room is full.',
   'Pick at least one lesson part.',
+  TICKET_LIMIT_ERROR,
 ]);
+const LIMIT_ERRORS = new Set([ROOM_LIMIT_ERROR, TICKET_LIMIT_ERROR]);
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -53,7 +56,8 @@ export default {
     if (!auth) return reply({ error: 'Sign in with your school account.' }, 401);
     const { userId, expiresAt } = auth;
     try {
-      if (!await env.ROOMS.getByName(`limit:${userId}`).allowRequest()) return reply({ error: 'Too many connection requests. Try again shortly.' }, 429);
+      // The Lobby rate-limits its own tickets in memory: one Durable Object request fewer per connection.
+      if (url.pathname !== '/lobby' && !await env.ROOMS.getByName(`limit:${userId}`).allowRequest()) return reply({ error: TICKET_LIMIT_ERROR }, 429);
       if (match?.[2] === '/leave' && ROOM_CODE.test(match[1])) {
         await env.ROOMS.getByName(match[1]).exit(userId);
         return reply({ ok: true });
@@ -84,7 +88,7 @@ export default {
     } catch (error) {
       const message = error instanceof Error && JOIN_ERRORS.has(error.message) ? error.message : null;
       if (!message) console.error('games: join failed', error);
-      return reply({ error: message ?? 'Could not join. Check the code and your connection.' }, message === ROOM_LIMIT_ERROR ? 429 : 400);
+      return reply({ error: message ?? 'Could not join. Check the code and your connection.' }, message && LIMIT_ERRORS.has(message) ? 429 : 400);
     }
   },
 } satisfies ExportedHandler<Env>;
