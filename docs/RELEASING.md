@@ -12,8 +12,8 @@ feature branch ──PR──▶ main ──Release PR──▶ production
 | Step | What runs by itself |
 | --- | --- |
 | PR into `main` | CI: secret scan, migration safety, typecheck, lint, Worker checks, unit/content tests, build, size budgets; browser journeys when saving, sign-in, server or database change; backup self-test when migrations change |
-| Merge into `main` | CI again → **Deploy**: new migrations applied to staging, that exact commit deployed to staging, staging checked (right build, staging database only, content gated, noindex). **Release PR** updated |
-| Merge the Release PR | CI + browser journeys on `production` → **Deploy**: refuses if a migration isn't applied yet, deploys the exact commit, checks the live site, **rolls back automatically** and opens an issue if a check fails, tags the release with notes |
+| Merge into `main` | CI again → **Deploy**: new migrations applied to staging, the staging Study together server and that exact commit deployed to staging, staging checked (right build, staging database only, content gated, noindex). **Release PR** updated |
+| Merge the Release PR | CI + browser journeys on `production` → **Deploy**: refuses if a migration isn't applied yet, deploys the Study together server, then the exact app commit, checks the live site, **rolls back automatically** and opens an issue if a check fails, tags the release with notes |
 | Every night | **Backup** (02:30 Taiwan) with a restore proof; CI and journeys on `main` (03:00) |
 
 Render auto-deploy stays off on both services: the Deploy workflow is the only deployer, so a rollback is never undone by an automatic redeploy.
@@ -117,7 +117,7 @@ Never copy production data or keys into staging.
 
 - [ ] Repository private (guards above replace GitHub's branch lock)
 - [ ] `production` branch at the live commit; Render production tracks `production`, staging tracks `main`; both auto-deploy off; health check `/healthz`
-- [ ] GitHub secrets: `RENDER_API_KEY`, `PRODUCTION_DATABASE_URL`, `STAGING_DATABASE_URL`, `BACKUP_R2_ACCESS_KEY_ID`, `BACKUP_R2_SECRET_ACCESS_KEY`, `CLAUDE_CODE_OAUTH_TOKEN`
+- [ ] GitHub secrets: `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit), `RENDER_API_KEY`, `PRODUCTION_DATABASE_URL`, `STAGING_DATABASE_URL`, `BACKUP_R2_ACCESS_KEY_ID`, `BACKUP_R2_SECRET_ACCESS_KEY`, `CLAUDE_CODE_OAUTH_TOKEN`
 - [ ] GitHub variables: `PRODUCTION_SERVICE_ID`, `STAGING_SERVICE_ID`, `STAGING_URL`, `R2_ACCOUNT_ID`, `BACKUP_BUCKET`, `BACKUP_AGE_RECIPIENT`, `SENTRY_BACKUP_CRON_URL`; Actions allowed to create pull requests
 - [ ] R2 buckets `rongwaps-backups` (lifecycle + 7-day lock) and `rongwaps-materials`
 - [ ] Render production build secrets `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`; Sentry alert on new issues; backup cron monitor
