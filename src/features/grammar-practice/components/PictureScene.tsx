@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { fetchContentBlobUrl } from '../../../services/staticContentService';
 import type { PracticeCastMember } from '../../../types/models';
 import wangThinking from '../../../assets/images/grammar-practice/wang-thinking.webp';
 import { bookPagePath } from '../../../utils/grammar/bookPagePath';
-import { objectScene } from './ObjectScenes';
 import { generatedPictureAssets } from './generatedPictureAssets';
 
 interface PictureSceneProps {
@@ -65,24 +64,22 @@ export function sceneFirstPicture(props: PictureSceneProps) {
   return <IllustratedPicture key={art.src} {...props} src={art.src} alt={art.alt ?? props.alt} caption={art.caption} />;
 }
 
-/** Reviewed replacements are keyed by the exact source crop; everything else keeps the scan. */
+/** Reviewed illustrations are keyed by the exact source crop; everything else keeps the book's scan. */
 export function PictureScene(props: PictureSceneProps) {
   const reviewed = sceneFirstPicture(props);
   if (reviewed) return reviewed;
-  const drawn = objectScene(`${props.page}:${props.box.join(',')}`, props.alt);
-  if (drawn) return drawn;
   if (props.page === 45 && props.box.join(',') === '0.68,0.762,0.167,0.136') {
     return <img src={wangThinking} alt={props.alt} draggable={false} className="mx-auto block h-auto max-h-[230px] w-full max-w-[285px] select-none object-contain sm:max-h-[300px]" />;
   }
   return <BookPictureScene {...props} />;
 }
 
-function IllustratedPicture({ src, caption, ...props }: PictureSceneProps & { src: string; caption?: string }) {
+export function IllustratedPicture({ src, caption, ...props }: PictureSceneProps & { src: string; caption?: ReactNode }) {
   const [failed, setFailed] = useState(false);
   if (failed) return <BookPictureScene {...props} />;
   return (
     <figure className="mx-auto w-full max-w-sm">
-      <img src={src} alt={props.alt} onError={() => setFailed(true)} draggable={false} className="mx-auto block h-auto max-h-[196px] w-full select-none object-contain sm:max-h-60" />
+      <img src={src} alt={props.alt} onError={() => setFailed(true)} draggable={false} className="mx-auto block h-auto max-h-[196px] w-auto max-w-full select-none rounded-control sm:max-h-60" />
       {caption && <figcaption className="mt-2 text-center font-chinese font-semibold text-sm text-ui-ink">{caption}</figcaption>}
     </figure>
   );
@@ -103,7 +100,7 @@ function BookPictureScene({ page, box, alt }: PictureSceneProps) {
   );
   return (
     <div
-      className="mx-auto w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface"
+      className="mx-auto w-full overflow-hidden rounded-control"
       // Height capped so the dialogue below stays in view; width follows the crop's shape (plus the 4px border).
       style={{ maxWidth: `calc(min(28rem, calc(min(30vh, 220px) * ${(width * pageRatio) / height})) + 4px)` }}
     >
@@ -119,8 +116,23 @@ function BookPictureScene({ page, box, alt }: PictureSceneProps) {
   );
 }
 
+/** One person: the picture, then the name, its pinyin and the note exactly as the book prints them. */
+function CastCaption({ person }: { person: PracticeCastMember }) {
+  return (
+    <figcaption className="mt-1 flex flex-col items-center leading-tight">
+      <span className="font-chinese font-semibold text-sm text-ui-ink-strong sm:text-base">{person.name}</span>
+      <span className="text-[10px] font-extrabold text-ui-muted-strong sm:text-xs">{person.pinyin}</span>
+      <span className="mt-0.5 font-chinese font-semibold text-xs text-ui-ink">{person.note}</span>
+    </figcaption>
+  );
+}
+
 /** The people the book introduces side by side (a picture each, with name and nationality), so the learner reads across all of them. */
 export function CastScene({ page, people, alt }: { page: number; people: PracticeCastMember[]; alt: string }) {
+  return <BookCastScene page={page} people={people} alt={alt} />;
+}
+
+function BookCastScene({ page, people, alt }: { page: number; people: PracticeCastMember[]; alt: string }) {
   const { src, failed } = usePageImage(page);
   const [pageRatio, setPageRatio] = useState(0.75);
 
@@ -130,7 +142,7 @@ export function CastScene({ page, people, alt }: { page: number; people: Practic
 
   if (failed) return null;
   return (
-    <div role="group" aria-label={alt} className="mx-auto grid w-full max-w-md grid-cols-4 gap-1 rounded-feature border-2 border-ui-divider bg-ui-surface px-1.5 py-2 sm:gap-3 sm:px-3">
+    <div role="group" aria-label={alt} className="grid w-full max-w-md grid-cols-4 gap-1 sm:gap-3">
       {people.map((person, index) => {
         return (
           <figure key={person.name} className="flex min-w-0 flex-col items-center text-center">
@@ -143,11 +155,7 @@ export function CastScene({ page, people, alt }: { page: number; people: Practic
                 )}
               </div>
             </div>
-            <figcaption className="mt-1 flex flex-col items-center leading-tight">
-              <span className="font-chinese font-semibold text-sm text-ui-ink-strong sm:text-base">{person.name}</span>
-              <span className="text-[10px] font-extrabold text-ui-muted-strong sm:text-xs">{person.pinyin}</span>
-              <span className="mt-0.5 font-chinese font-semibold text-xs text-ui-ink">{person.note}</span>
-            </figcaption>
+            <CastCaption person={person} />
           </figure>
         );
       })}

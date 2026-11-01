@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { cn } from '../../../utils/cn';
 import { PracticeChoiceButton } from '../../practice';
 import type { PracticeTile } from '../../../types/models';
 import { WORD_FLIGHT } from '../practiceMotion';
@@ -17,16 +18,18 @@ interface PracticeTileButtonProps {
   disabled?: boolean;
   /** Picked up, waiting to be dropped into a gap (place-the-words items). */
   selected?: boolean;
+  /** Exercise pages: the word matches the bigger sentence beside it. */
+  large?: boolean;
   onClick: () => void;
 }
 
 /** A word in the dock's word bank, on the app's tactile choice button. Pinyin shows in the result, not on the tile. */
-export function PracticeTileButton({ tile, script, layoutId, drag, carried, disabled, selected, onClick }: PracticeTileButtonProps) {
+export function PracticeTileButton({ tile, script, layoutId, drag, carried, disabled, selected, large, onClick }: PracticeTileButtonProps) {
   const text = textIn(tile, script);
   return (
     <motion.div layout="position" layoutId={layoutId} transition={WORD_FLIGHT} {...drag} className={carried ? 'shrink-0 select-none opacity-30' : 'shrink-0 select-none'}>
       <PracticeChoiceButton compact disabled={disabled} state={selected ? 'selected' : 'idle'} onClick={onClick} aria-label={`Use ${text}`} className="w-auto">
-        <span className="min-w-6 font-chinese font-semibold text-xl leading-none text-ui-ink-strong">{text}</span>
+        <span className={cn('min-w-6 font-chinese font-semibold leading-none text-ui-ink-strong', large ? 'text-xl lg:text-3xl' : 'text-xl')}>{text}</span>
       </PracticeChoiceButton>
     </motion.div>
   );

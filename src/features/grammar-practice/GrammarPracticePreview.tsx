@@ -5,6 +5,8 @@ import { cn } from '../../utils/cn';
 import { AppIcon, IconActionButton, WorkspaceWindow } from '../../lib/widgets';
 import { REPLY_PICK_PREVIEW } from './replyPickPreview';
 import { GrammarPracticeView } from './GrammarPracticeView';
+import { ExercisePage } from './ExercisePage';
+import { isExercisePage } from '../../utils/grammar/grammarPracticeCheck';
 
 /** Every authored book exercise, straight from content/grammar-practice (DEV gallery only). */
 const SOURCES = import.meta.glob<Record<string, GrammarPractice>>('../../../content/grammar-practice/*.json', { eager: true, import: 'default' });
@@ -45,6 +47,7 @@ export function GrammarPracticePreview() {
   const [run, setRun] = useState(0);
   const [barHost, setBarHost] = useState<HTMLDivElement | null>(null);
   const [script, setScript] = useState<'traditional' | 'simplified'>('traditional');
+  const [pinyin, setPinyin] = useState(false);
   const current = EXERCISES[selected.exercise];
   if (!current) return null;
   const pick = (exercise: number, item: number) => { setSelected({ exercise, item }); setRun((n) => n + 1); };
@@ -58,6 +61,17 @@ export function GrammarPracticePreview() {
       ? 'relative min-h-0 flex-1 bg-ui-canvas'
       : 'relative h-[760px] w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-canvas'}>
       <div className="absolute inset-0 overflow-y-auto px-4 pb-40 pt-6 sm:px-8">
+        {isExercisePage(current.practice) ? (
+          <ExercisePage
+            key={`${selected.exercise}-${run}`}
+            practice={current.practice}
+            script={script}
+            showPinyin={pinyin}
+            contextTokens={[]}
+            onOpenWord={() => undefined}
+            onComplete={() => pick(selected.exercise, 0)}
+          />
+        ) : (
         <GrammarPracticeView
           key={`${selected.exercise}-${selected.item}-${run}`}
           practice={current.practice}
@@ -70,6 +84,7 @@ export function GrammarPracticePreview() {
           onComplete={() => pick(selected.exercise, 0)}
           barHost={barHost}
         />
+        )}
       </div>
     </div>
   );
@@ -95,6 +110,7 @@ export function GrammarPracticePreview() {
         <button type="button" onClick={() => setScript((value) => (value === 'traditional' ? 'simplified' : 'traditional'))} className={chip(false)}>
           {script === 'traditional' ? '繁' : '简'}
         </button>
+        <button type="button" onClick={() => setPinyin((value) => !value)} className={chip(pinyin)}>Pinyin</button>
       </div>
       <div className="flex flex-wrap gap-2">
         <button type="button" onClick={() => setFocused(true)} className={chip(false)}>Focus preview</button>
