@@ -58,15 +58,19 @@ test('a finished grammar page is saved to the account', async ({ browser }) => {
   await lesson.getByRole('button', { name: 'Start', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1, name: /Introduce Someone/ })).toBeVisible();
 
-  // Read the page, then go through its exercise (skipping is allowed) to finish it.
+  // Read the page, then answer its exercise like a learner who guesses: tap
+  // words until each item checks itself (a second miss fills in the answer),
+  // then Continue. Older exercise kinds offer Skip instead.
   await page.keyboard.press('ArrowRight');
-  for (let step = 0; step < 25 && !(grammarProgress(learner).completedPageIds?.length); step += 1) {
-    const skip = page.getByRole('button', { name: 'Skip', exact: true });
-    const next = page.getByRole('button', { name: /^(Continue|Next|Finish grammar|Done)$/ });
-    if (await skip.isVisible()) await skip.click();
-    else if (await next.first().isVisible()) await next.first().click();
+  for (let step = 0; step < 150 && !(grammarProgress(learner).completedPageIds?.length); step += 1) {
+    const done = page.getByRole('button', { name: 'Continue', exact: true }).filter({ visible: true }).first();
+    const choices = page.getByRole('group', { name: 'Word choices' }).getByRole('button', { name: /^Use /, disabled: false }).filter({ visible: true });
+    const skip = page.getByRole('button', { name: 'Skip', exact: true }).filter({ visible: true }).first();
+    if (await done.isVisible().catch(() => false)) await done.click({ timeout: 5_000 });
+    else if (await choices.first().isVisible().catch(() => false)) await choices.first().click({ timeout: 5_000 });
+    else if (await skip.isVisible().catch(() => false)) await skip.click();
     else await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(800);
+    await page.waitForTimeout(250);
   }
   await expect.poll(() => grammarProgress(learner).completedPageIds?.length ?? 0, { timeout: 30_000 }).toBeGreaterThan(0);
   expect(grammarProgress(learner).startedPartIds).toContain('B1L01-P01-D01');

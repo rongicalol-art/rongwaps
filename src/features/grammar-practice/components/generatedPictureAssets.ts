@@ -1,7 +1,13 @@
+import type { PracticeScene } from '../../../types/models';
+import scene0 from '../../../assets/images/grammar-practice/generated/l02-clock-ten-fifteen-v1.webp';
+import scene1 from '../../../assets/images/grammar-practice/generated/l02-clock-ten-class-ends-v1.webp';
+import scene2 from '../../../assets/images/grammar-practice/generated/l02-calendar-2019-05-16-v1.webp';
+import scene3 from '../../../assets/images/grammar-practice/generated/l02-calendar-2019-05-19-v1.webp';
+import scene4 from '../../../assets/images/grammar-practice/generated/l02-calendar-2019-12-07-v1.webp';
+import scene5 from '../../../assets/images/grammar-practice/generated/l02-calendar-july-10-trip-v1.webp';
+import scene6 from '../../../assets/images/grammar-practice/generated/l01-classmates-flags-v1.webp';
 import art0 from '../../../assets/images/grammar-practice/generated/l04-pencil-v1.webp';
-import art1 from '../../../assets/images/grammar-practice/generated/l04-shirt-garment-alternative-v1.webp';
 import art2 from '../../../assets/images/grammar-practice/generated/l04-exhausted-worker-v1.webp';
-import art3 from '../../../assets/images/grammar-practice/generated/l04-hot-weather-40-v1.webp';
 import art4 from '../../../assets/images/grammar-practice/generated/l04-fifteen-people-v1.webp';
 import art5 from '../../../assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp';
 import art6 from '../../../assets/images/grammar-practice/generated/l04-jacket-2200-v1.webp';
@@ -65,7 +71,6 @@ import art63 from '../../../assets/images/grammar-practice/generated/l11-l11g1-p
 import art64 from '../../../assets/images/grammar-practice/generated/l11-l11g1-p4-sees-dog-v1.webp';
 import art65 from '../../../assets/images/grammar-practice/generated/l11-l11g4-p1-wash-bowls-tomorrow-v1.webp';
 import art66 from '../../../assets/images/grammar-practice/generated/l11-l11g4-p3-wait-for-quiet-cafe-v1.webp';
-import art67 from '../../../assets/images/grammar-practice/generated/l11-l11g4-p4-skips-breakfast-milk-v1.webp';
 import art68 from '../../../assets/images/grammar-practice/generated/l11-l11g4-p5-family-dinner-after-dad-v1.webp';
 import art69 from '../../../assets/images/grammar-practice/generated/l11-l11g5-p1-phone-girlfriend-v1.webp';
 import art70 from '../../../assets/images/grammar-practice/generated/l11-l11g5-p2-clothes-for-children-v1.webp';
@@ -100,13 +105,85 @@ import art98 from '../../../assets/images/grammar-practice/generated/l15-l15g1-p
 import art99 from '../../../assets/images/grammar-practice/generated/l15-l15g2-p1-zhongming-watching-tv-v1.webp';
 import art100 from '../../../assets/images/grammar-practice/generated/l15-l15g2-p2-guoan-cycling-fast-v1.webp';
 import art101 from '../../../assets/images/grammar-practice/generated/l15-l15g2-p3-yiwen-music-coffee-v1.webp';
+import art102 from '../../../assets/images/grammar-practice/generated/l01-busy-worker-v1.webp';
+import art103 from '../../../assets/images/grammar-practice/generated/l01-tired-and-zhongming-v1.webp';
+import art104 from '../../../assets/images/grammar-practice/generated/l01-youmei-japan-v1.webp';
+import art105 from '../../../assets/images/grammar-practice/generated/l01-cute-girl-v1.webp';
+import art106 from '../../../assets/images/grammar-practice/generated/l01-jiale-book-v1.webp';
+import art107 from '../../../assets/images/grammar-practice/generated/l02-phone-v1.webp';
+import art108 from '../../../assets/images/grammar-practice/generated/l02-hot-day-v1.webp';
+import art109 from '../../../assets/images/grammar-practice/generated/l01-youmei-pretty-v1.webp';
+import art110 from '../../../assets/images/grammar-practice/generated/l03-two-flowers-v1.webp';
+import art111 from '../../../assets/images/grammar-practice/generated/l03-dad-book-v1.webp';
+import art112 from '../../../assets/images/grammar-practice/generated/l03-cake-dream-v1.webp';
+import art113 from '../../../assets/images/grammar-practice/generated/l03-gift-jiale-v1.webp';
+import art114 from '../../../assets/images/grammar-practice/generated/l03-three-shirts-v1.webp';
+import art115 from '../../../assets/images/grammar-practice/generated/l03-four-flowers-v1.webp';
+import art116 from '../../../assets/images/grammar-practice/generated/l03-shop-things-v1.webp';
+import art117 from '../../../assets/images/grammar-practice/generated/l03-big-small-gift-v1.webp';
+import art118 from '../../../assets/images/grammar-practice/generated/l03-new-old-book-v1.webp';
+import art119 from '../../../assets/images/grammar-practice/generated/l03-plain-fancy-cake-v1.webp';
+import art120 from '../../../assets/images/grammar-practice/generated/l03-bitter-tea-v1.webp';
+import art121 from '../../../assets/images/grammar-practice/generated/l04-shirt-too-small-v1.webp';
+import art122 from '../../../assets/images/grammar-practice/generated/l04-baby-to-ten-v1.webp';
+import art123 from '../../../assets/images/grammar-practice/generated/l04-pens-and-rose-v1.webp';
+import art124 from '../../../assets/images/grammar-practice/generated/l10-glasses-fur-jacket-v1.webp';
+import art125 from '../../../assets/images/grammar-practice/generated/l10-beef-noodles-v1.webp';
+import art126 from '../../../assets/images/grammar-practice/generated/l11-hungry-then-milk-v1.webp';
+import art127 from '../../../assets/images/grammar-practice/generated/l12-writes-chinese-not-english-v1.webp';
+
+/** Illustrations for a clock time, a calendar day or the book's people row, keyed by what they show (`sceneArtKey`). */
+export const generatedSceneAssets: Record<string, { src: string; alt: string }> = {
+  'moment:10:15': { src: scene0, alt: 'An alarm clock on a desk showing a quarter past ten.' },
+  'moment:10:00': { src: scene1, alt: 'An alarm clock showing ten o’clock, a school bag beside it.' },
+  'month:2019-5:16': { src: scene2, alt: 'A desk calendar for May 2019 with Thursday the 16th circled.' },
+  'month:2019-5:19': { src: scene3, alt: 'A desk calendar for May 2019 with Sunday the 19th circled.' },
+  'month:2019-12:7': { src: scene4, alt: 'A desk calendar for December 2019 with Saturday the 7th circled.' },
+  'cast:38': { src: scene6, alt: 'The four classmates side by side, each holding a flag: Japan, Britain, the United States, Indonesia.' },
+  'moment:7/10': { src: scene5, alt: 'A desk calendar page showing July 10, a packed suitcase beside it.' },
+};
+
+/** `moment:10:15`, `moment:7/10`, `month:2019-5:16` — the same picture serves every item that shows the same thing. */
+export function sceneArtKey(scene: PracticeScene): string | null {
+  if (scene.type === 'moment') {
+    const { time, date } = scene.moment;
+    return time ? `moment:${time}` : date ? `moment:${date.month}/${date.day}` : null;
+  }
+  if (scene.type === 'month') return `month:${scene.year}-${scene.month}:${scene.highlight.join(',')}`;
+  if (scene.type === 'cast') return `cast:${scene.page}`;
+  return null;
+}
 
 /** Reviewed illustrations keyed by the exact Book 1 source crop. */
 export const generatedPictureAssets: Record<string, { src: string; caption?: string; alt?: string }> = {
+  '272:0.182,0.24,0.24,0.125': { src: art127, alt: "He writes Chinese well (a red circle) but not English (a red cross)." },
+  '228:0.714,0.648,0.1,0.076': { src: art125, alt: "A steaming bowl of beef noodle soup." },
+  '228:0.37,0.641,0.112,0.085': { src: art124, alt: "A young man in stylish glasses and a fur-collar jacket." },
+  '107:0.68,0.29,0.16,0.11': { src: art123, caption: "US$8.45", alt: "Three pens and a red rose with a price tag." },
+  '107:0.455,0.312,0.18,0.088': { src: art122, caption: "2016.1.1 → 今天 2026.11.1", alt: "A newborn baby, then the same child at about ten." },
+  '99:0.205,0.338,0.084,0.114': { src: art121, alt: "A boy in a T-shirt far too small for him." },
+  '74:0.652,0.41,0.128,0.113': { src: art110, alt: "A woman holding one red rose in each hand." },
+  '75:0.178,0.515,0.162,0.133': { src: art111, alt: "A father hands his son a book and pats his head." },
+  '75:0.432,0.508,0.162,0.137': { src: art112, alt: "A young man daydreams of giving a girl a big cake." },
+  '75:0.691,0.513,0.176,0.137': { src: art113, alt: "A young woman gives Jiale a wrapped book." },
+  '82:0.202,0.246,0.162,0.064': { src: art114, alt: "Three T-shirts hanging on a rail." },
+  '82:0.397,0.248,0.21,0.057': { src: art115, alt: "Four flowers in a row." },
+  '82:0.659,0.22,0.202,0.095': { src: art116, alt: "A shirt, a pencil, a book, eggs, flowers and a cake on a shop table." },
+  '84:0.173,0.252,0.166,0.072': { src: art117, alt: "A big gift and a small gift." },
+  '84:0.411,0.262,0.185,0.098': { src: art118, alt: "A new book and an old, worn book." },
+  '84:0.635,0.264,0.194,0.049': { src: art119, alt: "A plain cake and a decorated cake." },
+  '85:0.609,0.392,0.275,0.103': { src: art120, alt: "Two people pull a face at a bowl of tea." },
+  '39:0.211,0.685,0.106,0.1': { src: art109, alt: 'Youmei at her desk, chin in hand, smiling.' },
+  '39:0.41,0.686,0.184,0.111': { src: art102, alt: 'A man at his desk, swamped with papers and a ringing phone.' },
+  '45:0.656,0.15,0.186,0.1': { src: art102, alt: 'A man at his desk, swamped with papers and a ringing phone.' },
+  '39:0.663,0.686,0.195,0.143': { src: art103, alt: 'A woman slumped in an armchair, worn out, while Zhongming smiles and waves.' },
+  '38:0.172,0.694,0.14,0.162': { src: art104, alt: 'Youmei smiling with a small Japanese flag.' },
+  '40:0.74,0.762,0.098,0.101': { src: art105, alt: 'A little girl in a pink dress smiling, hearts around her.' },
+  '38:0.355,0.69,0.117,0.166': { src: art106, caption: '高家樂', alt: 'Gao Jiale smiling with a book in a classroom.' },
+  '56:0.602,0.77,0.061,0.082': { src: art107, alt: 'A smartphone on a desk.' },
+  '62:0.635,0.631,0.153,0.115': { src: art108, alt: 'A man wiping sweat on a blazing hot, sunny street.' },
   '96:0.62,0.78,0.085,0.05': { src: art0 },
-  '99:0.207,0.34,0.08,0.11': { src: art1, alt: "A small red T-shirt laid over a larger gray T-shirt, showing the size difference." },
   '99:0.406,0.35,0.164,0.1': { src: art2 },
-  '98:0.704,0.779,0.087,0.103': { src: art3 },
   '106:0.164,0.251,0.223,0.094': { src: art4 },
   '106:0.457,0.255,0.204,0.074': { src: art5 },
   '106:0.703,0.252,0.16,0.101': { src: art6 },
@@ -172,7 +249,7 @@ export const generatedPictureAssets: Record<string, { src: string; caption?: str
   '248:0.722,0.701,0.16,0.12': { src: art64 },
   '258:0.17,0.747,0.354,0.092': { src: art65 },
   '259:0.1,0.162,0.69,0.096': { src: art66 },
-  '259:0.17,0.29,0.57,0.095': { src: art67 },
+  '259:0.17,0.29,0.57,0.095': { src: art126, alt: "She skips breakfast, gets hungry later, then drinks a glass of milk." },
   '259:0.15,0.455,0.58,0.085': { src: art68 },
   '260:0.56,0.183,0.19,0.133': { src: art69 },
   '260:0.691,0.312,0.216,0.114': { src: art70 },

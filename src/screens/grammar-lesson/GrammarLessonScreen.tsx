@@ -6,6 +6,7 @@ import { useAppStore } from '../../store/useAppStore';
 import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { getGrammarTeachingTokens } from '../../utils/grammar/grammarTeachingTokens';
+import { isExercisePage } from '../../utils/grammar/grammarPracticeCheck';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { WorkspaceWindow } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
@@ -24,6 +25,9 @@ const GrammarStudyPage = lazy(() =>
 );
 const GrammarPracticeView = lazy(() =>
   import('../../features/grammar-practice').then((m) => ({ default: m.GrammarPracticeView })),
+);
+const ExercisePage = lazy(() =>
+  import('../../features/grammar-practice').then((m) => ({ default: m.ExercisePage })),
 );
 
 interface GrammarLessonScreenProps {
@@ -215,6 +219,18 @@ export function GrammarLessonScreen({
                       {isPracticing && page.practice ? (
                         // Its own boundary: loading the exercise never blanks the page behind it.
                         <Suspense fallback={null}>
+                        {isExercisePage(page.practice) ? (
+                          <ExercisePage
+                            key={`exercise-${page.id}`}
+                            practice={page.practice}
+                            script={characterPreference}
+                            showPinyin={showPinyin}
+                            contextTokens={getGrammarTeachingTokens(page)}
+                            onOpenWord={setDictionaryWord}
+                            onComplete={finishPractice}
+                            shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
+                          />
+                        ) : (
                         <GrammarPracticeView
                           key={`practice-${page.id}-${practiceInitialIndex}`}
                           practice={page.practice}
@@ -229,6 +245,7 @@ export function GrammarLessonScreen({
                           initialIndex={practiceInitialIndex}
                           shortcutsDisabled={isBookOpen || isSocialPanelOpen || Boolean(dictionaryWord)}
                         />
+                        )}
                         </Suspense>
                       ) : (
                         <GrammarStudyPage

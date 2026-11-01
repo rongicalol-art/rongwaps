@@ -2,84 +2,63 @@
   "B1L08-G01-P185": {
     "bookPage": 186,
     "title": "Use 好 or 難 with perception verbs or action verbs to complete the following sentences.",
+    "allowWords": [
+      "畫",
+      "珍珠奶茶"
+    ],
     "items": [
       {
         "id": "l8g1-p1",
         "source": "p.186 #1",
-        "prompt": "You enjoy this film. Describe it with 好 or 難.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這部電影很",
+                "simplified": "这部电影很"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我很喜歡。",
+                "simplified": "，我很喜欢。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "很",
-            "pinyin": "hěn"
+            "traditional": "好",
+            "pinyin": "hǎo"
+          },
+          {
+            "traditional": "難",
+            "pinyin": "nán",
+            "simplified": "难"
           },
           {
             "traditional": "看",
             "pinyin": "kàn"
           },
           {
-            "traditional": "難",
-            "simplified": "难",
-            "pinyin": "nán"
-          },
-          {
-            "traditional": "這部電影",
-            "simplified": "这部电影",
-            "pinyin": "zhè bù diànyǐng"
-          },
-          {
-            "traditional": "好",
-            "pinyin": "hǎo"
-          },
-          {
-            "traditional": "我很喜歡",
-            "pinyin": "wǒ hěn xǐhuan",
-            "simplified": "我很喜欢"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "這部電影",
-              "很",
-              "好",
-              "看",
-              "我很喜歡"
-            ],
-            "sentence": {
-              "traditional": "這部電影很好看，我很喜歡。",
-              "pinyin": "Zhè bù diànyǐng hěn hǎokàn, wǒ hěn xǐhuān.",
-              "english": "This movie is very good; I like it a lot.",
-              "simplified": "这部电影很好看，我很喜欢。"
-            }
-          },
-          {
-            "order": [
-              "這部電影",
-              "好",
-              "看"
-            ],
-            "sentence": {
-              "traditional": "這部電影好看。",
-              "pinyin": "Zhè bù diànyǐng hǎokàn.",
-              "english": "This movie is good to watch.",
-              "simplified": "这部电影好看。"
-            }
-          },
-          {
-            "order": [
-              "這部電影",
-              "很",
-              "好",
-              "看"
-            ],
-            "sentence": {
-              "traditional": "這部電影很好看。",
-              "pinyin": "Zhè bù diànyǐng hěn hǎokàn.",
-              "english": "This movie is very good to watch.",
-              "simplified": "这部电影很好看。"
-            }
+            "traditional": "聽",
+            "pinyin": "tīng",
+            "simplified": "听"
           }
         ],
         "repairs": [
@@ -90,76 +69,82 @@
             "mark": [
               "難"
             ],
-            "note": "You like watching the movie, so describe it with 好看 rather than 難看."
+            "note": "You like the film, so it is good to watch: 好, not 難."
+          },
+          {
+            "placed": [
+              "聽"
+            ],
+            "mark": [
+              "聽"
+            ],
+            "note": "A film is watched, not listened to: 看. 好聽 is for songs and voices."
           }
         ],
-        "fallbackRepair": "Put 好 before 看 to describe a movie that is good to watch.",
-        "successNote": "好看 means good to watch."
+        "fallbackRepair": "好 or 難 comes first, then the verb: 好看.",
+        "result": {
+          "traditional": "這部電影很好看，我很喜歡。",
+          "simplified": "这部电影很好看，我很喜欢。",
+          "pinyin": "Zhè bù diànyǐng hěn hǎokàn, wǒ hěn xǐhuān.",
+          "english": "This movie is really good; I like it a lot."
+        }
       },
       {
         "id": "l8g1-p2",
         "source": "p.186 #2",
-        "prompt": "The new bike is comfortable on long rides. Describe it.",
-        "quiet": true,
-        "kind": "order-build",
-        "tiles": [
+        "kind": "slot-build",
+        "lines": [
           {
-            "traditional": "腳踏車",
-            "simplified": "脚踏车",
-            "pinyin": "jiǎotàchē"
-          },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "新的腳踏車很",
+                "simplified": "新的脚踏车很"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "騎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我很喜歡。",
+                "simplified": "，我很喜欢。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
           {
             "traditional": "好",
             "pinyin": "hǎo"
           },
           {
             "traditional": "難",
-            "simplified": "难",
-            "pinyin": "nán"
-          },
-          {
-            "traditional": "新的",
-            "pinyin": "xīn de"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
+            "pinyin": "nán",
+            "simplified": "难"
           },
           {
             "traditional": "騎",
-            "simplified": "骑",
-            "pinyin": "qí"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "新的",
-              "腳踏車",
-              "很",
-              "好",
-              "騎"
-            ],
-            "sentence": {
-              "traditional": "新的腳踏車很好騎。",
-              "pinyin": "Xīn de jiǎotàchē hěn hǎoqí.",
-              "english": "The new bike is easy to ride.",
-              "simplified": "新的脚踏车很好骑。"
-            }
+            "pinyin": "qí",
+            "simplified": "骑"
           },
           {
-            "order": [
-              "新的",
-              "腳踏車",
-              "好",
-              "騎"
-            ],
-            "sentence": {
-              "traditional": "新的腳踏車好騎。",
-              "pinyin": "Xīn de jiǎotàchē hǎoqí.",
-              "english": "The new bike is easy to ride.",
-              "simplified": "新的脚踏车好骑。"
-            }
+            "traditional": "穿",
+            "pinyin": "chuān"
+          },
+          {
+            "traditional": "走",
+            "pinyin": "zǒu"
           }
         ],
         "repairs": [
@@ -170,89 +155,91 @@
             "mark": [
               "難"
             ],
-            "note": "The bike is comfortable to ride, so choose 好 rather than 難."
+            "note": "You like the new bike, so it is easy to ride: 好騎."
+          },
+          {
+            "placed": [
+              "穿"
+            ],
+            "mark": [
+              "穿"
+            ],
+            "note": "好穿 is for clothes and shoes; a bike is ridden: 騎."
+          },
+          {
+            "placed": [
+              "走"
+            ],
+            "mark": [
+              "走"
+            ],
+            "note": "走 is walking; a bike is ridden: 騎."
           }
         ],
-        "fallbackRepair": "Put 好 before the action 騎 to describe how the bike rides."
+        "fallbackRepair": "好 comes first, then the verb: 好騎.",
+        "result": {
+          "traditional": "新的腳踏車很好騎，我很喜歡。",
+          "simplified": "新的脚踏车很好骑，我很喜欢。",
+          "pinyin": "Xīn de jiǎotàchē hěn hǎoqí, wǒ hěn xǐhuān.",
+          "english": "The new bike is really easy to ride; I like it a lot."
+        }
       },
       {
         "id": "l8g1-p3",
         "source": "p.186 #3",
-        "prompt": "Your friends learned to swim in one lesson. Describe swimming.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "聽說游泳很",
+                "simplified": "听说游泳很"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "好"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "學"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我也想學。",
+                "simplified": "，我也想学。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
-          },
-          {
-            "traditional": "學",
-            "simplified": "学",
-            "pinyin": "xué"
-          },
-          {
-            "traditional": "難",
-            "simplified": "难",
-            "pinyin": "nán"
-          },
-          {
-            "traditional": "聽說游泳",
-            "pinyin": "tīngshuō yóuyǒng",
-            "simplified": "听说游泳"
-          },
           {
             "traditional": "好",
             "pinyin": "hǎo"
           },
           {
-            "traditional": "我也想學",
-            "pinyin": "wǒ yě xiǎng xué",
-            "simplified": "我也想学"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "聽說游泳",
-              "很",
-              "好",
-              "學",
-              "我也想學"
-            ],
-            "sentence": {
-              "traditional": "聽說游泳很好學，我也想學。",
-              "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué, wǒ yě xiǎng xué.",
-              "english": "I hear swimming is easy to learn; I want to learn too.",
-              "simplified": "听说游泳很好学，我也想学。"
-            }
+            "traditional": "難",
+            "pinyin": "nán",
+            "simplified": "难"
           },
           {
-            "order": [
-              "聽說游泳",
-              "很",
-              "好",
-              "學"
-            ],
-            "sentence": {
-              "traditional": "聽說游泳很好學。",
-              "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué.",
-              "english": "I hear swimming is easy to learn.",
-              "simplified": "听说游泳很好学。"
-            }
+            "traditional": "學",
+            "pinyin": "xué",
+            "simplified": "学"
           },
           {
-            "order": [
-              "聽說游泳",
-              "好",
-              "學"
-            ],
-            "sentence": {
-              "traditional": "聽說游泳好學。",
-              "pinyin": "Tīngshuō yóuyǒng hǎoxué.",
-              "english": "I hear swimming is easy to learn.",
-              "simplified": "听说游泳好学。"
-            }
+            "traditional": "唱",
+            "pinyin": "chàng"
+          },
+          {
+            "traditional": "找",
+            "pinyin": "zhǎo"
           }
         ],
         "repairs": [
@@ -263,10 +250,34 @@
             "mark": [
               "難"
             ],
-            "note": "The friends learned quickly, so learning is easy: 好學 rather than 難學."
+            "note": "You want to learn it too, so what you heard is good news: 好學."
+          },
+          {
+            "placed": [
+              "唱"
+            ],
+            "mark": [
+              "唱"
+            ],
+            "note": "好唱 is for songs; swimming is something you learn: 學."
+          },
+          {
+            "placed": [
+              "找"
+            ],
+            "mark": [
+              "找"
+            ],
+            "note": "好找 is for places; swimming is something you learn: 學."
           }
         ],
-        "fallbackRepair": "Put 好 before 學 to say swimming is easy to learn."
+        "fallbackRepair": "好 comes first, then the verb: 好學.",
+        "result": {
+          "traditional": "聽說游泳很好學，我也想學。",
+          "simplified": "听说游泳很好学，我也想学。",
+          "pinyin": "Tīngshuō yóuyǒng hěn hǎoxué, wǒ yě xiǎng xué.",
+          "english": "I hear swimming is easy to learn; I want to learn too."
+        }
       },
       {
         "id": "l8g1-p4",
@@ -282,14 +293,14 @@
               },
               {
                 "type": "slot",
-                "id": "q",
+                "id": "s1",
                 "answers": [
                   "難"
                 ]
               },
               {
                 "type": "slot",
-                "id": "verb",
+                "id": "s2",
                 "answers": [
                   "看"
                 ]
@@ -298,28 +309,31 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
-          {
-            "traditional": "看",
-            "pinyin": "kàn"
-          },
           {
             "traditional": "好",
             "pinyin": "hǎo"
           },
           {
             "traditional": "難",
-            "simplified": "难",
-            "pinyin": "nán"
+            "pinyin": "nán",
+            "simplified": "难"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
           },
           {
             "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
+            "pinyin": "tīng",
+            "simplified": "听"
+          },
+          {
+            "traditional": "找",
+            "pinyin": "zhǎo"
           }
         ],
         "repairs": [
@@ -330,7 +344,7 @@
             "mark": [
               "好"
             ],
-            "note": "He drew it badly, so it doesn’t look good: 難看."
+            "note": "He drew it badly, and 有點兒 marks something unpleasant: 難看."
           },
           {
             "placed": [
@@ -339,32 +353,25 @@
             "mark": [
               "聽"
             ],
-            "note": "A picture is looked at: 看."
+            "note": "A picture is looked at, not listened to: 看."
           },
           {
-            "slot": {
-              "id": "q",
-              "tile": "看"
-            },
-            "note": "The verb follows 難: 難看."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "難"
-            },
-            "note": "難 comes first, right before the verb: 難看."
+            "placed": [
+              "找"
+            ],
+            "mark": [
+              "找"
+            ],
+            "note": "難找 means hard to find; the problem is how it looks: 看."
           }
         ],
-        "fallbackRepair": "好/難 + verb: 難看.",
+        "fallbackRepair": "難 comes first, then the verb: 難看.",
         "result": {
           "traditional": "我覺得這張畫他畫得不好，有點兒難看。",
+          "simplified": "我觉得这张画他画得不好，有点儿难看。",
           "pinyin": "Wǒ juéde zhè zhāng huà tā huà de bù hǎo, yǒu diǎnr nánkàn.",
-          "english": "I think he did not draw this picture well; it looks a little bad.",
-          "simplified": "我觉得这张画他画得不好，有点儿难看。"
-        },
-        "prompt": "Complete the sentence.",
-        "quiet": true
+          "english": "I think he didn't draw this picture well; it's a bit ugly."
+        }
       },
       {
         "id": "l8g1-p5",
@@ -379,14 +386,14 @@
               },
               {
                 "type": "slot",
-                "id": "q",
+                "id": "s1",
                 "answers": [
                   "好"
                 ]
               },
               {
                 "type": "slot",
-                "id": "verb",
+                "id": "s2",
                 "answers": [
                   "喝"
                 ]
@@ -396,23 +403,22 @@
                 "traditional": "，大家都想買一杯。",
                 "simplified": "，大家都想买一杯。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
           {
-            "traditional": "喝",
-            "pinyin": "hē"
+            "traditional": "好",
+            "pinyin": "hǎo"
           },
           {
             "traditional": "難",
-            "simplified": "难",
-            "pinyin": "nán"
+            "pinyin": "nán",
+            "simplified": "难"
           },
           {
-            "traditional": "好",
-            "pinyin": "hǎo"
+            "traditional": "喝",
+            "pinyin": "hē"
           },
           {
             "traditional": "吃",
@@ -427,7 +433,7 @@
             "mark": [
               "難"
             ],
-            "note": "Everyone wants a cup, so it tastes good: 好喝."
+            "note": "Everyone wants to buy a cup, so it tastes good: 好喝."
           },
           {
             "placed": [
@@ -436,32 +442,16 @@
             "mark": [
               "吃"
             ],
-            "note": "Milk tea is a drink: 喝."
-          },
-          {
-            "slot": {
-              "id": "q",
-              "tile": "喝"
-            },
-            "note": "The verb follows 好: 好喝."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "好"
-            },
-            "note": "好 comes first, right before the verb: 好喝."
+            "note": "Milk tea is drunk, not eaten: 好喝."
           }
         ],
-        "fallbackRepair": "好/難 + verb: 好喝.",
+        "fallbackRepair": "好 comes first, then the verb: 好喝.",
         "result": {
           "traditional": "珍珠奶茶很好喝，大家都想買一杯。",
+          "simplified": "珍珠奶茶很好喝，大家都想买一杯。",
           "pinyin": "Zhēnzhū nǎichá hěn hǎohē, dàjiā dōu xiǎng mǎi yì bēi.",
-          "english": "Bubble milk tea tastes good; everyone wants to buy a cup.",
-          "simplified": "珍珠奶茶很好喝，大家都想买一杯。"
-        },
-        "prompt": "Complete the sentence.",
-        "quiet": true
+          "english": "Bubble milk tea is delicious; everyone wants to buy a cup."
+        }
       },
       {
         "id": "l8g1-p6",
@@ -477,14 +467,14 @@
               },
               {
                 "type": "slot",
-                "id": "q",
+                "id": "s1",
                 "answers": [
                   "難"
                 ]
               },
               {
                 "type": "slot",
-                "id": "verb",
+                "id": "s2",
                 "answers": [
                   "找"
                 ]
@@ -493,27 +483,32 @@
                 "type": "text",
                 "traditional": "，我不想跟你去。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
-          {
-            "traditional": "找",
-            "pinyin": "zhǎo"
-          },
           {
             "traditional": "好",
             "pinyin": "hǎo"
           },
           {
             "traditional": "難",
-            "simplified": "难",
-            "pinyin": "nán"
+            "pinyin": "nán",
+            "simplified": "难"
           },
           {
-            "traditional": "看",
-            "pinyin": "kàn"
+            "traditional": "找",
+            "pinyin": "zhǎo"
+          },
+          {
+            "traditional": "學",
+            "pinyin": "xué",
+            "simplified": "学"
+          },
+          {
+            "traditional": "聽",
+            "pinyin": "tīng",
+            "simplified": "听"
           }
         ],
         "repairs": [
@@ -524,46 +519,35 @@
             "mark": [
               "好"
             ],
-            "note": "Three maps and you still can’t find it: 難找."
+            "note": "又…又… joins two of a kind: 遠 is a minus and you don't want to go, so 難."
           },
           {
             "placed": [
-              "看"
+              "學"
             ],
             "mark": [
-              "看"
+              "學"
             ],
-            "note": "The problem is finding the place: 找."
+            "note": "難學 is for things you learn; a place can be hard to find: 找."
           },
           {
-            "slot": {
-              "id": "q",
-              "tile": "找"
-            },
-            "note": "The verb follows 難: 難找."
-          },
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "難"
-            },
-            "note": "難 comes first, right before the verb: 難找."
+            "placed": [
+              "聽"
+            ],
+            "mark": [
+              "聽"
+            ],
+            "note": "難聽 is for sounds; a place can be hard to find: 找."
           }
         ],
-        "fallbackRepair": "好/難 + verb: 難找.",
+        "fallbackRepair": "難 comes first, then the verb: 難找.",
         "result": {
           "traditional": "那個地方又遠又難找，我不想跟你去。",
+          "simplified": "那个地方又远又难找，我不想跟你去。",
           "pinyin": "Nà ge dìfāng yòu yuǎn yòu nánzhǎo, wǒ bù xiǎng gēn nǐ qù.",
-          "english": "That place is far away and hard to find; I do not want to go with you.",
-          "simplified": "那个地方又远又难找，我不想跟你去。"
-        },
-        "prompt": "Complete the sentence.",
-        "quiet": true
+          "english": "That place is far and hard to find; I don't want to go with you."
+        }
       }
-    ],
-    "allowWords": [
-      "畫",
-      "珍珠奶茶"
     ]
   },
   "B1L08-G02-P186": {
@@ -576,133 +560,106 @@
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
                 "traditional": "他為什麼常常穿綠色的衣服？",
                 "simplified": "他为什么常常穿绿色的衣服？"
               }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            },
-            "me": false
+            ]
           },
           {
+            "speaker": {
+              "traditional": "B"
+            },
             "segments": [
               {
+                "type": "text",
+                "traditional": "因為他",
+                "simplified": "因为他"
+              },
+              {
                 "type": "slot",
-                "id": "g0",
+                "id": "s1",
                 "answers": [
-                  "因為"
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "喜歡"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "他"
+                "traditional": "綠色，",
+                "simplified": "绿色，"
               },
               {
                 "type": "slot",
-                "id": "g1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡",
-                "simplified": "喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "綠色",
-                "simplified": "绿色"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "，"
-              },
-              {
-                "type": "slot",
-                "id": "g4",
+                "id": "s3",
                 "answers": [
                   "所以"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "他"
-              },
-              {
-                "type": "slot",
-                "id": "g5",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "常常"
-              },
-              {
-                "type": "slot",
-                "id": "g6",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "穿"
-              },
-              {
-                "type": "slot",
-                "id": "g7",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "綠色的衣服",
-                "simplified": "绿色的衣服"
-              },
-              {
-                "type": "slot",
-                "id": "g8",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
+                "traditional": "常常穿。"
               }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": true
+            ]
           }
         ],
         "tiles": [
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "喜歡",
+            "pinyin": "xǐhuān",
+            "simplified": "喜欢"
+          },
           {
             "traditional": "所以",
             "pinyin": "suǒyǐ"
           },
           {
-            "traditional": "因為",
-            "simplified": "因为",
-            "pinyin": "yīnwèi"
-          },
-          {
             "traditional": "可是",
             "pinyin": "kěshì"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "怕",
+            "pinyin": "pà"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "He wears green often, so he must like it: 很喜歡, not 不."
+          },
+          {
+            "placed": [
+              "怕"
+            ],
+            "mark": [
+              "怕"
+            ],
+            "note": "Being afraid of green would not make him wear it: 喜歡."
+          },
           {
             "placed": [
               "可是"
@@ -710,186 +667,98 @@
             "mark": [
               "可是"
             ],
-            "note": "These clauses give a reason and its result, not a contrast; use 因為…所以…."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g5",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g5",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g6",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g6",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g7",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g7",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g8",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g8",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
+            "note": "Wearing it often is the result of liking it: 所以, not 可是."
           }
         ],
-        "fallbackRepair": "Reason first with 因為, result second with 所以.",
+        "fallbackRepair": "The reason first, 因為他很喜歡綠色, then the result: 所以常常穿.",
         "result": {
-          "traditional": "因為他喜歡綠色，所以他常常穿綠色的衣服。",
-          "simplified": "因为他喜欢绿色，所以他常常穿绿色的衣服。",
-          "pinyin": "Yīnwèi tā xǐhuān lǜsè, suǒyǐ tā chángcháng chuān lǜsè de yīfu.",
-          "english": "Because he likes green, he often wears green clothes."
-        },
-        "prompt": "Complete the dialogue.",
-        "quiet": true,
-        "gaps": true
+          "traditional": "因為他很喜歡綠色，所以常常穿。",
+          "simplified": "因为他很喜欢绿色，所以常常穿。",
+          "pinyin": "Yīnwèi tā hěn xǐhuān lǜsè, suǒyǐ chángcháng chuān.",
+          "english": "Because he really likes green, he wears it often."
+        }
       },
       {
         "id": "l8g2-p2",
         "source": "p.187 #2",
-        "prompt": "Start the chat.",
-        "kind": "order-build",
-        "sub": "B replies afterward: 因為我想游泳，也想曬太陽，所以想去海邊玩。",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "你",
+                  "為什麼"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "為什麼",
+                  "你"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "想去海邊玩？",
+                "simplified": "想去海边玩？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "因為我想游泳，也想曬太陽，所以想去海邊玩。",
+                "simplified": "因为我想游泳，也想晒太阳，所以想去海边玩。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "為什麼",
-            "simplified": "为什么",
-            "pinyin": "wèishénme"
-          },
-          {
-            "traditional": "海邊",
-            "simplified": "海边",
-            "pinyin": "hǎibiān"
-          },
-          {
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
-          },
           {
             "traditional": "你",
             "pinyin": "nǐ"
           },
           {
-            "traditional": "想去",
-            "simplified": "想去",
-            "pinyin": "xiǎng qù"
+            "traditional": "為什麼",
+            "pinyin": "wèishénme",
+            "simplified": "为什么"
           },
           {
-            "traditional": "玩",
-            "pinyin": "wán"
-          }
-        ],
-        "accepted": [
+            "traditional": "什麼",
+            "pinyin": "shénme",
+            "simplified": "什么"
+          },
           {
-            "order": [
-              "你",
-              "為什麼",
-              "想去",
-              "海邊",
-              "玩"
-            ],
-            "sentence": {
-              "traditional": "你為什麼想去海邊玩？",
-              "pinyin": "Nǐ wèishénme xiǎng qù hǎibiān wán?",
-              "english": "Why do you want to go to the seaside?",
-              "simplified": "你为什么想去海边玩？"
-            }
+            "traditional": "我",
+            "pinyin": "wǒ"
+          },
+          {
+            "traditional": "嗎",
+            "pinyin": "ma",
+            "simplified": "吗"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "B answers with 因為, a reason, so A asked why: 為什麼, not 什麼 (what)."
+          },
           {
             "placed": [
               "嗎"
@@ -897,10 +766,33 @@
             "mark": [
               "嗎"
             ],
-            "note": "為什麼 already asks the reason; do not add 嗎."
+            "note": "B answers with 因為, a reason, so A asked 為什麼; a 嗎 question gets 是 or 不."
+          },
+          {
+            "placed": [
+              "我"
+            ],
+            "mark": [
+              "我"
+            ],
+            "note": "A asks B about B's plan: 你."
           }
         ],
-        "fallbackRepair": "Put 為什麼 before 想去海邊玩."
+        "fallbackRepair": "A asks why: 你為什麼想去海邊玩？",
+        "result": {
+          "traditional": "你為什麼想去海邊玩？",
+          "simplified": "你为什么想去海边玩？",
+          "pinyin": "Nǐ wèishénme xiǎng qù hǎibiān wán?",
+          "english": "Why do you want to go to the beach?"
+        },
+        "alternatives": [
+          {
+            "traditional": "為什麼你想去海邊玩？",
+            "simplified": "为什么你想去海边玩？",
+            "pinyin": "Wèishénme nǐ xiǎng qù hǎibiān wán?",
+            "english": "Why do you want to go to the beach?"
+          }
+        ]
       },
       {
         "id": "l8g2-p3",
@@ -908,147 +800,67 @@
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
                 "traditional": "你為什麼想學中文？",
                 "simplified": "你为什么想学中文？"
               }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            },
-            "me": false
+            ]
           },
           {
+            "speaker": {
+              "traditional": "B"
+            },
             "segments": [
               {
                 "type": "slot",
-                "id": "g0",
+                "id": "s1",
                 "answers": [
                   "因為"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "我"
+                "traditional": "我想去台灣，",
+                "simplified": "我想去台湾，"
               },
               {
                 "type": "slot",
-                "id": "g1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "想"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "去"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "臺灣",
-                "simplified": "台湾"
-              },
-              {
-                "type": "slot",
-                "id": "g4",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "玩"
-              },
-              {
-                "type": "slot",
-                "id": "g5",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "，"
-              },
-              {
-                "type": "slot",
-                "id": "g6",
+                "id": "s2",
                 "answers": [
                   "所以"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "我"
-              },
-              {
-                "type": "slot",
-                "id": "g7",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "想"
-              },
-              {
-                "type": "slot",
-                "id": "g8",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "學",
-                "simplified": "学"
-              },
-              {
-                "type": "slot",
-                "id": "g9",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "中文"
-              },
-              {
-                "type": "slot",
-                "id": "g10",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。"
+                "traditional": "我想學中文。",
+                "simplified": "我想学中文。"
               }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": true
+            ]
           }
         ],
         "tiles": [
+          {
+            "traditional": "因為",
+            "pinyin": "yīnwèi",
+            "simplified": "因为"
+          },
           {
             "traditional": "所以",
             "pinyin": "suǒyǐ"
           },
           {
-            "traditional": "因為",
-            "simplified": "因为",
-            "pinyin": "yīnwèi"
-          },
-          {
             "traditional": "可是",
             "pinyin": "kěshì"
+          },
+          {
+            "traditional": "為什麼",
+            "pinyin": "wèishénme",
+            "simplified": "为什么"
           }
         ],
         "repairs": [
@@ -1059,310 +871,134 @@
             "mark": [
               "可是"
             ],
-            "note": "These clauses give a reason and its result, not a contrast; use 因為…所以…."
+            "note": "Going to Taiwan is the reason and learning Chinese the result: 因為…所以…, no contrast."
           },
           {
-            "slot": {
-              "id": "g0",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g5",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g5",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g6",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g7",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g7",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g8",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g8",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g9",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g9",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
-          },
-          {
-            "slot": {
-              "id": "g10",
-              "tile": "所以"
-            },
-            "note": "Put 所以 at the start of the result clause."
-          },
-          {
-            "slot": {
-              "id": "g10",
-              "tile": "因為"
-            },
-            "note": "Put 因為 at the start of the reason clause."
+            "placed": [
+              "為什麼"
+            ],
+            "mark": [
+              "為什麼"
+            ],
+            "note": "為什麼 asks the question; the answer gives the reason with 因為 and the result with 所以."
           }
         ],
-        "fallbackRepair": "Reason first with 因為, result second with 所以.",
+        "fallbackRepair": "因為 opens the reason, 所以 opens the result: 因為我想去台灣，所以我想學中文.",
         "result": {
-          "traditional": "因為我想去臺灣玩，所以我想學中文。",
-          "simplified": "因为我想去台湾玩，所以我想学中文。",
-          "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán, suǒyǐ wǒ xiǎng xué Zhōngwén.",
-          "english": "Because I want to visit Taiwan, I want to learn Chinese."
-        },
-        "prompt": "Complete the dialogue.",
-        "quiet": true,
-        "gaps": true
+          "traditional": "因為我想去台灣，所以我想學中文。",
+          "simplified": "因为我想去台湾，所以我想学中文。",
+          "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān, suǒyǐ wǒ xiǎng xué Zhōngwén.",
+          "english": "Because I want to go to Taiwan, I want to learn Chinese."
+        }
       },
       {
-        "id": "l8g2-own-match",
+        "id": "l8g2-own1",
         "source": "own",
-        "kind": "match-pairs",
-        "prompt": "Match each reason with its result.",
+        "kind": "slot-build",
         "lines": [
           {
-            "sentence": {
-              "traditional": "因為他很累，",
-              "simplified": "因为他很累，",
-              "pinyin": "Yīnwèi tā hěn lèi,",
-              "english": "Because he is tired,"
-            },
-            "note": "Being tired leads to resting, so the result is about resting."
-          },
-          {
-            "sentence": {
-              "traditional": "因為學校很遠，",
-              "simplified": "因为学校很远，",
-              "pinyin": "Yīnwèi xuéxiào hěn yuǎn,",
-              "english": "Because the school is far,"
-            },
-            "note": "A far school makes walking there a problem, so the result is about not walking."
-          },
-          {
-            "sentence": {
-              "traditional": "因為明天是我弟弟的生日，",
-              "simplified": "因为明天是我弟弟的生日，",
-              "pinyin": "Yīnwèi míngtiān shì wǒ dìdi de shēngrì,",
-              "english": "Because tomorrow is my younger brother’s birthday,"
-            },
-            "note": "A birthday leads to a gift, so the result is about buying one."
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我今天"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "想"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "去學校，",
+                "simplified": "去学校，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "因為"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我很累。"
+              }
+            ]
           }
         ],
-        "replies": [
-          {
-            "sentence": {
-              "traditional": "所以我不想走路去。",
-              "pinyin": "Suǒyǐ wǒ bù xiǎng zǒulù qù.",
-              "english": "so I don’t want to walk there."
-            },
-            "answers": 1
-          },
-          {
-            "sentence": {
-              "traditional": "所以我想吃牛肉麵。",
-              "simplified": "所以我想吃牛肉面。",
-              "pinyin": "Suǒyǐ wǒ xiǎng chī niúròumiàn.",
-              "english": "so I want to eat beef noodles."
-            },
-            "note": "Nothing here is about food or being hungry."
-          },
-          {
-            "sentence": {
-              "traditional": "所以他在家休息。",
-              "pinyin": "Suǒyǐ tā zài jiā xiūxi.",
-              "english": "so he is resting at home."
-            },
-            "answers": 0
-          },
-          {
-            "sentence": {
-              "traditional": "所以我要買禮物。",
-              "simplified": "所以我要买礼物。",
-              "pinyin": "Suǒyǐ wǒ yào mǎi lǐwù.",
-              "english": "so I am going to buy a gift."
-            },
-            "answers": 2
-          }
-        ],
-        "successNote": "因為 gives the reason and 所以 gives the result, and the reason comes first."
-      },
-      {
-        "id": "l8g2-own-listen",
-        "source": "own",
-        "kind": "listen-build",
-        "prompt": "Tap what you hear.",
-        "clip": {
-          "reading": "B1L08-R03",
-          "line": 5,
-          "file": "B1-08-3-1.mp3",
-          "start": 63.24,
-          "end": 65.78
-        },
         "tiles": [
           {
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi"
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "想",
+            "pinyin": "xiǎng"
           },
           {
             "traditional": "因為",
-            "simplified": "因为",
-            "pinyin": "yīnwèi"
-          },
-          {
-            "traditional": "常",
-            "pinyin": "cháng"
+            "pinyin": "yīnwèi",
+            "simplified": "因为"
           },
           {
             "traditional": "所以",
             "pinyin": "suǒyǐ"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "traditional": "為什麼",
+            "simplified": "为什么",
+            "pinyin": "wèishénme"
           },
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "所以",
-              "我",
-              "不",
-              "常",
-              "買"
-            ],
-            "sentence": {
-              "traditional": "所以我不常買。",
-              "simplified": "所以我不常买。",
-              "pinyin": "Suǒyǐ wǒ bù cháng mǎi.",
-              "english": "So I don’t buy them often."
-            }
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "因為"
+              "所以"
             ],
-            "title": "That is not what you heard",
-            "note": "The speaker said 所以, which brings the result. 因為 brings the reason."
+            "mark": [
+              "所以"
+            ],
+            "note": "Being tired is the reason, and a reason takes 因為 even when it comes second; 所以 marks a result."
           },
           {
-            "before": [
-              "常",
-              "不"
+            "placed": [
+              "為什麼"
             ],
-            "note": "不 comes before 常: 不常 is “not often”."
+            "mark": [
+              "為什麼"
+            ],
+            "note": "為什麼 asks why; to give the reason, use 因為."
           },
           {
-            "notFirst": "所以",
-            "note": "This part is the result, so it starts with the result word."
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "Being tired is a reason not to go: 不想."
           }
         ],
-        "fallbackRepair": "Listen again: the result word, who, then how often they buy."
+        "fallbackRepair": "不 goes before 想, and the reason takes 因為: 我今天不想去學校，因為我很累.",
+        "result": {
+          "traditional": "我今天不想去學校，因為我很累。",
+          "simplified": "我今天不想去学校，因为我很累。",
+          "pinyin": "Wǒ jīntiān bù xiǎng qù xuéxiào, yīnwèi wǒ hěn lèi.",
+          "english": "I don't want to go to school today, because I'm tired."
+        }
       }
     ]
   },
@@ -1373,303 +1009,430 @@
       {
         "id": "l8g3-p1",
         "source": "p.193 #1",
-        "kind": "order-build",
-        "prompt": "You see a Korean passport. Check your guess.",
-        "tiles": [
+        "kind": "slot-build",
+        "lines": [
           {
-            "traditional": "嗎",
-            "pinyin": "ma"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他是"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "韓國人"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
           },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "是啊，他是韓國人。",
+                "simplified": "是啊，他是韩国人。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
           {
             "traditional": "韓國人",
             "pinyin": "Hánguó rén",
             "simplified": "韩国人"
           },
           {
-            "traditional": "他",
-            "pinyin": "Tā"
-          },
-          {
-            "traditional": "是",
-            "pinyin": "shì"
+            "traditional": "哪國人",
+            "pinyin": "nǎ guó rén",
+            "simplified": "哪国人"
           },
           {
             "traditional": "吧",
             "pinyin": "ba"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "他",
-              "是",
-              "韓國人",
-              "吧"
-            ],
-            "sentence": {
-              "traditional": "他是韓國人吧？",
-              "pinyin": "Tā shì Hánguó rén ba?",
-              "english": "He is Korean, right?",
-              "simplified": "他是韩国人吧？"
-            }
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "誰",
+            "pinyin": "shéi",
+            "simplified": "谁"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "嗎"
+              "哪國人"
             ],
-            "title": "Try the requested meaning",
-            "note": "他是韓國人嗎 is a neutral question; 吧 asks for confirmation of the guess you already have."
+            "mark": [
+              "哪國人"
+            ],
+            "note": "B answers 是啊, a yes, so A made a guess about him, not a 哪國人 question."
+          },
+          {
+            "placed": [
+              "誰"
+            ],
+            "mark": [
+              "誰"
+            ],
+            "note": "B answers 是啊, a yes, so A made a guess about him, not a 誰 question."
+          },
+          {
+            "placed": [
+              "呢"
+            ],
+            "mark": [
+              "呢"
+            ],
+            "note": "A is checking a guess: end it with 吧. 呢 asks 'and what about…?'."
           }
         ],
-        "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
-        "sub": "B replies afterward: 是啊，他是韓國人。"
+        "fallbackRepair": "The guess first, 吧 at the end: 他是韓國人吧？",
+        "result": {
+          "traditional": "他是韓國人吧？",
+          "simplified": "他是韩国人吧？",
+          "pinyin": "Tā shì Hánguó rén ba?",
+          "english": "He's Korean, right?"
+        }
       },
       {
         "id": "l8g3-p2",
         "source": "p.193 #2",
-        "kind": "order-build",
-        "prompt": "Your friend always carries coffee. Check your guess.",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡",
+                "simplified": "你喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "咖啡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "喜歡，我每天早上都一定要喝。",
+                "simplified": "喜欢，我每天早上都一定要喝。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "嗎",
-            "pinyin": "ma"
+            "traditional": "咖啡",
+            "pinyin": "kāfēi"
           },
           {
-            "traditional": "喝咖啡",
-            "pinyin": "hē kāfēi"
-          },
-          {
-            "traditional": "你",
-            "pinyin": "Nǐ"
-          },
-          {
-            "traditional": "喜歡",
-            "pinyin": "xǐhuān",
-            "simplified": "喜欢"
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo"
           },
           {
             "traditional": "吧",
             "pinyin": "ba"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "你",
-              "喜歡",
-              "喝咖啡",
-              "吧"
-            ],
-            "sentence": {
-              "traditional": "你喜歡喝咖啡吧？",
-              "pinyin": "Nǐ xǐhuān hē kāfēi ba?",
-              "english": "You like drinking coffee, right?",
-              "simplified": "你喜欢喝咖啡吧？"
-            }
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "什麼",
+            "pinyin": "shénme",
+            "simplified": "什么"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "嗎"
+              "蛋糕"
             ],
-            "title": "Try the requested meaning",
-            "note": "嗎 asks a neutral question; 吧 checks the guess suggested by your friend’s coffee habit."
+            "mark": [
+              "蛋糕"
+            ],
+            "note": "B drinks it every morning, so it's a drink: 咖啡."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "B answers 喜歡, a yes, so A guessed one thing, not a 什麼 question."
+          },
+          {
+            "placed": [
+              "呢"
+            ],
+            "mark": [
+              "呢"
+            ],
+            "note": "A is checking a guess: end it with 吧. 呢 asks 'and what about…?'."
           }
         ],
-        "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
-        "sub": "B replies afterward: 喜歡，我每天早上都一定要喝。"
+        "fallbackRepair": "The guess first, 吧 at the end: 你喜歡咖啡吧？",
+        "result": {
+          "traditional": "你喜歡咖啡吧？",
+          "simplified": "你喜欢咖啡吧？",
+          "pinyin": "Nǐ xǐhuān kāfēi ba?",
+          "english": "You like coffee, don't you?"
+        }
       },
       {
         "id": "l8g3-p3",
         "source": "p.193 #3",
-        "kind": "order-build",
-        "prompt": "Your friend carries basketball shoes and a ball. Check your guess.",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "會"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "打"
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "籃球"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "吧"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不會，可是我會打網球。",
+                "simplified": "不会，可是我会打网球。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "嗎",
-            "pinyin": "ma"
-          },
-          {
-            "traditional": "打籃球",
-            "pinyin": "dǎ lánqiú",
-            "simplified": "打篮球"
-          },
-          {
-            "traditional": "你",
-            "pinyin": "Nǐ"
-          },
           {
             "traditional": "會",
             "pinyin": "huì",
             "simplified": "会"
           },
           {
+            "traditional": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "籃球",
+            "pinyin": "lánqiú",
+            "simplified": "篮球"
+          },
+          {
+            "traditional": "網球",
+            "pinyin": "wǎngqiú",
+            "simplified": "网球"
+          },
+          {
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
             "traditional": "吧",
             "pinyin": "ba"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "你",
-              "會",
-              "打籃球",
-              "吧"
-            ],
-            "sentence": {
-              "traditional": "你會打籃球吧？",
-              "pinyin": "Nǐ huì dǎ lánqiú ba?",
-              "english": "You can play basketball, right?",
-              "simplified": "你会打篮球吧？"
-            }
           }
         ],
         "repairs": [
           {
             "placed": [
-              "嗎"
+              "要"
             ],
-            "title": "Try the requested meaning",
-            "note": "嗎 asks whether they can play; 吧 asks them to confirm your guess from the basketball gear."
+            "mark": [
+              "要"
+            ],
+            "note": "B answers 不會, so A asked what B can do: 會."
+          },
+          {
+            "placed": [
+              "網球"
+            ],
+            "mark": [
+              "網球"
+            ],
+            "note": "B can play tennis, so A's wrong guess was another sport: 籃球."
+          },
+          {
+            "placed": [
+              "呢"
+            ],
+            "mark": [
+              "呢"
+            ],
+            "note": "A is checking a guess: end it with 吧. 呢 asks 'and what about…?'."
           }
         ],
-        "fallbackRepair": "Put 吧 at the end of the suggestion or guess.",
-        "sub": "B replies afterward: 不會，可是我會打網球。"
-      },
-      {
-        "id": "l8g3-own-sort",
-        "source": "own",
-        "kind": "sort-groups",
-        "prompt": "Sort the uses of 吧.",
-        "groups": [
-          {
-            "label": "Suggestion"
-          },
-          {
-            "label": "A guess"
-          }
-        ],
-        "cards": [
-          {
-            "sentence": {
-              "traditional": "你今天很忙吧？",
-              "pinyin": "Nǐ jīntiān hěn máng ba?",
-              "english": "You are busy today, right?"
-            },
-            "group": 1,
-            "note": "It states something you believe and asks them to confirm: a guess."
-          },
-          {
-            "sentence": {
-              "traditional": "我們一起去看電影吧。",
-              "simplified": "我们一起去看电影吧。",
-              "pinyin": "Wǒmen yìqǐ qù kàn diànyǐng ba.",
-              "english": "Let’s go see a movie together."
-            },
-            "group": 0,
-            "note": "“Let’s go together” proposes an action: a suggestion."
-          },
-          {
-            "sentence": {
-              "traditional": "他是韓國人吧。",
-              "simplified": "他是韩国人吧。",
-              "pinyin": "Tā shì Hánguó rén ba.",
-              "english": "He is Korean, I think."
-            },
-            "group": 1,
-            "note": "It is something you think is true and want confirmed: a guess."
-          },
-          {
-            "sentence": {
-              "traditional": "這件太小，你買那件吧。",
-              "simplified": "这件太小，你买那件吧。",
-              "pinyin": "Zhè jiàn tài xiǎo, nǐ mǎi nà jiàn ba.",
-              "english": "This one is too small; buy that one."
-            },
-            "group": 0,
-            "note": "It tells them which one to buy: a suggestion."
-          },
-          {
-            "sentence": {
-              "traditional": "你會游泳吧？",
-              "simplified": "你会游泳吧？",
-              "pinyin": "Nǐ huì yóuyǒng ba?",
-              "english": "You can swim, right?"
-            },
-            "group": 1,
-            "note": "You think they can swim and want to check: a guess."
-          },
-          {
-            "sentence": {
-              "traditional": "我們走吧！",
-              "simplified": "我们走吧！",
-              "pinyin": "Wǒmen zǒu ba!",
-              "english": "Let’s go!"
-            },
-            "group": 0,
-            "note": "“Let’s go” proposes an action: a suggestion."
-          }
-        ],
-        "successNote": "A suggestion proposes an action. A guess checks something you think is true."
+        "fallbackRepair": "會 before the verb, the sport after 打, 吧 at the end: 你會打籃球吧？",
+        "result": {
+          "traditional": "你會打籃球吧？",
+          "simplified": "你会打篮球吧？",
+          "pinyin": "Nǐ huì dǎ lánqiú ba?",
+          "english": "You can play basketball, right?"
+        }
       }
     ]
   },
   "B1L08-G04-P194": {
     "bookPage": 194,
     "title": "Complete the following dialogues.",
+    "allowWords": [
+      "台北",
+      "桃園"
+    ],
     "items": [
       {
         "id": "l8g4-p1",
         "source": "p.194 #1",
-        "prompt": "Suggest waiting a little longer.",
-        "kind": "order-build",
-        "sub": "我不想等他了，我們先去餐廳吧。",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我不想等他了，我們先去餐廳吧。",
+                "simplified": "我不想等他了，我们先去餐厅吧。"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們再",
+                "simplified": "我们再"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "等"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "等"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "吧。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "等",
             "pinyin": "děng"
           },
           {
-            "traditional": "看吧",
-            "pinyin": "kàn ba"
-          },
-          {
-            "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
-          },
-          {
-            "traditional": "我們再",
-            "pinyin": "wǒmen zài",
-            "simplified": "我们再"
-          },
-          {
             "traditional": "等",
             "pinyin": "děng"
           },
           {
-            "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
-          }
-        ],
-        "accepted": [
+            "traditional": "看",
+            "pinyin": "kàn"
+          },
           {
-            "order": [
-              "我們再",
-              "等",
-              "等",
-              "看吧"
-            ],
-            "sentence": {
-              "traditional": "我們再等等看吧。",
-              "pinyin": "Wǒmen zài děng deng kàn ba.",
-              "english": "Let’s wait a little longer and see.",
-              "simplified": "我们再等等看吧。"
-            }
+            "traditional": "看",
+            "pinyin": "kàn"
+          },
+          {
+            "traditional": "聽",
+            "pinyin": "tīng",
+            "simplified": "听"
           }
         ],
         "repairs": [
@@ -1680,10 +1443,16 @@
             "mark": [
               "聽"
             ],
-            "note": "Your friend wants to stop waiting; suggest waiting longer with 等等看, not listening with 聽聽看."
+            "note": "A is talking about waiting for him: double 等, then 看."
           }
         ],
-        "fallbackRepair": "Repeat 等 before 看 to suggest trying a little more waiting."
+        "fallbackRepair": "Double the verb, then 看: 等等看.",
+        "result": {
+          "traditional": "我們再等等看吧。",
+          "simplified": "我们再等等看吧。",
+          "pinyin": "Wǒmen zài děng deng kàn ba.",
+          "english": "Let's wait a bit longer and see."
+        }
       },
       {
         "id": "l8g4-p2",
@@ -1691,20 +1460,21 @@
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
                 "traditional": "從台北火車站到桃園機場，坐捷運又快又方便。",
                 "simplified": "从台北火车站到桃园机场，坐捷运又快又方便。"
               }
-            ],
-            "speaker": {
-              "traditional": "A",
-              "simplified": "A"
-            },
-            "me": false
+            ]
           },
           {
+            "speaker": {
+              "traditional": "B"
+            },
             "segments": [
               {
                 "type": "text",
@@ -1713,21 +1483,21 @@
               },
               {
                 "type": "slot",
-                "id": "v1",
+                "id": "s1",
                 "answers": [
                   "坐"
                 ]
               },
               {
                 "type": "slot",
-                "id": "v2",
+                "id": "s2",
                 "answers": [
                   "坐"
                 ]
               },
               {
                 "type": "slot",
-                "id": "kan",
+                "id": "s3",
                 "answers": [
                   "看"
                 ]
@@ -1736,12 +1506,7 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ],
-            "speaker": {
-              "traditional": "B",
-              "simplified": "B"
-            },
-            "me": true
+            ]
           }
         ],
         "tiles": [
@@ -1755,13 +1520,17 @@
           },
           {
             "traditional": "騎",
-            "simplified": "骑",
-            "pinyin": "qí"
+            "pinyin": "qí",
+            "simplified": "骑"
           },
           {
             "traditional": "騎",
-            "simplified": "骑",
-            "pinyin": "qí"
+            "pinyin": "qí",
+            "simplified": "骑"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
           },
           {
             "traditional": "看",
@@ -1776,179 +1545,121 @@
             "mark": [
               "騎"
             ],
-            "note": "You ride the MRT as a passenger: 坐."
-          },
-          {
-            "slot": {
-              "id": "v1",
-              "tile": "看"
-            },
-            "note": "看 comes last, after the doubled verb: 坐坐看."
-          },
-          {
-            "slot": {
-              "id": "v2",
-              "tile": "看"
-            },
-            "note": "看 comes last, after the doubled verb: 坐坐看."
-          },
-          {
-            "slot": {
-              "id": "kan",
-              "tile": "坐"
-            },
-            "note": "Say the verb twice before 看: 坐坐看."
+            "note": "騎 is for bikes; you take the MRT: 坐."
           }
         ],
-        "fallbackRepair": "To try something, double the verb and add 看: 坐坐看.",
+        "fallbackRepair": "Double the verb, then 看: 坐坐看.",
         "result": {
           "traditional": "我媽媽也覺得很方便，我很想坐坐看。",
+          "simplified": "我妈妈也觉得很方便，我很想坐坐看。",
           "pinyin": "Wǒ māma yě juéde hěn fāngbiàn, wǒ hěn xiǎng zuò zuo kàn.",
-          "english": "My mother also thinks it is convenient; I really want to try taking it.",
-          "simplified": "我妈妈也觉得很方便，我很想坐坐看。"
-        },
-        "glossary": [
-          {
-            "traditional": "台北",
-            "pinyin": "Táiběi",
-            "english": "Taipei",
-            "simplified": "台北"
-          },
-          {
-            "traditional": "桃園",
-            "pinyin": "Táoyuán",
-            "english": "Taoyuan",
-            "simplified": "桃园"
-          }
-        ],
-        "prompt": "Complete the dialogue."
+          "english": "My mom thinks it's convenient too; I really want to try taking it."
+        }
       },
       {
         "id": "l8g4-p3",
         "source": "p.194 #3",
-        "prompt": "You are curious about the song. Reply to A.",
-        "kind": "order-build",
-        "sub": "他們都不太喜歡這首歌，你呢？",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他們都不太喜歡這首歌，你呢？",
+                "simplified": "他们都不太喜欢这首歌，你呢？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "我"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "聽"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "聽"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "看"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
-          {
-            "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
-          },
-          {
-            "traditional": "看",
-            "pinyin": "kàn"
-          },
-          {
-            "traditional": "唱",
-            "pinyin": "chàng"
-          },
           {
             "traditional": "我",
             "pinyin": "wǒ"
           },
           {
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
             "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
+            "pinyin": "tīng",
+            "simplified": "听"
           },
           {
-            "traditional": "唱",
-            "pinyin": "chàng"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "聽",
-              "聽",
-              "看"
-            ],
-            "sentence": {
-              "traditional": "我聽聽看。",
-              "pinyin": "Wǒ tīng ting kàn.",
-              "english": "I’ll try listening to it.",
-              "simplified": "我听听看。"
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "唱"
-            ],
-            "mark": [
-              "唱"
-            ],
-            "note": "The task asks you to listen to the song, not sing it; use 聽聽看."
-          }
-        ],
-        "fallbackRepair": "Repeat 聽, then add 看: 我聽聽看。"
-      },
-      {
-        "id": "l8g4-own1",
-        "source": "own",
-        "kind": "order-build",
-        "prompt": "Complete the sentence.",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "喝",
-            "pinyin": "hē"
-          },
-          {
-            "traditional": "穿",
-            "pinyin": "chuan"
-          },
-          {
-            "traditional": "我",
-            "pinyin": "Wǒ"
-          },
-          {
-            "traditional": "穿",
-            "pinyin": "chuān"
+            "traditional": "聽",
+            "pinyin": "tīng",
+            "simplified": "听"
           },
           {
             "traditional": "看",
             "pinyin": "kàn"
           },
           {
-            "traditional": "喝",
-            "pinyin": "hē"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "穿",
-              "穿",
-              "看"
-            ],
-            "sentence": {
-              "traditional": "我穿穿看。",
-              "simplified": "我穿穿看。",
-              "pinyin": "Wǒ chuān chuan kàn.",
-              "english": "I will try it on and see."
-            }
+            "traditional": "看",
+            "pinyin": "kàn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "喝"
+              "你"
             ],
-            "title": "Try the requested meaning",
-            "note": "喝喝看 means trying a drink; 穿穿看 means trying on the skirt."
+            "mark": [
+              "你"
+            ],
+            "note": "A asks what you think: answer with 我."
           }
         ],
-        "fallbackRepair": "Repeat 穿, then add 看: 穿穿看 means try it on and see."
+        "fallbackRepair": "The person, the doubled verb, then 看: 我聽聽看.",
+        "result": {
+          "traditional": "我聽聽看。",
+          "simplified": "我听听看。",
+          "pinyin": "Wǒ tīng ting kàn.",
+          "english": "I'll give it a listen and see."
+        }
       }
-    ],
-    "allowWords": [
-      "台北",
-      "桃園"
     ]
   },
   "B1L08-G05-P195": {
@@ -1974,61 +1685,35 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
-                "traditional": "我的",
-                "simplified": "我的"
+                "traditional": "我的日本朋友"
               },
               {
                 "type": "slot",
-                "id": "g1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "日本",
-                "simplified": "日本"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "朋友",
-                "simplified": "朋友"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
+                "id": "s1",
                 "answers": [
                   "快要"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "來",
-                "simplified": "来"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "來"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g4",
+                "id": "s3",
                 "answers": [
                   "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。",
-                "simplified": "。"
+                "traditional": "。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
@@ -2037,78 +1722,64 @@
             "pinyin": "kuàiyào"
           },
           {
+            "traditional": "來",
+            "pinyin": "lái",
+            "simplified": "来"
+          },
+          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "明天",
+            "pinyin": "míngtiān"
+          },
+          {
+            "traditional": "嗎",
+            "pinyin": "ma",
+            "simplified": "吗"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "g0",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 我的日本朋友快要來了。"
+            "placed": [
+              "明天"
+            ],
+            "mark": [
+              "明天"
+            ],
+            "note": "Today is the 3rd and the friend comes on the 5th, so not tomorrow: it is coming soon, 快要來了."
           },
           {
-            "slot": {
-              "id": "g0",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 我的日本朋友快要來了。"
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "This says what the picture shows; 快要… ends with 了, not 嗎."
           },
           {
-            "slot": {
-              "id": "g1",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 我的日本朋友快要來了。"
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 我的日本朋友快要來了。"
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 我的日本朋友快要來了。"
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 我的日本朋友快要來了。"
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 我的日本朋友快要來了。"
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 我的日本朋友快要來了。"
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes with states; an action about to happen takes 快要."
           }
         ],
-        "fallbackRepair": "About to happen: 快要 before it, 了 after it.",
+        "fallbackRepair": "快要 before the verb, 了 at the end: 快要來了.",
         "result": {
           "traditional": "我的日本朋友快要來了。",
+          "simplified": "我的日本朋友快要来了。",
           "pinyin": "Wǒ de Rìběn péngyǒu kuàiyào lái le.",
-          "english": "My Japanese friend is coming soon.",
-          "simplified": "我的日本朋友快要来了。"
-        },
-        "prompt": "Complete the sentence using the calendars.",
-        "quiet": true,
-        "gaps": true
+          "english": "My Japanese friend is coming soon."
+        }
       },
       {
         "id": "l8g5-p2",
@@ -2129,41 +1800,36 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
                 "traditional": "我們",
                 "simplified": "我们"
               },
               {
                 "type": "slot",
-                "id": "g1",
+                "id": "s1",
                 "answers": [
                   "快要"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "休息",
-                "simplified": "休息"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "休息"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g2",
+                "id": "s3",
                 "answers": [
                   "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。",
-                "simplified": "。"
+                "traditional": "。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
@@ -2172,50 +1838,63 @@
             "pinyin": "kuàiyào"
           },
           {
+            "traditional": "休息",
+            "pinyin": "xiūxí"
+          },
+          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "上課",
+            "pinyin": "shàng kè",
+            "simplified": "上课"
+          },
+          {
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "g0",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 我們快要休息了。"
+            "placed": [
+              "上課"
+            ],
+            "mark": [
+              "上課"
+            ],
+            "note": "The 12:00 clock is the noon break, so what is coming is a rest: 休息."
           },
           {
-            "slot": {
-              "id": "g0",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 我們快要休息了。"
+            "placed": [
+              "呢"
+            ],
+            "mark": [
+              "呢"
+            ],
+            "note": "快要… always ends with 了."
           },
           {
-            "slot": {
-              "id": "g1",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 我們快要休息了。"
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 我們快要休息了。"
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes with states; an action about to happen takes 快要."
           }
         ],
-        "fallbackRepair": "About to happen: 快要 before it, 了 after it.",
+        "fallbackRepair": "快要 before the verb, 了 at the end: 快要休息了.",
         "result": {
           "traditional": "我們快要休息了。",
+          "simplified": "我们快要休息了。",
           "pinyin": "Wǒmen kuàiyào xiūxí le.",
-          "english": "We are about to take a break.",
-          "simplified": "我们快要休息了。"
-        },
-        "prompt": "Complete the sentence using the clocks.",
-        "quiet": true,
-        "gaps": true
+          "english": "We're about to take a break."
+        }
       },
       {
         "id": "l8g5-p3",
@@ -2236,51 +1915,42 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
-                "traditional": "弟弟",
-                "simplified": "弟弟"
+                "traditional": "弟弟"
               },
               {
                 "type": "slot",
-                "id": "g1",
+                "id": "s1",
                 "answers": [
                   "快要"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "十",
-                "simplified": "十"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "十"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g2",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "歲",
-                "simplified": "岁"
+                "id": "s3",
+                "answers": [
+                  "歲"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g3",
+                "id": "s4",
                 "answers": [
                   "了"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。",
-                "simplified": "。"
+                "traditional": "。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
@@ -2289,65 +1959,59 @@
             "pinyin": "kuàiyào"
           },
           {
+            "traditional": "十",
+            "pinyin": "shí"
+          },
+          {
+            "traditional": "歲",
+            "pinyin": "suì",
+            "simplified": "岁"
+          },
+          {
             "traditional": "了",
             "pinyin": "le"
+          },
+          {
+            "traditional": "九",
+            "pinyin": "jiǔ"
+          },
+          {
+            "traditional": "號",
+            "pinyin": "hào",
+            "simplified": "号"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "g0",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 弟弟快要十歲了。"
+            "placed": [
+              "九"
+            ],
+            "mark": [
+              "九"
+            ],
+            "note": "His tenth birthday is on the 10th, so he will soon be ten: 十歲."
           },
           {
-            "slot": {
-              "id": "g0",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 弟弟快要十歲了。"
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 弟弟快要十歲了。"
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 弟弟快要十歲了。"
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "了"
-            },
-            "note": "了 goes at the end, after what is about to happen: 弟弟快要十歲了。"
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "快要"
-            },
-            "note": "快要 goes right after the subject, before what is about to happen: 弟弟快要十歲了。"
+            "placed": [
+              "號"
+            ],
+            "mark": [
+              "號"
+            ],
+            "note": "Age is counted in 歲; 號 is a day of the month."
           }
         ],
-        "fallbackRepair": "About to happen: 快要 before it, 了 after it.",
+        "fallbackRepair": "快要, then the age, then 了: 快要十歲了.",
         "result": {
           "traditional": "弟弟快要十歲了。",
+          "simplified": "弟弟快要十岁了。",
           "pinyin": "Dìdi kuàiyào shí suì le.",
-          "english": "My younger brother is about to turn ten.",
-          "simplified": "弟弟快要十岁了。"
-        },
-        "prompt": "Complete the sentence using the calendars.",
-        "quiet": true,
-        "gaps": true
+          "english": "My little brother is about to turn ten."
+        }
       }
+    ],
+    "allowWords": [
+      "九"
     ]
   }
 }

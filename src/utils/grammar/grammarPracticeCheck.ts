@@ -1,5 +1,6 @@
 import type {
   ChatAnswer,
+  GrammarPractice,
   ChatBuildItem,
   PracticeRepair,
   PracticeSentence,
@@ -20,6 +21,10 @@ export interface PracticeVerdict {
   /** Placed tiles to mark wrong. */
   mark: string[];
 }
+
+/** A page made only of fill-the-blank items is shown as one scrolling exercise page (the Book 1 redo). */
+export const isExercisePage = (practice: GrammarPractice) =>
+  practice.items.length > 0 && practice.items.every((item) => item.kind === 'slot-build' && !item.gaps);
 
 export function practiceSlots(item: SlotBuildItem) {
   return item.lines.flatMap((line) => line.segments.flatMap((segment) => (segment.type === 'slot' ? [segment] : [])));

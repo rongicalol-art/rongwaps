@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readJson } from '../acceptance_helpers';
-import type { GrammarPractice, ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SameMeaningItem, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
+import type { ListenBuildItem, MatchPairsItem, OrderBuildItem, PracticeSentence, SameMeaningItem, SortGroupsItem, SpotFixItem, StoryOrderItem } from '../../src/types/models';
 import { checkMatchPair, checkSortCard, checkSpotFix } from '../../src/utils/grammar/grammarPracticePicks';
 import { checkOrderBuild, checkStoryOrder, misplacedPositions } from '../../src/utils/grammar/grammarPracticeSequence';
 import { validateGrammarPractice } from '../../src/utils/grammar/validateGrammarPractice';
@@ -119,10 +118,11 @@ test('order-build: needs at least one wrong tile, and a repeated tile is fine wh
   assert.ok(validate({ ...order, tiles: [...order.tiles, tile('不')] }).some((message) => /repeats/.test(message)), 'a word the answer uses once may not be doubled');
 });
 
+/** The former L8 好看 order-build item (before the Book 1 page rewrite), kept as an engine fixture. */
+const MOVIE_ITEM = {"id": "l8g1-p1", "source": "p.186 #1", "prompt": "You enjoy this film. Describe it with 好 or 難.", "quiet": true, "kind": "order-build", "tiles": [{"traditional": "很", "pinyin": "hěn"}, {"traditional": "看", "pinyin": "kàn"}, {"traditional": "難", "simplified": "难", "pinyin": "nán"}, {"traditional": "這部電影", "simplified": "这部电影", "pinyin": "zhè bù diànyǐng"}, {"traditional": "好", "pinyin": "hǎo"}, {"traditional": "我很喜歡", "pinyin": "wǒ hěn xǐhuan", "simplified": "我很喜欢"}], "accepted": [{"order": ["這部電影", "很", "好", "看", "我很喜歡"], "sentence": {"traditional": "這部電影很好看，我很喜歡。", "pinyin": "Zhè bù diànyǐng hěn hǎokàn, wǒ hěn xǐhuān.", "english": "This movie is very good; I like it a lot.", "simplified": "这部电影很好看，我很喜欢。"}}, {"order": ["這部電影", "好", "看"], "sentence": {"traditional": "這部電影好看。", "pinyin": "Zhè bù diànyǐng hǎokàn.", "english": "This movie is good to watch.", "simplified": "这部电影好看。"}}, {"order": ["這部電影", "很", "好", "看"], "sentence": {"traditional": "這部電影很好看。", "pinyin": "Zhè bù diànyǐng hěn hǎokàn.", "english": "This movie is very good to watch.", "simplified": "这部电影很好看。"}}], "repairs": [{"placed": ["難"], "mark": ["難"], "note": "You like watching the movie, so describe it with 好看 rather than 難看."}], "fallbackRepair": "Put 好 before 看 to describe a movie that is good to watch.", "successNote": "好看 means good to watch."} as OrderBuildItem;
+
 test('order-build: the movie screenshot answers its prompt without copying the whole book sentence', () => {
-  const pages = readJson<Record<string, GrammarPractice>>('content/grammar-practice/lessonEight.json');
-  const movie = pages['B1L08-G01-P185'].items.find((item) => item.id === 'l8g1-p1');
-  assert.ok(movie?.kind === 'order-build');
+  const movie = MOVIE_ITEM;
   for (const words of [['這部電影', '好', '看'], ['這部電影', '很', '好', '看'], movie.accepted[0].order]) {
     const result = checkOrderBuild(movie, words);
     assert.equal(result.correct, true);

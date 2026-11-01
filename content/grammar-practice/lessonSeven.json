@@ -7,160 +7,6 @@
         "id": "l7g1-b1",
         "source": "p.163 #1",
         "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "他"
-              },
-              {
-                "type": "slot",
-                "id": "g1",
-                "answers": [
-                  "從"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "美國",
-                "simplified": "美国"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": [
-                  "到"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "台灣",
-                "simplified": "台湾"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
-                "answers": [
-                  "來"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "。"
-              }
-            ],
-            "me": true
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "到",
-            "pinyin": "dào"
-          },
-          {
-            "traditional": "去",
-            "pinyin": "qù"
-          },
-          {
-            "traditional": "從",
-            "simplified": "从",
-            "pinyin": "cóng"
-          },
-          {
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái"
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "去"
-            ],
-            "mark": [
-              "去"
-            ],
-            "note": "The speaker’s location decides the direction: 來 is toward the speaker."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "來"
-            },
-            "note": "Put 來 after the destination when movement is toward the speaker."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "來"
-            },
-            "note": "Put 來 after the destination when movement is toward the speaker."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "來"
-            },
-            "note": "Put 來 after the destination when movement is toward the speaker."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          }
-        ],
-        "fallbackRepair": "從 + start, 到 + destination, then 來: 他從美國到台灣來。",
-        "result": {
-          "traditional": "他從美國到台灣來。",
-          "simplified": "他从美国到台湾来。",
-          "pinyin": "Tā cóng Měiguó dào Táiwān lái.",
-          "english": "He comes from the United States to Taiwan."
-        },
-        "prompt": "You are in Taiwan. Describe the picture.",
-        "quiet": true,
         "scene": {
           "type": "picture",
           "page": 163,
@@ -172,165 +18,108 @@
           ],
           "alt": "A flight arrow points from the United States toward Taiwan."
         },
-        "gaps": true
-      },
-      {
-        "id": "l7g1-b2",
-        "source": "p.163 #2",
-        "kind": "slot-build",
         "lines": [
           {
             "segments": [
-              {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
               {
                 "type": "text",
                 "traditional": "他"
               },
               {
                 "type": "slot",
-                "id": "g1",
+                "id": "s1",
                 "answers": [
                   "從"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "他家"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "美國"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g2",
+                "id": "s3",
                 "answers": [
                   "到"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "學校",
-                "simplified": "学校"
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "台灣"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g3",
+                "id": "s5",
                 "answers": [
-                  "去"
+                  "來"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "看我。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
-          {
-            "traditional": "到",
-            "pinyin": "dào"
-          },
-          {
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái"
-          },
           {
             "traditional": "從",
             "simplified": "从",
             "pinyin": "cóng"
           },
           {
+            "traditional": "美國",
+            "simplified": "美国",
+            "pinyin": "Měiguó"
+          },
+          {
+            "traditional": "到",
+            "pinyin": "dào"
+          },
+          {
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān"
+          },
+          {
             "traditional": "去",
             "pinyin": "qù"
+          },
+          {
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "來"
+              "去"
             ],
             "mark": [
-              "來"
+              "去"
             ],
-            "note": "The speaker’s location decides the direction: 去 is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "去"
-            },
-            "note": "Put 去 after the destination when movement is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "去"
-            },
-            "note": "Put 去 after the destination when movement is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "去"
-            },
-            "note": "Put 去 after the destination when movement is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
+            "note": "He is coming to see me (看我), so he moves toward the speaker: 來, not 去."
           }
         ],
-        "fallbackRepair": "從 + start, 到 + destination, then 去: 他從他家到學校去。",
+        "fallbackRepair": "Follow the arrow: 從 + where he starts, 到 + where he goes, then 來: 從美國到台灣來.",
         "result": {
-          "traditional": "他從他家到學校去。",
-          "simplified": "他从他家到学校去。",
-          "pinyin": "Tā cóng tā jiā dào xuéxiào qù.",
-          "english": "He goes from his home to school."
-        },
-        "prompt": "You are at his home. Describe the picture.",
-        "quiet": true,
+          "traditional": "他從美國到台灣來看我。",
+          "simplified": "他从美国到台湾来看我。",
+          "pinyin": "Tā cóng Měiguó dào Táiwān lái kàn wǒ.",
+          "english": "He is coming from the United States to Taiwan to see me."
+        }
+      },
+      {
+        "id": "l7g1-b2",
+        "source": "p.163 #2",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 163,
@@ -342,51 +131,44 @@
           ],
           "alt": "A man leaves a house and walks along an arrow toward a school."
         },
-        "gaps": true
-      },
-      {
-        "id": "l7g1-b3",
-        "source": "p.163 #3",
-        "kind": "slot-build",
         "lines": [
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
-                "traditional": "他"
+                "traditional": "我在家，他"
               },
               {
                 "type": "slot",
-                "id": "g1",
+                "id": "s1",
                 "answers": [
                   "從"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "餐廳",
-                "simplified": "餐厅"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "家"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g2",
+                "id": "s3",
                 "answers": [
                   "到"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "圖書館",
-                "simplified": "图书馆"
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "學校"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g3",
+                "id": "s5",
                 "answers": [
                   "去"
                 ]
@@ -395,14 +177,18 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ],
-            "me": true
+            ]
           }
         ],
         "tiles": [
           {
             "traditional": "到",
             "pinyin": "dào"
+          },
+          {
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào"
           },
           {
             "traditional": "來",
@@ -417,6 +203,10 @@
           {
             "traditional": "去",
             "pinyin": "qù"
+          },
+          {
+            "traditional": "家",
+            "pinyin": "jiā"
           }
         ],
         "repairs": [
@@ -427,81 +217,21 @@
             "mark": [
               "來"
             ],
-            "note": "The speaker’s location decides the direction: 去 is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "去"
-            },
-            "note": "Put 去 after the destination when movement is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "去"
-            },
-            "note": "Put 去 after the destination when movement is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "去"
-            },
-            "note": "Put 去 after the destination when movement is away from the speaker."
-          },
-          {
-            "slot": {
-              "id": "g2",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "到"
-            },
-            "note": "Put 到 directly before the destination."
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "從"
-            },
-            "note": "Put 從 directly before the starting place."
+            "note": "You are at home and he walks away from you, so the sentence ends in 去, not 來."
           }
         ],
-        "fallbackRepair": "從 + start, 到 + destination, then 去: 他從餐廳到圖書館去。",
+        "fallbackRepair": "Follow the arrow: 從 + the house, 到 + the school, then 去: 從家到學校去.",
         "result": {
-          "traditional": "他從餐廳到圖書館去。",
-          "simplified": "他从餐厅到图书馆去。",
-          "pinyin": "Tā cóng cāntīng dào túshūguǎn qù.",
-          "english": "He goes from the restaurant to the library."
-        },
-        "prompt": "You are at the restaurant. Describe the picture.",
-        "quiet": true,
+          "traditional": "我在家，他從家到學校去。",
+          "simplified": "我在家，他从家到学校去。",
+          "pinyin": "Wǒ zài jiā, tā cóng jiā dào xuéxiào qù.",
+          "english": "I am at home; he goes from home to school."
+        }
+      },
+      {
+        "id": "l7g1-b3",
+        "source": "p.163 #3",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 163,
@@ -513,67 +243,103 @@
           ],
           "alt": "A man follows an arrow from the restaurant toward the library."
         },
-        "gaps": true
-      },
-      {
-        "id": "l7g1-o1",
-        "source": "own",
-        "prompt": "You are at school. Start the sentence.",
-        "quiet": true,
-        "kind": "order-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "從"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "餐廳"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "到"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "圖書館"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "看書。",
+                "simplified": "看书。"
+              }
+            ]
+          }
+        ],
         "tiles": [
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
+          },
           {
             "traditional": "從",
             "simplified": "从",
             "pinyin": "cóng"
           },
           {
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái"
+            "traditional": "去",
+            "pinyin": "qù"
           },
           {
-            "traditional": "我",
-            "pinyin": "wǒ"
-          },
-          {
-            "traditional": "飯店",
-            "simplified": "饭店",
-            "pinyin": "fàndiàn"
+            "traditional": "餐廳",
+            "simplified": "餐厅",
+            "pinyin": "cāntīng"
           },
           {
             "traditional": "到",
             "pinyin": "dào"
           }
         ],
-        "accepted": [
-          {
-            "order": [
-              "我",
-              "從",
-              "飯店",
-              "來"
-            ],
-            "sentence": {
-              "traditional": "我從飯店來。",
-              "simplified": "我从饭店来。",
-              "pinyin": "Wǒ cóng fàndiàn lái.",
-              "english": "I come from the hotel."
-            }
-          }
-        ],
         "repairs": [
           {
             "placed": [
-              "到"
+              "在"
             ],
             "mark": [
-              "到"
+              "在"
             ],
-            "note": "The hotel is the starting point, so put 從 before 飯店."
+            "note": "在 only says where someone is; for a trip, 從 marks the start and 到 the place he goes."
           }
         ],
-        "fallbackRepair": "Put 從 before the starting place and 來 after it."
+        "fallbackRepair": "Follow the arrow: 從餐廳 (start), 到圖書館 (goal), then 去 and why he goes.",
+        "result": {
+          "traditional": "他從餐廳到圖書館去看書。",
+          "simplified": "他从餐厅到图书馆去看书。",
+          "pinyin": "Tā cóng cāntīng dào túshūguǎn qù kàn shū.",
+          "english": "He goes from the restaurant to the library to read."
+        }
       }
     ]
   },
@@ -584,9 +350,60 @@
       {
         "id": "l7g2-b1",
         "source": "p.164 #1",
-        "prompt": "You are at school. Ask how your friend gets home.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我們在學校，",
+                "simplified": "我们在学校，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "你"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "怎麼",
+                  "到"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "到",
+                  "他家"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "他家",
+                  "怎麼"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
             "traditional": "怎麼",
@@ -594,43 +411,25 @@
             "pinyin": "zěnme"
           },
           {
-            "traditional": "他家",
-            "simplified": "他家",
-            "pinyin": "tā jiā"
-          },
-          {
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái"
+            "traditional": "到",
+            "pinyin": "dào"
           },
           {
             "traditional": "你",
             "pinyin": "nǐ"
           },
           {
-            "traditional": "到",
-            "pinyin": "dào"
+            "traditional": "他家",
+            "pinyin": "tā jiā"
           },
           {
             "traditional": "去",
             "pinyin": "qù"
-          }
-        ],
-        "accepted": [
+          },
           {
-            "order": [
-              "你",
-              "怎麼",
-              "到",
-              "他家",
-              "去"
-            ],
-            "sentence": {
-              "traditional": "你怎麼到他家去？",
-              "simplified": "你怎么到他家去？",
-              "pinyin": "Nǐ zěnme dào tā jiā qù?",
-              "english": "How do you get to his place?"
-            }
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái"
           }
         ],
         "repairs": [
@@ -641,22 +440,96 @@
             "mark": [
               "來"
             ],
-            "note": "You are at school and his home is elsewhere, so finish with 去."
+            "note": "You are both at school, away from his place, so getting there ends in 去, not 來."
           }
         ],
-        "fallbackRepair": "Put 怎麼 before 到他家去."
+        "fallbackRepair": "Who, then how (怎麼), then 到 + place + 去: 你怎麼到他家去？",
+        "result": {
+          "traditional": "我們在學校，你怎麼到他家去？",
+          "simplified": "我们在学校，你怎么到他家去？",
+          "pinyin": "Wǒmen zài xuéxiào, nǐ zěnme dào tā jiā qù?",
+          "english": "We are at school. How do you get to his place?"
+        },
+        "alternatives": [
+          {
+            "traditional": "我們在學校，你到他家怎麼去？",
+            "simplified": "我们在学校，你到他家怎么去？",
+            "pinyin": "Wǒmen zài xuéxiào, nǐ dào tā jiā zěnme qù?",
+            "english": "We are at school. How do you get to his place?"
+          }
+        ]
       },
       {
         "id": "l7g2-b2",
         "source": "p.164 #2",
-        "prompt": "You are at school. Say how he gets here.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "每天"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "坐公車"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "到"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "學校"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "來"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
+          {
+            "traditional": "到",
+            "pinyin": "dào"
+          },
           {
             "traditional": "坐公車",
             "simplified": "坐公车",
             "pinyin": "zuò gōngchē"
+          },
+          {
+            "traditional": "每天",
+            "pinyin": "měi tiān"
+          },
+          {
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái"
           },
           {
             "traditional": "學校",
@@ -664,268 +537,144 @@
             "pinyin": "xuéxiào"
           },
           {
-            "traditional": "去",
-            "pinyin": "qù"
-          },
-          {
-            "traditional": "他每天",
-            "pinyin": "tā měitiān"
-          },
-          {
-            "traditional": "到",
-            "pinyin": "dào"
-          },
-          {
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "他每天",
-              "坐公車",
-              "到",
-              "學校",
-              "來"
-            ],
-            "sentence": {
-              "traditional": "他每天坐公車到學校來。",
-              "simplified": "他每天坐公车到学校来。",
-              "pinyin": "Tā měi tiān zuò gōngchē dào xuéxiào lái.",
-              "english": "He comes to school by bus every day."
-            }
+            "traditional": "騎公車",
+            "simplified": "骑公车",
+            "pinyin": "qí gōngchē"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "去"
+              "騎公車"
             ],
             "mark": [
-              "去"
+              "騎公車"
             ],
-            "note": "You are at school, so movement toward you ends in 來."
+            "note": "騎 is for a bike you sit astride (騎腳踏車); a bus takes 坐: 坐公車."
           }
         ],
-        "fallbackRepair": "Put 坐公車 before 到學校來."
+        "fallbackRepair": "When, then how (坐公車), then 到學校來: 他每天坐公車到學校來.",
+        "result": {
+          "traditional": "他每天坐公車到學校來。",
+          "simplified": "他每天坐公车到学校来。",
+          "pinyin": "Tā měi tiān zuò gōngchē dào xuéxiào lái.",
+          "english": "He comes to school by bus every day."
+        }
       },
       {
         "id": "l7g2-b3",
         "source": "p.164 #3",
-        "prompt": "The hotel is far. Say how you will get there.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "不要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "走路"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "到"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "那家飯店"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s5",
+                "answers": [
+                  "去"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，太遠了。",
+                "simplified": "，太远了。"
+              }
+            ]
+          }
+        ],
         "tiles": [
+          {
+            "traditional": "不要",
+            "pinyin": "bú yào"
+          },
+          {
+            "traditional": "那家飯店",
+            "simplified": "那家饭店",
+            "pinyin": "nà jiā fàndiàn"
+          },
           {
             "traditional": "走路",
             "pinyin": "zǒulù"
           },
           {
-            "traditional": "那家飯店",
-            "pinyin": "nà jiā fàndiàn",
-            "simplified": "那家饭店"
-          },
-          {
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái"
-          },
-          {
-            "traditional": "我不要",
-            "pinyin": "wǒ bú yào"
+            "traditional": "去",
+            "pinyin": "qù"
           },
           {
             "traditional": "到",
             "pinyin": "dào"
           },
           {
-            "traditional": "去",
-            "pinyin": "qù"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我不要",
-              "走路",
-              "到",
-              "那家飯店",
-              "去"
-            ],
-            "sentence": {
-              "traditional": "我不要走路到那家飯店去。",
-              "simplified": "我不要走路到那家饭店去。",
-              "pinyin": "Wǒ bú yào zǒulù dào nà jiā fàndiàn qù.",
-              "english": "I don't want to walk to that hotel."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "來"
-            ],
-            "mark": [
-              "來"
-            ],
-            "note": "You are not at the hotel, so movement there ends in 去."
-          }
-        ],
-        "fallbackRepair": "Put 走路 before the destination and 去 at the end."
-      },
-      {
-        "id": "l7g2-o1",
-        "source": "own",
-        "prompt": "You came on your own bikes. Say how you came.",
-        "quiet": true,
-        "kind": "order-build",
-        "tiles": [
-          {
-            "traditional": "騎",
-            "simplified": "骑",
-            "pinyin": "qí"
-          },
-          {
             "traditional": "來",
             "simplified": "来",
             "pinyin": "lái"
-          },
-          {
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen"
-          },
-          {
-            "traditional": "腳踏車",
-            "simplified": "脚踏车",
-            "pinyin": "jiǎotàchē"
-          },
-          {
-            "traditional": "坐",
-            "pinyin": "zuò"
           }
         ],
-        "accepted": [
+        "repairs": [
           {
-            "order": [
-              "我們",
-              "騎",
-              "腳踏車",
+            "placed": [
               "來"
             ],
-            "sentence": {
-              "traditional": "我們騎腳踏車來。",
-              "simplified": "我们骑脚踏车来。",
-              "pinyin": "Wǒmen qí jiǎotàchē lái.",
-              "english": "We come by bicycle."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "坐"
-            ],
             "mark": [
-              "坐"
+              "來"
             ],
-            "note": "With your own bicycles, the action is 騎 rather than 坐."
+            "note": "The hotel is too far from you, so you would be going away from where you are: 去, not 來."
           }
         ],
-        "fallbackRepair": "Put 騎 before 腳踏車 and 來 after the activity."
-      },
-      {
-        "id": "l7g2-own-listen",
-        "source": "own",
-        "kind": "listen-build",
-        "prompt": "Tap what you hear.",
-        "clip": {
-          "reading": "B1L07-R03",
-          "line": 3,
-          "file": "B1-07-3-1.mp3",
-          "start": 43.87,
-          "end": 46.35
-        },
-        "tiles": [
-          {
-            "traditional": "都",
-            "pinyin": "dōu"
-          },
-          {
-            "traditional": "走路",
-            "pinyin": "zǒulù"
-          },
-          {
-            "traditional": "去",
-            "pinyin": "qù"
-          },
-          {
-            "traditional": "可以",
-            "pinyin": "kěyǐ"
-          },
-          {
-            "traditional": "坐捷運",
-            "simplified": "坐捷运",
-            "pinyin": "zuò jiéyùn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "坐捷運",
-              "去",
-              "都",
-              "可以"
-            ],
-            "sentence": {
-              "traditional": "坐捷運去都可以。",
-              "simplified": "坐捷运去都可以。",
-              "pinyin": "Zuò jiéyùn qù dōu kěyǐ.",
-              "english": "Going by MRT is fine."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "走路"
-            ],
-            "title": "That is not what you heard",
-            "note": "The speaker said 坐捷運 (by MRT), not 走路 (on foot)."
-          },
-          {
-            "before": [
-              "去",
-              "坐捷運"
-            ],
-            "note": "How you go comes before 去."
-          },
-          {
-            "before": [
-              "可以",
-              "都"
-            ],
-            "note": "都 comes before 可以."
-          },
-          {
-            "notFirst": "坐捷運",
-            "note": "The speaker starts with how to go."
-          }
-        ],
-        "fallbackRepair": "Listen again: how to go, the word for go, then the ending."
+        "fallbackRepair": "不要 comes first, then how (走路), then 到 + place + 去: 我不要走路到那家飯店去.",
+        "result": {
+          "traditional": "我不要走路到那家飯店去，太遠了。",
+          "simplified": "我不要走路到那家饭店去，太远了。",
+          "pinyin": "Wǒ bú yào zǒulù dào nà jiā fàndiàn qù, tài yuǎn le.",
+          "english": "I don’t want to walk to that hotel; it’s too far."
+        }
       }
     ]
   },
   "B1L07-G03-P162": {
     "bookPage": 166,
     "title": "Complete the following sentences.",
+    "allowWords": [
+      "懂"
+    ],
     "items": [
       {
         "id": "l7g3-b1",
         "source": "p.166 #1",
-        "prompt": "Compare the temperatures.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 166,
@@ -937,20 +686,47 @@
           ],
           "alt": "Yesterday was 25°C; today is 30°C."
         },
-        "kind": "order-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天天氣",
+                "simplified": "今天天气"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "熱"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "天氣",
-            "simplified": "天气",
-            "pinyin": "tiānqì"
+            "traditional": "冷",
+            "pinyin": "lěng"
           },
           {
             "traditional": "了",
             "pinyin": "le"
           },
           {
-            "traditional": "今天",
-            "pinyin": "jīntiān"
+            "traditional": "是",
+            "pinyin": "shì"
           },
           {
             "traditional": "熱",
@@ -958,43 +734,52 @@
             "pinyin": "rè"
           },
           {
-            "traditional": "很",
-            "pinyin": "hěn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "今天",
-              "天氣",
-              "熱",
-              "了"
-            ],
-            "sentence": {
-              "traditional": "今天天氣熱了。",
-              "simplified": "今天天气热了。",
-              "pinyin": "Jīntiān tiānqì rè le.",
-              "english": "The weather has gotten hot today."
-            }
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "很"
+              "冷"
             ],
             "mark": [
-              "很"
+              "冷"
             ],
-            "note": "The task asks for the change to hotter weather, so mark the change with 了."
+            "note": "Yesterday 25°C, today 30°C: it got hotter, so 熱, not 冷."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "熱 is a state verb; it never takes 是."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "This is a statement about the picture, not a question; a change ends in 了."
           }
         ],
-        "fallbackRepair": "Put 了 after 熱 to show the weather has changed."
+        "fallbackRepair": "The quality first, then 了 at the very end: 熱了.",
+        "result": {
+          "traditional": "今天天氣熱了。",
+          "simplified": "今天天气热了。",
+          "pinyin": "Jīntiān tiānqì rè le.",
+          "english": "It has gotten hot today."
+        }
       },
       {
         "id": "l7g3-b2",
         "source": "p.166 #2",
-        "prompt": "Compare the prices.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 166,
@@ -1006,12 +791,43 @@
           ],
           "alt": "A bowl costs $80 in 2016 and $120 now."
         },
-        "kind": "order-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "現在東西都",
+                "simplified": "现在东西都"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "貴"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "東西",
-            "simplified": "东西",
-            "pinyin": "dōngxi"
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "便宜",
+            "pinyin": "piányi"
           },
           {
             "traditional": "貴",
@@ -1019,52 +835,51 @@
             "pinyin": "guì"
           },
           {
-            "traditional": "很",
-            "pinyin": "hěn"
+            "traditional": "的",
+            "pinyin": "de"
           },
           {
-            "traditional": "現在",
-            "simplified": "现在",
-            "pinyin": "xiànzài"
-          },
-          {
-            "traditional": "都",
-            "pinyin": "dōu"
-          },
-          {
-            "traditional": "了",
-            "pinyin": "le"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "現在",
-              "東西",
-              "都",
-              "貴",
-              "了"
-            ],
-            "sentence": {
-              "traditional": "現在東西都貴了。",
-              "simplified": "现在东西都贵了。",
-              "pinyin": "Xiànzài dōngxi dōu guì le.",
-              "english": "Now things have gotten expensive."
-            }
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "很"
+              "便宜"
             ],
             "mark": [
-              "很"
+              "便宜"
             ],
-            "note": "The task asks for prices becoming higher, so mark the change with 了."
+            "note": "The price went from $80 to $120, so things got more expensive: 貴, not 便宜."
+          },
+          {
+            "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "貴 needs no 的 here; mark the change with 了 at the end."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "This is a statement about the picture, not a question; a change ends in 了."
           }
         ],
-        "fallbackRepair": "Put 了 after 貴 to show that prices have changed."
+        "fallbackRepair": "The quality first, then 了 at the very end: 貴了.",
+        "result": {
+          "traditional": "現在東西都貴了。",
+          "simplified": "现在东西都贵了。",
+          "pinyin": "Xiànzài dōngxi dōu guì le.",
+          "english": "Everything has gotten expensive now."
+        }
       },
       {
         "id": "l7g3-b3",
@@ -1072,30 +887,46 @@
         "kind": "slot-build",
         "lines": [
           {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "不可以說「吃飯得很快」，應該說「吃飯吃得很快」。",
-                "simplified": "不可以说「吃饭得很快」，应该说「吃饭吃得很快」。"
-              }
-            ],
             "speaker": {
               "traditional": "老師",
               "simplified": "老师"
-            }
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不可以說「吃飯得很快」，應該說「吃飯吃得很快」，你們",
+                "simplified": "不可以说「吃饭得很快」，应该说「吃饭吃得很快」，你们"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "懂"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "了嗎？",
+                "simplified": "了吗？"
+              }
+            ]
           },
           {
+            "speaker": {
+              "traditional": "學生",
+              "simplified": "学生"
+            },
             "segments": [
               {
                 "type": "slot",
-                "id": "state",
+                "id": "s2",
                 "answers": [
                   "懂"
                 ]
               },
               {
                 "type": "slot",
-                "id": "le",
+                "id": "s3",
                 "answers": [
                   "了"
                 ]
@@ -1105,12 +936,7 @@
                 "traditional": "！謝謝老師。",
                 "simplified": "！谢谢老师。"
               }
-            ],
-            "speaker": {
-              "traditional": "學生",
-              "simplified": "学生"
-            },
-            "me": true
+            ]
           }
         ],
         "tiles": [
@@ -1127,8 +953,17 @@
             "pinyin": "le"
           },
           {
-            "traditional": "很",
-            "pinyin": "hěn"
+            "traditional": "懂",
+            "pinyin": "dǒng"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
@@ -1139,52 +974,146 @@
             "mark": [
               "不"
             ],
-            "note": "You can explain it now, so you do understand: 懂, not 不懂."
+            "note": "The student thanks the teacher, so they do understand now: no 不."
           },
           {
             "placed": [
-              "很"
+              "嗎"
             ],
             "mark": [
-              "很"
+              "嗎"
             ],
-            "note": "很 only says how much; a change needs 了 after the word."
-          },
-          {
-            "slot": {
-              "id": "state",
-              "tile": "了"
-            },
-            "note": "了 comes after the word it changes, not before: 懂了."
-          },
-          {
-            "slot": {
-              "id": "le",
-              "tile": "懂"
-            },
-            "note": "了 closes it: 懂了."
+            "note": "The teacher’s question already ends in 嗎, and the student’s reply needs none."
           }
         ],
-        "fallbackRepair": "A change takes the word, then 了: 懂了.",
+        "fallbackRepair": "懂 comes before 了: 懂了.",
         "result": {
-          "traditional": "不可以說「吃飯得很快」，應該說「吃飯吃得很快」。懂了！謝謝老師。",
-          "simplified": "不可以说「吃饭得很快」，应该说「吃饭吃得很快」。懂了！谢谢老师。",
-          "pinyin": "Bù kěyǐ shuō “chīfàn de hěn kuài”, yīnggāi shuō “chīfàn chī de hěn kuài”. Dǒng le! Xièxie lǎoshī.",
-          "english": "You cannot say “吃飯得很快”; you should say “吃飯吃得很快”. We understand now! Thank you, teacher."
-        },
-        "prompt": "Complete the reply.",
-        "quiet": true,
-        "glossary": [
+          "traditional": "不可以說「吃飯得很快」，應該說「吃飯吃得很快」，你們懂了嗎？懂了！謝謝老師。",
+          "simplified": "不可以说「吃饭得很快」，应该说「吃饭吃得很快」，你们懂了吗？懂了！谢谢老师。",
+          "pinyin": "Bù kěyǐ shuō “chīfàn de hěn kuài”, yīnggāi shuō “chīfàn chī de hěn kuài”, nǐmen dǒng le ma? Dǒng le! Xièxie lǎoshī.",
+          "english": "You can’t say “chīfàn de hěn kuài”; you should say “chīfàn chī de hěn kuài”. Do you understand now? I get it now! Thank you, teacher."
+        }
+      },
+      {
+        "id": "l7g3-o1",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
           {
-            "traditional": "懂",
-            "pinyin": "dǒng",
-            "english": "to understand"
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要喝咖啡嗎？",
+                "simplified": "你要喝咖啡吗？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "不要，謝謝。我",
+                "simplified": "不要，谢谢。我"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "睡覺"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
           }
-        ]
+        ],
+        "tiles": [
+          {
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "要",
+            "pinyin": "yào"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "喝"
+            ],
+            "mark": [
+              "喝"
+            ],
+            "note": "B just said no to coffee, so B isn’t going to drink; B is going to sleep."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "睡覺 is an action; it takes no 是."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "B is answering, not asking; the new plan ends in 了."
+          }
+        ],
+        "fallbackRepair": "要 + the action, then 了 at the very end: 我要睡覺了.",
+        "result": {
+          "traditional": "不要，謝謝。我要睡覺了。",
+          "simplified": "不要，谢谢。我要睡觉了。",
+          "pinyin": "Bú yào, xièxie. Wǒ yào shuìjiào le.",
+          "english": "No, thanks. I’m going to bed now."
+        }
       }
-    ],
-    "allowWords": [
-      "懂"
     ]
   },
   "B1L07-G04-P170": {
@@ -1194,132 +1123,74 @@
       {
         "id": "l7g4-b1",
         "source": "p.171 #1",
-        "prompt": "You took the MRT first. Complete the sentence.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "坐"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "捷運"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很快，也很舒服，我不想走路去。"
+              }
+            ]
+          }
+        ],
         "tiles": [
           {
-            "traditional": "很快",
-            "pinyin": "hěn kuài"
+            "traditional": "騎",
+            "simplified": "骑",
+            "pinyin": "qí"
           },
           {
-            "traditional": "我不想",
-            "pinyin": "wǒ bù xiǎng"
-          },
-          {
-            "traditional": "坐捷運的",
-            "pinyin": "zuò jiéyùn de",
-            "simplified": "坐捷运的"
-          },
-          {
-            "traditional": "坐捷運",
-            "pinyin": "zuò jiéyùn"
-          },
-          {
-            "traditional": "也很舒服",
-            "pinyin": "yě hěn shūfu"
-          },
-          {
-            "traditional": "走路去",
-            "simplified": "走路去",
-            "pinyin": "zǒulù qù"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "坐捷運",
-              "很快",
-              "也很舒服",
-              "我不想",
-              "走路去"
-            ],
-            "sentence": {
-              "traditional": "坐捷運很快，也很舒服，我不想走路去。",
-              "pinyin": "Zuò jiéyùn hěn kuài, yě hěn shūfu, wǒ bù xiǎng zǒulù qù.",
-              "english": "Taking the MRT is fast and comfortable too; I do not want to walk there.",
-              "simplified": "坐捷运很快，也很舒服，我不想走路去。"
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "坐捷運的"
-            ],
-            "mark": [
-              "坐捷運的"
-            ],
-            "note": "坐捷運 is the activity being described; no 的 belongs before 很快."
-          }
-        ],
-        "fallbackRepair": "Put the activity 坐捷運 before its descriptions 很快 and 也很舒服。"
-      },
-      {
-        "id": "l7g4-b2",
-        "source": "p.171 #2",
-        "prompt": "There is a supermarket near your home. Complete the sentence.",
-        "quiet": true,
-        "kind": "order-build",
-        "tiles": [
-          {
-            "traditional": "有一家",
-            "pinyin": "yǒu yī jiā"
-          },
-          {
-            "traditional": "買東西",
-            "simplified": "买东西",
-            "pinyin": "mǎi dōngxi"
+            "traditional": "捷運",
+            "simplified": "捷运",
+            "pinyin": "jiéyùn"
           },
           {
             "traditional": "的",
             "pinyin": "de"
           },
           {
-            "traditional": "我家附近",
-            "pinyin": "wǒ jiā fùjìn"
+            "traditional": "坐",
+            "pinyin": "zuò"
           },
           {
-            "traditional": "超級市場",
-            "simplified": "超级市场",
-            "pinyin": "chāojíshìchǎng"
-          },
-          {
-            "traditional": "很方便",
-            "simplified": "很方便",
-            "pinyin": "hěn fāngbiàn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "我家附近",
-              "有一家",
-              "超級市場",
-              "買東西",
-              "很方便"
-            ],
-            "sentence": {
-              "traditional": "我家附近有一家超級市場，買東西很方便。",
-              "simplified": "我家附近有一家超级市场，买东西很方便。",
-              "pinyin": "Wǒ jiā fùjìn yǒu yì jiā chāojíshìchǎng, mǎi dōngxi hěn fāngbiàn.",
-              "english": "There is a supermarket near my home, so shopping is convenient."
-            }
-          },
-          {
-            "order": [
-              "買東西",
-              "很方便"
-            ],
-            "sentence": {
-              "traditional": "買東西很方便。",
-              "pinyin": "Mǎi dōngxi hěn fāngbiàn.",
-              "english": "Shopping is convenient.",
-              "simplified": "买东西很方便。"
-            }
+            "traditional": "走路",
+            "pinyin": "zǒulù"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "騎"
+            ],
+            "mark": [
+              "騎"
+            ],
+            "note": "騎 is for a bike or scooter; the MRT takes 坐."
+          },
+          {
+            "placed": [
+              "走路"
+            ],
+            "mark": [
+              "走路"
+            ],
+            "note": "The sentence ends “I don’t want to walk”, so walking can’t be the fast, comfortable way."
+          },
           {
             "placed": [
               "的"
@@ -1327,15 +1198,115 @@
             "mark": [
               "的"
             ],
-            "note": "買東西 is the activity being described; no 的 belongs before 很方便."
+            "note": "The activity itself (verb + object) is the topic: no 的."
           }
         ],
-        "fallbackRepair": "Put 買東西 before 很方便 to say shopping is convenient."
+        "fallbackRepair": "The verb first, then what you take: 坐捷運.",
+        "result": {
+          "traditional": "坐捷運很快，也很舒服，我不想走路去。",
+          "simplified": "坐捷运很快，也很舒服，我不想走路去。",
+          "pinyin": "Zuò jiéyùn hěn kuài, yě hěn shūfu, wǒ bù xiǎng zǒulù qù.",
+          "english": "Taking the MRT is fast and also comfortable; I don’t want to walk there."
+        }
+      },
+      {
+        "id": "l7g4-b2",
+        "source": "p.171 #2",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我家附近有一家超級市場，",
+                "simplified": "我家附近有一家超级市场，"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "買"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "東西"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "很方便。"
+              }
+            ]
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "寄",
+            "pinyin": "jì"
+          },
+          {
+            "traditional": "東西",
+            "simplified": "东西",
+            "pinyin": "dōngxi"
+          },
+          {
+            "traditional": "坐",
+            "pinyin": "zuò"
+          },
+          {
+            "traditional": "信",
+            "pinyin": "xìn"
+          },
+          {
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi"
+          }
+        ],
+        "repairs": [
+          {
+            "placed": [
+              "寄"
+            ],
+            "mark": [
+              "寄"
+            ],
+            "note": "You mail things at a post office; a supermarket is for buying: 買."
+          },
+          {
+            "placed": [
+              "信"
+            ],
+            "mark": [
+              "信"
+            ],
+            "note": "A supermarket sells things, not letters: 買東西."
+          },
+          {
+            "placed": [
+              "坐"
+            ],
+            "mark": [
+              "坐"
+            ],
+            "note": "坐 takes a vehicle; here the topic is what you do at a supermarket."
+          }
+        ],
+        "fallbackRepair": "The verb first, then its object: 買東西.",
+        "result": {
+          "traditional": "我家附近有一家超級市場，買東西很方便。",
+          "simplified": "我家附近有一家超级市场，买东西很方便。",
+          "pinyin": "Wǒ jiā fùjìn yǒu yì jiā chāojí shìchǎng, mǎi dōngxi hěn fāngbiàn.",
+          "english": "There is a supermarket near my home, so shopping is convenient."
+        }
       },
       {
         "id": "l7g4-b3",
         "source": "p.171 #3",
-        "prompt": "Use the picture to compare what you can do.",
+        "kind": "slot-build",
         "scene": {
           "type": "picture",
           "page": 171,
@@ -1347,127 +1318,115 @@
           ],
           "alt": "Basketball is shown on the left; tennis with a racket and net is shown on the right."
         },
-        "kind": "order-build",
-        "sub": "You learned basketball; you never learned tennis.",
-        "tiles": [
+        "lines": [
           {
-            "traditional": "我會",
-            "simplified": "我会",
-            "pinyin": "wǒ huì"
-          },
-          {
-            "traditional": "我不會",
-            "pinyin": "wǒ bú huì",
-            "simplified": "我不会"
-          },
-          {
-            "traditional": "打籃球",
-            "simplified": "打篮球",
-            "pinyin": "dǎ lánqiú"
-          },
-          {
-            "traditional": "打網球",
-            "simplified": "打网球",
-            "pinyin": "dǎ wǎngqiú"
-          },
-          {
-            "traditional": "和",
-            "pinyin": "hé"
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "籃球",
+                  "網球"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我會，",
+                "simplified": "我会，"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "網球",
+                  "籃球"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "我不會。",
+                "simplified": "我不会。"
+              }
+            ]
           }
         ],
-        "accepted": [
+        "tiles": [
           {
-            "order": [
-              "打籃球",
-              "我會",
-              "打網球",
-              "我不會"
-            ],
-            "sentence": {
-              "traditional": "打籃球我會，打網球我不會。",
-              "simplified": "打篮球我会，打网球我不会。",
-              "pinyin": "Dǎ lánqiú wǒ huì, dǎ wǎngqiú wǒ bú huì.",
-              "english": "I know how to play basketball, but I do not know how to play tennis."
-            }
+            "traditional": "踢",
+            "pinyin": "tī"
+          },
+          {
+            "traditional": "打",
+            "pinyin": "dǎ"
+          },
+          {
+            "traditional": "網球",
+            "simplified": "网球",
+            "pinyin": "wǎngqiú"
+          },
+          {
+            "traditional": "踢",
+            "pinyin": "tī"
+          },
+          {
+            "traditional": "籃球",
+            "simplified": "篮球",
+            "pinyin": "lánqiú"
+          },
+          {
+            "traditional": "打",
+            "pinyin": "dǎ"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "和"
+              "踢"
             ],
             "mark": [
-              "和"
+              "踢"
             ],
-            "note": "These activities have different comments; 和 cannot join them under one comment."
+            "note": "踢 is for soccer; basketball and tennis take 打."
           }
         ],
-        "fallbackRepair": "Put each activity before its own comment: 打籃球我會，打網球我不會。"
-      },
-      {
-        "id": "l7g4-o1",
-        "source": "own",
-        "prompt": "Make playing soccer the topic.",
-        "quiet": true,
-        "kind": "order-build",
-        "tiles": [
+        "fallbackRepair": "Each topic is a verb + ball game, before its comment: 打籃球我會.",
+        "result": {
+          "traditional": "打籃球我會，打網球我不會。",
+          "simplified": "打篮球我会，打网球我不会。",
+          "pinyin": "Dǎ lánqiú wǒ huì, dǎ wǎngqiú wǒ bú huì.",
+          "english": "Basketball, I can play; tennis, I can’t."
+        },
+        "alternatives": [
           {
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen"
-          },
-          {
-            "traditional": "很喜歡",
-            "simplified": "很喜欢",
-            "pinyin": "hěn xǐhuan"
-          },
-          {
-            "traditional": "踢足球",
-            "pinyin": "tī zúqiú"
-          },
-          {
-            "traditional": "都",
-            "pinyin": "dōu"
-          },
-          {
-            "traditional": "和",
-            "pinyin": "hé"
+            "traditional": "打網球我會，打籃球我不會。",
+            "simplified": "打网球我会，打篮球我不会。",
+            "pinyin": "Dǎ wǎngqiú wǒ huì, dǎ lánqiú wǒ bú huì.",
+            "english": "Tennis, I can play; basketball, I can’t."
           }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "踢足球",
-              "我們",
-              "都",
-              "很喜歡"
-            ],
-            "sentence": {
-              "traditional": "踢足球，我們都很喜歡。",
-              "simplified": "踢足球，我们都很喜欢。",
-              "pinyin": "Tī zúqiú, wǒmen dōu hěn xǐhuan.",
-              "english": "Playing soccer is something we all like very much."
-            }
-          }
-        ],
-        "repairs": [
-          {
-            "placed": [
-              "和"
-            ],
-            "mark": [
-              "和"
-            ],
-            "note": "There is one activity as the topic; 和 is not needed."
-          }
-        ],
-        "fallbackRepair": "Start with 踢足球, then say 我們都很喜歡."
+        ]
       }
     ]
   },
   "B1L07-G05-P172": {
     "bookPage": 172,
     "title": "Complete the following sentences with 又……又…….",
+    "allowWords": [
+      "常常"
+    ],
     "items": [
       {
         "id": "l7g5-b1",
@@ -1475,95 +1434,102 @@
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
                 "traditional": "你喜歡夏天嗎？",
                 "simplified": "你喜欢夏天吗？"
               }
-            ],
-            "speaker": {
-              "traditional": "A"
-            }
+            ]
           },
           {
+            "speaker": {
+              "traditional": "B"
+            },
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
-                "traditional": "這裡的",
-                "simplified": "这里的"
+                "traditional": "這裡的夏天",
+                "simplified": "这里的夏天"
               },
               {
                 "type": "slot",
-                "id": "g1",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "夏天",
-                "simplified": "夏天"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
+                "id": "s1",
                 "answers": [
                   "又"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "熱",
-                "simplified": "热"
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "熱",
+                  "不舒服"
+                ]
               },
               {
                 "type": "slot",
-                "id": "g3",
+                "id": "s3",
                 "answers": [
                   "又"
                 ]
               },
               {
-                "type": "text",
-                "traditional": "不舒服",
-                "simplified": "不舒服"
-              },
-              {
                 "type": "slot",
-                "id": "g4",
-                "answers": []
+                "id": "s4",
+                "answers": [
+                  "不舒服",
+                  "熱"
+                ]
               },
               {
                 "type": "text",
                 "traditional": "，我不喜歡。",
                 "simplified": "，我不喜欢。"
               }
-            ],
-            "speaker": {
-              "traditional": "B"
-            },
-            "me": true
+            ]
           }
         ],
         "tiles": [
           {
-            "traditional": "又",
-            "pinyin": "yòu"
+            "traditional": "舒服",
+            "pinyin": "shūfu"
           },
           {
             "traditional": "又",
             "pinyin": "yòu"
+          },
+          {
+            "traditional": "不舒服",
+            "pinyin": "bù shūfu"
           },
           {
             "traditional": "很",
             "pinyin": "hěn"
+          },
+          {
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè"
+          },
+          {
+            "traditional": "又",
+            "pinyin": "yòu"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "舒服"
+            ],
+            "mark": [
+              "舒服"
+            ],
+            "note": "B doesn’t like it, so both qualities are bad: 不舒服, not 舒服."
+          },
           {
             "placed": [
               "很"
@@ -1571,40 +1537,24 @@
             "mark": [
               "很"
             ],
-            "note": "又…又… takes no 很: 又熱又不舒服."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 這裡的夏天又熱又不舒服，我不喜歡。"
-          },
-          {
-            "slot": {
-              "id": "g1",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 這裡的夏天又熱又不舒服，我不喜歡。"
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 這裡的夏天又熱又不舒服，我不喜歡。"
+            "note": "In 又……又……, each quality takes its own 又, not 很."
           }
         ],
-        "fallbackRepair": "又 goes before each quality: 又…又….",
+        "fallbackRepair": "Put 又 before each quality: 又熱又不舒服.",
         "result": {
-          "traditional": "你喜歡夏天嗎？這裡的夏天又熱又不舒服，我不喜歡。",
-          "simplified": "你喜欢夏天吗？这里的夏天又热又不舒服，我不喜欢。",
-          "pinyin": "Nǐ xǐhuan xiàtiān ma? Zhèlǐ de xiàtiān yòu rè yòu bù shūfu, wǒ bù xǐhuan.",
-          "english": "Do you like summer? Summer here is both hot and uncomfortable; I do not like it."
+          "traditional": "這裡的夏天又熱又不舒服，我不喜歡。",
+          "simplified": "这里的夏天又热又不舒服，我不喜欢。",
+          "pinyin": "Zhèlǐ de xiàtiān yòu rè yòu bù shūfu, wǒ bù xǐhuan.",
+          "english": "Summer here is both hot and uncomfortable; I don’t like it."
         },
-        "prompt": "Answer A. Use 又……又…… in B.",
-        "quiet": true,
-        "gaps": true
+        "alternatives": [
+          {
+            "traditional": "這裡的夏天又不舒服又熱，我不喜歡。",
+            "simplified": "这里的夏天又不舒服又热，我不喜欢。",
+            "pinyin": "Zhèlǐ de xiàtiān yòu bù shūfu yòu rè, wǒ bù xǐhuan.",
+            "english": "Summer here is both uncomfortable and hot; I don’t like it."
+          }
+        ]
       },
       {
         "id": "l7g5-b2",
@@ -1612,68 +1562,58 @@
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
                 "traditional": "你覺得這家餐廳的牛肉麵怎麼樣？",
                 "simplified": "你觉得这家餐厅的牛肉面怎么样？"
               }
-            ],
-            "speaker": {
-              "traditional": "A"
-            }
+            ]
           },
           {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "牛肉麵",
-                "simplified": "牛肉面"
-              },
-              {
-                "type": "slot",
-                "id": "g1",
-                "answers": [
-                  "又"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "好吃",
-                "simplified": "好吃"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": [
-                  "又"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "便宜",
-                "simplified": "便宜"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "。",
-                "simplified": "。"
-              }
-            ],
             "speaker": {
               "traditional": "B"
             },
-            "me": true
+            "segments": [
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "又"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "好吃",
+                  "便宜"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "又"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "便宜",
+                  "好吃"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，我很喜歡。",
+                "simplified": "，我很喜欢。"
+              }
+            ]
           }
         ],
         "tiles": [
@@ -1682,17 +1622,25 @@
             "pinyin": "yòu"
           },
           {
+            "traditional": "貴",
+            "simplified": "贵",
+            "pinyin": "guì"
+          },
+          {
+            "traditional": "好吃",
+            "pinyin": "hǎochī"
+          },
+          {
+            "traditional": "和",
+            "pinyin": "hé"
+          },
+          {
             "traditional": "又",
             "pinyin": "yòu"
           },
           {
-            "traditional": "貴",
-            "pinyin": "guì",
-            "simplified": "贵"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
+            "traditional": "便宜",
+            "pinyin": "piányi"
           }
         ],
         "repairs": [
@@ -1703,42 +1651,33 @@
             "mark": [
               "貴"
             ],
-            "note": "A bowl here is $50, the same bowl nearby is $150, so it is cheap: 便宜."
+            "note": "B likes it a lot, so both qualities are good ones: 好吃 and 便宜, not 貴."
           },
           {
             "placed": [
-              "很"
+              "和"
             ],
             "mark": [
-              "很"
+              "和"
             ],
-            "note": "又…又… takes no 很: 又好吃又便宜."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 牛肉麵又好吃又便宜。"
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 牛肉麵又好吃又便宜。"
+            "note": "和 joins nouns; two qualities take 又 before each one."
           }
         ],
-        "fallbackRepair": "又 goes before each quality: 又…又….",
+        "fallbackRepair": "Put 又 before each quality: 又好吃又便宜.",
         "result": {
-          "traditional": "你覺得這家餐廳的牛肉麵怎麼樣？又好吃又便宜。",
-          "simplified": "你觉得这家餐厅的牛肉面怎么样？又好吃又便宜。",
-          "pinyin": "Nǐ juéde zhè jiā cāntīng de niúròumiàn zěnmeyàng? Yòu hǎochī yòu piányi.",
-          "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
+          "traditional": "又好吃又便宜，我很喜歡。",
+          "simplified": "又好吃又便宜，我很喜欢。",
+          "pinyin": "Yòu hǎochī yòu piányi, wǒ hěn xǐhuan.",
+          "english": "It’s both delicious and cheap; I like it a lot."
         },
-        "prompt": "Answer A using the menu. Use 又……又…… in B.",
-        "quiet": true,
-        "gaps": true
+        "alternatives": [
+          {
+            "traditional": "又便宜又好吃，我很喜歡。",
+            "simplified": "又便宜又好吃，我很喜欢。",
+            "pinyin": "Yòu piányi yòu hǎochī, wǒ hěn xǐhuan.",
+            "english": "It’s both cheap and delicious; I like it a lot."
+          }
+        ]
       },
       {
         "id": "l7g5-b3",
@@ -1746,186 +1685,197 @@
         "kind": "slot-build",
         "lines": [
           {
+            "speaker": {
+              "traditional": "A"
+            },
             "segments": [
               {
                 "type": "text",
                 "traditional": "他常常去海邊嗎？",
                 "simplified": "他常常去海边吗？"
               }
-            ],
-            "speaker": {
-              "traditional": "A"
-            }
+            ]
           },
           {
-            "segments": [
-              {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "他",
-                "simplified": "他"
-              },
-              {
-                "type": "slot",
-                "id": "g1",
-                "answers": [
-                  "又"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "會游泳",
-                "simplified": "会游泳"
-              },
-              {
-                "type": "slot",
-                "id": "g2",
-                "answers": [
-                  "又"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "喜歡",
-                "simplified": "喜欢"
-              },
-              {
-                "type": "slot",
-                "id": "g3",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "曬太陽",
-                "simplified": "晒太阳"
-              },
-              {
-                "type": "slot",
-                "id": "g4",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "，每個週末都去海邊。",
-                "simplified": "，每个周末都去海边。"
-              }
-            ],
             "speaker": {
               "traditional": "B"
             },
-            "me": true
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "又"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "游泳"
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "又"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s4",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "曬太陽，每個週末都去海邊。",
+                "simplified": "晒太阳，每个周末都去海边。"
+              }
+            ]
           }
         ],
         "tiles": [
           {
-            "traditional": "又",
-            "pinyin": "yòu"
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuan"
+          },
+          {
+            "traditional": "不喜歡",
+            "simplified": "不喜欢",
+            "pinyin": "bù xǐhuan"
           },
           {
             "traditional": "又",
             "pinyin": "yòu"
           },
           {
-            "traditional": "不想",
-            "pinyin": "bù xiǎng"
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuan"
+          },
+          {
+            "traditional": "又",
+            "pinyin": "yòu"
+          },
+          {
+            "traditional": "不喜歡",
+            "simplified": "不喜欢",
+            "pinyin": "bù xǐhuan"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不想"
+              "不喜歡"
             ],
             "mark": [
-              "不想"
+              "不喜歡"
             ],
-            "note": "He goes to the beach every weekend, so he likes sunbathing: 喜歡."
-          },
-          {
-            "slot": {
-              "id": "g0",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 他又會游泳又喜歡曬太陽，每個週末都去海邊。"
-          },
-          {
-            "slot": {
-              "id": "g3",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 他又會游泳又喜歡曬太陽，每個週末都去海邊。"
-          },
-          {
-            "slot": {
-              "id": "g4",
-              "tile": "又"
-            },
-            "note": "又 goes before each quality, one on each side of the \"and\": 他又會游泳又喜歡曬太陽，每個週末都去海邊。"
+            "note": "He goes to the beach every weekend, so he likes both: 喜歡, not 不喜歡."
           }
         ],
-        "fallbackRepair": "又 goes before each quality: 又…又….",
+        "fallbackRepair": "又 comes before each verb: 又喜歡游泳又喜歡曬太陽.",
         "result": {
-          "traditional": "他常常去海邊嗎？他又會游泳又喜歡曬太陽，每個週末都去海邊。",
-          "simplified": "他常常去海边吗？他又会游泳又喜欢晒太阳，每个周末都去海边。",
-          "pinyin": "Tā chángcháng qù hǎibiān ma? Tā yòu huì yóuyǒng yòu xǐhuan shài tàiyáng, měi ge zhōumò dōu qù hǎibiān.",
-          "english": "Does he often go to the seaside? He can swim and likes sunbathing and goes to the seaside every weekend."
-        },
-        "prompt": "Answer A. Use 又……又…… in B.",
-        "quiet": true,
-        "gaps": true
+          "traditional": "他又喜歡游泳又喜歡曬太陽，每個週末都去海邊。",
+          "simplified": "他又喜欢游泳又喜欢晒太阳，每个周末都去海边。",
+          "pinyin": "Tā yòu xǐhuan yóuyǒng yòu xǐhuan shài tàiyáng, měi ge zhōumò dōu qù hǎibiān.",
+          "english": "He likes both swimming and sunbathing; he goes to the beach every weekend."
+        }
       },
       {
         "id": "l7g5-o1",
         "source": "own",
-        "prompt": "Make both countries the topic.",
-        "quiet": true,
-        "kind": "order-build",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "speaker": {
+              "traditional": "A"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你要到超市去買什麼？",
+                "simplified": "你要到超市去买什么？"
+              }
+            ]
+          },
+          {
+            "speaker": {
+              "traditional": "B"
+            },
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我要買",
+                "simplified": "我要买"
+              },
+              {
+                "type": "slot",
+                "id": "s1",
+                "answers": [
+                  "水果",
+                  "茶"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s2",
+                "answers": [
+                  "和"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "s3",
+                "answers": [
+                  "茶",
+                  "水果"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ]
+          }
+        ],
         "tiles": [
+          {
+            "traditional": "又",
+            "pinyin": "yòu"
+          },
+          {
+            "traditional": "水果",
+            "pinyin": "shuǐguǒ"
+          },
+          {
+            "traditional": "還是",
+            "simplified": "还是",
+            "pinyin": "háishì"
+          },
           {
             "traditional": "和",
             "pinyin": "hé"
           },
           {
-            "traditional": "我都",
-            "pinyin": "wǒ dōu"
+            "traditional": "茶",
+            "pinyin": "chá"
           },
           {
-            "traditional": "又",
-            "pinyin": "yòu"
-          },
-          {
-            "traditional": "日本",
-            "pinyin": "Rìběn"
-          },
-          {
-            "traditional": "韓國",
-            "simplified": "韩国",
-            "pinyin": "Hánguó"
-          },
-          {
-            "traditional": "想去",
-            "simplified": "想去",
-            "pinyin": "xiǎng qù"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "日本",
-              "和",
-              "韓國",
-              "我都",
-              "想去"
-            ],
-            "sentence": {
-              "traditional": "日本和韓國，我都想去。",
-              "simplified": "日本和韩国，我都想去。",
-              "pinyin": "Rìběn hé Hánguó, wǒ dōu xiǎng qù.",
-              "english": "Japan and Korea are both places I want to visit."
-            }
+            "traditional": "也",
+            "pinyin": "yě"
           }
         ],
         "repairs": [
@@ -1936,96 +1886,43 @@
             "mark": [
               "又"
             ],
-            "note": "和 joins the two country names; 又 does not join nouns this way."
-          }
-        ],
-        "fallbackRepair": "Join the countries with 和, then say 我都想去."
-      },
-      {
-        "id": "l7g5-own-order",
-        "source": "own",
-        "kind": "order-build",
-        "prompt": "Describe the hotel with 又……又…….",
-        "quiet": true,
-        "tiles": [
-          {
-            "traditional": "飯店",
-            "simplified": "饭店",
-            "pinyin": "fàndiàn"
+            "note": "又 is never followed by a noun; join two things with 和."
           },
-          {
-            "traditional": "又",
-            "pinyin": "yòu"
-          },
-          {
-            "traditional": "又",
-            "pinyin": "yòu"
-          },
-          {
-            "traditional": "大",
-            "pinyin": "dà"
-          },
-          {
-            "traditional": "舒服",
-            "pinyin": "shūfu"
-          },
-          {
-            "traditional": "很",
-            "pinyin": "hěn"
-          }
-        ],
-        "accepted": [
-          {
-            "order": [
-              "飯店",
-              "又",
-              "大",
-              "又",
-              "舒服"
-            ],
-            "sentence": {
-              "traditional": "飯店又大又舒服。",
-              "simplified": "饭店又大又舒服。",
-              "pinyin": "Fàndiàn yòu dà yòu shūfu.",
-              "english": "The hotel is both big and comfortable."
-            }
-          },
-          {
-            "order": [
-              "飯店",
-              "又",
-              "舒服",
-              "又",
-              "大"
-            ],
-            "sentence": {
-              "traditional": "飯店又舒服又大。",
-              "simplified": "饭店又舒服又大。",
-              "pinyin": "Fàndiàn yòu shūfu yòu dà.",
-              "english": "The hotel is both comfortable and big."
-            }
-          }
-        ],
-        "repairs": [
           {
             "placed": [
-              "很"
+              "還是"
             ],
-            "note": "No 很 here: each 又 already adds its quality. Say 又大又舒服."
+            "mark": [
+              "還是"
+            ],
+            "note": "還是 (“or”) is for questions; in a statement, join two things with 和."
           },
           {
-            "notFirst": "飯店",
-            "note": "Start with what you are describing: 飯店."
+            "placed": [
+              "也"
+            ],
+            "mark": [
+              "也"
+            ],
+            "note": "也 goes before a verb, not between two things; join them with 和."
           }
         ],
-        "fallbackRepair": "Name the thing, then put 又 before each quality: 飯店又大又舒服."
+        "fallbackRepair": "Thing, 和, thing: 水果和茶.",
+        "result": {
+          "traditional": "我要買水果和茶。",
+          "simplified": "我要买水果和茶。",
+          "pinyin": "Wǒ yào mǎi shuǐguǒ hé chá.",
+          "english": "I’m going to buy fruit and tea."
+        },
+        "alternatives": [
+          {
+            "traditional": "我要買茶和水果。",
+            "simplified": "我要买茶和水果。",
+            "pinyin": "Wǒ yào mǎi chá hé shuǐguǒ.",
+            "english": "I’m going to buy tea and fruit."
+          }
+        ]
       }
-    ],
-    "allowWords": [
-      "夏天",
-      "牛肉麵",
-      "海邊",
-      "曬太陽"
     ]
   }
 }
