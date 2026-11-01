@@ -14,7 +14,7 @@ Audit date: 2026-11-01. Scope: presence, chat, party rooms (Cloudflare Worker + 
 
 The owner asked for every step on free tiers, with technical judgment left to the engineer. This section records what shipped in this pull request and what changed in the plan. Sections (a) to (f) below are the original audit, kept as the record.
 
-Shipped, one commit each, all backward compatible (expand steps):
+Shipped, one commit per step plus one for fixes from an independent review, all backward compatible (expand steps):
 
 1. **School access in the sign-in token.** The database's sign-in hook now stamps `school_beta` and `full_course` into each token. App start-up skips two sequential database calls, and Express verifies the token signature locally instead of making two Supabase calls per new token. The database keeps checking identities live on every request (`shared/accessToken.ts`, migration `20261101120000`).
 2. **A Lobby that does work only for the people an event concerns.** It uses an in-memory index rebuilt after each wake. Lesson lists are capped at 30 with exact counts. The Online list is a snapshot of up to 100 people sent when the panel opens, never streamed. Room listings go only to open panels. Trailing flushes run on timers instead of billed alarms, maintenance runs every 5 minutes, and Lobby tickets are rate-limited inside the Lobby. Capacity rose from 250 to 2,000 (`games/lobby.ts`).
@@ -24,20 +24,43 @@ Shipped, one commit each, all backward compatible (expand steps):
 
 Measured after the change, with the same local scenario as section (f):
 
-{{AFTER_TABLE}}
+| Learners | Lobby cap | Connected | Refused | Presence converged | Lesson chat p95 | Global chat p95 | Lesson change p95 | Answer round trip p95 | Bytes pushed per learner | Other errors |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 100 | 2,000 (as shipped) | 100 | none | 1.9 s | 14 ms | 47 ms | 1.8 s | 131 ms | 18 kB | none |
+| 250 | 2,000 (as shipped) | 250 | none | 1.3 s | 32 ms | 175 ms | 1.9 s | 337 ms | 26 kB | none |
+| 500 | 2,000 (as shipped) | 500 | none | 667 ms | 90 ms | 332 ms | 2.0 s | 852 ms | 30 kB | none |
+| 2,000 | 2,000 (as shipped) | 2,000 | none | 2.8 s | 394 ms | 1.3 s | 2.3 s | 1.1 s | 42 kB | none |
+| 2,500 | 2,000 (as shipped) | 2,000 | 500 (socket 503) | 3.2 s | 499 ms | 1.8 s | 2.4 s | 1.1 s | 42 kB | none |
+| 5,000 | lifted (test only) | 5,000 | none | 5.0 s | 1.2 s | 3.4 s | 2.8 s | 1.0 s | 42 kB | none |
+| 8,000 | lifted (test only) | 8,000 | none | 11.4 s | 1.4 s | 5.4 s | 3.3 s | not reached | n/a | rooms phase hit the test machine's file limit |
 
-{{AFTER_NOTES}}
+Before and after, same scenario and machine: at 2,000 learners presence convergence went from 10.3 s to 2.8 s, the lesson change p95 from 4.1 s to 2.3 s, and bytes pushed per learner from 192 kB to 42 kB. At 10,000 the old Lobby delivered nothing within 5 minutes. The new one handles 5,000 with every phase passing, and 8,000 for presence and chat.
+
+Runs at 8,000 and 10,000 could not finish their race phase here. This sandbox caps each process at 20,000 open files and cannot raise the limit. The local runtime needs about two per test connection, plus several per race room and account object. At 8,000 every presence and chat phase completed before 300 rooms and about 1,200 account objects pushed it over the limit (`SQLITE_CANTOPEN`). At 10,000 the connection ramp itself reset. This is a test-machine limit, not a Lobby result.
+
+The Worker suite (150 learners, 38 races) now writes 188 room rows for 6,000 answers instead of 6,000. CI fails if writes exceed one per four answers. The new CI gate (`npm run games:load`, 500 learners) measured presence 0.7 s, lesson chat p95 84 ms, global chat p95 334 ms and answers p95 602 ms, all within budget.
 
 What changed in the plan, and why:
 
 - **No lesson sharding on the free plan.** On Workers Free every extra object call is a billed request against 100,000 a day, so splitting the Lobby would spend the allowance on internal traffic. One Lobby now handles 2,000 sockets well and stays usable at 5,000. On the free plan the daily allowances run out before throughput becomes the limit. Section (c) remains the design for when the plan is paid.
 - **Lesson content stays on Render.** Serving packs through a Worker counts every pack request against Workers Free's 100,000 requests a day. Lessons would stop loading when that ran out, so step 3 of section (d) waits for a paid plan. With step 1 shipped, Render no longer calls Supabase for most content requests.
 - **Server region is the owner's step.** `render.yaml` sets no region, so the service is probably in Oregon. Moving it to Singapore means creating a new service there, which needs the owner's dashboards and domain settings. Check that Render offers the free instance type in Singapore when creating it.
+- **First-load trimming deferred.** The stylesheet fills its 275 kB budget, and the animation library and the database client both download before the first screen. Deferring them means restructuring start-up sign-in and shell animations: a visible change that needs checks on real phones in both themes, for about 84 kB of a roughly 240 kB compressed first load. It is not a scaling limit, so it waits for a daytime pass with the owner.
 - **No deletion of review history.** Deleting it would be irreversible and would change all-time profile stats. Slimming the rows buys room on the free plan's 500 MB database. Check the database size monthly in the Supabase dashboard.
 
 Free-plan ceilings now (Cloudflare and Supabase docs fetched 2026-11-01; per-learner costs estimated from the code, not from billing):
 
-{{FREE_TABLE}}
+| Free allowance | Limit | Main use after this change | Rough daily ceiling |
+| --- | --- | --- | --- |
+| Durable Object requests | 100,000 a day | about 15 per learner-day (two per Lobby connection, incoming messages at 20:1, maintenance alarms) and about 10 per player per race | 4,000 to 6,000 daily learners, fewer if most race daily |
+| Durable Object rows written | 100,000 a day | tickets and chat in the Lobby; seats, account objects and answer counts written at most every 10 s in rooms | about 5,000 daily learners with one race each |
+| Durable Object duration | 13,000 GB-s a day | the Lobby awake through a school day (about 4,500 GB-s at 0.125 GB); each race room awake for its race (about 40 to 75 GB-s) | roughly 100 to 200 races a day; this is now the first ceiling for heavy race days |
+| Workers requests | 100,000 a day | two per Lobby connection and about three per race join | about 8,000 daily learners |
+| Supabase database | 500 MB | card progress plus review history, now about a third of the size per review | months of headroom for one school; check the size monthly |
+| Supabase egress | 5 GB a month | pulls and saves; new-device pulls no longer carry card snapshots | comfortable for one school |
+| Render web service | 750 instance hours a month, shared with staging; sleeps after 15 minutes | every lesson pack and the dictionary API | the cold start after idle is the visible cost; one always-on service uses all 750 hours |
+
+When an allowance runs out, Cloudflare stops Study together until the daily reset; lessons keep working, by design. Workers Paid ($5 a month) does not mainly add allowance: it includes 1 million Durable Object requests, 50 million rows written and 400,000 GB-s a month. What it changes is that going over costs a little ($0.15 per million requests, $1 per million rows, $12.50 per million GB-s) instead of stopping Study together for the day. It is the first paid step worth taking when daily stops start to happen. That decision is the owner's.
 
 ## (b) Ranked bottlenecks
 
