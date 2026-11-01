@@ -1,0 +1,2317 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l02",
+  "bookId": 1,
+  "lessonId": 2,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "宜文",
+    "友美"
+  ],
+  "slots": [
+    {
+      "id": "hear-clock",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l02-hear-clock-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我今天四點十分下課。",
+              "simplified": "我今天四点十分下课。",
+              "pinyin": "Wǒ jīntiān sì diǎn shí fēn xiàkè.",
+              "english": "I finish class at 4:10 today."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-hear-clock-1-q",
+              "choices": [
+                {
+                  "picture": "b1l02-clock-1",
+                  "alt": "10:40 on the clock"
+                },
+                {
+                  "picture": "b1l02-clock-2",
+                  "alt": "4:10 on the clock"
+                },
+                {
+                  "picture": "b1l02-clock-3",
+                  "alt": "4:40 on the clock"
+                }
+              ],
+              "key": 1,
+              "why": "四點十分 is 4:10: the hour comes first, then the minutes. 十點四十分 would be 10:40.",
+              "focus": {
+                "zh": "四點十分",
+                "en": "reading 4:10"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-02",
+                "B1L02-1-29",
+                "B1L02-1-27"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54",
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-hear-clock-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，現在幾點？",
+              "simplified": "请问，现在几点？",
+              "pinyin": "Qǐngwèn, xiànzài jǐ diǎn?",
+              "english": "Excuse me, what time is it now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "現在十點四十分。",
+              "simplified": "现在十点四十分。",
+              "pinyin": "Xiànzài shí diǎn sìshí fēn.",
+              "english": "It's 10:40 now."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-hear-clock-2-q",
+              "choices": [
+                {
+                  "picture": "b1l02-clock-1",
+                  "alt": "10:40 on the clock"
+                },
+                {
+                  "picture": "b1l02-clock-2",
+                  "alt": "4:10 on the clock"
+                },
+                {
+                  "picture": "b1l02-clock-3",
+                  "alt": "4:40 on the clock"
+                }
+              ],
+              "key": 0,
+              "why": "十點四十分 is 10:40: 十點 is the hour and 四十分 the minutes. 四點十分 (4:10) swaps them.",
+              "focus": {
+                "zh": "十點四十分",
+                "en": "reading 10:40"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-04",
+                "B1L02-1-30",
+                "B1L02-1-02",
+                "B1L02-1-29"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-hear-clock-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "中明下午四點四十分下課。",
+              "simplified": "中明下午四点四十分下课。",
+              "pinyin": "Zhōngmíng xiàwǔ sì diǎn sìshí fēn xiàkè.",
+              "english": "Zhongming finishes class at 4:40 in the afternoon."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-hear-clock-3-q",
+              "choices": [
+                {
+                  "picture": "b1l02-clock-1",
+                  "alt": "10:40 on the clock"
+                },
+                {
+                  "picture": "b1l02-clock-2",
+                  "alt": "4:10 on the clock"
+                },
+                {
+                  "picture": "b1l02-clock-3",
+                  "alt": "4:40 on the clock"
+                }
+              ],
+              "key": 2,
+              "why": "四點四十分 is 4:40: four o'clock and forty minutes. 四點十分 would be 4:10.",
+              "focus": {
+                "zh": "四點四十分",
+                "en": "reading 4:40"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-02",
+                "B1L02-1-29",
+                "B1L02-1-25",
+                "B1L02-1-27"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54",
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-home",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l02-hear-home-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我今天晚上十一點睡覺。",
+              "simplified": "我今天晚上十一点睡觉。",
+              "pinyin": "Wǒ jīntiān wǎnshàng shíyī diǎn shuìjiào.",
+              "english": "I'm going to bed at eleven tonight."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-hear-home-1-q",
+              "choices": [
+                {
+                  "picture": "b1l02-home-1",
+                  "alt": "Eating: Zhongming eats at the table"
+                },
+                {
+                  "picture": "b1l02-home-2",
+                  "alt": "Sleeping: Zhongming sleeps in bed"
+                },
+                {
+                  "picture": "b1l02-home-3",
+                  "alt": "Cooking: Zhongming cooks at the stove"
+                }
+              ],
+              "key": 1,
+              "why": "睡覺 means to sleep, so he is in bed.",
+              "focus": {
+                "zh": "睡覺",
+                "en": "to sleep"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-09",
+                "B1L02-2-10"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-hear-home-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "中明，你現在做什麼？",
+              "simplified": "中明，你现在做什么？",
+              "pinyin": "Zhōngmíng, nǐ xiànzài zuò shénme?",
+              "english": "Zhongming, what are you doing now?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我做晚飯。",
+              "simplified": "我做晚饭。",
+              "pinyin": "Wǒ zuò wǎnfàn.",
+              "english": "I'm cooking dinner."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-hear-home-2-q",
+              "choices": [
+                {
+                  "picture": "b1l02-home-1",
+                  "alt": "Eating: Zhongming eats at the table"
+                },
+                {
+                  "picture": "b1l02-home-2",
+                  "alt": "Sleeping: Zhongming sleeps in bed"
+                },
+                {
+                  "picture": "b1l02-home-3",
+                  "alt": "Cooking: Zhongming cooks at the stove"
+                }
+              ],
+              "key": 2,
+              "why": "做晚飯 means to cook dinner, so he is at the stove. 吃飯 would be eating.",
+              "focus": {
+                "zh": "做晚飯",
+                "en": "cooking dinner"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-01",
+                "B1L02-3-06",
+                "B1L02-1-04"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-hear-home-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我早上七點吃早飯。",
+              "simplified": "我早上七点吃早饭。",
+              "pinyin": "Wǒ zǎoshàng qī diǎn chī zǎofàn.",
+              "english": "I eat breakfast at seven in the morning."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-hear-home-3-q",
+              "choices": [
+                {
+                  "picture": "b1l02-home-1",
+                  "alt": "Eating: Zhongming eats at the table"
+                },
+                {
+                  "picture": "b1l02-home-2",
+                  "alt": "Sleeping: Zhongming sleeps in bed"
+                },
+                {
+                  "picture": "b1l02-home-3",
+                  "alt": "Cooking: Zhongming cooks at the stove"
+                }
+              ],
+              "key": 0,
+              "why": "吃早飯 means to eat breakfast, so he is eating at the table, not cooking.",
+              "focus": {
+                "zh": "吃早飯",
+                "en": "eating breakfast"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-05",
+                "B1L02-1-16",
+                "B1L01-3-04"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-morning",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l02-picture-morning-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L02-R01",
+            "alt": "A sunny morning at home: the wall clock shows nine o'clock. Zhongming's mother sits at the breakfast table holding a cup, with a croissant and fruit in front of her, while Zhongming, backpack on, walks out of the front door."
+          },
+          "questions": [
+            {
+              "id": "b1l02-picture-morning-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在是晚上九點。",
+                  "simplified": "现在是晚上九点。",
+                  "pinyin": "Xiànzài shì wǎnshàng jiǔ diǎn.",
+                  "english": "It's nine at night."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是早上十點。",
+                  "simplified": "现在是早上十点。",
+                  "pinyin": "Xiànzài shì zǎoshàng shí diǎn.",
+                  "english": "It's ten in the morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是早上九點。",
+                  "simplified": "现在是早上九点。",
+                  "pinyin": "Xiànzài shì zǎoshàng jiǔ diǎn.",
+                  "english": "It's nine in the morning."
+                }
+              ],
+              "key": 2,
+              "why": "The clock shows nine and the street outside the open door is in bright sunshine: 早上九點. It is not night (晚上), and it is not ten.",
+              "focus": {
+                "zh": "早上九點",
+                "en": "nine in the morning"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-04",
+                "B1L02-1-16",
+                "B1L02-2-10",
+                "B1L02-1-02"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-picture-morning-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L02-R01",
+            "alt": "A sunny morning at home: the wall clock shows nine o'clock. Zhongming's mother sits at the breakfast table holding a cup, with a croissant and fruit in front of her, while Zhongming, backpack on, walks out of the front door."
+          },
+          "questions": [
+            {
+              "id": "b1l02-picture-morning-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中明的媽媽去學校。",
+                  "simplified": "中明的妈妈去学校。",
+                  "pinyin": "Zhōngmíng de māma qù xuéxiào.",
+                  "english": "Zhongming's mom is going to school."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明的媽媽吃早飯。",
+                  "simplified": "中明的妈妈吃早饭。",
+                  "pinyin": "Zhōngmíng de māma chī zǎofàn.",
+                  "english": "Zhongming's mom is having breakfast."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明吃早飯。",
+                  "simplified": "中明吃早饭。",
+                  "pinyin": "Zhōngmíng chī zǎofàn.",
+                  "english": "Zhongming is having breakfast."
+                }
+              ],
+              "key": 1,
+              "why": "His mom (中明的媽媽) sits at the breakfast table with her cup and a plate of breakfast. Zhongming is the one going out with his backpack, so he is not eating.",
+              "focus": {
+                "zh": "中明的媽媽",
+                "en": "Zhongming's mom"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-07",
+                "B1L02-1-07",
+                "B1L02-3-05"
+              ],
+              "grammarIds": [
+                "B1L02-G04-P60"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-library",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l02-picture-library-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L02-R03",
+            "alt": "Youmei sits at a desk in the library, writing in an open book, with shelves of books behind her. The wall clock shows one o'clock and it is bright daytime outside. A lunch box sits closed in her open backpack."
+          },
+          "questions": [
+            {
+              "id": "b1l02-picture-library-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "下午一點，友美去圖書館。",
+                  "simplified": "下午一点，友美去图书馆。",
+                  "pinyin": "Xiàwǔ yì diǎn, Yǒuměi qù túshūguǎn.",
+                  "english": "At one in the afternoon, Youmei goes to the library."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下午一點，友美回家。",
+                  "simplified": "下午一点，友美回家。",
+                  "pinyin": "Xiàwǔ yì diǎn, Yǒuměi huí jiā.",
+                  "english": "At one in the afternoon, Youmei goes home."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "下午四點，友美去圖書館。",
+                  "simplified": "下午四点，友美去图书馆。",
+                  "pinyin": "Xiàwǔ sì diǎn, Yǒuměi qù túshūguǎn.",
+                  "english": "At four in the afternoon, Youmei goes to the library."
+                }
+              ],
+              "key": 0,
+              "why": "The clock shows one and she is at a library desk: 下午一點 she goes to the library (圖書館). She did not go home (回家), and it is not four.",
+              "focus": {
+                "zh": "圖書館",
+                "en": "the library"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-20",
+                "B1L02-1-25",
+                "B1L02-1-22",
+                "B1L02-1-23"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-picture-library-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L02-R03",
+            "alt": "Youmei sits at a desk in the library, writing in an open book, with shelves of books behind her. The wall clock shows one o'clock and it is bright daytime outside. A lunch box sits closed in her open backpack."
+          },
+          "questions": [
+            {
+              "id": "b1l02-picture-library-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "現在是中午十二點。",
+                  "simplified": "现在是中午十二点。",
+                  "pinyin": "Xiànzài shì zhōngwǔ shí'èr diǎn.",
+                  "english": "It's twelve noon."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是上午十一點。",
+                  "simplified": "现在是上午十一点。",
+                  "pinyin": "Xiànzài shì shàngwǔ shíyī diǎn.",
+                  "english": "It's eleven in the morning."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "現在是下午一點。",
+                  "simplified": "现在是下午一点。",
+                  "pinyin": "Xiànzài shì xiàwǔ yì diǎn.",
+                  "english": "It's one in the afternoon."
+                }
+              ],
+              "key": 2,
+              "why": "The short hand is on 1 and the long hand on 12: 下午一點. At 中午十二點 both hands would be on 12, and at 十一點 the short hand would be on 11.",
+              "focus": {
+                "zh": "下午一點",
+                "en": "one in the afternoon"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-04",
+                "B1L02-1-25",
+                "B1L02-1-21",
+                "B1L02-1-26"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-when",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l02-dialogue-when-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "你今天幾點回家？我六點做晚飯。",
+              "simplified": "你今天几点回家？我六点做晚饭。",
+              "pinyin": "Nǐ jīntiān jǐ diǎn huí jiā? Wǒ liù diǎn zuò wǎnfàn.",
+              "english": "What time are you coming home today? I'm cooking dinner at six."
+            },
+            {
+              "speaker": "M",
+              "traditional": "我五點下課，七點回家。",
+              "simplified": "我五点下课，七点回家。",
+              "pinyin": "Wǒ wǔ diǎn xiàkè, qī diǎn huí jiā.",
+              "english": "I finish class at five and come home at seven."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-dialogue-when-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他今天幾點回家？",
+                "simplified": "他今天几点回家？",
+                "pinyin": "Tā jīntiān jǐ diǎn huí jiā?",
+                "english": "What time is he coming home today?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "五點",
+                  "simplified": "五点",
+                  "pinyin": "wǔ diǎn",
+                  "english": "five o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六點",
+                  "simplified": "六点",
+                  "pinyin": "liù diǎn",
+                  "english": "six o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "seven o'clock"
+                }
+              ],
+              "key": 2,
+              "why": "The time before 回家 is 七點. Five is when his class ends, and six is when she cooks.",
+              "focus": {
+                "zh": "七點回家",
+                "en": "time before the action"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-1-22",
+                "B1L02-1-23",
+                "B1L02-1-27"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55",
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-dialogue-when-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "友美，我星期天八點起床，妳呢？",
+              "simplified": "友美，我星期天八点起床，你呢？",
+              "pinyin": "Yǒuměi, wǒ xīngqítiān bā diǎn qǐchuáng, nǐ ne?",
+              "english": "Youmei, I get up at eight on Sundays. How about you?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我九點起床，十點吃早飯。",
+              "simplified": "我九点起床，十点吃早饭。",
+              "pinyin": "Wǒ jiǔ diǎn qǐchuáng, shí diǎn chī zǎofàn.",
+              "english": "I get up at nine and have breakfast at ten."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-dialogue-when-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "友美星期天幾點起床？",
+                "simplified": "友美星期天几点起床？",
+                "pinyin": "Yǒuměi xīngqítiān jǐ diǎn qǐchuáng?",
+                "english": "What time does Youmei get up on Sundays?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "八點",
+                  "simplified": "八点",
+                  "pinyin": "bā diǎn",
+                  "english": "eight o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "english": "nine o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "十點",
+                  "simplified": "十点",
+                  "pinyin": "shí diǎn",
+                  "english": "ten o'clock"
+                }
+              ],
+              "key": 1,
+              "why": "She says 我九點起床. Eight is when he gets up, and ten is her breakfast time.",
+              "focus": {
+                "zh": "九點起床",
+                "en": "time before the action"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-03",
+                "B1L02-1-15",
+                "B1L02-1-30"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55",
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-plans",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l02-dialogue-plans-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "明天下午你要不要來我家？",
+              "simplified": "明天下午你要不要来我家？",
+              "pinyin": "Míngtiān xiàwǔ nǐ yào bu yào lái wǒ jiā?",
+              "english": "Do you want to come to my place tomorrow afternoon?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "好啊！我上午去圖書館，下午去妳家。",
+              "simplified": "好啊！我上午去图书馆，下午去你家。",
+              "pinyin": "Hǎo a! Wǒ shàngwǔ qù túshūguǎn, xiàwǔ qù nǐ jiā.",
+              "english": "Sure! I'm going to the library in the morning and to your place in the afternoon."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-dialogue-plans-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他明天下午要做什麼？",
+                "simplified": "他明天下午要做什么？",
+                "pinyin": "Tā míngtiān xiàwǔ yào zuò shénme?",
+                "english": "What is he going to do tomorrow afternoon?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去她家",
+                  "simplified": "去她家",
+                  "pinyin": "qù tā jiā",
+                  "english": "go to her place"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去上課",
+                  "simplified": "去上课",
+                  "pinyin": "qù shàngkè",
+                  "english": "go to class"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去圖書館",
+                  "simplified": "去图书馆",
+                  "pinyin": "qù túshūguǎn",
+                  "english": "go to the library"
+                }
+              ],
+              "key": 0,
+              "why": "He says 下午去妳家: in the afternoon he goes to her place. The library (圖書館) is his morning plan.",
+              "focus": {
+                "zh": "要不要",
+                "en": "do you want to …?"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-04",
+                "B1L02-2-05",
+                "B1L02-1-25",
+                "B1L02-1-26"
+              ],
+              "grammarIds": [
+                "B1L02-G06-P62",
+                "B1L02-G05-P61",
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-dialogue-plans-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文，妳明天下午要不要去圖書館？",
+              "simplified": "宜文，你明天下午要不要去图书馆？",
+              "pinyin": "Yíwén, nǐ míngtiān xiàwǔ yào bu yào qù túshūguǎn?",
+              "english": "Yiwen, do you want to go to the library tomorrow afternoon?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不去，我要回家做飯。",
+              "simplified": "不去，我要回家做饭。",
+              "pinyin": "Bú qù, wǒ yào huí jiā zuòfàn.",
+              "english": "No, I'm going home to cook."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-dialogue-plans-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "宜文明天下午要做什麼？",
+                "simplified": "宜文明天下午要做什么？",
+                "pinyin": "Yíwén míngtiān xiàwǔ yào zuò shénme?",
+                "english": "What is Yiwen going to do tomorrow afternoon?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "去圖書館",
+                  "simplified": "去图书馆",
+                  "pinyin": "qù túshūguǎn",
+                  "english": "go to the library"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "回家做飯",
+                  "simplified": "回家做饭",
+                  "pinyin": "huí jiā zuòfàn",
+                  "english": "go home and cook"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "去上課",
+                  "simplified": "去上课",
+                  "pinyin": "qù shàngkè",
+                  "english": "go to class"
+                }
+              ],
+              "key": 1,
+              "why": "She answers 不去 to the library and says 我要回家做飯. The library is only his idea.",
+              "focus": {
+                "zh": "要 + 動作",
+                "en": "want to + action"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-04",
+                "B1L02-3-08",
+                "B1L02-1-22",
+                "B1L02-1-20"
+              ],
+              "grammarIds": [
+                "B1L02-G06-P62",
+                "B1L02-G05-P61"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-country",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l02-review-country-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "請問，王老師是美國人嗎？",
+              "simplified": "请问，王老师是美国人吗？",
+              "pinyin": "Qǐngwèn, Wáng lǎoshī shì Měiguó rén ma?",
+              "english": "Excuse me, is Teacher Wang American?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，她是台灣人，她的朋友是美國人。",
+              "simplified": "不是，她是台湾人，她的朋友是美国人。",
+              "pinyin": "Bú shì, tā shì Táiwān rén, tā de péngyǒu shì Měiguó rén.",
+              "english": "No, she's Taiwanese. Her friend is American."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-review-country-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "王老師是哪國人？",
+                "simplified": "王老师是哪国人？",
+                "pinyin": "Wáng lǎoshī shì nǎ guó rén?",
+                "english": "What country is Teacher Wang from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "美國人",
+                  "simplified": "美国人",
+                  "pinyin": "Měiguó rén",
+                  "english": "American"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "英國人",
+                  "simplified": "英国人",
+                  "pinyin": "Yīngguó rén",
+                  "english": "British"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "台灣人",
+                  "simplified": "台湾人",
+                  "pinyin": "Táiwān rén",
+                  "english": "Taiwanese"
+                }
+              ],
+              "key": 2,
+              "why": "Teacher Wang is a woman here (她). 不是 answers the 嗎 question: she is 台灣人. The American is her friend.",
+              "focus": {
+                "zh": "哪國人",
+                "en": "which country"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-09",
+                "B1L01-1-10",
+                "B1L01-1-15",
+                "B1L01-1-17"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38",
+                "B1L01-G03-P40"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-review-country-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我是台灣人，你呢？",
+              "simplified": "我是台湾人，你呢？",
+              "pinyin": "Wǒ shì Táiwān rén, nǐ ne?",
+              "english": "I'm Taiwanese. And you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我是英國人，我朋友是日本人。",
+              "simplified": "我是英国人，我朋友是日本人。",
+              "pinyin": "Wǒ shì Yīngguó rén, wǒ péngyǒu shì Rìběn rén.",
+              "english": "I'm British. My friend is Japanese."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-review-country-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他是哪國人？",
+                "simplified": "他是哪国人？",
+                "pinyin": "Tā shì nǎ guó rén?",
+                "english": "What country is he from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "英國人",
+                  "simplified": "英国人",
+                  "pinyin": "Yīngguó rén",
+                  "english": "British"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "台灣人",
+                  "simplified": "台湾人",
+                  "pinyin": "Táiwān rén",
+                  "english": "Taiwanese"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日本人",
+                  "simplified": "日本人",
+                  "pinyin": "Rìběn rén",
+                  "english": "Japanese"
+                }
+              ],
+              "key": 0,
+              "why": "你呢 asks him the same thing, and he says 我是英國人. She is Taiwanese, and his friend is Japanese.",
+              "focus": {
+                "zh": "你呢",
+                "en": "and you?"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-2-04",
+                "B1L01-1-10",
+                "B1L01-1-18",
+                "B1L01-1-14"
+              ],
+              "grammarIds": [
+                "B1L01-G04-P44",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review-drink",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l02-review-drink-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文，妳喝奶茶嗎？",
+              "simplified": "宜文，你喝奶茶吗？",
+              "pinyin": "Yíwén, nǐ hē nǎichá ma?",
+              "english": "Yiwen, would you like milk tea?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我不喝奶茶，我喝茶，謝謝。",
+              "simplified": "我不喝奶茶，我喝茶，谢谢。",
+              "pinyin": "Wǒ bù hē nǎichá, wǒ hē chá, xièxie.",
+              "english": "I don't drink milk tea. I'll have tea, thanks."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-review-drink-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "宜文喝什麼？",
+                "simplified": "宜文喝什么？",
+                "pinyin": "Yíwén hē shénme?",
+                "english": "What does Yiwen drink?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "茶",
+                  "simplified": "茶",
+                  "pinyin": "chá",
+                  "english": "tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                }
+              ],
+              "key": 0,
+              "why": "She says 不喝奶茶, then 我喝茶: she turns down the milk tea and has tea.",
+              "focus": {
+                "zh": "不喝",
+                "en": "won't drink"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-07",
+                "B1L01-3-08",
+                "B1L01-3-12"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39",
+                "B1L01-G03-P40"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-review-drink-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我愛喝奶茶，你呢？",
+              "simplified": "我爱喝奶茶，你呢？",
+              "pinyin": "Wǒ ài hē nǎichá, nǐ ne?",
+              "english": "I love milk tea. And you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我不愛喝奶茶，我愛喝水。",
+              "simplified": "我不爱喝奶茶，我爱喝水。",
+              "pinyin": "Wǒ bú ài hē nǎichá, wǒ ài hē shuǐ.",
+              "english": "I don't love milk tea. I love water."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-review-drink-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他愛喝什麼？",
+                "simplified": "他爱喝什么？",
+                "pinyin": "Tā ài hē shénme?",
+                "english": "What does he love to drink?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "茶",
+                  "simplified": "茶",
+                  "pinyin": "chá",
+                  "english": "tea"
+                }
+              ],
+              "key": 1,
+              "why": "He says 不愛喝奶茶 and 我愛喝水. Milk tea is what she loves.",
+              "focus": {
+                "zh": "愛喝",
+                "en": "love to drink"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-07",
+                "B1L01-3-06",
+                "B1L01-3-12"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39",
+                "B1L01-G04-P44"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-cook",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l02-read-cook-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l02-read-cook-1-q",
+              "prompt": {
+                "traditional": "今天晚上，媽媽不做飯，爸爸做飯。",
+                "simplified": "今天晚上，妈妈不做饭，爸爸做饭。",
+                "pinyin": "Jīntiān wǎnshàng, māma bú zuòfàn, bàba zuòfàn.",
+                "english": "Tonight Mom isn't cooking. Dad is cooking."
+              },
+              "choices": [
+                {
+                  "picture": "b1l02-cook-1",
+                  "alt": "Mom cooks at the stove"
+                },
+                {
+                  "picture": "b1l02-cook-2",
+                  "alt": "A child cooks at the stove"
+                },
+                {
+                  "picture": "b1l02-cook-3",
+                  "alt": "Dad cooks at the stove"
+                }
+              ],
+              "key": 2,
+              "why": "媽媽不做飯 says Mom is not cooking; 爸爸做飯: Dad cooks.",
+              "focus": {
+                "zh": "爸爸做飯",
+                "en": "Dad cooks"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-08",
+                "B1L02-3-08",
+                "B1L02-1-07"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-read-cook-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l02-read-cook-2-q",
+              "prompt": {
+                "traditional": "爸爸媽媽很累，今天孩子做晚飯。",
+                "simplified": "爸爸妈妈很累，今天孩子做晚饭。",
+                "pinyin": "Bàba māma hěn lèi, jīntiān háizi zuò wǎnfàn.",
+                "english": "Mom and Dad are tired, so today the child cooks dinner."
+              },
+              "choices": [
+                {
+                  "picture": "b1l02-cook-1",
+                  "alt": "Mom cooks at the stove"
+                },
+                {
+                  "picture": "b1l02-cook-2",
+                  "alt": "A child cooks at the stove"
+                },
+                {
+                  "picture": "b1l02-cook-3",
+                  "alt": "Dad cooks at the stove"
+                }
+              ],
+              "key": 1,
+              "why": "孩子做晚飯: the child cooks. Mom and Dad are only tired (很累).",
+              "focus": {
+                "zh": "孩子",
+                "en": "child"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-09",
+                "B1L02-3-11",
+                "B1L02-3-01",
+                "B1L02-3-06"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-read-cook-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l02-read-cook-3-q",
+              "prompt": {
+                "traditional": "爸爸今天很忙，媽媽做晚飯。",
+                "simplified": "爸爸今天很忙，妈妈做晚饭。",
+                "pinyin": "Bàba jīntiān hěn máng, māma zuò wǎnfàn.",
+                "english": "Dad is busy today, so Mom cooks dinner."
+              },
+              "choices": [
+                {
+                  "picture": "b1l02-cook-1",
+                  "alt": "Mom cooks at the stove"
+                },
+                {
+                  "picture": "b1l02-cook-2",
+                  "alt": "A child cooks at the stove"
+                },
+                {
+                  "picture": "b1l02-cook-3",
+                  "alt": "Dad cooks at the stove"
+                }
+              ],
+              "key": 0,
+              "why": "媽媽做晚飯: Mom cooks. Dad is the busy one.",
+              "focus": {
+                "zh": "媽媽做晚飯",
+                "en": "Mom cooks dinner"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-07",
+                "B1L02-3-01",
+                "B1L02-3-06",
+                "B1L02-3-10"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-meal",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l02-read-meal-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l02-read-meal-1-q",
+              "prompt": {
+                "traditional": "友美中午十二點吃午飯。",
+                "simplified": "友美中午十二点吃午饭。",
+                "pinyin": "Yǒuměi zhōngwǔ shí'èr diǎn chī wǔfàn.",
+                "english": "Youmei eats lunch at twelve noon."
+              },
+              "choices": [
+                {
+                  "picture": "b1l02-meal-1",
+                  "alt": "Morning: Youmei eats at the table as the sun rises outside the window"
+                },
+                {
+                  "picture": "b1l02-meal-2",
+                  "alt": "Night: Youmei eats at the table, with the moon outside the window"
+                },
+                {
+                  "picture": "b1l02-meal-3",
+                  "alt": "Noon: Youmei eats at the table, with the sun high outside the window"
+                }
+              ],
+              "key": 2,
+              "why": "中午 and 午飯 mean midday: the sun is high in the sky.",
+              "focus": {
+                "zh": "中午",
+                "en": "noon"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-21",
+                "B1L02-3-04"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-read-meal-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l02-read-meal-2-q",
+              "prompt": {
+                "traditional": "友美晚上六點吃晚飯。",
+                "simplified": "友美晚上六点吃晚饭。",
+                "pinyin": "Yǒuměi wǎnshàng liù diǎn chī wǎnfàn.",
+                "english": "Youmei eats dinner at six in the evening."
+              },
+              "choices": [
+                {
+                  "picture": "b1l02-meal-1",
+                  "alt": "Morning: Youmei eats at the table as the sun rises outside the window"
+                },
+                {
+                  "picture": "b1l02-meal-2",
+                  "alt": "Night: Youmei eats at the table, with the moon outside the window"
+                },
+                {
+                  "picture": "b1l02-meal-3",
+                  "alt": "Noon: Youmei eats at the table, with the sun high outside the window"
+                }
+              ],
+              "key": 1,
+              "why": "晚上 is evening: the sky is dark and the moon is out.",
+              "focus": {
+                "zh": "晚上",
+                "en": "evening"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-10",
+                "B1L02-3-06"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-read-meal-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l02-read-meal-3-q",
+              "prompt": {
+                "traditional": "友美早上六點四十分吃早飯。",
+                "simplified": "友美早上六点四十分吃早饭。",
+                "pinyin": "Yǒuměi zǎoshàng liù diǎn sìshí fēn chī zǎofàn.",
+                "english": "Youmei eats breakfast at 6:40 in the morning."
+              },
+              "choices": [
+                {
+                  "picture": "b1l02-meal-1",
+                  "alt": "Morning: Youmei eats at the table as the sun rises outside the window"
+                },
+                {
+                  "picture": "b1l02-meal-2",
+                  "alt": "Night: Youmei eats at the table, with the moon outside the window"
+                },
+                {
+                  "picture": "b1l02-meal-3",
+                  "alt": "Noon: Youmei eats at the table, with the sun high outside the window"
+                }
+              ],
+              "key": 0,
+              "why": "早上 and 早飯 mean morning: the sun is just rising.",
+              "focus": {
+                "zh": "早上",
+                "en": "morning"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-16",
+                "B1L02-3-05"
+              ],
+              "grammarIds": [
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-invite",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l02-realia-invite-1",
+          "kind": "realia",
+          "picture": "b1l02-invitation",
+          "alt": "Zhongming's birthday invitation card",
+          "transcript": {
+            "traditional": "中明的生日　11月4日 星期六　中午12:00　來我家吃午飯！　中明",
+            "simplified": "中明的生日　11月4日 星期六　中午12:00　来我家吃午饭！　中明",
+            "pinyin": "Zhōngmíng de shēngrì: shíyī yuè sì rì, xīngqíliù, zhōngwǔ shí'èr diǎn. Lái wǒ jiā chī wǔfàn! Zhōngmíng",
+            "english": "Zhongming's birthday: November 4, Saturday, 12:00 noon. Come to my place for lunch! Zhongming"
+          },
+          "questions": [
+            {
+              "id": "b1l02-realia-invite-1-q",
+              "choices": [
+                {
+                  "traditional": "大家星期五中午去中明家。",
+                  "simplified": "大家星期五中午去中明家。",
+                  "pinyin": "Dàjiā xīngqíwǔ zhōngwǔ qù Zhōngmíng jiā.",
+                  "english": "Everyone goes to Zhongming's place on Friday at noon."
+                },
+                {
+                  "traditional": "大家星期六晚上去中明家。",
+                  "simplified": "大家星期六晚上去中明家。",
+                  "pinyin": "Dàjiā xīngqíliù wǎnshàng qù Zhōngmíng jiā.",
+                  "english": "Everyone goes to Zhongming's place on Saturday evening."
+                },
+                {
+                  "traditional": "大家星期六中午去中明家。",
+                  "simplified": "大家星期六中午去中明家。",
+                  "pinyin": "Dàjiā xīngqíliù zhōngwǔ qù Zhōngmíng jiā.",
+                  "english": "Everyone goes to Zhongming's place on Saturday at noon."
+                }
+              ],
+              "key": 2,
+              "why": "The card says 星期六 and 中午12:00, and Zhongming signs it, so 我家 is his place. Friday is the wrong day, and 晚上 is the wrong time.",
+              "focus": {
+                "zh": "星期六中午",
+                "en": "day and time"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-11",
+                "B1L02-1-21",
+                "B1L02-2-10",
+                "B1L02-2-08"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-realia-invite-2",
+          "kind": "realia",
+          "picture": "b1l02-invitation",
+          "alt": "Zhongming's birthday invitation card",
+          "transcript": {
+            "traditional": "中明的生日　11月4日 星期六　中午12:00　來我家吃午飯！　中明",
+            "simplified": "中明的生日　11月4日 星期六　中午12:00　来我家吃午饭！　中明",
+            "pinyin": "Zhōngmíng de shēngrì: shíyī yuè sì rì, xīngqíliù, zhōngwǔ shí'èr diǎn. Lái wǒ jiā chī wǔfàn! Zhōngmíng",
+            "english": "Zhongming's birthday: November 4, Saturday, 12:00 noon. Come to my place for lunch! Zhongming"
+          },
+          "questions": [
+            {
+              "id": "b1l02-realia-invite-2-q",
+              "prompt": {
+                "traditional": "中明的生日是幾月幾號？",
+                "simplified": "中明的生日是几月几号？",
+                "pinyin": "Zhōngmíng de shēngrì shì jǐ yuè jǐ hào?",
+                "english": "What is the date of Zhongming's birthday?"
+              },
+              "choices": [
+                {
+                  "traditional": "四月十一號",
+                  "simplified": "四月十一号",
+                  "pinyin": "sì yuè shíyī hào",
+                  "english": "April 11"
+                },
+                {
+                  "traditional": "十一月四號",
+                  "simplified": "十一月四号",
+                  "pinyin": "shíyī yuè sì hào",
+                  "english": "November 4"
+                },
+                {
+                  "traditional": "十一月六號",
+                  "simplified": "十一月六号",
+                  "pinyin": "shíyī yuè liù hào",
+                  "english": "November 6"
+                }
+              ],
+              "key": 1,
+              "why": "The card says 11月4日: 十一月四號. The month comes first; 四月十一號 swaps the month and the day, and 六 is from 星期六.",
+              "focus": {
+                "zh": "幾月幾號",
+                "en": "saying the date"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-12",
+                "B1L02-1-13",
+                "B1L02-1-14",
+                "B1L02-2-08"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-timetable",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l02-realia-timetable-1",
+          "kind": "realia",
+          "picture": "b1l02-timetable",
+          "alt": "Zhongming's weekly class timetable card",
+          "transcript": {
+            "traditional": "中明的課　星期一 下午1:00～4:40　星期二 上午9:00～12:00　星期三 沒有課　星期四 上午10:00～12:00　星期五 上午8:00～12:00",
+            "simplified": "中明的课　星期一 下午1:00～4:40　星期二 上午9:00～12:00　星期三 没有课　星期四 上午10:00～12:00　星期五 上午8:00～12:00",
+            "pinyin": "Zhōngmíng de kè: xīngqíyī xiàwǔ 1:00–4:40; xīngqí'èr shàngwǔ 9:00–12:00; xīngqísān méiyǒu kè; xīngqísì shàngwǔ 10:00–12:00; xīngqíwǔ shàngwǔ 8:00–12:00",
+            "english": "Zhongming's classes: Monday 1:00–4:40 p.m.; Tuesday 9:00 a.m.–12:00; Wednesday no class; Thursday 10:00 a.m.–12:00; Friday 8:00 a.m.–12:00"
+          },
+          "questions": [
+            {
+              "id": "b1l02-realia-timetable-1-q",
+              "prompt": {
+                "traditional": "中明星期幾不上課？",
+                "simplified": "中明星期几不上课？",
+                "pinyin": "Zhōngmíng xīngqí jǐ bú shàngkè?",
+                "english": "Which day does Zhongming not go to class?"
+              },
+              "choices": [
+                {
+                  "traditional": "星期三",
+                  "simplified": "星期三",
+                  "pinyin": "xīngqísān",
+                  "english": "Wednesday"
+                },
+                {
+                  "traditional": "星期四",
+                  "simplified": "星期四",
+                  "pinyin": "xīngqísì",
+                  "english": "Thursday"
+                },
+                {
+                  "traditional": "星期五",
+                  "simplified": "星期五",
+                  "pinyin": "xīngqíwǔ",
+                  "english": "Friday"
+                }
+              ],
+              "key": 0,
+              "why": "星期三 says 沒有課 (no class), so he does not go to class that day. Thursday and Friday both have class times.",
+              "focus": {
+                "zh": "沒有課",
+                "en": "no class"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-18",
+                "B1L02-1-19",
+                "B1L02-1-28",
+                "B1L02-1-11"
+              ],
+              "grammarIds": [
+                "B1L02-G03-P56"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-realia-timetable-2",
+          "kind": "realia",
+          "picture": "b1l02-timetable",
+          "alt": "Zhongming's weekly class timetable card",
+          "transcript": {
+            "traditional": "中明的課　星期一 下午1:00～4:40　星期二 上午9:00～12:00　星期三 沒有課　星期四 上午10:00～12:00　星期五 上午8:00～12:00",
+            "simplified": "中明的课　星期一 下午1:00～4:40　星期二 上午9:00～12:00　星期三 没有课　星期四 上午10:00～12:00　星期五 上午8:00～12:00",
+            "pinyin": "Zhōngmíng de kè: xīngqíyī xiàwǔ 1:00–4:40; xīngqí'èr shàngwǔ 9:00–12:00; xīngqísān méiyǒu kè; xīngqísì shàngwǔ 10:00–12:00; xīngqíwǔ shàngwǔ 8:00–12:00",
+            "english": "Zhongming's classes: Monday 1:00–4:40 p.m.; Tuesday 9:00 a.m.–12:00; Wednesday no class; Thursday 10:00 a.m.–12:00; Friday 8:00 a.m.–12:00"
+          },
+          "questions": [
+            {
+              "id": "b1l02-realia-timetable-2-q",
+              "choices": [
+                {
+                  "traditional": "中明星期一上午沒有課。",
+                  "simplified": "中明星期一上午没有课。",
+                  "pinyin": "Zhōngmíng xīngqíyī shàngwǔ méiyǒu kè.",
+                  "english": "Zhongming has no class on Monday morning."
+                },
+                {
+                  "traditional": "中明星期四下午有課。",
+                  "simplified": "中明星期四下午有课。",
+                  "pinyin": "Zhōngmíng xīngqísì xiàwǔ yǒu kè.",
+                  "english": "Zhongming has class on Thursday afternoon."
+                },
+                {
+                  "traditional": "中明星期二上午沒有課。",
+                  "simplified": "中明星期二上午没有课。",
+                  "pinyin": "Zhōngmíng xīngqí'èr shàngwǔ méiyǒu kè.",
+                  "english": "Zhongming has no class on Tuesday morning."
+                }
+              ],
+              "key": 0,
+              "why": "Monday's class is 下午1:00～4:40, so he has no class that morning. Tuesday's class is in the morning, and Thursday's ends at 12:00.",
+              "focus": {
+                "zh": "上午沒有課",
+                "en": "no morning class"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-18",
+                "B1L02-1-17",
+                "B1L02-1-19",
+                "B1L02-1-26"
+              ],
+              "grammarIds": [
+                "B1L02-G03-P56",
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l02-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l02-classroom",
+          "alt": "A classroom at twelve noon: the teacher waves goodbye, Zhongming yawns at his desk, and Youmei holds her lunch box",
+          "questions": [
+            {
+              "id": "b1l02-scene-gap-1-a",
+              "prompt": {
+                "traditional": "今天星期五，中午十二點下課，＿＿是週末。",
+                "simplified": "今天星期五，中午十二点下课，＿＿是周末。"
+              },
+              "choices": [
+                {
+                  "traditional": "今天",
+                  "simplified": "今天",
+                  "pinyin": "jīntiān",
+                  "english": "today"
+                },
+                {
+                  "traditional": "昨天",
+                  "simplified": "昨天",
+                  "pinyin": "zuótiān",
+                  "english": "yesterday"
+                },
+                {
+                  "traditional": "明天",
+                  "simplified": "明天",
+                  "pinyin": "míngtiān",
+                  "english": "tomorrow"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "今天星期五，中午十二點下課，明天是週末。",
+                "simplified": "今天星期五，中午十二点下课，明天是周末。",
+                "pinyin": "Jīntiān xīngqíwǔ, zhōngwǔ shí'èr diǎn xiàkè, míngtiān shì zhōumò.",
+                "english": "Today is Friday. Class ends at twelve noon, and tomorrow is the weekend."
+              },
+              "why": "Today is Friday, so the weekend starts tomorrow: 明天是週末. 今天 is Friday, and 昨天 was Thursday.",
+              "focus": {
+                "zh": "明天",
+                "en": "tomorrow"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-01",
+                "B1L02-2-02",
+                "B1L02-1-10",
+                "B1L02-2-03"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            },
+            {
+              "id": "b1l02-scene-gap-1-b",
+              "prompt": {
+                "traditional": "宜文，妳下午有＿＿有課？——有，我三點上課。",
+                "simplified": "宜文，你下午有＿＿有课？——有，我三点上课。"
+              },
+              "choices": [
+                {
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bù",
+                  "english": "not"
+                },
+                {
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "english": "not (with 有)"
+                },
+                {
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "english": "very"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "宜文，妳下午有沒有課？——有，我三點上課。",
+                "simplified": "宜文，你下午有没有课？——有，我三点上课。",
+                "pinyin": "Yíwén, nǐ xiàwǔ yǒu méi yǒu kè? Yǒu, wǒ sān diǎn shàngkè.",
+                "english": "Yiwen, do you have class this afternoon? Yes, my class is at three."
+              },
+              "why": "有 is made negative with 沒, never 不, so the question is 有沒有. 很 cannot stand between two verbs.",
+              "focus": {
+                "zh": "有沒有",
+                "en": "have or not?"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-17",
+                "B1L02-1-18",
+                "B1L02-1-19"
+              ],
+              "grammarIds": [
+                "B1L02-G06-P62",
+                "B1L02-G03-P56"
+              ]
+            },
+            {
+              "id": "b1l02-scene-gap-1-c",
+              "prompt": {
+                "traditional": "中明很累，他＿＿回家睡覺。",
+                "simplified": "中明很累，他＿＿回家睡觉。"
+              },
+              "choices": [
+                {
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "english": "very"
+                },
+                {
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "english": "to do"
+                },
+                {
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "yào",
+                  "english": "to want to"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "中明很累，他要回家睡覺。",
+                "simplified": "中明很累，他要回家睡觉。",
+                "pinyin": "Zhōngmíng hěn lèi, tā yào huí jiā shuìjiào.",
+                "english": "Zhongming is tired. He wants to go home and sleep."
+              },
+              "why": "要 goes before the next action: 要回家睡覺. 很 goes before a describing word like 累, and 做 cannot go before 回家.",
+              "focus": {
+                "zh": "要 + 動作",
+                "en": "want to + action"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-04",
+                "B1L02-3-11",
+                "B1L02-3-09"
+              ],
+              "grammarIds": [
+                "B1L02-G05-P61"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l02-classroom",
+          "alt": "A classroom at twelve noon: the teacher waves goodbye, Zhongming yawns at his desk, and Youmei holds her lunch box",
+          "questions": [
+            {
+              "id": "b1l02-scene-gap-2-a",
+              "prompt": {
+                "traditional": "現在十二點，我們去吃＿＿。",
+                "simplified": "现在十二点，我们去吃＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "早飯",
+                  "simplified": "早饭",
+                  "pinyin": "zǎofàn",
+                  "english": "breakfast"
+                },
+                {
+                  "traditional": "午飯",
+                  "simplified": "午饭",
+                  "pinyin": "wǔfàn",
+                  "english": "lunch"
+                },
+                {
+                  "traditional": "晚飯",
+                  "simplified": "晚饭",
+                  "pinyin": "wǎnfàn",
+                  "english": "dinner"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "現在十二點，我們去吃午飯。",
+                "simplified": "现在十二点，我们去吃午饭。",
+                "pinyin": "Xiànzài shí'èr diǎn, wǒmen qù chī wǔfàn.",
+                "english": "It's twelve now. Let's go and have lunch."
+              },
+              "why": "The meal at twelve is 午飯 (lunch). 早飯 is in the morning and 晚飯 in the evening.",
+              "focus": {
+                "zh": "午飯",
+                "en": "lunch"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-04",
+                "B1L02-3-05",
+                "B1L02-3-06",
+                "B1L02-1-04"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            },
+            {
+              "id": "b1l02-scene-gap-2-b",
+              "prompt": {
+                "traditional": "友美，妳明天忙＿＿忙？",
+                "simplified": "友美，你明天忙＿＿忙？"
+              },
+              "choices": [
+                {
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "english": "very"
+                },
+                {
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "english": "not (with 有)"
+                },
+                {
+                  "traditional": "不",
+                  "simplified": "不",
+                  "pinyin": "bù",
+                  "english": "not"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "友美，妳明天忙不忙？",
+                "simplified": "友美，你明天忙不忙？",
+                "pinyin": "Yǒuměi, nǐ míngtiān máng bu máng?",
+                "english": "Youmei, are you busy tomorrow?"
+              },
+              "why": "忙 is a describing word, so the question puts 不 between: 忙不忙. 沒 only pairs with 有 (有沒有).",
+              "focus": {
+                "zh": "忙不忙",
+                "en": "busy or not?"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-10",
+                "B1L02-2-01"
+              ],
+              "grammarIds": [
+                "B1L02-G06-P62"
+              ]
+            },
+            {
+              "id": "b1l02-scene-gap-2-c",
+              "prompt": {
+                "traditional": "星期六，我們＿＿去宜文家。",
+                "simplified": "星期六，我们＿＿去宜文家。"
+              },
+              "choices": [
+                {
+                  "traditional": "要",
+                  "simplified": "要",
+                  "pinyin": "yào",
+                  "english": "to want to"
+                },
+                {
+                  "traditional": "很",
+                  "simplified": "很",
+                  "pinyin": "hěn",
+                  "english": "very"
+                },
+                {
+                  "traditional": "做",
+                  "simplified": "做",
+                  "pinyin": "zuò",
+                  "english": "to do"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "星期六，我們要去宜文家。",
+                "simplified": "星期六，我们要去宜文家。",
+                "pinyin": "Xīngqíliù, wǒmen yào qù Yíwén jiā.",
+                "english": "On Saturday we're going to Yiwen's place."
+              },
+              "why": "要 goes before the next action: 要去宜文家. 很 needs a describing word after it, and 做 cannot go before 去.",
+              "focus": {
+                "zh": "要 + 動作",
+                "en": "want to + action"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-04",
+                "B1L02-1-05",
+                "B1L02-1-23"
+              ],
+              "grammarIds": [
+                "B1L02-G05-P61"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l02-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "今天是星期天，中明{1}有課。他早上九點起床，十點去學校{2}圖書館，下午五點回家吃晚飯。中明今天{3}累，明天他{4}上課，晚上九點睡覺。",
+            "simplified": "今天是星期天，中明{1}有课。他早上九点起床，十点去学校{2}图书馆，下午五点回家吃晚饭。中明今天{3}累，明天他{4}上课，晚上九点睡觉。",
+            "pinyin": "Jīntiān shì xīngqítiān, Zhōngmíng méiyǒu kè. Tā zǎoshàng jiǔ diǎn qǐchuáng, shí diǎn qù xuéxiào de túshūguǎn, xiàwǔ wǔ diǎn huí jiā chī wǎnfàn. Zhōngmíng jīntiān hěn lèi, míngtiān tā yào shàngkè, wǎnshàng jiǔ diǎn shuìjiào.",
+            "english": "It's Sunday, and Zhongming has no class. He gets up at nine, goes to the school library at ten, and comes home for dinner at five. Zhongming is very tired today. He has class tomorrow, so he goes to bed at nine."
+          },
+          "bank": [
+            {
+              "traditional": "很",
+              "simplified": "很",
+              "pinyin": "hěn",
+              "english": "very"
+            },
+            {
+              "traditional": "要",
+              "simplified": "要",
+              "pinyin": "yào",
+              "english": "to want to; going to"
+            },
+            {
+              "traditional": "歲",
+              "simplified": "岁",
+              "pinyin": "suì",
+              "english": "years old"
+            },
+            {
+              "traditional": "沒",
+              "simplified": "没",
+              "pinyin": "méi",
+              "english": "not (with 有)"
+            },
+            {
+              "traditional": "的",
+              "simplified": "的",
+              "pinyin": "de",
+              "english": "(shows who owns something)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-paragraph-1-1",
+              "key": 3,
+              "why": "有 is made negative with 沒, never 不: 中明沒有課.",
+              "focus": {
+                "zh": "沒有課",
+                "en": "has no class"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-18",
+                "B1L02-1-17",
+                "B1L02-1-19"
+              ],
+              "grammarIds": [
+                "B1L02-G03-P56"
+              ]
+            },
+            {
+              "id": "b1l02-paragraph-1-2",
+              "key": 4,
+              "why": "的 joins the owner and the thing: 學校的圖書館 (the school's library).",
+              "focus": {
+                "zh": "學校的圖書館",
+                "en": "the school's library"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-07",
+                "B1L02-1-06",
+                "B1L02-1-20"
+              ],
+              "grammarIds": [
+                "B1L02-G04-P60"
+              ]
+            },
+            {
+              "id": "b1l02-paragraph-1-3",
+              "key": 0,
+              "why": "很 goes before a describing word like 累: 中明今天很累.",
+              "focus": {
+                "zh": "很 + 累",
+                "en": "很 before a describing word"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-07",
+                "B1L02-3-11"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39"
+              ]
+            },
+            {
+              "id": "b1l02-paragraph-1-4",
+              "key": 1,
+              "why": "要 goes before the next action: 明天他要上課 (he has class tomorrow). 沒 is for 沒有課, and it cannot go with 明天.",
+              "focus": {
+                "zh": "要 + 上課",
+                "en": "要 before an action"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-04",
+                "B1L02-1-28",
+                "B1L02-2-01"
+              ],
+              "grammarIds": [
+                "B1L02-G05-P61"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "明天是十月七號，星期六，是友美{1}生日。她十九{2}，是日本人，很{3}。友美喜歡喝珍珠奶茶。我們晚上六{4}去她家。",
+            "simplified": "明天是十月七号，星期六，是友美{1}生日。她十九{2}，是日本人，很{3}。友美喜欢喝珍珠奶茶。我们晚上六{4}去她家。",
+            "pinyin": "Míngtiān shì shí yuè qī hào, xīngqíliù, shì Yǒuměi de shēngrì. Tā shíjiǔ suì, shì Rìběn rén, hěn kě'ài. Yǒuměi xǐhuān hē zhēnzhū nǎichá. Wǒmen wǎnshàng liù diǎn qù tā jiā.",
+            "english": "Tomorrow is Saturday, October 7, Youmei's birthday. She is nineteen, Japanese, and very cute. Youmei likes bubble milk tea. We are going to her place at six in the evening."
+          },
+          "bank": [
+            {
+              "traditional": "點",
+              "simplified": "点",
+              "pinyin": "diǎn",
+              "english": "o'clock"
+            },
+            {
+              "traditional": "可愛",
+              "simplified": "可爱",
+              "pinyin": "kě'ài",
+              "english": "cute"
+            },
+            {
+              "traditional": "的",
+              "simplified": "的",
+              "pinyin": "de",
+              "english": "(shows who owns something)"
+            },
+            {
+              "traditional": "號",
+              "simplified": "号",
+              "pinyin": "hào",
+              "english": "(day of the month)"
+            },
+            {
+              "traditional": "歲",
+              "simplified": "岁",
+              "pinyin": "suì",
+              "english": "years old"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l02-paragraph-2-1",
+              "key": 2,
+              "why": "的 joins the owner and the thing: 友美的生日 (Youmei's birthday).",
+              "focus": {
+                "zh": "友美的生日",
+                "en": "Youmei's birthday"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-2-07",
+                "B1L02-2-08"
+              ],
+              "grammarIds": [
+                "B1L02-G04-P60"
+              ]
+            },
+            {
+              "id": "b1l02-paragraph-2-2",
+              "key": 4,
+              "why": "Age is counted with 歲: 十九歲 is nineteen years old. 號 is for dates.",
+              "focus": {
+                "zh": "十九歲",
+                "en": "nineteen years old"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-3-02"
+              ]
+            },
+            {
+              "id": "b1l02-paragraph-2-3",
+              "key": 1,
+              "why": "很 needs a describing word after it: 很可愛 (very cute).",
+              "focus": {
+                "zh": "很可愛",
+                "en": "very cute"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-08",
+                "B1L01-1-07"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39"
+              ]
+            },
+            {
+              "id": "b1l02-paragraph-2-4",
+              "key": 0,
+              "why": "Clock time uses 點: 晚上六點 is six in the evening.",
+              "focus": {
+                "zh": "六點",
+                "en": "six o'clock"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-02",
+                "B1L02-2-10"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l02-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "媽媽：\n我的新同學叫友美，是日本人。她很可愛，老師很喜歡她。她喜歡吃水果，愛喝珍珠奶茶。明天她來我們家，好不好？\n宜文",
+            "simplified": "妈妈：\n我的新同学叫友美，是日本人。她很可爱，老师很喜欢她。她喜欢吃水果，爱喝珍珠奶茶。明天她来我们家，好不好？\n宜文",
+            "pinyin": "Māma: Wǒ de xīn tóngxué jiào Yǒuměi, shì Rìběn rén. Tā hěn kě'ài, lǎoshī hěn xǐhuān tā. Tā xǐhuān chī shuǐguǒ, ài hē zhēnzhū nǎichá. Míngtiān tā lái wǒmen jiā, hǎo bu hǎo? Yíwén",
+            "english": "Mom: My new classmate is called Youmei. She's Japanese. She's very cute, and the teacher likes her a lot. She likes fruit and loves bubble milk tea. Can she come to our home tomorrow? Yiwen"
+          },
+          "questions": [
+            {
+              "id": "b1l02-reading-note-1-q",
+              "prompt": {
+                "traditional": "友美是誰？",
+                "simplified": "友美是谁？",
+                "pinyin": "Yǒuměi shì shéi?",
+                "english": "Who is Youmei?"
+              },
+              "choices": [
+                {
+                  "traditional": "宜文的新同學",
+                  "simplified": "宜文的新同学",
+                  "pinyin": "Yíwén de xīn tóngxué",
+                  "english": "Yiwen's new classmate"
+                },
+                {
+                  "traditional": "宜文的媽媽",
+                  "simplified": "宜文的妈妈",
+                  "pinyin": "Yíwén de māma",
+                  "english": "Yiwen's mom"
+                },
+                {
+                  "traditional": "宜文的老師",
+                  "simplified": "宜文的老师",
+                  "pinyin": "Yíwén de lǎoshī",
+                  "english": "Yiwen's teacher"
+                }
+              ],
+              "key": 0,
+              "why": "Yiwen writes 我的新同學叫友美: Youmei is her new classmate. The note is to her mom, and the teacher only likes Youmei.",
+              "focus": {
+                "zh": "新同學",
+                "en": "new classmate"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-01",
+                "B1L01-1-02",
+                "B1L01-1-05"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l02-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n我的新朋友是印尼人，她不是學生，是老師。她很喜歡台灣，愛喝珍珠奶茶。星期六她來我家，你要不要來？\n友美",
+            "simplified": "中明：\n我的新朋友是印尼人，她不是学生，是老师。她很喜欢台湾，爱喝珍珠奶茶。星期六她来我家，你要不要来？\n友美",
+            "pinyin": "Zhōngmíng: Wǒ de xīn péngyǒu shì Yìnní rén, tā bú shì xuéshēng, shì lǎoshī. Tā hěn xǐhuān Táiwān, ài hē zhēnzhū nǎichá. Xīngqíliù tā lái wǒ jiā, nǐ yào bu yào lái? Yǒuměi",
+            "english": "Zhongming: My new friend is Indonesian. She isn't a student; she's a teacher. She really likes Taiwan and loves bubble milk tea. She's coming to my place on Saturday. Do you want to come? Youmei"
+          },
+          "questions": [
+            {
+              "id": "b1l02-reading-note-2-q",
+              "prompt": {
+                "traditional": "友美的新朋友是誰？",
+                "simplified": "友美的新朋友是谁？",
+                "pinyin": "Yǒuměi de xīn péngyǒu shì shéi?",
+                "english": "Who is Youmei's new friend?"
+              },
+              "choices": [
+                {
+                  "traditional": "日本老師",
+                  "simplified": "日本老师",
+                  "pinyin": "Rìběn lǎoshī",
+                  "english": "a Japanese teacher"
+                },
+                {
+                  "traditional": "印尼老師",
+                  "simplified": "印尼老师",
+                  "pinyin": "Yìnní lǎoshī",
+                  "english": "an Indonesian teacher"
+                },
+                {
+                  "traditional": "印尼學生",
+                  "simplified": "印尼学生",
+                  "pinyin": "Yìnní xuéshēng",
+                  "english": "an Indonesian student"
+                }
+              ],
+              "key": 1,
+              "why": "She writes 我的新朋友是印尼人 and 她不是學生，是老師: an Indonesian teacher. 日本 is Youmei herself, the writer.",
+              "focus": {
+                "zh": "不是學生，是老師",
+                "en": "not a student but a teacher"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-2-05",
+                "B1L01-3-02",
+                "B1L00-1-01",
+                "B1L00-1-02"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38",
+                "B1L01-G02-P39"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

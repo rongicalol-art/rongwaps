@@ -1,0 +1,2385 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l03",
+  "bookId": 1,
+  "lessonId": 3,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "友美",
+    "宜文"
+  ],
+  "slots": [
+    {
+      "id": "hear-gifts",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l03-hear-gifts-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我想送友美兩枝鉛筆。",
+              "simplified": "我想送友美两枝铅笔。",
+              "pinyin": "Wǒ xiǎng sòng Yǒuměi liǎng zhī qiānbǐ.",
+              "english": "I'd like to give Youmei two pencils."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-hear-gifts-1-q",
+              "choices": [
+                {
+                  "picture": "b1l03-gifts-1",
+                  "alt": "Two books on a table"
+                },
+                {
+                  "picture": "b1l03-gifts-2",
+                  "alt": "Two pencils on a table"
+                },
+                {
+                  "picture": "b1l03-gifts-3",
+                  "alt": "Two cakes on a table"
+                }
+              ],
+              "key": 1,
+              "why": "枝 counts pens and pencils: 兩枝鉛筆 is two pencils.",
+              "focus": {
+                "zh": "兩枝鉛筆",
+                "en": "two pencils"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-2-08",
+                "B1L03-2-04",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-hear-gifts-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我要送老師兩本書。",
+              "simplified": "我要送老师两本书。",
+              "pinyin": "Wǒ yào sòng lǎoshī liǎng běn shū.",
+              "english": "I'm going to give the teacher two books."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-hear-gifts-2-q",
+              "choices": [
+                {
+                  "picture": "b1l03-gifts-1",
+                  "alt": "Two books on a table"
+                },
+                {
+                  "picture": "b1l03-gifts-2",
+                  "alt": "Two pencils on a table"
+                },
+                {
+                  "picture": "b1l03-gifts-3",
+                  "alt": "Two cakes on a table"
+                }
+              ],
+              "key": 0,
+              "why": "本 counts books: 兩本書 is two books.",
+              "focus": {
+                "zh": "兩本書",
+                "en": "two books"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-09",
+                "B1L03-1-07",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-hear-gifts-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "媽媽的生日，我想送她兩個蛋糕。",
+              "simplified": "妈妈的生日，我想送她两个蛋糕。",
+              "pinyin": "Māma de shēngrì, wǒ xiǎng sòng tā liǎng ge dàngāo.",
+              "english": "It's Mom's birthday. I'd like to give her two cakes."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-hear-gifts-3-q",
+              "choices": [
+                {
+                  "picture": "b1l03-gifts-1",
+                  "alt": "Two books on a table"
+                },
+                {
+                  "picture": "b1l03-gifts-2",
+                  "alt": "Two pencils on a table"
+                },
+                {
+                  "picture": "b1l03-gifts-3",
+                  "alt": "Two cakes on a table"
+                }
+              ],
+              "key": 2,
+              "why": "兩個蛋糕 is two cakes. 個 is the measure word here, not 本 (books) or 枝 (pencils).",
+              "focus": {
+                "zh": "兩個蛋糕",
+                "en": "two cakes"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-05",
+                "B1L03-1-18",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-clothes",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l03-hear-clothes-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文的衣服是白色的，中明的是紅色的。",
+              "simplified": "宜文的衣服是白色的，中明的是红色的。",
+              "pinyin": "Yíwén de yīfu shì báisè de, Zhōngmíng de shì hóngsè de.",
+              "english": "Yiwen's clothes are white, and Zhongming's are red."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-hear-clothes-1-q",
+              "choices": [
+                {
+                  "picture": "b1l03-clothes-1",
+                  "alt": "One in white, one in red: Yiwen (the girl) wears white, Zhongming (the boy) wears red"
+                },
+                {
+                  "picture": "b1l03-clothes-2",
+                  "alt": "Both in red: Yiwen and Zhongming both wear red"
+                },
+                {
+                  "picture": "b1l03-clothes-3",
+                  "alt": "One in red, one in white: Yiwen (the girl) wears red, Zhongming (the boy) wears white"
+                }
+              ],
+              "key": 0,
+              "why": "宜文的 is white and 中明的 is red. In the third picture the colors are the other way round.",
+              "focus": {
+                "zh": "中明的是紅色的",
+                "en": "whose is which (的)"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-17",
+                "B1L03-2-15",
+                "B1L03-2-23"
+              ],
+              "grammarIds": [
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-hear-clothes-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "今天中明和宜文都穿紅色的衣服。",
+              "simplified": "今天中明和宜文都穿红色的衣服。",
+              "pinyin": "Jīntiān Zhōngmíng hé Yíwén dōu chuān hóngsè de yīfu.",
+              "english": "Today Zhongming and Yiwen are both wearing red clothes."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-hear-clothes-2-q",
+              "choices": [
+                {
+                  "picture": "b1l03-clothes-1",
+                  "alt": "One in white, one in red: Yiwen (the girl) wears white, Zhongming (the boy) wears red"
+                },
+                {
+                  "picture": "b1l03-clothes-2",
+                  "alt": "Both in red: Yiwen and Zhongming both wear red"
+                },
+                {
+                  "picture": "b1l03-clothes-3",
+                  "alt": "One in red, one in white: Yiwen (the girl) wears red, Zhongming (the boy) wears white"
+                }
+              ],
+              "key": 1,
+              "why": "都 means both: both of them wear red (紅色的衣服). In the other two pictures one wears white.",
+              "focus": {
+                "zh": "都穿紅色的",
+                "en": "both wear red"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-19",
+                "B1L03-2-22",
+                "B1L03-2-15",
+                "B1L03-2-23"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84",
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-hear-clothes-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文穿紅色的衣服，中明穿白色的。",
+              "simplified": "宜文穿红色的衣服，中明穿白色的。",
+              "pinyin": "Yíwén chuān hóngsè de yīfu, Zhōngmíng chuān báisè de.",
+              "english": "Yiwen is wearing red clothes, and Zhongming is wearing white."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-hear-clothes-3-q",
+              "choices": [
+                {
+                  "picture": "b1l03-clothes-1",
+                  "alt": "One in white, one in red: Yiwen (the girl) wears white, Zhongming (the boy) wears red"
+                },
+                {
+                  "picture": "b1l03-clothes-2",
+                  "alt": "Both in red: Yiwen and Zhongming both wear red"
+                },
+                {
+                  "picture": "b1l03-clothes-3",
+                  "alt": "One in red, one in white: Yiwen (the girl) wears red, Zhongming (the boy) wears white"
+                }
+              ],
+              "key": 2,
+              "why": "宜文 wears red and 中明 white. In the first picture the colors are the other way round. 白色的 keeps 的 and drops 衣服.",
+              "focus": {
+                "zh": "白色的",
+                "en": "the white one (的)"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-15",
+                "B1L03-2-17",
+                "B1L03-2-22",
+                "B1L03-2-23"
+              ],
+              "grammarIds": [
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-pencils",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l03-picture-pencils-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L03-R02",
+            "alt": "In a shop, Yiwen holds two white pencils; Zhongming, next to her, holds one red pencil. In front of them is a tray of pencils in many colors."
+          },
+          "questions": [
+            {
+              "id": "b1l03-picture-pencils-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "宜文有兩枝白色的鉛筆。",
+                  "simplified": "宜文有两枝白色的铅笔。",
+                  "pinyin": "Yíwén yǒu liǎng zhī báisè de qiānbǐ.",
+                  "english": "Yiwen has two white pencils."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "宜文有兩枝紅色的鉛筆。",
+                  "simplified": "宜文有两枝红色的铅笔。",
+                  "pinyin": "Yíwén yǒu liǎng zhī hóngsè de qiānbǐ.",
+                  "english": "Yiwen has two red pencils."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "宜文有一枝紅色的鉛筆。",
+                  "simplified": "宜文有一枝红色的铅笔。",
+                  "pinyin": "Yíwén yǒu yì zhī hóngsè de qiānbǐ.",
+                  "english": "Yiwen has one red pencil."
+                }
+              ],
+              "key": 0,
+              "why": "Yiwen holds two (兩枝) white (白色的) pencils. The one red pencil is in Zhongming's hand.",
+              "focus": {
+                "zh": "兩枝白色的鉛筆",
+                "en": "two white pencils"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-08",
+                "B1L03-2-17",
+                "B1L03-2-04",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-picture-pencils-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L03-R02",
+            "alt": "In a shop, Yiwen holds two white pencils; Zhongming, next to her, holds one red pencil. In front of them is a tray of pencils in many colors."
+          },
+          "questions": [
+            {
+              "id": "b1l03-picture-pencils-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中明有兩枝白色的鉛筆。",
+                  "simplified": "中明有两枝白色的铅笔。",
+                  "pinyin": "Zhōngmíng yǒu liǎng zhī báisè de qiānbǐ.",
+                  "english": "Zhongming has two white pencils."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明有一枝紅色的鉛筆。",
+                  "simplified": "中明有一枝红色的铅笔。",
+                  "pinyin": "Zhōngmíng yǒu yì zhī hóngsè de qiānbǐ.",
+                  "english": "Zhongming has one red pencil."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明有兩枝紅色的鉛筆。",
+                  "simplified": "中明有两枝红色的铅笔。",
+                  "pinyin": "Zhōngmíng yǒu liǎng zhī hóngsè de qiānbǐ.",
+                  "english": "Zhongming has two red pencils."
+                }
+              ],
+              "key": 1,
+              "why": "Zhongming holds one (一枝) red (紅色的) pencil. The two white pencils are in Yiwen's hand.",
+              "focus": {
+                "zh": "一枝紅色的鉛筆",
+                "en": "one red pencil"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-08",
+                "B1L03-2-15",
+                "B1L03-2-04",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-party",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l03-picture-party-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L03-R03",
+            "alt": "Youmei's birthday party: Youmei sits behind one big birthday cake with candles, with Yiwen, Zhongming and Guo'an around her, all four smiling. Also on the table: wrapped books, two pencils, a bowl of fruit and some snacks; Zhongming holds flowers."
+          },
+          "questions": [
+            {
+              "id": "b1l03-picture-party-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "友美有一個大蛋糕。",
+                  "simplified": "友美有一个大蛋糕。",
+                  "pinyin": "Yǒuměi yǒu yí ge dà dàngāo.",
+                  "english": "Youmei has one big cake."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "友美有兩個小蛋糕。",
+                  "simplified": "友美有两个小蛋糕。",
+                  "pinyin": "Yǒuměi yǒu liǎng ge xiǎo dàngāo.",
+                  "english": "Youmei has two small cakes."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中明有兩個大蛋糕。",
+                  "simplified": "中明有两个大蛋糕。",
+                  "pinyin": "Zhōngmíng yǒu liǎng ge dà dàngāo.",
+                  "english": "Zhongming has two big cakes."
+                }
+              ],
+              "key": 0,
+              "why": "There is one (一個) big (大) birthday cake, and it is Youmei's. There are not two cakes, and Zhongming has flowers.",
+              "focus": {
+                "zh": "一個大蛋糕",
+                "en": "one big cake"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-05",
+                "B1L03-1-16",
+                "B1L03-1-17",
+                "B1L03-1-18"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-picture-party-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L03-R03",
+            "alt": "Youmei's birthday party: Youmei sits behind one big birthday cake with candles, with Yiwen, Zhongming and Guo'an around her, all four smiling. Also on the table: wrapped books, two pencils, a bowl of fruit and some snacks; Zhongming holds flowers."
+          },
+          "questions": [
+            {
+              "id": "b1l03-picture-party-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們三個人都很累。",
+                  "simplified": "他们三个人都很累。",
+                  "pinyin": "Tāmen sān ge rén dōu hěn lèi.",
+                  "english": "All three of them are very tired."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們四個人都很累。",
+                  "simplified": "他们四个人都很累。",
+                  "pinyin": "Tāmen sì ge rén dōu hěn lèi.",
+                  "english": "All four of them are very tired."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們四個人都很開心。",
+                  "simplified": "他们四个人都很开心。",
+                  "pinyin": "Tāmen sì ge rén dōu hěn kāixīn.",
+                  "english": "All four of them are very happy."
+                }
+              ],
+              "key": 2,
+              "why": "There are four (四個) people and they are all (都) smiling: 很開心, very happy, not 很累 (tired).",
+              "focus": {
+                "zh": "四個人都很開心",
+                "en": "all four are happy"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-19",
+                "B1L03-3-08",
+                "B1L03-1-05"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84",
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gift",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l03-dialogue-gift-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "中明，你想送友美甜點嗎？",
+              "simplified": "中明，你想送友美甜点吗？",
+              "pinyin": "Zhōngmíng, nǐ xiǎng sòng Yǒuměi tiándiǎn ma?",
+              "english": "Zhongming, would you like to give Youmei desserts?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不想，我想送她一些花。",
+              "simplified": "不想，我想送她一些花。",
+              "pinyin": "Bù xiǎng, wǒ xiǎng sòng tā yìxiē huā.",
+              "english": "No, I'd like to give her some flowers."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-gift-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "中明想送友美什麼？",
+                "simplified": "中明想送友美什么？",
+                "pinyin": "Zhōngmíng xiǎng sòng Yǒuměi shénme?",
+                "english": "What does Zhongming want to give Youmei?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "花",
+                  "simplified": "花",
+                  "pinyin": "huā",
+                  "english": "flowers"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "衣服",
+                  "simplified": "衣服",
+                  "pinyin": "yīfu",
+                  "english": "clothes"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "甜點",
+                  "simplified": "甜点",
+                  "pinyin": "tiándiǎn",
+                  "english": "desserts"
+                }
+              ],
+              "key": 0,
+              "why": "He says 不想 to the desserts, then 我想送她一些花: flowers.",
+              "focus": {
+                "zh": "送她一些花",
+                "en": "giving someone a gift"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-3-06",
+                "B1L03-1-13",
+                "B1L03-1-12"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-dialogue-gift-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這些花很漂亮，你要送誰？",
+              "simplified": "这些花很漂亮，你要送谁？",
+              "pinyin": "Zhèxiē huā hěn piàoliàng, nǐ yào sòng shéi?",
+              "english": "These flowers are pretty. Who are you giving them to?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "這些花送老師，這本書送媽媽。",
+              "simplified": "这些花送老师，这本书送妈妈。",
+              "pinyin": "Zhèxiē huā sòng lǎoshī, zhè běn shū sòng māma.",
+              "english": "The flowers are for the teacher, and this book is for Mom."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-gift-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他要送媽媽什麼？",
+                "simplified": "他要送妈妈什么？",
+                "pinyin": "Tā yào sòng māma shénme?",
+                "english": "What is he giving Mom?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "一些花",
+                  "simplified": "一些花",
+                  "pinyin": "yìxiē huā",
+                  "english": "some flowers"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一個蛋糕",
+                  "simplified": "一个蛋糕",
+                  "pinyin": "yí ge dàngāo",
+                  "english": "a cake"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "一本書",
+                  "simplified": "一本书",
+                  "pinyin": "yì běn shū",
+                  "english": "a book"
+                }
+              ],
+              "key": 2,
+              "why": "這本書送媽媽: the book is for Mom. The flowers (這些花) go to the teacher.",
+              "focus": {
+                "zh": "這本書送媽媽",
+                "en": "who gets which gift"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-07",
+                "B1L03-3-03",
+                "B1L03-1-13"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74",
+                "B1L03-G03-P81"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-dialogue-gift-3",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文，妳想送友美英文書嗎？",
+              "simplified": "宜文，你想送友美英文书吗？",
+              "pinyin": "Yíwén, nǐ xiǎng sòng Yǒuměi Yīngwén shū ma?",
+              "english": "Yiwen, would you like to give Youmei English books?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不想，她愛看中文書，我想送她兩本。",
+              "simplified": "不想，她爱看中文书，我想送她两本。",
+              "pinyin": "Bù xiǎng, tā ài kàn Zhōngwén shū, wǒ xiǎng sòng tā liǎng běn.",
+              "english": "No, she loves reading Chinese books. I'd like to give her two."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-gift-3-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "宜文想送友美什麼？",
+                "simplified": "宜文想送友美什么？",
+                "pinyin": "Yíwén xiǎng sòng Yǒuměi shénme?",
+                "english": "What does Yiwen want to give Youmei?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中文書",
+                  "simplified": "中文书",
+                  "pinyin": "Zhōngwén shū",
+                  "english": "Chinese books"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "英文書",
+                  "simplified": "英文书",
+                  "pinyin": "Yīngwén shū",
+                  "english": "English books"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "衣服",
+                  "simplified": "衣服",
+                  "pinyin": "yīfu",
+                  "english": "clothes"
+                }
+              ],
+              "key": 0,
+              "why": "She says 不想 to the English books. 她愛看中文書，我想送她兩本 means two Chinese books.",
+              "focus": {
+                "zh": "送她兩本中文書",
+                "en": "giving her Chinese books"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-11",
+                "B1L03-1-10",
+                "B1L03-1-07"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-price",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l03-dialogue-price-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，這種花一朵幾塊錢？",
+              "simplified": "请问，这种花一朵几块钱？",
+              "pinyin": "Qǐngwèn, zhè zhǒng huā yì duǒ jǐ kuài qián?",
+              "english": "Excuse me, how much is one of these flowers?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "一朵二十塊，兩朵三十五塊。",
+              "simplified": "一朵二十块，两朵三十五块。",
+              "pinyin": "Yì duǒ èrshí kuài, liǎng duǒ sānshíwǔ kuài.",
+              "english": "Twenty for one, thirty-five for two."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-price-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "兩朵花幾塊錢？",
+                "simplified": "两朵花几块钱？",
+                "pinyin": "Liǎng duǒ huā jǐ kuài qián?",
+                "english": "How much are two flowers?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "二十塊",
+                  "simplified": "二十块",
+                  "pinyin": "èrshí kuài",
+                  "english": "twenty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "四十塊",
+                  "simplified": "四十块",
+                  "pinyin": "sìshí kuài",
+                  "english": "forty dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三十五塊",
+                  "simplified": "三十五块",
+                  "pinyin": "sānshíwǔ kuài",
+                  "english": "thirty-five dollars"
+                }
+              ],
+              "key": 2,
+              "why": "兩朵三十五塊: two cost thirty-five, not 20 + 20. Twenty is the price of one.",
+              "focus": {
+                "zh": "兩朵三十五塊",
+                "en": "price for two"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-14",
+                "B1L03-1-13",
+                "B1L03-2-09",
+                "B1L03-2-10"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-dialogue-price-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "這本英文書很好看，貴嗎？",
+              "simplified": "这本英文书很好看，贵吗？",
+              "pinyin": "Zhè běn Yīngwén shū hěn hǎokàn, guì ma?",
+              "english": "This English book looks good. Is it expensive?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "四百塊。那本中文書兩百塊。",
+              "simplified": "四百块。那本中文书两百块。",
+              "pinyin": "Sì bǎi kuài. Nà běn Zhōngwén shū liǎng bǎi kuài.",
+              "english": "Four hundred. That Chinese book is two hundred."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-price-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "那本中文書幾百塊？",
+                "simplified": "那本中文书几百块？",
+                "pinyin": "Nà běn Zhōngwén shū jǐ bǎi kuài?",
+                "english": "How many hundred dollars is that Chinese book?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "兩百塊",
+                  "simplified": "两百块",
+                  "pinyin": "liǎng bǎi kuài",
+                  "english": "two hundred dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "四百塊",
+                  "simplified": "四百块",
+                  "pinyin": "sì bǎi kuài",
+                  "english": "four hundred dollars"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六百塊",
+                  "simplified": "六百块",
+                  "pinyin": "liù bǎi kuài",
+                  "english": "six hundred dollars"
+                }
+              ],
+              "key": 0,
+              "why": "那本中文書兩百塊: the Chinese book is 200. 400 is the English book, and 600 is both together.",
+              "focus": {
+                "zh": "那本中文書",
+                "en": "that book"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-09",
+                "B1L03-1-10",
+                "B1L03-2-13",
+                "B1L03-2-09"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-date",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l03-dialogue-date-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "宜文的生日是幾月幾號？",
+              "simplified": "宜文的生日是几月几号？",
+              "pinyin": "Yíwén de shēngrì shì jǐ yuè jǐ hào?",
+              "english": "What's the date of Yiwen's birthday?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "九月二十三號，星期六。",
+              "simplified": "九月二十三号，星期六。",
+              "pinyin": "Jiǔ yuè èrshísān hào, xīngqíliù.",
+              "english": "September twenty-third, a Saturday."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-date-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "宜文的生日是幾月？",
+                "simplified": "宜文的生日是几月？",
+                "pinyin": "Yíwén de shēngrì shì jǐ yuè?",
+                "english": "Which month is Yiwen's birthday?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "九月",
+                  "simplified": "九月",
+                  "pinyin": "jiǔ yuè",
+                  "english": "September"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "六月",
+                  "simplified": "六月",
+                  "pinyin": "liù yuè",
+                  "english": "June"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "三月",
+                  "simplified": "三月",
+                  "pinyin": "sān yuè",
+                  "english": "March"
+                }
+              ],
+              "key": 0,
+              "why": "九月二十三號: 九月 is the month and 二十三號 the day. 六 is from 星期六 (Saturday), and 三 ends 二十三.",
+              "focus": {
+                "zh": "幾月幾號",
+                "en": "saying the date"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-12",
+                "B1L02-1-13",
+                "B1L02-2-08",
+                "B1L02-1-11"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-dialogue-date-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳明天幾點去學校？",
+              "simplified": "你明天几点去学校？",
+              "pinyin": "Nǐ míngtiān jǐ diǎn qù xuéxiào?",
+              "english": "What time are you going to school tomorrow?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我七點起床，八點去學校，九點上課。",
+              "simplified": "我七点起床，八点去学校，九点上课。",
+              "pinyin": "Wǒ qī diǎn qǐchuáng, bā diǎn qù xuéxiào, jiǔ diǎn shàngkè.",
+              "english": "I get up at seven, go to school at eight, and have class at nine."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-date-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "她明天幾點去學校？",
+                "simplified": "她明天几点去学校？",
+                "pinyin": "Tā míngtiān jǐ diǎn qù xuéxiào?",
+                "english": "What time is she going to school tomorrow?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "seven o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "八點",
+                  "simplified": "八点",
+                  "pinyin": "bā diǎn",
+                  "english": "eight o'clock"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "english": "nine o'clock"
+                }
+              ],
+              "key": 1,
+              "why": "八點去學校: she goes to school at eight. Seven is when she gets up; nine is her class.",
+              "focus": {
+                "zh": "幾點",
+                "en": "telling the time"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-1-06",
+                "B1L02-3-03",
+                "B1L02-1-28"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54",
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-intro",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l03-dialogue-intro-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，你是美國人嗎？",
+              "simplified": "请问，你是美国人吗？",
+              "pinyin": "Qǐngwèn, nǐ shì Měiguó rén ma?",
+              "english": "Excuse me, are you American?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "不是，我是英國人。",
+              "simplified": "不是，我是英国人。",
+              "pinyin": "Bú shì, wǒ shì Yīngguó rén.",
+              "english": "No, I'm British."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-intro-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他是哪國人？",
+                "simplified": "他是哪国人？",
+                "pinyin": "Tā shì nǎ guó rén?",
+                "english": "Which country is he from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "美國人",
+                  "simplified": "美国人",
+                  "pinyin": "Měiguó rén",
+                  "english": "American"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "英國人",
+                  "simplified": "英国人",
+                  "pinyin": "Yīngguó rén",
+                  "english": "British"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日本人",
+                  "simplified": "日本人",
+                  "pinyin": "Rìběn rén",
+                  "english": "Japanese"
+                }
+              ],
+              "key": 1,
+              "why": "He says 不是 to 美國人, then 我是英國人.",
+              "focus": {
+                "zh": "哪國人",
+                "en": "which country"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-10",
+                "B1L01-1-17",
+                "B1L01-1-18",
+                "B1L01-1-13"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-dialogue-intro-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "妳喜歡喝茶嗎？",
+              "simplified": "你喜欢喝茶吗？",
+              "pinyin": "Nǐ xǐhuān hē chá ma?",
+              "english": "Do you like drinking tea?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我不喜歡喝茶，我愛喝奶茶。",
+              "simplified": "我不喜欢喝茶，我爱喝奶茶。",
+              "pinyin": "Wǒ bù xǐhuān hē chá, wǒ ài hē nǎichá.",
+              "english": "I don't like tea. I love milk tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-dialogue-intro-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "她愛喝什麼？",
+                "simplified": "她爱喝什么？",
+                "pinyin": "Tā ài hē shénme?",
+                "english": "What does she love to drink?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "茶",
+                  "simplified": "茶",
+                  "pinyin": "chá",
+                  "english": "tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                }
+              ],
+              "key": 2,
+              "why": "她不喜歡喝茶 but 愛喝奶茶: milk tea, not plain tea.",
+              "focus": {
+                "zh": "不喜歡／愛",
+                "en": "likes and dislikes"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-12",
+                "B1L01-3-08",
+                "B1L01-2-06",
+                "B1L01-3-03"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-give",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l03-read-give-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l03-read-give-1-q",
+              "prompt": {
+                "traditional": "宜文送中明一本書。",
+                "simplified": "宜文送中明一本书。",
+                "pinyin": "Yíwén sòng Zhōngmíng yì běn shū.",
+                "english": "Yiwen gives Zhongming a book."
+              },
+              "choices": [
+                {
+                  "picture": "b1l03-give-1",
+                  "alt": "Book from Yiwen to Zhongming: Yiwen (the girl) hands Zhongming a book"
+                },
+                {
+                  "picture": "b1l03-give-2",
+                  "alt": "Book from Zhongming to Yiwen: Zhongming (the boy) hands Yiwen a book"
+                },
+                {
+                  "picture": "b1l03-give-3",
+                  "alt": "Flowers from Yiwen to Zhongming: Yiwen (the girl) hands Zhongming some flowers"
+                }
+              ],
+              "key": 0,
+              "why": "The giver comes before 送, the receiver after it: Yiwen gives, Zhongming gets a book.",
+              "focus": {
+                "zh": "送 + 人 + 禮物",
+                "en": "who gives to whom"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-09",
+                "B1L03-1-07"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-read-give-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l03-read-give-2-q",
+              "prompt": {
+                "traditional": "中明送宜文一本書。",
+                "simplified": "中明送宜文一本书。",
+                "pinyin": "Zhōngmíng sòng Yíwén yì běn shū.",
+                "english": "Zhongming gives Yiwen a book."
+              },
+              "choices": [
+                {
+                  "picture": "b1l03-give-1",
+                  "alt": "Book from Yiwen to Zhongming: Yiwen (the girl) hands Zhongming a book"
+                },
+                {
+                  "picture": "b1l03-give-2",
+                  "alt": "Book from Zhongming to Yiwen: Zhongming (the boy) hands Yiwen a book"
+                },
+                {
+                  "picture": "b1l03-give-3",
+                  "alt": "Flowers from Yiwen to Zhongming: Yiwen (the girl) hands Zhongming some flowers"
+                }
+              ],
+              "key": 1,
+              "why": "中明 comes before 送, so he is the giver; 宜文 after 送 gets the book.",
+              "focus": {
+                "zh": "送 + 人 + 禮物",
+                "en": "who gives to whom"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-09",
+                "B1L03-1-07"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-read-give-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l03-read-give-3-q",
+              "prompt": {
+                "traditional": "宜文送中明一些花。",
+                "simplified": "宜文送中明一些花。",
+                "pinyin": "Yíwén sòng Zhōngmíng yìxiē huā.",
+                "english": "Yiwen gives Zhongming some flowers."
+              },
+              "choices": [
+                {
+                  "picture": "b1l03-give-1",
+                  "alt": "Book from Yiwen to Zhongming: Yiwen (the girl) hands Zhongming a book"
+                },
+                {
+                  "picture": "b1l03-give-2",
+                  "alt": "Book from Zhongming to Yiwen: Zhongming (the boy) hands Yiwen a book"
+                },
+                {
+                  "picture": "b1l03-give-3",
+                  "alt": "Flowers from Yiwen to Zhongming: Yiwen (the girl) hands Zhongming some flowers"
+                }
+              ],
+              "key": 2,
+              "why": "Yiwen gives, Zhongming gets, and the gift is 一些花 (some flowers), not a book.",
+              "focus": {
+                "zh": "送 + 人 + 禮物",
+                "en": "who gives what"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-1-12",
+                "B1L03-1-13"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-flowers",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l03-read-flowers-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l03-read-flowers-1-q",
+              "prompt": {
+                "traditional": "這三朵花都是紅色的。",
+                "simplified": "这三朵花都是红色的。",
+                "pinyin": "Zhè sān duǒ huā dōu shì hóngsè de.",
+                "english": "These three flowers are all red."
+              },
+              "choices": [
+                {
+                  "picture": "b1l03-flowers-1",
+                  "alt": "One white, two red: a vase with one white flower and two red flowers"
+                },
+                {
+                  "picture": "b1l03-flowers-2",
+                  "alt": "Two white, one red: a vase with two white flowers and one red flower"
+                },
+                {
+                  "picture": "b1l03-flowers-3",
+                  "alt": "All three red: a vase with three red flowers"
+                }
+              ],
+              "key": 2,
+              "why": "都 means all: all three flowers are red.",
+              "focus": {
+                "zh": "這三朵花都",
+                "en": "all three flowers"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-14",
+                "B1L03-1-13",
+                "B1L03-2-19",
+                "B1L03-2-15"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L03-G05-P84",
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-read-flowers-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l03-read-flowers-2-q",
+              "prompt": {
+                "traditional": "這三朵花，有兩朵是白色的。",
+                "simplified": "这三朵花，有两朵是白色的。",
+                "pinyin": "Zhè sān duǒ huā, yǒu liǎng duǒ shì báisè de.",
+                "english": "Of these three flowers, two are white."
+              },
+              "choices": [
+                {
+                  "picture": "b1l03-flowers-1",
+                  "alt": "One white, two red: a vase with one white flower and two red flowers"
+                },
+                {
+                  "picture": "b1l03-flowers-2",
+                  "alt": "Two white, one red: a vase with two white flowers and one red flower"
+                },
+                {
+                  "picture": "b1l03-flowers-3",
+                  "alt": "All three red: a vase with three red flowers"
+                }
+              ],
+              "key": 1,
+              "why": "有兩朵是白色的: two of the three are white, so one is red. The first picture has only one white flower, the third none.",
+              "focus": {
+                "zh": "有兩朵是白色的",
+                "en": "two are white"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-14",
+                "B1L03-1-13",
+                "B1L03-2-17",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-read-flowers-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l03-read-flowers-3-q",
+              "prompt": {
+                "traditional": "這三朵花，一朵是白色的，兩朵是紅色的。",
+                "simplified": "这三朵花，一朵是白色的，两朵是红色的。",
+                "pinyin": "Zhè sān duǒ huā, yì duǒ shì báisè de, liǎng duǒ shì hóngsè de.",
+                "english": "Of these three flowers, one is white and two are red."
+              },
+              "choices": [
+                {
+                  "picture": "b1l03-flowers-1",
+                  "alt": "One white, two red: a vase with one white flower and two red flowers"
+                },
+                {
+                  "picture": "b1l03-flowers-2",
+                  "alt": "Two white, one red: a vase with two white flowers and one red flower"
+                },
+                {
+                  "picture": "b1l03-flowers-3",
+                  "alt": "All three red: a vase with three red flowers"
+                }
+              ],
+              "key": 0,
+              "why": "一朵 white and 兩朵 red: one white flower, two red ones.",
+              "focus": {
+                "zh": "一朵、兩朵",
+                "en": "counting flowers"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-14",
+                "B1L03-1-13",
+                "B1L03-2-15",
+                "B1L03-2-17"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-prices",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l03-realia-prices-1",
+          "kind": "realia",
+          "picture": "b1l03-prices",
+          "alt": "A price board at a gift stand: small pencils, Chinese books, English books, flowers and cakes, each with its price",
+          "transcript": {
+            "traditional": "生日禮物　小鉛筆　一枝 25元　中文書　一本 280元　英文書　一本 350元　花　一朵 30元　蛋糕　一個 450元",
+            "simplified": "生日礼物　小铅笔　一枝 25元　中文书　一本 280元　英文书　一本 350元　花　一朵 30元　蛋糕　一个 450元",
+            "pinyin": "Shēngrì lǐwù: xiǎo qiānbǐ, yì zhī 25 yuán; Zhōngwén shū, yì běn 280 yuán; Yīngwén shū, yì běn 350 yuán; huā, yì duǒ 30 yuán; dàngāo, yí ge 450 yuán",
+            "english": "Birthday gifts: small pencils, 25 each; Chinese books, 280 each; English books, 350 each; flowers, 30 each; cakes, 450 each"
+          },
+          "questions": [
+            {
+              "id": "b1l03-realia-prices-1-q",
+              "choices": [
+                {
+                  "traditional": "兩朵花六十塊。",
+                  "simplified": "两朵花六十块。",
+                  "pinyin": "Liǎng duǒ huā liùshí kuài.",
+                  "english": "Two flowers cost sixty dollars."
+                },
+                {
+                  "traditional": "兩枝小鉛筆三十塊。",
+                  "simplified": "两枝小铅笔三十块。",
+                  "pinyin": "Liǎng zhī xiǎo qiānbǐ sānshí kuài.",
+                  "english": "Two small pencils cost thirty dollars."
+                },
+                {
+                  "traditional": "蛋糕一個三百五十塊。",
+                  "simplified": "蛋糕一个三百五十块。",
+                  "pinyin": "Dàngāo yí ge sān bǎi wǔshí kuài.",
+                  "english": "A cake costs three hundred and fifty dollars."
+                }
+              ],
+              "key": 0,
+              "why": "Flowers are 30元 each, so two cost 60. Two pencils cost 50, not 30, and 350元 is an English book, not a cake.",
+              "focus": {
+                "zh": "一朵、一枝、一個",
+                "en": "reading prices"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-14",
+                "B1L03-1-13",
+                "B1L03-2-09",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-realia-prices-2",
+          "kind": "realia",
+          "picture": "b1l03-prices",
+          "alt": "A price board at a gift stand: small pencils, Chinese books, English books, flowers and cakes, each with its price",
+          "transcript": {
+            "traditional": "生日禮物　小鉛筆　一枝 25元　中文書　一本 280元　英文書　一本 350元　花　一朵 30元　蛋糕　一個 450元",
+            "simplified": "生日礼物　小铅笔　一枝 25元　中文书　一本 280元　英文书　一本 350元　花　一朵 30元　蛋糕　一个 450元",
+            "pinyin": "Shēngrì lǐwù: xiǎo qiānbǐ, yì zhī 25 yuán; Zhōngwén shū, yì běn 280 yuán; Yīngwén shū, yì běn 350 yuán; huā, yì duǒ 30 yuán; dàngāo, yí ge 450 yuán",
+            "english": "Birthday gifts: small pencils, 25 each; Chinese books, 280 each; English books, 350 each; flowers, 30 each; cakes, 450 each"
+          },
+          "questions": [
+            {
+              "id": "b1l03-realia-prices-2-q",
+              "choices": [
+                {
+                  "traditional": "中文書一本三百五十塊。",
+                  "simplified": "中文书一本三百五十块。",
+                  "pinyin": "Zhōngwén shū yì běn sān bǎi wǔshí kuài.",
+                  "english": "A Chinese book costs three hundred and fifty dollars."
+                },
+                {
+                  "traditional": "蛋糕一個四百五十塊。",
+                  "simplified": "蛋糕一个四百五十块。",
+                  "pinyin": "Dàngāo yí ge sì bǎi wǔshí kuài.",
+                  "english": "A cake costs four hundred and fifty dollars."
+                },
+                {
+                  "traditional": "英文書一本兩百八十塊。",
+                  "simplified": "英文书一本两百八十块。",
+                  "pinyin": "Yīngwén shū yì běn liǎng bǎi bāshí kuài.",
+                  "english": "An English book costs two hundred and eighty dollars."
+                }
+              ],
+              "key": 1,
+              "why": "The board says 蛋糕 一個 450元. The two book prices are swapped: the Chinese book is 280 and the English book 350.",
+              "focus": {
+                "zh": "一個、一本",
+                "en": "reading prices"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-18",
+                "B1L03-1-05",
+                "B1L03-1-09",
+                "B1L03-2-09"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-invite",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l03-realia-invite-1",
+          "kind": "realia",
+          "picture": "b1l03-invite",
+          "alt": "A birthday invitation card from Youmei with the date, the day, the time and what there will be to eat",
+          "transcript": {
+            "traditional": "友美的生日　10月7日　星期六　晚上 6:00　請你來我家玩！　有蛋糕、水果和點心",
+            "simplified": "友美的生日　10月7日　星期六　晚上 6:00　请你来我家玩！　有蛋糕、水果和点心",
+            "pinyin": "Yǒuměi de shēngrì: shí yuè qī rì, xīngqíliù, wǎnshàng liù diǎn. Qǐng nǐ lái wǒ jiā wán! Yǒu dàngāo, shuǐguǒ hé diǎnxīn",
+            "english": "Youmei's birthday: October 7, Saturday, 6:00 p.m. Come and have fun at my home! There will be cake, fruit and snacks"
+          },
+          "questions": [
+            {
+              "id": "b1l03-realia-invite-1-q",
+              "choices": [
+                {
+                  "traditional": "友美請朋友去她家玩。",
+                  "simplified": "友美请朋友去她家玩。",
+                  "pinyin": "Yǒuměi qǐng péngyǒu qù tā jiā wán.",
+                  "english": "Youmei invites her friends to her home to have fun."
+                },
+                {
+                  "traditional": "友美想去朋友家玩。",
+                  "simplified": "友美想去朋友家玩。",
+                  "pinyin": "Yǒuměi xiǎng qù péngyǒu jiā wán.",
+                  "english": "Youmei wants to go to a friend's home to have fun."
+                },
+                {
+                  "traditional": "朋友請友美吃蛋糕。",
+                  "simplified": "朋友请友美吃蛋糕。",
+                  "pinyin": "Péngyǒu qǐng Yǒuměi chī dàngāo.",
+                  "english": "A friend treats Youmei to cake."
+                }
+              ],
+              "key": 0,
+              "why": "請你來我家玩 means Youmei invites you to her home. She is not going out, and the cake is hers to share, not a friend's treat.",
+              "focus": {
+                "zh": "請你來我家玩",
+                "en": "inviting someone over"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-3-01",
+                "B1L03-3-02",
+                "B1L02-1-23"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-realia-invite-2",
+          "kind": "realia",
+          "picture": "b1l03-invite",
+          "alt": "A birthday invitation card from Youmei with the date, the day, the time and what there will be to eat",
+          "transcript": {
+            "traditional": "友美的生日　10月7日　星期六　晚上 6:00　請你來我家玩！　有蛋糕、水果和點心",
+            "simplified": "友美的生日　10月7日　星期六　晚上 6:00　请你来我家玩！　有蛋糕、水果和点心",
+            "pinyin": "Yǒuměi de shēngrì: shí yuè qī rì, xīngqíliù, wǎnshàng liù diǎn. Qǐng nǐ lái wǒ jiā wán! Yǒu dàngāo, shuǐguǒ hé diǎnxīn",
+            "english": "Youmei's birthday: October 7, Saturday, 6:00 p.m. Come and have fun at my home! There will be cake, fruit and snacks"
+          },
+          "questions": [
+            {
+              "id": "b1l03-realia-invite-2-q",
+              "prompt": {
+                "traditional": "大家幾點去友美家？",
+                "simplified": "大家几点去友美家？",
+                "pinyin": "Dàjiā jǐ diǎn qù Yǒuměi jiā?",
+                "english": "What time does everyone go to Youmei's home?"
+              },
+              "choices": [
+                {
+                  "traditional": "六點",
+                  "simplified": "六点",
+                  "pinyin": "liù diǎn",
+                  "english": "six o'clock"
+                },
+                {
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "seven o'clock"
+                },
+                {
+                  "traditional": "十點",
+                  "simplified": "十点",
+                  "pinyin": "shí diǎn",
+                  "english": "ten o'clock"
+                }
+              ],
+              "key": 0,
+              "why": "The card says 晚上 6:00, six in the evening. 10 and 7 are the month and the day.",
+              "focus": {
+                "zh": "晚上六點",
+                "en": "time of the party"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-2-10",
+                "B1L02-2-05"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l03-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l03-gift-shop",
+          "alt": "Yiwen holds up a book and Zhongming holds up a pen in a small gift shop with books, flowers, red and white pens, red and white tops and small cakes",
+          "questions": [
+            {
+              "id": "b1l03-scene-gap-1-a",
+              "prompt": {
+                "traditional": "宜文想買書，中明想買＿＿。",
+                "simplified": "宜文想买书，中明想买＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "衣服",
+                  "simplified": "衣服",
+                  "pinyin": "yīfu",
+                  "english": "clothes"
+                },
+                {
+                  "traditional": "筆",
+                  "simplified": "笔",
+                  "pinyin": "bǐ",
+                  "english": "pen"
+                },
+                {
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "english": "book"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "宜文想買書，中明想買筆。",
+                "simplified": "宜文想买书，中明想买笔。",
+                "pinyin": "Yíwén xiǎng mǎi shū, Zhōngmíng xiǎng mǎi bǐ.",
+                "english": "Yiwen wants to buy a book, and Zhongming wants to buy a pen."
+              },
+              "why": "Look at the picture: Zhongming holds up a pen (筆). The tops (衣服) hang on a rack, and the book is in Yiwen's hand.",
+              "focus": {
+                "zh": "想買筆",
+                "en": "what he wants to buy"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-01",
+                "B1L03-1-03",
+                "B1L03-2-05"
+              ]
+            },
+            {
+              "id": "b1l03-scene-gap-1-b",
+              "prompt": {
+                "traditional": "友美的生日，我想送她一＿＿大蛋糕。",
+                "simplified": "友美的生日，我想送她一＿＿大蛋糕。"
+              },
+              "choices": [
+                {
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "english": "(general measure word)"
+                },
+                {
+                  "traditional": "本",
+                  "simplified": "本",
+                  "pinyin": "běn",
+                  "english": "(measure word for books)"
+                },
+                {
+                  "traditional": "朵",
+                  "simplified": "朵",
+                  "pinyin": "duǒ",
+                  "english": "(measure word for flowers)"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "友美的生日，我想送她一個大蛋糕。",
+                "simplified": "友美的生日，我想送她一个大蛋糕。",
+                "pinyin": "Yǒuměi de shēngrì, wǒ xiǎng sòng tā yí ge dà dàngāo.",
+                "english": "It's Youmei's birthday. I'd like to give her a big cake."
+              },
+              "why": "A cake takes 個: 一個大蛋糕. 本 is for books and 朵 for flowers.",
+              "focus": {
+                "zh": "一個大蛋糕",
+                "en": "measure word 個"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-05",
+                "B1L03-1-18",
+                "B1L03-1-16",
+                "B1L03-1-04"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G02-P74"
+              ]
+            },
+            {
+              "id": "b1l03-scene-gap-1-c",
+              "prompt": {
+                "traditional": "紅色的筆、白色的筆＿＿很好看。",
+                "simplified": "红色的笔、白色的笔＿＿很好看。"
+              },
+              "choices": [
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                },
+                {
+                  "traditional": "枝",
+                  "simplified": "枝",
+                  "pinyin": "zhī",
+                  "english": "(measure word for pens)"
+                },
+                {
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "english": "all; both"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "紅色的筆、白色的筆都很好看。",
+                "simplified": "红色的笔、白色的笔都很好看。",
+                "pinyin": "Hóngsè de bǐ, báisè de bǐ dōu hěn hǎokàn.",
+                "english": "The red pens and the white pens both look good."
+              },
+              "why": "都 comes after the group and before 很: both look good. 和 cannot stand before 很好看, and 枝 goes after a number (一枝筆), not after the pen.",
+              "focus": {
+                "zh": "都",
+                "en": "both"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-19",
+                "B1L03-2-20",
+                "B1L03-2-05"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l03-gift-shop",
+          "alt": "Yiwen holds up a book and Zhongming holds up a pen in a small gift shop with books, flowers, red and white pens, red and white tops and small cakes",
+          "questions": [
+            {
+              "id": "b1l03-scene-gap-2-a",
+              "prompt": {
+                "traditional": "這兩＿＿花很漂亮，我想送媽媽。",
+                "simplified": "这两＿＿花很漂亮，我想送妈妈。"
+              },
+              "choices": [
+                {
+                  "traditional": "件",
+                  "simplified": "件",
+                  "pinyin": "jiàn",
+                  "english": "(measure word for clothes)"
+                },
+                {
+                  "traditional": "本",
+                  "simplified": "本",
+                  "pinyin": "běn",
+                  "english": "(measure word for books)"
+                },
+                {
+                  "traditional": "朵",
+                  "simplified": "朵",
+                  "pinyin": "duǒ",
+                  "english": "(measure word for flowers)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "這兩朵花很漂亮，我想送媽媽。",
+                "simplified": "这两朵花很漂亮，我想送妈妈。",
+                "pinyin": "Zhè liǎng duǒ huā hěn piàoliàng, wǒ xiǎng sòng māma.",
+                "english": "These two flowers are pretty. I'd like to give them to Mom."
+              },
+              "why": "Flowers take 朵. 件 is for clothes and 本 for books.",
+              "focus": {
+                "zh": "這兩朵花",
+                "en": "measure word for flowers"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-14",
+                "B1L03-1-13",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81",
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l03-scene-gap-2-b",
+              "prompt": {
+                "traditional": "那件白色＿＿衣服很好看。",
+                "simplified": "那件白色＿＿衣服很好看。"
+              },
+              "choices": [
+                {
+                  "traditional": "都",
+                  "simplified": "都",
+                  "pinyin": "dōu",
+                  "english": "both; all"
+                },
+                {
+                  "traditional": "的",
+                  "simplified": "的",
+                  "pinyin": "de",
+                  "english": "(links a describing word to a noun)"
+                },
+                {
+                  "traditional": "和",
+                  "simplified": "和",
+                  "pinyin": "hé",
+                  "english": "and"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "那件白色的衣服很好看。",
+                "simplified": "那件白色的衣服很好看。",
+                "pinyin": "Nà jiàn báisè de yīfu hěn hǎokàn.",
+                "english": "That white top looks good."
+              },
+              "why": "的 links the color to the noun: 白色的衣服. 都 and 和 cannot sit between 白色 and 衣服.",
+              "focus": {
+                "zh": "白色的衣服",
+                "en": "description + 的"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-17",
+                "B1L03-2-23",
+                "B1L03-2-24",
+                "B1L03-2-20"
+              ],
+              "grammarIds": [
+                "B1L03-G04-P82",
+                "B1L03-G03-P81"
+              ]
+            },
+            {
+              "id": "b1l03-scene-gap-2-c",
+              "prompt": {
+                "traditional": "我想送＿＿一枝筆，他很喜歡筆。",
+                "simplified": "我想送＿＿一枝笔，他很喜欢笔。"
+              },
+              "choices": [
+                {
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "english": "Mom"
+                },
+                {
+                  "traditional": "爸爸",
+                  "simplified": "爸爸",
+                  "pinyin": "bàba",
+                  "english": "Dad"
+                },
+                {
+                  "traditional": "友美",
+                  "simplified": "友美",
+                  "pinyin": "Yǒuměi",
+                  "english": "Youmei"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "我想送爸爸一枝筆，他很喜歡筆。",
+                "simplified": "我想送爸爸一枝笔，他很喜欢笔。",
+                "pinyin": "Wǒ xiǎng sòng bàba yì zhī bǐ, tā hěn xǐhuān bǐ.",
+                "english": "I'd like to give Dad a pen. He really likes pens."
+              },
+              "why": "The sentence goes on with 他 (he), so the person after 送 is a man: 爸爸. 媽媽 and 友美 would be 她.",
+              "focus": {
+                "zh": "他／她",
+                "en": "he or she"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-04",
+                "B1L03-2-08",
+                "B1L03-2-05",
+                "B1L02-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G02-P74"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l03-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "今天是媽媽的生日，我和爸爸送她一些禮物。我送她兩{1}中文書，爸爸送她一{2}漂亮的衣服和一些花。紅色的花、白色的花，媽媽{3}很喜歡。晚上我們一起吃蛋糕，媽媽很{4}。",
+            "simplified": "今天是妈妈的生日，我和爸爸送她一些礼物。我送她两{1}中文书，爸爸送她一{2}漂亮的衣服和一些花。红色的花、白色的花，妈妈{3}很喜欢。晚上我们一起吃蛋糕，妈妈很{4}。",
+            "pinyin": "Jīntiān shì māma de shēngrì, wǒ hé bàba sòng tā yìxiē lǐwù. Wǒ sòng tā liǎng běn Zhōngwén shū, bàba sòng tā yí jiàn piàoliàng de yīfu hé yìxiē huā. Hóngsè de huā, báisè de huā, māma dōu hěn xǐhuān. Wǎnshàng wǒmen yìqǐ chī dàngāo, māma hěn kāixīn.",
+            "english": "Today is Mom's birthday, and Dad and I give her some gifts. I give her two Chinese books, and Dad gives her a pretty top and some flowers. Red flowers, white flowers: Mom likes them all. In the evening we eat cake together, and Mom is very happy."
+          },
+          "bank": [
+            {
+              "traditional": "都",
+              "simplified": "都",
+              "pinyin": "dōu",
+              "english": "all; both"
+            },
+            {
+              "traditional": "開心",
+              "simplified": "开心",
+              "pinyin": "kāixīn",
+              "english": "happy"
+            },
+            {
+              "traditional": "本",
+              "simplified": "本",
+              "pinyin": "běn",
+              "english": "(measure word for books)"
+            },
+            {
+              "traditional": "枝",
+              "simplified": "枝",
+              "pinyin": "zhī",
+              "english": "(measure word for pens)"
+            },
+            {
+              "traditional": "件",
+              "simplified": "件",
+              "pinyin": "jiàn",
+              "english": "(measure word for clothes)"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-paragraph-1-1",
+              "key": 2,
+              "why": "Books take 本: 兩本中文書. 枝 is for pens.",
+              "focus": {
+                "zh": "兩本中文書",
+                "en": "measure word for books"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-1-09",
+                "B1L03-1-10",
+                "B1L03-1-08"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73"
+              ]
+            },
+            {
+              "id": "b1l03-paragraph-1-2",
+              "key": 4,
+              "why": "件 is the measure word for clothes: 一件漂亮的衣服. 枝 is for pens.",
+              "focus": {
+                "zh": "一件衣服",
+                "en": "measure word for clothes"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-24",
+                "B1L03-2-23"
+              ],
+              "grammarIds": [
+                "B1L03-G01-P73",
+                "B1L03-G04-P82"
+              ]
+            },
+            {
+              "id": "b1l03-paragraph-1-3",
+              "key": 0,
+              "why": "都 sums up the red and the white flowers: she likes them all.",
+              "focus": {
+                "zh": "都",
+                "en": "all of them"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-19"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            },
+            {
+              "id": "b1l03-paragraph-1-4",
+              "key": 1,
+              "why": "很 needs a describing word after it: 很開心, very happy.",
+              "focus": {
+                "zh": "開心",
+                "en": "happy"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-3-08"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我和媽媽去買筆。這{1}筆很可愛，有紅色的和白色的，媽媽和我{2}喜歡白色的。紅色的一枝四十塊，白色的一枝二十塊，白色的很{3}。我們買兩枝白色{4}筆。",
+            "simplified": "我和妈妈去买笔。这{1}笔很可爱，有红色的和白色的，妈妈和我{2}喜欢白色的。红色的一枝四十块，白色的一枝二十块，白色的很{3}。我们买两枝白色{4}笔。",
+            "pinyin": "Wǒ hé māma qù mǎi bǐ. Zhè zhǒng bǐ hěn kě'ài, yǒu hóngsè de hé báisè de, māma hé wǒ dōu xǐhuān báisè de. Hóngsè de yì zhī sìshí kuài, báisè de yì zhī èrshí kuài, báisè de hěn piányí. Wǒmen mǎi liǎng zhī báisè de bǐ.",
+            "english": "Mom and I go to buy pens. This kind of pen is cute. It comes in red and white, and Mom and I both like the white ones. The red ones are forty each and the white ones twenty each, so the white ones are cheap. We buy two white pens."
+          },
+          "bank": [
+            {
+              "traditional": "的",
+              "simplified": "的",
+              "pinyin": "de",
+              "english": "(links a description to a noun, or stands for it)"
+            },
+            {
+              "traditional": "本",
+              "simplified": "本",
+              "pinyin": "běn",
+              "english": "(measure word for books)"
+            },
+            {
+              "traditional": "便宜",
+              "simplified": "便宜",
+              "pinyin": "piányí",
+              "english": "cheap"
+            },
+            {
+              "traditional": "種",
+              "simplified": "种",
+              "pinyin": "zhǒng",
+              "english": "kind"
+            },
+            {
+              "traditional": "都",
+              "simplified": "都",
+              "pinyin": "dōu",
+              "english": "both; all"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l03-paragraph-2-1",
+              "key": 3,
+              "why": "種 means kind: 這種筆, this kind of pen. Pens never take 本.",
+              "focus": {
+                "zh": "這種筆",
+                "en": "this kind"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-03",
+                "B1L03-2-05"
+              ],
+              "grammarIds": [
+                "B1L03-G03-P81"
+              ]
+            },
+            {
+              "id": "b1l03-paragraph-2-2",
+              "key": 4,
+              "why": "都 comes after the group (媽媽和我) and before the verb: we both like white.",
+              "focus": {
+                "zh": "媽媽和我都",
+                "en": "both"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-19"
+              ],
+              "grammarIds": [
+                "B1L03-G05-P84"
+              ]
+            },
+            {
+              "id": "b1l03-paragraph-2-3",
+              "key": 2,
+              "why": "20 is less than 40, so the white ones are 很便宜, cheap.",
+              "focus": {
+                "zh": "便宜",
+                "en": "cheap"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-12",
+                "B1L03-2-09"
+              ]
+            },
+            {
+              "id": "b1l03-paragraph-2-4",
+              "key": 0,
+              "why": "的 links the color to the noun: 白色的筆, white pens.",
+              "focus": {
+                "zh": "白色的筆",
+                "en": "description + 的"
+              },
+              "lesson": 3,
+              "wordIds": [
+                "B1L03-2-17",
+                "B1L03-2-05"
+              ],
+              "grammarIds": [
+                "B1L03-G04-P82"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l03-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n明天是星期六，我沒有課。我想十點去圖書館看書，中午我們一起吃午飯，好嗎？下午我想回家睡覺。\n中明",
+            "simplified": "友美：\n明天是星期六，我没有课。我想十点去图书馆看书，中午我们一起吃午饭，好吗？下午我想回家睡觉。\n中明",
+            "pinyin": "Yǒuměi: Míngtiān shì xīngqíliù, wǒ méiyǒu kè. Wǒ xiǎng shí diǎn qù túshūguǎn kàn shū, zhōngwǔ wǒmen yìqǐ chī wǔfàn, hǎo ma? Xiàwǔ wǒ xiǎng huí jiā shuìjiào. Zhōngmíng",
+            "english": "Youmei: Tomorrow is Saturday, and I don't have class. I'd like to go to the library at ten to read. Shall we have lunch together at noon? In the afternoon I want to go home and sleep. Zhongming"
+          },
+          "questions": [
+            {
+              "id": "b1l03-reading-note-1-q",
+              "prompt": {
+                "traditional": "中明明天上午想做什麼？",
+                "simplified": "中明明天上午想做什么？",
+                "pinyin": "Zhōngmíng míngtiān shàngwǔ xiǎng zuò shénme?",
+                "english": "What does Zhongming want to do tomorrow morning?"
+              },
+              "choices": [
+                {
+                  "traditional": "去圖書館看書",
+                  "simplified": "去图书馆看书",
+                  "pinyin": "qù túshūguǎn kàn shū",
+                  "english": "go to the library to read"
+                },
+                {
+                  "traditional": "去學校上課",
+                  "simplified": "去学校上课",
+                  "pinyin": "qù xuéxiào shàngkè",
+                  "english": "go to class at school"
+                },
+                {
+                  "traditional": "回家睡覺",
+                  "simplified": "回家睡觉",
+                  "pinyin": "huí jiā shuìjiào",
+                  "english": "go home and sleep"
+                }
+              ],
+              "key": 0,
+              "why": "He has no class (沒有課) and goes to the library at ten in the morning. He goes home to sleep in the afternoon.",
+              "focus": {
+                "zh": "上午",
+                "en": "plans for the morning"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-26",
+                "B1L02-1-20",
+                "B1L02-1-18",
+                "B1L02-1-19"
+              ],
+              "grammarIds": [
+                "B1L02-G03-P56"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l03-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n今天我下午四點下課，五點回家。晚上我想做飯，請妳七點來我家吃晚飯，好不好？\n宜文",
+            "simplified": "友美：\n今天我下午四点下课，五点回家。晚上我想做饭，请你七点来我家吃晚饭，好不好？\n宜文",
+            "pinyin": "Yǒuměi: Jīntiān wǒ xiàwǔ sì diǎn xiàkè, wǔ diǎn huí jiā. Wǎnshàng wǒ xiǎng zuòfàn, qǐng nǐ qī diǎn lái wǒ jiā chī wǎnfàn, hǎo bu hǎo? Yíwén",
+            "english": "Youmei: Today my class ends at four in the afternoon, and I'll get home at five. In the evening I'd like to cook. Would you come to my home for dinner at seven? Yiwen"
+          },
+          "questions": [
+            {
+              "id": "b1l03-reading-note-2-q",
+              "prompt": {
+                "traditional": "宜文今天幾點回家？",
+                "simplified": "宜文今天几点回家？",
+                "pinyin": "Yíwén jīntiān jǐ diǎn huí jiā?",
+                "english": "What time does Yiwen go home today?"
+              },
+              "choices": [
+                {
+                  "traditional": "四點",
+                  "simplified": "四点",
+                  "pinyin": "sì diǎn",
+                  "english": "four o'clock"
+                },
+                {
+                  "traditional": "五點",
+                  "simplified": "五点",
+                  "pinyin": "wǔ diǎn",
+                  "english": "five o'clock"
+                },
+                {
+                  "traditional": "七點",
+                  "simplified": "七点",
+                  "pinyin": "qī diǎn",
+                  "english": "seven o'clock"
+                }
+              ],
+              "key": 1,
+              "why": "五點回家: she goes home at five. Class ends at four; dinner is at seven.",
+              "focus": {
+                "zh": "幾點回家",
+                "en": "telling the time"
+              },
+              "lesson": 2,
+              "wordIds": [
+                "B1L02-1-30",
+                "B1L02-1-22",
+                "B1L02-1-23",
+                "B1L02-1-27"
+              ],
+              "grammarIds": [
+                "B1L02-G01-P54",
+                "B1L02-G02-P55"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Kind: strip
+Style: objects
+Characters: none
+
+SUBJECT: a 3-panel picture strip for a reading question ("which picture matches the sentence?").
+LAYOUT: landscape 3:2 canvas (1536x1024). Three EQUAL square panels side by side in one horizontal row, vertically centered, separated by wide plain WHITE gutters (at least 40px) and a plain white margin around all of them. Each panel is a self-contained square scene. Do not number or label the panels.
+ALL THREE PANELS share the same base drawing: the same simple clear glass vase on the same light wooden table, the same soft mint wall behind. In every vase stand EXACTLY THREE large single flowers of the same kind (simple round blossoms like gerberas) on long green stems, clearly separated so they can be counted. Only the flower COLORS change, and each flower is a clear, strong red or a clean white:
+- Panel 1 (left): ONE white flower and TWO red flowers.
+- Panel 2 (middle): TWO white flowers and ONE red flower.
+- Panel 3 (right): THREE red flowers (no white).
+Same vase, same stems, same positions in all three panels. No people, no text.

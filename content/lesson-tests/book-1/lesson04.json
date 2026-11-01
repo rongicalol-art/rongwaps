@@ -2248,10 +2248,10 @@
           "kind": "reading",
           "format": "message",
           "text": {
-            "traditional": "友美：\n明天是我的生日，我想請妳和中明來我家吃蛋糕。晚上七點，好嗎？\n宜文",
-            "simplified": "友美：\n明天是我的生日，我想请你和中明来我家吃蛋糕。晚上七点，好吗？\n宜文",
-            "pinyin": "Yǒuměi: Míngtiān shì wǒ de shēngrì, wǒ xiǎng qǐng nǐ hé Zhōngmíng lái wǒ jiā chī dàngāo. Wǎnshang qī diǎn, hǎo ma? Yíwén",
-            "english": "Youmei: Tomorrow is my birthday. I'd like to invite you and Zhongming to my place for cake. Seven in the evening, OK? Yiwen"
+            "traditional": "友美：\n明天是我的生日，我想請妳和中明來我家吃蛋糕。晚上六點，好嗎？\n宜文",
+            "simplified": "友美：\n明天是我的生日，我想请你和中明来我家吃蛋糕。晚上六点，好吗？\n宜文",
+            "pinyin": "Yǒuměi: Míngtiān shì wǒ de shēngrì, wǒ xiǎng qǐng nǐ hé Zhōngmíng lái wǒ jiā chī dàngāo. Wǎnshàng liù diǎn, hǎo ma? Yíwén",
+            "english": "Youmei: Tomorrow is my birthday. I'd like to invite you and Zhongming to my place for cake. Six in the evening, OK? Yiwen"
           },
           "questions": [
             {
@@ -2270,10 +2270,10 @@
                   "english": "go to Youmei's home"
                 },
                 {
-                  "traditional": "請朋友來她家吃蛋糕",
-                  "simplified": "请朋友来她家吃蛋糕",
-                  "pinyin": "qǐng péngyǒu lái tā jiā chī dàngāo",
-                  "english": "have friends over for cake"
+                  "traditional": "請朋友吃蛋糕",
+                  "simplified": "请朋友吃蛋糕",
+                  "pinyin": "qǐng péngyǒu chī dàngāo",
+                  "english": "invite friends for cake"
                 },
                 {
                   "traditional": "去買生日禮物",

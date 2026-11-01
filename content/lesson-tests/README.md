@@ -99,8 +99,22 @@ needed, keep every run at 15–45%. Lesson 1 has no earlier lessons: its review 
 - **One right answer, decided by the context.** Wrong answers are real taught words or facts from the
   recording, text or picture that are wrong *here* (the next price on the menu, the drink she turned down).
   Choices are about the same length; no choice repeats; the bank never lists answers in blank order.
+- **Heard choices must sound different**: 他 and 她 are both tā, so two spoken choices never differ only
+  there. A picture question never rests on telling two look-alike characters apart (use a girl and a boy).
 - **TOCFL-like, never copied**: the saved mock exams (© SC-TOP) are a format reference only.
-- **Pinyin**: tone marks, word-joined like the book (Wǒmen yào liǎng wǎn niúròu miàn.).
+- **Pinyin**: tone marks, word-joined like the book (Wǒmen yào liǎng wǎn niúròu miàn.), with the Taiwan
+  readings the word lists use (xīngqí, wǎnshàng, xiānshēng).
+- **One world**: the book characters keep the same facts in every test. The book's facts come first (its
+  dialogues and readings are in each lesson brief); a fact a test adds is listed below and reused, never
+  contradicted. Dates with a weekday follow the book's calendar: 九月二十三號 is a Saturday (B1 L2: "today
+  is Friday, tomorrow is the weekend"), so 9/30, 10/7 … 11/4 are Saturdays.
+
+| Character | From the book | Added by the tests |
+| --- | --- | --- |
+| 王宜文 Yiwen | American (B1 L1 exercises); birthday 九月二十三號, party 晚上六點 at her home (B1 L2); gives Youmei two Chinese books (B1 L3) | loves tea, not milk tea (B1 L1–L2 tests) |
+| 小林友美 Youmei | Japanese; loves fruit and bubble milk tea (B1 L1); 19; on school days up at 6:30, school 7:00, class 8:40, lunch 12:00, library 1:00, home to cook 4:00, dinner 6:00, bed 10:00 (B1 L2); orders black tea (B1 L4) | birthday 10月7日 星期六, party 晚上六點 at her home (B1 L3 invitation; the party picture B1L03-R03 is in the evening); doesn't love water (B1 L1 test) |
+| 李中明 Zhongming | Indonesian (B1 L1); on Monday no morning class, library at 9:00, class in the afternoon until 4:40 (B1 L2); buys Youmei flowers and a cake, and two white pencils with Yiwen (B1 L3); loves beef noodles, likes coffee and tea (B1 L4) | birthday 11月4日 星期六 (B1 L2 invitation); classes Mon 1:00–4:40, Tue 9–12, Thu 10–12, Fri 8–12 (B1 L2 timetable; B1 L4 has his 1:00 class); loves water, not milk tea (B1 L1 test) |
+| 高家樂 Jiale | British; surname 高 (B1 L1 exercises) | loves tea, not milk tea (B1 L1 test card) |
 
 Quality gate before a lesson ships: two blind solvers agree on every key and find no second defensible
 answer; a solver given only the choices (no recording or text) does no better than chance; the
@@ -121,7 +135,9 @@ illustrations (`scripts/assets/lesson-test-art/style.txt`); the book characters 
 - **Until Codex draws a picture**, `placeholders.py` writes a plain card with its description (or, for
   realia, its exact writing) and lists it in `scripts/assets/lesson-test-art/pending.json`; `cut.py`
   replaces the card with the art and takes it off the list. Briefs live in
-  `scripts/assets/lesson-test-art/briefs/<name>.txt`.
+  `scripts/assets/lesson-test-art/briefs/<name>.txt`; a brief opens with `Kind:` (strip or single),
+  `Style:` (objects or scene: which style reference to pass) and `Characters:` (the portraits to attach),
+  lines `generate.sh` leaves out of the prompt.
 
 ```bash
 scripts/assets/lesson-test-art/generate.sh b1l04-drinks scripts/assets/lesson-test-art/briefs/b1l04-drinks.txt src/assets/images/grammar-practice/generated/l04-two-teas-180-v1.webp

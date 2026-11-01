@@ -1,0 +1,2314 @@
+{
+  "schemaVersion": 1,
+  "key": "b1l01",
+  "bookId": 1,
+  "lessonId": 1,
+  "band": "A",
+  "allowWords": [
+    "中明",
+    "友美",
+    "宜文",
+    "家樂"
+  ],
+  "slots": [
+    {
+      "id": "hear-snack",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l01-hear-snack-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我愛吃水果，不愛喝茶。",
+              "simplified": "我爱吃水果，不爱喝茶。",
+              "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē chá.",
+              "english": "I love eating fruit, but I don't love drinking tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-hear-snack-1-q",
+              "choices": [
+                {
+                  "picture": "b1l01-snack-1",
+                  "alt": "Fruit: a bowl of cut fruit on the table"
+                },
+                {
+                  "picture": "b1l01-snack-2",
+                  "alt": "Tea: a cup of hot tea on the table"
+                },
+                {
+                  "picture": "b1l01-snack-3",
+                  "alt": "Bubble milk tea: a cup of bubble milk tea on the table"
+                }
+              ],
+              "key": 0,
+              "why": "我愛吃水果 is what she loves; 不愛喝茶 turns the tea down.",
+              "focus": {
+                "zh": "愛吃水果",
+                "en": "loves eating fruit"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-04",
+                "B1L01-3-05",
+                "B1L01-3-08"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-hear-snack-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "我喝茶，不喝珍珠奶茶。",
+              "simplified": "我喝茶，不喝珍珠奶茶。",
+              "pinyin": "Wǒ hē chá, bù hē zhēnzhū nǎichá.",
+              "english": "I drink tea, not bubble milk tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-hear-snack-2-q",
+              "choices": [
+                {
+                  "picture": "b1l01-snack-1",
+                  "alt": "Fruit: a bowl of cut fruit on the table"
+                },
+                {
+                  "picture": "b1l01-snack-2",
+                  "alt": "Tea: a cup of hot tea on the table"
+                },
+                {
+                  "picture": "b1l01-snack-3",
+                  "alt": "Bubble milk tea: a cup of bubble milk tea on the table"
+                }
+              ],
+              "key": 1,
+              "why": "我喝茶 comes first: he drinks tea. 不喝珍珠奶茶 turns the bubble tea down.",
+              "focus": {
+                "zh": "不喝 + 喝",
+                "en": "doesn't drink … drinks …"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-07",
+                "B1L01-3-08",
+                "B1L01-3-11"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-hear-snack-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "我不愛吃水果，我愛喝珍珠奶茶。",
+              "simplified": "我不爱吃水果，我爱喝珍珠奶茶。",
+              "pinyin": "Wǒ bú ài chī shuǐguǒ, wǒ ài hē zhēnzhū nǎichá.",
+              "english": "I don't love fruit. I love bubble milk tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-hear-snack-3-q",
+              "choices": [
+                {
+                  "picture": "b1l01-snack-1",
+                  "alt": "Fruit: a bowl of cut fruit on the table"
+                },
+                {
+                  "picture": "b1l01-snack-2",
+                  "alt": "Tea: a cup of hot tea on the table"
+                },
+                {
+                  "picture": "b1l01-snack-3",
+                  "alt": "Bubble milk tea: a cup of bubble milk tea on the table"
+                }
+              ],
+              "key": 2,
+              "why": "不愛吃水果 turns the fruit down; 愛喝珍珠奶茶 is the drink she loves.",
+              "focus": {
+                "zh": "愛喝珍珠奶茶",
+                "en": "loves bubble milk tea"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-05",
+                "B1L01-3-07",
+                "B1L01-3-11"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hear-greeting",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l01-hear-greeting-1",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "中明，早安！你好嗎？",
+              "simplified": "中明，早安！你好吗？",
+              "pinyin": "Zhōngmíng, zǎo'ān! Nǐ hǎo ma?",
+              "english": "Good morning, Zhongming! How are you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我很好，謝謝。",
+              "simplified": "我很好，谢谢。",
+              "pinyin": "Wǒ hěn hǎo, xièxie.",
+              "english": "I'm fine, thanks."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-hear-greeting-1-q",
+              "choices": [
+                {
+                  "picture": "b1l01-greeting-1",
+                  "alt": "Morning: the sun is rising and the clock shows eight; Yiwen waves to Zhongming at the school gate"
+                },
+                {
+                  "picture": "b1l01-greeting-2",
+                  "alt": "Afternoon: the sun is high and the clock shows two; Yiwen waves to Zhongming at the school gate"
+                },
+                {
+                  "picture": "b1l01-greeting-3",
+                  "alt": "Night: the sky is dark with a moon and the clock shows nine; Yiwen and Zhongming wave goodbye at the school gate as they head home"
+                }
+              ],
+              "key": 0,
+              "why": "早安 is the morning greeting, so it is the picture with the rising sun.",
+              "focus": {
+                "zh": "早安",
+                "en": "good morning"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-14"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-hear-greeting-2",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "宜文，午安！",
+              "simplified": "宜文，午安！",
+              "pinyin": "Yíwén, wǔ'ān!",
+              "english": "Good afternoon, Yiwen!"
+            },
+            {
+              "speaker": "F",
+              "traditional": "午安！你好嗎？",
+              "simplified": "午安！你好吗？",
+              "pinyin": "Wǔ'ān! Nǐ hǎo ma?",
+              "english": "Good afternoon! How are you?"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-hear-greeting-2-q",
+              "choices": [
+                {
+                  "picture": "b1l01-greeting-1",
+                  "alt": "Morning: the sun is rising and the clock shows eight; Yiwen waves to Zhongming at the school gate"
+                },
+                {
+                  "picture": "b1l01-greeting-2",
+                  "alt": "Afternoon: the sun is high and the clock shows two; Yiwen waves to Zhongming at the school gate"
+                },
+                {
+                  "picture": "b1l01-greeting-3",
+                  "alt": "Night: the sky is dark with a moon and the clock shows nine; Yiwen and Zhongming wave goodbye at the school gate as they head home"
+                }
+              ],
+              "key": 1,
+              "why": "午安 is the afternoon greeting, so it is the picture with the sun high in the sky.",
+              "focus": {
+                "zh": "午安",
+                "en": "good afternoon"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-15",
+                "B1L01-2-07"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-hear-greeting-3",
+          "kind": "hear-pick-picture",
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "晚安，中明！",
+              "simplified": "晚安，中明！",
+              "pinyin": "Wǎn'ān, Zhōngmíng!",
+              "english": "Good night, Zhongming!"
+            },
+            {
+              "speaker": "M",
+              "traditional": "宜文，晚安！",
+              "simplified": "宜文，晚安！",
+              "pinyin": "Yíwén, wǎn'ān!",
+              "english": "Good night, Yiwen!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-hear-greeting-3-q",
+              "choices": [
+                {
+                  "picture": "b1l01-greeting-1",
+                  "alt": "Morning: the sun is rising and the clock shows eight; Yiwen waves to Zhongming at the school gate"
+                },
+                {
+                  "picture": "b1l01-greeting-2",
+                  "alt": "Afternoon: the sun is high and the clock shows two; Yiwen waves to Zhongming at the school gate"
+                },
+                {
+                  "picture": "b1l01-greeting-3",
+                  "alt": "Night: the sky is dark with a moon and the clock shows nine; Yiwen and Zhongming wave goodbye at the school gate as they head home"
+                }
+              ],
+              "key": 2,
+              "why": "晚安 is said at night, so it is the picture with the moon. 早安 is for the morning and 午安 for the afternoon.",
+              "focus": {
+                "zh": "晚安",
+                "en": "good night"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-16"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-tea",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l01-picture-tea-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L01-R03",
+            "alt": "One young woman alone at an outdoor café, smiling and holding a cup of bubble milk tea; a glass bowl of cut watermelon and pineapple sits on the table in front of her. No water and no plain tea."
+          },
+          "questions": [
+            {
+              "id": "b1l01-picture-tea-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她喝水，不喝茶。",
+                  "simplified": "她喝水，不喝茶。",
+                  "pinyin": "Tā hē shuǐ, bù hē chá.",
+                  "english": "She's drinking water, not tea."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她喝珍珠奶茶，不喝水。",
+                  "simplified": "她喝珍珠奶茶，不喝水。",
+                  "pinyin": "Tā hē zhēnzhū nǎichá, bù hē shuǐ.",
+                  "english": "She's drinking bubble milk tea, not water."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她喝茶，不喝珍珠奶茶。",
+                  "simplified": "她喝茶，不喝珍珠奶茶。",
+                  "pinyin": "Tā hē chá, bù hē zhēnzhū nǎichá.",
+                  "english": "She's drinking tea, not bubble milk tea."
+                }
+              ],
+              "key": 1,
+              "why": "She holds a cup of milk tea with black pearls: 她喝珍珠奶茶. A says she drinks water and C says she does not drink bubble milk tea.",
+              "focus": {
+                "zh": "喝珍珠奶茶，不喝水",
+                "en": "drinks … doesn't drink …"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-07",
+                "B1L01-3-11",
+                "B1L01-3-06",
+                "B1L01-3-08"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-picture-tea-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L01-R03",
+            "alt": "One young woman alone at an outdoor café, smiling and holding a cup of bubble milk tea; a glass bowl of cut watermelon and pineapple sits on the table in front of her. No water and no plain tea."
+          },
+          "questions": [
+            {
+              "id": "b1l01-picture-tea-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "她喝水。",
+                  "simplified": "她喝水。",
+                  "pinyin": "Tā hē shuǐ.",
+                  "english": "She's drinking water."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們喝茶。",
+                  "simplified": "他们喝茶。",
+                  "pinyin": "Tāmen hē chá.",
+                  "english": "They are drinking tea."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "她吃水果。",
+                  "simplified": "她吃水果。",
+                  "pinyin": "Tā chī shuǐguǒ.",
+                  "english": "She's eating fruit."
+                }
+              ],
+              "key": 2,
+              "why": "A big bowl of fruit is on her table: 她吃水果. There is no water, and she is alone, so 他們 (they) is wrong.",
+              "focus": {
+                "zh": "吃水果",
+                "en": "eats fruit"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-04",
+                "B1L01-3-05",
+                "B1L01-1-03",
+                "B1L00-1-09"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "picture-classmates",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l01-picture-classmates-1",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L01-R02",
+            "alt": "Two young students sit side by side at classroom desks by a big window: a curly-haired young man in a yellow jacket, hand on his chest, talks to a young woman with a bob, a backpack on her shoulders, who holds a book. Books on the desk; no teacher, and no food or drinks."
+          },
+          "questions": [
+            {
+              "id": "b1l01-picture-classmates-1-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們是老師。",
+                  "simplified": "他们是老师。",
+                  "pinyin": "Tāmen shì lǎoshī.",
+                  "english": "They are teachers."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們吃水果。",
+                  "simplified": "他们吃水果。",
+                  "pinyin": "Tāmen chī shuǐguǒ.",
+                  "english": "They are eating fruit."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們是學生。",
+                  "simplified": "他们是学生。",
+                  "pinyin": "Tāmen shì xuéshēng.",
+                  "english": "They are students."
+                }
+              ],
+              "key": 2,
+              "why": "Both are young, sit at student desks with books, and she wears a backpack: 他們是學生. They are not 老師 (teachers), and there is no fruit on the desks.",
+              "focus": {
+                "zh": "他們是學生",
+                "en": "they are students"
+              },
+              "lesson": 0,
+              "wordIds": [
+                "B1L00-1-09",
+                "B1L00-1-02",
+                "B1L00-1-01"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-picture-classmates-2",
+          "kind": "picture-hear",
+          "picture": {
+            "picture": "reading:B1L01-R02",
+            "alt": "Two young students sit side by side at classroom desks by a big window: a curly-haired young man in a yellow jacket, hand on his chest, talks to a young woman with a bob, a backpack on her shoulders, who holds a book. Books on the desk; no teacher, and no food or drinks."
+          },
+          "questions": [
+            {
+              "id": "b1l01-picture-classmates-2-q",
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "他們是同學。",
+                  "simplified": "他们是同学。",
+                  "pinyin": "Tāmen shì tóngxué.",
+                  "english": "They are classmates."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們是老師。",
+                  "simplified": "他们是老师。",
+                  "pinyin": "Tāmen shì lǎoshī.",
+                  "english": "They are teachers."
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "他們喝茶。",
+                  "simplified": "他们喝茶。",
+                  "pinyin": "Tāmen hē chá.",
+                  "english": "They are drinking tea."
+                }
+              ],
+              "key": 0,
+              "why": "They sit side by side at classroom desks, so they are 同學 (classmates). They are young, not 老師, and there are no drinks on the desks.",
+              "focus": {
+                "zh": "同學",
+                "en": "classmates"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-02",
+                "B1L00-1-09",
+                "B1L00-1-01"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-country",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l01-dialogue-country-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "王先生，我是英國人，你呢？",
+              "simplified": "王先生，我是英国人，你呢？",
+              "pinyin": "Wáng xiānshēng, wǒ shì Yīngguó rén, nǐ ne?",
+              "english": "Mr. Wang, I'm British. How about you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我是美國人，不是中國人。",
+              "simplified": "我是美国人，不是中国人。",
+              "pinyin": "Wǒ shì Měiguó rén, bú shì Zhōngguó rén.",
+              "english": "I'm American, not Chinese."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-country-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "王先生是哪國人？",
+                "simplified": "王先生是哪国人？",
+                "pinyin": "Wáng xiānshēng shì nǎ guó rén?",
+                "english": "Which country is Mr. Wang from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "英國人",
+                  "simplified": "英国人",
+                  "pinyin": "Yīngguó rén",
+                  "english": "British"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "美國人",
+                  "simplified": "美国人",
+                  "pinyin": "Měiguó rén",
+                  "english": "American"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "中國人",
+                  "simplified": "中国人",
+                  "pinyin": "Zhōngguó rén",
+                  "english": "Chinese"
+                }
+              ],
+              "key": 1,
+              "why": "你呢 asks Mr. Wang the same question, and he says 我是美國人. 英國人 is the woman, and 不是中國人 turns Chinese down.",
+              "focus": {
+                "zh": "你呢？",
+                "en": "how about you?"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-2-04",
+                "B1L01-1-10",
+                "B1L01-1-18",
+                "B1L01-1-17"
+              ],
+              "grammarIds": [
+                "B1L01-G04-P44",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-dialogue-country-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "李小姐，妳是中國人嗎？",
+              "simplified": "李小姐，你是中国人吗？",
+              "pinyin": "Lǐ xiǎojiě, nǐ shì Zhōngguó rén ma?",
+              "english": "Miss Li, are you Chinese?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，我是日本人。你呢？",
+              "simplified": "不是，我是日本人。你呢？",
+              "pinyin": "Bú shì, wǒ shì Rìběn rén. Nǐ ne?",
+              "english": "No, I'm Japanese. How about you?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我是美國人。",
+              "simplified": "我是美国人。",
+              "pinyin": "Wǒ shì Měiguó rén.",
+              "english": "I'm American."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-country-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "李小姐是哪國人？",
+                "simplified": "李小姐是哪国人？",
+                "pinyin": "Lǐ xiǎojiě shì nǎ guó rén?",
+                "english": "Which country is Miss Li from?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "中國人",
+                  "simplified": "中国人",
+                  "pinyin": "Zhōngguó rén",
+                  "english": "Chinese"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "美國人",
+                  "simplified": "美国人",
+                  "pinyin": "Měiguó rén",
+                  "english": "American"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "日本人",
+                  "simplified": "日本人",
+                  "pinyin": "Rìběn rén",
+                  "english": "Japanese"
+                }
+              ],
+              "key": 2,
+              "why": "Miss Li answers 不是，我是日本人. 中國人 is the guess she turns down, and 美國人 is the man.",
+              "focus": {
+                "zh": "你呢？",
+                "en": "how about you?"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-14",
+                "B1L01-1-16",
+                "B1L01-2-04",
+                "B1L00-1-12"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40",
+                "B1L01-G04-P44",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-who",
+      "part": "listening",
+      "versions": [
+        {
+          "id": "b1l01-dialogue-who-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "請問，友美是新老師嗎？",
+              "simplified": "请问，友美是新老师吗？",
+              "pinyin": "Qǐngwèn, Yǒuměi shì xīn lǎoshī ma?",
+              "english": "Excuse me, is Youmei the new teacher?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "不是，友美是新同學。新老師是王先生。",
+              "simplified": "不是，友美是新同学。新老师是王先生。",
+              "pinyin": "Bú shì, Yǒuměi shì xīn tóngxué. Xīn lǎoshī shì Wáng xiānshēng.",
+              "english": "No, Youmei is a new classmate. The new teacher is Mr. Wang."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-who-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "友美是誰？",
+                "simplified": "友美是谁？",
+                "pinyin": "Yǒuměi shì shéi?",
+                "english": "Who is Youmei?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "新老師",
+                  "simplified": "新老师",
+                  "pinyin": "xīn lǎoshī",
+                  "english": "the new teacher"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "王先生",
+                  "simplified": "王先生",
+                  "pinyin": "Wáng xiānshēng",
+                  "english": "Mr. Wang"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "新同學",
+                  "simplified": "新同学",
+                  "pinyin": "xīn tóngxué",
+                  "english": "a new classmate"
+                }
+              ],
+              "key": 2,
+              "why": "She answers 不是 and says 友美是新同學: Youmei is a new classmate. 新老師 is what he asked about, and the new teacher is 王先生.",
+              "focus": {
+                "zh": "是新同學",
+                "en": "is a new classmate"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-13",
+                "B1L01-1-01",
+                "B1L01-1-02",
+                "B1L00-1-01"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-dialogue-who-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "李小姐，妳忙嗎？",
+              "simplified": "李小姐，你忙吗？",
+              "pinyin": "Lǐ xiǎojiě, nǐ máng ma?",
+              "english": "Miss Li, are you busy?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我很忙，李先生不忙。",
+              "simplified": "我很忙，李先生不忙。",
+              "pinyin": "Wǒ hěn máng, Lǐ xiānshēng bù máng.",
+              "english": "I'm very busy. Mr. Li isn't busy."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-who-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "誰很忙？",
+                "simplified": "谁很忙？",
+                "pinyin": "Shéi hěn máng?",
+                "english": "Who is very busy?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "李小姐",
+                  "simplified": "李小姐",
+                  "pinyin": "Lǐ xiǎojiě",
+                  "english": "Miss Li"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "李先生",
+                  "simplified": "李先生",
+                  "pinyin": "Lǐ xiānshēng",
+                  "english": "Mr. Li"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "李太太",
+                  "simplified": "李太太",
+                  "pinyin": "Lǐ tàitai",
+                  "english": "Mrs. Li"
+                }
+              ],
+              "key": 0,
+              "why": "Miss Li answers 妳忙嗎 with 我很忙: she is the busy one. 李先生不忙 says Mr. Li is not busy.",
+              "focus": {
+                "zh": "很忙／不忙",
+                "en": "busy or not busy"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-13",
+                "B1L01-1-04",
+                "B1L01-1-07",
+                "B1L00-1-12"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40",
+                "B1L01-G02-P39"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-name",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l01-dialogue-name-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "M",
+              "traditional": "請問，妳是王太太嗎？",
+              "simplified": "请问，你是王太太吗？",
+              "pinyin": "Qǐngwèn, nǐ shì Wáng tàitai ma?",
+              "english": "Excuse me, are you Mrs. Wang?"
+            },
+            {
+              "speaker": "F",
+              "traditional": "我是王小姐，王太太是我媽媽。",
+              "simplified": "我是王小姐，王太太是我妈妈。",
+              "pinyin": "Wǒ shì Wáng xiǎojiě, Wáng tàitai shì wǒ māma.",
+              "english": "I'm Miss Wang. Mrs. Wang is my mom."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-name-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "她是誰？",
+                "simplified": "她是谁？",
+                "pinyin": "Tā shì shéi?",
+                "english": "Who is she?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "王小姐",
+                  "simplified": "王小姐",
+                  "pinyin": "Wáng xiǎojiě",
+                  "english": "Miss Wang"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "王太太",
+                  "simplified": "王太太",
+                  "pinyin": "Wáng tàitai",
+                  "english": "Mrs. Wang"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "王先生",
+                  "simplified": "王先生",
+                  "pinyin": "Wáng xiānshēng",
+                  "english": "Mr. Wang"
+                }
+              ],
+              "key": 0,
+              "why": "She says 我是王小姐. 王太太 is her mom, the person the man asked about.",
+              "focus": {
+                "zh": "小姐／太太",
+                "en": "Miss or Mrs."
+              },
+              "lesson": 0,
+              "wordIds": [
+                "B1L00-1-12",
+                "B1L00-1-13",
+                "B1L00-1-06"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40",
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-dialogue-name-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "請問，你是李先生嗎？",
+              "simplified": "请问，你是李先生吗？",
+              "pinyin": "Qǐngwèn, nǐ shì Lǐ xiānshēng ma?",
+              "english": "Excuse me, are you Mr. Li?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我姓高。李先生是我們老師。",
+              "simplified": "我姓高。李先生是我们老师。",
+              "pinyin": "Wǒ xìng Gāo. Lǐ xiānshēng shì wǒmen lǎoshī.",
+              "english": "My surname is Gao. Mr. Li is our teacher."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-name-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "他姓什麼？",
+                "simplified": "他姓什么？",
+                "pinyin": "Tā xìng shénme?",
+                "english": "What is his surname?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "姓李",
+                  "simplified": "姓李",
+                  "pinyin": "xìng Lǐ",
+                  "english": "Li"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "姓王",
+                  "simplified": "姓王",
+                  "pinyin": "xìng Wáng",
+                  "english": "Wang"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "姓高",
+                  "simplified": "姓高",
+                  "pinyin": "xìng Gāo",
+                  "english": "Gao"
+                }
+              ],
+              "key": 2,
+              "why": "He answers 我姓高. 李先生 is their teacher, not him.",
+              "focus": {
+                "zh": "姓",
+                "en": "surname"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-06",
+                "B1L00-1-11",
+                "B1L00-1-01",
+                "B1L00-1-08"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38",
+                "B1L01-G03-P40"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-drink",
+      "part": "listening",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l01-dialogue-drink-1",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "王先生，你們喝什麼？",
+              "simplified": "王先生，你们喝什么？",
+              "pinyin": "Wáng xiānshēng, nǐmen hē shénme?",
+              "english": "Mr. Wang, what are you two drinking?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我喝茶，我太太喝奶茶。",
+              "simplified": "我喝茶，我太太喝奶茶。",
+              "pinyin": "Wǒ hē chá, wǒ tàitai hē nǎichá.",
+              "english": "I'm drinking tea. My wife is drinking milk tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-drink-1-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "王先生喝什麼？",
+                "simplified": "王先生喝什么？",
+                "pinyin": "Wáng xiānshēng hē shénme?",
+                "english": "What is Mr. Wang drinking?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "茶",
+                  "simplified": "茶",
+                  "pinyin": "chá",
+                  "english": "tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                }
+              ],
+              "key": 1,
+              "why": "Mr. Wang says 我喝茶. The milk tea is for 我太太, his wife.",
+              "focus": {
+                "zh": "我／我太太",
+                "en": "me or my wife"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L00-1-07",
+                "B1L00-1-13",
+                "B1L01-3-08",
+                "B1L01-3-12"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-dialogue-drink-2",
+          "kind": "dialogue",
+          "answerLine": 1,
+          "lines": [
+            {
+              "speaker": "F",
+              "traditional": "中明，你愛喝什麼？",
+              "simplified": "中明，你爱喝什么？",
+              "pinyin": "Zhōngmíng, nǐ ài hē shénme?",
+              "english": "Zhongming, what do you love to drink?"
+            },
+            {
+              "speaker": "M",
+              "traditional": "我愛喝水，不愛喝奶茶。",
+              "simplified": "我爱喝水，不爱喝奶茶。",
+              "pinyin": "Wǒ ài hē shuǐ, bú ài hē nǎichá.",
+              "english": "I love water. I don't love milk tea."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-dialogue-drink-2-q",
+              "prompt": {
+                "speaker": "N",
+                "traditional": "中明愛喝什麼？",
+                "simplified": "中明爱喝什么？",
+                "pinyin": "Zhōngmíng ài hē shénme?",
+                "english": "What does Zhongming love to drink?"
+              },
+              "choices": [
+                {
+                  "speaker": "N",
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                },
+                {
+                  "speaker": "N",
+                  "traditional": "茶",
+                  "simplified": "茶",
+                  "pinyin": "chá",
+                  "english": "tea"
+                }
+              ],
+              "key": 0,
+              "why": "He says 我愛喝水 first; 不愛喝奶茶 turns milk tea down.",
+              "focus": {
+                "zh": "愛喝水",
+                "en": "loves water"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-07",
+                "B1L01-3-06",
+                "B1L01-3-12"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-busy",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l01-read-busy-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l01-read-busy-1-q",
+              "prompt": {
+                "traditional": "王太太很累，她不忙。",
+                "simplified": "王太太很累，她不忙。",
+                "pinyin": "Wáng tàitai hěn lèi, tā bù máng.",
+                "english": "Mrs. Wang is very tired. She isn't busy."
+              },
+              "choices": [
+                {
+                  "picture": "b1l01-mrs-wang-1",
+                  "alt": "Tired: Mrs. Wang slumps at her desk, yawning with heavy eyes; the desk is clear"
+                },
+                {
+                  "picture": "b1l01-mrs-wang-2",
+                  "alt": "Busy: Mrs. Wang talks on the phone and writes fast behind tall piles of papers"
+                },
+                {
+                  "picture": "b1l01-mrs-wang-3",
+                  "alt": "Relaxed: Mrs. Wang leans back in her chair, smiling calmly; the desk is clear"
+                }
+              ],
+              "key": 0,
+              "why": "累 means tired: she is the one yawning at a clear desk. 忙 (busy) would be the piles of papers.",
+              "focus": {
+                "zh": "很累",
+                "en": "very tired"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-07",
+                "B1L00-1-13",
+                "B1L01-1-03"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-read-busy-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l01-read-busy-2-q",
+              "prompt": {
+                "traditional": "王太太很忙。",
+                "simplified": "王太太很忙。",
+                "pinyin": "Wáng tàitai hěn máng.",
+                "english": "Mrs. Wang is very busy."
+              },
+              "choices": [
+                {
+                  "picture": "b1l01-mrs-wang-1",
+                  "alt": "Tired: Mrs. Wang slumps at her desk, yawning with heavy eyes; the desk is clear"
+                },
+                {
+                  "picture": "b1l01-mrs-wang-2",
+                  "alt": "Busy: Mrs. Wang talks on the phone and writes fast behind tall piles of papers"
+                },
+                {
+                  "picture": "b1l01-mrs-wang-3",
+                  "alt": "Relaxed: Mrs. Wang leans back in her chair, smiling calmly; the desk is clear"
+                }
+              ],
+              "key": 1,
+              "why": "忙 means busy: the phone and the piles of papers. 累 (tired) would be the yawning picture.",
+              "focus": {
+                "zh": "很忙",
+                "en": "very busy"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-07",
+                "B1L00-1-13"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-read-busy-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l01-read-busy-3-q",
+              "prompt": {
+                "traditional": "王太太不忙，她不累。",
+                "simplified": "王太太不忙，她不累。",
+                "pinyin": "Wáng tàitai bù máng, tā bú lèi.",
+                "english": "Mrs. Wang isn't busy, and she isn't tired."
+              },
+              "choices": [
+                {
+                  "picture": "b1l01-mrs-wang-1",
+                  "alt": "Tired: Mrs. Wang slumps at her desk, yawning with heavy eyes; the desk is clear"
+                },
+                {
+                  "picture": "b1l01-mrs-wang-2",
+                  "alt": "Busy: Mrs. Wang talks on the phone and writes fast behind tall piles of papers"
+                },
+                {
+                  "picture": "b1l01-mrs-wang-3",
+                  "alt": "Relaxed: Mrs. Wang leans back in her chair, smiling calmly; the desk is clear"
+                }
+              ],
+              "key": 2,
+              "why": "不忙 rules out the piles of papers, and 不累 rules out the yawning picture, so she is the one sitting back calmly.",
+              "focus": {
+                "zh": "不忙，不累",
+                "en": "not busy, not tired"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L00-1-13",
+                "B1L01-1-03"
+              ],
+              "grammarIds": [
+                "B1L01-G02-P39"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-who",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l01-read-who-1",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l01-read-who-1-q",
+              "prompt": {
+                "traditional": "她是老師，不是學生。",
+                "simplified": "她是老师，不是学生。",
+                "pinyin": "Tā shì lǎoshī, bú shì xuéshēng.",
+                "english": "She's a teacher, not a student."
+              },
+              "choices": [
+                {
+                  "picture": "b1l01-front-1",
+                  "alt": "The teacher: a woman with a black bob and blue cardigan stands at the board with a textbook"
+                },
+                {
+                  "picture": "b1l01-front-2",
+                  "alt": "A new female student: Youmei, with a backpack, stands at the board and waves"
+                },
+                {
+                  "picture": "b1l01-front-3",
+                  "alt": "A new male student: a young man with a backpack stands at the board and waves"
+                }
+              ],
+              "key": 0,
+              "why": "她 is a woman, and 老師 is the teacher at the board. 學生 would be one of the students with a backpack.",
+              "focus": {
+                "zh": "是老師",
+                "en": "is the teacher"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-03",
+                "B1L00-1-06",
+                "B1L00-1-01",
+                "B1L00-1-02"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-read-who-2",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l01-read-who-2-q",
+              "prompt": {
+                "traditional": "她是新同學，不是老師。",
+                "simplified": "她是新同学，不是老师。",
+                "pinyin": "Tā shì xīn tóngxué, bú shì lǎoshī.",
+                "english": "She's a new classmate, not a teacher."
+              },
+              "choices": [
+                {
+                  "picture": "b1l01-front-1",
+                  "alt": "The teacher: a woman with a black bob and blue cardigan stands at the board with a textbook"
+                },
+                {
+                  "picture": "b1l01-front-2",
+                  "alt": "A new female student: Youmei, with a backpack, stands at the board and waves"
+                },
+                {
+                  "picture": "b1l01-front-3",
+                  "alt": "A new male student: a young man with a backpack stands at the board and waves"
+                }
+              ],
+              "key": 1,
+              "why": "她 is a woman, and 新同學 is a new classmate, so it is the young woman with the backpack, not the teacher.",
+              "focus": {
+                "zh": "她是新同學",
+                "en": "she is a new classmate"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-03",
+                "B1L01-1-01",
+                "B1L01-1-02",
+                "B1L00-1-01"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-read-who-3",
+          "kind": "read-pick-picture",
+          "questions": [
+            {
+              "id": "b1l01-read-who-3-q",
+              "prompt": {
+                "traditional": "他是學生，不是老師。",
+                "simplified": "他是学生，不是老师。",
+                "pinyin": "Tā shì xuéshēng, bú shì lǎoshī.",
+                "english": "He's a student, not a teacher."
+              },
+              "choices": [
+                {
+                  "picture": "b1l01-front-1",
+                  "alt": "The teacher: a woman with a black bob and blue cardigan stands at the board with a textbook"
+                },
+                {
+                  "picture": "b1l01-front-2",
+                  "alt": "A new female student: Youmei, with a backpack, stands at the board and waves"
+                },
+                {
+                  "picture": "b1l01-front-3",
+                  "alt": "A new male student: a young man with a backpack stands at the board and waves"
+                }
+              ],
+              "key": 2,
+              "why": "學生 rules out the teacher, and 他 (with 亻) means he, while 她 (with 女) means she. So it is the young man with the backpack.",
+              "focus": {
+                "zh": "他是學生",
+                "en": "he is a student"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L00-1-05",
+                "B1L01-1-03",
+                "B1L00-1-02",
+                "B1L00-1-01"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-card",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l01-realia-card-1",
+          "kind": "realia",
+          "picture": "b1l01-intro-card",
+          "alt": "Jiale's handwritten self-introduction card pinned on a classroom board",
+          "transcript": {
+            "traditional": "自我介紹　大家好！　我姓高，叫高家樂。　我是英國人。　我喜歡台灣。　我愛喝茶，不愛喝奶茶。",
+            "simplified": "自我介绍　大家好！　我姓高，叫高家乐。　我是英国人。　我喜欢台湾。　我爱喝茶，不爱喝奶茶。",
+            "pinyin": "Zìwǒ jièshào: Dàjiā hǎo! Wǒ xìng Gāo, jiào Gāo Jiālè. Wǒ shì Yīngguó rén. Wǒ xǐhuān Táiwān. Wǒ ài hē chá, bú ài hē nǎichá.",
+            "english": "Self-introduction: Hello, everyone! My surname is Gao, and my name is Gao Jiale. I'm British. I like Taiwan. I love tea, but I don't love milk tea."
+          },
+          "questions": [
+            {
+              "id": "b1l01-realia-card-1-q",
+              "choices": [
+                {
+                  "traditional": "家樂愛喝茶。",
+                  "simplified": "家乐爱喝茶。",
+                  "pinyin": "Jiālè ài hē chá.",
+                  "english": "Jiale loves tea."
+                },
+                {
+                  "traditional": "家樂是美國人。",
+                  "simplified": "家乐是美国人。",
+                  "pinyin": "Jiālè shì Měiguó rén.",
+                  "english": "Jiale is American."
+                },
+                {
+                  "traditional": "家樂不喜歡台灣。",
+                  "simplified": "家乐不喜欢台湾。",
+                  "pinyin": "Jiālè bù xǐhuān Táiwān.",
+                  "english": "Jiale doesn't like Taiwan."
+                }
+              ],
+              "key": 0,
+              "why": "The card says 我愛喝茶. He is 英國人, not 美國人, and he writes 我喜歡台灣.",
+              "focus": {
+                "zh": "愛喝茶，不愛喝奶茶",
+                "en": "loves tea, not milk tea"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-07",
+                "B1L01-3-08",
+                "B1L01-3-12"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-realia-card-2",
+          "kind": "realia",
+          "picture": "b1l01-intro-card",
+          "alt": "Jiale's handwritten self-introduction card pinned on a classroom board",
+          "transcript": {
+            "traditional": "自我介紹　大家好！　我姓高，叫高家樂。　我是英國人。　我喜歡台灣。　我愛喝茶，不愛喝奶茶。",
+            "simplified": "自我介绍　大家好！　我姓高，叫高家乐。　我是英国人。　我喜欢台湾。　我爱喝茶，不爱喝奶茶。",
+            "pinyin": "Zìwǒ jièshào: Dàjiā hǎo! Wǒ xìng Gāo, jiào Gāo Jiālè. Wǒ shì Yīngguó rén. Wǒ xǐhuān Táiwān. Wǒ ài hē chá, bú ài hē nǎichá.",
+            "english": "Self-introduction: Hello, everyone! My surname is Gao, and my name is Gao Jiale. I'm British. I like Taiwan. I love tea, but I don't love milk tea."
+          },
+          "questions": [
+            {
+              "id": "b1l01-realia-card-2-q",
+              "prompt": {
+                "traditional": "家樂是哪國人？",
+                "simplified": "家乐是哪国人？",
+                "pinyin": "Jiālè shì nǎ guó rén?",
+                "english": "Which country is Jiale from?"
+              },
+              "choices": [
+                {
+                  "traditional": "美國人",
+                  "simplified": "美国人",
+                  "pinyin": "Měiguó rén",
+                  "english": "American"
+                },
+                {
+                  "traditional": "英國人",
+                  "simplified": "英国人",
+                  "pinyin": "Yīngguó rén",
+                  "english": "British"
+                },
+                {
+                  "traditional": "台灣人",
+                  "simplified": "台湾人",
+                  "pinyin": "Táiwān rén",
+                  "english": "Taiwanese"
+                }
+              ],
+              "key": 1,
+              "why": "The card says 我是英國人. 台灣 is the place he likes, not his country.",
+              "focus": {
+                "zh": "哪國人",
+                "en": "which country"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-09",
+                "B1L01-1-10",
+                "B1L01-1-18",
+                "B1L01-1-15"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "realia-list",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l01-realia-list-1",
+          "kind": "realia",
+          "picture": "b1l01-class-list",
+          "alt": "A class list on a sheet of paper: three names, each with a country",
+          "transcript": {
+            "traditional": "同學　李中明　印尼　小林友美　日本　王宜文　美國",
+            "simplified": "同学　李中明　印尼　小林友美　日本　王宜文　美国",
+            "pinyin": "Tóngxué: Lǐ Zhōngmíng, Yìnní; Xiǎolín Yǒuměi, Rìběn; Wáng Yíwén, Měiguó",
+            "english": "Classmates: Li Zhongming, Indonesia; Xiaolin Youmei, Japan; Wang Yiwen, USA"
+          },
+          "questions": [
+            {
+              "id": "b1l01-realia-list-1-q",
+              "prompt": {
+                "traditional": "誰是美國人？",
+                "simplified": "谁是美国人？",
+                "pinyin": "Shéi shì Měiguó rén?",
+                "english": "Who is American?"
+              },
+              "choices": [
+                {
+                  "traditional": "友美",
+                  "simplified": "友美",
+                  "pinyin": "Yǒuměi",
+                  "english": "Youmei"
+                },
+                {
+                  "traditional": "宜文",
+                  "simplified": "宜文",
+                  "pinyin": "Yíwén",
+                  "english": "Yiwen"
+                },
+                {
+                  "traditional": "中明",
+                  "simplified": "中明",
+                  "pinyin": "Zhōngmíng",
+                  "english": "Zhongming"
+                }
+              ],
+              "key": 1,
+              "why": "美國 is next to 王宜文. 友美 has 美 in her name, but her country is 日本.",
+              "focus": {
+                "zh": "美國人",
+                "en": "American"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-17",
+                "B1L00-1-10",
+                "B1L01-1-04"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-realia-list-2",
+          "kind": "realia",
+          "picture": "b1l01-class-list",
+          "alt": "A class list on a sheet of paper: three names, each with a country",
+          "transcript": {
+            "traditional": "同學　李中明　印尼　小林友美　日本　王宜文　美國",
+            "simplified": "同学　李中明　印尼　小林友美　日本　王宜文　美国",
+            "pinyin": "Tóngxué: Lǐ Zhōngmíng, Yìnní; Xiǎolín Yǒuměi, Rìběn; Wáng Yíwén, Měiguó",
+            "english": "Classmates: Li Zhongming, Indonesia; Xiaolin Youmei, Japan; Wang Yiwen, USA"
+          },
+          "questions": [
+            {
+              "id": "b1l01-realia-list-2-q",
+              "choices": [
+                {
+                  "traditional": "宜文",
+                  "simplified": "宜文",
+                  "pinyin": "Yíwén",
+                  "english": "Yiwen"
+                },
+                {
+                  "traditional": "友美",
+                  "simplified": "友美",
+                  "pinyin": "Yǒuměi",
+                  "english": "Youmei"
+                },
+                {
+                  "traditional": "中明",
+                  "simplified": "中明",
+                  "pinyin": "Zhōngmíng",
+                  "english": "Zhongming"
+                }
+              ],
+              "key": 2,
+              "why": "The surname comes first: 李中明, so 中明姓李. 小林友美 has 林, not 李, and 宜文 is 王宜文.",
+              "focus": {
+                "zh": "姓李",
+                "en": "surname Li"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-06",
+                "B1L01-1-04"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ],
+              "prompt": {
+                "traditional": "誰姓李？",
+                "simplified": "谁姓李？",
+                "pinyin": "Shéi xìng Lǐ?",
+                "english": "Whose surname is Li?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene-gap",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l01-scene-gap-1",
+          "kind": "scene-gap",
+          "picture": "b1l01-tea-stand",
+          "alt": "On a sunny afternoon at an outdoor bubble-tea stand: Youmei holds a cup of bubble milk tea that Yiwen has just given her, Yiwen's hands are empty, and Zhongming, next to them, holds a glass of water.",
+          "questions": [
+            {
+              "id": "b1l01-scene-gap-1-a",
+              "prompt": {
+                "traditional": "友美，妳喝珍珠奶茶嗎？——我愛喝，＿＿！",
+                "simplified": "友美，你喝珍珠奶茶吗？——我爱喝，＿＿！"
+              },
+              "choices": [
+                {
+                  "traditional": "不客氣",
+                  "simplified": "不客气",
+                  "pinyin": "bú kèqì",
+                  "english": "you're welcome"
+                },
+                {
+                  "traditional": "謝謝",
+                  "simplified": "谢谢",
+                  "pinyin": "xièxie",
+                  "english": "thank you"
+                },
+                {
+                  "traditional": "晚安",
+                  "simplified": "晚安",
+                  "pinyin": "wǎn'ān",
+                  "english": "good night"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "友美，妳喝珍珠奶茶嗎？——我愛喝，謝謝！",
+                "simplified": "友美，你喝珍珠奶茶吗？——我爱喝，谢谢！",
+                "pinyin": "Yǒuměi, nǐ hē zhēnzhū nǎichá ma? Wǒ ài hē, xièxie!",
+                "english": "Youmei, do you drink bubble milk tea? I love it, thanks!"
+              },
+              "why": "Youmei takes the drink, so she says 謝謝. 不客氣 is the reply to thanks, and 晚安 is for the night, but the picture is a sunny afternoon.",
+              "focus": {
+                "zh": "謝謝",
+                "en": "thank you"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-09",
+                "B1L01-3-10",
+                "B1L01-3-16"
+              ]
+            },
+            {
+              "id": "b1l01-scene-gap-1-b",
+              "prompt": {
+                "traditional": "中明不喝珍珠奶茶，他喝＿＿。",
+                "simplified": "中明不喝珍珠奶茶，他喝＿＿。"
+              },
+              "choices": [
+                {
+                  "traditional": "茶",
+                  "simplified": "茶",
+                  "pinyin": "chá",
+                  "english": "tea"
+                },
+                {
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                },
+                {
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "中明不喝珍珠奶茶，他喝水。",
+                "simplified": "中明不喝珍珠奶茶，他喝水。",
+                "pinyin": "Zhōngmíng bù hē zhēnzhū nǎichá, tā hē shuǐ.",
+                "english": "Zhongming isn't drinking bubble milk tea. He's drinking water."
+              },
+              "why": "In the picture Zhongming holds a glass of plain water, not tea or milk tea.",
+              "focus": {
+                "zh": "喝水",
+                "en": "drinks water"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-06",
+                "B1L01-3-08",
+                "B1L01-3-12"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            },
+            {
+              "id": "b1l01-scene-gap-1-c",
+              "prompt": {
+                "traditional": "我喝珍珠奶茶。宜文，妳＿＿？——我不喝。",
+                "simplified": "我喝珍珠奶茶。宜文，你＿＿？——我不喝。"
+              },
+              "choices": [
+                {
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "english": "how about"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "english": "(yes-no question word)"
+                },
+                {
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "english": "what"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "我喝珍珠奶茶。宜文，妳呢？——我不喝。",
+                "simplified": "我喝珍珠奶茶。宜文，你呢？——我不喝。",
+                "pinyin": "Wǒ hē zhēnzhū nǎichá. Yíwén, nǐ ne? Wǒ bù hē.",
+                "english": "I'm drinking bubble milk tea. How about you, Yiwen? I'm not drinking any."
+              },
+              "why": "妳呢 asks Yiwen the same question with one word. 妳嗎 and 妳什麼 are not questions. Yiwen's hands are empty, so she is not drinking.",
+              "focus": {
+                "zh": "妳呢？",
+                "en": "how about you?"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-2-04",
+                "B1L01-1-11"
+              ],
+              "grammarIds": [
+                "B1L01-G04-P44"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-scene-gap-2",
+          "kind": "scene-gap",
+          "picture": "b1l01-tea-stand",
+          "alt": "On a sunny afternoon at an outdoor bubble-tea stand: Youmei holds a cup of bubble milk tea that Yiwen has just given her, Yiwen's hands are empty, and Zhongming, next to them, holds a glass of water.",
+          "questions": [
+            {
+              "id": "b1l01-scene-gap-2-a",
+              "prompt": {
+                "traditional": "＿＿喝珍珠奶茶，不喝水。",
+                "simplified": "＿＿喝珍珠奶茶，不喝水。"
+              },
+              "choices": [
+                {
+                  "traditional": "友美",
+                  "simplified": "友美",
+                  "pinyin": "Yǒuměi",
+                  "english": "Youmei"
+                },
+                {
+                  "traditional": "中明",
+                  "simplified": "中明",
+                  "pinyin": "Zhōngmíng",
+                  "english": "Zhongming"
+                },
+                {
+                  "traditional": "宜文",
+                  "simplified": "宜文",
+                  "pinyin": "Yíwén",
+                  "english": "Yiwen"
+                }
+              ],
+              "key": 0,
+              "answer": {
+                "traditional": "友美喝珍珠奶茶，不喝水。",
+                "simplified": "友美喝珍珠奶茶，不喝水。",
+                "pinyin": "Yǒuměi hē zhēnzhū nǎichá, bù hē shuǐ.",
+                "english": "Youmei is drinking bubble milk tea, not water."
+              },
+              "why": "Youmei holds the cup of bubble milk tea. Zhongming has the water, and Yiwen's hands are empty.",
+              "focus": {
+                "zh": "喝珍珠奶茶",
+                "en": "drinks bubble milk tea"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-07",
+                "B1L01-3-11",
+                "B1L01-3-06"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            },
+            {
+              "id": "b1l01-scene-gap-2-b",
+              "prompt": {
+                "traditional": "宜文，謝謝妳！——＿＿！",
+                "simplified": "宜文，谢谢你！——＿＿！"
+              },
+              "choices": [
+                {
+                  "traditional": "謝謝",
+                  "simplified": "谢谢",
+                  "pinyin": "xièxie",
+                  "english": "thank you"
+                },
+                {
+                  "traditional": "不客氣",
+                  "simplified": "不客气",
+                  "pinyin": "bú kèqì",
+                  "english": "you're welcome"
+                },
+                {
+                  "traditional": "你好",
+                  "simplified": "你好",
+                  "pinyin": "nǐ hǎo",
+                  "english": "hello"
+                }
+              ],
+              "key": 1,
+              "answer": {
+                "traditional": "宜文，謝謝妳！——不客氣！",
+                "simplified": "宜文，谢谢你！——不客气！",
+                "pinyin": "Yíwén, xièxie nǐ! Bú kèqì!",
+                "english": "Thank you, Yiwen! You're welcome!"
+              },
+              "why": "Youmei thanks Yiwen for the drink, and 不客氣 is the answer to 謝謝.",
+              "focus": {
+                "zh": "謝謝／不客氣",
+                "en": "thanks / you're welcome"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-09",
+                "B1L01-3-10"
+              ]
+            },
+            {
+              "id": "b1l01-scene-gap-2-c",
+              "prompt": {
+                "traditional": "中明，你喝珍珠奶茶＿＿？——不喝，我喝水。",
+                "simplified": "中明，你喝珍珠奶茶＿＿？——不喝，我喝水。"
+              },
+              "choices": [
+                {
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "english": "what"
+                },
+                {
+                  "traditional": "呢",
+                  "simplified": "呢",
+                  "pinyin": "ne",
+                  "english": "how about"
+                },
+                {
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "english": "(yes-no question word)"
+                }
+              ],
+              "key": 2,
+              "answer": {
+                "traditional": "中明，你喝珍珠奶茶嗎？——不喝，我喝水。",
+                "simplified": "中明，你喝珍珠奶茶吗？——不喝，我喝水。",
+                "pinyin": "Zhōngmíng, nǐ hē zhēnzhū nǎichá ma? Bù hē, wǒ hē shuǐ.",
+                "english": "Zhongming, do you drink bubble milk tea? No, I'm drinking water."
+              },
+              "why": "The reply starts with 不喝 (no), so this is a yes-no question: 嗎 goes at the end. 什麼 would ask 'what', but the drink is already named, and 呢 needs a new person.",
+              "focus": {
+                "zh": "…嗎？",
+                "en": "yes-no question"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-13",
+                "B1L01-3-07",
+                "B1L01-3-11"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraph",
+      "part": "reading",
+      "versions": [
+        {
+          "id": "b1l01-paragraph-1",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "我叫王宜文，我是美國人。友美是新同學，她{1}小林，叫小林友美。她是{2}人，很可愛。友美喜歡台灣，她愛吃{3}，{4}愛喝水。",
+            "simplified": "我叫王宜文，我是美国人。友美是新同学，她{1}小林，叫小林友美。她是{2}人，很可爱。友美喜欢台湾，她爱吃{3}，{4}爱喝水。",
+            "pinyin": "Wǒ jiào Wáng Yíwén, wǒ shì Měiguó rén. Yǒuměi shì xīn tóngxué, tā xìng Xiǎolín, jiào Xiǎolín Yǒuměi. Tā shì Rìběn rén, hěn kě'ài. Yǒuměi xǐhuān Táiwān, tā ài chī shuǐguǒ, bú ài hē shuǐ.",
+            "english": "My name is Wang Yiwen, and I'm American. Youmei is a new classmate. Her surname is Xiaolin, and her name is Xiaolin Youmei. She's Japanese and very cute. Youmei likes Taiwan. She loves eating fruit, and she doesn't love water."
+          },
+          "bank": [
+            {
+              "traditional": "不",
+              "simplified": "不",
+              "pinyin": "bù",
+              "english": "not"
+            },
+            {
+              "traditional": "珍珠奶茶",
+              "simplified": "珍珠奶茶",
+              "pinyin": "zhēnzhū nǎichá",
+              "english": "bubble milk tea"
+            },
+            {
+              "traditional": "姓",
+              "simplified": "姓",
+              "pinyin": "xìng",
+              "english": "to be surnamed"
+            },
+            {
+              "traditional": "水果",
+              "simplified": "水果",
+              "pinyin": "shuǐguǒ",
+              "english": "fruit"
+            },
+            {
+              "traditional": "日本",
+              "simplified": "日本",
+              "pinyin": "Rìběn",
+              "english": "Japan"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-paragraph-1-1",
+              "key": 2,
+              "why": "姓 comes before a surname: 姓小林. 叫 then gives her full name.",
+              "focus": {
+                "zh": "姓",
+                "en": "surname"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-06"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            },
+            {
+              "id": "b1l01-paragraph-1-2",
+              "key": 4,
+              "why": "日本人 means Japanese. Only a country fits before 人.",
+              "focus": {
+                "zh": "日本人",
+                "en": "Japanese"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-14",
+                "B1L00-1-10"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            },
+            {
+              "id": "b1l01-paragraph-1-3",
+              "key": 3,
+              "why": "You eat 水果: 愛吃水果. 珍珠奶茶 is a drink, so it goes with 喝, not 吃.",
+              "focus": {
+                "zh": "吃水果",
+                "en": "eats fruit"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-04",
+                "B1L01-3-05",
+                "B1L01-3-11"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            },
+            {
+              "id": "b1l01-paragraph-1-4",
+              "key": 0,
+              "why": "不 goes right before the verb: 不愛喝水, she doesn't love water.",
+              "focus": {
+                "zh": "不愛",
+                "en": "doesn't love"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-06"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-paragraph-2",
+          "kind": "paragraph-bank",
+          "passage": {
+            "traditional": "大家{1}！我姓李，{2}李中明。我是印尼人，我喜歡台灣。宜文是我同學，她是美國人。她不愛喝奶茶，愛喝{3}。你們愛喝珍珠奶茶{4}？",
+            "simplified": "大家{1}！我姓李，{2}李中明。我是印尼人，我喜欢台湾。宜文是我同学，她是美国人。她不爱喝奶茶，爱喝{3}。你们爱喝珍珠奶茶{4}？",
+            "pinyin": "Dàjiā hǎo! Wǒ xìng Lǐ, jiào Lǐ Zhōngmíng. Wǒ shì Yìnní rén, wǒ xǐhuān Táiwān. Yíwén shì wǒ tóngxué, tā shì Měiguó rén. Tā bú ài hē nǎichá, ài hē chá. Nǐmen ài hē zhēnzhū nǎichá ma?",
+            "english": "Hello, everyone! My surname is Li, and my name is Li Zhongming. I'm Indonesian, and I like Taiwan. Yiwen is my classmate; she's American. She doesn't love milk tea; she loves tea. Do you love bubble milk tea?"
+          },
+          "bank": [
+            {
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "english": "(yes-no question word)"
+            },
+            {
+              "traditional": "叫",
+              "simplified": "叫",
+              "pinyin": "jiào",
+              "english": "to be called"
+            },
+            {
+              "traditional": "姓",
+              "simplified": "姓",
+              "pinyin": "xìng",
+              "english": "to be surnamed"
+            },
+            {
+              "traditional": "好",
+              "simplified": "好",
+              "pinyin": "hǎo",
+              "english": "good"
+            },
+            {
+              "traditional": "茶",
+              "simplified": "茶",
+              "pinyin": "chá",
+              "english": "tea"
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1l01-paragraph-2-1",
+              "key": 3,
+              "why": "大家好 is how you say hello to everyone.",
+              "focus": {
+                "zh": "大家好",
+                "en": "hello, everyone"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-01",
+                "B1L01-2-08"
+              ]
+            },
+            {
+              "id": "b1l01-paragraph-2-2",
+              "key": 1,
+              "why": "叫 comes before the full name: 叫李中明. 姓 is only for the surname, which he already gave (姓李).",
+              "focus": {
+                "zh": "叫",
+                "en": "to be called"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-05",
+                "B1L01-1-06"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            },
+            {
+              "id": "b1l01-paragraph-2-3",
+              "key": 4,
+              "why": "Only a drink fits after 愛喝: 茶. The other bank words are not things you drink.",
+              "focus": {
+                "zh": "喝茶",
+                "en": "drinks tea"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-07",
+                "B1L01-3-08"
+              ]
+            },
+            {
+              "id": "b1l01-paragraph-2-4",
+              "key": 0,
+              "why": "嗎 at the end turns the sentence into a yes-no question.",
+              "focus": {
+                "zh": "嗎",
+                "en": "yes-no question"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-13"
+              ],
+              "grammarIds": [
+                "B1L01-G03-P40"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-note",
+      "part": "reading",
+      "review": true,
+      "versions": [
+        {
+          "id": "b1l01-reading-note-1",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "友美：\n早安！我是李中明，我們是同學。我知道妳是日本人。我是印尼人，不是台灣人。妳愛喝珍珠奶茶嗎？我不愛喝，我愛喝水。\n中明",
+            "simplified": "友美：\n早安！我是李中明，我们是同学。我知道你是日本人。我是印尼人，不是台湾人。你爱喝珍珠奶茶吗？我不爱喝，我爱喝水。\n中明",
+            "pinyin": "Yǒuměi: Zǎo'ān! Wǒ shì Lǐ Zhōngmíng, wǒmen shì tóngxué. Wǒ zhīdào nǐ shì Rìběn rén. Wǒ shì Yìnní rén, bú shì Táiwān rén. Nǐ ài hē zhēnzhū nǎichá ma? Wǒ bú ài hē, wǒ ài hē shuǐ. Zhōngmíng",
+            "english": "Youmei: Good morning! I'm Li Zhongming. We're classmates. I know you're Japanese. I'm Indonesian, not Taiwanese. Do you love bubble milk tea? I don't. I love water. Zhongming"
+          },
+          "questions": [
+            {
+              "id": "b1l01-reading-note-1-q",
+              "prompt": {
+                "traditional": "中明是哪國人？",
+                "simplified": "中明是哪国人？",
+                "pinyin": "Zhōngmíng shì nǎ guó rén?",
+                "english": "Which country is Zhongming from?"
+              },
+              "choices": [
+                {
+                  "traditional": "台灣人",
+                  "simplified": "台湾人",
+                  "pinyin": "Táiwān rén",
+                  "english": "Taiwanese"
+                },
+                {
+                  "traditional": "日本人",
+                  "simplified": "日本人",
+                  "pinyin": "Rìběn rén",
+                  "english": "Japanese"
+                },
+                {
+                  "traditional": "印尼人",
+                  "simplified": "印尼人",
+                  "pinyin": "Yìnní rén",
+                  "english": "Indonesian"
+                }
+              ],
+              "key": 2,
+              "why": "He writes 我是印尼人，不是台灣人. 日本人 is Youmei.",
+              "focus": {
+                "zh": "哪國人",
+                "en": "which country"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-1-10",
+                "B1L01-2-05",
+                "B1L01-1-12"
+              ],
+              "grammarIds": [
+                "B1L01-G01-P38"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1l01-reading-note-2",
+          "kind": "reading",
+          "format": "message",
+          "text": {
+            "traditional": "中明：\n謝謝你！我愛喝珍珠奶茶，不愛喝水。我知道你不愛喝奶茶，你愛喝水。\n友美",
+            "simplified": "中明：\n谢谢你！我爱喝珍珠奶茶，不爱喝水。我知道你不爱喝奶茶，你爱喝水。\n友美",
+            "pinyin": "Zhōngmíng: Xièxie nǐ! Wǒ ài hē zhēnzhū nǎichá, bú ài hē shuǐ. Wǒ zhīdào nǐ bú ài hē nǎichá, nǐ ài hē shuǐ. Yǒuměi",
+            "english": "Zhongming: Thank you! I love bubble milk tea, but I don't love water. I know you don't love milk tea; you love water. Youmei"
+          },
+          "questions": [
+            {
+              "id": "b1l01-reading-note-2-q",
+              "prompt": {
+                "traditional": "友美不愛喝什麼？",
+                "simplified": "友美不爱喝什么？",
+                "pinyin": "Yǒuměi bú ài hē shénme?",
+                "english": "What doesn't Youmei love to drink?"
+              },
+              "choices": [
+                {
+                  "traditional": "奶茶",
+                  "simplified": "奶茶",
+                  "pinyin": "nǎichá",
+                  "english": "milk tea"
+                },
+                {
+                  "traditional": "水",
+                  "simplified": "水",
+                  "pinyin": "shuǐ",
+                  "english": "water"
+                },
+                {
+                  "traditional": "珍珠奶茶",
+                  "simplified": "珍珠奶茶",
+                  "pinyin": "zhēnzhū nǎichá",
+                  "english": "bubble milk tea"
+                }
+              ],
+              "key": 1,
+              "why": "Youmei writes 我愛喝珍珠奶茶，不愛喝水. Zhongming (你) is the one who loves 水 and doesn't love 奶茶.",
+              "focus": {
+                "zh": "不愛喝水",
+                "en": "doesn't love water"
+              },
+              "lesson": 1,
+              "wordIds": [
+                "B1L01-3-03",
+                "B1L01-3-07",
+                "B1L01-3-06",
+                "B1L01-3-11"
+              ],
+              "grammarIds": [
+                "B1L01-G05-P45"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
