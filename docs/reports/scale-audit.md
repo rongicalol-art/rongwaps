@@ -4,11 +4,11 @@ Audit date: 2026-11-01. Scope: presence, chat, party rooms (Cloudflare Worker + 
 
 ## (a) Verdict
 
-1. The code is clean and correct for one school, but Study together has one deliberate single point: every learner's presence, chat, mentions, invites and room listings pass through **one Durable Object** that refuses the 251st socket, and even with that cap removed it slows visibly by 2,000 learners (measured).
+1. The code is clean and correct for one school, but Study together has one deliberate single point: every learner's presence, chat, mentions, invites and room listings pass through **one Durable Object** that refuses the 251st socket, and even with that cap removed it slows visibly by 2,000 learners and stops answering at 10,000 (measured locally).
 2. Learning itself does not depend on that object. Its ceiling is the **single Render instance** that gates every lesson pack and verifies each new session token with two Supabase calls, with rate limits and a token cache that live in process memory, so adding instances loosens the limits instead of scaling them.
 3. The database is not the first bottleneck, but **review history grows without bound** (about 1 KB per review, no retention) and the full pull sends a learner's entire history to every fresh device.
 4. Party rooms are already one object per room and scale sideways; they only need to stop funnelling listings and mentions through the single Lobby.
-5. Target: shard presence and chat **by lesson**, keep counts in a small index object, serve packs from the edge with the same JWT check the Worker already does, bound and partition review history. Three expand/migrate/contract phases, no downtime, roughly **$150 to $300 a month at 10,000 daily learners**.
+5. Target: shard presence and chat **by lesson**, keep counts in a small index object, serve packs from the edge with the same JWT check the Worker already does, bound and partition review history. Three expand/migrate/contract phases, no downtime, roughly **$150 to $250 a month at 10,000 daily learners**.
 
 ## (b) Ranked bottlenecks
 
@@ -27,7 +27,7 @@ Evidence:
 - Rooms fan **in** to the same object: every room listing change is an RPC to `main` (`games/room.ts:181`) that triggers a flush (`games/lobby.ts:53`), and every party-chat mention is an RPC to `main` (`games/room.ts:144`).
 - Cloudflare's own guidance (fetched 2026-11-01): a single object handles "approximately 500-1,000 requests per second for simple operations", "200-500" with storage writes, and a global coordinator "becomes a bottleneck as traffic grows"; the limits page (updated 2026-10-29) states a soft limit of 1,000 requests per second per object.
 
-Impact: 1k concurrent: 750 learners see "Study together is full" (lessons still work). 10k: the social layer is unavailable to 97.5%; if the cap were simply raised, presence convergence measured 10.3 s at 2,000 users and the object is CPU-bound, so it would not be usable. 100k: impossible in this shape.
+Impact: 1k concurrent: 750 learners see "Study together is full" (lessons still work). 10k: the social layer is unavailable to 97.5%; if the cap were simply raised, presence convergence measured 10.3 s at 2,000 users and at 10,000 the object neither converged nor delivered one chat line within 5 minutes (section f). 100k: impossible in this shape.
 
 Effort: medium to large. New object classes and client routing, 1 to 2 weeks, described in (c) and (d).
 
@@ -144,7 +144,7 @@ Assumptions: 10,000 daily active learners, 2,000 concurrent at peak, 30 minutes 
 
 | Item | Working | Monthly |
 | --- | --- | --- |
-| Cloudflare Workers Paid | base plan (Durable Objects on Free are capped at 100k requests and 100k row writes a day, which 10k learners exceed on day one) | $5 |
+| Cloudflare Workers Paid | base plan (Durable Objects on Free are capped at 100k requests and 100k row writes a day, which 10k learners exceed on day one). Front-door Worker requests (tickets, joins, socket upgrades) stay inside the 10M included | $5 |
 | Durable Object requests | about 50 billable requests per learner-day (connections, RPCs, alarms, incoming messages at 20:1) = 15M a month, 1M included, $0.15 per extra million | about $2 |
 | Durable Object row writes | about 180 per learner-day (tickets, chat, race state per answer) = 54M a month, 50M included, $1 per extra million | about $4 |
 | Durable Object duration | objects idle between events are eligible to hibernate and unbilled (Cloudflare pricing page, updated 2026-10-18); if every race room stayed awake its full 10 minutes it would be about 17M GB-s, $208. Realistic processing time is a small fraction | $0 to $25 |
@@ -159,13 +159,28 @@ At 10,000 **concurrent** (about 50,000 daily actives) scale the Supabase compute
 
 ## (f) Measurements
 
-Tool: `scripts/load/socialLoad.mjs` (dev-only, documented in `scripts/load/README.md`). Target: the real Worker code in Miniflare on this 4-CPU container, synthetic accounts and a throwaway signing key, exactly like CI's `tests/games/runtime.mjs`. Local numbers show how cost grows with N, not Cloudflare's absolute latency. Scenario per size: connect in batches of 100, spread over 20 lessons, 10% open the Online list, a 50-sender chat burst in one lesson and one in global chat (20% following), 20% change lesson within 5 s, then rooms of 4 play 10 answers.
+Tool: `scripts/load/socialLoad.mjs` (dev-only, documented in `scripts/load/README.md`). Target: the real Worker code in Miniflare on this 4-CPU container, synthetic accounts and a throwaway signing key, exactly like CI's `tests/games/runtime.mjs`. Local numbers show how cost grows with N, not Cloudflare's absolute latency. Scenario per size: connect in batches of 100, spread over 20 lessons, 10% open the Online list, a 50-sender chat burst in one lesson and one in global chat (20% following), 20% change lesson within 5 s, then rooms of 4 play 10 answers (rooms capped at 200 in the capped sweep and 300 in the lifted sweep).
 
 Baseline: the repo's own 150-user suite passed here (`npm run games:test`): presence convergence 5.6 s during the ramp, 150 messages to 150 users in 1.96 s (p95 1.95 s), race finish p95 202 ms.
 
-{{SWEEP_TABLE}}
+| Users | Lobby cap | Connected | Refused | Presence converged | Lesson chat p95 (deliveries) | Global chat p95 (deliveries) | Lesson change p95 | Rooms | Answer round trip p95 | Bytes pushed per user | Lobby sockets lost |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 100 | 250 (as deployed) | 100 | none | 1.1 s | 22 ms (25) | 75 ms (400) | 4.5 s | 25 | 156 ms | 20 kB | none |
+| 250 | 250 (as deployed) | 250 | none | 1.9 s | 30 ms (169) | 227 ms (2,500) | 4.7 s | 62 | 346 ms | 54 kB | none |
+| 500 | 250 (as deployed) | 250 | 250 refused (socket 503) | 2.1 s | 23 ms (169) | 377 ms (5,000) | 4.3 s | 62 | 343 ms | 57 kB | none |
+| 500 | lifted (test bundle only) | 500 | none | 2.1 s | 109 ms (625) | 340 ms (5,000) | 5.5 s | 125 | 764 ms | 74 kB | none |
+| 2,000 | lifted (test bundle only) | 2,000 | none | 10.3 s | 566 ms (5,000) | 1.5 s (20,000) | 4.1 s | 300 | 1.7 s | 192 kB | none |
+| 10,000 | lifted (test bundle only) | 10,000 | none | none in 300 s | none in 300 s | none in 300 s | none in 300 s | 300 | 1.4 s | 27 kB | 10,000 closed by the staleness sweep |
 
-{{FANOUT_NOTES}}
+Reading the table: with the deployed cap, the 251st learner is refused (500 users: exactly 250 refused with 503). With the cap lifted, everything that passes through the single Lobby grows with N: presence convergence 2.1 s at 500, 10.3 s at 2,000, never within 300 s at 10,000; global chat p95 0.34 s at 500, 1.5 s at 2,000, no delivery at all within 300 s at 10,000. At 10,000 the object spent the whole window working through the 20,000 queued `here` and `sub` frames, each of which schedules a full O(N) flush. Rooms kept working at every size because each room is its own object.
+
+Fan-out by frame type at 2,000 users (cap lifted): `rooms` 38,000 frames, 198.2 MB; `online` 800 frames, 98.9 MB; `state` 58,800 frames, 81.3 MB; `counts` 9,900 frames, 34.2 MB; `people` 5,700 frames, 30.8 MB. The `rooms` listing frames (every listing change goes to every socket) and the `online` roster frames (the whole visible list to every subscriber) dominate the bytes, and they are O(N) per socket.
+
+At 10,000 users: `people` 23,800 frames, 175.1 MB; `counts` 29,100 frames, 86.3 MB; `state` 58,800 frames, 81.3 MB; `rooms` 14,800 frames, 0.3 MB; `me` 10,000 frames, 0.2 MB.
+
+At 10,000 users every Lobby socket had been closed by the 90 s staleness sweep before the run ended: the object was still digesting the join wave, and this generator sends no keepalive pings. The real client pings every 25 s and pings are answered by the runtime without waking the object, so in production those sockets would have stayed open but silent for minutes rather than being closed. Room-phase latencies at 2,000 and 10,000 include CPU contention with the saturated Lobby in the same local process; on Cloudflare each object runs alone, which was not measured.
+
+Generator lag stayed under 80 ms in every phase, so the load generator was not the bottleneck for these figures. All sizes ran on the same 4-CPU container; absolute numbers will differ on Cloudflare, the shape of the curve is what matters.
 
 What could not be run and exactly what is missing:
 - Staging: the deployed staging Worker answers (`/healthz` 200 in 0.5 s) and the script has a `--target staging` mode with production refusals, but staging accepts only school Google sign-ins and this container holds no Supabase keys, so no access tokens could be issued. Missing: a file of staging access tokens for synthetic accounts (owner adds them to the staging `private.beta_owner_emails`, signs them in, exports the tokens; they last one hour). Then `node scripts/load/socialLoad.mjs --target staging --users 250 ...` as in the README.
