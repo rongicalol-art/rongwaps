@@ -1,5 +1,6 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { del, get, getMany, set } from 'idb-keyval';
+import { isRecordingFile } from './recordingFile';
 
 export const AUDIO_BUCKET = 'vocabulary-audio';
 
@@ -386,7 +387,7 @@ export async function preloadAudioFiles(
   onProgress?: (progress: AudioPreloadProgress) => void,
 ): Promise<void> {
   if (typeof window === 'undefined') return;
-  const validNames = [...new Set(audioFileNames.filter((name) => name && /\.(mp3|wav|ogg|m4a)(?:$|[?#])|^https?:\/\//i.test(name)))] as string[];
+  const validNames = [...new Set(audioFileNames.filter(isRecordingFile))];
   const queue = [...validNames];
   const progress: AudioPreloadProgress = { ready: 0, failed: 0, total: queue.length, bytes: 0 };
   onProgress?.({ ...progress });

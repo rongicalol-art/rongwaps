@@ -67,7 +67,7 @@ Goal: a playful, illustrated, tactile, Duolingo-polished Chinese learning produc
 
 0. Plan first for design work (see AGENTS.md); propose something better than the literal ask.
 1. One sentence: the screen's primary user job. One primary action, ≤2 secondary.
-2. Look at the live screen before redesigning. Never by answering on the owner's real deck (it writes SRS and syncs): use the DEV debug window, Ctrl+Shift+0 → UI Previews, or ask.
+2. Look at the live screen before redesigning: the DEV debug window (Ctrl+Shift+0 → UI Previews) is quickest; the owner's real account is allowed when the flow needs real data.
 3. Prototype (artifact) → pick → build. Reuse widgets/tokens (`.claude/rules/ui.md`, `docs/WIDGETS.md`, [visual-system.md](references/visual-system.md)).
 4. Verify yourself at 390x844 and 1440x900: compare to the prototype, check states (hover, pressed, empty, loading, long words), motion frame-by-frame where possible, reduced motion.
 

@@ -16,7 +16,8 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
 | Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |
 | Server and grading | `API_SPEC.md`, `server/` |
-| Study together (presence, chat, quiz races) | `DEPLOY.md` → Study together, `games/`, `shared/lobby.ts`, `shared/quizRace.ts`, `src/features/social/` |
+| Release, undo, backups and restore, incidents, environments | `RELEASING.md` |
+| Study together (presence, chat, quiz races) | `RELEASING.md` → Study together, `games/`, `shared/lobby.ts`, `shared/quizRace.ts`, `src/features/social/` |
 | Audio & karaoke alignment | `reference/OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
 | Architectural boundary changes | `ARCHITECTURE.md`, `../AGENTS.md`, `DECISIONS.md` |
@@ -37,12 +38,12 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.
 - `../content/audio/` — official audio index and manifest (book 1), read by `scripts/audio/` and `tests/content/officialAudio.test.ts`.
 - `TESTING.md` — test commands, acceptance suites, and Jev semantic/content review workflow.
-- `DEPLOY.md` — deploy checklist: env var names, Supabase dashboard steps, smoke test.
+- `RELEASING.md` — how changes reach learners, undo, data restore, incidents, guards, environments, free-tier limits; then configuration reference (env vars, Supabase, audio, Study together).
 
 ## Reference & Archive (not routed by default)
 
 - `reference/` — long lookup docs, read only when a task names them: `OFFICIAL_AUDIO_SOURCES.md`, `VISUAL_PROMPTS.md`.
-- `archive/` — superseded or one-off material: `DECISIONS_ARCHIVE.md`, `REFACTOR_PROMPT.md`.
+- `archive/` — superseded or one-off material: `DECISIONS_ARCHIVE.md`, `REFACTOR_PROMPT.md`, `BETA_AUDIT_2026-10-23.md`.
 
 ## Generated Artifacts & Scratch Policy
 

@@ -136,6 +136,7 @@ Object.defineProperty(globalThis, 'fetch', {
 });
 
 const { AudioService } = await import('../../src/services/audioService');
+const { recordedOnly } = await import('../../src/services/audio/recordingFile');
 
 after(() => {
   const restore = (name: string, descriptor: PropertyDescriptor | undefined) => {
@@ -1289,6 +1290,23 @@ test('active AbortError and synchronous range failures settle playback instead o
       }
       assert.equal((service.getGlobalAudio() as unknown as FakeAudio).listenerCount('loadedmetadata'), 0);
     }
+  } finally { FakeAudio.prototype.play = savedPlay; }
+});
+
+test('flashcard words with a recording stay quiet instead of using the browser voice when it fails', async () => {
+  const savedPlay = FakeAudio.prototype.play;
+  FakeAudio.prototype.play = () => Promise.reject(new DOMException('Network failure', 'NetworkError'));
+  try {
+    const service = new AudioService();
+    const card = { front: '同學', audio: 'https://audio.example.test/unreachable-card.mp3' };
+    assert.deepEqual(recordedOnly(card), { fallback: 'none' });
+    const textOnly: { front: string; audio?: string } = { front: '同學' };
+    assert.equal(recordedOnly(textOnly), undefined, 'words without a recording may still be spoken');
+    const spokenBefore = speechState.spoken.length;
+    let unavailable = 0;
+    await service.playCard(card, 1, { ...recordedOnly(card), onUnavailable: () => unavailable++ });
+    assert.equal(speechState.spoken.length, spokenBefore);
+    assert.equal(unavailable, 1);
   } finally { FakeAudio.prototype.play = savedPlay; }
 });
 

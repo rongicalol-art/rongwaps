@@ -28,6 +28,8 @@ env:
 
 jobs:
   staging:
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     if: >-
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'push' &&
@@ -51,6 +53,14 @@ jobs:
           if [ -z "$STAGING_DATABASE_URL" ]; then echo "::warning::STAGING_DATABASE_URL not set; staging migrations skipped"; exit 0; fi
           case "$STAGING_DATABASE_URL" in *"$PRODUCTION_REF"*) echo "::error::STAGING_DATABASE_URL points at production"; exit 1;; esac
           supabase db push --db-url "$STAGING_DATABASE_URL" --yes
+      - name: Deploy the staging Study together server
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
+        run: |
+          npm ci --ignore-scripts
+          npx --no-install wrangler deploy --config games/wrangler.staging.jsonc --message "staging ${SHA:0:8}"
       - name: Deploy staging
         run: node scripts/release/render.ts deploy "${{ vars.STAGING_SERVICE_ID }}" "$SHA"
       - name: Check staging
@@ -89,6 +99,19 @@ jobs:
             echo "::error::Run the Migrate workflow (production) before releasing. Not applied:$missing"
             exit 1
           fi
+
+      # The Study together server ships with the app it serves (it was once left
+      # 10 changes behind). It goes first: the new app expects it; it keeps
+      # serving the previous app version too.
+      - name: Deploy the Study together server
+        id: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.R2_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::CLOUDFLARE_API_TOKEN is not set"; exit 1; fi
+          npm ci --ignore-scripts
+          npx --no-install wrangler deploy --config games/wrangler.jsonc --message "release ${SHA:0:8}"
 
       - name: Deploy
         id: deploy

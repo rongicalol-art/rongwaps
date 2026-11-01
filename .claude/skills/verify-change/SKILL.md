@@ -1,30 +1,31 @@
 ---
 name: verify-change
-description: Run the Ron's Mandarin verification gate scoped to what changed. Use before declaring any src/, server/, tests/, content or UI change done.
+description: Run the Ron's Mandarin verification gate before declaring any src/, server/, tests/, content, workflow or UI change done, and before opening a PR.
 ---
 
 # Verify change
 
-Run once at the end of the task. Pick by changed paths (`git status --short`):
+While working, run what fits the paths you touched (`git status --short`). **Before opening a PR, always run the full gate** (first row). CI repeats it, adds the secret scan, migration safety and browser journeys, and must be green before you say done.
 
 | Changed | Run |
 | --- | --- |
-| `src/` `server/` `tests/` | `npm run typecheck && npm run lint && npm test && npm run jev:lint` |
+| anything, before a PR | `npm run typecheck && npm run lint && npm test && npm run jev:lint && npm run build && npm run perf:check` |
 | lesson/grammar content, `scripts/content/validateLessons.ts` inputs | `npm run content:validate` |
-| `scripts/` only | `npm run lint` |
-| docs only | `npm test` (documentation acceptance tests) |
-| UI | the above, plus check 390×844 and 1440×1000 (loading/empty/error/long text; hover/active states not pre-activated) |
+| sign-in, saving/sync, `server/`, `supabase/` | the browser journeys: `npm run test:e2e` against local Supabase (`docs/TESTING.md`), or rely on the PR's `e2e` CI job and check it passed |
+| `supabase/migrations/` | `npm run release:check-migrations`; CI also restores a backup across it |
+| `.github/workflows/` | `actionlint` if available; CI runs them |
+| UI | the above, plus look at 390×844 and 1440×900 in light and dark (loading/empty/error/long text; hover/active states not pre-activated) |
 
-UI changes also run the colour check on added lines only (256 existing files still carry hardcoded colours, so a repo-wide rule would fail):
+UI changes also run the colour check on added lines only (existing files still carry hardcoded colours, so a repo-wide rule would fail):
 
 ```bash
-git diff -U0 -- src ':!src/index.css' | grep -E '^\+' | grep -E '#[0-9a-fA-F]{6}\b|text-white|bg-white|(bg|text|border)-(amber|yellow|gray|slate|zinc|red|blue|green|orange)-[0-9]'
+git diff -U0 origin/main -- src ':!src/index.css' | grep -E '^\+' | grep -E '#[0-9a-fA-F]{6}\b|text-white|bg-white|(bg|text|border)-(amber|yellow|gray|slate|zinc|red|blue|green|orange)-[0-9]'
 ```
 
-Any hit = hardcoded colour that will not follow dark mode: swap for a token, or justify it (confetti, user-picked folder colours, art). Then screenshot the change in dark mode too: `resize_window` with `colorScheme: "dark"` at 390 and 1440 wide. New tokens must be defined in both the light and the dark block of `src/index.css`.
+Any hit = hardcoded colour that will not follow dark mode: swap for a token, or justify it (confetti, user-picked folder colours, art). Screenshot dark mode too: `resize_window` with `colorScheme: "dark"` at 390 and 1440 wide. New tokens are defined in both the light and the dark block of `src/index.css`.
 
 Rules:
 - `jev:lint` flags are prompts to re-check the file; fix code, never weaken a rule.
-- If a check fails, report it with the shortest decisive output line. Do not claim done.
+- A failing check is never "unrelated" without proof: find its cause (another session's untracked file, a flaky test). Fix flaky tests at their root.
 - For UI also confirm: tokens only (no hex), shared widgets reused, no new nested scroller, windows keep the nav bar visible on desktop.
-- Report: one line per check — pass/fail/skipped.
+- Report one line per check (pass/fail/skipped) and what you could not check.

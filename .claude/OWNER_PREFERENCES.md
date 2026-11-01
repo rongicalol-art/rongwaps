@@ -90,8 +90,9 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 - **Small tweak or bug:** a one-line intent, then just do it.
 - **New screens or big design changes:** a short plan, then a **clickable HTML prototype** (real tokens, phone 390 and desktop 1440, 2–3 named directions, one recommended), then wait for a pick or "go", then build. Iterate on the same prototype link.
 - **Design inside the existing look** (polish, pictures, spacing, a new state of an existing screen): the owner trusts you to design it in the app's voice. Build it in the app and show real screenshots instead of a separate mock; a mock's fonts and spacing differ from the app.
-- **Ask first:** new dependencies, new abstractions, moving or deleting files, multi-file refactors, schema or pack or data changes.
-- **Work inline:** no subagents unless asked. The owner disliked a Codex session that silently restyled the quiz, so never restyle beyond the request.
+- **Who decides:** the owner owns the product vision; the AI owns technical decisions (tools, structure, tests, infrastructure) and says why in a line. Ask first only for product decisions (what learners see, do or learn; content and pack changes) and before anything that could affect real learners or their data, deletes something, changes hosting or provider settings, or costs money.
+- **Build it yourself:** helpers (subagents) only for read-only research and reviews. The owner disliked a Codex session that silently restyled the quiz, so never restyle beyond the request.
+- **Shipping:** work on a branch, open a PR into `main` (staging); the owner merges, then releases with the Release PR (`docs/RELEASING.md`).
 
 **Verifying**
 - Look at the result yourself at 390×844 and 1440×900 before saying "done". Use the DEV debug window: Ctrl+Shift+0 → **UI Previews**.
@@ -99,6 +100,7 @@ A self-contained brief for any AI (Claude, Codex, others) working on Ron's Manda
 - Report honestly what you checked and what you didn't.
 
 **Answering**
+- The owner works at night, often from a phone. Updates: what you did, what's left, what they must decide.
 - Terse. Lead with the result. No diff recap, no tool narration, no filler.
 - Plain words. Few headers. Bullets only for parallel items.
 - Questions: only when the answer changes what you'd do, with the recommended option first.

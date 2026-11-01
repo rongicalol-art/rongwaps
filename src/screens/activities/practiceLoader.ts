@@ -78,20 +78,32 @@ export async function preparePracticeData(cards: readonly import('../../data/fla
   await packs.prepareStudyPacks(studyCards, signal);
   signal.throwIfAborted();
   const words = [...new Set(studyCards.flatMap((card) => [card.front, card.traditional, card.simplified]).filter((word): word is string => Boolean(word)))];
+  const firstRecordings = studyCards.slice(0, 4).map((card) => card.audio);
   let audioFailed = false;
   await Promise.all([
     content.preloadFlashcardContent(studyCards, signal),
     dictionary.getDictionaryEntriesBatch(words, signal),
-    audio.audioService.preload(studyCards.slice(0, 4).map((card) => card.audio), signal, (progress) => { audioFailed = progress.failed > 0; }),
+    audio.audioService.preload(firstRecordings, signal, (progress) => { audioFailed = progress.failed > 0; }),
   ]);
   signal.throwIfAborted();
-  if (audioFailed) throw new Error('Recording download failed');
+  // A recording that will not download must not block studying (owner, 2026-11-01):
+  // cards open now and the missing clips keep retrying while the session lasts.
+  if (audioFailed) retryRecordings(audio.audioService, firstRecordings, signal);
   await audio.audioService.prepareRecording(studyCards[0]?.audio, signal);
   // Background: the next lesson part (upcoming audio is warmed by useCardSession).
   const warmAhead = () => { if (!signal.aborted) void packs.prefetchNextStudyPart(cards).catch(() => {}); };
   if (typeof window === 'undefined') return;
   if (window.requestIdleCallback) window.requestIdleCallback(warmAhead, { timeout: 3000 });
   else window.setTimeout(warmAhead, 500);
+}
+
+/** Background retries for recordings that failed during preparation (5 s, 20 s, 60 s). */
+function retryRecordings(audio: { preload: (files: (string | undefined)[], signal?: AbortSignal) => Promise<void> }, files: (string | undefined)[], signal: AbortSignal): void {
+  if (typeof window === 'undefined') return;
+  for (const delay of [5_000, 20_000, 60_000]) {
+    const timer = window.setTimeout(() => { if (!signal.aborted) void audio.preload(files, signal).catch(() => {}); }, delay);
+    signal.addEventListener('abort', () => window.clearTimeout(timer), { once: true });
+  }
 }
 
 /** Loader message for the practice modal. */
