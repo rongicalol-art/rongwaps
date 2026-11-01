@@ -29,7 +29,7 @@ export function PracticeTileButton({ tile, script, layoutId, drag, carried, disa
   return (
     <motion.div layout="position" layoutId={layoutId} transition={WORD_FLIGHT} {...drag} className={carried ? 'shrink-0 select-none opacity-30' : 'shrink-0 select-none'}>
       <PracticeChoiceButton compact disabled={disabled} state={selected ? 'selected' : 'idle'} onClick={onClick} aria-label={`Use ${text}`} className="w-auto">
-        <span className={cn('min-w-6 font-chinese font-semibold leading-none text-ui-ink-strong', large ? 'text-xl lg:text-3xl' : 'text-xl')}>{text}</span>
+        <span className={cn('min-w-6 font-chinese font-semibold leading-none text-ui-ink-strong', large ? 'text-xl lg:text-2xl' : 'text-xl')}>{text}</span>
       </PracticeChoiceButton>
     </motion.div>
   );

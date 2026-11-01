@@ -43,7 +43,7 @@ interface ExerciseItemProps {
 }
 
 /** Chinese line size; the badge and feedback indents are measured in it. */
-const LINE_SIZE = 'text-2xl sm:text-3xl lg:text-4xl';
+const LINE_SIZE = 'text-xl sm:text-2xl lg:text-3xl';
 const SHAKE = { x: [0, -6, 5, -4, 2, 0], transition: { duration: 0.36, ease: 'easeOut' as const } };
 
 /** One numbered item on a Book 1 exercise page: its lines with blanks, the book picture beside it, and (while active) its words. */
