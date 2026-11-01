@@ -122,7 +122,7 @@ export const ExerciseItem = memo(function ExerciseItem({
         <span
           aria-label={`Item ${number}${state.status === 'correct' ? ', correct' : ''}`}
           className={cn(
-            'flex size-[30px] items-center justify-center rounded-xs border-2 border-b-[3px] font-sans text-sm font-black transition-colors duration-200 sm:size-[34px] sm:text-base lg:size-9',
+            'flex size-[30px] items-center justify-center rounded-xs border-2 font-sans text-sm font-black transition-colors duration-200 sm:size-[34px] sm:text-base lg:size-9',
             state.status === 'correct' ? 'border-brand-primary-edge bg-brand-primary text-brand-on-primary'
               : answering ? 'border-brand-primary bg-brand-primary-soft text-brand-primary-deep'
                 : 'border-ui-border bg-ui-surface text-ui-muted-strong',
